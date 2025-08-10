@@ -118,7 +118,13 @@ Array stamping(Vec2<int>                 shape,
 
     // any rotation angle, time consuming and add some scaling
     // distortions to the input kernel
-    if (kernel_rotate) rotate(kernel_local, 360.f * dis(gen), true);
+
+    if (kernel_rotate)
+    {
+      bool zoom_in = false;
+      bool zero_padding = true;
+      rotate(kernel_local, 360.f * dis(gen), zoom_in, zero_padding);
+    }
 
     // amplitude
     if (kernel_scale_amplitude) kernel_local *= zr[k];
