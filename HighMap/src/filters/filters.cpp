@@ -815,8 +815,8 @@ void reverse_above_theshold(Array       &array,
                             float        scaling,
                             float        transition_extent)
 {
-  for (int j = 0; j < array.shape.x; ++j)
-    for (int i = 0; i < array.shape.y; ++i)
+  for (int j = 0; j < array.shape.y; ++j)
+    for (int i = 0; i < array.shape.x; ++i)
     {
       float base_value = array(i, j);
       float limit_value = threshold(i, j);
@@ -844,10 +844,9 @@ void reverse_above_theshold(Array &array,
                             float  scaling,
                             float  transition_extent)
 {
-  reverse_above_theshold(array,
-                         Array(array.shape, threshold),
-                         scaling,
-                         transition_extent);
+  Array threshold_array = Array(array.shape, threshold);
+
+  reverse_above_theshold(array, threshold_array, scaling, transition_extent);
 }
 
 void reverse_above_theshold(Array       &array,
