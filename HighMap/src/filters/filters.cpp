@@ -850,6 +850,38 @@ void reverse_above_theshold(Array &array,
                          transition_extent);
 }
 
+void reverse_above_theshold(Array       &array,
+                            const Array &threshold,
+                            const Array *p_mask,
+                            float        scaling,
+                            float        transition_extent)
+{
+  if (!p_mask)
+    reverse_above_theshold(array, threshold, scaling, transition_extent);
+  else
+  {
+    Array array_f = array;
+    reverse_above_theshold(array_f, threshold, scaling, transition_extent);
+    array = lerp(array, array_f, *(p_mask));
+  }
+}
+
+void reverse_above_theshold(Array       &array,
+                            float        threshold,
+                            const Array *p_mask,
+                            float        scaling,
+                            float        transition_extent)
+{
+  if (!p_mask)
+    reverse_above_theshold(array, threshold, scaling, transition_extent);
+  else
+  {
+    Array array_f = array;
+    reverse_above_theshold(array_f, threshold, scaling, transition_extent);
+    array = lerp(array, array_f, *(p_mask));
+  }
+}
+
 void sharpen(Array &array, float ratio)
 {
   Array lp = Array(array.shape);

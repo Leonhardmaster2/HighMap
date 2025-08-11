@@ -1713,6 +1713,18 @@ void reverse_above_theshold(Array &array,
                             float  scaling = 1.f,
                             float  transition_extent = 0.f); ///< @overload
 
+void reverse_above_theshold(Array       &array,
+                            const Array &threshold,
+                            const Array *p_mask,
+                            float        scaling = 1.f,
+                            float transition_extent = 0.f); ///< @overload
+
+void reverse_above_theshold(Array       &array,
+                            float        threshold,
+                            const Array *p_mask,
+                            float        scaling = 1.f,
+                            float transition_extent = 0.f); ///< @overload
+
 /**
  * @brief Saturate the array values based on the input interval [vmin, vmax]
  * (the output amplitude is not modified).
