@@ -1676,6 +1676,44 @@ void recurve_smoothstep_rational(Array       &array,
                                  const Array *p_mask); ///< @overload
 
 /**
+ * @brief Applies a smooth reversal of values above a given threshold.
+ *
+ * This function modifies the elements of an array by "reversing" values
+ * that exceed a given threshold value, optionally blending the effect
+ * over a transition range.
+ *
+ * For values above the threshold:
+ *  - The difference between the value and the threshold is scaled down
+ *    proportionally to `scaling` and modulated by a smooth transition
+ *    (using smoothstep3) based on `transition_extent`.
+ *
+ * For values below the threshold:
+ *  - The values are linearly blended (`lerp`) with the threshold value
+ *    using a smooth transition factor, gradually reducing the reversal effect.
+ *
+ * @param array             Array to modify in place.
+ * @param threshold         Array containing the per-element threshold values.
+ * @param scaling           Multiplier applied to the difference above the
+ *                          threshold.
+ * @param transition_extent Width of the smooth transition zone for blending.
+ *
+ * **Example**
+ * @include ex_reverse_above_theshold.cpp
+ *
+ * **Result**
+ * @image html ex_reverse_above_theshold.png
+ */
+void reverse_above_theshold(Array       &array,
+                            const Array &threshold,
+                            float        scaling = 1.f,
+                            float        transition_extent = 0.f);
+
+void reverse_above_theshold(Array &array,
+                            float  threshold,
+                            float  scaling = 1.f,
+                            float  transition_extent = 0.f); ///< @overload
+
+/**
  * @brief Saturate the array values based on the input interval [vmin, vmax]
  * (the output amplitude is not modified).
  *

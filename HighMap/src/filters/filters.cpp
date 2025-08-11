@@ -810,6 +810,46 @@ void plateau(Array &array, const Array *p_mask, int ir, float factor)
   }
 }
 
+void reverse_above_theshold(Array       &array,
+                            const Array &threshold,
+                            float        scaling,
+                            float        transition_extent)
+{
+  for (int j = 0; j < array.shape.x; ++j)
+    for (int i = 0; i < array.shape.y; ++i)
+    {
+      float base_value = array(i, j);
+      float limit_value = threshold(i, j);
+      float gap = base_value - limit_value;
+
+      if (gap > 0.f)
+      {
+        float t = std::clamp(gap / transition_extent, 0.f, 1.f);
+        t = smoothstep3(t);
+
+        array(i, j) = limit_value - scaling * t * gap;
+      }
+      else
+      {
+        float t = std::clamp(-gap / transition_extent, 0.f, 1.f);
+        t = smoothstep3(t);
+
+        array(i, j) = lerp(limit_value, base_value, t);
+      }
+    }
+}
+
+void reverse_above_theshold(Array &array,
+                            float  threshold,
+                            float  scaling,
+                            float  transition_extent)
+{
+  reverse_above_theshold(array,
+                         Array(array.shape, threshold),
+                         scaling,
+                         transition_extent);
+}
+
 void sharpen(Array &array, float ratio)
 {
   Array lp = Array(array.shape);
