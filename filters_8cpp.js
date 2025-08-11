@@ -36,6 +36,8 @@ var filters_8cpp =
     [ "normal_displacement", "filters_8cpp.html#a8994656d85a1b9dd0f2c99a3fd45ceb1", null ],
     [ "plateau", "filters_8cpp.html#a9f49d016a05aa8636bb0ff3c3d30aaf7", null ],
     [ "plateau", "filters_8cpp.html#a558c273680de2328f37e5df7ee598813", null ],
+    [ "reverse_above_theshold", "filters_8cpp.html#ab79b21593238cc836f4dd32fecf63a58", null ],
+    [ "reverse_above_theshold", "filters_8cpp.html#a4e0ce9e13f26f66fa546e5127a68956c", null ],
     [ "sharpen", "filters_8cpp.html#a738bcdb6b3493bf7f2cbfcfc03a00159", null ],
     [ "sharpen", "filters_8cpp.html#aae4699340c68bc39efae13b0e81eea3d", null ],
     [ "sharpen_cone", "filters_8cpp.html#a6190b6dde2fd6a6bf9e98eecec10e5f1", null ],

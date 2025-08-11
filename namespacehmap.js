@@ -549,6 +549,8 @@ var namespacehmap =
     [ "recurve_s", "namespacehmap.html#a516835426429688c59f7a02a8abbb174", null ],
     [ "recurve_smoothstep_rational", "namespacehmap.html#affcc500f17897f37cdb0717bc579d2b4", null ],
     [ "recurve_smoothstep_rational", "namespacehmap.html#ab9926efb5c9c3859a0407b8fb9dbe4f7", null ],
+    [ "reverse_above_theshold", "namespacehmap.html#ab79b21593238cc836f4dd32fecf63a58", null ],
+    [ "reverse_above_theshold", "namespacehmap.html#a4e0ce9e13f26f66fa546e5127a68956c", null ],
     [ "saturate", "namespacehmap.html#a2e4283dd5da8add89788c5023c73042c", null ],
     [ "saturate", "namespacehmap.html#ad4c8b8b2361aa1fec5c984287a837461", null ],
     [ "sharpen", "namespacehmap.html#a738bcdb6b3493bf7f2cbfcfc03a00159", null ],
