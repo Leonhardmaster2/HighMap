@@ -375,7 +375,10 @@ void Cloud::set_values_from_min_distance()
 {
   std::array<std::vector<float>, 2> xy = {this->get_x(), this->get_y()};
   std::vector<ps::Point<float, 2>>  points = ps::merge_by_dimension(xy);
-  std::vector<float>                dist = ps::first_neighbor_distance(points);
+  std::vector<float> dist = ps::first_neighbor_distance_squared(points);
+
+  for (auto &v : dist)
+    v = std::sqrt(v);
 
   this->set_values(dist);
 }

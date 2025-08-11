@@ -399,13 +399,12 @@ public:
 
   /**
    * @brief Sets point values based on the distance to their nearest neighbor.
-   * Actually returns the squared distance.
    *
    * The computation process:
    * - Extracts the x and y coordinates from the cloud.
    * - Merges them into a 2D point list.
    * - Calculates the minimum distance to any other point using
-   *   `ps::first_neighbor_distance`.
+   *   `ps::first_neighbor_distance_squared`.
    */
   void set_values_from_min_distance();
 
