@@ -900,19 +900,19 @@
         <name>set_values_from_min_distance</name>
         <qualifiedname>hmap::Cloud::set_values_from_min_distance</qualifiedname>
         <briefdescription>
-<para>Sets point values based on the distance to their nearest neighbor. Actually returns the squared distance. </para>
+<para>Sets point values based on the distance to their nearest neighbor. </para>
         </briefdescription>
         <detaileddescription>
 <para>The computation process:<itemizedlist>
 <listitem><para>Extracts the x and y coordinates from the cloud.</para>
 </listitem><listitem><para>Merges them into a 2D point list.</para>
-</listitem><listitem><para>Calculates the minimum distance to any other point using <computeroutput>ps::first_neighbor_distance</computeroutput>. </para>
+</listitem><listitem><para>Calculates the minimum distance to any other point using <computeroutput>ps::first_neighbor_distance_squared</computeroutput>. </para>
 </listitem></itemizedlist>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="410" column="8" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="374" bodyend="381"/>
+        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="409" column="8" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="374" bodyend="384"/>
       </memberdef>
       <memberdef kind="function" id="classhmap_1_1Cloud_1ad83d71a8729a0e4fcce993c0141275ee" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -955,7 +955,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="425" column="8" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="383" bodyend="399"/>
+        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="424" column="8" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="386" bodyend="402"/>
       </memberdef>
       <memberdef kind="function" id="classhmap_1_1Cloud_1a04dcb02dd2df076553e410dbcceb2c35" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -1062,7 +1062,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="453" column="9" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="431" bodyend="465"/>
+        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="452" column="9" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="434" bodyend="468"/>
       </memberdef>
       <memberdef kind="function" id="classhmap_1_1Cloud_1a8d03bbce76e09b07ff9e2901c80a06c7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1210,7 +1210,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="486" column="8" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="401" bodyend="429"/>
+        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="485" column="8" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="404" bodyend="432"/>
       </memberdef>
       <memberdef kind="function" id="classhmap_1_1Cloud_1aea876ffcd05ba762a9a12d2fc4a5d27c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1240,7 +1240,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="502" column="8" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="467" bodyend="479"/>
+        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="501" column="8" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="470" bodyend="482"/>
       </memberdef>
       <memberdef kind="function" id="classhmap_1_1Cloud_1add728a8b00dadb4a1d043ce50876c569" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Graph" kindref="compound">Graph</ref></type>
@@ -1259,7 +1259,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="513" column="9" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="481" bodyend="497"/>
+        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="512" column="9" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="484" bodyend="500"/>
       </memberdef>
       <memberdef kind="function" id="classhmap_1_1Cloud_1a91285c977568113029ee6864928d6ee2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1340,7 +1340,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="537" column="8" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="499" bodyend="508"/>
+        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="536" column="8" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="502" bodyend="511"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -1386,7 +1386,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="HighMap/include/highmap/geometry/cloud.hpp" line="54" column="1" bodyfile="HighMap/include/highmap/geometry/cloud.hpp" bodystart="55" bodyend="542"/>
+    <location file="HighMap/include/highmap/geometry/cloud.hpp" line="54" column="1" bodyfile="HighMap/include/highmap/geometry/cloud.hpp" bodystart="55" bodyend="541"/>
     <listofallmembers>
       <member refid="classhmap_1_1Cloud_1ab1149531131111567d9f8760162d90ff" prot="public" virt="non-virtual"><scope>hmap::Cloud</scope><name>add_point</name></member>
       <member refid="classhmap_1_1Cloud_1a247e64e1c0e5cb85570c0ec3aed3d774" prot="public" virt="non-virtual"><scope>hmap::Cloud</scope><name>clear</name></member>
