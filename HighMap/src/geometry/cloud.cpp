@@ -292,17 +292,13 @@ void Cloud::print()
 
 void Cloud::randomize(uint seed, Vec4<float> bbox)
 {
-  std::mt19937                          gen(seed);
-  std::uniform_real_distribution<float> x_dist(bbox.a, bbox.b);
-  std::uniform_real_distribution<float> y_dist(bbox.c, bbox.d);
-  std::uniform_real_distribution<float> v_dist(0.0f, 1.0f);
+  Cloud cloud_rnd = random_cloud(this->get_npoints(),
+                                 seed,
+                                 PointSamplingMethod::RND_LHS,
+                                 bbox);
 
-  for (auto &p : this->points)
-  {
-    p.x = x_dist(gen);
-    p.y = y_dist(gen);
-    p.v = v_dist(gen);
-  }
+  for (size_t k = 0; k < this->get_npoints(); ++k)
+    this->points[k] = cloud_rnd.points[k];
 }
 
 void Cloud::remap_values(float vmin, float vmax)
@@ -339,10 +335,21 @@ void Cloud::set_values(float new_value)
     this->points[k].v = new_value;
 }
 
-void Cloud::set_values_from_array(const Array &array, Vec4<float> bbox)
+void Cloud::set_values_from_array(const Array &array, const Vec4<float> &bbox)
 {
   for (auto &p : this->points)
-    p.update_value_from_array(array, bbox);
+    p.set_value_from_array(array, bbox);
+}
+
+void Cloud::set_values_from_border_distance(const Vec4<float> &bbox)
+{
+  std::array<std::vector<float>, 2> xy = {this->get_x(), this->get_y()};
+  std::vector<ps::Point<float, 2>>  points = ps::merge_by_dimension(xy);
+
+  std::vector<float> dist = ps::distance_to_boundary(points,
+                                                     bbox_to_ranges2d(bbox));
+
+  this->set_values(dist);
 }
 
 void Cloud::set_values_from_chull_distance()
@@ -362,6 +369,18 @@ void Cloud::set_values_from_chull_distance()
       }
     }
   }
+}
+
+void Cloud::set_values_from_min_distance()
+{
+  std::array<std::vector<float>, 2> xy = {this->get_x(), this->get_y()};
+  std::vector<ps::Point<float, 2>>  points = ps::merge_by_dimension(xy);
+  std::vector<float> dist = ps::first_neighbor_distance_squared(points);
+
+  for (auto &v : dist)
+    v = std::sqrt(v);
+
+  this->set_values(dist);
 }
 
 void Cloud::to_array(Array &array, Vec4<float> bbox) const
@@ -399,7 +418,7 @@ void Cloud::to_array_interp(Array                &array,
                                      bbox.b + lx,
                                      bbox.c - ly,
                                      bbox.d + ly};
-  expand_grid_corners(x, y, v, bbox_expanded, 0.f);
+  expand_points_domain_corners(x, y, v, bbox_expanded, 0.f);
 
   array = interpolate2d(array.shape,
                         x,
@@ -506,6 +525,59 @@ Cloud merge_cloud(const Cloud &cloud1, const Cloud &cloud2)
   v1.insert(v1.end(), v2.begin(), v2.end());
 
   return Cloud(x1, y1, v1);
+}
+
+Cloud random_cloud(size_t                     count,
+                   uint                       seed,
+                   const PointSamplingMethod &method,
+                   const Vec4<float>         &bbox)
+{
+  auto xy = random_points(count, seed, method, bbox);
+  auto v = random_vector(0.f, 1.f, xy[0].size(), ++seed);
+  return Cloud(xy[0], xy[1], v);
+}
+
+Cloud random_cloud_density(size_t             count,
+                           const Array       &density,
+                           uint               seed,
+                           const Vec4<float> &bbox)
+{
+  auto xy = random_points_density(count, density, seed, bbox);
+  auto v = random_vector(0.f, 1.f, xy[0].size(), ++seed);
+  return Cloud(xy[0], xy[1], v);
+}
+
+Cloud random_cloud_distance(float min_dist, uint seed, const Vec4<float> &bbox)
+{
+  auto xy = random_points_distance(min_dist, seed, bbox);
+  auto v = random_vector(0.f, 1.f, xy[0].size(), ++seed);
+  return Cloud(xy[0], xy[1], v);
+}
+
+Cloud random_cloud_distance(float              min_dist,
+                            float              max_dist,
+                            const Array       &density,
+                            uint               seed,
+                            const Vec4<float> &bbox)
+{
+  auto xy = random_points_distance(min_dist, max_dist, density, seed, bbox);
+  auto v = random_vector(0.f, 1.f, xy[0].size(), ++seed);
+  return Cloud(xy[0], xy[1], v);
+}
+
+Cloud random_cloud_jittered(size_t             count,
+                            const Vec2<float> &jitter_amount,
+                            const Vec2<float> &stagger_ratio,
+                            uint               seed,
+                            const Vec4<float> &bbox)
+{
+  auto xy = random_points_jittered(count,
+                                   jitter_amount,
+                                   stagger_ratio,
+                                   seed,
+                                   bbox);
+  auto v = random_vector(0.f, 1.f, xy[0].size(), ++seed);
+  return Cloud(xy[0], xy[1], v);
 }
 
 } // namespace hmap
