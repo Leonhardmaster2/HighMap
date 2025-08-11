@@ -38,6 +38,8 @@ var filters_8cpp =
     [ "plateau", "filters_8cpp.html#a558c273680de2328f37e5df7ee598813", null ],
     [ "reverse_above_theshold", "filters_8cpp.html#ab79b21593238cc836f4dd32fecf63a58", null ],
     [ "reverse_above_theshold", "filters_8cpp.html#a4e0ce9e13f26f66fa546e5127a68956c", null ],
+    [ "reverse_above_theshold", "filters_8cpp.html#a4b4c16f9dcd3cdb8e4e53c7cb6a44ed7", null ],
+    [ "reverse_above_theshold", "filters_8cpp.html#a56f425774168f76ab81c2c8a06145761", null ],
     [ "sharpen", "filters_8cpp.html#a738bcdb6b3493bf7f2cbfcfc03a00159", null ],
     [ "sharpen", "filters_8cpp.html#aae4699340c68bc39efae13b0e81eea3d", null ],
     [ "sharpen_cone", "filters_8cpp.html#a6190b6dde2fd6a6bf9e98eecec10e5f1", null ],
