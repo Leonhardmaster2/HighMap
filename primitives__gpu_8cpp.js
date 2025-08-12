@@ -11,6 +11,8 @@ var primitives__gpu_8cpp =
     [ "mountain_range_radial", "primitives__gpu_8cpp.html#a50332f79ca9b2548089359f5ad4b8ffd", null ],
     [ "noise", "primitives__gpu_8cpp.html#a450f5b26f42b6f06be3e1e131f6aaf86", null ],
     [ "noise_fbm", "primitives__gpu_8cpp.html#a322260e971f4dec19ec8bc270e7cc461", null ],
+    [ "polygon_field", "primitives__gpu_8cpp.html#a467456297f51cb51bd3b133dc925c214", null ],
+    [ "polygon_field_fbm", "primitives__gpu_8cpp.html#a63210a3df5ea00c132c524c0d959636a", null ],
     [ "vorolines", "primitives__gpu_8cpp.html#a85000763147ffd507d483ba9be27f38b", null ],
     [ "vorolines_fbm", "primitives__gpu_8cpp.html#ac2ad88df8eb3c863235f96f1678634e4", null ],
     [ "voronoi", "primitives__gpu_8cpp.html#a0c9c2a528f344ede2aa320fdf2583790", null ],

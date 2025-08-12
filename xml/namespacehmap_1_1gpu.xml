@@ -3277,7 +3277,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/gpu_opencl/gpu_opencl.cpp" line="24" column="6" bodyfile="HighMap/src/gpu_opencl/gpu_opencl.cpp" bodystart="24" bodyend="80" declfile="HighMap/include/highmap/opencl/gpu_opencl.hpp" declline="27" declcolumn="6"/>
+        <location file="HighMap/src/gpu_opencl/gpu_opencl.cpp" line="24" column="6" bodyfile="HighMap/src/gpu_opencl/gpu_opencl.cpp" bodystart="24" bodyend="81" declfile="HighMap/include/highmap/opencl/gpu_opencl.hpp" declline="27" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a06f0930402ba5e7a66eb73d9da9a09ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -4977,6 +4977,479 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </inbodydescription>
         <location file="HighMap/src/primitives/primitives_gpu.cpp" line="422" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="422" bodyend="470" declfile="HighMap/include/highmap/primitives.hpp" declline="1725" declcolumn="7"/>
       </memberdef>
+      <memberdef kind="function" id="namespacehmap_1_1gpu_1a467456297f51cb51bd3b133dc925c214" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
+        <definition>Array hmap::gpu::polygon_field</definition>
+        <argsstring>(Vec2&lt; int &gt; shape, Vec2&lt; float &gt; kw, uint seed, float rmin=0.05f, float rmax=0.8f, float clamping_dist=0.1f, float clamping_k=0.1f, int n_vertices_min=3, int n_vertices_max=16, float density=0.5f, hmap::Vec2&lt; float &gt; jitter={0.5f, 0.5f}, float shift=0.1f, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f})</argsstring>
+        <name>polygon_field</name>
+        <qualifiedname>hmap::gpu::polygon_field</qualifiedname>
+        <param>
+          <type><ref refid="structhmap_1_1Vec2" kindref="compound">Vec2</ref>&lt; int &gt;</type>
+          <declname>shape</declname>
+        </param>
+        <param>
+          <type><ref refid="structhmap_1_1Vec2" kindref="compound">Vec2</ref>&lt; float &gt;</type>
+          <declname>kw</declname>
+        </param>
+        <param>
+          <type><ref refid="array_8hpp_1a91ad9478d81a7aaf2593e8d9c3d06a14" kindref="member">uint</ref></type>
+          <declname>seed</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>rmin</declname>
+          <defval>0.05<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>rmax</declname>
+          <defval>0.8<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>clamping_dist</declname>
+          <defval>0.1<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>clamping_k</declname>
+          <defval>0.1<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>n_vertices_min</declname>
+          <defval>3</defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>n_vertices_max</declname>
+          <defval>16</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>density</declname>
+          <defval>0.5<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type><ref refid="structhmap_1_1Vec2" kindref="compound">hmap::Vec2</ref>&lt; float &gt;</type>
+          <declname>jitter</declname>
+          <defval>{0.5<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 0.5<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>}</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>shift</declname>
+          <defval>0.1<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
+          <declname>p_noise_x</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
+          <declname>p_noise_y</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type><ref refid="structhmap_1_1Vec4" kindref="compound">Vec4</ref>&lt; float &gt;</type>
+          <declname>bbox</declname>
+          <defval>{0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>}</defval>
+        </param>
+        <briefdescription>
+<para>Generates a scalar field representing the signed distance to randomly generated polygons. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function procedurally generates a field where each pixel stores the signed distance to the nearest polygon, using a smooth signed distance function (SDF) with optional clamping. The polygons are generated randomly within the specified bounding box, with configurable vertex counts, sizes, jitter, and density. Optionally, displacement noise fields can be applied to polygon positions.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>shape</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Resolution of the output field (width, height). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>kw</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Scaling factor for field coordinates (world units per pixel). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>seed</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Random seed for polygon generation. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rmin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Minimum polygon radius (relative to bbox size). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rmax</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum polygon radius (relative to bbox size). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>clamping_dist</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Distance threshold for clamping the SDF value (used to soften edges). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>clamping_k</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Smoothness parameter for clamping. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>n_vertices_min</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Minimum number of vertices per polygon. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>n_vertices_max</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum number of vertices per polygon. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>density</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Fraction of pixels covered by polygons (approximate). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>jitter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Random displacement factor applied to polygon vertices. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>shift</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Random position shift applied to polygon center. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>p_noise_x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional displacement noise field in the X direction (nullptr to disable). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>p_noise_y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional displacement noise field in the Y direction (nullptr to disable). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>bbox</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Bounding box in normalized coordinates {xmin, xmax, ymin, ymax}. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classhmap_1_1Array" kindref="compound">Array</ref> 2D array containing the signed distance field.</para>
+</simplesect>
+<simplesect kind="note"><para>Polygons are randomly generated per call and are not guaranteed to be convex. </para>
+</simplesect>
+<simplesect kind="note"><para>The sign of the SDF is negative inside polygons and positive outside.</para>
+</simplesect>
+<bold>Example</bold> <programlisting filename="ex_polygon_field_fbm.cpp"></programlisting></para>
+<para><bold>Result</bold> <image type="html" name="ex_polygon_field_fbm.png"></image>
+ </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="472" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="472" bodyend="521" declfile="HighMap/include/highmap/primitives.hpp" declline="1784" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehmap_1_1gpu_1a63210a3df5ea00c132c524c0d959636a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
+        <definition>Array hmap::gpu::polygon_field_fbm</definition>
+        <argsstring>(Vec2&lt; int &gt; shape, Vec2&lt; float &gt; kw, uint seed, float rmin=0.05f, float rmax=0.8f, float clamping_dist=0.1f, float clamping_k=0.1f, int n_vertices_min=3, int n_vertices_max=16, float density=0.1f, hmap::Vec2&lt; float &gt; jitter={0.5f, 0.5f}, float shift=0.1f, int octaves=8, float persistence=0.5f, float lacunarity=2.f, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f})</argsstring>
+        <name>polygon_field_fbm</name>
+        <qualifiedname>hmap::gpu::polygon_field_fbm</qualifiedname>
+        <param>
+          <type><ref refid="structhmap_1_1Vec2" kindref="compound">Vec2</ref>&lt; int &gt;</type>
+          <declname>shape</declname>
+        </param>
+        <param>
+          <type><ref refid="structhmap_1_1Vec2" kindref="compound">Vec2</ref>&lt; float &gt;</type>
+          <declname>kw</declname>
+        </param>
+        <param>
+          <type><ref refid="array_8hpp_1a91ad9478d81a7aaf2593e8d9c3d06a14" kindref="member">uint</ref></type>
+          <declname>seed</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>rmin</declname>
+          <defval>0.05<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>rmax</declname>
+          <defval>0.8<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>clamping_dist</declname>
+          <defval>0.1<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>clamping_k</declname>
+          <defval>0.1<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>n_vertices_min</declname>
+          <defval>3</defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>n_vertices_max</declname>
+          <defval>16</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>density</declname>
+          <defval>0.1<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type><ref refid="structhmap_1_1Vec2" kindref="compound">hmap::Vec2</ref>&lt; float &gt;</type>
+          <declname>jitter</declname>
+          <defval>{0.5<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 0.5<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>}</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>shift</declname>
+          <defval>0.1<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>octaves</declname>
+          <defval>8</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>persistence</declname>
+          <defval>0.5<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>lacunarity</declname>
+          <defval>2.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
+          <declname>p_noise_x</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
+          <declname>p_noise_y</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type><ref refid="structhmap_1_1Vec4" kindref="compound">Vec4</ref>&lt; float &gt;</type>
+          <declname>bbox</declname>
+          <defval>{0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>}</defval>
+        </param>
+        <briefdescription>
+<para>Generates a scalar field representing the signed distance to randomly generated polygons combined with fractal Brownian motion (fBm) noise modulation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Similar to <ref refid="namespacehmap_1_1gpu_1a467456297f51cb51bd3b133dc925c214" kindref="member">polygon_field()</ref>, but the generated SDF is modulated by an fBm noise function to create more natural, irregular shapes. The fBm parameters allow control over the noise persistence, lacunarity, and number of octaves.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>shape</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Resolution of the output field (width, height). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>kw</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Scaling factor for field coordinates (world units per pixel). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>seed</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Random seed for polygon generation and fBm noise. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rmin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Minimum polygon radius (relative to bbox size). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rmax</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum polygon radius (relative to bbox size). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>clamping_dist</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Distance threshold for clamping the SDF value (used to soften edges). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>clamping_k</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Smoothness parameter for clamping. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>n_vertices_min</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Minimum number of vertices per polygon. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>n_vertices_max</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum number of vertices per polygon. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>density</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Fraction of pixels covered by polygons (approximate). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>jitter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Random displacement factor applied to polygon vertices. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>shift</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Random position shift applied to polygon center. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>octaves</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of fBm octaves. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>persistence</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Amplitude decay per octave in fBm. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>lacunarity</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Frequency multiplier per octave in fBm. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>p_noise_x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional displacement noise field in the X direction (nullptr to disable). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>p_noise_y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional displacement noise field in the Y direction (nullptr to disable). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>bbox</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Bounding box in normalized coordinates {xmin, xmax, ymin, ymax}. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classhmap_1_1Array" kindref="compound">Array</ref> 2D array containing the signed distance field modulated by fBm.</para>
+</simplesect>
+<simplesect kind="note"><para>The sign of the SDF is negative inside polygons and positive outside.</para>
+</simplesect>
+<bold>Example</bold> <programlisting filename="ex_polygon_field_fbm.cpp"></programlisting></para>
+<para><bold>Result</bold> <image type="html" name="ex_polygon_field_fbm.png"></image>
+ </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="523" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="523" bodyend="578" declfile="HighMap/include/highmap/primitives.hpp" declline="1844" declcolumn="7"/>
+      </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a85000763147ffd507d483ba9be27f38b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
         <definition>Array hmap::gpu::vorolines</definition>
@@ -5219,7 +5692,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="472" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="472" bodyend="549" declfile="HighMap/include/highmap/primitives.hpp" declline="1784" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="580" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="580" bodyend="657" declfile="HighMap/include/highmap/primitives.hpp" declline="1908" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1ac2ad88df8eb3c863235f96f1678634e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -5515,7 +5988,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="551" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="551" bodyend="594" declfile="HighMap/include/highmap/primitives.hpp" declline="1852" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="659" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="659" bodyend="702" declfile="HighMap/include/highmap/primitives.hpp" declline="1976" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a0c9c2a528f344ede2aa320fdf2583790" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -5717,7 +6190,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="596" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="596" bodyend="636" declfile="HighMap/include/highmap/primitives.hpp" declline="1909" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="704" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="704" bodyend="744" declfile="HighMap/include/highmap/primitives.hpp" declline="2033" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1aae4961b7c0f65d6904cc61022eb2642b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -5971,7 +6444,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="638" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="638" bodyend="686" declfile="HighMap/include/highmap/primitives.hpp" declline="1967" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="746" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="746" bodyend="794" declfile="HighMap/include/highmap/primitives.hpp" declline="2091" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1aaee46739a429168aa45ff1e5d55041ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -6088,7 +6561,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="769" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="769" bodyend="803" declfile="HighMap/include/highmap/primitives.hpp" declline="2009" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="877" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="877" bodyend="911" declfile="HighMap/include/highmap/primitives.hpp" declline="2133" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a29cc1b0843f7447eb19b6cef27772cdd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -6229,7 +6702,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="688" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="688" bodyend="721" declfile="HighMap/include/highmap/primitives.hpp" declline="2054" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="796" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="796" bodyend="829" declfile="HighMap/include/highmap/primitives.hpp" declline="2178" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a26d6f87858e400f7b6c8cecb1e12bb8c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -6418,7 +6891,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="723" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="723" bodyend="767" declfile="HighMap/include/highmap/primitives.hpp" declline="2090" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="831" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="831" bodyend="875" declfile="HighMap/include/highmap/primitives.hpp" declline="2214" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1ad25e08146acf2dc7101ec18dbfaa0d2b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -6628,7 +7101,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="805" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="805" bodyend="849" declfile="HighMap/include/highmap/primitives.hpp" declline="2152" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="913" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="913" bodyend="957" declfile="HighMap/include/highmap/primitives.hpp" declline="2276" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a2a14aa1a12ce7308b7cb553ea89b836d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -6684,7 +7157,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="851" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="851" bodyend="895" declfile="HighMap/include/highmap/primitives.hpp" declline="2164" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="959" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="959" bodyend="1003" declfile="HighMap/include/highmap/primitives.hpp" declline="2288" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a9a3f272d7c8294ab3418be67e3c9b3eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>

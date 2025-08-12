@@ -14,8 +14,10 @@ var searchData=
   ['phasor_5ffbm_11',['phasor_fbm',['../namespacehmap.html#a0febf1835b6a00b31dfa837d855c6a6d',1,'hmap']]],
   ['plateau_12',['plateau',['../namespacehmap_1_1gpu.html#aa1d48aaeafd42970a2b0c9b6795d73b5',1,'hmap::gpu::plateau(Array &amp;array, int ir, float factor)'],['../namespacehmap_1_1gpu.html#ae197a615380c768a5ce30df18397db52',1,'hmap::gpu::plateau(Array &amp;array, const Array *p_mask, int ir, float factor)'],['../namespacehmap.html#a9f49d016a05aa8636bb0ff3c3d30aaf7',1,'hmap::plateau(Array &amp;array, int ir, float factor)'],['../namespacehmap.html#a558c273680de2328f37e5df7ee598813',1,'hmap::plateau(Array &amp;array, const Array *p_mask, int ir, float factor)']]],
   ['point_13',['point',['../classhmap_1_1Point.html#ad1041e7d925d820f47e80f0986a5e047',1,'hmap::Point::Point(float x, float y, float v=0.f)'],['../classhmap_1_1Point.html#a986aebcb6409cd7836a48e0e8b973c81',1,'hmap::Point::Point()']]],
-  ['pow_14',['pow',['../namespacehmap.html#a105e497c433e14b4235534ae6d2b87b9',1,'hmap']]],
-  ['print_15',['print',['../classhmap_1_1Point.html#abc414635893bad912e30e009fbf8af35',1,'hmap::Point::print()'],['../classhmap_1_1Graph.html#a862b83b369721a4930917a78bd313421',1,'hmap::Graph::print()'],['../classhmap_1_1Cloud.html#aefea3d749a554df8a23ec38af5acb415',1,'hmap::Cloud::print()'],['../structhmap_1_1AssertResults.html#a5b26e3964b23c604022ff6705327ac37',1,'hmap::AssertResults::print()'],['../classhmap_1_1Array.html#a7ce20e5537ab2729aac320d0b27b7fa5',1,'hmap::Array::print() const']]],
-  ['ptp_16',['ptp',['../classhmap_1_1Array.html#ac33557899eb50bcf964b2e5a2ad8ddcb',1,'hmap::Array']]],
-  ['pyramiddecomposition_17',['PyramidDecomposition',['../classhmap_1_1PyramidDecomposition.html#a802f02d09f6a5073d9ecd523f5a0624c',1,'hmap::PyramidDecomposition']]]
+  ['polygon_5ffield_14',['polygon_field',['../namespacehmap_1_1gpu.html#a467456297f51cb51bd3b133dc925c214',1,'hmap::gpu']]],
+  ['polygon_5ffield_5ffbm_15',['polygon_field_fbm',['../namespacehmap_1_1gpu.html#a63210a3df5ea00c132c524c0d959636a',1,'hmap::gpu']]],
+  ['pow_16',['pow',['../namespacehmap.html#a105e497c433e14b4235534ae6d2b87b9',1,'hmap']]],
+  ['print_17',['print',['../classhmap_1_1Point.html#abc414635893bad912e30e009fbf8af35',1,'hmap::Point::print()'],['../classhmap_1_1Graph.html#a862b83b369721a4930917a78bd313421',1,'hmap::Graph::print()'],['../classhmap_1_1Cloud.html#aefea3d749a554df8a23ec38af5acb415',1,'hmap::Cloud::print()'],['../structhmap_1_1AssertResults.html#a5b26e3964b23c604022ff6705327ac37',1,'hmap::AssertResults::print()'],['../classhmap_1_1Array.html#a7ce20e5537ab2729aac320d0b27b7fa5',1,'hmap::Array::print() const']]],
+  ['ptp_18',['ptp',['../classhmap_1_1Array.html#ac33557899eb50bcf964b2e5a2ad8ddcb',1,'hmap::Array']]],
+  ['pyramiddecomposition_19',['PyramidDecomposition',['../classhmap_1_1PyramidDecomposition.html#a802f02d09f6a5073d9ecd523f5a0624c',1,'hmap::PyramidDecomposition']]]
 ];
