@@ -170,9 +170,6 @@ void kernel polygon_field_fbm(global float *output,
 
   int index = linear_index(g.x, g.y, nx);
 
-  uint  rng_state = wang_hash(seed);
-  float fseed = rand(&rng_state);
-
   float dx = has_noise_x > 0 ? noise_x[index] : 0.f;
   float dy = has_noise_y > 0 ? noise_y[index] : 0.f;
 
@@ -181,8 +178,12 @@ void kernel polygon_field_fbm(global float *output,
   float n = 0.f;
   float nf = 1.f;
   float na = 0.6f;
+  uint  seed_m = seed;
   for (int i = 0; i < octaves; i++)
   {
+    uint  rng_state = wang_hash(seed_m++);
+    float fseed = rand(&rng_state);
+
     float v = pf_base(nf * pos,
                       rmin,
                       rmax,
