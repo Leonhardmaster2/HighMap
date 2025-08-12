@@ -3,11 +3,11 @@ R""(
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 void kernel rotate_hmap(read_only image2d_t  in,
-                       write_only image2d_t out,
-                       const int            nx,
-                       const int            ny,
-                       const float          angle,
-                       const int            zoom_in)
+                        write_only image2d_t out,
+                        const int            nx,
+                        const int            ny,
+                        const float          angle,
+                        const int            zoom_in)
 {
   const int2 g = {get_global_id(0), get_global_id(1)};
 
