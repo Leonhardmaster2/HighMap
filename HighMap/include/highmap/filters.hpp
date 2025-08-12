@@ -1678,18 +1678,18 @@ void recurve_smoothstep_rational(Array       &array,
 /**
  * @brief Applies a smooth reversal of values above a given threshold.
  *
- * This function modifies the elements of an array by "reversing" values
- * that exceed a given threshold value, optionally blending the effect
- * over a transition range.
+ * This function modifies the elements of an array by "reversing" values that
+ * exceed a given threshold value, optionally blending the effect over a
+ * transition range.
  *
  * For values above the threshold:
  *  - The difference between the value and the threshold is scaled down
- *    proportionally to `scaling` and modulated by a smooth transition
- *    (using smoothstep3) based on `transition_extent`.
+ * proportionally to `scaling` and modulated by a smooth transition (using
+ * smoothstep3) based on `transition_extent`.
  *
  * For values below the threshold:
- *  - The values are linearly blended (`lerp`) with the threshold value
- *    using a smooth transition factor, gradually reducing the reversal effect.
+ *  - The values are linearly blended (`lerp`) with the threshold value using a
+ * smooth transition factor, gradually reducing the reversal effect.
  *
  * @param array             Array to modify in place.
  * @param threshold         Array containing the per-element threshold values.

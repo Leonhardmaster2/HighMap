@@ -1737,6 +1737,130 @@ Array noise_fbm(NoiseType    noise_type,
                 Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
+ * @brief Generates a scalar field representing the signed distance to randomly
+ * generated polygons.
+ *
+ * This function procedurally generates a field where each pixel stores the
+ * signed distance to the nearest polygon, using a smooth signed distance
+ * function (SDF) with optional clamping. The polygons are generated randomly
+ * within the specified bounding box, with configurable vertex counts, sizes,
+ * jitter, and density. Optionally, displacement noise fields can be applied to
+ * polygon positions.
+ *
+ * @param  shape          Resolution of the output field (width, height).
+ * @param  kw             Scaling factor for field coordinates (world units per
+ *                        pixel).
+ * @param  seed           Random seed for polygon generation.
+ * @param  rmin           Minimum polygon radius (relative to bbox size).
+ * @param  rmax           Maximum polygon radius (relative to bbox size).
+ * @param  clamping_dist  Distance threshold for clamping the SDF value (used to
+ *                        soften edges).
+ * @param  clamping_k     Smoothness parameter for clamping.
+ * @param  n_vertices_min Minimum number of vertices per polygon.
+ * @param  n_vertices_max Maximum number of vertices per polygon.
+ * @param  density        Fraction of pixels covered by polygons (approximate).
+ * @param  jitter         Random displacement factor applied to polygon
+ *                        vertices.
+ * @param  shift          Random position shift applied to polygon center.
+ * @param  p_noise_x      Optional displacement noise field in the X direction
+ *                        (nullptr to disable).
+ * @param  p_noise_y      Optional displacement noise field in the Y direction
+ *                        (nullptr to disable).
+ * @param  bbox           Bounding box in normalized coordinates {xmin, xmax,
+ *                        ymin, ymax}.
+ * @return                Array         2D array containing the signed distance
+ *                        field.
+ *
+ * @note Polygons are randomly generated per call and are not guaranteed to be
+ * convex.
+ * @note The sign of the SDF is negative inside polygons and positive outside.
+ *
+ * **Example**
+ * @include ex_polygon_field_fbm.cpp
+ *
+ * **Result**
+ * @image html ex_polygon_field_fbm.png
+ */
+Array polygon_field(Vec2<int>         shape,
+                    Vec2<float>       kw,
+                    uint              seed,
+                    float             rmin = 0.05f,
+                    float             rmax = 0.8f,
+                    float             clamping_dist = 0.1f,
+                    float             clamping_k = 0.1f,
+                    int               n_vertices_min = 3,
+                    int               n_vertices_max = 16,
+                    float             density = 0.5f,
+                    hmap::Vec2<float> jitter = {0.5f, 0.5f},
+                    float             shift = 0.1f,
+                    const Array      *p_noise_x = nullptr,
+                    const Array      *p_noise_y = nullptr,
+                    Vec4<float>       bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
+ * @brief Generates a scalar field representing the signed distance to randomly
+ * generated polygons combined with fractal Brownian motion (fBm) noise
+ * modulation.
+ *
+ * Similar to polygon_field(), but the generated SDF is modulated by an fBm
+ * noise function to create more natural, irregular shapes. The fBm parameters
+ * allow control over the noise persistence, lacunarity, and number of octaves.
+ *
+ * @param  shape          Resolution of the output field (width, height).
+ * @param  kw             Scaling factor for field coordinates (world units per
+ *                        pixel).
+ * @param  seed           Random seed for polygon generation and fBm noise.
+ * @param  rmin           Minimum polygon radius (relative to bbox size).
+ * @param  rmax           Maximum polygon radius (relative to bbox size).
+ * @param  clamping_dist  Distance threshold for clamping the SDF value (used to
+ *                        soften edges).
+ * @param  clamping_k     Smoothness parameter for clamping.
+ * @param  n_vertices_min Minimum number of vertices per polygon.
+ * @param  n_vertices_max Maximum number of vertices per polygon.
+ * @param  density        Fraction of pixels covered by polygons (approximate).
+ * @param  jitter         Random displacement factor applied to polygon
+ *                        vertices.
+ * @param  shift          Random position shift applied to polygon center.
+ * @param  octaves        Number of fBm octaves.
+ * @param  persistence    Amplitude decay per octave in fBm.
+ * @param  lacunarity     Frequency multiplier per octave in fBm.
+ * @param  p_noise_x      Optional displacement noise field in the X direction
+ *                        (nullptr to disable).
+ * @param  p_noise_y      Optional displacement noise field in the Y direction
+ *                        (nullptr to disable).
+ * @param  bbox           Bounding box in normalized coordinates {xmin, xmax,
+ *                        ymin, ymax}.
+ * @return                Array         2D array containing the signed distance
+ *                        field modulated by fBm.
+ *
+ * @note The sign of the SDF is negative inside polygons and positive outside.
+ *
+ * **Example**
+ * @include ex_polygon_field_fbm.cpp
+ *
+ * **Result**
+ * @image html ex_polygon_field_fbm.png
+ */
+Array polygon_field_fbm(Vec2<int>         shape,
+                        Vec2<float>       kw,
+                        uint              seed,
+                        float             rmin = 0.05f,
+                        float             rmax = 0.8f,
+                        float             clamping_dist = 0.1f,
+                        float             clamping_k = 0.1f,
+                        int               n_vertices_min = 3,
+                        int               n_vertices_max = 16,
+                        float             density = 0.1f,
+                        hmap::Vec2<float> jitter = {0.5f, 0.5f},
+                        float             shift = 0.1f,
+                        int               octaves = 8,
+                        float             persistence = 0.5f,
+                        float             lacunarity = 2.f,
+                        const Array      *p_noise_x = nullptr,
+                        const Array      *p_noise_y = nullptr,
+                        Vec4<float>       bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
  * @brief Generates a Voronoi-based pattern where cells are defined by proximity
  * to random lines.
  *

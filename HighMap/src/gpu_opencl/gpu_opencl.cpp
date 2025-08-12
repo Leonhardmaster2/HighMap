@@ -53,6 +53,7 @@ bool init_opencl()
 #include "kernels/noise.cl"
 #include "kernels/normal_displacement.cl"
 #include "kernels/plateau.cl"
+#include "kernels/polygon_field.cl"
 #include "kernels/rotate.cl"
 #include "kernels/ruggedness.cl"
 #include "kernels/rugosity.cl"
