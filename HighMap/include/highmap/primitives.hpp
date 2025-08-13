@@ -88,12 +88,65 @@ Array biquad_pulse(Vec2<int>    shape,
  */
 Array bump(Vec2<int>    shape,
            float        gain = 1.f,
-           const Array *p_ctrl_param = nullptr,
+           const Array *p_ctrl_param = nullptr, // gain multiplier
            const Array *p_noise_x = nullptr,
            const Array *p_noise_y = nullptr,
            const Array *p_stretching = nullptr,
            Vec2<float>  center = {0.5f, 0.5f},
            Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
+ * @brief Generates a 2D Lorentzian bump pattern.
+ *
+ * This function fills an array with values computed from a normalized
+ * Lorentzian-shaped bump function. The bump is centered at a given position,
+ * has a specified radius, and can vary in width depending on a control
+ * parameter. Optional noise arrays can be applied to perturb the x and y
+ * coordinates before evaluation.
+ *
+ * The Lorentzian function is normalized so that it returns 1.0 at the center
+ * and smoothly decays to 0.0 at the radius boundary. Outside the radius, the
+ * value is exactly 0.
+ *
+ * @param  shape        Dimensions of the output array (width, height).
+ * @param  width_factor Scaling factor controlling the bump width relative to
+ *                      the control parameter.
+ * @param  radius       Radius of the bump in the coordinate space of @p bbox.
+ * @param  p_ctrl_param Optional pointer to an array of per-pixel control
+ *                      parameters. If provided, it modulates the width of the
+ *                      Lorentzian bump.
+ * @param  p_noise_x    Optional pointer to an array of x-offset noise values.
+ *                      Values are added to the x coordinate before evaluation.
+ * @param  p_noise_y    Optional pointer to an array of y-offset noise values.
+ *                      Values are added to the y coordinate before evaluation.
+ * @param  center       Center of the bump in the coordinate space of @p bbox.
+ * @param  bbox         Bounding box (xmin, ymin, xmax, ymax) defining the
+ *                      coordinate space for the array.
+ *
+ * @return              A new Array object of size @p shape containing the bump
+ *                      pattern.
+ *
+ * @note The function normalizes the Lorentzian curve so that the maximum value
+ * is 1 at the center and smoothly decays to 0 at the boundary defined by
+ *       @p radius.
+ *
+ * @see                 fill_array_using_xy_function
+ *
+ * **Example**
+ * @include ex_bump.cpp
+ *
+ * **Result**
+ * @image html ex_bump.png
+ */
+Array bump_lorentzian(
+    Vec2<int>    shape,
+    float        shape_factor = 0.5f,
+    float        radius = 0.5f,
+    const Array *p_ctrl_param = nullptr, // shape_factor multiplier
+    const Array *p_noise_x = nullptr,
+    const Array *p_noise_y = nullptr,
+    Vec2<float>  center = {0.5f, 0.5f},
+    Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief Return a caldera-shaped heightmap.

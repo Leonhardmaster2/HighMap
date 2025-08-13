@@ -60,6 +60,45 @@ Array bump(Vec2<int>    shape,
   return array;
 }
 
+Array bump_lorentzian(Vec2<int>    shape,
+                      float        width_factor,
+                      float        radius,
+                      const Array *p_ctrl_param,
+                      const Array *p_noise_x,
+                      const Array *p_noise_y,
+                      Vec2<float>  center,
+                      Vec4<float>  bbox)
+{
+  Array array = Array(shape);
+
+  float radius_sq = radius * radius;
+
+  auto lambda =
+      [radius_sq, width_factor, center](float x, float y, float ctrl_param)
+  {
+    float dx = x - center.x;
+    float dy = y - center.y;
+    float r2 = (dx * dx + dy * dy) / radius_sq;
+
+    float width_sq = width_factor * width_factor * ctrl_param * ctrl_param;
+    float c = 1.f / (1.f + 1.f / width_sq); // normalization coeff
+
+    if (r2 < 1.f)
+      return (1.f / (1.f + r2 / width_sq) - c) / (1.f - c);
+    else
+      return 0.f;
+  };
+
+  fill_array_using_xy_function(array,
+                               bbox,
+                               p_ctrl_param,
+                               p_noise_x,
+                               p_noise_y,
+                               nullptr,
+                               lambda);
+  return array;
+}
+
 Array constant(Vec2<int> shape, float value)
 {
   Array array = Array(shape);
