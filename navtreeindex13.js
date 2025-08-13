@@ -1,5 +1,6 @@
 var NAVTREEINDEX13 =
 {
+"namespacehmap_1_1gpu.html#a84e8cfef31aeb4ba10d4f7cbe04cb96d":[3,0,0,0,116],
 "namespacehmap_1_1gpu.html#a85000763147ffd507d483ba9be27f38b":[3,0,0,0,106],
 "namespacehmap_1_1gpu.html#a87339ed12fc8a86b1f59e351b06e67e6":[3,0,0,0,29],
 "namespacehmap_1_1gpu.html#a8a8bb25256393cce723c6a1569beb143":[3,0,0,0,97],
@@ -239,15 +240,14 @@ var NAVTREEINDEX13 =
 "points_8cpp.html#af148c924b422baa2e359e0788b7392d0":[5,0,1,1,14,5,6],
 "primitives_8cpp.html":[5,0,1,1,26,8],
 "primitives_8cpp.html#a28783971977657055053b3c143502bc2":[5,0,1,1,26,8,0],
-"primitives_8cpp.html#a2ed7a6b1be6d02101046f0623b374177":[5,0,1,1,26,8,3],
-"primitives_8cpp.html#a45ca8d7a507e92e78d466f0d392f8ea3":[5,0,1,1,26,8,4],
-"primitives_8cpp.html#a6aad825029f99f3d44db149e88ba5a7f":[5,0,1,1,26,8,7],
+"primitives_8cpp.html#a2ed7a6b1be6d02101046f0623b374177":[5,0,1,1,26,8,4],
+"primitives_8cpp.html#a45ca8d7a507e92e78d466f0d392f8ea3":[5,0,1,1,26,8,5],
+"primitives_8cpp.html#a6aad825029f99f3d44db149e88ba5a7f":[5,0,1,1,26,8,8],
 "primitives_8cpp.html#a80d18b9cba709433d31f37c29f64f01c":[5,0,1,1,26,8,1],
-"primitives_8cpp.html#a8f4e766dca0065219e26af946bd61946":[5,0,1,1,26,8,2],
-"primitives_8cpp.html#ab00af49fafd706242919ea18dc4817ee":[5,0,1,1,26,8,9],
-"primitives_8cpp.html#ad1836a084a8607446ce029d32c02a201":[5,0,1,1,26,8,8],
-"primitives_8cpp.html#ad193bc2ad91f74c90550a260e1644687":[5,0,1,1,26,8,5],
-"primitives_8cpp.html#aecba6d5b355e2e041045bee54b495be7":[5,0,1,1,26,8,6],
-"primitives_8hpp.html":[5,0,1,0,0,31],
-"primitives_8hpp.html#a01e4bb17d3969964545796ffb2658a77":[5,0,1,0,0,31,17]
+"primitives_8cpp.html#a867abc2da19924fa22525ff69bca398d":[5,0,1,1,26,8,2],
+"primitives_8cpp.html#a8f4e766dca0065219e26af946bd61946":[5,0,1,1,26,8,3],
+"primitives_8cpp.html#ab00af49fafd706242919ea18dc4817ee":[5,0,1,1,26,8,10],
+"primitives_8cpp.html#ad1836a084a8607446ce029d32c02a201":[5,0,1,1,26,8,9],
+"primitives_8cpp.html#ad193bc2ad91f74c90550a260e1644687":[5,0,1,1,26,8,6],
+"primitives_8cpp.html#aecba6d5b355e2e041045bee54b495be7":[5,0,1,1,26,8,7]
 };

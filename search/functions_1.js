@@ -19,5 +19,6 @@ var searchData=
   ['border_16',['border',['../namespacehmap.html#af80bcff234bf1482cf26896b9d21d270',1,'hmap::border()'],['../namespacehmap_1_1gpu.html#a335e4629532ba64049e0721bdcb5f3ba',1,'hmap::gpu::border()']]],
   ['bspline_17',['bspline',['../classhmap_1_1Path.html#a166a6f87dff196efa75abb1b731d3528',1,'hmap::Path']]],
   ['bump_18',['bump',['../namespacehmap.html#a80d18b9cba709433d31f37c29f64f01c',1,'hmap']]],
-  ['bumpfunction_19',['BumpFunction',['../classhmap_1_1BumpFunction.html#a178d0bca834491174e38281174d8aa95',1,'hmap::BumpFunction']]]
+  ['bump_5florentzian_19',['bump_lorentzian',['../namespacehmap.html#a867abc2da19924fa22525ff69bca398d',1,'hmap']]],
+  ['bumpfunction_20',['BumpFunction',['../classhmap_1_1BumpFunction.html#a178d0bca834491174e38281174d8aa95',1,'hmap::BumpFunction']]]
 ];

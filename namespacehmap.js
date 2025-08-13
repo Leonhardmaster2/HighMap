@@ -803,6 +803,7 @@ var namespacehmap =
     [ "vstack", "namespacehmap.html#a462f8b6ebc7b8ab79c619987e0ddfce4", null ],
     [ "biquad_pulse", "namespacehmap.html#a28783971977657055053b3c143502bc2", null ],
     [ "bump", "namespacehmap.html#a80d18b9cba709433d31f37c29f64f01c", null ],
+    [ "bump_lorentzian", "namespacehmap.html#a867abc2da19924fa22525ff69bca398d", null ],
     [ "caldera", "namespacehmap.html#abf32b5d631ee74d292cf9449b51395c3", null ],
     [ "caldera", "namespacehmap.html#a8091f7b43325bd647faa1430af785c70", null ],
     [ "checkerboard", "namespacehmap.html#a8a56891aca58f4afd74fb34b04322569", null ],
