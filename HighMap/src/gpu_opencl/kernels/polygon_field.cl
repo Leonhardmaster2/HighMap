@@ -93,6 +93,9 @@ float pf_base(const float2 pos,
 void kernel polygon_field(global float *output,
                           global float *noise_x,
                           global float *noise_y,
+                          global float *noise_distance,
+                          global float *density_multiplier,
+                          global float *size_multiplier,
                           const int     nx,
                           const int     ny,
                           float         kx,
@@ -109,6 +112,9 @@ void kernel polygon_field(global float *output,
                           const float   shift,
                           const int     has_noise_x,
                           const int     has_noise_y,
+                          const int     has_noise_distance,
+                          const int     has_density_multiplier,
+                          const int     has_size_multiplier,
                           const float4  bbox)
 {
   int2 g = {get_global_id(0), get_global_id(1)};
@@ -122,19 +128,22 @@ void kernel polygon_field(global float *output,
 
   float dx = has_noise_x > 0 ? noise_x[index] : 0.f;
   float dy = has_noise_y > 0 ? noise_y[index] : 0.f;
+  float dr = has_noise_distance > 0 ? noise_distance[index] : 0.f;
+  float dm = has_density_multiplier > 0 ? density_multiplier[index] : 1.f;
+  float sm = has_size_multiplier > 0 ? size_multiplier[index] : 1.f;
 
   float2 pos = g_to_xy(g, nx, ny, kx, ky, dx, dy, bbox);
 
   float val = pf_base(pos,
-                      rmin,
-                      rmax,
+                      sm * rmin,
+                      sm * rmax,
                       clamping_dist,
                       clamping_k,
                       n_vertices_min,
                       n_vertices_max,
-                      density,
+                      dm * density,
                       jitter,
-                      shift,
+                      shift + dr,
                       fseed);
 
   output[index] = val;
@@ -143,6 +152,9 @@ void kernel polygon_field(global float *output,
 void kernel polygon_field_fbm(global float *output,
                               global float *noise_x,
                               global float *noise_y,
+                              global float *noise_distance,
+                              global float *density_multiplier,
+                              global float *size_multiplier,
                               const int     nx,
                               const int     ny,
                               float         kx,
@@ -162,6 +174,9 @@ void kernel polygon_field_fbm(global float *output,
                               const float   lacunarity,
                               const int     has_noise_x,
                               const int     has_noise_y,
+                              const int     has_noise_distance,
+                              const int     has_density_multiplier,
+                              const int     has_size_multiplier,
                               const float4  bbox)
 {
   int2 g = {get_global_id(0), get_global_id(1)};
@@ -172,6 +187,9 @@ void kernel polygon_field_fbm(global float *output,
 
   float dx = has_noise_x > 0 ? noise_x[index] : 0.f;
   float dy = has_noise_y > 0 ? noise_y[index] : 0.f;
+  float dr = has_noise_distance > 0 ? noise_distance[index] : 0.f;
+  float dm = has_density_multiplier > 0 ? density_multiplier[index] : 1.f;
+  float sm = has_size_multiplier > 0 ? size_multiplier[index] : 1.f;
 
   float2 pos = g_to_xy(g, nx, ny, kx, ky, dx, dy, bbox);
 
@@ -185,15 +203,15 @@ void kernel polygon_field_fbm(global float *output,
     float fseed = rand(&rng_state);
 
     float v = pf_base(nf * pos,
-                      rmin,
-                      rmax,
+                      sm * rmin,
+                      sm * rmax,
                       clamping_dist,
                       clamping_k,
                       n_vertices_min,
                       n_vertices_max,
-                      density,
+                      dm * density,
                       jitter,
-                      shift,
+                      shift + dr,
                       fseed);
     n = smax(n, v * na, 0.01f);
     na *= persistence;

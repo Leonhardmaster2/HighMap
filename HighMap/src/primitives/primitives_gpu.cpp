@@ -483,6 +483,9 @@ Array polygon_field(Vec2<int>         shape,
                     float             shift,
                     const Array      *p_noise_x,
                     const Array      *p_noise_y,
+                    const Array      *p_noise_distance,
+                    const Array      *p_density_multiplier,
+                    const Array      *p_size_multiplier,
                     Vec4<float>       bbox)
 {
   Array array(shape);
@@ -492,6 +495,11 @@ Array polygon_field(Vec2<int>         shape,
   run.bind_buffer<float>("array", array.vector);
   helper_bind_optional_buffer(run, "noise_x", p_noise_x);
   helper_bind_optional_buffer(run, "noise_y", p_noise_y);
+  helper_bind_optional_buffer(run, "p_noise_distance", p_noise_distance);
+  helper_bind_optional_buffer(run,
+                              "p_density_multiplier",
+                              p_density_multiplier);
+  helper_bind_optional_buffer(run, "p_size_multiplier", p_size_multiplier);
 
   run.bind_arguments(array.shape.x,
                      array.shape.y,
@@ -509,6 +517,9 @@ Array polygon_field(Vec2<int>         shape,
                      shift,
                      p_noise_x ? 1 : 0,
                      p_noise_y ? 1 : 0,
+                     p_noise_distance ? 1 : 0,
+                     p_density_multiplier ? 1 : 0,
+                     p_size_multiplier ? 1 : 0,
                      bbox);
 
   run.write_buffer("array");
@@ -537,6 +548,9 @@ Array polygon_field_fbm(Vec2<int>         shape,
                         float             lacunarity,
                         const Array      *p_noise_x,
                         const Array      *p_noise_y,
+                        const Array      *p_noise_distance,
+                        const Array      *p_density_multiplier,
+                        const Array      *p_size_multiplier,
                         Vec4<float>       bbox)
 {
   Array array(shape);
@@ -546,6 +560,11 @@ Array polygon_field_fbm(Vec2<int>         shape,
   run.bind_buffer<float>("array", array.vector);
   helper_bind_optional_buffer(run, "noise_x", p_noise_x);
   helper_bind_optional_buffer(run, "noise_y", p_noise_y);
+  helper_bind_optional_buffer(run, "p_noise_distance", p_noise_distance);
+  helper_bind_optional_buffer(run,
+                              "p_density_multiplier",
+                              p_density_multiplier);
+  helper_bind_optional_buffer(run, "p_size_multiplier", p_size_multiplier);
 
   run.bind_arguments(array.shape.x,
                      array.shape.y,
@@ -566,6 +585,9 @@ Array polygon_field_fbm(Vec2<int>         shape,
                      lacunarity,
                      p_noise_x ? 1 : 0,
                      p_noise_y ? 1 : 0,
+                     p_noise_distance ? 1 : 0,
+                     p_density_multiplier ? 1 : 0,
+                     p_size_multiplier ? 1 : 0,
                      bbox);
 
   run.write_buffer("array");

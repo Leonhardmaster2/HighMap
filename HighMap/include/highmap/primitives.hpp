@@ -1795,6 +1795,9 @@ Array polygon_field(Vec2<int>         shape,
                     float             shift = 0.1f,
                     const Array      *p_noise_x = nullptr,
                     const Array      *p_noise_y = nullptr,
+                    const Array      *p_noise_distance = nullptr,
+                    const Array      *p_density_multiplier = nullptr,
+                    const Array      *p_size_multiplier = nullptr,
                     Vec4<float>       bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
@@ -1858,6 +1861,9 @@ Array polygon_field_fbm(Vec2<int>         shape,
                         float             lacunarity = 2.f,
                         const Array      *p_noise_x = nullptr,
                         const Array      *p_noise_y = nullptr,
+                        const Array      *p_noise_distance = nullptr,
+                        const Array      *p_density_multiplier = nullptr,
+                        const Array      *p_size_multiplier = nullptr,
                         Vec4<float>       bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
