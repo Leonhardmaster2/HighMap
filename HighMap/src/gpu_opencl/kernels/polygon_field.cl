@@ -48,7 +48,7 @@ float pf_base(const float2 pos,
               const float  fseed)
 {
   const int n = 64; // max polygon vertices
-  float2    verts[n];
+  float2    verts[64];
 
   int nvmax = min(n_vertices_max, n); // failsafe
 
