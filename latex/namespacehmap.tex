@@ -543,6 +543,8 @@ void \mbox{\hyperlink{namespacehmap_afe2e4c1e06205f5051ce6e86ea647a77}{thermal\+
 \begin{DoxyCompactList}\small\item\em This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{namespacehmap_a7b8945745feaeaa365d965ce66b32f58}{export\+\_\+asset}} (const std\+::string \&fname, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, \mbox{\hyperlink{namespacehmap_ac81a92060b89699c4eb9826495d87250}{Mesh\+Type}} mesh\+\_\+type=\mbox{\hyperlink{namespacehmap_ac81a92060b89699c4eb9826495d87250a68dced9d7f19cbd741feae05ad17ca14}{Mesh\+Type\+::\+TRI}}, \mbox{\hyperlink{namespacehmap_ac3d35efc6e5b596f508e2b17a5aa871b}{Asset\+Export\+Format}} export\+\_\+format=\mbox{\hyperlink{namespacehmap_ac3d35efc6e5b596f508e2b17a5aa871ba0766d2c2cb91f6e1e9a1b4dfcbffd562}{Asset\+Export\+Format\+::\+GLB2}}, float elevation\+\_\+scaling=0.\+2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, const std\+::string \&texture\+\_\+fname="{}"{}, const std\+::string \&normal\+\_\+map\+\_\+fname="{}"{}, float max\+\_\+error=5e-\/4\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Exports a heightmap to various 3D file formats. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespacehmap_aafe1d43996eb4e55731c67b096cebcf6}{export\+\_\+as\+\_\+ascii}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, const \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$ \&export\+\_\+shape=\{64, 64\}, const std\+::string chars\+\_\+map="{} .\+:-\/=+\texorpdfstring{$\ast$}{*}\#\%@"{})
+\begin{DoxyCompactList}\small\item\em Export a 2D array as an ASCII-\/art string representation. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a3aa96cd684efd827ce57ffd9fef3c950}{export\+\_\+as\+\_\+cubemap}} (const std\+::string \&fname, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int cubemap\+\_\+resolution=128, float overlap=0.\+25\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, int ir=16, \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369}{Cmap}} cmap=\mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d}{Cmap\+::\+GRAY}}, bool splitted=false, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+cubemap=nullptr)
 \begin{DoxyCompactList}\small\item\em Exports a 2D array as a cubemap texture with continuity enforcement and overlapping regions. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a1c490f296571a75e35d05b10c075ae6c}{export\+\_\+banner\+\_\+png}} (const std\+::string \&fname, const std\+::vector$<$ \mbox{\hyperlink{classhmap_1_1Array}{Array}} $>$ \&arrays, int cmap, bool hillshading=false)
@@ -6684,6 +6686,38 @@ This function exports the input heightmap array as a 3D asset in the specified f
 \begin{DoxyReturn}{Returns}
 {\ttfamily true} if the export is successful, {\ttfamily false} otherwise. 
 \end{DoxyReturn}
+\begin{Desc}
+\item[Examples]\par
+\mbox{\hyperlink{_2home_2runner_2work_2HighMap_2HighMap_2HighMap_2include_2highmap_2export_8hpp-example}{/home/runner/work/\+High\+Map/\+High\+Map/\+High\+Map/include/highmap/export.\+hpp}}.\end{Desc}
+\Hypertarget{namespacehmap_aafe1d43996eb4e55731c67b096cebcf6}\label{namespacehmap_aafe1d43996eb4e55731c67b096cebcf6} 
+\index{hmap@{hmap}!export\_as\_ascii@{export\_as\_ascii}}
+\index{export\_as\_ascii@{export\_as\_ascii}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{export\_as\_ascii()}{export\_as\_ascii()}}
+{\footnotesize\ttfamily std\+::string hmap\+::export\+\_\+as\+\_\+ascii (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{const \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$ \&}]{export\+\_\+shape = {\ttfamily \{64,~64\}},  }\item[{const std\+::string}]{chars\+\_\+map = {\ttfamily "{}~.\+:-\/=+\texorpdfstring{$\ast$}{*}\#\%@"{}} }\end{DoxyParamCaption})}
+
+
+
+Export a 2D array as an ASCII-\/art string representation. 
+
+This function rescales the input array to a given export resolution, remaps its values to the \mbox{[}0,1\mbox{]} range, and then converts each value to a character from a user-\/provided character map. The characters are arranged row by row to form a textual representation of the array, similar to rendering a heightmap in ASCII.
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & The input 2D array to be exported. \\
+\hline
+{\em export\+\_\+shape} & The desired shape (width, height) of the ASCII output. \\
+\hline
+{\em chars\+\_\+map} & A string containing characters ordered from "{}low"{} to "{}high"{} intensity. For example\+: "{} .\+:-\/=+\texorpdfstring{$\ast$}{*}\#\%@"{}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A string containing the ASCII-\/art representation of the array.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+The function resamples the array using nearest-\/neighbor interpolation. 
+
+The y-\/axis is flipped so that higher indices appear lower in the text output. 
+\end{DoxyNote}
 \begin{Desc}
 \item[Examples]\par
 \mbox{\hyperlink{_2home_2runner_2work_2HighMap_2HighMap_2HighMap_2include_2highmap_2export_8hpp-example}{/home/runner/work/\+High\+Map/\+High\+Map/\+High\+Map/include/highmap/export.\+hpp}}.\end{Desc}

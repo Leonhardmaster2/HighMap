@@ -198,32 +198,36 @@ $(document).ready(function(){initNavTree('_2home_2runner_2work_2HighMap_2HighMap
 <div class="line">                  <span class="keyword">const</span> std::string &amp;normal_map_fname = <span class="stringliteral">&quot;&quot;</span>,</div>
 <div class="line">                  <span class="keywordtype">float</span>              max_error = 5e-4f);</div>
 <div class="line"> </div>
-<div class="line"><span class="keywordtype">void</span> <a id="a25" name="a25"></a><a class="code hl_function" href="namespacehmap.html#a3aa96cd684efd827ce57ffd9fef3c950">export_as_cubemap</a>(<span class="keyword">const</span> std::string &amp;fname,</div>
+<div class="line">std::string <a id="a25" name="a25"></a><a class="code hl_function" href="namespacehmap.html#aafe1d43996eb4e55731c67b096cebcf6">export_as_ascii</a>(<span class="keyword">const</span> Array      &amp;array,</div>
+<div class="line">                            <span class="keyword">const</span> Vec2&lt;int&gt;  &amp;export_shape = {64, 64},</div>
+<div class="line">                            <span class="keyword">const</span> std::string chars_map = <span class="stringliteral">&quot; .:-=+*#%@&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> <a id="a26" name="a26"></a><a class="code hl_function" href="namespacehmap.html#a3aa96cd684efd827ce57ffd9fef3c950">export_as_cubemap</a>(<span class="keyword">const</span> std::string &amp;fname,</div>
 <div class="line">                       <span class="keyword">const</span> Array       &amp;z,</div>
 <div class="line">                       <span class="keywordtype">int</span>                cubemap_resolution = 128,</div>
 <div class="line">                       <span class="keywordtype">float</span>              overlap = 0.25f,</div>
 <div class="line">                       <span class="keywordtype">int</span>                ir = 16,</div>
-<div class="line">                       <a class="code hl_enumeration" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369">Cmap</a>               cmap = <a id="a26" name="a26"></a><a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d">Cmap::GRAY</a>,</div>
+<div class="line">                       <a class="code hl_enumeration" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369">Cmap</a>               cmap = <a id="a27" name="a27"></a><a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d">Cmap::GRAY</a>,</div>
 <div class="line">                       <span class="keywordtype">bool</span>               splitted = <span class="keyword">false</span>,</div>
 <div class="line">                       Array             *p_cubemap = <span class="keyword">nullptr</span>);</div>
 <div class="line"> </div>
-<div class="line"><span class="keywordtype">void</span> <a id="a27" name="a27"></a><a class="code hl_function" href="namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c">export_banner_png</a>(<span class="keyword">const</span> std::string        &amp;fname,</div>
+<div class="line"><span class="keywordtype">void</span> <a id="a28" name="a28"></a><a class="code hl_function" href="namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c">export_banner_png</a>(<span class="keyword">const</span> std::string        &amp;fname,</div>
 <div class="line">                       <span class="keyword">const</span> std::vector&lt;Array&gt; &amp;arrays,</div>
 <div class="line">                       <span class="keywordtype">int</span>                       cmap,</div>
 <div class="line">                       <span class="keywordtype">bool</span>                      hillshading = <span class="keyword">false</span>);</div>
 <div class="line"> </div>
-<div class="line"><span class="keywordtype">void</span> <a id="a28" name="a28"></a><a class="code hl_function" href="namespacehmap.html#a9648a23e61a84a702d89159d516dd4ec">export_normal_map_png</a>(<span class="keyword">const</span> std::string &amp;fname,</div>
+<div class="line"><span class="keywordtype">void</span> <a id="a29" name="a29"></a><a class="code hl_function" href="namespacehmap.html#a9648a23e61a84a702d89159d516dd4ec">export_normal_map_png</a>(<span class="keyword">const</span> std::string &amp;fname,</div>
 <div class="line">                           <span class="keyword">const</span> Array       &amp;array,</div>
 <div class="line">                           <span class="keywordtype">int</span>                depth = CV_8U);</div>
 <div class="line"> </div>
-<div class="line"><span class="keywordtype">void</span> <a id="a29" name="a29"></a><a class="code hl_function" href="namespacehmap.html#a32464922c39713910ebeab632e0e8fd1">export_splatmap_png</a>(<span class="keyword">const</span> std::string &amp;fname,</div>
+<div class="line"><span class="keywordtype">void</span> <a id="a30" name="a30"></a><a class="code hl_function" href="namespacehmap.html#a32464922c39713910ebeab632e0e8fd1">export_splatmap_png</a>(<span class="keyword">const</span> std::string &amp;fname,</div>
 <div class="line">                         <span class="keyword">const</span> Array       *p_r,</div>
 <div class="line">                         <span class="keyword">const</span> Array       *p_g = <span class="keyword">nullptr</span>,</div>
 <div class="line">                         <span class="keyword">const</span> Array       *p_b = <span class="keyword">nullptr</span>,</div>
 <div class="line">                         <span class="keyword">const</span> Array       *p_a = <span class="keyword">nullptr</span>,</div>
 <div class="line">                         <span class="keywordtype">int</span>                depth = CV_8U);</div>
 <div class="line"> </div>
-<div class="line"><span class="keywordtype">void</span> <a id="a30" name="a30"></a><a class="code hl_function" href="namespacehmap.html#a90b6cad473f30aa0aa92158e5af7ee7f">export_tiled</a>(<span class="keyword">const</span> std::string &amp;fname_radical,</div>
+<div class="line"><span class="keywordtype">void</span> <a id="a31" name="a31"></a><a class="code hl_function" href="namespacehmap.html#a90b6cad473f30aa0aa92158e5af7ee7f">export_tiled</a>(<span class="keyword">const</span> std::string &amp;fname_radical,</div>
 <div class="line">                  <span class="keyword">const</span> std::string &amp;fname_extension,</div>
 <div class="line">                  <span class="keyword">const</span> Array       &amp;array,</div>
 <div class="line">                  <span class="keyword">const</span> Vec2&lt;int&gt;   &amp;tiling,</div>
@@ -232,13 +236,13 @@ $(document).ready(function(){initNavTree('_2home_2runner_2work_2HighMap_2HighMap
 <div class="line">                  <span class="keywordtype">bool</span>               overlapping_edges = <span class="keyword">false</span>,</div>
 <div class="line">                  <span class="keywordtype">bool</span>               reverse_tile_y_indexing = <span class="keyword">false</span>);</div>
 <div class="line"> </div>
-<div class="line">Array <a id="a31" name="a31"></a><a class="code hl_function" href="namespacehmap.html#af6f0426c8791970cf51e5ab44f6760fc">read_to_array</a>(<span class="keyword">const</span> std::string &amp;fname);</div>
+<div class="line">Array <a id="a32" name="a32"></a><a class="code hl_function" href="namespacehmap.html#af6f0426c8791970cf51e5ab44f6760fc">read_to_array</a>(<span class="keyword">const</span> std::string &amp;fname);</div>
 <div class="line"> </div>
-<div class="line"><span class="keywordtype">void</span> <a id="a32" name="a32"></a><a class="code hl_function" href="namespacehmap.html#a466d4275bb86ca9ca603c9d4192f931a">write_raw_16bit</a>(<span class="keyword">const</span> std::string &amp;fname, <span class="keyword">const</span> Array &amp;array);</div>
+<div class="line"><span class="keywordtype">void</span> <a id="a33" name="a33"></a><a class="code hl_function" href="namespacehmap.html#a466d4275bb86ca9ca603c9d4192f931a">write_raw_16bit</a>(<span class="keyword">const</span> std::string &amp;fname, <span class="keyword">const</span> Array &amp;array);</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// --- helpers</span></div>
 <div class="line"> </div>
-<div class="line">std::filesystem::path <a id="a33" name="a33"></a><a class="code hl_function" href="namespacehmap.html#a67eae4546cbed6a804eaddcde9350e1c">add_filename_suffix</a>(</div>
+<div class="line">std::filesystem::path <a id="a34" name="a34"></a><a class="code hl_function" href="namespacehmap.html#a67eae4546cbed6a804eaddcde9350e1c">add_filename_suffix</a>(</div>
 <div class="line">    <span class="keyword">const</span> std::filesystem::path &amp;file_path,</div>
 <div class="line">    <span class="keyword">const</span> std::string           &amp;suffix);</div>
 <div class="line"> </div>
@@ -253,6 +257,7 @@ $(document).ready(function(){initNavTree('_2home_2runner_2work_2HighMap_2HighMap
 <div class="ttc" id="anamespacehmap_html_a7b8945745feaeaa365d965ce66b32f58"><div class="ttname"><a href="namespacehmap.html#a7b8945745feaeaa365d965ce66b32f58">hmap::export_asset</a></div><div class="ttdeci">bool export_asset(const std::string &amp;fname, const Array &amp;array, MeshType mesh_type=MeshType::TRI, AssetExportFormat export_format=AssetExportFormat::GLB2, float elevation_scaling=0.2f, const std::string &amp;texture_fname=&quot;&quot;, const std::string &amp;normal_map_fname=&quot;&quot;, float max_error=5e-4f)</div><div class="ttdoc">Exports a heightmap to various 3D file formats.</div><div class="ttdef"><b>Definition</b> export_asset.cpp:27</div></div>
 <div class="ttc" id="anamespacehmap_html_a90b6cad473f30aa0aa92158e5af7ee7f"><div class="ttname"><a href="namespacehmap.html#a90b6cad473f30aa0aa92158e5af7ee7f">hmap::export_tiled</a></div><div class="ttdeci">void export_tiled(const std::string &amp;fname_radical, const std::string &amp;fname_extension, const Array &amp;array, const Vec2&lt; int &gt; &amp;tiling, int leading_zeros=0, int depth=CV_8U, bool overlapping_edges=false, bool reverse_tile_y_indexing=false)</div><div class="ttdoc">Exports a 2D array as a set of grayscale PNG image tiles.</div><div class="ttdef"><b>Definition</b> export_tiled.cpp:12</div></div>
 <div class="ttc" id="anamespacehmap_html_a9648a23e61a84a702d89159d516dd4ec"><div class="ttname"><a href="namespacehmap.html#a9648a23e61a84a702d89159d516dd4ec">hmap::export_normal_map_png</a></div><div class="ttdeci">void export_normal_map_png(const std::string &amp;fname, const Array &amp;array, int depth=CV_8U)</div><div class="ttdoc">Exports the heightmap normal map as an 8-bit PNG file.</div><div class="ttdef"><b>Definition</b> export_normal_map.cpp:15</div></div>
+<div class="ttc" id="anamespacehmap_html_aafe1d43996eb4e55731c67b096cebcf6"><div class="ttname"><a href="namespacehmap.html#aafe1d43996eb4e55731c67b096cebcf6">hmap::export_as_ascii</a></div><div class="ttdeci">std::string export_as_ascii(const Array &amp;array, const Vec2&lt; int &gt; &amp;export_shape={64, 64}, const std::string chars_map=&quot; .:-=+*#%@&quot;)</div><div class="ttdoc">Export a 2D array as an ASCII-art string representation.</div><div class="ttdef"><b>Definition</b> export_as_ascii.cpp:12</div></div>
 <div class="ttc" id="anamespacehmap_html_ac3d35efc6e5b596f508e2b17a5aa871b"><div class="ttname"><a href="namespacehmap.html#ac3d35efc6e5b596f508e2b17a5aa871b">hmap::AssetExportFormat</a></div><div class="ttdeci">AssetExportFormat</div><div class="ttdoc">Enumeration for asset export formats supported by Assimp.</div><div class="ttdef"><b>Definition</b> export.hpp:64</div></div>
 <div class="ttc" id="anamespacehmap_html_ac3d35efc6e5b596f508e2b17a5aa871ba006b1f81b483f6b3e26dd4a4668ee6dc"><div class="ttname"><a href="namespacehmap.html#ac3d35efc6e5b596f508e2b17a5aa871ba006b1f81b483f6b3e26dd4a4668ee6dc">hmap::FBX</a></div><div class="ttdeci">@ FBX</div><div class="ttdoc">Autodesk FBX (binary) - *.fbx.</div><div class="ttdef"><b>Definition</b> export.hpp:70</div></div>
 <div class="ttc" id="anamespacehmap_html_ac3d35efc6e5b596f508e2b17a5aa871ba01b4a6af39216cb5ba424ef1bd4f66f7"><div class="ttname"><a href="namespacehmap.html#ac3d35efc6e5b596f508e2b17a5aa871ba01b4a6af39216cb5ba424ef1bd4f66f7">hmap::PLY</a></div><div class="ttdeci">@ PLY</div><div class="ttdoc">Stanford Polygon Library - *.ply.</div><div class="ttdef"><b>Definition</b> export.hpp:77</div></div>

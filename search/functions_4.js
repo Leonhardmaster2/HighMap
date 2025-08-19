@@ -13,13 +13,14 @@ var searchData=
   ['expand_5fpoints_5fdomain_10',['expand_points_domain',['../namespacehmap.html#ac3b1e6c5b2380e41efff2501021638f1',1,'hmap']]],
   ['expand_5fpoints_5fdomain_5fcorners_11',['expand_points_domain_corners',['../namespacehmap.html#a813c58d6f5d3b7febc0ba4f1a22619d6',1,'hmap']]],
   ['expand_5ftalus_12',['expand_talus',['../namespacehmap.html#a11b0213f43ea0d2228c0dbd385b8308a',1,'hmap']]],
-  ['export_5fas_5fcubemap_13',['export_as_cubemap',['../namespacehmap.html#a3aa96cd684efd827ce57ffd9fef3c950',1,'hmap']]],
-  ['export_5fasset_14',['export_asset',['../namespacehmap.html#a7b8945745feaeaa365d965ce66b32f58',1,'hmap']]],
-  ['export_5fbanner_5fpng_15',['export_banner_png',['../namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c',1,'hmap']]],
-  ['export_5fnormal_5fmap_5fpng_16',['export_normal_map_png',['../namespacehmap.html#a9648a23e61a84a702d89159d516dd4ec',1,'hmap']]],
-  ['export_5fsplatmap_5fpng_17',['export_splatmap_png',['../namespacehmap.html#a32464922c39713910ebeab632e0e8fd1',1,'hmap']]],
-  ['export_5ftiled_18',['export_tiled',['../namespacehmap.html#a90b6cad473f30aa0aa92158e5af7ee7f',1,'hmap']]],
-  ['extract_5fraw_5ffilename_19',['extract_raw_filename',['../namespacehmap.html#af95eb203aa8ba710c26f8c5ad7535125',1,'hmap']]],
-  ['extract_5fslice_20',['extract_slice',['../classhmap_1_1Array.html#a57be73f56189959dd25a0b760d971bf7',1,'hmap::Array::extract_slice(Vec4&lt; int &gt; idx) const'],['../classhmap_1_1Array.html#a7d552a649bcc47445b11d2e42d193492',1,'hmap::Array::extract_slice(int i1, int i2, int j1, int j2) const']]],
-  ['extrapolate_5fborders_21',['extrapolate_borders',['../namespacehmap.html#a8802e95ba76a252d2098bdb3fb5cfc28',1,'hmap']]]
+  ['export_5fas_5fascii_13',['export_as_ascii',['../namespacehmap.html#aafe1d43996eb4e55731c67b096cebcf6',1,'hmap']]],
+  ['export_5fas_5fcubemap_14',['export_as_cubemap',['../namespacehmap.html#a3aa96cd684efd827ce57ffd9fef3c950',1,'hmap']]],
+  ['export_5fasset_15',['export_asset',['../namespacehmap.html#a7b8945745feaeaa365d965ce66b32f58',1,'hmap']]],
+  ['export_5fbanner_5fpng_16',['export_banner_png',['../namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c',1,'hmap']]],
+  ['export_5fnormal_5fmap_5fpng_17',['export_normal_map_png',['../namespacehmap.html#a9648a23e61a84a702d89159d516dd4ec',1,'hmap']]],
+  ['export_5fsplatmap_5fpng_18',['export_splatmap_png',['../namespacehmap.html#a32464922c39713910ebeab632e0e8fd1',1,'hmap']]],
+  ['export_5ftiled_19',['export_tiled',['../namespacehmap.html#a90b6cad473f30aa0aa92158e5af7ee7f',1,'hmap']]],
+  ['extract_5fraw_5ffilename_20',['extract_raw_filename',['../namespacehmap.html#af95eb203aa8ba710c26f8c5ad7535125',1,'hmap']]],
+  ['extract_5fslice_21',['extract_slice',['../classhmap_1_1Array.html#a57be73f56189959dd25a0b760d971bf7',1,'hmap::Array::extract_slice(Vec4&lt; int &gt; idx) const'],['../classhmap_1_1Array.html#a7d552a649bcc47445b11d2e42d193492',1,'hmap::Array::extract_slice(int i1, int i2, int j1, int j2) const']]],
+  ['extrapolate_5fborders_22',['extrapolate_borders',['../namespacehmap.html#a8802e95ba76a252d2098bdb3fb5cfc28',1,'hmap']]]
 ];

@@ -1,5 +1,6 @@
 var dir_3bc85fd9086f4b2a437782af9c422553 =
 [
+    [ "export_as_ascii.cpp", "export__as__ascii_8cpp.html", "export__as__ascii_8cpp" ],
     [ "export_as_cubemap.cpp", "export__as__cubemap_8cpp.html", "export__as__cubemap_8cpp" ],
     [ "export_asset.cpp", "export__asset_8cpp.html", "export__asset_8cpp" ],
     [ "export_banner_png.cpp", "export__banner__png_8cpp.html", "export__banner__png_8cpp" ],

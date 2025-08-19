@@ -456,6 +456,7 @@ var namespacehmap =
     [ "thermal_schott", "namespacehmap.html#aa328e3342e845d021f300dcb6cb42fbc", null ],
     [ "thermal_schott", "namespacehmap.html#afe2e4c1e06205f5051ce6e86ea647a77", null ],
     [ "export_asset", "namespacehmap.html#a7b8945745feaeaa365d965ce66b32f58", null ],
+    [ "export_as_ascii", "namespacehmap.html#aafe1d43996eb4e55731c67b096cebcf6", null ],
     [ "export_as_cubemap", "namespacehmap.html#a3aa96cd684efd827ce57ffd9fef3c950", null ],
     [ "export_banner_png", "namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c", null ],
     [ "export_normal_map_png", "namespacehmap.html#a9648a23e61a84a702d89159d516dd4ec", null ],

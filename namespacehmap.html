@@ -827,6 +827,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a7b8945745feaeaa365d965ce66b32f58" id="r_a7b8945745feaeaa365d965ce66b32f58"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a7b8945745feaeaa365d965ce66b32f58">export_asset</a> (const std::string &amp;fname, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, <a class="el" href="namespacehmap.html#ac81a92060b89699c4eb9826495d87250">MeshType</a> mesh_type=<a class="el" href="namespacehmap.html#ac81a92060b89699c4eb9826495d87250a68dced9d7f19cbd741feae05ad17ca14">MeshType::TRI</a>, <a class="el" href="namespacehmap.html#ac3d35efc6e5b596f508e2b17a5aa871b">AssetExportFormat</a> export_format=<a class="el" href="namespacehmap.html#ac3d35efc6e5b596f508e2b17a5aa871ba0766d2c2cb91f6e1e9a1b4dfcbffd562">AssetExportFormat::GLB2</a>, float elevation_scaling=0.2<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, const std::string &amp;texture_fname=&quot;&quot;, const std::string &amp;normal_map_fname=&quot;&quot;, float max_error=5e-4<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
 <tr class="memdesc:a7b8945745feaeaa365d965ce66b32f58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exports a heightmap to various 3D file formats.  <br /></td></tr>
 <tr class="separator:a7b8945745feaeaa365d965ce66b32f58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafe1d43996eb4e55731c67b096cebcf6" id="r_aafe1d43996eb4e55731c67b096cebcf6"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#aafe1d43996eb4e55731c67b096cebcf6">export_as_ascii</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, const <a class="el" href="structhmap_1_1Vec2.html">Vec2</a>&lt; int &gt; &amp;export_shape={64, 64}, const std::string chars_map=&quot; .:-=+*#%@&quot;)</td></tr>
+<tr class="memdesc:aafe1d43996eb4e55731c67b096cebcf6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Export a 2D array as an ASCII-art string representation.  <br /></td></tr>
+<tr class="separator:aafe1d43996eb4e55731c67b096cebcf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3aa96cd684efd827ce57ffd9fef3c950" id="r_a3aa96cd684efd827ce57ffd9fef3c950"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a3aa96cd684efd827ce57ffd9fef3c950">export_as_cubemap</a> (const std::string &amp;fname, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, int cubemap_resolution=128, float overlap=0.25<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, int ir=16, <a class="el" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369">Cmap</a> cmap=<a class="el" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d">Cmap::GRAY</a>, bool splitted=false, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_cubemap=nullptr)</td></tr>
 <tr class="memdesc:a3aa96cd684efd827ce57ffd9fef3c950"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exports a 2D array as a cubemap texture with continuity enforcement and overlapping regions.  <br /></td></tr>
 <tr class="separator:a3aa96cd684efd827ce57ffd9fef3c950"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -11066,6 +11069,57 @@ levelled out".</p>
 
 </div>
 </div>
+<a id="aafe1d43996eb4e55731c67b096cebcf6" name="aafe1d43996eb4e55731c67b096cebcf6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafe1d43996eb4e55731c67b096cebcf6">&#9670;&#160;</a></span>export_as_ascii()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string hmap::export_as_ascii </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>array</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structhmap_1_1Vec2.html">Vec2</a>&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>export_shape</em> = <code>{64,&#160;64}</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string&#160;</td>
+          <td class="paramname"><em>chars_map</em> = <code>&quot;&#160;.:-=+*#%@&quot;</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Export a 2D array as an ASCII-art string representation. </p>
+<p>This function rescales the input array to a given export resolution, remaps its values to the [0,1] range, and then converts each value to a character from a user-provided character map. The characters are arranged row by row to form a textual representation of the array, similar to rendering a heightmap in ASCII.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">array</td><td>The input 2D array to be exported. </td></tr>
+    <tr><td class="paramname">export_shape</td><td>The desired shape (width, height) of the ASCII output. </td></tr>
+    <tr><td class="paramname">chars_map</td><td>A string containing characters ordered from "low" to "high" intensity. For example: " .:-=+*#%@"</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A string containing the ASCII-art representation of the array.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The function resamples the array using nearest-neighbor interpolation. </dd>
+<dd>
+The y-axis is flipped so that higher indices appear lower in the text output. </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2home_2runner_2work_2HighMap_2HighMap_2HighMap_2include_2highmap_2export_8hpp-example.html#a25">/home/runner/work/HighMap/HighMap/HighMap/include/highmap/export.hpp</a>.</dd>
+</dl>
+
+</div>
+</div>
 <a id="a3aa96cd684efd827ce57ffd9fef3c950" name="a3aa96cd684efd827ce57ffd9fef3c950"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3aa96cd684efd827ce57ffd9fef3c950">&#9670;&#160;</a></span>export_as_cubemap()</h2>
 
@@ -11163,7 +11217,7 @@ levelled out".</p>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_export_as_cubemap.png" alt=""/>
 </div>
- <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2home_2runner_2work_2HighMap_2HighMap_2HighMap_2include_2highmap_2export_8hpp-example.html#a25">/home/runner/work/HighMap/HighMap/HighMap/include/highmap/export.hpp</a>.</dd>
+ <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2home_2runner_2work_2HighMap_2HighMap_2HighMap_2include_2highmap_2export_8hpp-example.html#a26">/home/runner/work/HighMap/HighMap/HighMap/include/highmap/export.hpp</a>.</dd>
 </dl>
 
 </div>
@@ -11217,7 +11271,7 @@ levelled out".</p>
   </table>
   </dd>
 </dl>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2home_2runner_2work_2HighMap_2HighMap_2HighMap_2include_2highmap_2export_8hpp-example.html#a27">/home/runner/work/HighMap/HighMap/HighMap/include/highmap/export.hpp</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2home_2runner_2work_2HighMap_2HighMap_2HighMap_2include_2highmap_2export_8hpp-example.html#a28">/home/runner/work/HighMap/HighMap/HighMap/include/highmap/export.hpp</a>.</dd>
 </dl>
 
 </div>
@@ -11281,7 +11335,7 @@ levelled out".</p>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#a9648a23e61a84a702d89159d516dd4ec">hmap::export_normal_map_png</a>(<span class="stringliteral">&quot;ex_export_normal_map1.png&quot;</span>, z1, CV_16U);</div>
 <div class="line">}</div>
 <div class="ttc" id="anamespacehmap_html_a9648a23e61a84a702d89159d516dd4ec"><div class="ttname"><a href="namespacehmap.html#a9648a23e61a84a702d89159d516dd4ec">hmap::export_normal_map_png</a></div><div class="ttdeci">void export_normal_map_png(const std::string &amp;fname, const Array &amp;array, int depth=CV_8U)</div><div class="ttdoc">Exports the heightmap normal map as an 8-bit PNG file.</div><div class="ttdef"><b>Definition</b> export_normal_map.cpp:15</div></div>
-</div><!-- fragment --> <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2home_2runner_2work_2HighMap_2HighMap_2HighMap_2include_2highmap_2export_8hpp-example.html#a28">/home/runner/work/HighMap/HighMap/HighMap/include/highmap/export.hpp</a>.</dd>
+</div><!-- fragment --> <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2home_2runner_2work_2HighMap_2HighMap_2HighMap_2include_2highmap_2export_8hpp-example.html#a29">/home/runner/work/HighMap/HighMap/HighMap/include/highmap/export.hpp</a>.</dd>
 </dl>
 
 </div>
@@ -11382,7 +11436,7 @@ levelled out".</p>
  <div class="image">
 <img src="ex_export_splatmap_png_16bit1.png" alt=""/>
 </div>
- <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2home_2runner_2work_2HighMap_2HighMap_2HighMap_2include_2highmap_2export_8hpp-example.html#a29">/home/runner/work/HighMap/HighMap/HighMap/include/highmap/export.hpp</a>.</dd>
+ <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2home_2runner_2work_2HighMap_2HighMap_2HighMap_2include_2highmap_2export_8hpp-example.html#a30">/home/runner/work/HighMap/HighMap/HighMap/include/highmap/export.hpp</a>.</dd>
 </dl>
 
 </div>
@@ -11495,7 +11549,7 @@ levelled out".</p>
 <div class="line">                     reverse_tile_y_indexing);</div>
 <div class="line">}</div>
 <div class="ttc" id="anamespacehmap_html_a90b6cad473f30aa0aa92158e5af7ee7f"><div class="ttname"><a href="namespacehmap.html#a90b6cad473f30aa0aa92158e5af7ee7f">hmap::export_tiled</a></div><div class="ttdeci">void export_tiled(const std::string &amp;fname_radical, const std::string &amp;fname_extension, const Array &amp;array, const Vec2&lt; int &gt; &amp;tiling, int leading_zeros=0, int depth=CV_8U, bool overlapping_edges=false, bool reverse_tile_y_indexing=false)</div><div class="ttdoc">Exports a 2D array as a set of grayscale PNG image tiles.</div><div class="ttdef"><b>Definition</b> export_tiled.cpp:12</div></div>
-</div><!-- fragment --> <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2home_2runner_2work_2HighMap_2HighMap_2HighMap_2include_2highmap_2export_8hpp-example.html#a30">/home/runner/work/HighMap/HighMap/HighMap/include/highmap/export.hpp</a>.</dd>
+</div><!-- fragment --> <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2home_2runner_2work_2HighMap_2HighMap_2HighMap_2include_2highmap_2export_8hpp-example.html#a31">/home/runner/work/HighMap/HighMap/HighMap/include/highmap/export.hpp</a>.</dd>
 </dl>
 
 </div>
@@ -11525,7 +11579,7 @@ levelled out".</p>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="classhmap_1_1Array.html" title="Array class, helper to manipulate 2D float array with &quot;(i, j)&quot; indexing.">Array</a> A 2D array containing the pixel values of the grayscale image. </dd></dl>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2home_2runner_2work_2HighMap_2HighMap_2HighMap_2include_2highmap_2export_8hpp-example.html#a31">/home/runner/work/HighMap/HighMap/HighMap/include/highmap/export.hpp</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2home_2runner_2work_2HighMap_2HighMap_2HighMap_2include_2highmap_2export_8hpp-example.html#a32">/home/runner/work/HighMap/HighMap/HighMap/include/highmap/export.hpp</a>.</dd>
 </dl>
 
 </div>
@@ -11565,7 +11619,7 @@ levelled out".</p>
   </table>
   </dd>
 </dl>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2home_2runner_2work_2HighMap_2HighMap_2HighMap_2include_2highmap_2export_8hpp-example.html#a32">/home/runner/work/HighMap/HighMap/HighMap/include/highmap/export.hpp</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2home_2runner_2work_2HighMap_2HighMap_2HighMap_2include_2highmap_2export_8hpp-example.html#a33">/home/runner/work/HighMap/HighMap/HighMap/include/highmap/export.hpp</a>.</dd>
 </dl>
 
 </div>
@@ -11595,7 +11649,7 @@ levelled out".</p>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2home_2runner_2work_2HighMap_2HighMap_2HighMap_2include_2highmap_2export_8hpp-example.html#a33">/home/runner/work/HighMap/HighMap/HighMap/include/highmap/export.hpp</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2home_2runner_2work_2HighMap_2HighMap_2HighMap_2include_2highmap_2export_8hpp-example.html#a34">/home/runner/work/HighMap/HighMap/HighMap/include/highmap/export.hpp</a>.</dd>
 </dl>
 
 </div>
