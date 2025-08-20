@@ -656,7 +656,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/functions.hpp" line="44" column="1" bodyfile="HighMap/include/highmap/functions.hpp" bodystart="45" bodyend="59"/>
+        <location file="HighMap/include/highmap/functions.hpp" line="61" column="1" bodyfile="HighMap/include/highmap/functions.hpp" bodystart="62" bodyend="76"/>
       </memberdef>
       <memberdef kind="enum" id="namespacehmap_1aba758c4143b6e499ec6f4385467a6d77" prot="public" static="no" strong="no">
         <type>int</type>
@@ -701,7 +701,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/geometry/point_sampling.hpp" line="28" column="1" bodyfile="HighMap/include/highmap/geometry/point_sampling.hpp" bodystart="29" bodyend="34"/>
+        <location file="HighMap/include/highmap/geometry/point_sampling.hpp" line="30" column="1" bodyfile="HighMap/include/highmap/geometry/point_sampling.hpp" bodystart="31" bodyend="36"/>
       </memberdef>
       <memberdef kind="enum" id="namespacehmap_1abc952321c99ec11d60b4037e3d27db9b" prot="public" static="no" strong="no">
         <type>int</type>
@@ -1394,7 +1394,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/geometry/point_sampling.hpp" line="42" column="17" bodyfile="HighMap/include/highmap/geometry/point_sampling.hpp" bodystart="42" bodyend="47"/>
+        <location file="HighMap/include/highmap/geometry/point_sampling.hpp" line="44" column="17" bodyfile="HighMap/include/highmap/geometry/point_sampling.hpp" bodystart="44" bodyend="49"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehmap_1aed9d644531f4c1132298258bfb9dbf36" prot="public" static="yes" mutable="no">
         <type>std::map&lt; std::string, int &gt;</type>
@@ -21083,6 +21083,51 @@ This function:<itemizedlist>
         </inbodydescription>
         <location file="HighMap/src/filters/filters.cpp" line="1393" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1393" bodyend="1426" declfile="HighMap/include/highmap/filters.hpp" declline="2366" declcolumn="6"/>
       </memberdef>
+      <memberdef kind="function" id="namespacehmap_1a7064ad1eef3ea7b6e19249fe3312e3b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::function&lt; float(float, float)&gt;</type>
+        <definition>std::function&lt; float(float, float)&gt; hmap::make_xy_function_from_array</definition>
+        <argsstring>(const Array &amp;array, const Vec4&lt; float &gt; &amp;bbox={0.f, 1.f, 0.f, 1.f})</argsstring>
+        <name>make_xy_function_from_array</name>
+        <qualifiedname>hmap::make_xy_function_from_array</qualifiedname>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>array</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structhmap_1_1Vec4" kindref="compound">Vec4</ref>&lt; float &gt; &amp;</type>
+          <declname>bbox</declname>
+          <defval>{0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>}</defval>
+        </param>
+        <briefdescription>
+<para>Create a continuous 2D function from a sampled array. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This adaptor takes a discrete 2D array (indexed by i, j) defined over a bounding box and returns a continuous function <formula id="2">$f(x, y)$</formula> that interpolates values at arbitrary 2D positions inside the bounding box.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>array</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input array containing sampled values on a regular grid. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>bbox</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Bounding box of the array in world coordinates, given as <computeroutput>(xmin, xmax, ymin, ymax)</computeroutput>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A function <computeroutput>f(point)</computeroutput> that returns the interpolated value at a 2D position. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/primitives/functions/functions.cpp" line="10" column="15" bodyfile="HighMap/src/primitives/functions/functions.cpp" bodystart="10" bodyend="32" declfile="HighMap/include/highmap/functions.hpp" declline="49" declcolumn="15"/>
+      </memberdef>
       <memberdef kind="function" id="namespacehmap_1a17514d1658d2a065892f061864a538ad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::unique_ptr&lt; <ref refid="classhmap_1_1NoiseFunction" kindref="compound">hmap::NoiseFunction</ref> &gt;</type>
         <definition>std::unique_ptr&lt; NoiseFunction &gt; hmap::create_noise_function_from_type</definition>
@@ -21137,7 +21182,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/functions/noise_functions.cpp" line="334" column="17" bodyfile="HighMap/src/primitives/functions/noise_functions.cpp" bodystart="334" bodyend="377" declfile="HighMap/include/highmap/functions.hpp" declline="1750" declcolumn="17"/>
+        <location file="HighMap/src/primitives/functions/noise_functions.cpp" line="334" column="17" bodyfile="HighMap/src/primitives/functions/noise_functions.cpp" bodystart="334" bodyend="377" declfile="HighMap/include/highmap/functions.hpp" declline="1767" declcolumn="17"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1abd7c616c225d31eb2fd4e3ff023e3ed5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Cloud" kindref="compound">Cloud</ref></type>
@@ -21181,7 +21226,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/cloud.cpp" line="513" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="513" bodyend="528" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="560" declcolumn="7"/>
+        <location file="HighMap/src/geometry/cloud.cpp" line="544" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="544" bodyend="559" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="598" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aa0bf57ef5e675f0aa851bc8f4b734acd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Cloud" kindref="compound">Cloud</ref></type>
@@ -21262,7 +21307,8 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>density<sp/>field</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="structhmap_1_1Vec2" kindref="compound">hmap::Vec2&lt;float&gt;</ref><sp/>kw<sp/>=<sp/>{2.f,<sp/>2.f};</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>density<sp/>=<sp/><ref refid="namespacehmap_1a03c0be3a7198eebacefcb208b0cfee99" kindref="member">hmap::noise</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,<sp/>shape,<sp/>kw,<sp/>seed);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(density);<sp/></highlight><highlight class="comment">//<sp/>/!\<sp/>NEEDS<sp/>TO<sp/>BE<sp/>IN<sp/>[0,<sp/>1]</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(density);<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>/!\<sp/>NEEDS<sp/>TO<sp/>BE<sp/>IN<sp/>[0,<sp/>1]</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ab1e1b26c0c1eb51d0b256db94d6ca22e" kindref="member">hmap::gain</ref>(density,<sp/>2);<sp/></highlight><highlight class="comment">//<sp/>sharper<sp/>transition</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>base<sp/>param</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>count<sp/>=<sp/>1000;</highlight></codeline>
@@ -21298,8 +21344,18 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Cloud" kindref="compound">hmap::Cloud</ref><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a83368f74414e23015bf543c36d8bfbef" kindref="member">hmap::random_cloud_density</ref>(count,<sp/>density,<sp/>seed);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1ad83d71a8729a0e4fcce993c0141275ee" kindref="member">to_array</ref>(raster);</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>zs.push_back(raster);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>filter</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1aa0bf57ef5e675f0aa851bc8f4b734acd" kindref="member">hmap::random_cloud</ref>(count,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1aba758c4143b6e499ec6f4385467a6d77a99ca15104343ff0356c6fc0ffe4f837d" kindref="member">hmap::PointSamplingMethod::RND_HALTON</ref>);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1a28281f94a58609ecde1d9b4e1bf58fe1" kindref="member">rejection_filter_density</ref>(density,<sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1ad83d71a8729a0e4fcce993c0141275ee" kindref="member">to_array</ref>(raster);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>zs.push_back(raster);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a1c490f296571a75e35d05b10c075ae6c" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_point_sampling1.png&quot;</highlight><highlight class="normal">,<sp/>zs,<sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a4eb53d94f58e93c3bdb554d8cca7f306" kindref="member">hmap::Cmap::BONE</ref>);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
@@ -21393,7 +21449,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/cloud.cpp" line="530" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="530" bodyend="538" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="586" declcolumn="7"/>
+        <location file="HighMap/src/geometry/cloud.cpp" line="561" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="561" bodyend="569" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="624" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a83368f74414e23015bf543c36d8bfbef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Cloud" kindref="compound">Cloud</ref></type>
@@ -21473,7 +21529,8 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>density<sp/>field</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="structhmap_1_1Vec2" kindref="compound">hmap::Vec2&lt;float&gt;</ref><sp/>kw<sp/>=<sp/>{2.f,<sp/>2.f};</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>density<sp/>=<sp/><ref refid="namespacehmap_1a03c0be3a7198eebacefcb208b0cfee99" kindref="member">hmap::noise</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,<sp/>shape,<sp/>kw,<sp/>seed);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(density);<sp/></highlight><highlight class="comment">//<sp/>/!\<sp/>NEEDS<sp/>TO<sp/>BE<sp/>IN<sp/>[0,<sp/>1]</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(density);<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>/!\<sp/>NEEDS<sp/>TO<sp/>BE<sp/>IN<sp/>[0,<sp/>1]</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ab1e1b26c0c1eb51d0b256db94d6ca22e" kindref="member">hmap::gain</ref>(density,<sp/>2);<sp/></highlight><highlight class="comment">//<sp/>sharper<sp/>transition</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>base<sp/>param</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>count<sp/>=<sp/>1000;</highlight></codeline>
@@ -21509,8 +21566,18 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Cloud" kindref="compound">hmap::Cloud</ref><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a83368f74414e23015bf543c36d8bfbef" kindref="member">hmap::random_cloud_density</ref>(count,<sp/>density,<sp/>seed);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1ad83d71a8729a0e4fcce993c0141275ee" kindref="member">to_array</ref>(raster);</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>zs.push_back(raster);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>filter</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1aa0bf57ef5e675f0aa851bc8f4b734acd" kindref="member">hmap::random_cloud</ref>(count,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1aba758c4143b6e499ec6f4385467a6d77a99ca15104343ff0356c6fc0ffe4f837d" kindref="member">hmap::PointSamplingMethod::RND_HALTON</ref>);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1a28281f94a58609ecde1d9b4e1bf58fe1" kindref="member">rejection_filter_density</ref>(density,<sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1ad83d71a8729a0e4fcce993c0141275ee" kindref="member">to_array</ref>(raster);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>zs.push_back(raster);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a1c490f296571a75e35d05b10c075ae6c" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_point_sampling1.png&quot;</highlight><highlight class="normal">,<sp/>zs,<sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a4eb53d94f58e93c3bdb554d8cca7f306" kindref="member">hmap::Cmap::BONE</ref>);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
@@ -21604,7 +21671,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/cloud.cpp" line="540" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="540" bodyend="548" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="615" declcolumn="7"/>
+        <location file="HighMap/src/geometry/cloud.cpp" line="571" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="571" bodyend="579" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="653" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a3c7d0352e60c2fd0ea923a68b569ffb0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Cloud" kindref="compound">Cloud</ref></type>
@@ -21672,7 +21739,8 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>density<sp/>field</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="structhmap_1_1Vec2" kindref="compound">hmap::Vec2&lt;float&gt;</ref><sp/>kw<sp/>=<sp/>{2.f,<sp/>2.f};</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>density<sp/>=<sp/><ref refid="namespacehmap_1a03c0be3a7198eebacefcb208b0cfee99" kindref="member">hmap::noise</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,<sp/>shape,<sp/>kw,<sp/>seed);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(density);<sp/></highlight><highlight class="comment">//<sp/>/!\<sp/>NEEDS<sp/>TO<sp/>BE<sp/>IN<sp/>[0,<sp/>1]</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(density);<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>/!\<sp/>NEEDS<sp/>TO<sp/>BE<sp/>IN<sp/>[0,<sp/>1]</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ab1e1b26c0c1eb51d0b256db94d6ca22e" kindref="member">hmap::gain</ref>(density,<sp/>2);<sp/></highlight><highlight class="comment">//<sp/>sharper<sp/>transition</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>base<sp/>param</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>count<sp/>=<sp/>1000;</highlight></codeline>
@@ -21708,8 +21776,18 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Cloud" kindref="compound">hmap::Cloud</ref><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a83368f74414e23015bf543c36d8bfbef" kindref="member">hmap::random_cloud_density</ref>(count,<sp/>density,<sp/>seed);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1ad83d71a8729a0e4fcce993c0141275ee" kindref="member">to_array</ref>(raster);</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>zs.push_back(raster);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>filter</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1aa0bf57ef5e675f0aa851bc8f4b734acd" kindref="member">hmap::random_cloud</ref>(count,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1aba758c4143b6e499ec6f4385467a6d77a99ca15104343ff0356c6fc0ffe4f837d" kindref="member">hmap::PointSamplingMethod::RND_HALTON</ref>);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1a28281f94a58609ecde1d9b4e1bf58fe1" kindref="member">rejection_filter_density</ref>(density,<sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1ad83d71a8729a0e4fcce993c0141275ee" kindref="member">to_array</ref>(raster);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>zs.push_back(raster);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a1c490f296571a75e35d05b10c075ae6c" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_point_sampling1.png&quot;</highlight><highlight class="normal">,<sp/>zs,<sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a4eb53d94f58e93c3bdb554d8cca7f306" kindref="member">hmap::Cmap::BONE</ref>);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
@@ -21803,7 +21881,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/cloud.cpp" line="550" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="550" bodyend="555" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="643" declcolumn="7"/>
+        <location file="HighMap/src/geometry/cloud.cpp" line="581" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="581" bodyend="586" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="681" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a75179356e03f22029303a31db1320ac0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Cloud" kindref="compound">Cloud</ref></type>
@@ -21895,7 +21973,8 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>density<sp/>field</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="structhmap_1_1Vec2" kindref="compound">hmap::Vec2&lt;float&gt;</ref><sp/>kw<sp/>=<sp/>{2.f,<sp/>2.f};</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>density<sp/>=<sp/><ref refid="namespacehmap_1a03c0be3a7198eebacefcb208b0cfee99" kindref="member">hmap::noise</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,<sp/>shape,<sp/>kw,<sp/>seed);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(density);<sp/></highlight><highlight class="comment">//<sp/>/!\<sp/>NEEDS<sp/>TO<sp/>BE<sp/>IN<sp/>[0,<sp/>1]</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(density);<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>/!\<sp/>NEEDS<sp/>TO<sp/>BE<sp/>IN<sp/>[0,<sp/>1]</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ab1e1b26c0c1eb51d0b256db94d6ca22e" kindref="member">hmap::gain</ref>(density,<sp/>2);<sp/></highlight><highlight class="comment">//<sp/>sharper<sp/>transition</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>base<sp/>param</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>count<sp/>=<sp/>1000;</highlight></codeline>
@@ -21931,8 +22010,18 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Cloud" kindref="compound">hmap::Cloud</ref><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a83368f74414e23015bf543c36d8bfbef" kindref="member">hmap::random_cloud_density</ref>(count,<sp/>density,<sp/>seed);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1ad83d71a8729a0e4fcce993c0141275ee" kindref="member">to_array</ref>(raster);</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>zs.push_back(raster);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>filter</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1aa0bf57ef5e675f0aa851bc8f4b734acd" kindref="member">hmap::random_cloud</ref>(count,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1aba758c4143b6e499ec6f4385467a6d77a99ca15104343ff0356c6fc0ffe4f837d" kindref="member">hmap::PointSamplingMethod::RND_HALTON</ref>);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1a28281f94a58609ecde1d9b4e1bf58fe1" kindref="member">rejection_filter_density</ref>(density,<sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1ad83d71a8729a0e4fcce993c0141275ee" kindref="member">to_array</ref>(raster);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>zs.push_back(raster);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a1c490f296571a75e35d05b10c075ae6c" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_point_sampling1.png&quot;</highlight><highlight class="normal">,<sp/>zs,<sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a4eb53d94f58e93c3bdb554d8cca7f306" kindref="member">hmap::Cmap::BONE</ref>);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
@@ -22026,7 +22115,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/cloud.cpp" line="557" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="557" bodyend="566" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="672" declcolumn="7"/>
+        <location file="HighMap/src/geometry/cloud.cpp" line="588" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="588" bodyend="597" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="710" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a684aff4918cc8dd388c4b2d3bfb177e6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Cloud" kindref="compound">Cloud</ref></type>
@@ -22118,7 +22207,8 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>density<sp/>field</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="structhmap_1_1Vec2" kindref="compound">hmap::Vec2&lt;float&gt;</ref><sp/>kw<sp/>=<sp/>{2.f,<sp/>2.f};</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>density<sp/>=<sp/><ref refid="namespacehmap_1a03c0be3a7198eebacefcb208b0cfee99" kindref="member">hmap::noise</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,<sp/>shape,<sp/>kw,<sp/>seed);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(density);<sp/></highlight><highlight class="comment">//<sp/>/!\<sp/>NEEDS<sp/>TO<sp/>BE<sp/>IN<sp/>[0,<sp/>1]</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(density);<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>/!\<sp/>NEEDS<sp/>TO<sp/>BE<sp/>IN<sp/>[0,<sp/>1]</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ab1e1b26c0c1eb51d0b256db94d6ca22e" kindref="member">hmap::gain</ref>(density,<sp/>2);<sp/></highlight><highlight class="comment">//<sp/>sharper<sp/>transition</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>base<sp/>param</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>count<sp/>=<sp/>1000;</highlight></codeline>
@@ -22154,8 +22244,18 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Cloud" kindref="compound">hmap::Cloud</ref><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a83368f74414e23015bf543c36d8bfbef" kindref="member">hmap::random_cloud_density</ref>(count,<sp/>density,<sp/>seed);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1ad83d71a8729a0e4fcce993c0141275ee" kindref="member">to_array</ref>(raster);</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>zs.push_back(raster);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>filter</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1aa0bf57ef5e675f0aa851bc8f4b734acd" kindref="member">hmap::random_cloud</ref>(count,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1aba758c4143b6e499ec6f4385467a6d77a99ca15104343ff0356c6fc0ffe4f837d" kindref="member">hmap::PointSamplingMethod::RND_HALTON</ref>);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1a28281f94a58609ecde1d9b4e1bf58fe1" kindref="member">rejection_filter_density</ref>(density,<sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1ad83d71a8729a0e4fcce993c0141275ee" kindref="member">to_array</ref>(raster);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>zs.push_back(raster);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a1c490f296571a75e35d05b10c075ae6c" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_point_sampling1.png&quot;</highlight><highlight class="normal">,<sp/>zs,<sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a4eb53d94f58e93c3bdb554d8cca7f306" kindref="member">hmap::Cmap::BONE</ref>);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
@@ -22249,7 +22349,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/cloud.cpp" line="568" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="568" bodyend="581" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="703" declcolumn="7"/>
+        <location file="HighMap/src/geometry/cloud.cpp" line="599" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="599" bodyend="612" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="741" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1adbf23e37fc6623a80625dad7af59ea3c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Cloud" kindref="compound">Cloud</ref></type>
@@ -22341,7 +22441,8 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>density<sp/>field</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="structhmap_1_1Vec2" kindref="compound">hmap::Vec2&lt;float&gt;</ref><sp/>kw<sp/>=<sp/>{2.f,<sp/>2.f};</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>density<sp/>=<sp/><ref refid="namespacehmap_1a03c0be3a7198eebacefcb208b0cfee99" kindref="member">hmap::noise</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,<sp/>shape,<sp/>kw,<sp/>seed);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(density);<sp/></highlight><highlight class="comment">//<sp/>/!\<sp/>NEEDS<sp/>TO<sp/>BE<sp/>IN<sp/>[0,<sp/>1]</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(density);<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>/!\<sp/>NEEDS<sp/>TO<sp/>BE<sp/>IN<sp/>[0,<sp/>1]</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ab1e1b26c0c1eb51d0b256db94d6ca22e" kindref="member">hmap::gain</ref>(density,<sp/>2);<sp/></highlight><highlight class="comment">//<sp/>sharper<sp/>transition</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>base<sp/>param</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>count<sp/>=<sp/>1000;</highlight></codeline>
@@ -22377,8 +22478,18 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Cloud" kindref="compound">hmap::Cloud</ref><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a83368f74414e23015bf543c36d8bfbef" kindref="member">hmap::random_cloud_density</ref>(count,<sp/>density,<sp/>seed);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1ad83d71a8729a0e4fcce993c0141275ee" kindref="member">to_array</ref>(raster);</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>zs.push_back(raster);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>filter</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1aa0bf57ef5e675f0aa851bc8f4b734acd" kindref="member">hmap::random_cloud</ref>(count,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1aba758c4143b6e499ec6f4385467a6d77a99ca15104343ff0356c6fc0ffe4f837d" kindref="member">hmap::PointSamplingMethod::RND_HALTON</ref>);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1a28281f94a58609ecde1d9b4e1bf58fe1" kindref="member">rejection_filter_density</ref>(density,<sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1ad83d71a8729a0e4fcce993c0141275ee" kindref="member">to_array</ref>(raster);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>zs.push_back(raster);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a1c490f296571a75e35d05b10c075ae6c" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_point_sampling1.png&quot;</highlight><highlight class="normal">,<sp/>zs,<sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a4eb53d94f58e93c3bdb554d8cca7f306" kindref="member">hmap::Cmap::BONE</ref>);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
@@ -22472,7 +22583,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/cloud.cpp" line="583" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="583" bodyend="592" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="735" declcolumn="7"/>
+        <location file="HighMap/src/geometry/cloud.cpp" line="614" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="614" bodyend="623" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="773" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a45d91dd35adc332dfaea80188aa88529" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Cloud" kindref="compound">Cloud</ref></type>
@@ -22564,7 +22675,8 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>density<sp/>field</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="structhmap_1_1Vec2" kindref="compound">hmap::Vec2&lt;float&gt;</ref><sp/>kw<sp/>=<sp/>{2.f,<sp/>2.f};</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>density<sp/>=<sp/><ref refid="namespacehmap_1a03c0be3a7198eebacefcb208b0cfee99" kindref="member">hmap::noise</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,<sp/>shape,<sp/>kw,<sp/>seed);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(density);<sp/></highlight><highlight class="comment">//<sp/>/!\<sp/>NEEDS<sp/>TO<sp/>BE<sp/>IN<sp/>[0,<sp/>1]</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(density);<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>/!\<sp/>NEEDS<sp/>TO<sp/>BE<sp/>IN<sp/>[0,<sp/>1]</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ab1e1b26c0c1eb51d0b256db94d6ca22e" kindref="member">hmap::gain</ref>(density,<sp/>2);<sp/></highlight><highlight class="comment">//<sp/>sharper<sp/>transition</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>base<sp/>param</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>count<sp/>=<sp/>1000;</highlight></codeline>
@@ -22600,8 +22712,18 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Cloud" kindref="compound">hmap::Cloud</ref><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a83368f74414e23015bf543c36d8bfbef" kindref="member">hmap::random_cloud_density</ref>(count,<sp/>density,<sp/>seed);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1ad83d71a8729a0e4fcce993c0141275ee" kindref="member">to_array</ref>(raster);</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>zs.push_back(raster);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>filter</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1aa0bf57ef5e675f0aa851bc8f4b734acd" kindref="member">hmap::random_cloud</ref>(count,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1aba758c4143b6e499ec6f4385467a6d77a99ca15104343ff0356c6fc0ffe4f837d" kindref="member">hmap::PointSamplingMethod::RND_HALTON</ref>);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1a28281f94a58609ecde1d9b4e1bf58fe1" kindref="member">rejection_filter_density</ref>(density,<sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1ad83d71a8729a0e4fcce993c0141275ee" kindref="member">to_array</ref>(raster);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>zs.push_back(raster);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a1c490f296571a75e35d05b10c075ae6c" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_point_sampling1.png&quot;</highlight><highlight class="normal">,<sp/>zs,<sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a4eb53d94f58e93c3bdb554d8cca7f306" kindref="member">hmap::Cmap::BONE</ref>);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
@@ -22695,7 +22817,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/cloud.cpp" line="594" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="594" bodyend="607" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="766" declcolumn="7"/>
+        <location file="HighMap/src/geometry/cloud.cpp" line="625" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="625" bodyend="638" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="804" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ab085d07bc0e897729ca16c0dd2035fe1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -24432,7 +24554,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/point_sampling.cpp" line="39" column="12" bodyfile="HighMap/src/geometry/point_sampling.cpp" bodystart="39" bodyend="45" declfile="HighMap/include/highmap/geometry/point_sampling.hpp" declline="62" declcolumn="12"/>
+        <location file="HighMap/src/geometry/point_sampling.cpp" line="17" column="12" bodyfile="HighMap/src/geometry/point_sampling.cpp" bodystart="17" bodyend="23" declfile="HighMap/include/highmap/geometry/point_sampling.hpp" declline="64" declcolumn="12"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ac3b1e6c5b2380e41efff2501021638f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -24498,7 +24620,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/grid.cpp" line="27" column="6" bodyfile="HighMap/src/geometry/grid.cpp" bodystart="27" bodyend="53" declfile="HighMap/include/highmap/geometry/point_sampling.hpp" declline="73" declcolumn="6"/>
+        <location file="HighMap/src/geometry/grid.cpp" line="27" column="6" bodyfile="HighMap/src/geometry/grid.cpp" bodystart="27" bodyend="53" declfile="HighMap/include/highmap/geometry/point_sampling.hpp" declline="75" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a98c0cc0d90ceb61a0ba28205458b18df" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -24577,7 +24699,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/grid.cpp" line="55" column="6" bodyfile="HighMap/src/geometry/grid.cpp" bodystart="55" bodyend="87" declfile="HighMap/include/highmap/geometry/point_sampling.hpp" declline="87" declcolumn="6"/>
+        <location file="HighMap/src/geometry/grid.cpp" line="55" column="6" bodyfile="HighMap/src/geometry/grid.cpp" bodystart="55" bodyend="87" declfile="HighMap/include/highmap/geometry/point_sampling.hpp" declline="89" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a813c58d6f5d3b7febc0ba4f1a22619d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -24656,7 +24778,60 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/grid.cpp" line="89" column="6" bodyfile="HighMap/src/geometry/grid.cpp" bodystart="89" bodyend="107" declfile="HighMap/include/highmap/geometry/point_sampling.hpp" declline="102" declcolumn="6"/>
+        <location file="HighMap/src/geometry/grid.cpp" line="89" column="6" bodyfile="HighMap/src/geometry/grid.cpp" bodystart="89" bodyend="107" declfile="HighMap/include/highmap/geometry/point_sampling.hpp" declline="104" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehmap_1aa3a56cb9295faf9c5b7a4ad082eeb486" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::function&lt; float(const ps::Point&lt; float, 2 &gt; &amp;)&gt;</type>
+        <definition>std::function&lt; float(const ps::Point&lt; float, 2 &gt; &amp;)&gt; hmap::make_pointwise_function_from_array</definition>
+        <argsstring>(const Array &amp;array, const Vec4&lt; float &gt; &amp;bbox)</argsstring>
+        <name>make_pointwise_function_from_array</name>
+        <qualifiedname>hmap::make_pointwise_function_from_array</qualifiedname>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>array</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structhmap_1_1Vec4" kindref="compound">Vec4</ref>&lt; float &gt; &amp;</type>
+          <declname>bbox</declname>
+        </param>
+        <briefdescription>
+<para>Create a continuous 2D function from a sampled array. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This adaptor takes a discrete 2D array (indexed by i, j) defined over a bounding box and returns a continuous function <formula id="2">$f(x, y)$</formula> that interpolates values at arbitrary 2D positions inside the bounding box.</para>
+<para>The function maps a point <formula id="7">$p = (x, y)$</formula> in world coordinates to array indices <formula id="8">$(i, j)$</formula> and interpolates the array values.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>array</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input array containing sampled values on a regular grid. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>bbox</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Bounding box of the array in world coordinates, given as <computeroutput>(xmin, xmax, ymin, ymax)</computeroutput>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A function <computeroutput>f(point)</computeroutput> that returns the interpolated value at a 2D position.</para>
+</simplesect>
+<simplesect kind="par"><title>Example</title><para><programlisting filename=".cpp"><codeline><highlight class="normal"><ref refid="classhmap_1_1Array" kindref="compound">Array</ref><sp/>heightmap<sp/>=<sp/>[...];</highlight></codeline>
+<codeline><highlight class="normal"><ref refid="structhmap_1_1Vec4" kindref="compound">Vec4&lt;float&gt;</ref><sp/>bbox<sp/>=<sp/>{0.0f,<sp/>100.0f,<sp/>0.0f,<sp/>100.0f};</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref><sp/>=<sp/><ref refid="namespacehmap_1aa3a56cb9295faf9c5b7a4ad082eeb486" kindref="member">make_pointwise_function_from_array</ref>(heightmap,<sp/>bbox);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">ps::Point&lt;float,<sp/>2&gt;<sp/>p{25.5f,<sp/>42.3f};</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>value<sp/>=<sp/><ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>(p);<sp/></highlight><highlight class="comment">//<sp/>interpolated<sp/>value<sp/>at<sp/>(25.5,<sp/>42.3)</highlight></codeline>
+</programlisting> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/geometry/point_sampling.cpp" line="26" column="1" bodyfile="HighMap/src/geometry/point_sampling.cpp" bodystart="26" bodyend="46" declfile="HighMap/include/highmap/geometry/point_sampling.hpp" declline="137" declcolumn="1"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a9cb4524fa8aa7f074bed3793ad1e0302" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::array&lt; std::vector&lt; float &gt;, 2 &gt;</type>
@@ -24725,7 +24900,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/point_sampling.cpp" line="47" column="12" bodyfile="HighMap/src/geometry/point_sampling.cpp" bodystart="47" bodyend="85" declfile="HighMap/include/highmap/geometry/point_sampling.hpp" declline="121" declcolumn="12"/>
+        <location file="HighMap/src/geometry/point_sampling.cpp" line="48" column="12" bodyfile="HighMap/src/geometry/point_sampling.cpp" bodystart="48" bodyend="86" declfile="HighMap/include/highmap/geometry/point_sampling.hpp" declline="152" declcolumn="12"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ac30b62e2cc35d56c33af4d1c12c54f81" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::array&lt; std::vector&lt; float &gt;, 2 &gt;</type>
@@ -24794,7 +24969,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/point_sampling.cpp" line="87" column="12" bodyfile="HighMap/src/geometry/point_sampling.cpp" bodystart="87" bodyend="100" declfile="HighMap/include/highmap/geometry/point_sampling.hpp" declline="141" declcolumn="12"/>
+        <location file="HighMap/src/geometry/point_sampling.cpp" line="88" column="12" bodyfile="HighMap/src/geometry/point_sampling.cpp" bodystart="88" bodyend="101" declfile="HighMap/include/highmap/geometry/point_sampling.hpp" declline="172" declcolumn="12"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1acb1099889036fd10623012ab68592914" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::array&lt; std::vector&lt; float &gt;, 2 &gt;</type>
@@ -24851,7 +25026,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/point_sampling.cpp" line="102" column="12" bodyfile="HighMap/src/geometry/point_sampling.cpp" bodystart="102" bodyend="115" declfile="HighMap/include/highmap/geometry/point_sampling.hpp" declline="160" declcolumn="12"/>
+        <location file="HighMap/src/geometry/point_sampling.cpp" line="103" column="12" bodyfile="HighMap/src/geometry/point_sampling.cpp" bodystart="103" bodyend="116" declfile="HighMap/include/highmap/geometry/point_sampling.hpp" declline="191" declcolumn="12"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aca05646c60f189d1cb4ade3c062ea0e2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::array&lt; std::vector&lt; float &gt;, 2 &gt;</type>
@@ -24932,7 +25107,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/point_sampling.cpp" line="117" column="12" bodyfile="HighMap/src/geometry/point_sampling.cpp" bodystart="117" bodyend="140" declfile="HighMap/include/highmap/geometry/point_sampling.hpp" declline="181" declcolumn="12"/>
+        <location file="HighMap/src/geometry/point_sampling.cpp" line="118" column="12" bodyfile="HighMap/src/geometry/point_sampling.cpp" bodystart="118" bodyend="141" declfile="HighMap/include/highmap/geometry/point_sampling.hpp" declline="212" declcolumn="12"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a58c8f359e1421bef310e45bcbc57cef8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::array&lt; std::vector&lt; float &gt;, 2 &gt;</type>
@@ -25013,7 +25188,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/point_sampling.cpp" line="142" column="12" bodyfile="HighMap/src/geometry/point_sampling.cpp" bodystart="142" bodyend="159" declfile="HighMap/include/highmap/geometry/point_sampling.hpp" declline="204" declcolumn="12"/>
+        <location file="HighMap/src/geometry/point_sampling.cpp" line="143" column="12" bodyfile="HighMap/src/geometry/point_sampling.cpp" bodystart="143" bodyend="160" declfile="HighMap/include/highmap/geometry/point_sampling.hpp" declline="235" declcolumn="12"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a6bc713eef74cda58ab2c3b41eb444b17" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::array&lt; std::vector&lt; float &gt;, 2 &gt;</type>
@@ -25094,7 +25269,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/point_sampling.cpp" line="161" column="12" bodyfile="HighMap/src/geometry/point_sampling.cpp" bodystart="161" bodyend="178" declfile="HighMap/include/highmap/geometry/point_sampling.hpp" declline="227" declcolumn="12"/>
+        <location file="HighMap/src/geometry/point_sampling.cpp" line="162" column="12" bodyfile="HighMap/src/geometry/point_sampling.cpp" bodystart="162" bodyend="179" declfile="HighMap/include/highmap/geometry/point_sampling.hpp" declline="258" declcolumn="12"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a8dad71368ba3687b381f3c72b66cace5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::array&lt; std::vector&lt; float &gt;, 2 &gt;</type>
@@ -25175,7 +25350,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/point_sampling.cpp" line="180" column="12" bodyfile="HighMap/src/geometry/point_sampling.cpp" bodystart="180" bodyend="193" declfile="HighMap/include/highmap/geometry/point_sampling.hpp" declline="249" declcolumn="12"/>
+        <location file="HighMap/src/geometry/point_sampling.cpp" line="181" column="12" bodyfile="HighMap/src/geometry/point_sampling.cpp" bodystart="181" bodyend="194" declfile="HighMap/include/highmap/geometry/point_sampling.hpp" declline="280" declcolumn="12"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a9e701766f54eaf6ad79956bf90b9bb8b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -25241,7 +25416,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/geometry/point_sampling.hpp" line="263" column="6" declfile="HighMap/include/highmap/geometry/point_sampling.hpp" declline="263" declcolumn="6"/>
+        <location file="HighMap/include/highmap/geometry/point_sampling.hpp" line="294" column="6" declfile="HighMap/include/highmap/geometry/point_sampling.hpp" declline="294" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a72b1f87026fe5d88b0febb8bc6592c2c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -25296,7 +25471,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/grid.cpp" line="139" column="6" bodyfile="HighMap/src/geometry/grid.cpp" bodystart="139" bodyend="148" declfile="HighMap/include/highmap/geometry/point_sampling.hpp" declline="275" declcolumn="6"/>
+        <location file="HighMap/src/geometry/grid.cpp" line="139" column="6" bodyfile="HighMap/src/geometry/grid.cpp" bodystart="139" bodyend="148" declfile="HighMap/include/highmap/geometry/point_sampling.hpp" declline="306" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ab0755dccfcae2b02a211c091e33f79a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; float &gt;</type>
@@ -26192,7 +26367,7 @@ This function:<itemizedlist>
 <para>Unwraps a 2D phase array to correct discontinuities in phase data. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function unwraps phase values in the given array, ensuring that discontinuities exceeding <formula id="2">$ \pi $</formula> are adjusted to provide a continuous phase result.</para>
+<para>This function unwraps phase values in the given array, ensuring that discontinuities exceeding <formula id="9">$ \pi $</formula> are adjusted to provide a continuous phase result.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>alpha</parametername>
@@ -47282,28 +47457,6 @@ off&quot; values that fall below the threshold, which can be useful for filterin
         </inbodydescription>
         <location file="HighMap/src/geometry/grid.cpp" line="119" column="6" bodyfile="HighMap/src/geometry/grid.cpp" bodystart="119" bodyend="137"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1a4a5d39e7cb51316261039010654f2737" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>auto</type>
-        <definition>auto hmap::helper_make_pointwise_function</definition>
-        <argsstring>(const Array &amp;array, const Vec4&lt; float &gt; &amp;bbox)</argsstring>
-        <name>helper_make_pointwise_function</name>
-        <qualifiedname>hmap::helper_make_pointwise_function</qualifiedname>
-        <param>
-          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
-          <declname>array</declname>
-        </param>
-        <param>
-          <type>const <ref refid="structhmap_1_1Vec4" kindref="compound">Vec4</ref>&lt; float &gt; &amp;</type>
-          <declname>bbox</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="HighMap/src/geometry/point_sampling.cpp" line="10" column="6" bodyfile="HighMap/src/geometry/point_sampling.cpp" bodystart="10" bodyend="30"/>
-      </memberdef>
       <memberdef kind="function" id="namespacehmap_1ab0d4915bfc4b51ec9102185c49503ae9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>size_t</type>
         <definition>size_t hmap::helper_estimate_count</definition>
@@ -47324,7 +47477,7 @@ off&quot; values that fall below the threshold, which can be useful for filterin
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/point_sampling.cpp" line="32" column="8" bodyfile="HighMap/src/geometry/point_sampling.cpp" bodystart="32" bodyend="37"/>
+        <location file="HighMap/src/geometry/point_sampling.cpp" line="10" column="8" bodyfile="HighMap/src/geometry/point_sampling.cpp" bodystart="10" bodyend="15"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ac070e7f9253f57fe6b44ad1f6c9fd753" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>

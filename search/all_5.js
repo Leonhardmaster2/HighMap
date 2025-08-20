@@ -60,5 +60,5 @@ var searchData=
   ['dt_5fapprox_57',['DT_APPROX',['../namespacehmap.html#a9e2493cec1a67b3140691e617ddc925aa3b8bce8feaa179b9a546bbbe28c1d44a',1,'hmap']]],
   ['dt_5fexact_58',['DT_EXACT',['../namespacehmap.html#a9e2493cec1a67b3140691e617ddc925aa109b04de7ca555c0e4d17629e55e7ee3',1,'hmap']]],
   ['dt_5fmanhattan_59',['DT_MANHATTAN',['../namespacehmap.html#a9e2493cec1a67b3140691e617ddc925aae4b14640395ecd7333bea8838ea9dda1',1,'hmap']]],
-  ['dump_60',['dump',['../structhmap_1_1Recorder.html#ac5bd6628a256636229047bbc12ced680',1,'hmap::Recorder::dump()'],['../classhmap_1_1Array.html#a00b8f7462c1e22b1da8a67ec62d4c8c8',1,'hmap::Array::dump()'],['../classhmap_1_1Timer.html#a5bc931885a549c561740f39cea91dd5f',1,'hmap::Timer::Dump()']]]
+  ['dump_60',['dump',['../classhmap_1_1Array.html#a00b8f7462c1e22b1da8a67ec62d4c8c8',1,'hmap::Array::dump()'],['../classhmap_1_1Timer.html#a5bc931885a549c561740f39cea91dd5f',1,'hmap::Timer::Dump()'],['../structhmap_1_1Recorder.html#ac5bd6628a256636229047bbc12ced680',1,'hmap::Recorder::dump()']]]
 ];

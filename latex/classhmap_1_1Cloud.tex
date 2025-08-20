@@ -76,10 +76,14 @@ void \mbox{\hyperlink{classhmap_1_1Cloud_aefea3d749a554df8a23ec38af5acb415}{prin
 \begin{DoxyCompactList}\small\item\em Print information about the cloud\textquotesingle{}s points. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classhmap_1_1Cloud_a5b3c241babf8bbf52436013b5e816718}{randomize}} (\mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
 \begin{DoxyCompactList}\small\item\em Randomize the positions and values of the cloud points. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classhmap_1_1Cloud_a28281f94a58609ecde1d9b4e1bf58fe1}{rejection\+\_\+filter\+\_\+density}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&density\+\_\+mask, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, const \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ \&bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
+\begin{DoxyCompactList}\small\item\em Filter a point cloud using rejection sampling based on a density mask. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classhmap_1_1Cloud_a35d0d2e48f4063bd7b582bd24a132294}{remap\+\_\+values}} (float vmin, float vmax)
 \begin{DoxyCompactList}\small\item\em Remap the values of the cloud points to a target range. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classhmap_1_1Cloud_afa8d7286a65d513bdc90c4c05bc42e0f}{remove\+\_\+point}} (int point\+\_\+idx)
 \begin{DoxyCompactList}\small\item\em Remove a point from the cloud. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classhmap_1_1Cloud_a6e8c4efb301989f9ecf2175d62ef55f8}{set\+\_\+points}} (const std\+::vector$<$ float $>$ \&x, const std\+::vector$<$ float $>$ \&y)
+\begin{DoxyCompactList}\small\item\em Set points of the using x, y coordinates. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classhmap_1_1Cloud_a604e61fbcbd8cc469ed21501e65f5c7b}{set\+\_\+values}} (const std\+::vector$<$ float $>$ \&new\+\_\+values)
 \begin{DoxyCompactList}\small\item\em Set new values for the cloud points. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classhmap_1_1Cloud_a540b582307b8457f38c43d12d899f2bf}{set\+\_\+values}} (float new\+\_\+value)
@@ -525,6 +529,38 @@ This method randomizes the positions and values of the points in the cloud using
 {\em bbox} & Bounding box within which the points will be randomized. \\
 \hline
 \end{DoxyParams}
+\Hypertarget{classhmap_1_1Cloud_a28281f94a58609ecde1d9b4e1bf58fe1}\label{classhmap_1_1Cloud_a28281f94a58609ecde1d9b4e1bf58fe1} 
+\index{hmap::Cloud@{hmap::Cloud}!rejection\_filter\_density@{rejection\_filter\_density}}
+\index{rejection\_filter\_density@{rejection\_filter\_density}!hmap::Cloud@{hmap::Cloud}}
+\doxysubsubsection{\texorpdfstring{rejection\_filter\_density()}{rejection\_filter\_density()}}
+{\footnotesize\ttfamily void hmap\+::\+Cloud\+::rejection\+\_\+filter\+\_\+density (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{density\+\_\+mask,  }\item[{\mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{seed,  }\item[{const \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ \&}]{bbox = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}} }\end{DoxyParamCaption})}
+
+
+
+Filter a point cloud using rejection sampling based on a density mask. 
+
+Each point in the input cloud is retained or discarded according to a spatially varying probability derived from the provided 2D density mask. The mask is mapped to the bounding box and evaluated as a continuous function over the domain.
+
+For a point $p=(x,y)$, the probability of acceptance is\+:  \[
+P(\text{keep } p) = \rho(x,y) \in [0,1]
+\] where $\rho(x,y)$ is the normalized density mask value at the point\textquotesingle{}s position.
+
+
+\begin{DoxyParams}{Parameters}
+{\em density\+\_\+mask} & 2D array defining the spatial density field over the bounding box. Values should lie in $[0,1]$. \\
+\hline
+{\em seed} & Random seed used for reproducible rejection sampling. \\
+\hline
+{\em bbox} & Bounding box {\ttfamily (xmin, ymin, xmax, ymax)} defining the spatial extent of the density mask in world coordinates.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item Points outside the bounding box are implicitly mapped to extrapolated density values.
+\item The method preserves the {\itshape relative} density pattern defined by the mask, but reduces the overall number of points according to rejection probability. 
+\end{DoxyItemize}
+\end{DoxyNote}
 \Hypertarget{classhmap_1_1Cloud_a35d0d2e48f4063bd7b582bd24a132294}\label{classhmap_1_1Cloud_a35d0d2e48f4063bd7b582bd24a132294} 
 \index{hmap::Cloud@{hmap::Cloud}!remap\_values@{remap\_values}}
 \index{remap\_values@{remap\_values}!hmap::Cloud@{hmap::Cloud}}
@@ -561,6 +597,16 @@ This method removes a point from the cloud based on its index.
 {\em point\+\_\+idx} & Index of the point to be removed. \\
 \hline
 \end{DoxyParams}
+\Hypertarget{classhmap_1_1Cloud_a6e8c4efb301989f9ecf2175d62ef55f8}\label{classhmap_1_1Cloud_a6e8c4efb301989f9ecf2175d62ef55f8} 
+\index{hmap::Cloud@{hmap::Cloud}!set\_points@{set\_points}}
+\index{set\_points@{set\_points}!hmap::Cloud@{hmap::Cloud}}
+\doxysubsubsection{\texorpdfstring{set\_points()}{set\_points()}}
+{\footnotesize\ttfamily void hmap\+::\+Cloud\+::set\+\_\+points (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ float $>$ \&}]{x,  }\item[{const std\+::vector$<$ float $>$ \&}]{y }\end{DoxyParamCaption})}
+
+
+
+Set points of the using x, y coordinates. 
+
 \Hypertarget{classhmap_1_1Cloud_a604e61fbcbd8cc469ed21501e65f5c7b}\label{classhmap_1_1Cloud_a604e61fbcbd8cc469ed21501e65f5c7b} 
 \index{hmap::Cloud@{hmap::Cloud}!set\_values@{set\_values}}
 \index{set\_values@{set\_values}!hmap::Cloud@{hmap::Cloud}}

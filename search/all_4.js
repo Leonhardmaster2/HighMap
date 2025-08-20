@@ -55,7 +55,7 @@ var searchData=
   ['connected_5fcomponents_52',['connected_components',['../namespacehmap.html#a9f8b079598b5ab3850c747ece6c81345',1,'hmap']]],
   ['connected_5fcomponents_2ecpp_53',['connected_components.cpp',['../connected__components_8cpp.html',1,'']]],
   ['connectivity_54',['connectivity',['../classhmap_1_1Graph.html#ac4fa0788cdc6162d9254b059ae9857da',1,'hmap::Graph']]],
-  ['constant_55',['constant',['../namespacehmap.html#a8e3756915e28aa80cec2190043cc8c2fab0d27777279264cbe2a77d4a241e6f55',1,'hmap::CONSTANT'],['../namespacehmap.html#a8f4e766dca0065219e26af946bd61946',1,'hmap::constant(Vec2&lt; int &gt; shape, float value=0.f)']]],
+  ['constant_55',['constant',['../namespacehmap.html#a8f4e766dca0065219e26af946bd61946',1,'hmap::constant(Vec2&lt; int &gt; shape, float value=0.f)'],['../namespacehmap.html#a8e3756915e28aa80cec2190043cc8c2fab0d27777279264cbe2a77d4a241e6f55',1,'hmap::CONSTANT']]],
   ['constant_5ff2mf1_5fsquared_56',['CONSTANT_F2MF1_SQUARED',['../namespacehmap.html#a8e3756915e28aa80cec2190043cc8c2fa85f252453c9797b7e00cc96cb7147537',1,'hmap']]],
   ['controlfunction_3c_20arraycontrolfunction_20_3e_57',['ControlFunction&lt; ArrayControlFunction &gt;',['../classhmap_1_1ArrayControlFunction.html#a3408081acc95c79603d132522795546a',1,'hmap::ArrayControlFunction']]],
   ['controlfunction_3c_20xycontrolfunction_20_3e_58',['ControlFunction&lt; XyControlFunction &gt;',['../classhmap_1_1XyControlFunction.html#aa788b440bd7fc55c6fb8012b1b6b0d2d',1,'hmap::XyControlFunction']]],

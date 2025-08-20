@@ -10,6 +10,7 @@ var point__sampling_8hpp =
     [ "expand_points_domain", "point__sampling_8hpp.html#ac3b1e6c5b2380e41efff2501021638f1", null ],
     [ "expand_points_at_domain_boundaries", "point__sampling_8hpp.html#a98c0cc0d90ceb61a0ba28205458b18df", null ],
     [ "expand_points_domain_corners", "point__sampling_8hpp.html#a813c58d6f5d3b7febc0ba4f1a22619d6", null ],
+    [ "make_pointwise_function_from_array", "point__sampling_8hpp.html#aa3a56cb9295faf9c5b7a4ad082eeb486", null ],
     [ "random_points", "point__sampling_8hpp.html#a9cb4524fa8aa7f074bed3793ad1e0302", null ],
     [ "random_points_density", "point__sampling_8hpp.html#ac30b62e2cc35d56c33af4d1c12c54f81", null ],
     [ "random_points_distance", "point__sampling_8hpp.html#acb1099889036fd10623012ab68592914", null ],
