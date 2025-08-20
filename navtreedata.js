@@ -92,13 +92,13 @@ var NAVTREEINDEX =
 "filters_8hpp.html#aafd7a642dabfbcf2ab2981b229a30e15",
 "heightmap_2transform_8cpp.html",
 "kernels_8cpp.html#adfc320d14c66c6a40dedd9410efa269d",
-"namespacehmap.html#a17f8f7249f91ef9bbcc0b1b5e38e20f3",
-"namespacehmap.html#a6ee46e297f2d253660bfe461b9321fe2",
+"namespacehmap.html#a183508644aea6442e249cfc2973fef97",
+"namespacehmap.html#a6f9cfb0636b57a00160dbcadfd8b8076",
 "namespacehmap.html#abd5e3daeb692506c7b6350516fccb3d3",
-"namespacehmap_1_1gpu.html#a72c9d220589d2724b4e48e9c37ff55ad",
-"points_8cpp.html#ac14815cf025b7430d31d08125a5c6f0d",
-"selector_8cpp.html#a2f1c2f2b2aa922b94ccbee3d40b83b8c",
-"structhmap_1_1Vec2.html#a34b1d441d8fc9bdac23f03f98c46449e"
+"namespacehmap_1_1gpu.html#a722cef96155d5c26274e24c796dc3a1b",
+"points_8cpp.html#abcecf8666a7291e978c81ba31eae37a4",
+"selector_8cpp.html#a183508644aea6442e249cfc2973fef97",
+"structhmap_1_1Vec2.html#a2dc51e83492f966eeddbdac3d58ab447"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

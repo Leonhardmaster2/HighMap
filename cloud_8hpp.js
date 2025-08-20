@@ -6,7 +6,7 @@ var cloud_8hpp =
     [ "random_cloud_density", "cloud_8hpp.html#a83368f74414e23015bf543c36d8bfbef", null ],
     [ "random_cloud_distance", "cloud_8hpp.html#a3c7d0352e60c2fd0ea923a68b569ffb0", null ],
     [ "random_cloud_distance", "cloud_8hpp.html#a75179356e03f22029303a31db1320ac0", null ],
-    [ "random_cloud_distance_power_law", "cloud_8hpp.html#a5f5bc198303be7b692e06914df758461", null ],
-    [ "random_cloud_distance_weibull", "cloud_8hpp.html#a357579f97d734a8d8b394986a8adf5bd", null ],
+    [ "random_cloud_distance_power_law", "cloud_8hpp.html#a684aff4918cc8dd388c4b2d3bfb177e6", null ],
+    [ "random_cloud_distance_weibull", "cloud_8hpp.html#adbf23e37fc6623a80625dad7af59ea3c", null ],
     [ "random_cloud_jittered", "cloud_8hpp.html#a45d91dd35adc332dfaea80188aa88529", null ]
 ];

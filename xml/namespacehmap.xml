@@ -21247,7 +21247,9 @@ This function:<itemizedlist>
 </parameterlist>
 <simplesect kind="return"><para>A <ref refid="classhmap_1_1Cloud" kindref="compound">Cloud</ref> containing the generated points.</para>
 </simplesect>
-<bold>Example</bold> <programlisting filename="ex_point_sampling.cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<bold>Example</bold> <programlisting filename="ex_point_sampling.cpp"><codeline><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
 <codeline><highlight class="normal">{</highlight></codeline>
@@ -21324,24 +21326,29 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a3c7d0352e60c2fd0ea923a68b569ffb0" kindref="member">hmap::random_cloud_distance</ref>(min_dist,<sp/>max_dist,<sp/>density,<sp/>seed);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;count:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>cloud.<ref refid="classhmap_1_1Cloud_1a4d6feb0c127bcea6566b600444cf103c" kindref="member">get_npoints</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>raster<sp/>=<sp/>0.f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1ad83d71a8729a0e4fcce993c0141275ee" kindref="member">to_array</ref>(raster);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>zs.push_back(raster);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a5f5bc198303be7b692e06914df758461" kindref="member">hmap::random_cloud_distance_power_law</ref>(count,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0.01f<sp/></highlight><highlight class="comment">/*<sp/>dist_min<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a684aff4918cc8dd388c4b2d3bfb177e6" kindref="member">hmap::random_cloud_distance_power_law</ref>(0.01f<sp/></highlight><highlight class="comment">/*<sp/>dist_min<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0.2f<sp/></highlight><highlight class="comment">/*<sp/>dist_max<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1.2f<sp/></highlight><highlight class="comment">/*<sp/>alpha<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;count:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>cloud.<ref refid="classhmap_1_1Cloud_1a4d6feb0c127bcea6566b600444cf103c" kindref="member">get_npoints</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>raster<sp/>=<sp/>0.f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1ad83d71a8729a0e4fcce993c0141275ee" kindref="member">to_array</ref>(raster);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>zs.push_back(raster);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a357579f97d734a8d8b394986a8adf5bd" kindref="member">hmap::random_cloud_distance_weibull</ref>(count,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1adbf23e37fc6623a80625dad7af59ea3c" kindref="member">hmap::random_cloud_distance_weibull</ref>(0.01f<sp/></highlight><highlight class="comment">/*<sp/>dist_min<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0.05f<sp/></highlight><highlight class="comment">/*<sp/>lambda<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0.8f<sp/></highlight><highlight class="comment">/*<sp/>k<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1.f<sp/></highlight><highlight class="comment">/*<sp/>k<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;count:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>cloud.<ref refid="classhmap_1_1Cloud_1a4d6feb0c127bcea6566b600444cf103c" kindref="member">get_npoints</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>raster<sp/>=<sp/>0.f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1ad83d71a8729a0e4fcce993c0141275ee" kindref="member">to_array</ref>(raster);</highlight></codeline>
@@ -21451,7 +21458,9 @@ This function:<itemizedlist>
 </parameterlist>
 <simplesect kind="return"><para>A <ref refid="classhmap_1_1Cloud" kindref="compound">Cloud</ref> containing the generated points.</para>
 </simplesect>
-<bold>Example</bold> <programlisting filename="ex_point_sampling.cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<bold>Example</bold> <programlisting filename="ex_point_sampling.cpp"><codeline><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
 <codeline><highlight class="normal">{</highlight></codeline>
@@ -21528,24 +21537,29 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a3c7d0352e60c2fd0ea923a68b569ffb0" kindref="member">hmap::random_cloud_distance</ref>(min_dist,<sp/>max_dist,<sp/>density,<sp/>seed);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;count:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>cloud.<ref refid="classhmap_1_1Cloud_1a4d6feb0c127bcea6566b600444cf103c" kindref="member">get_npoints</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>raster<sp/>=<sp/>0.f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1ad83d71a8729a0e4fcce993c0141275ee" kindref="member">to_array</ref>(raster);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>zs.push_back(raster);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a5f5bc198303be7b692e06914df758461" kindref="member">hmap::random_cloud_distance_power_law</ref>(count,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0.01f<sp/></highlight><highlight class="comment">/*<sp/>dist_min<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a684aff4918cc8dd388c4b2d3bfb177e6" kindref="member">hmap::random_cloud_distance_power_law</ref>(0.01f<sp/></highlight><highlight class="comment">/*<sp/>dist_min<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0.2f<sp/></highlight><highlight class="comment">/*<sp/>dist_max<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1.2f<sp/></highlight><highlight class="comment">/*<sp/>alpha<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;count:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>cloud.<ref refid="classhmap_1_1Cloud_1a4d6feb0c127bcea6566b600444cf103c" kindref="member">get_npoints</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>raster<sp/>=<sp/>0.f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1ad83d71a8729a0e4fcce993c0141275ee" kindref="member">to_array</ref>(raster);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>zs.push_back(raster);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a357579f97d734a8d8b394986a8adf5bd" kindref="member">hmap::random_cloud_distance_weibull</ref>(count,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1adbf23e37fc6623a80625dad7af59ea3c" kindref="member">hmap::random_cloud_distance_weibull</ref>(0.01f<sp/></highlight><highlight class="comment">/*<sp/>dist_min<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0.05f<sp/></highlight><highlight class="comment">/*<sp/>lambda<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0.8f<sp/></highlight><highlight class="comment">/*<sp/>k<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1.f<sp/></highlight><highlight class="comment">/*<sp/>k<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;count:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>cloud.<ref refid="classhmap_1_1Cloud_1a4d6feb0c127bcea6566b600444cf103c" kindref="member">get_npoints</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>raster<sp/>=<sp/>0.f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1ad83d71a8729a0e4fcce993c0141275ee" kindref="member">to_array</ref>(raster);</highlight></codeline>
@@ -21643,7 +21657,9 @@ This function:<itemizedlist>
 </parameterlist>
 <simplesect kind="return"><para>A <ref refid="classhmap_1_1Cloud" kindref="compound">Cloud</ref> containing the generated points.</para>
 </simplesect>
-<bold>Example</bold> <programlisting filename="ex_point_sampling.cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<bold>Example</bold> <programlisting filename="ex_point_sampling.cpp"><codeline><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
 <codeline><highlight class="normal">{</highlight></codeline>
@@ -21720,24 +21736,29 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a3c7d0352e60c2fd0ea923a68b569ffb0" kindref="member">hmap::random_cloud_distance</ref>(min_dist,<sp/>max_dist,<sp/>density,<sp/>seed);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;count:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>cloud.<ref refid="classhmap_1_1Cloud_1a4d6feb0c127bcea6566b600444cf103c" kindref="member">get_npoints</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>raster<sp/>=<sp/>0.f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1ad83d71a8729a0e4fcce993c0141275ee" kindref="member">to_array</ref>(raster);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>zs.push_back(raster);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a5f5bc198303be7b692e06914df758461" kindref="member">hmap::random_cloud_distance_power_law</ref>(count,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0.01f<sp/></highlight><highlight class="comment">/*<sp/>dist_min<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a684aff4918cc8dd388c4b2d3bfb177e6" kindref="member">hmap::random_cloud_distance_power_law</ref>(0.01f<sp/></highlight><highlight class="comment">/*<sp/>dist_min<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0.2f<sp/></highlight><highlight class="comment">/*<sp/>dist_max<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1.2f<sp/></highlight><highlight class="comment">/*<sp/>alpha<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;count:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>cloud.<ref refid="classhmap_1_1Cloud_1a4d6feb0c127bcea6566b600444cf103c" kindref="member">get_npoints</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>raster<sp/>=<sp/>0.f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1ad83d71a8729a0e4fcce993c0141275ee" kindref="member">to_array</ref>(raster);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>zs.push_back(raster);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a357579f97d734a8d8b394986a8adf5bd" kindref="member">hmap::random_cloud_distance_weibull</ref>(count,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1adbf23e37fc6623a80625dad7af59ea3c" kindref="member">hmap::random_cloud_distance_weibull</ref>(0.01f<sp/></highlight><highlight class="comment">/*<sp/>dist_min<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0.05f<sp/></highlight><highlight class="comment">/*<sp/>lambda<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0.8f<sp/></highlight><highlight class="comment">/*<sp/>k<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1.f<sp/></highlight><highlight class="comment">/*<sp/>k<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;count:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>cloud.<ref refid="classhmap_1_1Cloud_1a4d6feb0c127bcea6566b600444cf103c" kindref="member">get_npoints</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>raster<sp/>=<sp/>0.f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1ad83d71a8729a0e4fcce993c0141275ee" kindref="member">to_array</ref>(raster);</highlight></codeline>
@@ -21859,7 +21880,9 @@ This function:<itemizedlist>
 </parameterlist>
 <simplesect kind="return"><para>A <ref refid="classhmap_1_1Cloud" kindref="compound">Cloud</ref> containing the generated points.</para>
 </simplesect>
-<bold>Example</bold> <programlisting filename="ex_point_sampling.cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<bold>Example</bold> <programlisting filename="ex_point_sampling.cpp"><codeline><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
 <codeline><highlight class="normal">{</highlight></codeline>
@@ -21936,24 +21959,29 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a3c7d0352e60c2fd0ea923a68b569ffb0" kindref="member">hmap::random_cloud_distance</ref>(min_dist,<sp/>max_dist,<sp/>density,<sp/>seed);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;count:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>cloud.<ref refid="classhmap_1_1Cloud_1a4d6feb0c127bcea6566b600444cf103c" kindref="member">get_npoints</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>raster<sp/>=<sp/>0.f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1ad83d71a8729a0e4fcce993c0141275ee" kindref="member">to_array</ref>(raster);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>zs.push_back(raster);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a5f5bc198303be7b692e06914df758461" kindref="member">hmap::random_cloud_distance_power_law</ref>(count,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0.01f<sp/></highlight><highlight class="comment">/*<sp/>dist_min<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a684aff4918cc8dd388c4b2d3bfb177e6" kindref="member">hmap::random_cloud_distance_power_law</ref>(0.01f<sp/></highlight><highlight class="comment">/*<sp/>dist_min<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0.2f<sp/></highlight><highlight class="comment">/*<sp/>dist_max<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1.2f<sp/></highlight><highlight class="comment">/*<sp/>alpha<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;count:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>cloud.<ref refid="classhmap_1_1Cloud_1a4d6feb0c127bcea6566b600444cf103c" kindref="member">get_npoints</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>raster<sp/>=<sp/>0.f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1ad83d71a8729a0e4fcce993c0141275ee" kindref="member">to_array</ref>(raster);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>zs.push_back(raster);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a357579f97d734a8d8b394986a8adf5bd" kindref="member">hmap::random_cloud_distance_weibull</ref>(count,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1adbf23e37fc6623a80625dad7af59ea3c" kindref="member">hmap::random_cloud_distance_weibull</ref>(0.01f<sp/></highlight><highlight class="comment">/*<sp/>dist_min<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0.05f<sp/></highlight><highlight class="comment">/*<sp/>lambda<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0.8f<sp/></highlight><highlight class="comment">/*<sp/>k<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1.f<sp/></highlight><highlight class="comment">/*<sp/>k<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;count:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>cloud.<ref refid="classhmap_1_1Cloud_1a4d6feb0c127bcea6566b600444cf103c" kindref="member">get_npoints</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>raster<sp/>=<sp/>0.f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1ad83d71a8729a0e4fcce993c0141275ee" kindref="member">to_array</ref>(raster);</highlight></codeline>
@@ -22000,16 +22028,12 @@ This function:<itemizedlist>
         </inbodydescription>
         <location file="HighMap/src/geometry/cloud.cpp" line="557" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="557" bodyend="566" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="672" declcolumn="7"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1a5f5bc198303be7b692e06914df758461" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacehmap_1a684aff4918cc8dd388c4b2d3bfb177e6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Cloud" kindref="compound">Cloud</ref></type>
         <definition>Cloud hmap::random_cloud_distance_power_law</definition>
-        <argsstring>(size_t count, float dist_min, float dist_max, float alpha, uint seed, const Vec4&lt; float &gt; &amp;bbox={0.f, 1.f, 0.f, 1.f})</argsstring>
+        <argsstring>(float dist_min, float dist_max, float alpha, uint seed, const Vec4&lt; float &gt; &amp;bbox={0.f, 1.f, 0.f, 1.f})</argsstring>
         <name>random_cloud_distance_power_law</name>
         <qualifiedname>hmap::random_cloud_distance_power_law</qualifiedname>
-        <param>
-          <type>size_t</type>
-          <declname>count</declname>
-        </param>
         <param>
           <type>float</type>
           <declname>dist_min</declname>
@@ -22037,14 +22061,6 @@ This function:<itemizedlist>
         <detaileddescription>
 <para>Distances between points follow a power-law distribution between <computeroutput>dist_min</computeroutput> and <computeroutput>dist_max</computeroutput>, with exponent <computeroutput>alpha</computeroutput>.</para>
 <para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>count</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Number of points to generate. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
 <parameternamelist>
 <parametername>dist_min</parametername>
 </parameternamelist>
@@ -22087,7 +22103,9 @@ This function:<itemizedlist>
 </parameterlist>
 <simplesect kind="return"><para>A <ref refid="classhmap_1_1Cloud" kindref="compound">Cloud</ref> containing the generated points.</para>
 </simplesect>
-<bold>Example</bold> <programlisting filename="ex_point_sampling.cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<bold>Example</bold> <programlisting filename="ex_point_sampling.cpp"><codeline><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
 <codeline><highlight class="normal">{</highlight></codeline>
@@ -22164,24 +22182,29 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a3c7d0352e60c2fd0ea923a68b569ffb0" kindref="member">hmap::random_cloud_distance</ref>(min_dist,<sp/>max_dist,<sp/>density,<sp/>seed);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;count:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>cloud.<ref refid="classhmap_1_1Cloud_1a4d6feb0c127bcea6566b600444cf103c" kindref="member">get_npoints</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>raster<sp/>=<sp/>0.f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1ad83d71a8729a0e4fcce993c0141275ee" kindref="member">to_array</ref>(raster);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>zs.push_back(raster);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a5f5bc198303be7b692e06914df758461" kindref="member">hmap::random_cloud_distance_power_law</ref>(count,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0.01f<sp/></highlight><highlight class="comment">/*<sp/>dist_min<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a684aff4918cc8dd388c4b2d3bfb177e6" kindref="member">hmap::random_cloud_distance_power_law</ref>(0.01f<sp/></highlight><highlight class="comment">/*<sp/>dist_min<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0.2f<sp/></highlight><highlight class="comment">/*<sp/>dist_max<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1.2f<sp/></highlight><highlight class="comment">/*<sp/>alpha<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;count:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>cloud.<ref refid="classhmap_1_1Cloud_1a4d6feb0c127bcea6566b600444cf103c" kindref="member">get_npoints</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>raster<sp/>=<sp/>0.f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1ad83d71a8729a0e4fcce993c0141275ee" kindref="member">to_array</ref>(raster);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>zs.push_back(raster);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a357579f97d734a8d8b394986a8adf5bd" kindref="member">hmap::random_cloud_distance_weibull</ref>(count,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1adbf23e37fc6623a80625dad7af59ea3c" kindref="member">hmap::random_cloud_distance_weibull</ref>(0.01f<sp/></highlight><highlight class="comment">/*<sp/>dist_min<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0.05f<sp/></highlight><highlight class="comment">/*<sp/>lambda<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0.8f<sp/></highlight><highlight class="comment">/*<sp/>k<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1.f<sp/></highlight><highlight class="comment">/*<sp/>k<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;count:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>cloud.<ref refid="classhmap_1_1Cloud_1a4d6feb0c127bcea6566b600444cf103c" kindref="member">get_npoints</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>raster<sp/>=<sp/>0.f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1ad83d71a8729a0e4fcce993c0141275ee" kindref="member">to_array</ref>(raster);</highlight></codeline>
@@ -22226,17 +22249,17 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/cloud.cpp" line="568" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="568" bodyend="583" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="704" declcolumn="7"/>
+        <location file="HighMap/src/geometry/cloud.cpp" line="568" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="568" bodyend="581" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="703" declcolumn="7"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1a357579f97d734a8d8b394986a8adf5bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacehmap_1adbf23e37fc6623a80625dad7af59ea3c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Cloud" kindref="compound">Cloud</ref></type>
         <definition>Cloud hmap::random_cloud_distance_weibull</definition>
-        <argsstring>(size_t count, float lambda, float k, uint seed, const Vec4&lt; float &gt; &amp;bbox={0.f, 1.f, 0.f, 1.f})</argsstring>
+        <argsstring>(float dist_min, float lambda, float k, uint seed, const Vec4&lt; float &gt; &amp;bbox={0.f, 1.f, 0.f, 1.f})</argsstring>
         <name>random_cloud_distance_weibull</name>
         <qualifiedname>hmap::random_cloud_distance_weibull</qualifiedname>
         <param>
-          <type>size_t</type>
-          <declname>count</declname>
+          <type>float</type>
+          <declname>dist_min</declname>
         </param>
         <param>
           <type>float</type>
@@ -22262,10 +22285,10 @@ This function:<itemizedlist>
 <para>Distances between points follow a Weibull distribution parameterized by <computeroutput>lambda</computeroutput> (scale) and <computeroutput>k</computeroutput> (shape).</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
-<parametername>count</parametername>
+<parametername>dist_min</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Number of points to generate. </para>
+<para>Minimum possible distance between points. </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -22303,7 +22326,9 @@ This function:<itemizedlist>
 </parameterlist>
 <simplesect kind="return"><para>A <ref refid="classhmap_1_1Cloud" kindref="compound">Cloud</ref> containing the generated points.</para>
 </simplesect>
-<bold>Example</bold> <programlisting filename="ex_point_sampling.cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<bold>Example</bold> <programlisting filename="ex_point_sampling.cpp"><codeline><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
 <codeline><highlight class="normal">{</highlight></codeline>
@@ -22380,24 +22405,29 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a3c7d0352e60c2fd0ea923a68b569ffb0" kindref="member">hmap::random_cloud_distance</ref>(min_dist,<sp/>max_dist,<sp/>density,<sp/>seed);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;count:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>cloud.<ref refid="classhmap_1_1Cloud_1a4d6feb0c127bcea6566b600444cf103c" kindref="member">get_npoints</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>raster<sp/>=<sp/>0.f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1ad83d71a8729a0e4fcce993c0141275ee" kindref="member">to_array</ref>(raster);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>zs.push_back(raster);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a5f5bc198303be7b692e06914df758461" kindref="member">hmap::random_cloud_distance_power_law</ref>(count,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0.01f<sp/></highlight><highlight class="comment">/*<sp/>dist_min<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a684aff4918cc8dd388c4b2d3bfb177e6" kindref="member">hmap::random_cloud_distance_power_law</ref>(0.01f<sp/></highlight><highlight class="comment">/*<sp/>dist_min<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0.2f<sp/></highlight><highlight class="comment">/*<sp/>dist_max<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1.2f<sp/></highlight><highlight class="comment">/*<sp/>alpha<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;count:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>cloud.<ref refid="classhmap_1_1Cloud_1a4d6feb0c127bcea6566b600444cf103c" kindref="member">get_npoints</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>raster<sp/>=<sp/>0.f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1ad83d71a8729a0e4fcce993c0141275ee" kindref="member">to_array</ref>(raster);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>zs.push_back(raster);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a357579f97d734a8d8b394986a8adf5bd" kindref="member">hmap::random_cloud_distance_weibull</ref>(count,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1adbf23e37fc6623a80625dad7af59ea3c" kindref="member">hmap::random_cloud_distance_weibull</ref>(0.01f<sp/></highlight><highlight class="comment">/*<sp/>dist_min<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0.05f<sp/></highlight><highlight class="comment">/*<sp/>lambda<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0.8f<sp/></highlight><highlight class="comment">/*<sp/>k<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1.f<sp/></highlight><highlight class="comment">/*<sp/>k<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;count:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>cloud.<ref refid="classhmap_1_1Cloud_1a4d6feb0c127bcea6566b600444cf103c" kindref="member">get_npoints</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>raster<sp/>=<sp/>0.f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1ad83d71a8729a0e4fcce993c0141275ee" kindref="member">to_array</ref>(raster);</highlight></codeline>
@@ -22442,7 +22472,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/cloud.cpp" line="585" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="585" bodyend="594" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="737" declcolumn="7"/>
+        <location file="HighMap/src/geometry/cloud.cpp" line="583" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="583" bodyend="592" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="735" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a45d91dd35adc332dfaea80188aa88529" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Cloud" kindref="compound">Cloud</ref></type>
@@ -22519,7 +22549,9 @@ This function:<itemizedlist>
 </parameterlist>
 <simplesect kind="return"><para>A <ref refid="classhmap_1_1Cloud" kindref="compound">Cloud</ref> containing the generated points.</para>
 </simplesect>
-<bold>Example</bold> <programlisting filename="ex_point_sampling.cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<bold>Example</bold> <programlisting filename="ex_point_sampling.cpp"><codeline><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
 <codeline><highlight class="normal">{</highlight></codeline>
@@ -22596,24 +22628,29 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a3c7d0352e60c2fd0ea923a68b569ffb0" kindref="member">hmap::random_cloud_distance</ref>(min_dist,<sp/>max_dist,<sp/>density,<sp/>seed);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;count:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>cloud.<ref refid="classhmap_1_1Cloud_1a4d6feb0c127bcea6566b600444cf103c" kindref="member">get_npoints</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>raster<sp/>=<sp/>0.f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1ad83d71a8729a0e4fcce993c0141275ee" kindref="member">to_array</ref>(raster);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>zs.push_back(raster);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a5f5bc198303be7b692e06914df758461" kindref="member">hmap::random_cloud_distance_power_law</ref>(count,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0.01f<sp/></highlight><highlight class="comment">/*<sp/>dist_min<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a684aff4918cc8dd388c4b2d3bfb177e6" kindref="member">hmap::random_cloud_distance_power_law</ref>(0.01f<sp/></highlight><highlight class="comment">/*<sp/>dist_min<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0.2f<sp/></highlight><highlight class="comment">/*<sp/>dist_max<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1.2f<sp/></highlight><highlight class="comment">/*<sp/>alpha<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;count:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>cloud.<ref refid="classhmap_1_1Cloud_1a4d6feb0c127bcea6566b600444cf103c" kindref="member">get_npoints</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>raster<sp/>=<sp/>0.f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1ad83d71a8729a0e4fcce993c0141275ee" kindref="member">to_array</ref>(raster);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>zs.push_back(raster);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a357579f97d734a8d8b394986a8adf5bd" kindref="member">hmap::random_cloud_distance_weibull</ref>(count,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1adbf23e37fc6623a80625dad7af59ea3c" kindref="member">hmap::random_cloud_distance_weibull</ref>(0.01f<sp/></highlight><highlight class="comment">/*<sp/>dist_min<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0.05f<sp/></highlight><highlight class="comment">/*<sp/>lambda<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0.8f<sp/></highlight><highlight class="comment">/*<sp/>k<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1.f<sp/></highlight><highlight class="comment">/*<sp/>k<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;count:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>cloud.<ref refid="classhmap_1_1Cloud_1a4d6feb0c127bcea6566b600444cf103c" kindref="member">get_npoints</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>raster<sp/>=<sp/>0.f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1ad83d71a8729a0e4fcce993c0141275ee" kindref="member">to_array</ref>(raster);</highlight></codeline>
@@ -22658,7 +22695,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/cloud.cpp" line="596" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="596" bodyend="609" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="768" declcolumn="7"/>
+        <location file="HighMap/src/geometry/cloud.cpp" line="594" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="594" bodyend="607" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="766" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ab085d07bc0e897729ca16c0dd2035fe1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -24395,7 +24432,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/point_sampling.cpp" line="32" column="12" bodyfile="HighMap/src/geometry/point_sampling.cpp" bodystart="32" bodyend="38" declfile="HighMap/include/highmap/geometry/point_sampling.hpp" declline="62" declcolumn="12"/>
+        <location file="HighMap/src/geometry/point_sampling.cpp" line="39" column="12" bodyfile="HighMap/src/geometry/point_sampling.cpp" bodystart="39" bodyend="45" declfile="HighMap/include/highmap/geometry/point_sampling.hpp" declline="62" declcolumn="12"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ac3b1e6c5b2380e41efff2501021638f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -24688,7 +24725,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/point_sampling.cpp" line="40" column="12" bodyfile="HighMap/src/geometry/point_sampling.cpp" bodystart="40" bodyend="78" declfile="HighMap/include/highmap/geometry/point_sampling.hpp" declline="121" declcolumn="12"/>
+        <location file="HighMap/src/geometry/point_sampling.cpp" line="47" column="12" bodyfile="HighMap/src/geometry/point_sampling.cpp" bodystart="47" bodyend="85" declfile="HighMap/include/highmap/geometry/point_sampling.hpp" declline="121" declcolumn="12"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ac30b62e2cc35d56c33af4d1c12c54f81" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::array&lt; std::vector&lt; float &gt;, 2 &gt;</type>
@@ -24757,7 +24794,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/point_sampling.cpp" line="80" column="12" bodyfile="HighMap/src/geometry/point_sampling.cpp" bodystart="80" bodyend="93" declfile="HighMap/include/highmap/geometry/point_sampling.hpp" declline="141" declcolumn="12"/>
+        <location file="HighMap/src/geometry/point_sampling.cpp" line="87" column="12" bodyfile="HighMap/src/geometry/point_sampling.cpp" bodystart="87" bodyend="100" declfile="HighMap/include/highmap/geometry/point_sampling.hpp" declline="141" declcolumn="12"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1acb1099889036fd10623012ab68592914" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::array&lt; std::vector&lt; float &gt;, 2 &gt;</type>
@@ -24814,7 +24851,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/point_sampling.cpp" line="95" column="12" bodyfile="HighMap/src/geometry/point_sampling.cpp" bodystart="95" bodyend="111" declfile="HighMap/include/highmap/geometry/point_sampling.hpp" declline="160" declcolumn="12"/>
+        <location file="HighMap/src/geometry/point_sampling.cpp" line="102" column="12" bodyfile="HighMap/src/geometry/point_sampling.cpp" bodystart="102" bodyend="115" declfile="HighMap/include/highmap/geometry/point_sampling.hpp" declline="160" declcolumn="12"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aca05646c60f189d1cb4ade3c062ea0e2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::array&lt; std::vector&lt; float &gt;, 2 &gt;</type>
@@ -24895,18 +24932,14 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/point_sampling.cpp" line="113" column="12" bodyfile="HighMap/src/geometry/point_sampling.cpp" bodystart="113" bodyend="137" declfile="HighMap/include/highmap/geometry/point_sampling.hpp" declline="181" declcolumn="12"/>
+        <location file="HighMap/src/geometry/point_sampling.cpp" line="117" column="12" bodyfile="HighMap/src/geometry/point_sampling.cpp" bodystart="117" bodyend="140" declfile="HighMap/include/highmap/geometry/point_sampling.hpp" declline="181" declcolumn="12"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1a15a0f012794ba66b87994d3c662c5fb2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacehmap_1a58c8f359e1421bef310e45bcbc57cef8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::array&lt; std::vector&lt; float &gt;, 2 &gt;</type>
         <definition>std::array&lt; std::vector&lt; float &gt;, 2 &gt; hmap::random_points_distance_power_law</definition>
-        <argsstring>(size_t count, float dist_min, float dist_max, float alpha, uint seed, const Vec4&lt; float &gt; &amp;bbox={0.f, 1.f, 0.f, 1.f})</argsstring>
+        <argsstring>(float dist_min, float dist_max, float alpha, uint seed, const Vec4&lt; float &gt; &amp;bbox={0.f, 1.f, 0.f, 1.f})</argsstring>
         <name>random_points_distance_power_law</name>
         <qualifiedname>hmap::random_points_distance_power_law</qualifiedname>
-        <param>
-          <type>size_t</type>
-          <declname>count</declname>
-        </param>
         <param>
           <type>float</type>
           <declname>dist_min</declname>
@@ -24934,14 +24967,6 @@ This function:<itemizedlist>
         <detaileddescription>
 <para>Distances between points follow a power-law distribution between <computeroutput>dist_min</computeroutput> and <computeroutput>dist_max</computeroutput>, with exponent <computeroutput>alpha</computeroutput>.</para>
 <para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>count</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Number of points to generate. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
 <parameternamelist>
 <parametername>dist_min</parametername>
 </parameternamelist>
@@ -24988,17 +25013,17 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/point_sampling.cpp" line="139" column="12" bodyfile="HighMap/src/geometry/point_sampling.cpp" bodystart="139" bodyend="156" declfile="HighMap/include/highmap/geometry/point_sampling.hpp" declline="205" declcolumn="12"/>
+        <location file="HighMap/src/geometry/point_sampling.cpp" line="142" column="12" bodyfile="HighMap/src/geometry/point_sampling.cpp" bodystart="142" bodyend="159" declfile="HighMap/include/highmap/geometry/point_sampling.hpp" declline="204" declcolumn="12"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1a59fb84175451fb2894cc895cb3b20c98" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacehmap_1a6bc713eef74cda58ab2c3b41eb444b17" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::array&lt; std::vector&lt; float &gt;, 2 &gt;</type>
         <definition>std::array&lt; std::vector&lt; float &gt;, 2 &gt; hmap::random_points_distance_weibull</definition>
-        <argsstring>(size_t count, float lambda, float k, uint seed, const Vec4&lt; float &gt; &amp;bbox={0.f, 1.f, 0.f, 1.f})</argsstring>
+        <argsstring>(float dist_min, float lambda, float k, uint seed, const Vec4&lt; float &gt; &amp;bbox={0.f, 1.f, 0.f, 1.f})</argsstring>
         <name>random_points_distance_weibull</name>
         <qualifiedname>hmap::random_points_distance_weibull</qualifiedname>
         <param>
-          <type>size_t</type>
-          <declname>count</declname>
+          <type>float</type>
+          <declname>dist_min</declname>
         </param>
         <param>
           <type>float</type>
@@ -25024,10 +25049,10 @@ This function:<itemizedlist>
 <para>Distances between points follow a Weibull distribution parameterized by <computeroutput>lambda</computeroutput> (scale) and <computeroutput>k</computeroutput> (shape).</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
-<parametername>count</parametername>
+<parametername>dist_min</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Number of points to generate. </para>
+<para>Minimum possible distance between points. </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -25069,7 +25094,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/point_sampling.cpp" line="158" column="12" bodyfile="HighMap/src/geometry/point_sampling.cpp" bodystart="158" bodyend="173" declfile="HighMap/include/highmap/geometry/point_sampling.hpp" declline="229" declcolumn="12"/>
+        <location file="HighMap/src/geometry/point_sampling.cpp" line="161" column="12" bodyfile="HighMap/src/geometry/point_sampling.cpp" bodystart="161" bodyend="178" declfile="HighMap/include/highmap/geometry/point_sampling.hpp" declline="227" declcolumn="12"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a8dad71368ba3687b381f3c72b66cace5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::array&lt; std::vector&lt; float &gt;, 2 &gt;</type>
@@ -25150,7 +25175,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/point_sampling.cpp" line="175" column="12" bodyfile="HighMap/src/geometry/point_sampling.cpp" bodystart="175" bodyend="188" declfile="HighMap/include/highmap/geometry/point_sampling.hpp" declline="251" declcolumn="12"/>
+        <location file="HighMap/src/geometry/point_sampling.cpp" line="180" column="12" bodyfile="HighMap/src/geometry/point_sampling.cpp" bodystart="180" bodyend="193" declfile="HighMap/include/highmap/geometry/point_sampling.hpp" declline="249" declcolumn="12"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a9e701766f54eaf6ad79956bf90b9bb8b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -25216,7 +25241,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/geometry/point_sampling.hpp" line="265" column="6" declfile="HighMap/include/highmap/geometry/point_sampling.hpp" declline="265" declcolumn="6"/>
+        <location file="HighMap/include/highmap/geometry/point_sampling.hpp" line="263" column="6" declfile="HighMap/include/highmap/geometry/point_sampling.hpp" declline="263" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a72b1f87026fe5d88b0febb8bc6592c2c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -25271,7 +25296,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/grid.cpp" line="139" column="6" bodyfile="HighMap/src/geometry/grid.cpp" bodystart="139" bodyend="148" declfile="HighMap/include/highmap/geometry/point_sampling.hpp" declline="277" declcolumn="6"/>
+        <location file="HighMap/src/geometry/grid.cpp" line="139" column="6" bodyfile="HighMap/src/geometry/grid.cpp" bodystart="139" bodyend="148" declfile="HighMap/include/highmap/geometry/point_sampling.hpp" declline="275" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ab0755dccfcae2b02a211c091e33f79a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; float &gt;</type>
@@ -47278,6 +47303,28 @@ off&quot; values that fall below the threshold, which can be useful for filterin
         <inbodydescription>
         </inbodydescription>
         <location file="HighMap/src/geometry/point_sampling.cpp" line="10" column="6" bodyfile="HighMap/src/geometry/point_sampling.cpp" bodystart="10" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehmap_1ab0d4915bfc4b51ec9102185c49503ae9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t hmap::helper_estimate_count</definition>
+        <argsstring>(const Vec4&lt; float &gt; &amp;bbox, float distance)</argsstring>
+        <name>helper_estimate_count</name>
+        <qualifiedname>hmap::helper_estimate_count</qualifiedname>
+        <param>
+          <type>const <ref refid="structhmap_1_1Vec4" kindref="compound">Vec4</ref>&lt; float &gt; &amp;</type>
+          <declname>bbox</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>distance</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/geometry/point_sampling.cpp" line="32" column="8" bodyfile="HighMap/src/geometry/point_sampling.cpp" bodystart="32" bodyend="37"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ac070e7f9253f57fe6b44ad1f6c9fd753" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>

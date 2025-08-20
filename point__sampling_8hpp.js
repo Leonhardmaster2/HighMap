@@ -14,8 +14,8 @@ var point__sampling_8hpp =
     [ "random_points_density", "point__sampling_8hpp.html#ac30b62e2cc35d56c33af4d1c12c54f81", null ],
     [ "random_points_distance", "point__sampling_8hpp.html#acb1099889036fd10623012ab68592914", null ],
     [ "random_points_distance", "point__sampling_8hpp.html#aca05646c60f189d1cb4ade3c062ea0e2", null ],
-    [ "random_points_distance_power_law", "point__sampling_8hpp.html#a15a0f012794ba66b87994d3c662c5fb2", null ],
-    [ "random_points_distance_weibull", "point__sampling_8hpp.html#a59fb84175451fb2894cc895cb3b20c98", null ],
+    [ "random_points_distance_power_law", "point__sampling_8hpp.html#a58c8f359e1421bef310e45bcbc57cef8", null ],
+    [ "random_points_distance_weibull", "point__sampling_8hpp.html#a6bc713eef74cda58ab2c3b41eb444b17", null ],
     [ "random_points_jittered", "point__sampling_8hpp.html#a8dad71368ba3687b381f3c72b66cace5", null ],
     [ "remove_points_outside_bbox", "point__sampling_8hpp.html#a9e701766f54eaf6ad79956bf90b9bb8b", null ],
     [ "rescale_points_to_unit_square", "point__sampling_8hpp.html#a72b1f87026fe5d88b0febb8bc6592c2c", null ]
