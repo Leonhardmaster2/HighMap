@@ -825,6 +825,10 @@ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmap_1_1NoiseFunction}{hmap\+::\
 \begin{DoxyCompactList}\small\item\em Generates a random cloud of points separated by at least a given minimum distance. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} \mbox{\hyperlink{namespacehmap_a75179356e03f22029303a31db1320ac0}{random\+\_\+cloud\+\_\+distance}} (float min\+\_\+dist, float max\+\_\+dist, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&density, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, const \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ \&bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
 \begin{DoxyCompactList}\small\item\em Generates a random cloud of points separated by a distance range, influenced by a density map. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} \mbox{\hyperlink{namespacehmap_a5f5bc198303be7b692e06914df758461}{random\+\_\+cloud\+\_\+distance\+\_\+power\+\_\+law}} (size\+\_\+t count, float dist\+\_\+min, float dist\+\_\+max, float alpha, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, const \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ \&bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
+\begin{DoxyCompactList}\small\item\em Generates a random cloud of points with distances drawn from a power-\/law distribution. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} \mbox{\hyperlink{namespacehmap_a357579f97d734a8d8b394986a8adf5bd}{random\+\_\+cloud\+\_\+distance\+\_\+weibull}} (size\+\_\+t count, float lambda, float k, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, const \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ \&bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
+\begin{DoxyCompactList}\small\item\em Generates a random cloud of points with distances drawn from a Weibull distribution. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} \mbox{\hyperlink{namespacehmap_a45d91dd35adc332dfaea80188aa88529}{random\+\_\+cloud\+\_\+jittered}} (size\+\_\+t count, const \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ float $>$ \&jitter\+\_\+amount, const \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ float $>$ \&stagger\+\_\+ratio, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, const \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ \&bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
 \begin{DoxyCompactList}\small\item\em Generates a jittered grid cloud of points. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{namespacehmap_ab085d07bc0e897729ca16c0dd2035fe1}{convert\+\_\+length\+\_\+to\+\_\+pixel}} (float x, int nx, bool lim\+\_\+inf=true, bool lim\+\_\+sup=false, float scale=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
@@ -887,6 +891,10 @@ std\+::array$<$ std\+::vector$<$ float $>$, 2 $>$ \mbox{\hyperlink{namespacehmap
 \begin{DoxyCompactList}\small\item\em Generates random 2D points with a minimum separation distance. \end{DoxyCompactList}\item 
 std\+::array$<$ std\+::vector$<$ float $>$, 2 $>$ \mbox{\hyperlink{namespacehmap_aca05646c60f189d1cb4ade3c062ea0e2}{random\+\_\+points\+\_\+distance}} (float min\+\_\+dist, float max\+\_\+dist, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&density, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, const \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ \&bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
 \begin{DoxyCompactList}\small\item\em Generates random 2D points with distance constraints and a density map. \end{DoxyCompactList}\item 
+std\+::array$<$ std\+::vector$<$ float $>$, 2 $>$ \mbox{\hyperlink{namespacehmap_a15a0f012794ba66b87994d3c662c5fb2}{random\+\_\+points\+\_\+distance\+\_\+power\+\_\+law}} (size\+\_\+t count, float dist\+\_\+min, float dist\+\_\+max, float alpha, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, const \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ \&bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
+\begin{DoxyCompactList}\small\item\em Generates random 2D points with distances drawn from a power-\/law distribution. \end{DoxyCompactList}\item 
+std\+::array$<$ std\+::vector$<$ float $>$, 2 $>$ \mbox{\hyperlink{namespacehmap_a59fb84175451fb2894cc895cb3b20c98}{random\+\_\+points\+\_\+distance\+\_\+weibull}} (size\+\_\+t count, float lambda, float k, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, const \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ \&bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
+\begin{DoxyCompactList}\small\item\em Generates random 2D points with distances drawn from a Weibull distribution. \end{DoxyCompactList}\item 
 std\+::array$<$ std\+::vector$<$ float $>$, 2 $>$ \mbox{\hyperlink{namespacehmap_a8dad71368ba3687b381f3c72b66cace5}{random\+\_\+points\+\_\+jittered}} (size\+\_\+t count, const \mbox{\hyperlink{structhmap_1_1Vec2}{hmap\+::\+Vec2}}$<$ float $>$ \&jitter\+\_\+amount, const \mbox{\hyperlink{structhmap_1_1Vec2}{hmap\+::\+Vec2}}$<$ float $>$ \&stagger\+\_\+ratio, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, const \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ \&bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
 \begin{DoxyCompactList}\small\item\em Generates jittered grid-\/based 2D points. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a9e701766f54eaf6ad79956bf90b9bb8b}{remove\+\_\+points\+\_\+outside\+\_\+bbox}} (std\+::vector$<$ float $>$ \&x, std\+::vector$<$ float $>$ \&y, std\+::vector$<$ float $>$ \&value, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
@@ -12432,6 +12440,25 @@ A \doxylink{classhmap_1_1Cloud}{Cloud} containing the generated points.
 \DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_ad83d71a8729a0e4fcce993c0141275ee}{to\_array}}(raster);}
 \DoxyCodeLine{\ \ \ \ zs.push\_back(raster);}
 \DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ cloud\ =\ \mbox{\hyperlink{namespacehmap_a5f5bc198303be7b692e06914df758461}{hmap::random\_cloud\_distance\_power\_law}}(count,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.01f\ \textcolor{comment}{/*\ dist\_min\ */},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.2f\ \textcolor{comment}{/*\ dist\_max\ */},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 1.2f\ \textcolor{comment}{/*\ alpha\ */},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ raster\ =\ 0.f;}
+\DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_ad83d71a8729a0e4fcce993c0141275ee}{to\_array}}(raster);}
+\DoxyCodeLine{\ \ \ \ zs.push\_back(raster);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ cloud\ =\ \mbox{\hyperlink{namespacehmap_a357579f97d734a8d8b394986a8adf5bd}{hmap::random\_cloud\_distance\_weibull}}(count,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.05f\ \textcolor{comment}{/*\ lambda\ */},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.8f\ \textcolor{comment}{/*\ k\ */},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ raster\ =\ 0.f;}
+\DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_ad83d71a8729a0e4fcce993c0141275ee}{to\_array}}(raster);}
+\DoxyCodeLine{\ \ \ \ zs.push\_back(raster);}
+\DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{namespacehmap_a1c490f296571a75e35d05b10c075ae6c}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_point\_sampling2.png"{}},\ zs,\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a4eb53d94f58e93c3bdb554d8cca7f306}{hmap::Cmap::BONE}});}
 \DoxyCodeLine{\ \ \}}
 \DoxyCodeLine{}
@@ -12570,6 +12597,25 @@ A \doxylink{classhmap_1_1Cloud}{Cloud} containing the generated points.
 \DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ density,\ seed);\ cloud\ =\ hmap::Cloud(xy[0],\ xy[1],\ 1.f\ /*\ value\ */);}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ cloud\ =\ \mbox{\hyperlink{namespacehmap_a3c7d0352e60c2fd0ea923a68b569ffb0}{hmap::random\_cloud\_distance}}(min\_dist,\ max\_dist,\ density,\ seed);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ raster\ =\ 0.f;}
+\DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_ad83d71a8729a0e4fcce993c0141275ee}{to\_array}}(raster);}
+\DoxyCodeLine{\ \ \ \ zs.push\_back(raster);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ cloud\ =\ \mbox{\hyperlink{namespacehmap_a5f5bc198303be7b692e06914df758461}{hmap::random\_cloud\_distance\_power\_law}}(count,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.01f\ \textcolor{comment}{/*\ dist\_min\ */},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.2f\ \textcolor{comment}{/*\ dist\_max\ */},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 1.2f\ \textcolor{comment}{/*\ alpha\ */},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ raster\ =\ 0.f;}
+\DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_ad83d71a8729a0e4fcce993c0141275ee}{to\_array}}(raster);}
+\DoxyCodeLine{\ \ \ \ zs.push\_back(raster);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ cloud\ =\ \mbox{\hyperlink{namespacehmap_a357579f97d734a8d8b394986a8adf5bd}{hmap::random\_cloud\_distance\_weibull}}(count,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.05f\ \textcolor{comment}{/*\ lambda\ */},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.8f\ \textcolor{comment}{/*\ k\ */},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ raster\ =\ 0.f;}
 \DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_ad83d71a8729a0e4fcce993c0141275ee}{to\_array}}(raster);}
@@ -12716,6 +12762,25 @@ A \doxylink{classhmap_1_1Cloud}{Cloud} containing the generated points.
 \DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_ad83d71a8729a0e4fcce993c0141275ee}{to\_array}}(raster);}
 \DoxyCodeLine{\ \ \ \ zs.push\_back(raster);}
 \DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ cloud\ =\ \mbox{\hyperlink{namespacehmap_a5f5bc198303be7b692e06914df758461}{hmap::random\_cloud\_distance\_power\_law}}(count,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.01f\ \textcolor{comment}{/*\ dist\_min\ */},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.2f\ \textcolor{comment}{/*\ dist\_max\ */},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 1.2f\ \textcolor{comment}{/*\ alpha\ */},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ raster\ =\ 0.f;}
+\DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_ad83d71a8729a0e4fcce993c0141275ee}{to\_array}}(raster);}
+\DoxyCodeLine{\ \ \ \ zs.push\_back(raster);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ cloud\ =\ \mbox{\hyperlink{namespacehmap_a357579f97d734a8d8b394986a8adf5bd}{hmap::random\_cloud\_distance\_weibull}}(count,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.05f\ \textcolor{comment}{/*\ lambda\ */},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.8f\ \textcolor{comment}{/*\ k\ */},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ raster\ =\ 0.f;}
+\DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_ad83d71a8729a0e4fcce993c0141275ee}{to\_array}}(raster);}
+\DoxyCodeLine{\ \ \ \ zs.push\_back(raster);}
+\DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{namespacehmap_a1c490f296571a75e35d05b10c075ae6c}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_point\_sampling2.png"{}},\ zs,\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a4eb53d94f58e93c3bdb554d8cca7f306}{hmap::Cmap::BONE}});}
 \DoxyCodeLine{\ \ \}}
 \DoxyCodeLine{}
@@ -12760,7 +12825,7 @@ A \doxylink{classhmap_1_1Cloud}{Cloud} containing the generated points.
 
 Generates a random cloud of points separated by a distance range, influenced by a density map. 
 
-Points maintain a separation between min\+\_\+dist and max\+\_\+dist, and are distributed according to the provided density map.
+Points maintain a separation between {\ttfamily min\+\_\+dist} and {\ttfamily max\+\_\+dist}, and are distributed according to the provided density map.
 
 
 \begin{DoxyParams}{Parameters}
@@ -12856,6 +12921,355 @@ A \doxylink{classhmap_1_1Cloud}{Cloud} containing the generated points.
 \DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ density,\ seed);\ cloud\ =\ hmap::Cloud(xy[0],\ xy[1],\ 1.f\ /*\ value\ */);}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ cloud\ =\ \mbox{\hyperlink{namespacehmap_a3c7d0352e60c2fd0ea923a68b569ffb0}{hmap::random\_cloud\_distance}}(min\_dist,\ max\_dist,\ density,\ seed);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ raster\ =\ 0.f;}
+\DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_ad83d71a8729a0e4fcce993c0141275ee}{to\_array}}(raster);}
+\DoxyCodeLine{\ \ \ \ zs.push\_back(raster);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ cloud\ =\ \mbox{\hyperlink{namespacehmap_a5f5bc198303be7b692e06914df758461}{hmap::random\_cloud\_distance\_power\_law}}(count,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.01f\ \textcolor{comment}{/*\ dist\_min\ */},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.2f\ \textcolor{comment}{/*\ dist\_max\ */},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 1.2f\ \textcolor{comment}{/*\ alpha\ */},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ raster\ =\ 0.f;}
+\DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_ad83d71a8729a0e4fcce993c0141275ee}{to\_array}}(raster);}
+\DoxyCodeLine{\ \ \ \ zs.push\_back(raster);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ cloud\ =\ \mbox{\hyperlink{namespacehmap_a357579f97d734a8d8b394986a8adf5bd}{hmap::random\_cloud\_distance\_weibull}}(count,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.05f\ \textcolor{comment}{/*\ lambda\ */},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.8f\ \textcolor{comment}{/*\ k\ */},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ raster\ =\ 0.f;}
+\DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_ad83d71a8729a0e4fcce993c0141275ee}{to\_array}}(raster);}
+\DoxyCodeLine{\ \ \ \ zs.push\_back(raster);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{namespacehmap_a1c490f296571a75e35d05b10c075ae6c}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_point\_sampling2.png"{}},\ zs,\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a4eb53d94f58e93c3bdb554d8cca7f306}{hmap::Cmap::BONE}});}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ grid\ jittered}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ zs.clear();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{structhmap_1_1Vec2}{hmap::Vec2<float>}}\ jitter\_amount\ =\ \{0.3f,\ 0.3f\};}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{structhmap_1_1Vec2}{hmap::Vec2<float>}}\ stagger\_ratio\ =\ \{0.5f,\ 0.f\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ auto\ \ \ \ \ \ \ \ xy\ =\ hmap::random\_points\_jittered(count,}}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ jitter\_amount,}}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stagger\_ratio,}}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed);}}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ hmap::Cloud\ cloud(xy[0],\ xy[1],\ 1.f\ /*\ value\ */);}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Cloud}{hmap::Cloud}}\ cloud\ =\ \mbox{\hyperlink{namespacehmap_a45d91dd35adc332dfaea80188aa88529}{hmap::random\_cloud\_jittered}}(count,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ jitter\_amount,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stagger\_ratio,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed);}
+\DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_ad8b2d626436107c4b0e2c9877747375f}{set\_values\_from\_min\_distance}}();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ raster\ =\ 0.f;}
+\DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_ad83d71a8729a0e4fcce993c0141275ee}{to\_array}}(raster);}
+\DoxyCodeLine{\ \ \ \ zs.push\_back(raster);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{namespacehmap_a1c490f296571a75e35d05b10c075ae6c}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_point\_sampling3.png"{}},\ zs,\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a4eb53d94f58e93c3bdb554d8cca7f306}{hmap::Cmap::BONE}});}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}}     \Hypertarget{namespacehmap_a5f5bc198303be7b692e06914df758461}\label{namespacehmap_a5f5bc198303be7b692e06914df758461} 
+\index{hmap@{hmap}!random\_cloud\_distance\_power\_law@{random\_cloud\_distance\_power\_law}}
+\index{random\_cloud\_distance\_power\_law@{random\_cloud\_distance\_power\_law}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{random\_cloud\_distance\_power\_law()}{random\_cloud\_distance\_power\_law()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} hmap\+::random\+\_\+cloud\+\_\+distance\+\_\+power\+\_\+law (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{count,  }\item[{float}]{dist\+\_\+min,  }\item[{float}]{dist\+\_\+max,  }\item[{float}]{alpha,  }\item[{\mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{seed,  }\item[{const \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ \&}]{bbox = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}} }\end{DoxyParamCaption})}
+
+
+
+Generates a random cloud of points with distances drawn from a power-\/law distribution. 
+
+Distances between points follow a power-\/law distribution between {\ttfamily dist\+\_\+min} and {\ttfamily dist\+\_\+max}, with exponent {\ttfamily alpha}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em count} & Number of points to generate. \\
+\hline
+{\em dist\+\_\+min} & Minimum possible distance between points. \\
+\hline
+{\em dist\+\_\+max} & Maximum possible distance between points. \\
+\hline
+{\em alpha} & Power-\/law exponent (larger alpha favors shorter distances). \\
+\hline
+{\em seed} & Random number generator seed. \\
+\hline
+{\em bbox} & Bounding box in which to generate the points (a,b,c,d = xmin, xmax, ymin, ymax). Defaults to the unit square \{0.\+f, 1.\+f, 0.\+f, 1.\+f\}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \doxylink{classhmap_1_1Cloud}{Cloud} containing the generated points.
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ for\ render\ only}}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{structhmap_1_1Vec2}{hmap::Vec2<int>}}\ \ \ \ \ \ \ \ \ \ shape\ =\ \{256,\ 256\};}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ raster(shape);}
+\DoxyCodeLine{\ \ std::vector<hmap::Array>\ zs\ =\ \{\};}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed\ =\ 0;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ density\ field}}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{structhmap_1_1Vec2}{hmap::Vec2<float>}}\ kw\ =\ \{2.f,\ 2.f\};}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ density\ =\ \mbox{\hyperlink{namespacehmap_a03c0be3a7198eebacefcb208b0cfee99}{hmap::noise}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ kw,\ seed);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(density);\ \textcolor{comment}{//\ /!\(\backslash\)\ NEEDS\ TO\ BE\ IN\ [0,\ 1]}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ base\ param}}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{size\_t}\ count\ =\ 1000;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ random}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \&type\ :\ \{\mbox{\hyperlink{namespacehmap_aba758c4143b6e499ec6f4385467a6d77aea0acc8d27d5a8a13e107f49120c084e}{hmap::PointSamplingMethod::RND\_RANDOM}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_aba758c4143b6e499ec6f4385467a6d77a99ca15104343ff0356c6fc0ffe4f837d}{hmap::PointSamplingMethod::RND\_HALTON}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_aba758c4143b6e499ec6f4385467a6d77aeebf5714b383e3b3be100ceba46d8fe5}{hmap::PointSamplingMethod::RND\_HAMMERSLEY}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_aba758c4143b6e499ec6f4385467a6d77a8943dd2a2e3993c1e0cff37be3f65957}{hmap::PointSamplingMethod::RND\_LHS}}\})}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ auto\ xy\ =\ hmap::random\_points(count,\ seed,\ type);}}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ hmap::Cloud\ cloud(xy[0],\ xy[1],\ 1.f\ /*\ value\ */);}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Cloud}{hmap::Cloud}}\ cloud\ =\ \mbox{\hyperlink{namespacehmap_aa0bf57ef5e675f0aa851bc8f4b734acd}{hmap::random\_cloud}}(count,\ seed,\ type);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_ad83d71a8729a0e4fcce993c0141275ee}{to\_array}}(raster);}
+\DoxyCodeLine{\ \ \ \ zs.push\_back(raster);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a1c490f296571a75e35d05b10c075ae6c}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_point\_sampling0.png"{}},\ zs,\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a4eb53d94f58e93c3bdb554d8cca7f306}{hmap::Cmap::BONE}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ density}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ zs.clear();}
+\DoxyCodeLine{\ \ \ \ zs.push\_back(density);}
+\DoxyCodeLine{\ \ \ \ raster\ =\ 0.f;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ auto\ \ \ \ \ \ \ \ xy\ =\ hmap::random\_points\_density(count,\ density,\ seed);}}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ hmap::Cloud\ cloud(xy[0],\ xy[1],\ 1.f\ /*\ value\ */);}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Cloud}{hmap::Cloud}}\ cloud\ =\ \mbox{\hyperlink{namespacehmap_a83368f74414e23015bf543c36d8bfbef}{hmap::random\_cloud\_density}}(count,\ density,\ seed);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_ad83d71a8729a0e4fcce993c0141275ee}{to\_array}}(raster);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ zs.push\_back(raster);}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{namespacehmap_a1c490f296571a75e35d05b10c075ae6c}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_point\_sampling1.png"{}},\ zs,\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a4eb53d94f58e93c3bdb554d8cca7f306}{hmap::Cmap::BONE}});}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ distance\ based}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ zs.clear();}
+\DoxyCodeLine{\ \ \ \ zs.push\_back(density);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{float}\ min\_dist\ =\ 0.02f;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{float}\ max\_dist\ =\ 0.08f;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ auto\ \ \ \ \ \ \ \ xy\ =\ hmap::random\_points\_distance(min\_dist,\ seed);}}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ hmap::Cloud\ cloud(xy[0],\ xy[1],\ 1.f\ /*\ value\ */);}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Cloud}{hmap::Cloud}}\ cloud\ =\ \mbox{\hyperlink{namespacehmap_a3c7d0352e60c2fd0ea923a68b569ffb0}{hmap::random\_cloud\_distance}}(min\_dist,\ seed);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ raster\ =\ 0.f;}
+\DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_ad83d71a8729a0e4fcce993c0141275ee}{to\_array}}(raster);}
+\DoxyCodeLine{\ \ \ \ zs.push\_back(raster);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ auto\ \ \ \ \ \ \ \ xy\ =\ hmap::random\_points\_distance(min\_dist,\ max\_dist,}}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ density,\ seed);\ cloud\ =\ hmap::Cloud(xy[0],\ xy[1],\ 1.f\ /*\ value\ */);}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ cloud\ =\ \mbox{\hyperlink{namespacehmap_a3c7d0352e60c2fd0ea923a68b569ffb0}{hmap::random\_cloud\_distance}}(min\_dist,\ max\_dist,\ density,\ seed);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ raster\ =\ 0.f;}
+\DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_ad83d71a8729a0e4fcce993c0141275ee}{to\_array}}(raster);}
+\DoxyCodeLine{\ \ \ \ zs.push\_back(raster);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ cloud\ =\ \mbox{\hyperlink{namespacehmap_a5f5bc198303be7b692e06914df758461}{hmap::random\_cloud\_distance\_power\_law}}(count,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.01f\ \textcolor{comment}{/*\ dist\_min\ */},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.2f\ \textcolor{comment}{/*\ dist\_max\ */},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 1.2f\ \textcolor{comment}{/*\ alpha\ */},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ raster\ =\ 0.f;}
+\DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_ad83d71a8729a0e4fcce993c0141275ee}{to\_array}}(raster);}
+\DoxyCodeLine{\ \ \ \ zs.push\_back(raster);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ cloud\ =\ \mbox{\hyperlink{namespacehmap_a357579f97d734a8d8b394986a8adf5bd}{hmap::random\_cloud\_distance\_weibull}}(count,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.05f\ \textcolor{comment}{/*\ lambda\ */},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.8f\ \textcolor{comment}{/*\ k\ */},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ raster\ =\ 0.f;}
+\DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_ad83d71a8729a0e4fcce993c0141275ee}{to\_array}}(raster);}
+\DoxyCodeLine{\ \ \ \ zs.push\_back(raster);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{namespacehmap_a1c490f296571a75e35d05b10c075ae6c}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_point\_sampling2.png"{}},\ zs,\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a4eb53d94f58e93c3bdb554d8cca7f306}{hmap::Cmap::BONE}});}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ grid\ jittered}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ zs.clear();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{structhmap_1_1Vec2}{hmap::Vec2<float>}}\ jitter\_amount\ =\ \{0.3f,\ 0.3f\};}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{structhmap_1_1Vec2}{hmap::Vec2<float>}}\ stagger\_ratio\ =\ \{0.5f,\ 0.f\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ auto\ \ \ \ \ \ \ \ xy\ =\ hmap::random\_points\_jittered(count,}}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ jitter\_amount,}}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stagger\_ratio,}}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed);}}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ hmap::Cloud\ cloud(xy[0],\ xy[1],\ 1.f\ /*\ value\ */);}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Cloud}{hmap::Cloud}}\ cloud\ =\ \mbox{\hyperlink{namespacehmap_a45d91dd35adc332dfaea80188aa88529}{hmap::random\_cloud\_jittered}}(count,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ jitter\_amount,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stagger\_ratio,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed);}
+\DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_ad8b2d626436107c4b0e2c9877747375f}{set\_values\_from\_min\_distance}}();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ raster\ =\ 0.f;}
+\DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_ad83d71a8729a0e4fcce993c0141275ee}{to\_array}}(raster);}
+\DoxyCodeLine{\ \ \ \ zs.push\_back(raster);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{namespacehmap_a1c490f296571a75e35d05b10c075ae6c}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_point\_sampling3.png"{}},\ zs,\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a4eb53d94f58e93c3bdb554d8cca7f306}{hmap::Cmap::BONE}});}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}}     \Hypertarget{namespacehmap_a357579f97d734a8d8b394986a8adf5bd}\label{namespacehmap_a357579f97d734a8d8b394986a8adf5bd} 
+\index{hmap@{hmap}!random\_cloud\_distance\_weibull@{random\_cloud\_distance\_weibull}}
+\index{random\_cloud\_distance\_weibull@{random\_cloud\_distance\_weibull}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{random\_cloud\_distance\_weibull()}{random\_cloud\_distance\_weibull()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} hmap\+::random\+\_\+cloud\+\_\+distance\+\_\+weibull (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{count,  }\item[{float}]{lambda,  }\item[{float}]{k,  }\item[{\mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{seed,  }\item[{const \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ \&}]{bbox = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}} }\end{DoxyParamCaption})}
+
+
+
+Generates a random cloud of points with distances drawn from a Weibull distribution. 
+
+Distances between points follow a Weibull distribution parameterized by {\ttfamily lambda} (scale) and {\ttfamily k} (shape).
+
+
+\begin{DoxyParams}{Parameters}
+{\em count} & Number of points to generate. \\
+\hline
+{\em lambda} & Weibull distribution scale parameter. \\
+\hline
+{\em k} & Weibull distribution shape parameter. \\
+\hline
+{\em seed} & Random number generator seed. \\
+\hline
+{\em bbox} & Bounding box in which to generate the points (a,b,c,d = xmin, xmax, ymin, ymax). Defaults to the unit square \{0.\+f, 1.\+f, 0.\+f, 1.\+f\}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \doxylink{classhmap_1_1Cloud}{Cloud} containing the generated points.
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ for\ render\ only}}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{structhmap_1_1Vec2}{hmap::Vec2<int>}}\ \ \ \ \ \ \ \ \ \ shape\ =\ \{256,\ 256\};}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ raster(shape);}
+\DoxyCodeLine{\ \ std::vector<hmap::Array>\ zs\ =\ \{\};}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed\ =\ 0;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ density\ field}}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{structhmap_1_1Vec2}{hmap::Vec2<float>}}\ kw\ =\ \{2.f,\ 2.f\};}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ density\ =\ \mbox{\hyperlink{namespacehmap_a03c0be3a7198eebacefcb208b0cfee99}{hmap::noise}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ kw,\ seed);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(density);\ \textcolor{comment}{//\ /!\(\backslash\)\ NEEDS\ TO\ BE\ IN\ [0,\ 1]}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ base\ param}}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{size\_t}\ count\ =\ 1000;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ random}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \&type\ :\ \{\mbox{\hyperlink{namespacehmap_aba758c4143b6e499ec6f4385467a6d77aea0acc8d27d5a8a13e107f49120c084e}{hmap::PointSamplingMethod::RND\_RANDOM}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_aba758c4143b6e499ec6f4385467a6d77a99ca15104343ff0356c6fc0ffe4f837d}{hmap::PointSamplingMethod::RND\_HALTON}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_aba758c4143b6e499ec6f4385467a6d77aeebf5714b383e3b3be100ceba46d8fe5}{hmap::PointSamplingMethod::RND\_HAMMERSLEY}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_aba758c4143b6e499ec6f4385467a6d77a8943dd2a2e3993c1e0cff37be3f65957}{hmap::PointSamplingMethod::RND\_LHS}}\})}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ auto\ xy\ =\ hmap::random\_points(count,\ seed,\ type);}}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ hmap::Cloud\ cloud(xy[0],\ xy[1],\ 1.f\ /*\ value\ */);}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Cloud}{hmap::Cloud}}\ cloud\ =\ \mbox{\hyperlink{namespacehmap_aa0bf57ef5e675f0aa851bc8f4b734acd}{hmap::random\_cloud}}(count,\ seed,\ type);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_ad83d71a8729a0e4fcce993c0141275ee}{to\_array}}(raster);}
+\DoxyCodeLine{\ \ \ \ zs.push\_back(raster);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a1c490f296571a75e35d05b10c075ae6c}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_point\_sampling0.png"{}},\ zs,\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a4eb53d94f58e93c3bdb554d8cca7f306}{hmap::Cmap::BONE}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ density}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ zs.clear();}
+\DoxyCodeLine{\ \ \ \ zs.push\_back(density);}
+\DoxyCodeLine{\ \ \ \ raster\ =\ 0.f;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ auto\ \ \ \ \ \ \ \ xy\ =\ hmap::random\_points\_density(count,\ density,\ seed);}}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ hmap::Cloud\ cloud(xy[0],\ xy[1],\ 1.f\ /*\ value\ */);}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Cloud}{hmap::Cloud}}\ cloud\ =\ \mbox{\hyperlink{namespacehmap_a83368f74414e23015bf543c36d8bfbef}{hmap::random\_cloud\_density}}(count,\ density,\ seed);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_ad83d71a8729a0e4fcce993c0141275ee}{to\_array}}(raster);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ zs.push\_back(raster);}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{namespacehmap_a1c490f296571a75e35d05b10c075ae6c}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_point\_sampling1.png"{}},\ zs,\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a4eb53d94f58e93c3bdb554d8cca7f306}{hmap::Cmap::BONE}});}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ distance\ based}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ zs.clear();}
+\DoxyCodeLine{\ \ \ \ zs.push\_back(density);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{float}\ min\_dist\ =\ 0.02f;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{float}\ max\_dist\ =\ 0.08f;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ auto\ \ \ \ \ \ \ \ xy\ =\ hmap::random\_points\_distance(min\_dist,\ seed);}}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ hmap::Cloud\ cloud(xy[0],\ xy[1],\ 1.f\ /*\ value\ */);}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Cloud}{hmap::Cloud}}\ cloud\ =\ \mbox{\hyperlink{namespacehmap_a3c7d0352e60c2fd0ea923a68b569ffb0}{hmap::random\_cloud\_distance}}(min\_dist,\ seed);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ raster\ =\ 0.f;}
+\DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_ad83d71a8729a0e4fcce993c0141275ee}{to\_array}}(raster);}
+\DoxyCodeLine{\ \ \ \ zs.push\_back(raster);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ auto\ \ \ \ \ \ \ \ xy\ =\ hmap::random\_points\_distance(min\_dist,\ max\_dist,}}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ density,\ seed);\ cloud\ =\ hmap::Cloud(xy[0],\ xy[1],\ 1.f\ /*\ value\ */);}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ cloud\ =\ \mbox{\hyperlink{namespacehmap_a3c7d0352e60c2fd0ea923a68b569ffb0}{hmap::random\_cloud\_distance}}(min\_dist,\ max\_dist,\ density,\ seed);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ raster\ =\ 0.f;}
+\DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_ad83d71a8729a0e4fcce993c0141275ee}{to\_array}}(raster);}
+\DoxyCodeLine{\ \ \ \ zs.push\_back(raster);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ cloud\ =\ \mbox{\hyperlink{namespacehmap_a5f5bc198303be7b692e06914df758461}{hmap::random\_cloud\_distance\_power\_law}}(count,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.01f\ \textcolor{comment}{/*\ dist\_min\ */},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.2f\ \textcolor{comment}{/*\ dist\_max\ */},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 1.2f\ \textcolor{comment}{/*\ alpha\ */},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ raster\ =\ 0.f;}
+\DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_ad83d71a8729a0e4fcce993c0141275ee}{to\_array}}(raster);}
+\DoxyCodeLine{\ \ \ \ zs.push\_back(raster);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ cloud\ =\ \mbox{\hyperlink{namespacehmap_a357579f97d734a8d8b394986a8adf5bd}{hmap::random\_cloud\_distance\_weibull}}(count,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.05f\ \textcolor{comment}{/*\ lambda\ */},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.8f\ \textcolor{comment}{/*\ k\ */},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ raster\ =\ 0.f;}
 \DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_ad83d71a8729a0e4fcce993c0141275ee}{to\_array}}(raster);}
@@ -13001,6 +13415,25 @@ A \doxylink{classhmap_1_1Cloud}{Cloud} containing the generated points.
 \DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ density,\ seed);\ cloud\ =\ hmap::Cloud(xy[0],\ xy[1],\ 1.f\ /*\ value\ */);}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ cloud\ =\ \mbox{\hyperlink{namespacehmap_a3c7d0352e60c2fd0ea923a68b569ffb0}{hmap::random\_cloud\_distance}}(min\_dist,\ max\_dist,\ density,\ seed);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ raster\ =\ 0.f;}
+\DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_ad83d71a8729a0e4fcce993c0141275ee}{to\_array}}(raster);}
+\DoxyCodeLine{\ \ \ \ zs.push\_back(raster);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ cloud\ =\ \mbox{\hyperlink{namespacehmap_a5f5bc198303be7b692e06914df758461}{hmap::random\_cloud\_distance\_power\_law}}(count,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.01f\ \textcolor{comment}{/*\ dist\_min\ */},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.2f\ \textcolor{comment}{/*\ dist\_max\ */},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 1.2f\ \textcolor{comment}{/*\ alpha\ */},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ raster\ =\ 0.f;}
+\DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_ad83d71a8729a0e4fcce993c0141275ee}{to\_array}}(raster);}
+\DoxyCodeLine{\ \ \ \ zs.push\_back(raster);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ cloud\ =\ \mbox{\hyperlink{namespacehmap_a357579f97d734a8d8b394986a8adf5bd}{hmap::random\_cloud\_distance\_weibull}}(count,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.05f\ \textcolor{comment}{/*\ lambda\ */},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.8f\ \textcolor{comment}{/*\ k\ */},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ raster\ =\ 0.f;}
 \DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_ad83d71a8729a0e4fcce993c0141275ee}{to\_array}}(raster);}
@@ -14068,7 +14501,7 @@ A pair of float vectors \{x\+\_\+coords, y\+\_\+coords\}.
 
 Generates random 2D points with distance constraints and a density map. 
 
-Points are separated by distances between min\+\_\+dist and max\+\_\+dist, and are sampled proportionally to the given density map.
+Points are separated by distances between {\ttfamily min\+\_\+dist} and {\ttfamily max\+\_\+dist}, and are sampled proportionally to the given density map.
 
 
 \begin{DoxyParams}{Parameters}
@@ -14077,6 +14510,64 @@ Points are separated by distances between min\+\_\+dist and max\+\_\+dist, and a
 {\em max\+\_\+dist} & Maximum allowed distance between points. \\
 \hline
 {\em density} & 2D array representing spatial density values. \\
+\hline
+{\em seed} & Random number generator seed. \\
+\hline
+{\em bbox} & Bounding box in which to generate the points (a,b,c,d = xmin, xmax, ymin, ymax). Defaults to the unit square \{0.\+f, 1.\+f, 0.\+f, 1.\+f\}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pair of float vectors \{x\+\_\+coords, y\+\_\+coords\}. 
+\end{DoxyReturn}
+\Hypertarget{namespacehmap_a15a0f012794ba66b87994d3c662c5fb2}\label{namespacehmap_a15a0f012794ba66b87994d3c662c5fb2} 
+\index{hmap@{hmap}!random\_points\_distance\_power\_law@{random\_points\_distance\_power\_law}}
+\index{random\_points\_distance\_power\_law@{random\_points\_distance\_power\_law}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{random\_points\_distance\_power\_law()}{random\_points\_distance\_power\_law()}}
+{\footnotesize\ttfamily std\+::array$<$ std\+::vector$<$ float $>$, 2 $>$ hmap\+::random\+\_\+points\+\_\+distance\+\_\+power\+\_\+law (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{count,  }\item[{float}]{dist\+\_\+min,  }\item[{float}]{dist\+\_\+max,  }\item[{float}]{alpha,  }\item[{\mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{seed,  }\item[{const \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ \&}]{bbox = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}} }\end{DoxyParamCaption})}
+
+
+
+Generates random 2D points with distances drawn from a power-\/law distribution. 
+
+Distances between points follow a power-\/law distribution between {\ttfamily dist\+\_\+min} and {\ttfamily dist\+\_\+max}, with exponent {\ttfamily alpha}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em count} & Number of points to generate. \\
+\hline
+{\em dist\+\_\+min} & Minimum possible distance between points. \\
+\hline
+{\em dist\+\_\+max} & Maximum possible distance between points. \\
+\hline
+{\em alpha} & Power-\/law exponent (larger alpha favors shorter distances). \\
+\hline
+{\em seed} & Random number generator seed. \\
+\hline
+{\em bbox} & Bounding box in which to generate the points (a,b,c,d = xmin, xmax, ymin, ymax). Defaults to the unit square \{0.\+f, 1.\+f, 0.\+f, 1.\+f\}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pair of float vectors \{x\+\_\+coords, y\+\_\+coords\}. 
+\end{DoxyReturn}
+\Hypertarget{namespacehmap_a59fb84175451fb2894cc895cb3b20c98}\label{namespacehmap_a59fb84175451fb2894cc895cb3b20c98} 
+\index{hmap@{hmap}!random\_points\_distance\_weibull@{random\_points\_distance\_weibull}}
+\index{random\_points\_distance\_weibull@{random\_points\_distance\_weibull}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{random\_points\_distance\_weibull()}{random\_points\_distance\_weibull()}}
+{\footnotesize\ttfamily std\+::array$<$ std\+::vector$<$ float $>$, 2 $>$ hmap\+::random\+\_\+points\+\_\+distance\+\_\+weibull (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{count,  }\item[{float}]{lambda,  }\item[{float}]{k,  }\item[{\mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{seed,  }\item[{const \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ \&}]{bbox = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}} }\end{DoxyParamCaption})}
+
+
+
+Generates random 2D points with distances drawn from a Weibull distribution. 
+
+Distances between points follow a Weibull distribution parameterized by {\ttfamily lambda} (scale) and {\ttfamily k} (shape).
+
+
+\begin{DoxyParams}{Parameters}
+{\em count} & Number of points to generate. \\
+\hline
+{\em lambda} & Weibull distribution scale parameter. \\
+\hline
+{\em k} & Weibull distribution shape parameter. \\
 \hline
 {\em seed} & Random number generator seed. \\
 \hline
