@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "highmap.hpp"
 
 int main(void)
@@ -75,24 +77,29 @@ int main(void)
 
     cloud = hmap::random_cloud_distance(min_dist, max_dist, density, seed);
 
+    std::cout << "count: " << cloud.get_npoints() << "\n";
+
     raster = 0.f;
     cloud.to_array(raster);
     zs.push_back(raster);
 
-    cloud = hmap::random_cloud_distance_power_law(count,
-                                                  0.01f /* dist_min */,
+    cloud = hmap::random_cloud_distance_power_law(0.01f /* dist_min */,
                                                   0.2f /* dist_max */,
                                                   1.2f /* alpha */,
                                                   seed);
 
+    std::cout << "count: " << cloud.get_npoints() << "\n";
+
     raster = 0.f;
     cloud.to_array(raster);
     zs.push_back(raster);
 
-    cloud = hmap::random_cloud_distance_weibull(count,
+    cloud = hmap::random_cloud_distance_weibull(0.01f /* dist_min */,
                                                 0.05f /* lambda */,
-                                                0.8f /* k */,
+                                                1.f /* k */,
                                                 seed);
+
+    std::cout << "count: " << cloud.get_npoints() << "\n";
 
     raster = 0.f;
     cloud.to_array(raster);

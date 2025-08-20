@@ -164,19 +164,19 @@ std::array<std::vector<float>, 2> random_points_distance(
 
 /**
  * @brief Generates random 2D points with distance constraints and a density
- *        map.
+ * map.
  *
- * Points are separated by distances between @p min_dist and @p max_dist,
- * and are sampled proportionally to the given density map.
+ * Points are separated by distances between @p min_dist and @p max_dist, and
+ * are sampled proportionally to the given density map.
  *
- * @param min_dist Minimum allowed distance between points.
- * @param max_dist Maximum allowed distance between points.
- * @param density  2D array representing spatial density values.
- * @param seed     Random number generator seed.
- * @param bbox     Bounding box in which to generate the points
- *                 (a,b,c,d = xmin, xmax, ymin, ymax).
- *                 Defaults to the unit square {0.f, 1.f, 0.f, 1.f}.
- * @return A pair of float vectors {x_coords, y_coords}.
+ * @param  min_dist Minimum allowed distance between points.
+ * @param  max_dist Maximum allowed distance between points.
+ * @param  density  2D array representing spatial density values.
+ * @param  seed     Random number generator seed.
+ * @param  bbox     Bounding box in which to generate the points (a,b,c,d =
+ *                  xmin, xmax, ymin, ymax). Defaults to the unit square {0.f,
+ *                  1.f, 0.f, 1.f}.
+ * @return          A pair of float vectors {x_coords, y_coords}.
  */
 std::array<std::vector<float>, 2> random_points_distance(
     float              min_dist,
@@ -187,23 +187,21 @@ std::array<std::vector<float>, 2> random_points_distance(
 
 /**
  * @brief Generates random 2D points with distances drawn from a power-law
- *        distribution.
+ * distribution.
  *
  * Distances between points follow a power-law distribution between
  * @p dist_min and @p dist_max, with exponent @p alpha.
  *
- * @param count    Number of points to generate.
- * @param dist_min Minimum possible distance between points.
- * @param dist_max Maximum possible distance between points.
- * @param alpha    Power-law exponent (larger alpha favors shorter distances).
- * @param seed     Random number generator seed.
- * @param bbox     Bounding box in which to generate the points
- *                 (a,b,c,d = xmin, xmax, ymin, ymax).
- *                 Defaults to the unit square {0.f, 1.f, 0.f, 1.f}.
- * @return A pair of float vectors {x_coords, y_coords}.
+ * @param  dist_min Minimum possible distance between points.
+ * @param  dist_max Maximum possible distance between points.
+ * @param  alpha    Power-law exponent (larger alpha favors shorter distances).
+ * @param  seed     Random number generator seed.
+ * @param  bbox     Bounding box in which to generate the points (a,b,c,d =
+ *                  xmin, xmax, ymin, ymax). Defaults to the unit square {0.f,
+ *                  1.f, 0.f, 1.f}.
+ * @return          A pair of float vectors {x_coords, y_coords}.
  */
 std::array<std::vector<float>, 2> random_points_distance_power_law(
-    size_t             count,
     float              dist_min,
     float              dist_max,
     float              alpha,
@@ -212,22 +210,22 @@ std::array<std::vector<float>, 2> random_points_distance_power_law(
 
 /**
  * @brief Generates random 2D points with distances drawn from a Weibull
- *        distribution.
+ * distribution.
  *
  * Distances between points follow a Weibull distribution parameterized by
  * @p lambda (scale) and @p k (shape).
  *
- * @param count   Number of points to generate.
- * @param lambda  Weibull distribution scale parameter.
- * @param k       Weibull distribution shape parameter.
- * @param seed    Random number generator seed.
- * @param bbox    Bounding box in which to generate the points
- *                (a,b,c,d = xmin, xmax, ymin, ymax).
- *                Defaults to the unit square {0.f, 1.f, 0.f, 1.f}.
- * @return A pair of float vectors {x_coords, y_coords}.
+ * @param  dist_min Minimum possible distance between points.
+ * @param  lambda   Weibull distribution scale parameter.
+ * @param  k        Weibull distribution shape parameter.
+ * @param  seed     Random number generator seed.
+ * @param  bbox     Bounding box in which to generate the points (a,b,c,d =
+ *                  xmin, xmax, ymin, ymax). Defaults to the unit square {0.f,
+ *                  1.f, 0.f, 1.f}.
+ * @return          A pair of float vectors {x_coords, y_coords}.
  */
 std::array<std::vector<float>, 2> random_points_distance_weibull(
-    size_t             count,
+    float              dist_min,
     float              lambda,
     float              k,
     uint               seed,

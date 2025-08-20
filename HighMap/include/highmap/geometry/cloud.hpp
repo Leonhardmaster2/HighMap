@@ -646,19 +646,19 @@ Cloud random_cloud_distance(float              min_dist,
 
 /**
  * @brief Generates a random cloud of points separated by a distance range,
- *        influenced by a density map.
+ * influenced by a density map.
  *
- * Points maintain a separation between @p min_dist and @p max_dist,
- * and are distributed according to the provided density map.
+ * Points maintain a separation between @p min_dist and @p max_dist, and are
+ * distributed according to the provided density map.
  *
- * @param min_dist Minimum allowed distance between points.
- * @param max_dist Maximum allowed distance between points.
- * @param density  2D array representing spatial density values.
- * @param seed     Random number generator seed.
- * @param bbox     Bounding box in which to generate the points
- *                 (a,b,c,d = xmin, xmax, ymin, ymax).
- *                 Defaults to the unit square {0.f, 1.f, 0.f, 1.f}.
- * @return A Cloud containing the generated points.
+ * @param  min_dist Minimum allowed distance between points.
+ * @param  max_dist Maximum allowed distance between points.
+ * @param  density  2D array representing spatial density values.
+ * @param  seed     Random number generator seed.
+ * @param  bbox     Bounding box in which to generate the points (a,b,c,d =
+ *                  xmin, xmax, ymin, ymax). Defaults to the unit square {0.f,
+ *                  1.f, 0.f, 1.f}.
+ * @return          A Cloud containing the generated points.
  *
  * **Example**
  * @include ex_point_sampling.cpp
@@ -677,20 +677,19 @@ Cloud random_cloud_distance(float              min_dist,
 
 /**
  * @brief Generates a random cloud of points with distances drawn from a
- *        power-law distribution.
+ * power-law distribution.
  *
  * Distances between points follow a power-law distribution between
  * @p dist_min and @p dist_max, with exponent @p alpha.
  *
- * @param count    Number of points to generate.
- * @param dist_min Minimum possible distance between points.
- * @param dist_max Maximum possible distance between points.
- * @param alpha    Power-law exponent (larger alpha favors shorter distances).
- * @param seed     Random number generator seed.
- * @param bbox     Bounding box in which to generate the points
- *                 (a,b,c,d = xmin, xmax, ymin, ymax).
- *                 Defaults to the unit square {0.f, 1.f, 0.f, 1.f}.
- * @return A Cloud containing the generated points.
+ * @param  dist_min Minimum possible distance between points.
+ * @param  dist_max Maximum possible distance between points.
+ * @param  alpha    Power-law exponent (larger alpha favors shorter distances).
+ * @param  seed     Random number generator seed.
+ * @param  bbox     Bounding box in which to generate the points (a,b,c,d =
+ *                  xmin, xmax, ymin, ymax). Defaults to the unit square {0.f,
+ *                  1.f, 0.f, 1.f}.
+ * @return          A Cloud containing the generated points.
  *
  * **Example**
  * @include ex_point_sampling.cpp
@@ -702,7 +701,6 @@ Cloud random_cloud_distance(float              min_dist,
  * @image html ex_point_sampling3.png
  */
 Cloud random_cloud_distance_power_law(
-    size_t             count,
     float              dist_min,
     float              dist_max,
     float              alpha,
@@ -710,20 +708,20 @@ Cloud random_cloud_distance_power_law(
     const Vec4<float> &bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
- * @brief Generates a random cloud of points with distances drawn from a
- *        Weibull distribution.
+ * @brief Generates a random cloud of points with distances drawn from a Weibull
+ * distribution.
  *
  * Distances between points follow a Weibull distribution parameterized by
  * @p lambda (scale) and @p k (shape).
  *
- * @param count   Number of points to generate.
- * @param lambda  Weibull distribution scale parameter.
- * @param k       Weibull distribution shape parameter.
- * @param seed    Random number generator seed.
- * @param bbox    Bounding box in which to generate the points
- *                (a,b,c,d = xmin, xmax, ymin, ymax).
- *                Defaults to the unit square {0.f, 1.f, 0.f, 1.f}.
- * @return A Cloud containing the generated points.
+ * @param  dist_min Minimum possible distance between points.
+ * @param  lambda   Weibull distribution scale parameter.
+ * @param  k        Weibull distribution shape parameter.
+ * @param  seed     Random number generator seed.
+ * @param  bbox     Bounding box in which to generate the points (a,b,c,d =
+ *                  xmin, xmax, ymin, ymax). Defaults to the unit square {0.f,
+ *                  1.f, 0.f, 1.f}.
+ * @return          A Cloud containing the generated points.
  *
  * **Example**
  * @include ex_point_sampling.cpp
@@ -735,7 +733,7 @@ Cloud random_cloud_distance_power_law(
  * @image html ex_point_sampling3.png
  */
 Cloud random_cloud_distance_weibull(
-    size_t             count,
+    float              dist_min,
     float              lambda,
     float              k,
     uint               seed,
