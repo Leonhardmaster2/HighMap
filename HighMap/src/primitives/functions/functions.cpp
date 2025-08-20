@@ -7,6 +7,30 @@
 namespace hmap
 {
 
+std::function<float(float, float)> make_xy_function_from_array(
+    const Array       &array,
+    const Vec4<float> &bbox)
+{
+  return [&array, &bbox](float x, float y) -> float
+  {
+    x = (x - bbox.a) / (bbox.b - bbox.a);
+    y = (y - bbox.c) / (bbox.d - bbox.c);
+
+    x = std::clamp(x, 0.f, 1.f);
+    y = std::clamp(y, 0.f, 1.f);
+
+    float xn = x * (array.shape.x - 1);
+    float yn = y * (array.shape.y - 1);
+
+    int   i = static_cast<int>(xn);
+    int   j = static_cast<int>(yn);
+    float u = xn - i;
+    float v = yn - j;
+
+    return array.get_value_bilinear_at(i, j, u, v);
+  };
+}
+
 //----------------------------------------------------------------------
 // base class
 //----------------------------------------------------------------------

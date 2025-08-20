@@ -14,9 +14,11 @@
  * software.
  */
 #pragma once
+#include <functional>
 
 #include "point_sampler.hpp"
 
+#include "highmap/functions.hpp"
 #include "highmap/geometry/point.hpp"
 
 namespace hmap
@@ -106,6 +108,35 @@ void expand_points_domain_corners(std::vector<float> &x,
                                   float       corner_value = 0.f);
 
 /**
+ * @brief Create a continuous 2D function from a sampled array.
+ *
+ * This adaptor takes a discrete 2D array (indexed by i, j) defined over a
+ * bounding box and returns a continuous function \f$f(x, y)\f$ that
+ * interpolates values at arbitrary 2D positions inside the bounding box.
+ *
+ * The function maps a point \f$p = (x, y)\f$ in world coordinates to array
+ * indices \f$(i, j)\f$ and interpolates the array values.
+ *
+ * @param  array Input array containing sampled values on a regular grid.
+ * @param  bbox  Bounding box of the array in world coordinates, given as
+ *             `(xmin, xmax, ymin, ymax)`.
+ * @return       A function `f(point)` that returns the interpolated value at a
+ *               2D position.
+ *
+ * @par Example
+ * @code {.cpp}
+ * Array heightmap = [...];
+ * Vec4<float> bbox = {0.0f, 100.0f, 0.0f, 100.0f};
+ * auto f = make_pointwise_function_from_array(heightmap, bbox);
+ *
+ * ps::Point<float, 2> p{25.5f, 42.3f};
+ * float value = f(p); // interpolated value at (25.5, 42.3)
+ * @endcode
+ */
+std::function<float(const ps::Point<float, 2> &)>
+make_pointwise_function_from_array(const Array &array, const Vec4<float> &bbox);
+
+/**
  * @brief Generates random 2D points within a bounding box using a sampling
  * method.
  *
@@ -175,7 +206,7 @@ std::array<std::vector<float>, 2> random_points_distance(
  * @param  seed     Random number generator seed.
  * @param  bbox     Bounding box in which to generate the points (a,b,c,d =
  *                  xmin, xmax, ymin, ymax). Defaults to the unit square {0.f,
- *                  1.f, 0.f, 1.f}.
+ * 1.f, 0.f, 1.f}.
  * @return          A pair of float vectors {x_coords, y_coords}.
  */
 std::array<std::vector<float>, 2> random_points_distance(
@@ -198,7 +229,7 @@ std::array<std::vector<float>, 2> random_points_distance(
  * @param  seed     Random number generator seed.
  * @param  bbox     Bounding box in which to generate the points (a,b,c,d =
  *                  xmin, xmax, ymin, ymax). Defaults to the unit square {0.f,
- *                  1.f, 0.f, 1.f}.
+ * 1.f, 0.f, 1.f}.
  * @return          A pair of float vectors {x_coords, y_coords}.
  */
 std::array<std::vector<float>, 2> random_points_distance_power_law(
@@ -221,7 +252,7 @@ std::array<std::vector<float>, 2> random_points_distance_power_law(
  * @param  seed     Random number generator seed.
  * @param  bbox     Bounding box in which to generate the points (a,b,c,d =
  *                  xmin, xmax, ymin, ymax). Defaults to the unit square {0.f,
- *                  1.f, 0.f, 1.f}.
+ * 1.f, 0.f, 1.f}.
  * @return          A pair of float vectors {x_coords, y_coords}.
  */
 std::array<std::vector<float>, 2> random_points_distance_weibull(

@@ -14,6 +14,7 @@
 #include "delaunator-cpp.hpp"
 #include "macrologger.h"
 
+#include "highmap/functions.hpp"
 #include "highmap/geometry/cloud.hpp"
 #include "highmap/geometry/graph.hpp"
 #include "highmap/geometry/grids.hpp"
@@ -301,6 +302,24 @@ void Cloud::randomize(uint seed, Vec4<float> bbox)
     this->points[k] = cloud_rnd.points[k];
 }
 
+void Cloud::rejection_filter_density(const Array       &density_mask,
+                                     uint               seed,
+                                     const Vec4<float> &bbox)
+{
+  std::mt19937                          gen(seed);
+  std::uniform_real_distribution<float> dis(0.f, 1.f);
+
+  auto density_fct = make_xy_function_from_array(density_mask, bbox);
+
+  std::remove_if(this->points.begin(),
+                 this->points.end(),
+                 [&](Point p)
+                 {
+                   float rnd = dis(gen);
+                   return (rnd > density_fct(p.x, p.y));
+                 });
+}
+
 void Cloud::remap_values(float vmin, float vmax)
 {
   const auto [current_min, current_max] = std::minmax_element(
@@ -318,6 +337,18 @@ void Cloud::remap_values(float vmin, float vmax)
 void Cloud::remove_point(int point_idx)
 {
   this->points.erase(this->points.begin() + point_idx);
+}
+
+void Cloud::set_points(const std::vector<float> &x, const std::vector<float> &y)
+{
+  if (x.size() != y.size() || x.size() != this->points.size())
+    throw std::invalid_argument("New values size must match number of points");
+
+  for (size_t k = 0; k < this->points.size(); ++k)
+  {
+    this->points[k].x = x[k];
+    this->points[k].y = y[k];
+  }
 }
 
 void Cloud::set_values(const std::vector<float> &new_values)

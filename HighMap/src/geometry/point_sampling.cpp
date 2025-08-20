@@ -7,7 +7,23 @@
 namespace hmap
 {
 
-auto helper_make_pointwise_function(const Array &array, const Vec4<float> &bbox)
+size_t helper_estimate_count(const Vec4<float> &bbox, float distance)
+{
+  size_t count = static_cast<size_t>(2.f * (bbox.b - bbox.a) / distance *
+                                     (bbox.d - bbox.c) / distance);
+  return count;
+}
+
+std::array<std::pair<float, float>, 2> bbox_to_ranges2d(const Vec4<float> &bbox)
+{
+  std::array<std::pair<float, float>, 2> ranges = {
+      std::make_pair(bbox.a, bbox.b),
+      std::make_pair(bbox.c, bbox.d)};
+  return ranges;
+}
+
+std::function<float(const ps::Point<float, 2> &)>
+make_pointwise_function_from_array(const Array &array, const Vec4<float> &bbox)
 {
   return [&array, &bbox](const ps::Point<float, 2> &p) -> float
   {
@@ -27,21 +43,6 @@ auto helper_make_pointwise_function(const Array &array, const Vec4<float> &bbox)
 
     return array.get_value_bilinear_at(i, j, u, v);
   };
-}
-
-size_t helper_estimate_count(const Vec4<float> &bbox, float distance)
-{
-  size_t count = static_cast<size_t>(2.f * (bbox.b - bbox.a) / distance *
-                                     (bbox.d - bbox.c) / distance);
-  return count;
-}
-
-std::array<std::pair<float, float>, 2> bbox_to_ranges2d(const Vec4<float> &bbox)
-{
-  std::array<std::pair<float, float>, 2> ranges = {
-      std::make_pair(bbox.a, bbox.b),
-      std::make_pair(bbox.c, bbox.d)};
-  return ranges;
 }
 
 std::array<std::vector<float>, 2> random_points(
@@ -90,7 +91,7 @@ std::array<std::vector<float>, 2> random_points_density(size_t       count,
                                                         const Vec4<float> &bbox)
 {
   auto ranges = bbox_to_ranges2d(bbox);
-  auto density_fct = helper_make_pointwise_function(density, bbox);
+  auto density_fct = make_pointwise_function_from_array(density, bbox);
 
   auto points = ps::rejection_sampling<float, 2>(count,
                                                  ranges,
@@ -126,7 +127,7 @@ std::array<std::vector<float>, 2> random_points_distance(
   // convert density [0, 1] to scale (when density = 0, enforce
   // max_dist, when density = 1, enforce min_dist)
   Array scale = (1.f - density) * (max_dist / min_dist - 1.f) + 1.f;
-  auto  scale_fct = helper_make_pointwise_function(scale, bbox);
+  auto  scale_fct = make_pointwise_function_from_array(scale, bbox);
 
   // estimate a maximum count using the minimum distance
   size_t count = helper_estimate_count(bbox, min_dist);

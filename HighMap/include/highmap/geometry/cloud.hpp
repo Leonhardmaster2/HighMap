@@ -315,6 +315,39 @@ public:
   void randomize(uint seed, Vec4<float> bbox = {0.f, 1.f, 0.f, 1.f});
 
   /**
+   * @brief Filter a point cloud using rejection sampling based on a density
+   * mask.
+   *
+   * Each point in the input cloud is retained or discarded according to a
+   * spatially varying probability derived from the provided 2D density mask.
+   * The mask is mapped to the bounding box and evaluated as a continuous
+   * function over the domain.
+   *
+   * For a point \f$p=(x,y)\f$, the probability of acceptance is:
+   * \f[
+   * P(\text{keep } p) = \rho(x,y) \in [0,1]
+   * \f] where \f$\rho(x,y)\f$ is the normalized density mask value at the
+   * point's position.
+   *
+   * @param density_mask 2D array defining the spatial density field over the
+   *                     bounding box. Values should lie in \f$[0,1]\f$.
+   * @param seed         Random seed used for reproducible rejection sampling.
+   * @param bbox         Bounding box `(xmin, ymin, xmax, ymax)` defining the
+   *                     spatial extent of the density mask in world
+   * coordinates.
+   *
+   * @note
+   * - Points outside the bounding box are implicitly mapped to extrapolated
+   * density values.
+   * - The method preserves the *relative* density pattern defined by the mask,
+   * but reduces the overall number of points according to rejection
+   * probability.
+   */
+  void rejection_filter_density(const Array       &density_mask,
+                                uint               seed,
+                                const Vec4<float> &bbox = {0.f, 1.f, 0.f, 1.f});
+
+  /**
    * @brief Remap the values of the cloud points to a target range.
    *
    * This method scales the values associated with the cloud points so that they
@@ -333,6 +366,11 @@ public:
    * @param point_idx Index of the point to be removed.
    */
   void remove_point(int point_idx);
+
+  /**
+   * @brief Set points of the using x, y coordinates.
+   */
+  void set_points(const std::vector<float> &x, const std::vector<float> &y);
 
   /**
    * @brief Set new values for the cloud points.
@@ -657,7 +695,7 @@ Cloud random_cloud_distance(float              min_dist,
  * @param  seed     Random number generator seed.
  * @param  bbox     Bounding box in which to generate the points (a,b,c,d =
  *                  xmin, xmax, ymin, ymax). Defaults to the unit square {0.f,
- *                  1.f, 0.f, 1.f}.
+ * 1.f, 0.f, 1.f}.
  * @return          A Cloud containing the generated points.
  *
  * **Example**
@@ -688,7 +726,7 @@ Cloud random_cloud_distance(float              min_dist,
  * @param  seed     Random number generator seed.
  * @param  bbox     Bounding box in which to generate the points (a,b,c,d =
  *                  xmin, xmax, ymin, ymax). Defaults to the unit square {0.f,
- *                  1.f, 0.f, 1.f}.
+ * 1.f, 0.f, 1.f}.
  * @return          A Cloud containing the generated points.
  *
  * **Example**
@@ -720,7 +758,7 @@ Cloud random_cloud_distance_power_law(
  * @param  seed     Random number generator seed.
  * @param  bbox     Bounding box in which to generate the points (a,b,c,d =
  *                  xmin, xmax, ymin, ymax). Defaults to the unit square {0.f,
- *                  1.f, 0.f, 1.f}.
+ * 1.f, 0.f, 1.f}.
  * @return          A Cloud containing the generated points.
  *
  * **Example**

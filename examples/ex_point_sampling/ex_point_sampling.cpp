@@ -13,7 +13,8 @@ int main(void)
   // density field
   hmap::Vec2<float> kw = {2.f, 2.f};
   hmap::Array density = hmap::noise(hmap::NoiseType::PERLIN, shape, kw, seed);
-  hmap::remap(density); // /!\ NEEDS TO BE IN [0, 1]
+  hmap::remap(density);   // /!\ NEEDS TO BE IN [0, 1]
+  hmap::gain(density, 2); // sharper transition
 
   // base param
   size_t count = 1000;
@@ -49,8 +50,18 @@ int main(void)
     hmap::Cloud cloud = hmap::random_cloud_density(count, density, seed);
 
     cloud.to_array(raster);
-
     zs.push_back(raster);
+
+    // filter
+    cloud = hmap::random_cloud(count,
+                               seed,
+                               hmap::PointSamplingMethod::RND_HALTON);
+
+    cloud.rejection_filter_density(density, seed);
+
+    cloud.to_array(raster);
+    zs.push_back(raster);
+
     hmap::export_banner_png("ex_point_sampling1.png", zs, hmap::Cmap::BONE);
   }
 
