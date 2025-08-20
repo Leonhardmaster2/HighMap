@@ -136,6 +136,42 @@ std::array<std::vector<float>, 2> random_points_distance(
   return ps::split_by_dimension(points);
 }
 
+std::array<std::vector<float>, 2> random_points_distance_power_law(
+    size_t             count,
+    float              dist_min,
+    float              dist_max,
+    float              alpha,
+    uint               seed,
+    const Vec4<float> &bbox)
+{
+  auto ranges = bbox_to_ranges2d(bbox);
+
+  auto points = ps::poisson_disk_sampling_power_law<float, 2>(count,
+                                                              dist_min,
+                                                              dist_max,
+                                                              alpha,
+                                                              ranges,
+                                                              seed);
+  return ps::split_by_dimension(points);
+}
+
+std::array<std::vector<float>, 2> random_points_distance_weibull(
+    size_t             count,
+    float              lambda,
+    float              k,
+    uint               seed,
+    const Vec4<float> &bbox)
+{
+  auto ranges = bbox_to_ranges2d(bbox);
+
+  auto points = ps::poisson_disk_sampling_weibull<float, 2>(count,
+                                                            lambda,
+                                                            k,
+                                                            ranges,
+                                                            seed);
+  return ps::split_by_dimension(points);
+}
+
 std::array<std::vector<float>, 2> random_points_jittered(
     size_t                   count,
     const hmap::Vec2<float> &jitter_amount,

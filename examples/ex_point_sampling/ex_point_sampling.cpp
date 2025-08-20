@@ -79,6 +79,25 @@ int main(void)
     cloud.to_array(raster);
     zs.push_back(raster);
 
+    cloud = hmap::random_cloud_distance_power_law(count,
+                                                  0.01f /* dist_min */,
+                                                  0.2f /* dist_max */,
+                                                  1.2f /* alpha */,
+                                                  seed);
+
+    raster = 0.f;
+    cloud.to_array(raster);
+    zs.push_back(raster);
+
+    cloud = hmap::random_cloud_distance_weibull(count,
+                                                0.05f /* lambda */,
+                                                0.8f /* k */,
+                                                seed);
+
+    raster = 0.f;
+    cloud.to_array(raster);
+    zs.push_back(raster);
+
     hmap::export_banner_png("ex_point_sampling2.png", zs, hmap::Cmap::BONE);
   }
 

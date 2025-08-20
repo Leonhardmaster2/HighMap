@@ -565,6 +565,34 @@ Cloud random_cloud_distance(float              min_dist,
   return Cloud(xy[0], xy[1], v);
 }
 
+Cloud random_cloud_distance_power_law(size_t             count,
+                                      float              dist_min,
+                                      float              dist_max,
+                                      float              alpha,
+                                      uint               seed,
+                                      const Vec4<float> &bbox)
+{
+  auto xy = random_points_distance_power_law(count,
+                                             dist_min,
+                                             dist_max,
+                                             alpha,
+                                             seed,
+                                             bbox);
+  auto v = random_vector(0.f, 1.f, xy[0].size(), ++seed);
+  return Cloud(xy[0], xy[1], v);
+}
+
+Cloud random_cloud_distance_weibull(size_t             count,
+                                    float              lambda,
+                                    float              k,
+                                    uint               seed,
+                                    const Vec4<float> &bbox)
+{
+  auto xy = random_points_distance_weibull(count, lambda, k, seed, bbox);
+  auto v = random_vector(0.f, 1.f, xy[0].size(), ++seed);
+  return Cloud(xy[0], xy[1], v);
+}
+
 Cloud random_cloud_jittered(size_t             count,
                             const Vec2<float> &jitter_amount,
                             const Vec2<float> &stagger_ratio,
