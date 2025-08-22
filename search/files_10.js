@@ -11,9 +11,10 @@ var searchData=
   ['shortest_5fpath_2ehpp_8',['shortest_path.hpp',['../shortest__path_8hpp.html',1,'']]],
   ['stamping_2ecpp_9',['stamping.cpp',['../stamping_8cpp.html',1,'']]],
   ['stitching_5fhelpers_2ecpp_10',['stitching_helpers.cpp',['../stitching__helpers_8cpp.html',1,'']]],
-  ['stratify_2ecpp_11',['stratify.cpp',['../stratify_8cpp.html',1,'']]],
-  ['string_5futils_2ecpp_12',['string_utils.cpp',['../string__utils_8cpp.html',1,'']]],
-  ['string_5futils_2ehpp_13',['string_utils.hpp',['../string__utils_8hpp.html',1,'']]],
-  ['swirl_2ecpp_14',['swirl.cpp',['../swirl_8cpp.html',1,'']]],
-  ['synthesis_2ehpp_15',['synthesis.hpp',['../synthesis_8hpp.html',1,'']]]
+  ['strata_5fgpu_2ecpp_11',['strata_gpu.cpp',['../strata__gpu_8cpp.html',1,'']]],
+  ['stratify_2ecpp_12',['stratify.cpp',['../stratify_8cpp.html',1,'']]],
+  ['string_5futils_2ecpp_13',['string_utils.cpp',['../string__utils_8cpp.html',1,'']]],
+  ['string_5futils_2ehpp_14',['string_utils.hpp',['../string__utils_8hpp.html',1,'']]],
+  ['swirl_2ecpp_15',['swirl.cpp',['../swirl_8cpp.html',1,'']]],
+  ['synthesis_2ehpp_16',['synthesis.hpp',['../synthesis_8hpp.html',1,'']]]
 ];

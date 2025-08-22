@@ -974,6 +974,105 @@
         </inbodydescription>
         <location file="HighMap/src/erosion/hydraulic_stream_gpu.cpp" line="87" column="6" bodyfile="HighMap/src/erosion/hydraulic_stream_gpu.cpp" bodystart="87" bodyend="137" declfile="HighMap/include/highmap/erosion.hpp" declline="1247" declcolumn="6"/>
       </memberdef>
+      <memberdef kind="function" id="namespacehmap_1_1gpu_1a08bdb0f977cae0b9e5bf151852a9e1bb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hmap::gpu::strata</definition>
+        <argsstring>(Array &amp;z, float angle, float slope, float gamma, uint seed, float kz=1.f, int octaves=4, float lacunarity=2.f, float gamma_noise_ratio=0.5f, float noise_amp=0.2f, const Vec2&lt; float &gt; &amp;noise_kw={4.f, 4.f}, const Vec2&lt; float &gt; &amp;ridge_noise_kw={4.f, 1.2f}, float ridge_angle_shift=45.f, float ridge_noise_amp=0.5f, float ridge_clamp_vmin=0.f, float ridge_remap_vmin=0.f, float mask_gamma=0.4f, const Vec4&lt; float &gt; &amp;bbox={0.f, 1.f, 0.f, 1.f})</argsstring>
+        <name>strata</name>
+        <qualifiedname>hmap::gpu::strata</qualifiedname>
+        <param>
+          <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>z</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>angle</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>slope</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>gamma</declname>
+        </param>
+        <param>
+          <type><ref refid="array_8hpp_1a91ad9478d81a7aaf2593e8d9c3d06a14" kindref="member">uint</ref></type>
+          <declname>seed</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>kz</declname>
+          <defval>1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>octaves</declname>
+          <defval>4</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>lacunarity</declname>
+          <defval>2.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>gamma_noise_ratio</declname>
+          <defval>0.5<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>noise_amp</declname>
+          <defval>0.2<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>const <ref refid="structhmap_1_1Vec2" kindref="compound">Vec2</ref>&lt; float &gt; &amp;</type>
+          <declname>noise_kw</declname>
+          <defval>{4.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 4.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>}</defval>
+        </param>
+        <param>
+          <type>const <ref refid="structhmap_1_1Vec2" kindref="compound">Vec2</ref>&lt; float &gt; &amp;</type>
+          <declname>ridge_noise_kw</declname>
+          <defval>{4.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 1.2<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>}</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>ridge_angle_shift</declname>
+          <defval>45.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>ridge_noise_amp</declname>
+          <defval>0.5<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>ridge_clamp_vmin</declname>
+          <defval>0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>ridge_remap_vmin</declname>
+          <defval>0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>mask_gamma</declname>
+          <defval>0.4<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>const <ref refid="structhmap_1_1Vec4" kindref="compound">Vec4</ref>&lt; float &gt; &amp;</type>
+          <declname>bbox</declname>
+          <defval>{0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>}</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/erosion/strata_gpu.cpp" line="12" column="6" bodyfile="HighMap/src/erosion/strata_gpu.cpp" bodystart="12" bodyend="58" declfile="HighMap/include/highmap/erosion.hpp" declline="1263" declcolumn="6"/>
+      </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a2eb4bdf2d7dc4441e56865027764425e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void hmap::gpu::thermal</definition>
@@ -1010,7 +1109,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="13" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="13" bodyend="68" declfile="HighMap/include/highmap/erosion.hpp" declline="1264" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="13" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="13" bodyend="68" declfile="HighMap/include/highmap/erosion.hpp" declline="1283" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a1be1d9c97f7da805703dadab064fb793" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1052,7 +1151,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="70" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="70" bodyend="85" declfile="HighMap/include/highmap/erosion.hpp" declline="1271" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="70" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="70" bodyend="85" declfile="HighMap/include/highmap/erosion.hpp" declline="1290" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1aac5f0e0045cf767611fb8d2def2c4cb5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1090,7 +1189,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="87" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="87" bodyend="95" declfile="HighMap/include/highmap/erosion.hpp" declline="1279" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="87" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="87" bodyend="95" declfile="HighMap/include/highmap/erosion.hpp" declline="1298" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a36a2eba6d158e44d0ef917d9582987fe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1123,7 +1222,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="97" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="97" bodyend="129" declfile="HighMap/include/highmap/erosion.hpp" declline="1286" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="97" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="97" bodyend="129" declfile="HighMap/include/highmap/erosion.hpp" declline="1305" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1ad5bd9a318918350b56ccc887139ca554" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1160,7 +1259,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="140" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="140" bodyend="154" declfile="HighMap/include/highmap/erosion.hpp" declline="1292" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="140" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="140" bodyend="154" declfile="HighMap/include/highmap/erosion.hpp" declline="1311" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1ac87a6d725bf0751510f6b1f426a8af27" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1193,7 +1292,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="131" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="131" bodyend="138" declfile="HighMap/include/highmap/erosion.hpp" declline="1299" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="131" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="131" bodyend="138" declfile="HighMap/include/highmap/erosion.hpp" declline="1318" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1ae57a1e9bd94f218d4be17c9d8be012c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1259,7 +1358,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="156" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="156" bodyend="172" declfile="HighMap/include/highmap/erosion.hpp" declline="1321" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="156" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="156" bodyend="172" declfile="HighMap/include/highmap/erosion.hpp" declline="1340" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a72c9d220589d2724b4e48e9c37ff55ad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1291,7 +1390,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="174" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="174" bodyend="187" declfile="HighMap/include/highmap/erosion.hpp" declline="1323" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="174" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="174" bodyend="187" declfile="HighMap/include/highmap/erosion.hpp" declline="1342" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1afabf7cb3077839af03388c0d1236d912" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1319,7 +1418,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="189" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="189" bodyend="205" declfile="HighMap/include/highmap/erosion.hpp" declline="1329" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="189" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="189" bodyend="205" declfile="HighMap/include/highmap/erosion.hpp" declline="1348" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a1489150d5e1af976a9f814b9911b3ea0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1392,7 +1491,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="207" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="207" bodyend="231" declfile="HighMap/include/highmap/erosion.hpp" declline="1350" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="207" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="207" bodyend="231" declfile="HighMap/include/highmap/erosion.hpp" declline="1369" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1ad0a05ed0beea669300d62197a0dadaf2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1429,7 +1528,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="233" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="233" bodyend="247" declfile="HighMap/include/highmap/erosion.hpp" declline="1355" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="233" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="233" bodyend="247" declfile="HighMap/include/highmap/erosion.hpp" declline="1374" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a87339ed12fc8a86b1f59e351b06e67e6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1522,7 +1621,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="249" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="249" bodyend="280" declfile="HighMap/include/highmap/erosion.hpp" declline="1382" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="249" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="249" bodyend="280" declfile="HighMap/include/highmap/erosion.hpp" declline="1401" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a112228c7b9ebff5463329da76d00fff1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1568,7 +1667,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="282" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="282" bodyend="308" declfile="HighMap/include/highmap/erosion.hpp" declline="1389" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="282" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="282" bodyend="308" declfile="HighMap/include/highmap/erosion.hpp" declline="1408" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a022f5800d7e28f79f9e2d3abf687f490" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -3277,7 +3376,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/gpu_opencl/gpu_opencl.cpp" line="24" column="6" bodyfile="HighMap/src/gpu_opencl/gpu_opencl.cpp" bodystart="24" bodyend="81" declfile="HighMap/include/highmap/opencl/gpu_opencl.hpp" declline="27" declcolumn="6"/>
+        <location file="HighMap/src/gpu_opencl/gpu_opencl.cpp" line="24" column="6" bodyfile="HighMap/src/gpu_opencl/gpu_opencl.cpp" bodystart="24" bodyend="83" declfile="HighMap/include/highmap/opencl/gpu_opencl.hpp" declline="27" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a06f0930402ba5e7a66eb73d9da9a09ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -3766,7 +3865,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="42" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="42" bodyend="69" declfile="HighMap/include/highmap/primitives.hpp" declline="1525" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="42" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="42" bodyend="68" declfile="HighMap/include/highmap/primitives.hpp" declline="1525" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1ae425e289a74c2fbce447004896ee7e77" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -3807,7 +3906,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="71" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="71" bodyend="84" declfile="HighMap/include/highmap/primitives.hpp" declline="1532" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="70" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="70" bodyend="83" declfile="HighMap/include/highmap/primitives.hpp" declline="1532" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a9a67e946fa8616f634c1e5f1cad6045b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -4045,7 +4144,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="86" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="86" bodyend="133" declfile="HighMap/include/highmap/primitives.hpp" declline="1571" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="85" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="85" bodyend="131" declfile="HighMap/include/highmap/primitives.hpp" declline="1571" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a8a8bb25256393cce723c6a1569beb143" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -4121,7 +4220,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="135" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="135" bodyend="167" declfile="HighMap/include/highmap/primitives.hpp" declline="1585" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="133" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="133" bodyend="165" declfile="HighMap/include/highmap/primitives.hpp" declline="1585" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1adb0abb891026d60a261ae7b1e875aa1a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -4417,7 +4516,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="169" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="169" bodyend="226" declfile="HighMap/include/highmap/primitives.hpp" declline="1646" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="167" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="167" bodyend="224" declfile="HighMap/include/highmap/primitives.hpp" declline="1646" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a83074193a517325f41a4278c069b47b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -4518,7 +4617,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="228" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="228" bodyend="270" declfile="HighMap/include/highmap/primitives.hpp" declline="1665" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="226" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="226" bodyend="268" declfile="HighMap/include/highmap/primitives.hpp" declline="1665" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a688f13a6de420fd318ccba616eafcf25" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -4609,7 +4708,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="272" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="272" bodyend="326" declfile="HighMap/include/highmap/primitives.hpp" declline="1684" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="270" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="270" bodyend="324" declfile="HighMap/include/highmap/primitives.hpp" declline="1684" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a50332f79ca9b2548089359f5ad4b8ffd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -4848,7 +4947,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="328" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="328" bodyend="381" declfile="HighMap/include/highmap/primitives.hpp" declline="1750" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="326" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="326" bodyend="379" declfile="HighMap/include/highmap/primitives.hpp" declline="1750" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a450f5b26f42b6f06be3e1e131f6aaf86" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -4899,7 +4998,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="383" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="383" bodyend="420" declfile="HighMap/include/highmap/primitives.hpp" declline="1768" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="381" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="381" bodyend="418" declfile="HighMap/include/highmap/primitives.hpp" declline="1768" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a322260e971f4dec19ec8bc270e7cc461" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -4975,7 +5074,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="422" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="422" bodyend="470" declfile="HighMap/include/highmap/primitives.hpp" declline="1778" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="420" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="420" bodyend="468" declfile="HighMap/include/highmap/primitives.hpp" declline="1778" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a0366d22ed8b0e1b74d5895e00c0e688b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -5208,7 +5307,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="472" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="472" bodyend="532" declfile="HighMap/include/highmap/primitives.hpp" declline="1837" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="470" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="470" bodyend="530" declfile="HighMap/include/highmap/primitives.hpp" declline="1837" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a4927a1382b383a5ceb9071f51bd5abf9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -5478,7 +5577,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="534" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="534" bodyend="600" declfile="HighMap/include/highmap/primitives.hpp" declline="1900" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="532" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="532" bodyend="598" declfile="HighMap/include/highmap/primitives.hpp" declline="1900" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a85000763147ffd507d483ba9be27f38b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -5722,7 +5821,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="602" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="602" bodyend="679" declfile="HighMap/include/highmap/primitives.hpp" declline="1967" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="600" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="600" bodyend="677" declfile="HighMap/include/highmap/primitives.hpp" declline="1967" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1ac2ad88df8eb3c863235f96f1678634e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -6018,7 +6117,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="681" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="681" bodyend="724" declfile="HighMap/include/highmap/primitives.hpp" declline="2035" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="679" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="679" bodyend="722" declfile="HighMap/include/highmap/primitives.hpp" declline="2035" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a0c9c2a528f344ede2aa320fdf2583790" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -6220,7 +6319,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="726" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="726" bodyend="766" declfile="HighMap/include/highmap/primitives.hpp" declline="2092" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="724" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="724" bodyend="764" declfile="HighMap/include/highmap/primitives.hpp" declline="2092" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1aae4961b7c0f65d6904cc61022eb2642b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -6474,7 +6573,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="768" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="768" bodyend="816" declfile="HighMap/include/highmap/primitives.hpp" declline="2150" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="766" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="766" bodyend="814" declfile="HighMap/include/highmap/primitives.hpp" declline="2150" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1aaee46739a429168aa45ff1e5d55041ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -6591,7 +6690,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="899" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="899" bodyend="933" declfile="HighMap/include/highmap/primitives.hpp" declline="2192" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="897" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="897" bodyend="931" declfile="HighMap/include/highmap/primitives.hpp" declline="2192" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a29cc1b0843f7447eb19b6cef27772cdd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -6732,7 +6831,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="818" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="818" bodyend="851" declfile="HighMap/include/highmap/primitives.hpp" declline="2237" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="816" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="816" bodyend="849" declfile="HighMap/include/highmap/primitives.hpp" declline="2237" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a26d6f87858e400f7b6c8cecb1e12bb8c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -6921,7 +7020,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="853" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="853" bodyend="897" declfile="HighMap/include/highmap/primitives.hpp" declline="2273" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="851" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="851" bodyend="895" declfile="HighMap/include/highmap/primitives.hpp" declline="2273" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1ad25e08146acf2dc7101ec18dbfaa0d2b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -7131,7 +7230,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="935" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="935" bodyend="979" declfile="HighMap/include/highmap/primitives.hpp" declline="2335" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="933" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="933" bodyend="977" declfile="HighMap/include/highmap/primitives.hpp" declline="2335" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a2a14aa1a12ce7308b7cb553ea89b836d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -7187,7 +7286,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="981" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="981" bodyend="1025" declfile="HighMap/include/highmap/primitives.hpp" declline="2347" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="979" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="979" bodyend="1023" declfile="HighMap/include/highmap/primitives.hpp" declline="2347" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a9a3f272d7c8294ab3418be67e3c9b3eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>

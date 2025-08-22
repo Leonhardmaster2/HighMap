@@ -17,6 +17,7 @@ var dir_1bed6a359ba9efb1507bbdcef4bacbaa =
     [ "hydraulic_stream_gpu.cpp", "hydraulic__stream__gpu_8cpp.html", "hydraulic__stream__gpu_8cpp" ],
     [ "hydraulic_stream_upscale_amplification.cpp", "hydraulic__stream__upscale__amplification_8cpp.html", "hydraulic__stream__upscale__amplification_8cpp" ],
     [ "hydraulic_vpipes.cpp", "hydraulic__vpipes_8cpp.html", "hydraulic__vpipes_8cpp" ],
+    [ "strata_gpu.cpp", "strata__gpu_8cpp.html", "strata__gpu_8cpp" ],
     [ "stratify.cpp", "stratify_8cpp.html", "stratify_8cpp" ],
     [ "thermal.cpp", "thermal_8cpp.html", "thermal_8cpp" ],
     [ "thermal_flatten.cpp", "thermal__flatten_8cpp.html", "thermal__flatten_8cpp" ],
