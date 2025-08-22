@@ -73,6 +73,8 @@ bool init_opencl()
 #include "kernels/voronoise.cl"
 #include "kernels/vororand_main.cl"
 #include "kernels/warp.cl"
+//
+#include "kernels/strata.cl"
       ;
 
   clwrapper::KernelManager::get_instance().add_kernel(code);

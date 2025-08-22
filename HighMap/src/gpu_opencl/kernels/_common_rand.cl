@@ -21,7 +21,7 @@ float2 hash22f(float2 p, float fseed)
   p = (float2)(dot(p, (float2)(127.1f, 311.7f)),
                dot(p, (float2)(269.5f, 183.3f)));
   float2 pi;
-  return -1.f + 2.f * fract(sin(p + fseed) * 43758.5453123f, &pi);
+  return fract(sin(p + fseed) * 43758.5453123f, &pi);
 }
 
 float2 hash22f_poly(float2 x, float fseed)
@@ -30,6 +30,15 @@ float2 hash22f_poly(float2 x, float fseed)
   x = x * k + k.yx;
   float2 qi;
   return fract(16.f * k * fract(x.x * x.y * (x.x + x.y) + fseed, &qi), &qi);
+}
+
+float3 hash33f(float3 p, float fseed)
+{
+  p = (float3)(dot(p, (float3)(127.1f, 311.7f, 74.7f)),
+               dot(p, (float3)(269.5f, 183.3f, 246.1f)),
+               dot(p, (float3)(113.5f, 271.9f, 124.6f)));
+  float3 pi;
+  return fract(sin(p + fseed) * 43758.5453123f, &pi);
 }
 
 float2 grad22f(float2 p, float fseed)

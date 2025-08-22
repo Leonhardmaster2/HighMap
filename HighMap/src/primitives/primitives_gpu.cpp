@@ -51,8 +51,7 @@ Array gabor_wave(Vec2<int>    shape,
   auto run = clwrapper::Run("gabor_wave");
 
   run.bind_buffer<float>("array", array.vector);
-  run.bind_buffer<float>("angle",
-                         const_cast<std::vector<float> &>(angle.vector));
+  run.bind_buffer<float>("angle", angle.vector);
   run.write_buffer("angle");
   run.bind_arguments(array.shape.x,
                      array.shape.y,
@@ -102,8 +101,7 @@ Array gabor_wave_fbm(Vec2<int>    shape,
   auto run = clwrapper::Run("gabor_wave_fbm");
 
   run.bind_buffer<float>("array", array.vector);
-  run.bind_buffer<float>("angle",
-                         const_cast<std::vector<float> &>(angle.vector));
+  run.bind_buffer<float>("angle", angle.vector);
 
   helper_bind_optional_buffer(run, "ctrl_param", p_ctrl_param);
   helper_bind_optional_buffer(run, "noise_x", p_noise_x);

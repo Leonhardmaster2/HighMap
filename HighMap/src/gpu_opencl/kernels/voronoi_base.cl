@@ -33,6 +33,33 @@ float base_voronoi_f1(const float2 p,
   return 1.66f * min_dist - 1.f;
 }
 
+float base_voronoi3d_f1(const float3 p,
+                        const float3 jitter,
+                        const float  k_smoothing,
+                        const float  fseed)
+{
+  float3 i = floor(p);
+  float3 pi;
+  float3 f = fract(p, &pi);
+
+  float min_dist = FLT_MAX;
+
+  for (int dx = -1; dx <= 1; dx++)
+    for (int dy = -1; dy <= 1; dy++)
+      for (int dz = -1; dz <= 1; dz++)
+      {
+        float3 dr = (float3)(dx, dy, dz);
+        float3 feature_point = dr + jitter * hash33f(i + dr, fseed);
+        float3 diff = feature_point - f;
+        float  dist = dot(diff, diff);
+
+        min_dist = smin(min_dist, dist, k_smoothing);
+      }
+
+  // NB - squared distance
+  return 1.66f * min_dist - 1.f;
+}
+
 float base_voronoi_f2(const float2 p,
                       const float2 jitter,
                       const float  k_smoothing,
@@ -129,7 +156,7 @@ float base_voronoi_f1df2(const float2 p,
       min2 = new_min2;
     }
 
-  return min1 / min2 - 1.f;
+  return min1 / min2;
 }
 
 float base_voronoi_f2mf1(const float2 p,

@@ -1260,6 +1260,25 @@ void hydraulic_stream_log(Array &z,
                           Array *p_deposition_map = nullptr,
                           Array *p_flow_map = nullptr); ///< @overload
 
+void strata(Array             &z,
+            float              angle,
+            float              slope,
+            float              gamma, // 0.5f
+            uint               seed,
+            float              kz = 1.f,
+            int                octaves = 4,
+            float              lacunarity = 2.f,
+            float              gamma_noise_ratio = 0.5f,
+            float              noise_amp = 0.2f,
+            const Vec2<float> &noise_kw = {4.f, 4.f},
+            const Vec2<float> &ridge_noise_kw = {4.f, 1.2f},
+            float              ridge_angle_shift = 45.f,
+            float              ridge_noise_amp = 0.5f,
+            float              ridge_clamp_vmin = 0.f,
+            float              ridge_remap_vmin = 0.f,
+            float              mask_gamma = 0.4f,
+            const Vec4<float> &bbox = {0.f, 1.f, 0.f, 1.f});
+
 /*! @brief See hmap::thermal */
 void thermal(Array       &z,
              const Array &talus,
