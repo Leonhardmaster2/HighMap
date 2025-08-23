@@ -32,8 +32,8 @@ namespace hmap
  */
 enum InterpolationMethod2D : int
 {
-	DELAUNAY, ///< Delaunay triangulation method for 2D interpolation.
-	NEAREST, ///< Nearest point method for 2D interpolation.
+  DELAUNAY, ///< Delaunay triangulation method for 2D interpolation.
+  NEAREST,  ///< Nearest point method for 2D interpolation.
 };
 
 /**
@@ -44,8 +44,8 @@ enum InterpolationMethod2D : int
  * method defined in the @ref InterpolationMethod2D enum.
  */
 static std::map<InterpolationMethod2D, std::string>
-interpolation_method_2d_as_string = {{DELAUNAY, "Delaunay linear"},
-	{NEAREST, "nearest neighbor"}};
+    interpolation_method_2d_as_string = {{DELAUNAY, "Delaunay linear"},
+                                         {NEAREST, "nearest neighbor"}};
 
 /**
  * @brief Compute the bilinear interpolated value from four input values.
@@ -70,18 +70,18 @@ inline float bilinear_interp(float f00,
                              float u,
                              float v)
 {
-	float a10 = f10 - f00;
-	float a01 = f01 - f00;
-	float a11 = f11 - f10 - f01 + f00;
-	return f00 + a10 * u + a01 * v + a11 * u * v;
+  float a10 = f10 - f00;
+  float a01 = f01 - f00;
+  float a11 = f11 - f10 - f01 + f00;
+  return f00 + a10 * u + a01 * v + a11 * u * v;
 }
 
 inline float cubic_interpolate(float p[4], float x)
 {
-	return p[1] + 0.5 * x *
-	       (p[2] - p[0] +
-	        x * (2.0 * p[0] - 5.0 * p[1] + 4.0 * p[2] - p[3] +
-	             x * (3.0 * (p[1] - p[2]) + p[3] - p[0])));
+  return p[1] + 0.5 * x *
+                    (p[2] - p[0] +
+                     x * (2.0 * p[0] - 5.0 * p[1] + 4.0 * p[2] - p[3] +
+                          x * (3.0 * (p[1] - p[2]) + p[3] - p[0])));
 }
 
 /**
@@ -111,7 +111,7 @@ Array interpolate2d(Vec2<int>                 shape,
                     const std::vector<float> &x,
                     const std::vector<float> &y,
                     const std::vector<float> &values,
-                    InterpolationMethod2D interpolation_method,
+                    InterpolationMethod2D     interpolation_method,
                     const Array              *p_noise_x = nullptr,
                     const Array              *p_noise_y = nullptr,
                     const Array              *p_stretching = nullptr,

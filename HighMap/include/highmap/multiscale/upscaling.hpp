@@ -44,9 +44,9 @@ namespace hmap
  * bilinear interpolation.
  */
 void upscale_amplification(
-	Array                                               &array,
-	int upscaling_levels,
-	float persistence,
-	std::function<void(Array &x, float current_scaling)> unary_op);
+    Array                                               &array,
+    int                                                  upscaling_levels,
+    float                                                persistence,
+    std::function<void(Array &x, float current_scaling)> unary_op);
 
 } // namespace hmap

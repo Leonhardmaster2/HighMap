@@ -25,45 +25,45 @@ namespace hmap
 
 struct Pos
 {
-	float x;
-	float y;
-	int i;
-	int j;
-	float u;
-	float v;
+  float x;
+  float y;
+  int   i;
+  int   j;
+  float u;
+  float v;
 };
 
 struct Particle
 {
-	// parameters
-	float c_capacity;
-	float c_erosion;
-	float c_deposition;
-	float c_inertia;
-	float drag_rate;
+  // parameters
+  float c_capacity;
+  float c_erosion;
+  float c_deposition;
+  float c_inertia;
+  float drag_rate;
 
-	// features
-	float sediment = 0.f;
-	float volume = 0.f; // water
+  // features
+  float sediment = 0.f;
+  float volume = 0.f; // water
 
-	// dynamic
-	Pos pos;
-	Vec2<float> vel;
-	float vnorm;
-	bool vlim = 1.f;
-	bool is_active = true;
+  // dynamic
+  Pos         pos;
+  Vec2<float> vel;
+  float       vnorm;
+  bool        vlim = 1.f;
+  bool        is_active = true;
 
-	// constructor
-	Particle(float c_capacity,
-	         float c_erosion,
-	         float c_deposition,
-	         float c_inertia,
-	         float drag_rate);
+  // constructor
+  Particle(float c_capacity,
+           float c_erosion,
+           float c_deposition,
+           float c_inertia,
+           float drag_rate);
 
-	// methods
-	void move(const Array &h, float dt);
+  // methods
+  void move(const Array &h, float dt);
 
-	void set_xy(float x, float y);
+  void set_xy(float x, float y);
 };
 
 } // namespace hmap

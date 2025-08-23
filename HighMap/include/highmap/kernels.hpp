@@ -34,15 +34,15 @@ namespace hmap
  */
 enum KernelType : int
 {
-	BIWEIGHT, ///< Biweight kernel function
-	CUBIC_PULSE, ///< Cubic pulse kernel function
-	CONE,    ///< Cone kernel function
-	CONE_SMOOTH, ///< Smooth cone kernel function
-	DISK,    ///< Disk kernel function
-	LORENTZIAN, ///< Lorentzian (Cauchy) kernel function
-	SMOOTH_COSINE, ///< Smooth cosine kernel function
-	SQUARE,  ///< Square kernel function
-	TRICUBE  ///< Tricube kernel function
+  BIWEIGHT,      ///< Biweight kernel function
+  CUBIC_PULSE,   ///< Cubic pulse kernel function
+  CONE,          ///< Cone kernel function
+  CONE_SMOOTH,   ///< Smooth cone kernel function
+  DISK,          ///< Disk kernel function
+  LORENTZIAN,    ///< Lorentzian (Cauchy) kernel function
+  SMOOTH_COSINE, ///< Smooth cosine kernel function
+  SQUARE,        ///< Square kernel function
+  TRICUBE        ///< Tricube kernel function
 };
 
 /**
@@ -153,9 +153,9 @@ std::vector<float> cubic_pulse_1d(int nk);
  *                      kernel.
  */
 Array cubic_pulse_directional(Vec2<int> shape,
-                              float angle,
-                              float aspect_ratio,
-                              float anisotropy);
+                              float     angle,
+                              float     aspect_ratio,
+                              float     anisotropy);
 
 /**
  * @brief Generates a truncated cubic pulse kernel.
@@ -241,9 +241,9 @@ Array disk_smooth(Vec2<int> shape, float r_cutoff = 0.9f);
  * @image html ex_gabor.png
  */
 Array gabor(Vec2<int> shape,
-            float kw,
-            float angle,
-            bool quad_phase_shift = false);
+            float     kw,
+            float     angle,
+            bool      quad_phase_shift = false);
 
 /**
  * @brief Generates a modified dune-like Gabor kernel.
@@ -272,10 +272,10 @@ Array gabor(Vec2<int> shape,
  * @image html ex_gabor_dune.png
  */
 Array gabor_dune(Vec2<int> shape,
-                 float kw,
-                 float angle,
-                 float xtop,
-                 float xbottom);
+                 float     kw,
+                 float     angle,
+                 float     xtop,
+                 float     xbottom);
 
 /**
  * @brief Generate a kernel of the specified type.

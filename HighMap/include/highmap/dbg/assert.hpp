@@ -20,24 +20,24 @@ namespace hmap
 
 struct AssertResults
 {
-	std::string msg = "";
-	float diff = 0.f;
-	float tolerance = 0.f;
-	float count = 0.f;
-	bool ret = true;
+  std::string msg = "";
+  float       diff = 0.f;
+  float       tolerance = 0.f;
+  float       count = 0.f;
+  bool        ret = true;
 
-	void print() const
-	{
-		std::string prefix = ret ? "ok  - " : "NOK - ";
-		std::cout << prefix << "diff: " << std::to_string(diff)
-		          << ", tolerance:" << std::to_string(tolerance)
-		          << ", count:" << std::to_string(count) << "\n";
-	}
+  void print() const
+  {
+    std::string prefix = ret ? "ok  - " : "NOK - ";
+    std::cout << prefix << "diff: " << std::to_string(diff)
+              << ", tolerance:" << std::to_string(tolerance)
+              << ", count:" << std::to_string(count) << "\n";
+  }
 };
 
 bool assert_almost_equal(const Array       &a,
                          const Array       &b,
-                         float tolerance,
+                         float              tolerance,
                          const std::string &fname = "",
                          AssertResults     *p_results = nullptr);
 

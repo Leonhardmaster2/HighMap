@@ -47,8 +47,8 @@ namespace hmap
  *               2D position.
  */
 std::function<float(float, float)> make_xy_function_from_array(
-	const Array       &array,
-	const Vec4<float> &bbox = {0.f, 1.f, 0.f, 1.f});
+    const Array       &array,
+    const Vec4<float> &bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @enum NoiseType
@@ -60,19 +60,19 @@ std::function<float(float, float)> make_xy_function_from_array(
  */
 enum NoiseType : int
 {
-	PARBERRY, ///< Parberry (Perlin variant)
-	PERLIN,   ///< Perlin
-	PERLIN_BILLOW, ///< Perlin billow
-	PERLIN_HALF, ///< Perlin half
-	SIMPLEX2, ///< OpenSimplex2
-	SIMPLEX2S, ///< OpenSimplex2S
-	VALUE,    ///< Value
-	VALUE_CUBIC, ///< Value (cubic)
-	VALUE_DELAUNAY, ///< Value (delaunay)
-	VALUE_LINEAR, ///< Value (linear)
-	WORLEY,   ///< Worley
-	WORLEY_DOUBLE, ///< Worley double
-	WORLEY_VALUE, ///< Worley (cell value return)
+  PARBERRY,       ///< Parberry (Perlin variant)
+  PERLIN,         ///< Perlin
+  PERLIN_BILLOW,  ///< Perlin billow
+  PERLIN_HALF,    ///< Perlin half
+  SIMPLEX2,       ///< OpenSimplex2
+  SIMPLEX2S,      ///< OpenSimplex2S
+  VALUE,          ///< Value
+  VALUE_CUBIC,    ///< Value (cubic)
+  VALUE_DELAUNAY, ///< Value (delaunay)
+  VALUE_LINEAR,   ///< Value (linear)
+  WORLEY,         ///< Worley
+  WORLEY_DOUBLE,  ///< Worley double
+  WORLEY_VALUE,   ///< Worley (cell value return)
 };
 
 //----------------------------------------
@@ -87,52 +87,50 @@ enum NoiseType : int
 class Function
 {
 public:
-/**
- * @brief Default constructor. Initializes the delegate function to a default
- * that returns 0.
- */
-Function() : delegate([](float, float, float) {
-			return 0.f;
-		})
-{
-}
+  /**
+   * @brief Default constructor. Initializes the delegate function to a default
+   * that returns 0.
+   */
+  Function() : delegate([](float, float, float) { return 0.f; })
+  {
+  }
 
-/**
- * @brief Virtual destructor to ensure proper cleanup in derived classes.
- */
-virtual ~Function() = default;
+  /**
+   * @brief Virtual destructor to ensure proper cleanup in derived classes.
+   */
+  virtual ~Function() = default;
 
-/**
- * @brief Constructor to initialize with a specific delegate function.
- * @param delegate The delegate function to initialize with.
- */
-explicit Function(HMAP_FCT_XY_TYPE delegate) : delegate(std::move(delegate))
-{
-}
+  /**
+   * @brief Constructor to initialize with a specific delegate function.
+   * @param delegate The delegate function to initialize with.
+   */
+  explicit Function(HMAP_FCT_XY_TYPE delegate) : delegate(std::move(delegate))
+  {
+  }
 
-/**
- * @brief Get the current delegate function.
- * @return The current delegate function.
- */
-HMAP_FCT_XY_TYPE get_delegate() const;
+  /**
+   * @brief Get the current delegate function.
+   * @return The current delegate function.
+   */
+  HMAP_FCT_XY_TYPE get_delegate() const;
 
-/**
- * @brief Call the delegate function with given arguments.
- * @param  x          The first float parameter.
- * @param  y          The second float parameter.
- * @param  ctrl_param The third float parameter.
- * @return            The result of the delegate function call.
- */
-float get_value(float x, float y, float ctrl_param) const;
+  /**
+   * @brief Call the delegate function with given arguments.
+   * @param  x          The first float parameter.
+   * @param  y          The second float parameter.
+   * @param  ctrl_param The third float parameter.
+   * @return            The result of the delegate function call.
+   */
+  float get_value(float x, float y, float ctrl_param) const;
 
-/**
- * @brief Set a new delegate function.
- * @param new_delegate The new delegate function to set.
- */
-void set_delegate(HMAP_FCT_XY_TYPE new_delegate);
+  /**
+   * @brief Set a new delegate function.
+   * @param new_delegate The new delegate function to set.
+   */
+  void set_delegate(HMAP_FCT_XY_TYPE new_delegate);
 
 private:
-HMAP_FCT_XY_TYPE delegate;   ///< The stored delegate function object.
+  HMAP_FCT_XY_TYPE delegate; ///< The stored delegate function object.
 };
 
 /**
@@ -147,32 +145,32 @@ HMAP_FCT_XY_TYPE delegate;   ///< The stored delegate function object.
 class ArrayFunction : public Function
 {
 public:
-/**
- * @brief Construct a new ArrayFunction object.
- *
- * @param array    Data array.
- * @param kw       Noise wavenumbers {kx, ky} for each direction, with respect
- *                 to a unit domain.
- * @param periodic Whether the domain is periodic or not.
- */
-ArrayFunction(Array array, Vec2<float> kw, bool periodic = true);
+  /**
+   * @brief Construct a new ArrayFunction object.
+   *
+   * @param array    Data array.
+   * @param kw       Noise wavenumbers {kx, ky} for each direction, with respect
+   *                 to a unit domain.
+   * @param periodic Whether the domain is periodic or not.
+   */
+  ArrayFunction(Array array, Vec2<float> kw, bool periodic = true);
 
-/**
- * @brief Set the array object.
- *
- * @param new_array New data array.
- */
-void set_array(Array new_array)
-{
-	this->array = new_array;
-}
+  /**
+   * @brief Set the array object.
+   *
+   * @param new_array New data array.
+   */
+  void set_array(Array new_array)
+  {
+    this->array = new_array;
+  }
 
 protected:
-Vec2<float> kw;   ///< Frequency scaling vector.
-bool periodic;    ///< Flag indicating whether the domain is periodic or not.
+  Vec2<float> kw; ///< Frequency scaling vector.
+  bool periodic;  ///< Flag indicating whether the domain is periodic or not.
 
 private:
-Array array;   ///< Data array representing the 2D field.
+  Array array; ///< Data array representing the 2D field.
 };
 
 /**
@@ -185,17 +183,17 @@ Array array;   ///< Data array representing the 2D field.
 class BiquadFunction : public Function
 {
 public:
-/**
- * @brief Construct a new Biquad Function object.
- *
- * @param gain   Gain that controls the steepness of the bump.
- * @param center Primitive reference center.
- */
-BiquadFunction(float gain, Vec2<float> center);
+  /**
+   * @brief Construct a new Biquad Function object.
+   *
+   * @param gain   Gain that controls the steepness of the bump.
+   * @param center Primitive reference center.
+   */
+  BiquadFunction(float gain, Vec2<float> center);
 
 protected:
-float gain;           ///< Gain value that controls the steepness of the bump.
-Vec2<float> center;   ///< Primitive reference center.
+  float       gain;   ///< Gain value that controls the steepness of the bump.
+  Vec2<float> center; ///< Primitive reference center.
 };
 
 /**
@@ -208,17 +206,17 @@ Vec2<float> center;   ///< Primitive reference center.
 class BumpFunction : public Function
 {
 public:
-/**
- * @brief Construct a new Bump Function object.
- *
- * @param gain   Gain that controls the steepness of the bump.
- * @param center Primitive reference center.
- */
-BumpFunction(float gain, Vec2<float> center);
+  /**
+   * @brief Construct a new Bump Function object.
+   *
+   * @param gain   Gain that controls the steepness of the bump.
+   * @param center Primitive reference center.
+   */
+  BumpFunction(float gain, Vec2<float> center);
 
 protected:
-float gain;           ///< Gain value that controls the steepness of the bump.
-Vec2<float> center;   ///< Primitive reference center.
+  float       gain;   ///< Gain value that controls the steepness of the bump.
+  Vec2<float> center; ///< Primitive reference center.
 };
 
 /**
@@ -231,28 +229,30 @@ Vec2<float> center;   ///< Primitive reference center.
 class CraterFunction : public Function
 {
 public:
-/**
- * @brief Construct a new Crater Function object.
- *
- * @param radius           Radius of the crater (with respect to a unit domain).
- * @param depth            Depth of the crater (with respect to a unit domain).
- * @param lip_decay        Decay rate of the crater's lip (with respect to a
- *                         unit domain).
- * @param lip_height_ratio Height ratio of the crater's lip.
- * @param center           Primitive reference center.
- */
-CraterFunction(float radius,
-               float depth,
-               float lip_decay,
-               float lip_height_ratio,
-               Vec2<float> center);
+  /**
+   * @brief Construct a new Crater Function object.
+   *
+   * @param radius           Radius of the crater (with respect to a unit
+   * domain).
+   * @param depth            Depth of the crater (with respect to a unit
+   * domain).
+   * @param lip_decay        Decay rate of the crater's lip (with respect to a
+   *                         unit domain).
+   * @param lip_height_ratio Height ratio of the crater's lip.
+   * @param center           Primitive reference center.
+   */
+  CraterFunction(float       radius,
+                 float       depth,
+                 float       lip_decay,
+                 float       lip_height_ratio,
+                 Vec2<float> center);
 
 protected:
-float radius;                   ///< Radius of the crater.
-float depth;                    ///< Depth of the crater.
-float lip_decay;                ///< Decay rate of the crater's lip.
-float lip_height_ratio;         ///< Height ratio of the crater's lip.
-Vec2<float> center;             ///< Primitive reference center.
+  float       radius;           ///< Radius of the crater.
+  float       depth;            ///< Depth of the crater.
+  float       lip_decay;        ///< Decay rate of the crater's lip.
+  float       lip_height_ratio; ///< Height ratio of the crater's lip.
+  Vec2<float> center;           ///< Primitive reference center.
 };
 
 /**
@@ -262,19 +262,19 @@ Vec2<float> center;             ///< Primitive reference center.
 class DiskFunction : public Function
 {
 public:
-/**
- * @brief Construct a new Disk Function object.
- *
- * @param radius Radius of the disk (with respect to a unit domain).
- * @param slope  Side slope (with respect to a unit domain).
- * @param center Primitive reference center.
- */
-DiskFunction(float radius, float slope, Vec2<float> center);
+  /**
+   * @brief Construct a new Disk Function object.
+   *
+   * @param radius Radius of the disk (with respect to a unit domain).
+   * @param slope  Side slope (with respect to a unit domain).
+   * @param center Primitive reference center.
+   */
+  DiskFunction(float radius, float slope, Vec2<float> center);
 
 protected:
-float radius;         ///< Radius of the disk.
-float slope;          ///< Slope of the disk.
-Vec2<float> center;   ///< Primitive reference center.
+  float       radius; ///< Radius of the disk.
+  float       slope;  ///< Slope of the disk.
+  Vec2<float> center; ///< Primitive reference center.
 };
 
 /**
@@ -287,31 +287,31 @@ Vec2<float> center;   ///< Primitive reference center.
 class GaussianPulseFunction : public Function
 {
 public:
-/**
- * @brief Construct a new GaussianPulse Function object.
- *
- * @param sigma  Pulse half-width (with respect to a unit domain).
- * @param center Primitive reference center.
- */
-GaussianPulseFunction(float sigma, Vec2<float> center);
+  /**
+   * @brief Construct a new GaussianPulse Function object.
+   *
+   * @param sigma  Pulse half-width (with respect to a unit domain).
+   * @param center Primitive reference center.
+   */
+  GaussianPulseFunction(float sigma, Vec2<float> center);
 
-/**
- * @brief Set the half-width.
- *
- * @param new_sigma New half-width.
- */
-void set_sigma(float new_sigma)
-{
-	this->sigma = new_sigma;
-	this->inv_sigma2 = 1.f / (this->sigma * this->sigma);
-}
+  /**
+   * @brief Set the half-width.
+   *
+   * @param new_sigma New half-width.
+   */
+  void set_sigma(float new_sigma)
+  {
+    this->sigma = new_sigma;
+    this->inv_sigma2 = 1.f / (this->sigma * this->sigma);
+  }
 
 protected:
-float sigma;          ///< Pulse half-width.
-Vec2<float> center;   ///< Primitive reference center.
+  float       sigma;  ///< Pulse half-width.
+  Vec2<float> center; ///< Primitive reference center.
 
 private:
-float inv_sigma2;   ///< Cached squared inverse of the half-width.
+  float inv_sigma2; ///< Cached squared inverse of the half-width.
 };
 
 /**
@@ -321,42 +321,42 @@ float inv_sigma2;   ///< Cached squared inverse of the half-width.
 class RectangleFunction : public Function
 {
 public:
-/**
- * @brief Construct a new Rectangle Function object.
- *
- * @param rx     Radius of the rectangle (with respect to a unit domain).
- * @param ry     Radius of the rectangle (with respect to a unit domain).
- * @param angle  Overall rotation angle (in degrees).
- * @param slope  Side slope (with respect to a unit domain).
- * @param center Primitive reference center.
- */
-RectangleFunction(float rx,
-                  float ry,
-                  float angle,
-                  float slope,
-                  Vec2<float> center);
+  /**
+   * @brief Construct a new Rectangle Function object.
+   *
+   * @param rx     Radius of the rectangle (with respect to a unit domain).
+   * @param ry     Radius of the rectangle (with respect to a unit domain).
+   * @param angle  Overall rotation angle (in degrees).
+   * @param slope  Side slope (with respect to a unit domain).
+   * @param center Primitive reference center.
+   */
+  RectangleFunction(float       rx,
+                    float       ry,
+                    float       angle,
+                    float       slope,
+                    Vec2<float> center);
 
-/**
- * @brief Set the angle.
- *
- * @param new_angle New angle in degrees.
- */
-void set_angle(float new_angle)
-{
-	this->angle = new_angle;
-	this->ca = std::cos(angle / 180.f * M_PI);
-	this->sa = std::sin(angle / 180.f * M_PI);
-}
+  /**
+   * @brief Set the angle.
+   *
+   * @param new_angle New angle in degrees.
+   */
+  void set_angle(float new_angle)
+  {
+    this->angle = new_angle;
+    this->ca = std::cos(angle / 180.f * M_PI);
+    this->sa = std::sin(angle / 180.f * M_PI);
+  }
 
 protected:
-float rx, ry;         ///< Radius of the rectangle.
-float angle;          ///< Angle of the rectangle.
-float slope;          ///< Slope of the rectangle.
-Vec2<float> center;   ///< Primitive reference center.
+  float       rx, ry; ///< Radius of the rectangle.
+  float       angle;  ///< Angle of the rectangle.
+  float       slope;  ///< Slope of the rectangle.
+  Vec2<float> center; ///< Primitive reference center.
 
 private:
-float ca;   ///< Cached cosine of the angle.
-float sa;   ///< Cached sine of the angle.
+  float ca; ///< Cached cosine of the angle.
+  float sa; ///< Cached sine of the angle.
 };
 
 /**
@@ -369,43 +369,43 @@ float sa;   ///< Cached sine of the angle.
 class RiftFunction : public Function
 {
 public:
-/**
- * @brief Construct a new Rift Function object.
- *
- * @param angle        Overall rotation angle (in degrees).
- * @param slope        Rift slope.
- * @param width        Rift width.
- * @param sharp_bottom Decide whether the rift bottom is sharp or not.
- * @param center       Primitive reference center.
- */
-RiftFunction(float angle,
-             float slope,
-             float width,
-             bool sharp_bottom,
-             Vec2<float> center);
+  /**
+   * @brief Construct a new Rift Function object.
+   *
+   * @param angle        Overall rotation angle (in degrees).
+   * @param slope        Rift slope.
+   * @param width        Rift width.
+   * @param sharp_bottom Decide whether the rift bottom is sharp or not.
+   * @param center       Primitive reference center.
+   */
+  RiftFunction(float       angle,
+               float       slope,
+               float       width,
+               bool        sharp_bottom,
+               Vec2<float> center);
 
-/**
- * @brief Set the angle.
- *
- * @param new_angle New angle in degrees.
- */
-void set_angle(float new_angle)
-{
-	this->angle = new_angle;
-	this->ca = std::cos(angle / 180.f * M_PI);
-	this->sa = std::sin(angle / 180.f * M_PI);
-}
+  /**
+   * @brief Set the angle.
+   *
+   * @param new_angle New angle in degrees.
+   */
+  void set_angle(float new_angle)
+  {
+    this->angle = new_angle;
+    this->ca = std::cos(angle / 180.f * M_PI);
+    this->sa = std::sin(angle / 180.f * M_PI);
+  }
 
 protected:
-float angle;                ///< Overall rotation angle (in degrees).
-float slope;                ///< Rift slope.
-float width;                ///< Rift width.
-bool sharp_bottom;          ///< Rift bottom sharpness.
-Vec2<float> center;         ///< Primitive reference center.
+  float       angle;        ///< Overall rotation angle (in degrees).
+  float       slope;        ///< Rift slope.
+  float       width;        ///< Rift width.
+  bool        sharp_bottom; ///< Rift bottom sharpness.
+  Vec2<float> center;       ///< Primitive reference center.
 
 private:
-float ca;   ///< Cached cosine of the angle.
-float sa;   ///< Cached sine of the angle.
+  float ca; ///< Cached cosine of the angle.
+  float sa; ///< Cached sine of the angle.
 };
 
 /**
@@ -418,35 +418,35 @@ float sa;   ///< Cached sine of the angle.
 class SlopeFunction : public Function
 {
 public:
-/**
- * @brief Construct a new Slope Function object.
- *
- * @param angle  Overall rotation angle (in degrees).
- * @param slope  Step slope.
- * @param center Primitive reference center.
- */
-SlopeFunction(float angle, float slope, Vec2<float> center);
+  /**
+   * @brief Construct a new Slope Function object.
+   *
+   * @param angle  Overall rotation angle (in degrees).
+   * @param slope  Step slope.
+   * @param center Primitive reference center.
+   */
+  SlopeFunction(float angle, float slope, Vec2<float> center);
 
-/**
- * @brief Set the angle.
- *
- * @param new_angle New angle in degrees.
- */
-void set_angle(float new_angle)
-{
-	this->angle = new_angle;
-	this->ca = std::cos(angle / 180.f * M_PI);
-	this->sa = std::sin(angle / 180.f * M_PI);
-}
+  /**
+   * @brief Set the angle.
+   *
+   * @param new_angle New angle in degrees.
+   */
+  void set_angle(float new_angle)
+  {
+    this->angle = new_angle;
+    this->ca = std::cos(angle / 180.f * M_PI);
+    this->sa = std::sin(angle / 180.f * M_PI);
+  }
 
 protected:
-float angle;          ///< Overall rotation angle (in degrees).
-float slope;          ///< Step slope.
-Vec2<float> center;   ///< Primitive reference center.
+  float       angle;  ///< Overall rotation angle (in degrees).
+  float       slope;  ///< Step slope.
+  Vec2<float> center; ///< Primitive reference center.
 
 private:
-float ca;   ///< Cached cosine of the angle.
-float sa;   ///< Cached sine of the angle.
+  float ca; ///< Cached cosine of the angle.
+  float sa; ///< Cached sine of the angle.
 };
 
 /**
@@ -459,35 +459,35 @@ float sa;   ///< Cached sine of the angle.
 class StepFunction : public Function
 {
 public:
-/**
- * @brief Construct a new Step Function object.
- *
- * @param angle  Overall rotation angle (in degrees).
- * @param slope  Step slope.
- * @param center Primitive reference center.
- */
-StepFunction(float angle, float slope, Vec2<float> center);
+  /**
+   * @brief Construct a new Step Function object.
+   *
+   * @param angle  Overall rotation angle (in degrees).
+   * @param slope  Step slope.
+   * @param center Primitive reference center.
+   */
+  StepFunction(float angle, float slope, Vec2<float> center);
 
-/**
- * @brief Set the angle.
- *
- * @param new_angle New angle in degrees.
- */
-void set_angle(float new_angle)
-{
-	this->angle = new_angle;
-	this->ca = std::cos(angle / 180.f * M_PI);
-	this->sa = std::sin(angle / 180.f * M_PI);
-}
+  /**
+   * @brief Set the angle.
+   *
+   * @param new_angle New angle in degrees.
+   */
+  void set_angle(float new_angle)
+  {
+    this->angle = new_angle;
+    this->ca = std::cos(angle / 180.f * M_PI);
+    this->sa = std::sin(angle / 180.f * M_PI);
+  }
 
 protected:
-float angle;          ///< Overall rotation angle (in degrees).
-float slope;          ///< Step slope.
-Vec2<float> center;   ///< Primitive reference center.
+  float       angle;  ///< Overall rotation angle (in degrees).
+  float       slope;  ///< Step slope.
+  Vec2<float> center; ///< Primitive reference center.
 
 private:
-float ca;   ///< Cached cosine of the angle.
-float sa;   ///< Cached sine of the angle.
+  float ca; ///< Cached cosine of the angle.
+  float sa; ///< Cached sine of the angle.
 };
 
 /**
@@ -501,47 +501,47 @@ float sa;   ///< Cached sine of the angle.
 class WaveDuneFunction : public Function
 {
 public:
-/**
- * @brief Construct a new Wave Dune Function object.
- *
- * @param kw          Noise wavenumbers {kx, ky} for each direction, with
- *                    respect to a unit domain.
- * @param angle       Overall rotation angle (in degrees).
- * @param xtop        Relative location of the top of the dune profile (in [0,
- *                    1]).
- * @param xbottom     Relative location of the foot of the dune profile (in [0,
- *                    1]).
- * @param phase_shift Phase shift (in radians).
- */
-WaveDuneFunction(Vec2<float> kw,
-                 float angle,
-                 float xtop,
-                 float xbottom,
-                 float phase_shift);
+  /**
+   * @brief Construct a new Wave Dune Function object.
+   *
+   * @param kw          Noise wavenumbers {kx, ky} for each direction, with
+   *                    respect to a unit domain.
+   * @param angle       Overall rotation angle (in degrees).
+   * @param xtop        Relative location of the top of the dune profile (in [0,
+   *                    1]).
+   * @param xbottom     Relative location of the foot of the dune profile (in
+   * [0, 1]).
+   * @param phase_shift Phase shift (in radians).
+   */
+  WaveDuneFunction(Vec2<float> kw,
+                   float       angle,
+                   float       xtop,
+                   float       xbottom,
+                   float       phase_shift);
 
-/**
- * @brief Set the angle.
- *
- * @param new_angle New angle.
- */
-void set_angle(float new_angle)
-{
-	this->angle = new_angle;
-	this->ca = std::cos(angle / 180.f * M_PI);
-	this->sa = std::sin(angle / 180.f * M_PI);
-}
+  /**
+   * @brief Set the angle.
+   *
+   * @param new_angle New angle.
+   */
+  void set_angle(float new_angle)
+  {
+    this->angle = new_angle;
+    this->ca = std::cos(angle / 180.f * M_PI);
+    this->sa = std::sin(angle / 180.f * M_PI);
+  }
 
 protected:
-Vec2<float> kw;      ///< Frequency scaling vector.
-float angle;         ///< Overall rotation angle (in degrees).
-float xtop;   ///< Relative location of the top of the dune profile (in [0, 1]).
-float xbottom;   ///< Relative location of the foot of the dune profile (in [0,
-///< 1]).
-float phase_shift;   ///< Phase shift (in radians).
+  Vec2<float> kw;    ///< Frequency scaling vector.
+  float       angle; ///< Overall rotation angle (in degrees).
+  float xtop; ///< Relative location of the top of the dune profile (in [0, 1]).
+  float xbottom; ///< Relative location of the foot of the dune profile (in [0,
+  ///< 1]).
+  float phase_shift; ///< Phase shift (in radians).
 
 private:
-float ca;   ///< Cached cosine of the angle.
-float sa;   ///< Cached sine of the angle.
+  float ca; ///< Cached cosine of the angle.
+  float sa; ///< Cached sine of the angle.
 };
 
 /**
@@ -554,36 +554,36 @@ float sa;   ///< Cached sine of the angle.
 class WaveSineFunction : public Function
 {
 public:
-/**
- * @brief Construct a new Wave Sine Function object.
- *
- * @param kw          Noise wavenumbers {kx, ky} for each direction, with
- *                    respect to a unit domain.
- * @param angle       Overall rotation angle (in degrees).
- * @param phase_shift Phase shift (in radians).
- */
-WaveSineFunction(Vec2<float> kw, float angle, float phase_shift);
+  /**
+   * @brief Construct a new Wave Sine Function object.
+   *
+   * @param kw          Noise wavenumbers {kx, ky} for each direction, with
+   *                    respect to a unit domain.
+   * @param angle       Overall rotation angle (in degrees).
+   * @param phase_shift Phase shift (in radians).
+   */
+  WaveSineFunction(Vec2<float> kw, float angle, float phase_shift);
 
-/**
- * @brief Set the angle.
- *
- * @param new_angle New angle.
- */
-void set_angle(float new_angle)
-{
-	this->angle = new_angle;
-	this->ca = std::cos(angle / 180.f * M_PI);
-	this->sa = std::sin(angle / 180.f * M_PI);
-}
+  /**
+   * @brief Set the angle.
+   *
+   * @param new_angle New angle.
+   */
+  void set_angle(float new_angle)
+  {
+    this->angle = new_angle;
+    this->ca = std::cos(angle / 180.f * M_PI);
+    this->sa = std::sin(angle / 180.f * M_PI);
+  }
 
 protected:
-Vec2<float> kw;            ///< Frequency scaling vector.
-float angle;               ///< Overall rotation angle (in degrees).
-float phase_shift;         ///< Phase shift (in radians).
+  Vec2<float> kw;          ///< Frequency scaling vector.
+  float       angle;       ///< Overall rotation angle (in degrees).
+  float       phase_shift; ///< Phase shift (in radians).
 
 private:
-float ca;   ///< Cached cosine of the angle.
-float sa;   ///< Cached sine of the angle.
+  float ca; ///< Cached cosine of the angle.
+  float sa; ///< Cached sine of the angle.
 };
 
 /**
@@ -596,36 +596,36 @@ float sa;   ///< Cached sine of the angle.
 class WaveSquareFunction : public Function
 {
 public:
-/**
- * @brief Construct a new Wave Square Function object.
- *
- * @param kw          Noise wavenumbers {kx, ky} for each direction, with
- *                    respect to a unit domain.
- * @param angle       Overall rotation angle (in degrees).
- * @param phase_shift Phase shift (in radians).
- */
-WaveSquareFunction(Vec2<float> kw, float angle, float phase_shift);
+  /**
+   * @brief Construct a new Wave Square Function object.
+   *
+   * @param kw          Noise wavenumbers {kx, ky} for each direction, with
+   *                    respect to a unit domain.
+   * @param angle       Overall rotation angle (in degrees).
+   * @param phase_shift Phase shift (in radians).
+   */
+  WaveSquareFunction(Vec2<float> kw, float angle, float phase_shift);
 
-/**
- * @brief Set the angle.
- *
- * @param new_angle New angle.
- */
-void set_angle(float new_angle)
-{
-	this->angle = new_angle;
-	this->ca = std::cos(angle / 180.f * M_PI);
-	this->sa = std::sin(angle / 180.f * M_PI);
-}
+  /**
+   * @brief Set the angle.
+   *
+   * @param new_angle New angle.
+   */
+  void set_angle(float new_angle)
+  {
+    this->angle = new_angle;
+    this->ca = std::cos(angle / 180.f * M_PI);
+    this->sa = std::sin(angle / 180.f * M_PI);
+  }
 
 protected:
-Vec2<float> kw;            ///< Frequency scaling vector.
-float angle;               ///< Overall rotation angle (in degrees).
-float phase_shift;         ///< Phase shift (in radians).
+  Vec2<float> kw;          ///< Frequency scaling vector.
+  float       angle;       ///< Overall rotation angle (in degrees).
+  float       phase_shift; ///< Phase shift (in radians).
 
 private:
-float ca;   ///< Cached cosine of the angle.
-float sa;   ///< Cached sine of the angle.
+  float ca; ///< Cached cosine of the angle.
+  float sa; ///< Cached sine of the angle.
 };
 
 /**
@@ -639,41 +639,41 @@ float sa;   ///< Cached sine of the angle.
 class WaveTriangularFunction : public Function
 {
 public:
-/**
- * @brief Construct a new Wave Triangular Function object.
- *
- * @param kw          Noise wavenumbers {kx, ky} for each direction, with
- *                    respect to a unit domain.
- * @param angle       Overall rotation angle (in degrees).
- * @param slant_ratio Relative location of the triangle apex, in [0, 1].
- * @param phase_shift Phase shift (in radians).
- */
-WaveTriangularFunction(Vec2<float> kw,
-                       float angle,
-                       float slant_ratio,
-                       float phase_shift);
+  /**
+   * @brief Construct a new Wave Triangular Function object.
+   *
+   * @param kw          Noise wavenumbers {kx, ky} for each direction, with
+   *                    respect to a unit domain.
+   * @param angle       Overall rotation angle (in degrees).
+   * @param slant_ratio Relative location of the triangle apex, in [0, 1].
+   * @param phase_shift Phase shift (in radians).
+   */
+  WaveTriangularFunction(Vec2<float> kw,
+                         float       angle,
+                         float       slant_ratio,
+                         float       phase_shift);
 
-/**
- * @brief Set the angle.
- *
- * @param new_angle New angle.
- */
-void set_angle(float new_angle)
-{
-	this->angle = new_angle;
-	this->ca = std::cos(angle / 180.f * M_PI);
-	this->sa = std::sin(angle / 180.f * M_PI);
-}
+  /**
+   * @brief Set the angle.
+   *
+   * @param new_angle New angle.
+   */
+  void set_angle(float new_angle)
+  {
+    this->angle = new_angle;
+    this->ca = std::cos(angle / 180.f * M_PI);
+    this->sa = std::sin(angle / 180.f * M_PI);
+  }
 
 protected:
-Vec2<float> kw;      ///< Frequency scaling vector.
-float angle;         ///< Overall rotation angle (in degrees).
-float slant_ratio;   ///< Relative location of the triangle apex, in [0, 1].
-float phase_shift;   ///< Phase shift (in radians).
+  Vec2<float> kw;    ///< Frequency scaling vector.
+  float       angle; ///< Overall rotation angle (in degrees).
+  float slant_ratio; ///< Relative location of the triangle apex, in [0, 1].
+  float phase_shift; ///< Phase shift (in radians).
 
 private:
-float ca;   ///< Cached cosine of the angle.
-float sa;   ///< Cached sine of the angle.
+  float ca; ///< Cached cosine of the angle.
+  float sa; ///< Cached sine of the angle.
 };
 
 //----------------------------------------
@@ -692,70 +692,70 @@ float sa;   ///< Cached sine of the angle.
 class NoiseFunction : public Function
 {
 public:
-/**
- * @brief Default constructor. Initializes with default frequency scaling and
- * seed.
- */
-NoiseFunction() : Function(), kw(Vec2<float>(0.f, 0.f)), seed(0)
-{
-}
+  /**
+   * @brief Default constructor. Initializes with default frequency scaling and
+   * seed.
+   */
+  NoiseFunction() : Function(), kw(Vec2<float>(0.f, 0.f)), seed(0)
+  {
+  }
 
-/**
- * @brief Constructor to initialize with specific frequency scaling.
- * @param kw Frequency scaling vector.
- */
-NoiseFunction(Vec2<float> kw) : Function(), kw(kw), seed(0)
-{
-}
+  /**
+   * @brief Constructor to initialize with specific frequency scaling.
+   * @param kw Frequency scaling vector.
+   */
+  NoiseFunction(Vec2<float> kw) : Function(), kw(kw), seed(0)
+  {
+  }
 
-/**
- * @brief Constructor to initialize with specific frequency scaling and seed.
- * @param kw   Frequency scaling vector.
- * @param seed Random seed for noise generation.
- */
-NoiseFunction(Vec2<float> kw, uint seed) : Function(), kw(kw), seed(seed)
-{
-}
+  /**
+   * @brief Constructor to initialize with specific frequency scaling and seed.
+   * @param kw   Frequency scaling vector.
+   * @param seed Random seed for noise generation.
+   */
+  NoiseFunction(Vec2<float> kw, uint seed) : Function(), kw(kw), seed(seed)
+  {
+  }
 
-/**
- * @brief Get the frequency scaling vector.
- * @return The current frequency scaling vector.
- */
-Vec2<float> get_kw() const
-{
-	return this->kw;
-}
+  /**
+   * @brief Get the frequency scaling vector.
+   * @return The current frequency scaling vector.
+   */
+  Vec2<float> get_kw() const
+  {
+    return this->kw;
+  }
 
-/**
- * @brief Get the random seed.
- * @return The current random seed.
- */
-uint get_seed() const
-{
-	return this->seed;
-}
+  /**
+   * @brief Get the random seed.
+   * @return The current random seed.
+   */
+  uint get_seed() const
+  {
+    return this->seed;
+  }
 
-/**
- * @brief Set a new random seed for noise generation.
- * @param new_seed The new random seed.
- */
-virtual void set_seed(uint new_seed)
-{
-	this->seed = new_seed;
-}
+  /**
+   * @brief Set a new random seed for noise generation.
+   * @param new_seed The new random seed.
+   */
+  virtual void set_seed(uint new_seed)
+  {
+    this->seed = new_seed;
+  }
 
-/**
- * @brief Set a new frequency scaling vector.
- * @param new_kw The new frequency scaling vector.
- */
-virtual void set_kw(Vec2<float> new_kw)
-{
-	this->kw = new_kw;
-}
+  /**
+   * @brief Set a new frequency scaling vector.
+   * @param new_kw The new frequency scaling vector.
+   */
+  virtual void set_kw(Vec2<float> new_kw)
+  {
+    this->kw = new_kw;
+  }
 
 protected:
-Vec2<float> kw;     ///< Frequency scaling vector.
-uint seed;          ///< Random seed for noise generation.
+  Vec2<float> kw;   ///< Frequency scaling vector.
+  uint        seed; ///< Random seed for noise generation.
 };
 
 //----------------------------------------
@@ -768,66 +768,66 @@ uint seed;          ///< Random seed for noise generation.
 class ParberryFunction : public NoiseFunction
 {
 public:
-/**
- * @brief Gradient magnitude exponent.
- */
-float mu;
+  /**
+   * @brief Gradient magnitude exponent.
+   */
+  float mu;
 
-/**
- * @brief Construct a new Perlin Function object.
- *
- * @param kw   Noise wavenumbers {kx, ky} for each directions, with respect to a
- *             unit domain.
- * @param seed Random seed number.
- * @param mu   Gradient magnitude exponent.
- */
-ParberryFunction(Vec2<float> kw, uint seed, float mu);
+  /**
+   * @brief Construct a new Perlin Function object.
+   *
+   * @param kw   Noise wavenumbers {kx, ky} for each directions, with respect to
+   * a unit domain.
+   * @param seed Random seed number.
+   * @param mu   Gradient magnitude exponent.
+   */
+  ParberryFunction(Vec2<float> kw, uint seed, float mu);
 
-/**
- * @brief Initialize generator.
- */
-void initialize();
+  /**
+   * @brief Initialize generator.
+   */
+  void initialize();
 
-/**
- * @brief Set the seed attribute.
- *
- * @param new_seed New seed.
- */
-void set_seed(uint /*new_seed*/)
-{
-	// FIX ME seed cannot be changed with current implemtantion.
-}
+  /**
+   * @brief Set the seed attribute.
+   *
+   * @param new_seed New seed.
+   */
+  void set_seed(uint /*new_seed*/)
+  {
+    // FIX ME seed cannot be changed with current implemtantion.
+  }
 
 private:
-/**
- * @brief Perlin's B, a power of 2 usually equal to 256.
- */
-int perlin_b = 0X100;
+  /**
+   * @brief Perlin's B, a power of 2 usually equal to 256.
+   */
+  int perlin_b = 0X100;
 
-/**
- * @brief A bit mask, one less than B.
- */
-int perlin_bm = 0xff;
+  /**
+   * @brief A bit mask, one less than B.
+   */
+  int perlin_bm = 0xff;
 
-/**
- * @brief Perlin's N.
- */
-int perlin_n = 0x100;
+  /**
+   * @brief Perlin's N.
+   */
+  int perlin_n = 0x100;
 
-/**
- * @brief Perlin's permutation table.
- */
-std::vector<int> p;
+  /**
+   * @brief Perlin's permutation table.
+   */
+  std::vector<int> p;
 
-/**
- * @brief Perlin's gradient table.
- */
-std::vector<std::vector<float> > g2;
+  /**
+   * @brief Perlin's gradient table.
+   */
+  std::vector<std::vector<float>> g2;
 
-/**
- * @brief Ian Parberry's gradient magnitude table.
- */
-std::vector<float> m;
+  /**
+   * @brief Ian Parberry's gradient magnitude table.
+   */
+  std::vector<float> m;
 };
 
 /**
@@ -836,31 +836,31 @@ std::vector<float> m;
 class PerlinFunction : public NoiseFunction
 {
 public:
-/**
- * @brief Construct a new Perlin Function object.
- *
- * @param kw   Noise wavenumbers {kx, ky} for each directions, with respect to a
- *             unit domain.
- * @param seed Random seed number.
- */
-PerlinFunction(Vec2<float> kw, uint seed);
+  /**
+   * @brief Construct a new Perlin Function object.
+   *
+   * @param kw   Noise wavenumbers {kx, ky} for each directions, with respect to
+   * a unit domain.
+   * @param seed Random seed number.
+   */
+  PerlinFunction(Vec2<float> kw, uint seed);
 
-/**
- * @brief Set the seed attribute.
- *
- * @param new_seed New seed.
- */
-void set_seed(uint new_seed)
-{
-	NoiseFunction::set_seed(new_seed);
-	this->noise.SetSeed(new_seed);
-}
+  /**
+   * @brief Set the seed attribute.
+   *
+   * @param new_seed New seed.
+   */
+  void set_seed(uint new_seed)
+  {
+    NoiseFunction::set_seed(new_seed);
+    this->noise.SetSeed(new_seed);
+  }
 
 private:
-/**
- * @brief FastNoiseLite noise generator object.
- */
-FastNoiseLite noise;
+  /**
+   * @brief FastNoiseLite noise generator object.
+   */
+  FastNoiseLite noise;
 };
 
 /**
@@ -869,31 +869,31 @@ FastNoiseLite noise;
 class PerlinBillowFunction : public NoiseFunction
 {
 public:
-/**
- * @brief Construct a new Perlin Function object.
- *
- * @param kw   Noise wavenumbers {kx, ky} for each directions, with respect to a
- *             unit domain.
- * @param seed Random seed number.
- */
-PerlinBillowFunction(Vec2<float> kw, uint seed);
+  /**
+   * @brief Construct a new Perlin Function object.
+   *
+   * @param kw   Noise wavenumbers {kx, ky} for each directions, with respect to
+   * a unit domain.
+   * @param seed Random seed number.
+   */
+  PerlinBillowFunction(Vec2<float> kw, uint seed);
 
-/**
- * @brief Set the seed attribute.
- *
- * @param new_seed New seed.
- */
-void set_seed(uint new_seed)
-{
-	NoiseFunction::set_seed(new_seed);
-	this->noise.SetSeed(new_seed);
-}
+  /**
+   * @brief Set the seed attribute.
+   *
+   * @param new_seed New seed.
+   */
+  void set_seed(uint new_seed)
+  {
+    NoiseFunction::set_seed(new_seed);
+    this->noise.SetSeed(new_seed);
+  }
 
 private:
-/**
- * @brief FastNoiseLite noise generator object.
- */
-FastNoiseLite noise;
+  /**
+   * @brief FastNoiseLite noise generator object.
+   */
+  FastNoiseLite noise;
 };
 
 /**
@@ -902,34 +902,34 @@ FastNoiseLite noise;
 class PerlinHalfFunction : public NoiseFunction
 {
 public:
-float k;
+  float k;
 
-/**
- * @brief Construct a new Perlin Function object.
- *
- * @param kw   Noise wavenumbers {kx, ky} for each directions, with respect to a
- *             unit domain.
- * @param seed Random seed number.
- * @param k    Smoothing factor.
- */
-PerlinHalfFunction(Vec2<float> kw, uint seed, float k);
+  /**
+   * @brief Construct a new Perlin Function object.
+   *
+   * @param kw   Noise wavenumbers {kx, ky} for each directions, with respect to
+   * a unit domain.
+   * @param seed Random seed number.
+   * @param k    Smoothing factor.
+   */
+  PerlinHalfFunction(Vec2<float> kw, uint seed, float k);
 
-/**
- * @brief Set the seed attribute.
- *
- * @param new_seed New seed.
- */
-void set_seed(uint new_seed)
-{
-	NoiseFunction::set_seed(new_seed);
-	this->noise.SetSeed(new_seed);
-}
+  /**
+   * @brief Set the seed attribute.
+   *
+   * @param new_seed New seed.
+   */
+  void set_seed(uint new_seed)
+  {
+    NoiseFunction::set_seed(new_seed);
+    this->noise.SetSeed(new_seed);
+  }
 
 private:
-/**
- * @brief FastNoiseLite noise generator object.
- */
-FastNoiseLite noise;
+  /**
+   * @brief FastNoiseLite noise generator object.
+   */
+  FastNoiseLite noise;
 };
 
 /**
@@ -938,31 +938,31 @@ FastNoiseLite noise;
 class PerlinMixFunction : public NoiseFunction
 {
 public:
-/**
- * @brief Construct a new Perlin Function object.
- *
- * @param kw   Noise wavenumbers {kx, ky} for each directions, with respect to a
- *             unit domain.
- * @param seed Random seed number.
- */
-PerlinMixFunction(Vec2<float> kw, uint seed);
+  /**
+   * @brief Construct a new Perlin Function object.
+   *
+   * @param kw   Noise wavenumbers {kx, ky} for each directions, with respect to
+   * a unit domain.
+   * @param seed Random seed number.
+   */
+  PerlinMixFunction(Vec2<float> kw, uint seed);
 
-/**
- * @brief Set the seed attribute.
- *
- * @param new_seed New seed.
- */
-void set_seed(uint new_seed)
-{
-	NoiseFunction::set_seed(new_seed);
-	this->noise.SetSeed(new_seed);
-}
+  /**
+   * @brief Set the seed attribute.
+   *
+   * @param new_seed New seed.
+   */
+  void set_seed(uint new_seed)
+  {
+    NoiseFunction::set_seed(new_seed);
+    this->noise.SetSeed(new_seed);
+  }
 
 private:
-/**
- * @brief FastNoiseLite noise generator object.
- */
-FastNoiseLite noise;
+  /**
+   * @brief FastNoiseLite noise generator object.
+   */
+  FastNoiseLite noise;
 };
 
 /**
@@ -971,31 +971,31 @@ FastNoiseLite noise;
 class Simplex2Function : public NoiseFunction
 {
 public:
-/**
- * @brief Construct a new Perlin Function object.
- *
- * @param kw   Noise wavenumbers {kx, ky} for each directions, with respect to a
- *             unit domain.
- * @param seed Random seed number.
- */
-Simplex2Function(Vec2<float> kw, uint seed);
+  /**
+   * @brief Construct a new Perlin Function object.
+   *
+   * @param kw   Noise wavenumbers {kx, ky} for each directions, with respect to
+   * a unit domain.
+   * @param seed Random seed number.
+   */
+  Simplex2Function(Vec2<float> kw, uint seed);
 
-/**
- * @brief Set the seed attribute.
- *
- * @param new_seed New seed.
- */
-void set_seed(uint new_seed)
-{
-	NoiseFunction::set_seed(new_seed);
-	this->noise.SetSeed(new_seed);
-}
+  /**
+   * @brief Set the seed attribute.
+   *
+   * @param new_seed New seed.
+   */
+  void set_seed(uint new_seed)
+  {
+    NoiseFunction::set_seed(new_seed);
+    this->noise.SetSeed(new_seed);
+  }
 
 private:
-/**
- * @brief FastNoiseLite noise generator object.
- */
-FastNoiseLite noise;
+  /**
+   * @brief FastNoiseLite noise generator object.
+   */
+  FastNoiseLite noise;
 };
 
 /**
@@ -1004,31 +1004,31 @@ FastNoiseLite noise;
 class Simplex2SFunction : public NoiseFunction
 {
 public:
-/**
- * @brief Construct a new Perlin Function object.
- *
- * @param kw   Noise wavenumbers {kx, ky} for each directions, with respect to a
- *             unit domain.
- * @param seed Random seed number.
- */
-Simplex2SFunction(Vec2<float> kw, uint seed);
+  /**
+   * @brief Construct a new Perlin Function object.
+   *
+   * @param kw   Noise wavenumbers {kx, ky} for each directions, with respect to
+   * a unit domain.
+   * @param seed Random seed number.
+   */
+  Simplex2SFunction(Vec2<float> kw, uint seed);
 
-/**
- * @brief Set the seed attribute.
- *
- * @param new_seed New seed.
- */
-void set_seed(uint new_seed)
-{
-	NoiseFunction::set_seed(new_seed);
-	this->noise.SetSeed(new_seed);
-}
+  /**
+   * @brief Set the seed attribute.
+   *
+   * @param new_seed New seed.
+   */
+  void set_seed(uint new_seed)
+  {
+    NoiseFunction::set_seed(new_seed);
+    this->noise.SetSeed(new_seed);
+  }
 
 private:
-/**
- * @brief FastNoiseLite noise generator object.
- */
-FastNoiseLite noise;
+  /**
+   * @brief FastNoiseLite noise generator object.
+   */
+  FastNoiseLite noise;
 };
 
 /**
@@ -1037,31 +1037,31 @@ FastNoiseLite noise;
 class ValueNoiseFunction : public NoiseFunction
 {
 public:
-/**
- * @brief Construct a new ValueNoiseFunction object.
- *
- * @param kw   Noise wavenumbers {kx, ky} for each directions, with respect to a
- *             unit domain.
- * @param seed Random seed number.
- */
-ValueNoiseFunction(Vec2<float> kw, uint seed);
+  /**
+   * @brief Construct a new ValueNoiseFunction object.
+   *
+   * @param kw   Noise wavenumbers {kx, ky} for each directions, with respect to
+   * a unit domain.
+   * @param seed Random seed number.
+   */
+  ValueNoiseFunction(Vec2<float> kw, uint seed);
 
-/**
- * @brief Set the seed attribute.
- *
- * @param new_seed New seed.
- */
-void set_seed(uint new_seed)
-{
-	NoiseFunction::set_seed(new_seed);
-	this->noise.SetSeed(new_seed);
-}
+  /**
+   * @brief Set the seed attribute.
+   *
+   * @param new_seed New seed.
+   */
+  void set_seed(uint new_seed)
+  {
+    NoiseFunction::set_seed(new_seed);
+    this->noise.SetSeed(new_seed);
+  }
 
 private:
-/**
- * @brief FastNoiseLite noise generator object.
- */
-FastNoiseLite noise;
+  /**
+   * @brief FastNoiseLite noise generator object.
+   */
+  FastNoiseLite noise;
 };
 
 /**
@@ -1070,31 +1070,31 @@ FastNoiseLite noise;
 class ValueCubicNoiseFunction : public NoiseFunction
 {
 public:
-/**
- * @brief Construct a new ValueCubicNoiseFunction object.
- *
- * @param kw   Noise wavenumbers {kx, ky} for each directions, with respect to a
- *             unit domain.
- * @param seed Random seed number.
- */
-ValueCubicNoiseFunction(Vec2<float> kw, uint seed);
+  /**
+   * @brief Construct a new ValueCubicNoiseFunction object.
+   *
+   * @param kw   Noise wavenumbers {kx, ky} for each directions, with respect to
+   * a unit domain.
+   * @param seed Random seed number.
+   */
+  ValueCubicNoiseFunction(Vec2<float> kw, uint seed);
 
-/**
- * @brief Set the seed attribute.
- *
- * @param new_seed New seed.
- */
-void set_seed(uint new_seed)
-{
-	NoiseFunction::set_seed(new_seed);
-	this->noise.SetSeed(new_seed);
-}
+  /**
+   * @brief Set the seed attribute.
+   *
+   * @param new_seed New seed.
+   */
+  void set_seed(uint new_seed)
+  {
+    NoiseFunction::set_seed(new_seed);
+    this->noise.SetSeed(new_seed);
+  }
 
 private:
-/**
- * @brief FastNoiseLite noise generator object.
- */
-FastNoiseLite noise;
+  /**
+   * @brief FastNoiseLite noise generator object.
+   */
+  FastNoiseLite noise;
 };
 
 /**
@@ -1103,40 +1103,40 @@ FastNoiseLite noise;
 class ValueDelaunayNoiseFunction : public NoiseFunction
 {
 public:
-/**
- * @brief Construct a new ValueNoiseFunction object.
- *
- * @param kw   Noise wavenumber, with respect to a unit domain.
- * @param seed Random seed number.
- */
-ValueDelaunayNoiseFunction(Vec2<float> kw, uint seed);
+  /**
+   * @brief Construct a new ValueNoiseFunction object.
+   *
+   * @param kw   Noise wavenumber, with respect to a unit domain.
+   * @param seed Random seed number.
+   */
+  ValueDelaunayNoiseFunction(Vec2<float> kw, uint seed);
 
-/**
- * @brief Set the wavenumber attribute.
- *
- * @param new_kw New kw.
- */
-void set_kw(Vec2<float> new_kw)
-{
-	NoiseFunction::set_kw(new_kw);
-	this->update_interpolation_function();
-}
+  /**
+   * @brief Set the wavenumber attribute.
+   *
+   * @param new_kw New kw.
+   */
+  void set_kw(Vec2<float> new_kw)
+  {
+    NoiseFunction::set_kw(new_kw);
+    this->update_interpolation_function();
+  }
 
-/**
- * @brief Set the seed attribute.
- *
- * @param new_seed New seed.
- */
-void set_seed(uint new_seed)
-{
-	NoiseFunction::set_seed(new_seed);
-	this->update_interpolation_function();
-}
+  /**
+   * @brief Set the seed attribute.
+   *
+   * @param new_seed New seed.
+   */
+  void set_seed(uint new_seed)
+  {
+    NoiseFunction::set_seed(new_seed);
+    this->update_interpolation_function();
+  }
 
-/**
- * @brief Update base interpolation.
- */
-void update_interpolation_function();
+  /**
+   * @brief Update base interpolation.
+   */
+  void update_interpolation_function();
 };
 
 /**
@@ -1145,40 +1145,40 @@ void update_interpolation_function();
 class ValueLinearNoiseFunction : public NoiseFunction
 {
 public:
-/**
- * @brief Construct a new ValueLinearNoiseFunction object.
- *
- * @param kw   Noise wavenumber, with respect to a unit domain.
- * @param seed Random seed number.
- */
-ValueLinearNoiseFunction(Vec2<float> kw, uint seed);
+  /**
+   * @brief Construct a new ValueLinearNoiseFunction object.
+   *
+   * @param kw   Noise wavenumber, with respect to a unit domain.
+   * @param seed Random seed number.
+   */
+  ValueLinearNoiseFunction(Vec2<float> kw, uint seed);
 
-/**
- * @brief Set the wavenumber attribute.
- *
- * @param new_kw New kw.
- */
-void set_kw(Vec2<float> new_kw)
-{
-	NoiseFunction::set_kw(new_kw);
-	this->update_interpolation_function();
-}
+  /**
+   * @brief Set the wavenumber attribute.
+   *
+   * @param new_kw New kw.
+   */
+  void set_kw(Vec2<float> new_kw)
+  {
+    NoiseFunction::set_kw(new_kw);
+    this->update_interpolation_function();
+  }
 
-/**
- * @brief Set the seed attribute.
- *
- * @param new_seed New seed.
- */
-void set_seed(uint new_seed)
-{
-	NoiseFunction::set_seed(new_seed);
-	this->update_interpolation_function();
-}
+  /**
+   * @brief Set the seed attribute.
+   *
+   * @param new_seed New seed.
+   */
+  void set_seed(uint new_seed)
+  {
+    NoiseFunction::set_seed(new_seed);
+    this->update_interpolation_function();
+  }
 
-/**
- * @brief Update base interpolation.
- */
-void update_interpolation_function();
+  /**
+   * @brief Update base interpolation.
+   */
+  void update_interpolation_function();
 };
 
 /**
@@ -1187,31 +1187,31 @@ void update_interpolation_function();
 class WorleyFunction : public NoiseFunction
 {
 public:
-/**
- * @brief Construct a new Worley Function object.
- *
- * @param kw   Noise wavenumbers {kx, ky} for each directions, with respect to a
- *             unit domain.
- * @param seed Random seed number.
- */
-WorleyFunction(Vec2<float> kw, uint seed, bool return_cell_value = false);
+  /**
+   * @brief Construct a new Worley Function object.
+   *
+   * @param kw   Noise wavenumbers {kx, ky} for each directions, with respect to
+   * a unit domain.
+   * @param seed Random seed number.
+   */
+  WorleyFunction(Vec2<float> kw, uint seed, bool return_cell_value = false);
 
-/**
- * @brief Set the seed attribute.
- *
- * @param new_seed New seed.
- */
-void set_seed(uint new_seed)
-{
-	NoiseFunction::set_seed(new_seed);
-	this->noise.SetSeed(new_seed);
-}
+  /**
+   * @brief Set the seed attribute.
+   *
+   * @param new_seed New seed.
+   */
+  void set_seed(uint new_seed)
+  {
+    NoiseFunction::set_seed(new_seed);
+    this->noise.SetSeed(new_seed);
+  }
 
 private:
-/**
- * @brief FastNoiseLite noise generator object.
- */
-FastNoiseLite noise;
+  /**
+   * @brief FastNoiseLite noise generator object.
+   */
+  FastNoiseLite noise;
 };
 
 /**
@@ -1220,44 +1220,44 @@ FastNoiseLite noise;
 class WorleyDoubleFunction : public NoiseFunction
 {
 public:
-/**
- * @brief Amplitude ratio between each Worley noise.
- */
-float ratio;
+  /**
+   * @brief Amplitude ratio between each Worley noise.
+   */
+  float ratio;
 
-/**
- * @brief Transition smoothing parameter.
- */
-float k;
+  /**
+   * @brief Transition smoothing parameter.
+   */
+  float k;
 
-/**
- * @brief Construct a new Worley Double Function object.
- *
- * @param kw    Noise wavenumbers {kx, ky} for each directions, with respect to
- *              a unit domain.
- * @param seed  Random seed number.
- * @param ratio Amplitude ratio between each Worley noise.
- * @param k     Transition smoothing parameter.
- */
-WorleyDoubleFunction(Vec2<float> kw, uint seed, float ratio, float k);
+  /**
+   * @brief Construct a new Worley Double Function object.
+   *
+   * @param kw    Noise wavenumbers {kx, ky} for each directions, with respect
+   * to a unit domain.
+   * @param seed  Random seed number.
+   * @param ratio Amplitude ratio between each Worley noise.
+   * @param k     Transition smoothing parameter.
+   */
+  WorleyDoubleFunction(Vec2<float> kw, uint seed, float ratio, float k);
 
-/**
- * @brief Set the seed attribute.
- *
- * @param new_seed New seed.
- */
-void set_seed(uint new_seed)
-{
-	NoiseFunction::set_seed(new_seed);
-	this->noise1.SetSeed(new_seed);
-	this->noise2.SetSeed(new_seed + 1);
-}
+  /**
+   * @brief Set the seed attribute.
+   *
+   * @param new_seed New seed.
+   */
+  void set_seed(uint new_seed)
+  {
+    NoiseFunction::set_seed(new_seed);
+    this->noise1.SetSeed(new_seed);
+    this->noise2.SetSeed(new_seed + 1);
+  }
 
 private:
-/**
- * @brief FastNoiseLite noise generator objects.
- */
-FastNoiseLite noise1, noise2;
+  /**
+   * @brief FastNoiseLite noise generator objects.
+   */
+  FastNoiseLite noise1, noise2;
 };
 
 //----------------------------------------
@@ -1276,140 +1276,140 @@ FastNoiseLite noise1, noise2;
 class GenericFractalFunction : public NoiseFunction
 {
 public:
-/**
- * @brief Construct a new GenericFractalFunction object.
- *
- * @param p_base      Unique pointer to the base noise function.
- * @param octaves     Number of octaves in the fractal noise.
- * @param weight      Weight of the base noise function.
- * @param persistence Persistence of the fractal noise.
- * @param lacunarity  Lacunarity of the fractal noise.
- */
-explicit GenericFractalFunction(std::unique_ptr<NoiseFunction> p_base,
-                                int octaves,
-                                float weight,
-                                float persistence,
-                                float lacunarity);
+  /**
+   * @brief Construct a new GenericFractalFunction object.
+   *
+   * @param p_base      Unique pointer to the base noise function.
+   * @param octaves     Number of octaves in the fractal noise.
+   * @param weight      Weight of the base noise function.
+   * @param persistence Persistence of the fractal noise.
+   * @param lacunarity  Lacunarity of the fractal noise.
+   */
+  explicit GenericFractalFunction(std::unique_ptr<NoiseFunction> p_base,
+                                  int                            octaves,
+                                  float                          weight,
+                                  float                          persistence,
+                                  float                          lacunarity);
 
-/**
- * @brief Set the frequency scaling vector.
- *
- * @param new_kw The new frequency scaling vector.
- */
-void set_kw(Vec2<float> new_kw) override
-{
-	NoiseFunction::set_kw(new_kw);
-	this->p_base->set_kw(new_kw);
-}
+  /**
+   * @brief Set the frequency scaling vector.
+   *
+   * @param new_kw The new frequency scaling vector.
+   */
+  void set_kw(Vec2<float> new_kw) override
+  {
+    NoiseFunction::set_kw(new_kw);
+    this->p_base->set_kw(new_kw);
+  }
 
-/**
- * @brief Set the lacunarity of the fractal noise.
- *
- * @param new_lacunarity The new lacunarity value.
- */
-void set_lacunarity(float new_lacunarity)
-{
-	this->lacunarity = new_lacunarity;
-}
+  /**
+   * @brief Set the lacunarity of the fractal noise.
+   *
+   * @param new_lacunarity The new lacunarity value.
+   */
+  void set_lacunarity(float new_lacunarity)
+  {
+    this->lacunarity = new_lacunarity;
+  }
 
-/**
- * @brief Set the number of octaves in the fractal noise.
- *
- * @param new_octaves The new number of octaves.
- */
-void set_octaves(int new_octaves)
-{
-	this->octaves = new_octaves;
-	this->update_amp0();
-}
+  /**
+   * @brief Set the number of octaves in the fractal noise.
+   *
+   * @param new_octaves The new number of octaves.
+   */
+  void set_octaves(int new_octaves)
+  {
+    this->octaves = new_octaves;
+    this->update_amp0();
+  }
 
-/**
- * @brief Set the persistence of the fractal noise.
- *
- * @param new_persistence The new persistence value.
- */
-void set_persistence(float new_persistence)
-{
-	this->persistence = new_persistence;
-	this->update_amp0();
-}
+  /**
+   * @brief Set the persistence of the fractal noise.
+   *
+   * @param new_persistence The new persistence value.
+   */
+  void set_persistence(float new_persistence)
+  {
+    this->persistence = new_persistence;
+    this->update_amp0();
+  }
 
-/**
- * @brief Set a new random seed for the noise generation.
- *
- * @param new_seed The new random seed.
- */
-void set_seed(uint new_seed) override
-{
-	NoiseFunction::set_seed(new_seed);
-	this->p_base->set_seed(new_seed);
-}
+  /**
+   * @brief Set a new random seed for the noise generation.
+   *
+   * @param new_seed The new random seed.
+   */
+  void set_seed(uint new_seed) override
+  {
+    NoiseFunction::set_seed(new_seed);
+    this->p_base->set_seed(new_seed);
+  }
 
-/**
- * @brief Scale the initial amplitude of the fractal noise.
- *
- * @param scale The scale factor for the initial amplitude.
- */
-void scale_amp0(float scale)
-{
-	this->amp0 *= scale;
-}
+  /**
+   * @brief Scale the initial amplitude of the fractal noise.
+   *
+   * @param scale The scale factor for the initial amplitude.
+   */
+  void scale_amp0(float scale)
+  {
+    this->amp0 *= scale;
+  }
 
-/**
- * @brief Get the lacunarity of the fractal noise.
- *
- * @return The current lacunarity value.
- */
-float get_lacunarity() const
-{
-	return this->lacunarity;
-}
+  /**
+   * @brief Get the lacunarity of the fractal noise.
+   *
+   * @return The current lacunarity value.
+   */
+  float get_lacunarity() const
+  {
+    return this->lacunarity;
+  }
 
-/**
- * @brief Get the number of octaves in the fractal noise.
- *
- * @return The current number of octaves.
- */
-int get_octaves() const
-{
-	return this->octaves;
-}
+  /**
+   * @brief Get the number of octaves in the fractal noise.
+   *
+   * @return The current number of octaves.
+   */
+  int get_octaves() const
+  {
+    return this->octaves;
+  }
 
-/**
- * @brief Get the persistence of the fractal noise.
- *
- * @return The current persistence value.
- */
-float get_persistence() const
-{
-	return this->persistence;
-}
+  /**
+   * @brief Get the persistence of the fractal noise.
+   *
+   * @return The current persistence value.
+   */
+  float get_persistence() const
+  {
+    return this->persistence;
+  }
 
-/**
- * @brief Get the weight of the fractal noise.
- *
- * @return The current weight value.
- */
-float get_weight() const
-{
-	return this->weight;
-}
-
-protected:
-/**
- * @brief Update the initial amplitude (amp0) based on the current octaves and
- * persistence.
- */
-void update_amp0();
+  /**
+   * @brief Get the weight of the fractal noise.
+   *
+   * @return The current weight value.
+   */
+  float get_weight() const
+  {
+    return this->weight;
+  }
 
 protected:
-std::unique_ptr<NoiseFunction>
-p_base;              ///< Unique pointer to the base noise function.
-int octaves;         ///< Number of octaves in the fractal noise.
-float weight;        ///< Weight of the base noise function.
-float persistence;   ///< Persistence of the fractal noise.
-float lacunarity;    ///< Lacunarity of the fractal noise.
-float amp0;          ///< Initial amplitude of the fractal noise.
+  /**
+   * @brief Update the initial amplitude (amp0) based on the current octaves and
+   * persistence.
+   */
+  void update_amp0();
+
+protected:
+  std::unique_ptr<NoiseFunction>
+        p_base;      ///< Unique pointer to the base noise function.
+  int   octaves;     ///< Number of octaves in the fractal noise.
+  float weight;      ///< Weight of the base noise function.
+  float persistence; ///< Persistence of the fractal noise.
+  float lacunarity;  ///< Lacunarity of the fractal noise.
+  float amp0;        ///< Initial amplitude of the fractal noise.
 };
 
 /**
@@ -1419,20 +1419,20 @@ float amp0;          ///< Initial amplitude of the fractal noise.
 class FbmFunction : public GenericFractalFunction
 {
 public:
-/**
- * @brief Construct a new Fbm Function object.
- *
- * @param p_base      Unique pointer to the base noise function.
- * @param octaves     Number of octaves.
- * @param weight      Octave weighting.
- * @param persistence Octave persistence.
- * @param lacunarity  Defines the wavenumber ratio between each octave.
- */
-FbmFunction(std::unique_ptr<NoiseFunction> p_base,
-            int octaves,
-            float weight,
-            float persistence,
-            float lacunarity);
+  /**
+   * @brief Construct a new Fbm Function object.
+   *
+   * @param p_base      Unique pointer to the base noise function.
+   * @param octaves     Number of octaves.
+   * @param weight      Octave weighting.
+   * @param persistence Octave persistence.
+   * @param lacunarity  Defines the wavenumber ratio between each octave.
+   */
+  FbmFunction(std::unique_ptr<NoiseFunction> p_base,
+              int                            octaves,
+              float                          weight,
+              float                          persistence,
+              float                          lacunarity);
 };
 /**
  * @class FbmIqFunction
@@ -1441,35 +1441,35 @@ FbmFunction(std::unique_ptr<NoiseFunction> p_base,
 class FbmIqFunction : public GenericFractalFunction
 {
 public:
-/**
- * @brief Construct a new Fbm Iq Function object.
- *
- * @param p_base         Unique pointer to the base noise function.
- * @param octaves        Number of octaves.
- * @param weight         Octave weighting.
- * @param persistence    Octave persistence.
- * @param lacunarity     Defines the wavenumber ratio between each octave.
- * @param gradient_scale Gradient scale influence.
- */
-FbmIqFunction(std::unique_ptr<NoiseFunction> p_base,
-              int octaves,
-              float weight,
-              float persistence,
-              float lacunarity,
-              float gradient_scale);
+  /**
+   * @brief Construct a new Fbm Iq Function object.
+   *
+   * @param p_base         Unique pointer to the base noise function.
+   * @param octaves        Number of octaves.
+   * @param weight         Octave weighting.
+   * @param persistence    Octave persistence.
+   * @param lacunarity     Defines the wavenumber ratio between each octave.
+   * @param gradient_scale Gradient scale influence.
+   */
+  FbmIqFunction(std::unique_ptr<NoiseFunction> p_base,
+                int                            octaves,
+                float                          weight,
+                float                          persistence,
+                float                          lacunarity,
+                float                          gradient_scale);
 
-/**
- * @brief Set the gradient scale.
- *
- * @param new_gradient_scale New gradient scale.
- */
-void set_gradient_scale(float new_gradient_scale)
-{
-	this->gradient_scale = new_gradient_scale;
-}
+  /**
+   * @brief Set the gradient scale.
+   *
+   * @param new_gradient_scale New gradient scale.
+   */
+  void set_gradient_scale(float new_gradient_scale)
+  {
+    this->gradient_scale = new_gradient_scale;
+  }
 
 protected:
-float gradient_scale;   ///< Gradient scale influence.
+  float gradient_scale; ///< Gradient scale influence.
 };
 
 /**
@@ -1479,74 +1479,74 @@ float gradient_scale;   ///< Gradient scale influence.
 class FbmJordanFunction : public GenericFractalFunction
 {
 public:
-/**
- * @brief Construct a new Fbm Jordan Function object.
- *
- * @param p_base      Unique pointer to the base noise function.
- * @param octaves     Number of octaves.
- * @param weight      Octave weighting.
- * @param persistence Octave persistence.
- * @param lacunarity  Defines the wavenumber ratio between each octave.
- * @param warp0       Initial warp.
- * @param damp0       Initial damp.
- * @param warp_scale  Warp scale.
- * @param damp_scale  Damp scale.
- */
-FbmJordanFunction(std::unique_ptr<NoiseFunction> p_base,
-                  int octaves,
-                  float weight,
-                  float persistence,
-                  float lacunarity,
-                  float warp0,
-                  float damp0,
-                  float warp_scale,
-                  float damp_scale);
+  /**
+   * @brief Construct a new Fbm Jordan Function object.
+   *
+   * @param p_base      Unique pointer to the base noise function.
+   * @param octaves     Number of octaves.
+   * @param weight      Octave weighting.
+   * @param persistence Octave persistence.
+   * @param lacunarity  Defines the wavenumber ratio between each octave.
+   * @param warp0       Initial warp.
+   * @param damp0       Initial damp.
+   * @param warp_scale  Warp scale.
+   * @param damp_scale  Damp scale.
+   */
+  FbmJordanFunction(std::unique_ptr<NoiseFunction> p_base,
+                    int                            octaves,
+                    float                          weight,
+                    float                          persistence,
+                    float                          lacunarity,
+                    float                          warp0,
+                    float                          damp0,
+                    float                          warp_scale,
+                    float                          damp_scale);
 
-/**
- * @brief Set the initial warp.
- *
- * @param new_warp0 New initial warp.
- */
-void set_warp0(float new_warp0)
-{
-	this->warp0 = new_warp0;
-}
+  /**
+   * @brief Set the initial warp.
+   *
+   * @param new_warp0 New initial warp.
+   */
+  void set_warp0(float new_warp0)
+  {
+    this->warp0 = new_warp0;
+  }
 
-/**
- * @brief Set the initial damp.
- *
- * @param new_damp0 New initial damp.
- */
-void set_damp0(float new_damp0)
-{
-	this->damp0 = new_damp0;
-}
+  /**
+   * @brief Set the initial damp.
+   *
+   * @param new_damp0 New initial damp.
+   */
+  void set_damp0(float new_damp0)
+  {
+    this->damp0 = new_damp0;
+  }
 
-/**
- * @brief Set the warp scale.
- *
- * @param new_warp_scale New warp scale.
- */
-void set_warp_scale(float new_warp_scale)
-{
-	this->warp_scale = new_warp_scale;
-}
+  /**
+   * @brief Set the warp scale.
+   *
+   * @param new_warp_scale New warp scale.
+   */
+  void set_warp_scale(float new_warp_scale)
+  {
+    this->warp_scale = new_warp_scale;
+  }
 
-/**
- * @brief Set the damp scale.
- *
- * @param new_damp_scale New damp scale.
- */
-void set_damp_scale(float new_damp_scale)
-{
-	this->damp_scale = new_damp_scale;
-}
+  /**
+   * @brief Set the damp scale.
+   *
+   * @param new_damp_scale New damp scale.
+   */
+  void set_damp_scale(float new_damp_scale)
+  {
+    this->damp_scale = new_damp_scale;
+  }
 
 protected:
-float warp0;        ///< Initial warp.
-float damp0;        ///< Initial damp.
-float warp_scale;   ///< Warp scale.
-float damp_scale;   ///< Damp scale.
+  float warp0;      ///< Initial warp.
+  float damp0;      ///< Initial damp.
+  float warp_scale; ///< Warp scale.
+  float damp_scale; ///< Damp scale.
 };
 
 /**
@@ -1556,33 +1556,33 @@ float damp_scale;   ///< Damp scale.
 class FbmPingpongFunction : public GenericFractalFunction
 {
 public:
-/**
- * @brief Construct a new Fbm Pingpong Function object.
- *
- * @param p_base      Unique pointer to the base noise function.
- * @param octaves     Number of octaves.
- * @param weight      Octave weighting.
- * @param persistence Octave persistence.
- * @param lacunarity  Defines the wavenumber ratio between each octave.
- */
-FbmPingpongFunction(std::unique_ptr<NoiseFunction> p_base,
-                    int octaves,
-                    float weight,
-                    float persistence,
-                    float lacunarity);
+  /**
+   * @brief Construct a new Fbm Pingpong Function object.
+   *
+   * @param p_base      Unique pointer to the base noise function.
+   * @param octaves     Number of octaves.
+   * @param weight      Octave weighting.
+   * @param persistence Octave persistence.
+   * @param lacunarity  Defines the wavenumber ratio between each octave.
+   */
+  FbmPingpongFunction(std::unique_ptr<NoiseFunction> p_base,
+                      int                            octaves,
+                      float                          weight,
+                      float                          persistence,
+                      float                          lacunarity);
 
-/**
- * @brief Set the smoothing parameter.
- *
- * @param new_k_smoothing New smoothing parameter.
- */
-void set_k_smoothing(float new_k_smoothing)
-{
-	this->k_smoothing = new_k_smoothing;
-}
+  /**
+   * @brief Set the smoothing parameter.
+   *
+   * @param new_k_smoothing New smoothing parameter.
+   */
+  void set_k_smoothing(float new_k_smoothing)
+  {
+    this->k_smoothing = new_k_smoothing;
+  }
 
 protected:
-float k_smoothing;   ///< Smoothing parameter.
+  float k_smoothing; ///< Smoothing parameter.
 };
 
 /**
@@ -1592,35 +1592,35 @@ float k_smoothing;   ///< Smoothing parameter.
 class FbmRidgedFunction : public GenericFractalFunction
 {
 public:
-/**
- * @brief Construct a new Fbm Ridged Function object.
- *
- * @param p_base      Unique pointer to the base noise function.
- * @param octaves     Number of octaves.
- * @param weight      Octave weighting.
- * @param persistence Octave persistence.
- * @param lacunarity  Defines the wavenumber ratio between each octave.
- * @param k_smoothing Smoothing parameter.
- */
-FbmRidgedFunction(std::unique_ptr<NoiseFunction> p_base,
-                  int octaves,
-                  float weight,
-                  float persistence,
-                  float lacunarity,
-                  float k_smoothing);
+  /**
+   * @brief Construct a new Fbm Ridged Function object.
+   *
+   * @param p_base      Unique pointer to the base noise function.
+   * @param octaves     Number of octaves.
+   * @param weight      Octave weighting.
+   * @param persistence Octave persistence.
+   * @param lacunarity  Defines the wavenumber ratio between each octave.
+   * @param k_smoothing Smoothing parameter.
+   */
+  FbmRidgedFunction(std::unique_ptr<NoiseFunction> p_base,
+                    int                            octaves,
+                    float                          weight,
+                    float                          persistence,
+                    float                          lacunarity,
+                    float                          k_smoothing);
 
-/**
- * @brief Set the smoothing parameter.
- *
- * @param new_k_smoothing New smoothing parameter.
- */
-void set_k_smoothing(float new_k_smoothing)
-{
-	this->k_smoothing = new_k_smoothing;
-}
+  /**
+   * @brief Set the smoothing parameter.
+   *
+   * @param new_k_smoothing New smoothing parameter.
+   */
+  void set_k_smoothing(float new_k_smoothing)
+  {
+    this->k_smoothing = new_k_smoothing;
+  }
 
 protected:
-float k_smoothing;   ///< Smoothing parameter.
+  float k_smoothing; ///< Smoothing parameter.
 };
 
 /**
@@ -1630,37 +1630,37 @@ float k_smoothing;   ///< Smoothing parameter.
 class FbmSwissFunction : public GenericFractalFunction
 {
 public:
-/**
- * @brief Construct a new Fbm Swiss Function object.
- *
- * @param p_base      Unique pointer to the base noise function.
- * @param octaves     Number of octaves.
- * @param weight      Octave weighting.
- * @param persistence Octave persistence.
- * @param lacunarity  Defines the wavenumber ratio between each octave.
- * @param warp_scale  Warping scale.
- */
-FbmSwissFunction(std::unique_ptr<NoiseFunction> p_base,
-                 int octaves,
-                 float weight,
-                 float persistence,
-                 float lacunarity,
-                 float warp_scale);
+  /**
+   * @brief Construct a new Fbm Swiss Function object.
+   *
+   * @param p_base      Unique pointer to the base noise function.
+   * @param octaves     Number of octaves.
+   * @param weight      Octave weighting.
+   * @param persistence Octave persistence.
+   * @param lacunarity  Defines the wavenumber ratio between each octave.
+   * @param warp_scale  Warping scale.
+   */
+  FbmSwissFunction(std::unique_ptr<NoiseFunction> p_base,
+                   int                            octaves,
+                   float                          weight,
+                   float                          persistence,
+                   float                          lacunarity,
+                   float                          warp_scale);
 
-/**
- * @brief Set the warp scale.
- *
- * @param new_warp_scale New warp scale.
- */
-void set_warp_scale(float new_warp_scale)
-{
-	this->warp_scale = new_warp_scale;
-	this->warp_scale_normalized = new_warp_scale / this->kw.x;
-}
+  /**
+   * @brief Set the warp scale.
+   *
+   * @param new_warp_scale New warp scale.
+   */
+  void set_warp_scale(float new_warp_scale)
+  {
+    this->warp_scale = new_warp_scale;
+    this->warp_scale_normalized = new_warp_scale / this->kw.x;
+  }
 
 protected:
-float warp_scale;              ///< Warping scale.
-float warp_scale_normalized;   ///< Normalized warping scale.
+  float warp_scale;            ///< Warping scale.
+  float warp_scale_normalized; ///< Normalized warping scale.
 };
 
 //----------------------------------------
@@ -1674,77 +1674,76 @@ float warp_scale_normalized;   ///< Normalized warping scale.
 class FieldFunction : public Function
 {
 public:
-/**
- * @brief Construct a new FieldFunction object.
- *
- * @param p_base Unique pointer to the base function.
- */
-FieldFunction(std::unique_ptr<Function> p_base);
+  /**
+   * @brief Construct a new FieldFunction object.
+   *
+   * @param p_base Unique pointer to the base function.
+   */
+  FieldFunction(std::unique_ptr<Function> p_base);
 
-/**
- * @brief Construct a new FieldFunction object with given vectors.
- *
- * @param p_base Unique pointer to the base function.
- * @param xr     Vector of x coordinates representing the centers of the
- *               primitive.
- * @param yr     Vector of y coordinates representing the centers of the
- *               primitive.
- * @param zr     Vector of z coordinates used to scale the primitive in x and y
- *               directions, and also to scale the primitive amplitude if
- *               requested.
- */
-FieldFunction(std::unique_ptr<Function> p_base,
-              std::vector<float>        xr,
-              std::vector<float>        yr,
-              std::vector<float>        zr);
+  /**
+   * @brief Construct a new FieldFunction object with given vectors.
+   *
+   * @param p_base Unique pointer to the base function.
+   * @param xr     Vector of x coordinates representing the centers of the
+   *               primitive.
+   * @param yr     Vector of y coordinates representing the centers of the
+   *               primitive.
+   * @param zr     Vector of z coordinates used to scale the primitive in x and
+   * y directions, and also to scale the primitive amplitude if requested.
+   */
+  FieldFunction(std::unique_ptr<Function> p_base,
+                std::vector<float>        xr,
+                std::vector<float>        yr,
+                std::vector<float>        zr);
 
-/**
- * @brief Set the x coordinates representing the centers of the primitive.
- *
- * @param new_xr New vector of x coordinates.
- */
-void set_xr(std::vector<float> new_xr)
-{
-	this->xr = new_xr;
-}
+  /**
+   * @brief Set the x coordinates representing the centers of the primitive.
+   *
+   * @param new_xr New vector of x coordinates.
+   */
+  void set_xr(std::vector<float> new_xr)
+  {
+    this->xr = new_xr;
+  }
 
-/**
- * @brief Set the y coordinates representing the centers of the primitive.
- *
- * @param new_yr New vector of y coordinates.
- */
-void set_yr(std::vector<float> new_yr)
-{
-	this->yr = new_yr;
-}
+  /**
+   * @brief Set the y coordinates representing the centers of the primitive.
+   *
+   * @param new_yr New vector of y coordinates.
+   */
+  void set_yr(std::vector<float> new_yr)
+  {
+    this->yr = new_yr;
+  }
 
-/**
- * @brief Set the z coordinates used to scale the primitive in x and y
- * directions, and also to scale the primitive amplitude if requested.
- *
- * @param new_zr New vector of z coordinates.
- */
-void set_zr(std::vector<float> new_zr)
-{
-	this->zr = new_zr;
-}
+  /**
+   * @brief Set the z coordinates used to scale the primitive in x and y
+   * directions, and also to scale the primitive amplitude if requested.
+   *
+   * @param new_zr New vector of z coordinates.
+   */
+  void set_zr(std::vector<float> new_zr)
+  {
+    this->zr = new_zr;
+  }
 
 protected:
-std::vector<float> xr;   ///< Vector of x coordinates representing the centers
+  std::vector<float> xr; ///< Vector of x coordinates representing the centers
                          ///< of the primitive.
-std::vector<float> yr;   ///< Vector of y coordinates representing the centers
+  std::vector<float> yr; ///< Vector of y coordinates representing the centers
                          ///< of the primitive.
-std::vector<float>
-zr;       ///< Vector of z coordinates used to scale the primitive in x and y
+  std::vector<float>
+      zr; ///< Vector of z coordinates used to scale the primitive in x and y
           ///< directions, and to scale the primitive amplitude if requested.
 
 private:
-std::unique_ptr<Function> p_base;   ///< Unique pointer to the base function.
+  std::unique_ptr<Function> p_base; ///< Unique pointer to the base function.
 
-/**
- * @brief Setup the delegate function.
- */
-void setup_delegate();
+  /**
+   * @brief Setup the delegate function.
+   */
+  void setup_delegate();
 };
 
 //----------------------------------------
@@ -1766,8 +1765,8 @@ void setup_delegate();
  * @return            A `std::unique_ptr` to the created noise function.
  */
 std::unique_ptr<hmap::NoiseFunction> create_noise_function_from_type(
-	NoiseType noise_type,
-	Vec2<float> kw,
-	uint seed);
+    NoiseType   noise_type,
+    Vec2<float> kw,
+    uint        seed);
 
 } // namespace hmap

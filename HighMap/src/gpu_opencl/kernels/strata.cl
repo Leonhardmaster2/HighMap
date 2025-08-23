@@ -59,6 +59,7 @@ void kernel strata(global float *output,
                    const float   ridge_noise_amp,
                    const float   ridge_clamp_vmin,
                    const float   ridge_remap_vmin,
+                   const int     apply_mask,
                    const float   mask_gamma,
                    const float4  bbox)
 {
@@ -117,6 +118,9 @@ void kernel strata(global float *output,
   }
 
   // out
-  output[index] = lerp(val0, val, pow(val0, mask_gamma) * noise_v);
+  if (apply_mask)
+    output[index] = lerp(val0, val, pow(val0, mask_gamma) * noise_v);
+  else
+    output[index] = val;
 }
 )""

@@ -63,9 +63,9 @@ void add_kernel(Array &array, const Array &kernel, int i, int j);
  */
 void add_kernel_maximum_smooth(Array       &array,
                                const Array &kernel,
-                               float k_smooth,
-                               int i,
-                               int j);
+                               float        k_smooth,
+                               int          i,
+                               int          j);
 
 /**
  * @brief Apply linear regression for detrending of a 2D array.
@@ -118,7 +118,7 @@ Array hstack(const Array &array1, const Array &array2);
  */
 Array inpainting_diffusion(const Array &array,
                            const Array &mask,
-                           int iterations);
+                           int          iterations);
 
 /**
  * @brief Generate a vector of evenly spaced numbers over a specified interval.
@@ -137,8 +137,8 @@ Array inpainting_diffusion(const Array &array,
  */
 std::vector<float> linspace(float start,
                             float stop,
-                            int num,
-                            bool endpoint = true);
+                            int   num,
+                            bool  endpoint = true);
 
 /**
  * @brief Generate a vector of jittered (noised) numbers over a specified
@@ -160,10 +160,10 @@ std::vector<float> linspace(float start,
  */
 std::vector<float> linspace_jitted(float start,
                                    float stop,
-                                   int num,
+                                   int   num,
                                    float ratio,
-                                   int seed,
-                                   bool endpoint = true);
+                                   int   seed,
+                                   bool  endpoint = true);
 
 /**
  * @brief Generate a vector filled with random values within a specified range.
@@ -208,13 +208,13 @@ std::vector<float> random_vector(float min, float max, int num, int seed);
  * @image html ex_fill_array_using_xy_function.png
  */
 void fill_array_using_xy_function(
-	Array                                    &array,
-	Vec4<float>                               bbox,
-	const Array                              *p_ctrl_param,
-	const Array                              *p_noise_x,
-	const Array                              *p_noise_y,
-	const Array                              *p_stretching,
-	std::function<float(float, float, float)> fct_xy);
+    Array                                    &array,
+    Vec4<float>                               bbox,
+    const Array                              *p_ctrl_param,
+    const Array                              *p_noise_x,
+    const Array                              *p_noise_y,
+    const Array                              *p_stretching,
+    std::function<float(float, float, float)> fct_xy);
 
 /**
  * @brief Fill an array using a scalar function based on (x, y) coordinates with
@@ -248,14 +248,14 @@ void fill_array_using_xy_function(
  * @image html ex_fill_array_using_xy_function.png
  */
 void fill_array_using_xy_function(
-	Array                                    &array,
-	Vec4<float>                               bbox,
-	const Array                              *p_ctrl_param,
-	const Array                              *p_noise_x,
-	const Array                              *p_noise_y,
-	const Array                              *p_stretching,
-	std::function<float(float, float, float)> fct_xy,
-	int subsampling);                                   ///< @overload
+    Array                                    &array,
+    Vec4<float>                               bbox,
+    const Array                              *p_ctrl_param,
+    const Array                              *p_noise_x,
+    const Array                              *p_noise_y,
+    const Array                              *p_stretching,
+    std::function<float(float, float, float)> fct_xy,
+    int                                       subsampling); ///< @overload
 
 /**
  * @brief Find the vertical cut path with the minimum cost using Dijkstra's
@@ -317,9 +317,9 @@ Array generate_mask(hmap::Vec2<int> shape, std::vector<int> cut_path_i, int ir);
 Array get_random_patch(const Array          &array,
                        hmap::Vec2<int>       patch_shape,
                        std::mt19937         &gen,
-                       bool patch_flip = false,
-                       bool patch_rotate = false,
-                       bool patch_transpose = false,
+                       bool                  patch_flip = false,
+                       bool                  patch_rotate = false,
+                       bool                  patch_transpose = false,
                        std::vector<Array *> *p_secondary_arrays = nullptr,
                        std::vector<Array>   *p_secondary_patches = nullptr);
 

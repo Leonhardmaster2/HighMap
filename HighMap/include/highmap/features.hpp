@@ -38,8 +38,8 @@
  * incorrect.
  */
 #define HMAP_PACK8(a, b, c, d, e, f, g, h)                                     \
-	((a << 15) + (b << 13) + (c << 11) + (d << 9) + (e << 7) + (f << 5) +        \
-	 (g << 3) + (h << 1))
+  ((a << 15) + (b << 13) + (c << 11) + (d << 9) + (e << 7) + (f << 5) +        \
+   (g << 3) + (h << 1))
 
 namespace hmap
 {
@@ -80,8 +80,8 @@ namespace hmap
  * @image html ex_connected_components1.png
  */
 Array connected_components(const Array &array,
-                           float surface_threshold = 0.f,
-                           float background_value = 0.f);
+                           float        surface_threshold = 0.f,
+                           float        background_value = 0.f);
 
 /**
  * @brief Classifies terrain into geomorphological features based on the
@@ -168,11 +168,11 @@ Array geomorphons(const Array &array, int irmin, int irmax, float epsilon);
  */
 Array kmeans_clustering2(const Array        &array1,
                          const Array        &array2,
-                         int nclusters,
+                         int                 nclusters,
                          std::vector<Array> *p_scoring = nullptr,
                          Array              *p_aggregate_scoring = nullptr,
                          Vec2<float>         weights = {1.f, 1.f},
-                         uint seed = 1);
+                         uint                seed = 1);
 
 /**
  * @brief Performs k-means clustering on three input arrays, providing more
@@ -220,11 +220,11 @@ Array kmeans_clustering2(const Array        &array1,
 Array kmeans_clustering3(const Array        &array1,
                          const Array        &array2,
                          const Array        &array3,
-                         int nclusters,
+                         int                 nclusters,
                          std::vector<Array> *p_scoring = nullptr,
                          Array              *p_aggregate_scoring = nullptr,
                          Vec3<float>         weights = {1.f, 1.f, 1.f},
-                         uint seed = 1);
+                         uint                seed = 1);
 
 /**
  * @brief Computes the local median deviation of a 2D array.

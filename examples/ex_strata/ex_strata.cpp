@@ -15,7 +15,7 @@ int main(void)
   hmap::remap(z1);
 
   hmap::Array z2 = z1;
-  hmap::gpu::strata(z2, 30.f, 2.f, 1.5f, ++seed);
+  hmap::gpu::strata(z2, 30.f, 2.f, 0.7f, ++seed);
 
   z2.infos();
 

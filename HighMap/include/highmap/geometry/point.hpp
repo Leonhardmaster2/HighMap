@@ -37,139 +37,140 @@ namespace hmap
 class Point
 {
 public:
-float x;   ///< The x-coordinate of the point.
-float y;   ///< The y-coordinate of the point.
-float v;   ///< The value at the point.
+  float x; ///< The x-coordinate of the point.
+  float y; ///< The y-coordinate of the point.
+  float v; ///< The value at the point.
 
-/**
- * @brief Default constructor initializing the point to (0, 0, 0).
- */
-Point() : x(0.f), y(0.f), v(0.f)
-{
-}
+  /**
+   * @brief Default constructor initializing the point to (0, 0, 0).
+   */
+  Point() : x(0.f), y(0.f), v(0.f)
+  {
+  }
 
-/**
- * @brief Parameterized constructor initializing the point to given values.
- * @param x The x-coordinate of the point.
- * @param y The y-coordinate of the point.
- * @param v The value at the point.
- */
-Point(float x, float y, float v = 0.f) : x(x), y(y), v(v)
-{
-}
+  /**
+   * @brief Parameterized constructor initializing the point to given values.
+   * @param x The x-coordinate of the point.
+   * @param y The y-coordinate of the point.
+   * @param v The value at the point.
+   */
+  Point(float x, float y, float v = 0.f) : x(x), y(y), v(v)
+  {
+  }
 
-/**
- * @brief Equality operator to check if two points are the same.
- *
- * @param  other The point to compare with.
- * @return       true if the points are equal, false otherwise.
- */
-bool operator==(const Point &other) const
-{
-	return (x == other.x && y == other.y && v == other.v);
-}
+  /**
+   * @brief Equality operator to check if two points are the same.
+   *
+   * @param  other The point to compare with.
+   * @return       true if the points are equal, false otherwise.
+   */
+  bool operator==(const Point &other) const
+  {
+    return (x == other.x && y == other.y && v == other.v);
+  }
 
-/**
- * @brief Inequality operator to check if two points are different.
- *
- * @param  other The point to compare with.
- * @return       true if the points are not equal, false otherwise.
- */
-bool operator!=(const Point &other) const
-{
-	return !(*this == other);
-}
+  /**
+   * @brief Inequality operator to check if two points are different.
+   *
+   * @param  other The point to compare with.
+   * @return       true if the points are not equal, false otherwise.
+   */
+  bool operator!=(const Point &other) const
+  {
+    return !(*this == other);
+  }
 
-/**
- * @brief Adds two points.
- * @param  other The point to add.
- * @return       The result of adding the two points.
- */
-Point operator+(const Point &other) const
-{
-	return Point(x + other.x, y + other.y, v + other.v);
-}
+  /**
+   * @brief Adds two points.
+   * @param  other The point to add.
+   * @return       The result of adding the two points.
+   */
+  Point operator+(const Point &other) const
+  {
+    return Point(x + other.x, y + other.y, v + other.v);
+  }
 
-/**
- * @brief Subtracts two points.
- * @param  other The point to subtract.
- * @return       The result of subtracting the other point from this point.
- */
-Point operator-(const Point &other) const
-{
-	return Point(x - other.x, y - other.y, v - other.v);
-}
+  /**
+   * @brief Subtracts two points.
+   * @param  other The point to subtract.
+   * @return       The result of subtracting the other point from this point.
+   */
+  Point operator-(const Point &other) const
+  {
+    return Point(x - other.x, y - other.y, v - other.v);
+  }
 
-/**
- * @brief Multiplies the point by a scalar.
- * @param  scalar The scalar to multiply by.
- * @return        The result of the multiplication.
- */
-Point operator*(float scalar) const
-{
-	return Point(x * scalar, y * scalar, v * scalar);
-}
+  /**
+   * @brief Multiplies the point by a scalar.
+   * @param  scalar The scalar to multiply by.
+   * @return        The result of the multiplication.
+   */
+  Point operator*(float scalar) const
+  {
+    return Point(x * scalar, y * scalar, v * scalar);
+  }
 
-/**
- * @brief Divides the point by a scalar.
- * @param  scalar The scalar to divide by.
- * @return        The result of the division.
- */
-Point operator/(float scalar) const
-{
-	return Point(x / scalar, y / scalar, v / scalar);
-}
+  /**
+   * @brief Divides the point by a scalar.
+   * @param  scalar The scalar to divide by.
+   * @return        The result of the division.
+   */
+  Point operator/(float scalar) const
+  {
+    return Point(x / scalar, y / scalar, v / scalar);
+  }
 
-/**
- * @brief Scalar multiplication (scalar * Vec2).
- *
- * Multiplies each component of the vector by a scalar value. This function
- * allows expressions where the scalar is on the left side of the multiplication
- * operator.
- *
- * @param  scalar The scalar value to multiply with.
- * @param  point  The vector to multiply.
- * @return        Point A new vector with each component multiplied by the
- *                scalar.
- */
-friend Point operator*(float scalar, const Point &point)
-{
-	return Point(scalar * point.x, scalar * point.y, scalar * point.v);
-}
+  /**
+   * @brief Scalar multiplication (scalar * Vec2).
+   *
+   * Multiplies each component of the vector by a scalar value. This function
+   * allows expressions where the scalar is on the left side of the
+   * multiplication operator.
+   *
+   * @param  scalar The scalar value to multiply with.
+   * @param  point  The vector to multiply.
+   * @return        Point A new vector with each component multiplied by the
+   *                scalar.
+   */
+  friend Point operator*(float scalar, const Point &point)
+  {
+    return Point(scalar * point.x, scalar * point.y, scalar * point.v);
+  }
 
-/**
- * @brief Prints the coordinates and value of the Point object.
- *
- * This function outputs the Point's x, y coordinates, and an additional value
- * `v` to the standard output in the format `(x, y, v)`, followed by a newline.
- */
-void print();
+  /**
+   * @brief Prints the coordinates and value of the Point object.
+   *
+   * This function outputs the Point's x, y coordinates, and an additional value
+   * `v` to the standard output in the format `(x, y, v)`, followed by a
+   * newline.
+   */
+  void print();
 
-/**
- * @brief Updates the point's value based on bilinear interpolation from an
- * array.
- *
- * This function updates the value of the `Point` object by performing bilinear
- * interpolation on the input `Array` using the coordinates of the
- * `Point` and a given bounding box. The point's coordinates are first
- * normalized to the unit interval using the provided bounding box. Then, these
- * normalized coordinates are scaled to the array's dimensions and used to fetch
- * the value from the array through bilinear interpolation.
- *
- * If the normalized coordinates fall outside the bounds of the array, the
- * point's value is set to zero.
- *
- * @param array The input `Array` from which the value is interpolated. The
- * `Array` should support bilinear interpolation.
- * @param bbox  Bounding box used for normalizing the `Point`'s coordinates.
- *              This box is defined by a `Vec4<float>` containing minimum and
- *              maximum values for both x and y dimensions in the format
- * `{xmin, xmax, ymin, ymax}`.
- *
- * @note If the coordinates are outside the bounds of the array after scaling,
- * the point's value is set to zero.
- */
-void set_value_from_array(const Array &array, Vec4<float> bbox);
+  /**
+   * @brief Updates the point's value based on bilinear interpolation from an
+   * array.
+   *
+   * This function updates the value of the `Point` object by performing
+   * bilinear interpolation on the input `Array` using the coordinates of the
+   * `Point` and a given bounding box. The point's coordinates are first
+   * normalized to the unit interval using the provided bounding box. Then,
+   * these normalized coordinates are scaled to the array's dimensions and used
+   * to fetch the value from the array through bilinear interpolation.
+   *
+   * If the normalized coordinates fall outside the bounds of the array, the
+   * point's value is set to zero.
+   *
+   * @param array The input `Array` from which the value is interpolated. The
+   * `Array` should support bilinear interpolation.
+   * @param bbox  Bounding box used for normalizing the `Point`'s coordinates.
+   *              This box is defined by a `Vec4<float>` containing minimum and
+   *              maximum values for both x and y dimensions in the format
+   * `{xmin, xmax, ymin, ymax}`.
+   *
+   * @note If the coordinates are outside the bounds of the array after scaling,
+   * the point's value is set to zero.
+   */
+  void set_value_from_array(const Array &array, Vec4<float> bbox);
 };
 
 /**
@@ -273,7 +274,7 @@ Point interp_bezier(const Point &p_start,
                     const Point &p_ctrl_start,
                     const Point &p_ctrl_end,
                     const Point &p_end,
-                    float t);
+                    float        t);
 
 /**
  * @brief Performs a cubic B-spline interpolation.
@@ -302,7 +303,7 @@ Point interp_bspline(const Point &p0,
                      const Point &p1,
                      const Point &p2,
                      const Point &p3,
-                     float t);
+                     float        t);
 
 /**
  * @brief Performs a Catmull-Rom spline interpolation.
@@ -331,7 +332,7 @@ Point interp_catmullrom(const Point &p0,
                         const Point &p1,
                         const Point &p2,
                         const Point &p3,
-                        float t);
+                        float        t);
 
 /**
  * @brief Performs a De Casteljau algorithm-based interpolation for Bezier
@@ -450,9 +451,9 @@ Point lerp(const Point &p1, const Point &p2, float t);
  */
 Point midpoint(const Point &p1,
                const Point &p2,
-               int orientation,
-               float distance_ratio,
-               float t = 0.5f);
+               int          orientation,
+               float        distance_ratio,
+               float        t = 0.5f);
 
 /**
  * @brief Sorts a vector of points in ascending order based on their

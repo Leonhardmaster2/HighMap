@@ -50,9 +50,9 @@ namespace hmap
  * @see              {@link topographic_shading}
  */
 Array hillshade(const Array &z,
-                float azimuth,
-                float zenith,
-                float talus_ref = 1.f);
+                float        azimuth,
+                float        zenith,
+                float        talus_ref = 1.f);
 
 /**
  * @brief Compute the shadow intensity using a grid-based technique.
@@ -81,9 +81,9 @@ Array shadow_grid(const Array &z, float shadow_talus);
  * @return          Array Resulting crude shadow map.
  */
 Array shadow_heightmap(const Array &z,
-                       float azimuth = 180.f,
-                       float zenith = 45.f,
-                       float distance = 0.2f);
+                       float        azimuth = 180.f,
+                       float        zenith = 45.f,
+                       float        distance = 0.2f);
 
 /**
  * @brief Compute the topographic shadow intensity in the range [-1, 1].
@@ -110,8 +110,8 @@ Array shadow_heightmap(const Array &z,
  * @see              {@link hillshade}
  */
 Array topographic_shading(const Array &z,
-                          float azimuth,
-                          float zenith,
-                          float talus_ref = 1.f);
+                          float        azimuth,
+                          float        zenith,
+                          float        talus_ref = 1.f);
 
 } // namespace hmap

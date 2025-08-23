@@ -26,6 +26,7 @@ void strata(Array             &z,
             float              ridge_noise_amp,
             float              ridge_clamp_vmin,
             float              ridge_remap_vmin,
+            bool               apply_mask,
             float              mask_gamma,
             const Vec4<float> &bbox)
 {
@@ -51,6 +52,7 @@ void strata(Array             &z,
                      ridge_noise_amp,
                      ridge_clamp_vmin,
                      ridge_remap_vmin,
+                     apply_mask ? 1 : 0,
                      mask_gamma,
                      bbox);
 

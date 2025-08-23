@@ -33,34 +33,34 @@ namespace hmap
 struct Recorder
 {
 public:
-	/**
-	 * @brief Constructs a new Recorder object.
-	 *
-	 * @param name The name of the event to be recorded.
-	 */
-	Recorder(std::string name);
+  /**
+   * @brief Constructs a new Recorder object.
+   *
+   * @param name The name of the event to be recorded.
+   */
+  Recorder(std::string name);
 
-	/**
-	 * @brief Outputs the timing data to the console.
-	 */
-	void dump();
+  /**
+   * @brief Outputs the timing data to the console.
+   */
+  void dump();
 
-	/**
-	 * @brief Starts the timer for this Recorder instance.
-	 */
-	void start();
+  /**
+   * @brief Starts the timer for this Recorder instance.
+   */
+  void start();
 
-	/**
-	 * @brief Stops the timer for this Recorder instance and updates the
-	 * total elapsed time.
-	 */
-	void stop();
+  /**
+   * @brief Stops the timer for this Recorder instance and updates the
+   * total elapsed time.
+   */
+  void stop();
 
-	std::string name; ///< The name of the event.
-	int nb_calls = 0; ///< The number of times the event has been recorded.
-	std::chrono::high_resolution_clock::time_point
-	        t0;  ///< The start time of the event.
-	float total = 0.f; ///< The total time recorded for the event.
+  std::string name; ///< The name of the event.
+  int nb_calls = 0; ///< The number of times the event has been recorded.
+  std::chrono::high_resolution_clock::time_point
+        t0;          ///< The start time of the event.
+  float total = 0.f; ///< The total time recorded for the event.
 };
 
 /**
@@ -102,83 +102,83 @@ public:
 class Timer
 {
 public:
-/**
- * @brief Gets the singleton instance of the Timer class.
- *
- * @return Timer& Reference to the singleton instance.
- */
-static Timer &get_instance();
+  /**
+   * @brief Gets the singleton instance of the Timer class.
+   *
+   * @return Timer& Reference to the singleton instance.
+   */
+  static Timer &get_instance();
 
-/**
- * @brief Starts a timer for the specified event name.
- *
- * @param name The name of the event to start timing.
- */
-static void Start(const std::string &name);
+  /**
+   * @brief Starts a timer for the specified event name.
+   *
+   * @param name The name of the event to start timing.
+   */
+  static void Start(const std::string &name);
 
-/**
- * @brief Stops the timer for the specified event name.
- *
- * @param name The name of the event to stop timing.
- */
-static void Stop(const std::string &name);
+  /**
+   * @brief Stops the timer for the specified event name.
+   *
+   * @param name The name of the event to stop timing.
+   */
+  static void Stop(const std::string &name);
 
-/**
- * @brief Dumps the timing information for all recorded events to the console.
- */
-static void Dump();
+  /**
+   * @brief Dumps the timing information for all recorded events to the console.
+   */
+  static void Dump();
 
-std::map<std::string, Recorder *> get_records() const
-{
-	return this->records;
-}
-
-private:
-/**
- * @brief Constructs a new Timer object. This constructor is private to enforce
- * the singleton pattern.
- *
- * @param sid An optional identifier for the Timer instance.
- */
-Timer(std::string sid = "");
-
-/**
- * @brief Destroys the Timer object and dumps all timing data.
- */
-~Timer();
-
-/**
- * @brief Starts a timer for the specified event name.
- *
- * @param name The name of the event to start timing.
- */
-void start(const std::string &name);
-
-/**
- * @brief Stops the timer for the specified event name.
- *
- * @param name The name of the event to stop timing.
- */
-void stop(const std::string &name);
-
-/**
- * @brief Dumps the timing information for all recorded events to the console.
- */
-void dump();
-
-// Deleting the copy constructor and assignment operator to enforce singleton
-// pattern.
-Timer(const Timer &) = delete;
-Timer &operator=(const Timer &) = delete;
+  std::map<std::string, Recorder *> get_records() const
+  {
+    return this->records;
+  }
 
 private:
-std::string sid;   ///< An optional identifier for the Timer instance.
-std::map<std::string, Recorder *>
-records;       ///< A map of event names to their corresponding Recorder
+  /**
+   * @brief Constructs a new Timer object. This constructor is private to
+   * enforce the singleton pattern.
+   *
+   * @param sid An optional identifier for the Timer instance.
+   */
+  Timer(std::string sid = "");
+
+  /**
+   * @brief Destroys the Timer object and dumps all timing data.
+   */
+  ~Timer();
+
+  /**
+   * @brief Starts a timer for the specified event name.
+   *
+   * @param name The name of the event to start timing.
+   */
+  void start(const std::string &name);
+
+  /**
+   * @brief Stops the timer for the specified event name.
+   *
+   * @param name The name of the event to stop timing.
+   */
+  void stop(const std::string &name);
+
+  /**
+   * @brief Dumps the timing information for all recorded events to the console.
+   */
+  void dump();
+
+  // Deleting the copy constructor and assignment operator to enforce singleton
+  // pattern.
+  Timer(const Timer &) = delete;
+  Timer &operator=(const Timer &) = delete;
+
+private:
+  std::string sid; ///< An optional identifier for the Timer instance.
+  std::map<std::string, Recorder *>
+      records; ///< A map of event names to their corresponding Recorder
                ///< objects.
-std::list<Recorder>
-data;       ///< A list of Recorder objects that store timing information.
-int current_level = 0;   ///< Current nesting level (if applicable).
+  std::list<Recorder>
+      data; ///< A list of Recorder objects that store timing information.
+  int current_level = 0; ///< Current nesting level (if applicable).
 };
 
 } // namespace hmap
