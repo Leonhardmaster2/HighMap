@@ -6,7 +6,8 @@ R""(
 float stratify(const float val,
                const float shift,
                const float kz,
-               const float gamma)
+               const float gamma,
+               const bool  linear_gamma)
 {
   float out = val + shift;
   out *= kz;
@@ -16,12 +17,23 @@ float stratify(const float val,
   float i = floor(out);
   float u = out - i;
 
-  // smooth gamma
+  if (linear_gamma)
   {
+    // sharp linear gamma
+    float a = pow(1.f / gamma, 1.f / (gamma - 1.f));
+    float b = pow(gamma, -gamma / (gamma - 1.f));
+
+    if (u < a)
+      u *= b / a;
+    else
+      u = b + (1.f - b) * (u - a) / (1.f - a);
+  }
+  else
+  {
+    // smooth gamma
     float ce = 50.f / gamma;
     u = pow(u, gamma) * (1.f - exp(-ce * u));
   }
-
   // revert back value to input range
   out = (i + u) / kz - shift;
 
@@ -35,6 +47,7 @@ void kernel strata(global float *output,
                    const float   slope,
                    const float   gamma,
                    const uint    seed,
+                   const int     use_linear_gamma,
                    const float   kz,
                    const int     octaves,
                    const float   lacunarity,
@@ -49,25 +62,6 @@ void kernel strata(global float *output,
                    const float   mask_gamma,
                    const float4  bbox)
 {
-  /* float kz = 1.f; */
-  /* int   octaves = 4; */
-  /* float lacunarity = 2.f; */
-  /* float gamma = 0.6f; */
-  /* float gamma_noise_ratio = 0.5f; */
-  /* // */
-  /* float noise_amp = 0.2f; */
-  /* float noise_kw = 4.f; */
-  /* // */
-  /* float2 ridge_noise_kw = (float2)(4.f, 1.2f); */
-  /* float  ridge_angle_shift = 45.f; */
-  /* float  ridge_noise_amp = 0.5f; */
-  /* float  ridge_clamp_vmin = 0.f; */
-  /* float  ridge_remap_vmin = 0.f; */
-  /* // */
-  /* float mask_gamma = 0.4f; */
-
-  // ---
-
   int2 g = {get_global_id(0), get_global_id(1)};
 
   if (g.x >= nx || g.y >= ny) return;
@@ -79,7 +73,9 @@ void kernel strata(global float *output,
 
   float2 pos = g_to_xy(g, nx, ny, 1.f, 1.f, 0.f, 0.f, bbox);
 
+  // parameters
   const float val0 = output[index];
+  const bool  linear_gamma = use_linear_gamma == 0 ? false : true;
   float       val = val0;
   float       alpha = angle / 180.f * 3.141592f;
   float       alpha_ridge = (angle + ridge_angle_shift) / 180.f * 3.141592f;
@@ -112,7 +108,11 @@ void kernel strata(global float *output,
 
   for (int k = 0; k < octaves; ++k)
   {
-    val = stratify(val, shift + noise_amp * noise / kz_n, kz_n, gamma_r);
+    val = stratify(val,
+                   shift + noise_amp * noise / kz_n,
+                   kz_n,
+                   gamma_r,
+                   linear_gamma);
     kz_n *= lacunarity;
   }
 
