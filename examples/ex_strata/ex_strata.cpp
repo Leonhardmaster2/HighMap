@@ -22,7 +22,7 @@ int main(void)
   hmap::remap(z2);
 
   // z2 = hmap::lerp(z1, z2, 0.5f);
-  
+
   z1.dump("out0.png");
   z2.dump();
 

@@ -95,8 +95,8 @@ void kernel strata(global float *output,
   float  dr_p = dot(pos, (float2)(cos(alpha_ridge), sin(alpha_ridge)));
   float2 pos_v = (float2)(ridge_noise_kw.x * dr_p + ridge_noise_amp * noise,
                           ridge_noise_kw.y * dr);
-  
-  float  noise_v = base_voronoi_f1df2(pos_v, (float2)(1.f, 1.f), 0.f, fseed);
+
+  float noise_v = base_voronoi_f1df2(pos_v, (float2)(1.f, 1.f), 0.f, fseed);
   noise_v = clamp(noise_v, ridge_clamp_vmin, 1.f);
   noise_v = remap_from(noise_v,
                        1.f,
@@ -104,12 +104,12 @@ void kernel strata(global float *output,
                        ridge_clamp_vmin,
                        1.f); // reverse
 
-  float gamma_r = gamma* (1.f + gamma_noise_ratio * noise);
+  float gamma_r = gamma * (1.f + gamma_noise_ratio * noise);
   gamma_r = clamp(gamma_r, 0.05f, 10.f);
 
   // multiscale
   float kz_n = kz;
-  
+
   for (int k = 0; k < octaves; ++k)
   {
     val = stratify(val, shift + noise_amp * noise / kz_n, kz_n, gamma_r);

@@ -10,7 +10,7 @@ namespace hmap::gpu
 {
 
 void strata(Array             &z,
-            float              angle, 
+            float              angle,
             float              slope,
             float              gamma,
             uint               seed,

@@ -48,7 +48,7 @@ float2 g_to_xy_pixel_centered_bbox(const int2   g,
   return (float2)(x, y);
 }
 
-bool is_inside(i, j, nx, ny)
+bool is_inside(const int i, const int j, const int nx, const int ny)
 {
   return i >= 0 && i < nx && j >= 0 && j < ny;
 }
