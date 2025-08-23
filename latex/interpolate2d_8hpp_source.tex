@@ -16,13 +16,13 @@
 \DoxyCodeLine{00025\ }
 \DoxyCodeLine{00033\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{namespacehmap_a5bfab5d68e822294ff90fde21b85f581}{InterpolationMethod2D}}\ :\ \textcolor{keywordtype}{int}}
 \DoxyCodeLine{00034\ \{}
-\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{namespacehmap_a5bfab5d68e822294ff90fde21b85f581a69ac444964e6a94c448c395c8f82b135}{DELAUNAY}},\ }
-\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{namespacehmap_a5bfab5d68e822294ff90fde21b85f581a7ab263bff6c11b7d35a8c1f1caac8cc2}{NEAREST}},\ }
+\DoxyCodeLine{00035\ \ \ \mbox{\hyperlink{namespacehmap_a5bfab5d68e822294ff90fde21b85f581a69ac444964e6a94c448c395c8f82b135}{DELAUNAY}},\ }
+\DoxyCodeLine{00036\ \ \ \mbox{\hyperlink{namespacehmap_a5bfab5d68e822294ff90fde21b85f581a7ab263bff6c11b7d35a8c1f1caac8cc2}{NEAREST}},\ \ }
 \DoxyCodeLine{00037\ \};}
 \DoxyCodeLine{00038\ }
 \DoxyCodeLine{00046\ \textcolor{keyword}{static}\ std::map<InterpolationMethod2D,\ std::string>}
-\DoxyCodeLine{00047\ interpolation\_method\_2d\_as\_string\ =\ \{\{\mbox{\hyperlink{namespacehmap_a5bfab5d68e822294ff90fde21b85f581a69ac444964e6a94c448c395c8f82b135}{DELAUNAY}},\ \textcolor{stringliteral}{"{}Delaunay\ linear"{}}\},}
-\DoxyCodeLine{00048\ \ \ \ \ \{\mbox{\hyperlink{namespacehmap_a5bfab5d68e822294ff90fde21b85f581a7ab263bff6c11b7d35a8c1f1caac8cc2}{NEAREST}},\ \textcolor{stringliteral}{"{}nearest\ neighbor"{}}\}\};}
+\DoxyCodeLine{00047\ \ \ \ \ interpolation\_method\_2d\_as\_string\ =\ \{\{\mbox{\hyperlink{namespacehmap_a5bfab5d68e822294ff90fde21b85f581a69ac444964e6a94c448c395c8f82b135}{DELAUNAY}},\ \textcolor{stringliteral}{"{}Delaunay\ linear"{}}\},}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{namespacehmap_a5bfab5d68e822294ff90fde21b85f581a7ab263bff6c11b7d35a8c1f1caac8cc2}{NEAREST}},\ \textcolor{stringliteral}{"{}nearest\ neighbor"{}}\}\};}
 \DoxyCodeLine{00049\ }
 \DoxyCodeLine{00066\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{namespacehmap_ae91029283452ab6d8276e3745a476b48}{bilinear\_interp}}(\textcolor{keywordtype}{float}\ f00,}
 \DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ f10,}
@@ -31,25 +31,25 @@
 \DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ u,}
 \DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ v)}
 \DoxyCodeLine{00072\ \{}
-\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{float}\ a10\ =\ f10\ -\/\ f00;}
-\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{float}\ a01\ =\ f01\ -\/\ f00;}
-\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{float}\ a11\ =\ f11\ -\/\ f10\ -\/\ f01\ +\ f00;}
-\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordflow}{return}\ f00\ +\ a10\ *\ u\ +\ a01\ *\ v\ +\ a11\ *\ u\ *\ v;}
+\DoxyCodeLine{00073\ \ \ \textcolor{keywordtype}{float}\ a10\ =\ f10\ -\/\ f00;}
+\DoxyCodeLine{00074\ \ \ \textcolor{keywordtype}{float}\ a01\ =\ f01\ -\/\ f00;}
+\DoxyCodeLine{00075\ \ \ \textcolor{keywordtype}{float}\ a11\ =\ f11\ -\/\ f10\ -\/\ f01\ +\ f00;}
+\DoxyCodeLine{00076\ \ \ \textcolor{keywordflow}{return}\ f00\ +\ a10\ *\ u\ +\ a01\ *\ v\ +\ a11\ *\ u\ *\ v;}
 \DoxyCodeLine{00077\ \}}
 \DoxyCodeLine{00078\ }
 \DoxyCodeLine{00079\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{namespacehmap_aee026d8b23196038c2b16c370b743889}{cubic\_interpolate}}(\textcolor{keywordtype}{float}\ p[4],\ \textcolor{keywordtype}{float}\ x)}
 \DoxyCodeLine{00080\ \{}
-\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordflow}{return}\ p[1]\ +\ 0.5\ *\ x\ *}
-\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ (p[2]\ -\/\ p[0]\ +}
-\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ x\ *\ (2.0\ *\ p[0]\ -\/\ 5.0\ *\ p[1]\ +\ 4.0\ *\ p[2]\ -\/\ p[3]\ +}
-\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ x\ *\ (3.0\ *\ (p[1]\ -\/\ p[2])\ +\ p[3]\ -\/\ p[0])));}
+\DoxyCodeLine{00081\ \ \ \textcolor{keywordflow}{return}\ p[1]\ +\ 0.5\ *\ x\ *}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (p[2]\ -\/\ p[0]\ +}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ x\ *\ (2.0\ *\ p[0]\ -\/\ 5.0\ *\ p[1]\ +\ 4.0\ *\ p[2]\ -\/\ p[3]\ +}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ x\ *\ (3.0\ *\ (p[1]\ -\/\ p[2])\ +\ p[3]\ -\/\ p[0])));}
 \DoxyCodeLine{00085\ \}}
 \DoxyCodeLine{00086\ }
 \DoxyCodeLine{00110\ Array\ \mbox{\hyperlink{namespacehmap_a62fb974ae1d78c0c4ebb4267dc9c8204}{interpolate2d}}(Vec2<int>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ shape,}
 \DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<float>\ \&x,}
 \DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<float>\ \&y,}
 \DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<float>\ \&values,}
-\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a5bfab5d68e822294ff90fde21b85f581}{InterpolationMethod2D}}\ interpolation\_method,}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a5bfab5d68e822294ff90fde21b85f581}{InterpolationMethod2D}}\ \ \ \ \ interpolation\_method,}
 \DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ \ \ \ \ \ \ \ \ \ \ \ *p\_noise\_x\ =\ \textcolor{keyword}{nullptr},}
 \DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ \ \ \ \ \ \ \ \ \ \ \ *p\_noise\_y\ =\ \textcolor{keyword}{nullptr},}
 \DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ \ \ \ \ \ \ \ \ \ \ \ *p\_stretching\ =\ \textcolor{keyword}{nullptr},}

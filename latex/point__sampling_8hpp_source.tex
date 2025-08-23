@@ -19,10 +19,10 @@
 \DoxyCodeLine{00026\ }
 \DoxyCodeLine{00030\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{namespacehmap_aba758c4143b6e499ec6f4385467a6d77}{PointSamplingMethod}}\ :\ \textcolor{keywordtype}{int}}
 \DoxyCodeLine{00031\ \{}
-\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{namespacehmap_aba758c4143b6e499ec6f4385467a6d77aea0acc8d27d5a8a13e107f49120c084e}{RND\_RANDOM}},\ }
-\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{namespacehmap_aba758c4143b6e499ec6f4385467a6d77a99ca15104343ff0356c6fc0ffe4f837d}{RND\_HALTON}},\ }
-\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{namespacehmap_aba758c4143b6e499ec6f4385467a6d77aeebf5714b383e3b3be100ceba46d8fe5}{RND\_HAMMERSLEY}},\ }
-\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{namespacehmap_aba758c4143b6e499ec6f4385467a6d77a8943dd2a2e3993c1e0cff37be3f65957}{RND\_LHS}},\ \ }
+\DoxyCodeLine{00032\ \ \ \mbox{\hyperlink{namespacehmap_aba758c4143b6e499ec6f4385467a6d77aea0acc8d27d5a8a13e107f49120c084e}{RND\_RANDOM}},\ \ \ \ \ }
+\DoxyCodeLine{00033\ \ \ \mbox{\hyperlink{namespacehmap_aba758c4143b6e499ec6f4385467a6d77a99ca15104343ff0356c6fc0ffe4f837d}{RND\_HALTON}},\ \ \ \ \ }
+\DoxyCodeLine{00034\ \ \ \mbox{\hyperlink{namespacehmap_aba758c4143b6e499ec6f4385467a6d77aeebf5714b383e3b3be100ceba46d8fe5}{RND\_HAMMERSLEY}},\ }
+\DoxyCodeLine{00035\ \ \ \mbox{\hyperlink{namespacehmap_aba758c4143b6e499ec6f4385467a6d77a8943dd2a2e3993c1e0cff37be3f65957}{RND\_LHS}},\ \ \ \ \ \ \ \ }
 \DoxyCodeLine{00036\ \};}
 \DoxyCodeLine{00037\ }
 \DoxyCodeLine{00044\ \textcolor{keyword}{static}\ std::map<std::string,\ int>\ point\_sampling\_method\_as\_string\ =\ \{}
@@ -44,60 +44,60 @@
 \DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<float>\ \&y,}
 \DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<float>\ \&value,}
 \DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vec4<float>\ bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\},}
-\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ boundary\_value\ =\ 0.f);}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ boundary\_value\ =\ 0.f);}
 \DoxyCodeLine{00094\ }
 \DoxyCodeLine{00104\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a813c58d6f5d3b7febc0ba4f1a22619d6}{expand\_points\_domain\_corners}}(std::vector<float>\ \&x,}
 \DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<float>\ \&y,}
 \DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<float>\ \&value,}
 \DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vec4<float>\ bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\},}
-\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ corner\_value\ =\ 0.f);}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ corner\_value\ =\ 0.f);}
 \DoxyCodeLine{00109\ }
 \DoxyCodeLine{00136\ std::function<float(\textcolor{keyword}{const}\ ps::Point<float,\ 2>\ \&)>}
 \DoxyCodeLine{00137\ \mbox{\hyperlink{namespacehmap_aa3a56cb9295faf9c5b7a4ad082eeb486}{make\_pointwise\_function\_from\_array}}(\textcolor{keyword}{const}\ Array\ \&array,\ \textcolor{keyword}{const}\ Vec4<float>\ \&bbox);}
 \DoxyCodeLine{00138\ }
 \DoxyCodeLine{00152\ std::array<std::vector<float>,\ 2>\ \mbox{\hyperlink{namespacehmap_a9cb4524fa8aa7f074bed3793ad1e0302}{random\_points}}(}
-\DoxyCodeLine{00153\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ count,}
-\DoxyCodeLine{00154\ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ seed,}
+\DoxyCodeLine{00153\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ count,}
+\DoxyCodeLine{00154\ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed,}
 \DoxyCodeLine{00155\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{namespacehmap_aba758c4143b6e499ec6f4385467a6d77}{PointSamplingMethod}}\ \&method\ =\ \mbox{\hyperlink{namespacehmap_aba758c4143b6e499ec6f4385467a6d77aea0acc8d27d5a8a13e107f49120c084e}{PointSamplingMethod::RND\_RANDOM}},}
 \DoxyCodeLine{00156\ \ \ \ \ \textcolor{keyword}{const}\ Vec4<float>\ \ \ \ \ \ \ \ \ \&bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\});}
 \DoxyCodeLine{00157\ }
 \DoxyCodeLine{00172\ std::array<std::vector<float>,\ 2>\ \mbox{\hyperlink{namespacehmap_ac30b62e2cc35d56c33af4d1c12c54f81}{random\_points\_density}}(}
-\DoxyCodeLine{00173\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ count,}
+\DoxyCodeLine{00173\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \ \ \ \ \ \ \ \ \ \ \ \ count,}
 \DoxyCodeLine{00174\ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ \ \ \ \ \&density,}
-\DoxyCodeLine{00175\ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ seed,}
+\DoxyCodeLine{00175\ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed,}
 \DoxyCodeLine{00176\ \ \ \ \ \textcolor{keyword}{const}\ Vec4<float>\ \&bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\});}
 \DoxyCodeLine{00177\ }
 \DoxyCodeLine{00191\ std::array<std::vector<float>,\ 2>\ \mbox{\hyperlink{namespacehmap_acb1099889036fd10623012ab68592914}{random\_points\_distance}}(}
-\DoxyCodeLine{00192\ \ \ \ \ \textcolor{keywordtype}{float}\ min\_dist,}
-\DoxyCodeLine{00193\ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ seed,}
+\DoxyCodeLine{00192\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ min\_dist,}
+\DoxyCodeLine{00193\ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed,}
 \DoxyCodeLine{00194\ \ \ \ \ \textcolor{keyword}{const}\ Vec4<float>\ \&bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\});}
 \DoxyCodeLine{00195\ }
 \DoxyCodeLine{00212\ std::array<std::vector<float>,\ 2>\ \mbox{\hyperlink{namespacehmap_acb1099889036fd10623012ab68592914}{random\_points\_distance}}(}
-\DoxyCodeLine{00213\ \ \ \ \ \textcolor{keywordtype}{float}\ min\_dist,}
-\DoxyCodeLine{00214\ \ \ \ \ \textcolor{keywordtype}{float}\ max\_dist,}
+\DoxyCodeLine{00213\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ min\_dist,}
+\DoxyCodeLine{00214\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ max\_dist,}
 \DoxyCodeLine{00215\ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ \ \ \ \ \&density,}
-\DoxyCodeLine{00216\ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ seed,}
+\DoxyCodeLine{00216\ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed,}
 \DoxyCodeLine{00217\ \ \ \ \ \textcolor{keyword}{const}\ Vec4<float>\ \&bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\});}
 \DoxyCodeLine{00218\ }
 \DoxyCodeLine{00235\ std::array<std::vector<float>,\ 2>\ \mbox{\hyperlink{namespacehmap_a58c8f359e1421bef310e45bcbc57cef8}{random\_points\_distance\_power\_law}}(}
-\DoxyCodeLine{00236\ \ \ \ \ \textcolor{keywordtype}{float}\ dist\_min,}
-\DoxyCodeLine{00237\ \ \ \ \ \textcolor{keywordtype}{float}\ dist\_max,}
-\DoxyCodeLine{00238\ \ \ \ \ \textcolor{keywordtype}{float}\ alpha,}
-\DoxyCodeLine{00239\ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ seed,}
+\DoxyCodeLine{00236\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ dist\_min,}
+\DoxyCodeLine{00237\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ dist\_max,}
+\DoxyCodeLine{00238\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ alpha,}
+\DoxyCodeLine{00239\ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed,}
 \DoxyCodeLine{00240\ \ \ \ \ \textcolor{keyword}{const}\ Vec4<float>\ \&bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\});}
 \DoxyCodeLine{00241\ }
 \DoxyCodeLine{00258\ std::array<std::vector<float>,\ 2>\ \mbox{\hyperlink{namespacehmap_a6bc713eef74cda58ab2c3b41eb444b17}{random\_points\_distance\_weibull}}(}
-\DoxyCodeLine{00259\ \ \ \ \ \textcolor{keywordtype}{float}\ dist\_min,}
-\DoxyCodeLine{00260\ \ \ \ \ \textcolor{keywordtype}{float}\ lambda,}
-\DoxyCodeLine{00261\ \ \ \ \ \textcolor{keywordtype}{float}\ k,}
-\DoxyCodeLine{00262\ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ seed,}
+\DoxyCodeLine{00259\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ dist\_min,}
+\DoxyCodeLine{00260\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ lambda,}
+\DoxyCodeLine{00261\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ k,}
+\DoxyCodeLine{00262\ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed,}
 \DoxyCodeLine{00263\ \ \ \ \ \textcolor{keyword}{const}\ Vec4<float>\ \&bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\});}
 \DoxyCodeLine{00264\ }
 \DoxyCodeLine{00280\ std::array<std::vector<float>,\ 2>\ \mbox{\hyperlink{namespacehmap_a8dad71368ba3687b381f3c72b66cace5}{random\_points\_jittered}}(}
-\DoxyCodeLine{00281\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ count,}
+\DoxyCodeLine{00281\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ count,}
 \DoxyCodeLine{00282\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structhmap_1_1Vec2}{hmap::Vec2<float>}}\ \&jitter\_amount,}
 \DoxyCodeLine{00283\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structhmap_1_1Vec2}{hmap::Vec2<float>}}\ \&stagger\_ratio,}
-\DoxyCodeLine{00284\ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ seed,}
+\DoxyCodeLine{00284\ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed,}
 \DoxyCodeLine{00285\ \ \ \ \ \textcolor{keyword}{const}\ Vec4<float>\ \ \ \ \ \ \ \&bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\});}
 \DoxyCodeLine{00286\ }
 \DoxyCodeLine{00294\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a9e701766f54eaf6ad79956bf90b9bb8b}{remove\_points\_outside\_bbox}}(std::vector<float>\ \&x,}

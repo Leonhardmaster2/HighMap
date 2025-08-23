@@ -822,9 +822,9 @@ Import array data from a numpy binary file.
 
 Calculates the gradient in the \textquotesingle{}x\textquotesingle{} (or \textquotesingle{}i\textquotesingle{}) direction at a specified index (i, j) using a 2nd order central difference scheme. 
 
-\begin{DoxyVerb}   This function computes the gradient in the x-direction, which measures
+\begin{DoxyVerb}   This function computes the gradient in the x-direction, which
 \end{DoxyVerb}
- the rate of change along the x-\/axis. Note that this function cannot be used at the borders of the data, as the central difference scheme requires values from both sides of the point of interest.
+ measures the rate of change along the x-\/axis. Note that this function cannot be used at the borders of the data, as the central difference scheme requires values from both sides of the point of interest.
 
 \begin{DoxyWarning}{Warning}
 The gradient cannot be computed at the borders of the data array. Specifically, the function is not defined for i = 0, j = 0, i = shape.\+x -\/ 1, or j = shape.\+y -\/ 1.
@@ -849,9 +849,9 @@ float The computed gradient value in the x-\/direction at the specified index.
 
 Calculates the gradient in the \textquotesingle{}y\textquotesingle{} (or \textquotesingle{}j\textquotesingle{}) direction at a specified index (i, j) using a 2nd order central difference scheme. 
 
-\begin{DoxyVerb}   This function computes the gradient in the y-direction, which measures
+\begin{DoxyVerb}   This function computes the gradient in the y-direction, which
 \end{DoxyVerb}
- the rate of change along the y-\/axis. Note that this function cannot be used at the borders of the data, as the central difference scheme requires values from both sides of the point of interest.
+ measures the rate of change along the y-\/axis. Note that this function cannot be used at the borders of the data, as the central difference scheme requires values from both sides of the point of interest.
 
 \begin{DoxyWarning}{Warning}
 The gradient cannot be computed at the borders of the data array. Specifically, the function is not defined for i = 0, j = 0, i = shape.\+x -\/ 1, or j = shape.\+y -\/ 1.
@@ -876,9 +876,9 @@ float The computed gradient value in the y-\/direction at the specified index.
 
 Calculates the gradient in the \textquotesingle{}x\textquotesingle{} (or \textquotesingle{}i\textquotesingle{}) direction at a location (x, y) near the index (i, j) using bilinear interpolation. 
 
-\begin{DoxyVerb}   This function uses bilinear interpolation to estimate the gradient in
+\begin{DoxyVerb}   This function uses bilinear interpolation to estimate the gradient
 \end{DoxyVerb}
- the x-\/direction at a point within the cell defined by (i, j). The gradient is based on a 2nd order central difference scheme but interpolated to a finer resolution.
+ in the x-\/direction at a point within the cell defined by (i, j). The gradient is based on a 2nd order central difference scheme but interpolated to a finer resolution.
 
 \begin{DoxyWarning}{Warning}
 The gradient cannot be computed at the borders of the data array. Specifically, the function is not defined for i = 0, j = 0, i = shape.\+x -\/ 1, or j = shape.\+y -\/ 1.
@@ -907,9 +907,9 @@ float The interpolated gradient value in the x-\/direction at the specified loca
 
 Calculates the gradient in the \textquotesingle{}y\textquotesingle{} (or \textquotesingle{}j\textquotesingle{}) direction at a location (x, y) near the index (i, j) using bilinear interpolation. 
 
-\begin{DoxyVerb}   This function uses bilinear interpolation to estimate the gradient in
+\begin{DoxyVerb}   This function uses bilinear interpolation to estimate the gradient
 \end{DoxyVerb}
- the y-\/direction at a point within the cell defined by (i, j). The gradient is based on a 2nd order central difference scheme but interpolated to a finer resolution.
+ in the y-\/direction at a point within the cell defined by (i, j). The gradient is based on a 2nd order central difference scheme but interpolated to a finer resolution.
 
 \begin{DoxyWarning}{Warning}
 The gradient cannot be computed at the borders of the data array. Specifically, the function is not defined for i = 0, j = 0, i = shape.\+x -\/ 1, or j = shape.\+y -\/ 1.
@@ -1093,9 +1093,9 @@ std\+::vector$<$float$>$ The vector containing the array\textquotesingle{}s data
 
 Display various information about the array. 
 
-\begin{DoxyVerb}   This function outputs details about the array, such as its dimensions,
+\begin{DoxyVerb}   This function outputs details about the array, such as its
 \end{DoxyVerb}
- data type, and any other relevant information. The optional {\ttfamily msg} parameter can be used to include a custom message in the output.
+ dimensions, data type, and any other relevant information. The optional {\ttfamily msg} parameter can be used to include a custom message in the output.
 
 
 \begin{DoxyParams}{Parameters}
@@ -1112,9 +1112,9 @@ Display various information about the array.
 
 Return the linear index corresponding to the (i, j) cell in a 2D array. 
 
-\begin{DoxyVerb}   This function calculates the linear index for a cell specified by the
+\begin{DoxyVerb}   This function calculates the linear index for a cell specified by
 \end{DoxyVerb}
- (i, j) coordinates in a 2D array. The linear index is useful for accessing elements in a flattened or 1D representation of the array.
+ the (i, j) coordinates in a 2D array. The linear index is useful for accessing elements in a flattened or 1D representation of the array.
 
 
 \begin{DoxyParams}{Parameters}
@@ -1158,9 +1158,9 @@ Convert a linear index to its corresponding (i, j) cell coordinates.
 
 Return the value of the greatest element in the array. 
 
-\begin{DoxyVerb}   This function computes the maximum value present in the array. If the
+\begin{DoxyVerb}   This function computes the maximum value present in the array. If
 \end{DoxyVerb}
- array is empty, the behavior of this function is undefined.
+ the array is empty, the behavior of this function is undefined.
 
 \begin{DoxyReturn}{Returns}
 float The maximum value in the array. 
@@ -1192,9 +1192,9 @@ float The mean value of the elements in the array.
 
 Return the value of the smallest element in the array. 
 
-\begin{DoxyVerb}   This function computes the minimum value present in the array. If the
+\begin{DoxyVerb}   This function computes the minimum value present in the array. If
 \end{DoxyVerb}
- array is empty, the behavior of this function is undefined.
+ the array is empty, the behavior of this function is undefined.
 
 \begin{DoxyReturn}{Returns}
 float The minimum value in the array. 
@@ -1209,9 +1209,9 @@ float The minimum value in the array.
 
 Normalize array values so that the sum of all elements is equal to 1. 
 
-\begin{DoxyVerb}   This function adjusts the values in the array so that their total sum
+\begin{DoxyVerb}   This function adjusts the values in the array so that their total
 \end{DoxyVerb}
- is normalized to 1. This is often used in scenarios where the array represents a probability distribution. \Hypertarget{classhmap_1_1Array_a7bf76abbc7ad183514f41f2b54a0ad2e}\label{classhmap_1_1Array_a7bf76abbc7ad183514f41f2b54a0ad2e} 
+ sum is normalized to 1. This is often used in scenarios where the array represents a probability distribution. \Hypertarget{classhmap_1_1Array_a7bf76abbc7ad183514f41f2b54a0ad2e}\label{classhmap_1_1Array_a7bf76abbc7ad183514f41f2b54a0ad2e} 
 \index{hmap::Array@{hmap::Array}!normalization\_coeff@{normalization\_coeff}}
 \index{normalization\_coeff@{normalization\_coeff}!hmap::Array@{hmap::Array}}
 \doxysubsubsection{\texorpdfstring{normalization\_coeff()}{normalization\_coeff()}}
@@ -1221,9 +1221,9 @@ Normalize array values so that the sum of all elements is equal to 1.
 
 Computes normalization coefficients (a, b) such that a \texorpdfstring{$\ast$}{*} array + b maps the values to the range \mbox{[}vmin, vmax\mbox{]}. 
 
-\begin{DoxyVerb}   This function calculates the coefficients used to normalize the array
+\begin{DoxyVerb}   This function calculates the coefficients used to normalize the
 \end{DoxyVerb}
- values so that they fit within the specified range \mbox{[}vmin, vmax\mbox{]}. The normalization is performed using the linear transformation\+: {\ttfamily a \texorpdfstring{$\ast$}{*} array + b}.
+ array values so that they fit within the specified range \mbox{[}vmin, vmax\mbox{]}. The normalization is performed using the linear transformation\+: {\ttfamily a \texorpdfstring{$\ast$}{*} array + b}.
 
 
 \begin{DoxyParams}{Parameters}
@@ -1463,9 +1463,9 @@ This is an overloaded member function, provided for convenience. It differs from
 
 Return the total number of elements in the array. 
 
-\begin{DoxyVerb}   This function returns the size of the array, which is the total number
+\begin{DoxyVerb}   This function returns the size of the array, which is the total
 \end{DoxyVerb}
- of elements it contains. This can be useful for iterating over the array or for checking its dimensions.
+ number of elements it contains. This can be useful for iterating over the array or for checking its dimensions.
 
 \begin{DoxyReturn}{Returns}
 int The total number of elements in the array. 
@@ -1594,9 +1594,9 @@ Export the array as an Open\+EXR image file.
 
 Export the array to a raw binary file. 
 
-\begin{DoxyVerb}   This function writes the contents of the array to a file in raw binary
+\begin{DoxyVerb}   This function writes the contents of the array to a file in raw
 \end{DoxyVerb}
- format. This can be useful for saving the array data to disk or for transferring it between programs. The file will be created or overwritten with the specified {\ttfamily fname}.
+ binary format. This can be useful for saving the array data to disk or for transferring it between programs. The file will be created or overwritten with the specified {\ttfamily fname}.
 
 
 \begin{DoxyParams}{Parameters}
@@ -1659,9 +1659,9 @@ Export the array to a numpy binary file.
 
 Export the array as a PNG image file with a specified colormap and hillshading. 
 
-\begin{DoxyVerb}   This function saves the array data as a PNG image file. The colors of
+\begin{DoxyVerb}   This function saves the array data as a PNG image file. The colors
 \end{DoxyVerb}
- the image are determined by the specified colormap ({\ttfamily cmap}), and optional hillshading can be applied to enhance the visual representation of the data. The file will be created or overwritten with the name specified by {\ttfamily fname}.
+ of the image are determined by the specified colormap ({\ttfamily cmap}), and optional hillshading can be applied to enhance the visual representation of the data. The file will be created or overwritten with the name specified by {\ttfamily fname}.
 
 
 \begin{DoxyParams}{Parameters}

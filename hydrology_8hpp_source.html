@@ -138,22 +138,22 @@ $(document).ready(function(){initNavTree('hydrology_8hpp_source.html',''); initR
 <div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span> </div>
 <div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>Path <a class="code hl_function" href="namespacehmap.html#a5adb98e67f89036317df083dd2123a1e">flow_stream</a>(<span class="keyword">const</span> Array    &amp;z,</div>
 <div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>                 <span class="keyword">const</span> Vec2&lt;int&gt; ij_start,</div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>                 <span class="keyword">const</span> <span class="keywordtype">float</span> elevation_ratio = 0.5f,</div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>                 <span class="keyword">const</span> <span class="keywordtype">float</span> distance_exponent = 2.f,</div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>                 <span class="keyword">const</span> <span class="keywordtype">float</span> upward_penalization = 100.f);</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>                 <span class="keyword">const</span> <span class="keywordtype">float</span>     elevation_ratio = 0.5f,</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>                 <span class="keyword">const</span> <span class="keywordtype">float</span>     distance_exponent = 2.f,</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>                 <span class="keyword">const</span> <span class="keywordtype">float</span>     upward_penalization = 100.f);</div>
 <div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span> </div>
 <div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>Array <a class="code hl_function" href="namespacehmap.html#a97ba5dfaa6625b654a8010ed7d2f3465">generate_riverbed</a>(<span class="keyword">const</span> Path &amp;path,</div>
 <div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>                        Vec2&lt;int&gt;   shape,</div>
 <div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>                        Vec4&lt;float&gt; bbox = {0.f, 1.f, 0.f, 1.f},</div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>                        <span class="keywordtype">bool</span> bezier_smoothing = <span class="keyword">false</span>,</div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>                        <span class="keywordtype">float</span> depth_start = 0.01f,</div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>                        <span class="keywordtype">float</span> depth_end = 1.f,</div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>                        <span class="keywordtype">float</span> slope_start = 64.f,</div>
-<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>                        <span class="keywordtype">float</span> slope_end = 32.f,</div>
-<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>                        <span class="keywordtype">float</span> shape_exponent_start = 1.f,</div>
-<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>                        <span class="keywordtype">float</span> shape_exponent_end = 10.f,</div>
-<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>                        <span class="keywordtype">float</span> k_smoothing = 0.5f,</div>
-<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>                        <span class="keywordtype">int</span> post_filter_ir = 0,</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>                        <span class="keywordtype">bool</span>        bezier_smoothing = <span class="keyword">false</span>,</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>                        <span class="keywordtype">float</span>       depth_start = 0.01f,</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>                        <span class="keywordtype">float</span>       depth_end = 1.f,</div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>                        <span class="keywordtype">float</span>       slope_start = 64.f,</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>                        <span class="keywordtype">float</span>       slope_end = 32.f,</div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>                        <span class="keywordtype">float</span>       shape_exponent_start = 1.f,</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>                        <span class="keywordtype">float</span>       shape_exponent_end = 10.f,</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>                        <span class="keywordtype">float</span>       k_smoothing = 0.5f,</div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>                        <span class="keywordtype">int</span>         post_filter_ir = 0,</div>
 <div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>                        Array      *p_noise_x = <span class="keyword">nullptr</span>,</div>
 <div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>                        Array      *p_noise_y = <span class="keyword">nullptr</span>,</div>
 <div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>                        Array      *p_noise_r = <span class="keyword">nullptr</span>);</div>
@@ -168,15 +168,15 @@ $(document).ready(function(){initNavTree('hydrology_8hpp_source.html',''); initR
 <div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>Array <a class="code hl_function" href="namespacehmap_1_1gpu.html#ab4f1542d2d5dd7edc54d240dab777755">generate_riverbed</a>(<span class="keyword">const</span> Path &amp;path,</div>
 <div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>                        Vec2&lt;int&gt;   shape,</div>
 <div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>                        Vec4&lt;float&gt; bbox = {0.f, 1.f, 0.f, 1.f},</div>
-<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>                        <span class="keywordtype">bool</span> bezier_smoothing = <span class="keyword">false</span>,</div>
-<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>                        <span class="keywordtype">float</span> depth_start = 0.01f,</div>
-<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>                        <span class="keywordtype">float</span> depth_end = 1.f,</div>
-<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>                        <span class="keywordtype">float</span> slope_start = 64.f,</div>
-<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>                        <span class="keywordtype">float</span> slope_end = 32.f,</div>
-<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>                        <span class="keywordtype">float</span> shape_exponent_start = 1.f,</div>
-<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>                        <span class="keywordtype">float</span> shape_exponent_end = 10.f,</div>
-<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>                        <span class="keywordtype">float</span> k_smoothing = 0.5f,</div>
-<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>                        <span class="keywordtype">int</span> post_filter_ir = 0,</div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>                        <span class="keywordtype">bool</span>        bezier_smoothing = <span class="keyword">false</span>,</div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>                        <span class="keywordtype">float</span>       depth_start = 0.01f,</div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>                        <span class="keywordtype">float</span>       depth_end = 1.f,</div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>                        <span class="keywordtype">float</span>       slope_start = 64.f,</div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>                        <span class="keywordtype">float</span>       slope_end = 32.f,</div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>                        <span class="keywordtype">float</span>       shape_exponent_start = 1.f,</div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>                        <span class="keywordtype">float</span>       shape_exponent_end = 10.f,</div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>                        <span class="keywordtype">float</span>       k_smoothing = 0.5f,</div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>                        <span class="keywordtype">int</span>         post_filter_ir = 0,</div>
 <div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>                        Array      *p_noise_x = <span class="keyword">nullptr</span>,</div>
 <div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>                        Array      *p_noise_y = <span class="keyword">nullptr</span>,</div>
 <div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>                        Array      *p_noise_r = <span class="keyword">nullptr</span>);</div>

@@ -113,34 +113,34 @@ $(document).ready(function(){initNavTree('features_8hpp_source.html',''); initRe
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;<a class="code" href="array_8hpp.html">highmap/array.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#define HMAP_PACK8(a, b, c, d, e, f, g, h)                                     \</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">    ((a &lt;&lt; 15) + (b &lt;&lt; 13) + (c &lt;&lt; 11) + (d &lt;&lt; 9) + (e &lt;&lt; 7) + (f &lt;&lt; 5) +        \</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">     (g &lt;&lt; 3) + (h &lt;&lt; 1))</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">  ((a &lt;&lt; 15) + (b &lt;&lt; 13) + (c &lt;&lt; 11) + (d &lt;&lt; 9) + (e &lt;&lt; 7) + (f &lt;&lt; 5) +        \</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">   (g &lt;&lt; 3) + (h &lt;&lt; 1))</span></div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacehmap.html">hmap</a></div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>{</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>Array <a class="code hl_function" href="namespacehmap.html#a9f8b079598b5ab3850c747ece6c81345">connected_components</a>(<span class="keyword">const</span> Array &amp;array,</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>                           <span class="keywordtype">float</span> surface_threshold = 0.f,</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>                           <span class="keywordtype">float</span> background_value = 0.f);</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>                           <span class="keywordtype">float</span>        surface_threshold = 0.f,</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>                           <span class="keywordtype">float</span>        background_value = 0.f);</div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
 <div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>Array <a class="code hl_function" href="namespacehmap.html#aa60fa2d3f02d1e064b520fa1623200d0">geomorphons</a>(<span class="keyword">const</span> Array &amp;array, <span class="keywordtype">int</span> irmin, <span class="keywordtype">int</span> irmax, <span class="keywordtype">float</span> epsilon);</div>
 <div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
 <div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>Array <a class="code hl_function" href="namespacehmap.html#ae19d507d917f1f4cbc61fc76cc5baab0">kmeans_clustering2</a>(<span class="keyword">const</span> Array        &amp;array1,</div>
 <div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>                         <span class="keyword">const</span> Array        &amp;array2,</div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>                         <span class="keywordtype">int</span> nclusters,</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>                         <span class="keywordtype">int</span>                 nclusters,</div>
 <div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>                         std::vector&lt;Array&gt; *p_scoring = <span class="keyword">nullptr</span>,</div>
 <div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>                         Array              *p_aggregate_scoring = <span class="keyword">nullptr</span>,</div>
 <div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>                         Vec2&lt;float&gt;         weights = {1.f, 1.f},</div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>                         <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> seed = 1);</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>                         <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>                seed = 1);</div>
 <div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span> </div>
 <div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>Array <a class="code hl_function" href="namespacehmap.html#ac177e8615e697e3096737cb21a15f3ed">kmeans_clustering3</a>(<span class="keyword">const</span> Array        &amp;array1,</div>
 <div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>                         <span class="keyword">const</span> Array        &amp;array2,</div>
 <div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>                         <span class="keyword">const</span> Array        &amp;array3,</div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>                         <span class="keywordtype">int</span> nclusters,</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>                         <span class="keywordtype">int</span>                 nclusters,</div>
 <div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>                         std::vector&lt;Array&gt; *p_scoring = <span class="keyword">nullptr</span>,</div>
 <div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>                         Array              *p_aggregate_scoring = <span class="keyword">nullptr</span>,</div>
 <div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>                         Vec3&lt;float&gt;         weights = {1.f, 1.f, 1.f},</div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>                         <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> seed = 1);</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>                         <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>                seed = 1);</div>
 <div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span> </div>
 <div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>Array <a class="code hl_function" href="namespacehmap.html#a9b6a1d2ca8ef58a4a0605d04bcbff038">local_median_deviation</a>(<span class="keyword">const</span> Array &amp;array, <span class="keywordtype">int</span> ir);</div>
 <div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span> </div>
