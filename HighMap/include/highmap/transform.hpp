@@ -114,9 +114,9 @@ void rot90(Array &array);
  * @image html ex_rotate.png
  */
 void rotate(Array &array,
-            float  angle,
-            bool   zoom_in = true,
-            bool   zero_padding = false);
+            float angle,
+            bool zoom_in = true,
+            bool zero_padding = false);
 
 /**
  * @brief Return the transposed array.
@@ -166,9 +166,9 @@ Array transpose(const Array &array);
  * @image html ex_translate.png
  */
 Array translate(const Array &array,
-                float        dx,
-                float        dy,
-                bool         periodic = false,
+                float dx,
+                float dy,
+                bool periodic = false,
                 const Array *p_noise_x = nullptr,
                 const Array *p_noise_y = nullptr,
                 Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
@@ -216,10 +216,10 @@ void warp(Array &array, const Array *p_dx, const Array *p_dy);
  * @image html ex_warp_directional.png
  */
 void warp_directional(Array &array,
-                      float  angle,
-                      float  amount = 0.02f,
-                      int    ir = 4,
-                      bool   reverse = false);
+                      float angle,
+                      float amount = 0.02f,
+                      int ir = 4,
+                      bool reverse = false);
 
 /**
  * @brief Apply a warping effect following the downward local gradient direction
@@ -246,11 +246,11 @@ void warp_directional(Array &array,
  * @image html ex_warp_directional.png
  */
 void warp_directional(Array       &array,
-                      float        angle,
+                      float angle,
                       const Array *p_mask,
-                      float        amount = 0.02f,
-                      int          ir = 4,
-                      bool         reverse = false); ///< @overload
+                      float amount = 0.02f,
+                      int ir = 4,
+                      bool reverse = false);         ///< @overload
 
 /**
  * @brief Apply a warping effect following the downward local gradient direction
@@ -274,9 +274,9 @@ void warp_directional(Array       &array,
  * @image html ex_warp_downslope.png
  */
 void warp_downslope(Array &array,
-                    float  amount = 0.02f,
-                    int    ir = 4,
-                    bool   reverse = false);
+                    float amount = 0.02f,
+                    int ir = 4,
+                    bool reverse = false);
 
 /**
  * @brief Apply a warping effect following the downward local gradient direction
@@ -303,9 +303,9 @@ void warp_downslope(Array &array,
  */
 void warp_downslope(Array       &array,
                     const Array *p_mask,
-                    float        amount = 0.02f,
-                    int          ir = 4,
-                    bool         reverse = false); ///< @overload
+                    float amount = 0.02f,
+                    int ir = 4,
+                    bool reverse = false);         ///< @overload
 
 /**
  * @brief Applies a zoom effect to a 2D array with an adjustable center.
@@ -353,8 +353,8 @@ void warp_downslope(Array       &array,
  * @image html ex_zoom.png
  */
 Array zoom(const Array &array,
-           float        zoom_factor,
-           bool         periodic = false,
+           float zoom_factor,
+           bool periodic = false,
            Vec2<float>  center = {0.5f, 0.5f},
            const Array *p_noise_x = nullptr,
            const Array *p_noise_y = nullptr,

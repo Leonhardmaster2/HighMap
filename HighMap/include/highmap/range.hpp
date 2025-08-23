@@ -117,7 +117,7 @@ void clamp_min_smooth(Array &array, float vmin, float k = 0.2f);
 
 void clamp_min_smooth(Array       &array,
                       const Array &vmin,
-                      float        k = 0.2f); ///< @overload
+                      float k = 0.2f);        ///< @overload
 
 /**
  * @brief Clamp a single value lower than a given bound with a smooth
@@ -163,7 +163,7 @@ void clamp_max_smooth(Array &array, float vmax, float k = 0.2f);
 
 void clamp_max_smooth(Array       &array,
                       const Array &vmax,
-                      float        k = 0.2f); ///< @overload
+                      float k = 0.2f);        ///< @overload
 
 /**
  * @brief Clamp array values within a given interval with a smooth transition.
@@ -264,7 +264,7 @@ Array maximum_smooth(const Array &array1, const Array &array2, float k = 0.2);
  */
 float maximum_smooth(const float a,
                      const float b,
-                     float       k = 0.2); ///< @overload
+                     float k = 0.2);       ///< @overload
 
 /**
  * @brief Return the element-wise minimum of two arrays.
@@ -348,10 +348,10 @@ float minimum_smooth(const float a, const float b, float k); ///< @overload
  * @see            {@link clamp}
  */
 void remap(Array &array,
-           float  vmin,
-           float  vmax,
-           float  from_min,
-           float  from_max);
+           float vmin,
+           float vmax,
+           float from_min,
+           float from_max);
 
 /**
  * @brief Remap array elements from a starting range to a target range (default

@@ -52,10 +52,10 @@ Graph generate_network_alpha_model(const std::vector<float> &xc,
                                    const std::vector<float> &size,
                                    Vec4<float>               bbox,
                                    const Array              &z,
-                                   uint                      seed,
-                                   float                     alpha = 0.7f,
-                                   int          n_dummy_nodes = 2500,
-                                   float        dz_weight = 1.f,
+                                   uint seed,
+                                   float alpha = 0.7f,
+                                   int n_dummy_nodes = 2500,
+                                   float dz_weight = 1.f,
                                    const Array *p_weight = nullptr);
 
 } // namespace hmap

@@ -292,13 +292,13 @@ Array normal_map_to_heightmap(const Tensor &nmap);
  * @image html ex_phase_field.png
  */
 Array phase_field(const Array &array,
-                  float        kw,
-                  int          width,
-                  uint         seed,
-                  float        noise_amp = 0.f,
-                  int          prefilter_ir = -1,
-                  float        density_factor = 1.f,
-                  bool         rotate90 = false,
+                  float kw,
+                  int width,
+                  uint seed,
+                  float noise_amp = 0.f,
+                  int prefilter_ir = -1,
+                  float density_factor = 1.f,
+                  bool rotate90 = false,
                   Array       *p_gnoise_x = nullptr,
                   Array       *p_gnoise_y = nullptr);
 

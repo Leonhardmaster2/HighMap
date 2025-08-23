@@ -34,8 +34,8 @@ namespace hmap
  * @image html ex_scan_mask.png
  */
 Array scan_mask(const Array &array,
-                float        contrast = 0.5f,
-                float        brightness = 0.5f);
+                float contrast = 0.5f,
+                float brightness = 0.5f);
 
 /**
  * @brief Return angle selection for a given angle and a tolerance half-width on
@@ -103,8 +103,8 @@ Array select_cavities(const Array &array, int ir, bool concave = true);
  */
 Array select_elevation_slope(const Array &array, float gradient_scale);
 Array select_elevation_slope(const Array &array,
-                             float        gradient_scale,
-                             float        vmax); ///< @overload
+                             float gradient_scale,
+                             float vmax);        ///< @overload
 
 /**
  * @brief Return an array with elements equal to 1 where input elements are
@@ -156,8 +156,8 @@ Array select_gradient_binary(const Array &array, float talus_center);
  * @return              Array Output array.
  */
 Array select_gradient_exp(const Array &array,
-                          float        talus_center,
-                          float        talus_sigma);
+                          float talus_center,
+                          float talus_sigma);
 
 /**
  * @brief Return an array weighted (square inverse) by the gradient norm of the
@@ -169,8 +169,8 @@ Array select_gradient_exp(const Array &array,
  * @return              Array Output array.
  */
 Array select_gradient_inv(const Array &array,
-                          float        talus_center,
-                          float        talus_sigma);
+                          float talus_center,
+                          float talus_sigma);
 
 /**
  * @brief Return an array with elements equal to 1 where input elements are
@@ -321,11 +321,11 @@ void select_multiband3(const Array &array,
                        Array       &band_low,
                        Array       &band_mid,
                        Array       &band_high,
-                       float        ratio1,
-                       float        ratio2,
-                       float        overlap,
-                       float        vmin,
-                       float        vmax);
+                       float ratio1,
+                       float ratio2,
+                       float overlap,
+                       float vmin,
+                       float vmax);
 
 /**
  * @brief Splits the input array into three bands (low, mid, and high) based on
@@ -356,9 +356,9 @@ void select_multiband3(const Array &array,
                        Array       &band_low,
                        Array       &band_mid,
                        Array       &band_high,
-                       float        ratio1,
-                       float        ratio2,
-                       float        overlap);
+                       float ratio1,
+                       float ratio2,
+                       float overlap);
 
 /**
  * @brief Return an array filled with non-zero values where the input is in the
@@ -418,9 +418,9 @@ Array select_transitions(const Array &array1,
                          const Array &array_blend);
 
 Array select_valley(const Array &z,
-                    int          ir,
-                    bool         zero_at_borders = true,
-                    bool         ridge_select = false);
+                    int ir,
+                    bool zero_at_borders = true,
+                    bool ridge_select = false);
 
 } // namespace hmap
 
@@ -429,8 +429,8 @@ namespace hmap::gpu
 
 /*! @brief See hmap::select_valley */
 Array select_valley(const Array &z,
-                    int          ir,
-                    bool         zero_at_borders = true,
-                    bool         ridge_select = false);
+                    int ir,
+                    bool zero_at_borders = true,
+                    bool ridge_select = false);
 
 } // namespace hmap::gpu

@@ -27,9 +27,9 @@ namespace hmap
  */
 enum DistanceTransformType : int
 {
-  DT_EXACT,     ///< Exact distance transform.
-  DT_APPROX,    ///< Approximate distance transform.
-  DT_MANHATTAN, ///< Manhattan distance transform.
+	DT_EXACT, ///< Exact distance transform.
+	DT_APPROX, ///< Approximate distance transform.
+	DT_MANHATTAN, ///< Manhattan distance transform.
 };
 
 /**
@@ -99,7 +99,7 @@ Array dilation(const Array &array, int ir);
  * @image html ex_distance_transform2.png
  */
 Array distance_transform(const Array &array,
-                         bool         return_squared_distance = false);
+                         bool return_squared_distance = false);
 
 /**
  * @brief Calculates an approximate distance transform of the input array.
@@ -120,7 +120,7 @@ Array distance_transform(const Array &array,
  * @image html ex_distance_transform2.png
  */
 Array distance_transform_approx(const Array &array,
-                                bool         return_squared_distance = false);
+                                bool return_squared_distance = false);
 
 /**
  * @brief Calculates the Manhattan distance transform of an array.
@@ -174,10 +174,10 @@ Array erosion(const Array &array, int ir);
  * @image html ex_flood_fill.png
  */
 void flood_fill(Array &array,
-                int    i,
-                int    j,
-                float  fill_value = 1.f,
-                float  background_value = 0.f);
+                int i,
+                int j,
+                float fill_value = 1.f,
+                float background_value = 0.f);
 
 /**
  * @brief Apply a morphological black hat algorithm to the input array using a
@@ -277,9 +277,9 @@ Array opening(const Array &array, int ir);
  * @image html ex_skeleton.png
  */
 Array relative_distance_from_skeleton(const Array &array,
-                                      int          ir_search,
-                                      bool         zero_at_borders = true,
-                                      int          ir_erosion = 1);
+                                      int ir_search,
+                                      bool zero_at_borders = true,
+                                      int ir_erosion = 1);
 
 /**
  * @brief Computes the skeleton of a binary image using the Zhang-Suen
@@ -337,9 +337,9 @@ Array opening(const Array &array, int ir);
 
 /*! @brief See hmap::relative_distance_from_skeleton */
 Array relative_distance_from_skeleton(const Array &array,
-                                      int          ir_search,
-                                      bool         zero_at_borders = true,
-                                      int          ir_erosion = 1);
+                                      int ir_search,
+                                      bool zero_at_borders = true,
+                                      int ir_erosion = 1);
 
 /*! @brief See hmap::skeleton */
 Array skeleton(const Array &array, bool zero_at_borders = true);

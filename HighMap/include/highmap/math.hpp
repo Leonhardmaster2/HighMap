@@ -41,10 +41,10 @@ namespace hmap
  */
 enum DistanceFunction : int
 {
-  CHEBYSHEV, ///< Chebyshev
-  EUCLIDIAN, ///< Euclidian
-  EUCLISHEV, ///< Euclidian and Chebyshev mix
-  MANHATTAN, ///< Manhattan
+	CHEBYSHEV, ///< Chebyshev
+	EUCLIDIAN, ///< Euclidian
+	EUCLISHEV, ///< Euclidian and Chebyshev mix
+	MANHATTAN, ///< Manhattan
 };
 
 /**
@@ -52,11 +52,11 @@ enum DistanceFunction : int
  */
 enum PhasorProfile : int
 {
-  COSINE_BULKY,
-  COSINE_PEAKY,
-  COSINE_SQUARE,
-  COSINE_STD,
-  TRIANGLE,
+	COSINE_BULKY,
+	COSINE_PEAKY,
+	COSINE_SQUARE,
+	COSINE_STD,
+	TRIANGLE,
 };
 
 /**
@@ -118,10 +118,10 @@ float almost_unit_identity_c2(float x);
  */
 inline float approx_hypot(float a, float b)
 {
-  a = std::abs(a);
-  b = std::abs(b);
-  if (a > b) std::swap(a, b);
-  return 0.414f * a + b;
+	a = std::abs(a);
+	b = std::abs(b);
+	if (a > b) std::swap(a, b);
+	return 0.414f * a + b;
 }
 
 /**
@@ -132,14 +132,14 @@ inline float approx_hypot(float a, float b)
  */
 inline float approx_rsqrt(float a)
 {
-  union
-  {
-    float    f;
-    uint32_t i;
-  } conv = {.f = a};
-  conv.i = 0x5f3759df - (conv.i >> 1);
-  conv.f *= 1.5F - (a * 0.5F * conv.f * conv.f);
-  return conv.f;
+	union
+	{
+		float f;
+		uint32_t i;
+	} conv = {.f = a};
+	conv.i = 0x5f3759df - (conv.i >> 1);
+	conv.f *= 1.5F - (a * 0.5F * conv.f * conv.f);
+	return conv.f;
 }
 
 /**
@@ -205,7 +205,7 @@ Array gaussian_decay(const Array &array, float sigma);
  * @return          Distance function.
  */
 std::function<float(float, float)> get_distance_function(
-    DistanceFunction dist_fct);
+	DistanceFunction dist_fct);
 
 /**
  * @brief Generates a function representing a phasor profile based on the
@@ -231,9 +231,9 @@ std::function<float(float, float)> get_distance_function(
  * sample points within [-π, π].
  */
 std::function<float(float)> get_phasor_profile_function(
-    const PhasorProfile &phasor_profile,
-    float                delta,
-    float               *p_profile_avg = nullptr);
+	const PhasorProfile &phasor_profile,
+	float delta,
+	float               *p_profile_avg = nullptr);
 
 /**
  * @brief Computes the highest power of 2 less than or equal to the given
@@ -304,7 +304,7 @@ Array pow(const Array &array, float exp);
 void radial_displacement_to_xy(const Array &dr,
                                Array       &dx,
                                Array       &dy,
-                               float        smoothing = 1.f,
+                               float smoothing = 1.f,
                                Vec2<float>  center = {0.5f, 0.5f},
                                Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
 

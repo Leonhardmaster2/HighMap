@@ -29,10 +29,10 @@ namespace hmap
  */
 enum PointSamplingMethod : int
 {
-  RND_RANDOM,     ///< Purely random uniform sampling.
-  RND_HALTON,     ///< Low-discrepancy Halton sequence sampling.
-  RND_HAMMERSLEY, ///< Low-discrepancy Hammersley sequence sampling.
-  RND_LHS,        ///< Latin Hypercube Sampling.
+	RND_RANDOM, ///< Purely random uniform sampling.
+	RND_HALTON, ///< Low-discrepancy Halton sequence sampling.
+	RND_HAMMERSLEY, ///< Low-discrepancy Hammersley sequence sampling.
+	RND_LHS,  ///< Latin Hypercube Sampling.
 };
 
 /**
@@ -42,10 +42,10 @@ enum PointSamplingMethod : int
  * corresponding PointSamplingMethod values.
  */
 static std::map<std::string, int> point_sampling_method_as_string = {
-    {"Random", PointSamplingMethod::RND_RANDOM},
-    {"Halton sequence", PointSamplingMethod::RND_HALTON},
-    {"Hammersley sequence", PointSamplingMethod::RND_HAMMERSLEY},
-    {"Latin Hypercube Sampling", PointSamplingMethod::RND_LHS},
+	{"Random", PointSamplingMethod::RND_RANDOM},
+	{"Halton sequence", PointSamplingMethod::RND_HALTON},
+	{"Hammersley sequence", PointSamplingMethod::RND_HAMMERSLEY},
+	{"Latin Hypercube Sampling", PointSamplingMethod::RND_LHS},
 };
 
 /**
@@ -62,7 +62,7 @@ static std::map<std::string, int> point_sampling_method_as_string = {
  *         - Second pair: y-axis range (min, max)
  */
 std::array<std::pair<float, float>, 2> bbox_to_ranges2d(
-    const Vec4<float> &bbox);
+	const Vec4<float> &bbox);
 
 /**
  * @brief Expand grid by translating and copying the values of the current
@@ -90,7 +90,7 @@ void expand_points_at_domain_boundaries(std::vector<float> &x,
                                         std::vector<float> &y,
                                         std::vector<float> &value,
                                         Vec4<float> bbox = {0.f, 1.f, 0.f, 1.f},
-                                        float       boundary_value = 0.f);
+                                        float boundary_value = 0.f);
 
 /**
  * @brief Expand the grid by adding four points at the corner of the bounding
@@ -105,7 +105,7 @@ void expand_points_domain_corners(std::vector<float> &x,
                                   std::vector<float> &y,
                                   std::vector<float> &value,
                                   Vec4<float> bbox = {0.f, 1.f, 0.f, 1.f},
-                                  float       corner_value = 0.f);
+                                  float corner_value = 0.f);
 
 /**
  * @brief Create a continuous 2D function from a sampled array.
@@ -150,10 +150,10 @@ make_pointwise_function_from_array(const Array &array, const Vec4<float> &bbox);
  * @return        A pair of float vectors {x_coords, y_coords}.
  */
 std::array<std::vector<float>, 2> random_points(
-    size_t                     count,
-    uint                       seed,
-    const PointSamplingMethod &method = PointSamplingMethod::RND_RANDOM,
-    const Vec4<float>         &bbox = {0.f, 1.f, 0.f, 1.f});
+	size_t count,
+	uint seed,
+	const PointSamplingMethod &method = PointSamplingMethod::RND_RANDOM,
+	const Vec4<float>         &bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief Generates random 2D points within a bounding box based on a density
@@ -170,10 +170,10 @@ std::array<std::vector<float>, 2> random_points(
  * @return         A pair of float vectors {x_coords, y_coords}.
  */
 std::array<std::vector<float>, 2> random_points_density(
-    size_t             count,
-    const Array       &density,
-    uint               seed,
-    const Vec4<float> &bbox = {0.f, 1.f, 0.f, 1.f});
+	size_t count,
+	const Array       &density,
+	uint seed,
+	const Vec4<float> &bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief Generates random 2D points with a minimum separation distance.
@@ -189,9 +189,9 @@ std::array<std::vector<float>, 2> random_points_density(
  * @return          A pair of float vectors {x_coords, y_coords}.
  */
 std::array<std::vector<float>, 2> random_points_distance(
-    float              min_dist,
-    uint               seed,
-    const Vec4<float> &bbox = {0.f, 1.f, 0.f, 1.f});
+	float min_dist,
+	uint seed,
+	const Vec4<float> &bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief Generates random 2D points with distance constraints and a density
@@ -210,11 +210,11 @@ std::array<std::vector<float>, 2> random_points_distance(
  * @return          A pair of float vectors {x_coords, y_coords}.
  */
 std::array<std::vector<float>, 2> random_points_distance(
-    float              min_dist,
-    float              max_dist,
-    const Array       &density,
-    uint               seed,
-    const Vec4<float> &bbox = {0.f, 1.f, 0.f, 1.f});
+	float min_dist,
+	float max_dist,
+	const Array       &density,
+	uint seed,
+	const Vec4<float> &bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief Generates random 2D points with distances drawn from a power-law
@@ -233,11 +233,11 @@ std::array<std::vector<float>, 2> random_points_distance(
  * @return          A pair of float vectors {x_coords, y_coords}.
  */
 std::array<std::vector<float>, 2> random_points_distance_power_law(
-    float              dist_min,
-    float              dist_max,
-    float              alpha,
-    uint               seed,
-    const Vec4<float> &bbox = {0.f, 1.f, 0.f, 1.f});
+	float dist_min,
+	float dist_max,
+	float alpha,
+	uint seed,
+	const Vec4<float> &bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief Generates random 2D points with distances drawn from a Weibull
@@ -256,11 +256,11 @@ std::array<std::vector<float>, 2> random_points_distance_power_law(
  * @return          A pair of float vectors {x_coords, y_coords}.
  */
 std::array<std::vector<float>, 2> random_points_distance_weibull(
-    float              dist_min,
-    float              lambda,
-    float              k,
-    uint               seed,
-    const Vec4<float> &bbox = {0.f, 1.f, 0.f, 1.f});
+	float dist_min,
+	float lambda,
+	float k,
+	uint seed,
+	const Vec4<float> &bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief Generates jittered grid-based 2D points.
@@ -278,11 +278,11 @@ std::array<std::vector<float>, 2> random_points_distance_weibull(
  * @return               A pair of float vectors {x_coords, y_coords}.
  */
 std::array<std::vector<float>, 2> random_points_jittered(
-    size_t                   count,
-    const hmap::Vec2<float> &jitter_amount,
-    const hmap::Vec2<float> &stagger_ratio,
-    uint                     seed,
-    const Vec4<float>       &bbox = {0.f, 1.f, 0.f, 1.f});
+	size_t count,
+	const hmap::Vec2<float> &jitter_amount,
+	const hmap::Vec2<float> &stagger_ratio,
+	uint seed,
+	const Vec4<float>       &bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief Remove grid points that are outside a given bounding box.

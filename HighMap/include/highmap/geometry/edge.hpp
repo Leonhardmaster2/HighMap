@@ -40,45 +40,45 @@ namespace hmap
 class Edge
 {
 public:
-  Point p1; ///< The start point of the edge.
-  Point p2; ///< The end point of the edge.
-  float w;  ///< A weight associated with the edge.
+Point p1;   ///< The start point of the edge.
+Point p2;   ///< The end point of the edge.
+float w;    ///< A weight associated with the edge.
 
-  /**
-   * @brief Constructs an `Edge` object with specified start and end points and
-   * a weight.
-   *
-   * @param p1 The start point of the edge.
-   * @param p2 The end point of the edge.
-   * @param w  The weight associated with the edge.
-   */
-  Edge(Point p1, Point p2, float w) : p1(p1), p2(p2), w(w)
-  {
-  }
+/**
+ * @brief Constructs an `Edge` object with specified start and end points and a
+ * weight.
+ *
+ * @param p1 The start point of the edge.
+ * @param p2 The end point of the edge.
+ * @param w  The weight associated with the edge.
+ */
+Edge(Point p1, Point p2, float w) : p1(p1), p2(p2), w(w)
+{
+}
 
-  /**
-   * @brief Constructs an `Edge` object with specified start and end points and
-   * a default weight of 0.
-   *
-   * @param p1 The start point of the edge.
-   * @param p2 The end point of the edge.
-   */
-  Edge(Point p1, Point p2) : p1(p1), p2(p2), w(0)
-  {
-  }
+/**
+ * @brief Constructs an `Edge` object with specified start and end points and a
+ * default weight of 0.
+ *
+ * @param p1 The start point of the edge.
+ * @param p2 The end point of the edge.
+ */
+Edge(Point p1, Point p2) : p1(p1), p2(p2), w(0)
+{
+}
 
-  /**
-   * @brief Computes the length of the edge.
-   *
-   * This function calculates the distance between the start and end points of
-   * the edge.
-   *
-   * @return The length of the edge.
-   */
-  float length()
-  {
-    return distance(p1, p2);
-  }
+/**
+ * @brief Computes the length of the edge.
+ *
+ * This function calculates the distance between the start and end points of the
+ * edge.
+ *
+ * @return The length of the edge.
+ */
+float length()
+{
+	return distance(p1, p2);
+}
 };
 
 } // namespace hmap

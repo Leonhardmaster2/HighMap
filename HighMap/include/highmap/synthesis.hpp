@@ -57,8 +57,8 @@ namespace hmap
  */
 Array non_parametric_sampling(const Array    &array,
                               hmap::Vec2<int> patch_shape,
-                              uint            seed,
-                              float           error_threshold = 0.1f);
+                              uint seed,
+                              float error_threshold = 0.1f);
 
 /**
  * @brief Synthesize a new heightmap by stitching together small patches from
@@ -96,13 +96,13 @@ Array non_parametric_sampling(const Array    &array,
 Array quilting(const std::vector<const Array *> &p_arrays,
                hmap::Vec2<int>                   patch_base_shape,
                hmap::Vec2<int>                   tiling,
-               float                             overlap,
-               uint                              seed,
+               float overlap,
+               uint seed,
                std::vector<Array *>              secondary_arrays = {},
-               bool                              patch_flip = true,
-               bool                              patch_rotate = true,
-               bool                              patch_transpose = true,
-               float                             filter_width_ratio = 0.25f);
+               bool patch_flip = true,
+               bool patch_rotate = true,
+               bool patch_transpose = true,
+               float filter_width_ratio = 0.25f);
 
 /**
  * @brief Synthesize a new heightmap by stitching together small patches from a
@@ -138,11 +138,11 @@ Array quilting(const std::vector<const Array *> &p_arrays,
  */
 Array quilting_blend(const std::vector<const Array *> &p_arrays,
                      hmap::Vec2<int>                   patch_base_shape,
-                     float                             overlap,
-                     uint                              seed,
-                     bool                              patch_flip = true,
-                     bool                              patch_rotate = true,
-                     bool                              patch_transpose = true,
+                     float overlap,
+                     uint seed,
+                     bool patch_flip = true,
+                     bool patch_rotate = true,
+                     bool patch_transpose = true,
                      float filter_width_ratio = 0.25f);
 
 /**
@@ -183,16 +183,16 @@ Array quilting_blend(const std::vector<const Array *> &p_arrays,
  * @image html ex_quilting4.png
  */
 Array quilting_expand(const Array         &array,
-                      float                expansion_ratio,
+                      float expansion_ratio,
                       hmap::Vec2<int>      patch_base_shape,
-                      float                overlap,
-                      uint                 seed,
+                      float overlap,
+                      uint seed,
                       std::vector<Array *> secondary_arrays = {},
-                      bool                 keep_input_shape = false,
-                      bool                 patch_flip = true,
-                      bool                 patch_rotate = true,
-                      bool                 patch_transpose = true,
-                      float                filter_width_ratio = 0.25f);
+                      bool keep_input_shape = false,
+                      bool patch_flip = true,
+                      bool patch_rotate = true,
+                      bool patch_transpose = true,
+                      float filter_width_ratio = 0.25f);
 
 /**
  * @brief Synthesize a new heightmap by reshuffling patches of the input
@@ -229,12 +229,12 @@ Array quilting_expand(const Array         &array,
  */
 Array quilting_shuffle(const Array         &array,
                        hmap::Vec2<int>      patch_base_shape,
-                       float                overlap,
-                       uint                 seed,
+                       float overlap,
+                       uint seed,
                        std::vector<Array *> secondary_arrays = {},
-                       bool                 patch_flip = true,
-                       bool                 patch_rotate = true,
-                       bool                 patch_transpose = true,
-                       float                filter_width_ratio = 0.25f);
+                       bool patch_flip = true,
+                       bool patch_rotate = true,
+                       bool patch_transpose = true,
+                       float filter_width_ratio = 0.25f);
 
 } // namespace hmap

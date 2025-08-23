@@ -36,134 +36,134 @@ namespace hmap
 class Tensor
 {
 public:
-  /**
-   * @brief Shape of the tensor in 3D space.
-   */
-  Vec3<int> shape;
+/**
+ * @brief Shape of the tensor in 3D space.
+ */
+Vec3<int> shape;
 
-  /**
-   * @brief Flattened vector containing the tensor's elements.
-   */
-  std::vector<float> vector;
+/**
+ * @brief Flattened vector containing the tensor's elements.
+ */
+std::vector<float> vector;
 
-  /**
-   * @brief Construct a new Tensor object.
-   *
-   * @param shape 3D shape of the tensor.
-   */
-  Tensor(Vec3<int> shape);
+/**
+ * @brief Construct a new Tensor object.
+ *
+ * @param shape 3D shape of the tensor.
+ */
+Tensor(Vec3<int> shape);
 
-  /**
-   * @brief Construct a new Tensor object.
-   *
-   * @param shape_xy 2D shape (x, y) of the tensor.
-   * @param shape_z  Size along the z-axis.
-   */
-  Tensor(Vec2<int> shape_xy, int shape_z);
+/**
+ * @brief Construct a new Tensor object.
+ *
+ * @param shape_xy 2D shape (x, y) of the tensor.
+ * @param shape_z  Size along the z-axis.
+ */
+Tensor(Vec2<int> shape_xy, int shape_z);
 
-  /**
-   * @brief Constructs a new Tensor object from a file.
-   *
-   * @param fname The name of the file to load the tensor from.
-   */
-  Tensor(const std::string &fname);
+/**
+ * @brief Constructs a new Tensor object from a file.
+ *
+ * @param fname The name of the file to load the tensor from.
+ */
+Tensor(const std::string &fname);
 
-  /**
-   * @brief Access an element of the tensor.
-   *
-   * @param  i Index along the x-axis.
-   * @param  j Index along the y-axis.
-   * @param  k Index along the z-axis.
-   * @return   float& Reference to the element at position (i, j, k).
-   */
-  float &operator()(int i, int j, int k);
+/**
+ * @brief Access an element of the tensor.
+ *
+ * @param  i Index along the x-axis.
+ * @param  j Index along the y-axis.
+ * @param  k Index along the z-axis.
+ * @return   float& Reference to the element at position (i, j, k).
+ */
+float &operator()(int i, int j, int k);
 
-  /**
-   * @brief Access an element of the tensor (const version).
-   *
-   * @param  i Index along the x-axis.
-   * @param  j Index along the y-axis.
-   * @param  k Index along the z-axis.
-   * @return   const float& Reference to the element at position (i, j, k).
-   */
-  const float &operator()(int i, int j, int k) const;
+/**
+ * @brief Access an element of the tensor (const version).
+ *
+ * @param  i Index along the x-axis.
+ * @param  j Index along the y-axis.
+ * @param  k Index along the z-axis.
+ * @return   const float& Reference to the element at position (i, j, k).
+ */
+const float &operator()(int i, int j, int k) const;
 
-  /**
-   * @brief Get a 2D slice of the tensor along the z-axis.
-   *
-   * @param  k Index along the z-axis.
-   * @return   An Array representing the 2D slice of the tensor at the specified
-   *           z-axis index.
-   */
-  Array get_slice(int k) const;
+/**
+ * @brief Get a 2D slice of the tensor along the z-axis.
+ *
+ * @param  k Index along the z-axis.
+ * @return   An Array representing the 2D slice of the tensor at the specified
+ *           z-axis index.
+ */
+Array get_slice(int k) const;
 
-  /**
-   * @brief Find the maximum value in the tensor.
-   *
-   * @return float Maximum value in the tensor.
-   */
-  float max() const;
+/**
+ * @brief Find the maximum value in the tensor.
+ *
+ * @return float Maximum value in the tensor.
+ */
+float max() const;
 
-  /**
-   * @brief Find the minimum value in the tensor.
-   *
-   * @return float Minimum value in the tensor.
-   */
-  float min() const;
+/**
+ * @brief Find the minimum value in the tensor.
+ *
+ * @return float Minimum value in the tensor.
+ */
+float min() const;
 
-  /**
-   * @brief Remap the tensor values to a new range.
-   *
-   * @param vmin Minimum value of the new range (default is 0.0).
-   * @param vmax Maximum value of the new range (default is 1.0).
-   */
-  void remap(float vmin = 0.f, float vmax = 1.f);
+/**
+ * @brief Remap the tensor values to a new range.
+ *
+ * @param vmin Minimum value of the new range (default is 0.0).
+ * @param vmax Maximum value of the new range (default is 1.0).
+ */
+void remap(float vmin = 0.f, float vmax = 1.f);
 
-  /**
-   * @brief Resamples the tensor to a new 2D shape (x, y), shape along z is not
-   * changed.
-   *
-   * @param  new_shape_xy A 2D vector representing the new shape (x, y) of the
-   *                      tensor.
-   * @return              A new Tensor object with the resampled shape.
-   */
-  Tensor resample_to_shape_xy(Vec2<int> new_shape_xy);
+/**
+ * @brief Resamples the tensor to a new 2D shape (x, y), shape along z is not
+ * changed.
+ *
+ * @param  new_shape_xy A 2D vector representing the new shape (x, y) of the
+ *                      tensor.
+ * @return              A new Tensor object with the resampled shape.
+ */
+Tensor resample_to_shape_xy(Vec2<int> new_shape_xy);
 
-  /**
-   * @brief Set a 2D slice of the tensor along the z-axis.
-   *
-   * @param k     Index along the z-axis.
-   * @param slice The 2D array (slice) to set.
-   */
-  void set_slice(int k, const Array &slice);
+/**
+ * @brief Set a 2D slice of the tensor along the z-axis.
+ *
+ * @param k     Index along the z-axis.
+ * @param slice The 2D array (slice) to set.
+ */
+void set_slice(int k, const Array &slice);
 
-  /**
-   * @brief Convert the tensor to an OpenCV matrix.
-   *
-   * @return cv::Mat OpenCV matrix representing the tensor.
-   */
-  cv::Mat to_cv_mat();
+/**
+ * @brief Convert the tensor to an OpenCV matrix.
+ *
+ * @return cv::Mat OpenCV matrix representing the tensor.
+ */
+cv::Mat to_cv_mat();
 
-  /**
-   * @brief Convert the tensor to an 8-bit image represented as a vector.
-   *
-   * @return std::vector<uint8_t> Vector containing the 8-bit image data.
-   */
-  std::vector<uint8_t> to_img_8bit();
+/**
+ * @brief Convert the tensor to an 8-bit image represented as a vector.
+ *
+ * @return std::vector<uint8_t> Vector containing the 8-bit image data.
+ */
+std::vector<uint8_t> to_img_8bit();
 
-  /**
-   * @brief Saves the Tensor as a PNG image file.
-   *
-   * This function converts the Tensor into a `cv::Mat` object and then saves it
-   * as a PNG image file. The image can be saved in either 8-bit or 16-bit
-   * depth, based on the `depth` parameter. The image is rotated 90 degrees
-   * counterclockwise before saving.
-   *
-   * @param fname The filename for the output PNG image, including the path.
-   * @param depth The bit depth of the output image. The default is 8-bit
-   *              (`CV_8U`). Set to `CV_16U` for 16-bit output.
-   */
-  void to_png(const std::string &fname, int depth = CV_8U);
+/**
+ * @brief Saves the Tensor as a PNG image file.
+ *
+ * This function converts the Tensor into a `cv::Mat` object and then saves it
+ * as a PNG image file. The image can be saved in either 8-bit or 16-bit depth,
+ * based on the `depth` parameter. The image is rotated 90 degrees
+ * counterclockwise before saving.
+ *
+ * @param fname The filename for the output PNG image, including the path.
+ * @param depth The bit depth of the output image. The default is 8-bit
+ *              (`CV_8U`). Set to `CV_16U` for 16-bit output.
+ */
+void to_png(const std::string &fname, int depth = CV_8U);
 };
 
 } // namespace hmap

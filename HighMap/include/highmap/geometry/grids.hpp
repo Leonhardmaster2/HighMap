@@ -40,9 +40,9 @@ namespace hmap
  * @return         The computed pixel index.
  */
 int convert_length_to_pixel(float x,
-                            int   nx,
-                            bool  lim_inf = true,
-                            bool  lim_sup = false,
+                            int nx,
+                            bool lim_inf = true,
+                            bool lim_sup = false,
                             float scale = 1.f);
 
 /**
@@ -57,6 +57,6 @@ void grid_xy_vector(std::vector<float> &x,
                     std::vector<float> &y,
                     Vec2<int>           shape,
                     Vec4<float>         bbox = {0.f, 1.f, 0.f, 1.f},
-                    bool                endpoint = false);
+                    bool endpoint = false);
 
 } // namespace hmap

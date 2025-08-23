@@ -143,7 +143,7 @@ Array blend_soft(const Array &array1, const Array &array2);
  */
 Array mixer(const Array                      &t,
             const std::vector<const Array *> &arrays,
-            float                             gain_factor = 1.f);
+            float gain_factor = 1.f);
 
 } // namespace hmap
 
@@ -178,7 +178,7 @@ Array blend_gradients(const Array &array1, const Array &array2, int ir = 4);
  */
 Array blend_poisson_bf(const Array &array1,
                        const Array &array2,
-                       const int    iterations = 500,
+                       const int iterations = 500,
                        const Array *p_mask = nullptr);
 
 } // namespace hmap::gpu

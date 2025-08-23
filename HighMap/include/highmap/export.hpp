@@ -37,8 +37,8 @@ enum Cmap : int; // highmap/colormap.hpp
  */
 enum MeshType : int
 {
-  TRI_OPTIMIZED, ///< Triangles with optimized Delaunay triangulation
-  TRI,           ///< Triangle elements
+	TRI_OPTIMIZED, ///< Triangles with optimized Delaunay triangulation
+	TRI,     ///< Triangle elements
 };
 
 /**
@@ -50,8 +50,8 @@ enum MeshType : int
  * logging the mesh type in a human-friendly format.
  */
 static std::map<MeshType, std::string> mesh_type_as_string = {
-    {TRI_OPTIMIZED, "triangles (optimized)"},
-    {TRI, "triangles"}};
+	{TRI_OPTIMIZED, "triangles (optimized)"},
+	{TRI, "triangles"}};
 
 /**
  * @brief Enumeration for asset export formats supported by Assimp.
@@ -62,25 +62,25 @@ static std::map<MeshType, std::string> mesh_type_as_string = {
  */
 enum AssetExportFormat : int
 {
-  _3DS,    ///< Autodesk 3DS (legacy) - *.3ds
-  _3MF,    ///< The 3MF-File-Format - *.3mf
-  ASSBIN,  ///< Assimp Binary - *.assbin
-  ASSXML,  ///< Assxml Document - *.assxml
-  FXBA,    ///< Autodesk FBX (ascii) - *.fbx
-  FBX,     ///< Autodesk FBX (binary) - *.fbx
-  COLLADA, ///< COLLADA - Digital Asset Exchange Schema - *.dae
-  X3D,     ///< Extensible 3D - *.x3d
-  GLTF,    ///< GL Transmission Format - *.gltf
-  GLB,     ///< GL Transmission Format (binary) - *.glb
-  GTLF2,   ///< GL Transmission Format v. 2 - *.gltf
-  GLB2,    ///< GL Transmission Format v. 2 (binary) - *.glb
-  PLY,     ///< Stanford Polygon Library - *.ply
-  PLYB,    ///< Stanford Polygon Library (binary) - *.ply
-  STP,     ///< Step Files - *.stp
-  STL,     ///< Stereolithography - *.stl
-  STLB,    ///< Stereolithography (binary) - *.stl
-  OBJ,     ///< Wavefront OBJ format - *.obj
-  OBJNOMTL ///< Wavefront OBJ format without material file - *.obj
+	_3DS, ///< Autodesk 3DS (legacy) - *.3ds
+	_3MF, ///< The 3MF-File-Format - *.3mf
+	ASSBIN, ///< Assimp Binary - *.assbin
+	ASSXML, ///< Assxml Document - *.assxml
+	FXBA, ///< Autodesk FBX (ascii) - *.fbx
+	FBX, ///< Autodesk FBX (binary) - *.fbx
+	COLLADA, ///< COLLADA - Digital Asset Exchange Schema - *.dae
+	X3D, ///< Extensible 3D - *.x3d
+	GLTF, ///< GL Transmission Format - *.gltf
+	GLB, ///< GL Transmission Format (binary) - *.glb
+	GTLF2, ///< GL Transmission Format v. 2 - *.gltf
+	GLB2, ///< GL Transmission Format v. 2 (binary) - *.glb
+	PLY, ///< Stanford Polygon Library - *.ply
+	PLYB, ///< Stanford Polygon Library (binary) - *.ply
+	STP, ///< Step Files - *.stp
+	STL, ///< Stereolithography - *.stl
+	STLB, ///< Stereolithography (binary) - *.stl
+	OBJ, ///< Wavefront OBJ format - *.obj
+	OBJNOMTL ///< Wavefront OBJ format without material file - *.obj
 };
 
 /**
@@ -157,12 +157,12 @@ asset_export_format_as_string = {
  */
 bool export_asset(const std::string &fname,
                   const Array       &array,
-                  MeshType           mesh_type = MeshType::TRI,
-                  AssetExportFormat  export_format = AssetExportFormat::GLB2,
-                  float              elevation_scaling = 0.2f,
+                  MeshType mesh_type = MeshType::TRI,
+                  AssetExportFormat export_format = AssetExportFormat::GLB2,
+                  float elevation_scaling = 0.2f,
                   const std::string &texture_fname = "",
                   const std::string &normal_map_fname = "",
-                  float              max_error = 5e-4f);
+                  float max_error = 5e-4f);
 
 /**
  * @brief Export a 2D array as an ASCII-art string representation.
@@ -229,11 +229,11 @@ std::string export_as_ascii(const Array      &array,
  */
 void export_as_cubemap(const std::string &fname,
                        const Array       &z,
-                       int                cubemap_resolution = 128,
-                       float              overlap = 0.25f,
-                       int                ir = 16,
-                       Cmap               cmap = Cmap::GRAY,
-                       bool               splitted = false,
+                       int cubemap_resolution = 128,
+                       float overlap = 0.25f,
+                       int ir = 16,
+                       Cmap cmap = Cmap::GRAY,
+                       bool splitted = false,
                        Array             *p_cubemap = nullptr);
 
 /**
@@ -254,8 +254,8 @@ void export_as_cubemap(const std::string &fname,
  */
 void export_banner_png(const std::string        &fname,
                        const std::vector<Array> &arrays,
-                       int                       cmap,
-                       bool                      hillshading = false);
+                       int cmap,
+                       bool hillshading = false);
 
 /**
  * @brief Exports the heightmap normal map as an 8-bit PNG file.
@@ -274,7 +274,7 @@ void export_banner_png(const std::string        &fname,
  */
 void export_normal_map_png(const std::string &fname,
                            const Array       &array,
-                           int                depth = CV_8U);
+                           int depth = CV_8U);
 
 /**
  * @brief Exports four arrays as an RGBA PNG splatmap.
@@ -310,7 +310,7 @@ void export_splatmap_png(const std::string &fname,
                          const Array       *p_g = nullptr,
                          const Array       *p_b = nullptr,
                          const Array       *p_a = nullptr,
-                         int                depth = CV_8U);
+                         int depth = CV_8U);
 
 /**
  * @brief Exports a 2D array as a set of grayscale PNG image tiles.
@@ -348,10 +348,10 @@ void export_tiled(const std::string &fname_radical,
                   const std::string &fname_extension,
                   const Array       &array,
                   const Vec2<int>   &tiling,
-                  int                leading_zeros = 0,
-                  int                depth = CV_8U,
-                  bool               overlapping_edges = false,
-                  bool               reverse_tile_y_indexing = false);
+                  int leading_zeros = 0,
+                  int depth = CV_8U,
+                  bool overlapping_edges = false,
+                  bool reverse_tile_y_indexing = false);
 
 /**
  * @brief Reads an image file and converts it to a 2D array.
@@ -406,7 +406,7 @@ void write_raw_16bit(const std::string &fname, const Array &array);
  * @endcode
  */
 std::filesystem::path add_filename_suffix(
-    const std::filesystem::path &file_path,
-    const std::string           &suffix);
+	const std::filesystem::path &file_path,
+	const std::string           &suffix);
 
 } // namespace hmap

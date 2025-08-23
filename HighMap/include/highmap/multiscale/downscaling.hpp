@@ -54,14 +54,14 @@ namespace hmap
  * @image html ex_downscale_transform.png
  */
 void downscale_transform(Array                        &array,
-                         float                         kc,
+                         float kc,
                          std::function<void(Array &x)> unary_op,
                          bool apply_prefiltering = false);
 
 void downscale_transform_multi(
-    Array                                                 &array,
-    std::vector<float>                                     kc_list,
-    std::function<void(Array &x, const int current_index)> unary_op,
-    bool apply_prefiltering = false);
+	Array                                                 &array,
+	std::vector<float>                                     kc_list,
+	std::function<void(Array &x, const int current_index)> unary_op,
+	bool apply_prefiltering = false);
 
 } // namespace hmap

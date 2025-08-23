@@ -71,7 +71,7 @@ void extrapolate_borders(Array &array, int nbuffer = 1, float sigma = 0.f);
  * @image html ex_falloff.png
  */
 void falloff(Array           &array,
-             float            strength = 1.f,
+             float strength = 1.f,
              DistanceFunction dist_fct = DistanceFunction::EUCLIDIAN,
              const Array     *p_noise = nullptr,
              Vec4<float>      bbox = {0.f, 1.f, 0.f, 1.f});
@@ -114,7 +114,7 @@ void fill_borders(Array &array, int nbuffer); ///< @overload
  */
 Array generate_buffered_array(const Array &array,
                               Vec4<int>    buffers,
-                              bool         zero_padding = false);
+                              bool zero_padding = false);
 
 /**
  * @brief Adjusts the input array to be periodic in both directions by
@@ -286,7 +286,7 @@ void zeroed_borders(Array &array);
  * @image html ex_zeroed_edges.png
  */
 void zeroed_edges(Array           &array,
-                  float            sigma = 1.f,
+                  float sigma = 1.f,
                   DistanceFunction dist_fct = DistanceFunction::EUCLIDIAN,
                   const Array     *p_noise = nullptr,
                   Vec4<float>      bbox = {0.f, 1.f, 0.f, 1.f});

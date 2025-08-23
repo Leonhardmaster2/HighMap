@@ -49,9 +49,9 @@ enum Cmap : int; // highmap/colormap.hpp
  */
 void apply_hillshade(Tensor      &img,
                      const Array &array,
-                     float        vmin = 0.f,
-                     float        vmax = 1.f,
-                     float        exponent = 1.f);
+                     float vmin = 0.f,
+                     float vmax = 1.f,
+                     float exponent = 1.f);
 
 /**
  * @brief Apply hillshading to an 8-bit image.
@@ -73,10 +73,10 @@ void apply_hillshade(Tensor      &img,
  */
 void apply_hillshade(std::vector<uint8_t> &img,
                      const Array          &array,
-                     float                 vmin = 0.f,
-                     float                 vmax = 1.f,
-                     float                 exponent = 1.f,
-                     bool                  is_img_rgba = false);
+                     float vmin = 0.f,
+                     float vmax = 1.f,
+                     float exponent = 1.f,
+                     bool is_img_rgba = false);
 
 /**
  * @brief Apply colorization to an array.
@@ -95,11 +95,11 @@ void apply_hillshade(std::vector<uint8_t> &img,
  * @return             Tensor Colorized Tensor image.
  */
 Tensor colorize(const Array &array,
-                float        vmin,
-                float        vmax,
-                int          cmap,
-                bool         hillshading,
-                bool         reverse = false,
+                float vmin,
+                float vmax,
+                int cmap,
+                bool hillshading,
+                bool reverse = false,
                 const Array *p_noise = nullptr);
 
 /**
