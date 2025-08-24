@@ -60,7 +60,8 @@ void kernel strata(global float *output,
                    const float   ridge_noise_amp,
                    const float   ridge_clamp_vmin,
                    const float   ridge_remap_vmin,
-                   const int     apply_mask,
+                   const int     apply_elevation_mask,
+                   const int     apply_ridge_mask,
                    const float   mask_gamma,
                    const int     has_mask,
                    const float4  bbox)
@@ -119,8 +120,15 @@ void kernel strata(global float *output,
     kz_n *= lacunarity;
   }
 
-  // elevation mask
-  if (apply_mask) val = lerp(val0, val, pow(val0, mask_gamma) * noise_v);
+  // elevation and ridge masks
+  {
+    float t = 1.f;
+
+    if (apply_elevation_mask) t *= pow(val0, mask_gamma);
+    if (apply_ridge_mask) t *= noise_v;
+
+    val = lerp(val0, val, t);
+  }
 
   // input mask
   if (has_mask)
