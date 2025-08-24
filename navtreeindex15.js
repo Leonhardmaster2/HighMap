@@ -86,7 +86,7 @@ var NAVTREEINDEX15 =
 "stitching__helpers_8cpp.html#aa3277a726a81e3c6b4dcbc0d2a86f4d7":[5,0,1,1,24,4,2],
 "stitching__helpers_8cpp.html#ae0a3c73cc23a288fe03bf5ed6ac73c3d":[5,0,1,1,24,4,1],
 "strata__gpu_8cpp.html":[5,0,1,1,10,18],
-"strata__gpu_8cpp.html#a683c02f790618b5b7c696bcdf016b23d":[5,0,1,1,10,18,0],
+"strata__gpu_8cpp.html#ac31470bf62b9f0128352074f76fdc115":[5,0,1,1,10,18,0],
 "stratify_8cpp.html":[5,0,1,1,10,19],
 "stratify_8cpp.html#a06a4f7bbf99b83632ceb8a9ba5989823":[5,0,1,1,10,19,6],
 "stratify_8cpp.html#a1d3b4f4dbe769a1f71f8fcc44cfcaf8c":[5,0,1,1,10,19,5],

@@ -20,7 +20,7 @@ var namespacehmap =
       [ "hydraulic_stream_log", "namespacehmap_1_1gpu.html#a7814928e0f3b995421d298677934d11d", null ],
       [ "hydraulic_stream_log", "namespacehmap_1_1gpu.html#a1d7ddc82f911f49410104473949f386a", null ],
       [ "rifts", "namespacehmap_1_1gpu.html#ab509e2bb2200f0238f67ef0f7410640e", null ],
-      [ "strata", "namespacehmap_1_1gpu.html#a683c02f790618b5b7c696bcdf016b23d", null ],
+      [ "strata", "namespacehmap_1_1gpu.html#ac31470bf62b9f0128352074f76fdc115", null ],
       [ "thermal", "namespacehmap_1_1gpu.html#a2eb4bdf2d7dc4441e56865027764425e", null ],
       [ "thermal", "namespacehmap_1_1gpu.html#a1be1d9c97f7da805703dadab064fb793", null ],
       [ "thermal", "namespacehmap_1_1gpu.html#aac5f0e0045cf767611fb8d2def2c4cb5", null ],
