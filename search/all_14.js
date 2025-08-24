@@ -155,7 +155,7 @@ var searchData=
   ['stlb_152',['STLB',['../namespacehmap.html#ac3d35efc6e5b596f508e2b17a5aa871bac692212c784096efd35f54c700a039f6',1,'hmap']]],
   ['stop_153',['stop',['../structhmap_1_1Recorder.html#aba9c05c56a1c5a769f12467684735add',1,'hmap::Recorder::stop()'],['../classhmap_1_1Timer.html#a6054c197a10338a1bd48299be29593b5',1,'hmap::Timer::Stop()']]],
   ['stp_154',['STP',['../namespacehmap.html#ac3d35efc6e5b596f508e2b17a5aa871ba95e433ab6ec047421d332a80d727fd29',1,'hmap']]],
-  ['strata_155',['strata',['../namespacehmap_1_1gpu.html#ac31470bf62b9f0128352074f76fdc115',1,'hmap::gpu']]],
+  ['strata_155',['strata',['../namespacehmap_1_1gpu.html#a2a5a7e94f196f51865362f287524403d',1,'hmap::gpu']]],
   ['strata_5fgpu_2ecpp_156',['strata_gpu.cpp',['../strata__gpu_8cpp.html',1,'']]],
   ['stratify_157',['stratify',['../namespacehmap.html#a9b3fc59af5c418c494eec160399839bb',1,'hmap::stratify(Array &amp;z, Array &amp;partition, int nstrata, float strata_noise, float gamma, float gamma_noise, int npartitions, uint seed, float mixing_gain_factor=1.f, Array *p_noise=nullptr, float vmin=1.f, float vmax=0.f)'],['../namespacehmap.html#abca93ca8447abd2fc06c9892a4dc248c',1,'hmap::stratify(Array &amp;z, std::vector&lt; float &gt; hs, float gamma=0.5f, Array *p_noise=nullptr)'],['../namespacehmap.html#ad117ced78d758baa0bb5e1e7655bd0b9',1,'hmap::stratify(Array &amp;z, std::vector&lt; float &gt; hs, std::vector&lt; float &gt; gamma, Array *p_noise=nullptr)'],['../namespacehmap.html#abc0ddcae8cec8a556b8a343eaafe1dc4',1,'hmap::stratify(Array &amp;z, Array *p_mask, std::vector&lt; float &gt; hs, std::vector&lt; float &gt; gamma, Array *p_noise=nullptr)']]],
   ['stratify_2ecpp_158',['stratify.cpp',['../stratify_8cpp.html',1,'']]],
