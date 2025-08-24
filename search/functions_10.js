@@ -62,11 +62,12 @@ var searchData=
   ['ridgelines_5fbezier_59',['ridgelines_bezier',['../namespacehmap.html#a49bf95ae7344e531d7c2af0071e64649',1,'hmap']]],
   ['rift_60',['rift',['../namespacehmap.html#a6aad825029f99f3d44db149e88ba5a7f',1,'hmap']]],
   ['riftfunction_61',['RiftFunction',['../classhmap_1_1RiftFunction.html#a4557a44bd3f260c6b663b1c4c1b0ad1a',1,'hmap::RiftFunction']]],
-  ['rot180_62',['rot180',['../namespacehmap.html#a5a621a9b245b5f9a4c9e5aa3ba3bbee0',1,'hmap']]],
-  ['rot270_63',['rot270',['../namespacehmap.html#a836dbf6645c0e60bd887d6f14210b9d3',1,'hmap']]],
-  ['rot90_64',['rot90',['../namespacehmap.html#ab2362d8dcac398c859dd4ec37214af01',1,'hmap']]],
-  ['rotate_65',['rotate',['../namespacehmap.html#a888dcfe5adb36448366400f04efcde04',1,'hmap::rotate()'],['../namespacehmap_1_1gpu.html#aab128e15988875b5d350d6f156612aa5',1,'hmap::gpu::rotate()']]],
-  ['row_5fto_5fvector_66',['row_to_vector',['../classhmap_1_1Array.html#a82d3cc92545cb9ee442d47b4d672750c',1,'hmap::Array']]],
-  ['ruggedness_67',['ruggedness',['../namespacehmap.html#af4ec8b5be149e6749fdf09759daf1e9e',1,'hmap::ruggedness()'],['../namespacehmap_1_1gpu.html#a62292cc4bf9f6eb5c7b63b1e26f8cc88',1,'hmap::gpu::ruggedness()']]],
-  ['rugosity_68',['rugosity',['../namespacehmap.html#a85e411c67e97deb8459f25d4440546c3',1,'hmap::rugosity()'],['../namespacehmap_1_1gpu.html#aa5a3e087822525c41f057a51255e2bad',1,'hmap::gpu::rugosity()']]]
+  ['rifts_62',['rifts',['../namespacehmap_1_1gpu.html#ab509e2bb2200f0238f67ef0f7410640e',1,'hmap::gpu']]],
+  ['rot180_63',['rot180',['../namespacehmap.html#a5a621a9b245b5f9a4c9e5aa3ba3bbee0',1,'hmap']]],
+  ['rot270_64',['rot270',['../namespacehmap.html#a836dbf6645c0e60bd887d6f14210b9d3',1,'hmap']]],
+  ['rot90_65',['rot90',['../namespacehmap.html#ab2362d8dcac398c859dd4ec37214af01',1,'hmap']]],
+  ['rotate_66',['rotate',['../namespacehmap.html#a888dcfe5adb36448366400f04efcde04',1,'hmap::rotate()'],['../namespacehmap_1_1gpu.html#aab128e15988875b5d350d6f156612aa5',1,'hmap::gpu::rotate()']]],
+  ['row_5fto_5fvector_67',['row_to_vector',['../classhmap_1_1Array.html#a82d3cc92545cb9ee442d47b4d672750c',1,'hmap::Array']]],
+  ['ruggedness_68',['ruggedness',['../namespacehmap.html#af4ec8b5be149e6749fdf09759daf1e9e',1,'hmap::ruggedness()'],['../namespacehmap_1_1gpu.html#a62292cc4bf9f6eb5c7b63b1e26f8cc88',1,'hmap::gpu::ruggedness()']]],
+  ['rugosity_69',['rugosity',['../namespacehmap.html#a85e411c67e97deb8459f25d4440546c3',1,'hmap::rugosity()'],['../namespacehmap_1_1gpu.html#aa5a3e087822525c41f057a51255e2bad',1,'hmap::gpu::rugosity()']]]
 ];

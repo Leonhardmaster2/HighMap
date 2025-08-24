@@ -64,6 +64,7 @@ var erosion_8hpp =
     [ "hydraulic_schott", "erosion_8hpp.html#a54cd96bb811138a9c7f9768c4b0a8f98", null ],
     [ "hydraulic_stream_log", "erosion_8hpp.html#a7814928e0f3b995421d298677934d11d", null ],
     [ "hydraulic_stream_log", "erosion_8hpp.html#a1d7ddc82f911f49410104473949f386a", null ],
+    [ "rifts", "erosion_8hpp.html#ab509e2bb2200f0238f67ef0f7410640e", null ],
     [ "strata", "erosion_8hpp.html#a683c02f790618b5b7c696bcdf016b23d", null ],
     [ "thermal", "erosion_8hpp.html#a2eb4bdf2d7dc4441e56865027764425e", null ],
     [ "thermal", "erosion_8hpp.html#a1be1d9c97f7da805703dadab064fb793", null ],
