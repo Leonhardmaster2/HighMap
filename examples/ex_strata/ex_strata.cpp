@@ -16,12 +16,7 @@ int main(void)
 
   hmap::Array z2 = z1;
   hmap::gpu::strata(z2, 30.f, 2.f, 0.7f, ++seed);
-
-  z2.infos();
-
   hmap::remap(z2);
-
-  // z2 = hmap::lerp(z1, z2, 0.5f);
 
   z1.dump("out0.png");
   z2.dump();

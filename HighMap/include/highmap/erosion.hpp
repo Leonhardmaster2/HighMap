@@ -1261,6 +1261,76 @@ void hydraulic_stream_log(Array &z,
                           Array *p_flow_map = nullptr); ///< @overload
 
 /**
+ * @brief Applies a "rift" deformation effect to a heightmap array.
+ *
+ * This function modifies the given heightmap by introducing linear or radial
+ * "rift-like" noise patterns. The deformation can be controlled by several
+ * parameters such as direction, amplitude, noise shifts, and optional external
+ * noise arrays. Optionally, the effect can be masked using a power-based
+ * blending function.
+ *
+ * @param z                     Reference to the heightmap array to be modified
+ *                              in-place.
+ * @param kw                    Frequency vector (kx, ky) scaling the
+ *                              deformation in X and Y directions.
+ * @param angle                 Orientation of the rift in degrees (0° =
+ *                              horizontal, 90° = vertical).
+ * @param amplitude             Strength of the rift deformation applied to the
+ *                              heightmap.
+ * @param seed                  Random seed used for deterministic noise
+ *                              generation.
+ * @param elevation_noise_shift Vertical offset applied to the base noise to
+ *                              shift elevation influence.
+ * @param k_smooth_bottom       Lower smoothing factor for Voronoi-based noise
+ *                              computation.
+ * @param k_smooth_top          Upper smoothing factor for Voronoi-based noise
+ *                              computation.
+ * @param radial_spread_amp     Amplitude controlling radial spreading away from
+ *                              the rift axis.
+ * @param elevation_noise_amp   Amplitude scaling the influence of the
+ *                              heightmap's initial values as noise input.
+ * @param clamp_vmin            Minimum clamp value for the Voronoi noise before
+ *                              remapping.
+ * @param remap_vmin            Minimum remap value for scaling noise output.
+ * @param apply_mask            If true, applies a power-based blending mask
+ *                              instead of a direct overwrite.
+ * @param mask_gamma            Gamma exponent used when applying the mask to
+ *                              control blending.
+ * @param p_noise_x             Optional pointer to an external noise array for
+ *                              X-offset perturbation (nullptr if unused).
+ * @param p_noise_y             Optional pointer to an external noise array for
+ *                              Y-offset perturbation (nullptr if unused).
+ * @param center                2D vector specifying the central point around
+ *                              which the rift effect is computed.
+ * @param bbox                  Bounding box (xmin, xmax, ymin, ymax) defining
+ *                              the spatial domain of the heightmap.
+ *
+ * **Example**
+ * @include ex_rifts.cpp
+ *
+ * **Result**
+ * @image html ex_rifts.png
+ */
+void rifts(Array             &z,
+           const Vec2<float> &kw,    //  = {4.f, 1.2f},
+           float              angle, // degs
+           float              amplitude,
+           uint               seed,
+           float              elevation_noise_shift = 0.f,
+           float              k_smooth_bottom = 0.05f,
+           float              k_smooth_top = 0.05f,
+           float              radial_spread_amp = 0.2f,
+           float              elevation_noise_amp = 0.1f,
+           float              clamp_vmin = 0.f,
+           float              remap_vmin = 0.f,
+           bool               apply_mask = true,
+           float              mask_gamma = 1.f,
+           const Array       *p_noise_x = nullptr,
+           const Array       *p_noise_y = nullptr,
+           const Vec2<float> &center = {0.5f, 0.5f},
+           const Vec4<float> &bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
  * @brief Applies stratification to a heightfield using directional noise and
  * multiscale gamma transformations.
  *

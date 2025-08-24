@@ -74,6 +74,7 @@ bool init_opencl()
 #include "kernels/vororand_main.cl"
 #include "kernels/warp.cl"
 //
+#include "kernels/rifts.cl"
 #include "kernels/strata.cl"
       ;
 
