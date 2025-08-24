@@ -28,11 +28,14 @@ void strata(Array             &z,
             float              ridge_remap_vmin,
             bool               apply_mask,
             float              mask_gamma,
+            const Array       *p_mask,
             const Vec4<float> &bbox)
 {
   auto run = clwrapper::Run("strata");
 
   run.bind_buffer<float>("z", z.vector);
+
+  helper_bind_optional_buffer(run, "mask", p_mask);
 
   run.bind_arguments(z.shape.x,
                      z.shape.y,
@@ -54,6 +57,7 @@ void strata(Array             &z,
                      ridge_remap_vmin,
                      apply_mask ? 1 : 0,
                      mask_gamma,
+                     p_mask ? 1 : 0,
                      bbox);
 
   run.write_buffer("z");

@@ -41,6 +41,7 @@ float stratify(const float val,
 }
 
 void kernel strata(global float *output,
+                   global float *mask,
                    const int     nx,
                    const int     ny,
                    const float   angle,
@@ -61,6 +62,7 @@ void kernel strata(global float *output,
                    const float   ridge_remap_vmin,
                    const int     apply_mask,
                    const float   mask_gamma,
+                   const int     has_mask,
                    const float4  bbox)
 {
   int2 g = {get_global_id(0), get_global_id(1)};
@@ -117,10 +119,17 @@ void kernel strata(global float *output,
     kz_n *= lacunarity;
   }
 
+  // elevation mask
+  if (apply_mask) val = lerp(val0, val, pow(val0, mask_gamma) * noise_v);
+
+  // input mask
+  if (has_mask)
+  {
+    float t = mask[index];
+    val = lerp(val0, val, t);
+  }
+
   // out
-  if (apply_mask)
-    output[index] = lerp(val0, val, pow(val0, mask_gamma) * noise_v);
-  else
-    output[index] = val;
+  output[index] = val;
 }
 )""

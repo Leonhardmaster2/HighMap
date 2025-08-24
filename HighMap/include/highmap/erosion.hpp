@@ -1370,7 +1370,8 @@ void rifts(Array             &z,
  *                          reverse remapping).
  * @param apply_mask        If true, applied an elevation mask on the effect.
  * @param mask_gamma        Gamma applied to the mask used for blending original
- *                          and stratified values.
+ *                          and stratified values for the elevation mask.
+ * @param p_mask            Optional filter mask, expected in the range [0, 1].
  * @param bbox              Bounding box of the domain as `{xmin, xmax, ymin,
  *                          ymax}`.
  *
@@ -1405,6 +1406,7 @@ void strata(Array             &z,
             float              ridge_remap_vmin = 0.f,
             bool               apply_mask = true,
             float              mask_gamma = 0.4f,
+            const Array       *p_mask = nullptr,
             const Vec4<float> &bbox = {0.f, 1.f, 0.f, 1.f});
 
 /*! @brief See hmap::thermal */
