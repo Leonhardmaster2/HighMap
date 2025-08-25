@@ -77,7 +77,7 @@ var searchData=
   ['ridgelines_5fbezier_74',['ridgelines_bezier',['../namespacehmap.html#a49bf95ae7344e531d7c2af0071e64649',1,'hmap']]],
   ['rift_75',['rift',['../namespacehmap.html#a6aad825029f99f3d44db149e88ba5a7f',1,'hmap']]],
   ['riftfunction_76',['riftfunction',['../classhmap_1_1RiftFunction.html',1,'hmap::RiftFunction'],['../classhmap_1_1RiftFunction.html#a4557a44bd3f260c6b663b1c4c1b0ad1a',1,'hmap::RiftFunction::RiftFunction()']]],
-  ['rifts_77',['rifts',['../namespacehmap_1_1gpu.html#a73f443eba196215ba662c45502fba7f4',1,'hmap::gpu']]],
+  ['rifts_77',['rifts',['../namespacehmap_1_1gpu.html#ad57cd314c51ee333bbd99f6eacd441a6',1,'hmap::gpu']]],
   ['rifts_5fgpu_2ecpp_78',['rifts_gpu.cpp',['../rifts__gpu_8cpp.html',1,'']]],
   ['rnd_5fhalton_79',['RND_HALTON',['../namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77a99ca15104343ff0356c6fc0ffe4f837d',1,'hmap']]],
   ['rnd_5fhammersley_80',['RND_HAMMERSLEY',['../namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77aeebf5714b383e3b3be100ceba46d8fe5',1,'hmap']]],
