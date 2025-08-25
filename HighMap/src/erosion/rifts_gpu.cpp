@@ -25,6 +25,7 @@ void rifts(Array             &z,
            float              mask_gamma,
            const Array       *p_noise_x,
            const Array       *p_noise_y,
+           const Array       *p_mask,
            const Vec2<float> &center,
            const Vec4<float> &bbox)
 {
@@ -34,6 +35,7 @@ void rifts(Array             &z,
 
   helper_bind_optional_buffer(run, "noise_x", p_noise_x);
   helper_bind_optional_buffer(run, "noise_y", p_noise_y);
+  helper_bind_optional_buffer(run, "mask", p_mask);
 
   run.bind_arguments(z.shape.x,
                      z.shape.y,
@@ -52,6 +54,7 @@ void rifts(Array             &z,
                      mask_gamma,
                      p_noise_x ? 1 : 0,
                      p_noise_y ? 1 : 0,
+                     p_mask ? 1 : 0,
                      center,
                      bbox);
 

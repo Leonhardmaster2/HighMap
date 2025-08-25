@@ -1327,6 +1327,7 @@ void rifts(Array             &z,
            float              mask_gamma = 1.f,
            const Array       *p_noise_x = nullptr,
            const Array       *p_noise_y = nullptr,
+           const Array       *p_mask = nullptr,
            const Vec2<float> &center = {0.5f, 0.5f},
            const Vec4<float> &bbox = {0.f, 1.f, 0.f, 1.f});
 

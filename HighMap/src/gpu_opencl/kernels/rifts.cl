@@ -6,6 +6,7 @@ R""(
 void kernel rifts(global float *output,
                   global float *noise_x,
                   global float *noise_y,
+                  global float *mask,
                   const int     nx,
                   const int     ny,
                   const float2  kw,
@@ -23,6 +24,7 @@ void kernel rifts(global float *output,
                   const float   mask_gamma,
                   const int     has_noise_x,
                   const int     has_noise_y,
+                  const int     has_mask,
                   const float2  center,
                   const float4  bbox)
 {
@@ -71,10 +73,20 @@ void kernel rifts(global float *output,
 
   val += amplitude * noise_v;
 
+  // elevation mask
+  {
+    float t = apply_mask ? pow(val0, mask_gamma) : 1.f;
+    val = lerp(val0, val, t);
+  }
+
+  // input mask
+  if (has_mask)
+  {
+    float t = mask[index];
+    val = lerp(val0, val, t);
+  }
+
   // out
-  if (apply_mask)
-    output[index] = lerp(val0, val, pow(val0, mask_gamma));
-  else
-    output[index] = val;
+  output[index] = val;
 }
 )""
