@@ -21,6 +21,7 @@ void kernel rifts(global float *output,
                   const float   clamp_vmin,
                   const float   remap_vmin,
                   const int     apply_mask,
+                  const int     reverse_mask,
                   const float   mask_gamma,
                   const int     has_noise_x,
                   const int     has_noise_y,
@@ -76,6 +77,7 @@ void kernel rifts(global float *output,
   // elevation mask
   {
     float t = apply_mask ? pow(val0, mask_gamma) : 1.f;
+    if (reverse_mask) t *= -1.f;
     val = lerp(val0, val, t);
   }
 
