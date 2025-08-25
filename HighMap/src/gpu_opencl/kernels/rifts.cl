@@ -77,7 +77,7 @@ void kernel rifts(global float *output,
   // elevation mask
   {
     float t = apply_mask ? pow(val0, mask_gamma) : 1.f;
-    if (reverse_mask) t *= -1.f;
+    if (reverse_mask) t = 1.f - t;
     val = lerp(val0, val, t);
   }
 
