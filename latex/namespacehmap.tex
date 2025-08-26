@@ -1149,6 +1149,10 @@ float \mbox{\hyperlink{namespacehmap_a1d5e665c9e945b8ad9a6b5f0c1b673ad}{lerp}} (
 \begin{DoxyCompactList}\small\item\em Return the array elements raised to the power \textquotesingle{}exp\textquotesingle{}. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a94c9fa82f2922778970f85c384ed5bd9}{radial\+\_\+displacement\+\_\+to\+\_\+xy}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&dr, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&dx, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&dy, float smoothing=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ float $>$ center=\{0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
 \begin{DoxyCompactList}\small\item\em Interpret the input array {\ttfamily dr} as a radial displacement and convert it to a pair of displacements {\ttfamily dx} and {\ttfamily dy} in cartesian coordinates. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{namespacehmap_ad0759b7e3cb7455527b9b5b4947720bd}{sigmoid}} (float x, float width=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float vmin=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float vmax=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float x0=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
+\begin{DoxyCompactList}\small\item\em Computes the sigmoid function for a scalar value. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a0aa2c50266e16cf5af077e4e3f77bd8f}{sigmoid}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float width=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float vmin=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float vmax=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float x0=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
+\begin{DoxyCompactList}\small\item\em Computes the sigmoid function element-\/wise for an array. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a03359e722d96524598aa525022317c95}{sin}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array)
 \begin{DoxyCompactList}\small\item\em Return the sine of the array elements. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a413648e2595721d8ba4096357dbb1f84}{smoothstep3}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float vmin=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float vmax=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
@@ -17400,6 +17404,116 @@ Interpret the input array {\ttfamily dr} as a radial displacement and convert it
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a1c490f296571a75e35d05b10c075ae6c}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_radial\_displacement\_to\_xy.png"{}},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{dr,\ dx,\ dy\},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}}  \Hypertarget{namespacehmap_ad0759b7e3cb7455527b9b5b4947720bd}\label{namespacehmap_ad0759b7e3cb7455527b9b5b4947720bd} 
+\index{hmap@{hmap}!sigmoid@{sigmoid}}
+\index{sigmoid@{sigmoid}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{sigmoid()}{sigmoid()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily float hmap\+::sigmoid (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{width = {\ttfamily 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{vmin = {\ttfamily 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{vmax = {\ttfamily 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{x0 = {\ttfamily 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
+
+
+
+Computes the sigmoid function for a scalar value. 
+
+This function applies a generalized sigmoid transformation\+:  \[
+y = v_{\min} + \frac{v_{\max} - v_{\min}}
+       {1 + \exp\left(-\frac{x - x_0}{\text{width}}\right)}
+\]
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Input value. \\
+\hline
+{\em width} & Controls the steepness of the sigmoid curve. Higher values make the slope gentler. Default is {\ttfamily 1.\+f}. \\
+\hline
+{\em vmin} & Minimum value of the output range. Default is {\ttfamily 0.\+f}. \\
+\hline
+{\em vmax} & Maximum value of the output range. Default is {\ttfamily 1.\+f}. \\
+\hline
+{\em x0} & The center point (x-\/offset) of the sigmoid curve. Default is {\ttfamily 0.\+f}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The transformed scalar value in the range {\ttfamily \mbox{[}vmin, vmax\mbox{]}}.
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{structhmap_1_1Vec2}{hmap::Vec2<int>}}\ \ \ shape\ =\ \{256,\ 256\};}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{structhmap_1_1Vec2}{hmap::Vec2<float>}}\ res\ =\ \{4.f,\ 4.f\};}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed\ =\ 1;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_a40b948c49a05c14f2d540dc1a6952130}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ res,\ seed);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(z);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ z1\ =\ z;}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(z1,\ -\/2.f,\ 2.f);}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ width\ =\ 0.2f;}
+\DoxyCodeLine{\ \ z1\ =\ \mbox{\hyperlink{namespacehmap_ad0759b7e3cb7455527b9b5b4947720bd}{hmap::sigmoid}}(z1,\ width);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a1c490f296571a75e35d05b10c075ae6c}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_sigmoid.png"{}},\ \{z,\ z1\},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}}  \Hypertarget{namespacehmap_a0aa2c50266e16cf5af077e4e3f77bd8f}\label{namespacehmap_a0aa2c50266e16cf5af077e4e3f77bd8f} 
+\index{hmap@{hmap}!sigmoid@{sigmoid}}
+\index{sigmoid@{sigmoid}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{sigmoid()}{sigmoid()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::sigmoid (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{float}]{width = {\ttfamily 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{vmin = {\ttfamily 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{vmax = {\ttfamily 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{x0 = {\ttfamily 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
+
+
+
+Computes the sigmoid function element-\/wise for an array. 
+
+This function applies the same generalized sigmoid transformation as the scalar version\+: \[ y = v_{\min} + \frac{v_{\max} - v_{\min}} {1 +
+\exp\left(-\frac{x - x_0}{\text{width}}\right)} \]
+
+Each element in the input array is independently transformed.
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & Input array of values. \\
+\hline
+{\em width} & Controls the steepness of the sigmoid curve. Higher values make the slope gentler. Default is {\ttfamily 1.\+f}. \\
+\hline
+{\em vmin} & Minimum value of the output range. Default is {\ttfamily 0.\+f}. \\
+\hline
+{\em vmax} & Maximum value of the output range. Default is {\ttfamily 1.\+f}. \\
+\hline
+{\em x0} & The center point (x-\/offset) of the sigmoid curve. Default is {\ttfamily 0.\+f}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new array with each element transformed by the sigmoid function.
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{structhmap_1_1Vec2}{hmap::Vec2<int>}}\ \ \ shape\ =\ \{256,\ 256\};}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{structhmap_1_1Vec2}{hmap::Vec2<float>}}\ res\ =\ \{4.f,\ 4.f\};}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed\ =\ 1;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_a40b948c49a05c14f2d540dc1a6952130}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ res,\ seed);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(z);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ z1\ =\ z;}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(z1,\ -\/2.f,\ 2.f);}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ width\ =\ 0.2f;}
+\DoxyCodeLine{\ \ z1\ =\ \mbox{\hyperlink{namespacehmap_ad0759b7e3cb7455527b9b5b4947720bd}{hmap::sigmoid}}(z1,\ width);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a1c490f296571a75e35d05b10c075ae6c}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_sigmoid.png"{}},\ \{z,\ z1\},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}});}
 \DoxyCodeLine{\}}
 
 \end{DoxyCodeInclude}

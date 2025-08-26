@@ -1686,6 +1686,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a94c9fa82f2922778970f85c384ed5bd9" id="r_a94c9fa82f2922778970f85c384ed5bd9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a94c9fa82f2922778970f85c384ed5bd9">radial_displacement_to_xy</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;dr, <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;dx, <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;dy, float smoothing=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, <a class="el" href="structhmap_1_1Vec2.html">Vec2</a>&lt; float &gt; center={0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>}, <a class="el" href="structhmap_1_1Vec4.html">Vec4</a>&lt; float &gt; bbox={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>})</td></tr>
 <tr class="memdesc:a94c9fa82f2922778970f85c384ed5bd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interpret the input array <code>dr</code> as a radial displacement and convert it to a pair of displacements <code>dx</code> and <code>dy</code> in cartesian coordinates.  <br /></td></tr>
 <tr class="separator:a94c9fa82f2922778970f85c384ed5bd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0759b7e3cb7455527b9b5b4947720bd" id="r_ad0759b7e3cb7455527b9b5b4947720bd"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#ad0759b7e3cb7455527b9b5b4947720bd">sigmoid</a> (float x, float width=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float vmin=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float vmax=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float x0=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
+<tr class="memdesc:ad0759b7e3cb7455527b9b5b4947720bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the sigmoid function for a scalar value.  <br /></td></tr>
+<tr class="separator:ad0759b7e3cb7455527b9b5b4947720bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0aa2c50266e16cf5af077e4e3f77bd8f" id="r_a0aa2c50266e16cf5af077e4e3f77bd8f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a0aa2c50266e16cf5af077e4e3f77bd8f">sigmoid</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, float width=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float vmin=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float vmax=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float x0=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
+<tr class="memdesc:a0aa2c50266e16cf5af077e4e3f77bd8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the sigmoid function element-wise for an array.  <br /></td></tr>
+<tr class="separator:a0aa2c50266e16cf5af077e4e3f77bd8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a03359e722d96524598aa525022317c95" id="r_a03359e722d96524598aa525022317c95"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a03359e722d96524598aa525022317c95">sin</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array)</td></tr>
 <tr class="memdesc:a03359e722d96524598aa525022317c95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the sine of the array elements.  <br /></td></tr>
 <tr class="separator:a03359e722d96524598aa525022317c95"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -29524,6 +29530,178 @@ template&lt;typename T &gt; </div>
  
 </div>
 </div>
+<a id="ad0759b7e3cb7455527b9b5b4947720bd" name="ad0759b7e3cb7455527b9b5b4947720bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0759b7e3cb7455527b9b5b4947720bd">&#9670;&#160;</a></span>sigmoid() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float hmap::sigmoid </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>width</em> = <code>1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>vmin</em> = <code>0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>vmax</em> = <code>1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>x0</em> = <code>0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes the sigmoid function for a scalar value. </p>
+<p>This function applies a generalized sigmoid transformation:  </p><p class="formulaDsp">
+\[
+y = v_{\min} + \frac{v_{\max} - v_{\min}}
+       {1 + \exp\left(-\frac{x - x_0}{\text{width}}\right)}
+\]
+</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>Input value. </td></tr>
+    <tr><td class="paramname">width</td><td>Controls the steepness of the sigmoid curve. Higher values make the slope gentler. Default is <code>1.f</code>. </td></tr>
+    <tr><td class="paramname">vmin</td><td>Minimum value of the output range. Default is <code>0.f</code>. </td></tr>
+    <tr><td class="paramname">vmax</td><td>Maximum value of the output range. Default is <code>1.f</code>. </td></tr>
+    <tr><td class="paramname">x0</td><td>The center point (x-offset) of the sigmoid curve. Default is <code>0.f</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The transformed scalar value in the range <code>[vmin, vmax]</code>.</dd></dl>
+<p><b>Example</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="highmap_8hpp.html">highmap.hpp</a>&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
+<div class="line">{</div>
+<div class="line">  <a class="code hl_struct" href="structhmap_1_1Vec2.html">hmap::Vec2&lt;int&gt;</a>   shape = {256, 256};</div>
+<div class="line">  <a class="code hl_struct" href="structhmap_1_1Vec2.html">hmap::Vec2&lt;float&gt;</a> res = {4.f, 4.f};</div>
+<div class="line">  <span class="keywordtype">int</span>               seed = 1;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z = <a class="code hl_function" href="namespacehmap.html#a40b948c49a05c14f2d540dc1a6952130">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, res, seed);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">auto</span> z1 = z;</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z1, -2.f, 2.f);</div>
+<div class="line">  <span class="keywordtype">float</span> width = 0.2f;</div>
+<div class="line">  z1 = <a class="code hl_function" href="namespacehmap.html#ad0759b7e3cb7455527b9b5b4947720bd">hmap::sigmoid</a>(z1, width);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_sigmoid.png&quot;</span>, {z, z1}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
+<div class="line">}</div>
+<div class="ttc" id="anamespacehmap_html_ad0759b7e3cb7455527b9b5b4947720bd"><div class="ttname"><a href="namespacehmap.html#ad0759b7e3cb7455527b9b5b4947720bd">hmap::sigmoid</a></div><div class="ttdeci">float sigmoid(float x, float width=1.f, float vmin=0.f, float vmax=1.f, float x0=0.f)</div><div class="ttdoc">Computes the sigmoid function for a scalar value.</div><div class="ttdef"><b>Definition</b> math.cpp:222</div></div>
+</div><!-- fragment --><p><b>Result</b> </p><div class="image">
+<img src="ex_sigmoid.png" alt=""/>
+</div>
+ 
+</div>
+</div>
+<a id="a0aa2c50266e16cf5af077e4e3f77bd8f" name="a0aa2c50266e16cf5af077e4e3f77bd8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0aa2c50266e16cf5af077e4e3f77bd8f">&#9670;&#160;</a></span>sigmoid() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classhmap_1_1Array.html">Array</a> hmap::sigmoid </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>array</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>width</em> = <code>1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>vmin</em> = <code>0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>vmax</em> = <code>1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>x0</em> = <code>0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes the sigmoid function element-wise for an array. </p>
+<p>This function applies the same generalized sigmoid transformation as the scalar version: </p><p class="formulaDsp">
+\[ y = v_{\min} + \frac{v_{\max} - v_{\min}} {1 +
+\exp\left(-\frac{x - x_0}{\text{width}}\right)} \]
+</p>
+<p>Each element in the input array is independently transformed.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">array</td><td>Input array of values. </td></tr>
+    <tr><td class="paramname">width</td><td>Controls the steepness of the sigmoid curve. Higher values make the slope gentler. Default is <code>1.f</code>. </td></tr>
+    <tr><td class="paramname">vmin</td><td>Minimum value of the output range. Default is <code>0.f</code>. </td></tr>
+    <tr><td class="paramname">vmax</td><td>Maximum value of the output range. Default is <code>1.f</code>. </td></tr>
+    <tr><td class="paramname">x0</td><td>The center point (x-offset) of the sigmoid curve. Default is <code>0.f</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A new array with each element transformed by the sigmoid function.</dd></dl>
+<p><b>Example</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="highmap_8hpp.html">highmap.hpp</a>&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
+<div class="line">{</div>
+<div class="line">  <a class="code hl_struct" href="structhmap_1_1Vec2.html">hmap::Vec2&lt;int&gt;</a>   shape = {256, 256};</div>
+<div class="line">  <a class="code hl_struct" href="structhmap_1_1Vec2.html">hmap::Vec2&lt;float&gt;</a> res = {4.f, 4.f};</div>
+<div class="line">  <span class="keywordtype">int</span>               seed = 1;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z = <a class="code hl_function" href="namespacehmap.html#a40b948c49a05c14f2d540dc1a6952130">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, res, seed);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">auto</span> z1 = z;</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z1, -2.f, 2.f);</div>
+<div class="line">  <span class="keywordtype">float</span> width = 0.2f;</div>
+<div class="line">  z1 = <a class="code hl_function" href="namespacehmap.html#ad0759b7e3cb7455527b9b5b4947720bd">hmap::sigmoid</a>(z1, width);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_sigmoid.png&quot;</span>, {z, z1}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
+<div class="line">}</div>
+</div><!-- fragment --><p><b>Result</b> </p><div class="image">
+<img src="ex_sigmoid.png" alt=""/>
+</div>
+ 
+</div>
+</div>
 <a id="a03359e722d96524598aa525022317c95" name="a03359e722d96524598aa525022317c95"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a03359e722d96524598aa525022317c95">&#9670;&#160;</a></span>sin()</h2>
 
@@ -29613,8 +29791,8 @@ template&lt;typename T &gt; </div>
 <div class="line">                          {z, z3, z5},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a413648e2595721d8ba4096357dbb1f84"><div class="ttname"><a href="namespacehmap.html#a413648e2595721d8ba4096357dbb1f84">hmap::smoothstep3</a></div><div class="ttdeci">Array smoothstep3(const Array &amp;array, float vmin=0.f, float vmax=1.f)</div><div class="ttdoc">Return the 3rd order smoothstep function of the array elements.</div><div class="ttdef"><b>Definition</b> math.cpp:232</div></div>
-<div class="ttc" id="anamespacehmap_html_aa4468d1e57ee67ba0be8fb1ab931045a"><div class="ttname"><a href="namespacehmap.html#aa4468d1e57ee67ba0be8fb1ab931045a">hmap::smoothstep5</a></div><div class="ttdeci">Array smoothstep5(const Array &amp;array, float vmin=0.f, float vmax=1.f)</div><div class="ttdoc">Return the 5rd order smoothstep function of the array elements.</div><div class="ttdef"><b>Definition</b> math.cpp:289</div></div>
+<div class="ttc" id="anamespacehmap_html_a413648e2595721d8ba4096357dbb1f84"><div class="ttname"><a href="namespacehmap.html#a413648e2595721d8ba4096357dbb1f84">hmap::smoothstep3</a></div><div class="ttdeci">Array smoothstep3(const Array &amp;array, float vmin=0.f, float vmax=1.f)</div><div class="ttdoc">Return the 3rd order smoothstep function of the array elements.</div><div class="ttdef"><b>Definition</b> math.cpp:250</div></div>
+<div class="ttc" id="anamespacehmap_html_aa4468d1e57ee67ba0be8fb1ab931045a"><div class="ttname"><a href="namespacehmap.html#aa4468d1e57ee67ba0be8fb1ab931045a">hmap::smoothstep5</a></div><div class="ttdeci">Array smoothstep5(const Array &amp;array, float vmin=0.f, float vmax=1.f)</div><div class="ttdoc">Return the 5rd order smoothstep function of the array elements.</div><div class="ttdef"><b>Definition</b> math.cpp:307</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_smoothstep.png" alt=""/>
 </div>

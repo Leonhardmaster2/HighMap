@@ -38,6 +38,8 @@ var math_8hpp =
     [ "log10", "math_8hpp.html#a75475b6109023ce0ad64f6f9f7c4c525", null ],
     [ "pow", "math_8hpp.html#a105e497c433e14b4235534ae6d2b87b9", null ],
     [ "radial_displacement_to_xy", "math_8hpp.html#a94c9fa82f2922778970f85c384ed5bd9", null ],
+    [ "sigmoid", "math_8hpp.html#ad0759b7e3cb7455527b9b5b4947720bd", null ],
+    [ "sigmoid", "math_8hpp.html#a0aa2c50266e16cf5af077e4e3f77bd8f", null ],
     [ "sin", "math_8hpp.html#a03359e722d96524598aa525022317c95", null ],
     [ "smoothstep3", "math_8hpp.html#a413648e2595721d8ba4096357dbb1f84", null ],
     [ "smoothstep3", "math_8hpp.html#afe0b1df8525d0478c7433777cadd60a3", null ],

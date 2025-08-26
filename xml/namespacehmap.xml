@@ -31062,6 +31062,219 @@ The output path consists of:<itemizedlist>
         </inbodydescription>
         <location file="HighMap/src/math/math.cpp" line="195" column="6" bodyfile="HighMap/src/math/math.cpp" bodystart="195" bodyend="220" declfile="HighMap/include/highmap/math.hpp" declline="304" declcolumn="6"/>
       </memberdef>
+      <memberdef kind="function" id="namespacehmap_1ad0759b7e3cb7455527b9b5b4947720bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float hmap::sigmoid</definition>
+        <argsstring>(float x, float width=1.f, float vmin=0.f, float vmax=1.f, float x0=0.f)</argsstring>
+        <name>sigmoid</name>
+        <qualifiedname>hmap::sigmoid</qualifiedname>
+        <param>
+          <type>float</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>width</declname>
+          <defval>1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>vmin</declname>
+          <defval>0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>vmax</declname>
+          <defval>1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>x0</declname>
+          <defval>0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <briefdescription>
+<para>Computes the sigmoid function for a scalar value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function applies a generalized sigmoid transformation:  <formula id="11">\[
+y = v_{\min} + \frac{v_{\max} - v_{\min}}
+       {1 + \exp\left(-\frac{x - x_0}{\text{width}}\right)}
+\]</formula></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input value. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>width</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Controls the steepness of the sigmoid curve. Higher values make the slope gentler. Default is <computeroutput>1.f</computeroutput>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>vmin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Minimum value of the output range. Default is <computeroutput>0.f</computeroutput>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>vmax</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum value of the output range. Default is <computeroutput>1.f</computeroutput>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>x0</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The center point (x-offset) of the sigmoid curve. Default is <computeroutput>0.f</computeroutput>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The transformed scalar value in the range <computeroutput>[vmin, vmax]</computeroutput>.</para>
+</simplesect>
+<bold>Example</bold> <programlisting filename="ex_sigmoid.cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="structhmap_1_1Vec2" kindref="compound">hmap::Vec2&lt;int&gt;</ref><sp/><sp/><sp/>shape<sp/>=<sp/>{256,<sp/>256};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="structhmap_1_1Vec2" kindref="compound">hmap::Vec2&lt;float&gt;</ref><sp/>res<sp/>=<sp/>{4.f,<sp/>4.f};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed<sp/>=<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1a40b948c49a05c14f2d540dc1a6952130" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,<sp/>shape,<sp/>res,<sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(z);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>z1<sp/>=<sp/>z;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(z1,<sp/>-2.f,<sp/>2.f);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>width<sp/>=<sp/>0.2f;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>z1<sp/>=<sp/><ref refid="namespacehmap_1ad0759b7e3cb7455527b9b5b4947720bd" kindref="member">hmap::sigmoid</ref>(z1,<sp/>width);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a1c490f296571a75e35d05b10c075ae6c" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_sigmoid.png&quot;</highlight><highlight class="normal">,<sp/>{z,<sp/>z1},<sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143" kindref="member">hmap::Cmap::INFERNO</ref>);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<para><bold>Result</bold> <image type="html" name="ex_sigmoid.png"></image>
+ </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/math/math.cpp" line="222" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="222" bodyend="227" declfile="HighMap/include/highmap/math.hpp" declline="335" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehmap_1a0aa2c50266e16cf5af077e4e3f77bd8f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
+        <definition>Array hmap::sigmoid</definition>
+        <argsstring>(const Array &amp;array, float width=1.f, float vmin=0.f, float vmax=1.f, float x0=0.f)</argsstring>
+        <name>sigmoid</name>
+        <qualifiedname>hmap::sigmoid</qualifiedname>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>array</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>width</declname>
+          <defval>1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>vmin</declname>
+          <defval>0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>vmax</declname>
+          <defval>1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>x0</declname>
+          <defval>0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <briefdescription>
+<para>Computes the sigmoid function element-wise for an array. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function applies the same generalized sigmoid transformation as the scalar version: <formula id="12">\[ y = v_{\min} + \frac{v_{\max} - v_{\min}} {1 +
+\exp\left(-\frac{x - x_0}{\text{width}}\right)} \]</formula></para>
+<para>Each element in the input array is independently transformed.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>array</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input array of values. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>width</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Controls the steepness of the sigmoid curve. Higher values make the slope gentler. Default is <computeroutput>1.f</computeroutput>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>vmin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Minimum value of the output range. Default is <computeroutput>0.f</computeroutput>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>vmax</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum value of the output range. Default is <computeroutput>1.f</computeroutput>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>x0</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The center point (x-offset) of the sigmoid curve. Default is <computeroutput>0.f</computeroutput>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A new array with each element transformed by the sigmoid function.</para>
+</simplesect>
+<bold>Example</bold> <programlisting filename="ex_sigmoid.cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="structhmap_1_1Vec2" kindref="compound">hmap::Vec2&lt;int&gt;</ref><sp/><sp/><sp/>shape<sp/>=<sp/>{256,<sp/>256};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="structhmap_1_1Vec2" kindref="compound">hmap::Vec2&lt;float&gt;</ref><sp/>res<sp/>=<sp/>{4.f,<sp/>4.f};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed<sp/>=<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1a40b948c49a05c14f2d540dc1a6952130" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,<sp/>shape,<sp/>res,<sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(z);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>z1<sp/>=<sp/>z;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(z1,<sp/>-2.f,<sp/>2.f);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>width<sp/>=<sp/>0.2f;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>z1<sp/>=<sp/><ref refid="namespacehmap_1ad0759b7e3cb7455527b9b5b4947720bd" kindref="member">hmap::sigmoid</ref>(z1,<sp/>width);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a1c490f296571a75e35d05b10c075ae6c" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_sigmoid.png&quot;</highlight><highlight class="normal">,<sp/>{z,<sp/>z1},<sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143" kindref="member">hmap::Cmap::INFERNO</ref>);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<para><bold>Result</bold> <image type="html" name="ex_sigmoid.png"></image>
+ </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/math/math.cpp" line="229" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="229" bodyend="238" declfile="HighMap/include/highmap/math.hpp" declline="366" declcolumn="7"/>
+      </memberdef>
       <memberdef kind="function" id="namespacehmap_1a03359e722d96524598aa525022317c95" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
         <definition>Array hmap::sin</definition>
@@ -31091,7 +31304,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="222" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="222" bodyend="230" declfile="HighMap/include/highmap/math.hpp" declline="317" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="240" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="240" bodyend="248" declfile="HighMap/include/highmap/math.hpp" declline="378" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a413648e2595721d8ba4096357dbb1f84" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -31170,7 +31383,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="232" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="232" bodyend="252" declfile="HighMap/include/highmap/math.hpp" declline="333" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="250" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="250" bodyend="270" declfile="HighMap/include/highmap/math.hpp" declline="394" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1afe0b1df8525d0478c7433777cadd60a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>float</type>
@@ -31201,7 +31414,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="254" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="254" bodyend="257" declfile="HighMap/include/highmap/math.hpp" declline="341" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="272" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="272" bodyend="275" declfile="HighMap/include/highmap/math.hpp" declline="402" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a4c21ef9d4f7d33f2413c7fe391b86253" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>float</type>
@@ -31232,7 +31445,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="259" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="259" bodyend="262" declfile="HighMap/include/highmap/math.hpp" declline="350" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="277" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="277" bodyend="280" declfile="HighMap/include/highmap/math.hpp" declline="411" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a65666d55312d1afca0246939f292ca63" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -31251,7 +31464,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="264" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="264" bodyend="272" declfile="HighMap/include/highmap/math.hpp" declline="351" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="282" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="282" bodyend="290" declfile="HighMap/include/highmap/math.hpp" declline="412" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1af23a6099bd3307b408f17d2346ab3d3f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>float</type>
@@ -31282,7 +31495,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="274" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="274" bodyend="277" declfile="HighMap/include/highmap/math.hpp" declline="360" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="292" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="292" bodyend="295" declfile="HighMap/include/highmap/math.hpp" declline="421" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ac9b2a7930233d045f876d285c67623fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -31301,7 +31514,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="279" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="279" bodyend="287" declfile="HighMap/include/highmap/math.hpp" declline="361" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="297" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="297" bodyend="305" declfile="HighMap/include/highmap/math.hpp" declline="422" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aa4468d1e57ee67ba0be8fb1ab931045a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -31380,7 +31593,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="289" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="289" bodyend="309" declfile="HighMap/include/highmap/math.hpp" declline="377" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="307" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="307" bodyend="327" declfile="HighMap/include/highmap/math.hpp" declline="438" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aa5cc0ca00f731884d7a1dad714a254c8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -31407,7 +31620,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="311" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="311" bodyend="331" declfile="HighMap/include/highmap/math.hpp" declline="378" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="329" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="329" bodyend="349" declfile="HighMap/include/highmap/math.hpp" declline="439" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a826591db096cb2ca4d836d4c5eeaac02" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>float</type>
@@ -31438,7 +31651,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="333" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="333" bodyend="336" declfile="HighMap/include/highmap/math.hpp" declline="388" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="351" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="351" bodyend="354" declfile="HighMap/include/highmap/math.hpp" declline="449" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ac3a402abb2905ac02f1756c0b36e971c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>float</type>
@@ -31469,7 +31682,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="338" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="338" bodyend="341" declfile="HighMap/include/highmap/math.hpp" declline="397" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="356" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="356" bodyend="359" declfile="HighMap/include/highmap/math.hpp" declline="458" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aee749107ce9c4589686d15a62196b8ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -31488,7 +31701,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="343" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="343" bodyend="351" declfile="HighMap/include/highmap/math.hpp" declline="398" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="361" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="361" bodyend="369" declfile="HighMap/include/highmap/math.hpp" declline="459" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aae372587e98d5acb969a89a5f0661019" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>float</type>
@@ -31519,7 +31732,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="353" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="353" bodyend="356" declfile="HighMap/include/highmap/math.hpp" declline="407" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="371" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="371" bodyend="374" declfile="HighMap/include/highmap/math.hpp" declline="468" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a8ca69cf3fef2d995719ff4284f6c50b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -31538,7 +31751,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="358" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="358" bodyend="366" declfile="HighMap/include/highmap/math.hpp" declline="408" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="376" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="376" bodyend="384" declfile="HighMap/include/highmap/math.hpp" declline="469" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ae7d9d43c2cd453af7a6395cbcb2ac3b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>float</type>
@@ -31569,7 +31782,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="368" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="368" bodyend="377" declfile="HighMap/include/highmap/math.hpp" declline="416" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="386" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="386" bodyend="395" declfile="HighMap/include/highmap/math.hpp" declline="477" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1af37d772a8b2ab47144d459fd35aaf7dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -31588,7 +31801,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="379" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="379" bodyend="387" declfile="HighMap/include/highmap/math.hpp" declline="417" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="397" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="397" bodyend="405" declfile="HighMap/include/highmap/math.hpp" declline="478" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a6b608e2826c1f9ba54a0e8922d5faa6b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -31619,7 +31832,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="389" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="389" bodyend="397" declfile="HighMap/include/highmap/math.hpp" declline="425" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="407" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="407" bodyend="415" declfile="HighMap/include/highmap/math.hpp" declline="486" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a30e6961ce99edeb86af6f4ce61651bd0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -31637,7 +31850,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="399" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="399" bodyend="407" declfile="HighMap/include/highmap/math.hpp" declline="427" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="417" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="417" bodyend="425" declfile="HighMap/include/highmap/math.hpp" declline="488" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1af80bcff234bf1482cf26896b9d21d270" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
