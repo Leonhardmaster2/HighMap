@@ -1,5 +1,16 @@
 var NAVTREEINDEX14 =
 {
+"point__sampling_8hpp.html#a8dad71368ba3687b381f3c72b66cace5":[5,0,1,0,0,1,6,12],
+"point__sampling_8hpp.html#a98c0cc0d90ceb61a0ba28205458b18df":[5,0,1,0,0,1,6,3],
+"point__sampling_8hpp.html#a9cb4524fa8aa7f074bed3793ad1e0302":[5,0,1,0,0,1,6,6],
+"point__sampling_8hpp.html#a9e701766f54eaf6ad79956bf90b9bb8b":[5,0,1,0,0,1,6,13],
+"point__sampling_8hpp.html#aa3a56cb9295faf9c5b7a4ad082eeb486":[5,0,1,0,0,1,6,5],
+"point__sampling_8hpp.html#aba758c4143b6e499ec6f4385467a6d77":[5,0,1,0,0,1,6,0],
+"point__sampling_8hpp.html#aba758c4143b6e499ec6f4385467a6d77a8943dd2a2e3993c1e0cff37be3f65957":[5,0,1,0,0,1,6,0,3],
+"point__sampling_8hpp.html#aba758c4143b6e499ec6f4385467a6d77a99ca15104343ff0356c6fc0ffe4f837d":[5,0,1,0,0,1,6,0,1],
+"point__sampling_8hpp.html#aba758c4143b6e499ec6f4385467a6d77aea0acc8d27d5a8a13e107f49120c084e":[5,0,1,0,0,1,6,0,0],
+"point__sampling_8hpp.html#aba758c4143b6e499ec6f4385467a6d77aeebf5714b383e3b3be100ceba46d8fe5":[5,0,1,0,0,1,6,0,2],
+"point__sampling_8hpp.html#ac30b62e2cc35d56c33af4d1c12c54f81":[5,0,1,0,0,1,6,7],
 "point__sampling_8hpp.html#ac3b1e6c5b2380e41efff2501021638f1":[5,0,1,0,0,1,6,2],
 "point__sampling_8hpp.html#aca05646c60f189d1cb4ade3c062ea0e2":[5,0,1,0,0,1,6,9],
 "point__sampling_8hpp.html#acb1099889036fd10623012ab68592914":[5,0,1,0,0,1,6,8],
@@ -238,16 +249,5 @@ var NAVTREEINDEX14 =
 "recurve_8cpp.html#ab9926efb5c9c3859a0407b8fb9dbe4f7":[5,0,1,1,13,6,11],
 "recurve_8cpp.html#ad1ea450b3a5185e8066a5da48718489c":[5,0,1,1,13,6,5],
 "recurve_8cpp.html#ad4c8b8b2361aa1fec5c984287a837461":[5,0,1,1,13,6,13],
-"recurve_8cpp.html#ad8482d5a5c0650c20ffe1dc86b5f8a61":[5,0,1,1,13,6,3],
-"recurve_8cpp.html#af080317ac939503049515f0a792c84b3":[5,0,1,1,13,6,6],
-"recurve_8cpp.html#af9e3033eb08345c1e3c46bde5dcd29a1":[5,0,1,1,13,6,2],
-"recurve_8cpp.html#affcc500f17897f37cdb0717bc579d2b4":[5,0,1,1,13,6,10],
-"reverse__midpoint_8cpp.html":[5,0,1,1,1,2],
-"reverse__midpoint_8cpp.html#a19bb0a5d0609ac671ca054d18959c7f1":[5,0,1,1,1,2,2],
-"reverse__midpoint_8cpp.html#a3d953aa5fcf59193b3b8b98db3f5a872":[5,0,1,1,1,2,0],
-"reverse__midpoint_8cpp.html#af5440364a346b297246885e95793ef45":[5,0,1,1,1,2,1],
-"ridgelines_8cpp.html":[5,0,1,1,1,3],
-"ridgelines_8cpp.html#a49bf95ae7344e531d7c2af0071e64649":[5,0,1,1,1,3,1],
-"ridgelines_8cpp.html#aca4a5b0313f4efe251b20d90652a896b":[5,0,1,1,1,3,0],
-"rifts__gpu_8cpp.html":[5,0,1,1,10,17]
+"recurve_8cpp.html#ad8482d5a5c0650c20ffe1dc86b5f8a61":[5,0,1,1,13,6,3]
 };

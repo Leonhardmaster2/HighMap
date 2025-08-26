@@ -653,7 +653,7 @@ Public Attributes</h2></td></tr>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z1 = z0;</div>
 <div class="line">  path_chull.<a class="code hl_function" href="classhmap_1_1Path.html#a3b90d30abcdc4da9e381957d76c5d8db">to_array</a>(z1, bbox);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_cloud_get_convex_hull.png&quot;</span>,</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_cloud_get_convex_hull.png&quot;</span>,</div>
 <div class="line">                          {z0, z1},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
@@ -667,7 +667,7 @@ Public Attributes</h2></td></tr>
 <div class="ttc" id="aclasshmap_1_1Path_html_a2ea3482a302d8ef30084fd39e57715de"><div class="ttname"><a href="classhmap_1_1Path.html#a2ea3482a302d8ef30084fd39e57715de">hmap::Path::closed</a></div><div class="ttdeci">bool closed</div><div class="ttdoc">Defines whether the path is closed or open. If true, the path is closed, forming a loop....</div><div class="ttdef"><b>Definition</b> path.hpp:55</div></div>
 <div class="ttc" id="aclasshmap_1_1Path_html_a3b90d30abcdc4da9e381957d76c5d8db"><div class="ttname"><a href="classhmap_1_1Path.html#a3b90d30abcdc4da9e381957d76c5d8db">hmap::Path::to_array</a></div><div class="ttdeci">void to_array(Array &amp;array, Vec4&lt; float &gt; bbox, bool filled=false) const</div><div class="ttdoc">Project path points to an array.</div><div class="ttdef"><b>Definition</b> path.cpp:810</div></div>
 <div class="ttc" id="ahighmap_8hpp_html"><div class="ttname"><a href="highmap_8hpp.html">highmap.hpp</a></div></div>
-<div class="ttc" id="anamespacehmap_html_a1c490f296571a75e35d05b10c075ae6c"><div class="ttname"><a href="namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c">hmap::export_banner_png</a></div><div class="ttdeci">void export_banner_png(const std::string &amp;fname, const std::vector&lt; Array &gt; &amp;arrays, int cmap, bool hillshading=false)</div><div class="ttdoc">Exports a set of arrays as a banner PNG image file.</div><div class="ttdef"><b>Definition</b> export_banner_png.cpp:11</div></div>
+<div class="ttc" id="anamespacehmap_html_ac2452e568959bc21c9b7b09202e5977a"><div class="ttname"><a href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a></div><div class="ttdeci">void export_banner_png(const std::string &amp;fname, const std::vector&lt; Array &gt; &amp;arrays, int cmap, bool hillshading=false, bool normalize_arrays=false)</div><div class="ttdoc">Exports a set of arrays as a banner PNG image file.</div><div class="ttdef"><b>Definition</b> export_banner_png.cpp:11</div></div>
 <div class="ttc" id="anamespacehmap_html_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143"><div class="ttname"><a href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::INFERNO</a></div><div class="ttdeci">@ INFERNO</div><div class="ttdef"><b>Definition</b> colormaps.hpp:85</div></div>
 <div class="ttc" id="astructhmap_1_1Vec2_html"><div class="ttname"><a href="structhmap_1_1Vec2.html">hmap::Vec2</a></div><div class="ttdoc">Vec2 class for basic manipulation of 2D vectors.</div><div class="ttdef"><b>Definition</b> algebra.hpp:40</div></div>
 <div class="ttc" id="astructhmap_1_1Vec4_html"><div class="ttname"><a href="structhmap_1_1Vec4.html">hmap::Vec4</a></div><div class="ttdoc">Vec4 class for basic manipulation of 4D vectors.</div><div class="ttdef"><b>Definition</b> algebra.hpp:564</div></div>
@@ -1383,7 +1383,7 @@ P(\text{keep } p) = \rho(x,y) \in [0,1]
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z_sdf1 = cloud.<a class="code hl_function" href="classhmap_1_1Cloud.html#a04dcb02dd2df076553e410dbcceb2c35">to_array_sdf</a>(shape, bbox_array);</div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z_sdf2 = cloud.<a class="code hl_function" href="classhmap_1_1Cloud.html#a04dcb02dd2df076553e410dbcceb2c35">to_array_sdf</a>(shape, bbox_array, &amp;<a class="code hl_function" href="namespacehmap.html#a03c0be3a7198eebacefcb208b0cfee99">noise</a>, &amp;<a class="code hl_function" href="namespacehmap.html#a03c0be3a7198eebacefcb208b0cfee99">noise</a>);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_cloud_sdf.png&quot;</span>,</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_cloud_sdf.png&quot;</span>,</div>
 <div class="line">                          {z_sdf1, z_sdf2},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>
@@ -1510,7 +1510,7 @@ P(\text{keep } p) = \rho(x,y) \in [0,1]
 <div class="line">                        &amp;ny,</div>
 <div class="line">                        bbox);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_cloud_to_array_interp.png&quot;</span>,</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_cloud_to_array_interp.png&quot;</span>,</div>
 <div class="line">                          {z0, z1, z2, z3},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>

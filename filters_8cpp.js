@@ -53,6 +53,7 @@ var filters_8cpp =
     [ "smooth_cone", "filters_8cpp.html#a9d8b2a9245ce9b774f4fe0cb06460b13", null ],
     [ "smooth_cpulse", "filters_8cpp.html#a95c0f4c53278620f0812381ccaa7459e", null ],
     [ "smooth_cpulse", "filters_8cpp.html#a8fdb203094eb8cfee25b3c4364fbbed6", null ],
+    [ "smooth_cpulse_edge_removing", "filters_8cpp.html#aa2de65aa233324cf294faf2421ccec2a", null ],
     [ "smooth_flat", "filters_8cpp.html#a81647bbf7183fed5cbfc468c8fa75b62", null ],
     [ "smooth_gaussian", "filters_8cpp.html#a4e3cbe9e4b43341148c170f34bd462fd", null ],
     [ "smooth_gaussian", "filters_8cpp.html#a6a2f30cadb25b5e8b20d73c5447e4c56", null ],

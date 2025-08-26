@@ -16,7 +16,7 @@ var searchData=
   ['export_5fas_5fascii_13',['export_as_ascii',['../namespacehmap.html#aafe1d43996eb4e55731c67b096cebcf6',1,'hmap']]],
   ['export_5fas_5fcubemap_14',['export_as_cubemap',['../namespacehmap.html#a3aa96cd684efd827ce57ffd9fef3c950',1,'hmap']]],
   ['export_5fasset_15',['export_asset',['../namespacehmap.html#a7b8945745feaeaa365d965ce66b32f58',1,'hmap']]],
-  ['export_5fbanner_5fpng_16',['export_banner_png',['../namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c',1,'hmap']]],
+  ['export_5fbanner_5fpng_16',['export_banner_png',['../namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a',1,'hmap']]],
   ['export_5fnormal_5fmap_5fpng_17',['export_normal_map_png',['../namespacehmap.html#a9648a23e61a84a702d89159d516dd4ec',1,'hmap']]],
   ['export_5fsplatmap_5fpng_18',['export_splatmap_png',['../namespacehmap.html#a32464922c39713910ebeab632e0e8fd1',1,'hmap']]],
   ['export_5ftiled_19',['export_tiled',['../namespacehmap.html#a90b6cad473f30aa0aa92158e5af7ee7f',1,'hmap']]],

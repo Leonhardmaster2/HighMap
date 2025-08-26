@@ -2,6 +2,7 @@ var gradient_8hpp =
 [
     [ "gradient1d", "gradient_8hpp.html#ab0755dccfcae2b02a211c091e33f79a9", null ],
     [ "gradient_angle", "gradient_8hpp.html#ae23a30f7964baacd6d0457c288fd3598", null ],
+    [ "gradient_angle_circular_smoothing", "gradient_8hpp.html#a5d7bb7244ff862834560b9145866e1b2", null ],
     [ "gradient_norm", "gradient_8hpp.html#a5f58c4149344b401d82f0be3c3807156", null ],
     [ "gradient_norm_prewitt", "gradient_8hpp.html#ab02a5e564763a35cd3baa727b825db4a", null ],
     [ "gradient_norm_scharr", "gradient_8hpp.html#a522e28e6f997165bb492aa68327556d9", null ],

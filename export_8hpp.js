@@ -28,7 +28,7 @@ var export_8hpp =
     [ "export_asset", "export_8hpp.html#a7b8945745feaeaa365d965ce66b32f58", null ],
     [ "export_as_ascii", "export_8hpp.html#aafe1d43996eb4e55731c67b096cebcf6", null ],
     [ "export_as_cubemap", "export_8hpp.html#a3aa96cd684efd827ce57ffd9fef3c950", null ],
-    [ "export_banner_png", "export_8hpp.html#a1c490f296571a75e35d05b10c075ae6c", null ],
+    [ "export_banner_png", "export_8hpp.html#ac2452e568959bc21c9b7b09202e5977a", null ],
     [ "export_normal_map_png", "export_8hpp.html#a9648a23e61a84a702d89159d516dd4ec", null ],
     [ "export_splatmap_png", "export_8hpp.html#a32464922c39713910ebeab632e0e8fd1", null ],
     [ "export_tiled", "export_8hpp.html#a90b6cad473f30aa0aa92158e5af7ee7f", null ],

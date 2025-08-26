@@ -72,13 +72,14 @@ var searchData=
   ['get_5fy_69',['get_y',['../classhmap_1_1Cloud.html#abf5f933e3506395b5369cb090119002e',1,'hmap::Cloud::get_y()'],['../classhmap_1_1Path.html#ab9ff9f7a0ea9c090c34810536458da8d',1,'hmap::Path::get_y()']]],
   ['gradient1d_70',['gradient1d',['../namespacehmap.html#ab0755dccfcae2b02a211c091e33f79a9',1,'hmap']]],
   ['gradient_5fangle_71',['gradient_angle',['../namespacehmap.html#ae23a30f7964baacd6d0457c288fd3598',1,'hmap']]],
-  ['gradient_5fnorm_72',['gradient_norm',['../namespacehmap.html#a5f58c4149344b401d82f0be3c3807156',1,'hmap::gradient_norm()'],['../namespacehmap_1_1gpu.html#a1c5e49734e49973fe1b275b6988dba12',1,'hmap::gpu::gradient_norm()']]],
-  ['gradient_5fnorm_5fprewitt_73',['gradient_norm_prewitt',['../namespacehmap.html#ab02a5e564763a35cd3baa727b825db4a',1,'hmap']]],
-  ['gradient_5fnorm_5fscharr_74',['gradient_norm_scharr',['../namespacehmap.html#a522e28e6f997165bb492aa68327556d9',1,'hmap']]],
-  ['gradient_5fnorm_5fsobel_75',['gradient_norm_sobel',['../namespacehmap.html#ad0956aa203f9962dba258a91543d2969',1,'hmap']]],
-  ['gradient_5ftalus_76',['gradient_talus',['../namespacehmap.html#a618fb6d396a832c3dd1f053bfd27eed4',1,'hmap::gradient_talus(const Array &amp;array)'],['../namespacehmap.html#aba851d370796b7b6654e681339561eb2',1,'hmap::gradient_talus(const Array &amp;array, Array &amp;talus)']]],
-  ['gradient_5fx_77',['gradient_x',['../namespacehmap.html#a11c1600c2d67387c1b037fadcca9a069',1,'hmap::gradient_x(const Array &amp;array, Array &amp;dx)'],['../namespacehmap.html#a11d438a3f643427c957d160b7c1a04de',1,'hmap::gradient_x(const Array &amp;array)']]],
-  ['gradient_5fy_78',['gradient_y',['../namespacehmap.html#a6032811e40d11b8957dc48d98711acf9',1,'hmap::gradient_y(const Array &amp;array, Array &amp;dy)'],['../namespacehmap.html#a8dbef7ccc1936646831eb5a24db58d81',1,'hmap::gradient_y(const Array &amp;array)']]],
-  ['graph_79',['graph',['../classhmap_1_1Graph.html#a0ff744b8d48139b49e7dae7c7d4e7a18',1,'hmap::Graph::Graph(std::vector&lt; Point &gt; points)'],['../classhmap_1_1Graph.html#a1209ddaafbb68fed3c43ec7766d8dc0a',1,'hmap::Graph::Graph()'],['../classhmap_1_1Graph.html#af7cd4377270d4e0dd90e7c8793351191',1,'hmap::Graph::Graph(Cloud cloud)'],['../classhmap_1_1Graph.html#a6d56f1e42407c74f2cf097b7a9b05d7b',1,'hmap::Graph::Graph(std::vector&lt; float &gt; x, std::vector&lt; float &gt; y)']]],
-  ['grid_5fxy_5fvector_80',['grid_xy_vector',['../namespacehmap.html#a5325e50550ce04f027ffa3c6b2a3ef53',1,'hmap']]]
+  ['gradient_5fangle_5fcircular_5fsmoothing_72',['gradient_angle_circular_smoothing',['../namespacehmap.html#a5d7bb7244ff862834560b9145866e1b2',1,'hmap']]],
+  ['gradient_5fnorm_73',['gradient_norm',['../namespacehmap.html#a5f58c4149344b401d82f0be3c3807156',1,'hmap::gradient_norm()'],['../namespacehmap_1_1gpu.html#a1c5e49734e49973fe1b275b6988dba12',1,'hmap::gpu::gradient_norm()']]],
+  ['gradient_5fnorm_5fprewitt_74',['gradient_norm_prewitt',['../namespacehmap.html#ab02a5e564763a35cd3baa727b825db4a',1,'hmap']]],
+  ['gradient_5fnorm_5fscharr_75',['gradient_norm_scharr',['../namespacehmap.html#a522e28e6f997165bb492aa68327556d9',1,'hmap']]],
+  ['gradient_5fnorm_5fsobel_76',['gradient_norm_sobel',['../namespacehmap.html#ad0956aa203f9962dba258a91543d2969',1,'hmap']]],
+  ['gradient_5ftalus_77',['gradient_talus',['../namespacehmap.html#a618fb6d396a832c3dd1f053bfd27eed4',1,'hmap::gradient_talus(const Array &amp;array)'],['../namespacehmap.html#aba851d370796b7b6654e681339561eb2',1,'hmap::gradient_talus(const Array &amp;array, Array &amp;talus)']]],
+  ['gradient_5fx_78',['gradient_x',['../namespacehmap.html#a11c1600c2d67387c1b037fadcca9a069',1,'hmap::gradient_x(const Array &amp;array, Array &amp;dx)'],['../namespacehmap.html#a11d438a3f643427c957d160b7c1a04de',1,'hmap::gradient_x(const Array &amp;array)']]],
+  ['gradient_5fy_79',['gradient_y',['../namespacehmap.html#a6032811e40d11b8957dc48d98711acf9',1,'hmap::gradient_y(const Array &amp;array, Array &amp;dy)'],['../namespacehmap.html#a8dbef7ccc1936646831eb5a24db58d81',1,'hmap::gradient_y(const Array &amp;array)']]],
+  ['graph_80',['graph',['../classhmap_1_1Graph.html#a0ff744b8d48139b49e7dae7c7d4e7a18',1,'hmap::Graph::Graph(std::vector&lt; Point &gt; points)'],['../classhmap_1_1Graph.html#a1209ddaafbb68fed3c43ec7766d8dc0a',1,'hmap::Graph::Graph()'],['../classhmap_1_1Graph.html#af7cd4377270d4e0dd90e7c8793351191',1,'hmap::Graph::Graph(Cloud cloud)'],['../classhmap_1_1Graph.html#a6d56f1e42407c74f2cf097b7a9b05d7b',1,'hmap::Graph::Graph(std::vector&lt; float &gt; x, std::vector&lt; float &gt; y)']]],
+  ['grid_5fxy_5fvector_81',['grid_xy_vector',['../namespacehmap.html#a5325e50550ce04f027ffa3c6b2a3ef53',1,'hmap']]]
 ];

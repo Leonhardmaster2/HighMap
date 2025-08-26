@@ -304,6 +304,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ad201432c26c75bbab156a22c52b7121a" id="r_ad201432c26c75bbab156a22c52b7121a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#ad201432c26c75bbab156a22c52b7121a">smooth_cpulse</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, int ir, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_mask)</td></tr>
 <tr class="memdesc:ad201432c26c75bbab156a22c52b7121a"><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="namespacehmap.html#a95c0f4c53278620f0812381ccaa7459e" title="Apply filtering to the array using convolution with a cubic pulse kernel.">hmap::smooth_cpulse</a>.  <br /></td></tr>
 <tr class="separator:ad201432c26c75bbab156a22c52b7121a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4744808e10a1dfaf752cd68366824ee9" id="r_a4744808e10a1dfaf752cd68366824ee9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a4744808e10a1dfaf752cd68366824ee9">smooth_cpulse_edge_removing</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, float talus, float talus_width, int ir)</td></tr>
+<tr class="memdesc:a4744808e10a1dfaf752cd68366824ee9"><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="namespacehmap.html#aa2de65aa233324cf294faf2421ccec2a" title="Smooths an array while attenuating edges using a gradient-based pulse.">hmap::smooth_cpulse_edge_removing</a>.  <br /></td></tr>
+<tr class="separator:a4744808e10a1dfaf752cd68366824ee9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab10a6dc3d92519c7bd3244571bcd6429" id="r_ab10a6dc3d92519c7bd3244571bcd6429"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#ab10a6dc3d92519c7bd3244571bcd6429">smooth_fill</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, int ir, float k=0.1<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_deposition_map=nullptr)</td></tr>
 <tr class="memdesc:ab10a6dc3d92519c7bd3244571bcd6429"><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="namespacehmap.html#ae9fece3e5896d3a5fe4a89d76d6b9dba" title="Apply cubic pulse smoothing to fill lower flat regions while preserving some sharpness.">hmap::smooth_fill</a>.  <br /></td></tr>
 <tr class="separator:ab10a6dc3d92519c7bd3244571bcd6429"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -576,7 +579,7 @@ Functions</h2></td></tr>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z2);</div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z3);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_blend_poisson_bf.png&quot;</span>,</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_blend_poisson_bf.png&quot;</span>,</div>
 <div class="line">                          {z1, z2, z3},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>
@@ -584,11 +587,11 @@ Functions</h2></td></tr>
 <div class="ttc" id="ahighmap_8hpp_html"><div class="ttname"><a href="highmap_8hpp.html">highmap.hpp</a></div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_a65a176508b404f80e5f5abd31456712e"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a65a176508b404f80e5f5abd31456712e">hmap::gpu::blend_poisson_bf</a></div><div class="ttdeci">Array blend_poisson_bf(const Array &amp;array1, const Array &amp;array2, const int iterations=500, const Array *p_mask=nullptr)</div><div class="ttdoc">Blends two arrays using Poisson blending with a brute-force solver.</div><div class="ttdef"><b>Definition</b> blending_gpu.cpp:30</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_adb8336ed4d83c15500872185dee45d50"><div class="ttname"><a href="namespacehmap_1_1gpu.html#adb8336ed4d83c15500872185dee45d50">hmap::gpu::init_opencl</a></div><div class="ttdeci">bool init_opencl()</div><div class="ttdef"><b>Definition</b> gpu_opencl.cpp:24</div></div>
-<div class="ttc" id="anamespacehmap_html_a1c490f296571a75e35d05b10c075ae6c"><div class="ttname"><a href="namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c">hmap::export_banner_png</a></div><div class="ttdeci">void export_banner_png(const std::string &amp;fname, const std::vector&lt; Array &gt; &amp;arrays, int cmap, bool hillshading=false)</div><div class="ttdoc">Exports a set of arrays as a banner PNG image file.</div><div class="ttdef"><b>Definition</b> export_banner_png.cpp:11</div></div>
 <div class="ttc" id="anamespacehmap_html_a262e6495cb2d02598f36a2b46114b2b4"><div class="ttname"><a href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a></div><div class="ttdeci">void remap(Array &amp;array, float vmin, float vmax, float from_min, float from_max)</div><div class="ttdoc">Remap array elements from a starting range to a target range.</div><div class="ttdef"><b>Definition</b> range.cpp:374</div></div>
 <div class="ttc" id="anamespacehmap_html_a40b948c49a05c14f2d540dc1a6952130"><div class="ttname"><a href="namespacehmap.html#a40b948c49a05c14f2d540dc1a6952130">hmap::noise_fbm</a></div><div class="ttdeci">Array noise_fbm(NoiseType noise_type, Vec2&lt; int &gt; shape, Vec2&lt; float &gt; kw, uint seed, int octaves=8, float weight=0.7f, float persistence=0.5f, float lacunarity=2.f, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Return an array filled with coherence fbm noise.</div><div class="ttdef"><b>Definition</b> noise.cpp:41</div></div>
 <div class="ttc" id="anamespacehmap_html_ab8197c4c7a85dacb616fee7a7d0df195a035bda7c8c2179b47b9a766531c2e89e"><div class="ttname"><a href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a035bda7c8c2179b47b9a766531c2e89e">hmap::WORLEY</a></div><div class="ttdeci">@ WORLEY</div><div class="ttdoc">Worley.</div><div class="ttdef"><b>Definition</b> functions.hpp:73</div></div>
 <div class="ttc" id="anamespacehmap_html_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581"><div class="ttname"><a href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::PERLIN</a></div><div class="ttdeci">@ PERLIN</div><div class="ttdoc">Perlin.</div><div class="ttdef"><b>Definition</b> functions.hpp:64</div></div>
+<div class="ttc" id="anamespacehmap_html_ac2452e568959bc21c9b7b09202e5977a"><div class="ttname"><a href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a></div><div class="ttdeci">void export_banner_png(const std::string &amp;fname, const std::vector&lt; Array &gt; &amp;arrays, int cmap, bool hillshading=false, bool normalize_arrays=false)</div><div class="ttdoc">Exports a set of arrays as a banner PNG image file.</div><div class="ttdef"><b>Definition</b> export_banner_png.cpp:11</div></div>
 <div class="ttc" id="anamespacehmap_html_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced"><div class="ttname"><a href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::JET</a></div><div class="ttdeci">@ JET</div><div class="ttdef"><b>Definition</b> colormaps.hpp:86</div></div>
 <div class="ttc" id="astructhmap_1_1Vec2_html"><div class="ttname"><a href="structhmap_1_1Vec2.html">hmap::Vec2</a></div><div class="ttdoc">Vec2 class for basic manipulation of 2D vectors.</div><div class="ttdef"><b>Definition</b> algebra.hpp:40</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
@@ -1235,7 +1238,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap_1_1gpu.html#a9749d24b9dd9bed8ee333910951db395">hmap::gpu::hydraulic_schott</a>(z, iterations, talus);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_hydraulic_schott.png&quot;</span>,</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_hydraulic_schott.png&quot;</span>,</div>
 <div class="line">                          {z0, z},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>,</div>
 <div class="line">                          <span class="keyword">true</span>);</div>
@@ -1738,7 +1741,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">  <a class="code hl_function" href="namespacehmap_1_1gpu.html#ad57cd314c51ee333bbd99f6eacd441a6">hmap::gpu::rifts</a>(z2, kw_r, <a class="code hl_function" href="namespacehmap.html#aac71bb6c14edc17967957f7918acdbdd">angle</a>, intensity, ++seed);</div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z2);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_rifts.png&quot;</span>, {z1, z2}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>, <span class="keyword">true</span>);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_rifts.png&quot;</span>, {z1, z2}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>, <span class="keyword">true</span>);</div>
 <div class="line">}</div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_ad57cd314c51ee333bbd99f6eacd441a6"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ad57cd314c51ee333bbd99f6eacd441a6">hmap::gpu::rifts</a></div><div class="ttdeci">void rifts(Array &amp;z, const Vec2&lt; float &gt; &amp;kw, float angle, float amplitude, uint seed, float elevation_noise_shift=0.f, float k_smooth_bottom=0.05f, float k_smooth_top=0.05f, float radial_spread_amp=0.2f, float elevation_noise_amp=0.1f, float clamp_vmin=0.f, float remap_vmin=0.f, bool apply_mask=true, bool reverse_mask=false, float mask_gamma=1.f, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_mask=nullptr, const Vec2&lt; float &gt; &amp;center={0.5f, 0.5f}, const Vec4&lt; float &gt; &amp;bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Applies a &quot;rift&quot; deformation effect to a heightmap array.</div><div class="ttdef"><b>Definition</b> rifts_gpu.cpp:12</div></div>
 <div class="ttc" id="anamespacehmap_html_aac71bb6c14edc17967957f7918acdbdd"><div class="ttname"><a href="namespacehmap.html#aac71bb6c14edc17967957f7918acdbdd">hmap::angle</a></div><div class="ttdeci">float angle(const Point &amp;p1, const Point &amp;p2)</div><div class="ttdoc">Computes the angle between two points relative to the x-axis.</div><div class="ttdef"><b>Definition</b> points.cpp:42</div></div>
@@ -1951,9 +1954,9 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">  z1.<a class="code hl_function" href="classhmap_1_1Array.html#a00b8f7462c1e22b1da8a67ec62d4c8c8">dump</a>(<span class="stringliteral">&quot;out0.png&quot;</span>);</div>
 <div class="line">  z2.<a class="code hl_function" href="classhmap_1_1Array.html#a00b8f7462c1e22b1da8a67ec62d4c8c8">dump</a>();</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_strata.png&quot;</span>, {z1, z2}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>, <span class="keyword">true</span>);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_strata.png&quot;</span>, {z1, z2}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>, <span class="keyword">true</span>);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclasshmap_1_1Array_html_a00b8f7462c1e22b1da8a67ec62d4c8c8"><div class="ttname"><a href="classhmap_1_1Array.html#a00b8f7462c1e22b1da8a67ec62d4c8c8">hmap::Array::dump</a></div><div class="ttdeci">void dump(const std::string &amp;fname=&quot;out.png&quot;) const</div><div class="ttdoc">Debug tool, dump some infos and generate an output file (16bits grayscale)</div><div class="ttdef"><b>Definition</b> methods.cpp:93</div></div>
+<div class="ttc" id="aclasshmap_1_1Array_html_a00b8f7462c1e22b1da8a67ec62d4c8c8"><div class="ttname"><a href="classhmap_1_1Array.html#a00b8f7462c1e22b1da8a67ec62d4c8c8">hmap::Array::dump</a></div><div class="ttdeci">void dump(const std::string &amp;fname=&quot;out.png&quot;) const</div><div class="ttdoc">Debug tool, dump some infos and generate an output file (16bits grayscale)</div><div class="ttdef"><b>Definition</b> methods.cpp:94</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_a2a5a7e94f196f51865362f287524403d"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a2a5a7e94f196f51865362f287524403d">hmap::gpu::strata</a></div><div class="ttdeci">void strata(Array &amp;z, float angle, float slope, float gamma, uint seed, bool linear_gamma=true, float kz=1.f, int octaves=4, float lacunarity=2.f, float gamma_noise_ratio=0.5f, float noise_amp=0.4f, const Vec2&lt; float &gt; &amp;noise_kw={4.f, 4.f}, const Vec2&lt; float &gt; &amp;ridge_noise_kw={4.f, 1.2f}, float ridge_angle_shift=45.f, float ridge_noise_amp=0.5f, float ridge_clamp_vmin=0.f, float ridge_remap_vmin=0.f, bool apply_elevation_mask=true, bool apply_ridge_mask=true, float mask_gamma=0.4f, const Array *p_mask=nullptr, const Vec4&lt; float &gt; &amp;bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Applies stratification to a heightfield using directional noise and multiscale gamma transformations.</div><div class="ttdef"><b>Definition</b> strata_gpu.cpp:12</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_strata.png" alt=""/>
@@ -2314,7 +2317,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line"> </div>
 <div class="line">  z3.dump();</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_thermal_ridge.png&quot;</span>,</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_thermal_ridge.png&quot;</span>,</div>
 <div class="line">                          {z, z1, z2, z3},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>,</div>
 <div class="line">                          <span class="keyword">true</span>);</div>
@@ -2485,7 +2488,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line"> </div>
 <div class="line">  z3.dump();</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_thermal_ridge.png&quot;</span>,</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_thermal_ridge.png&quot;</span>,</div>
 <div class="line">                          {z, z1, z2, z3},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>,</div>
 <div class="line">                          <span class="keyword">true</span>);</div>
@@ -3900,6 +3903,48 @@ Only available if OpenCL is enabled.</dd></dl>
 
 </div>
 </div>
+<a id="a4744808e10a1dfaf752cd68366824ee9" name="a4744808e10a1dfaf752cd68366824ee9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4744808e10a1dfaf752cd68366824ee9">&#9670;&#160;</a></span>smooth_cpulse_edge_removing()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hmap::gpu::smooth_cpulse_edge_removing </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>array</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>talus</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>talus_width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ir</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>See <a class="el" href="namespacehmap.html#aa2de65aa233324cf294faf2421ccec2a" title="Smooths an array while attenuating edges using a gradient-based pulse.">hmap::smooth_cpulse_edge_removing</a>. </p>
+
+</div>
+</div>
 <a id="ab10a6dc3d92519c7bd3244571bcd6429" name="ab10a6dc3d92519c7bd3244571bcd6429"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab10a6dc3d92519c7bd3244571bcd6429">&#9670;&#160;</a></span>smooth_fill() <span class="overload">[1/2]</span></h2>
 
@@ -5070,7 +5115,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z = <a class="code hl_function" href="namespacehmap_1_1gpu.html#a06f0930402ba5e7a66eb73d9da9a09ee">hmap::gpu::basalt_field</a>(shape, kw, seed);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_basalt_field.png&quot;</span>,</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_basalt_field.png&quot;</span>,</div>
 <div class="line">                          {z},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>,</div>
 <div class="line">                          <span class="keyword">true</span>);</div>
@@ -5199,7 +5244,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">                                              array_angle,</div>
 <div class="line">                                              angle_spread_ratio);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_gabor_wave.png&quot;</span>,</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_gabor_wave.png&quot;</span>,</div>
 <div class="line">                          {z, z_fbm, za0, za1, za2, zr1, zr2},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>,</div>
 <div class="line">                          <span class="keyword">true</span>);</div>
@@ -5207,7 +5252,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_a50db0e092d6e8d147a587b18ee7ea743"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a50db0e092d6e8d147a587b18ee7ea743">hmap::gpu::gabor_wave</a></div><div class="ttdeci">Array gabor_wave(Vec2&lt; int &gt; shape, Vec2&lt; float &gt; kw, uint seed, const Array &amp;angle, float angle_spread_ratio=1.f, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Return an array filled with coherence Gabor noise.</div><div class="ttdef"><b>Definition</b> primitives_gpu.cpp:42</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_a9a67e946fa8616f634c1e5f1cad6045b"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a9a67e946fa8616f634c1e5f1cad6045b">hmap::gpu::gabor_wave_fbm</a></div><div class="ttdeci">Array gabor_wave_fbm(Vec2&lt; int &gt; shape, Vec2&lt; float &gt; kw, uint seed, const Array &amp;angle, float angle_spread_ratio=1.f, int octaves=8, float weight=0.7f, float persistence=0.5f, float lacunarity=2.f, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Return an array filled with coherence Gabor noise.</div><div class="ttdef"><b>Definition</b> primitives_gpu.cpp:85</div></div>
 <div class="ttc" id="anamespacehmap_html_a03c0be3a7198eebacefcb208b0cfee99"><div class="ttname"><a href="namespacehmap.html#a03c0be3a7198eebacefcb208b0cfee99">hmap::noise</a></div><div class="ttdeci">Array noise(NoiseType noise_type, Vec2&lt; int &gt; shape, Vec2&lt; float &gt; kw, uint seed, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Return an array filled with coherence noise.</div><div class="ttdef"><b>Definition</b> noise.cpp:16</div></div>
-<div class="ttc" id="anamespacehmap_html_ae23a30f7964baacd6d0457c288fd3598"><div class="ttname"><a href="namespacehmap.html#ae23a30f7964baacd6d0457c288fd3598">hmap::gradient_angle</a></div><div class="ttdeci">Array gradient_angle(const Array &amp;array, bool downward=false)</div><div class="ttdoc">Compute the polar angle of the gradient of a 2D array.</div><div class="ttdef"><b>Definition</b> gradient.cpp:60</div></div>
+<div class="ttc" id="anamespacehmap_html_ae23a30f7964baacd6d0457c288fd3598"><div class="ttname"><a href="namespacehmap.html#ae23a30f7964baacd6d0457c288fd3598">hmap::gradient_angle</a></div><div class="ttdeci">Array gradient_angle(const Array &amp;array, bool downward=false)</div><div class="ttdoc">Compute the polar angle of the gradient of a 2D array.</div><div class="ttdef"><b>Definition</b> gradient.cpp:62</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_gabor_wave.png" alt=""/>
 </div>
@@ -5430,7 +5475,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">                                              array_angle,</div>
 <div class="line">                                              angle_spread_ratio);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_gabor_wave.png&quot;</span>,</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_gabor_wave.png&quot;</span>,</div>
 <div class="line">                          {z, z_fbm, za0, za1, za2, zr1, zr2},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>,</div>
 <div class="line">                          <span class="keyword">true</span>);</div>
@@ -5735,7 +5780,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">                                          amp,</div>
 <div class="line">                                          angle_spread_ratio);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_gavoronoise.png&quot;</span>,</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_gavoronoise.png&quot;</span>,</div>
 <div class="line">                          {z1, z2, z3, z4},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>,</div>
 <div class="line">                          <span class="keyword">true</span>);</div>
@@ -6130,7 +6175,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z1 = <a class="code hl_function" href="namespacehmap_1_1gpu.html#a50332f79ca9b2548089359f5ad4b8ffd">hmap::gpu::mountain_range_radial</a>(shape, kw, seed);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_mountain_range_radial.png&quot;</span>,</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_mountain_range_radial.png&quot;</span>,</div>
 <div class="line">                          {z1},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>,</div>
 <div class="line">                          <span class="keyword">true</span>);</div>
@@ -6782,7 +6827,7 @@ The OpenCL kernel "vorolines" must be defined and compiled beforehand.</dd></dl>
 <div class="line">    zs.push_back(z);</div>
 <div class="line">  }</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_vorolines.png&quot;</span>, zs, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_vorolines.png&quot;</span>, zs, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// FBM</span></div>
 <div class="line">  zs = {};</div>
@@ -6802,7 +6847,7 @@ The OpenCL kernel "vorolines" must be defined and compiled beforehand.</dd></dl>
 <div class="line">    zs.push_back(z);</div>
 <div class="line">  }</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_vorolines_fbm.png&quot;</span>, zs, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_vorolines_fbm.png&quot;</span>, zs, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_a85000763147ffd507d483ba9be27f38b"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a85000763147ffd507d483ba9be27f38b">hmap::gpu::vorolines</a></div><div class="ttdeci">Array vorolines(Vec2&lt; int &gt; shape, float density, uint seed, float k_smoothing=0.f, float exp_sigma=0.f, float alpha=0.f, float alpha_span=M_PI, VoronoiReturnType return_type=VoronoiReturnType::F1_SQUARED, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f}, Vec4&lt; float &gt; bbox_points={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Generates a Voronoi-based pattern where cells are defined by proximity to random lines.</div><div class="ttdef"><b>Definition</b> primitives_gpu.cpp:600</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_ac2ad88df8eb3c863235f96f1678634e4"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ac2ad88df8eb3c863235f96f1678634e4">hmap::gpu::vorolines_fbm</a></div><div class="ttdeci">Array vorolines_fbm(Vec2&lt; int &gt; shape, float density, uint seed, float k_smoothing=0.f, float exp_sigma=0.f, float alpha=0.f, float alpha_span=M_PI, VoronoiReturnType return_type=VoronoiReturnType::F1_SQUARED, int octaves=8, float weight=0.7f, float persistence=0.5f, float lacunarity=2.f, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f}, Vec4&lt; float &gt; bbox_points={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Generates a Voronoi-based pattern using distances to lines defined by random points and angles,...</div><div class="ttdef"><b>Definition</b> primitives_gpu.cpp:679</div></div>
@@ -7004,7 +7049,7 @@ This function requires an OpenCL kernel named "vorolines_fbm" to be compiled and
 <div class="line">    zs.push_back(z);</div>
 <div class="line">  }</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_vorolines.png&quot;</span>, zs, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_vorolines.png&quot;</span>, zs, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// FBM</span></div>
 <div class="line">  zs = {};</div>
@@ -7024,7 +7069,7 @@ This function requires an OpenCL kernel named "vorolines_fbm" to be compiled and
 <div class="line">    zs.push_back(z);</div>
 <div class="line">  }</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_vorolines_fbm.png&quot;</span>, zs, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_vorolines_fbm.png&quot;</span>, zs, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_vorolines.png" alt=""/>
@@ -7185,7 +7230,7 @@ This function requires an OpenCL kernel named "vorolines_fbm" to be compiled and
 <div class="line">    zs.push_back(z);</div>
 <div class="line">  }</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_voronoi.png&quot;</span>, zs, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_voronoi.png&quot;</span>, zs, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_a0c9c2a528f344ede2aa320fdf2583790"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a0c9c2a528f344ede2aa320fdf2583790">hmap::gpu::voronoi</a></div><div class="ttdeci">Array voronoi(Vec2&lt; int &gt; shape, Vec2&lt; float &gt; kw, uint seed, Vec2&lt; float &gt; jitter={0.5f, 0.5f}, float k_smoothing=0.f, float exp_sigma=0.f, VoronoiReturnType return_type=VoronoiReturnType::F1_SQUARED, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Generates a Voronoi diagram in a 2D array with configurable properties.</div><div class="ttdef"><b>Definition</b> primitives_gpu.cpp:724</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_aae4961b7c0f65d6904cc61022eb2642b"><div class="ttname"><a href="namespacehmap_1_1gpu.html#aae4961b7c0f65d6904cc61022eb2642b">hmap::gpu::voronoi_fbm</a></div><div class="ttdeci">Array voronoi_fbm(Vec2&lt; int &gt; shape, Vec2&lt; float &gt; kw, uint seed, Vec2&lt; float &gt; jitter={0.5f, 0.5f}, float k_smoothing=0.f, float exp_sigma=0.f, VoronoiReturnType return_type=VoronoiReturnType::F1_SQUARED, int octaves=8, float weight=0.7f, float persistence=0.5f, float lacunarity=2.f, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Generates a Voronoi diagram in a 2D array with configurable properties.</div><div class="ttdef"><b>Definition</b> primitives_gpu.cpp:766</div></div>
@@ -7373,7 +7418,7 @@ This function requires an OpenCL kernel named "vorolines_fbm" to be compiled and
 <div class="line">    zs.push_back(z);</div>
 <div class="line">  }</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_voronoi.png&quot;</span>, zs, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_voronoi.png&quot;</span>, zs, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_voronoi.png" alt=""/>
@@ -7563,7 +7608,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line"> </div>
 <div class="line">  zfbm.<a class="code hl_function" href="classhmap_1_1Array.html#a3517b483a468873cefa73f7773a893ec">infos</a>();</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_voronoise.png&quot;</span>,</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_voronoise.png&quot;</span>,</div>
 <div class="line">                          {z00, z10, z01, z11, zfbm},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>
@@ -7707,7 +7752,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line"> </div>
 <div class="line">  zfbm.<a class="code hl_function" href="classhmap_1_1Array.html#a3517b483a468873cefa73f7773a893ec">infos</a>();</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_voronoise.png&quot;</span>,</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_voronoise.png&quot;</span>,</div>
 <div class="line">                          {z00, z10, z01, z11, zfbm},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>
@@ -7862,7 +7907,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">    zs.push_back(z);</div>
 <div class="line">  }</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_vororand.png&quot;</span>, zs, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_vororand.png&quot;</span>, zs, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_ad25e08146acf2dc7101ec18dbfaa0d2b"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ad25e08146acf2dc7101ec18dbfaa0d2b">hmap::gpu::vororand</a></div><div class="ttdeci">Array vororand(Vec2&lt; int &gt; shape, float density, float variability, uint seed, float k_smoothing=0.f, float exp_sigma=0.f, VoronoiReturnType return_type=VoronoiReturnType::F1_SQUARED, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f}, Vec4&lt; float &gt; bbox_points={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Generates a 2D Voronoi-based scalar field using OpenCL.</div><div class="ttdef"><b>Definition</b> primitives_gpu.cpp:933</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">

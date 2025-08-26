@@ -409,7 +409,7 @@ Public Attributes</h2></td></tr>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z3 = <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a>(shape);</div>
 <div class="line">  path.<a class="code hl_function" href="classhmap_1_1Path.html#a3b90d30abcdc4da9e381957d76c5d8db">to_array</a>(z3, bbox);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_path.png&quot;</span>, {z1, z2, z3}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_path.png&quot;</span>, {z1, z2, z3}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
 <div class="ttc" id="aclasshmap_1_1Array_html"><div class="ttname"><a href="classhmap_1_1Array.html">hmap::Array</a></div><div class="ttdoc">Array class, helper to manipulate 2D float array with &quot;(i, j)&quot; indexing.</div><div class="ttdef"><b>Definition</b> array.hpp:32</div></div>
 <div class="ttc" id="aclasshmap_1_1Path_html"><div class="ttname"><a href="classhmap_1_1Path.html">hmap::Path</a></div><div class="ttdoc">Represents an ordered set of points in 2D, forming a polyline (open or closed).</div><div class="ttdef"><b>Definition</b> path.hpp:49</div></div>
@@ -419,7 +419,7 @@ Public Attributes</h2></td></tr>
 <div class="ttc" id="aclasshmap_1_1Path_html_ad3be8675473f2e28e10d5197d0c16923"><div class="ttname"><a href="classhmap_1_1Path.html#ad3be8675473f2e28e10d5197d0c16923">hmap::Path::resample_uniform</a></div><div class="ttdeci">void resample_uniform()</div><div class="ttdoc">Resample the path to achieve fairly uniform distance between consecutive points.</div><div class="ttdef"><b>Definition</b> path.cpp:604</div></div>
 <div class="ttc" id="aclasshmap_1_1Path_html_ad68abaa80879402c3758e24626acfb53"><div class="ttname"><a href="classhmap_1_1Path.html#ad68abaa80879402c3758e24626acfb53">hmap::Path::reorder_nns</a></div><div class="ttdeci">void reorder_nns(int start_index=0)</div><div class="ttdoc">Reorder points using a nearest neighbor search.</div><div class="ttdef"><b>Definition</b> path.cpp:510</div></div>
 <div class="ttc" id="ahighmap_8hpp_html"><div class="ttname"><a href="highmap_8hpp.html">highmap.hpp</a></div></div>
-<div class="ttc" id="anamespacehmap_html_a1c490f296571a75e35d05b10c075ae6c"><div class="ttname"><a href="namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c">hmap::export_banner_png</a></div><div class="ttdeci">void export_banner_png(const std::string &amp;fname, const std::vector&lt; Array &gt; &amp;arrays, int cmap, bool hillshading=false)</div><div class="ttdoc">Exports a set of arrays as a banner PNG image file.</div><div class="ttdef"><b>Definition</b> export_banner_png.cpp:11</div></div>
+<div class="ttc" id="anamespacehmap_html_ac2452e568959bc21c9b7b09202e5977a"><div class="ttname"><a href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a></div><div class="ttdeci">void export_banner_png(const std::string &amp;fname, const std::vector&lt; Array &gt; &amp;arrays, int cmap, bool hillshading=false, bool normalize_arrays=false)</div><div class="ttdoc">Exports a set of arrays as a banner PNG image file.</div><div class="ttdef"><b>Definition</b> export_banner_png.cpp:11</div></div>
 <div class="ttc" id="anamespacehmap_html_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143"><div class="ttname"><a href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::INFERNO</a></div><div class="ttdeci">@ INFERNO</div><div class="ttdef"><b>Definition</b> colormaps.hpp:85</div></div>
 <div class="ttc" id="astructhmap_1_1Vec2_html"><div class="ttname"><a href="structhmap_1_1Vec2.html">hmap::Vec2</a></div><div class="ttdoc">Vec2 class for basic manipulation of 2D vectors.</div><div class="ttdef"><b>Definition</b> algebra.hpp:40</div></div>
 <div class="ttc" id="astructhmap_1_1Vec4_html"><div class="ttname"><a href="structhmap_1_1Vec4.html">hmap::Vec4</a></div><div class="ttdoc">Vec4 class for basic manipulation of 4D vectors.</div><div class="ttdef"><b>Definition</b> algebra.hpp:564</div></div>
@@ -729,7 +729,7 @@ Public Attributes</h2></td></tr>
 <div class="line">  path.<a class="code hl_function" href="classhmap_1_1Path.html#a22ef6d9852530fbb2b747c8b22ba9546">fractalize</a>(2, seed);</div>
 <div class="line">  path.<a class="code hl_function" href="classhmap_1_1Path.html#a3b90d30abcdc4da9e381957d76c5d8db">to_array</a>(z3, bbox);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_path_bezier.png&quot;</span>,</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_path_bezier.png&quot;</span>,</div>
 <div class="line">                          {z1, z2, z3},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
@@ -794,7 +794,7 @@ Public Attributes</h2></td></tr>
 <div class="line">  path.<a class="code hl_function" href="classhmap_1_1Path.html#a9c0c833a2c386bd43fa131520ff6a5f6">bezier_round</a>(0.2f, 10); <span class="comment">// curvature, point density</span></div>
 <div class="line">  path.<a class="code hl_function" href="classhmap_1_1Path.html#a3b90d30abcdc4da9e381957d76c5d8db">to_array</a>(z2, bbox);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_path_bezier_round.png&quot;</span>,</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_path_bezier_round.png&quot;</span>,</div>
 <div class="line">                          {z1, z2},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
@@ -849,7 +849,7 @@ Public Attributes</h2></td></tr>
 <div class="line">  path.<a class="code hl_function" href="classhmap_1_1Path.html#a166a6f87dff196efa75abb1b731d3528">bspline</a>();</div>
 <div class="line">  path.<a class="code hl_function" href="classhmap_1_1Path.html#a3b90d30abcdc4da9e381957d76c5d8db">to_array</a>(z2, bbox);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_path_bspline.png&quot;</span>, {z1, z2}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_path_bspline.png&quot;</span>, {z1, z2}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
 <div class="ttc" id="aclasshmap_1_1Path_html_a166a6f87dff196efa75abb1b731d3528"><div class="ttname"><a href="classhmap_1_1Path.html#a166a6f87dff196efa75abb1b731d3528">hmap::Path::bspline</a></div><div class="ttdeci">void bspline(int edge_divisions=10)</div><div class="ttdoc">Smooth the path using B-Spline curves.</div><div class="ttdef"><b>Definition</b> path.cpp:107</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
@@ -902,7 +902,7 @@ Public Attributes</h2></td></tr>
 <div class="line">  path.<a class="code hl_function" href="classhmap_1_1Path.html#a474a7bb81e024ffbda7b328a6257eb72">catmullrom</a>();</div>
 <div class="line">  path.<a class="code hl_function" href="classhmap_1_1Path.html#a3b90d30abcdc4da9e381957d76c5d8db">to_array</a>(z2, bbox);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_path_catmullrom.png&quot;</span>,</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_path_catmullrom.png&quot;</span>,</div>
 <div class="line">                          {z1, z2},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
@@ -985,7 +985,7 @@ Public Attributes</h2></td></tr>
 <div class="line">  path.<a class="code hl_function" href="classhmap_1_1Path.html#a8afb2afae1396fdf7cf8fd3a52e6a227">decasteljau</a>();</div>
 <div class="line">  path.<a class="code hl_function" href="classhmap_1_1Path.html#a3b90d30abcdc4da9e381957d76c5d8db">to_array</a>(z2, bbox);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_path_decasteljau.png&quot;</span>,</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_path_decasteljau.png&quot;</span>,</div>
 <div class="line">                          {z1, z2},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
@@ -1050,7 +1050,7 @@ Public Attributes</h2></td></tr>
 <div class="line">  path2.<a class="code hl_function" href="classhmap_1_1Path.html#a4cc695288a4c28a0ad2cccb6d73f506c">decimate_cfit</a>(ntarget);</div>
 <div class="line">  path2.<a class="code hl_function" href="classhmap_1_1Path.html#a3b90d30abcdc4da9e381957d76c5d8db">to_array</a>(z3, bbox);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_path_decimate.png&quot;</span>,</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_path_decimate.png&quot;</span>,</div>
 <div class="line">                          {z1, z2, z3},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
@@ -1117,7 +1117,7 @@ Public Attributes</h2></td></tr>
 <div class="line">  path2.<a class="code hl_function" href="classhmap_1_1Path.html#a4cc695288a4c28a0ad2cccb6d73f506c">decimate_cfit</a>(ntarget);</div>
 <div class="line">  path2.<a class="code hl_function" href="classhmap_1_1Path.html#a3b90d30abcdc4da9e381957d76c5d8db">to_array</a>(z3, bbox);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_path_decimate.png&quot;</span>,</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_path_decimate.png&quot;</span>,</div>
 <div class="line">                          {z1, z2, z3},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
@@ -1207,7 +1207,7 @@ Public Attributes</h2></td></tr>
 <div class="line">  <span class="keyword">auto</span> z2 = <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a>(shape);</div>
 <div class="line">  path.<a class="code hl_function" href="classhmap_1_1Path.html#a3b90d30abcdc4da9e381957d76c5d8db">to_array</a>(z2, bbox);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_path_dijkstra.png&quot;</span>,</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_path_dijkstra.png&quot;</span>,</div>
 <div class="line">                          {z, z1, z2},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
@@ -1374,7 +1374,7 @@ Public Attributes</h2></td></tr>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z4 = <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a>(shape);</div>
 <div class="line">  pc.<a class="code hl_function" href="classhmap_1_1Path.html#a3b90d30abcdc4da9e381957d76c5d8db">to_array</a>(z4, bbox);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_path_fractalize.png&quot;</span>,</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_path_fractalize.png&quot;</span>,</div>
 <div class="line">                          {z1, z_control, z3, z4},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
@@ -1664,7 +1664,7 @@ Public Attributes</h2></td></tr>
 <div class="line">    path_c.<a class="code hl_function" href="classhmap_1_1Path.html#a3b90d30abcdc4da9e381957d76c5d8db">to_array</a>(z3, bbox);</div>
 <div class="line">  }</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_path_meanderize.png&quot;</span>,</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_path_meanderize.png&quot;</span>,</div>
 <div class="line">                          {z1, z2, z3},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
@@ -1826,7 +1826,7 @@ Public Attributes</h2></td></tr>
 <div class="line">  path.<a class="code hl_variable" href="classhmap_1_1Path.html#a2ea3482a302d8ef30084fd39e57715de">closed</a> = <span class="keyword">true</span>;</div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z_sdf_c = path.<a class="code hl_function" href="classhmap_1_1Path.html#afa2ef1dc4e31d410726a94eb74dc548f">to_array_sdf</a>(shape, bbox_array);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_path_sdf.png&quot;</span>,</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_path_sdf.png&quot;</span>,</div>
 <div class="line">                          {z_sdf_o, z_sdf_c},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>
@@ -1901,7 +1901,7 @@ Public Attributes</h2></td></tr>
 <div class="line">  path.<a class="code hl_variable" href="classhmap_1_1Path.html#a2ea3482a302d8ef30084fd39e57715de">closed</a> = <span class="keyword">true</span>;</div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z_sdf_c = path.<a class="code hl_function" href="classhmap_1_1Path.html#afa2ef1dc4e31d410726a94eb74dc548f">to_array_sdf</a>(shape, bbox_array);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_path_sdf.png&quot;</span>,</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_path_sdf.png&quot;</span>,</div>
 <div class="line">                          {z_sdf_o, z_sdf_c},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>
@@ -1972,7 +1972,7 @@ Public Attributes</h2></td></tr>
 <div class="line">  path.<a class="code hl_variable" href="classhmap_1_1Path.html#a2ea3482a302d8ef30084fd39e57715de">closed</a> = <span class="keyword">true</span>;</div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z_sdf_c = path.<a class="code hl_function" href="classhmap_1_1Path.html#afa2ef1dc4e31d410726a94eb74dc548f">to_array_sdf</a>(shape, bbox_array);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_path_sdf.png&quot;</span>,</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_path_sdf.png&quot;</span>,</div>
 <div class="line">                          {z_sdf_o, z_sdf_c},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>
@@ -2049,7 +2049,7 @@ Public Attributes</h2></td></tr>
 <div class="line">  path.<a class="code hl_variable" href="classhmap_1_1Path.html#a2ea3482a302d8ef30084fd39e57715de">closed</a> = <span class="keyword">true</span>;</div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z_sdf_c = path.<a class="code hl_function" href="classhmap_1_1Path.html#afa2ef1dc4e31d410726a94eb74dc548f">to_array_sdf</a>(shape, bbox_array);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_path_sdf.png&quot;</span>,</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_path_sdf.png&quot;</span>,</div>
 <div class="line">                          {z_sdf_o, z_sdf_c},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>
@@ -2127,7 +2127,7 @@ Public Attributes</h2></td></tr>
 <div class="line">  path.<a class="code hl_variable" href="classhmap_1_1Path.html#a2ea3482a302d8ef30084fd39e57715de">closed</a> = <span class="keyword">true</span>;</div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z_sdf_c = path.<a class="code hl_function" href="classhmap_1_1Path.html#afa2ef1dc4e31d410726a94eb74dc548f">to_array_sdf</a>(shape, bbox_array);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_path_sdf.png&quot;</span>,</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_path_sdf.png&quot;</span>,</div>
 <div class="line">                          {z_sdf_o, z_sdf_c},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>
@@ -2199,7 +2199,7 @@ Public Attributes</h2></td></tr>
 <div class="line">  path.<a class="code hl_variable" href="classhmap_1_1Path.html#a2ea3482a302d8ef30084fd39e57715de">closed</a> = <span class="keyword">true</span>;</div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z_sdf_c = path.<a class="code hl_function" href="classhmap_1_1Path.html#afa2ef1dc4e31d410726a94eb74dc548f">to_array_sdf</a>(shape, bbox_array);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_path_sdf.png&quot;</span>,</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_path_sdf.png&quot;</span>,</div>
 <div class="line">                          {z_sdf_o, z_sdf_c},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>
@@ -2289,7 +2289,7 @@ Public Attributes</h2></td></tr>
 <div class="line">    path_c.<a class="code hl_function" href="classhmap_1_1Path.html#a3b90d30abcdc4da9e381957d76c5d8db">to_array</a>(z2, bbox);</div>
 <div class="line">  }</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_path_smooth.png&quot;</span>, {z1, z2}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_path_smooth.png&quot;</span>, {z1, z2}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
 <div class="ttc" id="aclasshmap_1_1Path_html_abdb4fffc12c3cfee268f8afad9ec3893"><div class="ttname"><a href="classhmap_1_1Path.html#abdb4fffc12c3cfee268f8afad9ec3893">hmap::Path::smooth</a></div><div class="ttdeci">void smooth(int navg=1, float averaging_intensity=1.f, float inertia=0.f)</div><div class="ttdoc">Applies a smoothing operation to the path points using a moving average filter.</div><div class="ttdef"><b>Definition</b> path.cpp:759</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
@@ -2435,7 +2435,7 @@ Public Attributes</h2></td></tr>
 <div class="line">  path.<a class="code hl_variable" href="classhmap_1_1Path.html#a2ea3482a302d8ef30084fd39e57715de">closed</a> = <span class="keyword">true</span>;</div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z_sdf_c = path.<a class="code hl_function" href="classhmap_1_1Path.html#afa2ef1dc4e31d410726a94eb74dc548f">to_array_sdf</a>(shape, bbox_array);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1c490f296571a75e35d05b10c075ae6c">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_path_sdf.png&quot;</span>,</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_path_sdf.png&quot;</span>,</div>
 <div class="line">                          {z_sdf_o, z_sdf_c},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>

@@ -55,6 +55,7 @@ var classhmap_1_1Array =
     [ "normalization_coeff", "classhmap_1_1Array.html#a7bf76abbc7ad183514f41f2b54a0ad2e", null ],
     [ "print", "classhmap_1_1Array.html#a7ce20e5537ab2729aac320d0b27b7fa5", null ],
     [ "ptp", "classhmap_1_1Array.html#ac33557899eb50bcf964b2e5a2ad8ddcb", null ],
+    [ "remapped", "classhmap_1_1Array.html#a8a7e7b8607a67f80828d3718e68ea126", null ],
     [ "resample_to_shape", "classhmap_1_1Array.html#a1c242d119f67209442a0054601939412", null ],
     [ "resample_to_shape_bicubic", "classhmap_1_1Array.html#af36ac8e4689795d2e33b827a7f7b439c", null ],
     [ "resample_to_shape_bilinear", "classhmap_1_1Array.html#a6f2b1f8bbe8f6e28ebc0cc8616934601", null ],

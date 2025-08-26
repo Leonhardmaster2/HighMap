@@ -137,6 +137,8 @@ void \mbox{\hyperlink{namespacehmap_1_1gpu_a7d2aae253f1f67bbdbc718859f83ef0a}{sm
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a95c0f4c53278620f0812381ccaa7459e}{hmap\+::smooth\+\_\+cpulse}. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_1_1gpu_ad201432c26c75bbab156a22c52b7121a}{smooth\+\_\+cpulse}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+mask)
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a95c0f4c53278620f0812381ccaa7459e}{hmap\+::smooth\+\_\+cpulse}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacehmap_1_1gpu_a4744808e10a1dfaf752cd68366824ee9}{smooth\+\_\+cpulse\+\_\+edge\+\_\+removing}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float talus, float talus\+\_\+width, int ir)
+\begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_aa2de65aa233324cf294faf2421ccec2a}{hmap\+::smooth\+\_\+cpulse\+\_\+edge\+\_\+removing}. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_1_1gpu_ab10a6dc3d92519c7bd3244571bcd6429}{smooth\+\_\+fill}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir, float k=0.\+1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+deposition\+\_\+map=nullptr)
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_ae9fece3e5896d3a5fe4a89d76d6b9dba}{hmap\+::smooth\+\_\+fill}. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_1_1gpu_adc6356d5b5690f553d33810380417805}{smooth\+\_\+fill}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+mask, float k=0.\+1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+deposition\+\_\+map=nullptr)
@@ -319,7 +321,7 @@ The blended array resulting from the Poisson blending operation.
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(z2);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(z3);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a1c490f296571a75e35d05b10c075ae6c}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_blend\_poisson\_bf.png"{}},}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_blend\_poisson\_bf.png"{}},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z1,\ z2,\ z3\},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}});}
 \DoxyCodeLine{\}}
@@ -513,7 +515,7 @@ Only available if Open\+CL is enabled.
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_1_1gpu_a9749d24b9dd9bed8ee333910951db395}{hmap::gpu::hydraulic\_schott}}(z,\ iterations,\ talus);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a1c490f296571a75e35d05b10c075ae6c}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_hydraulic\_schott.png"{}},}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_hydraulic\_schott.png"{}},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z0,\ z\},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9}{hmap::Cmap::TERRAIN}},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
@@ -629,7 +631,7 @@ This function modifies the given heightmap by introducing linear or radial "{}ri
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ad57cd314c51ee333bbd99f6eacd441a6}{hmap::gpu::rifts}}(z2,\ kw\_r,\ \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}},\ intensity,\ ++seed);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(z2);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a1c490f296571a75e35d05b10c075ae6c}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_rifts.png"{}},\ \{z1,\ z2\},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9}{hmap::Cmap::TERRAIN}},\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_rifts.png"{}},\ \{z1,\ z2\},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9}{hmap::Cmap::TERRAIN}},\ \textcolor{keyword}{true});}
 \DoxyCodeLine{\}}
 
 \end{DoxyCodeInclude}
@@ -724,7 +726,7 @@ This function modifies the input heightfield {\ttfamily z} by simulating geologi
 \DoxyCodeLine{\ \ z1.\mbox{\hyperlink{classhmap_1_1Array_a00b8f7462c1e22b1da8a67ec62d4c8c8}{dump}}(\textcolor{stringliteral}{"{}out0.png"{}});}
 \DoxyCodeLine{\ \ z2.\mbox{\hyperlink{classhmap_1_1Array_a00b8f7462c1e22b1da8a67ec62d4c8c8}{dump}}();}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a1c490f296571a75e35d05b10c075ae6c}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_strata.png"{}},\ \{z1,\ z2\},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9}{hmap::Cmap::TERRAIN}},\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_strata.png"{}},\ \{z1,\ z2\},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9}{hmap::Cmap::TERRAIN}},\ \textcolor{keyword}{true});}
 \DoxyCodeLine{\}}
 
 \end{DoxyCodeInclude}
@@ -844,7 +846,7 @@ Only available if Open\+CL is enabled.
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ z3.dump();}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a1c490f296571a75e35d05b10c075ae6c}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_thermal\_ridge.png"{}},}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_thermal\_ridge.png"{}},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ z1,\ z2,\ z3\},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9}{hmap::Cmap::TERRAIN}},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
@@ -929,7 +931,7 @@ Only available if Open\+CL is enabled.
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ z3.dump();}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a1c490f296571a75e35d05b10c075ae6c}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_thermal\_ridge.png"{}},}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_thermal\_ridge.png"{}},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ z1,\ z2,\ z3\},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9}{hmap::Cmap::TERRAIN}},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
@@ -1321,6 +1323,16 @@ See \doxylink{namespacehmap_a95c0f4c53278620f0812381ccaa7459e}{hmap\+::smooth\+\
 
 See \doxylink{namespacehmap_a95c0f4c53278620f0812381ccaa7459e}{hmap\+::smooth\+\_\+cpulse}. 
 
+\Hypertarget{namespacehmap_1_1gpu_a4744808e10a1dfaf752cd68366824ee9}\label{namespacehmap_1_1gpu_a4744808e10a1dfaf752cd68366824ee9} 
+\index{hmap::gpu@{hmap::gpu}!smooth\_cpulse\_edge\_removing@{smooth\_cpulse\_edge\_removing}}
+\index{smooth\_cpulse\_edge\_removing@{smooth\_cpulse\_edge\_removing}!hmap::gpu@{hmap::gpu}}
+\doxysubsubsection{\texorpdfstring{smooth\_cpulse\_edge\_removing()}{smooth\_cpulse\_edge\_removing()}}
+{\footnotesize\ttfamily void hmap\+::gpu\+::smooth\+\_\+cpulse\+\_\+edge\+\_\+removing (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{float}]{talus,  }\item[{float}]{talus\+\_\+width,  }\item[{int}]{ir }\end{DoxyParamCaption})}
+
+
+
+See \doxylink{namespacehmap_aa2de65aa233324cf294faf2421ccec2a}{hmap\+::smooth\+\_\+cpulse\+\_\+edge\+\_\+removing}. 
+
 \Hypertarget{namespacehmap_1_1gpu_ab10a6dc3d92519c7bd3244571bcd6429}\label{namespacehmap_1_1gpu_ab10a6dc3d92519c7bd3244571bcd6429} 
 \index{hmap::gpu@{hmap::gpu}!smooth\_fill@{smooth\_fill}}
 \index{smooth\_fill@{smooth\_fill}!hmap::gpu@{hmap::gpu}}
@@ -1656,7 +1668,7 @@ A procedurally generated {\ttfamily \doxylink{classhmap_1_1Array}{Array}} repres
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_a06f0930402ba5e7a66eb73d9da9a09ee}{hmap::gpu::basalt\_field}}(shape,\ kw,\ seed);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a1c490f296571a75e35d05b10c075ae6c}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_basalt\_field.png"{}},}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_basalt\_field.png"{}},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z\},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
@@ -1750,7 +1762,7 @@ Only available if Open\+CL is enabled.
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ array\_angle,}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ angle\_spread\_ratio);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a1c490f296571a75e35d05b10c075ae6c}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_gabor\_wave.png"{}},}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_gabor\_wave.png"{}},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ z\_fbm,\ za0,\ za1,\ za2,\ zr1,\ zr2\},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
@@ -1862,7 +1874,7 @@ Only available if Open\+CL is enabled.
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ array\_angle,}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ angle\_spread\_ratio);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a1c490f296571a75e35d05b10c075ae6c}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_gabor\_wave.png"{}},}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_gabor\_wave.png"{}},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ z\_fbm,\ za0,\ za1,\ za2,\ zr1,\ zr2\},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
@@ -1986,7 +1998,7 @@ The optional {\ttfamily p\+\_\+ctrl\+\_\+param}, {\ttfamily p\+\_\+noise\+\_\+x}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ amp,}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ angle\_spread\_ratio);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a1c490f296571a75e35d05b10c075ae6c}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_gavoronoise.png"{}},}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_gavoronoise.png"{}},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z1,\ z2,\ z3,\ z4\},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
@@ -2073,7 +2085,7 @@ Only available if Open\+CL is enabled.
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z1\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_a50332f79ca9b2548089359f5ad4b8ffd}{hmap::gpu::mountain\_range\_radial}}(shape,\ kw,\ seed);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a1c490f296571a75e35d05b10c075ae6c}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_mountain\_range\_radial.png"{}},}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_mountain\_range\_radial.png"{}},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z1\},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
@@ -2315,7 +2327,7 @@ The Open\+CL kernel "{}vorolines"{} must be defined and compiled beforehand.
 \DoxyCodeLine{\ \ \ \ zs.push\_back(z);}
 \DoxyCodeLine{\ \ \}}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a1c490f296571a75e35d05b10c075ae6c}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_vorolines.png"{}},\ zs,\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}});}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_vorolines.png"{}},\ zs,\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}});}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ FBM}}
 \DoxyCodeLine{\ \ zs\ =\ \{\};}
@@ -2335,7 +2347,7 @@ The Open\+CL kernel "{}vorolines"{} must be defined and compiled beforehand.
 \DoxyCodeLine{\ \ \ \ zs.push\_back(z);}
 \DoxyCodeLine{\ \ \}}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a1c490f296571a75e35d05b10c075ae6c}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_vorolines\_fbm.png"{}},\ zs,\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}});}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_vorolines\_fbm.png"{}},\ zs,\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}});}
 \DoxyCodeLine{\}}
 
 \end{DoxyCodeInclude}
@@ -2440,7 +2452,7 @@ This function requires an Open\+CL kernel named "{}vorolines\+\_\+fbm"{} to be c
 \DoxyCodeLine{\ \ \ \ zs.push\_back(z);}
 \DoxyCodeLine{\ \ \}}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a1c490f296571a75e35d05b10c075ae6c}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_vorolines.png"{}},\ zs,\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}});}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_vorolines.png"{}},\ zs,\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}});}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ FBM}}
 \DoxyCodeLine{\ \ zs\ =\ \{\};}
@@ -2460,7 +2472,7 @@ This function requires an Open\+CL kernel named "{}vorolines\+\_\+fbm"{} to be c
 \DoxyCodeLine{\ \ \ \ zs.push\_back(z);}
 \DoxyCodeLine{\ \ \}}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a1c490f296571a75e35d05b10c075ae6c}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_vorolines\_fbm.png"{}},\ zs,\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}});}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_vorolines\_fbm.png"{}},\ zs,\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}});}
 \DoxyCodeLine{\}}
 
 \end{DoxyCodeInclude}
@@ -2558,7 +2570,7 @@ Only available if Open\+CL is enabled.
 \DoxyCodeLine{\ \ \ \ zs.push\_back(z);}
 \DoxyCodeLine{\ \ \}}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a1c490f296571a75e35d05b10c075ae6c}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_voronoi.png"{}},\ zs,\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}});}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_voronoi.png"{}},\ zs,\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}});}
 \DoxyCodeLine{\}}
 
 \end{DoxyCodeInclude}
@@ -2664,7 +2676,7 @@ Only available if Open\+CL is enabled.
 \DoxyCodeLine{\ \ \ \ zs.push\_back(z);}
 \DoxyCodeLine{\ \ \}}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a1c490f296571a75e35d05b10c075ae6c}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_voronoi.png"{}},\ zs,\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}});}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_voronoi.png"{}},\ zs,\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}});}
 \DoxyCodeLine{\}}
 
 \end{DoxyCodeInclude}
@@ -2762,7 +2774,7 @@ An {\ttfamily \doxylink{classhmap_1_1Array}{Array}} object containing the genera
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ zfbm.\mbox{\hyperlink{classhmap_1_1Array_a3517b483a468873cefa73f7773a893ec}{infos}}();}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a1c490f296571a75e35d05b10c075ae6c}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_voronoise.png"{}},}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_voronoise.png"{}},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z00,\ z10,\ z01,\ z11,\ zfbm\},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}});}
 \DoxyCodeLine{\}}
@@ -2832,7 +2844,7 @@ Only available if Open\+CL is enabled.
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ zfbm.\mbox{\hyperlink{classhmap_1_1Array_a3517b483a468873cefa73f7773a893ec}{infos}}();}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a1c490f296571a75e35d05b10c075ae6c}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_voronoise.png"{}},}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_voronoise.png"{}},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z00,\ z10,\ z01,\ z11,\ zfbm\},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}});}
 \DoxyCodeLine{\}}
@@ -2931,7 +2943,7 @@ An {\ttfamily \doxylink{classhmap_1_1Array}{Array}} object containing the comput
 \DoxyCodeLine{\ \ \ \ zs.push\_back(z);}
 \DoxyCodeLine{\ \ \}}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a1c490f296571a75e35d05b10c075ae6c}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_vororand.png"{}},\ zs,\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}});}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_vororand.png"{}},\ zs,\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}});}
 \DoxyCodeLine{\}}
 
 \end{DoxyCodeInclude}
