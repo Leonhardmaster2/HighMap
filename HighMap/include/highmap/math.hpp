@@ -309,6 +309,67 @@ void radial_displacement_to_xy(const Array &dr,
                                Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
+ * @brief Computes the sigmoid function for a scalar value.
+ *
+ * This function applies a generalized sigmoid transformation:
+ * \f[
+ * y = v_{\min} + \frac{v_{\max} - v_{\min}}
+ *        {1 + \exp\left(-\frac{x - x_0}{\text{width}}\right)}
+ * \f]
+ *
+ * @param  x     Input value.
+ * @param  width Controls the steepness of the sigmoid curve. Higher values make
+ *               the slope gentler. Default is `1.f`.
+ * @param  vmin  Minimum value of the output range. Default is `0.f`.
+ * @param  vmax  Maximum value of the output range. Default is `1.f`.
+ * @param  x0    The center point (x-offset) of the sigmoid curve. Default is
+ *               `0.f`.
+ * @return       The transformed scalar value in the range `[vmin, vmax]`.
+ *
+ * **Example**
+ * @include ex_sigmoid.cpp
+ *
+ * **Result**
+ * @image html ex_sigmoid.png
+ */
+float sigmoid(float x,
+              float width = 1.f,
+              float vmin = 0.f,
+              float vmax = 1.f,
+              float x0 = 0.f);
+
+/**
+ * @brief Computes the sigmoid function element-wise for an array.
+ *
+ * This function applies the same generalized sigmoid transformation as the
+ * scalar version: \f[ y = v_{\min} + \frac{v_{\max} - v_{\min}} {1 +
+ * \exp\left(-\frac{x - x_0}{\text{width}}\right)} \f]
+ *
+ * Each element in the input array is independently transformed.
+ *
+ * @param  array Input array of values.
+ * @param  width Controls the steepness of the sigmoid curve. Higher values make
+ *               the slope gentler. Default is `1.f`.
+ * @param  vmin  Minimum value of the output range. Default is `0.f`.
+ * @param  vmax  Maximum value of the output range. Default is `1.f`.
+ * @param  x0    The center point (x-offset) of the sigmoid curve. Default is
+ *               `0.f`.
+ * @return       A new array with each element transformed by the sigmoid
+ *               function.
+ *
+ * **Example**
+ * @include ex_sigmoid.cpp
+ *
+ * **Result**
+ * @image html ex_sigmoid.png
+ */
+Array sigmoid(const Array &array,
+              float        width = 1.f,
+              float        vmin = 0.f,
+              float        vmax = 1.f,
+              float        x0 = 0.f);
+
+/**
  * @brief Return the sine of the array elements.
  *
  * @param  array Input array.

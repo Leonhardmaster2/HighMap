@@ -219,6 +219,24 @@ void radial_displacement_to_xy(const Array &dr,
     }
 }
 
+float sigmoid(float x, float width, float vmin, float vmax, float x0)
+{
+  float v = 1.f / (1.f + std::exp(-x / width));
+  v = (vmax - vmin) * v + vmin;
+  return v;
+}
+
+Array sigmoid(const Array &array, float width, float vmin, float vmax, float x0)
+{
+  Array array_out = Array(array.shape);
+  std::transform(array.vector.begin(),
+                 array.vector.end(),
+                 array_out.vector.begin(),
+                 [width, vmin, vmax, x0](float x)
+                 { return sigmoid(x, width, vmin, vmax, x0); });
+  return array_out;
+}
+
 Array sin(const Array &array)
 {
   Array array_out = Array(array.shape);

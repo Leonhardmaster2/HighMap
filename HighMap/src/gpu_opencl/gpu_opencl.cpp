@@ -78,14 +78,14 @@ bool init_opencl()
 #include "kernels/strata.cl"
       ;
 
-  std::string opencl_build_options = 
-    "-cl-fast-relaxed-math "
-    "-cl-mad-enable "
-    "-cl-no-signed-zeros "
-    "-cl-denorms-are-zero "
-    "-cl-finite-math-only ";
-  
-  clwrapper::KernelManager::get_instance().set_build_options(opencl_build_options);
+  std::string opencl_build_options = "-cl-fast-relaxed-math "
+                                     "-cl-mad-enable "
+                                     "-cl-no-signed-zeros "
+                                     "-cl-denorms-are-zero "
+                                     "-cl-finite-math-only ";
+
+  clwrapper::KernelManager::get_instance().set_build_options(
+      opencl_build_options);
   clwrapper::KernelManager::get_instance().add_kernel(code);
 
   return true;
