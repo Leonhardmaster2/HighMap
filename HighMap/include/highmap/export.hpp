@@ -255,7 +255,8 @@ void export_as_cubemap(const std::string &fname,
 void export_banner_png(const std::string        &fname,
                        const std::vector<Array> &arrays,
                        int                       cmap,
-                       bool                      hillshading = false);
+                       bool                      hillshading = false,
+                       bool                      normalize_arrays = false);
 
 /**
  * @brief Exports the heightmap normal map as an 8-bit PNG file.

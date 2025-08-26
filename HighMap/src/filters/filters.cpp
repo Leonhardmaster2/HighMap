@@ -1059,6 +1059,17 @@ void smooth_cpulse(Array &array, int ir, const Array *p_mask)
   }
 }
 
+void smooth_cpulse_edge_removing(Array &array,
+                                 float  talus,
+                                 float  talus_width,
+                                 int    ir)
+{
+  Array c = gradient_norm(array);
+  c = sigmoid(c, talus_width, 0.f /* vmin */, 1.f /* vmax */, talus);
+  expand(c, ir);
+  smooth_cpulse(array, ir, &c);
+}
+
 void smooth_flat(Array &array, int ir)
 {
   // define kernel

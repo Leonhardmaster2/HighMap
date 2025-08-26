@@ -6,8 +6,10 @@
 
 #include "highmap/array.hpp"
 #include "highmap/boundary.hpp"
+#include "highmap/filters.hpp"
 #include "highmap/gradient.hpp"
 #include "highmap/math.hpp"
+#include "highmap/range.hpp"
 
 namespace hmap
 {
@@ -76,6 +78,39 @@ Array gradient_angle(const Array &array, bool downward)
                  [](float a, float b) { return std::atan2(b, a); });
 
   return alpha;
+}
+
+Array gradient_angle_circular_smoothing(const Array &array,
+                                        int          ir,
+                                        bool         downward)
+{
+  // gradients
+  Array dx = gradient_x(array);
+  Array dy = gradient_y(array);
+  Array dn = hypot(dx, dy);
+  Array dn_safe = maximum(dn, 1e-9f);
+
+  if (downward)
+  {
+    dx = -1.f * dx;
+    dy = -1.f * dy;
+  }
+
+  // angle to unit vector
+  Array u = dx / dn_safe;
+  Array v = dy / dn_safe;
+
+  // smoothing
+  smooth_cpulse(u, ir);
+  smooth_cpulse(v, ir);
+  smooth_cpulse(dn, ir);
+
+  // renormalize and compute the angle
+  dn_safe = maximum(dn, 1e-9f);
+  u /= dn_safe;
+  v /= dn_safe;
+
+  return atan2(v, u);
 }
 
 Array gradient_norm(const Array &array, Array *p_dx, Array *p_dy)

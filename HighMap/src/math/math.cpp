@@ -221,7 +221,7 @@ void radial_displacement_to_xy(const Array &dr,
 
 float sigmoid(float x, float width, float vmin, float vmax, float x0)
 {
-  float v = 1.f / (1.f + std::exp(-x / width));
+  float v = 1.f / (1.f + std::exp(-(x - x0) / width));
   v = (vmax - vmin) * v + vmin;
   return v;
 }

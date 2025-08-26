@@ -4,6 +4,7 @@
 #include "highmap/curvature.hpp"
 #include "highmap/features.hpp"
 #include "highmap/filters.hpp"
+#include "highmap/gradient.hpp"
 #include "highmap/kernels.hpp"
 #include "highmap/math.hpp"
 #include "highmap/opencl/gpu_opencl.hpp"
@@ -552,6 +553,17 @@ void smooth_cpulse(Array &array, int ir, const Array *p_mask)
 
     run.read_imagef("out");
   }
+}
+
+void smooth_cpulse_edge_removing(Array &array,
+                                 float  talus,
+                                 float  talus_width,
+                                 int    ir)
+{
+  Array c = hmap::gradient_norm(array); // CPU version
+  c = sigmoid(c, talus_width, 0.f /* vmin */, 1.f /* vmax */, talus);
+  gpu::expand(c, ir);
+  gpu::smooth_cpulse(array, ir, &c);
 }
 
 void smooth_fill(Array &array, int ir, float k, Array *p_deposition_map)

@@ -43,8 +43,52 @@ std::vector<float> gradient1d(const std::vector<float> &v);
  * @param  array    Input 2D array.
  * @param  downward If true, invert the direction of the gradient.
  * @return          Array Gradient angles in radians.
+ *
+ * **Example**
+ * @include ex_gradient_angle.cpp
+ *
+ * **Result**
+ * @image html ex_gradient_angle.png
  */
 Array gradient_angle(const Array &array, bool downward = false);
+
+/**
+ * @brief Computes a smoothed gradient angle (aspect) field with circular
+ * unwrapping.
+ *
+ * This function computes the gradient angle (aspect) of the input scalar field
+ * and applies a circular smoothing to remove discontinuities caused by the
+ * ±π wrap of the arctangent. The angle field is smoothed by converting the
+ * angle to a unit vector representation on the circle, applying a local
+ * smoothing kernel, and converting it back to an angle. This results in a
+ * continuous aspect map that is ideal for visualization or further processing.
+ *
+ * @param  array    Input scalar field (e.g., a heightmap).
+ * @param  ir       Radius of the local smoothing kernel applied to the angle
+ *                  vectors.
+ * @param  downward If set to `true`, angles are adjusted to point in the
+ *                  downslope direction (useful for hydrology or flow
+ *                  simulations). If `false`, angles point in the upslope
+ *                  direction.
+ *
+ * @return          An Array containing the smoothed gradient angles in radians,
+ *                  in the range [-π, π].
+ *
+ * @note
+ * - Regions with very low gradient magnitude may produce unstable angle values;
+ *   these regions should typically be masked or treated separately.
+ * - This function is suited for preserving continuous angular fields when the
+ * direction (not the orientation) of the gradient matters.
+ *
+ * **Example**
+ * @include ex_gradient_angle.cpp
+ *
+ * **Result**
+ * @image html ex_gradient_angle.png
+ */
+Array gradient_angle_circular_smoothing(const Array &array,
+                                        int          ir,
+                                        bool         downward = false);
 
 /**
  * @brief Compute the gradient norm of a 2D array.

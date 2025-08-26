@@ -1945,6 +1945,30 @@ void smooth_cpulse(Array &array, int ir);
 void smooth_cpulse(Array &array, int ir, const Array *p_mask); ///< @overload
 
 /**
+ * @brief Smooths an array while attenuating edges using a gradient-based pulse.
+ *
+ * This function first computes the gradient norm of the input array, applies a
+ * sigmoid filter to highlight or attenuate regions based on the local gradient
+ * magnitude, and then performs a constrained pulse smoothing pass that respects
+ * those gradient-based weights. This is useful for smoothing heightmaps or
+ * scalar fields while preserving significant edges such as ridges or cliffs.
+ *
+ * @param array       Reference to the input array to be smoothed. The array is
+ *                    modified in-place.
+ * @param talus       Threshold value used in the sigmoid function to control
+ *                    where edge attenuation starts. Lower values affect more
+ *                    regions.
+ * @param talus_width Width (steepness) of the sigmoid transition zone around
+ *                    the talus threshold.
+ * @param ir          Radius of the smoothing kernel used in the constrained
+ *                    pulse smoothing step.
+ */
+void smooth_cpulse_edge_removing(Array &array,
+                                 float  talus,
+                                 float  talus_width,
+                                 int    ir);
+
+/**
  * @brief Applies a smoothing average filter to the given 2D array in both
  * dimensions.
  *
@@ -2475,6 +2499,12 @@ void smooth_cpulse(Array &array, int ir);
 
 /*! @brief See hmap::smooth_cpulse */
 void smooth_cpulse(Array &array, int ir, const Array *p_mask);
+
+/*! @brief See hmap::smooth_cpulse_edge_removing */
+void smooth_cpulse_edge_removing(Array &array,
+                                 float  talus,
+                                 float  talus_width,
+                                 int    ir);
 
 /*! @brief See hmap::smooth_fill */
 void smooth_fill(Array &array,
