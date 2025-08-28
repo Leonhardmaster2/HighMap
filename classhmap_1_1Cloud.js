@@ -32,6 +32,7 @@ var classhmap_1_1Cloud =
     [ "set_values_from_border_distance", "classhmap_1_1Cloud.html#ae21ace9436c536e848cdda8d6ab61ac0", null ],
     [ "set_values_from_chull_distance", "classhmap_1_1Cloud.html#adf0b7a7c0c7d414e5d01e19be624aa3c", null ],
     [ "set_values_from_min_distance", "classhmap_1_1Cloud.html#ad8b2d626436107c4b0e2c9877747375f", null ],
+    [ "shuffle", "classhmap_1_1Cloud.html#af8d4e873ff4ed29eb7f140db227e03a2", null ],
     [ "to_array", "classhmap_1_1Cloud.html#ad83d71a8729a0e4fcce993c0141275ee", null ],
     [ "to_array_sdf", "classhmap_1_1Cloud.html#a04dcb02dd2df076553e410dbcceb2c35", null ],
     [ "to_array_interp", "classhmap_1_1Cloud.html#a8d03bbce76e09b07ff9e2901c80a06c7", null ],

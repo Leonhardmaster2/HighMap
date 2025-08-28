@@ -96,6 +96,8 @@ void \mbox{\hyperlink{classhmap_1_1Cloud_adf0b7a7c0c7d414e5d01e19be624aa3c}{set\
 \begin{DoxyCompactList}\small\item\em Set the values of the cloud points based on the distance to the convex hull of the cloud. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classhmap_1_1Cloud_ad8b2d626436107c4b0e2c9877747375f}{set\+\_\+values\+\_\+from\+\_\+min\+\_\+distance}} ()
 \begin{DoxyCompactList}\small\item\em Sets point values based on the distance to their nearest neighbor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classhmap_1_1Cloud_af8d4e873ff4ed29eb7f140db227e03a2}{shuffle}} (float dx, float dy, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, float dv=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
+\begin{DoxyCompactList}\small\item\em Randomly perturbs the positions and values of all points in the cloud. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classhmap_1_1Cloud_ad83d71a8729a0e4fcce993c0141275ee}{to\+\_\+array}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}) const
 \begin{DoxyCompactList}\small\item\em Project the cloud points onto an array. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{classhmap_1_1Cloud_a04dcb02dd2df076553e410dbcceb2c35}{to\+\_\+array\+\_\+sdf}} (\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$ shape, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ bbox, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ bbox\+\_\+array=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}) const
@@ -709,7 +711,30 @@ The computation process\+:
 \item Extracts the x and y coordinates from the cloud.
 \item Merges them into a 2D point list.
 \item Calculates the minimum distance to any other point using {\ttfamily ps\+::first\+\_\+neighbor\+\_\+distance\+\_\+squared}. 
-\end{DoxyItemize}\Hypertarget{classhmap_1_1Cloud_ad83d71a8729a0e4fcce993c0141275ee}\label{classhmap_1_1Cloud_ad83d71a8729a0e4fcce993c0141275ee} 
+\end{DoxyItemize}\Hypertarget{classhmap_1_1Cloud_af8d4e873ff4ed29eb7f140db227e03a2}\label{classhmap_1_1Cloud_af8d4e873ff4ed29eb7f140db227e03a2} 
+\index{hmap::Cloud@{hmap::Cloud}!shuffle@{shuffle}}
+\index{shuffle@{shuffle}!hmap::Cloud@{hmap::Cloud}}
+\doxysubsubsection{\texorpdfstring{shuffle()}{shuffle()}}
+{\footnotesize\ttfamily void hmap\+::\+Cloud\+::shuffle (\begin{DoxyParamCaption}\item[{float}]{dx,  }\item[{float}]{dy,  }\item[{\mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{seed,  }\item[{float}]{dv = {\ttfamily 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
+
+
+
+Randomly perturbs the positions and values of all points in the cloud. 
+
+This function applies a random offset to the {\ttfamily x}, {\ttfamily y}, and {\ttfamily v} components of each point in the {\ttfamily points} container. The random offsets are uniformly distributed between {\ttfamily -\/1} and {\ttfamily 1}, and scaled by the provided {\ttfamily dx}, {\ttfamily dy}, and {\ttfamily dv} factors for each respective component.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dx} & Scale factor for the random displacement along the X-\/axis. \\
+\hline
+{\em dy} & Scale factor for the random displacement along the Y-\/axis. \\
+\hline
+{\em seed} & Seed value for the pseudo-\/random number generator, ensuring reproducibility. \\
+\hline
+{\em dv} & Scale factor for the random displacement applied to the point\textquotesingle{}s value component {\ttfamily v}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classhmap_1_1Cloud_ad83d71a8729a0e4fcce993c0141275ee}\label{classhmap_1_1Cloud_ad83d71a8729a0e4fcce993c0141275ee} 
 \index{hmap::Cloud@{hmap::Cloud}!to\_array@{to\_array}}
 \index{to\_array@{to\_array}!hmap::Cloud@{hmap::Cloud}}
 \doxysubsubsection{\texorpdfstring{to\_array()}{to\_array()}}

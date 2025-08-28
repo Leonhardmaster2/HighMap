@@ -1,5 +1,7 @@
 var NAVTREEINDEX8 =
 {
+"gradient_8hpp_source.html":[5,0,1,0,0,20],
+"gradient__gpu_8cpp.html":[5,0,1,1,16,1],
 "gradient__gpu_8cpp.html#a1c5e49734e49973fe1b275b6988dba12":[5,0,1,1,16,1,0],
 "graph_8cpp.html":[5,0,1,1,14,1],
 "graph_8hpp.html":[5,0,1,0,0,1,2],
@@ -247,7 +249,5 @@ var NAVTREEINDEX8 =
 "interpolate__heightmap_8cpp.html#a2ecd308a993a3d85640aea025e02f3b1":[5,0,1,1,19,5,1],
 "io_8cpp.html":[5,0,1,1,0,1],
 "kernels_8cpp.html":[5,0,1,1,20,0],
-"kernels_8cpp.html#a04f44c4dc11d46f5089f5213d4c5d1a5":[5,0,1,1,20,0,10],
-"kernels_8cpp.html#a06769c66065dd19c0fd54f4505d0e06c":[5,0,1,1,20,0,16],
-"kernels_8cpp.html#a0b3237f9cc015299bf3e436be71d3587":[5,0,1,1,20,0,6]
+"kernels_8cpp.html#a04f44c4dc11d46f5089f5213d4c5d1a5":[5,0,1,1,20,0,10]
 };
