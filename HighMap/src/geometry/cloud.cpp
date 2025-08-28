@@ -414,6 +414,19 @@ void Cloud::set_values_from_min_distance()
   this->set_values(dist);
 }
 
+void Cloud::shuffle(float dx, float dy, uint seed, float dv)
+{
+  std::mt19937                          gen(seed);
+  std::uniform_real_distribution<float> dis(-1.f, 1.f);
+
+  for (auto &p : this->points)
+  {
+    p.x += dx * dis(gen);
+    p.y += dy * dis(gen);
+    p.v += dv * dis(gen);
+  }
+}
+
 void Cloud::to_array(Array &array, Vec4<float> bbox) const
 {
   int   ni = array.shape.x;

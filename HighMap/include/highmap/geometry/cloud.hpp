@@ -447,6 +447,24 @@ public:
   void set_values_from_min_distance();
 
   /**
+   * @brief Randomly perturbs the positions and values of all points in the
+   * cloud.
+   *
+   * This function applies a random offset to the `x`, `y`, and `v` components
+   * of each point in the `points` container. The random offsets are uniformly
+   * distributed between `-1` and `1`, and scaled by the provided `dx`, `dy`,
+   * and `dv` factors for each respective component.
+   *
+   * @param dx   Scale factor for the random displacement along the X-axis.
+   * @param dy   Scale factor for the random displacement along the Y-axis.
+   * @param seed Seed value for the pseudo-random number generator, ensuring
+   *             reproducibility.
+   * @param dv   Scale factor for the random displacement applied to the point's
+   *             value component `v`.
+   */
+  void shuffle(float dx, float dy, uint seed, float dv = 0.f);
+
+  /**
    * @brief Project the cloud points onto an array.
    *
    * This method projects the cloud points' values onto a given array, mapping
