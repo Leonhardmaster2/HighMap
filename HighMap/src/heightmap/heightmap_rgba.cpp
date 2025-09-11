@@ -450,7 +450,8 @@ void HeightmapRGBA::to_png(const std::string &fname, int depth)
   col3.to_png(fname, depth);
 }
 
-std::vector<uint8_t> HeightmapRGBA::to_img_8bit(Vec2<int> shape_img) const
+std::vector<uint8_t> HeightmapRGBA::to_img_8bit(Vec2<int> shape_img,
+                                                bool      flip_y) const
 {
   if (shape_img.x == 0 || shape_img.y == 0) shape_img = this->shape;
 
@@ -461,14 +462,29 @@ std::vector<uint8_t> HeightmapRGBA::to_img_8bit(Vec2<int> shape_img) const
   Array                a_array = this->rgba[3].to_array(shape_img);
 
   int index = 0;
-  for (int j = shape_img.y - 1; j >= 0; j--)
-    for (int i = 0; i < shape_img.x; i++)
-    {
-      img[index++] = static_cast<uint8_t>(r_array(i, j) * 255.f);
-      img[index++] = static_cast<uint8_t>(g_array(i, j) * 255.f);
-      img[index++] = static_cast<uint8_t>(b_array(i, j) * 255.f);
-      img[index++] = static_cast<uint8_t>(a_array(i, j) * 255.f);
-    }
+
+  if (flip_y)
+  {
+    for (int j = shape_img.y - 1; j >= 0; j--)
+      for (int i = 0; i < shape_img.x; i++)
+      {
+        img[index++] = static_cast<uint8_t>(r_array(i, j) * 255.f);
+        img[index++] = static_cast<uint8_t>(g_array(i, j) * 255.f);
+        img[index++] = static_cast<uint8_t>(b_array(i, j) * 255.f);
+        img[index++] = static_cast<uint8_t>(a_array(i, j) * 255.f);
+      }
+  }
+  else
+  {
+    for (int j = 0; j < shape_img.y; ++j)
+      for (int i = 0; i < shape_img.x; i++)
+      {
+        img[index++] = static_cast<uint8_t>(r_array(i, j) * 255.f);
+        img[index++] = static_cast<uint8_t>(g_array(i, j) * 255.f);
+        img[index++] = static_cast<uint8_t>(b_array(i, j) * 255.f);
+        img[index++] = static_cast<uint8_t>(a_array(i, j) * 255.f);
+      }
+  }
 
   return img;
 }

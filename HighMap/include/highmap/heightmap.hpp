@@ -656,7 +656,8 @@ struct HeightmapRGBA
    * @param  shape_img Resulting image shape.
    * @return           Image data.
    */
-  std::vector<uint8_t> to_img_8bit(Vec2<int> shape_img = {0, 0}) const;
+  std::vector<uint8_t> to_img_8bit(Vec2<int> shape_img = {0, 0},
+                                   bool      flip_y = true) const;
 };
 
 /**
