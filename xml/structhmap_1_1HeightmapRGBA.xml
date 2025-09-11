@@ -549,16 +549,21 @@ L =
         </inbodydescription>
         <location file="HighMap/include/highmap/heightmap.hpp" line="652" column="8" bodyfile="HighMap/src/heightmap/heightmap_rgba.cpp" bodystart="431" bodyend="443"/>
       </memberdef>
-      <memberdef kind="function" id="structhmap_1_1HeightmapRGBA_1a0a6b09940f8327201989968c0f759fec" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="structhmap_1_1HeightmapRGBA_1ab52832c5db286659aab59c6a554d4e59" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; uint8_t &gt;</type>
         <definition>std::vector&lt; uint8_t &gt; hmap::HeightmapRGBA::to_img_8bit</definition>
-        <argsstring>(Vec2&lt; int &gt; shape_img={0, 0}) const</argsstring>
+        <argsstring>(Vec2&lt; int &gt; shape_img={0, 0}, bool flip_y=true) const</argsstring>
         <name>to_img_8bit</name>
         <qualifiedname>hmap::HeightmapRGBA::to_img_8bit</qualifiedname>
         <param>
           <type><ref refid="structhmap_1_1Vec2" kindref="compound">Vec2</ref>&lt; int &gt;</type>
           <declname>shape_img</declname>
           <defval>{0, 0}</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>flip_y</declname>
+          <defval>true</defval>
         </param>
         <briefdescription>
 <para>Convert the RGB heightmap to a 8bit RGB image. </para>
@@ -579,7 +584,7 @@ L =
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/heightmap.hpp" line="659" column="15" bodyfile="HighMap/src/heightmap/heightmap_rgba.cpp" bodystart="453" bodyend="474"/>
+        <location file="HighMap/include/highmap/heightmap.hpp" line="659" column="15" bodyfile="HighMap/src/heightmap/heightmap_rgba.cpp" bodystart="453" bodyend="490"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="friend">
@@ -767,7 +772,7 @@ L =
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="HighMap/include/highmap/heightmap.hpp" line="517" column="1" bodyfile="HighMap/include/highmap/heightmap.hpp" bodystart="518" bodyend="660"/>
+    <location file="HighMap/include/highmap/heightmap.hpp" line="517" column="1" bodyfile="HighMap/include/highmap/heightmap.hpp" bodystart="518" bodyend="661"/>
     <listofallmembers>
       <member refid="structhmap_1_1HeightmapRGBA_1a9fb8149f2080b36e191ed97f70af09ad" prot="public" virt="non-virtual"><scope>hmap::HeightmapRGBA</scope><name>colorize</name></member>
       <member refid="structhmap_1_1HeightmapRGBA_1a679ac4a0febf5e4def5ab6b07d641dbb" prot="public" virt="non-virtual"><scope>hmap::HeightmapRGBA</scope><name>colorize</name></member>
@@ -784,7 +789,7 @@ L =
       <member refid="structhmap_1_1HeightmapRGBA_1aed79841db9d57dc03afc2ccdaa899a86" prot="public" virt="non-virtual"><scope>hmap::HeightmapRGBA</scope><name>set_alpha</name></member>
       <member refid="structhmap_1_1HeightmapRGBA_1a16bcb5357cbc49ae4bff6f0713c4985c" prot="public" virt="non-virtual"><scope>hmap::HeightmapRGBA</scope><name>set_sto</name></member>
       <member refid="structhmap_1_1HeightmapRGBA_1a41dd53b903b28b4f78f511ea7f48feb9" prot="public" virt="non-virtual"><scope>hmap::HeightmapRGBA</scope><name>shape</name></member>
-      <member refid="structhmap_1_1HeightmapRGBA_1a0a6b09940f8327201989968c0f759fec" prot="public" virt="non-virtual"><scope>hmap::HeightmapRGBA</scope><name>to_img_8bit</name></member>
+      <member refid="structhmap_1_1HeightmapRGBA_1ab52832c5db286659aab59c6a554d4e59" prot="public" virt="non-virtual"><scope>hmap::HeightmapRGBA</scope><name>to_img_8bit</name></member>
       <member refid="structhmap_1_1HeightmapRGBA_1a862282b5cffd9391fece507ac6fd3236" prot="public" virt="non-virtual"><scope>hmap::HeightmapRGBA</scope><name>to_png</name></member>
     </listofallmembers>
   </compounddef>
