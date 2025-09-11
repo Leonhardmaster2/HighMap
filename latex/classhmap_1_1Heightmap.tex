@@ -74,9 +74,9 @@ void \mbox{\hyperlink{classhmap_1_1Heightmap_adc1c2a7a9af9062bfb0124a208882b24}{
 \begin{DoxyCompactList}\small\item\em Smooth the transitions between each tiles (when overlap \texorpdfstring{$>$}{>} 0). \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{classhmap_1_1Heightmap_a655ef5409be462ce32f37f203ad78c27}{sum}} ()
 \begin{DoxyCompactList}\small\item\em Return the sum of the heightmap data. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{classhmap_1_1Heightmap_a03097c67e4ea2448e202ee1f43b77961}{to\+\_\+array}} (\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$ shape\+\_\+export)
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{classhmap_1_1Heightmap_af954e5baef4bba2faa8ae5b1c16a7720}{to\+\_\+array}} (\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$ shape\+\_\+export) const
 \begin{DoxyCompactList}\small\item\em Return the heightmap as an array. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{classhmap_1_1Heightmap_a0bb7e5c6b9b2e6bb680ac57913f68080}{to\+\_\+array}} ()
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{classhmap_1_1Heightmap_a24cdedde3cdca21c2b1fa016cc9a1a3a}{to\+\_\+array}} () const
 \begin{DoxyCompactList}\small\item\em This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. \end{DoxyCompactList}\item 
 std\+::vector$<$ uint16\+\_\+t $>$ \mbox{\hyperlink{classhmap_1_1Heightmap_ad133d0b58d12221384e024c02f6a916b}{to\+\_\+grayscale\+\_\+image\+\_\+16bit}} ()
 \begin{DoxyCompactList}\small\item\em Converts the heightmap to a 16-\/bit grayscale representation. \end{DoxyCompactList}\item 
@@ -303,7 +303,7 @@ Fill tile values by interpolating (bilinear) values from another array.
 \DoxyCodeLine{\ \ h.\mbox{\hyperlink{classhmap_1_1Heightmap_ad11c364899cc7efe5435b0bbb452a53f}{from\_array\_interp\_bicubic}}(z);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ z.\mbox{\hyperlink{classhmap_1_1Array_a9ff7b2c0be8f2b5dd9fc33085cd647d1}{to\_png}}(\textcolor{stringliteral}{"{}ex\_heightmap\_from\_array0.png"{}},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}});}
-\DoxyCodeLine{\ \ h.\mbox{\hyperlink{classhmap_1_1Heightmap_a03097c67e4ea2448e202ee1f43b77961}{to\_array}}().\mbox{\hyperlink{classhmap_1_1Array_a9ff7b2c0be8f2b5dd9fc33085cd647d1}{to\_png}}(\textcolor{stringliteral}{"{}ex\_heightmap\_from\_array1.png"{}},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}});}
+\DoxyCodeLine{\ \ h.\mbox{\hyperlink{classhmap_1_1Heightmap_af954e5baef4bba2faa8ae5b1c16a7720}{to\_array}}().\mbox{\hyperlink{classhmap_1_1Array_a9ff7b2c0be8f2b5dd9fc33085cd647d1}{to\_png}}(\textcolor{stringliteral}{"{}ex\_heightmap\_from\_array1.png"{}},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}});}
 \DoxyCodeLine{\}}
 
 \end{DoxyCodeInclude}
@@ -471,11 +471,11 @@ Return the sum of the heightmap data.
 \begin{DoxyReturn}{Returns}
 float 
 \end{DoxyReturn}
-\Hypertarget{classhmap_1_1Heightmap_a03097c67e4ea2448e202ee1f43b77961}\label{classhmap_1_1Heightmap_a03097c67e4ea2448e202ee1f43b77961} 
+\Hypertarget{classhmap_1_1Heightmap_af954e5baef4bba2faa8ae5b1c16a7720}\label{classhmap_1_1Heightmap_af954e5baef4bba2faa8ae5b1c16a7720} 
 \index{hmap::Heightmap@{hmap::Heightmap}!to\_array@{to\_array}}
 \index{to\_array@{to\_array}!hmap::Heightmap@{hmap::Heightmap}}
 \doxysubsubsection{\texorpdfstring{to\_array()}{to\_array()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::\+Heightmap\+::to\+\_\+array (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$}]{shape\+\_\+export }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::\+Heightmap\+::to\+\_\+array (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$}]{shape\+\_\+export }\end{DoxyParamCaption}) const}
 
 
 
@@ -489,11 +489,11 @@ Return the heightmap as an array.
 \begin{DoxyReturn}{Returns}
 \doxylink{classhmap_1_1Array}{Array} Resulting array. 
 \end{DoxyReturn}
-\Hypertarget{classhmap_1_1Heightmap_a0bb7e5c6b9b2e6bb680ac57913f68080}\label{classhmap_1_1Heightmap_a0bb7e5c6b9b2e6bb680ac57913f68080} 
+\Hypertarget{classhmap_1_1Heightmap_a24cdedde3cdca21c2b1fa016cc9a1a3a}\label{classhmap_1_1Heightmap_a24cdedde3cdca21c2b1fa016cc9a1a3a} 
 \index{hmap::Heightmap@{hmap::Heightmap}!to\_array@{to\_array}}
 \index{to\_array@{to\_array}!hmap::Heightmap@{hmap::Heightmap}}
 \doxysubsubsection{\texorpdfstring{to\_array()}{to\_array()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::\+Heightmap\+::to\+\_\+array (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::\+Heightmap\+::to\+\_\+array (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
 

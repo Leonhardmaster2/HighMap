@@ -12,7 +12,7 @@ var structhmap_1_1HeightmapRGBA =
     [ "colorize", "structhmap_1_1HeightmapRGBA.html#a679ac4a0febf5e4def5ab6b07d641dbb", null ],
     [ "luminance", "structhmap_1_1HeightmapRGBA.html#af53c9f791817ea400f3b8cdfe152bd3a", null ],
     [ "normalize", "structhmap_1_1HeightmapRGBA.html#a144c800a402bba5570820c83c8b8535b", null ],
-    [ "to_img_8bit", "structhmap_1_1HeightmapRGBA.html#a5d01de7c8fd4bdda2c335bb4e5f891cf", null ],
+    [ "to_img_8bit", "structhmap_1_1HeightmapRGBA.html#a0a6b09940f8327201989968c0f759fec", null ],
     [ "mix_heightmap_rgba", "structhmap_1_1HeightmapRGBA.html#a1fa412d908912e2f55defbf67cb42edd", null ],
     [ "mix_heightmap_rgba", "structhmap_1_1HeightmapRGBA.html#a3b3ac1df8b7c96027ccb28878b2894cd", null ],
     [ "rgba", "structhmap_1_1HeightmapRGBA.html#a0457a9b7447ec755b833c43e9650d15c", null ],
