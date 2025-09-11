@@ -450,7 +450,7 @@ void HeightmapRGBA::to_png(const std::string &fname, int depth)
   col3.to_png(fname, depth);
 }
 
-std::vector<uint8_t> HeightmapRGBA::to_img_8bit(Vec2<int> shape_img)
+std::vector<uint8_t> HeightmapRGBA::to_img_8bit(Vec2<int> shape_img) const
 {
   if (shape_img.x == 0 || shape_img.y == 0) shape_img = this->shape;
 

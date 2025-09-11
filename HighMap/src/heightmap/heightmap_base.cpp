@@ -362,7 +362,7 @@ float Heightmap::sum()
   return sum;
 }
 
-Array Heightmap::to_array()
+Array Heightmap::to_array() const
 {
   Array array = Array(this->shape);
 
@@ -383,7 +383,7 @@ Array Heightmap::to_array()
   return array;
 }
 
-Array Heightmap::to_array(Vec2<int> shape_export)
+Array Heightmap::to_array(Vec2<int> shape_export) const
 {
   Array array = Array(shape_export);
 
