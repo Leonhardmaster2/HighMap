@@ -792,6 +792,7 @@ var namespacehmap =
     [ "border", "namespacehmap.html#af80bcff234bf1482cf26896b9d21d270", null ],
     [ "closing", "namespacehmap.html#a889405ce11be91e33cc80ca4dbd192b0", null ],
     [ "dilation", "namespacehmap.html#ac91a2dacd050d8588b4135f02dd8f2a5", null ],
+    [ "dilation_expand_border_only", "namespacehmap.html#a268e133ae504eaa1b31c91d13135f4c5", null ],
     [ "distance_transform", "namespacehmap.html#a3bad25b24d9ae0e07e692c546bc3480d", null ],
     [ "distance_transform_approx", "namespacehmap.html#a23fdcd258e0bab2a5fcad31d6459c3fa", null ],
     [ "distance_transform_manhattan", "namespacehmap.html#add641a7fc26ae08b1f679cbb7dd43177", null ],

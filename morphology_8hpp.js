@@ -8,6 +8,7 @@ var morphology_8hpp =
     [ "border", "morphology_8hpp.html#af80bcff234bf1482cf26896b9d21d270", null ],
     [ "closing", "morphology_8hpp.html#a889405ce11be91e33cc80ca4dbd192b0", null ],
     [ "dilation", "morphology_8hpp.html#ac91a2dacd050d8588b4135f02dd8f2a5", null ],
+    [ "dilation_expand_border_only", "morphology_8hpp.html#a268e133ae504eaa1b31c91d13135f4c5", null ],
     [ "distance_transform", "morphology_8hpp.html#a3bad25b24d9ae0e07e692c546bc3480d", null ],
     [ "distance_transform_approx", "morphology_8hpp.html#a23fdcd258e0bab2a5fcad31d6459c3fa", null ],
     [ "distance_transform_manhattan", "morphology_8hpp.html#add641a7fc26ae08b1f679cbb7dd43177", null ],
