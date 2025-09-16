@@ -13,16 +13,30 @@ int main(void)
 
   i = 32;
   j = 64;
-  hmap::Array fmap1 = hmap::flooding_from_point(z, i, j);
+  hmap::Array water_depth1 = hmap::flooding_from_point(z, i, j);
 
   i = 64;
   j = 150;
-  hmap::Array fmap2 = hmap::flooding_from_point(z, i, j);
+  hmap::Array water_depth2 = hmap::flooding_from_point(z, i, j);
 
-  hmap::Array fmap3 = hmap::flooding_from_point(z, {32, 64}, {64, 150});
+  hmap::Array water_depth3 = hmap::flooding_from_point(z, {32, 64}, {64, 150});
 
-  hmap::export_banner_png(
-      "ex_flooding_from_point.png",
-      {z, fmap1, z + fmap1, fmap2, z + fmap2, fmap3, z + fmap3},
-      hmap::Cmap::JET);
+  float       water_zmax = 0.35f;
+  hmap::Array water_depth4 = flooding_from_boundaries(z, water_zmax);
+
+  hmap::Array water_depth5 = flooding_constant_level(z, water_zmax);
+
+  hmap::export_banner_png("ex_flooding_from_point.png",
+                          {z,
+                           water_depth1,
+                           z + water_depth1,
+                           water_depth2,
+                           z + water_depth2,
+                           water_depth3,
+                           z + water_depth3,
+                           water_depth4,
+                           z + water_depth4,
+                           water_depth5,
+                           z + water_depth5},
+                          hmap::Cmap::JET);
 }
