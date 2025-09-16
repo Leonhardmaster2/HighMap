@@ -27704,7 +27704,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/flow_accumulation_d8.cpp" line="27" column="7" bodyfile="HighMap/src/hydrology/flow_accumulation_d8.cpp" bodystart="27" bodyend="47" declfile="HighMap/include/highmap/hydrology.hpp" declline="46" declcolumn="7"/>
+        <location file="HighMap/src/hydrology/flow_accumulation_d8.cpp" line="27" column="7" bodyfile="HighMap/src/hydrology/flow_accumulation_d8.cpp" bodystart="27" bodyend="47" declfile="HighMap/include/highmap/hydrology.hpp" declline="47" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ae42a874864d2d8f1a7b580f428395c01" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -27776,12 +27776,240 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/find_flow_sinks.cpp" line="10" column="6" bodyfile="HighMap/src/hydrology/find_flow_sinks.cpp" bodystart="10" bodyend="38" declfile="HighMap/include/highmap/hydrology.hpp" declline="62" declcolumn="6"/>
+        <location file="HighMap/src/hydrology/find_flow_sinks.cpp" line="10" column="6" bodyfile="HighMap/src/hydrology/find_flow_sinks.cpp" bodystart="10" bodyend="38" declfile="HighMap/include/highmap/hydrology.hpp" declline="63" declcolumn="6"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1ab16a99babd0993758f39dee7027ae6b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacehmap_1a389d847551ea625ca9ba3326ff028fdf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
+        <definition>Array hmap::flooding_constant_level</definition>
+        <argsstring>(const Array &amp;z, float zref)</argsstring>
+        <name>flooding_constant_level</name>
+        <qualifiedname>hmap::flooding_constant_level</qualifiedname>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>z</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>zref</declname>
+        </param>
+        <briefdescription>
+<para>Compute water depth for a uniform flooding level. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Subtracts terrain elevation from a reference water level and clamps negative values to zero.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input elevation array. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>zref</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference water level. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Water depth array (0 where terrain is above zref).</para>
+</simplesect>
+<bold>Example</bold> <programlisting filename="ex_flooding_from_point.cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="structhmap_1_1Vec2" kindref="compound">hmap::Vec2&lt;int&gt;</ref><sp/><sp/><sp/>shape<sp/>=<sp/>{256,<sp/>256};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="structhmap_1_1Vec2" kindref="compound">hmap::Vec2&lt;float&gt;</ref><sp/>res<sp/>=<sp/>{4.f,<sp/>4.f};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed<sp/>=<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1a40b948c49a05c14f2d540dc1a6952130" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,<sp/>shape,<sp/>res,<sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(z);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i,<sp/>j;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>i<sp/>=<sp/>32;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>j<sp/>=<sp/>64;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>water_depth1<sp/>=<sp/><ref refid="namespacehmap_1ae9aa3ab661931aff775a9821055aa5d6" kindref="member">hmap::flooding_from_point</ref>(z,<sp/>i,<sp/>j);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>i<sp/>=<sp/>64;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>j<sp/>=<sp/>150;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>water_depth2<sp/>=<sp/><ref refid="namespacehmap_1ae9aa3ab661931aff775a9821055aa5d6" kindref="member">hmap::flooding_from_point</ref>(z,<sp/>i,<sp/>j);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>water_depth3<sp/>=<sp/><ref refid="namespacehmap_1ae9aa3ab661931aff775a9821055aa5d6" kindref="member">hmap::flooding_from_point</ref>(z,<sp/>{32,<sp/>64},<sp/>{64,<sp/>150});</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>water_zmax<sp/>=<sp/>0.35f;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>water_depth4<sp/>=<sp/><ref refid="namespacehmap_1a2b57b45ea7a8a48b43443aa4d1dddbe8" kindref="member">flooding_from_boundaries</ref>(z,<sp/>water_zmax);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>water_depth5<sp/>=<sp/><ref refid="namespacehmap_1a389d847551ea625ca9ba3326ff028fdf" kindref="member">flooding_constant_level</ref>(z,<sp/>water_zmax);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_flooding_from_point.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>water_depth1,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>z<sp/>+<sp/>water_depth1,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>water_depth2,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>z<sp/>+<sp/>water_depth2,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>water_depth3,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>z<sp/>+<sp/>water_depth3,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>water_depth4,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>z<sp/>+<sp/>water_depth4,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>water_depth5,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>z<sp/>+<sp/>water_depth5},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced" kindref="member">hmap::Cmap::JET</ref>);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<para><bold>Result</bold> <image type="html" name="ex_flooding_from_point.png"></image>
+ </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/hydrology/flooding.cpp" line="17" column="7" bodyfile="HighMap/src/hydrology/flooding.cpp" bodystart="17" bodyend="25" declfile="HighMap/include/highmap/hydrology.hpp" declline="83" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehmap_1a2b57b45ea7a8a48b43443aa4d1dddbe8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
+        <definition>Array hmap::flooding_from_boundaries</definition>
+        <argsstring>(const Array &amp;z, float zref, bool from_east=true, bool from_west=true, bool from_north=true, bool from_south=true)</argsstring>
+        <name>flooding_from_boundaries</name>
+        <qualifiedname>hmap::flooding_from_boundaries</qualifiedname>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>z</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>zref</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>from_east</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>from_west</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>from_north</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>from_south</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Compute flooding starting from the lowest boundary points. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Finds the lowest elevation on the selected boundaries and simulates flooding from those points up to a reference water level.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input elevation array. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>zref</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference water level. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>from_east</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Include east boundary. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>from_west</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Include west boundary. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>from_north</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Include north boundary. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>from_south</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Include south boundary. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Water depth array.</para>
+</simplesect>
+<bold>Example</bold> <programlisting filename="ex_flooding_from_point.cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="structhmap_1_1Vec2" kindref="compound">hmap::Vec2&lt;int&gt;</ref><sp/><sp/><sp/>shape<sp/>=<sp/>{256,<sp/>256};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="structhmap_1_1Vec2" kindref="compound">hmap::Vec2&lt;float&gt;</ref><sp/>res<sp/>=<sp/>{4.f,<sp/>4.f};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed<sp/>=<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1a40b948c49a05c14f2d540dc1a6952130" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,<sp/>shape,<sp/>res,<sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(z);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i,<sp/>j;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>i<sp/>=<sp/>32;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>j<sp/>=<sp/>64;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>water_depth1<sp/>=<sp/><ref refid="namespacehmap_1ae9aa3ab661931aff775a9821055aa5d6" kindref="member">hmap::flooding_from_point</ref>(z,<sp/>i,<sp/>j);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>i<sp/>=<sp/>64;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>j<sp/>=<sp/>150;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>water_depth2<sp/>=<sp/><ref refid="namespacehmap_1ae9aa3ab661931aff775a9821055aa5d6" kindref="member">hmap::flooding_from_point</ref>(z,<sp/>i,<sp/>j);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>water_depth3<sp/>=<sp/><ref refid="namespacehmap_1ae9aa3ab661931aff775a9821055aa5d6" kindref="member">hmap::flooding_from_point</ref>(z,<sp/>{32,<sp/>64},<sp/>{64,<sp/>150});</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>water_zmax<sp/>=<sp/>0.35f;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>water_depth4<sp/>=<sp/><ref refid="namespacehmap_1a2b57b45ea7a8a48b43443aa4d1dddbe8" kindref="member">flooding_from_boundaries</ref>(z,<sp/>water_zmax);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>water_depth5<sp/>=<sp/><ref refid="namespacehmap_1a389d847551ea625ca9ba3326ff028fdf" kindref="member">flooding_constant_level</ref>(z,<sp/>water_zmax);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_flooding_from_point.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>water_depth1,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>z<sp/>+<sp/>water_depth1,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>water_depth2,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>z<sp/>+<sp/>water_depth2,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>water_depth3,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>z<sp/>+<sp/>water_depth3,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>water_depth4,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>z<sp/>+<sp/>water_depth4,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>water_depth5,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>z<sp/>+<sp/>water_depth5},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced" kindref="member">hmap::Cmap::JET</ref>);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<para><bold>Result</bold> <image type="html" name="ex_flooding_from_point.png"></image>
+ </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/hydrology/flooding.cpp" line="27" column="7" bodyfile="HighMap/src/hydrology/flooding.cpp" bodystart="27" bodyend="107" declfile="HighMap/include/highmap/hydrology.hpp" declline="105" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehmap_1ae9aa3ab661931aff775a9821055aa5d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
         <definition>Array hmap::flooding_from_point</definition>
-        <argsstring>(const Array &amp;z, const int i, const int j)</argsstring>
+        <argsstring>(const Array &amp;z, int i, int j, float zref=std::numeric_limits&lt; float &gt;::max())</argsstring>
         <name>flooding_from_point</name>
         <qualifiedname>hmap::flooding_from_point</qualifiedname>
         <param>
@@ -27789,25 +28017,112 @@ This function:<itemizedlist>
           <declname>z</declname>
         </param>
         <param>
-          <type>const int</type>
+          <type>int</type>
           <declname>i</declname>
         </param>
         <param>
-          <type>const int</type>
+          <type>int</type>
           <declname>j</declname>
         </param>
+        <param>
+          <type>float</type>
+          <declname>zref</declname>
+          <defval>std::numeric_limits&lt; float &gt;::max()</defval>
+        </param>
         <briefdescription>
+<para>Flood terrain starting from a single seed point. </para>
         </briefdescription>
         <detaileddescription>
+<para>Fills areas below a reference level by propagating from the given cell until higher ground is reached.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input elevation array. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>i</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Seed point X index. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>j</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Seed point Y index. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>zref</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference water level (if max, uses z(i,j)). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Water depth array.</para>
+</simplesect>
+<bold>Example</bold> <programlisting filename="ex_flooding_from_point.cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="structhmap_1_1Vec2" kindref="compound">hmap::Vec2&lt;int&gt;</ref><sp/><sp/><sp/>shape<sp/>=<sp/>{256,<sp/>256};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="structhmap_1_1Vec2" kindref="compound">hmap::Vec2&lt;float&gt;</ref><sp/>res<sp/>=<sp/>{4.f,<sp/>4.f};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed<sp/>=<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1a40b948c49a05c14f2d540dc1a6952130" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,<sp/>shape,<sp/>res,<sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(z);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i,<sp/>j;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>i<sp/>=<sp/>32;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>j<sp/>=<sp/>64;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>water_depth1<sp/>=<sp/><ref refid="namespacehmap_1ae9aa3ab661931aff775a9821055aa5d6" kindref="member">hmap::flooding_from_point</ref>(z,<sp/>i,<sp/>j);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>i<sp/>=<sp/>64;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>j<sp/>=<sp/>150;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>water_depth2<sp/>=<sp/><ref refid="namespacehmap_1ae9aa3ab661931aff775a9821055aa5d6" kindref="member">hmap::flooding_from_point</ref>(z,<sp/>i,<sp/>j);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>water_depth3<sp/>=<sp/><ref refid="namespacehmap_1ae9aa3ab661931aff775a9821055aa5d6" kindref="member">hmap::flooding_from_point</ref>(z,<sp/>{32,<sp/>64},<sp/>{64,<sp/>150});</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>water_zmax<sp/>=<sp/>0.35f;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>water_depth4<sp/>=<sp/><ref refid="namespacehmap_1a2b57b45ea7a8a48b43443aa4d1dddbe8" kindref="member">flooding_from_boundaries</ref>(z,<sp/>water_zmax);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>water_depth5<sp/>=<sp/><ref refid="namespacehmap_1a389d847551ea625ca9ba3326ff028fdf" kindref="member">flooding_constant_level</ref>(z,<sp/>water_zmax);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_flooding_from_point.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>water_depth1,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>z<sp/>+<sp/>water_depth1,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>water_depth2,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>z<sp/>+<sp/>water_depth2,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>water_depth3,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>z<sp/>+<sp/>water_depth3,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>water_depth4,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>z<sp/>+<sp/>water_depth4,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>water_depth5,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>z<sp/>+<sp/>water_depth5},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced" kindref="member">hmap::Cmap::JET</ref>);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<para><bold>Result</bold> <image type="html" name="ex_flooding_from_point.png"></image>
+ </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/flooding_from_point.cpp" line="12" column="7" bodyfile="HighMap/src/hydrology/flooding_from_point.cpp" bodystart="12" bodyend="47" declfile="HighMap/include/highmap/hydrology.hpp" declline="66" declcolumn="7"/>
+        <location file="HighMap/src/hydrology/flooding.cpp" line="109" column="7" bodyfile="HighMap/src/hydrology/flooding.cpp" bodystart="109" bodyend="144" declfile="HighMap/include/highmap/hydrology.hpp" declline="130" declcolumn="7"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1a76afe239eb272a96e4831820a0281807" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacehmap_1af6416450589e7dea9e5940b22b667d89" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
         <definition>Array hmap::flooding_from_point</definition>
-        <argsstring>(const Array &amp;z, const std::vector&lt; int &gt; &amp;i, const std::vector&lt; int &gt; &amp;j)</argsstring>
+        <argsstring>(const Array &amp;z, const std::vector&lt; int &gt; &amp;i, const std::vector&lt; int &gt; &amp;j, float zref=std::numeric_limits&lt; float &gt;::max())</argsstring>
         <name>flooding_from_point</name>
         <qualifiedname>hmap::flooding_from_point</qualifiedname>
         <param>
@@ -27822,13 +28137,100 @@ This function:<itemizedlist>
           <type>const std::vector&lt; int &gt; &amp;</type>
           <declname>j</declname>
         </param>
+        <param>
+          <type>float</type>
+          <declname>zref</declname>
+          <defval>std::numeric_limits&lt; float &gt;::max()</defval>
+        </param>
         <briefdescription>
+<para>Flood terrain starting from multiple seed points. </para>
         </briefdescription>
         <detaileddescription>
+<para>Merges flooding results from each point below the reference level.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input elevation array. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>i</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of X indices for seeds. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>j</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of Y indices for seeds. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>zref</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference water level. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Water depth array.</para>
+</simplesect>
+<bold>Example</bold> <programlisting filename="ex_flooding_from_point.cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="structhmap_1_1Vec2" kindref="compound">hmap::Vec2&lt;int&gt;</ref><sp/><sp/><sp/>shape<sp/>=<sp/>{256,<sp/>256};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="structhmap_1_1Vec2" kindref="compound">hmap::Vec2&lt;float&gt;</ref><sp/>res<sp/>=<sp/>{4.f,<sp/>4.f};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed<sp/>=<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1a40b948c49a05c14f2d540dc1a6952130" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,<sp/>shape,<sp/>res,<sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(z);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i,<sp/>j;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>i<sp/>=<sp/>32;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>j<sp/>=<sp/>64;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>water_depth1<sp/>=<sp/><ref refid="namespacehmap_1ae9aa3ab661931aff775a9821055aa5d6" kindref="member">hmap::flooding_from_point</ref>(z,<sp/>i,<sp/>j);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>i<sp/>=<sp/>64;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>j<sp/>=<sp/>150;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>water_depth2<sp/>=<sp/><ref refid="namespacehmap_1ae9aa3ab661931aff775a9821055aa5d6" kindref="member">hmap::flooding_from_point</ref>(z,<sp/>i,<sp/>j);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>water_depth3<sp/>=<sp/><ref refid="namespacehmap_1ae9aa3ab661931aff775a9821055aa5d6" kindref="member">hmap::flooding_from_point</ref>(z,<sp/>{32,<sp/>64},<sp/>{64,<sp/>150});</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>water_zmax<sp/>=<sp/>0.35f;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>water_depth4<sp/>=<sp/><ref refid="namespacehmap_1a2b57b45ea7a8a48b43443aa4d1dddbe8" kindref="member">flooding_from_boundaries</ref>(z,<sp/>water_zmax);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>water_depth5<sp/>=<sp/><ref refid="namespacehmap_1a389d847551ea625ca9ba3326ff028fdf" kindref="member">flooding_constant_level</ref>(z,<sp/>water_zmax);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_flooding_from_point.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>water_depth1,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>z<sp/>+<sp/>water_depth1,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>water_depth2,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>z<sp/>+<sp/>water_depth2,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>water_depth3,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>z<sp/>+<sp/>water_depth3,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>water_depth4,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>z<sp/>+<sp/>water_depth4,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>water_depth5,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>z<sp/>+<sp/>water_depth5},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced" kindref="member">hmap::Cmap::JET</ref>);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<para><bold>Result</bold> <image type="html" name="ex_flooding_from_point.png"></image>
+ </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/flooding_from_point.cpp" line="49" column="7" bodyfile="HighMap/src/hydrology/flooding_from_point.cpp" bodystart="49" bodyend="59" declfile="HighMap/include/highmap/hydrology.hpp" declline="68" declcolumn="7"/>
+        <location file="HighMap/src/hydrology/flooding.cpp" line="146" column="7" bodyfile="HighMap/src/hydrology/flooding.cpp" bodystart="146" bodyend="158" declfile="HighMap/include/highmap/hydrology.hpp" declline="152" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a27b43e17baebd07ebb43808ca0dceb42" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -27881,7 +28283,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/flow_accumulation_d8.cpp" line="49" column="7" bodyfile="HighMap/src/hydrology/flow_accumulation_d8.cpp" bodystart="49" bodyend="98" declfile="HighMap/include/highmap/hydrology.hpp" declline="94" declcolumn="7"/>
+        <location file="HighMap/src/hydrology/flow_accumulation_d8.cpp" line="49" column="7" bodyfile="HighMap/src/hydrology/flow_accumulation_d8.cpp" bodystart="49" bodyend="98" declfile="HighMap/include/highmap/hydrology.hpp" declline="179" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a58ba4910af868f70849f343e0c73adf3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -27950,7 +28352,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/flow_accumulation_dinf.cpp" line="36" column="7" bodyfile="HighMap/src/hydrology/flow_accumulation_dinf.cpp" bodystart="36" bodyend="105" declfile="HighMap/include/highmap/hydrology.hpp" declline="122" declcolumn="7"/>
+        <location file="HighMap/src/hydrology/flow_accumulation_dinf.cpp" line="36" column="7" bodyfile="HighMap/src/hydrology/flow_accumulation_dinf.cpp" bodystart="36" bodyend="105" declfile="HighMap/include/highmap/hydrology.hpp" declline="207" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1af8f580c9d50a07585257569bd1160891" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -27985,7 +28387,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/flow_accumulation_d8.cpp" line="100" column="7" bodyfile="HighMap/src/hydrology/flow_accumulation_d8.cpp" bodystart="100" bodyend="130" declfile="HighMap/include/highmap/hydrology.hpp" declline="140" declcolumn="7"/>
+        <location file="HighMap/src/hydrology/flow_accumulation_d8.cpp" line="100" column="7" bodyfile="HighMap/src/hydrology/flow_accumulation_d8.cpp" bodystart="100" bodyend="130" declfile="HighMap/include/highmap/hydrology.hpp" declline="225" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a819fc20190d598c4664d442ee824fc96" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &gt;</type>
@@ -28029,7 +28431,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/flow_accumulation_dinf.cpp" line="107" column="13" bodyfile="HighMap/src/hydrology/flow_accumulation_dinf.cpp" bodystart="107" bodyend="147" declfile="HighMap/include/highmap/hydrology.hpp" declline="159" declcolumn="13"/>
+        <location file="HighMap/src/hydrology/flow_accumulation_dinf.cpp" line="107" column="13" bodyfile="HighMap/src/hydrology/flow_accumulation_dinf.cpp" bodystart="107" bodyend="147" declfile="HighMap/include/highmap/hydrology.hpp" declline="244" declcolumn="13"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a5adb98e67f89036317df083dd2123a1e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Path" kindref="compound">Path</ref></type>
@@ -28183,7 +28585,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/flow_stream.cpp" line="46" column="6" bodyfile="HighMap/src/hydrology/flow_stream.cpp" bodystart="46" bodyend="117" declfile="HighMap/include/highmap/hydrology.hpp" declline="194" declcolumn="6"/>
+        <location file="HighMap/src/hydrology/flow_stream.cpp" line="46" column="6" bodyfile="HighMap/src/hydrology/flow_stream.cpp" bodystart="46" bodyend="117" declfile="HighMap/include/highmap/hydrology.hpp" declline="279" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a97ba5dfaa6625b654a8010ed7d2f3465" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -28436,7 +28838,187 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/generate_riverbed.cpp" line="16" column="7" bodyfile="HighMap/src/hydrology/generate_riverbed.cpp" bodystart="16" bodyend="85" declfile="HighMap/include/highmap/hydrology.hpp" declline="246" declcolumn="7"/>
+        <location file="HighMap/src/hydrology/generate_riverbed.cpp" line="16" column="7" bodyfile="HighMap/src/hydrology/generate_riverbed.cpp" bodystart="16" bodyend="85" declfile="HighMap/include/highmap/hydrology.hpp" declline="331" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehmap_1a64fbc0261e13ea842762efd3ac6bcc53" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
+        <definition>Array hmap::merge_water_depths</definition>
+        <argsstring>(const Array &amp;depth1, const Array &amp;depth2, float k_smooth=0.f)</argsstring>
+        <name>merge_water_depths</name>
+        <qualifiedname>hmap::merge_water_depths</qualifiedname>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>depth1</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>depth2</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>k_smooth</declname>
+          <defval>0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <briefdescription>
+<para>Merge two water depth fields. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Computes the maximum (or smoothed maximum) of two depth arrays.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>depth1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>First water depth array. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>depth2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Second water depth array. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>k_smooth</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Smoothing parameter (0 = sharp max). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Combined water depth array. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/hydrology/flooding.cpp" line="160" column="7" bodyfile="HighMap/src/hydrology/flooding.cpp" bodystart="160" bodyend="172" declfile="HighMap/include/highmap/hydrology.hpp" declline="357" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehmap_1a121c42071766df393b6e049315876d5e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
+        <definition>Array hmap::water_depth_from_mask</definition>
+        <argsstring>(const Array &amp;z, const Array &amp;mask, float mask_threshold=0.f, int iterations_max=10000, float tolerance=1e-2f, float omega=1.8f)</argsstring>
+        <name>water_depth_from_mask</name>
+        <qualifiedname>hmap::water_depth_from_mask</qualifiedname>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>z</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>mask</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>mask_threshold</declname>
+          <defval>0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>iterations_max</declname>
+          <defval>10000</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>tolerance</declname>
+          <defval>1e-2<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>omega</declname>
+          <defval>1.8<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <briefdescription>
+<para>Compute water depth over a masked terrain using harmonic interpolation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function estimates the water depth above a terrain surface by solving a Laplace equation on the domain defined by <computeroutput>mask</computeroutput>. The solution is obtained using the harmonic interpolation method with Successive Over-Relaxation (SOR). The resulting water depth is given by the difference between the interpolated surface and the original terrain elevation.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input 2D array representing the terrain elevations (height field). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>mask</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Mask array of the same shape as <computeroutput>z</computeroutput>. Values greater than <computeroutput>mask_threshold</computeroutput> define regions where water can accumulate, while lower values represent boundaries or fixed terrain. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>mask_threshold</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Threshold used to convert <computeroutput>mask</computeroutput> into a binary field (0 or 1) for identifying water/terrain boundaries. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>iterations_max</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum number of SOR iterations used in the harmonic interpolation. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>tolerance</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Convergence criterion: the algorithm stops if the maximum absolute update between iterations is less than this value. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>omega</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Relaxation factor for the SOR solver (1 &lt; omega &lt; 2 recommended).</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A 2D array containing the computed water depth at each grid cell. Depth values are non-negative where water is present and zero where the mask indicates no water.</para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="namespacehmap_1adff97113f5c9e89106fa57b4e809d603" kindref="member">harmonic_interpolation</ref></para>
+</simplesect>
+<bold>Example</bold> <programlisting filename="ex_water_depth_from_mask.cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="structhmap_1_1Vec2" kindref="compound">hmap::Vec2&lt;int&gt;</ref><sp/><sp/><sp/>shape<sp/>=<sp/>{256,<sp/>256};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="structhmap_1_1Vec2" kindref="compound">hmap::Vec2&lt;float&gt;</ref><sp/>res<sp/>=<sp/>{4.f,<sp/>4.f};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed<sp/>=<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1a40b948c49a05c14f2d540dc1a6952130" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,<sp/>shape,<sp/>res,<sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(z);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>mask<sp/>=<sp/><ref refid="namespacehmap_1a1f35e2238ee222ab2aa87304f6692ce6" kindref="member">hmap::select_rivers</ref>(z,<sp/>1.f<sp/>/<sp/>shape.<ref refid="structhmap_1_1Vec2_1a2dc51e83492f966eeddbdac3d58ab447" kindref="member">x</ref>,<sp/>50.f);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(mask);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mask_threshold<sp/>=<sp/>0.1f;<sp/></highlight><highlight class="comment">//<sp/>higher<sp/>values<sp/>decrease<sp/>water<sp/>extent</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>water_depth<sp/>=<sp/><ref refid="namespacehmap_1a121c42071766df393b6e049315876d5e" kindref="member">hmap::water_depth_from_mask</ref>(z,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mask,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mask_threshold);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_water_depth_from_mask.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,<sp/>mask,<sp/>water_depth,<sp/>z<sp/>+<sp/>water_depth},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced" kindref="member">hmap::Cmap::JET</ref>);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<para><bold>Result</bold> <image type="html" name="ex_water_depth_from_mask.png"></image>
+ </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/hydrology/flooding.cpp" line="174" column="7" bodyfile="HighMap/src/hydrology/flooding.cpp" bodystart="174" bodyend="196" declfile="HighMap/include/highmap/hydrology.hpp" declline="399" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a3f38b7faedc76835a0a902eb48e3d94b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -28660,6 +29242,96 @@ The output path consists of:<itemizedlist>
         </inbodydescription>
         <location file="HighMap/include/highmap/interpolate2d.hpp" line="79" column="14" bodyfile="HighMap/include/highmap/interpolate2d.hpp" bodystart="79" bodyend="85"/>
       </memberdef>
+      <memberdef kind="function" id="namespacehmap_1adff97113f5c9e89106fa57b4e809d603" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
+        <definition>Array hmap::harmonic_interpolation</definition>
+        <argsstring>(const Array &amp;array, const Array &amp;mask_fixed_values, int iterations_max=10000, float tolerance=1e-3f, float omega=1.8f)</argsstring>
+        <name>harmonic_interpolation</name>
+        <qualifiedname>hmap::harmonic_interpolation</qualifiedname>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>array</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>mask_fixed_values</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>iterations_max</declname>
+          <defval>10000</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>tolerance</declname>
+          <defval>1e-3<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>omega</declname>
+          <defval>1.8<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <briefdescription>
+<para>Perform harmonic interpolation on a 2D array using the Successive Over-Relaxation (SOR) method. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function solves the discrete Laplace equation on a regular grid by iteratively updating the values of an input array. Values marked as fixed in the <computeroutput>mask_fixed_values</computeroutput> remain unchanged throughout the process. The algorithm stops when either the maximum number of iterations is reached or the change between successive iterations falls below the specified tolerance.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>array</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input 2D array providing the initial guess for the solution. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>mask_fixed_values</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Mask of the same shape as <computeroutput>array</computeroutput>. Cells with a value greater than zero indicate fixed points that must remain unchanged during interpolation. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>iterations_max</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum number of SOR iterations to perform. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>tolerance</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Convergence criterion: the algorithm stops if the maximum absolute update between iterations is less than this value. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>omega</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Relaxation factor (1 &lt; omega &lt; 2 recommended). Values closer to 2 accelerate convergence, but overly large values may cause divergence.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A new 2D array containing the interpolated solution.</para>
+</simplesect>
+<simplesect kind="note"><para><itemizedlist>
+<listitem><para>The algorithm updates only the interior points (indices <computeroutput>[1..nx-2, 1..ny-2]</computeroutput>).</para>
+</listitem><listitem><para>Cells where <computeroutput>mask_fixed_values(i, j) &gt; 0</computeroutput> remain unchanged.</para>
+</listitem><listitem><para>A relaxation factor of 1 corresponds to the standard Jacobi/Gauss-Seidel update. </para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/interpolate/harmonic_interpolation.cpp" line="11" column="7" bodyfile="HighMap/src/interpolate/harmonic_interpolation.cpp" bodystart="11" bodyend="42" declfile="HighMap/include/highmap/interpolate2d.hpp" declline="120" declcolumn="7"/>
+      </memberdef>
       <memberdef kind="function" id="namespacehmap_1a62fb974ae1d78c0c4ebb4267dc9c8204" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
         <definition>Array hmap::interpolate2d</definition>
@@ -28790,7 +29462,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/interpolate/interpolate2d.cpp" line="16" column="7" bodyfile="HighMap/src/interpolate/interpolate2d.cpp" bodystart="16" bodyend="49" declfile="HighMap/include/highmap/interpolate2d.hpp" declline="110" declcolumn="7"/>
+        <location file="HighMap/src/interpolate/interpolate2d.cpp" line="16" column="7" bodyfile="HighMap/src/interpolate/interpolate2d.cpp" bodystart="16" bodyend="49" declfile="HighMap/include/highmap/interpolate2d.hpp" declline="149" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a608687504dfc1cf55afe6f1db6a90335" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -28910,7 +29582,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/interpolate/interpolate2d.cpp" line="51" column="7" bodyfile="HighMap/src/interpolate/interpolate2d.cpp" bodystart="51" bodyend="88" declfile="HighMap/include/highmap/interpolate2d.hpp" declline="139" declcolumn="7"/>
+        <location file="HighMap/src/interpolate/interpolate2d.cpp" line="51" column="7" bodyfile="HighMap/src/interpolate/interpolate2d.cpp" bodystart="51" bodyend="88" declfile="HighMap/include/highmap/interpolate2d.hpp" declline="178" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a87e9a2e5fc78594e8d88522366ff5396" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -29030,7 +29702,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/interpolate/interpolate2d.cpp" line="90" column="7" bodyfile="HighMap/src/interpolate/interpolate2d.cpp" bodystart="90" bodyend="164" declfile="HighMap/include/highmap/interpolate2d.hpp" declline="168" declcolumn="7"/>
+        <location file="HighMap/src/interpolate/interpolate2d.cpp" line="90" column="7" bodyfile="HighMap/src/interpolate/interpolate2d.cpp" bodystart="90" bodyend="164" declfile="HighMap/include/highmap/interpolate2d.hpp" declline="207" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a0039057c9e4adf1498fa0a91b94d7fb8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
