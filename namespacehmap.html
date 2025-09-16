@@ -1778,6 +1778,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:ac91a2dacd050d8588b4135f02dd8f2a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply a dilation algorithm to the input array using a square structure.  <br /></td></tr>
 <tr class="separator:ac91a2dacd050d8588b4135f02dd8f2a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a268e133ae504eaa1b31c91d13135f4c5" id="r_a268e133ae504eaa1b31c91d13135f4c5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a268e133ae504eaa1b31c91d13135f4c5">dilation_expand_border_only</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, int ir)</td></tr>
+<tr class="memdesc:a268e133ae504eaa1b31c91d13135f4c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Expand non-zero regions of an array by morphological dilation, while preserving the original non-zero values.  <br /></td></tr>
 <tr class="separator:a268e133ae504eaa1b31c91d13135f4c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3bad25b24d9ae0e07e692c546bc3480d" id="r_a3bad25b24d9ae0e07e692c546bc3480d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a3bad25b24d9ae0e07e692c546bc3480d">distance_transform</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, bool return_squared_distance=false)</td></tr>
 <tr class="memdesc:a3bad25b24d9ae0e07e692c546bc3480d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the Euclidean distance transform.  <br /></td></tr>
@@ -31218,6 +31219,17 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Expand non-zero regions of an array by morphological dilation, while preserving the original non-zero values. </p>
+<p>This function performs a local-maximum (dilation) operation on the input array with a given radius <code>ir</code>, then copies back the original non-zero values so they remain unchanged. Only the surrounding background is filled with expanded values, effectively “growing” the borders of non-zero regions.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">array</td><td>Input 2D array where non-zero cells represent regions of interest and zero cells represent background. </td></tr>
+    <tr><td class="paramname">ir</td><td>Radius of the dilation (in grid cells). Defines how far the non-zero values can expand into the background.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A new 2D array where the borders of non-zero regions have been expanded outward by up to <code>ir</code> cells, while the original non-zero values are kept intact. </dd></dl>
 
 </div>
 </div>

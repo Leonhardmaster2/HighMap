@@ -32958,12 +32958,34 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
           <declname>ir</declname>
         </param>
         <briefdescription>
+<para>Expand non-zero regions of an array by morphological dilation, while preserving the original non-zero values. </para>
         </briefdescription>
         <detaileddescription>
+<para>This function performs a local-maximum (dilation) operation on the input array with a given radius <computeroutput>ir</computeroutput>, then copies back the original non-zero values so they remain unchanged. Only the surrounding background is filled with expanded values, effectively “growing” the borders of non-zero regions.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>array</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input 2D array where non-zero cells represent regions of interest and zero cells represent background. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ir</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Radius of the dilation (in grid cells). Defines how far the non-zero values can expand into the background.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A new 2D array where the borders of non-zero regions have been expanded outward by up to <computeroutput>ir</computeroutput> cells, while the original non-zero values are kept intact. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/morphology/morphology.cpp" line="29" column="7" bodyfile="HighMap/src/morphology/morphology.cpp" bodystart="29" bodyend="42" declfile="HighMap/include/highmap/morphology.hpp" declline="81" declcolumn="7"/>
+        <location file="HighMap/src/morphology/morphology.cpp" line="29" column="7" bodyfile="HighMap/src/morphology/morphology.cpp" bodystart="29" bodyend="42" declfile="HighMap/include/highmap/morphology.hpp" declline="99" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a3bad25b24d9ae0e07e692c546bc3480d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -33043,7 +33065,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/morphology/distance_transform.cpp" line="23" column="7" bodyfile="HighMap/src/morphology/distance_transform.cpp" bodystart="23" bodyend="100" declfile="HighMap/include/highmap/morphology.hpp" declline="103" declcolumn="7"/>
+        <location file="HighMap/src/morphology/distance_transform.cpp" line="23" column="7" bodyfile="HighMap/src/morphology/distance_transform.cpp" bodystart="23" bodyend="100" declfile="HighMap/include/highmap/morphology.hpp" declline="121" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a23fdcd258e0bab2a5fcad31d6459c3fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -33122,7 +33144,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/morphology/distance_transform_approx.cpp" line="12" column="7" bodyfile="HighMap/src/morphology/distance_transform_approx.cpp" bodystart="12" bodyend="52" declfile="HighMap/include/highmap/morphology.hpp" declline="124" declcolumn="7"/>
+        <location file="HighMap/src/morphology/distance_transform_approx.cpp" line="12" column="7" bodyfile="HighMap/src/morphology/distance_transform_approx.cpp" bodystart="12" bodyend="52" declfile="HighMap/include/highmap/morphology.hpp" declline="142" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1add641a7fc26ae08b1f679cbb7dd43177" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -33201,7 +33223,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/morphology/distance_transform_approx.cpp" line="54" column="7" bodyfile="HighMap/src/morphology/distance_transform_approx.cpp" bodystart="54" bodyend="90" declfile="HighMap/include/highmap/morphology.hpp" declline="144" declcolumn="7"/>
+        <location file="HighMap/src/morphology/distance_transform_approx.cpp" line="54" column="7" bodyfile="HighMap/src/morphology/distance_transform_approx.cpp" bodystart="54" bodyend="90" declfile="HighMap/include/highmap/morphology.hpp" declline="162" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a9cf7773f6141162bf60708a93acdfcee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -33276,7 +33298,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/morphology/morphology.cpp" line="44" column="7" bodyfile="HighMap/src/morphology/morphology.cpp" bodystart="44" bodyend="47" declfile="HighMap/include/highmap/morphology.hpp" declline="161" declcolumn="7"/>
+        <location file="HighMap/src/morphology/morphology.cpp" line="44" column="7" bodyfile="HighMap/src/morphology/morphology.cpp" bodystart="44" bodyend="47" declfile="HighMap/include/highmap/morphology.hpp" declline="179" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1adff494af7c8bf4db7f3e6fddd3261793" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -33378,7 +33400,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/morphology/morphology.cpp" line="49" column="6" bodyfile="HighMap/src/morphology/morphology.cpp" bodystart="49" bodyend="94" declfile="HighMap/include/highmap/morphology.hpp" declline="178" declcolumn="6"/>
+        <location file="HighMap/src/morphology/morphology.cpp" line="49" column="6" bodyfile="HighMap/src/morphology/morphology.cpp" bodystart="49" bodyend="94" declfile="HighMap/include/highmap/morphology.hpp" declline="196" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a1cf22c68188d0e35aa74983f3a01c488" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -33453,7 +33475,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/morphology/morphology.cpp" line="96" column="7" bodyfile="HighMap/src/morphology/morphology.cpp" bodystart="96" bodyend="99" declfile="HighMap/include/highmap/morphology.hpp" declline="198" declcolumn="7"/>
+        <location file="HighMap/src/morphology/morphology.cpp" line="96" column="7" bodyfile="HighMap/src/morphology/morphology.cpp" bodystart="96" bodyend="99" declfile="HighMap/include/highmap/morphology.hpp" declline="216" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a01f3be1fd053428ea67030e3736d15ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -33528,7 +33550,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/morphology/morphology.cpp" line="101" column="7" bodyfile="HighMap/src/morphology/morphology.cpp" bodystart="101" bodyend="104" declfile="HighMap/include/highmap/morphology.hpp" declline="214" declcolumn="7"/>
+        <location file="HighMap/src/morphology/morphology.cpp" line="101" column="7" bodyfile="HighMap/src/morphology/morphology.cpp" bodystart="101" bodyend="104" declfile="HighMap/include/highmap/morphology.hpp" declline="232" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a211108a73f7ebadb6ac87621c4e47301" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -33603,7 +33625,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/morphology/morphology.cpp" line="106" column="7" bodyfile="HighMap/src/morphology/morphology.cpp" bodystart="106" bodyend="109" declfile="HighMap/include/highmap/morphology.hpp" declline="230" declcolumn="7"/>
+        <location file="HighMap/src/morphology/morphology.cpp" line="106" column="7" bodyfile="HighMap/src/morphology/morphology.cpp" bodystart="106" bodyend="109" declfile="HighMap/include/highmap/morphology.hpp" declline="248" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1abd3024b8233a70596ff2924607221637" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -33678,7 +33700,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/morphology/morphology.cpp" line="111" column="7" bodyfile="HighMap/src/morphology/morphology.cpp" bodystart="111" bodyend="114" declfile="HighMap/include/highmap/morphology.hpp" declline="246" declcolumn="7"/>
+        <location file="HighMap/src/morphology/morphology.cpp" line="111" column="7" bodyfile="HighMap/src/morphology/morphology.cpp" bodystart="111" bodyend="114" declfile="HighMap/include/highmap/morphology.hpp" declline="264" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a7c7d934cc5a3a5e1a6f17c09a0e1e51f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -33774,7 +33796,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/morphology/morphology.cpp" line="150" column="7" bodyfile="HighMap/src/morphology/morphology.cpp" bodystart="150" bodyend="199" declfile="HighMap/include/highmap/morphology.hpp" declline="281" declcolumn="7"/>
+        <location file="HighMap/src/morphology/morphology.cpp" line="150" column="7" bodyfile="HighMap/src/morphology/morphology.cpp" bodystart="150" bodyend="199" declfile="HighMap/include/highmap/morphology.hpp" declline="299" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a11ddd5ab1aa625db9419d9b65c0eaa64" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -33845,7 +33867,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/morphology/morphology.cpp" line="201" column="7" bodyfile="HighMap/src/morphology/morphology.cpp" bodystart="201" bodyend="224" declfile="HighMap/include/highmap/morphology.hpp" declline="309" declcolumn="7"/>
+        <location file="HighMap/src/morphology/morphology.cpp" line="201" column="7" bodyfile="HighMap/src/morphology/morphology.cpp" bodystart="201" bodyend="224" declfile="HighMap/include/highmap/morphology.hpp" declline="327" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a1fb8077215c98a741e0de5366c2f7ca3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>

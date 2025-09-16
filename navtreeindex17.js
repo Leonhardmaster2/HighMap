@@ -1,5 +1,8 @@
 var NAVTREEINDEX17 =
 {
+"upscaling_8hpp.html":[5,0,1,0,0,3,2],
+"upscaling_8hpp.html#a868ae7c781d7e72af7b1416898a2f891":[5,0,1,0,0,3,2,0],
+"upscaling_8hpp_source.html":[5,0,1,0,0,3,2],
 "vector_8cpp.html":[5,0,1,1,24,5],
 "vector_8cpp.html#a068e4d5be8c16ab9e708dca9678dc8de":[5,0,1,1,24,5,3],
 "vector_8cpp.html#a3957ac4ae673f8ad402b5dd71e99b015":[5,0,1,1,24,5,2],
