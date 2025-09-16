@@ -78,6 +78,24 @@ Array closing(const Array &array, int ir);
  */
 Array dilation(const Array &array, int ir);
 
+/**
+ * @brief Expand non-zero regions of an array by morphological dilation, while
+ * preserving the original non-zero values.
+ *
+ * This function performs a local-maximum (dilation) operation on the input
+ * array with a given radius @p ir, then copies back the original non-zero
+ * values so they remain unchanged. Only the surrounding background is filled
+ * with expanded values, effectively “growing” the borders of non-zero regions.
+ *
+ * @param  array Input 2D array where non-zero cells represent regions of
+ *               interest and zero cells represent background.
+ * @param  ir    Radius of the dilation (in grid cells). Defines how far the
+ *               non-zero values can expand into the background.
+ *
+ * @return       A new 2D array where the borders of non-zero regions have been
+ *               expanded outward by up to @p ir cells, while the original
+ *               non-zero values are kept intact.
+ */
 Array dilation_expand_border_only(const Array &array, int ir);
 
 /**
@@ -321,6 +339,9 @@ Array closing(const Array &array, int ir);
 
 /*! @brief See hmap::dilation */
 Array dilation(const Array &array, int ir);
+
+/*! @brief See hmap::dilation_expand_border_only */
+Array dilation_expand_border_only(const Array &array, int ir);
 
 /*! @brief See hmap::erosion */
 Array erosion(const Array &array, int ir);
