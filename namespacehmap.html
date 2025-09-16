@@ -1485,9 +1485,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ae42a874864d2d8f1a7b580f428395c01" id="r_ae42a874864d2d8f1a7b580f428395c01"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#ae42a874864d2d8f1a7b580f428395c01">find_flow_sinks</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, std::vector&lt; int &gt; &amp;is, std::vector&lt; int &gt; &amp;js)</td></tr>
 <tr class="memdesc:ae42a874864d2d8f1a7b580f428395c01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifies the indices of flow sinks within the heightmap.  <br /></td></tr>
 <tr class="separator:ae42a874864d2d8f1a7b580f428395c01"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a389d847551ea625ca9ba3326ff028fdf" id="r_a389d847551ea625ca9ba3326ff028fdf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a389d847551ea625ca9ba3326ff028fdf">flooding_constant_level</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, float zref)</td></tr>
-<tr class="memdesc:a389d847551ea625ca9ba3326ff028fdf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute water depth for a uniform flooding level.  <br /></td></tr>
-<tr class="separator:a389d847551ea625ca9ba3326ff028fdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2318944325d02f3969aa7fa58b500278" id="r_a2318944325d02f3969aa7fa58b500278"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a2318944325d02f3969aa7fa58b500278">flooding_uniform_level</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, float zref)</td></tr>
+<tr class="memdesc:a2318944325d02f3969aa7fa58b500278"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute water depth for a uniform flooding level.  <br /></td></tr>
+<tr class="separator:a2318944325d02f3969aa7fa58b500278"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2b57b45ea7a8a48b43443aa4d1dddbe8" id="r_a2b57b45ea7a8a48b43443aa4d1dddbe8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a2b57b45ea7a8a48b43443aa4d1dddbe8">flooding_from_boundaries</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, float zref, bool from_east=true, bool from_west=true, bool from_north=true, bool from_south=true)</td></tr>
 <tr class="memdesc:a2b57b45ea7a8a48b43443aa4d1dddbe8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute flooding starting from the lowest boundary points.  <br /></td></tr>
 <tr class="separator:a2b57b45ea7a8a48b43443aa4d1dddbe8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -26541,14 +26541,14 @@ An <a class="el" href="classhmap_1_1Array.html" title="Array class, helper to ma
 </div><!-- fragment --> 
 </div>
 </div>
-<a id="a389d847551ea625ca9ba3326ff028fdf" name="a389d847551ea625ca9ba3326ff028fdf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a389d847551ea625ca9ba3326ff028fdf">&#9670;&#160;</a></span>flooding_constant_level()</h2>
+<a id="a2318944325d02f3969aa7fa58b500278" name="a2318944325d02f3969aa7fa58b500278"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2318944325d02f3969aa7fa58b500278">&#9670;&#160;</a></span>flooding_uniform_level()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classhmap_1_1Array.html">Array</a> hmap::flooding_constant_level </td>
+          <td class="memname"><a class="el" href="classhmap_1_1Array.html">Array</a> hmap::flooding_uniform_level </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
           <td class="paramname"><em>z</em>, </td>
@@ -26603,7 +26603,7 @@ An <a class="el" href="classhmap_1_1Array.html" title="Array class, helper to ma
 <div class="line">  <span class="keywordtype">float</span>       water_zmax = 0.35f;</div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> water_depth4 = <a class="code hl_function" href="namespacehmap.html#a2b57b45ea7a8a48b43443aa4d1dddbe8">flooding_from_boundaries</a>(z, water_zmax);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> water_depth5 = <a class="code hl_function" href="namespacehmap.html#a389d847551ea625ca9ba3326ff028fdf">flooding_constant_level</a>(z, water_zmax);</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> water_depth5 = <a class="code hl_function" href="namespacehmap.html#a2318944325d02f3969aa7fa58b500278">flooding_uniform_level</a>(z, water_zmax);</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_flooding_from_point.png&quot;</span>,</div>
 <div class="line">                          {z,</div>
@@ -26619,8 +26619,8 @@ An <a class="el" href="classhmap_1_1Array.html" title="Array class, helper to ma
 <div class="line">                           z + water_depth5},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>
+<div class="ttc" id="anamespacehmap_html_a2318944325d02f3969aa7fa58b500278"><div class="ttname"><a href="namespacehmap.html#a2318944325d02f3969aa7fa58b500278">hmap::flooding_uniform_level</a></div><div class="ttdeci">Array flooding_uniform_level(const Array &amp;z, float zref)</div><div class="ttdoc">Compute water depth for a uniform flooding level.</div><div class="ttdef"><b>Definition</b> flooding.cpp:17</div></div>
 <div class="ttc" id="anamespacehmap_html_a2b57b45ea7a8a48b43443aa4d1dddbe8"><div class="ttname"><a href="namespacehmap.html#a2b57b45ea7a8a48b43443aa4d1dddbe8">hmap::flooding_from_boundaries</a></div><div class="ttdeci">Array flooding_from_boundaries(const Array &amp;z, float zref, bool from_east=true, bool from_west=true, bool from_north=true, bool from_south=true)</div><div class="ttdoc">Compute flooding starting from the lowest boundary points.</div><div class="ttdef"><b>Definition</b> flooding.cpp:27</div></div>
-<div class="ttc" id="anamespacehmap_html_a389d847551ea625ca9ba3326ff028fdf"><div class="ttname"><a href="namespacehmap.html#a389d847551ea625ca9ba3326ff028fdf">hmap::flooding_constant_level</a></div><div class="ttdeci">Array flooding_constant_level(const Array &amp;z, float zref)</div><div class="ttdoc">Compute water depth for a uniform flooding level.</div><div class="ttdef"><b>Definition</b> flooding.cpp:17</div></div>
 <div class="ttc" id="anamespacehmap_html_ae9aa3ab661931aff775a9821055aa5d6"><div class="ttname"><a href="namespacehmap.html#ae9aa3ab661931aff775a9821055aa5d6">hmap::flooding_from_point</a></div><div class="ttdeci">Array flooding_from_point(const Array &amp;z, int i, int j, float zref=std::numeric_limits&lt; float &gt;::max())</div><div class="ttdoc">Flood terrain starting from a single seed point.</div><div class="ttdef"><b>Definition</b> flooding.cpp:109</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_flooding_from_point.png" alt=""/>
@@ -26718,7 +26718,7 @@ An <a class="el" href="classhmap_1_1Array.html" title="Array class, helper to ma
 <div class="line">  <span class="keywordtype">float</span>       water_zmax = 0.35f;</div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> water_depth4 = <a class="code hl_function" href="namespacehmap.html#a2b57b45ea7a8a48b43443aa4d1dddbe8">flooding_from_boundaries</a>(z, water_zmax);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> water_depth5 = <a class="code hl_function" href="namespacehmap.html#a389d847551ea625ca9ba3326ff028fdf">flooding_constant_level</a>(z, water_zmax);</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> water_depth5 = <a class="code hl_function" href="namespacehmap.html#a2318944325d02f3969aa7fa58b500278">flooding_uniform_level</a>(z, water_zmax);</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_flooding_from_point.png&quot;</span>,</div>
 <div class="line">                          {z,</div>
@@ -26816,7 +26816,7 @@ An <a class="el" href="classhmap_1_1Array.html" title="Array class, helper to ma
 <div class="line">  <span class="keywordtype">float</span>       water_zmax = 0.35f;</div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> water_depth4 = <a class="code hl_function" href="namespacehmap.html#a2b57b45ea7a8a48b43443aa4d1dddbe8">flooding_from_boundaries</a>(z, water_zmax);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> water_depth5 = <a class="code hl_function" href="namespacehmap.html#a389d847551ea625ca9ba3326ff028fdf">flooding_constant_level</a>(z, water_zmax);</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> water_depth5 = <a class="code hl_function" href="namespacehmap.html#a2318944325d02f3969aa7fa58b500278">flooding_uniform_level</a>(z, water_zmax);</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_flooding_from_point.png&quot;</span>,</div>
 <div class="line">                          {z,</div>
@@ -26914,7 +26914,7 @@ An <a class="el" href="classhmap_1_1Array.html" title="Array class, helper to ma
 <div class="line">  <span class="keywordtype">float</span>       water_zmax = 0.35f;</div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> water_depth4 = <a class="code hl_function" href="namespacehmap.html#a2b57b45ea7a8a48b43443aa4d1dddbe8">flooding_from_boundaries</a>(z, water_zmax);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> water_depth5 = <a class="code hl_function" href="namespacehmap.html#a389d847551ea625ca9ba3326ff028fdf">flooding_constant_level</a>(z, water_zmax);</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> water_depth5 = <a class="code hl_function" href="namespacehmap.html#a2318944325d02f3969aa7fa58b500278">flooding_uniform_level</a>(z, water_zmax);</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_flooding_from_point.png&quot;</span>,</div>
 <div class="line">                          {z,</div>

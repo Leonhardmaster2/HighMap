@@ -689,7 +689,7 @@ var namespacehmap =
     [ "transform", "namespacehmap.html#a3438427cf944820ce19e7ca9ce438985", null ],
     [ "d8_compute_ndip", "namespacehmap.html#a2e0533063a77bfc047472d1d85f3f63c", null ],
     [ "find_flow_sinks", "namespacehmap.html#ae42a874864d2d8f1a7b580f428395c01", null ],
-    [ "flooding_constant_level", "namespacehmap.html#a389d847551ea625ca9ba3326ff028fdf", null ],
+    [ "flooding_uniform_level", "namespacehmap.html#a2318944325d02f3969aa7fa58b500278", null ],
     [ "flooding_from_boundaries", "namespacehmap.html#a2b57b45ea7a8a48b43443aa4d1dddbe8", null ],
     [ "flooding_from_point", "namespacehmap.html#ae9aa3ab661931aff775a9821055aa5d6", null ],
     [ "flooding_from_point", "namespacehmap.html#af6416450589e7dea9e5940b22b667d89", null ],

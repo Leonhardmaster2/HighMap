@@ -27778,12 +27778,12 @@ This function:<itemizedlist>
         </inbodydescription>
         <location file="HighMap/src/hydrology/find_flow_sinks.cpp" line="10" column="6" bodyfile="HighMap/src/hydrology/find_flow_sinks.cpp" bodystart="10" bodyend="38" declfile="HighMap/include/highmap/hydrology.hpp" declline="63" declcolumn="6"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1a389d847551ea625ca9ba3326ff028fdf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacehmap_1a2318944325d02f3969aa7fa58b500278" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
-        <definition>Array hmap::flooding_constant_level</definition>
+        <definition>Array hmap::flooding_uniform_level</definition>
         <argsstring>(const Array &amp;z, float zref)</argsstring>
-        <name>flooding_constant_level</name>
-        <qualifiedname>hmap::flooding_constant_level</qualifiedname>
+        <name>flooding_uniform_level</name>
+        <qualifiedname>hmap::flooding_uniform_level</qualifiedname>
         <param>
           <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
           <declname>z</declname>
@@ -27842,7 +27842,7 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>water_zmax<sp/>=<sp/>0.35f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>water_depth4<sp/>=<sp/><ref refid="namespacehmap_1a2b57b45ea7a8a48b43443aa4d1dddbe8" kindref="member">flooding_from_boundaries</ref>(z,<sp/>water_zmax);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>water_depth5<sp/>=<sp/><ref refid="namespacehmap_1a389d847551ea625ca9ba3326ff028fdf" kindref="member">flooding_constant_level</ref>(z,<sp/>water_zmax);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>water_depth5<sp/>=<sp/><ref refid="namespacehmap_1a2318944325d02f3969aa7fa58b500278" kindref="member">flooding_uniform_level</ref>(z,<sp/>water_zmax);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_flooding_from_point.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,</highlight></codeline>
@@ -27982,7 +27982,7 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>water_zmax<sp/>=<sp/>0.35f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>water_depth4<sp/>=<sp/><ref refid="namespacehmap_1a2b57b45ea7a8a48b43443aa4d1dddbe8" kindref="member">flooding_from_boundaries</ref>(z,<sp/>water_zmax);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>water_depth5<sp/>=<sp/><ref refid="namespacehmap_1a389d847551ea625ca9ba3326ff028fdf" kindref="member">flooding_constant_level</ref>(z,<sp/>water_zmax);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>water_depth5<sp/>=<sp/><ref refid="namespacehmap_1a2318944325d02f3969aa7fa58b500278" kindref="member">flooding_uniform_level</ref>(z,<sp/>water_zmax);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_flooding_from_point.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,</highlight></codeline>
@@ -28095,7 +28095,7 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>water_zmax<sp/>=<sp/>0.35f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>water_depth4<sp/>=<sp/><ref refid="namespacehmap_1a2b57b45ea7a8a48b43443aa4d1dddbe8" kindref="member">flooding_from_boundaries</ref>(z,<sp/>water_zmax);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>water_depth5<sp/>=<sp/><ref refid="namespacehmap_1a389d847551ea625ca9ba3326ff028fdf" kindref="member">flooding_constant_level</ref>(z,<sp/>water_zmax);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>water_depth5<sp/>=<sp/><ref refid="namespacehmap_1a2318944325d02f3969aa7fa58b500278" kindref="member">flooding_uniform_level</ref>(z,<sp/>water_zmax);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_flooding_from_point.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,</highlight></codeline>
@@ -28208,7 +28208,7 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>water_zmax<sp/>=<sp/>0.35f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>water_depth4<sp/>=<sp/><ref refid="namespacehmap_1a2b57b45ea7a8a48b43443aa4d1dddbe8" kindref="member">flooding_from_boundaries</ref>(z,<sp/>water_zmax);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>water_depth5<sp/>=<sp/><ref refid="namespacehmap_1a389d847551ea625ca9ba3326ff028fdf" kindref="member">flooding_constant_level</ref>(z,<sp/>water_zmax);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>water_depth5<sp/>=<sp/><ref refid="namespacehmap_1a2318944325d02f3969aa7fa58b500278" kindref="member">flooding_uniform_level</ref>(z,<sp/>water_zmax);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_flooding_from_point.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,</highlight></codeline>
