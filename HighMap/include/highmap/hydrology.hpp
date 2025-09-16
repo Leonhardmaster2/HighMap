@@ -80,7 +80,7 @@ void find_flow_sinks(const Array      &z,
  * **Result**
  * @image html ex_flooding_from_point.png
  */
-Array flooding_constant_level(const Array &z, float zref);
+Array flooding_uniform_level(const Array &z, float zref);
 
 /**
  * @brief Compute flooding starting from the lowest boundary points.

@@ -14,7 +14,7 @@
 namespace hmap
 {
 
-Array flooding_constant_level(const Array &z, float zref)
+Array flooding_uniform_level(const Array &z, float zref)
 {
   Array water_depth(z.shape, 0.f);
 

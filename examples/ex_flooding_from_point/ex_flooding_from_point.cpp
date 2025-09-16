@@ -24,7 +24,7 @@ int main(void)
   float       water_zmax = 0.35f;
   hmap::Array water_depth4 = flooding_from_boundaries(z, water_zmax);
 
-  hmap::Array water_depth5 = flooding_constant_level(z, water_zmax);
+  hmap::Array water_depth5 = flooding_uniform_level(z, water_zmax);
 
   hmap::export_banner_png("ex_flooding_from_point.png",
                           {z,
