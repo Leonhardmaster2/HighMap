@@ -3,7 +3,7 @@ var searchData=
   ['warp_0',['warp',['../namespacehmap.html#a19148ad2a95f7ad5b05161e9a0f0f732',1,'hmap::warp()'],['../namespacehmap_1_1gpu.html#a99659d06f84b0e92e6731f28ca28937c',1,'hmap::gpu::warp()']]],
   ['warp_5fdirectional_1',['warp_directional',['../namespacehmap.html#accbbc6e5bedf98c7a7fa85fbe364194e',1,'hmap::warp_directional(Array &amp;array, float angle, float amount=0.02f, int ir=4, bool reverse=false)'],['../namespacehmap.html#a6b780e74228ec5cca45602eb19b8975c',1,'hmap::warp_directional(Array &amp;array, float angle, const Array *p_mask, float amount=0.02f, int ir=4, bool reverse=false)']]],
   ['warp_5fdownslope_2',['warp_downslope',['../namespacehmap.html#a5d5baa80ff76a31a24e3b348edb0520a',1,'hmap::warp_downslope(Array &amp;array, float amount=0.02f, int ir=4, bool reverse=false)'],['../namespacehmap.html#a2dba417aca5a0dcd02509617939d741b',1,'hmap::warp_downslope(Array &amp;array, const Array *p_mask, float amount=0.02f, int ir=4, bool reverse=false)']]],
-  ['water_5fdepth_5fdry_5fout_3',['water_depth_dry_out',['../namespacehmap.html#a3afd97463766b68e315e6155cb96a682',1,'hmap']]],
+  ['water_5fdepth_5fdry_5fout_3',['water_depth_dry_out',['../namespacehmap.html#a3aebd62906b90ccfde11140e13b0853f',1,'hmap']]],
   ['water_5fdepth_5ffrom_5fmask_4',['water_depth_from_mask',['../namespacehmap.html#a121c42071766df393b6e049315876d5e',1,'hmap']]],
   ['wave_5fdune_5',['wave_dune',['../namespacehmap.html#a16a701ab5a740bd3dbfe7020fb388023',1,'hmap']]],
   ['wave_5fsine_6',['wave_sine',['../namespacehmap.html#a0fac1251f8728228be8de58ac16846d2',1,'hmap']]],

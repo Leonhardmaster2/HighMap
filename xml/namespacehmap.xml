@@ -29103,10 +29103,10 @@ The output path consists of:<itemizedlist>
         </inbodydescription>
         <location file="HighMap/src/hydrology/flooding.cpp" line="194" column="7" bodyfile="HighMap/src/hydrology/flooding.cpp" bodystart="194" bodyend="216" declfile="HighMap/include/highmap/hydrology.hpp" declline="429" declcolumn="7"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1a3afd97463766b68e315e6155cb96a682" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacehmap_1a3aebd62906b90ccfde11140e13b0853f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void hmap::water_depth_dry_out</definition>
-        <argsstring>(Array &amp;water_depth, float dry_out_ratio=0.5f, const Array *p_mask=nullptr)</argsstring>
+        <argsstring>(Array &amp;water_depth, float dry_out_ratio=0.5f, const Array *p_mask=nullptr, float depth_max=std::numeric_limits&lt; float &gt;::max())</argsstring>
         <name>water_depth_dry_out</name>
         <qualifiedname>hmap::water_depth_dry_out</qualifiedname>
         <param>
@@ -29122,6 +29122,11 @@ The output path consists of:<itemizedlist>
           <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
           <declname>p_mask</declname>
           <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>depth_max</declname>
+          <defval>std::numeric_limits&lt; float &gt;::max()</defval>
         </param>
         <briefdescription>
 <para>Apply a drying factor to a water depth field. </para>
@@ -29149,7 +29154,15 @@ The output path consists of:<itemizedlist>
 <parametername>p_mask</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Optional pointer to a mask array of the same shape as <computeroutput>water_depth</computeroutput>. Drying is applied only where the mask has non-zero values. If <computeroutput>nullptr</computeroutput>, the factor is applied uniformly to all cells.</para>
+<para>Optional pointer to a mask array of the same shape as <computeroutput>water_depth</computeroutput>. Drying is applied only where the mask has non-zero values. If <computeroutput>nullptr</computeroutput>, the factor is applied uniformly to all cells. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>depth_max</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum water depth, computed automatically by default.</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -29168,13 +29181,13 @@ The output path consists of:<itemizedlist>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>dry_out_ratio<sp/>=<sp/>0.5f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><sp/>w1<sp/>=<sp/>water_depth;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a3afd97463766b68e315e6155cb96a682" kindref="member">hmap::water_depth_dry_out</ref>(w1,<sp/>dry_out_ratio);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a3aebd62906b90ccfde11140e13b0853f" kindref="member">hmap::water_depth_dry_out</ref>(w1,<sp/>dry_out_ratio);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>remove<sp/>water<sp/>at<sp/>high<sp/>elevations</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>dry_out_ratio<sp/>=<sp/>1.f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>w2<sp/>=<sp/>water_depth;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>mask<sp/>=<sp/>1.f<sp/>-<sp/>z;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a3afd97463766b68e315e6155cb96a682" kindref="member">hmap::water_depth_dry_out</ref>(w2,<sp/>dry_out_ratio,<sp/>&amp;mask);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a3aebd62906b90ccfde11140e13b0853f" kindref="member">hmap::water_depth_dry_out</ref>(w2,<sp/>dry_out_ratio,<sp/>&amp;mask);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_water_depth_dry_out.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,<sp/>z<sp/>+<sp/>water_depth,<sp/>z<sp/>+<sp/>w1,<sp/>z<sp/>+<sp/>w2},</highlight></codeline>
@@ -29187,7 +29200,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/flooding.cpp" line="218" column="6" bodyfile="HighMap/src/hydrology/flooding.cpp" bodystart="218" bodyend="226" declfile="HighMap/include/highmap/hydrology.hpp" declline="459" declcolumn="6"/>
+        <location file="HighMap/src/hydrology/flooding.cpp" line="218" column="6" bodyfile="HighMap/src/hydrology/flooding.cpp" bodystart="218" bodyend="244" declfile="HighMap/include/highmap/hydrology.hpp" declline="460" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a3f38b7faedc76835a0a902eb48e3d94b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>

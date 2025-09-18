@@ -15,7 +15,7 @@ var hydrology_8hpp =
     [ "generate_riverbed", "hydrology_8hpp.html#a97ba5dfaa6625b654a8010ed7d2f3465", null ],
     [ "merge_water_depths", "hydrology_8hpp.html#a64fbc0261e13ea842762efd3ac6bcc53", null ],
     [ "water_depth_from_mask", "hydrology_8hpp.html#a121c42071766df393b6e049315876d5e", null ],
-    [ "water_depth_dry_out", "hydrology_8hpp.html#a3afd97463766b68e315e6155cb96a682", null ],
+    [ "water_depth_dry_out", "hydrology_8hpp.html#a3aebd62906b90ccfde11140e13b0853f", null ],
     [ "flow_direction_d8", "hydrology_8hpp.html#af794a4c54c3766ca86b7e4a06346ab91", null ],
     [ "generate_riverbed", "hydrology_8hpp.html#ab4f1542d2d5dd7edc54d240dab777755", null ]
 ];

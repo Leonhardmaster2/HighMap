@@ -1029,7 +1029,7 @@ std\+::vector$<$ \mbox{\hyperlink{classhmap_1_1Array}{Array}} $>$ \mbox{\hyperli
 \begin{DoxyCompactList}\small\item\em Merge two water depth fields. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a121c42071766df393b6e049315876d5e}{water\+\_\+depth\+\_\+from\+\_\+mask}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&mask, float mask\+\_\+threshold=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, int iterations\+\_\+max=10000, float tolerance=1e-\/2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float omega=1.\+8\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Compute water depth over a masked terrain using harmonic interpolation. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{namespacehmap_a3afd97463766b68e315e6155cb96a682}{water\+\_\+depth\+\_\+dry\+\_\+out}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&water\+\_\+depth, float dry\+\_\+out\+\_\+ratio=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+mask=nullptr)
+void \mbox{\hyperlink{namespacehmap_a3aebd62906b90ccfde11140e13b0853f}{water\+\_\+depth\+\_\+dry\+\_\+out}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&water\+\_\+depth, float dry\+\_\+out\+\_\+ratio=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+mask=nullptr, float depth\+\_\+max=std\+::numeric\+\_\+limits$<$ float $>$\+::max())
 \begin{DoxyCompactList}\small\item\em Apply a drying factor to a water depth field. \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{namespacehmap_a3f38b7faedc76835a0a902eb48e3d94b}{zfill}} (const std\+::string \&str, int n\+\_\+zero)
 \item 
@@ -16703,11 +16703,11 @@ A 2D array containing the computed water depth at each grid cell. Depth values a
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}  \Hypertarget{namespacehmap_a3afd97463766b68e315e6155cb96a682}\label{namespacehmap_a3afd97463766b68e315e6155cb96a682} 
+{\bfseries{Result}}  \Hypertarget{namespacehmap_a3aebd62906b90ccfde11140e13b0853f}\label{namespacehmap_a3aebd62906b90ccfde11140e13b0853f} 
 \index{hmap@{hmap}!water\_depth\_dry\_out@{water\_depth\_dry\_out}}
 \index{water\_depth\_dry\_out@{water\_depth\_dry\_out}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{water\_depth\_dry\_out()}{water\_depth\_dry\_out()}}
-{\footnotesize\ttfamily void hmap\+::water\+\_\+depth\+\_\+dry\+\_\+out (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{water\+\_\+depth,  }\item[{float}]{dry\+\_\+out\+\_\+ratio = {\ttfamily 0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+mask = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void hmap\+::water\+\_\+depth\+\_\+dry\+\_\+out (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{water\+\_\+depth,  }\item[{float}]{dry\+\_\+out\+\_\+ratio = {\ttfamily 0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+mask = {\ttfamily nullptr},  }\item[{float}]{depth\+\_\+max = {\ttfamily std\+:\+:numeric\+\_\+limits$<$float$>$\+:\+:max()} }\end{DoxyParamCaption})}
 
 
 
@@ -16721,7 +16721,9 @@ This function reduces the water depth values in-\/place by multiplying them by a
 \hline
 {\em dry\+\_\+out\+\_\+ratio} & Multiplicative factor (typically between 0 and 1) used to scale down the water depth. A value of 1 leaves the depth unchanged, while 0 removes all water. \\
 \hline
-{\em p\+\_\+mask} & Optional pointer to a mask array of the same shape as {\ttfamily water\+\_\+depth}. Drying is applied only where the mask has non-\/zero values. If {\ttfamily nullptr}, the factor is applied uniformly to all cells.\\
+{\em p\+\_\+mask} & Optional pointer to a mask array of the same shape as {\ttfamily water\+\_\+depth}. Drying is applied only where the mask has non-\/zero values. If {\ttfamily nullptr}, the factor is applied uniformly to all cells. \\
+\hline
+{\em depth\+\_\+max} & Maximum water depth, computed automatically by default.\\
 \hline
 \end{DoxyParams}
 {\bfseries{Example}} 
@@ -16741,13 +16743,13 @@ This function reduces the water depth values in-\/place by multiplying them by a
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ dry\_out\_ratio\ =\ 0.5f;}
 \DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ \ w1\ =\ water\_depth;}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a3afd97463766b68e315e6155cb96a682}{hmap::water\_depth\_dry\_out}}(w1,\ dry\_out\_ratio);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a3aebd62906b90ccfde11140e13b0853f}{hmap::water\_depth\_dry\_out}}(w1,\ dry\_out\_ratio);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ remove\ water\ at\ high\ elevations}}
 \DoxyCodeLine{\ \ dry\_out\_ratio\ =\ 1.f;}
 \DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ w2\ =\ water\_depth;}
 \DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ mask\ =\ 1.f\ -\/\ z;}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a3afd97463766b68e315e6155cb96a682}{hmap::water\_depth\_dry\_out}}(w2,\ dry\_out\_ratio,\ \&mask);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a3aebd62906b90ccfde11140e13b0853f}{hmap::water\_depth\_dry\_out}}(w2,\ dry\_out\_ratio,\ \&mask);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_water\_depth\_dry\_out.png"{}},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ z\ +\ water\_depth,\ z\ +\ w1,\ z\ +\ w2\},}
