@@ -449,6 +449,7 @@ Array water_depth_from_mask(const Array &z,
  *                      water_depth. Drying is applied only where the mask has
  *                      non-zero values. If `nullptr`, the factor is applied
  *                      uniformly to all cells.
+ * @param depth_max     Maximum water depth, computed automatically by default.
  *
  * **Example**
  * @include ex_water_depth_dry_out.cpp
@@ -458,7 +459,8 @@ Array water_depth_from_mask(const Array &z,
  */
 void water_depth_dry_out(Array       &water_depth,
                          float        dry_out_ratio = 0.5f,
-                         const Array *p_mask = nullptr);
+                         const Array *p_mask = nullptr,
+                         float depth_max = std::numeric_limits<float>::max());
 
 } // namespace hmap
 

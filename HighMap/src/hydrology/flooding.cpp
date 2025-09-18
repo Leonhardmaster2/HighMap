@@ -217,12 +217,30 @@ Array water_depth_from_mask(const Array &z,
 
 void water_depth_dry_out(Array       &water_depth,
                          float        dry_out_ratio,
-                         const Array *p_mask)
+                         const Array *p_mask,
+                         float        depth_max)
 {
+  if (depth_max == std::numeric_limits<float>::max())
+    depth_max = water_depth.max();
+
   if (p_mask)
-    water_depth *= dry_out_ratio * (*p_mask);
+  {
+    for (int j = 0; j < water_depth.shape.y; j++)
+      for (int i = 0; i < water_depth.shape.x; i++)
+      {
+        water_depth(i, j) -= dry_out_ratio * depth_max * (*p_mask)(i, j);
+        water_depth(i, j) = std::max(0.f, water_depth(i, j));
+      }
+  }
   else
-    water_depth *= dry_out_ratio;
+  {
+    for (int j = 0; j < water_depth.shape.y; j++)
+      for (int i = 0; i < water_depth.shape.x; i++)
+      {
+        water_depth(i, j) -= dry_out_ratio * depth_max;
+        water_depth(i, j) = std::max(0.f, water_depth(i, j));
+      }
+  }
 }
 
 } // namespace hmap
