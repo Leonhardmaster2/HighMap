@@ -155,6 +155,36 @@ Array flooding_from_point(const Array            &z,
                           float depth_min = std::numeric_limits<float>::max());
 
 /**
+ * @brief Estimate lake water depths on a terrain by filling depressions.
+ *
+ * This function identifies depressions in a terrain elevation model and
+ * simulates the flooding of these areas to produce a lake system. It uses a
+ * rough depression-filling algorithm to compute the water surface, then
+ * subtracts the original elevations to obtain the water depth at each cell.
+ *
+ * @param  z          Input 2D array representing terrain elevations (height
+ *                    field).
+ * @param  iterations Maximum number of iterations allowed for the
+ *                    depression-filling algorithm.
+ * @param  epsilon    Convergence tolerance for the depression-filling step.
+ *
+ * @return            A 2D array representing the water depth for each cell.
+ *                    Values are zero where no lake is present and positive
+ *                    where water accumulates in depressions.
+ *
+ * @see               depression_filling
+ *
+ * **Example**
+ * @include ex_flooding_lake_system.cpp
+ *
+ * **Result**
+ * @image html ex_flooding_lake_system.png
+ */
+Array flooding_lake_system(const Array &z,
+                           int          iterations = 500,
+                           float        epsilon = 1e-3f);
+
+/**
  * @brief Computes the flow accumulation for each cell using the D8 flow
  * direction model.
  *

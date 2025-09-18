@@ -6,6 +6,7 @@
 #include "macrologger.h"
 
 #include "highmap/array.hpp"
+#include "highmap/erosion.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/hydrology.hpp"
 #include "highmap/interpolate2d.hpp"
@@ -156,6 +157,22 @@ Array flooding_from_point(const Array            &z,
   for (size_t k = 0; k < i.size(); k++)
     water_depth = maximum(water_depth,
                           flooding_from_point(z, i[k], j[k], depth_min));
+
+  return water_depth;
+}
+
+Array flooding_lake_system(const Array &z, int iterations, float epsilon)
+{
+  Array water_depth = z;
+
+  // use a rough depression filling algo to get the lake zones and depths
+  depression_filling(water_depth, iterations, epsilon);
+
+  for (int j = 0; j < z.shape.y; j++)
+    for (int i = 0; i < z.shape.x; i++)
+    {
+      water_depth(i, j) = std::max(0.f, water_depth(i, j) - z(i, j));
+    }
 
   return water_depth;
 }
