@@ -31,8 +31,10 @@ Array flooding_from_boundaries(const Array &z,
                                bool         from_north,
                                bool         from_south)
 {
-  // find lowest points on the boundaries and add them if requested
-  std::vector<int> is, js;
+  Array water_depth = Array(z.shape);
+
+  // find lowest points on the boundaries and starts the flooding there
+  // std::vector<int> is, js;
 
   if (from_east)
   {
@@ -47,8 +49,7 @@ Array flooding_from_boundaries(const Array &z,
         jmin = j;
       }
 
-    is.push_back(i);
-    js.push_back(jmin);
+    water_depth = flooding_from_point(z, i, jmin, zref - z(i, jmin));
   }
 
   if (from_west)
@@ -64,8 +65,8 @@ Array flooding_from_boundaries(const Array &z,
         jmin = j;
       }
 
-    is.push_back(i);
-    js.push_back(jmin);
+    water_depth = maximum(water_depth,
+                          flooding_from_point(z, i, jmin, zref - z(i, jmin)));
   }
 
   if (from_north)
@@ -81,8 +82,8 @@ Array flooding_from_boundaries(const Array &z,
         imin = i;
       }
 
-    is.push_back(imin);
-    js.push_back(j);
+    water_depth = maximum(water_depth,
+                          flooding_from_point(z, imin, j, zref - z(imin, j)));
   }
 
   if (from_south)
@@ -98,22 +99,24 @@ Array flooding_from_boundaries(const Array &z,
         imin = i;
       }
 
-    is.push_back(imin);
-    js.push_back(j);
+    water_depth = maximum(water_depth,
+                          flooding_from_point(z, imin, j, zref - z(imin, j)));
   }
 
-  // flooding...
-  return flooding_from_point(z, is, js, zref);
+  return water_depth;
 }
 
-Array flooding_from_point(const Array &z, const int i, const int j, float zref)
+Array flooding_from_point(const Array &z,
+                          const int    i,
+                          const int    j,
+                          float        depth_min)
 {
   Array water_depth(z.shape, 0.f);
 
   std::vector<Vec2<int>> nbrs =
       {{-1, 0}, {0, 1}, {0, -1}, {1, 0}, {-1, -1}, {-1, 1}, {1, -1}, {1, 1}};
 
-  if (zref == std::numeric_limits<float>::max()) zref = z(i, j);
+  if (depth_min == std::numeric_limits<float>::max()) depth_min = 0.f;
   std::vector<Vec2<int>> queue = {{i, j}};
 
   // loop around the starting point, anything with elevation lower
@@ -130,8 +133,8 @@ Array flooding_from_point(const Array &z, const int i, const int j, float zref)
 
       if (pq.x >= 0 && pq.x < z.shape.x && pq.y >= 0 && pq.y < z.shape.y)
       {
-        float dz = zref - z(pq.x, pq.y);
-        if (z(pq.x, pq.y) < zref && dz > water_depth(pq.x, pq.y))
+        float dz = z(i, j) + depth_min - z(pq.x, pq.y);
+        if (z(pq.x, pq.y) < z(i, j) + depth_min && dz > water_depth(pq.x, pq.y))
         {
           water_depth(pq.x, pq.y) = dz;
           queue.push_back({pq.x, pq.y});
@@ -146,13 +149,13 @@ Array flooding_from_point(const Array &z, const int i, const int j, float zref)
 Array flooding_from_point(const Array            &z,
                           const std::vector<int> &i,
                           const std::vector<int> &j,
-                          float                   zref)
+                          float                   depth_min)
 {
   Array water_depth(z.shape);
 
   for (size_t k = 0; k < i.size(); k++)
     water_depth = maximum(water_depth,
-                          flooding_from_point(z, i[k], j[k], zref));
+                          flooding_from_point(z, i[k], j[k], depth_min));
 
   return water_depth;
 }

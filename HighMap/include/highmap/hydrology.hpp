@@ -115,11 +115,11 @@ Array flooding_from_boundaries(const Array &z,
  * Fills areas below a reference level by propagating from the given cell until
  * higher ground is reached.
  *
- * @param  z    Input elevation array.
- * @param  i    Seed point X index.
- * @param  j    Seed point Y index.
- * @param  zref Reference water level (if max, uses z(i,j)).
- * @return      Water depth array.
+ * @param  z         Input elevation array.
+ * @param  i         Seed point X index.
+ * @param  j         Seed point Y index.
+ * @param  depth_min Water depth at the source point (if max, uses 0).
+ * @return           Water depth array.
  *
  * **Example**
  * @include ex_flooding_from_point.cpp
@@ -130,18 +130,18 @@ Array flooding_from_boundaries(const Array &z,
 Array flooding_from_point(const Array &z,
                           int          i,
                           int          j,
-                          float zref = std::numeric_limits<float>::max());
+                          float depth_min = std::numeric_limits<float>::max());
 
 /**
  * @brief Flood terrain starting from multiple seed points.
  *
  * Merges flooding results from each point below the reference level.
  *
- * @param  z    Input elevation array.
- * @param  i    List of X indices for seeds.
- * @param  j    List of Y indices for seeds.
- * @param  zref Reference water level.
- * @return      Water depth array.
+ * @param  z         Input elevation array.
+ * @param  i         List of X indices for seeds.
+ * @param  j         List of Y indices for seeds.
+ * @param  depth_min Water depth at the source point (if max, uses 0).
+ * @return           Water depth array.
  *
  * **Example**
  * @include ex_flooding_from_point.cpp
@@ -152,7 +152,7 @@ Array flooding_from_point(const Array &z,
 Array flooding_from_point(const Array            &z,
                           const std::vector<int> &i,
                           const std::vector<int> &j,
-                          float zref = std::numeric_limits<float>::max());
+                          float depth_min = std::numeric_limits<float>::max());
 
 /**
  * @brief Computes the flow accumulation for each cell using the D8 flow

@@ -17,7 +17,8 @@ int main(void)
 
   i = 64;
   j = 150;
-  hmap::Array water_depth2 = hmap::flooding_from_point(z, i, j);
+  float       depth_min = 0.3f;
+  hmap::Array water_depth2 = hmap::flooding_from_point(z, i, j, depth_min);
 
   hmap::Array water_depth3 = hmap::flooding_from_point(z, {32, 64}, {64, 150});
 
