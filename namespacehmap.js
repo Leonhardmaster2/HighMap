@@ -703,6 +703,7 @@ var namespacehmap =
     [ "generate_riverbed", "namespacehmap.html#a97ba5dfaa6625b654a8010ed7d2f3465", null ],
     [ "merge_water_depths", "namespacehmap.html#a64fbc0261e13ea842762efd3ac6bcc53", null ],
     [ "water_depth_from_mask", "namespacehmap.html#a121c42071766df393b6e049315876d5e", null ],
+    [ "water_depth_dry_out", "namespacehmap.html#a3afd97463766b68e315e6155cb96a682", null ],
     [ "zfill", "namespacehmap.html#a3f38b7faedc76835a0a902eb48e3d94b", null ],
     [ "upperbound_right", "namespacehmap.html#a0b7db6f8ce57fcdeca7ca1e3b7d1e686", null ],
     [ "argsort", "namespacehmap.html#a8be122241fa42b0f6a7ef67106391780", null ],
