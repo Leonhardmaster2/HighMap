@@ -1497,6 +1497,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ab6d1b3c418405a0174462f6ea40a665f" id="r_ab6d1b3c418405a0174462f6ea40a665f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#ab6d1b3c418405a0174462f6ea40a665f">flooding_from_point</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, const std::vector&lt; int &gt; &amp;i, const std::vector&lt; int &gt; &amp;j, float depth_min=std::numeric_limits&lt; float &gt;::max())</td></tr>
 <tr class="memdesc:ab6d1b3c418405a0174462f6ea40a665f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flood terrain starting from multiple seed points.  <br /></td></tr>
 <tr class="separator:ab6d1b3c418405a0174462f6ea40a665f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b092f5814f28e222add4cf67660641e" id="r_a3b092f5814f28e222add4cf67660641e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a3b092f5814f28e222add4cf67660641e">flooding_lake_system</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, int iterations=500, float epsilon=1e-3<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
+<tr class="memdesc:a3b092f5814f28e222add4cf67660641e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Estimate lake water depths on a terrain by filling depressions.  <br /></td></tr>
+<tr class="separator:a3b092f5814f28e222add4cf67660641e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a27b43e17baebd07ebb43808ca0dceb42" id="r_a27b43e17baebd07ebb43808ca0dceb42"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a27b43e17baebd07ebb43808ca0dceb42">flow_accumulation_d8</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z)</td></tr>
 <tr class="memdesc:a27b43e17baebd07ebb43808ca0dceb42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the flow accumulation for each cell using the D8 flow direction model.  <br /></td></tr>
 <tr class="separator:a27b43e17baebd07ebb43808ca0dceb42"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -26623,9 +26626,9 @@ An <a class="el" href="classhmap_1_1Array.html" title="Array class, helper to ma
 <div class="line">                           z + water_depth5},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a2318944325d02f3969aa7fa58b500278"><div class="ttname"><a href="namespacehmap.html#a2318944325d02f3969aa7fa58b500278">hmap::flooding_uniform_level</a></div><div class="ttdeci">Array flooding_uniform_level(const Array &amp;z, float zref)</div><div class="ttdoc">Compute water depth for a uniform flooding level.</div><div class="ttdef"><b>Definition</b> flooding.cpp:17</div></div>
-<div class="ttc" id="anamespacehmap_html_a2b57b45ea7a8a48b43443aa4d1dddbe8"><div class="ttname"><a href="namespacehmap.html#a2b57b45ea7a8a48b43443aa4d1dddbe8">hmap::flooding_from_boundaries</a></div><div class="ttdeci">Array flooding_from_boundaries(const Array &amp;z, float zref, bool from_east=true, bool from_west=true, bool from_north=true, bool from_south=true)</div><div class="ttdoc">Compute flooding starting from the lowest boundary points.</div><div class="ttdef"><b>Definition</b> flooding.cpp:27</div></div>
-<div class="ttc" id="anamespacehmap_html_add3e6744c96ed203d611ceecf65d343e"><div class="ttname"><a href="namespacehmap.html#add3e6744c96ed203d611ceecf65d343e">hmap::flooding_from_point</a></div><div class="ttdeci">Array flooding_from_point(const Array &amp;z, int i, int j, float depth_min=std::numeric_limits&lt; float &gt;::max())</div><div class="ttdoc">Flood terrain starting from a single seed point.</div><div class="ttdef"><b>Definition</b> flooding.cpp:109</div></div>
+<div class="ttc" id="anamespacehmap_html_a2318944325d02f3969aa7fa58b500278"><div class="ttname"><a href="namespacehmap.html#a2318944325d02f3969aa7fa58b500278">hmap::flooding_uniform_level</a></div><div class="ttdeci">Array flooding_uniform_level(const Array &amp;z, float zref)</div><div class="ttdoc">Compute water depth for a uniform flooding level.</div><div class="ttdef"><b>Definition</b> flooding.cpp:18</div></div>
+<div class="ttc" id="anamespacehmap_html_a2b57b45ea7a8a48b43443aa4d1dddbe8"><div class="ttname"><a href="namespacehmap.html#a2b57b45ea7a8a48b43443aa4d1dddbe8">hmap::flooding_from_boundaries</a></div><div class="ttdeci">Array flooding_from_boundaries(const Array &amp;z, float zref, bool from_east=true, bool from_west=true, bool from_north=true, bool from_south=true)</div><div class="ttdoc">Compute flooding starting from the lowest boundary points.</div><div class="ttdef"><b>Definition</b> flooding.cpp:28</div></div>
+<div class="ttc" id="anamespacehmap_html_add3e6744c96ed203d611ceecf65d343e"><div class="ttname"><a href="namespacehmap.html#add3e6744c96ed203d611ceecf65d343e">hmap::flooding_from_point</a></div><div class="ttdeci">Array flooding_from_point(const Array &amp;z, int i, int j, float depth_min=std::numeric_limits&lt; float &gt;::max())</div><div class="ttdoc">Flood terrain starting from a single seed point.</div><div class="ttdef"><b>Definition</b> flooding.cpp:110</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_flooding_from_point.png" alt=""/>
 </div>
@@ -26939,6 +26942,78 @@ An <a class="el" href="classhmap_1_1Array.html" title="Array class, helper to ma
 <div class="line">}</div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_flooding_from_point.png" alt=""/>
+</div>
+ 
+</div>
+</div>
+<a id="a3b092f5814f28e222add4cf67660641e" name="a3b092f5814f28e222add4cf67660641e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b092f5814f28e222add4cf67660641e">&#9670;&#160;</a></span>flooding_lake_system()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classhmap_1_1Array.html">Array</a> hmap::flooding_lake_system </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>z</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iterations</em> = <code>500</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>epsilon</em> = <code>1e-3<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Estimate lake water depths on a terrain by filling depressions. </p>
+<p>This function identifies depressions in a terrain elevation model and simulates the flooding of these areas to produce a lake system. It uses a rough depression-filling algorithm to compute the water surface, then subtracts the original elevations to obtain the water depth at each cell.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">z</td><td>Input 2D array representing terrain elevations (height field). </td></tr>
+    <tr><td class="paramname">iterations</td><td>Maximum number of iterations allowed for the depression-filling algorithm. </td></tr>
+    <tr><td class="paramname">epsilon</td><td>Convergence tolerance for the depression-filling step.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A 2D array representing the water depth for each cell. Values are zero where no lake is present and positive where water accumulates in depressions.</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="namespacehmap.html#aa64448e4b5640d90570e53249907c98a" title="Fill the depressions of the heightmap using the Planchon-Darboux algorithm.">depression_filling</a></dd></dl>
+<p><b>Example</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="highmap_8hpp.html">highmap.hpp</a>&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
+<div class="line">{</div>
+<div class="line">  <a class="code hl_struct" href="structhmap_1_1Vec2.html">hmap::Vec2&lt;int&gt;</a>   shape = {256, 256};</div>
+<div class="line">  <a class="code hl_struct" href="structhmap_1_1Vec2.html">hmap::Vec2&lt;float&gt;</a> res = {4.f, 4.f};</div>
+<div class="line">  <span class="keywordtype">int</span>               seed = 1;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z = <a class="code hl_function" href="namespacehmap.html#a40b948c49a05c14f2d540dc1a6952130">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, res, seed);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> water_depth = <a class="code hl_function" href="namespacehmap.html#a3b092f5814f28e222add4cf67660641e">hmap::flooding_lake_system</a>(z, 500, 1e-4f);</div>
+<div class="line"> </div>
+<div class="line">  z.<a class="code hl_function" href="classhmap_1_1Array.html#a00b8f7462c1e22b1da8a67ec62d4c8c8">dump</a>(<span class="stringliteral">&quot;out0.png&quot;</span>);</div>
+<div class="line">  water_depth.<a class="code hl_function" href="classhmap_1_1Array.html#a00b8f7462c1e22b1da8a67ec62d4c8c8">dump</a>(<span class="stringliteral">&quot;out1.png&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_flooding_lake_system.png&quot;</span>,</div>
+<div class="line">                          {z, z + water_depth},</div>
+<div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
+<div class="line">}</div>
+<div class="ttc" id="aclasshmap_1_1Array_html_a00b8f7462c1e22b1da8a67ec62d4c8c8"><div class="ttname"><a href="classhmap_1_1Array.html#a00b8f7462c1e22b1da8a67ec62d4c8c8">hmap::Array::dump</a></div><div class="ttdeci">void dump(const std::string &amp;fname=&quot;out.png&quot;) const</div><div class="ttdoc">Debug tool, dump some infos and generate an output file (16bits grayscale)</div><div class="ttdef"><b>Definition</b> methods.cpp:94</div></div>
+<div class="ttc" id="anamespacehmap_html_a3b092f5814f28e222add4cf67660641e"><div class="ttname"><a href="namespacehmap.html#a3b092f5814f28e222add4cf67660641e">hmap::flooding_lake_system</a></div><div class="ttdeci">Array flooding_lake_system(const Array &amp;z, int iterations=500, float epsilon=1e-3f)</div><div class="ttdoc">Estimate lake water depths on a terrain by filling depressions.</div><div class="ttdef"><b>Definition</b> flooding.cpp:164</div></div>
+</div><!-- fragment --><p><b>Result</b> </p><div class="image">
+<img src="ex_flooding_lake_system.png" alt=""/>
 </div>
  
 </div>
@@ -27570,7 +27645,7 @@ An <a class="el" href="classhmap_1_1Array.html" title="Array class, helper to ma
 <div class="line">                          {z, mask, water_depth, z + water_depth},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a121c42071766df393b6e049315876d5e"><div class="ttname"><a href="namespacehmap.html#a121c42071766df393b6e049315876d5e">hmap::water_depth_from_mask</a></div><div class="ttdeci">Array water_depth_from_mask(const Array &amp;z, const Array &amp;mask, float mask_threshold=0.f, int iterations_max=10000, float tolerance=1e-2f, float omega=1.8f)</div><div class="ttdoc">Compute water depth over a masked terrain using harmonic interpolation.</div><div class="ttdef"><b>Definition</b> flooding.cpp:177</div></div>
+<div class="ttc" id="anamespacehmap_html_a121c42071766df393b6e049315876d5e"><div class="ttname"><a href="namespacehmap.html#a121c42071766df393b6e049315876d5e">hmap::water_depth_from_mask</a></div><div class="ttdeci">Array water_depth_from_mask(const Array &amp;z, const Array &amp;mask, float mask_threshold=0.f, int iterations_max=10000, float tolerance=1e-2f, float omega=1.8f)</div><div class="ttdoc">Compute water depth over a masked terrain using harmonic interpolation.</div><div class="ttdef"><b>Definition</b> flooding.cpp:194</div></div>
 <div class="ttc" id="anamespacehmap_html_a1f35e2238ee222ab2aa87304f6692ce6"><div class="ttname"><a href="namespacehmap.html#a1f35e2238ee222ab2aa87304f6692ce6">hmap::select_rivers</a></div><div class="ttdeci">Array select_rivers(const Array &amp;array, float talus_ref, float clipping_ratio)</div><div class="ttdoc">Return an array filled with a criterion based on the occurence of a river bed.</div><div class="ttdef"><b>Definition</b> selector.cpp:311</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_water_depth_from_mask.png" alt=""/>

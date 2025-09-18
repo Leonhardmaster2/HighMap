@@ -27865,7 +27865,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/flooding.cpp" line="17" column="7" bodyfile="HighMap/src/hydrology/flooding.cpp" bodystart="17" bodyend="25" declfile="HighMap/include/highmap/hydrology.hpp" declline="83" declcolumn="7"/>
+        <location file="HighMap/src/hydrology/flooding.cpp" line="18" column="7" bodyfile="HighMap/src/hydrology/flooding.cpp" bodystart="18" bodyend="26" declfile="HighMap/include/highmap/hydrology.hpp" declline="83" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a2b57b45ea7a8a48b43443aa4d1dddbe8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -28006,7 +28006,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/flooding.cpp" line="27" column="7" bodyfile="HighMap/src/hydrology/flooding.cpp" bodystart="27" bodyend="107" declfile="HighMap/include/highmap/hydrology.hpp" declline="105" declcolumn="7"/>
+        <location file="HighMap/src/hydrology/flooding.cpp" line="28" column="7" bodyfile="HighMap/src/hydrology/flooding.cpp" bodystart="28" bodyend="108" declfile="HighMap/include/highmap/hydrology.hpp" declline="105" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1add3e6744c96ed203d611ceecf65d343e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -28120,7 +28120,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/flooding.cpp" line="109" column="7" bodyfile="HighMap/src/hydrology/flooding.cpp" bodystart="109" bodyend="147" declfile="HighMap/include/highmap/hydrology.hpp" declline="130" declcolumn="7"/>
+        <location file="HighMap/src/hydrology/flooding.cpp" line="110" column="7" bodyfile="HighMap/src/hydrology/flooding.cpp" bodystart="110" bodyend="148" declfile="HighMap/include/highmap/hydrology.hpp" declline="130" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ab6d1b3c418405a0174462f6ea40a665f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -28234,7 +28234,89 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/flooding.cpp" line="149" column="7" bodyfile="HighMap/src/hydrology/flooding.cpp" bodystart="149" bodyend="161" declfile="HighMap/include/highmap/hydrology.hpp" declline="152" declcolumn="7"/>
+        <location file="HighMap/src/hydrology/flooding.cpp" line="150" column="7" bodyfile="HighMap/src/hydrology/flooding.cpp" bodystart="150" bodyend="162" declfile="HighMap/include/highmap/hydrology.hpp" declline="152" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehmap_1a3b092f5814f28e222add4cf67660641e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
+        <definition>Array hmap::flooding_lake_system</definition>
+        <argsstring>(const Array &amp;z, int iterations=500, float epsilon=1e-3f)</argsstring>
+        <name>flooding_lake_system</name>
+        <qualifiedname>hmap::flooding_lake_system</qualifiedname>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>z</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>iterations</declname>
+          <defval>500</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>epsilon</declname>
+          <defval>1e-3<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <briefdescription>
+<para>Estimate lake water depths on a terrain by filling depressions. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function identifies depressions in a terrain elevation model and simulates the flooding of these areas to produce a lake system. It uses a rough depression-filling algorithm to compute the water surface, then subtracts the original elevations to obtain the water depth at each cell.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input 2D array representing terrain elevations (height field). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>iterations</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum number of iterations allowed for the depression-filling algorithm. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>epsilon</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Convergence tolerance for the depression-filling step.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A 2D array representing the water depth for each cell. Values are zero where no lake is present and positive where water accumulates in depressions.</para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="namespacehmap_1aa64448e4b5640d90570e53249907c98a" kindref="member">depression_filling</ref></para>
+</simplesect>
+<bold>Example</bold> <programlisting filename="ex_flooding_lake_system.cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="structhmap_1_1Vec2" kindref="compound">hmap::Vec2&lt;int&gt;</ref><sp/><sp/><sp/>shape<sp/>=<sp/>{256,<sp/>256};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="structhmap_1_1Vec2" kindref="compound">hmap::Vec2&lt;float&gt;</ref><sp/>res<sp/>=<sp/>{4.f,<sp/>4.f};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed<sp/>=<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1a40b948c49a05c14f2d540dc1a6952130" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,<sp/>shape,<sp/>res,<sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(z);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>water_depth<sp/>=<sp/><ref refid="namespacehmap_1a3b092f5814f28e222add4cf67660641e" kindref="member">hmap::flooding_lake_system</ref>(z,<sp/>500,<sp/>1e-4f);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>z.<ref refid="classhmap_1_1Array_1a00b8f7462c1e22b1da8a67ec62d4c8c8" kindref="member">dump</ref>(</highlight><highlight class="stringliteral">&quot;out0.png&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>water_depth.<ref refid="classhmap_1_1Array_1a00b8f7462c1e22b1da8a67ec62d4c8c8" kindref="member">dump</ref>(</highlight><highlight class="stringliteral">&quot;out1.png&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_flooding_lake_system.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,<sp/>z<sp/>+<sp/>water_depth},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced" kindref="member">hmap::Cmap::JET</ref>);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<para><bold>Result</bold> <image type="html" name="ex_flooding_lake_system.png"></image>
+ </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/hydrology/flooding.cpp" line="164" column="7" bodyfile="HighMap/src/hydrology/flooding.cpp" bodystart="164" bodyend="178" declfile="HighMap/include/highmap/hydrology.hpp" declline="183" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a27b43e17baebd07ebb43808ca0dceb42" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -28287,7 +28369,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/flow_accumulation_d8.cpp" line="49" column="7" bodyfile="HighMap/src/hydrology/flow_accumulation_d8.cpp" bodystart="49" bodyend="98" declfile="HighMap/include/highmap/hydrology.hpp" declline="179" declcolumn="7"/>
+        <location file="HighMap/src/hydrology/flow_accumulation_d8.cpp" line="49" column="7" bodyfile="HighMap/src/hydrology/flow_accumulation_d8.cpp" bodystart="49" bodyend="98" declfile="HighMap/include/highmap/hydrology.hpp" declline="209" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a58ba4910af868f70849f343e0c73adf3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -28356,7 +28438,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/flow_accumulation_dinf.cpp" line="36" column="7" bodyfile="HighMap/src/hydrology/flow_accumulation_dinf.cpp" bodystart="36" bodyend="105" declfile="HighMap/include/highmap/hydrology.hpp" declline="207" declcolumn="7"/>
+        <location file="HighMap/src/hydrology/flow_accumulation_dinf.cpp" line="36" column="7" bodyfile="HighMap/src/hydrology/flow_accumulation_dinf.cpp" bodystart="36" bodyend="105" declfile="HighMap/include/highmap/hydrology.hpp" declline="237" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1af8f580c9d50a07585257569bd1160891" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -28391,7 +28473,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/flow_accumulation_d8.cpp" line="100" column="7" bodyfile="HighMap/src/hydrology/flow_accumulation_d8.cpp" bodystart="100" bodyend="130" declfile="HighMap/include/highmap/hydrology.hpp" declline="225" declcolumn="7"/>
+        <location file="HighMap/src/hydrology/flow_accumulation_d8.cpp" line="100" column="7" bodyfile="HighMap/src/hydrology/flow_accumulation_d8.cpp" bodystart="100" bodyend="130" declfile="HighMap/include/highmap/hydrology.hpp" declline="255" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a819fc20190d598c4664d442ee824fc96" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &gt;</type>
@@ -28435,7 +28517,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/flow_accumulation_dinf.cpp" line="107" column="13" bodyfile="HighMap/src/hydrology/flow_accumulation_dinf.cpp" bodystart="107" bodyend="147" declfile="HighMap/include/highmap/hydrology.hpp" declline="244" declcolumn="13"/>
+        <location file="HighMap/src/hydrology/flow_accumulation_dinf.cpp" line="107" column="13" bodyfile="HighMap/src/hydrology/flow_accumulation_dinf.cpp" bodystart="107" bodyend="147" declfile="HighMap/include/highmap/hydrology.hpp" declline="274" declcolumn="13"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a5adb98e67f89036317df083dd2123a1e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Path" kindref="compound">Path</ref></type>
@@ -28589,7 +28671,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/flow_stream.cpp" line="46" column="6" bodyfile="HighMap/src/hydrology/flow_stream.cpp" bodystart="46" bodyend="117" declfile="HighMap/include/highmap/hydrology.hpp" declline="279" declcolumn="6"/>
+        <location file="HighMap/src/hydrology/flow_stream.cpp" line="46" column="6" bodyfile="HighMap/src/hydrology/flow_stream.cpp" bodystart="46" bodyend="117" declfile="HighMap/include/highmap/hydrology.hpp" declline="309" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a97ba5dfaa6625b654a8010ed7d2f3465" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -28842,7 +28924,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/generate_riverbed.cpp" line="16" column="7" bodyfile="HighMap/src/hydrology/generate_riverbed.cpp" bodystart="16" bodyend="85" declfile="HighMap/include/highmap/hydrology.hpp" declline="331" declcolumn="7"/>
+        <location file="HighMap/src/hydrology/generate_riverbed.cpp" line="16" column="7" bodyfile="HighMap/src/hydrology/generate_riverbed.cpp" bodystart="16" bodyend="85" declfile="HighMap/include/highmap/hydrology.hpp" declline="361" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a64fbc0261e13ea842762efd3ac6bcc53" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -28899,7 +28981,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/flooding.cpp" line="163" column="7" bodyfile="HighMap/src/hydrology/flooding.cpp" bodystart="163" bodyend="175" declfile="HighMap/include/highmap/hydrology.hpp" declline="357" declcolumn="7"/>
+        <location file="HighMap/src/hydrology/flooding.cpp" line="180" column="7" bodyfile="HighMap/src/hydrology/flooding.cpp" bodystart="180" bodyend="192" declfile="HighMap/include/highmap/hydrology.hpp" declline="387" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a121c42071766df393b6e049315876d5e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -29022,7 +29104,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/flooding.cpp" line="177" column="7" bodyfile="HighMap/src/hydrology/flooding.cpp" bodystart="177" bodyend="199" declfile="HighMap/include/highmap/hydrology.hpp" declline="399" declcolumn="7"/>
+        <location file="HighMap/src/hydrology/flooding.cpp" line="194" column="7" bodyfile="HighMap/src/hydrology/flooding.cpp" bodystart="194" bodyend="216" declfile="HighMap/include/highmap/hydrology.hpp" declline="429" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a3f38b7faedc76835a0a902eb48e3d94b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>

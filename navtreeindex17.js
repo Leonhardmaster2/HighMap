@@ -1,5 +1,8 @@
 var NAVTREEINDEX17 =
 {
+"unwrap__phase_8cpp.html#a3f8dc201377b61428eba8daa4a03a65f":[5,0,1,1,16,4,0],
+"upscale__amplification_8cpp.html":[5,0,1,1,23,2],
+"upscale__amplification_8cpp.html#a868ae7c781d7e72af7b1416898a2f891":[5,0,1,1,23,2,0],
 "upscaling_8hpp.html":[5,0,1,0,0,3,2],
 "upscaling_8hpp.html#a868ae7c781d7e72af7b1416898a2f891":[5,0,1,0,0,3,2,0],
 "upscaling_8hpp_source.html":[5,0,1,0,0,3,2],

@@ -90,7 +90,7 @@ var searchData=
   ['cubic_87',['CUBIC',['../namespacehmap.html#a46291bb4766800deacc1ce9b45a9ea6ba212e7c8d91a9697cccd7df7d006a5547',1,'hmap']]],
   ['cubic_5finterpolate_88',['cubic_interpolate',['../namespacehmap.html#aee026d8b23196038c2b16c370b743889',1,'hmap']]],
   ['cubic_5fperiodic_89',['CUBIC_PERIODIC',['../namespacehmap.html#a46291bb4766800deacc1ce9b45a9ea6ba842713d3dc1b52f8b51bb2eaeb8bcf7e',1,'hmap']]],
-  ['cubic_5fpulse_90',['cubic_pulse',['../namespacehmap.html#af6af5d27dcec83e466ca6b58244cafe7',1,'hmap::cubic_pulse(Vec2&lt; int &gt; shape)'],['../namespacehmap.html#a4b6f135c6e81d313ca54ae1efac5f2c9ac3a721c2d521e171c529d24f3b768803',1,'hmap::CUBIC_PULSE']]],
+  ['cubic_5fpulse_90',['cubic_pulse',['../namespacehmap.html#a4b6f135c6e81d313ca54ae1efac5f2c9ac3a721c2d521e171c529d24f3b768803',1,'hmap::CUBIC_PULSE'],['../namespacehmap.html#af6af5d27dcec83e466ca6b58244cafe7',1,'hmap::cubic_pulse(Vec2&lt; int &gt; shape)']]],
   ['cubic_5fpulse_5f1d_91',['cubic_pulse_1d',['../namespacehmap.html#a0b3237f9cc015299bf3e436be71d3587',1,'hmap']]],
   ['cubic_5fpulse_5fdirectional_92',['cubic_pulse_directional',['../namespacehmap.html#a2938b1bbfe89794423055e6ee9d2f79b',1,'hmap']]],
   ['cubic_5fpulse_5ftruncated_93',['cubic_pulse_truncated',['../namespacehmap.html#a1004e5d8355c36fc1945d73c3b44eda0',1,'hmap']]],
