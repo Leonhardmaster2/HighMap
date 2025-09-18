@@ -11,9 +11,6 @@ int main(void)
 
   hmap::Array water_depth = hmap::flooding_lake_system(z, 500, 1e-4f);
 
-  z.dump("out0.png");
-  water_depth.dump("out1.png");
-
   hmap::export_banner_png("ex_flooding_lake_system.png",
                           {z, z + water_depth},
                           hmap::Cmap::JET);

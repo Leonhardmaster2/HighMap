@@ -215,4 +215,14 @@ Array water_depth_from_mask(const Array &z,
   return water_depth;
 }
 
+void water_depth_dry_out(Array       &water_depth,
+                         float        dry_out_ratio,
+                         const Array *p_mask)
+{
+  if (p_mask)
+    water_depth *= dry_out_ratio * (*p_mask);
+  else
+    water_depth *= dry_out_ratio;
+}
+
 } // namespace hmap

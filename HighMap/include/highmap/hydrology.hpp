@@ -433,6 +433,33 @@ Array water_depth_from_mask(const Array &z,
                             float        tolerance = 1e-2f,
                             float        omega = 1.8f);
 
+/**
+ * @brief Apply a drying factor to a water depth field.
+ *
+ * This function reduces the water depth values in-place by multiplying them by
+ * a given @p dry_out_ratio. If a mask is provided, the drying is applied only
+ * where the mask is non-zero, allowing selective drying of specific regions.
+ *
+ * @param water_depth   Reference to the 2D array containing water depth values.
+ *                       The array is modified in-place.
+ * @param dry_out_ratio Multiplicative factor (typically between 0 and 1) used
+ *                      to scale down the water depth. A value of 1 leaves the
+ *                      depth unchanged, while 0 removes all water.
+ * @param p_mask        Optional pointer to a mask array of the same shape as @p
+ *                      water_depth. Drying is applied only where the mask has
+ *                      non-zero values. If `nullptr`, the factor is applied
+ *                      uniformly to all cells.
+ *
+ * **Example**
+ * @include ex_water_depth_dry_out.cpp
+ *
+ * **Result**
+ * @image html ex_water_depth_dry_out.png
+ */
+void water_depth_dry_out(Array       &water_depth,
+                         float        dry_out_ratio = 0.5f,
+                         const Array *p_mask = nullptr);
+
 } // namespace hmap
 
 namespace hmap::gpu
