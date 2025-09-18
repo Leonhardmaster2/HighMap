@@ -44,7 +44,7 @@ var searchData=
   ['flood_5ffill_41',['flood_fill',['../namespacehmap.html#adff494af7c8bf4db7f3e6fddd3261793',1,'hmap']]],
   ['flooding_2ecpp_42',['flooding.cpp',['../flooding_8cpp.html',1,'']]],
   ['flooding_5ffrom_5fboundaries_43',['flooding_from_boundaries',['../namespacehmap.html#a2b57b45ea7a8a48b43443aa4d1dddbe8',1,'hmap']]],
-  ['flooding_5ffrom_5fpoint_44',['flooding_from_point',['../namespacehmap.html#ae9aa3ab661931aff775a9821055aa5d6',1,'hmap::flooding_from_point(const Array &amp;z, int i, int j, float zref=std::numeric_limits&lt; float &gt;::max())'],['../namespacehmap.html#af6416450589e7dea9e5940b22b667d89',1,'hmap::flooding_from_point(const Array &amp;z, const std::vector&lt; int &gt; &amp;i, const std::vector&lt; int &gt; &amp;j, float zref=std::numeric_limits&lt; float &gt;::max())']]],
+  ['flooding_5ffrom_5fpoint_44',['flooding_from_point',['../namespacehmap.html#add3e6744c96ed203d611ceecf65d343e',1,'hmap::flooding_from_point(const Array &amp;z, int i, int j, float depth_min=std::numeric_limits&lt; float &gt;::max())'],['../namespacehmap.html#ab6d1b3c418405a0174462f6ea40a665f',1,'hmap::flooding_from_point(const Array &amp;z, const std::vector&lt; int &gt; &amp;i, const std::vector&lt; int &gt; &amp;j, float depth_min=std::numeric_limits&lt; float &gt;::max())']]],
   ['flooding_5funiform_5flevel_45',['flooding_uniform_level',['../namespacehmap.html#a2318944325d02f3969aa7fa58b500278',1,'hmap']]],
   ['flow_5faccumulation_5fd8_46',['flow_accumulation_d8',['../namespacehmap.html#a27b43e17baebd07ebb43808ca0dceb42',1,'hmap']]],
   ['flow_5faccumulation_5fd8_2ecpp_47',['flow_accumulation_d8.cpp',['../flow__accumulation__d8_8cpp.html',1,'']]],

@@ -1007,9 +1007,9 @@ void \mbox{\hyperlink{namespacehmap_ae42a874864d2d8f1a7b580f428395c01}{find\+\_\
 \begin{DoxyCompactList}\small\item\em Compute water depth for a uniform flooding level. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a2b57b45ea7a8a48b43443aa4d1dddbe8}{flooding\+\_\+from\+\_\+boundaries}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, float zref, bool from\+\_\+east=true, bool from\+\_\+west=true, bool from\+\_\+north=true, bool from\+\_\+south=true)
 \begin{DoxyCompactList}\small\item\em Compute flooding starting from the lowest boundary points. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_ae9aa3ab661931aff775a9821055aa5d6}{flooding\+\_\+from\+\_\+point}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int i, int j, float zref=std\+::numeric\+\_\+limits$<$ float $>$\+::max())
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_add3e6744c96ed203d611ceecf65d343e}{flooding\+\_\+from\+\_\+point}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int i, int j, float depth\+\_\+min=std\+::numeric\+\_\+limits$<$ float $>$\+::max())
 \begin{DoxyCompactList}\small\item\em Flood terrain starting from a single seed point. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_af6416450589e7dea9e5940b22b667d89}{flooding\+\_\+from\+\_\+point}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, const std\+::vector$<$ int $>$ \&i, const std\+::vector$<$ int $>$ \&j, float zref=std\+::numeric\+\_\+limits$<$ float $>$\+::max())
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_ab6d1b3c418405a0174462f6ea40a665f}{flooding\+\_\+from\+\_\+point}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, const std\+::vector$<$ int $>$ \&i, const std\+::vector$<$ int $>$ \&j, float depth\+\_\+min=std\+::numeric\+\_\+limits$<$ float $>$\+::max())
 \begin{DoxyCompactList}\small\item\em Flood terrain starting from multiple seed points. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a27b43e17baebd07ebb43808ca0dceb42}{flow\+\_\+accumulation\+\_\+d8}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z)
 \begin{DoxyCompactList}\small\item\em Computes the flow accumulation for each cell using the D8 flow direction model. \end{DoxyCompactList}\item 
@@ -15960,13 +15960,14 @@ Water depth array (0 where terrain is above zref).
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ i\ =\ 32;}
 \DoxyCodeLine{\ \ j\ =\ 64;}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ water\_depth1\ =\ \mbox{\hyperlink{namespacehmap_ae9aa3ab661931aff775a9821055aa5d6}{hmap::flooding\_from\_point}}(z,\ i,\ j);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ water\_depth1\ =\ \mbox{\hyperlink{namespacehmap_add3e6744c96ed203d611ceecf65d343e}{hmap::flooding\_from\_point}}(z,\ i,\ j);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ i\ =\ 64;}
 \DoxyCodeLine{\ \ j\ =\ 150;}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ water\_depth2\ =\ \mbox{\hyperlink{namespacehmap_ae9aa3ab661931aff775a9821055aa5d6}{hmap::flooding\_from\_point}}(z,\ i,\ j);}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ depth\_min\ =\ 0.3f;}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ water\_depth2\ =\ \mbox{\hyperlink{namespacehmap_add3e6744c96ed203d611ceecf65d343e}{hmap::flooding\_from\_point}}(z,\ i,\ j,\ depth\_min);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ water\_depth3\ =\ \mbox{\hyperlink{namespacehmap_ae9aa3ab661931aff775a9821055aa5d6}{hmap::flooding\_from\_point}}(z,\ \{32,\ 64\},\ \{64,\ 150\});}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ water\_depth3\ =\ \mbox{\hyperlink{namespacehmap_add3e6744c96ed203d611ceecf65d343e}{hmap::flooding\_from\_point}}(z,\ \{32,\ 64\},\ \{64,\ 150\});}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ water\_zmax\ =\ 0.35f;}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ water\_depth4\ =\ \mbox{\hyperlink{namespacehmap_a2b57b45ea7a8a48b43443aa4d1dddbe8}{flooding\_from\_boundaries}}(z,\ water\_zmax);}
@@ -16038,13 +16039,14 @@ Water depth array.
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ i\ =\ 32;}
 \DoxyCodeLine{\ \ j\ =\ 64;}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ water\_depth1\ =\ \mbox{\hyperlink{namespacehmap_ae9aa3ab661931aff775a9821055aa5d6}{hmap::flooding\_from\_point}}(z,\ i,\ j);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ water\_depth1\ =\ \mbox{\hyperlink{namespacehmap_add3e6744c96ed203d611ceecf65d343e}{hmap::flooding\_from\_point}}(z,\ i,\ j);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ i\ =\ 64;}
 \DoxyCodeLine{\ \ j\ =\ 150;}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ water\_depth2\ =\ \mbox{\hyperlink{namespacehmap_ae9aa3ab661931aff775a9821055aa5d6}{hmap::flooding\_from\_point}}(z,\ i,\ j);}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ depth\_min\ =\ 0.3f;}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ water\_depth2\ =\ \mbox{\hyperlink{namespacehmap_add3e6744c96ed203d611ceecf65d343e}{hmap::flooding\_from\_point}}(z,\ i,\ j,\ depth\_min);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ water\_depth3\ =\ \mbox{\hyperlink{namespacehmap_ae9aa3ab661931aff775a9821055aa5d6}{hmap::flooding\_from\_point}}(z,\ \{32,\ 64\},\ \{64,\ 150\});}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ water\_depth3\ =\ \mbox{\hyperlink{namespacehmap_add3e6744c96ed203d611ceecf65d343e}{hmap::flooding\_from\_point}}(z,\ \{32,\ 64\},\ \{64,\ 150\});}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ water\_zmax\ =\ 0.35f;}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ water\_depth4\ =\ \mbox{\hyperlink{namespacehmap_a2b57b45ea7a8a48b43443aa4d1dddbe8}{flooding\_from\_boundaries}}(z,\ water\_zmax);}
@@ -16069,11 +16071,11 @@ Water depth array.
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}  \Hypertarget{namespacehmap_ae9aa3ab661931aff775a9821055aa5d6}\label{namespacehmap_ae9aa3ab661931aff775a9821055aa5d6} 
+{\bfseries{Result}}  \Hypertarget{namespacehmap_add3e6744c96ed203d611ceecf65d343e}\label{namespacehmap_add3e6744c96ed203d611ceecf65d343e} 
 \index{hmap@{hmap}!flooding\_from\_point@{flooding\_from\_point}}
 \index{flooding\_from\_point@{flooding\_from\_point}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{flooding\_from\_point()}{flooding\_from\_point()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::flooding\+\_\+from\+\_\+point (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{int}]{i,  }\item[{int}]{j,  }\item[{float}]{zref = {\ttfamily std\+:\+:numeric\+\_\+limits$<$float$>$\+:\+:max()} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::flooding\+\_\+from\+\_\+point (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{int}]{i,  }\item[{int}]{j,  }\item[{float}]{depth\+\_\+min = {\ttfamily std\+:\+:numeric\+\_\+limits$<$float$>$\+:\+:max()} }\end{DoxyParamCaption})}
 
 
 
@@ -16089,7 +16091,7 @@ Fills areas below a reference level by propagating from the given cell until hig
 \hline
 {\em j} & Seed point Y index. \\
 \hline
-{\em zref} & Reference water level (if max, uses z(i,j)). \\
+{\em depth\+\_\+min} & Water depth at the source point (if max, uses 0). \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -16112,13 +16114,14 @@ Water depth array.
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ i\ =\ 32;}
 \DoxyCodeLine{\ \ j\ =\ 64;}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ water\_depth1\ =\ \mbox{\hyperlink{namespacehmap_ae9aa3ab661931aff775a9821055aa5d6}{hmap::flooding\_from\_point}}(z,\ i,\ j);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ water\_depth1\ =\ \mbox{\hyperlink{namespacehmap_add3e6744c96ed203d611ceecf65d343e}{hmap::flooding\_from\_point}}(z,\ i,\ j);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ i\ =\ 64;}
 \DoxyCodeLine{\ \ j\ =\ 150;}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ water\_depth2\ =\ \mbox{\hyperlink{namespacehmap_ae9aa3ab661931aff775a9821055aa5d6}{hmap::flooding\_from\_point}}(z,\ i,\ j);}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ depth\_min\ =\ 0.3f;}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ water\_depth2\ =\ \mbox{\hyperlink{namespacehmap_add3e6744c96ed203d611ceecf65d343e}{hmap::flooding\_from\_point}}(z,\ i,\ j,\ depth\_min);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ water\_depth3\ =\ \mbox{\hyperlink{namespacehmap_ae9aa3ab661931aff775a9821055aa5d6}{hmap::flooding\_from\_point}}(z,\ \{32,\ 64\},\ \{64,\ 150\});}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ water\_depth3\ =\ \mbox{\hyperlink{namespacehmap_add3e6744c96ed203d611ceecf65d343e}{hmap::flooding\_from\_point}}(z,\ \{32,\ 64\},\ \{64,\ 150\});}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ water\_zmax\ =\ 0.35f;}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ water\_depth4\ =\ \mbox{\hyperlink{namespacehmap_a2b57b45ea7a8a48b43443aa4d1dddbe8}{flooding\_from\_boundaries}}(z,\ water\_zmax);}
@@ -16143,11 +16146,11 @@ Water depth array.
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}  \Hypertarget{namespacehmap_af6416450589e7dea9e5940b22b667d89}\label{namespacehmap_af6416450589e7dea9e5940b22b667d89} 
+{\bfseries{Result}}  \Hypertarget{namespacehmap_ab6d1b3c418405a0174462f6ea40a665f}\label{namespacehmap_ab6d1b3c418405a0174462f6ea40a665f} 
 \index{hmap@{hmap}!flooding\_from\_point@{flooding\_from\_point}}
 \index{flooding\_from\_point@{flooding\_from\_point}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{flooding\_from\_point()}{flooding\_from\_point()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::flooding\+\_\+from\+\_\+point (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{const std\+::vector$<$ int $>$ \&}]{i,  }\item[{const std\+::vector$<$ int $>$ \&}]{j,  }\item[{float}]{zref = {\ttfamily std\+:\+:numeric\+\_\+limits$<$float$>$\+:\+:max()} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::flooding\+\_\+from\+\_\+point (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{const std\+::vector$<$ int $>$ \&}]{i,  }\item[{const std\+::vector$<$ int $>$ \&}]{j,  }\item[{float}]{depth\+\_\+min = {\ttfamily std\+:\+:numeric\+\_\+limits$<$float$>$\+:\+:max()} }\end{DoxyParamCaption})}
 
 
 
@@ -16163,7 +16166,7 @@ Merges flooding results from each point below the reference level.
 \hline
 {\em j} & List of Y indices for seeds. \\
 \hline
-{\em zref} & Reference water level. \\
+{\em depth\+\_\+min} & Water depth at the source point (if max, uses 0). \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -16186,13 +16189,14 @@ Water depth array.
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ i\ =\ 32;}
 \DoxyCodeLine{\ \ j\ =\ 64;}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ water\_depth1\ =\ \mbox{\hyperlink{namespacehmap_ae9aa3ab661931aff775a9821055aa5d6}{hmap::flooding\_from\_point}}(z,\ i,\ j);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ water\_depth1\ =\ \mbox{\hyperlink{namespacehmap_add3e6744c96ed203d611ceecf65d343e}{hmap::flooding\_from\_point}}(z,\ i,\ j);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ i\ =\ 64;}
 \DoxyCodeLine{\ \ j\ =\ 150;}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ water\_depth2\ =\ \mbox{\hyperlink{namespacehmap_ae9aa3ab661931aff775a9821055aa5d6}{hmap::flooding\_from\_point}}(z,\ i,\ j);}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ depth\_min\ =\ 0.3f;}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ water\_depth2\ =\ \mbox{\hyperlink{namespacehmap_add3e6744c96ed203d611ceecf65d343e}{hmap::flooding\_from\_point}}(z,\ i,\ j,\ depth\_min);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ water\_depth3\ =\ \mbox{\hyperlink{namespacehmap_ae9aa3ab661931aff775a9821055aa5d6}{hmap::flooding\_from\_point}}(z,\ \{32,\ 64\},\ \{64,\ 150\});}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ water\_depth3\ =\ \mbox{\hyperlink{namespacehmap_add3e6744c96ed203d611ceecf65d343e}{hmap::flooding\_from\_point}}(z,\ \{32,\ 64\},\ \{64,\ 150\});}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ water\_zmax\ =\ 0.35f;}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ water\_depth4\ =\ \mbox{\hyperlink{namespacehmap_a2b57b45ea7a8a48b43443aa4d1dddbe8}{flooding\_from\_boundaries}}(z,\ water\_zmax);}
