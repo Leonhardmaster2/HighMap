@@ -62,4 +62,30 @@ Array normal_map_to_heightmap(const Tensor &nmap)
   return z1 + z2;
 }
 
+Array normal_map_to_heightmap_poisson(const Tensor &nmap,
+                                      int           iterations,
+                                      float         omega)
+{
+  Vec2<int> shape(nmap.shape.x, nmap.shape.y);
+  Array     z1(shape);
+  Array     z2(shape);
+  Array     dx(shape);
+  Array     dy(shape);
+
+  for (int j = 1; j < shape.y; ++j)
+    for (int i = 1; i < shape.x; ++i)
+    {
+      float nz = std::max(1e-6f, 2.f * nmap(i, j, 2) - 1.f);
+      dx(i, j) = -(2.f * nmap(i, j, 0) - 1.f) / nz;
+      dy(i, j) = -(2.f * nmap(i, j, 1) - 1.f) / nz;
+    }
+
+  Array rhs = divergence_from_gradients(dx, dy);
+
+  Array out(shape);
+  solve_poisson_gauss_seidel(rhs, out, iterations, omega);
+
+  return out;
+}
+
 } // namespace hmap

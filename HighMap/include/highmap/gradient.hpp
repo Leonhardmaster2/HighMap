@@ -22,6 +22,34 @@ namespace hmap
 {
 
 /**
+ * @brief Compute the divergence of a 2D gradient field.
+ *
+ * Given two scalar fields representing the horizontal and vertical derivatives
+ * of a height map:
+ * \f[
+ *     p(x, y) = \frac{\partial h}{\partial x}, \qquad q(x, y) = \frac{\partial
+ * h}{\partial y}
+ * \f] this function returns the divergence:
+ * \f[
+ *     f(x, y) = \frac{\partial p}{\partial x}(x, y)
+ *             + \frac{\partial q}{\partial y}(x, y)
+ * \f]
+ *
+ * The divergence is a key term for solving the Poisson equation
+ * \f$\nabla^2 h = f\f$ when reconstructing a height field from gradients or
+ * from a normal map.
+ *
+ * @param  dx Array of horizontal derivatives (\f$\partial h / \partial x\f$).
+ *            Must have the same dimensions as @p dy.
+ * @param  dy Array of vertical derivatives (\f$\partial h / \partial y\f$).
+ *            Must have the same dimensions as @p dx.
+ *
+ * @return    A new Array containing the divergence \f$f(x, y)\f$ for each
+ *            pixel. The returned array has the same size as the inputs.
+ */
+Array divergence_from_gradients(const Array &dx, const Array &dy);
+
+/**
  * @brief Compute the gradient of a 1D vector.
  *
  * This function calculates the gradient of a 1D vector by computing the
@@ -301,6 +329,35 @@ Tensor normal_map(const Array &array);
 Array normal_map_to_heightmap(const Tensor &nmap);
 
 /**
+ * @brief Reconstruct a height/displacement map from a normal map by solving a
+ * Poisson equation with Gauss–Seidel iteration.
+ *
+ * The reconstruction is unique up to an additive constant. After solving, you
+ * may subtract the mean or normalize to a desired range.
+ *
+ * @param  nmap       Input normal map as a 2D tensor.
+ *     - Channel 0 = \(N_x\), channel 1 = \(N_y\), channel 2 = \(N_z\).
+ *     - Values are expected in [0,1] or [-1,1]; if stored in [0,1], they will
+ * be remapped internally to [-1,1].
+ * @param  iterations Number of Gauss–Seidel iterations to perform (default =
+ *                    500). Higher values improve accuracy but increase runtime.
+ * @param  omega      Relaxation factor (1.0 = pure Gauss–Seidel; 1.0–2.0 =
+ *                    over-relaxation). Recommended: 1.2–1.5 for faster
+ * convergence.
+ *
+ * @return            *     A 2D Array containing the reconstructed height map.
+ *                    Values are not normalized; apply scaling or centering if
+ *                    needed. Example**
+ * @include ex_normal_map_to_heightmap.cpp
+ *
+ * **Result**
+ * @image html ex_normal_map_to_heightmap.png
+ */
+Array normal_map_to_heightmap_poisson(const Tensor &nmap,
+                                      int           iterations = 500,
+                                      float         omega = 1.5f);
+
+/**
  * @brief Computes a phase field using spatially varying Gabor noise based on
  * the input heightmap.
  *
@@ -345,6 +402,30 @@ Array phase_field(const Array &array,
                   bool         rotate90 = false,
                   Array       *p_gnoise_x = nullptr,
                   Array       *p_gnoise_y = nullptr);
+
+/**
+ * @brief Solve the Poisson equation ∇²h = rhs using Gauss–Seidel iteration.
+ *
+ * This function assumes Dirichlet boundary conditions (height = 0 at the
+ * edges). The algorithm updates interior points according to: \f[ h(x, y) = (1
+ * - \omega) h(x, y)
+ *           + \omega \cdot 0.25 \big(
+ *               h(x+1, y) + h(x-1, y)
+ *             + h(x, y+1) + h(x, y-1)
+ *             - rhs(x, y)
+ *             \big)
+ * \f]
+ *
+ * @param rhs        Right-hand side (divergence of gradients).
+ * @param h          Height field to update; initialized to 0 or an estimate.
+ * @param iterations Number of Gauss–Seidel iterations to run.
+ * @param omega      Relaxation parameter (1 = standard Gauss–Seidel, 1 < omega
+ *                   < 2 = over-relaxation).
+ */
+void solve_poisson_gauss_seidel(const Array &rhs,
+                                Array       &h,
+                                int          iterations = 500,
+                                float        omega = 1.0f);
 
 /**
  * @brief Unwraps a 2D phase array to correct discontinuities in phase data.

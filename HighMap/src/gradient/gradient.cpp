@@ -59,6 +59,13 @@ Array compute_gradient_norm(const Array &array,
 
 // functions
 
+Array divergence_from_gradients(const Array &dx, const Array &dy)
+{
+  Array ddx = gradient_x(dx);
+  Array ddy = gradient_y(dy);
+  return ddx + ddy;
+}
+
 Array gradient_angle(const Array &array, bool downward)
 {
   Array dx = gradient_x(array);

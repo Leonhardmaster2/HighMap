@@ -441,7 +441,7 @@ Array water_depth_from_mask(const Array &z,
  * where the mask is non-zero, allowing selective drying of specific regions.
  *
  * @param water_depth   Reference to the 2D array containing water depth values.
- *                       The array is modified in-place.
+ *                      The array is modified in-place.
  * @param dry_out_ratio Multiplicative factor (typically between 0 and 1) used
  *                      to scale down the water depth. A value of 1 leaves the
  *                      depth unchanged, while 0 removes all water.
