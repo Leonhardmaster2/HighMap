@@ -14,7 +14,7 @@ var searchData=
   ['diffusion_5flimited_5faggregation_11',['diffusion_limited_aggregation',['../namespacehmap.html#a144eb2c0e1e4f93e712f01cbf0fb0c06',1,'hmap']]],
   ['diffusion_5fretargeting_12',['diffusion_retargeting',['../namespacehmap.html#ab57f747b36842221871303e08b1d169e',1,'hmap']]],
   ['dig_5fpath_13',['dig_path',['../namespacehmap.html#a7ba4bc3a43f42b6a4bf00e94e86064ff',1,'hmap']]],
-  ['dig_5friver_14',['dig_river',['../namespacehmap.html#a31b3cde3ce1fa52f1856b962f4443d49',1,'hmap::dig_river(Array &amp;z, const Path &amp;path, float riverbank_talus, int river_width=0, int merging_width=0, float depth=0.f, float riverbed_talus=0.f, float noise_ratio=0.9f, uint seed=0, Array *p_mask=nullptr)'],['../namespacehmap.html#a6d536f0d67ade56c6a60927d8c8e9720',1,'hmap::dig_river(Array &amp;z, const std::vector&lt; Path &gt; &amp;path_list, float riverbank_talus, int river_width=0, int merging_width=0, float depth=0.f, float riverbed_talus=0.f, float noise_ratio=0.9f, uint seed=0, Array *p_mask=nullptr)']]],
+  ['dig_5friver_14',['dig_river',['../namespacehmap.html#a6d536f0d67ade56c6a60927d8c8e9720',1,'hmap::dig_river(Array &amp;z, const std::vector&lt; Path &gt; &amp;path_list, float riverbank_talus, int river_width=0, int merging_width=0, float depth=0.f, float riverbed_talus=0.f, float noise_ratio=0.9f, uint seed=0, Array *p_mask=nullptr)'],['../namespacehmap.html#a31b3cde3ce1fa52f1856b962f4443d49',1,'hmap::dig_river(Array &amp;z, const Path &amp;path, float riverbank_talus, int river_width=0, int merging_width=0, float depth=0.f, float riverbed_talus=0.f, float noise_ratio=0.9f, uint seed=0, Array *p_mask=nullptr)']]],
   ['dijkstra_15',['dijkstra',['../classhmap_1_1Path.html#a5bc0253d1ce863a772b3ac77aaf41b91',1,'hmap::Path::dijkstra()'],['../classhmap_1_1Graph.html#a07e0c31ab59d4f51c51c3f90117ca71a',1,'hmap::Graph::dijkstra()']]],
   ['dilation_16',['dilation',['../namespacehmap_1_1gpu.html#aed49f777e8ad095bafc5dc014e548e6e',1,'hmap::gpu::dilation()'],['../namespacehmap.html#ac91a2dacd050d8588b4135f02dd8f2a5',1,'hmap::dilation()']]],
   ['dilation_5fexpand_5fborder_5fonly_17',['dilation_expand_border_only',['../namespacehmap_1_1gpu.html#a9d5b9a7ec8b097b74badbc7602e8addf',1,'hmap::gpu::dilation_expand_border_only()'],['../namespacehmap.html#a268e133ae504eaa1b31c91d13135f4c5',1,'hmap::dilation_expand_border_only(const Array &amp;array, int ir)']]],
@@ -27,8 +27,9 @@ var searchData=
   ['distance_5ftransform_5fapprox_24',['distance_transform_approx',['../namespacehmap.html#a23fdcd258e0bab2a5fcad31d6459c3fa',1,'hmap']]],
   ['distance_5ftransform_5fmanhattan_25',['distance_transform_manhattan',['../namespacehmap.html#add641a7fc26ae08b1f679cbb7dd43177',1,'hmap']]],
   ['disttodomainimpl_26',['disttodomainimpl',['../classhmap_1_1ArrayControlFunction.html#a3c40696e8f26f0e6fbd66f0f97b83082',1,'hmap::ArrayControlFunction::DistToDomainImpl()'],['../classhmap_1_1XyControlFunction.html#a7812fe0b327e2d30cda5656c10fd1a75',1,'hmap::XyControlFunction::DistToDomainImpl()']]],
-  ['divide_27',['divide',['../classhmap_1_1Path.html#a8650db137a1b4ecccf05cfd0fd7d320b',1,'hmap::Path']]],
-  ['downscale_5ftransform_28',['downscale_transform',['../namespacehmap.html#a1fb8077215c98a741e0de5366c2f7ca3',1,'hmap']]],
-  ['downscale_5ftransform_5fmulti_29',['downscale_transform_multi',['../namespacehmap.html#a669a4f9586f3df4b018e321048c9bc7d',1,'hmap']]],
-  ['dump_30',['dump',['../structhmap_1_1Recorder.html#ac5bd6628a256636229047bbc12ced680',1,'hmap::Recorder::dump()'],['../classhmap_1_1Array.html#a00b8f7462c1e22b1da8a67ec62d4c8c8',1,'hmap::Array::dump()'],['../classhmap_1_1Timer.html#a5bc931885a549c561740f39cea91dd5f',1,'hmap::Timer::Dump()']]]
+  ['divergence_5ffrom_5fgradients_27',['divergence_from_gradients',['../namespacehmap.html#a27518ea42feb447ad4eb83147663c24d',1,'hmap']]],
+  ['divide_28',['divide',['../classhmap_1_1Path.html#a8650db137a1b4ecccf05cfd0fd7d320b',1,'hmap::Path']]],
+  ['downscale_5ftransform_29',['downscale_transform',['../namespacehmap.html#a1fb8077215c98a741e0de5366c2f7ca3',1,'hmap']]],
+  ['downscale_5ftransform_5fmulti_30',['downscale_transform_multi',['../namespacehmap.html#a669a4f9586f3df4b018e321048c9bc7d',1,'hmap']]],
+  ['dump_31',['dump',['../structhmap_1_1Recorder.html#ac5bd6628a256636229047bbc12ced680',1,'hmap::Recorder::dump()'],['../classhmap_1_1Array.html#a00b8f7462c1e22b1da8a67ec62d4c8c8',1,'hmap::Array::dump()'],['../classhmap_1_1Timer.html#a5bc931885a549c561740f39cea91dd5f',1,'hmap::Timer::Dump()']]]
 ];

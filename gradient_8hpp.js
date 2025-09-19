@@ -1,5 +1,6 @@
 var gradient_8hpp =
 [
+    [ "divergence_from_gradients", "gradient_8hpp.html#a27518ea42feb447ad4eb83147663c24d", null ],
     [ "gradient1d", "gradient_8hpp.html#ab0755dccfcae2b02a211c091e33f79a9", null ],
     [ "gradient_angle", "gradient_8hpp.html#ae23a30f7964baacd6d0457c288fd3598", null ],
     [ "gradient_angle_circular_smoothing", "gradient_8hpp.html#a5d7bb7244ff862834560b9145866e1b2", null ],
@@ -16,7 +17,9 @@ var gradient_8hpp =
     [ "laplacian", "gradient_8hpp.html#a893bb80f635c4711c075e078cde18cf5", null ],
     [ "normal_map", "gradient_8hpp.html#aef53e65fc9b8bc74c342367b0034cfa7", null ],
     [ "normal_map_to_heightmap", "gradient_8hpp.html#a26a0e82cf03ec259e3efae1ea84286db", null ],
+    [ "normal_map_to_heightmap_poisson", "gradient_8hpp.html#a58b2e7cdca93719d3e1fca73fd68421c", null ],
     [ "phase_field", "gradient_8hpp.html#a6e66245d2cf9c7944ed35a1010c54f77", null ],
+    [ "solve_poisson_gauss_seidel", "gradient_8hpp.html#a0bcc84aa462aee73e1a3a52729f21ea6", null ],
     [ "unwrap_phase", "gradient_8hpp.html#a3f8dc201377b61428eba8daa4a03a65f", null ],
     [ "gradient_norm", "gradient_8hpp.html#a1c5e49734e49973fe1b275b6988dba12", null ]
 ];

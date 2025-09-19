@@ -15,6 +15,8 @@ namespace \mbox{\hyperlink{namespacehmap_1_1gpu}{hmap\+::gpu}}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a27518ea42feb447ad4eb83147663c24d}{hmap\+::divergence\+\_\+from\+\_\+gradients}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&dx, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&dy)
+\begin{DoxyCompactList}\small\item\em Compute the divergence of a 2D gradient field. \end{DoxyCompactList}\item 
 std\+::vector$<$ float $>$ \mbox{\hyperlink{namespacehmap_ab0755dccfcae2b02a211c091e33f79a9}{hmap\+::gradient1d}} (const std\+::vector$<$ float $>$ \&v)
 \begin{DoxyCompactList}\small\item\em Compute the gradient of a 1D vector. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_ae23a30f7964baacd6d0457c288fd3598}{hmap\+::gradient\+\_\+angle}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, bool downward=false)
@@ -47,8 +49,12 @@ void \mbox{\hyperlink{namespacehmap_a6032811e40d11b8957dc48d98711acf9}{hmap\+::g
 \begin{DoxyCompactList}\small\item\em Generates a normal map from a given 2D array. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a26a0e82cf03ec259e3efae1ea84286db}{hmap\+::normal\+\_\+map\+\_\+to\+\_\+heightmap}} (const \mbox{\hyperlink{classhmap_1_1Tensor}{Tensor}} \&nmap)
 \begin{DoxyCompactList}\small\item\em Converts a normal map to a heightmap using direct summation of gradients. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a58b2e7cdca93719d3e1fca73fd68421c}{hmap\+::normal\+\_\+map\+\_\+to\+\_\+heightmap\+\_\+poisson}} (const \mbox{\hyperlink{classhmap_1_1Tensor}{Tensor}} \&nmap, int iterations=500, float omega=1.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
+\begin{DoxyCompactList}\small\item\em Reconstruct a height/displacement map from a normal map by solving a Poisson equation with Gauss–\+Seidel iteration. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a6e66245d2cf9c7944ed35a1010c54f77}{hmap\+::phase\+\_\+field}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float kw, int width, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, float noise\+\_\+amp=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, int prefilter\+\_\+ir=-\/1, float density\+\_\+factor=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, bool rotate90=false, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+gnoise\+\_\+x=nullptr, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+gnoise\+\_\+y=nullptr)
 \begin{DoxyCompactList}\small\item\em Computes a phase field using spatially varying Gabor noise based on the input heightmap. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacehmap_a0bcc84aa462aee73e1a3a52729f21ea6}{hmap\+::solve\+\_\+poisson\+\_\+gauss\+\_\+seidel}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&rhs, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&h, int iterations=500, float omega=1.\+0f)
+\begin{DoxyCompactList}\small\item\em Solve the Poisson equation ∇²h = rhs using Gauss–\+Seidel iteration. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a3f8dc201377b61428eba8daa4a03a65f}{hmap\+::unwrap\+\_\+phase}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&alpha)
 \begin{DoxyCompactList}\small\item\em Unwraps a 2D phase array to correct discontinuities in phase data. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a1c5e49734e49973fe1b275b6988dba12}{hmap\+::gpu\+::gradient\+\_\+norm}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array)

@@ -1366,6 +1366,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a72b1f87026fe5d88b0febb8bc6592c2c" id="r_a72b1f87026fe5d88b0febb8bc6592c2c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a72b1f87026fe5d88b0febb8bc6592c2c">rescale_points_to_unit_square</a> (std::vector&lt; float &gt; &amp;x, std::vector&lt; float &gt; &amp;y, <a class="el" href="structhmap_1_1Vec4.html">Vec4</a>&lt; float &gt; bbox)</td></tr>
 <tr class="memdesc:a72b1f87026fe5d88b0febb8bc6592c2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rescale coordinate (x, y) so that they fit in a unit-square box based on a given initial bounding box.  <br /></td></tr>
 <tr class="separator:a72b1f87026fe5d88b0febb8bc6592c2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27518ea42feb447ad4eb83147663c24d" id="r_a27518ea42feb447ad4eb83147663c24d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a27518ea42feb447ad4eb83147663c24d">divergence_from_gradients</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;dx, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;dy)</td></tr>
+<tr class="memdesc:a27518ea42feb447ad4eb83147663c24d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the divergence of a 2D gradient field.  <br /></td></tr>
+<tr class="separator:a27518ea42feb447ad4eb83147663c24d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab0755dccfcae2b02a211c091e33f79a9" id="r_ab0755dccfcae2b02a211c091e33f79a9"><td class="memItemLeft" align="right" valign="top">std::vector&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#ab0755dccfcae2b02a211c091e33f79a9">gradient1d</a> (const std::vector&lt; float &gt; &amp;v)</td></tr>
 <tr class="memdesc:ab0755dccfcae2b02a211c091e33f79a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the gradient of a 1D vector.  <br /></td></tr>
 <tr class="separator:ab0755dccfcae2b02a211c091e33f79a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1414,9 +1417,15 @@ Functions</h2></td></tr>
 <tr class="memitem:a26a0e82cf03ec259e3efae1ea84286db" id="r_a26a0e82cf03ec259e3efae1ea84286db"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a26a0e82cf03ec259e3efae1ea84286db">normal_map_to_heightmap</a> (const <a class="el" href="classhmap_1_1Tensor.html">Tensor</a> &amp;nmap)</td></tr>
 <tr class="memdesc:a26a0e82cf03ec259e3efae1ea84286db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a normal map to a heightmap using direct summation of gradients.  <br /></td></tr>
 <tr class="separator:a26a0e82cf03ec259e3efae1ea84286db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58b2e7cdca93719d3e1fca73fd68421c" id="r_a58b2e7cdca93719d3e1fca73fd68421c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a58b2e7cdca93719d3e1fca73fd68421c">normal_map_to_heightmap_poisson</a> (const <a class="el" href="classhmap_1_1Tensor.html">Tensor</a> &amp;nmap, int iterations=500, float omega=1.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
+<tr class="memdesc:a58b2e7cdca93719d3e1fca73fd68421c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reconstruct a height/displacement map from a normal map by solving a Poisson equation with Gauss–Seidel iteration.  <br /></td></tr>
+<tr class="separator:a58b2e7cdca93719d3e1fca73fd68421c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6e66245d2cf9c7944ed35a1010c54f77" id="r_a6e66245d2cf9c7944ed35a1010c54f77"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a6e66245d2cf9c7944ed35a1010c54f77">phase_field</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, float kw, int width, <a class="el" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> seed, float noise_amp=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, int prefilter_ir=-1, float density_factor=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, bool rotate90=false, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_gnoise_x=nullptr, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_gnoise_y=nullptr)</td></tr>
 <tr class="memdesc:a6e66245d2cf9c7944ed35a1010c54f77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes a phase field using spatially varying Gabor noise based on the input heightmap.  <br /></td></tr>
 <tr class="separator:a6e66245d2cf9c7944ed35a1010c54f77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0bcc84aa462aee73e1a3a52729f21ea6" id="r_a0bcc84aa462aee73e1a3a52729f21ea6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a0bcc84aa462aee73e1a3a52729f21ea6">solve_poisson_gauss_seidel</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;rhs, <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;h, int iterations=500, float omega=1.0f)</td></tr>
+<tr class="memdesc:a0bcc84aa462aee73e1a3a52729f21ea6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solve the Poisson equation ∇²h = rhs using Gauss–Seidel iteration.  <br /></td></tr>
+<tr class="separator:a0bcc84aa462aee73e1a3a52729f21ea6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3f8dc201377b61428eba8daa4a03a65f" id="r_a3f8dc201377b61428eba8daa4a03a65f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a3f8dc201377b61428eba8daa4a03a65f">unwrap_phase</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;alpha)</td></tr>
 <tr class="memdesc:a3f8dc201377b61428eba8daa4a03a65f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unwraps a 2D phase array to correct discontinuities in phase data.  <br /></td></tr>
 <tr class="separator:a3f8dc201377b61428eba8daa4a03a65f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -6911,7 +6920,7 @@ template&lt;typename T &gt; </div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>,</div>
 <div class="line">                          <span class="keyword">true</span>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a618fb6d396a832c3dd1f053bfd27eed4"><div class="ttname"><a href="namespacehmap.html#a618fb6d396a832c3dd1f053bfd27eed4">hmap::gradient_talus</a></div><div class="ttdeci">Array gradient_talus(const Array &amp;array)</div><div class="ttdoc">Compute the gradient talus slope of a 2D array.</div><div class="ttdef"><b>Definition</b> gradient.cpp:209</div></div>
+<div class="ttc" id="anamespacehmap_html_a618fb6d396a832c3dd1f053bfd27eed4"><div class="ttname"><a href="namespacehmap.html#a618fb6d396a832c3dd1f053bfd27eed4">hmap::gradient_talus</a></div><div class="ttdeci">Array gradient_talus(const Array &amp;array)</div><div class="ttdoc">Compute the gradient talus slope of a 2D array.</div><div class="ttdef"><b>Definition</b> gradient.cpp:216</div></div>
 <div class="ttc" id="anamespacehmap_html_ac4f3c8b3d5f766b15c0ac64359fdc219"><div class="ttname"><a href="namespacehmap.html#ac4f3c8b3d5f766b15c0ac64359fdc219">hmap::hydraulic_algebric</a></div><div class="ttdeci">void hydraulic_algebric(Array &amp;z, Array *p_mask, float talus_ref, int ir, Array *p_bedrock=nullptr, Array *p_erosion_map=nullptr, Array *p_deposition_map=nullptr, float c_erosion=0.05f, float c_deposition=0.05f, int iterations=1)</div><div class="ttdoc">Apply an algerbic formula based on the local gradient to perform erosion/deposition.</div><div class="ttdef"><b>Definition</b> hydraulic_algebric.cpp:73</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_hydraulic_algebric.png" alt=""/>
@@ -7370,7 +7379,7 @@ template&lt;typename T &gt; </div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>,</div>
 <div class="line">                          <span class="keyword">true</span>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a5f58c4149344b401d82f0be3c3807156"><div class="ttname"><a href="namespacehmap.html#a5f58c4149344b401d82f0be3c3807156">hmap::gradient_norm</a></div><div class="ttdeci">Array gradient_norm(const Array &amp;array, Array *p_dx=nullptr, Array *p_dy=nullptr)</div><div class="ttdoc">Compute the gradient norm of a 2D array.</div><div class="ttdef"><b>Definition</b> gradient.cpp:116</div></div>
+<div class="ttc" id="anamespacehmap_html_a5f58c4149344b401d82f0be3c3807156"><div class="ttname"><a href="namespacehmap.html#a5f58c4149344b401d82f0be3c3807156">hmap::gradient_norm</a></div><div class="ttdeci">Array gradient_norm(const Array &amp;array, Array *p_dx=nullptr, Array *p_dy=nullptr)</div><div class="ttdoc">Compute the gradient norm of a 2D array.</div><div class="ttdef"><b>Definition</b> gradient.cpp:123</div></div>
 <div class="ttc" id="anamespacehmap_html_a7b2c04c0b2cd0da363d2382f5a753a81"><div class="ttname"><a href="namespacehmap.html#a7b2c04c0b2cd0da363d2382f5a753a81">hmap::hydraulic_diffusion</a></div><div class="ttdeci">void hydraulic_diffusion(Array &amp;z, float c_diffusion, float talus, int iterations)</div><div class="ttdoc">Apply cell-based hydraulic erosion using a nonlinear diffusion model.</div><div class="ttdef"><b>Definition</b> hydraulic_diffusion.cpp:17</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_hydraulic_diffusion.png" alt=""/>
@@ -24288,6 +24297,57 @@ An <a class="el" href="classhmap_1_1Array.html" title="Array class, helper to ma
 
 </div>
 </div>
+<a id="a27518ea42feb447ad4eb83147663c24d" name="a27518ea42feb447ad4eb83147663c24d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27518ea42feb447ad4eb83147663c24d">&#9670;&#160;</a></span>divergence_from_gradients()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classhmap_1_1Array.html">Array</a> hmap::divergence_from_gradients </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>dx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>dy</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Compute the divergence of a 2D gradient field. </p>
+<p>Given two scalar fields representing the horizontal and vertical derivatives of a height map:  </p><p class="formulaDsp">
+\[
+    p(x, y) = \frac{\partial h}{\partial x}, \qquad q(x, y) = \frac{\partial
+h}{\partial y}
+\]
+</p>
+<p> this function returns the divergence:  </p><p class="formulaDsp">
+\[
+    f(x, y) = \frac{\partial p}{\partial x}(x, y)
+            + \frac{\partial q}{\partial y}(x, y)
+\]
+</p>
+<p>The divergence is a key term for solving the Poisson equation \(\nabla^2 h = f\) when reconstructing a height field from gradients or from a normal map.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dx</td><td><a class="el" href="classhmap_1_1Array.html" title="Array class, helper to manipulate 2D float array with &quot;(i, j)&quot; indexing.">Array</a> of horizontal derivatives ( \(\partial h / \partial x\)). Must have the same dimensions as <code>dy</code>. </td></tr>
+    <tr><td class="paramname">dy</td><td><a class="el" href="classhmap_1_1Array.html" title="Array class, helper to manipulate 2D float array with &quot;(i, j)&quot; indexing.">Array</a> of vertical derivatives ( \(\partial h / \partial y\)). Must have the same dimensions as <code>dx</code>.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A new <a class="el" href="classhmap_1_1Array.html" title="Array class, helper to manipulate 2D float array with &quot;(i, j)&quot; indexing.">Array</a> containing the divergence \(f(x, y)\) for each pixel. The returned array has the same size as the inputs. </dd></dl>
+
+</div>
+</div>
 <a id="ab0755dccfcae2b02a211c091e33f79a9" name="ab0755dccfcae2b02a211c091e33f79a9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab0755dccfcae2b02a211c091e33f79a9">&#9670;&#160;</a></span>gradient1d()</h2>
 
@@ -24380,9 +24440,9 @@ An <a class="el" href="classhmap_1_1Array.html" title="Array class, helper to ma
 <div class="line">                          <span class="keyword">false</span>,</div>
 <div class="line">                          <span class="keyword">true</span>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a5d7bb7244ff862834560b9145866e1b2"><div class="ttname"><a href="namespacehmap.html#a5d7bb7244ff862834560b9145866e1b2">hmap::gradient_angle_circular_smoothing</a></div><div class="ttdeci">Array gradient_angle_circular_smoothing(const Array &amp;array, int ir, bool downward=false)</div><div class="ttdoc">Computes a smoothed gradient angle (aspect) field with circular unwrapping.</div><div class="ttdef"><b>Definition</b> gradient.cpp:83</div></div>
+<div class="ttc" id="anamespacehmap_html_a5d7bb7244ff862834560b9145866e1b2"><div class="ttname"><a href="namespacehmap.html#a5d7bb7244ff862834560b9145866e1b2">hmap::gradient_angle_circular_smoothing</a></div><div class="ttdeci">Array gradient_angle_circular_smoothing(const Array &amp;array, int ir, bool downward=false)</div><div class="ttdoc">Computes a smoothed gradient angle (aspect) field with circular unwrapping.</div><div class="ttdef"><b>Definition</b> gradient.cpp:90</div></div>
 <div class="ttc" id="anamespacehmap_html_aa2de65aa233324cf294faf2421ccec2a"><div class="ttname"><a href="namespacehmap.html#aa2de65aa233324cf294faf2421ccec2a">hmap::smooth_cpulse_edge_removing</a></div><div class="ttdeci">void smooth_cpulse_edge_removing(Array &amp;array, float talus, float talus_width, int ir)</div><div class="ttdoc">Smooths an array while attenuating edges using a gradient-based pulse.</div><div class="ttdef"><b>Definition</b> filters.cpp:1062</div></div>
-<div class="ttc" id="anamespacehmap_html_ae23a30f7964baacd6d0457c288fd3598"><div class="ttname"><a href="namespacehmap.html#ae23a30f7964baacd6d0457c288fd3598">hmap::gradient_angle</a></div><div class="ttdeci">Array gradient_angle(const Array &amp;array, bool downward=false)</div><div class="ttdoc">Compute the polar angle of the gradient of a 2D array.</div><div class="ttdef"><b>Definition</b> gradient.cpp:62</div></div>
+<div class="ttc" id="anamespacehmap_html_ae23a30f7964baacd6d0457c288fd3598"><div class="ttname"><a href="namespacehmap.html#ae23a30f7964baacd6d0457c288fd3598">hmap::gradient_angle</a></div><div class="ttdeci">Array gradient_angle(const Array &amp;array, bool downward=false)</div><div class="ttdoc">Compute the polar angle of the gradient of a 2D array.</div><div class="ttdef"><b>Definition</b> gradient.cpp:69</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_gradient_angle.png" alt=""/>
 </div>
@@ -24533,9 +24593,9 @@ An <a class="el" href="classhmap_1_1Array.html" title="Array class, helper to ma
 <div class="line">                          {dz, dz_p, dz_c, dz_s},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492">hmap::Cmap::VIRIDIS</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a522e28e6f997165bb492aa68327556d9"><div class="ttname"><a href="namespacehmap.html#a522e28e6f997165bb492aa68327556d9">hmap::gradient_norm_scharr</a></div><div class="ttdeci">Array gradient_norm_scharr(const Array &amp;array, Array *p_dx=nullptr, Array *p_dy=nullptr)</div><div class="ttdoc">Compute the gradient norm of a 2D array using the Scharr filter.</div><div class="ttdef"><b>Definition</b> gradient.cpp:155</div></div>
-<div class="ttc" id="anamespacehmap_html_ab02a5e564763a35cd3baa727b825db4a"><div class="ttname"><a href="namespacehmap.html#ab02a5e564763a35cd3baa727b825db4a">hmap::gradient_norm_prewitt</a></div><div class="ttdeci">Array gradient_norm_prewitt(const Array &amp;array, Array *p_dx=nullptr, Array *p_dy=nullptr)</div><div class="ttdoc">Compute the gradient norm of a 2D array using the Prewitt filter.</div><div class="ttdef"><b>Definition</b> gradient.cpp:129</div></div>
-<div class="ttc" id="anamespacehmap_html_ad0956aa203f9962dba258a91543d2969"><div class="ttname"><a href="namespacehmap.html#ad0956aa203f9962dba258a91543d2969">hmap::gradient_norm_sobel</a></div><div class="ttdeci">Array gradient_norm_sobel(const Array &amp;array, Array *p_dx=nullptr, Array *p_dy=nullptr)</div><div class="ttdoc">Compute the gradient norm of a 2D array using the Sobel filter.</div><div class="ttdef"><b>Definition</b> gradient.cpp:142</div></div>
+<div class="ttc" id="anamespacehmap_html_a522e28e6f997165bb492aa68327556d9"><div class="ttname"><a href="namespacehmap.html#a522e28e6f997165bb492aa68327556d9">hmap::gradient_norm_scharr</a></div><div class="ttdeci">Array gradient_norm_scharr(const Array &amp;array, Array *p_dx=nullptr, Array *p_dy=nullptr)</div><div class="ttdoc">Compute the gradient norm of a 2D array using the Scharr filter.</div><div class="ttdef"><b>Definition</b> gradient.cpp:162</div></div>
+<div class="ttc" id="anamespacehmap_html_ab02a5e564763a35cd3baa727b825db4a"><div class="ttname"><a href="namespacehmap.html#ab02a5e564763a35cd3baa727b825db4a">hmap::gradient_norm_prewitt</a></div><div class="ttdeci">Array gradient_norm_prewitt(const Array &amp;array, Array *p_dx=nullptr, Array *p_dy=nullptr)</div><div class="ttdoc">Compute the gradient norm of a 2D array using the Prewitt filter.</div><div class="ttdef"><b>Definition</b> gradient.cpp:136</div></div>
+<div class="ttc" id="anamespacehmap_html_ad0956aa203f9962dba258a91543d2969"><div class="ttname"><a href="namespacehmap.html#ad0956aa203f9962dba258a91543d2969">hmap::gradient_norm_sobel</a></div><div class="ttdeci">Array gradient_norm_sobel(const Array &amp;array, Array *p_dx=nullptr, Array *p_dy=nullptr)</div><div class="ttdoc">Compute the gradient norm of a 2D array using the Sobel filter.</div><div class="ttdef"><b>Definition</b> gradient.cpp:149</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_gradient_norm.png" alt=""/>
 </div>
@@ -25000,18 +25060,102 @@ An <a class="el" href="classhmap_1_1Array.html" title="Array class, helper to ma
 <div class="line">  <span class="comment">// rebuild input elevation field from normal map</span></div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z2 = <a class="code hl_function" href="namespacehmap.html#a26a0e82cf03ec259e3efae1ea84286db">hmap::normal_map_to_heightmap</a>(nmap);</div>
 <div class="line"> </div>
+<div class="line">  <span class="comment">// Poisson solver</span></div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z3 = <a class="code hl_function" href="namespacehmap.html#a58b2e7cdca93719d3e1fca73fd68421c">hmap::normal_map_to_heightmap_poisson</a>(nmap);</div>
+<div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z1);</div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z2);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z3);</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_normal_map_to_heightmap.png&quot;</span>,</div>
-<div class="line">                          {z1, z2},</div>
+<div class="line">                          {z1, z2, z3},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>
 <div class="ttc" id="anamespacehmap_html_a26a0e82cf03ec259e3efae1ea84286db"><div class="ttname"><a href="namespacehmap.html#a26a0e82cf03ec259e3efae1ea84286db">hmap::normal_map_to_heightmap</a></div><div class="ttdeci">Array normal_map_to_heightmap(const Tensor &amp;nmap)</div><div class="ttdoc">Converts a normal map to a heightmap using direct summation of gradients.</div><div class="ttdef"><b>Definition</b> normal_map.cpp:32</div></div>
+<div class="ttc" id="anamespacehmap_html_a58b2e7cdca93719d3e1fca73fd68421c"><div class="ttname"><a href="namespacehmap.html#a58b2e7cdca93719d3e1fca73fd68421c">hmap::normal_map_to_heightmap_poisson</a></div><div class="ttdeci">Array normal_map_to_heightmap_poisson(const Tensor &amp;nmap, int iterations=500, float omega=1.5f)</div><div class="ttdoc">Reconstruct a height/displacement map from a normal map by solving a Poisson equation with Gauss–Seid...</div><div class="ttdef"><b>Definition</b> normal_map.cpp:65</div></div>
 <div class="ttc" id="anamespacehmap_html_aef53e65fc9b8bc74c342367b0034cfa7"><div class="ttname"><a href="namespacehmap.html#aef53e65fc9b8bc74c342367b0034cfa7">hmap::normal_map</a></div><div class="ttdeci">Tensor normal_map(const Array &amp;array)</div><div class="ttdoc">Generates a normal map from a given 2D array.</div><div class="ttdef"><b>Definition</b> normal_map.cpp:12</div></div>
 </div><!-- fragment --></li>
 </ul>
 </dd></dl>
+<p><b>Result</b> </p><div class="image">
+<img src="ex_normal_map_to_heightmap.png" alt=""/>
+</div>
+ 
+</div>
+</div>
+<a id="a58b2e7cdca93719d3e1fca73fd68421c" name="a58b2e7cdca93719d3e1fca73fd68421c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58b2e7cdca93719d3e1fca73fd68421c">&#9670;&#160;</a></span>normal_map_to_heightmap_poisson()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classhmap_1_1Array.html">Array</a> hmap::normal_map_to_heightmap_poisson </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Tensor.html">Tensor</a> &amp;&#160;</td>
+          <td class="paramname"><em>nmap</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iterations</em> = <code>500</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>omega</em> = <code>1.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reconstruct a height/displacement map from a normal map by solving a Poisson equation with Gauss–Seidel iteration. </p>
+<p>The reconstruction is unique up to an additive constant. After solving, you may subtract the mean or normalize to a desired range.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nmap</td><td>Input normal map as a 2D tensor.<ul>
+<li>Channel 0 = (N_x), channel 1 = (N_y), channel 2 = (N_z).</li>
+<li>Values are expected in [0,1] or [-1,1]; if stored in [0,1], they will be remapped internally to [-1,1]. </li>
+</ul>
+</td></tr>
+    <tr><td class="paramname">iterations</td><td>Number of Gauss–Seidel iterations to perform (default = 500). Higher values improve accuracy but increase runtime. </td></tr>
+    <tr><td class="paramname">omega</td><td>Relaxation factor (1.0 = pure Gauss–Seidel; 1.0–2.0 = over-relaxation). Recommended: 1.2–1.5 for faster convergence.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>* A 2D <a class="el" href="classhmap_1_1Array.html" title="Array class, helper to manipulate 2D float array with &quot;(i, j)&quot; indexing.">Array</a> containing the reconstructed height map. Values are not normalized; apply scaling or centering if needed. Example** <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="highmap_8hpp.html">highmap.hpp</a>&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
+<div class="line">{</div>
+<div class="line">  <a class="code hl_struct" href="structhmap_1_1Vec2.html">hmap::Vec2&lt;int&gt;</a>   shape = {256, 256};</div>
+<div class="line">  <a class="code hl_struct" href="structhmap_1_1Vec2.html">hmap::Vec2&lt;float&gt;</a> res = {4.f, 4.f};</div>
+<div class="line">  <span class="keywordtype">int</span>               seed = 1;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z1 = <a class="code hl_function" href="namespacehmap.html#a40b948c49a05c14f2d540dc1a6952130">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, res, seed);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Tensor.html">hmap::Tensor</a> nmap = <a class="code hl_function" href="namespacehmap.html#aef53e65fc9b8bc74c342367b0034cfa7">hmap::normal_map</a>(z1);</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// rebuild input elevation field from normal map</span></div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z2 = <a class="code hl_function" href="namespacehmap.html#a26a0e82cf03ec259e3efae1ea84286db">hmap::normal_map_to_heightmap</a>(nmap);</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// Poisson solver</span></div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z3 = <a class="code hl_function" href="namespacehmap.html#a58b2e7cdca93719d3e1fca73fd68421c">hmap::normal_map_to_heightmap_poisson</a>(nmap);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z1);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z2);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z3);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_normal_map_to_heightmap.png&quot;</span>,</div>
+<div class="line">                          {z1, z2, z3},</div>
+<div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
+<div class="line">}</div>
+</div><!-- fragment --></dd></dl>
 <p><b>Result</b> </p><div class="image">
 <img src="ex_normal_map_to_heightmap.png" alt=""/>
 </div>
@@ -25146,6 +25290,67 @@ An <a class="el" href="classhmap_1_1Array.html" title="Array class, helper to ma
 <img src="ex_phase_field.png" alt=""/>
 </div>
  
+</div>
+</div>
+<a id="a0bcc84aa462aee73e1a3a52729f21ea6" name="a0bcc84aa462aee73e1a3a52729f21ea6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0bcc84aa462aee73e1a3a52729f21ea6">&#9670;&#160;</a></span>solve_poisson_gauss_seidel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hmap::solve_poisson_gauss_seidel </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>rhs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>h</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iterations</em> = <code>500</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>omega</em> = <code>1.0f</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Solve the Poisson equation ∇²h = rhs using Gauss–Seidel iteration. </p>
+<p>This function assumes Dirichlet boundary conditions (height = 0 at the edges). The algorithm updates interior points according to: </p><p class="formulaDsp">
+\[ h(x, y) = (1
+- \omega) h(x, y)
+          + \omega \cdot 0.25 \big(
+              h(x+1, y) + h(x-1, y)
+            + h(x, y+1) + h(x, y-1)
+            - rhs(x, y)
+            \big)
+\]
+</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rhs</td><td>Right-hand side (divergence of gradients). </td></tr>
+    <tr><td class="paramname">h</td><td>Height field to update; initialized to 0 or an estimate. </td></tr>
+    <tr><td class="paramname">iterations</td><td>Number of Gauss–Seidel iterations to run. </td></tr>
+    <tr><td class="paramname">omega</td><td>Relaxation parameter (1 = standard Gauss–Seidel, 1 &lt; omega &lt; 2 = over-relaxation). </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a3f8dc201377b61428eba8daa4a03a65f" name="a3f8dc201377b61428eba8daa4a03a65f"></a>

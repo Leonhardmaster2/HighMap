@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>HighMap library (C++): HighMap/src/gradient Directory Reference</title>
+<title>HighMap library (C++): HighMap/src/gradient/solve_poisson_gauss_seidel.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -70,7 +70,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('dir_052e2c45636af7fa2c38860b06d4db60.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('solve__poisson__gauss__seidel_8cpp.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -96,40 +96,30 @@ $(document).ready(function(){initNavTree('dir_052e2c45636af7fa2c38860b06d4db60.h
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">gradient Directory Reference</div></div>
+  <div class="summary">
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle"><div class="title">solve_poisson_gauss_seidel.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="dynheader">
-Directory dependency graph for gradient:</div>
-<div class="dyncontent">
-<div class="center"><img src="dir_052e2c45636af7fa2c38860b06d4db60_dep.png" border="0" usemap="#adir__052e2c45636af7fa2c38860b06d4db60__dep" alt="HighMap/src/gradient"/></div>
-<map name="adir__052e2c45636af7fa2c38860b06d4db60__dep" id="adir__052e2c45636af7fa2c38860b06d4db60__dep">
-<area shape="rect" href="dir_052e2c45636af7fa2c38860b06d4db60.html" title="gradient" alt="" coords="27,52,103,77"/>
-<area shape="rect" href="dir_f63c6611b1023abbeb7e0b5a0bccaf92.html" title="src" alt="" coords="16,16,115,88"/>
-</map>
-</div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="files" name="files"></a>
-Files</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="icondoc"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gradient_8cpp.html">gradient.cpp</a></td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:namespacehmap" id="r_namespacehmap"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html">hmap</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="icondoc"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gradient__gpu_8cpp.html">gradient_gpu.cpp</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="icondoc"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="normal__map_8cpp.html">normal_map.cpp</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="icondoc"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="phase__field_8cpp.html">phase_field.cpp</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="icondoc"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="solve__poisson__gauss__seidel_8cpp.html">solve_poisson_gauss_seidel.cpp</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="icondoc"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unwrap__phase_8cpp.html">unwrap_phase.cpp</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a0bcc84aa462aee73e1a3a52729f21ea6" id="r_a0bcc84aa462aee73e1a3a52729f21ea6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a0bcc84aa462aee73e1a3a52729f21ea6">hmap::solve_poisson_gauss_seidel</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;rhs, <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;h, int iterations=500, float omega=1.0f)</td></tr>
+<tr class="memdesc:a0bcc84aa462aee73e1a3a52729f21ea6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solve the Poisson equation ∇²h = rhs using Gauss–Seidel iteration.  <br /></td></tr>
+<tr class="separator:a0bcc84aa462aee73e1a3a52729f21ea6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d1628ce034b494ec45a6557150a1be1b.html">HighMap</a></li><li class="navelem"><a class="el" href="dir_f63c6611b1023abbeb7e0b5a0bccaf92.html">src</a></li><li class="navelem"><a class="el" href="dir_052e2c45636af7fa2c38860b06d4db60.html">gradient</a></li>
+    <li class="navelem"><a class="el" href="dir_d1628ce034b494ec45a6557150a1be1b.html">HighMap</a></li><li class="navelem"><a class="el" href="dir_f63c6611b1023abbeb7e0b5a0bccaf92.html">src</a></li><li class="navelem"><a class="el" href="dir_052e2c45636af7fa2c38860b06d4db60.html">gradient</a></li><li class="navelem"><a class="el" href="solve__poisson__gauss__seidel_8cpp.html">solve_poisson_gauss_seidel.cpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>

@@ -1,11 +1,15 @@
 var NAVTREEINDEX8 =
 {
-"gradient_8hpp.html#ab02a5e564763a35cd3baa727b825db4a":[5,0,1,0,0,20,4],
-"gradient_8hpp.html#ab0755dccfcae2b02a211c091e33f79a9":[5,0,1,0,0,20,0],
-"gradient_8hpp.html#aba851d370796b7b6654e681339561eb2":[5,0,1,0,0,20,8],
-"gradient_8hpp.html#ad0956aa203f9962dba258a91543d2969":[5,0,1,0,0,20,6],
-"gradient_8hpp.html#ae23a30f7964baacd6d0457c288fd3598":[5,0,1,0,0,20,1],
-"gradient_8hpp.html#aef53e65fc9b8bc74c342367b0034cfa7":[5,0,1,0,0,20,14],
+"gradient_8hpp.html#a618fb6d396a832c3dd1f053bfd27eed4":[5,0,1,0,0,20,8],
+"gradient_8hpp.html#a6e66245d2cf9c7944ed35a1010c54f77":[5,0,1,0,0,20,18],
+"gradient_8hpp.html#a893bb80f635c4711c075e078cde18cf5":[5,0,1,0,0,20,14],
+"gradient_8hpp.html#a8dbef7ccc1936646831eb5a24db58d81":[5,0,1,0,0,20,12],
+"gradient_8hpp.html#ab02a5e564763a35cd3baa727b825db4a":[5,0,1,0,0,20,5],
+"gradient_8hpp.html#ab0755dccfcae2b02a211c091e33f79a9":[5,0,1,0,0,20,1],
+"gradient_8hpp.html#aba851d370796b7b6654e681339561eb2":[5,0,1,0,0,20,9],
+"gradient_8hpp.html#ad0956aa203f9962dba258a91543d2969":[5,0,1,0,0,20,7],
+"gradient_8hpp.html#ae23a30f7964baacd6d0457c288fd3598":[5,0,1,0,0,20,2],
+"gradient_8hpp.html#aef53e65fc9b8bc74c342367b0034cfa7":[5,0,1,0,0,20,15],
 "gradient_8hpp_source.html":[5,0,1,0,0,20],
 "gradient__gpu_8cpp.html":[5,0,1,1,16,1],
 "gradient__gpu_8cpp.html#a1c5e49734e49973fe1b275b6988dba12":[5,0,1,1,16,1,0],
@@ -245,9 +249,5 @@ var NAVTREEINDEX8 =
 "interpolate__array__gpu_8cpp.html#a9c6bf942ee590b7a1b1fa7e5d87d890a":[5,0,1,1,19,4,3],
 "interpolate__array__gpu_8cpp.html#aa345d48e3c7b1f25ae8823a58a17beef":[5,0,1,1,19,4,6],
 "interpolate__array__gpu_8cpp.html#ac2dbdcbbe157f0a820f8eb07d4544471":[5,0,1,1,19,4,5],
-"interpolate__array__gpu_8cpp.html#ada313c7ac68787e41c2979c2975568eb":[5,0,1,1,19,4,0],
-"interpolate__array__gpu_8cpp.html#aec291339e9356e2b2f57c5641d955a24":[5,0,1,1,19,4,7],
-"interpolate__curve_8cpp.html":[5,0,1,1,19,5],
-"interpolate__curve_8cpp.html#ad2cd9e279b20e6621b1daca2d2b732bf":[5,0,1,1,19,5,0],
-"interpolate__curve_8hpp.html":[5,0,1,0,0,26]
+"interpolate__array__gpu_8cpp.html#ada313c7ac68787e41c2979c2975568eb":[5,0,1,1,19,4,0]
 };

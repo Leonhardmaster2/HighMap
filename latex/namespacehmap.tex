@@ -907,6 +907,8 @@ void \mbox{\hyperlink{namespacehmap_a9e701766f54eaf6ad79956bf90b9bb8b}{remove\+\
 \begin{DoxyCompactList}\small\item\em Remove grid points that are outside a given bounding box. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a72b1f87026fe5d88b0febb8bc6592c2c}{rescale\+\_\+points\+\_\+to\+\_\+unit\+\_\+square}} (std\+::vector$<$ float $>$ \&x, std\+::vector$<$ float $>$ \&y, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ bbox)
 \begin{DoxyCompactList}\small\item\em Rescale coordinate (x, y) so that they fit in a unit-\/square box based on a given initial bounding box. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a27518ea42feb447ad4eb83147663c24d}{divergence\+\_\+from\+\_\+gradients}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&dx, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&dy)
+\begin{DoxyCompactList}\small\item\em Compute the divergence of a 2D gradient field. \end{DoxyCompactList}\item 
 std\+::vector$<$ float $>$ \mbox{\hyperlink{namespacehmap_ab0755dccfcae2b02a211c091e33f79a9}{gradient1d}} (const std\+::vector$<$ float $>$ \&v)
 \begin{DoxyCompactList}\small\item\em Compute the gradient of a 1D vector. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_ae23a30f7964baacd6d0457c288fd3598}{gradient\+\_\+angle}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, bool downward=false)
@@ -939,8 +941,12 @@ void \mbox{\hyperlink{namespacehmap_a6032811e40d11b8957dc48d98711acf9}{gradient\
 \begin{DoxyCompactList}\small\item\em Generates a normal map from a given 2D array. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a26a0e82cf03ec259e3efae1ea84286db}{normal\+\_\+map\+\_\+to\+\_\+heightmap}} (const \mbox{\hyperlink{classhmap_1_1Tensor}{Tensor}} \&nmap)
 \begin{DoxyCompactList}\small\item\em Converts a normal map to a heightmap using direct summation of gradients. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a58b2e7cdca93719d3e1fca73fd68421c}{normal\+\_\+map\+\_\+to\+\_\+heightmap\+\_\+poisson}} (const \mbox{\hyperlink{classhmap_1_1Tensor}{Tensor}} \&nmap, int iterations=500, float omega=1.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
+\begin{DoxyCompactList}\small\item\em Reconstruct a height/displacement map from a normal map by solving a Poisson equation with Gauss–\+Seidel iteration. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a6e66245d2cf9c7944ed35a1010c54f77}{phase\+\_\+field}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float kw, int width, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, float noise\+\_\+amp=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, int prefilter\+\_\+ir=-\/1, float density\+\_\+factor=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, bool rotate90=false, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+gnoise\+\_\+x=nullptr, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+gnoise\+\_\+y=nullptr)
 \begin{DoxyCompactList}\small\item\em Computes a phase field using spatially varying Gabor noise based on the input heightmap. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacehmap_a0bcc84aa462aee73e1a3a52729f21ea6}{solve\+\_\+poisson\+\_\+gauss\+\_\+seidel}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&rhs, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&h, int iterations=500, float omega=1.\+0f)
+\begin{DoxyCompactList}\small\item\em Solve the Poisson equation ∇²h = rhs using Gauss–\+Seidel iteration. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a3f8dc201377b61428eba8daa4a03a65f}{unwrap\+\_\+phase}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&alpha)
 \begin{DoxyCompactList}\small\item\em Unwraps a 2D phase array to correct discontinuities in phase data. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structhmap_1_1HeightmapRGBA}{Heightmap\+RGBA}} \mbox{\hyperlink{namespacehmap_a054b11b366d585ac3d228619d9cb5928}{mix\+\_\+heightmap\+\_\+rgba}} (\mbox{\hyperlink{structhmap_1_1HeightmapRGBA}{Heightmap\+RGBA}} \&rgba1, \mbox{\hyperlink{structhmap_1_1HeightmapRGBA}{Heightmap\+RGBA}} \&rgba2, bool use\+\_\+sqrt\+\_\+avg=true)
@@ -14877,6 +14883,36 @@ Rescale coordinate (x, y) so that they fit in a unit-\/square box based on a giv
 {\em bbox} & Initial bounding box. \\
 \hline
 \end{DoxyParams}
+\Hypertarget{namespacehmap_a27518ea42feb447ad4eb83147663c24d}\label{namespacehmap_a27518ea42feb447ad4eb83147663c24d} 
+\index{hmap@{hmap}!divergence\_from\_gradients@{divergence\_from\_gradients}}
+\index{divergence\_from\_gradients@{divergence\_from\_gradients}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{divergence\_from\_gradients()}{divergence\_from\_gradients()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::divergence\+\_\+from\+\_\+gradients (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{dx,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{dy }\end{DoxyParamCaption})}
+
+
+
+Compute the divergence of a 2D gradient field. 
+
+Given two scalar fields representing the horizontal and vertical derivatives of a height map\+:  \[
+    p(x, y) = \frac{\partial h}{\partial x}, \qquad q(x, y) = \frac{\partial
+h}{\partial y}
+\] this function returns the divergence\+:  \[
+    f(x, y) = \frac{\partial p}{\partial x}(x, y)
+            + \frac{\partial q}{\partial y}(x, y)
+\]
+
+The divergence is a key term for solving the Poisson equation $\nabla^2 h = f$ when reconstructing a height field from gradients or from a normal map.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dx} & \doxylink{classhmap_1_1Array}{Array} of horizontal derivatives ( $\partial h / \partial x$). Must have the same dimensions as {\ttfamily dy}. \\
+\hline
+{\em dy} & \doxylink{classhmap_1_1Array}{Array} of vertical derivatives ( $\partial h / \partial y$). Must have the same dimensions as {\ttfamily dx}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new \doxylink{classhmap_1_1Array}{Array} containing the divergence $f(x, y)$ for each pixel. The returned array has the same size as the inputs. 
+\end{DoxyReturn}
 \Hypertarget{namespacehmap_ab0755dccfcae2b02a211c091e33f79a9}\label{namespacehmap_ab0755dccfcae2b02a211c091e33f79a9} 
 \index{hmap@{hmap}!gradient1d@{gradient1d}}
 \index{gradient1d@{gradient1d}!hmap@{hmap}}
@@ -15366,11 +15402,15 @@ An {\ttfamily \doxylink{classhmap_1_1Array}{Array}} object representing the comp
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ rebuild\ input\ elevation\ field\ from\ normal\ map}}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z2\ =\ \mbox{\hyperlink{namespacehmap_a26a0e82cf03ec259e3efae1ea84286db}{hmap::normal\_map\_to\_heightmap}}(nmap);}
 \DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ Poisson\ solver}}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z3\ =\ \mbox{\hyperlink{namespacehmap_a58b2e7cdca93719d3e1fca73fd68421c}{hmap::normal\_map\_to\_heightmap\_poisson}}(nmap);}
+\DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(z1);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(z2);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(z3);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_normal\_map\_to\_heightmap.png"{}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z1,\ z2\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z1,\ z2,\ z3\},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}});}
 \DoxyCodeLine{\}}
 
@@ -15378,6 +15418,64 @@ An {\ttfamily \doxylink{classhmap_1_1Array}{Array}} object representing the comp
 
 \end{DoxyItemize}
 \end{DoxyNote}
+{\bfseries{Result}}  \Hypertarget{namespacehmap_a58b2e7cdca93719d3e1fca73fd68421c}\label{namespacehmap_a58b2e7cdca93719d3e1fca73fd68421c} 
+\index{hmap@{hmap}!normal\_map\_to\_heightmap\_poisson@{normal\_map\_to\_heightmap\_poisson}}
+\index{normal\_map\_to\_heightmap\_poisson@{normal\_map\_to\_heightmap\_poisson}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{normal\_map\_to\_heightmap\_poisson()}{normal\_map\_to\_heightmap\_poisson()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::normal\+\_\+map\+\_\+to\+\_\+heightmap\+\_\+poisson (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Tensor}{Tensor}} \&}]{nmap,  }\item[{int}]{iterations = {\ttfamily 500},  }\item[{float}]{omega = {\ttfamily 1.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
+
+
+
+Reconstruct a height/displacement map from a normal map by solving a Poisson equation with Gauss–\+Seidel iteration. 
+
+The reconstruction is unique up to an additive constant. After solving, you may subtract the mean or normalize to a desired range.
+
+
+\begin{DoxyParams}{Parameters}
+{\em nmap} & Input normal map as a 2D tensor.
+\begin{DoxyItemize}
+\item Channel 0 = (N\+\_\+x), channel 1 = (N\+\_\+y), channel 2 = (N\+\_\+z).
+\item Values are expected in \mbox{[}0,1\mbox{]} or \mbox{[}-\/1,1\mbox{]}; if stored in \mbox{[}0,1\mbox{]}, they will be remapped internally to \mbox{[}-\/1,1\mbox{]}. 
+\end{DoxyItemize}\\
+\hline
+{\em iterations} & Number of Gauss–\+Seidel iterations to perform (default = 500). Higher values improve accuracy but increase runtime. \\
+\hline
+{\em omega} & Relaxation factor (1.\+0 = pure Gauss–\+Seidel; 1.\+0–2.0 = over-\/relaxation). Recommended\+: 1.\+2–1.5 for faster convergence.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\texorpdfstring{$\ast$}{*} A 2D \doxylink{classhmap_1_1Array}{Array} containing the reconstructed height map. Values are not normalized; apply scaling or centering if needed. Example\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{structhmap_1_1Vec2}{hmap::Vec2<int>}}\ \ \ shape\ =\ \{256,\ 256\};}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{structhmap_1_1Vec2}{hmap::Vec2<float>}}\ res\ =\ \{4.f,\ 4.f\};}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed\ =\ 1;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z1\ =\ \mbox{\hyperlink{namespacehmap_a40b948c49a05c14f2d540dc1a6952130}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ res,\ seed);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Tensor}{hmap::Tensor}}\ nmap\ =\ \mbox{\hyperlink{namespacehmap_aef53e65fc9b8bc74c342367b0034cfa7}{hmap::normal\_map}}(z1);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ rebuild\ input\ elevation\ field\ from\ normal\ map}}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z2\ =\ \mbox{\hyperlink{namespacehmap_a26a0e82cf03ec259e3efae1ea84286db}{hmap::normal\_map\_to\_heightmap}}(nmap);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ Poisson\ solver}}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z3\ =\ \mbox{\hyperlink{namespacehmap_a58b2e7cdca93719d3e1fca73fd68421c}{hmap::normal\_map\_to\_heightmap\_poisson}}(nmap);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(z1);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(z2);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(z3);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_normal\_map\_to\_heightmap.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z1,\ z2,\ z3\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+
+\end{DoxyReturn}
 {\bfseries{Result}}  \Hypertarget{namespacehmap_a6e66245d2cf9c7944ed35a1010c54f77}\label{namespacehmap_a6e66245d2cf9c7944ed35a1010c54f77} 
 \index{hmap@{hmap}!phase\_field@{phase\_field}}
 \index{phase\_field@{phase\_field}!hmap@{hmap}}
@@ -15453,7 +15551,37 @@ A 2D array representing the computed phase field.
 
 \end{DoxyItemize}
 
-{\bfseries{Result}}  \Hypertarget{namespacehmap_a3f8dc201377b61428eba8daa4a03a65f}\label{namespacehmap_a3f8dc201377b61428eba8daa4a03a65f} 
+{\bfseries{Result}}  \Hypertarget{namespacehmap_a0bcc84aa462aee73e1a3a52729f21ea6}\label{namespacehmap_a0bcc84aa462aee73e1a3a52729f21ea6} 
+\index{hmap@{hmap}!solve\_poisson\_gauss\_seidel@{solve\_poisson\_gauss\_seidel}}
+\index{solve\_poisson\_gauss\_seidel@{solve\_poisson\_gauss\_seidel}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{solve\_poisson\_gauss\_seidel()}{solve\_poisson\_gauss\_seidel()}}
+{\footnotesize\ttfamily void hmap\+::solve\+\_\+poisson\+\_\+gauss\+\_\+seidel (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{rhs,  }\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{h,  }\item[{int}]{iterations = {\ttfamily 500},  }\item[{float}]{omega = {\ttfamily 1.0f} }\end{DoxyParamCaption})}
+
+
+
+Solve the Poisson equation ∇²h = rhs using Gauss–\+Seidel iteration. 
+
+This function assumes Dirichlet boundary conditions (height = 0 at the edges). The algorithm updates interior points according to\+: \[ h(x, y) = (1
+- \omega) h(x, y)
+          + \omega \cdot 0.25 \big(
+              h(x+1, y) + h(x-1, y)
+            + h(x, y+1) + h(x, y-1)
+            - rhs(x, y)
+            \big)
+\]
+
+
+\begin{DoxyParams}{Parameters}
+{\em rhs} & Right-\/hand side (divergence of gradients). \\
+\hline
+{\em h} & Height field to update; initialized to 0 or an estimate. \\
+\hline
+{\em iterations} & Number of Gauss–\+Seidel iterations to run. \\
+\hline
+{\em omega} & Relaxation parameter (1 = standard Gauss–\+Seidel, 1 \texorpdfstring{$<$}{<} omega \texorpdfstring{$<$}{<} 2 = over-\/relaxation). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{namespacehmap_a3f8dc201377b61428eba8daa4a03a65f}\label{namespacehmap_a3f8dc201377b61428eba8daa4a03a65f} 
 \index{hmap@{hmap}!unwrap\_phase@{unwrap\_phase}}
 \index{unwrap\_phase@{unwrap\_phase}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{unwrap\_phase()}{unwrap\_phase()}}
