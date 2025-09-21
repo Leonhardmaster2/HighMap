@@ -71,6 +71,7 @@ var filters_8cpp =
     [ "steepen_convective", "filters_8cpp.html#ab46e625ea919327a4e2899dd53fff18d", null ],
     [ "terrace", "filters_8cpp.html#a5a852e7e8cb38a8c3231d4867995ae1c", null ],
     [ "terrace", "filters_8cpp.html#a878694830f25c7c79f4d9a0a723a5148", null ],
+    [ "transfer", "filters_8cpp.html#a6786fe2ccf9bd2ceb294927c88bd898d", null ],
     [ "wrinkle", "filters_8cpp.html#aa2d7277ba1c9b10d75e5ba1d38ac7d80", null ],
     [ "wrinkle", "filters_8cpp.html#ac95c3b559d18eb6ef17b3f740ce5e67f", null ]
 ];

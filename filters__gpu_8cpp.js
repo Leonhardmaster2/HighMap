@@ -33,5 +33,6 @@ var filters__gpu_8cpp =
     [ "smooth_fill_holes", "filters__gpu_8cpp.html#a4d9bec907c550123aa7db34f4dadc3e5", null ],
     [ "smooth_fill_holes", "filters__gpu_8cpp.html#a249288f5956cedfaffefd7b0b8fba17d", null ],
     [ "smooth_fill_smear_peaks", "filters__gpu_8cpp.html#a37f556d4d43005e2d618f0aa6c3527bb", null ],
-    [ "smooth_fill_smear_peaks", "filters__gpu_8cpp.html#acb80d6cda31177534d6e63c97675d46d", null ]
+    [ "smooth_fill_smear_peaks", "filters__gpu_8cpp.html#acb80d6cda31177534d6e63c97675d46d", null ],
+    [ "transfer", "filters__gpu_8cpp.html#acff6d6d559781cdeba565ed795bb81d8", null ]
 ];

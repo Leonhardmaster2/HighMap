@@ -805,6 +805,8 @@ void \mbox{\hyperlink{namespacehmap_a8a7a083e583afe812239d1fe6aa479cd}{steepen\+
 \begin{DoxyCompactList}\small\item\em Steepen array values by applying a nonlinear convection operator in a given direction. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_ab46e625ea919327a4e2899dd53fff18d}{steepen\+\_\+convective}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+mask, int iterations=1, int ir=0, float dt=0.\+1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a6786fe2ccf9bd2ceb294927c88bd898d}{transfer}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&source, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&target, int ir, float amplitude, bool target\+\_\+prefiltering=false)
+\begin{DoxyCompactList}\small\item\em Transfers spatial details from a source array onto a target array. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a5a852e7e8cb38a8c3231d4867995ae1c}{terrace}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, int nlevels, float \mbox{\hyperlink{namespacehmap_ab1e1b26c0c1eb51d0b256db94d6ca22e}{gain}}=0.\+9\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float noise\+\_\+ratio=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise=nullptr, float vmin=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float vmax=-\/1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Applies a terrace effect to the values in an array. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a878694830f25c7c79f4d9a0a723a5148}{terrace}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, int nlevels, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+mask, float \mbox{\hyperlink{namespacehmap_ab1e1b26c0c1eb51d0b256db94d6ca22e}{gain}}=0.\+9\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float noise\+\_\+ratio=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise=nullptr, float vmin=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float vmax=-\/1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
@@ -12104,7 +12106,71 @@ This function applies a nonlinear convection operator to the input array, simula
 
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. 
 
-\Hypertarget{namespacehmap_a5a852e7e8cb38a8c3231d4867995ae1c}\label{namespacehmap_a5a852e7e8cb38a8c3231d4867995ae1c} 
+\Hypertarget{namespacehmap_a6786fe2ccf9bd2ceb294927c88bd898d}\label{namespacehmap_a6786fe2ccf9bd2ceb294927c88bd898d} 
+\index{hmap@{hmap}!transfer@{transfer}}
+\index{transfer@{transfer}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{transfer()}{transfer()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::transfer (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{source,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{target,  }\item[{int}]{ir,  }\item[{float}]{amplitude,  }\item[{bool}]{target\+\_\+prefiltering = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+Transfers spatial details from a source array onto a target array. 
+
+This function applies a high-\/pass spatial filter to the {\ttfamily source} array (using a smoothing pulse of radius {\ttfamily ir}) to extract its high-\/frequency content. That content is then scaled by {\ttfamily amplitude} and blended with the {\ttfamily target} array. Optionally, the target can be prefiltered before blending.
+
+The result is a new array that combines the base structure of {\ttfamily target} with the high-\/frequency details from {\ttfamily source}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em source} & The input array providing high-\/frequency details. \\
+\hline
+{\em target} & The input array providing the base structure. \\
+\hline
+{\em ir} & Radius (in pixels or samples) for the smoothing filter used to separate low/high frequencies. \\
+\hline
+{\em amplitude} & Scaling factor applied to the high-\/frequency content extracted from {\ttfamily source}. \\
+\hline
+{\em target\+\_\+prefiltering} & If true, {\ttfamily target} is smoothed before blending to better integrate with the transferred details.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new \doxylink{classhmap_1_1Array}{Array} containing the target data enhanced by the source\textquotesingle{}s high-\/frequency information.
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_1_1gpu_adb8336ed4d83c15500872185dee45d50}{hmap::gpu::init\_opencl}}();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{structhmap_1_1Vec2}{hmap::Vec2<int>}}\ \ \ shape\ =\ \{256,\ 256\};}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{structhmap_1_1Vec2}{hmap::Vec2<float>}}\ res\ =\ \{4.f,\ 4.f\};}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed\ =\ 1;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ source\ =\ \mbox{\hyperlink{namespacehmap_a40b948c49a05c14f2d540dc1a6952130}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ shape,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ res,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed++);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ target\ =\ \mbox{\hyperlink{namespacehmap_a03c0be3a7198eebacefcb208b0cfee99}{hmap::noise}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ res,\ seed);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ take\ details\ of\ source\ and\ transfer\ them\ to\ target}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ ir\ =\ 16;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ amplitude\ =\ 2.f;}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ out1\ =\ \mbox{\hyperlink{namespacehmap_a6786fe2ccf9bd2ceb294927c88bd898d}{hmap::transfer}}(source,\ target,\ ir,\ amplitude);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ out2\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_acff6d6d559781cdeba565ed795bb81d8}{hmap::gpu::transfer}}(source,\ target,\ ir,\ amplitude);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_transfer.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{source,\ target,\ out1,\ out2\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a744ead0b170889e33126895264f1af2c}{hmap::Cmap::MAGMA}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}}  \Hypertarget{namespacehmap_a5a852e7e8cb38a8c3231d4867995ae1c}\label{namespacehmap_a5a852e7e8cb38a8c3231d4867995ae1c} 
 \index{hmap@{hmap}!terrace@{terrace}}
 \index{terrace@{terrace}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{terrace()}{terrace()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}

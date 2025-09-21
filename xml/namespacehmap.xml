@@ -20531,6 +20531,118 @@ This is an overloaded member function, provided for convenience. It differs from
         </inbodydescription>
         <location file="HighMap/src/filters/filters.cpp" line="1301" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1301" bodyend="1316" declfile="HighMap/include/highmap/filters.hpp" declline="2214" declcolumn="6"/>
       </memberdef>
+      <memberdef kind="function" id="namespacehmap_1a6786fe2ccf9bd2ceb294927c88bd898d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
+        <definition>Array hmap::transfer</definition>
+        <argsstring>(const Array &amp;source, const Array &amp;target, int ir, float amplitude, bool target_prefiltering=false)</argsstring>
+        <name>transfer</name>
+        <qualifiedname>hmap::transfer</qualifiedname>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>target</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>ir</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>amplitude</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>target_prefiltering</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Transfers spatial details from a source array onto a target array. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function applies a high-pass spatial filter to the <computeroutput>source</computeroutput> array (using a smoothing pulse of radius <computeroutput>ir</computeroutput>) to extract its high-frequency content. That content is then scaled by <computeroutput>amplitude</computeroutput> and blended with the <computeroutput>target</computeroutput> array. Optionally, the target can be prefiltered before blending.</para>
+<para>The result is a new array that combines the base structure of <computeroutput>target</computeroutput> with the high-frequency details from <computeroutput>source</computeroutput>.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The input array providing high-frequency details. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>target</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The input array providing the base structure. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ir</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Radius (in pixels or samples) for the smoothing filter used to separate low/high frequencies. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>amplitude</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Scaling factor applied to the high-frequency content extracted from <computeroutput>source</computeroutput>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>target_prefiltering</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If true, <computeroutput>target</computeroutput> is smoothed before blending to better integrate with the transferred details.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A new <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> containing the target data enhanced by the source&apos;s high-frequency information.</para>
+</simplesect>
+<bold>Example</bold> <programlisting filename="ex_transfer.cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1adb8336ed4d83c15500872185dee45d50" kindref="member">hmap::gpu::init_opencl</ref>();</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="structhmap_1_1Vec2" kindref="compound">hmap::Vec2&lt;int&gt;</ref><sp/><sp/><sp/>shape<sp/>=<sp/>{256,<sp/>256};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="structhmap_1_1Vec2" kindref="compound">hmap::Vec2&lt;float&gt;</ref><sp/>res<sp/>=<sp/>{4.f,<sp/>4.f};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed<sp/>=<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>source<sp/>=<sp/><ref refid="namespacehmap_1a40b948c49a05c14f2d540dc1a6952130" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>shape,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>res,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed++);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>target<sp/>=<sp/><ref refid="namespacehmap_1a03c0be3a7198eebacefcb208b0cfee99" kindref="member">hmap::noise</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,<sp/>shape,<sp/>res,<sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>take<sp/>details<sp/>of<sp/>source<sp/>and<sp/>transfer<sp/>them<sp/>to<sp/>target</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ir<sp/>=<sp/>16;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>amplitude<sp/>=<sp/>2.f;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>out1<sp/>=<sp/><ref refid="namespacehmap_1a6786fe2ccf9bd2ceb294927c88bd898d" kindref="member">hmap::transfer</ref>(source,<sp/>target,<sp/>ir,<sp/>amplitude);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>out2<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1acff6d6d559781cdeba565ed795bb81d8" kindref="member">hmap::gpu::transfer</ref>(source,<sp/>target,<sp/>ir,<sp/>amplitude);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_transfer.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{source,<sp/>target,<sp/>out1,<sp/>out2},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a744ead0b170889e33126895264f1af2c" kindref="member">hmap::Cmap::MAGMA</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<para><bold>Result</bold> <image type="html" name="ex_transfer.png"></image>
+ </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/filters/filters.cpp" line="1404" column="7" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1404" bodyend="1427" declfile="HighMap/include/highmap/filters.hpp" declline="2250" declcolumn="7"/>
+      </memberdef>
       <memberdef kind="function" id="namespacehmap_1a5a852e7e8cb38a8c3231d4867995ae1c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void hmap::terrace</definition>
@@ -20671,7 +20783,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="1318" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1318" bodyend="1382" declfile="HighMap/include/highmap/filters.hpp" declline="2254" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="1318" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1318" bodyend="1382" declfile="HighMap/include/highmap/filters.hpp" declline="2289" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a878694830f25c7c79f4d9a0a723a5148" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -20830,7 +20942,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="1384" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1384" bodyend="1402" declfile="HighMap/include/highmap/filters.hpp" declline="2303" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="1384" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1384" bodyend="1402" declfile="HighMap/include/highmap/filters.hpp" declline="2338" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a473007073da159b88b14711dbd6553fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -20929,7 +21041,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/tesselate.cpp" line="18" column="7" bodyfile="HighMap/src/filters/tesselate.cpp" bodystart="18" bodyend="63" declfile="HighMap/include/highmap/filters.hpp" declline="2337" declcolumn="7"/>
+        <location file="HighMap/src/filters/tesselate.cpp" line="18" column="7" bodyfile="HighMap/src/filters/tesselate.cpp" bodystart="18" bodyend="63" declfile="HighMap/include/highmap/filters.hpp" declline="2372" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ac95c3b559d18eb6ef17b3f740ce5e67f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -21089,7 +21201,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="1439" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1439" bodyend="1477" declfile="HighMap/include/highmap/filters.hpp" declline="2378" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="1464" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1464" bodyend="1502" declfile="HighMap/include/highmap/filters.hpp" declline="2413" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aa2d7277ba1c9b10d75e5ba1d38ac7d80" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -21152,7 +21264,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="1404" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1404" bodyend="1437" declfile="HighMap/include/highmap/filters.hpp" declline="2390" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="1429" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1429" bodyend="1462" declfile="HighMap/include/highmap/filters.hpp" declline="2425" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a7064ad1eef3ea7b6e19249fe3312e3b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::function&lt; float(float, float)&gt;</type>

@@ -657,7 +657,32 @@
 <codeline lineno="646"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="647"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="648"><highlight class="normal"></highlight></codeline>
-<codeline lineno="649"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>hmap::gpu</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="649"><highlight class="normal">Array<sp/><ref refid="namespacehmap_1a6786fe2ccf9bd2ceb294927c88bd898d" kindref="member">transfer</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array<sp/>&amp;source,</highlight></codeline>
+<codeline lineno="650"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array<sp/>&amp;target,</highlight></codeline>
+<codeline lineno="651"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ir,</highlight></codeline>
+<codeline lineno="652"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>amplitude,</highlight></codeline>
+<codeline lineno="653"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>target_prefiltering)</highlight></codeline>
+<codeline lineno="654"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="655"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>high-pass<sp/>spatial<sp/>filter</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="656"><highlight class="normal"><sp/><sp/>Array<sp/>w<sp/>=<sp/>-source;</highlight></codeline>
+<codeline lineno="657"><highlight class="normal"><sp/><sp/>gpu::smooth_cpulse(w,<sp/>ir);</highlight></codeline>
+<codeline lineno="658"><highlight class="normal"><sp/><sp/>w<sp/>+=<sp/>source;</highlight></codeline>
+<codeline lineno="659"><highlight class="normal"></highlight></codeline>
+<codeline lineno="660"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(target_prefiltering)</highlight></codeline>
+<codeline lineno="661"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="662"><highlight class="normal"><sp/><sp/><sp/><sp/>Array<sp/>target_f<sp/>=<sp/>target;</highlight></codeline>
+<codeline lineno="663"><highlight class="normal"><sp/><sp/><sp/><sp/>gpu::smooth_cpulse(target_f,<sp/>ir);</highlight></codeline>
+<codeline lineno="664"><highlight class="normal"><sp/><sp/><sp/><sp/>w<sp/>=<sp/>target_f<sp/>+<sp/>amplitude<sp/>*<sp/>w;</highlight></codeline>
+<codeline lineno="665"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="666"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="667"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="668"><highlight class="normal"><sp/><sp/><sp/><sp/>w<sp/>=<sp/>target<sp/>+<sp/>amplitude<sp/>*<sp/>w;</highlight></codeline>
+<codeline lineno="669"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="670"><highlight class="normal"></highlight></codeline>
+<codeline lineno="671"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>w;</highlight></codeline>
+<codeline lineno="672"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="673"><highlight class="normal"></highlight></codeline>
+<codeline lineno="674"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>hmap::gpu</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="HighMap/src/filters/filters_gpu.cpp"/>
   </compounddef>
