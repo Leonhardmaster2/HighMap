@@ -115,7 +115,6 @@ var filters_8hpp =
     [ "steepen", "filters_8hpp.html#a3dac1291a901a399f36a17476859353a", null ],
     [ "steepen_convective", "filters_8hpp.html#a8a7a083e583afe812239d1fe6aa479cd", null ],
     [ "steepen_convective", "filters_8hpp.html#ab46e625ea919327a4e2899dd53fff18d", null ],
-    [ "transfer", "filters_8hpp.html#a6786fe2ccf9bd2ceb294927c88bd898d", null ],
     [ "terrace", "filters_8hpp.html#a5a852e7e8cb38a8c3231d4867995ae1c", null ],
     [ "terrace", "filters_8hpp.html#a878694830f25c7c79f4d9a0a723a5148", null ],
     [ "tessellate", "filters_8hpp.html#a473007073da159b88b14711dbd6553fb", null ],
@@ -154,6 +153,5 @@ var filters_8hpp =
     [ "smooth_fill_holes", "filters_8hpp.html#a4d9bec907c550123aa7db34f4dadc3e5", null ],
     [ "smooth_fill_holes", "filters_8hpp.html#a249288f5956cedfaffefd7b0b8fba17d", null ],
     [ "smooth_fill_smear_peaks", "filters_8hpp.html#a37f556d4d43005e2d618f0aa6c3527bb", null ],
-    [ "smooth_fill_smear_peaks", "filters_8hpp.html#acb80d6cda31177534d6e63c97675d46d", null ],
-    [ "transfer", "filters_8hpp.html#acff6d6d559781cdeba565ed795bb81d8", null ]
+    [ "smooth_fill_smear_peaks", "filters_8hpp.html#acb80d6cda31177534d6e63c97675d46d", null ]
 ];

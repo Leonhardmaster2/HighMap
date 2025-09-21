@@ -7,6 +7,8 @@
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_af91a60a9fcbed7e38f53df57631a5298}{hmap\+::blend\+\_\+gradients}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a65a176508b404f80e5f5abd31456712e}{blend\+\_\+poisson\+\_\+bf}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array1, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array2, const int iterations=500, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+mask=nullptr)
 \begin{DoxyCompactList}\small\item\em Blends two arrays using Poisson blending with a brute-\/force solver. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_acff6d6d559781cdeba565ed795bb81d8}{transfer}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&source, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&target, int ir, float amplitude, bool target\+\_\+prefiltering=false)
+\begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a6786fe2ccf9bd2ceb294927c88bd898d}{hmap\+::transfer}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_ad73cfd73fcd2e2744e8eb912eaf6f3bf}{accumulation\+\_\+curvature}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int ir)
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a4bc3d501e53aebe8e15428798656a3e4}{hmap\+::accumulation\+\_\+curvature}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_afd24580b2b5fe7107bbff0ae2d3a1473}{curvature\+\_\+horizontal\+\_\+cross\+\_\+sectional}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int ir)
@@ -151,8 +153,6 @@ void \mbox{\hyperlink{namespacehmap_1_1gpu_a37f556d4d43005e2d618f0aa6c3527bb}{sm
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_afa6f07541841c674663141d84ec4d000}{hmap\+::smooth\+\_\+fill\+\_\+smear\+\_\+peaks}. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_1_1gpu_acb80d6cda31177534d6e63c97675d46d}{smooth\+\_\+fill\+\_\+smear\+\_\+peaks}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+mask)
 \begin{DoxyCompactList}\small\item\em This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_acff6d6d559781cdeba565ed795bb81d8}{transfer}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&source, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&target, int ir, float amplitude, bool target\+\_\+prefiltering=false)
-\begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a6786fe2ccf9bd2ceb294927c88bd898d}{hmap\+::transfer}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a1c5e49734e49973fe1b275b6988dba12}{gradient\+\_\+norm}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array)
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a5f58c4149344b401d82f0be3c3807156}{hmap\+::gradient\+\_\+norm}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_af794a4c54c3766ca86b7e4a06346ab91}{flow\+\_\+direction\+\_\+d8}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z)
@@ -333,7 +333,17 @@ The blended array resulting from the Poisson blending operation.
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}  \Hypertarget{namespacehmap_1_1gpu_ad73cfd73fcd2e2744e8eb912eaf6f3bf}\label{namespacehmap_1_1gpu_ad73cfd73fcd2e2744e8eb912eaf6f3bf} 
+{\bfseries{Result}}  \Hypertarget{namespacehmap_1_1gpu_acff6d6d559781cdeba565ed795bb81d8}\label{namespacehmap_1_1gpu_acff6d6d559781cdeba565ed795bb81d8} 
+\index{hmap::gpu@{hmap::gpu}!transfer@{transfer}}
+\index{transfer@{transfer}!hmap::gpu@{hmap::gpu}}
+\doxysubsubsection{\texorpdfstring{transfer()}{transfer()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::gpu\+::transfer (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{source,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{target,  }\item[{int}]{ir,  }\item[{float}]{amplitude,  }\item[{bool}]{target\+\_\+prefiltering = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+See \doxylink{namespacehmap_a6786fe2ccf9bd2ceb294927c88bd898d}{hmap\+::transfer}. 
+
+\Hypertarget{namespacehmap_1_1gpu_ad73cfd73fcd2e2744e8eb912eaf6f3bf}\label{namespacehmap_1_1gpu_ad73cfd73fcd2e2744e8eb912eaf6f3bf} 
 \index{hmap::gpu@{hmap::gpu}!accumulation\_curvature@{accumulation\_curvature}}
 \index{accumulation\_curvature@{accumulation\_curvature}!hmap::gpu@{hmap::gpu}}
 \doxysubsubsection{\texorpdfstring{accumulation\_curvature()}{accumulation\_curvature()}}
@@ -1396,16 +1406,6 @@ See \doxylink{namespacehmap_afa6f07541841c674663141d84ec4d000}{hmap\+::smooth\+\
 
 
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. 
-
-\Hypertarget{namespacehmap_1_1gpu_acff6d6d559781cdeba565ed795bb81d8}\label{namespacehmap_1_1gpu_acff6d6d559781cdeba565ed795bb81d8} 
-\index{hmap::gpu@{hmap::gpu}!transfer@{transfer}}
-\index{transfer@{transfer}!hmap::gpu@{hmap::gpu}}
-\doxysubsubsection{\texorpdfstring{transfer()}{transfer()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::gpu\+::transfer (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{source,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{target,  }\item[{int}]{ir,  }\item[{float}]{amplitude,  }\item[{bool}]{target\+\_\+prefiltering = {\ttfamily false} }\end{DoxyParamCaption})}
-
-
-
-See \doxylink{namespacehmap_a6786fe2ccf9bd2ceb294927c88bd898d}{hmap\+::transfer}. 
 
 \Hypertarget{namespacehmap_1_1gpu_a1c5e49734e49973fe1b275b6988dba12}\label{namespacehmap_1_1gpu_a1c5e49734e49973fe1b275b6988dba12} 
 \index{hmap::gpu@{hmap::gpu}!gradient\_norm@{gradient\_norm}}
