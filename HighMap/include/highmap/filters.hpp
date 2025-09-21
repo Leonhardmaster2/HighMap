@@ -2219,41 +2219,6 @@ void steepen_convective(Array       &array,
                         float        dt = 0.1f); ///< @overload
 
 /**
- * @brief Transfers spatial details from a source array onto a target array.
- *
- * This function applies a high-pass spatial filter to the @p source array
- * (using a smoothing pulse of radius @p ir) to extract its high-frequency
- * content. That content is then scaled by @p amplitude and blended with the
- * @p target array. Optionally, the target can be prefiltered before blending.
- *
- * The result is a new array that combines the base structure of @p target with
- * the high-frequency details from @p source.
- *
- * @param  source              The input array providing high-frequency details.
- * @param  target              The input array providing the base structure.
- * @param  ir                  Radius (in pixels or samples) for the smoothing
- *                             filter used to separate low/high frequencies.
- * @param  amplitude           Scaling factor applied to the high-frequency
- *                             content extracted from @p source.
- * @param  target_prefiltering If true, @p target is smoothed before blending to
- *                             better integrate with the transferred details.
- *
- * @return                     A new Array containing the target data enhanced
- *                             by the source's high-frequency information.
- *
- * **Example**
- * @include ex_transfer.cpp
- *
- * **Result**
- * @image html ex_transfer.png
- */
-Array transfer(const Array &source,
-               const Array &target,
-               int          ir,
-               float        amplitude,
-               bool         target_prefiltering = false);
-
-/**
  * @brief Applies a terrace effect to the values in an array.
  *
  * This function adjusts the values in the `array` by applying a terrace or
@@ -2563,12 +2528,5 @@ void smooth_fill_smear_peaks(Array &array, int ir);
 void smooth_fill_smear_peaks(Array       &array,
                              int          ir,
                              const Array *p_mask); ///< @overload
-
-/*! @brief See hmap::transfer */
-Array transfer(const Array &source,
-               const Array &target,
-               int          ir,
-               float        amplitude,
-               bool         target_prefiltering = false);
 
 } // namespace hmap::gpu

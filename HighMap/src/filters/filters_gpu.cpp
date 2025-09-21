@@ -646,29 +646,4 @@ void smooth_fill_smear_peaks(Array &array, int ir, const Array *p_mask)
   }
 }
 
-Array transfer(const Array &source,
-               const Array &target,
-               int          ir,
-               float        amplitude,
-               bool         target_prefiltering)
-{
-  // high-pass spatial filter
-  Array w = -source;
-  gpu::smooth_cpulse(w, ir);
-  w += source;
-
-  if (target_prefiltering)
-  {
-    Array target_f = target;
-    gpu::smooth_cpulse(target_f, ir);
-    w = target_f + amplitude * w;
-  }
-  else
-  {
-    w = target + amplitude * w;
-  }
-
-  return w;
-}
-
 } // namespace hmap::gpu

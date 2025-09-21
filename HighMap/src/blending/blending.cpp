@@ -115,4 +115,29 @@ Array mixer(const Array                      &t,
   return array_out;
 }
 
+Array transfer(const Array &source,
+               const Array &target,
+               int          ir,
+               float        amplitude,
+               bool         target_prefiltering)
+{
+  // high-pass spatial filter
+  Array w = -source;
+  smooth_cpulse(w, ir);
+  w += source;
+
+  if (target_prefiltering)
+  {
+    Array target_f = target;
+    smooth_cpulse(target_f, ir);
+    w = target_f + amplitude * w;
+  }
+  else
+  {
+    w = target + amplitude * w;
+  }
+
+  return w;
+}
+
 } // namespace hmap
