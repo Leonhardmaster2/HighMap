@@ -186,7 +186,9 @@ Array merge_water_depths(const Array &depth1,
   if (k_smooth == 0.f)
     water_depth = maximum(depth1, depth2);
   else
-    water_depth = maximum_smooth(depth1, depth2, k_smooth);
+    water_depth = maximum_smooth(depth1, depth2, k_smooth) - k_smooth / 6.f;
+
+  water_depth.infos();
 
   return water_depth;
 }
