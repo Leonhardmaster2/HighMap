@@ -559,8 +559,9 @@ void Heightmap::update_tile_parameters()
       if (it > 0) shift.x -= (float)delta_buffer_i / (float)this->shape.x;
       if (jt > 0) shift.y -= (float)delta_buffer_j / (float)this->shape.y;
 
-      Vec2<float> scale = Vec2((float)tile_shape.x / (float)this->shape.x,
-                               (float)tile_shape.y / (float)this->shape.y);
+      Vec2<float> scale = Vec2((float)tile_shape.x / (float)(this->shape.x - 1),
+                               (float)tile_shape.y /
+                                   (float)(this->shape.y - 1));
 
       Vec4<float> tile_bbox = Vec4(shift.x,
                                    shift.x + scale.x,
