@@ -569,40 +569,41 @@
 <codeline lineno="559"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(it<sp/>&gt;<sp/>0)<sp/>shift.x<sp/>-=<sp/>(float)delta_buffer_i<sp/>/<sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)this-&gt;shape.x;</highlight></codeline>
 <codeline lineno="560"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(jt<sp/>&gt;<sp/>0)<sp/>shift.y<sp/>-=<sp/>(float)delta_buffer_j<sp/>/<sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)this-&gt;shape.y;</highlight></codeline>
 <codeline lineno="561"><highlight class="normal"></highlight></codeline>
-<codeline lineno="562"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Vec2&lt;float&gt;<sp/>scale<sp/>=<sp/>Vec2((</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)tile_shape.x<sp/>/<sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)this-&gt;shape.x,</highlight></codeline>
-<codeline lineno="563"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)tile_shape.y<sp/>/<sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)this-&gt;shape.y);</highlight></codeline>
-<codeline lineno="564"><highlight class="normal"></highlight></codeline>
-<codeline lineno="565"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Vec4&lt;float&gt;<sp/>tile_bbox<sp/>=<sp/>Vec4(shift.x,</highlight></codeline>
-<codeline lineno="566"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>shift.x<sp/>+<sp/>scale.x,</highlight></codeline>
-<codeline lineno="567"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>shift.y,</highlight></codeline>
-<codeline lineno="568"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>shift.y<sp/>+<sp/>scale.y);</highlight></codeline>
-<codeline lineno="569"><highlight class="normal"></highlight></codeline>
-<codeline lineno="570"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>tiles[k]<sp/>=<sp/>Tile(tile_shape,<sp/>shift,<sp/>scale,<sp/>tile_bbox);</highlight></codeline>
-<codeline lineno="571"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="572"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="573"><highlight class="normal"></highlight></codeline>
-<codeline lineno="574"><highlight class="normal">std::vector&lt;float&gt;<sp/>Heightmap::unique_values()</highlight></codeline>
-<codeline lineno="575"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="576"><highlight class="normal"><sp/><sp/>std::vector&lt;std::vector&lt;float&gt;&gt;<sp/>tile_unique_values(this-&gt;get_ntiles());</highlight></codeline>
-<codeline lineno="577"><highlight class="normal"><sp/><sp/>std::vector&lt;std::future&lt;std::vector&lt;float&gt;&gt;&gt;<sp/>futures(this-&gt;get_ntiles());</highlight></codeline>
-<codeline lineno="578"><highlight class="normal"><sp/><sp/>std::vector&lt;float&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hmap_unique_values<sp/>=<sp/>{};</highlight></codeline>
-<codeline lineno="579"><highlight class="normal"></highlight></codeline>
-<codeline lineno="580"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">decltype</highlight><highlight class="normal">(futures)::size_type<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>this-&gt;get_ntiles();<sp/>++i)</highlight></codeline>
-<codeline lineno="581"><highlight class="normal"><sp/><sp/><sp/><sp/>futures[i]<sp/>=<sp/>std::async(&amp;Tile::unique_values,<sp/>tiles[i]);</highlight></codeline>
-<codeline lineno="582"><highlight class="normal"></highlight></codeline>
-<codeline lineno="583"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">decltype</highlight><highlight class="normal">(futures)::size_type<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>this-&gt;get_ntiles();<sp/>++i)</highlight></codeline>
-<codeline lineno="584"><highlight class="normal"><sp/><sp/><sp/><sp/>tile_unique_values[i]<sp/>=<sp/>futures[i].get();</highlight></codeline>
-<codeline lineno="585"><highlight class="normal"></highlight></codeline>
-<codeline lineno="586"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>fill<sp/>heightmap<sp/>vector<sp/>values</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="587"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>this-&gt;get_ntiles();<sp/>++i)</highlight></codeline>
-<codeline lineno="588"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;v<sp/>:<sp/>tile_unique_values[i])</highlight></codeline>
-<codeline lineno="589"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>hmap_unique_values.push_back(v);</highlight></codeline>
-<codeline lineno="590"><highlight class="normal"></highlight></codeline>
-<codeline lineno="591"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac95d63662a6878f27011c0b4c7c70078" kindref="member">vector_unique_values</ref>(hmap_unique_values);</highlight></codeline>
-<codeline lineno="592"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>hmap_unique_values;</highlight></codeline>
-<codeline lineno="593"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="594"><highlight class="normal"></highlight></codeline>
-<codeline lineno="595"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>hmap</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="562"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Vec2&lt;float&gt;<sp/>scale<sp/>=<sp/>Vec2((</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)tile_shape.x<sp/>/<sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)(this-&gt;shape.x<sp/>-<sp/>1),</highlight></codeline>
+<codeline lineno="563"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)tile_shape.y<sp/>/</highlight></codeline>
+<codeline lineno="564"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)(this-&gt;shape.y<sp/>-<sp/>1));</highlight></codeline>
+<codeline lineno="565"><highlight class="normal"></highlight></codeline>
+<codeline lineno="566"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Vec4&lt;float&gt;<sp/>tile_bbox<sp/>=<sp/>Vec4(shift.x,</highlight></codeline>
+<codeline lineno="567"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>shift.x<sp/>+<sp/>scale.x,</highlight></codeline>
+<codeline lineno="568"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>shift.y,</highlight></codeline>
+<codeline lineno="569"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>shift.y<sp/>+<sp/>scale.y);</highlight></codeline>
+<codeline lineno="570"><highlight class="normal"></highlight></codeline>
+<codeline lineno="571"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>tiles[k]<sp/>=<sp/>Tile(tile_shape,<sp/>shift,<sp/>scale,<sp/>tile_bbox);</highlight></codeline>
+<codeline lineno="572"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="573"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="574"><highlight class="normal"></highlight></codeline>
+<codeline lineno="575"><highlight class="normal">std::vector&lt;float&gt;<sp/>Heightmap::unique_values()</highlight></codeline>
+<codeline lineno="576"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="577"><highlight class="normal"><sp/><sp/>std::vector&lt;std::vector&lt;float&gt;&gt;<sp/>tile_unique_values(this-&gt;get_ntiles());</highlight></codeline>
+<codeline lineno="578"><highlight class="normal"><sp/><sp/>std::vector&lt;std::future&lt;std::vector&lt;float&gt;&gt;&gt;<sp/>futures(this-&gt;get_ntiles());</highlight></codeline>
+<codeline lineno="579"><highlight class="normal"><sp/><sp/>std::vector&lt;float&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hmap_unique_values<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="580"><highlight class="normal"></highlight></codeline>
+<codeline lineno="581"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">decltype</highlight><highlight class="normal">(futures)::size_type<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>this-&gt;get_ntiles();<sp/>++i)</highlight></codeline>
+<codeline lineno="582"><highlight class="normal"><sp/><sp/><sp/><sp/>futures[i]<sp/>=<sp/>std::async(&amp;Tile::unique_values,<sp/>tiles[i]);</highlight></codeline>
+<codeline lineno="583"><highlight class="normal"></highlight></codeline>
+<codeline lineno="584"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">decltype</highlight><highlight class="normal">(futures)::size_type<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>this-&gt;get_ntiles();<sp/>++i)</highlight></codeline>
+<codeline lineno="585"><highlight class="normal"><sp/><sp/><sp/><sp/>tile_unique_values[i]<sp/>=<sp/>futures[i].get();</highlight></codeline>
+<codeline lineno="586"><highlight class="normal"></highlight></codeline>
+<codeline lineno="587"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>fill<sp/>heightmap<sp/>vector<sp/>values</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="588"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>this-&gt;get_ntiles();<sp/>++i)</highlight></codeline>
+<codeline lineno="589"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;v<sp/>:<sp/>tile_unique_values[i])</highlight></codeline>
+<codeline lineno="590"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>hmap_unique_values.push_back(v);</highlight></codeline>
+<codeline lineno="591"><highlight class="normal"></highlight></codeline>
+<codeline lineno="592"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac95d63662a6878f27011c0b4c7c70078" kindref="member">vector_unique_values</ref>(hmap_unique_values);</highlight></codeline>
+<codeline lineno="593"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>hmap_unique_values;</highlight></codeline>
+<codeline lineno="594"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="595"><highlight class="normal"></highlight></codeline>
+<codeline lineno="596"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>hmap</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="HighMap/src/heightmap/heightmap_base.cpp"/>
   </compounddef>
