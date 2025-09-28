@@ -17,13 +17,9 @@ float base_voronoi_f1(const float2 p,
   for (int dx = -1; dx <= 1; dx++)
     for (int dy = -1; dy <= 1; dy++)
     {
-      float2 neighbor = i + (float2)(dx, dy);
-      float2 df = (float2)(0.1f, 0.1f);
-      float2 feature_point = neighbor +
-                             jitter * (float2)(hash12f(neighbor, fseed),
-                                               hash12f(neighbor + df, fseed));
-
-      float2 diff = p - feature_point;
+      float2 dr = (float2)(dx, dy);
+      float2 feature_point = dr + jitter * hash22f(i + dr, fseed);
+      float2 diff = f - feature_point;
       float  dist = dot(diff, diff);
 
       min_dist = smin(min_dist, dist, k_smoothing);
@@ -75,13 +71,9 @@ float base_voronoi_f2(const float2 p,
   for (int dx = -1; dx <= 1; dx++)
     for (int dy = -1; dy <= 1; dy++)
     {
-      float2 neighbor = i + (float2)(dx, dy);
-      float2 df = (float2)(0.1f, 0.1f);
-      float2 feature_point = neighbor +
-                             jitter * (float2)(hash12f(neighbor, fseed),
-                                               hash12f(neighbor + df, fseed));
-
-      float2 diff = p - feature_point;
+      float2 dr = (float2)(dx, dy);
+      float2 feature_point = dr + jitter * hash22f(i + dr, fseed);
+      float2 diff = f - feature_point;
       float  dist = dot(diff, diff);
 
       float new_min1 = smin(min1, dist, k_smoothing);
@@ -108,13 +100,9 @@ float base_voronoi_f1tf2(const float2 p,
   for (int dx = -1; dx <= 1; dx++)
     for (int dy = -1; dy <= 1; dy++)
     {
-      float2 neighbor = i + (float2)(dx, dy);
-      float2 df = (float2)(0.1f, 0.1f);
-      float2 feature_point = neighbor +
-                             jitter * (float2)(hash12f(neighbor, fseed),
-                                               hash12f(neighbor + df, fseed));
-
-      float2 diff = p - feature_point;
+      float2 dr = (float2)(dx, dy);
+      float2 feature_point = dr + jitter * hash22f(i + dr, fseed);
+      float2 diff = f - feature_point;
       float  dist = dot(diff, diff);
 
       float new_min1 = smin(min1, dist, k_smoothing);
@@ -141,13 +129,9 @@ float base_voronoi_f1df2(const float2 p,
   for (int dx = -1; dx <= 1; dx++)
     for (int dy = -1; dy <= 1; dy++)
     {
-      float2 neighbor = i + (float2)(dx, dy);
-      float2 df = (float2)(0.1f, 0.1f);
-      float2 feature_point = neighbor +
-                             jitter * (float2)(hash12f(neighbor, fseed),
-                                               hash12f(neighbor + df, fseed));
-
-      float2 diff = p - feature_point;
+      float2 dr = (float2)(dx, dy);
+      float2 feature_point = dr + jitter * hash22f(i + dr, fseed);
+      float2 diff = f - feature_point;
       float  dist = dot(diff, diff);
 
       float new_min1 = smin(min1, dist, k_smoothing);
@@ -174,13 +158,9 @@ float base_voronoi_f2mf1(const float2 p,
   for (int dx = -1; dx <= 1; dx++)
     for (int dy = -1; dy <= 1; dy++)
     {
-      float2 neighbor = i + (float2)(dx, dy);
-      float2 df = (float2)(0.1f, 0.1f);
-      float2 feature_point = neighbor +
-                             jitter * (float2)(hash12f(neighbor, fseed),
-                                               hash12f(neighbor + df, fseed));
-
-      float2 diff = p - feature_point;
+      float2 dr = (float2)(dx, dy);
+      float2 feature_point = dr + jitter * hash22f(i + dr, fseed);
+      float2 diff = f - feature_point;
       float  dist = dot(diff, diff);
 
       float new_min1 = smin(min1, dist, k_smoothing);
@@ -211,10 +191,8 @@ float base_voronoi_edge_distance(const float2 x,
     for (int i = -1; i <= 1; i++)
     {
       float2 b = (float2)(i, j);
-      float2 r = b - f +
-                 jitter * (float2)(hash12f(p + b, fseed),
-                                   hash12f(p + b + df, fseed));
-      float d = dot(r, r);
+      float2 r = b - f + jitter * hash22f(p + b, fseed);
+      float  d = dot(r, r);
 
       if (d < res)
       {
@@ -229,9 +207,7 @@ float base_voronoi_edge_distance(const float2 x,
     for (int i = -2; i <= 2; i++)
     {
       float2 b = mb + (float2)(i, j);
-      float2 r = b - f +
-                 jitter * (float2)(hash12f(p + b, fseed),
-                                   hash12f(p + b + df, fseed));
+      float2 r = b - f + jitter * hash22f(p + b, fseed);
       if (dot(mr - r, mr - r) > 1e-5f)
       {
         float d = dot(0.5f * (mr + r), normalize(r - mr));
@@ -267,15 +243,11 @@ float base_voronoi_constant(const float2 p,
   for (int dx = -1; dx <= 1; dx++)
     for (int dy = -1; dy <= 1; dy++)
     {
-      float2 neighbor = i + (float2)(dx, dy);
-      float2 df = (float2)(0.1f, 0.1f);
-      float  rx = hash12f(neighbor, fseed);
-      float2 feature_point = neighbor +
-                             jitter *
-                                 (float2)(rx, hash12f(neighbor + df, fseed));
-
-      float2 diff = p - feature_point;
+      float2 dr = (float2)(dx, dy);
+      float2 feature_point = dr + jitter * hash22f(i + dr, fseed);
+      float2 diff = f - feature_point;
       float  dist = dot(diff, diff);
+      float  rx = hash12f(i + dr, fseed);
 
       // https://www.shadertoy.com/view/ldB3zc
       float h = smoothstep(-1.f, 1.f, (min_dist - dist) / k_smoothing);
@@ -306,15 +278,11 @@ float base_voronoi_constant_f2mf1(const float2 p,
   for (int dx = -1; dx <= 1; dx++)
     for (int dy = -1; dy <= 1; dy++)
     {
-      float2 neighbor = i + (float2)(dx, dy);
-      float2 df = (float2)(0.1f, 0.1f);
-      float  rx = hash12f(neighbor, fseed);
-      float2 feature_point = neighbor +
-                             jitter *
-                                 (float2)(rx, hash12f(neighbor + df, fseed));
-
-      float2 diff = p - feature_point;
+      float2 dr = (float2)(dx, dy);
+      float2 feature_point = dr + jitter * hash22f(i + dr, fseed);
+      float2 diff = f - feature_point;
       float  dist = dot(diff, diff);
+      float  rx = hash12f(i + dr, fseed);
 
       float new_min1 = smin(min1, dist, k_smoothing);
       float new_min2 = smin(min2, smax(min1, dist, k_smoothing), k_smoothing);
