@@ -11,18 +11,21 @@
 namespace hmap
 {
 
-void interpolate_array_bicubic(const Array &source, Array &target)
+void interpolate_array_bicubic(const Array &source,
+                               Array       &target,
+                               bool         endpoint)
 {
   Vec4<float> bbox_source(0.f, 1.f, 0.f, 1.f);
   Vec4<float> bbox_target(0.f, 1.f, 0.f, 1.f);
 
-  interpolate_array_bicubic(source, target, bbox_source, bbox_target);
+  interpolate_array_bicubic(source, target, bbox_source, bbox_target, endpoint);
 }
 
 void interpolate_array_bicubic(const Array       &source,
                                Array             &target,
                                const Vec4<float> &bbox_source,
-                               const Vec4<float> &bbox_target)
+                               const Vec4<float> &bbox_target,
+                               bool               endpoint)
 {
   float dx_s = 1.f / static_cast<float>(source.shape.x);
   float dy_s = 1.f / static_cast<float>(source.shape.y);
@@ -31,8 +34,6 @@ void interpolate_array_bicubic(const Array       &source,
   float dy_t = 1.f / static_cast<float>(target.shape.y);
 
   // grid points (pixel-centered)
-  bool endpoint = false;
-
   std::vector<float> x = linspace(bbox_target.a + 0.5f * dx_t,
                                   bbox_target.b,
                                   target.shape.x,
@@ -89,18 +90,25 @@ void interpolate_array_bicubic(const Array       &source,
     }
 }
 
-void interpolate_array_bilinear(const Array &source, Array &target)
+void interpolate_array_bilinear(const Array &source,
+                                Array       &target,
+                                bool         endpoint)
 {
   Vec4<float> bbox_source(0.f, 1.f, 0.f, 1.f);
   Vec4<float> bbox_target(0.f, 1.f, 0.f, 1.f);
 
-  interpolate_array_bilinear(source, target, bbox_source, bbox_target);
+  interpolate_array_bilinear(source,
+                             target,
+                             bbox_source,
+                             bbox_target,
+                             endpoint);
 }
 
 void interpolate_array_bilinear(const Array       &source,
                                 Array             &target,
                                 const Vec4<float> &bbox_source,
-                                const Vec4<float> &bbox_target)
+                                const Vec4<float> &bbox_target,
+                                bool               endpoint)
 {
   float dx_s = 1.f / static_cast<float>(source.shape.x);
   float dy_s = 1.f / static_cast<float>(source.shape.y);
@@ -109,8 +117,6 @@ void interpolate_array_bilinear(const Array       &source,
   float dy_t = 1.f / static_cast<float>(target.shape.y);
 
   // grid points (pixel-centered)
-  bool endpoint = false;
-
   std::vector<float> x = linspace(bbox_target.a + 0.5f * dx_t,
                                   bbox_target.b,
                                   target.shape.x,
@@ -157,21 +163,22 @@ void interpolate_array_bilinear(const Array       &source,
     }
 }
 
-void interpolate_array_nearest(const Array &source, Array &target)
+void interpolate_array_nearest(const Array &source,
+                               Array       &target,
+                               bool         endpoint)
 {
   Vec4<float> bbox_source(0.f, 1.f, 0.f, 1.f);
   Vec4<float> bbox_target(0.f, 1.f, 0.f, 1.f);
 
-  interpolate_array_nearest(source, target, bbox_source, bbox_target);
+  interpolate_array_nearest(source, target, bbox_source, bbox_target, endpoint);
 }
 
 void interpolate_array_nearest(const Array       &source,
                                Array             &target,
                                const Vec4<float> &bbox_source,
-                               const Vec4<float> &bbox_target)
+                               const Vec4<float> &bbox_target,
+                               bool               endpoint)
 {
-  bool endpoint = false;
-
   std::vector<float> x = linspace(bbox_target.a,
                                   bbox_target.b,
                                   target.shape.x,
@@ -185,12 +192,12 @@ void interpolate_array_nearest(const Array       &source,
   for (int j = 0; j < target.shape.y; ++j)
     for (int i = 0; i < target.shape.x; ++i)
     {
-      int is = static_cast<int>((x[i] - bbox_source.a) /
-                                (bbox_source.b - bbox_source.a) *
-                                source.shape.x);
-      int js = static_cast<int>((y[j] - bbox_source.c) /
-                                (bbox_source.d - bbox_source.c) *
-                                source.shape.y);
+      int is = static_cast<int>(
+          std::round((x[i] - bbox_source.a) / (bbox_source.b - bbox_source.a) *
+                     source.shape.x));
+      int js = static_cast<int>(
+          std::round((y[j] - bbox_source.c) / (bbox_source.d - bbox_source.c) *
+                     source.shape.y));
 
       is = std::clamp(is, 0, source.shape.x - 1);
       js = std::clamp(js, 0, source.shape.y - 1);

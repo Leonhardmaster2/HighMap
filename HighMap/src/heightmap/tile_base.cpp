@@ -50,7 +50,7 @@ void Tile::from_array_interp_bilinear(Array &array)
                           this->shift.y,
                           this->shift.y + this->scale.y);
 
-  interpolate_array_bilinear(array, *this, bbox_source, bbox_target);
+  interpolate_array_bilinear(array, *this, bbox_source, bbox_target, true);
 }
 
 void Tile::from_array_interp_nearest(Array &array)

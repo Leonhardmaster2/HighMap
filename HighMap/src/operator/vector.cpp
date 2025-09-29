@@ -6,6 +6,7 @@
 #include <list>
 #include <numeric>
 #include <random>
+#include <stdexcept>
 #include <vector>
 
 #include "macrologger.h"
@@ -43,22 +44,27 @@ void laplace1d(std::vector<float> &v, float sigma = 0.5f, int iterations = 1)
   }
 }
 
-std::vector<float> linspace(float start, float stop, int num, bool endpoint)
+std::vector<float> linspace(float start,
+                            float stop,
+                            int   num,
+                            bool  endpoint = true)
 {
+  if (num < 0) throw std::invalid_argument("num must be non-negative");
+
   std::vector<float> v(num);
-  float              dv;
+  if (num == 0) return v;
 
-  if (endpoint)
-    dv = (stop - start) / (float)(num - 1);
-  else
-    dv = (stop - start) / (float)num;
+  if (num == 1)
+  {
+    v[0] = start;
+    return v;
+  }
 
-  if (stop != start)
-    for (int i = 0; i < num; i++)
-      v[i] = start + (float)i * dv;
-  else
-    for (auto &r : v)
-      r = start;
+  float dv = endpoint ? (stop - start) / static_cast<float>(num - 1)
+                      : (stop - start) / static_cast<float>(num);
+
+  for (int i = 0; i < num; ++i)
+    v[i] = start + i * dv;
 
   return v;
 }
@@ -70,22 +76,31 @@ std::vector<float> linspace_jitted(float start,
                                    int   seed,
                                    bool  endpoint)
 {
+  if (num < 0) throw std::invalid_argument("num must be non-negative");
+
+  std::vector<float> v(num);
+  if (num == 0) return v;
+
+  if (num == 1)
+  {
+    v[0] = start;
+    return v;
+  }
+
+  float dv = endpoint ? (stop - start) / static_cast<float>(num - 1)
+                      : (stop - start) / static_cast<float>(num);
+
   std::mt19937                          gen(seed);
   std::uniform_real_distribution<float> dis(-0.5f, 0.5f);
-  std::vector<float>                    v(num);
-  float                                 dv;
 
-  if (endpoint)
-    dv = (stop - start) / (float)(num - 1);
-  else
-    dv = (stop - start) / (float)num;
-
-  for (int i = 0; i < num; i++)
+  for (int i = 0; i < num; ++i)
   {
-    v[i] = start + (float)i * dv;
+    v[i] = start + i * dv;
 
-    if (i > 0) v[i] += ratio * dis(gen) * dv;
+    // jitter all but the first and last point (to keep range stable)
+    if (i > 0 && (!endpoint || i < num - 1)) v[i] += ratio * dis(gen) * dv;
   }
+
   return v;
 }
 
