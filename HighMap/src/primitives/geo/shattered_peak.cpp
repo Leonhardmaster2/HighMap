@@ -85,8 +85,6 @@ Array shattered_peak(Vec2<int>    shape,
                               &dy,
                               bbox);
 
-  bulk_amp = 0.5f;
-
   voronoi *= pulse;
   voronoi += bulk_amp * pulse;
   voronoi *= 1.f / (0.5f + bulk_amp); // ~ in [0, 1]
