@@ -2025,6 +2025,66 @@ Array polygon_field_fbm(Vec2<int>         shape,
                         Vec4<float>       bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
+ * @brief Generates a synthetic "shattered peak" terrain heightmap.
+ *
+ * This function procedurally creates a 2D elevation field resembling a sharp,
+ * fractured mountain peak. It combines a Gaussian pulse envelope, fractal noise
+ * displacements, and Voronoi-based primitives with edge-distance shaping. The
+ * result is a rugged peak structure with broken ridges and steep slopes.
+ *
+ * @param  shape          Output array shape (resolution in x and y).
+ * @param  seed           Random seed used for noise and Voronoi generation.
+ * @param  scale          Global scaling factor controlling the overall peak
+ *                        size.
+ * @param  peak_kw        Base frequency of the peak features (scaled internally
+ *                        by @p scale).
+ * @param  rugosity       Controls roughness of the fractal noise (higher = more
+ *                        irregular).
+ * @param  angle          Orientation angle (degrees) for directional
+ *                        displacements.
+ * @param  gamma          Gamma correction factor applied to the final
+ *                        heightmap.
+ * @param  add_deposition If true, applies a smoothing fill step simulating
+ *                        sediment deposition.
+ * @param  bulk_amp       Amplitude of bulk uplift applied to the peak
+ *                       (internally overridden to 0.5f for normalization).
+ * @param  base_noise_amp Amplitude of the base displacement noise.
+ * @param  k_smoothing    Voronoi smoothing parameter (controls ridge
+ *                        sharpness).
+ * @param  center         Center of the peak in normalized coordinates.
+ * @param  p_noise_x      Optional pointer to external displacement noise field
+ *                        (X-axis).
+ * @param  p_noise_y      Optional pointer to external displacement noise field
+ *                        (Y-axis).
+ * @param  bbox           Bounding box of the generation domain in normalized
+ *                        coordinates.
+ *
+ * @return                Array containing the generated shattered peak
+ *                        heightmap.
+ *
+ * **Example**
+ * @include ex_shattered_peak.cpp
+ *
+ * **Result**
+ * @image html ex_shattered_peak.png
+ */
+Array shattered_peak(Vec2<int>    shape,
+                     uint         seed,
+                     float        scale = 1.f,
+                     float        peak_kw = 4.f,
+                     float        rugosity = 0.f,
+                     float        angle = 30.f,
+                     float        gamma = 1.f,
+                     bool         add_deposition = true,
+                     float        bulk_amp = 0.3f,
+                     float        base_noise_amp = 0.1f,
+                     float        k_smoothing = 0.f,
+                     Vec2<float>  center = {0.5f, 0.5f},
+                     const Array *p_noise_x = nullptr,
+                     const Array *p_noise_y = nullptr,
+                     Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
  * @brief Generates a Voronoi-based pattern where cells are defined by proximity
  * to random lines.
  *
