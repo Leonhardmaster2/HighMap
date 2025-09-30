@@ -93,7 +93,7 @@ var searchData=
   ['sharp_5fvalleys_90',['SHARP_VALLEYS',['../namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6aeb684e263530f3a9ebfd94816e8bf60c',1,'hmap']]],
   ['sharpen_91',['sharpen',['../namespacehmap.html#a738bcdb6b3493bf7f2cbfcfc03a00159',1,'hmap::sharpen(Array &amp;array, float ratio=1.f)'],['../namespacehmap.html#aae4699340c68bc39efae13b0e81eea3d',1,'hmap::sharpen(Array &amp;array, const Array *p_mask, float ratio=1.f)']]],
   ['sharpen_5fcone_92',['sharpen_cone',['../namespacehmap.html#a6190b6dde2fd6a6bf9e98eecec10e5f1',1,'hmap::sharpen_cone(Array &amp;array, int ir, float intensity=0.5f)'],['../namespacehmap.html#a1857226aa04d2a7d7e3bfbb7af9a12c9',1,'hmap::sharpen_cone(Array &amp;array, const Array *p_mask, int ir, float scale=0.5f)']]],
-  ['shattered_5fpeak_93',['shattered_peak',['../namespacehmap_1_1gpu.html#a608dd7681d4d7a6986c90eb41d840cab',1,'hmap::gpu']]],
+  ['shattered_5fpeak_93',['shattered_peak',['../namespacehmap_1_1gpu.html#a04d679fc6d72fd9533fbf27ad28d3898',1,'hmap::gpu']]],
   ['shattered_5fpeak_2ecpp_94',['shattered_peak.cpp',['../shattered__peak_8cpp.html',1,'']]],
   ['shift_95',['shift',['../classhmap_1_1Tile.html#a48abac45866586d08562290cd1cbf771',1,'hmap::Tile']]],
   ['shortest_5fpath_2ehpp_96',['shortest_path.hpp',['../shortest__path_8hpp.html',1,'']]],
