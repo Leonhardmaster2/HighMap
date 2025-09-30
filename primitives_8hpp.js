@@ -66,6 +66,7 @@ var primitives_8hpp =
     [ "noise_fbm", "primitives_8hpp.html#a322260e971f4dec19ec8bc270e7cc461", null ],
     [ "polygon_field", "primitives_8hpp.html#a0366d22ed8b0e1b74d5895e00c0e688b", null ],
     [ "polygon_field_fbm", "primitives_8hpp.html#a4927a1382b383a5ceb9071f51bd5abf9", null ],
+    [ "shattered_peak", "primitives_8hpp.html#a608dd7681d4d7a6986c90eb41d840cab", null ],
     [ "vorolines", "primitives_8hpp.html#a85000763147ffd507d483ba9be27f38b", null ],
     [ "vorolines_fbm", "primitives_8hpp.html#ac2ad88df8eb3c863235f96f1678634e4", null ],
     [ "voronoi", "primitives_8hpp.html#a0c9c2a528f344ede2aa320fdf2583790", null ],
