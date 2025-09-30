@@ -13,6 +13,7 @@ namespace hmap::gpu
 Array badlands(Vec2<int>    shape,
                Vec2<float>  kw,
                uint         seed,
+               int          octaves,
                float        rugosity,
                float        angle,
                float        k_smoothing,
@@ -21,7 +22,6 @@ Array badlands(Vec2<int>    shape,
                const Array *p_noise_y,
                Vec4<float>  bbox)
 {
-  const int   octaves = 8;
   const float persistence = 0.5f;
   const float lacunarity = 2.3f;
   const float alpha = angle / 180.f * M_PI;

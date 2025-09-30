@@ -13,6 +13,7 @@ namespace hmap::gpu
 Array mountain_inselberg(Vec2<int>    shape,
                          uint         seed,
                          float        scale,
+                         int          octaves,
                          float        rugosity,
                          float        angle,
                          float        gamma,
@@ -30,7 +31,6 @@ Array mountain_inselberg(Vec2<int>    shape,
   const float       half_width = 0.2f * scale;
   const Vec2<float> kw = Vec2<float>(2.6f / scale, 2.6f / scale);
 
-  const int   octaves = 8;
   const float persistence = 0.5f;
   const float lacunarity = 2.f;
   const float alpha = angle / 180.f * M_PI;
