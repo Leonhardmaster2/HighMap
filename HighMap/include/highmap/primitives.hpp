@@ -1401,6 +1401,50 @@ namespace hmap::gpu
 {
 
 /**
+ * @brief Generates a synthetic "badlands" terrain heightmap.
+ *
+ * This function procedurally creates a 2D elevation field resembling badlands
+ * (highly eroded terrain with sharp ridges and valleys). It combines fractal
+ * noise (FBM) with a Voronoi-based primitive, displaced along a specified
+ * orientation.
+ *
+ * @param  shape          Output array shape (resolution in x and y).
+ * @param  kw             Frequency vector controlling the scale of the
+ *                        features.
+ * @param  seed           Random seed used for noise and Voronoi generation.
+ * @param  rugosity       Controls roughness of the fractal noise (higher = more
+ *                        irregular).
+ * @param  angle          Orientation angle (degrees) of terrain displacements.
+ * @param  k_smoothing    Voronoi smoothing parameter (controls ridge
+ *                        sharpness).
+ * @param  base_noise_amp Amplitude of the base displacement noise.
+ * @param  p_noise_x      Optional pointer to external displacement noise field
+ *                        (X-axis).
+ * @param  p_noise_y      Optional pointer to external displacement noise field
+ *                        (Y-axis).
+ * @param  bbox           Bounding box of the generation domain in normalized
+ *                        coordinates.
+ *
+ * @return                Array containing the generated badlands heightmap.
+ *
+ * **Example**
+ * @include ex_badlands.cpp
+ *
+ * **Result**
+ * @image html ex_badlands.png
+ */
+Array badlands(Vec2<int>    shape,
+               Vec2<float>  kw,
+               uint         seed,
+               float        rugosity = 0.2f,
+               float        angle = 30.f,
+               float        k_smoothing = 0.1f,
+               float        base_noise_amp = 0.2f,
+               const Array *p_noise_x = nullptr,
+               const Array *p_noise_y = nullptr,
+               Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
  * @brief Generates a synthetic procedural terrain resembling basaltic
  * landforms.
  *
