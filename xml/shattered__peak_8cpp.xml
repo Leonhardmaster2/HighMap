@@ -96,25 +96,23 @@
 <codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;dy,</highlight></codeline>
 <codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bbox);</highlight></codeline>
 <codeline lineno="87"><highlight class="normal"></highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><sp/><sp/>bulk_amp<sp/>=<sp/>0.5f;</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"></highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1a0c9c2a528f344ede2aa320fdf2583790" kindref="member">voronoi</ref><sp/>*=<sp/>pulse;</highlight></codeline>
-<codeline lineno="91"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1a0c9c2a528f344ede2aa320fdf2583790" kindref="member">voronoi</ref><sp/>+=<sp/>bulk_amp<sp/>*<sp/>pulse;</highlight></codeline>
-<codeline lineno="92"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1a0c9c2a528f344ede2aa320fdf2583790" kindref="member">voronoi</ref><sp/>*=<sp/>1.f<sp/>/<sp/>(0.5f<sp/>+<sp/>bulk_amp);<sp/></highlight><highlight class="comment">//<sp/>~<sp/>in<sp/>[0,<sp/>1]</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1a0c9c2a528f344ede2aa320fdf2583790" kindref="member">voronoi</ref><sp/>*=<sp/>pulse;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1a0c9c2a528f344ede2aa320fdf2583790" kindref="member">voronoi</ref><sp/>+=<sp/>bulk_amp<sp/>*<sp/>pulse;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1a0c9c2a528f344ede2aa320fdf2583790" kindref="member">voronoi</ref><sp/>*=<sp/>1.f<sp/>/<sp/>(0.5f<sp/>+<sp/>bulk_amp);<sp/></highlight><highlight class="comment">//<sp/>~<sp/>in<sp/>[0,<sp/>1]</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1aba3674787d520af15267ee7d1e46d220" kindref="member">gamma_correction</ref>(<ref refid="namespacehmap_1_1gpu_1a0c9c2a528f344ede2aa320fdf2583790" kindref="member">voronoi</ref>,<sp/>gamma);</highlight></codeline>
 <codeline lineno="93"><highlight class="normal"></highlight></codeline>
-<codeline lineno="94"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1aba3674787d520af15267ee7d1e46d220" kindref="member">gamma_correction</ref>(<ref refid="namespacehmap_1_1gpu_1a0c9c2a528f344ede2aa320fdf2583790" kindref="member">voronoi</ref>,<sp/>gamma);</highlight></codeline>
-<codeline lineno="95"><highlight class="normal"></highlight></codeline>
-<codeline lineno="96"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(add_deposition)</highlight></codeline>
-<codeline lineno="97"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
-<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/>ir<sp/>=<sp/>(int)(0.05f<sp/>*<sp/>scale<sp/>*<sp/>shape.x);</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>k<sp/>=<sp/>0.05f;</highlight></codeline>
-<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1_1gpu_1ab10a6dc3d92519c7bd3244571bcd6429" kindref="member">gpu::smooth_fill</ref>(<ref refid="namespacehmap_1_1gpu_1a0c9c2a528f344ede2aa320fdf2583790" kindref="member">voronoi</ref>,<sp/>ir,<sp/>k);</highlight></codeline>
-<codeline lineno="101"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="102"><highlight class="normal"></highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacehmap_1_1gpu_1a0c9c2a528f344ede2aa320fdf2583790" kindref="member">voronoi</ref>;</highlight></codeline>
-<codeline lineno="104"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="105"><highlight class="normal"></highlight></codeline>
-<codeline lineno="106"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>hmap::gpu</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(add_deposition)</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/>ir<sp/>=<sp/>(int)(0.05f<sp/>*<sp/>scale<sp/>*<sp/>shape.x);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>k<sp/>=<sp/>0.05f;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1_1gpu_1ab10a6dc3d92519c7bd3244571bcd6429" kindref="member">gpu::smooth_fill</ref>(<ref refid="namespacehmap_1_1gpu_1a0c9c2a528f344ede2aa320fdf2583790" kindref="member">voronoi</ref>,<sp/>ir,<sp/>k);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacehmap_1_1gpu_1a0c9c2a528f344ede2aa320fdf2583790" kindref="member">voronoi</ref>;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>hmap::gpu</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="HighMap/src/primitives/geo/shattered_peak.cpp"/>
   </compounddef>
