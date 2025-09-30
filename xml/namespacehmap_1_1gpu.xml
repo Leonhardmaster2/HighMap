@@ -5376,6 +5376,240 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </inbodydescription>
         <location file="HighMap/src/primitives/primitives_gpu.cpp" line="270" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="270" bodyend="324" declfile="HighMap/include/highmap/primitives.hpp" declline="1684" declcolumn="7"/>
       </memberdef>
+      <memberdef kind="function" id="namespacehmap_1_1gpu_1aa9694ede6b0ff07b35864c13f580bc2d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
+        <definition>Array hmap::gpu::mountain_inselberg</definition>
+        <argsstring>(Vec2&lt; int &gt; shape, uint seed, float scale=1.f, float rugosity=0.2f, float angle=45.f, float gamma=1.1f, bool round_shape=false, bool add_deposition=true, float bulk_amp=0.2f, float base_noise_amp=0.2f, float k_smoothing=0.1f, Vec2&lt; float &gt; center={0.5f, 0.5f}, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f})</argsstring>
+        <name>mountain_inselberg</name>
+        <qualifiedname>hmap::gpu::mountain_inselberg</qualifiedname>
+        <param>
+          <type><ref refid="structhmap_1_1Vec2" kindref="compound">Vec2</ref>&lt; int &gt;</type>
+          <declname>shape</declname>
+        </param>
+        <param>
+          <type><ref refid="array_8hpp_1a91ad9478d81a7aaf2593e8d9c3d06a14" kindref="member">uint</ref></type>
+          <declname>seed</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>scale</declname>
+          <defval>1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>rugosity</declname>
+          <defval>0.2<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>angle</declname>
+          <defval>45.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>gamma</declname>
+          <defval>1.1<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>round_shape</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>add_deposition</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>bulk_amp</declname>
+          <defval>0.2<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>base_noise_amp</declname>
+          <defval>0.2<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>k_smoothing</declname>
+          <defval>0.1<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type><ref refid="structhmap_1_1Vec2" kindref="compound">Vec2</ref>&lt; float &gt;</type>
+          <declname>center</declname>
+          <defval>{0.5<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 0.5<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>}</defval>
+        </param>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
+          <declname>p_noise_x</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
+          <declname>p_noise_y</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type><ref refid="structhmap_1_1Vec4" kindref="compound">Vec4</ref>&lt; float &gt;</type>
+          <declname>bbox</declname>
+          <defval>{0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>}</defval>
+        </param>
+        <briefdescription>
+<para>Generates a synthetic mountain-like inselberg (isolated hill) heightmap. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function procedurally creates a 2D elevation field resembling an inselberg, using a combination of fractal noise (FBM), Gaussian pulses, and Voronoi-based structures. It allows control over scale, shape, orientation, rugosity, and optional geological-like effects such as bulk uplift and deposition smoothing.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>shape</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Output array shape (resolution in x and y). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>seed</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Random seed used for noise and Voronoi generation. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>scale</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Global scaling factor for the inselberg width and structure. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rugosity</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Controls roughness of the fractal noise (higher = more irregular). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>angle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Orientation angle (degrees) for directional displacements. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>gamma</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Gamma correction factor applied to the final heightmap. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>round_shape</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If true, generates a symmetric round shape; if false, adds directional displacement. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>add_deposition</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If true, applies a smoothing fill step simulating sediment deposition. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>bulk_amp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Amplitude of bulk uplift applied to the base pulse (0 = none, &gt;0 = raises and normalizes the feature). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>base_noise_amp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Amplitude of the base displacement noise. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>k_smoothing</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Voronoi smoothing parameter (controls ridge sharpness). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>center</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Center of the inselberg in normalized coordinates. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>p_noise_x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional pointer to external displacement noise field (X-axis). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>p_noise_y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional pointer to external displacement noise field (Y-axis). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>bbox</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Bounding box of the generation domain in normalized coordinates.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classhmap_1_1Array" kindref="compound">Array</ref> containing the generated inselberg heightmap.</para>
+</simplesect>
+<bold>Example</bold> <programlisting filename="ex_mountain_inselberg.cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1adb8336ed4d83c15500872185dee45d50" kindref="member">hmap::gpu::init_opencl</ref>();</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="structhmap_1_1Vec2" kindref="compound">hmap::Vec2&lt;int&gt;</ref><sp/>shape<sp/>=<sp/>{256,<sp/>256};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="array_8hpp_1a91ad9478d81a7aaf2593e8d9c3d06a14" kindref="member">uint</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed<sp/>=<sp/>10;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z1<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1aa9694ede6b0ff07b35864c13f580bc2d" kindref="member">hmap::gpu::mountain_inselberg</ref>(shape,<sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>scale<sp/>=<sp/>0.5f;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z2<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1aa9694ede6b0ff07b35864c13f580bc2d" kindref="member">hmap::gpu::mountain_inselberg</ref>(shape,<sp/>seed,<sp/>scale);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_mountain_inselberg.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z1,<sp/>z2},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9" kindref="member">hmap::Cmap::TERRAIN</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<para>Result** <image type="html" name="ex_mountain_inselberg.png"></image>
+ </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/primitives/geo/mountain_inselberg.cpp" line="13" column="7" bodyfile="HighMap/src/primitives/geo/mountain_inselberg.cpp" bodystart="13" bodyend="110" declfile="HighMap/include/highmap/primitives.hpp" declline="1746" declcolumn="7"/>
+      </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a50332f79ca9b2548089359f5ad4b8ffd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
         <definition>Array hmap::gpu::mountain_range_radial</definition>
@@ -5613,7 +5847,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="326" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="326" bodyend="379" declfile="HighMap/include/highmap/primitives.hpp" declline="1750" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="326" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="326" bodyend="379" declfile="HighMap/include/highmap/primitives.hpp" declline="1811" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a450f5b26f42b6f06be3e1e131f6aaf86" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -5664,7 +5898,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="381" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="381" bodyend="418" declfile="HighMap/include/highmap/primitives.hpp" declline="1768" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="381" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="381" bodyend="418" declfile="HighMap/include/highmap/primitives.hpp" declline="1829" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a322260e971f4dec19ec8bc270e7cc461" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -5740,7 +5974,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="420" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="420" bodyend="468" declfile="HighMap/include/highmap/primitives.hpp" declline="1778" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="420" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="420" bodyend="468" declfile="HighMap/include/highmap/primitives.hpp" declline="1839" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a0366d22ed8b0e1b74d5895e00c0e688b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -5973,7 +6207,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="470" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="470" bodyend="530" declfile="HighMap/include/highmap/primitives.hpp" declline="1837" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="470" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="470" bodyend="530" declfile="HighMap/include/highmap/primitives.hpp" declline="1898" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a4927a1382b383a5ceb9071f51bd5abf9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -6243,7 +6477,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="532" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="532" bodyend="598" declfile="HighMap/include/highmap/primitives.hpp" declline="1900" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="532" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="532" bodyend="598" declfile="HighMap/include/highmap/primitives.hpp" declline="1961" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a85000763147ffd507d483ba9be27f38b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -6487,7 +6721,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="600" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="600" bodyend="677" declfile="HighMap/include/highmap/primitives.hpp" declline="1967" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="600" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="600" bodyend="677" declfile="HighMap/include/highmap/primitives.hpp" declline="2028" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1ac2ad88df8eb3c863235f96f1678634e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -6783,7 +7017,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="679" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="679" bodyend="722" declfile="HighMap/include/highmap/primitives.hpp" declline="2035" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="679" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="679" bodyend="722" declfile="HighMap/include/highmap/primitives.hpp" declline="2096" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a0c9c2a528f344ede2aa320fdf2583790" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -6985,7 +7219,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="724" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="724" bodyend="764" declfile="HighMap/include/highmap/primitives.hpp" declline="2092" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="724" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="724" bodyend="764" declfile="HighMap/include/highmap/primitives.hpp" declline="2153" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1aae4961b7c0f65d6904cc61022eb2642b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -7239,7 +7473,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="766" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="766" bodyend="814" declfile="HighMap/include/highmap/primitives.hpp" declline="2150" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="766" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="766" bodyend="814" declfile="HighMap/include/highmap/primitives.hpp" declline="2211" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1aaee46739a429168aa45ff1e5d55041ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -7356,7 +7590,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="897" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="897" bodyend="931" declfile="HighMap/include/highmap/primitives.hpp" declline="2192" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="897" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="897" bodyend="931" declfile="HighMap/include/highmap/primitives.hpp" declline="2253" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a29cc1b0843f7447eb19b6cef27772cdd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -7497,7 +7731,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="816" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="816" bodyend="849" declfile="HighMap/include/highmap/primitives.hpp" declline="2237" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="816" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="816" bodyend="849" declfile="HighMap/include/highmap/primitives.hpp" declline="2298" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a26d6f87858e400f7b6c8cecb1e12bb8c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -7686,7 +7920,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="851" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="851" bodyend="895" declfile="HighMap/include/highmap/primitives.hpp" declline="2273" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="851" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="851" bodyend="895" declfile="HighMap/include/highmap/primitives.hpp" declline="2334" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1ad25e08146acf2dc7101ec18dbfaa0d2b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -7896,7 +8130,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="933" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="933" bodyend="977" declfile="HighMap/include/highmap/primitives.hpp" declline="2335" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="933" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="933" bodyend="977" declfile="HighMap/include/highmap/primitives.hpp" declline="2396" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a2a14aa1a12ce7308b7cb553ea89b836d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -7952,7 +8186,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="979" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="979" bodyend="1023" declfile="HighMap/include/highmap/primitives.hpp" declline="2347" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="979" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="979" bodyend="1023" declfile="HighMap/include/highmap/primitives.hpp" declline="2408" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a9a3f272d7c8294ab3418be67e3c9b3eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
