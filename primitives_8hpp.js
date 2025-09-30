@@ -51,6 +51,7 @@ var primitives_8hpp =
     [ "white_sparse", "primitives_8hpp.html#a2fe434844b8b2c091b589cbc4fa81db1", null ],
     [ "white_sparse_binary", "primitives_8hpp.html#a3077892a37a4350bebb2631856b407fc", null ],
     [ "worley_double", "primitives_8hpp.html#a65580df1d5593c59be30588ca9979b26", null ],
+    [ "badlands", "primitives_8hpp.html#a3d142b93427d02226cded2a53aec1d89", null ],
     [ "basalt_field", "primitives_8hpp.html#a06f0930402ba5e7a66eb73d9da9a09ee", null ],
     [ "gabor_wave", "primitives_8hpp.html#a50db0e092d6e8d147a587b18ee7ea743", null ],
     [ "gabor_wave", "primitives_8hpp.html#ae425e289a74c2fbce447004896ee7e77", null ],

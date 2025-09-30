@@ -99,6 +99,7 @@ var namespacehmap =
       [ "skeleton", "namespacehmap_1_1gpu.html#a5287e8c6a324fa91bea6c7bf98aacd68", null ],
       [ "helper_bind_optional_buffer", "namespacehmap_1_1gpu.html#aae6131a978635eb515958f41584bcbfc", null ],
       [ "init_opencl", "namespacehmap_1_1gpu.html#adb8336ed4d83c15500872185dee45d50", null ],
+      [ "badlands", "namespacehmap_1_1gpu.html#a3d142b93427d02226cded2a53aec1d89", null ],
       [ "basalt_field", "namespacehmap_1_1gpu.html#a06f0930402ba5e7a66eb73d9da9a09ee", null ],
       [ "gabor_wave", "namespacehmap_1_1gpu.html#a50db0e092d6e8d147a587b18ee7ea743", null ],
       [ "gabor_wave", "namespacehmap_1_1gpu.html#ae425e289a74c2fbce447004896ee7e77", null ],

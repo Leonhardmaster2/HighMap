@@ -1,5 +1,7 @@
 var NAVTREEINDEX7 =
 {
+"filters_8hpp.html#a95c0f4c53278620f0812381ccaa7459e":[5,0,1,0,0,18,93],
+"filters_8hpp.html#a9aa4af458740db48fdcd55cc90238ce2":[5,0,1,0,0,18,133],
 "filters_8hpp.html#a9cb00fb8280178099a8d430f761c62bd":[5,0,1,0,0,18,64],
 "filters_8hpp.html#a9d00db2263b4b7b05245531c41c1b592":[5,0,1,0,0,18,0],
 "filters_8hpp.html#a9d00db2263b4b7b05245531c41c1b592a5814c956cc15b9764d586bb86912c364":[5,0,1,0,0,18,0,1],
@@ -127,8 +129,8 @@ var NAVTREEINDEX7 =
 "flow__stream_8cpp.html#a7376f7c00281f0616024d33069971ca4":[5,0,1,1,18,5,0],
 "format__raw_8cpp.html":[5,0,1,1,11,7],
 "format__raw_8cpp.html#a466d4275bb86ca9ca603c9d4192f931a":[5,0,1,1,11,7,0],
-"functions.html":[4,3,0,0],
 "functions.html":[4,3,0],
+"functions.html":[4,3,0,0],
 "functions_8cpp.html":[5,0,1,1,26,0,2],
 "functions_8cpp.html#a7064ad1eef3ea7b6e19249fe3312e3b9":[5,0,1,1,26,0,2,0],
 "functions_8hpp.html":[5,0,1,0,0,19],
@@ -205,11 +207,11 @@ var NAVTREEINDEX7 =
 "generate__riverbed_8cpp.html#a97ba5dfaa6625b654a8010ed7d2f3465":[5,0,1,1,18,6,0],
 "generate__riverbed__gpu_8cpp.html":[5,0,1,1,18,7],
 "generate__riverbed__gpu_8cpp.html#ab4f1542d2d5dd7edc54d240dab777755":[5,0,1,1,18,7,0],
-"geo_8cpp.html":[5,0,1,1,26,1,1],
-"geo_8cpp.html#a608453bf311137377626e4db29502ea1":[5,0,1,1,26,1,1,2],
-"geo_8cpp.html#a8091f7b43325bd647faa1430af785c70":[5,0,1,1,26,1,1,1],
-"geo_8cpp.html#a91a51449dbfee9d41f28dc7bb301aad6":[5,0,1,1,26,1,1,3],
-"geo_8cpp.html#abf32b5d631ee74d292cf9449b51395c3":[5,0,1,1,26,1,1,0],
+"geo_8cpp.html":[5,0,1,1,26,1,2],
+"geo_8cpp.html#a608453bf311137377626e4db29502ea1":[5,0,1,1,26,1,2,2],
+"geo_8cpp.html#a8091f7b43325bd647faa1430af785c70":[5,0,1,1,26,1,2,1],
+"geo_8cpp.html#a91a51449dbfee9d41f28dc7bb301aad6":[5,0,1,1,26,1,2,3],
+"geo_8cpp.html#abf32b5d631ee74d292cf9449b51395c3":[5,0,1,1,26,1,2,0],
 "geomorphons_8cpp.html":[5,0,1,1,12,3],
 "geomorphons_8cpp.html#aa60fa2d3f02d1e064b520fa1623200d0":[5,0,1,1,12,3,0],
 "get__colormap__data_8cpp.html":[5,0,1,1,5,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX7 =
 "gradient_8hpp.html#a11d438a3f643427c957d160b7c1a04de":[5,0,1,0,0,20,10],
 "gradient_8hpp.html#a1c5e49734e49973fe1b275b6988dba12":[5,0,1,0,0,20,21],
 "gradient_8hpp.html#a26a0e82cf03ec259e3efae1ea84286db":[5,0,1,0,0,20,16],
-"gradient_8hpp.html#a27518ea42feb447ad4eb83147663c24d":[5,0,1,0,0,20,0],
-"gradient_8hpp.html#a3f8dc201377b61428eba8daa4a03a65f":[5,0,1,0,0,20,20],
-"gradient_8hpp.html#a522e28e6f997165bb492aa68327556d9":[5,0,1,0,0,20,6]
+"gradient_8hpp.html#a27518ea42feb447ad4eb83147663c24d":[5,0,1,0,0,20,0]
 };
