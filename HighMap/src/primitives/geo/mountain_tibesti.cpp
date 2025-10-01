@@ -30,7 +30,7 @@ Array mountain_tibesti(Vec2<int>    shape,
   const float       persistence = 0.5f;
   const float       lacunarity = 2.f;
   const float       alpha = angle / 180.f * M_PI;
-  const float       half_width = 0.3f * scale;
+  const float       half_width = 0.3f;
   const Vec2<float> kw_base = Vec2<float>(peak_kw / scale, peak_kw / scale);
   const Vec2<float> kw_noise4 = Vec2<float>(4.f / scale, 4.f / scale);
   const Vec2<float> kw_noise2 = Vec2<float>(2.f / scale, 2.f / scale);
@@ -70,8 +70,8 @@ Array mountain_tibesti(Vec2<int>    shape,
                                 bbox);
 
   // base
-  Array dx = noise2 * std::sin(alpha); // perpendicular
-  Array dy = noise2 * std::cos(alpha);
+  Array dx = noise2 * std::cos(alpha); // perpendicular
+  Array dy = noise2 * std::sin(alpha);
 
   Array gabor = gabor_wave_fbm(shape,
                                kw_base,
