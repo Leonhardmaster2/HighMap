@@ -45,10 +45,10 @@ Array shattered_peak(Vec2<int>    shape,
                                rugosity,
                                persistence,
                                lacunarity,
-                               nullptr,
+                               /* p_ctrl_param */ nullptr,
                                p_noise_x,
                                p_noise_y,
-                               nullptr,
+                               /* p_stretching */ nullptr,
                                bbox);
 
   Array dx = noise * std::cos(alpha);
@@ -80,7 +80,7 @@ Array shattered_peak(Vec2<int>    shape,
                               /* weight */ 0.7f,
                               persistence,
                               lacunarity,
-                              nullptr,
+                              /* p_ctrl_param */ nullptr,
                               &dx,
                               &dy,
                               bbox);

@@ -1871,6 +1871,68 @@ Array mountain_range_radial(Vec2<int>    shape,
                             const Array *p_angle = nullptr,
                             Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
 
+/**
+ * @brief Generates a synthetic "Tibesti" mountain heightmap.
+ *
+ * This function procedurally creates a 2D elevation field inspired by the
+ * Tibesti mountains, a desert volcanic range. The terrain is built by combining
+ * Gabor wavelets, fractal simplex noise, and a Gaussian envelope, producing
+ * sharp volcanic peaks modulated by erosion-like patterns.
+ *
+ * @param  shape              Output array shape (resolution in x and y).
+ * @param  seed               Random seed used for noise and wavelet generation.
+ * @param  scale              Global scaling factor controlling the overall
+ *                            mountain size.
+ * @param  octaves            Number of octaves used in the fractal noise and
+ *                            Gabor FBM.
+ * @param  peak_kw            Base frequency of the peak features (scaled
+ *                            internally by @p scale).
+ * @param  rugosity           Controls roughness of the fractal noise (higher =
+ *                            more irregular).
+ * @param  angle              Orientation angle (degrees) for Gabor waves.
+ * @param  angle_spread_ratio Spread ratio of the Gabor wave orientation
+ *                            (controls anisotropy).
+ * @param  gamma              Gamma correction factor applied to auxiliary noise
+ *                            fields.
+ * @param  add_deposition     If true, applies a smoothing fill step simulating
+ *                            sediment deposition.
+ * @param  bulk_amp           Amplitude of bulk uplift applied to the peaks
+ *                            (affects normalization with noise weighting).
+ * @param  base_noise_amp     Amplitude of the base displacement noise.
+ * @param  center             Center of the mountain in normalized coordinates.
+ * @param  p_noise_x          Optional pointer to external displacement noise
+ *                            field (X-axis).
+ * @param  p_noise_y          Optional pointer to external displacement noise
+ *                            field (Y-axis).
+ * @param  bbox               Bounding box of the generation domain in
+ *                            normalized coordinates.
+ *
+ * @return                    Array containing the generated Tibesti mountain
+ *                            heightmap.
+ *
+ * **Example**
+ * @include ex_mountain_tibesti.cpp
+ *
+ * **Result**
+ * @image html ex_mountain_tibesti.png
+ */
+Array mountain_tibesti(Vec2<int>    shape,
+                       uint         seed,
+                       float        scale = 1.f,
+                       int          octaves = 8,
+                       float        peak_kw = 20.f,
+                       float        rugosity = 0.f,
+                       float        angle = 30.f,
+                       float        angle_spread_ratio = 0.25f,
+                       float        gamma = 1.f,
+                       bool         add_deposition = true,
+                       float        bulk_amp = 1.f,
+                       float        base_noise_amp = 0.1f,
+                       Vec2<float>  center = {0.5f, 0.5f},
+                       const Array *p_noise_x = nullptr,
+                       const Array *p_noise_y = nullptr,
+                       Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
+
 /*! @brief See hmap::noise */
 Array noise(NoiseType    noise_type,
             Vec2<int>    shape,
@@ -2049,7 +2111,7 @@ Array polygon_field_fbm(Vec2<int>         shape,
  * @param  add_deposition If true, applies a smoothing fill step simulating
  *                        sediment deposition.
  * @param  bulk_amp       Amplitude of bulk uplift applied to the peak
- *                       (internally overridden to 0.5f for normalization).
+ *                        (internally overridden to 0.5f for normalization).
  * @param  base_noise_amp Amplitude of the base displacement noise.
  * @param  k_smoothing    Voronoi smoothing parameter (controls ridge
  *                        sharpness).
