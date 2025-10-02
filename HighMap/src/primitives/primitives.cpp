@@ -100,15 +100,13 @@ Array bump_lorentzian(Vec2<int>    shape,
 }
 
 Array cone(Vec2<int>    shape,
-           float        talus,
+           float        slope,
            Vec2<float>  center,
            const Array *p_noise_x,
            const Array *p_noise_y,
            Vec4<float>  bbox)
 {
   Array array = Array(shape);
-
-  float slope = talus * shape.x;
 
   auto lambda = [slope, center](float x, float y, float)
   {
