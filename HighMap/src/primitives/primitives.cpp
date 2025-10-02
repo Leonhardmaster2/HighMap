@@ -99,6 +99,35 @@ Array bump_lorentzian(Vec2<int>    shape,
   return array;
 }
 
+Array cone(Vec2<int>    shape,
+           float        talus,
+           Vec2<float>  center,
+           const Array *p_noise_x,
+           const Array *p_noise_y,
+           Vec4<float>  bbox)
+{
+  Array array = Array(shape);
+
+  float slope = talus * shape.x;
+
+  auto lambda = [slope, center](float x, float y, float)
+  {
+    float dx = x - center.x;
+    float dy = y - center.y;
+    float r = std::hypot(dx, dy);
+    return std::max(0.f, 1.f - slope * r);
+  };
+
+  fill_array_using_xy_function(array,
+                               bbox,
+                               nullptr,
+                               p_noise_x,
+                               p_noise_y,
+                               nullptr,
+                               lambda);
+  return array;
+}
+
 Array constant(Vec2<int> shape, float value)
 {
   Array array = Array(shape);

@@ -212,6 +212,40 @@ Array checkerboard(Vec2<int>    shape,
                    Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
+ * @brief Generates a synthetic conical mountain heightmap.
+ *
+ * This function creates a simple cone-shaped elevation field centered at a
+ * given position. The cone profile follows a linear slope until it reaches the
+ * talus angle, resembling volcanic cones or alluvial fans. Optional
+ * displacement noise fields can be applied to perturb the cone shape.
+ *
+ * @param  shape     Output array shape (resolution in x and y).
+ * @param  talus     Slope angle of the cone (controls steepness of the sides).
+ * @param  center    Center of the cone in normalized coordinates
+ *                   (default = {0.5f, 0.5f}).
+ * @param  p_noise_x Optional pointer to external displacement noise field
+ *                   (X-axis).
+ * @param  p_noise_y Optional pointer to external displacement noise field
+ *                   (Y-axis).
+ * @param  bbox      Bounding box of the generation domain in normalized
+ *                   coordinates (default = {0.f, 1.f, 0.f, 1.f}).
+ *
+ * @return           Array containing the generated conical heightmap.
+ *
+ * **Example**
+ * @include ex_cone.cpp
+ *
+ * **Result**
+ * @image html ex_cone.png
+ */
+Array cone(Vec2<int>    shape,
+           float        talus,
+           Vec2<float>  center = {0.5f, 0.5f},
+           const Array *p_noise_x = nullptr,
+           const Array *p_noise_y = nullptr,
+           Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
  * @brief Return a constant value array.
  *
  * @param  shape Array shape.
