@@ -17,7 +17,7 @@ var primitives_8hpp =
     [ "caldera", "primitives_8hpp.html#abf32b5d631ee74d292cf9449b51395c3", null ],
     [ "caldera", "primitives_8hpp.html#a8091f7b43325bd647faa1430af785c70", null ],
     [ "checkerboard", "primitives_8hpp.html#a8a56891aca58f4afd74fb34b04322569", null ],
-    [ "cone", "primitives_8hpp.html#a0ccf969c08604eda0a19336c96cc1cdd", null ],
+    [ "cone", "primitives_8hpp.html#abcd06a6a6f2f0bba317688349eda002d", null ],
     [ "constant", "primitives_8hpp.html#a8f4e766dca0065219e26af946bd61946", null ],
     [ "crater", "primitives_8hpp.html#a608453bf311137377626e4db29502ea1", null ],
     [ "dendry", "primitives_8hpp.html#a1b7c375c3335b31ab4773d792365faac", null ],
