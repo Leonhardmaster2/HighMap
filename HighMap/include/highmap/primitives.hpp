@@ -240,6 +240,7 @@ Array checkerboard(Vec2<int>    shape,
  */
 Array cone(Vec2<int>    shape,
            float        slope,
+           float        apex_elevation = 1.f,
            Vec2<float>  center = {0.5f, 0.5f},
            const Array *p_noise_x = nullptr,
            const Array *p_noise_y = nullptr,

@@ -101,6 +101,7 @@ Array bump_lorentzian(Vec2<int>    shape,
 
 Array cone(Vec2<int>    shape,
            float        slope,
+           float        apex_elevation,
            Vec2<float>  center,
            const Array *p_noise_x,
            const Array *p_noise_y,
@@ -108,12 +109,12 @@ Array cone(Vec2<int>    shape,
 {
   Array array = Array(shape);
 
-  auto lambda = [slope, center](float x, float y, float)
+  auto lambda = [slope, apex_elevation, center](float x, float y, float)
   {
     float dx = x - center.x;
     float dy = y - center.y;
     float r = std::hypot(dx, dy);
-    return std::max(0.f, 1.f - slope * r);
+    return std::max(0.f, apex_elevation - slope * r);
   };
 
   fill_array_using_xy_function(array,
