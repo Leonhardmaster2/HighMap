@@ -92,14 +92,14 @@ var NAVTREEINDEX =
 "filters_8hpp.html#a95c0f4c53278620f0812381ccaa7459e",
 "gradient_8hpp.html#a3f8dc201377b61428eba8daa4a03a65f",
 "interpolate__array__gpu_8cpp.html#a7afd3be09339152030aed3d5ee28614c",
-"namespacehmap.html#a0157f72a2a70dae28d0767a13739f4b5",
-"namespacehmap.html#a5adb98e67f89036317df083dd2123a1e",
-"namespacehmap.html#ab00af49fafd706242919ea18dc4817ee",
-"namespacehmap.html#af80bcff234bf1482cf26896b9d21d270",
-"parberry__function_8cpp.html",
-"range_8hpp.html#a29bac84a2ba5a665047b8946eecb84ea",
-"structhmap_1_1HeightmapRGBA.html#a9fb8149f2080b36e191ed97f70af09ad",
-"thermal__schott_8cpp.html#ab38af66da103b9be4e5aaeed7213b9c2"
+"namespacehmap.html#a0039057c9e4adf1498fa0a91b94d7fb8",
+"namespacehmap.html#a5a852e7e8cb38a8c3231d4867995ae1c",
+"namespacehmap.html#aafd7a642dabfbcf2ab2981b229a30e15",
+"namespacehmap.html#af6af5d27dcec83e466ca6b58244cafe7",
+"operator_8hpp.html#ae51dda5e070b01ad1a85b44d986f5003",
+"range_8hpp.html",
+"structhmap_1_1HeightmapRGBA.html#a862282b5cffd9391fece507ac6fd3236",
+"thermal__schott_8cpp.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

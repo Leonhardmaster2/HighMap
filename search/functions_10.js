@@ -68,7 +68,8 @@ var searchData=
   ['rot270_65',['rot270',['../namespacehmap.html#a836dbf6645c0e60bd887d6f14210b9d3',1,'hmap']]],
   ['rot90_66',['rot90',['../namespacehmap.html#ab2362d8dcac398c859dd4ec37214af01',1,'hmap']]],
   ['rotate_67',['rotate',['../namespacehmap.html#a888dcfe5adb36448366400f04efcde04',1,'hmap::rotate()'],['../namespacehmap_1_1gpu.html#aab128e15988875b5d350d6f156612aa5',1,'hmap::gpu::rotate()']]],
-  ['row_5fto_5fvector_68',['row_to_vector',['../classhmap_1_1Array.html#a82d3cc92545cb9ee442d47b4d672750c',1,'hmap::Array']]],
-  ['ruggedness_69',['ruggedness',['../namespacehmap.html#af4ec8b5be149e6749fdf09759daf1e9e',1,'hmap::ruggedness()'],['../namespacehmap_1_1gpu.html#a62292cc4bf9f6eb5c7b63b1e26f8cc88',1,'hmap::gpu::ruggedness()']]],
-  ['rugosity_70',['rugosity',['../namespacehmap.html#a85e411c67e97deb8459f25d4440546c3',1,'hmap::rugosity()'],['../namespacehmap_1_1gpu.html#aa5a3e087822525c41f057a51255e2bad',1,'hmap::gpu::rugosity()']]]
+  ['rotate_5fdisplacement_68',['rotate_displacement',['../namespacehmap.html#ad2d28babba03ed11cf115ab08009de64',1,'hmap']]],
+  ['row_5fto_5fvector_69',['row_to_vector',['../classhmap_1_1Array.html#a82d3cc92545cb9ee442d47b4d672750c',1,'hmap::Array']]],
+  ['ruggedness_70',['ruggedness',['../namespacehmap.html#af4ec8b5be149e6749fdf09759daf1e9e',1,'hmap::ruggedness()'],['../namespacehmap_1_1gpu.html#a62292cc4bf9f6eb5c7b63b1e26f8cc88',1,'hmap::gpu::ruggedness()']]],
+  ['rugosity_71',['rugosity',['../namespacehmap.html#a85e411c67e97deb8459f25d4440546c3',1,'hmap::rugosity()'],['../namespacehmap_1_1gpu.html#aa5a3e087822525c41f057a51255e2bad',1,'hmap::gpu::rugosity()']]]
 ];

@@ -1175,6 +1175,8 @@ float \mbox{\hyperlink{namespacehmap_a1d5e665c9e945b8ad9a6b5f0c1b673ad}{lerp}} (
 \begin{DoxyCompactList}\small\item\em Return the array elements raised to the power \textquotesingle{}exp\textquotesingle{}. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a94c9fa82f2922778970f85c384ed5bd9}{radial\+\_\+displacement\+\_\+to\+\_\+xy}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&dr, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&dx, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&dy, float smoothing=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ float $>$ center=\{0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
 \begin{DoxyCompactList}\small\item\em Interpret the input array {\ttfamily dr} as a radial displacement and convert it to a pair of displacements {\ttfamily dx} and {\ttfamily dy} in cartesian coordinates. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacehmap_ad2d28babba03ed11cf115ab08009de64}{rotate\+\_\+displacement}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&delta, float \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}}, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&dx, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&dy)
+\begin{DoxyCompactList}\small\item\em Rotates a scalar displacement field into directional X and Y components. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{namespacehmap_ad0759b7e3cb7455527b9b5b4947720bd}{sigmoid}} (float x, float width=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float vmin=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float vmax=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float x0=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Computes the sigmoid function for a scalar value. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a0aa2c50266e16cf5af077e4e3f77bd8f}{sigmoid}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float width=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float vmin=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float vmax=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float x0=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
@@ -18264,7 +18266,30 @@ Interpret the input array {\ttfamily dr} as a radial displacement and convert it
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}  \Hypertarget{namespacehmap_ad0759b7e3cb7455527b9b5b4947720bd}\label{namespacehmap_ad0759b7e3cb7455527b9b5b4947720bd} 
+{\bfseries{Result}}  \Hypertarget{namespacehmap_ad2d28babba03ed11cf115ab08009de64}\label{namespacehmap_ad2d28babba03ed11cf115ab08009de64} 
+\index{hmap@{hmap}!rotate\_displacement@{rotate\_displacement}}
+\index{rotate\_displacement@{rotate\_displacement}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{rotate\_displacement()}{rotate\_displacement()}}
+{\footnotesize\ttfamily void hmap\+::rotate\+\_\+displacement (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{delta,  }\item[{float}]{angle,  }\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{dx,  }\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{dy }\end{DoxyParamCaption})}
+
+
+
+Rotates a scalar displacement field into directional X and Y components. 
+
+This function converts a scalar displacement map into two directional components ({\ttfamily dx} and {\ttfamily dy}) according to a given rotation angle. It is typically used to orient procedural displacements, such as those applied to terrain heightmaps or noise-\/based distortion fields.
+
+
+\begin{DoxyParams}{Parameters}
+{\em delta} & Input scalar displacement field. \\
+\hline
+{\em angle} & Rotation angle in degrees (counterclockwise). \\
+\hline
+{\em dx} & Output array receiving the X-\/axis displacement component. \\
+\hline
+{\em dy} & Output array receiving the Y-\/axis displacement component. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{namespacehmap_ad0759b7e3cb7455527b9b5b4947720bd}\label{namespacehmap_ad0759b7e3cb7455527b9b5b4947720bd} 
 \index{hmap@{hmap}!sigmoid@{sigmoid}}
 \index{sigmoid@{sigmoid}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{sigmoid()}{sigmoid()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}

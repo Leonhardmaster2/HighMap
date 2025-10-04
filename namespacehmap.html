@@ -1727,6 +1727,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a94c9fa82f2922778970f85c384ed5bd9" id="r_a94c9fa82f2922778970f85c384ed5bd9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a94c9fa82f2922778970f85c384ed5bd9">radial_displacement_to_xy</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;dr, <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;dx, <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;dy, float smoothing=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, <a class="el" href="structhmap_1_1Vec2.html">Vec2</a>&lt; float &gt; center={0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>}, <a class="el" href="structhmap_1_1Vec4.html">Vec4</a>&lt; float &gt; bbox={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>})</td></tr>
 <tr class="memdesc:a94c9fa82f2922778970f85c384ed5bd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interpret the input array <code>dr</code> as a radial displacement and convert it to a pair of displacements <code>dx</code> and <code>dy</code> in cartesian coordinates.  <br /></td></tr>
 <tr class="separator:a94c9fa82f2922778970f85c384ed5bd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2d28babba03ed11cf115ab08009de64" id="r_ad2d28babba03ed11cf115ab08009de64"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#ad2d28babba03ed11cf115ab08009de64">rotate_displacement</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;delta, float <a class="el" href="namespacehmap.html#aac71bb6c14edc17967957f7918acdbdd">angle</a>, <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;dx, <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;dy)</td></tr>
+<tr class="memdesc:ad2d28babba03ed11cf115ab08009de64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rotates a scalar displacement field into directional X and Y components.  <br /></td></tr>
+<tr class="separator:ad2d28babba03ed11cf115ab08009de64"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad0759b7e3cb7455527b9b5b4947720bd" id="r_ad0759b7e3cb7455527b9b5b4947720bd"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#ad0759b7e3cb7455527b9b5b4947720bd">sigmoid</a> (float x, float width=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float vmin=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float vmax=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float x0=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
 <tr class="memdesc:ad0759b7e3cb7455527b9b5b4947720bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the sigmoid function for a scalar value.  <br /></td></tr>
 <tr class="separator:ad0759b7e3cb7455527b9b5b4947720bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -30768,6 +30771,58 @@ template&lt;typename T &gt; </div>
  
 </div>
 </div>
+<a id="ad2d28babba03ed11cf115ab08009de64" name="ad2d28babba03ed11cf115ab08009de64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2d28babba03ed11cf115ab08009de64">&#9670;&#160;</a></span>rotate_displacement()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hmap::rotate_displacement </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>delta</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>angle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>dx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>dy</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Rotates a scalar displacement field into directional X and Y components. </p>
+<p>This function converts a scalar displacement map into two directional components (<code>dx</code> and <code>dy</code>) according to a given rotation angle. It is typically used to orient procedural displacements, such as those applied to terrain heightmaps or noise-based distortion fields.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">delta</td><td>Input scalar displacement field. </td></tr>
+    <tr><td class="paramname">angle</td><td>Rotation angle in degrees (counterclockwise). </td></tr>
+    <tr><td class="paramname">dx</td><td>Output array receiving the X-axis displacement component. </td></tr>
+    <tr><td class="paramname">dy</td><td>Output array receiving the Y-axis displacement component. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="ad0759b7e3cb7455527b9b5b4947720bd" name="ad0759b7e3cb7455527b9b5b4947720bd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad0759b7e3cb7455527b9b5b4947720bd">&#9670;&#160;</a></span>sigmoid() <span class="overload">[1/2]</span></h2>
 
@@ -30848,7 +30903,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_sigmoid.png&quot;</span>, {z, z1}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_ad0759b7e3cb7455527b9b5b4947720bd"><div class="ttname"><a href="namespacehmap.html#ad0759b7e3cb7455527b9b5b4947720bd">hmap::sigmoid</a></div><div class="ttdeci">float sigmoid(float x, float width=1.f, float vmin=0.f, float vmax=1.f, float x0=0.f)</div><div class="ttdoc">Computes the sigmoid function for a scalar value.</div><div class="ttdef"><b>Definition</b> math.cpp:222</div></div>
+<div class="ttc" id="anamespacehmap_html_ad0759b7e3cb7455527b9b5b4947720bd"><div class="ttname"><a href="namespacehmap.html#ad0759b7e3cb7455527b9b5b4947720bd">hmap::sigmoid</a></div><div class="ttdeci">float sigmoid(float x, float width=1.f, float vmin=0.f, float vmax=1.f, float x0=0.f)</div><div class="ttdoc">Computes the sigmoid function for a scalar value.</div><div class="ttdef"><b>Definition</b> math.cpp:229</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_sigmoid.png" alt=""/>
 </div>
@@ -31029,8 +31084,8 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 <div class="line">                          {z, z3, z5},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a413648e2595721d8ba4096357dbb1f84"><div class="ttname"><a href="namespacehmap.html#a413648e2595721d8ba4096357dbb1f84">hmap::smoothstep3</a></div><div class="ttdeci">Array smoothstep3(const Array &amp;array, float vmin=0.f, float vmax=1.f)</div><div class="ttdoc">Return the 3rd order smoothstep function of the array elements.</div><div class="ttdef"><b>Definition</b> math.cpp:250</div></div>
-<div class="ttc" id="anamespacehmap_html_aa4468d1e57ee67ba0be8fb1ab931045a"><div class="ttname"><a href="namespacehmap.html#aa4468d1e57ee67ba0be8fb1ab931045a">hmap::smoothstep5</a></div><div class="ttdeci">Array smoothstep5(const Array &amp;array, float vmin=0.f, float vmax=1.f)</div><div class="ttdoc">Return the 5rd order smoothstep function of the array elements.</div><div class="ttdef"><b>Definition</b> math.cpp:307</div></div>
+<div class="ttc" id="anamespacehmap_html_a413648e2595721d8ba4096357dbb1f84"><div class="ttname"><a href="namespacehmap.html#a413648e2595721d8ba4096357dbb1f84">hmap::smoothstep3</a></div><div class="ttdeci">Array smoothstep3(const Array &amp;array, float vmin=0.f, float vmax=1.f)</div><div class="ttdoc">Return the 3rd order smoothstep function of the array elements.</div><div class="ttdef"><b>Definition</b> math.cpp:257</div></div>
+<div class="ttc" id="anamespacehmap_html_aa4468d1e57ee67ba0be8fb1ab931045a"><div class="ttname"><a href="namespacehmap.html#aa4468d1e57ee67ba0be8fb1ab931045a">hmap::smoothstep5</a></div><div class="ttdeci">Array smoothstep5(const Array &amp;array, float vmin=0.f, float vmax=1.f)</div><div class="ttdoc">Return the 5rd order smoothstep function of the array elements.</div><div class="ttdef"><b>Definition</b> math.cpp:314</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_smoothstep.png" alt=""/>
 </div>

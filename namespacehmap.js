@@ -781,6 +781,7 @@ var namespacehmap =
     [ "log10", "namespacehmap.html#a75475b6109023ce0ad64f6f9f7c4c525", null ],
     [ "pow", "namespacehmap.html#a105e497c433e14b4235534ae6d2b87b9", null ],
     [ "radial_displacement_to_xy", "namespacehmap.html#a94c9fa82f2922778970f85c384ed5bd9", null ],
+    [ "rotate_displacement", "namespacehmap.html#ad2d28babba03ed11cf115ab08009de64", null ],
     [ "sigmoid", "namespacehmap.html#ad0759b7e3cb7455527b9b5b4947720bd", null ],
     [ "sigmoid", "namespacehmap.html#a0aa2c50266e16cf5af077e4e3f77bd8f", null ],
     [ "sin", "namespacehmap.html#a03359e722d96524598aa525022317c95", null ],
