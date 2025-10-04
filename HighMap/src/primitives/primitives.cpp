@@ -152,6 +152,36 @@ Array cone(Vec2<int>    shape,
   return array;
 }
 
+Array cone_sigmoid(Vec2<int>    shape,
+                   float        alpha,
+                   float        radius,
+                   Vec2<float>  center,
+                   const Array *p_noise_x,
+                   const Array *p_noise_y,
+                   Vec4<float>  bbox)
+{
+  Array array = Array(shape);
+
+  auto lambda = [alpha, radius, center](float x, float y, float)
+  {
+    float dx = x - center.x;
+    float dy = y - center.y;
+    float r = std::hypot(dx, dy) / radius;
+    float v = (1.f - std::pow(r, alpha)) / (1.f + std::pow(r, alpha));
+    return std::max(0.f, v);
+  };
+
+  fill_array_using_xy_function(array,
+                               bbox,
+                               nullptr,
+                               p_noise_x,
+                               p_noise_y,
+                               nullptr,
+                               lambda);
+
+  return array;
+}
+
 Array constant(Vec2<int> shape, float value)
 {
   Array array = Array(shape);

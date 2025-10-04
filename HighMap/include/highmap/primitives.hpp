@@ -248,6 +248,45 @@ Array cone(Vec2<int>    shape,
            Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
+ * @brief Generates a smooth conical heightmap using a sigmoid-based profile.
+ *
+ * This function creates a 2D array representing a cone shape centered at a
+ * given position. The height decreases radially from the apex according to a
+ * sigmoid-shaped falloff, producing a smooth, rounded cone rather than a sharp
+ * linear one. Optionally, displacement noise can be applied along the X and Y
+ * axes to perturb the cone surface.
+ *
+ * @param  shape     Dimensions of the output array (width, height).
+ * @param  alpha     Peak elevation value of the cone (controls maximum height).
+ * @param  radius    Radius of the cone base, expressed in normalized [0, 1]
+ *                   units relative to the bounding box.
+ * @param  center    Normalized coordinates of the cone’s center (default =
+ *                   {0.5, 0.5}).
+ * @param  p_noise_x Optional pointer to an array representing horizontal
+ *                   displacement noise (nullptr for none).
+ * @param  p_noise_y Optional pointer to an array representing vertical
+ *                   displacement noise (nullptr for none).
+ * @param  bbox      Bounding box of the generated region in (xmin, xmax, ymin,
+ *                   ymax) order.
+ *
+ * @return           A 2D Array object containing the generated conical
+ *                   heightmap.
+ *
+ * **Example**
+ * @include ex_cone.cpp
+ *
+ * **Result**
+ * @image html ex_cone.png
+ * */
+Array cone_sigmoid(Vec2<int>    shape,
+                   float        alpha,
+                   float        radius = 0.5f,
+                   Vec2<float>  center = {0.5f, 0.5f},
+                   const Array *p_noise_x = nullptr,
+                   const Array *p_noise_y = nullptr,
+                   Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
  * @brief Return a constant value array.
  *
  * @param  shape Array shape.

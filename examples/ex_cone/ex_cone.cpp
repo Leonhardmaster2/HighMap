@@ -4,7 +4,8 @@ int main(void)
 {
   hmap::Vec2<int> shape = {256, 256};
 
-  hmap::Array z = hmap::cone(shape, 4.f);
+  hmap::Array z1 = hmap::cone(shape, 4.f);
+  hmap::Array z2 = hmap::cone_sigmoid(shape, 0.8f);
 
-  z.to_png("ex_cone.png", hmap::Cmap::MAGMA);
+  hmap::export_banner_png("ex_cone.png", {z1, z2}, hmap::Cmap::MAGMA);
 }
