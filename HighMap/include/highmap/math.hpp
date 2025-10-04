@@ -309,6 +309,22 @@ void radial_displacement_to_xy(const Array &dr,
                                Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
+ * @brief Rotates a scalar displacement field into directional X and Y
+ * components.
+ *
+ * This function converts a scalar displacement map into two directional
+ * components (`dx` and `dy`) according to a given rotation angle. It is
+ * typically used to orient procedural displacements, such as those applied to
+ * terrain heightmaps or noise-based distortion fields.
+ *
+ * @param delta Input scalar displacement field.
+ * @param angle Rotation angle in degrees (counterclockwise).
+ * @param dx    Output array receiving the X-axis displacement component.
+ * @param dy    Output array receiving the Y-axis displacement component.
+ * */
+void rotate_displacement(const Array &delta, float angle, Array &dx, Array &dy);
+
+/**
  * @brief Computes the sigmoid function for a scalar value.
  *
  * This function applies a generalized sigmoid transformation:

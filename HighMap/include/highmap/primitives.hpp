@@ -220,9 +220,9 @@ Array checkerboard(Vec2<int>    shape,
  * displacement noise fields can be applied to perturb the cone shape.
  *
  * @param  shape     Output array shape (resolution in x and y).
- * @param  slope   Slope angle of the cone (controls steepness of the sides).
- * @param  center    Center of the cone in normalized coordinates
- *                   (default = {0.5f, 0.5f}).
+ * @param  slope     Slope angle of the cone (controls steepness of the sides).
+ * @param  center    Center of the cone in normalized coordinates (default =
+ *                   {0.5f, 0.5f}).
  * @param  p_noise_x Optional pointer to external displacement noise field
  *                   (X-axis).
  * @param  p_noise_y Optional pointer to external displacement noise field

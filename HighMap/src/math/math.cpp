@@ -219,6 +219,13 @@ void radial_displacement_to_xy(const Array &dr,
     }
 }
 
+void rotate_displacement(const Array &delta, float angle, Array &dx, Array &dy)
+{
+  const float alpha = angle / 180.f * M_PI;
+  dx = delta * std::cos(alpha);
+  dy = delta * std::sin(alpha);
+}
+
 float sigmoid(float x, float width, float vmin, float vmax, float x0)
 {
   float v = 1.f / (1.f + std::exp(-(x - x0) / width));
