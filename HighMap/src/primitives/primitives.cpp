@@ -102,6 +102,7 @@ Array bump_lorentzian(Vec2<int>    shape,
 Array cone(Vec2<int>    shape,
            float        slope,
            float        apex_elevation,
+           bool         smooth_profile,
            Vec2<float>  center,
            const Array *p_noise_x,
            const Array *p_noise_y,
@@ -114,16 +115,40 @@ Array cone(Vec2<int>    shape,
     float dx = x - center.x;
     float dy = y - center.y;
     float r = std::hypot(dx, dy);
-    return std::max(0.f, apex_elevation - slope * r);
+    float v = std::max(0.f, apex_elevation - slope * r);
+    return v;
   };
 
-  fill_array_using_xy_function(array,
-                               bbox,
-                               nullptr,
-                               p_noise_x,
-                               p_noise_y,
-                               nullptr,
-                               lambda);
+  auto lambda_s = [slope, apex_elevation, center](float x, float y, float)
+  {
+    float dx = x - center.x;
+    float dy = y - center.y;
+    float r = std::hypot(dx, dy);
+    float v = std::max(0.f, apex_elevation - slope * r);
+    return almost_unit_identity(v);
+  };
+
+  if (smooth_profile)
+  {
+    fill_array_using_xy_function(array,
+                                 bbox,
+                                 nullptr,
+                                 p_noise_x,
+                                 p_noise_y,
+                                 nullptr,
+                                 lambda_s);
+  }
+  else
+  {
+    fill_array_using_xy_function(array,
+                                 bbox,
+                                 nullptr,
+                                 p_noise_x,
+                                 p_noise_y,
+                                 nullptr,
+                                 lambda);
+  }
+
   return array;
 }
 
