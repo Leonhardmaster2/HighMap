@@ -840,7 +840,7 @@ var namespacehmap =
     [ "caldera", "namespacehmap.html#abf32b5d631ee74d292cf9449b51395c3", null ],
     [ "caldera", "namespacehmap.html#a8091f7b43325bd647faa1430af785c70", null ],
     [ "checkerboard", "namespacehmap.html#a8a56891aca58f4afd74fb34b04322569", null ],
-    [ "cone", "namespacehmap.html#abcd06a6a6f2f0bba317688349eda002d", null ],
+    [ "cone", "namespacehmap.html#af3e75ba20a563ec897513b1f9926fb9b", null ],
     [ "constant", "namespacehmap.html#a8f4e766dca0065219e26af946bd61946", null ],
     [ "crater", "namespacehmap.html#a608453bf311137377626e4db29502ea1", null ],
     [ "dendry", "namespacehmap.html#a1b7c375c3335b31ab4773d792365faac", null ],
