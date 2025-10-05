@@ -246,8 +246,8 @@ var NAVTREEINDEX9 =
 "morphology__gpu_8cpp.html#afd60fc3552953dcdbda7baeef6b2ccce":[5,0,1,1,22,3,6],
 "mountain__inselberg_8cpp.html":[5,0,1,1,26,1,3],
 "mountain__inselberg_8cpp.html#ad70163c350be417e3c71c26c14ffa25f":[5,0,1,1,26,1,3,0],
-"mountain__tibesti_8cpp.html":[5,0,1,1,26,1,4],
-"mountain__tibesti_8cpp.html#a91c4bef201bf0b1c1759b0e924e48861":[5,0,1,1,26,1,4,0],
-"namespacehmap.html":[3,0,0],
-"namespacehmap.html#a000840cf4916102db68d6428c8c8c7e2":[3,0,0,546]
+"mountain__stump_8cpp.html":[5,0,1,1,26,1,4],
+"mountain__stump_8cpp.html#a53c706b728f497e64c49c2e36bf0aed6":[5,0,1,1,26,1,4,0],
+"mountain__tibesti_8cpp.html":[5,0,1,1,26,1,5],
+"mountain__tibesti_8cpp.html#a91c4bef201bf0b1c1759b0e924e48861":[5,0,1,1,26,1,5,0]
 };

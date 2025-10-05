@@ -110,6 +110,7 @@ var namespacehmap =
       [ "gavoronoise", "namespacehmap_1_1gpu.html#a688f13a6de420fd318ccba616eafcf25", null ],
       [ "mountain_inselberg", "namespacehmap_1_1gpu.html#ad70163c350be417e3c71c26c14ffa25f", null ],
       [ "mountain_range_radial", "namespacehmap_1_1gpu.html#a50332f79ca9b2548089359f5ad4b8ffd", null ],
+      [ "mountain_stump", "namespacehmap_1_1gpu.html#a53c706b728f497e64c49c2e36bf0aed6", null ],
       [ "mountain_tibesti", "namespacehmap_1_1gpu.html#a91c4bef201bf0b1c1759b0e924e48861", null ],
       [ "noise", "namespacehmap_1_1gpu.html#a450f5b26f42b6f06be3e1e131f6aaf86", null ],
       [ "noise_fbm", "namespacehmap_1_1gpu.html#a322260e971f4dec19ec8bc270e7cc461", null ],

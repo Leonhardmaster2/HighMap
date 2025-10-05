@@ -1,5 +1,9 @@
 var NAVTREEINDEX17 =
 {
+"thermal__gpu_8cpp.html#ad5bd9a318918350b56ccc887139ca554":[5,0,1,1,10,22,5],
+"thermal__gpu_8cpp.html#ae57a1e9bd94f218d4be17c9d8be012c3":[5,0,1,1,10,22,6],
+"thermal__gpu_8cpp.html#afabf7cb3077839af03388c0d1236d912":[5,0,1,1,10,22,8],
+"thermal__olsen_8cpp.html":[5,0,1,1,10,23],
 "thermal__olsen_8cpp.html#a1ebb59674f1b317db20cc87385bc41a5":[5,0,1,1,10,23,0],
 "thermal__rib_8cpp.html":[5,0,1,1,10,24],
 "thermal__rib_8cpp.html#a4ca4c918ef88ea4fc16e25c7017e15c9":[5,0,1,1,10,24,0],
