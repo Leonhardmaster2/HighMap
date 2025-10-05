@@ -1947,6 +1947,68 @@ Array mountain_range_radial(Vec2<int>    shape,
                             Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
+ * @brief Generates a mountain-like heightmap with a flattened (stump-shaped)
+ * peak.
+ *
+ * This function procedurally creates a terrain resembling a broad mountain with
+ * a smooth, truncated summit. The result combines layered fractal noise (FBM),
+ * Gaussian shaping, and Voronoi-based ridge formation to produce
+ * natural-looking geomorphological features. The shape can be modulated by
+ * directional displacement noise, smoothed using deposition simulation, and
+ * refined through gamma and smoothing parameters.
+ *
+ * @param  shape          Dimensions of the output heightmap (width, height).
+ * @param  seed           Random seed for noise generation.
+ * @param  scale          Global scale factor controlling the size of features.
+ * @param  octaves        Number of noise octaves used in FBM generation.
+ * @param  peak_kw        Base spatial frequency of the main ridge/peak
+ *                        structure.
+ * @param  rugosity       Controls the roughness of base noise displacements.
+ * @param  angle          Orientation angle (in degrees) of the main ridge
+ *                        direction.
+ * @param  k_smoothing    Smoothing coefficient applied to the Voronoi FBM
+ *                        ridges.
+ * @param  gamma          Gamma correction applied to the ridge intensity.
+ * @param  add_deposition If true, applies an additional smoothing pass to
+ *                        simulate sediment deposition.
+ * @param  ridge_amp      Amplitude scaling factor for ridge prominence.
+ * @param  base_noise_amp Amplitude scaling factor for base displacement noise.
+ * @param  center         Normalized coordinates of the mountain’s center
+ *                        (default domain: [0, 1]²).
+ * @param  p_noise_x      Optional pointer to horizontal displacement noise
+ *                        (nullptr for none).
+ * @param  p_noise_y      Optional pointer to vertical displacement noise
+ *                        (nullptr for none).
+ * @param  bbox           Bounding box of the generated region (xmin, xmax,
+ *                        ymin, ymax).
+ *
+ * @return                A 2D Array containing the generated mountain stump
+ *                        heightmap.
+ *
+ * **Example**
+ * @include ex_mountain_stump.cpp
+ *
+ * **Result**
+ * @image html ex_mountain_stump.png
+ * */
+Array mountain_stump(Vec2<int>    shape,
+                     uint         seed,
+                     float        scale = 1.f,
+                     int          octaves = 8,
+                     float        peak_kw = 6.f,
+                     float        rugosity = 0.f,
+                     float        angle = 45.f,
+                     float        k_smoothing = 0.f,
+                     float        gamma = 0.25f,
+                     bool         add_deposition = true,
+                     float        ridge_amp = 0.75f,
+                     float        base_noise_amp = 0.1f,
+                     Vec2<float>  center = {0.5f, 0.5f},
+                     const Array *p_noise_x = nullptr,
+                     const Array *p_noise_y = nullptr,
+                     Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
  * @brief Generates a synthetic "Tibesti" mountain heightmap.
  *
  * This function procedurally creates a 2D elevation field inspired by the
