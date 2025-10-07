@@ -10,6 +10,7 @@
 #include "highmap/colormaps.hpp"
 #include "highmap/export.hpp"
 #include "highmap/heightmap.hpp"
+#include "highmap/interpolate1d.hpp"
 #include "highmap/math.hpp"
 #include "highmap/operator.hpp"
 #include "highmap/primitives.hpp"
@@ -99,6 +100,7 @@ void HeightmapRGBA::set_sto(Vec2<int> new_shape,
 void HeightmapRGBA::colorize(Heightmap                      &color_level,
                              float                           vmin,
                              float                           vmax,
+                             std::vector<float>              positions,
                              std::vector<std::vector<float>> colormap_colors,
                              Heightmap                      *p_alpha,
                              bool                            reverse,
@@ -107,32 +109,34 @@ void HeightmapRGBA::colorize(Heightmap                      &color_level,
   if (reverse) std::swap(vmin, vmax);
 
   // write colorize function for each tile
-  auto lambda = [&vmin, &vmax, &colormap_colors](Array &in,
-                                                 Array &out,
-                                                 Array *p_noise_array,
-                                                 int    channel)
+  auto lambda =
+      [&vmin, &vmax, &positions, &colormap_colors](Array &in,
+                                                   Array &out,
+                                                   Array *p_noise_array,
+                                                   int    channel)
   {
-    int         nc = (int)colormap_colors.size();
+    // color interpolators
+    std::vector<float> cc;
+
+    for (const auto &col : colormap_colors)
+      cc.push_back(col[channel]);
+
+    Interpolator1D cc_i = hmap::Interpolator1D(
+        positions,
+        cc,
+        hmap::InterpolationMethod1D::LINEAR);
+
+    // colorize
     Vec2<float> a = in.normalization_coeff(vmin, vmax);
-    a.x *= (nc - 1);
-    a.y *= (nc - 1);
 
     if (p_noise_array)
     {
       for (int j = 0; j < in.shape.y; j++)
         for (int i = 0; i < in.shape.x; i++)
         {
-          float v = std::clamp(a.x * (in(i, j) + (*p_noise_array)(i, j)) + a.y,
-                               0.f,
-                               (float)nc - 1.f);
-          int   k = (int)v;
-          float t = v - k;
-
-          if (k < nc - 1)
-            out(i, j) = (1.f - t) * colormap_colors[k][channel] +
-                        t * colormap_colors[k + 1][channel];
-          else
-            out(i, j) = colormap_colors[k][channel];
+          float v = a.x * (in(i, j) + (*p_noise_array)(i, j)) + a.y;
+          v = std::clamp(v, 0.f, 1.f);
+          out(i, j) = cc_i(v);
         }
     }
     else
@@ -140,15 +144,9 @@ void HeightmapRGBA::colorize(Heightmap                      &color_level,
       for (int j = 0; j < in.shape.y; j++)
         for (int i = 0; i < in.shape.x; i++)
         {
-          float v = std::clamp(a.x * in(i, j) + a.y, 0.f, (float)nc - 1.f);
-          int   k = (int)v;
-          float t = v - k;
-
-          if (k < nc - 1)
-            out(i, j) = (1.f - t) * colormap_colors[k][channel] +
-                        t * colormap_colors[k + 1][channel];
-          else
-            out(i, j) = colormap_colors[k][channel];
+          float v = a.x * (in(i, j) + a.y);
+          v = std::clamp(v, 0.f, 1.f);
+          out(i, j) = cc_i(v);
         }
     }
   };
@@ -188,6 +186,29 @@ void HeightmapRGBA::colorize(Heightmap                      &color_level,
           *pa_a = 1.f;
         },
         TransformMode::DISTRIBUTED);
+}
+
+void HeightmapRGBA::colorize(Heightmap                      &color_level,
+                             float                           vmin,
+                             float                           vmax,
+                             std::vector<std::vector<float>> colormap_colors,
+                             Heightmap                      *p_alpha,
+                             bool                            reverse,
+                             Heightmap                      *p_noise)
+{
+  std::vector<float> positions = linspace(0.f,
+                                          1.f,
+                                          colormap_colors.size(),
+                                          true);
+
+  this->colorize(color_level,
+		 vmin,
+		 vmax,
+		 positions,
+		 colormap_colors,
+		 p_alpha,
+		 reverse,
+		 p_noise);
 }
 
 void HeightmapRGBA::colorize(Heightmap &color_level,

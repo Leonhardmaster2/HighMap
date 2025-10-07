@@ -608,6 +608,15 @@ struct HeightmapRGBA
                 bool                            reverse = false,
                 Heightmap                      *p_noise = nullptr);
 
+  void colorize(Heightmap                      &color_level,
+                float                           vmin,
+                float                           vmax,
+                std::vector<float>              positions,
+                std::vector<std::vector<float>> colormap_colors,
+                Heightmap                      *p_alpha = nullptr,
+                bool                            reverse = false,
+                Heightmap                      *p_noise = nullptr);
+
   /**
    * @brief Computes the luminance of an RGBA height map.
    *
