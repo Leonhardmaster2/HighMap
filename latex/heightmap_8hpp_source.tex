@@ -265,180 +265,189 @@
 \DoxyCodeLine{00608\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ reverse\ =\ \textcolor{keyword}{false},}
 \DoxyCodeLine{00609\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *p\_noise\ =\ \textcolor{keyword}{nullptr});}
 \DoxyCodeLine{00610\ }
-\DoxyCodeLine{00626\ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \mbox{\hyperlink{structhmap_1_1HeightmapRGBA_af53c9f791817ea400f3b8cdfe152bd3a}{luminance}}();}
-\DoxyCodeLine{00627\ }
-\DoxyCodeLine{00635\ \ \ \textcolor{keyword}{friend}\ \mbox{\hyperlink{structhmap_1_1HeightmapRGBA}{HeightmapRGBA}}\ \mbox{\hyperlink{structhmap_1_1HeightmapRGBA_a1fa412d908912e2f55defbf67cb42edd}{mix\_heightmap\_rgba}}(\mbox{\hyperlink{structhmap_1_1HeightmapRGBA}{HeightmapRGBA}}\ \&rgba1,}
-\DoxyCodeLine{00636\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structhmap_1_1HeightmapRGBA}{HeightmapRGBA}}\ \&rgba2,}
-\DoxyCodeLine{00637\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ use\_sqrt\_avg);}
-\DoxyCodeLine{00638\ }
-\DoxyCodeLine{00645\ \ \ \textcolor{keyword}{friend}\ \mbox{\hyperlink{structhmap_1_1HeightmapRGBA}{HeightmapRGBA}}\ \mbox{\hyperlink{structhmap_1_1HeightmapRGBA_a1fa412d908912e2f55defbf67cb42edd}{mix\_heightmap\_rgba}}(}
-\DoxyCodeLine{00646\ \ \ \ \ \ \ std::vector<HeightmapRGBA\ *>\ rgba\_plist,}
-\DoxyCodeLine{00647\ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ use\_sqrt\_avg);}
-\DoxyCodeLine{00648\ }
-\DoxyCodeLine{00652\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structhmap_1_1HeightmapRGBA_a144c800a402bba5570820c83c8b8535b}{normalize}}();}
-\DoxyCodeLine{00653\ }
-\DoxyCodeLine{00659\ \ \ std::vector<uint8\_t>\ \mbox{\hyperlink{structhmap_1_1HeightmapRGBA_ab52832c5db286659aab59c6a554d4e59}{to\_img\_8bit}}(\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2<int>}}\ shape\_img\ =\ \{0,\ 0\},}
-\DoxyCodeLine{00660\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ flip\_y\ =\ \textcolor{keyword}{true})\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00661\ \};}
+\DoxyCodeLine{00611\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structhmap_1_1HeightmapRGBA_a9fb8149f2080b36e191ed97f70af09ad}{colorize}}(\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&color\_level,}
+\DoxyCodeLine{00612\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vmin,}
+\DoxyCodeLine{00613\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vmax,}
+\DoxyCodeLine{00614\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<float>\ \ \ \ \ \ \ \ \ \ \ \ \ \ positions,}
+\DoxyCodeLine{00615\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::vector<float>>\ colormap\_colors,}
+\DoxyCodeLine{00616\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *p\_alpha\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{00617\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ reverse\ =\ \textcolor{keyword}{false},}
+\DoxyCodeLine{00618\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *p\_noise\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00619\ }
+\DoxyCodeLine{00635\ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \mbox{\hyperlink{structhmap_1_1HeightmapRGBA_af53c9f791817ea400f3b8cdfe152bd3a}{luminance}}();}
+\DoxyCodeLine{00636\ }
+\DoxyCodeLine{00644\ \ \ \textcolor{keyword}{friend}\ \mbox{\hyperlink{structhmap_1_1HeightmapRGBA}{HeightmapRGBA}}\ \mbox{\hyperlink{structhmap_1_1HeightmapRGBA_a1fa412d908912e2f55defbf67cb42edd}{mix\_heightmap\_rgba}}(\mbox{\hyperlink{structhmap_1_1HeightmapRGBA}{HeightmapRGBA}}\ \&rgba1,}
+\DoxyCodeLine{00645\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structhmap_1_1HeightmapRGBA}{HeightmapRGBA}}\ \&rgba2,}
+\DoxyCodeLine{00646\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ use\_sqrt\_avg);}
+\DoxyCodeLine{00647\ }
+\DoxyCodeLine{00654\ \ \ \textcolor{keyword}{friend}\ \mbox{\hyperlink{structhmap_1_1HeightmapRGBA}{HeightmapRGBA}}\ \mbox{\hyperlink{structhmap_1_1HeightmapRGBA_a1fa412d908912e2f55defbf67cb42edd}{mix\_heightmap\_rgba}}(}
+\DoxyCodeLine{00655\ \ \ \ \ \ \ std::vector<HeightmapRGBA\ *>\ rgba\_plist,}
+\DoxyCodeLine{00656\ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ use\_sqrt\_avg);}
+\DoxyCodeLine{00657\ }
+\DoxyCodeLine{00661\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structhmap_1_1HeightmapRGBA_a144c800a402bba5570820c83c8b8535b}{normalize}}();}
 \DoxyCodeLine{00662\ }
-\DoxyCodeLine{00693\ HeightmapRGBA\ \mbox{\hyperlink{namespacehmap_a2751ce7799f172484dd06a1b72d168da}{mix\_normal\_map\_rgba}}(HeightmapRGBA\ \ \ \ \ \ \ \ \ \ \&nmap\_base,}
-\DoxyCodeLine{00694\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HeightmapRGBA\ \ \ \ \ \ \ \ \ \ \&nmap\_detail,}
-\DoxyCodeLine{00695\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ detail\_scaling\ =\ 1.f,}
-\DoxyCodeLine{00696\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_abc952321c99ec11d60b4037e3d27db9b}{NormalMapBlendingMethod}}\ blending\_method\ =}
-\DoxyCodeLine{00697\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_abc952321c99ec11d60b4037e3d27db9ba97d5a1740991179c436482de8c1c1f34}{NormalMapBlendingMethod::NMAP\_DERIVATIVE}});}
-\DoxyCodeLine{00698\ }
-\DoxyCodeLine{00719\ [[deprecated]]\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a0c5529e52be9242f4e2587d043ece704}{fill}}(}
-\DoxyCodeLine{00720\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \&h,}
-\DoxyCodeLine{00721\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ *p\_noise\_x,}
-\DoxyCodeLine{00722\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ *p\_noise\_y,}
-\DoxyCodeLine{00723\ \ \ \ \ std::function<}
-\DoxyCodeLine{00724\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{Array}}(\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2<int>}},\ \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4<float>}},\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ *p\_noise\_x,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ *p\_noise\_y)>}
-\DoxyCodeLine{00725\ \ \ \ \ \ \ \ \ nullary\_op);}
-\DoxyCodeLine{00726\ }
-\DoxyCodeLine{00727\ [[deprecated]]\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a0c5529e52be9242f4e2587d043ece704}{fill}}(\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h,}
-\DoxyCodeLine{00728\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&hin,}
-\DoxyCodeLine{00729\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *p\_noise\_x,}
-\DoxyCodeLine{00730\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *p\_noise\_y,}
-\DoxyCodeLine{00731\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::function<\mbox{\hyperlink{classhmap_1_1Array}{Array}}(\mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ \&,}
-\DoxyCodeLine{00732\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2<int>}},}
-\DoxyCodeLine{00733\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4<float>}},}
-\DoxyCodeLine{00734\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ *,}
-\DoxyCodeLine{00735\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ *)>\ nullary\_op);}
-\DoxyCodeLine{00736\ }
-\DoxyCodeLine{00737\ [[deprecated]]\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a0c5529e52be9242f4e2587d043ece704}{fill}}(\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h,}
+\DoxyCodeLine{00668\ \ \ std::vector<uint8\_t>\ \mbox{\hyperlink{structhmap_1_1HeightmapRGBA_ab52832c5db286659aab59c6a554d4e59}{to\_img\_8bit}}(\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2<int>}}\ shape\_img\ =\ \{0,\ 0\},}
+\DoxyCodeLine{00669\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ flip\_y\ =\ \textcolor{keyword}{true})\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00670\ \};}
+\DoxyCodeLine{00671\ }
+\DoxyCodeLine{00702\ HeightmapRGBA\ \mbox{\hyperlink{namespacehmap_a2751ce7799f172484dd06a1b72d168da}{mix\_normal\_map\_rgba}}(HeightmapRGBA\ \ \ \ \ \ \ \ \ \ \&nmap\_base,}
+\DoxyCodeLine{00703\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HeightmapRGBA\ \ \ \ \ \ \ \ \ \ \&nmap\_detail,}
+\DoxyCodeLine{00704\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ detail\_scaling\ =\ 1.f,}
+\DoxyCodeLine{00705\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_abc952321c99ec11d60b4037e3d27db9b}{NormalMapBlendingMethod}}\ blending\_method\ =}
+\DoxyCodeLine{00706\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_abc952321c99ec11d60b4037e3d27db9ba97d5a1740991179c436482de8c1c1f34}{NormalMapBlendingMethod::NMAP\_DERIVATIVE}});}
+\DoxyCodeLine{00707\ }
+\DoxyCodeLine{00728\ [[deprecated]]\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a0c5529e52be9242f4e2587d043ece704}{fill}}(}
+\DoxyCodeLine{00729\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \&h,}
+\DoxyCodeLine{00730\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ *p\_noise\_x,}
+\DoxyCodeLine{00731\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ *p\_noise\_y,}
+\DoxyCodeLine{00732\ \ \ \ \ std::function<}
+\DoxyCodeLine{00733\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{Array}}(\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2<int>}},\ \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4<float>}},\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ *p\_noise\_x,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ *p\_noise\_y)>}
+\DoxyCodeLine{00734\ \ \ \ \ \ \ \ \ nullary\_op);}
+\DoxyCodeLine{00735\ }
+\DoxyCodeLine{00736\ [[deprecated]]\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a0c5529e52be9242f4e2587d043ece704}{fill}}(\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h,}
+\DoxyCodeLine{00737\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&hin,}
 \DoxyCodeLine{00738\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *p\_noise\_x,}
 \DoxyCodeLine{00739\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *p\_noise\_y,}
-\DoxyCodeLine{00740\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *p\_stretching,}
-\DoxyCodeLine{00741\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::function<\mbox{\hyperlink{classhmap_1_1Array}{Array}}(\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2<int>}},}
+\DoxyCodeLine{00740\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::function<\mbox{\hyperlink{classhmap_1_1Array}{Array}}(\mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ \&,}
+\DoxyCodeLine{00741\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2<int>}},}
 \DoxyCodeLine{00742\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4<float>}},}
 \DoxyCodeLine{00743\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ *,}
-\DoxyCodeLine{00744\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ *,}
-\DoxyCodeLine{00745\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ *)>\ nullary\_op);}
-\DoxyCodeLine{00746\ }
-\DoxyCodeLine{00747\ \textcolor{comment}{//\ shape,\ shift,\ scale\ and\ noise}}
-\DoxyCodeLine{00748\ [[deprecated]]\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a0c5529e52be9242f4e2587d043ece704}{fill}}(}
-\DoxyCodeLine{00749\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h,}
-\DoxyCodeLine{00750\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *p\_noise,}
-\DoxyCodeLine{00751\ \ \ \ \ std::function<\mbox{\hyperlink{classhmap_1_1Array}{Array}}(\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2<int>}},\ \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4<float>}},\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ *p\_noise)>\ nullary\_op);}
-\DoxyCodeLine{00752\ }
-\DoxyCodeLine{00753\ \textcolor{comment}{//\ shape,\ shift\ and\ scale}}
-\DoxyCodeLine{00754\ [[deprecated]]\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a0c5529e52be9242f4e2587d043ece704}{fill}}(}
-\DoxyCodeLine{00755\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h,}
-\DoxyCodeLine{00756\ \ \ \ \ std::function<\mbox{\hyperlink{classhmap_1_1Array}{Array}}(\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2<int>}},\ \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4<float>}})>\ nullary\_op);}
-\DoxyCodeLine{00757\ }
-\DoxyCodeLine{00758\ \textcolor{comment}{//\ shape\ only}}
-\DoxyCodeLine{00759\ [[deprecated]]\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a0c5529e52be9242f4e2587d043ece704}{fill}}(\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h,}
-\DoxyCodeLine{00760\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::function<\mbox{\hyperlink{classhmap_1_1Array}{Array}}(\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2<int>}})>\ nullary\_op);}
+\DoxyCodeLine{00744\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ *)>\ nullary\_op);}
+\DoxyCodeLine{00745\ }
+\DoxyCodeLine{00746\ [[deprecated]]\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a0c5529e52be9242f4e2587d043ece704}{fill}}(\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h,}
+\DoxyCodeLine{00747\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *p\_noise\_x,}
+\DoxyCodeLine{00748\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *p\_noise\_y,}
+\DoxyCodeLine{00749\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *p\_stretching,}
+\DoxyCodeLine{00750\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::function<\mbox{\hyperlink{classhmap_1_1Array}{Array}}(\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2<int>}},}
+\DoxyCodeLine{00751\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4<float>}},}
+\DoxyCodeLine{00752\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ *,}
+\DoxyCodeLine{00753\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ *,}
+\DoxyCodeLine{00754\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ *)>\ nullary\_op);}
+\DoxyCodeLine{00755\ }
+\DoxyCodeLine{00756\ \textcolor{comment}{//\ shape,\ shift,\ scale\ and\ noise}}
+\DoxyCodeLine{00757\ [[deprecated]]\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a0c5529e52be9242f4e2587d043ece704}{fill}}(}
+\DoxyCodeLine{00758\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h,}
+\DoxyCodeLine{00759\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *p\_noise,}
+\DoxyCodeLine{00760\ \ \ \ \ std::function<\mbox{\hyperlink{classhmap_1_1Array}{Array}}(\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2<int>}},\ \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4<float>}},\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ *p\_noise)>\ nullary\_op);}
 \DoxyCodeLine{00761\ }
-\DoxyCodeLine{00762\ [[deprecated]]\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a6d8728c019a17094c326f31501ea5482}{transform}}(\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h,}
-\DoxyCodeLine{00763\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::function<\textcolor{keywordtype}{void}(\mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&)>\ unary\_op);}
-\DoxyCodeLine{00764\ }
-\DoxyCodeLine{00765\ [[deprecated]]\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a6d8728c019a17094c326f31501ea5482}{transform}}(}
-\DoxyCodeLine{00766\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h,}
-\DoxyCodeLine{00767\ \ \ \ \ std::function<\textcolor{keywordtype}{void}(\mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&,\ \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4<float>}})>\ unary\_op);}
-\DoxyCodeLine{00768\ }
-\DoxyCodeLine{00769\ [[deprecated]]\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a6d8728c019a17094c326f31501ea5482}{transform}}(}
-\DoxyCodeLine{00770\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h,}
-\DoxyCodeLine{00771\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *p\_noise\_x,}
-\DoxyCodeLine{00772\ \ \ \ \ std::function<\textcolor{keywordtype}{void}(\mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&,\ \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4<float>}},\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ *)>\ unary\_op);}
+\DoxyCodeLine{00762\ \textcolor{comment}{//\ shape,\ shift\ and\ scale}}
+\DoxyCodeLine{00763\ [[deprecated]]\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a0c5529e52be9242f4e2587d043ece704}{fill}}(}
+\DoxyCodeLine{00764\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h,}
+\DoxyCodeLine{00765\ \ \ \ \ std::function<\mbox{\hyperlink{classhmap_1_1Array}{Array}}(\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2<int>}},\ \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4<float>}})>\ nullary\_op);}
+\DoxyCodeLine{00766\ }
+\DoxyCodeLine{00767\ \textcolor{comment}{//\ shape\ only}}
+\DoxyCodeLine{00768\ [[deprecated]]\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a0c5529e52be9242f4e2587d043ece704}{fill}}(\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h,}
+\DoxyCodeLine{00769\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::function<\mbox{\hyperlink{classhmap_1_1Array}{Array}}(\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2<int>}})>\ nullary\_op);}
+\DoxyCodeLine{00770\ }
+\DoxyCodeLine{00771\ [[deprecated]]\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a6d8728c019a17094c326f31501ea5482}{transform}}(\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h,}
+\DoxyCodeLine{00772\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::function<\textcolor{keywordtype}{void}(\mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&)>\ unary\_op);}
 \DoxyCodeLine{00773\ }
 \DoxyCodeLine{00774\ [[deprecated]]\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a6d8728c019a17094c326f31501ea5482}{transform}}(}
-\DoxyCodeLine{00775\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h,}
-\DoxyCodeLine{00776\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *p\_noise\_x,}
-\DoxyCodeLine{00777\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *p\_noise\_y,}
-\DoxyCodeLine{00778\ \ \ \ \ std::function<\textcolor{keywordtype}{void}(\mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&,\ \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4<float>}},\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ *,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ *)>\ unary\_op);}
-\DoxyCodeLine{00779\ }
-\DoxyCodeLine{00780\ [[deprecated]]\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a6d8728c019a17094c326f31501ea5482}{transform}}(}
-\DoxyCodeLine{00781\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h,}
-\DoxyCodeLine{00782\ \ \ \ \ std::function<\textcolor{keywordtype}{void}(\mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&,\ \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2<float>}},\ \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2<float>}})>\ unary\_op);}
-\DoxyCodeLine{00783\ }
-\DoxyCodeLine{00784\ \textcolor{comment}{//\ input\ array\ and\ mask}}
-\DoxyCodeLine{00785\ [[deprecated]]\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a6d8728c019a17094c326f31501ea5482}{transform}}(\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h,}
-\DoxyCodeLine{00786\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *p\_mask,}
-\DoxyCodeLine{00787\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::function<\textcolor{keywordtype}{void}(\mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ *)>\ unary\_op);}
+\DoxyCodeLine{00775\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h,}
+\DoxyCodeLine{00776\ \ \ \ \ std::function<\textcolor{keywordtype}{void}(\mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&,\ \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4<float>}})>\ unary\_op);}
+\DoxyCodeLine{00777\ }
+\DoxyCodeLine{00778\ [[deprecated]]\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a6d8728c019a17094c326f31501ea5482}{transform}}(}
+\DoxyCodeLine{00779\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h,}
+\DoxyCodeLine{00780\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *p\_noise\_x,}
+\DoxyCodeLine{00781\ \ \ \ \ std::function<\textcolor{keywordtype}{void}(\mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&,\ \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4<float>}},\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ *)>\ unary\_op);}
+\DoxyCodeLine{00782\ }
+\DoxyCodeLine{00783\ [[deprecated]]\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a6d8728c019a17094c326f31501ea5482}{transform}}(}
+\DoxyCodeLine{00784\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h,}
+\DoxyCodeLine{00785\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *p\_noise\_x,}
+\DoxyCodeLine{00786\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *p\_noise\_y,}
+\DoxyCodeLine{00787\ \ \ \ \ std::function<\textcolor{keywordtype}{void}(\mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&,\ \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4<float>}},\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ *,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ *)>\ unary\_op);}
 \DoxyCodeLine{00788\ }
-\DoxyCodeLine{00789\ \textcolor{comment}{//\ for\ erosion}}
-\DoxyCodeLine{00790\ [[deprecated]]\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a6d8728c019a17094c326f31501ea5482}{transform}}(}
-\DoxyCodeLine{00791\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \&h,}
-\DoxyCodeLine{00792\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{hmap::Heightmap}}\ *p\_1,}
-\DoxyCodeLine{00793\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{hmap::Heightmap}}\ *p\_2,}
-\DoxyCodeLine{00794\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{hmap::Heightmap}}\ *p\_3,}
-\DoxyCodeLine{00795\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{hmap::Heightmap}}\ *p\_4,}
-\DoxyCodeLine{00796\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{hmap::Heightmap}}\ *p\_5,}
-\DoxyCodeLine{00797\ \ \ \ \ std::function<\textcolor{keywordtype}{void}(\mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ *,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ *,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ *,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ *,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ *)>}
-\DoxyCodeLine{00798\ \ \ \ \ \ \ \ \ unary\_op);}
-\DoxyCodeLine{00799\ }
-\DoxyCodeLine{00800\ [[deprecated]]\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a6d8728c019a17094c326f31501ea5482}{transform}}(}
-\DoxyCodeLine{00801\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h,}
-\DoxyCodeLine{00802\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{hmap::Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *p\_1,}
-\DoxyCodeLine{00803\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{hmap::Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *p\_2,}
-\DoxyCodeLine{00804\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{hmap::Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *p\_3,}
-\DoxyCodeLine{00805\ \ \ \ \ std::function<\textcolor{keywordtype}{void}(\mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ *,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ *,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ *)>\ unary\_op);}
-\DoxyCodeLine{00806\ }
-\DoxyCodeLine{00807\ [[deprecated]]\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a6d8728c019a17094c326f31501ea5482}{transform}}(}
-\DoxyCodeLine{00808\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h,}
-\DoxyCodeLine{00809\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{hmap::Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *p\_1,}
-\DoxyCodeLine{00810\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{hmap::Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *p\_2,}
-\DoxyCodeLine{00811\ \ \ \ \ std::function<\textcolor{keywordtype}{void}(\mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ *,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ *)>\ unary\_op);}
-\DoxyCodeLine{00812\ }
-\DoxyCodeLine{00813\ [[deprecated]]\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a6d8728c019a17094c326f31501ea5482}{transform}}(\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h1,}
-\DoxyCodeLine{00814\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h2,}
-\DoxyCodeLine{00815\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::function<\textcolor{keywordtype}{void}(\mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&)>\ binary\_op);}
-\DoxyCodeLine{00816\ }
-\DoxyCodeLine{00817\ [[deprecated]]\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a6d8728c019a17094c326f31501ea5482}{transform}}(}
-\DoxyCodeLine{00818\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h1,}
-\DoxyCodeLine{00819\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h2,}
-\DoxyCodeLine{00820\ \ \ \ \ std::function<\textcolor{keywordtype}{void}(\mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&,\ \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4<float>}})>\ binary\_op);}
+\DoxyCodeLine{00789\ [[deprecated]]\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a6d8728c019a17094c326f31501ea5482}{transform}}(}
+\DoxyCodeLine{00790\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h,}
+\DoxyCodeLine{00791\ \ \ \ \ std::function<\textcolor{keywordtype}{void}(\mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&,\ \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2<float>}},\ \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2<float>}})>\ unary\_op);}
+\DoxyCodeLine{00792\ }
+\DoxyCodeLine{00793\ \textcolor{comment}{//\ input\ array\ and\ mask}}
+\DoxyCodeLine{00794\ [[deprecated]]\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a6d8728c019a17094c326f31501ea5482}{transform}}(\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h,}
+\DoxyCodeLine{00795\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *p\_mask,}
+\DoxyCodeLine{00796\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::function<\textcolor{keywordtype}{void}(\mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ *)>\ unary\_op);}
+\DoxyCodeLine{00797\ }
+\DoxyCodeLine{00798\ \textcolor{comment}{//\ for\ erosion}}
+\DoxyCodeLine{00799\ [[deprecated]]\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a6d8728c019a17094c326f31501ea5482}{transform}}(}
+\DoxyCodeLine{00800\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \&h,}
+\DoxyCodeLine{00801\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{hmap::Heightmap}}\ *p\_1,}
+\DoxyCodeLine{00802\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{hmap::Heightmap}}\ *p\_2,}
+\DoxyCodeLine{00803\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{hmap::Heightmap}}\ *p\_3,}
+\DoxyCodeLine{00804\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{hmap::Heightmap}}\ *p\_4,}
+\DoxyCodeLine{00805\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{hmap::Heightmap}}\ *p\_5,}
+\DoxyCodeLine{00806\ \ \ \ \ std::function<\textcolor{keywordtype}{void}(\mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ *,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ *,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ *,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ *,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ *)>}
+\DoxyCodeLine{00807\ \ \ \ \ \ \ \ \ unary\_op);}
+\DoxyCodeLine{00808\ }
+\DoxyCodeLine{00809\ [[deprecated]]\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a6d8728c019a17094c326f31501ea5482}{transform}}(}
+\DoxyCodeLine{00810\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h,}
+\DoxyCodeLine{00811\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{hmap::Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *p\_1,}
+\DoxyCodeLine{00812\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{hmap::Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *p\_2,}
+\DoxyCodeLine{00813\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{hmap::Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *p\_3,}
+\DoxyCodeLine{00814\ \ \ \ \ std::function<\textcolor{keywordtype}{void}(\mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ *,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ *,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ *)>\ unary\_op);}
+\DoxyCodeLine{00815\ }
+\DoxyCodeLine{00816\ [[deprecated]]\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a6d8728c019a17094c326f31501ea5482}{transform}}(}
+\DoxyCodeLine{00817\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h,}
+\DoxyCodeLine{00818\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{hmap::Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *p\_1,}
+\DoxyCodeLine{00819\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{hmap::Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *p\_2,}
+\DoxyCodeLine{00820\ \ \ \ \ std::function<\textcolor{keywordtype}{void}(\mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ *,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ *)>\ unary\_op);}
 \DoxyCodeLine{00821\ }
-\DoxyCodeLine{00822\ [[deprecated]]\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a6d8728c019a17094c326f31501ea5482}{transform}}(}
-\DoxyCodeLine{00823\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h1,}
-\DoxyCodeLine{00824\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h2,}
-\DoxyCodeLine{00825\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h3,}
-\DoxyCodeLine{00826\ \ \ \ \ std::function<\textcolor{keywordtype}{void}(\mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&)>\ ternary\_op);}
-\DoxyCodeLine{00827\ }
-\DoxyCodeLine{00828\ [[deprecated]]\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a6d8728c019a17094c326f31501ea5482}{transform}}(}
-\DoxyCodeLine{00829\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h1,}
-\DoxyCodeLine{00830\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h2,}
-\DoxyCodeLine{00831\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h3,}
-\DoxyCodeLine{00832\ \ \ \ \ std::function<\textcolor{keywordtype}{void}(\mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&,\ \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4<float>}})>\ ternary\_op);}
-\DoxyCodeLine{00833\ }
-\DoxyCodeLine{00834\ \textcolor{comment}{//\ with\ returned\ array}}
-\DoxyCodeLine{00835\ [[deprecated]]\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a6d8728c019a17094c326f31501ea5482}{transform}}(\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h\_out,\ \textcolor{comment}{//\ output}}
-\DoxyCodeLine{00836\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h1,\ \ \ \ \textcolor{comment}{//\ in\ 1}}
-\DoxyCodeLine{00837\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::function<\mbox{\hyperlink{classhmap_1_1Array}{Array}}(\mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&)>\ unary\_op);}
-\DoxyCodeLine{00838\ }
-\DoxyCodeLine{00839\ [[deprecated]]\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a6d8728c019a17094c326f31501ea5482}{transform}}(\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \&h\_out,\ \textcolor{comment}{//\ output}}
-\DoxyCodeLine{00840\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \&h1,\ \ \ \ \textcolor{comment}{//\ in\ 1}}
-\DoxyCodeLine{00841\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \&h2,\ \ \ \ \textcolor{comment}{//\ in\ 2}}
-\DoxyCodeLine{00842\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::function<\mbox{\hyperlink{classhmap_1_1Array}{Array}}(\mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&)>\ binary\_op);}
-\DoxyCodeLine{00843\ }
-\DoxyCodeLine{00844\ [[deprecated]]\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a6d8728c019a17094c326f31501ea5482}{transform}}(}
-\DoxyCodeLine{00845\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h1,}
-\DoxyCodeLine{00846\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h2,}
-\DoxyCodeLine{00847\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h3,}
-\DoxyCodeLine{00848\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h4,}
-\DoxyCodeLine{00849\ \ \ \ \ std::function<\textcolor{keywordtype}{void}(\mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&)>\ ternary\_op);}
-\DoxyCodeLine{00850\ }
-\DoxyCodeLine{00851\ [[deprecated]]\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a6d8728c019a17094c326f31501ea5482}{transform}}(}
-\DoxyCodeLine{00852\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \&h1,}
-\DoxyCodeLine{00853\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \&h2,}
-\DoxyCodeLine{00854\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \&h3,}
-\DoxyCodeLine{00855\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \&h4,}
-\DoxyCodeLine{00856\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \&h5,}
-\DoxyCodeLine{00857\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \&h6,}
-\DoxyCodeLine{00858\ \ \ \ \ std::function<\textcolor{keywordtype}{void}(\mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&)>}
-\DoxyCodeLine{00859\ \ \ \ \ \ \ \ \ op);}
-\DoxyCodeLine{00860\ }
-\DoxyCodeLine{00873\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a6d8728c019a17094c326f31501ea5482}{transform}}(std::vector<Heightmap\ *>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ p\_hmaps,}
-\DoxyCodeLine{00874\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::function<\textcolor{keywordtype}{void}(\textcolor{keyword}{const}\ std::vector<Array\ *>,}
-\DoxyCodeLine{00875\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structhmap_1_1Vec2}{hmap::Vec2<int>}},}
-\DoxyCodeLine{00876\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structhmap_1_1Vec4}{hmap::Vec4<float>}})>\ op,}
-\DoxyCodeLine{00877\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ab36df744301ada377d4a3f3a34bca77f}{TransformMode}}\ transform\_mode\ =\ \mbox{\hyperlink{namespacehmap_ab36df744301ada377d4a3f3a34bca77fac40707c2538151422af1c84dfd46252b}{TransformMode::DISTRIBUTED}});}
-\DoxyCodeLine{00878\ }
-\DoxyCodeLine{00879\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a6d8728c019a17094c326f31501ea5482}{transform}}(std::vector<Heightmap\ *>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ p\_hmaps,}
-\DoxyCodeLine{00880\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::function<\textcolor{keywordtype}{void}(\textcolor{keyword}{const}\ std::vector<Array\ *>)>\ op,}
-\DoxyCodeLine{00881\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ab36df744301ada377d4a3f3a34bca77f}{TransformMode}}\ transform\_mode\ =\ \mbox{\hyperlink{namespacehmap_ab36df744301ada377d4a3f3a34bca77fac40707c2538151422af1c84dfd46252b}{TransformMode::DISTRIBUTED}});}
-\DoxyCodeLine{00882\ }
-\DoxyCodeLine{00883\ \}\ \textcolor{comment}{//\ namespace\ hmap}}
+\DoxyCodeLine{00822\ [[deprecated]]\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a6d8728c019a17094c326f31501ea5482}{transform}}(\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h1,}
+\DoxyCodeLine{00823\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h2,}
+\DoxyCodeLine{00824\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::function<\textcolor{keywordtype}{void}(\mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&)>\ binary\_op);}
+\DoxyCodeLine{00825\ }
+\DoxyCodeLine{00826\ [[deprecated]]\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a6d8728c019a17094c326f31501ea5482}{transform}}(}
+\DoxyCodeLine{00827\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h1,}
+\DoxyCodeLine{00828\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h2,}
+\DoxyCodeLine{00829\ \ \ \ \ std::function<\textcolor{keywordtype}{void}(\mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&,\ \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4<float>}})>\ binary\_op);}
+\DoxyCodeLine{00830\ }
+\DoxyCodeLine{00831\ [[deprecated]]\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a6d8728c019a17094c326f31501ea5482}{transform}}(}
+\DoxyCodeLine{00832\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h1,}
+\DoxyCodeLine{00833\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h2,}
+\DoxyCodeLine{00834\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h3,}
+\DoxyCodeLine{00835\ \ \ \ \ std::function<\textcolor{keywordtype}{void}(\mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&)>\ ternary\_op);}
+\DoxyCodeLine{00836\ }
+\DoxyCodeLine{00837\ [[deprecated]]\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a6d8728c019a17094c326f31501ea5482}{transform}}(}
+\DoxyCodeLine{00838\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h1,}
+\DoxyCodeLine{00839\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h2,}
+\DoxyCodeLine{00840\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h3,}
+\DoxyCodeLine{00841\ \ \ \ \ std::function<\textcolor{keywordtype}{void}(\mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&,\ \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4<float>}})>\ ternary\_op);}
+\DoxyCodeLine{00842\ }
+\DoxyCodeLine{00843\ \textcolor{comment}{//\ with\ returned\ array}}
+\DoxyCodeLine{00844\ [[deprecated]]\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a6d8728c019a17094c326f31501ea5482}{transform}}(\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h\_out,\ \textcolor{comment}{//\ output}}
+\DoxyCodeLine{00845\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h1,\ \ \ \ \textcolor{comment}{//\ in\ 1}}
+\DoxyCodeLine{00846\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::function<\mbox{\hyperlink{classhmap_1_1Array}{Array}}(\mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&)>\ unary\_op);}
+\DoxyCodeLine{00847\ }
+\DoxyCodeLine{00848\ [[deprecated]]\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a6d8728c019a17094c326f31501ea5482}{transform}}(\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \&h\_out,\ \textcolor{comment}{//\ output}}
+\DoxyCodeLine{00849\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \&h1,\ \ \ \ \textcolor{comment}{//\ in\ 1}}
+\DoxyCodeLine{00850\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \&h2,\ \ \ \ \textcolor{comment}{//\ in\ 2}}
+\DoxyCodeLine{00851\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::function<\mbox{\hyperlink{classhmap_1_1Array}{Array}}(\mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&)>\ binary\_op);}
+\DoxyCodeLine{00852\ }
+\DoxyCodeLine{00853\ [[deprecated]]\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a6d8728c019a17094c326f31501ea5482}{transform}}(}
+\DoxyCodeLine{00854\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h1,}
+\DoxyCodeLine{00855\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h2,}
+\DoxyCodeLine{00856\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h3,}
+\DoxyCodeLine{00857\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&h4,}
+\DoxyCodeLine{00858\ \ \ \ \ std::function<\textcolor{keywordtype}{void}(\mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&)>\ ternary\_op);}
+\DoxyCodeLine{00859\ }
+\DoxyCodeLine{00860\ [[deprecated]]\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a6d8728c019a17094c326f31501ea5482}{transform}}(}
+\DoxyCodeLine{00861\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \&h1,}
+\DoxyCodeLine{00862\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \&h2,}
+\DoxyCodeLine{00863\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \&h3,}
+\DoxyCodeLine{00864\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \&h4,}
+\DoxyCodeLine{00865\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \&h5,}
+\DoxyCodeLine{00866\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}\ \&h6,}
+\DoxyCodeLine{00867\ \ \ \ \ std::function<\textcolor{keywordtype}{void}(\mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&,\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&)>}
+\DoxyCodeLine{00868\ \ \ \ \ \ \ \ \ op);}
+\DoxyCodeLine{00869\ }
+\DoxyCodeLine{00882\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a6d8728c019a17094c326f31501ea5482}{transform}}(std::vector<Heightmap\ *>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ p\_hmaps,}
+\DoxyCodeLine{00883\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::function<\textcolor{keywordtype}{void}(\textcolor{keyword}{const}\ std::vector<Array\ *>,}
+\DoxyCodeLine{00884\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structhmap_1_1Vec2}{hmap::Vec2<int>}},}
+\DoxyCodeLine{00885\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structhmap_1_1Vec4}{hmap::Vec4<float>}})>\ op,}
+\DoxyCodeLine{00886\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ab36df744301ada377d4a3f3a34bca77f}{TransformMode}}\ transform\_mode\ =\ \mbox{\hyperlink{namespacehmap_ab36df744301ada377d4a3f3a34bca77fac40707c2538151422af1c84dfd46252b}{TransformMode::DISTRIBUTED}});}
+\DoxyCodeLine{00887\ }
+\DoxyCodeLine{00888\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a6d8728c019a17094c326f31501ea5482}{transform}}(std::vector<Heightmap\ *>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ p\_hmaps,}
+\DoxyCodeLine{00889\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::function<\textcolor{keywordtype}{void}(\textcolor{keyword}{const}\ std::vector<Array\ *>)>\ op,}
+\DoxyCodeLine{00890\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ab36df744301ada377d4a3f3a34bca77f}{TransformMode}}\ transform\_mode\ =\ \mbox{\hyperlink{namespacehmap_ab36df744301ada377d4a3f3a34bca77fac40707c2538151422af1c84dfd46252b}{TransformMode::DISTRIBUTED}});}
+\DoxyCodeLine{00891\ }
+\DoxyCodeLine{00892\ \}\ \textcolor{comment}{//\ namespace\ hmap}}
 
 \end{DoxyCode}
