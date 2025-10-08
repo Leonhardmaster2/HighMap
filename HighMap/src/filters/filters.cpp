@@ -522,12 +522,6 @@ void laplace(Array &array, float sigma, int iterations)
   }
 }
 
-// for (int it = 0; it < iterations; it++)
-// {
-//   Array delta = laplacian(array);
-//   array += sigma * delta;
-// }
-
 void laplace(Array &array, const Array *p_mask, float sigma, int iterations)
 {
   if (!p_mask)
