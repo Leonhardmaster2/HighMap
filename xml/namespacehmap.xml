@@ -29432,7 +29432,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/flooding.cpp" line="196" column="7" bodyfile="HighMap/src/hydrology/flooding.cpp" bodystart="196" bodyend="218" declfile="HighMap/include/highmap/hydrology.hpp" declline="429" declcolumn="7"/>
+        <location file="HighMap/src/hydrology/flooding.cpp" line="224" column="7" bodyfile="HighMap/src/hydrology/flooding.cpp" bodystart="224" bodyend="246" declfile="HighMap/include/highmap/hydrology.hpp" declline="429" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a3aebd62906b90ccfde11140e13b0853f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -29531,7 +29531,199 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/flooding.cpp" line="220" column="6" bodyfile="HighMap/src/hydrology/flooding.cpp" bodystart="220" bodyend="246" declfile="HighMap/include/highmap/hydrology.hpp" declline="460" declcolumn="6"/>
+        <location file="HighMap/src/hydrology/flooding.cpp" line="196" column="6" bodyfile="HighMap/src/hydrology/flooding.cpp" bodystart="196" bodyend="222" declfile="HighMap/include/highmap/hydrology.hpp" declline="460" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehmap_1a136f042ce2ad8c14033f4d839f56265d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
+        <definition>Array hmap::water_depth_increase</definition>
+        <argsstring>(const Array &amp;water_depth, const Array &amp;z, float additional_depth)</argsstring>
+        <name>water_depth_increase</name>
+        <qualifiedname>hmap::water_depth_increase</qualifiedname>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>water_depth</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>z</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>additional_depth</declname>
+        </param>
+        <briefdescription>
+<para>Simulates the increase in water depth over a terrain. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function propagates additional water depth over a terrain elevation map (<computeroutput>z</computeroutput>), starting from cells that already contain water. The propagation occurs only in the upward direction (i.e., to higher elevation cells) and considers 8-neighbor connectivity. It effectively models how water would expand when its level rises by <computeroutput>additional_depth</computeroutput>.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>water_depth</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input array representing the base water depth. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Elevation array corresponding to the same grid as <computeroutput>water_depth</computeroutput>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>additional_depth</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The additional water depth to simulate (e.g., a flooding increment). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>An <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> representing the updated water depth distribution after propagation.</para>
+</simplesect>
+<simplesect kind="note"><para>The algorithm uses a simple flood-fill–like approach with an upward constraint, ensuring that water spreads only to neighboring cells at higher elevation. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/hydrology/flooding.cpp" line="248" column="7" bodyfile="HighMap/src/hydrology/flooding.cpp" bodystart="248" bodyend="313" declfile="HighMap/include/highmap/hydrology.hpp" declline="486" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehmap_1ad39c72e2b4c07d3013f7b0143c31137c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
+        <definition>Array hmap::water_mask</definition>
+        <argsstring>(const Array &amp;water_depth)</argsstring>
+        <name>water_mask</name>
+        <qualifiedname>hmap::water_mask</qualifiedname>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>water_depth</declname>
+        </param>
+        <briefdescription>
+<para>Generates a binary mask representing water presence. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This version of the function converts the given water depth array into a binary mask where non-zero values indicate the presence of water.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>water_depth</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input array representing water depth values. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A binary <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> where each cell is 1 if water is present, 0 otherwise.</para>
+</simplesect>
+<bold>Example</bold> <programlisting filename="ex_water_mask.cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="structhmap_1_1Vec2" kindref="compound">hmap::Vec2&lt;int&gt;</ref><sp/><sp/><sp/>shape<sp/>=<sp/>{256,<sp/>256};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="structhmap_1_1Vec2" kindref="compound">hmap::Vec2&lt;float&gt;</ref><sp/>res<sp/>=<sp/>{4.f,<sp/>4.f};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed<sp/>=<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1a40b948c49a05c14f2d540dc1a6952130" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,<sp/>shape,<sp/>res,<sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(z);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>water_depth<sp/>=<sp/><ref refid="namespacehmap_1a2318944325d02f3969aa7fa58b500278" kindref="member">hmap::flooding_uniform_level</ref>(z,<sp/>0.3f);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>hmap::Array<sp/>water_depth<sp/>=<sp/>hmap::flooding_lake_system(z,<sp/>500,<sp/>1e-4f);</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>mask0<sp/>=<sp/><ref refid="namespacehmap_1ad39c72e2b4c07d3013f7b0143c31137c" kindref="member">hmap::water_mask</ref>(water_depth);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>mask1<sp/>=<sp/><ref refid="namespacehmap_1ad39c72e2b4c07d3013f7b0143c31137c" kindref="member">hmap::water_mask</ref>(water_depth,<sp/>z,<sp/>0.075f);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_water_mask.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,<sp/>z<sp/>+<sp/>water_depth,<sp/>mask0,<sp/>mask1},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a744ead0b170889e33126895264f1af2c" kindref="member">hmap::Cmap::MAGMA</ref>);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<para><bold>Result</bold> <image type="html" name="ex_water_mask.png"></image>
+ </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/hydrology/flooding.cpp" line="315" column="7" bodyfile="HighMap/src/hydrology/flooding.cpp" bodystart="315" bodyend="320" declfile="HighMap/include/highmap/hydrology.hpp" declline="506" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehmap_1abc5928f49e530927c8fb61a9afea3274" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
+        <definition>Array hmap::water_mask</definition>
+        <argsstring>(const Array &amp;water_depth, const Array &amp;z, float additional_depth)</argsstring>
+        <name>water_mask</name>
+        <qualifiedname>hmap::water_mask</qualifiedname>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>water_depth</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>z</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>additional_depth</declname>
+        </param>
+        <briefdescription>
+<para>Computes a gradient-based water mask using an extended water depth model. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function computes a smooth mask indicating regions that would be newly flooded when the water depth is artificially increased by a specified additional amount. It uses <computeroutput><ref refid="namespacehmap_1a136f042ce2ad8c14033f4d839f56265d" kindref="member">water_depth_increase()</ref></computeroutput> to simulate the spread of water over the terrain.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>water_depth</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input array representing the current water depth. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Elevation array corresponding to the same grid as <computeroutput>water_depth</computeroutput>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>additional_depth</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The amount of additional water depth to simulate. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>An <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> representing the normalized water extension mask, where values range from 0 to 1.</para>
+</simplesect>
+<bold>Example</bold> <programlisting filename="ex_water_mask.cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="structhmap_1_1Vec2" kindref="compound">hmap::Vec2&lt;int&gt;</ref><sp/><sp/><sp/>shape<sp/>=<sp/>{256,<sp/>256};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="structhmap_1_1Vec2" kindref="compound">hmap::Vec2&lt;float&gt;</ref><sp/>res<sp/>=<sp/>{4.f,<sp/>4.f};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed<sp/>=<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1a40b948c49a05c14f2d540dc1a6952130" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,<sp/>shape,<sp/>res,<sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(z);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>water_depth<sp/>=<sp/><ref refid="namespacehmap_1a2318944325d02f3969aa7fa58b500278" kindref="member">hmap::flooding_uniform_level</ref>(z,<sp/>0.3f);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>hmap::Array<sp/>water_depth<sp/>=<sp/>hmap::flooding_lake_system(z,<sp/>500,<sp/>1e-4f);</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>mask0<sp/>=<sp/><ref refid="namespacehmap_1ad39c72e2b4c07d3013f7b0143c31137c" kindref="member">hmap::water_mask</ref>(water_depth);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>mask1<sp/>=<sp/><ref refid="namespacehmap_1ad39c72e2b4c07d3013f7b0143c31137c" kindref="member">hmap::water_mask</ref>(water_depth,<sp/>z,<sp/>0.075f);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_water_mask.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,<sp/>z<sp/>+<sp/>water_depth,<sp/>mask0,<sp/>mask1},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a744ead0b170889e33126895264f1af2c" kindref="member">hmap::Cmap::MAGMA</ref>);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<para><bold>Result</bold> <image type="html" name="ex_water_mask.png"></image>
+ </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/hydrology/flooding.cpp" line="322" column="7" bodyfile="HighMap/src/hydrology/flooding.cpp" bodystart="322" bodyend="337" declfile="HighMap/include/highmap/hydrology.hpp" declline="530" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a3f38b7faedc76835a0a902eb48e3d94b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>

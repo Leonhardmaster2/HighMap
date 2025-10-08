@@ -90,29 +90,39 @@
 \DoxyCodeLine{00462\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_mask\ =\ \textcolor{keyword}{nullptr},}
 \DoxyCodeLine{00463\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ depth\_max\ =\ std::numeric\_limits<float>::max());}
 \DoxyCodeLine{00464\ }
-\DoxyCodeLine{00465\ \}\ \textcolor{comment}{//\ namespace\ hmap}}
-\DoxyCodeLine{00466\ }
-\DoxyCodeLine{00467\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacehmap_1_1gpu}{hmap::gpu}}}
-\DoxyCodeLine{00468\ \{}
-\DoxyCodeLine{00469\ }
-\DoxyCodeLine{00471\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_af794a4c54c3766ca86b7e4a06346ab91}{flow\_direction\_d8}}(\textcolor{keyword}{const}\ Array\ \&z);}
-\DoxyCodeLine{00472\ }
-\DoxyCodeLine{00474\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_ab4f1542d2d5dd7edc54d240dab777755}{generate\_riverbed}}(\textcolor{keyword}{const}\ Path\ \&path,}
-\DoxyCodeLine{00475\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vec2<int>\ \ \ shape,}
-\DoxyCodeLine{00476\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vec4<float>\ bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\},}
-\DoxyCodeLine{00477\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ bezier\_smoothing\ =\ \textcolor{keyword}{false},}
-\DoxyCodeLine{00478\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ depth\_start\ =\ 0.01f,}
-\DoxyCodeLine{00479\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ depth\_end\ =\ 1.f,}
-\DoxyCodeLine{00480\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ slope\_start\ =\ 64.f,}
-\DoxyCodeLine{00481\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ slope\_end\ =\ 32.f,}
-\DoxyCodeLine{00482\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ shape\_exponent\_start\ =\ 1.f,}
-\DoxyCodeLine{00483\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ shape\_exponent\_end\ =\ 10.f,}
-\DoxyCodeLine{00484\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ k\_smoothing\ =\ 0.5f,}
-\DoxyCodeLine{00485\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ post\_filter\_ir\ =\ 0,}
-\DoxyCodeLine{00486\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ *p\_noise\_x\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{00487\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ *p\_noise\_y\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{00488\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ *p\_noise\_r\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00486\ Array\ \mbox{\hyperlink{namespacehmap_a136f042ce2ad8c14033f4d839f56265d}{water\_depth\_increase}}(\textcolor{keyword}{const}\ Array\ \&water\_depth,}
+\DoxyCodeLine{00487\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&z,}
+\DoxyCodeLine{00488\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ additional\_depth);}
 \DoxyCodeLine{00489\ }
-\DoxyCodeLine{00490\ \}\ \textcolor{comment}{//\ namespace\ hmap::gpu}}
+\DoxyCodeLine{00506\ Array\ \mbox{\hyperlink{namespacehmap_ad39c72e2b4c07d3013f7b0143c31137c}{water\_mask}}(\textcolor{keyword}{const}\ Array\ \&water\_depth);}
+\DoxyCodeLine{00507\ }
+\DoxyCodeLine{00530\ Array\ \mbox{\hyperlink{namespacehmap_ad39c72e2b4c07d3013f7b0143c31137c}{water\_mask}}(\textcolor{keyword}{const}\ Array\ \&water\_depth,}
+\DoxyCodeLine{00531\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&z,}
+\DoxyCodeLine{00532\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ additional\_depth);}
+\DoxyCodeLine{00533\ }
+\DoxyCodeLine{00534\ \}\ \textcolor{comment}{//\ namespace\ hmap}}
+\DoxyCodeLine{00535\ }
+\DoxyCodeLine{00536\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacehmap_1_1gpu}{hmap::gpu}}}
+\DoxyCodeLine{00537\ \{}
+\DoxyCodeLine{00538\ }
+\DoxyCodeLine{00540\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_af794a4c54c3766ca86b7e4a06346ab91}{flow\_direction\_d8}}(\textcolor{keyword}{const}\ Array\ \&z);}
+\DoxyCodeLine{00541\ }
+\DoxyCodeLine{00543\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_ab4f1542d2d5dd7edc54d240dab777755}{generate\_riverbed}}(\textcolor{keyword}{const}\ Path\ \&path,}
+\DoxyCodeLine{00544\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vec2<int>\ \ \ shape,}
+\DoxyCodeLine{00545\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vec4<float>\ bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\},}
+\DoxyCodeLine{00546\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ bezier\_smoothing\ =\ \textcolor{keyword}{false},}
+\DoxyCodeLine{00547\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ depth\_start\ =\ 0.01f,}
+\DoxyCodeLine{00548\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ depth\_end\ =\ 1.f,}
+\DoxyCodeLine{00549\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ slope\_start\ =\ 64.f,}
+\DoxyCodeLine{00550\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ slope\_end\ =\ 32.f,}
+\DoxyCodeLine{00551\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ shape\_exponent\_start\ =\ 1.f,}
+\DoxyCodeLine{00552\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ shape\_exponent\_end\ =\ 10.f,}
+\DoxyCodeLine{00553\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ k\_smoothing\ =\ 0.5f,}
+\DoxyCodeLine{00554\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ post\_filter\_ir\ =\ 0,}
+\DoxyCodeLine{00555\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ *p\_noise\_x\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{00556\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ *p\_noise\_y\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{00557\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ *p\_noise\_r\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00558\ }
+\DoxyCodeLine{00559\ \}\ \textcolor{comment}{//\ namespace\ hmap::gpu}}
 
 \end{DoxyCode}

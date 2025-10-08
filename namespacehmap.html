@@ -1539,6 +1539,15 @@ Functions</h2></td></tr>
 <tr class="memitem:a3aebd62906b90ccfde11140e13b0853f" id="r_a3aebd62906b90ccfde11140e13b0853f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a3aebd62906b90ccfde11140e13b0853f">water_depth_dry_out</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;water_depth, float dry_out_ratio=0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_mask=nullptr, float depth_max=std::numeric_limits&lt; float &gt;::max())</td></tr>
 <tr class="memdesc:a3aebd62906b90ccfde11140e13b0853f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply a drying factor to a water depth field.  <br /></td></tr>
 <tr class="separator:a3aebd62906b90ccfde11140e13b0853f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a136f042ce2ad8c14033f4d839f56265d" id="r_a136f042ce2ad8c14033f4d839f56265d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a136f042ce2ad8c14033f4d839f56265d">water_depth_increase</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;water_depth, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, float additional_depth)</td></tr>
+<tr class="memdesc:a136f042ce2ad8c14033f4d839f56265d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simulates the increase in water depth over a terrain.  <br /></td></tr>
+<tr class="separator:a136f042ce2ad8c14033f4d839f56265d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad39c72e2b4c07d3013f7b0143c31137c" id="r_ad39c72e2b4c07d3013f7b0143c31137c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#ad39c72e2b4c07d3013f7b0143c31137c">water_mask</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;water_depth)</td></tr>
+<tr class="memdesc:ad39c72e2b4c07d3013f7b0143c31137c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a binary mask representing water presence.  <br /></td></tr>
+<tr class="separator:ad39c72e2b4c07d3013f7b0143c31137c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc5928f49e530927c8fb61a9afea3274" id="r_abc5928f49e530927c8fb61a9afea3274"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#abc5928f49e530927c8fb61a9afea3274">water_mask</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;water_depth, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, float additional_depth)</td></tr>
+<tr class="memdesc:abc5928f49e530927c8fb61a9afea3274"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes a gradient-based water mask using an extended water depth model.  <br /></td></tr>
+<tr class="separator:abc5928f49e530927c8fb61a9afea3274"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3f38b7faedc76835a0a902eb48e3d94b" id="r_a3f38b7faedc76835a0a902eb48e3d94b"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a3f38b7faedc76835a0a902eb48e3d94b">zfill</a> (const std::string &amp;str, int n_zero)</td></tr>
 <tr class="separator:a3f38b7faedc76835a0a902eb48e3d94b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0b7db6f8ce57fcdeca7ca1e3b7d1e686" id="r_a0b7db6f8ce57fcdeca7ca1e3b7d1e686"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a0b7db6f8ce57fcdeca7ca1e3b7d1e686">upperbound_right</a> (const std::vector&lt; float &gt; &amp;v, float value)</td></tr>
@@ -27955,7 +27964,7 @@ h}{\partial y}
 <div class="line">                          {z, mask, water_depth, z + water_depth},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a121c42071766df393b6e049315876d5e"><div class="ttname"><a href="namespacehmap.html#a121c42071766df393b6e049315876d5e">hmap::water_depth_from_mask</a></div><div class="ttdeci">Array water_depth_from_mask(const Array &amp;z, const Array &amp;mask, float mask_threshold=0.f, int iterations_max=10000, float tolerance=1e-2f, float omega=1.8f)</div><div class="ttdoc">Compute water depth over a masked terrain using harmonic interpolation.</div><div class="ttdef"><b>Definition</b> flooding.cpp:196</div></div>
+<div class="ttc" id="anamespacehmap_html_a121c42071766df393b6e049315876d5e"><div class="ttname"><a href="namespacehmap.html#a121c42071766df393b6e049315876d5e">hmap::water_depth_from_mask</a></div><div class="ttdeci">Array water_depth_from_mask(const Array &amp;z, const Array &amp;mask, float mask_threshold=0.f, int iterations_max=10000, float tolerance=1e-2f, float omega=1.8f)</div><div class="ttdoc">Compute water depth over a masked terrain using harmonic interpolation.</div><div class="ttdef"><b>Definition</b> flooding.cpp:224</div></div>
 <div class="ttc" id="anamespacehmap_html_a1f35e2238ee222ab2aa87304f6692ce6"><div class="ttname"><a href="namespacehmap.html#a1f35e2238ee222ab2aa87304f6692ce6">hmap::select_rivers</a></div><div class="ttdeci">Array select_rivers(const Array &amp;array, float talus_ref, float clipping_ratio)</div><div class="ttdoc">Return an array filled with a criterion based on the occurence of a river bed.</div><div class="ttdef"><b>Definition</b> selector.cpp:311</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_water_depth_from_mask.png" alt=""/>
@@ -28040,9 +28049,179 @@ h}{\partial y}
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>,</div>
 <div class="line">                          <span class="keyword">true</span>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a3aebd62906b90ccfde11140e13b0853f"><div class="ttname"><a href="namespacehmap.html#a3aebd62906b90ccfde11140e13b0853f">hmap::water_depth_dry_out</a></div><div class="ttdeci">void water_depth_dry_out(Array &amp;water_depth, float dry_out_ratio=0.5f, const Array *p_mask=nullptr, float depth_max=std::numeric_limits&lt; float &gt;::max())</div><div class="ttdoc">Apply a drying factor to a water depth field.</div><div class="ttdef"><b>Definition</b> flooding.cpp:220</div></div>
+<div class="ttc" id="anamespacehmap_html_a3aebd62906b90ccfde11140e13b0853f"><div class="ttname"><a href="namespacehmap.html#a3aebd62906b90ccfde11140e13b0853f">hmap::water_depth_dry_out</a></div><div class="ttdeci">void water_depth_dry_out(Array &amp;water_depth, float dry_out_ratio=0.5f, const Array *p_mask=nullptr, float depth_max=std::numeric_limits&lt; float &gt;::max())</div><div class="ttdoc">Apply a drying factor to a water depth field.</div><div class="ttdef"><b>Definition</b> flooding.cpp:196</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_water_depth_dry_out.png" alt=""/>
+</div>
+ 
+</div>
+</div>
+<a id="a136f042ce2ad8c14033f4d839f56265d" name="a136f042ce2ad8c14033f4d839f56265d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a136f042ce2ad8c14033f4d839f56265d">&#9670;&#160;</a></span>water_depth_increase()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classhmap_1_1Array.html">Array</a> hmap::water_depth_increase </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>water_depth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>z</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>additional_depth</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Simulates the increase in water depth over a terrain. </p>
+<p>This function propagates additional water depth over a terrain elevation map (<code>z</code>), starting from cells that already contain water. The propagation occurs only in the upward direction (i.e., to higher elevation cells) and considers 8-neighbor connectivity. It effectively models how water would expand when its level rises by <code>additional_depth</code>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">water_depth</td><td>Input array representing the base water depth. </td></tr>
+    <tr><td class="paramname">z</td><td>Elevation array corresponding to the same grid as <code>water_depth</code>. </td></tr>
+    <tr><td class="paramname">additional_depth</td><td>The additional water depth to simulate (e.g., a flooding increment). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>An <a class="el" href="classhmap_1_1Array.html" title="Array class, helper to manipulate 2D float array with &quot;(i, j)&quot; indexing.">Array</a> representing the updated water depth distribution after propagation.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The algorithm uses a simple flood-fill–like approach with an upward constraint, ensuring that water spreads only to neighboring cells at higher elevation. </dd></dl>
+
+</div>
+</div>
+<a id="ad39c72e2b4c07d3013f7b0143c31137c" name="ad39c72e2b4c07d3013f7b0143c31137c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad39c72e2b4c07d3013f7b0143c31137c">&#9670;&#160;</a></span>water_mask() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classhmap_1_1Array.html">Array</a> hmap::water_mask </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>water_depth</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Generates a binary mask representing water presence. </p>
+<p>This version of the function converts the given water depth array into a binary mask where non-zero values indicate the presence of water.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">water_depth</td><td>Input array representing water depth values. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A binary <a class="el" href="classhmap_1_1Array.html" title="Array class, helper to manipulate 2D float array with &quot;(i, j)&quot; indexing.">Array</a> where each cell is 1 if water is present, 0 otherwise.</dd></dl>
+<p><b>Example</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="highmap_8hpp.html">highmap.hpp</a>&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
+<div class="line">{</div>
+<div class="line">  <a class="code hl_struct" href="structhmap_1_1Vec2.html">hmap::Vec2&lt;int&gt;</a>   shape = {256, 256};</div>
+<div class="line">  <a class="code hl_struct" href="structhmap_1_1Vec2.html">hmap::Vec2&lt;float&gt;</a> res = {4.f, 4.f};</div>
+<div class="line">  <span class="keywordtype">int</span>               seed = 1;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z = <a class="code hl_function" href="namespacehmap.html#a40b948c49a05c14f2d540dc1a6952130">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, res, seed);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> water_depth = <a class="code hl_function" href="namespacehmap.html#a2318944325d02f3969aa7fa58b500278">hmap::flooding_uniform_level</a>(z, 0.3f);</div>
+<div class="line">  <span class="comment">// hmap::Array water_depth = hmap::flooding_lake_system(z, 500, 1e-4f);</span></div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> mask0 = <a class="code hl_function" href="namespacehmap.html#ad39c72e2b4c07d3013f7b0143c31137c">hmap::water_mask</a>(water_depth);</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> mask1 = <a class="code hl_function" href="namespacehmap.html#ad39c72e2b4c07d3013f7b0143c31137c">hmap::water_mask</a>(water_depth, z, 0.075f);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_water_mask.png&quot;</span>,</div>
+<div class="line">                          {z, z + water_depth, mask0, mask1},</div>
+<div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a744ead0b170889e33126895264f1af2c">hmap::Cmap::MAGMA</a>);</div>
+<div class="line">}</div>
+<div class="ttc" id="anamespacehmap_html_ad39c72e2b4c07d3013f7b0143c31137c"><div class="ttname"><a href="namespacehmap.html#ad39c72e2b4c07d3013f7b0143c31137c">hmap::water_mask</a></div><div class="ttdeci">Array water_mask(const Array &amp;water_depth)</div><div class="ttdoc">Generates a binary mask representing water presence.</div><div class="ttdef"><b>Definition</b> flooding.cpp:315</div></div>
+</div><!-- fragment --><p><b>Result</b> </p><div class="image">
+<img src="ex_water_mask.png" alt=""/>
+</div>
+ 
+</div>
+</div>
+<a id="abc5928f49e530927c8fb61a9afea3274" name="abc5928f49e530927c8fb61a9afea3274"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc5928f49e530927c8fb61a9afea3274">&#9670;&#160;</a></span>water_mask() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classhmap_1_1Array.html">Array</a> hmap::water_mask </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>water_depth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>z</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>additional_depth</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes a gradient-based water mask using an extended water depth model. </p>
+<p>This function computes a smooth mask indicating regions that would be newly flooded when the water depth is artificially increased by a specified additional amount. It uses <code><a class="el" href="namespacehmap.html#a136f042ce2ad8c14033f4d839f56265d" title="Simulates the increase in water depth over a terrain.">water_depth_increase()</a></code> to simulate the spread of water over the terrain.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">water_depth</td><td>Input array representing the current water depth. </td></tr>
+    <tr><td class="paramname">z</td><td>Elevation array corresponding to the same grid as <code>water_depth</code>. </td></tr>
+    <tr><td class="paramname">additional_depth</td><td>The amount of additional water depth to simulate. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>An <a class="el" href="classhmap_1_1Array.html" title="Array class, helper to manipulate 2D float array with &quot;(i, j)&quot; indexing.">Array</a> representing the normalized water extension mask, where values range from 0 to 1.</dd></dl>
+<p><b>Example</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="highmap_8hpp.html">highmap.hpp</a>&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
+<div class="line">{</div>
+<div class="line">  <a class="code hl_struct" href="structhmap_1_1Vec2.html">hmap::Vec2&lt;int&gt;</a>   shape = {256, 256};</div>
+<div class="line">  <a class="code hl_struct" href="structhmap_1_1Vec2.html">hmap::Vec2&lt;float&gt;</a> res = {4.f, 4.f};</div>
+<div class="line">  <span class="keywordtype">int</span>               seed = 1;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z = <a class="code hl_function" href="namespacehmap.html#a40b948c49a05c14f2d540dc1a6952130">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, res, seed);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> water_depth = <a class="code hl_function" href="namespacehmap.html#a2318944325d02f3969aa7fa58b500278">hmap::flooding_uniform_level</a>(z, 0.3f);</div>
+<div class="line">  <span class="comment">// hmap::Array water_depth = hmap::flooding_lake_system(z, 500, 1e-4f);</span></div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> mask0 = <a class="code hl_function" href="namespacehmap.html#ad39c72e2b4c07d3013f7b0143c31137c">hmap::water_mask</a>(water_depth);</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> mask1 = <a class="code hl_function" href="namespacehmap.html#ad39c72e2b4c07d3013f7b0143c31137c">hmap::water_mask</a>(water_depth, z, 0.075f);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_water_mask.png&quot;</span>,</div>
+<div class="line">                          {z, z + water_depth, mask0, mask1},</div>
+<div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a744ead0b170889e33126895264f1af2c">hmap::Cmap::MAGMA</a>);</div>
+<div class="line">}</div>
+</div><!-- fragment --><p><b>Result</b> </p><div class="image">
+<img src="ex_water_mask.png" alt=""/>
 </div>
  
 </div>
