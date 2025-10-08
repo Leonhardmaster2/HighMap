@@ -418,7 +418,7 @@ var namespacehmap =
     [ "compute_curvature_h", "namespacehmap.html#a4a1660bb65728209b9d07f6ce4486584", null ],
     [ "compute_curvature_k", "namespacehmap.html#af54b122203d5eee61b9b6d6c7979ddfe", null ],
     [ "assert_almost_equal", "namespacehmap.html#a2c154806321deecb3240ac71eb7ccf29", null ],
-    [ "coastal_erosion_diffusion", "namespacehmap.html#af284972d5a2221915336ed52589cb916", null ],
+    [ "coastal_erosion_diffusion", "namespacehmap.html#a54724c8701b75260e97924451731e41f", null ],
     [ "depression_filling", "namespacehmap.html#aa64448e4b5640d90570e53249907c98a", null ],
     [ "erosion_maps", "namespacehmap.html#af91e2b8638aab2c4357ce37812b8a99c", null ],
     [ "hydraulic_algebric", "namespacehmap.html#ac4f3c8b3d5f766b15c0ac64359fdc219", null ],
