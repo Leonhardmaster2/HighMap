@@ -252,6 +252,9 @@ Array water_depth_increase(const Array &water_depth,
   Vec2<int> shape = water_depth.shape;
   Array     water_depth_extended(shape);
 
+  size_t max_it = 2 * shape.x * shape.y; // failsafe
+  size_t it;
+
   std::vector<Vec2<int>> nbrs =
       {{-1, 0}, {0, 1}, {0, -1}, {1, 0}, {-1, -1}, {-1, 1}, {1, -1}, {1, 1}};
 
@@ -280,7 +283,9 @@ Array water_depth_increase(const Array &water_depth,
       }
 
   // first pass - flood again, but only in upward direction
-  while (queue.size() > 0)
+  it = 0;
+
+  while (queue.size() > 0 && it < max_it)
   {
     Vec2<int> ij = queue.back();
     queue.pop_back();
@@ -296,8 +301,7 @@ Array water_depth_increase(const Array &water_depth,
         // upward only
         if (dz > 0.f)
         {
-          float delta = z(ij.x, ij.y) + water_depth_extended(ij.x, ij.y) -
-                        z(pq.x, pq.y);
+          float delta = water_depth_extended(ij.x, ij.y) - dz;
 
           if (delta > water_depth_extended(pq.x, pq.y))
           {
@@ -307,6 +311,8 @@ Array water_depth_increase(const Array &water_depth,
         }
       }
     }
+
+    it++;
   }
 
   // second pass - fill holes
@@ -331,7 +337,9 @@ Array water_depth_increase(const Array &water_depth,
         }
       }
 
-  while (queue.size() > 0)
+  it = 0;
+
+  while (queue.size() > 0 && it < max_it)
   {
     Vec2<int> ij = queue.back();
     queue.pop_back();
@@ -342,12 +350,12 @@ Array water_depth_increase(const Array &water_depth,
 
       if (pq.x >= 0 && pq.x < shape.x && pq.y >= 0 && pq.y < shape.y)
       {
-        if (water_depth_extended(pq.x, pq.y) == 0.f)
+        // if (water_depth_extended(pq.x, pq.y) == 0.f)
         {
-          float delta = z(ij.x, ij.y) + water_depth_extended(ij.x, ij.y) -
-                        z(pq.x, pq.y);
+          float dz = z(pq.x, pq.y) - z(ij.x, ij.y);
+          float delta = water_depth_extended(ij.x, ij.y) + dz;
 
-          if (delta > water_depth_extended(pq.x, pq.y))
+          if (dz < 0.f && delta > water_depth_extended(pq.x, pq.y))
           {
             water_depth_extended(pq.x, pq.y) = delta;
             queue.push_back({pq.x, pq.y});
@@ -355,6 +363,8 @@ Array water_depth_increase(const Array &water_depth,
         }
       }
     }
+
+    it++;
   }
 
   return water_depth_extended;
