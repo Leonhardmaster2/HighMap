@@ -279,7 +279,7 @@ Array water_depth_increase(const Array &water_depth,
         }
       }
 
-  // flood again, but only in upward direction
+  // first pass - flood again, but only in upward direction
   while (queue.size() > 0)
   {
     Vec2<int> ij = queue.back();
@@ -295,6 +295,54 @@ Array water_depth_increase(const Array &water_depth,
 
         // upward only
         if (dz > 0.f)
+        {
+          float delta = z(ij.x, ij.y) + water_depth_extended(ij.x, ij.y) -
+                        z(pq.x, pq.y);
+
+          if (delta > water_depth_extended(pq.x, pq.y))
+          {
+            water_depth_extended(pq.x, pq.y) = delta;
+            queue.push_back({pq.x, pq.y});
+          }
+        }
+      }
+    }
+  }
+
+  // second pass - fill holes
+  queue.clear();
+
+  for (int j = 0; j < shape.y; j++)
+    for (int i = 0; i < shape.x; i++)
+      if (water_depth_extended(i, j) > 0.f)
+      {
+        // check neighbors, add cells with discontinuity
+        for (auto &idx : nbrs)
+        {
+          Vec2<int> pq = Vec2<int>(i, j) + idx;
+          if (pq.x >= 0 && pq.x < shape.x && pq.y >= 0 && pq.y < shape.y)
+          {
+            if (water_depth_extended(pq.x, pq.y) == 0.f)
+            {
+              queue.push_back({i, j});
+              continue;
+            }
+          }
+        }
+      }
+
+  while (queue.size() > 0)
+  {
+    Vec2<int> ij = queue.back();
+    queue.pop_back();
+
+    for (auto &idx : nbrs)
+    {
+      Vec2<int> pq = ij + idx;
+
+      if (pq.x >= 0 && pq.x < shape.x && pq.y >= 0 && pq.y < shape.y)
+      {
+        if (water_depth_extended(pq.x, pq.y) == 0.f)
         {
           float delta = z(ij.x, ij.y) + water_depth_extended(ij.x, ij.y) -
                         z(pq.x, pq.y);
