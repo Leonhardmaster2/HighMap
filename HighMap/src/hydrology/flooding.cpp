@@ -193,30 +193,6 @@ Array merge_water_depths(const Array &depth1,
   return water_depth;
 }
 
-Array water_depth_from_mask(const Array &z,
-                            const Array &mask,
-                            float        mask_threshold,
-                            int          iterations_max,
-                            float        tolerance,
-                            float        omega)
-{
-  Array water_depth(z.shape);
-
-  // transform to binary 0|1 mask
-  Array mask_t = mask;
-  make_binary(mask_t, mask_threshold);
-  mask_t = 1.f - mask_t; // fixed values
-
-  water_depth = harmonic_interpolation(z,
-                                       mask_t,
-                                       iterations_max,
-                                       tolerance,
-                                       omega) -
-                z;
-
-  return water_depth;
-}
-
 void water_depth_dry_out(Array       &water_depth,
                          float        dry_out_ratio,
                          const Array *p_mask,
@@ -243,6 +219,121 @@ void water_depth_dry_out(Array       &water_depth,
         water_depth(i, j) = std::max(0.f, water_depth(i, j));
       }
   }
+}
+
+Array water_depth_from_mask(const Array &z,
+                            const Array &mask,
+                            float        mask_threshold,
+                            int          iterations_max,
+                            float        tolerance,
+                            float        omega)
+{
+  Array water_depth(z.shape);
+
+  // transform to binary 0|1 mask
+  Array mask_t = mask;
+  make_binary(mask_t, mask_threshold);
+  mask_t = 1.f - mask_t; // fixed values
+
+  water_depth = harmonic_interpolation(z,
+                                       mask_t,
+                                       iterations_max,
+                                       tolerance,
+                                       omega) -
+                z;
+
+  return water_depth;
+}
+
+Array water_depth_increase(const Array &water_depth,
+                           const Array &z,
+                           float        additional_depth)
+{
+  Vec2<int> shape = water_depth.shape;
+  Array     water_depth_extended(shape);
+
+  std::vector<Vec2<int>> nbrs =
+      {{-1, 0}, {0, 1}, {0, -1}, {1, 0}, {-1, -1}, {-1, 1}, {1, -1}, {1, 1}};
+
+  // fill-in source pts
+  std::vector<Vec2<int>> queue;
+
+  for (int j = 0; j < shape.y; j++)
+    for (int i = 0; i < shape.x; i++)
+      if (water_depth(i, j) > 0.f)
+      {
+        water_depth_extended(i, j) = water_depth(i, j) + additional_depth;
+
+        // check neighbors, only add border cells to the queue
+        for (auto &idx : nbrs)
+        {
+          Vec2<int> pq = Vec2<int>(i, j) + idx;
+          if (pq.x >= 0 && pq.x < shape.x && pq.y >= 0 && pq.y < shape.y)
+          {
+            if (water_depth(pq.x, pq.y) == 0.f)
+            {
+              queue.push_back({i, j});
+              continue;
+            }
+          }
+        }
+      }
+
+  // flood again, but only in upward direction
+  while (queue.size() > 0)
+  {
+    Vec2<int> ij = queue.back();
+    queue.pop_back();
+
+    for (auto &idx : nbrs)
+    {
+      Vec2<int> pq = ij + idx;
+
+      if (pq.x >= 0 && pq.x < shape.x && pq.y >= 0 && pq.y < shape.y)
+      {
+        float dz = z(pq.x, pq.y) - z(ij.x, ij.y);
+
+        // upward only
+        if (dz > 0.f)
+        {
+          float delta = z(ij.x, ij.y) + water_depth_extended(ij.x, ij.y) -
+                        z(pq.x, pq.y);
+
+          if (delta > water_depth_extended(pq.x, pq.y))
+          {
+            water_depth_extended(pq.x, pq.y) = delta;
+            queue.push_back({pq.x, pq.y});
+          }
+        }
+      }
+    }
+  }
+
+  return water_depth_extended;
+}
+
+Array water_mask(const Array &water_depth)
+{
+  Array mask = water_depth;
+  make_binary(mask);
+  return mask;
+}
+
+Array water_mask(const Array &water_depth,
+                 const Array &z,
+                 float        additional_depth)
+{
+  Array mask(water_depth.shape);
+  Array water_depth_extended = water_depth_increase(water_depth,
+                                                    z,
+                                                    additional_depth);
+
+  mask = water_depth_extended - water_depth;
+  mask /= additional_depth;
+
+  mask.infos();
+
+  return mask;
 }
 
 } // namespace hmap

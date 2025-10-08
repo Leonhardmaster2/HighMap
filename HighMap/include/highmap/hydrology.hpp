@@ -462,6 +462,75 @@ void water_depth_dry_out(Array       &water_depth,
                          const Array *p_mask = nullptr,
                          float depth_max = std::numeric_limits<float>::max());
 
+/**
+ * @brief Simulates the increase in water depth over a terrain.
+ *
+ * This function propagates additional water depth over a terrain elevation map
+ * (`z`), starting from cells that already contain water. The propagation occurs
+ * only in the upward direction (i.e., to higher elevation cells) and considers
+ * 8-neighbor connectivity. It effectively models how water would expand when
+ * its level rises by `additional_depth`.
+ *
+ * @param  water_depth      Input array representing the base water depth.
+ * @param  z                Elevation array corresponding to the same grid as
+ *                          `water_depth`.
+ * @param  additional_depth The additional water depth to simulate (e.g., a
+ *                          flooding increment).
+ * @return                  An Array representing the updated water depth
+ *                          distribution after propagation.
+ *
+ * @note The algorithm uses a simple flood-fill–like approach with an upward
+ * constraint, ensuring that water spreads only to neighboring cells at higher
+ * elevation.
+ */
+Array water_depth_increase(const Array &water_depth,
+                           const Array &z,
+                           float        additional_depth);
+
+/**
+ * @brief Generates a binary mask representing water presence.
+ *
+ * This version of the function converts the given water depth array into a
+ * binary mask where non-zero values indicate the presence of water.
+ *
+ * @param  water_depth Input array representing water depth values.
+ * @return             A binary Array where each cell is 1 if water is present,
+ *                     0 otherwise.
+ *
+ * **Example**
+ * @include ex_water_mask.cpp
+ *
+ * **Result**
+ * @image html ex_water_mask.png
+ */
+Array water_mask(const Array &water_depth);
+
+/**
+ * @brief Computes a gradient-based water mask using an extended water depth
+ * model.
+ *
+ * This function computes a smooth mask indicating regions that would be newly
+ * flooded when the water depth is artificially increased by a specified
+ * additional amount. It uses `water_depth_increase()` to simulate the spread of
+ * water over the terrain.
+ *
+ * @param  water_depth      Input array representing the current water depth.
+ * @param  z                Elevation array corresponding to the same grid as
+ *                          `water_depth`.
+ * @param  additional_depth The amount of additional water depth to simulate.
+ * @return                  An Array representing the normalized water extension
+ *                          mask, where values range from 0 to 1.
+ *
+ * **Example**
+ * @include ex_water_mask.cpp
+ *
+ * **Result**
+ * @image html ex_water_mask.png
+ */
+Array water_mask(const Array &water_depth,
+                 const Array &z,
+                 float        additional_depth);
+
 } // namespace hmap
 
 namespace hmap::gpu
