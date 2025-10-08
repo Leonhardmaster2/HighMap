@@ -50,10 +50,48 @@ enum ErosionProfile : int
   TRIANGLE_SMOOTH,
 };
 
+/**
+ * @brief Simulates terrain diffusion due to coastal erosion.
+ *
+ * This function applies an iterative coastal erosion diffusion process on a
+ * terrain elevation array (`z`), taking into account the presence and depth of
+ * water. The erosion model smooths the terrain near shorelines while
+ * maintaining constant water-surface height.
+ *
+ * At each iteration:
+ *  - A local water mask is computed using `water_mask(water_depth, z,
+ * additional_depth)`.
+ *  - The terrain elevations are smoothed (diffused) using a masked Laplacian
+ * filter, applied only near the water boundary.
+ *  - The water depth is adjusted to preserve the total water surface height
+ * (i.e., `z + water_depth` remains constant).
+ *
+ * This results in a realistic simulation of coastal erosion processes where the
+ * terrain near the waterline is progressively smoothed and redistributed.
+ *
+ * @param z                Reference to the terrain elevation array (modified in
+ *                         place).
+ * @param water_depth      Reference to the array representing water depth
+ *                         values (modified to preserve water surface level).
+ * @param additional_depth Additional virtual water depth used to estimate the
+ *                         influence region of the shoreline during mask
+ *                         computation.
+ * @param iterations       Number of erosion–diffusion iterations to apply.
+ * @param p_water_mask     Optional output pointer. If non-null, it receives the
+ *                         last computed water mask used during the final
+ *                         iteration.
+ *
+ * **Example**
+ * @include ex_coastal_erosion_diffusion.cpp
+ *
+ * **Result**
+ * @image html ex_coastal_erosion_diffusion.png
+ */
 void coastal_erosion_diffusion(Array &z,
                                Array &water_depth,
                                float  additional_depth,
-                               int    iterations = 10);
+                               int    iterations = 10,
+                               Array *p_water_mask = nullptr);
 
 /**
  * @brief Fill the depressions of the heightmap using the Planchon-Darboux

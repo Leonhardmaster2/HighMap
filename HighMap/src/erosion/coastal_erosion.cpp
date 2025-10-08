@@ -11,12 +11,16 @@ namespace hmap
 void coastal_erosion_diffusion(Array &z,
                                Array &water_depth,
                                float  additional_depth,
-                               int    iterations)
+                               int    iterations,
+                               Array *p_water_mask)
 {
+  Array mask;
+  Array z_bckp;
+
   for (int it = 0; it < iterations; ++it)
   {
-    const Array z_bckp = z;
-    const Array mask = water_mask(water_depth, z, additional_depth);
+    z_bckp = z;
+    mask = water_mask(water_depth, z, additional_depth);
 
     // filtering
     hmap::laplace(z, &mask, /* sigma */ 0.125f, 1);
@@ -30,6 +34,8 @@ void coastal_erosion_diffusion(Array &z,
           water_depth(i, j) = z_bckp(i, j) + water_depth(i, j) - z(i, j);
       }
   }
+
+  if (p_water_mask) *p_water_mask = mask;
 }
 
 } // namespace hmap
