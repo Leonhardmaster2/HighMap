@@ -202,13 +202,13 @@ void HeightmapRGBA::colorize(Heightmap                      &color_level,
                                           true);
 
   this->colorize(color_level,
-		 vmin,
-		 vmax,
-		 positions,
-		 colormap_colors,
-		 p_alpha,
-		 reverse,
-		 p_noise);
+                 vmin,
+                 vmax,
+                 positions,
+                 colormap_colors,
+                 p_alpha,
+                 reverse,
+                 p_noise);
 }
 
 void HeightmapRGBA::colorize(Heightmap &color_level,

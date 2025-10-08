@@ -330,8 +330,7 @@ Array water_mask(const Array &water_depth,
 
   mask = water_depth_extended - water_depth;
   mask /= additional_depth;
-
-  mask.infos();
+  mask = smoothstep3(mask);
 
   return mask;
 }

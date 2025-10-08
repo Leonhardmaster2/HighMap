@@ -488,12 +488,45 @@ void kuwahara(Array &array, int ir, const Array *p_mask, float mix_ratio)
 
 void laplace(Array &array, float sigma, int iterations)
 {
+  Vec2<int> shape = array.shape;
+
   for (int it = 0; it < iterations; it++)
   {
-    Array delta = laplacian(array);
-    array += sigma * delta;
+    Array delta(shape);
+
+    for (int j = 0; j < shape.y; j++)
+      for (int i = 0; i < shape.x; i++)
+      {
+        float center = array(i, j);
+        float sum_neighbors = 0.0f;
+
+        // Accumulate 8 neighbors with boundary clamping
+        for (int dj = -1; dj <= 1; dj++)
+          for (int di = -1; di <= 1; di++)
+          {
+            if (di == 0 && dj == 0) continue;
+
+            int ni = std::clamp(i + di, 0, shape.x - 1);
+            int nj = std::clamp(j + dj, 0, shape.y - 1);
+            sum_neighbors += array(ni, nj);
+          }
+
+        // 8-neighbor Laplacian
+        delta(i, j) = sum_neighbors - 8.0f * center;
+      }
+
+    // Apply diffusion update
+    for (int j = 0; j < shape.y; j++)
+      for (int i = 0; i < shape.x; i++)
+        array(i, j) += sigma * delta(i, j);
   }
 }
+
+// for (int it = 0; it < iterations; it++)
+// {
+//   Array delta = laplacian(array);
+//   array += sigma * delta;
+// }
 
 void laplace(Array &array, const Array *p_mask, float sigma, int iterations)
 {

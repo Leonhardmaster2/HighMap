@@ -50,6 +50,11 @@ enum ErosionProfile : int
   TRIANGLE_SMOOTH,
 };
 
+void coastal_erosion_diffusion(Array &z,
+                               Array &water_depth,
+                               float  additional_depth,
+                               int    iterations = 10);
+
 /**
  * @brief Fill the depressions of the heightmap using the Planchon-Darboux
  * algorithm.

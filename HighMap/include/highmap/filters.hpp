@@ -638,18 +638,27 @@ void kuwahara(Array &array, int ir, float mix_ratio = 1.f);
 void kuwahara(Array &array, int ir, const Array *p_mask, float mix_ratio = 1.f);
 
 /**
- * @brief Apply a low-pass Laplace filter to the input array.
+ * @brief Applies an iterative 8-neighbor Laplacian smoothing filter on an
+ * array.
  *
- * This function applies a low-pass Laplace filter to the input array to smooth
- * out high-frequency noise and detail. The filtering intensity and the number
- * of iterations determine the extent of the smoothing effect.
+ * This function performs isotropic Laplacian diffusion on a 2D array using an
+ * explicit finite-difference scheme. Each cell is updated according to the
+ * local Laplacian computed from its 8 surrounding neighbors:
  *
- * @param array      Input array to which the Laplace filter is applied.
- * @param sigma      Filtering intensity, expected to be in the range [0, 1]. It
- *                   controls the strength of the filtering effect. A value
- *                   closer to 1 results in more smoothing.
- * @param iterations Number of iterations to apply the filter. More iterations
- *                   will increase the smoothing effect. The default value is 3.
+ * \f[
+ * A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
+ * \left( \sum_{(p,q)\in N_{8}(i,j)} A_{p,q}^{t} - 8A_{i,j}^{t} \right)
+ * \f]
+ *
+ * where \( N_{8}(i,j) \) denotes the 8 neighboring cells.
+ *
+ * Boundary cells are handled by clamping neighbor indices to the valid range,
+ * effectively replicating edge values at the borders.
+ *
+ * @param array      The 2D array to be smoothed (modified in place).
+ * @param sigma      Diffusion coefficient (small positive value, e.g.
+ * 0.05–0.25).
+ * @param iterations Number of diffusion iterations to apply.
  *
  * **Example**
  * @include ex_laplace.cpp
@@ -657,7 +666,7 @@ void kuwahara(Array &array, int ir, const Array *p_mask, float mix_ratio = 1.f);
  * **Result**
  * @image html ex_laplace.png
  */
-void laplace(Array &array, float sigma = 0.2f, int iterations = 3);
+void laplace(Array &array, float sigma = 0.125f, int iterations = 3);
 
 /**
  * @brief Apply a low-pass Laplace filter with a mask.
