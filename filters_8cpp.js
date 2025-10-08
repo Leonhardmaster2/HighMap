@@ -20,7 +20,7 @@ var filters_8cpp =
     [ "gamma_correction_local", "filters_8cpp.html#a7ad148178be926b19ba618842832fa90", null ],
     [ "kuwahara", "filters_8cpp.html#ad3c6f230996ef2d2313278103b75fbd1", null ],
     [ "kuwahara", "filters_8cpp.html#a149904b1eda7e91fc908fa10da54075b", null ],
-    [ "laplace", "filters_8cpp.html#ae5dd839d799e31ea377dc4daff29b62d", null ],
+    [ "laplace", "filters_8cpp.html#a62f3ce1778309a90b37d34e727e4f040", null ],
     [ "laplace", "filters_8cpp.html#a94efa789e37074f1e214f7788468b076", null ],
     [ "laplace_edge_preserving", "filters_8cpp.html#a120b7a6f8941d783c52acf799d3cb7b2", null ],
     [ "laplace_edge_preserving", "filters_8cpp.html#aa3154bd93dda630a0d17f1b75ab6b3c5", null ],

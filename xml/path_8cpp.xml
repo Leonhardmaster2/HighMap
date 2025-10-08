@@ -1015,14 +1015,14 @@
 <codeline lineno="1005"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>z_carved(i,<sp/>j)<sp/>=<sp/>mask(i,<sp/>j)<sp/>?<sp/>z_carved(i,<sp/>j)<sp/>:<sp/>z(i,<sp/>j);</highlight></codeline>
 <codeline lineno="1006"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1007"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a11b0213f43ea0d2228c0dbd385b8308a" kindref="member">expand_talus</ref>(z_carved,<sp/>mask,<sp/>riverbank_talus,<sp/>seed,<sp/>noise_ratio);</highlight></codeline>
-<codeline lineno="1008"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ae5dd839d799e31ea377dc4daff29b62d" kindref="member">laplace</ref>(z_carved);</highlight></codeline>
+<codeline lineno="1008"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a62f3ce1778309a90b37d34e727e4f040" kindref="member">laplace</ref>(z_carved);</highlight></codeline>
 <codeline lineno="1009"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1010"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>use<sp/>a<sp/>distance<sp/>transform<sp/>to<sp/>define<sp/>a<sp/>merging<sp/>mask<sp/>between<sp/>the</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1011"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>input<sp/>heightmap<sp/>&quot;z&quot;<sp/>and<sp/>the<sp/>&quot;z_carved&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1012"><highlight class="normal"><sp/><sp/>Array<sp/>dist<sp/>=<sp/><ref refid="namespacehmap_1a23fdcd258e0bab2a5fcad31d6459c3fa" kindref="member">distance_transform_approx</ref>(mask);</highlight></codeline>
 <codeline lineno="1013"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>sigma2<sp/>=<sp/>std::pow((</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)(merging_width<sp/>+<sp/>river_width),<sp/>2.f);</highlight></codeline>
 <codeline lineno="1014"><highlight class="normal"><sp/><sp/>dist<sp/>=<sp/><ref refid="namespacehmap_1aad00066161ccf5ba4d6f93ab48c10876" kindref="member">exp</ref>(-0.5f<sp/>*<sp/>dist<sp/>*<sp/>dist<sp/>/<sp/>sigma2);</highlight></codeline>
-<codeline lineno="1015"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ae5dd839d799e31ea377dc4daff29b62d" kindref="member">laplace</ref>(dist);</highlight></codeline>
+<codeline lineno="1015"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a62f3ce1778309a90b37d34e727e4f040" kindref="member">laplace</ref>(dist);</highlight></codeline>
 <codeline lineno="1016"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1017"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>lerp<sp/>based<sp/>on<sp/>distance</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1018"><highlight class="normal"><sp/><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1ac14815cf025b7430d31d08125a5c6f0d" kindref="member">lerp</ref>(z,<sp/>z_carved,<sp/>dist);</highlight></codeline>

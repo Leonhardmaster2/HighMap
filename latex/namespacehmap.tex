@@ -447,6 +447,8 @@ void \mbox{\hyperlink{namespacehmap_ad8bed5d4ec0f54adc017527fa134f455}{compute\+
 \item 
 bool \mbox{\hyperlink{namespacehmap_a2c154806321deecb3240ac71eb7ccf29}{assert\+\_\+almost\+\_\+equal}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&a, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&b, float tolerance, const std\+::string \&fname="{}"{}, \mbox{\hyperlink{structhmap_1_1AssertResults}{Assert\+Results}} \texorpdfstring{$\ast$}{*}p\+\_\+results=nullptr)
 \item 
+void \mbox{\hyperlink{namespacehmap_af284972d5a2221915336ed52589cb916}{coastal\+\_\+erosion\+\_\+diffusion}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&water\+\_\+depth, float additional\+\_\+depth, int iterations=10)
+\item 
 void \mbox{\hyperlink{namespacehmap_aa64448e4b5640d90570e53249907c98a}{depression\+\_\+filling}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int iterations=1000, float epsilon=1e-\/4\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Fill the depressions of the heightmap using the Planchon-\/\+Darboux algorithm. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_af91e2b8638aab2c4357ce37812b8a99c}{erosion\+\_\+maps}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z\+\_\+before, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z\+\_\+after, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&erosion\+\_\+map, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&deposition\+\_\+map, float tolerance=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
@@ -635,8 +637,8 @@ void \mbox{\hyperlink{namespacehmap_ad3c6f230996ef2d2313278103b75fbd1}{kuwahara}
 \begin{DoxyCompactList}\small\item\em Applies the Kuwahara filter to an array with optional per-\/pixel masking. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a149904b1eda7e91fc908fa10da54075b}{kuwahara}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+mask, float mix\+\_\+ratio=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Applies the Kuwahara filter to an array with optional per-\/pixel masking. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{namespacehmap_ae5dd839d799e31ea377dc4daff29b62d}{laplace}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float sigma=0.\+2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, int iterations=3)
-\begin{DoxyCompactList}\small\item\em Apply a low-\/pass Laplace filter to the input array. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacehmap_a62f3ce1778309a90b37d34e727e4f040}{laplace}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float sigma=0.\+125\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, int iterations=3)
+\begin{DoxyCompactList}\small\item\em Applies an iterative 8-\/neighbor Laplacian smoothing filter on an array. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a94efa789e37074f1e214f7788468b076}{laplace}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+mask, float sigma=0.\+2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, int iterations=3)
 \begin{DoxyCompactList}\small\item\em Apply a low-\/pass Laplace filter with a mask. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_abf9521082ba09eb022834306bc6c354b}{laplace1d}} (std\+::vector$<$ float $>$ \&v, float sigma=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, int iterations=1)
@@ -4847,6 +4849,12 @@ Calculates the unsphericity of a surface, indicating how much the terrain deviat
 \doxysubsubsection{\texorpdfstring{assert\_almost\_equal()}{assert\_almost\_equal()}}
 {\footnotesize\ttfamily bool hmap\+::assert\+\_\+almost\+\_\+equal (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{a,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{b,  }\item[{float}]{tolerance,  }\item[{const std\+::string \&}]{fname = {\ttfamily "{}"{}},  }\item[{\mbox{\hyperlink{structhmap_1_1AssertResults}{Assert\+Results}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+results = {\ttfamily nullptr} }\end{DoxyParamCaption})}
 
+\Hypertarget{namespacehmap_af284972d5a2221915336ed52589cb916}\label{namespacehmap_af284972d5a2221915336ed52589cb916} 
+\index{hmap@{hmap}!coastal\_erosion\_diffusion@{coastal\_erosion\_diffusion}}
+\index{coastal\_erosion\_diffusion@{coastal\_erosion\_diffusion}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{coastal\_erosion\_diffusion()}{coastal\_erosion\_diffusion()}}
+{\footnotesize\ttfamily void hmap\+::coastal\+\_\+erosion\+\_\+diffusion (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{water\+\_\+depth,  }\item[{float}]{additional\+\_\+depth,  }\item[{int}]{iterations = {\ttfamily 10} }\end{DoxyParamCaption})}
+
 \Hypertarget{namespacehmap_aa64448e4b5640d90570e53249907c98a}\label{namespacehmap_aa64448e4b5640d90570e53249907c98a} 
 \index{hmap@{hmap}!depression\_filling@{depression\_filling}}
 \index{depression\_filling@{depression\_filling}!hmap@{hmap}}
@@ -8821,25 +8829,34 @@ If no mask is provided\+:
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}  \Hypertarget{namespacehmap_ae5dd839d799e31ea377dc4daff29b62d}\label{namespacehmap_ae5dd839d799e31ea377dc4daff29b62d} 
+{\bfseries{Result}}  \Hypertarget{namespacehmap_a62f3ce1778309a90b37d34e727e4f040}\label{namespacehmap_a62f3ce1778309a90b37d34e727e4f040} 
 \index{hmap@{hmap}!laplace@{laplace}}
 \index{laplace@{laplace}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{laplace()}{laplace()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily void hmap\+::laplace (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{float}]{sigma = {\ttfamily 0.2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{int}]{iterations = {\ttfamily 3} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void hmap\+::laplace (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{float}]{sigma = {\ttfamily 0.125\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{int}]{iterations = {\ttfamily 3} }\end{DoxyParamCaption})}
 
 
 
-Apply a low-\/pass Laplace filter to the input array. 
+Applies an iterative 8-\/neighbor Laplacian smoothing filter on an array. 
 
-This function applies a low-\/pass Laplace filter to the input array to smooth out high-\/frequency noise and detail. The filtering intensity and the number of iterations determine the extent of the smoothing effect.
+This function performs isotropic Laplacian diffusion on a 2D array using an explicit finite-\/difference scheme. Each cell is updated according to the local Laplacian computed from its 8 surrounding neighbors\+:
+
+\[
+A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
+\left( \sum_{(p,q)\in N_{8}(i,j)} A_{p,q}^{t} - 8A_{i,j}^{t} \right)
+\]
+
+where ( N\+\_\+\{8\}(i,j) ) denotes the 8 neighboring cells.
+
+Boundary cells are handled by clamping neighbor indices to the valid range, effectively replicating edge values at the borders.
 
 
 \begin{DoxyParams}{Parameters}
-{\em array} & Input array to which the Laplace filter is applied. \\
+{\em array} & The 2D array to be smoothed (modified in place). \\
 \hline
-{\em sigma} & Filtering intensity, expected to be in the range \mbox{[}0, 1\mbox{]}. It controls the strength of the filtering effect. A value closer to 1 results in more smoothing. \\
+{\em sigma} & Diffusion coefficient (small positive value, e.\+g. 0.\+05–0.25). \\
 \hline
-{\em iterations} & Number of iterations to apply the filter. More iterations will increase the smoothing effect. The default value is 3.\\
+{\em iterations} & Number of diffusion iterations to apply.\\
 \hline
 \end{DoxyParams}
 {\bfseries{Example}} 
@@ -8858,7 +8875,7 @@ This function applies a low-\/pass Laplace filter to the input array to smooth o
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ iterations\ =\ 10;}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ z1\ =\ z;}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ae5dd839d799e31ea377dc4daff29b62d}{hmap::laplace}}(z1,\ sigma,\ iterations);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a62f3ce1778309a90b37d34e727e4f040}{hmap::laplace}}(z1,\ sigma,\ iterations);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ \ z2\ =\ z;}
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ talus\ =\ 1.f\ /\ (float)shape.\mbox{\hyperlink{structhmap_1_1Vec2_a2dc51e83492f966eeddbdac3d58ab447}{x}};}
@@ -8956,7 +8973,7 @@ This function applies an anisotropic Laplace filter to the input array. Anisotro
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ iterations\ =\ 10;}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ z1\ =\ z;}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ae5dd839d799e31ea377dc4daff29b62d}{hmap::laplace}}(z1,\ sigma,\ iterations);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a62f3ce1778309a90b37d34e727e4f040}{hmap::laplace}}(z1,\ sigma,\ iterations);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ \ z2\ =\ z;}
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ talus\ =\ 1.f\ /\ (float)shape.\mbox{\hyperlink{structhmap_1_1Vec2_a2dc51e83492f966eeddbdac3d58ab447}{x}};}
@@ -9044,7 +9061,7 @@ This function applies a high-\/order low-\/pass filter to the input array. The f
 {\bfseries{Result}} 
 
 \begin{DoxySeeAlso}{See also}
-{\ttfamily \doxylink{namespacehmap_ae5dd839d799e31ea377dc4daff29b62d}{laplace}} 
+{\ttfamily \doxylink{namespacehmap_a62f3ce1778309a90b37d34e727e4f040}{laplace}} 
 \end{DoxySeeAlso}
 \Hypertarget{namespacehmap_a4799d3f029d45240a5b40b4853583a58}\label{namespacehmap_a4799d3f029d45240a5b40b4853583a58} 
 \index{hmap@{hmap}!make\_binary@{make\_binary}}
