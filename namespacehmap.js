@@ -969,7 +969,6 @@ var namespacehmap =
     [ "helper_get_rtheta_stretch", "namespacehmap.html#a9bab94bd2d87290be7f4fde49095b311", null ],
     [ "helper_get_distance_polar", "namespacehmap.html#acc54c794223302fc298eeeb563a27d0e", null ],
     [ "helper_smooth_triple_corner", "namespacehmap.html#a44e4240c5e7a9cfd46de3c27562ed201", null ],
-    [ "extract_raw_filename", "namespacehmap.html#af95eb203aa8ba710c26f8c5ad7535125", null ],
     [ "compute_splatmap", "namespacehmap.html#a82490d2d9081a59290630bd0d76b965c", null ],
     [ "recurve_bexp", "namespacehmap.html#ad8482d5a5c0650c20ffe1dc86b5f8a61", null ],
     [ "recurve_exp", "namespacehmap.html#ad1ea450b3a5185e8066a5da48718489c", null ],
