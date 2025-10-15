@@ -39,6 +39,7 @@ bool init_opencl()
 #include "kernels/gavoronoise.cl"
 #include "kernels/generate_riverbed.cl"
 #include "kernels/gradient_norm.cl"
+#include "kernels/hemisphere_field.cl"
 #include "kernels/hydraulic_particle.cl"
 #include "kernels/hydraulic_schott.cl"
 #include "kernels/interpolate_array.cl"

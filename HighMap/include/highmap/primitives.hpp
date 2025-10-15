@@ -1819,6 +1819,68 @@ Array gavoronoise(const Array &base,
                   Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
+ * @brief Generates a scalar field representing the signed distance to randomly
+ * generated hemispheres.
+ *
+ * @param  shape     Resolution of the output field (width, height).
+ * @param  kw        Scaling factor for field coordinates (world units per
+ *                   pixel).
+ * @param  seed      Random seed generation.
+ * @param  rmin      Minimum sphere radius (relative to bbox size).
+ * @param  rmax      Maximum sphere radius (relative to bbox size).
+ * @param  density   Fraction of pixels covered by polygons (approximate).
+ * @param  jitter    Random displacement factor applied to sphere vertices.
+ * @param  shift     Random position shift applied to sphere center.
+ * @param  p_noise_x Optional displacement noise field in the X direction
+ *                   (nullptr to disable).
+ * @param  p_noise_y Optional displacement noise field in the Y direction
+ *                   (nullptr to disable).
+ * @param  bbox      Bounding box in normalized coordinates {xmin, xmax, ymin,
+ *                   ymax}.
+ * @return           Array         2D array containing the signed distance
+ *                   field.
+ *
+ * **Example**
+ * @include ex_phemisphere_field.cpp
+ *
+ * **Result**
+ * @image html ex_phemisphere_field.png
+ */
+Array hemisphere_field(Vec2<int>         shape,
+                       Vec2<float>       kw,
+                       uint              seed,
+                       float             rmin = 0.05f,
+                       float             rmax = 0.8f,
+                       float             density = 0.1f,
+                       hmap::Vec2<float> jitter = {1.f, 1.f},
+                       float             shift = 0.f,
+                       const Array      *p_noise_x = nullptr,
+                       const Array      *p_noise_y = nullptr,
+                       const Array      *p_noise_distance = nullptr,
+                       const Array      *p_density_multiplier = nullptr,
+                       const Array      *p_size_multiplier = nullptr,
+                       Vec4<float>       bbox = {0.f, 1.f, 0.f, 1.f});
+
+/*! @brief See hmap::hemisphere_field */
+Array hemisphere_field_fbm(Vec2<int>         shape,
+                           Vec2<float>       kw,
+                           uint              seed,
+                           float             rmin = 0.05f,
+                           float             rmax = 0.8f,
+                           float             density = 0.1f,
+                           hmap::Vec2<float> jitter = {0.5f, 0.5f},
+                           float             shift = 0.1f,
+                           int               octaves = 8,
+                           float             persistence = 0.5f,
+                           float             lacunarity = 2.f,
+                           const Array      *p_noise_x = nullptr,
+                           const Array      *p_noise_y = nullptr,
+                           const Array      *p_noise_distance = nullptr,
+                           const Array      *p_density_multiplier = nullptr,
+                           const Array      *p_size_multiplier = nullptr,
+                           Vec4<float>       bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
  * @brief Generates a synthetic mountain-like inselberg (isolated hill)
  * heightmap.
  *
