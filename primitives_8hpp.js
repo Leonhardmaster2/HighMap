@@ -62,6 +62,8 @@ var primitives_8hpp =
     [ "gavoronoise", "primitives_8hpp.html#adb0abb891026d60a261ae7b1e875aa1a", null ],
     [ "gavoronoise", "primitives_8hpp.html#a83074193a517325f41a4278c069b47b6", null ],
     [ "gavoronoise", "primitives_8hpp.html#a688f13a6de420fd318ccba616eafcf25", null ],
+    [ "hemisphere_field", "primitives_8hpp.html#add316e9ca46f36f597ba84fe85fcc2e0", null ],
+    [ "hemisphere_field_fbm", "primitives_8hpp.html#a825f3aa368cd4b9173ece3e9c5955193", null ],
     [ "mountain_inselberg", "primitives_8hpp.html#ad70163c350be417e3c71c26c14ffa25f", null ],
     [ "mountain_range_radial", "primitives_8hpp.html#a50332f79ca9b2548089359f5ad4b8ffd", null ],
     [ "mountain_stump", "primitives_8hpp.html#a53c706b728f497e64c49c2e36bf0aed6", null ],

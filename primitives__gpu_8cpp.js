@@ -8,6 +8,8 @@ var primitives__gpu_8cpp =
     [ "gavoronoise", "primitives__gpu_8cpp.html#adb0abb891026d60a261ae7b1e875aa1a", null ],
     [ "gavoronoise", "primitives__gpu_8cpp.html#a83074193a517325f41a4278c069b47b6", null ],
     [ "gavoronoise", "primitives__gpu_8cpp.html#a688f13a6de420fd318ccba616eafcf25", null ],
+    [ "hemisphere_field", "primitives__gpu_8cpp.html#add316e9ca46f36f597ba84fe85fcc2e0", null ],
+    [ "hemisphere_field_fbm", "primitives__gpu_8cpp.html#a825f3aa368cd4b9173ece3e9c5955193", null ],
     [ "mountain_range_radial", "primitives__gpu_8cpp.html#a50332f79ca9b2548089359f5ad4b8ffd", null ],
     [ "noise", "primitives__gpu_8cpp.html#a450f5b26f42b6f06be3e1e131f6aaf86", null ],
     [ "noise_fbm", "primitives__gpu_8cpp.html#a322260e971f4dec19ec8bc270e7cc461", null ],
