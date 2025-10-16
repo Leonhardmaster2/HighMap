@@ -175,7 +175,7 @@ InterpolatorCurve::InterpolatorCurve(std::vector<Point>       points,
     };
     break;
 
-  default: this->interp = [](float t) { return Point(0.f, 0.f); };
+  default: this->interp = [](float /* t */) { return Point(0.f, 0.f); };
   }
 }
 

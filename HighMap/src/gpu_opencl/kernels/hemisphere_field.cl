@@ -6,6 +6,7 @@ R""(
 float hf_base(const float2 pos,
               const float  rmin,
               const float  rmax,
+              const float  amplitude_random_ratio,
               const float  density,
               const float2 jitter,
               const float  shift,
@@ -13,6 +14,7 @@ float hf_base(const float2 pos,
 {
   float  val = FLT_MAX;
   float2 pos_i = floor(pos);
+  float  amp_rnd = 0.f;
 
   for (int dx = -2; dx <= 2; dx++)
     for (int dy = -2; dy <= 2; dy++)
@@ -30,11 +32,25 @@ float hf_base(const float2 pos,
 
         float r = length(pos - center) / radius;
 
-        val = min(val, r);
+        if (r < val)
+        {
+          val = r;
+          amp_rnd = hash12f(pos_nbrs + (float2)(r, 0.f), fseed);
+        }
       }
     }
 
-  return val < 1.f ? sqrt(1.f - val) : 0.f;
+  if (val < 1.f)
+  {
+    val = val < 1.f ? sqrt(1.f - val) : 0.f;
+    val *= (1.f - amplitude_random_ratio * amp_rnd);
+  }
+  else
+  {
+    val = 0.f;
+  }
+
+  return val;
 }
 
 void kernel hemisphere_field(global float *output,
@@ -50,6 +66,7 @@ void kernel hemisphere_field(global float *output,
                              const uint    seed,
                              const float   rmin,
                              const float   rmax,
+                             const float   amplitude_random_ratio,
                              const float   density,
                              const float2  jitter,
                              const float   shift,
@@ -80,6 +97,7 @@ void kernel hemisphere_field(global float *output,
   float val = hf_base(pos,
                       sm * rmin,
                       sm * rmax,
+                      amplitude_random_ratio,
                       dm * density,
                       jitter,
                       shift + dr,
@@ -101,6 +119,7 @@ void kernel hemisphere_field_fbm(global float *output,
                                  const uint    seed,
                                  const float   rmin,
                                  const float   rmax,
+                                 const float   amplitude_random_ratio,
                                  const float   density,
                                  const float2  jitter,
                                  const float   shift,
@@ -140,6 +159,7 @@ void kernel hemisphere_field_fbm(global float *output,
     float v = hf_base(nf * pos,
                       sm * rmin,
                       sm * rmax,
+                      amplitude_random_ratio,
                       dm * density,
                       jitter,
                       shift + dr,
