@@ -35,7 +35,7 @@ float hf_base(const float2 pos,
         if (r < val)
         {
           val = r;
-          amp_rnd = hash12f(pos_nbrs + (float2)(r, 0.f), fseed);
+          amp_rnd = hash12f(pos_nbrs + (float2)(0.1f, 0.f), fseed);
         }
       }
     }
