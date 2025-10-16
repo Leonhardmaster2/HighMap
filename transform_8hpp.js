@@ -14,6 +14,8 @@ var transform_8hpp =
     [ "warp_downslope", "transform_8hpp.html#a5d5baa80ff76a31a24e3b348edb0520a", null ],
     [ "warp_downslope", "transform_8hpp.html#a2dba417aca5a0dcd02509617939d741b", null ],
     [ "zoom", "transform_8hpp.html#aa49ad80ba2711183ea6758d6d6d4d5f7", null ],
+    [ "advection", "transform_8hpp.html#a5622b949c221971ac7402e2136962171", null ],
+    [ "advection", "transform_8hpp.html#ac8a7ab5935868d3c7849f30090a2e14f", null ],
     [ "rotate", "transform_8hpp.html#aab128e15988875b5d350d6f156612aa5", null ],
     [ "warp", "transform_8hpp.html#a99659d06f84b0e92e6731f28ca28937c", null ]
 ];

@@ -83,23 +83,23 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_2home_2runner_2work_2HighMap_2HighMap_2HighMap_2include_2highmap_2export_8hpp-example.html",
-"classhmap_1_1Array.html#ad631aba3c1ded924c1cd3fe6abe4c45f",
-"classhmap_1_1FbmPingpongFunction.html#a834bee94d51a8ffff5dd728855fb6106",
-"classhmap_1_1NoiseFunction.html#a1618d5c2d235802470b4f7713695d281",
-"classhmap_1_1StepFunction.html#aae15d0fef186bc37378c6dfc029dcbc7",
-"convolve_8hpp.html#a2f3f79308ada9782de6c4866b567b167",
-"export_8hpp.html#aafe1d43996eb4e55731c67b096cebcf6",
-"filters_8hpp.html#a93ccb4563e958441cc0d2f917633059e",
-"gradient_8hpp.html#a11c1600c2d67387c1b037fadcca9a069",
-"interpolate__array_8hpp.html#aac9094d328d39df42675a8614abe89ed",
-"morphology__gpu_8cpp.html#aed5416971461ddb7fb6427bdeb5cae86",
-"namespacehmap.html#a55574a9d91e2e7e20de954956402ba1b",
-"namespacehmap.html#aa9fd3c429dfa135cb80376aabcf66c2a",
-"namespacehmap.html#af080317ac939503049515f0a792c84b3",
-"operator_8cpp.html#a462f8b6ebc7b8ab79c619987e0ddfce4",
-"range_8cpp.html#a2b174148b8c1f2e44b5ecff756e9a0f9",
-"structhmap_1_1HeightmapRGB.html#aefc1fce6e380bfb733f9a3e19f1b59a9",
-"thermal_8cpp.html#ab6221592aa07d117715b474afab7db1c"
+"classhmap_1_1Array.html#ad438554fd7c3a7d705271e99f91d480c",
+"classhmap_1_1FbmPingpongFunction.html",
+"classhmap_1_1InterpolatorCurve.html#ad244270f8660a2d4bbafb1dc3a46208f",
+"classhmap_1_1StepFunction.html#a0b19149bf7bf3a2ae9c110953de0e3b5",
+"convolve_8cpp.html#acf8376b5e40b4373986c9a6b41c02429",
+"export_8hpp.html#a7b8945745feaeaa365d965ce66b32f58",
+"filters_8hpp.html#a8d285d64ffd577d077f189c913a2bb97",
+"gradient_8cpp.html#ad97b6a0082efd4063f7839c95a51b294",
+"interpolate__array_8hpp.html#a6f7fe9586ca23fc3f90a314b3ac9ac05",
+"morphology__gpu_8cpp.html#a6f56082e163134e66b5b09f87d8016e0",
+"namespacehmap.html#a539c5110c3427da96fd6bc99a6b090c5",
+"namespacehmap.html#aa7a794c92aebf181390461a3d8f85721",
+"namespacehmap.html#aee026d8b23196038c2b16c370b743889",
+"normal__map_8cpp.html#a26a0e82cf03ec259e3efae1ea84286db",
+"quilting_8cpp.html#a94a0d14d841251b9803f6fa11097b175",
+"structhmap_1_1HeightmapRGB.html#aac7276c2cb809518105e9a26a34230e5",
+"tensor_8cpp.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

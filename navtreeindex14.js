@@ -1,5 +1,13 @@
 var NAVTREEINDEX14 =
 {
+"normal__map_8cpp.html#a26a0e82cf03ec259e3efae1ea84286db":[5,0,1,1,16,2,1],
+"normal__map_8cpp.html#a58b2e7cdca93719d3e1fca73fd68421c":[5,0,1,1,16,2,2],
+"normal__map_8cpp.html#aef53e65fc9b8bc74c342367b0034cfa7":[5,0,1,1,16,2,0],
+"opencv__wrapper_8cpp.html":[5,0,1,1,0,3],
+"opencv__wrapper_8cpp.html#a457cc8fe8645d43d9c5a2aea80268147":[5,0,1,1,0,3,1],
+"opencv__wrapper_8cpp.html#a51bede9c24a0c1489c27d74c662eb579":[5,0,1,1,0,3,0],
+"operator_8cpp.html":[5,0,1,1,24,3],
+"operator_8cpp.html#a34aa21678ff4bb869bb29ee0f2f68886":[5,0,1,1,24,3,1],
 "operator_8cpp.html#a462f8b6ebc7b8ab79c619987e0ddfce4":[5,0,1,1,24,3,3],
 "operator_8cpp.html#ad6fc7fb24960fa6a45bc657ae2d89f80":[5,0,1,1,24,3,2],
 "operator_8cpp.html#ae51dda5e070b01ad1a85b44d986f5003":[5,0,1,1,24,3,0],
@@ -241,13 +249,5 @@ var NAVTREEINDEX14 =
 "pyramid__decomposition_8cpp.html":[5,0,1,1,23,1],
 "pyramid__decomposition_8cpp.html#a9ae209ce5746e99078078259955c7421":[5,0,1,1,23,1,0],
 "quilting_8cpp.html":[5,0,1,1,33,1],
-"quilting_8cpp.html#a77691c31ed316374c25becc7ecddd133":[5,0,1,1,33,1,1],
-"quilting_8cpp.html#a94a0d14d841251b9803f6fa11097b175":[5,0,1,1,33,1,0],
-"quilting_8cpp.html#aa23790e26c213a550660e479a28f21e5":[5,0,1,1,33,1,2],
-"quilting_8cpp.html#af2faad7feceeb1059da7303748438a51":[5,0,1,1,33,1,3],
-"range_8cpp.html":[5,0,1,1,27,0],
-"range_8cpp.html#a0583ee2dca09a21193cb1e1830ce90bf":[5,0,1,1,27,0,1],
-"range_8cpp.html#a2470328dcc792f6563c5844a2cc163ee":[5,0,1,1,27,0,16],
-"range_8cpp.html#a262e6495cb2d02598f36a2b46114b2b4":[5,0,1,1,27,0,26],
-"range_8cpp.html#a29bac84a2ba5a665047b8946eecb84ea":[5,0,1,1,27,0,2]
+"quilting_8cpp.html#a77691c31ed316374c25becc7ecddd133":[5,0,1,1,33,1,1]
 };

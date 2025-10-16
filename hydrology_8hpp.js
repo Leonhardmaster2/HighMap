@@ -11,6 +11,7 @@ var hydrology_8hpp =
     [ "flow_accumulation_dinf", "hydrology_8hpp.html#a58ba4910af868f70849f343e0c73adf3", null ],
     [ "flow_direction_d8", "hydrology_8hpp.html#af8f580c9d50a07585257569bd1160891", null ],
     [ "flow_direction_dinf", "hydrology_8hpp.html#a819fc20190d598c4664d442ee824fc96", null ],
+    [ "flow_direction_dinf_angle", "hydrology_8hpp.html#ad1d77ab375dfcca54183bbb687c82e9d", null ],
     [ "flow_stream", "hydrology_8hpp.html#a5adb98e67f89036317df083dd2123a1e", null ],
     [ "generate_riverbed", "hydrology_8hpp.html#a97ba5dfaa6625b654a8010ed7d2f3465", null ],
     [ "merge_water_depths", "hydrology_8hpp.html#a64fbc0261e13ea842762efd3ac6bcc53", null ],

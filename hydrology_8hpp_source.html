@@ -154,78 +154,80 @@ $(document).ready(function(){initNavTree('hydrology_8hpp_source.html',''); initR
 <div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span> </div>
 <div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>std::vector&lt;Array&gt; <a class="code hl_function" href="namespacehmap.html#a819fc20190d598c4664d442ee824fc96">flow_direction_dinf</a>(<span class="keyword">const</span> Array &amp;z, <span class="keywordtype">float</span> talus_ref);</div>
 <div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span> </div>
-<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>Path <a class="code hl_function" href="namespacehmap.html#a5adb98e67f89036317df083dd2123a1e">flow_stream</a>(<span class="keyword">const</span> Array    &amp;z,</div>
-<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>                 <span class="keyword">const</span> Vec2&lt;int&gt; ij_start,</div>
-<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>                 <span class="keyword">const</span> <span class="keywordtype">float</span>     elevation_ratio = 0.5f,</div>
-<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>                 <span class="keyword">const</span> <span class="keywordtype">float</span>     distance_exponent = 2.f,</div>
-<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>                 <span class="keyword">const</span> <span class="keywordtype">float</span>     upward_penalization = 100.f);</div>
-<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span> </div>
-<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>Array <a class="code hl_function" href="namespacehmap.html#a97ba5dfaa6625b654a8010ed7d2f3465">generate_riverbed</a>(<span class="keyword">const</span> Path &amp;path,</div>
-<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span>                        Vec2&lt;int&gt;   shape,</div>
-<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>                        Vec4&lt;float&gt; bbox = {0.f, 1.f, 0.f, 1.f},</div>
-<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>                        <span class="keywordtype">bool</span>        bezier_smoothing = <span class="keyword">false</span>,</div>
-<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span>                        <span class="keywordtype">float</span>       depth_start = 0.01f,</div>
-<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span>                        <span class="keywordtype">float</span>       depth_end = 1.f,</div>
-<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span>                        <span class="keywordtype">float</span>       slope_start = 64.f,</div>
-<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span>                        <span class="keywordtype">float</span>       slope_end = 32.f,</div>
-<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span>                        <span class="keywordtype">float</span>       shape_exponent_start = 1.f,</div>
-<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>                        <span class="keywordtype">float</span>       shape_exponent_end = 10.f,</div>
-<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span>                        <span class="keywordtype">float</span>       k_smoothing = 0.5f,</div>
-<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span>                        <span class="keywordtype">int</span>         post_filter_ir = 0,</div>
-<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span>                        Array      *p_noise_x = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span>                        Array      *p_noise_y = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span>                        Array      *p_noise_r = <span class="keyword">nullptr</span>);</div>
-<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span> </div>
-<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span>Array <a class="code hl_function" href="namespacehmap.html#a64fbc0261e13ea842762efd3ac6bcc53">merge_water_depths</a>(<span class="keyword">const</span> Array &amp;depth1,</div>
-<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span>                         <span class="keyword">const</span> Array &amp;depth2,</div>
-<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span>                         <span class="keywordtype">float</span>        k_smooth = 0.f);</div>
-<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span> </div>
-<div class="line"><a id="l00429" name="l00429"></a><span class="lineno">  429</span>Array <a class="code hl_function" href="namespacehmap.html#a121c42071766df393b6e049315876d5e">water_depth_from_mask</a>(<span class="keyword">const</span> Array &amp;z,</div>
-<div class="line"><a id="l00430" name="l00430"></a><span class="lineno">  430</span>                            <span class="keyword">const</span> Array &amp;mask,</div>
-<div class="line"><a id="l00431" name="l00431"></a><span class="lineno">  431</span>                            <span class="keywordtype">float</span>        mask_threshold = 0.f,</div>
-<div class="line"><a id="l00432" name="l00432"></a><span class="lineno">  432</span>                            <span class="keywordtype">int</span>          iterations_max = 10000,</div>
-<div class="line"><a id="l00433" name="l00433"></a><span class="lineno">  433</span>                            <span class="keywordtype">float</span>        tolerance = 1e-2f,</div>
-<div class="line"><a id="l00434" name="l00434"></a><span class="lineno">  434</span>                            <span class="keywordtype">float</span>        omega = 1.8f);</div>
-<div class="line"><a id="l00435" name="l00435"></a><span class="lineno">  435</span> </div>
-<div class="line"><a id="l00460" name="l00460"></a><span class="lineno">  460</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap.html#a3aebd62906b90ccfde11140e13b0853f">water_depth_dry_out</a>(Array       &amp;water_depth,</div>
-<div class="line"><a id="l00461" name="l00461"></a><span class="lineno">  461</span>                         <span class="keywordtype">float</span>        dry_out_ratio = 0.5f,</div>
-<div class="line"><a id="l00462" name="l00462"></a><span class="lineno">  462</span>                         <span class="keyword">const</span> Array *p_mask = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l00463" name="l00463"></a><span class="lineno">  463</span>                         <span class="keywordtype">float</span> depth_max = std::numeric_limits&lt;float&gt;::max());</div>
-<div class="line"><a id="l00464" name="l00464"></a><span class="lineno">  464</span> </div>
-<div class="line"><a id="l00486" name="l00486"></a><span class="lineno">  486</span>Array <a class="code hl_function" href="namespacehmap.html#a136f042ce2ad8c14033f4d839f56265d">water_depth_increase</a>(<span class="keyword">const</span> Array &amp;water_depth,</div>
-<div class="line"><a id="l00487" name="l00487"></a><span class="lineno">  487</span>                           <span class="keyword">const</span> Array &amp;z,</div>
-<div class="line"><a id="l00488" name="l00488"></a><span class="lineno">  488</span>                           <span class="keywordtype">float</span>        additional_depth);</div>
-<div class="line"><a id="l00489" name="l00489"></a><span class="lineno">  489</span> </div>
-<div class="line"><a id="l00506" name="l00506"></a><span class="lineno">  506</span>Array <a class="code hl_function" href="namespacehmap.html#ad39c72e2b4c07d3013f7b0143c31137c">water_mask</a>(<span class="keyword">const</span> Array &amp;water_depth);</div>
-<div class="line"><a id="l00507" name="l00507"></a><span class="lineno">  507</span> </div>
-<div class="line"><a id="l00530" name="l00530"></a><span class="lineno">  530</span>Array <a class="code hl_function" href="namespacehmap.html#ad39c72e2b4c07d3013f7b0143c31137c">water_mask</a>(<span class="keyword">const</span> Array &amp;water_depth,</div>
-<div class="line"><a id="l00531" name="l00531"></a><span class="lineno">  531</span>                 <span class="keyword">const</span> Array &amp;z,</div>
-<div class="line"><a id="l00532" name="l00532"></a><span class="lineno">  532</span>                 <span class="keywordtype">float</span>        additional_depth);</div>
-<div class="line"><a id="l00533" name="l00533"></a><span class="lineno">  533</span> </div>
-<div class="line"><a id="l00534" name="l00534"></a><span class="lineno">  534</span>} <span class="comment">// namespace hmap</span></div>
-<div class="line"><a id="l00535" name="l00535"></a><span class="lineno">  535</span> </div>
-<div class="line"><a id="l00536" name="l00536"></a><span class="lineno">  536</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacehmap_1_1gpu.html">hmap::gpu</a></div>
-<div class="line"><a id="l00537" name="l00537"></a><span class="lineno">  537</span>{</div>
-<div class="line"><a id="l00538" name="l00538"></a><span class="lineno">  538</span> </div>
-<div class="line"><a id="l00540" name="l00540"></a><span class="lineno">  540</span>Array <a class="code hl_function" href="namespacehmap_1_1gpu.html#af794a4c54c3766ca86b7e4a06346ab91">flow_direction_d8</a>(<span class="keyword">const</span> Array &amp;z);</div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>Array <a class="code hl_function" href="namespacehmap.html#ad1d77ab375dfcca54183bbb687c82e9d">flow_direction_dinf_angle</a>(<span class="keyword">const</span> Array &amp;z, <span class="keywordtype">float</span> talus_ref);</div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span> </div>
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>Path <a class="code hl_function" href="namespacehmap.html#a5adb98e67f89036317df083dd2123a1e">flow_stream</a>(<span class="keyword">const</span> Array    &amp;z,</div>
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>                 <span class="keyword">const</span> Vec2&lt;int&gt; ij_start,</div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>                 <span class="keyword">const</span> <span class="keywordtype">float</span>     elevation_ratio = 0.5f,</div>
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>                 <span class="keyword">const</span> <span class="keywordtype">float</span>     distance_exponent = 2.f,</div>
+<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>                 <span class="keyword">const</span> <span class="keywordtype">float</span>     upward_penalization = 100.f);</div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span> </div>
+<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span>Array <a class="code hl_function" href="namespacehmap.html#a97ba5dfaa6625b654a8010ed7d2f3465">generate_riverbed</a>(<span class="keyword">const</span> Path &amp;path,</div>
+<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span>                        Vec2&lt;int&gt;   shape,</div>
+<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span>                        Vec4&lt;float&gt; bbox = {0.f, 1.f, 0.f, 1.f},</div>
+<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>                        <span class="keywordtype">bool</span>        bezier_smoothing = <span class="keyword">false</span>,</div>
+<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span>                        <span class="keywordtype">float</span>       depth_start = 0.01f,</div>
+<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span>                        <span class="keywordtype">float</span>       depth_end = 1.f,</div>
+<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span>                        <span class="keywordtype">float</span>       slope_start = 64.f,</div>
+<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span>                        <span class="keywordtype">float</span>       slope_end = 32.f,</div>
+<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span>                        <span class="keywordtype">float</span>       shape_exponent_start = 1.f,</div>
+<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span>                        <span class="keywordtype">float</span>       shape_exponent_end = 10.f,</div>
+<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span>                        <span class="keywordtype">float</span>       k_smoothing = 0.5f,</div>
+<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span>                        <span class="keywordtype">int</span>         post_filter_ir = 0,</div>
+<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span>                        Array      *p_noise_x = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span>                        Array      *p_noise_y = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span>                        Array      *p_noise_r = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span> </div>
+<div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span>Array <a class="code hl_function" href="namespacehmap.html#a64fbc0261e13ea842762efd3ac6bcc53">merge_water_depths</a>(<span class="keyword">const</span> Array &amp;depth1,</div>
+<div class="line"><a id="l00394" name="l00394"></a><span class="lineno">  394</span>                         <span class="keyword">const</span> Array &amp;depth2,</div>
+<div class="line"><a id="l00395" name="l00395"></a><span class="lineno">  395</span>                         <span class="keywordtype">float</span>        k_smooth = 0.f);</div>
+<div class="line"><a id="l00396" name="l00396"></a><span class="lineno">  396</span> </div>
+<div class="line"><a id="l00435" name="l00435"></a><span class="lineno">  435</span>Array <a class="code hl_function" href="namespacehmap.html#a121c42071766df393b6e049315876d5e">water_depth_from_mask</a>(<span class="keyword">const</span> Array &amp;z,</div>
+<div class="line"><a id="l00436" name="l00436"></a><span class="lineno">  436</span>                            <span class="keyword">const</span> Array &amp;mask,</div>
+<div class="line"><a id="l00437" name="l00437"></a><span class="lineno">  437</span>                            <span class="keywordtype">float</span>        mask_threshold = 0.f,</div>
+<div class="line"><a id="l00438" name="l00438"></a><span class="lineno">  438</span>                            <span class="keywordtype">int</span>          iterations_max = 10000,</div>
+<div class="line"><a id="l00439" name="l00439"></a><span class="lineno">  439</span>                            <span class="keywordtype">float</span>        tolerance = 1e-2f,</div>
+<div class="line"><a id="l00440" name="l00440"></a><span class="lineno">  440</span>                            <span class="keywordtype">float</span>        omega = 1.8f);</div>
+<div class="line"><a id="l00441" name="l00441"></a><span class="lineno">  441</span> </div>
+<div class="line"><a id="l00466" name="l00466"></a><span class="lineno">  466</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap.html#a3aebd62906b90ccfde11140e13b0853f">water_depth_dry_out</a>(Array       &amp;water_depth,</div>
+<div class="line"><a id="l00467" name="l00467"></a><span class="lineno">  467</span>                         <span class="keywordtype">float</span>        dry_out_ratio = 0.5f,</div>
+<div class="line"><a id="l00468" name="l00468"></a><span class="lineno">  468</span>                         <span class="keyword">const</span> Array *p_mask = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l00469" name="l00469"></a><span class="lineno">  469</span>                         <span class="keywordtype">float</span> depth_max = std::numeric_limits&lt;float&gt;::max());</div>
+<div class="line"><a id="l00470" name="l00470"></a><span class="lineno">  470</span> </div>
+<div class="line"><a id="l00492" name="l00492"></a><span class="lineno">  492</span>Array <a class="code hl_function" href="namespacehmap.html#a136f042ce2ad8c14033f4d839f56265d">water_depth_increase</a>(<span class="keyword">const</span> Array &amp;water_depth,</div>
+<div class="line"><a id="l00493" name="l00493"></a><span class="lineno">  493</span>                           <span class="keyword">const</span> Array &amp;z,</div>
+<div class="line"><a id="l00494" name="l00494"></a><span class="lineno">  494</span>                           <span class="keywordtype">float</span>        additional_depth);</div>
+<div class="line"><a id="l00495" name="l00495"></a><span class="lineno">  495</span> </div>
+<div class="line"><a id="l00512" name="l00512"></a><span class="lineno">  512</span>Array <a class="code hl_function" href="namespacehmap.html#ad39c72e2b4c07d3013f7b0143c31137c">water_mask</a>(<span class="keyword">const</span> Array &amp;water_depth);</div>
+<div class="line"><a id="l00513" name="l00513"></a><span class="lineno">  513</span> </div>
+<div class="line"><a id="l00536" name="l00536"></a><span class="lineno">  536</span>Array <a class="code hl_function" href="namespacehmap.html#ad39c72e2b4c07d3013f7b0143c31137c">water_mask</a>(<span class="keyword">const</span> Array &amp;water_depth,</div>
+<div class="line"><a id="l00537" name="l00537"></a><span class="lineno">  537</span>                 <span class="keyword">const</span> Array &amp;z,</div>
+<div class="line"><a id="l00538" name="l00538"></a><span class="lineno">  538</span>                 <span class="keywordtype">float</span>        additional_depth);</div>
+<div class="line"><a id="l00539" name="l00539"></a><span class="lineno">  539</span> </div>
+<div class="line"><a id="l00540" name="l00540"></a><span class="lineno">  540</span>} <span class="comment">// namespace hmap</span></div>
 <div class="line"><a id="l00541" name="l00541"></a><span class="lineno">  541</span> </div>
-<div class="line"><a id="l00543" name="l00543"></a><span class="lineno">  543</span>Array <a class="code hl_function" href="namespacehmap_1_1gpu.html#ab4f1542d2d5dd7edc54d240dab777755">generate_riverbed</a>(<span class="keyword">const</span> Path &amp;path,</div>
-<div class="line"><a id="l00544" name="l00544"></a><span class="lineno">  544</span>                        Vec2&lt;int&gt;   shape,</div>
-<div class="line"><a id="l00545" name="l00545"></a><span class="lineno">  545</span>                        Vec4&lt;float&gt; bbox = {0.f, 1.f, 0.f, 1.f},</div>
-<div class="line"><a id="l00546" name="l00546"></a><span class="lineno">  546</span>                        <span class="keywordtype">bool</span>        bezier_smoothing = <span class="keyword">false</span>,</div>
-<div class="line"><a id="l00547" name="l00547"></a><span class="lineno">  547</span>                        <span class="keywordtype">float</span>       depth_start = 0.01f,</div>
-<div class="line"><a id="l00548" name="l00548"></a><span class="lineno">  548</span>                        <span class="keywordtype">float</span>       depth_end = 1.f,</div>
-<div class="line"><a id="l00549" name="l00549"></a><span class="lineno">  549</span>                        <span class="keywordtype">float</span>       slope_start = 64.f,</div>
-<div class="line"><a id="l00550" name="l00550"></a><span class="lineno">  550</span>                        <span class="keywordtype">float</span>       slope_end = 32.f,</div>
-<div class="line"><a id="l00551" name="l00551"></a><span class="lineno">  551</span>                        <span class="keywordtype">float</span>       shape_exponent_start = 1.f,</div>
-<div class="line"><a id="l00552" name="l00552"></a><span class="lineno">  552</span>                        <span class="keywordtype">float</span>       shape_exponent_end = 10.f,</div>
-<div class="line"><a id="l00553" name="l00553"></a><span class="lineno">  553</span>                        <span class="keywordtype">float</span>       k_smoothing = 0.5f,</div>
-<div class="line"><a id="l00554" name="l00554"></a><span class="lineno">  554</span>                        <span class="keywordtype">int</span>         post_filter_ir = 0,</div>
-<div class="line"><a id="l00555" name="l00555"></a><span class="lineno">  555</span>                        Array      *p_noise_x = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l00556" name="l00556"></a><span class="lineno">  556</span>                        Array      *p_noise_y = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l00557" name="l00557"></a><span class="lineno">  557</span>                        Array      *p_noise_r = <span class="keyword">nullptr</span>);</div>
-<div class="line"><a id="l00558" name="l00558"></a><span class="lineno">  558</span> </div>
-<div class="line"><a id="l00559" name="l00559"></a><span class="lineno">  559</span>} <span class="comment">// namespace hmap::gpu</span></div>
+<div class="line"><a id="l00542" name="l00542"></a><span class="lineno">  542</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacehmap_1_1gpu.html">hmap::gpu</a></div>
+<div class="line"><a id="l00543" name="l00543"></a><span class="lineno">  543</span>{</div>
+<div class="line"><a id="l00544" name="l00544"></a><span class="lineno">  544</span> </div>
+<div class="line"><a id="l00546" name="l00546"></a><span class="lineno">  546</span>Array <a class="code hl_function" href="namespacehmap_1_1gpu.html#af794a4c54c3766ca86b7e4a06346ab91">flow_direction_d8</a>(<span class="keyword">const</span> Array &amp;z);</div>
+<div class="line"><a id="l00547" name="l00547"></a><span class="lineno">  547</span> </div>
+<div class="line"><a id="l00549" name="l00549"></a><span class="lineno">  549</span>Array <a class="code hl_function" href="namespacehmap_1_1gpu.html#ab4f1542d2d5dd7edc54d240dab777755">generate_riverbed</a>(<span class="keyword">const</span> Path &amp;path,</div>
+<div class="line"><a id="l00550" name="l00550"></a><span class="lineno">  550</span>                        Vec2&lt;int&gt;   shape,</div>
+<div class="line"><a id="l00551" name="l00551"></a><span class="lineno">  551</span>                        Vec4&lt;float&gt; bbox = {0.f, 1.f, 0.f, 1.f},</div>
+<div class="line"><a id="l00552" name="l00552"></a><span class="lineno">  552</span>                        <span class="keywordtype">bool</span>        bezier_smoothing = <span class="keyword">false</span>,</div>
+<div class="line"><a id="l00553" name="l00553"></a><span class="lineno">  553</span>                        <span class="keywordtype">float</span>       depth_start = 0.01f,</div>
+<div class="line"><a id="l00554" name="l00554"></a><span class="lineno">  554</span>                        <span class="keywordtype">float</span>       depth_end = 1.f,</div>
+<div class="line"><a id="l00555" name="l00555"></a><span class="lineno">  555</span>                        <span class="keywordtype">float</span>       slope_start = 64.f,</div>
+<div class="line"><a id="l00556" name="l00556"></a><span class="lineno">  556</span>                        <span class="keywordtype">float</span>       slope_end = 32.f,</div>
+<div class="line"><a id="l00557" name="l00557"></a><span class="lineno">  557</span>                        <span class="keywordtype">float</span>       shape_exponent_start = 1.f,</div>
+<div class="line"><a id="l00558" name="l00558"></a><span class="lineno">  558</span>                        <span class="keywordtype">float</span>       shape_exponent_end = 10.f,</div>
+<div class="line"><a id="l00559" name="l00559"></a><span class="lineno">  559</span>                        <span class="keywordtype">float</span>       k_smoothing = 0.5f,</div>
+<div class="line"><a id="l00560" name="l00560"></a><span class="lineno">  560</span>                        <span class="keywordtype">int</span>         post_filter_ir = 0,</div>
+<div class="line"><a id="l00561" name="l00561"></a><span class="lineno">  561</span>                        Array      *p_noise_x = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l00562" name="l00562"></a><span class="lineno">  562</span>                        Array      *p_noise_y = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l00563" name="l00563"></a><span class="lineno">  563</span>                        Array      *p_noise_r = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00564" name="l00564"></a><span class="lineno">  564</span> </div>
+<div class="line"><a id="l00565" name="l00565"></a><span class="lineno">  565</span>} <span class="comment">// namespace hmap::gpu</span></div>
 <div class="ttc" id="aarray_8hpp_html"><div class="ttname"><a href="array_8hpp.html">array.hpp</a></div><div class="ttdoc">Declaration of the Array class for 2D floating-point arrays with various mathematical operations and ...</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html"><div class="ttname"><a href="namespacehmap_1_1gpu.html">hmap::gpu</a></div><div class="ttdef"><b>Definition</b> blending.hpp:186</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_ab4f1542d2d5dd7edc54d240dab777755"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ab4f1542d2d5dd7edc54d240dab777755">hmap::gpu::generate_riverbed</a></div><div class="ttdeci">Array generate_riverbed(const Path &amp;path, Vec2&lt; int &gt; shape, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f}, bool bezier_smoothing=false, float depth_start=0.01f, float depth_end=1.f, float slope_start=64.f, float slope_end=32.f, float shape_exponent_start=1.f, float shape_exponent_end=10.f, float k_smoothing=0.5f, int post_filter_ir=0, Array *p_noise_x=nullptr, Array *p_noise_y=nullptr, Array *p_noise_r=nullptr)</div><div class="ttdoc">See hmap::generate_riverbed.</div><div class="ttdef"><b>Definition</b> generate_riverbed_gpu.cpp:16</div></div>
@@ -244,6 +246,7 @@ $(document).ready(function(){initNavTree('hydrology_8hpp_source.html',''); initR
 <div class="ttc" id="anamespacehmap_html_a64fbc0261e13ea842762efd3ac6bcc53"><div class="ttname"><a href="namespacehmap.html#a64fbc0261e13ea842762efd3ac6bcc53">hmap::merge_water_depths</a></div><div class="ttdeci">Array merge_water_depths(const Array &amp;depth1, const Array &amp;depth2, float k_smooth=0.f)</div><div class="ttdoc">Merge two water depth fields.</div><div class="ttdef"><b>Definition</b> flooding.cpp:180</div></div>
 <div class="ttc" id="anamespacehmap_html_a819fc20190d598c4664d442ee824fc96"><div class="ttname"><a href="namespacehmap.html#a819fc20190d598c4664d442ee824fc96">hmap::flow_direction_dinf</a></div><div class="ttdeci">std::vector&lt; Array &gt; flow_direction_dinf(const Array &amp;z, float talus_ref)</div><div class="ttdoc">Computes the flow direction and weights for each direction using the Multiple Flow Direction (MFD) mo...</div><div class="ttdef"><b>Definition</b> flow_accumulation_dinf.cpp:107</div></div>
 <div class="ttc" id="anamespacehmap_html_a97ba5dfaa6625b654a8010ed7d2f3465"><div class="ttname"><a href="namespacehmap.html#a97ba5dfaa6625b654a8010ed7d2f3465">hmap::generate_riverbed</a></div><div class="ttdeci">Array generate_riverbed(const Path &amp;path, Vec2&lt; int &gt; shape, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f}, bool bezier_smoothing=false, float depth_start=0.01f, float depth_end=1.f, float slope_start=64.f, float slope_end=32.f, float shape_exponent_start=1.f, float shape_exponent_end=10.f, float k_smoothing=0.5f, int post_filter_ir=0, Array *p_noise_x=nullptr, Array *p_noise_y=nullptr, Array *p_noise_r=nullptr)</div><div class="ttdoc">Generates a 2D array representing a riverbed based on a specified path.</div><div class="ttdef"><b>Definition</b> generate_riverbed.cpp:16</div></div>
+<div class="ttc" id="anamespacehmap_html_ad1d77ab375dfcca54183bbb687c82e9d"><div class="ttname"><a href="namespacehmap.html#ad1d77ab375dfcca54183bbb687c82e9d">hmap::flow_direction_dinf_angle</a></div><div class="ttdeci">Array flow_direction_dinf_angle(const Array &amp;z, float talus_ref)</div><div class="ttdoc">Computes the flow direction using the Multiple Flow Direction (MFD) model.</div><div class="ttdef"><b>Definition</b> flow_accumulation_dinf.cpp:149</div></div>
 <div class="ttc" id="anamespacehmap_html_ad39c72e2b4c07d3013f7b0143c31137c"><div class="ttname"><a href="namespacehmap.html#ad39c72e2b4c07d3013f7b0143c31137c">hmap::water_mask</a></div><div class="ttdeci">Array water_mask(const Array &amp;water_depth)</div><div class="ttdoc">Generates a binary mask representing water presence.</div><div class="ttdef"><b>Definition</b> flooding.cpp:373</div></div>
 <div class="ttc" id="anamespacehmap_html_add3e6744c96ed203d611ceecf65d343e"><div class="ttname"><a href="namespacehmap.html#add3e6744c96ed203d611ceecf65d343e">hmap::flooding_from_point</a></div><div class="ttdeci">Array flooding_from_point(const Array &amp;z, int i, int j, float depth_min=std::numeric_limits&lt; float &gt;::max())</div><div class="ttdoc">Flood terrain starting from a single seed point.</div><div class="ttdef"><b>Definition</b> flooding.cpp:110</div></div>
 <div class="ttc" id="anamespacehmap_html_ae42a874864d2d8f1a7b580f428395c01"><div class="ttname"><a href="namespacehmap.html#ae42a874864d2d8f1a7b580f428395c01">hmap::find_flow_sinks</a></div><div class="ttdeci">void find_flow_sinks(const Array &amp;z, std::vector&lt; int &gt; &amp;is, std::vector&lt; int &gt; &amp;js)</div><div class="ttdoc">Identifies the indices of flow sinks within the heightmap.</div><div class="ttdef"><b>Definition</b> find_flow_sinks.cpp:10</div></div>

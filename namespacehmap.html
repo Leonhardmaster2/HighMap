@@ -1527,6 +1527,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a819fc20190d598c4664d442ee824fc96" id="r_a819fc20190d598c4664d442ee824fc96"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classhmap_1_1Array.html">Array</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a819fc20190d598c4664d442ee824fc96">flow_direction_dinf</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, float talus_ref)</td></tr>
 <tr class="memdesc:a819fc20190d598c4664d442ee824fc96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the flow direction and weights for each direction using the Multiple Flow Direction (MFD) model.  <br /></td></tr>
 <tr class="separator:a819fc20190d598c4664d442ee824fc96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1d77ab375dfcca54183bbb687c82e9d" id="r_ad1d77ab375dfcca54183bbb687c82e9d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#ad1d77ab375dfcca54183bbb687c82e9d">flow_direction_dinf_angle</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, float talus_ref)</td></tr>
+<tr class="memdesc:ad1d77ab375dfcca54183bbb687c82e9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the flow direction using the Multiple Flow Direction (MFD) model.  <br /></td></tr>
+<tr class="separator:ad1d77ab375dfcca54183bbb687c82e9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5adb98e67f89036317df083dd2123a1e" id="r_a5adb98e67f89036317df083dd2123a1e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Path.html">Path</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a5adb98e67f89036317df083dd2123a1e">flow_stream</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, const <a class="el" href="structhmap_1_1Vec2.html">Vec2</a>&lt; int &gt; ij_start, const float elevation_ratio=0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, const float distance_exponent=2.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, const float upward_penalization=100.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
 <tr class="memdesc:a5adb98e67f89036317df083dd2123a1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the optimal flow path from a starting point to the boundary of a given elevation array.  <br /></td></tr>
 <tr class="separator:a5adb98e67f89036317df083dd2123a1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -5223,7 +5226,7 @@ template&lt;typename T &gt; </div>
 <div class="line">  col3.<a class="code hl_function" href="classhmap_1_1Tensor.html#afe46210c8fa2c76229cc4099d63f237e">to_png</a>(<span class="stringliteral">&quot;ex_colorize_slope_height_heatmap.png&quot;</span>);</div>
 <div class="line">}</div>
 <div class="ttc" id="aclasshmap_1_1Tensor_html"><div class="ttname"><a href="classhmap_1_1Tensor.html">hmap::Tensor</a></div><div class="ttdoc">A class to represent a multi-dimensional tensor.</div><div class="ttdef"><b>Definition</b> tensor.hpp:37</div></div>
-<div class="ttc" id="aclasshmap_1_1Tensor_html_afe46210c8fa2c76229cc4099d63f237e"><div class="ttname"><a href="classhmap_1_1Tensor.html#afe46210c8fa2c76229cc4099d63f237e">hmap::Tensor::to_png</a></div><div class="ttdeci">void to_png(const std::string &amp;fname, int depth=CV_8U)</div><div class="ttdoc">Saves the Tensor as a PNG image file.</div><div class="ttdef"><b>Definition</b> tensor.cpp:140</div></div>
+<div class="ttc" id="aclasshmap_1_1Tensor_html_afe46210c8fa2c76229cc4099d63f237e"><div class="ttname"><a href="classhmap_1_1Tensor.html#afe46210c8fa2c76229cc4099d63f237e">hmap::Tensor::to_png</a></div><div class="ttdeci">void to_png(const std::string &amp;fname, int depth=CV_8U)</div><div class="ttdoc">Saves the Tensor as a PNG image file.</div><div class="ttdef"><b>Definition</b> tensor.cpp:139</div></div>
 <div class="ttc" id="anamespacehmap_html_aa60f142e186d43472cdda569c03b31b2"><div class="ttname"><a href="namespacehmap.html#aa60f142e186d43472cdda569c03b31b2">hmap::colorize_slope_height_heatmap</a></div><div class="ttdeci">Tensor colorize_slope_height_heatmap(const Array &amp;array, int cmap)</div><div class="ttdoc">Colorizes a slope height heatmap based on the gradient norms of a given array.</div><div class="ttdef"><b>Definition</b> colorize.cpp:191</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_colorize_slope_height_heatmap.png" alt=""/>
@@ -25829,7 +25832,7 @@ h}{\partial y}
 <div class="line">  hd.to_png(<span class="stringliteral">&quot;ex_mix_normal_map_rgba5.png&quot;</span>);</div>
 <div class="line">  he.to_png(<span class="stringliteral">&quot;ex_mix_normal_map_rgba6.png&quot;</span>);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclasshmap_1_1Tensor_html_a59e7ac9122e705d05f6e8b00a26ef738"><div class="ttname"><a href="classhmap_1_1Tensor.html#a59e7ac9122e705d05f6e8b00a26ef738">hmap::Tensor::get_slice</a></div><div class="ttdeci">Array get_slice(int k) const</div><div class="ttdoc">Get a 2D slice of the tensor along the z-axis.</div><div class="ttdef"><b>Definition</b> tensor.cpp:63</div></div>
+<div class="ttc" id="aclasshmap_1_1Tensor_html_a59e7ac9122e705d05f6e8b00a26ef738"><div class="ttname"><a href="classhmap_1_1Tensor.html#a59e7ac9122e705d05f6e8b00a26ef738">hmap::Tensor::get_slice</a></div><div class="ttdeci">Array get_slice(int k) const</div><div class="ttdoc">Get a 2D slice of the tensor along the z-axis.</div><div class="ttdef"><b>Definition</b> tensor.cpp:62</div></div>
 <div class="ttc" id="anamespacehmap_html_a2751ce7799f172484dd06a1b72d168da"><div class="ttname"><a href="namespacehmap.html#a2751ce7799f172484dd06a1b72d168da">hmap::mix_normal_map_rgba</a></div><div class="ttdeci">HeightmapRGBA mix_normal_map_rgba(HeightmapRGBA &amp;nmap_base, HeightmapRGBA &amp;nmap_detail, float detail_scaling=1.f, NormalMapBlendingMethod blending_method=NormalMapBlendingMethod::NMAP_DERIVATIVE)</div><div class="ttdoc">Mixes two normal maps in RGBA format to create a blended normal map.</div><div class="ttdef"><b>Definition</b> heightmap_rgba.cpp:323</div></div>
 <div class="ttc" id="anamespacehmap_html_a9880bdc35440162c24103a5df4c137a6"><div class="ttname"><a href="namespacehmap.html#a9880bdc35440162c24103a5df4c137a6">hmap::cone</a></div><div class="ttdeci">Array cone(Vec2&lt; int &gt; shape)</div><div class="ttdoc">Generates a cone-shaped kernel array.</div><div class="ttdef"><b>Definition</b> kernels.cpp:56</div></div>
 <div class="ttc" id="anamespacehmap_html_abc952321c99ec11d60b4037e3d27db9ba25b053ebbd8db9d348737e6f343c61bf"><div class="ttname"><a href="namespacehmap.html#abc952321c99ec11d60b4037e3d27db9ba25b053ebbd8db9d348737e6f343c61bf">hmap::NMAP_UDN</a></div><div class="ttdeci">@ NMAP_UDN</div><div class="ttdef"><b>Definition</b> heightmap.hpp:28</div></div>
@@ -27625,6 +27628,36 @@ h}{\partial y}
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>std::vector&lt;Array&gt; A vector of arrays, each containing the weights for flow directions at every cell. </dd></dl>
+
+</div>
+</div>
+<a id="ad1d77ab375dfcca54183bbb687c82e9d" name="ad1d77ab375dfcca54183bbb687c82e9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1d77ab375dfcca54183bbb687c82e9d">&#9670;&#160;</a></span>flow_direction_dinf_angle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classhmap_1_1Array.html">Array</a> hmap::flow_direction_dinf_angle </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>z</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>talus_ref</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes the flow direction using the Multiple Flow Direction (MFD) model. </p>
 
 </div>
 </div>
