@@ -274,6 +274,12 @@ Array flow_direction_d8(const Array &z);
 std::vector<Array> flow_direction_dinf(const Array &z, float talus_ref);
 
 /**
+ * @brief Computes the flow direction using the Multiple Flow Direction (MFD)
+ * model.
+ */
+Array flow_direction_dinf_angle(const Array &z, float talus_ref);
+
+/**
  * @brief Computes the optimal flow path from a starting point to the boundary
  * of a given elevation array.
  *

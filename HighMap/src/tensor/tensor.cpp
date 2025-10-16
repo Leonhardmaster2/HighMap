@@ -37,8 +37,7 @@ Tensor::Tensor(const std::string &fname)
   for (int j = 0; j < shape.y; j++)
     for (int i = 0; i < shape.x; i++)
     {
-      // OpenCV stores pixels as (row, column), hence (mat.rows - 1 - j, i)
-      cv::Vec3f pixel = mat.at<cv::Vec3f>(mat.rows - 1 - j, i);
+      cv::Vec3f pixel = mat.at<cv::Vec3f>(j, i);
 
       // assign RGB values to the tensor
       (*this)(i, j, 0) = pixel[0]; // red

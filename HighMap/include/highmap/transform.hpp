@@ -365,6 +365,49 @@ Array zoom(const Array &array,
 namespace hmap::gpu
 {
 
+/**
+ * @brief Performs 2D field advection based on the gradient of a heightmap.
+ *
+ * This function computes the X and Y gradients of the given heightmap `z` and
+ * uses them as flow directions to advect the input `advected_field`. The result
+ * is a new field where values have been displaced according to the gradient
+ * direction and the specified advection parameters.
+ *
+ * @param  z                 The heightmap (or scalar field) used to compute
+ *                           advection directions.
+ * @param  advected_field    The field to be advected along the gradient of `z`.
+ * @param  advection_length  The step length used for advection; larger values
+ *                           produce stronger displacement.
+ * @param  value_persistence The persistence factor applied to the advected
+ *                           values, typically in the range [0, 1]; controls how
+ *                           much of the original value is preserved.
+ * @param  p_mask            Optional pointer to a mask array; if provided,
+ *                           advection is applied only where the mask is
+ *                           nonzero.
+ *
+ * @return                   A new Array representing the advected version of
+ *                           `advected_field`.
+ *
+ * **Example**
+ * @include ex_advection.cpp
+ *
+ * **Result**
+ * @image html ex_advection.png
+ */
+Array advection(const Array &z,
+                const Array &advected_field,
+                float        advection_length = 0.1f,
+                float        value_persistence = 0.9f,
+                const Array *p_mask = nullptr);
+
+Array advection(const Array &z,
+                const Array &advected_field,
+                const Array &dx,
+                const Array &dy,
+                float        advection_length = 0.1f,
+                float        value_persistence = 0.9f,
+                const Array *p_mask = nullptr);
+
 /*! @brief See hmap::rotate */
 void rotate(Array &array, float angle, bool zoom_in = true);
 
