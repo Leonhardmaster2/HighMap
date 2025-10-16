@@ -5,7 +5,7 @@ R""(
 
 #define MAX_STEPS 1024 // must be >= advection_length / min(drx,dry)
 
-void kernel advection(read_only image2d_t  z,
+void kernel advection_warp(read_only image2d_t  z,
                       read_only image2d_t  field,
                       read_only image2d_t  dx,
                       read_only image2d_t  dy,

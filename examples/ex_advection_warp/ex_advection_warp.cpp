@@ -14,10 +14,10 @@ int main(void)
   float advection_length = 0.05f;
   float value_persistence = 0.96f;
 
-  hmap::Array za = hmap::gpu::advection(z,
-                                        z,
-                                        advection_length,
-                                        value_persistence);
+  hmap::Array za = hmap::gpu::advection_warp(z,
+                                             z,
+                                             advection_length,
+                                             value_persistence);
 
   // advect another field based on the elevation
   hmap::Array n = hmap::noise_fbm(hmap::NoiseType::PERLIN,
@@ -25,12 +25,12 @@ int main(void)
                                   {32.f, 32.f},
                                   seed);
 
-  hmap::Array zb = hmap::gpu::advection(z,
-                                        n,
-                                        advection_length,
-                                        value_persistence);
+  hmap::Array zb = hmap::gpu::advection_warp(z,
+                                             n,
+                                             advection_length,
+                                             value_persistence);
 
-  hmap::export_banner_png("ex_advection.png",
+  hmap::export_banner_png("ex_advection_warp.png",
                           {z, za, zb},
                           hmap::Cmap::TERRAIN,
                           true);

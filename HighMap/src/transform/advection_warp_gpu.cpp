@@ -9,7 +9,7 @@
 namespace hmap::gpu
 {
 
-Array advection(const Array &z,
+Array advection_warp(const Array &z,
                 const Array &advected_field,
                 const Array &dx,
                 const Array &dy,
@@ -17,7 +17,7 @@ Array advection(const Array &z,
                 float        value_persistence,
                 const Array *p_mask)
 {
-  auto run = clwrapper::Run("advection");
+  auto run = clwrapper::Run("advection_warp");
 
   Vec2<int> shape = z.shape;
   Array     out = Array(shape);
@@ -47,7 +47,7 @@ Array advection(const Array &z,
   return out;
 }
 
-Array advection(const Array &z,
+Array advection_warp(const Array &z,
                 const Array &advected_field,
                 float        advection_length,
                 float        value_persistence,
@@ -56,7 +56,7 @@ Array advection(const Array &z,
   Array dx = hmap::gradient_x(z);
   Array dy = hmap::gradient_y(z);
 
-  return advection(z,
+  return advection_warp(z,
                    advected_field,
                    dx,
                    dy,

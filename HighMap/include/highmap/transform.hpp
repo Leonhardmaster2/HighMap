@@ -366,7 +366,8 @@ namespace hmap::gpu
 {
 
 /**
- * @brief Performs 2D field advection based on the gradient of a heightmap.
+ * @brief Performs 2D field advection based on the gradient of a heightmap using
+ * a warp-based technic (simplified approach).
  *
  * This function computes the X and Y gradients of the given heightmap `z` and
  * uses them as flow directions to advect the input `advected_field`. The result
@@ -389,24 +390,24 @@ namespace hmap::gpu
  *                           `advected_field`.
  *
  * **Example**
- * @include ex_advection.cpp
+ * @include ex_advection_warp.cpp
  *
  * **Result**
- * @image html ex_advection.png
+ * @image html ex_advection_warp.png
  */
-Array advection(const Array &z,
-                const Array &advected_field,
-                float        advection_length = 0.1f,
-                float        value_persistence = 0.9f,
-                const Array *p_mask = nullptr);
+Array advection_warp(const Array &z,
+                     const Array &advected_field,
+                     float        advection_length = 0.1f,
+                     float        value_persistence = 0.9f,
+                     const Array *p_mask = nullptr);
 
-Array advection(const Array &z,
-                const Array &advected_field,
-                const Array &dx,
-                const Array &dy,
-                float        advection_length = 0.1f,
-                float        value_persistence = 0.9f,
-                const Array *p_mask = nullptr);
+Array advection_warp(const Array &z,
+                     const Array &advected_field,
+                     const Array &dx,
+                     const Array &dy,
+                     float        advection_length = 0.1f,
+                     float        value_persistence = 0.9f,
+                     const Array *p_mask = nullptr);
 
 /*! @brief See hmap::rotate */
 void rotate(Array &array, float angle, bool zoom_in = true);
