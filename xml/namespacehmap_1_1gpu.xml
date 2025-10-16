@@ -9539,12 +9539,12 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </inbodydescription>
         <location file="HighMap/src/selector/selector_gpu.cpp" line="12" column="7" bodyfile="HighMap/src/selector/selector_gpu.cpp" bodystart="12" bodyend="27" declfile="HighMap/include/highmap/selector.hpp" declline="431" declcolumn="7"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1_1gpu_1a5622b949c221971ac7402e2136962171" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacehmap_1_1gpu_1a6e5f495c359df88d1185220ab1cc8c23" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
-        <definition>Array hmap::gpu::advection</definition>
+        <definition>Array hmap::gpu::advection_warp</definition>
         <argsstring>(const Array &amp;z, const Array &amp;advected_field, float advection_length=0.1f, float value_persistence=0.9f, const Array *p_mask=nullptr)</argsstring>
-        <name>advection</name>
-        <qualifiedname>hmap::gpu::advection</qualifiedname>
+        <name>advection_warp</name>
+        <qualifiedname>hmap::gpu::advection_warp</qualifiedname>
         <param>
           <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
           <declname>z</declname>
@@ -9569,7 +9569,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
           <defval>nullptr</defval>
         </param>
         <briefdescription>
-<para>Performs 2D field advection based on the gradient of a heightmap. </para>
+<para>Performs 2D field advection based on the gradient of a heightmap using a warp-based technic (simplified approach). </para>
         </briefdescription>
         <detaileddescription>
 <para>This function computes the X and Y gradients of the given heightmap <computeroutput>z</computeroutput> and uses them as flow directions to advect the input <computeroutput>advected_field</computeroutput>. The result is a new field where values have been displaced according to the gradient direction and the specified advection parameters.</para>
@@ -9616,7 +9616,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
 </parameterlist>
 <simplesect kind="return"><para>A new <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> representing the advected version of <computeroutput>advected_field</computeroutput>.</para>
 </simplesect>
-<bold>Example</bold> <programlisting filename="ex_advection.cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<bold>Example</bold> <programlisting filename="ex_advection_warp.cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
 <codeline><highlight class="normal">{</highlight></codeline>
@@ -9632,10 +9632,10 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>advection_length<sp/>=<sp/>0.05f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>value_persistence<sp/>=<sp/>0.96f;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>za<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1a5622b949c221971ac7402e2136962171" kindref="member">hmap::gpu::advection</ref>(z,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>z,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>advection_length,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>value_persistence);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>za<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1a6e5f495c359df88d1185220ab1cc8c23" kindref="member">hmap::gpu::advection_warp</ref>(z,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>z,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>advection_length,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>value_persistence);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>advect<sp/>another<sp/>field<sp/>based<sp/>on<sp/>the<sp/>elevation</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>n<sp/>=<sp/><ref refid="namespacehmap_1a40b948c49a05c14f2d540dc1a6952130" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,</highlight></codeline>
@@ -9643,30 +9643,30 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{32.f,<sp/>32.f},</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zb<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1a5622b949c221971ac7402e2136962171" kindref="member">hmap::gpu::advection</ref>(z,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>n,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>advection_length,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>value_persistence);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zb<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1a6e5f495c359df88d1185220ab1cc8c23" kindref="member">hmap::gpu::advection_warp</ref>(z,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>n,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>advection_length,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>value_persistence);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_advection.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_advection_warp.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,<sp/>za,<sp/>zb},</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9" kindref="member">hmap::Cmap::TERRAIN</ref>,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting></para>
-<para><bold>Result</bold> <image type="html" name="ex_advection.png"></image>
+<para><bold>Result</bold> <image type="html" name="ex_advection_warp.png"></image>
  </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/transform/advection_gpu.cpp" line="50" column="7" bodyfile="HighMap/src/transform/advection_gpu.cpp" bodystart="50" bodyend="66" declfile="HighMap/include/highmap/transform.hpp" declline="397" declcolumn="7"/>
+        <location file="HighMap/src/transform/advection_warp_gpu.cpp" line="50" column="7" bodyfile="HighMap/src/transform/advection_warp_gpu.cpp" bodystart="50" bodyend="66" declfile="HighMap/include/highmap/transform.hpp" declline="398" declcolumn="7"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1_1gpu_1ac8a7ab5935868d3c7849f30090a2e14f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacehmap_1_1gpu_1a0c43413a89b330fc5f4051112d6a2a85" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
-        <definition>Array hmap::gpu::advection</definition>
+        <definition>Array hmap::gpu::advection_warp</definition>
         <argsstring>(const Array &amp;z, const Array &amp;advected_field, const Array &amp;dx, const Array &amp;dy, float advection_length=0.1f, float value_persistence=0.9f, const Array *p_mask=nullptr)</argsstring>
-        <name>advection</name>
-        <qualifiedname>hmap::gpu::advection</qualifiedname>
+        <name>advection_warp</name>
+        <qualifiedname>hmap::gpu::advection_warp</qualifiedname>
         <param>
           <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
           <declname>z</declname>
@@ -9704,7 +9704,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/transform/advection_gpu.cpp" line="12" column="7" bodyfile="HighMap/src/transform/advection_gpu.cpp" bodystart="12" bodyend="48" declfile="HighMap/include/highmap/transform.hpp" declline="403" declcolumn="7"/>
+        <location file="HighMap/src/transform/advection_warp_gpu.cpp" line="12" column="7" bodyfile="HighMap/src/transform/advection_warp_gpu.cpp" bodystart="12" bodyend="48" declfile="HighMap/include/highmap/transform.hpp" declline="404" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1aab128e15988875b5d350d6f156612aa5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -9732,7 +9732,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/transform/transform_gpu.cpp" line="9" column="6" bodyfile="HighMap/src/transform/transform_gpu.cpp" bodystart="9" bodyend="21" declfile="HighMap/include/highmap/transform.hpp" declline="412" declcolumn="6"/>
+        <location file="HighMap/src/transform/transform_gpu.cpp" line="9" column="6" bodyfile="HighMap/src/transform/transform_gpu.cpp" bodystart="9" bodyend="21" declfile="HighMap/include/highmap/transform.hpp" declline="413" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a99659d06f84b0e92e6731f28ca28937c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -9759,7 +9759,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/transform/warp_gpu.cpp" line="9" column="6" bodyfile="HighMap/src/transform/warp_gpu.cpp" bodystart="9" bodyend="54" declfile="HighMap/include/highmap/transform.hpp" declline="415" declcolumn="6"/>
+        <location file="HighMap/src/transform/warp_gpu.cpp" line="9" column="6" bodyfile="HighMap/src/transform/warp_gpu.cpp" bodystart="9" bodyend="54" declfile="HighMap/include/highmap/transform.hpp" declline="416" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1ada313c7ac68787e41c2979c2975568eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structhmap_1_1Vec4" kindref="compound">Vec4</ref>&lt; float &gt;</type>

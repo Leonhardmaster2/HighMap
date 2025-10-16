@@ -267,9 +267,9 @@ bool \mbox{\hyperlink{namespacehmap_1_1gpu_adb8336ed4d83c15500872185dee45d50}{in
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a5368ab0d5bb8708001a55d216332918b}{hmap\+::sdf\+\_\+2d\+\_\+polyline\+\_\+bezier}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_af91ed08d142ffe71069e00475654d786}{select\+\_\+valley}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int ir, bool zero\+\_\+at\+\_\+borders=true, bool ridge\+\_\+select=false)
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a701106cd57412e72a5d3ee41b46ab4e8}{hmap\+::select\+\_\+valley}. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a5622b949c221971ac7402e2136962171}{advection}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&advected\+\_\+field, float advection\+\_\+length=0.\+1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float value\+\_\+persistence=0.\+9\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+mask=nullptr)
-\begin{DoxyCompactList}\small\item\em Performs 2D field advection based on the gradient of a heightmap. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_ac8a7ab5935868d3c7849f30090a2e14f}{advection}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&advected\+\_\+field, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&dx, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&dy, float advection\+\_\+length=0.\+1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float value\+\_\+persistence=0.\+9\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+mask=nullptr)
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a6e5f495c359df88d1185220ab1cc8c23}{advection\+\_\+warp}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&advected\+\_\+field, float advection\+\_\+length=0.\+1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float value\+\_\+persistence=0.\+9\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+mask=nullptr)
+\begin{DoxyCompactList}\small\item\em Performs 2D field advection based on the gradient of a heightmap using a warp-\/based technic (simplified approach). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a0c43413a89b330fc5f4051112d6a2a85}{advection\+\_\+warp}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&advected\+\_\+field, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&dx, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&dy, float advection\+\_\+length=0.\+1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float value\+\_\+persistence=0.\+9\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+mask=nullptr)
 \item 
 void \mbox{\hyperlink{namespacehmap_1_1gpu_aab128e15988875b5d350d6f156612aa5}{rotate}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}}, bool zoom\+\_\+in=true)
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a888dcfe5adb36448366400f04efcde04}{hmap\+::rotate}. \end{DoxyCompactList}\item 
@@ -3452,15 +3452,15 @@ See \doxylink{namespacehmap_a5368ab0d5bb8708001a55d216332918b}{hmap\+::sdf\+\_\+
 
 See \doxylink{namespacehmap_a701106cd57412e72a5d3ee41b46ab4e8}{hmap\+::select\+\_\+valley}. 
 
-\Hypertarget{namespacehmap_1_1gpu_a5622b949c221971ac7402e2136962171}\label{namespacehmap_1_1gpu_a5622b949c221971ac7402e2136962171} 
-\index{hmap::gpu@{hmap::gpu}!advection@{advection}}
-\index{advection@{advection}!hmap::gpu@{hmap::gpu}}
-\doxysubsubsection{\texorpdfstring{advection()}{advection()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::gpu\+::advection (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{advected\+\_\+field,  }\item[{float}]{advection\+\_\+length = {\ttfamily 0.1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{value\+\_\+persistence = {\ttfamily 0.9\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+mask = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+\Hypertarget{namespacehmap_1_1gpu_a6e5f495c359df88d1185220ab1cc8c23}\label{namespacehmap_1_1gpu_a6e5f495c359df88d1185220ab1cc8c23} 
+\index{hmap::gpu@{hmap::gpu}!advection\_warp@{advection\_warp}}
+\index{advection\_warp@{advection\_warp}!hmap::gpu@{hmap::gpu}}
+\doxysubsubsection{\texorpdfstring{advection\_warp()}{advection\_warp()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::gpu\+::advection\+\_\+warp (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{advected\+\_\+field,  }\item[{float}]{advection\+\_\+length = {\ttfamily 0.1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{value\+\_\+persistence = {\ttfamily 0.9\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+mask = {\ttfamily nullptr} }\end{DoxyParamCaption})}
 
 
 
-Performs 2D field advection based on the gradient of a heightmap. 
+Performs 2D field advection based on the gradient of a heightmap using a warp-\/based technic (simplified approach). 
 
 This function computes the X and Y gradients of the given heightmap {\ttfamily z} and uses them as flow directions to advect the input {\ttfamily advected\+\_\+field}. The result is a new field where values have been displaced according to the gradient direction and the specified advection parameters.
 
@@ -3498,10 +3498,10 @@ A new \doxylink{classhmap_1_1Array}{Array} representing the advected version of 
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ advection\_length\ =\ 0.05f;}
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ value\_persistence\ =\ 0.96f;}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ za\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_a5622b949c221971ac7402e2136962171}{hmap::gpu::advection}}(z,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ z,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ advection\_length,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ value\_persistence);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ za\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_a6e5f495c359df88d1185220ab1cc8c23}{hmap::gpu::advection\_warp}}(z,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ z,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ advection\_length,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ value\_persistence);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ advect\ another\ field\ based\ on\ the\ elevation}}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ n\ =\ \mbox{\hyperlink{namespacehmap_a40b948c49a05c14f2d540dc1a6952130}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},}
@@ -3509,12 +3509,12 @@ A new \doxylink{classhmap_1_1Array}{Array} representing the advected version of 
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{32.f,\ 32.f\},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zb\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_a5622b949c221971ac7402e2136962171}{hmap::gpu::advection}}(z,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ advection\_length,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ value\_persistence);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zb\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_a6e5f495c359df88d1185220ab1cc8c23}{hmap::gpu::advection\_warp}}(z,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ advection\_length,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ value\_persistence);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_advection.png"{}},}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_advection\_warp.png"{}},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ za,\ zb\},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9}{hmap::Cmap::TERRAIN}},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
@@ -3523,11 +3523,11 @@ A new \doxylink{classhmap_1_1Array}{Array} representing the advected version of 
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}  \Hypertarget{namespacehmap_1_1gpu_ac8a7ab5935868d3c7849f30090a2e14f}\label{namespacehmap_1_1gpu_ac8a7ab5935868d3c7849f30090a2e14f} 
-\index{hmap::gpu@{hmap::gpu}!advection@{advection}}
-\index{advection@{advection}!hmap::gpu@{hmap::gpu}}
-\doxysubsubsection{\texorpdfstring{advection()}{advection()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::gpu\+::advection (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{advected\+\_\+field,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{dx,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{dy,  }\item[{float}]{advection\+\_\+length = {\ttfamily 0.1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{value\+\_\+persistence = {\ttfamily 0.9\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+mask = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+{\bfseries{Result}}  \Hypertarget{namespacehmap_1_1gpu_a0c43413a89b330fc5f4051112d6a2a85}\label{namespacehmap_1_1gpu_a0c43413a89b330fc5f4051112d6a2a85} 
+\index{hmap::gpu@{hmap::gpu}!advection\_warp@{advection\_warp}}
+\index{advection\_warp@{advection\_warp}!hmap::gpu@{hmap::gpu}}
+\doxysubsubsection{\texorpdfstring{advection\_warp()}{advection\_warp()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::gpu\+::advection\+\_\+warp (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{advected\+\_\+field,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{dx,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{dy,  }\item[{float}]{advection\+\_\+length = {\ttfamily 0.1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{value\+\_\+persistence = {\ttfamily 0.9\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+mask = {\ttfamily nullptr} }\end{DoxyParamCaption})}
 
 \Hypertarget{namespacehmap_1_1gpu_aab128e15988875b5d350d6f156612aa5}\label{namespacehmap_1_1gpu_aab128e15988875b5d350d6f156612aa5} 
 \index{hmap::gpu@{hmap::gpu}!rotate@{rotate}}
