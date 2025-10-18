@@ -106,7 +106,14 @@ void HeightmapRGBA::colorize(Heightmap                      &color_level,
                              bool                            reverse,
                              Heightmap                      *p_noise)
 {
-  if (reverse) std::swap(vmin, vmax);
+  if (reverse)
+  {
+    std::reverse(colormap_colors.begin(), colormap_colors.end());
+    std::reverse(positions.begin(), positions.end());
+
+    for (auto &p : positions)
+      p = 1.f - p;
+  }
 
   // write colorize function for each tile
   auto lambda =
