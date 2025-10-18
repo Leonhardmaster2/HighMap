@@ -10,12 +10,12 @@ namespace hmap::gpu
 {
 
 Array advection_warp(const Array &z,
-                const Array &advected_field,
-                const Array &dx,
-                const Array &dy,
-                float        advection_length,
-                float        value_persistence,
-                const Array *p_mask)
+                     const Array &advected_field,
+                     const Array &dx,
+                     const Array &dy,
+                     float        advection_length,
+                     float        value_persistence,
+                     const Array *p_mask)
 {
   auto run = clwrapper::Run("advection_warp");
 
@@ -48,21 +48,21 @@ Array advection_warp(const Array &z,
 }
 
 Array advection_warp(const Array &z,
-                const Array &advected_field,
-                float        advection_length,
-                float        value_persistence,
-                const Array *p_mask)
+                     const Array &advected_field,
+                     float        advection_length,
+                     float        value_persistence,
+                     const Array *p_mask)
 {
   Array dx = hmap::gradient_x(z);
   Array dy = hmap::gradient_y(z);
 
   return advection_warp(z,
-                   advected_field,
-                   dx,
-                   dy,
-                   advection_length,
-                   value_persistence,
-                   p_mask);
+                        advected_field,
+                        dx,
+                        dy,
+                        advection_length,
+                        value_persistence,
+                        p_mask);
 }
 
 } // namespace hmap::gpu

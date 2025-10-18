@@ -32,6 +32,7 @@ bool init_opencl()
 #include "kernels/_common_rand.cl"
 #include "kernels/_common_sort.cl"
   //
+#include "kernels/advection_particle.cl"
 #include "kernels/advection_warp.cl"
 #include "kernels/blend_poisson_bf.cl"
 #include "kernels/expand.cl"

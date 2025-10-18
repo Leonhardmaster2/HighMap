@@ -366,6 +366,87 @@ namespace hmap::gpu
 {
 
 /**
+ * @brief Performs particle-based advection on a scalar field.
+ *
+ * This function advects particles through a velocity field (or gradient field)
+ * derived from the input array @p z. Each particle carries a value from the @p
+ * advected_field and evolves over a number of iterations according to advection
+ * parameters such as inertia and persistence. Optionally, advection and masking
+ * fields can be applied to control which areas are affected.
+ *
+ * @param  z                 Input scalar field defining the base flow or
+ *                           gradient field used for particle advection.
+ * @param  advected_field    The scalar field whose values are transported along
+ *                           particle trajectories.
+ * @param  iterations        Number of advection iterations to perform per
+ *                           particle.
+ * @param  nparticles        Number of particles to simulate during advection.
+ * @param  seed              Random seed used for initializing particle
+ *                           positions and stochastic behavior.
+ * @param  reverse           If true, reverses the advection direction (useful
+ *                           for backtracing or inverse advection).
+ * @param  post_filter       If true, applies a smoothing or filtering operation
+ *                           after advection to reduce artifacts.
+ * @param  advection_length  Maximum advection step length per iteration
+ *                           (controls particle displacement scale).
+ * @param  value_persistence Controls how much of a particle’s advected value is
+ *                           preserved between iterations (1.0 means full
+ *                           preservation, lower values introduce decay).
+ * @param  inertia           Controls how much a particle’s previous velocity
+ *                           affects its next step (simulates momentum).
+ * @param  p_advection_mask  Optional mask array controlling where advection
+ *                           occurs (nullptr to disable).
+ * @param  p_mask            Optional general mask restricting where output
+ *                           values are written (nullptr to disable).
+ *
+ * @return                   An Array representing the advected version of @p
+ *                           advected_field after applying particle advection.
+ *
+ * **Example**
+ * @include ex_advection_particle.cpp
+ *
+ * **Result**
+ * @image html ex_advection_particle.png
+ */
+Array advection_particle(const Array &z,
+                         const Array &advected_field,
+                         int          iterations,
+                         int          nparticles,
+                         uint         seed,
+                         bool         reverse = false,
+                         bool         post_filter = true,
+                         float        advection_length = 0.1f,
+                         float        value_persistence = 0.99f,
+                         float        inertia = 0.f,
+                         const Array *p_advection_mask = nullptr,
+                         const Array *p_mask = nullptr);
+
+Array advection_particle(const Array &z,
+                         const Array &advected_field,
+                         int          nparticles,
+                         uint         seed,
+                         bool         reverse = false,
+                         bool         post_filter = true,
+                         float        advection_length = 0.1f,
+                         float        value_persistence = 0.99f,
+                         float        inertia = 0.f,
+                         const Array *p_advection_mask = nullptr,
+                         const Array *p_mask = nullptr);
+
+Array advection_particle(const Array &dx,
+                         const Array &dy,
+                         const Array &advected_field,
+                         int          nparticles,
+                         uint         seed,
+                         bool         reverse = false,
+                         bool         post_filter = true,
+                         float        advection_length = 0.1f,
+                         float        value_persistence = 0.99f,
+                         float        inertia = 0.f,
+                         const Array *p_advection_mask = nullptr,
+                         const Array *p_mask = nullptr);
+
+/**
  * @brief Performs 2D field advection based on the gradient of a heightmap using
  * a warp-based technic (simplified approach).
  *

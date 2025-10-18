@@ -48,6 +48,11 @@ float2 g_to_xy_pixel_centered_bbox(const int2   g,
   return (float2)(x, y);
 }
 
+int2 xy_to_g(const float2 xy, const int nx, const int ny)
+{
+  return (int2)((int)(xy.x * (nx - 1.f)), (int)(xy.y * (ny - 1.f)));
+}
+
 bool is_inside(const int i, const int j, const int nx, const int ny)
 {
   return i >= 0 && i < nx && j >= 0 && j < ny;
@@ -56,6 +61,11 @@ bool is_inside(const int i, const int j, const int nx, const int ny)
 int linear_index(const int i, const int j, const int nx)
 {
   return j * nx + i;
+}
+
+int linear_index_g(const int2 g, const int nx)
+{
+  return g.y * nx + g.x;
 }
 
 void update_interp_param(float2 pos, int *i, int *j, float *u, float *v)

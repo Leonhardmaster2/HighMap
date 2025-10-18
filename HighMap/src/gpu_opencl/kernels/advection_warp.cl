@@ -6,15 +6,15 @@ R""(
 #define MAX_STEPS 1024 // must be >= advection_length / min(drx,dry)
 
 void kernel advection_warp(read_only image2d_t  z,
-                      read_only image2d_t  field,
-                      read_only image2d_t  dx,
-                      read_only image2d_t  dy,
-                      read_only image2d_t  mask,
-                      write_only image2d_t out,
-                      const int            nx,
-                      const int            ny,
-                      const float          advection_length,
-                      const float          value_persistence)
+                           read_only image2d_t  field,
+                           read_only image2d_t  dx,
+                           read_only image2d_t  dy,
+                           read_only image2d_t  mask,
+                           write_only image2d_t out,
+                           const int            nx,
+                           const int            ny,
+                           const float          advection_length,
+                           const float          value_persistence)
 {
   const int2 g = {get_global_id(0), get_global_id(1)};
   if (g.x >= nx || g.y >= ny) return;
