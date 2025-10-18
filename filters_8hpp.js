@@ -30,7 +30,7 @@ var filters_8hpp =
     [ "kuwahara", "filters_8hpp.html#ad3c6f230996ef2d2313278103b75fbd1", null ],
     [ "kuwahara", "filters_8hpp.html#a149904b1eda7e91fc908fa10da54075b", null ],
     [ "laplace", "filters_8hpp.html#a62f3ce1778309a90b37d34e727e4f040", null ],
-    [ "laplace", "filters_8hpp.html#a94efa789e37074f1e214f7788468b076", null ],
+    [ "laplace", "filters_8hpp.html#af2851ea650ce411e47bac5ba4327c652", null ],
     [ "laplace1d", "filters_8hpp.html#abf9521082ba09eb022834306bc6c354b", null ],
     [ "laplace_edge_preserving", "filters_8hpp.html#a120b7a6f8941d783c52acf799d3cb7b2", null ],
     [ "laplace_edge_preserving", "filters_8hpp.html#aa3154bd93dda630a0d17f1b75ab6b3c5", null ],

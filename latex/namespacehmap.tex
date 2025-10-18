@@ -639,7 +639,7 @@ void \mbox{\hyperlink{namespacehmap_a149904b1eda7e91fc908fa10da54075b}{kuwahara}
 \begin{DoxyCompactList}\small\item\em Applies the Kuwahara filter to an array with optional per-\/pixel masking. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a62f3ce1778309a90b37d34e727e4f040}{laplace}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float sigma=0.\+125\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, int iterations=3)
 \begin{DoxyCompactList}\small\item\em Applies an iterative 8-\/neighbor Laplacian smoothing filter on an array. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{namespacehmap_a94efa789e37074f1e214f7788468b076}{laplace}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+mask, float sigma=0.\+2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, int iterations=3)
+void \mbox{\hyperlink{namespacehmap_af2851ea650ce411e47bac5ba4327c652}{laplace}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+mask, float sigma=0.\+125\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, int iterations=3)
 \begin{DoxyCompactList}\small\item\em Apply a low-\/pass Laplace filter with a mask. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_abf9521082ba09eb022834306bc6c354b}{laplace1d}} (std\+::vector$<$ float $>$ \&v, float sigma=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, int iterations=1)
 \begin{DoxyCompactList}\small\item\em Apply a low-\/pass Laplace filter to a vector. \end{DoxyCompactList}\item 
@@ -8948,11 +8948,11 @@ Boundary cells are handled by clamping neighbor indices to the valid range, effe
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}  \Hypertarget{namespacehmap_a94efa789e37074f1e214f7788468b076}\label{namespacehmap_a94efa789e37074f1e214f7788468b076} 
+{\bfseries{Result}}  \Hypertarget{namespacehmap_af2851ea650ce411e47bac5ba4327c652}\label{namespacehmap_af2851ea650ce411e47bac5ba4327c652} 
 \index{hmap@{hmap}!laplace@{laplace}}
 \index{laplace@{laplace}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{laplace()}{laplace()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily void hmap\+::laplace (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+mask,  }\item[{float}]{sigma = {\ttfamily 0.2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{int}]{iterations = {\ttfamily 3} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void hmap\+::laplace (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+mask,  }\item[{float}]{sigma = {\ttfamily 0.125\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{int}]{iterations = {\ttfamily 3} }\end{DoxyParamCaption})}
 
 
 
