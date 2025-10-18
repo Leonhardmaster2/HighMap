@@ -691,7 +691,7 @@ void laplace(Array &array, float sigma = 0.125f, int iterations = 3);
  */
 void laplace(Array       &array,
              const Array *p_mask,
-             float        sigma = 0.2f,
+             float        sigma = 0.125f,
              int          iterations = 3);
 
 /**

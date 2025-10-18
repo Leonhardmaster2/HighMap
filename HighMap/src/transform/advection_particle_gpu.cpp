@@ -6,6 +6,7 @@
 #include "highmap/hydrology.hpp"
 #include "highmap/math.hpp"
 #include "highmap/opencl/gpu_opencl.hpp"
+#include "highmap/range.hpp"
 #include "highmap/transform.hpp"
 
 namespace hmap::gpu
@@ -18,6 +19,7 @@ Array advection_particle(const Array &z,
                          uint         seed,
                          bool         reverse,
                          bool         post_filter,
+                         float        post_filter_sigma,
                          float        advection_length,
                          float        value_persistence,
                          float        inertia,
@@ -33,6 +35,7 @@ Array advection_particle(const Array &z,
                              seed,
                              reverse,
                              post_filter,
+                             post_filter_sigma,
                              advection_length,
                              value_persistence,
                              inertia,
@@ -48,6 +51,7 @@ Array advection_particle(const Array &z,
                          uint         seed,
                          bool         reverse,
                          bool         post_filter,
+                         float        post_filter_sigma,
                          float        advection_length,
                          float        value_persistence,
                          float        inertia,
@@ -64,6 +68,7 @@ Array advection_particle(const Array &z,
                             seed,
                             reverse,
                             post_filter,
+                            post_filter_sigma,
                             advection_length,
                             value_persistence,
                             inertia,
@@ -78,6 +83,7 @@ Array advection_particle(const Array &dx,
                          uint         seed,
                          bool         reverse,
                          bool         post_filter,
+                         float        post_filter_sigma,
                          float        advection_length,
                          float        value_persistence,
                          float        inertia,
@@ -132,7 +138,11 @@ Array advection_particle(const Array &dx,
     }
 
   // post-processing
-  if (post_filter) hmap::laplace(out);
+  if (post_filter)
+  {
+    int max_it = 1;
+    hmap::laplace(out, p_advection_mask, post_filter_sigma, max_it);
+  }
 
   if (p_mask)
     return lerp(out, advected_field, *p_mask);
