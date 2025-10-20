@@ -1883,6 +1883,70 @@ Array hemisphere_field_fbm(Vec2<int>         shape,
                            Vec4<float>       bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
+ * @brief Generates a procedural "mountain cone" heightmap using fractal noise
+ * and Voronoi patterns.
+ *
+ * This function synthesizes a terrain-like array shaped as a cone with
+ * noise-based ridges and surface roughness. The generation combines a
+ * cone-shaped envelope (`cone_sigmoid`), a fractal base noise
+ * (`gpu::noise_fbm`), and a Voronoi ridge structure (`voronoi_fbm`), producing
+ * a mountain with controlled smoothness, angular distortion, and noise-based
+ * displacements.
+ *
+ * @param  shape          The output array dimensions (width, height).
+ * @param  seed           The random seed for noise generation.
+ * @param  scale          Global scaling factor for the mountain size.
+ * @param  octaves        Number of fractal noise octaves for both FBM and
+ *                        Voronoi.
+ * @param  peak_kw        Controls the base frequency (inverse wavelength) of
+ *                        the peak noise.
+ * @param  rugosity       Controls the amplitude decay across octaves (higher =
+ *                        rougher surface).
+ * @param  angle          Direction (in degrees) for the displacement noise
+ *                        distortion.
+ * @param  k_smoothing    Smoothing factor applied in Voronoi blending.
+ * @param  gamma          Gamma correction exponent applied at the end.
+ * @param  cone_alpha     Controls the cone envelope steepness (higher = sharper
+ *                        peak).
+ * @param  ridge_amp      Controls the amplitude of ridge enhancement in the
+ *                        Voronoi term.
+ * @param  base_noise_amp Amplitude multiplier for the displacement noise.
+ * @param  center         The 2D position (in normalized coordinates) of the
+ *                        mountain cone center.
+ * @param  p_noise_x      Optional pointer to an external X displacement noise
+ *                        field (can be nullptr).
+ * @param  p_noise_y      Optional pointer to an external Y displacement noise
+ *                        field (can be nullptr).
+ * @param  bbox           The bounding box (min_x, min_y, max_x, max_y) defining
+ *                        the spatial extent of the map.
+ *
+ * @return                An Array representing the final terrain heightmap in
+ *                        normalized [0, 1] range.
+ *
+ * **Example**
+ * @include ex_mountain_cone.cpp
+ *
+ * **Result**
+ * @image html ex_mountain_cone.png
+ */
+Array mountain_cone(Vec2<int>    shape,
+                    uint         seed,
+                    float        scale = 1.f,
+                    int          octaves = 8,
+                    float        peak_kw = 4.f,
+                    float        rugosity = 0.f,
+                    float        angle = 45.f,
+                    float        k_smoothing = 0.f,
+                    float        gamma = 0.5f,
+                    float        cone_alpha = 1.f,
+                    float        ridge_amp = 0.4f,
+                    float        base_noise_amp = 0.05f,
+                    Vec2<float>  center = {0.5f, 0.5f},
+                    const Array *p_noise_x = nullptr,
+                    const Array *p_noise_y = nullptr,
+                    Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
  * @brief Generates a synthetic mountain-like inselberg (isolated hill)
  * heightmap.
  *
