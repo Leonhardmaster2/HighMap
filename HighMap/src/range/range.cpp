@@ -9,6 +9,7 @@
 #include "highmap/array.hpp"
 #include "highmap/convolve.hpp"
 #include "highmap/primitives.hpp"
+#include "highmap/range.hpp"
 
 namespace hmap
 {
@@ -48,6 +49,31 @@ void clamp(Array &array, float vmin, float vmax)
                  array.vector.end(),
                  array.vector.begin(),
                  lambda);
+}
+
+void clamp(Array &array, float vmax, ClampMode mode)
+{
+  switch (mode)
+  {
+  case ClampMode::POSITIVE_ONLY:
+    // keep positives only, clamp max
+    clamp(array, 0.f, vmax);
+    return;
+
+  case ClampMode::NEGATIVE_ONLY:
+    // keep negatives only, reverse and clamp
+    array *= -1.f;
+    clamp(array, 0.f, vmax);
+    return;
+
+  case ClampMode::BOTH:
+    // keep both, clamp symmetrically
+    clamp(array, -vmax, vmax);
+    return;
+
+  case ClampMode::NONE:
+  default: return;
+  }
 }
 
 void clamp_max(Array &array, float vmax)

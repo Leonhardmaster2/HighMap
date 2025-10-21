@@ -151,7 +151,7 @@ void HeightmapRGBA::colorize(Heightmap                      &color_level,
       for (int j = 0; j < in.shape.y; j++)
         for (int i = 0; i < in.shape.x; i++)
         {
-          float v = a.x * (in(i, j) + a.y);
+          float v = a.x * in(i, j) + a.y;
           v = std::clamp(v, 0.f, 1.f);
           out(i, j) = cc_i(v);
         }

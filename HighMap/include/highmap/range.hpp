@@ -21,6 +21,14 @@
 namespace hmap
 {
 
+enum class ClampMode : int
+{
+  POSITIVE_ONLY,
+  NEGATIVE_ONLY,
+  BOTH,
+  NONE
+};
+
 /**
  * @brief Set to zero any value lower than `vmin`.
  *
@@ -86,7 +94,32 @@ void chop_max_smooth(Array &array, float vmax);
  *
  * @see         {@link remap}, {@link clamp_min}, {@link clamp_max}
  */
-void clamp(Array &array, float vmin = 0, float vmax = 1);
+void clamp(Array &array, float vmin = 0.f, float vmax = 1.f);
+
+/**
+ * @brief Clamps the values of an array according to the specified mode.
+ *
+ * This function modifies the input array in place based on one of three
+ * clamping modes:
+ *
+ * - **ClampMode::POSITIVE_ONLY**
+ *   Keeps only positive values and clamps them to a maximum value `vmax`. All
+ * negative values are set to 0.
+ *
+ * - **ClampMode::NEGATIVE_ONLY**
+ *   Keeps only negative values, reverses their sign (making them positive), and
+ * clamps them to a maximum value `vmax`. Positive values are set to 0.
+ *
+ * - **ClampMode::BOTH**
+ *   Keeps both positive and negative values, clamping them symmetrically
+ * between
+ *   `-vmax` and `vmax`.
+ *
+ * @param array Reference to the array whose values will be clamped.
+ * @param vmax  The maximum absolute value used for clamping.
+ * @param mode  The clamping mode to apply (see ::ClampMode).
+ */
+void clamp(Array &array, float vmax, ClampMode mode);
 
 /**
  * @brief Clamp array values lower than a given bound.
