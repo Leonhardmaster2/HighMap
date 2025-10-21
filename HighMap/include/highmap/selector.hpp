@@ -13,6 +13,7 @@
 #pragma once
 
 #include "highmap/array.hpp"
+#include "highmap/range.hpp"
 
 namespace hmap
 {
