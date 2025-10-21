@@ -9644,7 +9644,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/range/range_cpu.cpp" line="9" column="7" bodyfile="HighMap/src/range/range_cpu.cpp" bodystart="9" bodyend="27" declfile="HighMap/include/highmap/range.hpp" declline="392" declcolumn="7"/>
+        <location file="HighMap/src/range/range_cpu.cpp" line="9" column="7" bodyfile="HighMap/src/range/range_cpu.cpp" bodystart="9" bodyend="27" declfile="HighMap/include/highmap/range.hpp" declline="425" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a84e8cfef31aeb4ba10d4f7cbe04cb96d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -9672,7 +9672,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/range/range_cpu.cpp" line="29" column="7" bodyfile="HighMap/src/range/range_cpu.cpp" bodystart="29" bodyend="47" declfile="HighMap/include/highmap/range.hpp" declline="395" declcolumn="7"/>
+        <location file="HighMap/src/range/range_cpu.cpp" line="29" column="7" bodyfile="HighMap/src/range/range_cpu.cpp" bodystart="29" bodyend="47" declfile="HighMap/include/highmap/range.hpp" declline="428" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a6a106eafab89fcdee4764c21b7406f3e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -9750,6 +9750,165 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </inbodydescription>
         <location file="HighMap/src/sdf/sdf_2d_polyline_gpu.cpp" line="59" column="7" bodyfile="HighMap/src/sdf/sdf_2d_polyline_gpu.cpp" bodystart="59" bodyend="127" declfile="HighMap/include/highmap/sdf.hpp" declline="74" declcolumn="7"/>
       </memberdef>
+      <memberdef kind="function" id="namespacehmap_1_1gpu_1ae394dd88c39510d2ada01cf120922719" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
+        <definition>Array hmap::gpu::select_soil_weathered</definition>
+        <argsstring>(const Array &amp;z, int ir_curvature=0, int ir_gradient=4, ClampMode curvature_clamp_mode=ClampMode::POSITIVE_ONLY, float curvature_clamping=10.f, float curvature_weight=1.f, float gradient_weight=1.f, float gradient_scaling_factor=0.f)</argsstring>
+        <name>select_soil_weathered</name>
+        <qualifiedname>hmap::gpu::select_soil_weathered</qualifiedname>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>z</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>ir_curvature</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>ir_gradient</declname>
+          <defval>4</defval>
+        </param>
+        <param>
+          <type><ref refid="namespacehmap_1ad4876bd26d1f3b33a1492645bfe50fbe" kindref="member">ClampMode</ref></type>
+          <declname>curvature_clamp_mode</declname>
+          <defval><ref refid="namespacehmap_1ad4876bd26d1f3b33a1492645bfe50fbeacd6fe8618f97f69924e58ad1434a1b86" kindref="member">ClampMode::POSITIVE_ONLY</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>curvature_clamping</declname>
+          <defval>10.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>curvature_weight</declname>
+          <defval>1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>gradient_weight</declname>
+          <defval>1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>gradient_scaling_factor</declname>
+          <defval>0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <briefdescription>
+<para>Computes a soil weathering selection map based on curvature and gradient analysis. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function generates a combined array representing the degree of soil weathering using two main components:<itemizedlist>
+<listitem><para><bold>Curvature contribution</bold>: derived from smoothed height variations.</para>
+</listitem><listitem><para><bold>Gradient contribution</bold>: derived from local slope magnitudes.</para>
+</listitem></itemizedlist>
+</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input heightmap or scalar field. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ir_curvature</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Radius (in pixels or samples) for curvature smoothing. If zero, curvature smoothing is skipped. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ir_gradient</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Radius (in pixels or samples) for gradient computation. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>curvature_clamp_mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Clamping mode applied to curvature values (see <ref refid="namespacehmap_1ad4876bd26d1f3b33a1492645bfe50fbe" kindref="member">ClampMode</ref>). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>curvature_clamping</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum absolute value used for curvature clamping. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>curvature_weight</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Weight applied to the curvature component in the final mix. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>gradient_weight</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Weight applied to the gradient component in the final mix. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>gradient_scaling_factor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Empirical scaling factor for both curvature and gradient terms. If non-positive, defaults to <computeroutput>z.shape.x</computeroutput>.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<bold>Example</bold> <programlisting filename="ex_select_soil_weathered.cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1adb8336ed4d83c15500872185dee45d50" kindref="member">hmap::gpu::init_opencl</ref>();</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="structhmap_1_1Vec2" kindref="compound">hmap::Vec2&lt;int&gt;</ref><sp/><sp/><sp/>shape<sp/>=<sp/>{256,<sp/>256};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="structhmap_1_1Vec2" kindref="compound">hmap::Vec2&lt;float&gt;</ref><sp/>kw<sp/>=<sp/>{4.f,<sp/>4.f};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="array_8hpp_1a91ad9478d81a7aaf2593e8d9c3d06a14" kindref="member">uint</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1a40b948c49a05c14f2d540dc1a6952130" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,<sp/>shape,<sp/>kw,<sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a374c6a8ff3d27e854a254139435c5d8d" kindref="member">hmap::clamp_min_smooth</ref>(z,<sp/>-0.2f,<sp/>0.1f);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(z);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ir_curvature<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ir_gradient<sp/>=<sp/>4;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>c<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1ae394dd88c39510d2ada01cf120922719" kindref="member">hmap::gpu::select_soil_weathered</ref>(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>z,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ir_curvature,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ir_gradient,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ad4876bd26d1f3b33a1492645bfe50fbeacd6fe8618f97f69924e58ad1434a1b86" kindref="member">hmap::ClampMode::POSITIVE_ONLY</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>1.f,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>1.f,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>0.2f);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(z);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(c);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_select_soil_weathered.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,<sp/>c},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced" kindref="member">hmap::Cmap::JET</ref>);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<para><bold>Result</bold> <image type="html" name="ex_select_soil_weathered.png"></image>
+ </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/selector/select_soil_weathered.cpp" line="13" column="7" bodyfile="HighMap/src/selector/select_soil_weathered.cpp" bodystart="13" bodyend="37" declfile="HighMap/include/highmap/selector.hpp" declline="463" declcolumn="7"/>
+      </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1af91ed08d142ffe71069e00475654d786" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
         <definition>Array hmap::gpu::select_valley</definition>
@@ -9781,7 +9940,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/selector/selector_gpu.cpp" line="12" column="7" bodyfile="HighMap/src/selector/selector_gpu.cpp" bodystart="12" bodyend="27" declfile="HighMap/include/highmap/selector.hpp" declline="431" declcolumn="7"/>
+        <location file="HighMap/src/selector/selector_gpu.cpp" line="12" column="7" bodyfile="HighMap/src/selector/selector_gpu.cpp" bodystart="12" bodyend="27" declfile="HighMap/include/highmap/selector.hpp" declline="474" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a12757ceaaf11f04640c3a18520886cc8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>

@@ -98,6 +98,7 @@ $(document).ready(function(){initNavTree('range_8hpp.html',''); initResizable();
 <div class="header">
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">range.hpp File Reference</div></div>
 </div><!--header-->
@@ -115,6 +116,15 @@ Namespaces</h2></td></tr>
 <tr class="memitem:namespacehmap_1_1gpu" id="r_namespacehmap_1_1gpu"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html">hmap::gpu</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:ad4876bd26d1f3b33a1492645bfe50fbe" id="r_ad4876bd26d1f3b33a1492645bfe50fbe"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#ad4876bd26d1f3b33a1492645bfe50fbe">hmap::ClampMode</a> : int { <a class="el" href="namespacehmap.html#ad4876bd26d1f3b33a1492645bfe50fbeacd6fe8618f97f69924e58ad1434a1b86">hmap::POSITIVE_ONLY</a>
+, <a class="el" href="namespacehmap.html#ad4876bd26d1f3b33a1492645bfe50fbea187e7b6a5956f99cc7234e2fdac98635">hmap::NEGATIVE_ONLY</a>
+, <a class="el" href="namespacehmap.html#ad4876bd26d1f3b33a1492645bfe50fbea6328e5e3186c227a021ef2ff77e40197">hmap::BOTH</a>
+, <a class="el" href="namespacehmap.html#ad4876bd26d1f3b33a1492645bfe50fbeab50339a10e1de285ac99d4c3990b8693">hmap::NONE</a>
+ }</td></tr>
+<tr class="separator:ad4876bd26d1f3b33a1492645bfe50fbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:abc5d54d0d76a86f083db977837c28d69" id="r_abc5d54d0d76a86f083db977837c28d69"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#abc5d54d0d76a86f083db977837c28d69">hmap::chop</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, float vmin)</td></tr>
@@ -123,9 +133,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a0583ee2dca09a21193cb1e1830ce90bf" id="r_a0583ee2dca09a21193cb1e1830ce90bf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a0583ee2dca09a21193cb1e1830ce90bf">hmap::chop_max_smooth</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, float vmax)</td></tr>
 <tr class="memdesc:a0583ee2dca09a21193cb1e1830ce90bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set to zero any value lower than <code>vmax</code> and apply a linear decrease slope between <code>vmax / 2</code> and <code>vmax</code>.  <br /></td></tr>
 <tr class="separator:a0583ee2dca09a21193cb1e1830ce90bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a29bac84a2ba5a665047b8946eecb84ea" id="r_a29bac84a2ba5a665047b8946eecb84ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a29bac84a2ba5a665047b8946eecb84ea">hmap::clamp</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, float vmin=0, float vmax=1)</td></tr>
-<tr class="memdesc:a29bac84a2ba5a665047b8946eecb84ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clamp array elements to a target range.  <br /></td></tr>
-<tr class="separator:a29bac84a2ba5a665047b8946eecb84ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6dfd87b0368629657c3138dbf24cbc4" id="r_ae6dfd87b0368629657c3138dbf24cbc4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#ae6dfd87b0368629657c3138dbf24cbc4">hmap::clamp</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, float vmin=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float vmax=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
+<tr class="memdesc:ae6dfd87b0368629657c3138dbf24cbc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clamp array elements to a target range.  <br /></td></tr>
+<tr class="separator:ae6dfd87b0368629657c3138dbf24cbc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd070bc49683535711ab36b5ec65c434" id="r_acd070bc49683535711ab36b5ec65c434"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#acd070bc49683535711ab36b5ec65c434">hmap::clamp</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, float vmax, <a class="el" href="namespacehmap.html#ad4876bd26d1f3b33a1492645bfe50fbe">ClampMode</a> mode)</td></tr>
+<tr class="memdesc:acd070bc49683535711ab36b5ec65c434"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clamps the values of an array according to the specified mode.  <br /></td></tr>
+<tr class="separator:acd070bc49683535711ab36b5ec65c434"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2badbebec49b12d0d721970a18eb420d" id="r_a2badbebec49b12d0d721970a18eb420d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a2badbebec49b12d0d721970a18eb420d">hmap::clamp_min</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, float vmin)</td></tr>
 <tr class="memdesc:a2badbebec49b12d0d721970a18eb420d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clamp array values lower than a given bound.  <br /></td></tr>
 <tr class="separator:a2badbebec49b12d0d721970a18eb420d"><td class="memSeparator" colspan="2">&#160;</td></tr>

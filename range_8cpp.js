@@ -2,7 +2,8 @@ var range_8cpp =
 [
     [ "chop", "range_8cpp.html#abc5d54d0d76a86f083db977837c28d69", null ],
     [ "chop_max_smooth", "range_8cpp.html#a0583ee2dca09a21193cb1e1830ce90bf", null ],
-    [ "clamp", "range_8cpp.html#a29bac84a2ba5a665047b8946eecb84ea", null ],
+    [ "clamp", "range_8cpp.html#ae6dfd87b0368629657c3138dbf24cbc4", null ],
+    [ "clamp", "range_8cpp.html#acd070bc49683535711ab36b5ec65c434", null ],
     [ "clamp_max", "range_8cpp.html#ae239201a0a4193e1ce78bdf1fce4c151", null ],
     [ "clamp_max", "range_8cpp.html#ad912c32892e0e80b92a54d7692b75c6a", null ],
     [ "clamp_max_smooth", "range_8cpp.html#a936453b67a394c5da8b48473540c9459", null ],

@@ -133,6 +133,7 @@ var namespacehmap =
       [ "minimum_smooth", "namespacehmap_1_1gpu.html#a84e8cfef31aeb4ba10d4f7cbe04cb96d", null ],
       [ "sdf_2d_polyline", "namespacehmap_1_1gpu.html#a6a106eafab89fcdee4764c21b7406f3e", null ],
       [ "sdf_2d_polyline_bezier", "namespacehmap_1_1gpu.html#a30410bfd596eaa78f33396b1f963e743", null ],
+      [ "select_soil_weathered", "namespacehmap_1_1gpu.html#ae394dd88c39510d2ada01cf120922719", null ],
       [ "select_valley", "namespacehmap_1_1gpu.html#af91ed08d142ffe71069e00475654d786", null ],
       [ "advection_particle", "namespacehmap_1_1gpu.html#a12757ceaaf11f04640c3a18520886cc8", null ],
       [ "advection_particle", "namespacehmap_1_1gpu.html#a339ed429925a27b3dad7a366e89bfe74", null ],
@@ -367,6 +368,12 @@ var namespacehmap =
       [ "EDGE_DISTANCE_SQUARED", "namespacehmap.html#a8e3756915e28aa80cec2190043cc8c2fa1d0f88509ad557940f07cd8c5d721820", null ],
       [ "CONSTANT", "namespacehmap.html#a8e3756915e28aa80cec2190043cc8c2fab0d27777279264cbe2a77d4a241e6f55", null ],
       [ "CONSTANT_F2MF1_SQUARED", "namespacehmap.html#a8e3756915e28aa80cec2190043cc8c2fa85f252453c9797b7e00cc96cb7147537", null ]
+    ] ],
+    [ "ClampMode", "namespacehmap.html#ad4876bd26d1f3b33a1492645bfe50fbe", [
+      [ "POSITIVE_ONLY", "namespacehmap.html#ad4876bd26d1f3b33a1492645bfe50fbeacd6fe8618f97f69924e58ad1434a1b86", null ],
+      [ "NEGATIVE_ONLY", "namespacehmap.html#ad4876bd26d1f3b33a1492645bfe50fbea187e7b6a5956f99cc7234e2fdac98635", null ],
+      [ "BOTH", "namespacehmap.html#ad4876bd26d1f3b33a1492645bfe50fbea6328e5e3186c227a021ef2ff77e40197", null ],
+      [ "NONE", "namespacehmap.html#ad4876bd26d1f3b33a1492645bfe50fbeab50339a10e1de285ac99d4c3990b8693", null ]
     ] ],
     [ "normalized_vec3", "namespacehmap.html#ad37e39413754484dfb342ffbfbe75c2b", null ],
     [ "cv_mat_to_array", "namespacehmap.html#a457cc8fe8645d43d9c5a2aea80268147", null ],
@@ -892,7 +899,8 @@ var namespacehmap =
     [ "worley_double", "namespacehmap.html#a65580df1d5593c59be30588ca9979b26", null ],
     [ "chop", "namespacehmap.html#abc5d54d0d76a86f083db977837c28d69", null ],
     [ "chop_max_smooth", "namespacehmap.html#a0583ee2dca09a21193cb1e1830ce90bf", null ],
-    [ "clamp", "namespacehmap.html#a29bac84a2ba5a665047b8946eecb84ea", null ],
+    [ "clamp", "namespacehmap.html#ae6dfd87b0368629657c3138dbf24cbc4", null ],
+    [ "clamp", "namespacehmap.html#acd070bc49683535711ab36b5ec65c434", null ],
     [ "clamp_min", "namespacehmap.html#a2badbebec49b12d0d721970a18eb420d", null ],
     [ "clamp_min", "namespacehmap.html#af24e0b99ff6c2046ba5dfc4ccc9da7cf", null ],
     [ "clamp_min_smooth", "namespacehmap.html#a374c6a8ff3d27e854a254139435c5d8d", null ],

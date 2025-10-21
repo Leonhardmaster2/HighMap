@@ -485,6 +485,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a30410bfd596eaa78f33396b1f963e743" id="r_a30410bfd596eaa78f33396b1f963e743"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a30410bfd596eaa78f33396b1f963e743">sdf_2d_polyline_bezier</a> (const <a class="el" href="classhmap_1_1Path.html">Path</a> &amp;path, <a class="el" href="structhmap_1_1Vec2.html">Vec2</a>&lt; int &gt; shape, <a class="el" href="structhmap_1_1Vec4.html">Vec4</a>&lt; float &gt; bbox={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>}, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_x=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_y=nullptr)</td></tr>
 <tr class="memdesc:a30410bfd596eaa78f33396b1f963e743"><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="namespacehmap.html#a5368ab0d5bb8708001a55d216332918b" title="See hmap::sdf_2d_polyline, with a Bezier approximation of the path.">hmap::sdf_2d_polyline_bezier</a>.  <br /></td></tr>
 <tr class="separator:a30410bfd596eaa78f33396b1f963e743"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae394dd88c39510d2ada01cf120922719" id="r_ae394dd88c39510d2ada01cf120922719"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#ae394dd88c39510d2ada01cf120922719">select_soil_weathered</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, int ir_curvature=0, int ir_gradient=4, <a class="el" href="namespacehmap.html#ad4876bd26d1f3b33a1492645bfe50fbe">ClampMode</a> curvature_clamp_mode=<a class="el" href="namespacehmap.html#ad4876bd26d1f3b33a1492645bfe50fbeacd6fe8618f97f69924e58ad1434a1b86">ClampMode::POSITIVE_ONLY</a>, float curvature_clamping=10.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float curvature_weight=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float gradient_weight=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float gradient_scaling_factor=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
+<tr class="memdesc:ae394dd88c39510d2ada01cf120922719"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes a soil weathering selection map based on curvature and gradient analysis.  <br /></td></tr>
+<tr class="separator:ae394dd88c39510d2ada01cf120922719"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af91ed08d142ffe71069e00475654d786" id="r_af91ed08d142ffe71069e00475654d786"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#af91ed08d142ffe71069e00475654d786">select_valley</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, int ir, bool zero_at_borders=true, bool ridge_select=false)</td></tr>
 <tr class="memdesc:af91ed08d142ffe71069e00475654d786"><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="namespacehmap.html#a701106cd57412e72a5d3ee41b46ab4e8">hmap::select_valley</a>.  <br /></td></tr>
 <tr class="separator:af91ed08d142ffe71069e00475654d786"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -629,7 +632,7 @@ Functions</h2></td></tr>
 <div class="ttc" id="ahighmap_8hpp_html"><div class="ttname"><a href="highmap_8hpp.html">highmap.hpp</a></div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_a65a176508b404f80e5f5abd31456712e"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a65a176508b404f80e5f5abd31456712e">hmap::gpu::blend_poisson_bf</a></div><div class="ttdeci">Array blend_poisson_bf(const Array &amp;array1, const Array &amp;array2, const int iterations=500, const Array *p_mask=nullptr)</div><div class="ttdoc">Blends two arrays using Poisson blending with a brute-force solver.</div><div class="ttdef"><b>Definition</b> blending_gpu.cpp:30</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_adb8336ed4d83c15500872185dee45d50"><div class="ttname"><a href="namespacehmap_1_1gpu.html#adb8336ed4d83c15500872185dee45d50">hmap::gpu::init_opencl</a></div><div class="ttdeci">bool init_opencl()</div><div class="ttdef"><b>Definition</b> gpu_opencl.cpp:24</div></div>
-<div class="ttc" id="anamespacehmap_html_a262e6495cb2d02598f36a2b46114b2b4"><div class="ttname"><a href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a></div><div class="ttdeci">void remap(Array &amp;array, float vmin, float vmax, float from_min, float from_max)</div><div class="ttdoc">Remap array elements from a starting range to a target range.</div><div class="ttdef"><b>Definition</b> range.cpp:374</div></div>
+<div class="ttc" id="anamespacehmap_html_a262e6495cb2d02598f36a2b46114b2b4"><div class="ttname"><a href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a></div><div class="ttdeci">void remap(Array &amp;array, float vmin, float vmax, float from_min, float from_max)</div><div class="ttdoc">Remap array elements from a starting range to a target range.</div><div class="ttdef"><b>Definition</b> range.cpp:400</div></div>
 <div class="ttc" id="anamespacehmap_html_a40b948c49a05c14f2d540dc1a6952130"><div class="ttname"><a href="namespacehmap.html#a40b948c49a05c14f2d540dc1a6952130">hmap::noise_fbm</a></div><div class="ttdeci">Array noise_fbm(NoiseType noise_type, Vec2&lt; int &gt; shape, Vec2&lt; float &gt; kw, uint seed, int octaves=8, float weight=0.7f, float persistence=0.5f, float lacunarity=2.f, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Return an array filled with coherence fbm noise.</div><div class="ttdef"><b>Definition</b> noise.cpp:41</div></div>
 <div class="ttc" id="anamespacehmap_html_ab8197c4c7a85dacb616fee7a7d0df195a035bda7c8c2179b47b9a766531c2e89e"><div class="ttname"><a href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a035bda7c8c2179b47b9a766531c2e89e">hmap::WORLEY</a></div><div class="ttdeci">@ WORLEY</div><div class="ttdoc">Worley.</div><div class="ttdef"><b>Definition</b> functions.hpp:73</div></div>
 <div class="ttc" id="anamespacehmap_html_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581"><div class="ttname"><a href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::PERLIN</a></div><div class="ttdeci">@ PERLIN</div><div class="ttdoc">Perlin.</div><div class="ttdef"><b>Definition</b> functions.hpp:64</div></div>
@@ -9438,6 +9441,127 @@ Only available if OpenCL is enabled.</dd></dl>
 
 <p>See <a class="el" href="namespacehmap.html#a5368ab0d5bb8708001a55d216332918b" title="See hmap::sdf_2d_polyline, with a Bezier approximation of the path.">hmap::sdf_2d_polyline_bezier</a>. </p>
 
+</div>
+</div>
+<a id="ae394dd88c39510d2ada01cf120922719" name="ae394dd88c39510d2ada01cf120922719"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae394dd88c39510d2ada01cf120922719">&#9670;&#160;</a></span>select_soil_weathered()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classhmap_1_1Array.html">Array</a> hmap::gpu::select_soil_weathered </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>z</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ir_curvature</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ir_gradient</em> = <code>4</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacehmap.html#ad4876bd26d1f3b33a1492645bfe50fbe">ClampMode</a>&#160;</td>
+          <td class="paramname"><em>curvature_clamp_mode</em> = <code><a class="el" href="namespacehmap.html#ad4876bd26d1f3b33a1492645bfe50fbeacd6fe8618f97f69924e58ad1434a1b86">ClampMode::POSITIVE_ONLY</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>curvature_clamping</em> = <code>10.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>curvature_weight</em> = <code>1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>gradient_weight</em> = <code>1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>gradient_scaling_factor</em> = <code>0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes a soil weathering selection map based on curvature and gradient analysis. </p>
+<p>This function generates a combined array representing the degree of soil weathering using two main components:</p><ul>
+<li><b>Curvature contribution</b>: derived from smoothed height variations.</li>
+<li><b>Gradient contribution</b>: derived from local slope magnitudes.</li>
+</ul>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">z</td><td>Input heightmap or scalar field. </td></tr>
+    <tr><td class="paramname">ir_curvature</td><td>Radius (in pixels or samples) for curvature smoothing. If zero, curvature smoothing is skipped. </td></tr>
+    <tr><td class="paramname">ir_gradient</td><td>Radius (in pixels or samples) for gradient computation. </td></tr>
+    <tr><td class="paramname">curvature_clamp_mode</td><td>Clamping mode applied to curvature values (see <a class="el" href="namespacehmap.html#ad4876bd26d1f3b33a1492645bfe50fbe">ClampMode</a>). </td></tr>
+    <tr><td class="paramname">curvature_clamping</td><td>Maximum absolute value used for curvature clamping. </td></tr>
+    <tr><td class="paramname">curvature_weight</td><td>Weight applied to the curvature component in the final mix. </td></tr>
+    <tr><td class="paramname">gradient_weight</td><td>Weight applied to the gradient component in the final mix. </td></tr>
+    <tr><td class="paramname">gradient_scaling_factor</td><td>Empirical scaling factor for both curvature and gradient terms. If non-positive, defaults to <code>z.shape.x</code>.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p><b>Example</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="highmap_8hpp.html">highmap.hpp</a>&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
+<div class="line">{</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap_1_1gpu.html#adb8336ed4d83c15500872185dee45d50">hmap::gpu::init_opencl</a>();</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_struct" href="structhmap_1_1Vec2.html">hmap::Vec2&lt;int&gt;</a>   shape = {256, 256};</div>
+<div class="line">  <a class="code hl_struct" href="structhmap_1_1Vec2.html">hmap::Vec2&lt;float&gt;</a> kw = {4.f, 4.f};</div>
+<div class="line">  <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>              seed = 0;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z = <a class="code hl_function" href="namespacehmap.html#a40b948c49a05c14f2d540dc1a6952130">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, kw, seed);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a374c6a8ff3d27e854a254139435c5d8d">hmap::clamp_min_smooth</a>(z, -0.2f, 0.1f);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordtype">int</span>         ir_curvature = 0;</div>
+<div class="line">  <span class="keywordtype">int</span>         ir_gradient = 4;</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> c = <a class="code hl_function" href="namespacehmap_1_1gpu.html#ae394dd88c39510d2ada01cf120922719">hmap::gpu::select_soil_weathered</a>(</div>
+<div class="line">      z,</div>
+<div class="line">      ir_curvature,</div>
+<div class="line">      ir_gradient,</div>
+<div class="line">      <a class="code hl_enumvalue" href="namespacehmap.html#ad4876bd26d1f3b33a1492645bfe50fbeacd6fe8618f97f69924e58ad1434a1b86">hmap::ClampMode::POSITIVE_ONLY</a>,</div>
+<div class="line">      1.f,</div>
+<div class="line">      1.f,</div>
+<div class="line">      0.2f);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(c);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_select_soil_weathered.png&quot;</span>,</div>
+<div class="line">                          {z, c},</div>
+<div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
+<div class="line">}</div>
+<div class="ttc" id="anamespacehmap_1_1gpu_html_ae394dd88c39510d2ada01cf120922719"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ae394dd88c39510d2ada01cf120922719">hmap::gpu::select_soil_weathered</a></div><div class="ttdeci">Array select_soil_weathered(const Array &amp;z, int ir_curvature=0, int ir_gradient=4, ClampMode curvature_clamp_mode=ClampMode::POSITIVE_ONLY, float curvature_clamping=10.f, float curvature_weight=1.f, float gradient_weight=1.f, float gradient_scaling_factor=0.f)</div><div class="ttdoc">Computes a soil weathering selection map based on curvature and gradient analysis.</div><div class="ttdef"><b>Definition</b> select_soil_weathered.cpp:13</div></div>
+<div class="ttc" id="anamespacehmap_html_a374c6a8ff3d27e854a254139435c5d8d"><div class="ttname"><a href="namespacehmap.html#a374c6a8ff3d27e854a254139435c5d8d">hmap::clamp_min_smooth</a></div><div class="ttdeci">void clamp_min_smooth(Array &amp;array, float vmin, float k=0.2f)</div><div class="ttdoc">Clamp array values lower than a given bound with a smooth transition.</div><div class="ttdef"><b>Definition</b> range.cpp:150</div></div>
+<div class="ttc" id="anamespacehmap_html_ad4876bd26d1f3b33a1492645bfe50fbeacd6fe8618f97f69924e58ad1434a1b86"><div class="ttname"><a href="namespacehmap.html#ad4876bd26d1f3b33a1492645bfe50fbeacd6fe8618f97f69924e58ad1434a1b86">hmap::ClampMode::POSITIVE_ONLY</a></div><div class="ttdeci">@ POSITIVE_ONLY</div></div>
+</div><!-- fragment --><p><b>Result</b> </p><div class="image">
+<img src="ex_select_soil_weathered.png" alt=""/>
+</div>
+ 
 </div>
 </div>
 <a id="af91ed08d142ffe71069e00475654d786" name="af91ed08d142ffe71069e00475654d786"></a>

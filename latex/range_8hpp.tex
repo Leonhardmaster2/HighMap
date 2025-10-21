@@ -12,6 +12,15 @@ namespace \mbox{\hyperlink{namespacehmap}{hmap}}
 \item 
 namespace \mbox{\hyperlink{namespacehmap_1_1gpu}{hmap\+::gpu}}
 \end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbe}{hmap\+::\+Clamp\+Mode}} \+: int \{ \mbox{\hyperlink{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbeacd6fe8618f97f69924e58ad1434a1b86}{hmap\+::\+POSITIVE\+\_\+\+ONLY}}
+, \mbox{\hyperlink{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbea187e7b6a5956f99cc7234e2fdac98635}{hmap\+::\+NEGATIVE\+\_\+\+ONLY}}
+, \mbox{\hyperlink{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbea6328e5e3186c227a021ef2ff77e40197}{hmap\+::\+BOTH}}
+, \mbox{\hyperlink{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbeab50339a10e1de285ac99d4c3990b8693}{hmap\+::\+NONE}}
+ \}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -19,8 +28,10 @@ void \mbox{\hyperlink{namespacehmap_abc5d54d0d76a86f083db977837c28d69}{hmap\+::c
 \begin{DoxyCompactList}\small\item\em Set to zero any value lower than {\ttfamily vmin}. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a0583ee2dca09a21193cb1e1830ce90bf}{hmap\+::chop\+\_\+max\+\_\+smooth}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float vmax)
 \begin{DoxyCompactList}\small\item\em Set to zero any value lower than {\ttfamily vmax} and apply a linear decrease slope between {\ttfamily vmax / 2} and {\ttfamily vmax}. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{namespacehmap_a29bac84a2ba5a665047b8946eecb84ea}{hmap\+::clamp}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float vmin=0, float vmax=1)
+void \mbox{\hyperlink{namespacehmap_ae6dfd87b0368629657c3138dbf24cbc4}{hmap\+::clamp}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float vmin=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float vmax=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Clamp array elements to a target range. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacehmap_acd070bc49683535711ab36b5ec65c434}{hmap\+::clamp}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float vmax, \mbox{\hyperlink{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbe}{Clamp\+Mode}} mode)
+\begin{DoxyCompactList}\small\item\em Clamps the values of an array according to the specified mode. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a2badbebec49b12d0d721970a18eb420d}{hmap\+::clamp\+\_\+min}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float vmin)
 \begin{DoxyCompactList}\small\item\em Clamp array values lower than a given bound. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_af24e0b99ff6c2046ba5dfc4ccc9da7cf}{hmap\+::clamp\+\_\+min}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&vmin)

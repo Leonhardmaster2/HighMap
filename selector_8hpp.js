@@ -23,5 +23,6 @@ var selector_8hpp =
     [ "select_rivers", "selector_8hpp.html#a1f35e2238ee222ab2aa87304f6692ce6", null ],
     [ "select_transitions", "selector_8hpp.html#ac6dcaa05c7c34302fa2560ddedbb9931", null ],
     [ "select_valley", "selector_8hpp.html#a701106cd57412e72a5d3ee41b46ab4e8", null ],
+    [ "select_soil_weathered", "selector_8hpp.html#ae394dd88c39510d2ada01cf120922719", null ],
     [ "select_valley", "selector_8hpp.html#af91ed08d142ffe71069e00475654d786", null ]
 ];

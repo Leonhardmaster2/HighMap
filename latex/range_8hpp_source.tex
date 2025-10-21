@@ -13,71 +13,81 @@
 \DoxyCodeLine{00021\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacehmap}{hmap}}}
 \DoxyCodeLine{00022\ \{}
 \DoxyCodeLine{00023\ }
-\DoxyCodeLine{00043\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_abc5d54d0d76a86f083db977837c28d69}{chop}}(Array\ \&array,\ \textcolor{keywordtype}{float}\ vmin);}
-\DoxyCodeLine{00044\ }
-\DoxyCodeLine{00067\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a0583ee2dca09a21193cb1e1830ce90bf}{chop\_max\_smooth}}(Array\ \&array,\ \textcolor{keywordtype}{float}\ vmax);}
-\DoxyCodeLine{00068\ }
-\DoxyCodeLine{00089\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a29bac84a2ba5a665047b8946eecb84ea}{clamp}}(Array\ \&array,\ \textcolor{keywordtype}{float}\ vmin\ =\ 0,\ \textcolor{keywordtype}{float}\ vmax\ =\ 1);}
-\DoxyCodeLine{00090\ }
-\DoxyCodeLine{00102\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a2badbebec49b12d0d721970a18eb420d}{clamp\_min}}(Array\ \&array,\ \textcolor{keywordtype}{float}\ vmin);}
-\DoxyCodeLine{00103\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a2badbebec49b12d0d721970a18eb420d}{clamp\_min}}(Array\ \&array,\ \textcolor{keyword}{const}\ Array\ \&vmin);\ }
-\DoxyCodeLine{00104\ }
-\DoxyCodeLine{00116\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a374c6a8ff3d27e854a254139435c5d8d}{clamp\_min\_smooth}}(Array\ \&array,\ \textcolor{keywordtype}{float}\ vmin,\ \textcolor{keywordtype}{float}\ k\ =\ 0.2f);}
-\DoxyCodeLine{00117\ }
-\DoxyCodeLine{00118\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a374c6a8ff3d27e854a254139435c5d8d}{clamp\_min\_smooth}}(Array\ \ \ \ \ \ \ \&array,}
-\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&vmin,}
-\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ k\ =\ 0.2f);\ }
-\DoxyCodeLine{00121\ }
-\DoxyCodeLine{00135\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{namespacehmap_a374c6a8ff3d27e854a254139435c5d8d}{clamp\_min\_smooth}}(\textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ vmin,\ \textcolor{keywordtype}{float}\ k\ =\ 0.2f);}
-\DoxyCodeLine{00136\ }
-\DoxyCodeLine{00148\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_ae239201a0a4193e1ce78bdf1fce4c151}{clamp\_max}}(Array\ \&array,\ \textcolor{keywordtype}{float}\ vmax);}
-\DoxyCodeLine{00149\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_ae239201a0a4193e1ce78bdf1fce4c151}{clamp\_max}}(Array\ \&array,\ \textcolor{keyword}{const}\ Array\ \&vmax);\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbe}{ClampMode}}\ :\ \textcolor{keywordtype}{int}}
+\DoxyCodeLine{00025\ \{}
+\DoxyCodeLine{00026\ \ \ \mbox{\hyperlink{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbeacd6fe8618f97f69924e58ad1434a1b86}{POSITIVE\_ONLY}},}
+\DoxyCodeLine{00027\ \ \ \mbox{\hyperlink{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbea187e7b6a5956f99cc7234e2fdac98635}{NEGATIVE\_ONLY}},}
+\DoxyCodeLine{00028\ \ \ \mbox{\hyperlink{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbea6328e5e3186c227a021ef2ff77e40197}{BOTH}},}
+\DoxyCodeLine{00029\ \ \ \mbox{\hyperlink{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbeab50339a10e1de285ac99d4c3990b8693}{NONE}}}
+\DoxyCodeLine{00030\ \};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00051\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_abc5d54d0d76a86f083db977837c28d69}{chop}}(Array\ \&array,\ \textcolor{keywordtype}{float}\ vmin);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00075\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a0583ee2dca09a21193cb1e1830ce90bf}{chop\_max\_smooth}}(Array\ \&array,\ \textcolor{keywordtype}{float}\ vmax);}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00097\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_ae6dfd87b0368629657c3138dbf24cbc4}{clamp}}(Array\ \&array,\ \textcolor{keywordtype}{float}\ vmin\ =\ 0.f,\ \textcolor{keywordtype}{float}\ vmax\ =\ 1.f);}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00122\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_ae6dfd87b0368629657c3138dbf24cbc4}{clamp}}(Array\ \&array,\ \textcolor{keywordtype}{float}\ vmax,\ \mbox{\hyperlink{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbe}{ClampMode}}\ mode);}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00135\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a2badbebec49b12d0d721970a18eb420d}{clamp\_min}}(Array\ \&array,\ \textcolor{keywordtype}{float}\ vmin);}
+\DoxyCodeLine{00136\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a2badbebec49b12d0d721970a18eb420d}{clamp\_min}}(Array\ \&array,\ \textcolor{keyword}{const}\ Array\ \&vmin);\ }
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00149\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a374c6a8ff3d27e854a254139435c5d8d}{clamp\_min\_smooth}}(Array\ \&array,\ \textcolor{keywordtype}{float}\ vmin,\ \textcolor{keywordtype}{float}\ k\ =\ 0.2f);}
 \DoxyCodeLine{00150\ }
-\DoxyCodeLine{00162\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a936453b67a394c5da8b48473540c9459}{clamp\_max\_smooth}}(Array\ \&array,\ \textcolor{keywordtype}{float}\ vmax,\ \textcolor{keywordtype}{float}\ k\ =\ 0.2f);}
-\DoxyCodeLine{00163\ }
-\DoxyCodeLine{00164\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a936453b67a394c5da8b48473540c9459}{clamp\_max\_smooth}}(Array\ \ \ \ \ \ \ \&array,}
-\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&vmax,}
-\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ k\ =\ 0.2f);\ }
-\DoxyCodeLine{00167\ }
-\DoxyCodeLine{00182\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a55574a9d91e2e7e20de954956402ba1b}{clamp\_smooth}}(Array\ \&array,\ \textcolor{keywordtype}{float}\ vmin,\ \textcolor{keywordtype}{float}\ vmax,\ \textcolor{keywordtype}{float}\ k\ =\ 0.2f);}
+\DoxyCodeLine{00151\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a374c6a8ff3d27e854a254139435c5d8d}{clamp\_min\_smooth}}(Array\ \ \ \ \ \ \ \&array,}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&vmin,}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ k\ =\ 0.2f);\ }
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00168\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{namespacehmap_a374c6a8ff3d27e854a254139435c5d8d}{clamp\_min\_smooth}}(\textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ vmin,\ \textcolor{keywordtype}{float}\ k\ =\ 0.2f);}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00181\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_ae239201a0a4193e1ce78bdf1fce4c151}{clamp\_max}}(Array\ \&array,\ \textcolor{keywordtype}{float}\ vmax);}
+\DoxyCodeLine{00182\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_ae239201a0a4193e1ce78bdf1fce4c151}{clamp\_max}}(Array\ \&array,\ \textcolor{keyword}{const}\ Array\ \&vmax);\ }
 \DoxyCodeLine{00183\ }
-\DoxyCodeLine{00195\ Array\ \mbox{\hyperlink{namespacehmap_aa52f3e1fcb1cad464a512c09a0c8eb54}{maximum}}(\textcolor{keyword}{const}\ Array\ \&array1,\ \textcolor{keyword}{const}\ Array\ \&array2);}
+\DoxyCodeLine{00195\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a936453b67a394c5da8b48473540c9459}{clamp\_max\_smooth}}(Array\ \&array,\ \textcolor{keywordtype}{float}\ vmax,\ \textcolor{keywordtype}{float}\ k\ =\ 0.2f);}
 \DoxyCodeLine{00196\ }
-\DoxyCodeLine{00208\ Array\ \mbox{\hyperlink{namespacehmap_aa52f3e1fcb1cad464a512c09a0c8eb54}{maximum}}(\textcolor{keyword}{const}\ Array\ \&array1,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ value);\ }
-\DoxyCodeLine{00209\ }
-\DoxyCodeLine{00238\ Array\ \mbox{\hyperlink{namespacehmap_a9e903d1c88db888832bea8cbafb19246}{maximum\_smooth}}(\textcolor{keyword}{const}\ Array\ \&array1,\ \textcolor{keyword}{const}\ Array\ \&array2,\ \textcolor{keywordtype}{float}\ k\ =\ 0.2);}
-\DoxyCodeLine{00239\ }
-\DoxyCodeLine{00265\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{namespacehmap_a9e903d1c88db888832bea8cbafb19246}{maximum\_smooth}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ a,}
-\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ b,}
-\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ k\ =\ 0.2);\ }
-\DoxyCodeLine{00268\ }
-\DoxyCodeLine{00280\ Array\ \mbox{\hyperlink{namespacehmap_afb57b7af88ca225ff5a343d4583ab998}{minimum}}(\textcolor{keyword}{const}\ Array\ \&array1,\ \textcolor{keyword}{const}\ Array\ \&array2);}
-\DoxyCodeLine{00281\ }
-\DoxyCodeLine{00293\ Array\ \mbox{\hyperlink{namespacehmap_afb57b7af88ca225ff5a343d4583ab998}{minimum}}(\textcolor{keyword}{const}\ Array\ \&array1,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ value);\ }
-\DoxyCodeLine{00294\ }
-\DoxyCodeLine{00313\ Array\ \mbox{\hyperlink{namespacehmap_a453090213e0cf160406d6af6c129d872}{minimum\_smooth}}(\textcolor{keyword}{const}\ Array\ \&array1,\ \textcolor{keyword}{const}\ Array\ \&array2,\ \textcolor{keywordtype}{float}\ k\ =\ 0.2);}
+\DoxyCodeLine{00197\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a936453b67a394c5da8b48473540c9459}{clamp\_max\_smooth}}(Array\ \ \ \ \ \ \ \&array,}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&vmax,}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ k\ =\ 0.2f);\ }
+\DoxyCodeLine{00200\ }
+\DoxyCodeLine{00215\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a55574a9d91e2e7e20de954956402ba1b}{clamp\_smooth}}(Array\ \&array,\ \textcolor{keywordtype}{float}\ vmin,\ \textcolor{keywordtype}{float}\ vmax,\ \textcolor{keywordtype}{float}\ k\ =\ 0.2f);}
+\DoxyCodeLine{00216\ }
+\DoxyCodeLine{00228\ Array\ \mbox{\hyperlink{namespacehmap_aa52f3e1fcb1cad464a512c09a0c8eb54}{maximum}}(\textcolor{keyword}{const}\ Array\ \&array1,\ \textcolor{keyword}{const}\ Array\ \&array2);}
+\DoxyCodeLine{00229\ }
+\DoxyCodeLine{00241\ Array\ \mbox{\hyperlink{namespacehmap_aa52f3e1fcb1cad464a512c09a0c8eb54}{maximum}}(\textcolor{keyword}{const}\ Array\ \&array1,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ value);\ }
+\DoxyCodeLine{00242\ }
+\DoxyCodeLine{00271\ Array\ \mbox{\hyperlink{namespacehmap_a9e903d1c88db888832bea8cbafb19246}{maximum\_smooth}}(\textcolor{keyword}{const}\ Array\ \&array1,\ \textcolor{keyword}{const}\ Array\ \&array2,\ \textcolor{keywordtype}{float}\ k\ =\ 0.2);}
+\DoxyCodeLine{00272\ }
+\DoxyCodeLine{00298\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{namespacehmap_a9e903d1c88db888832bea8cbafb19246}{maximum\_smooth}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ a,}
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ b,}
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ k\ =\ 0.2);\ }
+\DoxyCodeLine{00301\ }
+\DoxyCodeLine{00313\ Array\ \mbox{\hyperlink{namespacehmap_afb57b7af88ca225ff5a343d4583ab998}{minimum}}(\textcolor{keyword}{const}\ Array\ \&array1,\ \textcolor{keyword}{const}\ Array\ \&array2);}
 \DoxyCodeLine{00314\ }
-\DoxyCodeLine{00329\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{namespacehmap_a453090213e0cf160406d6af6c129d872}{minimum\_smooth}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ a,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ b,\ \textcolor{keywordtype}{float}\ k);\ }
-\DoxyCodeLine{00330\ }
-\DoxyCodeLine{00350\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{remap}}(Array\ \&array,}
-\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ vmin,}
-\DoxyCodeLine{00352\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ vmax,}
-\DoxyCodeLine{00353\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ from\_min,}
-\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ from\_max);}
-\DoxyCodeLine{00355\ }
-\DoxyCodeLine{00368\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{remap}}(Array\ \&array,\ \textcolor{keywordtype}{float}\ vmin\ =\ 0,\ \textcolor{keywordtype}{float}\ vmax\ =\ 1);\ }
-\DoxyCodeLine{00369\ }
-\DoxyCodeLine{00384\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_ac126773f7c7af2364cfb4d7a6922ed96}{rescale}}(Array\ \&array,\ \textcolor{keywordtype}{float}\ scaling,\ \textcolor{keywordtype}{float}\ vref\ =\ 0.f);}
-\DoxyCodeLine{00385\ }
-\DoxyCodeLine{00386\ \}\ \textcolor{comment}{//\ namespace\ hmap}}
-\DoxyCodeLine{00387\ }
-\DoxyCodeLine{00388\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacehmap_1_1gpu}{hmap::gpu}}}
-\DoxyCodeLine{00389\ \{}
-\DoxyCodeLine{00390\ }
-\DoxyCodeLine{00392\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_a9a3f272d7c8294ab3418be67e3c9b3eb}{maximum\_smooth}}(\textcolor{keyword}{const}\ Array\ \&array1,\ \textcolor{keyword}{const}\ Array\ \&array2,\ \textcolor{keywordtype}{float}\ k\ =\ 0.2f);}
-\DoxyCodeLine{00393\ }
-\DoxyCodeLine{00395\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_a84e8cfef31aeb4ba10d4f7cbe04cb96d}{minimum\_smooth}}(\textcolor{keyword}{const}\ Array\ \&array1,\ \textcolor{keyword}{const}\ Array\ \&array2,\ \textcolor{keywordtype}{float}\ k\ =\ 0.2f);}
-\DoxyCodeLine{00396\ }
-\DoxyCodeLine{00397\ \}\ \textcolor{comment}{//\ namespace\ hmap::gpu}}
+\DoxyCodeLine{00326\ Array\ \mbox{\hyperlink{namespacehmap_afb57b7af88ca225ff5a343d4583ab998}{minimum}}(\textcolor{keyword}{const}\ Array\ \&array1,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ value);\ }
+\DoxyCodeLine{00327\ }
+\DoxyCodeLine{00346\ Array\ \mbox{\hyperlink{namespacehmap_a453090213e0cf160406d6af6c129d872}{minimum\_smooth}}(\textcolor{keyword}{const}\ Array\ \&array1,\ \textcolor{keyword}{const}\ Array\ \&array2,\ \textcolor{keywordtype}{float}\ k\ =\ 0.2);}
+\DoxyCodeLine{00347\ }
+\DoxyCodeLine{00362\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{namespacehmap_a453090213e0cf160406d6af6c129d872}{minimum\_smooth}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ a,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ b,\ \textcolor{keywordtype}{float}\ k);\ }
+\DoxyCodeLine{00363\ }
+\DoxyCodeLine{00383\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{remap}}(Array\ \&array,}
+\DoxyCodeLine{00384\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ vmin,}
+\DoxyCodeLine{00385\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ vmax,}
+\DoxyCodeLine{00386\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ from\_min,}
+\DoxyCodeLine{00387\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ from\_max);}
+\DoxyCodeLine{00388\ }
+\DoxyCodeLine{00401\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{remap}}(Array\ \&array,\ \textcolor{keywordtype}{float}\ vmin\ =\ 0,\ \textcolor{keywordtype}{float}\ vmax\ =\ 1);\ }
+\DoxyCodeLine{00402\ }
+\DoxyCodeLine{00417\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_ac126773f7c7af2364cfb4d7a6922ed96}{rescale}}(Array\ \&array,\ \textcolor{keywordtype}{float}\ scaling,\ \textcolor{keywordtype}{float}\ vref\ =\ 0.f);}
+\DoxyCodeLine{00418\ }
+\DoxyCodeLine{00419\ \}\ \textcolor{comment}{//\ namespace\ hmap}}
+\DoxyCodeLine{00420\ }
+\DoxyCodeLine{00421\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacehmap_1_1gpu}{hmap::gpu}}}
+\DoxyCodeLine{00422\ \{}
+\DoxyCodeLine{00423\ }
+\DoxyCodeLine{00425\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_a9a3f272d7c8294ab3418be67e3c9b3eb}{maximum\_smooth}}(\textcolor{keyword}{const}\ Array\ \&array1,\ \textcolor{keyword}{const}\ Array\ \&array2,\ \textcolor{keywordtype}{float}\ k\ =\ 0.2f);}
+\DoxyCodeLine{00426\ }
+\DoxyCodeLine{00428\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_a84e8cfef31aeb4ba10d4f7cbe04cb96d}{minimum\_smooth}}(\textcolor{keyword}{const}\ Array\ \&array1,\ \textcolor{keyword}{const}\ Array\ \&array2,\ \textcolor{keywordtype}{float}\ k\ =\ 0.2f);}
+\DoxyCodeLine{00429\ }
+\DoxyCodeLine{00430\ \}\ \textcolor{comment}{//\ namespace\ hmap::gpu}}
 
 \end{DoxyCode}

@@ -327,6 +327,12 @@ enum \mbox{\hyperlink{namespacehmap_a8e3756915e28aa80cec2190043cc8c2f}{Voronoi\+
 , \newline
 \mbox{\hyperlink{namespacehmap_a8e3756915e28aa80cec2190043cc8c2fa85f252453c9797b7e00cc96cb7147537}{CONSTANT\+\_\+\+F2\+MF1\+\_\+\+SQUARED}}
  \}
+\item 
+enum class \mbox{\hyperlink{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbe}{Clamp\+Mode}} \+: int \{ \mbox{\hyperlink{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbeacd6fe8618f97f69924e58ad1434a1b86}{POSITIVE\+\_\+\+ONLY}}
+, \mbox{\hyperlink{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbea187e7b6a5956f99cc7234e2fdac98635}{NEGATIVE\+\_\+\+ONLY}}
+, \mbox{\hyperlink{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbea6328e5e3186c227a021ef2ff77e40197}{BOTH}}
+, \mbox{\hyperlink{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbeab50339a10e1de285ac99d4c3990b8693}{NONE}}
+ \}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
@@ -1379,8 +1385,10 @@ void \mbox{\hyperlink{namespacehmap_abc5d54d0d76a86f083db977837c28d69}{chop}} (\
 \begin{DoxyCompactList}\small\item\em Set to zero any value lower than {\ttfamily vmin}. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a0583ee2dca09a21193cb1e1830ce90bf}{chop\+\_\+max\+\_\+smooth}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float vmax)
 \begin{DoxyCompactList}\small\item\em Set to zero any value lower than {\ttfamily vmax} and apply a linear decrease slope between {\ttfamily vmax / 2} and {\ttfamily vmax}. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{namespacehmap_a29bac84a2ba5a665047b8946eecb84ea}{clamp}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float vmin=0, float vmax=1)
+void \mbox{\hyperlink{namespacehmap_ae6dfd87b0368629657c3138dbf24cbc4}{clamp}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float vmin=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float vmax=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Clamp array elements to a target range. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacehmap_acd070bc49683535711ab36b5ec65c434}{clamp}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float vmax, \mbox{\hyperlink{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbe}{Clamp\+Mode}} mode)
+\begin{DoxyCompactList}\small\item\em Clamps the values of an array according to the specified mode. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a2badbebec49b12d0d721970a18eb420d}{clamp\+\_\+min}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float vmin)
 \begin{DoxyCompactList}\small\item\em Clamp array values lower than a given bound. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_af24e0b99ff6c2046ba5dfc4ccc9da7cf}{clamp\+\_\+min}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&vmin)
@@ -2331,6 +2339,30 @@ CONSTANT&\\
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{CONSTANT\_F2MF1\_SQUARED@{CONSTANT\_F2MF1\_SQUARED}!hmap@{hmap}}\index{hmap@{hmap}!CONSTANT\_F2MF1\_SQUARED@{CONSTANT\_F2MF1\_SQUARED}}}\Hypertarget{namespacehmap_a8e3756915e28aa80cec2190043cc8c2fa85f252453c9797b7e00cc96cb7147537}\label{namespacehmap_a8e3756915e28aa80cec2190043cc8c2fa85f252453c9797b7e00cc96cb7147537} 
 CONSTANT\+\_\+\+F2\+MF1\+\_\+\+SQUARED&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbe}\label{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbe} 
+\index{hmap@{hmap}!ClampMode@{ClampMode}}
+\index{ClampMode@{ClampMode}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{ClampMode}{ClampMode}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbe}{hmap\+::\+Clamp\+Mode}} \+: int\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{POSITIVE\_ONLY@{POSITIVE\_ONLY}!hmap@{hmap}}\index{hmap@{hmap}!POSITIVE\_ONLY@{POSITIVE\_ONLY}}}\Hypertarget{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbeacd6fe8618f97f69924e58ad1434a1b86}\label{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbeacd6fe8618f97f69924e58ad1434a1b86} 
+POSITIVE\+\_\+\+ONLY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NEGATIVE\_ONLY@{NEGATIVE\_ONLY}!hmap@{hmap}}\index{hmap@{hmap}!NEGATIVE\_ONLY@{NEGATIVE\_ONLY}}}\Hypertarget{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbea187e7b6a5956f99cc7234e2fdac98635}\label{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbea187e7b6a5956f99cc7234e2fdac98635} 
+NEGATIVE\+\_\+\+ONLY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BOTH@{BOTH}!hmap@{hmap}}\index{hmap@{hmap}!BOTH@{BOTH}}}\Hypertarget{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbea6328e5e3186c227a021ef2ff77e40197}\label{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbea6328e5e3186c227a021ef2ff77e40197} 
+BOTH&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NONE@{NONE}!hmap@{hmap}}\index{hmap@{hmap}!NONE@{NONE}}}\Hypertarget{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbeab50339a10e1de285ac99d4c3990b8693}\label{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbeab50339a10e1de285ac99d4c3990b8693} 
+NONE&\\
 \hline
 
 \end{DoxyEnumFields}
@@ -23598,11 +23630,11 @@ This function processes the input array and sets any value below the upper bound
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}  \Hypertarget{namespacehmap_a29bac84a2ba5a665047b8946eecb84ea}\label{namespacehmap_a29bac84a2ba5a665047b8946eecb84ea} 
+{\bfseries{Result}}  \Hypertarget{namespacehmap_ae6dfd87b0368629657c3138dbf24cbc4}\label{namespacehmap_ae6dfd87b0368629657c3138dbf24cbc4} 
 \index{hmap@{hmap}!clamp@{clamp}}
 \index{clamp@{clamp}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{clamp()}{clamp()}}
-{\footnotesize\ttfamily void hmap\+::clamp (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{float}]{vmin = {\ttfamily 0},  }\item[{float}]{vmax = {\ttfamily 1} }\end{DoxyParamCaption})}
+\doxysubsubsection{\texorpdfstring{clamp()}{clamp()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void hmap\+::clamp (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{float}]{vmin = {\ttfamily 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{vmax = {\ttfamily 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
 
 
 
@@ -23632,7 +23664,7 @@ This function restricts the values in the input array to be within a specified r
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_a40b948c49a05c14f2d540dc1a6952130}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ res,\ seed);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ z1\ =\ z;}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a29bac84a2ba5a665047b8946eecb84ea}{hmap::clamp}}(z1,\ -\/0.1f,\ 0.1f);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ae6dfd87b0368629657c3138dbf24cbc4}{hmap::clamp}}(z1,\ -\/0.1f,\ 0.1f);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ z2\ =\ z;}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a936453b67a394c5da8b48473540c9459}{hmap::clamp\_max\_smooth}}(z2,\ 0.1f);}
@@ -23656,6 +23688,34 @@ This function restricts the values in the input array to be within a specified r
 \begin{DoxySeeAlso}{See also}
 {\ttfamily \doxylink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{remap}}, {\ttfamily \doxylink{namespacehmap_a2badbebec49b12d0d721970a18eb420d}{clamp\+\_\+min}}, {\ttfamily \doxylink{namespacehmap_ae239201a0a4193e1ce78bdf1fce4c151}{clamp\+\_\+max}} 
 \end{DoxySeeAlso}
+\Hypertarget{namespacehmap_acd070bc49683535711ab36b5ec65c434}\label{namespacehmap_acd070bc49683535711ab36b5ec65c434} 
+\index{hmap@{hmap}!clamp@{clamp}}
+\index{clamp@{clamp}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{clamp()}{clamp()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void hmap\+::clamp (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{float}]{vmax,  }\item[{\mbox{\hyperlink{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbe}{Clamp\+Mode}}}]{mode }\end{DoxyParamCaption})}
+
+
+
+Clamps the values of an array according to the specified mode. 
+
+This function modifies the input array in place based on one of three clamping modes\+:
+
+
+\begin{DoxyItemize}
+\item {\bfseries{\doxylink{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbeacd6fe8618f97f69924e58ad1434a1b86}{Clamp\+Mode\+::\+POSITIVE\+\_\+\+ONLY}}} Keeps only positive values and clamps them to a maximum value {\ttfamily vmax}. All negative values are set to 0.
+\item {\bfseries{\doxylink{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbea187e7b6a5956f99cc7234e2fdac98635}{Clamp\+Mode\+::\+NEGATIVE\+\_\+\+ONLY}}} Keeps only negative values, reverses their sign (making them positive), and clamps them to a maximum value {\ttfamily vmax}. Positive values are set to 0.
+\item {\bfseries{\doxylink{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbea6328e5e3186c227a021ef2ff77e40197}{Clamp\+Mode\+::\+BOTH}}} Keeps both positive and negative values, clamping them symmetrically between {\ttfamily -\/vmax} and {\ttfamily vmax}.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & Reference to the array whose values will be clamped. \\
+\hline
+{\em vmax} & The maximum absolute value used for clamping. \\
+\hline
+{\em mode} & The clamping mode to apply (see \doxylink{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbe}{Clamp\+Mode}). \\
+\hline
+\end{DoxyParams}
 \Hypertarget{namespacehmap_a2badbebec49b12d0d721970a18eb420d}\label{namespacehmap_a2badbebec49b12d0d721970a18eb420d} 
 \index{hmap@{hmap}!clamp\_min@{clamp\_min}}
 \index{clamp\_min@{clamp\_min}!hmap@{hmap}}
@@ -23676,7 +23736,7 @@ This function clamps all values in the input array that are below the specified 
 \hline
 \end{DoxyParams}
 \begin{DoxySeeAlso}{See also}
-{\ttfamily \doxylink{namespacehmap_a29bac84a2ba5a665047b8946eecb84ea}{clamp}}, {\ttfamily \doxylink{namespacehmap_ae239201a0a4193e1ce78bdf1fce4c151}{clamp\+\_\+max}} 
+{\ttfamily \doxylink{namespacehmap_ae6dfd87b0368629657c3138dbf24cbc4}{clamp}}, {\ttfamily \doxylink{namespacehmap_ae239201a0a4193e1ce78bdf1fce4c151}{clamp\+\_\+max}} 
 \end{DoxySeeAlso}
 \Hypertarget{namespacehmap_af24e0b99ff6c2046ba5dfc4ccc9da7cf}\label{namespacehmap_af24e0b99ff6c2046ba5dfc4ccc9da7cf} 
 \index{hmap@{hmap}!clamp\_min@{clamp\_min}}
@@ -23763,7 +23823,7 @@ This function clamps all values in the input array that are above the specified 
 \hline
 \end{DoxyParams}
 \begin{DoxySeeAlso}{See also}
-{\ttfamily \doxylink{namespacehmap_a29bac84a2ba5a665047b8946eecb84ea}{clamp}}, {\ttfamily \doxylink{namespacehmap_a2badbebec49b12d0d721970a18eb420d}{clamp\+\_\+min}} 
+{\ttfamily \doxylink{namespacehmap_ae6dfd87b0368629657c3138dbf24cbc4}{clamp}}, {\ttfamily \doxylink{namespacehmap_a2badbebec49b12d0d721970a18eb420d}{clamp\+\_\+min}} 
 \end{DoxySeeAlso}
 \Hypertarget{namespacehmap_ad912c32892e0e80b92a54d7692b75c6a}\label{namespacehmap_ad912c32892e0e80b92a54d7692b75c6a} 
 \index{hmap@{hmap}!clamp\_max@{clamp\_max}}
@@ -24090,7 +24150,7 @@ This function maps the values in the input array from one specified range to ano
 
 
 \begin{DoxySeeAlso}{See also}
-{\ttfamily \doxylink{namespacehmap_a29bac84a2ba5a665047b8946eecb84ea}{clamp}} 
+{\ttfamily \doxylink{namespacehmap_ae6dfd87b0368629657c3138dbf24cbc4}{clamp}} 
 \end{DoxySeeAlso}
 \Hypertarget{namespacehmap_ad470ab979489b088a4e8405830efdbe8}\label{namespacehmap_ad470ab979489b088a4e8405830efdbe8} 
 \index{hmap@{hmap}!remap@{remap}}

@@ -18,7 +18,7 @@ var searchData=
   ['biquad_5fpulse_15',['biquad_pulse',['../namespacehmap.html#a28783971977657055053b3c143502bc2',1,'hmap']]],
   ['biquadfunction_16',['biquadfunction',['../classhmap_1_1BiquadFunction.html#a75fdaa5da7556ba9070e7453b710babe',1,'hmap::BiquadFunction::BiquadFunction()'],['../classhmap_1_1BiquadFunction.html',1,'hmap::BiquadFunction']]],
   ['bivariate_20functions_17',['Bivariate functions',['../index.html#autotoc_md11',1,'']]],
-  ['biweight_18',['biweight',['../namespacehmap.html#a4b6f135c6e81d313ca54ae1efac5f2c9a77e92279e9a89de241e361bd74b8803a',1,'hmap::BIWEIGHT'],['../namespacehmap.html#ae0ab7faed3577159bc8051ad0e25b051',1,'hmap::biweight(Vec2&lt; int &gt; shape)']]],
+  ['biweight_18',['biweight',['../namespacehmap.html#ae0ab7faed3577159bc8051ad0e25b051',1,'hmap::biweight(Vec2&lt; int &gt; shape)'],['../namespacehmap.html#a4b6f135c6e81d313ca54ae1efac5f2c9a77e92279e9a89de241e361bd74b8803a',1,'hmap::BIWEIGHT']]],
   ['blackman_19',['blackman',['../namespacehmap.html#adfc320d14c66c6a40dedd9410efa269d',1,'hmap']]],
   ['blend_5fexclusion_20',['blend_exclusion',['../namespacehmap.html#aafb76d7961d1655fdc07422982357588',1,'hmap']]],
   ['blend_5fgradients_21',['blend_gradients',['../namespacehmap.html#af91a60a9fcbed7e38f53df57631a5298',1,'hmap::blend_gradients()'],['../namespacehmap_1_1gpu.html#a3a43696b1d6b8f0d966f9f05e5085edf',1,'hmap::gpu::blend_gradients()']]],
@@ -31,11 +31,12 @@ var searchData=
   ['blending_5fgpu_2ecpp_28',['blending_gpu.cpp',['../blending__gpu_8cpp.html',1,'']]],
   ['bone_29',['BONE',['../namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a4eb53d94f58e93c3bdb554d8cca7f306',1,'hmap']]],
   ['border_30',['border',['../namespacehmap.html#af80bcff234bf1482cf26896b9d21d270',1,'hmap::border()'],['../namespacehmap_1_1gpu.html#a335e4629532ba64049e0721bdcb5f3ba',1,'hmap::gpu::border()']]],
-  ['boundary_2ecpp_31',['boundary.cpp',['../boundary_8cpp.html',1,'']]],
-  ['boundary_2ehpp_32',['boundary.hpp',['../boundary_8hpp.html',1,'']]],
-  ['bspline_33',['bspline',['../classhmap_1_1Path.html#a166a6f87dff196efa75abb1b731d3528',1,'hmap::Path::bspline()'],['../namespacehmap.html#aa78bf111867e13c63d8bd2ec005ad6c8a60f62532461a103e7680bba841871635',1,'hmap::BSPLINE']]],
-  ['building_20heightmaps_34',['&quot;Array&quot; - Elementary Data Structure for Building Heightmaps',['../index.html#autotoc_md6',1,'']]],
-  ['bump_35',['bump',['../namespacehmap.html#a80d18b9cba709433d31f37c29f64f01c',1,'hmap']]],
-  ['bump_5florentzian_36',['bump_lorentzian',['../namespacehmap.html#a867abc2da19924fa22525ff69bca398d',1,'hmap']]],
-  ['bumpfunction_37',['bumpfunction',['../classhmap_1_1BumpFunction.html#a178d0bca834491174e38281174d8aa95',1,'hmap::BumpFunction::BumpFunction()'],['../classhmap_1_1BumpFunction.html',1,'hmap::BumpFunction']]]
+  ['both_31',['BOTH',['../namespacehmap.html#ad4876bd26d1f3b33a1492645bfe50fbea6328e5e3186c227a021ef2ff77e40197',1,'hmap']]],
+  ['boundary_2ecpp_32',['boundary.cpp',['../boundary_8cpp.html',1,'']]],
+  ['boundary_2ehpp_33',['boundary.hpp',['../boundary_8hpp.html',1,'']]],
+  ['bspline_34',['bspline',['../classhmap_1_1Path.html#a166a6f87dff196efa75abb1b731d3528',1,'hmap::Path::bspline()'],['../namespacehmap.html#aa78bf111867e13c63d8bd2ec005ad6c8a60f62532461a103e7680bba841871635',1,'hmap::BSPLINE']]],
+  ['building_20heightmaps_35',['&quot;Array&quot; - Elementary Data Structure for Building Heightmaps',['../index.html#autotoc_md6',1,'']]],
+  ['bump_36',['bump',['../namespacehmap.html#a80d18b9cba709433d31f37c29f64f01c',1,'hmap']]],
+  ['bump_5florentzian_37',['bump_lorentzian',['../namespacehmap.html#a867abc2da19924fa22525ff69bca398d',1,'hmap']]],
+  ['bumpfunction_38',['bumpfunction',['../classhmap_1_1BumpFunction.html#a178d0bca834491174e38281174d8aa95',1,'hmap::BumpFunction::BumpFunction()'],['../classhmap_1_1BumpFunction.html',1,'hmap::BumpFunction']]]
 ];
