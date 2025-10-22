@@ -21,7 +21,7 @@
 namespace hmap
 {
 
-enum class ClampMode : int
+enum ClampMode : int
 {
   POSITIVE_ONLY,
   NEGATIVE_ONLY,
