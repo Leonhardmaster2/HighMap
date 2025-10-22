@@ -370,10 +370,10 @@ var namespacehmap =
       [ "CONSTANT_F2MF1_SQUARED", "namespacehmap.html#a8e3756915e28aa80cec2190043cc8c2fa85f252453c9797b7e00cc96cb7147537", null ]
     ] ],
     [ "ClampMode", "namespacehmap.html#ad4876bd26d1f3b33a1492645bfe50fbe", [
-      [ "POSITIVE_ONLY", "namespacehmap.html#ad4876bd26d1f3b33a1492645bfe50fbeacd6fe8618f97f69924e58ad1434a1b86", null ],
-      [ "NEGATIVE_ONLY", "namespacehmap.html#ad4876bd26d1f3b33a1492645bfe50fbea187e7b6a5956f99cc7234e2fdac98635", null ],
-      [ "BOTH", "namespacehmap.html#ad4876bd26d1f3b33a1492645bfe50fbea6328e5e3186c227a021ef2ff77e40197", null ],
-      [ "NONE", "namespacehmap.html#ad4876bd26d1f3b33a1492645bfe50fbeab50339a10e1de285ac99d4c3990b8693", null ]
+      [ "POSITIVE_ONLY", "namespacehmap.html#ad4876bd26d1f3b33a1492645bfe50fbea7ee5673a01d4215ae4ba9ba95268ed59", null ],
+      [ "NEGATIVE_ONLY", "namespacehmap.html#ad4876bd26d1f3b33a1492645bfe50fbea10478d523fc507b9738e9cfdd5b7539c", null ],
+      [ "BOTH", "namespacehmap.html#ad4876bd26d1f3b33a1492645bfe50fbead7d8162264f038302952e47ad5e7a2ed", null ],
+      [ "NONE", "namespacehmap.html#ad4876bd26d1f3b33a1492645bfe50fbea8a618ee5b7e734d56e2d5957bd9893fd", null ]
     ] ],
     [ "normalized_vec3", "namespacehmap.html#ad37e39413754484dfb342ffbfbe75c2b", null ],
     [ "cv_mat_to_array", "namespacehmap.html#a457cc8fe8645d43d9c5a2aea80268147", null ],

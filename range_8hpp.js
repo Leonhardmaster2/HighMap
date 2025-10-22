@@ -1,10 +1,10 @@
 var range_8hpp =
 [
     [ "ClampMode", "range_8hpp.html#ad4876bd26d1f3b33a1492645bfe50fbe", [
-      [ "POSITIVE_ONLY", "range_8hpp.html#ad4876bd26d1f3b33a1492645bfe50fbeacd6fe8618f97f69924e58ad1434a1b86", null ],
-      [ "NEGATIVE_ONLY", "range_8hpp.html#ad4876bd26d1f3b33a1492645bfe50fbea187e7b6a5956f99cc7234e2fdac98635", null ],
-      [ "BOTH", "range_8hpp.html#ad4876bd26d1f3b33a1492645bfe50fbea6328e5e3186c227a021ef2ff77e40197", null ],
-      [ "NONE", "range_8hpp.html#ad4876bd26d1f3b33a1492645bfe50fbeab50339a10e1de285ac99d4c3990b8693", null ]
+      [ "POSITIVE_ONLY", "range_8hpp.html#ad4876bd26d1f3b33a1492645bfe50fbea7ee5673a01d4215ae4ba9ba95268ed59", null ],
+      [ "NEGATIVE_ONLY", "range_8hpp.html#ad4876bd26d1f3b33a1492645bfe50fbea10478d523fc507b9738e9cfdd5b7539c", null ],
+      [ "BOTH", "range_8hpp.html#ad4876bd26d1f3b33a1492645bfe50fbead7d8162264f038302952e47ad5e7a2ed", null ],
+      [ "NONE", "range_8hpp.html#ad4876bd26d1f3b33a1492645bfe50fbea8a618ee5b7e734d56e2d5957bd9893fd", null ]
     ] ],
     [ "chop", "range_8hpp.html#abc5d54d0d76a86f083db977837c28d69", null ],
     [ "chop_max_smooth", "range_8hpp.html#a0583ee2dca09a21193cb1e1830ce90bf", null ],
