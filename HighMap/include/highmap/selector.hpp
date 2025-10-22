@@ -471,6 +471,16 @@ Array select_soil_weathered(
     float        gradient_weight = 1.f,
     float        gradient_scaling_factor = 0.f);
 
+// if the gradient norm is known before-hand
+Array select_soil_weathered(const Array &z,
+                            const Array &gradient_norm, // in [0, 1]
+                            int          ir_curvature,
+                            ClampMode    curvature_clamp_mode,
+                            float        curvature_clamping,
+                            float        curvature_weight,
+                            float        gradient_weight,
+                            float gradient_scaling_factor); // for curvature
+
 /*! @brief See hmap::select_valley */
 Array select_valley(const Array &z,
                     int          ir,
