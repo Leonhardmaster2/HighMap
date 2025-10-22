@@ -134,6 +134,7 @@ var namespacehmap =
       [ "sdf_2d_polyline", "namespacehmap_1_1gpu.html#a6a106eafab89fcdee4764c21b7406f3e", null ],
       [ "sdf_2d_polyline_bezier", "namespacehmap_1_1gpu.html#a30410bfd596eaa78f33396b1f963e743", null ],
       [ "select_soil_weathered", "namespacehmap_1_1gpu.html#ae394dd88c39510d2ada01cf120922719", null ],
+      [ "select_soil_weathered", "namespacehmap_1_1gpu.html#a07420c28501484b219710bac89da8f60", null ],
       [ "select_valley", "namespacehmap_1_1gpu.html#af91ed08d142ffe71069e00475654d786", null ],
       [ "advection_particle", "namespacehmap_1_1gpu.html#a12757ceaaf11f04640c3a18520886cc8", null ],
       [ "advection_particle", "namespacehmap_1_1gpu.html#a339ed429925a27b3dad7a366e89bfe74", null ],

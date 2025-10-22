@@ -488,6 +488,8 @@ Functions</h2></td></tr>
 <tr class="memitem:ae394dd88c39510d2ada01cf120922719" id="r_ae394dd88c39510d2ada01cf120922719"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#ae394dd88c39510d2ada01cf120922719">select_soil_weathered</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, int ir_curvature=0, int ir_gradient=4, <a class="el" href="namespacehmap.html#ad4876bd26d1f3b33a1492645bfe50fbe">ClampMode</a> curvature_clamp_mode=<a class="el" href="namespacehmap.html#ad4876bd26d1f3b33a1492645bfe50fbea7ee5673a01d4215ae4ba9ba95268ed59">ClampMode::POSITIVE_ONLY</a>, float curvature_clamping=10.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float curvature_weight=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float gradient_weight=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float gradient_scaling_factor=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
 <tr class="memdesc:ae394dd88c39510d2ada01cf120922719"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes a soil weathering selection map based on curvature and gradient analysis.  <br /></td></tr>
 <tr class="separator:ae394dd88c39510d2ada01cf120922719"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07420c28501484b219710bac89da8f60" id="r_a07420c28501484b219710bac89da8f60"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a07420c28501484b219710bac89da8f60">select_soil_weathered</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;<a class="el" href="namespacehmap_1_1gpu.html#a1c5e49734e49973fe1b275b6988dba12">gradient_norm</a>, int ir_curvature, <a class="el" href="namespacehmap.html#ad4876bd26d1f3b33a1492645bfe50fbe">ClampMode</a> curvature_clamp_mode, float curvature_clamping, float curvature_weight, float gradient_weight, float gradient_scaling_factor)</td></tr>
+<tr class="separator:a07420c28501484b219710bac89da8f60"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af91ed08d142ffe71069e00475654d786" id="r_af91ed08d142ffe71069e00475654d786"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#af91ed08d142ffe71069e00475654d786">select_valley</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, int ir, bool zero_at_borders=true, bool ridge_select=false)</td></tr>
 <tr class="memdesc:af91ed08d142ffe71069e00475654d786"><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="namespacehmap.html#a701106cd57412e72a5d3ee41b46ab4e8">hmap::select_valley</a>.  <br /></td></tr>
 <tr class="separator:af91ed08d142ffe71069e00475654d786"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -9444,7 +9446,7 @@ Only available if OpenCL is enabled.</dd></dl>
 </div>
 </div>
 <a id="ae394dd88c39510d2ada01cf120922719" name="ae394dd88c39510d2ada01cf120922719"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae394dd88c39510d2ada01cf120922719">&#9670;&#160;</a></span>select_soil_weathered()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ae394dd88c39510d2ada01cf120922719">&#9670;&#160;</a></span>select_soil_weathered() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -9555,13 +9557,77 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">                          {z, c},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_1_1gpu_html_ae394dd88c39510d2ada01cf120922719"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ae394dd88c39510d2ada01cf120922719">hmap::gpu::select_soil_weathered</a></div><div class="ttdeci">Array select_soil_weathered(const Array &amp;z, int ir_curvature=0, int ir_gradient=4, ClampMode curvature_clamp_mode=ClampMode::POSITIVE_ONLY, float curvature_clamping=10.f, float curvature_weight=1.f, float gradient_weight=1.f, float gradient_scaling_factor=0.f)</div><div class="ttdoc">Computes a soil weathering selection map based on curvature and gradient analysis.</div><div class="ttdef"><b>Definition</b> select_soil_weathered.cpp:13</div></div>
+<div class="ttc" id="anamespacehmap_1_1gpu_html_ae394dd88c39510d2ada01cf120922719"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ae394dd88c39510d2ada01cf120922719">hmap::gpu::select_soil_weathered</a></div><div class="ttdeci">Array select_soil_weathered(const Array &amp;z, int ir_curvature=0, int ir_gradient=4, ClampMode curvature_clamp_mode=ClampMode::POSITIVE_ONLY, float curvature_clamping=10.f, float curvature_weight=1.f, float gradient_weight=1.f, float gradient_scaling_factor=0.f)</div><div class="ttdoc">Computes a soil weathering selection map based on curvature and gradient analysis.</div><div class="ttdef"><b>Definition</b> select_soil_weathered.cpp:14</div></div>
 <div class="ttc" id="anamespacehmap_html_a374c6a8ff3d27e854a254139435c5d8d"><div class="ttname"><a href="namespacehmap.html#a374c6a8ff3d27e854a254139435c5d8d">hmap::clamp_min_smooth</a></div><div class="ttdeci">void clamp_min_smooth(Array &amp;array, float vmin, float k=0.2f)</div><div class="ttdoc">Clamp array values lower than a given bound with a smooth transition.</div><div class="ttdef"><b>Definition</b> range.cpp:150</div></div>
 <div class="ttc" id="anamespacehmap_html_ad4876bd26d1f3b33a1492645bfe50fbea7ee5673a01d4215ae4ba9ba95268ed59"><div class="ttname"><a href="namespacehmap.html#ad4876bd26d1f3b33a1492645bfe50fbea7ee5673a01d4215ae4ba9ba95268ed59">hmap::POSITIVE_ONLY</a></div><div class="ttdeci">@ POSITIVE_ONLY</div><div class="ttdef"><b>Definition</b> range.hpp:26</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_select_soil_weathered.png" alt=""/>
 </div>
  
+</div>
+</div>
+<a id="a07420c28501484b219710bac89da8f60" name="a07420c28501484b219710bac89da8f60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07420c28501484b219710bac89da8f60">&#9670;&#160;</a></span>select_soil_weathered() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classhmap_1_1Array.html">Array</a> hmap::gpu::select_soil_weathered </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>z</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>gradient_norm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ir_curvature</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacehmap.html#ad4876bd26d1f3b33a1492645bfe50fbe">ClampMode</a>&#160;</td>
+          <td class="paramname"><em>curvature_clamp_mode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>curvature_clamping</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>curvature_weight</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>gradient_weight</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>gradient_scaling_factor</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
 </div>
 </div>
 <a id="af91ed08d142ffe71069e00475654d786" name="af91ed08d142ffe71069e00475654d786"></a>
