@@ -488,10 +488,37 @@ void kuwahara(Array &array, int ir, const Array *p_mask, float mix_ratio)
 
 void laplace(Array &array, float sigma, int iterations)
 {
+  Vec2<int> shape = array.shape;
+
   for (int it = 0; it < iterations; it++)
   {
-    Array delta = laplacian(array);
-    array += sigma * delta;
+    Array delta(shape);
+
+    for (int j = 0; j < shape.y; j++)
+      for (int i = 0; i < shape.x; i++)
+      {
+        float center = array(i, j);
+        float sum_neighbors = 0.0f;
+
+        // Accumulate 8 neighbors with boundary clamping
+        for (int dj = -1; dj <= 1; dj++)
+          for (int di = -1; di <= 1; di++)
+          {
+            if (di == 0 && dj == 0) continue;
+
+            int ni = std::clamp(i + di, 0, shape.x - 1);
+            int nj = std::clamp(j + dj, 0, shape.y - 1);
+            sum_neighbors += array(ni, nj);
+          }
+
+        // 8-neighbor Laplacian
+        delta(i, j) = sum_neighbors - 8.0f * center;
+      }
+
+    // Apply diffusion update
+    for (int j = 0; j < shape.y; j++)
+      for (int i = 0; i < shape.x; i++)
+        array(i, j) += sigma * delta(i, j);
   }
 }
 
@@ -810,6 +837,77 @@ void plateau(Array &array, const Array *p_mask, int ir, float factor)
   }
 }
 
+void reverse_above_theshold(Array       &array,
+                            const Array &threshold,
+                            float        scaling,
+                            float        transition_extent)
+{
+  for (int j = 0; j < array.shape.y; ++j)
+    for (int i = 0; i < array.shape.x; ++i)
+    {
+      float base_value = array(i, j);
+      float limit_value = threshold(i, j);
+      float gap = base_value - limit_value;
+
+      if (gap > 0.f)
+      {
+        float t = std::clamp(gap / transition_extent, 0.f, 1.f);
+        t = smoothstep3(t);
+
+        array(i, j) = limit_value - scaling * t * gap;
+      }
+      else
+      {
+        float t = std::clamp(-gap / transition_extent, 0.f, 1.f);
+        t = smoothstep3(t);
+
+        array(i, j) = lerp(limit_value, base_value, t);
+      }
+    }
+}
+
+void reverse_above_theshold(Array &array,
+                            float  threshold,
+                            float  scaling,
+                            float  transition_extent)
+{
+  Array threshold_array = Array(array.shape, threshold);
+
+  reverse_above_theshold(array, threshold_array, scaling, transition_extent);
+}
+
+void reverse_above_theshold(Array       &array,
+                            const Array &threshold,
+                            const Array *p_mask,
+                            float        scaling,
+                            float        transition_extent)
+{
+  if (!p_mask)
+    reverse_above_theshold(array, threshold, scaling, transition_extent);
+  else
+  {
+    Array array_f = array;
+    reverse_above_theshold(array_f, threshold, scaling, transition_extent);
+    array = lerp(array, array_f, *(p_mask));
+  }
+}
+
+void reverse_above_theshold(Array       &array,
+                            float        threshold,
+                            const Array *p_mask,
+                            float        scaling,
+                            float        transition_extent)
+{
+  if (!p_mask)
+    reverse_above_theshold(array, threshold, scaling, transition_extent);
+  else
+  {
+    Array array_f = array;
+    reverse_above_theshold(array_f, threshold, scaling, transition_extent);
+    array = lerp(array, array_f, *(p_mask));
+  }
+}
+
 void sharpen(Array &array, float ratio)
 {
   Array lp = Array(array.shape);
@@ -986,6 +1084,17 @@ void smooth_cpulse(Array &array, int ir, const Array *p_mask)
     smooth_cpulse(array_f, ir);
     array = lerp(array, array_f, *(p_mask));
   }
+}
+
+void smooth_cpulse_edge_removing(Array &array,
+                                 float  talus,
+                                 float  talus_width,
+                                 int    ir)
+{
+  Array c = gradient_norm(array);
+  c = sigmoid(c, talus_width, 0.f /* vmin */, 1.f /* vmax */, talus);
+  expand(c, ir);
+  smooth_cpulse(array, ir, &c);
 }
 
 void smooth_flat(Array &array, int ir)

@@ -165,6 +165,31 @@ bool export_asset(const std::string &fname,
                   float              max_error = 5e-4f);
 
 /**
+ * @brief Export a 2D array as an ASCII-art string representation.
+ *
+ * This function rescales the input array to a given export resolution, remaps
+ * its values to the [0,1] range, and then converts each value to a character
+ * from a user-provided character map. The characters are arranged row by row to
+ * form a textual representation of the array, similar to rendering a heightmap
+ * in ASCII.
+ *
+ * @param  array        The input 2D array to be exported.
+ * @param  export_shape The desired shape (width, height) of the ASCII output.
+ * @param  chars_map    A string containing characters ordered from "low"
+ *                      to "high" intensity. For example: " .:-=+*#%@"
+ *
+ * @return              A string containing the ASCII-art representation of the
+ *                      array.
+ *
+ * @note The function resamples the array using nearest-neighbor interpolation.
+ * @note The y-axis is flipped so that higher indices appear lower in the text
+ * output.
+ */
+std::string export_as_ascii(const Array      &array,
+                            const Vec2<int>  &export_shape = {64, 64},
+                            const std::string chars_map = " .:-=+*#%@");
+
+/**
  * @brief Exports a 2D array as a cubemap texture with continuity enforcement
  * and overlapping regions.
  *
@@ -230,7 +255,8 @@ void export_as_cubemap(const std::string &fname,
 void export_banner_png(const std::string        &fname,
                        const std::vector<Array> &arrays,
                        int                       cmap,
-                       bool                      hillshading = false);
+                       bool                      hillshading = false,
+                       bool                      normalize_arrays = false);
 
 /**
  * @brief Exports the heightmap normal map as an 8-bit PNG file.

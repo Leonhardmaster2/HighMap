@@ -315,6 +315,39 @@ public:
   void randomize(uint seed, Vec4<float> bbox = {0.f, 1.f, 0.f, 1.f});
 
   /**
+   * @brief Filter a point cloud using rejection sampling based on a density
+   * mask.
+   *
+   * Each point in the input cloud is retained or discarded according to a
+   * spatially varying probability derived from the provided 2D density mask.
+   * The mask is mapped to the bounding box and evaluated as a continuous
+   * function over the domain.
+   *
+   * For a point \f$p=(x,y)\f$, the probability of acceptance is:
+   * \f[
+   * P(\text{keep } p) = \rho(x,y) \in [0,1]
+   * \f] where \f$\rho(x,y)\f$ is the normalized density mask value at the
+   * point's position.
+   *
+   * @param density_mask 2D array defining the spatial density field over the
+   *                     bounding box. Values should lie in \f$[0,1]\f$.
+   * @param seed         Random seed used for reproducible rejection sampling.
+   * @param bbox         Bounding box `(xmin, ymin, xmax, ymax)` defining the
+   *                     spatial extent of the density mask in world
+   * coordinates.
+   *
+   * @note
+   * - Points outside the bounding box are implicitly mapped to extrapolated
+   * density values.
+   * - The method preserves the *relative* density pattern defined by the mask,
+   * but reduces the overall number of points according to rejection
+   * probability.
+   */
+  void rejection_filter_density(const Array       &density_mask,
+                                uint               seed,
+                                const Vec4<float> &bbox = {0.f, 1.f, 0.f, 1.f});
+
+  /**
    * @brief Remap the values of the cloud points to a target range.
    *
    * This method scales the values associated with the cloud points so that they
@@ -333,6 +366,11 @@ public:
    * @param point_idx Index of the point to be removed.
    */
   void remove_point(int point_idx);
+
+  /**
+   * @brief Set points of the using x, y coordinates.
+   */
+  void set_points(const std::vector<float> &x, const std::vector<float> &y);
 
   /**
    * @brief Set new values for the cloud points.
@@ -407,6 +445,24 @@ public:
    *   `ps::first_neighbor_distance_squared`.
    */
   void set_values_from_min_distance();
+
+  /**
+   * @brief Randomly perturbs the positions and values of all points in the
+   * cloud.
+   *
+   * This function applies a random offset to the `x`, `y`, and `v` components
+   * of each point in the `points` container. The random offsets are uniformly
+   * distributed between `-1` and `1`, and scaled by the provided `dx`, `dy`,
+   * and `dv` factors for each respective component.
+   *
+   * @param dx   Scale factor for the random displacement along the X-axis.
+   * @param dy   Scale factor for the random displacement along the Y-axis.
+   * @param seed Seed value for the pseudo-random number generator, ensuring
+   *             reproducibility.
+   * @param dv   Scale factor for the random displacement applied to the point's
+   *             value component `v`.
+   */
+  void shuffle(float dx, float dy, uint seed, float dv = 0.f);
 
   /**
    * @brief Project the cloud points onto an array.
@@ -648,7 +704,7 @@ Cloud random_cloud_distance(float              min_dist,
  * @brief Generates a random cloud of points separated by a distance range,
  * influenced by a density map.
  *
- * Points maintain a separation between min_dist and max_dist, and are
+ * Points maintain a separation between @p min_dist and @p max_dist, and are
  * distributed according to the provided density map.
  *
  * @param  min_dist Minimum allowed distance between points.
@@ -674,6 +730,70 @@ Cloud random_cloud_distance(float              min_dist,
                             const Array       &density,
                             uint               seed,
                             const Vec4<float> &bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
+ * @brief Generates a random cloud of points with distances drawn from a
+ * power-law distribution.
+ *
+ * Distances between points follow a power-law distribution between
+ * @p dist_min and @p dist_max, with exponent @p alpha.
+ *
+ * @param  dist_min Minimum possible distance between points.
+ * @param  dist_max Maximum possible distance between points.
+ * @param  alpha    Power-law exponent (larger alpha favors shorter distances).
+ * @param  seed     Random number generator seed.
+ * @param  bbox     Bounding box in which to generate the points (a,b,c,d =
+ *                  xmin, xmax, ymin, ymax). Defaults to the unit square {0.f,
+ * 1.f, 0.f, 1.f}.
+ * @return          A Cloud containing the generated points.
+ *
+ * **Example**
+ * @include ex_point_sampling.cpp
+ *
+ * **Result**
+ * @image html ex_point_sampling0.png
+ * @image html ex_point_sampling1.png
+ * @image html ex_point_sampling2.png
+ * @image html ex_point_sampling3.png
+ */
+Cloud random_cloud_distance_power_law(
+    float              dist_min,
+    float              dist_max,
+    float              alpha,
+    uint               seed,
+    const Vec4<float> &bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
+ * @brief Generates a random cloud of points with distances drawn from a Weibull
+ * distribution.
+ *
+ * Distances between points follow a Weibull distribution parameterized by
+ * @p lambda (scale) and @p k (shape).
+ *
+ * @param  dist_min Minimum possible distance between points.
+ * @param  lambda   Weibull distribution scale parameter.
+ * @param  k        Weibull distribution shape parameter.
+ * @param  seed     Random number generator seed.
+ * @param  bbox     Bounding box in which to generate the points (a,b,c,d =
+ *                  xmin, xmax, ymin, ymax). Defaults to the unit square {0.f,
+ * 1.f, 0.f, 1.f}.
+ * @return          A Cloud containing the generated points.
+ *
+ * **Example**
+ * @include ex_point_sampling.cpp
+ *
+ * **Result**
+ * @image html ex_point_sampling0.png
+ * @image html ex_point_sampling1.png
+ * @image html ex_point_sampling2.png
+ * @image html ex_point_sampling3.png
+ */
+Cloud random_cloud_distance_weibull(
+    float              dist_min,
+    float              lambda,
+    float              k,
+    uint               seed,
+    const Vec4<float> &bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief Generates a jittered grid cloud of points.

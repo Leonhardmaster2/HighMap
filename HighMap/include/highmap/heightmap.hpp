@@ -348,9 +348,9 @@ public:
    * @param  shape_export Array shape.
    * @return              Array Resulting array.
    */
-  Array to_array(Vec2<int> shape_export);
+  Array to_array(Vec2<int> shape_export) const;
 
-  Array to_array(); ///< @overload
+  Array to_array() const; ///< @overload
 
   /**
    * @brief Converts the heightmap to a 16-bit grayscale representation.
@@ -608,6 +608,15 @@ struct HeightmapRGBA
                 bool                            reverse = false,
                 Heightmap                      *p_noise = nullptr);
 
+  void colorize(Heightmap                      &color_level,
+                float                           vmin,
+                float                           vmax,
+                std::vector<float>              positions,
+                std::vector<std::vector<float>> colormap_colors,
+                Heightmap                      *p_alpha = nullptr,
+                bool                            reverse = false,
+                Heightmap                      *p_noise = nullptr);
+
   /**
    * @brief Computes the luminance of an RGBA height map.
    *
@@ -656,7 +665,8 @@ struct HeightmapRGBA
    * @param  shape_img Resulting image shape.
    * @return           Image data.
    */
-  std::vector<uint8_t> to_img_8bit(Vec2<int> shape_img = {0, 0});
+  std::vector<uint8_t> to_img_8bit(Vec2<int> shape_img = {0, 0},
+                                   bool      flip_y = true) const;
 };
 
 /**

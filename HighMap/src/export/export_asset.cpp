@@ -18,12 +18,6 @@
 namespace hmap
 {
 
-std::string extract_raw_filename(std::string fname)
-{
-  size_t lastindex = fname.find_last_of(".");
-  return fname.substr(0, lastindex);
-}
-
 bool export_asset(const std::string &fname,
                   const Array       &array,
                   MeshType           mesh_type,
@@ -195,7 +189,7 @@ bool export_asset(const std::string &fname,
 
   aiReturn err = exporter.Export(p_scene,
                                  format_id,
-                                 extract_raw_filename(fname) + format_extension,
+                                 fname + format_extension,
                                  0);
 
   delete p_scene;

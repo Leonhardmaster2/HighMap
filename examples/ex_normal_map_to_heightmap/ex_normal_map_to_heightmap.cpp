@@ -13,10 +13,14 @@ int main(void)
   // rebuild input elevation field from normal map
   hmap::Array z2 = hmap::normal_map_to_heightmap(nmap);
 
+  // Poisson solver
+  hmap::Array z3 = hmap::normal_map_to_heightmap_poisson(nmap);
+
   hmap::remap(z1);
   hmap::remap(z2);
+  hmap::remap(z3);
 
   hmap::export_banner_png("ex_normal_map_to_heightmap.png",
-                          {z1, z2},
+                          {z1, z2, z3},
                           hmap::Cmap::JET);
 }

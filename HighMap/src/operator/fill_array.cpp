@@ -20,7 +20,7 @@ void fill_array_using_xy_function(
 {
   Vec2<int>          shape = array.shape;
   std::vector<float> x, y;
-  grid_xy_vector(x, y, shape, bbox, false); // no endpoint
+  grid_xy_vector(x, y, shape, bbox, false);
 
   Array ctrl_array = p_ctrl_param == nullptr ? Array(shape, 1.f)
                                              : *p_ctrl_param;

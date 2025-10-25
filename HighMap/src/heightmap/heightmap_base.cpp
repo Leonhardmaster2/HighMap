@@ -362,7 +362,7 @@ float Heightmap::sum()
   return sum;
 }
 
-Array Heightmap::to_array()
+Array Heightmap::to_array() const
 {
   Array array = Array(this->shape);
 
@@ -383,7 +383,7 @@ Array Heightmap::to_array()
   return array;
 }
 
-Array Heightmap::to_array(Vec2<int> shape_export)
+Array Heightmap::to_array(Vec2<int> shape_export) const
 {
   Array array = Array(shape_export);
 
@@ -391,7 +391,6 @@ Array Heightmap::to_array(Vec2<int> shape_export)
   bool endpoint = false;
 
   std::vector<float> x = linspace(0.f, 1.f, shape_export.x, endpoint);
-
   std::vector<float> y = linspace(0.f, 1.f, shape_export.y, endpoint);
 
   // nearest neighbor interpolation since the export is likely to be

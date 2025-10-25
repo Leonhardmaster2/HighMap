@@ -7,6 +7,30 @@
 namespace hmap
 {
 
+std::function<float(float, float)> make_xy_function_from_array(
+    const Array       &array,
+    const Vec4<float> &bbox)
+{
+  return [&array, &bbox](float x, float y) -> float
+  {
+    x = (x - bbox.a) / (bbox.b - bbox.a);
+    y = (y - bbox.c) / (bbox.d - bbox.c);
+
+    x = std::clamp(x, 0.f, 1.f);
+    y = std::clamp(y, 0.f, 1.f);
+
+    float xn = x * (array.shape.x - 1);
+    float yn = y * (array.shape.y - 1);
+
+    int   i = static_cast<int>(xn);
+    int   j = static_cast<int>(yn);
+    float u = xn - i;
+    float v = yn - j;
+
+    return array.get_value_bilinear_at(i, j, u, v);
+  };
+}
+
 //----------------------------------------------------------------------
 // base class
 //----------------------------------------------------------------------
@@ -92,13 +116,18 @@ BumpFunction::BumpFunction(float gain, Vec2<float> center)
   this->set_delegate(
       [this](float x, float y, float ctrl_param)
       {
-        float dx = x - this->center.x;
-        float dy = y - this->center.y;
+        const float dx = x - this->center.x;
+        const float dy = y - this->center.y;
+        const float r2 = dx * dx + dy * dy;
 
-        float r2 = dx * dx + dy * dy;
-        return r2 > 0.25f ? 0.f
-                          : std::pow(std::exp(-1.f / (1.f - 4.f * r2)),
-                                     1.f / (this->gain * ctrl_param));
+        if (r2 > 0.25f) return 0.0f;
+
+        const float denom = 1.0f - 4.0f * r2;
+        const float exponent = -1.0f / denom;
+        const float base = std::exp(exponent);
+        const float power = 1.0f / (this->gain * ctrl_param);
+
+        return std::pow(base, power);
       });
 }
 

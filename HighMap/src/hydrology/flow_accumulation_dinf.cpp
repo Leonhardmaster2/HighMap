@@ -146,4 +146,52 @@ std::vector<Array> flow_direction_dinf(const Array &z, float talus_ref)
   return dinf;
 }
 
+Array flow_direction_dinf_angle(const Array &z, float talus_ref)
+{
+  const std::vector<int>   di = DI;
+  const std::vector<int>   dj = DJ;
+  const std::vector<float> c = C;
+  const std::vector<float> ecl = ECL;
+  const uint               nb = di.size();
+
+  // flow-partition exponent (Qin et al. 2007)
+  Array p = Array(z.shape);
+  {
+    Array talus = gradient_talus(z) / talus_ref;
+    clamp_max(talus, 1.f);
+    p = 10.f * talus + 1.f;
+  }
+
+  Array angle(z.shape, 0.f); // dominant flow direction in radians
+
+  std::vector<float> cell_angles;
+
+  for (uint k = 0; k < nb; k++)
+  {
+    float alpha = std::atan2((float)dj[k], (float)di[k]);
+    cell_angles.push_back(alpha);
+  }
+
+  for (int j = 1; j < z.shape.y - 1; j++)
+    for (int i = 1; i < z.shape.x - 1; i++)
+    {
+      float sum = 0.f;
+
+      for (uint k = 0; k < nb; k++)
+      {
+        float dz = z(i, j) - z(i + di[k], j + dj[k]);
+        if (dz > 0.f)
+        {
+          float w = std::pow(dz * c[k], p(i, j)) * ecl[k];
+          angle(i, j) += w * cell_angles[k];
+          sum += w;
+        }
+      }
+
+      if (sum) angle(i, j) /= sum;
+    }
+
+  return angle;
+}
+
 } // namespace hmap

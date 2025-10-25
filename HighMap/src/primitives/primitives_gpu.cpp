@@ -51,8 +51,7 @@ Array gabor_wave(Vec2<int>    shape,
   auto run = clwrapper::Run("gabor_wave");
 
   run.bind_buffer<float>("array", array.vector);
-  run.bind_buffer<float>("angle",
-                         const_cast<std::vector<float> &>(angle.vector));
+  run.bind_buffer<float>("angle", angle.vector);
   run.write_buffer("angle");
   run.bind_arguments(array.shape.x,
                      array.shape.y,
@@ -102,8 +101,7 @@ Array gabor_wave_fbm(Vec2<int>    shape,
   auto run = clwrapper::Run("gabor_wave_fbm");
 
   run.bind_buffer<float>("array", array.vector);
-  run.bind_buffer<float>("angle",
-                         const_cast<std::vector<float> &>(angle.vector));
+  run.bind_buffer<float>("angle", angle.vector);
 
   helper_bind_optional_buffer(run, "ctrl_param", p_ctrl_param);
   helper_bind_optional_buffer(run, "noise_x", p_noise_x);
@@ -125,7 +123,6 @@ Array gabor_wave_fbm(Vec2<int>    shape,
                      bbox);
 
   run.write_buffer("angle");
-
   run.execute({array.shape.x, array.shape.y});
   run.read_buffer("array");
 
@@ -218,7 +215,6 @@ Array gavoronoise(Vec2<int>    shape,
                      bbox);
 
   run.write_buffer("angle");
-
   run.execute({array.shape.x, array.shape.y});
   run.read_buffer("array");
 
@@ -325,6 +321,120 @@ Array gavoronoise(const Array &base,
   return array;
 }
 
+Array hemisphere_field(Vec2<int>         shape,
+                       Vec2<float>       kw,
+                       uint              seed,
+                       float             rmin,
+                       float             rmax,
+                       float             amplitude_random_ratio,
+                       float             density,
+                       hmap::Vec2<float> jitter,
+                       float             shift,
+                       const Array      *p_noise_x,
+                       const Array      *p_noise_y,
+                       const Array      *p_noise_distance,
+                       const Array      *p_density_multiplier,
+                       const Array      *p_size_multiplier,
+                       Vec4<float>       bbox)
+{
+  Array array(shape);
+
+  auto run = clwrapper::Run("hemisphere_field");
+
+  run.bind_buffer<float>("array", array.vector);
+  helper_bind_optional_buffer(run, "noise_x", p_noise_x);
+  helper_bind_optional_buffer(run, "noise_y", p_noise_y);
+  helper_bind_optional_buffer(run, "p_noise_distance", p_noise_distance);
+  helper_bind_optional_buffer(run,
+                              "p_density_multiplier",
+                              p_density_multiplier);
+  helper_bind_optional_buffer(run, "p_size_multiplier", p_size_multiplier);
+
+  run.bind_arguments(array.shape.x,
+                     array.shape.y,
+                     kw.x,
+                     kw.y,
+                     seed,
+                     rmin,
+                     rmax,
+                     amplitude_random_ratio,
+                     density,
+                     jitter,
+                     shift,
+                     p_noise_x ? 1 : 0,
+                     p_noise_y ? 1 : 0,
+                     p_noise_distance ? 1 : 0,
+                     p_density_multiplier ? 1 : 0,
+                     p_size_multiplier ? 1 : 0,
+                     bbox);
+
+  run.write_buffer("array");
+  run.execute({array.shape.x, array.shape.y});
+  run.read_buffer("array");
+
+  return array;
+}
+
+Array hemisphere_field_fbm(Vec2<int>         shape,
+                           Vec2<float>       kw,
+                           uint              seed,
+                           float             rmin,
+                           float             rmax,
+                           float             amplitude_random_ratio,
+                           float             density,
+                           hmap::Vec2<float> jitter,
+                           float             shift,
+                           int               octaves,
+                           float             persistence,
+                           float             lacunarity,
+                           const Array      *p_noise_x,
+                           const Array      *p_noise_y,
+                           const Array      *p_noise_distance,
+                           const Array      *p_density_multiplier,
+                           const Array      *p_size_multiplier,
+                           Vec4<float>       bbox)
+{
+  Array array(shape);
+
+  auto run = clwrapper::Run("hemisphere_field_fbm");
+
+  run.bind_buffer<float>("array", array.vector);
+  helper_bind_optional_buffer(run, "noise_x", p_noise_x);
+  helper_bind_optional_buffer(run, "noise_y", p_noise_y);
+  helper_bind_optional_buffer(run, "p_noise_distance", p_noise_distance);
+  helper_bind_optional_buffer(run,
+                              "p_density_multiplier",
+                              p_density_multiplier);
+  helper_bind_optional_buffer(run, "p_size_multiplier", p_size_multiplier);
+
+  run.bind_arguments(array.shape.x,
+                     array.shape.y,
+                     kw.x,
+                     kw.y,
+                     seed,
+                     rmin,
+                     rmax,
+                     amplitude_random_ratio,
+                     density,
+                     jitter,
+                     shift,
+                     octaves,
+                     persistence,
+                     lacunarity,
+                     p_noise_x ? 1 : 0,
+                     p_noise_y ? 1 : 0,
+                     p_noise_distance ? 1 : 0,
+                     p_density_multiplier ? 1 : 0,
+                     p_size_multiplier ? 1 : 0,
+                     bbox);
+
+  run.write_buffer("array");
+  run.execute({array.shape.x, array.shape.y});
+  run.read_buffer("array");
+
+  return array;
+}
+
 Array mountain_range_radial(Vec2<int>    shape,
                             Vec2<float>  kw,
                             uint         seed,
@@ -411,9 +521,7 @@ Array noise(NoiseType    noise_type,
                      bbox);
 
   run.write_buffer("array");
-
   run.execute({array.shape.x, array.shape.y});
-
   run.read_buffer("array");
 
   return array;
@@ -461,9 +569,133 @@ Array noise_fbm(NoiseType    noise_type,
                      bbox);
 
   run.write_buffer("array");
-
   run.execute({array.shape.x, array.shape.y});
+  run.read_buffer("array");
 
+  return array;
+}
+
+Array polygon_field(Vec2<int>         shape,
+                    Vec2<float>       kw,
+                    uint              seed,
+                    float             rmin,
+                    float             rmax,
+                    float             clamping_dist,
+                    float             clamping_k,
+                    int               n_vertices_min,
+                    int               n_vertices_max,
+                    float             density,
+                    hmap::Vec2<float> jitter,
+                    float             shift,
+                    const Array      *p_noise_x,
+                    const Array      *p_noise_y,
+                    const Array      *p_noise_distance,
+                    const Array      *p_density_multiplier,
+                    const Array      *p_size_multiplier,
+                    Vec4<float>       bbox)
+{
+  Array array(shape);
+
+  auto run = clwrapper::Run("polygon_field");
+
+  run.bind_buffer<float>("array", array.vector);
+  helper_bind_optional_buffer(run, "noise_x", p_noise_x);
+  helper_bind_optional_buffer(run, "noise_y", p_noise_y);
+  helper_bind_optional_buffer(run, "p_noise_distance", p_noise_distance);
+  helper_bind_optional_buffer(run,
+                              "p_density_multiplier",
+                              p_density_multiplier);
+  helper_bind_optional_buffer(run, "p_size_multiplier", p_size_multiplier);
+
+  run.bind_arguments(array.shape.x,
+                     array.shape.y,
+                     kw.x,
+                     kw.y,
+                     seed,
+                     rmin,
+                     rmax,
+                     clamping_dist,
+                     clamping_k,
+                     n_vertices_min,
+                     n_vertices_max,
+                     density,
+                     jitter,
+                     shift,
+                     p_noise_x ? 1 : 0,
+                     p_noise_y ? 1 : 0,
+                     p_noise_distance ? 1 : 0,
+                     p_density_multiplier ? 1 : 0,
+                     p_size_multiplier ? 1 : 0,
+                     bbox);
+
+  run.write_buffer("array");
+  run.execute({array.shape.x, array.shape.y});
+  run.read_buffer("array");
+
+  return array;
+}
+
+Array polygon_field_fbm(Vec2<int>         shape,
+                        Vec2<float>       kw,
+                        uint              seed,
+                        float             rmin,
+                        float             rmax,
+                        float             clamping_dist,
+                        float             clamping_k,
+                        int               n_vertices_min,
+                        int               n_vertices_max,
+                        float             density,
+                        hmap::Vec2<float> jitter,
+                        float             shift,
+                        int               octaves,
+                        float             persistence,
+                        float             lacunarity,
+                        const Array      *p_noise_x,
+                        const Array      *p_noise_y,
+                        const Array      *p_noise_distance,
+                        const Array      *p_density_multiplier,
+                        const Array      *p_size_multiplier,
+                        Vec4<float>       bbox)
+{
+  Array array(shape);
+
+  auto run = clwrapper::Run("polygon_field_fbm");
+
+  run.bind_buffer<float>("array", array.vector);
+  helper_bind_optional_buffer(run, "noise_x", p_noise_x);
+  helper_bind_optional_buffer(run, "noise_y", p_noise_y);
+  helper_bind_optional_buffer(run, "p_noise_distance", p_noise_distance);
+  helper_bind_optional_buffer(run,
+                              "p_density_multiplier",
+                              p_density_multiplier);
+  helper_bind_optional_buffer(run, "p_size_multiplier", p_size_multiplier);
+
+  run.bind_arguments(array.shape.x,
+                     array.shape.y,
+                     kw.x,
+                     kw.y,
+                     seed,
+                     rmin,
+                     rmax,
+                     clamping_dist,
+                     clamping_k,
+                     n_vertices_min,
+                     n_vertices_max,
+                     density,
+                     jitter,
+                     shift,
+                     octaves,
+                     persistence,
+                     lacunarity,
+                     p_noise_x ? 1 : 0,
+                     p_noise_y ? 1 : 0,
+                     p_noise_distance ? 1 : 0,
+                     p_density_multiplier ? 1 : 0,
+                     p_size_multiplier ? 1 : 0,
+                     bbox);
+
+  run.write_buffer("array");
+  run.execute({array.shape.x, array.shape.y});
   run.read_buffer("array");
 
   return array;

@@ -12,6 +12,7 @@
 #include "highmap/interpolate2d.hpp"
 #include "highmap/interpolate_array.hpp"
 #include "highmap/operator.hpp"
+#include "highmap/range.hpp"
 #include "highmap/transform.hpp"
 
 #include "highmap/internal/vector_utils.hpp"
@@ -277,6 +278,13 @@ void Array::normalize()
 float Array::ptp() const
 {
   return this->max() - this->min();
+}
+
+Array Array::remapped() const
+{
+  Array out = *this;
+  remap(out);
+  return out;
 }
 
 Array Array::resample_to_shape(Vec2<int> new_shape) const

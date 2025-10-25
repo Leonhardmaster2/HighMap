@@ -145,6 +145,41 @@ Array mixer(const Array                      &t,
             const std::vector<const Array *> &arrays,
             float                             gain_factor = 1.f);
 
+/**
+ * @brief Transfers spatial details from a source array onto a target array.
+ *
+ * This function applies a high-pass spatial filter to the @p source array
+ * (using a smoothing pulse of radius @p ir) to extract its high-frequency
+ * content. That content is then scaled by @p amplitude and blended with the
+ * @p target array. Optionally, the target can be prefiltered before blending.
+ *
+ * The result is a new array that combines the base structure of @p target with
+ * the high-frequency details from @p source.
+ *
+ * @param  source              The input array providing high-frequency details.
+ * @param  target              The input array providing the base structure.
+ * @param  ir                  Radius (in pixels or samples) for the smoothing
+ *                             filter used to separate low/high frequencies.
+ * @param  amplitude           Scaling factor applied to the high-frequency
+ *                             content extracted from @p source.
+ * @param  target_prefiltering If true, @p target is smoothed before blending to
+ *                             better integrate with the transferred details.
+ *
+ * @return                     A new Array containing the target data enhanced
+ *                             by the source's high-frequency information.
+ *
+ * **Example**
+ * @include ex_transfer.cpp
+ *
+ * **Result**
+ * @image html ex_transfer.png
+ */
+Array transfer(const Array &source,
+               const Array &target,
+               int          ir,
+               float        amplitude,
+               bool         target_prefiltering = false);
+
 } // namespace hmap
 
 namespace hmap::gpu
@@ -180,5 +215,12 @@ Array blend_poisson_bf(const Array &array1,
                        const Array &array2,
                        const int    iterations = 500,
                        const Array *p_mask = nullptr);
+
+/*! @brief See hmap::transfer */
+Array transfer(const Array &source,
+               const Array &target,
+               int          ir,
+               float        amplitude,
+               bool         target_prefiltering = false);
 
 } // namespace hmap::gpu

@@ -656,6 +656,11 @@ public:
   float ptp() const;
 
   /**
+   * @brief Return an array remapped to [0, 1].
+   */
+  Array remapped() const;
+
+  /**
    * @brief Return a resampled array of shape `new_shape` using bilinear
    * interpolation.
    *

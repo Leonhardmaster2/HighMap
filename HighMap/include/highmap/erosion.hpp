@@ -51,6 +51,49 @@ enum ErosionProfile : int
 };
 
 /**
+ * @brief Simulates terrain diffusion due to coastal erosion.
+ *
+ * This function applies an iterative coastal erosion diffusion process on a
+ * terrain elevation array (`z`), taking into account the presence and depth of
+ * water. The erosion model smooths the terrain near shorelines while
+ * maintaining constant water-surface height.
+ *
+ * At each iteration:
+ *  - A local water mask is computed using `water_mask(water_depth, z,
+ * additional_depth)`.
+ *  - The terrain elevations are smoothed (diffused) using a masked Laplacian
+ * filter, applied only near the water boundary.
+ *  - The water depth is adjusted to preserve the total water surface height
+ * (i.e., `z + water_depth` remains constant).
+ *
+ * This results in a realistic simulation of coastal erosion processes where the
+ * terrain near the waterline is progressively smoothed and redistributed.
+ *
+ * @param z                Reference to the terrain elevation array (modified in
+ *                         place).
+ * @param water_depth      Reference to the array representing water depth
+ *                         values (modified to preserve water surface level).
+ * @param additional_depth Additional virtual water depth used to estimate the
+ *                         influence region of the shoreline during mask
+ *                         computation.
+ * @param iterations       Number of erosion–diffusion iterations to apply.
+ * @param p_water_mask     Optional output pointer. If non-null, it receives the
+ *                         last computed water mask used during the final
+ *                         iteration.
+ *
+ * **Example**
+ * @include ex_coastal_erosion_diffusion.cpp
+ *
+ * **Result**
+ * @image html ex_coastal_erosion_diffusion.png
+ */
+void coastal_erosion_diffusion(Array &z,
+                               Array &water_depth,
+                               float  additional_depth,
+                               int    iterations = 10,
+                               Array *p_water_mask = nullptr);
+
+/**
  * @brief Fill the depressions of the heightmap using the Planchon-Darboux
  * algorithm.
  *
@@ -1260,6 +1303,158 @@ void hydraulic_stream_log(Array &z,
                           Array *p_deposition_map = nullptr,
                           Array *p_flow_map = nullptr); ///< @overload
 
+/**
+ * @brief Applies a "rift" deformation effect to a heightmap array.
+ *
+ * This function modifies the given heightmap by introducing linear or radial
+ * "rift-like" noise patterns. The deformation can be controlled by several
+ * parameters such as direction, amplitude, noise shifts, and optional external
+ * noise arrays. Optionally, the effect can be masked using a power-based
+ * blending function.
+ *
+ * @param z                     Reference to the heightmap array to be modified
+ *                              in-place.
+ * @param kw                    Frequency vector (kx, ky) scaling the
+ *                              deformation in X and Y directions.
+ * @param angle                 Orientation of the rift in degrees (0° =
+ *                              horizontal, 90° = vertical).
+ * @param amplitude             Strength of the rift deformation applied to the
+ *                              heightmap.
+ * @param seed                  Random seed used for deterministic noise
+ *                              generation.
+ * @param elevation_noise_shift Vertical offset applied to the base noise to
+ *                              shift elevation influence.
+ * @param k_smooth_bottom       Lower smoothing factor for Voronoi-based noise
+ *                              computation.
+ * @param k_smooth_top          Upper smoothing factor for Voronoi-based noise
+ *                              computation.
+ * @param radial_spread_amp     Amplitude controlling radial spreading away from
+ *                              the rift axis.
+ * @param elevation_noise_amp   Amplitude scaling the influence of the
+ *                              heightmap's initial values as noise input.
+ * @param clamp_vmin            Minimum clamp value for the Voronoi noise before
+ *                              remapping.
+ * @param remap_vmin            Minimum remap value for scaling noise output.
+ * @param apply_mask            If true, applies a power-based blending mask
+ *                              instead of a direct overwrite.
+ * @param mask_gamma            Gamma exponent used when applying the mask to
+ *                              control blending.
+ * @param p_noise_x             Optional pointer to an external noise array for
+ *                              X-offset perturbation (nullptr if unused).
+ * @param p_noise_y             Optional pointer to an external noise array for
+ *                              Y-offset perturbation (nullptr if unused).
+ * @param center                2D vector specifying the central point around
+ *                              which the rift effect is computed.
+ * @param bbox                  Bounding box (xmin, xmax, ymin, ymax) defining
+ *                              the spatial domain of the heightmap.
+ *
+ * **Example**
+ * @include ex_rifts.cpp
+ *
+ * **Result**
+ * @image html ex_rifts.png
+ */
+void rifts(Array             &z,
+           const Vec2<float> &kw,    //  = {4.f, 1.2f},
+           float              angle, // degs
+           float              amplitude,
+           uint               seed,
+           float              elevation_noise_shift = 0.f,
+           float              k_smooth_bottom = 0.05f,
+           float              k_smooth_top = 0.05f,
+           float              radial_spread_amp = 0.2f,
+           float              elevation_noise_amp = 0.1f,
+           float              clamp_vmin = 0.f,
+           float              remap_vmin = 0.f,
+           bool               apply_mask = true,
+           bool               reverse_mask = false,
+           float              mask_gamma = 1.f,
+           const Array       *p_noise_x = nullptr,
+           const Array       *p_noise_y = nullptr,
+           const Array       *p_mask = nullptr,
+           const Vec2<float> &center = {0.5f, 0.5f},
+           const Vec4<float> &bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
+ * @brief Applies stratification to a heightfield using directional noise and
+ * multiscale gamma transformations.
+ *
+ * This function modifies the input heightfield `z` by simulating geological
+ * strata patterns. It combines directional shifts, fractal noise, and
+ * ridge-based perturbations to produce layered structures in the data. The MUST
+ * BE NORMALIZED in [0, 1].
+ *
+ * @param z                 Reference to the heightfield array to modify, MUST
+ *                          BE NORMALIZED in [0, 1].
+ * @param angle             Horizontal orientation of the strata in degrees.
+ * @param slope             Vertical slope of the strata.
+ * @param gamma             Gamma exponent for the non-linear remapping (e.g.,
+ *                          0.5 for smoothing, 1.5 for sharpening).
+ * @param seed              Seed for deterministic noise generation.
+ * @param linear_gamma      If true, applies sharp linear gamma mapping; if
+ *                          false, uses smooth gamma mapping.
+ * @param kz                Base scaling factor for the stratification
+ *                          frequency.
+ * @param octaves           Number of iterative stratification passes
+ *                          (multiscale detail).
+ * @param lacunarity        Frequency multiplier applied at each octave for
+ *                          fractal scaling.
+ * @param gamma_noise_ratio Ratio controlling how noise influences gamma
+ *                          variation (0 = no noise, 1 = full influence).
+ * @param noise_amp         Amplitude of the base Perlin noise used to modulate
+ *                          the strata.
+ * @param noise_kw          Frequency vector for the base Perlin noise along X
+ *                          and Y axes.
+ * @param ridge_noise_kw    Frequency vector for the Voronoi ridge noise (x =
+ *                          main frequency, y = directional frequency).
+ * @param ridge_angle_shift Additional angular shift (in degrees) for the ridge
+ *                          direction, relative to `angle`.
+ * @param ridge_noise_amp   Amplitude of the ridge noise modulation.
+ * @param ridge_clamp_vmin  Minimum clamp value for ridge noise response.
+ * @param ridge_remap_vmin  Minimum remap value for ridge modulation (used for
+ *                          reverse remapping).
+ * @param apply_mask        If true, applied an elevation mask on the effect.
+ * @param mask_gamma        Gamma applied to the mask used for blending original
+ *                          and stratified values for the elevation mask.
+ * @param p_mask            Optional filter mask, expected in the range [0, 1].
+ * @param bbox              Bounding box of the domain as `{xmin, xmax, ymin,
+ *                          ymax}`.
+ *
+ * @note
+ * - Setting `linear_gamma` to `false` produces smoother transitions, while
+ * `true` creates sharper layer boundaries.
+ * - Increasing `octaves` adds multiscale detail but also increases
+ * computational cost.
+ *
+ * **Example**
+ * @include ex_strata.cpp
+ *
+ * **Result**
+ * @image html ex_strata.png
+ */
+void strata(Array             &z,
+            float              angle,
+            float              slope,
+            float              gamma, // e.g 0.5f or 1.5f
+            uint               seed,
+            bool               linear_gamma = true,
+            float              kz = 1.f,
+            int                octaves = 4,
+            float              lacunarity = 2.f,
+            float              gamma_noise_ratio = 0.5f,
+            float              noise_amp = 0.4f,
+            const Vec2<float> &noise_kw = {4.f, 4.f},
+            const Vec2<float> &ridge_noise_kw = {4.f, 1.2f},
+            float              ridge_angle_shift = 45.f,
+            float              ridge_noise_amp = 0.5f,
+            float              ridge_clamp_vmin = 0.f,
+            float              ridge_remap_vmin = 0.f,
+            bool               apply_elevation_mask = true,
+            bool               apply_ridge_mask = true,
+            float              mask_gamma = 0.4f,
+            const Array       *p_mask = nullptr,
+            const Vec4<float> &bbox = {0.f, 1.f, 0.f, 1.f});
+
 /*! @brief See hmap::thermal */
 void thermal(Array       &z,
              const Array &talus,
@@ -1313,10 +1508,10 @@ void thermal_auto_bedrock(Array &z,
  * @param iterations       Number of iterations.
  *
  * **Example**
- * @include thermal_ridge.cpp
+ * @include ex_thermal_ridge.cpp
  *
  * **Result**
- * @image html thermal_ridge.png
+ * @image html ex_thermal_ridge.png
  */
 void thermal_inflate(Array &z, const Array &talus, int iterations = 10);
 
@@ -1342,10 +1537,10 @@ void thermal_rib(Array &z, int iterations, Array *p_bedrock = nullptr);
  * @param iterations       Number of iterations.
  *
  * **Example**
- * @include thermal_ridge.cpp
+ * @include ex_thermal_ridge.cpp
  *
  * **Result**
- * @image html thermal_ridge.png
+ * @image html ex_thermal_ridge.png
  */
 void thermal_ridge(Array       &z,
                    const Array &talus,

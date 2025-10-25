@@ -142,4 +142,9 @@ float smoothstep_rational(float x, float n)
   // https://iquilezles.org/articles/smoothsteps/
   return pow_float(x, n) / (pow_float(x, n) + pow_float(1.f - x, n));
 }
+
+float sqrt_safe(float x)
+{
+  return x > 0.f ? sqrt(x) : 0.f;
+}
 )""

@@ -24,6 +24,21 @@ Array dilation(const Array &array, int ir)
   return gpu::maximum_local(array, ir);
 }
 
+Array dilation_expand_border_only(const Array &array, int ir)
+{
+  Array out = gpu::maximum_local(array, ir);
+
+  // only keep result in the "background" to leave initial vlaues
+  // untouched
+  for (int j = 0; j < array.shape.y; ++j)
+    for (int i = 0; i < array.shape.x; ++i)
+    {
+      if (array(i, j) != 0.f) out(i, j) = array(i, j);
+    }
+
+  return out;
+}
+
 Array erosion(const Array &array, int ir)
 {
   return gpu::minimum_local(array, ir);

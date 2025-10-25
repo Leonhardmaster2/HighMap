@@ -34,6 +34,23 @@ namespace hmap
 {
 
 /**
+ * @brief Create a continuous 2D function from a sampled array.
+ *
+ * This adaptor takes a discrete 2D array (indexed by i, j) defined over a
+ * bounding box and returns a continuous function \f$f(x, y)\f$ that
+ * interpolates values at arbitrary 2D positions inside the bounding box.
+ *
+ * @param  array Input array containing sampled values on a regular grid.
+ * @param  bbox  Bounding box of the array in world coordinates, given as
+ *             `(xmin, xmax, ymin, ymax)`.
+ * @return       A function `f(point)` that returns the interpolated value at a
+ *               2D position.
+ */
+std::function<float(float, float)> make_xy_function_from_array(
+    const Array       &array,
+    const Vec4<float> &bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
  * @enum NoiseType
  * @brief Enumeration of various noise types used for procedural generation.
  *

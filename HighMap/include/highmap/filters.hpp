@@ -638,18 +638,27 @@ void kuwahara(Array &array, int ir, float mix_ratio = 1.f);
 void kuwahara(Array &array, int ir, const Array *p_mask, float mix_ratio = 1.f);
 
 /**
- * @brief Apply a low-pass Laplace filter to the input array.
+ * @brief Applies an iterative 8-neighbor Laplacian smoothing filter on an
+ * array.
  *
- * This function applies a low-pass Laplace filter to the input array to smooth
- * out high-frequency noise and detail. The filtering intensity and the number
- * of iterations determine the extent of the smoothing effect.
+ * This function performs isotropic Laplacian diffusion on a 2D array using an
+ * explicit finite-difference scheme. Each cell is updated according to the
+ * local Laplacian computed from its 8 surrounding neighbors:
  *
- * @param array      Input array to which the Laplace filter is applied.
- * @param sigma      Filtering intensity, expected to be in the range [0, 1]. It
- *                   controls the strength of the filtering effect. A value
- *                   closer to 1 results in more smoothing.
- * @param iterations Number of iterations to apply the filter. More iterations
- *                   will increase the smoothing effect. The default value is 3.
+ * \f[
+ * A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
+ * \left( \sum_{(p,q)\in N_{8}(i,j)} A_{p,q}^{t} - 8A_{i,j}^{t} \right)
+ * \f]
+ *
+ * where \( N_{8}(i,j) \) denotes the 8 neighboring cells.
+ *
+ * Boundary cells are handled by clamping neighbor indices to the valid range,
+ * effectively replicating edge values at the borders.
+ *
+ * @param array      The 2D array to be smoothed (modified in place).
+ * @param sigma      Diffusion coefficient (small positive value, e.g.
+ * 0.05–0.25).
+ * @param iterations Number of diffusion iterations to apply.
  *
  * **Example**
  * @include ex_laplace.cpp
@@ -657,7 +666,7 @@ void kuwahara(Array &array, int ir, const Array *p_mask, float mix_ratio = 1.f);
  * **Result**
  * @image html ex_laplace.png
  */
-void laplace(Array &array, float sigma = 0.2f, int iterations = 3);
+void laplace(Array &array, float sigma = 0.125f, int iterations = 3);
 
 /**
  * @brief Apply a low-pass Laplace filter with a mask.
@@ -682,7 +691,7 @@ void laplace(Array &array, float sigma = 0.2f, int iterations = 3);
  */
 void laplace(Array       &array,
              const Array *p_mask,
-             float        sigma = 0.2f,
+             float        sigma = 0.125f,
              int          iterations = 3);
 
 /**
@@ -1676,6 +1685,56 @@ void recurve_smoothstep_rational(Array       &array,
                                  const Array *p_mask); ///< @overload
 
 /**
+ * @brief Applies a smooth reversal of values above a given threshold.
+ *
+ * This function modifies the elements of an array by "reversing" values that
+ * exceed a given threshold value, optionally blending the effect over a
+ * transition range.
+ *
+ * For values above the threshold:
+ *  - The difference between the value and the threshold is scaled down
+ * proportionally to `scaling` and modulated by a smooth transition (using
+ * smoothstep3) based on `transition_extent`.
+ *
+ * For values below the threshold:
+ *  - The values are linearly blended (`lerp`) with the threshold value using a
+ * smooth transition factor, gradually reducing the reversal effect.
+ *
+ * @param array             Array to modify in place.
+ * @param threshold         Array containing the per-element threshold values.
+ * @param scaling           Multiplier applied to the difference above the
+ *                          threshold.
+ * @param transition_extent Width of the smooth transition zone for blending.
+ *
+ * **Example**
+ * @include ex_reverse_above_theshold.cpp
+ *
+ * **Result**
+ * @image html ex_reverse_above_theshold.png
+ */
+void reverse_above_theshold(Array       &array,
+                            const Array &threshold,
+                            float        scaling = 1.f,
+                            float        transition_extent = 0.f);
+
+void reverse_above_theshold(Array &array,
+                            float  threshold,
+                            float  scaling = 1.f,
+                            float  transition_extent = 0.f); ///< @overload
+
+void reverse_above_theshold(Array       &array,
+                            const Array &threshold,
+                            const Array *p_mask,
+                            float        scaling = 1.f,
+                            float transition_extent = 0.f); ///< @overload
+
+void reverse_above_theshold(Array       &array,
+                            float        threshold,
+                            const Array *p_mask,
+                            float        scaling = 1.f,
+                            float transition_extent = 0.f); ///< @overload
+
+/**
  * @brief Saturate the array values based on the input interval [vmin, vmax]
  * (the output amplitude is not modified).
  *
@@ -1893,6 +1952,30 @@ void smooth_cone(Array &array, int ir, const Array *p_mask); ///< @overload
  */
 void smooth_cpulse(Array &array, int ir);
 void smooth_cpulse(Array &array, int ir, const Array *p_mask); ///< @overload
+
+/**
+ * @brief Smooths an array while attenuating edges using a gradient-based pulse.
+ *
+ * This function first computes the gradient norm of the input array, applies a
+ * sigmoid filter to highlight or attenuate regions based on the local gradient
+ * magnitude, and then performs a constrained pulse smoothing pass that respects
+ * those gradient-based weights. This is useful for smoothing heightmaps or
+ * scalar fields while preserving significant edges such as ridges or cliffs.
+ *
+ * @param array       Reference to the input array to be smoothed. The array is
+ *                    modified in-place.
+ * @param talus       Threshold value used in the sigmoid function to control
+ *                    where edge attenuation starts. Lower values affect more
+ *                    regions.
+ * @param talus_width Width (steepness) of the sigmoid transition zone around
+ *                    the talus threshold.
+ * @param ir          Radius of the smoothing kernel used in the constrained
+ *                    pulse smoothing step.
+ */
+void smooth_cpulse_edge_removing(Array &array,
+                                 float  talus,
+                                 float  talus_width,
+                                 int    ir);
 
 /**
  * @brief Applies a smoothing average filter to the given 2D array in both
@@ -2425,6 +2508,12 @@ void smooth_cpulse(Array &array, int ir);
 
 /*! @brief See hmap::smooth_cpulse */
 void smooth_cpulse(Array &array, int ir, const Array *p_mask);
+
+/*! @brief See hmap::smooth_cpulse_edge_removing */
+void smooth_cpulse_edge_removing(Array &array,
+                                 float  talus,
+                                 float  talus_width,
+                                 int    ir);
 
 /*! @brief See hmap::smooth_fill */
 void smooth_fill(Array &array,

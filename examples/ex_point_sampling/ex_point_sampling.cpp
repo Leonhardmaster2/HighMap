@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "highmap.hpp"
 
 int main(void)
@@ -11,7 +13,8 @@ int main(void)
   // density field
   hmap::Vec2<float> kw = {2.f, 2.f};
   hmap::Array density = hmap::noise(hmap::NoiseType::PERLIN, shape, kw, seed);
-  hmap::remap(density); // /!\ NEEDS TO BE IN [0, 1]
+  hmap::remap(density);   // /!\ NEEDS TO BE IN [0, 1]
+  hmap::gain(density, 2); // sharper transition
 
   // base param
   size_t count = 1000;
@@ -47,8 +50,18 @@ int main(void)
     hmap::Cloud cloud = hmap::random_cloud_density(count, density, seed);
 
     cloud.to_array(raster);
-
     zs.push_back(raster);
+
+    // filter
+    cloud = hmap::random_cloud(count,
+                               seed,
+                               hmap::PointSamplingMethod::RND_HALTON);
+
+    cloud.rejection_filter_density(density, seed);
+
+    cloud.to_array(raster);
+    zs.push_back(raster);
+
     hmap::export_banner_png("ex_point_sampling1.png", zs, hmap::Cmap::BONE);
   }
 
@@ -74,6 +87,30 @@ int main(void)
     // density, seed); cloud = hmap::Cloud(xy[0], xy[1], 1.f /* value */);
 
     cloud = hmap::random_cloud_distance(min_dist, max_dist, density, seed);
+
+    std::cout << "count: " << cloud.get_npoints() << "\n";
+
+    raster = 0.f;
+    cloud.to_array(raster);
+    zs.push_back(raster);
+
+    cloud = hmap::random_cloud_distance_power_law(0.01f /* dist_min */,
+                                                  0.2f /* dist_max */,
+                                                  1.2f /* alpha */,
+                                                  seed);
+
+    std::cout << "count: " << cloud.get_npoints() << "\n";
+
+    raster = 0.f;
+    cloud.to_array(raster);
+    zs.push_back(raster);
+
+    cloud = hmap::random_cloud_distance_weibull(0.01f /* dist_min */,
+                                                0.05f /* lambda */,
+                                                1.f /* k */,
+                                                seed);
+
+    std::cout << "count: " << cloud.get_npoints() << "\n";
 
     raster = 0.f;
     cloud.to_array(raster);

@@ -60,6 +60,128 @@ Array bump(Vec2<int>    shape,
   return array;
 }
 
+Array bump_lorentzian(Vec2<int>    shape,
+                      float        width_factor,
+                      float        radius,
+                      const Array *p_ctrl_param,
+                      const Array *p_noise_x,
+                      const Array *p_noise_y,
+                      Vec2<float>  center,
+                      Vec4<float>  bbox)
+{
+  Array array = Array(shape);
+
+  float radius_sq = radius * radius;
+
+  auto lambda =
+      [radius_sq, width_factor, center](float x, float y, float ctrl_param)
+  {
+    float dx = x - center.x;
+    float dy = y - center.y;
+    float r2 = (dx * dx + dy * dy) / radius_sq;
+
+    float width_sq = width_factor * width_factor * ctrl_param * ctrl_param;
+    float c = 1.f / (1.f + 1.f / width_sq); // normalization coeff
+
+    if (r2 < 1.f)
+      return (1.f / (1.f + r2 / width_sq) - c) / (1.f - c);
+    else
+      return 0.f;
+  };
+
+  fill_array_using_xy_function(array,
+                               bbox,
+                               p_ctrl_param,
+                               p_noise_x,
+                               p_noise_y,
+                               nullptr,
+                               lambda);
+  return array;
+}
+
+Array cone(Vec2<int>    shape,
+           float        slope,
+           float        apex_elevation,
+           bool         smooth_profile,
+           Vec2<float>  center,
+           const Array *p_noise_x,
+           const Array *p_noise_y,
+           Vec4<float>  bbox)
+{
+  Array array = Array(shape);
+
+  auto lambda = [slope, apex_elevation, center](float x, float y, float)
+  {
+    float dx = x - center.x;
+    float dy = y - center.y;
+    float r = std::hypot(dx, dy);
+    float v = std::max(0.f, apex_elevation - slope * r);
+    return v;
+  };
+
+  auto lambda_s = [slope, apex_elevation, center](float x, float y, float)
+  {
+    float dx = x - center.x;
+    float dy = y - center.y;
+    float r = std::hypot(dx, dy);
+    float v = std::max(0.f, apex_elevation - slope * r);
+    return almost_unit_identity(v);
+  };
+
+  if (smooth_profile)
+  {
+    fill_array_using_xy_function(array,
+                                 bbox,
+                                 nullptr,
+                                 p_noise_x,
+                                 p_noise_y,
+                                 nullptr,
+                                 lambda_s);
+  }
+  else
+  {
+    fill_array_using_xy_function(array,
+                                 bbox,
+                                 nullptr,
+                                 p_noise_x,
+                                 p_noise_y,
+                                 nullptr,
+                                 lambda);
+  }
+
+  return array;
+}
+
+Array cone_sigmoid(Vec2<int>    shape,
+                   float        alpha,
+                   float        radius,
+                   Vec2<float>  center,
+                   const Array *p_noise_x,
+                   const Array *p_noise_y,
+                   Vec4<float>  bbox)
+{
+  Array array = Array(shape);
+
+  auto lambda = [alpha, radius, center](float x, float y, float)
+  {
+    float dx = x - center.x;
+    float dy = y - center.y;
+    float r = std::hypot(dx, dy) / radius;
+    float v = (1.f - std::pow(r, alpha)) / (1.f + std::pow(r, alpha));
+    return std::max(0.f, v);
+  };
+
+  fill_array_using_xy_function(array,
+                               bbox,
+                               nullptr,
+                               p_noise_x,
+                               p_noise_y,
+                               nullptr,
+                               lambda);
+
+  return array;
+}
+
 Array constant(Vec2<int> shape, float value)
 {
   Array array = Array(shape);

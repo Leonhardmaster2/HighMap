@@ -88,12 +88,65 @@ Array biquad_pulse(Vec2<int>    shape,
  */
 Array bump(Vec2<int>    shape,
            float        gain = 1.f,
-           const Array *p_ctrl_param = nullptr,
+           const Array *p_ctrl_param = nullptr, // gain multiplier
            const Array *p_noise_x = nullptr,
            const Array *p_noise_y = nullptr,
            const Array *p_stretching = nullptr,
            Vec2<float>  center = {0.5f, 0.5f},
            Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
+ * @brief Generates a 2D Lorentzian bump pattern.
+ *
+ * This function fills an array with values computed from a normalized
+ * Lorentzian-shaped bump function. The bump is centered at a given position,
+ * has a specified radius, and can vary in width depending on a control
+ * parameter. Optional noise arrays can be applied to perturb the x and y
+ * coordinates before evaluation.
+ *
+ * The Lorentzian function is normalized so that it returns 1.0 at the center
+ * and smoothly decays to 0.0 at the radius boundary. Outside the radius, the
+ * value is exactly 0.
+ *
+ * @param  shape        Dimensions of the output array (width, height).
+ * @param  width_factor Scaling factor controlling the bump width relative to
+ *                      the control parameter.
+ * @param  radius       Radius of the bump in the coordinate space of @p bbox.
+ * @param  p_ctrl_param Optional pointer to an array of per-pixel control
+ *                      parameters. If provided, it modulates the width of the
+ *                      Lorentzian bump.
+ * @param  p_noise_x    Optional pointer to an array of x-offset noise values.
+ *                      Values are added to the x coordinate before evaluation.
+ * @param  p_noise_y    Optional pointer to an array of y-offset noise values.
+ *                      Values are added to the y coordinate before evaluation.
+ * @param  center       Center of the bump in the coordinate space of @p bbox.
+ * @param  bbox         Bounding box (xmin, ymin, xmax, ymax) defining the
+ *                      coordinate space for the array.
+ *
+ * @return              A new Array object of size @p shape containing the bump
+ *                      pattern.
+ *
+ * @note The function normalizes the Lorentzian curve so that the maximum value
+ * is 1 at the center and smoothly decays to 0 at the boundary defined by
+ *       @p radius.
+ *
+ * @see                 fill_array_using_xy_function
+ *
+ * **Example**
+ * @include ex_bump.cpp
+ *
+ * **Result**
+ * @image html ex_bump.png
+ */
+Array bump_lorentzian(
+    Vec2<int>    shape,
+    float        shape_factor = 0.5f,
+    float        radius = 0.5f,
+    const Array *p_ctrl_param = nullptr, // shape_factor multiplier
+    const Array *p_noise_x = nullptr,
+    const Array *p_noise_y = nullptr,
+    Vec2<float>  center = {0.5f, 0.5f},
+    Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief Return a caldera-shaped heightmap.
@@ -156,6 +209,81 @@ Array checkerboard(Vec2<int>    shape,
                    const Array *p_noise_x = nullptr,
                    const Array *p_noise_y = nullptr,
                    const Array *p_stretching = nullptr,
+                   Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
+ * @brief Generates a synthetic conical mountain heightmap.
+ *
+ * This function creates a simple cone-shaped elevation field centered at a
+ * given position. The cone profile follows a linear slope until it reaches the
+ * talus angle, resembling volcanic cones or alluvial fans. Optional
+ * displacement noise fields can be applied to perturb the cone shape.
+ *
+ * @param  shape     Output array shape (resolution in x and y).
+ * @param  slope     Slope angle of the cone (controls steepness of the sides).
+ * @param  center    Center of the cone in normalized coordinates (default =
+ *                   {0.5f, 0.5f}).
+ * @param  p_noise_x Optional pointer to external displacement noise field
+ *                   (X-axis).
+ * @param  p_noise_y Optional pointer to external displacement noise field
+ *                   (Y-axis).
+ * @param  bbox      Bounding box of the generation domain in normalized
+ *                   coordinates (default = {0.f, 1.f, 0.f, 1.f}).
+ *
+ * @return           Array containing the generated conical heightmap.
+ *
+ * **Example**
+ * @include ex_cone.cpp
+ *
+ * **Result**
+ * @image html ex_cone.png
+ */
+Array cone(Vec2<int>    shape,
+           float        slope,
+           float        apex_elevation = 1.f,
+           bool         smooth_profile = false,
+           Vec2<float>  center = {0.5f, 0.5f},
+           const Array *p_noise_x = nullptr,
+           const Array *p_noise_y = nullptr,
+           Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
+ * @brief Generates a smooth conical heightmap using a sigmoid-based profile.
+ *
+ * This function creates a 2D array representing a cone shape centered at a
+ * given position. The height decreases radially from the apex according to a
+ * sigmoid-shaped falloff, producing a smooth, rounded cone rather than a sharp
+ * linear one. Optionally, displacement noise can be applied along the X and Y
+ * axes to perturb the cone surface.
+ *
+ * @param  shape     Dimensions of the output array (width, height).
+ * @param  alpha     Peak elevation value of the cone (controls maximum height).
+ * @param  radius    Radius of the cone base, expressed in normalized [0, 1]
+ *                   units relative to the bounding box.
+ * @param  center    Normalized coordinates of the cone’s center (default =
+ *                   {0.5, 0.5}).
+ * @param  p_noise_x Optional pointer to an array representing horizontal
+ *                   displacement noise (nullptr for none).
+ * @param  p_noise_y Optional pointer to an array representing vertical
+ *                   displacement noise (nullptr for none).
+ * @param  bbox      Bounding box of the generated region in (xmin, xmax, ymin,
+ *                   ymax) order.
+ *
+ * @return           A 2D Array object containing the generated conical
+ *                   heightmap.
+ *
+ * **Example**
+ * @include ex_cone.cpp
+ *
+ * **Result**
+ * @image html ex_cone.png
+ * */
+Array cone_sigmoid(Vec2<int>    shape,
+                   float        alpha,
+                   float        radius = 0.5f,
+                   Vec2<float>  center = {0.5f, 0.5f},
+                   const Array *p_noise_x = nullptr,
+                   const Array *p_noise_y = nullptr,
                    Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
@@ -1348,6 +1476,51 @@ namespace hmap::gpu
 {
 
 /**
+ * @brief Generates a synthetic "badlands" terrain heightmap.
+ *
+ * This function procedurally creates a 2D elevation field resembling badlands
+ * (highly eroded terrain with sharp ridges and valleys). It combines fractal
+ * noise (FBM) with a Voronoi-based primitive, displaced along a specified
+ * orientation.
+ *
+ * @param  shape          Output array shape (resolution in x and y).
+ * @param  kw             Frequency vector controlling the scale of the
+ *                        features.
+ * @param  seed           Random seed used for noise and Voronoi generation.
+ * @param  rugosity       Controls roughness of the fractal noise (higher = more
+ *                        irregular).
+ * @param  angle          Orientation angle (degrees) of terrain displacements.
+ * @param  k_smoothing    Voronoi smoothing parameter (controls ridge
+ *                        sharpness).
+ * @param  base_noise_amp Amplitude of the base displacement noise.
+ * @param  p_noise_x      Optional pointer to external displacement noise field
+ *                        (X-axis).
+ * @param  p_noise_y      Optional pointer to external displacement noise field
+ *                        (Y-axis).
+ * @param  bbox           Bounding box of the generation domain in normalized
+ *                        coordinates.
+ *
+ * @return                Array containing the generated badlands heightmap.
+ *
+ * **Example**
+ * @include ex_badlands.cpp
+ *
+ * **Result**
+ * @image html ex_badlands.png
+ */
+Array badlands(Vec2<int>    shape,
+               Vec2<float>  kw,
+               uint         seed,
+               int          octaves = 8,
+               float        rugosity = 0.2f,
+               float        angle = 30.f,
+               float        k_smoothing = 0.1f,
+               float        base_noise_amp = 0.2f,
+               const Array *p_noise_x = nullptr,
+               const Array *p_noise_y = nullptr,
+               Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
  * @brief Generates a synthetic procedural terrain resembling basaltic
  * landforms.
  *
@@ -1646,6 +1819,196 @@ Array gavoronoise(const Array &base,
                   Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
+ * @brief Generates a scalar field representing the signed distance to randomly
+ * generated hemispheres.
+ *
+ * @param  shape     Resolution of the output field (width, height).
+ * @param  kw        Scaling factor for field coordinates (world units per
+ *                   pixel).
+ * @param  seed      Random seed generation.
+ * @param  rmin      Minimum sphere radius (relative to bbox size).
+ * @param  rmax      Maximum sphere radius (relative to bbox size).
+ * @param  density   Fraction of pixels covered by polygons (approximate).
+ * @param  jitter    Random displacement factor applied to sphere vertices.
+ * @param  shift     Random position shift applied to sphere center.
+ * @param  p_noise_x Optional displacement noise field in the X direction
+ *                   (nullptr to disable).
+ * @param  p_noise_y Optional displacement noise field in the Y direction
+ *                   (nullptr to disable).
+ * @param  bbox      Bounding box in normalized coordinates {xmin, xmax, ymin,
+ *                   ymax}.
+ * @return           Array         2D array containing the signed distance
+ *                   field.
+ *
+ * **Example**
+ * @include ex_phemisphere_field.cpp
+ *
+ * **Result**
+ * @image html ex_phemisphere_field.png
+ */
+Array hemisphere_field(Vec2<int>         shape,
+                       Vec2<float>       kw,
+                       uint              seed,
+                       float             rmin = 0.05f,
+                       float             rmax = 0.8f,
+                       float             amplitude_random_ratio = 1.f,
+                       float             density = 0.1f,
+                       hmap::Vec2<float> jitter = {1.f, 1.f},
+                       float             shift = 0.f,
+                       const Array      *p_noise_x = nullptr,
+                       const Array      *p_noise_y = nullptr,
+                       const Array      *p_noise_distance = nullptr,
+                       const Array      *p_density_multiplier = nullptr,
+                       const Array      *p_size_multiplier = nullptr,
+                       Vec4<float>       bbox = {0.f, 1.f, 0.f, 1.f});
+
+/*! @brief See hmap::hemisphere_field */
+Array hemisphere_field_fbm(Vec2<int>         shape,
+                           Vec2<float>       kw,
+                           uint              seed,
+                           float             rmin = 0.05f,
+                           float             rmax = 0.8f,
+                           float             amplitude_random_ratio = 1.f,
+                           float             density = 0.1f,
+                           hmap::Vec2<float> jitter = {0.5f, 0.5f},
+                           float             shift = 0.1f,
+                           int               octaves = 8,
+                           float             persistence = 0.5f,
+                           float             lacunarity = 2.f,
+                           const Array      *p_noise_x = nullptr,
+                           const Array      *p_noise_y = nullptr,
+                           const Array      *p_noise_distance = nullptr,
+                           const Array      *p_density_multiplier = nullptr,
+                           const Array      *p_size_multiplier = nullptr,
+                           Vec4<float>       bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
+ * @brief Generates a procedural "mountain cone" heightmap using fractal noise
+ * and Voronoi patterns.
+ *
+ * This function synthesizes a terrain-like array shaped as a cone with
+ * noise-based ridges and surface roughness. The generation combines a
+ * cone-shaped envelope (`cone_sigmoid`), a fractal base noise
+ * (`gpu::noise_fbm`), and a Voronoi ridge structure (`voronoi_fbm`), producing
+ * a mountain with controlled smoothness, angular distortion, and noise-based
+ * displacements.
+ *
+ * @param  shape          The output array dimensions (width, height).
+ * @param  seed           The random seed for noise generation.
+ * @param  scale          Global scaling factor for the mountain size.
+ * @param  octaves        Number of fractal noise octaves for both FBM and
+ *                        Voronoi.
+ * @param  peak_kw        Controls the base frequency (inverse wavelength) of
+ *                        the peak noise.
+ * @param  rugosity       Controls the amplitude decay across octaves (higher =
+ *                        rougher surface).
+ * @param  angle          Direction (in degrees) for the displacement noise
+ *                        distortion.
+ * @param  k_smoothing    Smoothing factor applied in Voronoi blending.
+ * @param  gamma          Gamma correction exponent applied at the end.
+ * @param  cone_alpha     Controls the cone envelope steepness (higher = sharper
+ *                        peak).
+ * @param  ridge_amp      Controls the amplitude of ridge enhancement in the
+ *                        Voronoi term.
+ * @param  base_noise_amp Amplitude multiplier for the displacement noise.
+ * @param  center         The 2D position (in normalized coordinates) of the
+ *                        mountain cone center.
+ * @param  p_noise_x      Optional pointer to an external X displacement noise
+ *                        field (can be nullptr).
+ * @param  p_noise_y      Optional pointer to an external Y displacement noise
+ *                        field (can be nullptr).
+ * @param  bbox           The bounding box (min_x, min_y, max_x, max_y) defining
+ *                        the spatial extent of the map.
+ *
+ * @return                An Array representing the final terrain heightmap in
+ *                        normalized [0, 1] range.
+ *
+ * **Example**
+ * @include ex_mountain_cone.cpp
+ *
+ * **Result**
+ * @image html ex_mountain_cone.png
+ */
+Array mountain_cone(Vec2<int>    shape,
+                    uint         seed,
+                    float        scale = 1.f,
+                    int          octaves = 8,
+                    float        peak_kw = 4.f,
+                    float        rugosity = 0.f,
+                    float        angle = 45.f,
+                    float        k_smoothing = 0.f,
+                    float        gamma = 0.5f,
+                    float        cone_alpha = 1.f,
+                    float        ridge_amp = 0.4f,
+                    float        base_noise_amp = 0.05f,
+                    Vec2<float>  center = {0.5f, 0.5f},
+                    const Array *p_noise_x = nullptr,
+                    const Array *p_noise_y = nullptr,
+                    Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
+ * @brief Generates a synthetic mountain-like inselberg (isolated hill)
+ * heightmap.
+ *
+ * This function procedurally creates a 2D elevation field resembling an
+ * inselberg, using a combination of fractal noise (FBM), Gaussian pulses, and
+ * Voronoi-based structures. It allows control over scale, shape, orientation,
+ * rugosity, and optional geological-like effects such as bulk uplift and
+ * deposition smoothing.
+ *
+ * @param  shape          Output array shape (resolution in x and y).
+ * @param  seed           Random seed used for noise and Voronoi generation.
+ * @param  scale          Global scaling factor for the inselberg width and
+ *                        structure.
+ * @param  rugosity       Controls roughness of the fractal noise (higher = more
+ *                        irregular).
+ * @param  angle          Orientation angle (degrees) for directional
+ *                        displacements.
+ * @param  gamma          Gamma correction factor applied to the final
+ *                        heightmap.
+ * @param  round_shape    If true, generates a symmetric round shape;
+ *                        if false, adds directional displacement.
+ * @param  add_deposition If true, applies a smoothing fill step simulating
+ *                        sediment deposition.
+ * @param  bulk_amp       Amplitude of bulk uplift applied to the base pulse (0
+ *                        = none, >0 = raises and normalizes the feature).
+ * @param  base_noise_amp Amplitude of the base displacement noise.
+ * @param  k_smoothing    Voronoi smoothing parameter (controls ridge
+ *                        sharpness).
+ * @param  center         Center of the inselberg in normalized coordinates.
+ * @param  p_noise_x      Optional pointer to external displacement noise field
+ *                        (X-axis).
+ * @param  p_noise_y      Optional pointer to external displacement noise field
+ *                        (Y-axis).
+ * @param  bbox           Bounding box of the generation domain in normalized
+ *                        coordinates.
+ *
+ * @return                Array containing the generated inselberg heightmap.
+ *
+ * **Example**
+ * @include ex_mountain_inselberg.cpp
+ *
+ **Result**
+ * @image html ex_mountain_inselberg.png
+ */
+Array mountain_inselberg(Vec2<int>    shape,
+                         uint         seed,
+                         float        scale = 1.f,
+                         int          octaves = 8,
+                         float        rugosity = 0.2f,
+                         float        angle = 45.f,
+                         float        gamma = 1.1f,
+                         bool         round_shape = false,
+                         bool         add_deposition = true,
+                         float        bulk_amp = 0.2f,
+                         float        base_noise_amp = 0.2f,
+                         float        k_smoothing = 0.1f,
+                         Vec2<float>  center = {0.5f, 0.5f},
+                         const Array *p_noise_x = nullptr,
+                         const Array *p_noise_y = nullptr,
+                         Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
  * @brief Generates a heightmap representing a radial mountain range.
  *
  * This function creates a heightmap that simulates a mountain range emanating
@@ -1711,6 +2074,130 @@ Array mountain_range_radial(Vec2<int>    shape,
                             const Array *p_angle = nullptr,
                             Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
 
+/**
+ * @brief Generates a mountain-like heightmap with a flattened (stump-shaped)
+ * peak.
+ *
+ * This function procedurally creates a terrain resembling a broad mountain with
+ * a smooth, truncated summit. The result combines layered fractal noise (FBM),
+ * Gaussian shaping, and Voronoi-based ridge formation to produce
+ * natural-looking geomorphological features. The shape can be modulated by
+ * directional displacement noise, smoothed using deposition simulation, and
+ * refined through gamma and smoothing parameters.
+ *
+ * @param  shape          Dimensions of the output heightmap (width, height).
+ * @param  seed           Random seed for noise generation.
+ * @param  scale          Global scale factor controlling the size of features.
+ * @param  octaves        Number of noise octaves used in FBM generation.
+ * @param  peak_kw        Base spatial frequency of the main ridge/peak
+ *                        structure.
+ * @param  rugosity       Controls the roughness of base noise displacements.
+ * @param  angle          Orientation angle (in degrees) of the main ridge
+ *                        direction.
+ * @param  k_smoothing    Smoothing coefficient applied to the Voronoi FBM
+ *                        ridges.
+ * @param  gamma          Gamma correction applied to the ridge intensity.
+ * @param  add_deposition If true, applies an additional smoothing pass to
+ *                        simulate sediment deposition.
+ * @param  ridge_amp      Amplitude scaling factor for ridge prominence.
+ * @param  base_noise_amp Amplitude scaling factor for base displacement noise.
+ * @param  center         Normalized coordinates of the mountain’s center
+ *                        (default domain: [0, 1]²).
+ * @param  p_noise_x      Optional pointer to horizontal displacement noise
+ *                        (nullptr for none).
+ * @param  p_noise_y      Optional pointer to vertical displacement noise
+ *                        (nullptr for none).
+ * @param  bbox           Bounding box of the generated region (xmin, xmax,
+ *                        ymin, ymax).
+ *
+ * @return                A 2D Array containing the generated mountain stump
+ *                        heightmap.
+ *
+ * **Example**
+ * @include ex_mountain_stump.cpp
+ *
+ * **Result**
+ * @image html ex_mountain_stump.png
+ * */
+Array mountain_stump(Vec2<int>    shape,
+                     uint         seed,
+                     float        scale = 1.f,
+                     int          octaves = 8,
+                     float        peak_kw = 6.f,
+                     float        rugosity = 0.f,
+                     float        angle = 45.f,
+                     float        k_smoothing = 0.f,
+                     float        gamma = 0.25f,
+                     bool         add_deposition = true,
+                     float        ridge_amp = 0.75f,
+                     float        base_noise_amp = 0.1f,
+                     Vec2<float>  center = {0.5f, 0.5f},
+                     const Array *p_noise_x = nullptr,
+                     const Array *p_noise_y = nullptr,
+                     Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
+ * @brief Generates a synthetic "Tibesti" mountain heightmap.
+ *
+ * This function procedurally creates a 2D elevation field inspired by the
+ * Tibesti mountains, a desert volcanic range. The terrain is built by combining
+ * Gabor wavelets, fractal simplex noise, and a Gaussian envelope, producing
+ * sharp volcanic peaks modulated by erosion-like patterns.
+ *
+ * @param  shape              Output array shape (resolution in x and y).
+ * @param  seed               Random seed used for noise and wavelet generation.
+ * @param  scale              Global scaling factor controlling the overall
+ *                            mountain size.
+ * @param  octaves            Number of octaves used in the fractal noise and
+ *                            Gabor FBM.
+ * @param  peak_kw            Base frequency of the peak features (scaled
+ *                            internally by @p scale).
+ * @param  rugosity           Controls roughness of the fractal noise (higher =
+ *                            more irregular).
+ * @param  angle              Orientation angle (degrees) for Gabor waves.
+ * @param  angle_spread_ratio Spread ratio of the Gabor wave orientation
+ *                            (controls anisotropy).
+ * @param  gamma              Gamma correction factor applied to auxiliary noise
+ *                            fields.
+ * @param  add_deposition     If true, applies a smoothing fill step simulating
+ *                            sediment deposition.
+ * @param  bulk_amp           Amplitude of bulk uplift applied to the peaks
+ *                            (affects normalization with noise weighting).
+ * @param  base_noise_amp     Amplitude of the base displacement noise.
+ * @param  center             Center of the mountain in normalized coordinates.
+ * @param  p_noise_x          Optional pointer to external displacement noise
+ *                            field (X-axis).
+ * @param  p_noise_y          Optional pointer to external displacement noise
+ *                            field (Y-axis).
+ * @param  bbox               Bounding box of the generation domain in
+ *                            normalized coordinates.
+ *
+ * @return                    Array containing the generated Tibesti mountain
+ *                            heightmap.
+ *
+ * **Example**
+ * @include ex_mountain_tibesti.cpp
+ *
+ * **Result**
+ * @image html ex_mountain_tibesti.png
+ */
+Array mountain_tibesti(Vec2<int>    shape,
+                       uint         seed,
+                       float        scale = 1.f,
+                       int          octaves = 8,
+                       float        peak_kw = 20.f,
+                       float        rugosity = 0.f,
+                       float        angle = 30.f,
+                       float        angle_spread_ratio = 0.25f,
+                       float        gamma = 1.f,
+                       bool         add_deposition = true,
+                       float        bulk_amp = 1.f,
+                       float        base_noise_amp = 0.1f,
+                       Vec2<float>  center = {0.5f, 0.5f},
+                       const Array *p_noise_x = nullptr,
+                       const Array *p_noise_y = nullptr,
+                       Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
+
 /*! @brief See hmap::noise */
 Array noise(NoiseType    noise_type,
             Vec2<int>    shape,
@@ -1735,6 +2222,197 @@ Array noise_fbm(NoiseType    noise_type,
                 const Array *p_noise_y = nullptr,
                 const Array *p_stretching = nullptr,
                 Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
+ * @brief Generates a scalar field representing the signed distance to randomly
+ * generated polygons.
+ *
+ * This function procedurally generates a field where each pixel stores the
+ * signed distance to the nearest polygon, using a smooth signed distance
+ * function (SDF) with optional clamping. The polygons are generated randomly
+ * within the specified bounding box, with configurable vertex counts, sizes,
+ * jitter, and density. Optionally, displacement noise fields can be applied to
+ * polygon positions.
+ *
+ * @param  shape          Resolution of the output field (width, height).
+ * @param  kw             Scaling factor for field coordinates (world units per
+ *                        pixel).
+ * @param  seed           Random seed for polygon generation.
+ * @param  rmin           Minimum polygon radius (relative to bbox size).
+ * @param  rmax           Maximum polygon radius (relative to bbox size).
+ * @param  clamping_dist  Distance threshold for clamping the SDF value (used to
+ *                        soften edges).
+ * @param  clamping_k     Smoothness parameter for clamping.
+ * @param  n_vertices_min Minimum number of vertices per polygon.
+ * @param  n_vertices_max Maximum number of vertices per polygon.
+ * @param  density        Fraction of pixels covered by polygons (approximate).
+ * @param  jitter         Random displacement factor applied to polygon
+ *                        vertices.
+ * @param  shift          Random position shift applied to polygon center.
+ * @param  p_noise_x      Optional displacement noise field in the X direction
+ *                        (nullptr to disable).
+ * @param  p_noise_y      Optional displacement noise field in the Y direction
+ *                        (nullptr to disable).
+ * @param  bbox           Bounding box in normalized coordinates {xmin, xmax,
+ *                        ymin, ymax}.
+ * @return                Array         2D array containing the signed distance
+ *                        field.
+ *
+ * @note Polygons are randomly generated per call and are not guaranteed to be
+ * convex.
+ * @note The sign of the SDF is negative inside polygons and positive outside.
+ *
+ * **Example**
+ * @include ex_polygon_field_fbm.cpp
+ *
+ * **Result**
+ * @image html ex_polygon_field_fbm.png
+ */
+Array polygon_field(Vec2<int>         shape,
+                    Vec2<float>       kw,
+                    uint              seed,
+                    float             rmin = 0.05f,
+                    float             rmax = 0.8f,
+                    float             clamping_dist = 0.1f,
+                    float             clamping_k = 0.1f,
+                    int               n_vertices_min = 3,
+                    int               n_vertices_max = 16,
+                    float             density = 0.5f,
+                    hmap::Vec2<float> jitter = {0.5f, 0.5f},
+                    float             shift = 0.1f,
+                    const Array      *p_noise_x = nullptr,
+                    const Array      *p_noise_y = nullptr,
+                    const Array      *p_noise_distance = nullptr,
+                    const Array      *p_density_multiplier = nullptr,
+                    const Array      *p_size_multiplier = nullptr,
+                    Vec4<float>       bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
+ * @brief Generates a scalar field representing the signed distance to randomly
+ * generated polygons combined with fractal Brownian motion (fBm) noise
+ * modulation.
+ *
+ * Similar to polygon_field(), but the generated SDF is modulated by an fBm
+ * noise function to create more natural, irregular shapes. The fBm parameters
+ * allow control over the noise persistence, lacunarity, and number of octaves.
+ *
+ * @param  shape          Resolution of the output field (width, height).
+ * @param  kw             Scaling factor for field coordinates (world units per
+ *                        pixel).
+ * @param  seed           Random seed for polygon generation and fBm noise.
+ * @param  rmin           Minimum polygon radius (relative to bbox size).
+ * @param  rmax           Maximum polygon radius (relative to bbox size).
+ * @param  clamping_dist  Distance threshold for clamping the SDF value (used to
+ *                        soften edges).
+ * @param  clamping_k     Smoothness parameter for clamping.
+ * @param  n_vertices_min Minimum number of vertices per polygon.
+ * @param  n_vertices_max Maximum number of vertices per polygon.
+ * @param  density        Fraction of pixels covered by polygons (approximate).
+ * @param  jitter         Random displacement factor applied to polygon
+ *                        vertices.
+ * @param  shift          Random position shift applied to polygon center.
+ * @param  octaves        Number of fBm octaves.
+ * @param  persistence    Amplitude decay per octave in fBm.
+ * @param  lacunarity     Frequency multiplier per octave in fBm.
+ * @param  p_noise_x      Optional displacement noise field in the X direction
+ *                        (nullptr to disable).
+ * @param  p_noise_y      Optional displacement noise field in the Y direction
+ *                        (nullptr to disable).
+ * @param  bbox           Bounding box in normalized coordinates {xmin, xmax,
+ *                        ymin, ymax}.
+ * @return                Array         2D array containing the signed distance
+ *                        field modulated by fBm.
+ *
+ * @note The sign of the SDF is negative inside polygons and positive outside.
+ *
+ * **Example**
+ * @include ex_polygon_field_fbm.cpp
+ *
+ * **Result**
+ * @image html ex_polygon_field_fbm.png
+ */
+Array polygon_field_fbm(Vec2<int>         shape,
+                        Vec2<float>       kw,
+                        uint              seed,
+                        float             rmin = 0.05f,
+                        float             rmax = 0.8f,
+                        float             clamping_dist = 0.1f,
+                        float             clamping_k = 0.1f,
+                        int               n_vertices_min = 3,
+                        int               n_vertices_max = 16,
+                        float             density = 0.1f,
+                        hmap::Vec2<float> jitter = {0.5f, 0.5f},
+                        float             shift = 0.1f,
+                        int               octaves = 8,
+                        float             persistence = 0.5f,
+                        float             lacunarity = 2.f,
+                        const Array      *p_noise_x = nullptr,
+                        const Array      *p_noise_y = nullptr,
+                        const Array      *p_noise_distance = nullptr,
+                        const Array      *p_density_multiplier = nullptr,
+                        const Array      *p_size_multiplier = nullptr,
+                        Vec4<float>       bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
+ * @brief Generates a synthetic "shattered peak" terrain heightmap.
+ *
+ * This function procedurally creates a 2D elevation field resembling a sharp,
+ * fractured mountain peak. It combines a Gaussian pulse envelope, fractal noise
+ * displacements, and Voronoi-based primitives with edge-distance shaping. The
+ * result is a rugged peak structure with broken ridges and steep slopes.
+ *
+ * @param  shape          Output array shape (resolution in x and y).
+ * @param  seed           Random seed used for noise and Voronoi generation.
+ * @param  scale          Global scaling factor controlling the overall peak
+ *                        size.
+ * @param  peak_kw        Base frequency of the peak features (scaled internally
+ *                        by @p scale).
+ * @param  rugosity       Controls roughness of the fractal noise (higher = more
+ *                        irregular).
+ * @param  angle          Orientation angle (degrees) for directional
+ *                        displacements.
+ * @param  gamma          Gamma correction factor applied to the final
+ *                        heightmap.
+ * @param  add_deposition If true, applies a smoothing fill step simulating
+ *                        sediment deposition.
+ * @param  bulk_amp       Amplitude of bulk uplift applied to the peak
+ *                        (internally overridden to 0.5f for normalization).
+ * @param  base_noise_amp Amplitude of the base displacement noise.
+ * @param  k_smoothing    Voronoi smoothing parameter (controls ridge
+ *                        sharpness).
+ * @param  center         Center of the peak in normalized coordinates.
+ * @param  p_noise_x      Optional pointer to external displacement noise field
+ *                        (X-axis).
+ * @param  p_noise_y      Optional pointer to external displacement noise field
+ *                        (Y-axis).
+ * @param  bbox           Bounding box of the generation domain in normalized
+ *                        coordinates.
+ *
+ * @return                Array containing the generated shattered peak
+ *                        heightmap.
+ *
+ * **Example**
+ * @include ex_shattered_peak.cpp
+ *
+ * **Result**
+ * @image html ex_shattered_peak.png
+ */
+Array shattered_peak(Vec2<int>    shape,
+                     uint         seed,
+                     float        scale = 1.f,
+                     int          octaves = 8,
+                     float        peak_kw = 4.f,
+                     float        rugosity = 0.f,
+                     float        angle = 30.f,
+                     float        gamma = 1.f,
+                     bool         add_deposition = true,
+                     float        bulk_amp = 0.3f,
+                     float        base_noise_amp = 0.1f,
+                     float        k_smoothing = 0.f,
+                     Vec2<float>  center = {0.5f, 0.5f},
+                     const Array *p_noise_x = nullptr,
+                     const Array *p_noise_y = nullptr,
+                     Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief Generates a Voronoi-based pattern where cells are defined by proximity

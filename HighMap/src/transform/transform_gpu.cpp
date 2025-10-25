@@ -8,7 +8,7 @@ namespace hmap::gpu
 
 void rotate(Array &array, float angle, bool zoom_in)
 {
-  auto run = clwrapper::Run("rotate");
+  auto run = clwrapper::Run("rotate_hmap");
   run.bind_imagef("in", array.vector, array.shape.x, array.shape.y);
   run.bind_imagef("out",
                   array.vector,

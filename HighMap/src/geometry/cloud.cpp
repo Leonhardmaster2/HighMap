@@ -14,6 +14,7 @@
 #include "delaunator-cpp.hpp"
 #include "macrologger.h"
 
+#include "highmap/functions.hpp"
 #include "highmap/geometry/cloud.hpp"
 #include "highmap/geometry/graph.hpp"
 #include "highmap/geometry/grids.hpp"
@@ -301,6 +302,24 @@ void Cloud::randomize(uint seed, Vec4<float> bbox)
     this->points[k] = cloud_rnd.points[k];
 }
 
+void Cloud::rejection_filter_density(const Array       &density_mask,
+                                     uint               seed,
+                                     const Vec4<float> &bbox)
+{
+  std::mt19937                          gen(seed);
+  std::uniform_real_distribution<float> dis(0.f, 1.f);
+
+  auto density_fct = make_xy_function_from_array(density_mask, bbox);
+
+  std::remove_if(this->points.begin(),
+                 this->points.end(),
+                 [&](Point p)
+                 {
+                   float rnd = dis(gen);
+                   return (rnd > density_fct(p.x, p.y));
+                 });
+}
+
 void Cloud::remap_values(float vmin, float vmax)
 {
   const auto [current_min, current_max] = std::minmax_element(
@@ -318,6 +337,18 @@ void Cloud::remap_values(float vmin, float vmax)
 void Cloud::remove_point(int point_idx)
 {
   this->points.erase(this->points.begin() + point_idx);
+}
+
+void Cloud::set_points(const std::vector<float> &x, const std::vector<float> &y)
+{
+  if (x.size() != y.size() || x.size() != this->points.size())
+    throw std::invalid_argument("New values size must match number of points");
+
+  for (size_t k = 0; k < this->points.size(); ++k)
+  {
+    this->points[k].x = x[k];
+    this->points[k].y = y[k];
+  }
 }
 
 void Cloud::set_values(const std::vector<float> &new_values)
@@ -381,6 +412,19 @@ void Cloud::set_values_from_min_distance()
     v = std::sqrt(v);
 
   this->set_values(dist);
+}
+
+void Cloud::shuffle(float dx, float dy, uint seed, float dv)
+{
+  std::mt19937                          gen(seed);
+  std::uniform_real_distribution<float> dis(-1.f, 1.f);
+
+  for (auto &p : this->points)
+  {
+    p.x += dx * dis(gen);
+    p.y += dy * dis(gen);
+    p.v += dv * dis(gen);
+  }
 }
 
 void Cloud::to_array(Array &array, Vec4<float> bbox) const
@@ -561,6 +605,32 @@ Cloud random_cloud_distance(float              min_dist,
                             const Vec4<float> &bbox)
 {
   auto xy = random_points_distance(min_dist, max_dist, density, seed, bbox);
+  auto v = random_vector(0.f, 1.f, xy[0].size(), ++seed);
+  return Cloud(xy[0], xy[1], v);
+}
+
+Cloud random_cloud_distance_power_law(float              dist_min,
+                                      float              dist_max,
+                                      float              alpha,
+                                      uint               seed,
+                                      const Vec4<float> &bbox)
+{
+  auto xy = random_points_distance_power_law(dist_min,
+                                             dist_max,
+                                             alpha,
+                                             seed,
+                                             bbox);
+  auto v = random_vector(0.f, 1.f, xy[0].size(), ++seed);
+  return Cloud(xy[0], xy[1], v);
+}
+
+Cloud random_cloud_distance_weibull(float              dist_min,
+                                    float              lambda,
+                                    float              k,
+                                    uint               seed,
+                                    const Vec4<float> &bbox)
+{
+  auto xy = random_points_distance_weibull(dist_min, lambda, k, seed, bbox);
   auto v = random_vector(0.f, 1.f, xy[0].size(), ++seed);
   return Cloud(xy[0], xy[1], v);
 }

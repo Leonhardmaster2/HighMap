@@ -25,13 +25,13 @@ R""(
 // ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
 // OR OTHER DEALINGS IN THE SOFTWARE.
 
-float3 helper_voronoise_hash3(const float2 p)
+float3 helper_voronoise_hash3(const float2 p, float fseed)
 {
   float3 q = (float3)(dot(p, (float2)(127.1f, 311.7f)),
                       dot(p, (float2)(269.5f, 183.3f)),
                       dot(p, (float2)(419.2f, 371.9f)));
   float3 qi;
-  return fract(sin(q) * 43758.5453f, &qi);
+  return fract(sin(q) * 43758.5453f + fseed, &qi);
 }
 
 float noise_voronoise(const float2 p,
@@ -50,7 +50,7 @@ float noise_voronoise(const float2 p,
     for (int x = -2; x <= 2; x++)
     {
       float2 g = (float2)(x, y);
-      float3 o = helper_voronoise_hash3(i + g + fseed) *
+      float3 o = helper_voronoise_hash3(i + g, fseed) *
                  (float3)(u_param, u_param, 1.f);
       float2 d = g - f + o.xy;
       float  w = pow_float(1.f - smoothstep(0.f, 1.414f, length(d)), k);

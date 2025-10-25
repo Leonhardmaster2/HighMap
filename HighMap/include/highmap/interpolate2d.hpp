@@ -85,6 +85,45 @@ inline float cubic_interpolate(float p[4], float x)
 }
 
 /**
+ * @brief Perform harmonic interpolation on a 2D array using the Successive
+ * Over-Relaxation (SOR) method.
+ *
+ * This function solves the discrete Laplace equation on a regular grid by
+ * iteratively updating the values of an input array. Values marked as fixed in
+ * the @p mask_fixed_values remain unchanged throughout the process. The
+ * algorithm stops when either the maximum number of iterations is reached or
+ * the change between successive iterations falls below the specified tolerance.
+ *
+ * @param  array             Input 2D array providing the initial guess for the
+ *                           solution.
+ * @param  mask_fixed_values Mask of the same shape as @p array. Cells with a
+ *                           value greater than zero indicate fixed points that
+ *                           must remain unchanged during interpolation.
+ * @param  iterations_max    Maximum number of SOR iterations to perform.
+ * @param  tolerance         Convergence criterion: the algorithm stops if the
+ *                           maximum absolute update between iterations is less
+ *                           than this value.
+ * @param  omega             Relaxation factor (1 < omega < 2 recommended).
+ *                           Values closer to 2 accelerate convergence, but
+ *                           overly large values may cause divergence.
+ *
+ * @return                   A new 2D array containing the interpolated
+ *                           solution.
+ *
+ * @note
+ *  - The algorithm updates only the interior points (indices `[1..nx-2,
+ * 1..ny-2]`).
+ *  - Cells where `mask_fixed_values(i, j) > 0` remain unchanged.
+ *  - A relaxation factor of 1 corresponds to the standard Jacobi/Gauss-Seidel
+ * update.
+ */
+Array harmonic_interpolation(const Array &array,
+                             const Array &mask_fixed_values,
+                             int          iterations_max = 10000,
+                             float        tolerance = 1e-3f,
+                             float        omega = 1.8f);
+
+/**
  * @brief Generic 2D interpolation function.
  *
  * This function performs interpolation on a 2D grid using the specified

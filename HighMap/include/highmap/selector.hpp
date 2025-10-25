@@ -13,6 +13,7 @@
 #pragma once
 
 #include "highmap/array.hpp"
+#include "highmap/range.hpp"
 
 namespace hmap
 {
@@ -426,6 +427,59 @@ Array select_valley(const Array &z,
 
 namespace hmap::gpu
 {
+
+/**
+ * @brief Computes a soil weathering selection map based on curvature and
+ * gradient analysis.
+ *
+ * This function generates a combined array representing the degree of soil
+ * weathering using two main components:
+ * - **Curvature contribution**: derived from smoothed height variations.
+ * - **Gradient contribution**: derived from local slope magnitudes.
+ *
+ * @param z                       Input heightmap or scalar field.
+ * @param ir_curvature            Radius (in pixels or samples) for curvature
+ *                                smoothing. If zero, curvature smoothing is
+ *                                skipped.
+ * @param ir_gradient             Radius (in pixels or samples) for gradient
+ *                                computation.
+ * @param curvature_clamp_mode    Clamping mode applied to curvature values (see
+ *                                ::ClampMode).
+ * @param curvature_clamping      Maximum absolute value used for curvature
+ *                                clamping.
+ * @param curvature_weight        Weight applied to the curvature component in
+ *                                the final mix.
+ * @param gradient_weight         Weight applied to the gradient component in
+ *                                the final mix.
+ * @param gradient_scaling_factor Empirical scaling factor for both curvature
+ *                                and gradient terms. If non-positive, defaults
+ *                                to `z.shape.x`.
+ *
+ * **Example**
+ * @include ex_select_soil_weathered.cpp
+ *
+ * **Result**
+ * @image html ex_select_soil_weathered.png
+ */
+Array select_soil_weathered(
+    const Array &z,
+    int          ir_curvature = 0,
+    int          ir_gradient = 4,
+    ClampMode    curvature_clamp_mode = ClampMode::POSITIVE_ONLY,
+    float        curvature_clamping = 10.f,
+    float        curvature_weight = 1.f,
+    float        gradient_weight = 1.f,
+    float        gradient_scaling_factor = 0.f);
+
+// if the gradient norm is known before-hand
+Array select_soil_weathered(const Array &z,
+                            const Array &gradient_norm, // in [0, 1]
+                            int          ir_curvature,
+                            ClampMode    curvature_clamp_mode,
+                            float        curvature_clamping,
+                            float        curvature_weight,
+                            float        gradient_weight,
+                            float gradient_scaling_factor); // for curvature
 
 /*! @brief See hmap::select_valley */
 Array select_valley(const Array &z,

@@ -35,26 +35,35 @@ void flatten_heightmap(const std::vector<const Heightmap *>  &h_sources,
                        const std::vector<const CoordFrame *> &t_sources,
                        const CoordFrame                      &t_target);
 
-void interpolate_array_bicubic(const Array &source, Array &target);
+void interpolate_array_bicubic(const Array &source,
+                               Array       &target,
+                               bool         endpoint = false);
 
 void interpolate_array_bicubic(const Array       &source,
                                Array             &target,
                                const Vec4<float> &bbox_source,
-                               const Vec4<float> &bbox_target);
+                               const Vec4<float> &bbox_target,
+                               bool               endpoint = false);
 
-void interpolate_array_bilinear(const Array &source, Array &target);
+void interpolate_array_bilinear(const Array &source,
+                                Array       &target,
+                                bool         endpoint = false);
 
 void interpolate_array_bilinear(const Array       &source,
                                 Array             &target,
                                 const Vec4<float> &bbox_source,
-                                const Vec4<float> &bbox_target);
+                                const Vec4<float> &bbox_target,
+                                bool               endpoint = false);
 
-void interpolate_array_nearest(const Array &source, Array &target);
+void interpolate_array_nearest(const Array &source,
+                               Array       &target,
+                               bool         endpoint = false);
 
 void interpolate_array_nearest(const Array       &source,
                                Array             &target,
                                const Vec4<float> &bbox_source,
-                               const Vec4<float> &bbox_target);
+                               const Vec4<float> &bbox_target,
+                               bool               endpoint = false);
 
 void interpolate_heightmap(const hmap::Heightmap &h_source,
                            hmap::Heightmap       &h_target,

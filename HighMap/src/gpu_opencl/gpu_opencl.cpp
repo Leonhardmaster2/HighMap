@@ -32,6 +32,8 @@ bool init_opencl()
 #include "kernels/_common_rand.cl"
 #include "kernels/_common_sort.cl"
   //
+#include "kernels/advection_particle.cl"
+#include "kernels/advection_warp.cl"
 #include "kernels/blend_poisson_bf.cl"
 #include "kernels/expand.cl"
 #include "kernels/flow_direction_d8.cl"
@@ -39,6 +41,7 @@ bool init_opencl()
 #include "kernels/gavoronoise.cl"
 #include "kernels/generate_riverbed.cl"
 #include "kernels/gradient_norm.cl"
+#include "kernels/hemisphere_field.cl"
 #include "kernels/hydraulic_particle.cl"
 #include "kernels/hydraulic_schott.cl"
 #include "kernels/interpolate_array.cl"
@@ -53,6 +56,7 @@ bool init_opencl()
 #include "kernels/noise.cl"
 #include "kernels/normal_displacement.cl"
 #include "kernels/plateau.cl"
+#include "kernels/polygon_field.cl"
 #include "kernels/rotate.cl"
 #include "kernels/ruggedness.cl"
 #include "kernels/rugosity.cl"
@@ -72,8 +76,19 @@ bool init_opencl()
 #include "kernels/voronoise.cl"
 #include "kernels/vororand_main.cl"
 #include "kernels/warp.cl"
+//
+#include "kernels/rifts.cl"
+#include "kernels/strata.cl"
       ;
 
+  std::string opencl_build_options = "-cl-fast-relaxed-math "
+                                     "-cl-mad-enable "
+                                     "-cl-no-signed-zeros "
+                                     "-cl-denorms-are-zero "
+                                     "-cl-finite-math-only ";
+
+  clwrapper::KernelManager::get_instance().set_build_options(
+      opencl_build_options);
   clwrapper::KernelManager::get_instance().add_kernel(code);
 
   return true;
