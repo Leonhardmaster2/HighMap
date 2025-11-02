@@ -24,7 +24,7 @@ Tensor::Tensor(Vec2<int> shape_xy, int shape_z)
   this->vector.resize(shape.x * shape.y * shape.z);
 }
 
-Tensor::Tensor(const std::string &fname)
+Tensor::Tensor(const std::string &fname, bool flip_j)
 {
   cv::Mat mat = cv::imread(fname, cv::IMREAD_COLOR);
   cv::cvtColor(mat, mat, cv::COLOR_BGR2RGB);
@@ -35,18 +35,21 @@ Tensor::Tensor(const std::string &fname)
 
   // fill tensor
   for (int j = 0; j < shape.y; j++)
+  {
+    int jj = flip_j ? (shape.y - 1 - j) : j;
     for (int i = 0; i < shape.x; i++)
     {
       cv::Vec3f pixel = mat.at<cv::Vec3f>(j, i);
 
       // assign RGB values to the tensor
-      (*this)(i, j, 0) = pixel[0]; // red
-      (*this)(i, j, 1) = pixel[1]; // green
-      (*this)(i, j, 2) = pixel[2]; // blue
+      (*this)(i, jj, 0) = pixel[0]; // red
+      (*this)(i, jj, 1) = pixel[1]; // green
+      (*this)(i, jj, 2) = pixel[2]; // blue
 
       // set alpha channel to 1.0
-      (*this)(i, j, 3) = 1.f;
+      (*this)(i, jj, 3) = 1.f;
     }
+  }
 }
 
 float &Tensor::operator()(int i, int j, int k)

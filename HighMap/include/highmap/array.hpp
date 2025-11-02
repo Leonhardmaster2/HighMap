@@ -62,7 +62,7 @@ public:
 
   Array(Vec2<int> shape, float value); ///< @overload
 
-  Array(const std::string &filename); ///< @overload
+  Array(const std::string &filename, bool flip_j = false); ///< @overload
 
   //----------------------------------------
   // overload
@@ -942,6 +942,8 @@ public:
  * **Example**
  * @include ex_cv_mat_to_array.cpp
  */
-Array cv_mat_to_array(const cv::Mat &mat, bool remap_values = true);
+Array cv_mat_to_array(const cv::Mat &mat,
+                      bool           remap_values = true,
+                      bool           flip_j = false);
 
 } // namespace hmap

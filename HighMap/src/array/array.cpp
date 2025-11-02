@@ -27,9 +27,9 @@ Array::Array(Vec2<int> shape, float value) : shape(shape)
   std::fill(this->vector.begin(), this->vector.end(), value);
 }
 
-Array::Array(const std::string &filename)
+Array::Array(const std::string &filename, bool flip_j)
 {
-  *this = read_to_array(filename);
+  *this = read_to_array(filename, flip_j);
 }
 
 Vec2<int> Array::get_shape()

@@ -66,7 +66,7 @@ public:
    *
    * @param fname The name of the file to load the tensor from.
    */
-  Tensor(const std::string &fname);
+  Tensor(const std::string &fname, bool flip_j = false);
 
   /**
    * @brief Access an element of the tensor.

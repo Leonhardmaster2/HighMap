@@ -368,7 +368,7 @@ void export_tiled(const std::string &fname_radical,
  * @return       Array A 2D array containing the pixel values of the grayscale
  *               image.
  */
-Array read_to_array(const std::string &fname);
+Array read_to_array(const std::string &fname, bool flip_j = false);
 
 /**
  * @brief Exports an array to a 16-bit 'raw' file format, commonly used for
