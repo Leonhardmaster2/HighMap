@@ -19,7 +19,7 @@ var searchData=
   ['approx_5fhypot_16',['approx_hypot',['../namespacehmap.html#a85cee5ad021421a670fb62211b5913e5',1,'hmap']]],
   ['approx_5frsqrt_17',['approx_rsqrt',['../namespacehmap.html#a7c2762e4ccc798e8c90d128c2c2858fe',1,'hmap']]],
   ['argsort_18',['argsort',['../namespacehmap.html#a8be122241fa42b0f6a7ef67106391780',1,'hmap']]],
-  ['array_19',['array',['../classhmap_1_1Array.html#a96b9bd19d1212e61b4ac4eb21931b298',1,'hmap::Array::Array()'],['../classhmap_1_1Array.html#a01be0e18bcfd224e61740d49929e8023',1,'hmap::Array::Array(Vec2&lt; int &gt; shape)'],['../classhmap_1_1Array.html#a885b4f45f50f0e7d9c32e316ecb9884b',1,'hmap::Array::Array(Vec2&lt; int &gt; shape, float value)'],['../classhmap_1_1Array.html#aad62b698ef12cfd06b3fb09e8cce7635',1,'hmap::Array::Array(const std::string &amp;filename)']]],
+  ['array_19',['array',['../classhmap_1_1Array.html#a96b9bd19d1212e61b4ac4eb21931b298',1,'hmap::Array::Array()'],['../classhmap_1_1Array.html#a01be0e18bcfd224e61740d49929e8023',1,'hmap::Array::Array(Vec2&lt; int &gt; shape)'],['../classhmap_1_1Array.html#a885b4f45f50f0e7d9c32e316ecb9884b',1,'hmap::Array::Array(Vec2&lt; int &gt; shape, float value)'],['../classhmap_1_1Array.html#a159f84f6af60d932d8f8984a176c9c76',1,'hmap::Array::Array(const std::string &amp;filename, bool flip_j=false)']]],
   ['arraycontrolfunction_20',['ArrayControlFunction',['../classhmap_1_1ArrayControlFunction.html#afb1177fcaf6160bea1d86be3b16cf55d',1,'hmap::ArrayControlFunction']]],
   ['arrayfunction_21',['ArrayFunction',['../classhmap_1_1ArrayFunction.html#a0538ac6f2942c89a3bae6e67e6a91703',1,'hmap::ArrayFunction']]],
   ['assert_5falmost_5fequal_22',['assert_almost_equal',['../namespacehmap.html#a2c154806321deecb3240ac71eb7ccf29',1,'hmap']]],

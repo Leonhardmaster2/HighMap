@@ -1566,10 +1566,10 @@
         </inbodydescription>
         <location file="HighMap/include/highmap/algebra.hpp" line="882" column="18" bodyfile="HighMap/include/highmap/algebra.hpp" bodystart="882" bodyend="887"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1a457cc8fe8645d43d9c5a2aea80268147" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacehmap_1a518f05118e1b9704160a7c3276a2f483" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
         <definition>Array hmap::cv_mat_to_array</definition>
-        <argsstring>(const cv::Mat &amp;mat, bool remap_values=true)</argsstring>
+        <argsstring>(const cv::Mat &amp;mat, bool remap_values=true, bool flip_j=false)</argsstring>
         <name>cv_mat_to_array</name>
         <qualifiedname>hmap::cv_mat_to_array</qualifiedname>
         <param>
@@ -1580,6 +1580,11 @@
           <type>bool</type>
           <declname>remap_values</declname>
           <defval>true</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>flip_j</declname>
+          <defval>false</defval>
         </param>
         <briefdescription>
 <para>Converts an OpenCV <computeroutput>cv::Mat</computeroutput> to a 2D <computeroutput><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></computeroutput> with optional value scaling to [0, 1]. </para>
@@ -1609,7 +1614,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/array/opencv_wrapper.cpp" line="26" column="7" bodyfile="HighMap/src/array/opencv_wrapper.cpp" bodystart="26" bodyend="46" declfile="HighMap/include/highmap/array.hpp" declline="945" declcolumn="7"/>
+        <location file="HighMap/src/array/opencv_wrapper.cpp" line="30" column="7" bodyfile="HighMap/src/array/opencv_wrapper.cpp" bodystart="30" bodyend="50" declfile="HighMap/include/highmap/array.hpp" declline="945" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aa0b0e92bd8fa6fdc51ccb39f7a382e92" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -11747,15 +11752,20 @@ Each tile is extracted using slicing, adjusted for overlap if specified, and the
         </inbodydescription>
         <location file="HighMap/src/export/export_tiled.cpp" line="12" column="6" bodyfile="HighMap/src/export/export_tiled.cpp" bodystart="12" bodyend="67" declfile="HighMap/include/highmap/export.hpp" declline="348" declcolumn="6"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1af6f0426c8791970cf51e5ab44f6760fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacehmap_1acc812ae7d5ab25071e94faaf7be03bca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
         <definition>Array hmap::read_to_array</definition>
-        <argsstring>(const std::string &amp;fname)</argsstring>
+        <argsstring>(const std::string &amp;fname, bool flip_j=false)</argsstring>
         <name>read_to_array</name>
         <qualifiedname>hmap::read_to_array</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>fname</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>flip_j</declname>
+          <defval>false</defval>
         </param>
         <briefdescription>
 <para>Reads an image file and converts it to a 2D array. </para>
@@ -49420,7 +49430,7 @@ off&quot; values that fall below the threshold, which can be useful for filterin
         </inbodydescription>
         <location file="HighMap/src/array/array.cpp" line="269" column="13" bodyfile="HighMap/src/array/array.cpp" bodystart="269" bodyend="278"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1a51bede9c24a0c1489c27d74c662eb579" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacehmap_1a4fca3ce1ffb84dbc8a627b3313b1d1fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>typename T</type>
@@ -49428,7 +49438,7 @@ off&quot; values that fall below the threshold, which can be useful for filterin
         </templateparamlist>
         <type>void</type>
         <definition>void hmap::convert_mat_to_array</definition>
-        <argsstring>(const cv::Mat &amp;mat, Array &amp;array)</argsstring>
+        <argsstring>(const cv::Mat &amp;mat, Array &amp;array, bool flip_j)</argsstring>
         <name>convert_mat_to_array</name>
         <qualifiedname>hmap::convert_mat_to_array</qualifiedname>
         <param>
@@ -49439,13 +49449,17 @@ off&quot; values that fall below the threshold, which can be useful for filterin
           <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
           <declname>array</declname>
         </param>
+        <param>
+          <type>bool</type>
+          <declname>flip_j</declname>
+        </param>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/array/opencv_wrapper.cpp" line="19" column="6" bodyfile="HighMap/src/array/opencv_wrapper.cpp" bodystart="19" bodyend="24"/>
+        <location file="HighMap/src/array/opencv_wrapper.cpp" line="19" column="6" bodyfile="HighMap/src/array/opencv_wrapper.cpp" bodystart="19" bodyend="28"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a3d953aa5fcf59193b3b8b98db3f5a872" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>

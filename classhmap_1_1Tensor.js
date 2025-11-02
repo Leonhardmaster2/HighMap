@@ -2,7 +2,7 @@ var classhmap_1_1Tensor =
 [
     [ "Tensor", "classhmap_1_1Tensor.html#af28dd5f54026bd09f8ef33d4319b816b", null ],
     [ "Tensor", "classhmap_1_1Tensor.html#a767c4e297a0ab687fbcb181598248597", null ],
-    [ "Tensor", "classhmap_1_1Tensor.html#a8204c890b1f99c0cc60caed438f00ee0", null ],
+    [ "Tensor", "classhmap_1_1Tensor.html#a4a74a558391c1f1129b331c359decdc3", null ],
     [ "operator()", "classhmap_1_1Tensor.html#a936e719c02f701ce86798533bdacba6d", null ],
     [ "operator()", "classhmap_1_1Tensor.html#a51b96b5a128aaa910d85df8d1de85699", null ],
     [ "get_slice", "classhmap_1_1Tensor.html#a59e7ac9122e705d05f6e8b00a26ef738", null ],

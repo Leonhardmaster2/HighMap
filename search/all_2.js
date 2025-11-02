@@ -33,7 +33,7 @@ var searchData=
   ['approx_5fhypot_30',['approx_hypot',['../namespacehmap.html#a85cee5ad021421a670fb62211b5913e5',1,'hmap']]],
   ['approx_5frsqrt_31',['approx_rsqrt',['../namespacehmap.html#a7c2762e4ccc798e8c90d128c2c2858fe',1,'hmap']]],
   ['argsort_32',['argsort',['../namespacehmap.html#a8be122241fa42b0f6a7ef67106391780',1,'hmap']]],
-  ['array_33',['array',['../classhmap_1_1Array.html#a96b9bd19d1212e61b4ac4eb21931b298',1,'hmap::Array::Array()'],['../classhmap_1_1Array.html#a01be0e18bcfd224e61740d49929e8023',1,'hmap::Array::Array(Vec2&lt; int &gt; shape)'],['../classhmap_1_1Array.html#a885b4f45f50f0e7d9c32e316ecb9884b',1,'hmap::Array::Array(Vec2&lt; int &gt; shape, float value)'],['../classhmap_1_1Array.html#aad62b698ef12cfd06b3fb09e8cce7635',1,'hmap::Array::Array(const std::string &amp;filename)'],['../classhmap_1_1Array.html',1,'hmap::Array']]],
+  ['array_33',['array',['../classhmap_1_1Array.html#a96b9bd19d1212e61b4ac4eb21931b298',1,'hmap::Array::Array()'],['../classhmap_1_1Array.html#a01be0e18bcfd224e61740d49929e8023',1,'hmap::Array::Array(Vec2&lt; int &gt; shape)'],['../classhmap_1_1Array.html#a885b4f45f50f0e7d9c32e316ecb9884b',1,'hmap::Array::Array(Vec2&lt; int &gt; shape, float value)'],['../classhmap_1_1Array.html#a159f84f6af60d932d8f8984a176c9c76',1,'hmap::Array::Array(const std::string &amp;filename, bool flip_j=false)'],['../classhmap_1_1Array.html',1,'hmap::Array']]],
   ['array_20elementary_20data_20structure_20for_20building_20heightmaps_34',['&quot;Array&quot; - Elementary Data Structure for Building Heightmaps',['../index.html#autotoc_md6',1,'']]],
   ['array_2ecpp_35',['array.cpp',['../array_8cpp.html',1,'']]],
   ['array_2ehpp_36',['array.hpp',['../array_8hpp.html',1,'']]],

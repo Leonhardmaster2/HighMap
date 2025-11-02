@@ -64,7 +64,7 @@ var searchData=
   ['controlfunction_3c_20arraycontrolfunction_20_3e_61',['ControlFunction&lt; ArrayControlFunction &gt;',['../classhmap_1_1ArrayControlFunction.html#a3408081acc95c79603d132522795546a',1,'hmap::ArrayControlFunction']]],
   ['controlfunction_3c_20xycontrolfunction_20_3e_62',['ControlFunction&lt; XyControlFunction &gt;',['../classhmap_1_1XyControlFunction.html#aa788b440bd7fc55c6fb8012b1b6b0d2d',1,'hmap::XyControlFunction']]],
   ['convert_5flength_5fto_5fpixel_63',['convert_length_to_pixel',['../namespacehmap.html#ab085d07bc0e897729ca16c0dd2035fe1',1,'hmap']]],
-  ['convert_5fmat_5fto_5farray_64',['convert_mat_to_array',['../namespacehmap.html#a51bede9c24a0c1489c27d74c662eb579',1,'hmap']]],
+  ['convert_5fmat_5fto_5farray_64',['convert_mat_to_array',['../namespacehmap.html#a4fca3ce1ffb84dbc8a627b3313b1d1fb',1,'hmap']]],
   ['convolve_2ecpp_65',['convolve.cpp',['../convolve_8cpp.html',1,'']]],
   ['convolve_2ehpp_66',['convolve.hpp',['../convolve_8hpp.html',1,'']]],
   ['convolve1d_5fi_67',['convolve1d_i',['../namespacehmap.html#a9411ccef8a74e06ef51efd1f5041c7b4',1,'hmap']]],
@@ -111,5 +111,5 @@ var searchData=
   ['curvature_5frotor_108',['curvature_rotor',['../namespacehmap.html#ab983266e7db85af59452a75364a6bad8',1,'hmap::curvature_rotor()'],['../namespacehmap_1_1gpu.html#a664f80c07e3609c285c98ed5f8bb2be3',1,'hmap::gpu::curvature_rotor()']]],
   ['curvature_5fvertical_5flongitudinal_109',['curvature_vertical_longitudinal',['../namespacehmap.html#ab2de0fa5e51719f4139d0fc0309a9f7f',1,'hmap::curvature_vertical_longitudinal()'],['../namespacehmap_1_1gpu.html#aec95543aaf6a305eb2f7b85cd3dd54d3',1,'hmap::gpu::curvature_vertical_longitudinal()']]],
   ['curvature_5fvertical_5fprofile_110',['curvature_vertical_profile',['../namespacehmap.html#ac56ceece101a652bd52592149e031a41',1,'hmap::curvature_vertical_profile()'],['../namespacehmap_1_1gpu.html#ad1529cdd1f7e79e385e138f1005c7e74',1,'hmap::gpu::curvature_vertical_profile()']]],
-  ['cv_5fmat_5fto_5farray_111',['cv_mat_to_array',['../namespacehmap.html#a457cc8fe8645d43d9c5a2aea80268147',1,'hmap']]]
+  ['cv_5fmat_5fto_5farray_111',['cv_mat_to_array',['../namespacehmap.html#a518f05118e1b9704160a7c3276a2f483',1,'hmap']]]
 ];

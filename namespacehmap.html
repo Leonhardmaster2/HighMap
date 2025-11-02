@@ -529,9 +529,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ad37e39413754484dfb342ffbfbe75c2b"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structhmap_1_1Vec3.html">Vec3</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacehmap.html#ad37e39413754484dfb342ffbfbe75c2b">normalized_vec3</a> (T x, T y, T z)</td></tr>
 <tr class="memdesc:ad37e39413754484dfb342ffbfbe75c2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a normalized 3D vector.  <br /></td></tr>
 <tr class="separator:ad37e39413754484dfb342ffbfbe75c2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a457cc8fe8645d43d9c5a2aea80268147" id="r_a457cc8fe8645d43d9c5a2aea80268147"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a457cc8fe8645d43d9c5a2aea80268147">cv_mat_to_array</a> (const cv::Mat &amp;mat, bool remap_values=true)</td></tr>
-<tr class="memdesc:a457cc8fe8645d43d9c5a2aea80268147"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts an OpenCV <code>cv::Mat</code> to a 2D <code><a class="el" href="classhmap_1_1Array.html" title="Array class, helper to manipulate 2D float array with &quot;(i, j)&quot; indexing.">Array</a></code> with optional value scaling to [0, 1].  <br /></td></tr>
-<tr class="separator:a457cc8fe8645d43d9c5a2aea80268147"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a518f05118e1b9704160a7c3276a2f483" id="r_a518f05118e1b9704160a7c3276a2f483"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a518f05118e1b9704160a7c3276a2f483">cv_mat_to_array</a> (const cv::Mat &amp;mat, bool remap_values=true, bool flip_j=false)</td></tr>
+<tr class="memdesc:a518f05118e1b9704160a7c3276a2f483"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts an OpenCV <code>cv::Mat</code> to a 2D <code><a class="el" href="classhmap_1_1Array.html" title="Array class, helper to manipulate 2D float array with &quot;(i, j)&quot; indexing.">Array</a></code> with optional value scaling to [0, 1].  <br /></td></tr>
+<tr class="separator:a518f05118e1b9704160a7c3276a2f483"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa0b0e92bd8fa6fdc51ccb39f7a382e92" id="r_aa0b0e92bd8fa6fdc51ccb39f7a382e92"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#aa0b0e92bd8fa6fdc51ccb39f7a382e92">alter_elevation</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, const <a class="el" href="classhmap_1_1Cloud.html">Cloud</a> &amp;cloud, int ir, float footprint_ratio=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, <a class="el" href="structhmap_1_1Vec2.html">Vec2</a>&lt; float &gt; shift={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>}, <a class="el" href="structhmap_1_1Vec2.html">Vec2</a>&lt; float &gt; scale={1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>})</td></tr>
 <tr class="memdesc:aa0b0e92bd8fa6fdc51ccb39f7a382e92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Point-wise alteration: locally enforce a new elevation value while maintaining the 'shape' of the heightmap.  <br /></td></tr>
 <tr class="separator:aa0b0e92bd8fa6fdc51ccb39f7a382e92"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -857,9 +857,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a90b6cad473f30aa0aa92158e5af7ee7f" id="r_a90b6cad473f30aa0aa92158e5af7ee7f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a90b6cad473f30aa0aa92158e5af7ee7f">export_tiled</a> (const std::string &amp;fname_radical, const std::string &amp;fname_extension, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, const <a class="el" href="structhmap_1_1Vec2.html">Vec2</a>&lt; int &gt; &amp;tiling, int leading_zeros=0, int depth=CV_8U, bool overlapping_edges=false, bool reverse_tile_y_indexing=false)</td></tr>
 <tr class="memdesc:a90b6cad473f30aa0aa92158e5af7ee7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exports a 2D array as a set of grayscale PNG image tiles.  <br /></td></tr>
 <tr class="separator:a90b6cad473f30aa0aa92158e5af7ee7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af6f0426c8791970cf51e5ab44f6760fc" id="r_af6f0426c8791970cf51e5ab44f6760fc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#af6f0426c8791970cf51e5ab44f6760fc">read_to_array</a> (const std::string &amp;fname)</td></tr>
-<tr class="memdesc:af6f0426c8791970cf51e5ab44f6760fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads an image file and converts it to a 2D array.  <br /></td></tr>
-<tr class="separator:af6f0426c8791970cf51e5ab44f6760fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc812ae7d5ab25071e94faaf7be03bca" id="r_acc812ae7d5ab25071e94faaf7be03bca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#acc812ae7d5ab25071e94faaf7be03bca">read_to_array</a> (const std::string &amp;fname, bool flip_j=false)</td></tr>
+<tr class="memdesc:acc812ae7d5ab25071e94faaf7be03bca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads an image file and converts it to a 2D array.  <br /></td></tr>
+<tr class="separator:acc812ae7d5ab25071e94faaf7be03bca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a466d4275bb86ca9ca603c9d4192f931a" id="r_a466d4275bb86ca9ca603c9d4192f931a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a466d4275bb86ca9ca603c9d4192f931a">write_raw_16bit</a> (const std::string &amp;fname, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array)</td></tr>
 <tr class="memdesc:a466d4275bb86ca9ca603c9d4192f931a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exports an array to a 16-bit 'raw' file format, commonly used for Unity terrain imports.  <br /></td></tr>
 <tr class="separator:a466d4275bb86ca9ca603c9d4192f931a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -2263,9 +2263,9 @@ Functions</h2></td></tr>
 <tr class="separator:ab47e8203dd4ddf61741a3a8e25a5e2f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a18b032bb8f2dd4a18b9e0944dae85ae8" id="r_a18b032bb8f2dd4a18b9e0944dae85ae8"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a18b032bb8f2dd4a18b9e0944dae85ae8">operator-</a> (const float value, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array)</td></tr>
 <tr class="separator:a18b032bb8f2dd4a18b9e0944dae85ae8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51bede9c24a0c1489c27d74c662eb579" id="r_a51bede9c24a0c1489c27d74c662eb579"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a51bede9c24a0c1489c27d74c662eb579"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a51bede9c24a0c1489c27d74c662eb579">convert_mat_to_array</a> (const cv::Mat &amp;mat, <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array)</td></tr>
-<tr class="separator:a51bede9c24a0c1489c27d74c662eb579"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fca3ce1ffb84dbc8a627b3313b1d1fb" id="r_a4fca3ce1ffb84dbc8a627b3313b1d1fb"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a4fca3ce1ffb84dbc8a627b3313b1d1fb"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a4fca3ce1ffb84dbc8a627b3313b1d1fb">convert_mat_to_array</a> (const cv::Mat &amp;mat, <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, bool flip_j)</td></tr>
+<tr class="separator:a4fca3ce1ffb84dbc8a627b3313b1d1fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3d953aa5fcf59193b3b8b98db3f5a872" id="r_a3d953aa5fcf59193b3b8b98db3f5a872"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a3d953aa5fcf59193b3b8b98db3f5a872">square_fill_md</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, <a class="el" href="structhmap_1_1Mat.html">Mat</a>&lt; int &gt; &amp;is_done, int i1, int i2, int j1, int j2, float noise_scale, std::mt19937 gen, std::uniform_real_distribution&lt; float &gt; dis)</td></tr>
 <tr class="separator:a3d953aa5fcf59193b3b8b98db3f5a872"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af5440364a346b297246885e95793ef45" id="r_af5440364a346b297246885e95793ef45"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#af5440364a346b297246885e95793ef45">square_md</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, <a class="el" href="structhmap_1_1Mat.html">Mat</a>&lt; int &gt; &amp;is_done, int <a class="el" href="namespacehmap.html#ab00af49fafd706242919ea18dc4817ee">step</a>, float noise_scale, std::mt19937 gen, std::uniform_real_distribution&lt; float &gt; dis)</td></tr>
@@ -2977,8 +2977,8 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a id="a457cc8fe8645d43d9c5a2aea80268147" name="a457cc8fe8645d43d9c5a2aea80268147"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a457cc8fe8645d43d9c5a2aea80268147">&#9670;&#160;</a></span>cv_mat_to_array()</h2>
+<a id="a518f05118e1b9704160a7c3276a2f483" name="a518f05118e1b9704160a7c3276a2f483"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a518f05118e1b9704160a7c3276a2f483">&#9670;&#160;</a></span>cv_mat_to_array()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2993,7 +2993,13 @@ template&lt;typename T &gt; </div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>remap_values</em> = <code>true</code>&#160;</td>
+          <td class="paramname"><em>remap_values</em> = <code>true</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>flip_j</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -5255,7 +5261,7 @@ template&lt;typename T &gt; </div>
 <div class="line">  col3.<a class="code hl_function" href="classhmap_1_1Tensor.html#afe46210c8fa2c76229cc4099d63f237e">to_png</a>(<span class="stringliteral">&quot;ex_colorize_slope_height_heatmap.png&quot;</span>);</div>
 <div class="line">}</div>
 <div class="ttc" id="aclasshmap_1_1Tensor_html"><div class="ttname"><a href="classhmap_1_1Tensor.html">hmap::Tensor</a></div><div class="ttdoc">A class to represent a multi-dimensional tensor.</div><div class="ttdef"><b>Definition</b> tensor.hpp:37</div></div>
-<div class="ttc" id="aclasshmap_1_1Tensor_html_afe46210c8fa2c76229cc4099d63f237e"><div class="ttname"><a href="classhmap_1_1Tensor.html#afe46210c8fa2c76229cc4099d63f237e">hmap::Tensor::to_png</a></div><div class="ttdeci">void to_png(const std::string &amp;fname, int depth=CV_8U)</div><div class="ttdoc">Saves the Tensor as a PNG image file.</div><div class="ttdef"><b>Definition</b> tensor.cpp:139</div></div>
+<div class="ttc" id="aclasshmap_1_1Tensor_html_afe46210c8fa2c76229cc4099d63f237e"><div class="ttname"><a href="classhmap_1_1Tensor.html#afe46210c8fa2c76229cc4099d63f237e">hmap::Tensor::to_png</a></div><div class="ttdeci">void to_png(const std::string &amp;fname, int depth=CV_8U)</div><div class="ttdoc">Saves the Tensor as a PNG image file.</div><div class="ttdef"><b>Definition</b> tensor.cpp:142</div></div>
 <div class="ttc" id="anamespacehmap_html_aa60f142e186d43472cdda569c03b31b2"><div class="ttname"><a href="namespacehmap.html#aa60f142e186d43472cdda569c03b31b2">hmap::colorize_slope_height_heatmap</a></div><div class="ttdeci">Tensor colorize_slope_height_heatmap(const Array &amp;array, int cmap)</div><div class="ttdoc">Colorizes a slope height heatmap based on the gradient norms of a given array.</div><div class="ttdef"><b>Definition</b> colorize.cpp:191</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_colorize_slope_height_heatmap.png" alt=""/>
@@ -11869,8 +11875,8 @@ The y-axis is flipped so that higher indices appear lower in the text output. </
 
 </div>
 </div>
-<a id="af6f0426c8791970cf51e5ab44f6760fc" name="af6f0426c8791970cf51e5ab44f6760fc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af6f0426c8791970cf51e5ab44f6760fc">&#9670;&#160;</a></span>read_to_array()</h2>
+<a id="acc812ae7d5ab25071e94faaf7be03bca" name="acc812ae7d5ab25071e94faaf7be03bca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc812ae7d5ab25071e94faaf7be03bca">&#9670;&#160;</a></span>read_to_array()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -11879,8 +11885,18 @@ The y-axis is flipped so that higher indices appear lower in the text output. </
           <td class="memname"><a class="el" href="classhmap_1_1Array.html">Array</a> hmap::read_to_array </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>fname</em></td><td>)</td>
+          <td class="paramname"><em>fname</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>flip_j</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -25861,7 +25877,7 @@ h}{\partial y}
 <div class="line">  hd.to_png(<span class="stringliteral">&quot;ex_mix_normal_map_rgba5.png&quot;</span>);</div>
 <div class="line">  he.to_png(<span class="stringliteral">&quot;ex_mix_normal_map_rgba6.png&quot;</span>);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclasshmap_1_1Tensor_html_a59e7ac9122e705d05f6e8b00a26ef738"><div class="ttname"><a href="classhmap_1_1Tensor.html#a59e7ac9122e705d05f6e8b00a26ef738">hmap::Tensor::get_slice</a></div><div class="ttdeci">Array get_slice(int k) const</div><div class="ttdoc">Get a 2D slice of the tensor along the z-axis.</div><div class="ttdef"><b>Definition</b> tensor.cpp:62</div></div>
+<div class="ttc" id="aclasshmap_1_1Tensor_html_a59e7ac9122e705d05f6e8b00a26ef738"><div class="ttname"><a href="classhmap_1_1Tensor.html#a59e7ac9122e705d05f6e8b00a26ef738">hmap::Tensor::get_slice</a></div><div class="ttdeci">Array get_slice(int k) const</div><div class="ttdoc">Get a 2D slice of the tensor along the z-axis.</div><div class="ttdef"><b>Definition</b> tensor.cpp:65</div></div>
 <div class="ttc" id="anamespacehmap_html_a2751ce7799f172484dd06a1b72d168da"><div class="ttname"><a href="namespacehmap.html#a2751ce7799f172484dd06a1b72d168da">hmap::mix_normal_map_rgba</a></div><div class="ttdeci">HeightmapRGBA mix_normal_map_rgba(HeightmapRGBA &amp;nmap_base, HeightmapRGBA &amp;nmap_detail, float detail_scaling=1.f, NormalMapBlendingMethod blending_method=NormalMapBlendingMethod::NMAP_DERIVATIVE)</div><div class="ttdoc">Mixes two normal maps in RGBA format to create a blended normal map.</div><div class="ttdef"><b>Definition</b> heightmap_rgba.cpp:330</div></div>
 <div class="ttc" id="anamespacehmap_html_a9880bdc35440162c24103a5df4c137a6"><div class="ttname"><a href="namespacehmap.html#a9880bdc35440162c24103a5df4c137a6">hmap::cone</a></div><div class="ttdeci">Array cone(Vec2&lt; int &gt; shape)</div><div class="ttdoc">Generates a cone-shaped kernel array.</div><div class="ttdef"><b>Definition</b> kernels.cpp:56</div></div>
 <div class="ttc" id="anamespacehmap_html_abc952321c99ec11d60b4037e3d27db9ba25b053ebbd8db9d348737e6f343c61bf"><div class="ttname"><a href="namespacehmap.html#abc952321c99ec11d60b4037e3d27db9ba25b053ebbd8db9d348737e6f343c61bf">hmap::NMAP_UDN</a></div><div class="ttdeci">@ NMAP_UDN</div><div class="ttdef"><b>Definition</b> heightmap.hpp:28</div></div>
@@ -45049,8 +45065,8 @@ off" values that fall below the threshold, which can be useful for filtering out
 
 </div>
 </div>
-<a id="a51bede9c24a0c1489c27d74c662eb579" name="a51bede9c24a0c1489c27d74c662eb579"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a51bede9c24a0c1489c27d74c662eb579">&#9670;&#160;</a></span>convert_mat_to_array()</h2>
+<a id="a4fca3ce1ffb84dbc8a627b3313b1d1fb" name="a4fca3ce1ffb84dbc8a627b3313b1d1fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fca3ce1ffb84dbc8a627b3313b1d1fb">&#9670;&#160;</a></span>convert_mat_to_array()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -45067,7 +45083,13 @@ template&lt;typename T &gt; </div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
-          <td class="paramname"><em>array</em>&#160;</td>
+          <td class="paramname"><em>array</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>flip_j</em>&#160;</td>
         </tr>
         <tr>
           <td></td>

@@ -339,7 +339,7 @@ enum \mbox{\hyperlink{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbe}{Clamp\+Mo
 \item 
 {\footnotesize template$<$typename T $>$ }\\\mbox{\hyperlink{structhmap_1_1Vec3}{Vec3}}$<$ T $>$ \mbox{\hyperlink{namespacehmap_ad37e39413754484dfb342ffbfbe75c2b}{normalized\+\_\+vec3}} (T x, T y, T z)
 \begin{DoxyCompactList}\small\item\em Constructs a normalized 3D vector. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a457cc8fe8645d43d9c5a2aea80268147}{cv\+\_\+mat\+\_\+to\+\_\+array}} (const cv\+::\+Mat \&mat, bool remap\+\_\+values=true)
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a518f05118e1b9704160a7c3276a2f483}{cv\+\_\+mat\+\_\+to\+\_\+array}} (const cv\+::\+Mat \&mat, bool remap\+\_\+values=true, bool flip\+\_\+j=false)
 \begin{DoxyCompactList}\small\item\em Converts an Open\+CV {\ttfamily cv\+::\+Mat} to a 2D {\ttfamily \doxylink{classhmap_1_1Array}{Array}} with optional value scaling to \mbox{[}0, 1\mbox{]}. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_aa0b0e92bd8fa6fdc51ccb39f7a382e92}{alter\+\_\+elevation}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, const \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} \&cloud, int ir, float footprint\+\_\+ratio=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ float $>$ shift=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ float $>$ scale=\{1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
 \begin{DoxyCompactList}\small\item\em Point-\/wise alteration\+: locally enforce a new elevation value while maintaining the \textquotesingle{}shape\textquotesingle{} of the heightmap. \end{DoxyCompactList}\item 
@@ -565,7 +565,7 @@ void \mbox{\hyperlink{namespacehmap_a32464922c39713910ebeab632e0e8fd1}{export\+\
 \begin{DoxyCompactList}\small\item\em Exports four arrays as an RGBA PNG splatmap. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a90b6cad473f30aa0aa92158e5af7ee7f}{export\+\_\+tiled}} (const std\+::string \&fname\+\_\+radical, const std\+::string \&fname\+\_\+extension, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, const \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$ \&tiling, int leading\+\_\+zeros=0, int depth=CV\+\_\+8U, bool overlapping\+\_\+edges=false, bool reverse\+\_\+tile\+\_\+y\+\_\+indexing=false)
 \begin{DoxyCompactList}\small\item\em Exports a 2D array as a set of grayscale PNG image tiles. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_af6f0426c8791970cf51e5ab44f6760fc}{read\+\_\+to\+\_\+array}} (const std\+::string \&fname)
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_acc812ae7d5ab25071e94faaf7be03bca}{read\+\_\+to\+\_\+array}} (const std\+::string \&fname, bool flip\+\_\+j=false)
 \begin{DoxyCompactList}\small\item\em Reads an image file and converts it to a 2D array. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a466d4275bb86ca9ca603c9d4192f931a}{write\+\_\+raw\+\_\+16bit}} (const std\+::string \&fname, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array)
 \begin{DoxyCompactList}\small\item\em Exports an array to a 16-\/bit \textquotesingle{}raw\textquotesingle{} file format, commonly used for Unity terrain imports. \end{DoxyCompactList}\item 
@@ -1541,7 +1541,7 @@ void \mbox{\hyperlink{namespacehmap_a2dba417aca5a0dcd02509617939d741b}{warp\+\_\
 \item 
 const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a18b032bb8f2dd4a18b9e0944dae85ae8}{operator-\/}} (const float value, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array)
 \item 
-{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{namespacehmap_a51bede9c24a0c1489c27d74c662eb579}{convert\+\_\+mat\+\_\+to\+\_\+array}} (const cv\+::\+Mat \&mat, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array)
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{namespacehmap_a4fca3ce1ffb84dbc8a627b3313b1d1fb}{convert\+\_\+mat\+\_\+to\+\_\+array}} (const cv\+::\+Mat \&mat, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, bool flip\+\_\+j)
 \item 
 void \mbox{\hyperlink{namespacehmap_a3d953aa5fcf59193b3b8b98db3f5a872}{square\+\_\+fill\+\_\+md}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, \mbox{\hyperlink{structhmap_1_1Mat}{Mat}}$<$ int $>$ \&is\+\_\+done, int i1, int i2, int j1, int j2, float noise\+\_\+scale, std\+::mt19937 gen, std\+::uniform\+\_\+real\+\_\+distribution$<$ float $>$ dis)
 \item 
@@ -2399,11 +2399,11 @@ This function takes three components of a vector (x, y, z), creates a Vec3$<$\+T
 \begin{DoxyReturn}{Returns}
 Vec3$<$\+T$>$ A normalized 3D vector of type T. 
 \end{DoxyReturn}
-\Hypertarget{namespacehmap_a457cc8fe8645d43d9c5a2aea80268147}\label{namespacehmap_a457cc8fe8645d43d9c5a2aea80268147} 
+\Hypertarget{namespacehmap_a518f05118e1b9704160a7c3276a2f483}\label{namespacehmap_a518f05118e1b9704160a7c3276a2f483} 
 \index{hmap@{hmap}!cv\_mat\_to\_array@{cv\_mat\_to\_array}}
 \index{cv\_mat\_to\_array@{cv\_mat\_to\_array}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{cv\_mat\_to\_array()}{cv\_mat\_to\_array()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::cv\+\_\+mat\+\_\+to\+\_\+array (\begin{DoxyParamCaption}\item[{const cv\+::\+Mat \&}]{mat,  }\item[{bool}]{remap\+\_\+values = {\ttfamily true} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::cv\+\_\+mat\+\_\+to\+\_\+array (\begin{DoxyParamCaption}\item[{const cv\+::\+Mat \&}]{mat,  }\item[{bool}]{remap\+\_\+values = {\ttfamily true},  }\item[{bool}]{flip\+\_\+j = {\ttfamily false} }\end{DoxyParamCaption})}
 
 
 
@@ -7195,11 +7195,11 @@ Each tile is extracted using slicing, adjusted for overlap if specified, and the
  \begin{Desc}
 \item[Examples]\par
 \mbox{\hyperlink{_2home_2runner_2work_2HighMap_2HighMap_2HighMap_2include_2highmap_2export_8hpp-example}{/home/runner/work/\+High\+Map/\+High\+Map/\+High\+Map/include/highmap/export.\+hpp}}.\end{Desc}
-\Hypertarget{namespacehmap_af6f0426c8791970cf51e5ab44f6760fc}\label{namespacehmap_af6f0426c8791970cf51e5ab44f6760fc} 
+\Hypertarget{namespacehmap_acc812ae7d5ab25071e94faaf7be03bca}\label{namespacehmap_acc812ae7d5ab25071e94faaf7be03bca} 
 \index{hmap@{hmap}!read\_to\_array@{read\_to\_array}}
 \index{read\_to\_array@{read\_to\_array}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{read\_to\_array()}{read\_to\_array()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::read\+\_\+to\+\_\+array (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{fname }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::read\+\_\+to\+\_\+array (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{fname,  }\item[{bool}]{flip\+\_\+j = {\ttfamily false} }\end{DoxyParamCaption})}
 
 
 
@@ -26869,12 +26869,12 @@ A new 2D array that is the result of applying the zoom effect to the input {\ttf
 \begin{DoxyReturn}{Returns}
 \doxylink{classhmap_1_1Array}{Array} The resulting \doxylink{classhmap_1_1Array}{Array} after subtraction. 
 \end{DoxyReturn}
-\Hypertarget{namespacehmap_a51bede9c24a0c1489c27d74c662eb579}\label{namespacehmap_a51bede9c24a0c1489c27d74c662eb579} 
+\Hypertarget{namespacehmap_a4fca3ce1ffb84dbc8a627b3313b1d1fb}\label{namespacehmap_a4fca3ce1ffb84dbc8a627b3313b1d1fb} 
 \index{hmap@{hmap}!convert\_mat\_to\_array@{convert\_mat\_to\_array}}
 \index{convert\_mat\_to\_array@{convert\_mat\_to\_array}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{convert\_mat\_to\_array()}{convert\_mat\_to\_array()}}
 {\footnotesize\ttfamily template$<$typename T $>$ \\
-void hmap\+::convert\+\_\+mat\+\_\+to\+\_\+array (\begin{DoxyParamCaption}\item[{const cv\+::\+Mat \&}]{mat,  }\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array }\end{DoxyParamCaption})}
+void hmap\+::convert\+\_\+mat\+\_\+to\+\_\+array (\begin{DoxyParamCaption}\item[{const cv\+::\+Mat \&}]{mat,  }\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{bool}]{flip\+\_\+j }\end{DoxyParamCaption})}
 
 \Hypertarget{namespacehmap_a3d953aa5fcf59193b3b8b98db3f5a872}\label{namespacehmap_a3d953aa5fcf59193b3b8b98db3f5a872} 
 \index{hmap@{hmap}!square\_fill\_md@{square\_fill\_md}}

@@ -1,5 +1,5 @@
 var opencv__wrapper_8cpp =
 [
-    [ "convert_mat_to_array", "opencv__wrapper_8cpp.html#a51bede9c24a0c1489c27d74c662eb579", null ],
-    [ "cv_mat_to_array", "opencv__wrapper_8cpp.html#a457cc8fe8645d43d9c5a2aea80268147", null ]
+    [ "convert_mat_to_array", "opencv__wrapper_8cpp.html#a4fca3ce1ffb84dbc8a627b3313b1d1fb", null ],
+    [ "cv_mat_to_array", "opencv__wrapper_8cpp.html#a518f05118e1b9704160a7c3276a2f483", null ]
 ];

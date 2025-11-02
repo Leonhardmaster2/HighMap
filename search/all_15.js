@@ -1,7 +1,7 @@
 var searchData=
 [
   ['t0_0',['t0',['../structhmap_1_1Recorder.html#a0ec174294138be0e1d677a7c33011959',1,'hmap::Recorder']]],
-  ['tensor_1',['tensor',['../classhmap_1_1Tensor.html',1,'hmap::Tensor'],['../classhmap_1_1Tensor.html#a8204c890b1f99c0cc60caed438f00ee0',1,'hmap::Tensor::Tensor(const std::string &amp;fname)'],['../classhmap_1_1Tensor.html#a767c4e297a0ab687fbcb181598248597',1,'hmap::Tensor::Tensor(Vec2&lt; int &gt; shape_xy, int shape_z)'],['../classhmap_1_1Tensor.html#af28dd5f54026bd09f8ef33d4319b816b',1,'hmap::Tensor::Tensor(Vec3&lt; int &gt; shape)']]],
+  ['tensor_1',['tensor',['../classhmap_1_1Tensor.html',1,'hmap::Tensor'],['../classhmap_1_1Tensor.html#a4a74a558391c1f1129b331c359decdc3',1,'hmap::Tensor::Tensor(const std::string &amp;fname, bool flip_j=false)'],['../classhmap_1_1Tensor.html#a767c4e297a0ab687fbcb181598248597',1,'hmap::Tensor::Tensor(Vec2&lt; int &gt; shape_xy, int shape_z)'],['../classhmap_1_1Tensor.html#af28dd5f54026bd09f8ef33d4319b816b',1,'hmap::Tensor::Tensor(Vec3&lt; int &gt; shape)']]],
   ['tensor_2ecpp_2',['tensor.cpp',['../tensor_8cpp.html',1,'']]],
   ['tensor_2ehpp_3',['tensor.hpp',['../tensor_8hpp.html',1,'']]],
   ['terrace_4',['terrace',['../namespacehmap.html#a878694830f25c7c79f4d9a0a723a5148',1,'hmap::terrace(Array &amp;array, uint seed, int nlevels, const Array *p_mask, float gain=0.9f, float noise_ratio=0.f, const Array *p_noise=nullptr, float vmin=0.f, float vmax=-1.f)'],['../namespacehmap.html#a5a852e7e8cb38a8c3231d4867995ae1c',1,'hmap::terrace(Array &amp;array, uint seed, int nlevels, float gain=0.9f, float noise_ratio=0.f, const Array *p_noise=nullptr, float vmin=0.f, float vmax=-1.f)']]],
