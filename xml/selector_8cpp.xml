@@ -324,7 +324,7 @@
 <codeline lineno="314"><highlight class="normal"><sp/><sp/>Array<sp/>facc<sp/>=<sp/><ref refid="namespacehmap_1a58ba4910af868f70849f343e0c73adf3" kindref="member">flow_accumulation_dinf</ref>(array,<sp/>talus_ref);</highlight></codeline>
 <codeline lineno="315"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>vmax<sp/>=<sp/>clipping_ratio<sp/>*<sp/>std::pow(facc.sum()<sp/>/<sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)facc.size(),<sp/>0.5f);</highlight></codeline>
 <codeline lineno="316"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ae6dfd87b0368629657c3138dbf24cbc4" kindref="member">clamp</ref>(facc,<sp/>0.f,<sp/>vmax);</highlight></codeline>
-<codeline lineno="317"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>facc;</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>facc<sp/>/<sp/>vmax;</highlight></codeline>
 <codeline lineno="318"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="319"><highlight class="normal"></highlight></codeline>
 <codeline lineno="320"><highlight class="normal">Array<sp/><ref refid="namespacehmap_1ac6dcaa05c7c34302fa2560ddedbb9931" kindref="member">select_transitions</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array<sp/>&amp;array1,</highlight></codeline>

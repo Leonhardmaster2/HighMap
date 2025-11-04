@@ -1,5 +1,6 @@
 var NAVTREEINDEX14 =
 {
+"namespacemembers_r.html":[3,1,0,18],
 "namespacemembers_s.html":[3,1,0,19],
 "namespacemembers_t.html":[3,1,0,20],
 "namespacemembers_u.html":[3,1,0,21],
@@ -248,6 +249,5 @@ var NAVTREEINDEX14 =
 "primitives__gpu_8cpp.html#a2a14aa1a12ce7308b7cb553ea89b836d":[5,0,1,1,26,10,23],
 "primitives__gpu_8cpp.html#a322260e971f4dec19ec8bc270e7cc461":[5,0,1,1,26,10,12],
 "primitives__gpu_8cpp.html#a450f5b26f42b6f06be3e1e131f6aaf86":[5,0,1,1,26,10,11],
-"primitives__gpu_8cpp.html#a4927a1382b383a5ceb9071f51bd5abf9":[5,0,1,1,26,10,14],
-"primitives__gpu_8cpp.html#a50332f79ca9b2548089359f5ad4b8ffd":[5,0,1,1,26,10,10]
+"primitives__gpu_8cpp.html#a4927a1382b383a5ceb9071f51bd5abf9":[5,0,1,1,26,10,14]
 };
