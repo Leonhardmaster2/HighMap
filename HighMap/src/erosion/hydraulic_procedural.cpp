@@ -17,11 +17,7 @@
 namespace hmap
 {
 
-//----------------------------------------------------------------------
-// Helper
-//----------------------------------------------------------------------
-
-std::function<float(float)> helper_get_profile_function(
+std::function<float(float)> get_erosion_profile_function(
     const ErosionProfile &erosion_profile,
     float                 delta,
     float                &profile_avg)
@@ -210,7 +206,7 @@ void hydraulic_procedural(Array         &z,
   // --- apply profile
 
   float                       profile_avg = 0.f;
-  std::function<float(float)> lambda_p = helper_get_profile_function(
+  std::function<float(float)> lambda_p = get_erosion_profile_function(
       erosion_profile,
       delta,
       profile_avg);

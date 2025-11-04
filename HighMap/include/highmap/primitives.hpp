@@ -18,6 +18,7 @@
 #include "FastNoiseLite.h"
 
 #include "highmap/array.hpp"
+#include "highmap/erosion.hpp"
 #include "highmap/functions.hpp"
 
 #define HMAP_GRADIENT_OFFSET 0.001f
@@ -246,6 +247,80 @@ Array cone(Vec2<int>    shape,
            const Array *p_noise_x = nullptr,
            const Array *p_noise_y = nullptr,
            Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
+ * @brief Generates a complex conical heightfield with valleys, directional
+ * bias, and radial waviness.
+ *
+ * This function procedurally constructs an island-like cone shape inside a 2D
+ * array. The height at each position is determined from the normalized radial
+ * distance to the center, with optional modulation by valleys, directional
+ * bias, and radial waviness. An erosion profile is applied to shape the
+ * valleys, and an optional control map can modulate the valley amplitude
+ * locally. The resulting height values are clamped to [0, 1].
+ *
+ * @param  shape               Output array dimensions (width, height).
+ * @param  alpha               Exponent controlling the steepness of the cone
+ *                             slope.
+ * @param  radius              Effective radius of the island (in coordinate
+ *                             space units).
+ * @param  valley_amp          Global amplitude of valley depressions.
+ * @param  valley_nb           Number of valleys around the island.
+ * @param  valley_decay_ratio  Controls how valley amplitude decays toward the
+ *                             center.
+ * @param  valley_angle0       Angular offset of the first valley (in degrees).
+ * @param  erosion_profile     Erosion profile type used for shaping valley
+ *                             cross-sections.
+ * @param  erosion_delta       Smoothing parameter for the erosion profile
+ *                             function.
+ * @param  radial_waviness_amp Amplitude of radial sinusoidal perturbations
+ *                             (coastal waviness).
+ * @param  radial_waviness_kw  Frequency multiplier for radial waviness.
+ * @param  bias_angle          Direction (in degrees) of the slope bias (e.g.
+ *                             wind or sun exposure).
+ * @param  bias_amp            Amplitude of the directional bias effect.
+ * @param  bias_exponent       Controls how bias strength varies with radius.
+ * @param  center              Center position of the cone in coordinate space.
+ * @param  p_ctrl_param        Optional control array; its values modulate the
+ *                             local valley amplitude. If nullptr, the valley
+ *                             amplitude is uniform.
+ * @param  p_noise_x           Optional X-displacement noise field for
+ *                             coordinate perturbation.
+ * @param  p_noise_y           Optional Y-displacement noise field for
+ *                             coordinate perturbation.
+ * @param  bbox                Bounding box defining the world coordinates
+ *                             covered by the array.
+ *
+ * @return                     A 2D Array containing the generated heightfield
+ *                             values in the range [0, 1].
+ *
+ * **Example**
+ * @include ex_cone.cpp
+ *
+ * **Result**
+ * @image html ex_cone.png
+ */
+
+Array cone_complex(
+    Vec2<int>             shape,
+    float                 alpha,
+    float                 radius = 0.5f,
+    float                 valley_amp = 0.2f,
+    int                   valley_nb = 5,
+    float                 valley_decay_ratio = 0.5f,
+    float                 valley_angle0 = 15.f,
+    const ErosionProfile &erosion_profile = ErosionProfile::TRIANGLE_GRENIER,
+    float                 erosion_delta = 0.01f,
+    float                 radial_waviness_amp = 0.05f,
+    float                 radial_waviness_kw = 2.f,
+    float                 bias_angle = 30.f,
+    float                 bias_amp = 0.75f,
+    float                 bias_exponent = 1.f,
+    Vec2<float>           center = {0.5f, 0.5f},
+    const Array          *p_ctrl_param = nullptr,
+    const Array          *p_noise_x = nullptr,
+    const Array          *p_noise_y = nullptr,
+    Vec4<float>           bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief Generates a smooth conical heightmap using a sigmoid-based profile.

@@ -50,6 +50,11 @@ enum ErosionProfile : int
   TRIANGLE_SMOOTH,
 };
 
+std::function<float(float)> get_erosion_profile_function(
+    const ErosionProfile &erosion_profile,
+    float                 delta,
+    float                &profile_avg);
+
 /**
  * @brief Simulates terrain diffusion due to coastal erosion.
  *
