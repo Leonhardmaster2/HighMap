@@ -37104,7 +37104,7 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z1<sp/>=<sp/><ref refid="namespacehmap_1a9880bdc35440162c24103a5df4c137a6" kindref="member">hmap::cone</ref>(shape,<sp/>4.f);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z2<sp/>=<sp/><ref refid="namespacehmap_1af6f5880a68329be490f99aa779f3c1d8" kindref="member">hmap::cone_sigmoid</ref>(shape,<sp/>0.8f);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z3<sp/>=<sp/><ref refid="namespacehmap_1a953721b337fc4323143c24bcb3b1314f" kindref="member">hmap::cone_complex</ref>(shape,<sp/>1.2f);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z3<sp/>=<sp/><ref refid="namespacehmap_1ac5cc21b082835193908964bcb380d1c3" kindref="member">hmap::cone_complex</ref>(shape,<sp/>1.2f);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_cone.png&quot;</highlight><highlight class="normal">,<sp/>{z1,<sp/>z2,<sp/>z3},<sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a744ead0b170889e33126895264f1af2c" kindref="member">hmap::Cmap::MAGMA</ref>);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -37116,10 +37116,10 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         </inbodydescription>
         <location file="HighMap/src/primitives/cone.cpp" line="20" column="7" bodyfile="HighMap/src/primitives/cone.cpp" bodystart="20" bodyend="71" declfile="HighMap/include/highmap/primitives.hpp" declline="242" declcolumn="7"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1a953721b337fc4323143c24bcb3b1314f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacehmap_1ac5cc21b082835193908964bcb380d1c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
         <definition>Array hmap::cone_complex</definition>
-        <argsstring>(Vec2&lt; int &gt; shape, float alpha, float radius=0.5f, float valley_amp=0.2f, int valley_nb=5, float valley_decay_ratio=0.5f, float valley_angle0=15.f, const ErosionProfile &amp;erosion_profile=ErosionProfile::TRIANGLE_GRENIER, float erosion_delta=0.01f, float radial_waviness_amp=0.05f, float radial_waviness_kw=2.f, float bias_angle=30.f, float bias_amp=0.75f, float bias_exponent=1.f, Vec2&lt; float &gt; center={0.5f, 0.5f}, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f})</argsstring>
+        <argsstring>(Vec2&lt; int &gt; shape, float alpha, float radius=0.5f, bool smooth_profile=true, float valley_amp=0.2f, int valley_nb=5, float valley_decay_ratio=0.5f, float valley_angle0=15.f, const ErosionProfile &amp;erosion_profile=ErosionProfile::TRIANGLE_GRENIER, float erosion_delta=0.01f, float radial_waviness_amp=0.05f, float radial_waviness_kw=2.f, float bias_angle=30.f, float bias_amp=0.75f, float bias_exponent=1.f, Vec2&lt; float &gt; center={0.5f, 0.5f}, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f})</argsstring>
         <name>cone_complex</name>
         <qualifiedname>hmap::cone_complex</qualifiedname>
         <param>
@@ -37134,6 +37134,11 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
           <type>float</type>
           <declname>radius</declname>
           <defval>0.5<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>smooth_profile</declname>
+          <defval>true</defval>
         </param>
         <param>
           <type>float</type>
@@ -37383,7 +37388,7 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z1<sp/>=<sp/><ref refid="namespacehmap_1a9880bdc35440162c24103a5df4c137a6" kindref="member">hmap::cone</ref>(shape,<sp/>4.f);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z2<sp/>=<sp/><ref refid="namespacehmap_1af6f5880a68329be490f99aa779f3c1d8" kindref="member">hmap::cone_sigmoid</ref>(shape,<sp/>0.8f);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z3<sp/>=<sp/><ref refid="namespacehmap_1a953721b337fc4323143c24bcb3b1314f" kindref="member">hmap::cone_complex</ref>(shape,<sp/>1.2f);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z3<sp/>=<sp/><ref refid="namespacehmap_1ac5cc21b082835193908964bcb380d1c3" kindref="member">hmap::cone_complex</ref>(shape,<sp/>1.2f);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_cone.png&quot;</highlight><highlight class="normal">,<sp/>{z1,<sp/>z2,<sp/>z3},<sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a744ead0b170889e33126895264f1af2c" kindref="member">hmap::Cmap::MAGMA</ref>);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -37393,7 +37398,7 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/cone.cpp" line="73" column="7" bodyfile="HighMap/src/primitives/cone.cpp" bodystart="73" bodyend="146" declfile="HighMap/include/highmap/primitives.hpp" declline="304" declcolumn="7"/>
+        <location file="HighMap/src/primitives/cone.cpp" line="73" column="7" bodyfile="HighMap/src/primitives/cone.cpp" bodystart="73" bodyend="152" declfile="HighMap/include/highmap/primitives.hpp" declline="304" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1af6f5880a68329be490f99aa779f3c1d8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -37506,7 +37511,7 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z1<sp/>=<sp/><ref refid="namespacehmap_1a9880bdc35440162c24103a5df4c137a6" kindref="member">hmap::cone</ref>(shape,<sp/>4.f);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z2<sp/>=<sp/><ref refid="namespacehmap_1af6f5880a68329be490f99aa779f3c1d8" kindref="member">hmap::cone_sigmoid</ref>(shape,<sp/>0.8f);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z3<sp/>=<sp/><ref refid="namespacehmap_1a953721b337fc4323143c24bcb3b1314f" kindref="member">hmap::cone_complex</ref>(shape,<sp/>1.2f);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z3<sp/>=<sp/><ref refid="namespacehmap_1ac5cc21b082835193908964bcb380d1c3" kindref="member">hmap::cone_complex</ref>(shape,<sp/>1.2f);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_cone.png&quot;</highlight><highlight class="normal">,<sp/>{z1,<sp/>z2,<sp/>z3},<sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a744ead0b170889e33126895264f1af2c" kindref="member">hmap::Cmap::MAGMA</ref>);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -37516,7 +37521,7 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/cone.cpp" line="148" column="7" bodyfile="HighMap/src/primitives/cone.cpp" bodystart="148" bodyend="176" declfile="HighMap/include/highmap/primitives.hpp" declline="356" declcolumn="7"/>
+        <location file="HighMap/src/primitives/cone.cpp" line="154" column="7" bodyfile="HighMap/src/primitives/cone.cpp" bodystart="154" bodyend="182" declfile="HighMap/include/highmap/primitives.hpp" declline="357" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a8f4e766dca0065219e26af946bd61946" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -37560,7 +37565,7 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives.cpp" line="102" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="102" bodyend="108" declfile="HighMap/include/highmap/primitives.hpp" declline="371" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives.cpp" line="102" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="102" bodyend="108" declfile="HighMap/include/highmap/primitives.hpp" declline="372" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a608453bf311137377626e4db29502ea1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -37726,7 +37731,7 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/geo/geo.cpp" line="94" column="7" bodyfile="HighMap/src/primitives/geo/geo.cpp" bodystart="94" bodyend="120" declfile="HighMap/include/highmap/primitives.hpp" declline="395" declcolumn="7"/>
+        <location file="HighMap/src/primitives/geo/geo.cpp" line="94" column="7" bodyfile="HighMap/src/primitives/geo/geo.cpp" bodystart="94" bodyend="120" declfile="HighMap/include/highmap/primitives.hpp" declline="396" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a1b7c375c3335b31ab4773d792365faac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -37976,7 +37981,7 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/dendry.cpp" line="19" column="7" bodyfile="HighMap/src/primitives/dendry.cpp" bodystart="19" bodyend="87" declfile="HighMap/include/highmap/primitives.hpp" declline="442" declcolumn="7"/>
+        <location file="HighMap/src/primitives/dendry.cpp" line="19" column="7" bodyfile="HighMap/src/primitives/dendry.cpp" bodystart="19" bodyend="87" declfile="HighMap/include/highmap/primitives.hpp" declline="443" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ac6e6a71b31cb483e9fec2511a4b1334a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -38076,7 +38081,7 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/dendry.cpp" line="89" column="7" bodyfile="HighMap/src/primitives/dendry.cpp" bodystart="89" bodyend="149" declfile="HighMap/include/highmap/primitives.hpp" declline="460" declcolumn="7"/>
+        <location file="HighMap/src/primitives/dendry.cpp" line="89" column="7" bodyfile="HighMap/src/primitives/dendry.cpp" bodystart="89" bodyend="149" declfile="HighMap/include/highmap/primitives.hpp" declline="461" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a144eb2c0e1e4f93e712f01cbf0fb0c06" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -38199,7 +38204,7 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/diffusion_limited_aggregation.cpp" line="14" column="7" bodyfile="HighMap/src/primitives/diffusion_limited_aggregation.cpp" bodystart="14" bodyend="100" declfile="HighMap/include/highmap/primitives.hpp" declline="522" declcolumn="7"/>
+        <location file="HighMap/src/primitives/diffusion_limited_aggregation.cpp" line="14" column="7" bodyfile="HighMap/src/primitives/diffusion_limited_aggregation.cpp" bodystart="14" bodyend="100" declfile="HighMap/include/highmap/primitives.hpp" declline="523" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a2ed7a6b1be6d02101046f0623b374177" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -38364,7 +38369,7 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives.cpp" line="110" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="110" bodyend="131" declfile="HighMap/include/highmap/primitives.hpp" declline="564" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives.cpp" line="110" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="110" bodyend="131" declfile="HighMap/include/highmap/primitives.hpp" declline="565" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a2b3fdb5bd6cbca1c8ed1b81052012ba3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -38471,7 +38476,7 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/gabor.cpp" line="19" column="7" bodyfile="HighMap/src/primitives/gabor.cpp" bodystart="19" bodyend="30" declfile="HighMap/include/highmap/primitives.hpp" declline="591" declcolumn="7"/>
+        <location file="HighMap/src/primitives/gabor.cpp" line="19" column="7" bodyfile="HighMap/src/primitives/gabor.cpp" bodystart="19" bodyend="30" declfile="HighMap/include/highmap/primitives.hpp" declline="592" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a45ca8d7a507e92e78d466f0d392f8ea3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -38620,7 +38625,7 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives.cpp" line="133" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="133" bodyend="153" declfile="HighMap/include/highmap/primitives.hpp" declline="618" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives.cpp" line="133" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="133" bodyend="153" declfile="HighMap/include/highmap/primitives.hpp" declline="619" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a03c0be3a7198eebacefcb208b0cfee99" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -38765,7 +38770,7 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/noise.cpp" line="16" column="7" bodyfile="HighMap/src/primitives/noise.cpp" bodystart="16" bodyend="39" declfile="HighMap/include/highmap/primitives.hpp" declline="645" declcolumn="7"/>
+        <location file="HighMap/src/primitives/noise.cpp" line="16" column="7" bodyfile="HighMap/src/primitives/noise.cpp" bodystart="16" bodyend="39" declfile="HighMap/include/highmap/primitives.hpp" declline="646" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a40b948c49a05c14f2d540dc1a6952130" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -39064,7 +39069,7 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/noise.cpp" line="41" column="7" bodyfile="HighMap/src/primitives/noise.cpp" bodystart="41" bodyend="75" declfile="HighMap/include/highmap/primitives.hpp" declline="685" declcolumn="7"/>
+        <location file="HighMap/src/primitives/noise.cpp" line="41" column="7" bodyfile="HighMap/src/primitives/noise.cpp" bodystart="41" bodyend="75" declfile="HighMap/include/highmap/primitives.hpp" declline="686" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ab078210e784284a05d8cb7c1ae993c51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -39376,7 +39381,7 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/noise.cpp" line="77" column="7" bodyfile="HighMap/src/primitives/noise.cpp" bodystart="77" bodyend="113" declfile="HighMap/include/highmap/primitives.hpp" declline="731" declcolumn="7"/>
+        <location file="HighMap/src/primitives/noise.cpp" line="77" column="7" bodyfile="HighMap/src/primitives/noise.cpp" bodystart="77" bodyend="113" declfile="HighMap/include/highmap/primitives.hpp" declline="732" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a01e4bb17d3969964545796ffb2658a77" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -39727,7 +39732,7 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/noise.cpp" line="115" column="7" bodyfile="HighMap/src/primitives/noise.cpp" bodystart="115" bodyend="157" declfile="HighMap/include/highmap/primitives.hpp" declline="781" declcolumn="7"/>
+        <location file="HighMap/src/primitives/noise.cpp" line="115" column="7" bodyfile="HighMap/src/primitives/noise.cpp" bodystart="115" bodyend="157" declfile="HighMap/include/highmap/primitives.hpp" declline="782" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ae8dc6a5fc536f2fdb6c3ba39408f1425" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -40027,7 +40032,7 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/noise.cpp" line="159" column="7" bodyfile="HighMap/src/primitives/noise.cpp" bodystart="159" bodyend="192" declfile="HighMap/include/highmap/primitives.hpp" declline="831" declcolumn="7"/>
+        <location file="HighMap/src/primitives/noise.cpp" line="159" column="7" bodyfile="HighMap/src/primitives/noise.cpp" bodystart="159" bodyend="192" declfile="HighMap/include/highmap/primitives.hpp" declline="832" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a97d944f42fcf5ed55a9052969bae936b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -40326,7 +40331,7 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/noise.cpp" line="194" column="7" bodyfile="HighMap/src/primitives/noise.cpp" bodystart="194" bodyend="228" declfile="HighMap/include/highmap/primitives.hpp" declline="876" declcolumn="7"/>
+        <location file="HighMap/src/primitives/noise.cpp" line="194" column="7" bodyfile="HighMap/src/primitives/noise.cpp" bodystart="194" bodyend="228" declfile="HighMap/include/highmap/primitives.hpp" declline="877" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a7e2cad4ea77481f469f5a669b8a7d99f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -40638,7 +40643,7 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/noise.cpp" line="230" column="7" bodyfile="HighMap/src/primitives/noise.cpp" bodystart="230" bodyend="266" declfile="HighMap/include/highmap/primitives.hpp" declline="922" declcolumn="7"/>
+        <location file="HighMap/src/primitives/noise.cpp" line="230" column="7" bodyfile="HighMap/src/primitives/noise.cpp" bodystart="230" bodyend="266" declfile="HighMap/include/highmap/primitives.hpp" declline="923" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a72c962b85c05f22e90ec305b058139ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -40950,7 +40955,7 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/noise.cpp" line="268" column="7" bodyfile="HighMap/src/primitives/noise.cpp" bodystart="268" bodyend="304" declfile="HighMap/include/highmap/primitives.hpp" declline="969" declcolumn="7"/>
+        <location file="HighMap/src/primitives/noise.cpp" line="268" column="7" bodyfile="HighMap/src/primitives/noise.cpp" bodystart="268" bodyend="304" declfile="HighMap/include/highmap/primitives.hpp" declline="970" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ad193bc2ad91f74c90550a260e1644687" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -41135,7 +41140,7 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives.cpp" line="155" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="155" bodyend="193" declfile="HighMap/include/highmap/primitives.hpp" declline="1007" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives.cpp" line="155" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="155" bodyend="193" declfile="HighMap/include/highmap/primitives.hpp" declline="1008" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a91a51449dbfee9d41f28dc7bb301aad6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -41252,7 +41257,7 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/geo/geo.cpp" line="122" column="7" bodyfile="HighMap/src/primitives/geo/geo.cpp" bodystart="122" bodyend="161" declfile="HighMap/include/highmap/primitives.hpp" declline="1038" declcolumn="7"/>
+        <location file="HighMap/src/primitives/geo/geo.cpp" line="122" column="7" bodyfile="HighMap/src/primitives/geo/geo.cpp" bodystart="122" bodyend="161" declfile="HighMap/include/highmap/primitives.hpp" declline="1039" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aa4b5afd141f31d3ac539a8e7cb5ea6d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -41442,7 +41447,7 @@ The function performs the following steps:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/phasor.cpp" line="16" column="7" bodyfile="HighMap/src/primitives/phasor.cpp" bodystart="16" bodyend="109" declfile="HighMap/include/highmap/primitives.hpp" declline="1096" declcolumn="7"/>
+        <location file="HighMap/src/primitives/phasor.cpp" line="16" column="7" bodyfile="HighMap/src/primitives/phasor.cpp" bodystart="16" bodyend="109" declfile="HighMap/include/highmap/primitives.hpp" declline="1097" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a0febf1835b6a00b31dfa837d855c6a6d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -41674,7 +41679,7 @@ The function performs the following steps:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/phasor.cpp" line="111" column="7" bodyfile="HighMap/src/primitives/phasor.cpp" bodystart="111" bodyend="159" declfile="HighMap/include/highmap/primitives.hpp" declline="1150" declcolumn="7"/>
+        <location file="HighMap/src/primitives/phasor.cpp" line="111" column="7" bodyfile="HighMap/src/primitives/phasor.cpp" bodystart="111" bodyend="159" declfile="HighMap/include/highmap/primitives.hpp" declline="1151" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aecba6d5b355e2e041045bee54b495be7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -41867,7 +41872,7 @@ The function performs the following steps:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives.cpp" line="195" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="195" bodyend="218" declfile="HighMap/include/highmap/primitives.hpp" declline="1202" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives.cpp" line="195" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="195" bodyend="218" declfile="HighMap/include/highmap/primitives.hpp" declline="1203" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a6aad825029f99f3d44db149e88ba5a7f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -42060,7 +42065,7 @@ The function performs the following steps:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives.cpp" line="220" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="220" bodyend="247" declfile="HighMap/include/highmap/primitives.hpp" declline="1237" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives.cpp" line="220" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="220" bodyend="247" declfile="HighMap/include/highmap/primitives.hpp" declline="1238" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ad1836a084a8607446ce029d32c02a201" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -42221,7 +42226,7 @@ The function performs the following steps:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives.cpp" line="249" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="249" bodyend="270" declfile="HighMap/include/highmap/primitives.hpp" declline="1269" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives.cpp" line="249" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="249" bodyend="270" declfile="HighMap/include/highmap/primitives.hpp" declline="1270" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ab00af49fafd706242919ea18dc4817ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -42380,7 +42385,7 @@ The function performs the following steps:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives.cpp" line="272" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="272" bodyend="293" declfile="HighMap/include/highmap/primitives.hpp" declline="1300" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives.cpp" line="272" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="272" bodyend="293" declfile="HighMap/include/highmap/primitives.hpp" declline="1301" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aa7f0f75c71d2248bf3fea0ba6c7ccb31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -42511,7 +42516,7 @@ The function performs the following steps:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/swirl.cpp" line="16" column="6" bodyfile="HighMap/src/primitives/swirl.cpp" bodystart="16" bodyend="59" declfile="HighMap/include/highmap/primitives.hpp" declline="1327" declcolumn="6"/>
+        <location file="HighMap/src/primitives/swirl.cpp" line="16" column="6" bodyfile="HighMap/src/primitives/swirl.cpp" bodystart="16" bodyend="59" declfile="HighMap/include/highmap/primitives.hpp" declline="1328" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a16a701ab5a740bd3dbfe7020fb388023" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -42648,7 +42653,7 @@ The function performs the following steps:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/wave.cpp" line="15" column="7" bodyfile="HighMap/src/primitives/wave.cpp" bodystart="15" bodyend="41" declfile="HighMap/include/highmap/primitives.hpp" declline="1350" declcolumn="7"/>
+        <location file="HighMap/src/primitives/wave.cpp" line="15" column="7" bodyfile="HighMap/src/primitives/wave.cpp" bodystart="15" bodyend="41" declfile="HighMap/include/highmap/primitives.hpp" declline="1351" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a0fac1251f8728228be8de58ac16846d2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -42798,7 +42803,7 @@ The function performs the following steps:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/wave.cpp" line="43" column="7" bodyfile="HighMap/src/primitives/wave.cpp" bodystart="43" bodyend="65" declfile="HighMap/include/highmap/primitives.hpp" declline="1380" declcolumn="7"/>
+        <location file="HighMap/src/primitives/wave.cpp" line="43" column="7" bodyfile="HighMap/src/primitives/wave.cpp" bodystart="43" bodyend="65" declfile="HighMap/include/highmap/primitives.hpp" declline="1381" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1accadc8f0d0e250eba86824a456aa98c8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -42948,7 +42953,7 @@ The function performs the following steps:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/wave.cpp" line="67" column="7" bodyfile="HighMap/src/primitives/wave.cpp" bodystart="67" bodyend="89" declfile="HighMap/include/highmap/primitives.hpp" declline="1408" declcolumn="7"/>
+        <location file="HighMap/src/primitives/wave.cpp" line="67" column="7" bodyfile="HighMap/src/primitives/wave.cpp" bodystart="67" bodyend="89" declfile="HighMap/include/highmap/primitives.hpp" declline="1409" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a539c5110c3427da96fd6bc99a6b090c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -43110,7 +43115,7 @@ The function performs the following steps:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/wave.cpp" line="91" column="7" bodyfile="HighMap/src/primitives/wave.cpp" bodystart="91" bodyend="115" declfile="HighMap/include/highmap/primitives.hpp" declline="1438" declcolumn="7"/>
+        <location file="HighMap/src/primitives/wave.cpp" line="91" column="7" bodyfile="HighMap/src/primitives/wave.cpp" bodystart="91" bodyend="115" declfile="HighMap/include/highmap/primitives.hpp" declline="1439" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aaebee84e8c697616359a93440eb92b50" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -43192,7 +43197,7 @@ The function performs the following steps:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/white.cpp" line="12" column="7" bodyfile="HighMap/src/primitives/white.cpp" bodystart="12" bodyend="22" declfile="HighMap/include/highmap/primitives.hpp" declline="1465" declcolumn="7"/>
+        <location file="HighMap/src/primitives/white.cpp" line="12" column="7" bodyfile="HighMap/src/primitives/white.cpp" bodystart="12" bodyend="22" declfile="HighMap/include/highmap/primitives.hpp" declline="1466" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a657a1f43301605e4e3768cd3888e8b4b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -43256,7 +43261,7 @@ The function performs the following steps:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/white.cpp" line="24" column="7" bodyfile="HighMap/src/primitives/white.cpp" bodystart="24" bodyend="37" declfile="HighMap/include/highmap/primitives.hpp" declline="1480" declcolumn="7"/>
+        <location file="HighMap/src/primitives/white.cpp" line="24" column="7" bodyfile="HighMap/src/primitives/white.cpp" bodystart="24" bodyend="37" declfile="HighMap/include/highmap/primitives.hpp" declline="1481" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a2fe434844b8b2c091b589cbc4fa81db1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -43351,7 +43356,7 @@ The function performs the following steps:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/white.cpp" line="39" column="7" bodyfile="HighMap/src/primitives/white.cpp" bodystart="39" bodyend="51" declfile="HighMap/include/highmap/primitives.hpp" declline="1501" declcolumn="7"/>
+        <location file="HighMap/src/primitives/white.cpp" line="39" column="7" bodyfile="HighMap/src/primitives/white.cpp" bodystart="39" bodyend="51" declfile="HighMap/include/highmap/primitives.hpp" declline="1502" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a3077892a37a4350bebb2631856b407fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -43406,7 +43411,7 @@ The function performs the following steps:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/white.cpp" line="53" column="7" bodyfile="HighMap/src/primitives/white.cpp" bodystart="53" bodyend="65" declfile="HighMap/include/highmap/primitives.hpp" declline="1512" declcolumn="7"/>
+        <location file="HighMap/src/primitives/white.cpp" line="53" column="7" bodyfile="HighMap/src/primitives/white.cpp" bodystart="53" bodyend="65" declfile="HighMap/include/highmap/primitives.hpp" declline="1513" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a65580df1d5593c59be30588ca9979b26" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -43569,7 +43574,7 @@ The function performs the following steps:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/worley.cpp" line="15" column="7" bodyfile="HighMap/src/primitives/worley.cpp" bodystart="15" bodyend="37" declfile="HighMap/include/highmap/primitives.hpp" declline="1537" declcolumn="7"/>
+        <location file="HighMap/src/primitives/worley.cpp" line="15" column="7" bodyfile="HighMap/src/primitives/worley.cpp" bodystart="15" bodyend="37" declfile="HighMap/include/highmap/primitives.hpp" declline="1538" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1abc5d54d0d76a86f083db977837c28d69" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
