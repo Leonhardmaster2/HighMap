@@ -305,6 +305,7 @@ Array cone_complex(
     Vec2<int>             shape,
     float                 alpha,
     float                 radius = 0.5f,
+    bool                  smooth_profile = true,
     float                 valley_amp = 0.2f,
     int                   valley_nb = 5,
     float                 valley_decay_ratio = 0.5f,
