@@ -14,6 +14,7 @@ Array select_soil_flow(const Array &z,
                        int          ir_gradient,
                        float        gradient_weight,
                        float        gradient_scaling_factor,
+                       float        flow_weight,
                        float        talus_ref,
                        float        clipping_ratio,
                        float        flow_gamma,
@@ -32,7 +33,7 @@ Array select_soil_flow(const Array &z,
   if (flow_gamma != 1.f) gamma_correction(sr, flow_gamma);
 
   Array c = hmap::maximum_smooth(gradient_weight * dn, sr, k_smooth);
-  c *= dn;
+  c *= (flow_weight + dn) / (flow_weight + 1.f);
 
   return c;
 }
