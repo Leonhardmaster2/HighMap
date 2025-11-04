@@ -314,7 +314,7 @@ Array select_rivers(const Array &array, float talus_ref, float clipping_ratio)
   Array facc = flow_accumulation_dinf(array, talus_ref);
   float vmax = clipping_ratio * std::pow(facc.sum() / (float)facc.size(), 0.5f);
   clamp(facc, 0.f, vmax);
-  return facc;
+  return facc / vmax;
 }
 
 Array select_transitions(const Array &array1,

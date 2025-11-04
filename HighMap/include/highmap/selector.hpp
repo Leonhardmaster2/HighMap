@@ -429,6 +429,41 @@ namespace hmap::gpu
 {
 
 /**
+ * @brief Computes a soil–flow selection map based on terrain gradient, river
+ * mask, and smoothing parameters.
+ *
+ * @param  z                       Input heightmap.
+ * @param  ir_gradient             Radius used for the morphological gradient.
+ * @param  gradient_weight         Weight applied to the gradient magnitude.
+ * @param  gradient_scaling_factor Scaling factor applied to the gradient;
+ *                                 defaults to z.shape.x if <= 0.
+ * @param  talus_ref               Reference talus value for river extraction;
+ *                                 defaults to 1.f / z.shape.x if <= 0.
+ * @param  clipping_ratio          Clipping ratio used in the river selection
+ *                                 step.
+ * @param  flow_gamma              Gamma correction exponent applied to the
+ *                                 river mask; 1.0 disables correction.
+ * @param  k_smooth                Smoothing parameter for the maximum blending.
+ *
+ * @return                         A 2D Array representing the final soil-flow
+ *                                 selection mask.
+ *
+ * **Example**
+ * @include ex_select_soil_weathered.cpp
+ *
+ * **Result**
+ * @image html ex_select_soil_weathered.png
+ */
+Array select_soil_flow(const Array &z,
+                       int          ir_gradient = 1,
+                       float        gradient_weight = 1.f,
+                       float        gradient_scaling_factor = 0.f,
+                       float        talus_ref = 0.f,
+                       float        clipping_ratio = 50.f,
+                       float        flow_gamma = 1.f,
+                       float        k_smooth = 0.01f);
+
+/**
  * @brief Computes a soil weathering selection map based on curvature and
  * gradient analysis.
  *
