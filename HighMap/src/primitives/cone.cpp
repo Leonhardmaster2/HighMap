@@ -115,7 +115,7 @@ Array cone_complex(Vec2<int>             shape,
 
     // base shape
     float v = (1.f - std::pow(r, alpha)) / (1.f + std::pow(r, alpha));
-
+    
     // directional bias
     {
       float b_shape = std::cos(theta - bias_alpha);
@@ -131,7 +131,7 @@ Array cone_complex(Vec2<int>             shape,
       v -= ctrl * valley_amp * std::max(0.f, v_shape * v_amp);
     }
 
-    return std::max(0.f, v);
+    return almost_unit_identity(std::max(0.f, v));
   };
 
   fill_array_using_xy_function(array,
