@@ -695,6 +695,8 @@ Functions</h2></td></tr>
 <tr class="separator:af54b122203d5eee61b9b6d6c7979ddfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c154806321deecb3240ac71eb7ccf29" id="r_a2c154806321deecb3240ac71eb7ccf29"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a2c154806321deecb3240ac71eb7ccf29">assert_almost_equal</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;a, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;b, float tolerance, const std::string &amp;fname=&quot;&quot;, <a class="el" href="structhmap_1_1AssertResults.html">AssertResults</a> *p_results=nullptr)</td></tr>
 <tr class="separator:a2c154806321deecb3240ac71eb7ccf29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02f191e398bfc3c0e87999d8576d7c3d" id="r_a02f191e398bfc3c0e87999d8576d7c3d"><td class="memItemLeft" align="right" valign="top">std::function&lt; float(float)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a02f191e398bfc3c0e87999d8576d7c3d">get_erosion_profile_function</a> (const <a class="el" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6">ErosionProfile</a> &amp;erosion_profile, float delta, float &amp;profile_avg)</td></tr>
+<tr class="separator:a02f191e398bfc3c0e87999d8576d7c3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a54724c8701b75260e97924451731e41f" id="r_a54724c8701b75260e97924451731e41f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a54724c8701b75260e97924451731e41f">coastal_erosion_diffusion</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;water_depth, float additional_depth, int iterations=10, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_water_mask=nullptr)</td></tr>
 <tr class="memdesc:a54724c8701b75260e97924451731e41f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simulates terrain diffusion due to coastal erosion.  <br /></td></tr>
 <tr class="separator:a54724c8701b75260e97924451731e41f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1926,6 +1928,9 @@ Functions</h2></td></tr>
 <tr class="memitem:af3e75ba20a563ec897513b1f9926fb9b" id="r_af3e75ba20a563ec897513b1f9926fb9b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#af3e75ba20a563ec897513b1f9926fb9b">cone</a> (<a class="el" href="structhmap_1_1Vec2.html">Vec2</a>&lt; int &gt; shape, float <a class="el" href="namespacehmap.html#ad1836a084a8607446ce029d32c02a201">slope</a>, float apex_elevation=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, bool smooth_profile=false, <a class="el" href="structhmap_1_1Vec2.html">Vec2</a>&lt; float &gt; center={0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>}, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_x=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_y=nullptr, <a class="el" href="structhmap_1_1Vec4.html">Vec4</a>&lt; float &gt; bbox={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>})</td></tr>
 <tr class="memdesc:af3e75ba20a563ec897513b1f9926fb9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a synthetic conical mountain heightmap.  <br /></td></tr>
 <tr class="separator:af3e75ba20a563ec897513b1f9926fb9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a953721b337fc4323143c24bcb3b1314f" id="r_a953721b337fc4323143c24bcb3b1314f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a953721b337fc4323143c24bcb3b1314f">cone_complex</a> (<a class="el" href="structhmap_1_1Vec2.html">Vec2</a>&lt; int &gt; shape, float alpha, float radius=0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float valley_amp=0.2<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, int valley_nb=5, float valley_decay_ratio=0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float valley_angle0=15.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, const <a class="el" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6">ErosionProfile</a> &amp;erosion_profile=<a class="el" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a3b4b1fb15aaf3888333a9d6958eae76a">ErosionProfile::TRIANGLE_GRENIER</a>, float erosion_delta=0.01<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float radial_waviness_amp=0.05<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float radial_waviness_kw=2.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float bias_angle=30.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float bias_amp=0.75<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float bias_exponent=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, <a class="el" href="structhmap_1_1Vec2.html">Vec2</a>&lt; float &gt; center={0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>}, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_ctrl_param=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_x=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_y=nullptr, <a class="el" href="structhmap_1_1Vec4.html">Vec4</a>&lt; float &gt; bbox={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>})</td></tr>
+<tr class="memdesc:a953721b337fc4323143c24bcb3b1314f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a complex conical heightfield with valleys, directional bias, and radial waviness.  <br /></td></tr>
+<tr class="separator:a953721b337fc4323143c24bcb3b1314f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6f5880a68329be490f99aa779f3c1d8" id="r_af6f5880a68329be490f99aa779f3c1d8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#af6f5880a68329be490f99aa779f3c1d8">cone_sigmoid</a> (<a class="el" href="structhmap_1_1Vec2.html">Vec2</a>&lt; int &gt; shape, float alpha, float radius=0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, <a class="el" href="structhmap_1_1Vec2.html">Vec2</a>&lt; float &gt; center={0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>}, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_x=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_y=nullptr, <a class="el" href="structhmap_1_1Vec4.html">Vec4</a>&lt; float &gt; bbox={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>})</td></tr>
 <tr class="memdesc:af6f5880a68329be490f99aa779f3c1d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a smooth conical heightmap using a sigmoid-based profile.  <br /></td></tr>
 <tr class="separator:af6f5880a68329be490f99aa779f3c1d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -2270,8 +2275,6 @@ Functions</h2></td></tr>
 <tr class="separator:a3d953aa5fcf59193b3b8b98db3f5a872"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af5440364a346b297246885e95793ef45" id="r_af5440364a346b297246885e95793ef45"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#af5440364a346b297246885e95793ef45">square_md</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, <a class="el" href="structhmap_1_1Mat.html">Mat</a>&lt; int &gt; &amp;is_done, int <a class="el" href="namespacehmap.html#ab00af49fafd706242919ea18dc4817ee">step</a>, float noise_scale, std::mt19937 gen, std::uniform_real_distribution&lt; float &gt; dis)</td></tr>
 <tr class="separator:af5440364a346b297246885e95793ef45"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a10284155e51dc2eb2dcf601e43593420" id="r_a10284155e51dc2eb2dcf601e43593420"><td class="memItemLeft" align="right" valign="top">std::function&lt; float(float)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a10284155e51dc2eb2dcf601e43593420">helper_get_profile_function</a> (const <a class="el" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6">ErosionProfile</a> &amp;erosion_profile, float delta, float &amp;profile_avg)</td></tr>
-<tr class="separator:a10284155e51dc2eb2dcf601e43593420"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aba0d25f051d23c9c637973b7edf19922" id="r_aba0d25f051d23c9c637973b7edf19922"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#aba0d25f051d23c9c637973b7edf19922">helper_thermal_exchange</a> (float self, float other, float dist, float talus)</td></tr>
 <tr class="separator:aba0d25f051d23c9c637973b7edf19922"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a108e699ce689fbb425f11ed2485150ce" id="r_a108e699ce689fbb425f11ed2485150ce"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a108e699ce689fbb425f11ed2485150ce">helper_smooth_corners</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;cubemap, int noverlap, int ir, <a class="el" href="structhmap_1_1Vec4.html">Vec4</a>&lt; int &gt; idx_front, <a class="el" href="structhmap_1_1Vec4.html">Vec4</a>&lt; int &gt; idx_back)</td></tr>
@@ -3461,7 +3464,7 @@ template&lt;typename T &gt; </div>
 <div class="line">}</div>
 <div class="ttc" id="anamespacehmap_html_a262e6495cb2d02598f36a2b46114b2b4"><div class="ttname"><a href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a></div><div class="ttdeci">void remap(Array &amp;array, float vmin, float vmax, float from_min, float from_max)</div><div class="ttdoc">Remap array elements from a starting range to a target range.</div><div class="ttdef"><b>Definition</b> range.cpp:400</div></div>
 <div class="ttc" id="anamespacehmap_html_aca4a5b0313f4efe251b20d90652a896b"><div class="ttname"><a href="namespacehmap.html#aca4a5b0313f4efe251b20d90652a896b">hmap::ridgelines</a></div><div class="ttdeci">Array ridgelines(Vec2&lt; int &gt; shape, const std::vector&lt; float &gt; &amp;xr, const std::vector&lt; float &gt; &amp;yr, const std::vector&lt; float &gt; &amp;zr, float slope, float k_smoothing=1.f, float width=0.1f, float vmin=0.f, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f}, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, Vec4&lt; float &gt; bbox_array={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Generate a heightmap based on a set of ridgelines and a specified slope.</div><div class="ttdef"><b>Definition</b> ridgelines.cpp:16</div></div>
-<div class="ttc" id="anamespacehmap_html_ad1836a084a8607446ce029d32c02a201"><div class="ttname"><a href="namespacehmap.html#ad1836a084a8607446ce029d32c02a201">hmap::slope</a></div><div class="ttdeci">Array slope(Vec2&lt; int &gt; shape, float angle, float slope, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, Vec2&lt; float &gt; center={0.5f, 0.5f}, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Return an array corresponding to a slope with a given overall.</div><div class="ttdef"><b>Definition</b> primitives.cpp:332</div></div>
+<div class="ttc" id="anamespacehmap_html_ad1836a084a8607446ce029d32c02a201"><div class="ttname"><a href="namespacehmap.html#ad1836a084a8607446ce029d32c02a201">hmap::slope</a></div><div class="ttdeci">Array slope(Vec2&lt; int &gt; shape, float angle, float slope, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, Vec2&lt; float &gt; center={0.5f, 0.5f}, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Return an array corresponding to a slope with a given overall.</div><div class="ttdef"><b>Definition</b> primitives.cpp:249</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_ridgelines.png" alt=""/>
 </div>
@@ -6843,6 +6846,40 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
+<a id="a02f191e398bfc3c0e87999d8576d7c3d" name="a02f191e398bfc3c0e87999d8576d7c3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02f191e398bfc3c0e87999d8576d7c3d">&#9670;&#160;</a></span>get_erosion_profile_function()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::function&lt; float(float)&gt; hmap::get_erosion_profile_function </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6">ErosionProfile</a> &amp;&#160;</td>
+          <td class="paramname"><em>erosion_profile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>delta</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float &amp;&#160;</td>
+          <td class="paramname"><em>profile_avg</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a54724c8701b75260e97924451731e41f" name="a54724c8701b75260e97924451731e41f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a54724c8701b75260e97924451731e41f">&#9670;&#160;</a></span>coastal_erosion_diffusion()</h2>
 
@@ -8463,7 +8500,7 @@ additional_depth)</code>.</li>
 <div class="ttc" id="anamespacehmap_html_a25a4e4775f3c0918ed75f0503f5ed0a6af078cf93214e8043479eb5906a456880"><div class="ttname"><a href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6af078cf93214e8043479eb5906a456880">hmap::TRIANGLE_SMOOTH</a></div><div class="ttdeci">@ TRIANGLE_SMOOTH</div><div class="ttdef"><b>Definition</b> erosion.hpp:50</div></div>
 <div class="ttc" id="anamespacehmap_html_a25a4e4775f3c0918ed75f0503f5ed0a6af8c94bc76e5d0a80a0ea8a6cda58832e"><div class="ttname"><a href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6af8c94bc76e5d0a80a0ea8a6cda58832e">hmap::COSINE</a></div><div class="ttdeci">@ COSINE</div><div class="ttdef"><b>Definition</b> erosion.hpp:43</div></div>
 <div class="ttc" id="anamespacehmap_html_ab8197c4c7a85dacb616fee7a7d0df195ac5113a637d69eb3c549e6d561da167ed"><div class="ttname"><a href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195ac5113a637d69eb3c549e6d561da167ed">hmap::SIMPLEX2</a></div><div class="ttdeci">@ SIMPLEX2</div><div class="ttdoc">OpenSimplex2.</div><div class="ttdef"><b>Definition</b> functions.hpp:67</div></div>
-<div class="ttc" id="anamespacehmap_html_af65bb48580b5f860571161387a22fbb4"><div class="ttname"><a href="namespacehmap.html#af65bb48580b5f860571161387a22fbb4">hmap::hydraulic_procedural</a></div><div class="ttdeci">void hydraulic_procedural(Array &amp;z, uint seed, float ridge_wavelength, float ridge_scaling=0.1f, ErosionProfile erosion_profile=ErosionProfile::TRIANGLE_SMOOTH, float delta=0.02f, float noise_ratio=0.2f, int prefilter_ir=-1, float density_factor=1.f, float kernel_width_ratio=2.f, float phase_smoothing=2.f, float phase_noise_amp=M_PI, bool reverse_phase=false, bool rotate90=false, bool use_default_mask=true, float talus_mask=0.f, Array *p_mask=nullptr, Array *p_ridge_mask=nullptr, float vmin=0.f, float vmax=-1.f)</div><div class="ttdoc">Generates a procedurally eroded terrain using hydraulic erosion and ridge generation techniques.</div><div class="ttdef"><b>Definition</b> hydraulic_procedural.cpp:148</div></div>
+<div class="ttc" id="anamespacehmap_html_af65bb48580b5f860571161387a22fbb4"><div class="ttname"><a href="namespacehmap.html#af65bb48580b5f860571161387a22fbb4">hmap::hydraulic_procedural</a></div><div class="ttdeci">void hydraulic_procedural(Array &amp;z, uint seed, float ridge_wavelength, float ridge_scaling=0.1f, ErosionProfile erosion_profile=ErosionProfile::TRIANGLE_SMOOTH, float delta=0.02f, float noise_ratio=0.2f, int prefilter_ir=-1, float density_factor=1.f, float kernel_width_ratio=2.f, float phase_smoothing=2.f, float phase_noise_amp=M_PI, bool reverse_phase=false, bool rotate90=false, bool use_default_mask=true, float talus_mask=0.f, Array *p_mask=nullptr, Array *p_ridge_mask=nullptr, float vmin=0.f, float vmax=-1.f)</div><div class="ttdoc">Generates a procedurally eroded terrain using hydraulic erosion and ridge generation techniques.</div><div class="ttdef"><b>Definition</b> hydraulic_procedural.cpp:144</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_hydraulic_procedural0.png" alt=""/>
 </div>
@@ -9535,7 +9572,7 @@ additional_depth)</code>.</li>
 <div class="line">                          <span class="keyword">true</span>);</div>
 <div class="line">}</div>
 <div class="ttc" id="anamespacehmap_html_a2f83e2631c0b0dee67aae188f439f1bb"><div class="ttname"><a href="namespacehmap.html#a2f83e2631c0b0dee67aae188f439f1bb">hmap::sediment_deposition</a></div><div class="ttdeci">void sediment_deposition(Array &amp;z, Array *p_mask, const Array &amp;talus, Array *p_deposition_map=nullptr, float max_deposition=0.01, int iterations=5, int thermal_subiterations=10)</div><div class="ttdoc">Perform sediment deposition combined with thermal erosion.</div><div class="ttdef"><b>Definition</b> deposition.cpp:47</div></div>
-<div class="ttc" id="anamespacehmap_html_a8f4e766dca0065219e26af946bd61946"><div class="ttname"><a href="namespacehmap.html#a8f4e766dca0065219e26af946bd61946">hmap::constant</a></div><div class="ttdeci">Array constant(Vec2&lt; int &gt; shape, float value=0.f)</div><div class="ttdoc">Return a constant value array.</div><div class="ttdef"><b>Definition</b> primitives.cpp:185</div></div>
+<div class="ttc" id="anamespacehmap_html_a8f4e766dca0065219e26af946bd61946"><div class="ttname"><a href="namespacehmap.html#a8f4e766dca0065219e26af946bd61946">hmap::constant</a></div><div class="ttdeci">Array constant(Vec2&lt; int &gt; shape, float value=0.f)</div><div class="ttdoc">Return a constant value array.</div><div class="ttdef"><b>Definition</b> primitives.cpp:102</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_sediment_deposition.png" alt=""/>
 </div>
@@ -32542,7 +32579,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_flood_fill.png&quot;</span>, {z, z1, z2}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d">hmap::Cmap::GRAY</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a45ca8d7a507e92e78d466f0d392f8ea3"><div class="ttname"><a href="namespacehmap.html#a45ca8d7a507e92e78d466f0d392f8ea3">hmap::gaussian_pulse</a></div><div class="ttdeci">Array gaussian_pulse(Vec2&lt; int &gt; shape, float sigma, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, Vec2&lt; float &gt; center={0.5f, 0.5f}, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Return a gaussian_decay pulse kernel.</div><div class="ttdef"><b>Definition</b> primitives.cpp:216</div></div>
+<div class="ttc" id="anamespacehmap_html_a45ca8d7a507e92e78d466f0d392f8ea3"><div class="ttname"><a href="namespacehmap.html#a45ca8d7a507e92e78d466f0d392f8ea3">hmap::gaussian_pulse</a></div><div class="ttdeci">Array gaussian_pulse(Vec2&lt; int &gt; shape, float sigma, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, Vec2&lt; float &gt; center={0.5f, 0.5f}, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Return a gaussian_decay pulse kernel.</div><div class="ttdef"><b>Definition</b> primitives.cpp:133</div></div>
 <div class="ttc" id="anamespacehmap_html_a849d37221d492c5d96d945dc64b02754"><div class="ttname"><a href="namespacehmap.html#a849d37221d492c5d96d945dc64b02754">hmap::select_interval</a></div><div class="ttdeci">Array select_interval(const Array &amp;array, float value1, float value2)</div><div class="ttdoc">Return an array with elements equal to 1 where input elements are within the bounds provided.</div><div class="ttdef"><b>Definition</b> selector.cpp:152</div></div>
 <div class="ttc" id="anamespacehmap_html_adff494af7c8bf4db7f3e6fddd3261793"><div class="ttname"><a href="namespacehmap.html#adff494af7c8bf4db7f3e6fddd3261793">hmap::flood_fill</a></div><div class="ttdeci">void flood_fill(Array &amp;array, int i, int j, float fill_value=1.f, float background_value=0.f)</div><div class="ttdoc">Apply a flood fill algorithm to the input array.</div><div class="ttdef"><b>Definition</b> morphology.cpp:49</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
@@ -34786,10 +34823,185 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z1 = <a class="code hl_function" href="namespacehmap.html#a9880bdc35440162c24103a5df4c137a6">hmap::cone</a>(shape, 4.f);</div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z2 = <a class="code hl_function" href="namespacehmap.html#af6f5880a68329be490f99aa779f3c1d8">hmap::cone_sigmoid</a>(shape, 0.8f);</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z3 = <a class="code hl_function" href="namespacehmap.html#a953721b337fc4323143c24bcb3b1314f">hmap::cone_complex</a>(shape, 1.2f);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_cone.png&quot;</span>, {z1, z2}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a744ead0b170889e33126895264f1af2c">hmap::Cmap::MAGMA</a>);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_cone.png&quot;</span>, {z1, z2, z3}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a744ead0b170889e33126895264f1af2c">hmap::Cmap::MAGMA</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_af6f5880a68329be490f99aa779f3c1d8"><div class="ttname"><a href="namespacehmap.html#af6f5880a68329be490f99aa779f3c1d8">hmap::cone_sigmoid</a></div><div class="ttdeci">Array cone_sigmoid(Vec2&lt; int &gt; shape, float alpha, float radius=0.5f, Vec2&lt; float &gt; center={0.5f, 0.5f}, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Generates a smooth conical heightmap using a sigmoid-based profile.</div><div class="ttdef"><b>Definition</b> primitives.cpp:155</div></div>
+<div class="ttc" id="anamespacehmap_html_a953721b337fc4323143c24bcb3b1314f"><div class="ttname"><a href="namespacehmap.html#a953721b337fc4323143c24bcb3b1314f">hmap::cone_complex</a></div><div class="ttdeci">Array cone_complex(Vec2&lt; int &gt; shape, float alpha, float radius=0.5f, float valley_amp=0.2f, int valley_nb=5, float valley_decay_ratio=0.5f, float valley_angle0=15.f, const ErosionProfile &amp;erosion_profile=ErosionProfile::TRIANGLE_GRENIER, float erosion_delta=0.01f, float radial_waviness_amp=0.05f, float radial_waviness_kw=2.f, float bias_angle=30.f, float bias_amp=0.75f, float bias_exponent=1.f, Vec2&lt; float &gt; center={0.5f, 0.5f}, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Generates a complex conical heightfield with valleys, directional bias, and radial waviness.</div><div class="ttdef"><b>Definition</b> cone.cpp:73</div></div>
+<div class="ttc" id="anamespacehmap_html_af6f5880a68329be490f99aa779f3c1d8"><div class="ttname"><a href="namespacehmap.html#af6f5880a68329be490f99aa779f3c1d8">hmap::cone_sigmoid</a></div><div class="ttdeci">Array cone_sigmoid(Vec2&lt; int &gt; shape, float alpha, float radius=0.5f, Vec2&lt; float &gt; center={0.5f, 0.5f}, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Generates a smooth conical heightmap using a sigmoid-based profile.</div><div class="ttdef"><b>Definition</b> cone.cpp:148</div></div>
+</div><!-- fragment --><p><b>Result</b> </p><div class="image">
+<img src="ex_cone.png" alt=""/>
+</div>
+ 
+</div>
+</div>
+<a id="a953721b337fc4323143c24bcb3b1314f" name="a953721b337fc4323143c24bcb3b1314f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a953721b337fc4323143c24bcb3b1314f">&#9670;&#160;</a></span>cone_complex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classhmap_1_1Array.html">Array</a> hmap::cone_complex </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structhmap_1_1Vec2.html">Vec2</a>&lt; int &gt;&#160;</td>
+          <td class="paramname"><em>shape</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>alpha</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>radius</em> = <code>0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>valley_amp</em> = <code>0.2<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>valley_nb</em> = <code>5</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>valley_decay_ratio</em> = <code>0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>valley_angle0</em> = <code>15.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6">ErosionProfile</a> &amp;&#160;</td>
+          <td class="paramname"><em>erosion_profile</em> = <code><a class="el" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a3b4b1fb15aaf3888333a9d6958eae76a">ErosionProfile::TRIANGLE_GRENIER</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>erosion_delta</em> = <code>0.01<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>radial_waviness_amp</em> = <code>0.05<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>radial_waviness_kw</em> = <code>2.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>bias_angle</em> = <code>30.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>bias_amp</em> = <code>0.75<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>bias_exponent</em> = <code>1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structhmap_1_1Vec2.html">Vec2</a>&lt; float &gt;&#160;</td>
+          <td class="paramname"><em>center</em> = <code>{0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>}</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
+          <td class="paramname"><em>p_ctrl_param</em> = <code>nullptr</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
+          <td class="paramname"><em>p_noise_x</em> = <code>nullptr</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
+          <td class="paramname"><em>p_noise_y</em> = <code>nullptr</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structhmap_1_1Vec4.html">Vec4</a>&lt; float &gt;&#160;</td>
+          <td class="paramname"><em>bbox</em> = <code>{0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>}</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Generates a complex conical heightfield with valleys, directional bias, and radial waviness. </p>
+<p>This function procedurally constructs an island-like cone shape inside a 2D array. The height at each position is determined from the normalized radial distance to the center, with optional modulation by valleys, directional bias, and radial waviness. An erosion profile is applied to shape the valleys, and an optional control map can modulate the valley amplitude locally. The resulting height values are clamped to [0, 1].</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">shape</td><td>Output array dimensions (width, height). </td></tr>
+    <tr><td class="paramname">alpha</td><td>Exponent controlling the steepness of the cone slope. </td></tr>
+    <tr><td class="paramname">radius</td><td>Effective radius of the island (in coordinate space units). </td></tr>
+    <tr><td class="paramname">valley_amp</td><td>Global amplitude of valley depressions. </td></tr>
+    <tr><td class="paramname">valley_nb</td><td>Number of valleys around the island. </td></tr>
+    <tr><td class="paramname">valley_decay_ratio</td><td>Controls how valley amplitude decays toward the center. </td></tr>
+    <tr><td class="paramname">valley_angle0</td><td>Angular offset of the first valley (in degrees). </td></tr>
+    <tr><td class="paramname">erosion_profile</td><td>Erosion profile type used for shaping valley cross-sections. </td></tr>
+    <tr><td class="paramname">erosion_delta</td><td>Smoothing parameter for the erosion profile function. </td></tr>
+    <tr><td class="paramname">radial_waviness_amp</td><td>Amplitude of radial sinusoidal perturbations (coastal waviness). </td></tr>
+    <tr><td class="paramname">radial_waviness_kw</td><td>Frequency multiplier for radial waviness. </td></tr>
+    <tr><td class="paramname">bias_angle</td><td>Direction (in degrees) of the slope bias (e.g. wind or sun exposure). </td></tr>
+    <tr><td class="paramname">bias_amp</td><td>Amplitude of the directional bias effect. </td></tr>
+    <tr><td class="paramname">bias_exponent</td><td>Controls how bias strength varies with radius. </td></tr>
+    <tr><td class="paramname">center</td><td>Center position of the cone in coordinate space. </td></tr>
+    <tr><td class="paramname">p_ctrl_param</td><td>Optional control array; its values modulate the local valley amplitude. If nullptr, the valley amplitude is uniform. </td></tr>
+    <tr><td class="paramname">p_noise_x</td><td>Optional X-displacement noise field for coordinate perturbation. </td></tr>
+    <tr><td class="paramname">p_noise_y</td><td>Optional Y-displacement noise field for coordinate perturbation. </td></tr>
+    <tr><td class="paramname">bbox</td><td>Bounding box defining the world coordinates covered by the array.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A 2D <a class="el" href="classhmap_1_1Array.html" title="Array class, helper to manipulate 2D float array with &quot;(i, j)&quot; indexing.">Array</a> containing the generated heightfield values in the range [0, 1].</dd></dl>
+<p><b>Example</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="highmap_8hpp.html">highmap.hpp</a>&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
+<div class="line">{</div>
+<div class="line">  <a class="code hl_struct" href="structhmap_1_1Vec2.html">hmap::Vec2&lt;int&gt;</a> shape = {256, 256};</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z1 = <a class="code hl_function" href="namespacehmap.html#a9880bdc35440162c24103a5df4c137a6">hmap::cone</a>(shape, 4.f);</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z2 = <a class="code hl_function" href="namespacehmap.html#af6f5880a68329be490f99aa779f3c1d8">hmap::cone_sigmoid</a>(shape, 0.8f);</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z3 = <a class="code hl_function" href="namespacehmap.html#a953721b337fc4323143c24bcb3b1314f">hmap::cone_complex</a>(shape, 1.2f);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_cone.png&quot;</span>, {z1, z2, z3}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a744ead0b170889e33126895264f1af2c">hmap::Cmap::MAGMA</a>);</div>
+<div class="line">}</div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_cone.png" alt=""/>
 </div>
@@ -34875,8 +35087,9 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z1 = <a class="code hl_function" href="namespacehmap.html#a9880bdc35440162c24103a5df4c137a6">hmap::cone</a>(shape, 4.f);</div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z2 = <a class="code hl_function" href="namespacehmap.html#af6f5880a68329be490f99aa779f3c1d8">hmap::cone_sigmoid</a>(shape, 0.8f);</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z3 = <a class="code hl_function" href="namespacehmap.html#a953721b337fc4323143c24bcb3b1314f">hmap::cone_complex</a>(shape, 1.2f);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_cone.png&quot;</span>, {z1, z2}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a744ead0b170889e33126895264f1af2c">hmap::Cmap::MAGMA</a>);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_cone.png&quot;</span>, {z1, z2, z3}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a744ead0b170889e33126895264f1af2c">hmap::Cmap::MAGMA</a>);</div>
 <div class="line">}</div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_cone.png" alt=""/>
@@ -37785,7 +37998,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 <div class="line"> </div>
 <div class="line">  z.to_png(<span class="stringliteral">&quot;ex_paraboloid.png&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_ad193bc2ad91f74c90550a260e1644687"><div class="ttname"><a href="namespacehmap.html#ad193bc2ad91f74c90550a260e1644687">hmap::paraboloid</a></div><div class="ttdeci">Array paraboloid(Vec2&lt; int &gt; shape, float angle, float a, float b, float v0=0.f, bool reverse_x=false, bool reverse_y=false, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, Vec2&lt; float &gt; center={0.5f, 0.5f}, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Return a paraboloid.</div><div class="ttdef"><b>Definition</b> primitives.cpp:238</div></div>
+<div class="ttc" id="anamespacehmap_html_ad193bc2ad91f74c90550a260e1644687"><div class="ttname"><a href="namespacehmap.html#ad193bc2ad91f74c90550a260e1644687">hmap::paraboloid</a></div><div class="ttdeci">Array paraboloid(Vec2&lt; int &gt; shape, float angle, float a, float b, float v0=0.f, bool reverse_x=false, bool reverse_y=false, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, Vec2&lt; float &gt; center={0.5f, 0.5f}, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Return a paraboloid.</div><div class="ttdef"><b>Definition</b> primitives.cpp:155</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_paraboloid.png" alt=""/>
 </div>
@@ -38326,7 +38539,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>,</div>
 <div class="line">                          <span class="keyword">false</span>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_aecba6d5b355e2e041045bee54b495be7"><div class="ttname"><a href="namespacehmap.html#aecba6d5b355e2e041045bee54b495be7">hmap::rectangle</a></div><div class="ttdeci">Array rectangle(Vec2&lt; int &gt; shape, float rx, float ry, float angle, float slope=1.f, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, Vec2&lt; float &gt; center={0.5f, 0.5f}, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Generates a rectangle-shaped heightmap with optional modifications.</div><div class="ttdef"><b>Definition</b> primitives.cpp:278</div></div>
+<div class="ttc" id="anamespacehmap_html_aecba6d5b355e2e041045bee54b495be7"><div class="ttname"><a href="namespacehmap.html#aecba6d5b355e2e041045bee54b495be7">hmap::rectangle</a></div><div class="ttdeci">Array rectangle(Vec2&lt; int &gt; shape, float rx, float ry, float angle, float slope=1.f, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, Vec2&lt; float &gt; center={0.5f, 0.5f}, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Generates a rectangle-shaped heightmap with optional modifications.</div><div class="ttdef"><b>Definition</b> primitives.cpp:195</div></div>
 </div><!-- fragment --></li>
 </ul>
 </dd></dl>
@@ -38473,7 +38686,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_rift.png&quot;</span>, {z1, z2, z3}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a6aad825029f99f3d44db149e88ba5a7f"><div class="ttname"><a href="namespacehmap.html#a6aad825029f99f3d44db149e88ba5a7f">hmap::rift</a></div><div class="ttdeci">Array rift(Vec2&lt; int &gt; shape, float angle, float slope, float width, bool sharp_bottom=false, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, Vec2&lt; float &gt; center={0.5f, 0.5f}, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Return a rift function (Heaviside with an optional talus slope at the transition).</div><div class="ttdef"><b>Definition</b> primitives.cpp:303</div></div>
+<div class="ttc" id="anamespacehmap_html_a6aad825029f99f3d44db149e88ba5a7f"><div class="ttname"><a href="namespacehmap.html#a6aad825029f99f3d44db149e88ba5a7f">hmap::rift</a></div><div class="ttdeci">Array rift(Vec2&lt; int &gt; shape, float angle, float slope, float width, bool sharp_bottom=false, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, Vec2&lt; float &gt; center={0.5f, 0.5f}, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Return a rift function (Heaviside with an optional talus slope at the transition).</div><div class="ttdef"><b>Definition</b> primitives.cpp:220</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_rift.png" alt=""/>
 </div>
@@ -38717,7 +38930,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_step.png&quot;</span>, {z1, z2, z3}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_ab00af49fafd706242919ea18dc4817ee"><div class="ttname"><a href="namespacehmap.html#ab00af49fafd706242919ea18dc4817ee">hmap::step</a></div><div class="ttdeci">Array step(Vec2&lt; int &gt; shape, float angle, float slope, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, Vec2&lt; float &gt; center={0.5f, 0.5f}, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Return a step function (Heaviside with an optional talus slope at the transition).</div><div class="ttdef"><b>Definition</b> primitives.cpp:355</div></div>
+<div class="ttc" id="anamespacehmap_html_ab00af49fafd706242919ea18dc4817ee"><div class="ttname"><a href="namespacehmap.html#ab00af49fafd706242919ea18dc4817ee">hmap::step</a></div><div class="ttdeci">Array step(Vec2&lt; int &gt; shape, float angle, float slope, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, Vec2&lt; float &gt; center={0.5f, 0.5f}, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Return a step function (Heaviside with an optional talus slope at the transition).</div><div class="ttdef"><b>Definition</b> primitives.cpp:272</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_step.png" alt=""/>
 </div>
@@ -45212,40 +45425,6 @@ template&lt;typename T &gt; </div>
           <td></td>
           <td class="paramtype">std::uniform_real_distribution&lt; float &gt;&#160;</td>
           <td class="paramname"><em>dis</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a10284155e51dc2eb2dcf601e43593420" name="a10284155e51dc2eb2dcf601e43593420"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a10284155e51dc2eb2dcf601e43593420">&#9670;&#160;</a></span>helper_get_profile_function()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::function&lt; float(float)&gt; hmap::helper_get_profile_function </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6">ErosionProfile</a> &amp;&#160;</td>
-          <td class="paramname"><em>erosion_profile</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>delta</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float &amp;&#160;</td>
-          <td class="paramname"><em>profile_avg</em>&#160;</td>
         </tr>
         <tr>
           <td></td>

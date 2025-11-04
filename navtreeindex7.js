@@ -1,5 +1,10 @@
 var NAVTREEINDEX7 =
 {
+"filters_8hpp.html#a81647bbf7183fed5cbfc468c8fa75b62":[5,0,1,0,0,18,96],
+"filters_8hpp.html#a81842482472ceecc660913388219bb77":[5,0,1,0,0,18,30],
+"filters_8hpp.html#a86963a517ac96c442272bdf6fd967f60":[5,0,1,0,0,18,63],
+"filters_8hpp.html#a878694830f25c7c79f4d9a0a723a5148":[5,0,1,0,0,18,112],
+"filters_8hpp.html#a8994656d85a1b9dd0f2c99a3fd45ceb1":[5,0,1,0,0,18,43],
 "filters_8hpp.html#a8a7a083e583afe812239d1fe6aa479cd":[5,0,1,0,0,18,109],
 "filters_8hpp.html#a8ac4638525bb243024d50793d97bc9ee":[5,0,1,0,0,18,35],
 "filters_8hpp.html#a8afd3d81a238c8a5d10059b3a029554e":[5,0,1,0,0,18,34],
@@ -142,8 +147,8 @@ var NAVTREEINDEX7 =
 "flow__stream_8cpp.html#a7376f7c00281f0616024d33069971ca4":[5,0,1,1,18,5,0],
 "format__raw_8cpp.html":[5,0,1,1,11,7],
 "format__raw_8cpp.html#a466d4275bb86ca9ca603c9d4192f931a":[5,0,1,1,11,7,0],
-"functions.html":[4,3,0],
 "functions.html":[4,3,0,0],
+"functions.html":[4,3,0],
 "functions_8cpp.html":[5,0,1,1,26,0,2],
 "functions_8cpp.html#a7064ad1eef3ea7b6e19249fe3312e3b9":[5,0,1,1,26,0,2,0],
 "functions_8hpp.html":[5,0,1,0,0,19],
@@ -214,8 +219,8 @@ var NAVTREEINDEX7 =
 "functions_y.html":[4,3,0,23],
 "functions_z.html":[4,3,0,24],
 "functions_~.html":[4,3,0,25],
-"gabor_8cpp.html":[5,0,1,1,26,5],
-"gabor_8cpp.html#a2b3fdb5bd6cbca1c8ed1b81052012ba3":[5,0,1,1,26,5,0],
+"gabor_8cpp.html":[5,0,1,1,26,6],
+"gabor_8cpp.html#a2b3fdb5bd6cbca1c8ed1b81052012ba3":[5,0,1,1,26,6,0],
 "generate__riverbed_8cpp.html":[5,0,1,1,18,6],
 "generate__riverbed_8cpp.html#a97ba5dfaa6625b654a8010ed7d2f3465":[5,0,1,1,18,6,0],
 "generate__riverbed__gpu_8cpp.html":[5,0,1,1,18,7],
@@ -244,10 +249,5 @@ var NAVTREEINDEX7 =
 "gradient_8cpp.html#a11d438a3f643427c957d160b7c1a04de":[5,0,1,1,16,0,9],
 "gradient_8cpp.html#a27518ea42feb447ad4eb83147663c24d":[5,0,1,1,16,0,2],
 "gradient_8cpp.html#a522e28e6f997165bb492aa68327556d9":[5,0,1,1,16,0,8],
-"gradient_8cpp.html#a5d7bb7244ff862834560b9145866e1b2":[5,0,1,1,16,0,4],
-"gradient_8cpp.html#a5f58c4149344b401d82f0be3c3807156":[5,0,1,1,16,0,5],
-"gradient_8cpp.html#a6032811e40d11b8957dc48d98711acf9":[5,0,1,1,16,0,12],
-"gradient_8cpp.html#a618fb6d396a832c3dd1f053bfd27eed4":[5,0,1,1,16,0,13],
-"gradient_8cpp.html#a893bb80f635c4711c075e078cde18cf5":[5,0,1,1,16,0,15],
-"gradient_8cpp.html#a8dbef7ccc1936646831eb5a24db58d81":[5,0,1,1,16,0,11]
+"gradient_8cpp.html#a5d7bb7244ff862834560b9145866e1b2":[5,0,1,1,16,0,4]
 };

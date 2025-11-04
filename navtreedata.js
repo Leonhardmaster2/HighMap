@@ -87,19 +87,19 @@ var NAVTREEINDEX =
 "classhmap_1_1FbmJordanFunction.html#ae414da2792a0bac7b5fba61d2ecef892",
 "classhmap_1_1InterpolatorCurve.html",
 "classhmap_1_1StepFunction.html",
-"convolve_8cpp.html",
-"export_8hpp.html#a32464922c39713910ebeab632e0e8fd1",
-"filters_8hpp.html#a8a7a083e583afe812239d1fe6aa479cd",
-"gradient_8cpp.html#aa2c4a82ac72b15cac34f868be9743471",
-"interpolate__array_8hpp.html#a14135f92a275f8857aac1bc9480e426f",
-"morphology__gpu_8cpp.html#a335e4629532ba64049e0721bdcb5f3ba",
-"namespacehmap.html#a527cfdcf7f7e2ca0e270875526c9b1ee",
-"namespacehmap.html#aa78bf111867e13c63d8bd2ec005ad6c8a60f62532461a103e7680bba841871635",
-"namespacehmap.html#ae84abe9052dcb9c88f3c50716addfe44ab02b262c560a970e4f082d4edee376fb",
-"namespacemembers_z.html",
-"primitives__gpu_8cpp.html#a85000763147ffd507d483ba9be27f38b",
-"structhmap_1_1AssertResults.html#a4c628df3519b0272201adac2607573a9",
-"structhmap_1_1Vec4.html#a4cda617d090c216c30c1d0cf954dd2ca"
+"connected__components_8cpp.html#a9f8b079598b5ab3850c747ece6c81345",
+"erosion__gpu_8cpp.html#aacdd29247e4f3e008be3bacced178b50",
+"filters_8hpp.html#a81647bbf7183fed5cbfc468c8fa75b62",
+"gradient_8cpp.html#a5f58c4149344b401d82f0be3c3807156",
+"interpolate__array_8cpp.html#aba233ab806992723d191085ed3ea7e6a",
+"morphology_8hpp.html#aed5416971461ddb7fb6427bdeb5cae86",
+"namespacehmap.html#a515af2d938d55488bbb549c708597886",
+"namespacehmap.html#aa6efdb6d9fbf995b00f889ca290819cd",
+"namespacehmap.html#ae6dfd87b0368629657c3138dbf24cbc4",
+"namespacemembers_s.html",
+"primitives__gpu_8cpp.html#a50db0e092d6e8d147a587b18ee7ea743",
+"string__utils_8hpp.html",
+"structhmap_1_1Vec4.html#a1c2926686abc112047126b7d06859965"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
