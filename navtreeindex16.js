@@ -1,5 +1,8 @@
 var NAVTREEINDEX16 =
 {
+"stratify_8cpp.html#a815d3c721091a5525f872527a994ec1f":[5,0,1,1,10,20,2],
+"stratify_8cpp.html#a9b3fc59af5c418c494eec160399839bb":[5,0,1,1,10,20,4],
+"stratify_8cpp.html#abc0ddcae8cec8a556b8a343eaafe1dc4":[5,0,1,1,10,20,1],
 "stratify_8cpp.html#abca93ca8447abd2fc06c9892a4dc248c":[5,0,1,1,10,20,3],
 "stratify_8cpp.html#ad117ced78d758baa0bb5e1e7655bd0b9":[5,0,1,1,10,20,0],
 "string__utils_8cpp.html":[5,0,1,1,36,0],
@@ -246,8 +249,5 @@ var NAVTREEINDEX16 =
 "structhmap_1_1Vec4.html":[3,0,0,56],
 "structhmap_1_1Vec4.html":[4,0,0,55],
 "structhmap_1_1Vec4.html#a080d1200616967db1349c9b912b1186c":[3,0,0,56,11],
-"structhmap_1_1Vec4.html#a080d1200616967db1349c9b912b1186c":[4,0,0,55,11],
-"structhmap_1_1Vec4.html#a0c9fe01131fd18c85148768f4db47733":[4,0,0,55,2],
-"structhmap_1_1Vec4.html#a0c9fe01131fd18c85148768f4db47733":[3,0,0,56,2],
-"structhmap_1_1Vec4.html#a168a532a13b3fa35d09f0c9ea1a321a9":[3,0,0,56,5]
+"structhmap_1_1Vec4.html#a080d1200616967db1349c9b912b1186c":[4,0,0,55,11]
 };

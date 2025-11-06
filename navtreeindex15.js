@@ -1,5 +1,8 @@
 var NAVTREEINDEX15 =
 {
+"primitives__gpu_8cpp.html#a322260e971f4dec19ec8bc270e7cc461":[5,0,1,1,26,10,12],
+"primitives__gpu_8cpp.html#a450f5b26f42b6f06be3e1e131f6aaf86":[5,0,1,1,26,10,11],
+"primitives__gpu_8cpp.html#a4927a1382b383a5ceb9071f51bd5abf9":[5,0,1,1,26,10,14],
 "primitives__gpu_8cpp.html#a50332f79ca9b2548089359f5ad4b8ffd":[5,0,1,1,26,10,10],
 "primitives__gpu_8cpp.html#a50db0e092d6e8d147a587b18ee7ea743":[5,0,1,1,26,10,1],
 "primitives__gpu_8cpp.html#a688f13a6de420fd318ccba616eafcf25":[5,0,1,1,26,10,7],
@@ -246,8 +249,5 @@ var NAVTREEINDEX15 =
 "strata__gpu_8cpp.html#a2a5a7e94f196f51865362f287524403d":[5,0,1,1,10,19,0],
 "stratify_8cpp.html":[5,0,1,1,10,20],
 "stratify_8cpp.html#a06a4f7bbf99b83632ceb8a9ba5989823":[5,0,1,1,10,20,6],
-"stratify_8cpp.html#a1d3b4f4dbe769a1f71f8fcc44cfcaf8c":[5,0,1,1,10,20,5],
-"stratify_8cpp.html#a815d3c721091a5525f872527a994ec1f":[5,0,1,1,10,20,2],
-"stratify_8cpp.html#a9b3fc59af5c418c494eec160399839bb":[5,0,1,1,10,20,4],
-"stratify_8cpp.html#abc0ddcae8cec8a556b8a343eaafe1dc4":[5,0,1,1,10,20,1]
+"stratify_8cpp.html#a1d3b4f4dbe769a1f71f8fcc44cfcaf8c":[5,0,1,1,10,20,5]
 };

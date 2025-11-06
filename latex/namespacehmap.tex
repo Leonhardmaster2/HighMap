@@ -599,6 +599,8 @@ std\+::filesystem\+::path \mbox{\hyperlink{namespacehmap_a67eae4546cbed6a804eadd
 \item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_ab57f747b36842221871303e08b1d169e}{diffusion\+\_\+retargeting}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array\+\_\+before, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array\+\_\+after, int ir)
 \begin{DoxyCompactList}\small\item\em Applies diffusion retargeting by detecting local maxima and adjusting based on the difference between two arrays. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a8286a6c3c6d8909c443f65d0bab134d2}{diffusion\+\_\+retargeting}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array\+\_\+before, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array\+\_\+after, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&mask, int iterations)
+\item 
 void \mbox{\hyperlink{namespacehmap_a22656a7e71302244f5f79f237a81c985}{directional\+\_\+blur}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir, float \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}}, float intensity, float stretch=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float spread=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Applies a directional blur to a 2D array based on a spatially varying angle field. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_afb9b18e93276f49b347d2efbd94c1df4}{directional\+\_\+blur}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&\mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}}, float intensity, float stretch=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float spread=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
@@ -7961,7 +7963,7 @@ Valley width is a geomorphological metric that represents the distance across va
 \Hypertarget{namespacehmap_ab57f747b36842221871303e08b1d169e}\label{namespacehmap_ab57f747b36842221871303e08b1d169e} 
 \index{hmap@{hmap}!diffusion\_retargeting@{diffusion\_retargeting}}
 \index{diffusion\_retargeting@{diffusion\_retargeting}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{diffusion\_retargeting()}{diffusion\_retargeting()}}
+\doxysubsubsection{\texorpdfstring{diffusion\_retargeting()}{diffusion\_retargeting()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::diffusion\+\_\+retargeting (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array\+\_\+before,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array\+\_\+after,  }\item[{int}]{ir }\end{DoxyParamCaption})}
 
 
@@ -7995,21 +7997,31 @@ A new 2D array where the delta between the two input arrays has been smoothed an
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z0\ =\ \mbox{\hyperlink{namespacehmap_a40b948c49a05c14f2d540dc1a6952130}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ res,\ seed);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(z0);}
 \DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ mask\ =\ z0;}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a2badbebec49b12d0d721970a18eb420d}{hmap::clamp\_min}}(mask,\ 0.5f);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(mask);}
+\DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z1\ =\ z0;}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(z1,\ 0.f,\ 0.5f);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ ir\ =\ 32;}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z2\ =\ \mbox{\hyperlink{namespacehmap_ab57f747b36842221871303e08b1d169e}{hmap::diffusion\_retargeting}}(z0,\ z1,\ ir);}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ iterations\ =\ 500;}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z2\ =\ \mbox{\hyperlink{namespacehmap_ab57f747b36842221871303e08b1d169e}{hmap::diffusion\_retargeting}}(z0,\ z1,\ mask,\ iterations);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_diffusion\_retargeting.png"{}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z0,\ z1,\ z2\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z0,\ z1,\ z2,\ mask\},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9}{hmap::Cmap::TERRAIN}});}
 \DoxyCodeLine{\}}
 
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}  \Hypertarget{namespacehmap_a22656a7e71302244f5f79f237a81c985}\label{namespacehmap_a22656a7e71302244f5f79f237a81c985} 
+{\bfseries{Result}}  \Hypertarget{namespacehmap_a8286a6c3c6d8909c443f65d0bab134d2}\label{namespacehmap_a8286a6c3c6d8909c443f65d0bab134d2} 
+\index{hmap@{hmap}!diffusion\_retargeting@{diffusion\_retargeting}}
+\index{diffusion\_retargeting@{diffusion\_retargeting}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{diffusion\_retargeting()}{diffusion\_retargeting()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::diffusion\+\_\+retargeting (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array\+\_\+before,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array\+\_\+after,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{mask,  }\item[{int}]{iterations }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacehmap_a22656a7e71302244f5f79f237a81c985}\label{namespacehmap_a22656a7e71302244f5f79f237a81c985} 
 \index{hmap@{hmap}!directional\_blur@{directional\_blur}}
 \index{directional\_blur@{directional\_blur}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{directional\_blur()}{directional\_blur()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}

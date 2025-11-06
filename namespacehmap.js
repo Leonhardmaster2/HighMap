@@ -508,6 +508,7 @@ var namespacehmap =
     [ "valley_width", "namespacehmap.html#ab4d8048b79080012b8e60c270de8137f", null ],
     [ "z_score", "namespacehmap.html#a732a83c92c4a2d232fc9f421f98c0c6b", null ],
     [ "diffusion_retargeting", "namespacehmap.html#ab57f747b36842221871303e08b1d169e", null ],
+    [ "diffusion_retargeting", "namespacehmap.html#a8286a6c3c6d8909c443f65d0bab134d2", null ],
     [ "directional_blur", "namespacehmap.html#a22656a7e71302244f5f79f237a81c985", null ],
     [ "directional_blur", "namespacehmap.html#afb9b18e93276f49b347d2efbd94c1df4", null ],
     [ "equalize", "namespacehmap.html#a1b08d9a5d25e6bcd9d080accd077cc98", null ],

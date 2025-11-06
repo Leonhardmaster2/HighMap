@@ -905,6 +905,8 @@ Functions</h2></td></tr>
 <tr class="memitem:ab57f747b36842221871303e08b1d169e" id="r_ab57f747b36842221871303e08b1d169e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#ab57f747b36842221871303e08b1d169e">diffusion_retargeting</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array_before, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array_after, int ir)</td></tr>
 <tr class="memdesc:ab57f747b36842221871303e08b1d169e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies diffusion retargeting by detecting local maxima and adjusting based on the difference between two arrays.  <br /></td></tr>
 <tr class="separator:ab57f747b36842221871303e08b1d169e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8286a6c3c6d8909c443f65d0bab134d2" id="r_a8286a6c3c6d8909c443f65d0bab134d2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a8286a6c3c6d8909c443f65d0bab134d2">diffusion_retargeting</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array_before, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array_after, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;mask, int iterations)</td></tr>
+<tr class="separator:a8286a6c3c6d8909c443f65d0bab134d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a22656a7e71302244f5f79f237a81c985" id="r_a22656a7e71302244f5f79f237a81c985"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a22656a7e71302244f5f79f237a81c985">directional_blur</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, int ir, float <a class="el" href="namespacehmap.html#aac71bb6c14edc17967957f7918acdbdd">angle</a>, float intensity, float stretch=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float spread=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
 <tr class="memdesc:a22656a7e71302244f5f79f237a81c985"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies a directional blur to a 2D array based on a spatially varying angle field.  <br /></td></tr>
 <tr class="separator:a22656a7e71302244f5f79f237a81c985"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -13020,7 +13022,7 @@ An <a class="el" href="classhmap_1_1Array.html" title="Array class, helper to ma
 </div>
 </div>
 <a id="ab57f747b36842221871303e08b1d169e" name="ab57f747b36842221871303e08b1d169e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab57f747b36842221871303e08b1d169e">&#9670;&#160;</a></span>diffusion_retargeting()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ab57f747b36842221871303e08b1d169e">&#9670;&#160;</a></span>diffusion_retargeting() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -13073,21 +13075,65 @@ An <a class="el" href="classhmap_1_1Array.html" title="Array class, helper to ma
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z0 = <a class="code hl_function" href="namespacehmap.html#a40b948c49a05c14f2d540dc1a6952130">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, res, seed);</div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z0);</div>
 <div class="line"> </div>
+<div class="line">  <span class="keyword">auto</span> mask = z0;</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a2badbebec49b12d0d721970a18eb420d">hmap::clamp_min</a>(mask, 0.5f);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(mask);</div>
+<div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z1 = z0;</div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z1, 0.f, 0.5f);</div>
 <div class="line"> </div>
-<div class="line">  <span class="keywordtype">int</span>         ir = 32;</div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z2 = <a class="code hl_function" href="namespacehmap.html#ab57f747b36842221871303e08b1d169e">hmap::diffusion_retargeting</a>(z0, z1, ir);</div>
+<div class="line">  <span class="keywordtype">int</span>         iterations = 500;</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z2 = <a class="code hl_function" href="namespacehmap.html#ab57f747b36842221871303e08b1d169e">hmap::diffusion_retargeting</a>(z0, z1, mask, iterations);</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_diffusion_retargeting.png&quot;</span>,</div>
-<div class="line">                          {z0, z1, z2},</div>
+<div class="line">                          {z0, z1, z2, mask},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_ab57f747b36842221871303e08b1d169e"><div class="ttname"><a href="namespacehmap.html#ab57f747b36842221871303e08b1d169e">hmap::diffusion_retargeting</a></div><div class="ttdeci">Array diffusion_retargeting(const Array &amp;array_before, const Array &amp;array_after, int ir)</div><div class="ttdoc">Applies diffusion retargeting by detecting local maxima and adjusting based on the difference between...</div><div class="ttdef"><b>Definition</b> diffusion_retargeting.cpp:16</div></div>
+<div class="ttc" id="anamespacehmap_html_ab57f747b36842221871303e08b1d169e"><div class="ttname"><a href="namespacehmap.html#ab57f747b36842221871303e08b1d169e">hmap::diffusion_retargeting</a></div><div class="ttdeci">Array diffusion_retargeting(const Array &amp;array_before, const Array &amp;array_after, int ir)</div><div class="ttdoc">Applies diffusion retargeting by detecting local maxima and adjusting based on the difference between...</div><div class="ttdef"><b>Definition</b> diffusion_retargeting.cpp:17</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_diffusion_retargeting.png" alt=""/>
 </div>
  
+</div>
+</div>
+<a id="a8286a6c3c6d8909c443f65d0bab134d2" name="a8286a6c3c6d8909c443f65d0bab134d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8286a6c3c6d8909c443f65d0bab134d2">&#9670;&#160;</a></span>diffusion_retargeting() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classhmap_1_1Array.html">Array</a> hmap::diffusion_retargeting </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>array_before</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>array_after</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>mask</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iterations</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
 </div>
 </div>
 <a id="a22656a7e71302244f5f79f237a81c985" name="a22656a7e71302244f5f79f237a81c985"></a>

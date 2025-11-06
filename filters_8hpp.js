@@ -6,6 +6,7 @@ var filters_8hpp =
       [ "CROSS", "filters_8hpp.html#a9d00db2263b4b7b05245531c41c1b592a5a41d1fe35db5ea65c515f217e5df2af", null ]
     ] ],
     [ "diffusion_retargeting", "filters_8hpp.html#ab57f747b36842221871303e08b1d169e", null ],
+    [ "diffusion_retargeting", "filters_8hpp.html#a8286a6c3c6d8909c443f65d0bab134d2", null ],
     [ "directional_blur", "filters_8hpp.html#a22656a7e71302244f5f79f237a81c985", null ],
     [ "directional_blur", "filters_8hpp.html#afb9b18e93276f49b347d2efbd94c1df4", null ],
     [ "equalize", "filters_8hpp.html#a1b08d9a5d25e6bcd9d080accd077cc98", null ],
