@@ -70,6 +70,11 @@ Array diffusion_retargeting(const Array &array_before,
                             const Array &array_after,
                             int          ir);
 
+Array diffusion_retargeting(const Array &array_before,
+                            const Array &array_after,
+                            const Array &mask,
+                            int          iterations);
+
 /**
  * @brief Applies a directional blur to a 2D array based on a spatially varying
  * angle field.
