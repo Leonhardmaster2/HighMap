@@ -130,61 +130,63 @@ $(document).ready(function(){initNavTree('kernels_8hpp_source.html',''); initRes
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="namespacehmap.html#a4b6f135c6e81d313ca54ae1efac5f2c9abd845bef8f2959d8d9e7355aa9c44d86">   46</a></span>};</div>
 </div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>Array <a class="code hl_function" href="namespacehmap.html#ae0ab7faed3577159bc8051ad0e25b051">biweight</a>(Vec2&lt;int&gt; shape);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>Array <a class="code hl_function" href="namespacehmap.html#a4ad7940c796973a615558a8dc773281c">get_kernel</a>(Vec2&lt;int&gt; shape, <a class="code hl_enumeration" href="namespacehmap.html#a4b6f135c6e81d313ca54ae1efac5f2c9">KernelType</a> kernel_type);</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>Array <a class="code hl_function" href="namespacehmap.html#adfc320d14c66c6a40dedd9410efa269d">blackman</a>(Vec2&lt;int&gt; shape);</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>Array <a class="code hl_function" href="namespacehmap.html#a9880bdc35440162c24103a5df4c137a6">cone</a>(Vec2&lt;int&gt; shape);</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>Array <a class="code hl_function" href="namespacehmap.html#a553a4572c845a1286836bc08b67b3e34">cone_talus</a>(<span class="keywordtype">float</span> height, <span class="keywordtype">float</span> talus);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment">// --- KERNELS</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>Array <a class="code hl_function" href="namespacehmap.html#ae0ab7faed3577159bc8051ad0e25b051">biweight</a>(Vec2&lt;int&gt; shape);</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>Array <a class="code hl_function" href="namespacehmap.html#adfc320d14c66c6a40dedd9410efa269d">blackman</a>(Vec2&lt;int&gt; shape);</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>Array <a class="code hl_function" href="namespacehmap.html#a9880bdc35440162c24103a5df4c137a6">cone</a>(Vec2&lt;int&gt; shape);</div>
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>Array <a class="code hl_function" href="namespacehmap.html#ad1133df106eb662c9411a5501a5a3469">cone_smooth</a>(Vec2&lt;int&gt; shape);</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>Array <a class="code hl_function" href="namespacehmap.html#af6af5d27dcec83e466ca6b58244cafe7">cubic_pulse</a>(Vec2&lt;int&gt; shape);</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>std::vector&lt;float&gt; <a class="code hl_function" href="namespacehmap.html#a0b3237f9cc015299bf3e436be71d3587">cubic_pulse_1d</a>(<span class="keywordtype">int</span> nk);</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>Array <a class="code hl_function" href="namespacehmap.html#a2938b1bbfe89794423055e6ee9d2f79b">cubic_pulse_directional</a>(Vec2&lt;int&gt; shape,</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>                              <span class="keywordtype">float</span>     <a class="code hl_function" href="namespacehmap.html#aac71bb6c14edc17967957f7918acdbdd">angle</a>,</div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>                              <span class="keywordtype">float</span>     aspect_ratio,</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>                              <span class="keywordtype">float</span>     anisotropy);</div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span> </div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>Array <a class="code hl_function" href="namespacehmap.html#a1004e5d8355c36fc1945d73c3b44eda0">cubic_pulse_truncated</a>(Vec2&lt;int&gt; shape, <span class="keywordtype">float</span> slant_ratio, <span class="keywordtype">float</span> <a class="code hl_function" href="namespacehmap.html#aac71bb6c14edc17967957f7918acdbdd">angle</a>);</div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span> </div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>Array <a class="code hl_function" href="namespacehmap.html#acffafcfa04738c04fdd82eea8aa262dc">disk</a>(Vec2&lt;int&gt; shape);</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span> </div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>Array <a class="code hl_function" href="namespacehmap.html#a04f44c4dc11d46f5089f5213d4c5d1a5">disk_smooth</a>(Vec2&lt;int&gt; shape, <span class="keywordtype">float</span> r_cutoff = 0.9f);</div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span> </div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>Array <a class="code hl_function" href="namespacehmap.html#aab655567714a21e6308c09d07056d52f">gabor</a>(Vec2&lt;int&gt; shape,</div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>            <span class="keywordtype">float</span>     kw,</div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>            <span class="keywordtype">float</span>     <a class="code hl_function" href="namespacehmap.html#aac71bb6c14edc17967957f7918acdbdd">angle</a>,</div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>            <span class="keywordtype">bool</span>      quad_phase_shift = <span class="keyword">false</span>);</div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span> </div>
-<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>Array <a class="code hl_function" href="namespacehmap.html#a3b8ba9062298d434c8c10af3e92309a6">gabor_dune</a>(Vec2&lt;int&gt; shape,</div>
-<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>                 <span class="keywordtype">float</span>     kw,</div>
-<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>                 <span class="keywordtype">float</span>     <a class="code hl_function" href="namespacehmap.html#aac71bb6c14edc17967957f7918acdbdd">angle</a>,</div>
-<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>                 <span class="keywordtype">float</span>     xtop,</div>
-<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>                 <span class="keywordtype">float</span>     xbottom);</div>
-<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span> </div>
-<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>Array <a class="code hl_function" href="namespacehmap.html#a4ad7940c796973a615558a8dc773281c">get_kernel</a>(Vec2&lt;int&gt; shape, <a class="code hl_enumeration" href="namespacehmap.html#a4b6f135c6e81d313ca54ae1efac5f2c9">KernelType</a> kernel_type);</div>
-<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span> </div>
-<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>Array <a class="code hl_function" href="namespacehmap.html#ab4e60cf8b20170484e3ac2942cc05d59">hann</a>(Vec2&lt;int&gt; shape);</div>
-<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span> </div>
-<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>Array <a class="code hl_function" href="namespacehmap.html#a1d9165a0056e99a90b7734268f231901">lorentzian</a>(Vec2&lt;int&gt; shape, <span class="keywordtype">float</span> footprint_threshold = 0.1f);</div>
-<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span> </div>
-<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>Array <a class="code hl_function" href="namespacehmap.html#a8be1ca22c14c4989ec8f18842fda2766">lorentzian_compact</a>(Vec2&lt;int&gt; shape);</div>
-<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span> </div>
-<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span>Array <a class="code hl_function" href="namespacehmap.html#a06769c66065dd19c0fd54f4505d0e06c">sinc_radial</a>(Vec2&lt;int&gt; shape, <span class="keywordtype">float</span> kw);</div>
-<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span> </div>
-<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span>Array <a class="code hl_function" href="namespacehmap.html#abf04df687d39ce436fc5cbfae573dbff">sinc_separable</a>(Vec2&lt;int&gt; shape, <span class="keywordtype">float</span> kw);</div>
-<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span> </div>
-<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span>Array <a class="code hl_function" href="namespacehmap.html#a0d6dfb8771368f84f2256ae38fe669fa">smooth_cosine</a>(Vec2&lt;int&gt; shape);</div>
-<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span> </div>
-<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span>Array <a class="code hl_function" href="namespacehmap.html#a784bc655283255591d04afd181d756f8">square</a>(Vec2&lt;int&gt; shape);</div>
-<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span> </div>
-<div class="line"><a id="l00404" name="l00404"></a><span class="lineno">  404</span>Array <a class="code hl_function" href="namespacehmap.html#a78d3f33a357986539e654f0d42510659">tricube</a>(Vec2&lt;int&gt; shape);</div>
-<div class="line"><a id="l00405" name="l00405"></a><span class="lineno">  405</span> </div>
-<div class="line"><a id="l00406" name="l00406"></a><span class="lineno">  406</span>} <span class="comment">// namespace hmap</span></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>Array <a class="code hl_function" href="namespacehmap.html#a553a4572c845a1286836bc08b67b3e34">cone_talus</a>(<span class="keywordtype">float</span> height, <span class="keywordtype">float</span> talus);</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>Array <a class="code hl_function" href="namespacehmap.html#ad1133df106eb662c9411a5501a5a3469">cone_smooth</a>(Vec2&lt;int&gt; shape);</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>Array <a class="code hl_function" href="namespacehmap.html#af6af5d27dcec83e466ca6b58244cafe7">cubic_pulse</a>(Vec2&lt;int&gt; shape);</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span> </div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>std::vector&lt;float&gt; <a class="code hl_function" href="namespacehmap.html#a0b3237f9cc015299bf3e436be71d3587">cubic_pulse_1d</a>(<span class="keywordtype">int</span> nk);</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>Array <a class="code hl_function" href="namespacehmap.html#a2938b1bbfe89794423055e6ee9d2f79b">cubic_pulse_directional</a>(Vec2&lt;int&gt; shape,</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>                              <span class="keywordtype">float</span>     <a class="code hl_function" href="namespacehmap.html#aac71bb6c14edc17967957f7918acdbdd">angle</a>,</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>                              <span class="keywordtype">float</span>     aspect_ratio,</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>                              <span class="keywordtype">float</span>     anisotropy);</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span> </div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>Array <a class="code hl_function" href="namespacehmap.html#a1004e5d8355c36fc1945d73c3b44eda0">cubic_pulse_truncated</a>(Vec2&lt;int&gt; shape, <span class="keywordtype">float</span> slant_ratio, <span class="keywordtype">float</span> <a class="code hl_function" href="namespacehmap.html#aac71bb6c14edc17967957f7918acdbdd">angle</a>);</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span> </div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>Array <a class="code hl_function" href="namespacehmap.html#acffafcfa04738c04fdd82eea8aa262dc">disk</a>(Vec2&lt;int&gt; shape);</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span> </div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>Array <a class="code hl_function" href="namespacehmap.html#a04f44c4dc11d46f5089f5213d4c5d1a5">disk_smooth</a>(Vec2&lt;int&gt; shape, <span class="keywordtype">float</span> r_cutoff = 0.9f);</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span> </div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>Array <a class="code hl_function" href="namespacehmap.html#aab655567714a21e6308c09d07056d52f">gabor</a>(Vec2&lt;int&gt; shape,</div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>            <span class="keywordtype">float</span>     kw,</div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>            <span class="keywordtype">float</span>     <a class="code hl_function" href="namespacehmap.html#aac71bb6c14edc17967957f7918acdbdd">angle</a>,</div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>            <span class="keywordtype">bool</span>      quad_phase_shift = <span class="keyword">false</span>);</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span> </div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>Array <a class="code hl_function" href="namespacehmap.html#a3b8ba9062298d434c8c10af3e92309a6">gabor_dune</a>(Vec2&lt;int&gt; shape,</div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>                 <span class="keywordtype">float</span>     kw,</div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>                 <span class="keywordtype">float</span>     <a class="code hl_function" href="namespacehmap.html#aac71bb6c14edc17967957f7918acdbdd">angle</a>,</div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>                 <span class="keywordtype">float</span>     xtop,</div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>                 <span class="keywordtype">float</span>     xbottom);</div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span> </div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>Array <a class="code hl_function" href="namespacehmap.html#ab4e60cf8b20170484e3ac2942cc05d59">hann</a>(Vec2&lt;int&gt; shape);</div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span> </div>
+<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>Array <a class="code hl_function" href="namespacehmap.html#a1d9165a0056e99a90b7734268f231901">lorentzian</a>(Vec2&lt;int&gt; shape, <span class="keywordtype">float</span> footprint_threshold = 0.1f);</div>
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span> </div>
+<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>Array <a class="code hl_function" href="namespacehmap.html#a8be1ca22c14c4989ec8f18842fda2766">lorentzian_compact</a>(Vec2&lt;int&gt; shape);</div>
+<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span> </div>
+<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>Array <a class="code hl_function" href="namespacehmap.html#a06769c66065dd19c0fd54f4505d0e06c">sinc_radial</a>(Vec2&lt;int&gt; shape, <span class="keywordtype">float</span> kw);</div>
+<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span> </div>
+<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span>Array <a class="code hl_function" href="namespacehmap.html#abf04df687d39ce436fc5cbfae573dbff">sinc_separable</a>(Vec2&lt;int&gt; shape, <span class="keywordtype">float</span> kw);</div>
+<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span> </div>
+<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span>Array <a class="code hl_function" href="namespacehmap.html#a0d6dfb8771368f84f2256ae38fe669fa">smooth_cosine</a>(Vec2&lt;int&gt; shape);</div>
+<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span> </div>
+<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span>Array <a class="code hl_function" href="namespacehmap.html#a784bc655283255591d04afd181d756f8">square</a>(Vec2&lt;int&gt; shape);</div>
+<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span> </div>
+<div class="line"><a id="l00406" name="l00406"></a><span class="lineno">  406</span>Array <a class="code hl_function" href="namespacehmap.html#a78d3f33a357986539e654f0d42510659">tricube</a>(Vec2&lt;int&gt; shape);</div>
+<div class="line"><a id="l00407" name="l00407"></a><span class="lineno">  407</span> </div>
+<div class="line"><a id="l00408" name="l00408"></a><span class="lineno">  408</span>} <span class="comment">// namespace hmap</span></div>
 <div class="ttc" id="aarray_8hpp_html"><div class="ttname"><a href="array_8hpp.html">array.hpp</a></div><div class="ttdoc">Declaration of the Array class for 2D floating-point arrays with various mathematical operations and ...</div></div>
 <div class="ttc" id="anamespacehmap_html"><div class="ttname"><a href="namespacehmap.html">hmap</a></div><div class="ttdef"><b>Definition</b> algebra.hpp:28</div></div>
 <div class="ttc" id="anamespacehmap_html_a04f44c4dc11d46f5089f5213d4c5d1a5"><div class="ttname"><a href="namespacehmap.html#a04f44c4dc11d46f5089f5213d4c5d1a5">hmap::disk_smooth</a></div><div class="ttdeci">Array disk_smooth(Vec2&lt; int &gt; shape, float r_cutoff=0.9f)</div><div class="ttdoc">Generates a smooth, disk-shaped kernel footprint with soft edges.</div><div class="ttdef"><b>Definition</b> kernels.cpp:216</div></div>

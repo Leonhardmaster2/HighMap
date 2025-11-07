@@ -5,6 +5,7 @@ var filters_8hpp =
       [ "VON_NEUMANN", "filters_8hpp.html#a9d00db2263b4b7b05245531c41c1b592a5814c956cc15b9764d586bb86912c364", null ],
       [ "CROSS", "filters_8hpp.html#a9d00db2263b4b7b05245531c41c1b592a5a41d1fe35db5ea65c515f217e5df2af", null ]
     ] ],
+    [ "bulkify", "filters_8hpp.html#a7c780f6b35e43e45457af59ce1c761ce", null ],
     [ "diffusion_retargeting", "filters_8hpp.html#ab57f747b36842221871303e08b1d169e", null ],
     [ "diffusion_retargeting", "filters_8hpp.html#a8286a6c3c6d8909c443f65d0bab134d2", null ],
     [ "directional_blur", "filters_8hpp.html#a22656a7e71302244f5f79f237a81c985", null ],

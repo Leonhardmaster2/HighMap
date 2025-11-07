@@ -36,7 +36,9 @@ var searchData=
   ['boundary_2ehpp_33',['boundary.hpp',['../boundary_8hpp.html',1,'']]],
   ['bspline_34',['bspline',['../classhmap_1_1Path.html#a166a6f87dff196efa75abb1b731d3528',1,'hmap::Path::bspline()'],['../namespacehmap.html#aa78bf111867e13c63d8bd2ec005ad6c8a60f62532461a103e7680bba841871635',1,'hmap::BSPLINE']]],
   ['building_20heightmaps_35',['&quot;Array&quot; - Elementary Data Structure for Building Heightmaps',['../index.html#autotoc_md6',1,'']]],
-  ['bump_36',['bump',['../namespacehmap.html#a80d18b9cba709433d31f37c29f64f01c',1,'hmap']]],
-  ['bump_5florentzian_37',['bump_lorentzian',['../namespacehmap.html#a867abc2da19924fa22525ff69bca398d',1,'hmap']]],
-  ['bumpfunction_38',['bumpfunction',['../classhmap_1_1BumpFunction.html#a178d0bca834491174e38281174d8aa95',1,'hmap::BumpFunction::BumpFunction()'],['../classhmap_1_1BumpFunction.html',1,'hmap::BumpFunction']]]
+  ['bulkify_36',['bulkify',['../namespacehmap.html#a7c780f6b35e43e45457af59ce1c761ce',1,'hmap']]],
+  ['bulkify_2ecpp_37',['bulkify.cpp',['../bulkify_8cpp.html',1,'']]],
+  ['bump_38',['bump',['../namespacehmap.html#a80d18b9cba709433d31f37c29f64f01c',1,'hmap']]],
+  ['bump_5florentzian_39',['bump_lorentzian',['../namespacehmap.html#a867abc2da19924fa22525ff69bca398d',1,'hmap']]],
+  ['bumpfunction_40',['bumpfunction',['../classhmap_1_1BumpFunction.html#a178d0bca834491174e38281174d8aa95',1,'hmap::BumpFunction::BumpFunction()'],['../classhmap_1_1BumpFunction.html',1,'hmap::BumpFunction']]]
 ];

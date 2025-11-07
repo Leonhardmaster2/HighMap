@@ -83,23 +83,23 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_2home_2runner_2work_2HighMap_2HighMap_2HighMap_2include_2highmap_2export_8hpp-example.html",
-"classhmap_1_1Array.html#ad1496c702975e9425113eb4a1dd0e49c",
-"classhmap_1_1FbmJordanFunction.html#ae414da2792a0bac7b5fba61d2ecef892",
-"classhmap_1_1InterpolatorCurve.html",
-"classhmap_1_1StepFunction.html",
-"connected__components_8cpp.html#a9f8b079598b5ab3850c747ece6c81345",
-"erosion__gpu_8cpp.html#a7bc17570e205e4eb84ed4d434998555e",
-"filters_8hpp.html#a7d2aae253f1f67bbdbc718859f83ef0a",
-"gradient_8cpp.html#a522e28e6f997165bb492aa68327556d9",
-"interpolate__array_8cpp.html#aac9094d328d39df42675a8614abe89ed",
-"morphology_8hpp.html#adff494af7c8bf4db7f3e6fddd3261793",
-"namespacehmap.html#a5101273ec456f5267dddc3e22dae223babadb712f0f7627d6892ea66c9743aec1",
-"namespacehmap.html#aa60fa2d3f02d1e064b520fa1623200d0",
-"namespacehmap.html#ae475b4f5defd09d3e566f44dd2c21575",
-"namespacemembers_o.html",
-"primitives__gpu_8cpp.html#a322260e971f4dec19ec8bc270e7cc461",
-"stratify_8cpp.html#a815d3c721091a5525f872527a994ec1f",
-"structhmap_1_1Vec4.html#a0c9fe01131fd18c85148768f4db47733"
+"classhmap_1_1Array.html#acc4ea8fbdc162b16a2b0c8de575ff569",
+"classhmap_1_1FbmJordanFunction.html#ad26948453a06c40b7daf50a4d03b78e4",
+"classhmap_1_1Interpolator1D.html#afce7ba6809a4c7b28a561c7c646227e3",
+"classhmap_1_1SlopeFunction.html#aecf4e2415541342003f4ca96b13df556",
+"cone_8cpp.html#af6f5880a68329be490f99aa779f3c1d8",
+"erosion_8hpp_source.html",
+"filters_8hpp.html#a7725963a18b9fca522dec1ae74ad8c2f",
+"gradient_8cpp.html#a11c1600c2d67387c1b037fadcca9a069",
+"interpolate__array_8cpp.html#a08eecd57d3c4f993b6f205beabd2f12b",
+"morphology_8hpp.html#ac91a2dacd050d8588b4135f02dd8f2a5",
+"namespacehmap.html#a5101273ec456f5267dddc3e22dae223ba8451872c36bde3f6418795fec1ed7228",
+"namespacehmap.html#aa2d7277ba1c9b10d75e5ba1d38ac7d80",
+"namespacehmap.html#adf68a2f031297654f88252b7ce027b3d",
+"namespacemembers_func_s.html",
+"primitives_8hpp.html#ab00af49fafd706242919ea18dc4817ee",
+"shadows_8hpp.html",
+"structhmap_1_1Vec3.html#a5dc78c2ba3f2bf3ca489aac6841e646c"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

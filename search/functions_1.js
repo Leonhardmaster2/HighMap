@@ -19,7 +19,8 @@ var searchData=
   ['blend_5fsoft_16',['blend_soft',['../namespacehmap.html#a91e52ae1178d54931a1729a2368a31f7',1,'hmap']]],
   ['border_17',['border',['../namespacehmap.html#af80bcff234bf1482cf26896b9d21d270',1,'hmap::border()'],['../namespacehmap_1_1gpu.html#a335e4629532ba64049e0721bdcb5f3ba',1,'hmap::gpu::border()']]],
   ['bspline_18',['bspline',['../classhmap_1_1Path.html#a166a6f87dff196efa75abb1b731d3528',1,'hmap::Path']]],
-  ['bump_19',['bump',['../namespacehmap.html#a80d18b9cba709433d31f37c29f64f01c',1,'hmap']]],
-  ['bump_5florentzian_20',['bump_lorentzian',['../namespacehmap.html#a867abc2da19924fa22525ff69bca398d',1,'hmap']]],
-  ['bumpfunction_21',['BumpFunction',['../classhmap_1_1BumpFunction.html#a178d0bca834491174e38281174d8aa95',1,'hmap::BumpFunction']]]
+  ['bulkify_19',['bulkify',['../namespacehmap.html#a7c780f6b35e43e45457af59ce1c761ce',1,'hmap']]],
+  ['bump_20',['bump',['../namespacehmap.html#a80d18b9cba709433d31f37c29f64f01c',1,'hmap']]],
+  ['bump_5florentzian_21',['bump_lorentzian',['../namespacehmap.html#a867abc2da19924fa22525ff69bca398d',1,'hmap']]],
+  ['bumpfunction_22',['BumpFunction',['../classhmap_1_1BumpFunction.html#a178d0bca834491174e38281174d8aa95',1,'hmap::BumpFunction']]]
 ];

@@ -328,6 +328,16 @@ enum \mbox{\hyperlink{namespacehmap_a8e3756915e28aa80cec2190043cc8c2f}{Voronoi\+
 \mbox{\hyperlink{namespacehmap_a8e3756915e28aa80cec2190043cc8c2fa85f252453c9797b7e00cc96cb7147537}{CONSTANT\+\_\+\+F2\+MF1\+\_\+\+SQUARED}}
  \}
 \item 
+enum \mbox{\hyperlink{namespacehmap_a55542a66f890ef9ecf5f82af2c23a0cf}{Primitive\+Type}} \+: int \{ \newline
+\mbox{\hyperlink{namespacehmap_a55542a66f890ef9ecf5f82af2c23a0cfa4807402e27d4ee7cb042237cbeb26a69}{PRIM\+\_\+\+BIQUAD\+\_\+\+PULSE}}
+, \mbox{\hyperlink{namespacehmap_a55542a66f890ef9ecf5f82af2c23a0cfa938e2b9cd9d4c9249f6d45285457891b}{PRIM\+\_\+\+BUMP}}
+, \mbox{\hyperlink{namespacehmap_a55542a66f890ef9ecf5f82af2c23a0cfae2c78e075109f330e3109c52e9bf90ff}{PRIM\+\_\+\+CONE}}
+, \mbox{\hyperlink{namespacehmap_a55542a66f890ef9ecf5f82af2c23a0cfa71a3d57896b6c2d066433962e74e8961}{PRIM\+\_\+\+CONE\+\_\+\+SMOOTH}}
+, \newline
+\mbox{\hyperlink{namespacehmap_a55542a66f890ef9ecf5f82af2c23a0cfae1780174f7412d5a5593b324ea0db7cb}{PRIM\+\_\+\+CUBIC\+\_\+\+PULSE}}
+, \mbox{\hyperlink{namespacehmap_a55542a66f890ef9ecf5f82af2c23a0cfad8c75d88dbfd854dbcedfaf3a4b9c65c}{PRIM\+\_\+\+SMOOTH\+\_\+\+COSINE}}
+ \}
+\item 
 enum \mbox{\hyperlink{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbe}{Clamp\+Mode}} \+: int \{ \mbox{\hyperlink{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbea7ee5673a01d4215ae4ba9ba95268ed59}{POSITIVE\+\_\+\+ONLY}}
 , \mbox{\hyperlink{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbea10478d523fc507b9738e9cfdd5b7539c}{NEGATIVE\+\_\+\+ONLY}}
 , \mbox{\hyperlink{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbead7d8162264f038302952e47ad5e7a2ed}{BOTH}}
@@ -596,6 +606,8 @@ std\+::filesystem\+::path \mbox{\hyperlink{namespacehmap_a67eae4546cbed6a804eadd
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_ab4d8048b79080012b8e60c270de8137f}{valley\+\_\+width}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int ir=0, bool ridge\+\_\+select=false)
 \begin{DoxyCompactList}\small\item\em Measures the valley width by calculating the distance from each point in a concave region to the frontier of that region. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a732a83c92c4a2d232fc9f421f98c0c6b}{z\+\_\+score}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
+\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a7c780f6b35e43e45457af59ce1c761ce}{bulkify}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, const \mbox{\hyperlink{namespacehmap_a55542a66f890ef9ecf5f82af2c23a0cf}{Primitive\+Type}} \&primitive\+\_\+type, float amp=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ float $>$ center=\{0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
 \item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_ab57f747b36842221871303e08b1d169e}{diffusion\+\_\+retargeting}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array\+\_\+before, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array\+\_\+after, int ir)
 \begin{DoxyCompactList}\small\item\em Applies diffusion retargeting by detecting local maxima and adjusting based on the difference between two arrays. \end{DoxyCompactList}\item 
@@ -1101,6 +1113,8 @@ void \mbox{\hyperlink{namespacehmap_a08eecd57d3c4f993b6f205beabd2f12b}{interpola
 \item 
 void \mbox{\hyperlink{namespacehmap_a14135f92a275f8857aac1bc9480e426f}{interpolate\+\_\+heightmap}} (const \mbox{\hyperlink{classhmap_1_1Heightmap}{hmap\+::\+Heightmap}} \&h\+\_\+source, \mbox{\hyperlink{classhmap_1_1Heightmap}{hmap\+::\+Heightmap}} \&h\+\_\+target, const \mbox{\hyperlink{classhmap_1_1CoordFrame}{Coord\+Frame}} \&t\+\_\+source, const \mbox{\hyperlink{classhmap_1_1CoordFrame}{Coord\+Frame}} \&t\+\_\+target)
 \item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a4ad7940c796973a615558a8dc773281c}{get\+\_\+kernel}} (\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$ shape, \mbox{\hyperlink{namespacehmap_a4b6f135c6e81d313ca54ae1efac5f2c9}{Kernel\+Type}} kernel\+\_\+type)
+\begin{DoxyCompactList}\small\item\em Generate a kernel of the specified type. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_ae0ab7faed3577159bc8051ad0e25b051}{biweight}} (\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$ shape)
 \begin{DoxyCompactList}\small\item\em Generates a biweight kernel array. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_adfc320d14c66c6a40dedd9410efa269d}{blackman}} (\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$ shape)
@@ -1127,8 +1141,6 @@ std\+::vector$<$ float $>$ \mbox{\hyperlink{namespacehmap_a0b3237f9cc015299bf3e4
 \begin{DoxyCompactList}\small\item\em Generates a Gabor kernel of the specified shape. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a3b8ba9062298d434c8c10af3e92309a6}{gabor\+\_\+dune}} (\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$ shape, float kw, float \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}}, float xtop, float xbottom)
 \begin{DoxyCompactList}\small\item\em Generates a modified dune-\/like Gabor kernel. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a4ad7940c796973a615558a8dc773281c}{get\+\_\+kernel}} (\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$ shape, \mbox{\hyperlink{namespacehmap_a4b6f135c6e81d313ca54ae1efac5f2c9}{Kernel\+Type}} kernel\+\_\+type)
-\begin{DoxyCompactList}\small\item\em Generate a kernel of the specified type. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_ab4e60cf8b20170484e3ac2942cc05d59}{hann}} (\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$ shape)
 \begin{DoxyCompactList}\small\item\em Generates a Hann window array with the specified shape. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a1d9165a0056e99a90b7734268f231901}{lorentzian}} (\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$ shape, float footprint\+\_\+threshold=0.\+1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
@@ -1301,6 +1313,8 @@ void \mbox{\hyperlink{namespacehmap_ae0a3c73cc23a288fe03bf5ed6ac73c3d}{find\+\_\
 \begin{DoxyCompactList}\small\item\em Extracts a random sub-\/array (patch) from the input array, with optional transformations. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a462f8b6ebc7b8ab79c619987e0ddfce4}{vstack}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array1, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array2)
 \begin{DoxyCompactList}\small\item\em Vertically stack two arrays. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a8a516692e72b572b71cbc5df0f251624}{get\+\_\+primitive\+\_\+base}} (const \mbox{\hyperlink{namespacehmap_a55542a66f890ef9ecf5f82af2c23a0cf}{Primitive\+Type}} \&primitive\+\_\+type, const \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$ \&shape, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ float $>$ center=\{0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
+\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a28783971977657055053b3c143502bc2}{biquad\+\_\+pulse}} (\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$ shape, float \mbox{\hyperlink{namespacehmap_ab1e1b26c0c1eb51d0b256db94d6ca22e}{gain}}=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+ctrl\+\_\+param=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+stretching=nullptr, \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ float $>$ center=\{0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
 \begin{DoxyCompactList}\small\item\em Return a \textquotesingle{}biquadratic pulse\textquotesingle{}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a80d18b9cba709433d31f37c29f64f01c}{bump}} (\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$ shape, float \mbox{\hyperlink{namespacehmap_ab1e1b26c0c1eb51d0b256db94d6ca22e}{gain}}=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+ctrl\+\_\+param=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+stretching=nullptr, \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ float $>$ center=\{0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
@@ -1323,6 +1337,8 @@ void \mbox{\hyperlink{namespacehmap_ae0a3c73cc23a288fe03bf5ed6ac73c3d}{find\+\_\
 \begin{DoxyCompactList}\small\item\em Return a constant value array. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a608453bf311137377626e4db29502ea1}{crater}} (\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$ shape, float radius, float depth, float lip\+\_\+decay, float lip\+\_\+height\+\_\+ratio=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+ctrl\+\_\+param=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ float $>$ center=\{0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
 \begin{DoxyCompactList}\small\item\em Return a crater-\/shaped heightmap. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_ab2d03f5c29f6510ac4b64a79c1f029ec}{cubic\+\_\+pulse}} (\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$ shape, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y, \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ float $>$ center=\{0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
+\begin{DoxyCompactList}\small\item\em Generates a cubic pulse array. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a1b7c375c3335b31ab4773d792365faac}{dendry}} (\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$ shape, \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ float $>$ kw, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&control\+\_\+function, float eps=0.\+05, int resolution=1, float displacement=0.\+075, int primitives\+\_\+resolution\+\_\+steps=3, float slope\+\_\+power=2.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float noise\+\_\+amplitude\+\_\+proportion=0.\+01, bool add\+\_\+control\+\_\+function=true, float control\+\_\+function\+\_\+overlap=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+stretching=nullptr, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, int subsampling=1)
 \begin{DoxyCompactList}\small\item\em Dendry is a locally computable procedural function that generates branching patterns at various scales (see {\bfseries [Gaillard2019]}). \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_ac6e6a71b31cb483e9fec2511a4b1334a}{dendry}} (\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$ shape, \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ float $>$ kw, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, \mbox{\hyperlink{classhmap_1_1NoiseFunction}{Noise\+Function}} \&noise\+\_\+function, float noise\+\_\+function\+\_\+offset=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float noise\+\_\+function\+\_\+scaling=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float eps=0.\+05, int resolution=1, float displacement=0.\+075, int primitives\+\_\+resolution\+\_\+steps=3, float slope\+\_\+power=2.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float noise\+\_\+amplitude\+\_\+proportion=0.\+01, bool add\+\_\+control\+\_\+function=true, float control\+\_\+function\+\_\+overlap=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+stretching=nullptr, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
@@ -1365,6 +1381,8 @@ void \mbox{\hyperlink{namespacehmap_ae0a3c73cc23a288fe03bf5ed6ac73c3d}{find\+\_\
 \begin{DoxyCompactList}\small\item\em Return a rift function (Heaviside with an optional talus slope at the transition). \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_ad1836a084a8607446ce029d32c02a201}{slope}} (\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$ shape, float \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}}, float slope, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+ctrl\+\_\+param=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+stretching=nullptr, \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ float $>$ center=\{0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
 \begin{DoxyCompactList}\small\item\em Return an array corresponding to a slope with a given overall. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a6cd3bcadb6477f6f070c4c87b2990309}{smooth\+\_\+cosine}} (\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$ shape, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y, \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ float $>$ center=\{0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
+\begin{DoxyCompactList}\small\item\em Generates a smooth cosine array. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_ab00af49fafd706242919ea18dc4817ee}{step}} (\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$ shape, float \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}}, float \mbox{\hyperlink{namespacehmap_ad1836a084a8607446ce029d32c02a201}{slope}}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+ctrl\+\_\+param=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+stretching=nullptr, \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ float $>$ center=\{0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
 \begin{DoxyCompactList}\small\item\em Return a step function (Heaviside with an optional talus slope at the transition). \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_aa7f0f75c71d2248bf3fea0ba6c7ccb31}{swirl}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&dx, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&dy, float amplitude=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float exponent=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise=nullptr, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
@@ -2343,6 +2361,38 @@ CONSTANT&\\
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{CONSTANT\_F2MF1\_SQUARED@{CONSTANT\_F2MF1\_SQUARED}!hmap@{hmap}}\index{hmap@{hmap}!CONSTANT\_F2MF1\_SQUARED@{CONSTANT\_F2MF1\_SQUARED}}}\Hypertarget{namespacehmap_a8e3756915e28aa80cec2190043cc8c2fa85f252453c9797b7e00cc96cb7147537}\label{namespacehmap_a8e3756915e28aa80cec2190043cc8c2fa85f252453c9797b7e00cc96cb7147537} 
 CONSTANT\+\_\+\+F2\+MF1\+\_\+\+SQUARED&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{namespacehmap_a55542a66f890ef9ecf5f82af2c23a0cf}\label{namespacehmap_a55542a66f890ef9ecf5f82af2c23a0cf} 
+\index{hmap@{hmap}!PrimitiveType@{PrimitiveType}}
+\index{PrimitiveType@{PrimitiveType}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{PrimitiveType}{PrimitiveType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespacehmap_a55542a66f890ef9ecf5f82af2c23a0cf}{hmap\+::\+Primitive\+Type}} \+: int}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PRIM\_BIQUAD\_PULSE@{PRIM\_BIQUAD\_PULSE}!hmap@{hmap}}\index{hmap@{hmap}!PRIM\_BIQUAD\_PULSE@{PRIM\_BIQUAD\_PULSE}}}\Hypertarget{namespacehmap_a55542a66f890ef9ecf5f82af2c23a0cfa4807402e27d4ee7cb042237cbeb26a69}\label{namespacehmap_a55542a66f890ef9ecf5f82af2c23a0cfa4807402e27d4ee7cb042237cbeb26a69} 
+PRIM\+\_\+\+BIQUAD\+\_\+\+PULSE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PRIM\_BUMP@{PRIM\_BUMP}!hmap@{hmap}}\index{hmap@{hmap}!PRIM\_BUMP@{PRIM\_BUMP}}}\Hypertarget{namespacehmap_a55542a66f890ef9ecf5f82af2c23a0cfa938e2b9cd9d4c9249f6d45285457891b}\label{namespacehmap_a55542a66f890ef9ecf5f82af2c23a0cfa938e2b9cd9d4c9249f6d45285457891b} 
+PRIM\+\_\+\+BUMP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PRIM\_CONE@{PRIM\_CONE}!hmap@{hmap}}\index{hmap@{hmap}!PRIM\_CONE@{PRIM\_CONE}}}\Hypertarget{namespacehmap_a55542a66f890ef9ecf5f82af2c23a0cfae2c78e075109f330e3109c52e9bf90ff}\label{namespacehmap_a55542a66f890ef9ecf5f82af2c23a0cfae2c78e075109f330e3109c52e9bf90ff} 
+PRIM\+\_\+\+CONE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PRIM\_CONE\_SMOOTH@{PRIM\_CONE\_SMOOTH}!hmap@{hmap}}\index{hmap@{hmap}!PRIM\_CONE\_SMOOTH@{PRIM\_CONE\_SMOOTH}}}\Hypertarget{namespacehmap_a55542a66f890ef9ecf5f82af2c23a0cfa71a3d57896b6c2d066433962e74e8961}\label{namespacehmap_a55542a66f890ef9ecf5f82af2c23a0cfa71a3d57896b6c2d066433962e74e8961} 
+PRIM\+\_\+\+CONE\+\_\+\+SMOOTH&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PRIM\_CUBIC\_PULSE@{PRIM\_CUBIC\_PULSE}!hmap@{hmap}}\index{hmap@{hmap}!PRIM\_CUBIC\_PULSE@{PRIM\_CUBIC\_PULSE}}}\Hypertarget{namespacehmap_a55542a66f890ef9ecf5f82af2c23a0cfae1780174f7412d5a5593b324ea0db7cb}\label{namespacehmap_a55542a66f890ef9ecf5f82af2c23a0cfae1780174f7412d5a5593b324ea0db7cb} 
+PRIM\+\_\+\+CUBIC\+\_\+\+PULSE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PRIM\_SMOOTH\_COSINE@{PRIM\_SMOOTH\_COSINE}!hmap@{hmap}}\index{hmap@{hmap}!PRIM\_SMOOTH\_COSINE@{PRIM\_SMOOTH\_COSINE}}}\Hypertarget{namespacehmap_a55542a66f890ef9ecf5f82af2c23a0cfad8c75d88dbfd854dbcedfaf3a4b9c65c}\label{namespacehmap_a55542a66f890ef9ecf5f82af2c23a0cfad8c75d88dbfd854dbcedfaf3a4b9c65c} 
+PRIM\+\_\+\+SMOOTH\+\_\+\+COSINE&\\
 \hline
 
 \end{DoxyEnumFields}
@@ -7959,6 +8009,12 @@ Valley width is a geomorphological metric that represents the distance across va
 \index{z\_score@{z\_score}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{z\_score()}{z\_score()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::z\+\_\+score (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{int}]{ir }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacehmap_a7c780f6b35e43e45457af59ce1c761ce}\label{namespacehmap_a7c780f6b35e43e45457af59ce1c761ce} 
+\index{hmap@{hmap}!bulkify@{bulkify}}
+\index{bulkify@{bulkify}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{bulkify()}{bulkify()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::bulkify (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{const \mbox{\hyperlink{namespacehmap_a55542a66f890ef9ecf5f82af2c23a0cf}{Primitive\+Type}} \&}]{primitive\+\_\+type,  }\item[{float}]{amp = {\ttfamily 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+x = {\ttfamily nullptr},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+y = {\ttfamily nullptr},  }\item[{\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ float $>$}]{center = {\ttfamily \{0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}},  }\item[{\mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$}]{bbox = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}} }\end{DoxyParamCaption})}
 
 \Hypertarget{namespacehmap_ab57f747b36842221871303e08b1d169e}\label{namespacehmap_ab57f747b36842221871303e08b1d169e} 
 \index{hmap@{hmap}!diffusion\_retargeting@{diffusion\_retargeting}}
@@ -17495,6 +17551,28 @@ This function performs 2D interpolation by generating a Delaunay triangulation o
 \doxysubsubsection{\texorpdfstring{interpolate\_heightmap()}{interpolate\_heightmap()}}
 {\footnotesize\ttfamily void hmap\+::interpolate\+\_\+heightmap (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Heightmap}{hmap\+::\+Heightmap}} \&}]{h\+\_\+source,  }\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{hmap\+::\+Heightmap}} \&}]{h\+\_\+target,  }\item[{const \mbox{\hyperlink{classhmap_1_1CoordFrame}{Coord\+Frame}} \&}]{t\+\_\+source,  }\item[{const \mbox{\hyperlink{classhmap_1_1CoordFrame}{Coord\+Frame}} \&}]{t\+\_\+target }\end{DoxyParamCaption})}
 
+\Hypertarget{namespacehmap_a4ad7940c796973a615558a8dc773281c}\label{namespacehmap_a4ad7940c796973a615558a8dc773281c} 
+\index{hmap@{hmap}!get\_kernel@{get\_kernel}}
+\index{get\_kernel@{get\_kernel}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{get\_kernel()}{get\_kernel()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::get\+\_\+kernel (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$}]{shape,  }\item[{\mbox{\hyperlink{namespacehmap_a4b6f135c6e81d313ca54ae1efac5f2c9}{Kernel\+Type}}}]{kernel\+\_\+type }\end{DoxyParamCaption})}
+
+
+
+Generate a kernel of the specified type. 
+
+This function creates a kernel based on the given shape and kernel type. It supports various types of kernels including biweight, cubic pulse, cone, and more. The resulting kernel is returned as an array.
+
+
+\begin{DoxyParams}{Parameters}
+{\em shape} & The dimensions of the kernel to be generated. \\
+\hline
+{\em kernel\+\_\+type} & The type of kernel to generate (e.\+g., BIWEIGHT, CUBIC\+\_\+\+PULSE, etc.). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classhmap_1_1Array}{Array} The generated kernel array. 
+\end{DoxyReturn}
 \Hypertarget{namespacehmap_ae0ab7faed3577159bc8051ad0e25b051}\label{namespacehmap_ae0ab7faed3577159bc8051ad0e25b051} 
 \index{hmap@{hmap}!biweight@{biweight}}
 \index{biweight@{biweight}!hmap@{hmap}}
@@ -17602,7 +17680,7 @@ This function creates a cone-\/shaped kernel where the kernel smoothly transitio
 \Hypertarget{namespacehmap_af6af5d27dcec83e466ca6b58244cafe7}\label{namespacehmap_af6af5d27dcec83e466ca6b58244cafe7} 
 \index{hmap@{hmap}!cubic\_pulse@{cubic\_pulse}}
 \index{cubic\_pulse@{cubic\_pulse}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{cubic\_pulse()}{cubic\_pulse()}}
+\doxysubsubsection{\texorpdfstring{cubic\_pulse()}{cubic\_pulse()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::cubic\+\_\+pulse (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$}]{shape }\end{DoxyParamCaption})}
 
 
@@ -17842,29 +17920,7 @@ This function creates a modified Gabor kernel that has a dune-\/like profile. Th
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}  \Hypertarget{namespacehmap_a4ad7940c796973a615558a8dc773281c}\label{namespacehmap_a4ad7940c796973a615558a8dc773281c} 
-\index{hmap@{hmap}!get\_kernel@{get\_kernel}}
-\index{get\_kernel@{get\_kernel}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{get\_kernel()}{get\_kernel()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::get\+\_\+kernel (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$}]{shape,  }\item[{\mbox{\hyperlink{namespacehmap_a4b6f135c6e81d313ca54ae1efac5f2c9}{Kernel\+Type}}}]{kernel\+\_\+type }\end{DoxyParamCaption})}
-
-
-
-Generate a kernel of the specified type. 
-
-This function creates a kernel based on the given shape and kernel type. It supports various types of kernels including biweight, cubic pulse, cone, and more. The resulting kernel is returned as an array.
-
-
-\begin{DoxyParams}{Parameters}
-{\em shape} & The dimensions of the kernel to be generated. \\
-\hline
-{\em kernel\+\_\+type} & The type of kernel to generate (e.\+g., BIWEIGHT, CUBIC\+\_\+\+PULSE, etc.). \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-\doxylink{classhmap_1_1Array}{Array} The generated kernel array. 
-\end{DoxyReturn}
-\Hypertarget{namespacehmap_ab4e60cf8b20170484e3ac2942cc05d59}\label{namespacehmap_ab4e60cf8b20170484e3ac2942cc05d59} 
+{\bfseries{Result}}  \Hypertarget{namespacehmap_ab4e60cf8b20170484e3ac2942cc05d59}\label{namespacehmap_ab4e60cf8b20170484e3ac2942cc05d59} 
 \index{hmap@{hmap}!hann@{hann}}
 \index{hann@{hann}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{hann()}{hann()}}
@@ -17973,7 +18029,7 @@ An {\ttfamily \doxylink{classhmap_1_1Array}{Array}} object containing the separa
 \Hypertarget{namespacehmap_a0d6dfb8771368f84f2256ae38fe669fa}\label{namespacehmap_a0d6dfb8771368f84f2256ae38fe669fa} 
 \index{hmap@{hmap}!smooth\_cosine@{smooth\_cosine}}
 \index{smooth\_cosine@{smooth\_cosine}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{smooth\_cosine()}{smooth\_cosine()}}
+\doxysubsubsection{\texorpdfstring{smooth\_cosine()}{smooth\_cosine()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::smooth\+\_\+cosine (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$}]{shape }\end{DoxyParamCaption})}
 
 
@@ -20420,6 +20476,12 @@ This function concatenates two arrays along their rows, resulting in a new array
 \begin{DoxyReturn}{Returns}
 \doxylink{classhmap_1_1Array}{Array} The resulting array with {\ttfamily array1} stacked on top of {\ttfamily array2}. 
 \end{DoxyReturn}
+\Hypertarget{namespacehmap_a8a516692e72b572b71cbc5df0f251624}\label{namespacehmap_a8a516692e72b572b71cbc5df0f251624} 
+\index{hmap@{hmap}!get\_primitive\_base@{get\_primitive\_base}}
+\index{get\_primitive\_base@{get\_primitive\_base}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{get\_primitive\_base()}{get\_primitive\_base()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::get\+\_\+primitive\+\_\+base (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespacehmap_a55542a66f890ef9ecf5f82af2c23a0cf}{Primitive\+Type}} \&}]{primitive\+\_\+type,  }\item[{const \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$ \&}]{shape,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+x = {\ttfamily nullptr},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+y = {\ttfamily nullptr},  }\item[{\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ float $>$}]{center = {\ttfamily \{0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}},  }\item[{\mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$}]{bbox = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}} }\end{DoxyParamCaption})}
+
 \Hypertarget{namespacehmap_a28783971977657055053b3c143502bc2}\label{namespacehmap_a28783971977657055053b3c143502bc2} 
 \index{hmap@{hmap}!biquad\_pulse@{biquad\_pulse}}
 \index{biquad\_pulse@{biquad\_pulse}!hmap@{hmap}}
@@ -21022,7 +21084,17 @@ Return a crater-\/shaped heightmap.
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}  \Hypertarget{namespacehmap_a1b7c375c3335b31ab4773d792365faac}\label{namespacehmap_a1b7c375c3335b31ab4773d792365faac} 
+{\bfseries{Result}}  \Hypertarget{namespacehmap_ab2d03f5c29f6510ac4b64a79c1f029ec}\label{namespacehmap_ab2d03f5c29f6510ac4b64a79c1f029ec} 
+\index{hmap@{hmap}!cubic\_pulse@{cubic\_pulse}}
+\index{cubic\_pulse@{cubic\_pulse}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{cubic\_pulse()}{cubic\_pulse()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::cubic\+\_\+pulse (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$}]{shape,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+x,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+y,  }\item[{\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ float $>$}]{center = {\ttfamily \{0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}},  }\item[{\mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$}]{bbox = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}} }\end{DoxyParamCaption})}
+
+
+
+Generates a cubic pulse array. 
+
+\Hypertarget{namespacehmap_a1b7c375c3335b31ab4773d792365faac}\label{namespacehmap_a1b7c375c3335b31ab4773d792365faac} 
 \index{hmap@{hmap}!dendry@{dendry}}
 \index{dendry@{dendry}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{dendry()}{dendry()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
@@ -23072,7 +23144,17 @@ Return an array corresponding to a slope with a given overall.
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}  \Hypertarget{namespacehmap_ab00af49fafd706242919ea18dc4817ee}\label{namespacehmap_ab00af49fafd706242919ea18dc4817ee} 
+{\bfseries{Result}}  \Hypertarget{namespacehmap_a6cd3bcadb6477f6f070c4c87b2990309}\label{namespacehmap_a6cd3bcadb6477f6f070c4c87b2990309} 
+\index{hmap@{hmap}!smooth\_cosine@{smooth\_cosine}}
+\index{smooth\_cosine@{smooth\_cosine}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{smooth\_cosine()}{smooth\_cosine()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::smooth\+\_\+cosine (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$}]{shape,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+x,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+y,  }\item[{\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ float $>$}]{center = {\ttfamily \{0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}},  }\item[{\mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$}]{bbox = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}} }\end{DoxyParamCaption})}
+
+
+
+Generates a smooth cosine array. 
+
+\Hypertarget{namespacehmap_ab00af49fafd706242919ea18dc4817ee}\label{namespacehmap_ab00af49fafd706242919ea18dc4817ee} 
 \index{hmap@{hmap}!step@{step}}
 \index{step@{step}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{step()}{step()}}

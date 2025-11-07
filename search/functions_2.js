@@ -55,7 +55,7 @@ var searchData=
   ['create_5fnoise_5ffunction_5ffrom_5ftype_52',['create_noise_function_from_type',['../namespacehmap.html#a17514d1658d2a065892f061864a538ad',1,'hmap']]],
   ['cross_5fproduct_53',['cross_product',['../namespacehmap.html#a81ad5d7feec9716598307f4de02d47de',1,'hmap']]],
   ['cubic_5finterpolate_54',['cubic_interpolate',['../namespacehmap.html#aee026d8b23196038c2b16c370b743889',1,'hmap']]],
-  ['cubic_5fpulse_55',['cubic_pulse',['../namespacehmap.html#af6af5d27dcec83e466ca6b58244cafe7',1,'hmap']]],
+  ['cubic_5fpulse_55',['cubic_pulse',['../namespacehmap.html#af6af5d27dcec83e466ca6b58244cafe7',1,'hmap::cubic_pulse(Vec2&lt; int &gt; shape)'],['../namespacehmap.html#ab2d03f5c29f6510ac4b64a79c1f029ec',1,'hmap::cubic_pulse(Vec2&lt; int &gt; shape, const Array *p_noise_x, const Array *p_noise_y, Vec2&lt; float &gt; center={0.5f, 0.5f}, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f})']]],
   ['cubic_5fpulse_5f1d_56',['cubic_pulse_1d',['../namespacehmap.html#a0b3237f9cc015299bf3e436be71d3587',1,'hmap']]],
   ['cubic_5fpulse_5fdirectional_57',['cubic_pulse_directional',['../namespacehmap.html#a2938b1bbfe89794423055e6ee9d2f79b',1,'hmap']]],
   ['cubic_5fpulse_5ftruncated_58',['cubic_pulse_truncated',['../namespacehmap.html#a1004e5d8355c36fc1945d73c3b44eda0',1,'hmap']]],

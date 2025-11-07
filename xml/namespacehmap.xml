@@ -538,7 +538,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/filters.hpp" line="31" column="1" bodyfile="HighMap/include/highmap/filters.hpp" bodystart="32" bodyend="39"/>
+        <location file="HighMap/include/highmap/filters.hpp" line="32" column="1" bodyfile="HighMap/include/highmap/filters.hpp" bodystart="33" bodyend="40"/>
       </memberdef>
       <memberdef kind="enum" id="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195" prot="public" static="no" strong="no">
         <type>int</type>
@@ -1275,6 +1275,60 @@
         <inbodydescription>
         </inbodydescription>
         <location file="HighMap/include/highmap/primitives.hpp" line="31" column="1" bodyfile="HighMap/include/highmap/primitives.hpp" bodystart="32" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacehmap_1a55542a66f890ef9ecf5f82af2c23a0cf" prot="public" static="no" strong="no">
+        <type>int</type>
+        <name>PrimitiveType</name>
+        <qualifiedname>hmap::PrimitiveType</qualifiedname>
+        <enumvalue id="namespacehmap_1a55542a66f890ef9ecf5f82af2c23a0cfa4807402e27d4ee7cb042237cbeb26a69" prot="public">
+          <name>PRIM_BIQUAD_PULSE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacehmap_1a55542a66f890ef9ecf5f82af2c23a0cfa938e2b9cd9d4c9249f6d45285457891b" prot="public">
+          <name>PRIM_BUMP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacehmap_1a55542a66f890ef9ecf5f82af2c23a0cfae2c78e075109f330e3109c52e9bf90ff" prot="public">
+          <name>PRIM_CONE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacehmap_1a55542a66f890ef9ecf5f82af2c23a0cfa71a3d57896b6c2d066433962e74e8961" prot="public">
+          <name>PRIM_CONE_SMOOTH</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacehmap_1a55542a66f890ef9ecf5f82af2c23a0cfae1780174f7412d5a5593b324ea0db7cb" prot="public">
+          <name>PRIM_CUBIC_PULSE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacehmap_1a55542a66f890ef9ecf5f82af2c23a0cfad8c75d88dbfd854dbcedfaf3a4b9c65c" prot="public">
+          <name>PRIM_SMOOTH_COSINE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/primitives.hpp" line="44" column="1" bodyfile="HighMap/include/highmap/primitives.hpp" bodystart="45" bodyend="52"/>
       </memberdef>
       <memberdef kind="enum" id="namespacehmap_1ad4876bd26d1f3b33a1492645bfe50fbe" prot="public" static="no" strong="no">
         <type>int</type>
@@ -12970,6 +13024,53 @@ Each tile is extracted using slicing, adjusted for overlap if specified, and the
         </inbodydescription>
         <location file="HighMap/src/features/features.cpp" line="146" column="7" bodyfile="HighMap/src/features/features.cpp" bodystart="146" bodyend="159" declfile="HighMap/include/highmap/features.hpp" declline="420" declcolumn="7"/>
       </memberdef>
+      <memberdef kind="function" id="namespacehmap_1a7c780f6b35e43e45457af59ce1c761ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
+        <definition>Array hmap::bulkify</definition>
+        <argsstring>(const Array &amp;z, const PrimitiveType &amp;primitive_type, float amp=1.f, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, Vec2&lt; float &gt; center={0.5f, 0.5f}, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f})</argsstring>
+        <name>bulkify</name>
+        <qualifiedname>hmap::bulkify</qualifiedname>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>z</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespacehmap_1a55542a66f890ef9ecf5f82af2c23a0cf" kindref="member">PrimitiveType</ref> &amp;</type>
+          <declname>primitive_type</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>amp</declname>
+          <defval>1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
+          <declname>p_noise_x</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
+          <declname>p_noise_y</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type><ref refid="structhmap_1_1Vec2" kindref="compound">Vec2</ref>&lt; float &gt;</type>
+          <declname>center</declname>
+          <defval>{0.5<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 0.5<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>}</defval>
+        </param>
+        <param>
+          <type><ref refid="structhmap_1_1Vec4" kindref="compound">Vec4</ref>&lt; float &gt;</type>
+          <declname>bbox</declname>
+          <defval>{0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>}</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/filters/bulkify.cpp" line="11" column="7" bodyfile="HighMap/src/filters/bulkify.cpp" bodystart="11" bodyend="25" declfile="HighMap/include/highmap/filters.hpp" declline="42" declcolumn="7"/>
+      </memberdef>
       <memberdef kind="function" id="namespacehmap_1ab57f747b36842221871303e08b1d169e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
         <definition>Array hmap::diffusion_retargeting</definition>
@@ -13051,7 +13152,7 @@ Each tile is extracted using slicing, adjusted for overlap if specified, and the
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/diffusion_retargeting.cpp" line="17" column="7" bodyfile="HighMap/src/filters/diffusion_retargeting.cpp" bodystart="17" bodyend="51" declfile="HighMap/include/highmap/filters.hpp" declline="69" declcolumn="7"/>
+        <location file="HighMap/src/filters/diffusion_retargeting.cpp" line="17" column="7" bodyfile="HighMap/src/filters/diffusion_retargeting.cpp" bodystart="17" bodyend="51" declfile="HighMap/include/highmap/filters.hpp" declline="78" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a8286a6c3c6d8909c443f65d0bab134d2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -13081,7 +13182,7 @@ Each tile is extracted using slicing, adjusted for overlap if specified, and the
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/diffusion_retargeting.cpp" line="53" column="7" bodyfile="HighMap/src/filters/diffusion_retargeting.cpp" bodystart="53" bodyend="68" declfile="HighMap/include/highmap/filters.hpp" declline="73" declcolumn="7"/>
+        <location file="HighMap/src/filters/diffusion_retargeting.cpp" line="53" column="7" bodyfile="HighMap/src/filters/diffusion_retargeting.cpp" bodystart="53" bodyend="68" declfile="HighMap/include/highmap/filters.hpp" declline="82" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a22656a7e71302244f5f79f237a81c985" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -13220,7 +13321,7 @@ Each tile is extracted using slicing, adjusted for overlap if specified, and the
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/directional_blur.cpp" line="55" column="6" bodyfile="HighMap/src/filters/directional_blur.cpp" bodystart="55" bodyend="68" declfile="HighMap/include/highmap/filters.hpp" declline="119" declcolumn="6"/>
+        <location file="HighMap/src/filters/directional_blur.cpp" line="55" column="6" bodyfile="HighMap/src/filters/directional_blur.cpp" bodystart="55" bodyend="68" declfile="HighMap/include/highmap/filters.hpp" declline="128" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1afb9b18e93276f49b347d2efbd94c1df4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -13340,7 +13441,7 @@ Each tile is extracted using slicing, adjusted for overlap if specified, and the
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/directional_blur.cpp" line="14" column="6" bodyfile="HighMap/src/filters/directional_blur.cpp" bodystart="14" bodyend="53" declfile="HighMap/include/highmap/filters.hpp" declline="149" declcolumn="6"/>
+        <location file="HighMap/src/filters/directional_blur.cpp" line="14" column="6" bodyfile="HighMap/src/filters/directional_blur.cpp" bodystart="14" bodyend="53" declfile="HighMap/include/highmap/filters.hpp" declline="158" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a1b08d9a5d25e6bcd9d080accd077cc98" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -13370,7 +13471,7 @@ Each tile is extracted using slicing, adjusted for overlap if specified, and the
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="43" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="43" bodyend="47" declfile="HighMap/include/highmap/filters.hpp" declline="164" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="43" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="43" bodyend="47" declfile="HighMap/include/highmap/filters.hpp" declline="173" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a1470c4d74892293e4974a319c6b17267" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -13412,7 +13513,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="49" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="49" bodyend="59" declfile="HighMap/include/highmap/filters.hpp" declline="179" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="49" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="49" bodyend="59" declfile="HighMap/include/highmap/filters.hpp" declline="188" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ae00605c7af4addcb5092c90260e2d61b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -13510,7 +13611,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="92" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="92" bodyend="102" declfile="HighMap/include/highmap/filters.hpp" declline="202" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="92" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="92" bodyend="102" declfile="HighMap/include/highmap/filters.hpp" declline="211" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a49ea41f360f192a6c21efffd8b4df659" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -13557,7 +13658,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="61" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="61" bodyend="90" declfile="HighMap/include/highmap/filters.hpp" declline="216" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="61" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="61" bodyend="90" declfile="HighMap/include/highmap/filters.hpp" declline="225" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a3b39190192fb3cbda0b6d55d49d44eca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -13604,7 +13705,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="104" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="104" bodyend="136" declfile="HighMap/include/highmap/filters.hpp" declline="229" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="104" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="104" bodyend="136" declfile="HighMap/include/highmap/filters.hpp" declline="238" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1afddb3c456ba0f74b521d10c4022925a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -13663,7 +13764,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="138" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="138" bodyend="151" declfile="HighMap/include/highmap/filters.hpp" declline="245" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="138" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="138" bodyend="151" declfile="HighMap/include/highmap/filters.hpp" declline="254" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1affdf6ff9564f31cb988131c2b2c4c280" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -13786,7 +13887,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="153" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="153" bodyend="165" declfile="HighMap/include/highmap/filters.hpp" declline="278" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="153" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="153" bodyend="165" declfile="HighMap/include/highmap/filters.hpp" declline="287" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a11b0213f43ea0d2228c0dbd385b8308a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -13821,7 +13922,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="167" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="167" bodyend="229" declfile="HighMap/include/highmap/filters.hpp" declline="285" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="167" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="167" bodyend="229" declfile="HighMap/include/highmap/filters.hpp" declline="294" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ad066ff6ef56dbf9827ff6cca9a22e58a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -13908,7 +14009,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/faceted.cpp" line="17" column="7" bodyfile="HighMap/src/filters/faceted.cpp" bodystart="17" bodyend="112" declfile="HighMap/include/highmap/filters.hpp" declline="317" declcolumn="7"/>
+        <location file="HighMap/src/filters/faceted.cpp" line="17" column="7" bodyfile="HighMap/src/filters/faceted.cpp" bodystart="17" bodyend="112" declfile="HighMap/include/highmap/filters.hpp" declline="326" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aeaa7400373b21f2fe35443384ccb1f7b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -14003,7 +14104,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="231" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="231" bodyend="282" declfile="HighMap/include/highmap/filters.hpp" declline="353" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="231" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="231" bodyend="282" declfile="HighMap/include/highmap/filters.hpp" declline="362" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a8d285d64ffd577d077f189c913a2bb97" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -14110,7 +14211,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="284" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="284" bodyend="310" declfile="HighMap/include/highmap/filters.hpp" declline="392" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="284" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="284" bodyend="310" declfile="HighMap/include/highmap/filters.hpp" declline="401" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a2ba465615ff1d745cfcf7a27b7dcb37e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -14218,7 +14319,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="317" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="317" bodyend="331" declfile="HighMap/include/highmap/filters.hpp" declline="426" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="317" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="317" bodyend="331" declfile="HighMap/include/highmap/filters.hpp" declline="435" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a2dc21bf2079bb06efa5d16445a00ca7b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -14274,7 +14375,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="312" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="312" bodyend="315" declfile="HighMap/include/highmap/filters.hpp" declline="449" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="312" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="312" bodyend="315" declfile="HighMap/include/highmap/filters.hpp" declline="458" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ab1e1b26c0c1eb51d0b256db94d6ca22e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -14345,7 +14446,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="347" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="347" bodyend="357" declfile="HighMap/include/highmap/filters.hpp" declline="474" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="347" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="347" bodyend="357" declfile="HighMap/include/highmap/filters.hpp" declline="483" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a2f49cb88fec2755be122d5b097bedc9b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -14387,7 +14488,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="333" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="333" bodyend="345" declfile="HighMap/include/highmap/filters.hpp" declline="488" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="333" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="333" bodyend="345" declfile="HighMap/include/highmap/filters.hpp" declline="497" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aba3674787d520af15267ee7d1e46d220" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -14458,7 +14559,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="369" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="369" bodyend="379" declfile="HighMap/include/highmap/filters.hpp" declline="516" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="369" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="369" bodyend="379" declfile="HighMap/include/highmap/filters.hpp" declline="525" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a4e87766dc576eec73cfef1f4050f3bb3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -14500,7 +14601,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="359" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="359" bodyend="367" declfile="HighMap/include/highmap/filters.hpp" declline="531" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="359" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="359" bodyend="367" declfile="HighMap/include/highmap/filters.hpp" declline="540" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1acf8c38e2bcaa9c116b607230dcc6cb0e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -14592,7 +14693,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="381" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="381" bodyend="412" declfile="HighMap/include/highmap/filters.hpp" declline="561" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="381" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="381" bodyend="412" declfile="HighMap/include/highmap/filters.hpp" declline="570" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a7ad148178be926b19ba618842832fa90" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -14671,7 +14772,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="414" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="414" bodyend="428" declfile="HighMap/include/highmap/filters.hpp" declline="586" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="414" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="414" bodyend="428" declfile="HighMap/include/highmap/filters.hpp" declline="595" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ad3c6f230996ef2d2313278103b75fbd1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -14748,7 +14849,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="430" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="430" bodyend="474" declfile="HighMap/include/highmap/filters.hpp" declline="613" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="430" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="430" bodyend="474" declfile="HighMap/include/highmap/filters.hpp" declline="622" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a149904b1eda7e91fc908fa10da54075b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -14841,7 +14942,7 @@ If no mask is provided:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="476" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="476" bodyend="487" declfile="HighMap/include/highmap/filters.hpp" declline="643" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="476" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="476" bodyend="487" declfile="HighMap/include/highmap/filters.hpp" declline="652" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a62f3ce1778309a90b37d34e727e4f040" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -14930,7 +15031,7 @@ A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="489" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="489" bodyend="523" declfile="HighMap/include/highmap/filters.hpp" declline="674" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="489" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="489" bodyend="523" declfile="HighMap/include/highmap/filters.hpp" declline="683" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1af2851ea650ce411e47bac5ba4327c652" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -14998,7 +15099,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="525" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="525" bodyend="535" declfile="HighMap/include/highmap/filters.hpp" declline="697" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="525" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="525" bodyend="535" declfile="HighMap/include/highmap/filters.hpp" declline="706" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1abf9521082ba09eb022834306bc6c354b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -15054,7 +15155,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/operator/vector.cpp" line="32" column="6" bodyfile="HighMap/src/operator/vector.cpp" bodystart="32" bodyend="45" declfile="HighMap/include/highmap/filters.hpp" declline="716" declcolumn="6"/>
+        <location file="HighMap/src/operator/vector.cpp" line="32" column="6" bodyfile="HighMap/src/operator/vector.cpp" bodystart="32" bodyend="45" declfile="HighMap/include/highmap/filters.hpp" declline="725" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a120b7a6f8941d783c52acf799d3cb7b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -15149,7 +15250,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="537" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="537" bodyend="555" declfile="HighMap/include/highmap/filters.hpp" declline="744" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="537" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="537" bodyend="555" declfile="HighMap/include/highmap/filters.hpp" declline="753" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aa3154bd93dda630a0d17f1b75ab6b3c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -15229,7 +15330,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="557" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="557" bodyend="571" declfile="HighMap/include/highmap/filters.hpp" declline="774" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="557" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="557" bodyend="571" declfile="HighMap/include/highmap/filters.hpp" declline="783" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a81842482472ceecc660913388219bb77" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -15308,7 +15409,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="573" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="573" bodyend="612" declfile="HighMap/include/highmap/filters.hpp" declline="803" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="573" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="573" bodyend="612" declfile="HighMap/include/highmap/filters.hpp" declline="812" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a4799d3f029d45240a5b40b4853583a58" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -15351,7 +15452,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="614" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="614" bodyend="622" declfile="HighMap/include/highmap/filters.hpp" declline="818" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="614" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="614" bodyend="622" declfile="HighMap/include/highmap/filters.hpp" declline="827" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a5437c715b7a187bc794b1bf66891bddf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -15418,7 +15519,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/range/range.cpp" line="226" column="7" bodyfile="HighMap/src/range/range.cpp" bodystart="226" bodyend="261" declfile="HighMap/include/highmap/filters.hpp" declline="842" declcolumn="7"/>
+        <location file="HighMap/src/range/range.cpp" line="226" column="7" bodyfile="HighMap/src/range/range.cpp" bodystart="226" bodyend="261" declfile="HighMap/include/highmap/filters.hpp" declline="851" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a2470328dcc792f6563c5844a2cc163ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -15485,7 +15586,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/range/range.cpp" line="263" column="7" bodyfile="HighMap/src/range/range.cpp" bodystart="263" bodyend="290" declfile="HighMap/include/highmap/filters.hpp" declline="866" declcolumn="7"/>
+        <location file="HighMap/src/range/range.cpp" line="263" column="7" bodyfile="HighMap/src/range/range.cpp" bodystart="263" bodyend="290" declfile="HighMap/include/highmap/filters.hpp" declline="875" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a8afd3d81a238c8a5d10059b3a029554e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -15551,7 +15652,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="624" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="624" bodyend="631" declfile="HighMap/include/highmap/filters.hpp" declline="888" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="624" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="624" bodyend="631" declfile="HighMap/include/highmap/filters.hpp" declline="897" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a8ac4638525bb243024d50793d97bc9ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -15655,7 +15756,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="633" column="7" bodyfile="HighMap/src/filters/filters.cpp" bodystart="633" bodyend="698" declfile="HighMap/include/highmap/filters.hpp" declline="918" declcolumn="7"/>
+        <location file="HighMap/src/filters/filters.cpp" line="633" column="7" bodyfile="HighMap/src/filters/filters.cpp" bodystart="633" bodyend="698" declfile="HighMap/include/highmap/filters.hpp" declline="927" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1af12f56824dfe06e29f7063fa59b2d1f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -15695,7 +15796,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="700" column="7" bodyfile="HighMap/src/filters/filters.cpp" bodystart="700" bodyend="715" declfile="HighMap/include/highmap/filters.hpp" declline="924" declcolumn="7"/>
+        <location file="HighMap/src/filters/filters.cpp" line="700" column="7" bodyfile="HighMap/src/filters/filters.cpp" bodystart="700" bodyend="715" declfile="HighMap/include/highmap/filters.hpp" declline="933" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a8c9d91481a5908494b9f06c90c705b3a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -15755,7 +15856,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="745" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="745" bodyend="755" declfile="HighMap/include/highmap/filters.hpp" declline="950" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="745" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="745" bodyend="755" declfile="HighMap/include/highmap/filters.hpp" declline="959" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ad99aff62bcc6c5c7a610d315e255b6d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -15785,7 +15886,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="717" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="717" bodyend="743" declfile="HighMap/include/highmap/filters.hpp" declline="963" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="717" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="717" bodyend="743" declfile="HighMap/include/highmap/filters.hpp" declline="972" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a14eb6b7d304484c8cbb231b672851491" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -15864,7 +15965,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="757" column="7" bodyfile="HighMap/src/filters/filters.cpp" bodystart="757" bodyend="762" declfile="HighMap/include/highmap/filters.hpp" declline="998" declcolumn="7"/>
+        <location file="HighMap/src/filters/filters.cpp" line="757" column="7" bodyfile="HighMap/src/filters/filters.cpp" bodystart="757" bodyend="762" declfile="HighMap/include/highmap/filters.hpp" declline="1007" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1adf68a2f031297654f88252b7ce027b3d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -15931,7 +16032,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/range/range.cpp" line="342" column="7" bodyfile="HighMap/src/range/range.cpp" bodystart="342" bodyend="345" declfile="HighMap/include/highmap/filters.hpp" declline="1022" declcolumn="7"/>
+        <location file="HighMap/src/range/range.cpp" line="342" column="7" bodyfile="HighMap/src/range/range.cpp" bodystart="342" bodyend="345" declfile="HighMap/include/highmap/filters.hpp" declline="1031" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a2b174148b8c1f2e44b5ecff756e9a0f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -15998,7 +16099,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/range/range.cpp" line="347" column="7" bodyfile="HighMap/src/range/range.cpp" bodystart="347" bodyend="350" declfile="HighMap/include/highmap/filters.hpp" declline="1046" declcolumn="7"/>
+        <location file="HighMap/src/range/range.cpp" line="347" column="7" bodyfile="HighMap/src/range/range.cpp" bodystart="347" bodyend="350" declfile="HighMap/include/highmap/filters.hpp" declline="1055" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aafd7a642dabfbcf2ab2981b229a30e15" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -16097,7 +16198,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="764" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="764" bodyend="796" declfile="HighMap/include/highmap/filters.hpp" declline="1072" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="764" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="764" bodyend="796" declfile="HighMap/include/highmap/filters.hpp" declline="1081" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a8994656d85a1b9dd0f2c99a3fd45ceb1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -16135,7 +16236,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="798" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="798" bodyend="812" declfile="HighMap/include/highmap/filters.hpp" declline="1077" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="798" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="798" bodyend="812" declfile="HighMap/include/highmap/filters.hpp" declline="1086" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a558c273680de2328f37e5df7ee598813" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -16218,7 +16319,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="828" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="828" bodyend="838" declfile="HighMap/include/highmap/filters.hpp" declline="1107" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="828" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="828" bodyend="838" declfile="HighMap/include/highmap/filters.hpp" declline="1116" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a9f49d016a05aa8636bb0ff3c3d30aaf7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -16245,7 +16346,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="814" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="814" bodyend="826" declfile="HighMap/include/highmap/filters.hpp" declline="1109" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="814" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="814" bodyend="826" declfile="HighMap/include/highmap/filters.hpp" declline="1118" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ad2f0b00fee1cff1a2df0049176548ea5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -16383,7 +16484,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/recast.cpp" line="22" column="6" bodyfile="HighMap/src/filters/recast.cpp" bodystart="22" bodyend="25" declfile="HighMap/include/highmap/filters.hpp" declline="1132" declcolumn="6"/>
+        <location file="HighMap/src/filters/recast.cpp" line="22" column="6" bodyfile="HighMap/src/filters/recast.cpp" bodystart="22" bodyend="25" declfile="HighMap/include/highmap/filters.hpp" declline="1141" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ae475b4f5defd09d3e566f44dd2c21575" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -16538,7 +16639,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/recast.cpp" line="27" column="6" bodyfile="HighMap/src/filters/recast.cpp" bodystart="27" bodyend="37" declfile="HighMap/include/highmap/filters.hpp" declline="1161" declcolumn="6"/>
+        <location file="HighMap/src/filters/recast.cpp" line="27" column="6" bodyfile="HighMap/src/filters/recast.cpp" bodystart="27" bodyend="37" declfile="HighMap/include/highmap/filters.hpp" declline="1170" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a21def375eb7059931a64b6cb9f628a23" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -16570,7 +16671,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/recast.cpp" line="39" column="6" bodyfile="HighMap/src/filters/recast.cpp" bodystart="39" bodyend="52" declfile="HighMap/include/highmap/filters.hpp" declline="1163" declcolumn="6"/>
+        <location file="HighMap/src/filters/recast.cpp" line="39" column="6" bodyfile="HighMap/src/filters/recast.cpp" bodystart="39" bodyend="52" declfile="HighMap/include/highmap/filters.hpp" declline="1172" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a0488fc217795b5a49287a19e785602fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -16607,7 +16708,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/recast.cpp" line="80" column="6" bodyfile="HighMap/src/filters/recast.cpp" bodystart="80" bodyend="94" declfile="HighMap/include/highmap/filters.hpp" declline="1168" declcolumn="6"/>
+        <location file="HighMap/src/filters/recast.cpp" line="80" column="6" bodyfile="HighMap/src/filters/recast.cpp" bodystart="80" bodyend="94" declfile="HighMap/include/highmap/filters.hpp" declline="1177" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aa8ca09c4db0795d0d7a4a8341e7f1159" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -16640,7 +16741,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/recast.cpp" line="54" column="6" bodyfile="HighMap/src/filters/recast.cpp" bodystart="54" bodyend="78" declfile="HighMap/include/highmap/filters.hpp" declline="1174" declcolumn="6"/>
+        <location file="HighMap/src/filters/recast.cpp" line="54" column="6" bodyfile="HighMap/src/filters/recast.cpp" bodystart="54" bodyend="78" declfile="HighMap/include/highmap/filters.hpp" declline="1183" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a5bfddc2b02cae0d5ee107d35459d626f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -16811,7 +16912,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/recast.cpp" line="96" column="6" bodyfile="HighMap/src/filters/recast.cpp" bodystart="96" bodyend="127" declfile="HighMap/include/highmap/filters.hpp" declline="1208" declcolumn="6"/>
+        <location file="HighMap/src/filters/recast.cpp" line="96" column="6" bodyfile="HighMap/src/filters/recast.cpp" bodystart="96" bodyend="127" declfile="HighMap/include/highmap/filters.hpp" declline="1217" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ab9b560067f09332a4ff50670dfef00a5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -16851,7 +16952,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/recast.cpp" line="129" column="6" bodyfile="HighMap/src/filters/recast.cpp" bodystart="129" bodyend="144" declfile="HighMap/include/highmap/filters.hpp" declline="1214" declcolumn="6"/>
+        <location file="HighMap/src/filters/recast.cpp" line="129" column="6" bodyfile="HighMap/src/filters/recast.cpp" bodystart="129" bodyend="144" declfile="HighMap/include/highmap/filters.hpp" declline="1223" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1acf26969b97f38bf692f538efb12ac2c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -17034,7 +17135,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/recast.cpp" line="146" column="6" bodyfile="HighMap/src/filters/recast.cpp" bodystart="146" bodyend="187" declfile="HighMap/include/highmap/filters.hpp" declline="1253" declcolumn="6"/>
+        <location file="HighMap/src/filters/recast.cpp" line="146" column="6" bodyfile="HighMap/src/filters/recast.cpp" bodystart="146" bodyend="187" declfile="HighMap/include/highmap/filters.hpp" declline="1262" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a93ccb4563e958441cc0d2f917633059e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -17078,7 +17179,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/recast.cpp" line="189" column="6" bodyfile="HighMap/src/filters/recast.cpp" bodystart="189" bodyend="205" declfile="HighMap/include/highmap/filters.hpp" declline="1260" declcolumn="6"/>
+        <location file="HighMap/src/filters/recast.cpp" line="189" column="6" bodyfile="HighMap/src/filters/recast.cpp" bodystart="189" bodyend="205" declfile="HighMap/include/highmap/filters.hpp" declline="1269" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1af30ba2c296c8937bb78279c03e0388bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -17121,7 +17222,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/recast.cpp" line="207" column="6" bodyfile="HighMap/src/filters/recast.cpp" bodystart="207" bodyend="229" declfile="HighMap/include/highmap/filters.hpp" declline="1268" declcolumn="6"/>
+        <location file="HighMap/src/filters/recast.cpp" line="207" column="6" bodyfile="HighMap/src/filters/recast.cpp" bodystart="207" bodyend="229" declfile="HighMap/include/highmap/filters.hpp" declline="1277" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1adcf3232842a5d6a3c0d9a8bc9b5da61e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -17313,7 +17414,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/recast.cpp" line="231" column="6" bodyfile="HighMap/src/filters/recast.cpp" bodystart="231" bodyend="275" declfile="HighMap/include/highmap/filters.hpp" declline="1311" declcolumn="6"/>
+        <location file="HighMap/src/filters/recast.cpp" line="231" column="6" bodyfile="HighMap/src/filters/recast.cpp" bodystart="231" bodyend="275" declfile="HighMap/include/highmap/filters.hpp" declline="1320" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a6fa21b8b4797ae017025d891f9704848" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -17517,7 +17618,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/recast.cpp" line="277" column="6" bodyfile="HighMap/src/filters/recast.cpp" bodystart="277" bodyend="306" declfile="HighMap/include/highmap/filters.hpp" declline="1357" declcolumn="6"/>
+        <location file="HighMap/src/filters/recast.cpp" line="277" column="6" bodyfile="HighMap/src/filters/recast.cpp" bodystart="277" bodyend="306" declfile="HighMap/include/highmap/filters.hpp" declline="1366" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ac2a2b604d4c167dcaddfbd1c66df3e4c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -17679,7 +17780,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/recast.cpp" line="308" column="6" bodyfile="HighMap/src/filters/recast.cpp" bodystart="308" bodyend="315" declfile="HighMap/include/highmap/filters.hpp" declline="1397" declcolumn="6"/>
+        <location file="HighMap/src/filters/recast.cpp" line="308" column="6" bodyfile="HighMap/src/filters/recast.cpp" bodystart="308" bodyend="315" declfile="HighMap/include/highmap/filters.hpp" declline="1406" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a4ca9ddaa140548937a12022e79823401" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -17716,7 +17817,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/recast.cpp" line="317" column="6" bodyfile="HighMap/src/filters/recast.cpp" bodystart="317" bodyend="331" declfile="HighMap/include/highmap/filters.hpp" declline="1399" declcolumn="6"/>
+        <location file="HighMap/src/filters/recast.cpp" line="317" column="6" bodyfile="HighMap/src/filters/recast.cpp" bodystart="317" bodyend="331" declfile="HighMap/include/highmap/filters.hpp" declline="1408" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1af7709075260d830b45e0f2ea7ea64c94" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -17937,7 +18038,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/recast.cpp" line="333" column="6" bodyfile="HighMap/src/filters/recast.cpp" bodystart="333" bodyend="371" declfile="HighMap/include/highmap/filters.hpp" declline="1449" declcolumn="6"/>
+        <location file="HighMap/src/filters/recast.cpp" line="333" column="6" bodyfile="HighMap/src/filters/recast.cpp" bodystart="333" bodyend="371" declfile="HighMap/include/highmap/filters.hpp" declline="1458" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a05bb0469c9a049b3e3e0753faa9073ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -17995,7 +18096,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/recast.cpp" line="373" column="6" bodyfile="HighMap/src/filters/recast.cpp" bodystart="373" bodyend="410" declfile="HighMap/include/highmap/filters.hpp" declline="1459" declcolumn="6"/>
+        <location file="HighMap/src/filters/recast.cpp" line="373" column="6" bodyfile="HighMap/src/filters/recast.cpp" bodystart="373" bodyend="410" declfile="HighMap/include/highmap/filters.hpp" declline="1468" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1abf3c7485f0f6f9e56b2cec58e085dc23" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -18141,7 +18242,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/recast.cpp" line="412" column="6" bodyfile="HighMap/src/filters/recast.cpp" bodystart="412" bodyend="415" declfile="HighMap/include/highmap/filters.hpp" declline="1498" declcolumn="6"/>
+        <location file="HighMap/src/filters/recast.cpp" line="412" column="6" bodyfile="HighMap/src/filters/recast.cpp" bodystart="412" bodyend="415" declfile="HighMap/include/highmap/filters.hpp" declline="1507" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a86963a517ac96c442272bdf6fd967f60" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -18172,7 +18273,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/recast.cpp" line="417" column="6" bodyfile="HighMap/src/filters/recast.cpp" bodystart="417" bodyend="427" declfile="HighMap/include/highmap/filters.hpp" declline="1500" declcolumn="6"/>
+        <location file="HighMap/src/filters/recast.cpp" line="417" column="6" bodyfile="HighMap/src/filters/recast.cpp" bodystart="417" bodyend="427" declfile="HighMap/include/highmap/filters.hpp" declline="1509" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a9cb00fb8280178099a8d430f761c62bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -18257,7 +18358,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/recurve.cpp" line="20" column="6" bodyfile="HighMap/src/filters/recurve.cpp" bodystart="20" bodyend="32" declfile="HighMap/include/highmap/filters.hpp" declline="1530" declcolumn="6"/>
+        <location file="HighMap/src/filters/recurve.cpp" line="20" column="6" bodyfile="HighMap/src/filters/recurve.cpp" bodystart="20" bodyend="32" declfile="HighMap/include/highmap/filters.hpp" declline="1539" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a9dc604a3fcfa918857f3488977d2a45f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -18288,7 +18389,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/recurve.cpp" line="34" column="6" bodyfile="HighMap/src/filters/recurve.cpp" bodystart="34" bodyend="49" declfile="HighMap/include/highmap/filters.hpp" declline="1534" declcolumn="6"/>
+        <location file="HighMap/src/filters/recurve.cpp" line="34" column="6" bodyfile="HighMap/src/filters/recurve.cpp" bodystart="34" bodyend="49" declfile="HighMap/include/highmap/filters.hpp" declline="1543" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1af9e3033eb08345c1e3c46bde5dcd29a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -18370,7 +18471,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/recurve.cpp" line="51" column="6" bodyfile="HighMap/src/filters/recurve.cpp" bodystart="51" bodyend="60" declfile="HighMap/include/highmap/filters.hpp" declline="1566" declcolumn="6"/>
+        <location file="HighMap/src/filters/recurve.cpp" line="51" column="6" bodyfile="HighMap/src/filters/recurve.cpp" bodystart="51" bodyend="60" declfile="HighMap/include/highmap/filters.hpp" declline="1575" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a2483b01656d8822247f2e01431664879" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -18398,7 +18499,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/filters.hpp" line="1568" column="6" declfile="HighMap/include/highmap/filters.hpp" declline="1568" declcolumn="6"/>
+        <location file="HighMap/include/highmap/filters.hpp" line="1577" column="6" declfile="HighMap/include/highmap/filters.hpp" declline="1577" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a69137ab0da4a3b15979b7ede32dfab19" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -18480,7 +18581,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/recurve.cpp" line="76" column="6" bodyfile="HighMap/src/filters/recurve.cpp" bodystart="76" bodyend="85" declfile="HighMap/include/highmap/filters.hpp" declline="1599" declcolumn="6"/>
+        <location file="HighMap/src/filters/recurve.cpp" line="76" column="6" bodyfile="HighMap/src/filters/recurve.cpp" bodystart="76" bodyend="85" declfile="HighMap/include/highmap/filters.hpp" declline="1608" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a4aad0dde957ecf5887323f3d3a4f4f0a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -18508,7 +18609,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/filters.hpp" line="1601" column="6" declfile="HighMap/include/highmap/filters.hpp" declline="1601" declcolumn="6"/>
+        <location file="HighMap/include/highmap/filters.hpp" line="1610" column="6" declfile="HighMap/include/highmap/filters.hpp" declline="1610" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1af080317ac939503049515f0a792c84b3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -18599,7 +18700,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/recurve.cpp" line="101" column="6" bodyfile="HighMap/src/filters/recurve.cpp" bodystart="101" bodyend="110" declfile="HighMap/include/highmap/filters.hpp" declline="1630" declcolumn="6"/>
+        <location file="HighMap/src/filters/recurve.cpp" line="101" column="6" bodyfile="HighMap/src/filters/recurve.cpp" bodystart="101" bodyend="110" declfile="HighMap/include/highmap/filters.hpp" declline="1639" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a69b83eb8de92d70ffc446c6aebec9935" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -18630,7 +18731,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/recurve.cpp" line="112" column="6" bodyfile="HighMap/src/filters/recurve.cpp" bodystart="112" bodyend="124" declfile="HighMap/include/highmap/filters.hpp" declline="1632" declcolumn="6"/>
+        <location file="HighMap/src/filters/recurve.cpp" line="112" column="6" bodyfile="HighMap/src/filters/recurve.cpp" bodystart="112" bodyend="124" declfile="HighMap/include/highmap/filters.hpp" declline="1641" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aa1f23e7ca8c6eccc62ff3f9e73bb3884" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -18699,7 +18800,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/recurve.cpp" line="126" column="6" bodyfile="HighMap/src/filters/recurve.cpp" bodystart="126" bodyend="134" declfile="HighMap/include/highmap/filters.hpp" declline="1658" declcolumn="6"/>
+        <location file="HighMap/src/filters/recurve.cpp" line="126" column="6" bodyfile="HighMap/src/filters/recurve.cpp" bodystart="126" bodyend="134" declfile="HighMap/include/highmap/filters.hpp" declline="1667" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a516835426429688c59f7a02a8abbb174" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -18722,7 +18823,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/recurve.cpp" line="136" column="6" bodyfile="HighMap/src/filters/recurve.cpp" bodystart="136" bodyend="148" declfile="HighMap/include/highmap/filters.hpp" declline="1660" declcolumn="6"/>
+        <location file="HighMap/src/filters/recurve.cpp" line="136" column="6" bodyfile="HighMap/src/filters/recurve.cpp" bodystart="136" bodyend="148" declfile="HighMap/include/highmap/filters.hpp" declline="1669" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1affcc500f17897f37cdb0717bc579d2b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -18803,7 +18904,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/recurve.cpp" line="150" column="6" bodyfile="HighMap/src/filters/recurve.cpp" bodystart="150" bodyend="162" declfile="HighMap/include/highmap/filters.hpp" declline="1686" declcolumn="6"/>
+        <location file="HighMap/src/filters/recurve.cpp" line="150" column="6" bodyfile="HighMap/src/filters/recurve.cpp" bodystart="150" bodyend="162" declfile="HighMap/include/highmap/filters.hpp" declline="1695" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ab9926efb5c9c3859a0407b8fb9dbe4f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -18830,7 +18931,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/recurve.cpp" line="164" column="6" bodyfile="HighMap/src/filters/recurve.cpp" bodystart="164" bodyend="176" declfile="HighMap/include/highmap/filters.hpp" declline="1688" declcolumn="6"/>
+        <location file="HighMap/src/filters/recurve.cpp" line="164" column="6" bodyfile="HighMap/src/filters/recurve.cpp" bodystart="164" bodyend="176" declfile="HighMap/include/highmap/filters.hpp" declline="1697" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ab79b21593238cc836f4dd32fecf63a58" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -18946,7 +19047,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="840" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="840" bodyend="867" declfile="HighMap/include/highmap/filters.hpp" declline="1720" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="840" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="840" bodyend="867" declfile="HighMap/include/highmap/filters.hpp" declline="1729" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a4e0ce9e13f26f66fa546e5127a68956c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -18979,7 +19080,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="869" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="869" bodyend="877" declfile="HighMap/include/highmap/filters.hpp" declline="1725" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="869" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="869" bodyend="877" declfile="HighMap/include/highmap/filters.hpp" declline="1734" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a4b4c16f9dcd3cdb8e4e53c7cb6a44ed7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -19016,7 +19117,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="879" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="879" bodyend="893" declfile="HighMap/include/highmap/filters.hpp" declline="1730" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="879" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="879" bodyend="893" declfile="HighMap/include/highmap/filters.hpp" declline="1739" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a56f425774168f76ab81c2c8a06145761" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -19053,7 +19154,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="895" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="895" bodyend="909" declfile="HighMap/include/highmap/filters.hpp" declline="1736" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="895" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="895" bodyend="909" declfile="HighMap/include/highmap/filters.hpp" declline="1745" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a2e4283dd5da8add89788c5023c73042c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -19156,7 +19257,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/recurve.cpp" line="178" column="6" bodyfile="HighMap/src/filters/recurve.cpp" bodystart="178" bodyend="191" declfile="HighMap/include/highmap/filters.hpp" declline="1762" declcolumn="6"/>
+        <location file="HighMap/src/filters/recurve.cpp" line="178" column="6" bodyfile="HighMap/src/filters/recurve.cpp" bodystart="178" bodyend="191" declfile="HighMap/include/highmap/filters.hpp" declline="1771" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ad4c8b8b2361aa1fec5c984287a837461" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -19187,7 +19288,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/recurve.cpp" line="193" column="6" bodyfile="HighMap/src/filters/recurve.cpp" bodystart="193" bodyend="204" declfile="HighMap/include/highmap/filters.hpp" declline="1769" declcolumn="6"/>
+        <location file="HighMap/src/filters/recurve.cpp" line="193" column="6" bodyfile="HighMap/src/filters/recurve.cpp" bodystart="193" bodyend="204" declfile="HighMap/include/highmap/filters.hpp" declline="1778" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a738bcdb6b3493bf7f2cbfcfc03a00159" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -19255,7 +19356,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="911" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="911" bodyend="923" declfile="HighMap/include/highmap/filters.hpp" declline="1795" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="911" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="911" bodyend="923" declfile="HighMap/include/highmap/filters.hpp" declline="1804" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aae4699340c68bc39efae13b0e81eea3d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -19283,7 +19384,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="925" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="925" bodyend="935" declfile="HighMap/include/highmap/filters.hpp" declline="1797" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="925" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="925" bodyend="935" declfile="HighMap/include/highmap/filters.hpp" declline="1806" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a6190b6dde2fd6a6bf9e98eecec10e5f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -19364,7 +19465,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="937" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="937" bodyend="942" declfile="HighMap/include/highmap/filters.hpp" declline="1826" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="937" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="937" bodyend="942" declfile="HighMap/include/highmap/filters.hpp" declline="1835" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a1857226aa04d2a7d7e3bfbb7af9a12c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -19396,7 +19497,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="944" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="944" bodyend="954" declfile="HighMap/include/highmap/filters.hpp" declline="1828" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="944" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="944" bodyend="954" declfile="HighMap/include/highmap/filters.hpp" declline="1837" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1acde2b4e7bac6ebfe2c2dcfe3f0a369f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -19498,7 +19599,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="956" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="956" bodyend="962" declfile="HighMap/include/highmap/filters.hpp" declline="1861" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="956" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="956" bodyend="962" declfile="HighMap/include/highmap/filters.hpp" declline="1870" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a64fd39fbc155858c359b051c1a2dff8c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -19530,7 +19631,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="964" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="964" bodyend="974" declfile="HighMap/include/highmap/filters.hpp" declline="1862" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="964" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="964" bodyend="974" declfile="HighMap/include/highmap/filters.hpp" declline="1871" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a8d49313d4730d6d6ccdbb4f033031f4f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -19558,7 +19659,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="976" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="976" bodyend="982" declfile="HighMap/include/highmap/filters.hpp" declline="1866" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="976" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="976" bodyend="982" declfile="HighMap/include/highmap/filters.hpp" declline="1875" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aae53d6bf5f363d9a108b55004e8fb68f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -19590,7 +19691,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="984" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="984" bodyend="997" declfile="HighMap/include/highmap/filters.hpp" declline="1869" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="984" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="984" bodyend="997" declfile="HighMap/include/highmap/filters.hpp" declline="1878" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a5cfbd685a2042726fdcd7faa460273a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -19713,7 +19814,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="999" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="999" bodyend="1011" declfile="HighMap/include/highmap/filters.hpp" declline="1903" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="999" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="999" bodyend="1011" declfile="HighMap/include/highmap/filters.hpp" declline="1912" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1abeab23d26e0e9cb4563b221193ca6041" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -19781,7 +19882,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="1013" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1013" bodyend="1037" declfile="HighMap/include/highmap/filters.hpp" declline="1930" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="1013" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1013" bodyend="1037" declfile="HighMap/include/highmap/filters.hpp" declline="1939" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a9d8b2a9245ce9b774f4fe0cb06460b13" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -19808,7 +19909,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="1039" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1039" bodyend="1049" declfile="HighMap/include/highmap/filters.hpp" declline="1931" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="1039" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1039" bodyend="1049" declfile="HighMap/include/highmap/filters.hpp" declline="1940" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a95c0f4c53278620f0812381ccaa7459e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -19879,7 +19980,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="1051" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1051" bodyend="1075" declfile="HighMap/include/highmap/filters.hpp" declline="1958" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="1051" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1051" bodyend="1075" declfile="HighMap/include/highmap/filters.hpp" declline="1967" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a8fdb203094eb8cfee25b3c4364fbbed6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -19906,7 +20007,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="1077" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1077" bodyend="1087" declfile="HighMap/include/highmap/filters.hpp" declline="1959" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="1077" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1077" bodyend="1087" declfile="HighMap/include/highmap/filters.hpp" declline="1968" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aa2de65aa233324cf294faf2421ccec2a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -19972,7 +20073,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="1089" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1089" bodyend="1098" declfile="HighMap/include/highmap/filters.hpp" declline="1980" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="1089" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1089" bodyend="1098" declfile="HighMap/include/highmap/filters.hpp" declline="1989" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a81647bbf7183fed5cbfc468c8fa75b62" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -20014,7 +20115,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="1100" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1100" bodyend="1111" declfile="HighMap/include/highmap/filters.hpp" declline="1998" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="1100" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1100" bodyend="1111" declfile="HighMap/include/highmap/filters.hpp" declline="2007" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a4e3cbe9e4b43341148c170f34bd462fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -20084,7 +20185,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="1113" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1113" bodyend="1139" declfile="HighMap/include/highmap/filters.hpp" declline="2022" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="1113" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1113" bodyend="1139" declfile="HighMap/include/highmap/filters.hpp" declline="2031" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a6a2f30cadb25b5e8b20d73c5447e4c56" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -20111,7 +20212,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="1141" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1141" bodyend="1151" declfile="HighMap/include/highmap/filters.hpp" declline="2023" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="1141" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1141" bodyend="1151" declfile="HighMap/include/highmap/filters.hpp" declline="2032" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ae9fece3e5896d3a5fe4a89d76d6b9dba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -20212,7 +20313,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="1153" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1153" bodyend="1170" declfile="HighMap/include/highmap/filters.hpp" declline="2056" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="1153" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1153" bodyend="1170" declfile="HighMap/include/highmap/filters.hpp" declline="2065" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a0102d286095deba3f4df0ec95c4b5c63" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -20249,7 +20350,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="1172" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1172" bodyend="1186" declfile="HighMap/include/highmap/filters.hpp" declline="2061" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="1172" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1172" bodyend="1186" declfile="HighMap/include/highmap/filters.hpp" declline="2070" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a1be0dea3638a072678a860c798f4f271" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -20327,7 +20428,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="1188" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1188" bodyend="1202" declfile="HighMap/include/highmap/filters.hpp" declline="2090" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="1188" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1188" bodyend="1202" declfile="HighMap/include/highmap/filters.hpp" declline="2099" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a3215e4b5edc94421956595835fb986f6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -20354,7 +20455,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="1204" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1204" bodyend="1214" declfile="HighMap/include/highmap/filters.hpp" declline="2091" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="1204" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1204" bodyend="1214" declfile="HighMap/include/highmap/filters.hpp" declline="2100" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1afa6f07541841c674663141d84ec4d000" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -20432,7 +20533,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="1216" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1216" bodyend="1230" declfile="HighMap/include/highmap/filters.hpp" declline="2118" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="1216" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1216" bodyend="1230" declfile="HighMap/include/highmap/filters.hpp" declline="2127" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a3c5dc6759079cece03fad3d2c40813b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -20459,7 +20560,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="1232" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1232" bodyend="1242" declfile="HighMap/include/highmap/filters.hpp" declline="2119" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="1232" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1232" bodyend="1242" declfile="HighMap/include/highmap/filters.hpp" declline="2128" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aa0d8c9cba830c501ac318cf6510a78ad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -20522,7 +20623,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="1244" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1244" bodyend="1258" declfile="HighMap/include/highmap/filters.hpp" declline="2139" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="1244" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1244" bodyend="1258" declfile="HighMap/include/highmap/filters.hpp" declline="2148" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ac4ed13c5d45906009461972781263b06" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -20597,7 +20698,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="1260" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1260" bodyend="1270" declfile="HighMap/include/highmap/filters.hpp" declline="2161" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="1260" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1260" bodyend="1270" declfile="HighMap/include/highmap/filters.hpp" declline="2170" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a38fb422e7a9cd383d40c9a25a06767d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -20682,7 +20783,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="1272" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1272" bodyend="1281" declfile="HighMap/include/highmap/filters.hpp" declline="2188" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="1272" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1272" bodyend="1281" declfile="HighMap/include/highmap/filters.hpp" declline="2197" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a3dac1291a901a399f36a17476859353a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -20714,7 +20815,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="1283" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1283" bodyend="1293" declfile="HighMap/include/highmap/filters.hpp" declline="2189" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="1283" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1283" bodyend="1293" declfile="HighMap/include/highmap/filters.hpp" declline="2198" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a8a7a083e583afe812239d1fe6aa479cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -20829,7 +20930,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="1295" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1295" bodyend="1326" declfile="HighMap/include/highmap/filters.hpp" declline="2222" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="1295" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1295" bodyend="1326" declfile="HighMap/include/highmap/filters.hpp" declline="2231" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ab46e625ea919327a4e2899dd53fff18d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -20871,7 +20972,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="1328" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1328" bodyend="1343" declfile="HighMap/include/highmap/filters.hpp" declline="2228" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="1328" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1328" bodyend="1343" declfile="HighMap/include/highmap/filters.hpp" declline="2237" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a5a852e7e8cb38a8c3231d4867995ae1c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -21013,7 +21114,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="1345" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1345" bodyend="1409" declfile="HighMap/include/highmap/filters.hpp" declline="2268" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="1345" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1345" bodyend="1409" declfile="HighMap/include/highmap/filters.hpp" declline="2277" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a878694830f25c7c79f4d9a0a723a5148" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -21172,7 +21273,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="1411" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1411" bodyend="1429" declfile="HighMap/include/highmap/filters.hpp" declline="2317" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="1411" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1411" bodyend="1429" declfile="HighMap/include/highmap/filters.hpp" declline="2326" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a473007073da159b88b14711dbd6553fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -21271,7 +21372,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/tesselate.cpp" line="18" column="7" bodyfile="HighMap/src/filters/tesselate.cpp" bodystart="18" bodyend="63" declfile="HighMap/include/highmap/filters.hpp" declline="2351" declcolumn="7"/>
+        <location file="HighMap/src/filters/tesselate.cpp" line="18" column="7" bodyfile="HighMap/src/filters/tesselate.cpp" bodystart="18" bodyend="63" declfile="HighMap/include/highmap/filters.hpp" declline="2360" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ac95c3b559d18eb6ef17b3f740ce5e67f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -21431,7 +21532,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="1466" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1466" bodyend="1504" declfile="HighMap/include/highmap/filters.hpp" declline="2392" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="1466" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1466" bodyend="1504" declfile="HighMap/include/highmap/filters.hpp" declline="2401" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aa2d7277ba1c9b10d75e5ba1d38ac7d80" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -21494,7 +21595,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters.cpp" line="1431" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1431" bodyend="1464" declfile="HighMap/include/highmap/filters.hpp" declline="2404" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters.cpp" line="1431" column="6" bodyfile="HighMap/src/filters/filters.cpp" bodystart="1431" bodyend="1464" declfile="HighMap/include/highmap/filters.hpp" declline="2413" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a7064ad1eef3ea7b6e19249fe3312e3b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::function&lt; float(float, float)&gt;</type>
@@ -30976,6 +31077,50 @@ The output path consists of:<itemizedlist>
         </inbodydescription>
         <location file="HighMap/src/interpolate/interpolate_heightmap.cpp" line="133" column="6" bodyfile="HighMap/src/interpolate/interpolate_heightmap.cpp" bodystart="133" bodyend="162" declfile="HighMap/include/highmap/interpolate_array.hpp" declline="68" declcolumn="6"/>
       </memberdef>
+      <memberdef kind="function" id="namespacehmap_1a4ad7940c796973a615558a8dc773281c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
+        <definition>Array hmap::get_kernel</definition>
+        <argsstring>(Vec2&lt; int &gt; shape, KernelType kernel_type)</argsstring>
+        <name>get_kernel</name>
+        <qualifiedname>hmap::get_kernel</qualifiedname>
+        <param>
+          <type><ref refid="structhmap_1_1Vec2" kindref="compound">Vec2</ref>&lt; int &gt;</type>
+          <declname>shape</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacehmap_1a4b6f135c6e81d313ca54ae1efac5f2c9" kindref="member">KernelType</ref></type>
+          <declname>kernel_type</declname>
+        </param>
+        <briefdescription>
+<para>Generate a kernel of the specified type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function creates a kernel based on the given shape and kernel type. It supports various types of kernels including biweight, cubic pulse, cone, and more. The resulting kernel is returned as an array.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>shape</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The dimensions of the kernel to be generated. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>kernel_type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of kernel to generate (e.g., BIWEIGHT, CUBIC_PULSE, etc.). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classhmap_1_1Array" kindref="compound">Array</ref> The generated kernel array. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/kernels/kernels.cpp" line="449" column="7" bodyfile="HighMap/src/kernels/kernels.cpp" bodystart="449" bodyend="464" declfile="HighMap/include/highmap/kernels.hpp" declline="60" declcolumn="7"/>
+      </memberdef>
       <memberdef kind="function" id="namespacehmap_1ae0ab7faed3577159bc8051ad0e25b051" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
         <definition>Array hmap::biweight</definition>
@@ -31007,7 +31152,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/kernels/kernels.cpp" line="17" column="7" bodyfile="HighMap/src/kernels/kernels.cpp" bodystart="17" bodyend="33" declfile="HighMap/include/highmap/kernels.hpp" declline="60" declcolumn="7"/>
+        <location file="HighMap/src/kernels/kernels.cpp" line="17" column="7" bodyfile="HighMap/src/kernels/kernels.cpp" bodystart="17" bodyend="33" declfile="HighMap/include/highmap/kernels.hpp" declline="76" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1adfc320d14c66c6a40dedd9410efa269d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -31039,7 +31184,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/kernels/kernels.cpp" line="35" column="7" bodyfile="HighMap/src/kernels/kernels.cpp" bodystart="35" bodyend="54" declfile="HighMap/include/highmap/kernels.hpp" declline="74" declcolumn="7"/>
+        <location file="HighMap/src/kernels/kernels.cpp" line="35" column="7" bodyfile="HighMap/src/kernels/kernels.cpp" bodystart="35" bodyend="54" declfile="HighMap/include/highmap/kernels.hpp" declline="90" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a9880bdc35440162c24103a5df4c137a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -31071,7 +31216,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/kernels/kernels.cpp" line="56" column="7" bodyfile="HighMap/src/kernels/kernels.cpp" bodystart="56" bodyend="72" declfile="HighMap/include/highmap/kernels.hpp" declline="86" declcolumn="7"/>
+        <location file="HighMap/src/kernels/kernels.cpp" line="56" column="7" bodyfile="HighMap/src/kernels/kernels.cpp" bodystart="56" bodyend="72" declfile="HighMap/include/highmap/kernels.hpp" declline="102" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a553a4572c845a1286836bc08b67b3e34" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -31115,7 +31260,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/kernels/kernels.cpp" line="81" column="7" bodyfile="HighMap/src/kernels/kernels.cpp" bodystart="81" bodyend="95" declfile="HighMap/include/highmap/kernels.hpp" declline="102" declcolumn="7"/>
+        <location file="HighMap/src/kernels/kernels.cpp" line="81" column="7" bodyfile="HighMap/src/kernels/kernels.cpp" bodystart="81" bodyend="95" declfile="HighMap/include/highmap/kernels.hpp" declline="118" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ad1133df106eb662c9411a5501a5a3469" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -31147,7 +31292,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/kernels/kernels.cpp" line="74" column="7" bodyfile="HighMap/src/kernels/kernels.cpp" bodystart="74" bodyend="79" declfile="HighMap/include/highmap/kernels.hpp" declline="114" declcolumn="7"/>
+        <location file="HighMap/src/kernels/kernels.cpp" line="74" column="7" bodyfile="HighMap/src/kernels/kernels.cpp" bodystart="74" bodyend="79" declfile="HighMap/include/highmap/kernels.hpp" declline="130" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1af6af5d27dcec83e466ca6b58244cafe7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -31179,7 +31324,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/kernels/kernels.cpp" line="97" column="7" bodyfile="HighMap/src/kernels/kernels.cpp" bodystart="97" bodyend="114" declfile="HighMap/include/highmap/kernels.hpp" declline="125" declcolumn="7"/>
+        <location file="HighMap/src/kernels/kernels.cpp" line="97" column="7" bodyfile="HighMap/src/kernels/kernels.cpp" bodystart="97" bodyend="114" declfile="HighMap/include/highmap/kernels.hpp" declline="141" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a0b3237f9cc015299bf3e436be71d3587" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; float &gt;</type>
@@ -31210,7 +31355,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/kernels/kernels.cpp" line="116" column="13" bodyfile="HighMap/src/kernels/kernels.cpp" bodystart="116" bodyend="136" declfile="HighMap/include/highmap/kernels.hpp" declline="134" declcolumn="13"/>
+        <location file="HighMap/src/kernels/kernels.cpp" line="116" column="13" bodyfile="HighMap/src/kernels/kernels.cpp" bodystart="116" bodyend="136" declfile="HighMap/include/highmap/kernels.hpp" declline="150" declcolumn="13"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a2938b1bbfe89794423055e6ee9d2f79b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -31278,7 +31423,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/kernels/kernels.cpp" line="138" column="7" bodyfile="HighMap/src/kernels/kernels.cpp" bodystart="138" bodyend="171" declfile="HighMap/include/highmap/kernels.hpp" declline="155" declcolumn="7"/>
+        <location file="HighMap/src/kernels/kernels.cpp" line="138" column="7" bodyfile="HighMap/src/kernels/kernels.cpp" bodystart="138" bodyend="171" declfile="HighMap/include/highmap/kernels.hpp" declline="171" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a1004e5d8355c36fc1945d73c3b44eda0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -31347,7 +31492,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/kernels/kernels.cpp" line="173" column="7" bodyfile="HighMap/src/kernels/kernels.cpp" bodystart="173" bodyend="198" declfile="HighMap/include/highmap/kernels.hpp" declline="182" declcolumn="7"/>
+        <location file="HighMap/src/kernels/kernels.cpp" line="173" column="7" bodyfile="HighMap/src/kernels/kernels.cpp" bodystart="173" bodyend="198" declfile="HighMap/include/highmap/kernels.hpp" declline="198" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1acffafcfa04738c04fdd82eea8aa262dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -31379,7 +31524,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/kernels/kernels.cpp" line="200" column="7" bodyfile="HighMap/src/kernels/kernels.cpp" bodystart="200" bodyend="214" declfile="HighMap/include/highmap/kernels.hpp" declline="193" declcolumn="7"/>
+        <location file="HighMap/src/kernels/kernels.cpp" line="200" column="7" bodyfile="HighMap/src/kernels/kernels.cpp" bodystart="200" bodyend="214" declfile="HighMap/include/highmap/kernels.hpp" declline="209" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a04f44c4dc11d46f5089f5213d4c5d1a5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -31429,7 +31574,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/kernels/kernels.cpp" line="216" column="7" bodyfile="HighMap/src/kernels/kernels.cpp" bodystart="216" bodyend="243" declfile="HighMap/include/highmap/kernels.hpp" declline="220" declcolumn="7"/>
+        <location file="HighMap/src/kernels/kernels.cpp" line="216" column="7" bodyfile="HighMap/src/kernels/kernels.cpp" bodystart="216" bodyend="243" declfile="HighMap/include/highmap/kernels.hpp" declline="236" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aab655567714a21e6308c09d07056d52f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -31503,7 +31648,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/kernels/kernels.cpp" line="245" column="7" bodyfile="HighMap/src/kernels/kernels.cpp" bodystart="245" bodyend="276" declfile="HighMap/include/highmap/kernels.hpp" declline="243" declcolumn="7"/>
+        <location file="HighMap/src/kernels/kernels.cpp" line="245" column="7" bodyfile="HighMap/src/kernels/kernels.cpp" bodystart="245" bodyend="276" declfile="HighMap/include/highmap/kernels.hpp" declline="259" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a3b8ba9062298d434c8c10af3e92309a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -31598,51 +31743,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/kernels/kernels.cpp" line="278" column="7" bodyfile="HighMap/src/kernels/kernels.cpp" bodystart="278" bodyend="317" declfile="HighMap/include/highmap/kernels.hpp" declline="274" declcolumn="7"/>
-      </memberdef>
-      <memberdef kind="function" id="namespacehmap_1a4ad7940c796973a615558a8dc773281c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
-        <definition>Array hmap::get_kernel</definition>
-        <argsstring>(Vec2&lt; int &gt; shape, KernelType kernel_type)</argsstring>
-        <name>get_kernel</name>
-        <qualifiedname>hmap::get_kernel</qualifiedname>
-        <param>
-          <type><ref refid="structhmap_1_1Vec2" kindref="compound">Vec2</ref>&lt; int &gt;</type>
-          <declname>shape</declname>
-        </param>
-        <param>
-          <type><ref refid="namespacehmap_1a4b6f135c6e81d313ca54ae1efac5f2c9" kindref="member">KernelType</ref></type>
-          <declname>kernel_type</declname>
-        </param>
-        <briefdescription>
-<para>Generate a kernel of the specified type. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function creates a kernel based on the given shape and kernel type. It supports various types of kernels including biweight, cubic pulse, cone, and more. The resulting kernel is returned as an array.</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>shape</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The dimensions of the kernel to be generated. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>kernel_type</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The type of kernel to generate (e.g., BIWEIGHT, CUBIC_PULSE, etc.). </para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para><ref refid="classhmap_1_1Array" kindref="compound">Array</ref> The generated kernel array. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="HighMap/src/kernels/kernels.cpp" line="449" column="7" bodyfile="HighMap/src/kernels/kernels.cpp" bodystart="449" bodyend="464" declfile="HighMap/include/highmap/kernels.hpp" declline="292" declcolumn="7"/>
+        <location file="HighMap/src/kernels/kernels.cpp" line="278" column="7" bodyfile="HighMap/src/kernels/kernels.cpp" bodystart="278" bodyend="317" declfile="HighMap/include/highmap/kernels.hpp" declline="290" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ab4e60cf8b20170484e3ac2942cc05d59" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -31674,7 +31775,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/kernels/kernels.cpp" line="337" column="7" bodyfile="HighMap/src/kernels/kernels.cpp" bodystart="337" bodyend="351" declfile="HighMap/include/highmap/kernels.hpp" declline="306" declcolumn="7"/>
+        <location file="HighMap/src/kernels/kernels.cpp" line="337" column="7" bodyfile="HighMap/src/kernels/kernels.cpp" bodystart="337" bodyend="351" declfile="HighMap/include/highmap/kernels.hpp" declline="308" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a1d9165a0056e99a90b7734268f231901" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -31719,7 +31820,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/kernels/kernels.cpp" line="319" column="7" bodyfile="HighMap/src/kernels/kernels.cpp" bodystart="319" bodyend="335" declfile="HighMap/include/highmap/kernels.hpp" declline="320" declcolumn="7"/>
+        <location file="HighMap/src/kernels/kernels.cpp" line="319" column="7" bodyfile="HighMap/src/kernels/kernels.cpp" bodystart="319" bodyend="335" declfile="HighMap/include/highmap/kernels.hpp" declline="322" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a8be1ca22c14c4989ec8f18842fda2766" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -31751,7 +31852,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/kernels/kernels.cpp" line="353" column="7" bodyfile="HighMap/src/kernels/kernels.cpp" bodystart="353" bodyend="367" declfile="HighMap/include/highmap/kernels.hpp" declline="332" declcolumn="7"/>
+        <location file="HighMap/src/kernels/kernels.cpp" line="353" column="7" bodyfile="HighMap/src/kernels/kernels.cpp" bodystart="353" bodyend="367" declfile="HighMap/include/highmap/kernels.hpp" declline="334" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a06769c66065dd19c0fd54f4505d0e06c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -31795,7 +31896,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/kernels/kernels.cpp" line="369" column="7" bodyfile="HighMap/src/kernels/kernels.cpp" bodystart="369" bodyend="383" declfile="HighMap/include/highmap/kernels.hpp" declline="349" declcolumn="7"/>
+        <location file="HighMap/src/kernels/kernels.cpp" line="369" column="7" bodyfile="HighMap/src/kernels/kernels.cpp" bodystart="369" bodyend="383" declfile="HighMap/include/highmap/kernels.hpp" declline="351" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1abf04df687d39ce436fc5cbfae573dbff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -31839,7 +31940,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/kernels/kernels.cpp" line="385" column="7" bodyfile="HighMap/src/kernels/kernels.cpp" bodystart="385" bodyend="404" declfile="HighMap/include/highmap/kernels.hpp" declline="366" declcolumn="7"/>
+        <location file="HighMap/src/kernels/kernels.cpp" line="385" column="7" bodyfile="HighMap/src/kernels/kernels.cpp" bodystart="385" bodyend="404" declfile="HighMap/include/highmap/kernels.hpp" declline="368" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a0d6dfb8771368f84f2256ae38fe669fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -31871,7 +31972,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/kernels/kernels.cpp" line="406" column="7" bodyfile="HighMap/src/kernels/kernels.cpp" bodystart="406" bodyend="422" declfile="HighMap/include/highmap/kernels.hpp" declline="377" declcolumn="7"/>
+        <location file="HighMap/src/kernels/kernels.cpp" line="406" column="7" bodyfile="HighMap/src/kernels/kernels.cpp" bodystart="406" bodyend="422" declfile="HighMap/include/highmap/kernels.hpp" declline="379" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a784bc655283255591d04afd181d756f8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -31903,7 +32004,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/kernels/kernels.cpp" line="424" column="7" bodyfile="HighMap/src/kernels/kernels.cpp" bodystart="424" bodyend="427" declfile="HighMap/include/highmap/kernels.hpp" declline="388" declcolumn="7"/>
+        <location file="HighMap/src/kernels/kernels.cpp" line="424" column="7" bodyfile="HighMap/src/kernels/kernels.cpp" bodystart="424" bodyend="427" declfile="HighMap/include/highmap/kernels.hpp" declline="390" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a78d3f33a357986539e654f0d42510659" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -31935,7 +32036,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/kernels/kernels.cpp" line="429" column="7" bodyfile="HighMap/src/kernels/kernels.cpp" bodystart="429" bodyend="445" declfile="HighMap/include/highmap/kernels.hpp" declline="404" declcolumn="7"/>
+        <location file="HighMap/src/kernels/kernels.cpp" line="429" column="7" bodyfile="HighMap/src/kernels/kernels.cpp" bodystart="429" bodyend="445" declfile="HighMap/include/highmap/kernels.hpp" declline="406" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a527cfdcf7f7e2ca0e270875526c9b1ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -36260,6 +36361,48 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         </inbodydescription>
         <location file="HighMap/src/operator/operator.cpp" line="85" column="7" bodyfile="HighMap/src/operator/operator.cpp" bodystart="85" bodyend="100" declfile="HighMap/include/highmap/operator.hpp" declline="338" declcolumn="7"/>
       </memberdef>
+      <memberdef kind="function" id="namespacehmap_1a8a516692e72b572b71cbc5df0f251624" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
+        <definition>Array hmap::get_primitive_base</definition>
+        <argsstring>(const PrimitiveType &amp;primitive_type, const Vec2&lt; int &gt; &amp;shape, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, Vec2&lt; float &gt; center={0.5f, 0.5f}, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f})</argsstring>
+        <name>get_primitive_base</name>
+        <qualifiedname>hmap::get_primitive_base</qualifiedname>
+        <param>
+          <type>const <ref refid="namespacehmap_1a55542a66f890ef9ecf5f82af2c23a0cf" kindref="member">PrimitiveType</ref> &amp;</type>
+          <declname>primitive_type</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structhmap_1_1Vec2" kindref="compound">Vec2</ref>&lt; int &gt; &amp;</type>
+          <declname>shape</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
+          <declname>p_noise_x</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
+          <declname>p_noise_y</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type><ref refid="structhmap_1_1Vec2" kindref="compound">Vec2</ref>&lt; float &gt;</type>
+          <declname>center</declname>
+          <defval>{0.5<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 0.5<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>}</defval>
+        </param>
+        <param>
+          <type><ref refid="structhmap_1_1Vec4" kindref="compound">Vec4</ref>&lt; float &gt;</type>
+          <declname>bbox</declname>
+          <defval>{0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>}</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/primitives/primitives.cpp" line="357" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="357" bodyend="400" declfile="HighMap/include/highmap/primitives.hpp" declline="54" declcolumn="7"/>
+      </memberdef>
       <memberdef kind="function" id="namespacehmap_1a28783971977657055053b3c143502bc2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
         <definition>Array hmap::biquad_pulse</definition>
@@ -36391,7 +36534,7 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives.cpp" line="19" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="19" bodyend="39" declfile="HighMap/include/highmap/primitives.hpp" declline="62" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives.cpp" line="19" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="19" bodyend="39" declfile="HighMap/include/highmap/primitives.hpp" declline="79" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a80d18b9cba709433d31f37c29f64f01c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -36536,7 +36679,7 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives.cpp" line="41" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="41" bodyend="61" declfile="HighMap/include/highmap/primitives.hpp" declline="90" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives.cpp" line="41" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="41" bodyend="61" declfile="HighMap/include/highmap/primitives.hpp" declline="107" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a867abc2da19924fa22525ff69bca398d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -36694,7 +36837,7 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives.cpp" line="63" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="63" bodyend="100" declfile="HighMap/include/highmap/primitives.hpp" declline="142" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives.cpp" line="63" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="63" bodyend="100" declfile="HighMap/include/highmap/primitives.hpp" declline="159" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1abf32b5d631ee74d292cf9449b51395c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -36882,7 +37025,7 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/geo/geo.cpp" line="16" column="7" bodyfile="HighMap/src/primitives/geo/geo.cpp" bodystart="16" bodyend="70" declfile="HighMap/include/highmap/primitives.hpp" declline="173" declcolumn="7"/>
+        <location file="HighMap/src/primitives/geo/geo.cpp" line="16" column="7" bodyfile="HighMap/src/primitives/geo/geo.cpp" bodystart="16" bodyend="70" declfile="HighMap/include/highmap/primitives.hpp" declline="190" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a8091f7b43325bd647faa1430af785c70" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -36927,7 +37070,7 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/geo/geo.cpp" line="72" column="7" bodyfile="HighMap/src/primitives/geo/geo.cpp" bodystart="72" bodyend="92" declfile="HighMap/include/highmap/primitives.hpp" declline="184" declcolumn="7"/>
+        <location file="HighMap/src/primitives/geo/geo.cpp" line="72" column="7" bodyfile="HighMap/src/primitives/geo/geo.cpp" bodystart="72" bodyend="92" declfile="HighMap/include/highmap/primitives.hpp" declline="201" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a8a56891aca58f4afd74fb34b04322569" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -37028,7 +37171,7 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/checkerboard.cpp" line="12" column="7" bodyfile="HighMap/src/primitives/checkerboard.cpp" bodystart="12" bodyend="35" declfile="HighMap/include/highmap/primitives.hpp" declline="208" declcolumn="7"/>
+        <location file="HighMap/src/primitives/checkerboard.cpp" line="12" column="7" bodyfile="HighMap/src/primitives/checkerboard.cpp" bodystart="12" bodyend="35" declfile="HighMap/include/highmap/primitives.hpp" declline="225" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1af3e75ba20a563ec897513b1f9926fb9b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -37148,7 +37291,7 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/cone.cpp" line="20" column="7" bodyfile="HighMap/src/primitives/cone.cpp" bodystart="20" bodyend="71" declfile="HighMap/include/highmap/primitives.hpp" declline="242" declcolumn="7"/>
+        <location file="HighMap/src/primitives/cone.cpp" line="20" column="7" bodyfile="HighMap/src/primitives/cone.cpp" bodystart="20" bodyend="71" declfile="HighMap/include/highmap/primitives.hpp" declline="259" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ac5cc21b082835193908964bcb380d1c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -37432,7 +37575,7 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/cone.cpp" line="73" column="7" bodyfile="HighMap/src/primitives/cone.cpp" bodystart="73" bodyend="152" declfile="HighMap/include/highmap/primitives.hpp" declline="304" declcolumn="7"/>
+        <location file="HighMap/src/primitives/cone.cpp" line="73" column="7" bodyfile="HighMap/src/primitives/cone.cpp" bodystart="73" bodyend="152" declfile="HighMap/include/highmap/primitives.hpp" declline="321" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1af6f5880a68329be490f99aa779f3c1d8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -37555,7 +37698,7 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/cone.cpp" line="154" column="7" bodyfile="HighMap/src/primitives/cone.cpp" bodystart="154" bodyend="182" declfile="HighMap/include/highmap/primitives.hpp" declline="357" declcolumn="7"/>
+        <location file="HighMap/src/primitives/cone.cpp" line="154" column="7" bodyfile="HighMap/src/primitives/cone.cpp" bodystart="154" bodyend="182" declfile="HighMap/include/highmap/primitives.hpp" declline="374" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a8f4e766dca0065219e26af946bd61946" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -37599,7 +37742,7 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives.cpp" line="102" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="102" bodyend="108" declfile="HighMap/include/highmap/primitives.hpp" declline="372" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives.cpp" line="102" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="102" bodyend="108" declfile="HighMap/include/highmap/primitives.hpp" declline="389" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a608453bf311137377626e4db29502ea1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -37765,7 +37908,44 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/geo/geo.cpp" line="94" column="7" bodyfile="HighMap/src/primitives/geo/geo.cpp" bodystart="94" bodyend="120" declfile="HighMap/include/highmap/primitives.hpp" declline="396" declcolumn="7"/>
+        <location file="HighMap/src/primitives/geo/geo.cpp" line="94" column="7" bodyfile="HighMap/src/primitives/geo/geo.cpp" bodystart="94" bodyend="120" declfile="HighMap/include/highmap/primitives.hpp" declline="413" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehmap_1ab2d03f5c29f6510ac4b64a79c1f029ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
+        <definition>Array hmap::cubic_pulse</definition>
+        <argsstring>(Vec2&lt; int &gt; shape, const Array *p_noise_x, const Array *p_noise_y, Vec2&lt; float &gt; center={0.5f, 0.5f}, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f})</argsstring>
+        <name>cubic_pulse</name>
+        <qualifiedname>hmap::cubic_pulse</qualifiedname>
+        <param>
+          <type><ref refid="structhmap_1_1Vec2" kindref="compound">Vec2</ref>&lt; int &gt;</type>
+          <declname>shape</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
+          <declname>p_noise_x</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
+          <declname>p_noise_y</declname>
+        </param>
+        <param>
+          <type><ref refid="structhmap_1_1Vec2" kindref="compound">Vec2</ref>&lt; float &gt;</type>
+          <declname>center</declname>
+          <defval>{0.5<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 0.5<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>}</defval>
+        </param>
+        <param>
+          <type><ref refid="structhmap_1_1Vec4" kindref="compound">Vec4</ref>&lt; float &gt;</type>
+          <declname>bbox</declname>
+          <defval>{0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>}</defval>
+        </param>
+        <briefdescription>
+<para>Generates a cubic pulse array. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/primitives/primitives.cpp" line="110" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="110" bodyend="138" declfile="HighMap/include/highmap/primitives.hpp" declline="427" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a1b7c375c3335b31ab4773d792365faac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -38015,7 +38195,7 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/dendry.cpp" line="19" column="7" bodyfile="HighMap/src/primitives/dendry.cpp" bodystart="19" bodyend="87" declfile="HighMap/include/highmap/primitives.hpp" declline="443" declcolumn="7"/>
+        <location file="HighMap/src/primitives/dendry.cpp" line="19" column="7" bodyfile="HighMap/src/primitives/dendry.cpp" bodystart="19" bodyend="87" declfile="HighMap/include/highmap/primitives.hpp" declline="469" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ac6e6a71b31cb483e9fec2511a4b1334a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -38115,7 +38295,7 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/dendry.cpp" line="89" column="7" bodyfile="HighMap/src/primitives/dendry.cpp" bodystart="89" bodyend="149" declfile="HighMap/include/highmap/primitives.hpp" declline="461" declcolumn="7"/>
+        <location file="HighMap/src/primitives/dendry.cpp" line="89" column="7" bodyfile="HighMap/src/primitives/dendry.cpp" bodystart="89" bodyend="149" declfile="HighMap/include/highmap/primitives.hpp" declline="487" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a144eb2c0e1e4f93e712f01cbf0fb0c06" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -38238,7 +38418,7 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/diffusion_limited_aggregation.cpp" line="14" column="7" bodyfile="HighMap/src/primitives/diffusion_limited_aggregation.cpp" bodystart="14" bodyend="100" declfile="HighMap/include/highmap/primitives.hpp" declline="523" declcolumn="7"/>
+        <location file="HighMap/src/primitives/diffusion_limited_aggregation.cpp" line="14" column="7" bodyfile="HighMap/src/primitives/diffusion_limited_aggregation.cpp" bodystart="14" bodyend="100" declfile="HighMap/include/highmap/primitives.hpp" declline="549" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a2ed7a6b1be6d02101046f0623b374177" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -38403,7 +38583,7 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives.cpp" line="110" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="110" bodyend="131" declfile="HighMap/include/highmap/primitives.hpp" declline="565" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives.cpp" line="140" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="140" bodyend="161" declfile="HighMap/include/highmap/primitives.hpp" declline="591" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a2b3fdb5bd6cbca1c8ed1b81052012ba3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -38510,7 +38690,7 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/gabor.cpp" line="19" column="7" bodyfile="HighMap/src/primitives/gabor.cpp" bodystart="19" bodyend="30" declfile="HighMap/include/highmap/primitives.hpp" declline="592" declcolumn="7"/>
+        <location file="HighMap/src/primitives/gabor.cpp" line="19" column="7" bodyfile="HighMap/src/primitives/gabor.cpp" bodystart="19" bodyend="30" declfile="HighMap/include/highmap/primitives.hpp" declline="618" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a45ca8d7a507e92e78d466f0d392f8ea3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -38659,7 +38839,7 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives.cpp" line="133" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="133" bodyend="153" declfile="HighMap/include/highmap/primitives.hpp" declline="619" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives.cpp" line="163" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="163" bodyend="183" declfile="HighMap/include/highmap/primitives.hpp" declline="645" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a03c0be3a7198eebacefcb208b0cfee99" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -38804,7 +38984,7 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/noise.cpp" line="16" column="7" bodyfile="HighMap/src/primitives/noise.cpp" bodystart="16" bodyend="39" declfile="HighMap/include/highmap/primitives.hpp" declline="646" declcolumn="7"/>
+        <location file="HighMap/src/primitives/noise.cpp" line="16" column="7" bodyfile="HighMap/src/primitives/noise.cpp" bodystart="16" bodyend="39" declfile="HighMap/include/highmap/primitives.hpp" declline="672" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a40b948c49a05c14f2d540dc1a6952130" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -39103,7 +39283,7 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/noise.cpp" line="41" column="7" bodyfile="HighMap/src/primitives/noise.cpp" bodystart="41" bodyend="75" declfile="HighMap/include/highmap/primitives.hpp" declline="686" declcolumn="7"/>
+        <location file="HighMap/src/primitives/noise.cpp" line="41" column="7" bodyfile="HighMap/src/primitives/noise.cpp" bodystart="41" bodyend="75" declfile="HighMap/include/highmap/primitives.hpp" declline="712" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ab078210e784284a05d8cb7c1ae993c51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -39415,7 +39595,7 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/noise.cpp" line="77" column="7" bodyfile="HighMap/src/primitives/noise.cpp" bodystart="77" bodyend="113" declfile="HighMap/include/highmap/primitives.hpp" declline="732" declcolumn="7"/>
+        <location file="HighMap/src/primitives/noise.cpp" line="77" column="7" bodyfile="HighMap/src/primitives/noise.cpp" bodystart="77" bodyend="113" declfile="HighMap/include/highmap/primitives.hpp" declline="758" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a01e4bb17d3969964545796ffb2658a77" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -39766,7 +39946,7 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/noise.cpp" line="115" column="7" bodyfile="HighMap/src/primitives/noise.cpp" bodystart="115" bodyend="157" declfile="HighMap/include/highmap/primitives.hpp" declline="782" declcolumn="7"/>
+        <location file="HighMap/src/primitives/noise.cpp" line="115" column="7" bodyfile="HighMap/src/primitives/noise.cpp" bodystart="115" bodyend="157" declfile="HighMap/include/highmap/primitives.hpp" declline="808" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ae8dc6a5fc536f2fdb6c3ba39408f1425" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -40066,7 +40246,7 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/noise.cpp" line="159" column="7" bodyfile="HighMap/src/primitives/noise.cpp" bodystart="159" bodyend="192" declfile="HighMap/include/highmap/primitives.hpp" declline="832" declcolumn="7"/>
+        <location file="HighMap/src/primitives/noise.cpp" line="159" column="7" bodyfile="HighMap/src/primitives/noise.cpp" bodystart="159" bodyend="192" declfile="HighMap/include/highmap/primitives.hpp" declline="858" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a97d944f42fcf5ed55a9052969bae936b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -40365,7 +40545,7 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/noise.cpp" line="194" column="7" bodyfile="HighMap/src/primitives/noise.cpp" bodystart="194" bodyend="228" declfile="HighMap/include/highmap/primitives.hpp" declline="877" declcolumn="7"/>
+        <location file="HighMap/src/primitives/noise.cpp" line="194" column="7" bodyfile="HighMap/src/primitives/noise.cpp" bodystart="194" bodyend="228" declfile="HighMap/include/highmap/primitives.hpp" declline="903" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a7e2cad4ea77481f469f5a669b8a7d99f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -40677,7 +40857,7 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/noise.cpp" line="230" column="7" bodyfile="HighMap/src/primitives/noise.cpp" bodystart="230" bodyend="266" declfile="HighMap/include/highmap/primitives.hpp" declline="923" declcolumn="7"/>
+        <location file="HighMap/src/primitives/noise.cpp" line="230" column="7" bodyfile="HighMap/src/primitives/noise.cpp" bodystart="230" bodyend="266" declfile="HighMap/include/highmap/primitives.hpp" declline="949" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a72c962b85c05f22e90ec305b058139ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -40989,7 +41169,7 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/noise.cpp" line="268" column="7" bodyfile="HighMap/src/primitives/noise.cpp" bodystart="268" bodyend="304" declfile="HighMap/include/highmap/primitives.hpp" declline="970" declcolumn="7"/>
+        <location file="HighMap/src/primitives/noise.cpp" line="268" column="7" bodyfile="HighMap/src/primitives/noise.cpp" bodystart="268" bodyend="304" declfile="HighMap/include/highmap/primitives.hpp" declline="996" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ad193bc2ad91f74c90550a260e1644687" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -41174,7 +41354,7 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives.cpp" line="155" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="155" bodyend="193" declfile="HighMap/include/highmap/primitives.hpp" declline="1008" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives.cpp" line="185" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="185" bodyend="223" declfile="HighMap/include/highmap/primitives.hpp" declline="1034" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a91a51449dbfee9d41f28dc7bb301aad6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -41291,7 +41471,7 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/geo/geo.cpp" line="122" column="7" bodyfile="HighMap/src/primitives/geo/geo.cpp" bodystart="122" bodyend="161" declfile="HighMap/include/highmap/primitives.hpp" declline="1039" declcolumn="7"/>
+        <location file="HighMap/src/primitives/geo/geo.cpp" line="122" column="7" bodyfile="HighMap/src/primitives/geo/geo.cpp" bodystart="122" bodyend="161" declfile="HighMap/include/highmap/primitives.hpp" declline="1065" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aa4b5afd141f31d3ac539a8e7cb5ea6d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -41481,7 +41661,7 @@ The function performs the following steps:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/phasor.cpp" line="16" column="7" bodyfile="HighMap/src/primitives/phasor.cpp" bodystart="16" bodyend="109" declfile="HighMap/include/highmap/primitives.hpp" declline="1097" declcolumn="7"/>
+        <location file="HighMap/src/primitives/phasor.cpp" line="16" column="7" bodyfile="HighMap/src/primitives/phasor.cpp" bodystart="16" bodyend="109" declfile="HighMap/include/highmap/primitives.hpp" declline="1123" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a0febf1835b6a00b31dfa837d855c6a6d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -41713,7 +41893,7 @@ The function performs the following steps:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/phasor.cpp" line="111" column="7" bodyfile="HighMap/src/primitives/phasor.cpp" bodystart="111" bodyend="159" declfile="HighMap/include/highmap/primitives.hpp" declline="1151" declcolumn="7"/>
+        <location file="HighMap/src/primitives/phasor.cpp" line="111" column="7" bodyfile="HighMap/src/primitives/phasor.cpp" bodystart="111" bodyend="159" declfile="HighMap/include/highmap/primitives.hpp" declline="1177" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aecba6d5b355e2e041045bee54b495be7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -41906,7 +42086,7 @@ The function performs the following steps:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives.cpp" line="195" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="195" bodyend="218" declfile="HighMap/include/highmap/primitives.hpp" declline="1203" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives.cpp" line="225" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="225" bodyend="248" declfile="HighMap/include/highmap/primitives.hpp" declline="1229" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a6aad825029f99f3d44db149e88ba5a7f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -42099,7 +42279,7 @@ The function performs the following steps:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives.cpp" line="220" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="220" bodyend="247" declfile="HighMap/include/highmap/primitives.hpp" declline="1238" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives.cpp" line="250" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="250" bodyend="277" declfile="HighMap/include/highmap/primitives.hpp" declline="1264" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ad1836a084a8607446ce029d32c02a201" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -42260,7 +42440,44 @@ The function performs the following steps:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives.cpp" line="249" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="249" bodyend="270" declfile="HighMap/include/highmap/primitives.hpp" declline="1270" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives.cpp" line="279" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="279" bodyend="300" declfile="HighMap/include/highmap/primitives.hpp" declline="1296" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehmap_1a6cd3bcadb6477f6f070c4c87b2990309" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
+        <definition>Array hmap::smooth_cosine</definition>
+        <argsstring>(Vec2&lt; int &gt; shape, const Array *p_noise_x, const Array *p_noise_y, Vec2&lt; float &gt; center={0.5f, 0.5f}, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f})</argsstring>
+        <name>smooth_cosine</name>
+        <qualifiedname>hmap::smooth_cosine</qualifiedname>
+        <param>
+          <type><ref refid="structhmap_1_1Vec2" kindref="compound">Vec2</ref>&lt; int &gt;</type>
+          <declname>shape</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
+          <declname>p_noise_x</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
+          <declname>p_noise_y</declname>
+        </param>
+        <param>
+          <type><ref refid="structhmap_1_1Vec2" kindref="compound">Vec2</ref>&lt; float &gt;</type>
+          <declname>center</declname>
+          <defval>{0.5<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 0.5<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>}</defval>
+        </param>
+        <param>
+          <type><ref refid="structhmap_1_1Vec4" kindref="compound">Vec4</ref>&lt; float &gt;</type>
+          <declname>bbox</declname>
+          <defval>{0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>}</defval>
+        </param>
+        <briefdescription>
+<para>Generates a smooth cosine array. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/primitives/primitives.cpp" line="302" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="302" bodyend="330" declfile="HighMap/include/highmap/primitives.hpp" declline="1309" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ab00af49fafd706242919ea18dc4817ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -42419,7 +42636,7 @@ The function performs the following steps:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives.cpp" line="272" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="272" bodyend="293" declfile="HighMap/include/highmap/primitives.hpp" declline="1301" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives.cpp" line="332" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="332" bodyend="353" declfile="HighMap/include/highmap/primitives.hpp" declline="1336" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aa7f0f75c71d2248bf3fea0ba6c7ccb31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -42550,7 +42767,7 @@ The function performs the following steps:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/swirl.cpp" line="16" column="6" bodyfile="HighMap/src/primitives/swirl.cpp" bodystart="16" bodyend="59" declfile="HighMap/include/highmap/primitives.hpp" declline="1328" declcolumn="6"/>
+        <location file="HighMap/src/primitives/swirl.cpp" line="16" column="6" bodyfile="HighMap/src/primitives/swirl.cpp" bodystart="16" bodyend="59" declfile="HighMap/include/highmap/primitives.hpp" declline="1363" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a16a701ab5a740bd3dbfe7020fb388023" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -42687,7 +42904,7 @@ The function performs the following steps:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/wave.cpp" line="15" column="7" bodyfile="HighMap/src/primitives/wave.cpp" bodystart="15" bodyend="41" declfile="HighMap/include/highmap/primitives.hpp" declline="1351" declcolumn="7"/>
+        <location file="HighMap/src/primitives/wave.cpp" line="15" column="7" bodyfile="HighMap/src/primitives/wave.cpp" bodystart="15" bodyend="41" declfile="HighMap/include/highmap/primitives.hpp" declline="1386" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a0fac1251f8728228be8de58ac16846d2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -42837,7 +43054,7 @@ The function performs the following steps:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/wave.cpp" line="43" column="7" bodyfile="HighMap/src/primitives/wave.cpp" bodystart="43" bodyend="65" declfile="HighMap/include/highmap/primitives.hpp" declline="1381" declcolumn="7"/>
+        <location file="HighMap/src/primitives/wave.cpp" line="43" column="7" bodyfile="HighMap/src/primitives/wave.cpp" bodystart="43" bodyend="65" declfile="HighMap/include/highmap/primitives.hpp" declline="1416" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1accadc8f0d0e250eba86824a456aa98c8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -42987,7 +43204,7 @@ The function performs the following steps:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/wave.cpp" line="67" column="7" bodyfile="HighMap/src/primitives/wave.cpp" bodystart="67" bodyend="89" declfile="HighMap/include/highmap/primitives.hpp" declline="1409" declcolumn="7"/>
+        <location file="HighMap/src/primitives/wave.cpp" line="67" column="7" bodyfile="HighMap/src/primitives/wave.cpp" bodystart="67" bodyend="89" declfile="HighMap/include/highmap/primitives.hpp" declline="1444" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a539c5110c3427da96fd6bc99a6b090c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -43149,7 +43366,7 @@ The function performs the following steps:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/wave.cpp" line="91" column="7" bodyfile="HighMap/src/primitives/wave.cpp" bodystart="91" bodyend="115" declfile="HighMap/include/highmap/primitives.hpp" declline="1439" declcolumn="7"/>
+        <location file="HighMap/src/primitives/wave.cpp" line="91" column="7" bodyfile="HighMap/src/primitives/wave.cpp" bodystart="91" bodyend="115" declfile="HighMap/include/highmap/primitives.hpp" declline="1474" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aaebee84e8c697616359a93440eb92b50" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -43231,7 +43448,7 @@ The function performs the following steps:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/white.cpp" line="12" column="7" bodyfile="HighMap/src/primitives/white.cpp" bodystart="12" bodyend="22" declfile="HighMap/include/highmap/primitives.hpp" declline="1466" declcolumn="7"/>
+        <location file="HighMap/src/primitives/white.cpp" line="12" column="7" bodyfile="HighMap/src/primitives/white.cpp" bodystart="12" bodyend="22" declfile="HighMap/include/highmap/primitives.hpp" declline="1501" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a657a1f43301605e4e3768cd3888e8b4b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -43295,7 +43512,7 @@ The function performs the following steps:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/white.cpp" line="24" column="7" bodyfile="HighMap/src/primitives/white.cpp" bodystart="24" bodyend="37" declfile="HighMap/include/highmap/primitives.hpp" declline="1481" declcolumn="7"/>
+        <location file="HighMap/src/primitives/white.cpp" line="24" column="7" bodyfile="HighMap/src/primitives/white.cpp" bodystart="24" bodyend="37" declfile="HighMap/include/highmap/primitives.hpp" declline="1516" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a2fe434844b8b2c091b589cbc4fa81db1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -43390,7 +43607,7 @@ The function performs the following steps:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/white.cpp" line="39" column="7" bodyfile="HighMap/src/primitives/white.cpp" bodystart="39" bodyend="51" declfile="HighMap/include/highmap/primitives.hpp" declline="1502" declcolumn="7"/>
+        <location file="HighMap/src/primitives/white.cpp" line="39" column="7" bodyfile="HighMap/src/primitives/white.cpp" bodystart="39" bodyend="51" declfile="HighMap/include/highmap/primitives.hpp" declline="1537" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a3077892a37a4350bebb2631856b407fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -43445,7 +43662,7 @@ The function performs the following steps:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/white.cpp" line="53" column="7" bodyfile="HighMap/src/primitives/white.cpp" bodystart="53" bodyend="65" declfile="HighMap/include/highmap/primitives.hpp" declline="1513" declcolumn="7"/>
+        <location file="HighMap/src/primitives/white.cpp" line="53" column="7" bodyfile="HighMap/src/primitives/white.cpp" bodystart="53" bodyend="65" declfile="HighMap/include/highmap/primitives.hpp" declline="1548" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a65580df1d5593c59be30588ca9979b26" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -43608,7 +43825,7 @@ The function performs the following steps:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/worley.cpp" line="15" column="7" bodyfile="HighMap/src/primitives/worley.cpp" bodystart="15" bodyend="37" declfile="HighMap/include/highmap/primitives.hpp" declline="1538" declcolumn="7"/>
+        <location file="HighMap/src/primitives/worley.cpp" line="15" column="7" bodyfile="HighMap/src/primitives/worley.cpp" bodystart="15" bodyend="37" declfile="HighMap/include/highmap/primitives.hpp" declline="1573" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1abc5d54d0d76a86f083db977837c28d69" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>

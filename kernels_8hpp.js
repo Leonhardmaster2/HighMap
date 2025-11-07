@@ -11,6 +11,7 @@ var kernels_8hpp =
       [ "SQUARE", "kernels_8hpp.html#a4b6f135c6e81d313ca54ae1efac5f2c9aa90e813d22c88c29e9effe934ce6149d", null ],
       [ "TRICUBE", "kernels_8hpp.html#a4b6f135c6e81d313ca54ae1efac5f2c9abd845bef8f2959d8d9e7355aa9c44d86", null ]
     ] ],
+    [ "get_kernel", "kernels_8hpp.html#a4ad7940c796973a615558a8dc773281c", null ],
     [ "biweight", "kernels_8hpp.html#ae0ab7faed3577159bc8051ad0e25b051", null ],
     [ "blackman", "kernels_8hpp.html#adfc320d14c66c6a40dedd9410efa269d", null ],
     [ "cone", "kernels_8hpp.html#a9880bdc35440162c24103a5df4c137a6", null ],
@@ -24,7 +25,6 @@ var kernels_8hpp =
     [ "disk_smooth", "kernels_8hpp.html#a04f44c4dc11d46f5089f5213d4c5d1a5", null ],
     [ "gabor", "kernels_8hpp.html#aab655567714a21e6308c09d07056d52f", null ],
     [ "gabor_dune", "kernels_8hpp.html#a3b8ba9062298d434c8c10af3e92309a6", null ],
-    [ "get_kernel", "kernels_8hpp.html#a4ad7940c796973a615558a8dc773281c", null ],
     [ "hann", "kernels_8hpp.html#ab4e60cf8b20170484e3ac2942cc05d59", null ],
     [ "lorentzian", "kernels_8hpp.html#a1d9165a0056e99a90b7734268f231901", null ],
     [ "lorentzian_compact", "kernels_8hpp.html#a8be1ca22c14c4989ec8f18842fda2766", null ],

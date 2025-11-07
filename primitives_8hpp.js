@@ -11,6 +11,15 @@ var primitives_8hpp =
       [ "CONSTANT", "primitives_8hpp.html#a8e3756915e28aa80cec2190043cc8c2fab0d27777279264cbe2a77d4a241e6f55", null ],
       [ "CONSTANT_F2MF1_SQUARED", "primitives_8hpp.html#a8e3756915e28aa80cec2190043cc8c2fa85f252453c9797b7e00cc96cb7147537", null ]
     ] ],
+    [ "PrimitiveType", "primitives_8hpp.html#a55542a66f890ef9ecf5f82af2c23a0cf", [
+      [ "PRIM_BIQUAD_PULSE", "primitives_8hpp.html#a55542a66f890ef9ecf5f82af2c23a0cfa4807402e27d4ee7cb042237cbeb26a69", null ],
+      [ "PRIM_BUMP", "primitives_8hpp.html#a55542a66f890ef9ecf5f82af2c23a0cfa938e2b9cd9d4c9249f6d45285457891b", null ],
+      [ "PRIM_CONE", "primitives_8hpp.html#a55542a66f890ef9ecf5f82af2c23a0cfae2c78e075109f330e3109c52e9bf90ff", null ],
+      [ "PRIM_CONE_SMOOTH", "primitives_8hpp.html#a55542a66f890ef9ecf5f82af2c23a0cfa71a3d57896b6c2d066433962e74e8961", null ],
+      [ "PRIM_CUBIC_PULSE", "primitives_8hpp.html#a55542a66f890ef9ecf5f82af2c23a0cfae1780174f7412d5a5593b324ea0db7cb", null ],
+      [ "PRIM_SMOOTH_COSINE", "primitives_8hpp.html#a55542a66f890ef9ecf5f82af2c23a0cfad8c75d88dbfd854dbcedfaf3a4b9c65c", null ]
+    ] ],
+    [ "get_primitive_base", "primitives_8hpp.html#a8a516692e72b572b71cbc5df0f251624", null ],
     [ "biquad_pulse", "primitives_8hpp.html#a28783971977657055053b3c143502bc2", null ],
     [ "bump", "primitives_8hpp.html#a80d18b9cba709433d31f37c29f64f01c", null ],
     [ "bump_lorentzian", "primitives_8hpp.html#a867abc2da19924fa22525ff69bca398d", null ],
@@ -22,6 +31,7 @@ var primitives_8hpp =
     [ "cone_sigmoid", "primitives_8hpp.html#af6f5880a68329be490f99aa779f3c1d8", null ],
     [ "constant", "primitives_8hpp.html#a8f4e766dca0065219e26af946bd61946", null ],
     [ "crater", "primitives_8hpp.html#a608453bf311137377626e4db29502ea1", null ],
+    [ "cubic_pulse", "primitives_8hpp.html#ab2d03f5c29f6510ac4b64a79c1f029ec", null ],
     [ "dendry", "primitives_8hpp.html#a1b7c375c3335b31ab4773d792365faac", null ],
     [ "dendry", "primitives_8hpp.html#ac6e6a71b31cb483e9fec2511a4b1334a", null ],
     [ "diffusion_limited_aggregation", "primitives_8hpp.html#a144eb2c0e1e4f93e712f01cbf0fb0c06", null ],
@@ -43,6 +53,7 @@ var primitives_8hpp =
     [ "rectangle", "primitives_8hpp.html#aecba6d5b355e2e041045bee54b495be7", null ],
     [ "rift", "primitives_8hpp.html#a6aad825029f99f3d44db149e88ba5a7f", null ],
     [ "slope", "primitives_8hpp.html#ad1836a084a8607446ce029d32c02a201", null ],
+    [ "smooth_cosine", "primitives_8hpp.html#a6cd3bcadb6477f6f070c4c87b2990309", null ],
     [ "step", "primitives_8hpp.html#ab00af49fafd706242919ea18dc4817ee", null ],
     [ "swirl", "primitives_8hpp.html#aa7f0f75c71d2248bf3fea0ba6c7ccb31", null ],
     [ "wave_dune", "primitives_8hpp.html#a16a701ab5a740bd3dbfe7020fb388023", null ],
