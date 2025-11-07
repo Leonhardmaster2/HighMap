@@ -16,6 +16,7 @@
 #pragma once
 
 #include "highmap/array.hpp"
+#include "highmap/primitives.hpp"
 
 namespace hmap
 {
@@ -37,6 +38,14 @@ enum neighborhood : int
   CROSS ///< Cross-shaped neighborhood: includes only the diagonal
         // neighbors.
 };
+
+Array bulkify(const Array         &z,
+              const PrimitiveType &primitive_type,
+              float                amp = 1.f,
+              const Array         *p_noise_x = nullptr,
+              const Array         *p_noise_y = nullptr,
+              Vec2<float>          center = {0.5f, 0.5f},
+              Vec4<float>          bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief Applies diffusion retargeting by detecting local maxima and adjusting

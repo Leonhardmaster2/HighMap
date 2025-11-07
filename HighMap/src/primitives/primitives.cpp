@@ -107,6 +107,36 @@ Array constant(Vec2<int> shape, float value)
   return array;
 }
 
+Array cubic_pulse(Vec2<int>    shape,
+                  const Array *p_noise_x,
+                  const Array *p_noise_y,
+                  Vec2<float>  center,
+                  Vec4<float>  bbox)
+{
+  Array array = Array(shape);
+
+  auto lambda = [center](float x, float y, float)
+  {
+    float dx = x - center.x;
+    float dy = y - center.y;
+    float r = std::hypot(dx, dy) / 0.5f;
+
+    if (r < 1.f)
+      return 1.f - r * r * (3.f - 2.f * r);
+    else
+      return 0.f;
+  };
+
+  fill_array_using_xy_function(array,
+                               bbox,
+                               nullptr,
+                               p_noise_x,
+                               p_noise_y,
+                               nullptr,
+                               lambda);
+  return array;
+}
+
 Array disk(Vec2<int>    shape,
            float        radius,
            float        slope,
@@ -269,6 +299,36 @@ Array slope(Vec2<int>    shape,
   return array;
 }
 
+Array smooth_cosine(Vec2<int>    shape,
+                    const Array *p_noise_x,
+                    const Array *p_noise_y,
+                    Vec2<float>  center,
+                    Vec4<float>  bbox)
+{
+  Array array = Array(shape);
+
+  auto lambda = [center](float x, float y, float)
+  {
+    float dx = x - center.x;
+    float dy = y - center.y;
+    float r = 2.f * M_PI * std::hypot(dx, dy);
+
+    if (r < M_PI)
+      return 0.5f + 0.5f * std::cos(r);
+    else
+      return 0.f;
+  };
+
+  fill_array_using_xy_function(array,
+                               bbox,
+                               nullptr,
+                               p_noise_x,
+                               p_noise_y,
+                               nullptr,
+                               lambda);
+  return array;
+}
+
 Array step(Vec2<int>         shape,
            float             angle,
            float             slope,
@@ -290,6 +350,53 @@ Array step(Vec2<int>         shape,
                                p_stretching,
                                f.get_delegate());
   return array;
+}
+
+// --- Wrapper
+
+Array get_primitive_base(const PrimitiveType &primitive_type,
+                         const Vec2<int>     &shape,
+                         const Array         *p_noise_x,
+                         const Array         *p_noise_y,
+                         Vec2<float>          center,
+                         Vec4<float>          bbox)
+{
+  switch (primitive_type)
+  {
+  case PrimitiveType::PRIM_BIQUAD_PULSE:
+    return biquad_pulse(shape,
+                        1.f,
+                        nullptr,
+                        p_noise_x,
+                        p_noise_y,
+                        nullptr,
+                        center,
+                        bbox);
+    //
+  case PrimitiveType::PRIM_BUMP:
+    return bump(shape,
+                1.f,
+                nullptr,
+                p_noise_x,
+                p_noise_y,
+                nullptr,
+                center,
+                bbox);
+    //
+  case PrimitiveType::PRIM_CONE:
+    return cone(shape, 2.f, 1.f, false, center, p_noise_x, p_noise_y, bbox);
+    //
+  case PrimitiveType::PRIM_CONE_SMOOTH:
+    return cone(shape, 2.f, 1.f, true, center, p_noise_x, p_noise_y, bbox);
+  //
+  case PrimitiveType::PRIM_CUBIC_PULSE:
+    return cubic_pulse(shape, p_noise_x, p_noise_y, center, bbox);
+    //
+  case PrimitiveType::PRIM_SMOOTH_COSINE:
+    return smooth_cosine(shape, p_noise_x, p_noise_y, center, bbox);
+    //
+  default: return Array(shape);
+  }
 }
 
 } // namespace hmap

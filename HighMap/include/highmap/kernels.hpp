@@ -46,6 +46,22 @@ enum KernelType : int
 };
 
 /**
+ * @brief Generate a kernel of the specified type.
+ *
+ * This function creates a kernel based on the given shape and kernel type. It
+ * supports various types of kernels including biweight, cubic pulse, cone, and
+ * more. The resulting kernel is returned as an array.
+ *
+ * @param  shape       The dimensions of the kernel to be generated.
+ * @param  kernel_type The type of kernel to generate (e.g., BIWEIGHT,
+ *                     CUBIC_PULSE, etc.).
+ * @return             Array The generated kernel array.
+ */
+Array get_kernel(Vec2<int> shape, KernelType kernel_type);
+
+// --- KERNELS
+
+/**
  * @brief Generates a biweight kernel array.
  *
  * This function creates a biweight kernel, which is a type of kernel function
@@ -276,20 +292,6 @@ Array gabor_dune(Vec2<int> shape,
                  float     angle,
                  float     xtop,
                  float     xbottom);
-
-/**
- * @brief Generate a kernel of the specified type.
- *
- * This function creates a kernel based on the given shape and kernel type. It
- * supports various types of kernels including biweight, cubic pulse, cone, and
- * more. The resulting kernel is returned as an array.
- *
- * @param  shape       The dimensions of the kernel to be generated.
- * @param  kernel_type The type of kernel to generate (e.g., BIWEIGHT,
- *                     CUBIC_PULSE, etc.).
- * @return             Array The generated kernel array.
- */
-Array get_kernel(Vec2<int> shape, KernelType kernel_type);
 
 /**
  * @brief Generates a Hann window array with the specified shape.

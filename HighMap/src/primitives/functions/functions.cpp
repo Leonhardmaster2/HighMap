@@ -104,7 +104,7 @@ BiquadFunction::BiquadFunction(float gain, Vec2<float> center)
   this->set_delegate(
       [this](float x, float y, float ctrl_param)
       {
-        float v = x * (x - 1.f) * y * (y - 1.f);
+        float v = 16.f * x * (x - 1.f) * y * (y - 1.f);
         v = std::clamp(v, 0.f, 1.f);
         return std::pow(v, 1.f / (this->gain * ctrl_param));
       });
@@ -127,7 +127,7 @@ BumpFunction::BumpFunction(float gain, Vec2<float> center)
         const float base = std::exp(exponent);
         const float power = 1.0f / (this->gain * ctrl_param);
 
-        return std::pow(base, power);
+        return std::pow(base / std::exp(-1.f), power);
       });
 }
 

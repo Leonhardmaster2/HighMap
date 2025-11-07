@@ -41,6 +41,23 @@ enum VoronoiReturnType : int
   CONSTANT_F2MF1_SQUARED
 };
 
+enum PrimitiveType : int
+{
+  PRIM_BIQUAD_PULSE,
+  PRIM_BUMP,
+  PRIM_CONE,
+  PRIM_CONE_SMOOTH,
+  PRIM_CUBIC_PULSE,
+  PRIM_SMOOTH_COSINE,
+};
+
+Array get_primitive_base(const PrimitiveType &primitive_type,
+                         const Vec2<int>     &shape,
+                         const Array         *p_noise_x = nullptr,
+                         const Array         *p_noise_y = nullptr,
+                         Vec2<float>          center = {0.5f, 0.5f},
+                         Vec4<float>          bbox = {0.f, 1.f, 0.f, 1.f});
+
 /**
  * @brief Return a 'biquadratic pulse'.
  *
@@ -403,6 +420,15 @@ Array crater(Vec2<int>    shape,
              const Array *p_noise_y = nullptr,
              Vec2<float>  center = {0.5f, 0.5f},
              Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
+ * @brief Generates a cubic pulse array.
+ */
+Array cubic_pulse(Vec2<int>    shape,
+                  const Array *p_noise_x,
+                  const Array *p_noise_y,
+                  Vec2<float>  center = {0.5f, 0.5f},
+                  Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief Dendry is a locally computable procedural function that generates
@@ -1276,6 +1302,15 @@ Array slope(Vec2<int>    shape,
             const Array *p_stretching = nullptr,
             Vec2<float>  center = {0.5f, 0.5f},
             Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
+ * @brief Generates a smooth cosine array.
+ */
+Array smooth_cosine(Vec2<int>    shape,
+                    const Array *p_noise_x,
+                    const Array *p_noise_y,
+                    Vec2<float>  center = {0.5f, 0.5f},
+                    Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief Return a step function (Heaviside with an optional talus slope at the
