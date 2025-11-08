@@ -332,37 +332,37 @@ namespace hmap::gpu
 {
 
 /*! @brief See hmap::border */
-Array border(const Array &array, int ir);
+Array border(const Array &array, int ir, bool use_disk_kernel = true);
 
 /*! @brief See hmap::closing */
-Array closing(const Array &array, int ir);
+Array closing(const Array &array, int ir, bool use_disk_kernel = true);
 
 /*! @brief See hmap::dilation */
-Array dilation(const Array &array, int ir);
+Array dilation(const Array &array, int ir, bool use_disk_kernel = true);
 
 /*! @brief See hmap::dilation_expand_border_only */
-Array dilation_expand_border_only(const Array &array, int ir);
+Array dilation_expand_border_only(const Array &array, int ir, bool use_disk_kernel = true);
 
 /*! @brief See hmap::erosion */
-Array erosion(const Array &array, int ir);
+Array erosion(const Array &array, int ir, bool use_disk_kernel = true);
 
 /*! @brief See hmap::morphological_black_hat */
-Array morphological_black_hat(const Array &array, int ir);
+Array morphological_black_hat(const Array &array, int ir, bool use_disk_kernel = true);
 
 /*! @brief See hmap::morphological_gradient */
-Array morphological_gradient(const Array &array, int ir);
+Array morphological_gradient(const Array &array, int ir, bool use_disk_kernel = true);
 
 /*! @brief See hmap::morphological_top_hat */
-Array morphological_top_hat(const Array &array, int ir);
+Array morphological_top_hat(const Array &array, int ir, bool use_disk_kernel = true);
 
 /*! @brief See hmap::opening */
-Array opening(const Array &array, int ir);
+Array opening(const Array &array, int ir, bool use_disk_kernel = true);
 
 /*! @brief See hmap::relative_distance_from_skeleton */
 Array relative_distance_from_skeleton(const Array &array,
                                       int          ir_search,
                                       bool         zero_at_borders = true,
-                                      int          ir_erosion = 1);
+                                      int          ir_erosion = 1, bool use_disk_kernel = true);
 
 /*! @brief See hmap::skeleton */
 Array skeleton(const Array &array, bool zero_at_borders = true);
