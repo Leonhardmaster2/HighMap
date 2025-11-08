@@ -8,7 +8,7 @@ var searchData=
   ['elementary_20data_20structure_20for_20building_20heightmaps_5',['&quot;Array&quot; - Elementary Data Structure for Building Heightmaps',['../index.html#autotoc_md6',1,'']]],
   ['enforce_5fmonotonic_5fvalues_6',['enforce_monotonic_values',['../classhmap_1_1Path.html#a4934980f265ae283c847fc091fe45c75',1,'hmap::Path']]],
   ['equalize_7',['equalize',['../namespacehmap.html#a1b08d9a5d25e6bcd9d080accd077cc98',1,'hmap::equalize(Array &amp;array)'],['../namespacehmap.html#a1470c4d74892293e4974a319c6b17267',1,'hmap::equalize(Array &amp;array, const Array *p_mask)']]],
-  ['erosion_8',['erosion',['../namespacehmap_1_1gpu.html#aed5416971461ddb7fb6427bdeb5cae86',1,'hmap::gpu::erosion()'],['../namespacehmap.html#a9cf7773f6141162bf60708a93acdfcee',1,'hmap::erosion()']]],
+  ['erosion_8',['erosion',['../namespacehmap_1_1gpu.html#a56d60a8b1139c78c27b53f85afedce7d',1,'hmap::gpu::erosion()'],['../namespacehmap.html#a9cf7773f6141162bf60708a93acdfcee',1,'hmap::erosion()']]],
   ['erosion_2ehpp_9',['erosion.hpp',['../erosion_8hpp.html',1,'']]],
   ['erosion_5fgpu_2ecpp_10',['erosion_gpu.cpp',['../erosion__gpu_8cpp.html',1,'']]],
   ['erosion_5fmaps_11',['erosion_maps',['../namespacehmap.html#af91e2b8638aab2c4357ce37812b8a99c',1,'hmap']]],
