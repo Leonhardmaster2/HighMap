@@ -36,7 +36,7 @@ var searchData=
   ['cone_5fsigmoid_33',['cone_sigmoid',['../namespacehmap.html#af6f5880a68329be490f99aa779f3c1d8',1,'hmap']]],
   ['cone_5fsmooth_34',['cone_smooth',['../namespacehmap.html#ad1133df106eb662c9411a5501a5a3469',1,'hmap']]],
   ['cone_5ftalus_35',['cone_talus',['../namespacehmap.html#a553a4572c845a1286836bc08b67b3e34',1,'hmap']]],
-  ['connected_5fcomponents_36',['connected_components',['../namespacehmap.html#a9f8b079598b5ab3850c747ece6c81345',1,'hmap']]],
+  ['connected_5fcomponents_36',['connected_components',['../namespacehmap.html#a11f846a0bacba3463862df220ddf5131',1,'hmap']]],
   ['constant_37',['constant',['../namespacehmap.html#a8f4e766dca0065219e26af946bd61946',1,'hmap']]],
   ['convert_5flength_5fto_5fpixel_38',['convert_length_to_pixel',['../namespacehmap.html#ab085d07bc0e897729ca16c0dd2035fe1',1,'hmap']]],
   ['convert_5fmat_5fto_5farray_39',['convert_mat_to_array',['../namespacehmap.html#a4fca3ce1ffb84dbc8a627b3313b1d1fb',1,'hmap']]],

@@ -878,9 +878,9 @@ Functions</h2></td></tr>
 <tr class="separator:a466d4275bb86ca9ca603c9d4192f931a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a67eae4546cbed6a804eaddcde9350e1c" id="r_a67eae4546cbed6a804eaddcde9350e1c"><td class="memItemLeft" align="right" valign="top">std::filesystem::path&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a67eae4546cbed6a804eaddcde9350e1c">add_filename_suffix</a> (const std::filesystem::path &amp;file_path, const std::string &amp;suffix)</td></tr>
 <tr class="separator:a67eae4546cbed6a804eaddcde9350e1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9f8b079598b5ab3850c747ece6c81345" id="r_a9f8b079598b5ab3850c747ece6c81345"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a9f8b079598b5ab3850c747ece6c81345">connected_components</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, float surface_threshold=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float background_value=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
-<tr class="memdesc:a9f8b079598b5ab3850c747ece6c81345"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifies and labels connected components within a binary or labeled array, with optional filtering by size.  <br /></td></tr>
-<tr class="separator:a9f8b079598b5ab3850c747ece6c81345"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11f846a0bacba3463862df220ddf5131" id="r_a11f846a0bacba3463862df220ddf5131"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a11f846a0bacba3463862df220ddf5131">connected_components</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, float surface_threshold=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float background_value=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, std::vector&lt; float &gt; *p_surfaces=nullptr, std::vector&lt; std::array&lt; float, 2 &gt; &gt; *p_centroids=nullptr)</td></tr>
+<tr class="memdesc:a11f846a0bacba3463862df220ddf5131"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifies and labels connected components within a binary or labeled array, with optional filtering by size.  <br /></td></tr>
+<tr class="separator:a11f846a0bacba3463862df220ddf5131"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa60fa2d3f02d1e064b520fa1623200d0" id="r_aa60fa2d3f02d1e064b520fa1623200d0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#aa60fa2d3f02d1e064b520fa1623200d0">geomorphons</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, int irmin, int irmax, float epsilon)</td></tr>
 <tr class="memdesc:aa60fa2d3f02d1e064b520fa1623200d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Classifies terrain into geomorphological features based on the geomorphons method.  <br /></td></tr>
 <tr class="separator:aa60fa2d3f02d1e064b520fa1623200d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -5578,7 +5578,7 @@ template&lt;typename T &gt; </div>
 <div class="line">                          {z, zs, zc},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492">hmap::Cmap::VIRIDIS</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclasshmap_1_1Array_html_ab55ee6021288a467f7d782b09e888f25"><div class="ttname"><a href="classhmap_1_1Array.html#ab55ee6021288a467f7d782b09e888f25">hmap::Array::normalize</a></div><div class="ttdeci">void normalize()</div><div class="ttdoc">Normalize array values so that the sum of all elements is equal to 1.</div><div class="ttdef"><b>Definition</b> methods.cpp:275</div></div>
+<div class="ttc" id="aclasshmap_1_1Array_html_ab55ee6021288a467f7d782b09e888f25"><div class="ttname"><a href="classhmap_1_1Array.html#ab55ee6021288a467f7d782b09e888f25">hmap::Array::normalize</a></div><div class="ttdeci">void normalize()</div><div class="ttdoc">Normalize array values so that the sum of all elements is equal to 1.</div><div class="ttdef"><b>Definition</b> methods.cpp:276</div></div>
 <div class="ttc" id="anamespacehmap_html_a15951dcd1ef3999591c757944f894e15"><div class="ttname"><a href="namespacehmap.html#a15951dcd1ef3999591c757944f894e15">hmap::convolve2d_svd</a></div><div class="ttdeci">Array convolve2d_svd(const Array &amp;z, const Array &amp;kernel, int rank=3)</div><div class="ttdoc">Return the approximate convolution product of the array with a Singular Value Decomposition (SVD) of ...</div><div class="ttdef"><b>Definition</b> convolve2d_svd.cpp:19</div></div>
 <div class="ttc" id="anamespacehmap_html_acf8376b5e40b4373986c9a6b41c02429"><div class="ttname"><a href="namespacehmap.html#acf8376b5e40b4373986c9a6b41c02429">hmap::convolve2d</a></div><div class="ttdeci">Array convolve2d(const Array &amp;array, const Array &amp;kernel)</div><div class="ttdoc">Return the convolution product of the array with a given 2D kernel.</div><div class="ttdef"><b>Definition</b> convolve.cpp:81</div></div>
 <div class="ttc" id="anamespacehmap_html_acffafcfa04738c04fdd82eea8aa262dc"><div class="ttname"><a href="namespacehmap.html#acffafcfa04738c04fdd82eea8aa262dc">hmap::disk</a></div><div class="ttdeci">Array disk(Vec2&lt; int &gt; shape)</div><div class="ttdoc">Generates a disk-shaped kernel footprint.</div><div class="ttdef"><b>Definition</b> kernels.cpp:200</div></div>
@@ -12069,8 +12069,8 @@ The y-axis is flipped so that higher indices appear lower in the text output. </
 
 </div>
 </div>
-<a id="a9f8b079598b5ab3850c747ece6c81345" name="a9f8b079598b5ab3850c747ece6c81345"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9f8b079598b5ab3850c747ece6c81345">&#9670;&#160;</a></span>connected_components()</h2>
+<a id="a11f846a0bacba3463862df220ddf5131" name="a11f846a0bacba3463862df220ddf5131"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11f846a0bacba3463862df220ddf5131">&#9670;&#160;</a></span>connected_components()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -12091,7 +12091,19 @@ The y-axis is flipped so that higher indices appear lower in the text output. </
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>background_value</em> = <code>0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>&#160;</td>
+          <td class="paramname"><em>background_value</em> = <code>0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; float &gt; *&#160;</td>
+          <td class="paramname"><em>p_surfaces</em> = <code>nullptr</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; std::array&lt; float, 2 &gt; &gt; *&#160;</td>
+          <td class="paramname"><em>p_centroids</em> = <code>nullptr</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -12127,14 +12139,22 @@ The y-axis is flipped so that higher indices appear lower in the text output. </
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z = <a class="code hl_function" href="namespacehmap.html#a03c0be3a7198eebacefcb208b0cfee99">hmap::noise</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, res, seed);</div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#a2badbebec49b12d0d721970a18eb420d">hmap::clamp_min</a>(z, 0.f);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> labels = <a class="code hl_function" href="namespacehmap.html#a9f8b079598b5ab3850c747ece6c81345">hmap::connected_components</a>(z);</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> labels = <a class="code hl_function" href="namespacehmap.html#a11f846a0bacba3463862df220ddf5131">hmap::connected_components</a>(z);</div>
+<div class="line"> </div>
+<div class="line">  std::vector&lt;float&gt;                surfaces;</div>
+<div class="line">  std::vector&lt;std::array&lt;float, 2&gt;&gt; centroids;</div>
+<div class="line">  <span class="keyword">auto</span> dummy = <a class="code hl_function" href="namespacehmap.html#a11f846a0bacba3463862df220ddf5131">hmap::connected_components</a>(z, 0.f, 0.f, &amp;surfaces, &amp;centroids);</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// centroids of each components in index (i, j) scale</span></div>
+<div class="line">  <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;v : centroids)</div>
+<div class="line">    LOG_DEBUG(<span class="stringliteral">&quot;%f %f&quot;</span>, v[0], v[1]);</div>
 <div class="line"> </div>
 <div class="line">  z.<a class="code hl_function" href="classhmap_1_1Array.html#a9ff7b2c0be8f2b5dd9fc33085cd647d1">to_png</a>(<span class="stringliteral">&quot;ex_connected_components0.png&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">  labels.<a class="code hl_function" href="classhmap_1_1Array.html#a9ff7b2c0be8f2b5dd9fc33085cd647d1">to_png</a>(<span class="stringliteral">&quot;ex_connected_components1.png&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369ae91cb25d4df330517ac69b5f0f2c3e0c">hmap::Cmap::NIPY_SPECTRAL</a>);</div>
 <div class="line">}</div>
 <div class="ttc" id="aarray_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition</b> array.hpp:14</div></div>
+<div class="ttc" id="anamespacehmap_html_a11f846a0bacba3463862df220ddf5131"><div class="ttname"><a href="namespacehmap.html#a11f846a0bacba3463862df220ddf5131">hmap::connected_components</a></div><div class="ttdeci">Array connected_components(const Array &amp;array, float surface_threshold=0.f, float background_value=0.f, std::vector&lt; float &gt; *p_surfaces=nullptr, std::vector&lt; std::array&lt; float, 2 &gt; &gt; *p_centroids=nullptr)</div><div class="ttdoc">Identifies and labels connected components within a binary or labeled array, with optional filtering ...</div><div class="ttdef"><b>Definition</b> connected_components.cpp:14</div></div>
 <div class="ttc" id="anamespacehmap_html_a2badbebec49b12d0d721970a18eb420d"><div class="ttname"><a href="namespacehmap.html#a2badbebec49b12d0d721970a18eb420d">hmap::clamp_min</a></div><div class="ttdeci">void clamp_min(Array &amp;array, float vmin)</div><div class="ttdoc">Clamp array values lower than a given bound.</div><div class="ttdef"><b>Definition</b> range.cpp:129</div></div>
-<div class="ttc" id="anamespacehmap_html_a9f8b079598b5ab3850c747ece6c81345"><div class="ttname"><a href="namespacehmap.html#a9f8b079598b5ab3850c747ece6c81345">hmap::connected_components</a></div><div class="ttdeci">Array connected_components(const Array &amp;array, float surface_threshold=0.f, float background_value=0.f)</div><div class="ttdoc">Identifies and labels connected components within a binary or labeled array, with optional filtering ...</div><div class="ttdef"><b>Definition</b> connected_components.cpp:14</div></div>
 <div class="ttc" id="anamespacehmap_html_ac70fe3cbb32e0340d5dd3e15cdcf9369ae91cb25d4df330517ac69b5f0f2c3e0c"><div class="ttname"><a href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369ae91cb25d4df330517ac69b5f0f2c3e0c">hmap::NIPY_SPECTRAL</a></div><div class="ttdeci">@ NIPY_SPECTRAL</div><div class="ttdef"><b>Definition</b> colormaps.hpp:88</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_connected_components0.png" alt=""/>
@@ -25859,7 +25879,7 @@ h}{\partial y}
 <div class="line">                          {alpha0, alpha, alpha_uw},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclasshmap_1_1Array_html_a56c77f78e4864f5c6f2cbd6de8100556"><div class="ttname"><a href="classhmap_1_1Array.html#a56c77f78e4864f5c6f2cbd6de8100556">hmap::Array::min</a></div><div class="ttdeci">float min() const</div><div class="ttdoc">Return the value of the smallest element in the array.</div><div class="ttdef"><b>Definition</b> methods.cpp:270</div></div>
+<div class="ttc" id="aclasshmap_1_1Array_html_a56c77f78e4864f5c6f2cbd6de8100556"><div class="ttname"><a href="classhmap_1_1Array.html#a56c77f78e4864f5c6f2cbd6de8100556">hmap::Array::min</a></div><div class="ttdeci">float min() const</div><div class="ttdoc">Return the value of the smallest element in the array.</div><div class="ttdef"><b>Definition</b> methods.cpp:271</div></div>
 <div class="ttc" id="anamespacehmap_html_a3f8dc201377b61428eba8daa4a03a65f"><div class="ttname"><a href="namespacehmap.html#a3f8dc201377b61428eba8daa4a03a65f">hmap::unwrap_phase</a></div><div class="ttdeci">Array unwrap_phase(const Array &amp;alpha)</div><div class="ttdoc">Unwraps a 2D phase array to correct discontinuities in phase data.</div><div class="ttdef"><b>Definition</b> unwrap_phase.cpp:14</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_unwrap_phase.png" alt=""/>
@@ -27781,7 +27801,7 @@ h}{\partial y}
 <div class="line">  z.<a class="code hl_function" href="classhmap_1_1Array.html#a9ff7b2c0be8f2b5dd9fc33085cd647d1">to_png</a>(<span class="stringliteral">&quot;ex_flow_accumulation_dinf0.png&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>, <span class="keyword">true</span>);</div>
 <div class="line">  facc.to_png(<span class="stringliteral">&quot;ex_flow_accumulation_dinf1.png&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a320107cf3138d908a78d3c6d97705717">hmap::Cmap::HOT</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclasshmap_1_1Array_html_a68aac609ccba8f581da1cdf5cee671b9"><div class="ttname"><a href="classhmap_1_1Array.html#a68aac609ccba8f581da1cdf5cee671b9">hmap::Array::max</a></div><div class="ttdeci">float max() const</div><div class="ttdoc">Return the value of the greatest element in the array.</div><div class="ttdef"><b>Definition</b> methods.cpp:260</div></div>
+<div class="ttc" id="aclasshmap_1_1Array_html_a68aac609ccba8f581da1cdf5cee671b9"><div class="ttname"><a href="classhmap_1_1Array.html#a68aac609ccba8f581da1cdf5cee671b9">hmap::Array::max</a></div><div class="ttdeci">float max() const</div><div class="ttdoc">Return the value of the greatest element in the array.</div><div class="ttdef"><b>Definition</b> methods.cpp:261</div></div>
 <div class="ttc" id="anamespacehmap_html_a58ba4910af868f70849f343e0c73adf3"><div class="ttname"><a href="namespacehmap.html#a58ba4910af868f70849f343e0c73adf3">hmap::flow_accumulation_dinf</a></div><div class="ttdeci">Array flow_accumulation_dinf(const Array &amp;z, float talus_ref)</div><div class="ttdoc">Computes the flow accumulation for each cell using the Multiple Flow Direction (MFD) model.</div><div class="ttdef"><b>Definition</b> flow_accumulation_dinf.cpp:36</div></div>
 <div class="ttc" id="anamespacehmap_html_ae239201a0a4193e1ce78bdf1fce4c151"><div class="ttname"><a href="namespacehmap.html#ae239201a0a4193e1ce78bdf1fce4c151">hmap::clamp_max</a></div><div class="ttdeci">void clamp_max(Array &amp;array, float vmax)</div><div class="ttdoc">Clamp array values larger than a given bound.</div><div class="ttdef"><b>Definition</b> range.cpp:79</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
@@ -33307,7 +33327,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>,</div>
 <div class="line">                          <span class="keyword">true</span>);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclasshmap_1_1Array_html_a1c242d119f67209442a0054601939412"><div class="ttname"><a href="classhmap_1_1Array.html#a1c242d119f67209442a0054601939412">hmap::Array::resample_to_shape</a></div><div class="ttdeci">Array resample_to_shape(Vec2&lt; int &gt; new_shape) const</div><div class="ttdoc">Return a resampled array of shape new_shape using bilinear interpolation.</div><div class="ttdef"><b>Definition</b> methods.cpp:297</div></div>
+<div class="ttc" id="aclasshmap_1_1Array_html_a1c242d119f67209442a0054601939412"><div class="ttname"><a href="classhmap_1_1Array.html#a1c242d119f67209442a0054601939412">hmap::Array::resample_to_shape</a></div><div class="ttdeci">Array resample_to_shape(Vec2&lt; int &gt; new_shape) const</div><div class="ttdoc">Return a resampled array of shape new_shape using bilinear interpolation.</div><div class="ttdef"><b>Definition</b> methods.cpp:298</div></div>
 <div class="ttc" id="anamespacehmap_html_a1fb8077215c98a741e0de5366c2f7ca3"><div class="ttname"><a href="namespacehmap.html#a1fb8077215c98a741e0de5366c2f7ca3">hmap::downscale_transform</a></div><div class="ttdeci">void downscale_transform(Array &amp;array, float kc, std::function&lt; void(Array &amp;x)&gt; unary_op, bool apply_prefiltering=false)</div><div class="ttdoc">Applies a downscaling transformation to a 2D array using Fourier-based filtering.</div><div class="ttdef"><b>Definition</b> downscale_transform.cpp:15</div></div>
 </div><!-- fragment --></li>
 </ul>

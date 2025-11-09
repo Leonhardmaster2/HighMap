@@ -503,7 +503,7 @@ var namespacehmap =
     [ "read_to_array", "namespacehmap.html#acc812ae7d5ab25071e94faaf7be03bca", null ],
     [ "write_raw_16bit", "namespacehmap.html#a466d4275bb86ca9ca603c9d4192f931a", null ],
     [ "add_filename_suffix", "namespacehmap.html#a67eae4546cbed6a804eaddcde9350e1c", null ],
-    [ "connected_components", "namespacehmap.html#a9f8b079598b5ab3850c747ece6c81345", null ],
+    [ "connected_components", "namespacehmap.html#a11f846a0bacba3463862df220ddf5131", null ],
     [ "geomorphons", "namespacehmap.html#aa60fa2d3f02d1e064b520fa1623200d0", null ],
     [ "kmeans_clustering2", "namespacehmap.html#ae19d507d917f1f4cbc61fc76cc5baab0", null ],
     [ "kmeans_clustering3", "namespacehmap.html#ac177e8615e697e3096737cb21a15f3ed", null ],

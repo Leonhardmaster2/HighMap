@@ -11933,10 +11933,10 @@ Each tile is extracted using slicing, adjusted for overlap if specified, and the
         </inbodydescription>
         <location file="HighMap/src/export/helpers.cpp" line="9" column="23" bodyfile="HighMap/src/export/helpers.cpp" bodystart="9" bodyend="20" declfile="HighMap/include/highmap/export.hpp" declline="409" declcolumn="23"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1a9f8b079598b5ab3850c747ece6c81345" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacehmap_1a11f846a0bacba3463862df220ddf5131" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
         <definition>Array hmap::connected_components</definition>
-        <argsstring>(const Array &amp;array, float surface_threshold=0.f, float background_value=0.f)</argsstring>
+        <argsstring>(const Array &amp;array, float surface_threshold=0.f, float background_value=0.f, std::vector&lt; float &gt; *p_surfaces=nullptr, std::vector&lt; std::array&lt; float, 2 &gt; &gt; *p_centroids=nullptr)</argsstring>
         <name>connected_components</name>
         <qualifiedname>hmap::connected_components</qualifiedname>
         <param>
@@ -11952,6 +11952,16 @@ Each tile is extracted using slicing, adjusted for overlap if specified, and the
           <type>float</type>
           <declname>background_value</declname>
           <defval>0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>std::vector&lt; float &gt; *</type>
+          <declname>p_surfaces</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>std::vector&lt; std::array&lt; float, 2 &gt; &gt; *</type>
+          <declname>p_centroids</declname>
+          <defval>nullptr</defval>
         </param>
         <briefdescription>
 <para>Identifies and labels connected components within a binary or labeled array, with optional filtering by size. </para>
@@ -12001,7 +12011,15 @@ Each tile is extracted using slicing, adjusted for overlap if specified, and the
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1a03c0be3a7198eebacefcb208b0cfee99" kindref="member">hmap::noise</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,<sp/>shape,<sp/>res,<sp/>seed);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a2badbebec49b12d0d721970a18eb420d" kindref="member">hmap::clamp_min</ref>(z,<sp/>0.f);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>labels<sp/>=<sp/><ref refid="namespacehmap_1a9f8b079598b5ab3850c747ece6c81345" kindref="member">hmap::connected_components</ref>(z);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>labels<sp/>=<sp/><ref refid="namespacehmap_1a11f846a0bacba3463862df220ddf5131" kindref="member">hmap::connected_components</ref>(z);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::vector&lt;float&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>surfaces;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::vector&lt;std::array&lt;float,<sp/>2&gt;&gt;<sp/>centroids;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>dummy<sp/>=<sp/><ref refid="namespacehmap_1a11f846a0bacba3463862df220ddf5131" kindref="member">hmap::connected_components</ref>(z,<sp/>0.f,<sp/>0.f,<sp/>&amp;surfaces,<sp/>&amp;centroids);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>centroids<sp/>of<sp/>each<sp/>components<sp/>in<sp/>index<sp/>(i,<sp/>j)<sp/>scale</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;v<sp/>:<sp/>centroids)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>LOG_DEBUG(</highlight><highlight class="stringliteral">&quot;%f<sp/>%f&quot;</highlight><highlight class="normal">,<sp/>v[0],<sp/>v[1]);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>z.<ref refid="classhmap_1_1Array_1a9ff7b2c0be8f2b5dd9fc33085cd647d1" kindref="member">to_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_connected_components0.png&quot;</highlight><highlight class="normal">,<sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143" kindref="member">hmap::Cmap::INFERNO</ref>);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>labels.<ref refid="classhmap_1_1Array_1a9ff7b2c0be8f2b5dd9fc33085cd647d1" kindref="member">to_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_connected_components1.png&quot;</highlight><highlight class="normal">,<sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369ae91cb25d4df330517ac69b5f0f2c3e0c" kindref="member">hmap::Cmap::NIPY_SPECTRAL</ref>);</highlight></codeline>
@@ -12013,7 +12031,7 @@ Each tile is extracted using slicing, adjusted for overlap if specified, and the
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/features/connected_components.cpp" line="14" column="7" bodyfile="HighMap/src/features/connected_components.cpp" bodystart="14" bodyend="117" declfile="HighMap/include/highmap/features.hpp" declline="82" declcolumn="7"/>
+        <location file="HighMap/src/features/connected_components.cpp" line="14" column="7" bodyfile="HighMap/src/features/connected_components.cpp" bodystart="14" bodyend="155" declfile="HighMap/include/highmap/features.hpp" declline="83" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aa60fa2d3f02d1e064b520fa1623200d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -12110,7 +12128,7 @@ Each tile is extracted using slicing, adjusted for overlap if specified, and the
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/features/geomorphons.cpp" line="14" column="7" bodyfile="HighMap/src/features/geomorphons.cpp" bodystart="14" bodyend="185" declfile="HighMap/include/highmap/features.hpp" declline="117" declcolumn="7"/>
+        <location file="HighMap/src/features/geomorphons.cpp" line="14" column="7" bodyfile="HighMap/src/features/geomorphons.cpp" bodystart="14" bodyend="185" declfile="HighMap/include/highmap/features.hpp" declline="121" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ae19d507d917f1f4cbc61fc76cc5baab0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -12296,7 +12314,7 @@ Each tile is extracted using slicing, adjusted for overlap if specified, and the
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/features/kmeans_clustering.cpp" line="13" column="7" bodyfile="HighMap/src/features/kmeans_clustering.cpp" bodystart="13" bodyend="131" declfile="HighMap/include/highmap/features.hpp" declline="169" declcolumn="7"/>
+        <location file="HighMap/src/features/kmeans_clustering.cpp" line="13" column="7" bodyfile="HighMap/src/features/kmeans_clustering.cpp" bodystart="13" bodyend="131" declfile="HighMap/include/highmap/features.hpp" declline="173" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ac177e8615e697e3096737cb21a15f3ed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -12492,7 +12510,7 @@ Each tile is extracted using slicing, adjusted for overlap if specified, and the
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/features/kmeans_clustering.cpp" line="133" column="7" bodyfile="HighMap/src/features/kmeans_clustering.cpp" bodystart="133" bodyend="254" declfile="HighMap/include/highmap/features.hpp" declline="220" declcolumn="7"/>
+        <location file="HighMap/src/features/kmeans_clustering.cpp" line="133" column="7" bodyfile="HighMap/src/features/kmeans_clustering.cpp" bodystart="133" bodyend="254" declfile="HighMap/include/highmap/features.hpp" declline="224" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a9b6a1d2ca8ef58a4a0605d04bcbff038" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -12568,7 +12586,7 @@ Each tile is extracted using slicing, adjusted for overlap if specified, and the
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/features/features.cpp" line="16" column="7" bodyfile="HighMap/src/features/features.cpp" bodystart="16" bodyend="21" declfile="HighMap/include/highmap/features.hpp" declline="256" declcolumn="7"/>
+        <location file="HighMap/src/features/features.cpp" line="16" column="7" bodyfile="HighMap/src/features/features.cpp" bodystart="16" bodyend="21" declfile="HighMap/include/highmap/features.hpp" declline="260" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a39d52250df1825ecea1e63309d94d1fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -12633,7 +12651,7 @@ Each tile is extracted using slicing, adjusted for overlap if specified, and the
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/features/features.cpp" line="23" column="7" bodyfile="HighMap/src/features/features.cpp" bodystart="23" bodyend="35" declfile="HighMap/include/highmap/features.hpp" declline="281" declcolumn="7"/>
+        <location file="HighMap/src/features/features.cpp" line="23" column="7" bodyfile="HighMap/src/features/features.cpp" bodystart="23" bodyend="35" declfile="HighMap/include/highmap/features.hpp" declline="285" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a941d446cad19c166f4f6c4df857dba65" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -12702,7 +12720,7 @@ Each tile is extracted using slicing, adjusted for overlap if specified, and the
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/features/features.cpp" line="37" column="7" bodyfile="HighMap/src/features/features.cpp" bodystart="37" bodyend="46" declfile="HighMap/include/highmap/features.hpp" declline="308" declcolumn="7"/>
+        <location file="HighMap/src/features/features.cpp" line="37" column="7" bodyfile="HighMap/src/features/features.cpp" bodystart="37" bodyend="46" declfile="HighMap/include/highmap/features.hpp" declline="312" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1af4ec8b5be149e6749fdf09759daf1e9e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -12766,7 +12784,7 @@ Each tile is extracted using slicing, adjusted for overlap if specified, and the
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/features/features.cpp" line="48" column="7" bodyfile="HighMap/src/features/features.cpp" bodystart="48" bodyend="73" declfile="HighMap/include/highmap/features.hpp" declline="331" declcolumn="7"/>
+        <location file="HighMap/src/features/features.cpp" line="48" column="7" bodyfile="HighMap/src/features/features.cpp" bodystart="48" bodyend="73" declfile="HighMap/include/highmap/features.hpp" declline="335" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a85e411c67e97deb8459f25d4440546c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -12841,7 +12859,7 @@ Each tile is extracted using slicing, adjusted for overlap if specified, and the
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/features/features.cpp" line="75" column="7" bodyfile="HighMap/src/features/features.cpp" bodystart="75" bodyend="116" declfile="HighMap/include/highmap/features.hpp" declline="357" declcolumn="7"/>
+        <location file="HighMap/src/features/features.cpp" line="75" column="7" bodyfile="HighMap/src/features/features.cpp" bodystart="75" bodyend="116" declfile="HighMap/include/highmap/features.hpp" declline="361" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a0157f72a2a70dae28d0767a13739f4b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -12913,7 +12931,7 @@ Each tile is extracted using slicing, adjusted for overlap if specified, and the
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/features/features.cpp" line="118" column="7" bodyfile="HighMap/src/features/features.cpp" bodystart="118" bodyend="131" declfile="HighMap/include/highmap/features.hpp" declline="382" declcolumn="7"/>
+        <location file="HighMap/src/features/features.cpp" line="118" column="7" bodyfile="HighMap/src/features/features.cpp" bodystart="118" bodyend="131" declfile="HighMap/include/highmap/features.hpp" declline="386" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ab4d8048b79080012b8e60c270de8137f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -13000,7 +13018,7 @@ Each tile is extracted using slicing, adjusted for overlap if specified, and the
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/features/features.cpp" line="133" column="7" bodyfile="HighMap/src/features/features.cpp" bodystart="133" bodyend="144" declfile="HighMap/include/highmap/features.hpp" declline="418" declcolumn="7"/>
+        <location file="HighMap/src/features/features.cpp" line="133" column="7" bodyfile="HighMap/src/features/features.cpp" bodystart="133" bodyend="144" declfile="HighMap/include/highmap/features.hpp" declline="422" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a732a83c92c4a2d232fc9f421f98c0c6b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -13022,7 +13040,7 @@ Each tile is extracted using slicing, adjusted for overlap if specified, and the
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/features/features.cpp" line="146" column="7" bodyfile="HighMap/src/features/features.cpp" bodystart="146" bodyend="159" declfile="HighMap/include/highmap/features.hpp" declline="420" declcolumn="7"/>
+        <location file="HighMap/src/features/features.cpp" line="146" column="7" bodyfile="HighMap/src/features/features.cpp" bodystart="146" bodyend="159" declfile="HighMap/include/highmap/features.hpp" declline="424" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a7c780f6b35e43e45457af59ce1c761ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>

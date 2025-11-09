@@ -58,7 +58,7 @@ var searchData=
   ['cone_5fsigmoid_55',['cone_sigmoid',['../namespacehmap.html#af6f5880a68329be490f99aa779f3c1d8',1,'hmap']]],
   ['cone_5fsmooth_56',['cone_smooth',['../namespacehmap.html#a4b6f135c6e81d313ca54ae1efac5f2c9ac140897e531cacd604bec544a49f7ca2',1,'hmap::CONE_SMOOTH'],['../namespacehmap.html#ad1133df106eb662c9411a5501a5a3469',1,'hmap::cone_smooth(Vec2&lt; int &gt; shape)']]],
   ['cone_5ftalus_57',['cone_talus',['../namespacehmap.html#a553a4572c845a1286836bc08b67b3e34',1,'hmap']]],
-  ['connected_5fcomponents_58',['connected_components',['../namespacehmap.html#a9f8b079598b5ab3850c747ece6c81345',1,'hmap']]],
+  ['connected_5fcomponents_58',['connected_components',['../namespacehmap.html#a11f846a0bacba3463862df220ddf5131',1,'hmap']]],
   ['connected_5fcomponents_2ecpp_59',['connected_components.cpp',['../connected__components_8cpp.html',1,'']]],
   ['connectivity_60',['connectivity',['../classhmap_1_1Graph.html#ac4fa0788cdc6162d9254b059ae9857da',1,'hmap::Graph']]],
   ['constant_61',['constant',['../namespacehmap.html#a8e3756915e28aa80cec2190043cc8c2fab0d27777279264cbe2a77d4a241e6f55',1,'hmap::CONSTANT'],['../namespacehmap.html#a8f4e766dca0065219e26af946bd61946',1,'hmap::constant(Vec2&lt; int &gt; shape, float value=0.f)']]],
