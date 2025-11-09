@@ -3,6 +3,7 @@
  * this software. */
 #include <functional>
 #include <iomanip>
+#include <iostream>
 #include <numeric>
 #include <vector>
 
