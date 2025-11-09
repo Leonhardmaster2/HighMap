@@ -1,5 +1,7 @@
 var NAVTREEINDEX6 =
 {
+"erosion_8hpp.html#afabf7cb3077839af03388c0d1236d912":[5,0,1,0,0,15,67],
+"erosion_8hpp.html#afe2e4c1e06205f5051ce6e86ea647a77":[5,0,1,0,0,15,50],
 "erosion_8hpp_source.html":[5,0,1,0,0,15],
 "erosion__gpu_8cpp.html":[5,0,1,1,10,3],
 "erosion__gpu_8cpp.html#a7bc17570e205e4eb84ed4d434998555e":[5,0,1,1,10,3,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX6 =
 "filters_8hpp.html#a6a2f30cadb25b5e8b20d73c5447e4c56":[5,0,1,0,0,18,100],
 "filters_8hpp.html#a6fa21b8b4797ae017025d891f9704848":[5,0,1,0,0,18,59],
 "filters_8hpp.html#a70fde21fb8301d39cc7a0ed919457917":[5,0,1,0,0,18,120],
-"filters_8hpp.html#a722cef96155d5c26274e24c796dc3a1b":[5,0,1,0,0,18,121],
-"filters_8hpp.html#a738bcdb6b3493bf7f2cbfcfc03a00159":[5,0,1,0,0,18,84],
-"filters_8hpp.html#a76e0787fcca5220ec08b423349a475a4":[5,0,1,0,0,18,122]
+"filters_8hpp.html#a722cef96155d5c26274e24c796dc3a1b":[5,0,1,0,0,18,121]
 };

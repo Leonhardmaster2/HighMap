@@ -1,5 +1,8 @@
 var NAVTREEINDEX14 =
 {
+"namespacemembers_func_p.html":[3,1,1,14],
+"namespacemembers_func_q.html":[3,1,1,15],
+"namespacemembers_func_r.html":[3,1,1,16],
 "namespacemembers_func_s.html":[3,1,1,17],
 "namespacemembers_func_t.html":[3,1,1,18],
 "namespacemembers_func_u.html":[3,1,1,19],
@@ -246,8 +249,5 @@ var NAVTREEINDEX14 =
 "primitives_8hpp.html#a97d944f42fcf5ed55a9052969bae936b":[5,0,1,0,0,31,26],
 "primitives_8hpp.html#a9a67e946fa8616f634c1e5f1cad6045b":[5,0,1,0,0,31,52],
 "primitives_8hpp.html#aa4b5afd141f31d3ac539a8e7cb5ea6d4":[5,0,1,0,0,31,31],
-"primitives_8hpp.html#aa7f0f75c71d2248bf3fea0ba6c7ccb31":[5,0,1,0,0,31,38],
-"primitives_8hpp.html#aae4961b7c0f65d6904cc61022eb2642b":[5,0,1,0,0,31,72],
-"primitives_8hpp.html#aaebee84e8c697616359a93440eb92b50":[5,0,1,0,0,31,43],
-"primitives_8hpp.html#aaee46739a429168aa45ff1e5d55041ec":[5,0,1,0,0,31,73]
+"primitives_8hpp.html#aa7f0f75c71d2248bf3fea0ba6c7ccb31":[5,0,1,0,0,31,38]
 };

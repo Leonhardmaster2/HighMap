@@ -752,6 +752,7 @@ var namespacehmap =
     [ "argsort", "namespacehmap.html#a8be122241fa42b0f6a7ef67106391780", null ],
     [ "reindex_vector", "namespacehmap.html#ad122242a8f8cf308215faee96c9471ee", null ],
     [ "vector_unique_values", "namespacehmap.html#ac95d63662a6878f27011c0b4c7c70078", null ],
+    [ "make_histogram", "namespacehmap.html#a47f7c4ead587ead4a75c9c7f4fc4b079", null ],
     [ "bilinear_interp", "namespacehmap.html#ae91029283452ab6d8276e3745a476b48", null ],
     [ "cubic_interpolate", "namespacehmap.html#aee026d8b23196038c2b16c370b743889", null ],
     [ "harmonic_interpolation", "namespacehmap.html#adff97113f5c9e89106fa57b4e809d603", null ],

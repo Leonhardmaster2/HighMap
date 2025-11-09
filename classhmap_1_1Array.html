@@ -223,6 +223,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a00b8f7462c1e22b1da8a67ec62d4c8c8" id="r_a00b8f7462c1e22b1da8a67ec62d4c8c8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1Array.html#a00b8f7462c1e22b1da8a67ec62d4c8c8">dump</a> (const std::string &amp;fname=&quot;out.png&quot;) const</td></tr>
 <tr class="memdesc:a00b8f7462c1e22b1da8a67ec62d4c8c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Debug tool, dump some infos and generate an output file (16bits grayscale)  <br /></td></tr>
 <tr class="separator:a00b8f7462c1e22b1da8a67ec62d4c8c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a172a6d1a17ceae78548ff7e12d21d87c" id="r_a172a6d1a17ceae78548ff7e12d21d87c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1Array.html#a172a6d1a17ceae78548ff7e12d21d87c">dump_histogram</a> (const std::string &amp;msg=&quot;&quot;) const</td></tr>
+<tr class="memdesc:a172a6d1a17ceae78548ff7e12d21d87c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Debug tool, dump array content as an ASCII histogram to the consol.  <br /></td></tr>
+<tr class="separator:a172a6d1a17ceae78548ff7e12d21d87c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a57be73f56189959dd25a0b760d971bf7" id="r_a57be73f56189959dd25a0b760d971bf7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1Array.html#a57be73f56189959dd25a0b760d971bf7">extract_slice</a> (<a class="el" href="structhmap_1_1Vec4.html">Vec4</a>&lt; int &gt; idx) const</td></tr>
 <tr class="memdesc:a57be73f56189959dd25a0b760d971bf7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extracts a subarray defined by the slice indices {i1, i2, j1, j2} from the original array, creating a new array. Note that i2 and j2 are excluded from the slice.  <br /></td></tr>
 <tr class="separator:a57be73f56189959dd25a0b760d971bf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -460,9 +463,9 @@ Friends</h2></td></tr>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_to_png.png&quot;</span>, {z1, z2, z3}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclasshmap_1_1Array_html_a9ff7b2c0be8f2b5dd9fc33085cd647d1"><div class="ttname"><a href="classhmap_1_1Array.html#a9ff7b2c0be8f2b5dd9fc33085cd647d1">hmap::Array::to_png</a></div><div class="ttdeci">void to_png(const std::string &amp;fname, int cmap, bool hillshading=false, int depth=CV_8U) const</div><div class="ttdoc">Export the array as a PNG image file with a specified colormap and hillshading.</div><div class="ttdef"><b>Definition</b> io.cpp:122</div></div>
-<div class="ttc" id="aclasshmap_1_1Array_html_abc72128c4c460e993d877cab54e17454"><div class="ttname"><a href="classhmap_1_1Array.html#abc72128c4c460e993d877cab54e17454">hmap::Array::to_raw_16bit</a></div><div class="ttdeci">void to_raw_16bit(const std::string &amp;fname) const</div><div class="ttdoc">Export the array as a 16-bit raw file for Unity terrain import.</div><div class="ttdef"><b>Definition</b> io.cpp:148</div></div>
-<div class="ttc" id="aclasshmap_1_1Array_html_ad7018857827d8e8d263516bbbd77630f"><div class="ttname"><a href="classhmap_1_1Array.html#ad7018857827d8e8d263516bbbd77630f">hmap::Array::to_png_grayscale</a></div><div class="ttdeci">void to_png_grayscale(const std::string &amp;fname, int depth=CV_8U) const</div><div class="ttdoc">Export the array as a grayscale PNG image file with specified bit depth.</div><div class="ttdef"><b>Definition</b> io.cpp:136</div></div>
+<div class="ttc" id="aclasshmap_1_1Array_html_a9ff7b2c0be8f2b5dd9fc33085cd647d1"><div class="ttname"><a href="classhmap_1_1Array.html#a9ff7b2c0be8f2b5dd9fc33085cd647d1">hmap::Array::to_png</a></div><div class="ttdeci">void to_png(const std::string &amp;fname, int cmap, bool hillshading=false, int depth=CV_8U) const</div><div class="ttdoc">Export the array as a PNG image file with a specified colormap and hillshading.</div><div class="ttdef"><b>Definition</b> io.cpp:123</div></div>
+<div class="ttc" id="aclasshmap_1_1Array_html_abc72128c4c460e993d877cab54e17454"><div class="ttname"><a href="classhmap_1_1Array.html#abc72128c4c460e993d877cab54e17454">hmap::Array::to_raw_16bit</a></div><div class="ttdeci">void to_raw_16bit(const std::string &amp;fname) const</div><div class="ttdoc">Export the array as a 16-bit raw file for Unity terrain import.</div><div class="ttdef"><b>Definition</b> io.cpp:149</div></div>
+<div class="ttc" id="aclasshmap_1_1Array_html_ad7018857827d8e8d263516bbbd77630f"><div class="ttname"><a href="classhmap_1_1Array.html#ad7018857827d8e8d263516bbbd77630f">hmap::Array::to_png_grayscale</a></div><div class="ttdeci">void to_png_grayscale(const std::string &amp;fname, int depth=CV_8U) const</div><div class="ttdoc">Export the array as a grayscale PNG image file with specified bit depth.</div><div class="ttdef"><b>Definition</b> io.cpp:137</div></div>
 <div class="ttc" id="anamespacehmap_html_a262e6495cb2d02598f36a2b46114b2b4"><div class="ttname"><a href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a></div><div class="ttdeci">void remap(Array &amp;array, float vmin, float vmax, float from_min, float from_max)</div><div class="ttdoc">Remap array elements from a starting range to a target range.</div><div class="ttdef"><b>Definition</b> range.cpp:400</div></div>
 <div class="ttc" id="anamespacehmap_html_a40b948c49a05c14f2d540dc1a6952130"><div class="ttname"><a href="namespacehmap.html#a40b948c49a05c14f2d540dc1a6952130">hmap::noise_fbm</a></div><div class="ttdeci">Array noise_fbm(NoiseType noise_type, Vec2&lt; int &gt; shape, Vec2&lt; float &gt; kw, uint seed, int octaves=8, float weight=0.7f, float persistence=0.5f, float lacunarity=2.f, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Return an array filled with coherence fbm noise.</div><div class="ttdef"><b>Definition</b> noise.cpp:41</div></div>
 <div class="ttc" id="anamespacehmap_html_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581"><div class="ttname"><a href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::PERLIN</a></div><div class="ttdeci">@ PERLIN</div><div class="ttdoc">Perlin.</div><div class="ttdef"><b>Definition</b> functions.hpp:64</div></div>
@@ -1324,6 +1327,26 @@ Friends</h2></td></tr>
 
 </div>
 </div>
+<a id="a172a6d1a17ceae78548ff7e12d21d87c" name="a172a6d1a17ceae78548ff7e12d21d87c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a172a6d1a17ceae78548ff7e12d21d87c">&#9670;&#160;</a></span>dump_histogram()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hmap::Array::dump_histogram </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>msg</em> = <code>&quot;&quot;</code></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Debug tool, dump array content as an ASCII histogram to the consol. </p>
+
+</div>
+</div>
 <a id="a57be73f56189959dd25a0b760d971bf7" name="a57be73f56189959dd25a0b760d971bf7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a57be73f56189959dd25a0b760d971bf7">&#9670;&#160;</a></span>extract_slice() <span class="overload">[1/2]</span></h2>
 
@@ -1463,8 +1486,8 @@ Friends</h2></td></tr>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_from_numpy.png&quot;</span>, {z1, z2}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclasshmap_1_1Array_html_a35ce8d4088ce4ae21003df18c204b7c6"><div class="ttname"><a href="classhmap_1_1Array.html#a35ce8d4088ce4ae21003df18c204b7c6">hmap::Array::to_numpy</a></div><div class="ttdeci">void to_numpy(const std::string &amp;fname) const</div><div class="ttdoc">Export the array to a numpy binary file.</div><div class="ttdef"><b>Definition</b> io.cpp:112</div></div>
-<div class="ttc" id="aclasshmap_1_1Array_html_a61b4eb10e50548b12cfd0cb2f9eddde1"><div class="ttname"><a href="classhmap_1_1Array.html#a61b4eb10e50548b12cfd0cb2f9eddde1">hmap::Array::from_numpy</a></div><div class="ttdeci">void from_numpy(const std::string &amp;fname)</div><div class="ttdoc">Import array data from a numpy binary file.</div><div class="ttdef"><b>Definition</b> io.cpp:29</div></div>
+<div class="ttc" id="aclasshmap_1_1Array_html_a35ce8d4088ce4ae21003df18c204b7c6"><div class="ttname"><a href="classhmap_1_1Array.html#a35ce8d4088ce4ae21003df18c204b7c6">hmap::Array::to_numpy</a></div><div class="ttdeci">void to_numpy(const std::string &amp;fname) const</div><div class="ttdoc">Export the array to a numpy binary file.</div><div class="ttdef"><b>Definition</b> io.cpp:113</div></div>
+<div class="ttc" id="aclasshmap_1_1Array_html_a61b4eb10e50548b12cfd0cb2f9eddde1"><div class="ttname"><a href="classhmap_1_1Array.html#a61b4eb10e50548b12cfd0cb2f9eddde1">hmap::Array::from_numpy</a></div><div class="ttdeci">void from_numpy(const std::string &amp;fname)</div><div class="ttdoc">Import array data from a numpy binary file.</div><div class="ttdef"><b>Definition</b> io.cpp:30</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -2245,7 +2268,7 @@ Friends</h2></td></tr>
 <div class="line"> </div>
 <div class="line">  zr.<a class="code hl_function" href="classhmap_1_1Array.html#a9ff7b2c0be8f2b5dd9fc33085cd647d1">to_png</a>(<span class="stringliteral">&quot;ex_resample_to_shape.png&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492">hmap::Cmap::VIRIDIS</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclasshmap_1_1Array_html_a1c242d119f67209442a0054601939412"><div class="ttname"><a href="classhmap_1_1Array.html#a1c242d119f67209442a0054601939412">hmap::Array::resample_to_shape</a></div><div class="ttdeci">Array resample_to_shape(Vec2&lt; int &gt; new_shape) const</div><div class="ttdoc">Return a resampled array of shape new_shape using bilinear interpolation.</div><div class="ttdef"><b>Definition</b> methods.cpp:290</div></div>
+<div class="ttc" id="aclasshmap_1_1Array_html_a1c242d119f67209442a0054601939412"><div class="ttname"><a href="classhmap_1_1Array.html#a1c242d119f67209442a0054601939412">hmap::Array::resample_to_shape</a></div><div class="ttdeci">Array resample_to_shape(Vec2&lt; int &gt; new_shape) const</div><div class="ttdoc">Return a resampled array of shape new_shape using bilinear interpolation.</div><div class="ttdef"><b>Definition</b> methods.cpp:297</div></div>
 <div class="ttc" id="anamespacehmap_html_a03c0be3a7198eebacefcb208b0cfee99"><div class="ttname"><a href="namespacehmap.html#a03c0be3a7198eebacefcb208b0cfee99">hmap::noise</a></div><div class="ttdeci">Array noise(NoiseType noise_type, Vec2&lt; int &gt; shape, Vec2&lt; float &gt; kw, uint seed, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Return an array filled with coherence noise.</div><div class="ttdef"><b>Definition</b> noise.cpp:16</div></div>
 <div class="ttc" id="anamespacehmap_html_ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492"><div class="ttname"><a href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492">hmap::VIRIDIS</a></div><div class="ttdeci">@ VIRIDIS</div><div class="ttdef"><b>Definition</b> colormaps.hpp:92</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
@@ -2303,7 +2326,7 @@ Friends</h2></td></tr>
 <div class="line">                          {z0, z1, z2},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a744ead0b170889e33126895264f1af2c">hmap::Cmap::MAGMA</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclasshmap_1_1Array_html_af36ac8e4689795d2e33b827a7f7b439c"><div class="ttname"><a href="classhmap_1_1Array.html#af36ac8e4689795d2e33b827a7f7b439c">hmap::Array::resample_to_shape_bicubic</a></div><div class="ttdeci">Array resample_to_shape_bicubic(Vec2&lt; int &gt; new_shape) const</div><div class="ttdoc">Return a resampled array of shape new_shape using bicubic interpolation.</div><div class="ttdef"><b>Definition</b> methods.cpp:295</div></div>
+<div class="ttc" id="aclasshmap_1_1Array_html_af36ac8e4689795d2e33b827a7f7b439c"><div class="ttname"><a href="classhmap_1_1Array.html#af36ac8e4689795d2e33b827a7f7b439c">hmap::Array::resample_to_shape_bicubic</a></div><div class="ttdeci">Array resample_to_shape_bicubic(Vec2&lt; int &gt; new_shape) const</div><div class="ttdoc">Return a resampled array of shape new_shape using bicubic interpolation.</div><div class="ttdef"><b>Definition</b> methods.cpp:302</div></div>
 <div class="ttc" id="anamespacehmap_html_ac70fe3cbb32e0340d5dd3e15cdcf9369a744ead0b170889e33126895264f1af2c"><div class="ttname"><a href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a744ead0b170889e33126895264f1af2c">hmap::MAGMA</a></div><div class="ttdeci">@ MAGMA</div><div class="ttdef"><b>Definition</b> colormaps.hpp:87</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_array_interp.png" alt=""/>
@@ -2604,7 +2627,7 @@ Friends</h2></td></tr>
 <div class="line">  cv::imshow(<span class="stringliteral">&quot;example&quot;</span>, img);</div>
 <div class="line">  cv::waitKey(0);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclasshmap_1_1Array_html_a3517b483a468873cefa73f7773a893ec"><div class="ttname"><a href="classhmap_1_1Array.html#a3517b483a468873cefa73f7773a893ec">hmap::Array::infos</a></div><div class="ttdeci">void infos(std::string msg=&quot;&quot;) const</div><div class="ttdoc">Display various information about the array.</div><div class="ttdef"><b>Definition</b> io.cpp:58</div></div>
+<div class="ttc" id="aclasshmap_1_1Array_html_a3517b483a468873cefa73f7773a893ec"><div class="ttname"><a href="classhmap_1_1Array.html#a3517b483a468873cefa73f7773a893ec">hmap::Array::infos</a></div><div class="ttdeci">void infos(std::string msg=&quot;&quot;) const</div><div class="ttdoc">Display various information about the array.</div><div class="ttdef"><b>Definition</b> io.cpp:59</div></div>
 <div class="ttc" id="aclasshmap_1_1Array_html_abc4875ad6cfe16bd03004ba52f94587c"><div class="ttname"><a href="classhmap_1_1Array.html#abc4875ad6cfe16bd03004ba52f94587c">hmap::Array::to_cv_mat</a></div><div class="ttdeci">cv::Mat to_cv_mat()</div><div class="ttdoc">Converts a 2D Array to an OpenCV cv::Mat.</div><div class="ttdef"><b>Definition</b> opencv_wrapper.cpp:12</div></div>
 <div class="ttc" id="anamespacehmap_html_ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d"><div class="ttname"><a href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d">hmap::GRAY</a></div><div class="ttdeci">@ GRAY</div><div class="ttdef"><b>Definition</b> colormaps.hpp:83</div></div>
 </div><!-- fragment --> 
