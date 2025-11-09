@@ -313,6 +313,11 @@ public:
   void dump(const std::string &fname = "out.png") const;
 
   /**
+   * @brief Debug tool, dump array content as an ASCII histogram to the consol.
+   */
+  void dump_histogram(const std::string &msg = "") const;
+
+  /**
    * @brief Extracts a subarray defined by the slice indices {i1, i2, j1, j2}
    *        from the original array, creating a new array. Note that i2 and j2
    * are excluded from the slice.

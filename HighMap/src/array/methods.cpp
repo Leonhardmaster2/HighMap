@@ -2,6 +2,7 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 #include <functional>
+#include <iomanip>
 #include <numeric>
 #include <vector>
 
@@ -96,6 +97,12 @@ void Array::dump(const std::string &fname) const
   LOG_DEBUG("DUMPING...");
   this->infos(fname);
   this->to_png_grayscale(fname, CV_16U);
+}
+
+void Array::dump_histogram(const std::string &msg) const
+{
+  std::cout << "Array: " << msg << "\n";
+  std::cout << make_histogram(this->vector, 16, 6);
 }
 
 Array Array::extract_slice(Vec4<int> idx) const

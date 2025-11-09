@@ -13,7 +13,7 @@
  *
  */
 #pragma once
-
+#include <string>
 #include <vector>
 
 typedef unsigned int uint;
@@ -37,5 +37,9 @@ void reindex_vector(std::vector<T> &v, std::vector<size_t> &idx)
 }
 
 void vector_unique_values(std::vector<float> &v);
+
+std::string make_histogram(const std::vector<float> &values,
+                           int                       bin_count,
+                           int                       hist_height);
 
 } // namespace hmap

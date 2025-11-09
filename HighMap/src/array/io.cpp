@@ -10,6 +10,7 @@
 #include "highmap/array.hpp"
 #include "highmap/colorize.hpp"
 #include "highmap/export.hpp"
+#include "highmap/internal/vector_utils.hpp"
 #include "highmap/range.hpp"
 
 namespace hmap
