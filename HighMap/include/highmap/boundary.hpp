@@ -26,7 +26,7 @@ namespace hmap
  * @brief Describes the periodicity mode applied along map axes.
  */
 // clang-format off
-enum class PeriodicityType : int
+enum PeriodicityType : int
 {
    PERIODICITY_X, ///< Periodic only along the X axis.
    PERIODICITY_Y, ///< Periodic only along the Y axis.
