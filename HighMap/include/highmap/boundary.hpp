@@ -22,6 +22,19 @@ namespace hmap
 {
 
 /**
+ * @enum PeriodicityType
+ * @brief Describes the periodicity mode applied along map axes.
+ */
+// clang-format off
+enum class PeriodicityType : int
+{
+   PERIODICITY_X, ///< Periodic only along the X axis.
+   PERIODICITY_Y, ///< Periodic only along the Y axis.
+   PERIODICITY_XY ///< Periodic along both the X and Y axes.
+};
+// clang-format on
+
+/**
  * @brief Performs linear extrapolation of values at the borders of an array
  * (e.g., `i = 0`, `j = 0`, etc.) based on the inner values of the array.
  *
@@ -135,7 +148,10 @@ Array generate_buffered_array(const Array &array,
  * @image html ex_make_periodic0.png
  * @image html ex_make_periodic1.png
  */
-void make_periodic(Array &array, int nbuffer);
+void make_periodic(
+    Array                 &array,
+    int                    nbuffer,
+    const PeriodicityType &periodicity_type = PeriodicityType::PERIODICITY_XY);
 
 /**
  * @brief Creates a periodic array in both directions using a stitching

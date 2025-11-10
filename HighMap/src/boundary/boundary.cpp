@@ -6,6 +6,7 @@
 #include "macrologger.h"
 
 #include "highmap/array.hpp"
+#include "highmap/boundary.hpp"
 #include "highmap/math.hpp"
 #include "highmap/operator.hpp"
 #include "highmap/transform.hpp"
@@ -189,37 +190,71 @@ Array generate_buffered_array(const Array &array,
   return array_out;
 }
 
-void make_periodic(Array &array, int nbuffer)
+void make_periodic(Array &array, int nbuffer, const PeriodicityType &periodicity_type)
 {
-  int ni = array.shape.x;
-  int nj = array.shape.y;
+  const int ni = array.shape.x;
+  const int nj = array.shape.y;
 
-  Array a1 = array;
-  for (int i = 0; i < nbuffer; i++)
+  if (nbuffer <= 0) return;
+  if (nbuffer > ni / 2 || nbuffer > nj / 2) nbuffer = std::min(ni, nj) / 2;
+
+  auto compute_weight = [&](int k) -> float
   {
-    float r = 0.5f * (float)i / ((float)nbuffer - 1.f);
-    r = 0.5f * smoothstep3(2.f * r);
-    for (int j = 0; j < nj; j++)
+    // k in [0, nbuffer-1]
+    if (nbuffer <= 1) return 0.0f;
+
+    float t = 0.5f * (float)k / (float)(nbuffer - 1);
+    return 0.5f * smoothstep3(2.f * t);
+  };
+
+  // blends a pair of values symmetrically:
+  //    out0 = (0.5 + r)*a0 + (0.5 - r)*a1
+  //    out1 = (0.5 + r)*a1 + (0.5 - r)*a0
+  auto blend_pair = [&](float &v0, float &v1, float r)
+  {
+    const float w0 = 0.5f + r;
+    const float w1 = 0.5f - r;
+    const float a0 = v0;
+    const float a1 = v1;
+    v0 = w0 * a0 + w1 * a1;
+    v1 = w0 * a1 + w1 * a0;
+  };
+
+  Array tmp = array; // X pass writes to tmp, Y pass reads from tmp
+
+  // --- X periodicity
+
+  if (periodicity_type == PeriodicityType::PERIODICITY_X ||
+      periodicity_type == PeriodicityType::PERIODICITY_XY)
+  {
+    for (int i = 0; i < nbuffer; ++i)
     {
-      a1(i, j) = (0.5f + r) * array(i, j) + (0.5f - r) * array(ni - 1 - i, j);
-      a1(ni - 1 - i, j) = (0.5f + r) * array(ni - 1 - i, j) +
-                          (0.5f - r) * array(i, j);
+      float r = compute_weight(i);
+      int   ir = ni - 1 - i;
+
+      for (int j = 0; j < nj; ++j)
+        blend_pair(tmp(i, j), tmp(ir, j), r);
     }
   }
 
-  Array a2 = a1;
-  for (int j = 0; j < nbuffer; j++)
+  Array result = tmp;
+
+  // --- Y periodicity
+
+  if (periodicity_type == PeriodicityType::PERIODICITY_Y ||
+      periodicity_type == PeriodicityType::PERIODICITY_XY)
   {
-    float r = 0.5f * (float)j / ((float)nbuffer - 1);
-    r = 0.5f * smoothstep3(2.f * r);
-    for (int i = 0; i < ni; i++)
+    for (int j = 0; j < nbuffer; ++j)
     {
-      a2(i, j) = (0.5 + r) * a1(i, j) + (0.5 - r) * a1(i, nj - 1 - j);
-      a2(i, nj - 1 - j) = (0.5 + r) * a1(i, nj - 1 - j) + (0.5 - r) * a1(i, j);
+      float r = compute_weight(j);
+      int   jr = nj - 1 - j;
+
+      for (int i = 0; i < ni; ++i)
+        blend_pair(result(i, j), result(i, jr), r);
     }
   }
 
-  array = a2;
+  array = result;
 }
 
 Array make_periodic_stitching(const Array &array, float overlap)
