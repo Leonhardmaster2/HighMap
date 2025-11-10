@@ -190,7 +190,9 @@ Array generate_buffered_array(const Array &array,
   return array_out;
 }
 
-void make_periodic(Array &array, int nbuffer, const PeriodicityType &periodicity_type)
+void make_periodic(Array                 &array,
+                   int                    nbuffer,
+                   const PeriodicityType &periodicity_type)
 {
   const int ni = array.shape.x;
   const int nj = array.shape.y;

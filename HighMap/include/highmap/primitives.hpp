@@ -26,21 +26,29 @@
 namespace hmap
 {
 
-// F1: the distance to the closest point in space
-// F2: the distance to the second closest point in space
+/**
+ * @enum VoronoiReturnType
+ * @brief Selects the value returned by the Voronoi evaluation.
+ *
+ * F1 is the distance to the nearest site, F2 to the second nearest.
+ */
 enum VoronoiReturnType : int
 {
-  F1_SQUARED,
-  F2_SQUARED,
-  F1TF2_SQUARED, // F1 * F2
-  F1DF2_SQUARED, // F1 / F2
-  F2MF1_SQUARED, // F2 - F1
-  EDGE_DISTANCE_EXP,
-  EDGE_DISTANCE_SQUARED,
-  CONSTANT,
-  CONSTANT_F2MF1_SQUARED
+  F1_SQUARED,            ///< Returns F1^2
+  F2_SQUARED,            ///< Returns F2^2
+  F1TF2_SQUARED,         ///< Returns (F1 * F2)^2
+  F1DF2_SQUARED,         ///< Returns (F1 / F2)^2
+  F2MF1_SQUARED,         ///< Returns (F2 - F1)^2
+  EDGE_DISTANCE_EXP,     ///< Exponential edge distance
+  EDGE_DISTANCE_SQUARED, ///< Squared edge distance
+  CONSTANT,              ///< Constant value
+  CONSTANT_F2MF1_SQUARED ///< Constant × (F2 - F1)^2
 };
 
+/**
+ * @enum PrimitiveType
+ * @brief Defines the primitive shape used for synthesis.
+ */
 enum PrimitiveType : int
 {
   PRIM_BIQUAD_PULSE,
@@ -51,6 +59,17 @@ enum PrimitiveType : int
   PRIM_SMOOTH_COSINE,
 };
 
+/**
+ * @brief Generates a primitive shape as a 2D array.
+ *
+ * @param primitive_type Type of primitive to generate.
+ * @param shape Output array resolution.
+ * @param p_noise_x Optional X-direction noise modulation.
+ * @param p_noise_y Optional Y-direction noise modulation.
+ * @param center Center position of the primitive (normalized).
+ * @param bbox Bounding box of the primitive (normalized).
+ * @return The generated primitive as an Array.
+ */
 Array get_primitive_base(const PrimitiveType &primitive_type,
                          const Vec2<int>     &shape,
                          const Array         *p_noise_x = nullptr,
