@@ -136,11 +136,11 @@
         </inbodydescription>
         <location file="HighMap/include/highmap/authoring.hpp" line="31" column="1" bodyfile="HighMap/include/highmap/authoring.hpp" bodystart="32" bodyend="40"/>
       </memberdef>
-      <memberdef kind="enum" id="namespacehmap_1a41f6f4d40b566b87f78344d9efe71c71" prot="public" static="no" strong="yes">
+      <memberdef kind="enum" id="namespacehmap_1a41f6f4d40b566b87f78344d9efe71c71" prot="public" static="no" strong="no">
         <type>int</type>
         <name>PeriodicityType</name>
         <qualifiedname>hmap::PeriodicityType</qualifiedname>
-        <enumvalue id="namespacehmap_1a41f6f4d40b566b87f78344d9efe71c71aaae91aadccb280773bae0c68ece7b7f8" prot="public">
+        <enumvalue id="namespacehmap_1a41f6f4d40b566b87f78344d9efe71c71a0676aefdc33468b2c6e93b2005b3ee9f" prot="public">
           <name>PERIODICITY_X</name>
           <briefdescription>
 <para>Periodic only along the X axis. </para>
@@ -148,7 +148,7 @@
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
-        <enumvalue id="namespacehmap_1a41f6f4d40b566b87f78344d9efe71c71a45a0c8159318e0e7eb8e5c0662d7c088" prot="public">
+        <enumvalue id="namespacehmap_1a41f6f4d40b566b87f78344d9efe71c71ae51f7482e4aaf0f953891d46f573d88b" prot="public">
           <name>PERIODICITY_Y</name>
           <briefdescription>
 <para>Periodic only along the Y axis. </para>
@@ -156,7 +156,7 @@
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
-        <enumvalue id="namespacehmap_1a41f6f4d40b566b87f78344d9efe71c71abf09e8ef026a76899d7860975cc82637" prot="public">
+        <enumvalue id="namespacehmap_1a41f6f4d40b566b87f78344d9efe71c71a012eb1993ac3ba0b9182904366713cf3" prot="public">
           <name>PERIODICITY_XY</name>
           <briefdescription>
 <para>Periodic along both the X and Y axes. </para>
@@ -3523,7 +3523,7 @@
         <param>
           <type>const <ref refid="namespacehmap_1a41f6f4d40b566b87f78344d9efe71c71" kindref="member">PeriodicityType</ref> &amp;</type>
           <declname>periodicity_type</declname>
-          <defval><ref refid="namespacehmap_1a41f6f4d40b566b87f78344d9efe71c71abf09e8ef026a76899d7860975cc82637" kindref="member">PeriodicityType::PERIODICITY_XY</ref></defval>
+          <defval><ref refid="namespacehmap_1a41f6f4d40b566b87f78344d9efe71c71a012eb1993ac3ba0b9182904366713cf3" kindref="member">PeriodicityType::PERIODICITY_XY</ref></defval>
         </param>
         <briefdescription>
 <para>Adjusts the input array to be periodic in both directions by transitioning smoothly at the boundaries. </para>
@@ -3564,8 +3564,8 @@
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>zp_x<sp/>=<sp/>z;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>zp_y<sp/>=<sp/>z;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a3d23e9f95cfe4a8ceeecd6ea01d1d3e4" kindref="member">hmap::make_periodic</ref>(zp_x,<sp/>nbuffer,<sp/><ref refid="namespacehmap_1a41f6f4d40b566b87f78344d9efe71c71aaae91aadccb280773bae0c68ece7b7f8" kindref="member">hmap::PeriodicityType::PERIODICITY_X</ref>);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a3d23e9f95cfe4a8ceeecd6ea01d1d3e4" kindref="member">hmap::make_periodic</ref>(zp_y,<sp/>nbuffer,<sp/><ref refid="namespacehmap_1a41f6f4d40b566b87f78344d9efe71c71a45a0c8159318e0e7eb8e5c0662d7c088" kindref="member">hmap::PeriodicityType::PERIODICITY_Y</ref>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a3d23e9f95cfe4a8ceeecd6ea01d1d3e4" kindref="member">hmap::make_periodic</ref>(zp_x,<sp/>nbuffer,<sp/><ref refid="namespacehmap_1a41f6f4d40b566b87f78344d9efe71c71a0676aefdc33468b2c6e93b2005b3ee9f" kindref="member">hmap::PeriodicityType::PERIODICITY_X</ref>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a3d23e9f95cfe4a8ceeecd6ea01d1d3e4" kindref="member">hmap::make_periodic</ref>(zp_y,<sp/>nbuffer,<sp/><ref refid="namespacehmap_1a41f6f4d40b566b87f78344d9efe71c71ae51f7482e4aaf0f953891d46f573d88b" kindref="member">hmap::PeriodicityType::PERIODICITY_Y</ref>);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>do<sp/>some<sp/>tiling<sp/>to<sp/>check<sp/>periodicity</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>zt<sp/>=<sp/>zp;</highlight></codeline>

@@ -220,9 +220,9 @@ var namespacehmap =
       [ "SUBSTRACT", "namespacehmap.html#a5101273ec456f5267dddc3e22dae223ba2c10f19f935a5c6dd7fb0ac7bbb2c4ed", null ]
     ] ],
     [ "PeriodicityType", "namespacehmap.html#a41f6f4d40b566b87f78344d9efe71c71", [
-      [ "PERIODICITY_X", "namespacehmap.html#a41f6f4d40b566b87f78344d9efe71c71aaae91aadccb280773bae0c68ece7b7f8", null ],
-      [ "PERIODICITY_Y", "namespacehmap.html#a41f6f4d40b566b87f78344d9efe71c71a45a0c8159318e0e7eb8e5c0662d7c088", null ],
-      [ "PERIODICITY_XY", "namespacehmap.html#a41f6f4d40b566b87f78344d9efe71c71abf09e8ef026a76899d7860975cc82637", null ]
+      [ "PERIODICITY_X", "namespacehmap.html#a41f6f4d40b566b87f78344d9efe71c71a0676aefdc33468b2c6e93b2005b3ee9f", null ],
+      [ "PERIODICITY_Y", "namespacehmap.html#a41f6f4d40b566b87f78344d9efe71c71ae51f7482e4aaf0f953891d46f573d88b", null ],
+      [ "PERIODICITY_XY", "namespacehmap.html#a41f6f4d40b566b87f78344d9efe71c71a012eb1993ac3ba0b9182904366713cf3", null ]
     ] ],
     [ "Cmap", "namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369", [
       [ "BONE", "namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a4eb53d94f58e93c3bdb554d8cca7f306", null ],
