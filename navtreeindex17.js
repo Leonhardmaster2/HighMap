@@ -1,5 +1,13 @@
 var NAVTREEINDEX17 =
 {
+"structhmap_1_1Vec3.html#a1a7110adf2e06b12ab86837eef2fc47d":[3,0,0,55,7],
+"structhmap_1_1Vec3.html#a1a7110adf2e06b12ab86837eef2fc47d":[4,0,0,54,7],
+"structhmap_1_1Vec3.html#a27037e1371300c6b567539f1e2c1e4de":[4,0,0,54,18],
+"structhmap_1_1Vec3.html#a27037e1371300c6b567539f1e2c1e4de":[3,0,0,55,18],
+"structhmap_1_1Vec3.html#a3d41e7c6ee51cf75a2cd35fe087d6c9c":[3,0,0,55,10],
+"structhmap_1_1Vec3.html#a3d41e7c6ee51cf75a2cd35fe087d6c9c":[4,0,0,54,10],
+"structhmap_1_1Vec3.html#a4d1d4c9590347bc2c95fdff5d7b0a097":[3,0,0,55,13],
+"structhmap_1_1Vec3.html#a4d1d4c9590347bc2c95fdff5d7b0a097":[4,0,0,54,13],
 "structhmap_1_1Vec3.html#a5a205b4be12023e538d6bbb22f57834f":[3,0,0,55,8],
 "structhmap_1_1Vec3.html#a5a205b4be12023e538d6bbb22f57834f":[4,0,0,54,8],
 "structhmap_1_1Vec3.html#a5dc78c2ba3f2bf3ca489aac6841e646c":[3,0,0,55,19],

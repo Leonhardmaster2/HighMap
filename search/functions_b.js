@@ -3,7 +3,7 @@ var searchData=
   ['magnitude_0',['magnitude',['../structhmap_1_1Vec3.html#a9179747a20c0962fced2b03498a676be',1,'hmap::Vec3::magnitude()'],['../structhmap_1_1Vec2.html#a89bca88f3a07365a28ad89477500bf33',1,'hmap::Vec2::magnitude()']]],
   ['make_5fbinary_1',['make_binary',['../namespacehmap.html#a4799d3f029d45240a5b40b4853583a58',1,'hmap']]],
   ['make_5fhistogram_2',['make_histogram',['../namespacehmap.html#a47f7c4ead587ead4a75c9c7f4fc4b079',1,'hmap']]],
-  ['make_5fperiodic_3',['make_periodic',['../namespacehmap.html#a44fa6e4a99112fb0c9f7cc397ec5b617',1,'hmap']]],
+  ['make_5fperiodic_3',['make_periodic',['../namespacehmap.html#a3d23e9f95cfe4a8ceeecd6ea01d1d3e4',1,'hmap']]],
   ['make_5fperiodic_5fstitching_4',['make_periodic_stitching',['../namespacehmap.html#a0cfa879188da80b9e5bf16e8c325c9ba',1,'hmap']]],
   ['make_5fperiodic_5ftiling_5',['make_periodic_tiling',['../namespacehmap.html#ab3df05c2be51b4860710bd077973d19b',1,'hmap']]],
   ['make_5fpointwise_5ffunction_5ffrom_5farray_6',['make_pointwise_function_from_array',['../namespacehmap.html#aa3a56cb9295faf9c5b7a4ad082eeb486',1,'hmap']]],

@@ -148,6 +148,11 @@ enum \mbox{\hyperlink{namespacehmap_a5101273ec456f5267dddc3e22dae223b}{Stamping\
 , \mbox{\hyperlink{namespacehmap_a5101273ec456f5267dddc3e22dae223ba2c10f19f935a5c6dd7fb0ac7bbb2c4ed}{SUBSTRACT}}
  \}
 \begin{DoxyCompactList}\small\item\em Blending method for the stamping operator. \end{DoxyCompactList}\item 
+enum class \mbox{\hyperlink{namespacehmap_a41f6f4d40b566b87f78344d9efe71c71}{Periodicity\+Type}} \+: int \{ \mbox{\hyperlink{namespacehmap_a41f6f4d40b566b87f78344d9efe71c71aaae91aadccb280773bae0c68ece7b7f8}{PERIODICITY\+\_\+X}}
+, \mbox{\hyperlink{namespacehmap_a41f6f4d40b566b87f78344d9efe71c71a45a0c8159318e0e7eb8e5c0662d7c088}{PERIODICITY\+\_\+Y}}
+, \mbox{\hyperlink{namespacehmap_a41f6f4d40b566b87f78344d9efe71c71abf09e8ef026a76899d7860975cc82637}{PERIODICITY\+\_\+\+XY}}
+ \}
+\begin{DoxyCompactList}\small\item\em Describes the periodicity mode applied along map axes. \end{DoxyCompactList}\item 
 enum \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369}{Cmap}} \+: int \{ \newline
 \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a4eb53d94f58e93c3bdb554d8cca7f306}{BONE}}
 , \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d}{GRAY}}
@@ -387,7 +392,7 @@ void \mbox{\hyperlink{namespacehmap_a8b7bdf4f052ba72e3dc8150d324a53b6}{fill\+\_\
 \begin{DoxyCompactList}\small\item\em This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a54bbc87163c158c1753a1f9d0c879995}{generate\+\_\+buffered\+\_\+array}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ int $>$ buffers, bool zero\+\_\+padding=false)
 \begin{DoxyCompactList}\small\item\em Creates and returns a new array with additional buffer zones at the boundaries, where the buffer values are filled either by symmetry or by zero-\/padding. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{namespacehmap_a44fa6e4a99112fb0c9f7cc397ec5b617}{make\+\_\+periodic}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int nbuffer)
+void \mbox{\hyperlink{namespacehmap_a3d23e9f95cfe4a8ceeecd6ea01d1d3e4}{make\+\_\+periodic}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int nbuffer, const \mbox{\hyperlink{namespacehmap_a41f6f4d40b566b87f78344d9efe71c71}{Periodicity\+Type}} \&periodicity\+\_\+type=\mbox{\hyperlink{namespacehmap_a41f6f4d40b566b87f78344d9efe71c71abf09e8ef026a76899d7860975cc82637}{Periodicity\+Type\+::\+PERIODICITY\+\_\+\+XY}})
 \begin{DoxyCompactList}\small\item\em Adjusts the input array to be periodic in both directions by transitioning smoothly at the boundaries. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a0cfa879188da80b9e5bf16e8c325c9ba}{make\+\_\+periodic\+\_\+stitching}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float overlap)
 \begin{DoxyCompactList}\small\item\em Creates a periodic array in both directions using a stitching operation that minimizes errors at the boundaries. \end{DoxyCompactList}\item 
@@ -1676,6 +1681,30 @@ SUBSTRACT&substract \\
 \hline
 
 \end{DoxyEnumFields}
+\Hypertarget{namespacehmap_a41f6f4d40b566b87f78344d9efe71c71}\label{namespacehmap_a41f6f4d40b566b87f78344d9efe71c71} 
+\index{hmap@{hmap}!PeriodicityType@{PeriodicityType}}
+\index{PeriodicityType@{PeriodicityType}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{PeriodicityType}{PeriodicityType}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{namespacehmap_a41f6f4d40b566b87f78344d9efe71c71}{hmap\+::\+Periodicity\+Type}} \+: int\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Describes the periodicity mode applied along map axes. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PERIODICITY\_X@{PERIODICITY\_X}!hmap@{hmap}}\index{hmap@{hmap}!PERIODICITY\_X@{PERIODICITY\_X}}}\Hypertarget{namespacehmap_a41f6f4d40b566b87f78344d9efe71c71aaae91aadccb280773bae0c68ece7b7f8}\label{namespacehmap_a41f6f4d40b566b87f78344d9efe71c71aaae91aadccb280773bae0c68ece7b7f8} 
+PERIODICITY\+\_\+X&Periodic only along the X axis. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PERIODICITY\_Y@{PERIODICITY\_Y}!hmap@{hmap}}\index{hmap@{hmap}!PERIODICITY\_Y@{PERIODICITY\_Y}}}\Hypertarget{namespacehmap_a41f6f4d40b566b87f78344d9efe71c71a45a0c8159318e0e7eb8e5c0662d7c088}\label{namespacehmap_a41f6f4d40b566b87f78344d9efe71c71a45a0c8159318e0e7eb8e5c0662d7c088} 
+PERIODICITY\+\_\+Y&Periodic only along the Y axis. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PERIODICITY\_XY@{PERIODICITY\_XY}!hmap@{hmap}}\index{hmap@{hmap}!PERIODICITY\_XY@{PERIODICITY\_XY}}}\Hypertarget{namespacehmap_a41f6f4d40b566b87f78344d9efe71c71abf09e8ef026a76899d7860975cc82637}\label{namespacehmap_a41f6f4d40b566b87f78344d9efe71c71abf09e8ef026a76899d7860975cc82637} 
+PERIODICITY\+\_\+\+XY&Periodic along both the X and Y axes. \\
+\hline
+
+\end{DoxyEnumFields}
 \Hypertarget{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369}\label{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369} 
 \index{hmap@{hmap}!Cmap@{Cmap}}
 \index{Cmap@{Cmap}!hmap@{hmap}}
@@ -1917,11 +1946,11 @@ MOORE&Moore neighborhood\+: includes all eight surrounding cells. \\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{VON\_NEUMANN@{VON\_NEUMANN}!hmap@{hmap}}\index{hmap@{hmap}!VON\_NEUMANN@{VON\_NEUMANN}}}\Hypertarget{namespacehmap_a9d00db2263b4b7b05245531c41c1b592a5814c956cc15b9764d586bb86912c364}\label{namespacehmap_a9d00db2263b4b7b05245531c41c1b592a5814c956cc15b9764d586bb86912c364} 
-VON\+\_\+\+NEUMANN&Von Neumann neighborhood\+: includes only the four. \\
+VON\+\_\+\+NEUMANN&Von Neumann neighborhood\+: includes only the four orthogonal neighbors (N, S, E, W). \\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{CROSS@{CROSS}!hmap@{hmap}}\index{hmap@{hmap}!CROSS@{CROSS}}}\Hypertarget{namespacehmap_a9d00db2263b4b7b05245531c41c1b592a5a41d1fe35db5ea65c515f217e5df2af}\label{namespacehmap_a9d00db2263b4b7b05245531c41c1b592a5a41d1fe35db5ea65c515f217e5df2af} 
-CROSS&neighbors (N, S, E, W). Cross-\/shaped neighborhood\+: includes only the diagonal \\
+CROSS&Cross-\/shaped neighborhood\+: includes only the diagonal neighbors. \\
 \hline
 
 \end{DoxyEnumFields}
@@ -3354,11 +3383,11 @@ This function takes an input array and generates a new array with extra layers (
 \begin{DoxyReturn}{Returns}
 \doxylink{classhmap_1_1Array}{Array} A new array with buffers added at the boundaries. 
 \end{DoxyReturn}
-\Hypertarget{namespacehmap_a44fa6e4a99112fb0c9f7cc397ec5b617}\label{namespacehmap_a44fa6e4a99112fb0c9f7cc397ec5b617} 
+\Hypertarget{namespacehmap_a3d23e9f95cfe4a8ceeecd6ea01d1d3e4}\label{namespacehmap_a3d23e9f95cfe4a8ceeecd6ea01d1d3e4} 
 \index{hmap@{hmap}!make\_periodic@{make\_periodic}}
 \index{make\_periodic@{make\_periodic}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{make\_periodic()}{make\_periodic()}}
-{\footnotesize\ttfamily void hmap\+::make\+\_\+periodic (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{int}]{nbuffer }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void hmap\+::make\+\_\+periodic (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{int}]{nbuffer,  }\item[{const \mbox{\hyperlink{namespacehmap_a41f6f4d40b566b87f78344d9efe71c71}{Periodicity\+Type}} \&}]{periodicity\+\_\+type = {\ttfamily \mbox{\hyperlink{namespacehmap_a41f6f4d40b566b87f78344d9efe71c71abf09e8ef026a76899d7860975cc82637}{Periodicity\+Type\+::\+PERIODICITY\+\_\+\+XY}}} }\end{DoxyParamCaption})}
 
 
 
@@ -3387,7 +3416,13 @@ This function modifies the input array so that the values at the boundaries tran
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ nbuffer\ =\ 64;}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ zp\ =\ z;}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a44fa6e4a99112fb0c9f7cc397ec5b617}{hmap::make\_periodic}}(zp,\ nbuffer);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a3d23e9f95cfe4a8ceeecd6ea01d1d3e4}{hmap::make\_periodic}}(zp,\ nbuffer);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ zp\_x\ =\ z;}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ zp\_y\ =\ z;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a3d23e9f95cfe4a8ceeecd6ea01d1d3e4}{hmap::make\_periodic}}(zp\_x,\ nbuffer,\ \mbox{\hyperlink{namespacehmap_a41f6f4d40b566b87f78344d9efe71c71aaae91aadccb280773bae0c68ece7b7f8}{hmap::PeriodicityType::PERIODICITY\_X}});}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a3d23e9f95cfe4a8ceeecd6ea01d1d3e4}{hmap::make\_periodic}}(zp\_y,\ nbuffer,\ \mbox{\hyperlink{namespacehmap_a41f6f4d40b566b87f78344d9efe71c71a45a0c8159318e0e7eb8e5c0662d7c088}{hmap::PeriodicityType::PERIODICITY\_Y}});}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ do\ some\ tiling\ to\ check\ periodicity}}
 \DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ zt\ =\ zp;}
@@ -3395,7 +3430,7 @@ This function modifies the input array so that the values at the boundaries tran
 \DoxyCodeLine{\ \ zt\ =\ \mbox{\hyperlink{namespacehmap_a462f8b6ebc7b8ab79c619987e0ddfce4}{vstack}}(zt,\ zt);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_make\_periodic0.png"{}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ zp\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ zp,\ zp\_x,\ zp\_y\},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492}{hmap::Cmap::VIRIDIS}});}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ zt.to\_png(\textcolor{stringliteral}{"{}ex\_make\_periodic1.png"{}},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492}{hmap::Cmap::VIRIDIS}});}

@@ -5,7 +5,7 @@ var boundary_8cpp =
     [ "fill_borders", "boundary_8cpp.html#a072f0c93c6e3e5e0f8f88c760850dce8", null ],
     [ "fill_borders", "boundary_8cpp.html#a8b7bdf4f052ba72e3dc8150d324a53b6", null ],
     [ "generate_buffered_array", "boundary_8cpp.html#a54bbc87163c158c1753a1f9d0c879995", null ],
-    [ "make_periodic", "boundary_8cpp.html#a44fa6e4a99112fb0c9f7cc397ec5b617", null ],
+    [ "make_periodic", "boundary_8cpp.html#a3d23e9f95cfe4a8ceeecd6ea01d1d3e4", null ],
     [ "make_periodic_stitching", "boundary_8cpp.html#a0cfa879188da80b9e5bf16e8c325c9ba", null ],
     [ "make_periodic_tiling", "boundary_8cpp.html#ab3df05c2be51b4860710bd077973d19b", null ],
     [ "set_borders", "boundary_8cpp.html#a6741f8d2d6c438c8993a42e1efafc987", null ],

@@ -219,6 +219,11 @@ var namespacehmap =
       [ "MULTIPLY", "namespacehmap.html#a5101273ec456f5267dddc3e22dae223babadb712f0f7627d6892ea66c9743aec1", null ],
       [ "SUBSTRACT", "namespacehmap.html#a5101273ec456f5267dddc3e22dae223ba2c10f19f935a5c6dd7fb0ac7bbb2c4ed", null ]
     ] ],
+    [ "PeriodicityType", "namespacehmap.html#a41f6f4d40b566b87f78344d9efe71c71", [
+      [ "PERIODICITY_X", "namespacehmap.html#a41f6f4d40b566b87f78344d9efe71c71aaae91aadccb280773bae0c68ece7b7f8", null ],
+      [ "PERIODICITY_Y", "namespacehmap.html#a41f6f4d40b566b87f78344d9efe71c71a45a0c8159318e0e7eb8e5c0662d7c088", null ],
+      [ "PERIODICITY_XY", "namespacehmap.html#a41f6f4d40b566b87f78344d9efe71c71abf09e8ef026a76899d7860975cc82637", null ]
+    ] ],
     [ "Cmap", "namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369", [
       [ "BONE", "namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a4eb53d94f58e93c3bdb554d8cca7f306", null ],
       [ "GRAY", "namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d", null ],
@@ -405,7 +410,7 @@ var namespacehmap =
     [ "fill_borders", "namespacehmap.html#a072f0c93c6e3e5e0f8f88c760850dce8", null ],
     [ "fill_borders", "namespacehmap.html#a8b7bdf4f052ba72e3dc8150d324a53b6", null ],
     [ "generate_buffered_array", "namespacehmap.html#a54bbc87163c158c1753a1f9d0c879995", null ],
-    [ "make_periodic", "namespacehmap.html#a44fa6e4a99112fb0c9f7cc397ec5b617", null ],
+    [ "make_periodic", "namespacehmap.html#a3d23e9f95cfe4a8ceeecd6ea01d1d3e4", null ],
     [ "make_periodic_stitching", "namespacehmap.html#a0cfa879188da80b9e5bf16e8c325c9ba", null ],
     [ "make_periodic_tiling", "namespacehmap.html#ab3df05c2be51b4860710bd077973d19b", null ],
     [ "set_borders", "namespacehmap.html#a6741f8d2d6c438c8993a42e1efafc987", null ],
