@@ -6,6 +6,7 @@
 #include "highmap/array.hpp"
 #include "highmap/export.hpp"
 #include "highmap/filters.hpp"
+#include "highmap/internal/string_utils.hpp"
 #include "highmap/kernels.hpp"
 #include "highmap/operator.hpp"
 #include "highmap/range.hpp"

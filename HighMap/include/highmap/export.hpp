@@ -384,30 +384,4 @@ Array read_to_array(const std::string &fname, bool flip_j = false);
  */
 void write_raw_16bit(const std::string &fname, const Array &array);
 
-// --- helpers
-
-/**
- * @brief Adds a suffix to the filename of a given file path.
- *
- * This function appends a given suffix to the stem (base name without
- * extension) of a file while preserving the original directory and file
- * extension.
- *
- * @param  file_path The original file path.
- * @param  suffix    The suffix to append to the filename.
- * @return           A new std::filesystem::path with the modified filename.
- *
- * @note If the input file has no extension, the suffix is added directly to the
- * filename.
- *
- * @example
- * @code std::filesystem::path path = "example.txt";
- * std::filesystem::path new_path = add_filename_suffix(path, "_backup");
- * std::cout << new_path; // Outputs "example_backup.txt"
- * @endcode
- */
-std::filesystem::path add_filename_suffix(
-    const std::filesystem::path &file_path,
-    const std::string           &suffix);
-
 } // namespace hmap
