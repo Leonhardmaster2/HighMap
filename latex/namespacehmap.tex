@@ -586,8 +586,6 @@ void \mbox{\hyperlink{namespacehmap_a90b6cad473f30aa0aa92158e5af7ee7f}{export\+\
 \begin{DoxyCompactList}\small\item\em Reads an image file and converts it to a 2D array. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a466d4275bb86ca9ca603c9d4192f931a}{write\+\_\+raw\+\_\+16bit}} (const std\+::string \&fname, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array)
 \begin{DoxyCompactList}\small\item\em Exports an array to a 16-\/bit \textquotesingle{}raw\textquotesingle{} file format, commonly used for Unity terrain imports. \end{DoxyCompactList}\item 
-std\+::filesystem\+::path \mbox{\hyperlink{namespacehmap_a67eae4546cbed6a804eaddcde9350e1c}{add\+\_\+filename\+\_\+suffix}} (const std\+::filesystem\+::path \&file\+\_\+path, const std\+::string \&suffix)
-\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a11f846a0bacba3463862df220ddf5131}{connected\+\_\+components}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float surface\+\_\+threshold=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float background\+\_\+value=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, std\+::vector$<$ float $>$ \texorpdfstring{$\ast$}{*}p\+\_\+surfaces=nullptr, std\+::vector$<$ std\+::array$<$ float, 2 $>$ $>$ \texorpdfstring{$\ast$}{*}p\+\_\+centroids=nullptr)
 \begin{DoxyCompactList}\small\item\em Identifies and labels connected components within a binary or labeled array, with optional filtering by size. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_aa60fa2d3f02d1e064b520fa1623200d0}{geomorphons}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int irmin, int irmax, float epsilon)
@@ -1076,6 +1074,8 @@ void \mbox{\hyperlink{namespacehmap_a3aebd62906b90ccfde11140e13b0853f}{water\+\_
 \begin{DoxyCompactList}\small\item\em Generates a binary mask representing water presence. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_abc5928f49e530927c8fb61a9afea3274}{water\+\_\+mask}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&water\+\_\+depth, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, float additional\+\_\+depth)
 \begin{DoxyCompactList}\small\item\em Computes a gradient-\/based water mask using an extended water depth model. \end{DoxyCompactList}\item 
+std\+::filesystem\+::path \mbox{\hyperlink{namespacehmap_a67eae4546cbed6a804eaddcde9350e1c}{add\+\_\+filename\+\_\+suffix}} (const std\+::filesystem\+::path \&file\+\_\+path, const std\+::string \&suffix)
+\item 
 std\+::string \mbox{\hyperlink{namespacehmap_a3f38b7faedc76835a0a902eb48e3d94b}{zfill}} (const std\+::string \&str, int n\+\_\+zero)
 \item 
 size\+\_\+t \mbox{\hyperlink{namespacehmap_a0b7db6f8ce57fcdeca7ca1e3b7d1e686}{upperbound\+\_\+right}} (const std\+::vector$<$ float $>$ \&v, float value)
@@ -1769,9 +1769,6 @@ WHITE\+\_\+\+UNIFORM&\\
 \hline
 
 \end{DoxyEnumFields}
-\begin{Desc}
-\item[Examples]\par
-\mbox{\hyperlink{_2home_2runner_2work_2HighMap_2HighMap_2HighMap_2include_2highmap_2export_8hpp-example}{/home/runner/work/\+High\+Map/\+High\+Map/\+High\+Map/include/highmap/export.\+hpp}}.\end{Desc}
 \Hypertarget{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6}\label{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6} 
 \index{hmap@{hmap}!ErosionProfile@{ErosionProfile}}
 \index{ErosionProfile@{ErosionProfile}!hmap@{hmap}}
@@ -1836,9 +1833,6 @@ TRI&Triangle elements. \\
 \hline
 
 \end{DoxyEnumFields}
-\begin{Desc}
-\item[Examples]\par
-\mbox{\hyperlink{_2home_2runner_2work_2HighMap_2HighMap_2HighMap_2include_2highmap_2export_8hpp-example}{/home/runner/work/\+High\+Map/\+High\+Map/\+High\+Map/include/highmap/export.\+hpp}}.\end{Desc}
 \Hypertarget{namespacehmap_ac3d35efc6e5b596f508e2b17a5aa871b}\label{namespacehmap_ac3d35efc6e5b596f508e2b17a5aa871b} 
 \index{hmap@{hmap}!AssetExportFormat@{AssetExportFormat}}
 \index{AssetExportFormat@{AssetExportFormat}!hmap@{hmap}}
@@ -1927,9 +1921,6 @@ OBJNOMTL&Wavefront OBJ format without material file -\/ \texorpdfstring{$\ast$}{
 \hline
 
 \end{DoxyEnumFields}
-\begin{Desc}
-\item[Examples]\par
-\mbox{\hyperlink{_2home_2runner_2work_2HighMap_2HighMap_2HighMap_2include_2highmap_2export_8hpp-example}{/home/runner/work/\+High\+Map/\+High\+Map/\+High\+Map/include/highmap/export.\+hpp}}.\end{Desc}
 \Hypertarget{namespacehmap_a9d00db2263b4b7b05245531c41c1b592}\label{namespacehmap_a9d00db2263b4b7b05245531c41c1b592} 
 \index{hmap@{hmap}!neighborhood@{neighborhood}}
 \index{neighborhood@{neighborhood}!hmap@{hmap}}
@@ -7009,9 +7000,6 @@ This function exports the input heightmap array as a 3D asset in the specified f
 \begin{DoxyReturn}{Returns}
 {\ttfamily true} if the export is successful, {\ttfamily false} otherwise. 
 \end{DoxyReturn}
-\begin{Desc}
-\item[Examples]\par
-\mbox{\hyperlink{_2home_2runner_2work_2HighMap_2HighMap_2HighMap_2include_2highmap_2export_8hpp-example}{/home/runner/work/\+High\+Map/\+High\+Map/\+High\+Map/include/highmap/export.\+hpp}}.\end{Desc}
 \Hypertarget{namespacehmap_aafe1d43996eb4e55731c67b096cebcf6}\label{namespacehmap_aafe1d43996eb4e55731c67b096cebcf6} 
 \index{hmap@{hmap}!export\_as\_ascii@{export\_as\_ascii}}
 \index{export\_as\_ascii@{export\_as\_ascii}!hmap@{hmap}}
@@ -7041,9 +7029,6 @@ The function resamples the array using nearest-\/neighbor interpolation.
 
 The y-\/axis is flipped so that higher indices appear lower in the text output. 
 \end{DoxyNote}
-\begin{Desc}
-\item[Examples]\par
-\mbox{\hyperlink{_2home_2runner_2work_2HighMap_2HighMap_2HighMap_2include_2highmap_2export_8hpp-example}{/home/runner/work/\+High\+Map/\+High\+Map/\+High\+Map/include/highmap/export.\+hpp}}.\end{Desc}
 \Hypertarget{namespacehmap_a3aa96cd684efd827ce57ffd9fef3c950}\label{namespacehmap_a3aa96cd684efd827ce57ffd9fef3c950} 
 \index{hmap@{hmap}!export\_as\_cubemap@{export\_as\_cubemap}}
 \index{export\_as\_cubemap@{export\_as\_cubemap}!hmap@{hmap}}
@@ -7097,10 +7082,7 @@ The generated cubemap maintains continuity between faces, adjusting values at ov
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}  \begin{Desc}
-\item[Examples]\par
-\mbox{\hyperlink{_2home_2runner_2work_2HighMap_2HighMap_2HighMap_2include_2highmap_2export_8hpp-example}{/home/runner/work/\+High\+Map/\+High\+Map/\+High\+Map/include/highmap/export.\+hpp}}.\end{Desc}
-\Hypertarget{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}\label{namespacehmap_ac2452e568959bc21c9b7b09202e5977a} 
+{\bfseries{Result}}  \Hypertarget{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}\label{namespacehmap_ac2452e568959bc21c9b7b09202e5977a} 
 \index{hmap@{hmap}!export\_banner\_png@{export\_banner\_png}}
 \index{export\_banner\_png@{export\_banner\_png}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{export\_banner\_png()}{export\_banner\_png()}}
@@ -7123,9 +7105,6 @@ This function takes a vector of arrays and exports them as a single banner PNG i
 {\em hillshading} & A boolean flag to activate hillshading for enhanced visual depth. Default is {\ttfamily false}. \\
 \hline
 \end{DoxyParams}
-\begin{Desc}
-\item[Examples]\par
-\mbox{\hyperlink{_2home_2runner_2work_2HighMap_2HighMap_2HighMap_2include_2highmap_2export_8hpp-example}{/home/runner/work/\+High\+Map/\+High\+Map/\+High\+Map/include/highmap/export.\+hpp}}.\end{Desc}
 \Hypertarget{namespacehmap_a9648a23e61a84a702d89159d516dd4ec}\label{namespacehmap_a9648a23e61a84a702d89159d516dd4ec} 
 \index{hmap@{hmap}!export\_normal\_map\_png@{export\_normal\_map\_png}}
 \index{export\_normal\_map\_png@{export\_normal\_map\_png}!hmap@{hmap}}
@@ -7167,10 +7146,7 @@ This function generates a normal map from the input heightmap array and exports 
 \DoxyCodeLine{\}}
 
 \end{DoxyCodeInclude}
- \begin{Desc}
-\item[Examples]\par
-\mbox{\hyperlink{_2home_2runner_2work_2HighMap_2HighMap_2HighMap_2include_2highmap_2export_8hpp-example}{/home/runner/work/\+High\+Map/\+High\+Map/\+High\+Map/include/highmap/export.\+hpp}}.\end{Desc}
-\Hypertarget{namespacehmap_a32464922c39713910ebeab632e0e8fd1}\label{namespacehmap_a32464922c39713910ebeab632e0e8fd1} 
+ \Hypertarget{namespacehmap_a32464922c39713910ebeab632e0e8fd1}\label{namespacehmap_a32464922c39713910ebeab632e0e8fd1} 
 \index{hmap@{hmap}!export\_splatmap\_png@{export\_splatmap\_png}}
 \index{export\_splatmap\_png@{export\_splatmap\_png}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{export\_splatmap\_png()}{export\_splatmap\_png()}}
@@ -7228,10 +7204,7 @@ This function combines four input arrays, representing the red (R), green (G), b
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}   \begin{Desc}
-\item[Examples]\par
-\mbox{\hyperlink{_2home_2runner_2work_2HighMap_2HighMap_2HighMap_2include_2highmap_2export_8hpp-example}{/home/runner/work/\+High\+Map/\+High\+Map/\+High\+Map/include/highmap/export.\+hpp}}.\end{Desc}
-\Hypertarget{namespacehmap_a90b6cad473f30aa0aa92158e5af7ee7f}\label{namespacehmap_a90b6cad473f30aa0aa92158e5af7ee7f} 
+{\bfseries{Result}}   \Hypertarget{namespacehmap_a90b6cad473f30aa0aa92158e5af7ee7f}\label{namespacehmap_a90b6cad473f30aa0aa92158e5af7ee7f} 
 \index{hmap@{hmap}!export\_tiled@{export\_tiled}}
 \index{export\_tiled@{export\_tiled}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{export\_tiled()}{export\_tiled()}}
@@ -7297,10 +7270,7 @@ Each tile is extracted using slicing, adjusted for overlap if specified, and the
 \DoxyCodeLine{\}}
 
 \end{DoxyCodeInclude}
- \begin{Desc}
-\item[Examples]\par
-\mbox{\hyperlink{_2home_2runner_2work_2HighMap_2HighMap_2HighMap_2include_2highmap_2export_8hpp-example}{/home/runner/work/\+High\+Map/\+High\+Map/\+High\+Map/include/highmap/export.\+hpp}}.\end{Desc}
-\Hypertarget{namespacehmap_acc812ae7d5ab25071e94faaf7be03bca}\label{namespacehmap_acc812ae7d5ab25071e94faaf7be03bca} 
+ \Hypertarget{namespacehmap_acc812ae7d5ab25071e94faaf7be03bca}\label{namespacehmap_acc812ae7d5ab25071e94faaf7be03bca} 
 \index{hmap@{hmap}!read\_to\_array@{read\_to\_array}}
 \index{read\_to\_array@{read\_to\_array}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{read\_to\_array()}{read\_to\_array()}}
@@ -7320,9 +7290,6 @@ This function uses the Open\+CV {\ttfamily imread} function to load an image fro
 \begin{DoxyReturn}{Returns}
 \doxylink{classhmap_1_1Array}{Array} A 2D array containing the pixel values of the grayscale image. 
 \end{DoxyReturn}
-\begin{Desc}
-\item[Examples]\par
-\mbox{\hyperlink{_2home_2runner_2work_2HighMap_2HighMap_2HighMap_2include_2highmap_2export_8hpp-example}{/home/runner/work/\+High\+Map/\+High\+Map/\+High\+Map/include/highmap/export.\+hpp}}.\end{Desc}
 \Hypertarget{namespacehmap_a466d4275bb86ca9ca603c9d4192f931a}\label{namespacehmap_a466d4275bb86ca9ca603c9d4192f931a} 
 \index{hmap@{hmap}!write\_raw\_16bit@{write\_raw\_16bit}}
 \index{write\_raw\_16bit@{write\_raw\_16bit}!hmap@{hmap}}
@@ -7342,18 +7309,6 @@ This function saves the input array to a file in a 16-\/bit \textquotesingle{}ra
 {\em array} & The input array containing the data to be exported. \\
 \hline
 \end{DoxyParams}
-\begin{Desc}
-\item[Examples]\par
-\mbox{\hyperlink{_2home_2runner_2work_2HighMap_2HighMap_2HighMap_2include_2highmap_2export_8hpp-example}{/home/runner/work/\+High\+Map/\+High\+Map/\+High\+Map/include/highmap/export.\+hpp}}.\end{Desc}
-\Hypertarget{namespacehmap_a67eae4546cbed6a804eaddcde9350e1c}\label{namespacehmap_a67eae4546cbed6a804eaddcde9350e1c} 
-\index{hmap@{hmap}!add\_filename\_suffix@{add\_filename\_suffix}}
-\index{add\_filename\_suffix@{add\_filename\_suffix}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{add\_filename\_suffix()}{add\_filename\_suffix()}}
-{\footnotesize\ttfamily std\+::filesystem\+::path hmap\+::add\+\_\+filename\+\_\+suffix (\begin{DoxyParamCaption}\item[{const std\+::filesystem\+::path \&}]{file\+\_\+path,  }\item[{const std\+::string \&}]{suffix }\end{DoxyParamCaption})}
-
-\begin{Desc}
-\item[Examples]\par
-\mbox{\hyperlink{_2home_2runner_2work_2HighMap_2HighMap_2HighMap_2include_2highmap_2export_8hpp-example}{/home/runner/work/\+High\+Map/\+High\+Map/\+High\+Map/include/highmap/export.\+hpp}}.\end{Desc}
 \Hypertarget{namespacehmap_a11f846a0bacba3463862df220ddf5131}\label{namespacehmap_a11f846a0bacba3463862df220ddf5131} 
 \index{hmap@{hmap}!connected\_components@{connected\_components}}
 \index{connected\_components@{connected\_components}!hmap@{hmap}}
@@ -17337,12 +17292,24 @@ An \doxylink{classhmap_1_1Array}{Array} representing the normalized water extens
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}  \Hypertarget{namespacehmap_a3f38b7faedc76835a0a902eb48e3d94b}\label{namespacehmap_a3f38b7faedc76835a0a902eb48e3d94b} 
+{\bfseries{Result}}  \Hypertarget{namespacehmap_a67eae4546cbed6a804eaddcde9350e1c}\label{namespacehmap_a67eae4546cbed6a804eaddcde9350e1c} 
+\index{hmap@{hmap}!add\_filename\_suffix@{add\_filename\_suffix}}
+\index{add\_filename\_suffix@{add\_filename\_suffix}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{add\_filename\_suffix()}{add\_filename\_suffix()}}
+{\footnotesize\ttfamily std\+::filesystem\+::path hmap\+::add\+\_\+filename\+\_\+suffix (\begin{DoxyParamCaption}\item[{const std\+::filesystem\+::path \&}]{file\+\_\+path,  }\item[{const std\+::string \&}]{suffix }\end{DoxyParamCaption})}
+
+\begin{Desc}
+\item[Examples]\par
+\mbox{\hyperlink{_2home_2runner_2work_2HighMap_2HighMap_2HighMap_2include_2highmap_2internal_2string_utils_8hpp-example}{/home/runner/work/\+High\+Map/\+High\+Map/\+High\+Map/include/highmap/internal/string\+\_\+utils.\+hpp}}.\end{Desc}
+\Hypertarget{namespacehmap_a3f38b7faedc76835a0a902eb48e3d94b}\label{namespacehmap_a3f38b7faedc76835a0a902eb48e3d94b} 
 \index{hmap@{hmap}!zfill@{zfill}}
 \index{zfill@{zfill}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{zfill()}{zfill()}}
 {\footnotesize\ttfamily std\+::string hmap\+::zfill (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str,  }\item[{int}]{n\+\_\+zero }\end{DoxyParamCaption})}
 
+\begin{Desc}
+\item[Examples]\par
+\mbox{\hyperlink{_2home_2runner_2work_2HighMap_2HighMap_2HighMap_2include_2highmap_2internal_2string_utils_8hpp-example}{/home/runner/work/\+High\+Map/\+High\+Map/\+High\+Map/include/highmap/internal/string\+\_\+utils.\+hpp}}.\end{Desc}
 \Hypertarget{namespacehmap_a0b7db6f8ce57fcdeca7ca1e3b7d1e686}\label{namespacehmap_a0b7db6f8ce57fcdeca7ca1e3b7d1e686} 
 \index{hmap@{hmap}!upperbound\_right@{upperbound\_right}}
 \index{upperbound\_right@{upperbound\_right}!hmap@{hmap}}

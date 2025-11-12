@@ -33,6 +33,5 @@ var export_8hpp =
     [ "export_splatmap_png", "export_8hpp.html#a32464922c39713910ebeab632e0e8fd1", null ],
     [ "export_tiled", "export_8hpp.html#a90b6cad473f30aa0aa92158e5af7ee7f", null ],
     [ "read_to_array", "export_8hpp.html#acc812ae7d5ab25071e94faaf7be03bca", null ],
-    [ "write_raw_16bit", "export_8hpp.html#a466d4275bb86ca9ca603c9d4192f931a", null ],
-    [ "add_filename_suffix", "export_8hpp.html#a67eae4546cbed6a804eaddcde9350e1c", null ]
+    [ "write_raw_16bit", "export_8hpp.html#a466d4275bb86ca9ca603c9d4192f931a", null ]
 ];

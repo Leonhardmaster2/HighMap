@@ -82,23 +82,23 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_2home_2runner_2work_2HighMap_2HighMap_2HighMap_2include_2highmap_2export_8hpp-example.html",
+"_2home_2runner_2work_2HighMap_2HighMap_2HighMap_2include_2highmap_2internal_2string_utils_8hpp-example.html",
 "classhmap_1_1Array.html#ac1c2d200c6d5ba12f172615313706e66",
 "classhmap_1_1FbmJordanFunction.html#a504a5a2b87ca74bc228254f503e032c6",
 "classhmap_1_1Interpolator1D.html#a1ab067195430386cae3158bfccf4847f",
 "classhmap_1_1SlopeFunction.html#a1734b97dfdc9d1055200136a1eb1c09b",
 "colormaps_8hpp.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143",
 "erosion_8hpp.html#af65bb48580b5f860571161387a22fbb4",
-"filters_8hpp.html#a6a2f30cadb25b5e8b20d73c5447e4c56",
-"gpu__opencl_8cpp.html#adb8336ed4d83c15500872185dee45d50",
-"interpolate2d_8hpp.html#a87e9a2e5fc78594e8d88522366ff5396",
-"morphology_8hpp.html#a889405ce11be91e33cc80ca4dbd192b0",
-"namespacehmap.html#a4c21ef9d4f7d33f2413c7fe391b86253",
-"namespacehmap.html#a9e701766f54eaf6ad79956bf90b9bb8b",
-"namespacehmap.html#ad8482d5a5c0650c20ffe1dc86b5f8a61",
-"namespacemembers_func_g.html",
-"primitives_8hpp.html#a8e3756915e28aa80cec2190043cc8c2faf044e64b09fbae8b02b6c44f2d69925f",
-"selector_8hpp.html#aee36bf04c8ae880814a5341d4ea262f4",
+"filters_8hpp.html#a6fa21b8b4797ae017025d891f9704848",
+"gpu__opencl_8hpp.html",
+"interpolate2d_8hpp.html#aee026d8b23196038c2b16c370b743889",
+"morphology_8hpp.html#a9e2493cec1a67b3140691e617ddc925aa109b04de7ca555c0e4d17629e55e7ee3",
+"namespacehmap.html#a4ca9ddaa140548937a12022e79823401",
+"namespacehmap.html#a9f21720d5e7b1c93e0d5b50631f1ca8f",
+"namespacehmap.html#ad97b6a0082efd4063f7839c95a51b294",
+"namespacemembers_func_k.html",
+"primitives_8hpp.html#a91c4bef201bf0b1c1759b0e924e48861",
+"selector_8hpp_source.html",
 "structhmap_1_1Vec3.html#a1a7110adf2e06b12ab86837eef2fc47d"
 ];
 
