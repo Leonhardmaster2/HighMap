@@ -504,6 +504,7 @@ var namespacehmap =
     [ "export_banner_png", "namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a", null ],
     [ "export_normal_map_png", "namespacehmap.html#a9648a23e61a84a702d89159d516dd4ec", null ],
     [ "export_splatmap_png", "namespacehmap.html#a32464922c39713910ebeab632e0e8fd1", null ],
+    [ "export_points_to_ply", "namespacehmap.html#ae01b5471d28a8f4a9104e2ffea4484a9", null ],
     [ "export_tiled", "namespacehmap.html#a90b6cad473f30aa0aa92158e5af7ee7f", null ],
     [ "read_to_array", "namespacehmap.html#acc812ae7d5ab25071e94faaf7be03bca", null ],
     [ "write_raw_16bit", "namespacehmap.html#a466d4275bb86ca9ca603c9d4192f931a", null ],

@@ -875,6 +875,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a32464922c39713910ebeab632e0e8fd1" id="r_a32464922c39713910ebeab632e0e8fd1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a32464922c39713910ebeab632e0e8fd1">export_splatmap_png</a> (const std::string &amp;fname, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_r, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_g=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_b=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_a=nullptr, int depth=CV_8U)</td></tr>
 <tr class="memdesc:a32464922c39713910ebeab632e0e8fd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exports four arrays as an RGBA PNG splatmap.  <br /></td></tr>
 <tr class="separator:a32464922c39713910ebeab632e0e8fd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae01b5471d28a8f4a9104e2ffea4484a9" id="r_ae01b5471d28a8f4a9104e2ffea4484a9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#ae01b5471d28a8f4a9104e2ffea4484a9">export_points_to_ply</a> (const std::string &amp;fname, const std::vector&lt; float &gt; &amp;x, const std::vector&lt; float &gt; &amp;y, const std::vector&lt; float &gt; &amp;z, const std::map&lt; std::string, std::vector&lt; float &gt; &gt; &amp;custom_fields={})</td></tr>
+<tr class="memdesc:ae01b5471d28a8f4a9104e2ffea4484a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exports 3D points with optional custom fields to an ASCII PLY file.  <br /></td></tr>
+<tr class="separator:ae01b5471d28a8f4a9104e2ffea4484a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a90b6cad473f30aa0aa92158e5af7ee7f" id="r_a90b6cad473f30aa0aa92158e5af7ee7f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a90b6cad473f30aa0aa92158e5af7ee7f">export_tiled</a> (const std::string &amp;fname_radical, const std::string &amp;fname_extension, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, const <a class="el" href="structhmap_1_1Vec2.html">Vec2</a>&lt; int &gt; &amp;tiling, int leading_zeros=0, int depth=CV_8U, bool overlapping_edges=false, bool reverse_tile_y_indexing=false)</td></tr>
 <tr class="memdesc:a90b6cad473f30aa0aa92158e5af7ee7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exports a 2D array as a set of grayscale PNG image tiles.  <br /></td></tr>
 <tr class="separator:a90b6cad473f30aa0aa92158e5af7ee7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -2583,9 +2586,9 @@ Functions</h2></td></tr>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a9d00db2263b4b7b05245531c41c1b592af1e94018e1eb59b107f1adfa66a97929" name="a9d00db2263b4b7b05245531c41c1b592af1e94018e1eb59b107f1adfa66a97929"></a>MOORE&#160;</td><td class="fielddoc"><p>Moore neighborhood: includes all eight surrounding cells. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a9d00db2263b4b7b05245531c41c1b592a5814c956cc15b9764d586bb86912c364" name="a9d00db2263b4b7b05245531c41c1b592a5814c956cc15b9764d586bb86912c364"></a>VON_NEUMANN&#160;</td><td class="fielddoc"><p>Von Neumann neighborhood: includes only the four orthogonal neighbors (N, S, E, W). </p>
+<tr><td class="fieldname"><a id="a9d00db2263b4b7b05245531c41c1b592a5814c956cc15b9764d586bb86912c364" name="a9d00db2263b4b7b05245531c41c1b592a5814c956cc15b9764d586bb86912c364"></a>VON_NEUMANN&#160;</td><td class="fielddoc"><p>Von Neumann neighborhood: includes only the four. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a9d00db2263b4b7b05245531c41c1b592a5a41d1fe35db5ea65c515f217e5df2af" name="a9d00db2263b4b7b05245531c41c1b592a5a41d1fe35db5ea65c515f217e5df2af"></a>CROSS&#160;</td><td class="fielddoc"><p>Cross-shaped neighborhood: includes only the diagonal neighbors. </p>
+<tr><td class="fieldname"><a id="a9d00db2263b4b7b05245531c41c1b592a5a41d1fe35db5ea65c515f217e5df2af" name="a9d00db2263b4b7b05245531c41c1b592a5a41d1fe35db5ea65c515f217e5df2af"></a>CROSS&#160;</td><td class="fielddoc"><p>Cross-shaped neighborhood: includes only the diagonal. </p>
 </td></tr>
 </table>
 
@@ -11888,6 +11891,90 @@ The y-axis is flipped so that higher indices appear lower in the text output. </
  
 </div>
 </div>
+<a id="ae01b5471d28a8f4a9104e2ffea4484a9" name="ae01b5471d28a8f4a9104e2ffea4484a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae01b5471d28a8f4a9104e2ffea4484a9">&#9670;&#160;</a></span>export_points_to_ply()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hmap::export_points_to_ply </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>fname</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; float &gt; &amp;&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; float &gt; &amp;&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; float &gt; &amp;&#160;</td>
+          <td class="paramname"><em>z</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::map&lt; std::string, std::vector&lt; float &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>custom_fields</em> = <code>{}</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Exports 3D points with optional custom fields to an ASCII PLY file. </p>
+<p>This function writes vertex data (x, y, z) and optional additional per-point attributes to a PLY file in ASCII format. Each key in <code>custom_fields</code> defines a new property in the PLY header, and its associated vector provides per-point values for that property.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fname</td><td>The output file name. </td></tr>
+    <tr><td class="paramname">x</td><td>Vector of x coordinates. </td></tr>
+    <tr><td class="paramname">y</td><td>Vector of y coordinates. </td></tr>
+    <tr><td class="paramname">z</td><td>Vector of z coordinates. </td></tr>
+    <tr><td class="paramname">custom_fields</td><td>A map of custom field names to their per-point float values.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p><b>Example</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="highmap_8hpp.html">highmap.hpp</a>&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
+<div class="line">{</div>
+<div class="line">  <span class="keywordtype">int</span>         npts = 8;</div>
+<div class="line">  <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>        seed = 0;</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Cloud.html">hmap::Cloud</a> cloud = <a class="code hl_class" href="classhmap_1_1Cloud.html">hmap::Cloud</a>(npts, seed);</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// create custom properties (optional)</span></div>
+<div class="line">  std::map&lt;std::string, std::vector&lt;float&gt;&gt; custom_fields;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> k = 0; k &lt; npts; ++k)</div>
+<div class="line">  {</div>
+<div class="line">    custom_fields[<span class="stringliteral">&quot;some_field&quot;</span>].push_back(<span class="keywordtype">float</span>(k));</div>
+<div class="line">    custom_fields[<span class="stringliteral">&quot;custom_prop&quot;</span>].push_back(<span class="keywordtype">float</span>(k * k));</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ae01b5471d28a8f4a9104e2ffea4484a9">hmap::export_points_to_ply</a>(<span class="stringliteral">&quot;points.ply&quot;</span>,</div>
+<div class="line">                             cloud.<a class="code hl_function" href="classhmap_1_1Cloud.html#aab450c9376e44def1d4e4465f0b1b691">get_x</a>(),</div>
+<div class="line">                             cloud.<a class="code hl_function" href="classhmap_1_1Cloud.html#abf5f933e3506395b5369cb090119002e">get_y</a>(),</div>
+<div class="line">                             cloud.<a class="code hl_function" href="classhmap_1_1Cloud.html#a53cb47401f1e9d027a638f3680c3004d">get_values</a>(),</div>
+<div class="line">                             custom_fields);</div>
+<div class="line">}</div>
+<div class="ttc" id="aarray_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition</b> array.hpp:14</div></div>
+<div class="ttc" id="anamespacehmap_html_ae01b5471d28a8f4a9104e2ffea4484a9"><div class="ttname"><a href="namespacehmap.html#ae01b5471d28a8f4a9104e2ffea4484a9">hmap::export_points_to_ply</a></div><div class="ttdeci">void export_points_to_ply(const std::string &amp;fname, const std::vector&lt; float &gt; &amp;x, const std::vector&lt; float &gt; &amp;y, const std::vector&lt; float &gt; &amp;z, const std::map&lt; std::string, std::vector&lt; float &gt; &gt; &amp;custom_fields={})</div><div class="ttdoc">Exports 3D points with optional custom fields to an ASCII PLY file.</div><div class="ttdef"><b>Definition</b> export_points_to_ply.cpp:15</div></div>
+</div><!-- fragment --> 
+</div>
+</div>
 <a id="a90b6cad473f30aa0aa92158e5af7ee7f" name="a90b6cad473f30aa0aa92158e5af7ee7f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a90b6cad473f30aa0aa92158e5af7ee7f">&#9670;&#160;</a></span>export_tiled()</h2>
 
@@ -12158,7 +12245,6 @@ The y-axis is flipped so that higher indices appear lower in the text output. </
 <div class="line">  z.<a class="code hl_function" href="classhmap_1_1Array.html#a9ff7b2c0be8f2b5dd9fc33085cd647d1">to_png</a>(<span class="stringliteral">&quot;ex_connected_components0.png&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">  labels.<a class="code hl_function" href="classhmap_1_1Array.html#a9ff7b2c0be8f2b5dd9fc33085cd647d1">to_png</a>(<span class="stringliteral">&quot;ex_connected_components1.png&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369ae91cb25d4df330517ac69b5f0f2c3e0c">hmap::Cmap::NIPY_SPECTRAL</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="aarray_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition</b> array.hpp:14</div></div>
 <div class="ttc" id="anamespacehmap_html_a11f846a0bacba3463862df220ddf5131"><div class="ttname"><a href="namespacehmap.html#a11f846a0bacba3463862df220ddf5131">hmap::connected_components</a></div><div class="ttdeci">Array connected_components(const Array &amp;array, float surface_threshold=0.f, float background_value=0.f, std::vector&lt; float &gt; *p_surfaces=nullptr, std::vector&lt; std::array&lt; float, 2 &gt; &gt; *p_centroids=nullptr)</div><div class="ttdoc">Identifies and labels connected components within a binary or labeled array, with optional filtering ...</div><div class="ttdef"><b>Definition</b> connected_components.cpp:14</div></div>
 <div class="ttc" id="anamespacehmap_html_a2badbebec49b12d0d721970a18eb420d"><div class="ttname"><a href="namespacehmap.html#a2badbebec49b12d0d721970a18eb420d">hmap::clamp_min</a></div><div class="ttdeci">void clamp_min(Array &amp;array, float vmin)</div><div class="ttdoc">Clamp array values lower than a given bound.</div><div class="ttdef"><b>Definition</b> range.cpp:129</div></div>
 <div class="ttc" id="anamespacehmap_html_ac70fe3cbb32e0340d5dd3e15cdcf9369ae91cb25d4df330517ac69b5f0f2c3e0c"><div class="ttname"><a href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369ae91cb25d4df330517ac69b5f0f2c3e0c">hmap::NIPY_SPECTRAL</a></div><div class="ttdeci">@ NIPY_SPECTRAL</div><div class="ttdef"><b>Definition</b> colormaps.hpp:88</div></div>
@@ -13996,7 +14082,7 @@ An <a class="el" href="classhmap_1_1Array.html" title="Array class, helper to ma
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_faceted.png&quot;</span>, {z1, z2}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>, <span class="keyword">true</span>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a9d00db2263b4b7b05245531c41c1b592a5a41d1fe35db5ea65c515f217e5df2af"><div class="ttname"><a href="namespacehmap.html#a9d00db2263b4b7b05245531c41c1b592a5a41d1fe35db5ea65c515f217e5df2af">hmap::CROSS</a></div><div class="ttdeci">@ CROSS</div><div class="ttdoc">Cross-shaped neighborhood: includes only the diagonal neighbors.</div><div class="ttdef"><b>Definition</b> filters.hpp:37</div></div>
+<div class="ttc" id="anamespacehmap_html_a9d00db2263b4b7b05245531c41c1b592a5a41d1fe35db5ea65c515f217e5df2af"><div class="ttname"><a href="namespacehmap.html#a9d00db2263b4b7b05245531c41c1b592a5a41d1fe35db5ea65c515f217e5df2af">hmap::CROSS</a></div><div class="ttdeci">@ CROSS</div><div class="ttdoc">Cross-shaped neighborhood: includes only the diagonal.</div><div class="ttdef"><b>Definition</b> filters.hpp:38</div></div>
 <div class="ttc" id="anamespacehmap_html_ad066ff6ef56dbf9827ff6cca9a22e58a"><div class="ttname"><a href="namespacehmap.html#ad066ff6ef56dbf9827ff6cca9a22e58a">hmap::faceted</a></div><div class="ttdeci">Array faceted(const Array &amp;array, int neighborhood=0, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr)</div><div class="ttdoc">Generate a faceted heightmap that retains the main features of the input heightmap.</div><div class="ttdef"><b>Definition</b> faceted.cpp:17</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_faceted.png" alt=""/>
