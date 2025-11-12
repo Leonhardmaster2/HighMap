@@ -28,9 +28,9 @@ namespace hmap
 // clang-format off
 enum PeriodicityType : int
 {
-   PERIODICITY_X, ///< Periodic only along the X axis.
-   PERIODICITY_Y, ///< Periodic only along the Y axis.
-   PERIODICITY_XY ///< Periodic along both the X and Y axes.
+	PERIODICITY_X, ///< Periodic only along the X axis.
+	PERIODICITY_Y, ///< Periodic only along the Y axis.
+	PERIODICITY_XY ///< Periodic along both the X and Y axes.
 };
 // clang-format on
 

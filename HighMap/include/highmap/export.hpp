@@ -314,6 +314,31 @@ void export_splatmap_png(const std::string &fname,
                          int                depth = CV_8U);
 
 /**
+ * @brief Exports 3D points with optional custom fields to an ASCII PLY file.
+ *
+ * This function writes vertex data (x, y, z) and optional additional per-point
+ * attributes to a PLY file in ASCII format. Each key in @p custom_fields
+ * defines a new property in the PLY header, and its associated vector provides
+ * per-point values for that property.
+ *
+ * @param fname         The output file name.
+ * @param x             Vector of x coordinates.
+ * @param y             Vector of y coordinates.
+ * @param z             Vector of z coordinates.
+ * @param custom_fields A map of custom field names to their per-point float
+ *                      values.
+ *
+ * **Example**
+ * @include ex_export_points_to_ply.cpp
+ */
+void export_points_to_ply(
+    const std::string                               &fname,
+    const std::vector<float>                        &x,
+    const std::vector<float>                        &y,
+    const std::vector<float>                        &z,
+    const std::map<std::string, std::vector<float>> &custom_fields = {});
+
+/**
  * @brief Exports a 2D array as a set of grayscale PNG image tiles.
  *
  * This function divides a given 2D array into smaller rectangular tiles and

@@ -32,9 +32,11 @@ namespace hmap
 // clang-format off
 enum neighborhood : int
 {
-  MOORE,       ///< Moore neighborhood: includes all eight surrounding cells.
-  VON_NEUMANN, ///< Von Neumann neighborhood: includes only the four orthogonal neighbors (N, S, E, W).
-  CROSS        ///< Cross-shaped neighborhood: includes only the diagonal neighbors.
+	MOORE, ///< Moore neighborhood: includes all eight surrounding cells.
+	VON_NEUMANN, ///< Von Neumann neighborhood: includes only the four
+		     // orthogonal neighbors (N, S, E, W).
+	CROSS  ///< Cross-shaped neighborhood: includes only the diagonal
+		// neighbors.
 };
 // clang-format on
 

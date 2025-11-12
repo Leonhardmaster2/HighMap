@@ -44,16 +44,17 @@ std::filesystem::path add_filename_suffix(
  * @brief Pads the beginning of a string with zeros until it reaches a specified
  * length.
  *
- * This function prepends '0' characters to the input string `str` so that
- * the resulting string has at least `n_zero` characters. If `str` is already
- * equal to or longer than `n_zero`, it is returned unchanged.
+ * This function prepends '0' characters to the input string `str` so that the
+ * resulting string has at least `n_zero` characters. If `str` is already equal
+ * to or longer than `n_zero`, it is returned unchanged.
  *
- * @param str The input string to pad.
- * @param n_zero The minimum total length of the resulting string after padding.
- * @return A new string padded with leading zeros to reach the specified length.
+ * @param  str    The input string to pad.
+ * @param  n_zero The minimum total length of the resulting string after
+ *                padding.
+ * @return        A new string padded with leading zeros to reach the specified
+ *                length.
  *
- * @example
- * zfill("42", 5); // returns "00042"
+ * @example zfill("42", 5); // returns "00042"
  * zfill("12345", 5); // returns "12345"
  */
 std::string zfill(const std::string &str, int n_zero);

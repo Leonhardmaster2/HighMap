@@ -62,13 +62,13 @@ enum PrimitiveType : int
 /**
  * @brief Generates a primitive shape as a 2D array.
  *
- * @param primitive_type Type of primitive to generate.
- * @param shape Output array resolution.
- * @param p_noise_x Optional X-direction noise modulation.
- * @param p_noise_y Optional Y-direction noise modulation.
- * @param center Center position of the primitive (normalized).
- * @param bbox Bounding box of the primitive (normalized).
- * @return The generated primitive as an Array.
+ * @param  primitive_type Type of primitive to generate.
+ * @param  shape          Output array resolution.
+ * @param  p_noise_x      Optional X-direction noise modulation.
+ * @param  p_noise_y      Optional Y-direction noise modulation.
+ * @param  center         Center position of the primitive (normalized).
+ * @param  bbox           Bounding box of the primitive (normalized).
+ * @return                The generated primitive as an Array.
  */
 Array get_primitive_base(const PrimitiveType &primitive_type,
                          const Vec2<int>     &shape,
