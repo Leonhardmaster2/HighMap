@@ -1308,8 +1308,6 @@ std\+::vector$<$ float $>$ \mbox{\hyperlink{namespacehmap_a3957ac4ae673f8ad402b5
 \begin{DoxyCompactList}\small\item\em Generate a vector of evenly spaced numbers over a specified interval. \end{DoxyCompactList}\item 
 std\+::vector$<$ float $>$ \mbox{\hyperlink{namespacehmap_a068e4d5be8c16ab9e708dca9678dc8de}{linspace\+\_\+jitted}} (float start, float stop, int num, float ratio, int seed, bool endpoint=true)
 \begin{DoxyCompactList}\small\item\em Generate a vector of jittered (noised) numbers over a specified interval. \end{DoxyCompactList}\item 
-std\+::vector$<$ float $>$ \mbox{\hyperlink{namespacehmap_a3e6de5f9e14f11872651af22e5756c32}{random\+\_\+vector}} (float min, float max, int num, int seed)
-\begin{DoxyCompactList}\small\item\em Generate a vector filled with random values within a specified range. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_ad709c89b243a091346e762f25c6b07c2}{fill\+\_\+array\+\_\+using\+\_\+xy\+\_\+function}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ bbox, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+ctrl\+\_\+param, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+stretching, std\+::function$<$ float(float, float, float)$>$ fct\+\_\+xy)
 \begin{DoxyCompactList}\small\item\em Fill an array using a scalar function based on (x, y) coordinates. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_abd2315893f8342f0d5444d0c7fda6a2c}{fill\+\_\+array\+\_\+using\+\_\+xy\+\_\+function}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ bbox, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+ctrl\+\_\+param, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+stretching, std\+::function$<$ float(float, float, float)$>$ fct\+\_\+xy, int subsampling)
@@ -1320,6 +1318,10 @@ void \mbox{\hyperlink{namespacehmap_ae0a3c73cc23a288fe03bf5ed6ac73c3d}{find\+\_\
 \begin{DoxyCompactList}\small\item\em Generate a smooth mask based on a cut path. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a27362ea31c92dd9c15e1bb3c6f5b18e8}{get\+\_\+random\+\_\+patch}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, \mbox{\hyperlink{structhmap_1_1Vec2}{hmap\+::\+Vec2}}$<$ int $>$ patch\+\_\+shape, std\+::mt19937 \&gen, bool patch\+\_\+flip=false, bool patch\+\_\+rotate=false, bool patch\+\_\+transpose=false, std\+::vector$<$ \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}p\+\_\+secondary\+\_\+arrays=nullptr, std\+::vector$<$ \mbox{\hyperlink{classhmap_1_1Array}{Array}} $>$ \texorpdfstring{$\ast$}{*}p\+\_\+secondary\+\_\+patches=nullptr)
 \begin{DoxyCompactList}\small\item\em Extracts a random sub-\/array (patch) from the input array, with optional transformations. \end{DoxyCompactList}\item 
+std\+::vector$<$ float $>$ \mbox{\hyperlink{namespacehmap_a3e6de5f9e14f11872651af22e5756c32}{random\+\_\+vector}} (float min, float max, int num, int seed)
+\begin{DoxyCompactList}\small\item\em Generate a vector filled with random values within a specified range. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacehmap_a20f9714aa8853d2971fa627750226985}{rescale\+\_\+vector}} (std\+::vector$<$ float $>$ \&vec, float vmin, float vmax)
+\begin{DoxyCompactList}\small\item\em Rescales the values of a vector to a specified range. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a462f8b6ebc7b8ab79c619987e0ddfce4}{vstack}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array1, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array2)
 \begin{DoxyCompactList}\small\item\em Vertically stack two arrays. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a8a516692e72b572b71cbc5df0f251624}{get\+\_\+primitive\+\_\+base}} (const \mbox{\hyperlink{namespacehmap_a55542a66f890ef9ecf5f82af2c23a0cf}{Primitive\+Type}} \&primitive\+\_\+type, const \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$ \&shape, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ float $>$ center=\{0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
@@ -20281,32 +20283,6 @@ This function creates a vector with values spaced over an interval but with adde
 \begin{DoxyReturn}{Returns}
 std\+::vector$<$float$>$ Vector of jittered values. 
 \end{DoxyReturn}
-\Hypertarget{namespacehmap_a3e6de5f9e14f11872651af22e5756c32}\label{namespacehmap_a3e6de5f9e14f11872651af22e5756c32} 
-\index{hmap@{hmap}!random\_vector@{random\_vector}}
-\index{random\_vector@{random\_vector}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{random\_vector()}{random\_vector()}}
-{\footnotesize\ttfamily std\+::vector$<$ float $>$ hmap\+::random\+\_\+vector (\begin{DoxyParamCaption}\item[{float}]{min,  }\item[{float}]{max,  }\item[{int}]{num,  }\item[{int}]{seed }\end{DoxyParamCaption})}
-
-
-
-Generate a vector filled with random values within a specified range. 
-
-This function creates a vector with random values uniformly distributed between {\ttfamily min} and {\ttfamily max}. The number of values and the randomness is controlled by the {\ttfamily seed} parameter.
-
-
-\begin{DoxyParams}{Parameters}
-{\em min} & Lower bound of the random values. \\
-\hline
-{\em max} & Upper bound of the random values. \\
-\hline
-{\em num} & Number of random values to generate. \\
-\hline
-{\em seed} & Random seed for generating values. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-std\+::vector$<$float$>$ Vector of random values. 
-\end{DoxyReturn}
 \Hypertarget{namespacehmap_ad709c89b243a091346e762f25c6b07c2}\label{namespacehmap_ad709c89b243a091346e762f25c6b07c2} 
 \index{hmap@{hmap}!fill\_array\_using\_xy\_function@{fill\_array\_using\_xy\_function}}
 \index{fill\_array\_using\_xy\_function@{fill\_array\_using\_xy\_function}!hmap@{hmap}}
@@ -20534,6 +20510,60 @@ This function selects a random patch from the specified input array and applies 
 \begin{DoxyReturn}{Returns}
 The extracted and transformed patch from the main input array. 
 \end{DoxyReturn}
+\Hypertarget{namespacehmap_a3e6de5f9e14f11872651af22e5756c32}\label{namespacehmap_a3e6de5f9e14f11872651af22e5756c32} 
+\index{hmap@{hmap}!random\_vector@{random\_vector}}
+\index{random\_vector@{random\_vector}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{random\_vector()}{random\_vector()}}
+{\footnotesize\ttfamily std\+::vector$<$ float $>$ hmap\+::random\+\_\+vector (\begin{DoxyParamCaption}\item[{float}]{min,  }\item[{float}]{max,  }\item[{int}]{num,  }\item[{int}]{seed }\end{DoxyParamCaption})}
+
+
+
+Generate a vector filled with random values within a specified range. 
+
+This function creates a vector with random values uniformly distributed between {\ttfamily min} and {\ttfamily max}. The number of values and the randomness is controlled by the {\ttfamily seed} parameter.
+
+
+\begin{DoxyParams}{Parameters}
+{\em min} & Lower bound of the random values. \\
+\hline
+{\em max} & Upper bound of the random values. \\
+\hline
+{\em num} & Number of random values to generate. \\
+\hline
+{\em seed} & Random seed for generating values. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$float$>$ Vector of random values. 
+\end{DoxyReturn}
+\Hypertarget{namespacehmap_a20f9714aa8853d2971fa627750226985}\label{namespacehmap_a20f9714aa8853d2971fa627750226985} 
+\index{hmap@{hmap}!rescale\_vector@{rescale\_vector}}
+\index{rescale\_vector@{rescale\_vector}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{rescale\_vector()}{rescale\_vector()}}
+{\footnotesize\ttfamily void hmap\+::rescale\+\_\+vector (\begin{DoxyParamCaption}\item[{std\+::vector$<$ float $>$ \&}]{vec,  }\item[{float}]{vmin,  }\item[{float}]{vmax }\end{DoxyParamCaption})}
+
+
+
+Rescales the values of a vector to a specified range. 
+
+This function linearly rescales all elements in {\ttfamily vec} so that their new values lie within the range \mbox{[}{\ttfamily vmin}, {\ttfamily vmax}\mbox{]}. The rescaling is based on the current minimum and maximum values found in the input vector.
+
+Special cases\+:
+\begin{DoxyItemize}
+\item If {\ttfamily vec} is empty, the function does nothing.
+\item If {\ttfamily vmin == vmax}, all elements are set to {\ttfamily vmax}.
+\item If all elements of {\ttfamily vec} are equal, they are replaced by that constant value.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em vec} & Reference to the vector of float values to rescale (modified in place). \\
+\hline
+{\em vmin} & Desired minimum value after rescaling. \\
+\hline
+{\em vmax} & Desired maximum value after rescaling. \\
+\hline
+\end{DoxyParams}
 \Hypertarget{namespacehmap_a462f8b6ebc7b8ab79c619987e0ddfce4}\label{namespacehmap_a462f8b6ebc7b8ab79c619987e0ddfce4} 
 \index{hmap@{hmap}!vstack@{vstack}}
 \index{vstack@{vstack}!hmap@{hmap}}

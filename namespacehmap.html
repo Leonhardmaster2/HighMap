@@ -1914,9 +1914,6 @@ Functions</h2></td></tr>
 <tr class="memitem:a068e4d5be8c16ab9e708dca9678dc8de" id="r_a068e4d5be8c16ab9e708dca9678dc8de"><td class="memItemLeft" align="right" valign="top">std::vector&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a068e4d5be8c16ab9e708dca9678dc8de">linspace_jitted</a> (float start, float stop, int num, float ratio, int seed, bool endpoint=true)</td></tr>
 <tr class="memdesc:a068e4d5be8c16ab9e708dca9678dc8de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a vector of jittered (noised) numbers over a specified interval.  <br /></td></tr>
 <tr class="separator:a068e4d5be8c16ab9e708dca9678dc8de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e6de5f9e14f11872651af22e5756c32" id="r_a3e6de5f9e14f11872651af22e5756c32"><td class="memItemLeft" align="right" valign="top">std::vector&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a3e6de5f9e14f11872651af22e5756c32">random_vector</a> (float min, float max, int num, int seed)</td></tr>
-<tr class="memdesc:a3e6de5f9e14f11872651af22e5756c32"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a vector filled with random values within a specified range.  <br /></td></tr>
-<tr class="separator:a3e6de5f9e14f11872651af22e5756c32"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad709c89b243a091346e762f25c6b07c2" id="r_ad709c89b243a091346e762f25c6b07c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#ad709c89b243a091346e762f25c6b07c2">fill_array_using_xy_function</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, <a class="el" href="structhmap_1_1Vec4.html">Vec4</a>&lt; float &gt; bbox, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_ctrl_param, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_x, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_y, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_stretching, std::function&lt; float(float, float, float)&gt; fct_xy)</td></tr>
 <tr class="memdesc:ad709c89b243a091346e762f25c6b07c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fill an array using a scalar function based on (x, y) coordinates.  <br /></td></tr>
 <tr class="separator:ad709c89b243a091346e762f25c6b07c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1932,6 +1929,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a27362ea31c92dd9c15e1bb3c6f5b18e8" id="r_a27362ea31c92dd9c15e1bb3c6f5b18e8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a27362ea31c92dd9c15e1bb3c6f5b18e8">get_random_patch</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, <a class="el" href="structhmap_1_1Vec2.html">hmap::Vec2</a>&lt; int &gt; patch_shape, std::mt19937 &amp;gen, bool patch_flip=false, bool patch_rotate=false, bool patch_transpose=false, std::vector&lt; <a class="el" href="classhmap_1_1Array.html">Array</a> * &gt; *p_secondary_arrays=nullptr, std::vector&lt; <a class="el" href="classhmap_1_1Array.html">Array</a> &gt; *p_secondary_patches=nullptr)</td></tr>
 <tr class="memdesc:a27362ea31c92dd9c15e1bb3c6f5b18e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extracts a random sub-array (patch) from the input array, with optional transformations.  <br /></td></tr>
 <tr class="separator:a27362ea31c92dd9c15e1bb3c6f5b18e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e6de5f9e14f11872651af22e5756c32" id="r_a3e6de5f9e14f11872651af22e5756c32"><td class="memItemLeft" align="right" valign="top">std::vector&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a3e6de5f9e14f11872651af22e5756c32">random_vector</a> (float min, float max, int num, int seed)</td></tr>
+<tr class="memdesc:a3e6de5f9e14f11872651af22e5756c32"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a vector filled with random values within a specified range.  <br /></td></tr>
+<tr class="separator:a3e6de5f9e14f11872651af22e5756c32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20f9714aa8853d2971fa627750226985" id="r_a20f9714aa8853d2971fa627750226985"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a20f9714aa8853d2971fa627750226985">rescale_vector</a> (std::vector&lt; float &gt; &amp;vec, float vmin, float vmax)</td></tr>
+<tr class="memdesc:a20f9714aa8853d2971fa627750226985"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rescales the values of a vector to a specified range.  <br /></td></tr>
+<tr class="separator:a20f9714aa8853d2971fa627750226985"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a462f8b6ebc7b8ab79c619987e0ddfce4" id="r_a462f8b6ebc7b8ab79c619987e0ddfce4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a462f8b6ebc7b8ab79c619987e0ddfce4">vstack</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array1, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array2)</td></tr>
 <tr class="memdesc:a462f8b6ebc7b8ab79c619987e0ddfce4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vertically stack two arrays.  <br /></td></tr>
 <tr class="separator:a462f8b6ebc7b8ab79c619987e0ddfce4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -33952,59 +33955,6 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 
 </div>
 </div>
-<a id="a3e6de5f9e14f11872651af22e5756c32" name="a3e6de5f9e14f11872651af22e5756c32"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3e6de5f9e14f11872651af22e5756c32">&#9670;&#160;</a></span>random_vector()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::vector&lt; float &gt; hmap::random_vector </td>
-          <td>(</td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>min</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>max</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>num</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>seed</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Generate a vector filled with random values within a specified range. </p>
-<p>This function creates a vector with random values uniformly distributed between <code>min</code> and <code>max</code>. The number of values and the randomness is controlled by the <code>seed</code> parameter.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">min</td><td>Lower bound of the random values. </td></tr>
-    <tr><td class="paramname">max</td><td>Upper bound of the random values. </td></tr>
-    <tr><td class="paramname">num</td><td>Number of random values to generate. </td></tr>
-    <tr><td class="paramname">seed</td><td>Random seed for generating values. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>std::vector&lt;float&gt; Vector of random values. </dd></dl>
-
-</div>
-</div>
 <a id="ad709c89b243a091346e762f25c6b07c2" name="ad709c89b243a091346e762f25c6b07c2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad709c89b243a091346e762f25c6b07c2">&#9670;&#160;</a></span>fill_array_using_xy_function() <span class="overload">[1/2]</span></h2>
 
@@ -34408,6 +34358,109 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The extracted and transformed patch from the main input array. </dd></dl>
+
+</div>
+</div>
+<a id="a3e6de5f9e14f11872651af22e5756c32" name="a3e6de5f9e14f11872651af22e5756c32"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e6de5f9e14f11872651af22e5756c32">&#9670;&#160;</a></span>random_vector()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; float &gt; hmap::random_vector </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>min</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>max</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>num</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>seed</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Generate a vector filled with random values within a specified range. </p>
+<p>This function creates a vector with random values uniformly distributed between <code>min</code> and <code>max</code>. The number of values and the randomness is controlled by the <code>seed</code> parameter.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">min</td><td>Lower bound of the random values. </td></tr>
+    <tr><td class="paramname">max</td><td>Upper bound of the random values. </td></tr>
+    <tr><td class="paramname">num</td><td>Number of random values to generate. </td></tr>
+    <tr><td class="paramname">seed</td><td>Random seed for generating values. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>std::vector&lt;float&gt; Vector of random values. </dd></dl>
+
+</div>
+</div>
+<a id="a20f9714aa8853d2971fa627750226985" name="a20f9714aa8853d2971fa627750226985"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20f9714aa8853d2971fa627750226985">&#9670;&#160;</a></span>rescale_vector()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hmap::rescale_vector </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; float &gt; &amp;&#160;</td>
+          <td class="paramname"><em>vec</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>vmin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>vmax</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Rescales the values of a vector to a specified range. </p>
+<p>This function linearly rescales all elements in <code>vec</code> so that their new values lie within the range [<code>vmin</code>, <code>vmax</code>]. The rescaling is based on the current minimum and maximum values found in the input vector.</p>
+<p>Special cases:</p><ul>
+<li>If <code>vec</code> is empty, the function does nothing.</li>
+<li>If <code>vmin == vmax</code>, all elements are set to <code>vmax</code>.</li>
+<li>If all elements of <code>vec</code> are equal, they are replaced by that constant value.</li>
+</ul>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vec</td><td>Reference to the vector of float values to rescale (modified in place). </td></tr>
+    <tr><td class="paramname">vmin</td><td>Desired minimum value after rescaling. </td></tr>
+    <tr><td class="paramname">vmax</td><td>Desired maximum value after rescaling. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
