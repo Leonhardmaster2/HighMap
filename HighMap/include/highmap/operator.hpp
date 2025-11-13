@@ -344,9 +344,9 @@ std::vector<float> random_vector(float min, float max, int num, int seed);
  */
 void rescale_vector(std::vector<float> &vec, float vmin, float vmax);
 
-std::vector<float> rescale_vector(const std::vector<float> &vec,
-                                  float                     vmin,
-                                  float vmax); ///< @overload
+std::vector<float> rescaled_vector(const std::vector<float> &vec,
+                                   float                     vmin,
+                                   float vmax); ///< @overload
 
 /**
  * @brief Vertically stack two arrays.

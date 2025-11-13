@@ -147,9 +147,9 @@ void rescale_vector(std::vector<float> &vec, float vmin, float vmax)
   }
 }
 
-std::vector<float> rescale_vector(const std::vector<float> &vec,
-                                  float                     vmin,
-                                  float                     vmax)
+std::vector<float> rescaled_vector(const std::vector<float> &vec,
+                                   float                     vmin,
+                                   float                     vmax)
 {
   std::vector<float> out = vec;
   rescale_vector(out, vmin, vmax);
