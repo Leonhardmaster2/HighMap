@@ -875,6 +875,7 @@ var namespacehmap =
     [ "get_random_patch", "namespacehmap.html#a27362ea31c92dd9c15e1bb3c6f5b18e8", null ],
     [ "random_vector", "namespacehmap.html#a3e6de5f9e14f11872651af22e5756c32", null ],
     [ "rescale_vector", "namespacehmap.html#a20f9714aa8853d2971fa627750226985", null ],
+    [ "rescale_vector", "namespacehmap.html#a94155d79cfef19d324aef5bc90527b3e", null ],
     [ "vstack", "namespacehmap.html#a462f8b6ebc7b8ab79c619987e0ddfce4", null ],
     [ "get_primitive_base", "namespacehmap.html#a8a516692e72b572b71cbc5df0f251624", null ],
     [ "biquad_pulse", "namespacehmap.html#a28783971977657055053b3c143502bc2", null ],

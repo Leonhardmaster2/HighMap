@@ -14,5 +14,6 @@ var operator_8hpp =
     [ "get_random_patch", "operator_8hpp.html#a27362ea31c92dd9c15e1bb3c6f5b18e8", null ],
     [ "random_vector", "operator_8hpp.html#a3e6de5f9e14f11872651af22e5756c32", null ],
     [ "rescale_vector", "operator_8hpp.html#a20f9714aa8853d2971fa627750226985", null ],
+    [ "rescale_vector", "operator_8hpp.html#a94155d79cfef19d324aef5bc90527b3e", null ],
     [ "vstack", "operator_8hpp.html#a462f8b6ebc7b8ab79c619987e0ddfce4", null ]
 ];
