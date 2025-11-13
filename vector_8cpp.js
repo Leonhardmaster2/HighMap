@@ -6,5 +6,5 @@ var vector_8cpp =
     [ "linspace_jitted", "vector_8cpp.html#a068e4d5be8c16ab9e708dca9678dc8de", null ],
     [ "random_vector", "vector_8cpp.html#a3e6de5f9e14f11872651af22e5756c32", null ],
     [ "rescale_vector", "vector_8cpp.html#a20f9714aa8853d2971fa627750226985", null ],
-    [ "rescale_vector", "vector_8cpp.html#a94155d79cfef19d324aef5bc90527b3e", null ]
+    [ "rescaled_vector", "vector_8cpp.html#a43889ea697d52a1da5cdab14d446e794", null ]
 ];
