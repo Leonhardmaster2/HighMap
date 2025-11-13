@@ -7,6 +7,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/erosion.hpp"
+#include "highmap/features.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/hydrology.hpp"
 #include "highmap/interpolate2d.hpp"
@@ -161,7 +162,10 @@ Array flooding_from_point(const Array            &z,
   return water_depth;
 }
 
-Array flooding_lake_system(const Array &z, int iterations, float epsilon)
+Array flooding_lake_system(const Array &z,
+                           int          iterations,
+                           float        epsilon,
+                           float        surface_threshold)
 {
   Array water_depth = z;
 
@@ -170,9 +174,17 @@ Array flooding_lake_system(const Array &z, int iterations, float epsilon)
 
   for (int j = 0; j < z.shape.y; j++)
     for (int i = 0; i < z.shape.x; i++)
-    {
       water_depth(i, j) = std::max(0.f, water_depth(i, j) - z(i, j));
-    }
+
+  // use a connected components analysis to remove small spots if
+  // requested
+  if (surface_threshold)
+  {
+    Array labels = connected_components(water_depth, surface_threshold);
+    for (int j = 0; j < z.shape.y; j++)
+      for (int i = 0; i < z.shape.x; i++)
+        if (labels(i, j) == 0.f) water_depth(i, j) = 0.f;
+  }
 
   return water_depth;
 }

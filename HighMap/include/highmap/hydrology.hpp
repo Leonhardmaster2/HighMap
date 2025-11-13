@@ -167,6 +167,10 @@ Array flooding_from_point(const Array            &z,
  * @param  iterations Maximum number of iterations allowed for the
  *                    depression-filling algorithm.
  * @param  epsilon    Convergence tolerance for the depression-filling step.
+ * @param  surface_threshold The minimum number of pixels a component must have
+ *                           to be retained. Components smaller than this
+ *                           threshold will be removed. The default value is 0
+ *                           (no filtering).
  *
  * @return            A 2D array representing the water depth for each cell.
  *                    Values are zero where no lake is present and positive
@@ -182,7 +186,8 @@ Array flooding_from_point(const Array            &z,
  */
 Array flooding_lake_system(const Array &z,
                            int          iterations = 500,
-                           float        epsilon = 1e-3f);
+                           float        epsilon = 1e-3f,
+                           float        surface_threshold = 0);
 
 /**
  * @brief Computes the flow accumulation for each cell using the D8 flow
