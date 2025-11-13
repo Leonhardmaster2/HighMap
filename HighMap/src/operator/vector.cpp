@@ -115,4 +115,36 @@ std::vector<float> random_vector(float min, float max, int num, int seed)
   return v;
 }
 
+void rescale_vector(std::vector<float> &vec, float vmin, float vmax)
+{
+  if (vec.empty()) return;
+
+  // fringe case: flatten all values if target range is degenerate
+  if (vmin == vmax)
+  {
+    for (auto &v : vec)
+      v = vmax;
+    return;
+  }
+
+  // current min and max
+  float cmin = *std::min_element(vec.begin(), vec.end());
+  float cmax = *std::max_element(vec.begin(), vec.end());
+
+  // fringe case: constant input
+  if (cmin == cmax)
+  {
+    for (auto &v : vec)
+      v = cmax;
+    return;
+  }
+
+  // standard case: normalize to [0,1], then scale to [vmin,vmax]
+  for (auto &v : vec)
+  {
+    v = (v - cmin) / (cmax - cmin); // normalize
+    v = vmin + (vmax - vmin) * v;   // scale
+  }
+}
+
 } // namespace hmap

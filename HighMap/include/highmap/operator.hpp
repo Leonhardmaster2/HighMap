@@ -166,21 +166,6 @@ std::vector<float> linspace_jitted(float start,
                                    bool  endpoint = true);
 
 /**
- * @brief Generate a vector filled with random values within a specified range.
- *
- * This function creates a vector with random values uniformly distributed
- * between `min` and `max`. The number of values and the randomness is
- * controlled by the `seed` parameter.
- *
- * @param  min  Lower bound of the random values.
- * @param  max  Upper bound of the random values.
- * @param  num  Number of random values to generate.
- * @param  seed Random seed for generating values.
- * @return      std::vector<float> Vector of random values.
- */
-std::vector<float> random_vector(float min, float max, int num, int seed);
-
-/**
  * @brief Fill an array using a scalar function based on (x, y) coordinates.
  *
  * This function populates an array with values computed from a scalar function
@@ -322,6 +307,42 @@ Array get_random_patch(const Array          &array,
                        bool                  patch_transpose = false,
                        std::vector<Array *> *p_secondary_arrays = nullptr,
                        std::vector<Array>   *p_secondary_patches = nullptr);
+
+/**
+ * @brief Generate a vector filled with random values within a specified range.
+ *
+ * This function creates a vector with random values uniformly distributed
+ * between `min` and `max`. The number of values and the randomness is
+ * controlled by the `seed` parameter.
+ *
+ * @param  min  Lower bound of the random values.
+ * @param  max  Upper bound of the random values.
+ * @param  num  Number of random values to generate.
+ * @param  seed Random seed for generating values.
+ * @return      std::vector<float> Vector of random values.
+ */
+std::vector<float> random_vector(float min, float max, int num, int seed);
+
+/**
+ * @brief Rescales the values of a vector to a specified range.
+ *
+ * This function linearly rescales all elements in @p vec so that their new
+ * values lie within the range [`vmin`, `vmax`]. The rescaling is based on the
+ * current minimum and maximum values found in the input vector.
+ *
+ * Special cases:
+ * - If @p vec is empty, the function does nothing.
+ * - If `vmin == vmax`, all elements are set to `vmax`.
+ * - If all elements of @p vec are equal, they are replaced by that constant
+ * value.
+ *
+ * @param vec  Reference to the vector of float values to rescale (modified in
+ *             place).
+ * @param vmin Desired minimum value after rescaling.
+ * @param vmax Desired maximum value after rescaling.
+ *
+ */
+void rescale_vector(std::vector<float> &vec, float vmin, float vmax);
 
 /**
  * @brief Vertically stack two arrays.
