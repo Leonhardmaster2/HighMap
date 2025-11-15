@@ -359,7 +359,8 @@ var namespacehmap =
     [ "DistanceTransformType", "namespacehmap.html#a9e2493cec1a67b3140691e617ddc925a", [
       [ "DT_EXACT", "namespacehmap.html#a9e2493cec1a67b3140691e617ddc925aa109b04de7ca555c0e4d17629e55e7ee3", null ],
       [ "DT_APPROX", "namespacehmap.html#a9e2493cec1a67b3140691e617ddc925aa3b8bce8feaa179b9a546bbbe28c1d44a", null ],
-      [ "DT_MANHATTAN", "namespacehmap.html#a9e2493cec1a67b3140691e617ddc925aae4b14640395ecd7333bea8838ea9dda1", null ]
+      [ "DT_MANHATTAN", "namespacehmap.html#a9e2493cec1a67b3140691e617ddc925aae4b14640395ecd7333bea8838ea9dda1", null ],
+      [ "DT_JFA", "namespacehmap.html#a9e2493cec1a67b3140691e617ddc925aaa09d87a577ce3a1b91c372aa051b0406", null ]
     ] ],
     [ "pyramid_transform_support", "namespacehmap.html#ae84abe9052dcb9c88f3c50716addfe44", [
       [ "FULL", "namespacehmap.html#ae84abe9052dcb9c88f3c50716addfe44a335e6fca97d53bfb6cc3a55c566f1dd7", null ],

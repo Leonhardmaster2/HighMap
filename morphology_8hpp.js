@@ -3,7 +3,8 @@ var morphology_8hpp =
     [ "DistanceTransformType", "morphology_8hpp.html#a9e2493cec1a67b3140691e617ddc925a", [
       [ "DT_EXACT", "morphology_8hpp.html#a9e2493cec1a67b3140691e617ddc925aa109b04de7ca555c0e4d17629e55e7ee3", null ],
       [ "DT_APPROX", "morphology_8hpp.html#a9e2493cec1a67b3140691e617ddc925aa3b8bce8feaa179b9a546bbbe28c1d44a", null ],
-      [ "DT_MANHATTAN", "morphology_8hpp.html#a9e2493cec1a67b3140691e617ddc925aae4b14640395ecd7333bea8838ea9dda1", null ]
+      [ "DT_MANHATTAN", "morphology_8hpp.html#a9e2493cec1a67b3140691e617ddc925aae4b14640395ecd7333bea8838ea9dda1", null ],
+      [ "DT_JFA", "morphology_8hpp.html#a9e2493cec1a67b3140691e617ddc925aaa09d87a577ce3a1b91c372aa051b0406", null ]
     ] ],
     [ "border", "morphology_8hpp.html#af80bcff234bf1482cf26896b9d21d270", null ],
     [ "closing", "morphology_8hpp.html#a889405ce11be91e33cc80ca4dbd192b0", null ],
