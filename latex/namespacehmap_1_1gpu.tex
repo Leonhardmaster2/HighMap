@@ -261,6 +261,8 @@ bool \mbox{\hyperlink{namespacehmap_1_1gpu_adb8336ed4d83c15500872185dee45d50}{in
 \begin{DoxyCompactList}\small\item\em Generates a 2D Voronoi-\/based scalar field using Open\+CL. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a2a14aa1a12ce7308b7cb553ea89b836d}{vororand}} (\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$ shape, const std\+::vector$<$ float $>$ \&xp, const std\+::vector$<$ float $>$ \&yp, float k\+\_\+smoothing=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float exp\+\_\+sigma=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, \mbox{\hyperlink{namespacehmap_a8e3756915e28aa80cec2190043cc8c2f}{Voronoi\+Return\+Type}} return\+\_\+type=\mbox{\hyperlink{namespacehmap_a8e3756915e28aa80cec2190043cc8c2fa3e5996ed4314058911435c50bc95e1c2}{Voronoi\+Return\+Type\+::\+F1\+\_\+\+SQUARED}}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
 \item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_ad8a656cc770c7febd63ba5248206ca84}{wavelet\+\_\+noise}} (\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$ shape, \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ float $>$ kw, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, float kw\+\_\+multiplier=2.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float vorticity=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float density=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, int octaves=8, float weight=0.\+7\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float persistence=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float lacunarity=2.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+ctrl\+\_\+param=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
+\begin{DoxyCompactList}\small\item\em Generates 2D wavelet noise using an Open\+CL kernel. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a9a3f272d7c8294ab3418be67e3c9b3eb}{maximum\+\_\+smooth}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array1, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array2, float k=0.\+2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a9e903d1c88db888832bea8cbafb19246}{hmap\+::maximum\+\_\+smooth}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a84e8cfef31aeb4ba10d4f7cbe04cb96d}{minimum\+\_\+smooth}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array1, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array2, float k=0.\+2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
@@ -3557,7 +3559,73 @@ An {\ttfamily \doxylink{classhmap_1_1Array}{Array}} object containing the comput
 \doxysubsubsection{\texorpdfstring{vororand()}{vororand()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::gpu\+::vororand (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$}]{shape,  }\item[{const std\+::vector$<$ float $>$ \&}]{xp,  }\item[{const std\+::vector$<$ float $>$ \&}]{yp,  }\item[{float}]{k\+\_\+smoothing = {\ttfamily 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{exp\+\_\+sigma = {\ttfamily 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{\mbox{\hyperlink{namespacehmap_a8e3756915e28aa80cec2190043cc8c2f}{Voronoi\+Return\+Type}}}]{return\+\_\+type = {\ttfamily \mbox{\hyperlink{namespacehmap_a8e3756915e28aa80cec2190043cc8c2fa3e5996ed4314058911435c50bc95e1c2}{Voronoi\+Return\+Type\+::\+F1\+\_\+\+SQUARED}}},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+x = {\ttfamily nullptr},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+y = {\ttfamily nullptr},  }\item[{\mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$}]{bbox = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}} }\end{DoxyParamCaption})}
 
-\Hypertarget{namespacehmap_1_1gpu_a9a3f272d7c8294ab3418be67e3c9b3eb}\label{namespacehmap_1_1gpu_a9a3f272d7c8294ab3418be67e3c9b3eb} 
+\Hypertarget{namespacehmap_1_1gpu_ad8a656cc770c7febd63ba5248206ca84}\label{namespacehmap_1_1gpu_ad8a656cc770c7febd63ba5248206ca84} 
+\index{hmap::gpu@{hmap::gpu}!wavelet\_noise@{wavelet\_noise}}
+\index{wavelet\_noise@{wavelet\_noise}!hmap::gpu@{hmap::gpu}}
+\doxysubsubsection{\texorpdfstring{wavelet\_noise()}{wavelet\_noise()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::gpu\+::wavelet\+\_\+noise (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$}]{shape,  }\item[{\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ float $>$}]{kw,  }\item[{\mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{seed,  }\item[{float}]{kw\+\_\+multiplier = {\ttfamily 2.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{vorticity = {\ttfamily 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{density = {\ttfamily 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{int}]{octaves = {\ttfamily 8},  }\item[{float}]{weight = {\ttfamily 0.7\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{persistence = {\ttfamily 0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{lacunarity = {\ttfamily 2.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+ctrl\+\_\+param = {\ttfamily nullptr},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+x = {\ttfamily nullptr},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+y = {\ttfamily nullptr},  }\item[{\mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$}]{bbox = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}} }\end{DoxyParamCaption})}
+
+
+
+Generates 2D wavelet noise using an Open\+CL kernel. 
+
+This function creates a 2D noise field of the given {\ttfamily shape} using multi-\/octave wavelet turbulence. The noise is computed on the GPU via the "{}wavelet\+\_\+noise"{} Open\+CL kernel. Various parameters control the frequency evolution, amplitude decay, vorticity injection, and optional modulation using additional input arrays.
+
+
+\begin{DoxyParams}{Parameters}
+{\em shape} & Resolution of the output noise array (width, height). \\
+\hline
+{\em kw} & Base wave number (frequency) in each axis. Controls the initial spatial frequency of the wavelet field. \\
+\hline
+{\em seed} & Integer seed used by the random hashing functions inside the kernel. \\
+\hline
+{\em kw\+\_\+multiplier} & Multiplier applied to the wave number per octave (similar to gain). Higher values increase frequency growth across octaves. \\
+\hline
+{\em vorticity} & Amount of rotational distortion injected into the noise. When \texorpdfstring{$>$}{>} 0, the kernel applies additional angular perturbations to produce turbulent flow-\/like patterns. \\
+\hline
+{\em density} & Global scaling factor controlling the overall contrast or amplitude of the generated noise. \\
+\hline
+{\em octaves} & Number of wavelet noise layers combined. Higher octaves yield more detail but increase computational cost. \\
+\hline
+{\em weight} & Weight applied to the base octave, used as a global intensity multiplier before persistence attenuation is applied. \\
+\hline
+{\em persistence} & Amplitude decay factor per octave. Values in (0,1) produce the classic fractal noise falloff; higher values retain more high-\/frequency detail. \\
+\hline
+{\em lacunarity} & Frequency multiplier per octave. Controls how rapidly frequency increases at each octave, with typical values in the range \mbox{[}1.\+5, 3.\+0\mbox{]}. \\
+\hline
+{\em p\+\_\+ctrl\+\_\+param} & Optional pointer to a control-\/parameter array. When provided, values inside this array modulate the generated noise spatially. Pass nullptr to disable this feature. \\
+\hline
+{\em p\+\_\+noise\+\_\+x} & Optional pointer to an auxiliary noise array used to perturb sampling positions horizontally. Pass nullptr to disable. \\
+\hline
+{\em p\+\_\+noise\+\_\+y} & Optional pointer to an auxiliary noise array used to perturb sampling positions vertically. Pass nullptr to disable. \\
+\hline
+{\em bbox} & Bounding-\/box mapping (xmin, ymin, xmax, ymax). Converts pixel-\/space indices into world-\/space coordinates for spatially consistent noise.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classhmap_1_1Array}{Array} A 2D floating-\/point array containing the generated wavelet noise.
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_1_1gpu_adb8336ed4d83c15500872185dee45d50}{hmap::gpu::init\_opencl}}();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{structhmap_1_1Vec2}{hmap::Vec2<int>}}\ \ \ shape\ =\ \{256,\ 256\};}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{structhmap_1_1Vec2}{hmap::Vec2<float>}}\ kw\ =\ \{2.f,\ 2.f\};}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed\ =\ 1;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_ad8a656cc770c7febd63ba5248206ca84}{hmap::gpu::wavelet\_noise}}(shape,\ kw,\ seed);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_wavelet\_noise.png"{}},\ \{z\},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}}  \Hypertarget{namespacehmap_1_1gpu_a9a3f272d7c8294ab3418be67e3c9b3eb}\label{namespacehmap_1_1gpu_a9a3f272d7c8294ab3418be67e3c9b3eb} 
 \index{hmap::gpu@{hmap::gpu}!maximum\_smooth@{maximum\_smooth}}
 \index{maximum\_smooth@{maximum\_smooth}!hmap::gpu@{hmap::gpu}}
 \doxysubsubsection{\texorpdfstring{maximum\_smooth()}{maximum\_smooth()}}

@@ -130,6 +130,7 @@ var namespacehmap =
       [ "voronoise_fbm", "namespacehmap_1_1gpu.html#a26d6f87858e400f7b6c8cecb1e12bb8c", null ],
       [ "vororand", "namespacehmap_1_1gpu.html#ad25e08146acf2dc7101ec18dbfaa0d2b", null ],
       [ "vororand", "namespacehmap_1_1gpu.html#a2a14aa1a12ce7308b7cb553ea89b836d", null ],
+      [ "wavelet_noise", "namespacehmap_1_1gpu.html#ad8a656cc770c7febd63ba5248206ca84", null ],
       [ "maximum_smooth", "namespacehmap_1_1gpu.html#a9a3f272d7c8294ab3418be67e3c9b3eb", null ],
       [ "minimum_smooth", "namespacehmap_1_1gpu.html#a84e8cfef31aeb4ba10d4f7cbe04cb96d", null ],
       [ "sdf_2d_polyline", "namespacehmap_1_1gpu.html#a6a106eafab89fcdee4764c21b7406f3e", null ],

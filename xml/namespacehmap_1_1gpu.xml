@@ -4182,7 +4182,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/gpu_opencl/gpu_opencl.cpp" line="24" column="6" bodyfile="HighMap/src/gpu_opencl/gpu_opencl.cpp" bodystart="24" bodyend="96" declfile="HighMap/include/highmap/opencl/gpu_opencl.hpp" declline="27" declcolumn="6"/>
+        <location file="HighMap/src/gpu_opencl/gpu_opencl.cpp" line="24" column="6" bodyfile="HighMap/src/gpu_opencl/gpu_opencl.cpp" bodystart="24" bodyend="97" declfile="HighMap/include/highmap/opencl/gpu_opencl.hpp" declline="27" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a173df0f0155f3b9ed96827941e419601" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -9757,6 +9757,221 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         <inbodydescription>
         </inbodydescription>
         <location file="HighMap/src/primitives/primitives_gpu.cpp" line="1083" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="1083" bodyend="1127" declfile="HighMap/include/highmap/primitives.hpp" declline="2972" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehmap_1_1gpu_1ad8a656cc770c7febd63ba5248206ca84" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
+        <definition>Array hmap::gpu::wavelet_noise</definition>
+        <argsstring>(Vec2&lt; int &gt; shape, Vec2&lt; float &gt; kw, uint seed, float kw_multiplier=2.f, float vorticity=0.f, float density=1.f, int octaves=8, float weight=0.7f, float persistence=0.5f, float lacunarity=2.f, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f})</argsstring>
+        <name>wavelet_noise</name>
+        <qualifiedname>hmap::gpu::wavelet_noise</qualifiedname>
+        <param>
+          <type><ref refid="structhmap_1_1Vec2" kindref="compound">Vec2</ref>&lt; int &gt;</type>
+          <declname>shape</declname>
+        </param>
+        <param>
+          <type><ref refid="structhmap_1_1Vec2" kindref="compound">Vec2</ref>&lt; float &gt;</type>
+          <declname>kw</declname>
+        </param>
+        <param>
+          <type><ref refid="array_8hpp_1a91ad9478d81a7aaf2593e8d9c3d06a14" kindref="member">uint</ref></type>
+          <declname>seed</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>kw_multiplier</declname>
+          <defval>2.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>vorticity</declname>
+          <defval>0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>density</declname>
+          <defval>1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>octaves</declname>
+          <defval>8</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>weight</declname>
+          <defval>0.7<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>persistence</declname>
+          <defval>0.5<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>lacunarity</declname>
+          <defval>2.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
+          <declname>p_ctrl_param</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
+          <declname>p_noise_x</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
+          <declname>p_noise_y</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type><ref refid="structhmap_1_1Vec4" kindref="compound">Vec4</ref>&lt; float &gt;</type>
+          <declname>bbox</declname>
+          <defval>{0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>}</defval>
+        </param>
+        <briefdescription>
+<para>Generates 2D wavelet noise using an OpenCL kernel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function creates a 2D noise field of the given <computeroutput>shape</computeroutput> using multi-octave wavelet turbulence. The noise is computed on the GPU via the &quot;wavelet_noise&quot; OpenCL kernel. Various parameters control the frequency evolution, amplitude decay, vorticity injection, and optional modulation using additional input arrays.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>shape</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Resolution of the output noise array (width, height). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>kw</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Base wave number (frequency) in each axis. Controls the initial spatial frequency of the wavelet field. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>seed</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Integer seed used by the random hashing functions inside the kernel. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>kw_multiplier</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Multiplier applied to the wave number per octave (similar to gain). Higher values increase frequency growth across octaves. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>vorticity</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Amount of rotational distortion injected into the noise. When &gt; 0, the kernel applies additional angular perturbations to produce turbulent flow-like patterns. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>density</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Global scaling factor controlling the overall contrast or amplitude of the generated noise. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>octaves</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of wavelet noise layers combined. Higher octaves yield more detail but increase computational cost. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>weight</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Weight applied to the base octave, used as a global intensity multiplier before persistence attenuation is applied. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>persistence</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Amplitude decay factor per octave. Values in (0,1) produce the classic fractal noise falloff; higher values retain more high-frequency detail. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>lacunarity</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Frequency multiplier per octave. Controls how rapidly frequency increases at each octave, with typical values in the range [1.5, 3.0]. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>p_ctrl_param</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional pointer to a control-parameter array. When provided, values inside this array modulate the generated noise spatially. Pass nullptr to disable this feature. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>p_noise_x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional pointer to an auxiliary noise array used to perturb sampling positions horizontally. Pass nullptr to disable. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>p_noise_y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional pointer to an auxiliary noise array used to perturb sampling positions vertically. Pass nullptr to disable. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>bbox</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Bounding-box mapping (xmin, ymin, xmax, ymax). Converts pixel-space indices into world-space coordinates for spatially consistent noise.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classhmap_1_1Array" kindref="compound">Array</ref> A 2D floating-point array containing the generated wavelet noise.</para>
+</simplesect>
+<bold>Example</bold> <programlisting filename="ex_wavelet_noise.cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1adb8336ed4d83c15500872185dee45d50" kindref="member">hmap::gpu::init_opencl</ref>();</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="structhmap_1_1Vec2" kindref="compound">hmap::Vec2&lt;int&gt;</ref><sp/><sp/><sp/>shape<sp/>=<sp/>{256,<sp/>256};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="structhmap_1_1Vec2" kindref="compound">hmap::Vec2&lt;float&gt;</ref><sp/>kw<sp/>=<sp/>{2.f,<sp/>2.f};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed<sp/>=<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1ad8a656cc770c7febd63ba5248206ca84" kindref="member">hmap::gpu::wavelet_noise</ref>(shape,<sp/>kw,<sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_wavelet_noise.png&quot;</highlight><highlight class="normal">,<sp/>{z},<sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced" kindref="member">hmap::Cmap::JET</ref>);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<para><bold>Result</bold> <image type="html" name="ex_wavelet_noise.png"></image>
+ </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="1129" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="1129" bodyend="1174" declfile="HighMap/include/highmap/primitives.hpp" declline="3038" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a9a3f272d7c8294ab3418be67e3c9b3eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>

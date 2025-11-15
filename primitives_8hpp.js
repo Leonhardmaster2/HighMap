@@ -94,5 +94,6 @@ var primitives_8hpp =
     [ "voronoise", "primitives_8hpp.html#a29cc1b0843f7447eb19b6cef27772cdd", null ],
     [ "voronoise_fbm", "primitives_8hpp.html#a26d6f87858e400f7b6c8cecb1e12bb8c", null ],
     [ "vororand", "primitives_8hpp.html#ad25e08146acf2dc7101ec18dbfaa0d2b", null ],
-    [ "vororand", "primitives_8hpp.html#a2a14aa1a12ce7308b7cb553ea89b836d", null ]
+    [ "vororand", "primitives_8hpp.html#a2a14aa1a12ce7308b7cb553ea89b836d", null ],
+    [ "wavelet_noise", "primitives_8hpp.html#ad8a656cc770c7febd63ba5248206ca84", null ]
 ];

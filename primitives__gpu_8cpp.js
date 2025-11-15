@@ -23,5 +23,6 @@ var primitives__gpu_8cpp =
     [ "voronoise_fbm", "primitives__gpu_8cpp.html#a26d6f87858e400f7b6c8cecb1e12bb8c", null ],
     [ "voronoi_edge_distance", "primitives__gpu_8cpp.html#aaee46739a429168aa45ff1e5d55041ec", null ],
     [ "vororand", "primitives__gpu_8cpp.html#ad25e08146acf2dc7101ec18dbfaa0d2b", null ],
-    [ "vororand", "primitives__gpu_8cpp.html#a2a14aa1a12ce7308b7cb553ea89b836d", null ]
+    [ "vororand", "primitives__gpu_8cpp.html#a2a14aa1a12ce7308b7cb553ea89b836d", null ],
+    [ "wavelet_noise", "primitives__gpu_8cpp.html#ad8a656cc770c7febd63ba5248206ca84", null ]
 ];
