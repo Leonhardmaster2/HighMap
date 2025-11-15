@@ -1126,4 +1126,51 @@ Array vororand(Vec2<int>                 shape,
   return array;
 }
 
+Array wavelet_noise(Vec2<int>    shape,
+                    Vec2<float>  kw,
+                    uint         seed,
+                    float        kw_multiplier,
+                    float        vorticity,
+                    float        density,
+                    int          octaves,
+                    float        weight,
+                    float        persistence,
+                    float        lacunarity,
+                    const Array *p_ctrl_param,
+                    const Array *p_noise_x,
+                    const Array *p_noise_y,
+                    Vec4<float>  bbox)
+{
+  Array array(shape);
+
+  auto run = clwrapper::Run("wavelet_noise");
+
+  run.bind_buffer<float>("array", array.vector);
+  helper_bind_optional_buffer(run, "ctrl_param", p_ctrl_param);
+  helper_bind_optional_buffer(run, "noise_x", p_noise_x);
+  helper_bind_optional_buffer(run, "noise_y", p_noise_y);
+
+  run.bind_arguments(array.shape.x,
+                     array.shape.y,
+                     kw.x,
+                     kw.y,
+                     seed,
+                     kw_multiplier,
+                     vorticity,
+                     density,
+                     octaves,
+                     weight,
+                     persistence,
+                     lacunarity,
+                     p_ctrl_param ? 1 : 0,
+                     p_noise_x ? 1 : 0,
+                     p_noise_y ? 1 : 0,
+                     bbox);
+
+  run.execute({array.shape.x, array.shape.y});
+  run.read_buffer("array");
+
+  return array;
+}
+
 } // namespace hmap::gpu

@@ -85,6 +85,13 @@ float remap_from(float x,
   return (x - from_min) / (from_max - from_min) * (vmax - vmin) + vmin;
 }
 
+float2 rotate2d(float2 v, float a)
+{
+  float c = cos(a);
+  float s = sin(a);
+  return (float2)(v.x * c - v.y * s, v.x * s + v.y * c);
+}
+
 float smax(const float a, const float b, const float k)
 {
   if (k > 0.f)

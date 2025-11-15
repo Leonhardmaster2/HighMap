@@ -2979,4 +2979,75 @@ Array vororand(Vec2<int>                 shape,
                const Array      *p_noise_y = nullptr,
                Vec4<float>       bbox = {0.f, 1.f, 0.f, 1.f});
 
+/**
+ * @brief Generates 2D wavelet noise using an OpenCL kernel.
+ *
+ * This function creates a 2D noise field of the given @p shape using
+ * multi-octave wavelet turbulence. The noise is computed on the GPU via the
+ * "wavelet_noise" OpenCL kernel. Various parameters control the frequency
+ * evolution, amplitude decay, vorticity injection, and optional modulation
+ * using additional input arrays.
+ *
+ * @param  shape         Resolution of the output noise array (width, height).
+ * @param  kw            Base wave number (frequency) in each axis. Controls the
+ *                       initial spatial frequency of the wavelet field.
+ * @param  seed          Integer seed used by the random hashing functions
+ *                       inside the kernel.
+ * @param  kw_multiplier Multiplier applied to the wave number per octave
+ *                       (similar to gain). Higher values increase frequency
+ *                       growth across octaves.
+ * @param  vorticity     Amount of rotational distortion injected into the
+ *                       noise. When > 0, the kernel applies additional angular
+ *                       perturbations to produce turbulent flow-like patterns.
+ * @param  density       Global scaling factor controlling the overall contrast
+ *                       or amplitude of the generated noise.
+ * @param  octaves       Number of wavelet noise layers combined. Higher octaves
+ *                       yield more detail but increase computational cost.
+ * @param  weight        Weight applied to the base octave, used as a global
+ *                       intensity multiplier before persistence attenuation is
+ *                       applied.
+ * @param  persistence   Amplitude decay factor per octave. Values in (0,1)
+ *                       produce the classic fractal noise falloff; higher
+ *                       values retain more high-frequency detail.
+ * @param  lacunarity    Frequency multiplier per octave. Controls how rapidly
+ *                       frequency increases at each octave, with typical values
+ *                       in the range [1.5, 3.0].
+ * @param  p_ctrl_param  Optional pointer to a control-parameter array. When
+ *                       provided, values inside this array modulate the
+ *                       generated noise spatially. Pass nullptr to disable this
+ *                       feature.
+ * @param  p_noise_x     Optional pointer to an auxiliary noise array used to
+ *                       perturb sampling positions horizontally. Pass nullptr
+ *                       to disable.
+ * @param  p_noise_y     Optional pointer to an auxiliary noise array used to
+ *                       perturb sampling positions vertically. Pass nullptr to
+ *                       disable.
+ * @param  bbox          Bounding-box mapping (xmin, ymin, xmax, ymax). Converts
+ *                       pixel-space indices into world-space coordinates for
+ *                       spatially consistent noise.
+ *
+ * @return               Array A 2D floating-point array containing the
+ *                       generated wavelet noise.
+ *
+ * **Example**
+ * @include ex_wavelet_noise.cpp
+ *
+ * **Result**
+ * @image html ex_wavelet_noise.png
+ */
+Array wavelet_noise(Vec2<int>    shape,
+                    Vec2<float>  kw,
+                    uint         seed,
+                    float        kw_multiplier = 2.f,
+                    float        vorticity = 0.f,
+                    float        density = 1.f,
+                    int          octaves = 8,
+                    float        weight = 0.7f,
+                    float        persistence = 0.5f,
+                    float        lacunarity = 2.f,
+                    const Array *p_ctrl_param = nullptr,
+                    const Array *p_noise_x = nullptr,
+                    const Array *p_noise_y = nullptr,
+                    Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
+
 } // namespace hmap::gpu
