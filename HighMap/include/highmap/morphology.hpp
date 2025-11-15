@@ -30,6 +30,7 @@ enum DistanceTransformType : int
   DT_EXACT,     ///< Exact distance transform.
   DT_APPROX,    ///< Approximate distance transform.
   DT_MANHATTAN, ///< Manhattan distance transform.
+  DT_JFA,       ///< Approximate (JFA) distance transform.
 };
 
 /**
