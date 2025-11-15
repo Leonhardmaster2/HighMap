@@ -345,6 +345,9 @@ Array dilation_expand_border_only(const Array &array,
                                   int          ir,
                                   bool         use_disk_kernel = true);
 
+Array distance_transform_jfa(const Array &array,
+                             bool         return_squared_distance = false);
+
 /*! @brief See hmap::erosion */
 Array erosion(const Array &array, int ir, bool use_disk_kernel = true);
 

@@ -82,6 +82,13 @@ Array hstack(const Array &array1, const Array &array2) // friend function
   return array_out;
 }
 
+void swap(Array &a, Array &b)
+{
+  for (int j = 0; j < a.shape.y; j++)
+    for (int i = 0; i < a.shape.x; i++)
+      std::swap(a(i, j), b(i, j));
+}
+
 Array vstack(const Array &array1, const Array &array2) // friend function
 {
   Array array_out = Array(

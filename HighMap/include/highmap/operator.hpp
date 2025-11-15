@@ -348,6 +348,8 @@ std::vector<float> rescaled_vector(const std::vector<float> &vec,
                                    float                     vmin,
                                    float vmax); ///< @overload
 
+void swap(Array &a, Array &b);
+
 /**
  * @brief Vertically stack two arrays.
  *
