@@ -364,6 +364,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:ab553a95bb6b2680debb98284517c863d"><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="namespacehmap.html#a268e133ae504eaa1b31c91d13135f4c5" title="Expand non-zero regions of an array by morphological dilation, while preserving the original non-zero...">hmap::dilation_expand_border_only</a>.  <br /></td></tr>
 <tr class="separator:ab553a95bb6b2680debb98284517c863d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1dbc83521075f7c0179c7157f292b2b2" id="r_a1dbc83521075f7c0179c7157f292b2b2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a1dbc83521075f7c0179c7157f292b2b2">distance_transform_jfa</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, bool return_squared_distance=false)</td></tr>
+<tr class="memdesc:a1dbc83521075f7c0179c7157f292b2b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the Euclidean distance transform.  <br /></td></tr>
 <tr class="separator:a1dbc83521075f7c0179c7157f292b2b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a56d60a8b1139c78c27b53f85afedce7d" id="r_a56d60a8b1139c78c27b53f85afedce7d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a56d60a8b1139c78c27b53f85afedce7d">erosion</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, int ir, bool use_disk_kernel=true)</td></tr>
 <tr class="memdesc:a56d60a8b1139c78c27b53f85afedce7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="namespacehmap.html#a9cf7773f6141162bf60708a93acdfcee" title="Apply an erosion algorithm to the input array using a square structure.">hmap::erosion</a>.  <br /></td></tr>
@@ -4823,6 +4824,81 @@ Only available if OpenCL is enabled.</dd></dl>
       </table>
 </div><div class="memdoc">
 
+<p>Return the Euclidean distance transform. </p>
+<p>(Almost) exact transform based on the jump flooding algorithm.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">array</td><td>Input array to be transformed, will be converted into binary: 1 wherever input is greater than 0, 0 elsewhere. </td></tr>
+    <tr><td class="paramname">return_squared_distance</td><td>Whether the distance returned is squared or not. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classhmap_1_1Array.html" title="Array class, helper to manipulate 2D float array with &quot;(i, j)&quot; indexing.">Array</a> Reference to the output array.</dd></dl>
+<p><b>Example</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="highmap_8hpp.html">highmap.hpp</a>&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;<a class="code" href="timer_8hpp.html">highmap/dbg/timer.hpp</a>&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
+<div class="line">{</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap_1_1gpu.html#adb8336ed4d83c15500872185dee45d50">hmap::gpu::init_opencl</a>();</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_struct" href="structhmap_1_1Vec2.html">hmap::Vec2&lt;int&gt;</a> shape = {256, 256};</div>
+<div class="line">  shape = {2048, 2048};</div>
+<div class="line">  <span class="comment">// shape = {4096, 4096};</span></div>
+<div class="line">  <a class="code hl_struct" href="structhmap_1_1Vec2.html">hmap::Vec2&lt;float&gt;</a> res = {4.f, 4.f};</div>
+<div class="line">  <span class="keywordtype">int</span>               seed = 1;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z = <a class="code hl_function" href="namespacehmap.html#a40b948c49a05c14f2d540dc1a6952130">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, res, seed);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a2badbebec49b12d0d721970a18eb420d">hmap::clamp_min</a>(z, 0.f);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="classhmap_1_1Timer.html#ae9248cf01bfd4d8f680a6c7d5b80f45b">hmap::Timer::Start</a>(<span class="stringliteral">&quot;exact&quot;</span>);</div>
+<div class="line">  <span class="keyword">auto</span> d0 = <a class="code hl_function" href="namespacehmap.html#a3bad25b24d9ae0e07e692c546bc3480d">hmap::distance_transform</a>(z);</div>
+<div class="line">  <a class="code hl_function" href="classhmap_1_1Timer.html#a6054c197a10338a1bd48299be29593b5">hmap::Timer::Stop</a>(<span class="stringliteral">&quot;exact&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="classhmap_1_1Timer.html#ae9248cf01bfd4d8f680a6c7d5b80f45b">hmap::Timer::Start</a>(<span class="stringliteral">&quot;approx.&quot;</span>);</div>
+<div class="line">  <span class="keyword">auto</span> d1 = <a class="code hl_function" href="namespacehmap.html#a23fdcd258e0bab2a5fcad31d6459c3fa">hmap::distance_transform_approx</a>(z);</div>
+<div class="line">  <a class="code hl_function" href="classhmap_1_1Timer.html#a6054c197a10338a1bd48299be29593b5">hmap::Timer::Stop</a>(<span class="stringliteral">&quot;approx.&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="classhmap_1_1Timer.html#ae9248cf01bfd4d8f680a6c7d5b80f45b">hmap::Timer::Start</a>(<span class="stringliteral">&quot;manhattan&quot;</span>);</div>
+<div class="line">  <span class="keyword">auto</span> d2 = <a class="code hl_function" href="namespacehmap.html#add641a7fc26ae08b1f679cbb7dd43177">hmap::distance_transform_manhattan</a>(z);</div>
+<div class="line">  <a class="code hl_function" href="classhmap_1_1Timer.html#a6054c197a10338a1bd48299be29593b5">hmap::Timer::Stop</a>(<span class="stringliteral">&quot;manhattan&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="classhmap_1_1Timer.html#ae9248cf01bfd4d8f680a6c7d5b80f45b">hmap::Timer::Start</a>(<span class="stringliteral">&quot;jfa&quot;</span>);</div>
+<div class="line">  <span class="keyword">auto</span> d3 = <a class="code hl_function" href="namespacehmap_1_1gpu.html#a1dbc83521075f7c0179c7157f292b2b2">hmap::gpu::distance_transform_jfa</a>(z);</div>
+<div class="line">  <a class="code hl_function" href="classhmap_1_1Timer.html#a6054c197a10338a1bd48299be29593b5">hmap::Timer::Stop</a>(<span class="stringliteral">&quot;jfa&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">  z.<a class="code hl_function" href="classhmap_1_1Array.html#a9ff7b2c0be8f2b5dd9fc33085cd647d1">to_png</a>(<span class="stringliteral">&quot;ex_distance_transform0.png&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492">hmap::Cmap::VIRIDIS</a>);</div>
+<div class="line">  d0.to_png(<span class="stringliteral">&quot;ex_distance_transform1.png&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492">hmap::Cmap::VIRIDIS</a>);</div>
+<div class="line">  d1.to_png(<span class="stringliteral">&quot;ex_distance_transform2.png&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492">hmap::Cmap::VIRIDIS</a>);</div>
+<div class="line">  d2.to_png(<span class="stringliteral">&quot;ex_distance_transform3.png&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492">hmap::Cmap::VIRIDIS</a>);</div>
+<div class="line">  d3.to_png(<span class="stringliteral">&quot;ex_distance_transform4.png&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492">hmap::Cmap::VIRIDIS</a>);</div>
+<div class="line">}</div>
+<div class="ttc" id="aclasshmap_1_1Array_html_a9ff7b2c0be8f2b5dd9fc33085cd647d1"><div class="ttname"><a href="classhmap_1_1Array.html#a9ff7b2c0be8f2b5dd9fc33085cd647d1">hmap::Array::to_png</a></div><div class="ttdeci">void to_png(const std::string &amp;fname, int cmap, bool hillshading=false, int depth=CV_8U) const</div><div class="ttdoc">Export the array as a PNG image file with a specified colormap and hillshading.</div><div class="ttdef"><b>Definition</b> io.cpp:123</div></div>
+<div class="ttc" id="aclasshmap_1_1Timer_html_a6054c197a10338a1bd48299be29593b5"><div class="ttname"><a href="classhmap_1_1Timer.html#a6054c197a10338a1bd48299be29593b5">hmap::Timer::Stop</a></div><div class="ttdeci">static void Stop(const std::string &amp;name)</div><div class="ttdoc">Stops the timer for the specified event name.</div><div class="ttdef"><b>Definition</b> timer.cpp:51</div></div>
+<div class="ttc" id="aclasshmap_1_1Timer_html_ae9248cf01bfd4d8f680a6c7d5b80f45b"><div class="ttname"><a href="classhmap_1_1Timer.html#ae9248cf01bfd4d8f680a6c7d5b80f45b">hmap::Timer::Start</a></div><div class="ttdeci">static void Start(const std::string &amp;name)</div><div class="ttdoc">Starts a timer for the specified event name.</div><div class="ttdef"><b>Definition</b> timer.cpp:46</div></div>
+<div class="ttc" id="anamespacehmap_1_1gpu_html_a1dbc83521075f7c0179c7157f292b2b2"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a1dbc83521075f7c0179c7157f292b2b2">hmap::gpu::distance_transform_jfa</a></div><div class="ttdeci">Array distance_transform_jfa(const Array &amp;array, bool return_squared_distance=false)</div><div class="ttdoc">Return the Euclidean distance transform.</div><div class="ttdef"><b>Definition</b> distance_transform_jfa.cpp:13</div></div>
+<div class="ttc" id="anamespacehmap_html_a23fdcd258e0bab2a5fcad31d6459c3fa"><div class="ttname"><a href="namespacehmap.html#a23fdcd258e0bab2a5fcad31d6459c3fa">hmap::distance_transform_approx</a></div><div class="ttdeci">Array distance_transform_approx(const Array &amp;array, bool return_squared_distance=false)</div><div class="ttdoc">Calculates an approximate distance transform of the input array.</div><div class="ttdef"><b>Definition</b> distance_transform_approx.cpp:12</div></div>
+<div class="ttc" id="anamespacehmap_html_a2badbebec49b12d0d721970a18eb420d"><div class="ttname"><a href="namespacehmap.html#a2badbebec49b12d0d721970a18eb420d">hmap::clamp_min</a></div><div class="ttdeci">void clamp_min(Array &amp;array, float vmin)</div><div class="ttdoc">Clamp array values lower than a given bound.</div><div class="ttdef"><b>Definition</b> range.cpp:129</div></div>
+<div class="ttc" id="anamespacehmap_html_a3bad25b24d9ae0e07e692c546bc3480d"><div class="ttname"><a href="namespacehmap.html#a3bad25b24d9ae0e07e692c546bc3480d">hmap::distance_transform</a></div><div class="ttdeci">Array distance_transform(const Array &amp;array, bool return_squared_distance=false)</div><div class="ttdoc">Return the Euclidean distance transform.</div><div class="ttdef"><b>Definition</b> distance_transform.cpp:23</div></div>
+<div class="ttc" id="anamespacehmap_html_ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492"><div class="ttname"><a href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492">hmap::VIRIDIS</a></div><div class="ttdeci">@ VIRIDIS</div><div class="ttdef"><b>Definition</b> colormaps.hpp:92</div></div>
+<div class="ttc" id="anamespacehmap_html_add641a7fc26ae08b1f679cbb7dd43177"><div class="ttname"><a href="namespacehmap.html#add641a7fc26ae08b1f679cbb7dd43177">hmap::distance_transform_manhattan</a></div><div class="ttdeci">Array distance_transform_manhattan(const Array &amp;array, bool return_squared_distance=false)</div><div class="ttdoc">Calculates the Manhattan distance transform of an array.</div><div class="ttdef"><b>Definition</b> distance_transform_approx.cpp:54</div></div>
+<div class="ttc" id="atimer_8hpp_html"><div class="ttname"><a href="timer_8hpp.html">timer.hpp</a></div></div>
+</div><!-- fragment --><p><b>Result</b> </p><div class="image">
+<img src="ex_distance_transform0.png" alt=""/>
+</div>
+ <div class="image">
+<img src="ex_distance_transform1.png" alt=""/>
+</div>
+ <div class="image">
+<img src="ex_distance_transform2.png" alt=""/>
+</div>
+ <div class="image">
+<img src="ex_distance_transform3.png" alt=""/>
+</div>
+ <div class="image">
+<img src="ex_distance_transform4.png" alt=""/>
+</div>
+ 
 </div>
 </div>
 <a id="a56d60a8b1139c78c27b53f85afedce7d" name="a56d60a8b1139c78c27b53f85afedce7d"></a>
