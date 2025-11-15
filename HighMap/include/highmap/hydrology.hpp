@@ -162,21 +162,22 @@ Array flooding_from_point(const Array            &z,
  * rough depression-filling algorithm to compute the water surface, then
  * subtracts the original elevations to obtain the water depth at each cell.
  *
- * @param  z          Input 2D array representing terrain elevations (height
- *                    field).
- * @param  iterations Maximum number of iterations allowed for the
- *                    depression-filling algorithm.
- * @param  epsilon    Convergence tolerance for the depression-filling step.
+ * @param  z                 Input 2D array representing terrain elevations
+ *                           (height field).
+ * @param  iterations        Maximum number of iterations allowed for the
+ *                           depression-filling algorithm.
+ * @param  epsilon           Convergence tolerance for the depression-filling
+ *                           step.
  * @param  surface_threshold The minimum number of pixels a component must have
  *                           to be retained. Components smaller than this
  *                           threshold will be removed. The default value is 0
  *                           (no filtering).
  *
- * @return            A 2D array representing the water depth for each cell.
- *                    Values are zero where no lake is present and positive
- *                    where water accumulates in depressions.
+ * @return                   A 2D array representing the water depth for each
+ *                           cell. Values are zero where no lake is present and
+ *                           positive where water accumulates in depressions.
  *
- * @see               depression_filling
+ * @see                      depression_filling
  *
  * **Example**
  * @include ex_flooding_lake_system.cpp

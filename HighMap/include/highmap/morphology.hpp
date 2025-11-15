@@ -117,6 +117,8 @@ Array dilation_expand_border_only(const Array &array, int ir);
  * @image html ex_distance_transform0.png
  * @image html ex_distance_transform1.png
  * @image html ex_distance_transform2.png
+ * @image html ex_distance_transform3.png
+ * @image html ex_distance_transform4.png
  */
 Array distance_transform(const Array &array,
                          bool         return_squared_distance = false);
@@ -138,6 +140,8 @@ Array distance_transform(const Array &array,
  * @image html ex_distance_transform0.png
  * @image html ex_distance_transform1.png
  * @image html ex_distance_transform2.png
+ * @image html ex_distance_transform3.png
+ * @image html ex_distance_transform4.png
  */
 Array distance_transform_approx(const Array &array,
                                 bool         return_squared_distance = false);
@@ -158,6 +162,8 @@ Array distance_transform_approx(const Array &array,
  * @image html ex_distance_transform0.png
  * @image html ex_distance_transform1.png
  * @image html ex_distance_transform2.png
+ * @image html ex_distance_transform3.png
+ * @image html ex_distance_transform4.png
  */
 Array distance_transform_manhattan(const Array &array,
                                    bool return_squared_distance = false);
@@ -345,6 +351,28 @@ Array dilation_expand_border_only(const Array &array,
                                   int          ir,
                                   bool         use_disk_kernel = true);
 
+/**
+ * @brief Return the Euclidean distance transform.
+ *
+ * (Almost) exact transform based on the jump flooding algorithm.
+ *
+ * @param  array                   Input array to be transformed, will be
+ *                                 converted into binary: 1 wherever input is
+ *                                 greater than 0, 0 elsewhere.
+ * @param  return_squared_distance Whether the distance returned is squared or
+ *                                 not.
+ * @return                         Array Reference to the output array.
+ *
+ * **Example**
+ * @include ex_distance_transform.cpp
+ *
+ * **Result**
+ * @image html ex_distance_transform0.png
+ * @image html ex_distance_transform1.png
+ * @image html ex_distance_transform2.png
+ * @image html ex_distance_transform3.png
+ * @image html ex_distance_transform4.png
+ */
 Array distance_transform_jfa(const Array &array,
                              bool         return_squared_distance = false);
 

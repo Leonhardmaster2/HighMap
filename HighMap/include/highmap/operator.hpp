@@ -348,6 +348,12 @@ std::vector<float> rescaled_vector(const std::vector<float> &vec,
                                    float                     vmin,
                                    float vmax); ///< @overload
 
+/**
+ * @brief Swaps the contents of two Array objects.
+ *
+ * @param a First Array to swap.
+ * @param b Second Array to swap.
+ */
 void swap(Array &a, Array &b);
 
 /**
