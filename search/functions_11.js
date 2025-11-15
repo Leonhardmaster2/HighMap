@@ -132,6 +132,7 @@ var searchData=
   ['stratify_5foblique_129',['stratify_oblique',['../namespacehmap.html#a06a4f7bbf99b83632ceb8a9ba5989823',1,'hmap::stratify_oblique(Array &amp;z, Array *p_mask, std::vector&lt; float &gt; hs, std::vector&lt; float &gt; gamma, float talus, float angle, Array *p_noise=nullptr)'],['../namespacehmap.html#a1d3b4f4dbe769a1f71f8fcc44cfcaf8c',1,'hmap::stratify_oblique(Array &amp;z, std::vector&lt; float &gt; hs, std::vector&lt; float &gt; gamma, float talus, float angle, Array *p_noise=nullptr)']]],
   ['subsample_130',['subsample',['../classhmap_1_1Path.html#a9816b231362dd1ca5208a839626f1f68',1,'hmap::Path']]],
   ['sum_131',['sum',['../classhmap_1_1Array.html#a7ee63fb7135276ed8d6643d082f06892',1,'hmap::Array::sum()'],['../structhmap_1_1Vec3.html#a4d1d4c9590347bc2c95fdff5d7b0a097',1,'hmap::Vec3::sum()'],['../classhmap_1_1Heightmap.html#a655ef5409be462ce32f37f203ad78c27',1,'hmap::Heightmap::sum()']]],
-  ['swirl_132',['swirl',['../namespacehmap.html#aa7f0f75c71d2248bf3fea0ba6c7ccb31',1,'hmap']]],
-  ['sym_5fborders_133',['sym_borders',['../namespacehmap.html#a646e831987d60f4171024faadd6236e3',1,'hmap']]]
+  ['swap_132',['swap',['../namespacehmap.html#a81ae845564fe0e6f2f641451c063bc65',1,'hmap']]],
+  ['swirl_133',['swirl',['../namespacehmap.html#aa7f0f75c71d2248bf3fea0ba6c7ccb31',1,'hmap']]],
+  ['sym_5fborders_134',['sym_borders',['../namespacehmap.html#a646e831987d60f4171024faadd6236e3',1,'hmap']]]
 ];

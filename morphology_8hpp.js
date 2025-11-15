@@ -24,6 +24,7 @@ var morphology_8hpp =
     [ "closing", "morphology_8hpp.html#adf2abef40ebfec5ea2b7638a9ed73170", null ],
     [ "dilation", "morphology_8hpp.html#a032253df9426aa9eda718a8277cbcb18", null ],
     [ "dilation_expand_border_only", "morphology_8hpp.html#ab553a95bb6b2680debb98284517c863d", null ],
+    [ "distance_transform_jfa", "morphology_8hpp.html#a1dbc83521075f7c0179c7157f292b2b2", null ],
     [ "erosion", "morphology_8hpp.html#a56d60a8b1139c78c27b53f85afedce7d", null ],
     [ "morphological_black_hat", "morphology_8hpp.html#a7d7b6ea8fdac615f75d4c53402a1249f", null ],
     [ "morphological_gradient", "morphology_8hpp.html#a163ab224a45decc3ccecf090f0704bc7", null ],

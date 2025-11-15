@@ -12,6 +12,7 @@ var searchData=
   ['distance_5ffunction_2ecpp_9',['distance_function.cpp',['../distance__function_8cpp.html',1,'']]],
   ['distance_5ftransform_2ecpp_10',['distance_transform.cpp',['../distance__transform_8cpp.html',1,'']]],
   ['distance_5ftransform_5fapprox_2ecpp_11',['distance_transform_approx.cpp',['../distance__transform__approx_8cpp.html',1,'']]],
-  ['downscale_5ftransform_2ecpp_12',['downscale_transform.cpp',['../downscale__transform_8cpp.html',1,'']]],
-  ['downscaling_2ehpp_13',['downscaling.hpp',['../downscaling_8hpp.html',1,'']]]
+  ['distance_5ftransform_5fjfa_2ecpp_12',['distance_transform_jfa.cpp',['../distance__transform__jfa_8cpp.html',1,'']]],
+  ['downscale_5ftransform_2ecpp_13',['downscale_transform.cpp',['../downscale__transform_8cpp.html',1,'']]],
+  ['downscaling_2ehpp_14',['downscaling.hpp',['../downscaling_8hpp.html',1,'']]]
 ];
