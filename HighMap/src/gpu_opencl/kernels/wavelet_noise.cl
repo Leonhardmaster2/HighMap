@@ -7,62 +7,12 @@ float wavelet_noise_base(const float2 p,
                          const float  phase,
                          const float  kw_multiplier,
                          const float  vorticity,
+                         const float  density,
                          const int    octaves,
+                         const float  weight,
+                         const float  persistence,
                          const float  lacunarity,
                          const float  fseed)
-{
-  // https://www.shadertoy.com/view/wsBfzK
-  // MIT License - Copyright © 2020 Martijn Steinrucken
-
-  float  d = 0.0f;
-  float  s = 1.0f;
-  float  m = 0.0f;
-  float  a = 0.0f;
-  float2 pm = p;
-
-  for (int it = 0; it < octaves; it++)
-  {
-    float2 q = pm * s;
-
-    float qrd = hash12f(floor(q), fseed);
-
-    a = qrd * 1e3;
-    a += phase * qrd * vorticity;
-
-    // q = (fract(q) - 0.5) * rotate2d(a);
-    float2 qi;
-    float2 fq = fract(q, &qi) - (float2)(0.5f, 0.5f);
-    q = rotate2d(fq, a);
-
-    float dq = dot(q, q);
-
-    float value = 0.5f * (sin(6.2832f * q.x * kw_multiplier + phase) + 0.5f) *
-                  smoothstep3_gl(dq, 0.25f, 0.0f);
-    d += value / s;
-
-    // pm = pm * mat2(0.54,-0.84, 0.84, 0.54) + i;
-    float2 rot;
-    rot.x = pm.x * 0.54f + pm.y * 0.84f;
-    rot.y = -pm.x * 0.84f + pm.y * 0.54f;
-    pm = rot + (float)it;
-
-    m += 1.0f / s;
-    s *= lacunarity;
-  }
-
-  return d / m;
-}
-
-float wavelet_noise_base2(const float2 p,
-                          const float  phase,
-                          const float  kw_multiplier,
-                          const float  vorticity,
-                          const float  density,
-                          const int    octaves,
-                          const float  weight,
-                          const float  persistence,
-                          const float  lacunarity,
-                          const float  fseed)
 {
   // based on https://www.shadertoy.com/view/wsBfzK
   // MIT License - Copyright © 2020 Martijn Steinrucken
@@ -148,15 +98,15 @@ void kernel wavelet_noise(global float *output,
 
   float2 pos = g_to_xy(g, nx, ny, kx, ky, dx, dy, bbox);
 
-  output[index] = wavelet_noise_base2(pos,
-                                      0.f,
-                                      kw_multiplier,
-                                      vorticity,
-                                      density,
-                                      octaves,
-                                      weight,
-                                      persistence,
-                                      lacunarity,
-                                      fseed);
+  output[index] = wavelet_noise_base(pos,
+                                     ct,
+                                     kw_multiplier,
+                                     vorticity,
+                                     density,
+                                     octaves,
+                                     weight,
+                                     persistence,
+                                     lacunarity,
+                                     fseed);
 }
 )""
