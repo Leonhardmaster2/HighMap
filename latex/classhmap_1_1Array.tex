@@ -80,6 +80,8 @@ Collaboration diagram for hmap\+::Array\+:
 \begin{DoxyCompactList}\small\item\em Overloads the function call operator to access the array value at index (i, j). \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array_af586ddce153ac93df48a6d26609d7264}{const}} \mbox{\hyperlink{classhmap_1_1Array_af586ddce153ac93df48a6d26609d7264}{float}} \& \mbox{\hyperlink{classhmap_1_1Array_a4befd40052e9d7390eb7499e592769e5}{operator()}} (\mbox{\hyperlink{classhmap_1_1Array_af586ddce153ac93df48a6d26609d7264}{int}} i, \mbox{\hyperlink{classhmap_1_1Array_af586ddce153ac93df48a6d26609d7264}{int}} j) \mbox{\hyperlink{classhmap_1_1Array_af586ddce153ac93df48a6d26609d7264}{const}}
 \begin{DoxyCompactList}\small\item\em Overloads the function call operator to access the array value at index (i, j) (const version). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array_af586ddce153ac93df48a6d26609d7264}{void}} \mbox{\hyperlink{classhmap_1_1Array_a9c70ac5b5ca393c53bcc423407572a2b}{argmax}} (\mbox{\hyperlink{classhmap_1_1Array_af586ddce153ac93df48a6d26609d7264}{float}} \&\mbox{\hyperlink{classhmap_1_1Array_af586ddce153ac93df48a6d26609d7264}{vmax}}, \mbox{\hyperlink{classhmap_1_1Array_af586ddce153ac93df48a6d26609d7264}{int}} \&i, \mbox{\hyperlink{classhmap_1_1Array_af586ddce153ac93df48a6d26609d7264}{int}} \&j) \mbox{\hyperlink{classhmap_1_1Array_af586ddce153ac93df48a6d26609d7264}{const}}
+\begin{DoxyCompactList}\small\item\em Finds the maximum value in the array and its coordinates. \end{DoxyCompactList}\item 
 std\+::vector$<$ \mbox{\hyperlink{classhmap_1_1Array_af586ddce153ac93df48a6d26609d7264}{float}} $>$ \mbox{\hyperlink{classhmap_1_1Array_a832a302b58fa7b346df04675a14ad59c}{col\+\_\+to\+\_\+vector}} (\mbox{\hyperlink{classhmap_1_1Array_af586ddce153ac93df48a6d26609d7264}{int}} j)
 \begin{DoxyCompactList}\small\item\em Extracts a column \textquotesingle{}j\textquotesingle{} as a std\+::vector. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array_af586ddce153ac93df48a6d26609d7264}{int}} \mbox{\hyperlink{classhmap_1_1Array_a11949e2b41c869b364bc76129b4efeb4}{count\+\_\+non\+\_\+zero}} ()
@@ -640,6 +642,25 @@ Overloads the function call operator to access the array value at index (i, j) (
 \begin{DoxyReturn}{Returns}
 const float\& Reference to the array value at index (i, j). \texorpdfstring{$<$}{<}This is an overloaded member function, provided for convenience. It differs from the above function only in what \doxylink{classhmap_1_1Array_af586ddce153ac93df48a6d26609d7264}{argument(s)} it accepts. 
 \end{DoxyReturn}
+\Hypertarget{classhmap_1_1Array_a9c70ac5b5ca393c53bcc423407572a2b}\label{classhmap_1_1Array_a9c70ac5b5ca393c53bcc423407572a2b} 
+\index{hmap::Array@{hmap::Array}!argmax@{argmax}}
+\index{argmax@{argmax}!hmap::Array@{hmap::Array}}
+\doxysubsubsection{\texorpdfstring{argmax()}{argmax()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array_af586ddce153ac93df48a6d26609d7264}{void}} hmap\+::\+Array\+::argmax (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Array_af586ddce153ac93df48a6d26609d7264}{float}} \&}]{vmax,  }\item[{\mbox{\hyperlink{classhmap_1_1Array_af586ddce153ac93df48a6d26609d7264}{int}} \&}]{i,  }\item[{\mbox{\hyperlink{classhmap_1_1Array_af586ddce153ac93df48a6d26609d7264}{int}} \&}]{j }\end{DoxyParamCaption}) const}
+
+
+
+Finds the maximum value in the array and its coordinates. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em max} & The maximum value found. \\
+\hline
+\mbox{\texttt{ out}}  & {\em im} & The x-\/index of the maximum value. \\
+\hline
+\mbox{\texttt{ out}}  & {\em jm} & The y-\/index of the maximum value. \\
+\hline
+\end{DoxyParams}
 \Hypertarget{classhmap_1_1Array_a832a302b58fa7b346df04675a14ad59c}\label{classhmap_1_1Array_a832a302b58fa7b346df04675a14ad59c} 
 \index{hmap::Array@{hmap::Array}!col\_to\_vector@{col\_to\_vector}}
 \index{col\_to\_vector@{col\_to\_vector}!hmap::Array@{hmap::Array}}

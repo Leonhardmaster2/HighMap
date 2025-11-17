@@ -1,5 +1,7 @@
 var NAVTREEINDEX8 =
 {
+"get__colormap__data_8cpp.html#aea4d1a92934de93437705abd7dde6b06":[5,0,1,1,5,0,0],
+"globals.html":[5,1,0],
 "globals_func.html":[5,1,1],
 "globals_type.html":[5,1,2],
 "gpu__opencl_8cpp.html":[5,0,1,1,15,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX8 =
 "interpolate2d_8cpp.html#a62fb974ae1d78c0c4ebb4267dc9c8204":[5,0,1,1,19,2,0],
 "interpolate2d_8cpp.html#a87e9a2e5fc78594e8d88522366ff5396":[5,0,1,1,19,2,2],
 "interpolate2d_8hpp.html":[5,0,1,0,0,24],
-"interpolate2d_8hpp.html#a5bfab5d68e822294ff90fde21b85f581":[5,0,1,0,0,24,0],
-"interpolate2d_8hpp.html#a5bfab5d68e822294ff90fde21b85f581a69ac444964e6a94c448c395c8f82b135":[5,0,1,0,0,24,0,0],
-"interpolate2d_8hpp.html#a5bfab5d68e822294ff90fde21b85f581a7ab263bff6c11b7d35a8c1f1caac8cc2":[5,0,1,0,0,24,0,1]
+"interpolate2d_8hpp.html#a5bfab5d68e822294ff90fde21b85f581":[5,0,1,0,0,24,0]
 };

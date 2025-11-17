@@ -32,6 +32,8 @@ var math_8hpp =
     [ "get_distance_function", "math_8hpp.html#a325c785e4776325f3061d9f5bd89fccf", null ],
     [ "get_phasor_profile_function", "math_8hpp.html#a6bea64db2dac2b906983472f7f6781a0", null ],
     [ "highest_power_of_2", "math_8hpp.html#a9ae209ce5746e99078078259955c7421", null ],
+    [ "is_non_zero", "math_8hpp.html#a339d883dc34fc818dd25077c5daab953", null ],
+    [ "is_zero", "math_8hpp.html#a3a1e261b646c9df967e78fb77e5bf8c1", null ],
     [ "lerp", "math_8hpp.html#ad78d0f991f4f0eee67929b00469aea39", null ],
     [ "lerp", "math_8hpp.html#a6d85b2b635d15a4361344451619253f7", null ],
     [ "lerp", "math_8hpp.html#a1d5e665c9e945b8ad9a6b5f0c1b673ad", null ],

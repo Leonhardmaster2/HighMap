@@ -15,6 +15,8 @@ var math_8cpp =
     [ "gain", "math_8cpp.html#a0db2ecdc6ca69af1e6eb3402b1147cb6", null ],
     [ "gaussian_decay", "math_8cpp.html#a99778512aa5779e70039e6b04e62d40c", null ],
     [ "hypot", "math_8cpp.html#acc88d4cddcb41e8142b7fef4846e3454", null ],
+    [ "is_non_zero", "math_8cpp.html#a339d883dc34fc818dd25077c5daab953", null ],
+    [ "is_zero", "math_8cpp.html#a3a1e261b646c9df967e78fb77e5bf8c1", null ],
     [ "lerp", "math_8cpp.html#ad78d0f991f4f0eee67929b00469aea39", null ],
     [ "lerp", "math_8cpp.html#a6d85b2b635d15a4361344451619253f7", null ],
     [ "lerp", "math_8cpp.html#a1d5e665c9e945b8ad9a6b5f0c1b673ad", null ],

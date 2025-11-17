@@ -27,6 +27,7 @@
     <member refid="classhmap_1_1Array_1a5f94f3bb00f0d5ac33a7e82d80366cc4" kind="function"><name>operator-</name></member>
     <member refid="classhmap_1_1Array_1ad8a812fa8efe5590cf0f1c619909eafe" kind="function"><name>operator()</name></member>
     <member refid="classhmap_1_1Array_1a4befd40052e9d7390eb7499e592769e5" kind="function"><name>operator()</name></member>
+    <member refid="classhmap_1_1Array_1a9c70ac5b5ca393c53bcc423407572a2b" kind="function"><name>argmax</name></member>
     <member refid="classhmap_1_1Array_1a832a302b58fa7b346df04675a14ad59c" kind="function"><name>col_to_vector</name></member>
     <member refid="classhmap_1_1Array_1a11949e2b41c869b364bc76129b4efeb4" kind="function"><name>count_non_zero</name></member>
     <member refid="classhmap_1_1Array_1aec532fdab57a1b7571a0e273a567537c" kind="function"><name>depose_amount_bilinear_at</name></member>
@@ -1411,6 +1412,8 @@
     <member refid="namespacehmap_1a325c785e4776325f3061d9f5bd89fccf" kind="function"><name>get_distance_function</name></member>
     <member refid="namespacehmap_1a6bea64db2dac2b906983472f7f6781a0" kind="function"><name>get_phasor_profile_function</name></member>
     <member refid="namespacehmap_1a9ae209ce5746e99078078259955c7421" kind="function"><name>highest_power_of_2</name></member>
+    <member refid="namespacehmap_1a339d883dc34fc818dd25077c5daab953" kind="function"><name>is_non_zero</name></member>
+    <member refid="namespacehmap_1a3a1e261b646c9df967e78fb77e5bf8c1" kind="function"><name>is_zero</name></member>
     <member refid="namespacehmap_1ad78d0f991f4f0eee67929b00469aea39" kind="function"><name>lerp</name></member>
     <member refid="namespacehmap_1a6d85b2b635d15a4361344451619253f7" kind="function"><name>lerp</name></member>
     <member refid="namespacehmap_1a1d5e665c9e945b8ad9a6b5f0c1b673ad" kind="function"><name>lerp</name></member>
@@ -1492,6 +1495,7 @@
     <member refid="namespacehmap_1a2ed7a6b1be6d02101046f0623b374177" kind="function"><name>disk</name></member>
     <member refid="namespacehmap_1a2b3fdb5bd6cbca1c8ed1b81052012ba3" kind="function"><name>gabor_noise</name></member>
     <member refid="namespacehmap_1a45ca8d7a507e92e78d466f0d392f8ea3" kind="function"><name>gaussian_pulse</name></member>
+    <member refid="namespacehmap_1a327031655d5c4dde6d21796f6c0444d0" kind="function"><name>island_land_mask</name></member>
     <member refid="namespacehmap_1a03c0be3a7198eebacefcb208b0cfee99" kind="function"><name>noise</name></member>
     <member refid="namespacehmap_1a40b948c49a05c14f2d540dc1a6952130" kind="function"><name>noise_fbm</name></member>
     <member refid="namespacehmap_1ab078210e784284a05d8cb7c1ae993c51" kind="function"><name>noise_iq</name></member>
@@ -1547,6 +1551,7 @@
     <member refid="namespacehmap_1ad67818460523a881fd4c6b7d4b80f6a1" kind="function"><name>generate_network_alpha_model</name></member>
     <member refid="namespacehmap_1a7bacc45412ea1599907ac3f9b0e9e282" kind="function"><name>sdf_2d_polyline</name></member>
     <member refid="namespacehmap_1a5368ab0d5bb8708001a55d216332918b" kind="function"><name>sdf_2d_polyline_bezier</name></member>
+    <member refid="namespacehmap_1a0524c28c03b2976dae0da680a55fec5f" kind="function"><name>perturb_mask_contour</name></member>
     <member refid="namespacehmap_1a6c6abf2b8bd3161610e273ef97ee4771" kind="function"><name>scan_mask</name></member>
     <member refid="namespacehmap_1a17edf2c011829f4eed9f45152b3f8eb9" kind="function"><name>select_angle</name></member>
     <member refid="namespacehmap_1aeaaf7a8ae8cf8de1dad3a82950879473" kind="function"><name>select_blob_log</name></member>
@@ -1744,6 +1749,8 @@
     <member refid="namespacehmap_1_1gpu_1a688f13a6de420fd318ccba616eafcf25" kind="function"><name>gavoronoise</name></member>
     <member refid="namespacehmap_1_1gpu_1a78f88496614fc22dec4f30cb12141d2d" kind="function"><name>hemisphere_field</name></member>
     <member refid="namespacehmap_1_1gpu_1a7548bedcbc4deec472dfbd20ef057b1d" kind="function"><name>hemisphere_field_fbm</name></member>
+    <member refid="namespacehmap_1_1gpu_1ae20d5b7f78d4c3eb5064490a3a407533" kind="function"><name>island</name></member>
+    <member refid="namespacehmap_1_1gpu_1a3489ed91699f85085c9c143f4f18d926" kind="function"><name>island</name></member>
     <member refid="namespacehmap_1_1gpu_1ab7d34635c57f241a162b7dda9a9539a1" kind="function"><name>mountain_cone</name></member>
     <member refid="namespacehmap_1_1gpu_1ad70163c350be417e3c71c26c14ffa25f" kind="function"><name>mountain_inselberg</name></member>
     <member refid="namespacehmap_1_1gpu_1a50332f79ca9b2548089359f5ad4b8ffd" kind="function"><name>mountain_range_radial</name></member>
@@ -1780,6 +1787,9 @@
     <member refid="namespacehmap_1_1gpu_1aab128e15988875b5d350d6f156612aa5" kind="function"><name>rotate</name></member>
     <member refid="namespacehmap_1_1gpu_1a99659d06f84b0e92e6731f28ca28937c" kind="function"><name>warp</name></member>
     <member refid="namespacehmap_1_1gpu_1ada313c7ac68787e41c2979c2975568eb" kind="function"><name>helper_transform_bbox</name></member>
+    <member refid="namespacehmap_1_1gpu_1a8583f0ee018a30b63c9cacb4580cd3e9" kind="function"><name>helper_radial_profile</name></member>
+    <member refid="namespacehmap_1_1gpu_1a04ae8a1ec2b8156be692aa690d32e1ff" kind="function"><name>helper_apply_leeward</name></member>
+    <member refid="namespacehmap_1_1gpu_1a7aac37734b22ffed4807f274511861be" kind="function"><name>helper_apply_uplift</name></member>
     <member refid="namespacehmap_1_1gpu_1a27b70c333fc5550bcca1b96dcb0116fb" kind="function"><name>helper_bind_optional_buffers</name></member>
   </compound>
   <compound refid="namespacestd" kind="namespace"><name>std</name>
@@ -2178,6 +2188,8 @@
   </compound>
   <compound refid="geo_8cpp" kind="file"><name>geo.cpp</name>
   </compound>
+  <compound refid="island_8cpp" kind="file"><name>island.cpp</name>
+  </compound>
   <compound refid="mountain__cone_8cpp" kind="file"><name>mountain_cone.cpp</name>
   </compound>
   <compound refid="mountain__inselberg_8cpp" kind="file"><name>mountain_inselberg.cpp</name>
@@ -2213,6 +2225,8 @@
   <compound refid="sdf__2d__polyline_8cpp" kind="file"><name>sdf_2d_polyline.cpp</name>
   </compound>
   <compound refid="sdf__2d__polyline__gpu_8cpp" kind="file"><name>sdf_2d_polyline_gpu.cpp</name>
+  </compound>
+  <compound refid="perturb__mask__contour_8cpp" kind="file"><name>perturb_mask_contour.cpp</name>
   </compound>
   <compound refid="select__soil__flow_8cpp" kind="file"><name>select_soil_flow.cpp</name>
   </compound>

@@ -1,5 +1,7 @@
 var NAVTREEINDEX7 =
 {
+"filters_8hpp.html#a62f3ce1778309a90b37d34e727e4f040":[5,0,1,0,0,18,27],
+"filters_8hpp.html#a638d2358ff4ea4cb6a4f24106aa3c94d":[5,0,1,0,0,18,136],
 "filters_8hpp.html#a64fd39fbc155858c359b051c1a2dff8c":[5,0,1,0,0,18,89],
 "filters_8hpp.html#a65f49b330320b4c60d8ca5083eda8e86":[5,0,1,0,0,18,125],
 "filters_8hpp.html#a69137ab0da4a3b15979b7ede32dfab19":[5,0,1,0,0,18,70],
@@ -162,8 +164,8 @@ var NAVTREEINDEX7 =
 "flow__stream_8cpp.html#a7376f7c00281f0616024d33069971ca4":[5,0,1,1,18,5,0],
 "format__raw_8cpp.html":[5,0,1,1,11,8],
 "format__raw_8cpp.html#a466d4275bb86ca9ca603c9d4192f931a":[5,0,1,1,11,8,0],
-"functions.html":[4,3,0,0],
 "functions.html":[4,3,0],
+"functions.html":[4,3,0,0],
 "functions_8cpp.html":[5,0,1,1,26,0,2],
 "functions_8cpp.html#a7064ad1eef3ea7b6e19249fe3312e3b9":[5,0,1,1,26,0,2,0],
 "functions_8hpp.html":[5,0,1,0,0,19],
@@ -247,7 +249,5 @@ var NAVTREEINDEX7 =
 "geo_8cpp.html#abf32b5d631ee74d292cf9449b51395c3":[5,0,1,1,26,1,2,0],
 "geomorphons_8cpp.html":[5,0,1,1,12,3],
 "geomorphons_8cpp.html#aa60fa2d3f02d1e064b520fa1623200d0":[5,0,1,1,12,3,0],
-"get__colormap__data_8cpp.html":[5,0,1,1,5,0],
-"get__colormap__data_8cpp.html#aea4d1a92934de93437705abd7dde6b06":[5,0,1,1,5,0,0],
-"globals.html":[5,1,0]
+"get__colormap__data_8cpp.html":[5,0,1,1,5,0]
 };
