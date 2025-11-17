@@ -155,6 +155,26 @@ Array hypot(const Array &array1, const Array &array2)
   return array_out;
 }
 
+Array is_non_zero(const Array &array)
+{
+  Array array_out = Array(array.shape);
+  std::transform(array.vector.begin(),
+                 array.vector.end(),
+                 array_out.vector.begin(),
+                 [](float v) { return v != 0.f ? 1.f : 0.f; });
+  return array_out;
+}
+
+Array is_zero(const Array &array)
+{
+  Array array_out = Array(array.shape);
+  std::transform(array.vector.begin(),
+                 array.vector.end(),
+                 array_out.vector.begin(),
+                 [](float v) { return v == 0.f ? 1.f : 0.f; });
+  return array_out;
+}
+
 Array lerp(const Array &array1, const Array &array2, const Array &t)
 {
   Array array_out = array1 * (1.f - t) + array2 * t;

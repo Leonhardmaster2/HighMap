@@ -260,6 +260,15 @@ public:
   //----------------------------------------
 
   /**
+   * @brief Finds the maximum value in the array and its coordinates.
+   *
+   * @param[out] max The maximum value found.
+   * @param[out] im  The x-index of the maximum value.
+   * @param[out] jm  The y-index of the maximum value.
+   */
+  void argmax(float &vmax, int &i, int &j) const;
+
+  /**
    * @brief Extracts a column 'j' as a std::vector.
    *
    * @param  j The column index.

@@ -4,6 +4,7 @@
 #include <functional>
 #include <iomanip>
 #include <iostream>
+#include <limits>
 #include <numeric>
 #include <vector>
 
@@ -21,6 +22,25 @@
 
 namespace hmap
 {
+
+void Array::argmax(float &max, int &im, int &jm) const
+{
+  max = -std::numeric_limits<float>::infinity();
+  im = -1;
+  jm = -1;
+
+  for (int j = 0; j < shape.y; j++)
+    for (int i = 0; i < shape.x; i++)
+    {
+      float v = (*this)(i, j);
+      if (v > max)
+      {
+        max = v;
+        im = i;
+        jm = j;
+      }
+    }
+}
 
 std::vector<float> Array::col_to_vector(int j)
 {

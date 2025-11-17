@@ -671,6 +671,47 @@ Array gaussian_pulse(Vec2<int>    shape,
                      Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
+ * @brief Generates a 2D island mask by perturbing a radial boundary with noise.
+ *
+ * Creates a binary mask of a single connected island using radial distance from
+ * a center point and adding an FBM-based angular displacement.
+ *
+ * @param  shape        Output array size (width, height).
+ * @param  radius       Base island radius.
+ * @param  seed         Noise seed.
+ * @param  displacement Amplitude of boundary perturbation.
+ * @param  noise_type   Type of underlying noise function.
+ * @param  kw           Angular frequency for sampling the noise.
+ * @param  octaves      Number of FBM octaves.
+ * @param  weight       Base amplitude of the FBM.
+ * @param  persistence  Amplitude falloff per octave.
+ * @param  lacunarity   Frequency multiplier per octave.
+ * @param  center       Center of the island in normalized coordinates.
+ * @param  bbox         Bounding box for coordinate remapping.
+ *
+ * @return              Binary mask where 1.f indicates land and 0.f indicates
+ *                      water.
+ *
+ * **Example**
+ * @include ex_island.cpp
+ *
+ * **Result**
+ * @image html ex_island.png
+ */
+Array island_land_mask(Vec2<int>          shape,
+                       float              radius,
+                       uint               seed,
+                       float              displacement = 0.2f,
+                       NoiseType          noise_type = NoiseType::SIMPLEX2S,
+                       float              kw = 4.f,
+                       int                octaves = 8,
+                       float              weight = 0.f,
+                       float              persistence = 0.5f,
+                       float              lacunarity = 2.f,
+                       const Vec2<float> &center = {0.5f, 0.5f},
+                       const Vec4<float> &bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
  * @brief Return an array filled with coherence noise.
  *
  * @param  noise_type           Noise type.
@@ -2011,6 +2052,135 @@ Array hemisphere_field_fbm(Vec2<int>         shape,
                            const Array      *p_density_multiplier = nullptr,
                            const Array      *p_size_multiplier = nullptr,
                            Vec4<float>       bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
+ * @brief Generates an island heightmap from a land mask using radial profiles,
+ * slope shaping, optional noise, and water attenuation.
+ *
+ * Applies elevation shaping inside the land mask using distance-based profiles,
+ * slope controls, optional radial and slope noise, and water-depth modeling.
+ *
+ * @param  land_mask              Binary mask defining the island shape.
+ * @param  p_noise_r              Optional radial noise field (same size as
+ *                                mask).
+ * @param  apex_elevation         Maximum elevation at island center.
+ * @param  filter_distance        Enable smoothing of the distance transform.
+ * @param  filter_ir              Radius of the distance filter.
+ * @param  slope_min              Minimum slope.
+ * @param  slope_max              Maximum slope.
+ * @param  slope_start            Start of slope ramp (0–1).
+ * @param  slope_end              End of slope ramp (0–1).
+ * @param  slope_noise_intensity  Intensity of slope noise modulation.
+ * @param  k_smooth               Smoothing factor for the final profile.
+ * @param  radial_noise_intensity Intensity of radial displacement noise.
+ * @param  radial_profile_gain    Exponent for radial falloff.
+ * @param  water_decay            Transition sharpness to water level.
+ * @param  water_depth            Water depth below the shoreline.
+ * @param  lee_angle              Angle for lee-side (wind shadow) erosion.
+ * @param  lee_amp                Amplitude of lee-side erosion.
+ * @param  uplift_amp             Amplitude of uplift (orographic) effect.
+ * @param  p_water_depth          Optional output: per-pixel water depth.
+ * @param  p_inland_mask          Optional output: mask of inland pixels.
+ *
+ * @return                        Heightmap array representing the generated
+ *                                island.
+ *
+ * **Example**
+ * @include ex_island.cpp
+ *
+ * **Result**
+ * @image html ex_island.png
+ */
+Array island(const Array &land_mask,
+             const Array *p_noise_r = nullptr,
+             float        apex_elevation = 1.f,
+             bool         filter_distance = true,
+             int          filter_ir = 32,
+             float        slope_min = 0.1f,
+             float        slope_max = 8.f,
+             float        slope_start = 0.5f,
+             float        slope_end = 1.f,
+             float        slope_noise_intensity = 0.5f,
+             float        k_smooth = 0.05f,
+             float        radial_noise_intensity = 0.3f,
+             float        radial_profile_gain = 2.f,
+             float        water_decay = 0.05f,
+             float        water_depth = 0.3f,
+             float        lee_angle = 30.f,
+             float        lee_amp = 0.f,
+             float        uplift_amp = 0.f,
+             Array       *p_water_depth = nullptr,
+             Array       *p_inland_mask = nullptr);
+
+/**
+ * @brief Generates an island heightmap from a land mask using internally
+ * generated FBM noise for radial perturbation and slope modulation.
+ *
+ * Same as the other overload but creates a noise field procedurally from a
+ * seed, including frequency, octaves, orientation, and smoothing controls.
+ *
+ * @param  land_mask              Binary mask defining the island shape.
+ * @param  seed                   Noise seed.
+ * @param  noise_amp              Amplitude of generated noise.
+ * @param  noise_kw               Noise frequencies (x, y).
+ * @param  noise_octaves          Number of FBM octaves.
+ * @param  noise_rugosity         Persistence-like roughness control.
+ * @param  noise_angle            Rotation of the noise field (radians).
+ * @param  noise_k_smoothing      Smoothing applied to the noise field.
+ * @param  apex_elevation         Maximum elevation at island center.
+ * @param  filter_distance        Enable smoothing of the distance transform.
+ * @param  filter_ir              Radius of distance filter.
+ * @param  slope_min              Minimum slope.
+ * @param  slope_max              Maximum slope.
+ * @param  slope_start            Start of slope ramp (0–1).
+ * @param  slope_end              End of slope ramp (0–1).
+ * @param  slope_noise_intensity  Intensity of slope noise modulation.
+ * @param  k_smooth               Smoothing factor for final profile.
+ * @param  radial_noise_intensity Intensity of radial displacement noise.
+ * @param  radial_profile_gain    Exponent for radial falloff.
+ * @param  water_decay            Transition sharpness to water level.
+ * @param  water_depth            Water depth below the shoreline.
+ * @param  lee_angle              Angle for lee-side erosion.
+ * @param  lee_amp                Amplitude for lee-side erosion.
+ * @param  uplift_amp             Amplitude of uplift (orographic) effect.
+ * @param  p_water_depth          Optional output: per-pixel water depth.
+ * @param  p_inland_mask          Optional output: mask of inland pixels.
+ *
+ * @return                        Heightmap array representing the generated
+ *                                island.
+ *
+ * **Example**
+ * @include ex_island.cpp
+ *
+ * **Result**
+ * @image html ex_island.png
+ */
+Array island(const Array &land_mask,
+             uint         seed,
+             float        noise_amp = 0.07f,
+             Vec2<float>  noise_kw = {4.f, 4.f},
+             int          noise_octaves = 8,
+             float        noise_rugosity = 0.7f,
+             float        noise_angle = 45.f,
+             float        noise_k_smoothing = 0.05f,
+             float        apex_elevation = 1.f,
+             bool         filter_distance = true,
+             int          filter_ir = 32,
+             float        slope_min = 0.1f,
+             float        slope_max = 8.f,
+             float        slope_start = 0.5f,
+             float        slope_end = 1.f,
+             float        slope_noise_intensity = 0.5f,
+             float        k_smooth = 0.05f,
+             float        radial_noise_intensity = 0.3f,
+             float        radial_profile_gain = 2.f,
+             float        water_decay = 0.05f,
+             float        water_depth = 0.3f,
+             float        lee_angle = 30.f,
+             float        lee_amp = 0.f,
+             float        uplift_amp = 0.f,
+             Array       *p_water_depth = nullptr,
+             Array       *p_inland_mask = nullptr);
 
 /**
  * @brief Generates a procedural "mountain cone" heightmap using fractal noise

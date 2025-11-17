@@ -258,6 +258,28 @@ int highest_power_of_2(int n);
 Array hypot(const Array &array1, const Array &array2);
 
 /**
+ * @brief Returns a binary mask of non-zero elements.
+ *
+ * Creates an array of the same shape where each element is 1.0f if the
+ * corresponding input value is non-zero, otherwise 0.0f.
+ *
+ * @param  array Input array to test for non-zero values.
+ * @return       Array Binary mask array.
+ */
+Array is_non_zero(const Array &array);
+
+/**
+ * @brief Returns a binary mask of zero elements.
+ *
+ * Creates an array of the same shape where each element is 1.0f if the
+ * corresponding input value is non-zero, otherwise 0.0f.
+ *
+ * @param  array Input array to test for non-zero values.
+ * @return       Array Binary mask array.
+ */
+Array is_zero(const Array &array);
+
+/**
  * @brief Return the linear interpolation between two arrays by a parameter t.
  *
  * @param  array1 First array.

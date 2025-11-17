@@ -19,6 +19,39 @@ namespace hmap
 {
 
 /**
+ * @brief Perturb the contour of a binary mask using a displacement field, while
+ * trying to preserve a single connected component without holes.
+ *
+ * This function takes a binary mask and a noise map of the same size, computes
+ * the boundary of the mask, estimates a local outward normal for each boundary
+ * pixel, and displaces that pixel by an amount proportional to the noise value.
+ * The displacement is clamped to remain inside the image domain.
+ *
+ * @param  mask             Input binary mask as an Array (0 = background, >0 =
+ *                          foreground). Must be at least 3×3 in size.
+ * @param  noise            Noise field providing signed displacement factors,
+ *                          typically in [-1, 1]. Must have the same dimensions
+ *                          as @p mask.
+ * @param  max_displacement Maximum displacement magnitude in pixels applied
+ *                          along the estimated boundary normal for each pixel.
+ *
+ * @return                  A new Array representing the perturbed binary mask,
+ *                          with values 0 (background) and 1 (foreground),
+ *                          guaranteed to be a single connectedcomponent without
+ *                          holes.
+ *
+ * **Example**
+ * @include ex_perturb_mask_contour.cpp
+ *
+ * **Result**
+ * @image html ex_perturb_mask_contour.png
+ */
+Array perturb_mask_contour(const Array &mask,
+                           const Array &noise,
+                           float        max_displacement,
+                           int          ir = 1);
+
+/**
  * @brief Mask adjustement using a 'scanning' method.
  *
  * See https://www.shadertoy.com/view/stjSRR
