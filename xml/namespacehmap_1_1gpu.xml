@@ -6260,7 +6260,6 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(<ref refid="namespacehmap_1_1gpu_1a450f5b26f42b6f06be3e1e131f6aaf86" kindref="member">noise</ref>);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>use<sp/>dedicated<sp/>mask<sp/>generator</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>radius<sp/>=<sp/>0.3f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>displacement<sp/>=<sp/>0.2f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195" kindref="member">hmap::NoiseType</ref><sp/>noise_type<sp/>=<sp/><ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a03f4fca6bab010831c1e90a0cce9dd80" kindref="member">hmap::NoiseType::SIMPLEX2S</ref>;</highlight></codeline>
@@ -6276,8 +6275,14 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>custom<sp/>noise<sp/>(expected<sp/>in<sp/>[0,<sp/>1])</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zb<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1ae20d5b7f78d4c3eb5064490a3a407533" kindref="member">hmap::gpu::island</ref>(land_mask,<sp/>&amp;<ref refid="namespacehmap_1_1gpu_1a450f5b26f42b6f06be3e1e131f6aaf86" kindref="member">noise</ref>);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>use<sp/>&quot;any&quot;<sp/>noise<sp/>as<sp/>land<sp/>mask</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>land_mask2<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1a450f5b26f42b6f06be3e1e131f6aaf86" kindref="member">noise</ref>;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1aea2ac2d901a1bf47ce8f19d463a7079e" kindref="member">hmap::zeroed_edges</ref>(land_mask2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a4799d3f029d45240a5b40b4853583a58" kindref="member">hmap::make_binary</ref>(land_mask2,<sp/>0.15f);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zc<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1ae20d5b7f78d4c3eb5064490a3a407533" kindref="member">hmap::gpu::island</ref>(land_mask2,<sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_island.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{land_mask,<sp/>za,<sp/>zb},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{land_mask,<sp/>za,<sp/>zb,<sp/>zc},</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9" kindref="member">hmap::Cmap::TERRAIN</ref>,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -6659,7 +6664,6 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(<ref refid="namespacehmap_1_1gpu_1a450f5b26f42b6f06be3e1e131f6aaf86" kindref="member">noise</ref>);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>use<sp/>dedicated<sp/>mask<sp/>generator</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>radius<sp/>=<sp/>0.3f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>displacement<sp/>=<sp/>0.2f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195" kindref="member">hmap::NoiseType</ref><sp/>noise_type<sp/>=<sp/><ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a03f4fca6bab010831c1e90a0cce9dd80" kindref="member">hmap::NoiseType::SIMPLEX2S</ref>;</highlight></codeline>
@@ -6675,8 +6679,14 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>custom<sp/>noise<sp/>(expected<sp/>in<sp/>[0,<sp/>1])</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zb<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1ae20d5b7f78d4c3eb5064490a3a407533" kindref="member">hmap::gpu::island</ref>(land_mask,<sp/>&amp;<ref refid="namespacehmap_1_1gpu_1a450f5b26f42b6f06be3e1e131f6aaf86" kindref="member">noise</ref>);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>use<sp/>&quot;any&quot;<sp/>noise<sp/>as<sp/>land<sp/>mask</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>land_mask2<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1a450f5b26f42b6f06be3e1e131f6aaf86" kindref="member">noise</ref>;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1aea2ac2d901a1bf47ce8f19d463a7079e" kindref="member">hmap::zeroed_edges</ref>(land_mask2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a4799d3f029d45240a5b40b4853583a58" kindref="member">hmap::make_binary</ref>(land_mask2,<sp/>0.15f);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zc<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1ae20d5b7f78d4c3eb5064490a3a407533" kindref="member">hmap::gpu::island</ref>(land_mask2,<sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_island.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{land_mask,<sp/>za,<sp/>zb},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{land_mask,<sp/>za,<sp/>zb,<sp/>zc},</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9" kindref="member">hmap::Cmap::TERRAIN</ref>,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -6686,7 +6696,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/geo/island.cpp" line="231" column="7" bodyfile="HighMap/src/primitives/geo/island.cpp" bodystart="231" bodyend="338" declfile="HighMap/include/highmap/primitives.hpp" declline="2158" declcolumn="7"/>
+        <location file="HighMap/src/primitives/geo/island.cpp" line="231" column="7" bodyfile="HighMap/src/primitives/geo/island.cpp" bodystart="231" bodyend="312" declfile="HighMap/include/highmap/primitives.hpp" declline="2158" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1ab7d34635c57f241a162b7dda9a9539a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>

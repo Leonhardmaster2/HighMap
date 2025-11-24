@@ -36789,7 +36789,6 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(<a class="code hl_function" href="namespacehmap.html#a03c0be3a7198eebacefcb208b0cfee99">noise</a>);</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// use dedicated mask generator</span></div>
-<div class="line"> </div>
 <div class="line">  <span class="keywordtype">float</span>           radius = 0.3f;</div>
 <div class="line">  <span class="keywordtype">float</span>           displacement = 0.2f;</div>
 <div class="line">  <a class="code hl_enumeration" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195">hmap::NoiseType</a> noise_type = <a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a03f4fca6bab010831c1e90a0cce9dd80">hmap::NoiseType::SIMPLEX2S</a>;</div>
@@ -36805,8 +36804,14 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 <div class="line">  <span class="comment">// custom noise (expected in [0, 1])</span></div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> zb = <a class="code hl_function" href="namespacehmap_1_1gpu.html#ae20d5b7f78d4c3eb5064490a3a407533">hmap::gpu::island</a>(land_mask, &amp;<a class="code hl_function" href="namespacehmap.html#a03c0be3a7198eebacefcb208b0cfee99">noise</a>);</div>
 <div class="line"> </div>
+<div class="line">  <span class="comment">// use &quot;any&quot; noise as land mask</span></div>
+<div class="line">  <span class="keyword">auto</span> land_mask2 = <a class="code hl_function" href="namespacehmap.html#a03c0be3a7198eebacefcb208b0cfee99">noise</a>;</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#aea2ac2d901a1bf47ce8f19d463a7079e">hmap::zeroed_edges</a>(land_mask2);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a4799d3f029d45240a5b40b4853583a58">hmap::make_binary</a>(land_mask2, 0.15f);</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> zc = <a class="code hl_function" href="namespacehmap_1_1gpu.html#ae20d5b7f78d4c3eb5064490a3a407533">hmap::gpu::island</a>(land_mask2, seed);</div>
+<div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_island.png&quot;</span>,</div>
-<div class="line">                          {land_mask, za, zb},</div>
+<div class="line">                          {land_mask, za, zb, zc},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>,</div>
 <div class="line">                          <span class="keyword">true</span>);</div>
 <div class="line">}</div>
