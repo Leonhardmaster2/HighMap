@@ -287,32 +287,6 @@ Array island(const Array &land_mask,
 
   remap(noise);
 
-  // seed = 0;
-
-  // hmap::Array dx = 0.1f * hmap::noise_fbm(hmap::NoiseType::SIMPLEX2,
-  //                                         shape,
-  //                                         noise_kw,
-  //                                         seed++,
-  //                                         8,
-  //                                         0.f);
-
-  // auto noise = hmap::gpu::voronoi_fbm(shape,
-  //                                     noise_kw,
-  //                                     seed++,
-  //                                     {1.f, 1.f},
-  //                                     0.f,
-  //                                     0.f,
-  //                                     hmap::VoronoiReturnType::F2MF1_SQUARED,
-  //                                     8,
-  //                                     /* weight */ 0.7f,
-  //                                     0.5f,
-  //                                     2.f,
-  //                                     /* p_ctrl_param */ nullptr,
-  //                                     &dx,
-  //                                     &dx);
-
-  // hmap::remap(noise);
-
   // --- apply
 
   return island(land_mask,
