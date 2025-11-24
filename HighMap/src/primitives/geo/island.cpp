@@ -156,7 +156,6 @@ Array island(const Array &land_mask,
 
   // --- water distance
   Array r_water = distance_transform(r_ground);
-  if (filter_distance) gpu::smooth_cpulse(r_water, filter_ir);
 
   // scale water dist
   for (int j = 0; j < shape.y; ++j)
@@ -174,7 +173,7 @@ Array island(const Array &land_mask,
       float r = r_ground(i, j);
       float r_w = r_water(i, j);
 
-      z_water(i, j) = -water_depth * (1.f - std::exp(-r_w));
+      z_water(i, j) = std::min(0.f, -water_depth * (1.f - std::exp(-r_w)));
 
       if (r == 0.f)
       {
