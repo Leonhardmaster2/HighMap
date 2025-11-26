@@ -44450,7 +44450,7 @@ off" values that fall below the threshold, which can be useful for filtering out
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z);</div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(zw);</div>
 <div class="line"> </div>
-<div class="line">  <span class="keywordtype">float</span>           ratio = 0.25f;</div>
+<div class="line">  <span class="keywordtype">float</span>           ratio = 0.5f;</div>
 <div class="line">  <a class="code hl_struct" href="structhmap_1_1Vec2.html">hmap::Vec2&lt;int&gt;</a> patch_shape = {(int)(ratio * shape.<a class="code hl_variable" href="structhmap_1_1Vec2.html#a2dc51e83492f966eeddbdac3d58ab447">x</a>),</div>
 <div class="line">                                 (int)(ratio * shape.<a class="code hl_variable" href="structhmap_1_1Vec2.html#a087ff9ff4159d1e5778c0b65ee2a1648">y</a>)};</div>
 <div class="line">  <a class="code hl_struct" href="structhmap_1_1Vec2.html">hmap::Vec2&lt;int&gt;</a> tiling = {4, 4};</div>
@@ -44556,10 +44556,10 @@ off" values that fall below the threshold, which can be useful for filtering out
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>,</div>
 <div class="line">                          <span class="keyword">true</span>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a77691c31ed316374c25becc7ecddd133"><div class="ttname"><a href="namespacehmap.html#a77691c31ed316374c25becc7ecddd133">hmap::quilting_blend</a></div><div class="ttdeci">Array quilting_blend(const std::vector&lt; const Array * &gt; &amp;p_arrays, hmap::Vec2&lt; int &gt; patch_base_shape, float overlap, uint seed, bool patch_flip=true, bool patch_rotate=true, bool patch_transpose=true, float filter_width_ratio=0.25f)</div><div class="ttdoc">Synthesize a new heightmap by stitching together small patches from a list of input heightmaps.</div><div class="ttdef"><b>Definition</b> quilting.cpp:194</div></div>
+<div class="ttc" id="anamespacehmap_html_a77691c31ed316374c25becc7ecddd133"><div class="ttname"><a href="namespacehmap.html#a77691c31ed316374c25becc7ecddd133">hmap::quilting_blend</a></div><div class="ttdeci">Array quilting_blend(const std::vector&lt; const Array * &gt; &amp;p_arrays, hmap::Vec2&lt; int &gt; patch_base_shape, float overlap, uint seed, bool patch_flip=true, bool patch_rotate=true, bool patch_transpose=true, float filter_width_ratio=0.25f)</div><div class="ttdoc">Synthesize a new heightmap by stitching together small patches from a list of input heightmaps.</div><div class="ttdef"><b>Definition</b> quilting.cpp:198</div></div>
 <div class="ttc" id="anamespacehmap_html_a94a0d14d841251b9803f6fa11097b175"><div class="ttname"><a href="namespacehmap.html#a94a0d14d841251b9803f6fa11097b175">hmap::quilting</a></div><div class="ttdeci">Array quilting(const std::vector&lt; const Array * &gt; &amp;p_arrays, hmap::Vec2&lt; int &gt; patch_base_shape, hmap::Vec2&lt; int &gt; tiling, float overlap, uint seed, std::vector&lt; Array * &gt; secondary_arrays={}, bool patch_flip=true, bool patch_rotate=true, bool patch_transpose=true, float filter_width_ratio=0.25f)</div><div class="ttdoc">Synthesize a new heightmap by stitching together small patches from input heightmaps.</div><div class="ttdef"><b>Definition</b> quilting.cpp:14</div></div>
-<div class="ttc" id="anamespacehmap_html_aa23790e26c213a550660e479a28f21e5"><div class="ttname"><a href="namespacehmap.html#aa23790e26c213a550660e479a28f21e5">hmap::quilting_expand</a></div><div class="ttdeci">Array quilting_expand(const Array &amp;array, float expansion_ratio, hmap::Vec2&lt; int &gt; patch_base_shape, float overlap, uint seed, std::vector&lt; Array * &gt; secondary_arrays={}, bool keep_input_shape=false, bool patch_flip=true, bool patch_rotate=true, bool patch_transpose=true, float filter_width_ratio=0.25f)</div><div class="ttdoc">Synthesize a new heightmap by expanding the input heightmap and stitching patches.</div><div class="ttdef"><b>Definition</b> quilting.cpp:223</div></div>
-<div class="ttc" id="anamespacehmap_html_af2faad7feceeb1059da7303748438a51"><div class="ttname"><a href="namespacehmap.html#af2faad7feceeb1059da7303748438a51">hmap::quilting_shuffle</a></div><div class="ttdeci">Array quilting_shuffle(const Array &amp;array, hmap::Vec2&lt; int &gt; patch_base_shape, float overlap, uint seed, std::vector&lt; Array * &gt; secondary_arrays={}, bool patch_flip=true, bool patch_rotate=true, bool patch_transpose=true, float filter_width_ratio=0.25f)</div><div class="ttdoc">Synthesize a new heightmap by reshuffling patches of the input heightmap.</div><div class="ttdef"><b>Definition</b> quilting.cpp:319</div></div>
+<div class="ttc" id="anamespacehmap_html_aa23790e26c213a550660e479a28f21e5"><div class="ttname"><a href="namespacehmap.html#aa23790e26c213a550660e479a28f21e5">hmap::quilting_expand</a></div><div class="ttdeci">Array quilting_expand(const Array &amp;array, float expansion_ratio, hmap::Vec2&lt; int &gt; patch_base_shape, float overlap, uint seed, std::vector&lt; Array * &gt; secondary_arrays={}, bool keep_input_shape=false, bool patch_flip=true, bool patch_rotate=true, bool patch_transpose=true, float filter_width_ratio=0.25f)</div><div class="ttdoc">Synthesize a new heightmap by expanding the input heightmap and stitching patches.</div><div class="ttdef"><b>Definition</b> quilting.cpp:227</div></div>
+<div class="ttc" id="anamespacehmap_html_af2faad7feceeb1059da7303748438a51"><div class="ttname"><a href="namespacehmap.html#af2faad7feceeb1059da7303748438a51">hmap::quilting_shuffle</a></div><div class="ttdeci">Array quilting_shuffle(const Array &amp;array, hmap::Vec2&lt; int &gt; patch_base_shape, float overlap, uint seed, std::vector&lt; Array * &gt; secondary_arrays={}, bool patch_flip=true, bool patch_rotate=true, bool patch_transpose=true, float filter_width_ratio=0.25f)</div><div class="ttdoc">Synthesize a new heightmap by reshuffling patches of the input heightmap.</div><div class="ttdef"><b>Definition</b> quilting.cpp:323</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_quilting0.png" alt=""/>
 </div>
@@ -44670,7 +44670,7 @@ off" values that fall below the threshold, which can be useful for filtering out
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z);</div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(zw);</div>
 <div class="line"> </div>
-<div class="line">  <span class="keywordtype">float</span>           ratio = 0.25f;</div>
+<div class="line">  <span class="keywordtype">float</span>           ratio = 0.5f;</div>
 <div class="line">  <a class="code hl_struct" href="structhmap_1_1Vec2.html">hmap::Vec2&lt;int&gt;</a> patch_shape = {(int)(ratio * shape.<a class="code hl_variable" href="structhmap_1_1Vec2.html#a2dc51e83492f966eeddbdac3d58ab447">x</a>),</div>
 <div class="line">                                 (int)(ratio * shape.<a class="code hl_variable" href="structhmap_1_1Vec2.html#a087ff9ff4159d1e5778c0b65ee2a1648">y</a>)};</div>
 <div class="line">  <a class="code hl_struct" href="structhmap_1_1Vec2.html">hmap::Vec2&lt;int&gt;</a> tiling = {4, 4};</div>
@@ -44906,7 +44906,7 @@ off" values that fall below the threshold, which can be useful for filtering out
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z);</div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(zw);</div>
 <div class="line"> </div>
-<div class="line">  <span class="keywordtype">float</span>           ratio = 0.25f;</div>
+<div class="line">  <span class="keywordtype">float</span>           ratio = 0.5f;</div>
 <div class="line">  <a class="code hl_struct" href="structhmap_1_1Vec2.html">hmap::Vec2&lt;int&gt;</a> patch_shape = {(int)(ratio * shape.<a class="code hl_variable" href="structhmap_1_1Vec2.html#a2dc51e83492f966eeddbdac3d58ab447">x</a>),</div>
 <div class="line">                                 (int)(ratio * shape.<a class="code hl_variable" href="structhmap_1_1Vec2.html#a087ff9ff4159d1e5778c0b65ee2a1648">y</a>)};</div>
 <div class="line">  <a class="code hl_struct" href="structhmap_1_1Vec2.html">hmap::Vec2&lt;int&gt;</a> tiling = {4, 4};</div>
@@ -45128,7 +45128,7 @@ off" values that fall below the threshold, which can be useful for filtering out
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z);</div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(zw);</div>
 <div class="line"> </div>
-<div class="line">  <span class="keywordtype">float</span>           ratio = 0.25f;</div>
+<div class="line">  <span class="keywordtype">float</span>           ratio = 0.5f;</div>
 <div class="line">  <a class="code hl_struct" href="structhmap_1_1Vec2.html">hmap::Vec2&lt;int&gt;</a> patch_shape = {(int)(ratio * shape.<a class="code hl_variable" href="structhmap_1_1Vec2.html#a2dc51e83492f966eeddbdac3d58ab447">x</a>),</div>
 <div class="line">                                 (int)(ratio * shape.<a class="code hl_variable" href="structhmap_1_1Vec2.html#a087ff9ff4159d1e5778c0b65ee2a1648">y</a>)};</div>
 <div class="line">  <a class="code hl_struct" href="structhmap_1_1Vec2.html">hmap::Vec2&lt;int&gt;</a> tiling = {4, 4};</div>
