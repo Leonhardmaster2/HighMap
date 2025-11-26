@@ -61,8 +61,8 @@ Array morphological_black_hat(const Array &array, int ir, bool use_disk_kernel)
 
 Array morphological_gradient(const Array &array, int ir, bool use_disk_kernel)
 {
-  return gpu::dilation(array, ir, use_disk_kernel) -
-         gpu::erosion(array, ir, use_disk_kernel);
+  return gpu::dilation(array - array.min(), ir, use_disk_kernel) -
+         gpu::erosion(array - array.min(), ir, use_disk_kernel);
 }
 
 Array morphological_top_hat(const Array &array, int ir, bool use_disk_kernel)
