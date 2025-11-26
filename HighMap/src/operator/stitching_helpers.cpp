@@ -138,20 +138,30 @@ Array get_random_patch(const Array          &array,
                        std::vector<Array *> *p_secondary_arrays,
                        std::vector<Array>   *p_secondary_patches)
 {
-  std::uniform_int_distribution<int> dis_i(0,
-                                           array.shape.x - 2 - patch_shape.x);
-  std::uniform_int_distribution<int> dis_j(0,
-                                           array.shape.y - 2 - patch_shape.y);
+  std::uniform_int_distribution<int> dis_i(0, array.shape.x - 1);
+  std::uniform_int_distribution<int> dis_j(0, array.shape.y - 1);
 
   // random pair of indices
   int i = dis_i(gen);
   int j = dis_j(gen);
 
-  Array patch = array.extract_slice(
-      Vec4<int>(i, i + patch_shape.x, j, j + patch_shape.y));
+  // compute desired end indices
+  int i_end = i + patch_shape.x;
+  int j_end = j + patch_shape.y;
+
+  // clamp end indices to array bounds
+  i_end = std::min(i_end, array.shape.x);
+  j_end = std::min(j_end, array.shape.y);
+
+  // adjust start index if patch became smaller on the right/bottom.
+  // This keeps the patch size constant (if you want that).
+  int i_start = std::max(0, i_end - patch_shape.x);
+  int j_start = std::max(0, j_end - patch_shape.y);
+
+  Array patch = array.extract_slice(Vec4<int>(i_start, i_end, j_start, j_end));
 
   // flipping, etc...
-  int imid = (int)(0.5f * (array.shape.x - 1 - patch_shape.x));
+  int imid = (int)(0.5f * (array.shape.x - 1));
 
   bool do_flip_ud = patch_flip && (dis_i(gen) > imid);
   bool do_flip_lr = patch_flip && (dis_i(gen) > imid);
@@ -173,7 +183,7 @@ Array get_random_patch(const Array          &array,
     for (auto pa : *p_secondary_arrays)
     {
       Array sec_patch = pa->extract_slice(
-          Vec4<int>(i, i + patch_shape.x, j, j + patch_shape.y));
+          Vec4<int>(i_start, i_end, j_start, j_end));
       helper_flip_rot_transpose(sec_patch,
                                 do_flip_ud,
                                 do_flip_lr,

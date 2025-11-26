@@ -29,6 +29,10 @@ Array quilting(const std::vector<const Array *> &p_arrays,
   hmap::Vec2<int> patch_shape = {(int)(patch_base_shape.x * (1.f + overlap)),
                                  (int)(patch_base_shape.y * (1.f + overlap))};
 
+  // keep size under control
+  patch_shape.x = std::min(patch_shape.x, p_arrays.front()->shape.x);
+  patch_shape.y = std::min(patch_shape.y, p_arrays.front()->shape.y);
+
   hmap::Vec2<int> noverlap = {patch_shape.x - patch_base_shape.x,
                               patch_shape.y - patch_base_shape.y};
 

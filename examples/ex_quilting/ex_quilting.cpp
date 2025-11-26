@@ -12,7 +12,7 @@ int main(void)
   hmap::remap(z);
   hmap::remap(zw);
 
-  float           ratio = 0.25f;
+  float           ratio = 0.5f;
   hmap::Vec2<int> patch_shape = {(int)(ratio * shape.x),
                                  (int)(ratio * shape.y)};
   hmap::Vec2<int> tiling = {4, 4};
