@@ -12,13 +12,14 @@ var searchData=
   ['shadows_2ehpp_9',['shadows.hpp',['../shadows_8hpp.html',1,'']]],
   ['shattered_5fpeak_2ecpp_10',['shattered_peak.cpp',['../shattered__peak_8cpp.html',1,'']]],
   ['shortest_5fpath_2ehpp_11',['shortest_path.hpp',['../shortest__path_8hpp.html',1,'']]],
-  ['solve_5fpoisson_5fgauss_5fseidel_2ecpp_12',['solve_poisson_gauss_seidel.cpp',['../solve__poisson__gauss__seidel_8cpp.html',1,'']]],
-  ['stamping_2ecpp_13',['stamping.cpp',['../stamping_8cpp.html',1,'']]],
-  ['stitching_5fhelpers_2ecpp_14',['stitching_helpers.cpp',['../stitching__helpers_8cpp.html',1,'']]],
-  ['strata_5fgpu_2ecpp_15',['strata_gpu.cpp',['../strata__gpu_8cpp.html',1,'']]],
-  ['stratify_2ecpp_16',['stratify.cpp',['../stratify_8cpp.html',1,'']]],
-  ['string_5futils_2ecpp_17',['string_utils.cpp',['../string__utils_8cpp.html',1,'']]],
-  ['string_5futils_2ehpp_18',['string_utils.hpp',['../string__utils_8hpp.html',1,'']]],
-  ['swirl_2ecpp_19',['swirl.cpp',['../swirl_8cpp.html',1,'']]],
-  ['synthesis_2ehpp_20',['synthesis.hpp',['../synthesis_8hpp.html',1,'']]]
+  ['signed_5fcurvature_5ffrom_5fdistance_2ecpp_12',['signed_curvature_from_distance.cpp',['../signed__curvature__from__distance_8cpp.html',1,'']]],
+  ['solve_5fpoisson_5fgauss_5fseidel_2ecpp_13',['solve_poisson_gauss_seidel.cpp',['../solve__poisson__gauss__seidel_8cpp.html',1,'']]],
+  ['stamping_2ecpp_14',['stamping.cpp',['../stamping_8cpp.html',1,'']]],
+  ['stitching_5fhelpers_2ecpp_15',['stitching_helpers.cpp',['../stitching__helpers_8cpp.html',1,'']]],
+  ['strata_5fgpu_2ecpp_16',['strata_gpu.cpp',['../strata__gpu_8cpp.html',1,'']]],
+  ['stratify_2ecpp_17',['stratify.cpp',['../stratify_8cpp.html',1,'']]],
+  ['string_5futils_2ecpp_18',['string_utils.cpp',['../string__utils_8cpp.html',1,'']]],
+  ['string_5futils_2ehpp_19',['string_utils.hpp',['../string__utils_8hpp.html',1,'']]],
+  ['swirl_2ecpp_20',['swirl.cpp',['../swirl_8cpp.html',1,'']]],
+  ['synthesis_2ehpp_21',['synthesis.hpp',['../synthesis_8hpp.html',1,'']]]
 ];

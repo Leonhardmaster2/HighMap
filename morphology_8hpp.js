@@ -20,6 +20,8 @@ var morphology_8hpp =
     [ "morphological_top_hat", "morphology_8hpp.html#a211108a73f7ebadb6ac87621c4e47301", null ],
     [ "opening", "morphology_8hpp.html#abd3024b8233a70596ff2924607221637", null ],
     [ "relative_distance_from_skeleton", "morphology_8hpp.html#a7c7d934cc5a3a5e1a6f17c09a0e1e51f", null ],
+    [ "signed_curvature_from_distance", "morphology_8hpp.html#ac56515202b30368216c7324b819cc838", null ],
+    [ "signed_distance_transform", "morphology_8hpp.html#ad4ab7bb38b3ea37fa912190251c1ed76", null ],
     [ "skeleton", "morphology_8hpp.html#a11ddd5ab1aa625db9419d9b65c0eaa64", null ],
     [ "border", "morphology_8hpp.html#ac3ce919cb2abf0860493113a90892b79", null ],
     [ "closing", "morphology_8hpp.html#adf2abef40ebfec5ea2b7638a9ed73170", null ],
@@ -32,5 +34,7 @@ var morphology_8hpp =
     [ "morphological_top_hat", "morphology_8hpp.html#a2e793e7248a0a21c457c1fabd54a81fd", null ],
     [ "opening", "morphology_8hpp.html#a00cc83a89062fec3ff3e03b40a493a9e", null ],
     [ "relative_distance_from_skeleton", "morphology_8hpp.html#a5ff7a02d956bc1d8ecdab4a871a1a299", null ],
+    [ "signed_curvature_from_distance", "morphology_8hpp.html#afffb85b7bc6b9884cd00254c122da8e6", null ],
+    [ "signed_distance_transform", "morphology_8hpp.html#a76cfd96b971a288964561449d83e21aa", null ],
     [ "skeleton", "morphology_8hpp.html#a5287e8c6a324fa91bea6c7bf98aacd68", null ]
 ];

@@ -384,6 +384,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a5ff7a02d956bc1d8ecdab4a871a1a299" id="r_a5ff7a02d956bc1d8ecdab4a871a1a299"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a5ff7a02d956bc1d8ecdab4a871a1a299">relative_distance_from_skeleton</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, int ir_search, bool zero_at_borders=true, int ir_erosion=1, bool use_disk_kernel=true)</td></tr>
 <tr class="memdesc:a5ff7a02d956bc1d8ecdab4a871a1a299"><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="namespacehmap.html#a7c7d934cc5a3a5e1a6f17c09a0e1e51f" title="Computes the relative distance of each non-zero cell in a binary array from the skeleton and border.">hmap::relative_distance_from_skeleton</a>.  <br /></td></tr>
 <tr class="separator:a5ff7a02d956bc1d8ecdab4a871a1a299"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afffb85b7bc6b9884cd00254c122da8e6" id="r_afffb85b7bc6b9884cd00254c122da8e6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#afffb85b7bc6b9884cd00254c122da8e6">signed_curvature_from_distance</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, int prefilter_ir=0)</td></tr>
+<tr class="memdesc:afffb85b7bc6b9884cd00254c122da8e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="namespacehmap.html#ac56515202b30368216c7324b819cc838" title="Computes the signed curvature of the distance transform.">hmap::signed_curvature_from_distance</a>.  <br /></td></tr>
+<tr class="separator:afffb85b7bc6b9884cd00254c122da8e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76cfd96b971a288964561449d83e21aa" id="r_a76cfd96b971a288964561449d83e21aa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a76cfd96b971a288964561449d83e21aa">signed_distance_transform</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, int prefilter_ir=0)</td></tr>
+<tr class="memdesc:a76cfd96b971a288964561449d83e21aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="namespacehmap.html#ad4ab7bb38b3ea37fa912190251c1ed76" title="Computes a signed distance transform using curvature sign.">hmap::signed_distance_transform</a>.  <br /></td></tr>
+<tr class="separator:a76cfd96b971a288964561449d83e21aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5287e8c6a324fa91bea6c7bf98aacd68" id="r_a5287e8c6a324fa91bea6c7bf98aacd68"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a5287e8c6a324fa91bea6c7bf98aacd68">skeleton</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, bool zero_at_borders=true)</td></tr>
 <tr class="memdesc:a5287e8c6a324fa91bea6c7bf98aacd68"><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="namespacehmap.html#a11ddd5ab1aa625db9419d9b65c0eaa64" title="Computes the skeleton of a binary image using the Zhang-Suen skeletonization algorithm.">hmap::skeleton</a>.  <br /></td></tr>
 <tr class="separator:a5287e8c6a324fa91bea6c7bf98aacd68"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -5141,6 +5147,66 @@ Only available if OpenCL is enabled.</dd></dl>
 </div><div class="memdoc">
 
 <p>See <a class="el" href="namespacehmap.html#a7c7d934cc5a3a5e1a6f17c09a0e1e51f" title="Computes the relative distance of each non-zero cell in a binary array from the skeleton and border.">hmap::relative_distance_from_skeleton</a>. </p>
+
+</div>
+</div>
+<a id="afffb85b7bc6b9884cd00254c122da8e6" name="afffb85b7bc6b9884cd00254c122da8e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afffb85b7bc6b9884cd00254c122da8e6">&#9670;&#160;</a></span>signed_curvature_from_distance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classhmap_1_1Array.html">Array</a> hmap::gpu::signed_curvature_from_distance </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>array</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>prefilter_ir</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>See <a class="el" href="namespacehmap.html#ac56515202b30368216c7324b819cc838" title="Computes the signed curvature of the distance transform.">hmap::signed_curvature_from_distance</a>. </p>
+
+</div>
+</div>
+<a id="a76cfd96b971a288964561449d83e21aa" name="a76cfd96b971a288964561449d83e21aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76cfd96b971a288964561449d83e21aa">&#9670;&#160;</a></span>signed_distance_transform()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classhmap_1_1Array.html">Array</a> hmap::gpu::signed_distance_transform </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>array</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>prefilter_ir</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>See <a class="el" href="namespacehmap.html#ad4ab7bb38b3ea37fa912190251c1ed76" title="Computes a signed distance transform using curvature sign.">hmap::signed_distance_transform</a>. </p>
 
 </div>
 </div>

@@ -1291,6 +1291,10 @@ void \mbox{\hyperlink{namespacehmap_adff494af7c8bf4db7f3e6fddd3261793}{flood\+\_
 \begin{DoxyCompactList}\small\item\em Apply an opening algorithm to the input array using a square structure. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a7c7d934cc5a3a5e1a6f17c09a0e1e51f}{relative\+\_\+distance\+\_\+from\+\_\+skeleton}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir\+\_\+search, bool zero\+\_\+at\+\_\+borders=true, int ir\+\_\+erosion=1)
 \begin{DoxyCompactList}\small\item\em Computes the relative distance of each non-\/zero cell in a binary array from the skeleton and border. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_ac56515202b30368216c7324b819cc838}{signed\+\_\+curvature\+\_\+from\+\_\+distance}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int prefilter\+\_\+ir=0)
+\begin{DoxyCompactList}\small\item\em Computes the signed curvature of the distance transform. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_ad4ab7bb38b3ea37fa912190251c1ed76}{signed\+\_\+distance\+\_\+transform}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int prefilter\+\_\+ir=0)
+\begin{DoxyCompactList}\small\item\em Computes a signed distance transform using curvature sign. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a11ddd5ab1aa625db9419d9b65c0eaa64}{skeleton}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, bool zero\+\_\+at\+\_\+borders=true)
 \begin{DoxyCompactList}\small\item\em Computes the skeleton of a binary image using the Zhang-\/\+Suen skeletonization algorithm. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a1fb8077215c98a741e0de5366c2f7ca3}{downscale\+\_\+transform}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float kc, std\+::function$<$ void(\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&x)$>$ unary\+\_\+op, bool apply\+\_\+prefiltering=false)
@@ -19942,29 +19946,105 @@ The skeleton is computed using the Zhang-\/\+Suen skeletonization algorithm.
 \DoxyCodeLine{}
 \DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
 \DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_1_1gpu_adb8336ed4d83c15500872185dee45d50}{hmap::gpu::init\_opencl}}();}
+\DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{structhmap_1_1Vec2}{hmap::Vec2<int>}}\ \ \ shape\ =\ \{256,\ 256\};}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{structhmap_1_1Vec2}{hmap::Vec2<float>}}\ res\ =\ \{2.f,\ 8.f\};}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed\ =\ 2;}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{structhmap_1_1Vec2}{hmap::Vec2<float>}}\ res\ =\ \{4.f,\ 4.f\};}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed\ =\ 1;}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_a40b948c49a05c14f2d540dc1a6952130}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ res,\ seed);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(z,\ -\/1.f,\ 0.4f);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a2badbebec49b12d0d721970a18eb420d}{hmap::clamp\_min}}(z,\ 0.f);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a4799d3f029d45240a5b40b4853583a58}{hmap::make\_binary}}(z);}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ ir\ =\ 32;\ \textcolor{comment}{//\ can\ be\ 0}}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ sk\ =\ \mbox{\hyperlink{namespacehmap_a11ddd5ab1aa625db9419d9b65c0eaa64}{hmap::skeleton}}(z);}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ d\ =\ \mbox{\hyperlink{namespacehmap_a3bad25b24d9ae0e07e692c546bc3480d}{hmap::distance\_transform}}(z);}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ sc\ =\ \mbox{\hyperlink{namespacehmap_ac56515202b30368216c7324b819cc838}{hmap::signed\_curvature\_from\_distance}}(z,\ ir);}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ sd\ =\ \mbox{\hyperlink{namespacehmap_ad4ab7bb38b3ea37fa912190251c1ed76}{hmap::signed\_distance\_transform}}(z,\ ir);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ ir\_search\ =\ 32;}
-\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ rdist\ =\ \mbox{\hyperlink{namespacehmap_a7c7d934cc5a3a5e1a6f17c09a0e1e51f}{relative\_distance\_from\_skeleton}}(z,\ ir\_search);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_skeleton.png"{}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ sk,\ 0.5f\ *\ (z\ +\ sk),\ rdist\},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d}{hmap::Cmap::GRAY}});}
+\DoxyCodeLine{\ \ z.\mbox{\hyperlink{classhmap_1_1Array_a9ff7b2c0be8f2b5dd9fc33085cd647d1}{to\_png}}(\textcolor{stringliteral}{"{}ex\_signed\_curvature\_from\_distance0.png"{}},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}});}
+\DoxyCodeLine{\ \ d.to\_png(\textcolor{stringliteral}{"{}ex\_signed\_curvature\_from\_distance1.png"{}},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}});}
+\DoxyCodeLine{\ \ sc.to\_png(\textcolor{stringliteral}{"{}ex\_signed\_curvature\_from\_distance2.png"{}},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}});}
+\DoxyCodeLine{\ \ sd.to\_png(\textcolor{stringliteral}{"{}ex\_signed\_curvature\_from\_distance3.png"{}},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}});}
 \DoxyCodeLine{\}}
 
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}  \Hypertarget{namespacehmap_a11ddd5ab1aa625db9419d9b65c0eaa64}\label{namespacehmap_a11ddd5ab1aa625db9419d9b65c0eaa64} 
+{\bfseries{Result}}     \Hypertarget{namespacehmap_ac56515202b30368216c7324b819cc838}\label{namespacehmap_ac56515202b30368216c7324b819cc838} 
+\index{hmap@{hmap}!signed\_curvature\_from\_distance@{signed\_curvature\_from\_distance}}
+\index{signed\_curvature\_from\_distance@{signed\_curvature\_from\_distance}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{signed\_curvature\_from\_distance()}{signed\_curvature\_from\_distance()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::signed\+\_\+curvature\+\_\+from\+\_\+distance (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{int}]{prefilter\+\_\+ir = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Computes the signed curvature of the distance transform. 
+
+Computes the Euclidean distance transform of a binary array, optionally smooths it, then returns the divergence of the normalized gradient\+: κ = div( ∇d / \texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|}∇d\texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|} ). Positive values indicate convex regions, negative values concave regions.
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & Binary input (non-\/zero = foreground). \\
+\hline
+{\em prefilter\+\_\+ir} & Optional smoothing radius (0 = no smoothing). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Curvature field of the distance transform.
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_1_1gpu_adb8336ed4d83c15500872185dee45d50}{hmap::gpu::init\_opencl}}();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{structhmap_1_1Vec2}{hmap::Vec2<int>}}\ \ \ shape\ =\ \{256,\ 256\};}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{structhmap_1_1Vec2}{hmap::Vec2<float>}}\ res\ =\ \{4.f,\ 4.f\};}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed\ =\ 1;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_a40b948c49a05c14f2d540dc1a6952130}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ res,\ seed);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a2badbebec49b12d0d721970a18eb420d}{hmap::clamp\_min}}(z,\ 0.f);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ ir\ =\ 32;\ \textcolor{comment}{//\ can\ be\ 0}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ d\ =\ \mbox{\hyperlink{namespacehmap_a3bad25b24d9ae0e07e692c546bc3480d}{hmap::distance\_transform}}(z);}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ sc\ =\ \mbox{\hyperlink{namespacehmap_ac56515202b30368216c7324b819cc838}{hmap::signed\_curvature\_from\_distance}}(z,\ ir);}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ sd\ =\ \mbox{\hyperlink{namespacehmap_ad4ab7bb38b3ea37fa912190251c1ed76}{hmap::signed\_distance\_transform}}(z,\ ir);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ z.\mbox{\hyperlink{classhmap_1_1Array_a9ff7b2c0be8f2b5dd9fc33085cd647d1}{to\_png}}(\textcolor{stringliteral}{"{}ex\_signed\_curvature\_from\_distance0.png"{}},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}});}
+\DoxyCodeLine{\ \ d.to\_png(\textcolor{stringliteral}{"{}ex\_signed\_curvature\_from\_distance1.png"{}},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}});}
+\DoxyCodeLine{\ \ sc.to\_png(\textcolor{stringliteral}{"{}ex\_signed\_curvature\_from\_distance2.png"{}},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}});}
+\DoxyCodeLine{\ \ sd.to\_png(\textcolor{stringliteral}{"{}ex\_signed\_curvature\_from\_distance3.png"{}},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}}     \Hypertarget{namespacehmap_ad4ab7bb38b3ea37fa912190251c1ed76}\label{namespacehmap_ad4ab7bb38b3ea37fa912190251c1ed76} 
+\index{hmap@{hmap}!signed\_distance\_transform@{signed\_distance\_transform}}
+\index{signed\_distance\_transform@{signed\_distance\_transform}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{signed\_distance\_transform()}{signed\_distance\_transform()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::signed\+\_\+distance\+\_\+transform (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{int}]{prefilter\+\_\+ir = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Computes a signed distance transform using curvature sign. 
+
+First computes the unsigned Euclidean distance transform, then assigns its sign from the curvature of the smoothed distance field\+: sign = sign( div( ∇d / \texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|}∇d\texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|} ) ).
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & Binary input (non-\/zero = foreground). \\
+\hline
+{\em prefilter\+\_\+ir} & Optional smoothing radius for curvature evaluation. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Signed distance transform. 
+\end{DoxyReturn}
+\Hypertarget{namespacehmap_a11ddd5ab1aa625db9419d9b65c0eaa64}\label{namespacehmap_a11ddd5ab1aa625db9419d9b65c0eaa64} 
 \index{hmap@{hmap}!skeleton@{skeleton}}
 \index{skeleton@{skeleton}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{skeleton()}{skeleton()}}
