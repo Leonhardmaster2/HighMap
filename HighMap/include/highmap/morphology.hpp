@@ -298,15 +298,54 @@ Array opening(const Array &array, int ir);
  * algorithm.
  *
  * **Example**
- * @include ex_skeleton.cpp
+ * @include ex_signed_curvature_from_distance.cpp
  *
  * **Result**
- * @image html ex_skeleton.png
+ * @image html ex_signed_curvature_from_distance0.png
+ * @image html ex_signed_curvature_from_distance1.png
+ * @image html ex_signed_curvature_from_distance2.png
+ * @image html ex_signed_curvature_from_distance3.png
  */
 Array relative_distance_from_skeleton(const Array &array,
                                       int          ir_search,
                                       bool         zero_at_borders = true,
                                       int          ir_erosion = 1);
+
+/**
+ * @brief Computes the signed curvature of the distance transform.
+ *
+ * Computes the Euclidean distance transform of a binary array, optionally
+ * smooths it, then returns the divergence of the normalized gradient: κ = div(
+ * ∇d / ||∇d|| ). Positive values indicate convex regions, negative values
+ * concave regions.
+ *
+ * @param  array        Binary input (non-zero = foreground).
+ * @param  prefilter_ir Optional smoothing radius (0 = no smoothing).
+ * @return              Curvature field of the distance transform.
+ *
+ * **Example**
+ * @include ex_signed_curvature_from_distance.cpp
+ *
+ * **Result**
+ * @image html ex_signed_curvature_from_distance0.png
+ * @image html ex_signed_curvature_from_distance1.png
+ * @image html ex_signed_curvature_from_distance2.png
+ * @image html ex_signed_curvature_from_distance3.png
+ */
+Array signed_curvature_from_distance(const Array &array, int prefilter_ir = 0);
+
+/**
+ * @brief Computes a signed distance transform using curvature sign.
+ *
+ * First computes the unsigned Euclidean distance transform, then assigns its
+ * sign from the curvature of the smoothed distance field: sign = sign( div( ∇d
+ * / ||∇d|| ) ).
+ *
+ * @param  array        Binary input (non-zero = foreground).
+ * @param  prefilter_ir Optional smoothing radius for curvature evaluation.
+ * @return              Signed distance transform.
+ */
+Array signed_distance_transform(const Array &array, int prefilter_ir = 0);
 
 /**
  * @brief Computes the skeleton of a binary image using the Zhang-Suen
@@ -404,6 +443,12 @@ Array relative_distance_from_skeleton(const Array &array,
                                       bool         zero_at_borders = true,
                                       int          ir_erosion = 1,
                                       bool         use_disk_kernel = true);
+
+/*! @brief See hmap::signed_curvature_from_distance */
+Array signed_curvature_from_distance(const Array &array, int prefilter_ir = 0);
+
+/*! @brief See hmap::signed_distance_transform */
+Array signed_distance_transform(const Array &array, int prefilter_ir = 0);
 
 /*! @brief See hmap::skeleton */
 Array skeleton(const Array &array, bool zero_at_borders = true);
