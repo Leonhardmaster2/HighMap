@@ -459,6 +459,8 @@ std\+::vector$<$ std\+::vector$<$ float $>$ $>$ \mbox{\hyperlink{namespacehmap_a
 \begin{DoxyCompactList}\small\item\em TODO. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a4e9ebf2cab88b81e28538a5432abf68c}{shape\+\_\+index}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int ir)
 \begin{DoxyCompactList}\small\item\em Computes the Shape Index (SI) of the terrain, quantifying landform complexity based on curvature. The Shape Index is a metric used to describe the shape of landforms, particularly in digital elevation models (DEMs). It differentiates between convex (e.\+g., hilltops), concave (e.\+g., valleys), and flat surfaces. Usage\+: Use this function to classify terrain into different morphological types, which can be important in land use planning and environmental studies. Useful in landscape ecology and in understanding geomorphological processes. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_aa1f2e119a09d246fe0cf27e859ddb2e6}{level\+\_\+set\+\_\+curvature}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int prefilter\+\_\+ir)
+\begin{DoxyCompactList}\small\item\em Computes a signed level-\/set curvature. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a5dc8b3117305f025eb4d0da50bf3c674}{unsphericity}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int ir)
 \begin{DoxyCompactList}\small\item\em Calculates the unsphericity of a surface, indicating how much the terrain deviates from a perfect spherical shape. Unsphericity is a measure used to understand the degree of asymmetry in terrain surfaces. It quantifies how much a surface deviates from being perfectly spherical or symmetrical, which can be critical in various geomorphological analyses. Usage\+: Use this function to identify areas of terrain that significantly deviate from a spherical shape, which may indicate unique geological formations or erosion patterns. Helpful in identifying and analyzing landforms that are not perfectly round or symmetrical, such as irregular hills or basins. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_ad8bed5d4ec0f54adc017527fa134f455}{compute\+\_\+curvature\+\_\+gradients}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&p, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&q, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&r, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&s, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&t)
@@ -473,7 +475,7 @@ std\+::function$<$ float(float)$>$ \mbox{\hyperlink{namespacehmap_a02f191e398bfc
 \item 
 void \mbox{\hyperlink{namespacehmap_a54724c8701b75260e97924451731e41f}{coastal\+\_\+erosion\+\_\+diffusion}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&water\+\_\+depth, float additional\+\_\+depth, int iterations=10, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+water\+\_\+mask=nullptr)
 \begin{DoxyCompactList}\small\item\em Simulates terrain diffusion due to coastal erosion. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{namespacehmap_af7fb6f59b9ed951ca5f93013e651ba89}{coastal\+\_\+erosion\+\_\+profile}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&water\+\_\+depth, float shore\+\_\+ground\+\_\+extent, float shore\+\_\+water\+\_\+extent, float slope\+\_\+shore=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float slope\+\_\+shore\+\_\+water=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float scarp\+\_\+extent\+\_\+ratio=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, bool apply\+\_\+post\+\_\+filter=true, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+shore\+\_\+mask=nullptr)
+void \mbox{\hyperlink{namespacehmap_a30dd1027fd8da1839f584687aedfdaf5}{coastal\+\_\+erosion\+\_\+profile}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&water\+\_\+depth, float shore\+\_\+ground\+\_\+extent, float shore\+\_\+water\+\_\+extent, float slope\+\_\+shore=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float slope\+\_\+shore\+\_\+water=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float scarp\+\_\+extent\+\_\+ratio=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, bool apply\+\_\+post\+\_\+filter=true, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+shore\+\_\+mask=nullptr)
 \begin{DoxyCompactList}\small\item\em Applies a coastal erosion profile to a terrain elevation field. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_aa64448e4b5640d90570e53249907c98a}{depression\+\_\+filling}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int iterations=1000, float epsilon=1e-\/4\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Fill the depressions of the heightmap using the Planchon-\/\+Darboux algorithm. \end{DoxyCompactList}\item 
@@ -4912,7 +4914,27 @@ Computes the Shape Index (SI) of the terrain, quantifying landform complexity ba
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}  \Hypertarget{namespacehmap_a5dc8b3117305f025eb4d0da50bf3c674}\label{namespacehmap_a5dc8b3117305f025eb4d0da50bf3c674} 
+{\bfseries{Result}}  \Hypertarget{namespacehmap_aa1f2e119a09d246fe0cf27e859ddb2e6}\label{namespacehmap_aa1f2e119a09d246fe0cf27e859ddb2e6} 
+\index{hmap@{hmap}!level\_set\_curvature@{level\_set\_curvature}}
+\index{level\_set\_curvature@{level\_set\_curvature}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{level\_set\_curvature()}{level\_set\_curvature()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::level\+\_\+set\+\_\+curvature (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{int}]{prefilter\+\_\+ir }\end{DoxyParamCaption})}
+
+
+
+Computes a signed level-\/set curvature. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & Input array. \\
+\hline
+{\em prefilter\+\_\+ir} & Optional smoothing radius for curvature evaluation. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Signed curvature. 
+\end{DoxyReturn}
+\Hypertarget{namespacehmap_a5dc8b3117305f025eb4d0da50bf3c674}\label{namespacehmap_a5dc8b3117305f025eb4d0da50bf3c674} 
 \index{hmap@{hmap}!unsphericity@{unsphericity}}
 \index{unsphericity@{unsphericity}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{unsphericity()}{unsphericity()}}
@@ -5070,11 +5092,11 @@ This results in a realistic simulation of coastal erosion processes where the te
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}  \Hypertarget{namespacehmap_af7fb6f59b9ed951ca5f93013e651ba89}\label{namespacehmap_af7fb6f59b9ed951ca5f93013e651ba89} 
+{\bfseries{Result}}  \Hypertarget{namespacehmap_a30dd1027fd8da1839f584687aedfdaf5}\label{namespacehmap_a30dd1027fd8da1839f584687aedfdaf5} 
 \index{hmap@{hmap}!coastal\_erosion\_profile@{coastal\_erosion\_profile}}
 \index{coastal\_erosion\_profile@{coastal\_erosion\_profile}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{coastal\_erosion\_profile()}{coastal\_erosion\_profile()}}
-{\footnotesize\ttfamily void hmap\+::coastal\+\_\+erosion\+\_\+profile (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{water\+\_\+depth,  }\item[{float}]{shore\+\_\+ground\+\_\+extent,  }\item[{float}]{shore\+\_\+water\+\_\+extent,  }\item[{float}]{slope\+\_\+shore = {\ttfamily 0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{slope\+\_\+shore\+\_\+water = {\ttfamily 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{scarp\+\_\+extent\+\_\+ratio = {\ttfamily 0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{bool}]{apply\+\_\+post\+\_\+filter = {\ttfamily true},  }\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+shore\+\_\+mask = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void hmap\+::coastal\+\_\+erosion\+\_\+profile (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{water\+\_\+depth,  }\item[{float}]{shore\+\_\+ground\+\_\+extent,  }\item[{float}]{shore\+\_\+water\+\_\+extent,  }\item[{float}]{slope\+\_\+shore = {\ttfamily 0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{slope\+\_\+shore\+\_\+water = {\ttfamily 0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{scarp\+\_\+extent\+\_\+ratio = {\ttfamily 0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{bool}]{apply\+\_\+post\+\_\+filter = {\ttfamily true},  }\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+shore\+\_\+mask = {\ttfamily nullptr} }\end{DoxyParamCaption})}
 
 
 
@@ -5134,10 +5156,13 @@ Optionally, a shoreline mask can be returned describing the region influenced by
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ water\_depth\ =\ \mbox{\hyperlink{namespacehmap_a2318944325d02f3969aa7fa58b500278}{hmap::flooding\_uniform\_level}}(z,\ 0.3f);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ \ shore\_ground\_extent\ =\ 32.f;\ \textcolor{comment}{//\ pixels}}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ \ shore\_water\_extent\ =\ 16.f;\ }
-\DoxyCodeLine{\ \ }
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_af7fb6f59b9ed951ca5f93013e651ba89}{hmap::coastal\_erosion\_profile}}(z,\ water\_depth,\ shore\_ground\_extent,\ shore\_water\_extent);}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ shore\_ground\_extent\ =\ 32.f;\ \textcolor{comment}{//\ pixels}}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ shore\_water\_extent\ =\ 16.f;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a30dd1027fd8da1839f584687aedfdaf5}{hmap::coastal\_erosion\_profile}}(z,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ water\_depth,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ shore\_ground\_extent,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ shore\_water\_extent);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_coastal\_erosion\_profile.png"{}},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z0,\ z,\ z\ +\ water\_depth\},}

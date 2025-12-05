@@ -8,6 +8,7 @@ var curvature__gpu_8cpp =
     [ "curvature_rotor", "curvature__gpu_8cpp.html#a664f80c07e3609c285c98ed5f8bb2be3", null ],
     [ "curvature_vertical_longitudinal", "curvature__gpu_8cpp.html#aec95543aaf6a305eb2f7b85cd3dd54d3", null ],
     [ "curvature_vertical_profile", "curvature__gpu_8cpp.html#ad1529cdd1f7e79e385e138f1005c7e74", null ],
+    [ "level_set_curvature", "curvature__gpu_8cpp.html#a125118b55d309727ff0b46d686fd3829", null ],
     [ "shape_index", "curvature__gpu_8cpp.html#a5bec8dfa40b4c176d348698d9074a7e7", null ],
     [ "unsphericity", "curvature__gpu_8cpp.html#a112db22b157fcb69d867e1e5ee3a1afd", null ]
 ];

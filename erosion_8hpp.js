@@ -12,7 +12,7 @@ var erosion_8hpp =
     ] ],
     [ "get_erosion_profile_function", "erosion_8hpp.html#a02f191e398bfc3c0e87999d8576d7c3d", null ],
     [ "coastal_erosion_diffusion", "erosion_8hpp.html#a54724c8701b75260e97924451731e41f", null ],
-    [ "coastal_erosion_profile", "erosion_8hpp.html#af7fb6f59b9ed951ca5f93013e651ba89", null ],
+    [ "coastal_erosion_profile", "erosion_8hpp.html#a30dd1027fd8da1839f584687aedfdaf5", null ],
     [ "depression_filling", "erosion_8hpp.html#aa64448e4b5640d90570e53249907c98a", null ],
     [ "erosion_maps", "erosion_8hpp.html#af91e2b8638aab2c4357ce37812b8a99c", null ],
     [ "hydraulic_algebric", "erosion_8hpp.html#ac4f3c8b3d5f766b15c0ac64359fdc219", null ],

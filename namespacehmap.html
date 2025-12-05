@@ -704,6 +704,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a4e9ebf2cab88b81e28538a5432abf68c" id="r_a4e9ebf2cab88b81e28538a5432abf68c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a4e9ebf2cab88b81e28538a5432abf68c">shape_index</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, int ir)</td></tr>
 <tr class="memdesc:a4e9ebf2cab88b81e28538a5432abf68c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the Shape Index (SI) of the terrain, quantifying landform complexity based on curvature. The Shape Index is a metric used to describe the shape of landforms, particularly in digital elevation models (DEMs). It differentiates between convex (e.g., hilltops), concave (e.g., valleys), and flat surfaces. Usage: Use this function to classify terrain into different morphological types, which can be important in land use planning and environmental studies. Useful in landscape ecology and in understanding geomorphological processes.  <br /></td></tr>
 <tr class="separator:a4e9ebf2cab88b81e28538a5432abf68c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1f2e119a09d246fe0cf27e859ddb2e6" id="r_aa1f2e119a09d246fe0cf27e859ddb2e6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#aa1f2e119a09d246fe0cf27e859ddb2e6">level_set_curvature</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, int prefilter_ir)</td></tr>
+<tr class="memdesc:aa1f2e119a09d246fe0cf27e859ddb2e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes a signed level-set curvature.  <br /></td></tr>
+<tr class="separator:aa1f2e119a09d246fe0cf27e859ddb2e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5dc8b3117305f025eb4d0da50bf3c674" id="r_a5dc8b3117305f025eb4d0da50bf3c674"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a5dc8b3117305f025eb4d0da50bf3c674">unsphericity</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, int ir)</td></tr>
 <tr class="memdesc:a5dc8b3117305f025eb4d0da50bf3c674"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the unsphericity of a surface, indicating how much the terrain deviates from a perfect spherical shape. Unsphericity is a measure used to understand the degree of asymmetry in terrain surfaces. It quantifies how much a surface deviates from being perfectly spherical or symmetrical, which can be critical in various geomorphological analyses. Usage: Use this function to identify areas of terrain that significantly deviate from a spherical shape, which may indicate unique geological formations or erosion patterns. Helpful in identifying and analyzing landforms that are not perfectly round or symmetrical, such as irregular hills or basins.  <br /></td></tr>
 <tr class="separator:a5dc8b3117305f025eb4d0da50bf3c674"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -720,9 +723,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a54724c8701b75260e97924451731e41f" id="r_a54724c8701b75260e97924451731e41f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a54724c8701b75260e97924451731e41f">coastal_erosion_diffusion</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;water_depth, float additional_depth, int iterations=10, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_water_mask=nullptr)</td></tr>
 <tr class="memdesc:a54724c8701b75260e97924451731e41f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simulates terrain diffusion due to coastal erosion.  <br /></td></tr>
 <tr class="separator:a54724c8701b75260e97924451731e41f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af7fb6f59b9ed951ca5f93013e651ba89" id="r_af7fb6f59b9ed951ca5f93013e651ba89"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#af7fb6f59b9ed951ca5f93013e651ba89">coastal_erosion_profile</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;water_depth, float shore_ground_extent, float shore_water_extent, float slope_shore=0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float slope_shore_water=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float scarp_extent_ratio=0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, bool apply_post_filter=true, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_shore_mask=nullptr)</td></tr>
-<tr class="memdesc:af7fb6f59b9ed951ca5f93013e651ba89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies a coastal erosion profile to a terrain elevation field.  <br /></td></tr>
-<tr class="separator:af7fb6f59b9ed951ca5f93013e651ba89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30dd1027fd8da1839f584687aedfdaf5" id="r_a30dd1027fd8da1839f584687aedfdaf5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a30dd1027fd8da1839f584687aedfdaf5">coastal_erosion_profile</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;water_depth, float shore_ground_extent, float shore_water_extent, float slope_shore=0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float slope_shore_water=0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float scarp_extent_ratio=0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, bool apply_post_filter=true, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_shore_mask=nullptr)</td></tr>
+<tr class="memdesc:a30dd1027fd8da1839f584687aedfdaf5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies a coastal erosion profile to a terrain elevation field.  <br /></td></tr>
+<tr class="separator:a30dd1027fd8da1839f584687aedfdaf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa64448e4b5640d90570e53249907c98a" id="r_aa64448e4b5640d90570e53249907c98a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#aa64448e4b5640d90570e53249907c98a">depression_filling</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, int iterations=1000, float epsilon=1e-4<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
 <tr class="memdesc:aa64448e4b5640d90570e53249907c98a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fill the depressions of the heightmap using the Planchon-Darboux algorithm.  <br /></td></tr>
 <tr class="separator:aa64448e4b5640d90570e53249907c98a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -5954,19 +5957,19 @@ template&lt;typename T &gt; </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_curvature.png&quot;</span>, alist, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>
 <div class="ttc" id="anamespacehmap_html"><div class="ttname"><a href="namespacehmap.html">hmap</a></div><div class="ttdef"><b>Definition</b> algebra.hpp:28</div></div>
-<div class="ttc" id="anamespacehmap_html_a0f5685e5bb02e29d1d35720d3aaedca0"><div class="ttname"><a href="namespacehmap.html#a0f5685e5bb02e29d1d35720d3aaedca0">hmap::curvature_mean</a></div><div class="ttdeci">Array curvature_mean(const Array &amp;z)</div><div class="ttdoc">Computes the mean curvature of a heightmap, indicating the average curvature at each point on the sur...</div><div class="ttdef"><b>Definition</b> curvature.cpp:88</div></div>
-<div class="ttc" id="anamespacehmap_html_a1bf0dae54c5b8bd4e0aeb738c26644fc"><div class="ttname"><a href="namespacehmap.html#a1bf0dae54c5b8bd4e0aeb738c26644fc">hmap::curvature_horizontal_plan</a></div><div class="ttdeci">Array curvature_horizontal_plan(const Array &amp;z, int ir)</div><div class="ttdoc">TODO.</div><div class="ttdef"><b>Definition</b> curvature.cpp:56</div></div>
-<div class="ttc" id="anamespacehmap_html_a4bc3d501e53aebe8e15428798656a3e4"><div class="ttname"><a href="namespacehmap.html#a4bc3d501e53aebe8e15428798656a3e4">hmap::accumulation_curvature</a></div><div class="ttdeci">Array accumulation_curvature(const Array &amp;z, int ir)</div><div class="ttdoc">Computes the accumulation curvature of a heightmap. Acumulation curvature is a measure of the extent ...</div><div class="ttdef"><b>Definition</b> curvature.cpp:12</div></div>
-<div class="ttc" id="anamespacehmap_html_a4e9ebf2cab88b81e28538a5432abf68c"><div class="ttname"><a href="namespacehmap.html#a4e9ebf2cab88b81e28538a5432abf68c">hmap::shape_index</a></div><div class="ttdeci">Array shape_index(const Array &amp;z, int ir)</div><div class="ttdoc">Computes the Shape Index (SI) of the terrain, quantifying landform complexity based on curvature....</div><div class="ttdef"><b>Definition</b> curvature.cpp:161</div></div>
-<div class="ttc" id="anamespacehmap_html_a5dc8b3117305f025eb4d0da50bf3c674"><div class="ttname"><a href="namespacehmap.html#a5dc8b3117305f025eb4d0da50bf3c674">hmap::unsphericity</a></div><div class="ttdeci">Array unsphericity(const Array &amp;z, int ir)</div><div class="ttdoc">Calculates the unsphericity of a surface, indicating how much the terrain deviates from a perfect sph...</div><div class="ttdef"><b>Definition</b> curvature.cpp:186</div></div>
-<div class="ttc" id="anamespacehmap_html_a6c28c3adca1bc50a9e769e3bacaf777b"><div class="ttname"><a href="namespacehmap.html#a6c28c3adca1bc50a9e769e3bacaf777b">hmap::curvature_horizontal_tangential</a></div><div class="ttdeci">Array curvature_horizontal_tangential(const Array &amp;z, int ir)</div><div class="ttdoc">TODO.</div><div class="ttdef"><b>Definition</b> curvature.cpp:72</div></div>
-<div class="ttc" id="anamespacehmap_html_ab2de0fa5e51719f4139d0fc0309a9f7f"><div class="ttname"><a href="namespacehmap.html#ab2de0fa5e51719f4139d0fc0309a9f7f">hmap::curvature_vertical_longitudinal</a></div><div class="ttdeci">Array curvature_vertical_longitudinal(const Array &amp;z, int ir)</div><div class="ttdoc">TODO.</div><div class="ttdef"><b>Definition</b> curvature.cpp:130</div></div>
+<div class="ttc" id="anamespacehmap_html_a0f5685e5bb02e29d1d35720d3aaedca0"><div class="ttname"><a href="namespacehmap.html#a0f5685e5bb02e29d1d35720d3aaedca0">hmap::curvature_mean</a></div><div class="ttdeci">Array curvature_mean(const Array &amp;z)</div><div class="ttdoc">Computes the mean curvature of a heightmap, indicating the average curvature at each point on the sur...</div><div class="ttdef"><b>Definition</b> curvature.cpp:89</div></div>
+<div class="ttc" id="anamespacehmap_html_a1bf0dae54c5b8bd4e0aeb738c26644fc"><div class="ttname"><a href="namespacehmap.html#a1bf0dae54c5b8bd4e0aeb738c26644fc">hmap::curvature_horizontal_plan</a></div><div class="ttdeci">Array curvature_horizontal_plan(const Array &amp;z, int ir)</div><div class="ttdoc">TODO.</div><div class="ttdef"><b>Definition</b> curvature.cpp:57</div></div>
+<div class="ttc" id="anamespacehmap_html_a4bc3d501e53aebe8e15428798656a3e4"><div class="ttname"><a href="namespacehmap.html#a4bc3d501e53aebe8e15428798656a3e4">hmap::accumulation_curvature</a></div><div class="ttdeci">Array accumulation_curvature(const Array &amp;z, int ir)</div><div class="ttdoc">Computes the accumulation curvature of a heightmap. Acumulation curvature is a measure of the extent ...</div><div class="ttdef"><b>Definition</b> curvature.cpp:13</div></div>
+<div class="ttc" id="anamespacehmap_html_a4e9ebf2cab88b81e28538a5432abf68c"><div class="ttname"><a href="namespacehmap.html#a4e9ebf2cab88b81e28538a5432abf68c">hmap::shape_index</a></div><div class="ttdeci">Array shape_index(const Array &amp;z, int ir)</div><div class="ttdoc">Computes the Shape Index (SI) of the terrain, quantifying landform complexity based on curvature....</div><div class="ttdef"><b>Definition</b> curvature.cpp:180</div></div>
+<div class="ttc" id="anamespacehmap_html_a5dc8b3117305f025eb4d0da50bf3c674"><div class="ttname"><a href="namespacehmap.html#a5dc8b3117305f025eb4d0da50bf3c674">hmap::unsphericity</a></div><div class="ttdeci">Array unsphericity(const Array &amp;z, int ir)</div><div class="ttdoc">Calculates the unsphericity of a surface, indicating how much the terrain deviates from a perfect sph...</div><div class="ttdef"><b>Definition</b> curvature.cpp:205</div></div>
+<div class="ttc" id="anamespacehmap_html_a6c28c3adca1bc50a9e769e3bacaf777b"><div class="ttname"><a href="namespacehmap.html#a6c28c3adca1bc50a9e769e3bacaf777b">hmap::curvature_horizontal_tangential</a></div><div class="ttdeci">Array curvature_horizontal_tangential(const Array &amp;z, int ir)</div><div class="ttdoc">TODO.</div><div class="ttdef"><b>Definition</b> curvature.cpp:73</div></div>
+<div class="ttc" id="anamespacehmap_html_ab2de0fa5e51719f4139d0fc0309a9f7f"><div class="ttname"><a href="namespacehmap.html#ab2de0fa5e51719f4139d0fc0309a9f7f">hmap::curvature_vertical_longitudinal</a></div><div class="ttdeci">Array curvature_vertical_longitudinal(const Array &amp;z, int ir)</div><div class="ttdoc">TODO.</div><div class="ttdef"><b>Definition</b> curvature.cpp:131</div></div>
 <div class="ttc" id="anamespacehmap_html_ab8197c4c7a85dacb616fee7a7d0df195acb1550fb6b10f55ed2d30b10e7ab65bb"><div class="ttname"><a href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195acb1550fb6b10f55ed2d30b10e7ab65bb">hmap::PERLIN_HALF</a></div><div class="ttdeci">@ PERLIN_HALF</div><div class="ttdoc">Perlin half.</div><div class="ttdef"><b>Definition</b> functions.hpp:66</div></div>
-<div class="ttc" id="anamespacehmap_html_ab983266e7db85af59452a75364a6bad8"><div class="ttname"><a href="namespacehmap.html#ab983266e7db85af59452a75364a6bad8">hmap::curvature_rotor</a></div><div class="ttdeci">Array curvature_rotor(const Array &amp;z, int ir)</div><div class="ttdoc">Rotor curvature, also called flow line curvature, describes how the curvature of a terrain surface in...</div><div class="ttdef"><b>Definition</b> curvature.cpp:112</div></div>
-<div class="ttc" id="anamespacehmap_html_ac56ceece101a652bd52592149e031a41"><div class="ttname"><a href="namespacehmap.html#ac56ceece101a652bd52592149e031a41">hmap::curvature_vertical_profile</a></div><div class="ttdeci">Array curvature_vertical_profile(const Array &amp;z, int ir)</div><div class="ttdoc">TODO.</div><div class="ttdef"><b>Definition</b> curvature.cpp:145</div></div>
-<div class="ttc" id="anamespacehmap_html_ac60627713d4f7ff0c406182ac9941483"><div class="ttname"><a href="namespacehmap.html#ac60627713d4f7ff0c406182ac9941483">hmap::curvature_ring</a></div><div class="ttdeci">Array curvature_ring(const Array &amp;z, int ir)</div><div class="ttdoc">Ring curvature is a second-order derivative of the elevation surface. It describes how the surface be...</div><div class="ttdef"><b>Definition</b> curvature.cpp:95</div></div>
-<div class="ttc" id="anamespacehmap_html_acad6026e6aab9d084238c6c12cb2c565"><div class="ttname"><a href="namespacehmap.html#acad6026e6aab9d084238c6c12cb2c565">hmap::curvature_gaussian</a></div><div class="ttdeci">Array curvature_gaussian(const Array &amp;z)</div><div class="ttdoc">Calculates the Gaussian curvature of a heightmap, providing insights into the surface's intrinsic cur...</div><div class="ttdef"><b>Definition</b> curvature.cpp:34</div></div>
-<div class="ttc" id="anamespacehmap_html_adfe8eddd79327602ea551c79524e0a21"><div class="ttname"><a href="namespacehmap.html#adfe8eddd79327602ea551c79524e0a21">hmap::curvature_horizontal_cross_sectional</a></div><div class="ttdeci">Array curvature_horizontal_cross_sectional(const Array &amp;z, int ir)</div><div class="ttdoc">TODO.</div><div class="ttdef"><b>Definition</b> curvature.cpp:41</div></div>
+<div class="ttc" id="anamespacehmap_html_ab983266e7db85af59452a75364a6bad8"><div class="ttname"><a href="namespacehmap.html#ab983266e7db85af59452a75364a6bad8">hmap::curvature_rotor</a></div><div class="ttdeci">Array curvature_rotor(const Array &amp;z, int ir)</div><div class="ttdoc">Rotor curvature, also called flow line curvature, describes how the curvature of a terrain surface in...</div><div class="ttdef"><b>Definition</b> curvature.cpp:113</div></div>
+<div class="ttc" id="anamespacehmap_html_ac56ceece101a652bd52592149e031a41"><div class="ttname"><a href="namespacehmap.html#ac56ceece101a652bd52592149e031a41">hmap::curvature_vertical_profile</a></div><div class="ttdeci">Array curvature_vertical_profile(const Array &amp;z, int ir)</div><div class="ttdoc">TODO.</div><div class="ttdef"><b>Definition</b> curvature.cpp:146</div></div>
+<div class="ttc" id="anamespacehmap_html_ac60627713d4f7ff0c406182ac9941483"><div class="ttname"><a href="namespacehmap.html#ac60627713d4f7ff0c406182ac9941483">hmap::curvature_ring</a></div><div class="ttdeci">Array curvature_ring(const Array &amp;z, int ir)</div><div class="ttdoc">Ring curvature is a second-order derivative of the elevation surface. It describes how the surface be...</div><div class="ttdef"><b>Definition</b> curvature.cpp:96</div></div>
+<div class="ttc" id="anamespacehmap_html_acad6026e6aab9d084238c6c12cb2c565"><div class="ttname"><a href="namespacehmap.html#acad6026e6aab9d084238c6c12cb2c565">hmap::curvature_gaussian</a></div><div class="ttdeci">Array curvature_gaussian(const Array &amp;z)</div><div class="ttdoc">Calculates the Gaussian curvature of a heightmap, providing insights into the surface's intrinsic cur...</div><div class="ttdef"><b>Definition</b> curvature.cpp:35</div></div>
+<div class="ttc" id="anamespacehmap_html_adfe8eddd79327602ea551c79524e0a21"><div class="ttname"><a href="namespacehmap.html#adfe8eddd79327602ea551c79524e0a21">hmap::curvature_horizontal_cross_sectional</a></div><div class="ttdeci">Array curvature_horizontal_cross_sectional(const Array &amp;z, int ir)</div><div class="ttdoc">TODO.</div><div class="ttdef"><b>Definition</b> curvature.cpp:42</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_curvature.png" alt=""/>
 </div>
@@ -6734,6 +6737,44 @@ template&lt;typename T &gt; </div>
  
 </div>
 </div>
+<a id="aa1f2e119a09d246fe0cf27e859ddb2e6" name="aa1f2e119a09d246fe0cf27e859ddb2e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1f2e119a09d246fe0cf27e859ddb2e6">&#9670;&#160;</a></span>level_set_curvature()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classhmap_1_1Array.html">Array</a> hmap::level_set_curvature </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>array</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>prefilter_ir</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes a signed level-set curvature. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">array</td><td>Input array. </td></tr>
+    <tr><td class="paramname">prefilter_ir</td><td>Optional smoothing radius for curvature evaluation. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Signed curvature. </dd></dl>
+
+</div>
+</div>
 <a id="a5dc8b3117305f025eb4d0da50bf3c674" name="a5dc8b3117305f025eb4d0da50bf3c674"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5dc8b3117305f025eb4d0da50bf3c674">&#9670;&#160;</a></span>unsphericity()</h2>
 
@@ -7114,8 +7155,8 @@ additional_depth)</code>.</li>
  
 </div>
 </div>
-<a id="af7fb6f59b9ed951ca5f93013e651ba89" name="af7fb6f59b9ed951ca5f93013e651ba89"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af7fb6f59b9ed951ca5f93013e651ba89">&#9670;&#160;</a></span>coastal_erosion_profile()</h2>
+<a id="a30dd1027fd8da1839f584687aedfdaf5" name="a30dd1027fd8da1839f584687aedfdaf5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30dd1027fd8da1839f584687aedfdaf5">&#9670;&#160;</a></span>coastal_erosion_profile()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -7154,7 +7195,7 @@ additional_depth)</code>.</li>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>slope_shore_water</em> = <code>1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+          <td class="paramname"><em>slope_shore_water</em> = <code>0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -7223,18 +7264,21 @@ additional_depth)</code>.</li>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> water_depth = <a class="code hl_function" href="namespacehmap.html#a2318944325d02f3969aa7fa58b500278">hmap::flooding_uniform_level</a>(z, 0.3f);</div>
 <div class="line"> </div>
-<div class="line">  <span class="keywordtype">float</span>  shore_ground_extent = 32.f; <span class="comment">// pixels</span></div>
-<div class="line">  <span class="keywordtype">float</span>  shore_water_extent = 16.f; </div>
-<div class="line">  </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#af7fb6f59b9ed951ca5f93013e651ba89">hmap::coastal_erosion_profile</a>(z, water_depth, shore_ground_extent, shore_water_extent);</div>
+<div class="line">  <span class="keywordtype">float</span> shore_ground_extent = 32.f; <span class="comment">// pixels</span></div>
+<div class="line">  <span class="keywordtype">float</span> shore_water_extent = 16.f;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a30dd1027fd8da1839f584687aedfdaf5">hmap::coastal_erosion_profile</a>(z,</div>
+<div class="line">                                water_depth,</div>
+<div class="line">                                shore_ground_extent,</div>
+<div class="line">                                shore_water_extent);</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_coastal_erosion_profile.png&quot;</span>,</div>
 <div class="line">                          {z0, z, z + water_depth},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>,</div>
 <div class="line">                          <span class="keyword">true</span>);</div>
 <div class="line">}</div>
+<div class="ttc" id="anamespacehmap_html_a30dd1027fd8da1839f584687aedfdaf5"><div class="ttname"><a href="namespacehmap.html#a30dd1027fd8da1839f584687aedfdaf5">hmap::coastal_erosion_profile</a></div><div class="ttdeci">void coastal_erosion_profile(Array &amp;z, Array &amp;water_depth, float shore_ground_extent, float shore_water_extent, float slope_shore=0.5f, float slope_shore_water=0.5f, float scarp_extent_ratio=0.5f, bool apply_post_filter=true, Array *p_shore_mask=nullptr)</div><div class="ttdoc">Applies a coastal erosion profile to a terrain elevation field.</div><div class="ttdef"><b>Definition</b> coastal_erosion.cpp:43</div></div>
 <div class="ttc" id="anamespacehmap_html_ab8197c4c7a85dacb616fee7a7d0df195a03f4fca6bab010831c1e90a0cce9dd80"><div class="ttname"><a href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a03f4fca6bab010831c1e90a0cce9dd80">hmap::SIMPLEX2S</a></div><div class="ttdeci">@ SIMPLEX2S</div><div class="ttdoc">OpenSimplex2S.</div><div class="ttdef"><b>Definition</b> functions.hpp:68</div></div>
-<div class="ttc" id="anamespacehmap_html_af7fb6f59b9ed951ca5f93013e651ba89"><div class="ttname"><a href="namespacehmap.html#af7fb6f59b9ed951ca5f93013e651ba89">hmap::coastal_erosion_profile</a></div><div class="ttdeci">void coastal_erosion_profile(Array &amp;z, Array &amp;water_depth, float shore_ground_extent, float shore_water_extent, float slope_shore=0.5f, float slope_shore_water=1.f, float scarp_extent_ratio=0.5f, bool apply_post_filter=true, Array *p_shore_mask=nullptr)</div><div class="ttdoc">Applies a coastal erosion profile to a terrain elevation field.</div><div class="ttdef"><b>Definition</b> coastal_erosion.cpp:43</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_coastal_erosion_profile.png" alt=""/>
 </div>
@@ -33582,8 +33626,8 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 <div class="line">  sc.to_png(<span class="stringliteral">&quot;ex_signed_curvature_from_distance2.png&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">  sd.to_png(<span class="stringliteral">&quot;ex_signed_curvature_from_distance3.png&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_ac56515202b30368216c7324b819cc838"><div class="ttname"><a href="namespacehmap.html#ac56515202b30368216c7324b819cc838">hmap::signed_curvature_from_distance</a></div><div class="ttdeci">Array signed_curvature_from_distance(const Array &amp;array, int prefilter_ir=0)</div><div class="ttdoc">Computes the signed curvature of the distance transform.</div><div class="ttdef"><b>Definition</b> signed_curvature_from_distance.cpp:13</div></div>
-<div class="ttc" id="anamespacehmap_html_ad4ab7bb38b3ea37fa912190251c1ed76"><div class="ttname"><a href="namespacehmap.html#ad4ab7bb38b3ea37fa912190251c1ed76">hmap::signed_distance_transform</a></div><div class="ttdeci">Array signed_distance_transform(const Array &amp;array, int prefilter_ir=0)</div><div class="ttdoc">Computes a signed distance transform using curvature sign.</div><div class="ttdef"><b>Definition</b> signed_curvature_from_distance.cpp:32</div></div>
+<div class="ttc" id="anamespacehmap_html_ac56515202b30368216c7324b819cc838"><div class="ttname"><a href="namespacehmap.html#ac56515202b30368216c7324b819cc838">hmap::signed_curvature_from_distance</a></div><div class="ttdeci">Array signed_curvature_from_distance(const Array &amp;array, int prefilter_ir=0)</div><div class="ttdoc">Computes the signed curvature of the distance transform.</div><div class="ttdef"><b>Definition</b> signed_curvature_from_distance.cpp:14</div></div>
+<div class="ttc" id="anamespacehmap_html_ad4ab7bb38b3ea37fa912190251c1ed76"><div class="ttname"><a href="namespacehmap.html#ad4ab7bb38b3ea37fa912190251c1ed76">hmap::signed_distance_transform</a></div><div class="ttdeci">Array signed_distance_transform(const Array &amp;array, int prefilter_ir=0)</div><div class="ttdoc">Computes a signed distance transform using curvature sign.</div><div class="ttdef"><b>Definition</b> signed_curvature_from_distance.cpp:20</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_signed_curvature_from_distance0.png" alt=""/>
 </div>

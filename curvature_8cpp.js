@@ -10,6 +10,7 @@ var curvature_8cpp =
     [ "curvature_rotor", "curvature_8cpp.html#ab983266e7db85af59452a75364a6bad8", null ],
     [ "curvature_vertical_longitudinal", "curvature_8cpp.html#ab2de0fa5e51719f4139d0fc0309a9f7f", null ],
     [ "curvature_vertical_profile", "curvature_8cpp.html#ac56ceece101a652bd52592149e031a41", null ],
+    [ "level_set_curvature", "curvature_8cpp.html#aa1f2e119a09d246fe0cf27e859ddb2e6", null ],
     [ "shape_index", "curvature_8cpp.html#a4e9ebf2cab88b81e28538a5432abf68c", null ],
     [ "unsphericity", "curvature_8cpp.html#a5dc8b3117305f025eb4d0da50bf3c674", null ],
     [ "compute_curvature_gradients", "curvature_8cpp.html#ad8bed5d4ec0f54adc017527fa134f455", null ],

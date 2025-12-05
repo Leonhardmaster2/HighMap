@@ -1,5 +1,11 @@
 var NAVTREEINDEX15 =
 {
+"primitives_8hpp.html#a06f0930402ba5e7a66eb73d9da9a09ee":[5,0,1,0,0,31,50],
+"primitives_8hpp.html#a0c9c2a528f344ede2aa320fdf2583790":[5,0,1,0,0,31,74],
+"primitives_8hpp.html#a0fac1251f8728228be8de58ac16846d2":[5,0,1,0,0,31,41],
+"primitives_8hpp.html#a0febf1835b6a00b31dfa837d855c6a6d":[5,0,1,0,0,31,33],
+"primitives_8hpp.html#a144eb2c0e1e4f93e712f01cbf0fb0c06":[5,0,1,0,0,31,17],
+"primitives_8hpp.html#a16a701ab5a740bd3dbfe7020fb388023":[5,0,1,0,0,31,40],
 "primitives_8hpp.html#a173df0f0155f3b9ed96827941e419601":[5,0,1,0,0,31,49],
 "primitives_8hpp.html#a1b7c375c3335b31ab4773d792365faac":[5,0,1,0,0,31,15],
 "primitives_8hpp.html#a26d6f87858e400f7b6c8cecb1e12bb8c":[5,0,1,0,0,31,78],
@@ -243,11 +249,5 @@ var NAVTREEINDEX15 =
 "roads_8hpp.html#ad67818460523a881fd4c6b7d4b80f6a1":[5,0,1,0,0,33,0],
 "roads_8hpp_source.html":[5,0,1,0,0,33],
 "sdf_8hpp.html":[5,0,1,0,0,34],
-"sdf_8hpp.html#a30410bfd596eaa78f33396b1f963e743":[5,0,1,0,0,34,3],
-"sdf_8hpp.html#a5368ab0d5bb8708001a55d216332918b":[5,0,1,0,0,34,1],
-"sdf_8hpp.html#a6a106eafab89fcdee4764c21b7406f3e":[5,0,1,0,0,34,2],
-"sdf_8hpp.html#a7bacc45412ea1599907ac3f9b0e9e282":[5,0,1,0,0,34,0],
-"sdf_8hpp_source.html":[5,0,1,0,0,34],
-"sdf__2d__polyline_8cpp.html":[5,0,1,1,29,0],
-"sdf__2d__polyline_8cpp.html#a5368ab0d5bb8708001a55d216332918b":[5,0,1,1,29,0,1]
+"sdf_8hpp.html#a30410bfd596eaa78f33396b1f963e743":[5,0,1,0,0,34,3]
 };

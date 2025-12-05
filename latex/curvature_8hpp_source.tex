@@ -35,53 +35,57 @@
 \DoxyCodeLine{00191\ }
 \DoxyCodeLine{00216\ Array\ \mbox{\hyperlink{namespacehmap_a4e9ebf2cab88b81e28538a5432abf68c}{shape\_index}}(\textcolor{keyword}{const}\ Array\ \&z,\ \textcolor{keywordtype}{int}\ ir);}
 \DoxyCodeLine{00217\ }
-\DoxyCodeLine{00243\ Array\ \mbox{\hyperlink{namespacehmap_a5dc8b3117305f025eb4d0da50bf3c674}{unsphericity}}(\textcolor{keyword}{const}\ Array\ \&z,\ \textcolor{keywordtype}{int}\ ir);}
-\DoxyCodeLine{00244\ }
-\DoxyCodeLine{00245\ \textcolor{comment}{//\ helpers}}
-\DoxyCodeLine{00246\ }
-\DoxyCodeLine{00247\ \textcolor{comment}{//\ Notation\ taken\ from\ Florinsky,\ I.\ (2016).\ Digital\ terrain\ analysis\ in\ soil}}
-\DoxyCodeLine{00248\ \textcolor{comment}{//\ science\ and\ geology.\ Academic\ Press.\ p\ =\ dz/dx,\ q\ =\ dz/dy,\ r\ =\ d2z/dx2,\ s\ =}}
-\DoxyCodeLine{00249\ \textcolor{comment}{//\ d2z/dxdy,\ t\ =\ d2z/dy2.}}
-\DoxyCodeLine{00250\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_ad8bed5d4ec0f54adc017527fa134f455}{compute\_curvature\_gradients}}(\textcolor{keyword}{const}\ Array\ \&z,}
-\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ \&p,}
-\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ \&q,}
-\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ \&r,}
-\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ \&s,}
-\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ \&t);}
-\DoxyCodeLine{00256\ }
-\DoxyCodeLine{00257\ Array\ \mbox{\hyperlink{namespacehmap_a4a1660bb65728209b9d07f6ce4486584}{compute\_curvature\_h}}(\textcolor{keyword}{const}\ Array\ \&r,\ \textcolor{keyword}{const}\ Array\ \&t);}
-\DoxyCodeLine{00258\ }
-\DoxyCodeLine{00259\ Array\ \mbox{\hyperlink{namespacehmap_af54b122203d5eee61b9b6d6c7979ddfe}{compute\_curvature\_k}}(\textcolor{keyword}{const}\ Array\ \&p,}
-\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&q,}
-\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&r,}
-\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&s,}
-\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&t);}
-\DoxyCodeLine{00264\ }
-\DoxyCodeLine{00265\ \}\ \textcolor{comment}{//\ namespace\ hmap}}
-\DoxyCodeLine{00266\ }
-\DoxyCodeLine{00267\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacehmap_1_1gpu}{hmap::gpu}}}
-\DoxyCodeLine{00268\ \{}
-\DoxyCodeLine{00269\ }
-\DoxyCodeLine{00271\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_ad73cfd73fcd2e2744e8eb912eaf6f3bf}{accumulation\_curvature}}(\textcolor{keyword}{const}\ Array\ \&z,\ \textcolor{keywordtype}{int}\ ir);}
-\DoxyCodeLine{00272\ }
-\DoxyCodeLine{00274\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_afd24580b2b5fe7107bbff0ae2d3a1473}{curvature\_horizontal\_cross\_sectional}}(\textcolor{keyword}{const}\ Array\ \&z,\ \textcolor{keywordtype}{int}\ ir);}
+\DoxyCodeLine{00225\ Array\ \mbox{\hyperlink{namespacehmap_aa1f2e119a09d246fe0cf27e859ddb2e6}{level\_set\_curvature}}(\textcolor{keyword}{const}\ Array\ \&array,\ \textcolor{keywordtype}{int}\ prefilter\_ir);}
+\DoxyCodeLine{00226\ }
+\DoxyCodeLine{00252\ Array\ \mbox{\hyperlink{namespacehmap_a5dc8b3117305f025eb4d0da50bf3c674}{unsphericity}}(\textcolor{keyword}{const}\ Array\ \&z,\ \textcolor{keywordtype}{int}\ ir);}
+\DoxyCodeLine{00253\ }
+\DoxyCodeLine{00254\ \textcolor{comment}{//\ helpers}}
+\DoxyCodeLine{00255\ }
+\DoxyCodeLine{00256\ \textcolor{comment}{//\ Notation\ taken\ from\ Florinsky,\ I.\ (2016).\ Digital\ terrain\ analysis\ in\ soil}}
+\DoxyCodeLine{00257\ \textcolor{comment}{//\ science\ and\ geology.\ Academic\ Press.\ p\ =\ dz/dx,\ q\ =\ dz/dy,\ r\ =\ d2z/dx2,\ s\ =}}
+\DoxyCodeLine{00258\ \textcolor{comment}{//\ d2z/dxdy,\ t\ =\ d2z/dy2.}}
+\DoxyCodeLine{00259\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_ad8bed5d4ec0f54adc017527fa134f455}{compute\_curvature\_gradients}}(\textcolor{keyword}{const}\ Array\ \&z,}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ \&p,}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ \&q,}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ \&r,}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ \&s,}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ \&t);}
+\DoxyCodeLine{00265\ }
+\DoxyCodeLine{00266\ Array\ \mbox{\hyperlink{namespacehmap_a4a1660bb65728209b9d07f6ce4486584}{compute\_curvature\_h}}(\textcolor{keyword}{const}\ Array\ \&r,\ \textcolor{keyword}{const}\ Array\ \&t);}
+\DoxyCodeLine{00267\ }
+\DoxyCodeLine{00268\ Array\ \mbox{\hyperlink{namespacehmap_af54b122203d5eee61b9b6d6c7979ddfe}{compute\_curvature\_k}}(\textcolor{keyword}{const}\ Array\ \&p,}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&q,}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&r,}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&s,}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&t);}
+\DoxyCodeLine{00273\ }
+\DoxyCodeLine{00274\ \}\ \textcolor{comment}{//\ namespace\ hmap}}
 \DoxyCodeLine{00275\ }
-\DoxyCodeLine{00277\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_a60a4aaece2c081b0a76e50404022934f}{curvature\_horizontal\_plan}}(\textcolor{keyword}{const}\ Array\ \&z,\ \textcolor{keywordtype}{int}\ ir);}
+\DoxyCodeLine{00276\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacehmap_1_1gpu}{hmap::gpu}}}
+\DoxyCodeLine{00277\ \{}
 \DoxyCodeLine{00278\ }
-\DoxyCodeLine{00280\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_a73a9ccd515e8907c142e001da179856b}{curvature\_horizontal\_tangential}}(\textcolor{keyword}{const}\ Array\ \&z,\ \textcolor{keywordtype}{int}\ ir);}
+\DoxyCodeLine{00280\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_ad73cfd73fcd2e2744e8eb912eaf6f3bf}{accumulation\_curvature}}(\textcolor{keyword}{const}\ Array\ \&z,\ \textcolor{keywordtype}{int}\ ir);}
 \DoxyCodeLine{00281\ }
-\DoxyCodeLine{00283\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_a8cc1e9e21a72aab7e29c563817df89b6}{curvature\_ring}}(\textcolor{keyword}{const}\ Array\ \&z,\ \textcolor{keywordtype}{int}\ ir);}
+\DoxyCodeLine{00283\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_afd24580b2b5fe7107bbff0ae2d3a1473}{curvature\_horizontal\_cross\_sectional}}(\textcolor{keyword}{const}\ Array\ \&z,\ \textcolor{keywordtype}{int}\ ir);}
 \DoxyCodeLine{00284\ }
-\DoxyCodeLine{00286\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_a664f80c07e3609c285c98ed5f8bb2be3}{curvature\_rotor}}(\textcolor{keyword}{const}\ Array\ \&z,\ \textcolor{keywordtype}{int}\ ir);}
+\DoxyCodeLine{00286\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_a60a4aaece2c081b0a76e50404022934f}{curvature\_horizontal\_plan}}(\textcolor{keyword}{const}\ Array\ \&z,\ \textcolor{keywordtype}{int}\ ir);}
 \DoxyCodeLine{00287\ }
-\DoxyCodeLine{00289\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_aec95543aaf6a305eb2f7b85cd3dd54d3}{curvature\_vertical\_longitudinal}}(\textcolor{keyword}{const}\ Array\ \&z,\ \textcolor{keywordtype}{int}\ ir);}
+\DoxyCodeLine{00289\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_a73a9ccd515e8907c142e001da179856b}{curvature\_horizontal\_tangential}}(\textcolor{keyword}{const}\ Array\ \&z,\ \textcolor{keywordtype}{int}\ ir);}
 \DoxyCodeLine{00290\ }
-\DoxyCodeLine{00292\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_ad1529cdd1f7e79e385e138f1005c7e74}{curvature\_vertical\_profile}}(\textcolor{keyword}{const}\ Array\ \&z,\ \textcolor{keywordtype}{int}\ ir);}
+\DoxyCodeLine{00292\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_a8cc1e9e21a72aab7e29c563817df89b6}{curvature\_ring}}(\textcolor{keyword}{const}\ Array\ \&z,\ \textcolor{keywordtype}{int}\ ir);}
 \DoxyCodeLine{00293\ }
-\DoxyCodeLine{00295\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_a5bec8dfa40b4c176d348698d9074a7e7}{shape\_index}}(\textcolor{keyword}{const}\ Array\ \&z,\ \textcolor{keywordtype}{int}\ ir);}
+\DoxyCodeLine{00295\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_a664f80c07e3609c285c98ed5f8bb2be3}{curvature\_rotor}}(\textcolor{keyword}{const}\ Array\ \&z,\ \textcolor{keywordtype}{int}\ ir);}
 \DoxyCodeLine{00296\ }
-\DoxyCodeLine{00298\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_a112db22b157fcb69d867e1e5ee3a1afd}{unsphericity}}(\textcolor{keyword}{const}\ Array\ \&z,\ \textcolor{keywordtype}{int}\ ir);}
+\DoxyCodeLine{00298\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_aec95543aaf6a305eb2f7b85cd3dd54d3}{curvature\_vertical\_longitudinal}}(\textcolor{keyword}{const}\ Array\ \&z,\ \textcolor{keywordtype}{int}\ ir);}
 \DoxyCodeLine{00299\ }
-\DoxyCodeLine{00300\ \}\ \textcolor{comment}{//\ namespace\ hmap::gpu}}
+\DoxyCodeLine{00301\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_ad1529cdd1f7e79e385e138f1005c7e74}{curvature\_vertical\_profile}}(\textcolor{keyword}{const}\ Array\ \&z,\ \textcolor{keywordtype}{int}\ ir);}
+\DoxyCodeLine{00302\ }
+\DoxyCodeLine{00304\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_a125118b55d309727ff0b46d686fd3829}{level\_set\_curvature}}(\textcolor{keyword}{const}\ Array\ \&array,\ \textcolor{keywordtype}{int}\ prefilter\_ir);}
+\DoxyCodeLine{00305\ }
+\DoxyCodeLine{00307\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_a5bec8dfa40b4c176d348698d9074a7e7}{shape\_index}}(\textcolor{keyword}{const}\ Array\ \&z,\ \textcolor{keywordtype}{int}\ ir);}
+\DoxyCodeLine{00308\ }
+\DoxyCodeLine{00310\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_a112db22b157fcb69d867e1e5ee3a1afd}{unsphericity}}(\textcolor{keyword}{const}\ Array\ \&z,\ \textcolor{keywordtype}{int}\ ir);}
+\DoxyCodeLine{00311\ }
+\DoxyCodeLine{00312\ \}\ \textcolor{comment}{//\ namespace\ hmap::gpu}}
 
 \end{DoxyCode}

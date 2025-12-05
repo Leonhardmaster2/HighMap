@@ -11,6 +11,7 @@ var curvature_8hpp =
     [ "curvature_vertical_longitudinal", "curvature_8hpp.html#ab2de0fa5e51719f4139d0fc0309a9f7f", null ],
     [ "curvature_vertical_profile", "curvature_8hpp.html#ac56ceece101a652bd52592149e031a41", null ],
     [ "shape_index", "curvature_8hpp.html#a4e9ebf2cab88b81e28538a5432abf68c", null ],
+    [ "level_set_curvature", "curvature_8hpp.html#aa1f2e119a09d246fe0cf27e859ddb2e6", null ],
     [ "unsphericity", "curvature_8hpp.html#a5dc8b3117305f025eb4d0da50bf3c674", null ],
     [ "compute_curvature_gradients", "curvature_8hpp.html#ad8bed5d4ec0f54adc017527fa134f455", null ],
     [ "compute_curvature_h", "curvature_8hpp.html#a4a1660bb65728209b9d07f6ce4486584", null ],
@@ -23,6 +24,7 @@ var curvature_8hpp =
     [ "curvature_rotor", "curvature_8hpp.html#a664f80c07e3609c285c98ed5f8bb2be3", null ],
     [ "curvature_vertical_longitudinal", "curvature_8hpp.html#aec95543aaf6a305eb2f7b85cd3dd54d3", null ],
     [ "curvature_vertical_profile", "curvature_8hpp.html#ad1529cdd1f7e79e385e138f1005c7e74", null ],
+    [ "level_set_curvature", "curvature_8hpp.html#a125118b55d309727ff0b46d686fd3829", null ],
     [ "shape_index", "curvature_8hpp.html#a5bec8dfa40b4c176d348698d9074a7e7", null ],
     [ "unsphericity", "curvature_8hpp.html#a112db22b157fcb69d867e1e5ee3a1afd", null ]
 ];
