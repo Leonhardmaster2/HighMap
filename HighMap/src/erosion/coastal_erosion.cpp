@@ -142,4 +142,41 @@ void coastal_erosion_profile(Array &z,
   if (p_shore_mask) *p_shore_mask = shore_mask;
 }
 
+void coastal_erosion_profile(Array       &z,
+                             const Array *p_mask,
+                             Array       &water_depth,
+                             float        shore_ground_extent,
+                             float        shore_water_extent,
+                             float        slope_shore,
+                             float        slope_shore_water,
+                             float        scarp_extent_ratio,
+                             bool         apply_post_filter,
+                             Array       *p_shore_mask)
+{
+  if (!p_mask)
+    coastal_erosion_profile(z,
+                            water_depth,
+                            shore_ground_extent,
+                            shore_water_extent,
+                            slope_shore,
+                            slope_shore_water,
+                            scarp_extent_ratio,
+                            apply_post_filter,
+                            p_shore_mask);
+  else
+  {
+    Array z_f = z;
+    coastal_erosion_profile(z_f,
+                            water_depth,
+                            shore_ground_extent,
+                            shore_water_extent,
+                            slope_shore,
+                            slope_shore_water,
+                            scarp_extent_ratio,
+                            apply_post_filter,
+                            p_shore_mask);
+    z = lerp(z, z_f, *(p_mask));
+  }
+}
+
 } // namespace hmap
