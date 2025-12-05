@@ -473,6 +473,8 @@ std\+::function$<$ float(float)$>$ \mbox{\hyperlink{namespacehmap_a02f191e398bfc
 \item 
 void \mbox{\hyperlink{namespacehmap_a54724c8701b75260e97924451731e41f}{coastal\+\_\+erosion\+\_\+diffusion}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&water\+\_\+depth, float additional\+\_\+depth, int iterations=10, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+water\+\_\+mask=nullptr)
 \begin{DoxyCompactList}\small\item\em Simulates terrain diffusion due to coastal erosion. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacehmap_a972ef82d25d243e4eb01e5517e3e977d}{coastal\+\_\+erosion\+\_\+profile}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&water\+\_\+depth, float shore\+\_\+ground\+\_\+extent=96.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float shore\+\_\+water\+\_\+extent=64.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float slope\+\_\+shore=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float slope\+\_\+shore\+\_\+water=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float scarp\+\_\+extent\+\_\+ratio=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, bool apply\+\_\+post\+\_\+filter=true, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+shore\+\_\+mask=nullptr)
+\begin{DoxyCompactList}\small\item\em Applies a coastal erosion profile to a terrain elevation field. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_aa64448e4b5640d90570e53249907c98a}{depression\+\_\+filling}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int iterations=1000, float epsilon=1e-\/4\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Fill the depressions of the heightmap using the Planchon-\/\+Darboux algorithm. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_af91e2b8638aab2c4357ce37812b8a99c}{erosion\+\_\+maps}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z\+\_\+before, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z\+\_\+after, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&erosion\+\_\+map, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&deposition\+\_\+map, float tolerance=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
@@ -1277,6 +1279,8 @@ float \mbox{\hyperlink{namespacehmap_ae7d9d43c2cd453af7a6395cbcb2ac3b2}{smoothst
 \begin{DoxyCompactList}\small\item\em Calculates an approximate distance transform of the input array. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_add641a7fc26ae08b1f679cbb7dd43177}{distance\+\_\+transform\+\_\+manhattan}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, bool return\+\_\+squared\+\_\+distance=false)
 \begin{DoxyCompactList}\small\item\em Calculates the Manhattan distance transform of an array. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_afe0a1409b90526591f1974b84b68009a}{distance\+\_\+transform\+\_\+with\+\_\+closest}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, \mbox{\hyperlink{structhmap_1_1Mat}{Mat}}$<$ int $>$ \&closest\+\_\+i, \mbox{\hyperlink{structhmap_1_1Mat}{Mat}}$<$ int $>$ \&closest\+\_\+j, bool return\+\_\+squared\+\_\+distance=false)
+\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a9cf7773f6141162bf60708a93acdfcee}{erosion}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
 \begin{DoxyCompactList}\small\item\em Apply an erosion algorithm to the input array using a square structure. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_adff494af7c8bf4db7f3e6fddd3261793}{flood\+\_\+fill}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int i, int j, float fill\+\_\+value=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float background\+\_\+value=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
@@ -5058,6 +5062,87 @@ This results in a realistic simulation of coastal erosion processes where the te
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a54724c8701b75260e97924451731e41f}{hmap::coastal\_erosion\_diffusion}}(z,\ water\_depth,\ additional\_depth,\ iterations);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_coastal\_erosion\_diffusion.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z0,\ z,\ z\ +\ water\_depth\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9}{hmap::Cmap::TERRAIN}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}}  \Hypertarget{namespacehmap_a972ef82d25d243e4eb01e5517e3e977d}\label{namespacehmap_a972ef82d25d243e4eb01e5517e3e977d} 
+\index{hmap@{hmap}!coastal\_erosion\_profile@{coastal\_erosion\_profile}}
+\index{coastal\_erosion\_profile@{coastal\_erosion\_profile}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{coastal\_erosion\_profile()}{coastal\_erosion\_profile()}}
+{\footnotesize\ttfamily void hmap\+::coastal\+\_\+erosion\+\_\+profile (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{water\+\_\+depth,  }\item[{float}]{shore\+\_\+ground\+\_\+extent = {\ttfamily 96.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{shore\+\_\+water\+\_\+extent = {\ttfamily 64.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{slope\+\_\+shore = {\ttfamily 0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{slope\+\_\+shore\+\_\+water = {\ttfamily 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{scarp\+\_\+extent\+\_\+ratio = {\ttfamily 0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{bool}]{apply\+\_\+post\+\_\+filter = {\ttfamily true},  }\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+shore\+\_\+mask = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+
+
+Applies a coastal erosion profile to a terrain elevation field. 
+
+This function modifies the elevation array {\ttfamily z} by carving a coastal profile at the interface between ground and water. It uses distance transforms both from ground regions and from water regions to determine how far each point is from the shoreline. According to this distance, the function applies\+:
+
+
+\begin{DoxyItemize}
+\item A ground-\/side shore slope with an optional scarp transition.
+\item A water-\/side underwater slope ensuring continuity with the ground slope.
+\item An optional post-\/filtering step (Laplace smoothing) restricted to the shoreline region.
+\end{DoxyItemize}
+
+Water depth is adjusted after filtering to preserve the original water surface height.
+
+Optionally, a shoreline mask can be returned describing the region influenced by the coastal transformation.
+
+
+\begin{DoxyParams}{Parameters}
+{\em z} & \doxylink{classhmap_1_1Array}{Array} of terrain elevations. Modified in-\/place. \\
+\hline
+{\em water\+\_\+depth} & \doxylink{classhmap_1_1Array}{Array} of water depths. Modified to preserve water surface height after terrain changes. \\
+\hline
+{\em shore\+\_\+ground\+\_\+extent} & Horizontal extent (in grid units) over which the ground-\/side shore profile is applied. \\
+\hline
+{\em shore\+\_\+water\+\_\+extent} & Horizontal extent (in grid units) over which the underwater profile is applied. \\
+\hline
+{\em slope\+\_\+shore} & Ground-\/side slope magnitude of the coastal profile. Expressed in elevation units per domain width. \\
+\hline
+{\em slope\+\_\+shore\+\_\+water} & Water-\/side slope magnitude of the underwater profile. Expressed similarly to {\ttfamily slope\+\_\+shore}. \\
+\hline
+{\em scarp\+\_\+extent\+\_\+ratio} & Ratio defining the relative extent of the scarp region. A value in \mbox{[}0,1\mbox{]}\+:
+\begin{DoxyItemize}
+\item 0 → no scarp, only slope
+\item 1 → all scarp 
+\end{DoxyItemize}\\
+\hline
+{\em apply\+\_\+post\+\_\+filter} & If true, applies Laplacian smoothing to {\ttfamily z} restricted to shoreline areas. \\
+\hline
+{\em p\+\_\+shore\+\_\+mask} & Optional output pointer. If non-\/null, receives the shoreline mask (values in \mbox{[}0,1\mbox{]}) indicating where the coastal transformation was applied.\\
+\hline
+\end{DoxyParams}
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{structhmap_1_1Vec2}{hmap::Vec2<int>}}\ shape\ =\ \{256,\ 256\};}
+\DoxyCodeLine{\ \ shape\ =\ \{1024,\ 1024\};}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{structhmap_1_1Vec2}{hmap::Vec2<float>}}\ res\ =\ \{2.f,\ 2.f\};}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed\ =\ 1;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_a40b948c49a05c14f2d540dc1a6952130}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a03f4fca6bab010831c1e90a0cce9dd80}{hmap::NoiseType::SIMPLEX2S}},\ shape,\ res,\ seed);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(z);}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ z0\ =\ z;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ water\_depth\ =\ \mbox{\hyperlink{namespacehmap_a2318944325d02f3969aa7fa58b500278}{hmap::flooding\_uniform\_level}}(z,\ 0.3f);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ shore\_mask;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a972ef82d25d243e4eb01e5517e3e977d}{hmap::coastal\_erosion\_profile}}(z,\ water\_depth);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ hmap::remap(z);}}
+\DoxyCodeLine{\ \ z.\mbox{\hyperlink{classhmap_1_1Array_a00b8f7462c1e22b1da8a67ec62d4c8c8}{dump}}();}
+\DoxyCodeLine{\ \ water\_depth.\mbox{\hyperlink{classhmap_1_1Array_a00b8f7462c1e22b1da8a67ec62d4c8c8}{dump}}(\textcolor{stringliteral}{"{}depth.png"{}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_coastal\_erosion\_profile.png"{}},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z0,\ z,\ z\ +\ water\_depth\},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9}{hmap::Cmap::TERRAIN}},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
@@ -19581,7 +19666,13 @@ Calculates the Manhattan distance transform of an array.
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}      \Hypertarget{namespacehmap_a9cf7773f6141162bf60708a93acdfcee}\label{namespacehmap_a9cf7773f6141162bf60708a93acdfcee} 
+{\bfseries{Result}}      \Hypertarget{namespacehmap_afe0a1409b90526591f1974b84b68009a}\label{namespacehmap_afe0a1409b90526591f1974b84b68009a} 
+\index{hmap@{hmap}!distance\_transform\_with\_closest@{distance\_transform\_with\_closest}}
+\index{distance\_transform\_with\_closest@{distance\_transform\_with\_closest}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{distance\_transform\_with\_closest()}{distance\_transform\_with\_closest()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::distance\+\_\+transform\+\_\+with\+\_\+closest (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{\mbox{\hyperlink{structhmap_1_1Mat}{Mat}}$<$ int $>$ \&}]{closest\+\_\+i,  }\item[{\mbox{\hyperlink{structhmap_1_1Mat}{Mat}}$<$ int $>$ \&}]{closest\+\_\+j,  }\item[{bool}]{return\+\_\+squared\+\_\+distance = {\ttfamily false} }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacehmap_a9cf7773f6141162bf60708a93acdfcee}\label{namespacehmap_a9cf7773f6141162bf60708a93acdfcee} 
 \index{hmap@{hmap}!erosion@{erosion}}
 \index{erosion@{erosion}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{erosion()}{erosion()}}

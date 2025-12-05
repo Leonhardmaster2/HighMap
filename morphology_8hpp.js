@@ -13,6 +13,7 @@ var morphology_8hpp =
     [ "distance_transform", "morphology_8hpp.html#a3bad25b24d9ae0e07e692c546bc3480d", null ],
     [ "distance_transform_approx", "morphology_8hpp.html#a23fdcd258e0bab2a5fcad31d6459c3fa", null ],
     [ "distance_transform_manhattan", "morphology_8hpp.html#add641a7fc26ae08b1f679cbb7dd43177", null ],
+    [ "distance_transform_with_closest", "morphology_8hpp.html#afe0a1409b90526591f1974b84b68009a", null ],
     [ "erosion", "morphology_8hpp.html#a9cf7773f6141162bf60708a93acdfcee", null ],
     [ "flood_fill", "morphology_8hpp.html#adff494af7c8bf4db7f3e6fddd3261793", null ],
     [ "morphological_black_hat", "morphology_8hpp.html#a1cf22c68188d0e35aa74983f3a01c488", null ],
