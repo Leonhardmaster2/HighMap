@@ -150,7 +150,7 @@ void coastal_erosion_profile(Array &z,
                              float  shore_ground_extent, // pixels
                              float  shore_water_extent,
                              float  slope_shore = 0.5f,
-                             float  slope_shore_water = 1.f,
+                             float  slope_shore_water = 0.5f,
                              float  scarp_extent_ratio = 0.5f, // in [0, 1]
                              bool   apply_post_filter = true,
                              Array *p_shore_mask = nullptr);

@@ -216,6 +216,15 @@ Array curvature_vertical_profile(const Array &z, int ir);
 Array shape_index(const Array &z, int ir);
 
 /**
+ * @brief Computes a signed level-set curvature.
+ *
+ * @param  array        Input array.
+ * @param  prefilter_ir Optional smoothing radius for curvature evaluation.
+ * @return              Signed curvature.
+ */
+Array level_set_curvature(const Array &array, int prefilter_ir);
+
+/**
  * @brief Calculates the unsphericity of a surface, indicating how much the
  * terrain deviates from a perfect spherical shape. Unsphericity is a measure
  * used to understand the degree of asymmetry in terrain surfaces. It quantifies
@@ -290,6 +299,9 @@ Array curvature_vertical_longitudinal(const Array &z, int ir);
 
 /*! @brief See hmap::curvature_vertical_profile */
 Array curvature_vertical_profile(const Array &z, int ir);
+
+/*! @brief See hmap::level_set_curvature */
+Array level_set_curvature(const Array &array, int prefilter_ir);
 
 /*! @brief See hmap::shape_index */
 Array shape_index(const Array &z, int ir);

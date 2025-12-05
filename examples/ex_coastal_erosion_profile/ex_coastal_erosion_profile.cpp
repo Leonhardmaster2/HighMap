@@ -12,10 +12,13 @@ int main(void)
 
   hmap::Array water_depth = hmap::flooding_uniform_level(z, 0.3f);
 
-  float  shore_ground_extent = 32.f; // pixels
-  float  shore_water_extent = 16.f; 
-  
-  hmap::coastal_erosion_profile(z, water_depth, shore_ground_extent, shore_water_extent);
+  float shore_ground_extent = 32.f; // pixels
+  float shore_water_extent = 16.f;
+
+  hmap::coastal_erosion_profile(z,
+                                water_depth,
+                                shore_ground_extent,
+                                shore_water_extent);
 
   hmap::export_banner_png("ex_coastal_erosion_profile.png",
                           {z0, z, z + water_depth},
