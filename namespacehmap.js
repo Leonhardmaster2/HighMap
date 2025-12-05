@@ -463,6 +463,7 @@ var namespacehmap =
     [ "get_erosion_profile_function", "namespacehmap.html#a02f191e398bfc3c0e87999d8576d7c3d", null ],
     [ "coastal_erosion_diffusion", "namespacehmap.html#a54724c8701b75260e97924451731e41f", null ],
     [ "coastal_erosion_profile", "namespacehmap.html#a30dd1027fd8da1839f584687aedfdaf5", null ],
+    [ "coastal_erosion_profile", "namespacehmap.html#a5d1d8b892ca5d088a4fb55b69c481187", null ],
     [ "depression_filling", "namespacehmap.html#aa64448e4b5640d90570e53249907c98a", null ],
     [ "erosion_maps", "namespacehmap.html#af91e2b8638aab2c4357ce37812b8a99c", null ],
     [ "hydraulic_algebric", "namespacehmap.html#ac4f3c8b3d5f766b15c0ac64359fdc219", null ],
