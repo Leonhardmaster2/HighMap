@@ -147,8 +147,8 @@ void coastal_erosion_diffusion(Array &z,
  */
 void coastal_erosion_profile(Array &z,
                              Array &water_depth,
-                             float  shore_ground_extent = 96.f, // pixels
-                             float  shore_water_extent = 64.f,
+                             float  shore_ground_extent, // pixels
+                             float  shore_water_extent,
                              float  slope_shore = 0.5f,
                              float  slope_shore_water = 1.f,
                              float  scarp_extent_ratio = 0.5f, // in [0, 1]
