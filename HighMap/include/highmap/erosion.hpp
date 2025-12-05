@@ -99,6 +99,63 @@ void coastal_erosion_diffusion(Array &z,
                                Array *p_water_mask = nullptr);
 
 /**
+ * @brief Applies a coastal erosion profile to a terrain elevation field.
+ *
+ * This function modifies the elevation array @p z by carving a coastal profile
+ * at the interface between ground and water. It uses distance transforms both
+ * from ground regions and from water regions to determine how far each point is
+ * from the shoreline. According to this distance, the function applies:
+ *
+ * - A ground-side shore slope with an optional scarp transition.
+ * - A water-side underwater slope ensuring continuity with the ground slope.
+ * - An optional post-filtering step (Laplace smoothing) restricted to the
+ *   shoreline region.
+ *
+ * Water depth is adjusted after filtering to preserve the original water
+ * surface height.
+ *
+ * Optionally, a shoreline mask can be returned describing the region influenced
+ * by the coastal transformation.
+ *
+ * @param z                   Array of terrain elevations. Modified in-place.
+ * @param water_depth         Array of water depths. Modified to preserve water
+ *                            surface height after terrain changes.
+ * @param shore_ground_extent Horizontal extent (in grid units) over which the
+ *                            ground-side shore profile is applied.
+ * @param shore_water_extent  Horizontal extent (in grid units) over which the
+ *                            underwater profile is applied.
+ * @param slope_shore         Ground-side slope magnitude of the coastal
+ *                            profile. Expressed in elevation units per domain
+ *                            width.
+ * @param slope_shore_water   Water-side slope magnitude of the underwater
+ *                            profile. Expressed similarly to @p slope_shore.
+ * @param scarp_extent_ratio  Ratio defining the relative extent of the scarp
+ *                            region. A value in [0,1]:
+ *                             - 0 → no scarp, only slope
+ *                             - 1 → all scarp
+ * @param apply_post_filter   If true, applies Laplacian smoothing to @p z
+ *                            restricted to shoreline areas.
+ * @param p_shore_mask        Optional output pointer. If non-null, receives the
+ *                            shoreline mask (values in [0,1]) indicating where
+ *                            the coastal transformation was applied.
+ *
+ * **Example**
+ * @include ex_coastal_erosion_profile.cpp
+ *
+ * **Result**
+ * @image html ex_coastal_erosion_profile.png
+ */
+void coastal_erosion_profile(Array &z,
+                             Array &water_depth,
+                             float  shore_ground_extent = 96.f, // pixels
+                             float  shore_water_extent = 64.f,
+                             float  slope_shore = 0.5f,
+                             float  slope_shore_water = 1.f,
+                             float  scarp_extent_ratio = 0.5f, // in [0, 1]
+                             bool   apply_post_filter = true,
+                             Array *p_shore_mask = nullptr);
+
+/**
  * @brief Fill the depressions of the heightmap using the Planchon-Darboux
  * algorithm.
  *

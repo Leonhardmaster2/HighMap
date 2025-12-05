@@ -169,6 +169,11 @@ Array distance_transform_approx(const Array &array,
 Array distance_transform_manhattan(const Array &array,
                                    bool return_squared_distance = false);
 
+Array distance_transform_with_closest(const Array &array,
+                                      Mat<int>    &closest_i,
+                                      Mat<int>    &closest_j,
+                                      bool return_squared_distance = false);
+
 /**
  * @brief Apply an erosion algorithm to the input array using a square
  * structure.
