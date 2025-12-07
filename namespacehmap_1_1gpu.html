@@ -509,6 +509,9 @@ Functions</h2></td></tr>
 <tr class="memitem:afb62cf56466c5bdfb9b6a26458a52d12" id="r_afb62cf56466c5bdfb9b6a26458a52d12"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#afb62cf56466c5bdfb9b6a26458a52d12">select_soil_flow</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, int ir_gradient=1, float gradient_weight=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float gradient_scaling_factor=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float flow_weight=0.05<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float talus_ref=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float clipping_ratio=50.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float flow_gamma=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float k_smooth=0.01<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
 <tr class="memdesc:afb62cf56466c5bdfb9b6a26458a52d12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes a soil–flow selection map based on terrain gradient, river mask, and smoothing parameters.  <br /></td></tr>
 <tr class="separator:afb62cf56466c5bdfb9b6a26458a52d12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a735421f1b5f42ade55224b932603c58e" id="r_a735421f1b5f42ade55224b932603c58e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a735421f1b5f42ade55224b932603c58e">select_soil_rocks</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, int ir_max=64, int ir_min=0, int steps=4, float smaller_scales_weight=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, <a class="el" href="namespacehmap.html#ad4876bd26d1f3b33a1492645bfe50fbe">ClampMode</a> curvature_clamp_mode=<a class="el" href="namespacehmap.html#ad4876bd26d1f3b33a1492645bfe50fbea7ee5673a01d4215ae4ba9ba95268ed59">ClampMode::POSITIVE_ONLY</a>, float curvature_clamping=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
+<tr class="memdesc:a735421f1b5f42ade55224b932603c58e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes a multi-scale soil/rock selector using curvature analysis.  <br /></td></tr>
+<tr class="separator:a735421f1b5f42ade55224b932603c58e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae394dd88c39510d2ada01cf120922719" id="r_ae394dd88c39510d2ada01cf120922719"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#ae394dd88c39510d2ada01cf120922719">select_soil_weathered</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, int ir_curvature=0, int ir_gradient=4, <a class="el" href="namespacehmap.html#ad4876bd26d1f3b33a1492645bfe50fbe">ClampMode</a> curvature_clamp_mode=<a class="el" href="namespacehmap.html#ad4876bd26d1f3b33a1492645bfe50fbea7ee5673a01d4215ae4ba9ba95268ed59">ClampMode::POSITIVE_ONLY</a>, float curvature_clamping=10.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float curvature_weight=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float gradient_weight=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float gradient_scaling_factor=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
 <tr class="memdesc:ae394dd88c39510d2ada01cf120922719"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes a soil weathering selection map based on curvature and gradient analysis.  <br /></td></tr>
 <tr class="separator:ae394dd88c39510d2ada01cf120922719"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -10472,6 +10475,107 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="ttc" id="anamespacehmap_html_ad4876bd26d1f3b33a1492645bfe50fbea7ee5673a01d4215ae4ba9ba95268ed59"><div class="ttname"><a href="namespacehmap.html#ad4876bd26d1f3b33a1492645bfe50fbea7ee5673a01d4215ae4ba9ba95268ed59">hmap::POSITIVE_ONLY</a></div><div class="ttdeci">@ POSITIVE_ONLY</div><div class="ttdef"><b>Definition</b> range.hpp:26</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_select_soil_weathered.png" alt=""/>
+</div>
+ 
+</div>
+</div>
+<a id="a735421f1b5f42ade55224b932603c58e" name="a735421f1b5f42ade55224b932603c58e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a735421f1b5f42ade55224b932603c58e">&#9670;&#160;</a></span>select_soil_rocks()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classhmap_1_1Array.html">Array</a> hmap::gpu::select_soil_rocks </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>z</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ir_max</em> = <code>64</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ir_min</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>steps</em> = <code>4</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>smaller_scales_weight</em> = <code>1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacehmap.html#ad4876bd26d1f3b33a1492645bfe50fbe">ClampMode</a>&#160;</td>
+          <td class="paramname"><em>curvature_clamp_mode</em> = <code><a class="el" href="namespacehmap.html#ad4876bd26d1f3b33a1492645bfe50fbea7ee5673a01d4215ae4ba9ba95268ed59">ClampMode::POSITIVE_ONLY</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>curvature_clamping</em> = <code>1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes a multi-scale soil/rock selector using curvature analysis. </p>
+<p>Applies progressively increasing smoothing radii in logarithmic steps (handling ir_min = 0), computes the mean curvature at each scale, clamps it, and accumulates the maximum response across all scales.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">z</td><td>Input heightmap or scalar field. </td></tr>
+    <tr><td class="paramname">ir_max</td><td>Maximum smoothing radius (log-scale upper bound). </td></tr>
+    <tr><td class="paramname">ir_min</td><td>Minimum smoothing radius (0 allowed; replaced by 1 for log scale). </td></tr>
+    <tr><td class="paramname">steps</td><td>Number of logarithmic scales to evaluate. </td></tr>
+    <tr><td class="paramname">smaller_scales_weight</td><td>Weight factor applied when descending scales. </td></tr>
+    <tr><td class="paramname">curvature_clamp_mode</td><td>Mode used to clamp curvature values. </td></tr>
+    <tr><td class="paramname">curvature_clamping</td><td>Curvature clamp threshold.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>An <a class="el" href="classhmap_1_1Array.html" title="Array class, helper to manipulate 2D float array with &quot;(i, j)&quot; indexing.">Array</a> representing soil/rock selection values across scales.</dd></dl>
+<p><b>Example</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="highmap_8hpp.html">highmap.hpp</a>&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
+<div class="line">{</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap_1_1gpu.html#adb8336ed4d83c15500872185dee45d50">hmap::gpu::init_opencl</a>();</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_struct" href="structhmap_1_1Vec2.html">hmap::Vec2&lt;int&gt;</a> shape = {256, 256};</div>
+<div class="line">  <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>            seed = 0;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z = <a class="code hl_function" href="namespacehmap_1_1gpu.html#a04d679fc6d72fd9533fbf27ad28d3898">hmap::gpu::shattered_peak</a>(shape, seed);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> srocks = <a class="code hl_function" href="namespacehmap_1_1gpu.html#a735421f1b5f42ade55224b932603c58e">hmap::gpu::select_soil_rocks</a>(z);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(srocks);</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// optional -- consider increasing contrast of srocks with hmap::saturate</span></div>
+<div class="line">  <span class="keywordflow">if</span> (<span class="keyword">true</span>) <a class="code hl_function" href="namespacehmap.html#a2e4283dd5da8add89788c5023c73042c">hmap::saturate</a>(srocks, 0.f, 0.3f);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_select_soil_rocks.png&quot;</span>,</div>
+<div class="line">                          {z, srocks},</div>
+<div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
+<div class="line">}</div>
+<div class="ttc" id="anamespacehmap_1_1gpu_html_a735421f1b5f42ade55224b932603c58e"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a735421f1b5f42ade55224b932603c58e">hmap::gpu::select_soil_rocks</a></div><div class="ttdeci">Array select_soil_rocks(const Array &amp;z, int ir_max=64, int ir_min=0, int steps=4, float smaller_scales_weight=1.f, ClampMode curvature_clamp_mode=ClampMode::POSITIVE_ONLY, float curvature_clamping=1.f)</div><div class="ttdoc">Computes a multi-scale soil/rock selector using curvature analysis.</div><div class="ttdef"><b>Definition</b> select_soil_rocks.cpp:16</div></div>
+<div class="ttc" id="anamespacehmap_html_a2e4283dd5da8add89788c5023c73042c"><div class="ttname"><a href="namespacehmap.html#a2e4283dd5da8add89788c5023c73042c">hmap::saturate</a></div><div class="ttdeci">void saturate(Array &amp;array, float vmin, float vmax, float from_min, float from_max, float k=0.f)</div><div class="ttdoc">Saturate the array values based on the input interval [vmin, vmax] (the output amplitude is not modif...</div><div class="ttdef"><b>Definition</b> recurve.cpp:178</div></div>
+</div><!-- fragment --><p><b>Result</b> </p><div class="image">
+<img src="ex_select_soil_rocks.png" alt=""/>
 </div>
  
 </div>

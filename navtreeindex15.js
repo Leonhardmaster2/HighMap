@@ -1,5 +1,6 @@
 var NAVTREEINDEX15 =
 {
+"primitives_8hpp.html#a01e4bb17d3969964545796ffb2658a77":[5,0,1,0,0,31,25],
 "primitives_8hpp.html#a0366d22ed8b0e1b74d5895e00c0e688b":[5,0,1,0,0,31,69],
 "primitives_8hpp.html#a03c0be3a7198eebacefcb208b0cfee99":[5,0,1,0,0,31,22],
 "primitives_8hpp.html#a04d679fc6d72fd9533fbf27ad28d3898":[5,0,1,0,0,31,71],
@@ -248,6 +249,5 @@ var NAVTREEINDEX15 =
 "ridgelines_8cpp.html#aca4a5b0313f4efe251b20d90652a896b":[5,0,1,1,1,3,0],
 "rifts__gpu_8cpp.html":[5,0,1,1,10,18],
 "rifts__gpu_8cpp.html#ad57cd314c51ee333bbd99f6eacd441a6":[5,0,1,1,10,18,0],
-"roads_8hpp.html":[5,0,1,0,0,33],
-"roads_8hpp.html#ad67818460523a881fd4c6b7d4b80f6a1":[5,0,1,0,0,33,0]
+"roads_8hpp.html":[5,0,1,0,0,33]
 };
