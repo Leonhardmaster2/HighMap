@@ -498,6 +498,42 @@ Array select_soil_flow(const Array &z,
                        float        k_smooth = 0.01f);
 
 /**
+ * @brief Computes a multi-scale soil/rock selector using curvature analysis.
+ *
+ * Applies progressively increasing smoothing radii in logarithmic steps
+ * (handling ir_min = 0), computes the mean curvature at each scale, clamps it,
+ * and accumulates the maximum response across all scales.
+ *
+ * @param  z                     Input heightmap or scalar field.
+ * @param  ir_max                Maximum smoothing radius (log-scale upper
+ *                               bound).
+ * @param  ir_min                Minimum smoothing radius (0 allowed; replaced
+ *                               by 1 for log scale).
+ * @param  steps                 Number of logarithmic scales to evaluate.
+ * @param  smaller_scales_weight Weight factor applied when descending scales.
+ * @param  curvature_clamp_mode  Mode used to clamp curvature values.
+ * @param  curvature_clamping    Curvature clamp threshold.
+ *
+ * @return                       An Array representing soil/rock selection
+ *                               values across scales.
+ *
+ * **Example**
+ * @include ex_select_soil_rocks.cpp
+ *
+ * **Result**
+ * @image html ex_select_soil_rocks.png
+ */
+
+Array select_soil_rocks(
+    const Array &z,
+    int          ir_max = 64,
+    int          ir_min = 0,
+    int          steps = 4,
+    float        smaller_scales_weight = 1.f,
+    ClampMode    curvature_clamp_mode = ClampMode::POSITIVE_ONLY,
+    float        curvature_clamping = 1.f);
+
+/**
  * @brief Computes a soil weathering selection map based on curvature and
  * gradient analysis.
  *

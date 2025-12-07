@@ -109,7 +109,7 @@ void coastal_erosion_diffusion(Array &z,
  * - A ground-side shore slope with an optional scarp transition.
  * - A water-side underwater slope ensuring continuity with the ground slope.
  * - An optional post-filtering step (Laplace smoothing) restricted to the
- *   shoreline region.
+ * shoreline region.
  *
  * Water depth is adjusted after filtering to preserve the original water
  * surface height.
