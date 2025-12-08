@@ -20,7 +20,10 @@ int main(void)
   auto z4 = z;
   hmap::clamp_smooth(z4, -0.1f, 0.1f);
 
+  auto z5 = z;
+  hmap::clamp_oblique_plane(z5, 0.1f, 30.f, 0.3f);
+
   hmap::export_banner_png("ex_clamp.png",
-                          {z1, z2, z3, z4},
+                          {z1, z2, z3, z4, z5},
                           hmap::Cmap::VIRIDIS);
 }

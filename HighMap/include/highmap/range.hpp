@@ -199,6 +199,37 @@ void clamp_max_smooth(Array       &array,
                       float        k = 0.2f); ///< @overload
 
 /**
+ * @brief Clamps an array against an oblique plane.
+ *
+ * Generates a sloped plane and clamps the input array either with a min or max
+ * operator, optionally using a smooth transition controlled by @p k.
+ *
+ * @param array            Array to be modified.
+ * @param vmax             Offset applied to the generated plane.
+ * @param angle            Plane angle in radians.
+ * @param slope_value      Slope intensity of the plane.
+ * @param use_max_operator If true, apply a max-clamp; otherwise apply a
+ *                         min-clamp.
+ * @param k                Smoothness factor (0 for hard clamp).
+ * @param center           Center of the plane.
+ * @param bbox             Bounding box used to generate the plane.
+ *
+ * **Example**
+ * @include ex_clamp.cpp
+ *
+ * **Result**
+ * @image html ex_clamp.png
+ */
+void clamp_oblique_plane(Array      &array,
+                         float       vmax,
+                         float       angle,
+                         float       slope,
+                         bool        use_max_operator = true, // min if not
+                         float       k = 0.f,
+                         Vec2<float> center = {0.5f, 0.5f},
+                         Vec4<float> bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
  * @brief Clamp array values within a given interval with a smooth transition.
  *
  * This function smoothly clamps values in the input array to be within a
