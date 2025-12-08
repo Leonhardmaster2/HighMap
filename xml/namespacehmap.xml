@@ -15958,7 +15958,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/range/range.cpp" line="226" column="7" bodyfile="HighMap/src/range/range.cpp" bodystart="226" bodyend="261" declfile="HighMap/include/highmap/filters.hpp" declline="852" declcolumn="7"/>
+        <location file="HighMap/src/range/range.cpp" line="264" column="7" bodyfile="HighMap/src/range/range.cpp" bodystart="264" bodyend="299" declfile="HighMap/include/highmap/filters.hpp" declline="852" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a2470328dcc792f6563c5844a2cc163ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -16025,7 +16025,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/range/range.cpp" line="263" column="7" bodyfile="HighMap/src/range/range.cpp" bodystart="263" bodyend="290" declfile="HighMap/include/highmap/filters.hpp" declline="876" declcolumn="7"/>
+        <location file="HighMap/src/range/range.cpp" line="301" column="7" bodyfile="HighMap/src/range/range.cpp" bodystart="301" bodyend="328" declfile="HighMap/include/highmap/filters.hpp" declline="876" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a8afd3d81a238c8a5d10059b3a029554e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -16471,7 +16471,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/range/range.cpp" line="342" column="7" bodyfile="HighMap/src/range/range.cpp" bodystart="342" bodyend="345" declfile="HighMap/include/highmap/filters.hpp" declline="1032" declcolumn="7"/>
+        <location file="HighMap/src/range/range.cpp" line="380" column="7" bodyfile="HighMap/src/range/range.cpp" bodystart="380" bodyend="383" declfile="HighMap/include/highmap/filters.hpp" declline="1032" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a2b174148b8c1f2e44b5ecff756e9a0f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -16538,7 +16538,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/range/range.cpp" line="347" column="7" bodyfile="HighMap/src/range/range.cpp" bodystart="347" bodyend="350" declfile="HighMap/include/highmap/filters.hpp" declline="1056" declcolumn="7"/>
+        <location file="HighMap/src/range/range.cpp" line="385" column="7" bodyfile="HighMap/src/range/range.cpp" bodystart="385" bodyend="388" declfile="HighMap/include/highmap/filters.hpp" declline="1056" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aafd7a642dabfbcf2ab2981b229a30e15" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -45139,8 +45139,11 @@ off&quot; values that fall below the threshold, which can be useful for filterin
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>z4<sp/>=<sp/>z;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a55574a9d91e2e7e20de954956402ba1b" kindref="member">hmap::clamp_smooth</ref>(z4,<sp/>-0.1f,<sp/>0.1f);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>z5<sp/>=<sp/>z;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a07a31576cf6349688ee92addef138d65" kindref="member">hmap::clamp_oblique_plane</ref>(z5,<sp/>0.1f,<sp/>30.f,<sp/>0.3f);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_clamp.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z1,<sp/>z2,<sp/>z3,<sp/>z4},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z1,<sp/>z2,<sp/>z3,<sp/>z4,<sp/>z5},</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492" kindref="member">hmap::Cmap::VIRIDIS</ref>);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting></para>
@@ -45571,6 +45574,155 @@ off&quot; values that fall below the threshold, which can be useful for filterin
         </inbodydescription>
         <location file="HighMap/src/range/range.cpp" line="114" column="6" bodyfile="HighMap/src/range/range.cpp" bodystart="114" bodyend="127" declfile="HighMap/include/highmap/range.hpp" declline="197" declcolumn="6"/>
       </memberdef>
+      <memberdef kind="function" id="namespacehmap_1a07a31576cf6349688ee92addef138d65" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hmap::clamp_oblique_plane</definition>
+        <argsstring>(Array &amp;array, float vmax, float angle, float slope, bool use_max_operator=true, float k=0.f, Vec2&lt; float &gt; center={0.5f, 0.5f}, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f})</argsstring>
+        <name>clamp_oblique_plane</name>
+        <qualifiedname>hmap::clamp_oblique_plane</qualifiedname>
+        <param>
+          <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>array</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>vmax</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>angle</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>slope</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>use_max_operator</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>k</declname>
+          <defval>0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type><ref refid="structhmap_1_1Vec2" kindref="compound">Vec2</ref>&lt; float &gt;</type>
+          <declname>center</declname>
+          <defval>{0.5<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 0.5<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>}</defval>
+        </param>
+        <param>
+          <type><ref refid="structhmap_1_1Vec4" kindref="compound">Vec4</ref>&lt; float &gt;</type>
+          <declname>bbox</declname>
+          <defval>{0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>}</defval>
+        </param>
+        <briefdescription>
+<para>Clamps an array against an oblique plane. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Generates a sloped plane and clamps the input array either with a min or max operator, optionally using a smooth transition controlled by <computeroutput>k</computeroutput>.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>array</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classhmap_1_1Array" kindref="compound">Array</ref> to be modified. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>vmax</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Offset applied to the generated plane. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>angle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Plane angle in radians. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>slope_value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Slope intensity of the plane. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>use_max_operator</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If true, apply a max-clamp; otherwise apply a min-clamp. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>k</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Smoothness factor (0 for hard clamp). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>center</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Center of the plane. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>bbox</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Bounding box used to generate the plane.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<bold>Example</bold> <programlisting filename="ex_clamp.cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="structhmap_1_1Vec2" kindref="compound">hmap::Vec2&lt;int&gt;</ref><sp/><sp/><sp/>shape<sp/>=<sp/>{256,<sp/>256};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="structhmap_1_1Vec2" kindref="compound">hmap::Vec2&lt;float&gt;</ref><sp/>res<sp/>=<sp/>{4.f,<sp/>4.f};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed<sp/>=<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1a40b948c49a05c14f2d540dc1a6952130" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,<sp/>shape,<sp/>res,<sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>z1<sp/>=<sp/>z;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ae6dfd87b0368629657c3138dbf24cbc4" kindref="member">hmap::clamp</ref>(z1,<sp/>-0.1f,<sp/>0.1f);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>z2<sp/>=<sp/>z;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a936453b67a394c5da8b48473540c9459" kindref="member">hmap::clamp_max_smooth</ref>(z2,<sp/>0.1f);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>z3<sp/>=<sp/>z;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a374c6a8ff3d27e854a254139435c5d8d" kindref="member">hmap::clamp_min_smooth</ref>(z3,<sp/>-0.1f);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>z4<sp/>=<sp/>z;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a55574a9d91e2e7e20de954956402ba1b" kindref="member">hmap::clamp_smooth</ref>(z4,<sp/>-0.1f,<sp/>0.1f);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>z5<sp/>=<sp/>z;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a07a31576cf6349688ee92addef138d65" kindref="member">hmap::clamp_oblique_plane</ref>(z5,<sp/>0.1f,<sp/>30.f,<sp/>0.3f);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_clamp.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z1,<sp/>z2,<sp/>z3,<sp/>z4,<sp/>z5},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492" kindref="member">hmap::Cmap::VIRIDIS</ref>);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<para><bold>Result</bold> <image type="html" name="ex_clamp.png"></image>
+ </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/range/range.cpp" line="185" column="6" bodyfile="HighMap/src/range/range.cpp" bodystart="185" bodyend="221" declfile="HighMap/include/highmap/range.hpp" declline="223" declcolumn="6"/>
+      </memberdef>
       <memberdef kind="function" id="namespacehmap_1a55574a9d91e2e7e20de954956402ba1b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void hmap::clamp_smooth</definition>
@@ -45636,7 +45788,7 @@ off&quot; values that fall below the threshold, which can be useful for filterin
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/range/range.cpp" line="185" column="6" bodyfile="HighMap/src/range/range.cpp" bodystart="185" bodyend="203" declfile="HighMap/include/highmap/range.hpp" declline="215" declcolumn="6"/>
+        <location file="HighMap/src/range/range.cpp" line="223" column="6" bodyfile="HighMap/src/range/range.cpp" bodystart="223" bodyend="241" declfile="HighMap/include/highmap/range.hpp" declline="246" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aa52f3e1fcb1cad464a512c09a0c8eb54" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -45680,7 +45832,7 @@ off&quot; values that fall below the threshold, which can be useful for filterin
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/range/range.cpp" line="205" column="7" bodyfile="HighMap/src/range/range.cpp" bodystart="205" bodyend="214" declfile="HighMap/include/highmap/range.hpp" declline="228" declcolumn="7"/>
+        <location file="HighMap/src/range/range.cpp" line="243" column="7" bodyfile="HighMap/src/range/range.cpp" bodystart="243" bodyend="252" declfile="HighMap/include/highmap/range.hpp" declline="259" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a68ddaa8e59767bb244a8b6b54519ab01" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -45724,7 +45876,7 @@ off&quot; values that fall below the threshold, which can be useful for filterin
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/range/range.cpp" line="216" column="7" bodyfile="HighMap/src/range/range.cpp" bodystart="216" bodyend="224" declfile="HighMap/include/highmap/range.hpp" declline="241" declcolumn="7"/>
+        <location file="HighMap/src/range/range.cpp" line="254" column="7" bodyfile="HighMap/src/range/range.cpp" bodystart="254" bodyend="262" declfile="HighMap/include/highmap/range.hpp" declline="272" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a9e903d1c88db888832bea8cbafb19246" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -45787,7 +45939,7 @@ off&quot; values that fall below the threshold, which can be useful for filterin
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/range/range.cpp" line="292" column="7" bodyfile="HighMap/src/range/range.cpp" bodystart="292" bodyend="313" declfile="HighMap/include/highmap/range.hpp" declline="271" declcolumn="7"/>
+        <location file="HighMap/src/range/range.cpp" line="330" column="7" bodyfile="HighMap/src/range/range.cpp" bodystart="330" bodyend="351" declfile="HighMap/include/highmap/range.hpp" declline="302" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a38faafa03305fec4339e321e10ab6777" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>float</type>
@@ -45850,7 +46002,7 @@ off&quot; values that fall below the threshold, which can be useful for filterin
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/range/range.cpp" line="315" column="7" bodyfile="HighMap/src/range/range.cpp" bodystart="315" bodyend="319" declfile="HighMap/include/highmap/range.hpp" declline="298" declcolumn="7"/>
+        <location file="HighMap/src/range/range.cpp" line="353" column="7" bodyfile="HighMap/src/range/range.cpp" bodystart="353" bodyend="357" declfile="HighMap/include/highmap/range.hpp" declline="329" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1afb57b7af88ca225ff5a343d4583ab998" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -45894,7 +46046,7 @@ off&quot; values that fall below the threshold, which can be useful for filterin
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/range/range.cpp" line="321" column="7" bodyfile="HighMap/src/range/range.cpp" bodystart="321" bodyend="330" declfile="HighMap/include/highmap/range.hpp" declline="313" declcolumn="7"/>
+        <location file="HighMap/src/range/range.cpp" line="359" column="7" bodyfile="HighMap/src/range/range.cpp" bodystart="359" bodyend="368" declfile="HighMap/include/highmap/range.hpp" declline="344" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a6f9cfb0636b57a00160dbcadfd8b8076" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -45938,7 +46090,7 @@ off&quot; values that fall below the threshold, which can be useful for filterin
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/range/range.cpp" line="332" column="7" bodyfile="HighMap/src/range/range.cpp" bodystart="332" bodyend="340" declfile="HighMap/include/highmap/range.hpp" declline="326" declcolumn="7"/>
+        <location file="HighMap/src/range/range.cpp" line="370" column="7" bodyfile="HighMap/src/range/range.cpp" bodystart="370" bodyend="378" declfile="HighMap/include/highmap/range.hpp" declline="357" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a453090213e0cf160406d6af6c129d872" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -45997,7 +46149,7 @@ off&quot; values that fall below the threshold, which can be useful for filterin
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/range/range.cpp" line="352" column="7" bodyfile="HighMap/src/range/range.cpp" bodystart="352" bodyend="373" declfile="HighMap/include/highmap/range.hpp" declline="346" declcolumn="7"/>
+        <location file="HighMap/src/range/range.cpp" line="390" column="7" bodyfile="HighMap/src/range/range.cpp" bodystart="390" bodyend="411" declfile="HighMap/include/highmap/range.hpp" declline="377" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a94d994f910d44a006acfae7ff453a53d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>float</type>
@@ -46053,7 +46205,7 @@ off&quot; values that fall below the threshold, which can be useful for filterin
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/range/range.cpp" line="375" column="7" bodyfile="HighMap/src/range/range.cpp" bodystart="375" bodyend="379" declfile="HighMap/include/highmap/range.hpp" declline="362" declcolumn="7"/>
+        <location file="HighMap/src/range/range.cpp" line="413" column="7" bodyfile="HighMap/src/range/range.cpp" bodystart="413" bodyend="417" declfile="HighMap/include/highmap/range.hpp" declline="393" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -46150,7 +46302,7 @@ off&quot; values that fall below the threshold, which can be useful for filterin
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/range/range.cpp" line="400" column="6" bodyfile="HighMap/src/range/range.cpp" bodystart="400" bodyend="414" declfile="HighMap/include/highmap/range.hpp" declline="383" declcolumn="6"/>
+        <location file="HighMap/src/range/range.cpp" line="438" column="6" bodyfile="HighMap/src/range/range.cpp" bodystart="438" bodyend="452" declfile="HighMap/include/highmap/range.hpp" declline="414" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ad470ab979489b088a4e8405830efdbe8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -46206,7 +46358,7 @@ off&quot; values that fall below the threshold, which can be useful for filterin
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/range/range.cpp" line="381" column="6" bodyfile="HighMap/src/range/range.cpp" bodystart="381" bodyend="398" declfile="HighMap/include/highmap/range.hpp" declline="401" declcolumn="6"/>
+        <location file="HighMap/src/range/range.cpp" line="419" column="6" bodyfile="HighMap/src/range/range.cpp" bodystart="419" bodyend="436" declfile="HighMap/include/highmap/range.hpp" declline="432" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ac126773f7c7af2364cfb4d7a6922ed96" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -46261,7 +46413,7 @@ off&quot; values that fall below the threshold, which can be useful for filterin
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/range/range.cpp" line="416" column="6" bodyfile="HighMap/src/range/range.cpp" bodystart="416" bodyend="427" declfile="HighMap/include/highmap/range.hpp" declline="417" declcolumn="6"/>
+        <location file="HighMap/src/range/range.cpp" line="454" column="6" bodyfile="HighMap/src/range/range.cpp" bodystart="454" bodyend="465" declfile="HighMap/include/highmap/range.hpp" declline="448" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ad67818460523a881fd4c6b7d4b80f6a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Graph" kindref="compound">Graph</ref></type>

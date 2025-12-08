@@ -13,6 +13,7 @@ var range_8cpp =
     [ "clamp_min_smooth", "range_8cpp.html#a374c6a8ff3d27e854a254139435c5d8d", null ],
     [ "clamp_min_smooth", "range_8cpp.html#ae5d25f542f8033210b1744c281235220", null ],
     [ "clamp_min_smooth", "range_8cpp.html#ab0307c51c15ac3d4162974c970bc9ea9", null ],
+    [ "clamp_oblique_plane", "range_8cpp.html#a07a31576cf6349688ee92addef138d65", null ],
     [ "clamp_smooth", "range_8cpp.html#a55574a9d91e2e7e20de954956402ba1b", null ],
     [ "maximum", "range_8cpp.html#aa52f3e1fcb1cad464a512c09a0c8eb54", null ],
     [ "maximum", "range_8cpp.html#a68ddaa8e59767bb244a8b6b54519ab01", null ],

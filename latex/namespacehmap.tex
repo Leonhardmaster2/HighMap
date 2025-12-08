@@ -1465,6 +1465,8 @@ void \mbox{\hyperlink{namespacehmap_a936453b67a394c5da8b48473540c9459}{clamp\+\_
 \begin{DoxyCompactList}\small\item\em Clamp array values larger than a given bound with a smooth transition. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_abd5e3daeb692506c7b6350516fccb3d3}{clamp\+\_\+max\+\_\+smooth}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&vmax, float k=0.\+2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacehmap_a07a31576cf6349688ee92addef138d65}{clamp\+\_\+oblique\+\_\+plane}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float vmax, float \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}}, float \mbox{\hyperlink{namespacehmap_ad1836a084a8607446ce029d32c02a201}{slope}}, bool use\+\_\+max\+\_\+operator=true, float k=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ float $>$ center=\{0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
+\begin{DoxyCompactList}\small\item\em Clamps an array against an oblique plane. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a55574a9d91e2e7e20de954956402ba1b}{clamp\+\_\+smooth}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float vmin, float vmax, float k=0.\+2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Clamp array values within a given interval with a smooth transition. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_aa52f3e1fcb1cad464a512c09a0c8eb54}{maximum}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array1, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array2)
@@ -24390,8 +24392,11 @@ This function restricts the values in the input array to be within a specified r
 \DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ z4\ =\ z;}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a55574a9d91e2e7e20de954956402ba1b}{hmap::clamp\_smooth}}(z4,\ -\/0.1f,\ 0.1f);}
 \DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ z5\ =\ z;}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a07a31576cf6349688ee92addef138d65}{hmap::clamp\_oblique\_plane}}(z5,\ 0.1f,\ 30.f,\ 0.3f);}
+\DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_clamp.png"{}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z1,\ z2,\ z3,\ z4\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z1,\ z2,\ z3,\ z4,\ z5\},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492}{hmap::Cmap::VIRIDIS}});}
 \DoxyCodeLine{\}}
 
@@ -24581,7 +24586,73 @@ This function smoothly clamps values in the input array that are above the speci
 
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. 
 
-\Hypertarget{namespacehmap_a55574a9d91e2e7e20de954956402ba1b}\label{namespacehmap_a55574a9d91e2e7e20de954956402ba1b} 
+\Hypertarget{namespacehmap_a07a31576cf6349688ee92addef138d65}\label{namespacehmap_a07a31576cf6349688ee92addef138d65} 
+\index{hmap@{hmap}!clamp\_oblique\_plane@{clamp\_oblique\_plane}}
+\index{clamp\_oblique\_plane@{clamp\_oblique\_plane}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{clamp\_oblique\_plane()}{clamp\_oblique\_plane()}}
+{\footnotesize\ttfamily void hmap\+::clamp\+\_\+oblique\+\_\+plane (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{float}]{vmax,  }\item[{float}]{angle,  }\item[{float}]{slope,  }\item[{bool}]{use\+\_\+max\+\_\+operator = {\ttfamily true},  }\item[{float}]{k = {\ttfamily 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ float $>$}]{center = {\ttfamily \{0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}},  }\item[{\mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$}]{bbox = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}} }\end{DoxyParamCaption})}
+
+
+
+Clamps an array against an oblique plane. 
+
+Generates a sloped plane and clamps the input array either with a min or max operator, optionally using a smooth transition controlled by {\ttfamily k}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & \doxylink{classhmap_1_1Array}{Array} to be modified. \\
+\hline
+{\em vmax} & Offset applied to the generated plane. \\
+\hline
+{\em angle} & Plane angle in radians. \\
+\hline
+{\em slope\+\_\+value} & Slope intensity of the plane. \\
+\hline
+{\em use\+\_\+max\+\_\+operator} & If true, apply a max-\/clamp; otherwise apply a min-\/clamp. \\
+\hline
+{\em k} & Smoothness factor (0 for hard clamp). \\
+\hline
+{\em center} & Center of the plane. \\
+\hline
+{\em bbox} & Bounding box used to generate the plane.\\
+\hline
+\end{DoxyParams}
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{structhmap_1_1Vec2}{hmap::Vec2<int>}}\ \ \ shape\ =\ \{256,\ 256\};}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{structhmap_1_1Vec2}{hmap::Vec2<float>}}\ res\ =\ \{4.f,\ 4.f\};}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed\ =\ 1;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_a40b948c49a05c14f2d540dc1a6952130}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ res,\ seed);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ z1\ =\ z;}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ae6dfd87b0368629657c3138dbf24cbc4}{hmap::clamp}}(z1,\ -\/0.1f,\ 0.1f);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ z2\ =\ z;}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a936453b67a394c5da8b48473540c9459}{hmap::clamp\_max\_smooth}}(z2,\ 0.1f);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ z3\ =\ z;}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a374c6a8ff3d27e854a254139435c5d8d}{hmap::clamp\_min\_smooth}}(z3,\ -\/0.1f);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ z4\ =\ z;}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a55574a9d91e2e7e20de954956402ba1b}{hmap::clamp\_smooth}}(z4,\ -\/0.1f,\ 0.1f);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ z5\ =\ z;}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a07a31576cf6349688ee92addef138d65}{hmap::clamp\_oblique\_plane}}(z5,\ 0.1f,\ 30.f,\ 0.3f);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_clamp.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z1,\ z2,\ z3,\ z4,\ z5\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492}{hmap::Cmap::VIRIDIS}});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}}  \Hypertarget{namespacehmap_a55574a9d91e2e7e20de954956402ba1b}\label{namespacehmap_a55574a9d91e2e7e20de954956402ba1b} 
 \index{hmap@{hmap}!clamp\_smooth@{clamp\_smooth}}
 \index{clamp\_smooth@{clamp\_smooth}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{clamp\_smooth()}{clamp\_smooth()}}
