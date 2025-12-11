@@ -711,6 +711,35 @@ Array island_land_mask(Vec2<int>          shape,
                        const Vec2<float> &center = {0.5f, 0.5f},
                        const Vec4<float> &bbox = {0.f, 1.f, 0.f, 1.f});
 
+/**
+ * @brief Generate a multi-step height profile along a rotated axis.
+ *
+ * Constructs an Array where values follow a sequence of geometric steps blended
+ * with an optional linear transition. Steps are rotated by the given angle, can
+ * be shaped with an exponent, and may be modulated by optional control and
+ * noise fields.
+ *
+ * @param  shape              Output array resolution.
+ * @param  angle              Rotation angle in degrees.
+ * @param  r                  Geometric ratio between successive step widths.
+ * @param  nsteps             Number of steps.
+ * @param  elevation_exponent Exponent shaping step heights.
+ * @param  shape_gain         Gain used to reshape intra-step transitions.
+ * @param  scale              Scale of the step axis.
+ * @param  outer_slope        Slope outside the [0,1] axis interval.
+ * @param  p_ctrl_param       Optional control parameter array.
+ * @param  p_noise_x          Optional x-axis noise array.
+ * @param  p_noise_y          Optional y-axis noise array.
+ * @param  center             Center of the step axis.
+ * @param  bbox               Bounding box of the domain.
+ * @return                    Generated Array.
+ *
+ * **Example**
+ * @include ex_multisteps.cpp
+ *
+ * **Result**
+ * @image html ex_multisteps.png
+ */
 Array multisteps(Vec2<int>          shape,
                  float              angle,
                  float              r = 1.2f,
@@ -2512,6 +2541,38 @@ Array mountain_tibesti(Vec2<int>    shape,
                        const Array *p_noise_y = nullptr,
                        Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
 
+/**
+ * @brief GPU-accelerated multi-step height generation with procedural noise.
+ *
+ * Builds the same multi-step profile as the CPU version but injects a
+ * Voronoi-FBM noise field to modulate the step positions. Noise can be inflated
+ * or deflated and is projected onto the step axis before being passed to the
+ * CPU multisteps() implementation.
+ *
+ * @param  shape              Output array resolution.
+ * @param  angle              Rotation angle in degrees.
+ * @param  seed               Noise seed.
+ * @param  kw                 Base wave numbers for noise.
+ * @param  noise_amp          Amplitude of injected noise.
+ * @param  noise_rugosity     Roughness of the FBM noise.
+ * @param  noise_inflate      Whether to invert noise direction.
+ * @param  r                  Geometric ratio between steps.
+ * @param  nsteps             Number of steps.
+ * @param  elevation_exponent Exponent shaping step heights.
+ * @param  shape_gain         Gain used to reshape intra-step transitions.
+ * @param  scale              Scale of the step axis.
+ * @param  outer_slope        Slope outside the [0,1] axis interval.
+ * @param  p_ctrl_param       Optional control parameter array.
+ * @param  center             Center of the step axis.
+ * @param  bbox               Bounding box of the domain.
+ * @return                    Generated Array.
+ *
+ * **Example**
+ * @include ex_multisteps.cpp
+ *
+ * **Result**
+ * @image html ex_multisteps.png
+ */
 Array multisteps(Vec2<int>          shape,
                  float              angle,
                  uint               seed,
