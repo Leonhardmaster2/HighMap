@@ -58,7 +58,7 @@ var searchData=
   ['cone_2ecpp_55',['cone.cpp',['../cone_8cpp.html',1,'']]],
   ['cone_5fcomplex_56',['cone_complex',['../namespacehmap.html#ac5cc21b082835193908964bcb380d1c3',1,'hmap']]],
   ['cone_5fsigmoid_57',['cone_sigmoid',['../namespacehmap.html#af6f5880a68329be490f99aa779f3c1d8',1,'hmap']]],
-  ['cone_5fsmooth_58',['cone_smooth',['../namespacehmap.html#a4b6f135c6e81d313ca54ae1efac5f2c9ac140897e531cacd604bec544a49f7ca2',1,'hmap::CONE_SMOOTH'],['../namespacehmap.html#ad1133df106eb662c9411a5501a5a3469',1,'hmap::cone_smooth(Vec2&lt; int &gt; shape)']]],
+  ['cone_5fsmooth_58',['cone_smooth',['../namespacehmap.html#ad1133df106eb662c9411a5501a5a3469',1,'hmap::cone_smooth(Vec2&lt; int &gt; shape)'],['../namespacehmap.html#a4b6f135c6e81d313ca54ae1efac5f2c9ac140897e531cacd604bec544a49f7ca2',1,'hmap::CONE_SMOOTH']]],
   ['cone_5ftalus_59',['cone_talus',['../namespacehmap.html#a553a4572c845a1286836bc08b67b3e34',1,'hmap']]],
   ['connected_5fcomponents_60',['connected_components',['../namespacehmap.html#a11f846a0bacba3463862df220ddf5131',1,'hmap']]],
   ['connected_5fcomponents_2ecpp_61',['connected_components.cpp',['../connected__components_8cpp.html',1,'']]],

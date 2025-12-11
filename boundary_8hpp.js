@@ -5,6 +5,12 @@ var boundary_8hpp =
       [ "PERIODICITY_Y", "boundary_8hpp.html#a41f6f4d40b566b87f78344d9efe71c71ae51f7482e4aaf0f953891d46f573d88b", null ],
       [ "PERIODICITY_XY", "boundary_8hpp.html#a41f6f4d40b566b87f78344d9efe71c71a012eb1993ac3ba0b9182904366713cf3", null ]
     ] ],
+    [ "DomainBoundary", "boundary_8hpp.html#a1ba9d4ce7afe3309f8ae8e617f7154ee", [
+      [ "BOUNDARY_LEFT", "boundary_8hpp.html#a1ba9d4ce7afe3309f8ae8e617f7154eea760545322569136cd3be89e004ab10d4", null ],
+      [ "BOUNDARY_RIGHT", "boundary_8hpp.html#a1ba9d4ce7afe3309f8ae8e617f7154eeadb9a04ab3508704543b5dd43ae495fe7", null ],
+      [ "BOUNDARY_TOP", "boundary_8hpp.html#a1ba9d4ce7afe3309f8ae8e617f7154eea1bda4002f204a3b745ea70dab2b6b6d8", null ],
+      [ "BOUNDARY_BOTTOM", "boundary_8hpp.html#a1ba9d4ce7afe3309f8ae8e617f7154eeac7495a13a71417dd76751518cd185309", null ]
+    ] ],
     [ "extrapolate_borders", "boundary_8hpp.html#a8802e95ba76a252d2098bdb3fb5cfc28", null ],
     [ "falloff", "boundary_8hpp.html#a1509f9df26854cd66af1b63f2505e1a1", null ],
     [ "fill_borders", "boundary_8hpp.html#a072f0c93c6e3e5e0f8f88c760850dce8", null ],

@@ -236,6 +236,12 @@ var namespacehmap =
       [ "PERIODICITY_Y", "namespacehmap.html#a41f6f4d40b566b87f78344d9efe71c71ae51f7482e4aaf0f953891d46f573d88b", null ],
       [ "PERIODICITY_XY", "namespacehmap.html#a41f6f4d40b566b87f78344d9efe71c71a012eb1993ac3ba0b9182904366713cf3", null ]
     ] ],
+    [ "DomainBoundary", "namespacehmap.html#a1ba9d4ce7afe3309f8ae8e617f7154ee", [
+      [ "BOUNDARY_LEFT", "namespacehmap.html#a1ba9d4ce7afe3309f8ae8e617f7154eea760545322569136cd3be89e004ab10d4", null ],
+      [ "BOUNDARY_RIGHT", "namespacehmap.html#a1ba9d4ce7afe3309f8ae8e617f7154eeadb9a04ab3508704543b5dd43ae495fe7", null ],
+      [ "BOUNDARY_TOP", "namespacehmap.html#a1ba9d4ce7afe3309f8ae8e617f7154eea1bda4002f204a3b745ea70dab2b6b6d8", null ],
+      [ "BOUNDARY_BOTTOM", "namespacehmap.html#a1ba9d4ce7afe3309f8ae8e617f7154eeac7495a13a71417dd76751518cd185309", null ]
+    ] ],
     [ "Cmap", "namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369", [
       [ "BONE", "namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a4eb53d94f58e93c3bdb554d8cca7f306", null ],
       [ "GRAY", "namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d", null ],
@@ -668,6 +674,7 @@ var namespacehmap =
     [ "dig_path", "namespacehmap.html#a7ba4bc3a43f42b6a4bf00e94e86064ff", null ],
     [ "dig_river", "namespacehmap.html#a6d536f0d67ade56c6a60927d8c8e9720", null ],
     [ "dig_river", "namespacehmap.html#a31b3cde3ce1fa52f1856b962f4443d49", null ],
+    [ "find_cut_path", "namespacehmap.html#af8cc8438bbcaffeaeff2f0982e1a9812", null ],
     [ "angle", "namespacehmap.html#aac71bb6c14edc17967957f7918acdbdd", null ],
     [ "angle", "namespacehmap.html#a1f02679c93973b91046f26960bf266d4", null ],
     [ "cross_product", "namespacehmap.html#a81ad5d7feec9716598307f4de02d47de", null ],
