@@ -711,6 +711,37 @@ Array island_land_mask(Vec2<int>          shape,
                        const Vec2<float> &center = {0.5f, 0.5f},
                        const Vec4<float> &bbox = {0.f, 1.f, 0.f, 1.f});
 
+Array multisteps(Vec2<int>          shape,
+                 float              angle,
+                 float              r = 1.2f,
+                 int                nsteps = 8,
+                 float              elevation_exponent = 0.7f,
+                 float              shape_gain = 4.f,
+                 float              scale = 0.5f,
+                 float              outer_slope = 0.1f,
+                 const Array       *p_ctrl_param = nullptr,
+                 const Array       *p_noise_x = nullptr,
+                 const Array       *p_noise_y = nullptr,
+                 const Vec2<float> &center = {0.5f, 0.5f},
+                 const Vec4<float> &bbox = {0.f, 1.f, 0.f, 1.f});
+
+Array multisteps(Vec2<int>          shape,
+                 float              angle,
+                 uint               seed,
+                 Vec2<float>        kw = {2.f, 2.f},
+                 float              noise_amp = 0.1f,
+                 float              noise_rugosity = 0.f,
+                 bool               noise_inflate = true,
+                 float              r = 1.2f,
+                 int                nsteps = 8,
+                 float              elevation_exponent = 0.7f,
+                 float              shape_gain = 4.f,
+                 float              scale = 0.5f,
+                 float              outer_slope = 0.1f,
+                 const Array       *p_ctrl_param = nullptr,
+                 const Vec2<float> &center = {0.5f, 0.5f},
+                 const Vec4<float> &bbox = {0.f, 1.f, 0.f, 1.f});
+
 /**
  * @brief Return an array filled with coherence noise.
  *
