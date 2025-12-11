@@ -35,6 +35,20 @@ enum PeriodicityType : int
 // clang-format on
 
 /**
+ * @enum DomainBoundary
+ * @brief Describes which domain boundary.
+ */
+// clang-format off
+enum DomainBoundary : int
+{
+	BOUNDARY_LEFT, ///< i = 0
+	BOUNDARY_RIGHT, ///< i = nx - 1
+	BOUNDARY_TOP, ///< j = 0
+	BOUNDARY_BOTTOM ///< j = ny - 1
+};
+// clang-format on
+
+/**
  * @brief Performs linear extrapolation of values at the borders of an array
  * (e.g., `i = 0`, `j = 0`, etc.) based on the inner values of the array.
  *

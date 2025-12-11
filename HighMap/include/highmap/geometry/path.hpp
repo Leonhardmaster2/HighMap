@@ -23,6 +23,7 @@
  * software.
  */
 #pragma once
+#include "highmap/boundary.hpp"
 #include "highmap/geometry/cloud.hpp"
 
 namespace hmap
@@ -748,7 +749,9 @@ public:
    * @param filled Boolean flag indicating whether to perform flood filling of
    * the path's contour.
    */
-  void to_array(Array &array, Vec4<float> bbox, bool filled = false) const;
+  void to_array(Array      &array,
+                Vec4<float> bbox = {0.f, 1.f, 0.f, 1.f},
+                bool        filled = false) const;
 
   /**
    * @brief Return an array filled with the signed distance function to the
@@ -900,5 +903,36 @@ void dig_river(Array      &z,
                float       noise_ratio = 0.9f,
                uint        seed = 0,
                Array      *p_mask = nullptr);
+
+/**
+ * @brief Find a Dijkstra-based cut path between two domain boundaries.
+ *
+ * Selects the lowest point on the @p start and @p end boundaries of heightmap
+ * @p z, then computes a path between them using a weighted Dijkstra search. The
+ * path cost combines elevation, distance, and uphill penalization. The result
+ * is returned as normalized (x, y) coordinates and elevation samples.
+ *
+ * @param  z                        Heightmap array.
+ * @param  start                    Boundary where the path begins.
+ * @param  end                      Boundary where the path ends.
+ * @param  dijk_elevation_ratio     Weight of elevation in the cost.
+ * @param  dijk_distance_exponent   Exponent applied to distance cost.
+ * @param  dijk_upward_penalization Extra penalty for uphill moves.
+ *
+ * @return                          Path containing normalized (x, y) points and
+ *                                  elevations.
+ *
+ * **Example**
+ * @include ex_find_cut_path.cpp
+ *
+ * **Result**
+ * @image html ex_find_cut_path.png
+ */
+Path find_cut_path(const Array   &z,
+                   DomainBoundary start,
+                   DomainBoundary end,
+                   float          dijk_elevation_ratio = 0.9f,
+                   float          dijk_distance_exponent = 2.f,
+                   float          dijk_upward_penalization = 0.f);
 
 } // namespace hmap
