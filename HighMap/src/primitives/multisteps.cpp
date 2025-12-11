@@ -75,6 +75,11 @@ Array multisteps(Vec2<int>          shape,
   return array;
 }
 
+} // namespace hmap
+
+namespace hmap::gpu
+{
+
 Array multisteps(Vec2<int>          shape,
                  float              angle,
                  uint               seed,
@@ -134,4 +139,4 @@ Array multisteps(Vec2<int>          shape,
                     bbox);
 }
 
-} // namespace hmap
+} // namespace hmap::gpu
