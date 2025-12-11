@@ -39,6 +39,8 @@ var primitives_8hpp =
     [ "gabor_noise", "primitives_8hpp.html#a2b3fdb5bd6cbca1c8ed1b81052012ba3", null ],
     [ "gaussian_pulse", "primitives_8hpp.html#a45ca8d7a507e92e78d466f0d392f8ea3", null ],
     [ "island_land_mask", "primitives_8hpp.html#a327031655d5c4dde6d21796f6c0444d0", null ],
+    [ "multisteps", "primitives_8hpp.html#aa5472271ba99fab877d5c4b2f6511c22", null ],
+    [ "multisteps", "primitives_8hpp.html#a2e5d43067c355c4726f2a13037a1c837", null ],
     [ "noise", "primitives_8hpp.html#a03c0be3a7198eebacefcb208b0cfee99", null ],
     [ "noise_fbm", "primitives_8hpp.html#a40b948c49a05c14f2d540dc1a6952130", null ],
     [ "noise_iq", "primitives_8hpp.html#ab078210e784284a05d8cb7c1ae993c51", null ],

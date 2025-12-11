@@ -918,6 +918,8 @@ var namespacehmap =
     [ "gabor_noise", "namespacehmap.html#a2b3fdb5bd6cbca1c8ed1b81052012ba3", null ],
     [ "gaussian_pulse", "namespacehmap.html#a45ca8d7a507e92e78d466f0d392f8ea3", null ],
     [ "island_land_mask", "namespacehmap.html#a327031655d5c4dde6d21796f6c0444d0", null ],
+    [ "multisteps", "namespacehmap.html#aa5472271ba99fab877d5c4b2f6511c22", null ],
+    [ "multisteps", "namespacehmap.html#a2e5d43067c355c4726f2a13037a1c837", null ],
     [ "noise", "namespacehmap.html#a03c0be3a7198eebacefcb208b0cfee99", null ],
     [ "noise_fbm", "namespacehmap.html#a40b948c49a05c14f2d540dc1a6952130", null ],
     [ "noise_iq", "namespacehmap.html#ab078210e784284a05d8cb7c1ae993c51", null ],
