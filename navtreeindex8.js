@@ -1,5 +1,10 @@
 var NAVTREEINDEX8 =
 {
+"functions_v.html":[4,3,0,20],
+"functions_vars.html":[4,3,2],
+"functions_w.html":[4,3,0,21],
+"functions_x.html":[4,3,0,22],
+"functions_y.html":[4,3,0,23],
 "functions_z.html":[4,3,0,24],
 "functions_~.html":[4,3,0,25],
 "gabor_8cpp.html":[5,0,1,1,26,6],
@@ -244,10 +249,5 @@ var NAVTREEINDEX8 =
 "index.html#autotoc_md5":[0,1,1],
 "index.html#autotoc_md6":[0,1,2],
 "index.html#autotoc_md7":[0,1,3],
-"index.html#autotoc_md8":[0,1,3,0],
-"index.html#autotoc_md9":[0,1,3,1],
-"inpainting__gaussian_8cpp.html":[5,0,1,1,24,2],
-"inpainting__gaussian_8cpp.html#ab642074e3e056d07ae13cf346e208c79":[5,0,1,1,24,2,0],
-"interpolate1d_8cpp.html":[5,0,1,1,19,1],
-"interpolate1d_8cpp.html#a567abeb8b68a281411d811987a84ee42":[5,0,1,1,19,1,0]
+"index.html#autotoc_md8":[0,1,3,0]
 };

@@ -11,6 +11,8 @@ var authoring_8hpp =
     ] ],
     [ "alter_elevation", "authoring_8hpp.html#aa0b0e92bd8fa6fdc51ccb39f7a382e92", null ],
     [ "base_elevation", "authoring_8hpp.html#ab54462b486be54fcf316f083f7ea3014", null ],
+    [ "flatbed_carve", "authoring_8hpp.html#a258949972d4c37ab8250e7befa76d99a", null ],
+    [ "flatbed_carve", "authoring_8hpp.html#aca85ea7a0afd5058ae2ff96f2d3d25f2", null ],
     [ "reverse_midpoint", "authoring_8hpp.html#a19bb0a5d0609ac671ca054d18959c7f1", null ],
     [ "ridgelines", "authoring_8hpp.html#aca4a5b0313f4efe251b20d90652a896b", null ],
     [ "ridgelines_bezier", "authoring_8hpp.html#a49bf95ae7344e531d7c2af0071e64649", null ],

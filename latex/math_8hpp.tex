@@ -27,7 +27,16 @@ enum \mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241a}{hmap\+::\
 , \newline
 \mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241aa1ee22d304b9b93cd76da1fbc9d32a75a}{hmap\+::\+TRIANGLE}}
  \}
-\begin{DoxyCompactList}\small\item\em Phasor angular profile type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Phasor angular profile type. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{namespacehmap_a2affc745bc33b7555352665745741f90}{hmap\+::\+Radial\+Profile}} \+: int \{ \newline
+\mbox{\hyperlink{namespacehmap_a2affc745bc33b7555352665745741f90ac0cd381f8918df73dd4bc6df1190d7ba}{hmap\+::\+RP\+\_\+\+GAIN}}
+, \mbox{\hyperlink{namespacehmap_a2affc745bc33b7555352665745741f90a8374fb3e0d0799f69d5a50e6e26f56b0}{hmap\+::\+RP\+\_\+\+LINEAR}}
+, \mbox{\hyperlink{namespacehmap_a2affc745bc33b7555352665745741f90a67c1906a040e7234b7a636eaf7ef7901}{hmap\+::\+RP\+\_\+\+POW}}
+, \mbox{\hyperlink{namespacehmap_a2affc745bc33b7555352665745741f90ad18fad6ec8edf55050af29b51e14fffd}{hmap\+::\+RP\+\_\+\+SMOOTHSTEP}}
+, \newline
+\mbox{\hyperlink{namespacehmap_a2affc745bc33b7555352665745741f90acedc11502bd1441e893fdc5a699b6d59}{hmap\+::\+RP\+\_\+\+SMOOTHSTEP\+\_\+\+UPPER}}
+ \}
+\begin{DoxyCompactList}\small\item\em Radial profile type. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -65,8 +74,10 @@ float \mbox{\hyperlink{namespacehmap_a0db2ecdc6ca69af1e6eb3402b1147cb6}{hmap\+::
 \begin{DoxyCompactList}\small\item\em Return the Gaussian of the array elements. \end{DoxyCompactList}\item 
 std\+::function$<$ float(float, float)$>$ \mbox{\hyperlink{namespacehmap_a325c785e4776325f3061d9f5bd89fccf}{hmap\+::get\+\_\+distance\+\_\+function}} (\mbox{\hyperlink{namespacehmap_a670f50d6c08ecd639d42db9c75a5273a}{Distance\+Function}} dist\+\_\+fct)
 \begin{DoxyCompactList}\small\item\em Return the requested distance function. \end{DoxyCompactList}\item 
-std\+::function$<$ float(float)$>$ \mbox{\hyperlink{namespacehmap_a6bea64db2dac2b906983472f7f6781a0}{hmap\+::get\+\_\+phasor\+\_\+profile\+\_\+function}} (const \mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241a}{Phasor\+Profile}} \&phasor\+\_\+profile, float delta, float \texorpdfstring{$\ast$}{*}p\+\_\+profile\+\_\+avg=nullptr)
+std\+::function$<$ float(float)$>$ \mbox{\hyperlink{namespacehmap_a3e2e333ca90c11a997a9ac04361b1741}{hmap\+::get\+\_\+phasor\+\_\+profile\+\_\+function}} (\mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241a}{Phasor\+Profile}} phasor\+\_\+profile, float delta, float \texorpdfstring{$\ast$}{*}p\+\_\+profile\+\_\+avg=nullptr)
 \begin{DoxyCompactList}\small\item\em Generates a function representing a phasor profile based on the specified type and parameters. \end{DoxyCompactList}\item 
+std\+::function$<$ float(float)$>$ \mbox{\hyperlink{namespacehmap_a6558dec0d9f57bbc8f9ef9b2fe324757}{hmap\+::get\+\_\+radial\+\_\+profile\+\_\+function}} (\mbox{\hyperlink{namespacehmap_a2affc745bc33b7555352665745741f90}{Radial\+Profile}} radial\+\_\+profile, float delta)
+\begin{DoxyCompactList}\small\item\em Returns a normalized radial profile function. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{namespacehmap_a9ae209ce5746e99078078259955c7421}{hmap\+::highest\+\_\+power\+\_\+of\+\_\+2}} (int n)
 \begin{DoxyCompactList}\small\item\em Computes the highest power of 2 less than or equal to the given number. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a339d883dc34fc818dd25077c5daab953}{hmap\+::is\+\_\+non\+\_\+zero}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array)

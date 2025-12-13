@@ -134,7 +134,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/authoring.hpp" line="31" column="1" bodyfile="HighMap/include/highmap/authoring.hpp" bodystart="32" bodyend="40"/>
+        <location file="HighMap/include/highmap/authoring.hpp" line="16" column="1" bodyfile="HighMap/include/highmap/authoring.hpp" bodystart="17" bodyend="25"/>
       </memberdef>
       <memberdef kind="enum" id="namespacehmap_1a41f6f4d40b566b87f78344d9efe71c71" prot="public" static="no" strong="no">
         <type>int</type>
@@ -1208,6 +1208,54 @@
         </inbodydescription>
         <location file="HighMap/include/highmap/math.hpp" line="53" column="1" bodyfile="HighMap/include/highmap/math.hpp" bodystart="54" bodyend="60"/>
       </memberdef>
+      <memberdef kind="enum" id="namespacehmap_1a2affc745bc33b7555352665745741f90" prot="public" static="no" strong="no">
+        <type>int</type>
+        <name>RadialProfile</name>
+        <qualifiedname>hmap::RadialProfile</qualifiedname>
+        <enumvalue id="namespacehmap_1a2affc745bc33b7555352665745741f90ac0cd381f8918df73dd4bc6df1190d7ba" prot="public">
+          <name>RP_GAIN</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacehmap_1a2affc745bc33b7555352665745741f90a8374fb3e0d0799f69d5a50e6e26f56b0" prot="public">
+          <name>RP_LINEAR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacehmap_1a2affc745bc33b7555352665745741f90a67c1906a040e7234b7a636eaf7ef7901" prot="public">
+          <name>RP_POW</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacehmap_1a2affc745bc33b7555352665745741f90ad18fad6ec8edf55050af29b51e14fffd" prot="public">
+          <name>RP_SMOOTHSTEP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacehmap_1a2affc745bc33b7555352665745741f90acedc11502bd1441e893fdc5a699b6d59" prot="public">
+          <name>RP_SMOOTHSTEP_UPPER</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Radial profile type. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/math.hpp" line="65" column="1" bodyfile="HighMap/include/highmap/math.hpp" bodystart="66" bodyend="72"/>
+      </memberdef>
       <memberdef kind="enum" id="namespacehmap_1a9e2493cec1a67b3140691e617ddc925a" prot="public" static="no" strong="no">
         <type>int</type>
         <name>DistanceTransformType</name>
@@ -1893,7 +1941,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/authoring/alter_elevation.cpp" line="13" column="6" bodyfile="HighMap/src/authoring/alter_elevation.cpp" bodystart="13" bodyend="60" declfile="HighMap/include/highmap/authoring.hpp" declline="83" declcolumn="6"/>
+        <location file="HighMap/src/authoring/alter_elevation.cpp" line="13" column="6" bodyfile="HighMap/src/authoring/alter_elevation.cpp" bodystart="13" bodyend="60" declfile="HighMap/include/highmap/authoring.hpp" declline="68" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ab54462b486be54fcf316f083f7ea3014" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -2031,7 +2079,509 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/authoring/base_elevation.cpp" line="12" column="7" bodyfile="HighMap/src/authoring/base_elevation.cpp" bodystart="12" bodyend="58" declfile="HighMap/include/highmap/authoring.hpp" declline="134" declcolumn="7"/>
+        <location file="HighMap/src/authoring/base_elevation.cpp" line="12" column="7" bodyfile="HighMap/src/authoring/base_elevation.cpp" bodystart="12" bodyend="58" declfile="HighMap/include/highmap/authoring.hpp" declline="119" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehmap_1a258949972d4c37ab8250e7befa76d99a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
+        <definition>Array hmap::flatbed_carve</definition>
+        <argsstring>(Vec2&lt; int &gt; shape, const Path &amp;path, float bottom_extent=32.f, float vmin=0.1f, float depth=0.05f, float falloff_distance=128.f, float outer_slope=0.1f, bool preserve_bedshape=true, RadialProfile radial_profile=RadialProfile::RP_GAIN, float radial_profile_parameter=2.f, Array *p_falloff_mask=nullptr, const Array *p_noise_r=nullptr, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f})</argsstring>
+        <name>flatbed_carve</name>
+        <qualifiedname>hmap::flatbed_carve</qualifiedname>
+        <param>
+          <type><ref refid="structhmap_1_1Vec2" kindref="compound">Vec2</ref>&lt; int &gt;</type>
+          <declname>shape</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classhmap_1_1Path" kindref="compound">Path</ref> &amp;</type>
+          <declname>path</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>bottom_extent</declname>
+          <defval>32.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>vmin</declname>
+          <defval>0.1<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>depth</declname>
+          <defval>0.05<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>falloff_distance</declname>
+          <defval>128.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>outer_slope</declname>
+          <defval>0.1<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>preserve_bedshape</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type><ref refid="namespacehmap_1a2affc745bc33b7555352665745741f90" kindref="member">RadialProfile</ref></type>
+          <declname>radial_profile</declname>
+          <defval><ref refid="namespacehmap_1a2affc745bc33b7555352665745741f90ac0cd381f8918df73dd4bc6df1190d7ba" kindref="member">RadialProfile::RP_GAIN</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>radial_profile_parameter</declname>
+          <defval>2.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
+          <declname>p_falloff_mask</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
+          <declname>p_noise_r</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type><ref refid="structhmap_1_1Vec4" kindref="compound">Vec4</ref>&lt; float &gt;</type>
+          <declname>bbox</declname>
+          <defval>{0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>}</defval>
+        </param>
+        <briefdescription>
+<para>Carves a flatbed shape along a path. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Generates a height array by carving a flat-bottomed bed around a path, with a radial profile for the bed shape and an optional outer falloff.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>shape</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Output array resolution. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>path</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classhmap_1_1Path" kindref="compound">Path</ref> defining the bed centerline. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>bottom_extent</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Radius of the flatbed region. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>vmin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Base height value. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>depth</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Bed depth. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>falloff_distance</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Falloff width outside the bed. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>outer_slope</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Linear slope beyond the bed. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>preserve_bedshape</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Preserve relative bed shape under radial noise. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>radial_profile</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Radial profile type. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>radial_profile_parameter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Shape parameter for the profile. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>p_falloff_mask</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional output falloff mask. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>p_noise_r</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional radial noise. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>bbox</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>World-space bounding box.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Generated flatbed height array.</para>
+</simplesect>
+<bold>Example</bold> <programlisting filename="ex_flatbed_carve.cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="structhmap_1_1Vec2" kindref="compound">hmap::Vec2&lt;int&gt;</ref><sp/><sp/><sp/>shape<sp/>=<sp/>{256,<sp/>256};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="structhmap_1_1Vec2" kindref="compound">hmap::Vec2&lt;float&gt;</ref><sp/>kw<sp/>=<sp/>{2.f,<sp/>2.f};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1a40b948c49a05c14f2d540dc1a6952130" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,<sp/>shape,<sp/>kw,<sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(z);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>dr<sp/>=<sp/><ref refid="namespacehmap_1a40b948c49a05c14f2d540dc1a6952130" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>shape,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{16.f,<sp/>16.f},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++seed,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>8,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0.1f);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(dr,<sp/>-0.2f,<sp/>0.9f);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>---<sp/>generate<sp/>path</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Path" kindref="compound">hmap::Path</ref><sp/>path<sp/>=<sp/><ref refid="namespacehmap_1a176288a6fd3bb7b78437e9f114f0d6b1" kindref="member">hmap::find_cut_path_dijkstra</ref>(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>z,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a1ba9d4ce7afe3309f8ae8e617f7154eea760545322569136cd3be89e004ab10d4" kindref="member">hmap::DomainBoundary::BOUNDARY_LEFT</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a1ba9d4ce7afe3309f8ae8e617f7154eeadb9a04ab3508704543b5dd43ae495fe7" kindref="member">hmap::DomainBoundary::BOUNDARY_RIGHT</ref>);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>path.<ref refid="classhmap_1_1Path_1ad2be7924d78ea51a68158bf68b12d6ed" kindref="member">decimate_vw</ref>(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>path.<ref refid="classhmap_1_1Path_1a166a6f87dff196efa75abb1b731d3528" kindref="member">bspline</ref>();</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zp<sp/>=<sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref>(shape);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>path.<ref refid="classhmap_1_1Path_1adc8504c67cb22a2c8fb37d408e3aeafc" kindref="member">to_array</ref>(zp);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>---<sp/>carve</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>bottom_extent<sp/>=<sp/>int(shape.<ref refid="structhmap_1_1Vec2_1a2dc51e83492f966eeddbdac3d58ab447" kindref="member">x</ref><sp/>/<sp/>32);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>vmin<sp/>=<sp/>0.1f;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>depth<sp/>=<sp/>0.05f;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>falloff_distance<sp/>=<sp/>4<sp/>*<sp/>bottom_extent;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>outer_slope<sp/>=<sp/>0.1f;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/>preserve_bedshape<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><sp/>radial_profile<sp/>=<sp/><ref refid="namespacehmap_1a2affc745bc33b7555352665745741f90ac0cd381f8918df73dd4bc6df1190d7ba" kindref="member">hmap::RadialProfile::RP_GAIN</ref>;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>radial_profile_parameter<sp/>=<sp/>2.f;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zf<sp/>=<sp/>z;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>mask;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a258949972d4c37ab8250e7befa76d99a" kindref="member">hmap::flatbed_carve</ref>(zf,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>path,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bottom_extent,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vmin,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>depth,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>falloff_distance,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>outer_slope,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>preserve_bedshape,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>radial_profile,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>radial_profile_parameter,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;mask,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;dr);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_flatbed_carve.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,<sp/>zp,<sp/>mask,<sp/>zf},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143" kindref="member">hmap::Cmap::INFERNO</ref>);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<para><bold>Result</bold> <image type="html" name="ex_flatbed_carve.png"></image>
+ </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/authoring/flatbed_carve.cpp" line="13" column="7" bodyfile="HighMap/src/authoring/flatbed_carve.cpp" bodystart="13" bodyend="108" declfile="HighMap/include/highmap/authoring.hpp" declline="156" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehmap_1aca85ea7a0afd5058ae2ff96f2d3d25f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hmap::flatbed_carve</definition>
+        <argsstring>(Array &amp;z, const Path &amp;path, float bottom_extent=32.f, float vmin=0.1f, float depth=0.05f, float falloff_distance=128.f, float outer_slope=0.1f, bool preserve_bedshape=true, RadialProfile radial_profile=RadialProfile::RP_GAIN, float radial_profile_parameter=2.f, Array *p_falloff_mask=nullptr, const Array *p_noise_r=nullptr, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f})</argsstring>
+        <name>flatbed_carve</name>
+        <qualifiedname>hmap::flatbed_carve</qualifiedname>
+        <param>
+          <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>z</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classhmap_1_1Path" kindref="compound">Path</ref> &amp;</type>
+          <declname>path</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>bottom_extent</declname>
+          <defval>32.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>vmin</declname>
+          <defval>0.1<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>depth</declname>
+          <defval>0.05<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>falloff_distance</declname>
+          <defval>128.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>outer_slope</declname>
+          <defval>0.1<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>preserve_bedshape</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type><ref refid="namespacehmap_1a2affc745bc33b7555352665745741f90" kindref="member">RadialProfile</ref></type>
+          <declname>radial_profile</declname>
+          <defval><ref refid="namespacehmap_1a2affc745bc33b7555352665745741f90ac0cd381f8918df73dd4bc6df1190d7ba" kindref="member">RadialProfile::RP_GAIN</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>radial_profile_parameter</declname>
+          <defval>2.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
+          <declname>p_falloff_mask</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
+          <declname>p_noise_r</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type><ref refid="structhmap_1_1Vec4" kindref="compound">Vec4</ref>&lt; float &gt;</type>
+          <declname>bbox</declname>
+          <defval>{0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>}</defval>
+        </param>
+        <briefdescription>
+<para>Blends a flatbed carve into an existing heightmap. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Carves and blends a flatbed shape along a path into the provided array, using a smooth falloff mask.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classhmap_1_1Heightmap" kindref="compound">Heightmap</ref> to modify in place. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>path</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classhmap_1_1Path" kindref="compound">Path</ref> defining the bed centerline. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>bottom_extent</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Radius of the flatbed region. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>vmin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Base height value. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>depth</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Bed depth. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>falloff_distance</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Falloff width outside the bed. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>outer_slope</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Linear slope beyond the bed. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>preserve_bedshape</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Preserve relative bed shape under radial noise. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>radial_profile</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Radial profile type. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>radial_profile_parameter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Shape parameter for the profile. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>p_falloff_mask</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional output falloff mask. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>p_noise_r</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional radial noise. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>bbox</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>World-space bounding box.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<bold>Example</bold> <programlisting filename="ex_flatbed_carve.cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="structhmap_1_1Vec2" kindref="compound">hmap::Vec2&lt;int&gt;</ref><sp/><sp/><sp/>shape<sp/>=<sp/>{256,<sp/>256};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="structhmap_1_1Vec2" kindref="compound">hmap::Vec2&lt;float&gt;</ref><sp/>kw<sp/>=<sp/>{2.f,<sp/>2.f};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1a40b948c49a05c14f2d540dc1a6952130" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,<sp/>shape,<sp/>kw,<sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(z);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>dr<sp/>=<sp/><ref refid="namespacehmap_1a40b948c49a05c14f2d540dc1a6952130" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>shape,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{16.f,<sp/>16.f},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++seed,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>8,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0.1f);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(dr,<sp/>-0.2f,<sp/>0.9f);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>---<sp/>generate<sp/>path</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Path" kindref="compound">hmap::Path</ref><sp/>path<sp/>=<sp/><ref refid="namespacehmap_1a176288a6fd3bb7b78437e9f114f0d6b1" kindref="member">hmap::find_cut_path_dijkstra</ref>(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>z,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a1ba9d4ce7afe3309f8ae8e617f7154eea760545322569136cd3be89e004ab10d4" kindref="member">hmap::DomainBoundary::BOUNDARY_LEFT</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a1ba9d4ce7afe3309f8ae8e617f7154eeadb9a04ab3508704543b5dd43ae495fe7" kindref="member">hmap::DomainBoundary::BOUNDARY_RIGHT</ref>);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>path.<ref refid="classhmap_1_1Path_1ad2be7924d78ea51a68158bf68b12d6ed" kindref="member">decimate_vw</ref>(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>path.<ref refid="classhmap_1_1Path_1a166a6f87dff196efa75abb1b731d3528" kindref="member">bspline</ref>();</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zp<sp/>=<sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref>(shape);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>path.<ref refid="classhmap_1_1Path_1adc8504c67cb22a2c8fb37d408e3aeafc" kindref="member">to_array</ref>(zp);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>---<sp/>carve</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>bottom_extent<sp/>=<sp/>int(shape.<ref refid="structhmap_1_1Vec2_1a2dc51e83492f966eeddbdac3d58ab447" kindref="member">x</ref><sp/>/<sp/>32);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>vmin<sp/>=<sp/>0.1f;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>depth<sp/>=<sp/>0.05f;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>falloff_distance<sp/>=<sp/>4<sp/>*<sp/>bottom_extent;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>outer_slope<sp/>=<sp/>0.1f;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/>preserve_bedshape<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><sp/>radial_profile<sp/>=<sp/><ref refid="namespacehmap_1a2affc745bc33b7555352665745741f90ac0cd381f8918df73dd4bc6df1190d7ba" kindref="member">hmap::RadialProfile::RP_GAIN</ref>;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>radial_profile_parameter<sp/>=<sp/>2.f;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zf<sp/>=<sp/>z;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>mask;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a258949972d4c37ab8250e7befa76d99a" kindref="member">hmap::flatbed_carve</ref>(zf,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>path,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bottom_extent,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vmin,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>depth,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>falloff_distance,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>outer_slope,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>preserve_bedshape,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>radial_profile,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>radial_profile_parameter,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;mask,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;dr);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_flatbed_carve.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,<sp/>zp,<sp/>mask,<sp/>zf},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143" kindref="member">hmap::Cmap::INFERNO</ref>);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<para><bold>Result</bold> <image type="html" name="ex_flatbed_carve.png"></image>
+ </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/authoring/flatbed_carve.cpp" line="110" column="6" bodyfile="HighMap/src/authoring/flatbed_carve.cpp" bodystart="110" bodyend="143" declfile="HighMap/include/highmap/authoring.hpp" declline="197" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a19bb0a5d0609ac671ca054d18959c7f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -2124,7 +2674,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/authoring/reverse_midpoint.cpp" line="231" column="7" bodyfile="HighMap/src/authoring/reverse_midpoint.cpp" bodystart="231" bodyend="262" declfile="HighMap/include/highmap/authoring.hpp" declline="174" declcolumn="7"/>
+        <location file="HighMap/src/authoring/reverse_midpoint.cpp" line="231" column="7" bodyfile="HighMap/src/authoring/reverse_midpoint.cpp" bodystart="231" bodyend="262" declfile="HighMap/include/highmap/authoring.hpp" declline="243" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aca4a5b0313f4efe251b20d90652a896b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -2332,7 +2882,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/authoring/ridgelines.cpp" line="16" column="7" bodyfile="HighMap/src/authoring/ridgelines.cpp" bodystart="16" bodyend="98" declfile="HighMap/include/highmap/authoring.hpp" declline="221" declcolumn="7"/>
+        <location file="HighMap/src/authoring/ridgelines.cpp" line="16" column="7" bodyfile="HighMap/src/authoring/ridgelines.cpp" bodystart="16" bodyend="98" declfile="HighMap/include/highmap/authoring.hpp" declline="290" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a49bf95ae7344e531d7c2af0071e64649" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -2545,7 +3095,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/authoring/ridgelines.cpp" line="100" column="7" bodyfile="HighMap/src/authoring/ridgelines.cpp" bodystart="100" bodyend="309" declfile="HighMap/include/highmap/authoring.hpp" declline="285" declcolumn="7"/>
+        <location file="HighMap/src/authoring/ridgelines.cpp" line="100" column="7" bodyfile="HighMap/src/authoring/ridgelines.cpp" bodystart="100" bodyend="309" declfile="HighMap/include/highmap/authoring.hpp" declline="354" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a52fe1241da6ece981af7a368ef3ad0c4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -2783,7 +3333,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/authoring/stamping.cpp" line="17" column="7" bodyfile="HighMap/src/authoring/stamping.cpp" bodystart="17" bodyend="148" declfile="HighMap/include/highmap/authoring.hpp" declline="352" declcolumn="7"/>
+        <location file="HighMap/src/authoring/stamping.cpp" line="17" column="7" bodyfile="HighMap/src/authoring/stamping.cpp" bodystart="17" bodyend="148" declfile="HighMap/include/highmap/authoring.hpp" declline="421" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aafb76d7961d1655fdc07422982357588" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -24150,7 +24700,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/path.cpp" line="906" column="6" bodyfile="HighMap/src/geometry/path.cpp" bodystart="906" bodyend="954" declfile="HighMap/include/highmap/geometry/path.hpp" declline="846" declcolumn="6"/>
+        <location file="HighMap/src/geometry/path.cpp" line="902" column="6" bodyfile="HighMap/src/geometry/path.cpp" bodystart="902" bodyend="950" declfile="HighMap/include/highmap/geometry/path.hpp" declline="846" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a6d536f0d67ade56c6a60927d8c8e9720" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -24336,7 +24886,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/path.cpp" line="956" column="6" bodyfile="HighMap/src/geometry/path.cpp" bodystart="956" bodyend="1022" declfile="HighMap/include/highmap/geometry/path.hpp" declline="885" declcolumn="6"/>
+        <location file="HighMap/src/geometry/path.cpp" line="952" column="6" bodyfile="HighMap/src/geometry/path.cpp" bodystart="952" bodyend="1018" declfile="HighMap/include/highmap/geometry/path.hpp" declline="885" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a31b3cde3ce1fa52f1856b962f4443d49" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -24397,14 +24947,14 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/path.cpp" line="1024" column="6" bodyfile="HighMap/src/geometry/path.cpp" bodystart="1024" bodyend="1047" declfile="HighMap/include/highmap/geometry/path.hpp" declline="896" declcolumn="6"/>
+        <location file="HighMap/src/geometry/path.cpp" line="1020" column="6" bodyfile="HighMap/src/geometry/path.cpp" bodystart="1020" bodyend="1043" declfile="HighMap/include/highmap/geometry/path.hpp" declline="896" declcolumn="6"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1af8cc8438bbcaffeaeff2f0982e1a9812" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacehmap_1a176288a6fd3bb7b78437e9f114f0d6b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Path" kindref="compound">Path</ref></type>
-        <definition>Path hmap::find_cut_path</definition>
-        <argsstring>(const Array &amp;z, DomainBoundary start, DomainBoundary end, float dijk_elevation_ratio=0.9f, float dijk_distance_exponent=2.f, float dijk_upward_penalization=0.f)</argsstring>
-        <name>find_cut_path</name>
-        <qualifiedname>hmap::find_cut_path</qualifiedname>
+        <definition>Path hmap::find_cut_path_dijkstra</definition>
+        <argsstring>(const Array &amp;z, DomainBoundary start, DomainBoundary end, float dijk_elevation_ratio=0.9f, float dijk_distance_exponent=2.f, float dijk_upward_penalization=100.f)</argsstring>
+        <name>find_cut_path_dijkstra</name>
+        <qualifiedname>hmap::find_cut_path_dijkstra</qualifiedname>
         <param>
           <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
           <declname>z</declname>
@@ -24430,7 +24980,7 @@ This function:<itemizedlist>
         <param>
           <type>float</type>
           <declname>dijk_upward_penalization</declname>
-          <defval>0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+          <defval>100.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
         </param>
         <briefdescription>
 <para>Find a Dijkstra-based cut path between two domain boundaries. </para>
@@ -24499,9 +25049,10 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1a40b948c49a05c14f2d540dc1a6952130" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,<sp/>shape,<sp/>kw,<sp/>seed);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(z);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Path" kindref="compound">hmap::Path</ref><sp/>path<sp/>=<sp/><ref refid="namespacehmap_1af8cc8438bbcaffeaeff2f0982e1a9812" kindref="member">hmap::find_cut_path</ref>(z,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a1ba9d4ce7afe3309f8ae8e617f7154eea760545322569136cd3be89e004ab10d4" kindref="member">hmap::DomainBoundary::BOUNDARY_LEFT</ref>,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a1ba9d4ce7afe3309f8ae8e617f7154eeadb9a04ab3508704543b5dd43ae495fe7" kindref="member">hmap::DomainBoundary::BOUNDARY_RIGHT</ref>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Path" kindref="compound">hmap::Path</ref><sp/>path<sp/>=<sp/><ref refid="namespacehmap_1a176288a6fd3bb7b78437e9f114f0d6b1" kindref="member">hmap::find_cut_path_dijkstra</ref>(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>z,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a1ba9d4ce7afe3309f8ae8e617f7154eea760545322569136cd3be89e004ab10d4" kindref="member">hmap::DomainBoundary::BOUNDARY_LEFT</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a1ba9d4ce7afe3309f8ae8e617f7154eeadb9a04ab3508704543b5dd43ae495fe7" kindref="member">hmap::DomainBoundary::BOUNDARY_RIGHT</ref>);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zp<sp/>=<sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref>(shape);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>path.<ref refid="classhmap_1_1Path_1adc8504c67cb22a2c8fb37d408e3aeafc" kindref="member">to_array</ref>(zp);</highlight></codeline>
@@ -24514,7 +25065,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/find_cut_path.cpp" line="10" column="6" bodyfile="HighMap/src/geometry/find_cut_path.cpp" bodystart="10" bodyend="118" declfile="HighMap/include/highmap/geometry/path.hpp" declline="931" declcolumn="6"/>
+        <location file="HighMap/src/geometry/find_cut_path.cpp" line="11" column="6" bodyfile="HighMap/src/geometry/find_cut_path.cpp" bodystart="11" bodyend="118" declfile="HighMap/include/highmap/geometry/path.hpp" declline="931" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aac71bb6c14edc17967957f7918acdbdd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>float</type>
@@ -32729,7 +33280,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="13" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="13" bodyend="21" declfile="HighMap/include/highmap/math.hpp" declline="68" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="13" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="13" bodyend="21" declfile="HighMap/include/highmap/math.hpp" declline="80" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aa99a114cc6073cf7368c927afd9b4f87" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -32810,7 +33361,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="49" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="49" bodyend="63" declfile="HighMap/include/highmap/math.hpp" declline="85" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="49" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="49" bodyend="63" declfile="HighMap/include/highmap/math.hpp" declline="97" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ac165dd1b73f61f632f03e45c2f831fc2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -32837,7 +33388,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="34" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="34" bodyend="47" declfile="HighMap/include/highmap/math.hpp" declline="86" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="34" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="34" bodyend="47" declfile="HighMap/include/highmap/math.hpp" declline="98" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1addd566daeeba4b807513b59951de0003" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -32860,7 +33411,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="23" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="23" bodyend="32" declfile="HighMap/include/highmap/math.hpp" declline="87" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="23" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="23" bodyend="32" declfile="HighMap/include/highmap/math.hpp" declline="99" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ab7bb73f6a918ffc68129e3a861080efd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>float</type>
@@ -32883,7 +33434,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="65" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="65" bodyend="69" declfile="HighMap/include/highmap/math.hpp" declline="88" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="65" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="65" bodyend="69" declfile="HighMap/include/highmap/math.hpp" declline="100" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a2e282a2ea8008f2eccd99e47863adb6d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -32915,7 +33466,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="71" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="71" bodyend="74" declfile="HighMap/include/highmap/math.hpp" declline="100" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="71" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="71" bodyend="74" declfile="HighMap/include/highmap/math.hpp" declline="112" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a8ddf0121ee2b8c701a61a12274b5f3e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>float</type>
@@ -32934,7 +33485,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="76" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="76" bodyend="79" declfile="HighMap/include/highmap/math.hpp" declline="101" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="76" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="76" bodyend="79" declfile="HighMap/include/highmap/math.hpp" declline="113" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ab0aafd1928d46167f782de3c00b937ac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>float</type>
@@ -32965,7 +33516,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="81" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="81" bodyend="86" declfile="HighMap/include/highmap/math.hpp" declline="110" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="81" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="81" bodyend="86" declfile="HighMap/include/highmap/math.hpp" declline="122" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a85cee5ad021421a670fb62211b5913e5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>float</type>
@@ -33008,7 +33559,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/math.hpp" line="119" column="14" bodyfile="HighMap/include/highmap/math.hpp" bodystart="119" bodyend="125"/>
+        <location file="HighMap/include/highmap/math.hpp" line="131" column="14" bodyfile="HighMap/include/highmap/math.hpp" bodystart="131" bodyend="137"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a7c2762e4ccc798e8c90d128c2c2858fe" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>float</type>
@@ -33039,7 +33590,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/math.hpp" line="133" column="14" bodyfile="HighMap/include/highmap/math.hpp" bodystart="133" bodyend="143"/>
+        <location file="HighMap/include/highmap/math.hpp" line="145" column="14" bodyfile="HighMap/include/highmap/math.hpp" bodystart="145" bodyend="155"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1abfd3f58454c7064010dc2dd58d1a03aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -33070,7 +33621,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="88" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="88" bodyend="96" declfile="HighMap/include/highmap/math.hpp" declline="151" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="88" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="88" bodyend="96" declfile="HighMap/include/highmap/math.hpp" declline="163" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a14833c6f5d5f2546447ead949b571c2c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -33115,7 +33666,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="98" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="98" bodyend="108" declfile="HighMap/include/highmap/math.hpp" declline="167" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="98" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="98" bodyend="108" declfile="HighMap/include/highmap/math.hpp" declline="179" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a4a3589145183ecdcc6392e28cd1ebef8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -33146,7 +33697,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="110" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="110" bodyend="118" declfile="HighMap/include/highmap/math.hpp" declline="175" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="110" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="110" bodyend="118" declfile="HighMap/include/highmap/math.hpp" declline="187" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aad00066161ccf5ba4d6f93ab48c10876" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -33177,7 +33728,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="120" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="120" bodyend="128" declfile="HighMap/include/highmap/math.hpp" declline="183" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="120" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="120" bodyend="128" declfile="HighMap/include/highmap/math.hpp" declline="195" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a0db2ecdc6ca69af1e6eb3402b1147cb6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>float</type>
@@ -33199,7 +33750,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="130" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="130" bodyend="134" declfile="HighMap/include/highmap/math.hpp" declline="185" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="130" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="130" bodyend="134" declfile="HighMap/include/highmap/math.hpp" declline="197" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a99778512aa5779e70039e6b04e62d40c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -33262,7 +33813,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="136" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="136" bodyend="145" declfile="HighMap/include/highmap/math.hpp" declline="200" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="136" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="136" bodyend="145" declfile="HighMap/include/highmap/math.hpp" declline="212" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a325c785e4776325f3061d9f5bd89fccf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::function&lt; float(float, float)&gt;</type>
@@ -33293,16 +33844,16 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/distance_function.cpp" line="12" column="15" bodyfile="HighMap/src/math/distance_function.cpp" bodystart="12" bodyend="62" declfile="HighMap/include/highmap/math.hpp" declline="207" declcolumn="15"/>
+        <location file="HighMap/src/math/distance_function.cpp" line="12" column="15" bodyfile="HighMap/src/math/distance_function.cpp" bodystart="12" bodyend="62" declfile="HighMap/include/highmap/math.hpp" declline="219" declcolumn="15"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1a6bea64db2dac2b906983472f7f6781a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacehmap_1a3e2e333ca90c11a997a9ac04361b1741" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::function&lt; float(float)&gt;</type>
         <definition>std::function&lt; float(float)&gt; hmap::get_phasor_profile_function</definition>
-        <argsstring>(const PhasorProfile &amp;phasor_profile, float delta, float *p_profile_avg=nullptr)</argsstring>
+        <argsstring>(PhasorProfile phasor_profile, float delta, float *p_profile_avg=nullptr)</argsstring>
         <name>get_phasor_profile_function</name>
         <qualifiedname>hmap::get_phasor_profile_function</qualifiedname>
         <param>
-          <type>const <ref refid="namespacehmap_1a67d6620c147710ebb09b64f0f738241a" kindref="member">PhasorProfile</ref> &amp;</type>
+          <type><ref refid="namespacehmap_1a67d6620c147710ebb09b64f0f738241a" kindref="member">PhasorProfile</ref></type>
           <declname>phasor_profile</declname>
         </param>
         <param>
@@ -33348,9 +33899,10 @@ The output path consists of:<itemizedlist>
 </simplesect>
 <parameterlist kind="exception"><parameteritem>
 <parameternamelist>
-<parametername>std::invalid_argumentIftheprovided`phasor_profile`isinvalid.</parametername>
+<parametername>std::invalid_argumentIfthe</parametername>
 </parameternamelist>
 <parameterdescription>
+<para>provided <computeroutput>phasor_profile</computeroutput> is invalid.</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -33360,7 +33912,60 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/phasor_profile_function.cpp" line="14" column="15" bodyfile="HighMap/src/math/phasor_profile_function.cpp" bodystart="14" bodyend="89" declfile="HighMap/include/highmap/math.hpp" declline="233" declcolumn="15"/>
+        <location file="HighMap/src/math/phasor_profile_function.cpp" line="14" column="15" bodyfile="HighMap/src/math/phasor_profile_function.cpp" bodystart="14" bodyend="89" declfile="HighMap/include/highmap/math.hpp" declline="245" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehmap_1a6558dec0d9f57bbc8f9ef9b2fe324757" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::function&lt; float(float)&gt;</type>
+        <definition>std::function&lt; float(float)&gt; hmap::get_radial_profile_function</definition>
+        <argsstring>(RadialProfile radial_profile, float delta)</argsstring>
+        <name>get_radial_profile_function</name>
+        <qualifiedname>hmap::get_radial_profile_function</qualifiedname>
+        <param>
+          <type><ref refid="namespacehmap_1a2affc745bc33b7555352665745741f90" kindref="member">RadialProfile</ref></type>
+          <declname>radial_profile</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>delta</declname>
+        </param>
+        <briefdescription>
+<para>Returns a normalized radial profile function. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The returned function maps x ∈ [0,1] to a value in [0,1], with f(0) = 0 and f(1) = 1. It is typically used for radial or distance-based falloff in procedural heightmaps.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>radial_profile</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Radial profile type. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>delta</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Shape parameter used by some profiles.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Radial profile evaluation function.</para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>std::invalid_argumentIfthe</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>profile is invalid. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/math/radial_profile_function.cpp" line="14" column="15" bodyfile="HighMap/src/math/radial_profile_function.cpp" bodystart="14" bodyend="50" declfile="HighMap/include/highmap/math.hpp" declline="264" declcolumn="15"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a9ae209ce5746e99078078259955c7421" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -33391,7 +33996,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/multiscale/pyramid_decomposition.cpp" line="193" column="5" bodyfile="HighMap/src/multiscale/pyramid_decomposition.cpp" bodystart="193" bodyend="197" declfile="HighMap/include/highmap/math.hpp" declline="246" declcolumn="5"/>
+        <location file="HighMap/src/multiscale/pyramid_decomposition.cpp" line="193" column="5" bodyfile="HighMap/src/multiscale/pyramid_decomposition.cpp" bodystart="193" bodyend="197" declfile="HighMap/include/highmap/math.hpp" declline="276" declcolumn="5"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a339d883dc34fc818dd25077c5daab953" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -33423,7 +34028,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="158" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="158" bodyend="166" declfile="HighMap/include/highmap/math.hpp" declline="269" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="158" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="158" bodyend="166" declfile="HighMap/include/highmap/math.hpp" declline="299" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a3a1e261b646c9df967e78fb77e5bf8c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -33455,7 +34060,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="168" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="168" bodyend="176" declfile="HighMap/include/highmap/math.hpp" declline="280" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="168" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="168" bodyend="176" declfile="HighMap/include/highmap/math.hpp" declline="310" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ad78d0f991f4f0eee67929b00469aea39" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -33510,7 +34115,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="178" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="178" bodyend="182" declfile="HighMap/include/highmap/math.hpp" declline="290" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="178" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="178" bodyend="182" declfile="HighMap/include/highmap/math.hpp" declline="320" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a6d85b2b635d15a4361344451619253f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -33537,7 +34142,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="184" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="184" bodyend="188" declfile="HighMap/include/highmap/math.hpp" declline="291" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="184" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="184" bodyend="188" declfile="HighMap/include/highmap/math.hpp" declline="321" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a1d5e665c9e945b8ad9a6b5f0c1b673ad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>float</type>
@@ -33564,7 +34169,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="190" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="190" bodyend="193" declfile="HighMap/include/highmap/math.hpp" declline="292" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="190" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="190" bodyend="193" declfile="HighMap/include/highmap/math.hpp" declline="322" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a75475b6109023ce0ad64f6f9f7c4c525" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -33595,7 +34200,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="195" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="195" bodyend="203" declfile="HighMap/include/highmap/math.hpp" declline="300" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="195" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="195" bodyend="203" declfile="HighMap/include/highmap/math.hpp" declline="330" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a105e497c433e14b4235534ae6d2b87b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -33630,7 +34235,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="205" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="205" bodyend="213" declfile="HighMap/include/highmap/math.hpp" declline="308" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="205" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="205" bodyend="213" declfile="HighMap/include/highmap/math.hpp" declline="338" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a94c9fa82f2922778970f85c384ed5bd9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -33741,7 +34346,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="215" column="6" bodyfile="HighMap/src/math/math.cpp" bodystart="215" bodyend="240" declfile="HighMap/include/highmap/math.hpp" declline="326" declcolumn="6"/>
+        <location file="HighMap/src/math/math.cpp" line="215" column="6" bodyfile="HighMap/src/math/math.cpp" bodystart="215" bodyend="240" declfile="HighMap/include/highmap/math.hpp" declline="356" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ad2d28babba03ed11cf115ab08009de64" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -33807,7 +34412,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="242" column="6" bodyfile="HighMap/src/math/math.cpp" bodystart="242" bodyend="247" declfile="HighMap/include/highmap/math.hpp" declline="347" declcolumn="6"/>
+        <location file="HighMap/src/math/math.cpp" line="242" column="6" bodyfile="HighMap/src/math/math.cpp" bodystart="242" bodyend="247" declfile="HighMap/include/highmap/math.hpp" declline="377" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ad0759b7e3cb7455527b9b5b4947720bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>float</type>
@@ -33914,7 +34519,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="249" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="249" bodyend="254" declfile="HighMap/include/highmap/math.hpp" declline="373" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="249" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="249" bodyend="254" declfile="HighMap/include/highmap/math.hpp" declline="403" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a0aa2c50266e16cf5af077e4e3f77bd8f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -34020,7 +34625,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="256" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="256" bodyend="265" declfile="HighMap/include/highmap/math.hpp" declline="404" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="256" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="256" bodyend="265" declfile="HighMap/include/highmap/math.hpp" declline="434" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a03359e722d96524598aa525022317c95" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -34051,7 +34656,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="267" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="267" bodyend="275" declfile="HighMap/include/highmap/math.hpp" declline="416" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="267" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="267" bodyend="275" declfile="HighMap/include/highmap/math.hpp" declline="446" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a413648e2595721d8ba4096357dbb1f84" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -34130,7 +34735,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="277" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="277" bodyend="297" declfile="HighMap/include/highmap/math.hpp" declline="432" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="277" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="277" bodyend="297" declfile="HighMap/include/highmap/math.hpp" declline="462" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1afe0b1df8525d0478c7433777cadd60a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>float</type>
@@ -34161,7 +34766,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="299" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="299" bodyend="302" declfile="HighMap/include/highmap/math.hpp" declline="440" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="299" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="299" bodyend="302" declfile="HighMap/include/highmap/math.hpp" declline="470" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a4c21ef9d4f7d33f2413c7fe391b86253" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>float</type>
@@ -34192,7 +34797,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="304" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="304" bodyend="307" declfile="HighMap/include/highmap/math.hpp" declline="449" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="304" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="304" bodyend="307" declfile="HighMap/include/highmap/math.hpp" declline="479" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a65666d55312d1afca0246939f292ca63" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -34211,7 +34816,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="309" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="309" bodyend="317" declfile="HighMap/include/highmap/math.hpp" declline="450" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="309" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="309" bodyend="317" declfile="HighMap/include/highmap/math.hpp" declline="480" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1af23a6099bd3307b408f17d2346ab3d3f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>float</type>
@@ -34242,7 +34847,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="319" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="319" bodyend="322" declfile="HighMap/include/highmap/math.hpp" declline="459" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="319" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="319" bodyend="322" declfile="HighMap/include/highmap/math.hpp" declline="489" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ac9b2a7930233d045f876d285c67623fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -34261,7 +34866,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="324" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="324" bodyend="332" declfile="HighMap/include/highmap/math.hpp" declline="460" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="324" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="324" bodyend="332" declfile="HighMap/include/highmap/math.hpp" declline="490" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aa4468d1e57ee67ba0be8fb1ab931045a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -34340,7 +34945,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="334" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="334" bodyend="354" declfile="HighMap/include/highmap/math.hpp" declline="476" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="334" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="334" bodyend="354" declfile="HighMap/include/highmap/math.hpp" declline="506" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aa5cc0ca00f731884d7a1dad714a254c8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -34367,7 +34972,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="356" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="356" bodyend="376" declfile="HighMap/include/highmap/math.hpp" declline="477" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="356" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="356" bodyend="376" declfile="HighMap/include/highmap/math.hpp" declline="507" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a826591db096cb2ca4d836d4c5eeaac02" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>float</type>
@@ -34398,7 +35003,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="378" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="378" bodyend="381" declfile="HighMap/include/highmap/math.hpp" declline="487" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="378" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="378" bodyend="381" declfile="HighMap/include/highmap/math.hpp" declline="517" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ac3a402abb2905ac02f1756c0b36e971c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>float</type>
@@ -34429,7 +35034,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="383" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="383" bodyend="386" declfile="HighMap/include/highmap/math.hpp" declline="496" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="383" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="383" bodyend="386" declfile="HighMap/include/highmap/math.hpp" declline="526" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aee749107ce9c4589686d15a62196b8ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -34448,7 +35053,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="388" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="388" bodyend="396" declfile="HighMap/include/highmap/math.hpp" declline="497" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="388" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="388" bodyend="396" declfile="HighMap/include/highmap/math.hpp" declline="527" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aae372587e98d5acb969a89a5f0661019" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>float</type>
@@ -34479,7 +35084,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="398" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="398" bodyend="401" declfile="HighMap/include/highmap/math.hpp" declline="506" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="398" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="398" bodyend="401" declfile="HighMap/include/highmap/math.hpp" declline="536" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a8ca69cf3fef2d995719ff4284f6c50b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -34498,7 +35103,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="403" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="403" bodyend="411" declfile="HighMap/include/highmap/math.hpp" declline="507" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="403" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="403" bodyend="411" declfile="HighMap/include/highmap/math.hpp" declline="537" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ae7d9d43c2cd453af7a6395cbcb2ac3b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>float</type>
@@ -34529,7 +35134,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="413" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="413" bodyend="422" declfile="HighMap/include/highmap/math.hpp" declline="515" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="413" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="413" bodyend="422" declfile="HighMap/include/highmap/math.hpp" declline="545" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1af37d772a8b2ab47144d459fd35aaf7dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -34548,7 +35153,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="424" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="424" bodyend="432" declfile="HighMap/include/highmap/math.hpp" declline="516" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="424" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="424" bodyend="432" declfile="HighMap/include/highmap/math.hpp" declline="546" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a6b608e2826c1f9ba54a0e8922d5faa6b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -34579,7 +35184,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="434" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="434" bodyend="442" declfile="HighMap/include/highmap/math.hpp" declline="524" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="434" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="434" bodyend="442" declfile="HighMap/include/highmap/math.hpp" declline="554" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a30e6961ce99edeb86af6f4ce61651bd0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -34597,7 +35202,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/math/math.cpp" line="444" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="444" bodyend="452" declfile="HighMap/include/highmap/math.hpp" declline="526" declcolumn="7"/>
+        <location file="HighMap/src/math/math.cpp" line="444" column="7" bodyfile="HighMap/src/math/math.cpp" bodystart="444" bodyend="452" declfile="HighMap/include/highmap/math.hpp" declline="556" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1af80bcff234bf1482cf26896b9d21d270" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>

@@ -4,5 +4,5 @@ var path_8hpp =
     [ "dig_path", "path_8hpp.html#a7ba4bc3a43f42b6a4bf00e94e86064ff", null ],
     [ "dig_river", "path_8hpp.html#a6d536f0d67ade56c6a60927d8c8e9720", null ],
     [ "dig_river", "path_8hpp.html#a31b3cde3ce1fa52f1856b962f4443d49", null ],
-    [ "find_cut_path", "path_8hpp.html#af8cc8438bbcaffeaeff2f0982e1a9812", null ]
+    [ "find_cut_path_dijkstra", "path_8hpp.html#a176288a6fd3bb7b78437e9f114f0d6b1", null ]
 ];

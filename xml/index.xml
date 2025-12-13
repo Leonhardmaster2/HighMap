@@ -953,6 +953,12 @@
     <member refid="namespacehmap_1a67d6620c147710ebb09b64f0f738241aa096fe4956a67b70c9db140472af0b6b0" kind="enumvalue"><name>COSINE_SQUARE</name></member>
     <member refid="namespacehmap_1a67d6620c147710ebb09b64f0f738241aa29de9f23976831ac056abef76c1f8d2e" kind="enumvalue"><name>COSINE_STD</name></member>
     <member refid="namespacehmap_1a67d6620c147710ebb09b64f0f738241aa1ee22d304b9b93cd76da1fbc9d32a75a" kind="enumvalue"><name>TRIANGLE</name></member>
+    <member refid="namespacehmap_1a2affc745bc33b7555352665745741f90" kind="enum"><name>RadialProfile</name></member>
+    <member refid="namespacehmap_1a2affc745bc33b7555352665745741f90ac0cd381f8918df73dd4bc6df1190d7ba" kind="enumvalue"><name>RP_GAIN</name></member>
+    <member refid="namespacehmap_1a2affc745bc33b7555352665745741f90a8374fb3e0d0799f69d5a50e6e26f56b0" kind="enumvalue"><name>RP_LINEAR</name></member>
+    <member refid="namespacehmap_1a2affc745bc33b7555352665745741f90a67c1906a040e7234b7a636eaf7ef7901" kind="enumvalue"><name>RP_POW</name></member>
+    <member refid="namespacehmap_1a2affc745bc33b7555352665745741f90ad18fad6ec8edf55050af29b51e14fffd" kind="enumvalue"><name>RP_SMOOTHSTEP</name></member>
+    <member refid="namespacehmap_1a2affc745bc33b7555352665745741f90acedc11502bd1441e893fdc5a699b6d59" kind="enumvalue"><name>RP_SMOOTHSTEP_UPPER</name></member>
     <member refid="namespacehmap_1a9e2493cec1a67b3140691e617ddc925a" kind="enum"><name>DistanceTransformType</name></member>
     <member refid="namespacehmap_1a9e2493cec1a67b3140691e617ddc925aa109b04de7ca555c0e4d17629e55e7ee3" kind="enumvalue"><name>DT_EXACT</name></member>
     <member refid="namespacehmap_1a9e2493cec1a67b3140691e617ddc925aa3b8bce8feaa179b9a546bbbe28c1d44a" kind="enumvalue"><name>DT_APPROX</name></member>
@@ -995,6 +1001,8 @@
     <member refid="namespacehmap_1a518f05118e1b9704160a7c3276a2f483" kind="function"><name>cv_mat_to_array</name></member>
     <member refid="namespacehmap_1aa0b0e92bd8fa6fdc51ccb39f7a382e92" kind="function"><name>alter_elevation</name></member>
     <member refid="namespacehmap_1ab54462b486be54fcf316f083f7ea3014" kind="function"><name>base_elevation</name></member>
+    <member refid="namespacehmap_1a258949972d4c37ab8250e7befa76d99a" kind="function"><name>flatbed_carve</name></member>
+    <member refid="namespacehmap_1aca85ea7a0afd5058ae2ff96f2d3d25f2" kind="function"><name>flatbed_carve</name></member>
     <member refid="namespacehmap_1a19bb0a5d0609ac671ca054d18959c7f1" kind="function"><name>reverse_midpoint</name></member>
     <member refid="namespacehmap_1aca4a5b0313f4efe251b20d90652a896b" kind="function"><name>ridgelines</name></member>
     <member refid="namespacehmap_1a49bf95ae7344e531d7c2af0071e64649" kind="function"><name>ridgelines_bezier</name></member>
@@ -1256,7 +1264,7 @@
     <member refid="namespacehmap_1a7ba4bc3a43f42b6a4bf00e94e86064ff" kind="function"><name>dig_path</name></member>
     <member refid="namespacehmap_1a6d536f0d67ade56c6a60927d8c8e9720" kind="function"><name>dig_river</name></member>
     <member refid="namespacehmap_1a31b3cde3ce1fa52f1856b962f4443d49" kind="function"><name>dig_river</name></member>
-    <member refid="namespacehmap_1af8cc8438bbcaffeaeff2f0982e1a9812" kind="function"><name>find_cut_path</name></member>
+    <member refid="namespacehmap_1a176288a6fd3bb7b78437e9f114f0d6b1" kind="function"><name>find_cut_path_dijkstra</name></member>
     <member refid="namespacehmap_1aac71bb6c14edc17967957f7918acdbdd" kind="function"><name>angle</name></member>
     <member refid="namespacehmap_1a1f02679c93973b91046f26960bf266d4" kind="function"><name>angle</name></member>
     <member refid="namespacehmap_1a81ad5d7feec9716598307f4de02d47de" kind="function"><name>cross_product</name></member>
@@ -1419,7 +1427,8 @@
     <member refid="namespacehmap_1a0db2ecdc6ca69af1e6eb3402b1147cb6" kind="function"><name>gain</name></member>
     <member refid="namespacehmap_1a99778512aa5779e70039e6b04e62d40c" kind="function"><name>gaussian_decay</name></member>
     <member refid="namespacehmap_1a325c785e4776325f3061d9f5bd89fccf" kind="function"><name>get_distance_function</name></member>
-    <member refid="namespacehmap_1a6bea64db2dac2b906983472f7f6781a0" kind="function"><name>get_phasor_profile_function</name></member>
+    <member refid="namespacehmap_1a3e2e333ca90c11a997a9ac04361b1741" kind="function"><name>get_phasor_profile_function</name></member>
+    <member refid="namespacehmap_1a6558dec0d9f57bbc8f9ef9b2fe324757" kind="function"><name>get_radial_profile_function</name></member>
     <member refid="namespacehmap_1a9ae209ce5746e99078078259955c7421" kind="function"><name>highest_power_of_2</name></member>
     <member refid="namespacehmap_1a339d883dc34fc818dd25077c5daab953" kind="function"><name>is_non_zero</name></member>
     <member refid="namespacehmap_1a3a1e261b646c9df967e78fb77e5bf8c1" kind="function"><name>is_zero</name></member>
@@ -1937,6 +1946,8 @@
   </compound>
   <compound refid="base__elevation_8cpp" kind="file"><name>base_elevation.cpp</name>
   </compound>
+  <compound refid="flatbed__carve_8cpp" kind="file"><name>flatbed_carve.cpp</name>
+  </compound>
   <compound refid="reverse__midpoint_8cpp" kind="file"><name>reverse_midpoint.cpp</name>
   </compound>
   <compound refid="ridgelines_8cpp" kind="file"><name>ridgelines.cpp</name>
@@ -2148,6 +2159,8 @@
   <compound refid="math_8cpp" kind="file"><name>math.cpp</name>
   </compound>
   <compound refid="phasor__profile__function_8cpp" kind="file"><name>phasor_profile_function.cpp</name>
+  </compound>
+  <compound refid="radial__profile__function_8cpp" kind="file"><name>radial_profile_function.cpp</name>
   </compound>
   <compound refid="distance__transform_8cpp" kind="file"><name>distance_transform.cpp</name>
     <member refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kind="function"><name>f</name></member>

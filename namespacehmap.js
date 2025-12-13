@@ -373,6 +373,13 @@ var namespacehmap =
       [ "COSINE_STD", "namespacehmap.html#a67d6620c147710ebb09b64f0f738241aa29de9f23976831ac056abef76c1f8d2e", null ],
       [ "TRIANGLE", "namespacehmap.html#a67d6620c147710ebb09b64f0f738241aa1ee22d304b9b93cd76da1fbc9d32a75a", null ]
     ] ],
+    [ "RadialProfile", "namespacehmap.html#a2affc745bc33b7555352665745741f90", [
+      [ "RP_GAIN", "namespacehmap.html#a2affc745bc33b7555352665745741f90ac0cd381f8918df73dd4bc6df1190d7ba", null ],
+      [ "RP_LINEAR", "namespacehmap.html#a2affc745bc33b7555352665745741f90a8374fb3e0d0799f69d5a50e6e26f56b0", null ],
+      [ "RP_POW", "namespacehmap.html#a2affc745bc33b7555352665745741f90a67c1906a040e7234b7a636eaf7ef7901", null ],
+      [ "RP_SMOOTHSTEP", "namespacehmap.html#a2affc745bc33b7555352665745741f90ad18fad6ec8edf55050af29b51e14fffd", null ],
+      [ "RP_SMOOTHSTEP_UPPER", "namespacehmap.html#a2affc745bc33b7555352665745741f90acedc11502bd1441e893fdc5a699b6d59", null ]
+    ] ],
     [ "DistanceTransformType", "namespacehmap.html#a9e2493cec1a67b3140691e617ddc925a", [
       [ "DT_EXACT", "namespacehmap.html#a9e2493cec1a67b3140691e617ddc925aa109b04de7ca555c0e4d17629e55e7ee3", null ],
       [ "DT_APPROX", "namespacehmap.html#a9e2493cec1a67b3140691e617ddc925aa3b8bce8feaa179b9a546bbbe28c1d44a", null ],
@@ -413,6 +420,8 @@ var namespacehmap =
     [ "cv_mat_to_array", "namespacehmap.html#a518f05118e1b9704160a7c3276a2f483", null ],
     [ "alter_elevation", "namespacehmap.html#aa0b0e92bd8fa6fdc51ccb39f7a382e92", null ],
     [ "base_elevation", "namespacehmap.html#ab54462b486be54fcf316f083f7ea3014", null ],
+    [ "flatbed_carve", "namespacehmap.html#a258949972d4c37ab8250e7befa76d99a", null ],
+    [ "flatbed_carve", "namespacehmap.html#aca85ea7a0afd5058ae2ff96f2d3d25f2", null ],
     [ "reverse_midpoint", "namespacehmap.html#a19bb0a5d0609ac671ca054d18959c7f1", null ],
     [ "ridgelines", "namespacehmap.html#aca4a5b0313f4efe251b20d90652a896b", null ],
     [ "ridgelines_bezier", "namespacehmap.html#a49bf95ae7344e531d7c2af0071e64649", null ],
@@ -674,7 +683,7 @@ var namespacehmap =
     [ "dig_path", "namespacehmap.html#a7ba4bc3a43f42b6a4bf00e94e86064ff", null ],
     [ "dig_river", "namespacehmap.html#a6d536f0d67ade56c6a60927d8c8e9720", null ],
     [ "dig_river", "namespacehmap.html#a31b3cde3ce1fa52f1856b962f4443d49", null ],
-    [ "find_cut_path", "namespacehmap.html#af8cc8438bbcaffeaeff2f0982e1a9812", null ],
+    [ "find_cut_path_dijkstra", "namespacehmap.html#a176288a6fd3bb7b78437e9f114f0d6b1", null ],
     [ "angle", "namespacehmap.html#aac71bb6c14edc17967957f7918acdbdd", null ],
     [ "angle", "namespacehmap.html#a1f02679c93973b91046f26960bf266d4", null ],
     [ "cross_product", "namespacehmap.html#a81ad5d7feec9716598307f4de02d47de", null ],
@@ -837,7 +846,8 @@ var namespacehmap =
     [ "gain", "namespacehmap.html#a0db2ecdc6ca69af1e6eb3402b1147cb6", null ],
     [ "gaussian_decay", "namespacehmap.html#a99778512aa5779e70039e6b04e62d40c", null ],
     [ "get_distance_function", "namespacehmap.html#a325c785e4776325f3061d9f5bd89fccf", null ],
-    [ "get_phasor_profile_function", "namespacehmap.html#a6bea64db2dac2b906983472f7f6781a0", null ],
+    [ "get_phasor_profile_function", "namespacehmap.html#a3e2e333ca90c11a997a9ac04361b1741", null ],
+    [ "get_radial_profile_function", "namespacehmap.html#a6558dec0d9f57bbc8f9ef9b2fe324757", null ],
     [ "highest_power_of_2", "namespacehmap.html#a9ae209ce5746e99078078259955c7421", null ],
     [ "is_non_zero", "namespacehmap.html#a339d883dc34fc818dd25077c5daab953", null ],
     [ "is_zero", "namespacehmap.html#a3a1e261b646c9df967e78fb77e5bf8c1", null ],

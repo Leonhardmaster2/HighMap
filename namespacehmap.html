@@ -502,6 +502,17 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:a67d6620c147710ebb09b64f0f738241a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Phasor angular profile type.  <a href="namespacehmap.html#a67d6620c147710ebb09b64f0f738241a">More...</a><br /></td></tr>
 <tr class="separator:a67d6620c147710ebb09b64f0f738241a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2affc745bc33b7555352665745741f90" id="r_a2affc745bc33b7555352665745741f90"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a2affc745bc33b7555352665745741f90">RadialProfile</a> : int { <br />
+&#160;&#160;<a class="el" href="namespacehmap.html#a2affc745bc33b7555352665745741f90ac0cd381f8918df73dd4bc6df1190d7ba">RP_GAIN</a>
+, <a class="el" href="namespacehmap.html#a2affc745bc33b7555352665745741f90a8374fb3e0d0799f69d5a50e6e26f56b0">RP_LINEAR</a>
+, <a class="el" href="namespacehmap.html#a2affc745bc33b7555352665745741f90a67c1906a040e7234b7a636eaf7ef7901">RP_POW</a>
+, <a class="el" href="namespacehmap.html#a2affc745bc33b7555352665745741f90ad18fad6ec8edf55050af29b51e14fffd">RP_SMOOTHSTEP</a>
+, <br />
+&#160;&#160;<a class="el" href="namespacehmap.html#a2affc745bc33b7555352665745741f90acedc11502bd1441e893fdc5a699b6d59">RP_SMOOTHSTEP_UPPER</a>
+<br />
+ }</td></tr>
+<tr class="memdesc:a2affc745bc33b7555352665745741f90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Radial profile type.  <a href="namespacehmap.html#a2affc745bc33b7555352665745741f90">More...</a><br /></td></tr>
+<tr class="separator:a2affc745bc33b7555352665745741f90"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e2493cec1a67b3140691e617ddc925a" id="r_a9e2493cec1a67b3140691e617ddc925a"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a9e2493cec1a67b3140691e617ddc925a">DistanceTransformType</a> : int { <a class="el" href="namespacehmap.html#a9e2493cec1a67b3140691e617ddc925aa109b04de7ca555c0e4d17629e55e7ee3">DT_EXACT</a>
 , <a class="el" href="namespacehmap.html#a9e2493cec1a67b3140691e617ddc925aa3b8bce8feaa179b9a546bbbe28c1d44a">DT_APPROX</a>
 , <a class="el" href="namespacehmap.html#a9e2493cec1a67b3140691e617ddc925aae4b14640395ecd7333bea8838ea9dda1">DT_MANHATTAN</a>
@@ -565,6 +576,12 @@ Functions</h2></td></tr>
 <tr class="memitem:ab54462b486be54fcf316f083f7ea3014" id="r_ab54462b486be54fcf316f083f7ea3014"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#ab54462b486be54fcf316f083f7ea3014">base_elevation</a> (<a class="el" href="structhmap_1_1Vec2.html">Vec2</a>&lt; int &gt; shape, const std::vector&lt; std::vector&lt; float &gt; &gt; &amp;values, float width_factor=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_x=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_y=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_stretching=nullptr, <a class="el" href="structhmap_1_1Vec4.html">Vec4</a>&lt; float &gt; bbox={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>})</td></tr>
 <tr class="memdesc:ab54462b486be54fcf316f083f7ea3014"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a heightmap from a coarse grid of control points with defined elevation values.  <br /></td></tr>
 <tr class="separator:ab54462b486be54fcf316f083f7ea3014"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a258949972d4c37ab8250e7befa76d99a" id="r_a258949972d4c37ab8250e7befa76d99a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a258949972d4c37ab8250e7befa76d99a">flatbed_carve</a> (<a class="el" href="structhmap_1_1Vec2.html">Vec2</a>&lt; int &gt; shape, const <a class="el" href="classhmap_1_1Path.html">Path</a> &amp;path, float bottom_extent=32.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float vmin=0.1<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float depth=0.05<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float falloff_distance=128.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float outer_slope=0.1<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, bool preserve_bedshape=true, <a class="el" href="namespacehmap.html#a2affc745bc33b7555352665745741f90">RadialProfile</a> radial_profile=<a class="el" href="namespacehmap.html#a2affc745bc33b7555352665745741f90ac0cd381f8918df73dd4bc6df1190d7ba">RadialProfile::RP_GAIN</a>, float radial_profile_parameter=2.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_falloff_mask=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_r=nullptr, <a class="el" href="structhmap_1_1Vec4.html">Vec4</a>&lt; float &gt; bbox={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>})</td></tr>
+<tr class="memdesc:a258949972d4c37ab8250e7befa76d99a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Carves a flatbed shape along a path.  <br /></td></tr>
+<tr class="separator:a258949972d4c37ab8250e7befa76d99a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca85ea7a0afd5058ae2ff96f2d3d25f2" id="r_aca85ea7a0afd5058ae2ff96f2d3d25f2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#aca85ea7a0afd5058ae2ff96f2d3d25f2">flatbed_carve</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, const <a class="el" href="classhmap_1_1Path.html">Path</a> &amp;path, float bottom_extent=32.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float vmin=0.1<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float depth=0.05<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float falloff_distance=128.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float outer_slope=0.1<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, bool preserve_bedshape=true, <a class="el" href="namespacehmap.html#a2affc745bc33b7555352665745741f90">RadialProfile</a> radial_profile=<a class="el" href="namespacehmap.html#a2affc745bc33b7555352665745741f90ac0cd381f8918df73dd4bc6df1190d7ba">RadialProfile::RP_GAIN</a>, float radial_profile_parameter=2.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_falloff_mask=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_r=nullptr, <a class="el" href="structhmap_1_1Vec4.html">Vec4</a>&lt; float &gt; bbox={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>})</td></tr>
+<tr class="memdesc:aca85ea7a0afd5058ae2ff96f2d3d25f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Blends a flatbed carve into an existing heightmap.  <br /></td></tr>
+<tr class="separator:aca85ea7a0afd5058ae2ff96f2d3d25f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a19bb0a5d0609ac671ca054d18959c7f1" id="r_a19bb0a5d0609ac671ca054d18959c7f1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a19bb0a5d0609ac671ca054d18959c7f1">reverse_midpoint</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, <a class="el" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> seed, float noise_scale=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float threshold=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
 <tr class="memdesc:a19bb0a5d0609ac671ca054d18959c7f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply the reverse midpoint displacement algorithm to the input array.  <br /></td></tr>
 <tr class="separator:a19bb0a5d0609ac671ca054d18959c7f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1327,9 +1344,9 @@ Functions</h2></td></tr>
 <tr class="separator:a6d536f0d67ade56c6a60927d8c8e9720"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a31b3cde3ce1fa52f1856b962f4443d49" id="r_a31b3cde3ce1fa52f1856b962f4443d49"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a31b3cde3ce1fa52f1856b962f4443d49">dig_river</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, const <a class="el" href="classhmap_1_1Path.html">Path</a> &amp;path, float riverbank_talus, int river_width=0, int merging_width=0, float depth=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float riverbed_talus=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float noise_ratio=0.9<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, <a class="el" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> seed=0, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_mask=nullptr)</td></tr>
 <tr class="separator:a31b3cde3ce1fa52f1856b962f4443d49"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8cc8438bbcaffeaeff2f0982e1a9812" id="r_af8cc8438bbcaffeaeff2f0982e1a9812"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Path.html">Path</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#af8cc8438bbcaffeaeff2f0982e1a9812">find_cut_path</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, <a class="el" href="namespacehmap.html#a1ba9d4ce7afe3309f8ae8e617f7154ee">DomainBoundary</a> start, <a class="el" href="namespacehmap.html#a1ba9d4ce7afe3309f8ae8e617f7154ee">DomainBoundary</a> end, float dijk_elevation_ratio=0.9<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float dijk_distance_exponent=2.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float dijk_upward_penalization=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
-<tr class="memdesc:af8cc8438bbcaffeaeff2f0982e1a9812"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find a Dijkstra-based cut path between two domain boundaries.  <br /></td></tr>
-<tr class="separator:af8cc8438bbcaffeaeff2f0982e1a9812"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a176288a6fd3bb7b78437e9f114f0d6b1" id="r_a176288a6fd3bb7b78437e9f114f0d6b1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Path.html">Path</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a176288a6fd3bb7b78437e9f114f0d6b1">find_cut_path_dijkstra</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, <a class="el" href="namespacehmap.html#a1ba9d4ce7afe3309f8ae8e617f7154ee">DomainBoundary</a> start, <a class="el" href="namespacehmap.html#a1ba9d4ce7afe3309f8ae8e617f7154ee">DomainBoundary</a> end, float dijk_elevation_ratio=0.9<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float dijk_distance_exponent=2.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float dijk_upward_penalization=100.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
+<tr class="memdesc:a176288a6fd3bb7b78437e9f114f0d6b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find a Dijkstra-based cut path between two domain boundaries.  <br /></td></tr>
+<tr class="separator:a176288a6fd3bb7b78437e9f114f0d6b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aac71bb6c14edc17967957f7918acdbdd" id="r_aac71bb6c14edc17967957f7918acdbdd"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#aac71bb6c14edc17967957f7918acdbdd">angle</a> (const <a class="el" href="classhmap_1_1Point.html">Point</a> &amp;p1, const <a class="el" href="classhmap_1_1Point.html">Point</a> &amp;p2)</td></tr>
 <tr class="memdesc:aac71bb6c14edc17967957f7918acdbdd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the angle between two points relative to the x-axis.  <br /></td></tr>
 <tr class="separator:aac71bb6c14edc17967957f7918acdbdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1773,9 +1790,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a325c785e4776325f3061d9f5bd89fccf" id="r_a325c785e4776325f3061d9f5bd89fccf"><td class="memItemLeft" align="right" valign="top">std::function&lt; float(float, float)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a325c785e4776325f3061d9f5bd89fccf">get_distance_function</a> (<a class="el" href="namespacehmap.html#a670f50d6c08ecd639d42db9c75a5273a">DistanceFunction</a> dist_fct)</td></tr>
 <tr class="memdesc:a325c785e4776325f3061d9f5bd89fccf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the requested distance function.  <br /></td></tr>
 <tr class="separator:a325c785e4776325f3061d9f5bd89fccf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6bea64db2dac2b906983472f7f6781a0" id="r_a6bea64db2dac2b906983472f7f6781a0"><td class="memItemLeft" align="right" valign="top">std::function&lt; float(float)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a6bea64db2dac2b906983472f7f6781a0">get_phasor_profile_function</a> (const <a class="el" href="namespacehmap.html#a67d6620c147710ebb09b64f0f738241a">PhasorProfile</a> &amp;phasor_profile, float delta, float *p_profile_avg=nullptr)</td></tr>
-<tr class="memdesc:a6bea64db2dac2b906983472f7f6781a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a function representing a phasor profile based on the specified type and parameters.  <br /></td></tr>
-<tr class="separator:a6bea64db2dac2b906983472f7f6781a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e2e333ca90c11a997a9ac04361b1741" id="r_a3e2e333ca90c11a997a9ac04361b1741"><td class="memItemLeft" align="right" valign="top">std::function&lt; float(float)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a3e2e333ca90c11a997a9ac04361b1741">get_phasor_profile_function</a> (<a class="el" href="namespacehmap.html#a67d6620c147710ebb09b64f0f738241a">PhasorProfile</a> phasor_profile, float delta, float *p_profile_avg=nullptr)</td></tr>
+<tr class="memdesc:a3e2e333ca90c11a997a9ac04361b1741"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a function representing a phasor profile based on the specified type and parameters.  <br /></td></tr>
+<tr class="separator:a3e2e333ca90c11a997a9ac04361b1741"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6558dec0d9f57bbc8f9ef9b2fe324757" id="r_a6558dec0d9f57bbc8f9ef9b2fe324757"><td class="memItemLeft" align="right" valign="top">std::function&lt; float(float)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a6558dec0d9f57bbc8f9ef9b2fe324757">get_radial_profile_function</a> (<a class="el" href="namespacehmap.html#a2affc745bc33b7555352665745741f90">RadialProfile</a> radial_profile, float delta)</td></tr>
+<tr class="memdesc:a6558dec0d9f57bbc8f9ef9b2fe324757"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a normalized radial profile function.  <br /></td></tr>
+<tr class="separator:a6558dec0d9f57bbc8f9ef9b2fe324757"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ae209ce5746e99078078259955c7421" id="r_a9ae209ce5746e99078078259955c7421"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a9ae209ce5746e99078078259955c7421">highest_power_of_2</a> (int n)</td></tr>
 <tr class="memdesc:a9ae209ce5746e99078078259955c7421"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the highest power of 2 less than or equal to the given number.  <br /></td></tr>
 <tr class="separator:a9ae209ce5746e99078078259955c7421"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -2966,6 +2986,29 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a2affc745bc33b7555352665745741f90" name="a2affc745bc33b7555352665745741f90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2affc745bc33b7555352665745741f90">&#9670;&#160;</a></span>RadialProfile</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespacehmap.html#a2affc745bc33b7555352665745741f90">hmap::RadialProfile</a> : int</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Radial profile type. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a2affc745bc33b7555352665745741f90ac0cd381f8918df73dd4bc6df1190d7ba" name="a2affc745bc33b7555352665745741f90ac0cd381f8918df73dd4bc6df1190d7ba"></a>RP_GAIN&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a2affc745bc33b7555352665745741f90a8374fb3e0d0799f69d5a50e6e26f56b0" name="a2affc745bc33b7555352665745741f90a8374fb3e0d0799f69d5a50e6e26f56b0"></a>RP_LINEAR&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a2affc745bc33b7555352665745741f90a67c1906a040e7234b7a636eaf7ef7901" name="a2affc745bc33b7555352665745741f90a67c1906a040e7234b7a636eaf7ef7901"></a>RP_POW&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a2affc745bc33b7555352665745741f90ad18fad6ec8edf55050af29b51e14fffd" name="a2affc745bc33b7555352665745741f90ad18fad6ec8edf55050af29b51e14fffd"></a>RP_SMOOTHSTEP&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a2affc745bc33b7555352665745741f90acedc11502bd1441e893fdc5a699b6d59" name="a2affc745bc33b7555352665745741f90acedc11502bd1441e893fdc5a699b6d59"></a>RP_SMOOTHSTEP_UPPER&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
 <a id="a9e2493cec1a67b3140691e617ddc925a" name="a9e2493cec1a67b3140691e617ddc925a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9e2493cec1a67b3140691e617ddc925a">&#9670;&#160;</a></span>DistanceTransformType</h2>
 
@@ -3413,6 +3456,380 @@ template&lt;typename T &gt; </div>
  
 </div>
 </div>
+<a id="a258949972d4c37ab8250e7befa76d99a" name="a258949972d4c37ab8250e7befa76d99a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a258949972d4c37ab8250e7befa76d99a">&#9670;&#160;</a></span>flatbed_carve() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classhmap_1_1Array.html">Array</a> hmap::flatbed_carve </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structhmap_1_1Vec2.html">Vec2</a>&lt; int &gt;&#160;</td>
+          <td class="paramname"><em>shape</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Path.html">Path</a> &amp;&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>bottom_extent</em> = <code>32.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>vmin</em> = <code>0.1<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>depth</em> = <code>0.05<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>falloff_distance</em> = <code>128.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>outer_slope</em> = <code>0.1<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>preserve_bedshape</em> = <code>true</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacehmap.html#a2affc745bc33b7555352665745741f90">RadialProfile</a>&#160;</td>
+          <td class="paramname"><em>radial_profile</em> = <code><a class="el" href="namespacehmap.html#a2affc745bc33b7555352665745741f90ac0cd381f8918df73dd4bc6df1190d7ba">RadialProfile::RP_GAIN</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>radial_profile_parameter</em> = <code>2.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
+          <td class="paramname"><em>p_falloff_mask</em> = <code>nullptr</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
+          <td class="paramname"><em>p_noise_r</em> = <code>nullptr</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structhmap_1_1Vec4.html">Vec4</a>&lt; float &gt;&#160;</td>
+          <td class="paramname"><em>bbox</em> = <code>{0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>}</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Carves a flatbed shape along a path. </p>
+<p>Generates a height array by carving a flat-bottomed bed around a path, with a radial profile for the bed shape and an optional outer falloff.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">shape</td><td>Output array resolution. </td></tr>
+    <tr><td class="paramname">path</td><td><a class="el" href="classhmap_1_1Path.html" title="Represents an ordered set of points in 2D, forming a polyline (open or closed).">Path</a> defining the bed centerline. </td></tr>
+    <tr><td class="paramname">bottom_extent</td><td>Radius of the flatbed region. </td></tr>
+    <tr><td class="paramname">vmin</td><td>Base height value. </td></tr>
+    <tr><td class="paramname">depth</td><td>Bed depth. </td></tr>
+    <tr><td class="paramname">falloff_distance</td><td>Falloff width outside the bed. </td></tr>
+    <tr><td class="paramname">outer_slope</td><td>Linear slope beyond the bed. </td></tr>
+    <tr><td class="paramname">preserve_bedshape</td><td>Preserve relative bed shape under radial noise. </td></tr>
+    <tr><td class="paramname">radial_profile</td><td>Radial profile type. </td></tr>
+    <tr><td class="paramname">radial_profile_parameter</td><td>Shape parameter for the profile. </td></tr>
+    <tr><td class="paramname">p_falloff_mask</td><td>Optional output falloff mask. </td></tr>
+    <tr><td class="paramname">p_noise_r</td><td>Optional radial noise. </td></tr>
+    <tr><td class="paramname">bbox</td><td>World-space bounding box.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Generated flatbed height array.</dd></dl>
+<p><b>Example</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="highmap_8hpp.html">highmap.hpp</a>&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
+<div class="line">{</div>
+<div class="line">  <a class="code hl_struct" href="structhmap_1_1Vec2.html">hmap::Vec2&lt;int&gt;</a>   shape = {256, 256};</div>
+<div class="line">  <a class="code hl_struct" href="structhmap_1_1Vec2.html">hmap::Vec2&lt;float&gt;</a> kw = {2.f, 2.f};</div>
+<div class="line">  <span class="keywordtype">int</span>               seed = 0;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z = <a class="code hl_function" href="namespacehmap.html#a40b948c49a05c14f2d540dc1a6952130">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, kw, seed);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> dr = <a class="code hl_function" href="namespacehmap.html#a40b948c49a05c14f2d540dc1a6952130">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>,</div>
+<div class="line">                                   shape,</div>
+<div class="line">                                   {16.f, 16.f},</div>
+<div class="line">                                   ++seed,</div>
+<div class="line">                                   8,</div>
+<div class="line">                                   0.1f);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(dr, -0.2f, 0.9f);</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// --- generate path</span></div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Path.html">hmap::Path</a> path = <a class="code hl_function" href="namespacehmap.html#a176288a6fd3bb7b78437e9f114f0d6b1">hmap::find_cut_path_dijkstra</a>(</div>
+<div class="line">      z,</div>
+<div class="line">      <a class="code hl_enumvalue" href="namespacehmap.html#a1ba9d4ce7afe3309f8ae8e617f7154eea760545322569136cd3be89e004ab10d4">hmap::DomainBoundary::BOUNDARY_LEFT</a>,</div>
+<div class="line">      <a class="code hl_enumvalue" href="namespacehmap.html#a1ba9d4ce7afe3309f8ae8e617f7154eeadb9a04ab3508704543b5dd43ae495fe7">hmap::DomainBoundary::BOUNDARY_RIGHT</a>);</div>
+<div class="line"> </div>
+<div class="line">  path.<a class="code hl_function" href="classhmap_1_1Path.html#ad2be7924d78ea51a68158bf68b12d6ed">decimate_vw</a>(20);</div>
+<div class="line">  path.<a class="code hl_function" href="classhmap_1_1Path.html#a166a6f87dff196efa75abb1b731d3528">bspline</a>();</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> zp = <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a>(shape);</div>
+<div class="line">  path.<a class="code hl_function" href="classhmap_1_1Path.html#adc8504c67cb22a2c8fb37d408e3aeafc">to_array</a>(zp);</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// --- carve</span></div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordtype">float</span> bottom_extent = int(shape.<a class="code hl_variable" href="structhmap_1_1Vec2.html#a2dc51e83492f966eeddbdac3d58ab447">x</a> / 32);</div>
+<div class="line">  <span class="keywordtype">float</span> vmin = 0.1f;</div>
+<div class="line">  <span class="keywordtype">float</span> depth = 0.05f;</div>
+<div class="line">  <span class="keywordtype">float</span> falloff_distance = 4 * bottom_extent;</div>
+<div class="line">  <span class="keywordtype">float</span> outer_slope = 0.1f;</div>
+<div class="line">  <span class="keywordtype">bool</span>  preserve_bedshape = <span class="keyword">true</span>;</div>
+<div class="line">  <span class="keyword">auto</span>  radial_profile = <a class="code hl_enumvalue" href="namespacehmap.html#a2affc745bc33b7555352665745741f90ac0cd381f8918df73dd4bc6df1190d7ba">hmap::RadialProfile::RP_GAIN</a>;</div>
+<div class="line">  <span class="keywordtype">float</span> radial_profile_parameter = 2.f;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> zf = z;</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> mask;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a258949972d4c37ab8250e7befa76d99a">hmap::flatbed_carve</a>(zf,</div>
+<div class="line">                      path,</div>
+<div class="line">                      bottom_extent,</div>
+<div class="line">                      vmin,</div>
+<div class="line">                      depth,</div>
+<div class="line">                      falloff_distance,</div>
+<div class="line">                      outer_slope,</div>
+<div class="line">                      preserve_bedshape,</div>
+<div class="line">                      radial_profile,</div>
+<div class="line">                      radial_profile_parameter,</div>
+<div class="line">                      &amp;mask,</div>
+<div class="line">                      &amp;dr);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_flatbed_carve.png&quot;</span>,</div>
+<div class="line">                          {z, zp, mask, zf},</div>
+<div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
+<div class="line">}</div>
+<div class="ttc" id="aclasshmap_1_1Path_html"><div class="ttname"><a href="classhmap_1_1Path.html">hmap::Path</a></div><div class="ttdoc">Represents an ordered set of points in 2D, forming a polyline (open or closed).</div><div class="ttdef"><b>Definition</b> path.hpp:50</div></div>
+<div class="ttc" id="aclasshmap_1_1Path_html_a166a6f87dff196efa75abb1b731d3528"><div class="ttname"><a href="classhmap_1_1Path.html#a166a6f87dff196efa75abb1b731d3528">hmap::Path::bspline</a></div><div class="ttdeci">void bspline(int edge_divisions=10)</div><div class="ttdoc">Smooth the path using B-Spline curves.</div><div class="ttdef"><b>Definition</b> path.cpp:107</div></div>
+<div class="ttc" id="aclasshmap_1_1Path_html_ad2be7924d78ea51a68158bf68b12d6ed"><div class="ttname"><a href="classhmap_1_1Path.html#ad2be7924d78ea51a68158bf68b12d6ed">hmap::Path::decimate_vw</a></div><div class="ttdeci">void decimate_vw(int n_points_target=3)</div><div class="ttdoc">Simplifies the current path using the Visvalingam-Whyatt algorithm.</div><div class="ttdef"><b>Definition</b> path.cpp:183</div></div>
+<div class="ttc" id="aclasshmap_1_1Path_html_adc8504c67cb22a2c8fb37d408e3aeafc"><div class="ttname"><a href="classhmap_1_1Path.html#adc8504c67cb22a2c8fb37d408e3aeafc">hmap::Path::to_array</a></div><div class="ttdeci">void to_array(Array &amp;array, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f}, bool filled=false) const</div><div class="ttdoc">Project path points to an array.</div><div class="ttdef"><b>Definition</b> path.cpp:806</div></div>
+<div class="ttc" id="anamespacehmap_html_a176288a6fd3bb7b78437e9f114f0d6b1"><div class="ttname"><a href="namespacehmap.html#a176288a6fd3bb7b78437e9f114f0d6b1">hmap::find_cut_path_dijkstra</a></div><div class="ttdeci">Path find_cut_path_dijkstra(const Array &amp;z, DomainBoundary start, DomainBoundary end, float dijk_elevation_ratio=0.9f, float dijk_distance_exponent=2.f, float dijk_upward_penalization=100.f)</div><div class="ttdoc">Find a Dijkstra-based cut path between two domain boundaries.</div><div class="ttdef"><b>Definition</b> find_cut_path.cpp:11</div></div>
+<div class="ttc" id="anamespacehmap_html_a1ba9d4ce7afe3309f8ae8e617f7154eea760545322569136cd3be89e004ab10d4"><div class="ttname"><a href="namespacehmap.html#a1ba9d4ce7afe3309f8ae8e617f7154eea760545322569136cd3be89e004ab10d4">hmap::BOUNDARY_LEFT</a></div><div class="ttdeci">@ BOUNDARY_LEFT</div><div class="ttdoc">i = 0</div><div class="ttdef"><b>Definition</b> boundary.hpp:44</div></div>
+<div class="ttc" id="anamespacehmap_html_a1ba9d4ce7afe3309f8ae8e617f7154eeadb9a04ab3508704543b5dd43ae495fe7"><div class="ttname"><a href="namespacehmap.html#a1ba9d4ce7afe3309f8ae8e617f7154eeadb9a04ab3508704543b5dd43ae495fe7">hmap::BOUNDARY_RIGHT</a></div><div class="ttdeci">@ BOUNDARY_RIGHT</div><div class="ttdoc">i = nx - 1</div><div class="ttdef"><b>Definition</b> boundary.hpp:45</div></div>
+<div class="ttc" id="anamespacehmap_html_a258949972d4c37ab8250e7befa76d99a"><div class="ttname"><a href="namespacehmap.html#a258949972d4c37ab8250e7befa76d99a">hmap::flatbed_carve</a></div><div class="ttdeci">Array flatbed_carve(Vec2&lt; int &gt; shape, const Path &amp;path, float bottom_extent=32.f, float vmin=0.1f, float depth=0.05f, float falloff_distance=128.f, float outer_slope=0.1f, bool preserve_bedshape=true, RadialProfile radial_profile=RadialProfile::RP_GAIN, float radial_profile_parameter=2.f, Array *p_falloff_mask=nullptr, const Array *p_noise_r=nullptr, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Carves a flatbed shape along a path.</div><div class="ttdef"><b>Definition</b> flatbed_carve.cpp:13</div></div>
+<div class="ttc" id="anamespacehmap_html_a262e6495cb2d02598f36a2b46114b2b4"><div class="ttname"><a href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a></div><div class="ttdeci">void remap(Array &amp;array, float vmin, float vmax, float from_min, float from_max)</div><div class="ttdoc">Remap array elements from a starting range to a target range.</div><div class="ttdef"><b>Definition</b> range.cpp:438</div></div>
+<div class="ttc" id="anamespacehmap_html_a2affc745bc33b7555352665745741f90ac0cd381f8918df73dd4bc6df1190d7ba"><div class="ttname"><a href="namespacehmap.html#a2affc745bc33b7555352665745741f90ac0cd381f8918df73dd4bc6df1190d7ba">hmap::RP_GAIN</a></div><div class="ttdeci">@ RP_GAIN</div><div class="ttdef"><b>Definition</b> math.hpp:67</div></div>
+<div class="ttc" id="astructhmap_1_1Vec2_html_a2dc51e83492f966eeddbdac3d58ab447"><div class="ttname"><a href="structhmap_1_1Vec2.html#a2dc51e83492f966eeddbdac3d58ab447">hmap::Vec2::x</a></div><div class="ttdeci">T x</div><div class="ttdef"><b>Definition</b> algebra.hpp:41</div></div>
+</div><!-- fragment --><p><b>Result</b> </p><div class="image">
+<img src="ex_flatbed_carve.png" alt=""/>
+</div>
+ 
+</div>
+</div>
+<a id="aca85ea7a0afd5058ae2ff96f2d3d25f2" name="aca85ea7a0afd5058ae2ff96f2d3d25f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca85ea7a0afd5058ae2ff96f2d3d25f2">&#9670;&#160;</a></span>flatbed_carve() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hmap::flatbed_carve </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>z</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Path.html">Path</a> &amp;&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>bottom_extent</em> = <code>32.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>vmin</em> = <code>0.1<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>depth</em> = <code>0.05<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>falloff_distance</em> = <code>128.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>outer_slope</em> = <code>0.1<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>preserve_bedshape</em> = <code>true</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacehmap.html#a2affc745bc33b7555352665745741f90">RadialProfile</a>&#160;</td>
+          <td class="paramname"><em>radial_profile</em> = <code><a class="el" href="namespacehmap.html#a2affc745bc33b7555352665745741f90ac0cd381f8918df73dd4bc6df1190d7ba">RadialProfile::RP_GAIN</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>radial_profile_parameter</em> = <code>2.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
+          <td class="paramname"><em>p_falloff_mask</em> = <code>nullptr</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
+          <td class="paramname"><em>p_noise_r</em> = <code>nullptr</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structhmap_1_1Vec4.html">Vec4</a>&lt; float &gt;&#160;</td>
+          <td class="paramname"><em>bbox</em> = <code>{0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>}</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Blends a flatbed carve into an existing heightmap. </p>
+<p>Carves and blends a flatbed shape along a path into the provided array, using a smooth falloff mask.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">z</td><td><a class="el" href="classhmap_1_1Heightmap.html" title="HeightMap class, to manipulate heightmap (with contextual informations).">Heightmap</a> to modify in place. </td></tr>
+    <tr><td class="paramname">path</td><td><a class="el" href="classhmap_1_1Path.html" title="Represents an ordered set of points in 2D, forming a polyline (open or closed).">Path</a> defining the bed centerline. </td></tr>
+    <tr><td class="paramname">bottom_extent</td><td>Radius of the flatbed region. </td></tr>
+    <tr><td class="paramname">vmin</td><td>Base height value. </td></tr>
+    <tr><td class="paramname">depth</td><td>Bed depth. </td></tr>
+    <tr><td class="paramname">falloff_distance</td><td>Falloff width outside the bed. </td></tr>
+    <tr><td class="paramname">outer_slope</td><td>Linear slope beyond the bed. </td></tr>
+    <tr><td class="paramname">preserve_bedshape</td><td>Preserve relative bed shape under radial noise. </td></tr>
+    <tr><td class="paramname">radial_profile</td><td>Radial profile type. </td></tr>
+    <tr><td class="paramname">radial_profile_parameter</td><td>Shape parameter for the profile. </td></tr>
+    <tr><td class="paramname">p_falloff_mask</td><td>Optional output falloff mask. </td></tr>
+    <tr><td class="paramname">p_noise_r</td><td>Optional radial noise. </td></tr>
+    <tr><td class="paramname">bbox</td><td>World-space bounding box.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p><b>Example</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="highmap_8hpp.html">highmap.hpp</a>&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
+<div class="line">{</div>
+<div class="line">  <a class="code hl_struct" href="structhmap_1_1Vec2.html">hmap::Vec2&lt;int&gt;</a>   shape = {256, 256};</div>
+<div class="line">  <a class="code hl_struct" href="structhmap_1_1Vec2.html">hmap::Vec2&lt;float&gt;</a> kw = {2.f, 2.f};</div>
+<div class="line">  <span class="keywordtype">int</span>               seed = 0;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z = <a class="code hl_function" href="namespacehmap.html#a40b948c49a05c14f2d540dc1a6952130">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, kw, seed);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> dr = <a class="code hl_function" href="namespacehmap.html#a40b948c49a05c14f2d540dc1a6952130">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>,</div>
+<div class="line">                                   shape,</div>
+<div class="line">                                   {16.f, 16.f},</div>
+<div class="line">                                   ++seed,</div>
+<div class="line">                                   8,</div>
+<div class="line">                                   0.1f);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(dr, -0.2f, 0.9f);</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// --- generate path</span></div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Path.html">hmap::Path</a> path = <a class="code hl_function" href="namespacehmap.html#a176288a6fd3bb7b78437e9f114f0d6b1">hmap::find_cut_path_dijkstra</a>(</div>
+<div class="line">      z,</div>
+<div class="line">      <a class="code hl_enumvalue" href="namespacehmap.html#a1ba9d4ce7afe3309f8ae8e617f7154eea760545322569136cd3be89e004ab10d4">hmap::DomainBoundary::BOUNDARY_LEFT</a>,</div>
+<div class="line">      <a class="code hl_enumvalue" href="namespacehmap.html#a1ba9d4ce7afe3309f8ae8e617f7154eeadb9a04ab3508704543b5dd43ae495fe7">hmap::DomainBoundary::BOUNDARY_RIGHT</a>);</div>
+<div class="line"> </div>
+<div class="line">  path.<a class="code hl_function" href="classhmap_1_1Path.html#ad2be7924d78ea51a68158bf68b12d6ed">decimate_vw</a>(20);</div>
+<div class="line">  path.<a class="code hl_function" href="classhmap_1_1Path.html#a166a6f87dff196efa75abb1b731d3528">bspline</a>();</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> zp = <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a>(shape);</div>
+<div class="line">  path.<a class="code hl_function" href="classhmap_1_1Path.html#adc8504c67cb22a2c8fb37d408e3aeafc">to_array</a>(zp);</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// --- carve</span></div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordtype">float</span> bottom_extent = int(shape.<a class="code hl_variable" href="structhmap_1_1Vec2.html#a2dc51e83492f966eeddbdac3d58ab447">x</a> / 32);</div>
+<div class="line">  <span class="keywordtype">float</span> vmin = 0.1f;</div>
+<div class="line">  <span class="keywordtype">float</span> depth = 0.05f;</div>
+<div class="line">  <span class="keywordtype">float</span> falloff_distance = 4 * bottom_extent;</div>
+<div class="line">  <span class="keywordtype">float</span> outer_slope = 0.1f;</div>
+<div class="line">  <span class="keywordtype">bool</span>  preserve_bedshape = <span class="keyword">true</span>;</div>
+<div class="line">  <span class="keyword">auto</span>  radial_profile = <a class="code hl_enumvalue" href="namespacehmap.html#a2affc745bc33b7555352665745741f90ac0cd381f8918df73dd4bc6df1190d7ba">hmap::RadialProfile::RP_GAIN</a>;</div>
+<div class="line">  <span class="keywordtype">float</span> radial_profile_parameter = 2.f;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> zf = z;</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> mask;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a258949972d4c37ab8250e7befa76d99a">hmap::flatbed_carve</a>(zf,</div>
+<div class="line">                      path,</div>
+<div class="line">                      bottom_extent,</div>
+<div class="line">                      vmin,</div>
+<div class="line">                      depth,</div>
+<div class="line">                      falloff_distance,</div>
+<div class="line">                      outer_slope,</div>
+<div class="line">                      preserve_bedshape,</div>
+<div class="line">                      radial_profile,</div>
+<div class="line">                      radial_profile_parameter,</div>
+<div class="line">                      &amp;mask,</div>
+<div class="line">                      &amp;dr);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_flatbed_carve.png&quot;</span>,</div>
+<div class="line">                          {z, zp, mask, zf},</div>
+<div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
+<div class="line">}</div>
+</div><!-- fragment --><p><b>Result</b> </p><div class="image">
+<img src="ex_flatbed_carve.png" alt=""/>
+</div>
+ 
+</div>
+</div>
 <a id="a19bb0a5d0609ac671ca054d18959c7f1" name="a19bb0a5d0609ac671ca054d18959c7f1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a19bb0a5d0609ac671ca054d18959c7f1">&#9670;&#160;</a></span>reverse_midpoint()</h2>
 
@@ -3484,10 +3901,8 @@ template&lt;typename T &gt; </div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_reverse_midpoint.png&quot;</span>, {z0, z1}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclasshmap_1_1Path_html"><div class="ttname"><a href="classhmap_1_1Path.html">hmap::Path</a></div><div class="ttdoc">Represents an ordered set of points in 2D, forming a polyline (open or closed).</div><div class="ttdef"><b>Definition</b> path.hpp:50</div></div>
 <div class="ttc" id="aclasshmap_1_1Path_html_a56cc1e52401d748b540f9bc72a49000b"><div class="ttname"><a href="classhmap_1_1Path.html#a56cc1e52401d748b540f9bc72a49000b">hmap::Path::bezier</a></div><div class="ttdeci">void bezier(float curvature_ratio=0.3f, int edge_divisions=10)</div><div class="ttdoc">Smooth the path using Bezier curves.</div><div class="ttdef"><b>Definition</b> path.cpp:25</div></div>
-<div class="ttc" id="aclasshmap_1_1Path_html_ad68abaa80879402c3758e24626acfb53"><div class="ttname"><a href="classhmap_1_1Path.html#ad68abaa80879402c3758e24626acfb53">hmap::Path::reorder_nns</a></div><div class="ttdeci">void reorder_nns(int start_index=0)</div><div class="ttdoc">Reorder points using a nearest neighbor search.</div><div class="ttdef"><b>Definition</b> path.cpp:510</div></div>
-<div class="ttc" id="aclasshmap_1_1Path_html_adc8504c67cb22a2c8fb37d408e3aeafc"><div class="ttname"><a href="classhmap_1_1Path.html#adc8504c67cb22a2c8fb37d408e3aeafc">hmap::Path::to_array</a></div><div class="ttdeci">void to_array(Array &amp;array, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f}, bool filled=false) const</div><div class="ttdoc">Project path points to an array.</div><div class="ttdef"><b>Definition</b> path.cpp:810</div></div>
+<div class="ttc" id="aclasshmap_1_1Path_html_ad68abaa80879402c3758e24626acfb53"><div class="ttname"><a href="classhmap_1_1Path.html#ad68abaa80879402c3758e24626acfb53">hmap::Path::reorder_nns</a></div><div class="ttdeci">void reorder_nns(int start_index=0)</div><div class="ttdoc">Reorder points using a nearest neighbor search.</div><div class="ttdef"><b>Definition</b> path.cpp:506</div></div>
 <div class="ttc" id="anamespacehmap_html_a19bb0a5d0609ac671ca054d18959c7f1"><div class="ttname"><a href="namespacehmap.html#a19bb0a5d0609ac671ca054d18959c7f1">hmap::reverse_midpoint</a></div><div class="ttdeci">Array reverse_midpoint(const Array &amp;array, uint seed, float noise_scale=1.f, float threshold=0.f)</div><div class="ttdoc">Apply the reverse midpoint displacement algorithm to the input array.</div><div class="ttdef"><b>Definition</b> reverse_midpoint.cpp:231</div></div>
 <div class="ttc" id="anamespacehmap_html_a4910efa1a82d5dd66d7d02a87fab7e7a"><div class="ttname"><a href="namespacehmap.html#a4910efa1a82d5dd66d7d02a87fab7e7a">hmap::unit_square_bbox</a></div><div class="ttdeci">Vec4&lt; float &gt; unit_square_bbox()</div><div class="ttdoc">Constructs a 4D bounding box for a unit square.</div><div class="ttdef"><b>Definition</b> points.cpp:219</div></div>
 <div class="ttc" id="anamespacehmap_html_a8c9d91481a5908494b9f06c90c705b3a"><div class="ttname"><a href="namespacehmap.html#a8c9d91481a5908494b9f06c90c705b3a">hmap::median_3x3</a></div><div class="ttdeci">void median_3x3(Array &amp;array, const Array *p_mask)</div><div class="ttdoc">Apply a 3x3 median filter to the input array.</div><div class="ttdef"><b>Definition</b> filters.cpp:744</div></div>
@@ -3634,7 +4049,6 @@ template&lt;typename T &gt; </div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_ridgelines.png&quot;</span>, {z1, z2}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a262e6495cb2d02598f36a2b46114b2b4"><div class="ttname"><a href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a></div><div class="ttdeci">void remap(Array &amp;array, float vmin, float vmax, float from_min, float from_max)</div><div class="ttdoc">Remap array elements from a starting range to a target range.</div><div class="ttdef"><b>Definition</b> range.cpp:438</div></div>
 <div class="ttc" id="anamespacehmap_html_aca4a5b0313f4efe251b20d90652a896b"><div class="ttname"><a href="namespacehmap.html#aca4a5b0313f4efe251b20d90652a896b">hmap::ridgelines</a></div><div class="ttdeci">Array ridgelines(Vec2&lt; int &gt; shape, const std::vector&lt; float &gt; &amp;xr, const std::vector&lt; float &gt; &amp;yr, const std::vector&lt; float &gt; &amp;zr, float slope, float k_smoothing=1.f, float width=0.1f, float vmin=0.f, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f}, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, Vec4&lt; float &gt; bbox_array={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Generate a heightmap based on a set of ridgelines and a specified slope.</div><div class="ttdef"><b>Definition</b> ridgelines.cpp:16</div></div>
 <div class="ttc" id="anamespacehmap_html_ad1836a084a8607446ce029d32c02a201"><div class="ttname"><a href="namespacehmap.html#ad1836a084a8607446ce029d32c02a201">hmap::slope</a></div><div class="ttdeci">Array slope(Vec2&lt; int &gt; shape, float angle, float slope, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, Vec2&lt; float &gt; center={0.5f, 0.5f}, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Return an array corresponding to a slope with a given overall.</div><div class="ttdef"><b>Definition</b> primitives.cpp:279</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
@@ -3953,7 +4367,7 @@ template&lt;typename T &gt; </div>
 <div class="ttc" id="aclasshmap_1_1Cloud_html_aab450c9376e44def1d4e4465f0b1b691"><div class="ttname"><a href="classhmap_1_1Cloud.html#aab450c9376e44def1d4e4465f0b1b691">hmap::Cloud::get_x</a></div><div class="ttdeci">virtual std::vector&lt; float &gt; get_x() const</div><div class="ttdoc">Get the x coordinates of the points in the cloud.</div><div class="ttdef"><b>Definition</b> cloud.cpp:200</div></div>
 <div class="ttc" id="aclasshmap_1_1Cloud_html_abf5f933e3506395b5369cb090119002e"><div class="ttname"><a href="classhmap_1_1Cloud.html#abf5f933e3506395b5369cb090119002e">hmap::Cloud::get_y</a></div><div class="ttdeci">virtual std::vector&lt; float &gt; get_y() const</div><div class="ttdoc">Get the y coordinates of the points in the cloud.</div><div class="ttdef"><b>Definition</b> cloud.cpp:221</div></div>
 <div class="ttc" id="aclasshmap_1_1Cloud_html_ad83d71a8729a0e4fcce993c0141275ee"><div class="ttname"><a href="classhmap_1_1Cloud.html#ad83d71a8729a0e4fcce993c0141275ee">hmap::Cloud::to_array</a></div><div class="ttdeci">void to_array(Array &amp;array, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f}) const</div><div class="ttdoc">Project the cloud points onto an array.</div><div class="ttdef"><b>Definition</b> cloud.cpp:430</div></div>
-<div class="ttc" id="anamespacehmap_html_a5101273ec456f5267dddc3e22dae223babafe4f4d1051eb7afe0eab09badd28ad"><div class="ttname"><a href="namespacehmap.html#a5101273ec456f5267dddc3e22dae223babafe4f4d1051eb7afe0eab09badd28ad">hmap::MAXIMUM</a></div><div class="ttdeci">@ MAXIMUM</div><div class="ttdoc">maximum</div><div class="ttdef"><b>Definition</b> authoring.hpp:34</div></div>
+<div class="ttc" id="anamespacehmap_html_a5101273ec456f5267dddc3e22dae223babafe4f4d1051eb7afe0eab09badd28ad"><div class="ttname"><a href="namespacehmap.html#a5101273ec456f5267dddc3e22dae223babafe4f4d1051eb7afe0eab09badd28ad">hmap::MAXIMUM</a></div><div class="ttdeci">@ MAXIMUM</div><div class="ttdoc">maximum</div><div class="ttdef"><b>Definition</b> authoring.hpp:19</div></div>
 <div class="ttc" id="anamespacehmap_html_a52fe1241da6ece981af7a368ef3ad0c4"><div class="ttname"><a href="namespacehmap.html#a52fe1241da6ece981af7a368ef3ad0c4">hmap::stamping</a></div><div class="ttdeci">Array stamping(Vec2&lt; int &gt; shape, const std::vector&lt; float &gt; &amp;xr, const std::vector&lt; float &gt; &amp;yr, const std::vector&lt; float &gt; &amp;zr, Array kernel, int kernel_ir, bool kernel_scale_radius, bool kernel_scale_amplitude, StampingBlendMethod blend_method, uint seed, float k_smoothing=0.1f, bool kernel_flip=true, bool kernel_rotate=false, Vec4&lt; float &gt; bbox_array={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Generate a heightmap by stamping a kernel at predefined locations.</div><div class="ttdef"><b>Definition</b> stamping.cpp:17</div></div>
 <div class="ttc" id="anamespacehmap_html_aa0bf57ef5e675f0aa851bc8f4b734acd"><div class="ttname"><a href="namespacehmap.html#aa0bf57ef5e675f0aa851bc8f4b734acd">hmap::random_cloud</a></div><div class="ttdeci">Cloud random_cloud(size_t count, uint seed, const PointSamplingMethod &amp;method=PointSamplingMethod::RND_LHS, const Vec4&lt; float &gt; &amp;bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Generates a random cloud of points within a bounding box.</div><div class="ttdef"><b>Definition</b> cloud.cpp:574</div></div>
 <div class="ttc" id="anamespacehmap_html_aab655567714a21e6308c09d07056d52f"><div class="ttname"><a href="namespacehmap.html#aab655567714a21e6308c09d07056d52f">hmap::gabor</a></div><div class="ttdeci">Array gabor(Vec2&lt; int &gt; shape, float kw, float angle, bool quad_phase_shift=false)</div><div class="ttdoc">Generates a Gabor kernel of the specified shape.</div><div class="ttdef"><b>Definition</b> kernels.cpp:245</div></div>
@@ -9072,7 +9486,6 @@ additional_depth)</code>.</li>
 <div class="ttc" id="anamespacehmap_html_a37caab05db1b9791bf8a8ca10852c0da"><div class="ttname"><a href="namespacehmap.html#a37caab05db1b9791bf8a8ca10852c0da">hmap::hydraulic_stream_log</a></div><div class="ttdeci">void hydraulic_stream_log(Array &amp;z, float c_erosion, float talus_ref, int deposition_ir=32, float deposition_scale_ratio=1.f, float gradient_power=0.8f, float gradient_scaling_ratio=1.f, int gradient_prefilter_ir=16, float saturation_ratio=1.f, Array *p_bedrock=nullptr, Array *p_moisture_map=nullptr, Array *p_erosion_map=nullptr, Array *p_deposition_map=nullptr, Array *p_flow_map=nullptr)</div><div class="ttdoc">Apply hydraulic erosion based on a flow accumulation map, alternative formulation.</div><div class="ttdef"><b>Definition</b> hydraulic_stream.cpp:100</div></div>
 <div class="ttc" id="anamespacehmap_html_acbf32c30d68183eb5522888af2ede316"><div class="ttname"><a href="namespacehmap.html#acbf32c30d68183eb5522888af2ede316">hmap::hydraulic_stream</a></div><div class="ttdeci">void hydraulic_stream(Array &amp;z, float c_erosion, float talus_ref, Array *p_bedrock=nullptr, Array *p_moisture_map=nullptr, Array *p_erosion_map=nullptr, int ir=1, float clipping_ratio=10.f)</div><div class="ttdoc">Apply hydraulic erosion based on a flow accumulation map.</div><div class="ttdef"><b>Definition</b> hydraulic_stream.cpp:20</div></div>
 <div class="ttc" id="anamespacehmap_html_adf68a2f031297654f88252b7ce027b3d"><div class="ttname"><a href="namespacehmap.html#adf68a2f031297654f88252b7ce027b3d">hmap::minimum_local</a></div><div class="ttdeci">Array minimum_local(const Array &amp;array, int ir)</div><div class="ttdoc">Return the local minima based on a maximum filter with a square kernel.</div><div class="ttdef"><b>Definition</b> range.cpp:380</div></div>
-<div class="ttc" id="astructhmap_1_1Vec2_html_a2dc51e83492f966eeddbdac3d58ab447"><div class="ttname"><a href="structhmap_1_1Vec2.html#a2dc51e83492f966eeddbdac3d58ab447">hmap::Vec2::x</a></div><div class="ttdeci">T x</div><div class="ttdef"><b>Definition</b> algebra.hpp:41</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_hydraulic_stream0.png" alt=""/>
 </div>
@@ -23239,8 +23652,8 @@ A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
 <div class="line">                          <span class="keyword">true</span>);</div>
 <div class="line">}</div>
 <div class="ttc" id="aclasshmap_1_1Path_html_a2ea3482a302d8ef30084fd39e57715de"><div class="ttname"><a href="classhmap_1_1Path.html#a2ea3482a302d8ef30084fd39e57715de">hmap::Path::closed</a></div><div class="ttdeci">bool closed</div><div class="ttdoc">Defines whether the path is closed or open. If true, the path is closed, forming a loop....</div><div class="ttdef"><b>Definition</b> path.hpp:56</div></div>
-<div class="ttc" id="aclasshmap_1_1Path_html_a5bc0253d1ce863a772b3ac77aaf41b91"><div class="ttname"><a href="classhmap_1_1Path.html#a5bc0253d1ce863a772b3ac77aaf41b91">hmap::Path::dijkstra</a></div><div class="ttdeci">void dijkstra(Array &amp;array, Vec4&lt; float &gt; bbox, float elevation_ratio=0.f, float distance_exponent=0.5f, float upward_penalization=1.f, Array *p_mask_nogo=nullptr)</div><div class="ttdoc">Divide the path by adding points based on the lowest elevation difference between each pair of edge e...</div><div class="ttdef"><b>Definition</b> path.cpp:216</div></div>
-<div class="ttc" id="anamespacehmap_html_a7ba4bc3a43f42b6a4bf00e94e86064ff"><div class="ttname"><a href="namespacehmap.html#a7ba4bc3a43f42b6a4bf00e94e86064ff">hmap::dig_path</a></div><div class="ttdeci">void dig_path(Array &amp;z, Path &amp;path, int width=1, int decay=2, int flattening_radius=16, bool force_downhill=false, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f}, float depth=0.f)</div><div class="ttdoc">Dig a path on a heightmap.</div><div class="ttdef"><b>Definition</b> path.cpp:906</div></div>
+<div class="ttc" id="aclasshmap_1_1Path_html_a5bc0253d1ce863a772b3ac77aaf41b91"><div class="ttname"><a href="classhmap_1_1Path.html#a5bc0253d1ce863a772b3ac77aaf41b91">hmap::Path::dijkstra</a></div><div class="ttdeci">void dijkstra(Array &amp;array, Vec4&lt; float &gt; bbox, float elevation_ratio=0.f, float distance_exponent=0.5f, float upward_penalization=1.f, Array *p_mask_nogo=nullptr)</div><div class="ttdoc">Divide the path by adding points based on the lowest elevation difference between each pair of edge e...</div><div class="ttdef"><b>Definition</b> path.cpp:212</div></div>
+<div class="ttc" id="anamespacehmap_html_a7ba4bc3a43f42b6a4bf00e94e86064ff"><div class="ttname"><a href="namespacehmap.html#a7ba4bc3a43f42b6a4bf00e94e86064ff">hmap::dig_path</a></div><div class="ttdeci">void dig_path(Array &amp;z, Path &amp;path, int width=1, int decay=2, int flattening_radius=16, bool force_downhill=false, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f}, float depth=0.f)</div><div class="ttdoc">Dig a path on a heightmap.</div><div class="ttdef"><b>Definition</b> path.cpp:902</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_dig_path.png" alt=""/>
 </div>
@@ -23412,7 +23825,7 @@ A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
 <div class="line">                          <span class="keyword">true</span>);</div>
 <div class="line">}</div>
 <div class="ttc" id="anamespacehmap_html_a5adb98e67f89036317df083dd2123a1e"><div class="ttname"><a href="namespacehmap.html#a5adb98e67f89036317df083dd2123a1e">hmap::flow_stream</a></div><div class="ttdeci">Path flow_stream(const Array &amp;z, const Vec2&lt; int &gt; ij_start, const float elevation_ratio=0.5f, const float distance_exponent=2.f, const float upward_penalization=100.f)</div><div class="ttdoc">Computes the optimal flow path from a starting point to the boundary of a given elevation array.</div><div class="ttdef"><b>Definition</b> flow_stream.cpp:46</div></div>
-<div class="ttc" id="anamespacehmap_html_a6d536f0d67ade56c6a60927d8c8e9720"><div class="ttname"><a href="namespacehmap.html#a6d536f0d67ade56c6a60927d8c8e9720">hmap::dig_river</a></div><div class="ttdeci">void dig_river(Array &amp;z, const std::vector&lt; Path &gt; &amp;path_list, float riverbank_talus, int river_width=0, int merging_width=0, float depth=0.f, float riverbed_talus=0.f, float noise_ratio=0.9f, uint seed=0, Array *p_mask=nullptr)</div><div class="ttdoc">Modifies the elevation array to carve a river along a specified path.</div><div class="ttdef"><b>Definition</b> path.cpp:956</div></div>
+<div class="ttc" id="anamespacehmap_html_a6d536f0d67ade56c6a60927d8c8e9720"><div class="ttname"><a href="namespacehmap.html#a6d536f0d67ade56c6a60927d8c8e9720">hmap::dig_river</a></div><div class="ttdeci">void dig_river(Array &amp;z, const std::vector&lt; Path &gt; &amp;path_list, float riverbank_talus, int river_width=0, int merging_width=0, float depth=0.f, float riverbed_talus=0.f, float noise_ratio=0.9f, uint seed=0, Array *p_mask=nullptr)</div><div class="ttdoc">Modifies the elevation array to carve a river along a specified path.</div><div class="ttdef"><b>Definition</b> path.cpp:952</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_flow_stream.png" alt=""/>
 </div>
@@ -23495,14 +23908,14 @@ A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
 
 </div>
 </div>
-<a id="af8cc8438bbcaffeaeff2f0982e1a9812" name="af8cc8438bbcaffeaeff2f0982e1a9812"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af8cc8438bbcaffeaeff2f0982e1a9812">&#9670;&#160;</a></span>find_cut_path()</h2>
+<a id="a176288a6fd3bb7b78437e9f114f0d6b1" name="a176288a6fd3bb7b78437e9f114f0d6b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a176288a6fd3bb7b78437e9f114f0d6b1">&#9670;&#160;</a></span>find_cut_path_dijkstra()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classhmap_1_1Path.html">Path</a> hmap::find_cut_path </td>
+          <td class="memname"><a class="el" href="classhmap_1_1Path.html">Path</a> hmap::find_cut_path_dijkstra </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
           <td class="paramname"><em>z</em>, </td>
@@ -23535,7 +23948,7 @@ A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>dijk_upward_penalization</em> = <code>0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>&#160;</td>
+          <td class="paramname"><em>dijk_upward_penalization</em> = <code>100.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -23570,18 +23983,16 @@ A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z = <a class="code hl_function" href="namespacehmap.html#a40b948c49a05c14f2d540dc1a6952130">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, kw, seed);</div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Path.html">hmap::Path</a> path = <a class="code hl_function" href="namespacehmap.html#af8cc8438bbcaffeaeff2f0982e1a9812">hmap::find_cut_path</a>(z,</div>
-<div class="line">                                        <a class="code hl_enumvalue" href="namespacehmap.html#a1ba9d4ce7afe3309f8ae8e617f7154eea760545322569136cd3be89e004ab10d4">hmap::DomainBoundary::BOUNDARY_LEFT</a>,</div>
-<div class="line">                                        <a class="code hl_enumvalue" href="namespacehmap.html#a1ba9d4ce7afe3309f8ae8e617f7154eeadb9a04ab3508704543b5dd43ae495fe7">hmap::DomainBoundary::BOUNDARY_RIGHT</a>);</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Path.html">hmap::Path</a> path = <a class="code hl_function" href="namespacehmap.html#a176288a6fd3bb7b78437e9f114f0d6b1">hmap::find_cut_path_dijkstra</a>(</div>
+<div class="line">      z,</div>
+<div class="line">      <a class="code hl_enumvalue" href="namespacehmap.html#a1ba9d4ce7afe3309f8ae8e617f7154eea760545322569136cd3be89e004ab10d4">hmap::DomainBoundary::BOUNDARY_LEFT</a>,</div>
+<div class="line">      <a class="code hl_enumvalue" href="namespacehmap.html#a1ba9d4ce7afe3309f8ae8e617f7154eeadb9a04ab3508704543b5dd43ae495fe7">hmap::DomainBoundary::BOUNDARY_RIGHT</a>);</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> zp = <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a>(shape);</div>
 <div class="line">  path.<a class="code hl_function" href="classhmap_1_1Path.html#adc8504c67cb22a2c8fb37d408e3aeafc">to_array</a>(zp);</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_find_cut_path.png&quot;</span>, {z, zp}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a1ba9d4ce7afe3309f8ae8e617f7154eea760545322569136cd3be89e004ab10d4"><div class="ttname"><a href="namespacehmap.html#a1ba9d4ce7afe3309f8ae8e617f7154eea760545322569136cd3be89e004ab10d4">hmap::BOUNDARY_LEFT</a></div><div class="ttdeci">@ BOUNDARY_LEFT</div><div class="ttdoc">i = 0</div><div class="ttdef"><b>Definition</b> boundary.hpp:44</div></div>
-<div class="ttc" id="anamespacehmap_html_a1ba9d4ce7afe3309f8ae8e617f7154eeadb9a04ab3508704543b5dd43ae495fe7"><div class="ttname"><a href="namespacehmap.html#a1ba9d4ce7afe3309f8ae8e617f7154eeadb9a04ab3508704543b5dd43ae495fe7">hmap::BOUNDARY_RIGHT</a></div><div class="ttdeci">@ BOUNDARY_RIGHT</div><div class="ttdoc">i = nx - 1</div><div class="ttdef"><b>Definition</b> boundary.hpp:45</div></div>
-<div class="ttc" id="anamespacehmap_html_af8cc8438bbcaffeaeff2f0982e1a9812"><div class="ttname"><a href="namespacehmap.html#af8cc8438bbcaffeaeff2f0982e1a9812">hmap::find_cut_path</a></div><div class="ttdeci">Path find_cut_path(const Array &amp;z, DomainBoundary start, DomainBoundary end, float dijk_elevation_ratio=0.9f, float dijk_distance_exponent=2.f, float dijk_upward_penalization=0.f)</div><div class="ttdoc">Find a Dijkstra-based cut path between two domain boundaries.</div><div class="ttdef"><b>Definition</b> find_cut_path.cpp:10</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_find_cut_path.png" alt=""/>
 </div>
@@ -28726,7 +29137,7 @@ h}{\partial y}
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
 <div class="ttc" id="aclasshmap_1_1Cloud_html_ac8d31a5787a009175695ff16904e7944"><div class="ttname"><a href="classhmap_1_1Cloud.html#ac8d31a5787a009175695ff16904e7944">hmap::Cloud::set_values_from_array</a></div><div class="ttdeci">void set_values_from_array(const Array &amp;array, const Vec4&lt; float &gt; &amp;bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Set the values of the cloud points using values from an underlying array.</div><div class="ttdef"><b>Definition</b> cloud.cpp:369</div></div>
-<div class="ttc" id="aclasshmap_1_1Path_html_a22ef6d9852530fbb2b747c8b22ba9546"><div class="ttname"><a href="classhmap_1_1Path.html#a22ef6d9852530fbb2b747c8b22ba9546">hmap::Path::fractalize</a></div><div class="ttdeci">void fractalize(int iterations, uint seed, float sigma=0.3f, int orientation=0, float persistence=1.f, Array *p_control_field=nullptr, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Applies fractalization to the path by adding points and randomly displacing their positions.</div><div class="ttdef"><b>Definition</b> path.cpp:300</div></div>
+<div class="ttc" id="aclasshmap_1_1Path_html_a22ef6d9852530fbb2b747c8b22ba9546"><div class="ttname"><a href="classhmap_1_1Path.html#a22ef6d9852530fbb2b747c8b22ba9546">hmap::Path::fractalize</a></div><div class="ttdeci">void fractalize(int iterations, uint seed, float sigma=0.3f, int orientation=0, float persistence=1.f, Array *p_control_field=nullptr, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Applies fractalization to the path by adding points and randomly displacing their positions.</div><div class="ttdef"><b>Definition</b> path.cpp:296</div></div>
 <div class="ttc" id="anamespacehmap_html_a97ba5dfaa6625b654a8010ed7d2f3465"><div class="ttname"><a href="namespacehmap.html#a97ba5dfaa6625b654a8010ed7d2f3465">hmap::generate_riverbed</a></div><div class="ttdeci">Array generate_riverbed(const Path &amp;path, Vec2&lt; int &gt; shape, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f}, bool bezier_smoothing=false, float depth_start=0.01f, float depth_end=1.f, float slope_start=64.f, float slope_end=32.f, float shape_exponent_start=1.f, float shape_exponent_end=10.f, float k_smoothing=0.5f, int post_filter_ir=0, Array *p_noise_x=nullptr, Array *p_noise_y=nullptr, Array *p_noise_r=nullptr)</div><div class="ttdoc">Generates a 2D array representing a riverbed based on a specified path.</div><div class="ttdef"><b>Definition</b> generate_riverbed.cpp:16</div></div>
 <div class="ttc" id="astructhmap_1_1Vec4_html_a080d1200616967db1349c9b912b1186c"><div class="ttname"><a href="structhmap_1_1Vec4.html#a080d1200616967db1349c9b912b1186c">hmap::Vec4::adjust</a></div><div class="ttdeci">Vec4&lt; T &gt; adjust(float da, float db, float dc, float dd)</div><div class="ttdoc">Adjusts the components of the vector by the given offsets.</div><div class="ttdef"><b>Definition</b> algebra.hpp:786</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
@@ -31577,8 +31988,8 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a id="a6bea64db2dac2b906983472f7f6781a0" name="a6bea64db2dac2b906983472f7f6781a0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6bea64db2dac2b906983472f7f6781a0">&#9670;&#160;</a></span>get_phasor_profile_function()</h2>
+<a id="a3e2e333ca90c11a997a9ac04361b1741" name="a3e2e333ca90c11a997a9ac04361b1741"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e2e333ca90c11a997a9ac04361b1741">&#9670;&#160;</a></span>get_phasor_profile_function()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -31586,7 +31997,7 @@ template&lt;typename T &gt; </div>
         <tr>
           <td class="memname">std::function&lt; float(float)&gt; hmap::get_phasor_profile_function </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespacehmap.html#a67d6620c147710ebb09b64f0f738241a">PhasorProfile</a> &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="namespacehmap.html#a67d6620c147710ebb09b64f0f738241a">PhasorProfile</a>&#160;</td>
           <td class="paramname"><em>phasor_profile</em>, </td>
         </tr>
         <tr>
@@ -31622,11 +32033,56 @@ template&lt;typename T &gt; </div>
 <dl class="section return"><dt>Returns</dt><dd>A <code>std::function&lt;float(float)&gt;</code> that computes the phasor profile for a given phase angle.</dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">std::invalid_argumentIftheprovided`phasor_profile`isinvalid.</td><td></td></tr>
+    <tr><td class="paramname">std::invalid_argumentIfthe</td><td>provided <code>phasor_profile</code> is invalid.</td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section note"><dt>Note</dt><dd>The average value is computed using numerical integration over 50 sample points within [-π, π]. </dd></dl>
+
+</div>
+</div>
+<a id="a6558dec0d9f57bbc8f9ef9b2fe324757" name="a6558dec0d9f57bbc8f9ef9b2fe324757"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6558dec0d9f57bbc8f9ef9b2fe324757">&#9670;&#160;</a></span>get_radial_profile_function()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::function&lt; float(float)&gt; hmap::get_radial_profile_function </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacehmap.html#a2affc745bc33b7555352665745741f90">RadialProfile</a>&#160;</td>
+          <td class="paramname"><em>radial_profile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>delta</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns a normalized radial profile function. </p>
+<p>The returned function maps x ∈ [0,1] to a value in [0,1], with f(0) = 0 and f(1) = 1. It is typically used for radial or distance-based falloff in procedural heightmaps.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">radial_profile</td><td>Radial profile type. </td></tr>
+    <tr><td class="paramname">delta</td><td>Shape parameter used by some profiles.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Radial profile evaluation function.</dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argumentIfthe</td><td>profile is invalid. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

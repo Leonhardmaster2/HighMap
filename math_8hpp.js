@@ -13,6 +13,13 @@ var math_8hpp =
       [ "COSINE_STD", "math_8hpp.html#a67d6620c147710ebb09b64f0f738241aa29de9f23976831ac056abef76c1f8d2e", null ],
       [ "TRIANGLE", "math_8hpp.html#a67d6620c147710ebb09b64f0f738241aa1ee22d304b9b93cd76da1fbc9d32a75a", null ]
     ] ],
+    [ "RadialProfile", "math_8hpp.html#a2affc745bc33b7555352665745741f90", [
+      [ "RP_GAIN", "math_8hpp.html#a2affc745bc33b7555352665745741f90ac0cd381f8918df73dd4bc6df1190d7ba", null ],
+      [ "RP_LINEAR", "math_8hpp.html#a2affc745bc33b7555352665745741f90a8374fb3e0d0799f69d5a50e6e26f56b0", null ],
+      [ "RP_POW", "math_8hpp.html#a2affc745bc33b7555352665745741f90a67c1906a040e7234b7a636eaf7ef7901", null ],
+      [ "RP_SMOOTHSTEP", "math_8hpp.html#a2affc745bc33b7555352665745741f90ad18fad6ec8edf55050af29b51e14fffd", null ],
+      [ "RP_SMOOTHSTEP_UPPER", "math_8hpp.html#a2affc745bc33b7555352665745741f90acedc11502bd1441e893fdc5a699b6d59", null ]
+    ] ],
     [ "abs", "math_8hpp.html#a527cfdcf7f7e2ca0e270875526c9b1ee", null ],
     [ "abs_smooth", "math_8hpp.html#aa99a114cc6073cf7368c927afd9b4f87", null ],
     [ "abs_smooth", "math_8hpp.html#ac165dd1b73f61f632f03e45c2f831fc2", null ],
@@ -30,7 +37,8 @@ var math_8hpp =
     [ "gain", "math_8hpp.html#a0db2ecdc6ca69af1e6eb3402b1147cb6", null ],
     [ "gaussian_decay", "math_8hpp.html#a99778512aa5779e70039e6b04e62d40c", null ],
     [ "get_distance_function", "math_8hpp.html#a325c785e4776325f3061d9f5bd89fccf", null ],
-    [ "get_phasor_profile_function", "math_8hpp.html#a6bea64db2dac2b906983472f7f6781a0", null ],
+    [ "get_phasor_profile_function", "math_8hpp.html#a3e2e333ca90c11a997a9ac04361b1741", null ],
+    [ "get_radial_profile_function", "math_8hpp.html#a6558dec0d9f57bbc8f9ef9b2fe324757", null ],
     [ "highest_power_of_2", "math_8hpp.html#a9ae209ce5746e99078078259955c7421", null ],
     [ "is_non_zero", "math_8hpp.html#a339d883dc34fc818dd25077c5daab953", null ],
     [ "is_zero", "math_8hpp.html#a3a1e261b646c9df967e78fb77e5bf8c1", null ],

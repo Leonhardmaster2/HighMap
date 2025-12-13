@@ -134,6 +134,17 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:a67d6620c147710ebb09b64f0f738241a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Phasor angular profile type.  <a href="namespacehmap.html#a67d6620c147710ebb09b64f0f738241a">More...</a><br /></td></tr>
 <tr class="separator:a67d6620c147710ebb09b64f0f738241a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2affc745bc33b7555352665745741f90" id="r_a2affc745bc33b7555352665745741f90"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a2affc745bc33b7555352665745741f90">hmap::RadialProfile</a> : int { <br />
+&#160;&#160;<a class="el" href="namespacehmap.html#a2affc745bc33b7555352665745741f90ac0cd381f8918df73dd4bc6df1190d7ba">hmap::RP_GAIN</a>
+, <a class="el" href="namespacehmap.html#a2affc745bc33b7555352665745741f90a8374fb3e0d0799f69d5a50e6e26f56b0">hmap::RP_LINEAR</a>
+, <a class="el" href="namespacehmap.html#a2affc745bc33b7555352665745741f90a67c1906a040e7234b7a636eaf7ef7901">hmap::RP_POW</a>
+, <a class="el" href="namespacehmap.html#a2affc745bc33b7555352665745741f90ad18fad6ec8edf55050af29b51e14fffd">hmap::RP_SMOOTHSTEP</a>
+, <br />
+&#160;&#160;<a class="el" href="namespacehmap.html#a2affc745bc33b7555352665745741f90acedc11502bd1441e893fdc5a699b6d59">hmap::RP_SMOOTHSTEP_UPPER</a>
+<br />
+ }</td></tr>
+<tr class="memdesc:a2affc745bc33b7555352665745741f90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Radial profile type.  <a href="namespacehmap.html#a2affc745bc33b7555352665745741f90">More...</a><br /></td></tr>
+<tr class="separator:a2affc745bc33b7555352665745741f90"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -187,9 +198,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a325c785e4776325f3061d9f5bd89fccf" id="r_a325c785e4776325f3061d9f5bd89fccf"><td class="memItemLeft" align="right" valign="top">std::function&lt; float(float, float)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a325c785e4776325f3061d9f5bd89fccf">hmap::get_distance_function</a> (<a class="el" href="namespacehmap.html#a670f50d6c08ecd639d42db9c75a5273a">DistanceFunction</a> dist_fct)</td></tr>
 <tr class="memdesc:a325c785e4776325f3061d9f5bd89fccf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the requested distance function.  <br /></td></tr>
 <tr class="separator:a325c785e4776325f3061d9f5bd89fccf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6bea64db2dac2b906983472f7f6781a0" id="r_a6bea64db2dac2b906983472f7f6781a0"><td class="memItemLeft" align="right" valign="top">std::function&lt; float(float)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a6bea64db2dac2b906983472f7f6781a0">hmap::get_phasor_profile_function</a> (const <a class="el" href="namespacehmap.html#a67d6620c147710ebb09b64f0f738241a">PhasorProfile</a> &amp;phasor_profile, float delta, float *p_profile_avg=nullptr)</td></tr>
-<tr class="memdesc:a6bea64db2dac2b906983472f7f6781a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a function representing a phasor profile based on the specified type and parameters.  <br /></td></tr>
-<tr class="separator:a6bea64db2dac2b906983472f7f6781a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e2e333ca90c11a997a9ac04361b1741" id="r_a3e2e333ca90c11a997a9ac04361b1741"><td class="memItemLeft" align="right" valign="top">std::function&lt; float(float)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a3e2e333ca90c11a997a9ac04361b1741">hmap::get_phasor_profile_function</a> (<a class="el" href="namespacehmap.html#a67d6620c147710ebb09b64f0f738241a">PhasorProfile</a> phasor_profile, float delta, float *p_profile_avg=nullptr)</td></tr>
+<tr class="memdesc:a3e2e333ca90c11a997a9ac04361b1741"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a function representing a phasor profile based on the specified type and parameters.  <br /></td></tr>
+<tr class="separator:a3e2e333ca90c11a997a9ac04361b1741"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6558dec0d9f57bbc8f9ef9b2fe324757" id="r_a6558dec0d9f57bbc8f9ef9b2fe324757"><td class="memItemLeft" align="right" valign="top">std::function&lt; float(float)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a6558dec0d9f57bbc8f9ef9b2fe324757">hmap::get_radial_profile_function</a> (<a class="el" href="namespacehmap.html#a2affc745bc33b7555352665745741f90">RadialProfile</a> radial_profile, float delta)</td></tr>
+<tr class="memdesc:a6558dec0d9f57bbc8f9ef9b2fe324757"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a normalized radial profile function.  <br /></td></tr>
+<tr class="separator:a6558dec0d9f57bbc8f9ef9b2fe324757"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ae209ce5746e99078078259955c7421" id="r_a9ae209ce5746e99078078259955c7421"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a9ae209ce5746e99078078259955c7421">hmap::highest_power_of_2</a> (int n)</td></tr>
 <tr class="memdesc:a9ae209ce5746e99078078259955c7421"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the highest power of 2 less than or equal to the given number.  <br /></td></tr>
 <tr class="separator:a9ae209ce5746e99078078259955c7421"><td class="memSeparator" colspan="2">&#160;</td></tr>
