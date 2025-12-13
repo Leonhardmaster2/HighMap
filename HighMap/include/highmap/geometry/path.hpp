@@ -935,4 +935,11 @@ Path find_cut_path_dijkstra(const Array   &z,
                             float          dijk_distance_exponent = 2.f,
                             float          dijk_upward_penalization = 100.f);
 
+Path find_cut_path_midpoint(const Array   &z,
+                            DomainBoundary start,
+                            DomainBoundary end,
+                            uint           seed,
+                            int            midp_iterations = 4,
+                            float          midp_sigma = 0.2f);
+
 } // namespace hmap
