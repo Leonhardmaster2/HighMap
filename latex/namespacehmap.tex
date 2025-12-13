@@ -904,6 +904,8 @@ void \mbox{\hyperlink{namespacehmap_a31b3cde3ce1fa52f1856b962f4443d49}{dig\+\_\+
 \item 
 \mbox{\hyperlink{classhmap_1_1Path}{Path}} \mbox{\hyperlink{namespacehmap_a176288a6fd3bb7b78437e9f114f0d6b1}{find\+\_\+cut\+\_\+path\+\_\+dijkstra}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, \mbox{\hyperlink{namespacehmap_a1ba9d4ce7afe3309f8ae8e617f7154ee}{Domain\+Boundary}} start, \mbox{\hyperlink{namespacehmap_a1ba9d4ce7afe3309f8ae8e617f7154ee}{Domain\+Boundary}} end, float dijk\+\_\+elevation\+\_\+ratio=0.\+9\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float dijk\+\_\+distance\+\_\+exponent=2.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float dijk\+\_\+upward\+\_\+penalization=100.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Find a Dijkstra-\/based cut path between two domain boundaries. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Path}{Path}} \mbox{\hyperlink{namespacehmap_ae4132d5be84f747a499cbabcbc524cd8}{find\+\_\+cut\+\_\+path\+\_\+midpoint}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, \mbox{\hyperlink{namespacehmap_a1ba9d4ce7afe3309f8ae8e617f7154ee}{Domain\+Boundary}} start, \mbox{\hyperlink{namespacehmap_a1ba9d4ce7afe3309f8ae8e617f7154ee}{Domain\+Boundary}} end, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, int midp\+\_\+iterations=4, float midp\+\_\+sigma=0.\+2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
+\item 
 float \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}} (const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p1, const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p2)
 \begin{DoxyCompactList}\small\item\em Computes the angle between two points relative to the x-\/axis. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{namespacehmap_a1f02679c93973b91046f26960bf266d4}{angle}} (const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p0, const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p1, const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p2)
@@ -14734,6 +14736,7 @@ Selects the lowest point on the {\ttfamily start} and {\ttfamily end} boundaries
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_a40b948c49a05c14f2d540dc1a6952130}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ kw,\ seed);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(z);}
 \DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ Dijkstra}}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Path}{hmap::Path}}\ path\ =\ \mbox{\hyperlink{namespacehmap_a176288a6fd3bb7b78437e9f114f0d6b1}{hmap::find\_cut\_path\_dijkstra}}(}
 \DoxyCodeLine{\ \ \ \ \ \ z,}
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a1ba9d4ce7afe3309f8ae8e617f7154eea760545322569136cd3be89e004ab10d4}{hmap::DomainBoundary::BOUNDARY\_LEFT}},}
@@ -14742,13 +14745,31 @@ Selects the lowest point on the {\ttfamily start} and {\ttfamily end} boundaries
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zp\ =\ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}(shape);}
 \DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_adc8504c67cb22a2c8fb37d408e3aeafc}{to\_array}}(zp);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_find\_cut\_path.png"{}},\ \{z,\ zp\},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}});}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ procedural}}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Path}{hmap::Path}}\ path2\ =\ \mbox{\hyperlink{namespacehmap_ae4132d5be84f747a499cbabcbc524cd8}{hmap::find\_cut\_path\_midpoint}}(}
+\DoxyCodeLine{\ \ \ \ \ \ z,}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a1ba9d4ce7afe3309f8ae8e617f7154eea760545322569136cd3be89e004ab10d4}{hmap::DomainBoundary::BOUNDARY\_LEFT}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a1ba9d4ce7afe3309f8ae8e617f7154eeadb9a04ab3508704543b5dd43ae495fe7}{hmap::DomainBoundary::BOUNDARY\_RIGHT}},}
+\DoxyCodeLine{\ \ \ \ \ \ seed);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zp2\ =\ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}(shape);}
+\DoxyCodeLine{\ \ path2.\mbox{\hyperlink{classhmap_1_1Path_adc8504c67cb22a2c8fb37d408e3aeafc}{to\_array}}(zp2);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_find\_cut\_path.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ zp,\ zp2\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}});}
 \DoxyCodeLine{\}}
 
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}  \Hypertarget{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}\label{namespacehmap_aac71bb6c14edc17967957f7918acdbdd} 
+{\bfseries{Result}}  \Hypertarget{namespacehmap_ae4132d5be84f747a499cbabcbc524cd8}\label{namespacehmap_ae4132d5be84f747a499cbabcbc524cd8} 
+\index{hmap@{hmap}!find\_cut\_path\_midpoint@{find\_cut\_path\_midpoint}}
+\index{find\_cut\_path\_midpoint@{find\_cut\_path\_midpoint}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{find\_cut\_path\_midpoint()}{find\_cut\_path\_midpoint()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Path}{Path}} hmap\+::find\+\_\+cut\+\_\+path\+\_\+midpoint (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{\mbox{\hyperlink{namespacehmap_a1ba9d4ce7afe3309f8ae8e617f7154ee}{Domain\+Boundary}}}]{start,  }\item[{\mbox{\hyperlink{namespacehmap_a1ba9d4ce7afe3309f8ae8e617f7154ee}{Domain\+Boundary}}}]{end,  }\item[{\mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{seed,  }\item[{int}]{midp\+\_\+iterations = {\ttfamily 4},  }\item[{float}]{midp\+\_\+sigma = {\ttfamily 0.2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}\label{namespacehmap_aac71bb6c14edc17967957f7918acdbdd} 
 \index{hmap@{hmap}!angle@{angle}}
 \index{angle@{angle}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{angle()}{angle()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}

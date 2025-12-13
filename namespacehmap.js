@@ -684,6 +684,7 @@ var namespacehmap =
     [ "dig_river", "namespacehmap.html#a6d536f0d67ade56c6a60927d8c8e9720", null ],
     [ "dig_river", "namespacehmap.html#a31b3cde3ce1fa52f1856b962f4443d49", null ],
     [ "find_cut_path_dijkstra", "namespacehmap.html#a176288a6fd3bb7b78437e9f114f0d6b1", null ],
+    [ "find_cut_path_midpoint", "namespacehmap.html#ae4132d5be84f747a499cbabcbc524cd8", null ],
     [ "angle", "namespacehmap.html#aac71bb6c14edc17967957f7918acdbdd", null ],
     [ "angle", "namespacehmap.html#a1f02679c93973b91046f26960bf266d4", null ],
     [ "cross_product", "namespacehmap.html#a81ad5d7feec9716598307f4de02d47de", null ],
