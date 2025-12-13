@@ -12,9 +12,9 @@ namespace hmap
 {
 
 std::function<float(float)> get_phasor_profile_function(
-    const PhasorProfile &phasor_profile,
-    float                delta,
-    float               *p_profile_avg)
+    PhasorProfile phasor_profile,
+    float         delta,
+    float        *p_profile_avg)
 {
 
   std::function<float(float)> fct;

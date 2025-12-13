@@ -60,6 +60,18 @@ enum PhasorProfile : int
 };
 
 /**
+ * @brief Radial profile type.
+ */
+enum RadialProfile : int
+{
+  RP_GAIN,
+  RP_LINEAR,
+  RP_POW,
+  RP_SMOOTHSTEP,
+  RP_SMOOTHSTEP_UPPER,
+};
+
+/**
  * @brief Return the absolute value of the array elements.
  *
  * @param  array Input array.
@@ -225,15 +237,33 @@ std::function<float(float, float)> get_distance_function(
  * @return                A `std::function<float(float)>` that computes the
  *                        phasor profile for a given phase angle.
  *
- * @throws std::invalid_argumentIftheprovided`phasor_profile`isinvalid.
+ * @throws std::invalid_argumentIfthe provided `phasor_profile` is invalid.
  *
  * @note The average value is computed using numerical integration over 50
  * sample points within [-π, π].
  */
 std::function<float(float)> get_phasor_profile_function(
-    const PhasorProfile &phasor_profile,
-    float                delta,
-    float               *p_profile_avg = nullptr);
+    PhasorProfile phasor_profile,
+    float         delta,
+    float        *p_profile_avg = nullptr);
+
+/**
+ * @brief Returns a normalized radial profile function.
+ *
+ * The returned function maps x ∈ [0,1] to a value in [0,1], with f(0) = 0 and
+ * f(1) = 1. It is typically used for radial or distance-based falloff in
+ * procedural heightmaps.
+ *
+ * @param  radial_profile Radial profile type.
+ * @param  delta          Shape parameter used by some profiles.
+ *
+ * @return                Radial profile evaluation function.
+ *
+ * @throws std::invalid_argumentIfthe profile is invalid.
+ */
+std::function<float(float)> get_radial_profile_function(
+    RadialProfile radial_profile,
+    float         delta);
 
 /**
  * @brief Computes the highest power of 2 less than or equal to the given

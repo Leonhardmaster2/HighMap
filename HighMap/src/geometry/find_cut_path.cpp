@@ -2,19 +2,19 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 #include "highmap/geometry/path.hpp"
+#include "highmap/primitives.hpp"
 #include "highmap/shortest_path.hpp"
 
 namespace hmap
 {
 
-Path find_cut_path(const Array   &z,
-                   DomainBoundary start,
-                   DomainBoundary end,
-                   float          dijk_elevation_ratio,
-                   float          dijk_distance_exponent,
-                   float          dijk_upward_penalization)
+Path find_cut_path_dijkstra(const Array   &z,
+                            DomainBoundary start,
+                            DomainBoundary end,
+                            float          dijk_elevation_ratio,
+                            float          dijk_distance_exponent,
+                            float          dijk_upward_penalization)
 {
-
   // --- find lowest point on each boundary
 
   auto nx = z.shape.x;

@@ -9,9 +9,10 @@ int main(void)
   hmap::Array z = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, kw, seed);
   hmap::remap(z);
 
-  hmap::Path path = hmap::find_cut_path(z,
-                                        hmap::DomainBoundary::BOUNDARY_LEFT,
-                                        hmap::DomainBoundary::BOUNDARY_RIGHT);
+  hmap::Path path = hmap::find_cut_path_dijkstra(
+      z,
+      hmap::DomainBoundary::BOUNDARY_LEFT,
+      hmap::DomainBoundary::BOUNDARY_RIGHT);
 
   hmap::Array zp = hmap::Array(shape);
   path.to_array(zp);

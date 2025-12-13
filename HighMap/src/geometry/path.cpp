@@ -154,63 +154,59 @@ void Path::decasteljau(int edge_divisions)
 
 void Path::decimate_cfit(int n_points_target)
 {
-  // compute local curvature
-  std::vector<float> kappas = {};
+  size_t n = this->get_npoints();
+  if (n < 3 || n <= (size_t)n_points_target) return;
 
-  for (size_t k = 1; k < this->get_npoints() - 1; k++)
+  std::vector<Point> pts = this->points;
+
+  while (pts.size() > (size_t)n_points_target)
   {
-    float kp = curvature(this->points[k - 1],
-                         this->points[k],
-                         this->points[k + 1]);
-    kappas.push_back(kp);
+    size_t remove_idx = 1;
+    float  min_kappa = std::numeric_limits<float>::max();
+
+    for (size_t i = 1; i + 1 < pts.size(); ++i)
+    {
+      float k = curvature(pts[i - 1], pts[i], pts[i + 1]);
+      if (k < min_kappa)
+      {
+        min_kappa = k;
+        remove_idx = i;
+      }
+    }
+
+    pts.erase(pts.begin() + remove_idx);
   }
 
-  // sort by size (ascending)
-  std::vector<size_t> ksort = argsort(kappas);
-
-  // rebuild simplified path
-  std::vector<Point> new_points = {this->points.front()};
-  size_t             klim = this->get_npoints() - (size_t)n_points_target;
-
-  for (size_t k = 0; k < kappas.size(); k++)
-  {
-    if (ksort[k] >= klim) new_points.push_back(this->points[k + 1]);
-  }
-  new_points.push_back(this->points.back());
-
-  *this = Path(new_points);
+  this->points = std::move(pts);
 }
 
 void Path::decimate_vw(int n_points_target)
 {
-  if (this->get_npoints() < 3 || this->get_npoints() <= (size_t)n_points_target)
-    return;
+  size_t n = this->get_npoints();
+  if (n < 3 || n <= (size_t)n_points_target) return;
 
-  // compute triangle surfaces
-  std::vector<float> surfaces = {};
+  std::vector<Point> pts = this->points;
 
-  for (size_t k = 1; k < this->get_npoints() - 1; k++)
+  while (pts.size() > (size_t)n_points_target)
   {
-    float s = triangle_area(this->points[k - 1],
-                            this->points[k],
-                            this->points[k + 1]);
-    surfaces.push_back(s);
+    size_t remove_idx = 1;
+    float  min_area = std::numeric_limits<float>::max();
+
+    // find smallest effective triangle
+    for (size_t i = 1; i + 1 < pts.size(); ++i)
+    {
+      float area = triangle_area(pts[i - 1], pts[i], pts[i + 1]);
+      if (area < min_area)
+      {
+        min_area = area;
+        remove_idx = i;
+      }
+    }
+
+    pts.erase(pts.begin() + remove_idx);
   }
 
-  // sort by size (ascending)
-  std::vector<size_t> ksort = argsort(surfaces);
-
-  // rebuild simplified path
-  std::vector<Point> new_points = {this->points.front()};
-  size_t             klim = this->get_npoints() - (size_t)n_points_target;
-
-  for (size_t k = 0; k < surfaces.size(); k++)
-  {
-    if (ksort[k] >= klim) new_points.push_back(this->points[k + 1]);
-  }
-  new_points.push_back(this->points.back());
-
-  *this = Path(new_points);
+  this->points = std::move(pts);
 }
 
 void Path::dijkstra(Array      &array,

@@ -928,11 +928,11 @@ void dig_river(Array      &z,
  * **Result**
  * @image html ex_find_cut_path.png
  */
-Path find_cut_path(const Array   &z,
-                   DomainBoundary start,
-                   DomainBoundary end,
-                   float          dijk_elevation_ratio = 0.9f,
-                   float          dijk_distance_exponent = 2.f,
-                   float          dijk_upward_penalization = 0.f);
+Path find_cut_path_dijkstra(const Array   &z,
+                            DomainBoundary start,
+                            DomainBoundary end,
+                            float          dijk_elevation_ratio = 0.9f,
+                            float          dijk_distance_exponent = 2.f,
+                            float          dijk_upward_penalization = 100.f);
 
 } // namespace hmap
