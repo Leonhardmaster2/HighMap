@@ -19,7 +19,7 @@ var searchData=
   ['polygon_5ffield_5ffbm_16',['polygon_field_fbm',['../namespacehmap_1_1gpu.html#a4927a1382b383a5ceb9071f51bd5abf9',1,'hmap::gpu']]],
   ['pow_17',['pow',['../namespacehmap.html#a105e497c433e14b4235534ae6d2b87b9',1,'hmap']]],
   ['print_18',['print',['../classhmap_1_1Point.html#abc414635893bad912e30e009fbf8af35',1,'hmap::Point::print()'],['../classhmap_1_1Graph.html#a862b83b369721a4930917a78bd313421',1,'hmap::Graph::print()'],['../classhmap_1_1Cloud.html#aefea3d749a554df8a23ec38af5acb415',1,'hmap::Cloud::print()'],['../structhmap_1_1AssertResults.html#a5b26e3964b23c604022ff6705327ac37',1,'hmap::AssertResults::print()'],['../classhmap_1_1Array.html#a7ce20e5537ab2729aac320d0b27b7fa5',1,'hmap::Array::print()']]],
-  ['project_5ftalus_5falong_5fdirection_19',['project_talus_along_direction',['../namespacehmap_1_1gpu.html#a2a45ee039162803b53b94d8e06cc0293',1,'hmap::gpu']]],
+  ['project_5ftalus_5falong_5fdirection_19',['project_talus_along_direction',['../namespacehmap_1_1gpu.html#a0c8c9b43fbd562b0cc3364c9d85c9433',1,'hmap::gpu::project_talus_along_direction(const Array &amp;array, float talus, int direction=0)'],['../namespacehmap_1_1gpu.html#a8928c157c38b8376feb59e718a434f99',1,'hmap::gpu::project_talus_along_direction(const Array &amp;array, float talus, const Array *p_mask, int direction=0)']]],
   ['ptp_20',['ptp',['../classhmap_1_1Array.html#ac33557899eb50bcf964b2e5a2ad8ddcb',1,'hmap::Array']]],
   ['pyramiddecomposition_21',['PyramidDecomposition',['../classhmap_1_1PyramidDecomposition.html#a802f02d09f6a5073d9ecd523f5a0624c',1,'hmap::PyramidDecomposition']]]
 ];

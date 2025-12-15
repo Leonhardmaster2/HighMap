@@ -3084,19 +3084,15 @@
         </inbodydescription>
         <location file="HighMap/src/filters/filters_gpu.cpp" line="387" column="6" bodyfile="HighMap/src/filters/filters_gpu.cpp" bodystart="387" bodyend="390" declfile="HighMap/include/highmap/filters.hpp" declline="2505" declcolumn="6"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1_1gpu_1a2a45ee039162803b53b94d8e06cc0293" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacehmap_1_1gpu_1a0c8c9b43fbd562b0cc3364c9d85c9433" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
         <definition>Array hmap::gpu::project_talus_along_direction</definition>
-        <argsstring>(const Array &amp;array, float angle, float talus, int direction=0)</argsstring>
+        <argsstring>(const Array &amp;array, float talus, int direction=0)</argsstring>
         <name>project_talus_along_direction</name>
         <qualifiedname>hmap::gpu::project_talus_along_direction</qualifiedname>
         <param>
           <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
           <declname>array</declname>
-        </param>
-        <param>
-          <type>float</type>
-          <declname>angle</declname>
         </param>
         <param>
           <type>float</type>
@@ -3118,14 +3114,6 @@
 </parameternamelist>
 <parameterdescription>
 <para>Input 2D array. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>angle</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Angle in degrees (converted to radians internally). </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -3155,7 +3143,38 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters_gpu.cpp" line="392" column="7" bodyfile="HighMap/src/filters/filters_gpu.cpp" bodystart="392" bodyend="436" declfile="HighMap/include/highmap/filters.hpp" declline="2530" declcolumn="7"/>
+        <location file="HighMap/src/filters/filters_gpu.cpp" line="392" column="7" bodyfile="HighMap/src/filters/filters_gpu.cpp" bodystart="392" bodyend="433" declfile="HighMap/include/highmap/filters.hpp" declline="2529" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehmap_1_1gpu_1a8928c157c38b8376feb59e718a434f99" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
+        <definition>Array hmap::gpu::project_talus_along_direction</definition>
+        <argsstring>(const Array &amp;array, float talus, const Array *p_mask, int direction=0)</argsstring>
+        <name>project_talus_along_direction</name>
+        <qualifiedname>hmap::gpu::project_talus_along_direction</qualifiedname>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>array</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>talus</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
+          <declname>p_mask</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>direction</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/filters/filters_gpu.cpp" line="435" column="7" bodyfile="HighMap/src/filters/filters_gpu.cpp" bodystart="435" bodyend="450" declfile="HighMap/include/highmap/filters.hpp" declline="2533" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a5639aa9dbe4048e12f83ff5c5660db07" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -3183,7 +3202,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters_gpu.cpp" line="438" column="6" bodyfile="HighMap/src/filters/filters_gpu.cpp" bodystart="438" bodyend="442" declfile="HighMap/include/highmap/filters.hpp" declline="2536" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters_gpu.cpp" line="452" column="6" bodyfile="HighMap/src/filters/filters_gpu.cpp" bodystart="452" bodyend="456" declfile="HighMap/include/highmap/filters.hpp" declline="2539" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a551b9d1203331ed95e472c57a6e439c4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -3215,7 +3234,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters_gpu.cpp" line="444" column="6" bodyfile="HighMap/src/filters/filters_gpu.cpp" bodystart="444" bodyend="456" declfile="HighMap/include/highmap/filters.hpp" declline="2537" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters_gpu.cpp" line="458" column="6" bodyfile="HighMap/src/filters/filters_gpu.cpp" bodystart="458" bodyend="470" declfile="HighMap/include/highmap/filters.hpp" declline="2540" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a95377c44e7202205d867d42fe4cfa93d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -3243,7 +3262,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters_gpu.cpp" line="458" column="6" bodyfile="HighMap/src/filters/filters_gpu.cpp" bodystart="458" bodyend="488" declfile="HighMap/include/highmap/filters.hpp" declline="2541" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters_gpu.cpp" line="472" column="6" bodyfile="HighMap/src/filters/filters_gpu.cpp" bodystart="472" bodyend="502" declfile="HighMap/include/highmap/filters.hpp" declline="2544" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a11bc9aa25f858fb2587a8b6118570fa0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -3275,7 +3294,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters_gpu.cpp" line="490" column="6" bodyfile="HighMap/src/filters/filters_gpu.cpp" bodystart="490" bodyend="530" declfile="HighMap/include/highmap/filters.hpp" declline="2544" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters_gpu.cpp" line="504" column="6" bodyfile="HighMap/src/filters/filters_gpu.cpp" bodystart="504" bodyend="544" declfile="HighMap/include/highmap/filters.hpp" declline="2547" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a7d2aae253f1f67bbdbc718859f83ef0a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -3298,7 +3317,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters_gpu.cpp" line="532" column="6" bodyfile="HighMap/src/filters/filters_gpu.cpp" bodystart="532" bodyend="562" declfile="HighMap/include/highmap/filters.hpp" declline="2550" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters_gpu.cpp" line="546" column="6" bodyfile="HighMap/src/filters/filters_gpu.cpp" bodystart="546" bodyend="576" declfile="HighMap/include/highmap/filters.hpp" declline="2553" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1ad201432c26c75bbab156a22c52b7121a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -3325,7 +3344,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters_gpu.cpp" line="564" column="6" bodyfile="HighMap/src/filters/filters_gpu.cpp" bodystart="564" bodyend="602" declfile="HighMap/include/highmap/filters.hpp" declline="2553" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters_gpu.cpp" line="578" column="6" bodyfile="HighMap/src/filters/filters_gpu.cpp" bodystart="578" bodyend="616" declfile="HighMap/include/highmap/filters.hpp" declline="2556" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a4744808e10a1dfaf752cd68366824ee9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -3356,7 +3375,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters_gpu.cpp" line="604" column="6" bodyfile="HighMap/src/filters/filters_gpu.cpp" bodystart="604" bodyend="613" declfile="HighMap/include/highmap/filters.hpp" declline="2556" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters_gpu.cpp" line="618" column="6" bodyfile="HighMap/src/filters/filters_gpu.cpp" bodystart="618" bodyend="627" declfile="HighMap/include/highmap/filters.hpp" declline="2559" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1ab10a6dc3d92519c7bd3244571bcd6429" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -3389,7 +3408,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters_gpu.cpp" line="615" column="6" bodyfile="HighMap/src/filters/filters_gpu.cpp" bodystart="615" bodyend="623" declfile="HighMap/include/highmap/filters.hpp" declline="2562" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters_gpu.cpp" line="629" column="6" bodyfile="HighMap/src/filters/filters_gpu.cpp" bodystart="629" bodyend="637" declfile="HighMap/include/highmap/filters.hpp" declline="2565" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1adc6356d5b5690f553d33810380417805" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -3426,7 +3445,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters_gpu.cpp" line="625" column="6" bodyfile="HighMap/src/filters/filters_gpu.cpp" bodystart="625" bodyend="637" declfile="HighMap/include/highmap/filters.hpp" declline="2566" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters_gpu.cpp" line="639" column="6" bodyfile="HighMap/src/filters/filters_gpu.cpp" bodystart="639" bodyend="651" declfile="HighMap/include/highmap/filters.hpp" declline="2569" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a4d9bec907c550123aa7db34f4dadc3e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -3449,7 +3468,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters_gpu.cpp" line="639" column="6" bodyfile="HighMap/src/filters/filters_gpu.cpp" bodystart="639" bodyend="653" declfile="HighMap/include/highmap/filters.hpp" declline="2573" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters_gpu.cpp" line="653" column="6" bodyfile="HighMap/src/filters/filters_gpu.cpp" bodystart="653" bodyend="667" declfile="HighMap/include/highmap/filters.hpp" declline="2576" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a249288f5956cedfaffefd7b0b8fba17d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -3476,7 +3495,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters_gpu.cpp" line="655" column="6" bodyfile="HighMap/src/filters/filters_gpu.cpp" bodystart="655" bodyend="665" declfile="HighMap/include/highmap/filters.hpp" declline="2574" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters_gpu.cpp" line="669" column="6" bodyfile="HighMap/src/filters/filters_gpu.cpp" bodystart="669" bodyend="679" declfile="HighMap/include/highmap/filters.hpp" declline="2577" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a37f556d4d43005e2d618f0aa6c3527bb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -3499,7 +3518,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters_gpu.cpp" line="667" column="6" bodyfile="HighMap/src/filters/filters_gpu.cpp" bodystart="667" bodyend="681" declfile="HighMap/include/highmap/filters.hpp" declline="2579" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters_gpu.cpp" line="681" column="6" bodyfile="HighMap/src/filters/filters_gpu.cpp" bodystart="681" bodyend="695" declfile="HighMap/include/highmap/filters.hpp" declline="2582" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1acb80d6cda31177534d6e63c97675d46d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -3526,7 +3545,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/filters/filters_gpu.cpp" line="683" column="6" bodyfile="HighMap/src/filters/filters_gpu.cpp" bodystart="683" bodyend="693" declfile="HighMap/include/highmap/filters.hpp" declline="2580" declcolumn="6"/>
+        <location file="HighMap/src/filters/filters_gpu.cpp" line="697" column="6" bodyfile="HighMap/src/filters/filters_gpu.cpp" bodystart="697" bodyend="707" declfile="HighMap/include/highmap/filters.hpp" declline="2583" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a1c5e49734e49973fe1b275b6988dba12" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>

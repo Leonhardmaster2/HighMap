@@ -1,5 +1,7 @@
 var NAVTREEINDEX9 =
 {
+"index.html#autotoc_md4":[0,1,0],
+"index.html#autotoc_md5":[0,1,1],
 "index.html#autotoc_md6":[0,1,2],
 "index.html#autotoc_md7":[0,1,3],
 "index.html#autotoc_md8":[0,1,3,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX9 =
 "math_8hpp.html#aa5cc0ca00f731884d7a1dad714a254c8":[5,0,1,0,0,28,42],
 "math_8hpp.html#aa99a114cc6073cf7368c927afd9b4f87":[5,0,1,0,0,28,4],
 "math_8hpp.html#aad00066161ccf5ba4d6f93ab48c10876":[5,0,1,0,0,28,16],
-"math_8hpp.html#aae372587e98d5acb969a89a5f0661019":[5,0,1,0,0,28,46],
-"math_8hpp.html#ab0aafd1928d46167f782de3c00b937ac":[5,0,1,0,0,28,10],
-"math_8hpp.html#ab7bb73f6a918ffc68129e3a861080efd":[5,0,1,0,0,28,7]
+"math_8hpp.html#aae372587e98d5acb969a89a5f0661019":[5,0,1,0,0,28,46]
 };
