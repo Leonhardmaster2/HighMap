@@ -1,5 +1,8 @@
 var NAVTREEINDEX16 =
 {
+"range_8hpp.html#ae6dfd87b0368629657c3138dbf24cbc4":[5,0,1,0,0,32,3],
+"range_8hpp.html#af24e0b99ff6c2046ba5dfc4ccc9da7cf":[5,0,1,0,0,32,6],
+"range_8hpp.html#afb57b7af88ca225ff5a343d4583ab998":[5,0,1,0,0,32,20],
 "range_8hpp_source.html":[5,0,1,0,0,32],
 "range__cpu_8cpp.html":[5,0,1,1,27,1],
 "range__cpu_8cpp.html#a84e8cfef31aeb4ba10d4f7cbe04cb96d":[5,0,1,1,27,1,1],
@@ -246,8 +249,5 @@ var NAVTREEINDEX16 =
 "structhmap_1_1HeightmapRGBA.html#a9de9ba26672485c5f5e19b2f35bf26eb":[3,0,0,25,4],
 "structhmap_1_1HeightmapRGBA.html#a9de9ba26672485c5f5e19b2f35bf26eb":[4,0,0,24,4],
 "structhmap_1_1HeightmapRGBA.html#a9e385e734a686b79a12211edf0258902":[4,0,0,24,10],
-"structhmap_1_1HeightmapRGBA.html#a9e385e734a686b79a12211edf0258902":[3,0,0,25,10],
-"structhmap_1_1HeightmapRGBA.html#a9fb8149f2080b36e191ed97f70af09ad":[3,0,0,25,8],
-"structhmap_1_1HeightmapRGBA.html#a9fb8149f2080b36e191ed97f70af09ad":[4,0,0,24,8],
-"structhmap_1_1HeightmapRGBA.html#ab3df9c336ae8f0b46eee79a481b88be0":[3,0,0,25,0]
+"structhmap_1_1HeightmapRGBA.html#a9e385e734a686b79a12211edf0258902":[3,0,0,25,10]
 };

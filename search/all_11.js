@@ -70,9 +70,10 @@ var searchData=
   ['principle_20and_20data_20structure_67',['Basic principle and data structure',['../index.html#autotoc_md5',1,'']]],
   ['print_68',['print',['../classhmap_1_1Array.html#a7ce20e5537ab2729aac320d0b27b7fa5',1,'hmap::Array::print()'],['../classhmap_1_1Point.html#abc414635893bad912e30e009fbf8af35',1,'hmap::Point::print()'],['../classhmap_1_1Graph.html#a862b83b369721a4930917a78bd313421',1,'hmap::Graph::print()'],['../classhmap_1_1Cloud.html#aefea3d749a554df8a23ec38af5acb415',1,'hmap::Cloud::print()'],['../structhmap_1_1AssertResults.html#a5b26e3964b23c604022ff6705327ac37',1,'hmap::AssertResults::print()']]],
   ['processes_69',['Physical processes',['../index.html#autotoc_md10',1,'']]],
-  ['ptp_70',['ptp',['../classhmap_1_1Array.html#ac33557899eb50bcf964b2e5a2ad8ddcb',1,'hmap::Array']]],
-  ['pyramid_2ehpp_71',['pyramid.hpp',['../pyramid_8hpp.html',1,'']]],
-  ['pyramid_5fdecomposition_2ecpp_72',['pyramid_decomposition.cpp',['../pyramid__decomposition_8cpp.html',1,'']]],
-  ['pyramid_5ftransform_5fsupport_73',['pyramid_transform_support',['../namespacehmap.html#ae84abe9052dcb9c88f3c50716addfe44',1,'hmap']]],
-  ['pyramiddecomposition_74',['pyramiddecomposition',['../classhmap_1_1PyramidDecomposition.html#a802f02d09f6a5073d9ecd523f5a0624c',1,'hmap::PyramidDecomposition::PyramidDecomposition()'],['../classhmap_1_1PyramidDecomposition.html',1,'hmap::PyramidDecomposition']]]
+  ['project_5ftalus_5falong_5fdirection_70',['project_talus_along_direction',['../namespacehmap_1_1gpu.html#a2a45ee039162803b53b94d8e06cc0293',1,'hmap::gpu']]],
+  ['ptp_71',['ptp',['../classhmap_1_1Array.html#ac33557899eb50bcf964b2e5a2ad8ddcb',1,'hmap::Array']]],
+  ['pyramid_2ehpp_72',['pyramid.hpp',['../pyramid_8hpp.html',1,'']]],
+  ['pyramid_5fdecomposition_2ecpp_73',['pyramid_decomposition.cpp',['../pyramid__decomposition_8cpp.html',1,'']]],
+  ['pyramid_5ftransform_5fsupport_74',['pyramid_transform_support',['../namespacehmap.html#ae84abe9052dcb9c88f3c50716addfe44',1,'hmap']]],
+  ['pyramiddecomposition_75',['pyramiddecomposition',['../classhmap_1_1PyramidDecomposition.html#a802f02d09f6a5073d9ecd523f5a0624c',1,'hmap::PyramidDecomposition::PyramidDecomposition()'],['../classhmap_1_1PyramidDecomposition.html',1,'hmap::PyramidDecomposition']]]
 ];

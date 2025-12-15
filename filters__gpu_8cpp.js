@@ -21,6 +21,7 @@ var filters__gpu_8cpp =
     [ "normal_displacement", "filters__gpu_8cpp.html#a638d2358ff4ea4cb6a4f24106aa3c94d", null ],
     [ "plateau", "filters__gpu_8cpp.html#ae197a615380c768a5ce30df18397db52", null ],
     [ "plateau", "filters__gpu_8cpp.html#aa1d48aaeafd42970a2b0c9b6795d73b5", null ],
+    [ "project_talus_along_direction", "filters__gpu_8cpp.html#a2a45ee039162803b53b94d8e06cc0293", null ],
     [ "shrink", "filters__gpu_8cpp.html#a5639aa9dbe4048e12f83ff5c5660db07", null ],
     [ "shrink", "filters__gpu_8cpp.html#a551b9d1203331ed95e472c57a6e439c4", null ],
     [ "shrink", "filters__gpu_8cpp.html#a95377c44e7202205d867d42fe4cfa93d", null ],
