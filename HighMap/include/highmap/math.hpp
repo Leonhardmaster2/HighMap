@@ -237,7 +237,7 @@ std::function<float(float, float)> get_distance_function(
  * @return                A `std::function<float(float)>` that computes the
  *                        phasor profile for a given phase angle.
  *
- * @throws std::invalid_argumentIfthe provided `phasor_profile` is invalid.
+ * @throws std::invalid_argumentIftheprovided `phasor_profile` is invalid.
  *
  * @note The average value is computed using numerical integration over 50
  * sample points within [-π, π].
@@ -259,7 +259,7 @@ std::function<float(float)> get_phasor_profile_function(
  *
  * @return                Radial profile evaluation function.
  *
- * @throws std::invalid_argumentIfthe profile is invalid.
+ * @throws std::invalid_argumentIftheprofile is invalid.
  */
 std::function<float(float)> get_radial_profile_function(
     RadialProfile radial_profile,

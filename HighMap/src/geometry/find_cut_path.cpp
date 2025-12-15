@@ -124,7 +124,7 @@ Path find_cut_path_midpoint(const Array   &z,
                             int            midp_iterations,
                             float          midp_sigma)
 {
-    // --- find lowest point on each boundary
+  // --- find lowest point on each boundary
 
   auto nx = z.shape.x;
   auto ny = z.shape.y;
@@ -199,9 +199,13 @@ Path find_cut_path_midpoint(const Array   &z,
   // --- find cut path
 
   std::vector<int> i_path, j_path;
-  i_path = {start_pt.first, int(0.5f * (start_pt.first + end_pt.first)), end_pt.first};
-  j_path = {start_pt.second, int(0.5f * (start_pt.second + end_pt.second)), end_pt.second};
-  
+  i_path = {start_pt.first,
+            int(0.5f * (start_pt.first + end_pt.first)),
+            end_pt.first};
+  j_path = {start_pt.second,
+            int(0.5f * (start_pt.second + end_pt.second)),
+            end_pt.second};
+
   std::vector<float> x, y, v;
 
   x.reserve(i_path.size());
@@ -217,12 +221,10 @@ Path find_cut_path_midpoint(const Array   &z,
 
   auto path = Path(x, y, v);
 
-  path.fractalize(midp_iterations,
-		  seed,
-		  midp_sigma);
+  path.fractalize(midp_iterations, seed, midp_sigma);
 
   path.bspline();
-  
+
   return path;
 }
 

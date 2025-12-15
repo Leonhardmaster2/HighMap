@@ -2504,6 +2504,34 @@ void normal_displacement(Array       &array,
 void plateau(Array &array, const Array *p_mask, int ir, float factor);
 void plateau(Array &array, int ir, float factor); ///< @overload
 
+/**
+ * @brief Projects array values along a given direction using talus attenuation.
+ *
+ * Applies a directional propagation (D8 convention) where values decay with
+ * distance according to a talus coefficient. The computation is performed on
+ * the GPU using an OpenCL kernel.
+ *
+ * @param  array     Input 2D array.
+ * @param  angle     Angle in degrees (converted to radians internally).
+ * @param  talus     Talus coefficient controlling distance-based attenuation.
+ * @param  direction Propagation direction (D8 convention, range [0–7]).
+ *
+ * @return           A new Array containing the projected values.
+ *
+ * @note The array is temporarily shifted to non-negative values to ensure
+ * correctness of OpenCL atomic operations on floats.
+ *
+ * **Example**
+ * @include ex_project_talus_along_direction.png
+ *
+ * **Result**
+ * @image html ex_project_talus_along_direction.png
+ */
+Array project_talus_along_direction(const Array &array,
+                                    float        angle,
+                                    float        talus,
+                                    int          direction = 0);
+
 /*! @brief See hmap::shrink */
 void shrink(Array &array, int ir, int iterations = 1);
 void shrink(Array       &array,

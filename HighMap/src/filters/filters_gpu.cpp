@@ -389,6 +389,52 @@ void plateau(Array &array, int ir, float factor)
   gpu::plateau(array, nullptr, ir, factor);
 }
 
+Array project_talus_along_direction(const Array &array,
+                                    float        angle,
+                                    float        talus,
+                                    int          direction)
+{
+  const float alpha = angle / 180.f * M_PI;
+
+  // no negative values, raises issue with atomic max in OpenCL
+  const float vmin = array.min();
+  Array       out = array + vmin;
+
+  // D8 directions (clockwise, starting from +X)
+  constexpr int d8_offsets[8][2] = {
+      {1, 0},   // 0
+      {1, -1},  // 1
+      {0, -1},  // 2
+      {-1, -1}, // 3
+      {-1, 0},  // 4
+      {-1, 1},  // 5
+      {0, 1},   // 6
+      {1, 1}    // 7
+  };
+
+  direction &= 7; // safety clamp
+
+  int di = d8_offsets[direction][0];
+  int dj = d8_offsets[direction][1];
+
+  // apply
+  auto run = clwrapper::Run("project_talus_along_direction");
+
+  run.bind_buffer<float>("array", out.vector);
+  run.bind_buffer<float>("out", out.vector);
+
+  run.bind_arguments(array.shape.x, array.shape.y, alpha, talus, di, dj);
+
+  run.write_buffer("array");
+  run.write_buffer("out");
+
+  run.execute({array.shape.x, array.shape.y});
+
+  run.read_buffer("out");
+
+  return out - vmin;
+}
+
 void shrink(Array &array, int ir, int iterations)
 {
   Array kernel = cubic_pulse({2 * ir + 1, 2 * ir + 1});

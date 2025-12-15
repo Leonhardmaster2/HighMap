@@ -2,6 +2,30 @@ R""(
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
+inline void atomic_max(volatile __global float *source, const float value)
+{
+  // https://stackoverflow.com/questions/18950732
+  union
+  {
+    unsigned int int_val;
+    float        float_val;
+  } new_val;
+
+  union
+  {
+    unsigned int int_val;
+    float        float_val;
+  } prev_val;
+
+  do
+  {
+    prev_val.float_val = *source;
+    new_val.float_val = max(prev_val.float_val, value);
+  } while (atomic_cmpxchg((volatile __global unsigned int *)source,
+                          prev_val.int_val,
+                          new_val.int_val) != prev_val.int_val);
+}
+
 float pow_float(float base, float x)
 {
   return exp(x * log(base));
