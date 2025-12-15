@@ -390,12 +390,9 @@ void plateau(Array &array, int ir, float factor)
 }
 
 Array project_talus_along_direction(const Array &array,
-                                    float        angle,
                                     float        talus,
                                     int          direction)
 {
-  const float alpha = angle / 180.f * M_PI;
-
   // no negative values, raises issue with atomic max in OpenCL
   const float vmin = array.min();
   Array       out = array + vmin;
@@ -423,7 +420,7 @@ Array project_talus_along_direction(const Array &array,
   run.bind_buffer<float>("array", out.vector);
   run.bind_buffer<float>("out", out.vector);
 
-  run.bind_arguments(array.shape.x, array.shape.y, alpha, talus, di, dj);
+  run.bind_arguments(array.shape.x, array.shape.y, talus, di, dj);
 
   run.write_buffer("array");
   run.write_buffer("out");
@@ -433,6 +430,23 @@ Array project_talus_along_direction(const Array &array,
   run.read_buffer("out");
 
   return out - vmin;
+}
+
+Array project_talus_along_direction(const Array &array,
+                                    float        talus,
+                                    const Array *p_mask,
+                                    int          direction)
+{
+  if (!p_mask)
+  {
+    return project_talus_along_direction(array, talus, direction);
+  }
+  else
+  {
+    Array array_f = array;
+    array_f = project_talus_along_direction(array_f, talus, direction);
+    return lerp(array, array_f, *(p_mask));
+  }
 }
 
 void shrink(Array &array, int ir, int iterations)

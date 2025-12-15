@@ -6,7 +6,6 @@ void kernel project_talus_along_direction(global float *array,
                                           global float *out,
                                           const int     nx,
                                           const int     ny,
-                                          const float   alpha,
                                           const float   talus,
                                           const int     di,
                                           const int     dj)

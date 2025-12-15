@@ -12,7 +12,6 @@ int main(void)
 
   std::vector<hmap::Array> z_list = {z};
 
-  float angle = 45.f;
   float talus = 2.f / shape.x;
 
   for (int direction = 0; direction < 8; ++direction)
@@ -25,7 +24,6 @@ int main(void)
     // clang-format on
 
     hmap::Array zp = hmap::gpu::project_talus_along_direction(z,
-                                                              angle,
                                                               talus,
                                                               direction);
 

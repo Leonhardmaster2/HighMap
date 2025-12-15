@@ -2512,7 +2512,6 @@ void plateau(Array &array, int ir, float factor); ///< @overload
  * the GPU using an OpenCL kernel.
  *
  * @param  array     Input 2D array.
- * @param  angle     Angle in degrees (converted to radians internally).
  * @param  talus     Talus coefficient controlling distance-based attenuation.
  * @param  direction Propagation direction (D8 convention, range [0–7]).
  *
@@ -2528,8 +2527,12 @@ void plateau(Array &array, int ir, float factor); ///< @overload
  * @image html ex_project_talus_along_direction.png
  */
 Array project_talus_along_direction(const Array &array,
-                                    float        angle,
                                     float        talus,
+                                    int          direction = 0);
+
+Array project_talus_along_direction(const Array &array,
+                                    float        talus,
+                                    const Array *p_mask,
                                     int          direction = 0);
 
 /*! @brief See hmap::shrink */
