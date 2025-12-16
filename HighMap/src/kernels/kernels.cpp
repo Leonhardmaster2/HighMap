@@ -197,6 +197,31 @@ Array cubic_pulse_truncated(Vec2<int> shape, float slant_ratio, float angle)
   return array;
 }
 
+Array cupola(Vec2<int> shape, float rc)
+{
+  Array array = Array(shape);
+
+  for (int j = 0; j < array.shape.y; j++)
+    for (int i = 0; i < array.shape.x; i++)
+    {
+      float x = 2.f * float(i) / float(array.shape.x - 1) - 1.f;
+      float y = 2.f * float(j) / float(array.shape.y - 1) - 1.f;
+      float r = std::hypot(x, y);
+
+      if (r < rc)
+      {
+        array(i, j) = 1.f;
+      }
+      else
+      {
+        array(i, j) = 1.f / (1.f - rc) *
+                      std::sqrt((1.f - rc) * (1.f - rc) - (r - rc) * (r - rc));
+      }
+    }
+
+  return array;
+}
+
 Array disk(Vec2<int> shape)
 {
   Array array = Array(shape);
@@ -454,6 +479,7 @@ Array get_kernel(Vec2<int> shape, KernelType kernel_type)
   case KernelType::CUBIC_PULSE: return cubic_pulse(shape);
   case KernelType::CONE: return cone(shape);
   case KernelType::CONE_SMOOTH: return cone_smooth(shape);
+  case KernelType::CUPOLA: return cupola(shape);
   case KernelType::DISK: return disk(shape);
   case KernelType::LORENTZIAN: return lorentzian(shape);
   case KernelType::SMOOTH_COSINE: return smooth_cosine(shape);

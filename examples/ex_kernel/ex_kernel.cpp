@@ -6,6 +6,7 @@ int main(void)
   std::vector<hmap::Array> kernels = {};
 
   kernels.push_back(hmap::cone_smooth(shape));
+  kernels.push_back(hmap::cupola(shape, 0.7f));
   kernels.push_back(hmap::disk(shape));
   kernels.push_back(hmap::lorentzian(shape));
   kernels.push_back(hmap::lorentzian_compact(shape));

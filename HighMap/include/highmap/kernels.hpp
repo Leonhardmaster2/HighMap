@@ -42,7 +42,8 @@ enum KernelType : int
   LORENTZIAN,    ///< Lorentzian (Cauchy) kernel function
   SMOOTH_COSINE, ///< Smooth cosine kernel function
   SQUARE,        ///< Square kernel function
-  TRICUBE        ///< Tricube kernel function
+  TRICUBE,       ///< Tricube kernel function
+  CUPOLA         ///< Cupola (reverse) kernel function
 };
 
 /**
@@ -196,6 +197,8 @@ Array cubic_pulse_directional(Vec2<int> shape,
  * @image html ex_cubic_pulse_truncated.png
  */
 Array cubic_pulse_truncated(Vec2<int> shape, float slant_ratio, float angle);
+
+Array cupola(Vec2<int> shape, float rc = 0.5f);
 
 /**
  * @brief Generates a disk-shaped kernel footprint.
