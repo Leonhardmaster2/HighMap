@@ -1174,7 +1174,7 @@ std\+::vector$<$ float $>$ \mbox{\hyperlink{namespacehmap_a0b3237f9cc015299bf3e4
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a1004e5d8355c36fc1945d73c3b44eda0}{cubic\+\_\+pulse\+\_\+truncated}} (\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$ shape, float slant\+\_\+ratio, float \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}})
 \begin{DoxyCompactList}\small\item\em Generates a truncated cubic pulse kernel. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_aa1c9eea16487d5899ea5ab42999d8389}{cupola}} (\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$ shape, float rc=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
-\item 
+\begin{DoxyCompactList}\small\item\em Generate a 2D radial cupola kernel. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_acffafcfa04738c04fdd82eea8aa262dc}{disk}} (\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$ shape)
 \begin{DoxyCompactList}\small\item\em Generates a disk-\/shaped kernel footprint. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a04f44c4dc11d46f5089f5213d4c5d1a5}{disk\+\_\+smooth}} (\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$ shape, float r\+\_\+cutoff=0.\+9\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
@@ -18403,6 +18403,22 @@ This function creates a cubic pulse kernel that is truncated based on the specif
 \doxysubsubsection{\texorpdfstring{cupola()}{cupola()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::cupola (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$}]{shape,  }\item[{float}]{rc = {\ttfamily 0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
 
+
+
+Generate a 2D radial cupola kernel. 
+
+Values are computed from the normalized radial distance to the center\+: constant 1 inside radius {\ttfamily rc}, then smoothly decreasing to 0 at radius 1.
+
+
+\begin{DoxyParams}{Parameters}
+{\em shape} & Size of the output array (width, height). \\
+\hline
+{\em rc} & Radius of the inner flat region (normalized, \texorpdfstring{$<$}{<} 1). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Generated cupola-\/shaped \doxylink{classhmap_1_1Array}{Array}. 
+\end{DoxyReturn}
 \Hypertarget{namespacehmap_acffafcfa04738c04fdd82eea8aa262dc}\label{namespacehmap_acffafcfa04738c04fdd82eea8aa262dc} 
 \index{hmap@{hmap}!disk@{disk}}
 \index{disk@{disk}!hmap@{hmap}}
@@ -19063,7 +19079,7 @@ A {\ttfamily std\+::function\texorpdfstring{$<$}{<}float(float)\texorpdfstring{$
 \end{DoxyReturn}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em std\+::invalid\+\_\+argument\+Iftheprovided} & {\ttfamily phasor\+\_\+profile} is invalid.\\
+{\em std\+::invalid\+\_\+argument\+Iftheprovided\`{}phasor\+\_\+profile\`{}} & is invalid.\\
 \hline
 \end{DoxyExceptions}
 \begin{DoxyNote}{Note}
@@ -19093,7 +19109,7 @@ Radial profile evaluation function.
 \end{DoxyReturn}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em std\+::invalid\+\_\+argument\+Iftheprofile} & is invalid. \\
+{\em std\+::invalid\+\_\+argument\+Iftheprofileis} & invalid. \\
 \hline
 \end{DoxyExceptions}
 \Hypertarget{namespacehmap_a9ae209ce5746e99078078259955c7421}\label{namespacehmap_a9ae209ce5746e99078078259955c7421} 

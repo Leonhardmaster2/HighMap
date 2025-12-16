@@ -1708,6 +1708,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:a1004e5d8355c36fc1945d73c3b44eda0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a truncated cubic pulse kernel.  <br /></td></tr>
 <tr class="separator:a1004e5d8355c36fc1945d73c3b44eda0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa1c9eea16487d5899ea5ab42999d8389" id="r_aa1c9eea16487d5899ea5ab42999d8389"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#aa1c9eea16487d5899ea5ab42999d8389">cupola</a> (<a class="el" href="structhmap_1_1Vec2.html">Vec2</a>&lt; int &gt; shape, float rc=0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
+<tr class="memdesc:aa1c9eea16487d5899ea5ab42999d8389"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a 2D radial cupola kernel.  <br /></td></tr>
 <tr class="separator:aa1c9eea16487d5899ea5ab42999d8389"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acffafcfa04738c04fdd82eea8aa262dc" id="r_acffafcfa04738c04fdd82eea8aa262dc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#acffafcfa04738c04fdd82eea8aa262dc">disk</a> (<a class="el" href="structhmap_1_1Vec2.html">Vec2</a>&lt; int &gt; shape)</td></tr>
 <tr class="memdesc:acffafcfa04738c04fdd82eea8aa262dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a disk-shaped kernel footprint.  <br /></td></tr>
@@ -31028,6 +31029,17 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
+<p>Generate a 2D radial cupola kernel. </p>
+<p>Values are computed from the normalized radial distance to the center: constant 1 inside radius <code>rc</code>, then smoothly decreasing to 0 at radius 1.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">shape</td><td>Size of the output array (width, height). </td></tr>
+    <tr><td class="paramname">rc</td><td>Radius of the inner flat region (normalized, &lt; 1). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Generated cupola-shaped <a class="el" href="classhmap_1_1Array.html" title="Array class, helper to manipulate 2D float array with &quot;(i, j)&quot; indexing.">Array</a>. </dd></dl>
+
 </div>
 </div>
 <a id="acffafcfa04738c04fdd82eea8aa262dc" name="acffafcfa04738c04fdd82eea8aa262dc"></a>
@@ -32134,7 +32146,7 @@ template&lt;typename T &gt; </div>
 <dl class="section return"><dt>Returns</dt><dd>A <code>std::function&lt;float(float)&gt;</code> that computes the phasor profile for a given phase angle.</dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">std::invalid_argumentIftheprovided</td><td><code>phasor_profile</code> is invalid.</td></tr>
+    <tr><td class="paramname">std::invalid_argumentIftheprovided`phasor_profile`</td><td>is invalid.</td></tr>
   </table>
   </dd>
 </dl>
@@ -32180,7 +32192,7 @@ template&lt;typename T &gt; </div>
 <dl class="section return"><dt>Returns</dt><dd>Radial profile evaluation function.</dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">std::invalid_argumentIftheprofile</td><td>is invalid. </td></tr>
+    <tr><td class="paramname">std::invalid_argumentIftheprofileis</td><td>invalid. </td></tr>
   </table>
   </dd>
 </dl>
