@@ -198,6 +198,16 @@ Array cubic_pulse_directional(Vec2<int> shape,
  */
 Array cubic_pulse_truncated(Vec2<int> shape, float slant_ratio, float angle);
 
+/**
+ * @brief Generate a 2D radial cupola kernel.
+ *
+ * Values are computed from the normalized radial distance to the center:
+ * constant 1 inside radius @p rc, then smoothly decreasing to 0 at radius 1.
+ *
+ * @param  shape Size of the output array (width, height).
+ * @param  rc    Radius of the inner flat region (normalized, < 1).
+ * @return       Generated cupola-shaped Array.
+ */
 Array cupola(Vec2<int> shape, float rc = 0.5f);
 
 /**
