@@ -15,5 +15,6 @@ var searchData=
   ['cross_12',['CROSS',['../namespacehmap.html#a9d00db2263b4b7b05245531c41c1b592a5a41d1fe35db5ea65c515f217e5df2af',1,'hmap']]],
   ['cubic_13',['CUBIC',['../namespacehmap.html#a46291bb4766800deacc1ce9b45a9ea6ba212e7c8d91a9697cccd7df7d006a5547',1,'hmap']]],
   ['cubic_5fperiodic_14',['CUBIC_PERIODIC',['../namespacehmap.html#a46291bb4766800deacc1ce9b45a9ea6ba842713d3dc1b52f8b51bb2eaeb8bcf7e',1,'hmap']]],
-  ['cubic_5fpulse_15',['CUBIC_PULSE',['../namespacehmap.html#a4b6f135c6e81d313ca54ae1efac5f2c9ac3a721c2d521e171c529d24f3b768803',1,'hmap']]]
+  ['cubic_5fpulse_15',['CUBIC_PULSE',['../namespacehmap.html#a4b6f135c6e81d313ca54ae1efac5f2c9ac3a721c2d521e171c529d24f3b768803',1,'hmap']]],
+  ['cupola_16',['CUPOLA',['../namespacehmap.html#a4b6f135c6e81d313ca54ae1efac5f2c9a31894aedaf29906c8e2a82e7d562f537',1,'hmap']]]
 ];

@@ -1,5 +1,10 @@
 var NAVTREEINDEX14 =
 {
+"namespacehmap_1_1gpu.html#a65f49b330320b4c60d8ca5083eda8e86":[3,0,0,0,49],
+"namespacehmap_1_1gpu.html#a664f80c07e3609c285c98ed5f8bb2be3":[3,0,0,0,8],
+"namespacehmap_1_1gpu.html#a688f13a6de420fd318ccba616eafcf25":[3,0,0,0,112],
+"namespacehmap_1_1gpu.html#a6a106eafab89fcdee4764c21b7406f3e":[3,0,0,0,140],
+"namespacehmap_1_1gpu.html#a6e5f495c359df88d1185220ab1cc8c23":[3,0,0,0,150],
 "namespacehmap_1_1gpu.html#a70fde21fb8301d39cc7a0ed919457917":[3,0,0,0,44],
 "namespacehmap_1_1gpu.html#a722cef96155d5c26274e24c796dc3a1b":[3,0,0,0,45],
 "namespacehmap_1_1gpu.html#a72c9d220589d2724b4e48e9c37ff55ad":[3,0,0,0,29],
@@ -88,8 +93,8 @@ var NAVTREEINDEX14 =
 "namespacehmap_1_1gpu.html#afd24580b2b5fe7107bbff0ae2d3a1473":[3,0,0,0,4],
 "namespacehmap_1_1gpu.html#afed4e84e60dd0cdc453e7da72940ed27":[3,0,0,0,36],
 "namespacehmap_1_1gpu.html#afffb85b7bc6b9884cd00254c122da8e6":[3,0,0,0,99],
-"namespacemembers.html":[3,1,0],
 "namespacemembers.html":[3,1,0,0],
+"namespacemembers.html":[3,1,0],
 "namespacemembers_a.html":[3,1,0,1],
 "namespacemembers_b.html":[3,1,0,2],
 "namespacemembers_c.html":[3,1,0,3],
@@ -98,8 +103,8 @@ var NAVTREEINDEX14 =
 "namespacemembers_enum.html":[3,1,2],
 "namespacemembers_eval.html":[3,1,3],
 "namespacemembers_f.html":[3,1,0,6],
-"namespacemembers_func.html":[3,1,1,0],
 "namespacemembers_func.html":[3,1,1],
+"namespacemembers_func.html":[3,1,1,0],
 "namespacemembers_func_b.html":[3,1,1,1],
 "namespacemembers_func_c.html":[3,1,1,2],
 "namespacemembers_func_d.html":[3,1,1,3],
@@ -244,10 +249,5 @@ var NAVTREEINDEX14 =
 "point__sampling_8cpp.html#aca05646c60f189d1cb4ade3c062ea0e2":[5,0,1,1,14,5,6],
 "point__sampling_8cpp.html#acb1099889036fd10623012ab68592914":[5,0,1,1,14,5,5],
 "point__sampling_8cpp.html#ae3b069feb998593e6bd1ccdbb41f14eb":[5,0,1,1,14,5,1],
-"point__sampling_8hpp.html":[5,0,1,0,0,1,6],
-"point__sampling_8hpp.html#a58c8f359e1421bef310e45bcbc57cef8":[5,0,1,0,0,1,6,10],
-"point__sampling_8hpp.html#a6bc713eef74cda58ab2c3b41eb444b17":[5,0,1,0,0,1,6,11],
-"point__sampling_8hpp.html#a72b1f87026fe5d88b0febb8bc6592c2c":[5,0,1,0,0,1,6,14],
-"point__sampling_8hpp.html#a813c58d6f5d3b7febc0ba4f1a22619d6":[5,0,1,0,0,1,6,4],
-"point__sampling_8hpp.html#a8dad71368ba3687b381f3c72b66cace5":[5,0,1,0,0,1,6,12]
+"point__sampling_8hpp.html":[5,0,1,0,0,1,6]
 };

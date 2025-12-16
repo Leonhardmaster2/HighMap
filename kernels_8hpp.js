@@ -9,7 +9,8 @@ var kernels_8hpp =
       [ "LORENTZIAN", "kernels_8hpp.html#a4b6f135c6e81d313ca54ae1efac5f2c9adca1c57725ab84b424723316de5ba3dc", null ],
       [ "SMOOTH_COSINE", "kernels_8hpp.html#a4b6f135c6e81d313ca54ae1efac5f2c9a483c1cdf57c344c139e7aeeb826120b7", null ],
       [ "SQUARE", "kernels_8hpp.html#a4b6f135c6e81d313ca54ae1efac5f2c9aa90e813d22c88c29e9effe934ce6149d", null ],
-      [ "TRICUBE", "kernels_8hpp.html#a4b6f135c6e81d313ca54ae1efac5f2c9abd845bef8f2959d8d9e7355aa9c44d86", null ]
+      [ "TRICUBE", "kernels_8hpp.html#a4b6f135c6e81d313ca54ae1efac5f2c9abd845bef8f2959d8d9e7355aa9c44d86", null ],
+      [ "CUPOLA", "kernels_8hpp.html#a4b6f135c6e81d313ca54ae1efac5f2c9a31894aedaf29906c8e2a82e7d562f537", null ]
     ] ],
     [ "get_kernel", "kernels_8hpp.html#a4ad7940c796973a615558a8dc773281c", null ],
     [ "biweight", "kernels_8hpp.html#ae0ab7faed3577159bc8051ad0e25b051", null ],
@@ -21,6 +22,7 @@ var kernels_8hpp =
     [ "cubic_pulse_1d", "kernels_8hpp.html#a0b3237f9cc015299bf3e436be71d3587", null ],
     [ "cubic_pulse_directional", "kernels_8hpp.html#a2938b1bbfe89794423055e6ee9d2f79b", null ],
     [ "cubic_pulse_truncated", "kernels_8hpp.html#a1004e5d8355c36fc1945d73c3b44eda0", null ],
+    [ "cupola", "kernels_8hpp.html#aa1c9eea16487d5899ea5ab42999d8389", null ],
     [ "disk", "kernels_8hpp.html#acffafcfa04738c04fdd82eea8aa262dc", null ],
     [ "disk_smooth", "kernels_8hpp.html#a04f44c4dc11d46f5089f5213d4c5d1a5", null ],
     [ "gabor", "kernels_8hpp.html#aab655567714a21e6308c09d07056d52f", null ],

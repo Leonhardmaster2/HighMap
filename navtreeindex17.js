@@ -1,5 +1,10 @@
 var NAVTREEINDEX17 =
 {
+"structhmap_1_1HeightmapRGBA.html#a679ac4a0febf5e4def5ab6b07d641dbb":[4,0,0,24,9],
+"structhmap_1_1HeightmapRGBA.html#a679ac4a0febf5e4def5ab6b07d641dbb":[3,0,0,25,9],
+"structhmap_1_1HeightmapRGBA.html#a862282b5cffd9391fece507ac6fd3236":[4,0,0,24,7],
+"structhmap_1_1HeightmapRGBA.html#a862282b5cffd9391fece507ac6fd3236":[3,0,0,25,7],
+"structhmap_1_1HeightmapRGBA.html#a9de9ba26672485c5f5e19b2f35bf26eb":[3,0,0,25,4],
 "structhmap_1_1HeightmapRGBA.html#a9de9ba26672485c5f5e19b2f35bf26eb":[4,0,0,24,4],
 "structhmap_1_1HeightmapRGBA.html#a9e385e734a686b79a12211edf0258902":[4,0,0,24,10],
 "structhmap_1_1HeightmapRGBA.html#a9e385e734a686b79a12211edf0258902":[3,0,0,25,10],
@@ -244,10 +249,5 @@ var NAVTREEINDEX17 =
 "thermal__gpu_8cpp.html#ac87a6d725bf0751510f6b1f426a8af27":[5,0,1,1,10,23,4],
 "thermal__gpu_8cpp.html#ad0a05ed0beea669300d62197a0dadaf2":[5,0,1,1,10,23,10],
 "thermal__gpu_8cpp.html#ad5bd9a318918350b56ccc887139ca554":[5,0,1,1,10,23,5],
-"thermal__gpu_8cpp.html#ae57a1e9bd94f218d4be17c9d8be012c3":[5,0,1,1,10,23,6],
-"thermal__gpu_8cpp.html#afabf7cb3077839af03388c0d1236d912":[5,0,1,1,10,23,8],
-"thermal__olsen_8cpp.html":[5,0,1,1,10,24],
-"thermal__olsen_8cpp.html#a1ebb59674f1b317db20cc87385bc41a5":[5,0,1,1,10,24,0],
-"thermal__rib_8cpp.html":[5,0,1,1,10,25],
-"thermal__rib_8cpp.html#a4ca4c918ef88ea4fc16e25c7017e15c9":[5,0,1,1,10,25,0]
+"thermal__gpu_8cpp.html#ae57a1e9bd94f218d4be17c9d8be012c3":[5,0,1,1,10,23,6]
 };

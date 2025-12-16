@@ -360,7 +360,8 @@ var namespacehmap =
       [ "LORENTZIAN", "namespacehmap.html#a4b6f135c6e81d313ca54ae1efac5f2c9adca1c57725ab84b424723316de5ba3dc", null ],
       [ "SMOOTH_COSINE", "namespacehmap.html#a4b6f135c6e81d313ca54ae1efac5f2c9a483c1cdf57c344c139e7aeeb826120b7", null ],
       [ "SQUARE", "namespacehmap.html#a4b6f135c6e81d313ca54ae1efac5f2c9aa90e813d22c88c29e9effe934ce6149d", null ],
-      [ "TRICUBE", "namespacehmap.html#a4b6f135c6e81d313ca54ae1efac5f2c9abd845bef8f2959d8d9e7355aa9c44d86", null ]
+      [ "TRICUBE", "namespacehmap.html#a4b6f135c6e81d313ca54ae1efac5f2c9abd845bef8f2959d8d9e7355aa9c44d86", null ],
+      [ "CUPOLA", "namespacehmap.html#a4b6f135c6e81d313ca54ae1efac5f2c9a31894aedaf29906c8e2a82e7d562f537", null ]
     ] ],
     [ "DistanceFunction", "namespacehmap.html#a670f50d6c08ecd639d42db9c75a5273a", [
       [ "CHEBYSHEV", "namespacehmap.html#a670f50d6c08ecd639d42db9c75a5273aa2a9fc119d00df5ec5de1c13a006921f2", null ],
@@ -820,6 +821,7 @@ var namespacehmap =
     [ "cubic_pulse_1d", "namespacehmap.html#a0b3237f9cc015299bf3e436be71d3587", null ],
     [ "cubic_pulse_directional", "namespacehmap.html#a2938b1bbfe89794423055e6ee9d2f79b", null ],
     [ "cubic_pulse_truncated", "namespacehmap.html#a1004e5d8355c36fc1945d73c3b44eda0", null ],
+    [ "cupola", "namespacehmap.html#aa1c9eea16487d5899ea5ab42999d8389", null ],
     [ "disk", "namespacehmap.html#acffafcfa04738c04fdd82eea8aa262dc", null ],
     [ "disk_smooth", "namespacehmap.html#a04f44c4dc11d46f5089f5213d4c5d1a5", null ],
     [ "gabor", "namespacehmap.html#aab655567714a21e6308c09d07056d52f", null ],

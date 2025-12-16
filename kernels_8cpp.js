@@ -9,6 +9,7 @@ var kernels_8cpp =
     [ "cubic_pulse_1d", "kernels_8cpp.html#a0b3237f9cc015299bf3e436be71d3587", null ],
     [ "cubic_pulse_directional", "kernels_8cpp.html#a2938b1bbfe89794423055e6ee9d2f79b", null ],
     [ "cubic_pulse_truncated", "kernels_8cpp.html#a1004e5d8355c36fc1945d73c3b44eda0", null ],
+    [ "cupola", "kernels_8cpp.html#aa1c9eea16487d5899ea5ab42999d8389", null ],
     [ "disk", "kernels_8cpp.html#acffafcfa04738c04fdd82eea8aa262dc", null ],
     [ "disk_smooth", "kernels_8cpp.html#a04f44c4dc11d46f5089f5213d4c5d1a5", null ],
     [ "gabor", "kernels_8cpp.html#aab655567714a21e6308c09d07056d52f", null ],
