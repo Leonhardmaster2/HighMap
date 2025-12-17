@@ -212,7 +212,7 @@ Array cupola(Vec2<int> shape, float rc)
       {
         array(i, j) = 1.f;
       }
-      else
+      else if (r < 1.f)
       {
         array(i, j) = 1.f / (1.f - rc) *
                       std::sqrt((1.f - rc) * (1.f - rc) - (r - rc) * (r - rc));
