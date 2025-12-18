@@ -288,12 +288,14 @@ void thermal_scree(Array       &z,
                    Array       *p_deposition_map)
 {
   if (!p_mask)
+  {
     gpu::thermal_scree(z,
                        talus,
                        zmax,
                        iterations,
                        talus_constraint,
                        p_deposition_map);
+  }
   else
   {
     Array z_f = z;

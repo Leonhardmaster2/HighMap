@@ -1690,4 +1690,13 @@ void valley_fill(Array       &z,
                  float        zmin = 0.f,
                  float        zmax = 0.f);
 
+void valley_fill(Array       &z,
+                 const Array *p_mask,
+                 const Array &talus,
+                 int          iterations = 100,
+                 float        gamma = 2.f,
+                 float        ratio = 0.8f,
+                 float        zmin = 0.f,
+                 float        zmax = 0.f);
+
 } // namespace hmap::gpu

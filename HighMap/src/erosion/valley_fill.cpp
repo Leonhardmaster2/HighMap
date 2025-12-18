@@ -38,4 +38,25 @@ void valley_fill(Array       &z,
   z = lerp(ze, z, t);
 }
 
+void valley_fill(Array       &z,
+                 const Array *p_mask,
+                 const Array &talus,
+                 int          iterations,
+                 float        gamma,
+                 float        ratio,
+                 float        zmin,
+                 float        zmax)
+{
+  if (!p_mask)
+  {
+    gpu::valley_fill(z, talus, iterations, gamma, ratio, zmin, zmax);
+  }
+  else
+  {
+    Array z_f = z;
+    gpu::valley_fill(z_f, talus, iterations, gamma, ratio, zmin, zmax);
+    z = lerp(z, z_f, *(p_mask));
+  }
+}
+
 } // namespace hmap::gpu
