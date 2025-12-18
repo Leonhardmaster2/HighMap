@@ -1,12 +1,12 @@
 var searchData=
 [
-  ['valley_5ffill_0',['valley_fill',['../namespacehmap_1_1gpu.html#a92b5b40aecdc3d498708483a60e33d4f',1,'hmap::gpu']]],
+  ['valley_5ffill_0',['valley_fill',['../namespacehmap_1_1gpu.html#a1a3636751148cb4978252af094345f1a',1,'hmap::gpu::valley_fill(Array &amp;z, const Array *p_mask, const Array &amp;talus, int iterations=100, float gamma=2.f, float ratio=0.8f, float zmin=0.f, float zmax=0.f)'],['../namespacehmap_1_1gpu.html#a92b5b40aecdc3d498708483a60e33d4f',1,'hmap::gpu::valley_fill(Array &amp;z, const Array &amp;talus, int iterations=100, float gamma=2.f, float ratio=0.8f, float zmin=0.f, float zmax=0.f)']]],
   ['valley_5fwidth_1',['valley_width',['../namespacehmap.html#ab4d8048b79080012b8e60c270de8137f',1,'hmap']]],
   ['valuecubicnoisefunction_2',['ValueCubicNoiseFunction',['../classhmap_1_1ValueCubicNoiseFunction.html#a2928f6160986155891f6e739d2937ad7',1,'hmap::ValueCubicNoiseFunction']]],
   ['valuedelaunaynoisefunction_3',['ValueDelaunayNoiseFunction',['../classhmap_1_1ValueDelaunayNoiseFunction.html#a80134c06c76252e14d65b3b59f6e27d1',1,'hmap::ValueDelaunayNoiseFunction']]],
   ['valuelinearnoisefunction_4',['ValueLinearNoiseFunction',['../classhmap_1_1ValueLinearNoiseFunction.html#ac8c34d4741ac9060d9bdb565e99ac6fb',1,'hmap::ValueLinearNoiseFunction']]],
   ['valuenoisefunction_5',['ValueNoiseFunction',['../classhmap_1_1ValueNoiseFunction.html#a6328bfc3af4c45cb900e7a3b29e40d14',1,'hmap::ValueNoiseFunction']]],
-  ['vec2_6',['vec2',['../structhmap_1_1Vec2.html#ae137e7edf6223fc6aeda839eb2672d92',1,'hmap::Vec2::Vec2(T x, T y)'],['../structhmap_1_1Vec2.html#a7a51b0894ccdea14a7d86fbb8e7289c3',1,'hmap::Vec2::Vec2(const std::vector&lt; T &gt; &amp;vec)'],['../structhmap_1_1Vec2.html#ab537a59a10cd7d21e2169a5742cfe2ad',1,'hmap::Vec2::Vec2()']]],
+  ['vec2_6',['vec2',['../structhmap_1_1Vec2.html#a7a51b0894ccdea14a7d86fbb8e7289c3',1,'hmap::Vec2::Vec2(const std::vector&lt; T &gt; &amp;vec)'],['../structhmap_1_1Vec2.html#ab537a59a10cd7d21e2169a5742cfe2ad',1,'hmap::Vec2::Vec2()'],['../structhmap_1_1Vec2.html#ae137e7edf6223fc6aeda839eb2672d92',1,'hmap::Vec2::Vec2(T x, T y)']]],
   ['vec3_7',['vec3',['../structhmap_1_1Vec3.html#a84d1d7ff97f75cb998c1182493c1f6cd',1,'hmap::Vec3::Vec3()'],['../structhmap_1_1Vec3.html#a5ec51f4e17f7907e577b0330ef11674f',1,'hmap::Vec3::Vec3(T x, T y, T z)'],['../structhmap_1_1Vec3.html#a7ca52e92edc62504e79bcb27e3f52808',1,'hmap::Vec3::Vec3(const std::vector&lt; T &gt; &amp;vec)']]],
   ['vec4_8',['vec4',['../structhmap_1_1Vec4.html#aec07dc20c1becffea00a00270a92253f',1,'hmap::Vec4::Vec4()'],['../structhmap_1_1Vec4.html#ae9a4e44a1c81b1ea06986432a4c1c045',1,'hmap::Vec4::Vec4(T a, T b, T c, T d)'],['../structhmap_1_1Vec4.html#a0c9fe01131fd18c85148768f4db47733',1,'hmap::Vec4::Vec4(const std::vector&lt; T &gt; &amp;vec)']]],
   ['vector_5funique_5fvalues_9',['vector_unique_values',['../namespacehmap.html#ac95d63662a6878f27011c0b4c7c70078',1,'hmap']]],

@@ -212,6 +212,8 @@ Functions</h2></td></tr>
 <tr class="memitem:a92b5b40aecdc3d498708483a60e33d4f" id="r_a92b5b40aecdc3d498708483a60e33d4f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a92b5b40aecdc3d498708483a60e33d4f">valley_fill</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;talus, int iterations=100, float gamma=2.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float ratio=0.8<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float zmin=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float zmax=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
 <tr class="memdesc:a92b5b40aecdc3d498708483a60e33d4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fill valleys using thermal scree deposition and height-based blending.  <br /></td></tr>
 <tr class="separator:a92b5b40aecdc3d498708483a60e33d4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a3636751148cb4978252af094345f1a" id="r_a1a3636751148cb4978252af094345f1a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a1a3636751148cb4978252af094345f1a">valley_fill</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_mask, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;talus, int iterations=100, float gamma=2.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float ratio=0.8<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float zmin=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float zmax=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
+<tr class="separator:a1a3636751148cb4978252af094345f1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a022f5800d7e28f79f9e2d3abf687f490" id="r_a022f5800d7e28f79f9e2d3abf687f490"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a022f5800d7e28f79f9e2d3abf687f490">local_median_deviation</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, int ir)</td></tr>
 <tr class="memdesc:a022f5800d7e28f79f9e2d3abf687f490"><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="namespacehmap.html#a9b6a1d2ca8ef58a4a0605d04bcbff038" title="Computes the local median deviation of a 2D array.">hmap::local_median_deviation</a>.  <br /></td></tr>
 <tr class="separator:a022f5800d7e28f79f9e2d3abf687f490"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -2843,7 +2845,7 @@ Only available if OpenCL is enabled.</dd></dl>
 </div>
 </div>
 <a id="a92b5b40aecdc3d498708483a60e33d4f" name="a92b5b40aecdc3d498708483a60e33d4f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a92b5b40aecdc3d498708483a60e33d4f">&#9670;&#160;</a></span>valley_fill()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a92b5b40aecdc3d498708483a60e33d4f">&#9670;&#160;</a></span>valley_fill() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2939,6 +2941,70 @@ Only available if OpenCL is enabled.</dd></dl>
 <img src="ex_valley_fill.png" alt=""/>
 </div>
  
+</div>
+</div>
+<a id="a1a3636751148cb4978252af094345f1a" name="a1a3636751148cb4978252af094345f1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a3636751148cb4978252af094345f1a">&#9670;&#160;</a></span>valley_fill() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hmap::gpu::valley_fill </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>z</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
+          <td class="paramname"><em>p_mask</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>talus</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iterations</em> = <code>100</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>gamma</em> = <code>2.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>ratio</em> = <code>0.8<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>zmin</em> = <code>0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>zmax</em> = <code>0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
 </div>
 </div>
 <a id="a022f5800d7e28f79f9e2d3abf687f490" name="a022f5800d7e28f79f9e2d3abf687f490"></a>
