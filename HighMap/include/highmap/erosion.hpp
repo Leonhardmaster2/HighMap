@@ -1662,4 +1662,32 @@ void thermal_scree(Array       &z,
                    bool         talus_constraint = true,
                    Array       *p_deposition_map = nullptr); ///< @overload
 
+/**
+ * @brief Fill valleys using thermal scree deposition and height-based blending.
+ *
+ * Applies an erosion-based fill to valleys, then blends the result with the
+ * original heightmap using a gamma-shaped mask derived from elevation.
+ *
+ * @param z           Heightmap to modify in place.
+ * @param talus       Talus angle map controlling scree deposition.
+ * @param iterations  Number of erosion iterations.
+ * @param gamma       Gamma applied to the height-based mixing mask.
+ * @param ratio       Blend ratio controlling valley influence.
+ * @param zmin        Minimum height for normalization (auto if zmax <= zmin).
+ * @param zmax        Maximum height for normalization (auto if zmax <= zmin).
+ *
+ *  **Example**
+ * @include ex_valley_fill.cpp
+ *
+ * **Result**
+ * @image html ex_valley_fill.png
+ */
+void valley_fill(Array       &z,
+                 const Array &talus,
+                 int          iterations = 100,
+                 float        gamma = 2.f,
+                 float        ratio = 0.8f,
+                 float        zmin = 0.f,
+                 float        zmax = 0.f);
+
 } // namespace hmap::gpu
