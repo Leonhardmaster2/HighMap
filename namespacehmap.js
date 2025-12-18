@@ -36,6 +36,7 @@ var namespacehmap =
       [ "thermal_ridge", "namespacehmap_1_1gpu.html#ad0a05ed0beea669300d62197a0dadaf2", null ],
       [ "thermal_scree", "namespacehmap_1_1gpu.html#a87339ed12fc8a86b1f59e351b06e67e6", null ],
       [ "thermal_scree", "namespacehmap_1_1gpu.html#a112228c7b9ebff5463329da76d00fff1", null ],
+      [ "valley_fill", "namespacehmap_1_1gpu.html#a92b5b40aecdc3d498708483a60e33d4f", null ],
       [ "local_median_deviation", "namespacehmap_1_1gpu.html#a022f5800d7e28f79f9e2d3abf687f490", null ],
       [ "mean_local", "namespacehmap_1_1gpu.html#afed4e84e60dd0cdc453e7da72940ed27", null ],
       [ "relative_elevation", "namespacehmap_1_1gpu.html#a2dcbc7dac085b61f3c47e17256741a9a", null ],
