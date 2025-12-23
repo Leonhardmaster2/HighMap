@@ -58,6 +58,10 @@ struct \mbox{\hyperlink{structhmap_1_1HeightmapRGB}{Heightmap\+RGB}}
 \begin{DoxyCompactList}\small\item\em Height\+Map class, to manipulate a set of RGB heightmap for heightmap texturing. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structhmap_1_1HeightmapRGBA}{Heightmap\+RGBA}}
 \begin{DoxyCompactList}\small\item\em Height\+Map class, to manipulate a set of RGBA heightmap for heightmap texturing. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structhmap_1_1HelperNode}{Helper\+Node}}
+\item 
+struct \mbox{\hyperlink{structhmap_1_1HelperNodeCmp}{Helper\+Node\+Cmp}}
+\item 
 class \mbox{\hyperlink{classhmap_1_1Interpolator1D}{Interpolator1D}}
 \begin{DoxyCompactList}\small\item\em A class for performing 1D interpolation using the GSL library. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classhmap_1_1InterpolatorCurve}{Interpolator\+Curve}}
@@ -1067,6 +1071,8 @@ void \mbox{\hyperlink{namespacehmap_a086b4d007e08e88d2fc1166e67c524ee}{transform
 \begin{DoxyCompactList}\small\item\em Applies a transformation operation to a collection of heightmaps. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a3438427cf944820ce19e7ca9ce438985}{transform}} (std\+::vector$<$ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \texorpdfstring{$\ast$}{*} $>$ p\+\_\+hmaps, std\+::function$<$ void(const std\+::vector$<$ \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*} $>$)$>$ op, \mbox{\hyperlink{namespacehmap_ab36df744301ada377d4a3f3a34bca77f}{Transform\+Mode}} transform\+\_\+mode=\mbox{\hyperlink{namespacehmap_ab36df744301ada377d4a3f3a34bca77fac40707c2538151422af1c84dfd46252b}{Transform\+Mode\+::\+DISTRIBUTED}})
 \item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a08cf60d981ad9dcf57a822a6eed05174}{basin\+\_\+id\+\_\+priority\+\_\+flood}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z)
+\begin{DoxyCompactList}\small\item\em Label drainage basins using a priority-\/flood algorithm. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a2e0533063a77bfc047472d1d85f3f63c}{d8\+\_\+compute\+\_\+ndip}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&d8)
 \begin{DoxyCompactList}\small\item\em Computes the number of drainage paths for each cell based on the D8 flow direction model. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_ae42a874864d2d8f1a7b580f428395c01}{find\+\_\+flow\+\_\+sinks}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, std\+::vector$<$ int $>$ \&is, std\+::vector$<$ int $>$ \&js)
@@ -16846,7 +16852,51 @@ Applies a transformation operation to a collection of heightmaps.
 \doxysubsubsection{\texorpdfstring{transform()}{transform()}\hspace{0.1cm}{\footnotesize\ttfamily [19/19]}}
 {\footnotesize\ttfamily void hmap\+::transform (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \texorpdfstring{$\ast$}{*} $>$}]{p\+\_\+hmaps,  }\item[{std\+::function$<$ void(const std\+::vector$<$ \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*} $>$)$>$}]{op,  }\item[{\mbox{\hyperlink{namespacehmap_ab36df744301ada377d4a3f3a34bca77f}{Transform\+Mode}}}]{transform\+\_\+mode = {\ttfamily \mbox{\hyperlink{namespacehmap_ab36df744301ada377d4a3f3a34bca77fac40707c2538151422af1c84dfd46252b}{Transform\+Mode\+::\+DISTRIBUTED}}} }\end{DoxyParamCaption})}
 
-\Hypertarget{namespacehmap_a2e0533063a77bfc047472d1d85f3f63c}\label{namespacehmap_a2e0533063a77bfc047472d1d85f3f63c} 
+\Hypertarget{namespacehmap_a08cf60d981ad9dcf57a822a6eed05174}\label{namespacehmap_a08cf60d981ad9dcf57a822a6eed05174} 
+\index{hmap@{hmap}!basin\_id\_priority\_flood@{basin\_id\_priority\_flood}}
+\index{basin\_id\_priority\_flood@{basin\_id\_priority\_flood}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{basin\_id\_priority\_flood()}{basin\_id\_priority\_flood()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::basin\+\_\+id\+\_\+priority\+\_\+flood (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z }\end{DoxyParamCaption})}
+
+
+
+Label drainage basins using a priority-\/flood algorithm. 
+
+Starting from boundary cells, this function floods a 2D scalar field inward using a height-\/ordered priority queue and assigns each cell to a basin. Each boundary cell initializes a unique basin.
+
+Connectivity is 8-\/neighbor. Spill elevations between basins are detected but not yet recorded.
+
+
+\begin{DoxyParams}{Parameters}
+{\em z} & Input 2D elevation array. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classhmap_1_1Array}{Array} of basin identifiers with the same shape as {\ttfamily z}.
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{structhmap_1_1Vec2}{hmap::Vec2<int>}}\ shape\ =\ \{256,\ 256\};}
+\DoxyCodeLine{\ \ shape\ =\ \{1024,\ 1024\};}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{structhmap_1_1Vec2}{hmap::Vec2<float>}}\ res\ =\ \{4.f,\ 4.f\};}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed\ =\ 0;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_a40b948c49a05c14f2d540dc1a6952130}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ res,\ seed);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ \textcolor{keywordtype}{id}\ =\ \mbox{\hyperlink{namespacehmap_a08cf60d981ad9dcf57a822a6eed05174}{hmap::basin\_id\_priority\_flood}}(z);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_basin\_id.png"{}},\ \{z,\ \textcolor{keywordtype}{id}\},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}}  \Hypertarget{namespacehmap_a2e0533063a77bfc047472d1d85f3f63c}\label{namespacehmap_a2e0533063a77bfc047472d1d85f3f63c} 
 \index{hmap@{hmap}!d8\_compute\_ndip@{d8\_compute\_ndip}}
 \index{d8\_compute\_ndip@{d8\_compute\_ndip}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{d8\_compute\_ndip()}{d8\_compute\_ndip()}}
@@ -19079,7 +19129,7 @@ A {\ttfamily std\+::function\texorpdfstring{$<$}{<}float(float)\texorpdfstring{$
 \end{DoxyReturn}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em std\+::invalid\+\_\+argument\+Iftheprovided\`{}phasor\+\_\+profile\`{}} & is invalid.\\
+{\em std\+::invalid\+\_\+argument\+Iftheprovided\`{}phasor\+\_\+profile\`{}is} & invalid.\\
 \hline
 \end{DoxyExceptions}
 \begin{DoxyNote}{Note}
@@ -19109,7 +19159,7 @@ Radial profile evaluation function.
 \end{DoxyReturn}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em std\+::invalid\+\_\+argument\+Iftheprofileis} & invalid. \\
+{\em std\+::invalid\+\_\+argument\+Iftheprofileisinvalid.} & \\
 \hline
 \end{DoxyExceptions}
 \Hypertarget{namespacehmap_a9ae209ce5746e99078078259955c7421}\label{namespacehmap_a9ae209ce5746e99078078259955c7421} 

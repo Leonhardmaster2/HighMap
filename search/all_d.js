@@ -22,7 +22,7 @@ var searchData=
   ['list_19',['Todo List',['../todo.html',1,'']]],
   ['local_5fmedian_5fdeviation_20',['local_median_deviation',['../namespacehmap_1_1gpu.html#a022f5800d7e28f79f9e2d3abf687f490',1,'hmap::gpu::local_median_deviation()'],['../namespacehmap.html#a9b6a1d2ca8ef58a4a0605d04bcbff038',1,'hmap::local_median_deviation(const Array &amp;array, int ir)']]],
   ['log10_21',['log10',['../namespacehmap.html#a75475b6109023ce0ad64f6f9f7c4c525',1,'hmap']]],
-  ['lorentzian_22',['lorentzian',['../namespacehmap.html#a4b6f135c6e81d313ca54ae1efac5f2c9adca1c57725ab84b424723316de5ba3dc',1,'hmap::LORENTZIAN'],['../namespacehmap.html#a1d9165a0056e99a90b7734268f231901',1,'hmap::lorentzian(Vec2&lt; int &gt; shape, float footprint_threshold=0.1f)']]],
+  ['lorentzian_22',['lorentzian',['../namespacehmap.html#a1d9165a0056e99a90b7734268f231901',1,'hmap::lorentzian(Vec2&lt; int &gt; shape, float footprint_threshold=0.1f)'],['../namespacehmap.html#a4b6f135c6e81d313ca54ae1efac5f2c9adca1c57725ab84b424723316de5ba3dc',1,'hmap::LORENTZIAN']]],
   ['lorentzian_5fcompact_23',['lorentzian_compact',['../namespacehmap.html#a8be1ca22c14c4989ec8f18842fda2766',1,'hmap']]],
   ['low_5fpass_5ffilter_5ffunction_24',['low_pass_filter_function',['../classhmap_1_1PyramidDecomposition.html#ab7684296d0993168de59ca6938d30cd2',1,'hmap::PyramidDecomposition']]],
   ['low_5fpass_5fhigh_5forder_25',['low_pass_high_order',['../namespacehmap.html#a81842482472ceecc660913388219bb77',1,'hmap']]],

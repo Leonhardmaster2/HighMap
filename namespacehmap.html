@@ -184,6 +184,10 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhmap_1_1HeightmapRGBA.html">HeightmapRGBA</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">HeightMap class, to manipulate a set of RGBA heightmap for heightmap texturing.  <a href="structhmap_1_1HeightmapRGBA.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhmap_1_1HelperNode.html">HelperNode</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhmap_1_1HelperNodeCmp.html">HelperNodeCmp</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1Interpolator1D.html">Interpolator1D</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A class for performing 1D interpolation using the GSL library.  <a href="classhmap_1_1Interpolator1D.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1565,6 +1569,9 @@ Functions</h2></td></tr>
 <tr class="separator:a086b4d007e08e88d2fc1166e67c524ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3438427cf944820ce19e7ca9ce438985" id="r_a3438427cf944820ce19e7ca9ce438985"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a3438427cf944820ce19e7ca9ce438985">transform</a> (std::vector&lt; <a class="el" href="classhmap_1_1Heightmap.html">Heightmap</a> * &gt; p_hmaps, std::function&lt; void(const std::vector&lt; <a class="el" href="classhmap_1_1Array.html">Array</a> * &gt;)&gt; op, <a class="el" href="namespacehmap.html#ab36df744301ada377d4a3f3a34bca77f">TransformMode</a> transform_mode=<a class="el" href="namespacehmap.html#ab36df744301ada377d4a3f3a34bca77fac40707c2538151422af1c84dfd46252b">TransformMode::DISTRIBUTED</a>)</td></tr>
 <tr class="separator:a3438427cf944820ce19e7ca9ce438985"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08cf60d981ad9dcf57a822a6eed05174" id="r_a08cf60d981ad9dcf57a822a6eed05174"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a08cf60d981ad9dcf57a822a6eed05174">basin_id_priority_flood</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z)</td></tr>
+<tr class="memdesc:a08cf60d981ad9dcf57a822a6eed05174"><td class="mdescLeft">&#160;</td><td class="mdescRight">Label drainage basins using a priority-flood algorithm.  <br /></td></tr>
+<tr class="separator:a08cf60d981ad9dcf57a822a6eed05174"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e0533063a77bfc047472d1d85f3f63c" id="r_a2e0533063a77bfc047472d1d85f3f63c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a2e0533063a77bfc047472d1d85f3f63c">d8_compute_ndip</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;d8)</td></tr>
 <tr class="memdesc:a2e0533063a77bfc047472d1d85f3f63c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the number of drainage paths for each cell based on the D8 flow direction model.  <br /></td></tr>
 <tr class="separator:a2e0533063a77bfc047472d1d85f3f63c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -28132,6 +28139,55 @@ h}{\partial y}
 
 </div>
 </div>
+<a id="a08cf60d981ad9dcf57a822a6eed05174" name="a08cf60d981ad9dcf57a822a6eed05174"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08cf60d981ad9dcf57a822a6eed05174">&#9670;&#160;</a></span>basin_id_priority_flood()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classhmap_1_1Array.html">Array</a> hmap::basin_id_priority_flood </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>z</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Label drainage basins using a priority-flood algorithm. </p>
+<p>Starting from boundary cells, this function floods a 2D scalar field inward using a height-ordered priority queue and assigns each cell to a basin. Each boundary cell initializes a unique basin.</p>
+<p>Connectivity is 8-neighbor. Spill elevations between basins are detected but not yet recorded.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">z</td><td>Input 2D elevation array. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classhmap_1_1Array.html" title="Array class, helper to manipulate 2D float array with &quot;(i, j)&quot; indexing.">Array</a> of basin identifiers with the same shape as <code>z</code>.</dd></dl>
+<p><b>Example</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="highmap_8hpp.html">highmap.hpp</a>&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
+<div class="line">{</div>
+<div class="line">  <a class="code hl_struct" href="structhmap_1_1Vec2.html">hmap::Vec2&lt;int&gt;</a> shape = {256, 256};</div>
+<div class="line">  shape = {1024, 1024};</div>
+<div class="line">  <a class="code hl_struct" href="structhmap_1_1Vec2.html">hmap::Vec2&lt;float&gt;</a> res = {4.f, 4.f};</div>
+<div class="line">  <span class="keywordtype">int</span>               seed = 0;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z = <a class="code hl_function" href="namespacehmap.html#a40b948c49a05c14f2d540dc1a6952130">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, res, seed);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> <span class="keywordtype">id</span> = <a class="code hl_function" href="namespacehmap.html#a08cf60d981ad9dcf57a822a6eed05174">hmap::basin_id_priority_flood</a>(z);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(<span class="keywordtype">id</span>);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_basin_id.png&quot;</span>, {z, <span class="keywordtype">id</span>}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
+<div class="line">}</div>
+<div class="ttc" id="anamespacehmap_html_a08cf60d981ad9dcf57a822a6eed05174"><div class="ttname"><a href="namespacehmap.html#a08cf60d981ad9dcf57a822a6eed05174">hmap::basin_id_priority_flood</a></div><div class="ttdeci">Array basin_id_priority_flood(const Array &amp;z)</div><div class="ttdoc">Label drainage basins using a priority-flood algorithm.</div><div class="ttdef"><b>Definition</b> basin_id.cpp:25</div></div>
+</div><!-- fragment --><p><b>Result</b> </p><div class="image">
+<img src="ex_basin_id.png" alt=""/>
+</div>
+ 
+</div>
+</div>
 <a id="a2e0533063a77bfc047472d1d85f3f63c" name="a2e0533063a77bfc047472d1d85f3f63c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2e0533063a77bfc047472d1d85f3f63c">&#9670;&#160;</a></span>d8_compute_ndip()</h2>
 
@@ -32146,7 +32202,7 @@ template&lt;typename T &gt; </div>
 <dl class="section return"><dt>Returns</dt><dd>A <code>std::function&lt;float(float)&gt;</code> that computes the phasor profile for a given phase angle.</dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">std::invalid_argumentIftheprovided`phasor_profile`</td><td>is invalid.</td></tr>
+    <tr><td class="paramname">std::invalid_argumentIftheprovided`phasor_profile`is</td><td>invalid.</td></tr>
   </table>
   </dd>
 </dl>
@@ -32192,7 +32248,7 @@ template&lt;typename T &gt; </div>
 <dl class="section return"><dt>Returns</dt><dd>Radial profile evaluation function.</dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">std::invalid_argumentIftheprofileis</td><td>invalid. </td></tr>
+    <tr><td class="paramname">std::invalid_argumentIftheprofileisinvalid.</td><td></td></tr>
   </table>
   </dd>
 </dl>
