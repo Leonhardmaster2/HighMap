@@ -37,66 +37,69 @@ Array flow_accumulation_dinf(const Array &z, float talus_ref)
 {
   const std::vector<int> di = DI;
   const std::vector<int> dj = DJ;
-  const std::vector<int> kp = KP;
-  const uint             nb = di.size();
+  const int              nb = di.size();
 
+  const int w = z.shape.x;
+  const int h = z.shape.y;
+
+  // --- initial accumulation = 1 per cell
   Array facc = constant(z.shape, 1.f);
-  Array nidp = Array(z.shape);
 
-  // smooth small wavelenghts before computing flow directions to
-  // avoid artifacts
-  std::vector<Array> dinf(nb, {z.shape});
-  {
-    Array zf = z;
-    laplace(zf);
-    dinf = flow_direction_dinf(zf, talus_ref);
-  }
+  // --- compute D∞ directions (flattened)
+  Array zf = z;
+  laplace(zf); // smoothing as in your original code
+  std::vector<float> dinf = flow_direction_dinf_flat(zf, talus_ref);
 
-  // --- compute number of input drainage paths for each cell
-  for (int j = 1; j < z.shape.y - 1; j++)
-    for (int i = 1; i < z.shape.x - 1; i++)
-      for (uint k = 0; k < nb; k++)
-        // count the number of neighbors with flow directions pointing
-        // to the current cell
-        if (dinf[kp[k]](i + di[k], j + dj[k]) > 0.f) nidp(i, j) += 1.f;
+  // --- number of incoming drainage paths (integer!)
+  std::vector<uint8_t> nidp(w * h, 0);
 
-  // --- flow accumulation (same as D8 with minor adjustements)
-
-  // populate queue
-  std::list<int> i_queue = {};
-  std::list<int> j_queue = {};
-
-  for (int j = 1; j < z.shape.y - 1; j++)
-    for (int i = 1; i < z.shape.x - 1; i++)
-      if (nidp(i, j) == 0)
-      {
-        i_queue.push_back(i);
-        j_queue.push_back(j);
-      }
-
-  // main loop
-  while (i_queue.size() > 0)
-  {
-    int i = i_queue.back();
-    int j = j_queue.back();
-    i_queue.pop_back();
-    j_queue.pop_back();
-
-    for (uint k = 0; k < nb; k++)
+  for (int j = 1; j < h - 1; ++j)
+    for (int i = 1; i < w - 1; ++i)
     {
-      int p = i + di[k];
-      int q = j + dj[k];
-
-      if (dinf[k](i, j) > 0.f)
+      const int base = (j * w + i) * nb;
+      for (int k = 0; k < nb; ++k)
       {
-        facc(p, q) += facc(i, j) * dinf[k](i, j);
-        nidp(p, q) -= 1.f;
-        if (nidp(p, q) == 0.f)
+        if (dinf[base + k] > 0.f)
         {
-          i_queue.push_back(p);
-          j_queue.push_back(q);
+          int ni = i + di[k];
+          int nj = j + dj[k];
+          nidp[nj * w + ni]++;
         }
       }
+    }
+
+  // --- initialize queue with sources
+  std::vector<int> queue;
+  queue.reserve(w * h);
+
+  for (int j = 1; j < h - 1; ++j)
+    for (int i = 1; i < w - 1; ++i)
+      if (nidp[j * w + i] == 0) queue.push_back(j * w + i);
+
+  // --- topological accumulation
+  while (!queue.empty())
+  {
+    int idx = queue.back();
+    queue.pop_back();
+
+    int i = idx % w;
+    int j = idx / w;
+
+    const float acc = facc(i, j);
+    const int   base = idx * nb;
+
+    for (int k = 0; k < nb; ++k)
+    {
+      float wgt = dinf[base + k];
+      if (wgt == 0.f) continue;
+
+      int ni = i + di[k];
+      int nj = j + dj[k];
+      int nidx = nj * w + ni;
+
+      facc(ni, nj) += acc * wgt;
+
+      if (--nidp[nidx] == 0) queue.push_back(nidx);
     }
   }
 
@@ -110,7 +113,7 @@ std::vector<Array> flow_direction_dinf(const Array &z, float talus_ref)
   const std::vector<int>   dj = DJ;
   const std::vector<float> c = C;
   const std::vector<float> ecl = ECL;
-  const uint               nb = di.size();
+  const int                nb = di.size();
 
   // the flow-partition exponent is defined locally based on the local
   // talus in [1, 10] (Qin et al 2007)
@@ -127,7 +130,7 @@ std::vector<Array> flow_direction_dinf(const Array &z, float talus_ref)
   for (int j = 1; j < z.shape.y - 1; j++)
     for (int i = 1; i < z.shape.x - 1; i++)
     {
-      for (uint k = 0; k < nb; k++)
+      for (int k = 0; k < nb; k++)
       {
         float dz = z(i, j) - z(i + di[k], j + dj[k]);
         if (dz > 0) dinf[k](i, j) = std::pow(dz * c[k], p(i, j)) * ecl[k];
@@ -135,12 +138,60 @@ std::vector<Array> flow_direction_dinf(const Array &z, float talus_ref)
 
       // normalize
       float sum = 0.f;
-      for (uint k = 0; k < nb; k++)
+      for (int k = 0; k < nb; k++)
         sum += dinf[k](i, j);
 
       if (sum > 0.f)
-        for (uint k = 0; k < nb; k++)
+        for (int k = 0; k < nb; k++)
           dinf[k](i, j) /= sum;
+    }
+
+  return dinf;
+}
+
+std::vector<float> flow_direction_dinf_flat(const Array &z, float talus_ref)
+{
+  const Vec2<int>          shape = z.shape;
+  const std::vector<int>   di = DI;
+  const std::vector<int>   dj = DJ;
+  const std::vector<float> c = C;
+  const std::vector<float> ecl = ECL;
+  const uint               nb = di.size();
+
+  std::vector<float> dinf(shape.x * shape.y * nb, 0.f);
+
+  Array talus = gradient_talus(z);
+  talus /= talus_ref;
+  clamp_max(talus, 1.f);
+
+  for (int j = 1; j < shape.y - 1; ++j)
+    for (int i = 1; i < shape.x - 1; ++i)
+    {
+      const float pij = 10.f * talus(i, j) + 1.f;
+
+      float sum = 0.f;
+      float tmp[8];
+
+      for (uint k = 0; k < nb; ++k)
+      {
+        float dz = z(i, j) - z(i + di[k], j + dj[k]);
+        if (dz > 0.f)
+        {
+          float v = std::pow(dz * c[k], pij) * ecl[k];
+          tmp[k] = v;
+          sum += v;
+        }
+        else
+          tmp[k] = 0.f;
+      }
+
+      if (sum > 0.f)
+      {
+        const float inv = 1.f / sum;
+        const int   idx = (j * shape.x + i) * nb;
+        for (uint k = 0; k < nb; ++k)
+          dinf[idx + k] = tmp[k] * inv;
+      }
     }
 
   return dinf;
@@ -152,6 +203,7 @@ Array flow_direction_dinf_angle(const Array &z, float talus_ref)
   const std::vector<int>   dj = DJ;
   const std::vector<float> c = C;
   const std::vector<float> ecl = ECL;
+
   const uint               nb = di.size();
 
   // flow-partition exponent (Qin et al. 2007)
