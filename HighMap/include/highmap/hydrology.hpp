@@ -30,6 +30,27 @@ namespace hmap
 {
 
 /**
+ * @brief Label drainage basins using a priority-flood algorithm.
+ *
+ * Starting from boundary cells, this function floods a 2D scalar field inward
+ * using a height-ordered priority queue and assigns each cell to a basin. Each
+ * boundary cell initializes a unique basin.
+ *
+ * Connectivity is 8-neighbor. Spill elevations between basins are detected but
+ * not yet recorded.
+ *
+ * @param  z Input 2D elevation array.
+ * @return   Array of basin identifiers with the same shape as @p z.
+ *
+ * **Example**
+ * @include ex_basin_id.cpp
+ *
+ * **Result**
+ * @image html ex_basin_id.png
+ */
+Array basin_id_priority_flood(const Array &z);
+
+/**
  * @brief Computes the number of drainage paths for each cell based on the D8
  * flow direction model.
  *

@@ -1668,13 +1668,13 @@ void thermal_scree(Array       &z,
  * Applies an erosion-based fill to valleys, then blends the result with the
  * original heightmap using a gamma-shaped mask derived from elevation.
  *
- * @param z           Heightmap to modify in place.
- * @param talus       Talus angle map controlling scree deposition.
- * @param iterations  Number of erosion iterations.
- * @param gamma       Gamma applied to the height-based mixing mask.
- * @param ratio       Blend ratio controlling valley influence.
- * @param zmin        Minimum height for normalization (auto if zmax <= zmin).
- * @param zmax        Maximum height for normalization (auto if zmax <= zmin).
+ * @param z          Heightmap to modify in place.
+ * @param talus      Talus angle map controlling scree deposition.
+ * @param iterations Number of erosion iterations.
+ * @param gamma      Gamma applied to the height-based mixing mask.
+ * @param ratio      Blend ratio controlling valley influence.
+ * @param zmin       Minimum height for normalization (auto if zmax <= zmin).
+ * @param zmax       Maximum height for normalization (auto if zmax <= zmin).
  *
  *  **Example**
  * @include ex_valley_fill.cpp
