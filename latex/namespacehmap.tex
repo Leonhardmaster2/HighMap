@@ -1095,6 +1095,8 @@ void \mbox{\hyperlink{namespacehmap_ae42a874864d2d8f1a7b580f428395c01}{find\+\_\
 \begin{DoxyCompactList}\small\item\em Computes the flow direction from each cell to its downslope neighbor using the D8 model. \end{DoxyCompactList}\item 
 std\+::vector$<$ \mbox{\hyperlink{classhmap_1_1Array}{Array}} $>$ \mbox{\hyperlink{namespacehmap_a819fc20190d598c4664d442ee824fc96}{flow\+\_\+direction\+\_\+dinf}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, float talus\+\_\+ref)
 \begin{DoxyCompactList}\small\item\em Computes the flow direction and weights for each direction using the Multiple Flow Direction (MFD) model. \end{DoxyCompactList}\item 
+std\+::vector$<$ float $>$ \mbox{\hyperlink{namespacehmap_aa84fc9cbd0704c16abf21ef12c9c5fad}{flow\+\_\+direction\+\_\+dinf\+\_\+flat}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, float talus\+\_\+ref)
+\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_ad1d77ab375dfcca54183bbb687c82e9d}{flow\+\_\+direction\+\_\+dinf\+\_\+angle}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, float talus\+\_\+ref)
 \begin{DoxyCompactList}\small\item\em Computes the flow direction using the Multiple Flow Direction (MFD) model. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Path}{Path}} \mbox{\hyperlink{namespacehmap_a5adb98e67f89036317df083dd2123a1e}{flow\+\_\+stream}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, const \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$ ij\+\_\+start, const float elevation\+\_\+ratio=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, const float distance\+\_\+exponent=2.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, const float upward\+\_\+penalization=100.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
@@ -17456,6 +17458,12 @@ This function calculates the flow direction for each cell and provides the weigh
 \begin{DoxyReturn}{Returns}
 std\+::vector$<$\+Array$>$ A vector of arrays, each containing the weights for flow directions at every cell. 
 \end{DoxyReturn}
+\Hypertarget{namespacehmap_aa84fc9cbd0704c16abf21ef12c9c5fad}\label{namespacehmap_aa84fc9cbd0704c16abf21ef12c9c5fad} 
+\index{hmap@{hmap}!flow\_direction\_dinf\_flat@{flow\_direction\_dinf\_flat}}
+\index{flow\_direction\_dinf\_flat@{flow\_direction\_dinf\_flat}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{flow\_direction\_dinf\_flat()}{flow\_direction\_dinf\_flat()}}
+{\footnotesize\ttfamily std\+::vector$<$ float $>$ hmap\+::flow\+\_\+direction\+\_\+dinf\+\_\+flat (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{float}]{talus\+\_\+ref }\end{DoxyParamCaption})}
+
 \Hypertarget{namespacehmap_ad1d77ab375dfcca54183bbb687c82e9d}\label{namespacehmap_ad1d77ab375dfcca54183bbb687c82e9d} 
 \index{hmap@{hmap}!flow\_direction\_dinf\_angle@{flow\_direction\_dinf\_angle}}
 \index{flow\_direction\_dinf\_angle@{flow\_direction\_dinf\_angle}!hmap@{hmap}}

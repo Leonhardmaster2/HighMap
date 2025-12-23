@@ -784,6 +784,7 @@ var namespacehmap =
     [ "flow_accumulation_dinf", "namespacehmap.html#a58ba4910af868f70849f343e0c73adf3", null ],
     [ "flow_direction_d8", "namespacehmap.html#af8f580c9d50a07585257569bd1160891", null ],
     [ "flow_direction_dinf", "namespacehmap.html#a819fc20190d598c4664d442ee824fc96", null ],
+    [ "flow_direction_dinf_flat", "namespacehmap.html#aa84fc9cbd0704c16abf21ef12c9c5fad", null ],
     [ "flow_direction_dinf_angle", "namespacehmap.html#ad1d77ab375dfcca54183bbb687c82e9d", null ],
     [ "flow_stream", "namespacehmap.html#a5adb98e67f89036317df083dd2123a1e", null ],
     [ "generate_riverbed", "namespacehmap.html#a97ba5dfaa6625b654a8010ed7d2f3465", null ],
