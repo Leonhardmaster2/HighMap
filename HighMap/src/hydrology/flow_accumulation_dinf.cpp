@@ -35,55 +35,58 @@ namespace hmap
 
 Array flow_accumulation_dinf(const Array &z, float talus_ref)
 {
+  const Vec2<int>        shape = z.shape;
   const std::vector<int> di = DI;
   const std::vector<int> dj = DJ;
   const int              nb = di.size();
 
-  const int w = z.shape.x;
-  const int h = z.shape.y;
-
   // --- initial accumulation = 1 per cell
+
   Array facc = constant(z.shape, 1.f);
 
-  // --- compute D∞ directions (flattened)
+  // --- compute Dinf directions (flattened)
+
   Array zf = z;
-  laplace(zf); // smoothing as in your original code
+  laplace(zf);
   std::vector<float> dinf = flow_direction_dinf_flat(zf, talus_ref);
 
   // --- number of incoming drainage paths (integer!)
-  std::vector<uint8_t> nidp(w * h, 0);
 
-  for (int j = 1; j < h - 1; ++j)
-    for (int i = 1; i < w - 1; ++i)
+  std::vector<uint8_t> nidp(shape.x * shape.y, 0);
+
+  for (int j = 1; j < shape.y - 1; ++j)
+    for (int i = 1; i < shape.x - 1; ++i)
     {
-      const int base = (j * w + i) * nb;
+      const int base = (j * shape.x + i) * nb;
       for (int k = 0; k < nb; ++k)
       {
         if (dinf[base + k] > 0.f)
         {
           int ni = i + di[k];
           int nj = j + dj[k];
-          nidp[nj * w + ni]++;
+          nidp[nj * shape.x + ni]++;
         }
       }
     }
 
   // --- initialize queue with sources
-  std::vector<int> queue;
-  queue.reserve(w * h);
 
-  for (int j = 1; j < h - 1; ++j)
-    for (int i = 1; i < w - 1; ++i)
-      if (nidp[j * w + i] == 0) queue.push_back(j * w + i);
+  std::vector<int> queue;
+  queue.reserve(shape.x * shape.y);
+
+  for (int j = 1; j < shape.y - 1; ++j)
+    for (int i = 1; i < shape.x - 1; ++i)
+      if (nidp[j * shape.x + i] == 0) queue.push_back(j * shape.x + i);
 
   // --- topological accumulation
+
   while (!queue.empty())
   {
     int idx = queue.back();
     queue.pop_back();
 
-    int i = idx % w;
-    int j = idx / w;
+    int i = idx % shape.x;
+    int j = idx / shape.x;
 
     const float acc = facc(i, j);
     const int   base = idx * nb;
@@ -95,7 +98,7 @@ Array flow_accumulation_dinf(const Array &z, float talus_ref)
 
       int ni = i + di[k];
       int nj = j + dj[k];
-      int nidx = nj * w + ni;
+      int nidx = nj * shape.x + ni;
 
       facc(ni, nj) += acc * wgt;
 
@@ -204,7 +207,7 @@ Array flow_direction_dinf_angle(const Array &z, float talus_ref)
   const std::vector<float> c = C;
   const std::vector<float> ecl = ECL;
 
-  const uint               nb = di.size();
+  const uint nb = di.size();
 
   // flow-partition exponent (Qin et al. 2007)
   Array p = Array(z.shape);
