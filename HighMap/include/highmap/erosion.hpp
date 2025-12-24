@@ -614,6 +614,75 @@ void hydraulic_stream(Array &z,
                       float  clipping_ratio = 10.f); ///< @overload
 
 /**
+ * @brief Apply hydraulic erosion based on a flow accumulation map, alternative
+ * formulation.
+ *
+ * @param z                      Input array representing the terrain elevation.
+ * @param c_erosion              Erosion coefficient controlling the intensity
+ *                               of erosion.
+ * @param talus_ref              Reference talus used to locally define the
+ *                               flow-partition exponent. Small values lead to
+ *                               thinner flow streams (see
+ * {@link flow_accumulation_dinf}).
+ * @param deposition_ir          Kernel radius for sediment deposition. If
+ *                               greater than 1, a smoothing effect is applied.
+ * @param deposition_scale_ratio Scaling factor for sediment deposition.
+ * @param gradient_power         Exponent applied to the terrain gradient to
+ *                               control erosion intensity.
+ * @param gradient_scaling_ratio Scaling factor for gradient-based erosion.
+ * @param gradient_prefilter_ir  Kernel radius for pre-filtering the terrain
+ *                               gradient.
+ * @param saturation_ratio       Ratio controlling the water saturation
+ *                               threshold for erosion processes.
+ * @param p_bedrock              Pointer to an optional lower elevation limit.
+ * @param p_moisture_map         Pointer to the moisture map (rainfall
+ *                               quantity), expected to be in [0, 1].
+ * @param p_erosion_map[out]     Pointer to the erosion map, provided as an
+ *                               output field.
+ * @param p_flow_map[out]        Pointer to the flow accumulation map, provided
+ *                               as an output field.
+ * @param ir                     Kernel radius. If `ir > 1`, a cone kernel is
+ *                               used to carve channel flow erosion.
+ *
+ * **Example**
+ * @include ex_hydraulic_stream.cpp
+ *
+ * **Result**
+ * @image html ex_hydraulic_stream0.png
+ * @image html ex_hydraulic_stream1.png
+ */
+void hydraulic_stream_log(Array &z,
+                          float  c_erosion,
+                          float  talus_ref,
+                          int    deposition_ir = 32,
+                          float  deposition_scale_ratio = 1.f,
+                          float  gradient_power = 0.8f,
+                          float  gradient_scaling_ratio = 1.f,
+                          int    gradient_prefilter_ir = 16,
+                          float  saturation_ratio = 1.f,
+                          Array *p_bedrock = nullptr,
+                          Array *p_moisture_map = nullptr,
+                          Array *p_erosion_map = nullptr,
+                          Array *p_deposition_map = nullptr,
+                          Array *p_flow_map = nullptr);
+
+void hydraulic_stream_log(Array &z,
+                          float  c_erosion,
+                          float  talus_ref,
+                          Array *p_mask,
+                          int    deposition_ir = 32,
+                          float  deposition_scale_ratio = 1.f,
+                          float  gradient_power = 0.8f,
+                          float  gradient_scaling_ratio = 1.f,
+                          int    gradient_prefilter_ir = 16,
+                          float  saturation_ratio = 1.f,
+                          Array *p_bedrock = nullptr,
+                          Array *p_moisture_map = nullptr,
+                          Array *p_erosion_map = nullptr,
+                          Array *p_deposition_map = nullptr,
+                          Array *p_flow_map = nullptr); ///< @overload
+
+/**
  * @brief Applies hydraulic erosion with upscaling amplification.
  *
  * This function progressively upscales the input array `z` by powers of 2 and
@@ -695,75 +764,6 @@ void hydraulic_stream_upscale_amplification(
     float  persistence = 1.f,
     int    ir = 1,
     float  clipping_ratio = 10.f); ///< @overload
-
-/**
- * @brief Apply hydraulic erosion based on a flow accumulation map, alternative
- * formulation.
- *
- * @param z                      Input array representing the terrain elevation.
- * @param c_erosion              Erosion coefficient controlling the intensity
- *                               of erosion.
- * @param talus_ref              Reference talus used to locally define the
- *                               flow-partition exponent. Small values lead to
- *                               thinner flow streams (see
- * {@link flow_accumulation_dinf}).
- * @param deposition_ir          Kernel radius for sediment deposition. If
- *                               greater than 1, a smoothing effect is applied.
- * @param deposition_scale_ratio Scaling factor for sediment deposition.
- * @param gradient_power         Exponent applied to the terrain gradient to
- *                               control erosion intensity.
- * @param gradient_scaling_ratio Scaling factor for gradient-based erosion.
- * @param gradient_prefilter_ir  Kernel radius for pre-filtering the terrain
- *                               gradient.
- * @param saturation_ratio       Ratio controlling the water saturation
- *                               threshold for erosion processes.
- * @param p_bedrock              Pointer to an optional lower elevation limit.
- * @param p_moisture_map         Pointer to the moisture map (rainfall
- *                               quantity), expected to be in [0, 1].
- * @param p_erosion_map[out]     Pointer to the erosion map, provided as an
- *                               output field.
- * @param p_flow_map[out]        Pointer to the flow accumulation map, provided
- *                               as an output field.
- * @param ir                     Kernel radius. If `ir > 1`, a cone kernel is
- *                               used to carve channel flow erosion.
- *
- * **Example**
- * @include ex_hydraulic_stream.cpp
- *
- * **Result**
- * @image html ex_hydraulic_stream0.png
- * @image html ex_hydraulic_stream1.png
- */
-void hydraulic_stream_log(Array &z,
-                          float  c_erosion,
-                          float  talus_ref,
-                          int    deposition_ir = 32,
-                          float  deposition_scale_ratio = 1.f,
-                          float  gradient_power = 0.8f,
-                          float  gradient_scaling_ratio = 1.f,
-                          int    gradient_prefilter_ir = 16,
-                          float  saturation_ratio = 1.f,
-                          Array *p_bedrock = nullptr,
-                          Array *p_moisture_map = nullptr,
-                          Array *p_erosion_map = nullptr,
-                          Array *p_deposition_map = nullptr,
-                          Array *p_flow_map = nullptr);
-
-void hydraulic_stream_log(Array &z,
-                          float  c_erosion,
-                          float  talus_ref,
-                          Array *p_mask,
-                          int    deposition_ir = 32,
-                          float  deposition_scale_ratio = 1.f,
-                          float  gradient_power = 0.8f,
-                          float  gradient_scaling_ratio = 1.f,
-                          int    gradient_prefilter_ir = 16,
-                          float  saturation_ratio = 1.f,
-                          Array *p_bedrock = nullptr,
-                          Array *p_moisture_map = nullptr,
-                          Array *p_erosion_map = nullptr,
-                          Array *p_deposition_map = nullptr,
-                          Array *p_flow_map = nullptr); ///< @overload
 
 /**
  * @brief Apply hydraulic erosion using the 'virtual pipes' algorithm.
