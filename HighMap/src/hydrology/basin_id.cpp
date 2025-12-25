@@ -77,6 +77,8 @@ Array basin_id_priority_flood(const Array &z)
       {
         float spill = std::max(z(i, j), c.z);
         // TODO record spill between basins
+
+        // TODO record cell topographic order
       }
     }
   }

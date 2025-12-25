@@ -75,4 +75,32 @@ void update_interp_param(float2 pos, int *i, int *j, float *u, float *v)
   *u = pos.x - *i;
   *v = pos.y - *j;
 }
+
+inline int apply_boundaries(global float *z, int gx, int gy, int nx, int ny)
+{
+  int index = linear_index(gx, gy, nx);
+
+  if (gx == 0)
+  {
+    z[index] = z[linear_index(1, gy, nx)];
+    return 1;
+  }
+  if (gx == nx - 1)
+  {
+    z[index] = z[linear_index(nx - 2, gy, nx)];
+    return 1;
+  }
+  if (gy == 0)
+  {
+    z[index] = z[linear_index(gx, 1, nx)];
+    return 1;
+  }
+  if (gy == ny - 1)
+  {
+    z[index] = z[linear_index(gx, ny - 2, nx)];
+    return 1;
+  }
+
+  return 0; // not a boundary
+}
 )""
