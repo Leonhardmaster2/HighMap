@@ -62,6 +62,7 @@ Array mountain_cone(Vec2<int>    shape,
                             /* p_noise_x */ nullptr,
                             /* p_noise_y */ nullptr,
                             bbox);
+  cone = smoothstep3_lower(cone);
 
   // base primitives
   Vec2<float>       jitter(1.f, 1.f);
