@@ -2304,10 +2304,10 @@
         </inbodydescription>
         <location file="HighMap/src/erosion/thermal_gpu.cpp" line="282" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="282" bodyend="310" declfile="HighMap/include/highmap/erosion.hpp" declline="1657" declcolumn="6"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1_1gpu_1a92b5b40aecdc3d498708483a60e33d4f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacehmap_1_1gpu_1aa5fa2d2cd682cdfee40fde050a41bf2b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void hmap::gpu::valley_fill</definition>
-        <argsstring>(Array &amp;z, const Array &amp;talus, int iterations=100, float gamma=2.f, float ratio=0.8f, float zmin=0.f, float zmax=0.f)</argsstring>
+        <argsstring>(Array &amp;z, const Array &amp;talus, int iterations=100, float gamma=2.f, float ratio=0.8f, float zmin=0.f, float zmax=0.f, float elevation_max_ratio=1.f)</argsstring>
         <name>valley_fill</name>
         <qualifiedname>hmap::gpu::valley_fill</qualifiedname>
         <param>
@@ -2342,6 +2342,11 @@
           <type>float</type>
           <declname>zmax</declname>
           <defval>0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>elevation_max_ratio</declname>
+          <defval>1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
         </param>
         <briefdescription>
 <para>Fill valleys using thermal scree deposition and height-based blending. </para>
@@ -2419,7 +2424,7 @@
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>z0<sp/>=<sp/>z;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>iterations<sp/>=<sp/>250;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1a92b5b40aecdc3d498708483a60e33d4f" kindref="member">hmap::gpu::valley_fill</ref>(z,<sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref>(shape,<sp/>2.f<sp/>/<sp/>shape.<ref refid="structhmap_1_1Vec2_1a2dc51e83492f966eeddbdac3d58ab447" kindref="member">x</ref>),<sp/>iterations);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1aa5fa2d2cd682cdfee40fde050a41bf2b" kindref="member">hmap::gpu::valley_fill</ref>(z,<sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref>(shape,<sp/>2.f<sp/>/<sp/>shape.<ref refid="structhmap_1_1Vec2_1a2dc51e83492f966eeddbdac3d58ab447" kindref="member">x</ref>),<sp/>iterations);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_valley_fill.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z0,<sp/>z},</highlight></codeline>
@@ -2432,12 +2437,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/valley_fill.cpp" line="12" column="6" bodyfile="HighMap/src/erosion/valley_fill.cpp" bodystart="12" bodyend="39" declfile="HighMap/include/highmap/erosion.hpp" declline="1685" declcolumn="6"/>
+        <location file="HighMap/src/erosion/valley_fill.cpp" line="12" column="6" bodyfile="HighMap/src/erosion/valley_fill.cpp" bodystart="12" bodyend="43" declfile="HighMap/include/highmap/erosion.hpp" declline="1685" declcolumn="6"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1_1gpu_1a1a3636751148cb4978252af094345f1a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacehmap_1_1gpu_1a5fd83f7a23b96a393902defd7f1d3b15" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void hmap::gpu::valley_fill</definition>
-        <argsstring>(Array &amp;z, const Array *p_mask, const Array &amp;talus, int iterations=100, float gamma=2.f, float ratio=0.8f, float zmin=0.f, float zmax=0.f)</argsstring>
+        <argsstring>(Array &amp;z, const Array *p_mask, const Array &amp;talus, int iterations=100, float gamma=2.f, float ratio=0.8f, float zmin=0.f, float zmax=0.f, float elevation_max_ratio=1.f)</argsstring>
         <name>valley_fill</name>
         <qualifiedname>hmap::gpu::valley_fill</qualifiedname>
         <param>
@@ -2477,13 +2482,18 @@
           <declname>zmax</declname>
           <defval>0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
         </param>
+        <param>
+          <type>float</type>
+          <declname>elevation_max_ratio</declname>
+          <defval>1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/valley_fill.cpp" line="41" column="6" bodyfile="HighMap/src/erosion/valley_fill.cpp" bodystart="41" bodyend="60" declfile="HighMap/include/highmap/erosion.hpp" declline="1693" declcolumn="6"/>
+        <location file="HighMap/src/erosion/valley_fill.cpp" line="45" column="6" bodyfile="HighMap/src/erosion/valley_fill.cpp" bodystart="45" bodyend="79" declfile="HighMap/include/highmap/erosion.hpp" declline="1694" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a022f5800d7e28f79f9e2d3abf687f490" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>

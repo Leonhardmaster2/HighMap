@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['valley_5ffill_0',['valley_fill',['../namespacehmap_1_1gpu.html#a1a3636751148cb4978252af094345f1a',1,'hmap::gpu::valley_fill(Array &amp;z, const Array *p_mask, const Array &amp;talus, int iterations=100, float gamma=2.f, float ratio=0.8f, float zmin=0.f, float zmax=0.f)'],['../namespacehmap_1_1gpu.html#a92b5b40aecdc3d498708483a60e33d4f',1,'hmap::gpu::valley_fill(Array &amp;z, const Array &amp;talus, int iterations=100, float gamma=2.f, float ratio=0.8f, float zmin=0.f, float zmax=0.f)']]],
+  ['valley_5ffill_0',['valley_fill',['../namespacehmap_1_1gpu.html#a5fd83f7a23b96a393902defd7f1d3b15',1,'hmap::gpu::valley_fill(Array &amp;z, const Array *p_mask, const Array &amp;talus, int iterations=100, float gamma=2.f, float ratio=0.8f, float zmin=0.f, float zmax=0.f, float elevation_max_ratio=1.f)'],['../namespacehmap_1_1gpu.html#aa5fa2d2cd682cdfee40fde050a41bf2b',1,'hmap::gpu::valley_fill(Array &amp;z, const Array &amp;talus, int iterations=100, float gamma=2.f, float ratio=0.8f, float zmin=0.f, float zmax=0.f, float elevation_max_ratio=1.f)']]],
   ['valley_5fwidth_1',['valley_width',['../namespacehmap.html#ab4d8048b79080012b8e60c270de8137f',1,'hmap']]],
   ['valuecubicnoisefunction_2',['ValueCubicNoiseFunction',['../classhmap_1_1ValueCubicNoiseFunction.html#a2928f6160986155891f6e739d2937ad7',1,'hmap::ValueCubicNoiseFunction']]],
   ['valuedelaunaynoisefunction_3',['ValueDelaunayNoiseFunction',['../classhmap_1_1ValueDelaunayNoiseFunction.html#a80134c06c76252e14d65b3b59f6e27d1',1,'hmap::ValueDelaunayNoiseFunction']]],

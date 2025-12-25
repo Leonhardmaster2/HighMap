@@ -1,7 +1,7 @@
 var searchData=
 [
   ['v_0',['v',['../structhmap_1_1Pos.html#ac25b27d114c9e5e065f11d6ca6468df8',1,'hmap::Pos::v'],['../classhmap_1_1Point.html#ac67fb22939ed39d6c5ff4194b4405efb',1,'hmap::Point::v']]],
-  ['valley_5ffill_1',['valley_fill',['../namespacehmap_1_1gpu.html#a92b5b40aecdc3d498708483a60e33d4f',1,'hmap::gpu::valley_fill(Array &amp;z, const Array &amp;talus, int iterations=100, float gamma=2.f, float ratio=0.8f, float zmin=0.f, float zmax=0.f)'],['../namespacehmap_1_1gpu.html#a1a3636751148cb4978252af094345f1a',1,'hmap::gpu::valley_fill(Array &amp;z, const Array *p_mask, const Array &amp;talus, int iterations=100, float gamma=2.f, float ratio=0.8f, float zmin=0.f, float zmax=0.f)']]],
+  ['valley_5ffill_1',['valley_fill',['../namespacehmap_1_1gpu.html#aa5fa2d2cd682cdfee40fde050a41bf2b',1,'hmap::gpu::valley_fill(Array &amp;z, const Array &amp;talus, int iterations=100, float gamma=2.f, float ratio=0.8f, float zmin=0.f, float zmax=0.f, float elevation_max_ratio=1.f)'],['../namespacehmap_1_1gpu.html#a5fd83f7a23b96a393902defd7f1d3b15',1,'hmap::gpu::valley_fill(Array &amp;z, const Array *p_mask, const Array &amp;talus, int iterations=100, float gamma=2.f, float ratio=0.8f, float zmin=0.f, float zmax=0.f, float elevation_max_ratio=1.f)']]],
   ['valley_5ffill_2ecpp_2',['valley_fill.cpp',['../valley__fill_8cpp.html',1,'']]],
   ['valley_5fwidth_3',['valley_width',['../namespacehmap.html#ab4d8048b79080012b8e60c270de8137f',1,'hmap']]],
   ['value_4',['VALUE',['../namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195add03c6de4abc2f9a84778572c433f4ca',1,'hmap']]],
