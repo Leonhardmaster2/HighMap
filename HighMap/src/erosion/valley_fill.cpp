@@ -15,7 +15,8 @@ void valley_fill(Array       &z,
                  float        gamma,
                  float        ratio,
                  float        zmin,
-                 float        zmax)
+                 float        zmax,
+                 float        elevation_max_ratio)
 {
   if (zmax <= zmin)
   {
@@ -25,7 +26,10 @@ void valley_fill(Array       &z,
 
   // scree deposition
   Array ze = z;
-  gpu::thermal_scree(ze, talus, Array(z.shape, zmax), iterations);
+  gpu::thermal_scree(ze,
+                     talus,
+                     Array(z.shape, elevation_max_ratio * zmax),
+                     iterations);
   remap(ze, zmin, zmax);
 
   // mixing mask
@@ -45,16 +49,31 @@ void valley_fill(Array       &z,
                  float        gamma,
                  float        ratio,
                  float        zmin,
-                 float        zmax)
+                 float        zmax,
+                 float        elevation_max_ratio)
 {
   if (!p_mask)
   {
-    gpu::valley_fill(z, talus, iterations, gamma, ratio, zmin, zmax);
+    gpu::valley_fill(z,
+                     talus,
+                     iterations,
+                     gamma,
+                     ratio,
+                     zmin,
+                     zmax,
+                     elevation_max_ratio);
   }
   else
   {
     Array z_f = z;
-    gpu::valley_fill(z_f, talus, iterations, gamma, ratio, zmin, zmax);
+    gpu::valley_fill(z_f,
+                     talus,
+                     iterations,
+                     gamma,
+                     ratio,
+                     zmin,
+                     zmax,
+                     elevation_max_ratio);
     z = lerp(z, z_f, *(p_mask));
   }
 }
