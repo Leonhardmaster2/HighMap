@@ -2616,6 +2616,43 @@ Array noise_fbm(NoiseType    noise_type,
                 Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
+ * @brief Generate a tectonic plate–like heightfield using Voronoi FBM and
+ * directional talus projection.
+ *
+ * Combines Voronoi edge-distance FBM with a base noise displacement, then
+ * applies a talus projection along a given direction and blends the result with
+ * the original field.
+ *
+ * @param  shape          Grid resolution.
+ * @param  kw             Base wavelength/frequency.
+ * @param  seed           Random seed.
+ * @param  talus          Talus strength for directional projection.
+ * @param  direction      Projection direction.
+ * @param  mix_ratio      Blend factor between raw Voronoi and projected plates.
+ * @param  base_noise_amp Amplitude of the displacement noise.
+ * @param  kw_multiplier  Frequency multiplier for base noise.
+ * @param  rugosity       Noise roughness.
+ * @param  bbox           Bounding box for noise evaluation.
+ * @return                Generated plate heightfield.
+ *
+ * **Example**
+ * @include ex_plates.cpp
+ *
+ * **Result**
+ * @image html ex_plates.png
+ */
+Array plates(Vec2<int>   shape,
+             Vec2<float> kw,
+             uint        seed,
+             float       talus,
+             int         direction = 0,
+             float       mix_ratio = 0.9f,
+             float       base_noise_amp = 0.05f,
+             float       kw_multiplier = 2.f,
+             float       rugosity = 0.f,
+             Vec4<float> bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
  * @brief Generates a scalar field representing the signed distance to randomly
  * generated polygons.
  *
