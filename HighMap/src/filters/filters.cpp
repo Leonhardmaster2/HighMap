@@ -10,6 +10,7 @@
 #include "highmap/boundary.hpp"
 #include "highmap/convolve.hpp"
 #include "highmap/curvature.hpp"
+#include "highmap/erosion.hpp"
 #include "highmap/features.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/gradient.hpp"
@@ -22,19 +23,6 @@
 #include "highmap/internal/vector_utils.hpp"
 
 #define NSIGMA 2
-
-#define DI                                                                     \
-  {                                                                            \
-    -1, 0, 0, 1, -1, -1, 1, 1                                                  \
-  }
-#define DJ                                                                     \
-  {                                                                            \
-    0, 1, -1, 0, -1, 1, -1, 1                                                  \
-  }
-#define CD                                                                     \
-  {                                                                            \
-    1.f, 1.f, 1.f, 1.f, M_SQRT2, M_SQRT2, M_SQRT2, M_SQRT2                     \
-  }
 
 namespace hmap
 {
@@ -173,9 +161,9 @@ void expand_talus(Array       &z,
   std::uniform_real_distribution<float> dis(1.f - noise_ratio,
                                             1.f + noise_ratio);
 
-  std::vector<int>   di = DI;
-  std::vector<int>   dj = DJ;
-  std::vector<float> c = CD;
+  std::vector<int>   di = HMAP_DI;
+  std::vector<int>   dj = HMAP_DJ;
+  std::vector<float> c = HMAP_CD;
   const uint         nb = di.size();
 
   Array mask_copy = mask;
@@ -233,9 +221,9 @@ void fill_talus(Array &z, float talus, uint seed, float noise_ratio)
   std::uniform_real_distribution<float> dis(1.f - noise_ratio,
                                             1.f + noise_ratio);
 
-  std::vector<int>   di = DI;
-  std::vector<int>   dj = DJ;
-  std::vector<float> c = CD;
+  std::vector<int>   di = HMAP_DI;
+  std::vector<int>   dj = HMAP_DJ;
+  std::vector<float> c = HMAP_CD;
   const uint         nb = di.size();
 
   // trick to exclude border cells, to avoid checking out of bounds

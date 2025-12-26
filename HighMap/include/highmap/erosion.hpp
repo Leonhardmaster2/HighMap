@@ -23,13 +23,14 @@
 // applied to take into account the longer distance for diagonal
 // comparison between cells)
 
+// clang-format off
 // 6 2 8
 // 1 . 4
 // 5 3 7
-// clang-format off
-#define DI {-1, 0, 0, 1, -1, -1, 1, 1}
-#define DJ {0, 1, -1, 0, -1, 1, -1, 1}
-#define CD  {1.f, 1.f, 1.f, 1.f, M_SQRT2, M_SQRT2, M_SQRT2, M_SQRT2}
+#define HMAP_DI {-1, 0, 0, 1, -1, -1, 1, 1}
+#define HMAP_DJ {0, 1, -1, 0, -1, 1, -1, 1}
+#define HMAP_CD  {1.f, 1.f, 1.f, 1.f, M_SQRT2, M_SQRT2, M_SQRT2, M_SQRT2}
+#define HMAP_CD_INV  {1.f, 1.f, 1.f, 1.f, M_SQRT2, M_SQRT2, M_SQRT2, M_SQRT2}
 // clang-format on
 
 namespace hmap

@@ -19,15 +19,14 @@
 // 0 . 3
 // 4 2 6
 // clang-format off
-#define DI {-1, 0, 0, 1, -1, -1, 1, 1}
-#define DJ {0, 1, -1, 0, -1, 1, -1, 1}
-#define KP {3, 2, 1, 0, 7, 6, 5, 4}  // reverse neighbor index
-#define C  {1.f, 1.f, 1.f, 1.f, M_SQRT1_2, M_SQRT1_2, M_SQRT1_2, M_SQRT1_2}
+#define HMAP_DINF_DI {-1, 0, 0, 1, -1, -1, 1, 1}
+#define HMAP_DINF_DJ {0, 1, -1, 0, -1, 1, -1, 1}
+#define HMAP_DINF_C  {1.f, 1.f, 1.f, 1.f, M_SQRT1_2, M_SQRT1_2, M_SQRT1_2, M_SQRT1_2}
   
 // the "effective contour length" of pixel i. The value of L i is 0.5
 // for pixels in cardinal directions and 0.354 for pixels in diagonal
 // directions (Quinn et al., 1991)
-#define ECL {0.5, 0.5, 0.5, 0.5 , 0.354, 0.354, 0.354, 0.354}
+#define HMAP_DINF_ECL {0.5, 0.5, 0.5, 0.5 , 0.354, 0.354, 0.354, 0.354}
 // clang-format on
 
 namespace hmap
@@ -36,8 +35,8 @@ namespace hmap
 Array flow_accumulation_dinf(const Array &z, float talus_ref)
 {
   const Vec2<int>        shape = z.shape;
-  const std::vector<int> di = DI;
-  const std::vector<int> dj = DJ;
+  const std::vector<int> di = HMAP_DINF_DI;
+  const std::vector<int> dj = HMAP_DINF_DJ;
   const int              nb = di.size();
 
   // --- initial accumulation = 1 per cell
@@ -112,10 +111,10 @@ Array flow_accumulation_dinf(const Array &z, float talus_ref)
 
 std::vector<Array> flow_direction_dinf(const Array &z, float talus_ref)
 {
-  const std::vector<int>   di = DI;
-  const std::vector<int>   dj = DJ;
-  const std::vector<float> c = C;
-  const std::vector<float> ecl = ECL;
+  const std::vector<int>   di = HMAP_DINF_DI;
+  const std::vector<int>   dj = HMAP_DINF_DJ;
+  const std::vector<float> c = HMAP_DINF_C;
+  const std::vector<float> ecl = HMAP_DINF_ECL;
   const int                nb = di.size();
 
   // the flow-partition exponent is defined locally based on the local
@@ -155,10 +154,10 @@ std::vector<Array> flow_direction_dinf(const Array &z, float talus_ref)
 std::vector<float> flow_direction_dinf_flat(const Array &z, float talus_ref)
 {
   const Vec2<int>          shape = z.shape;
-  const std::vector<int>   di = DI;
-  const std::vector<int>   dj = DJ;
-  const std::vector<float> c = C;
-  const std::vector<float> ecl = ECL;
+  const std::vector<int>   di = HMAP_DINF_DI;
+  const std::vector<int>   dj = HMAP_DINF_DJ;
+  const std::vector<float> c = HMAP_DINF_C;
+  const std::vector<float> ecl = HMAP_DINF_ECL;
   const uint               nb = di.size();
 
   std::vector<float> dinf(shape.x * shape.y * nb, 0.f);
@@ -202,10 +201,10 @@ std::vector<float> flow_direction_dinf_flat(const Array &z, float talus_ref)
 
 Array flow_direction_dinf_angle(const Array &z, float talus_ref)
 {
-  const std::vector<int>   di = DI;
-  const std::vector<int>   dj = DJ;
-  const std::vector<float> c = C;
-  const std::vector<float> ecl = ECL;
+  const std::vector<int>   di = HMAP_DINF_DI;
+  const std::vector<int>   dj = HMAP_DINF_DJ;
+  const std::vector<float> c = HMAP_DINF_C;
+  const std::vector<float> ecl = HMAP_DINF_ECL;
 
   const uint nb = di.size();
 

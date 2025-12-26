@@ -28,9 +28,9 @@ void thermal_schott(Array       &z,
 {
   // https://www.shadertoy.com/view/XX2XWD
 
-  std::vector<int>   di = DI;
-  std::vector<int>   dj = DJ;
-  std::vector<float> c = CD;
+  std::vector<int>   di = HMAP_DI;
+  std::vector<int>   dj = HMAP_DJ;
+  std::vector<float> c = HMAP_CD;
   const uint         nb = di.size();
 
   for (int it = 0; it < iterations; it++)

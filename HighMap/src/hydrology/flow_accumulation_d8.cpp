@@ -16,9 +16,9 @@
 // 4 . 0
 // 3 2 1
 // clang-format off
-#define DI {1, 1, 0, -1, -1, -1, 0, 1}
-#define DJ {0, -1, -1, -1, 0, 1, 1, 1}
-#define C  {1.f, M_SQRT1_2, 1.f, M_SQRT1_2, 1.f, M_SQRT1_2, 1.f, M_SQRT1_2}
+#define HMAP_D8_DI {1, 1, 0, -1, -1, -1, 0, 1}
+#define HMAP_D8_DJ {0, -1, -1, -1, 0, 1, 1, 1}
+#define HMAP_D8_C  {1.f, M_SQRT1_2, 1.f, M_SQRT1_2, 1.f, M_SQRT1_2, 1.f, M_SQRT1_2}
 // clang-format on
 
 namespace hmap
@@ -28,8 +28,8 @@ Array d8_compute_ndip(const Array &d8)
 {
   Array nidp = Array(d8.shape); // output
 
-  const std::vector<int> di = DI;
-  const std::vector<int> dj = DJ;
+  const std::vector<int> di = HMAP_D8_DI;
+  const std::vector<int> dj = HMAP_D8_DJ;
   const uint             nb = di.size();
 
   // correspond between current neighbor index and neighbor flow
@@ -53,8 +53,8 @@ Array flow_accumulation_d8(const Array &z)
   Array nidp = d8_compute_ndip(d8);
 
   // --- flow accumulation
-  const std::vector<int> di = DI;
-  const std::vector<int> dj = DJ;
+  const std::vector<int> di = HMAP_D8_DI;
+  const std::vector<int> dj = HMAP_D8_DJ;
 
   // populate queue
   std::list<int> i_queue = {};
@@ -101,9 +101,9 @@ Array flow_direction_d8(const Array &z)
 {
   Array d8 = Array(z.shape);
 
-  const std::vector<int>   di = DI;
-  const std::vector<int>   dj = DJ;
-  const std::vector<float> c = C;
+  const std::vector<int>   di = HMAP_D8_DI;
+  const std::vector<int>   dj = HMAP_D8_DJ;
+  const std::vector<float> c = HMAP_D8_C;
   const uint               nb = di.size();
 
   for (int j = 1; j < z.shape.y - 1; j++)

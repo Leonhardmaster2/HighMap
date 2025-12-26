@@ -18,9 +18,9 @@ void thermal_rib(Array &z, int iterations, Array *p_bedrock)
 {
   Array de = Array(z.shape);
 
-  const std::vector<int>   di = DI;
-  const std::vector<int>   dj = DJ;
-  const std::vector<float> c = CD;
+  const std::vector<int>   di = HMAP_DI;
+  const std::vector<int>   dj = HMAP_DJ;
+  const std::vector<float> c = HMAP_CD;
   const uint               nb = di.size();
 
   for (int it = 0; it < iterations; it++)
