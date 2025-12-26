@@ -128,6 +128,7 @@ var namespacehmap =
       [ "multisteps", "namespacehmap_1_1gpu.html#a43cc566a7b7f48d327911b4085b2ad81", null ],
       [ "noise", "namespacehmap_1_1gpu.html#a450f5b26f42b6f06be3e1e131f6aaf86", null ],
       [ "noise_fbm", "namespacehmap_1_1gpu.html#a322260e971f4dec19ec8bc270e7cc461", null ],
+      [ "plates", "namespacehmap_1_1gpu.html#a979d9b2898b7ed95fccddf19d243defc", null ],
       [ "polygon_field", "namespacehmap_1_1gpu.html#a0366d22ed8b0e1b74d5895e00c0e688b", null ],
       [ "polygon_field_fbm", "namespacehmap_1_1gpu.html#a4927a1382b383a5ceb9071f51bd5abf9", null ],
       [ "shattered_peak", "namespacehmap_1_1gpu.html#a04d679fc6d72fd9533fbf27ad28d3898", null ],

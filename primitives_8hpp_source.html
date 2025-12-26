@@ -983,193 +983,204 @@ $(document).ready(function(){initNavTree('primitives_8hpp_source.html',''); init
 <div class="line"><a id="l02615" name="l02615"></a><span class="lineno"> 2615</span>                <span class="keyword">const</span> Array *p_stretching = <span class="keyword">nullptr</span>,</div>
 <div class="line"><a id="l02616" name="l02616"></a><span class="lineno"> 2616</span>                Vec4&lt;float&gt;  bbox = {0.f, 1.f, 0.f, 1.f});</div>
 <div class="line"><a id="l02617" name="l02617"></a><span class="lineno"> 2617</span> </div>
-<div class="line"><a id="l02663" name="l02663"></a><span class="lineno"> 2663</span>Array <a class="code hl_function" href="namespacehmap_1_1gpu.html#a0366d22ed8b0e1b74d5895e00c0e688b">polygon_field</a>(Vec2&lt;int&gt;         shape,</div>
-<div class="line"><a id="l02664" name="l02664"></a><span class="lineno"> 2664</span>                    Vec2&lt;float&gt;       kw,</div>
-<div class="line"><a id="l02665" name="l02665"></a><span class="lineno"> 2665</span>                    <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>              seed,</div>
-<div class="line"><a id="l02666" name="l02666"></a><span class="lineno"> 2666</span>                    <span class="keywordtype">float</span>             rmin = 0.05f,</div>
-<div class="line"><a id="l02667" name="l02667"></a><span class="lineno"> 2667</span>                    <span class="keywordtype">float</span>             rmax = 0.8f,</div>
-<div class="line"><a id="l02668" name="l02668"></a><span class="lineno"> 2668</span>                    <span class="keywordtype">float</span>             clamping_dist = 0.1f,</div>
-<div class="line"><a id="l02669" name="l02669"></a><span class="lineno"> 2669</span>                    <span class="keywordtype">float</span>             clamping_k = 0.1f,</div>
-<div class="line"><a id="l02670" name="l02670"></a><span class="lineno"> 2670</span>                    <span class="keywordtype">int</span>               n_vertices_min = 3,</div>
-<div class="line"><a id="l02671" name="l02671"></a><span class="lineno"> 2671</span>                    <span class="keywordtype">int</span>               n_vertices_max = 16,</div>
-<div class="line"><a id="l02672" name="l02672"></a><span class="lineno"> 2672</span>                    <span class="keywordtype">float</span>             density = 0.5f,</div>
-<div class="line"><a id="l02673" name="l02673"></a><span class="lineno"> 2673</span>                    <a class="code hl_struct" href="structhmap_1_1Vec2.html">hmap::Vec2&lt;float&gt;</a> jitter = {0.5f, 0.5f},</div>
-<div class="line"><a id="l02674" name="l02674"></a><span class="lineno"> 2674</span>                    <span class="keywordtype">float</span>             shift = 0.1f,</div>
-<div class="line"><a id="l02675" name="l02675"></a><span class="lineno"> 2675</span>                    <span class="keyword">const</span> Array      *p_noise_x = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l02676" name="l02676"></a><span class="lineno"> 2676</span>                    <span class="keyword">const</span> Array      *p_noise_y = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l02677" name="l02677"></a><span class="lineno"> 2677</span>                    <span class="keyword">const</span> Array      *p_noise_distance = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l02678" name="l02678"></a><span class="lineno"> 2678</span>                    <span class="keyword">const</span> Array      *p_density_multiplier = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l02679" name="l02679"></a><span class="lineno"> 2679</span>                    <span class="keyword">const</span> Array      *p_size_multiplier = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l02680" name="l02680"></a><span class="lineno"> 2680</span>                    Vec4&lt;float&gt;       bbox = {0.f, 1.f, 0.f, 1.f});</div>
-<div class="line"><a id="l02681" name="l02681"></a><span class="lineno"> 2681</span> </div>
-<div class="line"><a id="l02726" name="l02726"></a><span class="lineno"> 2726</span>Array <a class="code hl_function" href="namespacehmap_1_1gpu.html#a4927a1382b383a5ceb9071f51bd5abf9">polygon_field_fbm</a>(Vec2&lt;int&gt;         shape,</div>
-<div class="line"><a id="l02727" name="l02727"></a><span class="lineno"> 2727</span>                        Vec2&lt;float&gt;       kw,</div>
-<div class="line"><a id="l02728" name="l02728"></a><span class="lineno"> 2728</span>                        <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>              seed,</div>
-<div class="line"><a id="l02729" name="l02729"></a><span class="lineno"> 2729</span>                        <span class="keywordtype">float</span>             rmin = 0.05f,</div>
-<div class="line"><a id="l02730" name="l02730"></a><span class="lineno"> 2730</span>                        <span class="keywordtype">float</span>             rmax = 0.8f,</div>
-<div class="line"><a id="l02731" name="l02731"></a><span class="lineno"> 2731</span>                        <span class="keywordtype">float</span>             clamping_dist = 0.1f,</div>
-<div class="line"><a id="l02732" name="l02732"></a><span class="lineno"> 2732</span>                        <span class="keywordtype">float</span>             clamping_k = 0.1f,</div>
-<div class="line"><a id="l02733" name="l02733"></a><span class="lineno"> 2733</span>                        <span class="keywordtype">int</span>               n_vertices_min = 3,</div>
-<div class="line"><a id="l02734" name="l02734"></a><span class="lineno"> 2734</span>                        <span class="keywordtype">int</span>               n_vertices_max = 16,</div>
-<div class="line"><a id="l02735" name="l02735"></a><span class="lineno"> 2735</span>                        <span class="keywordtype">float</span>             density = 0.1f,</div>
-<div class="line"><a id="l02736" name="l02736"></a><span class="lineno"> 2736</span>                        <a class="code hl_struct" href="structhmap_1_1Vec2.html">hmap::Vec2&lt;float&gt;</a> jitter = {0.5f, 0.5f},</div>
-<div class="line"><a id="l02737" name="l02737"></a><span class="lineno"> 2737</span>                        <span class="keywordtype">float</span>             shift = 0.1f,</div>
-<div class="line"><a id="l02738" name="l02738"></a><span class="lineno"> 2738</span>                        <span class="keywordtype">int</span>               octaves = 8,</div>
-<div class="line"><a id="l02739" name="l02739"></a><span class="lineno"> 2739</span>                        <span class="keywordtype">float</span>             persistence = 0.5f,</div>
-<div class="line"><a id="l02740" name="l02740"></a><span class="lineno"> 2740</span>                        <span class="keywordtype">float</span>             lacunarity = 2.f,</div>
-<div class="line"><a id="l02741" name="l02741"></a><span class="lineno"> 2741</span>                        <span class="keyword">const</span> Array      *p_noise_x = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l02742" name="l02742"></a><span class="lineno"> 2742</span>                        <span class="keyword">const</span> Array      *p_noise_y = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l02743" name="l02743"></a><span class="lineno"> 2743</span>                        <span class="keyword">const</span> Array      *p_noise_distance = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l02744" name="l02744"></a><span class="lineno"> 2744</span>                        <span class="keyword">const</span> Array      *p_density_multiplier = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l02745" name="l02745"></a><span class="lineno"> 2745</span>                        <span class="keyword">const</span> Array      *p_size_multiplier = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l02746" name="l02746"></a><span class="lineno"> 2746</span>                        Vec4&lt;float&gt;       bbox = {0.f, 1.f, 0.f, 1.f});</div>
-<div class="line"><a id="l02747" name="l02747"></a><span class="lineno"> 2747</span> </div>
-<div class="line"><a id="l02792" name="l02792"></a><span class="lineno"> 2792</span>Array <a class="code hl_function" href="namespacehmap_1_1gpu.html#a04d679fc6d72fd9533fbf27ad28d3898">shattered_peak</a>(Vec2&lt;int&gt;    shape,</div>
-<div class="line"><a id="l02793" name="l02793"></a><span class="lineno"> 2793</span>                     <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>         seed,</div>
-<div class="line"><a id="l02794" name="l02794"></a><span class="lineno"> 2794</span>                     <span class="keywordtype">float</span>        scale = 1.f,</div>
-<div class="line"><a id="l02795" name="l02795"></a><span class="lineno"> 2795</span>                     <span class="keywordtype">int</span>          octaves = 8,</div>
-<div class="line"><a id="l02796" name="l02796"></a><span class="lineno"> 2796</span>                     <span class="keywordtype">float</span>        peak_kw = 4.f,</div>
-<div class="line"><a id="l02797" name="l02797"></a><span class="lineno"> 2797</span>                     <span class="keywordtype">float</span>        <a class="code hl_function" href="namespacehmap_1_1gpu.html#aa5a3e087822525c41f057a51255e2bad">rugosity</a> = 0.f,</div>
-<div class="line"><a id="l02798" name="l02798"></a><span class="lineno"> 2798</span>                     <span class="keywordtype">float</span>        <a class="code hl_function" href="namespacehmap.html#aac71bb6c14edc17967957f7918acdbdd">angle</a> = 30.f,</div>
-<div class="line"><a id="l02799" name="l02799"></a><span class="lineno"> 2799</span>                     <span class="keywordtype">float</span>        gamma = 1.f,</div>
-<div class="line"><a id="l02800" name="l02800"></a><span class="lineno"> 2800</span>                     <span class="keywordtype">bool</span>         add_deposition = <span class="keyword">true</span>,</div>
-<div class="line"><a id="l02801" name="l02801"></a><span class="lineno"> 2801</span>                     <span class="keywordtype">float</span>        bulk_amp = 0.3f,</div>
-<div class="line"><a id="l02802" name="l02802"></a><span class="lineno"> 2802</span>                     <span class="keywordtype">float</span>        base_noise_amp = 0.1f,</div>
-<div class="line"><a id="l02803" name="l02803"></a><span class="lineno"> 2803</span>                     <span class="keywordtype">float</span>        k_smoothing = 0.f,</div>
-<div class="line"><a id="l02804" name="l02804"></a><span class="lineno"> 2804</span>                     Vec2&lt;float&gt;  center = {0.5f, 0.5f},</div>
-<div class="line"><a id="l02805" name="l02805"></a><span class="lineno"> 2805</span>                     <span class="keyword">const</span> Array *p_noise_x = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l02806" name="l02806"></a><span class="lineno"> 2806</span>                     <span class="keyword">const</span> Array *p_noise_y = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l02807" name="l02807"></a><span class="lineno"> 2807</span>                     Vec4&lt;float&gt;  bbox = {0.f, 1.f, 0.f, 1.f});</div>
-<div class="line"><a id="l02808" name="l02808"></a><span class="lineno"> 2808</span> </div>
-<div class="line"><a id="l02854" name="l02854"></a><span class="lineno"> 2854</span>Array <a class="code hl_function" href="namespacehmap_1_1gpu.html#a85000763147ffd507d483ba9be27f38b">vorolines</a>(Vec2&lt;int&gt;         shape,</div>
-<div class="line"><a id="l02855" name="l02855"></a><span class="lineno"> 2855</span>                <span class="keywordtype">float</span>             density,</div>
-<div class="line"><a id="l02856" name="l02856"></a><span class="lineno"> 2856</span>                <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>              seed,</div>
-<div class="line"><a id="l02857" name="l02857"></a><span class="lineno"> 2857</span>                <span class="keywordtype">float</span>             k_smoothing = 0.f,</div>
-<div class="line"><a id="l02858" name="l02858"></a><span class="lineno"> 2858</span>                <span class="keywordtype">float</span>             exp_sigma = 0.f,</div>
-<div class="line"><a id="l02859" name="l02859"></a><span class="lineno"> 2859</span>                <span class="keywordtype">float</span>             alpha = 0.f,</div>
-<div class="line"><a id="l02860" name="l02860"></a><span class="lineno"> 2860</span>                <span class="keywordtype">float</span>             alpha_span = M_PI,</div>
-<div class="line"><a id="l02861" name="l02861"></a><span class="lineno"> 2861</span>                <a class="code hl_enumeration" href="namespacehmap.html#a8e3756915e28aa80cec2190043cc8c2f">VoronoiReturnType</a> return_type = <a class="code hl_enumvalue" href="namespacehmap.html#a8e3756915e28aa80cec2190043cc8c2fa3e5996ed4314058911435c50bc95e1c2">VoronoiReturnType::F1_SQUARED</a>,</div>
-<div class="line"><a id="l02862" name="l02862"></a><span class="lineno"> 2862</span>                <span class="keyword">const</span> Array      *p_noise_x = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l02863" name="l02863"></a><span class="lineno"> 2863</span>                <span class="keyword">const</span> Array      *p_noise_y = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l02864" name="l02864"></a><span class="lineno"> 2864</span>                Vec4&lt;float&gt;       bbox = {0.f, 1.f, 0.f, 1.f},</div>
-<div class="line"><a id="l02865" name="l02865"></a><span class="lineno"> 2865</span>                Vec4&lt;float&gt;       bbox_points = {0.f, 1.f, 0.f, 1.f});</div>
-<div class="line"><a id="l02866" name="l02866"></a><span class="lineno"> 2866</span> </div>
-<div class="line"><a id="l02922" name="l02922"></a><span class="lineno"> 2922</span>Array <a class="code hl_function" href="namespacehmap_1_1gpu.html#ac2ad88df8eb3c863235f96f1678634e4">vorolines_fbm</a>(</div>
-<div class="line"><a id="l02923" name="l02923"></a><span class="lineno"> 2923</span>    Vec2&lt;int&gt;         shape,</div>
-<div class="line"><a id="l02924" name="l02924"></a><span class="lineno"> 2924</span>    <span class="keywordtype">float</span>             density,</div>
-<div class="line"><a id="l02925" name="l02925"></a><span class="lineno"> 2925</span>    <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>              seed,</div>
-<div class="line"><a id="l02926" name="l02926"></a><span class="lineno"> 2926</span>    <span class="keywordtype">float</span>             k_smoothing = 0.f,</div>
-<div class="line"><a id="l02927" name="l02927"></a><span class="lineno"> 2927</span>    <span class="keywordtype">float</span>             exp_sigma = 0.f,</div>
-<div class="line"><a id="l02928" name="l02928"></a><span class="lineno"> 2928</span>    <span class="keywordtype">float</span>             alpha = 0.f,</div>
-<div class="line"><a id="l02929" name="l02929"></a><span class="lineno"> 2929</span>    <span class="keywordtype">float</span>             alpha_span = M_PI,</div>
-<div class="line"><a id="l02930" name="l02930"></a><span class="lineno"> 2930</span>    <a class="code hl_enumeration" href="namespacehmap.html#a8e3756915e28aa80cec2190043cc8c2f">VoronoiReturnType</a> return_type = <a class="code hl_enumvalue" href="namespacehmap.html#a8e3756915e28aa80cec2190043cc8c2fa3e5996ed4314058911435c50bc95e1c2">VoronoiReturnType::F1_SQUARED</a>,</div>
-<div class="line"><a id="l02931" name="l02931"></a><span class="lineno"> 2931</span>    <span class="keywordtype">int</span>               octaves = 8,</div>
-<div class="line"><a id="l02932" name="l02932"></a><span class="lineno"> 2932</span>    <span class="keywordtype">float</span>             weight = 0.7f,</div>
-<div class="line"><a id="l02933" name="l02933"></a><span class="lineno"> 2933</span>    <span class="keywordtype">float</span>             persistence = 0.5f,</div>
-<div class="line"><a id="l02934" name="l02934"></a><span class="lineno"> 2934</span>    <span class="keywordtype">float</span>             lacunarity = 2.f,</div>
-<div class="line"><a id="l02935" name="l02935"></a><span class="lineno"> 2935</span>    <span class="keyword">const</span> Array      *p_noise_x = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l02936" name="l02936"></a><span class="lineno"> 2936</span>    <span class="keyword">const</span> Array      *p_noise_y = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l02937" name="l02937"></a><span class="lineno"> 2937</span>    Vec4&lt;float&gt;       bbox = {0.f, 1.f, 0.f, 1.f},</div>
-<div class="line"><a id="l02938" name="l02938"></a><span class="lineno"> 2938</span>    Vec4&lt;float&gt;       bbox_points = {0.f, 1.f, 0.f, 1.f});</div>
-<div class="line"><a id="l02939" name="l02939"></a><span class="lineno"> 2939</span> </div>
-<div class="line"><a id="l02979" name="l02979"></a><span class="lineno"> 2979</span>Array <a class="code hl_function" href="namespacehmap_1_1gpu.html#a0c9c2a528f344ede2aa320fdf2583790">voronoi</a>(Vec2&lt;int&gt;         shape,</div>
-<div class="line"><a id="l02980" name="l02980"></a><span class="lineno"> 2980</span>              Vec2&lt;float&gt;       kw,</div>
-<div class="line"><a id="l02981" name="l02981"></a><span class="lineno"> 2981</span>              <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>              seed,</div>
-<div class="line"><a id="l02982" name="l02982"></a><span class="lineno"> 2982</span>              Vec2&lt;float&gt;       jitter = {0.5f, 0.5f},</div>
-<div class="line"><a id="l02983" name="l02983"></a><span class="lineno"> 2983</span>              <span class="keywordtype">float</span>             k_smoothing = 0.f,</div>
-<div class="line"><a id="l02984" name="l02984"></a><span class="lineno"> 2984</span>              <span class="keywordtype">float</span>             exp_sigma = 0.f,</div>
-<div class="line"><a id="l02985" name="l02985"></a><span class="lineno"> 2985</span>              <a class="code hl_enumeration" href="namespacehmap.html#a8e3756915e28aa80cec2190043cc8c2f">VoronoiReturnType</a> return_type = <a class="code hl_enumvalue" href="namespacehmap.html#a8e3756915e28aa80cec2190043cc8c2fa3e5996ed4314058911435c50bc95e1c2">VoronoiReturnType::F1_SQUARED</a>,</div>
-<div class="line"><a id="l02986" name="l02986"></a><span class="lineno"> 2986</span>              <span class="keyword">const</span> Array      *p_ctrl_param = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l02987" name="l02987"></a><span class="lineno"> 2987</span>              <span class="keyword">const</span> Array      *p_noise_x = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l02988" name="l02988"></a><span class="lineno"> 2988</span>              <span class="keyword">const</span> Array      *p_noise_y = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l02989" name="l02989"></a><span class="lineno"> 2989</span>              Vec4&lt;float&gt;       bbox = {0.f, 1.f, 0.f, 1.f});</div>
-<div class="line"><a id="l02990" name="l02990"></a><span class="lineno"> 2990</span> </div>
-<div class="line"><a id="l03037" name="l03037"></a><span class="lineno"> 3037</span>Array <a class="code hl_function" href="namespacehmap_1_1gpu.html#aae4961b7c0f65d6904cc61022eb2642b">voronoi_fbm</a>(Vec2&lt;int&gt;         shape,</div>
-<div class="line"><a id="l03038" name="l03038"></a><span class="lineno"> 3038</span>                  Vec2&lt;float&gt;       kw,</div>
-<div class="line"><a id="l03039" name="l03039"></a><span class="lineno"> 3039</span>                  <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>              seed,</div>
-<div class="line"><a id="l03040" name="l03040"></a><span class="lineno"> 3040</span>                  Vec2&lt;float&gt;       jitter = {0.5f, 0.5f},</div>
-<div class="line"><a id="l03041" name="l03041"></a><span class="lineno"> 3041</span>                  <span class="keywordtype">float</span>             k_smoothing = 0.f,</div>
-<div class="line"><a id="l03042" name="l03042"></a><span class="lineno"> 3042</span>                  <span class="keywordtype">float</span>             exp_sigma = 0.f,</div>
-<div class="line"><a id="l03043" name="l03043"></a><span class="lineno"> 3043</span>                  <a class="code hl_enumeration" href="namespacehmap.html#a8e3756915e28aa80cec2190043cc8c2f">VoronoiReturnType</a> return_type = <a class="code hl_enumvalue" href="namespacehmap.html#a8e3756915e28aa80cec2190043cc8c2fa3e5996ed4314058911435c50bc95e1c2">VoronoiReturnType::F1_SQUARED</a>,</div>
-<div class="line"><a id="l03044" name="l03044"></a><span class="lineno"> 3044</span>                  <span class="keywordtype">int</span>               octaves = 8,</div>
-<div class="line"><a id="l03045" name="l03045"></a><span class="lineno"> 3045</span>                  <span class="keywordtype">float</span>             weight = 0.7f,</div>
-<div class="line"><a id="l03046" name="l03046"></a><span class="lineno"> 3046</span>                  <span class="keywordtype">float</span>             persistence = 0.5f,</div>
-<div class="line"><a id="l03047" name="l03047"></a><span class="lineno"> 3047</span>                  <span class="keywordtype">float</span>             lacunarity = 2.f,</div>
-<div class="line"><a id="l03048" name="l03048"></a><span class="lineno"> 3048</span>                  <span class="keyword">const</span> Array      *p_ctrl_param = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l03049" name="l03049"></a><span class="lineno"> 3049</span>                  <span class="keyword">const</span> Array      *p_noise_x = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l03050" name="l03050"></a><span class="lineno"> 3050</span>                  <span class="keyword">const</span> Array      *p_noise_y = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l03051" name="l03051"></a><span class="lineno"> 3051</span>                  Vec4&lt;float&gt;       bbox = {0.f, 1.f, 0.f, 1.f});</div>
-<div class="line"><a id="l03052" name="l03052"></a><span class="lineno"> 3052</span> </div>
-<div class="line"><a id="l03079" name="l03079"></a><span class="lineno"> 3079</span>Array <a class="code hl_function" href="namespacehmap_1_1gpu.html#aaee46739a429168aa45ff1e5d55041ec">voronoi_edge_distance</a>(Vec2&lt;int&gt;    shape,</div>
-<div class="line"><a id="l03080" name="l03080"></a><span class="lineno"> 3080</span>                            Vec2&lt;float&gt;  kw,</div>
-<div class="line"><a id="l03081" name="l03081"></a><span class="lineno"> 3081</span>                            <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>         seed,</div>
-<div class="line"><a id="l03082" name="l03082"></a><span class="lineno"> 3082</span>                            Vec2&lt;float&gt;  jitter = {0.5f, 0.5f},</div>
-<div class="line"><a id="l03083" name="l03083"></a><span class="lineno"> 3083</span>                            <span class="keyword">const</span> Array *p_ctrl_param = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l03084" name="l03084"></a><span class="lineno"> 3084</span>                            <span class="keyword">const</span> Array *p_noise_x = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l03085" name="l03085"></a><span class="lineno"> 3085</span>                            <span class="keyword">const</span> Array *p_noise_y = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l03086" name="l03086"></a><span class="lineno"> 3086</span>                            Vec4&lt;float&gt;  bbox = {0.f, 1.f, 0.f, 1.f});</div>
-<div class="line"><a id="l03087" name="l03087"></a><span class="lineno"> 3087</span> </div>
-<div class="line"><a id="l03124" name="l03124"></a><span class="lineno"> 3124</span>Array <a class="code hl_function" href="namespacehmap_1_1gpu.html#a29cc1b0843f7447eb19b6cef27772cdd">voronoise</a>(Vec2&lt;int&gt;    shape,</div>
-<div class="line"><a id="l03125" name="l03125"></a><span class="lineno"> 3125</span>                Vec2&lt;float&gt;  kw,</div>
-<div class="line"><a id="l03126" name="l03126"></a><span class="lineno"> 3126</span>                <span class="keywordtype">float</span>        u_param,</div>
-<div class="line"><a id="l03127" name="l03127"></a><span class="lineno"> 3127</span>                <span class="keywordtype">float</span>        v_param,</div>
-<div class="line"><a id="l03128" name="l03128"></a><span class="lineno"> 3128</span>                <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>         seed,</div>
-<div class="line"><a id="l03129" name="l03129"></a><span class="lineno"> 3129</span>                <span class="keyword">const</span> Array *p_noise_x = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l03130" name="l03130"></a><span class="lineno"> 3130</span>                <span class="keyword">const</span> Array *p_noise_y = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l03131" name="l03131"></a><span class="lineno"> 3131</span>                Vec4&lt;float&gt;  bbox = {0.f, 1.f, 0.f, 1.f});</div>
-<div class="line"><a id="l03132" name="l03132"></a><span class="lineno"> 3132</span> </div>
-<div class="line"><a id="l03160" name="l03160"></a><span class="lineno"> 3160</span>Array <a class="code hl_function" href="namespacehmap_1_1gpu.html#a26d6f87858e400f7b6c8cecb1e12bb8c">voronoise_fbm</a>(Vec2&lt;int&gt;    shape,</div>
-<div class="line"><a id="l03161" name="l03161"></a><span class="lineno"> 3161</span>                    Vec2&lt;float&gt;  kw,</div>
-<div class="line"><a id="l03162" name="l03162"></a><span class="lineno"> 3162</span>                    <span class="keywordtype">float</span>        u_param,</div>
-<div class="line"><a id="l03163" name="l03163"></a><span class="lineno"> 3163</span>                    <span class="keywordtype">float</span>        v_param,</div>
-<div class="line"><a id="l03164" name="l03164"></a><span class="lineno"> 3164</span>                    <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>         seed,</div>
-<div class="line"><a id="l03165" name="l03165"></a><span class="lineno"> 3165</span>                    <span class="keywordtype">int</span>          octaves = 8,</div>
-<div class="line"><a id="l03166" name="l03166"></a><span class="lineno"> 3166</span>                    <span class="keywordtype">float</span>        weight = 0.7f,</div>
-<div class="line"><a id="l03167" name="l03167"></a><span class="lineno"> 3167</span>                    <span class="keywordtype">float</span>        persistence = 0.5f,</div>
-<div class="line"><a id="l03168" name="l03168"></a><span class="lineno"> 3168</span>                    <span class="keywordtype">float</span>        lacunarity = 2.f,</div>
-<div class="line"><a id="l03169" name="l03169"></a><span class="lineno"> 3169</span>                    <span class="keyword">const</span> Array *p_ctrl_param = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l03170" name="l03170"></a><span class="lineno"> 3170</span>                    <span class="keyword">const</span> Array *p_noise_x = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l03171" name="l03171"></a><span class="lineno"> 3171</span>                    <span class="keyword">const</span> Array *p_noise_y = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l03172" name="l03172"></a><span class="lineno"> 3172</span>                    Vec4&lt;float&gt;  bbox = {0.f, 1.f, 0.f, 1.f});</div>
-<div class="line"><a id="l03173" name="l03173"></a><span class="lineno"> 3173</span> </div>
-<div class="line"><a id="l03222" name="l03222"></a><span class="lineno"> 3222</span>Array <a class="code hl_function" href="namespacehmap_1_1gpu.html#ad25e08146acf2dc7101ec18dbfaa0d2b">vororand</a>(Vec2&lt;int&gt;         shape,</div>
-<div class="line"><a id="l03223" name="l03223"></a><span class="lineno"> 3223</span>               <span class="keywordtype">float</span>             density,</div>
-<div class="line"><a id="l03224" name="l03224"></a><span class="lineno"> 3224</span>               <span class="keywordtype">float</span>             variability,</div>
-<div class="line"><a id="l03225" name="l03225"></a><span class="lineno"> 3225</span>               <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>              seed,</div>
-<div class="line"><a id="l03226" name="l03226"></a><span class="lineno"> 3226</span>               <span class="keywordtype">float</span>             k_smoothing = 0.f,</div>
-<div class="line"><a id="l03227" name="l03227"></a><span class="lineno"> 3227</span>               <span class="keywordtype">float</span>             exp_sigma = 0.f,</div>
-<div class="line"><a id="l03228" name="l03228"></a><span class="lineno"> 3228</span>               <a class="code hl_enumeration" href="namespacehmap.html#a8e3756915e28aa80cec2190043cc8c2f">VoronoiReturnType</a> return_type = <a class="code hl_enumvalue" href="namespacehmap.html#a8e3756915e28aa80cec2190043cc8c2fa3e5996ed4314058911435c50bc95e1c2">VoronoiReturnType::F1_SQUARED</a>,</div>
-<div class="line"><a id="l03229" name="l03229"></a><span class="lineno"> 3229</span>               <span class="keyword">const</span> Array      *p_noise_x = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l03230" name="l03230"></a><span class="lineno"> 3230</span>               <span class="keyword">const</span> Array      *p_noise_y = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l03231" name="l03231"></a><span class="lineno"> 3231</span>               Vec4&lt;float&gt;       bbox = {0.f, 1.f, 0.f, 1.f},</div>
-<div class="line"><a id="l03232" name="l03232"></a><span class="lineno"> 3232</span>               Vec4&lt;float&gt;       bbox_points = {0.f, 1.f, 0.f, 1.f});</div>
-<div class="line"><a id="l03233" name="l03233"></a><span class="lineno"> 3233</span> </div>
-<div class="line"><a id="l03234" name="l03234"></a><span class="lineno"> 3234</span>Array <a class="code hl_function" href="namespacehmap_1_1gpu.html#ad25e08146acf2dc7101ec18dbfaa0d2b">vororand</a>(Vec2&lt;int&gt;                 shape,</div>
-<div class="line"><a id="l03235" name="l03235"></a><span class="lineno"> 3235</span>               <span class="keyword">const</span> std::vector&lt;float&gt; &amp;xp,</div>
-<div class="line"><a id="l03236" name="l03236"></a><span class="lineno"> 3236</span>               <span class="keyword">const</span> std::vector&lt;float&gt; &amp;yp,</div>
-<div class="line"><a id="l03237" name="l03237"></a><span class="lineno"> 3237</span>               <span class="keywordtype">float</span>                     k_smoothing = 0.f,</div>
-<div class="line"><a id="l03238" name="l03238"></a><span class="lineno"> 3238</span>               <span class="keywordtype">float</span>                     exp_sigma = 0.f,</div>
-<div class="line"><a id="l03239" name="l03239"></a><span class="lineno"> 3239</span>               <a class="code hl_enumeration" href="namespacehmap.html#a8e3756915e28aa80cec2190043cc8c2f">VoronoiReturnType</a> return_type = <a class="code hl_enumvalue" href="namespacehmap.html#a8e3756915e28aa80cec2190043cc8c2fa3e5996ed4314058911435c50bc95e1c2">VoronoiReturnType::F1_SQUARED</a>,</div>
-<div class="line"><a id="l03240" name="l03240"></a><span class="lineno"> 3240</span>               <span class="keyword">const</span> Array      *p_noise_x = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l03241" name="l03241"></a><span class="lineno"> 3241</span>               <span class="keyword">const</span> Array      *p_noise_y = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l03242" name="l03242"></a><span class="lineno"> 3242</span>               Vec4&lt;float&gt;       bbox = {0.f, 1.f, 0.f, 1.f});</div>
-<div class="line"><a id="l03243" name="l03243"></a><span class="lineno"> 3243</span> </div>
-<div class="line"><a id="l03300" name="l03300"></a><span class="lineno"> 3300</span>Array <a class="code hl_function" href="namespacehmap_1_1gpu.html#ad8a656cc770c7febd63ba5248206ca84">wavelet_noise</a>(Vec2&lt;int&gt;    shape,</div>
-<div class="line"><a id="l03301" name="l03301"></a><span class="lineno"> 3301</span>                    Vec2&lt;float&gt;  kw,</div>
-<div class="line"><a id="l03302" name="l03302"></a><span class="lineno"> 3302</span>                    <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>         seed,</div>
-<div class="line"><a id="l03303" name="l03303"></a><span class="lineno"> 3303</span>                    <span class="keywordtype">float</span>        kw_multiplier = 2.f,</div>
-<div class="line"><a id="l03304" name="l03304"></a><span class="lineno"> 3304</span>                    <span class="keywordtype">float</span>        vorticity = 0.f,</div>
-<div class="line"><a id="l03305" name="l03305"></a><span class="lineno"> 3305</span>                    <span class="keywordtype">float</span>        density = 1.f,</div>
-<div class="line"><a id="l03306" name="l03306"></a><span class="lineno"> 3306</span>                    <span class="keywordtype">int</span>          octaves = 8,</div>
-<div class="line"><a id="l03307" name="l03307"></a><span class="lineno"> 3307</span>                    <span class="keywordtype">float</span>        weight = 0.7f,</div>
-<div class="line"><a id="l03308" name="l03308"></a><span class="lineno"> 3308</span>                    <span class="keywordtype">float</span>        persistence = 0.5f,</div>
-<div class="line"><a id="l03309" name="l03309"></a><span class="lineno"> 3309</span>                    <span class="keywordtype">float</span>        lacunarity = 2.f,</div>
-<div class="line"><a id="l03310" name="l03310"></a><span class="lineno"> 3310</span>                    <span class="keyword">const</span> Array *p_ctrl_param = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l03311" name="l03311"></a><span class="lineno"> 3311</span>                    <span class="keyword">const</span> Array *p_noise_x = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l03312" name="l03312"></a><span class="lineno"> 3312</span>                    <span class="keyword">const</span> Array *p_noise_y = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l03313" name="l03313"></a><span class="lineno"> 3313</span>                    Vec4&lt;float&gt;  bbox = {0.f, 1.f, 0.f, 1.f});</div>
-<div class="line"><a id="l03314" name="l03314"></a><span class="lineno"> 3314</span> </div>
-<div class="line"><a id="l03315" name="l03315"></a><span class="lineno"> 3315</span>} <span class="comment">// namespace hmap::gpu</span></div>
+<div class="line"><a id="l02644" name="l02644"></a><span class="lineno"> 2644</span>Array <a class="code hl_function" href="namespacehmap_1_1gpu.html#a979d9b2898b7ed95fccddf19d243defc">plates</a>(Vec2&lt;int&gt;   shape,</div>
+<div class="line"><a id="l02645" name="l02645"></a><span class="lineno"> 2645</span>             Vec2&lt;float&gt; kw,</div>
+<div class="line"><a id="l02646" name="l02646"></a><span class="lineno"> 2646</span>             <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>        seed,</div>
+<div class="line"><a id="l02647" name="l02647"></a><span class="lineno"> 2647</span>             <span class="keywordtype">float</span>       talus,</div>
+<div class="line"><a id="l02648" name="l02648"></a><span class="lineno"> 2648</span>             <span class="keywordtype">int</span>         direction = 0,</div>
+<div class="line"><a id="l02649" name="l02649"></a><span class="lineno"> 2649</span>             <span class="keywordtype">float</span>       mix_ratio = 0.9f,</div>
+<div class="line"><a id="l02650" name="l02650"></a><span class="lineno"> 2650</span>             <span class="keywordtype">float</span>       base_noise_amp = 0.05f,</div>
+<div class="line"><a id="l02651" name="l02651"></a><span class="lineno"> 2651</span>             <span class="keywordtype">float</span>       kw_multiplier = 2.f,</div>
+<div class="line"><a id="l02652" name="l02652"></a><span class="lineno"> 2652</span>             <span class="keywordtype">float</span>       <a class="code hl_function" href="namespacehmap_1_1gpu.html#aa5a3e087822525c41f057a51255e2bad">rugosity</a> = 0.f,</div>
+<div class="line"><a id="l02653" name="l02653"></a><span class="lineno"> 2653</span>             Vec4&lt;float&gt; bbox = {0.f, 1.f, 0.f, 1.f});</div>
+<div class="line"><a id="l02654" name="l02654"></a><span class="lineno"> 2654</span> </div>
+<div class="line"><a id="l02700" name="l02700"></a><span class="lineno"> 2700</span>Array <a class="code hl_function" href="namespacehmap_1_1gpu.html#a0366d22ed8b0e1b74d5895e00c0e688b">polygon_field</a>(Vec2&lt;int&gt;         shape,</div>
+<div class="line"><a id="l02701" name="l02701"></a><span class="lineno"> 2701</span>                    Vec2&lt;float&gt;       kw,</div>
+<div class="line"><a id="l02702" name="l02702"></a><span class="lineno"> 2702</span>                    <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>              seed,</div>
+<div class="line"><a id="l02703" name="l02703"></a><span class="lineno"> 2703</span>                    <span class="keywordtype">float</span>             rmin = 0.05f,</div>
+<div class="line"><a id="l02704" name="l02704"></a><span class="lineno"> 2704</span>                    <span class="keywordtype">float</span>             rmax = 0.8f,</div>
+<div class="line"><a id="l02705" name="l02705"></a><span class="lineno"> 2705</span>                    <span class="keywordtype">float</span>             clamping_dist = 0.1f,</div>
+<div class="line"><a id="l02706" name="l02706"></a><span class="lineno"> 2706</span>                    <span class="keywordtype">float</span>             clamping_k = 0.1f,</div>
+<div class="line"><a id="l02707" name="l02707"></a><span class="lineno"> 2707</span>                    <span class="keywordtype">int</span>               n_vertices_min = 3,</div>
+<div class="line"><a id="l02708" name="l02708"></a><span class="lineno"> 2708</span>                    <span class="keywordtype">int</span>               n_vertices_max = 16,</div>
+<div class="line"><a id="l02709" name="l02709"></a><span class="lineno"> 2709</span>                    <span class="keywordtype">float</span>             density = 0.5f,</div>
+<div class="line"><a id="l02710" name="l02710"></a><span class="lineno"> 2710</span>                    <a class="code hl_struct" href="structhmap_1_1Vec2.html">hmap::Vec2&lt;float&gt;</a> jitter = {0.5f, 0.5f},</div>
+<div class="line"><a id="l02711" name="l02711"></a><span class="lineno"> 2711</span>                    <span class="keywordtype">float</span>             shift = 0.1f,</div>
+<div class="line"><a id="l02712" name="l02712"></a><span class="lineno"> 2712</span>                    <span class="keyword">const</span> Array      *p_noise_x = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l02713" name="l02713"></a><span class="lineno"> 2713</span>                    <span class="keyword">const</span> Array      *p_noise_y = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l02714" name="l02714"></a><span class="lineno"> 2714</span>                    <span class="keyword">const</span> Array      *p_noise_distance = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l02715" name="l02715"></a><span class="lineno"> 2715</span>                    <span class="keyword">const</span> Array      *p_density_multiplier = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l02716" name="l02716"></a><span class="lineno"> 2716</span>                    <span class="keyword">const</span> Array      *p_size_multiplier = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l02717" name="l02717"></a><span class="lineno"> 2717</span>                    Vec4&lt;float&gt;       bbox = {0.f, 1.f, 0.f, 1.f});</div>
+<div class="line"><a id="l02718" name="l02718"></a><span class="lineno"> 2718</span> </div>
+<div class="line"><a id="l02763" name="l02763"></a><span class="lineno"> 2763</span>Array <a class="code hl_function" href="namespacehmap_1_1gpu.html#a4927a1382b383a5ceb9071f51bd5abf9">polygon_field_fbm</a>(Vec2&lt;int&gt;         shape,</div>
+<div class="line"><a id="l02764" name="l02764"></a><span class="lineno"> 2764</span>                        Vec2&lt;float&gt;       kw,</div>
+<div class="line"><a id="l02765" name="l02765"></a><span class="lineno"> 2765</span>                        <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>              seed,</div>
+<div class="line"><a id="l02766" name="l02766"></a><span class="lineno"> 2766</span>                        <span class="keywordtype">float</span>             rmin = 0.05f,</div>
+<div class="line"><a id="l02767" name="l02767"></a><span class="lineno"> 2767</span>                        <span class="keywordtype">float</span>             rmax = 0.8f,</div>
+<div class="line"><a id="l02768" name="l02768"></a><span class="lineno"> 2768</span>                        <span class="keywordtype">float</span>             clamping_dist = 0.1f,</div>
+<div class="line"><a id="l02769" name="l02769"></a><span class="lineno"> 2769</span>                        <span class="keywordtype">float</span>             clamping_k = 0.1f,</div>
+<div class="line"><a id="l02770" name="l02770"></a><span class="lineno"> 2770</span>                        <span class="keywordtype">int</span>               n_vertices_min = 3,</div>
+<div class="line"><a id="l02771" name="l02771"></a><span class="lineno"> 2771</span>                        <span class="keywordtype">int</span>               n_vertices_max = 16,</div>
+<div class="line"><a id="l02772" name="l02772"></a><span class="lineno"> 2772</span>                        <span class="keywordtype">float</span>             density = 0.1f,</div>
+<div class="line"><a id="l02773" name="l02773"></a><span class="lineno"> 2773</span>                        <a class="code hl_struct" href="structhmap_1_1Vec2.html">hmap::Vec2&lt;float&gt;</a> jitter = {0.5f, 0.5f},</div>
+<div class="line"><a id="l02774" name="l02774"></a><span class="lineno"> 2774</span>                        <span class="keywordtype">float</span>             shift = 0.1f,</div>
+<div class="line"><a id="l02775" name="l02775"></a><span class="lineno"> 2775</span>                        <span class="keywordtype">int</span>               octaves = 8,</div>
+<div class="line"><a id="l02776" name="l02776"></a><span class="lineno"> 2776</span>                        <span class="keywordtype">float</span>             persistence = 0.5f,</div>
+<div class="line"><a id="l02777" name="l02777"></a><span class="lineno"> 2777</span>                        <span class="keywordtype">float</span>             lacunarity = 2.f,</div>
+<div class="line"><a id="l02778" name="l02778"></a><span class="lineno"> 2778</span>                        <span class="keyword">const</span> Array      *p_noise_x = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l02779" name="l02779"></a><span class="lineno"> 2779</span>                        <span class="keyword">const</span> Array      *p_noise_y = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l02780" name="l02780"></a><span class="lineno"> 2780</span>                        <span class="keyword">const</span> Array      *p_noise_distance = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l02781" name="l02781"></a><span class="lineno"> 2781</span>                        <span class="keyword">const</span> Array      *p_density_multiplier = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l02782" name="l02782"></a><span class="lineno"> 2782</span>                        <span class="keyword">const</span> Array      *p_size_multiplier = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l02783" name="l02783"></a><span class="lineno"> 2783</span>                        Vec4&lt;float&gt;       bbox = {0.f, 1.f, 0.f, 1.f});</div>
+<div class="line"><a id="l02784" name="l02784"></a><span class="lineno"> 2784</span> </div>
+<div class="line"><a id="l02829" name="l02829"></a><span class="lineno"> 2829</span>Array <a class="code hl_function" href="namespacehmap_1_1gpu.html#a04d679fc6d72fd9533fbf27ad28d3898">shattered_peak</a>(Vec2&lt;int&gt;    shape,</div>
+<div class="line"><a id="l02830" name="l02830"></a><span class="lineno"> 2830</span>                     <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>         seed,</div>
+<div class="line"><a id="l02831" name="l02831"></a><span class="lineno"> 2831</span>                     <span class="keywordtype">float</span>        scale = 1.f,</div>
+<div class="line"><a id="l02832" name="l02832"></a><span class="lineno"> 2832</span>                     <span class="keywordtype">int</span>          octaves = 8,</div>
+<div class="line"><a id="l02833" name="l02833"></a><span class="lineno"> 2833</span>                     <span class="keywordtype">float</span>        peak_kw = 4.f,</div>
+<div class="line"><a id="l02834" name="l02834"></a><span class="lineno"> 2834</span>                     <span class="keywordtype">float</span>        <a class="code hl_function" href="namespacehmap_1_1gpu.html#aa5a3e087822525c41f057a51255e2bad">rugosity</a> = 0.f,</div>
+<div class="line"><a id="l02835" name="l02835"></a><span class="lineno"> 2835</span>                     <span class="keywordtype">float</span>        <a class="code hl_function" href="namespacehmap.html#aac71bb6c14edc17967957f7918acdbdd">angle</a> = 30.f,</div>
+<div class="line"><a id="l02836" name="l02836"></a><span class="lineno"> 2836</span>                     <span class="keywordtype">float</span>        gamma = 1.f,</div>
+<div class="line"><a id="l02837" name="l02837"></a><span class="lineno"> 2837</span>                     <span class="keywordtype">bool</span>         add_deposition = <span class="keyword">true</span>,</div>
+<div class="line"><a id="l02838" name="l02838"></a><span class="lineno"> 2838</span>                     <span class="keywordtype">float</span>        bulk_amp = 0.3f,</div>
+<div class="line"><a id="l02839" name="l02839"></a><span class="lineno"> 2839</span>                     <span class="keywordtype">float</span>        base_noise_amp = 0.1f,</div>
+<div class="line"><a id="l02840" name="l02840"></a><span class="lineno"> 2840</span>                     <span class="keywordtype">float</span>        k_smoothing = 0.f,</div>
+<div class="line"><a id="l02841" name="l02841"></a><span class="lineno"> 2841</span>                     Vec2&lt;float&gt;  center = {0.5f, 0.5f},</div>
+<div class="line"><a id="l02842" name="l02842"></a><span class="lineno"> 2842</span>                     <span class="keyword">const</span> Array *p_noise_x = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l02843" name="l02843"></a><span class="lineno"> 2843</span>                     <span class="keyword">const</span> Array *p_noise_y = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l02844" name="l02844"></a><span class="lineno"> 2844</span>                     Vec4&lt;float&gt;  bbox = {0.f, 1.f, 0.f, 1.f});</div>
+<div class="line"><a id="l02845" name="l02845"></a><span class="lineno"> 2845</span> </div>
+<div class="line"><a id="l02891" name="l02891"></a><span class="lineno"> 2891</span>Array <a class="code hl_function" href="namespacehmap_1_1gpu.html#a85000763147ffd507d483ba9be27f38b">vorolines</a>(Vec2&lt;int&gt;         shape,</div>
+<div class="line"><a id="l02892" name="l02892"></a><span class="lineno"> 2892</span>                <span class="keywordtype">float</span>             density,</div>
+<div class="line"><a id="l02893" name="l02893"></a><span class="lineno"> 2893</span>                <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>              seed,</div>
+<div class="line"><a id="l02894" name="l02894"></a><span class="lineno"> 2894</span>                <span class="keywordtype">float</span>             k_smoothing = 0.f,</div>
+<div class="line"><a id="l02895" name="l02895"></a><span class="lineno"> 2895</span>                <span class="keywordtype">float</span>             exp_sigma = 0.f,</div>
+<div class="line"><a id="l02896" name="l02896"></a><span class="lineno"> 2896</span>                <span class="keywordtype">float</span>             alpha = 0.f,</div>
+<div class="line"><a id="l02897" name="l02897"></a><span class="lineno"> 2897</span>                <span class="keywordtype">float</span>             alpha_span = M_PI,</div>
+<div class="line"><a id="l02898" name="l02898"></a><span class="lineno"> 2898</span>                <a class="code hl_enumeration" href="namespacehmap.html#a8e3756915e28aa80cec2190043cc8c2f">VoronoiReturnType</a> return_type = <a class="code hl_enumvalue" href="namespacehmap.html#a8e3756915e28aa80cec2190043cc8c2fa3e5996ed4314058911435c50bc95e1c2">VoronoiReturnType::F1_SQUARED</a>,</div>
+<div class="line"><a id="l02899" name="l02899"></a><span class="lineno"> 2899</span>                <span class="keyword">const</span> Array      *p_noise_x = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l02900" name="l02900"></a><span class="lineno"> 2900</span>                <span class="keyword">const</span> Array      *p_noise_y = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l02901" name="l02901"></a><span class="lineno"> 2901</span>                Vec4&lt;float&gt;       bbox = {0.f, 1.f, 0.f, 1.f},</div>
+<div class="line"><a id="l02902" name="l02902"></a><span class="lineno"> 2902</span>                Vec4&lt;float&gt;       bbox_points = {0.f, 1.f, 0.f, 1.f});</div>
+<div class="line"><a id="l02903" name="l02903"></a><span class="lineno"> 2903</span> </div>
+<div class="line"><a id="l02959" name="l02959"></a><span class="lineno"> 2959</span>Array <a class="code hl_function" href="namespacehmap_1_1gpu.html#ac2ad88df8eb3c863235f96f1678634e4">vorolines_fbm</a>(</div>
+<div class="line"><a id="l02960" name="l02960"></a><span class="lineno"> 2960</span>    Vec2&lt;int&gt;         shape,</div>
+<div class="line"><a id="l02961" name="l02961"></a><span class="lineno"> 2961</span>    <span class="keywordtype">float</span>             density,</div>
+<div class="line"><a id="l02962" name="l02962"></a><span class="lineno"> 2962</span>    <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>              seed,</div>
+<div class="line"><a id="l02963" name="l02963"></a><span class="lineno"> 2963</span>    <span class="keywordtype">float</span>             k_smoothing = 0.f,</div>
+<div class="line"><a id="l02964" name="l02964"></a><span class="lineno"> 2964</span>    <span class="keywordtype">float</span>             exp_sigma = 0.f,</div>
+<div class="line"><a id="l02965" name="l02965"></a><span class="lineno"> 2965</span>    <span class="keywordtype">float</span>             alpha = 0.f,</div>
+<div class="line"><a id="l02966" name="l02966"></a><span class="lineno"> 2966</span>    <span class="keywordtype">float</span>             alpha_span = M_PI,</div>
+<div class="line"><a id="l02967" name="l02967"></a><span class="lineno"> 2967</span>    <a class="code hl_enumeration" href="namespacehmap.html#a8e3756915e28aa80cec2190043cc8c2f">VoronoiReturnType</a> return_type = <a class="code hl_enumvalue" href="namespacehmap.html#a8e3756915e28aa80cec2190043cc8c2fa3e5996ed4314058911435c50bc95e1c2">VoronoiReturnType::F1_SQUARED</a>,</div>
+<div class="line"><a id="l02968" name="l02968"></a><span class="lineno"> 2968</span>    <span class="keywordtype">int</span>               octaves = 8,</div>
+<div class="line"><a id="l02969" name="l02969"></a><span class="lineno"> 2969</span>    <span class="keywordtype">float</span>             weight = 0.7f,</div>
+<div class="line"><a id="l02970" name="l02970"></a><span class="lineno"> 2970</span>    <span class="keywordtype">float</span>             persistence = 0.5f,</div>
+<div class="line"><a id="l02971" name="l02971"></a><span class="lineno"> 2971</span>    <span class="keywordtype">float</span>             lacunarity = 2.f,</div>
+<div class="line"><a id="l02972" name="l02972"></a><span class="lineno"> 2972</span>    <span class="keyword">const</span> Array      *p_noise_x = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l02973" name="l02973"></a><span class="lineno"> 2973</span>    <span class="keyword">const</span> Array      *p_noise_y = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l02974" name="l02974"></a><span class="lineno"> 2974</span>    Vec4&lt;float&gt;       bbox = {0.f, 1.f, 0.f, 1.f},</div>
+<div class="line"><a id="l02975" name="l02975"></a><span class="lineno"> 2975</span>    Vec4&lt;float&gt;       bbox_points = {0.f, 1.f, 0.f, 1.f});</div>
+<div class="line"><a id="l02976" name="l02976"></a><span class="lineno"> 2976</span> </div>
+<div class="line"><a id="l03016" name="l03016"></a><span class="lineno"> 3016</span>Array <a class="code hl_function" href="namespacehmap_1_1gpu.html#a0c9c2a528f344ede2aa320fdf2583790">voronoi</a>(Vec2&lt;int&gt;         shape,</div>
+<div class="line"><a id="l03017" name="l03017"></a><span class="lineno"> 3017</span>              Vec2&lt;float&gt;       kw,</div>
+<div class="line"><a id="l03018" name="l03018"></a><span class="lineno"> 3018</span>              <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>              seed,</div>
+<div class="line"><a id="l03019" name="l03019"></a><span class="lineno"> 3019</span>              Vec2&lt;float&gt;       jitter = {0.5f, 0.5f},</div>
+<div class="line"><a id="l03020" name="l03020"></a><span class="lineno"> 3020</span>              <span class="keywordtype">float</span>             k_smoothing = 0.f,</div>
+<div class="line"><a id="l03021" name="l03021"></a><span class="lineno"> 3021</span>              <span class="keywordtype">float</span>             exp_sigma = 0.f,</div>
+<div class="line"><a id="l03022" name="l03022"></a><span class="lineno"> 3022</span>              <a class="code hl_enumeration" href="namespacehmap.html#a8e3756915e28aa80cec2190043cc8c2f">VoronoiReturnType</a> return_type = <a class="code hl_enumvalue" href="namespacehmap.html#a8e3756915e28aa80cec2190043cc8c2fa3e5996ed4314058911435c50bc95e1c2">VoronoiReturnType::F1_SQUARED</a>,</div>
+<div class="line"><a id="l03023" name="l03023"></a><span class="lineno"> 3023</span>              <span class="keyword">const</span> Array      *p_ctrl_param = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l03024" name="l03024"></a><span class="lineno"> 3024</span>              <span class="keyword">const</span> Array      *p_noise_x = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l03025" name="l03025"></a><span class="lineno"> 3025</span>              <span class="keyword">const</span> Array      *p_noise_y = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l03026" name="l03026"></a><span class="lineno"> 3026</span>              Vec4&lt;float&gt;       bbox = {0.f, 1.f, 0.f, 1.f});</div>
+<div class="line"><a id="l03027" name="l03027"></a><span class="lineno"> 3027</span> </div>
+<div class="line"><a id="l03074" name="l03074"></a><span class="lineno"> 3074</span>Array <a class="code hl_function" href="namespacehmap_1_1gpu.html#aae4961b7c0f65d6904cc61022eb2642b">voronoi_fbm</a>(Vec2&lt;int&gt;         shape,</div>
+<div class="line"><a id="l03075" name="l03075"></a><span class="lineno"> 3075</span>                  Vec2&lt;float&gt;       kw,</div>
+<div class="line"><a id="l03076" name="l03076"></a><span class="lineno"> 3076</span>                  <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>              seed,</div>
+<div class="line"><a id="l03077" name="l03077"></a><span class="lineno"> 3077</span>                  Vec2&lt;float&gt;       jitter = {0.5f, 0.5f},</div>
+<div class="line"><a id="l03078" name="l03078"></a><span class="lineno"> 3078</span>                  <span class="keywordtype">float</span>             k_smoothing = 0.f,</div>
+<div class="line"><a id="l03079" name="l03079"></a><span class="lineno"> 3079</span>                  <span class="keywordtype">float</span>             exp_sigma = 0.f,</div>
+<div class="line"><a id="l03080" name="l03080"></a><span class="lineno"> 3080</span>                  <a class="code hl_enumeration" href="namespacehmap.html#a8e3756915e28aa80cec2190043cc8c2f">VoronoiReturnType</a> return_type = <a class="code hl_enumvalue" href="namespacehmap.html#a8e3756915e28aa80cec2190043cc8c2fa3e5996ed4314058911435c50bc95e1c2">VoronoiReturnType::F1_SQUARED</a>,</div>
+<div class="line"><a id="l03081" name="l03081"></a><span class="lineno"> 3081</span>                  <span class="keywordtype">int</span>               octaves = 8,</div>
+<div class="line"><a id="l03082" name="l03082"></a><span class="lineno"> 3082</span>                  <span class="keywordtype">float</span>             weight = 0.7f,</div>
+<div class="line"><a id="l03083" name="l03083"></a><span class="lineno"> 3083</span>                  <span class="keywordtype">float</span>             persistence = 0.5f,</div>
+<div class="line"><a id="l03084" name="l03084"></a><span class="lineno"> 3084</span>                  <span class="keywordtype">float</span>             lacunarity = 2.f,</div>
+<div class="line"><a id="l03085" name="l03085"></a><span class="lineno"> 3085</span>                  <span class="keyword">const</span> Array      *p_ctrl_param = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l03086" name="l03086"></a><span class="lineno"> 3086</span>                  <span class="keyword">const</span> Array      *p_noise_x = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l03087" name="l03087"></a><span class="lineno"> 3087</span>                  <span class="keyword">const</span> Array      *p_noise_y = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l03088" name="l03088"></a><span class="lineno"> 3088</span>                  Vec4&lt;float&gt;       bbox = {0.f, 1.f, 0.f, 1.f});</div>
+<div class="line"><a id="l03089" name="l03089"></a><span class="lineno"> 3089</span> </div>
+<div class="line"><a id="l03116" name="l03116"></a><span class="lineno"> 3116</span>Array <a class="code hl_function" href="namespacehmap_1_1gpu.html#aaee46739a429168aa45ff1e5d55041ec">voronoi_edge_distance</a>(Vec2&lt;int&gt;    shape,</div>
+<div class="line"><a id="l03117" name="l03117"></a><span class="lineno"> 3117</span>                            Vec2&lt;float&gt;  kw,</div>
+<div class="line"><a id="l03118" name="l03118"></a><span class="lineno"> 3118</span>                            <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>         seed,</div>
+<div class="line"><a id="l03119" name="l03119"></a><span class="lineno"> 3119</span>                            Vec2&lt;float&gt;  jitter = {0.5f, 0.5f},</div>
+<div class="line"><a id="l03120" name="l03120"></a><span class="lineno"> 3120</span>                            <span class="keyword">const</span> Array *p_ctrl_param = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l03121" name="l03121"></a><span class="lineno"> 3121</span>                            <span class="keyword">const</span> Array *p_noise_x = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l03122" name="l03122"></a><span class="lineno"> 3122</span>                            <span class="keyword">const</span> Array *p_noise_y = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l03123" name="l03123"></a><span class="lineno"> 3123</span>                            Vec4&lt;float&gt;  bbox = {0.f, 1.f, 0.f, 1.f});</div>
+<div class="line"><a id="l03124" name="l03124"></a><span class="lineno"> 3124</span> </div>
+<div class="line"><a id="l03161" name="l03161"></a><span class="lineno"> 3161</span>Array <a class="code hl_function" href="namespacehmap_1_1gpu.html#a29cc1b0843f7447eb19b6cef27772cdd">voronoise</a>(Vec2&lt;int&gt;    shape,</div>
+<div class="line"><a id="l03162" name="l03162"></a><span class="lineno"> 3162</span>                Vec2&lt;float&gt;  kw,</div>
+<div class="line"><a id="l03163" name="l03163"></a><span class="lineno"> 3163</span>                <span class="keywordtype">float</span>        u_param,</div>
+<div class="line"><a id="l03164" name="l03164"></a><span class="lineno"> 3164</span>                <span class="keywordtype">float</span>        v_param,</div>
+<div class="line"><a id="l03165" name="l03165"></a><span class="lineno"> 3165</span>                <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>         seed,</div>
+<div class="line"><a id="l03166" name="l03166"></a><span class="lineno"> 3166</span>                <span class="keyword">const</span> Array *p_noise_x = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l03167" name="l03167"></a><span class="lineno"> 3167</span>                <span class="keyword">const</span> Array *p_noise_y = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l03168" name="l03168"></a><span class="lineno"> 3168</span>                Vec4&lt;float&gt;  bbox = {0.f, 1.f, 0.f, 1.f});</div>
+<div class="line"><a id="l03169" name="l03169"></a><span class="lineno"> 3169</span> </div>
+<div class="line"><a id="l03197" name="l03197"></a><span class="lineno"> 3197</span>Array <a class="code hl_function" href="namespacehmap_1_1gpu.html#a26d6f87858e400f7b6c8cecb1e12bb8c">voronoise_fbm</a>(Vec2&lt;int&gt;    shape,</div>
+<div class="line"><a id="l03198" name="l03198"></a><span class="lineno"> 3198</span>                    Vec2&lt;float&gt;  kw,</div>
+<div class="line"><a id="l03199" name="l03199"></a><span class="lineno"> 3199</span>                    <span class="keywordtype">float</span>        u_param,</div>
+<div class="line"><a id="l03200" name="l03200"></a><span class="lineno"> 3200</span>                    <span class="keywordtype">float</span>        v_param,</div>
+<div class="line"><a id="l03201" name="l03201"></a><span class="lineno"> 3201</span>                    <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>         seed,</div>
+<div class="line"><a id="l03202" name="l03202"></a><span class="lineno"> 3202</span>                    <span class="keywordtype">int</span>          octaves = 8,</div>
+<div class="line"><a id="l03203" name="l03203"></a><span class="lineno"> 3203</span>                    <span class="keywordtype">float</span>        weight = 0.7f,</div>
+<div class="line"><a id="l03204" name="l03204"></a><span class="lineno"> 3204</span>                    <span class="keywordtype">float</span>        persistence = 0.5f,</div>
+<div class="line"><a id="l03205" name="l03205"></a><span class="lineno"> 3205</span>                    <span class="keywordtype">float</span>        lacunarity = 2.f,</div>
+<div class="line"><a id="l03206" name="l03206"></a><span class="lineno"> 3206</span>                    <span class="keyword">const</span> Array *p_ctrl_param = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l03207" name="l03207"></a><span class="lineno"> 3207</span>                    <span class="keyword">const</span> Array *p_noise_x = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l03208" name="l03208"></a><span class="lineno"> 3208</span>                    <span class="keyword">const</span> Array *p_noise_y = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l03209" name="l03209"></a><span class="lineno"> 3209</span>                    Vec4&lt;float&gt;  bbox = {0.f, 1.f, 0.f, 1.f});</div>
+<div class="line"><a id="l03210" name="l03210"></a><span class="lineno"> 3210</span> </div>
+<div class="line"><a id="l03259" name="l03259"></a><span class="lineno"> 3259</span>Array <a class="code hl_function" href="namespacehmap_1_1gpu.html#ad25e08146acf2dc7101ec18dbfaa0d2b">vororand</a>(Vec2&lt;int&gt;         shape,</div>
+<div class="line"><a id="l03260" name="l03260"></a><span class="lineno"> 3260</span>               <span class="keywordtype">float</span>             density,</div>
+<div class="line"><a id="l03261" name="l03261"></a><span class="lineno"> 3261</span>               <span class="keywordtype">float</span>             variability,</div>
+<div class="line"><a id="l03262" name="l03262"></a><span class="lineno"> 3262</span>               <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>              seed,</div>
+<div class="line"><a id="l03263" name="l03263"></a><span class="lineno"> 3263</span>               <span class="keywordtype">float</span>             k_smoothing = 0.f,</div>
+<div class="line"><a id="l03264" name="l03264"></a><span class="lineno"> 3264</span>               <span class="keywordtype">float</span>             exp_sigma = 0.f,</div>
+<div class="line"><a id="l03265" name="l03265"></a><span class="lineno"> 3265</span>               <a class="code hl_enumeration" href="namespacehmap.html#a8e3756915e28aa80cec2190043cc8c2f">VoronoiReturnType</a> return_type = <a class="code hl_enumvalue" href="namespacehmap.html#a8e3756915e28aa80cec2190043cc8c2fa3e5996ed4314058911435c50bc95e1c2">VoronoiReturnType::F1_SQUARED</a>,</div>
+<div class="line"><a id="l03266" name="l03266"></a><span class="lineno"> 3266</span>               <span class="keyword">const</span> Array      *p_noise_x = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l03267" name="l03267"></a><span class="lineno"> 3267</span>               <span class="keyword">const</span> Array      *p_noise_y = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l03268" name="l03268"></a><span class="lineno"> 3268</span>               Vec4&lt;float&gt;       bbox = {0.f, 1.f, 0.f, 1.f},</div>
+<div class="line"><a id="l03269" name="l03269"></a><span class="lineno"> 3269</span>               Vec4&lt;float&gt;       bbox_points = {0.f, 1.f, 0.f, 1.f});</div>
+<div class="line"><a id="l03270" name="l03270"></a><span class="lineno"> 3270</span> </div>
+<div class="line"><a id="l03271" name="l03271"></a><span class="lineno"> 3271</span>Array <a class="code hl_function" href="namespacehmap_1_1gpu.html#ad25e08146acf2dc7101ec18dbfaa0d2b">vororand</a>(Vec2&lt;int&gt;                 shape,</div>
+<div class="line"><a id="l03272" name="l03272"></a><span class="lineno"> 3272</span>               <span class="keyword">const</span> std::vector&lt;float&gt; &amp;xp,</div>
+<div class="line"><a id="l03273" name="l03273"></a><span class="lineno"> 3273</span>               <span class="keyword">const</span> std::vector&lt;float&gt; &amp;yp,</div>
+<div class="line"><a id="l03274" name="l03274"></a><span class="lineno"> 3274</span>               <span class="keywordtype">float</span>                     k_smoothing = 0.f,</div>
+<div class="line"><a id="l03275" name="l03275"></a><span class="lineno"> 3275</span>               <span class="keywordtype">float</span>                     exp_sigma = 0.f,</div>
+<div class="line"><a id="l03276" name="l03276"></a><span class="lineno"> 3276</span>               <a class="code hl_enumeration" href="namespacehmap.html#a8e3756915e28aa80cec2190043cc8c2f">VoronoiReturnType</a> return_type = <a class="code hl_enumvalue" href="namespacehmap.html#a8e3756915e28aa80cec2190043cc8c2fa3e5996ed4314058911435c50bc95e1c2">VoronoiReturnType::F1_SQUARED</a>,</div>
+<div class="line"><a id="l03277" name="l03277"></a><span class="lineno"> 3277</span>               <span class="keyword">const</span> Array      *p_noise_x = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l03278" name="l03278"></a><span class="lineno"> 3278</span>               <span class="keyword">const</span> Array      *p_noise_y = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l03279" name="l03279"></a><span class="lineno"> 3279</span>               Vec4&lt;float&gt;       bbox = {0.f, 1.f, 0.f, 1.f});</div>
+<div class="line"><a id="l03280" name="l03280"></a><span class="lineno"> 3280</span> </div>
+<div class="line"><a id="l03337" name="l03337"></a><span class="lineno"> 3337</span>Array <a class="code hl_function" href="namespacehmap_1_1gpu.html#ad8a656cc770c7febd63ba5248206ca84">wavelet_noise</a>(Vec2&lt;int&gt;    shape,</div>
+<div class="line"><a id="l03338" name="l03338"></a><span class="lineno"> 3338</span>                    Vec2&lt;float&gt;  kw,</div>
+<div class="line"><a id="l03339" name="l03339"></a><span class="lineno"> 3339</span>                    <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>         seed,</div>
+<div class="line"><a id="l03340" name="l03340"></a><span class="lineno"> 3340</span>                    <span class="keywordtype">float</span>        kw_multiplier = 2.f,</div>
+<div class="line"><a id="l03341" name="l03341"></a><span class="lineno"> 3341</span>                    <span class="keywordtype">float</span>        vorticity = 0.f,</div>
+<div class="line"><a id="l03342" name="l03342"></a><span class="lineno"> 3342</span>                    <span class="keywordtype">float</span>        density = 1.f,</div>
+<div class="line"><a id="l03343" name="l03343"></a><span class="lineno"> 3343</span>                    <span class="keywordtype">int</span>          octaves = 8,</div>
+<div class="line"><a id="l03344" name="l03344"></a><span class="lineno"> 3344</span>                    <span class="keywordtype">float</span>        weight = 0.7f,</div>
+<div class="line"><a id="l03345" name="l03345"></a><span class="lineno"> 3345</span>                    <span class="keywordtype">float</span>        persistence = 0.5f,</div>
+<div class="line"><a id="l03346" name="l03346"></a><span class="lineno"> 3346</span>                    <span class="keywordtype">float</span>        lacunarity = 2.f,</div>
+<div class="line"><a id="l03347" name="l03347"></a><span class="lineno"> 3347</span>                    <span class="keyword">const</span> Array *p_ctrl_param = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l03348" name="l03348"></a><span class="lineno"> 3348</span>                    <span class="keyword">const</span> Array *p_noise_x = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l03349" name="l03349"></a><span class="lineno"> 3349</span>                    <span class="keyword">const</span> Array *p_noise_y = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l03350" name="l03350"></a><span class="lineno"> 3350</span>                    Vec4&lt;float&gt;  bbox = {0.f, 1.f, 0.f, 1.f});</div>
+<div class="line"><a id="l03351" name="l03351"></a><span class="lineno"> 3351</span> </div>
+<div class="line"><a id="l03352" name="l03352"></a><span class="lineno"> 3352</span>} <span class="comment">// namespace hmap::gpu</span></div>
 <div class="ttc" id="aarray_8hpp_html"><div class="ttname"><a href="array_8hpp.html">array.hpp</a></div><div class="ttdoc">Declaration of the Array class for 2D floating-point arrays with various mathematical operations and ...</div></div>
 <div class="ttc" id="aarray_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition</b> array.hpp:14</div></div>
 <div class="ttc" id="aerosion_8hpp_html"><div class="ttname"><a href="erosion_8hpp.html">erosion.hpp</a></div><div class="ttdoc">Implements hydraulic and thermal erosion algorithms for terrain modeling, including particle-based fl...</div></div>
@@ -1193,6 +1204,7 @@ $(document).ready(function(){initNavTree('primitives_8hpp_source.html',''); init
 <div class="ttc" id="anamespacehmap_1_1gpu_html_a78f88496614fc22dec4f30cb12141d2d"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a78f88496614fc22dec4f30cb12141d2d">hmap::gpu::hemisphere_field</a></div><div class="ttdeci">Array hemisphere_field(Vec2&lt; int &gt; shape, Vec2&lt; float &gt; kw, uint seed, float rmin=0.05f, float rmax=0.8f, float amplitude_random_ratio=1.f, float density=0.1f, hmap::Vec2&lt; float &gt; jitter={1.f, 1.f}, float shift=0.f, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_noise_distance=nullptr, const Array *p_density_multiplier=nullptr, const Array *p_size_multiplier=nullptr, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Generates a scalar field representing the signed distance to randomly generated hemispheres.</div><div class="ttdef"><b>Definition</b> primitives_gpu.cpp:324</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_a85000763147ffd507d483ba9be27f38b"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a85000763147ffd507d483ba9be27f38b">hmap::gpu::vorolines</a></div><div class="ttdeci">Array vorolines(Vec2&lt; int &gt; shape, float density, uint seed, float k_smoothing=0.f, float exp_sigma=0.f, float alpha=0.f, float alpha_span=M_PI, VoronoiReturnType return_type=VoronoiReturnType::F1_SQUARED, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f}, Vec4&lt; float &gt; bbox_points={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Generates a Voronoi-based pattern where cells are defined by proximity to random lines.</div><div class="ttdef"><b>Definition</b> primitives_gpu.cpp:704</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_a91c4bef201bf0b1c1759b0e924e48861"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a91c4bef201bf0b1c1759b0e924e48861">hmap::gpu::mountain_tibesti</a></div><div class="ttdeci">Array mountain_tibesti(Vec2&lt; int &gt; shape, uint seed, float scale=1.f, int octaves=8, float peak_kw=20.f, float rugosity=0.f, float angle=30.f, float angle_spread_ratio=0.25f, float gamma=1.f, bool add_deposition=true, float bulk_amp=1.f, float base_noise_amp=0.1f, Vec2&lt; float &gt; center={0.5f, 0.5f}, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Generates a synthetic &quot;Tibesti&quot; mountain heightmap.</div><div class="ttdef"><b>Definition</b> mountain_tibesti.cpp:13</div></div>
+<div class="ttc" id="anamespacehmap_1_1gpu_html_a979d9b2898b7ed95fccddf19d243defc"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a979d9b2898b7ed95fccddf19d243defc">hmap::gpu::plates</a></div><div class="ttdeci">Array plates(Vec2&lt; int &gt; shape, Vec2&lt; float &gt; kw, uint seed, float talus, int direction=0, float mix_ratio=0.9f, float base_noise_amp=0.05f, float kw_multiplier=2.f, float rugosity=0.f, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Generate a tectonic plate–like heightfield using Voronoi FBM and directional talus projection.</div><div class="ttdef"><b>Definition</b> plates.cpp:11</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_a9a67e946fa8616f634c1e5f1cad6045b"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a9a67e946fa8616f634c1e5f1cad6045b">hmap::gpu::gabor_wave_fbm</a></div><div class="ttdeci">Array gabor_wave_fbm(Vec2&lt; int &gt; shape, Vec2&lt; float &gt; kw, uint seed, const Array &amp;angle, float angle_spread_ratio=1.f, int octaves=8, float weight=0.7f, float persistence=0.5f, float lacunarity=2.f, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Return an array filled with coherence Gabor noise.</div><div class="ttdef"><b>Definition</b> primitives_gpu.cpp:85</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_aa5a3e087822525c41f057a51255e2bad"><div class="ttname"><a href="namespacehmap_1_1gpu.html#aa5a3e087822525c41f057a51255e2bad">hmap::gpu::rugosity</a></div><div class="ttdeci">Array rugosity(const Array &amp;z, int ir, bool convex=true)</div><div class="ttdoc">See hmap::rugosity.</div><div class="ttdef"><b>Definition</b> features_gpu.cpp:72</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_aae4961b7c0f65d6904cc61022eb2642b"><div class="ttname"><a href="namespacehmap_1_1gpu.html#aae4961b7c0f65d6904cc61022eb2642b">hmap::gpu::voronoi_fbm</a></div><div class="ttdeci">Array voronoi_fbm(Vec2&lt; int &gt; shape, Vec2&lt; float &gt; kw, uint seed, Vec2&lt; float &gt; jitter={0.5f, 0.5f}, float k_smoothing=0.f, float exp_sigma=0.f, VoronoiReturnType return_type=VoronoiReturnType::F1_SQUARED, int octaves=8, float weight=0.7f, float persistence=0.5f, float lacunarity=2.f, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Generates a Voronoi diagram in a 2D array with configurable properties.</div><div class="ttdef"><b>Definition</b> primitives_gpu.cpp:870</div></div>

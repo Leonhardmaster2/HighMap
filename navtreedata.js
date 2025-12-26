@@ -97,10 +97,10 @@ var NAVTREEINDEX =
 "namespacehmap.html#a81647bbf7183fed5cbfc468c8fa75b62",
 "namespacehmap.html#ac3d35efc6e5b596f508e2b17a5aa871ba006b1f81b483f6b3e26dd4a4668ee6dc",
 "namespacehmap_1_1gpu.html#a5639aa9dbe4048e12f83ff5c5660db07",
-"point__sampling_8cpp.html#a58c8f359e1421bef310e45bcbc57cef8",
-"range_8hpp.html#a936453b67a394c5da8b48473540c9459",
-"structhmap_1_1HeightmapRGBA.html#a16bcb5357cbc49ae4bff6f0713c4985c",
-"thermal_8cpp.html#a2e350857ce33125722d9c8ff6663f1c8"
+"point_8hpp.html#af148c924b422baa2e359e0788b7392d0",
+"range_8hpp.html#a55574a9d91e2e7e20de954956402ba1b",
+"structhmap_1_1HeightmapRGBA.html#a0457a9b7447ec755b833c43e9650d15c",
+"tensor_8hpp_source.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -9,13 +9,14 @@ var searchData=
   ['phase_5ffield_2ecpp_6',['phase_field.cpp',['../phase__field_8cpp.html',1,'']]],
   ['phasor_2ecpp_7',['phasor.cpp',['../phasor_8cpp.html',1,'']]],
   ['phasor_5fprofile_5ffunction_2ecpp_8',['phasor_profile_function.cpp',['../phasor__profile__function_8cpp.html',1,'']]],
-  ['point_2ehpp_9',['point.hpp',['../point_8hpp.html',1,'']]],
-  ['point_5fsampling_2ecpp_10',['point_sampling.cpp',['../point__sampling_8cpp.html',1,'']]],
-  ['point_5fsampling_2ehpp_11',['point_sampling.hpp',['../point__sampling_8hpp.html',1,'']]],
-  ['points_2ecpp_12',['points.cpp',['../points_8cpp.html',1,'']]],
-  ['primitives_2ecpp_13',['primitives.cpp',['../primitives_8cpp.html',1,'']]],
-  ['primitives_2ehpp_14',['primitives.hpp',['../primitives_8hpp.html',1,'']]],
-  ['primitives_5fgpu_2ecpp_15',['primitives_gpu.cpp',['../primitives__gpu_8cpp.html',1,'']]],
-  ['pyramid_2ehpp_16',['pyramid.hpp',['../pyramid_8hpp.html',1,'']]],
-  ['pyramid_5fdecomposition_2ecpp_17',['pyramid_decomposition.cpp',['../pyramid__decomposition_8cpp.html',1,'']]]
+  ['plates_2ecpp_9',['plates.cpp',['../plates_8cpp.html',1,'']]],
+  ['point_2ehpp_10',['point.hpp',['../point_8hpp.html',1,'']]],
+  ['point_5fsampling_2ecpp_11',['point_sampling.cpp',['../point__sampling_8cpp.html',1,'']]],
+  ['point_5fsampling_2ehpp_12',['point_sampling.hpp',['../point__sampling_8hpp.html',1,'']]],
+  ['points_2ecpp_13',['points.cpp',['../points_8cpp.html',1,'']]],
+  ['primitives_2ecpp_14',['primitives.cpp',['../primitives_8cpp.html',1,'']]],
+  ['primitives_2ehpp_15',['primitives.hpp',['../primitives_8hpp.html',1,'']]],
+  ['primitives_5fgpu_2ecpp_16',['primitives_gpu.cpp',['../primitives__gpu_8cpp.html',1,'']]],
+  ['pyramid_2ehpp_17',['pyramid.hpp',['../pyramid_8hpp.html',1,'']]],
+  ['pyramid_5fdecomposition_2ecpp_18',['pyramid_decomposition.cpp',['../pyramid__decomposition_8cpp.html',1,'']]]
 ];
