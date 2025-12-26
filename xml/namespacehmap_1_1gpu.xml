@@ -1945,7 +1945,7 @@
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1ae57a1e9bd94f218d4be17c9d8be012c3" kindref="member">hmap::gpu::thermal_inflate</ref>(z2,<sp/>talus_map,<sp/>500);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>zmax<sp/>=<sp/>0.5f;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1a87339ed12fc8a86b1f59e351b06e67e6" kindref="member">hmap::gpu::thermal_scree</ref>(z3,<sp/>talus_map,<sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref>(shape,<sp/>zmax),<sp/>500);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1ab753c4abd819aa6945c1cfc5e25ccec4" kindref="member">hmap::gpu::thermal_scree</ref>(z3,<sp/>talus_map,<sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref>(shape,<sp/>zmax),<sp/>500);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>z3.dump();</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
@@ -2111,7 +2111,7 @@
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1ae57a1e9bd94f218d4be17c9d8be012c3" kindref="member">hmap::gpu::thermal_inflate</ref>(z2,<sp/>talus_map,<sp/>500);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>zmax<sp/>=<sp/>0.5f;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1a87339ed12fc8a86b1f59e351b06e67e6" kindref="member">hmap::gpu::thermal_scree</ref>(z3,<sp/>talus_map,<sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref>(shape,<sp/>zmax),<sp/>500);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1ab753c4abd819aa6945c1cfc5e25ccec4" kindref="member">hmap::gpu::thermal_scree</ref>(z3,<sp/>talus_map,<sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref>(shape,<sp/>zmax),<sp/>500);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>z3.dump();</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
@@ -2165,10 +2165,10 @@
         </inbodydescription>
         <location file="HighMap/src/erosion/thermal_gpu.cpp" line="233" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="233" bodyend="247" declfile="HighMap/include/highmap/erosion.hpp" declline="1623" declcolumn="6"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1_1gpu_1a87339ed12fc8a86b1f59e351b06e67e6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacehmap_1_1gpu_1ab753c4abd819aa6945c1cfc5e25ccec4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void hmap::gpu::thermal_scree</definition>
-        <argsstring>(Array &amp;z, const Array &amp;talus, const Array &amp;zmax, int iterations=10, bool talus_constraint=true, Array *p_deposition_map=nullptr)</argsstring>
+        <argsstring>(Array &amp;z, const Array &amp;talus, const Array &amp;zmax, int iterations=10, Array *p_deposition_map=nullptr)</argsstring>
         <name>thermal_scree</name>
         <qualifiedname>hmap::gpu::thermal_scree</qualifiedname>
         <param>
@@ -2187,11 +2187,6 @@
           <type>int</type>
           <declname>iterations</declname>
           <defval>10</defval>
-        </param>
-        <param>
-          <type>bool</type>
-          <declname>talus_constraint</declname>
-          <defval>true</defval>
         </param>
         <param>
           <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
@@ -2237,14 +2232,6 @@
 </parameteritem>
 <parameteritem>
 <parameternamelist>
-<parametername direction="in">talus_constraint</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Whether to enforce a constraint on the talus slope (default: true). </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
 <parametername direction="out">p_deposition_map</parametername>
 </parameternamelist>
 <parameterdescription>
@@ -2256,12 +2243,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="249" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="249" bodyend="280" declfile="HighMap/include/highmap/erosion.hpp" declline="1650" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="249" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="249" bodyend="276" declfile="HighMap/include/highmap/erosion.hpp" declline="1648" declcolumn="6"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1_1gpu_1a112228c7b9ebff5463329da76d00fff1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacehmap_1_1gpu_1acfe28321531d2c03721588054da1446a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void hmap::gpu::thermal_scree</definition>
-        <argsstring>(Array &amp;z, const Array *p_mask, const Array &amp;talus, const Array &amp;zmax, int iterations=10, bool talus_constraint=true, Array *p_deposition_map=nullptr)</argsstring>
+        <argsstring>(Array &amp;z, const Array *p_mask, const Array &amp;talus, const Array &amp;zmax, int iterations=10, Array *p_deposition_map=nullptr)</argsstring>
         <name>thermal_scree</name>
         <qualifiedname>hmap::gpu::thermal_scree</qualifiedname>
         <param>
@@ -2286,11 +2273,6 @@
           <defval>10</defval>
         </param>
         <param>
-          <type>bool</type>
-          <declname>talus_constraint</declname>
-          <defval>true</defval>
-        </param>
-        <param>
           <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
           <declname>p_deposition_map</declname>
           <defval>nullptr</defval>
@@ -2302,7 +2284,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="282" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="282" bodyend="310" declfile="HighMap/include/highmap/erosion.hpp" declline="1657" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="278" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="278" bodyend="295" declfile="HighMap/include/highmap/erosion.hpp" declline="1654" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1aa5fa2d2cd682cdfee40fde050a41bf2b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -2437,7 +2419,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/valley_fill.cpp" line="12" column="6" bodyfile="HighMap/src/erosion/valley_fill.cpp" bodystart="12" bodyend="43" declfile="HighMap/include/highmap/erosion.hpp" declline="1685" declcolumn="6"/>
+        <location file="HighMap/src/erosion/valley_fill.cpp" line="12" column="6" bodyfile="HighMap/src/erosion/valley_fill.cpp" bodystart="12" bodyend="43" declfile="HighMap/include/highmap/erosion.hpp" declline="1681" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a5fd83f7a23b96a393902defd7f1d3b15" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -2493,7 +2475,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/valley_fill.cpp" line="45" column="6" bodyfile="HighMap/src/erosion/valley_fill.cpp" bodystart="45" bodyend="79" declfile="HighMap/include/highmap/erosion.hpp" declline="1694" declcolumn="6"/>
+        <location file="HighMap/src/erosion/valley_fill.cpp" line="45" column="6" bodyfile="HighMap/src/erosion/valley_fill.cpp" bodystart="45" bodyend="79" declfile="HighMap/include/highmap/erosion.hpp" declline="1690" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a022f5800d7e28f79f9e2d3abf687f490" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>

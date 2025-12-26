@@ -257,70 +257,55 @@
 <codeline lineno="246"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="247"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="248"><highlight class="normal"></highlight></codeline>
-<codeline lineno="249"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespacehmap_1_1gpu_1a87339ed12fc8a86b1f59e351b06e67e6" kindref="member">thermal_scree</ref>(Array<sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;z,</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespacehmap_1_1gpu_1ab753c4abd819aa6945c1cfc5e25ccec4" kindref="member">thermal_scree</ref>(Array<sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;z,</highlight></codeline>
 <codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array<sp/>&amp;talus,</highlight></codeline>
 <codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array<sp/>&amp;zmax,</highlight></codeline>
 <codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>iterations,</highlight></codeline>
-<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>talus_constraint,</highlight></codeline>
-<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Array<sp/><sp/><sp/><sp/><sp/><sp/><sp/>*p_deposition_map)</highlight></codeline>
-<codeline lineno="255"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="256"><highlight class="normal"><sp/><sp/>Array<sp/>z_bckp<sp/>=<sp/>Array();</highlight></codeline>
-<codeline lineno="257"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(p_deposition_map<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>z_bckp<sp/>=<sp/>z;</highlight></codeline>
-<codeline lineno="258"><highlight class="normal"></highlight></codeline>
-<codeline lineno="259"><highlight class="normal"><sp/><sp/>Array<sp/>gradient_init<sp/>=<sp/>gpu::gradient_norm(z);</highlight></codeline>
-<codeline lineno="260"><highlight class="normal"></highlight></codeline>
-<codeline lineno="261"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>run<sp/>=<sp/>clwrapper::Run(</highlight><highlight class="stringliteral">&quot;thermal_scree&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="262"><highlight class="normal"></highlight></codeline>
-<codeline lineno="263"><highlight class="normal"><sp/><sp/>run.bind_buffer&lt;</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">&gt;(</highlight><highlight class="stringliteral">&quot;z&quot;</highlight><highlight class="normal">,<sp/>z.vector);</highlight></codeline>
-<codeline lineno="264"><highlight class="normal"><sp/><sp/>run.bind_buffer&lt;</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">&gt;(</highlight><highlight class="stringliteral">&quot;talus&quot;</highlight><highlight class="normal">,<sp/>talus.vector);</highlight></codeline>
-<codeline lineno="265"><highlight class="normal"><sp/><sp/>run.bind_buffer&lt;</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">&gt;(</highlight><highlight class="stringliteral">&quot;zmax&quot;</highlight><highlight class="normal">,<sp/>zmax.vector);</highlight></codeline>
-<codeline lineno="266"><highlight class="normal"><sp/><sp/>run.bind_buffer&lt;</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">&gt;(</highlight><highlight class="stringliteral">&quot;gradient_init&quot;</highlight><highlight class="normal">,<sp/>gradient_init.vector);</highlight></codeline>
-<codeline lineno="267"><highlight class="normal"><sp/><sp/>run.bind_arguments(z.shape.x,<sp/>z.shape.y,<sp/>talus_constraint<sp/>?<sp/>1<sp/>:<sp/>0);</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Array<sp/><sp/><sp/><sp/><sp/><sp/><sp/>*p_deposition_map)</highlight></codeline>
+<codeline lineno="254"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/>Array<sp/>z_bckp<sp/>=<sp/>Array();</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(p_deposition_map<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>z_bckp<sp/>=<sp/>z;</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"></highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>run<sp/>=<sp/>clwrapper::Run(</highlight><highlight class="stringliteral">&quot;thermal_scree&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"></highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/>run.bind_buffer&lt;</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">&gt;(</highlight><highlight class="stringliteral">&quot;z&quot;</highlight><highlight class="normal">,<sp/>z.vector);</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/>run.bind_buffer&lt;</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">&gt;(</highlight><highlight class="stringliteral">&quot;talus&quot;</highlight><highlight class="normal">,<sp/>talus.vector);</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/>run.bind_buffer&lt;</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">&gt;(</highlight><highlight class="stringliteral">&quot;zmax&quot;</highlight><highlight class="normal">,<sp/>zmax.vector);</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/>run.bind_arguments(z.shape.x,<sp/>z.shape.y);</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"></highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/>run.write_buffer(</highlight><highlight class="stringliteral">&quot;z&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/>run.write_buffer(</highlight><highlight class="stringliteral">&quot;talus&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/>run.write_buffer(</highlight><highlight class="stringliteral">&quot;zmax&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="268"><highlight class="normal"></highlight></codeline>
-<codeline lineno="269"><highlight class="normal"><sp/><sp/>run.write_buffer(</highlight><highlight class="stringliteral">&quot;z&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="270"><highlight class="normal"><sp/><sp/>run.write_buffer(</highlight><highlight class="stringliteral">&quot;talus&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="271"><highlight class="normal"><sp/><sp/>run.write_buffer(</highlight><highlight class="stringliteral">&quot;zmax&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="272"><highlight class="normal"></highlight></codeline>
-<codeline lineno="273"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>it<sp/>=<sp/>0;<sp/>it<sp/>&lt;<sp/>iterations;<sp/>it++)</highlight></codeline>
-<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/>run.execute({z.shape.x,<sp/>z.shape.y});</highlight></codeline>
-<codeline lineno="275"><highlight class="normal"></highlight></codeline>
-<codeline lineno="276"><highlight class="normal"><sp/><sp/>run.read_buffer(</highlight><highlight class="stringliteral">&quot;z&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="277"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a8802e95ba76a252d2098bdb3fb5cfc28" kindref="member">extrapolate_borders</ref>(z);</highlight></codeline>
-<codeline lineno="278"><highlight class="normal"></highlight></codeline>
-<codeline lineno="279"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(p_deposition_map)<sp/>*p_deposition_map<sp/>=<sp/><ref refid="namespacehmap_1aa52f3e1fcb1cad464a512c09a0c8eb54" kindref="member">maximum</ref>(z<sp/>-<sp/>z_bckp,<sp/>0.f);</highlight></codeline>
-<codeline lineno="280"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="281"><highlight class="normal"></highlight></codeline>
-<codeline lineno="282"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespacehmap_1_1gpu_1a87339ed12fc8a86b1f59e351b06e67e6" kindref="member">thermal_scree</ref>(Array<sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;z,</highlight></codeline>
-<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array<sp/>*p_mask,</highlight></codeline>
-<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array<sp/>&amp;talus,</highlight></codeline>
-<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array<sp/>&amp;zmax,</highlight></codeline>
-<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>iterations,</highlight></codeline>
-<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>talus_constraint,</highlight></codeline>
-<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Array<sp/><sp/><sp/><sp/><sp/><sp/><sp/>*p_deposition_map)</highlight></codeline>
-<codeline lineno="289"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="290"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!p_mask)</highlight></codeline>
-<codeline lineno="291"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
-<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/>gpu::thermal_scree(z,</highlight></codeline>
-<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>talus,</highlight></codeline>
-<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>zmax,</highlight></codeline>
-<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>iterations,</highlight></codeline>
-<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>talus_constraint,</highlight></codeline>
-<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p_deposition_map);</highlight></codeline>
-<codeline lineno="298"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="299"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="300"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
-<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/>Array<sp/>z_f<sp/>=<sp/>z;</highlight></codeline>
-<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/>gpu::thermal_scree(z_f,</highlight></codeline>
-<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>talus,</highlight></codeline>
-<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>zmax,</highlight></codeline>
-<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>iterations,</highlight></codeline>
-<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>talus_constraint,</highlight></codeline>
-<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p_deposition_map);</highlight></codeline>
-<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1ac14815cf025b7430d31d08125a5c6f0d" kindref="member">lerp</ref>(z,<sp/>z_f,<sp/>*(p_mask));</highlight></codeline>
-<codeline lineno="309"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="310"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="311"><highlight class="normal"></highlight></codeline>
-<codeline lineno="312"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>hmap::gpu</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>it<sp/>=<sp/>0;<sp/>it<sp/>&lt;<sp/>iterations;<sp/>it++)</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/>run.execute({z.shape.x,<sp/>z.shape.y});</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"></highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/>run.read_buffer(</highlight><highlight class="stringliteral">&quot;z&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a8802e95ba76a252d2098bdb3fb5cfc28" kindref="member">extrapolate_borders</ref>(z);</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"></highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(p_deposition_map)<sp/>*p_deposition_map<sp/>=<sp/><ref refid="namespacehmap_1aa52f3e1fcb1cad464a512c09a0c8eb54" kindref="member">maximum</ref>(z<sp/>-<sp/>z_bckp,<sp/>0.f);</highlight></codeline>
+<codeline lineno="276"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"></highlight></codeline>
+<codeline lineno="278"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespacehmap_1_1gpu_1ab753c4abd819aa6945c1cfc5e25ccec4" kindref="member">thermal_scree</ref>(Array<sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;z,</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array<sp/>*p_mask,</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array<sp/>&amp;talus,</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array<sp/>&amp;zmax,</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>iterations,</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Array<sp/><sp/><sp/><sp/><sp/><sp/><sp/>*p_deposition_map)</highlight></codeline>
+<codeline lineno="284"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!p_mask)</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/>gpu::thermal_scree(z,<sp/>talus,<sp/>zmax,<sp/>iterations,<sp/>p_deposition_map);</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/>Array<sp/>z_f<sp/>=<sp/>z;</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/>gpu::thermal_scree(z_f,<sp/>talus,<sp/>zmax,<sp/>iterations,<sp/>p_deposition_map);</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1ac14815cf025b7430d31d08125a5c6f0d" kindref="member">lerp</ref>(z,<sp/>z_f,<sp/>*(p_mask));</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="295"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"></highlight></codeline>
+<codeline lineno="297"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>hmap::gpu</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="HighMap/src/erosion/thermal_gpu.cpp"/>
   </compounddef>
