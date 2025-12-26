@@ -1642,8 +1642,6 @@ void thermal_ridge(Array       &z,
  * @param[in]  iterations       The number of erosion iterations to apply
  *                              (default:
  * 10).
- * @param[in]  talus_constraint Whether to enforce a constraint on the talus
- *                              slope (default: true).
  * @param[out] p_deposition_map Optional pointer to an array that stores the
  *                              deposited material per cell.
  */
@@ -1651,7 +1649,6 @@ void thermal_scree(Array       &z,
                    const Array &talus,
                    const Array &zmax,
                    int          iterations = 10,
-                   bool         talus_constraint = true,
                    Array       *p_deposition_map = nullptr);
 
 void thermal_scree(Array       &z,
@@ -1659,7 +1656,6 @@ void thermal_scree(Array       &z,
                    const Array &talus,
                    const Array &zmax,
                    int          iterations = 10,
-                   bool         talus_constraint = true,
                    Array       *p_deposition_map = nullptr); ///< @overload
 
 /**

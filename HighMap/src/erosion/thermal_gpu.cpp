@@ -250,21 +250,17 @@ void thermal_scree(Array       &z,
                    const Array &talus,
                    const Array &zmax,
                    int          iterations,
-                   bool         talus_constraint,
                    Array       *p_deposition_map)
 {
   Array z_bckp = Array();
   if (p_deposition_map != nullptr) z_bckp = z;
-
-  Array gradient_init = gpu::gradient_norm(z);
 
   auto run = clwrapper::Run("thermal_scree");
 
   run.bind_buffer<float>("z", z.vector);
   run.bind_buffer<float>("talus", talus.vector);
   run.bind_buffer<float>("zmax", zmax.vector);
-  run.bind_buffer<float>("gradient_init", gradient_init.vector);
-  run.bind_arguments(z.shape.x, z.shape.y, talus_constraint ? 1 : 0);
+  run.bind_arguments(z.shape.x, z.shape.y);
 
   run.write_buffer("z");
   run.write_buffer("talus");
@@ -284,27 +280,16 @@ void thermal_scree(Array       &z,
                    const Array &talus,
                    const Array &zmax,
                    int          iterations,
-                   bool         talus_constraint,
                    Array       *p_deposition_map)
 {
   if (!p_mask)
   {
-    gpu::thermal_scree(z,
-                       talus,
-                       zmax,
-                       iterations,
-                       talus_constraint,
-                       p_deposition_map);
+    gpu::thermal_scree(z, talus, zmax, iterations, p_deposition_map);
   }
   else
   {
     Array z_f = z;
-    gpu::thermal_scree(z_f,
-                       talus,
-                       zmax,
-                       iterations,
-                       talus_constraint,
-                       p_deposition_map);
+    gpu::thermal_scree(z_f, talus, zmax, iterations, p_deposition_map);
     z = lerp(z, z_f, *(p_mask));
   }
 }
