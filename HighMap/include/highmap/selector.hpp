@@ -461,6 +461,9 @@ Array select_valley(const Array &z,
 namespace hmap::gpu
 {
 
+/*! @brief See hmap::select_cavities */
+Array select_cavities(const Array &array, int ir, bool concave = true);
+
 /**
  * @brief Computes a soil–flow selection map based on terrain gradient, river
  * mask, and smoothing parameters.

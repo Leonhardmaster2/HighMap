@@ -5,9 +5,22 @@
 #include "highmap/filters.hpp"
 #include "highmap/morphology.hpp"
 #include "highmap/opencl/gpu_opencl.hpp"
+#include "highmap/range.hpp"
 
 namespace hmap::gpu
 {
+
+Array select_cavities(const Array &array, int ir, bool concave)
+{
+  Array array_smooth = array;
+  gpu::smooth_cpulse(array_smooth, ir);
+  Array c = curvature_mean(array_smooth);
+
+  if (!concave) c *= -1.f;
+
+  clamp_min(c, 0.f);
+  return c;
+}
 
 Array select_valley(const Array &z,
                     int          ir,
