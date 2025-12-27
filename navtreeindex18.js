@@ -1,5 +1,8 @@
 var NAVTREEINDEX18 =
 {
+"synthesis_8hpp.html#a92483ef87c6a5877abe30af6b270f2a0":[5,0,1,0,0,38,0],
+"synthesis_8hpp.html#a94a0d14d841251b9803f6fa11097b175":[5,0,1,0,0,38,1],
+"synthesis_8hpp.html#aa23790e26c213a550660e479a28f21e5":[5,0,1,0,0,38,3],
 "synthesis_8hpp.html#af2faad7feceeb1059da7303748438a51":[5,0,1,0,0,38,4],
 "synthesis_8hpp_source.html":[5,0,1,0,0,38],
 "tensor_8cpp.html":[5,0,1,1,34,0],

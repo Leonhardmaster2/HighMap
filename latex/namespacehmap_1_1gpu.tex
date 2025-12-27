@@ -293,6 +293,8 @@ bool \mbox{\hyperlink{namespacehmap_1_1gpu_adb8336ed4d83c15500872185dee45d50}{in
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a7bacc45412ea1599907ac3f9b0e9e282}{hmap\+::sdf\+\_\+2d\+\_\+polyline}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a30410bfd596eaa78f33396b1f963e743}{sdf\+\_\+2d\+\_\+polyline\+\_\+bezier}} (const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&path, \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$ shape, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr)
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a5368ab0d5bb8708001a55d216332918b}{hmap\+::sdf\+\_\+2d\+\_\+polyline\+\_\+bezier}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a9d2e42789abe01802177574660804fa1}{select\+\_\+cavities}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir, bool concave=true)
+\begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_ac3436096f5ea39274658f503d7c950c1}{hmap\+::select\+\_\+cavities}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_afb62cf56466c5bdfb9b6a26458a52d12}{select\+\_\+soil\+\_\+flow}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int ir\+\_\+gradient=1, float gradient\+\_\+weight=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float gradient\+\_\+scaling\+\_\+factor=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float flow\+\_\+weight=0.\+05\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float talus\+\_\+ref=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float clipping\+\_\+ratio=50.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float flow\+\_\+gamma=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float k\+\_\+smooth=0.\+01\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Computes a soil–flow selection map based on terrain gradient, river mask, and smoothing parameters. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a735421f1b5f42ade55224b932603c58e}{select\+\_\+soil\+\_\+rocks}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int ir\+\_\+max=64, int ir\+\_\+min=0, int steps=4, float smaller\+\_\+scales\+\_\+weight=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, \mbox{\hyperlink{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbe}{Clamp\+Mode}} curvature\+\_\+clamp\+\_\+mode=\mbox{\hyperlink{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbea7ee5673a01d4215ae4ba9ba95268ed59}{Clamp\+Mode\+::\+POSITIVE\+\_\+\+ONLY}}, float curvature\+\_\+clamping=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
@@ -4188,6 +4190,16 @@ See \doxylink{namespacehmap_a7bacc45412ea1599907ac3f9b0e9e282}{hmap\+::sdf\+\_\+
 
 
 See \doxylink{namespacehmap_a5368ab0d5bb8708001a55d216332918b}{hmap\+::sdf\+\_\+2d\+\_\+polyline\+\_\+bezier}. 
+
+\Hypertarget{namespacehmap_1_1gpu_a9d2e42789abe01802177574660804fa1}\label{namespacehmap_1_1gpu_a9d2e42789abe01802177574660804fa1} 
+\index{hmap::gpu@{hmap::gpu}!select\_cavities@{select\_cavities}}
+\index{select\_cavities@{select\_cavities}!hmap::gpu@{hmap::gpu}}
+\doxysubsubsection{\texorpdfstring{select\_cavities()}{select\_cavities()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::gpu\+::select\+\_\+cavities (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{int}]{ir,  }\item[{bool}]{concave = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+See \doxylink{namespacehmap_ac3436096f5ea39274658f503d7c950c1}{hmap\+::select\+\_\+cavities}. 
 
 \Hypertarget{namespacehmap_1_1gpu_afb62cf56466c5bdfb9b6a26458a52d12}\label{namespacehmap_1_1gpu_afb62cf56466c5bdfb9b6a26458a52d12} 
 \index{hmap::gpu@{hmap::gpu}!select\_soil\_flow@{select\_soil\_flow}}

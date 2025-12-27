@@ -522,6 +522,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a30410bfd596eaa78f33396b1f963e743" id="r_a30410bfd596eaa78f33396b1f963e743"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a30410bfd596eaa78f33396b1f963e743">sdf_2d_polyline_bezier</a> (const <a class="el" href="classhmap_1_1Path.html">Path</a> &amp;path, <a class="el" href="structhmap_1_1Vec2.html">Vec2</a>&lt; int &gt; shape, <a class="el" href="structhmap_1_1Vec4.html">Vec4</a>&lt; float &gt; bbox={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>}, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_x=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_y=nullptr)</td></tr>
 <tr class="memdesc:a30410bfd596eaa78f33396b1f963e743"><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="namespacehmap.html#a5368ab0d5bb8708001a55d216332918b" title="See hmap::sdf_2d_polyline, with a Bezier approximation of the path.">hmap::sdf_2d_polyline_bezier</a>.  <br /></td></tr>
 <tr class="separator:a30410bfd596eaa78f33396b1f963e743"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d2e42789abe01802177574660804fa1" id="r_a9d2e42789abe01802177574660804fa1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a9d2e42789abe01802177574660804fa1">select_cavities</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, int ir, bool concave=true)</td></tr>
+<tr class="memdesc:a9d2e42789abe01802177574660804fa1"><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="namespacehmap.html#ac3436096f5ea39274658f503d7c950c1" title="Return holes or bumps detection based on the mean curvature of the heightmap.">hmap::select_cavities</a>.  <br /></td></tr>
+<tr class="separator:a9d2e42789abe01802177574660804fa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afb62cf56466c5bdfb9b6a26458a52d12" id="r_afb62cf56466c5bdfb9b6a26458a52d12"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#afb62cf56466c5bdfb9b6a26458a52d12">select_soil_flow</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, int ir_gradient=1, float gradient_weight=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float gradient_scaling_factor=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float flow_weight=0.05<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float talus_ref=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float clipping_ratio=50.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float flow_gamma=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float k_smooth=0.01<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
 <tr class="memdesc:afb62cf56466c5bdfb9b6a26458a52d12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes a soil–flow selection map based on terrain gradient, river mask, and smoothing parameters.  <br /></td></tr>
 <tr class="separator:afb62cf56466c5bdfb9b6a26458a52d12"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -10887,6 +10890,42 @@ Only available if OpenCL is enabled.</dd></dl>
 </div><div class="memdoc">
 
 <p>See <a class="el" href="namespacehmap.html#a5368ab0d5bb8708001a55d216332918b" title="See hmap::sdf_2d_polyline, with a Bezier approximation of the path.">hmap::sdf_2d_polyline_bezier</a>. </p>
+
+</div>
+</div>
+<a id="a9d2e42789abe01802177574660804fa1" name="a9d2e42789abe01802177574660804fa1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d2e42789abe01802177574660804fa1">&#9670;&#160;</a></span>select_cavities()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classhmap_1_1Array.html">Array</a> hmap::gpu::select_cavities </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>array</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ir</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>concave</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>See <a class="el" href="namespacehmap.html#ac3436096f5ea39274658f503d7c950c1" title="Return holes or bumps detection based on the mean curvature of the heightmap.">hmap::select_cavities</a>. </p>
 
 </div>
 </div>
