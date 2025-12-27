@@ -7,11 +7,12 @@ int main(void)
   int               seed = 1;
 
   hmap::Array z = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, res, seed);
+  hmap::remap(z);
 
   float talus = 1.f / shape.x;
 
   hmap::Array z1 = z;
-  hmap::fill_talus(z1, talus, seed);
+  hmap::fill_talus(z1, talus, seed, 0.2f);
 
   // same algo on a coarser mesh to spare some computational time
   hmap::Array z2 = z;

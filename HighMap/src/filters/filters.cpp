@@ -215,6 +215,27 @@ void expand_talus(Array       &z,
   extrapolate_borders(z, 2);
 }
 
+void fold(Array &array, int iterations, float k)
+{
+  fold(array, array.min(), array.max(), iterations, k);
+}
+
+void fold(Array &array, float vmin, float vmax, int iterations, float k)
+{
+  array -= vmin;
+  float vref = (vmax - vmin) / (iterations + 1.f);
+
+  for (int it = 0; it < iterations; it++)
+  {
+    array -= vref;
+
+    if (k == 0.f)
+      array = abs(array);
+    else
+      array = abs_smooth(array, k);
+  }
+}
+
 void gain(Array &array, float factor)
 {
   auto lambda = [&factor](float x)
