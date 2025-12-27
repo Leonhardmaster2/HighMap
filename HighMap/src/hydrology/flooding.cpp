@@ -261,122 +261,115 @@ Array water_depth_increase(const Array &water_depth,
                            const Array &z,
                            float        additional_depth)
 {
-  Vec2<int> shape = water_depth.shape;
-  Array     water_depth_extended(shape);
+  const Vec2<int> shape = water_depth.shape;
+  Array           water_depth_extended(shape);
 
-  size_t max_it = 2 * shape.x * shape.y; // failsafe
-  size_t it;
+  const std::array<Vec2<int>, 8> neighbors = {
+      {{-1, 0}, {1, 0}, {0, -1}, {0, 1}, {-1, -1}, {-1, 1}, {1, -1}, {1, 1}}};
 
-  std::vector<Vec2<int>> nbrs =
-      {{-1, 0}, {0, 1}, {0, -1}, {1, 0}, {-1, -1}, {-1, 1}, {1, -1}, {1, 1}};
+  auto in_bounds = [&](const Vec2<int> &p)
+  { return p.x >= 0 && p.x < shape.x && p.y >= 0 && p.y < shape.y; };
 
-  // fill-in source pts
-  std::vector<Vec2<int>> queue;
+  std::deque<Vec2<int>> queue;
+  const size_t          max_it = 2 * shape.x * shape.y;
 
-  for (int j = 0; j < shape.y; j++)
-    for (int i = 0; i < shape.x; i++)
-      if (water_depth(i, j) > 0.f)
-      {
-        water_depth_extended(i, j) = water_depth(i, j) + additional_depth;
+  // --- Seed water cells and enqueue border cells
 
-        // check neighbors, only add border cells to the queue
-        for (auto &idx : nbrs)
-        {
-          Vec2<int> pq = Vec2<int>(i, j) + idx;
-          if (pq.x >= 0 && pq.x < shape.x && pq.y >= 0 && pq.y < shape.y)
-          {
-            if (water_depth(pq.x, pq.y) == 0.f)
-            {
-              queue.push_back({i, j});
-              continue;
-            }
-          }
-        }
-      }
-
-  // first pass - flood again, but only in upward direction
-  it = 0;
-
-  while (queue.size() > 0 && it < max_it)
+  for (int y = 0; y < shape.y; ++y)
   {
-    Vec2<int> ij = queue.back();
-    queue.pop_back();
-
-    for (auto &idx : nbrs)
+    for (int x = 0; x < shape.x; ++x)
     {
-      Vec2<int> pq = ij + idx;
+      if (water_depth(x, y) <= 0.f) continue;
 
-      if (pq.x >= 0 && pq.x < shape.x && pq.y >= 0 && pq.y < shape.y)
+      water_depth_extended(x, y) = water_depth(x, y) + additional_depth;
+      const Vec2<int> p{x, y};
+
+      for (const auto &d : neighbors)
       {
-        float dz = z(pq.x, pq.y) - z(ij.x, ij.y);
-
-        // upward only
-        if (dz > 0.f)
+        Vec2<int> n = p + d;
+        if (in_bounds(n) && water_depth(n.x, n.y) == 0.f)
         {
-          float delta = water_depth_extended(ij.x, ij.y) - dz;
-
-          if (delta > water_depth_extended(pq.x, pq.y))
-          {
-            water_depth_extended(pq.x, pq.y) = delta;
-            queue.push_back({pq.x, pq.y});
-          }
+          queue.push_back(p);
+          break;
         }
       }
     }
-
-    it++;
   }
 
-  // second pass - fill holes
+  // --- Upward flood propagation
+
+  for (size_t it = 0; !queue.empty() && it < max_it; ++it)
+  {
+    Vec2<int> p = queue.front();
+    queue.pop_front();
+
+    const float base_depth = water_depth_extended(p.x, p.y);
+    const float base_z = z(p.x, p.y);
+
+    for (const auto &d : neighbors)
+    {
+      Vec2<int> n = p + d;
+      if (!in_bounds(n)) continue;
+
+      const float dz = z(n.x, n.y) - base_z;
+      if (dz <= 0.f) continue;
+
+      const float propagated = base_depth - dz;
+      if (propagated > water_depth_extended(n.x, n.y))
+      {
+        water_depth_extended(n.x, n.y) = propagated;
+        queue.push_back(n);
+      }
+    }
+  }
+
+  // --- Hole filling (downward propagation)
+
   queue.clear();
 
-  for (int j = 0; j < shape.y; j++)
-    for (int i = 0; i < shape.x; i++)
-      if (water_depth_extended(i, j) > 0.f)
-      {
-        // check neighbors, add cells with discontinuity
-        for (auto &idx : nbrs)
-        {
-          Vec2<int> pq = Vec2<int>(i, j) + idx;
-          if (pq.x >= 0 && pq.x < shape.x && pq.y >= 0 && pq.y < shape.y)
-          {
-            if (water_depth_extended(pq.x, pq.y) == 0.f)
-            {
-              queue.push_back({i, j});
-              continue;
-            }
-          }
-        }
-      }
-
-  it = 0;
-
-  while (queue.size() > 0 && it < max_it)
+  for (int y = 0; y < shape.y; ++y)
   {
-    Vec2<int> ij = queue.back();
-    queue.pop_back();
-
-    for (auto &idx : nbrs)
+    for (int x = 0; x < shape.x; ++x)
     {
-      Vec2<int> pq = ij + idx;
+      if (water_depth_extended(x, y) <= 0.f) continue;
 
-      if (pq.x >= 0 && pq.x < shape.x && pq.y >= 0 && pq.y < shape.y)
+      const Vec2<int> p{x, y};
+
+      for (const auto &d : neighbors)
       {
-        // if (water_depth_extended(pq.x, pq.y) == 0.f)
+        Vec2<int> n = p + d;
+        if (in_bounds(n) && water_depth_extended(n.x, n.y) == 0.f)
         {
-          float dz = z(pq.x, pq.y) - z(ij.x, ij.y);
-          float delta = water_depth_extended(ij.x, ij.y) + dz;
-
-          if (dz < 0.f && delta > water_depth_extended(pq.x, pq.y))
-          {
-            water_depth_extended(pq.x, pq.y) = delta;
-            queue.push_back({pq.x, pq.y});
-          }
+          queue.push_back(p);
+          break;
         }
       }
     }
+  }
 
-    it++;
+  for (size_t it = 0; !queue.empty() && it < max_it; ++it)
+  {
+    Vec2<int> p = queue.front();
+    queue.pop_front();
+
+    const float base_depth = water_depth_extended(p.x, p.y);
+    const float base_z = z(p.x, p.y);
+
+    for (const auto &d : neighbors)
+    {
+      Vec2<int> n = p + d;
+      if (!in_bounds(n)) continue;
+
+      const float dz = z(n.x, n.y) - base_z;
+      if (dz >= 0.f) continue;
+
+      const float propagated = base_depth + dz;
+      if (propagated > water_depth_extended(n.x, n.y))
+      {
+        water_depth_extended(n.x, n.y) = propagated;
+        queue.push_back(n);
+      }
+    }
   }
 
   return water_depth_extended;
