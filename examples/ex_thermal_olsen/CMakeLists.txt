@@ -1,0 +1,2 @@
+add_executable(ex_thermal_olsen ex_thermal_olsen.cpp)
+target_link_libraries(ex_thermal_olsen highmap)

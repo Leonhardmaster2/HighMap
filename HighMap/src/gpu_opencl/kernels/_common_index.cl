@@ -103,4 +103,25 @@ inline int apply_boundaries(global float *z, int gx, int gy, int nx, int ny)
 
   return 0; // not a boundary
 }
+
+inline int apply_boundaries_buffer(global float *z,
+                                   int           gx,
+                                   int           gy,
+                                   int           nx,
+                                   int           ny,
+                                   int           b)
+{
+  // inside valid interior → nothing to do
+  if (gx >= b && gx < nx - b && gy >= b && gy < ny - b) return 0;
+
+  // clamp to nearest interior cell
+  int cx = clamp(gx, b, nx - b - 1);
+  int cy = clamp(gy, b, ny - b - 1);
+
+  int idx = linear_index(gx, gy, nx);
+  int idxc = linear_index(cx, cy, nx);
+
+  z[idx] = z[idxc];
+  return 1;
+}
 )""

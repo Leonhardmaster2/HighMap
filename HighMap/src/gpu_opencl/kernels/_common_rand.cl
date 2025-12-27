@@ -16,6 +16,15 @@ float hash12f(float2 p, float fseed)
                &pi);
 }
 
+uint hash21u(uint x, uint y)
+{
+  uint h = x * 0x8da6b343u ^ y * 0xd8163841u;
+  h ^= h >> 13;
+  h *= 0x85ebca6bu;
+  h ^= h >> 16;
+  return h;
+}
+
 float2 hash22f(float2 p, float fseed)
 {
   p = (float2)(dot(p, (float2)(127.1f, 311.7f)),

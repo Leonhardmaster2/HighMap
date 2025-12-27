@@ -1570,6 +1570,10 @@ void thermal_auto_bedrock(Array &z,
                           int    iterations = 10,
                           Array *p_deposition_map = nullptr);
 
+/*! @brief See hmap::thermal_olsen */
+void thermal_olsen(Array &z, const Array &talus, int iterations);
+void thermal_olsen(Array &z, Array *p_mask, const Array &talus, int iterations);
+
 /**
  * @brief Apply thermal weathering erosion to give a scree like effect.
  *
