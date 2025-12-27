@@ -29,6 +29,8 @@ var namespacehmap =
       [ "thermal_auto_bedrock", "namespacehmap_1_1gpu.html#a36a2eba6d158e44d0ef917d9582987fe", null ],
       [ "thermal_auto_bedrock", "namespacehmap_1_1gpu.html#ad5bd9a318918350b56ccc887139ca554", null ],
       [ "thermal_auto_bedrock", "namespacehmap_1_1gpu.html#ac87a6d725bf0751510f6b1f426a8af27", null ],
+      [ "thermal_olsen", "namespacehmap_1_1gpu.html#a00b54f4e60a8fbd6ed5213600d598869", null ],
+      [ "thermal_olsen", "namespacehmap_1_1gpu.html#aefa25dbc4763d89a020e0def23892a37", null ],
       [ "thermal_inflate", "namespacehmap_1_1gpu.html#ae57a1e9bd94f218d4be17c9d8be012c3", null ],
       [ "thermal_inflate", "namespacehmap_1_1gpu.html#a72c9d220589d2724b4e48e9c37ff55ad", null ],
       [ "thermal_rib", "namespacehmap_1_1gpu.html#afabf7cb3077839af03388c0d1236d912", null ],

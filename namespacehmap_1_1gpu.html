@@ -188,6 +188,11 @@ Functions</h2></td></tr>
 <tr class="memitem:ac87a6d725bf0751510f6b1f426a8af27" id="r_ac87a6d725bf0751510f6b1f426a8af27"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#ac87a6d725bf0751510f6b1f426a8af27">thermal_auto_bedrock</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, float, int iterations=10, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_deposition_map=nullptr)</td></tr>
 <tr class="memdesc:ac87a6d725bf0751510f6b1f426a8af27"><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="namespacehmap.html#acbd2a3c82ec3ce4eaf77dbc92d580321" title="Apply thermal weathering erosion with automatic determination of the bedrock.">hmap::thermal_auto_bedrock</a>.  <br /></td></tr>
 <tr class="separator:ac87a6d725bf0751510f6b1f426a8af27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00b54f4e60a8fbd6ed5213600d598869" id="r_a00b54f4e60a8fbd6ed5213600d598869"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a00b54f4e60a8fbd6ed5213600d598869">thermal_olsen</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;talus, int iterations)</td></tr>
+<tr class="memdesc:a00b54f4e60a8fbd6ed5213600d598869"><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="namespacehmap.html#a1ebb59674f1b317db20cc87385bc41a5" title="Apply thermal weathering erosion.">hmap::thermal_olsen</a>.  <br /></td></tr>
+<tr class="separator:a00b54f4e60a8fbd6ed5213600d598869"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefa25dbc4763d89a020e0def23892a37" id="r_aefa25dbc4763d89a020e0def23892a37"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#aefa25dbc4763d89a020e0def23892a37">thermal_olsen</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_mask, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;talus, int iterations)</td></tr>
+<tr class="separator:aefa25dbc4763d89a020e0def23892a37"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae57a1e9bd94f218d4be17c9d8be012c3" id="r_ae57a1e9bd94f218d4be17c9d8be012c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#ae57a1e9bd94f218d4be17c9d8be012c3">thermal_inflate</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;talus, int iterations=10)</td></tr>
 <tr class="memdesc:ae57a1e9bd94f218d4be17c9d8be012c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply thermal weathering erosion to give a scree like effect.  <br /></td></tr>
 <tr class="separator:ae57a1e9bd94f218d4be17c9d8be012c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -2426,6 +2431,82 @@ Only available if OpenCL is enabled.</dd></dl>
 
 </div>
 </div>
+<a id="a00b54f4e60a8fbd6ed5213600d598869" name="a00b54f4e60a8fbd6ed5213600d598869"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00b54f4e60a8fbd6ed5213600d598869">&#9670;&#160;</a></span>thermal_olsen() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hmap::gpu::thermal_olsen </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>z</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>talus</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iterations</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>See <a class="el" href="namespacehmap.html#a1ebb59674f1b317db20cc87385bc41a5" title="Apply thermal weathering erosion.">hmap::thermal_olsen</a>. </p>
+
+</div>
+</div>
+<a id="aefa25dbc4763d89a020e0def23892a37" name="aefa25dbc4763d89a020e0def23892a37"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aefa25dbc4763d89a020e0def23892a37">&#9670;&#160;</a></span>thermal_olsen() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hmap::gpu::thermal_olsen </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>z</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
+          <td class="paramname"><em>p_mask</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>talus</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iterations</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ae57a1e9bd94f218d4be17c9d8be012c3" name="ae57a1e9bd94f218d4be17c9d8be012c3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae57a1e9bd94f218d4be17c9d8be012c3">&#9670;&#160;</a></span>thermal_inflate() <span class="overload">[1/2]</span></h2>
 
@@ -2502,9 +2583,9 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>,</div>
 <div class="line">                          <span class="keyword">true</span>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_1_1gpu_html_a1489150d5e1af976a9f814b9911b3ea0"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a1489150d5e1af976a9f814b9911b3ea0">hmap::gpu::thermal_ridge</a></div><div class="ttdeci">void thermal_ridge(Array &amp;z, const Array &amp;talus, int iterations=10, Array *p_deposition_map=nullptr)</div><div class="ttdoc">Apply thermal weathering erosion to give a ridge like effect.</div><div class="ttdef"><b>Definition</b> thermal_gpu.cpp:207</div></div>
-<div class="ttc" id="anamespacehmap_1_1gpu_html_ab753c4abd819aa6945c1cfc5e25ccec4"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ab753c4abd819aa6945c1cfc5e25ccec4">hmap::gpu::thermal_scree</a></div><div class="ttdeci">void thermal_scree(Array &amp;z, const Array &amp;talus, const Array &amp;zmax, int iterations=10, Array *p_deposition_map=nullptr)</div><div class="ttdoc">Performs thermal scree erosion on a heightmap.</div><div class="ttdef"><b>Definition</b> thermal_gpu.cpp:249</div></div>
-<div class="ttc" id="anamespacehmap_1_1gpu_html_ae57a1e9bd94f218d4be17c9d8be012c3"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ae57a1e9bd94f218d4be17c9d8be012c3">hmap::gpu::thermal_inflate</a></div><div class="ttdeci">void thermal_inflate(Array &amp;z, const Array &amp;talus, int iterations=10)</div><div class="ttdoc">Apply thermal weathering erosion to give a scree like effect.</div><div class="ttdef"><b>Definition</b> thermal_gpu.cpp:156</div></div>
+<div class="ttc" id="anamespacehmap_1_1gpu_html_a1489150d5e1af976a9f814b9911b3ea0"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a1489150d5e1af976a9f814b9911b3ea0">hmap::gpu::thermal_ridge</a></div><div class="ttdeci">void thermal_ridge(Array &amp;z, const Array &amp;talus, int iterations=10, Array *p_deposition_map=nullptr)</div><div class="ttdoc">Apply thermal weathering erosion to give a ridge like effect.</div><div class="ttdef"><b>Definition</b> thermal_gpu.cpp:241</div></div>
+<div class="ttc" id="anamespacehmap_1_1gpu_html_ab753c4abd819aa6945c1cfc5e25ccec4"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ab753c4abd819aa6945c1cfc5e25ccec4">hmap::gpu::thermal_scree</a></div><div class="ttdeci">void thermal_scree(Array &amp;z, const Array &amp;talus, const Array &amp;zmax, int iterations=10, Array *p_deposition_map=nullptr)</div><div class="ttdoc">Performs thermal scree erosion on a heightmap.</div><div class="ttdef"><b>Definition</b> thermal_gpu.cpp:283</div></div>
+<div class="ttc" id="anamespacehmap_1_1gpu_html_ae57a1e9bd94f218d4be17c9d8be012c3"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ae57a1e9bd94f218d4be17c9d8be012c3">hmap::gpu::thermal_inflate</a></div><div class="ttdeci">void thermal_inflate(Array &amp;z, const Array &amp;talus, int iterations=10)</div><div class="ttdoc">Apply thermal weathering erosion to give a scree like effect.</div><div class="ttdef"><b>Definition</b> thermal_gpu.cpp:157</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_thermal_ridge.png" alt=""/>
 </div>
