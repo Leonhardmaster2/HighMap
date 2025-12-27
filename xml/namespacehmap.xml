@@ -31099,7 +31099,7 @@ The output path consists of:<itemizedlist>
 </parameterlist>
 <simplesect kind="return"><para>A 2D array containing the computed water depth at each grid cell. Depth values are non-negative where water is present and zero where the mask indicates no water.</para>
 </simplesect>
-<simplesect kind="see"><para><ref refid="namespacehmap_1adff97113f5c9e89106fa57b4e809d603" kindref="member">harmonic_interpolation</ref></para>
+<simplesect kind="see"><para><ref refid="namespacehmap_1a6cfd7b1fc064e5aaef1550041f1bbc06" kindref="member">harmonic_interpolation</ref></para>
 </simplesect>
 <bold>Example</bold> <programlisting filename="ex_water_depth_from_mask.cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
@@ -31693,10 +31693,10 @@ The output path consists of:<itemizedlist>
         </inbodydescription>
         <location file="HighMap/include/highmap/interpolate2d.hpp" line="79" column="14" bodyfile="HighMap/include/highmap/interpolate2d.hpp" bodystart="79" bodyend="85"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1adff97113f5c9e89106fa57b4e809d603" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacehmap_1a6cfd7b1fc064e5aaef1550041f1bbc06" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
         <definition>Array hmap::harmonic_interpolation</definition>
-        <argsstring>(const Array &amp;array, const Array &amp;mask_fixed_values, int iterations_max=10000, float tolerance=1e-3f, float omega=1.8f)</argsstring>
+        <argsstring>(const Array &amp;array, const Array &amp;mask_fixed_values, int iterations_max=500, float tolerance=1e-5f, float omega=1.8f)</argsstring>
         <name>harmonic_interpolation</name>
         <qualifiedname>hmap::harmonic_interpolation</qualifiedname>
         <param>
@@ -31710,12 +31710,12 @@ The output path consists of:<itemizedlist>
         <param>
           <type>int</type>
           <declname>iterations_max</declname>
-          <defval>10000</defval>
+          <defval>500</defval>
         </param>
         <param>
           <type>float</type>
           <declname>tolerance</declname>
-          <defval>1e-3<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+          <defval>1e-5<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
         </param>
         <param>
           <type>float</type>

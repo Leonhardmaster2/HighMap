@@ -169,6 +169,8 @@ void \mbox{\hyperlink{namespacehmap_1_1gpu_acb80d6cda31177534d6e63c97675d46d}{sm
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_af8f580c9d50a07585257569bd1160891}{hmap\+::flow\+\_\+direction\+\_\+d8}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_ab4f1542d2d5dd7edc54d240dab777755}{generate\+\_\+riverbed}} (const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&path, \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$ shape, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, bool bezier\+\_\+smoothing=false, float depth\+\_\+start=0.\+01\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float depth\+\_\+end=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float slope\+\_\+start=64.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float slope\+\_\+end=32.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float shape\+\_\+exponent\+\_\+start=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float shape\+\_\+exponent\+\_\+end=10.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float k\+\_\+smoothing=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, int post\+\_\+filter\+\_\+ir=0, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+r=nullptr)
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a97ba5dfaa6625b654a8010ed7d2f3465}{hmap\+::generate\+\_\+riverbed}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a864cdb10c297b4a59dc761f32dbbc11a}{harmonic\+\_\+interpolation}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&mask\+\_\+fixed\+\_\+values, int iterations\+\_\+max=500)
+\begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a6cfd7b1fc064e5aaef1550041f1bbc06}{hmap\+::harmonic\+\_\+interpolation}. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_1_1gpu_a7fca2b47602e86cf0c65908230bdee55}{interpolate\+\_\+array\+\_\+bicubic}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&source, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&target)
 \item 
 void \mbox{\hyperlink{namespacehmap_1_1gpu_a08d2a6e771f70513a5fdbc27783f5f55}{interpolate\+\_\+array\+\_\+bicubic}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&source, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&target, const \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ \&bbox\+\_\+source, const \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ \&bbox\+\_\+target)
@@ -1613,6 +1615,16 @@ See \doxylink{namespacehmap_af8f580c9d50a07585257569bd1160891}{hmap\+::flow\+\_\
 
 
 See \doxylink{namespacehmap_a97ba5dfaa6625b654a8010ed7d2f3465}{hmap\+::generate\+\_\+riverbed}. 
+
+\Hypertarget{namespacehmap_1_1gpu_a864cdb10c297b4a59dc761f32dbbc11a}\label{namespacehmap_1_1gpu_a864cdb10c297b4a59dc761f32dbbc11a} 
+\index{hmap::gpu@{hmap::gpu}!harmonic\_interpolation@{harmonic\_interpolation}}
+\index{harmonic\_interpolation@{harmonic\_interpolation}!hmap::gpu@{hmap::gpu}}
+\doxysubsubsection{\texorpdfstring{harmonic\_interpolation()}{harmonic\_interpolation()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::gpu\+::harmonic\+\_\+interpolation (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{mask\+\_\+fixed\+\_\+values,  }\item[{int}]{iterations\+\_\+max = {\ttfamily 500} }\end{DoxyParamCaption})}
+
+
+
+See \doxylink{namespacehmap_a6cfd7b1fc064e5aaef1550041f1bbc06}{hmap\+::harmonic\+\_\+interpolation}. 
 
 \Hypertarget{namespacehmap_1_1gpu_a7fca2b47602e86cf0c65908230bdee55}\label{namespacehmap_1_1gpu_a7fca2b47602e86cf0c65908230bdee55} 
 \index{hmap::gpu@{hmap::gpu}!interpolate\_array\_bicubic@{interpolate\_array\_bicubic}}

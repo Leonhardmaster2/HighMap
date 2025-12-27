@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>HighMap library (C++): HighMap/src/interpolate/harmonic_interpolation.cpp File Reference</title>
+<title>HighMap library (C++): HighMap/src/interpolate/harmonic_interpolation_gpu.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -70,7 +70,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('harmonic__interpolation_8cpp.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('harmonic__interpolation__gpu_8cpp.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -99,7 +99,7 @@ $(document).ready(function(){initNavTree('harmonic__interpolation_8cpp.html','')
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#func-members">Functions</a>  </div>
-  <div class="headertitle"><div class="title">harmonic_interpolation.cpp File Reference</div></div>
+  <div class="headertitle"><div class="title">harmonic_interpolation_gpu.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
@@ -107,19 +107,21 @@ $(document).ready(function(){initNavTree('harmonic__interpolation_8cpp.html','')
 Namespaces</h2></td></tr>
 <tr class="memitem:namespacehmap" id="r_namespacehmap"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html">hmap</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespacehmap_1_1gpu" id="r_namespacehmap_1_1gpu"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html">hmap::gpu</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a6cfd7b1fc064e5aaef1550041f1bbc06" id="r_a6cfd7b1fc064e5aaef1550041f1bbc06"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a6cfd7b1fc064e5aaef1550041f1bbc06">hmap::harmonic_interpolation</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;mask_fixed_values, int iterations_max=500, float tolerance=1e-5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float omega=1.8<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
-<tr class="memdesc:a6cfd7b1fc064e5aaef1550041f1bbc06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform harmonic interpolation on a 2D array using the Successive Over-Relaxation (SOR) method.  <br /></td></tr>
-<tr class="separator:a6cfd7b1fc064e5aaef1550041f1bbc06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a864cdb10c297b4a59dc761f32dbbc11a" id="r_a864cdb10c297b4a59dc761f32dbbc11a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a864cdb10c297b4a59dc761f32dbbc11a">hmap::gpu::harmonic_interpolation</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;mask_fixed_values, int iterations_max=500)</td></tr>
+<tr class="memdesc:a864cdb10c297b4a59dc761f32dbbc11a"><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="namespacehmap.html#a6cfd7b1fc064e5aaef1550041f1bbc06" title="Perform harmonic interpolation on a 2D array using the Successive Over-Relaxation (SOR) method.">hmap::harmonic_interpolation</a>.  <br /></td></tr>
+<tr class="separator:a864cdb10c297b4a59dc761f32dbbc11a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d1628ce034b494ec45a6557150a1be1b.html">HighMap</a></li><li class="navelem"><a class="el" href="dir_f63c6611b1023abbeb7e0b5a0bccaf92.html">src</a></li><li class="navelem"><a class="el" href="dir_935215972bef69986a81fe4c59c9ece4.html">interpolate</a></li><li class="navelem"><a class="el" href="harmonic__interpolation_8cpp.html">harmonic_interpolation.cpp</a></li>
+    <li class="navelem"><a class="el" href="dir_d1628ce034b494ec45a6557150a1be1b.html">HighMap</a></li><li class="navelem"><a class="el" href="dir_f63c6611b1023abbeb7e0b5a0bccaf92.html">src</a></li><li class="navelem"><a class="el" href="dir_935215972bef69986a81fe4c59c9ece4.html">interpolate</a></li><li class="navelem"><a class="el" href="harmonic__interpolation__gpu_8cpp.html">harmonic_interpolation_gpu.cpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
