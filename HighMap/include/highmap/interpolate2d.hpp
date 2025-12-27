@@ -119,8 +119,8 @@ inline float cubic_interpolate(float p[4], float x)
  */
 Array harmonic_interpolation(const Array &array,
                              const Array &mask_fixed_values,
-                             int          iterations_max = 10000,
-                             float        tolerance = 1e-3f,
+                             int          iterations_max = 500,
+                             float        tolerance = 1e-5f,
                              float        omega = 1.8f);
 
 /**
@@ -214,3 +214,13 @@ Array interpolate2d_delaunay(Vec2<int>                 shape,
                              Vec4<float> bbox = {0.f, 1.f, 0.f, 1.f});
 
 } // namespace hmap
+
+namespace hmap::gpu
+{
+
+/*! @brief See hmap::harmonic_interpolation */
+Array harmonic_interpolation(const Array &array,
+                             const Array &mask_fixed_values,
+                             int          iterations_max = 500);
+
+} // namespace hmap::gpu
