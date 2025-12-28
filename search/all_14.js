@@ -47,7 +47,7 @@ var searchData=
   ['select_5fsoil_5fweathered_44',['select_soil_weathered',['../namespacehmap_1_1gpu.html#a07420c28501484b219710bac89da8f60',1,'hmap::gpu::select_soil_weathered(const Array &amp;z, const Array &amp;gradient_norm, int ir_curvature, ClampMode curvature_clamp_mode, float curvature_clamping, float curvature_weight, float gradient_weight, float gradient_scaling_factor)'],['../namespacehmap_1_1gpu.html#ae394dd88c39510d2ada01cf120922719',1,'hmap::gpu::select_soil_weathered(const Array &amp;z, int ir_curvature=0, int ir_gradient=4, ClampMode curvature_clamp_mode=ClampMode::POSITIVE_ONLY, float curvature_clamping=10.f, float curvature_weight=1.f, float gradient_weight=1.f, float gradient_scaling_factor=0.f)']]],
   ['select_5fsoil_5fweathered_2ecpp_45',['select_soil_weathered.cpp',['../select__soil__weathered_8cpp.html',1,'']]],
   ['select_5ftransitions_46',['select_transitions',['../namespacehmap.html#ac6dcaa05c7c34302fa2560ddedbb9931',1,'hmap']]],
-  ['select_5fvalley_47',['select_valley',['../namespacehmap_1_1gpu.html#af91ed08d142ffe71069e00475654d786',1,'hmap::gpu::select_valley()'],['../namespacehmap.html#a701106cd57412e72a5d3ee41b46ab4e8',1,'hmap::select_valley()']]],
+  ['select_5fvalley_47',['select_valley',['../namespacehmap_1_1gpu.html#a13f97a9cf5f7f219e5ed9a32fefbfa1a',1,'hmap::gpu::select_valley()'],['../namespacehmap.html#ac72cb684be1045c7f2a5c8941f905772',1,'hmap::select_valley()']]],
   ['selector_2ecpp_48',['selector.cpp',['../selector_8cpp.html',1,'']]],
   ['selector_2ehpp_49',['selector.hpp',['../selector_8hpp.html',1,'']]],
   ['selector_5fgpu_2ecpp_50',['selector_gpu.cpp',['../selector__gpu_8cpp.html',1,'']]],

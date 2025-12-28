@@ -22,5 +22,5 @@ var selector_8cpp =
     [ "select_pulse", "selector_8cpp.html#a183508644aea6442e249cfc2973fef97", null ],
     [ "select_rivers", "selector_8cpp.html#a1f35e2238ee222ab2aa87304f6692ce6", null ],
     [ "select_transitions", "selector_8cpp.html#ac6dcaa05c7c34302fa2560ddedbb9931", null ],
-    [ "select_valley", "selector_8cpp.html#a701106cd57412e72a5d3ee41b46ab4e8", null ]
+    [ "select_valley", "selector_8cpp.html#ac72cb684be1045c7f2a5c8941f905772", null ]
 ];

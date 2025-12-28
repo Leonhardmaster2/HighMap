@@ -88,62 +88,56 @@
 \DoxyCodeLine{00451\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&array2,}
 \DoxyCodeLine{00452\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&array\_blend);}
 \DoxyCodeLine{00453\ }
-\DoxyCodeLine{00454\ Array\ \mbox{\hyperlink{namespacehmap_a701106cd57412e72a5d3ee41b46ab4e8}{select\_valley}}(\textcolor{keyword}{const}\ Array\ \&z,}
-\DoxyCodeLine{00455\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ ir,}
-\DoxyCodeLine{00456\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ zero\_at\_borders\ =\ \textcolor{keyword}{true},}
-\DoxyCodeLine{00457\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ ridge\_select\ =\ \textcolor{keyword}{false});}
-\DoxyCodeLine{00458\ }
-\DoxyCodeLine{00459\ \}\ \textcolor{comment}{//\ namespace\ hmap}}
+\DoxyCodeLine{00454\ Array\ \mbox{\hyperlink{namespacehmap_ac72cb684be1045c7f2a5c8941f905772}{select\_valley}}(\textcolor{keyword}{const}\ Array\ \&z,\ \textcolor{keywordtype}{int}\ ir,\ \textcolor{keywordtype}{bool}\ ridge\_select\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00455\ }
+\DoxyCodeLine{00456\ \}\ \textcolor{comment}{//\ namespace\ hmap}}
+\DoxyCodeLine{00457\ }
+\DoxyCodeLine{00458\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacehmap_1_1gpu}{hmap::gpu}}}
+\DoxyCodeLine{00459\ \{}
 \DoxyCodeLine{00460\ }
-\DoxyCodeLine{00461\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacehmap_1_1gpu}{hmap::gpu}}}
-\DoxyCodeLine{00462\ \{}
+\DoxyCodeLine{00462\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_a9d2e42789abe01802177574660804fa1}{select\_cavities}}(\textcolor{keyword}{const}\ Array\ \&array,\ \textcolor{keywordtype}{int}\ ir,\ \textcolor{keywordtype}{bool}\ concave\ =\ \textcolor{keyword}{true});}
 \DoxyCodeLine{00463\ }
-\DoxyCodeLine{00465\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_a9d2e42789abe01802177574660804fa1}{select\_cavities}}(\textcolor{keyword}{const}\ Array\ \&array,\ \textcolor{keywordtype}{int}\ ir,\ \textcolor{keywordtype}{bool}\ concave\ =\ \textcolor{keyword}{true});}
-\DoxyCodeLine{00466\ }
-\DoxyCodeLine{00493\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_afb62cf56466c5bdfb9b6a26458a52d12}{select\_soil\_flow}}(\textcolor{keyword}{const}\ Array\ \&z,}
-\DoxyCodeLine{00494\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ ir\_gradient\ =\ 1,}
-\DoxyCodeLine{00495\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ gradient\_weight\ =\ 1.f,}
-\DoxyCodeLine{00496\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ gradient\_scaling\_factor\ =\ 0.f,}
-\DoxyCodeLine{00497\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ flow\_weight\ =\ 0.05f,}
-\DoxyCodeLine{00498\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ talus\_ref\ =\ 0.f,}
-\DoxyCodeLine{00499\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ clipping\_ratio\ =\ 50.f,}
-\DoxyCodeLine{00500\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ flow\_gamma\ =\ 1.f,}
-\DoxyCodeLine{00501\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ k\_smooth\ =\ 0.01f);}
-\DoxyCodeLine{00502\ }
-\DoxyCodeLine{00530\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_a735421f1b5f42ade55224b932603c58e}{select\_soil\_rocks}}(}
-\DoxyCodeLine{00531\ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&z,}
-\DoxyCodeLine{00532\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ ir\_max\ =\ 64,}
-\DoxyCodeLine{00533\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ ir\_min\ =\ 0,}
-\DoxyCodeLine{00534\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ steps\ =\ 4,}
-\DoxyCodeLine{00535\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ smaller\_scales\_weight\ =\ 1.f,}
-\DoxyCodeLine{00536\ \ \ \ \ \mbox{\hyperlink{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbe}{ClampMode}}\ \ \ \ curvature\_clamp\_mode\ =\ \mbox{\hyperlink{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbea7ee5673a01d4215ae4ba9ba95268ed59}{ClampMode::POSITIVE\_ONLY}},}
-\DoxyCodeLine{00537\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ curvature\_clamping\ =\ 1.f);}
-\DoxyCodeLine{00538\ }
-\DoxyCodeLine{00572\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_ae394dd88c39510d2ada01cf120922719}{select\_soil\_weathered}}(}
-\DoxyCodeLine{00573\ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&z,}
-\DoxyCodeLine{00574\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ ir\_curvature\ =\ 0,}
-\DoxyCodeLine{00575\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ ir\_gradient\ =\ 4,}
-\DoxyCodeLine{00576\ \ \ \ \ \mbox{\hyperlink{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbe}{ClampMode}}\ \ \ \ curvature\_clamp\_mode\ =\ \mbox{\hyperlink{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbea7ee5673a01d4215ae4ba9ba95268ed59}{ClampMode::POSITIVE\_ONLY}},}
-\DoxyCodeLine{00577\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ curvature\_clamping\ =\ 10.f,}
-\DoxyCodeLine{00578\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ curvature\_weight\ =\ 1.f,}
-\DoxyCodeLine{00579\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ gradient\_weight\ =\ 1.f,}
-\DoxyCodeLine{00580\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ gradient\_scaling\_factor\ =\ 0.f);}
-\DoxyCodeLine{00581\ }
-\DoxyCodeLine{00582\ \textcolor{comment}{//\ if\ the\ gradient\ norm\ is\ known\ before-\/hand}}
-\DoxyCodeLine{00583\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_ae394dd88c39510d2ada01cf120922719}{select\_soil\_weathered}}(\textcolor{keyword}{const}\ Array\ \&z,}
-\DoxyCodeLine{00584\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&\mbox{\hyperlink{namespacehmap_1_1gpu_a1c5e49734e49973fe1b275b6988dba12}{gradient\_norm}},\ \textcolor{comment}{//\ in\ [0,\ 1]}}
-\DoxyCodeLine{00585\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ ir\_curvature,}
-\DoxyCodeLine{00586\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbe}{ClampMode}}\ \ \ \ curvature\_clamp\_mode,}
-\DoxyCodeLine{00587\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ curvature\_clamping,}
-\DoxyCodeLine{00588\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ curvature\_weight,}
-\DoxyCodeLine{00589\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ gradient\_weight,}
-\DoxyCodeLine{00590\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ gradient\_scaling\_factor);\ \textcolor{comment}{//\ for\ curvature}}
+\DoxyCodeLine{00490\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_afb62cf56466c5bdfb9b6a26458a52d12}{select\_soil\_flow}}(\textcolor{keyword}{const}\ Array\ \&z,}
+\DoxyCodeLine{00491\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ ir\_gradient\ =\ 1,}
+\DoxyCodeLine{00492\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ gradient\_weight\ =\ 1.f,}
+\DoxyCodeLine{00493\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ gradient\_scaling\_factor\ =\ 0.f,}
+\DoxyCodeLine{00494\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ flow\_weight\ =\ 0.05f,}
+\DoxyCodeLine{00495\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ talus\_ref\ =\ 0.f,}
+\DoxyCodeLine{00496\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ clipping\_ratio\ =\ 50.f,}
+\DoxyCodeLine{00497\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ flow\_gamma\ =\ 1.f,}
+\DoxyCodeLine{00498\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ k\_smooth\ =\ 0.01f);}
+\DoxyCodeLine{00499\ }
+\DoxyCodeLine{00527\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_a735421f1b5f42ade55224b932603c58e}{select\_soil\_rocks}}(}
+\DoxyCodeLine{00528\ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&z,}
+\DoxyCodeLine{00529\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ ir\_max\ =\ 64,}
+\DoxyCodeLine{00530\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ ir\_min\ =\ 0,}
+\DoxyCodeLine{00531\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ steps\ =\ 4,}
+\DoxyCodeLine{00532\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ smaller\_scales\_weight\ =\ 1.f,}
+\DoxyCodeLine{00533\ \ \ \ \ \mbox{\hyperlink{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbe}{ClampMode}}\ \ \ \ curvature\_clamp\_mode\ =\ \mbox{\hyperlink{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbea7ee5673a01d4215ae4ba9ba95268ed59}{ClampMode::POSITIVE\_ONLY}},}
+\DoxyCodeLine{00534\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ curvature\_clamping\ =\ 1.f);}
+\DoxyCodeLine{00535\ }
+\DoxyCodeLine{00569\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_ae394dd88c39510d2ada01cf120922719}{select\_soil\_weathered}}(}
+\DoxyCodeLine{00570\ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&z,}
+\DoxyCodeLine{00571\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ ir\_curvature\ =\ 0,}
+\DoxyCodeLine{00572\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ ir\_gradient\ =\ 4,}
+\DoxyCodeLine{00573\ \ \ \ \ \mbox{\hyperlink{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbe}{ClampMode}}\ \ \ \ curvature\_clamp\_mode\ =\ \mbox{\hyperlink{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbea7ee5673a01d4215ae4ba9ba95268ed59}{ClampMode::POSITIVE\_ONLY}},}
+\DoxyCodeLine{00574\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ curvature\_clamping\ =\ 10.f,}
+\DoxyCodeLine{00575\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ curvature\_weight\ =\ 1.f,}
+\DoxyCodeLine{00576\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ gradient\_weight\ =\ 1.f,}
+\DoxyCodeLine{00577\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ gradient\_scaling\_factor\ =\ 0.f);}
+\DoxyCodeLine{00578\ }
+\DoxyCodeLine{00579\ \textcolor{comment}{//\ if\ the\ gradient\ norm\ is\ known\ before-\/hand}}
+\DoxyCodeLine{00580\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_ae394dd88c39510d2ada01cf120922719}{select\_soil\_weathered}}(\textcolor{keyword}{const}\ Array\ \&z,}
+\DoxyCodeLine{00581\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&\mbox{\hyperlink{namespacehmap_1_1gpu_a1c5e49734e49973fe1b275b6988dba12}{gradient\_norm}},\ \textcolor{comment}{//\ in\ [0,\ 1]}}
+\DoxyCodeLine{00582\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ ir\_curvature,}
+\DoxyCodeLine{00583\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbe}{ClampMode}}\ \ \ \ curvature\_clamp\_mode,}
+\DoxyCodeLine{00584\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ curvature\_clamping,}
+\DoxyCodeLine{00585\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ curvature\_weight,}
+\DoxyCodeLine{00586\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ gradient\_weight,}
+\DoxyCodeLine{00587\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ gradient\_scaling\_factor);\ \textcolor{comment}{//\ for\ curvature}}
+\DoxyCodeLine{00588\ }
+\DoxyCodeLine{00590\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_a13f97a9cf5f7f219e5ed9a32fefbfa1a}{select\_valley}}(\textcolor{keyword}{const}\ Array\ \&z,\ \textcolor{keywordtype}{int}\ ir,\ \textcolor{keywordtype}{bool}\ ridge\_select\ =\ \textcolor{keyword}{false});}
 \DoxyCodeLine{00591\ }
-\DoxyCodeLine{00593\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_af91ed08d142ffe71069e00475654d786}{select\_valley}}(\textcolor{keyword}{const}\ Array\ \&z,}
-\DoxyCodeLine{00594\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ ir,}
-\DoxyCodeLine{00595\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ zero\_at\_borders\ =\ \textcolor{keyword}{true},}
-\DoxyCodeLine{00596\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ ridge\_select\ =\ \textcolor{keyword}{false});}
-\DoxyCodeLine{00597\ }
-\DoxyCodeLine{00598\ \}\ \textcolor{comment}{//\ namespace\ hmap::gpu}}
+\DoxyCodeLine{00592\ \}\ \textcolor{comment}{//\ namespace\ hmap::gpu}}
 
 \end{DoxyCode}

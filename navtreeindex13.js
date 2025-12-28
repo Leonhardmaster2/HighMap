@@ -1,6 +1,5 @@
 var NAVTREEINDEX13 =
 {
-"namespacehmap.html#ac1fdc0ac0b6e1024faeaddcd30ebe2fe":[3,0,0,754],
 "namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a":[3,0,0,206],
 "namespacehmap.html#ac28f43b4f0b1b481dc8eb528f1be0f3d":[3,0,0,698],
 "namespacehmap.html#ac2a2b604d4c167dcaddfbd1c66df3e4c":[3,0,0,285],
@@ -52,6 +51,7 @@ var NAVTREEINDEX13 =
 "namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a744ead0b170889e33126895264f1af2c":[3,0,0,69,5],
 "namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369ae91cb25d4df330517ac69b5f0f2c3e0c":[3,0,0,69,6],
 "namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143":[3,0,0,69,3],
+"namespacehmap.html#ac72cb684be1045c7f2a5c8941f905772":[3,0,0,695],
 "namespacehmap.html#ac7a93fe9501041332e1ff7a128742c6f":[3,0,0,367],
 "namespacehmap.html#ac81a92060b89699c4eb9826495d87250":[3,0,0,71],
 "namespacehmap.html#ac81a92060b89699c4eb9826495d87250a64d964458b2812e59ec68af2ee53a8ae":[3,0,0,71,0],
@@ -221,6 +221,7 @@ var NAVTREEINDEX13 =
 "namespacehmap_1_1gpu.html#a125118b55d309727ff0b46d686fd3829":[3,0,0,0,11],
 "namespacehmap_1_1gpu.html#a12757ceaaf11f04640c3a18520886cc8":[3,0,0,0,154],
 "namespacehmap_1_1gpu.html#a13625ec501979795138bac6499ac0f08":[3,0,0,0,52],
+"namespacehmap_1_1gpu.html#a13f97a9cf5f7f219e5ed9a32fefbfa1a":[3,0,0,0,153],
 "namespacehmap_1_1gpu.html#a1489150d5e1af976a9f814b9911b3ea0":[3,0,0,0,33],
 "namespacehmap_1_1gpu.html#a163ab224a45decc3ccecf090f0704bc7":[3,0,0,0,100],
 "namespacehmap_1_1gpu.html#a173df0f0155f3b9ed96827941e419601":[3,0,0,0,109],
@@ -248,6 +249,5 @@ var NAVTREEINDEX13 =
 "namespacehmap_1_1gpu.html#a37f556d4d43005e2d618f0aa6c3527bb":[3,0,0,0,80],
 "namespacehmap_1_1gpu.html#a3a43696b1d6b8f0d966f9f05e5085edf":[3,0,0,0,0],
 "namespacehmap_1_1gpu.html#a4078e5f2ad3a01d6aa282011662a3b5d":[3,0,0,0,47],
-"namespacehmap_1_1gpu.html#a43cc566a7b7f48d327911b4085b2ad81":[3,0,0,0,127],
-"namespacehmap_1_1gpu.html#a450f5b26f42b6f06be3e1e131f6aaf86":[3,0,0,0,128]
+"namespacehmap_1_1gpu.html#a43cc566a7b7f48d327911b4085b2ad81":[3,0,0,0,127]
 };
