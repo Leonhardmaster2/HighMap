@@ -96,7 +96,7 @@ var NAVTREEINDEX =
 "namespacehmap.html#a2e282a2ea8008f2eccd99e47863adb6d",
 "namespacehmap.html#a7e2cad4ea77481f469f5a669b8a7d99f",
 "namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a",
-"namespacehmap_1_1gpu.html#a450f5b26f42b6f06be3e1e131f6aaf86",
+"namespacehmap_1_1gpu.html#a43cc566a7b7f48d327911b4085b2ad81",
 "point_8hpp.html#a4910efa1a82d5dd66d7d02a87fab7e7a",
 "range_8cpp.html#ae239201a0a4193e1ce78bdf1fce4c151",
 "structhmap_1_1HeightmapRGB.html#aac7276c2cb809518105e9a26a34230e5",
