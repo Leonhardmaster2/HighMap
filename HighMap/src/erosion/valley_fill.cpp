@@ -16,7 +16,9 @@ void valley_fill(Array       &z,
                  float        ratio,
                  float        zmin,
                  float        zmax,
-                 float        elevation_max_ratio)
+                 float        elevation_max_ratio,
+                 bool         preserve_elevation_range,
+                 Array       *p_deposition_map)
 {
   if (zmax <= zmin)
   {
@@ -24,13 +26,15 @@ void valley_fill(Array       &z,
     zmax = z.max();
   }
 
+  Array z_bckp;
+  if (p_deposition_map) z_bckp = z;
+
   // scree deposition
   Array ze = z;
   gpu::thermal_scree(ze,
                      talus,
                      Array(z.shape, elevation_max_ratio * zmax),
                      iterations);
-  remap(ze, zmin, zmax);
 
   // mixing mask
   Array t = z;
@@ -40,6 +44,10 @@ void valley_fill(Array       &z,
 
   // apply
   z = lerp(ze, z, t);
+
+  if (p_deposition_map) *p_deposition_map = z - z_bckp;
+
+  if (preserve_elevation_range) remap(z, zmin, zmax);
 }
 
 void valley_fill(Array       &z,
@@ -50,7 +58,9 @@ void valley_fill(Array       &z,
                  float        ratio,
                  float        zmin,
                  float        zmax,
-                 float        elevation_max_ratio)
+                 float        elevation_max_ratio,
+                 bool         preserve_elevation_range,
+                 Array       *p_deposition_map)
 {
   if (!p_mask)
   {
@@ -61,7 +71,9 @@ void valley_fill(Array       &z,
                      ratio,
                      zmin,
                      zmax,
-                     elevation_max_ratio);
+                     elevation_max_ratio,
+                     preserve_elevation_range,
+                     p_deposition_map);
   }
   else
   {
@@ -73,7 +85,9 @@ void valley_fill(Array       &z,
                      ratio,
                      zmin,
                      zmax,
-                     elevation_max_ratio);
+                     elevation_max_ratio,
+                     preserve_elevation_range,
+                     p_deposition_map);
     z = lerp(z, z_f, *(p_mask));
   }
 }

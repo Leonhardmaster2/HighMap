@@ -1690,7 +1690,9 @@ void valley_fill(Array       &z,
                  float        ratio = 0.8f,
                  float        zmin = 0.f,
                  float        zmax = 0.f,
-                 float        elevation_max_ratio = 1.f);
+                 float        elevation_max_ratio = 1.f,
+                 bool         preserve_elevation_range = true,
+                 Array       *p_deposition_map = nullptr);
 
 void valley_fill(Array       &z,
                  const Array *p_mask,
@@ -1700,6 +1702,8 @@ void valley_fill(Array       &z,
                  float        ratio = 0.8f,
                  float        zmin = 0.f,
                  float        zmax = 0.f,
-                 float        elevation_max_ratio = 1.f);
+                 float        elevation_max_ratio = 1.f,
+                 bool         preserve_elevation_range = true,
+                 Array       *p_deposition_map = nullptr);
 
 } // namespace hmap::gpu
