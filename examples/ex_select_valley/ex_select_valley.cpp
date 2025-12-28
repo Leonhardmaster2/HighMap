@@ -2,6 +2,8 @@
 
 int main(void)
 {
+  hmap::gpu::init_opencl();
+
   hmap::Vec2<int>   shape = {256, 256};
   hmap::Vec2<float> res = {4.f, 4.f};
   int               seed = 2;
@@ -10,7 +12,11 @@ int main(void)
   hmap::remap(z);
 
   int         ir = 32;
-  hmap::Array w = hmap::select_valley(z, ir, true);
+  hmap::Array w1 = hmap::select_valley(z, ir, true);
+  hmap::Array w2 = hmap::gpu::select_valley(z, ir, true);
+  hmap::Array w3 = hmap::gpu::select_valley(z, ir, false);
 
-  hmap::export_banner_png("ex_select_valley.png", {z, w}, hmap::Cmap::INFERNO);
+  hmap::export_banner_png("ex_select_valley.png",
+                          {z, w1, w2, w3},
+                          hmap::Cmap::INFERNO);
 }

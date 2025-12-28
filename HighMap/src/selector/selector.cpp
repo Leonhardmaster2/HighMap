@@ -382,21 +382,12 @@ Array select_transitions(const Array &array1,
   return mask;
 }
 
-Array select_valley(const Array &z,
-                    int          ir,
-                    bool         zero_at_borders,
-                    bool         ridge_select)
+Array select_valley(const Array &z, int ir, bool ridge_select)
 {
-  Array w = z;
-  smooth_cpulse(w, std::max(1, ir));
-
-  if (not(ridge_select)) w *= -1.f;
-
-  w = curvature_mean(w);
-  make_binary(w);
-  w = relative_distance_from_skeleton(w, ir, zero_at_borders);
-
-  return w;
+  if (ridge_select)
+    return morphological_top_hat(z, ir);
+  else
+    return morphological_black_hat(z, ir);
 }
 
 } // namespace hmap

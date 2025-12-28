@@ -451,10 +451,7 @@ Array select_transitions(const Array &array1,
                          const Array &array2,
                          const Array &array_blend);
 
-Array select_valley(const Array &z,
-                    int          ir,
-                    bool         zero_at_borders = true,
-                    bool         ridge_select = false);
+Array select_valley(const Array &z, int ir, bool ridge_select = false);
 
 } // namespace hmap
 
@@ -590,9 +587,6 @@ Array select_soil_weathered(const Array &z,
                             float gradient_scaling_factor); // for curvature
 
 /*! @brief See hmap::select_valley */
-Array select_valley(const Array &z,
-                    int          ir,
-                    bool         zero_at_borders = true,
-                    bool         ridge_select = false);
+Array select_valley(const Array &z, int ir, bool ridge_select = false);
 
 } // namespace hmap::gpu
