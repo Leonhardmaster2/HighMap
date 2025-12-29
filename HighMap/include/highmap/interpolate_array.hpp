@@ -37,23 +37,27 @@ void flatten_heightmap(const std::vector<const Heightmap *>  &h_sources,
 
 void interpolate_array_bicubic(const Array &source,
                                Array       &target,
-                               bool         endpoint = false);
+                               bool         endpoint = false,
+                               bool         pixel_centered = true);
 
 void interpolate_array_bicubic(const Array       &source,
                                Array             &target,
                                const Vec4<float> &bbox_source,
                                const Vec4<float> &bbox_target,
-                               bool               endpoint = false);
+                               bool               endpoint = false,
+                               bool               pixel_centered = true);
 
 void interpolate_array_bilinear(const Array &source,
                                 Array       &target,
-                                bool         endpoint = false);
+                                bool         endpoint = false,
+                                bool         pixel_centered = true);
 
 void interpolate_array_bilinear(const Array       &source,
                                 Array             &target,
                                 const Vec4<float> &bbox_source,
                                 const Vec4<float> &bbox_target,
-                                bool               endpoint = false);
+                                bool               endpoint = false,
+                                bool               pixel_centered = true);
 
 void interpolate_array_nearest(const Array &source,
                                Array       &target,

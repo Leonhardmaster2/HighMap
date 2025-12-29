@@ -34,34 +34,19 @@ void Tile::from_array_interp(Array &array)
 void Tile::from_array_interp_bicubic(Array &array)
 {
   Vec4<float> bbox_source(0.f, 1.f, 0.f, 1.f);
-  Vec4<float> bbox_target(this->shift.x,
-                          this->shift.x + this->scale.x,
-                          this->shift.y,
-                          this->shift.y + this->scale.y);
-
-  interpolate_array_bicubic(array, *this, bbox_source, bbox_target);
+  interpolate_array_bicubic(array, *this, bbox_source, this->bbox, false, false);
 }
 
 void Tile::from_array_interp_bilinear(Array &array)
 {
   Vec4<float> bbox_source(0.f, 1.f, 0.f, 1.f);
-  Vec4<float> bbox_target(this->shift.x,
-                          this->shift.x + this->scale.x,
-                          this->shift.y,
-                          this->shift.y + this->scale.y);
-
-  interpolate_array_bilinear(array, *this, bbox_source, bbox_target, true);
+  interpolate_array_bilinear(array, *this, bbox_source, this->bbox, false, false);
 }
 
 void Tile::from_array_interp_nearest(Array &array)
 {
   Vec4<float> bbox_source(0.f, 1.f, 0.f, 1.f);
-  Vec4<float> bbox_target(this->shift.x,
-                          this->shift.x + this->scale.x,
-                          this->shift.y,
-                          this->shift.y + this->scale.y);
-
-  interpolate_array_nearest(array, *this, bbox_source, bbox_target);
+  interpolate_array_nearest(array, *this, bbox_source, this->bbox, false);
 }
 
 void Tile::infos() const
