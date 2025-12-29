@@ -1149,13 +1149,13 @@ void \mbox{\hyperlink{namespacehmap_a2ecd308a993a3d85640aea025e02f3b1}{flatten\+
 \item 
 void \mbox{\hyperlink{namespacehmap_a17f8f7249f91ef9bbcc0b1b5e38e20f3}{flatten\+\_\+heightmap}} (const std\+::vector$<$ const \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \texorpdfstring{$\ast$}{*} $>$ \&h\+\_\+sources, \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&h\+\_\+target, const std\+::vector$<$ const \mbox{\hyperlink{classhmap_1_1CoordFrame}{Coord\+Frame}} \texorpdfstring{$\ast$}{*} $>$ \&t\+\_\+sources, const \mbox{\hyperlink{classhmap_1_1CoordFrame}{Coord\+Frame}} \&t\+\_\+target)
 \item 
-void \mbox{\hyperlink{namespacehmap_a319da988fd03a87d91534ff93bb02011}{interpolate\+\_\+array\+\_\+bicubic}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&source, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&target, bool endpoint=false)
+void \mbox{\hyperlink{namespacehmap_a9e8b724d238450ef72e9bd083acb9b8a}{interpolate\+\_\+array\+\_\+bicubic}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&source, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&target, bool endpoint=false, bool pixel\+\_\+centered=true)
 \item 
-void \mbox{\hyperlink{namespacehmap_aba233ab806992723d191085ed3ea7e6a}{interpolate\+\_\+array\+\_\+bicubic}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&source, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&target, const \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ \&bbox\+\_\+source, const \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ \&bbox\+\_\+target, bool endpoint=false)
+void \mbox{\hyperlink{namespacehmap_aa17e96003ede1772e676bddd576091fc}{interpolate\+\_\+array\+\_\+bicubic}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&source, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&target, const \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ \&bbox\+\_\+source, const \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ \&bbox\+\_\+target, bool endpoint=false, bool pixel\+\_\+centered=true)
 \item 
-void \mbox{\hyperlink{namespacehmap_aac9094d328d39df42675a8614abe89ed}{interpolate\+\_\+array\+\_\+bilinear}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&source, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&target, bool endpoint=false)
+void \mbox{\hyperlink{namespacehmap_a28a6744fc26597330ca8eb9bbc4cd68e}{interpolate\+\_\+array\+\_\+bilinear}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&source, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&target, bool endpoint=false, bool pixel\+\_\+centered=true)
 \item 
-void \mbox{\hyperlink{namespacehmap_a6f7fe9586ca23fc3f90a314b3ac9ac05}{interpolate\+\_\+array\+\_\+bilinear}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&source, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&target, const \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ \&bbox\+\_\+source, const \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ \&bbox\+\_\+target, bool endpoint=false)
+void \mbox{\hyperlink{namespacehmap_aa9d1771597fa0fc6c75d5db96096d4e9}{interpolate\+\_\+array\+\_\+bilinear}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&source, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&target, const \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ \&bbox\+\_\+source, const \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ \&bbox\+\_\+target, bool endpoint=false, bool pixel\+\_\+centered=true)
 \item 
 void \mbox{\hyperlink{namespacehmap_ab55e8132857fc52e7ac7947d82c334e1}{interpolate\+\_\+array\+\_\+nearest}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&source, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&target, bool endpoint=false)
 \item 
@@ -18192,29 +18192,29 @@ This function performs 2D interpolation by generating a Delaunay triangulation o
 \doxysubsubsection{\texorpdfstring{flatten\_heightmap()}{flatten\_heightmap()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
 {\footnotesize\ttfamily void hmap\+::flatten\+\_\+heightmap (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ const \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \texorpdfstring{$\ast$}{*} $>$ \&}]{h\+\_\+sources,  }\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{h\+\_\+target,  }\item[{const std\+::vector$<$ const \mbox{\hyperlink{classhmap_1_1CoordFrame}{Coord\+Frame}} \texorpdfstring{$\ast$}{*} $>$ \&}]{t\+\_\+sources,  }\item[{const \mbox{\hyperlink{classhmap_1_1CoordFrame}{Coord\+Frame}} \&}]{t\+\_\+target }\end{DoxyParamCaption})}
 
-\Hypertarget{namespacehmap_a319da988fd03a87d91534ff93bb02011}\label{namespacehmap_a319da988fd03a87d91534ff93bb02011} 
+\Hypertarget{namespacehmap_a9e8b724d238450ef72e9bd083acb9b8a}\label{namespacehmap_a9e8b724d238450ef72e9bd083acb9b8a} 
 \index{hmap@{hmap}!interpolate\_array\_bicubic@{interpolate\_array\_bicubic}}
 \index{interpolate\_array\_bicubic@{interpolate\_array\_bicubic}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{interpolate\_array\_bicubic()}{interpolate\_array\_bicubic()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily void hmap\+::interpolate\+\_\+array\+\_\+bicubic (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{source,  }\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{target,  }\item[{bool}]{endpoint = {\ttfamily false} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void hmap\+::interpolate\+\_\+array\+\_\+bicubic (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{source,  }\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{target,  }\item[{bool}]{endpoint = {\ttfamily false},  }\item[{bool}]{pixel\+\_\+centered = {\ttfamily true} }\end{DoxyParamCaption})}
 
-\Hypertarget{namespacehmap_aba233ab806992723d191085ed3ea7e6a}\label{namespacehmap_aba233ab806992723d191085ed3ea7e6a} 
+\Hypertarget{namespacehmap_aa17e96003ede1772e676bddd576091fc}\label{namespacehmap_aa17e96003ede1772e676bddd576091fc} 
 \index{hmap@{hmap}!interpolate\_array\_bicubic@{interpolate\_array\_bicubic}}
 \index{interpolate\_array\_bicubic@{interpolate\_array\_bicubic}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{interpolate\_array\_bicubic()}{interpolate\_array\_bicubic()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily void hmap\+::interpolate\+\_\+array\+\_\+bicubic (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{source,  }\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{target,  }\item[{const \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ \&}]{bbox\+\_\+source,  }\item[{const \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ \&}]{bbox\+\_\+target,  }\item[{bool}]{endpoint = {\ttfamily false} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void hmap\+::interpolate\+\_\+array\+\_\+bicubic (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{source,  }\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{target,  }\item[{const \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ \&}]{bbox\+\_\+source,  }\item[{const \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ \&}]{bbox\+\_\+target,  }\item[{bool}]{endpoint = {\ttfamily false},  }\item[{bool}]{pixel\+\_\+centered = {\ttfamily true} }\end{DoxyParamCaption})}
 
-\Hypertarget{namespacehmap_aac9094d328d39df42675a8614abe89ed}\label{namespacehmap_aac9094d328d39df42675a8614abe89ed} 
+\Hypertarget{namespacehmap_a28a6744fc26597330ca8eb9bbc4cd68e}\label{namespacehmap_a28a6744fc26597330ca8eb9bbc4cd68e} 
 \index{hmap@{hmap}!interpolate\_array\_bilinear@{interpolate\_array\_bilinear}}
 \index{interpolate\_array\_bilinear@{interpolate\_array\_bilinear}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{interpolate\_array\_bilinear()}{interpolate\_array\_bilinear()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily void hmap\+::interpolate\+\_\+array\+\_\+bilinear (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{source,  }\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{target,  }\item[{bool}]{endpoint = {\ttfamily false} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void hmap\+::interpolate\+\_\+array\+\_\+bilinear (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{source,  }\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{target,  }\item[{bool}]{endpoint = {\ttfamily false},  }\item[{bool}]{pixel\+\_\+centered = {\ttfamily true} }\end{DoxyParamCaption})}
 
-\Hypertarget{namespacehmap_a6f7fe9586ca23fc3f90a314b3ac9ac05}\label{namespacehmap_a6f7fe9586ca23fc3f90a314b3ac9ac05} 
+\Hypertarget{namespacehmap_aa9d1771597fa0fc6c75d5db96096d4e9}\label{namespacehmap_aa9d1771597fa0fc6c75d5db96096d4e9} 
 \index{hmap@{hmap}!interpolate\_array\_bilinear@{interpolate\_array\_bilinear}}
 \index{interpolate\_array\_bilinear@{interpolate\_array\_bilinear}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{interpolate\_array\_bilinear()}{interpolate\_array\_bilinear()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily void hmap\+::interpolate\+\_\+array\+\_\+bilinear (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{source,  }\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{target,  }\item[{const \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ \&}]{bbox\+\_\+source,  }\item[{const \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ \&}]{bbox\+\_\+target,  }\item[{bool}]{endpoint = {\ttfamily false} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void hmap\+::interpolate\+\_\+array\+\_\+bilinear (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{source,  }\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{target,  }\item[{const \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ \&}]{bbox\+\_\+source,  }\item[{const \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ \&}]{bbox\+\_\+target,  }\item[{bool}]{endpoint = {\ttfamily false},  }\item[{bool}]{pixel\+\_\+centered = {\ttfamily true} }\end{DoxyParamCaption})}
 
 \Hypertarget{namespacehmap_ab55e8132857fc52e7ac7947d82c334e1}\label{namespacehmap_ab55e8132857fc52e7ac7947d82c334e1} 
 \index{hmap@{hmap}!interpolate\_array\_nearest@{interpolate\_array\_nearest}}
