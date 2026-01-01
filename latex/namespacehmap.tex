@@ -671,11 +671,11 @@ void \mbox{\hyperlink{namespacehmap_a11b0213f43ea0d2228c0dbd385b8308a}{expand\+\
 \item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_ad066ff6ef56dbf9827ff6cca9a22e58a}{faceted}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int \mbox{\hyperlink{namespacehmap_a9d00db2263b4b7b05245531c41c1b592}{neighborhood}}=0, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr)
 \begin{DoxyCompactList}\small\item\em Generate a faceted heightmap that retains the main features of the input heightmap. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{namespacehmap_afcaa4f203173bd1f328adf854ad1a5d5}{fill\+\_\+talus}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, float talus, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, float noise\+\_\+ratio=0.\+2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+seed\+\_\+mask=nullptr)
+void \mbox{\hyperlink{namespacehmap_a507d3be9d2b879ce7c67f83fddfa43c8}{fill\+\_\+talus}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, float talus, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, int ir=1, float noise\+\_\+ratio=0.\+2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+seed\+\_\+mask=nullptr)
 \begin{DoxyCompactList}\small\item\em Modifies a terrain array by filling it with talus slopes. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{namespacehmap_a5d9a86c9fca92693b5eb2c5e2ea79c78}{fill\+\_\+talus}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&talus, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, float noise\+\_\+ratio=0.\+2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+seed\+\_\+mask=nullptr)
+void \mbox{\hyperlink{namespacehmap_aabb53a942968efe0a364f9f78079b3af}{fill\+\_\+talus}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&talus, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, int ir=1, float noise\+\_\+ratio=0.\+2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+seed\+\_\+mask=nullptr)
 \item 
-void \mbox{\hyperlink{namespacehmap_a8d285d64ffd577d077f189c913a2bb97}{fill\+\_\+talus\+\_\+fast}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$ shape\+\_\+coarse, float talus, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, float noise\+\_\+ratio=0.\+2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
+void \mbox{\hyperlink{namespacehmap_ae6d4ef5a71d2896b68d39006e60fd30d}{fill\+\_\+talus\+\_\+fast}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$ shape\+\_\+coarse, float talus, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, int ir=1, float noise\+\_\+ratio=0.\+2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Fill terrain values with a given downslope talus, optimized using a coarse mesh for faster computation. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a2ba465615ff1d745cfcf7a27b7dcb37e}{fold}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float vmin, float vmax, int iterations=3, float k=0.\+05\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Apply a "{}folding"{} filter (successive absolute values) to the array elements. \end{DoxyCompactList}\item 
@@ -9034,11 +9034,11 @@ This function processes the input heightmap to produce a new heightmap with a \t
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}  \Hypertarget{namespacehmap_afcaa4f203173bd1f328adf854ad1a5d5}\label{namespacehmap_afcaa4f203173bd1f328adf854ad1a5d5} 
+{\bfseries{Result}}  \Hypertarget{namespacehmap_a507d3be9d2b879ce7c67f83fddfa43c8}\label{namespacehmap_a507d3be9d2b879ce7c67f83fddfa43c8} 
 \index{hmap@{hmap}!fill\_talus@{fill\_talus}}
 \index{fill\_talus@{fill\_talus}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{fill\_talus()}{fill\_talus()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily void hmap\+::fill\+\_\+talus (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{float}]{talus,  }\item[{\mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{seed,  }\item[{float}]{noise\+\_\+ratio = {\ttfamily 0.2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+seed\+\_\+mask = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void hmap\+::fill\+\_\+talus (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{float}]{talus,  }\item[{\mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{seed,  }\item[{int}]{ir = {\ttfamily 1},  }\item[{float}]{noise\+\_\+ratio = {\ttfamily 0.2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+seed\+\_\+mask = {\ttfamily nullptr} }\end{DoxyParamCaption})}
 
 
 
@@ -9070,18 +9070,28 @@ This function applies a talus formation algorithm to an existing terrain array, 
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_a40b948c49a05c14f2d540dc1a6952130}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ res,\ seed);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(z);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ talus\ =\ 1.f\ /\ shape.\mbox{\hyperlink{structhmap_1_1Vec2_a2dc51e83492f966eeddbdac3d58ab447}{x}};}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ talus\ =\ 2.f\ /\ shape.\mbox{\hyperlink{structhmap_1_1Vec2_a2dc51e83492f966eeddbdac3d58ab447}{x}};}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z1\ =\ z;}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_afcaa4f203173bd1f328adf854ad1a5d5}{hmap::fill\_talus}}(z1,\ talus,\ seed,\ 0.2f);}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ ir\ =\ 6;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ noise\_ratio\ =\ 0.01f;}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a507d3be9d2b879ce7c67f83fddfa43c8}{hmap::fill\_talus}}(z1,\ talus,\ seed,\ ir,\ noise\_ratio);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ same\ algo\ on\ a\ coarser\ mesh\ to\ spare\ some\ computational\ time}}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z2\ =\ z;}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a8d285d64ffd577d077f189c913a2bb97}{hmap::fill\_talus\_fast}}(z2,\ \mbox{\hyperlink{structhmap_1_1Vec2}{hmap::Vec2<int>}}(64,\ 64),\ talus,\ seed);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ae6d4ef5a71d2896b68d39006e60fd30d}{hmap::fill\_talus\_fast}}(z2,\ \mbox{\hyperlink{structhmap_1_1Vec2}{hmap::Vec2<int>}}(64,\ 64),\ talus,\ seed);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ with\ seed\ mask}}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z3\ =\ z;}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ mask\ =\ \mbox{\hyperlink{namespacehmap_ac72cb684be1045c7f2a5c8941f905772}{hmap::select\_valley}}(z,\ 32);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a2e4283dd5da8add89788c5023c73042c}{hmap::saturate}}(mask,\ 0.01f,\ 1.f);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a507d3be9d2b879ce7c67f83fddfa43c8}{hmap::fill\_talus}}(z3,\ talus,\ seed,\ ir,\ noise\_ratio,\ \&mask);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_fill\_talus.png"{}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ z1,\ z2\},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ z1,\ z2,\ z3\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9}{hmap::Cmap::TERRAIN}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
 \DoxyCodeLine{\}}
 
 \end{DoxyCodeInclude}
@@ -9092,17 +9102,17 @@ This function applies a talus formation algorithm to an existing terrain array, 
 \begin{DoxySeeAlso}{See also}
 {\ttfamily \doxylink{}{thermal\+\_\+scree}}, {\ttfamily \doxylink{}{thermal\+\_\+scree\+\_\+fast}} 
 \end{DoxySeeAlso}
-\Hypertarget{namespacehmap_a5d9a86c9fca92693b5eb2c5e2ea79c78}\label{namespacehmap_a5d9a86c9fca92693b5eb2c5e2ea79c78} 
+\Hypertarget{namespacehmap_aabb53a942968efe0a364f9f78079b3af}\label{namespacehmap_aabb53a942968efe0a364f9f78079b3af} 
 \index{hmap@{hmap}!fill\_talus@{fill\_talus}}
 \index{fill\_talus@{fill\_talus}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{fill\_talus()}{fill\_talus()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily void hmap\+::fill\+\_\+talus (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{talus,  }\item[{\mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{seed,  }\item[{float}]{noise\+\_\+ratio = {\ttfamily 0.2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+seed\+\_\+mask = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void hmap\+::fill\+\_\+talus (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{talus,  }\item[{\mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{seed,  }\item[{int}]{ir = {\ttfamily 1},  }\item[{float}]{noise\+\_\+ratio = {\ttfamily 0.2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+seed\+\_\+mask = {\ttfamily nullptr} }\end{DoxyParamCaption})}
 
-\Hypertarget{namespacehmap_a8d285d64ffd577d077f189c913a2bb97}\label{namespacehmap_a8d285d64ffd577d077f189c913a2bb97} 
+\Hypertarget{namespacehmap_ae6d4ef5a71d2896b68d39006e60fd30d}\label{namespacehmap_ae6d4ef5a71d2896b68d39006e60fd30d} 
 \index{hmap@{hmap}!fill\_talus\_fast@{fill\_talus\_fast}}
 \index{fill\_talus\_fast@{fill\_talus\_fast}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{fill\_talus\_fast()}{fill\_talus\_fast()}}
-{\footnotesize\ttfamily void hmap\+::fill\+\_\+talus\+\_\+fast (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$}]{shape\+\_\+coarse,  }\item[{float}]{talus,  }\item[{\mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{seed,  }\item[{float}]{noise\+\_\+ratio = {\ttfamily 0.2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void hmap\+::fill\+\_\+talus\+\_\+fast (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$}]{shape\+\_\+coarse,  }\item[{float}]{talus,  }\item[{\mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{seed,  }\item[{int}]{ir = {\ttfamily 1},  }\item[{float}]{noise\+\_\+ratio = {\ttfamily 0.2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
 
 
 
@@ -9136,18 +9146,28 @@ This function performs a talus formation process on a terrain array similar to {
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_a40b948c49a05c14f2d540dc1a6952130}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ res,\ seed);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(z);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ talus\ =\ 1.f\ /\ shape.\mbox{\hyperlink{structhmap_1_1Vec2_a2dc51e83492f966eeddbdac3d58ab447}{x}};}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ talus\ =\ 2.f\ /\ shape.\mbox{\hyperlink{structhmap_1_1Vec2_a2dc51e83492f966eeddbdac3d58ab447}{x}};}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z1\ =\ z;}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_afcaa4f203173bd1f328adf854ad1a5d5}{hmap::fill\_talus}}(z1,\ talus,\ seed,\ 0.2f);}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ ir\ =\ 6;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ noise\_ratio\ =\ 0.01f;}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a507d3be9d2b879ce7c67f83fddfa43c8}{hmap::fill\_talus}}(z1,\ talus,\ seed,\ ir,\ noise\_ratio);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ same\ algo\ on\ a\ coarser\ mesh\ to\ spare\ some\ computational\ time}}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z2\ =\ z;}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a8d285d64ffd577d077f189c913a2bb97}{hmap::fill\_talus\_fast}}(z2,\ \mbox{\hyperlink{structhmap_1_1Vec2}{hmap::Vec2<int>}}(64,\ 64),\ talus,\ seed);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ae6d4ef5a71d2896b68d39006e60fd30d}{hmap::fill\_talus\_fast}}(z2,\ \mbox{\hyperlink{structhmap_1_1Vec2}{hmap::Vec2<int>}}(64,\ 64),\ talus,\ seed);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ with\ seed\ mask}}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z3\ =\ z;}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ mask\ =\ \mbox{\hyperlink{namespacehmap_ac72cb684be1045c7f2a5c8941f905772}{hmap::select\_valley}}(z,\ 32);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a2e4283dd5da8add89788c5023c73042c}{hmap::saturate}}(mask,\ 0.01f,\ 1.f);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a507d3be9d2b879ce7c67f83fddfa43c8}{hmap::fill\_talus}}(z3,\ talus,\ seed,\ ir,\ noise\_ratio,\ \&mask);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_fill\_talus.png"{}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ z1,\ z2\},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ z1,\ z2,\ z3\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9}{hmap::Cmap::TERRAIN}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
 \DoxyCodeLine{\}}
 
 \end{DoxyCodeInclude}
