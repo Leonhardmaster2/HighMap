@@ -1085,7 +1085,7 @@ void \mbox{\hyperlink{namespacehmap_ae42a874864d2d8f1a7b580f428395c01}{find\+\_\
 \begin{DoxyCompactList}\small\item\em Flood terrain starting from a single seed point. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_ab6d1b3c418405a0174462f6ea40a665f}{flooding\+\_\+from\+\_\+point}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, const std\+::vector$<$ int $>$ \&i, const std\+::vector$<$ int $>$ \&j, float depth\+\_\+min=std\+::numeric\+\_\+limits$<$ float $>$\+::max())
 \begin{DoxyCompactList}\small\item\em Flood terrain starting from multiple seed points. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a16955f284c77b2067bfa0beb85446d8c}{flooding\+\_\+lake\+\_\+system}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int iterations=500, float epsilon=1e-\/3\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float surface\+\_\+threshold=0)
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a3624c1660e60d16a87c90222606f7050}{flooding\+\_\+lake\+\_\+system}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, float surface\+\_\+threshold=0)
 \begin{DoxyCompactList}\small\item\em Estimate lake water depths on a terrain by filling depressions. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a27b43e17baebd07ebb43808ca0dceb42}{flow\+\_\+accumulation\+\_\+d8}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z)
 \begin{DoxyCompactList}\small\item\em Computes the flow accumulation for each cell using the D8 flow direction model. \end{DoxyCompactList}\item 
@@ -17316,11 +17316,11 @@ Water depth array.
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}  \Hypertarget{namespacehmap_a16955f284c77b2067bfa0beb85446d8c}\label{namespacehmap_a16955f284c77b2067bfa0beb85446d8c} 
+{\bfseries{Result}}  \Hypertarget{namespacehmap_a3624c1660e60d16a87c90222606f7050}\label{namespacehmap_a3624c1660e60d16a87c90222606f7050} 
 \index{hmap@{hmap}!flooding\_lake\_system@{flooding\_lake\_system}}
 \index{flooding\_lake\_system@{flooding\_lake\_system}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{flooding\_lake\_system()}{flooding\_lake\_system()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::flooding\+\_\+lake\+\_\+system (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{int}]{iterations = {\ttfamily 500},  }\item[{float}]{epsilon = {\ttfamily 1e-\/3\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{surface\+\_\+threshold = {\ttfamily 0} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::flooding\+\_\+lake\+\_\+system (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{float}]{surface\+\_\+threshold = {\ttfamily 0} }\end{DoxyParamCaption})}
 
 
 
@@ -17331,10 +17331,6 @@ This function identifies depressions in a terrain elevation model and simulates 
 
 \begin{DoxyParams}{Parameters}
 {\em z} & Input 2D array representing terrain elevations (height field). \\
-\hline
-{\em iterations} & Maximum number of iterations allowed for the depression-\/filling algorithm. \\
-\hline
-{\em epsilon} & Convergence tolerance for the depression-\/filling step. \\
 \hline
 {\em surface\+\_\+threshold} & The minimum number of pixels a component must have to be retained. Components smaller than this threshold will be removed. The default value is 0 (no filtering).\\
 \hline
@@ -17358,7 +17354,7 @@ A 2D array representing the water depth for each cell. Values are zero where no 
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_a40b948c49a05c14f2d540dc1a6952130}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ res,\ seed);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(z);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ water\_depth\ =\ \mbox{\hyperlink{namespacehmap_a16955f284c77b2067bfa0beb85446d8c}{hmap::flooding\_lake\_system}}(z,\ 500,\ 1e-\/4f);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ water\_depth\ =\ \mbox{\hyperlink{namespacehmap_a3624c1660e60d16a87c90222606f7050}{hmap::flooding\_lake\_system}}(z);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_flooding\_lake\_system.png"{}},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ z\ +\ water\_depth\},}
@@ -17848,7 +17844,7 @@ This function reduces the water depth values in-\/place by multiplying them by a
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_a40b948c49a05c14f2d540dc1a6952130}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ res,\ seed);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(z);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ water\_depth\ =\ \mbox{\hyperlink{namespacehmap_a16955f284c77b2067bfa0beb85446d8c}{hmap::flooding\_lake\_system}}(z,\ 500,\ 1e-\/4f);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ water\_depth\ =\ \mbox{\hyperlink{namespacehmap_a3624c1660e60d16a87c90222606f7050}{hmap::flooding\_lake\_system}}(z,\ 500,\ 1e-\/4f);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ dry\_out\_ratio\ =\ 0.5f;}
 \DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ \ w1\ =\ water\_depth;}
