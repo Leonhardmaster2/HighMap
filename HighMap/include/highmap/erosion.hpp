@@ -186,6 +186,8 @@ void coastal_erosion_profile(Array       &z,
  */
 void depression_filling(Array &z, int iterations = 1000, float epsilon = 1e-4f);
 
+void depression_filling_priority_flood(Array &z);
+
 /**
  * @brief
  *

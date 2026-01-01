@@ -1,19 +1,17 @@
 /* Copyright (c) 2025 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <map>
 #include <queue>
 
 #include "macrologger.h"
 
-#include "highmap/hydrology.hpp"
+#include "highmap/array.hpp"
 
 namespace hmap
 {
 
-Array basin_id_priority_flood(const Array &z)
+void depression_filling_priority_flood(Array &z)
 {
-  // local node type
   struct Node
   {
     int   i;
@@ -29,37 +27,32 @@ Array basin_id_priority_flood(const Array &z)
     }
   };
 
-  // algo
   const Vec2<int> shape = z.shape;
-  Array           basin_id(shape, -1);
+  const int       w = shape.x;
+  const int       h = shape.y;
+
+  Array basin_id(shape, -1);
 
   std::priority_queue<Node, std::vector<Node>, NodeCmp> pq;
 
   int basin_counter = 0;
 
   // --- initialize boundary
-
-  // outlet elevation storage
-  for (int j = 0; j < shape.y; ++j)
-    for (int i = 0; i < shape.x; ++i)
+  for (int j = 0; j < h; ++j)
+    for (int i = 0; i < w; ++i)
     {
-      bool boundary = (i == 0 || j == 0 || i == shape.x - 1 ||
-                       j == shape.y - 1);
-
-      if (boundary)
+      if (i == 0 || j == 0 || i == w - 1 || j == h - 1)
       {
         basin_id(i, j) = basin_counter++;
-        pq.push({i, j, z(i, j)});
+        pq.emplace(i, j, z(i, j));
       }
     }
 
-  // --- flood inward
+  // 8-connectivity
+  constexpr int di[8] = {1, 1, 0, -1, -1, -1, 0, 1};
+  constexpr int dj[8] = {0, -1, -1, -1, 0, 1, 1, 1};
 
-  const int di[8] = {1, 1, 0, -1, -1, -1, 0, 1};
-  const int dj[8] = {0, -1, -1, -1, 0, 1, 1, 1};
-
-  Array zm = z;
-
+  // --- priority flood
   while (!pq.empty())
   {
     Node c = pq.top();
@@ -72,17 +65,19 @@ Array basin_id_priority_flood(const Array &z)
       int i = c.i + di[k];
       int j = c.j + dj[k];
 
-      if (i < 0 || j < 0 || i >= shape.x || j >= shape.y) continue;
+      if (i < 0 || j < 0 || i >= w || j >= h) continue;
 
       if (basin_id(i, j) == -1)
       {
         basin_id(i, j) = bc;
-        pq.push({i, j, std::max(z(i, j), c.z)});
+
+        float new_z = std::max(z(i, j), c.z);
+        z(i, j) = new_z;
+
+        pq.emplace(i, j, new_z);
       }
     }
   }
-
-  return basin_id;
 }
 
 } // namespace hmap
