@@ -836,6 +836,22 @@ template <typename T> struct Mat
   }
 
   /**
+   * @brief Constructor to initialize a matrix with a given shape and value.
+   *
+   * Allocates memory for the matrix elements and initializes all elements with
+   * the provided value.
+   *
+   * @param shape A Vec2<int> representing the number of rows and columns
+   *              in the matrix.
+   * @param value Initial value assigned to all matrix elements.
+   */
+  Mat(Vec2<int> shape, T value) : shape(shape)
+  {
+    this->vector.resize(shape.x * shape.y);
+    std::fill(this->vector.begin(), this->vector.end(), value);
+  }
+
+  /**
    * @brief Access operator to get a reference to the element at (i, j).
    *
    * Provides non-const access to the matrix element at the specified row
