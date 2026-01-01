@@ -24,6 +24,8 @@ var classhmap_1_1Array =
     [ "operator-", "classhmap_1_1Array.html#a5f94f3bb00f0d5ac33a7e82d80366cc4", null ],
     [ "operator()", "classhmap_1_1Array.html#ad8a812fa8efe5590cf0f1c619909eafe", null ],
     [ "operator()", "classhmap_1_1Array.html#a4befd40052e9d7390eb7499e592769e5", null ],
+    [ "operator()", "classhmap_1_1Array.html#ae2a75c00dc1d8f16fa97ab1e4943581e", null ],
+    [ "operator()", "classhmap_1_1Array.html#a5299b00bc91a36d8aad629bcd1436d63", null ],
     [ "argmax", "classhmap_1_1Array.html#a9c70ac5b5ca393c53bcc423407572a2b", null ],
     [ "col_to_vector", "classhmap_1_1Array.html#a832a302b58fa7b346df04675a14ad59c", null ],
     [ "count_non_zero", "classhmap_1_1Array.html#a11949e2b41c869b364bc76129b4efeb4", null ],
