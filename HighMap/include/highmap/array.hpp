@@ -57,11 +57,8 @@ public:
    *
    */
   Array();
-
-  Array(Vec2<int> shape); ///< @overload
-
-  Array(Vec2<int> shape, float value); ///< @overload
-
+  Array(Vec2<int> shape);                                  ///< @overload
+  Array(Vec2<int> shape, float value);                     ///< @overload
   Array(const std::string &filename, bool flip_j = false); ///< @overload
 
   //----------------------------------------
@@ -84,7 +81,6 @@ public:
    * @return       Array& Reference to the current Array object.
    */
   Array &operator*=(const float value);
-
   Array &operator*=(const Array &array); ///< @overload
 
   /**
@@ -94,7 +90,6 @@ public:
    * @return       Array& Reference to the current Array object.
    */
   Array &operator/=(const float value);
-
   Array &operator/=(const Array &array); ///< @overload
 
   /**
@@ -115,7 +110,6 @@ public:
    * @return       Array& Reference to the current Array object.
    */
   Array &operator-=(const float value);
-
   Array &operator-=(const Array &array); ///< @overload
 
   /**
@@ -253,6 +247,30 @@ public:
   const float &operator()(int i, int j) const ///< @overload
   {
     return this->vector[j * this->shape.x + i];
+  }
+
+  /**
+   * @brief Overloads the function call operator to access the array value at
+   * the linear index 'index' (const version).
+   *
+   * @param  index Linear index.
+   * @return   const float& Reference to the array value.
+   */
+  const float &operator()(int index) const ///< @overload
+  {
+    return this->vector[index];
+  }
+
+  /**
+   * @brief Overloads the function call operator to access the array value at
+   * the linear index 'index'.
+   *
+   * @param  index Linear index.
+   * @return   float& Reference to the array value.
+   */
+  float &operator()(int index)
+  {
+    return this->vector[index];
   }
 
   //----------------------------------------
@@ -712,7 +730,6 @@ public:
    * @image html ex_array_interp.png
    */
   Array resample_to_shape_bicubic(Vec2<int> new_shape) const;
-
   Array resample_to_shape_bilinear(Vec2<int> new_shape) const;
 
   /**
@@ -761,7 +778,6 @@ public:
    * @param value The new value to set for the specified slice.
    */
   void set_slice(Vec4<int> idx, float value);
-
   void set_slice(Vec4<int> idx, const Array &array); ///< @overload
 
   /**
