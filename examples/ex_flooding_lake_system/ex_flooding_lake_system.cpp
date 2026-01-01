@@ -9,7 +9,7 @@ int main(void)
   hmap::Array z = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, res, seed);
   hmap::remap(z);
 
-  hmap::Array water_depth = hmap::flooding_lake_system(z, 500, 1e-4f);
+  hmap::Array water_depth = hmap::flooding_lake_system(z);
 
   hmap::export_banner_png("ex_flooding_lake_system.png",
                           {z, z + water_depth},

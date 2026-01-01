@@ -162,15 +162,12 @@ Array flooding_from_point(const Array            &z,
   return water_depth;
 }
 
-Array flooding_lake_system(const Array &z,
-                           int          iterations,
-                           float        epsilon,
-                           float        surface_threshold)
+Array flooding_lake_system(const Array &z, float surface_threshold)
 {
   Array water_depth = z;
 
   // use a rough depression filling algo to get the lake zones and depths
-  depression_filling(water_depth, iterations, epsilon);
+  depression_filling_priority_flood(water_depth);
 
   for (int j = 0; j < z.shape.y; j++)
     for (int i = 0; i < z.shape.x; i++)
