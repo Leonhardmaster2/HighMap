@@ -57,8 +57,6 @@ var hierarchy =
     [ "hmap::Heightmap", "classhmap_1_1Heightmap.html", null ],
     [ "hmap::HeightmapRGB", "structhmap_1_1HeightmapRGB.html", null ],
     [ "hmap::HeightmapRGBA", "structhmap_1_1HeightmapRGBA.html", null ],
-    [ "hmap::HelperNode", "structhmap_1_1HelperNode.html", null ],
-    [ "hmap::HelperNodeCmp", "structhmap_1_1HelperNodeCmp.html", null ],
     [ "hmap::Interpolator1D", "classhmap_1_1Interpolator1D.html", null ],
     [ "hmap::InterpolatorCurve", "classhmap_1_1InterpolatorCurve.html", null ],
     [ "hmap::Mat< T >", "structhmap_1_1Mat.html", null ],

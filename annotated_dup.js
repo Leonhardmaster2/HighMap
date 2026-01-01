@@ -26,8 +26,6 @@ var annotated_dup =
       [ "Heightmap", "classhmap_1_1Heightmap.html", "classhmap_1_1Heightmap" ],
       [ "HeightmapRGB", "structhmap_1_1HeightmapRGB.html", "structhmap_1_1HeightmapRGB" ],
       [ "HeightmapRGBA", "structhmap_1_1HeightmapRGBA.html", "structhmap_1_1HeightmapRGBA" ],
-      [ "HelperNode", "structhmap_1_1HelperNode.html", "structhmap_1_1HelperNode" ],
-      [ "HelperNodeCmp", "structhmap_1_1HelperNodeCmp.html", "structhmap_1_1HelperNodeCmp" ],
       [ "Interpolator1D", "classhmap_1_1Interpolator1D.html", "classhmap_1_1Interpolator1D" ],
       [ "InterpolatorCurve", "classhmap_1_1InterpolatorCurve.html", "classhmap_1_1InterpolatorCurve" ],
       [ "Mat", "structhmap_1_1Mat.html", "structhmap_1_1Mat" ],

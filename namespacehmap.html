@@ -184,10 +184,6 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhmap_1_1HeightmapRGBA.html">HeightmapRGBA</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">HeightMap class, to manipulate a set of RGBA heightmap for heightmap texturing.  <a href="structhmap_1_1HeightmapRGBA.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhmap_1_1HelperNode.html">HelperNode</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhmap_1_1HelperNodeCmp.html">HelperNodeCmp</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1Interpolator1D.html">Interpolator1D</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A class for performing 1D interpolation using the GSL library.  <a href="classhmap_1_1Interpolator1D.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -760,6 +756,8 @@ Functions</h2></td></tr>
 <tr class="memitem:aa64448e4b5640d90570e53249907c98a" id="r_aa64448e4b5640d90570e53249907c98a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#aa64448e4b5640d90570e53249907c98a">depression_filling</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, int iterations=1000, float epsilon=1e-4<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
 <tr class="memdesc:aa64448e4b5640d90570e53249907c98a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fill the depressions of the heightmap using the Planchon-Darboux algorithm.  <br /></td></tr>
 <tr class="separator:aa64448e4b5640d90570e53249907c98a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd726fbea3f38f8052289866302cbeec" id="r_acd726fbea3f38f8052289866302cbeec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#acd726fbea3f38f8052289866302cbeec">depression_filling_priority_flood</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z)</td></tr>
+<tr class="separator:acd726fbea3f38f8052289866302cbeec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af91e2b8638aab2c4357ce37812b8a99c" id="r_af91e2b8638aab2c4357ce37812b8a99c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#af91e2b8638aab2c4357ce37812b8a99c">erosion_maps</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z_before, <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z_after, <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;erosion_map, <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;deposition_map, float tolerance=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
 <tr class="separator:af91e2b8638aab2c4357ce37812b8a99c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac4f3c8b3d5f766b15c0ac64359fdc219" id="r_ac4f3c8b3d5f766b15c0ac64359fdc219"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#ac4f3c8b3d5f766b15c0ac64359fdc219">hydraulic_algebric</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_mask, float talus_ref, int ir, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_bedrock=nullptr, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_erosion_map=nullptr, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_deposition_map=nullptr, float c_erosion=0.05<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float c_deposition=0.05<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, int iterations=1)</td></tr>
@@ -7880,10 +7878,51 @@ additional_depth)</code>.</li>
   </table>
   </dd>
 </dl>
-<p><b>Example</b> </p><div class="fragment"></div><!-- fragment --><p><b>Result</b> </p><div class="image">
+<p><b>Example</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="highmap_8hpp.html">highmap.hpp</a>&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
+<div class="line">{</div>
+<div class="line">  <a class="code hl_struct" href="structhmap_1_1Vec2.html">hmap::Vec2&lt;int&gt;</a>   shape = {256, 256};</div>
+<div class="line">  <a class="code hl_struct" href="structhmap_1_1Vec2.html">hmap::Vec2&lt;float&gt;</a> res = {4.f, 4.f};</div>
+<div class="line">  <span class="keywordtype">int</span>               seed = 0;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z0 = <a class="code hl_function" href="namespacehmap.html#a40b948c49a05c14f2d540dc1a6952130">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, res, seed);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">auto</span> z1 = z0;</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#aa64448e4b5640d90570e53249907c98a">hmap::depression_filling</a>(z1);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">auto</span> z2 = z0;</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#acd726fbea3f38f8052289866302cbeec">hmap::depression_filling_priority_flood</a>(z2); <span class="comment">// much faster</span></div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_depression_filling.png&quot;</span>,</div>
+<div class="line">                          {z0, z1, z2},</div>
+<div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>,</div>
+<div class="line">                          <span class="keyword">true</span>);</div>
+<div class="line">}</div>
+<div class="ttc" id="anamespacehmap_html_aa64448e4b5640d90570e53249907c98a"><div class="ttname"><a href="namespacehmap.html#aa64448e4b5640d90570e53249907c98a">hmap::depression_filling</a></div><div class="ttdeci">void depression_filling(Array &amp;z, int iterations=1000, float epsilon=1e-4f)</div><div class="ttdoc">Fill the depressions of the heightmap using the Planchon-Darboux algorithm.</div><div class="ttdef"><b>Definition</b> depression_filling.cpp:14</div></div>
+<div class="ttc" id="anamespacehmap_html_acd726fbea3f38f8052289866302cbeec"><div class="ttname"><a href="namespacehmap.html#acd726fbea3f38f8052289866302cbeec">hmap::depression_filling_priority_flood</a></div><div class="ttdeci">void depression_filling_priority_flood(Array &amp;z)</div><div class="ttdef"><b>Definition</b> depression_filling_priority_flood.cpp:13</div></div>
+</div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_depression_filling.png" alt=""/>
 </div>
  
+</div>
+</div>
+<a id="acd726fbea3f38f8052289866302cbeec" name="acd726fbea3f38f8052289866302cbeec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd726fbea3f38f8052289866302cbeec">&#9670;&#160;</a></span>depression_filling_priority_flood()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hmap::depression_filling_priority_flood </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>z</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
 </div>
 </div>
 <a id="af91e2b8638aab2c4357ce37812b8a99c" name="af91e2b8638aab2c4357ce37812b8a99c"></a>
@@ -28278,7 +28317,7 @@ h}{\partial y}
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_basin_id.png&quot;</span>, {z, <span class="keywordtype">id</span>}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a08cf60d981ad9dcf57a822a6eed05174"><div class="ttname"><a href="namespacehmap.html#a08cf60d981ad9dcf57a822a6eed05174">hmap::basin_id_priority_flood</a></div><div class="ttdeci">Array basin_id_priority_flood(const Array &amp;z)</div><div class="ttdoc">Label drainage basins using a priority-flood algorithm.</div><div class="ttdef"><b>Definition</b> basin_id.cpp:25</div></div>
+<div class="ttc" id="anamespacehmap_html_a08cf60d981ad9dcf57a822a6eed05174"><div class="ttname"><a href="namespacehmap.html#a08cf60d981ad9dcf57a822a6eed05174">hmap::basin_id_priority_flood</a></div><div class="ttdeci">Array basin_id_priority_flood(const Array &amp;z)</div><div class="ttdoc">Label drainage basins using a priority-flood algorithm.</div><div class="ttdef"><b>Definition</b> basin_id.cpp:14</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_basin_id.png" alt=""/>
 </div>

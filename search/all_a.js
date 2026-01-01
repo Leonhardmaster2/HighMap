@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['i_0',['i',['../structhmap_1_1HelperNode.html#afa383c79b59a79ceaf5ffa538098fefa',1,'hmap::HelperNode::i'],['../structhmap_1_1Pos.html#a2ae9877f46f0fde4c22f1820b6d243ab',1,'hmap::Pos::i']]],
+  ['i_0',['i',['../structhmap_1_1Pos.html#a2ae9877f46f0fde4c22f1820b6d243ab',1,'hmap::Pos']]],
   ['image_20formats_20png_20tiff_20exr_1',['Image formats (png, tiff, exr...)',['../index.html#autotoc_md13',1,'']]],
   ['index_2emd_2',['index.md',['../index_8md.html',1,'']]],
   ['inferno_3',['INFERNO',['../namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143',1,'hmap']]],
