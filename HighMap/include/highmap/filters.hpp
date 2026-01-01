@@ -363,11 +363,13 @@ Array faceted(const Array &array,
 void fill_talus(Array       &z,
                 float        talus,
                 uint         seed,
+                int          ir = 1,
                 float        noise_ratio = 0.2f,
                 const Array *p_seed_mask = nullptr);
 void fill_talus(Array       &z,
                 const Array &talus,
                 uint         seed,
+                int          ir = 1,
                 float        noise_ratio = 0.2f,
                 const Array *p_seed_mask = nullptr);
 
@@ -412,6 +414,7 @@ void fill_talus_fast(Array    &z,
                      Vec2<int> shape_coarse,
                      float     talus,
                      uint      seed,
+                     int       ir = 1,
                      float     noise_ratio = 0.2f);
 
 /**
