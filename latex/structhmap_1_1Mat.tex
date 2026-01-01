@@ -24,6 +24,8 @@ Collaboration diagram for hmap\+::Mat\texorpdfstring{$<$}{<} T \texorpdfstring{$
 \item 
 \mbox{\hyperlink{structhmap_1_1Mat_a1a61160398cf1ce3e19b06605ac2c27f}{Mat}} (\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ \mbox{\hyperlink{structhmap_1_1Mat_a4a27962ffe15d147fa23386947c08cbf}{int}} $>$ \mbox{\hyperlink{structhmap_1_1Mat_a38df202b165735b1eb8cad32d90ac613}{shape}})
 \begin{DoxyCompactList}\small\item\em Constructor to initialize a matrix with a given shape. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structhmap_1_1Mat_aa425a1ad1a875f46639973d24216f346}{Mat}} (\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ \mbox{\hyperlink{structhmap_1_1Mat_a4a27962ffe15d147fa23386947c08cbf}{int}} $>$ \mbox{\hyperlink{structhmap_1_1Mat_a38df202b165735b1eb8cad32d90ac613}{shape}}, T \mbox{\hyperlink{structhmap_1_1Mat_a4a27962ffe15d147fa23386947c08cbf}{value}})
+\begin{DoxyCompactList}\small\item\em Constructor to initialize a matrix with a given shape and value. \end{DoxyCompactList}\item 
 T \& \mbox{\hyperlink{structhmap_1_1Mat_a429366c8daa4495b65f288f3527f2022}{operator()}} (\mbox{\hyperlink{structhmap_1_1Mat_a4a27962ffe15d147fa23386947c08cbf}{int}} i, \mbox{\hyperlink{structhmap_1_1Mat_a4a27962ffe15d147fa23386947c08cbf}{int}} j)
 \begin{DoxyCompactList}\small\item\em Access operator to get a reference to the element at (i, j). \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structhmap_1_1Mat_a4a27962ffe15d147fa23386947c08cbf}{const}} T \& \mbox{\hyperlink{structhmap_1_1Mat_a4f148a4aa0f08e0bd0c4959b8fcc9aa5}{operator()}} (\mbox{\hyperlink{structhmap_1_1Mat_a4a27962ffe15d147fa23386947c08cbf}{int}} i, \mbox{\hyperlink{structhmap_1_1Mat_a4a27962ffe15d147fa23386947c08cbf}{int}} j) \mbox{\hyperlink{structhmap_1_1Mat_a4a27962ffe15d147fa23386947c08cbf}{const}}
@@ -55,7 +57,7 @@ This class provides basic operations for 2D matrices, such as element access and
 \Hypertarget{structhmap_1_1Mat_a1a61160398cf1ce3e19b06605ac2c27f}\label{structhmap_1_1Mat_a1a61160398cf1ce3e19b06605ac2c27f} 
 \index{hmap::Mat$<$ T $>$@{hmap::Mat$<$ T $>$}!Mat@{Mat}}
 \index{Mat@{Mat}!hmap::Mat$<$ T $>$@{hmap::Mat$<$ T $>$}}
-\doxysubsubsection{\texorpdfstring{Mat()}{Mat()}}
+\doxysubsubsection{\texorpdfstring{Mat()}{Mat()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily template$<$\mbox{\hyperlink{structhmap_1_1Mat_a4a27962ffe15d147fa23386947c08cbf}{typename}} T $>$ \\
 \mbox{\hyperlink{structhmap_1_1Mat}{hmap\+::\+Mat}}$<$ T $>$\+::\+Mat (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ \mbox{\hyperlink{structhmap_1_1Mat_a4a27962ffe15d147fa23386947c08cbf}{int}} $>$}]{shape }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
@@ -68,6 +70,26 @@ Allocates memory for the matrix elements based on the specified shape. The matri
 
 \begin{DoxyParams}{Parameters}
 {\em shape} & A \doxylink{structhmap_1_1Vec2}{Vec2$<$int$>$} representing the number of rows and columns in the matrix. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{structhmap_1_1Mat_aa425a1ad1a875f46639973d24216f346}\label{structhmap_1_1Mat_aa425a1ad1a875f46639973d24216f346} 
+\index{hmap::Mat$<$ T $>$@{hmap::Mat$<$ T $>$}!Mat@{Mat}}
+\index{Mat@{Mat}!hmap::Mat$<$ T $>$@{hmap::Mat$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Mat()}{Mat()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{structhmap_1_1Mat_a4a27962ffe15d147fa23386947c08cbf}{typename}} T $>$ \\
+\mbox{\hyperlink{structhmap_1_1Mat}{hmap\+::\+Mat}}$<$ T $>$\+::\+Mat (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ \mbox{\hyperlink{structhmap_1_1Mat_a4a27962ffe15d147fa23386947c08cbf}{int}} $>$}]{shape,  }\item[{T}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor to initialize a matrix with a given shape and value. 
+
+Allocates memory for the matrix elements and initializes all elements with the provided value.
+
+
+\begin{DoxyParams}{Parameters}
+{\em shape} & A \doxylink{structhmap_1_1Vec2}{Vec2$<$int$>$} representing the number of rows and columns in the matrix. \\
+\hline
+{\em value} & Initial value assigned to all matrix elements. \\
 \hline
 \end{DoxyParams}
 

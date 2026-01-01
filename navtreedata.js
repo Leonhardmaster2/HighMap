@@ -100,7 +100,7 @@ var NAVTREEINDEX =
 "point_8hpp.html",
 "range_8cpp.html#acd070bc49683535711ab36b5ec65c434",
 "structhmap_1_1HeightmapRGB.html#a8cc2f556db5595f59b550a8c27db9773",
-"synthesis_8hpp.html#a92483ef87c6a5877abe30af6b270f2a0"
+"synthesis_8hpp.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

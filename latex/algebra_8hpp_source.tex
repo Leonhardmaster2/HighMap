@@ -354,24 +354,30 @@
 \DoxyCodeLine{00835\ \ \ \ \ this-\/>vector.resize(\mbox{\hyperlink{structhmap_1_1Mat_a38df202b165735b1eb8cad32d90ac613}{shape}}.\mbox{\hyperlink{structhmap_1_1Vec2_a2dc51e83492f966eeddbdac3d58ab447}{x}}\ *\ \mbox{\hyperlink{structhmap_1_1Mat_a38df202b165735b1eb8cad32d90ac613}{shape}}.\mbox{\hyperlink{structhmap_1_1Vec2_a087ff9ff4159d1e5778c0b65ee2a1648}{y}});}
 \DoxyCodeLine{00836\ \ \ \}}
 \DoxyCodeLine{00837\ }
-\DoxyCodeLine{00848\ \ \ T\ \&\mbox{\hyperlink{structhmap_1_1Mat_a429366c8daa4495b65f288f3527f2022}{operator()}}(\textcolor{keywordtype}{int}\ i,\ \textcolor{keywordtype}{int}\ j)}
+\DoxyCodeLine{00848\ \ \ \mbox{\hyperlink{structhmap_1_1Mat_aa425a1ad1a875f46639973d24216f346}{Mat}}(\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2<int>}}\ \mbox{\hyperlink{structhmap_1_1Mat_a38df202b165735b1eb8cad32d90ac613}{shape}},\ T\ \mbox{\hyperlink{structhmap_1_1Mat_a4a27962ffe15d147fa23386947c08cbf}{value}})\ :\ \mbox{\hyperlink{structhmap_1_1Mat_a38df202b165735b1eb8cad32d90ac613}{shape}}(\mbox{\hyperlink{structhmap_1_1Mat_a38df202b165735b1eb8cad32d90ac613}{shape}})}
 \DoxyCodeLine{00849\ \ \ \{}
-\DoxyCodeLine{00850\ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>vector[j\ *\ this-\/>shape.\mbox{\hyperlink{structhmap_1_1Vec2_a2dc51e83492f966eeddbdac3d58ab447}{x}}\ +\ i];}
-\DoxyCodeLine{00851\ \ \ \}}
-\DoxyCodeLine{00852\ }
-\DoxyCodeLine{00864\ \ \ \textcolor{keyword}{const}\ T\ \&\mbox{\hyperlink{structhmap_1_1Mat_a4f148a4aa0f08e0bd0c4959b8fcc9aa5}{operator()}}(\textcolor{keywordtype}{int}\ i,\ \textcolor{keywordtype}{int}\ j)\textcolor{keyword}{\ const}}
-\DoxyCodeLine{00865\ \textcolor{keyword}{\ \ }\{}
+\DoxyCodeLine{00850\ \ \ \ \ this-\/>vector.resize(\mbox{\hyperlink{structhmap_1_1Mat_a38df202b165735b1eb8cad32d90ac613}{shape}}.\mbox{\hyperlink{structhmap_1_1Vec2_a2dc51e83492f966eeddbdac3d58ab447}{x}}\ *\ \mbox{\hyperlink{structhmap_1_1Mat_a38df202b165735b1eb8cad32d90ac613}{shape}}.\mbox{\hyperlink{structhmap_1_1Vec2_a087ff9ff4159d1e5778c0b65ee2a1648}{y}});}
+\DoxyCodeLine{00851\ \ \ \ \ std::fill(this-\/>vector.begin(),\ \mbox{\hyperlink{structhmap_1_1Mat_a4a27962ffe15d147fa23386947c08cbf}{this}}-\/>vector.end(),\ \mbox{\hyperlink{structhmap_1_1Mat_a4a27962ffe15d147fa23386947c08cbf}{value}});}
+\DoxyCodeLine{00852\ \ \ \}}
+\DoxyCodeLine{00853\ }
+\DoxyCodeLine{00864\ \ \ T\ \&\mbox{\hyperlink{structhmap_1_1Mat_a429366c8daa4495b65f288f3527f2022}{operator()}}(\textcolor{keywordtype}{int}\ i,\ \textcolor{keywordtype}{int}\ j)}
+\DoxyCodeLine{00865\ \ \ \{}
 \DoxyCodeLine{00866\ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>vector[j\ *\ this-\/>shape.\mbox{\hyperlink{structhmap_1_1Vec2_a2dc51e83492f966eeddbdac3d58ab447}{x}}\ +\ i];}
 \DoxyCodeLine{00867\ \ \ \}}
-\DoxyCodeLine{00868\ \};}
-\DoxyCodeLine{00869\ }
-\DoxyCodeLine{00882\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>\ \mbox{\hyperlink{structhmap_1_1Vec3}{Vec3<T>}}\ \mbox{\hyperlink{namespacehmap_ad37e39413754484dfb342ffbfbe75c2b}{normalized\_vec3}}(T\ x,\ T\ y,\ T\ z)}
-\DoxyCodeLine{00883\ \{}
-\DoxyCodeLine{00884\ \ \ \mbox{\hyperlink{structhmap_1_1Vec3}{Vec3<T>}}\ v\ =\ \mbox{\hyperlink{structhmap_1_1Vec3}{Vec3<T>}}(x,\ y,\ z);}
-\DoxyCodeLine{00885\ \ \ v.\mbox{\hyperlink{structhmap_1_1Vec3_a7a06f9922471cdffba177cc01602a547}{normalize}}();}
-\DoxyCodeLine{00886\ \ \ \textcolor{keywordflow}{return}\ v;}
-\DoxyCodeLine{00887\ \}}
-\DoxyCodeLine{00888\ }
-\DoxyCodeLine{00889\ \}\ \textcolor{comment}{//\ namespace\ hmap}}
+\DoxyCodeLine{00868\ }
+\DoxyCodeLine{00880\ \ \ \textcolor{keyword}{const}\ T\ \&\mbox{\hyperlink{structhmap_1_1Mat_a4f148a4aa0f08e0bd0c4959b8fcc9aa5}{operator()}}(\textcolor{keywordtype}{int}\ i,\ \textcolor{keywordtype}{int}\ j)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00881\ \textcolor{keyword}{\ \ }\{}
+\DoxyCodeLine{00882\ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>vector[j\ *\ this-\/>shape.\mbox{\hyperlink{structhmap_1_1Vec2_a2dc51e83492f966eeddbdac3d58ab447}{x}}\ +\ i];}
+\DoxyCodeLine{00883\ \ \ \}}
+\DoxyCodeLine{00884\ \};}
+\DoxyCodeLine{00885\ }
+\DoxyCodeLine{00898\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>\ \mbox{\hyperlink{structhmap_1_1Vec3}{Vec3<T>}}\ \mbox{\hyperlink{namespacehmap_ad37e39413754484dfb342ffbfbe75c2b}{normalized\_vec3}}(T\ x,\ T\ y,\ T\ z)}
+\DoxyCodeLine{00899\ \{}
+\DoxyCodeLine{00900\ \ \ \mbox{\hyperlink{structhmap_1_1Vec3}{Vec3<T>}}\ v\ =\ \mbox{\hyperlink{structhmap_1_1Vec3}{Vec3<T>}}(x,\ y,\ z);}
+\DoxyCodeLine{00901\ \ \ v.\mbox{\hyperlink{structhmap_1_1Vec3_a7a06f9922471cdffba177cc01602a547}{normalize}}();}
+\DoxyCodeLine{00902\ \ \ \textcolor{keywordflow}{return}\ v;}
+\DoxyCodeLine{00903\ \}}
+\DoxyCodeLine{00904\ }
+\DoxyCodeLine{00905\ \}\ \textcolor{comment}{//\ namespace\ hmap}}
 
 \end{DoxyCode}
