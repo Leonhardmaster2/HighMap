@@ -21,6 +21,7 @@
  * @copyright Copyright (c) 2023 Otto Link
  */
 #pragma once
+#include <functional>
 #include <limits>
 
 #include "highmap/array.hpp"
@@ -28,6 +29,18 @@
 
 namespace hmap
 {
+
+struct DrainageBasins
+{
+  std::vector<std::vector<Vec2<int>>> upstream_traversal;
+
+  void generate_traversal_priority_flood(const Array &z);
+
+  void traverse_downstream(std::function<void(int, int, int, int, int)> op);
+  void traverse_downstream(std::function<void(int, int, int)> op);
+  void traverse_upstream(std::function<void(int, int, int, int, int)> op);
+  void traverse_upstream(std::function<void(int, int, int)> op);
+};
 
 /**
  * @brief Label drainage basins using a priority-flood algorithm.

@@ -13,76 +13,16 @@ namespace hmap
 
 Array basin_id_priority_flood(const Array &z)
 {
-  // local node type
-  struct Node
-  {
-    int   i;
-    int   j;
-    float z;
-  };
+  Array ids(z.shape);
 
-  struct NodeCmp
-  {
-    bool operator()(const Node &a, const Node &b) const
-    {
-      return a.z > b.z; // min-heap
-    }
-  };
+  auto basins = DrainageBasins();
+  basins.generate_traversal_priority_flood(z);
 
-  // algo
-  const Vec2<int> shape = z.shape;
-  Array           basin_id(shape, -1);
+  auto lambda = [&ids](int i, int j, int basin_id) { ids(i, j) = basin_id; };
 
-  std::priority_queue<Node, std::vector<Node>, NodeCmp> pq;
+  basins.traverse_upstream(lambda);
 
-  int basin_counter = 0;
-
-  // --- initialize boundary
-
-  // outlet elevation storage
-  for (int j = 0; j < shape.y; ++j)
-    for (int i = 0; i < shape.x; ++i)
-    {
-      bool boundary = (i == 0 || j == 0 || i == shape.x - 1 ||
-                       j == shape.y - 1);
-
-      if (boundary)
-      {
-        basin_id(i, j) = basin_counter++;
-        pq.push({i, j, z(i, j)});
-      }
-    }
-
-  // --- flood inward
-
-  const int di[8] = {1, 1, 0, -1, -1, -1, 0, 1};
-  const int dj[8] = {0, -1, -1, -1, 0, 1, 1, 1};
-
-  Array zm = z;
-
-  while (!pq.empty())
-  {
-    Node c = pq.top();
-    pq.pop();
-
-    int bc = basin_id(c.i, c.j);
-
-    for (int k = 0; k < 8; ++k)
-    {
-      int i = c.i + di[k];
-      int j = c.j + dj[k];
-
-      if (i < 0 || j < 0 || i >= shape.x || j >= shape.y) continue;
-
-      if (basin_id(i, j) == -1)
-      {
-        basin_id(i, j) = bc;
-        pq.push({i, j, std::max(z(i, j), c.z)});
-      }
-    }
-  }
-
-  return basin_id;
+  return ids;
 }
 
 } // namespace hmap

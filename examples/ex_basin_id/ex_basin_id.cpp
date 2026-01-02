@@ -2,8 +2,7 @@
 
 int main(void)
 {
-  hmap::Vec2<int> shape = {256, 256};
-  shape = {1024, 1024};
+  hmap::Vec2<int>   shape = {256, 256};
   hmap::Vec2<float> res = {4.f, 4.f};
   int               seed = 0;
 
