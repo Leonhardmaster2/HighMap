@@ -1,5 +1,6 @@
 var NAVTREEINDEX15 =
 {
+"phasor_8cpp.html#aa4b5afd141f31d3ac539a8e7cb5ea6d4":[5,0,1,1,26,9,0],
 "phasor__profile__function_8cpp.html":[5,0,1,1,21,2],
 "phasor__profile__function_8cpp.html#a3e2e333ca90c11a997a9ac04361b1741":[5,0,1,1,21,2,0],
 "plates_8cpp.html":[5,0,1,1,26,1,8],
@@ -248,6 +249,5 @@ var NAVTREEINDEX15 =
 "range_8cpp.html#a6f9cfb0636b57a00160dbcadfd8b8076":[5,0,1,1,27,0,22],
 "range_8cpp.html#a936453b67a394c5da8b48473540c9459":[5,0,1,1,27,0,6],
 "range_8cpp.html#a94d994f910d44a006acfae7ff453a53d":[5,0,1,1,27,0,26],
-"range_8cpp.html#a9e903d1c88db888832bea8cbafb19246":[5,0,1,1,27,0,19],
-"range_8cpp.html#aa52f3e1fcb1cad464a512c09a0c8eb54":[5,0,1,1,27,0,15]
+"range_8cpp.html#a9e903d1c88db888832bea8cbafb19246":[5,0,1,1,27,0,19]
 };

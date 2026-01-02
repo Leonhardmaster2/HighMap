@@ -16,6 +16,7 @@ var searchData=
   ['upscale_5famplification_13',['upscale_amplification',['../namespacehmap.html#a868ae7c781d7e72af7b1416898a2f891',1,'hmap']]],
   ['upscale_5famplification_2ecpp_14',['upscale_amplification.cpp',['../upscale__amplification_8cpp.html',1,'']]],
   ['upscaling_2ehpp_15',['upscaling.hpp',['../upscaling_8hpp.html',1,'']]],
-  ['usage_16',['Example usage',['../index.html#autotoc_md7',1,'']]],
-  ['usage_20example_3a_17',['Usage Example:',['../classhmap_1_1Timer.html#autotoc_md0',1,'']]]
+  ['upstream_5ftraversal_16',['upstream_traversal',['../structhmap_1_1DrainageBasins.html#aa53e3dff71d7c9f9c42888b628183a26',1,'hmap::DrainageBasins']]],
+  ['usage_17',['Example usage',['../index.html#autotoc_md7',1,'']]],
+  ['usage_20example_3a_18',['Usage Example:',['../classhmap_1_1Timer.html#autotoc_md0',1,'']]]
 ];

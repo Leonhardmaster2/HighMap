@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structhmap_1_1DrainageBasins" kind="struct" language="C++" prot="public">
+    <compoundname>hmap::DrainageBasins</compoundname>
+    <includes refid="hydrology_8hpp" local="no">hydrology.hpp</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhmap_1_1DrainageBasins_1aa53e3dff71d7c9f9c42888b628183a26" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; std::vector&lt; <ref refid="structhmap_1_1Vec2" kindref="compound">Vec2</ref>&lt; int &gt; &gt; &gt;</type>
+        <definition>std::vector&lt;std::vector&lt;Vec2&lt;int&gt; &gt; &gt; hmap::DrainageBasins::upstream_traversal</definition>
+        <argsstring></argsstring>
+        <name>upstream_traversal</name>
+        <qualifiedname>hmap::DrainageBasins::upstream_traversal</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/hydrology.hpp" line="35" column="15" bodyfile="HighMap/include/highmap/hydrology.hpp" bodystart="35" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhmap_1_1DrainageBasins_1a1d0e45e21181f831ad78e645d650a835" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hmap::DrainageBasins::generate_traversal_priority_flood</definition>
+        <argsstring>(const Array &amp;z)</argsstring>
+        <name>generate_traversal_priority_flood</name>
+        <qualifiedname>hmap::DrainageBasins::generate_traversal_priority_flood</qualifiedname>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/hydrology.hpp" line="37" column="8" bodyfile="HighMap/src/hydrology/drainage_basins.cpp" bodystart="13" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="function" id="structhmap_1_1DrainageBasins_1ab8aa80c75123d2dab5353ff603e1b862" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hmap::DrainageBasins::traverse_downstream</definition>
+        <argsstring>(std::function&lt; void(int, int, int, int, int)&gt; op)</argsstring>
+        <name>traverse_downstream</name>
+        <qualifiedname>hmap::DrainageBasins::traverse_downstream</qualifiedname>
+        <param>
+          <type>std::function&lt; void(int, int, int, int, int)&gt;</type>
+          <declname>op</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/hydrology.hpp" line="39" column="8"/>
+      </memberdef>
+      <memberdef kind="function" id="structhmap_1_1DrainageBasins_1afe4c1a0f9ebbba05a6f19c6c1b065976" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hmap::DrainageBasins::traverse_downstream</definition>
+        <argsstring>(std::function&lt; void(int, int, int)&gt; op)</argsstring>
+        <name>traverse_downstream</name>
+        <qualifiedname>hmap::DrainageBasins::traverse_downstream</qualifiedname>
+        <param>
+          <type>std::function&lt; void(int, int, int)&gt;</type>
+          <declname>op</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/hydrology.hpp" line="40" column="8"/>
+      </memberdef>
+      <memberdef kind="function" id="structhmap_1_1DrainageBasins_1a8f16f5fb5a6e340a9ca10dc2046ba11d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hmap::DrainageBasins::traverse_upstream</definition>
+        <argsstring>(std::function&lt; void(int, int, int, int, int)&gt; op)</argsstring>
+        <name>traverse_upstream</name>
+        <qualifiedname>hmap::DrainageBasins::traverse_upstream</qualifiedname>
+        <param>
+          <type>std::function&lt; void(int, int, int, int, int)&gt;</type>
+          <declname>op</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/hydrology.hpp" line="41" column="8"/>
+      </memberdef>
+      <memberdef kind="function" id="structhmap_1_1DrainageBasins_1afa727d5dc6f6ebede65fe8983ca1490a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hmap::DrainageBasins::traverse_upstream</definition>
+        <argsstring>(std::function&lt; void(int, int, int)&gt; op)</argsstring>
+        <name>traverse_upstream</name>
+        <qualifiedname>hmap::DrainageBasins::traverse_upstream</qualifiedname>
+        <param>
+          <type>std::function&lt; void(int, int, int)&gt;</type>
+          <declname>op</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/hydrology.hpp" line="42" column="8"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>hmap::DrainageBasins</label>
+        <link refid="structhmap_1_1DrainageBasins"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>upstream_traversal</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::vector&lt; std::vector&lt; hmap::Vec2&lt; int &gt; &gt; &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="HighMap/include/highmap/hydrology.hpp" line="33" column="1" bodyfile="HighMap/include/highmap/hydrology.hpp" bodystart="34" bodyend="43"/>
+    <listofallmembers>
+      <member refid="structhmap_1_1DrainageBasins_1a1d0e45e21181f831ad78e645d650a835" prot="public" virt="non-virtual"><scope>hmap::DrainageBasins</scope><name>generate_traversal_priority_flood</name></member>
+      <member refid="structhmap_1_1DrainageBasins_1ab8aa80c75123d2dab5353ff603e1b862" prot="public" virt="non-virtual"><scope>hmap::DrainageBasins</scope><name>traverse_downstream</name></member>
+      <member refid="structhmap_1_1DrainageBasins_1afe4c1a0f9ebbba05a6f19c6c1b065976" prot="public" virt="non-virtual"><scope>hmap::DrainageBasins</scope><name>traverse_downstream</name></member>
+      <member refid="structhmap_1_1DrainageBasins_1a8f16f5fb5a6e340a9ca10dc2046ba11d" prot="public" virt="non-virtual"><scope>hmap::DrainageBasins</scope><name>traverse_upstream</name></member>
+      <member refid="structhmap_1_1DrainageBasins_1afa727d5dc6f6ebede65fe8983ca1490a" prot="public" virt="non-virtual"><scope>hmap::DrainageBasins</scope><name>traverse_upstream</name></member>
+      <member refid="structhmap_1_1DrainageBasins_1aa53e3dff71d7c9f9c42888b628183a26" prot="public" virt="non-virtual"><scope>hmap::DrainageBasins</scope><name>upstream_traversal</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

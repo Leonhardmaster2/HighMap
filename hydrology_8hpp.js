@@ -1,5 +1,6 @@
 var hydrology_8hpp =
 [
+    [ "hmap::DrainageBasins", "structhmap_1_1DrainageBasins.html", "structhmap_1_1DrainageBasins" ],
     [ "basin_id_priority_flood", "hydrology_8hpp.html#a08cf60d981ad9dcf57a822a6eed05174", null ],
     [ "d8_compute_ndip", "hydrology_8hpp.html#a2e0533063a77bfc047472d1d85f3f63c", null ],
     [ "find_flow_sinks", "hydrology_8hpp.html#ae42a874864d2d8f1a7b580f428395c01", null ],

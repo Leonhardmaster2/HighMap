@@ -169,7 +169,7 @@ var searchData=
   ['stitching_5fhelpers_2ecpp_166',['stitching_helpers.cpp',['../stitching__helpers_8cpp.html',1,'']]],
   ['stl_167',['STL',['../namespacehmap.html#ac3d35efc6e5b596f508e2b17a5aa871ba255d4f7c6ccaff8e1dbba731b721c118',1,'hmap']]],
   ['stlb_168',['STLB',['../namespacehmap.html#ac3d35efc6e5b596f508e2b17a5aa871bac692212c784096efd35f54c700a039f6',1,'hmap']]],
-  ['stop_169',['stop',['../classhmap_1_1Timer.html#a6054c197a10338a1bd48299be29593b5',1,'hmap::Timer::Stop()'],['../structhmap_1_1Recorder.html#aba9c05c56a1c5a769f12467684735add',1,'hmap::Recorder::stop()']]],
+  ['stop_169',['stop',['../structhmap_1_1Recorder.html#aba9c05c56a1c5a769f12467684735add',1,'hmap::Recorder::stop()'],['../classhmap_1_1Timer.html#a6054c197a10338a1bd48299be29593b5',1,'hmap::Timer::Stop()']]],
   ['stp_170',['STP',['../namespacehmap.html#ac3d35efc6e5b596f508e2b17a5aa871ba95e433ab6ec047421d332a80d727fd29',1,'hmap']]],
   ['strata_171',['strata',['../namespacehmap_1_1gpu.html#a2a5a7e94f196f51865362f287524403d',1,'hmap::gpu']]],
   ['strata_5fgpu_2ecpp_172',['strata_gpu.cpp',['../strata__gpu_8cpp.html',1,'']]],

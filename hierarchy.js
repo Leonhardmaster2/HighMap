@@ -13,6 +13,7 @@ var hierarchy =
       [ "hmap::XyControlFunction", "classhmap_1_1XyControlFunction.html", null ]
     ] ],
     [ "hmap::CoordFrame", "classhmap_1_1CoordFrame.html", null ],
+    [ "hmap::DrainageBasins", "structhmap_1_1DrainageBasins.html", null ],
     [ "hmap::Edge", "classhmap_1_1Edge.html", null ],
     [ "hmap::Function", "classhmap_1_1Function.html", [
       [ "hmap::ArrayFunction", "classhmap_1_1ArrayFunction.html", null ],

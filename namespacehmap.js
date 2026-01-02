@@ -178,6 +178,7 @@ var namespacehmap =
     [ "CoordFrame", "classhmap_1_1CoordFrame.html", "classhmap_1_1CoordFrame" ],
     [ "CraterFunction", "classhmap_1_1CraterFunction.html", "classhmap_1_1CraterFunction" ],
     [ "DiskFunction", "classhmap_1_1DiskFunction.html", "classhmap_1_1DiskFunction" ],
+    [ "DrainageBasins", "structhmap_1_1DrainageBasins.html", "structhmap_1_1DrainageBasins" ],
     [ "Edge", "classhmap_1_1Edge.html", "classhmap_1_1Edge" ],
     [ "FbmFunction", "classhmap_1_1FbmFunction.html", "classhmap_1_1FbmFunction" ],
     [ "FbmIqFunction", "classhmap_1_1FbmIqFunction.html", "classhmap_1_1FbmIqFunction" ],

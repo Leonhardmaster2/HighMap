@@ -88,19 +88,19 @@ var NAVTREEINDEX =
 "classhmap_1_1Heightmap.html#adfc18a86337d8283576ae1fa601433c9",
 "classhmap_1_1Simplex2Function.html#a552c323e89c24eb19cb129b2babfd1ce",
 "colorize_8hpp.html#aa76bdaf8b572bcea0778ef8815965307",
-"erosion_8hpp.html#a9d594d0e16132aeef59e1680789b886e",
-"filters_8hpp.html#a2e4283dd5da8add89788c5023c73042c",
-"functions_func_s.html",
-"hydrology_8hpp.html#ab6d1b3c418405a0174462f6ea40a665f",
-"math_8hpp.html#a670f50d6c08ecd639d42db9c75a5273aa439184a2066b21b9ba0883b29efabfec",
-"namespacehmap.html#a2badbebec49b12d0d721970a18eb420d",
-"namespacehmap.html#a7ba4bc3a43f42b6a4bf00e94e86064ff",
-"namespacehmap.html#abfd3f58454c7064010dc2dd58d1a03aa",
-"namespacehmap_1_1gpu.html#a322260e971f4dec19ec8bc270e7cc461",
-"phasor__profile__function_8cpp.html",
-"range_8cpp.html#ab0307c51c15ac3d4162974c970bc9ea9",
-"structhmap_1_1HeightmapRGB.html#a825f6a2b290260e15db5e32991568808",
-"structhmap_1_1Vec4.html#aec07dc20c1becffea00a00270a92253f"
+"erosion_8hpp.html#a9b3fc59af5c418c494eec160399839bb",
+"filters_8hpp.html#a2e2bccfafc05679f1762ba039df58dbf",
+"functions_func_r.html",
+"hydrology_8hpp.html#ab4f1542d2d5dd7edc54d240dab777755",
+"math_8hpp.html#a670f50d6c08ecd639d42db9c75a5273aa2a9fc119d00df5ec5de1c13a006921f2",
+"namespacehmap.html#a2ba465615ff1d745cfcf7a27b7dcb37e",
+"namespacehmap.html#a7b8945745feaeaa365d965ce66b32f58",
+"namespacehmap.html#abf9521082ba09eb022834306bc6c354b",
+"namespacehmap_1_1gpu.html#a30410bfd596eaa78f33396b1f963e743",
+"phasor_8cpp.html#aa4b5afd141f31d3ac539a8e7cb5ea6d4",
+"range_8cpp.html#aa52f3e1fcb1cad464a512c09a0c8eb54",
+"structhmap_1_1DrainageBasins.html#ab8aa80c75123d2dab5353ff603e1b862",
+"structhmap_1_1Vec4.html#a67123a8dd8a1a92f99557e099a86af8a"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
