@@ -605,6 +605,8 @@ void \mbox{\hyperlink{namespacehmap_afe2e4c1e06205f5051ce6e86ea647a77}{thermal\+
 \begin{DoxyCompactList}\small\item\em This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a01f065379d2975b5ddf4bda2e6ede8cf}{watershed\+\_\+ridge}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, float amplitude=0.\+8\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, bool smooth\+\_\+ridge\+\_\+crest=true, float edt\+\_\+exponent=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Carves watershed ridges using basin-\/wise distance transforms. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_ab14e16da16f8b73f1b5940dc3c1060dd}{watershed\+\_\+ridge}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+mask, float amplitude=0.\+8\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, bool smooth\+\_\+ridge\+\_\+crest=true, float edt\+\_\+exponent=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
+\item 
 bool \mbox{\hyperlink{namespacehmap_a7b8945745feaeaa365d965ce66b32f58}{export\+\_\+asset}} (const std\+::string \&fname, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, \mbox{\hyperlink{namespacehmap_ac81a92060b89699c4eb9826495d87250}{Mesh\+Type}} mesh\+\_\+type=\mbox{\hyperlink{namespacehmap_ac81a92060b89699c4eb9826495d87250a68dced9d7f19cbd741feae05ad17ca14}{Mesh\+Type\+::\+TRI}}, \mbox{\hyperlink{namespacehmap_ac3d35efc6e5b596f508e2b17a5aa871b}{Asset\+Export\+Format}} export\+\_\+format=\mbox{\hyperlink{namespacehmap_ac3d35efc6e5b596f508e2b17a5aa871ba0766d2c2cb91f6e1e9a1b4dfcbffd562}{Asset\+Export\+Format\+::\+GLB2}}, float elevation\+\_\+scaling=0.\+2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, const std\+::string \&texture\+\_\+fname="{}"{}, const std\+::string \&normal\+\_\+map\+\_\+fname="{}"{}, float max\+\_\+error=5e-\/4\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Exports a heightmap to various 3D file formats. \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{namespacehmap_aafe1d43996eb4e55731c67b096cebcf6}{export\+\_\+as\+\_\+ascii}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, const \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$ \&export\+\_\+shape=\{64, 64\}, const std\+::string chars\+\_\+map="{} .\+:-\/=+\texorpdfstring{$\ast$}{*}\#\%@"{})
@@ -7493,7 +7495,7 @@ This is an overloaded member function, provided for convenience. It differs from
 \Hypertarget{namespacehmap_a01f065379d2975b5ddf4bda2e6ede8cf}\label{namespacehmap_a01f065379d2975b5ddf4bda2e6ede8cf} 
 \index{hmap@{hmap}!watershed\_ridge@{watershed\_ridge}}
 \index{watershed\_ridge@{watershed\_ridge}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{watershed\_ridge()}{watershed\_ridge()}}
+\doxysubsubsection{\texorpdfstring{watershed\_ridge()}{watershed\_ridge()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::watershed\+\_\+ridge (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{float}]{amplitude = {\ttfamily 0.8\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{bool}]{smooth\+\_\+ridge\+\_\+crest = {\ttfamily true},  }\item[{float}]{edt\+\_\+exponent = {\ttfamily 0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
 
 
@@ -7540,7 +7542,13 @@ Elevation field with watershed ridges emphasized.
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}  \Hypertarget{namespacehmap_a7b8945745feaeaa365d965ce66b32f58}\label{namespacehmap_a7b8945745feaeaa365d965ce66b32f58} 
+{\bfseries{Result}}  \Hypertarget{namespacehmap_ab14e16da16f8b73f1b5940dc3c1060dd}\label{namespacehmap_ab14e16da16f8b73f1b5940dc3c1060dd} 
+\index{hmap@{hmap}!watershed\_ridge@{watershed\_ridge}}
+\index{watershed\_ridge@{watershed\_ridge}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{watershed\_ridge()}{watershed\_ridge()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::watershed\+\_\+ridge (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+mask,  }\item[{float}]{amplitude = {\ttfamily 0.8\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{bool}]{smooth\+\_\+ridge\+\_\+crest = {\ttfamily true},  }\item[{float}]{edt\+\_\+exponent = {\ttfamily 0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacehmap_a7b8945745feaeaa365d965ce66b32f58}\label{namespacehmap_a7b8945745feaeaa365d965ce66b32f58} 
 \index{hmap@{hmap}!export\_asset@{export\_asset}}
 \index{export\_asset@{export\_asset}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{export\_asset()}{export\_asset()}}

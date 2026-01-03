@@ -1,5 +1,7 @@
 var NAVTREEINDEX16 =
 {
+"primitives__gpu_8cpp.html#ad8a656cc770c7febd63ba5248206ca84":[5,0,1,1,26,11,24],
+"primitives__gpu_8cpp.html#adb0abb891026d60a261ae7b1e875aa1a":[5,0,1,1,26,11,5],
 "primitives__gpu_8cpp.html#ae425e289a74c2fbce447004896ee7e77":[5,0,1,1,26,11,2],
 "pyramid_8hpp.html":[5,0,1,0,0,3,1],
 "pyramid_8hpp.html#ae84abe9052dcb9c88f3c50716addfe44":[5,0,1,0,0,3,1,1],
@@ -247,7 +249,5 @@ var NAVTREEINDEX16 =
 "strata__gpu_8cpp.html#a2a5a7e94f196f51865362f287524403d":[5,0,1,1,10,20,0],
 "stratify_8cpp.html":[5,0,1,1,10,21],
 "stratify_8cpp.html#a06a4f7bbf99b83632ceb8a9ba5989823":[5,0,1,1,10,21,6],
-"stratify_8cpp.html#a1d3b4f4dbe769a1f71f8fcc44cfcaf8c":[5,0,1,1,10,21,5],
-"stratify_8cpp.html#a815d3c721091a5525f872527a994ec1f":[5,0,1,1,10,21,2],
-"stratify_8cpp.html#a9b3fc59af5c418c494eec160399839bb":[5,0,1,1,10,21,4]
+"stratify_8cpp.html#a1d3b4f4dbe769a1f71f8fcc44cfcaf8c":[5,0,1,1,10,21,5]
 };

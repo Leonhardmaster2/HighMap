@@ -7,7 +7,7 @@ var searchData=
   ['water_5fdepth_5ffrom_5fmask_4',['water_depth_from_mask',['../namespacehmap.html#a121c42071766df393b6e049315876d5e',1,'hmap']]],
   ['water_5fdepth_5fincrease_5',['water_depth_increase',['../namespacehmap.html#a136f042ce2ad8c14033f4d839f56265d',1,'hmap']]],
   ['water_5fmask_6',['water_mask',['../namespacehmap.html#abc5928f49e530927c8fb61a9afea3274',1,'hmap::water_mask(const Array &amp;water_depth, const Array &amp;z, float additional_depth)'],['../namespacehmap.html#ad39c72e2b4c07d3013f7b0143c31137c',1,'hmap::water_mask(const Array &amp;water_depth)']]],
-  ['watershed_5fridge_7',['watershed_ridge',['../namespacehmap.html#a01f065379d2975b5ddf4bda2e6ede8cf',1,'hmap']]],
+  ['watershed_5fridge_7',['watershed_ridge',['../namespacehmap.html#ab14e16da16f8b73f1b5940dc3c1060dd',1,'hmap::watershed_ridge(const Array &amp;z, Array *p_mask, float amplitude=0.8f, bool smooth_ridge_crest=true, float edt_exponent=0.5f)'],['../namespacehmap.html#a01f065379d2975b5ddf4bda2e6ede8cf',1,'hmap::watershed_ridge(const Array &amp;z, float amplitude=0.8f, bool smooth_ridge_crest=true, float edt_exponent=0.5f)']]],
   ['wave_5fdune_8',['wave_dune',['../namespacehmap.html#a16a701ab5a740bd3dbfe7020fb388023',1,'hmap']]],
   ['wave_5fsine_9',['wave_sine',['../namespacehmap.html#a0fac1251f8728228be8de58ac16846d2',1,'hmap']]],
   ['wave_5fsquare_10',['wave_square',['../namespacehmap.html#accadc8f0d0e250eba86824a456aa98c8',1,'hmap']]],

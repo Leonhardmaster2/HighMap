@@ -544,6 +544,7 @@ var namespacehmap =
     [ "thermal_schott", "namespacehmap.html#aa328e3342e845d021f300dcb6cb42fbc", null ],
     [ "thermal_schott", "namespacehmap.html#afe2e4c1e06205f5051ce6e86ea647a77", null ],
     [ "watershed_ridge", "namespacehmap.html#a01f065379d2975b5ddf4bda2e6ede8cf", null ],
+    [ "watershed_ridge", "namespacehmap.html#ab14e16da16f8b73f1b5940dc3c1060dd", null ],
     [ "export_asset", "namespacehmap.html#a7b8945745feaeaa365d965ce66b32f58", null ],
     [ "export_as_ascii", "namespacehmap.html#aafe1d43996eb4e55731c67b096cebcf6", null ],
     [ "export_as_cubemap", "namespacehmap.html#a3aa96cd684efd827ce57ffd9fef3c950", null ],
