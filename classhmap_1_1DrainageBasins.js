@@ -1,5 +1,6 @@
 var classhmap_1_1DrainageBasins =
 [
+    [ "get_basins_number", "classhmap_1_1DrainageBasins.html#ae292b57e8f33791dc912ccce8913f963", null ],
     [ "generate_traversal", "classhmap_1_1DrainageBasins.html#a8ce71a8094bfbedf4054e64332780d9b", null ],
     [ "generate_traversal_d8", "classhmap_1_1DrainageBasins.html#ad843ac59f5bb3f5c1176d48b14accb36", null ],
     [ "generate_traversal_priority_flood", "classhmap_1_1DrainageBasins.html#a1d0e45e21181f831ad78e645d650a835", null ],

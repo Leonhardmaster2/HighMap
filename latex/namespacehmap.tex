@@ -16966,7 +16966,9 @@ Connectivity is 8-\/neighbor. Spill elevations between basins are detected but n
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_a40b948c49a05c14f2d540dc1a6952130}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ res,\ seed,\ 8);}
 \DoxyCodeLine{\ \ z\ =\ \mbox{\hyperlink{namespacehmap_a7c780f6b35e43e45457af59ce1c761ce}{hmap::bulkify}}(z,\ \mbox{\hyperlink{namespacehmap_a55542a66f890ef9ecf5f82af2c23a0cfae2c78e075109f330e3109c52e9bf90ff}{hmap::PrimitiveType::PRIM\_CONE}},\ 1.f);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ id1\ =\ \mbox{\hyperlink{namespacehmap_a8284b00f1f460f1d5a406ee45587dcd9}{hmap::basin\_id}}(z,\ \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2faaf8f41c39c71902022e1aec12f10d372}{hmap::FlowDirectionMethod::FDM\_PRIORITY\_FLOOD}});}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ id1\ =\ \mbox{\hyperlink{namespacehmap_a8284b00f1f460f1d5a406ee45587dcd9}{hmap::basin\_id}}(}
+\DoxyCodeLine{\ \ \ \ \ \ z,}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2faaf8f41c39c71902022e1aec12f10d372}{hmap::FlowDirectionMethod::FDM\_PRIORITY\_FLOOD}});}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(id1);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ id2\ =\ \mbox{\hyperlink{namespacehmap_a8284b00f1f460f1d5a406ee45587dcd9}{hmap::basin\_id}}(z,\ \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894}{hmap::FlowDirectionMethod::FDM\_D8}});}
