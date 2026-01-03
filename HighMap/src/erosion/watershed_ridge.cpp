@@ -41,4 +41,19 @@ Array watershed_ridge(const Array &z,
   return ze;
 }
 
+Array watershed_ridge(const Array &z,
+                      Array       *p_mask,
+                      float        amplitude,
+                      bool         smooth_ridge_crest,
+                      float        edt_exponent)
+{
+  if (!p_mask)
+    return watershed_ridge(z, amplitude, smooth_ridge_crest, edt_exponent);
+  else
+  {
+    Array z_f = watershed_ridge(z, amplitude, smooth_ridge_crest, edt_exponent);
+    return lerp(z, z_f, *(p_mask));
+  }
+}
+
 } // namespace hmap

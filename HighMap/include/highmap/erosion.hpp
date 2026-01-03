@@ -1262,6 +1262,12 @@ Array watershed_ridge(const Array &z,
                       bool         smooth_ridge_crest = true,
                       float        edt_exponent = 0.5f);
 
+Array watershed_ridge(const Array &z,
+                      Array       *p_mask,
+                      float        amplitude = 0.8f,
+                      bool         smooth_ridge_crest = true,
+                      float        edt_exponent = 0.5f);
+
 } // namespace hmap
 
 namespace hmap::gpu
