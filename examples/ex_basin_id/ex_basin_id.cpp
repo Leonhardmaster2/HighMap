@@ -9,7 +9,9 @@ int main(void)
   hmap::Array z = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, res, seed, 8);
   z = hmap::bulkify(z, hmap::PrimitiveType::PRIM_CONE, 1.f);
 
-  hmap::Array id1 = hmap::basin_id(z, hmap::FlowDirectionMethod::FDM_PRIORITY_FLOOD);
+  hmap::Array id1 = hmap::basin_id(
+      z,
+      hmap::FlowDirectionMethod::FDM_PRIORITY_FLOOD);
   hmap::remap(id1);
 
   hmap::Array id2 = hmap::basin_id(z, hmap::FlowDirectionMethod::FDM_D8);

@@ -196,6 +196,11 @@ void DrainageBasins::generate_traversal_priority_flood(const Array &z)
   // lakes
 }
 
+size_t DrainageBasins::get_basins_number() const
+{
+  return this->upstream_traversal.size();
+}
+
 void DrainageBasins::remove_lakes_d8(const Array &z,
                                      float        dz_weight,
                                      float        dz_downstream_cost_ratio)

@@ -43,6 +43,8 @@ public:
   Mat<int>                            next_i = Mat<int>({0, 0});
   Mat<int>                            next_j = Mat<int>({0, 0});
 
+  size_t get_basins_number() const;
+
   void generate_traversal(
       const Array        &z,
       FlowDirectionMethod fd_method = FlowDirectionMethod::FDM_D8,
