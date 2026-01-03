@@ -254,7 +254,7 @@ public:
    * the linear index 'index' (const version).
    *
    * @param  index Linear index.
-   * @return   const float& Reference to the array value.
+   * @return       const float& Reference to the array value.
    */
   const float &operator()(int index) const ///< @overload
   {
@@ -266,7 +266,7 @@ public:
    * the linear index 'index'.
    *
    * @param  index Linear index.
-   * @return   float& Reference to the array value.
+   * @return       float& Reference to the array value.
    */
   float &operator()(int index)
   {

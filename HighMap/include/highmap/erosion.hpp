@@ -1236,6 +1236,32 @@ void thermal_schott(Array      &z,
                     int         iterations = 10,
                     float       intensity = 0.001f); ///< @overload
 
+/**
+ * @brief Carves watershed ridges using basin-wise distance transforms.
+ *
+ * Drainage basins are computed using D8 flow routing. For each basin, a
+ * distance transform to the basin boundary is evaluated and used to lower
+ * elevations near watershed divides, forming ridge lines.
+ *
+ * @param  z                  Input elevation field.
+ * @param  amplitude          Ridge carving strength.
+ * @param  smooth_ridge_crest Smooth ridge crests if true.
+ * @param  edt_exponent       Exponent applied to the distance field to control
+ *                            ridge sharpness.
+ *
+ * @return                    Elevation field with watershed ridges emphasized.
+ *
+ * **Example**
+ * @include ex_watershed_ridge.cpp
+ *
+ * **Result**
+ * @image html ex_watershed_ridge.png
+ */
+Array watershed_ridge(const Array &z,
+                      float        amplitude = 0.8f,
+                      bool         smooth_ridge_crest = true,
+                      float        edt_exponent = 0.5f);
+
 } // namespace hmap
 
 namespace hmap::gpu

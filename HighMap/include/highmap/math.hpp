@@ -288,6 +288,15 @@ int highest_power_of_2(int n);
 Array hypot(const Array &array1, const Array &array2);
 
 /**
+ * @brief Returns a binary mask of elements equal to value.
+ *
+ * @param  array Input array to test for non-zero values.
+ * @param  value Value.
+ * @return       Array Binary mask array.
+ */
+Array is_equal(const Array &array, float value);
+
+/**
  * @brief Returns a binary mask of non-zero elements.
  *
  * Creates an array of the same shape where each element is 1.0f if the

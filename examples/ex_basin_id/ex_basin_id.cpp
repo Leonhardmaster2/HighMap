@@ -6,7 +6,7 @@ int main(void)
   hmap::Vec2<float> res = {8.f, 8.f};
   int               seed = 0;
 
-  hmap::Array z = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, res, seed, 8);
+  hmap::Array z = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, res, seed);
   z = hmap::bulkify(z, hmap::PrimitiveType::PRIM_CONE, 1.f);
 
   hmap::Array id1 = hmap::basin_id(

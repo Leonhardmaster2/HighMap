@@ -836,10 +836,11 @@ template <typename T> struct Mat
   }
 
   /**
-   * @brief Constructor to initialize a matrix with a given shape and value.
+   * @brief Constructor to initialize a matrix with a given shape and
+   * value.
    *
-   * Allocates memory for the matrix elements and initializes all elements with
-   * the provided value.
+   * Allocates memory for the matrix elements and initializes all elements
+   * with the provided value.
    *
    * @param shape A Vec2<int> representing the number of rows and columns
    *              in the matrix.

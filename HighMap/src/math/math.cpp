@@ -155,6 +155,16 @@ Array hypot(const Array &array1, const Array &array2)
   return array_out;
 }
 
+Array is_equal(const Array &array, float value)
+{
+  Array array_out = Array(array.shape);
+  std::transform(array.vector.begin(),
+                 array.vector.end(),
+                 array_out.vector.begin(),
+                 [value](float v) { return v == value ? 1.f : 0.f; });
+  return array_out;
+}
+
 Array is_non_zero(const Array &array)
 {
   Array array_out = Array(array.shape);
