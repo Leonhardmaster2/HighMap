@@ -28,7 +28,7 @@ class \mbox{\hyperlink{classhmap_1_1CraterFunction}{Crater\+Function}}
 \begin{DoxyCompactList}\small\item\em Crater (x, y) function class. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classhmap_1_1DiskFunction}{Disk\+Function}}
 \begin{DoxyCompactList}\small\item\em \doxylink{classhmap_1_1DiskFunction}{Disk\+Function} (x, y) function class. \end{DoxyCompactList}\item 
-struct \mbox{\hyperlink{structhmap_1_1DrainageBasins}{Drainage\+Basins}}
+class \mbox{\hyperlink{classhmap_1_1DrainageBasins}{Drainage\+Basins}}
 \item 
 class \mbox{\hyperlink{classhmap_1_1Edge}{Edge}}
 \begin{DoxyCompactList}\small\item\em Represents a line segment in 2D space. \end{DoxyCompactList}\item 
@@ -262,6 +262,10 @@ enum \mbox{\hyperlink{namespacehmap_abc952321c99ec11d60b4037e3d27db9b}{Normal\+M
 enum \mbox{\hyperlink{namespacehmap_ab36df744301ada377d4a3f3a34bca77f}{Transform\+Mode}} \+: int \{ \mbox{\hyperlink{namespacehmap_ab36df744301ada377d4a3f3a34bca77fac40707c2538151422af1c84dfd46252b}{DISTRIBUTED}}
 , \mbox{\hyperlink{namespacehmap_ab36df744301ada377d4a3f3a34bca77fabd8181f845a88e68d0653323c26ac4ac}{SEQUENTIAL}}
 , \mbox{\hyperlink{namespacehmap_ab36df744301ada377d4a3f3a34bca77fadb0544f4a0452ffb75e88eff0b39095d}{SINGLE\+\_\+\+ARRAY}}
+ \}
+\item 
+enum \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}{Flow\+Direction\+Method}} \+: int \{ \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894}{FDM\+\_\+\+D8}}
+, \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2faaf8f41c39c71902022e1aec12f10d372}{FDM\+\_\+\+PRIORITY\+\_\+\+FLOOD}}
  \}
 \item 
 enum \mbox{\hyperlink{namespacehmap_a46291bb4766800deacc1ce9b45a9ea6b}{Interpolation\+Method1D}} \+: int \{ \newline
@@ -1073,7 +1077,7 @@ void \mbox{\hyperlink{namespacehmap_a086b4d007e08e88d2fc1166e67c524ee}{transform
 \begin{DoxyCompactList}\small\item\em Applies a transformation operation to a collection of heightmaps. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a3438427cf944820ce19e7ca9ce438985}{transform}} (std\+::vector$<$ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \texorpdfstring{$\ast$}{*} $>$ p\+\_\+hmaps, std\+::function$<$ void(const std\+::vector$<$ \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*} $>$)$>$ op, \mbox{\hyperlink{namespacehmap_ab36df744301ada377d4a3f3a34bca77f}{Transform\+Mode}} transform\+\_\+mode=\mbox{\hyperlink{namespacehmap_ab36df744301ada377d4a3f3a34bca77fac40707c2538151422af1c84dfd46252b}{Transform\+Mode\+::\+DISTRIBUTED}})
 \item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a08cf60d981ad9dcf57a822a6eed05174}{basin\+\_\+id\+\_\+priority\+\_\+flood}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z)
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a8284b00f1f460f1d5a406ee45587dcd9}{basin\+\_\+id}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}{Flow\+Direction\+Method}} fd\+\_\+method=\mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894}{Flow\+Direction\+Method\+::\+FDM\+\_\+\+D8}}, bool remove\+\_\+lakes=true)
 \begin{DoxyCompactList}\small\item\em Label drainage basins using a priority-\/flood algorithm. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a2e0533063a77bfc047472d1d85f3f63c}{d8\+\_\+compute\+\_\+ndip}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&d8)
 \begin{DoxyCompactList}\small\item\em Computes the number of drainage paths for each cell based on the D8 flow direction model. \end{DoxyCompactList}\item 
@@ -2181,6 +2185,22 @@ SEQUENTIAL&Performed sequentially in a single thread. \\
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{SINGLE\_ARRAY@{SINGLE\_ARRAY}!hmap@{hmap}}\index{hmap@{hmap}!SINGLE\_ARRAY@{SINGLE\_ARRAY}}}\Hypertarget{namespacehmap_ab36df744301ada377d4a3f3a34bca77fadb0544f4a0452ffb75e88eff0b39095d}\label{namespacehmap_ab36df744301ada377d4a3f3a34bca77fadb0544f4a0452ffb75e88eff0b39095d} 
 SINGLE\+\_\+\+ARRAY&Transformation is applied to a single array of data. \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}\label{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f} 
+\index{hmap@{hmap}!FlowDirectionMethod@{FlowDirectionMethod}}
+\index{FlowDirectionMethod@{FlowDirectionMethod}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{FlowDirectionMethod}{FlowDirectionMethod}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}{hmap\+::\+Flow\+Direction\+Method}} \+: int}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FDM\_D8@{FDM\_D8}!hmap@{hmap}}\index{hmap@{hmap}!FDM\_D8@{FDM\_D8}}}\Hypertarget{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894}\label{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894} 
+FDM\+\_\+\+D8&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FDM\_PRIORITY\_FLOOD@{FDM\_PRIORITY\_FLOOD}!hmap@{hmap}}\index{hmap@{hmap}!FDM\_PRIORITY\_FLOOD@{FDM\_PRIORITY\_FLOOD}}}\Hypertarget{namespacehmap_a0c714c7fa78e9384806de52a5d039f2faaf8f41c39c71902022e1aec12f10d372}\label{namespacehmap_a0c714c7fa78e9384806de52a5d039f2faaf8f41c39c71902022e1aec12f10d372} 
+FDM\+\_\+\+PRIORITY\+\_\+\+FLOOD&\\
 \hline
 
 \end{DoxyEnumFields}
@@ -16911,11 +16931,11 @@ Applies a transformation operation to a collection of heightmaps.
 \doxysubsubsection{\texorpdfstring{transform()}{transform()}\hspace{0.1cm}{\footnotesize\ttfamily [19/19]}}
 {\footnotesize\ttfamily void hmap\+::transform (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \texorpdfstring{$\ast$}{*} $>$}]{p\+\_\+hmaps,  }\item[{std\+::function$<$ void(const std\+::vector$<$ \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*} $>$)$>$}]{op,  }\item[{\mbox{\hyperlink{namespacehmap_ab36df744301ada377d4a3f3a34bca77f}{Transform\+Mode}}}]{transform\+\_\+mode = {\ttfamily \mbox{\hyperlink{namespacehmap_ab36df744301ada377d4a3f3a34bca77fac40707c2538151422af1c84dfd46252b}{Transform\+Mode\+::\+DISTRIBUTED}}} }\end{DoxyParamCaption})}
 
-\Hypertarget{namespacehmap_a08cf60d981ad9dcf57a822a6eed05174}\label{namespacehmap_a08cf60d981ad9dcf57a822a6eed05174} 
-\index{hmap@{hmap}!basin\_id\_priority\_flood@{basin\_id\_priority\_flood}}
-\index{basin\_id\_priority\_flood@{basin\_id\_priority\_flood}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{basin\_id\_priority\_flood()}{basin\_id\_priority\_flood()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::basin\+\_\+id\+\_\+priority\+\_\+flood (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z }\end{DoxyParamCaption})}
+\Hypertarget{namespacehmap_a8284b00f1f460f1d5a406ee45587dcd9}\label{namespacehmap_a8284b00f1f460f1d5a406ee45587dcd9} 
+\index{hmap@{hmap}!basin\_id@{basin\_id}}
+\index{basin\_id@{basin\_id}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{basin\_id()}{basin\_id()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::basin\+\_\+id (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{\mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}{Flow\+Direction\+Method}}}]{fd\+\_\+method = {\ttfamily \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894}{Flow\+Direction\+Method\+::\+FDM\+\_\+\+D8}}},  }\item[{bool}]{remove\+\_\+lakes = {\ttfamily true} }\end{DoxyParamCaption})}
 
 
 
@@ -16940,15 +16960,19 @@ Connectivity is 8-\/neighbor. Spill elevations between basins are detected but n
 \DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
 \DoxyCodeLine{\{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{structhmap_1_1Vec2}{hmap::Vec2<int>}}\ \ \ shape\ =\ \{256,\ 256\};}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{structhmap_1_1Vec2}{hmap::Vec2<float>}}\ res\ =\ \{4.f,\ 4.f\};}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{structhmap_1_1Vec2}{hmap::Vec2<float>}}\ res\ =\ \{8.f,\ 8.f\};}
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed\ =\ 0;}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_a40b948c49a05c14f2d540dc1a6952130}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ res,\ seed);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_a40b948c49a05c14f2d540dc1a6952130}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ res,\ seed,\ 8);}
+\DoxyCodeLine{\ \ z\ =\ \mbox{\hyperlink{namespacehmap_a7c780f6b35e43e45457af59ce1c761ce}{hmap::bulkify}}(z,\ \mbox{\hyperlink{namespacehmap_a55542a66f890ef9ecf5f82af2c23a0cfae2c78e075109f330e3109c52e9bf90ff}{hmap::PrimitiveType::PRIM\_CONE}},\ 1.f);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ \textcolor{keywordtype}{id}\ =\ \mbox{\hyperlink{namespacehmap_a08cf60d981ad9dcf57a822a6eed05174}{hmap::basin\_id\_priority\_flood}}(z);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ id1\ =\ \mbox{\hyperlink{namespacehmap_a8284b00f1f460f1d5a406ee45587dcd9}{hmap::basin\_id}}(z,\ \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2faaf8f41c39c71902022e1aec12f10d372}{hmap::FlowDirectionMethod::FDM\_PRIORITY\_FLOOD}});}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(id1);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_basin\_id.png"{}},\ \{z,\ \textcolor{keywordtype}{id}\},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}});}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ id2\ =\ \mbox{\hyperlink{namespacehmap_a8284b00f1f460f1d5a406ee45587dcd9}{hmap::basin\_id}}(z,\ \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894}{hmap::FlowDirectionMethod::FDM\_D8}});}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(id2);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_basin\_id.png"{}},\ \{z,\ id1,\ id2\},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}});}
 \DoxyCodeLine{\}}
 
 \end{DoxyCodeInclude}

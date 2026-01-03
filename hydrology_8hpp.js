@@ -1,7 +1,11 @@
 var hydrology_8hpp =
 [
-    [ "hmap::DrainageBasins", "structhmap_1_1DrainageBasins.html", "structhmap_1_1DrainageBasins" ],
-    [ "basin_id_priority_flood", "hydrology_8hpp.html#a08cf60d981ad9dcf57a822a6eed05174", null ],
+    [ "hmap::DrainageBasins", "classhmap_1_1DrainageBasins.html", "classhmap_1_1DrainageBasins" ],
+    [ "FlowDirectionMethod", "hydrology_8hpp.html#a0c714c7fa78e9384806de52a5d039f2f", [
+      [ "FDM_D8", "hydrology_8hpp.html#a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894", null ],
+      [ "FDM_PRIORITY_FLOOD", "hydrology_8hpp.html#a0c714c7fa78e9384806de52a5d039f2faaf8f41c39c71902022e1aec12f10d372", null ]
+    ] ],
+    [ "basin_id", "hydrology_8hpp.html#a8284b00f1f460f1d5a406ee45587dcd9", null ],
     [ "d8_compute_ndip", "hydrology_8hpp.html#a2e0533063a77bfc047472d1d85f3f63c", null ],
     [ "find_flow_sinks", "hydrology_8hpp.html#ae42a874864d2d8f1a7b580f428395c01", null ],
     [ "flooding_uniform_level", "hydrology_8hpp.html#a2318944325d02f3969aa7fa58b500278", null ],
@@ -22,7 +26,5 @@ var hydrology_8hpp =
     [ "water_depth_dry_out", "hydrology_8hpp.html#a3aebd62906b90ccfde11140e13b0853f", null ],
     [ "water_depth_increase", "hydrology_8hpp.html#a136f042ce2ad8c14033f4d839f56265d", null ],
     [ "water_mask", "hydrology_8hpp.html#ad39c72e2b4c07d3013f7b0143c31137c", null ],
-    [ "water_mask", "hydrology_8hpp.html#abc5928f49e530927c8fb61a9afea3274", null ],
-    [ "flow_direction_d8", "hydrology_8hpp.html#af794a4c54c3766ca86b7e4a06346ab91", null ],
-    [ "generate_riverbed", "hydrology_8hpp.html#ab4f1542d2d5dd7edc54d240dab777755", null ]
+    [ "water_mask", "hydrology_8hpp.html#abc5928f49e530927c8fb61a9afea3274", null ]
 ];

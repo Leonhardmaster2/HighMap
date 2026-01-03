@@ -13,7 +13,7 @@ var hierarchy =
       [ "hmap::XyControlFunction", "classhmap_1_1XyControlFunction.html", null ]
     ] ],
     [ "hmap::CoordFrame", "classhmap_1_1CoordFrame.html", null ],
-    [ "hmap::DrainageBasins", "structhmap_1_1DrainageBasins.html", null ],
+    [ "hmap::DrainageBasins", "classhmap_1_1DrainageBasins.html", null ],
     [ "hmap::Edge", "classhmap_1_1Edge.html", null ],
     [ "hmap::Function", "classhmap_1_1Function.html", [
       [ "hmap::ArrayFunction", "classhmap_1_1ArrayFunction.html", null ],
@@ -61,6 +61,7 @@ var hierarchy =
     [ "hmap::Interpolator1D", "classhmap_1_1Interpolator1D.html", null ],
     [ "hmap::InterpolatorCurve", "classhmap_1_1InterpolatorCurve.html", null ],
     [ "hmap::Mat< T >", "structhmap_1_1Mat.html", null ],
+    [ "hmap::Mat< int >", "structhmap_1_1Mat.html", null ],
     [ "hmap::Particle", "structhmap_1_1Particle.html", null ],
     [ "hmap::Point", "classhmap_1_1Point.html", null ],
     [ "hmap::Pos", "structhmap_1_1Pos.html", null ],

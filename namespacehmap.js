@@ -84,8 +84,6 @@ var namespacehmap =
       [ "smooth_fill_smear_peaks", "namespacehmap_1_1gpu.html#a37f556d4d43005e2d618f0aa6c3527bb", null ],
       [ "smooth_fill_smear_peaks", "namespacehmap_1_1gpu.html#acb80d6cda31177534d6e63c97675d46d", null ],
       [ "gradient_norm", "namespacehmap_1_1gpu.html#a1c5e49734e49973fe1b275b6988dba12", null ],
-      [ "flow_direction_d8", "namespacehmap_1_1gpu.html#af794a4c54c3766ca86b7e4a06346ab91", null ],
-      [ "generate_riverbed", "namespacehmap_1_1gpu.html#ab4f1542d2d5dd7edc54d240dab777755", null ],
       [ "harmonic_interpolation", "namespacehmap_1_1gpu.html#a864cdb10c297b4a59dc761f32dbbc11a", null ],
       [ "interpolate_array_bicubic", "namespacehmap_1_1gpu.html#a7fca2b47602e86cf0c65908230bdee55", null ],
       [ "interpolate_array_bicubic", "namespacehmap_1_1gpu.html#a08d2a6e771f70513a5fdbc27783f5f55", null ],
@@ -178,7 +176,7 @@ var namespacehmap =
     [ "CoordFrame", "classhmap_1_1CoordFrame.html", "classhmap_1_1CoordFrame" ],
     [ "CraterFunction", "classhmap_1_1CraterFunction.html", "classhmap_1_1CraterFunction" ],
     [ "DiskFunction", "classhmap_1_1DiskFunction.html", "classhmap_1_1DiskFunction" ],
-    [ "DrainageBasins", "structhmap_1_1DrainageBasins.html", "structhmap_1_1DrainageBasins" ],
+    [ "DrainageBasins", "classhmap_1_1DrainageBasins.html", "classhmap_1_1DrainageBasins" ],
     [ "Edge", "classhmap_1_1Edge.html", "classhmap_1_1Edge" ],
     [ "FbmFunction", "classhmap_1_1FbmFunction.html", "classhmap_1_1FbmFunction" ],
     [ "FbmIqFunction", "classhmap_1_1FbmIqFunction.html", "classhmap_1_1FbmIqFunction" ],
@@ -338,6 +336,10 @@ var namespacehmap =
       [ "DISTRIBUTED", "namespacehmap.html#ab36df744301ada377d4a3f3a34bca77fac40707c2538151422af1c84dfd46252b", null ],
       [ "SEQUENTIAL", "namespacehmap.html#ab36df744301ada377d4a3f3a34bca77fabd8181f845a88e68d0653323c26ac4ac", null ],
       [ "SINGLE_ARRAY", "namespacehmap.html#ab36df744301ada377d4a3f3a34bca77fadb0544f4a0452ffb75e88eff0b39095d", null ]
+    ] ],
+    [ "FlowDirectionMethod", "namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2f", [
+      [ "FDM_D8", "namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894", null ],
+      [ "FDM_PRIORITY_FLOOD", "namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2faaf8f41c39c71902022e1aec12f10d372", null ]
     ] ],
     [ "InterpolationMethod1D", "namespacehmap.html#a46291bb4766800deacc1ce9b45a9ea6b", [
       [ "AKIMA", "namespacehmap.html#a46291bb4766800deacc1ce9b45a9ea6ba55d2df97f3e8f051fb84453093374c96", null ],
@@ -778,7 +780,7 @@ var namespacehmap =
     [ "transform", "namespacehmap.html#aa6f9b7363268c106d5154d7370053c35", null ],
     [ "transform", "namespacehmap.html#a086b4d007e08e88d2fc1166e67c524ee", null ],
     [ "transform", "namespacehmap.html#a3438427cf944820ce19e7ca9ce438985", null ],
-    [ "basin_id_priority_flood", "namespacehmap.html#a08cf60d981ad9dcf57a822a6eed05174", null ],
+    [ "basin_id", "namespacehmap.html#a8284b00f1f460f1d5a406ee45587dcd9", null ],
     [ "d8_compute_ndip", "namespacehmap.html#a2e0533063a77bfc047472d1d85f3f63c", null ],
     [ "find_flow_sinks", "namespacehmap.html#ae42a874864d2d8f1a7b580f428395c01", null ],
     [ "flooding_uniform_level", "namespacehmap.html#a2318944325d02f3969aa7fa58b500278", null ],

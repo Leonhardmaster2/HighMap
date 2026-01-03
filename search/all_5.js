@@ -66,7 +66,7 @@ var searchData=
   ['downscaling_2ehpp_63',['downscaling.hpp',['../downscaling_8hpp.html',1,'']]],
   ['drag_5frate_64',['drag_rate',['../structhmap_1_1Particle.html#a9fe6d66398ff6cc1d74b308339d23cc8',1,'hmap::Particle']]],
   ['drainage_5fbasins_2ecpp_65',['drainage_basins.cpp',['../drainage__basins_8cpp.html',1,'']]],
-  ['drainagebasins_66',['DrainageBasins',['../structhmap_1_1DrainageBasins.html',1,'hmap']]],
+  ['drainagebasins_66',['DrainageBasins',['../classhmap_1_1DrainageBasins.html',1,'hmap']]],
   ['dt_5fapprox_67',['DT_APPROX',['../namespacehmap.html#a9e2493cec1a67b3140691e617ddc925aa3b8bce8feaa179b9a546bbbe28c1d44a',1,'hmap']]],
   ['dt_5fexact_68',['DT_EXACT',['../namespacehmap.html#a9e2493cec1a67b3140691e617ddc925aa109b04de7ca555c0e4d17629e55e7ee3',1,'hmap']]],
   ['dt_5fjfa_69',['DT_JFA',['../namespacehmap.html#a9e2493cec1a67b3140691e617ddc925aaa09d87a577ce3a1b91c372aa051b0406',1,'hmap']]],

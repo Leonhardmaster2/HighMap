@@ -204,13 +204,21 @@
     <member refid="classhmap_1_1DiskFunction_1a9f2a69681853a851c108f7d502459ce3" kind="variable"><name>center</name></member>
     <member refid="classhmap_1_1DiskFunction_1af080b3dca0a3e2f288689459afdfc695" kind="function"><name>DiskFunction</name></member>
   </compound>
-  <compound refid="structhmap_1_1DrainageBasins" kind="struct"><name>hmap::DrainageBasins</name>
-    <member refid="structhmap_1_1DrainageBasins_1aa53e3dff71d7c9f9c42888b628183a26" kind="variable"><name>upstream_traversal</name></member>
-    <member refid="structhmap_1_1DrainageBasins_1a1d0e45e21181f831ad78e645d650a835" kind="function"><name>generate_traversal_priority_flood</name></member>
-    <member refid="structhmap_1_1DrainageBasins_1ab8aa80c75123d2dab5353ff603e1b862" kind="function"><name>traverse_downstream</name></member>
-    <member refid="structhmap_1_1DrainageBasins_1afe4c1a0f9ebbba05a6f19c6c1b065976" kind="function"><name>traverse_downstream</name></member>
-    <member refid="structhmap_1_1DrainageBasins_1a8f16f5fb5a6e340a9ca10dc2046ba11d" kind="function"><name>traverse_upstream</name></member>
-    <member refid="structhmap_1_1DrainageBasins_1afa727d5dc6f6ebede65fe8983ca1490a" kind="function"><name>traverse_upstream</name></member>
+  <compound refid="classhmap_1_1DrainageBasins" kind="class"><name>hmap::DrainageBasins</name>
+    <member refid="classhmap_1_1DrainageBasins_1aa53e3dff71d7c9f9c42888b628183a26" kind="variable"><name>upstream_traversal</name></member>
+    <member refid="classhmap_1_1DrainageBasins_1aac5854dfab34a517a06e02e2fde7fc9e" kind="variable"><name>next_i</name></member>
+    <member refid="classhmap_1_1DrainageBasins_1a24af70c52210deb3c37df578b6db4db3" kind="variable"><name>next_j</name></member>
+    <member refid="classhmap_1_1DrainageBasins_1a8ce71a8094bfbedf4054e64332780d9b" kind="function"><name>generate_traversal</name></member>
+    <member refid="classhmap_1_1DrainageBasins_1ad843ac59f5bb3f5c1176d48b14accb36" kind="function"><name>generate_traversal_d8</name></member>
+    <member refid="classhmap_1_1DrainageBasins_1a1d0e45e21181f831ad78e645d650a835" kind="function"><name>generate_traversal_priority_flood</name></member>
+    <member refid="classhmap_1_1DrainageBasins_1aa4ff11a57ac50972fb6e6600be6bbd67" kind="function"><name>accumulate</name></member>
+    <member refid="classhmap_1_1DrainageBasins_1ab8aa80c75123d2dab5353ff603e1b862" kind="function"><name>traverse_downstream</name></member>
+    <member refid="classhmap_1_1DrainageBasins_1afe4c1a0f9ebbba05a6f19c6c1b065976" kind="function"><name>traverse_downstream</name></member>
+    <member refid="classhmap_1_1DrainageBasins_1a8f16f5fb5a6e340a9ca10dc2046ba11d" kind="function"><name>traverse_upstream</name></member>
+    <member refid="classhmap_1_1DrainageBasins_1afa727d5dc6f6ebede65fe8983ca1490a" kind="function"><name>traverse_upstream</name></member>
+    <member refid="classhmap_1_1DrainageBasins_1affedc4912f12a85dde7d4f46e9401853" kind="function"><name>build_upstream_adjacency</name></member>
+    <member refid="classhmap_1_1DrainageBasins_1a9bf0fa635547464d624ea8a7c0b9ae5b" kind="function"><name>remove_lakes_d8</name></member>
+    <member refid="classhmap_1_1DrainageBasins_1a5c9005d65bb03b848f4ea4ee3b5ad9c9" kind="function"><name>update_traversal</name></member>
   </compound>
   <compound refid="classhmap_1_1Edge" kind="class"><name>hmap::Edge</name>
     <member refid="classhmap_1_1Edge_1aaafc727142dadc4d1e5a5e040aade087" kind="variable"><name>p1</name></member>
@@ -434,6 +442,8 @@
     <member refid="structhmap_1_1Mat_1aa425a1ad1a875f46639973d24216f346" kind="function"><name>Mat</name></member>
     <member refid="structhmap_1_1Mat_1a429366c8daa4495b65f288f3527f2022" kind="function"><name>operator()</name></member>
     <member refid="structhmap_1_1Mat_1a4f148a4aa0f08e0bd0c4959b8fcc9aa5" kind="function"><name>operator()</name></member>
+    <member refid="structhmap_1_1Mat_1a683a8df2a61c1d8f63dc1ccfe71714b6" kind="function"><name>operator()</name></member>
+    <member refid="structhmap_1_1Mat_1a1aaffa323b410bb2474ad65feea32da5" kind="function"><name>operator()</name></member>
   </compound>
   <compound refid="classhmap_1_1NoiseFunction" kind="class"><name>hmap::NoiseFunction</name>
     <member refid="classhmap_1_1NoiseFunction_1a6d7d9881bedbf82be095183cd36bf0a6" kind="variable"><name>kw</name></member>
@@ -926,6 +936,9 @@
     <member refid="namespacehmap_1ab36df744301ada377d4a3f3a34bca77fac40707c2538151422af1c84dfd46252b" kind="enumvalue"><name>DISTRIBUTED</name></member>
     <member refid="namespacehmap_1ab36df744301ada377d4a3f3a34bca77fabd8181f845a88e68d0653323c26ac4ac" kind="enumvalue"><name>SEQUENTIAL</name></member>
     <member refid="namespacehmap_1ab36df744301ada377d4a3f3a34bca77fadb0544f4a0452ffb75e88eff0b39095d" kind="enumvalue"><name>SINGLE_ARRAY</name></member>
+    <member refid="namespacehmap_1a0c714c7fa78e9384806de52a5d039f2f" kind="enum"><name>FlowDirectionMethod</name></member>
+    <member refid="namespacehmap_1a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894" kind="enumvalue"><name>FDM_D8</name></member>
+    <member refid="namespacehmap_1a0c714c7fa78e9384806de52a5d039f2faaf8f41c39c71902022e1aec12f10d372" kind="enumvalue"><name>FDM_PRIORITY_FLOOD</name></member>
     <member refid="namespacehmap_1a46291bb4766800deacc1ce9b45a9ea6b" kind="enum"><name>InterpolationMethod1D</name></member>
     <member refid="namespacehmap_1a46291bb4766800deacc1ce9b45a9ea6ba55d2df97f3e8f051fb84453093374c96" kind="enumvalue"><name>AKIMA</name></member>
     <member refid="namespacehmap_1a46291bb4766800deacc1ce9b45a9ea6bac3c354b92a241b06cbe768faa834b85e" kind="enumvalue"><name>AKIMA_PERIODIC</name></member>
@@ -1360,7 +1373,7 @@
     <member refid="namespacehmap_1aa6f9b7363268c106d5154d7370053c35" kind="function"><name>transform</name></member>
     <member refid="namespacehmap_1a086b4d007e08e88d2fc1166e67c524ee" kind="function"><name>transform</name></member>
     <member refid="namespacehmap_1a3438427cf944820ce19e7ca9ce438985" kind="function"><name>transform</name></member>
-    <member refid="namespacehmap_1a08cf60d981ad9dcf57a822a6eed05174" kind="function"><name>basin_id_priority_flood</name></member>
+    <member refid="namespacehmap_1a8284b00f1f460f1d5a406ee45587dcd9" kind="function"><name>basin_id</name></member>
     <member refid="namespacehmap_1a2e0533063a77bfc047472d1d85f3f63c" kind="function"><name>d8_compute_ndip</name></member>
     <member refid="namespacehmap_1ae42a874864d2d8f1a7b580f428395c01" kind="function"><name>find_flow_sinks</name></member>
     <member refid="namespacehmap_1a2318944325d02f3969aa7fa58b500278" kind="function"><name>flooding_uniform_level</name></member>

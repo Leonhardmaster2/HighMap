@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['periodicitytype_0',['PeriodicityType',['../namespacehmap.html#a41f6f4d40b566b87f78344d9efe71c71',1,'hmap']]],
-  ['phasorprofile_1',['PhasorProfile',['../namespacehmap.html#a67d6620c147710ebb09b64f0f738241a',1,'hmap']]],
-  ['pointsamplingmethod_2',['PointSamplingMethod',['../namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77',1,'hmap']]],
-  ['primitivetype_3',['PrimitiveType',['../namespacehmap.html#a55542a66f890ef9ecf5f82af2c23a0cf',1,'hmap']]],
-  ['pyramid_5ftransform_5fsupport_4',['pyramid_transform_support',['../namespacehmap.html#ae84abe9052dcb9c88f3c50716addfe44',1,'hmap']]]
+  ['neighborhood_0',['neighborhood',['../namespacehmap.html#a9d00db2263b4b7b05245531c41c1b592',1,'hmap']]],
+  ['noisetype_1',['NoiseType',['../namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195',1,'hmap']]],
+  ['normalmapblendingmethod_2',['NormalMapBlendingMethod',['../namespacehmap.html#abc952321c99ec11d60b4037e3d27db9b',1,'hmap']]]
 ];

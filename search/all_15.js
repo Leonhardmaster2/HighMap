@@ -62,8 +62,8 @@ var searchData=
   ['transformmode_59',['TransformMode',['../namespacehmap.html#ab36df744301ada377d4a3f3a34bca77f',1,'hmap']]],
   ['translate_60',['translate',['../namespacehmap.html#a7b342891b252b6156d3a0c20ec57fe90',1,'hmap']]],
   ['transpose_61',['transpose',['../namespacehmap.html#a9b059a298d27843519baa3b6bfe291cd',1,'hmap']]],
-  ['traverse_5fdownstream_62',['traverse_downstream',['../structhmap_1_1DrainageBasins.html#afe4c1a0f9ebbba05a6f19c6c1b065976',1,'hmap::DrainageBasins::traverse_downstream(std::function&lt; void(int, int, int)&gt; op)'],['../structhmap_1_1DrainageBasins.html#ab8aa80c75123d2dab5353ff603e1b862',1,'hmap::DrainageBasins::traverse_downstream(std::function&lt; void(int, int, int, int, int)&gt; op)']]],
-  ['traverse_5fupstream_63',['traverse_upstream',['../structhmap_1_1DrainageBasins.html#a8f16f5fb5a6e340a9ca10dc2046ba11d',1,'hmap::DrainageBasins::traverse_upstream(std::function&lt; void(int, int, int, int, int)&gt; op)'],['../structhmap_1_1DrainageBasins.html#afa727d5dc6f6ebede65fe8983ca1490a',1,'hmap::DrainageBasins::traverse_upstream(std::function&lt; void(int, int, int)&gt; op)']]],
+  ['traverse_5fdownstream_62',['traverse_downstream',['../classhmap_1_1DrainageBasins.html#afe4c1a0f9ebbba05a6f19c6c1b065976',1,'hmap::DrainageBasins::traverse_downstream(std::function&lt; void(int, int, int)&gt; op)'],['../classhmap_1_1DrainageBasins.html#ab8aa80c75123d2dab5353ff603e1b862',1,'hmap::DrainageBasins::traverse_downstream(std::function&lt; void(int, int, int, int, int)&gt; op)']]],
+  ['traverse_5fupstream_63',['traverse_upstream',['../classhmap_1_1DrainageBasins.html#a8f16f5fb5a6e340a9ca10dc2046ba11d',1,'hmap::DrainageBasins::traverse_upstream(std::function&lt; void(int, int, int, int, int)&gt; op)'],['../classhmap_1_1DrainageBasins.html#afa727d5dc6f6ebede65fe8983ca1490a',1,'hmap::DrainageBasins::traverse_upstream(std::function&lt; void(int, int, int)&gt; op)']]],
   ['tri_64',['TRI',['../namespacehmap.html#ac81a92060b89699c4eb9826495d87250a68dced9d7f19cbd741feae05ad17ca14',1,'hmap']]],
   ['tri_5foptimized_65',['TRI_OPTIMIZED',['../namespacehmap.html#ac81a92060b89699c4eb9826495d87250a64d964458b2812e59ec68af2ee53a8ae',1,'hmap']]],
   ['triangle_66',['TRIANGLE',['../namespacehmap.html#a67d6620c147710ebb09b64f0f738241aa1ee22d304b9b93cd76da1fbc9d32a75a',1,'hmap']]],
@@ -71,6 +71,6 @@ var searchData=
   ['triangle_5fgrenier_68',['TRIANGLE_GRENIER',['../namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a3b4b1fb15aaf3888333a9d6958eae76a',1,'hmap']]],
   ['triangle_5fsharp_69',['TRIANGLE_SHARP',['../namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6ac6ec19319c947a3b6484c42b69007636',1,'hmap']]],
   ['triangle_5fsmooth_70',['TRIANGLE_SMOOTH',['../namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6af078cf93214e8043479eb5906a456880',1,'hmap']]],
-  ['tricube_71',['tricube',['../namespacehmap.html#a78d3f33a357986539e654f0d42510659',1,'hmap::tricube(Vec2&lt; int &gt; shape)'],['../namespacehmap.html#a4b6f135c6e81d313ca54ae1efac5f2c9abd845bef8f2959d8d9e7355aa9c44d86',1,'hmap::TRICUBE']]],
+  ['tricube_71',['tricube',['../namespacehmap.html#a4b6f135c6e81d313ca54ae1efac5f2c9abd845bef8f2959d8d9e7355aa9c44d86',1,'hmap::TRICUBE'],['../namespacehmap.html#a78d3f33a357986539e654f0d42510659',1,'hmap::tricube(Vec2&lt; int &gt; shape)']]],
   ['turbo_72',['TURBO',['../namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a555dbf2f8e5b83b9117850a8938e65f9',1,'hmap']]]
 ];
