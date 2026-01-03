@@ -11,15 +11,14 @@
 namespace hmap
 {
 
-Array basin_id_priority_flood(const Array &z)
+Array basin_id(const Array &z, FlowDirectionMethod fd_method, bool remove_lakes)
 {
   Array ids(z.shape);
 
   auto basins = DrainageBasins();
-  basins.generate_traversal_priority_flood(z);
+  basins.generate_traversal(z, fd_method, remove_lakes);
 
   auto lambda = [&ids](int i, int j, int basin_id) { ids(i, j) = basin_id; };
-
   basins.traverse_upstream(lambda);
 
   return ids;

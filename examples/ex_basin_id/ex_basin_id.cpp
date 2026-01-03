@@ -3,13 +3,17 @@
 int main(void)
 {
   hmap::Vec2<int>   shape = {256, 256};
-  hmap::Vec2<float> res = {4.f, 4.f};
+  hmap::Vec2<float> res = {8.f, 8.f};
   int               seed = 0;
 
-  hmap::Array z = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, res, seed);
+  hmap::Array z = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, res, seed, 8);
+  z = hmap::bulkify(z, hmap::PrimitiveType::PRIM_CONE, 1.f);
 
-  hmap::Array id = hmap::basin_id_priority_flood(z);
-  hmap::remap(id);
+  hmap::Array id1 = hmap::basin_id(z, hmap::FlowDirectionMethod::FDM_PRIORITY_FLOOD);
+  hmap::remap(id1);
 
-  hmap::export_banner_png("ex_basin_id.png", {z, id}, hmap::Cmap::JET);
+  hmap::Array id2 = hmap::basin_id(z, hmap::FlowDirectionMethod::FDM_D8);
+  hmap::remap(id2);
+
+  hmap::export_banner_png("ex_basin_id.png", {z, id1, id2}, hmap::Cmap::JET);
 }

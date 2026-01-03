@@ -881,6 +881,16 @@ template <typename T> struct Mat
   {
     return this->vector[j * this->shape.x + i];
   }
+
+  T &operator()(Vec2<int> ij)
+  {
+    return this->vector[ij.y * this->shape.x + ij.x];
+  }
+
+  const T &operator()(Vec2<int> ij) const
+  {
+    return this->vector[ij.y * this->shape.x + ij.x];
+  }
 };
 
 /**

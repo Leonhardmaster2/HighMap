@@ -30,16 +30,39 @@
 namespace hmap
 {
 
-struct DrainageBasins
+enum FlowDirectionMethod : int
 {
-  std::vector<std::vector<Vec2<int>>> upstream_traversal;
+  FDM_D8,
+  FDM_PRIORITY_FLOOD
+};
 
+class DrainageBasins
+{
+public:
+  std::vector<std::vector<Vec2<int>>> upstream_traversal;
+  Mat<int>                            next_i = Mat<int>({0, 0});
+  Mat<int>                            next_j = Mat<int>({0, 0});
+
+  void generate_traversal(
+      const Array        &z,
+      FlowDirectionMethod fd_method = FlowDirectionMethod::FDM_D8,
+      bool                remove_lakes = true);
+
+  void generate_traversal_d8(const Array &z, bool remove_lakes = true);
   void generate_traversal_priority_flood(const Array &z);
 
+  void accumulate(const Array &to_accumulate, Array &acc) const;
   void traverse_downstream(std::function<void(int, int, int, int, int)> op);
   void traverse_downstream(std::function<void(int, int, int)> op);
   void traverse_upstream(std::function<void(int, int, int, int, int)> op);
   void traverse_upstream(std::function<void(int, int, int)> op);
+
+private:
+  Mat<std::vector<Vec2<int>>> build_upstream_adjacency();
+  void                        remove_lakes_d8(const Array &z,
+                                              float        dz_weight = 1.f,
+                                              float        dz_downstream_cost_ratio = 0.1f);
+  void                        update_traversal();
 };
 
 /**
@@ -61,7 +84,9 @@ struct DrainageBasins
  * **Result**
  * @image html ex_basin_id.png
  */
-Array basin_id_priority_flood(const Array &z);
+Array basin_id(const Array        &z,
+               FlowDirectionMethod fd_method = FlowDirectionMethod::FDM_D8,
+               bool                remove_lakes = true);
 
 /**
  * @brief Computes the number of drainage paths for each cell based on the D8
