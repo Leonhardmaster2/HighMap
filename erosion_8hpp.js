@@ -63,6 +63,7 @@ var erosion_8hpp =
     [ "thermal_schott", "erosion_8hpp.html#a934a4f6e9ae0f315a2296d488b9333b4", null ],
     [ "thermal_schott", "erosion_8hpp.html#aa328e3342e845d021f300dcb6cb42fbc", null ],
     [ "thermal_schott", "erosion_8hpp.html#afe2e4c1e06205f5051ce6e86ea647a77", null ],
+    [ "watershed_ridge", "erosion_8hpp.html#a01f065379d2975b5ddf4bda2e6ede8cf", null ],
     [ "hydraulic_particle", "erosion_8hpp.html#a7bc17570e205e4eb84ed4d434998555e", null ],
     [ "hydraulic_particle", "erosion_8hpp.html#aacdd29247e4f3e008be3bacced178b50", null ],
     [ "hydraulic_schott", "erosion_8hpp.html#a9749d24b9dd9bed8ee333910951db395", null ],

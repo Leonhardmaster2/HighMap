@@ -1,5 +1,12 @@
 var NAVTREEINDEX16 =
 {
+"primitives__gpu_8cpp.html#ae425e289a74c2fbce447004896ee7e77":[5,0,1,1,26,11,2],
+"pyramid_8hpp.html":[5,0,1,0,0,3,1],
+"pyramid_8hpp.html#ae84abe9052dcb9c88f3c50716addfe44":[5,0,1,0,0,3,1,1],
+"pyramid_8hpp.html#ae84abe9052dcb9c88f3c50716addfe44a23fde294eee1dbe59e1c6bb2bc0d5132":[5,0,1,0,0,3,1,1,2],
+"pyramid_8hpp.html#ae84abe9052dcb9c88f3c50716addfe44a335e6fca97d53bfb6cc3a55c566f1dd7":[5,0,1,0,0,3,1,1,0],
+"pyramid_8hpp.html#ae84abe9052dcb9c88f3c50716addfe44ab02b262c560a970e4f082d4edee376fb":[5,0,1,0,0,3,1,1,1],
+"pyramid_8hpp_source.html":[5,0,1,0,0,3,1],
 "pyramid__decomposition_8cpp.html":[5,0,1,1,23,1],
 "pyramid__decomposition_8cpp.html#a9ae209ce5746e99078078259955c7421":[5,0,1,1,23,1,0],
 "quilting_8cpp.html":[5,0,1,1,33,1],
@@ -242,12 +249,5 @@ var NAVTREEINDEX16 =
 "stratify_8cpp.html#a06a4f7bbf99b83632ceb8a9ba5989823":[5,0,1,1,10,21,6],
 "stratify_8cpp.html#a1d3b4f4dbe769a1f71f8fcc44cfcaf8c":[5,0,1,1,10,21,5],
 "stratify_8cpp.html#a815d3c721091a5525f872527a994ec1f":[5,0,1,1,10,21,2],
-"stratify_8cpp.html#a9b3fc59af5c418c494eec160399839bb":[5,0,1,1,10,21,4],
-"stratify_8cpp.html#abc0ddcae8cec8a556b8a343eaafe1dc4":[5,0,1,1,10,21,1],
-"stratify_8cpp.html#abca93ca8447abd2fc06c9892a4dc248c":[5,0,1,1,10,21,3],
-"stratify_8cpp.html#ad117ced78d758baa0bb5e1e7655bd0b9":[5,0,1,1,10,21,0],
-"string__utils_8cpp.html":[5,0,1,1,36,0],
-"string__utils_8cpp.html#a3f38b7faedc76835a0a902eb48e3d94b":[5,0,1,1,36,0,1],
-"string__utils_8cpp.html#a67eae4546cbed6a804eaddcde9350e1c":[5,0,1,1,36,0,0],
-"string__utils_8hpp.html":[5,0,1,0,0,2,2]
+"stratify_8cpp.html#a9b3fc59af5c418c494eec160399839bb":[5,0,1,1,10,21,4]
 };

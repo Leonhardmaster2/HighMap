@@ -7,35 +7,52 @@
 \DoxyCodeLine{00003\ \textcolor{comment}{\ \ \ this\ software.\ */}}
 \DoxyCodeLine{00004\ }
 \DoxyCodeLine{00015\ \textcolor{preprocessor}{\#pragma\ once}}
-\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <string>}}
-\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <vector>}}
-\DoxyCodeLine{00018\ }
-\DoxyCodeLine{00019\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{vector__utils_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}};}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <random>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <vector>}}
 \DoxyCodeLine{00020\ }
-\DoxyCodeLine{00021\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacehmap}{hmap}}}
-\DoxyCodeLine{00022\ \{}
-\DoxyCodeLine{00023\ }
-\DoxyCodeLine{00024\ \textcolor{comment}{//\ TODO\ clean\ up}}
+\DoxyCodeLine{00021\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{vector__utils_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacehmap}{hmap}}}
+\DoxyCodeLine{00024\ \{}
 \DoxyCodeLine{00025\ }
-\DoxyCodeLine{00026\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespacehmap_a0b7db6f8ce57fcdeca7ca1e3b7d1e686}{upperbound\_right}}(\textcolor{keyword}{const}\ std::vector<float>\ \&v,\ \textcolor{keywordtype}{float}\ value);}
+\DoxyCodeLine{00026\ \textcolor{comment}{//\ TODO\ clean\ up}}
 \DoxyCodeLine{00027\ }
-\DoxyCodeLine{00028\ std::vector<size\_t>\ \mbox{\hyperlink{namespacehmap_a8be122241fa42b0f6a7ef67106391780}{argsort}}(\textcolor{keyword}{const}\ std::vector<float>\ \&v);}
+\DoxyCodeLine{00028\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespacehmap_a0b7db6f8ce57fcdeca7ca1e3b7d1e686}{upperbound\_right}}(\textcolor{keyword}{const}\ std::vector<float>\ \&v,\ \textcolor{keywordtype}{float}\ value);}
 \DoxyCodeLine{00029\ }
-\DoxyCodeLine{00030\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00031\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_ad122242a8f8cf308215faee96c9471ee}{reindex\_vector}}(std::vector<T>\ \&v,\ std::vector<size\_t>\ \&idx)}
-\DoxyCodeLine{00032\ \{}
-\DoxyCodeLine{00033\ \ \ std::vector<T>\ v\_new(v.size());}
-\DoxyCodeLine{00034\ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ k\ =\ 0;\ k\ <\ v.size();\ k++)}
-\DoxyCodeLine{00035\ \ \ \ \ v\_new[k]\ =\ v[idx[k]];}
-\DoxyCodeLine{00036\ \ \ v\ =\ v\_new;}
-\DoxyCodeLine{00037\ \}}
-\DoxyCodeLine{00038\ }
-\DoxyCodeLine{00039\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_ac95d63662a6878f27011c0b4c7c70078}{vector\_unique\_values}}(std::vector<float>\ \&v);}
+\DoxyCodeLine{00030\ std::vector<size\_t>\ \mbox{\hyperlink{namespacehmap_a8be122241fa42b0f6a7ef67106391780}{argsort}}(\textcolor{keyword}{const}\ std::vector<float>\ \&v);}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00033\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_ad122242a8f8cf308215faee96c9471ee}{reindex\_vector}}(std::vector<T>\ \&v,\ std::vector<size\_t>\ \&idx)}
+\DoxyCodeLine{00034\ \{}
+\DoxyCodeLine{00035\ \ \ std::vector<T>\ v\_new(v.size());}
+\DoxyCodeLine{00036\ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ k\ =\ 0;\ k\ <\ v.size();\ k++)}
+\DoxyCodeLine{00037\ \ \ \ \ v\_new[k]\ =\ v[idx[k]];}
+\DoxyCodeLine{00038\ \ \ v\ =\ v\_new;}
+\DoxyCodeLine{00039\ \}}
 \DoxyCodeLine{00040\ }
-\DoxyCodeLine{00041\ std::string\ \mbox{\hyperlink{namespacehmap_a47f7c4ead587ead4a75c9c7f4fc4b079}{make\_histogram}}(\textcolor{keyword}{const}\ std::vector<float>\ \&values,}
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bin\_count,}
-\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ hist\_height);}
-\DoxyCodeLine{00044\ }
-\DoxyCodeLine{00045\ \}\ \textcolor{comment}{//\ namespace\ hmap}}
+\DoxyCodeLine{00041\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00042\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_ad465af1e2c3cc465b53657b457bf68a5}{shuffle\_vector}}(std::vector<T>\ \&values,\ std::uint32\_t\ seed)}
+\DoxyCodeLine{00043\ \{}
+\DoxyCodeLine{00044\ \ \ std::mt19937\ rng(seed);}
+\DoxyCodeLine{00045\ \ \ std::shuffle(values.begin(),\ values.end(),\ rng);}
+\DoxyCodeLine{00046\ \}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00049\ std::vector<T>\ \mbox{\hyperlink{namespacehmap_a0520c7ad885d5776f6e06ec12e7f1729}{shuffled\_vector}}(\textcolor{keyword}{const}\ std::vector<T>\ \&values,\ std::uint32\_t\ seed)}
+\DoxyCodeLine{00050\ \{}
+\DoxyCodeLine{00051\ \ \ std::vector<T>\ result\ =\ values;}
+\DoxyCodeLine{00052\ \ \ \mbox{\hyperlink{namespacehmap_ad465af1e2c3cc465b53657b457bf68a5}{shuffle\_vector}}(result,\ seed);}
+\DoxyCodeLine{00053\ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00054\ \}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_ac95d63662a6878f27011c0b4c7c70078}{vector\_unique\_values}}(std::vector<float>\ \&v);}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ std::string\ \mbox{\hyperlink{namespacehmap_a47f7c4ead587ead4a75c9c7f4fc4b079}{make\_histogram}}(\textcolor{keyword}{const}\ std::vector<float>\ \&values,}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bin\_count,}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ hist\_height);}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \}\ \textcolor{comment}{//\ namespace\ hmap}}
 
 \end{DoxyCode}

@@ -4,6 +4,8 @@ var vector__utils_8hpp =
     [ "upperbound_right", "vector__utils_8hpp.html#a0b7db6f8ce57fcdeca7ca1e3b7d1e686", null ],
     [ "argsort", "vector__utils_8hpp.html#a8be122241fa42b0f6a7ef67106391780", null ],
     [ "reindex_vector", "vector__utils_8hpp.html#ad122242a8f8cf308215faee96c9471ee", null ],
+    [ "shuffle_vector", "vector__utils_8hpp.html#ad465af1e2c3cc465b53657b457bf68a5", null ],
+    [ "shuffled_vector", "vector__utils_8hpp.html#a0520c7ad885d5776f6e06ec12e7f1729", null ],
     [ "vector_unique_values", "vector__utils_8hpp.html#ac95d63662a6878f27011c0b4c7c70078", null ],
     [ "make_histogram", "vector__utils_8hpp.html#a47f7c4ead587ead4a75c9c7f4fc4b079", null ]
 ];

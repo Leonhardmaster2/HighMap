@@ -40,6 +40,7 @@ var math_8hpp =
     [ "get_phasor_profile_function", "math_8hpp.html#a3e2e333ca90c11a997a9ac04361b1741", null ],
     [ "get_radial_profile_function", "math_8hpp.html#a6558dec0d9f57bbc8f9ef9b2fe324757", null ],
     [ "highest_power_of_2", "math_8hpp.html#a9ae209ce5746e99078078259955c7421", null ],
+    [ "is_equal", "math_8hpp.html#abf083eedad3497bd58486775bcf3e80d", null ],
     [ "is_non_zero", "math_8hpp.html#a339d883dc34fc818dd25077c5daab953", null ],
     [ "is_zero", "math_8hpp.html#a3a1e261b646c9df967e78fb77e5bf8c1", null ],
     [ "lerp", "math_8hpp.html#ad78d0f991f4f0eee67929b00469aea39", null ],
