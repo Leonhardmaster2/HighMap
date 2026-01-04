@@ -22,14 +22,8 @@ Array watershed_ridge(const Array &z,
   Array ze = z;
   Array ids = basin_id(z, hmap::FlowDirectionMethod::FDM_D8);
 
-  // mimic ridge with distance transform over reach basin
-  std::vector<float> unique_ids = ids.unique_values();
-
-  for (const auto &v : unique_ids)
-  {
-    Array mask = 1.f - is_equal(ids, v);
-    ze = maximum(ze, distance_transform(mask));
-  }
+  ze = border(ids, 1);
+  ze = distance_transform(ze);
   remap(ze);
 
   // apply it...
