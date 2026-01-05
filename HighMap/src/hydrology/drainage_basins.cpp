@@ -18,14 +18,11 @@ void DrainageBasins::accumulate(Array &acc) const
     // so we iterate backwards
     for (int k = int(basin.size()) - 1; k >= 0; --k)
     {
-      int i = basin[k].x;
-      int j = basin[k].y;
-
-      int ni = this->next_i(i, j);
-      int nj = this->next_j(i, j);
+      Vec2<int> c = basin[k];
+      Vec2<int> p = this->next(c);
 
       // propagate downstream
-      if (ni >= 0) acc(ni, nj) += acc(i, j);
+      if (p != this->null_cell) acc(p) += acc(c);
     }
   }
 }
@@ -52,8 +49,7 @@ void DrainageBasins::generate_traversal_d8(
   this->upstream_traversal.clear();
 
   const Vec2<int> shape = z.shape;
-  this->next_i = Mat<int>(shape, -1);
-  this->next_j = Mat<int>(shape, -1);
+  this->next = Mat<Vec2<int>>(shape, this->null_cell);
 
   const int   di[8] = {1, 1, 0, -1, -1, -1, 0, 1};
   const int   dj[8] = {0, -1, -1, -1, 0, 1, 1, 1};
@@ -86,18 +82,14 @@ void DrainageBasins::generate_traversal_d8(
         }
       }
 
-      this->next_i(i, j) = bi;
-      this->next_j(i, j) = bj;
+      this->next(i, j) = {bi, bj};
     }
 
   // prescribe some outlets
   if (!outlets.empty())
   {
     for (const auto &p : outlets)
-    {
-      this->next_i(p) = -1;
-      this->next_j(p) = -1;
-    }
+      this->next(p) = this->null_cell;
   }
 
   if (remove_lakes) this->remove_lakes_d8(z);
@@ -128,8 +120,7 @@ void DrainageBasins::generate_traversal_priority_flood(
 
   // algo
   const Vec2<int> shape = z.shape;
-  this->next_i = Mat<int>(shape, -1);
-  this->next_j = Mat<int>(shape, -1);
+  this->next = Mat<Vec2<int>>(shape, this->null_cell);
   Array basin_id(shape, -1);
 
   std::priority_queue<Node, std::vector<Node>, NodeCmp> pq;
@@ -180,8 +171,7 @@ void DrainageBasins::generate_traversal_priority_flood(
         basin_id(i, j) = bc;
         pq.push({i, j, std::max(z(i, j), c.z)});
 
-        this->next_i(i, j) = c.i;
-        this->next_j(i, j) = c.j;
+        this->next(i, j) = {c.i, c.j};
       }
     }
   }
@@ -194,10 +184,7 @@ void DrainageBasins::generate_traversal_priority_flood(
   if (!outlets.empty())
   {
     for (const auto &p : outlets)
-    {
-      this->next_i(p) = -1;
-      this->next_j(p) = -1;
-    }
+      this->next(p) = this->null_cell;
   }
 }
 
@@ -208,13 +195,13 @@ size_t DrainageBasins::get_basins_number() const
 
 std::vector<Vec2<int>> DrainageBasins::get_outlets() const
 {
-  const Vec2<int>        shape = this->next_i.shape;
+  const Vec2<int>        shape = this->next.shape;
   std::vector<Vec2<int>> outlets = {};
 
   for (int j = 0; j < shape.y; ++j)
     for (int i = 0; i < shape.x; ++i)
     {
-      if (this->next_i(i, j) < 0) outlets.push_back({i, j});
+      if (this->next(i, j) == this->null_cell) outlets.push_back({i, j});
     }
 
   return outlets;
@@ -222,7 +209,7 @@ std::vector<Vec2<int>> DrainageBasins::get_outlets() const
 
 std::vector<Vec2<int>> DrainageBasins::get_ridges()
 {
-  const Vec2<int>        shape = this->next_i.shape;
+  const Vec2<int>        shape = this->next.shape;
   std::vector<Vec2<int>> ridges;
 
   // --- get basin ids
@@ -263,7 +250,7 @@ std::vector<Vec2<int>> DrainageBasins::get_ridges()
 
 std::vector<std::vector<Vec2<int>>> DrainageBasins::get_ridges_neighbors()
 {
-  const Vec2<int>                     shape = this->next_i.shape;
+  const Vec2<int>                     shape = this->next.shape;
   std::vector<std::vector<Vec2<int>>> ridges;
 
   // --- get basin ids
@@ -339,7 +326,6 @@ void DrainageBasins::remove_lakes_d8(const Array &z,
 
   // --- find subroots (includes inner domain sinks)
 
-  Vec2<int>      null_cell(-1, -1);
   Mat<Vec2<int>> subroot(shape, null_cell);
 
   for (int j = 0; j < shape.y; ++j)
@@ -350,10 +336,10 @@ void DrainageBasins::remove_lakes_d8(const Array &z,
       std::vector<Vec2<int>> path;
       Vec2<int>              p = {i, j};
 
-      while ((subroot(p) == null_cell) && (this->next_i(p) != -1))
+      while ((subroot(p) == null_cell) && (this->next(p) != this->null_cell))
       {
         path.push_back(p);
-        p = {this->next_i(p), this->next_j(p)};
+        p = this->next(p);
       }
 
       // p is now either:
@@ -380,7 +366,7 @@ void DrainageBasins::remove_lakes_d8(const Array &z,
     for (int i = 0; i < shape.x; ++i)
     {
       if (i == 0 || j == 0 || i == shape.x - 1 || j == shape.y - 1)
-        if (this->next_i(i, j) == -1)
+        if (this->next(i, j) == this->null_cell)
         {
           root(i, j) = {i, j};
           pq.push({0.f, i, j});
@@ -397,19 +383,15 @@ void DrainageBasins::remove_lakes_d8(const Array &z,
     Vec2<int> current = start;
     Vec2<int> prev = outlet;
 
-    while (next_i(current) != -1)
+    while (next(current) != this->null_cell)
     {
-      Vec2<int> next = {next_i(current), next_j(current)};
-
-      next_i(current) = prev.x;
-      next_j(current) = prev.y;
-
+      Vec2<int> next = this->next(current);
+      this->next(current) = prev;
       prev = current;
       current = next;
     }
 
-    next_i(current) = prev.x;
-    next_j(current) = prev.y;
+    this->next(current) = prev;
   };
 
   // heap queue
@@ -461,9 +443,7 @@ void DrainageBasins::traverse_upstream(
     for (size_t k = 0; k < path.size(); ++k)
     {
       auto [i, j] = path[k];
-
-      int ni = this->next_i(i, j);
-      int nj = this->next_j(i, j);
+      auto [ni, nj] = this->next(i, j);
 
       if (ni >= 0) op(i, j, ni, nj, basin_id);
     }
@@ -498,11 +478,8 @@ void DrainageBasins::traverse_downstream(
     // so we iterate backwards
     for (int k = int(basin.size()) - 1; k >= 0; --k)
     {
-      int i = basin[k].x;
-      int j = basin[k].y;
-
-      int ni = this->next_i(i, j);
-      int nj = this->next_j(i, j);
+      auto [i, j] = basin[k];
+      auto [ni, nj] = this->next(i, j);
 
       if (ni >= 0) op(i, j, ni, nj, basin_id);
     }
@@ -521,8 +498,7 @@ void DrainageBasins::traverse_downstream(
     // so we iterate backwards
     for (int k = int(basin.size()) - 1; k >= 0; --k)
     {
-      int i = basin[k].x;
-      int j = basin[k].y;
+      auto [i, j] = basin[k];
       op(i, j, basin_id);
     }
   }
@@ -530,7 +506,7 @@ void DrainageBasins::traverse_downstream(
 
 void DrainageBasins::update_traversal()
 {
-  const Vec2<int> shape = this->next_i.shape;
+  const Vec2<int> shape = this->next.shape;
   Mat<int>        basin_id(shape, -1);
 
   this->upstream_traversal.clear();
@@ -541,7 +517,7 @@ void DrainageBasins::update_traversal()
   for (int j = 0; j < shape.y; ++j)
     for (int i = 0; i < shape.x; ++i)
     {
-      if (this->next_i(i, j) == -1)
+      if (this->next(i, j) == this->null_cell)
       {
         basin_id(i, j) = basin_counter++;
 
@@ -571,7 +547,7 @@ void DrainageBasins::update_traversal()
 
         if (i < 0 || j < 0 || i >= shape.x || j >= shape.y) continue;
 
-        if (this->next_i(i, j) == p.x && this->next_j(i, j) == p.y)
+        if (this->next(i, j) == p)
           this->upstream_traversal[bid].push_back({i, j});
       }
       count++;

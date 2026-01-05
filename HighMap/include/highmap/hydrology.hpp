@@ -40,8 +40,8 @@ class DrainageBasins
 {
 public:
   std::vector<std::vector<Vec2<int>>> upstream_traversal;
-  Mat<int>                            next_i = Mat<int>({0, 0});
-  Mat<int>                            next_j = Mat<int>({0, 0});
+  Mat<Vec2<int>>                      next = Mat<Vec2<int>>({0, 0});
+  Vec2<int>                           null_cell = Vec2<int>(-1, -1);
 
   size_t                              get_basins_number() const;
   std::vector<Vec2<int>>              get_outlets() const;
