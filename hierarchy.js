@@ -61,7 +61,7 @@ var hierarchy =
     [ "hmap::Interpolator1D", "classhmap_1_1Interpolator1D.html", null ],
     [ "hmap::InterpolatorCurve", "classhmap_1_1InterpolatorCurve.html", null ],
     [ "hmap::Mat< T >", "structhmap_1_1Mat.html", null ],
-    [ "hmap::Mat< int >", "structhmap_1_1Mat.html", null ],
+    [ "hmap::Mat< hmap::Vec2< int > >", "structhmap_1_1Mat.html", null ],
     [ "hmap::Particle", "structhmap_1_1Particle.html", null ],
     [ "hmap::Point", "classhmap_1_1Point.html", null ],
     [ "hmap::Pos", "structhmap_1_1Pos.html", null ],

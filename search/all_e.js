@@ -13,7 +13,7 @@ var searchData=
   ['map_5fto_5fglobal_5fcoords_10',['map_to_global_coords',['../classhmap_1_1CoordFrame.html#a695f820d6db87e1502cb6562a4e37586',1,'hmap::CoordFrame']]],
   ['map_5fto_5frelative_5fcoords_11',['map_to_relative_coords',['../classhmap_1_1CoordFrame.html#a714e286bb111d3055ea4a4976ebeb43a',1,'hmap::CoordFrame']]],
   ['mat_12',['mat',['../structhmap_1_1Mat.html',1,'hmap::Mat&lt; T &gt;'],['../structhmap_1_1Mat.html#a1a61160398cf1ce3e19b06605ac2c27f',1,'hmap::Mat::Mat(Vec2&lt; int &gt; shape)'],['../structhmap_1_1Mat.html#aa425a1ad1a875f46639973d24216f346',1,'hmap::Mat::Mat(Vec2&lt; int &gt; shape, T value)']]],
-  ['mat_3c_20int_20_3e_13',['Mat&lt; int &gt;',['../structhmap_1_1Mat.html',1,'hmap']]],
+  ['mat_3c_20hmap_3a_3avec2_3c_20int_20_3e_20_3e_13',['Mat&lt; hmap::Vec2&lt; int &gt; &gt;',['../structhmap_1_1Mat.html',1,'hmap']]],
   ['match_5fhistogram_14',['match_histogram',['../namespacehmap.html#a8afd3d81a238c8a5d10059b3a029554e',1,'hmap']]],
   ['math_2ecpp_15',['math.cpp',['../math_8cpp.html',1,'']]],
   ['math_2ehpp_16',['math.hpp',['../math_8hpp.html',1,'']]],

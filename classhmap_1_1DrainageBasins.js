@@ -13,6 +13,6 @@ var classhmap_1_1DrainageBasins =
     [ "traverse_upstream", "classhmap_1_1DrainageBasins.html#a8f16f5fb5a6e340a9ca10dc2046ba11d", null ],
     [ "traverse_upstream", "classhmap_1_1DrainageBasins.html#afa727d5dc6f6ebede65fe8983ca1490a", null ],
     [ "upstream_traversal", "classhmap_1_1DrainageBasins.html#aa53e3dff71d7c9f9c42888b628183a26", null ],
-    [ "next_i", "classhmap_1_1DrainageBasins.html#aac5854dfab34a517a06e02e2fde7fc9e", null ],
-    [ "next_j", "classhmap_1_1DrainageBasins.html#a24af70c52210deb3c37df578b6db4db3", null ]
+    [ "next", "classhmap_1_1DrainageBasins.html#aa0eb57907d1858bdf8a095f62b2b2587", null ],
+    [ "null_cell", "classhmap_1_1DrainageBasins.html#adcd6d1d0e2daf16f7f5bd317829644b5", null ]
 ];
