@@ -7,6 +7,28 @@
 namespace hmap
 {
 
+void find_flow_apex(const Array &z, std::vector<int> &is, std::vector<int> &js)
+{
+  Array d8 = flow_direction_d8(z);
+  Array nidp = d8_compute_ndip(d8);
+
+  is.clear();
+  js.clear();
+
+  const int nx = z.shape.x;
+  const int ny = z.shape.y;
+
+  for (int j = 0; j < ny; ++j)
+    for (int i = 0; i < nx; ++i)
+    {
+      if (nidp(i, j) == 0)
+      {
+        is.push_back(i);
+        js.push_back(j);
+      }
+    }
+}
+
 void find_flow_sinks(const Array &z, std::vector<int> &is, std::vector<int> &js)
 {
   is.clear();

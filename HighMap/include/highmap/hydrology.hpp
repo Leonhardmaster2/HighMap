@@ -115,6 +115,19 @@ Array basin_id(const Array        &z,
 Array d8_compute_ndip(const Array &d8);
 
 /**
+ * @brief Identifies flow apex (source) cells using D8 flow routing.
+ *
+ * A flow apex is defined as a cell with zero inflow neighbors (no upstream
+ * contributors) in the D8 flow graph. These cells correspond to drainage
+ * sources, ridge heads, or local flow origins.
+ *
+ * @param z  Input elevation field.
+ * @param is Output x-coordinates of flow apex cells.
+ * @param js Output y-coordinates of flow apex cells.
+ */
+void find_flow_apex(const Array &z, std::vector<int> &is, std::vector<int> &js);
+
+/**
  * @brief Identifies the indices of flow sinks within the heightmap.
  *
  * This function locates the cells in the heightmap that are flow sinks (cells

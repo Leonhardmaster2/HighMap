@@ -10,7 +10,7 @@ int main(void)
 
   hmap::Array z0 = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, res, seed);
   // hmap::clamp_min(z0, 0.f);
-  // z0 = hmap::bulkify(z0, hmap::PrimitiveType::PRIM_CUBIC_PULSE, 1.f);
+  z0 = hmap::bulkify(z0, hmap::PrimitiveType::PRIM_CUBIC_PULSE, 1.f);
   hmap::remap(z0);
 
   auto z1 = z0;

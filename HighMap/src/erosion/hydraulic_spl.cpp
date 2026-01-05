@@ -8,7 +8,6 @@
 #include "highmap/filters.hpp"
 #include "highmap/hydrology.hpp"
 #include "highmap/range.hpp"
-#include "highmap/selector.hpp"
 
 namespace hmap
 {
@@ -19,15 +18,16 @@ void hydraulic_spl(Array &z)
   FlowDirectionMethod fd_method = FlowDirectionMethod::FDM_D8;
   // fd_method = FlowDirectionMethod::FDM_PRIORITY_FLOOD;
   bool  remove_lakes = true;
-  float m_exp = 0.1f;
-  float uplift_rate = 1e-1f;
+  float m_exp = 0.3f;
+  float uplift_rate = 2.f / z.shape.x;
   bool  preserve_elevation_range = true;
   Array talus = Array(z.shape, 4.f / z.shape.x);
   Array erodability(z.shape, 1.f);
 
   //
   erodability = 1.f - z; // maximum(1.f - z, 0.01f);
-  // erodability.to_png("ero.png", Cmap::MAGMA);
+  // erodability = 1.f - relative_elevation(z, 16);
+  erodability.to_png("ero.png", Cmap::MAGMA);
 
   // talus = z;
   // remap(talus, 0.1f / z.shape.x, 2.f / z.shape.x);
@@ -101,10 +101,9 @@ void hydraulic_spl(Array &z)
       const Vec2<int> outlet = traversal.front();
 
       // uplift
-      float uplift_rate_local = std::min(uplift_rate, 0.5f * talus(i, j));
       float z_out = z(outlet.x, outlet.y);
       float dt = response_time(i, j) - response_time(outlet);
-      float new_z = z_out + uplift_rate_local * dt;
+      float new_z = z_out + uplift_rate * dt;
 
       // talus limiter
       float dist = std::hypot(i_next - i, j_next - j);
@@ -124,6 +123,7 @@ void hydraulic_spl(Array &z)
   z.infos();
 
   extrapolate_borders(z); // remove outlets with no donor
+  laplace(z, 0.1f);
   if (preserve_elevation_range) remap(z, zmin, zmax);
 }
 
