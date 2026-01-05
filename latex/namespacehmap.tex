@@ -1087,6 +1087,8 @@ void \mbox{\hyperlink{namespacehmap_a3438427cf944820ce19e7ca9ce438985}{transform
 \begin{DoxyCompactList}\small\item\em Label drainage basins using a priority-\/flood algorithm. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a2e0533063a77bfc047472d1d85f3f63c}{d8\+\_\+compute\+\_\+ndip}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&d8)
 \begin{DoxyCompactList}\small\item\em Computes the number of drainage paths for each cell based on the D8 flow direction model. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacehmap_a05b9777b63947937181d7b7406e4b50d}{find\+\_\+flow\+\_\+apex}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, std\+::vector$<$ int $>$ \&is, std\+::vector$<$ int $>$ \&js)
+\begin{DoxyCompactList}\small\item\em Identifies flow apex (source) cells using D8 flow routing. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_ae42a874864d2d8f1a7b580f428395c01}{find\+\_\+flow\+\_\+sinks}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, std\+::vector$<$ int $>$ \&is, std\+::vector$<$ int $>$ \&js)
 \begin{DoxyCompactList}\small\item\em Identifies the indices of flow sinks within the heightmap. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a2318944325d02f3969aa7fa58b500278}{flooding\+\_\+uniform\+\_\+level}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, float zref)
@@ -17074,6 +17076,27 @@ This function calculates the number of neighboring cells that have flow directio
 \begin{DoxyReturn}{Returns}
 \doxylink{classhmap_1_1Array}{Array} An array where each cell contains the number of incoming flow directions pointing to it. 
 \end{DoxyReturn}
+\Hypertarget{namespacehmap_a05b9777b63947937181d7b7406e4b50d}\label{namespacehmap_a05b9777b63947937181d7b7406e4b50d} 
+\index{hmap@{hmap}!find\_flow\_apex@{find\_flow\_apex}}
+\index{find\_flow\_apex@{find\_flow\_apex}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{find\_flow\_apex()}{find\_flow\_apex()}}
+{\footnotesize\ttfamily void hmap\+::find\+\_\+flow\+\_\+apex (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{std\+::vector$<$ int $>$ \&}]{is,  }\item[{std\+::vector$<$ int $>$ \&}]{js }\end{DoxyParamCaption})}
+
+
+
+Identifies flow apex (source) cells using D8 flow routing. 
+
+A flow apex is defined as a cell with zero inflow neighbors (no upstream contributors) in the D8 flow graph. These cells correspond to drainage sources, ridge heads, or local flow origins.
+
+
+\begin{DoxyParams}{Parameters}
+{\em z} & Input elevation field. \\
+\hline
+{\em is} & Output x-\/coordinates of flow apex cells. \\
+\hline
+{\em js} & Output y-\/coordinates of flow apex cells. \\
+\hline
+\end{DoxyParams}
 \Hypertarget{namespacehmap_ae42a874864d2d8f1a7b580f428395c01}\label{namespacehmap_ae42a874864d2d8f1a7b580f428395c01} 
 \index{hmap@{hmap}!find\_flow\_sinks@{find\_flow\_sinks}}
 \index{find\_flow\_sinks@{find\_flow\_sinks}!hmap@{hmap}}

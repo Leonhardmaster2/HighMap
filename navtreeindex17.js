@@ -1,5 +1,8 @@
 var NAVTREEINDEX17 =
 {
+"signed__curvature__from__distance_8cpp.html#ad4ab7bb38b3ea37fa912190251c1ed76":[5,0,1,1,22,5,1],
+"signed__curvature__from__distance_8cpp.html#afffb85b7bc6b9884cd00254c122da8e6":[5,0,1,1,22,5,2],
+"solve__poisson__gauss__seidel_8cpp.html":[5,0,1,1,16,4],
 "solve__poisson__gauss__seidel_8cpp.html#a0bcc84aa462aee73e1a3a52729f21ea6":[5,0,1,1,16,4,0],
 "stamping_8cpp.html":[5,0,1,1,1,5],
 "stamping_8cpp.html#a52fe1241da6ece981af7a368ef3ad0c4":[5,0,1,1,1,5,0],
@@ -246,8 +249,5 @@ var NAVTREEINDEX17 =
 "structhmap_1_1Vec3.html#a5a205b4be12023e538d6bbb22f57834f":[3,0,0,56,8],
 "structhmap_1_1Vec3.html#a5dc78c2ba3f2bf3ca489aac6841e646c":[4,0,0,55,19],
 "structhmap_1_1Vec3.html#a5dc78c2ba3f2bf3ca489aac6841e646c":[3,0,0,56,19],
-"structhmap_1_1Vec3.html#a5ec51f4e17f7907e577b0330ef11674f":[3,0,0,56,1],
-"structhmap_1_1Vec3.html#a5ec51f4e17f7907e577b0330ef11674f":[4,0,0,55,1],
-"structhmap_1_1Vec3.html#a7a06f9922471cdffba177cc01602a547":[3,0,0,56,12],
-"structhmap_1_1Vec3.html#a7a06f9922471cdffba177cc01602a547":[4,0,0,55,12]
+"structhmap_1_1Vec3.html#a5ec51f4e17f7907e577b0330ef11674f":[3,0,0,56,1]
 };

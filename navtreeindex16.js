@@ -1,5 +1,8 @@
 var NAVTREEINDEX16 =
 {
+"primitives__gpu_8cpp.html#a2a14aa1a12ce7308b7cb553ea89b836d":[5,0,1,1,26,11,23],
+"primitives__gpu_8cpp.html#a322260e971f4dec19ec8bc270e7cc461":[5,0,1,1,26,11,12],
+"primitives__gpu_8cpp.html#a450f5b26f42b6f06be3e1e131f6aaf86":[5,0,1,1,26,11,11],
 "primitives__gpu_8cpp.html#a4927a1382b383a5ceb9071f51bd5abf9":[5,0,1,1,26,11,14],
 "primitives__gpu_8cpp.html#a50332f79ca9b2548089359f5ad4b8ffd":[5,0,1,1,26,11,10],
 "primitives__gpu_8cpp.html#a50db0e092d6e8d147a587b18ee7ea743":[5,0,1,1,26,11,1],
@@ -246,8 +249,5 @@ var NAVTREEINDEX16 =
 "shortest__path_8hpp_source.html":[5,0,1,0,0,37],
 "signed__curvature__from__distance_8cpp.html":[5,0,1,1,22,5],
 "signed__curvature__from__distance_8cpp.html#a76cfd96b971a288964561449d83e21aa":[5,0,1,1,22,5,3],
-"signed__curvature__from__distance_8cpp.html#ac56515202b30368216c7324b819cc838":[5,0,1,1,22,5,0],
-"signed__curvature__from__distance_8cpp.html#ad4ab7bb38b3ea37fa912190251c1ed76":[5,0,1,1,22,5,1],
-"signed__curvature__from__distance_8cpp.html#afffb85b7bc6b9884cd00254c122da8e6":[5,0,1,1,22,5,2],
-"solve__poisson__gauss__seidel_8cpp.html":[5,0,1,1,16,4]
+"signed__curvature__from__distance_8cpp.html#ac56515202b30368216c7324b819cc838":[5,0,1,1,22,5,0]
 };

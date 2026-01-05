@@ -785,6 +785,7 @@ var namespacehmap =
     [ "transform", "namespacehmap.html#a3438427cf944820ce19e7ca9ce438985", null ],
     [ "basin_id", "namespacehmap.html#a8284b00f1f460f1d5a406ee45587dcd9", null ],
     [ "d8_compute_ndip", "namespacehmap.html#a2e0533063a77bfc047472d1d85f3f63c", null ],
+    [ "find_flow_apex", "namespacehmap.html#a05b9777b63947937181d7b7406e4b50d", null ],
     [ "find_flow_sinks", "namespacehmap.html#ae42a874864d2d8f1a7b580f428395c01", null ],
     [ "flooding_uniform_level", "namespacehmap.html#a2318944325d02f3969aa7fa58b500278", null ],
     [ "flooding_from_boundaries", "namespacehmap.html#a2b57b45ea7a8a48b43443aa4d1dddbe8", null ],

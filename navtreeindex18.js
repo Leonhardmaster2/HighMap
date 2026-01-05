@@ -1,5 +1,8 @@
 var NAVTREEINDEX18 =
 {
+"structhmap_1_1Vec3.html#a5ec51f4e17f7907e577b0330ef11674f":[4,0,0,55,1],
+"structhmap_1_1Vec3.html#a7a06f9922471cdffba177cc01602a547":[3,0,0,56,12],
+"structhmap_1_1Vec3.html#a7a06f9922471cdffba177cc01602a547":[4,0,0,55,12],
 "structhmap_1_1Vec3.html#a7ca52e92edc62504e79bcb27e3f52808":[3,0,0,56,2],
 "structhmap_1_1Vec3.html#a7ca52e92edc62504e79bcb27e3f52808":[4,0,0,55,2],
 "structhmap_1_1Vec3.html#a84d1d7ff97f75cb998c1182493c1f6cd":[3,0,0,56,0],
