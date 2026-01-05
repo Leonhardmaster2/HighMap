@@ -10,12 +10,8 @@
 namespace hmap
 {
 
-// TODO define next_i for priority flood
-
-void DrainageBasins::accumulate(const Array &to_accumulate, Array &acc) const
+void DrainageBasins::accumulate(Array &acc) const
 {
-  acc = Array(to_accumulate.shape, 0.f);
-
   for (const auto &basin : this->upstream_traversal)
   {
     // basin order is downstream → upstream
@@ -24,8 +20,6 @@ void DrainageBasins::accumulate(const Array &to_accumulate, Array &acc) const
     {
       int i = basin[k].x;
       int j = basin[k].y;
-
-      acc(i, j) += to_accumulate(i, j);
 
       int ni = this->next_i(i, j);
       int nj = this->next_j(i, j);
@@ -36,35 +30,24 @@ void DrainageBasins::accumulate(const Array &to_accumulate, Array &acc) const
   }
 }
 
-Mat<std::vector<Vec2<int>>> DrainageBasins::build_upstream_adjacency()
-{
-  const Vec2<int>             shape = this->next_i.shape;
-  Mat<std::vector<Vec2<int>>> upstream(shape);
-
-  for (int j = 0; j < shape.y; ++j)
-    for (int i = 0; i < shape.x; ++i)
-    {
-      int ni = this->next_i(i, j);
-      int nj = this->next_j(i, j);
-
-      if (ni >= 0) upstream(ni, nj).push_back(Vec2<int>(i, j));
-    }
-
-  return upstream;
-}
-
 void DrainageBasins::generate_traversal(const Array        &z,
                                         FlowDirectionMethod fd_method,
-                                        bool                remove_lakes)
+                                        bool                remove_lakes,
+                                        const std::vector<Vec2<int>> &outlets)
 {
   switch (fd_method)
   {
-  case FDM_D8: this->generate_traversal_d8(z, remove_lakes); break;
-  case FDM_PRIORITY_FLOOD: this->generate_traversal_priority_flood(z); break;
+  case FDM_D8: this->generate_traversal_d8(z, remove_lakes, outlets); break;
+  case FDM_PRIORITY_FLOOD:
+    this->generate_traversal_priority_flood(z, outlets);
+    break;
   }
 }
 
-void DrainageBasins::generate_traversal_d8(const Array &z, bool remove_lakes)
+void DrainageBasins::generate_traversal_d8(
+    const Array                  &z,
+    bool                          remove_lakes,
+    const std::vector<Vec2<int>> &outlets)
 {
   this->upstream_traversal.clear();
 
@@ -107,11 +90,23 @@ void DrainageBasins::generate_traversal_d8(const Array &z, bool remove_lakes)
       this->next_j(i, j) = bj;
     }
 
+  // prescribe some outlets
+  if (!outlets.empty())
+  {
+    for (const auto &p : outlets)
+    {
+      this->next_i(p) = -1;
+      this->next_j(p) = -1;
+    }
+  }
+
   if (remove_lakes) this->remove_lakes_d8(z);
   this->update_traversal();
 }
 
-void DrainageBasins::generate_traversal_priority_flood(const Array &z)
+void DrainageBasins::generate_traversal_priority_flood(
+    const Array                  &z,
+    const std::vector<Vec2<int>> &outlets)
 {
   this->upstream_traversal.clear();
 
@@ -193,12 +188,121 @@ void DrainageBasins::generate_traversal_priority_flood(const Array &z)
 
   // NB - upstream traversal already updated above and no need to
   // remove lakes since the priority flood already ensures there is no
-  // lakes
+  // lakes, unless outlets habe changed
+
+  // prescribe some outlets
+  if (!outlets.empty())
+  {
+    for (const auto &p : outlets)
+    {
+      this->next_i(p) = -1;
+      this->next_j(p) = -1;
+    }
+  }
 }
 
 size_t DrainageBasins::get_basins_number() const
 {
   return this->upstream_traversal.size();
+}
+
+std::vector<Vec2<int>> DrainageBasins::get_outlets() const
+{
+  const Vec2<int>        shape = this->next_i.shape;
+  std::vector<Vec2<int>> outlets = {};
+
+  for (int j = 0; j < shape.y; ++j)
+    for (int i = 0; i < shape.x; ++i)
+    {
+      if (this->next_i(i, j) < 0) outlets.push_back({i, j});
+    }
+
+  return outlets;
+}
+
+std::vector<Vec2<int>> DrainageBasins::get_ridges()
+{
+  const Vec2<int>        shape = this->next_i.shape;
+  std::vector<Vec2<int>> ridges;
+
+  // --- get basin ids
+
+  Mat<int> ids(shape);
+  auto lambda = [&ids](int i, int j, int basin_id) { ids(i, j) = basin_id; };
+  this->traverse_upstream(lambda);
+
+  // --- tag ridges
+
+  const int di[8] = {1, 1, 0, -1, -1, -1, 0, 1};
+  const int dj[8] = {0, -1, -1, -1, 0, 1, 1, 1};
+
+  auto is_inside = [&shape](int i, int j)
+  { return i >= 0 && i < shape.x && j >= 0 && j < shape.y; };
+
+  for (int j = 0; j < shape.y; ++j)
+    for (int i = 0; i < shape.x; ++i)
+    {
+      int                    current_id = ids(i, j);
+      std::vector<Vec2<int>> ridge_neighbors = {};
+
+      for (int k = 0; k < 8; ++k)
+      {
+        int ni = i + di[k];
+        int nj = j + dj[k];
+
+        if (ids(ni, nj) != current_id && is_inside(ni, nj))
+        {
+          ridges.push_back({i, j});
+          break;
+        }
+      }
+    }
+
+  return ridges;
+}
+
+std::vector<std::vector<Vec2<int>>> DrainageBasins::get_ridges_neighbors()
+{
+  const Vec2<int>                     shape = this->next_i.shape;
+  std::vector<std::vector<Vec2<int>>> ridges;
+
+  // --- get basin ids
+
+  Mat<int> ids(shape);
+  auto lambda = [&ids](int i, int j, int basin_id) { ids(i, j) = basin_id; };
+  this->traverse_upstream(lambda);
+
+  // --- tag ridges
+
+  const int di[8] = {1, 1, 0, -1, -1, -1, 0, 1};
+  const int dj[8] = {0, -1, -1, -1, 0, 1, 1, 1};
+
+  auto is_inside = [&shape](int i, int j)
+  { return i >= 0 && i < shape.x && j >= 0 && j < shape.y; };
+
+  for (int j = 0; j < shape.y; ++j)
+    for (int i = 0; i < shape.x; ++i)
+    {
+      int                    current_id = ids(i, j);
+      std::vector<Vec2<int>> ridge_neighbors = {};
+
+      for (int k = 0; k < 8; ++k)
+      {
+        int ni = i + di[k];
+        int nj = j + dj[k];
+
+        if (ids(ni, nj) != current_id && is_inside(ni, nj))
+          ridge_neighbors.push_back({ni, nj});
+      }
+
+      if (!ridge_neighbors.empty())
+      {
+        ridge_neighbors.push_back({i, j}); // ref pt at the end
+        ridges.push_back(ridge_neighbors);
+      }
+    }
+
+  return ridges;
 }
 
 void DrainageBasins::remove_lakes_d8(const Array &z,
@@ -346,81 +450,6 @@ void DrainageBasins::remove_lakes_d8(const Array &z,
   }
 }
 
-void DrainageBasins::update_traversal()
-{
-  const Vec2<int> shape = this->next_i.shape;
-
-  Mat<int> basin_id(shape, -1);
-
-  // --- identify outlets (no downslope neighbor)
-
-  int basin_counter = 0;
-  for (int j = 0; j < shape.y; ++j)
-    for (int i = 0; i < shape.x; ++i)
-    {
-      if (this->next_i(i, j) == -1) basin_id(i, j) = basin_counter++;
-    }
-
-  this->upstream_traversal.resize(basin_counter);
-
-  // --- propagate basin ids upstream (iterative relaxation)
-
-  bool updated = true;
-  while (updated)
-  {
-    updated = false;
-
-    for (int j = 0; j < shape.y; ++j)
-      for (int i = 0; i < shape.x; ++i)
-      {
-        if (basin_id(i, j) != -1) continue;
-
-        int ni = this->next_i(i, j);
-        int nj = this->next_j(i, j);
-
-        if (ni >= 0 && basin_id(ni, nj) != -1)
-        {
-          basin_id(i, j) = basin_id(ni, nj);
-          updated = true;
-        }
-      }
-  }
-
-  // --- build upstream adjacency
-
-  Mat<std::vector<Vec2<int>>> upstream = this->build_upstream_adjacency();
-
-  // --- build traversal per basin (BFS, receiver-respecting)
-
-  std::queue<Vec2<int>> queue;
-  Mat<int>              visited(shape, 0);
-
-  // initialize queue with outlets and sinks
-  for (int j = 0; j < shape.y; ++j)
-    for (int i = 0; i < shape.x; ++i)
-      if (next_i(i, j) == -1)
-      {
-        queue.push({i, j});
-        visited(i, j) = 1;
-      }
-
-  while (!queue.empty())
-  {
-    auto [ci, cj] = queue.front();
-    queue.pop();
-    int b = basin_id(ci, cj);
-    visited(ci, cj) = 1;
-
-    this->upstream_traversal[b].push_back({ci, cj});
-
-    for (const auto &u : upstream(ci, cj))
-    {
-      if (visited(u.x, u.y)) continue;
-      queue.push(u);
-    }
-  }
-}
-
 void DrainageBasins::traverse_upstream(
     std::function<void(int i, int j, int i_next, int j_next, int basin_id)> op)
 {
@@ -428,13 +457,15 @@ void DrainageBasins::traverse_upstream(
        ++basin_id)
   {
     const auto &path = this->upstream_traversal[basin_id];
-    if (path.size() < 2) continue;
 
-    for (size_t k = 0; k + 1 < path.size(); ++k)
+    for (size_t k = 0; k < path.size(); ++k)
     {
       auto [i, j] = path[k];
-      auto [i_next, j_next] = path[k + 1];
-      op(i, j, i_next, j_next, basin_id);
+
+      int ni = this->next_i(i, j);
+      int nj = this->next_j(i, j);
+
+      if (ni >= 0) op(i, j, ni, nj, basin_id);
     }
   }
 }
@@ -450,7 +481,7 @@ void DrainageBasins::traverse_upstream(
     for (size_t k = 0; k < path.size(); ++k)
     {
       auto [i, j] = path[k];
-      op(i, j, basin_id);
+      op(i, j, int(basin_id));
     }
   }
 }
@@ -461,14 +492,19 @@ void DrainageBasins::traverse_downstream(
   for (size_t basin_id = 0; basin_id < this->upstream_traversal.size();
        ++basin_id)
   {
-    const auto &path = this->upstream_traversal[basin_id];
-    if (path.size() < 2) continue;
+    const auto &basin = this->upstream_traversal[basin_id];
 
-    for (size_t k = path.size() - 1; k > 0; --k)
+    // basin order is downstream → upstream
+    // so we iterate backwards
+    for (int k = int(basin.size()) - 1; k >= 0; --k)
     {
-      auto [i, j] = path[k];
-      auto [i_next, j_next] = path[k - 1];
-      op(i, j, i_next, j_next, basin_id);
+      int i = basin[k].x;
+      int j = basin[k].y;
+
+      int ni = this->next_i(i, j);
+      int nj = this->next_j(i, j);
+
+      if (ni >= 0) op(i, j, ni, nj, basin_id);
     }
   }
 }
@@ -479,14 +515,78 @@ void DrainageBasins::traverse_downstream(
   for (size_t basin_id = 0; basin_id < this->upstream_traversal.size();
        ++basin_id)
   {
-    const auto &path = this->upstream_traversal[basin_id];
+    const auto &basin = this->upstream_traversal[basin_id];
 
-    for (size_t k = path.size(); k-- > 0;)
+    // basin order is downstream → upstream
+    // so we iterate backwards
+    for (int k = int(basin.size()) - 1; k >= 0; --k)
     {
-      auto [i, j] = path[k];
+      int i = basin[k].x;
+      int j = basin[k].y;
       op(i, j, basin_id);
     }
   }
+}
+
+void DrainageBasins::update_traversal()
+{
+  const Vec2<int> shape = this->next_i.shape;
+  Mat<int>        basin_id(shape, -1);
+
+  this->upstream_traversal.clear();
+
+  // --- identify outlets (no downslope neighbor)
+
+  int basin_counter = 0;
+  for (int j = 0; j < shape.y; ++j)
+    for (int i = 0; i < shape.x; ++i)
+    {
+      if (this->next_i(i, j) == -1)
+      {
+        basin_id(i, j) = basin_counter++;
+
+        if (int(this->upstream_traversal.size()) <= basin_id(i, j))
+          this->upstream_traversal.resize(basin_id(i, j) + 1);
+        this->upstream_traversal[basin_id(i, j)].push_back({i, j});
+      }
+    }
+
+  // --- propagate upstream
+
+  const int di[8] = {1, 1, 0, -1, -1, -1, 0, 1};
+  const int dj[8] = {0, -1, -1, -1, 0, 1, 1, 1};
+
+  for (size_t bid = 0; bid < this->upstream_traversal.size(); ++bid)
+  {
+    size_t count = 0;
+
+    while (count < this->upstream_traversal[bid].size())
+    {
+      Vec2<int> p = this->upstream_traversal[bid][count];
+      for (int k = 0; k < 8; ++k)
+      {
+        // add upstream nodes whose receiver points to 'p'
+        int i = p.x + di[k];
+        int j = p.y + dj[k];
+
+        if (i < 0 || j < 0 || i >= shape.x || j >= shape.y) continue;
+
+        if (this->next_i(i, j) == p.x && this->next_j(i, j) == p.y)
+          this->upstream_traversal[bid].push_back({i, j});
+      }
+      count++;
+    }
+  }
+
+  // fail check
+  size_t ctot = 0;
+  for (auto vec : this->upstream_traversal)
+    ctot += vec.size();
+
+  if (int(ctot) != shape.x * shape.y)
+    LOG_ERROR("DrainageBasins::update_traversal: wrong count: %ld, %d",
+              ctot,
+              shape.x * shape.y);
 }
 
 } // namespace hmap

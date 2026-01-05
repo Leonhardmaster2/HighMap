@@ -249,6 +249,16 @@ public:
     return this->vector[j * this->shape.x + i];
   }
 
+  float &operator()(Vec2<int> ij)
+  {
+    return this->vector[ij.y * this->shape.x + ij.x];
+  }
+
+  const float &operator()(Vec2<int> ij) const
+  {
+    return this->vector[ij.y * this->shape.x + ij.x];
+  }
+
   /**
    * @brief Overloads the function call operator to access the array value at
    * the linear index 'index' (const version).

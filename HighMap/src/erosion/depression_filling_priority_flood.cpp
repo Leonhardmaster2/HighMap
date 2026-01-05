@@ -19,7 +19,7 @@ void depression_filling_priority_flood(Array &z)
   auto lambda = [&z](int i, int j, int i_next, int j_next, int /* basin_id */)
   {
     float new_z = std::max(z(i_next, j_next), z(i, j));
-    z(i_next, j_next) = new_z;
+    z(i, j) = new_z;
   };
 
   basins.traverse_upstream(lambda);

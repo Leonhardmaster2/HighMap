@@ -570,6 +570,8 @@ void hydraulic_procedural(
     float          vmin = 0.f,
     float          vmax = -1.f);
 
+void hydraulic_spl(Array &z);
+
 /**
  * @brief Apply hydraulic erosion based on a flow accumulation map.
  *

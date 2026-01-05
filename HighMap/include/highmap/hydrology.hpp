@@ -43,28 +43,35 @@ public:
   Mat<int>                            next_i = Mat<int>({0, 0});
   Mat<int>                            next_j = Mat<int>({0, 0});
 
-  size_t get_basins_number() const;
+  size_t                              get_basins_number() const;
+  std::vector<Vec2<int>>              get_outlets() const;
+  std::vector<Vec2<int>>              get_ridges();
+  std::vector<std::vector<Vec2<int>>> get_ridges_neighbors();
 
   void generate_traversal(
-      const Array        &z,
-      FlowDirectionMethod fd_method = FlowDirectionMethod::FDM_D8,
-      bool                remove_lakes = true);
+      const Array                  &z,
+      FlowDirectionMethod           fd_method = FlowDirectionMethod::FDM_D8,
+      bool                          remove_lakes = true,
+      const std::vector<Vec2<int>> &outlets = {});
 
-  void generate_traversal_d8(const Array &z, bool remove_lakes = true);
-  void generate_traversal_priority_flood(const Array &z);
+  void generate_traversal_d8(const Array                  &z,
+                             bool                          remove_lakes = true,
+                             const std::vector<Vec2<int>> &outlets = {});
+  void generate_traversal_priority_flood(
+      const Array                  &z,
+      const std::vector<Vec2<int>> &outlets = {});
 
-  void accumulate(const Array &to_accumulate, Array &acc) const;
+  void accumulate(Array &acc) const;
   void traverse_downstream(std::function<void(int, int, int, int, int)> op);
   void traverse_downstream(std::function<void(int, int, int)> op);
   void traverse_upstream(std::function<void(int, int, int, int, int)> op);
   void traverse_upstream(std::function<void(int, int, int)> op);
 
 private:
-  Mat<std::vector<Vec2<int>>> build_upstream_adjacency();
-  void                        remove_lakes_d8(const Array &z,
-                                              float        dz_weight = 1.f,
-                                              float        dz_downstream_cost_ratio = 0.1f);
-  void                        update_traversal();
+  void remove_lakes_d8(const Array &z,
+                       float        dz_weight = 1.f,
+                       float        dz_downstream_cost_ratio = 0.1f);
+  void update_traversal();
 };
 
 /**
