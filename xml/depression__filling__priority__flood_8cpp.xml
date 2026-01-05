@@ -29,7 +29,7 @@
 <codeline lineno="19"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>lambda<sp/>=<sp/>[&amp;z](</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i_next,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j_next,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">/*<sp/>basin_id<sp/>*/</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="20"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
 <codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>new_z<sp/>=<sp/>std::max(z(i_next,<sp/>j_next),<sp/>z(i,<sp/>j));</highlight></codeline>
-<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>z(i_next,<sp/>j_next)<sp/>=<sp/>new_z;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>z(i,<sp/>j)<sp/>=<sp/>new_z;</highlight></codeline>
 <codeline lineno="23"><highlight class="normal"><sp/><sp/>};</highlight></codeline>
 <codeline lineno="24"><highlight class="normal"></highlight></codeline>
 <codeline lineno="25"><highlight class="normal"><sp/><sp/>basins.traverse_upstream(lambda);</highlight></codeline>

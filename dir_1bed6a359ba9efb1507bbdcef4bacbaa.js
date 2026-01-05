@@ -15,6 +15,7 @@ var dir_1bed6a359ba9efb1507bbdcef4bacbaa =
     [ "hydraulic_particle_multiscale.cpp", "hydraulic__particle__multiscale_8cpp.html", "hydraulic__particle__multiscale_8cpp" ],
     [ "hydraulic_procedural.cpp", "hydraulic__procedural_8cpp.html", "hydraulic__procedural_8cpp" ],
     [ "hydraulic_schott_gpu.cpp", "hydraulic__schott__gpu_8cpp.html", "hydraulic__schott__gpu_8cpp" ],
+    [ "hydraulic_spl.cpp", "hydraulic__spl_8cpp.html", "hydraulic__spl_8cpp" ],
     [ "hydraulic_stream.cpp", "hydraulic__stream_8cpp.html", "hydraulic__stream_8cpp" ],
     [ "hydraulic_stream_gpu.cpp", "hydraulic__stream__gpu_8cpp.html", "hydraulic__stream__gpu_8cpp" ],
     [ "hydraulic_stream_upscale_amplification.cpp", "hydraulic__stream__upscale__amplification_8cpp.html", "hydraulic__stream__upscale__amplification_8cpp" ],

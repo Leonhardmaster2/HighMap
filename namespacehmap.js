@@ -509,6 +509,7 @@ var namespacehmap =
     [ "hydraulic_particle", "namespacehmap.html#a949d10cfd7731c6a5519051943d711d3", null ],
     [ "hydraulic_particle_multiscale", "namespacehmap.html#ab2b38a401eebca7bd3c9a96a072f0df7", null ],
     [ "hydraulic_procedural", "namespacehmap.html#af65bb48580b5f860571161387a22fbb4", null ],
+    [ "hydraulic_spl", "namespacehmap.html#ac926368d8d3f621a876039cad384e3b2", null ],
     [ "hydraulic_stream", "namespacehmap.html#acbf32c30d68183eb5522888af2ede316", null ],
     [ "hydraulic_stream", "namespacehmap.html#ae3bc02b89f4e7d0bdb221e13b66ad91e", null ],
     [ "hydraulic_stream_log", "namespacehmap.html#a37caab05db1b9791bf8a8ca10852c0da", null ],

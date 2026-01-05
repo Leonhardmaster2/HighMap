@@ -34,6 +34,6 @@ var searchData=
   ['divide_31',['divide',['../classhmap_1_1Path.html#a8650db137a1b4ecccf05cfd0fd7d320b',1,'hmap::Path']]],
   ['downscale_5ftransform_32',['downscale_transform',['../namespacehmap.html#a1fb8077215c98a741e0de5366c2f7ca3',1,'hmap']]],
   ['downscale_5ftransform_5fmulti_33',['downscale_transform_multi',['../namespacehmap.html#a669a4f9586f3df4b018e321048c9bc7d',1,'hmap']]],
-  ['dump_34',['dump',['../classhmap_1_1Array.html#a00b8f7462c1e22b1da8a67ec62d4c8c8',1,'hmap::Array::dump()'],['../classhmap_1_1Timer.html#a5bc931885a549c561740f39cea91dd5f',1,'hmap::Timer::Dump()'],['../structhmap_1_1Recorder.html#ac5bd6628a256636229047bbc12ced680',1,'hmap::Recorder::dump()']]],
+  ['dump_34',['dump',['../classhmap_1_1Timer.html#a5bc931885a549c561740f39cea91dd5f',1,'hmap::Timer::Dump()'],['../structhmap_1_1Recorder.html#ac5bd6628a256636229047bbc12ced680',1,'hmap::Recorder::dump()'],['../classhmap_1_1Array.html#a00b8f7462c1e22b1da8a67ec62d4c8c8',1,'hmap::Array::dump(const std::string &amp;fname=&quot;out.png&quot;) const']]],
   ['dump_5fhistogram_35',['dump_histogram',['../classhmap_1_1Array.html#a172a6d1a17ceae78548ff7e12d21d87c',1,'hmap::Array']]]
 ];

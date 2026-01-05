@@ -2,7 +2,7 @@ var searchData=
 [
   ['abs_0',['abs',['../namespacehmap.html#a527cfdcf7f7e2ca0e270875526c9b1ee',1,'hmap']]],
   ['abs_5fsmooth_1',['abs_smooth',['../namespacehmap.html#ab7bb73f6a918ffc68129e3a861080efd',1,'hmap::abs_smooth(float a, float mu)'],['../namespacehmap.html#addd566daeeba4b807513b59951de0003',1,'hmap::abs_smooth(const Array &amp;array, float mu)'],['../namespacehmap.html#ac165dd1b73f61f632f03e45c2f831fc2',1,'hmap::abs_smooth(const Array &amp;array, float mu, float vshift)'],['../namespacehmap.html#aa99a114cc6073cf7368c927afd9b4f87',1,'hmap::abs_smooth(const Array &amp;array, float mu, const Array &amp;vshift)']]],
-  ['accumulate_2',['accumulate',['../classhmap_1_1DrainageBasins.html#aa4ff11a57ac50972fb6e6600be6bbd67',1,'hmap::DrainageBasins']]],
+  ['accumulate_2',['accumulate',['../classhmap_1_1DrainageBasins.html#ad9db9a53eefd7ff729790e53ea0acfc0',1,'hmap::DrainageBasins']]],
   ['accumulation_5fcurvature_3',['accumulation_curvature',['../namespacehmap_1_1gpu.html#ad73cfd73fcd2e2744e8eb912eaf6f3bf',1,'hmap::gpu::accumulation_curvature()'],['../namespacehmap.html#a4bc3d501e53aebe8e15428798656a3e4',1,'hmap::accumulation_curvature()']]],
   ['add_5fedge_4',['add_edge',['../classhmap_1_1Graph.html#a1f632d4e9ee628a4dcab783f08e42277',1,'hmap::Graph::add_edge(std::vector&lt; int &gt; edge, float weight)'],['../classhmap_1_1Graph.html#a91ad513cd4834aa3424e9bbd56d891ac',1,'hmap::Graph::add_edge(std::vector&lt; int &gt; edge)']]],
   ['add_5ffilename_5fsuffix_5',['add_filename_suffix',['../namespacehmap.html#a67eae4546cbed6a804eaddcde9350e1c',1,'hmap']]],
