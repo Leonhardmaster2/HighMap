@@ -209,6 +209,12 @@ template <typename T> struct Vec2
     return Vec2(x * scalar, y * scalar);
   }
 
+  bool operator<(const Vec2 &other) const noexcept
+  {
+    if (x != other.x) return x < other.x;
+    return y < other.y;
+  }
+
   /**
    * @brief Scalar multiplication (scalar * Vec2).
    *
@@ -751,6 +757,14 @@ template <typename T> struct Vec4
   Vec4 operator*(T scalar) const
   {
     return Vec4(a * scalar, b * scalar, c * scalar, d * scalar);
+  }
+
+  bool operator<(const Vec4 &other) const noexcept
+  {
+    if (a != other.a) return a < other.a;
+    if (b != other.b) return b < other.b;
+    if (c != other.c) return c < other.c;
+    return d < other.d;
   }
 
   /**

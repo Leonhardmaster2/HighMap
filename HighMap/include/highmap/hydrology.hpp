@@ -44,6 +44,7 @@ public:
   Vec2<int>                           null_cell = Vec2<int>(-1, -1);
 
   size_t                              get_basins_number() const;
+  std::vector<std::vector<Vec2<int>>> get_main_channels();
   std::vector<Vec2<int>>              get_outlets() const;
   std::vector<Vec2<int>>              get_ridges();
   std::vector<std::vector<Vec2<int>>> get_ridges_neighbors();
@@ -70,7 +71,7 @@ public:
 private:
   void remove_lakes_d8(const Array &z,
                        float        dz_weight = 1.f,
-                       float        dz_downstream_cost_ratio = 0.1f);
+                       float        dz_downstream_cost_ratio = 0.f);
   void update_traversal();
 };
 
@@ -144,6 +145,8 @@ void find_flow_apex(const Array &z, std::vector<int> &is, std::vector<int> &js);
 void find_flow_sinks(const Array      &z,
                      std::vector<int> &is,
                      std::vector<int> &js);
+
+std::vector<Vec2<int>> find_flow_sinks(const Array &z);
 
 /**
  * @brief Compute water depth for a uniform flooding level.
@@ -360,6 +363,19 @@ std::vector<float> flow_direction_dinf_flat(const Array &z, float talus_ref);
  * model.
  */
 Array flow_direction_dinf_angle(const Array &z, float talus_ref);
+
+Array flow_fixing(const Array &z,
+                  float        riverbed_talus = 0.f,
+                  int          iterations = 5,
+                  int          prefilter_ir = 8,
+                  bool         carve_riverbed = true,
+                  bool         smooth_river_bottom = true,
+                  float        talus_riverbank = 0.01f, // 4 / shape.X
+                  uint         seed = 0,
+                  float        riverbank_noise_ratio = 0.f,
+                  float        merging_distance = 8.f, // pixels
+                  const Array *p_noise_x = nullptr,
+                  const Array *p_noise_y = nullptr);
 
 /**
  * @brief Computes the optimal flow path from a starting point to the boundary

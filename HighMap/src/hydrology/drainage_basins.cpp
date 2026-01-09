@@ -193,6 +193,49 @@ size_t DrainageBasins::get_basins_number() const
   return this->upstream_traversal.size();
 }
 
+std::vector<std::vector<Vec2<int>>> DrainageBasins::get_main_channels()
+{
+  const Vec2<int> shape = this->next.shape;
+
+  // compute flow accumulation
+  Array area_acc(shape, 1.f);
+  this->accumulate(area_acc);
+
+  (log10(area_acc)).dump("acc.png");
+
+  const int di[8] = {1, 1, 0, -1, -1, -1, 0, 1};
+  const int dj[8] = {0, -1, -1, -1, 0, 1, 1, 1};
+
+  // for each basin, follow downstream the flow acc maximum to get the
+  // basin main channel
+  size_t                              nbasins = this->get_basins_number();
+  std::vector<std::vector<Vec2<int>>> channels(nbasins);
+
+  for (size_t basin_id = 0; basin_id < nbasins; ++basin_id)
+  {
+    // starting cell (most upstream)
+    Vec2<int> p = this->upstream_traversal[basin_id].back();
+    channels[basin_id].push_back(p);
+
+    while (p.x > 0 && p.y > 0 && p.x < shape.x - 1 && p.y < shape.y - 1)
+    {
+      for (int k = 0; k < 8; ++k)
+      {
+        int ni = p.x + di[k];
+        int nj = p.y + dj[k];
+
+        if (ni < 0 || nj < 0 || ni >= shape.x || nj >= shape.y) continue;
+
+        if (area_acc(ni, nj) >= area_acc(p)) p = {ni, nj};
+      }
+
+      channels[basin_id].push_back(p);
+    }
+  }
+
+  return channels;
+}
+
 std::vector<Vec2<int>> DrainageBasins::get_outlets() const
 {
   const Vec2<int>        shape = this->next.shape;

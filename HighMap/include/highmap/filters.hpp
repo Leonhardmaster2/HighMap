@@ -296,6 +296,7 @@ void expand_talus(Array       &z,
                   const Array &mask,
                   float        talus,
                   uint         seed,
+                  int          ir = 1,
                   float        noise_ratio = 0.2f);
 
 /**
@@ -366,6 +367,7 @@ void fill_talus(Array       &z,
                 int          ir = 1,
                 float        noise_ratio = 0.2f,
                 const Array *p_seed_mask = nullptr);
+
 void fill_talus(Array       &z,
                 const Array &talus,
                 uint         seed,
