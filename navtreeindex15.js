@@ -1,5 +1,15 @@
 var NAVTREEINDEX15 =
 {
+"noise_8cpp.html#ab078210e784284a05d8cb7c1ae993c51":[5,0,1,1,26,8,2],
+"noise_8cpp.html#ae8dc6a5fc536f2fdb6c3ba39408f1425":[5,0,1,1,26,8,4],
+"noise__functions_8cpp.html":[5,0,1,1,26,0,3],
+"noise__functions_8cpp.html#a17514d1658d2a065892f061864a538ad":[5,0,1,1,26,0,3,0],
+"non__parameteric__sampling_8cpp.html":[5,0,1,1,33,0],
+"non__parameteric__sampling_8cpp.html#a0a359831aea68622813f65f4a989a75a":[5,0,1,1,33,0,0],
+"non__parameteric__sampling_8cpp.html#a92483ef87c6a5877abe30af6b270f2a0":[5,0,1,1,33,0,2],
+"non__parameteric__sampling_8cpp.html#aa7538088dbfe576e77ccbe14e9a6c9d7":[5,0,1,1,33,0,1],
+"normal__map_8cpp.html":[5,0,1,1,16,2],
+"normal__map_8cpp.html#a26a0e82cf03ec259e3efae1ea84286db":[5,0,1,1,16,2,1],
 "normal__map_8cpp.html#a58b2e7cdca93719d3e1fca73fd68421c":[5,0,1,1,16,2,2],
 "normal__map_8cpp.html#aef53e65fc9b8bc74c342367b0034cfa7":[5,0,1,1,16,2,0],
 "opencv__wrapper_8cpp.html":[5,0,1,1,0,3],
@@ -239,15 +249,5 @@ var NAVTREEINDEX15 =
 "primitives_8hpp.html#adb0abb891026d60a261ae7b1e875aa1a":[5,0,1,0,0,31,56],
 "primitives_8hpp.html#ae20d5b7f78d4c3eb5064490a3a407533":[5,0,1,0,0,31,61],
 "primitives_8hpp.html#ae425e289a74c2fbce447004896ee7e77":[5,0,1,0,0,31,53],
-"primitives_8hpp.html#ae8dc6a5fc536f2fdb6c3ba39408f1425":[5,0,1,0,0,31,27],
-"primitives_8hpp.html#aecba6d5b355e2e041045bee54b495be7":[5,0,1,0,0,31,35],
-"primitives_8hpp.html#af3e75ba20a563ec897513b1f9926fb9b":[5,0,1,0,0,31,9],
-"primitives_8hpp.html#af6f5880a68329be490f99aa779f3c1d8":[5,0,1,0,0,31,11],
-"primitives_8hpp_source.html":[5,0,1,0,0,31],
-"primitives__gpu_8cpp.html":[5,0,1,1,26,11],
-"primitives__gpu_8cpp.html#a0366d22ed8b0e1b74d5895e00c0e688b":[5,0,1,1,26,11,13],
-"primitives__gpu_8cpp.html#a0c9c2a528f344ede2aa320fdf2583790":[5,0,1,1,26,11,17],
-"primitives__gpu_8cpp.html#a26d6f87858e400f7b6c8cecb1e12bb8c":[5,0,1,1,26,11,20],
-"primitives__gpu_8cpp.html#a27b70c333fc5550bcca1b96dcb0116fb":[5,0,1,1,26,11,0],
-"primitives__gpu_8cpp.html#a29cc1b0843f7447eb19b6cef27772cdd":[5,0,1,1,26,11,19]
+"primitives_8hpp.html#ae8dc6a5fc536f2fdb6c3ba39408f1425":[5,0,1,0,0,31,27]
 };

@@ -12,7 +12,7 @@ var searchData=
   ['expand_5fpoints_5fat_5fdomain_5fboundaries_9',['expand_points_at_domain_boundaries',['../namespacehmap.html#a98c0cc0d90ceb61a0ba28205458b18df',1,'hmap']]],
   ['expand_5fpoints_5fdomain_10',['expand_points_domain',['../namespacehmap.html#ac3b1e6c5b2380e41efff2501021638f1',1,'hmap']]],
   ['expand_5fpoints_5fdomain_5fcorners_11',['expand_points_domain_corners',['../namespacehmap.html#a813c58d6f5d3b7febc0ba4f1a22619d6',1,'hmap']]],
-  ['expand_5ftalus_12',['expand_talus',['../namespacehmap.html#a11b0213f43ea0d2228c0dbd385b8308a',1,'hmap']]],
+  ['expand_5ftalus_12',['expand_talus',['../namespacehmap.html#a00144f277af41ed44d760f6eeb73ce99',1,'hmap']]],
   ['export_5fas_5fascii_13',['export_as_ascii',['../namespacehmap.html#aafe1d43996eb4e55731c67b096cebcf6',1,'hmap']]],
   ['export_5fas_5fcubemap_14',['export_as_cubemap',['../namespacehmap.html#a3aa96cd684efd827ce57ffd9fef3c950',1,'hmap']]],
   ['export_5fasset_15',['export_asset',['../namespacehmap.html#a7b8945745feaeaa365d965ce66b32f58',1,'hmap']]],

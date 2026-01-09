@@ -677,7 +677,7 @@ void \mbox{\hyperlink{namespacehmap_afddb3c456ba0f74b521d10c4022925a6}{expand}} 
 \begin{DoxyCompactList}\small\item\em Apply expansion using a custom kernel with an optional mask. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_affdf6ff9564f31cb988131c2b2c4c280}{expand\+\_\+directional}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir, float \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}}, float aspect\+\_\+ratio, float anisotropy=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+mask=nullptr)
 \begin{DoxyCompactList}\small\item\em Apply expansion, or "{}inflation"{}, to emphasize the bulk of the terrain, using a directional kernel. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{namespacehmap_a11b0213f43ea0d2228c0dbd385b8308a}{expand\+\_\+talus}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&mask, float talus, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, float noise\+\_\+ratio=0.\+2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
+void \mbox{\hyperlink{namespacehmap_a00144f277af41ed44d760f6eeb73ce99}{expand\+\_\+talus}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&mask, float talus, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, int ir=1, float noise\+\_\+ratio=0.\+2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_ad066ff6ef56dbf9827ff6cca9a22e58a}{faceted}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int \mbox{\hyperlink{namespacehmap_a9d00db2263b4b7b05245531c41c1b592}{neighborhood}}=0, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr)
 \begin{DoxyCompactList}\small\item\em Generate a faceted heightmap that retains the main features of the input heightmap. \end{DoxyCompactList}\item 
@@ -1091,6 +1091,8 @@ void \mbox{\hyperlink{namespacehmap_a05b9777b63947937181d7b7406e4b50d}{find\+\_\
 \begin{DoxyCompactList}\small\item\em Identifies flow apex (source) cells using D8 flow routing. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_ae42a874864d2d8f1a7b580f428395c01}{find\+\_\+flow\+\_\+sinks}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, std\+::vector$<$ int $>$ \&is, std\+::vector$<$ int $>$ \&js)
 \begin{DoxyCompactList}\small\item\em Identifies the indices of flow sinks within the heightmap. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$ $>$ \mbox{\hyperlink{namespacehmap_a2484e3943cf588d9ae261eb7089e1fd0}{find\+\_\+flow\+\_\+sinks}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z)
+\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a2318944325d02f3969aa7fa58b500278}{flooding\+\_\+uniform\+\_\+level}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, float zref)
 \begin{DoxyCompactList}\small\item\em Compute water depth for a uniform flooding level. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a2b57b45ea7a8a48b43443aa4d1dddbe8}{flooding\+\_\+from\+\_\+boundaries}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, float zref, bool from\+\_\+east=true, bool from\+\_\+west=true, bool from\+\_\+north=true, bool from\+\_\+south=true)
@@ -1113,6 +1115,8 @@ std\+::vector$<$ float $>$ \mbox{\hyperlink{namespacehmap_aa84fc9cbd0704c16abf21
 \item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_ad1d77ab375dfcca54183bbb687c82e9d}{flow\+\_\+direction\+\_\+dinf\+\_\+angle}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, float talus\+\_\+ref)
 \begin{DoxyCompactList}\small\item\em Computes the flow direction using the Multiple Flow Direction (MFD) model. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a2e6b6c9b6294508953b6bce5f7daef12}{flow\+\_\+fixing}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, float riverbed\+\_\+talus=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, int iterations=5, int prefilter\+\_\+ir=8, bool carve\+\_\+riverbed=true, bool smooth\+\_\+river\+\_\+bottom=true, float talus\+\_\+riverbank=0.\+01\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed=0, float riverbank\+\_\+noise\+\_\+ratio=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float merging\+\_\+distance=8.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr)
+\item 
 \mbox{\hyperlink{classhmap_1_1Path}{Path}} \mbox{\hyperlink{namespacehmap_a5adb98e67f89036317df083dd2123a1e}{flow\+\_\+stream}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, const \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$ ij\+\_\+start, const float elevation\+\_\+ratio=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, const float distance\+\_\+exponent=2.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, const float upward\+\_\+penalization=100.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Computes the optimal flow path from a starting point to the boundary of a given elevation array. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a97ba5dfaa6625b654a8010ed7d2f3465}{generate\+\_\+riverbed}} (const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&path, \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$ shape, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, bool bezier\+\_\+smoothing=false, float depth\+\_\+start=0.\+01\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float depth\+\_\+end=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float slope\+\_\+start=64.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float slope\+\_\+end=32.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float shape\+\_\+exponent\+\_\+start=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float shape\+\_\+exponent\+\_\+end=10.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float k\+\_\+smoothing=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, int post\+\_\+filter\+\_\+ir=0, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+r=nullptr)
@@ -9105,11 +9109,11 @@ This function expands features of the terrain represented by the input array, wi
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}  \Hypertarget{namespacehmap_a11b0213f43ea0d2228c0dbd385b8308a}\label{namespacehmap_a11b0213f43ea0d2228c0dbd385b8308a} 
+{\bfseries{Result}}  \Hypertarget{namespacehmap_a00144f277af41ed44d760f6eeb73ce99}\label{namespacehmap_a00144f277af41ed44d760f6eeb73ce99} 
 \index{hmap@{hmap}!expand\_talus@{expand\_talus}}
 \index{expand\_talus@{expand\_talus}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{expand\_talus()}{expand\_talus()}}
-{\footnotesize\ttfamily void hmap\+::expand\+\_\+talus (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{mask,  }\item[{float}]{talus,  }\item[{\mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{seed,  }\item[{float}]{noise\+\_\+ratio = {\ttfamily 0.2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void hmap\+::expand\+\_\+talus (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{mask,  }\item[{float}]{talus,  }\item[{\mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{seed,  }\item[{int}]{ir = {\ttfamily 1},  }\item[{float}]{noise\+\_\+ratio = {\ttfamily 0.2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
 
 \Hypertarget{namespacehmap_ad066ff6ef56dbf9827ff6cca9a22e58a}\label{namespacehmap_ad066ff6ef56dbf9827ff6cca9a22e58a} 
 \index{hmap@{hmap}!faceted@{faceted}}
@@ -17100,7 +17104,7 @@ A flow apex is defined as a cell with zero inflow neighbors (no upstream contrib
 \Hypertarget{namespacehmap_ae42a874864d2d8f1a7b580f428395c01}\label{namespacehmap_ae42a874864d2d8f1a7b580f428395c01} 
 \index{hmap@{hmap}!find\_flow\_sinks@{find\_flow\_sinks}}
 \index{find\_flow\_sinks@{find\_flow\_sinks}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{find\_flow\_sinks()}{find\_flow\_sinks()}}
+\doxysubsubsection{\texorpdfstring{find\_flow\_sinks()}{find\_flow\_sinks()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily void hmap\+::find\+\_\+flow\+\_\+sinks (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{std\+::vector$<$ int $>$ \&}]{is,  }\item[{std\+::vector$<$ int $>$ \&}]{js }\end{DoxyParamCaption})}
 
 
@@ -17140,7 +17144,13 @@ This function locates the cells in the heightmap that are flow sinks (cells with
 \DoxyCodeLine{\}}
 
 \end{DoxyCodeInclude}
- \Hypertarget{namespacehmap_a2318944325d02f3969aa7fa58b500278}\label{namespacehmap_a2318944325d02f3969aa7fa58b500278} 
+ \Hypertarget{namespacehmap_a2484e3943cf588d9ae261eb7089e1fd0}\label{namespacehmap_a2484e3943cf588d9ae261eb7089e1fd0} 
+\index{hmap@{hmap}!find\_flow\_sinks@{find\_flow\_sinks}}
+\index{find\_flow\_sinks@{find\_flow\_sinks}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{find\_flow\_sinks()}{find\_flow\_sinks()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$ $>$ hmap\+::find\+\_\+flow\+\_\+sinks (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacehmap_a2318944325d02f3969aa7fa58b500278}\label{namespacehmap_a2318944325d02f3969aa7fa58b500278} 
 \index{hmap@{hmap}!flooding\_uniform\_level@{flooding\_uniform\_level}}
 \index{flooding\_uniform\_level@{flooding\_uniform\_level}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{flooding\_uniform\_level()}{flooding\_uniform\_level()}}
@@ -17648,6 +17658,12 @@ std\+::vector$<$\+Array$>$ A vector of arrays, each containing the weights for f
 
 
 Computes the flow direction using the Multiple Flow Direction (MFD) model. 
+
+\Hypertarget{namespacehmap_a2e6b6c9b6294508953b6bce5f7daef12}\label{namespacehmap_a2e6b6c9b6294508953b6bce5f7daef12} 
+\index{hmap@{hmap}!flow\_fixing@{flow\_fixing}}
+\index{flow\_fixing@{flow\_fixing}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{flow\_fixing()}{flow\_fixing()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::flow\+\_\+fixing (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{float}]{riverbed\+\_\+talus = {\ttfamily 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{int}]{iterations = {\ttfamily 5},  }\item[{int}]{prefilter\+\_\+ir = {\ttfamily 8},  }\item[{bool}]{carve\+\_\+riverbed = {\ttfamily true},  }\item[{bool}]{smooth\+\_\+river\+\_\+bottom = {\ttfamily true},  }\item[{float}]{talus\+\_\+riverbank = {\ttfamily 0.01\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{\mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{seed = {\ttfamily 0},  }\item[{float}]{riverbank\+\_\+noise\+\_\+ratio = {\ttfamily 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{merging\+\_\+distance = {\ttfamily 8.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+x = {\ttfamily nullptr},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+y = {\ttfamily nullptr} }\end{DoxyParamCaption})}
 
 \Hypertarget{namespacehmap_a5adb98e67f89036317df083dd2123a1e}\label{namespacehmap_a5adb98e67f89036317df083dd2123a1e} 
 \index{hmap@{hmap}!flow\_stream@{flow\_stream}}

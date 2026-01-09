@@ -211,6 +211,7 @@
     <member refid="classhmap_1_1DrainageBasins_1aa0eb57907d1858bdf8a095f62b2b2587" kind="variable"><name>next</name></member>
     <member refid="classhmap_1_1DrainageBasins_1adcd6d1d0e2daf16f7f5bd317829644b5" kind="variable"><name>null_cell</name></member>
     <member refid="classhmap_1_1DrainageBasins_1ae292b57e8f33791dc912ccce8913f963" kind="function"><name>get_basins_number</name></member>
+    <member refid="classhmap_1_1DrainageBasins_1a521ac117b9f76ee34e6a28a9ef223bd1" kind="function"><name>get_main_channels</name></member>
     <member refid="classhmap_1_1DrainageBasins_1a6dd5a418dfeb7f08e2c30757a2792521" kind="function"><name>get_outlets</name></member>
     <member refid="classhmap_1_1DrainageBasins_1ae723962824c7f27a8ecefc5a9ad20772" kind="function"><name>get_ridges</name></member>
     <member refid="classhmap_1_1DrainageBasins_1a4a039906e51a0c967a70041129125012" kind="function"><name>get_ridges_neighbors</name></member>
@@ -222,7 +223,7 @@
     <member refid="classhmap_1_1DrainageBasins_1afe4c1a0f9ebbba05a6f19c6c1b065976" kind="function"><name>traverse_downstream</name></member>
     <member refid="classhmap_1_1DrainageBasins_1a8f16f5fb5a6e340a9ca10dc2046ba11d" kind="function"><name>traverse_upstream</name></member>
     <member refid="classhmap_1_1DrainageBasins_1afa727d5dc6f6ebede65fe8983ca1490a" kind="function"><name>traverse_upstream</name></member>
-    <member refid="classhmap_1_1DrainageBasins_1a9bf0fa635547464d624ea8a7c0b9ae5b" kind="function"><name>remove_lakes_d8</name></member>
+    <member refid="classhmap_1_1DrainageBasins_1af58434e1988641daaebf8ef025a9fe07" kind="function"><name>remove_lakes_d8</name></member>
     <member refid="classhmap_1_1DrainageBasins_1a5c9005d65bb03b848f4ea4ee3b5ad9c9" kind="function"><name>update_traversal</name></member>
   </compound>
   <compound refid="classhmap_1_1Edge" kind="class"><name>hmap::Edge</name>
@@ -734,6 +735,7 @@
     <member refid="structhmap_1_1Vec2_1a1df60c9894d8d6f4380ef9ba932125e2" kind="function"><name>operator+</name></member>
     <member refid="structhmap_1_1Vec2_1a85f26a9e80d8b99b72e3e7d02f4325aa" kind="function"><name>operator-</name></member>
     <member refid="structhmap_1_1Vec2_1a5fa624eca898ddf0dde96e63891540d8" kind="function"><name>operator*</name></member>
+    <member refid="structhmap_1_1Vec2_1a700c00c9fc0e754c4ce65d8c8c6e38d2" kind="function"><name>operator&lt;</name></member>
     <member refid="structhmap_1_1Vec2_1a89bca88f3a07365a28ad89477500bf33" kind="function"><name>magnitude</name></member>
     <member refid="structhmap_1_1Vec2_1a46c73f1340298ca58fe607c04ca09ab1" kind="function"><name>normalize</name></member>
     <member refid="structhmap_1_1Vec2_1a7a945fff9f1e4964c135dbc5d226fd69" kind="friend"><name>operator*</name></member>
@@ -777,6 +779,7 @@
     <member refid="structhmap_1_1Vec4_1a4cda617d090c216c30c1d0cf954dd2ca" kind="function"><name>operator+</name></member>
     <member refid="structhmap_1_1Vec4_1a67123a8dd8a1a92f99557e099a86af8a" kind="function"><name>operator-</name></member>
     <member refid="structhmap_1_1Vec4_1ac4383140ebf1c19af7a5e5465638e89d" kind="function"><name>operator*</name></member>
+    <member refid="structhmap_1_1Vec4_1ab9ee5a9e780ba0ef9c64aec3b5fcf8ee" kind="function"><name>operator&lt;</name></member>
     <member refid="structhmap_1_1Vec4_1a080d1200616967db1349c9b912b1186c" kind="function"><name>adjust</name></member>
     <member refid="structhmap_1_1Vec4_1a1c2926686abc112047126b7d06859965" kind="friend"><name>operator*</name></member>
     <member refid="structhmap_1_1Vec4_1a2792f6a93dabbfb082fcd8313424747c" kind="friend"><name>dot</name></member>
@@ -1178,7 +1181,7 @@
     <member refid="namespacehmap_1a3b39190192fb3cbda0b6d55d49d44eca" kind="function"><name>expand</name></member>
     <member refid="namespacehmap_1afddb3c456ba0f74b521d10c4022925a6" kind="function"><name>expand</name></member>
     <member refid="namespacehmap_1affdf6ff9564f31cb988131c2b2c4c280" kind="function"><name>expand_directional</name></member>
-    <member refid="namespacehmap_1a11b0213f43ea0d2228c0dbd385b8308a" kind="function"><name>expand_talus</name></member>
+    <member refid="namespacehmap_1a00144f277af41ed44d760f6eeb73ce99" kind="function"><name>expand_talus</name></member>
     <member refid="namespacehmap_1ad066ff6ef56dbf9827ff6cca9a22e58a" kind="function"><name>faceted</name></member>
     <member refid="namespacehmap_1a507d3be9d2b879ce7c67f83fddfa43c8" kind="function"><name>fill_talus</name></member>
     <member refid="namespacehmap_1aabb53a942968efe0a364f9f78079b3af" kind="function"><name>fill_talus</name></member>
@@ -1385,6 +1388,7 @@
     <member refid="namespacehmap_1a2e0533063a77bfc047472d1d85f3f63c" kind="function"><name>d8_compute_ndip</name></member>
     <member refid="namespacehmap_1a05b9777b63947937181d7b7406e4b50d" kind="function"><name>find_flow_apex</name></member>
     <member refid="namespacehmap_1ae42a874864d2d8f1a7b580f428395c01" kind="function"><name>find_flow_sinks</name></member>
+    <member refid="namespacehmap_1a2484e3943cf588d9ae261eb7089e1fd0" kind="function"><name>find_flow_sinks</name></member>
     <member refid="namespacehmap_1a2318944325d02f3969aa7fa58b500278" kind="function"><name>flooding_uniform_level</name></member>
     <member refid="namespacehmap_1a2b57b45ea7a8a48b43443aa4d1dddbe8" kind="function"><name>flooding_from_boundaries</name></member>
     <member refid="namespacehmap_1add3e6744c96ed203d611ceecf65d343e" kind="function"><name>flooding_from_point</name></member>
@@ -1396,6 +1400,7 @@
     <member refid="namespacehmap_1a819fc20190d598c4664d442ee824fc96" kind="function"><name>flow_direction_dinf</name></member>
     <member refid="namespacehmap_1aa84fc9cbd0704c16abf21ef12c9c5fad" kind="function"><name>flow_direction_dinf_flat</name></member>
     <member refid="namespacehmap_1ad1d77ab375dfcca54183bbb687c82e9d" kind="function"><name>flow_direction_dinf_angle</name></member>
+    <member refid="namespacehmap_1a2e6b6c9b6294508953b6bce5f7daef12" kind="function"><name>flow_fixing</name></member>
     <member refid="namespacehmap_1a5adb98e67f89036317df083dd2123a1e" kind="function"><name>flow_stream</name></member>
     <member refid="namespacehmap_1a97ba5dfaa6625b654a8010ed7d2f3465" kind="function"><name>generate_riverbed</name></member>
     <member refid="namespacehmap_1a64fbc0261e13ea842762efd3ac6bcc53" kind="function"><name>merge_water_depths</name></member>
@@ -2128,6 +2133,8 @@
   </compound>
   <compound refid="directional__blur_8cpp" kind="file"><name>directional_blur.cpp</name>
   </compound>
+  <compound refid="expand__talus_8cpp" kind="file"><name>expand_talus.cpp</name>
+  </compound>
   <compound refid="faceted_8cpp" kind="file"><name>faceted.cpp</name>
   </compound>
   <compound refid="fill__talus_8cpp" kind="file"><name>fill_talus.cpp</name>
@@ -2197,6 +2204,8 @@
   <compound refid="flow__accumulation__d8__gpu_8cpp" kind="file"><name>flow_accumulation_d8_gpu.cpp</name>
   </compound>
   <compound refid="flow__accumulation__dinf_8cpp" kind="file"><name>flow_accumulation_dinf.cpp</name>
+  </compound>
+  <compound refid="flow__fixing_8cpp" kind="file"><name>flow_fixing.cpp</name>
   </compound>
   <compound refid="flow__stream_8cpp" kind="file"><name>flow_stream.cpp</name>
   </compound>

@@ -3,6 +3,7 @@ var dir_4c063b982921a5b8720ca60b9a5562e1 =
     [ "bulkify.cpp", "bulkify_8cpp.html", "bulkify_8cpp" ],
     [ "diffusion_retargeting.cpp", "diffusion__retargeting_8cpp.html", "diffusion__retargeting_8cpp" ],
     [ "directional_blur.cpp", "directional__blur_8cpp.html", "directional__blur_8cpp" ],
+    [ "expand_talus.cpp", "expand__talus_8cpp.html", "expand__talus_8cpp" ],
     [ "faceted.cpp", "faceted_8cpp.html", "faceted_8cpp" ],
     [ "fill_talus.cpp", "fill__talus_8cpp.html", "fill__talus_8cpp" ],
     [ "filters.cpp", "filters_8cpp.html", "filters_8cpp" ],

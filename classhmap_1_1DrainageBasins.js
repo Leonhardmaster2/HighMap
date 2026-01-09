@@ -1,6 +1,7 @@
 var classhmap_1_1DrainageBasins =
 [
     [ "get_basins_number", "classhmap_1_1DrainageBasins.html#ae292b57e8f33791dc912ccce8913f963", null ],
+    [ "get_main_channels", "classhmap_1_1DrainageBasins.html#a521ac117b9f76ee34e6a28a9ef223bd1", null ],
     [ "get_outlets", "classhmap_1_1DrainageBasins.html#a6dd5a418dfeb7f08e2c30757a2792521", null ],
     [ "get_ridges", "classhmap_1_1DrainageBasins.html#ae723962824c7f27a8ecefc5a9ad20772", null ],
     [ "get_ridges_neighbors", "classhmap_1_1DrainageBasins.html#a4a039906e51a0c967a70041129125012", null ],

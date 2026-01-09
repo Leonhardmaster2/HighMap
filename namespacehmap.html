@@ -1005,8 +1005,8 @@ Functions</h2></td></tr>
 <tr class="memitem:affdf6ff9564f31cb988131c2b2c4c280" id="r_affdf6ff9564f31cb988131c2b2c4c280"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#affdf6ff9564f31cb988131c2b2c4c280">expand_directional</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, int ir, float <a class="el" href="namespacehmap.html#aac71bb6c14edc17967957f7918acdbdd">angle</a>, float aspect_ratio, float anisotropy=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_mask=nullptr)</td></tr>
 <tr class="memdesc:affdf6ff9564f31cb988131c2b2c4c280"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply expansion, or "inflation", to emphasize the bulk of the terrain, using a directional kernel.  <br /></td></tr>
 <tr class="separator:affdf6ff9564f31cb988131c2b2c4c280"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a11b0213f43ea0d2228c0dbd385b8308a" id="r_a11b0213f43ea0d2228c0dbd385b8308a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a11b0213f43ea0d2228c0dbd385b8308a">expand_talus</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;mask, float talus, <a class="el" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> seed, float noise_ratio=0.2<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
-<tr class="separator:a11b0213f43ea0d2228c0dbd385b8308a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00144f277af41ed44d760f6eeb73ce99" id="r_a00144f277af41ed44d760f6eeb73ce99"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a00144f277af41ed44d760f6eeb73ce99">expand_talus</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;mask, float talus, <a class="el" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> seed, int ir=1, float noise_ratio=0.2<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
+<tr class="separator:a00144f277af41ed44d760f6eeb73ce99"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad066ff6ef56dbf9827ff6cca9a22e58a" id="r_ad066ff6ef56dbf9827ff6cca9a22e58a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#ad066ff6ef56dbf9827ff6cca9a22e58a">faceted</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, int <a class="el" href="namespacehmap.html#a9d00db2263b4b7b05245531c41c1b592">neighborhood</a>=0, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_x=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_y=nullptr)</td></tr>
 <tr class="memdesc:ad066ff6ef56dbf9827ff6cca9a22e58a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a faceted heightmap that retains the main features of the input heightmap.  <br /></td></tr>
 <tr class="separator:ad066ff6ef56dbf9827ff6cca9a22e58a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1594,6 +1594,8 @@ Functions</h2></td></tr>
 <tr class="memitem:ae42a874864d2d8f1a7b580f428395c01" id="r_ae42a874864d2d8f1a7b580f428395c01"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#ae42a874864d2d8f1a7b580f428395c01">find_flow_sinks</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, std::vector&lt; int &gt; &amp;is, std::vector&lt; int &gt; &amp;js)</td></tr>
 <tr class="memdesc:ae42a874864d2d8f1a7b580f428395c01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifies the indices of flow sinks within the heightmap.  <br /></td></tr>
 <tr class="separator:ae42a874864d2d8f1a7b580f428395c01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2484e3943cf588d9ae261eb7089e1fd0" id="r_a2484e3943cf588d9ae261eb7089e1fd0"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structhmap_1_1Vec2.html">Vec2</a>&lt; int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a2484e3943cf588d9ae261eb7089e1fd0">find_flow_sinks</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z)</td></tr>
+<tr class="separator:a2484e3943cf588d9ae261eb7089e1fd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2318944325d02f3969aa7fa58b500278" id="r_a2318944325d02f3969aa7fa58b500278"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a2318944325d02f3969aa7fa58b500278">flooding_uniform_level</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, float zref)</td></tr>
 <tr class="memdesc:a2318944325d02f3969aa7fa58b500278"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute water depth for a uniform flooding level.  <br /></td></tr>
 <tr class="separator:a2318944325d02f3969aa7fa58b500278"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1626,6 +1628,8 @@ Functions</h2></td></tr>
 <tr class="memitem:ad1d77ab375dfcca54183bbb687c82e9d" id="r_ad1d77ab375dfcca54183bbb687c82e9d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#ad1d77ab375dfcca54183bbb687c82e9d">flow_direction_dinf_angle</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, float talus_ref)</td></tr>
 <tr class="memdesc:ad1d77ab375dfcca54183bbb687c82e9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the flow direction using the Multiple Flow Direction (MFD) model.  <br /></td></tr>
 <tr class="separator:ad1d77ab375dfcca54183bbb687c82e9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e6b6c9b6294508953b6bce5f7daef12" id="r_a2e6b6c9b6294508953b6bce5f7daef12"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a2e6b6c9b6294508953b6bce5f7daef12">flow_fixing</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, float riverbed_talus=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, int iterations=5, int prefilter_ir=8, bool carve_riverbed=true, bool smooth_river_bottom=true, float talus_riverbank=0.01<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, <a class="el" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> seed=0, float riverbank_noise_ratio=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float merging_distance=8.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_x=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_y=nullptr)</td></tr>
+<tr class="separator:a2e6b6c9b6294508953b6bce5f7daef12"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5adb98e67f89036317df083dd2123a1e" id="r_a5adb98e67f89036317df083dd2123a1e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Path.html">Path</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a5adb98e67f89036317df083dd2123a1e">flow_stream</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, const <a class="el" href="structhmap_1_1Vec2.html">Vec2</a>&lt; int &gt; ij_start, const float elevation_ratio=0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, const float distance_exponent=2.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, const float upward_penalization=100.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
 <tr class="memdesc:a5adb98e67f89036317df083dd2123a1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the optimal flow path from a starting point to the boundary of a given elevation array.  <br /></td></tr>
 <tr class="separator:a5adb98e67f89036317df083dd2123a1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -3965,9 +3969,9 @@ template&lt;typename T &gt; </div>
 <div class="ttc" id="aclasshmap_1_1Path_html_ad68abaa80879402c3758e24626acfb53"><div class="ttname"><a href="classhmap_1_1Path.html#ad68abaa80879402c3758e24626acfb53">hmap::Path::reorder_nns</a></div><div class="ttdeci">void reorder_nns(int start_index=0)</div><div class="ttdoc">Reorder points using a nearest neighbor search.</div><div class="ttdef"><b>Definition</b> path.cpp:506</div></div>
 <div class="ttc" id="anamespacehmap_html_a19bb0a5d0609ac671ca054d18959c7f1"><div class="ttname"><a href="namespacehmap.html#a19bb0a5d0609ac671ca054d18959c7f1">hmap::reverse_midpoint</a></div><div class="ttdeci">Array reverse_midpoint(const Array &amp;array, uint seed, float noise_scale=1.f, float threshold=0.f)</div><div class="ttdoc">Apply the reverse midpoint displacement algorithm to the input array.</div><div class="ttdef"><b>Definition</b> reverse_midpoint.cpp:231</div></div>
 <div class="ttc" id="anamespacehmap_html_a4910efa1a82d5dd66d7d02a87fab7e7a"><div class="ttname"><a href="namespacehmap.html#a4910efa1a82d5dd66d7d02a87fab7e7a">hmap::unit_square_bbox</a></div><div class="ttdeci">Vec4&lt; float &gt; unit_square_bbox()</div><div class="ttdoc">Constructs a 4D bounding box for a unit square.</div><div class="ttdef"><b>Definition</b> points.cpp:219</div></div>
-<div class="ttc" id="anamespacehmap_html_a8c9d91481a5908494b9f06c90c705b3a"><div class="ttname"><a href="namespacehmap.html#a8c9d91481a5908494b9f06c90c705b3a">hmap::median_3x3</a></div><div class="ttdeci">void median_3x3(Array &amp;array, const Array *p_mask)</div><div class="ttdoc">Apply a 3x3 median filter to the input array.</div><div class="ttdef"><b>Definition</b> filters.cpp:651</div></div>
+<div class="ttc" id="anamespacehmap_html_a8c9d91481a5908494b9f06c90c705b3a"><div class="ttname"><a href="namespacehmap.html#a8c9d91481a5908494b9f06c90c705b3a">hmap::median_3x3</a></div><div class="ttdeci">void median_3x3(Array &amp;array, const Array *p_mask)</div><div class="ttdoc">Apply a 3x3 median filter to the input array.</div><div class="ttdef"><b>Definition</b> filters.cpp:587</div></div>
 <div class="ttc" id="anamespacehmap_html_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced"><div class="ttname"><a href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::JET</a></div><div class="ttdeci">@ JET</div><div class="ttdef"><b>Definition</b> colormaps.hpp:86</div></div>
-<div class="ttc" id="astructhmap_1_1Vec4_html"><div class="ttname"><a href="structhmap_1_1Vec4.html">hmap::Vec4</a></div><div class="ttdoc">Vec4 class for basic manipulation of 4D vectors.</div><div class="ttdef"><b>Definition</b> algebra.hpp:564</div></div>
+<div class="ttc" id="astructhmap_1_1Vec4_html"><div class="ttname"><a href="structhmap_1_1Vec4.html">hmap::Vec4</a></div><div class="ttdoc">Vec4 class for basic manipulation of 4D vectors.</div><div class="ttdef"><b>Definition</b> algebra.hpp:570</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_reverse_midpoint.png" alt=""/>
 </div>
@@ -14702,7 +14706,7 @@ An <a class="el" href="classhmap_1_1Array.html" title="Array class, helper to ma
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>);</div>
 <div class="line">}</div>
 <div class="ttc" id="anamespacehmap_html_a1d9165a0056e99a90b7734268f231901"><div class="ttname"><a href="namespacehmap.html#a1d9165a0056e99a90b7734268f231901">hmap::lorentzian</a></div><div class="ttdeci">Array lorentzian(Vec2&lt; int &gt; shape, float footprint_threshold=0.1f)</div><div class="ttdoc">Generate a Lorentzian kernel.</div><div class="ttdef"><b>Definition</b> kernels.cpp:344</div></div>
-<div class="ttc" id="anamespacehmap_html_acde2b4e7bac6ebfe2c2dcfe3f0a369f1"><div class="ttname"><a href="namespacehmap.html#acde2b4e7bac6ebfe2c2dcfe3f0a369f1">hmap::shrink</a></div><div class="ttdeci">void shrink(Array &amp;array, int ir, int iterations=1)</div><div class="ttdoc">Apply shrinking, or &quot;deflating&quot;, to emphasize the ridges in the heightmap.</div><div class="ttdef"><b>Definition</b> filters.cpp:862</div></div>
+<div class="ttc" id="anamespacehmap_html_acde2b4e7bac6ebfe2c2dcfe3f0a369f1"><div class="ttname"><a href="namespacehmap.html#acde2b4e7bac6ebfe2c2dcfe3f0a369f1">hmap::shrink</a></div><div class="ttdeci">void shrink(Array &amp;array, int ir, int iterations=1)</div><div class="ttdoc">Apply shrinking, or &quot;deflating&quot;, to emphasize the ridges in the heightmap.</div><div class="ttdef"><b>Definition</b> filters.cpp:798</div></div>
 <div class="ttc" id="anamespacehmap_html_ae00605c7af4addcb5092c90260e2d61b"><div class="ttname"><a href="namespacehmap.html#ae00605c7af4addcb5092c90260e2d61b">hmap::expand</a></div><div class="ttdeci">void expand(Array &amp;array, int ir, const Array *p_mask, int iterations=1)</div><div class="ttdoc">Apply expansion, or &quot;inflation&quot;, to emphasize the bulk of the terrain.</div><div class="ttdef"><b>Definition</b> filters.cpp:79</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_expand.png" alt=""/>
@@ -14945,7 +14949,7 @@ An <a class="el" href="classhmap_1_1Array.html" title="Array class, helper to ma
 <div class="line">                          {z, z1, z2},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a5cfbd685a2042726fdcd7faa460273a3"><div class="ttname"><a href="namespacehmap.html#a5cfbd685a2042726fdcd7faa460273a3">hmap::shrink_directional</a></div><div class="ttdeci">void shrink_directional(Array &amp;array, int ir, float angle, float aspect_ratio, float anisotropy=1.f, const Array *p_mask=nullptr)</div><div class="ttdoc">Apply directional shrinking, or &quot;deflating&quot;, to emphasize the ridges in the terrain.</div><div class="ttdef"><b>Definition</b> filters.cpp:905</div></div>
+<div class="ttc" id="anamespacehmap_html_a5cfbd685a2042726fdcd7faa460273a3"><div class="ttname"><a href="namespacehmap.html#a5cfbd685a2042726fdcd7faa460273a3">hmap::shrink_directional</a></div><div class="ttdeci">void shrink_directional(Array &amp;array, int ir, float angle, float aspect_ratio, float anisotropy=1.f, const Array *p_mask=nullptr)</div><div class="ttdoc">Apply directional shrinking, or &quot;deflating&quot;, to emphasize the ridges in the terrain.</div><div class="ttdef"><b>Definition</b> filters.cpp:841</div></div>
 <div class="ttc" id="anamespacehmap_html_affdf6ff9564f31cb988131c2b2c4c280"><div class="ttname"><a href="namespacehmap.html#affdf6ff9564f31cb988131c2b2c4c280">hmap::expand_directional</a></div><div class="ttdeci">void expand_directional(Array &amp;array, int ir, float angle, float aspect_ratio, float anisotropy=1.f, const Array *p_mask=nullptr)</div><div class="ttdoc">Apply expansion, or &quot;inflation&quot;, to emphasize the bulk of the terrain, using a directional kernel.</div><div class="ttdef"><b>Definition</b> filters.cpp:140</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_expand_directional.png" alt=""/>
@@ -14953,8 +14957,8 @@ An <a class="el" href="classhmap_1_1Array.html" title="Array class, helper to ma
  
 </div>
 </div>
-<a id="a11b0213f43ea0d2228c0dbd385b8308a" name="a11b0213f43ea0d2228c0dbd385b8308a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a11b0213f43ea0d2228c0dbd385b8308a">&#9670;&#160;</a></span>expand_talus()</h2>
+<a id="a00144f277af41ed44d760f6eeb73ce99" name="a00144f277af41ed44d760f6eeb73ce99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00144f277af41ed44d760f6eeb73ce99">&#9670;&#160;</a></span>expand_talus()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -14982,6 +14986,12 @@ An <a class="el" href="classhmap_1_1Array.html" title="Array class, helper to ma
           <td></td>
           <td class="paramtype"><a class="el" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>seed</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ir</em> = <code>1</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -15167,9 +15177,9 @@ An <a class="el" href="classhmap_1_1Array.html" title="Array class, helper to ma
 <div class="line">                          <span class="keyword">true</span>);</div>
 <div class="line">}</div>
 <div class="ttc" id="anamespacehmap_html_a2e4283dd5da8add89788c5023c73042c"><div class="ttname"><a href="namespacehmap.html#a2e4283dd5da8add89788c5023c73042c">hmap::saturate</a></div><div class="ttdeci">void saturate(Array &amp;array, float vmin, float vmax, float from_min, float from_max, float k=0.f)</div><div class="ttdoc">Saturate the array values based on the input interval [vmin, vmax] (the output amplitude is not modif...</div><div class="ttdef"><b>Definition</b> recurve.cpp:178</div></div>
-<div class="ttc" id="anamespacehmap_html_a507d3be9d2b879ce7c67f83fddfa43c8"><div class="ttname"><a href="namespacehmap.html#a507d3be9d2b879ce7c67f83fddfa43c8">hmap::fill_talus</a></div><div class="ttdeci">void fill_talus(Array &amp;z, float talus, uint seed, int ir=1, float noise_ratio=0.2f, const Array *p_seed_mask=nullptr)</div><div class="ttdoc">Modifies a terrain array by filling it with talus slopes.</div><div class="ttdef"><b>Definition</b> fill_talus.cpp:99</div></div>
+<div class="ttc" id="anamespacehmap_html_a507d3be9d2b879ce7c67f83fddfa43c8"><div class="ttname"><a href="namespacehmap.html#a507d3be9d2b879ce7c67f83fddfa43c8">hmap::fill_talus</a></div><div class="ttdeci">void fill_talus(Array &amp;z, float talus, uint seed, int ir=1, float noise_ratio=0.2f, const Array *p_seed_mask=nullptr)</div><div class="ttdoc">Modifies a terrain array by filling it with talus slopes.</div><div class="ttdef"><b>Definition</b> fill_talus.cpp:97</div></div>
 <div class="ttc" id="anamespacehmap_html_ac72cb684be1045c7f2a5c8941f905772"><div class="ttname"><a href="namespacehmap.html#ac72cb684be1045c7f2a5c8941f905772">hmap::select_valley</a></div><div class="ttdeci">Array select_valley(const Array &amp;z, int ir, bool ridge_select=false)</div><div class="ttdef"><b>Definition</b> selector.cpp:385</div></div>
-<div class="ttc" id="anamespacehmap_html_ae6d4ef5a71d2896b68d39006e60fd30d"><div class="ttname"><a href="namespacehmap.html#ae6d4ef5a71d2896b68d39006e60fd30d">hmap::fill_talus_fast</a></div><div class="ttdeci">void fill_talus_fast(Array &amp;z, Vec2&lt; int &gt; shape_coarse, float talus, uint seed, int ir=1, float noise_ratio=0.2f)</div><div class="ttdoc">Fill terrain values with a given downslope talus, optimized using a coarse mesh for faster computatio...</div><div class="ttdef"><b>Definition</b> fill_talus.cpp:109</div></div>
+<div class="ttc" id="anamespacehmap_html_ae6d4ef5a71d2896b68d39006e60fd30d"><div class="ttname"><a href="namespacehmap.html#ae6d4ef5a71d2896b68d39006e60fd30d">hmap::fill_talus_fast</a></div><div class="ttdeci">void fill_talus_fast(Array &amp;z, Vec2&lt; int &gt; shape_coarse, float talus, uint seed, int ir=1, float noise_ratio=0.2f)</div><div class="ttdoc">Fill terrain values with a given downslope talus, optimized using a coarse mesh for faster computatio...</div><div class="ttdef"><b>Definition</b> fill_talus.cpp:107</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_fill_talus.png" alt=""/>
 </div>
@@ -15414,7 +15424,7 @@ An <a class="el" href="classhmap_1_1Array.html" title="Array class, helper to ma
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_fold.png&quot;</span>, {z, z1, z2}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a2ba465615ff1d745cfcf7a27b7dcb37e"><div class="ttname"><a href="namespacehmap.html#a2ba465615ff1d745cfcf7a27b7dcb37e">hmap::fold</a></div><div class="ttdeci">void fold(Array &amp;array, float vmin, float vmax, int iterations=3, float k=0.05f)</div><div class="ttdoc">Apply a &quot;folding&quot; filter (successive absolute values) to the array elements.</div><div class="ttdef"><b>Definition</b> filters.cpp:223</div></div>
+<div class="ttc" id="anamespacehmap_html_a2ba465615ff1d745cfcf7a27b7dcb37e"><div class="ttname"><a href="namespacehmap.html#a2ba465615ff1d745cfcf7a27b7dcb37e">hmap::fold</a></div><div class="ttdeci">void fold(Array &amp;array, float vmin, float vmax, int iterations=3, float k=0.05f)</div><div class="ttdoc">Apply a &quot;folding&quot; filter (successive absolute values) to the array elements.</div><div class="ttdef"><b>Definition</b> filters.cpp:159</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_fold.png" alt=""/>
 </div>
@@ -15523,7 +15533,7 @@ An <a class="el" href="classhmap_1_1Array.html" title="Array class, helper to ma
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ab1e1b26c0c1eb51d0b256db94d6ca22e">hmap::gain</a>(z, 2.f);</div>
 <div class="line">  z.<a class="code hl_function" href="classhmap_1_1Array.html#a9ff7b2c0be8f2b5dd9fc33085cd647d1">to_png</a>(<span class="stringliteral">&quot;ex_gain.png&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492">hmap::Cmap::VIRIDIS</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_ab1e1b26c0c1eb51d0b256db94d6ca22e"><div class="ttname"><a href="namespacehmap.html#ab1e1b26c0c1eb51d0b256db94d6ca22e">hmap::gain</a></div><div class="ttdeci">void gain(Array &amp;array, float factor, const Array *p_mask)</div><div class="ttdoc">Apply a gain correction to the array elements.</div><div class="ttdef"><b>Definition</b> filters.cpp:253</div></div>
+<div class="ttc" id="anamespacehmap_html_ab1e1b26c0c1eb51d0b256db94d6ca22e"><div class="ttname"><a href="namespacehmap.html#ab1e1b26c0c1eb51d0b256db94d6ca22e">hmap::gain</a></div><div class="ttdeci">void gain(Array &amp;array, float factor, const Array *p_mask)</div><div class="ttdoc">Apply a gain correction to the array elements.</div><div class="ttdef"><b>Definition</b> filters.cpp:189</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_gain.png" alt=""/>
 </div>
@@ -15625,7 +15635,7 @@ An <a class="el" href="classhmap_1_1Array.html" title="Array class, helper to ma
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#aba3674787d520af15267ee7d1e46d220">hmap::gamma_correction</a>(z, 0.5f);</div>
 <div class="line">  z.<a class="code hl_function" href="classhmap_1_1Array.html#a9ff7b2c0be8f2b5dd9fc33085cd647d1">to_png</a>(<span class="stringliteral">&quot;ex_gamma_correction.png&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492">hmap::Cmap::VIRIDIS</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_aba3674787d520af15267ee7d1e46d220"><div class="ttname"><a href="namespacehmap.html#aba3674787d520af15267ee7d1e46d220">hmap::gamma_correction</a></div><div class="ttdeci">void gamma_correction(Array &amp;array, float gamma, const Array *p_mask)</div><div class="ttdoc">Apply gamma correction to the input array.</div><div class="ttdef"><b>Definition</b> filters.cpp:275</div></div>
+<div class="ttc" id="anamespacehmap_html_aba3674787d520af15267ee7d1e46d220"><div class="ttname"><a href="namespacehmap.html#aba3674787d520af15267ee7d1e46d220">hmap::gamma_correction</a></div><div class="ttdeci">void gamma_correction(Array &amp;array, float gamma, const Array *p_mask)</div><div class="ttdoc">Apply gamma correction to the input array.</div><div class="ttdef"><b>Definition</b> filters.cpp:211</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_gamma_correction.png" alt=""/>
 </div>
@@ -15736,7 +15746,7 @@ An <a class="el" href="classhmap_1_1Array.html" title="Array class, helper to ma
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#acf8c38e2bcaa9c116b607230dcc6cb0e">hmap::gamma_correction_local</a>(z, 0.5f, ir, k_smoothing);</div>
 <div class="line">  z.<a class="code hl_function" href="classhmap_1_1Array.html#a9ff7b2c0be8f2b5dd9fc33085cd647d1">to_png</a>(<span class="stringliteral">&quot;ex_gamma_correction_local.png&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492">hmap::Cmap::VIRIDIS</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_acf8c38e2bcaa9c116b607230dcc6cb0e"><div class="ttname"><a href="namespacehmap.html#acf8c38e2bcaa9c116b607230dcc6cb0e">hmap::gamma_correction_local</a></div><div class="ttdeci">void gamma_correction_local(Array &amp;array, float gamma, int ir, float k=0.1f)</div><div class="ttdoc">Apply a &quot;local&quot; gamma correction to the input array.</div><div class="ttdef"><b>Definition</b> filters.cpp:287</div></div>
+<div class="ttc" id="anamespacehmap_html_acf8c38e2bcaa9c116b607230dcc6cb0e"><div class="ttname"><a href="namespacehmap.html#acf8c38e2bcaa9c116b607230dcc6cb0e">hmap::gamma_correction_local</a></div><div class="ttdeci">void gamma_correction_local(Array &amp;array, float gamma, int ir, float k=0.1f)</div><div class="ttdoc">Apply a &quot;local&quot; gamma correction to the input array.</div><div class="ttdef"><b>Definition</b> filters.cpp:223</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_gamma_correction_local.png" alt=""/>
 </div>
@@ -15865,7 +15875,7 @@ An <a class="el" href="classhmap_1_1Array.html" title="Array class, helper to ma
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_kuwahara.png&quot;</span>, {z, z1, z2}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_ad3c6f230996ef2d2313278103b75fbd1"><div class="ttname"><a href="namespacehmap.html#ad3c6f230996ef2d2313278103b75fbd1">hmap::kuwahara</a></div><div class="ttdeci">void kuwahara(Array &amp;array, int ir, float mix_ratio=1.f)</div><div class="ttdoc">Applies the Kuwahara filter to an array with optional per-pixel masking.</div><div class="ttdef"><b>Definition</b> filters.cpp:336</div></div>
+<div class="ttc" id="anamespacehmap_html_ad3c6f230996ef2d2313278103b75fbd1"><div class="ttname"><a href="namespacehmap.html#ad3c6f230996ef2d2313278103b75fbd1">hmap::kuwahara</a></div><div class="ttdeci">void kuwahara(Array &amp;array, int ir, float mix_ratio=1.f)</div><div class="ttdoc">Applies the Kuwahara filter to an array with optional per-pixel masking.</div><div class="ttdef"><b>Definition</b> filters.cpp:272</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_kuwahara.png" alt=""/>
 </div>
@@ -16025,8 +16035,8 @@ A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492">hmap::Cmap::VIRIDIS</a>,</div>
 <div class="line">                          <span class="keyword">true</span>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a120b7a6f8941d783c52acf799d3cb7b2"><div class="ttname"><a href="namespacehmap.html#a120b7a6f8941d783c52acf799d3cb7b2">hmap::laplace_edge_preserving</a></div><div class="ttdeci">void laplace_edge_preserving(Array &amp;array, float talus, float sigma=0.2f, int iterations=3)</div><div class="ttdoc">Apply a low-pass anisotropic Laplace filter to the input array.</div><div class="ttdef"><b>Definition</b> filters.cpp:443</div></div>
-<div class="ttc" id="anamespacehmap_html_a62f3ce1778309a90b37d34e727e4f040"><div class="ttname"><a href="namespacehmap.html#a62f3ce1778309a90b37d34e727e4f040">hmap::laplace</a></div><div class="ttdeci">void laplace(Array &amp;array, float sigma=0.125f, int iterations=3)</div><div class="ttdoc">Applies an iterative 8-neighbor Laplacian smoothing filter on an array.</div><div class="ttdef"><b>Definition</b> filters.cpp:395</div></div>
+<div class="ttc" id="anamespacehmap_html_a120b7a6f8941d783c52acf799d3cb7b2"><div class="ttname"><a href="namespacehmap.html#a120b7a6f8941d783c52acf799d3cb7b2">hmap::laplace_edge_preserving</a></div><div class="ttdeci">void laplace_edge_preserving(Array &amp;array, float talus, float sigma=0.2f, int iterations=3)</div><div class="ttdoc">Apply a low-pass anisotropic Laplace filter to the input array.</div><div class="ttdef"><b>Definition</b> filters.cpp:379</div></div>
+<div class="ttc" id="anamespacehmap_html_a62f3ce1778309a90b37d34e727e4f040"><div class="ttname"><a href="namespacehmap.html#a62f3ce1778309a90b37d34e727e4f040">hmap::laplace</a></div><div class="ttdeci">void laplace(Array &amp;array, float sigma=0.125f, int iterations=3)</div><div class="ttdoc">Applies an iterative 8-neighbor Laplacian smoothing filter on an array.</div><div class="ttdef"><b>Definition</b> filters.cpp:331</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_laplace.png" alt=""/>
 </div>
@@ -16331,7 +16341,7 @@ A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
 <div class="line">                          {z, zf},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492">hmap::Cmap::VIRIDIS</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a81842482472ceecc660913388219bb77"><div class="ttname"><a href="namespacehmap.html#a81842482472ceecc660913388219bb77">hmap::low_pass_high_order</a></div><div class="ttdeci">void low_pass_high_order(Array &amp;array, int order=9, float sigma=1.f)</div><div class="ttdoc">Apply a low-pass high-order filter to the input array.</div><div class="ttdef"><b>Definition</b> filters.cpp:479</div></div>
+<div class="ttc" id="anamespacehmap_html_a81842482472ceecc660913388219bb77"><div class="ttname"><a href="namespacehmap.html#a81842482472ceecc660913388219bb77">hmap::low_pass_high_order</a></div><div class="ttdeci">void low_pass_high_order(Array &amp;array, int order=9, float sigma=1.f)</div><div class="ttdoc">Apply a low-pass high-order filter to the input array.</div><div class="ttdef"><b>Definition</b> filters.cpp:415</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_low_pass_high_order.png" alt=""/>
 </div>
@@ -16558,7 +16568,7 @@ A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
 <div class="line">                          {zref, z0, z1},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a8afd3d81a238c8a5d10059b3a029554e"><div class="ttname"><a href="namespacehmap.html#a8afd3d81a238c8a5d10059b3a029554e">hmap::match_histogram</a></div><div class="ttdeci">void match_histogram(Array &amp;array, const Array &amp;array_reference)</div><div class="ttdoc">Transform the input array elevation to match the histogram of a reference array.</div><div class="ttdef"><b>Definition</b> filters.cpp:530</div></div>
+<div class="ttc" id="anamespacehmap_html_a8afd3d81a238c8a5d10059b3a029554e"><div class="ttname"><a href="namespacehmap.html#a8afd3d81a238c8a5d10059b3a029554e">hmap::match_histogram</a></div><div class="ttdeci">void match_histogram(Array &amp;array, const Array &amp;array_reference)</div><div class="ttdoc">Transform the input array elevation to match the histogram of a reference array.</div><div class="ttdef"><b>Definition</b> filters.cpp:466</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_match_histogram.png" alt=""/>
 </div>
@@ -16643,7 +16653,7 @@ A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_mean_shift.png&quot;</span>, {z, zm}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>
 <div class="ttc" id="aclasshmap_1_1Array_html_ad7018857827d8e8d263516bbbd77630f"><div class="ttname"><a href="classhmap_1_1Array.html#ad7018857827d8e8d263516bbbd77630f">hmap::Array::to_png_grayscale</a></div><div class="ttdeci">void to_png_grayscale(const std::string &amp;fname, int depth=CV_8U) const</div><div class="ttdoc">Export the array as a grayscale PNG image file with specified bit depth.</div><div class="ttdef"><b>Definition</b> io.cpp:137</div></div>
-<div class="ttc" id="anamespacehmap_html_a8ac4638525bb243024d50793d97bc9ee"><div class="ttname"><a href="namespacehmap.html#a8ac4638525bb243024d50793d97bc9ee">hmap::mean_shift</a></div><div class="ttdeci">Array mean_shift(const Array &amp;array, int ir, float talus, int iterations=1, bool talus_weighted=true)</div><div class="ttdoc">Applies the mean shift algorithm to the input array.</div><div class="ttdef"><b>Definition</b> filters.cpp:539</div></div>
+<div class="ttc" id="anamespacehmap_html_a8ac4638525bb243024d50793d97bc9ee"><div class="ttname"><a href="namespacehmap.html#a8ac4638525bb243024d50793d97bc9ee">hmap::mean_shift</a></div><div class="ttdeci">Array mean_shift(const Array &amp;array, int ir, float talus, int iterations=1, bool talus_weighted=true)</div><div class="ttdoc">Applies the mean shift algorithm to the input array.</div><div class="ttdef"><b>Definition</b> filters.cpp:475</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_mean_shift.png" alt=""/>
 </div>
@@ -16855,7 +16865,7 @@ A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_a2e2bccfafc05679f1762ba039df58dbf"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a2e2bccfafc05679f1762ba039df58dbf">hmap::gpu::median_pseudo</a></div><div class="ttdeci">Array median_pseudo(const Array &amp;array, int ir)</div><div class="ttdoc">See hmap::median_pseudo.</div><div class="ttdef"><b>Definition</b> filters_gpu.cpp:289</div></div>
-<div class="ttc" id="anamespacehmap_html_a14eb6b7d304484c8cbb231b672851491"><div class="ttname"><a href="namespacehmap.html#a14eb6b7d304484c8cbb231b672851491">hmap::median_pseudo</a></div><div class="ttdeci">Array median_pseudo(const Array &amp;array, int ir)</div><div class="ttdoc">Computes a fast pseudo-median approximation of a local neighborhood in an array.</div><div class="ttdef"><b>Definition</b> filters.cpp:663</div></div>
+<div class="ttc" id="anamespacehmap_html_a14eb6b7d304484c8cbb231b672851491"><div class="ttname"><a href="namespacehmap.html#a14eb6b7d304484c8cbb231b672851491">hmap::median_pseudo</a></div><div class="ttdeci">Array median_pseudo(const Array &amp;array, int ir)</div><div class="ttdoc">Computes a fast pseudo-median approximation of a local neighborhood in an array.</div><div class="ttdef"><b>Definition</b> filters.cpp:599</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_median_pseudo.png" alt=""/>
 </div>
@@ -17055,7 +17065,7 @@ A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
 <div class="line">                          {z1, z2},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_aafd7a642dabfbcf2ab2981b229a30e15"><div class="ttname"><a href="namespacehmap.html#aafd7a642dabfbcf2ab2981b229a30e15">hmap::normal_displacement</a></div><div class="ttdeci">void normal_displacement(Array &amp;array, float amount=0.1f, int ir=0, bool reverse=false)</div><div class="ttdoc">Apply a displacement to the terrain along the normal direction.</div><div class="ttdef"><b>Definition</b> filters.cpp:670</div></div>
+<div class="ttc" id="anamespacehmap_html_aafd7a642dabfbcf2ab2981b229a30e15"><div class="ttname"><a href="namespacehmap.html#aafd7a642dabfbcf2ab2981b229a30e15">hmap::normal_displacement</a></div><div class="ttdeci">void normal_displacement(Array &amp;array, float amount=0.1f, int ir=0, bool reverse=false)</div><div class="ttdoc">Apply a displacement to the terrain along the normal direction.</div><div class="ttdef"><b>Definition</b> filters.cpp:606</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_normal_displacement.png" alt=""/>
 </div>
@@ -17174,7 +17184,7 @@ A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_plateau.png&quot;</span>, {z, zp}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a558c273680de2328f37e5df7ee598813"><div class="ttname"><a href="namespacehmap.html#a558c273680de2328f37e5df7ee598813">hmap::plateau</a></div><div class="ttdeci">void plateau(Array &amp;array, const Array *p_mask, int ir, float factor)</div><div class="ttdoc">Apply a plateau-shape filter to the input array.</div><div class="ttdef"><b>Definition</b> filters.cpp:734</div></div>
+<div class="ttc" id="anamespacehmap_html_a558c273680de2328f37e5df7ee598813"><div class="ttname"><a href="namespacehmap.html#a558c273680de2328f37e5df7ee598813">hmap::plateau</a></div><div class="ttdeci">void plateau(Array &amp;array, const Array *p_mask, int ir, float factor)</div><div class="ttdoc">Apply a plateau-shape filter to the input array.</div><div class="ttdef"><b>Definition</b> filters.cpp:670</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_plateau.png" alt=""/>
 </div>
@@ -19753,7 +19763,7 @@ A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>,</div>
 <div class="line">                          <span class="keyword">true</span>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_ab79b21593238cc836f4dd32fecf63a58"><div class="ttname"><a href="namespacehmap.html#ab79b21593238cc836f4dd32fecf63a58">hmap::reverse_above_theshold</a></div><div class="ttdeci">void reverse_above_theshold(Array &amp;array, const Array &amp;threshold, float scaling=1.f, float transition_extent=0.f)</div><div class="ttdoc">Applies a smooth reversal of values above a given threshold.</div><div class="ttdef"><b>Definition</b> filters.cpp:746</div></div>
+<div class="ttc" id="anamespacehmap_html_ab79b21593238cc836f4dd32fecf63a58"><div class="ttname"><a href="namespacehmap.html#ab79b21593238cc836f4dd32fecf63a58">hmap::reverse_above_theshold</a></div><div class="ttdeci">void reverse_above_theshold(Array &amp;array, const Array &amp;threshold, float scaling=1.f, float transition_extent=0.f)</div><div class="ttdoc">Applies a smooth reversal of values above a given threshold.</div><div class="ttdef"><b>Definition</b> filters.cpp:682</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_reverse_above_theshold.png" alt=""/>
 </div>
@@ -20075,7 +20085,7 @@ A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ad6fc7fb24960fa6a45bc657ae2d89f80">hstack</a>(z0, z).<a class="code hl_function" href="classhmap_1_1Array.html#a9ff7b2c0be8f2b5dd9fc33085cd647d1">to_png</a>(<span class="stringliteral">&quot;ex_sharpen.png&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492">hmap::Cmap::VIRIDIS</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a738bcdb6b3493bf7f2cbfcfc03a00159"><div class="ttname"><a href="namespacehmap.html#a738bcdb6b3493bf7f2cbfcfc03a00159">hmap::sharpen</a></div><div class="ttdeci">void sharpen(Array &amp;array, float ratio=1.f)</div><div class="ttdoc">Apply a sharpening filter based on the Laplace operator.</div><div class="ttdef"><b>Definition</b> filters.cpp:817</div></div>
+<div class="ttc" id="anamespacehmap_html_a738bcdb6b3493bf7f2cbfcfc03a00159"><div class="ttname"><a href="namespacehmap.html#a738bcdb6b3493bf7f2cbfcfc03a00159">hmap::sharpen</a></div><div class="ttdeci">void sharpen(Array &amp;array, float ratio=1.f)</div><div class="ttdoc">Apply a sharpening filter based on the Laplace operator.</div><div class="ttdef"><b>Definition</b> filters.cpp:753</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_sharpen.png" alt=""/>
 </div>
@@ -20177,7 +20187,7 @@ A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_sharpen_clone.png&quot;</span>, {z0, z1}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a6190b6dde2fd6a6bf9e98eecec10e5f1"><div class="ttname"><a href="namespacehmap.html#a6190b6dde2fd6a6bf9e98eecec10e5f1">hmap::sharpen_cone</a></div><div class="ttdeci">void sharpen_cone(Array &amp;array, int ir, float intensity=0.5f)</div><div class="ttdoc">Apply a sharpening filter based on a smooth cone filter.</div><div class="ttdef"><b>Definition</b> filters.cpp:843</div></div>
+<div class="ttc" id="anamespacehmap_html_a6190b6dde2fd6a6bf9e98eecec10e5f1"><div class="ttname"><a href="namespacehmap.html#a6190b6dde2fd6a6bf9e98eecec10e5f1">hmap::sharpen_cone</a></div><div class="ttdeci">void sharpen_cone(Array &amp;array, int ir, float intensity=0.5f)</div><div class="ttdoc">Apply a sharpening filter based on a smooth cone filter.</div><div class="ttdef"><b>Definition</b> filters.cpp:779</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_sharpen_cone.png" alt=""/>
 </div>
@@ -20580,7 +20590,7 @@ A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_smooth_cone.png&quot;</span>, {z0, z}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492">hmap::Cmap::VIRIDIS</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_abeab23d26e0e9cb4563b221193ca6041"><div class="ttname"><a href="namespacehmap.html#abeab23d26e0e9cb4563b221193ca6041">hmap::smooth_cone</a></div><div class="ttdeci">void smooth_cone(Array &amp;array, int ir)</div><div class="ttdoc">Apply a convolution filter with a cone kernel to smooth the array.</div><div class="ttdef"><b>Definition</b> filters.cpp:919</div></div>
+<div class="ttc" id="anamespacehmap_html_abeab23d26e0e9cb4563b221193ca6041"><div class="ttname"><a href="namespacehmap.html#abeab23d26e0e9cb4563b221193ca6041">hmap::smooth_cone</a></div><div class="ttdeci">void smooth_cone(Array &amp;array, int ir)</div><div class="ttdoc">Apply a convolution filter with a cone kernel to smooth the array.</div><div class="ttdef"><b>Definition</b> filters.cpp:855</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_smooth_cone.png" alt=""/>
 </div>
@@ -20675,7 +20685,7 @@ A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_smooth_cpulse.png&quot;</span>, {z0, z}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492">hmap::Cmap::VIRIDIS</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a95c0f4c53278620f0812381ccaa7459e"><div class="ttname"><a href="namespacehmap.html#a95c0f4c53278620f0812381ccaa7459e">hmap::smooth_cpulse</a></div><div class="ttdeci">void smooth_cpulse(Array &amp;array, int ir)</div><div class="ttdoc">Apply filtering to the array using convolution with a cubic pulse kernel.</div><div class="ttdef"><b>Definition</b> filters.cpp:957</div></div>
+<div class="ttc" id="anamespacehmap_html_a95c0f4c53278620f0812381ccaa7459e"><div class="ttname"><a href="namespacehmap.html#a95c0f4c53278620f0812381ccaa7459e">hmap::smooth_cpulse</a></div><div class="ttdeci">void smooth_cpulse(Array &amp;array, int ir)</div><div class="ttdoc">Apply filtering to the array using convolution with a cubic pulse kernel.</div><div class="ttdef"><b>Definition</b> filters.cpp:893</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_smooth_cpulse.png" alt=""/>
 </div>
@@ -20863,7 +20873,7 @@ A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
 <div class="line">                          {z0, z},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492">hmap::Cmap::VIRIDIS</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a4e3cbe9e4b43341148c170f34bd462fd"><div class="ttname"><a href="namespacehmap.html#a4e3cbe9e4b43341148c170f34bd462fd">hmap::smooth_gaussian</a></div><div class="ttdeci">void smooth_gaussian(Array &amp;array, int ir)</div><div class="ttdoc">Apply Gaussian filtering to the array.</div><div class="ttdef"><b>Definition</b> filters.cpp:1019</div></div>
+<div class="ttc" id="anamespacehmap_html_a4e3cbe9e4b43341148c170f34bd462fd"><div class="ttname"><a href="namespacehmap.html#a4e3cbe9e4b43341148c170f34bd462fd">hmap::smooth_gaussian</a></div><div class="ttdeci">void smooth_gaussian(Array &amp;array, int ir)</div><div class="ttdoc">Apply Gaussian filtering to the array.</div><div class="ttdef"><b>Definition</b> filters.cpp:955</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_smooth_gaussian.png" alt=""/>
 </div>
@@ -20977,7 +20987,7 @@ A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
 <div class="line">  z.<a class="code hl_function" href="classhmap_1_1Array.html#a6cd8060670649c0934ddab573e378d3f">to_file</a>(<span class="stringliteral">&quot;out.bin&quot;</span>);</div>
 <div class="line">}</div>
 <div class="ttc" id="aclasshmap_1_1Array_html_a6cd8060670649c0934ddab573e378d3f"><div class="ttname"><a href="classhmap_1_1Array.html#a6cd8060670649c0934ddab573e378d3f">hmap::Array::to_file</a></div><div class="ttdeci">void to_file(const std::string &amp;fname) const</div><div class="ttdoc">Export the array to a raw binary file.</div><div class="ttdef"><b>Definition</b> io.cpp:101</div></div>
-<div class="ttc" id="anamespacehmap_html_ae9fece3e5896d3a5fe4a89d76d6b9dba"><div class="ttname"><a href="namespacehmap.html#ae9fece3e5896d3a5fe4a89d76d6b9dba">hmap::smooth_fill</a></div><div class="ttdeci">void smooth_fill(Array &amp;array, int ir, float k=0.1f, Array *p_deposition_map=nullptr)</div><div class="ttdoc">Apply cubic pulse smoothing to fill lower flat regions while preserving some sharpness.</div><div class="ttdef"><b>Definition</b> filters.cpp:1059</div></div>
+<div class="ttc" id="anamespacehmap_html_ae9fece3e5896d3a5fe4a89d76d6b9dba"><div class="ttname"><a href="namespacehmap.html#ae9fece3e5896d3a5fe4a89d76d6b9dba">hmap::smooth_fill</a></div><div class="ttdeci">void smooth_fill(Array &amp;array, int ir, float k=0.1f, Array *p_deposition_map=nullptr)</div><div class="ttdoc">Apply cubic pulse smoothing to fill lower flat regions while preserving some sharpness.</div><div class="ttdef"><b>Definition</b> filters.cpp:995</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_smooth_fill.png" alt=""/>
 </div>
@@ -21092,8 +21102,8 @@ A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
 <div class="line">                          <span class="keyword">true</span>);</div>
 <div class="line">  z.<a class="code hl_function" href="classhmap_1_1Array.html#a6cd8060670649c0934ddab573e378d3f">to_file</a>(<span class="stringliteral">&quot;out.bin&quot;</span>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a1be0dea3638a072678a860c798f4f271"><div class="ttname"><a href="namespacehmap.html#a1be0dea3638a072678a860c798f4f271">hmap::smooth_fill_holes</a></div><div class="ttdeci">void smooth_fill_holes(Array &amp;array, int ir)</div><div class="ttdoc">Apply smoothing to fill holes (elliptic concave surfaces).</div><div class="ttdef"><b>Definition</b> filters.cpp:1094</div></div>
-<div class="ttc" id="anamespacehmap_html_afa6f07541841c674663141d84ec4d000"><div class="ttname"><a href="namespacehmap.html#afa6f07541841c674663141d84ec4d000">hmap::smooth_fill_smear_peaks</a></div><div class="ttdeci">void smooth_fill_smear_peaks(Array &amp;array, int ir)</div><div class="ttdoc">Apply smoothing to smear peaks (elliptic convex surfaces).</div><div class="ttdef"><b>Definition</b> filters.cpp:1122</div></div>
+<div class="ttc" id="anamespacehmap_html_a1be0dea3638a072678a860c798f4f271"><div class="ttname"><a href="namespacehmap.html#a1be0dea3638a072678a860c798f4f271">hmap::smooth_fill_holes</a></div><div class="ttdeci">void smooth_fill_holes(Array &amp;array, int ir)</div><div class="ttdoc">Apply smoothing to fill holes (elliptic concave surfaces).</div><div class="ttdef"><b>Definition</b> filters.cpp:1030</div></div>
+<div class="ttc" id="anamespacehmap_html_afa6f07541841c674663141d84ec4d000"><div class="ttname"><a href="namespacehmap.html#afa6f07541841c674663141d84ec4d000">hmap::smooth_fill_smear_peaks</a></div><div class="ttdeci">void smooth_fill_smear_peaks(Array &amp;array, int ir)</div><div class="ttdoc">Apply smoothing to smear peaks (elliptic convex surfaces).</div><div class="ttdef"><b>Definition</b> filters.cpp:1058</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_smooth_fill_holes.png" alt=""/>
 </div>
@@ -21293,7 +21303,7 @@ A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
 <div class="line">                          {z, z1},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_aa0d8c9cba830c501ac318cf6510a78ad"><div class="ttname"><a href="namespacehmap.html#aa0d8c9cba830c501ac318cf6510a78ad">hmap::smoothstep_local</a></div><div class="ttdeci">void smoothstep_local(Array &amp;array, int ir)</div><div class="ttdoc">Applies a localized smoothstep operation to the provided array.</div><div class="ttdef"><b>Definition</b> filters.cpp:1150</div></div>
+<div class="ttc" id="anamespacehmap_html_aa0d8c9cba830c501ac318cf6510a78ad"><div class="ttname"><a href="namespacehmap.html#aa0d8c9cba830c501ac318cf6510a78ad">hmap::smoothstep_local</a></div><div class="ttdeci">void smoothstep_local(Array &amp;array, int ir)</div><div class="ttdoc">Applies a localized smoothstep operation to the provided array.</div><div class="ttdef"><b>Definition</b> filters.cpp:1086</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_smoothstep_local.png" alt=""/>
 </div>
@@ -21430,7 +21440,7 @@ A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_steepen.png&quot;</span>, {z, z1, z2}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a38fb422e7a9cd383d40c9a25a06767d5"><div class="ttname"><a href="namespacehmap.html#a38fb422e7a9cd383d40c9a25a06767d5">hmap::steepen</a></div><div class="ttdeci">void steepen(Array &amp;array, float scale, int ir=8)</div><div class="ttdoc">Steepen (or flatten) the array map.</div><div class="ttdef"><b>Definition</b> filters.cpp:1178</div></div>
+<div class="ttc" id="anamespacehmap_html_a38fb422e7a9cd383d40c9a25a06767d5"><div class="ttname"><a href="namespacehmap.html#a38fb422e7a9cd383d40c9a25a06767d5">hmap::steepen</a></div><div class="ttdeci">void steepen(Array &amp;array, float scale, int ir=8)</div><div class="ttdoc">Steepen (or flatten) the array map.</div><div class="ttdef"><b>Definition</b> filters.cpp:1114</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_steepen.png" alt=""/>
 </div>
@@ -21560,7 +21570,7 @@ A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>,</div>
 <div class="line">                          <span class="keyword">true</span>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a8a7a083e583afe812239d1fe6aa479cd"><div class="ttname"><a href="namespacehmap.html#a8a7a083e583afe812239d1fe6aa479cd">hmap::steepen_convective</a></div><div class="ttdeci">void steepen_convective(Array &amp;array, float angle, int iterations=1, int ir=0, float dt=0.1f)</div><div class="ttdoc">Steepen array values by applying a nonlinear convection operator in a given direction.</div><div class="ttdef"><b>Definition</b> filters.cpp:1201</div></div>
+<div class="ttc" id="anamespacehmap_html_a8a7a083e583afe812239d1fe6aa479cd"><div class="ttname"><a href="namespacehmap.html#a8a7a083e583afe812239d1fe6aa479cd">hmap::steepen_convective</a></div><div class="ttdeci">void steepen_convective(Array &amp;array, float angle, int iterations=1, int ir=0, float dt=0.1f)</div><div class="ttdoc">Steepen array values by applying a nonlinear convection operator in a given direction.</div><div class="ttdef"><b>Definition</b> filters.cpp:1137</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_steepen_convective.png" alt=""/>
 </div>
@@ -21718,7 +21728,7 @@ A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_terrace.png&quot;</span>, {z, zp}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>, <span class="keyword">true</span>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a5a852e7e8cb38a8c3231d4867995ae1c"><div class="ttname"><a href="namespacehmap.html#a5a852e7e8cb38a8c3231d4867995ae1c">hmap::terrace</a></div><div class="ttdeci">void terrace(Array &amp;array, uint seed, int nlevels, float gain=0.9f, float noise_ratio=0.f, const Array *p_noise=nullptr, float vmin=0.f, float vmax=-1.f)</div><div class="ttdoc">Applies a terrace effect to the values in an array.</div><div class="ttdef"><b>Definition</b> filters.cpp:1251</div></div>
+<div class="ttc" id="anamespacehmap_html_a5a852e7e8cb38a8c3231d4867995ae1c"><div class="ttname"><a href="namespacehmap.html#a5a852e7e8cb38a8c3231d4867995ae1c">hmap::terrace</a></div><div class="ttdeci">void terrace(Array &amp;array, uint seed, int nlevels, float gain=0.9f, float noise_ratio=0.f, const Array *p_noise=nullptr, float vmin=0.f, float vmax=-1.f)</div><div class="ttdoc">Applies a terrace effect to the values in an array.</div><div class="ttdef"><b>Definition</b> filters.cpp:1187</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_terrace.png" alt=""/>
 </div>
@@ -26237,7 +26247,7 @@ h}{\partial y}
 <div class="line">                          <span class="keyword">true</span>);</div>
 <div class="line">}</div>
 <div class="ttc" id="anamespacehmap_html_a5d7bb7244ff862834560b9145866e1b2"><div class="ttname"><a href="namespacehmap.html#a5d7bb7244ff862834560b9145866e1b2">hmap::gradient_angle_circular_smoothing</a></div><div class="ttdeci">Array gradient_angle_circular_smoothing(const Array &amp;array, int ir, bool downward=false)</div><div class="ttdoc">Computes a smoothed gradient angle (aspect) field with circular unwrapping.</div><div class="ttdef"><b>Definition</b> gradient.cpp:90</div></div>
-<div class="ttc" id="anamespacehmap_html_aa2de65aa233324cf294faf2421ccec2a"><div class="ttname"><a href="namespacehmap.html#aa2de65aa233324cf294faf2421ccec2a">hmap::smooth_cpulse_edge_removing</a></div><div class="ttdeci">void smooth_cpulse_edge_removing(Array &amp;array, float talus, float talus_width, int ir)</div><div class="ttdoc">Smooths an array while attenuating edges using a gradient-based pulse.</div><div class="ttdef"><b>Definition</b> filters.cpp:995</div></div>
+<div class="ttc" id="anamespacehmap_html_aa2de65aa233324cf294faf2421ccec2a"><div class="ttname"><a href="namespacehmap.html#aa2de65aa233324cf294faf2421ccec2a">hmap::smooth_cpulse_edge_removing</a></div><div class="ttdeci">void smooth_cpulse_edge_removing(Array &amp;array, float talus, float talus_width, int ir)</div><div class="ttdoc">Smooths an array while attenuating edges using a gradient-based pulse.</div><div class="ttdef"><b>Definition</b> filters.cpp:931</div></div>
 <div class="ttc" id="anamespacehmap_html_ae23a30f7964baacd6d0457c288fd3598"><div class="ttname"><a href="namespacehmap.html#ae23a30f7964baacd6d0457c288fd3598">hmap::gradient_angle</a></div><div class="ttdeci">Array gradient_angle(const Array &amp;array, bool downward=false)</div><div class="ttdoc">Compute the polar angle of the gradient of a 2D array.</div><div class="ttdef"><b>Definition</b> gradient.cpp:69</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_gradient_angle.png" alt=""/>
@@ -28605,7 +28615,7 @@ h}{\partial y}
 </div>
 </div>
 <a id="ae42a874864d2d8f1a7b580f428395c01" name="ae42a874864d2d8f1a7b580f428395c01"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae42a874864d2d8f1a7b580f428395c01">&#9670;&#160;</a></span>find_flow_sinks()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ae42a874864d2d8f1a7b580f428395c01">&#9670;&#160;</a></span>find_flow_sinks() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -28666,6 +28676,24 @@ h}{\partial y}
 <div class="line">}</div>
 <div class="ttc" id="anamespacehmap_html_ae42a874864d2d8f1a7b580f428395c01"><div class="ttname"><a href="namespacehmap.html#ae42a874864d2d8f1a7b580f428395c01">hmap::find_flow_sinks</a></div><div class="ttdeci">void find_flow_sinks(const Array &amp;z, std::vector&lt; int &gt; &amp;is, std::vector&lt; int &gt; &amp;js)</div><div class="ttdoc">Identifies the indices of flow sinks within the heightmap.</div><div class="ttdef"><b>Definition</b> find_flow_sinks.cpp:32</div></div>
 </div><!-- fragment --> 
+</div>
+</div>
+<a id="a2484e3943cf588d9ae261eb7089e1fd0" name="a2484e3943cf588d9ae261eb7089e1fd0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2484e3943cf588d9ae261eb7089e1fd0">&#9670;&#160;</a></span>find_flow_sinks() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="structhmap_1_1Vec2.html">Vec2</a>&lt; int &gt; &gt; hmap::find_flow_sinks </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>z</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
 </div>
 </div>
 <a id="a2318944325d02f3969aa7fa58b500278" name="a2318944325d02f3969aa7fa58b500278"></a>
@@ -29373,6 +29401,94 @@ h}{\partial y}
 
 </div>
 </div>
+<a id="a2e6b6c9b6294508953b6bce5f7daef12" name="a2e6b6c9b6294508953b6bce5f7daef12"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e6b6c9b6294508953b6bce5f7daef12">&#9670;&#160;</a></span>flow_fixing()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classhmap_1_1Array.html">Array</a> hmap::flow_fixing </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>z</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>riverbed_talus</em> = <code>0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iterations</em> = <code>5</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>prefilter_ir</em> = <code>8</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>carve_riverbed</em> = <code>true</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>smooth_river_bottom</em> = <code>true</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>talus_riverbank</em> = <code>0.01<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramname"><em>seed</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>riverbank_noise_ratio</em> = <code>0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>merging_distance</em> = <code>8.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
+          <td class="paramname"><em>p_noise_x</em> = <code>nullptr</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
+          <td class="paramname"><em>p_noise_y</em> = <code>nullptr</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a5adb98e67f89036317df083dd2123a1e" name="a5adb98e67f89036317df083dd2123a1e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5adb98e67f89036317df083dd2123a1e">&#9670;&#160;</a></span>flow_stream()</h2>
 
@@ -29671,7 +29787,7 @@ h}{\partial y}
 <div class="ttc" id="aclasshmap_1_1Cloud_html_ac8d31a5787a009175695ff16904e7944"><div class="ttname"><a href="classhmap_1_1Cloud.html#ac8d31a5787a009175695ff16904e7944">hmap::Cloud::set_values_from_array</a></div><div class="ttdeci">void set_values_from_array(const Array &amp;array, const Vec4&lt; float &gt; &amp;bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Set the values of the cloud points using values from an underlying array.</div><div class="ttdef"><b>Definition</b> cloud.cpp:369</div></div>
 <div class="ttc" id="aclasshmap_1_1Path_html_a22ef6d9852530fbb2b747c8b22ba9546"><div class="ttname"><a href="classhmap_1_1Path.html#a22ef6d9852530fbb2b747c8b22ba9546">hmap::Path::fractalize</a></div><div class="ttdeci">void fractalize(int iterations, uint seed, float sigma=0.3f, int orientation=0, float persistence=1.f, Array *p_control_field=nullptr, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Applies fractalization to the path by adding points and randomly displacing their positions.</div><div class="ttdef"><b>Definition</b> path.cpp:296</div></div>
 <div class="ttc" id="anamespacehmap_html_a97ba5dfaa6625b654a8010ed7d2f3465"><div class="ttname"><a href="namespacehmap.html#a97ba5dfaa6625b654a8010ed7d2f3465">hmap::generate_riverbed</a></div><div class="ttdeci">Array generate_riverbed(const Path &amp;path, Vec2&lt; int &gt; shape, Vec4&lt; float &gt; bbox={0.f, 1.f, 0.f, 1.f}, bool bezier_smoothing=false, float depth_start=0.01f, float depth_end=1.f, float slope_start=64.f, float slope_end=32.f, float shape_exponent_start=1.f, float shape_exponent_end=10.f, float k_smoothing=0.5f, int post_filter_ir=0, Array *p_noise_x=nullptr, Array *p_noise_y=nullptr, Array *p_noise_r=nullptr)</div><div class="ttdoc">Generates a 2D array representing a riverbed based on a specified path.</div><div class="ttdef"><b>Definition</b> generate_riverbed.cpp:16</div></div>
-<div class="ttc" id="astructhmap_1_1Vec4_html_a080d1200616967db1349c9b912b1186c"><div class="ttname"><a href="structhmap_1_1Vec4.html#a080d1200616967db1349c9b912b1186c">hmap::Vec4::adjust</a></div><div class="ttdeci">Vec4&lt; T &gt; adjust(float da, float db, float dc, float dd)</div><div class="ttdoc">Adjusts the components of the vector by the given offsets.</div><div class="ttdef"><b>Definition</b> algebra.hpp:786</div></div>
+<div class="ttc" id="astructhmap_1_1Vec4_html_a080d1200616967db1349c9b912b1186c"><div class="ttname"><a href="structhmap_1_1Vec4.html#a080d1200616967db1349c9b912b1186c">hmap::Vec4::adjust</a></div><div class="ttdeci">Vec4&lt; T &gt; adjust(float da, float db, float dc, float dd)</div><div class="ttdoc">Adjusts the components of the vector by the given offsets.</div><div class="ttdef"><b>Definition</b> algebra.hpp:800</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_generate_riverbed.png" alt=""/>
 </div>
@@ -33956,7 +34072,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 <div class="ttc" id="anamespacehmap_html_a01f3be1fd053428ea67030e3736d15ca"><div class="ttname"><a href="namespacehmap.html#a01f3be1fd053428ea67030e3736d15ca">hmap::morphological_gradient</a></div><div class="ttdeci">Array morphological_gradient(const Array &amp;array, int ir)</div><div class="ttdoc">Apply a morphological gradient algorithm to the input array using a square structure.</div><div class="ttdef"><b>Definition</b> morphology.cpp:101</div></div>
 <div class="ttc" id="anamespacehmap_html_a1cf22c68188d0e35aa74983f3a01c488"><div class="ttname"><a href="namespacehmap.html#a1cf22c68188d0e35aa74983f3a01c488">hmap::morphological_black_hat</a></div><div class="ttdeci">Array morphological_black_hat(const Array &amp;array, int ir)</div><div class="ttdoc">Apply a morphological black hat algorithm to the input array using a square structure.</div><div class="ttdef"><b>Definition</b> morphology.cpp:96</div></div>
 <div class="ttc" id="anamespacehmap_html_a211108a73f7ebadb6ac87621c4e47301"><div class="ttname"><a href="namespacehmap.html#a211108a73f7ebadb6ac87621c4e47301">hmap::morphological_top_hat</a></div><div class="ttdeci">Array morphological_top_hat(const Array &amp;array, int ir)</div><div class="ttdoc">Apply a morphological top hat algorithm to the input array using a square structure.</div><div class="ttdef"><b>Definition</b> morphology.cpp:106</div></div>
-<div class="ttc" id="anamespacehmap_html_a4799d3f029d45240a5b40b4853583a58"><div class="ttname"><a href="namespacehmap.html#a4799d3f029d45240a5b40b4853583a58">hmap::make_binary</a></div><div class="ttdeci">void make_binary(Array &amp;array, float threshold=0.f)</div><div class="ttdoc">Convert array values to binary using a threshold.</div><div class="ttdef"><b>Definition</b> filters.cpp:520</div></div>
+<div class="ttc" id="anamespacehmap_html_a4799d3f029d45240a5b40b4853583a58"><div class="ttname"><a href="namespacehmap.html#a4799d3f029d45240a5b40b4853583a58">hmap::make_binary</a></div><div class="ttdeci">void make_binary(Array &amp;array, float threshold=0.f)</div><div class="ttdoc">Convert array values to binary using a threshold.</div><div class="ttdef"><b>Definition</b> filters.cpp:456</div></div>
 <div class="ttc" id="anamespacehmap_html_a889405ce11be91e33cc80ca4dbd192b0"><div class="ttname"><a href="namespacehmap.html#a889405ce11be91e33cc80ca4dbd192b0">hmap::closing</a></div><div class="ttdeci">Array closing(const Array &amp;array, int ir)</div><div class="ttdoc">Apply a closing algorithm to the input array using a square structure.</div><div class="ttdef"><b>Definition</b> morphology.cpp:19</div></div>
 <div class="ttc" id="anamespacehmap_html_a9cf7773f6141162bf60708a93acdfcee"><div class="ttname"><a href="namespacehmap.html#a9cf7773f6141162bf60708a93acdfcee">hmap::erosion</a></div><div class="ttdeci">Array erosion(const Array &amp;array, int ir)</div><div class="ttdoc">Apply an erosion algorithm to the input array using a square structure.</div><div class="ttdef"><b>Definition</b> morphology.cpp:44</div></div>
 <div class="ttc" id="anamespacehmap_html_abd3024b8233a70596ff2924607221637"><div class="ttname"><a href="namespacehmap.html#abd3024b8233a70596ff2924607221637">hmap::opening</a></div><div class="ttdeci">Array opening(const Array &amp;array, int ir)</div><div class="ttdoc">Apply an opening algorithm to the input array using a square structure.</div><div class="ttdef"><b>Definition</b> morphology.cpp:111</div></div>

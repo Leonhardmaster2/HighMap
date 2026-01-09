@@ -11,6 +11,7 @@ var structhmap_1_1Vec4 =
     [ "operator+", "structhmap_1_1Vec4.html#a4cda617d090c216c30c1d0cf954dd2ca", null ],
     [ "operator-", "structhmap_1_1Vec4.html#a67123a8dd8a1a92f99557e099a86af8a", null ],
     [ "operator*", "structhmap_1_1Vec4.html#ac4383140ebf1c19af7a5e5465638e89d", null ],
+    [ "operator<", "structhmap_1_1Vec4.html#ab9ee5a9e780ba0ef9c64aec3b5fcf8ee", null ],
     [ "adjust", "structhmap_1_1Vec4.html#a080d1200616967db1349c9b912b1186c", null ],
     [ "operator*", "structhmap_1_1Vec4.html#a1c2926686abc112047126b7d06859965", null ],
     [ "dot", "structhmap_1_1Vec4.html#a2792f6a93dabbfb082fcd8313424747c", null ],

@@ -17,7 +17,7 @@ var filters_8hpp =
     [ "expand", "filters_8hpp.html#a3b39190192fb3cbda0b6d55d49d44eca", null ],
     [ "expand", "filters_8hpp.html#afddb3c456ba0f74b521d10c4022925a6", null ],
     [ "expand_directional", "filters_8hpp.html#affdf6ff9564f31cb988131c2b2c4c280", null ],
-    [ "expand_talus", "filters_8hpp.html#a11b0213f43ea0d2228c0dbd385b8308a", null ],
+    [ "expand_talus", "filters_8hpp.html#a00144f277af41ed44d760f6eeb73ce99", null ],
     [ "faceted", "filters_8hpp.html#ad066ff6ef56dbf9827ff6cca9a22e58a", null ],
     [ "fill_talus", "filters_8hpp.html#a507d3be9d2b879ce7c67f83fddfa43c8", null ],
     [ "fill_talus", "filters_8hpp.html#aabb53a942968efe0a364f9f78079b3af", null ],
