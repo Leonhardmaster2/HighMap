@@ -32,6 +32,7 @@ var math_8hpp =
     [ "approx_rsqrt", "math_8hpp.html#a7c2762e4ccc798e8c90d128c2c2858fe", null ],
     [ "atan", "math_8hpp.html#abfd3f58454c7064010dc2dd58d1a03aa", null ],
     [ "atan2", "math_8hpp.html#a14833c6f5d5f2546447ead949b571c2c", null ],
+    [ "ceil_div", "math_8hpp.html#a6294951db2b05d8b1081e4d865c11244", null ],
     [ "cos", "math_8hpp.html#a4a3589145183ecdcc6392e28cd1ebef8", null ],
     [ "exp", "math_8hpp.html#aad00066161ccf5ba4d6f93ab48c10876", null ],
     [ "gain", "math_8hpp.html#a0db2ecdc6ca69af1e6eb3402b1147cb6", null ],

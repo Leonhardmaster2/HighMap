@@ -20,7 +20,7 @@ var searchData=
   ['biquad_5fpulse_17',['biquad_pulse',['../namespacehmap.html#a28783971977657055053b3c143502bc2',1,'hmap']]],
   ['biquadfunction_18',['biquadfunction',['../classhmap_1_1BiquadFunction.html',1,'hmap::BiquadFunction'],['../classhmap_1_1BiquadFunction.html#a75fdaa5da7556ba9070e7453b710babe',1,'hmap::BiquadFunction::BiquadFunction()']]],
   ['bivariate_20functions_19',['Bivariate functions',['../index.html#autotoc_md11',1,'']]],
-  ['biweight_20',['biweight',['../namespacehmap.html#ae0ab7faed3577159bc8051ad0e25b051',1,'hmap::biweight(Vec2&lt; int &gt; shape)'],['../namespacehmap.html#a4b6f135c6e81d313ca54ae1efac5f2c9a77e92279e9a89de241e361bd74b8803a',1,'hmap::BIWEIGHT']]],
+  ['biweight_20',['biweight',['../namespacehmap.html#a4b6f135c6e81d313ca54ae1efac5f2c9a77e92279e9a89de241e361bd74b8803a',1,'hmap::BIWEIGHT'],['../namespacehmap.html#ae0ab7faed3577159bc8051ad0e25b051',1,'hmap::biweight(Vec2&lt; int &gt; shape)']]],
   ['blackman_21',['blackman',['../namespacehmap.html#adfc320d14c66c6a40dedd9410efa269d',1,'hmap']]],
   ['blend_5fexclusion_22',['blend_exclusion',['../namespacehmap.html#aafb76d7961d1655fdc07422982357588',1,'hmap']]],
   ['blend_5fgradients_23',['blend_gradients',['../namespacehmap.html#af91a60a9fcbed7e38f53df57631a5298',1,'hmap::blend_gradients()'],['../namespacehmap_1_1gpu.html#a3a43696b1d6b8f0d966f9f05e5085edf',1,'hmap::gpu::blend_gradients()']]],

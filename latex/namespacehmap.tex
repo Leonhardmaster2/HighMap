@@ -1253,6 +1253,8 @@ float \mbox{\hyperlink{namespacehmap_a7c2762e4ccc798e8c90d128c2c2858fe}{approx\+
 \begin{DoxyCompactList}\small\item\em Return the arctan of the array elements. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a14833c6f5d5f2546447ead949b571c2c}{atan2}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&y, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&x)
 \begin{DoxyCompactList}\small\item\em Computes the element-\/wise arctangent of two arrays, considering the signs of both inputs. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{namespacehmap_a6294951db2b05d8b1081e4d865c11244}{ceil\+\_\+div}} (int a, int b)
+\begin{DoxyCompactList}\small\item\em Integer ceiling division. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a4a3589145183ecdcc6392e28cd1ebef8}{cos}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array)
 \begin{DoxyCompactList}\small\item\em Return the cosine of the array elements. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_aad00066161ccf5ba4d6f93ab48c10876}{exp}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array)
@@ -1682,6 +1684,8 @@ float \mbox{\hyperlink{namespacehmap_acc54c794223302fc298eeeb563a27d0e}{helper\+
 void \mbox{\hyperlink{namespacehmap_a44e4240c5e7a9cfd46de3c27562ed201}{helper\+\_\+smooth\+\_\+triple\+\_\+corner}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&zfull, int ic, int jc, int noverlap, int ir, int config)
 \item 
 \mbox{\hyperlink{classhmap_1_1Tensor}{Tensor}} \mbox{\hyperlink{namespacehmap_a82490d2d9081a59290630bd0d76b965c}{compute\+\_\+splatmap}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+r, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+g, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+b, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+a)
+\item 
+\mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ int $>$ \mbox{\hyperlink{namespacehmap_ad625a0e1cd21966100d627027e07471d}{helper\+\_\+compute\+\_\+tile\+\_\+bounds}} (int tile\+\_\+x, int tile\+\_\+y, const \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$ \&tile\+\_\+count, const \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$ \&array\+\_\+shape, bool overlapping\+\_\+edges, bool reverse\+\_\+tile\+\_\+y\+\_\+indexing)
 \item 
 void \mbox{\hyperlink{namespacehmap_ad8482d5a5c0650c20ffe1dc86b5f8a61}{recurve\+\_\+bexp}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float tau, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+mask)
 \item 
@@ -19212,6 +19216,26 @@ This function calculates the arctangent of the ratio {\ttfamily y/x} for each co
 \begin{DoxyReturn}{Returns}
 A 2D array where each element is the result of {\ttfamily atan2(y(i, j), x(i,           j))}. 
 \end{DoxyReturn}
+\Hypertarget{namespacehmap_a6294951db2b05d8b1081e4d865c11244}\label{namespacehmap_a6294951db2b05d8b1081e4d865c11244} 
+\index{hmap@{hmap}!ceil\_div@{ceil\_div}}
+\index{ceil\_div@{ceil\_div}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{ceil\_div()}{ceil\_div()}}
+{\footnotesize\ttfamily int hmap\+::ceil\+\_\+div (\begin{DoxyParamCaption}\item[{int}]{a,  }\item[{int}]{b }\end{DoxyParamCaption})}
+
+
+
+Integer ceiling division. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Numerator (\texorpdfstring{$>$}{>}= 0) \\
+\hline
+{\em b} & Denominator (\texorpdfstring{$>$}{>} 0) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ceil(a / b) 
+\end{DoxyReturn}
 \Hypertarget{namespacehmap_a4a3589145183ecdcc6392e28cd1ebef8}\label{namespacehmap_a4a3589145183ecdcc6392e28cd1ebef8} 
 \index{hmap@{hmap}!cos@{cos}}
 \index{cos@{cos}!hmap@{hmap}}
@@ -28553,6 +28577,12 @@ void hmap\+::convert\+\_\+mat\+\_\+to\+\_\+array (\begin{DoxyParamCaption}\item[
 \index{compute\_splatmap@{compute\_splatmap}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{compute\_splatmap()}{compute\_splatmap()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Tensor}{Tensor}} hmap\+::compute\+\_\+splatmap (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+r,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+g,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+b,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+a }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacehmap_ad625a0e1cd21966100d627027e07471d}\label{namespacehmap_ad625a0e1cd21966100d627027e07471d} 
+\index{hmap@{hmap}!helper\_compute\_tile\_bounds@{helper\_compute\_tile\_bounds}}
+\index{helper\_compute\_tile\_bounds@{helper\_compute\_tile\_bounds}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{helper\_compute\_tile\_bounds()}{helper\_compute\_tile\_bounds()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ int $>$ hmap\+::helper\+\_\+compute\+\_\+tile\+\_\+bounds (\begin{DoxyParamCaption}\item[{int}]{tile\+\_\+x,  }\item[{int}]{tile\+\_\+y,  }\item[{const \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$ \&}]{tile\+\_\+count,  }\item[{const \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$ \&}]{array\+\_\+shape,  }\item[{bool}]{overlapping\+\_\+edges,  }\item[{bool}]{reverse\+\_\+tile\+\_\+y\+\_\+indexing }\end{DoxyParamCaption})}
 
 \Hypertarget{namespacehmap_ad8482d5a5c0650c20ffe1dc86b5f8a61}\label{namespacehmap_ad8482d5a5c0650c20ffe1dc86b5f8a61} 
 \index{hmap@{hmap}!recurve\_bexp@{recurve\_bexp}}

@@ -10,6 +10,7 @@ var math_8cpp =
     [ "almost_unit_identity_c2", "math_8cpp.html#ab0aafd1928d46167f782de3c00b937ac", null ],
     [ "atan", "math_8cpp.html#abfd3f58454c7064010dc2dd58d1a03aa", null ],
     [ "atan2", "math_8cpp.html#a14833c6f5d5f2546447ead949b571c2c", null ],
+    [ "ceil_div", "math_8cpp.html#a6294951db2b05d8b1081e4d865c11244", null ],
     [ "cos", "math_8cpp.html#a4a3589145183ecdcc6392e28cd1ebef8", null ],
     [ "exp", "math_8cpp.html#aad00066161ccf5ba4d6f93ab48c10876", null ],
     [ "gain", "math_8cpp.html#a0db2ecdc6ca69af1e6eb3402b1147cb6", null ],
