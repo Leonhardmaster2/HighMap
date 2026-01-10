@@ -179,6 +179,14 @@ Array atan(const Array &array);
 Array atan2(const Array &y, const Array &x);
 
 /**
+ * @brief Integer ceiling division.
+ * @param  a Numerator (>= 0)
+ * @param  b Denominator (> 0)
+ * @return   ceil(a / b)
+ */
+int ceil_div(int a, int b);
+
+/**
  * @brief Return the cosine of the array elements.
  *
  * @param  array Input array.

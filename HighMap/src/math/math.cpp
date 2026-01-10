@@ -107,6 +107,11 @@ Array atan2(const Array &y, const Array &x)
   return array_out;
 }
 
+int ceil_div(int a, int b)
+{
+  return (a + b - 1) / b;
+}
+
 Array cos(const Array &array)
 {
   Array array_out = Array(array.shape);

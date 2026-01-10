@@ -5,9 +5,41 @@
 
 #include "highmap/array.hpp"
 #include "highmap/internal/string_utils.hpp"
+#include "highmap/math.hpp"
 
 namespace hmap
 {
+
+Vec4<int> helper_compute_tile_bounds(int              tile_x,
+                                     int              tile_y,
+                                     const Vec2<int> &tile_count,
+                                     const Vec2<int> &array_shape,
+                                     bool             overlapping_edges,
+                                     bool             reverse_tile_y_indexing)
+{
+  const int tile_width = ceil_div(array_shape.x, tile_count.x);
+  const int tile_height = ceil_div(array_shape.y, tile_count.y);
+
+  const int x1 = tile_x * tile_width;
+  int       x2 = (tile_x + 1) * tile_width;
+
+  const int ty = reverse_tile_y_indexing ? tile_count.y - 1 - tile_y : tile_y;
+
+  const int y1 = ty * tile_height;
+  int       y2 = (ty + 1) * tile_height;
+
+  if (overlapping_edges)
+  {
+    ++x2;
+    ++y2;
+  }
+
+  // Clamp to exclusive bounds
+  x2 = std::min(x2, array_shape.x);
+  y2 = std::min(y2, array_shape.y);
+
+  return {x1, x2, y1, y2};
+}
 
 void export_tiled(const std::string &fname_radical,
                   const std::string &fname_extension,
@@ -18,51 +50,33 @@ void export_tiled(const std::string &fname_radical,
                   bool               overlapping_edges,
                   bool               reverse_tile_y_indexing)
 {
-  int nx = static_cast<int>(std::ceil((float)array.shape.x / tiling.x));
-  int ny = static_cast<int>(std::ceil((float)array.shape.y / tiling.y));
+  if (tiling.x <= 0 || tiling.y <= 0) return;
 
-  for (int it = 0; it < tiling.x; it++)
-    for (int jt = 0; jt < tiling.y; jt++)
+  for (int tx = 0; tx < tiling.x; ++tx)
+    for (int ty = 0; ty < tiling.y; ++ty)
     {
-      LOG_DEBUG("%d %d", it, jt);
-      // define tile indices extent
-      int i1 = it * nx;
-      int i2 = (it + 1) * nx;
+      const Vec4<int> b = helper_compute_tile_bounds(tx,
+                                                     ty,
+                                                     tiling,
+                                                     array.shape,
+                                                     overlapping_edges,
+                                                     reverse_tile_y_indexing);
 
-      int j1, j2;
+      const auto [x1, x2, y1, y2] = b;
 
-      if (reverse_tile_y_indexing)
-      {
-        int jt_inv = tiling.y - 1 - jt;
+      if (x1 >= x2 || y1 >= y2) continue;
 
-        j1 = jt_inv * ny;
-        j2 = (jt_inv + 1) * ny;
-      }
-      else
-      {
-        j1 = jt * ny;
-        j2 = (jt + 1) * ny;
-      }
+      LOG_DEBUG("tile (%d,%d) -> x[%d,%d) y[%d,%d)", tx, ty, x1, x2, y1, y2);
 
-      if (overlapping_edges)
-      {
-        i2++;
-        j2++;
-      }
+      Array tile = array.extract_slice(x1, x2, y1, y2);
 
-      i2 = std::min(i2, array.shape.x - 1);
-      j2 = std::min(j2, array.shape.y - 1);
+      const std::string str_tx = zfill(std::to_string(tx), leading_zeros);
+      const std::string str_ty = zfill(std::to_string(ty), leading_zeros);
 
-      Array tile = array.extract_slice(i1, i2, j1, j2);
+      const std::string fname = fname_radical + "_" + str_tx + "_" + str_ty +
+                                "." + fname_extension;
 
-      // export to image file
-      std::string str_it = zfill(std::to_string(it), leading_zeros);
-      std::string str_jt = zfill(std::to_string(jt), leading_zeros);
-
-      std::string fname_tile = fname_radical + "_" + str_it + "_" + str_jt +
-                               "." + fname_extension;
-
-      tile.to_png_grayscale(fname_tile, depth);
+      tile.to_png_grayscale(fname, depth);
     }
 }
 
