@@ -169,6 +169,18 @@ Array distance_transform_approx(const Array &array,
 Array distance_transform_manhattan(const Array &array,
                                    bool return_squared_distance = false);
 
+/**
+ * @brief Return the Euclidean distance transform.
+ *
+ * Exact transform based on Meijster et al. algorithm @cite Meijster2000.
+ *
+ * @param  array                   Input array to be transformed, will be
+ *                                 converted into binary: 1 wherever input is
+ *                                 greater than 0, 0 elsewhere.
+ * @param  return_squared_distance Whether the distance returned is squared or
+ *                                 not.
+ * @return                         Array Reference to the output array.
+ */
 Array distance_transform_with_closest(const Array &array,
                                       Mat<int>    &closest_i,
                                       Mat<int>    &closest_j,
