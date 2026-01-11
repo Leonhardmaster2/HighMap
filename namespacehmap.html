@@ -1954,6 +1954,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:add641a7fc26ae08b1f679cbb7dd43177"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the Manhattan distance transform of an array.  <br /></td></tr>
 <tr class="separator:add641a7fc26ae08b1f679cbb7dd43177"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe0a1409b90526591f1974b84b68009a" id="r_afe0a1409b90526591f1974b84b68009a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#afe0a1409b90526591f1974b84b68009a">distance_transform_with_closest</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, <a class="el" href="structhmap_1_1Mat.html">Mat</a>&lt; int &gt; &amp;closest_i, <a class="el" href="structhmap_1_1Mat.html">Mat</a>&lt; int &gt; &amp;closest_j, bool return_squared_distance=false)</td></tr>
+<tr class="memdesc:afe0a1409b90526591f1974b84b68009a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the Euclidean distance transform.  <br /></td></tr>
 <tr class="separator:afe0a1409b90526591f1974b84b68009a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9cf7773f6141162bf60708a93acdfcee" id="r_a9cf7773f6141162bf60708a93acdfcee"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a9cf7773f6141162bf60708a93acdfcee">erosion</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, int ir)</td></tr>
 <tr class="memdesc:a9cf7773f6141162bf60708a93acdfcee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply an erosion algorithm to the input array using a square structure.  <br /></td></tr>
@@ -34629,6 +34630,17 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Return the Euclidean distance transform. </p>
+<p>Exact transform based on Meijster et al. algorithm <b>[Meijster2000]</b>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">array</td><td>Input array to be transformed, will be converted into binary: 1 wherever input is greater than 0, 0 elsewhere. </td></tr>
+    <tr><td class="paramname">return_squared_distance</td><td>Whether the distance returned is squared or not. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classhmap_1_1Array.html" title="Array class, helper to manipulate 2D float array with &quot;(i, j)&quot; indexing.">Array</a> Reference to the output array. </dd></dl>
 
 </div>
 </div>
