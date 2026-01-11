@@ -206,6 +206,14 @@
     <member refid="classhmap_1_1DiskFunction_1a9f2a69681853a851c108f7d502459ce3" kind="variable"><name>center</name></member>
     <member refid="classhmap_1_1DiskFunction_1af080b3dca0a3e2f288689459afdfc695" kind="function"><name>DiskFunction</name></member>
   </compound>
+  <compound refid="classhmap_1_1DiskLruTileStorage" kind="class"><name>hmap::DiskLruTileStorage</name>
+    <member refid="classhmap_1_1DiskLruTileStorage_1ad45b4ad5aeea4d8a038f49aae112366a" kind="variable"><name>root_dir</name></member>
+    <member refid="classhmap_1_1DiskLruTileStorage_1a1a873a6275b3b945d14ebbc0cc357487" kind="function"><name>DiskLruTileStorage</name></member>
+    <member refid="classhmap_1_1DiskLruTileStorage_1ac55de909caccd23af25b19db9f39d54e" kind="function"><name>get_tile</name></member>
+    <member refid="classhmap_1_1DiskLruTileStorage_1a6f78ac63137fcef483ab53c6a67bc424" kind="function"><name>on_evict</name></member>
+    <member refid="classhmap_1_1DiskLruTileStorage_1aa6791795331c232f3bb55d60df295c78" kind="function"><name>tile_path</name></member>
+    <member refid="classhmap_1_1DiskLruTileStorage_1a763f7aafcba8788df6b8289e56e9d0dd" kind="function"><name>load_tile_from_disk</name></member>
+  </compound>
   <compound refid="classhmap_1_1DrainageBasins" kind="class"><name>hmap::DrainageBasins</name>
     <member refid="classhmap_1_1DrainageBasins_1aa53e3dff71d7c9f9c42888b628183a26" kind="variable"><name>upstream_traversal</name></member>
     <member refid="classhmap_1_1DrainageBasins_1aa0eb57907d1858bdf8a095f62b2b2587" kind="variable"><name>next</name></member>
@@ -441,6 +449,19 @@
     <member refid="classhmap_1_1InterpolatorCurve_1ad244270f8660a2d4bbafb1dc3a46208f" kind="function"><name>operator()</name></member>
     <member refid="classhmap_1_1InterpolatorCurve_1a0693176fa2e00e3abe190b5292507c42" kind="function"><name>get_segment_interpolation_parameters</name></member>
   </compound>
+  <compound refid="structhmap_1_1LruTileEntry" kind="struct"><name>hmap::LruTileEntry</name>
+    <member refid="structhmap_1_1LruTileEntry_1a64f43e9e8cd9c2a013deacda2409e26f" kind="variable"><name>value</name></member>
+    <member refid="structhmap_1_1LruTileEntry_1a4b419114b2a041fe2e303cf6dbea4c39" kind="variable"><name>lru_it</name></member>
+  </compound>
+  <compound refid="classhmap_1_1LruTileStorage" kind="class"><name>hmap::LruTileStorage</name>
+    <member refid="classhmap_1_1LruTileStorage_1aa04ddcca3cd4ef62b56823fc99ca1c30" kind="variable"><name>max_tiles</name></member>
+    <member refid="classhmap_1_1LruTileStorage_1a503160ae137678b2255088de204a5d7c" kind="variable"><name>lru</name></member>
+    <member refid="classhmap_1_1LruTileStorage_1afc5582d2a112b9907a175d101f8dcf30" kind="variable"><name>tiles</name></member>
+    <member refid="classhmap_1_1LruTileStorage_1a18948b97db31797b0fe45c58d2da883b" kind="function"><name>LruTileStorage</name></member>
+    <member refid="classhmap_1_1LruTileStorage_1ad8d27889892845b867bee79aa596042f" kind="function"><name>get_tile</name></member>
+    <member refid="classhmap_1_1LruTileStorage_1ab27b0290974d18f882fdadd7bc5acd96" kind="function"><name>release_tile</name></member>
+    <member refid="classhmap_1_1LruTileStorage_1ac7f51bb13ce9dab2d1dac83f8177e8db" kind="function"><name>on_evict</name></member>
+  </compound>
   <compound refid="structhmap_1_1Mat" kind="struct"><name>hmap::Mat</name>
     <member refid="structhmap_1_1Mat_1a4a27962ffe15d147fa23386947c08cbf" kind="variable"><name>vector</name></member>
     <member refid="structhmap_1_1Mat_1a38df202b165735b1eb8cad32d90ac613" kind="variable"><name>shape</name></member>
@@ -590,6 +611,11 @@
     <member refid="classhmap_1_1PyramidDecomposition_1aefa4ee30147d004b1398e4dca1edb637" kind="function"><name>to_png</name></member>
     <member refid="classhmap_1_1PyramidDecomposition_1aa23f39a63086657fffda6cb5ca1842a5" kind="function"><name>transform</name></member>
   </compound>
+  <compound refid="classhmap_1_1RamTileStorage" kind="class"><name>hmap::RamTileStorage</name>
+    <member refid="classhmap_1_1RamTileStorage_1a05792cb43cf15b48c74e196874b4fcf3" kind="variable"><name>tiles</name></member>
+    <member refid="classhmap_1_1RamTileStorage_1ac01f5b8f15b1c50ebece95106adce7fe" kind="function"><name>get_tile</name></member>
+    <member refid="classhmap_1_1RamTileStorage_1a6614d1aebd7771e7e2645d7ef2cb1151" kind="function"><name>release_tile</name></member>
+  </compound>
   <compound refid="structhmap_1_1Recorder" kind="struct"><name>hmap::Recorder</name>
     <member refid="structhmap_1_1Recorder_1a383fac701048b5d6717ed4c007161ba3" kind="variable"><name>name</name></member>
     <member refid="structhmap_1_1Recorder_1ad553f417348e2de1e528eaacdfbf2d5e" kind="variable"><name>nb_calls</name></member>
@@ -681,6 +707,27 @@
     <member refid="classhmap_1_1Tile_1aaea839a4732611e0abdb5c3b64f509b2" kind="function"><name>from_array_interp_nearest</name></member>
     <member refid="classhmap_1_1Tile_1a5ac4f9e9129abfbc790393ac47450096" kind="function"><name>infos</name></member>
   </compound>
+  <compound refid="structhmap_1_1TileKey" kind="struct"><name>hmap::TileKey</name>
+    <member refid="structhmap_1_1TileKey_1aa1b61a92a4562444455e7461cd65d642" kind="variable"><name>tx</name></member>
+    <member refid="structhmap_1_1TileKey_1a0c2bad93215283eb8baedc5cbc2fa2f1" kind="variable"><name>ty</name></member>
+    <member refid="structhmap_1_1TileKey_1a40d424bd1194dae00a214f663e8412a0" kind="function"><name>operator==</name></member>
+  </compound>
+  <compound refid="structhmap_1_1TileKeyHash" kind="struct"><name>hmap::TileKeyHash</name>
+    <member refid="structhmap_1_1TileKeyHash_1a7231b3026e5cbd723cba9e9ee184f500" kind="function"><name>operator()</name></member>
+  </compound>
+  <compound refid="structhmap_1_1TileRegion" kind="struct"><name>hmap::TileRegion</name>
+    <member refid="structhmap_1_1TileRegion_1afb89981844bdc0270441e8464f00ccdc" kind="variable"><name>key</name></member>
+    <member refid="structhmap_1_1TileRegion_1a1ee79e1a24fa9d72dd13a2e404026895" kind="variable"><name>bbox</name></member>
+    <member refid="structhmap_1_1TileRegion_1a525824dd7a3c589436a33b1d232a8433" kind="variable"><name>shape</name></member>
+    <member refid="structhmap_1_1TileRegion_1a49c3eebc47bb7e161fd3c6ce87f01cca" kind="variable"><name>halo</name></member>
+    <member refid="structhmap_1_1TileRegion_1a1cf655fd7ee1443572b8db734d836dc7" kind="function"><name>TileRegion</name></member>
+    <member refid="structhmap_1_1TileRegion_1a49995b0a9eb4602e25d0ee719303b356" kind="function"><name>total_shape</name></member>
+  </compound>
+  <compound refid="classhmap_1_1TileStorage" kind="class"><name>hmap::TileStorage</name>
+    <member refid="classhmap_1_1TileStorage_1a125f3395811a46b8b104eda9736b6b23" kind="function"><name>~TileStorage</name></member>
+    <member refid="classhmap_1_1TileStorage_1afb6d5e8458f71c702a8792bcaa8642f8" kind="function"><name>get_tile</name></member>
+    <member refid="classhmap_1_1TileStorage_1a3dd9f39f008bba2ab9b0bd3baa7e7ea9" kind="function"><name>release_tile</name></member>
+  </compound>
   <compound refid="classhmap_1_1Timer" kind="class"><name>hmap::Timer</name>
     <member refid="classhmap_1_1Timer_1aac51dbbcb2b7ea63765c0f95764f27cb" kind="variable"><name>sid</name></member>
     <member refid="classhmap_1_1Timer_1a8c20307901af959c421349c957149edf" kind="variable"><name>records</name></member>
@@ -738,6 +785,10 @@
     <member refid="structhmap_1_1Vec2_1a700c00c9fc0e754c4ce65d8c8c6e38d2" kind="function"><name>operator&lt;</name></member>
     <member refid="structhmap_1_1Vec2_1a89bca88f3a07365a28ad89477500bf33" kind="function"><name>magnitude</name></member>
     <member refid="structhmap_1_1Vec2_1a46c73f1340298ca58fe607c04ca09ab1" kind="function"><name>normalize</name></member>
+    <member refid="structhmap_1_1Vec2_1a71b22cecf6d34738836e89bbcab1e8af" kind="function"><name>Vec2</name></member>
+    <member refid="structhmap_1_1Vec2_1a1797bb3637bfe76b1716fed7e9b59429" kind="function"><name>Vec2</name></member>
+    <member refid="structhmap_1_1Vec2_1a37c790cfa819978747df612712ee8311" kind="function"><name>operator glm::vec2</name></member>
+    <member refid="structhmap_1_1Vec2_1abaac5ab6a67bd3c27171a02113151de9" kind="function"><name>operator glm::ivec2</name></member>
     <member refid="structhmap_1_1Vec2_1a7a945fff9f1e4964c135dbc5d226fd69" kind="friend"><name>operator*</name></member>
     <member refid="structhmap_1_1Vec2_1a975fced8e2bb23c427542159c5641c26" kind="friend"><name>dot</name></member>
   </compound>
@@ -781,8 +832,27 @@
     <member refid="structhmap_1_1Vec4_1ac4383140ebf1c19af7a5e5465638e89d" kind="function"><name>operator*</name></member>
     <member refid="structhmap_1_1Vec4_1ab9ee5a9e780ba0ef9c64aec3b5fcf8ee" kind="function"><name>operator&lt;</name></member>
     <member refid="structhmap_1_1Vec4_1a080d1200616967db1349c9b912b1186c" kind="function"><name>adjust</name></member>
+    <member refid="structhmap_1_1Vec4_1a2aa1697fff083c0d310ce106da93acdc" kind="function"><name>Vec4</name></member>
+    <member refid="structhmap_1_1Vec4_1a5e537472078bd42e9c50d3939ece2b1c" kind="function"><name>Vec4</name></member>
+    <member refid="structhmap_1_1Vec4_1aac88058aee521e20925cdc24b2686e61" kind="function"><name>operator glm::vec4</name></member>
+    <member refid="structhmap_1_1Vec4_1a7b5a516fdc43d0146586e6ebc7ac5e12" kind="function"><name>operator glm::ivec4</name></member>
     <member refid="structhmap_1_1Vec4_1a1c2926686abc112047126b7d06859965" kind="friend"><name>operator*</name></member>
     <member refid="structhmap_1_1Vec4_1a2792f6a93dabbfb082fcd8313424747c" kind="friend"><name>dot</name></member>
+  </compound>
+  <compound refid="structhmap_1_1VirtualArray" kind="struct"><name>hmap::VirtualArray</name>
+    <member refid="structhmap_1_1VirtualArray_1ab4cb9cb20eb23bc7b1026da3486be975" kind="variable"><name>shape</name></member>
+    <member refid="structhmap_1_1VirtualArray_1a7a4e86a56ad72960bc20dfa97cadb8e3" kind="variable"><name>bbox</name></member>
+    <member refid="structhmap_1_1VirtualArray_1a2d3721a573d9e21e941148f2e359434b" kind="variable"><name>tile_shape</name></member>
+    <member refid="structhmap_1_1VirtualArray_1a2b173300623c38c8083654ad095217f2" kind="variable"><name>halo</name></member>
+    <member refid="structhmap_1_1VirtualArray_1ac46202fbde3f529ab290f38e73b529d6" kind="variable"><name>storage</name></member>
+    <member refid="structhmap_1_1VirtualArray_1a8311d1152047f08d0388d1a4a048099e" kind="function"><name>VirtualArray</name></member>
+    <member refid="structhmap_1_1VirtualArray_1a9d0e859ae542634ecb9446f5c2fc7bb9" kind="function"><name>get</name></member>
+    <member refid="structhmap_1_1VirtualArray_1ab46eee27ffe32137d1c6076e82cc5195" kind="function"><name>set</name></member>
+    <member refid="structhmap_1_1VirtualArray_1a7112a736d8497a4b65d5056209f04077" kind="function"><name>smooth_overlap_buffers</name></member>
+    <member refid="structhmap_1_1VirtualArray_1a46a7e552ad77c88a527c41c8aeeb5f68" kind="function"><name>to_array</name></member>
+    <member refid="structhmap_1_1VirtualArray_1a307123a81d2ea77c85ae28612a1c06c2" kind="function"><name>tile_region_from_global_index</name></member>
+    <member refid="structhmap_1_1VirtualArray_1a157b5a589d01cb7da7fd9b9b759f94c6" kind="function"><name>tile_region_from_tile_coords</name></member>
+    <member refid="structhmap_1_1VirtualArray_1a12c769efc1f74252ff39f2b617f55f33" kind="function"><name>local_indices</name></member>
   </compound>
   <compound refid="classhmap_1_1WaveDuneFunction" kind="class"><name>hmap::WaveDuneFunction</name>
     <member refid="classhmap_1_1WaveDuneFunction_1a326078132dfa53ad87e7b67f49e611d8" kind="variable"><name>kw</name></member>
@@ -1672,6 +1742,8 @@
     <member refid="namespacehmap_1a5d5baa80ff76a31a24e3b348edb0520a" kind="function"><name>warp_downslope</name></member>
     <member refid="namespacehmap_1a2dba417aca5a0dcd02509617939d741b" kind="function"><name>warp_downslope</name></member>
     <member refid="namespacehmap_1aa49ad80ba2711183ea6758d6d6d4d5f7" kind="function"><name>zoom</name></member>
+    <member refid="namespacehmap_1aae8f6a3d45b6f43c1d3534ef08355598" kind="function"><name>for_each_tile_sequential</name></member>
+    <member refid="namespacehmap_1a99ff01a3a6bc3608247f0be2a1d38871" kind="function"><name>for_each_tile_distributed</name></member>
     <member refid="namespacehmap_1aac1a15042e8fae93d9caed60c2318fcc" kind="function"><name>operator*</name></member>
     <member refid="namespacehmap_1a7f71bb0e96a77a1302a4d6e151f540cf" kind="function"><name>operator/</name></member>
     <member refid="namespacehmap_1ab47e8203dd4ddf61741a3a8e25a5e2f9" kind="function"><name>operator+</name></member>
@@ -1992,6 +2064,17 @@
   <compound refid="tensor_8hpp" kind="file"><name>tensor.hpp</name>
   </compound>
   <compound refid="transform_8hpp" kind="file"><name>transform.hpp</name>
+  </compound>
+  <compound refid="tile__region_8hpp" kind="file"><name>tile_region.hpp</name>
+  </compound>
+  <compound refid="tile__storage_8hpp" kind="file"><name>tile_storage.hpp</name>
+  </compound>
+  <compound refid="virtual__array_8hpp" kind="file"><name>virtual_array.hpp</name>
+  </compound>
+  <compound refid="virtual__array_8inl" kind="file"><name>virtual_array.inl</name>
+    <member refid="virtual__array_8inl_1a1667bffbf59a0c6e7f631f67babec5d9" kind="function"><name>for_each_tile_sequential</name></member>
+    <member refid="virtual__array_8inl_1ae9b022962430a5b4e223591606a64999" kind="function"><name>for_each_tile_distributed</name></member>
+    <member refid="virtual__array_8inl_1a8f931ef5a699d8756ed83bf678cc5110" kind="function"><name>for_each_tile_distributed</name></member>
   </compound>
   <compound refid="array_8cpp" kind="file"><name>array.cpp</name>
   </compound>
@@ -2379,6 +2462,16 @@
   </compound>
   <compound refid="string__utils_8cpp" kind="file"><name>string_utils.cpp</name>
   </compound>
+  <compound refid="disk__lru__storage_8cpp" kind="file"><name>disk_lru_storage.cpp</name>
+  </compound>
+  <compound refid="lru__tile__storage_8cpp" kind="file"><name>lru_tile_storage.cpp</name>
+  </compound>
+  <compound refid="ram__tile__storage_8cpp" kind="file"><name>ram_tile_storage.cpp</name>
+  </compound>
+  <compound refid="tile__region_8cpp" kind="file"><name>tile_region.cpp</name>
+  </compound>
+  <compound refid="virtual__array_8cpp" kind="file"><name>virtual_array.cpp</name>
+  </compound>
   <compound refid="todo" kind="page"><name>todo</name>
   </compound>
   <compound refid="citelist" kind="page"><name>citelist</name>
@@ -2480,6 +2573,10 @@
   <compound refid="dir_cf7059bcc3c8d9d07f321966fb202cdc" kind="dir"><name>HighMap/src/transform</name>
   </compound>
   <compound refid="dir_05ca16f795cd0e013c5ff4457fc64f86" kind="dir"><name>HighMap/src/utils</name>
+  </compound>
+  <compound refid="dir_1df01a04ff01c9992bc6f53b8b3cc25e" kind="dir"><name>HighMap/include/highmap/virtual_array</name>
+  </compound>
+  <compound refid="dir_f3face59d46858be97e2b2d179788010" kind="dir"><name>HighMap/src/virtual_array</name>
   </compound>
   <compound refid="_2home_2runner_2work_2HighMap_2HighMap_2HighMap_2include_2highmap_2internal_2string_utils_8hpp-example" kind="example"><name>/home/runner/work/HighMap/HighMap/HighMap/include/highmap/internal/string_utils.hpp</name>
   </compound>

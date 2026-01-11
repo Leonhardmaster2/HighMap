@@ -60,6 +60,7 @@ var hierarchy =
     [ "hmap::HeightmapRGBA", "structhmap_1_1HeightmapRGBA.html", null ],
     [ "hmap::Interpolator1D", "classhmap_1_1Interpolator1D.html", null ],
     [ "hmap::InterpolatorCurve", "classhmap_1_1InterpolatorCurve.html", null ],
+    [ "hmap::LruTileEntry", "structhmap_1_1LruTileEntry.html", null ],
     [ "hmap::Mat< T >", "structhmap_1_1Mat.html", null ],
     [ "hmap::Mat< hmap::Vec2< int > >", "structhmap_1_1Mat.html", null ],
     [ "hmap::Particle", "structhmap_1_1Particle.html", null ],
@@ -68,6 +69,15 @@ var hierarchy =
     [ "hmap::PyramidDecomposition", "classhmap_1_1PyramidDecomposition.html", null ],
     [ "hmap::Recorder", "structhmap_1_1Recorder.html", null ],
     [ "hmap::Tensor", "classhmap_1_1Tensor.html", null ],
+    [ "hmap::TileKey", "structhmap_1_1TileKey.html", null ],
+    [ "hmap::TileKeyHash", "structhmap_1_1TileKeyHash.html", null ],
+    [ "hmap::TileRegion", "structhmap_1_1TileRegion.html", null ],
+    [ "hmap::TileStorage", "classhmap_1_1TileStorage.html", [
+      [ "hmap::LruTileStorage", "classhmap_1_1LruTileStorage.html", [
+        [ "hmap::DiskLruTileStorage", "classhmap_1_1DiskLruTileStorage.html", null ]
+      ] ],
+      [ "hmap::RamTileStorage", "classhmap_1_1RamTileStorage.html", null ]
+    ] ],
     [ "hmap::Timer", "classhmap_1_1Timer.html", null ],
     [ "hmap::Vec2< T >", "structhmap_1_1Vec2.html", null ],
     [ "hmap::Vec2< float >", "structhmap_1_1Vec2.html", null ],
@@ -75,5 +85,6 @@ var hierarchy =
     [ "hmap::Vec3< T >", "structhmap_1_1Vec3.html", null ],
     [ "hmap::Vec3< int >", "structhmap_1_1Vec3.html", null ],
     [ "hmap::Vec4< T >", "structhmap_1_1Vec4.html", null ],
-    [ "hmap::Vec4< float >", "structhmap_1_1Vec4.html", null ]
+    [ "hmap::Vec4< float >", "structhmap_1_1Vec4.html", null ],
+    [ "hmap::VirtualArray", "structhmap_1_1VirtualArray.html", null ]
 ];

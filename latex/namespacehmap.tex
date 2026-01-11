@@ -28,6 +28,8 @@ class \mbox{\hyperlink{classhmap_1_1CraterFunction}{Crater\+Function}}
 \begin{DoxyCompactList}\small\item\em Crater (x, y) function class. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classhmap_1_1DiskFunction}{Disk\+Function}}
 \begin{DoxyCompactList}\small\item\em \doxylink{classhmap_1_1DiskFunction}{Disk\+Function} (x, y) function class. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classhmap_1_1DiskLruTileStorage}{Disk\+Lru\+Tile\+Storage}}
+\item 
 class \mbox{\hyperlink{classhmap_1_1DrainageBasins}{Drainage\+Basins}}
 \item 
 class \mbox{\hyperlink{classhmap_1_1Edge}{Edge}}
@@ -64,6 +66,10 @@ class \mbox{\hyperlink{classhmap_1_1Interpolator1D}{Interpolator1D}}
 \begin{DoxyCompactList}\small\item\em A class for performing 1D interpolation using the GSL library. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classhmap_1_1InterpolatorCurve}{Interpolator\+Curve}}
 \begin{DoxyCompactList}\small\item\em Class for performing curve interpolation on a set of points. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structhmap_1_1LruTileEntry}{Lru\+Tile\+Entry}}
+\item 
+class \mbox{\hyperlink{classhmap_1_1LruTileStorage}{Lru\+Tile\+Storage}}
+\item 
 struct \mbox{\hyperlink{structhmap_1_1Mat}{Mat}}
 \begin{DoxyCompactList}\small\item\em \doxylink{structhmap_1_1Mat}{Mat} class for basic manipulation of 2D matrices. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classhmap_1_1NoiseFunction}{Noise\+Function}}
@@ -88,6 +94,8 @@ struct \mbox{\hyperlink{structhmap_1_1Pos}{Pos}}
 \item 
 class \mbox{\hyperlink{classhmap_1_1PyramidDecomposition}{Pyramid\+Decomposition}}
 \begin{DoxyCompactList}\small\item\em Pyramid decomposition class, to handle low-\/pass pyramids (like Laplacian pyramid). \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classhmap_1_1RamTileStorage}{Ram\+Tile\+Storage}}
+\item 
 struct \mbox{\hyperlink{structhmap_1_1Recorder}{Recorder}}
 \begin{DoxyCompactList}\small\item\em The \doxylink{structhmap_1_1Recorder}{Recorder} class is responsible for recording timing information for individual events. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classhmap_1_1RectangleFunction}{Rectangle\+Function}}
@@ -106,6 +114,14 @@ class \mbox{\hyperlink{classhmap_1_1Tensor}{Tensor}}
 \begin{DoxyCompactList}\small\item\em A class to represent a multi-\/dimensional tensor. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classhmap_1_1Tile}{Tile}}
 \begin{DoxyCompactList}\small\item\em \doxylink{classhmap_1_1Tile}{Tile} class, to manipulate a restricted region of an heightmap (with contextual informations). \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structhmap_1_1TileKey}{Tile\+Key}}
+\item 
+struct \mbox{\hyperlink{structhmap_1_1TileKeyHash}{Tile\+Key\+Hash}}
+\item 
+struct \mbox{\hyperlink{structhmap_1_1TileRegion}{Tile\+Region}}
+\item 
+class \mbox{\hyperlink{classhmap_1_1TileStorage}{Tile\+Storage}}
+\item 
 class \mbox{\hyperlink{classhmap_1_1Timer}{Timer}}
 \begin{DoxyCompactList}\small\item\em The \doxylink{classhmap_1_1Timer}{Timer} class is a singleton that manages multiple Recorders and provides an interface for timing events. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classhmap_1_1ValueCubicNoiseFunction}{Value\+Cubic\+Noise\+Function}}
@@ -122,6 +138,8 @@ struct \mbox{\hyperlink{structhmap_1_1Vec3}{Vec3}}
 \begin{DoxyCompactList}\small\item\em \doxylink{structhmap_1_1Vec3}{Vec3} class for basic manipulation of 3D vectors. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}
 \begin{DoxyCompactList}\small\item\em \doxylink{structhmap_1_1Vec4}{Vec4} class for basic manipulation of 4D vectors. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}}
+\item 
 class \mbox{\hyperlink{classhmap_1_1WaveDuneFunction}{Wave\+Dune\+Function}}
 \begin{DoxyCompactList}\small\item\em Wave dune (x, y) function class. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classhmap_1_1WaveSineFunction}{Wave\+Sine\+Function}}
@@ -1659,6 +1677,10 @@ void \mbox{\hyperlink{namespacehmap_a2dba417aca5a0dcd02509617939d741b}{warp\+\_\
 \begin{DoxyCompactList}\small\item\em Apply a warping effect following the downward local gradient direction (deflate/inflate effect) with a mask. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_aa49ad80ba2711183ea6758d6d6d4d5f7}{zoom}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float zoom\+\_\+factor, bool periodic=false, \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ float $>$ center=\{0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
 \begin{DoxyCompactList}\small\item\em Applies a zoom effect to a 2D array with an adjustable center. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Func $>$ }\\void \mbox{\hyperlink{namespacehmap_aae8f6a3d45b6f43c1d3534ef08355598}{for\+\_\+each\+\_\+tile\+\_\+sequential}} (\mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \&va, Func \&\&func)
+\item 
+{\footnotesize template$<$typename Func $>$ }\\void \mbox{\hyperlink{namespacehmap_a99ff01a3a6bc3608247f0be2a1d38871}{for\+\_\+each\+\_\+tile\+\_\+distributed}} (\mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \&va, Func \&\&func)
+\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_aac1a15042e8fae93d9caed60c2318fcc}{operator\texorpdfstring{$\ast$}{*}}} (const float value, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array)
 \item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a7f71bb0e96a77a1302a4d6e151f540cf}{operator/}} (const float value, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array)
@@ -28475,7 +28497,21 @@ A new 2D array that is the result of applying the zoom effect to the input {\ttf
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}  \Hypertarget{namespacehmap_aac1a15042e8fae93d9caed60c2318fcc}\label{namespacehmap_aac1a15042e8fae93d9caed60c2318fcc} 
+{\bfseries{Result}}  \Hypertarget{namespacehmap_aae8f6a3d45b6f43c1d3534ef08355598}\label{namespacehmap_aae8f6a3d45b6f43c1d3534ef08355598} 
+\index{hmap@{hmap}!for\_each\_tile\_sequential@{for\_each\_tile\_sequential}}
+\index{for\_each\_tile\_sequential@{for\_each\_tile\_sequential}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{for\_each\_tile\_sequential()}{for\_each\_tile\_sequential()}}
+{\footnotesize\ttfamily template$<$typename Func $>$ \\
+void hmap\+::for\+\_\+each\+\_\+tile\+\_\+sequential (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \&}]{va,  }\item[{Func \&\&}]{func }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacehmap_a99ff01a3a6bc3608247f0be2a1d38871}\label{namespacehmap_a99ff01a3a6bc3608247f0be2a1d38871} 
+\index{hmap@{hmap}!for\_each\_tile\_distributed@{for\_each\_tile\_distributed}}
+\index{for\_each\_tile\_distributed@{for\_each\_tile\_distributed}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{for\_each\_tile\_distributed()}{for\_each\_tile\_distributed()}}
+{\footnotesize\ttfamily template$<$typename Func $>$ \\
+void hmap\+::for\+\_\+each\+\_\+tile\+\_\+distributed (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \&}]{va,  }\item[{Func \&\&}]{func }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacehmap_aac1a15042e8fae93d9caed60c2318fcc}\label{namespacehmap_aac1a15042e8fae93d9caed60c2318fcc} 
 \index{hmap@{hmap}!operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}}
 \index{operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{operator\texorpdfstring{$\ast$}{*}()}{operator*()}}

@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structhmap_1_1LruTileEntry" kind="struct" language="C++" prot="public">
+    <compoundname>hmap::LruTileEntry</compoundname>
+    <includes refid="tile__storage_8hpp" local="no">tile_storage.hpp</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhmap_1_1LruTileEntry_1a64f43e9e8cd9c2a013deacda2409e26f" prot="public" static="no" mutable="no">
+        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
+        <definition>Array hmap::LruTileEntry::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <qualifiedname>hmap::LruTileEntry::value</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/virtual_array/tile_storage.hpp" line="62" column="32" bodyfile="HighMap/include/highmap/virtual_array/tile_storage.hpp" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhmap_1_1LruTileEntry_1a4b419114b2a041fe2e303cf6dbea4c39" prot="public" static="no" mutable="no">
+        <type>std::list&lt; <ref refid="structhmap_1_1TileKey" kindref="compound">TileKey</ref> &gt;::iterator</type>
+        <definition>std::list&lt;TileKey&gt;::iterator hmap::LruTileEntry::lru_it</definition>
+        <argsstring></argsstring>
+        <name>lru_it</name>
+        <qualifiedname>hmap::LruTileEntry::lru_it</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/virtual_array/tile_storage.hpp" line="63" column="24" bodyfile="HighMap/include/highmap/virtual_array/tile_storage.hpp" bodystart="63" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3">
+        <label>hmap::Vec2&lt; int &gt;</label>
+        <link refid="structhmap_1_1Vec2"/>
+      </node>
+      <node id="2">
+        <label>hmap::Array</label>
+        <link refid="classhmap_1_1Array"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>shape</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>vector</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>hmap::LruTileEntry</label>
+        <link refid="structhmap_1_1LruTileEntry"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>value</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>lru_it</edgelabel>
+        </childnode>
+      </node>
+      <node id="6">
+        <label>hmap::TileKey</label>
+        <link refid="structhmap_1_1TileKey"/>
+      </node>
+      <node id="5">
+        <label>std::list&lt; hmap::TileKey &gt;</label>
+        <childnode refid="6" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>std::vector&lt; float &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="HighMap/include/highmap/virtual_array/tile_storage.hpp" line="60" column="1" bodyfile="HighMap/include/highmap/virtual_array/tile_storage.hpp" bodystart="61" bodyend="64"/>
+    <listofallmembers>
+      <member refid="structhmap_1_1LruTileEntry_1a4b419114b2a041fe2e303cf6dbea4c39" prot="public" virt="non-virtual"><scope>hmap::LruTileEntry</scope><name>lru_it</name></member>
+      <member refid="structhmap_1_1LruTileEntry_1a64f43e9e8cd9c2a013deacda2409e26f" prot="public" virt="non-virtual"><scope>hmap::LruTileEntry</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

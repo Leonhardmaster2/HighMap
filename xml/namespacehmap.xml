@@ -12,6 +12,7 @@
     <innerclass refid="classhmap_1_1CoordFrame" prot="public">hmap::CoordFrame</innerclass>
     <innerclass refid="classhmap_1_1CraterFunction" prot="public">hmap::CraterFunction</innerclass>
     <innerclass refid="classhmap_1_1DiskFunction" prot="public">hmap::DiskFunction</innerclass>
+    <innerclass refid="classhmap_1_1DiskLruTileStorage" prot="public">hmap::DiskLruTileStorage</innerclass>
     <innerclass refid="classhmap_1_1DrainageBasins" prot="public">hmap::DrainageBasins</innerclass>
     <innerclass refid="classhmap_1_1Edge" prot="public">hmap::Edge</innerclass>
     <innerclass refid="classhmap_1_1FbmFunction" prot="public">hmap::FbmFunction</innerclass>
@@ -30,6 +31,8 @@
     <innerclass refid="structhmap_1_1HeightmapRGBA" prot="public">hmap::HeightmapRGBA</innerclass>
     <innerclass refid="classhmap_1_1Interpolator1D" prot="public">hmap::Interpolator1D</innerclass>
     <innerclass refid="classhmap_1_1InterpolatorCurve" prot="public">hmap::InterpolatorCurve</innerclass>
+    <innerclass refid="structhmap_1_1LruTileEntry" prot="public">hmap::LruTileEntry</innerclass>
+    <innerclass refid="classhmap_1_1LruTileStorage" prot="public">hmap::LruTileStorage</innerclass>
     <innerclass refid="structhmap_1_1Mat" prot="public">hmap::Mat</innerclass>
     <innerclass refid="classhmap_1_1NoiseFunction" prot="public">hmap::NoiseFunction</innerclass>
     <innerclass refid="classhmap_1_1ParberryFunction" prot="public">hmap::ParberryFunction</innerclass>
@@ -42,6 +45,7 @@
     <innerclass refid="classhmap_1_1Point" prot="public">hmap::Point</innerclass>
     <innerclass refid="structhmap_1_1Pos" prot="public">hmap::Pos</innerclass>
     <innerclass refid="classhmap_1_1PyramidDecomposition" prot="public">hmap::PyramidDecomposition</innerclass>
+    <innerclass refid="classhmap_1_1RamTileStorage" prot="public">hmap::RamTileStorage</innerclass>
     <innerclass refid="structhmap_1_1Recorder" prot="public">hmap::Recorder</innerclass>
     <innerclass refid="classhmap_1_1RectangleFunction" prot="public">hmap::RectangleFunction</innerclass>
     <innerclass refid="classhmap_1_1RiftFunction" prot="public">hmap::RiftFunction</innerclass>
@@ -51,6 +55,10 @@
     <innerclass refid="classhmap_1_1StepFunction" prot="public">hmap::StepFunction</innerclass>
     <innerclass refid="classhmap_1_1Tensor" prot="public">hmap::Tensor</innerclass>
     <innerclass refid="classhmap_1_1Tile" prot="public">hmap::Tile</innerclass>
+    <innerclass refid="structhmap_1_1TileKey" prot="public">hmap::TileKey</innerclass>
+    <innerclass refid="structhmap_1_1TileKeyHash" prot="public">hmap::TileKeyHash</innerclass>
+    <innerclass refid="structhmap_1_1TileRegion" prot="public">hmap::TileRegion</innerclass>
+    <innerclass refid="classhmap_1_1TileStorage" prot="public">hmap::TileStorage</innerclass>
     <innerclass refid="classhmap_1_1Timer" prot="public">hmap::Timer</innerclass>
     <innerclass refid="classhmap_1_1ValueCubicNoiseFunction" prot="public">hmap::ValueCubicNoiseFunction</innerclass>
     <innerclass refid="classhmap_1_1ValueDelaunayNoiseFunction" prot="public">hmap::ValueDelaunayNoiseFunction</innerclass>
@@ -59,6 +67,7 @@
     <innerclass refid="structhmap_1_1Vec2" prot="public">hmap::Vec2</innerclass>
     <innerclass refid="structhmap_1_1Vec3" prot="public">hmap::Vec3</innerclass>
     <innerclass refid="structhmap_1_1Vec4" prot="public">hmap::Vec4</innerclass>
+    <innerclass refid="structhmap_1_1VirtualArray" prot="public">hmap::VirtualArray</innerclass>
     <innerclass refid="classhmap_1_1WaveDuneFunction" prot="public">hmap::WaveDuneFunction</innerclass>
     <innerclass refid="classhmap_1_1WaveSineFunction" prot="public">hmap::WaveSineFunction</innerclass>
     <innerclass refid="classhmap_1_1WaveSquareFunction" prot="public">hmap::WaveSquareFunction</innerclass>
@@ -1802,7 +1811,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/algebra.hpp" line="923" column="18" bodyfile="HighMap/include/highmap/algebra.hpp" bodystart="923" bodyend="928"/>
+        <location file="HighMap/include/highmap/algebra.hpp" line="972" column="18" bodyfile="HighMap/include/highmap/algebra.hpp" bodystart="972" bodyend="977"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a518f05118e1b9704160a7c3276a2f483" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -52970,6 +52979,60 @@ off&quot; values that fall below the threshold, which can be useful for filterin
         </inbodydescription>
         <location file="HighMap/src/transform/transform.cpp" line="135" column="7" bodyfile="HighMap/src/transform/transform.cpp" bodystart="135" bodyend="165" declfile="HighMap/include/highmap/transform.hpp" declline="355" declcolumn="7"/>
       </memberdef>
+      <memberdef kind="function" id="namespacehmap_1aae8f6a3d45b6f43c1d3534ef08355598" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Func</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void hmap::for_each_tile_sequential</definition>
+        <argsstring>(VirtualArray &amp;va, Func &amp;&amp;func)</argsstring>
+        <name>for_each_tile_sequential</name>
+        <qualifiedname>hmap::for_each_tile_sequential</qualifiedname>
+        <param>
+          <type><ref refid="structhmap_1_1VirtualArray" kindref="compound">VirtualArray</ref> &amp;</type>
+          <declname>va</declname>
+        </param>
+        <param>
+          <type>Func &amp;&amp;</type>
+          <declname>func</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="54" column="6" declfile="HighMap/include/highmap/virtual_array/virtual_array.hpp" declline="54" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehmap_1a99ff01a3a6bc3608247f0be2a1d38871" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Func</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void hmap::for_each_tile_distributed</definition>
+        <argsstring>(VirtualArray &amp;va, Func &amp;&amp;func)</argsstring>
+        <name>for_each_tile_distributed</name>
+        <qualifiedname>hmap::for_each_tile_distributed</qualifiedname>
+        <param>
+          <type><ref refid="structhmap_1_1VirtualArray" kindref="compound">VirtualArray</ref> &amp;</type>
+          <declname>va</declname>
+        </param>
+        <param>
+          <type>Func &amp;&amp;</type>
+          <declname>func</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="56" column="6" declfile="HighMap/include/highmap/virtual_array/virtual_array.hpp" declline="56" declcolumn="6"/>
+      </memberdef>
       <memberdef kind="function" id="namespacehmap_1aac1a15042e8fae93d9caed60c2318fcc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
         <definition>Array hmap::operator*</definition>
@@ -54190,6 +54253,6 @@ off&quot; values that fall below the threshold, which can be useful for filterin
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="HighMap/include/highmap/algebra.hpp" line="27" column="1"/>
+    <location file="HighMap/include/highmap/algebra.hpp" line="30" column="1"/>
   </compounddef>
 </doxygen>

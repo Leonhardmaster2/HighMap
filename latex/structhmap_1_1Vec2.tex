@@ -39,7 +39,15 @@ bool \mbox{\hyperlink{structhmap_1_1Vec2_a700c00c9fc0e754c4ce65d8c8c6e38d2}{oper
 T \mbox{\hyperlink{structhmap_1_1Vec2_a89bca88f3a07365a28ad89477500bf33}{magnitude}} () const
 \begin{DoxyCompactList}\small\item\em Calculate the magnitude (length) of the vector. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{structhmap_1_1Vec2_a46c73f1340298ca58fe607c04ca09ab1}{normalize}} ()
-\begin{DoxyCompactList}\small\item\em Normalize the vector to have a magnitude of 1. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Normalize the vector to have a magnitude of 1. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structhmap_1_1Vec2_a71b22cecf6d34738836e89bbcab1e8af}{Vec2}} (const glm\+::vec2 \&v)
+\item 
+\mbox{\hyperlink{structhmap_1_1Vec2_a1797bb3637bfe76b1716fed7e9b59429}{Vec2}} (const glm\+::ivec2 \&v)
+\item 
+\mbox{\hyperlink{structhmap_1_1Vec2_a37c790cfa819978747df612712ee8311}{operator glm\+::vec2}} () const
+\item 
+\mbox{\hyperlink{structhmap_1_1Vec2_abaac5ab6a67bd3c27171a02113151de9}{operator glm\+::ivec2}} () const
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -74,7 +82,7 @@ This class provides basic operations for 2D vectors, such as addition, subtracti
 \Hypertarget{structhmap_1_1Vec2_ab537a59a10cd7d21e2169a5742cfe2ad}\label{structhmap_1_1Vec2_ab537a59a10cd7d21e2169a5742cfe2ad} 
 \index{hmap::Vec2$<$ T $>$@{hmap::Vec2$<$ T $>$}!Vec2@{Vec2}}
 \index{Vec2@{Vec2}!hmap::Vec2$<$ T $>$@{hmap::Vec2$<$ T $>$}}
-\doxysubsubsection{\texorpdfstring{Vec2()}{Vec2()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+\doxysubsubsection{\texorpdfstring{Vec2()}{Vec2()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
 {\footnotesize\ttfamily template$<$typename T $>$ \\
 \mbox{\hyperlink{structhmap_1_1Vec2}{hmap\+::\+Vec2}}$<$ T $>$\+::\+Vec2 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
@@ -85,7 +93,7 @@ Default constructor initializing the vector to (0, 0).
 Initializes both x and y components to zero. \Hypertarget{structhmap_1_1Vec2_ae137e7edf6223fc6aeda839eb2672d92}\label{structhmap_1_1Vec2_ae137e7edf6223fc6aeda839eb2672d92} 
 \index{hmap::Vec2$<$ T $>$@{hmap::Vec2$<$ T $>$}!Vec2@{Vec2}}
 \index{Vec2@{Vec2}!hmap::Vec2$<$ T $>$@{hmap::Vec2$<$ T $>$}}
-\doxysubsubsection{\texorpdfstring{Vec2()}{Vec2()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+\doxysubsubsection{\texorpdfstring{Vec2()}{Vec2()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
 {\footnotesize\ttfamily template$<$typename T $>$ \\
 \mbox{\hyperlink{structhmap_1_1Vec2}{hmap\+::\+Vec2}}$<$ T $>$\+::\+Vec2 (\begin{DoxyParamCaption}\item[{T}]{x,  }\item[{T}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
@@ -103,7 +111,7 @@ Parameterized constructor initializing the vector to given values.
 \Hypertarget{structhmap_1_1Vec2_a7a51b0894ccdea14a7d86fbb8e7289c3}\label{structhmap_1_1Vec2_a7a51b0894ccdea14a7d86fbb8e7289c3} 
 \index{hmap::Vec2$<$ T $>$@{hmap::Vec2$<$ T $>$}!Vec2@{Vec2}}
 \index{Vec2@{Vec2}!hmap::Vec2$<$ T $>$@{hmap::Vec2$<$ T $>$}}
-\doxysubsubsection{\texorpdfstring{Vec2()}{Vec2()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+\doxysubsubsection{\texorpdfstring{Vec2()}{Vec2()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
 {\footnotesize\ttfamily template$<$typename T $>$ \\
 \mbox{\hyperlink{structhmap_1_1Vec2}{hmap\+::\+Vec2}}$<$ T $>$\+::\+Vec2 (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ T $>$ \&}]{vec }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
@@ -128,6 +136,20 @@ This constructor takes a vector containing exactly two elements and assigns the 
 {\em std\+::invalid\+\_\+argument} & If the vector does not contain exactly two elements. \\
 \hline
 \end{DoxyExceptions}
+\Hypertarget{structhmap_1_1Vec2_a71b22cecf6d34738836e89bbcab1e8af}\label{structhmap_1_1Vec2_a71b22cecf6d34738836e89bbcab1e8af} 
+\index{hmap::Vec2$<$ T $>$@{hmap::Vec2$<$ T $>$}!Vec2@{Vec2}}
+\index{Vec2@{Vec2}!hmap::Vec2$<$ T $>$@{hmap::Vec2$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Vec2()}{Vec2()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{structhmap_1_1Vec2}{hmap\+::\+Vec2}}$<$ T $>$\+::\+Vec2 (\begin{DoxyParamCaption}\item[{const glm\+::vec2 \&}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{structhmap_1_1Vec2_a1797bb3637bfe76b1716fed7e9b59429}\label{structhmap_1_1Vec2_a1797bb3637bfe76b1716fed7e9b59429} 
+\index{hmap::Vec2$<$ T $>$@{hmap::Vec2$<$ T $>$}!Vec2@{Vec2}}
+\index{Vec2@{Vec2}!hmap::Vec2$<$ T $>$@{hmap::Vec2$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Vec2()}{Vec2()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{structhmap_1_1Vec2}{hmap\+::\+Vec2}}$<$ T $>$\+::\+Vec2 (\begin{DoxyParamCaption}\item[{const glm\+::ivec2 \&}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
 
 
 \doxysubsection{Member Function Documentation}
@@ -331,7 +353,21 @@ void \mbox{\hyperlink{structhmap_1_1Vec2}{hmap\+::\+Vec2}}$<$ T $>$\+::normalize
 
 Normalize the vector to have a magnitude of 1. 
 
-This method modifies the vector in place. If the vector has zero length, the components remain unchanged to avoid division by zero. 
+This method modifies the vector in place. If the vector has zero length, the components remain unchanged to avoid division by zero. \Hypertarget{structhmap_1_1Vec2_a37c790cfa819978747df612712ee8311}\label{structhmap_1_1Vec2_a37c790cfa819978747df612712ee8311} 
+\index{hmap::Vec2$<$ T $>$@{hmap::Vec2$<$ T $>$}!operator glm::vec2@{operator glm::vec2}}
+\index{operator glm::vec2@{operator glm::vec2}!hmap::Vec2$<$ T $>$@{hmap::Vec2$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator glm::vec2()}{operator glm::vec2()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{structhmap_1_1Vec2}{hmap\+::\+Vec2}}$<$ T $>$\+::operator glm\+::vec2 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{structhmap_1_1Vec2_abaac5ab6a67bd3c27171a02113151de9}\label{structhmap_1_1Vec2_abaac5ab6a67bd3c27171a02113151de9} 
+\index{hmap::Vec2$<$ T $>$@{hmap::Vec2$<$ T $>$}!operator glm::ivec2@{operator glm::ivec2}}
+\index{operator glm::ivec2@{operator glm::ivec2}!hmap::Vec2$<$ T $>$@{hmap::Vec2$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator glm::ivec2()}{operator glm::ivec2()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{structhmap_1_1Vec2}{hmap\+::\+Vec2}}$<$ T $>$\+::operator glm\+::ivec2 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
 
 \doxysubsection{Friends And Related Symbol Documentation}
 \Hypertarget{structhmap_1_1Vec2_a7a945fff9f1e4964c135dbc5d226fd69}\label{structhmap_1_1Vec2_a7a945fff9f1e4964c135dbc5d226fd69} 

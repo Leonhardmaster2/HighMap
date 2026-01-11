@@ -1,0 +1,237 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classhmap_1_1DiskLruTileStorage" kind="class" language="C++" prot="public">
+    <compoundname>hmap::DiskLruTileStorage</compoundname>
+    <basecompoundref refid="classhmap_1_1LruTileStorage" prot="public" virt="non-virtual">hmap::LruTileStorage</basecompoundref>
+    <includes refid="tile__storage_8hpp" local="no">tile_storage.hpp</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classhmap_1_1DiskLruTileStorage_1ad45b4ad5aeea4d8a038f49aae112366a" prot="private" static="no" mutable="no">
+        <type>std::filesystem::path</type>
+        <definition>std::filesystem::path hmap::DiskLruTileStorage::root_dir</definition>
+        <argsstring></argsstring>
+        <name>root_dir</name>
+        <qualifiedname>hmap::DiskLruTileStorage::root_dir</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/virtual_array/tile_storage.hpp" line="95" column="25" bodyfile="HighMap/include/highmap/virtual_array/tile_storage.hpp" bodystart="95" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classhmap_1_1DiskLruTileStorage_1a1a873a6275b3b945d14ebbc0cc357487" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>hmap::DiskLruTileStorage::DiskLruTileStorage</definition>
+        <argsstring>(size_t max_tiles, const std::filesystem::path &amp;directory)</argsstring>
+        <name>DiskLruTileStorage</name>
+        <qualifiedname>hmap::DiskLruTileStorage::DiskLruTileStorage</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>max_tiles</declname>
+        </param>
+        <param>
+          <type>const std::filesystem::path &amp;</type>
+          <declname>directory</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/virtual_array/tile_storage.hpp" line="87" column="3" bodyfile="HighMap/src/virtual_array/disk_lru_storage.cpp" bodystart="11" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classhmap_1_1DiskLruTileStorage_1ac55de909caccd23af25b19db9f39d54e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+        <definition>Array &amp; hmap::DiskLruTileStorage::get_tile</definition>
+        <argsstring>(const TileRegion &amp;region) override</argsstring>
+        <name>get_tile</name>
+        <qualifiedname>hmap::DiskLruTileStorage::get_tile</qualifiedname>
+        <reimplements refid="classhmap_1_1TileStorage_1afb6d5e8458f71c702a8792bcaa8642f8">get_tile</reimplements>
+        <param>
+          <type>const <ref refid="structhmap_1_1TileRegion" kindref="compound">TileRegion</ref> &amp;</type>
+          <declname>region</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/virtual_array/tile_storage.hpp" line="89" column="9" bodyfile="HighMap/src/virtual_array/disk_lru_storage.cpp" bodystart="18" bodyend="53"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classhmap_1_1DiskLruTileStorage_1a6f78ac63137fcef483ab53c6a67bc424" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void hmap::DiskLruTileStorage::on_evict</definition>
+        <argsstring>(const TileKey &amp;key, Array &amp;tile) override</argsstring>
+        <name>on_evict</name>
+        <qualifiedname>hmap::DiskLruTileStorage::on_evict</qualifiedname>
+        <reimplements refid="classhmap_1_1LruTileStorage_1ac7f51bb13ce9dab2d1dac83f8177e8db">on_evict</reimplements>
+        <param>
+          <type>const <ref refid="structhmap_1_1TileKey" kindref="compound">TileKey</ref> &amp;</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>tile</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/virtual_array/tile_storage.hpp" line="92" column="8" bodyfile="HighMap/src/virtual_array/disk_lru_storage.cpp" bodystart="70" bodyend="80"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classhmap_1_1DiskLruTileStorage_1aa6791795331c232f3bb55d60df295c78" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::filesystem::path</type>
+        <definition>std::filesystem::path hmap::DiskLruTileStorage::tile_path</definition>
+        <argsstring>(const TileKey &amp;key) const</argsstring>
+        <name>tile_path</name>
+        <qualifiedname>hmap::DiskLruTileStorage::tile_path</qualifiedname>
+        <param>
+          <type>const <ref refid="structhmap_1_1TileKey" kindref="compound">TileKey</ref> &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/virtual_array/tile_storage.hpp" line="97" column="25" bodyfile="HighMap/src/virtual_array/disk_lru_storage.cpp" bodystart="82" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="classhmap_1_1DiskLruTileStorage_1a763f7aafcba8788df6b8289e56e9d0dd" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
+        <definition>Array hmap::DiskLruTileStorage::load_tile_from_disk</definition>
+        <argsstring>(const TileRegion &amp;region)</argsstring>
+        <name>load_tile_from_disk</name>
+        <qualifiedname>hmap::DiskLruTileStorage::load_tile_from_disk</qualifiedname>
+        <param>
+          <type>const <ref refid="structhmap_1_1TileRegion" kindref="compound">TileRegion</ref> &amp;</type>
+          <declname>region</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/virtual_array/tile_storage.hpp" line="98" column="25" bodyfile="HighMap/src/virtual_array/disk_lru_storage.cpp" bodystart="55" bodyend="68"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>hmap::DiskLruTileStorage</label>
+        <link refid="classhmap_1_1DiskLruTileStorage"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>hmap::LruTileStorage</label>
+        <link refid="classhmap_1_1LruTileStorage"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>hmap::TileStorage</label>
+        <link refid="classhmap_1_1TileStorage"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="9">
+        <label>hmap::Vec2&lt; int &gt;</label>
+        <link refid="structhmap_1_1Vec2"/>
+      </node>
+      <node id="8">
+        <label>hmap::Array</label>
+        <link refid="classhmap_1_1Array"/>
+        <childnode refid="9" relation="usage">
+          <edgelabel>shape</edgelabel>
+        </childnode>
+        <childnode refid="10" relation="usage">
+          <edgelabel>vector</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>hmap::DiskLruTileStorage</label>
+        <link refid="classhmap_1_1DiskLruTileStorage"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>hmap::LruTileEntry</label>
+        <link refid="structhmap_1_1LruTileEntry"/>
+        <childnode refid="8" relation="usage">
+          <edgelabel>value</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>lru_it</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>hmap::LruTileStorage</label>
+        <link refid="classhmap_1_1LruTileStorage"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>lru</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>tiles</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>hmap::TileKey</label>
+        <link refid="structhmap_1_1TileKey"/>
+      </node>
+      <node id="3">
+        <label>hmap::TileStorage</label>
+        <link refid="classhmap_1_1TileStorage"/>
+      </node>
+      <node id="4">
+        <label>std::list&lt; hmap::TileKey &gt;</label>
+        <childnode refid="5" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="6">
+        <label>std::unordered_map&lt; hmap::TileKey, hmap::LruTileEntry, hmap::TileKeyHash &gt;</label>
+        <childnode refid="5" relation="usage">
+          <edgelabel>keys</edgelabel>
+        </childnode>
+        <childnode refid="7" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="10">
+        <label>std::vector&lt; float &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="HighMap/include/highmap/virtual_array/tile_storage.hpp" line="84" column="1" bodyfile="HighMap/include/highmap/virtual_array/tile_storage.hpp" bodystart="85" bodyend="99"/>
+    <listofallmembers>
+      <member refid="classhmap_1_1DiskLruTileStorage_1a1a873a6275b3b945d14ebbc0cc357487" prot="public" virt="non-virtual"><scope>hmap::DiskLruTileStorage</scope><name>DiskLruTileStorage</name></member>
+      <member refid="classhmap_1_1DiskLruTileStorage_1ac55de909caccd23af25b19db9f39d54e" prot="public" virt="virtual"><scope>hmap::DiskLruTileStorage</scope><name>get_tile</name></member>
+      <member refid="classhmap_1_1DiskLruTileStorage_1a763f7aafcba8788df6b8289e56e9d0dd" prot="private" virt="non-virtual"><scope>hmap::DiskLruTileStorage</scope><name>load_tile_from_disk</name></member>
+      <member refid="classhmap_1_1LruTileStorage_1a503160ae137678b2255088de204a5d7c" prot="protected" virt="non-virtual"><scope>hmap::DiskLruTileStorage</scope><name>lru</name></member>
+      <member refid="classhmap_1_1LruTileStorage_1a18948b97db31797b0fe45c58d2da883b" prot="public" virt="non-virtual"><scope>hmap::DiskLruTileStorage</scope><name>LruTileStorage</name></member>
+      <member refid="classhmap_1_1LruTileStorage_1aa04ddcca3cd4ef62b56823fc99ca1c30" prot="protected" virt="non-virtual"><scope>hmap::DiskLruTileStorage</scope><name>max_tiles</name></member>
+      <member refid="classhmap_1_1DiskLruTileStorage_1a6f78ac63137fcef483ab53c6a67bc424" prot="protected" virt="virtual"><scope>hmap::DiskLruTileStorage</scope><name>on_evict</name></member>
+      <member refid="classhmap_1_1LruTileStorage_1ab27b0290974d18f882fdadd7bc5acd96" prot="public" virt="virtual"><scope>hmap::DiskLruTileStorage</scope><name>release_tile</name></member>
+      <member refid="classhmap_1_1DiskLruTileStorage_1ad45b4ad5aeea4d8a038f49aae112366a" prot="private" virt="non-virtual"><scope>hmap::DiskLruTileStorage</scope><name>root_dir</name></member>
+      <member refid="classhmap_1_1DiskLruTileStorage_1aa6791795331c232f3bb55d60df295c78" prot="private" virt="non-virtual"><scope>hmap::DiskLruTileStorage</scope><name>tile_path</name></member>
+      <member refid="classhmap_1_1LruTileStorage_1afc5582d2a112b9907a175d101f8dcf30" prot="protected" virt="non-virtual"><scope>hmap::DiskLruTileStorage</scope><name>tiles</name></member>
+      <member refid="classhmap_1_1TileStorage_1a125f3395811a46b8b104eda9736b6b23" prot="public" virt="virtual"><scope>hmap::DiskLruTileStorage</scope><name>~TileStorage</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
