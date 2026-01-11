@@ -24,6 +24,9 @@
 #include <stdexcept>
 #include <vector>
 
+#include <glm/vec2.hpp>
+#include <glm/vec4.hpp>
+
 namespace hmap
 {
 
@@ -271,6 +274,22 @@ template <typename T> struct Vec2
       x /= mag;
       y /= mag;
     }
+  }
+
+  // glm adaptors
+  Vec2(const glm::vec2 &v) : x(static_cast<T>(v.x)), y(static_cast<T>(v.y))
+  {
+  }
+  Vec2(const glm::ivec2 &v) : x(static_cast<T>(v.x)), y(static_cast<T>(v.y))
+  {
+  }
+  operator glm::vec2() const
+  {
+    return glm::vec2(static_cast<float>(x), static_cast<float>(y));
+  }
+  operator glm::ivec2() const
+  {
+    return glm::ivec2(static_cast<int>(x), static_cast<int>(y));
   }
 };
 
@@ -815,6 +834,36 @@ template <typename T> struct Vec4
   friend float dot(const Vec4 v1, const Vec4 v2)
   {
     return v1.a * v2.a + v1.b * v2.b + v1.c * v2.c + v1.d * v2.d;
+  }
+
+  // glm adaptors
+  Vec4(const glm::vec4 &v)
+      : a(static_cast<T>(v.x)),
+        b(static_cast<T>(v.y)),
+        c(static_cast<T>(v.z)),
+        d(static_cast<T>(v.w))
+  {
+  }
+  Vec4(const glm::ivec4 &v)
+      : a(static_cast<T>(v.x)),
+        b(static_cast<T>(v.y)),
+        c(static_cast<T>(v.z)),
+        d(static_cast<T>(v.w))
+  {
+  }
+  operator glm::vec4() const
+  {
+    return glm::vec4(static_cast<float>(a),
+                     static_cast<float>(b),
+                     static_cast<float>(c),
+                     static_cast<float>(d));
+  }
+  operator glm::ivec4() const
+  {
+    return glm::ivec4(static_cast<int>(a),
+                      static_cast<int>(b),
+                      static_cast<int>(c),
+                      static_cast<int>(d));
   }
 };
 

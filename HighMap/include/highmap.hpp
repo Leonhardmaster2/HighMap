@@ -57,3 +57,6 @@
 #include "highmap/synthesis.hpp"
 #include "highmap/tensor.hpp"
 #include "highmap/transform.hpp"
+#include "highmap/virtual_array/tile_region.hpp"
+#include "highmap/virtual_array/tile_storage.hpp"
+#include "highmap/virtual_array/virtual_array.hpp"

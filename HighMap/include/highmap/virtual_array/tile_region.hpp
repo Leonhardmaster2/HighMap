@@ -1,0 +1,45 @@
+/* Copyright (c) 2025 Otto Link. Distributed under the terms of the GNU General
+   Public License. The full license is in the file LICENSE, distributed with
+   this software. */
+
+/**
+ * @file tile_region.hpp
+ * @author Otto Link (otto.link.bv@gmail.com)
+ * @copyright Copyright (c) 2025
+ */
+#pragma once
+#include <glm/vec2.hpp>
+#include <glm/vec4.hpp>
+
+#include "highmap/algebra.hpp"
+
+namespace hmap
+{
+
+struct TileKey
+{
+  int tx;
+  int ty;
+
+  bool operator==(const TileKey &other) const
+  {
+    return tx == other.tx && ty == other.ty;
+  }
+};
+
+struct TileRegion
+{
+  TileKey    key;   // ID
+  glm::vec4  bbox;  // (x1, x2, y1, y2) in arbitrary coordinates
+  glm::ivec2 shape; // number of cells in tile
+  glm::ivec4 halo;  // number of extra cells around overlapping with other tiles
+
+  TileRegion(const TileKey    &key,
+             const glm::vec4  &bbox,
+             const glm::ivec2 &shape,
+             const glm::vec4  &halo = {0, 0, 0, 0});
+
+  glm::ivec2 total_shape() const; // includes halo
+};
+
+} // namespace hmap
