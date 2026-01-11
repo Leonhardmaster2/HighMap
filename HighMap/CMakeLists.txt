@@ -19,10 +19,15 @@ target_include_directories(
 
 set_target_properties(${PROJECT_NAME} PROPERTIES VERSION ${PROJECT_VERSION})
 
+target_compile_definitions(
+  ${PROJECT_NAME} INTERFACE GLM_FORCE_SWIZZLE GLM_FORCE_INLINE
+                            GLM_ENABLE_EXPERIMENTAL)
+
 target_link_libraries(
   ${PROJECT_NAME}
   assimp::assimp
   delaunator::delaunator
+  glm::glm
   GSL::gsl
   GSL::gslcblas
   dkm::dkm

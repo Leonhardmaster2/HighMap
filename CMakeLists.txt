@@ -28,7 +28,7 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
 
 find_package(GSL REQUIRED COMPONENTS gsl gslcblas)
 find_package(assimp REQUIRED)
-find_package(glm REQUIRED) # by hmm
+find_package(glm REQUIRED)
 find_package(OpenMP REQUIRED)
 find_package(OpenCV REQUIRED)
 find_package(OpenCL REQUIRED)
