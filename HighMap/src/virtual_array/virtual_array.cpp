@@ -22,6 +22,32 @@ VirtualArray::VirtualArray(glm::ivec2                   shape,
 {
 }
 
+void VirtualArray::from_array(const Array &array)
+{
+  auto lambda = [&array, this](Array            &tile,
+                               const glm::ivec2 &shape,
+                               const glm::vec4  &bbox)
+  {
+    float rx = float((array.shape.x - 1.f) / (this->shape.x - 1.f));
+    float ry = float((array.shape.y - 1.f) / (this->shape.y - 1.f));
+
+    for (int j = 0; j < shape.y; ++j)
+      for (int i = 0; i < shape.x; ++i)
+      {
+        // corresponding global indices for the input array, in [0, 1]
+        float x0 = (bbox.x - this->bbox.x) / (this->bbox.y - this->bbox.x);
+        float y0 = (bbox.z - this->bbox.z) / (this->bbox.w - this->bbox.z);
+
+        int ig = int(rx * x0 * (this->shape.x - 1.f)) + i;
+        int jg = int(ry * y0 * (this->shape.y - 1.f)) + j;
+
+        tile(i, j) = array(ig, jg);
+      }
+  };
+
+  for_each_tile_sequential(*this, lambda);
+}
+
 // Access individual cells (slower)
 float VirtualArray::get(int global_i, int global_j) const
 {
@@ -57,6 +83,7 @@ void VirtualArray::set(int global_i, int global_j, float v)
   Array     &tile = this->storage->get_tile(region);
   glm::ivec2 local = local_indices(region, global_i, global_j);
   tile(local) = v;
+  this->storage->release_tile(region);
 }
 
 void VirtualArray::smooth_overlap_buffers()

@@ -49,7 +49,9 @@ int main(void)
   hmap::for_each_tile_distributed(varray, lambda_noise);
 
   hmap::for_each_tile_sequential(varray, lambda);
-  hmap::for_each_tile_sequential(varray, lambda_s);
+  // hmap::for_each_tile_sequential(varray, lambda_s);
+  // hmap::for_each_tile_sequential(varray, lambda_s);
+  hmap::for_each_tile_single_array(varray, lambda_s);
 
   auto lambda_f = [](std::vector<hmap::Array *> p_arrays,
                      const glm::ivec2 &,
@@ -63,6 +65,7 @@ int main(void)
   };
 
   hmap::for_each_tile_distributed({&varray, &varray2}, lambda_f);
+  // hmap::for_each_tile_single_array({&varray, &varray2}, lambda_f);
 
   varray.smooth_overlap_buffers();
 

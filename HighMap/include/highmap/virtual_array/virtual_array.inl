@@ -92,9 +92,9 @@ void for_each_tile_distributed(VirtualArray &va, Func &&func, int nthreads = 0)
 {
   for_each_tile_distributed(
       std::vector<VirtualArray *>{&va},
-      [&](std::vector<Array *> &tiles,
+      [&](std::vector<Array *> &p_arrays,
           const glm::ivec2     &shape,
-          const glm::vec4      &bbox) { func(*tiles[0], shape, bbox); },
+          const glm::vec4      &bbox) { func(*p_arrays[0], shape, bbox); },
       nthreads);
 }
 
@@ -167,8 +167,70 @@ template <typename Func>
 void for_each_tile_sequential(VirtualArray &va, Func &&func)
 {
   for_each_tile_sequential(std::vector<VirtualArray *>{&va},
-                           [&](std::vector<Array *> &tiles,
+                           [&](std::vector<Array *> &p_arrays,
                                const glm::ivec2     &shape,
                                const glm::vec4      &bbox)
-                           { func(*tiles[0], shape, bbox); });
+                           { func(*p_arrays[0], shape, bbox); });
+}
+
+template <typename Func>
+void for_each_tile_single_array(const std::vector<VirtualArray *> &p_vas,
+                                Func                             &&op)
+{
+  // --- Failsafe
+
+  if (p_vas.empty())
+  {
+    LOG_ERROR("Empty VirtualArray list");
+    return;
+  }
+
+  if (!p_vas.front()) return;
+
+  const VirtualArray &va = *p_vas.front();
+
+  // --- Validate compatibility
+
+  for (auto p_va : p_vas)
+  {
+    if (!p_va) continue;
+    if (p_va->shape != va.shape || p_va->tile_shape != va.tile_shape)
+    {
+      LOG_ERROR("Incompatible VirtualArray configuration");
+      return;
+    }
+  }
+
+  // --- Compute
+
+  // create temporary arrays
+  std::vector<Array> arrays;
+  arrays.reserve(p_vas.size());
+
+  for (auto p_va : p_vas)
+    arrays.push_back(p_va ? p_va->to_array() : Array());
+
+  // create pointer vector for user op
+  std::vector<Array *> p_arrays;
+  p_arrays.reserve(p_vas.size());
+
+  for (size_t i = 0; i < p_vas.size(); ++i)
+    p_arrays.push_back(p_vas[i] ? &arrays[i] : nullptr);
+
+  // call user operation
+  op(p_arrays, va.shape, va.bbox);
+
+  // copy back to VirtualArrays
+  for (size_t i = 0; i < p_vas.size(); ++i)
+    if (p_vas[i]) p_vas[i]->from_array(arrays[i]);
+}
+
+template <typename Func>
+void for_each_tile_single_array(VirtualArray &va, Func &&func)
+{
+  for_each_tile_single_array(std::vector<VirtualArray *>{&va},
+                             [&](std::vector<Array *> &p_arrays,
+                                 const glm::ivec2     &shape,
+                                 const glm::vec4      &bbox)
+                             { func(*p_arrays[0], shape, bbox); });
 }
