@@ -11,6 +11,7 @@
 #include <filesystem>
 #include <fstream>
 #include <list>
+#include <mutex>
 #include <unordered_map>
 
 #include "highmap/array.hpp"
@@ -75,7 +76,9 @@ protected:
   size_t                                                 max_tiles;
   std::list<TileKey>                                     lru;
   std::unordered_map<TileKey, LruTileEntry, TileKeyHash> tiles;
+  std::mutex                                             mutex;
 
+  Array       &get_tile_no_mutex_lock(const TileRegion &region);
   virtual void on_evict(const TileKey &key, Array &tile);
 };
 

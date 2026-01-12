@@ -14,7 +14,10 @@ int main(void)
   // tile_shape = {4096, 4096};
 
   // auto storage = std::make_unique<hmap::RamTileStorage>();
-  auto storage = std::make_unique<hmap::DiskLruTileStorage>(16, "tiles/");
+
+  size_t max_tiles = 32;
+  auto   storage = std::make_unique<hmap::DiskLruTileStorage>(max_tiles,
+                                                            "tiles/");
   hmap::VirtualArray varray(shape, bbox, tile_shape, halo, std::move(storage));
 
   auto               storage2 = std::make_unique<hmap::RamTileStorage>();
@@ -43,15 +46,10 @@ int main(void)
                        bbox);
   };
 
-  LOG_DEBUG("ok1");
   hmap::for_each_tile_distributed(varray, lambda_noise);
 
-  LOG_DEBUG("ok2");
-
   hmap::for_each_tile_sequential(varray, lambda);
-  // for_each_tile_sequential(varray, lambda_s);
-
-  LOG_DEBUG("ok3");
+  hmap::for_each_tile_sequential(varray, lambda_s);
 
   auto lambda_f = [](std::vector<hmap::Array *> p_arrays,
                      const glm::ivec2 &,
@@ -65,8 +63,8 @@ int main(void)
   };
 
   hmap::for_each_tile_distributed({&varray, &varray2}, lambda_f);
-  
-  // varray.smooth_overlap_buffers();
+
+  varray.smooth_overlap_buffers();
 
   auto a = varray.to_array();
   a.to_png("out0.png", hmap::Cmap::JET);

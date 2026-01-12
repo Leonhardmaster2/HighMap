@@ -53,14 +53,9 @@ glm::ivec2 VirtualArray::local_indices(const TileRegion &region,
 
 void VirtualArray::set(int global_i, int global_j, float v)
 {
-  // LOG_DEBUG("%d %d %f", gi, global_j, v);
-
   TileRegion region = tile_region_from_global_index(global_i, global_j);
   Array     &tile = this->storage->get_tile(region);
   glm::ivec2 local = local_indices(region, global_i, global_j);
-
-  // LOG_DEBUG("LOCAL => %d %d", local.x, local.y);
-
   tile(local) = v;
 }
 
@@ -176,6 +171,8 @@ TileRegion VirtualArray::tile_region_from_tile_coords(int tile_x,
                     glm::ivec2(w, h),
                     halo4);
 }
+
+// TODO add to_array_nearest => new shape
 
 Array VirtualArray::to_array() const
 {

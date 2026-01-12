@@ -14,6 +14,12 @@ LruTileStorage::LruTileStorage(size_t max_tiles) : max_tiles(max_tiles)
 
 Array &LruTileStorage::get_tile(const TileRegion &region)
 {
+  std::lock_guard<std::mutex> lock(mutex);
+  return this->get_tile_no_mutex_lock(region);
+}
+
+Array &LruTileStorage::get_tile_no_mutex_lock(const TileRegion &region)
+{
   const TileKey &key = region.key;
 
   // ---- hit

@@ -50,11 +50,6 @@ struct VirtualArray
   std::unique_ptr<TileStorage> storage;
 };
 
-template <typename Func>
-void for_each_tile_sequential(VirtualArray &va, Func &&func);
-template <typename Func>
-void for_each_tile_distributed(VirtualArray &va, Func &&func);
-
 // actual implementation
 #include "highmap/virtual_array/virtual_array.inl"
 

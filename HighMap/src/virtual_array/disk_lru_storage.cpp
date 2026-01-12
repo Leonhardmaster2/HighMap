@@ -17,13 +17,17 @@ DiskLruTileStorage::DiskLruTileStorage(size_t                       max_tiles,
 
 Array &DiskLruTileStorage::get_tile(const TileRegion &region)
 {
+  std::lock_guard<std::mutex> lock(mutex);
+
   const TileKey &key = region.key;
 
   // ---- RAM hit → delegate to base
+
   auto it = tiles.find(key);
-  if (it != tiles.end()) return LruTileStorage::get_tile(region);
+  if (it != tiles.end()) return LruTileStorage::get_tile_no_mutex_lock(region);
 
   // ---- disk hit
+
   auto path = tile_path(key);
   if (std::filesystem::exists(path))
   {
@@ -49,7 +53,8 @@ Array &DiskLruTileStorage::get_tile(const TileRegion &region)
   }
 
   // ---- miss everywhere → empty tile
-  return LruTileStorage::get_tile(region);
+
+  return LruTileStorage::get_tile_no_mutex_lock(region);
 }
 
 Array DiskLruTileStorage::load_tile_from_disk(const TileRegion &region)
