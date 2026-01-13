@@ -1,0 +1,79 @@
+/* Copyright (c) 2025 Otto Link. Distributed under the terms of the GNU General
+   Public License. The full license is in the file LICENSE, distributed with
+   this software. */
+
+/**
+ * @file virtual_array.hpp
+ * @author Otto Link (otto.link.bv@gmail.com)
+ * @copyright Copyright (c) 2025
+ */
+#pragma once
+#include <memory>
+#include <string>
+#include <vector>
+
+#include <glm/vec2.hpp>
+#include <glm/vec4.hpp>
+
+#include "macrologger.h"
+
+#include "highmap/virtual_array/virtual_array.hpp"
+#include "highmap/virtual_array/virtual_texture_storage.hpp"
+
+namespace hmap
+{
+
+class VirtualTexture
+{
+public:
+  VirtualTexture() = default;
+
+  VirtualTexture(glm::ivec2                   shape,
+                 glm::vec4                    bbox,
+                 glm::ivec2                   tile_shape,
+                 int                          halo,
+                 int                          channels,
+                 std::unique_ptr<TileStorage> storage_proto);
+
+  VirtualTexture(glm::ivec2  shape,
+                 glm::vec4   bbox,
+                 glm::ivec2  tile_shape,
+                 int         halo,
+                 int         channels,
+                 StorageMode storage_mode);
+
+  // --- Channels data
+  int                               channels() const;
+  VirtualArray                     &channel(int c);
+  const VirtualArray               &channel(int c) const;
+  std::vector<VirtualArray *>       channels_ptr();
+  std::vector<const VirtualArray *> channels_ptr() const;
+  std::vector<VirtualArray>        &get_arrays();
+
+  void to_png_dbg(const std::string &fname, const ComputeMode &cm) const;
+
+  glm::ivec2 shape;
+  glm::vec4  bbox;
+  glm::ivec2 tile_shape;
+  int        halo;
+
+private:
+  std::vector<VirtualArray> arrays;
+};
+
+// functions
+
+VirtualTexture convert_texture_channels(const VirtualTexture &src,
+                                        int                   dst_channels,
+                                        float                 fill_value,
+                                        const ComputeMode    &cm);
+
+template <typename Func>
+void for_each_tile(VirtualTexture &tex, Func &&func, const ComputeMode &cm);
+
+template <typename Func>
+void for_each_pixel(VirtualTexture &tex, Func &&func, const ComputeMode &cm);
+
+#include "highmap/virtual_array/virtual_texture.inl"
+
+} // namespace hmap

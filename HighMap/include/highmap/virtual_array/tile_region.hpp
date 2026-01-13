@@ -32,12 +32,16 @@ struct TileRegion
   TileKey    key;   // ID
   glm::vec4  bbox;  // (x1, x2, y1, y2) in arbitrary coordinates
   glm::ivec2 shape; // number of cells in tile (incl. halo)
-  glm::ivec4 halo;  // number of extra cells around overlapping with other tiles
+  glm::ivec4 halo;  // number of extra cells around overlapping with other
+                    // tiles
 
   TileRegion(const TileKey    &key,
              const glm::vec4  &bbox,
              const glm::ivec2 &shape,
              const glm::vec4  &halo = {0, 0, 0, 0});
+
+  glm::vec2 cell_center(int i, int j) const;
+  glm::vec2 cell_corner(int i, int j) const;
 };
 
 } // namespace hmap

@@ -21,6 +21,14 @@
 namespace hmap
 {
 
+enum StorageMode : int
+{
+  VA_RAM,
+  VA_DISK_LRU,
+  VA_DISK_LRU_MIN,   // 2 live tiles, min mem footprint
+  VA_DISK_SEQUENTIAL // sequential for/each, no smooth_overlap
+};
+
 struct TileKeyHash
 {
   size_t operator()(const TileKey &k) const
@@ -40,6 +48,7 @@ public:
   virtual Array &get_tile(const TileRegion &region) = 0;
   virtual void   release_tile(const TileRegion &region) = 0;
   virtual size_t max_live_tiles() const = 0;
+  virtual std::unique_ptr<TileStorage> clone() const = 0;
 
   // Opportunistically free memory while keeping data persistent.
   virtual void trim()
@@ -54,6 +63,8 @@ public:
 class RamTileStorage : public TileStorage
 {
 public:
+  std::unique_ptr<TileStorage> clone() const override;
+
   Array &get_tile(const TileRegion &region) override;
   void   release_tile(const TileRegion &region) override;
   size_t max_live_tiles() const override;
@@ -76,6 +87,8 @@ class LruTileStorage : public TileStorage
 {
 public:
   explicit LruTileStorage(size_t max_tiles);
+
+  std::unique_ptr<TileStorage> clone() const override;
 
   Array &get_tile(const TileRegion &region) override;
   void   release_tile(const TileRegion &region) override;
@@ -101,6 +114,8 @@ public:
   DiskLruTileStorage(size_t max_tiles);
   ~DiskLruTileStorage();
 
+  std::unique_ptr<TileStorage> clone() const override;
+
   Array &get_tile(const TileRegion &region) override;
   size_t max_live_tiles() const override;
   void   trim() override;
@@ -125,6 +140,8 @@ public:
   DiskSequentialTileStorage();
   ~DiskSequentialTileStorage() override;
 
+  std::unique_ptr<TileStorage> clone() const override;
+
   Array &get_tile(const TileRegion &region) override;
   void   release_tile(const TileRegion &region) override;
   size_t max_live_tiles() const override;
@@ -139,5 +156,13 @@ private:
   void                  save_tile(const TileKey &key, const Array &tile);
   std::filesystem::path tile_path(const TileKey &key) const;
 };
+
+// =====================================
+// functions
+// =====================================
+
+std::unique_ptr<TileStorage> make_storage(glm::ivec2  shape,
+                                          glm::ivec2  tile_shape,
+                                          StorageMode storage_mode);
 
 } // namespace hmap

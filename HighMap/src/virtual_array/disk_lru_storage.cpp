@@ -21,6 +21,11 @@ DiskLruTileStorage::~DiskLruTileStorage()
   std::filesystem::remove_all(this->root_dir, ec);
 }
 
+std::unique_ptr<TileStorage> DiskLruTileStorage::clone() const
+{
+  return std::make_unique<DiskLruTileStorage>(this->max_tiles);
+}
+
 Array &DiskLruTileStorage::get_tile(const TileRegion &region)
 {
   std::lock_guard<std::mutex> lock(mutex);

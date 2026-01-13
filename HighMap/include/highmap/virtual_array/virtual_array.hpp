@@ -14,6 +14,7 @@
 #include "macrologger.h"
 
 #include "highmap/array.hpp"
+#include "highmap/math.hpp"
 #include "highmap/virtual_array/tile_region.hpp"
 #include "highmap/virtual_array/tile_storage.hpp"
 
@@ -25,14 +26,6 @@ enum ForEachMode : int
   VA_SEQUENTIAL,  // tile-by-tile, single thread
   VA_DISTRIBUTED, // tile-by-tile, multi-threaded
   VA_SINGLE_ARRAY // full array materialized at once
-};
-
-enum StorageMode : int
-{
-  VA_RAM,
-  VA_DISK_LRU,
-  VA_DISK_LRU_MIN,   // 2 live tiles, min mem footprint
-  VA_DISK_SEQUENTIAL // sequential for/each, no smooth_overlap
 };
 
 struct ComputeMode

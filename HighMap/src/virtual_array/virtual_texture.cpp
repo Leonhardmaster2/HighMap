@@ -1,0 +1,101 @@
+/* Copyright (c) 2025 Otto Link. Distributed under the terms of the GNU General
+ * Public License. The full license is in the file LICENSE, distributed with
+ * this software. */
+#include "macrologger.h"
+
+#include "highmap/virtual_array/virtual_texture.hpp"
+
+#include "highmap/tensor.hpp"
+
+namespace hmap
+{
+
+VirtualTexture::VirtualTexture(glm::ivec2                   shape,
+                               glm::vec4                    bbox,
+                               glm::ivec2                   tile_shape,
+                               int                          halo,
+                               int                          channels,
+                               std::unique_ptr<TileStorage> storage_proto)
+    : shape(shape), bbox(bbox), tile_shape(tile_shape), halo(halo)
+{
+  arrays.reserve(channels);
+
+  for (int c = 0; c < channels; ++c)
+  {
+    arrays.emplace_back(shape, bbox, tile_shape, halo, storage_proto->clone());
+  }
+}
+
+VirtualTexture::VirtualTexture(glm::ivec2  shape,
+                               glm::vec4   bbox,
+                               glm::ivec2  tile_shape,
+                               int         halo,
+                               int         channels,
+                               StorageMode storage_mode)
+    : shape(shape), bbox(bbox), tile_shape(tile_shape), halo(halo)
+{
+  arrays.reserve(channels);
+
+  for (int c = 0; c < channels; ++c)
+  {
+    arrays.emplace_back(shape, bbox, tile_shape, halo, storage_mode);
+  }
+}
+
+int VirtualTexture::channels() const
+{
+  return int(arrays.size());
+}
+
+VirtualArray &VirtualTexture::channel(int c)
+{
+  return arrays[c];
+}
+const VirtualArray &VirtualTexture::channel(int c) const
+{
+  return arrays[c];
+}
+
+std::vector<VirtualArray *> VirtualTexture::channels_ptr()
+{
+  std::vector<VirtualArray *> out;
+  out.reserve(arrays.size());
+
+  for (auto &a : arrays)
+    out.push_back(&a);
+
+  return out;
+}
+
+std::vector<const VirtualArray *> VirtualTexture::channels_ptr() const
+{
+  std::vector<const VirtualArray *> out;
+  out.reserve(arrays.size());
+
+  for (const auto &a : arrays)
+    out.push_back(&a);
+
+  return out;
+}
+
+std::vector<VirtualArray> &VirtualTexture::get_arrays()
+{
+  return this->arrays;
+}
+
+void VirtualTexture::to_png_dbg(const std::string &fname,
+                                const ComputeMode &cm) const
+{
+  Array r = this->channel(0).to_array(this->shape, cm);
+  Array g = this->channel(1).to_array(this->shape, cm);
+  Array b = this->channel(2).to_array(this->shape, cm);
+
+  Tensor t(this->shape, 3);
+  t.set_slice(0, r);
+  t.set_slice(1, g);
+  t.set_slice(2, b);
+
+  t.to_png(fname);
+}
+
+} // namespace hmap

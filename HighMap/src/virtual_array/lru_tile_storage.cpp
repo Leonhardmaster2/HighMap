@@ -12,6 +12,11 @@ LruTileStorage::LruTileStorage(size_t max_tiles) : max_tiles(max_tiles)
 {
 }
 
+std::unique_ptr<TileStorage> LruTileStorage::clone() const
+{
+  return std::make_unique<LruTileStorage>(this->max_tiles);
+}
+
 Array &LruTileStorage::get_tile(const TileRegion &region)
 {
   std::lock_guard<std::mutex> lock(mutex);

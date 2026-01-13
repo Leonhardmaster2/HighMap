@@ -20,6 +20,11 @@ DiskSequentialTileStorage::~DiskSequentialTileStorage()
   std::filesystem::remove_all(root_dir, ec);
 }
 
+std::unique_ptr<TileStorage> DiskSequentialTileStorage::clone() const
+{
+  return std::make_unique<DiskSequentialTileStorage>(*this);
+}
+
 Array &DiskSequentialTileStorage::get_tile(const TileRegion &region)
 {
   if (current_tile)

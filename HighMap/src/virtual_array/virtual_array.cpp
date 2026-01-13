@@ -34,38 +34,7 @@ VirtualArray::VirtualArray(glm::ivec2  shape,
                            StorageMode storage_mode)
     : shape(shape), bbox(bbox), tile_shape(tile_shape), halo(halo)
 {
-  switch (storage_mode)
-  {
-  case StorageMode::VA_RAM:
-  {
-    auto storage = std::make_unique<hmap::RamTileStorage>();
-    this->storage = std::move(storage);
-  }
-  break;
-    //
-  case StorageMode::VA_DISK_LRU:
-  {
-    int  nx = ceil_div(this->shape.x, this->tile_shape.x);
-    int  ny = ceil_div(this->shape.y, this->tile_shape.y);
-    auto storage = std::make_unique<hmap::DiskLruTileStorage>(nx * ny);
-    this->storage = std::move(storage);
-  }
-  break;
-  //
-  case StorageMode::VA_DISK_LRU_MIN:
-  {
-    auto storage = std::make_unique<hmap::DiskLruTileStorage>(2);
-    this->storage = std::move(storage);
-  }
-  break;
-  //
-  case StorageMode::VA_DISK_SEQUENTIAL:
-  {
-    auto storage = std::make_unique<hmap::DiskSequentialTileStorage>();
-    this->storage = std::move(storage);
-  }
-  break;
-  }
+  this->storage = make_storage(this->shape, this->tile_shape, storage_mode);
 }
 
 void VirtualArray::from_array(const Array &array, const ComputeMode &cm)

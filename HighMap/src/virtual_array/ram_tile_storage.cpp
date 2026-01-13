@@ -10,6 +10,11 @@
 namespace hmap
 {
 
+std::unique_ptr<TileStorage> RamTileStorage::clone() const
+{
+  return std::make_unique<RamTileStorage>(*this);
+}
+
 Array &RamTileStorage::get_tile(const TileRegion &region)
 {
   auto it = tiles.find(region.key);
