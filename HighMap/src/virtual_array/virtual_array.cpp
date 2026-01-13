@@ -37,6 +37,18 @@ VirtualArray::VirtualArray(glm::ivec2  shape,
   this->storage = make_storage(this->shape, this->tile_shape, storage_mode);
 }
 
+VirtualArray::VirtualArray(glm::ivec2  shape,
+                           glm::ivec2  tile_shape,
+                           int         halo,
+                           StorageMode storage_mode)
+    : shape(shape),
+      bbox({0.f, 1.f, 0.f, 1.f}),
+      tile_shape(tile_shape),
+      halo(halo)
+{
+  this->storage = make_storage(this->shape, this->tile_shape, storage_mode);
+}
+
 void VirtualArray::from_array(const Array &array, const ComputeMode &cm)
 {
   auto lambda = [&array, this](Array &tile, const TileRegion &region)

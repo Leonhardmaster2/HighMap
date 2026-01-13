@@ -42,6 +42,24 @@ VirtualTexture::VirtualTexture(glm::ivec2  shape,
   }
 }
 
+VirtualTexture::VirtualTexture(glm::ivec2  shape,
+                               glm::ivec2  tile_shape,
+                               int         halo,
+                               int         channels,
+                               StorageMode storage_mode)
+    : shape(shape),
+      bbox({0.f, 1.f, 0.f, 1.f}),
+      tile_shape(tile_shape),
+      halo(halo)
+{
+  arrays.reserve(channels);
+
+  for (int c = 0; c < channels; ++c)
+  {
+    arrays.emplace_back(shape, bbox, tile_shape, halo, storage_mode);
+  }
+}
+
 int VirtualTexture::channels() const
 {
   return int(arrays.size());

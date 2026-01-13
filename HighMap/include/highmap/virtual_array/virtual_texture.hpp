@@ -42,6 +42,12 @@ public:
                  int         channels,
                  StorageMode storage_mode);
 
+  VirtualTexture(glm::ivec2  shape,
+                 glm::ivec2  tile_shape,
+                 int         halo,
+                 int         channels,
+                 StorageMode storage_mode);
+
   // --- Channels data
   int                               channels() const;
   VirtualArray                     &channel(int c);

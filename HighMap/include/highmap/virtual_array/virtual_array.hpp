@@ -48,6 +48,11 @@ struct VirtualArray
                int         halo,
                StorageMode storage_mode = StorageMode::VA_RAM);
 
+  VirtualArray(glm::ivec2  shape,
+               glm::ivec2  tile_shape,
+               int         halo,
+               StorageMode storage_mode = StorageMode::VA_RAM);
+
   // --- access individual cells (slower)
   float      get(int global_i, int global_j) const;
   float      get_bilinear(float x, float y) const;
