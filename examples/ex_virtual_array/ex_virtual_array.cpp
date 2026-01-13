@@ -71,6 +71,8 @@ int main(void)
 
   varray.smooth_overlap_buffers();
 
+  varray.remap();
+
   std::cout << "min: " << varray.min(mode) << "\n";
   std::cout << "max: " << varray.max(mode) << "\n";
   std::cout << "sum: " << varray.sum(mode) << "\n";

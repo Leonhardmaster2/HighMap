@@ -49,23 +49,29 @@ struct VirtualArray
                int         halo,
                StorageMode storage_mode = StorageMode::VA_RAM);
 
-  // Access individual cells (slower)
+  // --- access individual cells (slower)
   float      get(int global_i, int global_j) const;
   void       set(int global_i, int global_j, float v);
   glm::ivec2 get_max_tiles() const;
 
-  void  from_array(const Array &array,
-                   ForEachMode  mode = ForEachMode::VA_DISTRIBUTED);
-  Array to_array(const glm::ivec2 array_shape,
-                 ForEachMode      mode = ForEachMode::VA_DISTRIBUTED) const;
+  // clang-format off
+  void  from_array(const Array &array, ForEachMode  mode = ForEachMode::VA_DISTRIBUTED);
+  Array to_array(const glm::ivec2 array_shape, ForEachMode mode = ForEachMode::VA_DISTRIBUTED) const;
   Array to_array(ForEachMode mode = ForEachMode::VA_DISTRIBUTED) const;
   Array to_array_dbg() const;
+  // clang-format on
 
-  // processing methods
-  float              max(ForEachMode mode = ForEachMode::VA_DISTRIBUTED) const;
-  float              mean(ForEachMode mode = ForEachMode::VA_DISTRIBUTED) const;
-  float              min(ForEachMode mode = ForEachMode::VA_DISTRIBUTED) const;
-  float              sum(ForEachMode mode = ForEachMode::VA_DISTRIBUTED) const;
+  // --- processing methods
+
+  // clang-format off
+  float max(ForEachMode mode = ForEachMode::VA_DISTRIBUTED) const;
+  float mean(ForEachMode mode = ForEachMode::VA_DISTRIBUTED) const;
+  float min(ForEachMode mode = ForEachMode::VA_DISTRIBUTED) const;
+  void  remap(float vmin = 0.f, float vmax = 1.f, ForEachMode mode = ForEachMode::VA_DISTRIBUTED);
+  void  remap(float vmin, float vmax, float from_min, float from_max, ForEachMode mode = ForEachMode::VA_DISTRIBUTED);
+  float sum(ForEachMode mode = ForEachMode::VA_DISTRIBUTED) const;
+  // clang-format on
+
   std::vector<float> unique_values(
       ForEachMode mode = ForEachMode::VA_DISTRIBUTED) const;
 

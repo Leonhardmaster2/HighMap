@@ -8,6 +8,7 @@
 
 #include "highmap/internal/vector_utils.hpp"
 #include "highmap/math.hpp"
+#include "highmap/range.hpp"
 #include "highmap/virtual_array/virtual_array.hpp"
 
 namespace hmap
@@ -51,6 +52,27 @@ float VirtualArray::min(ForEachMode mode) const
   for_each_tile(*this, lambda, mode);
 
   return *std::min_element(min_per_tile.begin(), min_per_tile.end());
+}
+
+void VirtualArray::remap(float vmin, float vmax, ForEachMode mode)
+{
+  float global_min = this->min();
+  float global_max = this->max();
+
+  this->remap(vmin, vmax, global_min, global_max, mode);
+}
+
+void VirtualArray::remap(float       vmin,
+                         float       vmax,
+                         float       from_min,
+                         float       from_max,
+                         ForEachMode mode)
+{
+  auto lambda =
+      [vmin, vmax, from_min, from_max](Array &tile, const TileRegion &)
+  { hmap::remap(tile, vmin, vmax, from_min, from_max); };
+
+  for_each_tile(*this, lambda, mode);
 }
 
 float VirtualArray::sum(ForEachMode mode) const
