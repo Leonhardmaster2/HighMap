@@ -68,7 +68,7 @@ VirtualArray::VirtualArray(glm::ivec2  shape,
   }
 }
 
-void VirtualArray::from_array(const Array &array, ForEachMode mode)
+void VirtualArray::from_array(const Array &array, const ComputeMode &cm)
 {
   auto lambda = [&array, this](Array &tile, const TileRegion &region)
   {
@@ -86,7 +86,7 @@ void VirtualArray::from_array(const Array &array, ForEachMode mode)
       }
   };
 
-  for_each_tile(*this, lambda, mode);
+  for_each_tile(*this, lambda, cm);
 }
 
 // Access individual cells (slower)
@@ -299,7 +299,7 @@ TileRegion VirtualArray::tile_region_from_tile_coords(int tile_x,
                     halo4);
 }
 
-Array VirtualArray::to_array(ForEachMode mode) const
+Array VirtualArray::to_array(const ComputeMode &cm) const
 {
   Array array(this->shape);
 
@@ -321,13 +321,13 @@ Array VirtualArray::to_array(ForEachMode mode) const
       }
   };
 
-  for_each_tile(*this, lambda, mode);
+  for_each_tile(*this, lambda, cm);
 
-  return this->to_array(this->shape, mode);
+  return this->to_array(this->shape, cm);
 }
 
-Array VirtualArray::to_array(const glm::ivec2 array_shape,
-                             ForEachMode      mode) const
+Array VirtualArray::to_array(const glm::ivec2   array_shape,
+                             const ComputeMode &cm) const
 {
   Array array(array_shape);
 
@@ -352,7 +352,7 @@ Array VirtualArray::to_array(const glm::ivec2 array_shape,
       }
   };
 
-  for_each_tile(*this, lambda, mode);
+  for_each_tile(*this, lambda, cm);
 
   return array;
 }
@@ -366,6 +366,11 @@ Array VirtualArray::to_array_dbg() const
       array(i, j) = this->get(i, j);
 
   return array;
+}
+
+void VirtualArray::trim_storage()
+{
+  this->storage->trim();
 }
 
 } // namespace hmap

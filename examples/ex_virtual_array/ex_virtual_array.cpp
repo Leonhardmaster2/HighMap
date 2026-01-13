@@ -9,8 +9,8 @@ int main(void)
   glm::ivec2 tile_shape(256, 256);
   size_t     halo = 32;
 
-  // shape = {1000, 581};
-  // tile_shape = {220, 312};
+  shape = {1000, 581};
+  tile_shape = {220, 312};
 
   // shape = {10000, 10000};
   // tile_shape = {4096, 4096};
@@ -19,12 +19,15 @@ int main(void)
   auto mode = hmap::ForEachMode::VA_DISTRIBUTED;
   // auto mode = hmap::ForEachMode::VA_SINGLE_ARRAY;
 
+  bool trim_storage = true;
+  // bool trim_storage = false;
+
   // auto storage_mode = hmap::StorageMode::VA_RAM;
   auto storage_mode = hmap::StorageMode::VA_DISK_LRU;
   // auto storage_mode = hmap::StorageMode::VA_DISK_LRU_MIN;
   // auto storage_mode = hmap::StorageMode::VA_DISK_SEQUENTIAL;
 
-  // auto storage = std::make_unique<hmap::RamTileStorage>();
+  hmap::ComputeMode cm = {.mode = mode, .trim_storage = trim_storage};
 
   hmap::VirtualArray varray(shape, bbox, tile_shape, halo, storage_mode);
   hmap::VirtualArray varray2(shape, bbox, tile_shape, halo, storage_mode);
@@ -47,12 +50,12 @@ int main(void)
                        region.bbox);
   };
 
-  hmap::for_each_tile(varray, lambda_noise, mode);
+  hmap::for_each_tile(varray, lambda_noise, cm);
 
-  hmap::for_each_tile(varray, lambda, mode);
-  // hmap::for_each_tile(varray, lambda_s, mode);
-  // hmap::for_each_tile(varray, lambda_s, mode);
-  hmap::for_each_tile(varray, lambda_s, mode);
+  hmap::for_each_tile(varray, lambda, cm);
+  hmap::for_each_tile(varray, lambda_s, cm);
+  // hmap::for_each_tile(varray, lambda_s, cm);
+  //   hmap::for_each_tile(varray, lambda_s, cm);
 
   auto lambda_f =
       [](std::vector<hmap::Array *> p_arrays, const hmap::TileRegion &)
@@ -64,21 +67,25 @@ int main(void)
     hmap::make_binary(*pa_1, 0.5f);
   };
 
-  hmap::for_each_tile({&varray, &varray2}, lambda_f, mode);
+  varray.trim_storage();
+
+  LOG_DEBUG("ok");
+
+  hmap::for_each_tile({&varray, &varray2}, lambda_f, cm);
   // hmap::for_each_tile_single_array({&varray, &varray2}, lambda_f);
 
   // --- Computing methods
 
   varray.smooth_overlap_buffers();
 
-  varray.remap();
+  varray.remap(0.f, 1.f, cm);
 
-  std::cout << "min: " << varray.min(mode) << "\n";
-  std::cout << "max: " << varray.max(mode) << "\n";
-  std::cout << "sum: " << varray.sum(mode) << "\n";
-  std::cout << "mean: " << varray.mean(mode) << "\n";
+  std::cout << "min: " << varray.min(cm) << "\n";
+  std::cout << "max: " << varray.max(cm) << "\n";
+  std::cout << "sum: " << varray.sum(cm) << "\n";
+  std::cout << "mean: " << varray.mean(cm) << "\n";
 
-  for (const auto &v : varray2.unique_values())
+  for (const auto &v : varray2.unique_values(cm))
     std::cout << "unique: " << v << "\n";
 
   // --- interpolation
@@ -103,13 +110,13 @@ int main(void)
 
   // --- output
 
-  auto a = varray.to_array(mode);
+  auto a = varray.to_array(cm);
   a.to_png("out0.png", hmap::Cmap::JET);
 
-  auto b = varray.to_array({256, 256}, mode);
+  auto b = varray.to_array({256, 256}, cm);
   b.to_png("out2.png", hmap::Cmap::JET);
 
-  auto a2 = varray2.to_array(mode);
+  auto a2 = varray2.to_array(cm);
   a2.to_png("out1.png", hmap::Cmap::JET);
 
   // auto gn = hmap::gradient_norm(a);

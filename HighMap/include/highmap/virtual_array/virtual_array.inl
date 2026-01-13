@@ -205,8 +205,10 @@ void for_each_tile_single_array(const std::vector<VirtualArray *> &p_vas,
   std::vector<Array> arrays;
   arrays.reserve(p_vas.size());
 
+  const ComputeMode &cm_local = {.mode = ForEachMode::VA_SINGLE_ARRAY};
+
   for (auto p_va : p_vas)
-    arrays.push_back(p_va ? p_va->to_array() : Array());
+    arrays.push_back(p_va ? p_va->to_array(cm_local) : Array());
 
   // create pointer vector for user func
   std::vector<Array *> p_arrays;
@@ -222,7 +224,7 @@ void for_each_tile_single_array(const std::vector<VirtualArray *> &p_vas,
 
   // copy back to VirtualArrays
   for (size_t i = 0; i < p_vas.size(); ++i)
-    if (p_vas[i]) p_vas[i]->from_array(arrays[i]);
+    if (p_vas[i]) p_vas[i]->from_array(arrays[i], cm_local);
 }
 
 template <typename Func>
@@ -237,9 +239,9 @@ void for_each_tile_single_array(VirtualArray &va, Func &&func)
 template <typename Func>
 void for_each_tile(const std::vector<VirtualArray *> &p_vas,
                    Func                             &&func,
-                   ForEachMode mode = ForEachMode::VA_DISTRIBUTED)
+                   ComputeMode                        cm)
 {
-  switch (mode)
+  switch (cm.mode)
   {
   case ForEachMode::VA_SEQUENTIAL: for_each_tile_sequential(p_vas, func); break;
   case ForEachMode::VA_DISTRIBUTED:
@@ -249,14 +251,18 @@ void for_each_tile(const std::vector<VirtualArray *> &p_vas,
     for_each_tile_single_array(p_vas, func);
     break;
   }
+
+  if (cm.trim_storage)
+  {
+    for (auto p_va : p_vas)
+      if (p_va) p_va->trim_storage();
+  }
 }
 
 template <typename Func>
-void for_each_tile(VirtualArray &va,
-                   Func        &&func,
-                   ForEachMode   mode = ForEachMode::VA_DISTRIBUTED)
+void for_each_tile(VirtualArray &va, Func &&func, const ComputeMode &cm)
 {
-  switch (mode)
+  switch (cm.mode)
   {
   case ForEachMode::VA_SEQUENTIAL:
     for_each_tile_sequential(
@@ -280,12 +286,12 @@ void for_each_tile(VirtualArray &va,
 
     break;
   }
+
+  if (cm.trim_storage) va.trim_storage();
 }
 
 template <typename Func>
-void for_each_tile(const VirtualArray &va,
-                   Func              &&func,
-                   ForEachMode         mode = ForEachMode::VA_DISTRIBUTED)
+void for_each_tile(const VirtualArray &va, Func &&func, const ComputeMode &cm)
 {
   auto &mutable_va = const_cast<VirtualArray &>(va);
 
@@ -293,5 +299,5 @@ void for_each_tile(const VirtualArray &va,
       mutable_va,
       [&](Array &tile, const TileRegion &region)
       { func(static_cast<const Array &>(tile), region); },
-      mode);
+      cm);
 }

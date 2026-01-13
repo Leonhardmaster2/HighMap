@@ -40,6 +40,11 @@ public:
   virtual Array &get_tile(const TileRegion &region) = 0;
   virtual void   release_tile(const TileRegion &region) = 0;
   virtual size_t max_live_tiles() const = 0;
+
+  // Opportunistically free memory while keeping data persistent.
+  virtual void trim()
+  {
+  }
 };
 
 // =====================================
@@ -98,6 +103,7 @@ public:
 
   Array &get_tile(const TileRegion &region) override;
   size_t max_live_tiles() const override;
+  void   trim() override;
 
 protected:
   void on_evict(const TileKey &key, Array &tile) override;
@@ -122,6 +128,7 @@ public:
   Array &get_tile(const TileRegion &region) override;
   void   release_tile(const TileRegion &region) override;
   size_t max_live_tiles() const override;
+  void   trim() override;
 
 private:
   std::filesystem::path root_dir;

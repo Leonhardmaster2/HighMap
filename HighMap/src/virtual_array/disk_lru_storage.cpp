@@ -101,4 +101,15 @@ std::filesystem::path DiskLruTileStorage::tile_path(const TileKey &key) const
                      std::to_string(key.ty) + ".bin");
 }
 
+void DiskLruTileStorage::trim()
+{
+  std::lock_guard<std::mutex> lock(mutex);
+
+  for (auto &[key, entry] : tiles)
+    this->on_evict(key, entry.value); // write-back
+
+  this->tiles.clear();
+  this->lru.clear();
+}
+
 } // namespace hmap

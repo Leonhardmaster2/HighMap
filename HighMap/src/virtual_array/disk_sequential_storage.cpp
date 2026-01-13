@@ -89,4 +89,13 @@ std::filesystem::path DiskSequentialTileStorage::tile_path(
                      std::to_string(key.ty) + ".bin");
 }
 
+void DiskSequentialTileStorage::trim()
+{
+  if (current_tile)
+  {
+    save_tile(current_key, *current_tile);
+    current_tile.reset();
+  }
+}
+
 } // namespace hmap

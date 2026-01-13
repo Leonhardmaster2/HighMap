@@ -35,6 +35,12 @@ enum StorageMode : int
   VA_DISK_SEQUENTIAL // sequential for/each, no smooth_overlap
 };
 
+struct ComputeMode
+{
+  ForEachMode mode;
+  bool        trim_storage = false;
+};
+
 struct VirtualArray
 {
   VirtualArray(glm::ivec2                   shape,
@@ -56,26 +62,26 @@ struct VirtualArray
   void       set(int global_i, int global_j, float v);
   glm::ivec2 get_max_tiles() const;
 
-  // clang-format off
-  void  from_array(const Array &array, ForEachMode  mode = ForEachMode::VA_DISTRIBUTED);
-  Array to_array(const glm::ivec2 array_shape, ForEachMode mode = ForEachMode::VA_DISTRIBUTED) const;
-  Array to_array(ForEachMode mode = ForEachMode::VA_DISTRIBUTED) const;
+  void  from_array(const Array &array, const ComputeMode &cm);
+  Array to_array(const glm::ivec2 array_shape, const ComputeMode &cm) const;
+  Array to_array(const ComputeMode &cm) const;
   Array to_array_dbg() const;
-  // clang-format on
 
   // --- processing methods
 
-  // clang-format off
-  float max(ForEachMode mode = ForEachMode::VA_DISTRIBUTED) const;
-  float mean(ForEachMode mode = ForEachMode::VA_DISTRIBUTED) const;
-  float min(ForEachMode mode = ForEachMode::VA_DISTRIBUTED) const;
-  void  remap(float vmin = 0.f, float vmax = 1.f, ForEachMode mode = ForEachMode::VA_DISTRIBUTED);
-  void  remap(float vmin, float vmax, float from_min, float from_max, ForEachMode mode = ForEachMode::VA_DISTRIBUTED);
-  float sum(ForEachMode mode = ForEachMode::VA_DISTRIBUTED) const;
-  // clang-format on
+  float max(const ComputeMode &cm) const;
+  float mean(const ComputeMode &cm) const;
+  float min(const ComputeMode &cm) const;
+  float sum(const ComputeMode &cm) const;
 
-  std::vector<float> unique_values(
-      ForEachMode mode = ForEachMode::VA_DISTRIBUTED) const;
+  void remap(float vmin, float vmax, const ComputeMode &cm);
+  void remap(float              vmin,
+             float              vmax,
+             float              from_min,
+             float              from_max,
+             const ComputeMode &cm);
+
+  std::vector<float> unique_values(const ComputeMode &cm) const;
 
   void smooth_overlap_buffers();
 
@@ -85,6 +91,8 @@ struct VirtualArray
   glm::ivec2 local_indices(const TileRegion &region,
                            int               global_i,
                            int               global_j) const;
+
+  void trim_storage();
 
   // --- Members
   glm::ivec2                   shape;
