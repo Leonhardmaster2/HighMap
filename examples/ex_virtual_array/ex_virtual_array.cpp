@@ -76,6 +76,9 @@ int main(void)
   std::cout << "sum: " << varray.sum(mode) << "\n";
   std::cout << "mean: " << varray.mean(mode) << "\n";
 
+  for (const auto &v : varray2.unique_values())
+    std::cout << "unique: " << v << "\n";
+
   auto a = varray.to_array(mode);
   a.to_png("out0.png", hmap::Cmap::JET);
 

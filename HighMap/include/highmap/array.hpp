@@ -955,7 +955,7 @@ public:
    *
    * @return std::vector<float> A vector of unique values found in the array.
    */
-  std::vector<float> unique_values();
+  std::vector<float> unique_values() const;
 };
 
 /**

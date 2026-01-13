@@ -384,7 +384,7 @@ float Array::sum() const
   return std::accumulate(this->vector.begin(), this->vector.end(), 0.f);
 }
 
-std::vector<float> Array::unique_values()
+std::vector<float> Array::unique_values() const
 {
   std::vector<float> v = this->vector;
   vector_unique_values(v);

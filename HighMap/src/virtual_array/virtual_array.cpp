@@ -6,6 +6,7 @@
 
 #include "macrologger.h"
 
+#include "highmap/internal/vector_utils.hpp"
 #include "highmap/math.hpp"
 #include "highmap/virtual_array/virtual_array.hpp"
 
@@ -381,6 +382,30 @@ Array VirtualArray::to_array_dbg() const
       array(i, j) = this->get(i, j);
 
   return array;
+}
+
+std::vector<float> VirtualArray::unique_values(ForEachMode mode) const
+{
+  glm::ivec2 nt = this->get_max_tiles();
+
+  if (nt.x * nt.y == 0) return {0.f};
+
+  std::vector<std::vector<float>> unique_per_tile;
+  unique_per_tile.reserve(nt.x * nt.y);
+
+  auto lambda = [&unique_per_tile](const Array &tile, const TileRegion &)
+  { unique_per_tile.push_back(tile.unique_values()); };
+
+  for_each_tile(*this, lambda, mode);
+
+  // flatten
+  std::vector<float> unique_values = {};
+  for (const auto &vec : unique_per_tile)
+    for (const auto &v : vec)
+      unique_values.push_back(v);
+
+  vector_unique_values(unique_values);
+  return unique_values;
 }
 
 } // namespace hmap

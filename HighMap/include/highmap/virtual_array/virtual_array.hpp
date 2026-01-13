@@ -62,10 +62,12 @@ struct VirtualArray
   Array to_array_dbg() const;
 
   // processing methods
-  float max(ForEachMode mode = ForEachMode::VA_DISTRIBUTED) const;
-  float mean(ForEachMode mode = ForEachMode::VA_DISTRIBUTED) const;
-  float min(ForEachMode mode = ForEachMode::VA_DISTRIBUTED) const;
-  float sum(ForEachMode mode = ForEachMode::VA_DISTRIBUTED) const;
+  float              max(ForEachMode mode = ForEachMode::VA_DISTRIBUTED) const;
+  float              mean(ForEachMode mode = ForEachMode::VA_DISTRIBUTED) const;
+  float              min(ForEachMode mode = ForEachMode::VA_DISTRIBUTED) const;
+  float              sum(ForEachMode mode = ForEachMode::VA_DISTRIBUTED) const;
+  std::vector<float> unique_values(
+      ForEachMode mode = ForEachMode::VA_DISTRIBUTED) const;
 
   void smooth_overlap_buffers();
 
