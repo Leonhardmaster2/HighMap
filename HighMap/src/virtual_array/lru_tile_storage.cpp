@@ -33,7 +33,7 @@ Array &LruTileStorage::get_tile_no_mutex_lock(const TileRegion &region)
 
   // ---- miss → allocate
 
-  glm::ivec2 total = region.total_shape();
+  glm::ivec2 total = region.shape;
   Array      tile(total);
 
   // ---- eviction if needed

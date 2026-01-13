@@ -65,7 +65,7 @@ Array &DiskLruTileStorage::get_tile(const TileRegion &region)
 
 Array DiskLruTileStorage::load_tile_from_disk(const TileRegion &region)
 {
-  Array tile(region.total_shape());
+  Array tile(region.shape);
 
   auto path = tile_path(region.key);
 

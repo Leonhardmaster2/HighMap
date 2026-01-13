@@ -37,7 +37,7 @@ Array DiskSequentialTileStorage::load_or_create(const TileRegion &region)
 {
   auto path = tile_path(region.key);
 
-  Array tile(region.total_shape());
+  Array tile(region.shape);
 
   if (std::filesystem::exists(path))
   {

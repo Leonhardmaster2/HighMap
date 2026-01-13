@@ -66,30 +66,25 @@ VirtualArray::VirtualArray(glm::ivec2  shape,
   }
 }
 
-void VirtualArray::from_array(const Array &array)
+void VirtualArray::from_array(const Array &array, ForEachMode mode)
 {
-  auto lambda = [&array, this](Array            &tile,
-                               const glm::ivec2 &shape,
-                               const glm::vec4  &bbox)
+  auto lambda = [&array, this](Array &tile, const TileRegion &region)
   {
-    float rx = float((array.shape.x - 1.f) / (this->shape.x - 1.f));
-    float ry = float((array.shape.y - 1.f) / (this->shape.y - 1.f));
+    // tile relative position
+    float x0 = (region.bbox.x - this->bbox.x) / (this->bbox.y - this->bbox.x);
+    float y0 = (region.bbox.z - this->bbox.z) / (this->bbox.w - this->bbox.z);
 
-    for (int j = 0; j < shape.y; ++j)
-      for (int i = 0; i < shape.x; ++i)
+    for (int j = 0; j < region.shape.y; ++j)
+      for (int i = 0; i < region.shape.x; ++i)
       {
-        // corresponding global indices for the input array, in [0, 1]
-        float x0 = (bbox.x - this->bbox.x) / (this->bbox.y - this->bbox.x);
-        float y0 = (bbox.z - this->bbox.z) / (this->bbox.w - this->bbox.z);
-
-        int ig = int(rx * x0 * (this->shape.x - 1.f)) + i;
-        int jg = int(ry * y0 * (this->shape.y - 1.f)) + j;
+        int ig = int(x0 * (array.shape.x - 1.f)) + i;
+        int jg = int(y0 * (array.shape.y - 1.f)) + j;
 
         tile(i, j) = array(ig, jg);
       }
   };
 
-  for_each_tile_sequential(*this, lambda);
+  for_each_tile(*this, lambda, mode);
 }
 
 // Access individual cells (slower)
@@ -138,8 +133,7 @@ float VirtualArray::max(ForEachMode mode) const
   std::vector<float> max_per_tile;
   max_per_tile.reserve(nt.x * nt.y);
 
-  auto lambda =
-      [&max_per_tile](const Array &tile, const glm::ivec2 &, const glm::vec4 &)
+  auto lambda = [&max_per_tile](const Array &tile, const TileRegion &)
   { max_per_tile.push_back(tile.max()); };
 
   for_each_tile(*this, lambda, mode);
@@ -162,8 +156,7 @@ float VirtualArray::min(ForEachMode mode) const
   std::vector<float> min_per_tile;
   min_per_tile.reserve(nt.x * nt.y);
 
-  auto lambda =
-      [&min_per_tile](const Array &tile, const glm::ivec2 &, const glm::vec4 &)
+  auto lambda = [&min_per_tile](const Array &tile, const TileRegion &)
   { min_per_tile.push_back(tile.min()); };
 
   for_each_tile(*this, lambda, mode);
@@ -258,8 +251,7 @@ float VirtualArray::sum(ForEachMode mode) const
   std::vector<float> sum_per_tile;
   sum_per_tile.reserve(nt.x * nt.y);
 
-  auto lambda =
-      [&sum_per_tile](const Array &tile, const glm::ivec2 &, const glm::vec4 &)
+  auto lambda = [&sum_per_tile](const Array &tile, const TileRegion &)
   { sum_per_tile.push_back(tile.sum()); };
 
   for_each_tile(*this, lambda, mode);
@@ -318,13 +310,40 @@ TileRegion VirtualArray::tile_region_from_tile_coords(int tile_x,
 
   return TileRegion(key,
                     glm::vec4(fx1, fx2, fy1, fy2),
-                    glm::ivec2(w, h),
+                    glm::ivec2(w + halo4.x + halo4.y, h + halo4.z + halo4.w),
                     halo4);
 }
 
 // TODO add to_array_nearest => new shape
 
-Array VirtualArray::to_array() const
+Array VirtualArray::to_array(ForEachMode mode) const
+{
+  Array array(this->shape);
+
+  auto lambda = [&array, this](const Array &tile, const TileRegion &region)
+  {
+    // tile relative position
+    float x0 = (region.bbox.x - this->bbox.x) / (this->bbox.y - this->bbox.x);
+    float y0 = (region.bbox.z - this->bbox.z) / (this->bbox.w - this->bbox.z);
+    const glm::vec4 &b = region.halo;
+
+    // use only tile inner points, skip the halos
+    for (int j = b.z; j < region.shape.y - b.w; ++j)
+      for (int i = b.x; i < region.shape.x - b.y; ++i)
+      {
+        int ig = int(x0 * (array.shape.x - 1.f)) + i;
+        int jg = int(y0 * (array.shape.y - 1.f)) + j;
+
+        array(ig, jg) = tile(i, j);
+      }
+  };
+
+  for_each_tile(*this, lambda, mode);
+
+  return array;
+}
+
+Array VirtualArray::to_array_dbg() const
 {
   Array array(this->shape);
 

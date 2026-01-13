@@ -16,9 +16,4 @@ TileRegion::TileRegion(const TileKey    &key,
 {
 }
 
-glm::ivec2 TileRegion::total_shape() const
-{
-  return glm::ivec2(shape.x + halo.x + halo.y, shape.y + halo.z + halo.w);
-}
-
 } // namespace hmap

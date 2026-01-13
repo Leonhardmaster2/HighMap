@@ -71,7 +71,7 @@ void for_each_tile_distributed(const std::vector<VirtualArray *> &p_vas,
         p_arrays.push_back(&tile);
       }
 
-      func(p_arrays, region.total_shape(), region.bbox);
+      func(p_arrays, region);
 
       for (auto p_va : p_vas)
         if (p_va) p_va->storage->release_tile(region);
@@ -92,9 +92,8 @@ void for_each_tile_distributed(VirtualArray &va, Func &&func, int nthreads = 0)
 {
   for_each_tile_distributed(
       std::vector<VirtualArray *>{&va},
-      [&](std::vector<Array *> &p_arrays,
-          const glm::ivec2     &shape,
-          const glm::vec4      &bbox) { func(*p_arrays[0], shape, bbox); },
+      [&](std::vector<Array *> &p_arrays, const hmap::TileRegion &region)
+      { func(*p_arrays[0], region); },
       nthreads);
 }
 
@@ -155,7 +154,7 @@ void for_each_tile_sequential(const std::vector<VirtualArray *> &p_vas,
       }
 
       // user computation
-      func(p_arrays, region.total_shape(), region.bbox);
+      func(p_arrays, region);
 
       // release tiles
       for (auto p_va : p_vas)
@@ -166,11 +165,10 @@ void for_each_tile_sequential(const std::vector<VirtualArray *> &p_vas,
 template <typename Func>
 void for_each_tile_sequential(VirtualArray &va, Func &&func)
 {
-  for_each_tile_sequential(std::vector<VirtualArray *>{&va},
-                           [&](std::vector<Array *> &p_arrays,
-                               const glm::ivec2     &shape,
-                               const glm::vec4      &bbox)
-                           { func(*p_arrays[0], shape, bbox); });
+  for_each_tile_sequential(
+      std::vector<VirtualArray *>{&va},
+      [&](std::vector<Array *> &p_arrays, const TileRegion &region)
+      { func(*p_arrays[0], region); });
 }
 
 template <typename Func>
@@ -218,7 +216,9 @@ void for_each_tile_single_array(const std::vector<VirtualArray *> &p_vas,
     p_arrays.push_back(p_vas[i] ? &arrays[i] : nullptr);
 
   // call user operation
-  func(p_arrays, va.shape, va.bbox);
+  TileRegion va_region = TileRegion(TileKey(), va.bbox, va.shape, {0, 0, 0, 0});
+
+  func(p_arrays, va_region);
 
   // copy back to VirtualArrays
   for (size_t i = 0; i < p_vas.size(); ++i)
@@ -228,11 +228,10 @@ void for_each_tile_single_array(const std::vector<VirtualArray *> &p_vas,
 template <typename Func>
 void for_each_tile_single_array(VirtualArray &va, Func &&func)
 {
-  for_each_tile_single_array(std::vector<VirtualArray *>{&va},
-                             [&](std::vector<Array *> &p_arrays,
-                                 const glm::ivec2     &shape,
-                                 const glm::vec4      &bbox)
-                             { func(*p_arrays[0], shape, bbox); });
+  for_each_tile_single_array(
+      std::vector<VirtualArray *>{&va},
+      [&](std::vector<Array *> &p_arrays, const TileRegion &region)
+      { func(*p_arrays[0], region); });
 }
 
 template <typename Func>
@@ -260,27 +259,24 @@ void for_each_tile(VirtualArray &va,
   switch (mode)
   {
   case ForEachMode::VA_SEQUENTIAL:
-    for_each_tile_sequential(std::vector<VirtualArray *>{&va},
-                             [&](std::vector<Array *> &p_arrays,
-                                 const glm::ivec2     &shape,
-                                 const glm::vec4      &bbox)
-                             { func(*p_arrays[0], shape, bbox); });
+    for_each_tile_sequential(
+        std::vector<VirtualArray *>{&va},
+        [&](std::vector<Array *> &p_arrays, const TileRegion &region)
+        { func(*p_arrays[0], region); });
     break;
     //
   case ForEachMode::VA_DISTRIBUTED:
-    for_each_tile_distributed(std::vector<VirtualArray *>{&va},
-                              [&](std::vector<Array *> &p_arrays,
-                                  const glm::ivec2     &shape,
-                                  const glm::vec4      &bbox)
-                              { func(*p_arrays[0], shape, bbox); });
+    for_each_tile_distributed(
+        std::vector<VirtualArray *>{&va},
+        [&](std::vector<Array *> &p_arrays, const TileRegion &region)
+        { func(*p_arrays[0], region); });
     break;
     //
   case ForEachMode::VA_SINGLE_ARRAY:
-    for_each_tile_single_array(std::vector<VirtualArray *>{&va},
-                               [&](std::vector<Array *> &p_arrays,
-                                   const glm::ivec2     &shape,
-                                   const glm::vec4      &bbox)
-                               { func(*p_arrays[0], shape, bbox); });
+    for_each_tile_single_array(
+        std::vector<VirtualArray *>{&va},
+        [&](std::vector<Array *> &p_arrays, const TileRegion &region)
+        { func(*p_arrays[0], region); });
 
     break;
   }
@@ -295,7 +291,7 @@ void for_each_tile(const VirtualArray &va,
 
   for_each_tile(
       mutable_va,
-      [&](Array &tile, const glm::ivec2 &shape, const glm::vec4 &bbox)
-      { func(static_cast<const Array &>(tile), shape, bbox); },
+      [&](Array &tile, const TileRegion &region)
+      { func(static_cast<const Array &>(tile), region); },
       mode);
 }

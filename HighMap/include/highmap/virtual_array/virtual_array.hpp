@@ -54,8 +54,10 @@ struct VirtualArray
   void       set(int global_i, int global_j, float v);
   glm::ivec2 get_max_tiles() const;
 
-  void  from_array(const Array &array);
-  Array to_array() const;
+  void  from_array(const Array &array,
+                   ForEachMode  mode = ForEachMode::VA_DISTRIBUTED);
+  Array to_array(ForEachMode mode = ForEachMode::VA_DISTRIBUTED) const;
+  Array to_array_dbg() const;
 
   // processing methods
   float max(ForEachMode mode = ForEachMode::VA_DISTRIBUTED) const;
