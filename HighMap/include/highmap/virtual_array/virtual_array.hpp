@@ -36,7 +36,7 @@ struct ComputeMode
 
 struct VirtualArray
 {
-  VirtualTexture() = default;
+  VirtualArray() = default;
 
   VirtualArray(glm::ivec2                   shape,
                glm::vec4                    bbox, // (x1, x2, y1, y2)
