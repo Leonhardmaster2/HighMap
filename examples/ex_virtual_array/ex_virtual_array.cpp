@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "highmap.hpp"
 
 int main(void)
@@ -17,9 +19,9 @@ int main(void)
   // auto mode = hmap::ForEachMode::VA_DISTRIBUTED;
   // auto mode = hmap::ForEachMode::VA_SINGLE_ARRAY;
 
-  // auto storage_mode = hmap::StorageMode::VA_RAM;
+  auto storage_mode = hmap::StorageMode::VA_RAM;
   // auto storage_mode = hmap::StorageMode::VA_DISK_LRU;
-  auto storage_mode = hmap::StorageMode::VA_DISK_LRU_MIN;
+  // auto storage_mode = hmap::StorageMode::VA_DISK_LRU_MIN;
   // auto storage_mode = hmap::StorageMode::VA_DISK_SEQUENTIAL;
 
   // auto storage = std::make_unique<hmap::RamTileStorage>();
@@ -67,7 +69,14 @@ int main(void)
   hmap::for_each_tile({&varray, &varray2}, lambda_f, mode);
   // hmap::for_each_tile_single_array({&varray, &varray2}, lambda_f);
 
+  // --- Computing methods
+
   varray.smooth_overlap_buffers();
+
+  std::cout << "min: " << varray.min(mode) << "\n";
+  std::cout << "max: " << varray.max(mode) << "\n";
+  std::cout << "sum: " << varray.sum(mode) << "\n";
+  std::cout << "mean: " << varray.mean(mode) << "\n";
 
   auto a = varray.to_array();
   a.to_png("out0.png", hmap::Cmap::JET);

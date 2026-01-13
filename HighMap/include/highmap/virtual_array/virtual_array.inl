@@ -285,3 +285,17 @@ void for_each_tile(VirtualArray &va,
     break;
   }
 }
+
+template <typename Func>
+void for_each_tile(const VirtualArray &va,
+                   Func              &&func,
+                   ForEachMode         mode = ForEachMode::VA_DISTRIBUTED)
+{
+  auto &mutable_va = const_cast<VirtualArray &>(va);
+
+  for_each_tile(
+      mutable_va,
+      [&](Array &tile, const glm::ivec2 &shape, const glm::vec4 &bbox)
+      { func(static_cast<const Array &>(tile), shape, bbox); },
+      mode);
+}

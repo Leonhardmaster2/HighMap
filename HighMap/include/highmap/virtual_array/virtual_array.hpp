@@ -50,12 +50,20 @@ struct VirtualArray
                StorageMode storage_mode = StorageMode::VA_RAM);
 
   // Access individual cells (slower)
-  float get(int global_i, int global_j) const;
-  void  set(int global_i, int global_j, float v);
+  float      get(int global_i, int global_j) const;
+  void       set(int global_i, int global_j, float v);
+  glm::ivec2 get_max_tiles() const;
 
   void  from_array(const Array &array);
   Array to_array() const;
-  void  smooth_overlap_buffers();
+
+  // processing methods
+  float max(ForEachMode mode = ForEachMode::VA_DISTRIBUTED) const;
+  float mean(ForEachMode mode = ForEachMode::VA_DISTRIBUTED) const;
+  float min(ForEachMode mode = ForEachMode::VA_DISTRIBUTED) const;
+  float sum(ForEachMode mode = ForEachMode::VA_DISTRIBUTED) const;
+
+  void smooth_overlap_buffers();
 
   // Find which tile covers a given index
   TileRegion tile_region_from_global_index(int global_i, int global_j) const;
