@@ -3,16 +3,22 @@
  * this software. */
 #include "macrologger.h"
 
+#include "highmap/internal/string_utils.hpp"
 #include "highmap/virtual_array/tile_storage.hpp"
 
 namespace hmap
 {
 
-DiskLruTileStorage::DiskLruTileStorage(size_t                       max_tiles,
-                                       const std::filesystem::path &directory)
-    : LruTileStorage(max_tiles), root_dir(directory)
+DiskLruTileStorage::DiskLruTileStorage(size_t max_tiles)
+    : LruTileStorage(max_tiles)
 {
-  std::filesystem::create_directories(root_dir);
+  this->root_dir = make_unique_temp_dir("va_lru");
+}
+
+DiskLruTileStorage::~DiskLruTileStorage()
+{
+  std::error_code ec;
+  std::filesystem::remove_all(this->root_dir, ec);
 }
 
 Array &DiskLruTileStorage::get_tile(const TileRegion &region)
@@ -70,6 +76,11 @@ Array DiskLruTileStorage::load_tile_from_disk(const TileRegion &region)
   in.read(reinterpret_cast<char *>(tile.vector.data()), count * sizeof(float));
 
   return tile;
+}
+
+size_t DiskLruTileStorage::max_live_tiles() const
+{
+  return this->max_tiles;
 }
 
 void DiskLruTileStorage::on_evict(const TileKey &key, Array &tile)

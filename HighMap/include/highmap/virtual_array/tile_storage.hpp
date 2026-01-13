@@ -12,6 +12,7 @@
 #include <fstream>
 #include <list>
 #include <mutex>
+#include <optional>
 #include <unordered_map>
 
 #include "highmap/array.hpp"
@@ -38,6 +39,7 @@ public:
   virtual ~TileStorage() = default;
   virtual Array &get_tile(const TileRegion &region) = 0;
   virtual void   release_tile(const TileRegion &region) = 0;
+  virtual size_t max_live_tiles() const = 0;
 };
 
 // =====================================
@@ -49,6 +51,7 @@ class RamTileStorage : public TileStorage
 public:
   Array &get_tile(const TileRegion &region) override;
   void   release_tile(const TileRegion &region) override;
+  size_t max_live_tiles() const override;
 
 private:
   std::unordered_map<TileKey, Array, TileKeyHash> tiles;
@@ -71,6 +74,7 @@ public:
 
   Array &get_tile(const TileRegion &region) override;
   void   release_tile(const TileRegion &region) override;
+  size_t max_live_tiles() const override;
 
 protected:
   size_t                                                 max_tiles;
@@ -82,14 +86,18 @@ protected:
   virtual void on_evict(const TileKey &key, Array &tile);
 };
 
-// --- Disk-LRU
+// =====================================
+// DISK-LRU storage
+// =====================================
 
 class DiskLruTileStorage : public LruTileStorage
 {
 public:
-  DiskLruTileStorage(size_t max_tiles, const std::filesystem::path &directory);
+  DiskLruTileStorage(size_t max_tiles);
+  ~DiskLruTileStorage();
 
   Array &get_tile(const TileRegion &region) override;
+  size_t max_live_tiles() const override;
 
 protected:
   void on_evict(const TileKey &key, Array &tile) override;
@@ -99,6 +107,30 @@ private:
 
   std::filesystem::path tile_path(const TileKey &key) const;
   Array                 load_tile_from_disk(const TileRegion &region);
+};
+
+// =====================================
+// DISK-sequential storage
+// =====================================
+
+class DiskSequentialTileStorage : public TileStorage
+{
+public:
+  DiskSequentialTileStorage();
+  ~DiskSequentialTileStorage() override;
+
+  Array &get_tile(const TileRegion &region) override;
+  void   release_tile(const TileRegion &region) override;
+  size_t max_live_tiles() const override;
+
+private:
+  std::filesystem::path root_dir;
+  TileKey               current_key{};
+  std::optional<Array>  current_tile;
+
+  Array                 load_or_create(const TileRegion &region);
+  void                  save_tile(const TileKey &key, const Array &tile);
+  std::filesystem::path tile_path(const TileKey &key) const;
 };
 
 } // namespace hmap

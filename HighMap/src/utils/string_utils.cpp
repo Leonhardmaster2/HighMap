@@ -2,6 +2,7 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 #include <filesystem>
+#include <random>
 #include <string>
 
 namespace hmap
@@ -18,6 +19,23 @@ std::filesystem::path add_filename_suffix(
                                    std::filesystem::path(stem.string() +
                                                          suffix + ext.string());
   return new_path;
+}
+
+std::filesystem::path make_unique_temp_dir(const std::string &prefix)
+{
+  std::filesystem::path base = std::filesystem::temp_directory_path();
+
+  std::random_device                      rd;
+  std::mt19937_64                         gen(rd());
+  std::uniform_int_distribution<uint64_t> dis;
+
+  for (;;)
+  {
+    std::filesystem::path dir = base /
+                                (prefix + "_" + std::to_string(dis(gen)));
+
+    if (std::filesystem::create_directory(dir)) return dir;
+  }
 }
 
 std::string zfill(const std::string &str, int n_zero)

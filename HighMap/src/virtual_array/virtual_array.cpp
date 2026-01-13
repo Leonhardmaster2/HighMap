@@ -1,6 +1,9 @@
 /* Copyright (c) 2025 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
+#include <filesystem>
+#include <random>
+
 #include "macrologger.h"
 
 #include "highmap/math.hpp"
@@ -20,6 +23,47 @@ VirtualArray::VirtualArray(glm::ivec2                   shape,
       halo(halo),
       storage(std::move(storage))
 {
+}
+
+VirtualArray::VirtualArray(glm::ivec2  shape,
+                           glm::vec4   bbox,
+                           glm::ivec2  tile_shape,
+                           int         halo,
+                           StorageMode storage_mode)
+    : shape(shape), bbox(bbox), tile_shape(tile_shape), halo(halo)
+{
+  switch (storage_mode)
+  {
+  case StorageMode::VA_RAM:
+  {
+    auto storage = std::make_unique<hmap::RamTileStorage>();
+    this->storage = std::move(storage);
+  }
+  break;
+    //
+  case StorageMode::VA_DISK_LRU:
+  {
+    int  nx = ceil_div(this->shape.x, this->tile_shape.x);
+    int  ny = ceil_div(this->shape.y, this->tile_shape.y);
+    auto storage = std::make_unique<hmap::DiskLruTileStorage>(nx * ny);
+    this->storage = std::move(storage);
+  }
+  break;
+  //
+  case StorageMode::VA_DISK_LRU_MIN:
+  {
+    auto storage = std::make_unique<hmap::DiskLruTileStorage>(2);
+    this->storage = std::move(storage);
+  }
+  break;
+  //
+  case StorageMode::VA_DISK_SEQUENTIAL:
+  {
+    auto storage = std::make_unique<hmap::DiskSequentialTileStorage>();
+    this->storage = std::move(storage);
+  }
+  break;
+  }
 }
 
 void VirtualArray::from_array(const Array &array)
@@ -88,6 +132,13 @@ void VirtualArray::set(int global_i, int global_j, float v)
 
 void VirtualArray::smooth_overlap_buffers()
 {
+  if (this->storage->max_live_tiles() < 2)
+  {
+    LOG_ERROR("VirtualArray: smooth_overlap_buffers requires at least 2 tiles "
+              "in memory, skipping");
+    return;
+  }
+
   int nx = ceil_div(this->shape.x, this->tile_shape.x);
   int ny = ceil_div(this->shape.y, this->tile_shape.y);
 

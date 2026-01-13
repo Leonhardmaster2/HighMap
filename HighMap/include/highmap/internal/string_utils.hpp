@@ -41,6 +41,19 @@ std::filesystem::path add_filename_suffix(
     const std::string           &suffix);
 
 /**
+ * @brief Create a unique temporary directory.
+ *
+ * Creates and returns a unique directory inside the system temporary
+ * directory using the given prefix.
+ *
+ * @param prefix Directory name prefix.
+ * @return Path to the created temporary directory.
+ *
+ * @note The caller is responsible for deleting the directory.
+ */
+std::filesystem::path make_unique_temp_dir(const std::string &prefix);
+
+/**
  * @brief Pads the beginning of a string with zeros until it reaches a specified
  * length.
  *

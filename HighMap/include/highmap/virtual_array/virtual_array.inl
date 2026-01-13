@@ -175,7 +175,7 @@ void for_each_tile_sequential(VirtualArray &va, Func &&func)
 
 template <typename Func>
 void for_each_tile_single_array(const std::vector<VirtualArray *> &p_vas,
-                                Func                             &&op)
+                                Func                             &&func)
 {
   // --- Failsafe
 
@@ -210,7 +210,7 @@ void for_each_tile_single_array(const std::vector<VirtualArray *> &p_vas,
   for (auto p_va : p_vas)
     arrays.push_back(p_va ? p_va->to_array() : Array());
 
-  // create pointer vector for user op
+  // create pointer vector for user func
   std::vector<Array *> p_arrays;
   p_arrays.reserve(p_vas.size());
 
@@ -218,7 +218,7 @@ void for_each_tile_single_array(const std::vector<VirtualArray *> &p_vas,
     p_arrays.push_back(p_vas[i] ? &arrays[i] : nullptr);
 
   // call user operation
-  op(p_arrays, va.shape, va.bbox);
+  func(p_arrays, va.shape, va.bbox);
 
   // copy back to VirtualArrays
   for (size_t i = 0; i < p_vas.size(); ++i)
@@ -233,4 +233,55 @@ void for_each_tile_single_array(VirtualArray &va, Func &&func)
                                  const glm::ivec2     &shape,
                                  const glm::vec4      &bbox)
                              { func(*p_arrays[0], shape, bbox); });
+}
+
+template <typename Func>
+void for_each_tile(const std::vector<VirtualArray *> &p_vas,
+                   Func                             &&func,
+                   ForEachMode mode = ForEachMode::VA_DISTRIBUTED)
+{
+  switch (mode)
+  {
+  case ForEachMode::VA_SEQUENTIAL: for_each_tile_sequential(p_vas, func); break;
+  case ForEachMode::VA_DISTRIBUTED:
+    for_each_tile_distributed(p_vas, func);
+    break;
+  case ForEachMode::VA_SINGLE_ARRAY:
+    for_each_tile_single_array(p_vas, func);
+    break;
+  }
+}
+
+template <typename Func>
+void for_each_tile(VirtualArray &va,
+                   Func        &&func,
+                   ForEachMode   mode = ForEachMode::VA_DISTRIBUTED)
+{
+  switch (mode)
+  {
+  case ForEachMode::VA_SEQUENTIAL:
+    for_each_tile_sequential(std::vector<VirtualArray *>{&va},
+                             [&](std::vector<Array *> &p_arrays,
+                                 const glm::ivec2     &shape,
+                                 const glm::vec4      &bbox)
+                             { func(*p_arrays[0], shape, bbox); });
+    break;
+    //
+  case ForEachMode::VA_DISTRIBUTED:
+    for_each_tile_distributed(std::vector<VirtualArray *>{&va},
+                              [&](std::vector<Array *> &p_arrays,
+                                  const glm::ivec2     &shape,
+                                  const glm::vec4      &bbox)
+                              { func(*p_arrays[0], shape, bbox); });
+    break;
+    //
+  case ForEachMode::VA_SINGLE_ARRAY:
+    for_each_tile_single_array(std::vector<VirtualArray *>{&va},
+                               [&](std::vector<Array *> &p_arrays,
+                                   const glm::ivec2     &shape,
+                                   const glm::vec4      &bbox)
+                               { func(*p_arrays[0], shape, bbox); });
+
+    break;
+  }
 }

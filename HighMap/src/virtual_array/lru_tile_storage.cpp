@@ -59,6 +59,11 @@ Array &LruTileStorage::get_tile_no_mutex_lock(const TileRegion &region)
   return inserted_it->second.value;
 }
 
+size_t LruTileStorage::max_live_tiles() const
+{
+  return this->max_tiles;
+}
+
 void LruTileStorage::release_tile(const TileRegion & /* region */)
 {
   // no-op

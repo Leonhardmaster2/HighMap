@@ -13,19 +13,19 @@ int main(void)
   // shape = {10000, 10000};
   // tile_shape = {4096, 4096};
 
+  auto mode = hmap::ForEachMode::VA_SEQUENTIAL;
+  // auto mode = hmap::ForEachMode::VA_DISTRIBUTED;
+  // auto mode = hmap::ForEachMode::VA_SINGLE_ARRAY;
+
+  // auto storage_mode = hmap::StorageMode::VA_RAM;
+  // auto storage_mode = hmap::StorageMode::VA_DISK_LRU;
+  auto storage_mode = hmap::StorageMode::VA_DISK_LRU_MIN;
+  // auto storage_mode = hmap::StorageMode::VA_DISK_SEQUENTIAL;
+
   // auto storage = std::make_unique<hmap::RamTileStorage>();
 
-  size_t max_tiles = 32;
-  auto   storage = std::make_unique<hmap::DiskLruTileStorage>(max_tiles,
-                                                            "tiles/");
-  hmap::VirtualArray varray(shape, bbox, tile_shape, halo, std::move(storage));
-
-  auto               storage2 = std::make_unique<hmap::RamTileStorage>();
-  hmap::VirtualArray varray2(shape,
-                             bbox,
-                             tile_shape,
-                             halo,
-                             std::move(storage2));
+  hmap::VirtualArray varray(shape, bbox, tile_shape, halo, storage_mode);
+  hmap::VirtualArray varray2(shape, bbox, tile_shape, halo, storage_mode);
 
   auto lambda = [](hmap::Array &tile, const glm::ivec2 &, const glm::vec4 &)
   { hmap::gamma_correction(tile, 2.f); };
@@ -46,12 +46,12 @@ int main(void)
                        bbox);
   };
 
-  hmap::for_each_tile_distributed(varray, lambda_noise);
+  hmap::for_each_tile(varray, lambda_noise, mode);
 
-  hmap::for_each_tile_sequential(varray, lambda);
-  // hmap::for_each_tile_sequential(varray, lambda_s);
-  // hmap::for_each_tile_sequential(varray, lambda_s);
-  hmap::for_each_tile_single_array(varray, lambda_s);
+  hmap::for_each_tile(varray, lambda, mode);
+  // hmap::for_each_tile(varray, lambda_s, mode);
+  // hmap::for_each_tile(varray, lambda_s, mode);
+  hmap::for_each_tile(varray, lambda_s, mode);
 
   auto lambda_f = [](std::vector<hmap::Array *> p_arrays,
                      const glm::ivec2 &,
@@ -64,7 +64,7 @@ int main(void)
     hmap::make_binary(*pa_1, 0.5f);
   };
 
-  hmap::for_each_tile_distributed({&varray, &varray2}, lambda_f);
+  hmap::for_each_tile({&varray, &varray2}, lambda_f, mode);
   // hmap::for_each_tile_single_array({&varray, &varray2}, lambda_f);
 
   varray.smooth_overlap_buffers();

@@ -20,6 +20,21 @@
 namespace hmap
 {
 
+enum ForEachMode : int
+{
+  VA_SEQUENTIAL,  // tile-by-tile, single thread
+  VA_DISTRIBUTED, // tile-by-tile, multi-threaded
+  VA_SINGLE_ARRAY // full array materialized at once
+};
+
+enum StorageMode : int
+{
+  VA_RAM,
+  VA_DISK_LRU,
+  VA_DISK_LRU_MIN,   // 2 live tiles, min mem footprint
+  VA_DISK_SEQUENTIAL // sequential for/each, no smooth_overlap
+};
+
 struct VirtualArray
 {
   VirtualArray(glm::ivec2                   shape,
@@ -27,6 +42,12 @@ struct VirtualArray
                glm::ivec2                   tile_shape,
                int                          halo,
                std::unique_ptr<TileStorage> storage);
+
+  VirtualArray(glm::ivec2  shape,
+               glm::vec4   bbox,
+               glm::ivec2  tile_shape,
+               int         halo,
+               StorageMode storage_mode = StorageMode::VA_RAM);
 
   // Access individual cells (slower)
   float get(int global_i, int global_j) const;
