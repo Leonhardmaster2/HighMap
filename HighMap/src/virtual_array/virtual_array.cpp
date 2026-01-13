@@ -7,6 +7,7 @@
 #include "macrologger.h"
 
 #include "highmap/internal/vector_utils.hpp"
+#include "highmap/interpolate2d.hpp"
 #include "highmap/math.hpp"
 #include "highmap/virtual_array/virtual_array.hpp"
 
@@ -106,6 +107,50 @@ glm::ivec2 VirtualArray::get_max_tiles() const
   int ny = ceil_div(this->shape.y, this->tile_shape.y);
 
   return {nx, ny};
+}
+
+float VirtualArray::get_bilinear(float x, float y) const
+{
+  float xr = (x - this->bbox.x) / (this->bbox.y - this->bbox.x);
+  float yr = (y - this->bbox.z) / (this->bbox.w - this->bbox.z);
+
+  xr = std::clamp(xr, 0.f, 1.f);
+  yr = std::clamp(yr, 0.f, 1.f);
+
+  float xi = xr * (this->shape.x - 1.f);
+  float yi = yr * (this->shape.y - 1.f);
+
+  int global_i = int(xi);
+  int global_j = int(yi);
+
+  float u = xi - global_i;
+  float v = yi - global_j;
+
+  int global_i1 = (global_i == this->shape.x - 1) ? global_i - 1 : global_i + 1;
+  int global_j1 = (global_j == this->shape.y - 1) ? global_j - 1 : global_j + 1;
+
+  float value = bilinear_interp(this->get(global_i, global_j),
+                                this->get(global_i1, global_j),
+                                this->get(global_i, global_j1),
+                                this->get(global_i1, global_j1),
+                                u,
+                                v);
+
+  return value;
+}
+
+float VirtualArray::get_nearest(float x, float y) const
+{
+  float xr = (x - this->bbox.x) / (this->bbox.y - this->bbox.x);
+  float yr = (y - this->bbox.z) / (this->bbox.w - this->bbox.z);
+
+  xr = std::clamp(xr, 0.f, 1.f);
+  yr = std::clamp(yr, 0.f, 1.f);
+
+  int global_i = int(xr * (this->shape.x - 1.f));
+  int global_j = int(yr * (this->shape.y - 1.f));
+
+  return this->get(global_i, global_j);
 }
 
 glm::ivec2 VirtualArray::local_indices(const TileRegion &region,

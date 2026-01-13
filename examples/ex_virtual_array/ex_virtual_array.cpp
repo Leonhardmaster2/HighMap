@@ -81,6 +81,28 @@ int main(void)
   for (const auto &v : varray2.unique_values())
     std::cout << "unique: " << v << "\n";
 
+  // --- interpolation
+
+  glm::ivec2 shape_itp = {128, 64};
+
+  hmap::Array aitp0(shape_itp);
+  hmap::Array aitp1(shape_itp);
+
+  const auto x = hmap::linspace(bbox.x, bbox.y, shape_itp.x);
+  const auto y = hmap::linspace(bbox.z, bbox.w, shape_itp.y);
+
+  for (int j = 0; j < shape_itp.y; ++j)
+    for (int i = 0; i < shape_itp.x; ++i)
+    {
+      aitp0(i, j) = varray.get_nearest(x[i], y[j]);
+      aitp1(i, j) = varray.get_bilinear(x[i], y[j]);
+    }
+
+  aitp0.to_png("out_itp0.png", hmap::Cmap::JET);
+  aitp1.to_png("out_itp1.png", hmap::Cmap::JET);
+
+  // --- output
+
   auto a = varray.to_array(mode);
   a.to_png("out0.png", hmap::Cmap::JET);
 

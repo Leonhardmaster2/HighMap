@@ -51,6 +51,8 @@ struct VirtualArray
 
   // --- access individual cells (slower)
   float      get(int global_i, int global_j) const;
+  float      get_bilinear(float x, float y) const;
+  float      get_nearest(float x, float y) const;
   void       set(int global_i, int global_j, float v);
   glm::ivec2 get_max_tiles() const;
 
