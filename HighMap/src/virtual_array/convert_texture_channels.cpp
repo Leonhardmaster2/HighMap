@@ -40,21 +40,16 @@ VirtualTexture convert_texture_channels(const VirtualTexture &src,
   // Tile-wise copy
   for_each_tile(
       src_vas,
-      [&](std::vector<Array *> &src_tiles,
-          const glm::ivec2     &shape,
-          const glm::vec4      &bbox)
+      [&](std::vector<Array *> &src_tiles, const TileRegion &region)
       {
-        // Acquire destination tiles manually inside
-        TileRegion region = src_vas[0]->current_region();
-
         std::vector<Array *> dst_tiles;
         dst_tiles.reserve(copy_channels);
 
         for (int c = 0; c < copy_channels; ++c)
           dst_tiles.push_back(&dst_vas[c]->storage->get_tile(region));
 
-        for (int j = 0; j < shape.y; ++j)
-          for (int i = 0; i < shape.x; ++i)
+        for (int j = 0; j < region.shape.y; ++j)
+          for (int i = 0; i < region.shape.x; ++i)
             for (int c = 0; c < copy_channels; ++c)
               (*dst_tiles[c])(i, j) = (*src_tiles[c])(i, j);
 
@@ -68,10 +63,10 @@ VirtualTexture convert_texture_channels(const VirtualTexture &src,
   {
     for_each_tile(
         dst.channel(c),
-        [&](Array &tile, const glm::ivec2 &shape, const glm::vec4 &)
+        [&](Array &tile, const TileRegion &region)
         {
-          for (int j = 0; j < shape.y; ++j)
-            for (int i = 0; i < shape.x; ++i)
+          for (int j = 0; j < region.shape.y; ++j)
+            for (int i = 0; i < region.shape.x; ++i)
               tile(i, j) = fill_value;
         },
         cm);
