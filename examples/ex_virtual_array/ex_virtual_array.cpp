@@ -79,6 +79,9 @@ int main(void)
   auto a = varray.to_array(mode);
   a.to_png("out0.png", hmap::Cmap::JET);
 
+  auto b = varray.to_array({256, 256}, mode);
+  b.to_png("out2.png", hmap::Cmap::JET);
+
   auto a2 = varray2.to_array(mode);
   a2.to_png("out1.png", hmap::Cmap::JET);
 

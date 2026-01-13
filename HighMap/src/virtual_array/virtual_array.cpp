@@ -314,8 +314,6 @@ TileRegion VirtualArray::tile_region_from_tile_coords(int tile_x,
                     halo4);
 }
 
-// TODO add to_array_nearest => new shape
-
 Array VirtualArray::to_array(ForEachMode mode) const
 {
   Array array(this->shape);
@@ -331,8 +329,39 @@ Array VirtualArray::to_array(ForEachMode mode) const
     for (int j = b.z; j < region.shape.y - b.w; ++j)
       for (int i = b.x; i < region.shape.x - b.y; ++i)
       {
-        int ig = int(x0 * (array.shape.x - 1.f)) + i;
-        int jg = int(y0 * (array.shape.y - 1.f)) + j;
+        int ig = int(x0 * (this->shape.x - 1.f)) + i;
+        int jg = int(y0 * (this->shape.y - 1.f)) + j;
+
+        array(ig, jg) = tile(i, j);
+      }
+  };
+
+  for_each_tile(*this, lambda, mode);
+
+  return this->to_array(this->shape, mode);
+}
+
+Array VirtualArray::to_array(const glm::ivec2 array_shape,
+                             ForEachMode      mode) const
+{
+  Array array(array_shape);
+
+  auto lambda = [&array, this](const Array &tile, const TileRegion &region)
+  {
+    float rx = (array.shape.x - 1.f) / (this->shape.x - 1.f);
+    float ry = (array.shape.y - 1.f) / (this->shape.y - 1.f);
+
+    // tile relative position
+    float x0 = (region.bbox.x - this->bbox.x) / (this->bbox.y - this->bbox.x);
+    float y0 = (region.bbox.z - this->bbox.z) / (this->bbox.w - this->bbox.z);
+    const glm::vec4 &b = region.halo;
+
+    // use only tile inner points, skip the halos
+    for (int j = b.z; j < region.shape.y - b.w; ++j)
+      for (int i = b.x; i < region.shape.x - b.y; ++i)
+      {
+        int ig = int(x0 * (array.shape.x - 1.f) + i * rx);
+        int jg = int(y0 * (array.shape.y - 1.f) + j * ry);
 
         array(ig, jg) = tile(i, j);
       }

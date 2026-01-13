@@ -56,6 +56,8 @@ struct VirtualArray
 
   void  from_array(const Array &array,
                    ForEachMode  mode = ForEachMode::VA_DISTRIBUTED);
+  Array to_array(const glm::ivec2 array_shape,
+                 ForEachMode      mode = ForEachMode::VA_DISTRIBUTED) const;
   Array to_array(ForEachMode mode = ForEachMode::VA_DISTRIBUTED) const;
   Array to_array_dbg() const;
 
