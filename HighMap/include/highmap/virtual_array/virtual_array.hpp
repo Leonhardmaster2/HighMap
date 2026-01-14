@@ -74,6 +74,7 @@ struct VirtualArray
   float min(const ComputeMode &cm) const;
   float sum(const ComputeMode &cm) const;
 
+  void inverse(const ComputeMode &cm);
   void remap(float vmin, float vmax, const ComputeMode &cm);
   void remap(float              vmin,
              float              vmax,

@@ -14,6 +14,21 @@
 namespace hmap
 {
 
+void VirtualArray::inverse(const ComputeMode &cm)
+{
+  float hmax = this->max(cm);
+
+  for_each_tile(
+      {this},
+      [hmax](std::vector<hmap::Array *> p_arrays, const TileRegion &)
+      {
+        hmap::Array *pa_out = p_arrays[0];
+        *pa_out *= -1.f;
+        *pa_out += hmax;
+      },
+      cm);
+}
+
 float VirtualArray::max(const ComputeMode &cm) const
 {
   glm::ivec2 nt = this->get_max_tiles();
