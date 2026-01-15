@@ -205,7 +205,9 @@ void for_each_tile_single_array(const std::vector<VirtualArray *> &p_vas,
   std::vector<Array> arrays;
   arrays.reserve(p_vas.size());
 
-  const ComputeMode &cm_local = {.mode = ForEachMode::VA_SINGLE_ARRAY};
+  // force a sequential mode for data gathering operations
+  const ComputeMode cm_local = {.mode = ForEachMode::VA_SEQUENTIAL,
+                                .trim_storage = false};
 
   for (auto p_va : p_vas)
     arrays.push_back(p_va ? p_va->to_array(cm_local) : Array());
@@ -218,7 +220,10 @@ void for_each_tile_single_array(const std::vector<VirtualArray *> &p_vas,
     p_arrays.push_back(p_vas[i] ? &arrays[i] : nullptr);
 
   // call user operation
-  TileRegion va_region = TileRegion(TileKey(), va.bbox, va.shape, {0, 0, 0, 0});
+  const TileRegion va_region = TileRegion(TileKey(),
+                                          va.bbox,
+                                          va.shape,
+                                          {0, 0, 0, 0});
 
   func(p_arrays, va_region);
 
@@ -239,7 +244,7 @@ void for_each_tile_single_array(VirtualArray &va, Func &&func)
 template <typename Func>
 void for_each_tile(const std::vector<VirtualArray *> &p_vas,
                    Func                             &&func,
-                   ComputeMode                        cm)
+                   const ComputeMode                 &cm)
 {
   switch (cm.mode)
   {

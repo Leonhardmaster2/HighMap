@@ -36,6 +36,8 @@ struct ComputeMode
 
 struct VirtualArray
 {
+  // --- Ctor...
+
   VirtualArray() = default;
 
   VirtualArray(glm::ivec2                   shape,
@@ -55,7 +57,14 @@ struct VirtualArray
                int         halo,
                StorageMode storage_mode = StorageMode::VA_RAM);
 
-  // --- access individual cells (slower)
+  // --- Duplicate
+
+  std::unique_ptr<VirtualArray> clone(const ComputeMode &cm,
+                                      bool               deep_copy = false);
+  void                          copy_from(const VirtualArray &src);
+
+  // --- Access individual cells (slower)
+
   float      get(int global_i, int global_j) const;
   float      get_bilinear(float x, float y) const;
   float      get_nearest(float x, float y) const;
@@ -67,7 +76,7 @@ struct VirtualArray
   Array to_array(const ComputeMode &cm) const;
   Array to_array_dbg() const;
 
-  // --- processing methods
+  // --- Processing methods
 
   float max(const ComputeMode &cm) const;
   float mean(const ComputeMode &cm) const;
@@ -87,6 +96,8 @@ struct VirtualArray
   void smooth_overlap_buffers();
 
   // Find which tile covers a given index
+  glm::vec2  tile_region_global_position(const TileRegion &region) const;
+  glm::ivec2 tile_region_global_indices(const TileRegion &region) const;
   TileRegion tile_region_from_global_index(int global_i, int global_j) const;
   TileRegion tile_region_from_tile_coords(int tile_x, int tile_y) const;
   glm::ivec2 local_indices(const TileRegion &region,
@@ -96,6 +107,7 @@ struct VirtualArray
   void trim_storage();
 
   // --- Members
+
   glm::ivec2                   shape;
   glm::vec4                    bbox; // (x1, x2, y1, y2)
   glm::ivec2                   tile_shape;
@@ -105,5 +117,8 @@ struct VirtualArray
 
 // actual implementation
 #include "highmap/virtual_array/virtual_array.inl"
+
+// functions
+void copy_data(VirtualArray &src, VirtualArray &dst, const ComputeMode &cm);
 
 } // namespace hmap

@@ -41,4 +41,9 @@ glm::vec2 TileRegion::cell_corner(int i, int j) const
   return {x, y};
 }
 
+std::string TileRegion::key_as_string() const
+{
+  return std::to_string(this->key.tx) + "_" + std::to_string(this->key.ty);
+}
+
 } // namespace hmap

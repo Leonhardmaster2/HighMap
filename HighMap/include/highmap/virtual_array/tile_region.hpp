@@ -8,6 +8,8 @@
  * @copyright Copyright (c) 2025
  */
 #pragma once
+#include <string>
+
 #include <glm/vec2.hpp>
 #include <glm/vec4.hpp>
 
@@ -40,8 +42,9 @@ struct TileRegion
              const glm::ivec2 &shape,
              const glm::vec4  &halo = {0, 0, 0, 0});
 
-  glm::vec2 cell_center(int i, int j) const;
-  glm::vec2 cell_corner(int i, int j) const;
+  glm::vec2   cell_center(int i, int j) const;
+  glm::vec2   cell_corner(int i, int j) const;
+  std::string key_as_string() const;
 };
 
 } // namespace hmap

@@ -49,19 +49,65 @@ VirtualArray::VirtualArray(glm::ivec2  shape,
   this->storage = make_storage(this->shape, this->tile_shape, storage_mode);
 }
 
+void VirtualArray::copy_from(const VirtualArray &src)
+{
+  if (this == &src) return;
+
+  shape = src.shape;
+  bbox = src.bbox;
+  tile_shape = src.tile_shape;
+  halo = src.halo;
+
+  storage = src.storage->clone();
+}
+
+std::unique_ptr<VirtualArray> VirtualArray::clone(const ComputeMode &cm,
+                                                  bool               deep_copy)
+{
+  // create empty VA with same geometry
+  auto va = std::make_unique<VirtualArray>(
+      this->shape,
+      this->bbox,
+      this->tile_shape,
+      this->halo,
+      StorageMode::VA_RAM // temporary, replaced below
+  );
+
+  // clone storage (empty)
+  va->storage = this->storage->clone();
+
+  // copy data if requested
+  if (deep_copy) copy_data(*this, *va, cm);
+
+  return va;
+}
+
 void VirtualArray::from_array(const Array &array, const ComputeMode &cm)
 {
   auto lambda = [&array, this](Array &tile, const TileRegion &region)
   {
-    // tile relative position
-    float x0 = (region.bbox.x - this->bbox.x) / (this->bbox.y - this->bbox.x);
-    float y0 = (region.bbox.z - this->bbox.z) / (this->bbox.w - this->bbox.z);
+    const float rx = float(array.shape.x - 1) / float(this->shape.x - 1);
+    const float ry = float(array.shape.y - 1) / float(this->shape.y - 1);
+
+    glm::ivec2 ij0 = this->tile_region_global_indices(region);
 
     for (int j = 0; j < region.shape.y; ++j)
       for (int i = 0; i < region.shape.x; ++i)
       {
-        int ig = int(x0 * (array.shape.x - 1.f)) + i;
-        int jg = int(y0 * (array.shape.y - 1.f)) + j;
+        // destination pixel center
+        float xd = float(ij0.x + i) + 0.5f;
+        float yd = float(ij0.y + j) + 0.5f;
+
+        // source pixel center
+        int ig = int(std::floor(xd * rx));
+        int jg = int(std::floor(yd * ry));
+
+        // clamp
+        ig = std::clamp(ig, 0, array.shape.x - 1);
+        jg = std::clamp(jg, 0, array.shape.y - 1);
+
+        ig = ij0.x + i;
+        jg = ij0.y + j;
 
         tile(i, j) = array(ig, jg);
       }
@@ -280,31 +326,22 @@ TileRegion VirtualArray::tile_region_from_tile_coords(int tile_x,
                     halo4);
 }
 
-Array VirtualArray::to_array(const ComputeMode &cm) const
+glm::vec2 VirtualArray::tile_region_global_position(
+    const TileRegion &region) const
 {
-  Array array(this->shape);
+  // tile relative position
+  glm::vec2 size = {this->bbox.y - this->bbox.x, this->bbox.w - this->bbox.z};
+  glm::vec2 pos = {(region.bbox.x - this->bbox.x) / size.x,
+                   (region.bbox.z - this->bbox.z) / size.y};
+  return pos;
+}
 
-  auto lambda = [&array, this](const Array &tile, const TileRegion &region)
-  {
-    // tile relative position
-    float x0 = (region.bbox.x - this->bbox.x) / (this->bbox.y - this->bbox.x);
-    float y0 = (region.bbox.z - this->bbox.z) / (this->bbox.w - this->bbox.z);
-    const glm::vec4 &b = region.halo;
-
-    // use only tile inner points, skip the halos
-    for (int j = b.z; j < region.shape.y - b.w; ++j)
-      for (int i = b.x; i < region.shape.x - b.y; ++i)
-      {
-        int ig = int(x0 * (this->shape.x - 1.f)) + i;
-        int jg = int(y0 * (this->shape.y - 1.f)) + j;
-
-        array(ig, jg) = tile(i, j);
-      }
-  };
-
-  for_each_tile(*this, lambda, cm);
-
-  return this->to_array(this->shape, cm);
+glm::ivec2 VirtualArray::tile_region_global_indices(
+    const TileRegion &region) const
+{
+  int di = region.key.tx * this->tile_shape.x - region.halo.x;
+  int dj = region.key.ty * this->tile_shape.y - region.halo.z;
+  return {di, dj};
 }
 
 Array VirtualArray::to_array(const glm::ivec2   array_shape,
@@ -317,17 +354,15 @@ Array VirtualArray::to_array(const glm::ivec2   array_shape,
     float rx = (array.shape.x - 1.f) / (this->shape.x - 1.f);
     float ry = (array.shape.y - 1.f) / (this->shape.y - 1.f);
 
-    // tile relative position
-    float x0 = (region.bbox.x - this->bbox.x) / (this->bbox.y - this->bbox.x);
-    float y0 = (region.bbox.z - this->bbox.z) / (this->bbox.w - this->bbox.z);
+    glm::ivec2       ij0 = this->tile_region_global_indices(region);
     const glm::vec4 &b = region.halo;
 
     // use only tile inner points, skip the halos
     for (int j = b.z; j < region.shape.y - b.w; ++j)
       for (int i = b.x; i < region.shape.x - b.y; ++i)
       {
-        int ig = int(x0 * (array.shape.x - 1.f) + i * rx);
-        int jg = int(y0 * (array.shape.y - 1.f) + j * ry);
+        int ig = int(rx * (ij0.x + i));
+        int jg = int(ry * (ij0.y + j));
 
         array(ig, jg) = tile(i, j);
       }
@@ -336,6 +371,11 @@ Array VirtualArray::to_array(const glm::ivec2   array_shape,
   for_each_tile(*this, lambda, cm);
 
   return array;
+}
+
+Array VirtualArray::to_array(const ComputeMode &cm) const
+{
+  return this->to_array(this->shape, cm);
 }
 
 Array VirtualArray::to_array_dbg() const
@@ -352,6 +392,21 @@ Array VirtualArray::to_array_dbg() const
 void VirtualArray::trim_storage()
 {
   this->storage->trim();
+}
+
+// --- FUNCTIONS
+
+void copy_data(VirtualArray &src, VirtualArray &dst, const ComputeMode &cm)
+{
+  // 'src' should be const...
+  for_each_tile(
+      {&src, &dst},
+      [](std::vector<hmap::Array *> p_arrays, const hmap::TileRegion &)
+      {
+        Array src_arr = *p_arrays[0];
+        Array dst_arr = *p_arrays[1];
+      },
+      cm);
 }
 
 } // namespace hmap
