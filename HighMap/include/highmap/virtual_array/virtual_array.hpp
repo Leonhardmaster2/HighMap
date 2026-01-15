@@ -28,6 +28,11 @@ enum ForEachMode : int
   VA_SINGLE_ARRAY // full array materialized at once
 };
 
+static std::map<std::string, int> for_each_mode_as_string = {
+    {"Distributed", ForEachMode::VA_DISTRIBUTED},
+    {"Sequential", ForEachMode::VA_SEQUENTIAL},
+    {"Single array", ForEachMode::VA_SINGLE_ARRAY}};
+
 struct ComputeMode
 {
   ForEachMode mode;
