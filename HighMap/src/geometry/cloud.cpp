@@ -571,6 +571,35 @@ Cloud merge_cloud(const Cloud &cloud1, const Cloud &cloud2)
   return Cloud(x1, y1, v1);
 }
 
+Cloud merge_clouds(const std::vector<Cloud> &clouds)
+{
+  std::vector<float> x;
+  std::vector<float> y;
+  std::vector<float> v;
+
+  // reserve total size to avoid reallocations
+  std::size_t total_size = 0;
+  for (const auto &cloud : clouds)
+    total_size += cloud.get_npoints();
+
+  x.reserve(total_size);
+  y.reserve(total_size);
+  v.reserve(total_size);
+
+  for (const auto &cloud : clouds)
+  {
+    const auto &cx = cloud.get_x();
+    const auto &cy = cloud.get_y();
+    const auto &cv = cloud.get_values();
+
+    x.insert(x.end(), cx.begin(), cx.end());
+    y.insert(y.end(), cy.begin(), cy.end());
+    v.insert(v.end(), cv.begin(), cv.end());
+  }
+
+  return Cloud(x, y, v);
+}
+
 Cloud random_cloud(size_t                     count,
                    uint                       seed,
                    const PointSamplingMethod &method,

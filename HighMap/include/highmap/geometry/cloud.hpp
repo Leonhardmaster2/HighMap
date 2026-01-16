@@ -614,6 +614,7 @@ public:
  *                `cloud1` and `cloud2`.
  */
 Cloud merge_cloud(const Cloud &cloud1, const Cloud &cloud2);
+Cloud merge_clouds(const std::vector<Cloud> &clouds);
 
 /**
  * @brief Generates a random cloud of points within a bounding box.
