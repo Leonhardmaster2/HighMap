@@ -66,7 +66,7 @@ struct VirtualArray
 
   std::unique_ptr<VirtualArray> clone(const ComputeMode &cm,
                                       bool               deep_copy = false);
-  void                          copy_from(const VirtualArray &src);
+  void copy_from(VirtualArray &src, const ComputeMode &cm);
 
   // --- Access individual cells (slower)
 
@@ -75,7 +75,9 @@ struct VirtualArray
   float      get_nearest(float x, float y) const;
   void       set(int global_i, int global_j, float v);
   glm::ivec2 get_max_tiles() const;
+  int        get_ntiles() const;
 
+  void  fill(float value, const ComputeMode &cm);
   void  from_array(const Array &array, const ComputeMode &cm);
   Array to_array(const glm::ivec2 array_shape, const ComputeMode &cm) const;
   Array to_array(const ComputeMode &cm) const;

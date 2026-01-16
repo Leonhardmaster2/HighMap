@@ -49,7 +49,7 @@ VirtualArray::VirtualArray(glm::ivec2  shape,
   this->storage = make_storage(this->shape, this->tile_shape, storage_mode);
 }
 
-void VirtualArray::copy_from(const VirtualArray &src)
+void VirtualArray::copy_from(VirtualArray &src, const ComputeMode &cm)
 {
   if (this == &src) return;
 
@@ -59,6 +59,7 @@ void VirtualArray::copy_from(const VirtualArray &src)
   halo = src.halo;
 
   storage = src.storage->clone();
+  copy_data(src, *this, cm);
 }
 
 std::unique_ptr<VirtualArray> VirtualArray::clone(const ComputeMode &cm,
@@ -80,6 +81,14 @@ std::unique_ptr<VirtualArray> VirtualArray::clone(const ComputeMode &cm,
   if (deep_copy) copy_data(*this, *va, cm);
 
   return va;
+}
+
+void VirtualArray::fill(float value, const ComputeMode &cm)
+{
+  for_each_tile(
+      *this,
+      [value](Array &tile, const TileRegion &) { tile = value; },
+      cm);
 }
 
 void VirtualArray::from_array(const Array &array, const ComputeMode &cm)
@@ -178,6 +187,12 @@ float VirtualArray::get_nearest(float x, float y) const
   int global_j = int(yr * (this->shape.y - 1.f));
 
   return this->get(global_i, global_j);
+}
+
+int VirtualArray::get_ntiles() const
+{
+  glm::ivec2 m = this->get_max_tiles();
+  return m.x * m.y;
 }
 
 glm::ivec2 VirtualArray::local_indices(const TileRegion &region,
@@ -401,10 +416,11 @@ void copy_data(VirtualArray &src, VirtualArray &dst, const ComputeMode &cm)
   // 'src' should be const...
   for_each_tile(
       {&src, &dst},
-      [](std::vector<hmap::Array *> p_arrays, const hmap::TileRegion &)
+      [](std::vector<Array *> p_arrays, const TileRegion &)
       {
-        Array src_arr = *p_arrays[0];
-        Array dst_arr = *p_arrays[1];
+        Array &src_arr = *p_arrays[0];
+        Array &dst_arr = *p_arrays[1];
+        dst_arr = src_arr;
       },
       cm);
 }
