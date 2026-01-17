@@ -12,6 +12,7 @@
 #pragma once
 #include "highmap/array.hpp"
 #include "highmap/coord_frame.hpp"
+#include "highmap/virtual_array/virtual_array.hpp"
 
 namespace hmap
 {
@@ -69,10 +70,30 @@ void interpolate_array_nearest(const Array       &source,
                                const Vec4<float> &bbox_target,
                                bool               endpoint = false);
 
-void interpolate_heightmap(const hmap::Heightmap &h_source,
-                           hmap::Heightmap       &h_target,
-                           const CoordFrame      &t_source,
-                           const CoordFrame      &t_target);
+void interpolate_heightmap(const Heightmap  &h_source,
+                           Heightmap        &h_target,
+                           const CoordFrame &t_source,
+                           const CoordFrame &t_target);
+
+// virtual arrays
+
+void flatten_heightmap(VirtualArray       &h_source1,
+                       const VirtualArray &h_source2,
+                       const CoordFrame   &t_source1,
+                       const CoordFrame   &t_source2,
+                       const ComputeMode  &cm);
+
+void flatten_heightmap(const std::vector<const VirtualArray *> &h_sources,
+                       VirtualArray                            &h_target,
+                       const std::vector<const CoordFrame *>   &t_sources,
+                       const CoordFrame                        &t_target,
+                       const ComputeMode                       &cm);
+
+void interpolate_heightmap(const VirtualArray &h_source,
+                           VirtualArray       &h_target,
+                           const CoordFrame   &t_source,
+                           const CoordFrame   &t_target,
+                           const ComputeMode  &cm);
 
 } // namespace hmap
 

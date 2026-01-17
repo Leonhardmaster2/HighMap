@@ -306,3 +306,17 @@ void for_each_tile(const VirtualArray &va, Func &&func, const ComputeMode &cm)
       { func(static_cast<const Array &>(tile), region); },
       cm);
 }
+
+template <typename Func>
+void for_each_cell(VirtualArray &va, Func &&func, const ComputeMode &cm)
+{
+  for_each_tile(
+      va,
+      [&](Array &tile, const TileRegion &region)
+      {
+        for (int j = 0; j < region.shape.y; ++j)
+          for (int i = 0; i < region.shape.x; ++i)
+            func(tile(i, j), i, j, region);
+      },
+      cm);
+}

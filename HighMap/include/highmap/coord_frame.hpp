@@ -16,6 +16,7 @@
 
 #include "highmap/algebra.hpp"
 #include "highmap/heightmap.hpp"
+#include "highmap/virtual_array/virtual_array.hpp"
 
 namespace hmap
 {
@@ -61,6 +62,11 @@ public:
                                      float            gx,
                                      float            gy,
                                      float            fill_value = 0.f) const;
+
+  float get_heightmap_value_bilinear(const VirtualArray &h,
+                                     float               gx,
+                                     float               gy,
+                                     float fill_value = 0.f) const;
 
   float get_heightmap_value_nearest(const Heightmap &h,
                                     float            gx,
