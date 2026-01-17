@@ -64,6 +64,11 @@ Array &LruTileStorage::get_tile_no_mutex_lock(const TileRegion &region)
   return inserted_it->second.value;
 }
 
+std::string LruTileStorage::info_string() const
+{
+  return "LRU (capacity=" + std::to_string(this->max_live_tiles()) + ")";
+}
+
 size_t LruTileStorage::max_live_tiles() const
 {
   return this->max_tiles;

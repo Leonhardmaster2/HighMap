@@ -49,6 +49,7 @@ public:
   virtual void   release_tile(const TileRegion &region) = 0;
   virtual size_t max_live_tiles() const = 0;
   virtual std::unique_ptr<TileStorage> clone() const = 0;
+  virtual std::string                  info_string() const = 0;
 
   // Opportunistically free memory while keeping data persistent.
   virtual void trim()
@@ -65,9 +66,13 @@ class RamTileStorage : public TileStorage
 public:
   std::unique_ptr<TileStorage> clone() const override;
 
-  Array &get_tile(const TileRegion &region) override;
-  void   release_tile(const TileRegion &region) override;
-  size_t max_live_tiles() const override;
+  Array      &get_tile(const TileRegion &region) override;
+  void        release_tile(const TileRegion &region) override;
+  size_t      max_live_tiles() const override;
+  std::string info_string() const override
+  {
+    return "RAM";
+  };
 
 private:
   std::unordered_map<TileKey, Array, TileKeyHash> tiles;
@@ -90,9 +95,10 @@ public:
 
   std::unique_ptr<TileStorage> clone() const override;
 
-  Array &get_tile(const TileRegion &region) override;
-  void   release_tile(const TileRegion &region) override;
-  size_t max_live_tiles() const override;
+  Array      &get_tile(const TileRegion &region) override;
+  void        release_tile(const TileRegion &region) override;
+  size_t      max_live_tiles() const override;
+  std::string info_string() const override;
 
 protected:
   size_t                                                 max_tiles;
@@ -142,10 +148,14 @@ public:
 
   std::unique_ptr<TileStorage> clone() const override;
 
-  Array &get_tile(const TileRegion &region) override;
-  void   release_tile(const TileRegion &region) override;
-  size_t max_live_tiles() const override;
-  void   trim() override;
+  Array      &get_tile(const TileRegion &region) override;
+  void        release_tile(const TileRegion &region) override;
+  size_t      max_live_tiles() const override;
+  void        trim() override;
+  std::string info_string() const override
+  {
+    return "DiskSequential";
+  };
 
 private:
   std::filesystem::path root_dir;

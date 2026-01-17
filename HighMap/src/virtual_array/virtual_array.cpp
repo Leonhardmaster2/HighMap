@@ -195,6 +195,32 @@ int VirtualArray::get_ntiles() const
   return m.x * m.y;
 }
 
+std::string VirtualArray::info_string(const ComputeMode &cm, int indent) const
+{
+  std::ostringstream oss;
+  const std::string  pad = std::string(indent, ' ');
+
+  const glm::ivec2 grid = this->get_max_tiles();
+
+  oss << pad << "VirtualArray @" << static_cast<const void *>(this) << "\n";
+  oss << pad << "  shape        : " << shape.x << " x " << shape.y << "\n";
+  oss << pad << "  tile_size    : " << tile_shape.x << " x " << tile_shape.y
+      << "\n";
+  oss << pad << "  tile_grid    : " << grid.x << " x " << grid.y << " ("
+      << grid.x * grid.y << " tiles)\n";
+
+  oss << pad << "  halo         : " << halo << "\n";
+
+  oss << pad
+      << "  storage      : " << (storage ? storage->info_string() : "<none>")
+      << "\n";
+
+  oss << pad << "  value_range  : [" << this->min(cm) << ", " << this->max(cm)
+      << "]\n";
+
+  return oss.str();
+}
+
 glm::ivec2 VirtualArray::local_indices(const TileRegion &region,
                                        int               global_i,
                                        int               global_j) const
