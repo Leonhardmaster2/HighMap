@@ -56,6 +56,9 @@ public:
   std::vector<const VirtualArray *> channels_ptr() const;
   std::vector<VirtualArray>        &get_arrays();
 
+  void fill(float value, const ComputeMode &cm);
+  void fill(int c, float value, const ComputeMode &cm);
+
   void to_png_dbg(const std::string &fname, const ComputeMode &cm) const;
 
   glm::ivec2 shape;

@@ -56,6 +56,9 @@ int main(void)
 
   hmap::for_each_tile(tex.channels_ptr(), lambda0, cm);
 
+  // tex.fill(0.5f, cm);
+  // tex.fill(3, 1.f, cm);
+
   tex.to_png_dbg("out0.png", cm);
 
   // --- per pixel
@@ -64,7 +67,7 @@ int main(void)
                                    bbox,
                                    tile_shape,
                                    halo,
-                                   3,
+                                   4,
                                    storage_mode);
 
   auto lambda1 =
@@ -74,9 +77,60 @@ int main(void)
     px[0] = pos.x;
     px[1] = 0.f;
     px[2] = pos.y;
+    px[3] = 1.f; // pos.x;
   };
 
   hmap::for_each_pixel(tex2, lambda1, cm);
 
   tex2.to_png_dbg("out1.png", cm);
+
+  // --- colorize
+
+  auto level = hmap::VirtualArray(shape, bbox, tile_shape, halo, storage_mode);
+  level.remap(0.f, 1.f, cm);
+
+  auto tex_c = hmap::VirtualTexture(shape,
+                                    bbox,
+                                    tile_shape,
+                                    halo,
+                                    4, // 4 channels RGBA
+                                    storage_mode);
+  tex_c.fill(3, 1.f, cm); // set alpha to 1
+
+  auto lambda_noise = [](hmap::Array &tile, const hmap::TileRegion &region)
+  {
+    tile = hmap::noise(hmap::NoiseType::PERLIN,
+                       region.shape,
+                       {2.f, 2.f},
+                       0,
+                       nullptr,
+                       nullptr,
+                       nullptr,
+                       region.bbox);
+  };
+
+  hmap::for_each_tile(level, lambda_noise, cm);
+
+  hmap::colorize(tex_c,
+                 level,
+                 cm,
+                 level.min(cm),
+                 level.max(cm),
+                 hmap::Cmap::JET,
+                 &level);
+
+  tex_c.to_png_dbg("out2.png", cm);
+
+  // --- mix
+
+  auto tex_m = hmap::VirtualTexture(shape,
+                                    bbox,
+                                    tile_shape,
+                                    halo,
+                                    4, // 4 channels RGBA
+                                    storage_mode);
+
+  hmap::mix(tex_m, tex2, tex_c, cm);
+
+  tex_m.to_png_dbg("out3.png", cm);
 }

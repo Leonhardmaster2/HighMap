@@ -96,6 +96,19 @@ std::vector<const VirtualArray *> VirtualTexture::channels_ptr() const
   return out;
 }
 
+void VirtualTexture::fill(float value, const ComputeMode &cm)
+{
+  for (auto &va : this->get_arrays())
+    va.fill(value, cm);
+}
+
+void VirtualTexture::fill(int c, float value, const ComputeMode &cm)
+{
+  if (c > this->channels() - 1) return;
+
+  this->channel(c).fill(value, cm);
+}
+
 std::vector<VirtualArray> &VirtualTexture::get_arrays()
 {
   return this->arrays;
@@ -108,12 +121,24 @@ void VirtualTexture::to_png_dbg(const std::string &fname,
   Array g = this->channel(1).to_array(this->shape, cm);
   Array b = this->channel(2).to_array(this->shape, cm);
 
-  Tensor t(this->shape, 3);
-  t.set_slice(0, r);
-  t.set_slice(1, g);
-  t.set_slice(2, b);
-
-  t.to_png(fname);
+  if (this->channels() == 3)
+  {
+    Tensor t(this->shape, 3);
+    t.set_slice(0, r);
+    t.set_slice(1, g);
+    t.set_slice(2, b);
+    t.to_png(fname);
+  }
+  else if (this->channels() == 4)
+  {
+    Array  a = this->channel(3).to_array(this->shape, cm);
+    Tensor t(this->shape, 4);
+    t.set_slice(0, r);
+    t.set_slice(1, g);
+    t.set_slice(2, b);
+    t.set_slice(3, a);
+    t.to_png(fname);
+  }
 }
 
 } // namespace hmap

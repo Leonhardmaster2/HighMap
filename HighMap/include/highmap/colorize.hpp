@@ -18,6 +18,7 @@
 #pragma once
 #include "highmap/array.hpp"
 #include "highmap/tensor.hpp"
+#include "highmap/virtual_array/virtual_texture.hpp"
 
 namespace hmap
 {
@@ -182,5 +183,34 @@ Tensor colorize_slope_height_heatmap(const Array &array, int cmap);
  * @image html ex_colorize_vec2.png
  */
 Tensor colorize_vec2(const Array &array1, const Array &array2);
+
+// ---
+
+void colorize(VirtualTexture    &out,
+              VirtualArray      &level,
+              const ComputeMode &cm,
+              float              vmin,
+              float              vmax,
+              int                cmap,
+              VirtualArray      *p_alpha = nullptr,
+              bool               reverse = false,
+              VirtualArray      *p_noise = nullptr);
+
+void colorize(VirtualTexture                        &out,
+              VirtualArray                          &level,
+              const ComputeMode                     &cm,
+              float                                  vmin,
+              float                                  vmax,
+              const std::vector<float>              &positions,
+              const std::vector<std::vector<float>> &colormap_colors,
+              VirtualArray                          *p_alpha = nullptr,
+              bool                                   reverse = false,
+              VirtualArray                          *p_noise = nullptr);
+
+void mix(VirtualTexture    &out,
+         VirtualTexture    &tex1,
+         VirtualTexture    &tex2,
+         const ComputeMode &cm,
+         bool               use_sqrt_avg = true);
 
 } // namespace hmap
