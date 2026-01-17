@@ -104,6 +104,64 @@ Tensor colorize(const Array &array,
                 const Array *p_noise = nullptr);
 
 /**
+ * @brief Colorize a scalar field into a texture using a predefined colormap.
+ * @param out     Output texture.
+ * @param level   Input scalar values.
+ * @param cm      Compute mode (CPU/GPU).
+ * @param vmin    Lower bound for normalization.
+ * @param vmax    Upper bound for normalization.
+ * @param cmap    Colormap identifier.
+ * @param p_alpha Optional alpha channel.
+ * @param reverse Reverse colormap mapping.
+ * @param p_noise Optional noise for dithering.
+ *
+ * **Example**
+ * @include ex_virtual_texture.cpp
+ *
+ * **Result**
+ * @image html ex_virtual_texture.png
+ */
+void colorize(VirtualTexture    &out,
+              VirtualArray      &level,
+              const ComputeMode &cm,
+              float              vmin,
+              float              vmax,
+              int                cmap,
+              VirtualArray      *p_alpha = nullptr,
+              bool               reverse = false,
+              VirtualArray      *p_noise = nullptr);
+
+/**
+ * @brief Colorize a scalar field into a texture using a custom colormap.
+ * @param out             Output texture.
+ * @param level           Input scalar values.
+ * @param cm              Compute mode (CPU/GPU).
+ * @param vmin            Lower bound for normalization.
+ * @param vmax            Upper bound for normalization.
+ * @param positions       Normalized color positions.
+ * @param colormap_colors RGB(A) colors per position.
+ * @param p_alpha         Optional alpha channel.
+ * @param reverse         Reverse colormap mapping.
+ * @param p_noise         Optional noise for dithering.
+ *
+ * **Example**
+ * @include ex_virtual_texture.cpp
+ *
+ * **Result**
+ * @image html ex_virtual_texture.png
+ */
+void colorize(VirtualTexture                        &out,
+              VirtualArray                          &level,
+              const ComputeMode                     &cm,
+              float                                  vmin,
+              float                                  vmax,
+              const std::vector<float>              &positions,
+              const std::vector<std::vector<float>> &colormap_colors,
+              VirtualArray                          *p_alpha = nullptr,
+              bool                                   reverse = false,
+              VirtualArray                          *p_noise = nullptr);
+
+/**
  * @brief Convert an array to a grayscale image.
  *
  * This function converts the input array to an 8-bit grayscale Tensor image.
@@ -184,29 +242,20 @@ Tensor colorize_slope_height_heatmap(const Array &array, int cmap);
  */
 Tensor colorize_vec2(const Array &array1, const Array &array2);
 
-// ---
-
-void colorize(VirtualTexture    &out,
-              VirtualArray      &level,
-              const ComputeMode &cm,
-              float              vmin,
-              float              vmax,
-              int                cmap,
-              VirtualArray      *p_alpha = nullptr,
-              bool               reverse = false,
-              VirtualArray      *p_noise = nullptr);
-
-void colorize(VirtualTexture                        &out,
-              VirtualArray                          &level,
-              const ComputeMode                     &cm,
-              float                                  vmin,
-              float                                  vmax,
-              const std::vector<float>              &positions,
-              const std::vector<std::vector<float>> &colormap_colors,
-              VirtualArray                          *p_alpha = nullptr,
-              bool                                   reverse = false,
-              VirtualArray                          *p_noise = nullptr);
-
+/**
+ * @brief Mix two textures into an output texture.
+ * @param out          Output texture.
+ * @param tex1         First input texture.
+ * @param tex2         Second input texture.
+ * @param cm           Compute mode (CPU/GPU).
+ * @param use_sqrt_avg Use square-root averaging.
+ *
+ * **Example**
+ * @include ex_virtual_texture.cpp
+ *
+ * **Result**
+ * @image html ex_virtual_texture.png
+ */
 void mix(VirtualTexture    &out,
          VirtualTexture    &tex1,
          VirtualTexture    &tex2,
