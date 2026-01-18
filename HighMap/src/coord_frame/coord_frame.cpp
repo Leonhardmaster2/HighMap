@@ -50,21 +50,6 @@ Vec4<float> CoordFrame::compute_bounding_box() const
   return Vec4<float>(min_x, max_x, min_y, max_y);
 }
 
-float CoordFrame::get_heightmap_value_bilinear(const Heightmap &h,
-                                               float            gx,
-                                               float            gy,
-                                               float fill_value) const
-{
-  Vec2<float> rel = this->map_to_relative_coords(gx, gy);
-
-  if (rel.x >= 0.f && rel.x <= 1.f && rel.y >= 0.f && rel.y <= 1.f)
-  {
-    return h.get_value_bilinear(rel.x, rel.y);
-  }
-  else
-    return fill_value;
-}
-
 float CoordFrame::get_heightmap_value_bilinear(const VirtualArray &h,
                                                float               gx,
                                                float               gy,
@@ -75,21 +60,6 @@ float CoordFrame::get_heightmap_value_bilinear(const VirtualArray &h,
   if (rel.x >= 0.f && rel.x <= 1.f && rel.y >= 0.f && rel.y <= 1.f)
   {
     return h.get_bilinear(rel.x, rel.y);
-  }
-  else
-    return fill_value;
-}
-
-float CoordFrame::get_heightmap_value_nearest(const Heightmap &h,
-                                              float            gx,
-                                              float            gy,
-                                              float            fill_value) const
-{
-  Vec2<float> rel = this->map_to_relative_coords(gx, gy);
-
-  if (rel.x >= 0.f && rel.x <= 1.f && rel.y >= 0.f && rel.y <= 1.f)
-  {
-    return h.get_value_nearest(rel.x, rel.y);
   }
   else
     return fill_value;

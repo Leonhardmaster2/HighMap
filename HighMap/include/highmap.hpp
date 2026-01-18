@@ -33,7 +33,6 @@
 #include "highmap/geometry/point.hpp"
 #include "highmap/geometry/point_sampling.hpp"
 #include "highmap/gradient.hpp"
-#include "highmap/heightmap.hpp"
 #include "highmap/hydrology.hpp"
 #include "highmap/interpolate1d.hpp"
 #include "highmap/interpolate2d.hpp"

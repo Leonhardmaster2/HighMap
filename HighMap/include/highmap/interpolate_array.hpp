@@ -17,25 +17,6 @@
 namespace hmap
 {
 
-// in-place source1 <= source1 & source2
-void flatten_heightmap(Heightmap        &h_source1,
-                       const Heightmap  &h_source2,
-                       const CoordFrame &t_source1,
-                       const CoordFrame &t_source2);
-
-// input kept target <= source1 & source2
-void flatten_heightmap(const Heightmap  &h_source1,
-                       const Heightmap  &h_source2,
-                       Heightmap        &h_target,
-                       const CoordFrame &t_source1,
-                       const CoordFrame &t_source2,
-                       const CoordFrame &t_target);
-
-void flatten_heightmap(const std::vector<const Heightmap *>  &h_sources,
-                       Heightmap                             &h_target,
-                       const std::vector<const CoordFrame *> &t_sources,
-                       const CoordFrame                      &t_target);
-
 void interpolate_array_bicubic(const Array &source,
                                Array       &target,
                                bool         endpoint = false,
@@ -69,11 +50,6 @@ void interpolate_array_nearest(const Array       &source,
                                const Vec4<float> &bbox_source,
                                const Vec4<float> &bbox_target,
                                bool               endpoint = false);
-
-void interpolate_heightmap(const Heightmap  &h_source,
-                           Heightmap        &h_target,
-                           const CoordFrame &t_source,
-                           const CoordFrame &t_target);
 
 // virtual arrays
 
