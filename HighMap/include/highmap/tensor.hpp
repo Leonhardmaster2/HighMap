@@ -149,7 +149,7 @@ public:
    *
    * @return std::vector<uint8_t> Vector containing the 8-bit image data.
    */
-  std::vector<uint8_t> to_img_8bit();
+  std::vector<uint8_t> to_img_8bit(bool flip_y = false);
 
   /**
    * @brief Saves the Tensor as a PNG image file.

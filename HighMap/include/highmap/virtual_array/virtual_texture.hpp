@@ -17,6 +17,7 @@
 
 #include "macrologger.h"
 
+#include "highmap/tensor.hpp"
 #include "highmap/virtual_array/virtual_array.hpp"
 #include "highmap/virtual_array/virtual_texture_storage.hpp"
 
@@ -26,6 +27,8 @@ namespace hmap
 class VirtualTexture
 {
 public:
+  // --- Ctor
+
   VirtualTexture() = default;
 
   VirtualTexture(glm::ivec2                   shape,
@@ -49,6 +52,7 @@ public:
                  StorageMode storage_mode);
 
   // --- Channels data
+
   int                               channels() const;
   VirtualArray                     &channel(int c);
   const VirtualArray               &channel(int c) const;
@@ -59,8 +63,11 @@ public:
   void fill(float value, const ComputeMode &cm);
   void fill(int c, float value, const ComputeMode &cm);
 
+  // --- Converters
+
   std::vector<uint8_t> to_img_8bit(const glm::ivec2  &img_shape,
-                                   const ComputeMode &cm);
+                                   const ComputeMode &c,
+                                   bool               flip_y = false) const;
 
   void to_png(const glm::ivec2  &array_shape,
               const std::string &fname,
@@ -70,6 +77,10 @@ public:
   void to_png(const std::string &fname,
               const ComputeMode &cm,
               int                depth = CV_8U) const;
+
+  Tensor to_tensor(const glm::ivec2 &img_shape, const ComputeMode &cm) const;
+
+  // --- Members
 
   glm::ivec2 shape;
   glm::vec4  bbox;

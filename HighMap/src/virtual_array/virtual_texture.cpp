@@ -115,36 +115,19 @@ std::vector<VirtualArray> &VirtualTexture::get_arrays()
 }
 
 std::vector<uint8_t> VirtualTexture::to_img_8bit(const glm::ivec2  &img_shape,
-                                                 const ComputeMode &cm)
+                                                 const ComputeMode &cm,
+                                                 bool flip_y) const
 {
-  if (this->channels() < 3)
+  const int nch = this->channels();
+
+  if (nch != 3 && nch != 4)
   {
-    LOG_ERROR("VirtualTexture::to_img_8bit: not enough channels");
-    return {0};
+    LOG_ERROR("to_img_8bit supports only RGB or RGBA (got %d)", nch);
+    return {};
   }
 
-  Array r = this->channel(0).to_array(img_shape, cm);
-  Array g = this->channel(1).to_array(img_shape, cm);
-  Array b = this->channel(2).to_array(img_shape, cm);
-
-  if (this->channels() == 3)
-  {
-    Tensor t(img_shape, 3);
-    t.set_slice(0, r);
-    t.set_slice(1, g);
-    t.set_slice(2, b);
-    return t.to_img_8bit();
-  }
-  else
-  {
-    Array  a = this->channel(3).to_array(img_shape, cm);
-    Tensor t(img_shape, 4);
-    t.set_slice(0, r);
-    t.set_slice(1, g);
-    t.set_slice(2, b);
-    t.set_slice(3, a);
-    return t.to_img_8bit();
-  }
+  Tensor t = this->to_tensor(img_shape, cm);
+  return t.to_img_8bit(flip_y);
 }
 
 void VirtualTexture::to_png(const glm::ivec2  &img_shape,
@@ -152,34 +135,16 @@ void VirtualTexture::to_png(const glm::ivec2  &img_shape,
                             const ComputeMode &cm,
                             int                depth) const
 {
-  if (this->channels() < 3)
+  const int nch = this->channels();
+
+  if (nch != 3 && nch != 4)
   {
-    LOG_ERROR("VirtualTexture::to_img_8bit: not enough channels");
+    LOG_ERROR("PNG supports only RGB or RGBA (got %d)", nch);
     return;
   }
 
-  Array r = this->channel(0).to_array(img_shape, cm);
-  Array g = this->channel(1).to_array(img_shape, cm);
-  Array b = this->channel(2).to_array(img_shape, cm);
-
-  if (this->channels() == 3)
-  {
-    Tensor t(img_shape, 3);
-    t.set_slice(0, r);
-    t.set_slice(1, g);
-    t.set_slice(2, b);
-    t.to_png(fname, depth);
-  }
-  else
-  {
-    Array  a = this->channel(3).to_array(img_shape, cm);
-    Tensor t(img_shape, 4);
-    t.set_slice(0, r);
-    t.set_slice(1, g);
-    t.set_slice(2, b);
-    t.set_slice(3, a);
-    t.to_png(fname, depth);
-  }
+  Tensor t = this->to_tensor(img_shape, cm);
+  t.to_png(fname, depth);
 }
 
 void VirtualTexture::to_png(const std::string &fname,
@@ -187,6 +152,24 @@ void VirtualTexture::to_png(const std::string &fname,
                             int                depth) const
 {
   this->to_png(this->shape, fname, cm, depth);
+}
+
+Tensor VirtualTexture::to_tensor(const glm::ivec2  &img_shape,
+                                 const ComputeMode &cm) const
+{
+  const int nch = this->channels();
+
+  if (nch < 1) throw std::runtime_error("VirtualTexture has no channels");
+
+  Tensor t(img_shape, nch);
+
+  for (int c = 0; c < nch; ++c)
+  {
+    Array a = this->channel(c).to_array(img_shape, cm);
+    t.set_slice(c, a);
+  }
+
+  return t;
 }
 
 } // namespace hmap
