@@ -59,6 +59,9 @@ public:
   void fill(float value, const ComputeMode &cm);
   void fill(int c, float value, const ComputeMode &cm);
 
+  std::vector<uint8_t> to_img_8bit(const glm::ivec2  &img_shape,
+                                   const ComputeMode &cm);
+
   void to_png(const glm::ivec2  &array_shape,
               const std::string &fname,
               const ComputeMode &cm,

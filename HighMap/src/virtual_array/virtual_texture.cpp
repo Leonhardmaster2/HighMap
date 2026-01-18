@@ -114,11 +114,50 @@ std::vector<VirtualArray> &VirtualTexture::get_arrays()
   return this->arrays;
 }
 
+std::vector<uint8_t> VirtualTexture::to_img_8bit(const glm::ivec2  &img_shape,
+                                                 const ComputeMode &cm)
+{
+  if (this->channels() < 3)
+  {
+    LOG_ERROR("VirtualTexture::to_img_8bit: not enough channels");
+    return {0};
+  }
+
+  Array r = this->channel(0).to_array(img_shape, cm);
+  Array g = this->channel(1).to_array(img_shape, cm);
+  Array b = this->channel(2).to_array(img_shape, cm);
+
+  if (this->channels() == 3)
+  {
+    Tensor t(img_shape, 3);
+    t.set_slice(0, r);
+    t.set_slice(1, g);
+    t.set_slice(2, b);
+    return t.to_img_8bit();
+  }
+  else
+  {
+    Array  a = this->channel(3).to_array(img_shape, cm);
+    Tensor t(img_shape, 4);
+    t.set_slice(0, r);
+    t.set_slice(1, g);
+    t.set_slice(2, b);
+    t.set_slice(3, a);
+    return t.to_img_8bit();
+  }
+}
+
 void VirtualTexture::to_png(const glm::ivec2  &img_shape,
                             const std::string &fname,
                             const ComputeMode &cm,
                             int                depth) const
 {
+  if (this->channels() < 3)
+  {
+    LOG_ERROR("VirtualTexture::to_img_8bit: not enough channels");
+    return;
+  }
+
   Array r = this->channel(0).to_array(img_shape, cm);
   Array g = this->channel(1).to_array(img_shape, cm);
   Array b = this->channel(2).to_array(img_shape, cm);
@@ -131,7 +170,7 @@ void VirtualTexture::to_png(const glm::ivec2  &img_shape,
     t.set_slice(2, b);
     t.to_png(fname, depth);
   }
-  else if (this->channels() == 4)
+  else
   {
     Array  a = this->channel(3).to_array(img_shape, cm);
     Tensor t(img_shape, 4);
