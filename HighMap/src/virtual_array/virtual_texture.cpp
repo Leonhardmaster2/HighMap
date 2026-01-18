@@ -114,31 +114,40 @@ std::vector<VirtualArray> &VirtualTexture::get_arrays()
   return this->arrays;
 }
 
-void VirtualTexture::to_png_dbg(const std::string &fname,
-                                const ComputeMode &cm) const
+void VirtualTexture::to_png(const glm::ivec2  &img_shape,
+                            const std::string &fname,
+                            const ComputeMode &cm,
+                            int                depth) const
 {
-  Array r = this->channel(0).to_array(this->shape, cm);
-  Array g = this->channel(1).to_array(this->shape, cm);
-  Array b = this->channel(2).to_array(this->shape, cm);
+  Array r = this->channel(0).to_array(img_shape, cm);
+  Array g = this->channel(1).to_array(img_shape, cm);
+  Array b = this->channel(2).to_array(img_shape, cm);
 
   if (this->channels() == 3)
   {
-    Tensor t(this->shape, 3);
+    Tensor t(img_shape, 3);
     t.set_slice(0, r);
     t.set_slice(1, g);
     t.set_slice(2, b);
-    t.to_png(fname);
+    t.to_png(fname, depth);
   }
   else if (this->channels() == 4)
   {
-    Array  a = this->channel(3).to_array(this->shape, cm);
-    Tensor t(this->shape, 4);
+    Array  a = this->channel(3).to_array(img_shape, cm);
+    Tensor t(img_shape, 4);
     t.set_slice(0, r);
     t.set_slice(1, g);
     t.set_slice(2, b);
     t.set_slice(3, a);
-    t.to_png(fname);
+    t.to_png(fname, depth);
   }
+}
+
+void VirtualTexture::to_png(const std::string &fname,
+                            const ComputeMode &cm,
+                            int                depth) const
+{
+  this->to_png(this->shape, fname, cm, depth);
 }
 
 } // namespace hmap

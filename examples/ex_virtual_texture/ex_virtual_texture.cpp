@@ -59,7 +59,7 @@ int main(void)
   // tex.fill(0.5f, cm);
   // tex.fill(3, 1.f, cm);
 
-  tex.to_png_dbg("out0.png", cm);
+  tex.to_png("out0.png", cm);
 
   // --- per pixel
 
@@ -82,7 +82,7 @@ int main(void)
 
   hmap::for_each_pixel(tex2, lambda1, cm);
 
-  tex2.to_png_dbg("out1.png", cm);
+  tex2.to_png("out1.png", cm);
 
   // --- colorize
 
@@ -119,7 +119,7 @@ int main(void)
                  hmap::Cmap::JET,
                  &level);
 
-  tex_c.to_png_dbg("out2.png", cm);
+  tex_c.to_png("out2.png", cm);
 
   // --- mix
 
@@ -132,5 +132,5 @@ int main(void)
 
   hmap::mix(tex_m, tex2, tex_c, cm);
 
-  tex_m.to_png_dbg("out3.png", cm);
+  tex_m.to_png("out3.png", cm);
 }
