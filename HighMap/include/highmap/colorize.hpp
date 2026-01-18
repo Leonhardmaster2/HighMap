@@ -262,4 +262,9 @@ void mix(VirtualTexture    &out,
          const ComputeMode &cm,
          bool               use_sqrt_avg = true);
 
+void mix(VirtualTexture                &out,
+         std::vector<VirtualTexture *> &texs,
+         const ComputeMode             &cm,
+         bool                           use_sqrt_avg = true);
+
 } // namespace hmap

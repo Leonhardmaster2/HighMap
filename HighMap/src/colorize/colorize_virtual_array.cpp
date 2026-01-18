@@ -202,4 +202,17 @@ void mix(VirtualTexture    &out,
   for_each_tile(ptrs, lambda, cm);
 }
 
+void mix(VirtualTexture                &out,
+         std::vector<VirtualTexture *> &texs,
+         const ComputeMode             &cm,
+         bool                           use_sqrt_avg)
+{
+  if (texs.size() == 0) return;
+
+  out.copy_from(*texs.front(), cm);
+
+  for (size_t k = 1; k < texs.size(); k++)
+    mix(out, out, *(texs[k]), cm, use_sqrt_avg);
+}
+
 } // namespace hmap
