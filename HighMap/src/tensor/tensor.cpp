@@ -155,14 +155,14 @@ std::vector<uint8_t> Tensor::to_img_8bit(bool flip_y)
 
   if (flip_y)
   {
-    for (int j = 0; j < this->shape.y; ++j)
+    for (int j = this->shape.y - 1; j >= 0; j--)
       for (int i = 0; i < this->shape.x; i++)
         for (int k = 0; k < this->shape.z; k++)
           vec.push_back(static_cast<uint8_t>(255.f * (*this)(i, j, k)));
   }
   else
   {
-    for (int j = this->shape.y - 1; j >= 0; j--)
+    for (int j = 0; j < this->shape.y; ++j)
       for (int i = 0; i < this->shape.x; i++)
         for (int k = 0; k < this->shape.z; k++)
           vec.push_back(static_cast<uint8_t>(255.f * (*this)(i, j, k)));
