@@ -122,6 +122,10 @@ void colorize(VirtualTexture                        &out,
     {
       *p_arrays[6] = *pa_alpha;
     }
+    else
+    {
+      *p_arrays[6] = 1.f;
+    }
   };
 
   // apply
