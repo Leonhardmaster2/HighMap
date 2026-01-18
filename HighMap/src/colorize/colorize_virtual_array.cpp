@@ -256,15 +256,16 @@ void mix_normal_map(VirtualTexture         &out,
   // mix and then re-normalize values assuming a RGB channels
   // represent a normal vector
   auto lambda =
-      [&detail_scaling, &blending_method](std::vector<Array *> p_arrays,
-                                          const TileRegion &)
+      [detail_scaling, blending_method](std::vector<Array *> p_arrays,
+                                          const TileRegion &region)
   {
     Array *pa_r1 = p_arrays[0];
     Array *pa_g1 = p_arrays[1];
     Array *pa_b1 = p_arrays[2];
-    Array *pa_r2 = p_arrays[3];
-    Array *pa_g2 = p_arrays[4];
-    Array *pa_b2 = p_arrays[5];
+    // skip alpha channel
+    Array *pa_r2 = p_arrays[4];
+    Array *pa_g2 = p_arrays[5];
+    Array *pa_b2 = p_arrays[6];
 
     std::function<Vec3<float>(Vec3<float> &, Vec3<float> &)> blending_fct;
 
@@ -325,8 +326,8 @@ void mix_normal_map(VirtualTexture         &out,
     }
     }
 
-    for (int j = 0; j < (*pa_r1).shape.y; j++)
-      for (int i = 0; i < (*pa_r1).shape.x; i++)
+    for (int j = 0; j < region.shape.y; j++)
+      for (int i = 0; i < region.shape.x; i++)
       {
         // do some rescaling because RGBA texture expected in [0, 1]
         // but normal vector expected in [-1, 1]
