@@ -65,6 +65,9 @@ public:
 
   // --- Converters
 
+  void from_arrays(const std::vector<const Array *> &p_arrays,
+                   const ComputeMode                &cm);
+
   std::vector<uint8_t> to_img_8bit(const glm::ivec2  &img_shape,
                                    const ComputeMode &c,
                                    bool               flip_y = false) const;

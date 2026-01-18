@@ -109,6 +109,24 @@ void VirtualTexture::fill(int c, float value, const ComputeMode &cm)
   this->channel(c).fill(value, cm);
 }
 
+void VirtualTexture::from_arrays(const std::vector<const Array *> &p_arrays,
+                                 const ComputeMode                &cm)
+{
+  const int nch = this->channels();
+
+  if (nch != int(arrays.size()))
+  {
+    LOG_ERROR("VirtualTexture::from_arrays: size mismatch between arrays and "
+              "channels nb (%d != %ld)",
+              nch,
+              p_arrays.size());
+    return;
+  }
+
+  for (int c = 0; c < nch; ++c)
+    this->channel(c).from_array(*p_arrays[c], cm);
+}
+
 std::vector<VirtualArray> &VirtualTexture::get_arrays()
 {
   return this->arrays;
