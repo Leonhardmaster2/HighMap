@@ -40,6 +40,20 @@ static std::map<std::string, int> normal_map_blending_method_as_string = {
     {"Whiteout", NMAP_WHITEOUT},
 };
 
+struct ColorAdjust
+{
+  float in_min = 0.0f;
+  float in_max = 1.0f;
+  float exposure = 0.0f;
+  float contrast = 1.0f;
+  float saturation = 1.0f;
+  float temperature = 0.0f;
+  float gamma = 2.2f;
+  float dither_amp = 1.f / 255.f;
+  bool  filmic_tonemap = false;
+  bool  aces_tonemap = false;
+};
+
 /**
  * @enum Cmap
  * @brief Enumeration for different colormap types.
@@ -95,6 +109,10 @@ void apply_hillshade(std::vector<uint8_t> &img,
                      float                 vmax = 1.f,
                      float                 exponent = 1.f,
                      bool                  is_img_rgba = false);
+
+void color_adjust(VirtualTexture    &tex,
+                  ColorAdjust        param,
+                  const ComputeMode &cm);
 
 /**
  * @brief Apply colorization to an array.

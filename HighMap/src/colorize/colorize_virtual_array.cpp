@@ -255,9 +255,8 @@ void mix_normal_map(VirtualTexture         &out,
 
   // mix and then re-normalize values assuming a RGB channels
   // represent a normal vector
-  auto lambda =
-      [detail_scaling, blending_method](std::vector<Array *> p_arrays,
-                                          const TileRegion &region)
+  auto lambda = [detail_scaling, blending_method](std::vector<Array *> p_arrays,
+                                                  const TileRegion    &region)
   {
     Array *pa_r1 = p_arrays[0];
     Array *pa_g1 = p_arrays[1];
