@@ -136,6 +136,32 @@ void colorize(VirtualTexture                        &out,
   for_each_tile(ptrs, lambda, cm);
 }
 
+void luminance(VirtualArray &out, VirtualTexture &tex, const ComputeMode &cm)
+{
+  if (tex.channels() < 3)
+  {
+    LOG_ERROR("VirtualTexture: inputs mismatch, virtual textures must have 3 "
+              "channels for luminance.");
+    return;
+  }
+
+  auto lambda = [](std::vector<Array *> &p_arrays, const TileRegion &)
+  {
+    hmap::Array &lum = *p_arrays[0];
+    hmap::Array &r = *p_arrays[1];
+    hmap::Array &g = *p_arrays[2];
+    hmap::Array &b = *p_arrays[3];
+
+    lum = 0.299f * r + 0.587f * g + 0.114f * b;
+  };
+
+  std::vector<VirtualArray *> ptrs = {&out};
+  for (auto ptr : tex.channels_ptr())
+    ptrs.push_back(ptr);
+
+  for_each_tile(ptrs, lambda, cm);
+}
+
 void mix(VirtualTexture    &out,
          VirtualTexture    &tex1,
          VirtualTexture    &tex2,

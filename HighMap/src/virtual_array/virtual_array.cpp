@@ -49,7 +49,9 @@ VirtualArray::VirtualArray(glm::ivec2  shape,
   this->storage = make_storage(this->shape, this->tile_shape, storage_mode);
 }
 
-void VirtualArray::copy_from(VirtualArray &src, const ComputeMode &cm)
+void VirtualArray::copy_from(VirtualArray      &src,
+                             const ComputeMode &cm,
+                             bool               copy_src_data)
 {
   if (this == &src) return;
 
@@ -59,7 +61,8 @@ void VirtualArray::copy_from(VirtualArray &src, const ComputeMode &cm)
   halo = src.halo;
 
   storage = src.storage->clone();
-  copy_data(src, *this, cm);
+
+  if (copy_src_data) copy_data(src, *this, cm);
 }
 
 std::unique_ptr<VirtualArray> VirtualArray::clone(const ComputeMode &cm,

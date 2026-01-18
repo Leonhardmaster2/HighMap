@@ -242,6 +242,8 @@ Tensor colorize_slope_height_heatmap(const Array &array, int cmap);
  */
 Tensor colorize_vec2(const Array &array1, const Array &array2);
 
+void luminance(VirtualArray &out, VirtualTexture &tex, const ComputeMode &cm);
+
 /**
  * @brief Mix two textures into an output texture.
  * @param out          Output texture.

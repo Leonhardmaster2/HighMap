@@ -66,7 +66,9 @@ struct VirtualArray
 
   std::unique_ptr<VirtualArray> clone(const ComputeMode &cm,
                                       bool               deep_copy = false);
-  void copy_from(VirtualArray &src, const ComputeMode &cm);
+  void                          copy_from(VirtualArray      &src,
+                                          const ComputeMode &cm,
+                                          bool               copy_src_data = true);
 
   // --- Access individual cells (slower)
 
