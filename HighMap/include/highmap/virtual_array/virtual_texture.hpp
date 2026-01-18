@@ -51,6 +51,10 @@ public:
                  int         channels,
                  StorageMode storage_mode);
 
+  // --- Copy
+
+  void copy_from(VirtualTexture &src, const ComputeMode &cm);
+
   // --- Channels data
 
   int                               channels() const;

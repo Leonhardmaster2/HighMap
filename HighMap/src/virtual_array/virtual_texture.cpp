@@ -96,6 +96,21 @@ std::vector<const VirtualArray *> VirtualTexture::channels_ptr() const
   return out;
 }
 
+void VirtualTexture::copy_from(VirtualTexture &src, const ComputeMode &cm)
+{
+  if (this == &src) return;
+
+  shape = src.shape;
+  bbox = src.bbox;
+  tile_shape = src.tile_shape;
+  halo = src.halo;
+
+  this->arrays.resize(src.channels());
+
+  for (int c = 0; c < this->channels(); ++c)
+    this->channel(c).copy_from(src.channel(c), cm);
+}
+
 void VirtualTexture::fill(float value, const ComputeMode &cm)
 {
   for (auto &va : this->get_arrays())
