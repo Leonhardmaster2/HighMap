@@ -16,27 +16,11 @@
 #include <functional>
 
 #include "highmap/array.hpp"
+#include "highmap/colorize.hpp"
 #include "highmap/export.hpp"
 
 namespace hmap
 {
-
-enum NormalMapBlendingMethod : int
-{
-  NMAP_LINEAR,
-  NMAP_DERIVATIVE,
-  NMAP_UDN,
-  NMAP_UNITY,
-  NMAP_WHITEOUT
-};
-
-static std::map<std::string, int> normal_map_blending_method_as_string = {
-    {"Linear", NMAP_LINEAR},
-    {"Partial derivative", NMAP_DERIVATIVE},
-    {"Unreal Developer Network", NMAP_UDN},
-    {"Unity", NMAP_UNITY},
-    {"Whiteout", NMAP_WHITEOUT},
-};
 
 enum TransformMode : int
 {

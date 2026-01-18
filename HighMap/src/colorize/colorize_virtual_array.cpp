@@ -222,8 +222,10 @@ void mix(VirtualTexture    &out,
   std::vector<VirtualArray *> ptrs = {};
   for (auto &plist :
        {out.channels_ptr(), tex1.channels_ptr(), tex2.channels_ptr()})
+  {
     for (auto &ptr : plist)
       ptrs.push_back(ptr);
+  }
 
   for_each_tile(ptrs, lambda, cm);
 }
@@ -239,6 +241,126 @@ void mix(VirtualTexture                &out,
 
   for (size_t k = 1; k < texs.size(); k++)
     mix(out, out, *(texs[k]), cm, use_sqrt_avg);
+}
+
+void mix_normal_map(VirtualTexture         &out,
+                    VirtualTexture         &nmap_base,
+                    VirtualTexture         &nmap_detail,
+                    const ComputeMode      &cm,
+                    float                   detail_scaling,
+                    NormalMapBlendingMethod blending_method)
+{
+  // output, also used to store first normal map
+  out.copy_from(nmap_base, cm);
+
+  // mix and then re-normalize values assuming a RGB channels
+  // represent a normal vector
+  auto lambda =
+      [&detail_scaling, &blending_method](std::vector<Array *> p_arrays,
+                                          const TileRegion &)
+  {
+    Array *pa_r1 = p_arrays[0];
+    Array *pa_g1 = p_arrays[1];
+    Array *pa_b1 = p_arrays[2];
+    Array *pa_r2 = p_arrays[3];
+    Array *pa_g2 = p_arrays[4];
+    Array *pa_b2 = p_arrays[5];
+
+    std::function<Vec3<float>(Vec3<float> &, Vec3<float> &)> blending_fct;
+
+    switch (blending_method)
+    {
+    case NormalMapBlendingMethod::NMAP_LINEAR:
+    {
+      blending_fct = [](Vec3<float> &n1, Vec3<float> &n2) { return n1 + n2; };
+    }
+    break;
+    //
+    case NormalMapBlendingMethod::NMAP_DERIVATIVE:
+    {
+      blending_fct = [](Vec3<float> &n1, Vec3<float> &n2)
+      {
+        Vec3<float> vn = Vec3<float>(n1.x * n2.z + n2.x * n1.z,
+                                     n1.y * n2.z + n2.y * n1.z,
+                                     n1.z * n2.z);
+        return vn;
+      };
+    }
+    break;
+    //
+    case NormalMapBlendingMethod::NMAP_UDN:
+    {
+      blending_fct = [](Vec3<float> &n1, Vec3<float> &n2)
+      {
+        Vec3<float> vn = Vec3<float>(n1.x + n2.x, n1.y + n2.y, n1.z);
+        return vn;
+      };
+    }
+    break;
+      //
+    case NormalMapBlendingMethod::NMAP_UNITY:
+    {
+      blending_fct = [](Vec3<float> &n1, Vec3<float> &n2)
+      {
+        Vec3<float> m0 = Vec3<float>(n1.z, n1.x, -n1.x);
+        Vec3<float> m1 = Vec3<float>(n1.x, n1.z, -n1.y);
+        Vec3<float> m2 = Vec3<float>(n1.x, n1.y, n1.z);
+
+        Vec3<float> vn = Vec3<float>(n2.x * m0.x + n2.y * m1.x + n2.z * m2.x,
+                                     n2.x * m0.y + n2.y * m1.y + n2.z * m2.y,
+                                     n2.x * m0.z + n2.y * m1.z + n2.z * m2.z);
+        return vn;
+      };
+    }
+    break;
+    //
+    case NormalMapBlendingMethod::NMAP_WHITEOUT:
+    default:
+    {
+      blending_fct = [](Vec3<float> &n1, Vec3<float> &n2)
+      {
+        Vec3<float> vn = Vec3<float>(n1.x + n2.x, n1.y + n2.y, n1.z * n2.z);
+        return vn;
+      };
+    }
+    }
+
+    for (int j = 0; j < (*pa_r1).shape.y; j++)
+      for (int i = 0; i < (*pa_r1).shape.x; i++)
+      {
+        // do some rescaling because RGBA texture expected in [0, 1]
+        // but normal vector expected in [-1, 1]
+
+        Vec3<float> v111 = Vec3<float>(1.f, 1.f, 1.f);
+        Vec3<float> n1 = 2.f * Vec3<float>((*pa_r1)(i, j),
+                                           (*pa_g1)(i, j),
+                                           (*pa_b1)(i, j)) -
+                         v111;
+        Vec3<float> n2 = 2.f * Vec3<float>((*pa_r2)(i, j),
+                                           (*pa_g2)(i, j),
+                                           (*pa_b2)(i, j)) -
+                         v111;
+
+        n2.x *= detail_scaling;
+        n2.y *= detail_scaling;
+        n2.z *= detail_scaling;
+
+        Vec3<float> vn = blending_fct(n1, n2);
+        vn.normalize();
+
+        (*pa_r1)(i, j) = 0.5f * vn.x + 0.5f;
+        (*pa_g1)(i, j) = 0.5f * vn.y + 0.5f;
+        (*pa_b1)(i, j) = 0.5f * vn.z + 0.5f;
+      }
+  };
+
+  // apply
+  std::vector<VirtualArray *> ptrs = {};
+  for (auto &plist : {out.channels_ptr(), nmap_detail.channels_ptr()})
+    for (auto &ptr : plist)
+      ptrs.push_back(ptr);
+
+  for_each_tile(ptrs, lambda, cm);
 }
 
 } // namespace hmap

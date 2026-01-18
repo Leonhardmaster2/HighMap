@@ -23,6 +23,23 @@
 namespace hmap
 {
 
+enum NormalMapBlendingMethod : int
+{
+  NMAP_LINEAR,
+  NMAP_DERIVATIVE,
+  NMAP_UDN,
+  NMAP_UNITY,
+  NMAP_WHITEOUT
+};
+
+static std::map<std::string, int> normal_map_blending_method_as_string = {
+    {"Linear", NMAP_LINEAR},
+    {"Partial derivative", NMAP_DERIVATIVE},
+    {"Unreal Developer Network", NMAP_UDN},
+    {"Unity", NMAP_UNITY},
+    {"Whiteout", NMAP_WHITEOUT},
+};
+
 /**
  * @enum Cmap
  * @brief Enumeration for different colormap types.
@@ -278,5 +295,25 @@ void mix(VirtualTexture                &out,
          std::vector<VirtualTexture *> &texs,
          const ComputeMode             &cm,
          bool                           use_sqrt_avg = true);
+
+/**
+ * @brief Blend two normal maps into a single output normal map.
+ *
+ * Combines a base normal map with a detail normal map using the specified
+ * blending method and scaling factor.
+ *
+ * @param out             Output normal map texture.
+ * @param nmap_base       Base normal map texture.
+ * @param nmap_detail     Detail normal map texture.
+ * @param cm              Compute mode (execution and storage behavior).
+ * @param detail_scaling  Strength of the detail normal map.
+ * @param blending_method Normal map blending method.
+ */
+void mix_normal_map(VirtualTexture         &out,
+                    VirtualTexture         &nmap_base,
+                    VirtualTexture         &nmap_detail,
+                    const ComputeMode      &cm,
+                    float                   detail_scaling,
+                    NormalMapBlendingMethod blending_method);
 
 } // namespace hmap
