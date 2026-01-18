@@ -242,6 +242,16 @@ Tensor colorize_slope_height_heatmap(const Array &array, int cmap);
  */
 Tensor colorize_vec2(const Array &array1, const Array &array2);
 
+/**
+ * @brief Compute luminance from a texture.
+ *
+ * Computes a grayscale luminance array from the RGB channels of a virtual
+ * texture and stores the result in @p out.
+ *
+ * @param out Output luminance array.
+ * @param tex Input virtual texture (expects at least 3 channels).
+ * @param cm  Compute mode (execution and storage behavior).
+ */
 void luminance(VirtualArray &out, VirtualTexture &tex, const ComputeMode &cm);
 
 /**
