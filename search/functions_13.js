@@ -1,7 +1,7 @@
 var searchData=
 [
   ['unique_5fvalues_0',['unique_values',['../classhmap_1_1Array.html#a7bafe99a2d644e79d638002a19dcc6d5',1,'hmap::Array::unique_values()'],['../structhmap_1_1VirtualArray.html#a8d74c7c6a84b8c54985a5fdeb4e805f0',1,'hmap::VirtualArray::unique_values()']]],
-  ['unit_5fsquare_5fbbox_1',['unit_square_bbox',['../namespacehmap.html#a4910efa1a82d5dd66d7d02a87fab7e7a',1,'hmap']]],
+  ['unit_5fsquare_5fbbox_1',['unit_square_bbox',['../namespacehmap.html#aef71b544e3f4e5321cb3d41a7366e0f3',1,'hmap']]],
   ['unsphericity_2',['unsphericity',['../namespacehmap.html#a5dc8b3117305f025eb4d0da50bf3c674',1,'hmap::unsphericity()'],['../namespacehmap_1_1gpu.html#a112db22b157fcb69d867e1e5ee3a1afd',1,'hmap::gpu::unsphericity()']]],
   ['unwrap_5fphase_3',['unwrap_phase',['../namespacehmap.html#a3f8dc201377b61428eba8daa4a03a65f',1,'hmap']]],
   ['update_5fadjacency_5fmatrix_4',['update_adjacency_matrix',['../classhmap_1_1Graph.html#a6accdaeaf48a49a3a751f4a83e59df47',1,'hmap::Graph']]],

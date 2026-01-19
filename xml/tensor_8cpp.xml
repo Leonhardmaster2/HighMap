@@ -21,13 +21,13 @@
 <codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacehmap" kindref="compound">hmap</ref></highlight></codeline>
 <codeline lineno="12"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="13"><highlight class="normal"></highlight></codeline>
-<codeline lineno="14"><highlight class="normal"><ref refid="classhmap_1_1Tensor_1af28dd5f54026bd09f8ef33d4319b816b" kindref="member">Tensor::Tensor</ref>(Vec3&lt;int&gt;<sp/>shape)<sp/>:<sp/>shape(shape)</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><ref refid="classhmap_1_1Tensor_1a7052b1d8ee3ad0d60f02b8f420f441a0" kindref="member">Tensor::Tensor</ref>(glm::ivec3<sp/>shape)<sp/>:<sp/>shape(shape)</highlight></codeline>
 <codeline lineno="15"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="16"><highlight class="normal"><sp/><sp/>this-&gt;vector.clear();</highlight></codeline>
 <codeline lineno="17"><highlight class="normal"><sp/><sp/>this-&gt;vector.resize(shape.x<sp/>*<sp/>shape.y<sp/>*<sp/>shape.z);</highlight></codeline>
 <codeline lineno="18"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="19"><highlight class="normal"></highlight></codeline>
-<codeline lineno="20"><highlight class="normal">Tensor::Tensor(Vec2&lt;int&gt;<sp/>shape_xy,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>shape_z)</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">Tensor::Tensor(glm::ivec2<sp/>shape_xy,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>shape_z)</highlight></codeline>
 <codeline lineno="21"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="22"><highlight class="normal"><sp/><sp/>this-&gt;shape<sp/>=<sp/>{shape_xy.x,<sp/>shape_xy.y,<sp/>shape_z};</highlight></codeline>
 <codeline lineno="23"><highlight class="normal"><sp/><sp/>this-&gt;vector.clear();</highlight></codeline>
@@ -41,7 +41,7 @@
 <codeline lineno="31"><highlight class="normal"><sp/><sp/>mat.convertTo(mat,<sp/>CV_32FC3,<sp/>1.f<sp/>/<sp/>255.f);</highlight></codeline>
 <codeline lineno="32"><highlight class="normal"></highlight></codeline>
 <codeline lineno="33"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>RGBA<sp/>image</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>=<sp/>Tensor(Vec2&lt;int&gt;(mat.cols,<sp/>mat.rows),<sp/>4);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>=<sp/>Tensor(glm::ivec2(mat.cols,<sp/>mat.rows),<sp/>4);</highlight></codeline>
 <codeline lineno="35"><highlight class="normal"></highlight></codeline>
 <codeline lineno="36"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>fill<sp/>tensor</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="37"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/>shape.y;<sp/>j++)</highlight></codeline>
@@ -74,7 +74,7 @@
 <codeline lineno="64"><highlight class="normal"></highlight></codeline>
 <codeline lineno="65"><highlight class="normal">Array<sp/>Tensor::get_slice(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>k)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
 <codeline lineno="66"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="67"><highlight class="normal"><sp/><sp/>Array<sp/>out<sp/>=<sp/>Array(Vec2&lt;int&gt;(this-&gt;shape.x,<sp/>this-&gt;shape.y));</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/>Array<sp/>out<sp/>=<sp/>Array(glm::ivec2(this-&gt;shape.x,<sp/>this-&gt;shape.y));</highlight></codeline>
 <codeline lineno="68"><highlight class="normal"></highlight></codeline>
 <codeline lineno="69"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/>this-&gt;shape.y;<sp/>j++)</highlight></codeline>
 <codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>this-&gt;shape.x;<sp/>i++)</highlight></codeline>
@@ -106,7 +106,7 @@
 <codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>v<sp/>=<sp/>vmin;</highlight></codeline>
 <codeline lineno="97"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="98"><highlight class="normal"></highlight></codeline>
-<codeline lineno="99"><highlight class="normal">Tensor<sp/>Tensor::resample_to_shape_xy(Vec2&lt;int&gt;<sp/>new_shape_xy)</highlight></codeline>
+<codeline lineno="99"><highlight class="normal">Tensor<sp/>Tensor::resample_to_shape_xy(glm::ivec2<sp/>new_shape_xy)</highlight></codeline>
 <codeline lineno="100"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="101"><highlight class="normal"><sp/><sp/>Tensor<sp/>out<sp/>=<sp/>Tensor(new_shape_xy,<sp/>this-&gt;shape.z);</highlight></codeline>
 <codeline lineno="102"><highlight class="normal"></highlight></codeline>

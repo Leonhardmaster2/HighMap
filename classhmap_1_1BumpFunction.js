@@ -1,6 +1,6 @@
 var classhmap_1_1BumpFunction =
 [
-    [ "BumpFunction", "classhmap_1_1BumpFunction.html#a178d0bca834491174e38281174d8aa95", null ],
+    [ "BumpFunction", "classhmap_1_1BumpFunction.html#a80e2476cc674ff1e15c5135829484c68", null ],
     [ "gain", "classhmap_1_1BumpFunction.html#affb0947701a602022d242613b244df72", null ],
-    [ "center", "classhmap_1_1BumpFunction.html#a95331eacf3f4fed187dbc1e00080c35d", null ]
+    [ "center", "classhmap_1_1BumpFunction.html#a6db192329b79ff8751857f4ff4fcb4b6", null ]
 ];

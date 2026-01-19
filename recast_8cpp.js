@@ -14,8 +14,8 @@ var recast_8cpp =
     [ "recast_escarpment", "recast_8cpp.html#a6fa21b8b4797ae017025d891f9704848", null ],
     [ "recast_peak", "recast_8cpp.html#ac2a2b604d4c167dcaddfbd1c66df3e4c", null ],
     [ "recast_peak", "recast_8cpp.html#a4ca9ddaa140548937a12022e79823401", null ],
-    [ "recast_rocky_slopes", "recast_8cpp.html#af7709075260d830b45e0f2ea7ea64c94", null ],
-    [ "recast_rocky_slopes", "recast_8cpp.html#a05bb0469c9a049b3e3e0753faa9073ec", null ],
+    [ "recast_rocky_slopes", "recast_8cpp.html#ae6d61817963da6e6a118a5412e4a838e", null ],
+    [ "recast_rocky_slopes", "recast_8cpp.html#a33b2549e5317a7172338381005ba6532", null ],
     [ "recast_sag", "recast_8cpp.html#abf3c7485f0f6f9e56b2cec58e085dc23", null ],
     [ "recast_sag", "recast_8cpp.html#a86963a517ac96c442272bdf6fd967f60", null ]
 ];

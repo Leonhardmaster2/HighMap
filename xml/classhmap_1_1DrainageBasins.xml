@@ -4,9 +4,9 @@
     <compoundname>hmap::DrainageBasins</compoundname>
     <includes refid="hydrology_8hpp" local="no">hydrology.hpp</includes>
     <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="classhmap_1_1DrainageBasins_1aa53e3dff71d7c9f9c42888b628183a26" prot="public" static="no" mutable="no">
-        <type>std::vector&lt; std::vector&lt; <ref refid="structhmap_1_1Vec2" kindref="compound">Vec2</ref>&lt; int &gt; &gt; &gt;</type>
-        <definition>std::vector&lt;std::vector&lt;Vec2&lt;int&gt; &gt; &gt; hmap::DrainageBasins::upstream_traversal</definition>
+      <memberdef kind="variable" id="classhmap_1_1DrainageBasins_1a54a7fd67bac75665ea412d5a681da642" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; std::vector&lt; glm::ivec2 &gt; &gt;</type>
+        <definition>std::vector&lt;std::vector&lt;glm::ivec2&gt; &gt; hmap::DrainageBasins::upstream_traversal</definition>
         <argsstring></argsstring>
         <name>upstream_traversal</name>
         <qualifiedname>hmap::DrainageBasins::upstream_traversal</qualifiedname>
@@ -18,13 +18,13 @@
         </inbodydescription>
         <location file="HighMap/include/highmap/hydrology.hpp" line="42" column="15" bodyfile="HighMap/include/highmap/hydrology.hpp" bodystart="42" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classhmap_1_1DrainageBasins_1aa0eb57907d1858bdf8a095f62b2b2587" prot="public" static="no" mutable="no">
-        <type><ref refid="structhmap_1_1Mat" kindref="compound">Mat</ref>&lt; <ref refid="structhmap_1_1Vec2" kindref="compound">Vec2</ref>&lt; int &gt; &gt;</type>
-        <definition>Mat&lt;Vec2&lt;int&gt; &gt; hmap::DrainageBasins::next</definition>
+      <memberdef kind="variable" id="classhmap_1_1DrainageBasins_1a4371513e33b1423c83dec87c9f3fb5c2" prot="public" static="no" mutable="no">
+        <type><ref refid="structhmap_1_1Mat" kindref="compound">Mat</ref>&lt; glm::ivec2 &gt;</type>
+        <definition>Mat&lt;glm::ivec2&gt; hmap::DrainageBasins::next</definition>
         <argsstring></argsstring>
         <name>next</name>
         <qualifiedname>hmap::DrainageBasins::next</qualifiedname>
-        <initializer>= <ref refid="structhmap_1_1Mat" kindref="compound">Mat</ref>&lt;<ref refid="structhmap_1_1Vec2" kindref="compound">Vec2</ref>&lt;int&gt;&gt;({0, 0})</initializer>
+        <initializer>= <ref refid="structhmap_1_1Mat" kindref="compound">Mat</ref>&lt;glm::ivec2&gt;({0, 0})</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -33,20 +33,20 @@
         </inbodydescription>
         <location file="HighMap/include/highmap/hydrology.hpp" line="43" column="28" bodyfile="HighMap/include/highmap/hydrology.hpp" bodystart="43" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classhmap_1_1DrainageBasins_1adcd6d1d0e2daf16f7f5bd317829644b5" prot="public" static="no" mutable="no">
-        <type><ref refid="structhmap_1_1Vec2" kindref="compound">Vec2</ref>&lt; int &gt;</type>
-        <definition>Vec2&lt;int&gt; hmap::DrainageBasins::null_cell</definition>
+      <memberdef kind="variable" id="classhmap_1_1DrainageBasins_1a61a2b0ba9d6e199d96335ca69d8f9dc8" prot="public" static="no" mutable="no">
+        <type>glm::ivec2</type>
+        <definition>glm::ivec2 hmap::DrainageBasins::null_cell</definition>
         <argsstring></argsstring>
         <name>null_cell</name>
         <qualifiedname>hmap::DrainageBasins::null_cell</qualifiedname>
-        <initializer>= <ref refid="structhmap_1_1Vec2" kindref="compound">Vec2</ref>&lt;int&gt;(-1, -1)</initializer>
+        <initializer>= glm::ivec2(-1, -1)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/hydrology.hpp" line="44" column="34" bodyfile="HighMap/include/highmap/hydrology.hpp" bodystart="44" bodyend="-1"/>
+        <location file="HighMap/include/highmap/hydrology.hpp" line="44" column="40" bodyfile="HighMap/include/highmap/hydrology.hpp" bodystart="44" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -62,11 +62,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/hydrology.hpp" line="46" column="39" bodyfile="HighMap/src/hydrology/drainage_basins.cpp" bodystart="191" bodyend="194"/>
+        <location file="HighMap/include/highmap/hydrology.hpp" line="46" column="40" bodyfile="HighMap/src/hydrology/drainage_basins.cpp" bodystart="191" bodyend="194"/>
       </memberdef>
-      <memberdef kind="function" id="classhmap_1_1DrainageBasins_1a521ac117b9f76ee34e6a28a9ef223bd1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; std::vector&lt; <ref refid="structhmap_1_1Vec2" kindref="compound">Vec2</ref>&lt; int &gt; &gt; &gt;</type>
-        <definition>std::vector&lt; std::vector&lt; Vec2&lt; int &gt; &gt; &gt; hmap::DrainageBasins::get_main_channels</definition>
+      <memberdef kind="function" id="classhmap_1_1DrainageBasins_1ac9ffbdd02b8b7de061c107c9253e0bb1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; std::vector&lt; glm::ivec2 &gt; &gt;</type>
+        <definition>std::vector&lt; std::vector&lt; glm::ivec2 &gt; &gt; hmap::DrainageBasins::get_main_channels</definition>
         <argsstring>()</argsstring>
         <name>get_main_channels</name>
         <qualifiedname>hmap::DrainageBasins::get_main_channels</qualifiedname>
@@ -78,9 +78,9 @@
         </inbodydescription>
         <location file="HighMap/include/highmap/hydrology.hpp" line="47" column="15" bodyfile="HighMap/src/hydrology/drainage_basins.cpp" bodystart="196" bodyend="237"/>
       </memberdef>
-      <memberdef kind="function" id="classhmap_1_1DrainageBasins_1a6dd5a418dfeb7f08e2c30757a2792521" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="structhmap_1_1Vec2" kindref="compound">Vec2</ref>&lt; int &gt; &gt;</type>
-        <definition>std::vector&lt; Vec2&lt; int &gt; &gt; hmap::DrainageBasins::get_outlets</definition>
+      <memberdef kind="function" id="classhmap_1_1DrainageBasins_1ab5cf855fdc65c382fc368ea05b97cc92" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; glm::ivec2 &gt;</type>
+        <definition>std::vector&lt; glm::ivec2 &gt; hmap::DrainageBasins::get_outlets</definition>
         <argsstring>() const</argsstring>
         <name>get_outlets</name>
         <qualifiedname>hmap::DrainageBasins::get_outlets</qualifiedname>
@@ -92,9 +92,9 @@
         </inbodydescription>
         <location file="HighMap/include/highmap/hydrology.hpp" line="48" column="28" bodyfile="HighMap/src/hydrology/drainage_basins.cpp" bodystart="239" bodyend="251"/>
       </memberdef>
-      <memberdef kind="function" id="classhmap_1_1DrainageBasins_1ae723962824c7f27a8ecefc5a9ad20772" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="structhmap_1_1Vec2" kindref="compound">Vec2</ref>&lt; int &gt; &gt;</type>
-        <definition>std::vector&lt; Vec2&lt; int &gt; &gt; hmap::DrainageBasins::get_ridges</definition>
+      <memberdef kind="function" id="classhmap_1_1DrainageBasins_1a0433bf82de104e8b34d4cba50cb4c629" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; glm::ivec2 &gt;</type>
+        <definition>std::vector&lt; glm::ivec2 &gt; hmap::DrainageBasins::get_ridges</definition>
         <argsstring>()</argsstring>
         <name>get_ridges</name>
         <qualifiedname>hmap::DrainageBasins::get_ridges</qualifiedname>
@@ -106,9 +106,9 @@
         </inbodydescription>
         <location file="HighMap/include/highmap/hydrology.hpp" line="49" column="28" bodyfile="HighMap/src/hydrology/drainage_basins.cpp" bodystart="253" bodyend="292"/>
       </memberdef>
-      <memberdef kind="function" id="classhmap_1_1DrainageBasins_1a4a039906e51a0c967a70041129125012" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; std::vector&lt; <ref refid="structhmap_1_1Vec2" kindref="compound">Vec2</ref>&lt; int &gt; &gt; &gt;</type>
-        <definition>std::vector&lt; std::vector&lt; Vec2&lt; int &gt; &gt; &gt; hmap::DrainageBasins::get_ridges_neighbors</definition>
+      <memberdef kind="function" id="classhmap_1_1DrainageBasins_1a2bd77eda88780b2988dcbb17e8569b62" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; std::vector&lt; glm::ivec2 &gt; &gt;</type>
+        <definition>std::vector&lt; std::vector&lt; glm::ivec2 &gt; &gt; hmap::DrainageBasins::get_ridges_neighbors</definition>
         <argsstring>()</argsstring>
         <name>get_ridges_neighbors</name>
         <qualifiedname>hmap::DrainageBasins::get_ridges_neighbors</qualifiedname>
@@ -120,10 +120,10 @@
         </inbodydescription>
         <location file="HighMap/include/highmap/hydrology.hpp" line="50" column="15" bodyfile="HighMap/src/hydrology/drainage_basins.cpp" bodystart="294" bodyend="336"/>
       </memberdef>
-      <memberdef kind="function" id="classhmap_1_1DrainageBasins_1a13ce80c2712df24296fc46a2a720aeae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classhmap_1_1DrainageBasins_1a8cb38f0477862b5a18f0575746a12bcb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void hmap::DrainageBasins::generate_traversal</definition>
-        <argsstring>(const Array &amp;z, FlowDirectionMethod fd_method=FlowDirectionMethod::FDM_D8, bool remove_lakes=true, const std::vector&lt; Vec2&lt; int &gt; &gt; &amp;outlets={})</argsstring>
+        <argsstring>(const Array &amp;z, FlowDirectionMethod fd_method=FlowDirectionMethod::FDM_D8, bool remove_lakes=true, const std::vector&lt; glm::ivec2 &gt; &amp;outlets={})</argsstring>
         <name>generate_traversal</name>
         <qualifiedname>hmap::DrainageBasins::generate_traversal</qualifiedname>
         <param>
@@ -141,7 +141,7 @@
           <defval>true</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="structhmap_1_1Vec2" kindref="compound">Vec2</ref>&lt; int &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; glm::ivec2 &gt; &amp;</type>
           <declname>outlets</declname>
           <defval>{}</defval>
         </param>
@@ -153,10 +153,10 @@
         </inbodydescription>
         <location file="HighMap/include/highmap/hydrology.hpp" line="52" column="8" bodyfile="HighMap/src/hydrology/drainage_basins.cpp" bodystart="30" bodyend="42"/>
       </memberdef>
-      <memberdef kind="function" id="classhmap_1_1DrainageBasins_1ad2568d7da1c45e52272084d896c42ea3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classhmap_1_1DrainageBasins_1afc2cb354bac4934e29fbdfc3d3ca1338" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void hmap::DrainageBasins::generate_traversal_d8</definition>
-        <argsstring>(const Array &amp;z, bool remove_lakes=true, const std::vector&lt; Vec2&lt; int &gt; &gt; &amp;outlets={})</argsstring>
+        <argsstring>(const Array &amp;z, bool remove_lakes=true, const std::vector&lt; glm::ivec2 &gt; &amp;outlets={})</argsstring>
         <name>generate_traversal_d8</name>
         <qualifiedname>hmap::DrainageBasins::generate_traversal_d8</qualifiedname>
         <param>
@@ -169,7 +169,7 @@
           <defval>true</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="structhmap_1_1Vec2" kindref="compound">Vec2</ref>&lt; int &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; glm::ivec2 &gt; &amp;</type>
           <declname>outlets</declname>
           <defval>{}</defval>
         </param>
@@ -181,10 +181,10 @@
         </inbodydescription>
         <location file="HighMap/include/highmap/hydrology.hpp" line="58" column="8" bodyfile="HighMap/src/hydrology/drainage_basins.cpp" bodystart="44" bodyend="97"/>
       </memberdef>
-      <memberdef kind="function" id="classhmap_1_1DrainageBasins_1a10071250dcf5b3468babb6d295c6663a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classhmap_1_1DrainageBasins_1a03be994cbe67f317cc23503368300f0b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void hmap::DrainageBasins::generate_traversal_priority_flood</definition>
-        <argsstring>(const Array &amp;z, const std::vector&lt; Vec2&lt; int &gt; &gt; &amp;outlets={})</argsstring>
+        <argsstring>(const Array &amp;z, const std::vector&lt; glm::ivec2 &gt; &amp;outlets={})</argsstring>
         <name>generate_traversal_priority_flood</name>
         <qualifiedname>hmap::DrainageBasins::generate_traversal_priority_flood</qualifiedname>
         <param>
@@ -192,7 +192,7 @@
           <declname>z</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="structhmap_1_1Vec2" kindref="compound">Vec2</ref>&lt; int &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; glm::ivec2 &gt; &amp;</type>
           <declname>outlets</declname>
           <defval>{}</defval>
         </param>
@@ -336,7 +336,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/hydrology.hpp" line="75" column="8" bodyfile="HighMap/src/hydrology/drainage_basins.cpp" bodystart="550" bodyend="609"/>
+        <location file="HighMap/include/highmap/hydrology.hpp" line="75" column="8" bodyfile="HighMap/src/hydrology/drainage_basins.cpp" bodystart="556" bodyend="615"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -345,18 +345,11 @@
     </detaileddescription>
     <collaborationgraph>
       <node id="3">
-        <label>hmap::Mat&lt; hmap::Vec2&lt; int &gt; &gt;</label>
+        <label>hmap::Mat&lt; glm::ivec2 &gt;</label>
         <link refid="structhmap_1_1Mat"/>
         <childnode refid="4" relation="usage">
           <edgelabel>vector</edgelabel>
         </childnode>
-        <childnode refid="5" relation="usage">
-          <edgelabel>shape</edgelabel>
-        </childnode>
-      </node>
-      <node id="5">
-        <label>hmap::Vec2&lt; int &gt;</label>
-        <link refid="structhmap_1_1Vec2"/>
       </node>
       <node id="1">
         <label>hmap::DrainageBasins</label>
@@ -367,40 +360,34 @@
         <childnode refid="3" relation="usage">
           <edgelabel>next</edgelabel>
         </childnode>
-        <childnode refid="5" relation="usage">
-          <edgelabel>null_cell</edgelabel>
-        </childnode>
       </node>
       <node id="4">
-        <label>std::vector&lt; hmap::Vec2&lt; int &gt; &gt;</label>
-        <childnode refid="5" relation="usage">
-          <edgelabel>elements</edgelabel>
-        </childnode>
+        <label>std::vector&lt; glm::ivec2 &gt;</label>
       </node>
       <node id="2">
-        <label>std::vector&lt; std::vector&lt; hmap::Vec2&lt; int &gt; &gt; &gt;</label>
+        <label>std::vector&lt; std::vector&lt; glm::ivec2 &gt; &gt;</label>
       </node>
     </collaborationgraph>
     <location file="HighMap/include/highmap/hydrology.hpp" line="39" column="1" bodyfile="HighMap/include/highmap/hydrology.hpp" bodystart="40" bodyend="76"/>
     <listofallmembers>
       <member refid="classhmap_1_1DrainageBasins_1ad9db9a53eefd7ff729790e53ea0acfc0" prot="public" virt="non-virtual"><scope>hmap::DrainageBasins</scope><name>accumulate</name></member>
-      <member refid="classhmap_1_1DrainageBasins_1a13ce80c2712df24296fc46a2a720aeae" prot="public" virt="non-virtual"><scope>hmap::DrainageBasins</scope><name>generate_traversal</name></member>
-      <member refid="classhmap_1_1DrainageBasins_1ad2568d7da1c45e52272084d896c42ea3" prot="public" virt="non-virtual"><scope>hmap::DrainageBasins</scope><name>generate_traversal_d8</name></member>
-      <member refid="classhmap_1_1DrainageBasins_1a10071250dcf5b3468babb6d295c6663a" prot="public" virt="non-virtual"><scope>hmap::DrainageBasins</scope><name>generate_traversal_priority_flood</name></member>
+      <member refid="classhmap_1_1DrainageBasins_1a8cb38f0477862b5a18f0575746a12bcb" prot="public" virt="non-virtual"><scope>hmap::DrainageBasins</scope><name>generate_traversal</name></member>
+      <member refid="classhmap_1_1DrainageBasins_1afc2cb354bac4934e29fbdfc3d3ca1338" prot="public" virt="non-virtual"><scope>hmap::DrainageBasins</scope><name>generate_traversal_d8</name></member>
+      <member refid="classhmap_1_1DrainageBasins_1a03be994cbe67f317cc23503368300f0b" prot="public" virt="non-virtual"><scope>hmap::DrainageBasins</scope><name>generate_traversal_priority_flood</name></member>
       <member refid="classhmap_1_1DrainageBasins_1ae292b57e8f33791dc912ccce8913f963" prot="public" virt="non-virtual"><scope>hmap::DrainageBasins</scope><name>get_basins_number</name></member>
-      <member refid="classhmap_1_1DrainageBasins_1a521ac117b9f76ee34e6a28a9ef223bd1" prot="public" virt="non-virtual"><scope>hmap::DrainageBasins</scope><name>get_main_channels</name></member>
-      <member refid="classhmap_1_1DrainageBasins_1a6dd5a418dfeb7f08e2c30757a2792521" prot="public" virt="non-virtual"><scope>hmap::DrainageBasins</scope><name>get_outlets</name></member>
-      <member refid="classhmap_1_1DrainageBasins_1ae723962824c7f27a8ecefc5a9ad20772" prot="public" virt="non-virtual"><scope>hmap::DrainageBasins</scope><name>get_ridges</name></member>
-      <member refid="classhmap_1_1DrainageBasins_1a4a039906e51a0c967a70041129125012" prot="public" virt="non-virtual"><scope>hmap::DrainageBasins</scope><name>get_ridges_neighbors</name></member>
-      <member refid="classhmap_1_1DrainageBasins_1aa0eb57907d1858bdf8a095f62b2b2587" prot="public" virt="non-virtual"><scope>hmap::DrainageBasins</scope><name>next</name></member>
-      <member refid="classhmap_1_1DrainageBasins_1adcd6d1d0e2daf16f7f5bd317829644b5" prot="public" virt="non-virtual"><scope>hmap::DrainageBasins</scope><name>null_cell</name></member>
+      <member refid="classhmap_1_1DrainageBasins_1ac9ffbdd02b8b7de061c107c9253e0bb1" prot="public" virt="non-virtual"><scope>hmap::DrainageBasins</scope><name>get_main_channels</name></member>
+      <member refid="classhmap_1_1DrainageBasins_1ab5cf855fdc65c382fc368ea05b97cc92" prot="public" virt="non-virtual"><scope>hmap::DrainageBasins</scope><name>get_outlets</name></member>
+      <member refid="classhmap_1_1DrainageBasins_1a0433bf82de104e8b34d4cba50cb4c629" prot="public" virt="non-virtual"><scope>hmap::DrainageBasins</scope><name>get_ridges</name></member>
+      <member refid="classhmap_1_1DrainageBasins_1a2bd77eda88780b2988dcbb17e8569b62" prot="public" virt="non-virtual"><scope>hmap::DrainageBasins</scope><name>get_ridges_neighbors</name></member>
+      <member refid="classhmap_1_1DrainageBasins_1a4371513e33b1423c83dec87c9f3fb5c2" prot="public" virt="non-virtual"><scope>hmap::DrainageBasins</scope><name>next</name></member>
+      <member refid="classhmap_1_1DrainageBasins_1a61a2b0ba9d6e199d96335ca69d8f9dc8" prot="public" virt="non-virtual"><scope>hmap::DrainageBasins</scope><name>null_cell</name></member>
       <member refid="classhmap_1_1DrainageBasins_1af58434e1988641daaebf8ef025a9fe07" prot="private" virt="non-virtual"><scope>hmap::DrainageBasins</scope><name>remove_lakes_d8</name></member>
       <member refid="classhmap_1_1DrainageBasins_1ab8aa80c75123d2dab5353ff603e1b862" prot="public" virt="non-virtual"><scope>hmap::DrainageBasins</scope><name>traverse_downstream</name></member>
       <member refid="classhmap_1_1DrainageBasins_1afe4c1a0f9ebbba05a6f19c6c1b065976" prot="public" virt="non-virtual"><scope>hmap::DrainageBasins</scope><name>traverse_downstream</name></member>
       <member refid="classhmap_1_1DrainageBasins_1a8f16f5fb5a6e340a9ca10dc2046ba11d" prot="public" virt="non-virtual"><scope>hmap::DrainageBasins</scope><name>traverse_upstream</name></member>
       <member refid="classhmap_1_1DrainageBasins_1afa727d5dc6f6ebede65fe8983ca1490a" prot="public" virt="non-virtual"><scope>hmap::DrainageBasins</scope><name>traverse_upstream</name></member>
       <member refid="classhmap_1_1DrainageBasins_1a5c9005d65bb03b848f4ea4ee3b5ad9c9" prot="private" virt="non-virtual"><scope>hmap::DrainageBasins</scope><name>update_traversal</name></member>
-      <member refid="classhmap_1_1DrainageBasins_1aa53e3dff71d7c9f9c42888b628183a26" prot="public" virt="non-virtual"><scope>hmap::DrainageBasins</scope><name>upstream_traversal</name></member>
+      <member refid="classhmap_1_1DrainageBasins_1a54a7fd67bac75665ea412d5a681da642" prot="public" virt="non-virtual"><scope>hmap::DrainageBasins</scope><name>upstream_traversal</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

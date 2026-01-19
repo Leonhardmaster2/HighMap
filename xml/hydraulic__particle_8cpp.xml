@@ -72,10 +72,10 @@
 <codeline lineno="62"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>map</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="63"><highlight class="normal"><sp/><sp/>std::vector&lt;float&gt;<sp/>x0(nparticles);</highlight></codeline>
 <codeline lineno="64"><highlight class="normal"><sp/><sp/>std::vector&lt;float&gt;<sp/>y0(nparticles);</highlight></codeline>
-<codeline lineno="65"><highlight class="normal"><sp/><sp/>Array<sp/><sp/><sp/><sp/><sp/><sp/><sp/>density<sp/>=<sp/>p_moisture_map<sp/>?<sp/>*p_moisture_map<sp/>:<sp/>Array(z.shape,<sp/>1.f);</highlight></codeline>
-<codeline lineno="66"><highlight class="normal"><sp/><sp/>Vec4&lt;float&gt;<sp/>bbox(1.f,<sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)z.shape.x<sp/>-<sp/>2.f,<sp/>1.f,<sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)z.shape.y<sp/>-<sp/>2.f);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/>Array<sp/><sp/><sp/><sp/><sp/>density<sp/>=<sp/>p_moisture_map<sp/>?<sp/>*p_moisture_map<sp/>:<sp/>Array(z.shape,<sp/>1.f);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/>glm::vec4<sp/>bbox(1.f,<sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)z.shape.x<sp/>-<sp/>2.f,<sp/>1.f,<sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)z.shape.y<sp/>-<sp/>2.f);</highlight></codeline>
 <codeline lineno="67"><highlight class="normal"></highlight></codeline>
-<codeline lineno="68"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>xy<sp/>=<sp/><ref refid="namespacehmap_1ac30b62e2cc35d56c33af4d1c12c54f81" kindref="member">random_points_density</ref>(nparticles,<sp/>density,<sp/>seed,<sp/>bbox);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>xy<sp/>=<sp/><ref refid="namespacehmap_1ad2caa9cce036857a568693319d0ddcbc" kindref="member">random_points_density</ref>(nparticles,<sp/>density,<sp/>seed,<sp/>bbox);</highlight></codeline>
 <codeline lineno="69"><highlight class="normal"><sp/><sp/>x0<sp/>=<sp/>xy[0];</highlight></codeline>
 <codeline lineno="70"><highlight class="normal"><sp/><sp/>y0<sp/>=<sp/>xy[1];</highlight></codeline>
 <codeline lineno="71"><highlight class="normal"></highlight></codeline>

@@ -276,23 +276,23 @@
 <codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/>Array<sp/>*pa_g2<sp/>=<sp/>p_arrays[5];</highlight></codeline>
 <codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/>Array<sp/>*pa_b2<sp/>=<sp/>p_arrays[6];</highlight></codeline>
 <codeline lineno="268"><highlight class="normal"></highlight></codeline>
-<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/>std::function&lt;Vec3&lt;float&gt;(Vec3&lt;float&gt;<sp/>&amp;,<sp/>Vec3&lt;float&gt;<sp/>&amp;)&gt;<sp/>blending_fct;</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/>std::function&lt;glm::vec3(glm::vec3<sp/>&amp;,<sp/>glm::vec3<sp/>&amp;)&gt;<sp/>blending_fct;</highlight></codeline>
 <codeline lineno="270"><highlight class="normal"></highlight></codeline>
 <codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(blending_method)</highlight></codeline>
 <codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespacehmap_1abc952321c99ec11d60b4037e3d27db9bac248af7dd230247485e3c09a663cedd0" kindref="member">NormalMapBlendingMethod::NMAP_LINEAR</ref>:</highlight></codeline>
 <codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>blending_fct<sp/>=<sp/>[](Vec3&lt;float&gt;<sp/>&amp;n1,<sp/>Vec3&lt;float&gt;<sp/>&amp;n2)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>n1<sp/>+<sp/>n2;<sp/>};</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>blending_fct<sp/>=<sp/>[](glm::vec3<sp/>&amp;n1,<sp/>glm::vec3<sp/>&amp;n2)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>n1<sp/>+<sp/>n2;<sp/>};</highlight></codeline>
 <codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespacehmap_1abc952321c99ec11d60b4037e3d27db9ba97d5a1740991179c436482de8c1c1f34" kindref="member">NormalMapBlendingMethod::NMAP_DERIVATIVE</ref>:</highlight></codeline>
 <codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>blending_fct<sp/>=<sp/>[](Vec3&lt;float&gt;<sp/>&amp;n1,<sp/>Vec3&lt;float&gt;<sp/>&amp;n2)</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>blending_fct<sp/>=<sp/>[](glm::vec3<sp/>&amp;n1,<sp/>glm::vec3<sp/>&amp;n2)</highlight></codeline>
 <codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Vec3&lt;float&gt;<sp/>vn<sp/>=<sp/>Vec3&lt;float&gt;(n1.x<sp/>*<sp/>n2.z<sp/>+<sp/>n2.x<sp/>*<sp/>n1.z,</highlight></codeline>
-<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>n1.y<sp/>*<sp/>n2.z<sp/>+<sp/>n2.y<sp/>*<sp/>n1.z,</highlight></codeline>
-<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>n1.z<sp/>*<sp/>n2.z);</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glm::vec3<sp/>vn<sp/>=<sp/>glm::vec3(n1.x<sp/>*<sp/>n2.z<sp/>+<sp/>n2.x<sp/>*<sp/>n1.z,</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>n1.y<sp/>*<sp/>n2.z<sp/>+<sp/>n2.y<sp/>*<sp/>n1.z,</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>n1.z<sp/>*<sp/>n2.z);</highlight></codeline>
 <codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>vn;</highlight></codeline>
 <codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
 <codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -300,9 +300,9 @@
 <codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespacehmap_1abc952321c99ec11d60b4037e3d27db9ba25b053ebbd8db9d348737e6f343c61bf" kindref="member">NormalMapBlendingMethod::NMAP_UDN</ref>:</highlight></codeline>
 <codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>blending_fct<sp/>=<sp/>[](Vec3&lt;float&gt;<sp/>&amp;n1,<sp/>Vec3&lt;float&gt;<sp/>&amp;n2)</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>blending_fct<sp/>=<sp/>[](glm::vec3<sp/>&amp;n1,<sp/>glm::vec3<sp/>&amp;n2)</highlight></codeline>
 <codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Vec3&lt;float&gt;<sp/>vn<sp/>=<sp/>Vec3&lt;float&gt;(n1.x<sp/>+<sp/>n2.x,<sp/>n1.y<sp/>+<sp/>n2.y,<sp/>n1.z);</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glm::vec3<sp/>vn<sp/>=<sp/>glm::vec3(n1.x<sp/>+<sp/>n2.x,<sp/>n1.y<sp/>+<sp/>n2.y,<sp/>n1.z);</highlight></codeline>
 <codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>vn;</highlight></codeline>
 <codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
 <codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -310,15 +310,15 @@
 <codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespacehmap_1abc952321c99ec11d60b4037e3d27db9ba54fd5928677cd19616ec52d6d59d4c60" kindref="member">NormalMapBlendingMethod::NMAP_UNITY</ref>:</highlight></codeline>
 <codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>blending_fct<sp/>=<sp/>[](Vec3&lt;float&gt;<sp/>&amp;n1,<sp/>Vec3&lt;float&gt;<sp/>&amp;n2)</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>blending_fct<sp/>=<sp/>[](glm::vec3<sp/>&amp;n1,<sp/>glm::vec3<sp/>&amp;n2)</highlight></codeline>
 <codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Vec3&lt;float&gt;<sp/>m0<sp/>=<sp/>Vec3&lt;float&gt;(n1.z,<sp/>n1.x,<sp/>-n1.x);</highlight></codeline>
-<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Vec3&lt;float&gt;<sp/>m1<sp/>=<sp/>Vec3&lt;float&gt;(n1.x,<sp/>n1.z,<sp/>-n1.y);</highlight></codeline>
-<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Vec3&lt;float&gt;<sp/>m2<sp/>=<sp/>Vec3&lt;float&gt;(n1.x,<sp/>n1.y,<sp/>n1.z);</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glm::vec3<sp/>m0<sp/>=<sp/>glm::vec3(n1.z,<sp/>n1.x,<sp/>-n1.x);</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glm::vec3<sp/>m1<sp/>=<sp/>glm::vec3(n1.x,<sp/>n1.z,<sp/>-n1.y);</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glm::vec3<sp/>m2<sp/>=<sp/>glm::vec3(n1.x,<sp/>n1.y,<sp/>n1.z);</highlight></codeline>
 <codeline lineno="308"><highlight class="normal"></highlight></codeline>
-<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Vec3&lt;float&gt;<sp/>vn<sp/>=<sp/>Vec3&lt;float&gt;(n2.x<sp/>*<sp/>m0.x<sp/>+<sp/>n2.y<sp/>*<sp/>m1.x<sp/>+<sp/>n2.z<sp/>*<sp/>m2.x,</highlight></codeline>
-<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>n2.x<sp/>*<sp/>m0.y<sp/>+<sp/>n2.y<sp/>*<sp/>m1.y<sp/>+<sp/>n2.z<sp/>*<sp/>m2.y,</highlight></codeline>
-<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>n2.x<sp/>*<sp/>m0.z<sp/>+<sp/>n2.y<sp/>*<sp/>m1.z<sp/>+<sp/>n2.z<sp/>*<sp/>m2.z);</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glm::vec3<sp/>vn<sp/>=<sp/>glm::vec3(n2.x<sp/>*<sp/>m0.x<sp/>+<sp/>n2.y<sp/>*<sp/>m1.x<sp/>+<sp/>n2.z<sp/>*<sp/>m2.x,</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>n2.x<sp/>*<sp/>m0.y<sp/>+<sp/>n2.y<sp/>*<sp/>m1.y<sp/>+<sp/>n2.z<sp/>*<sp/>m2.y,</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>n2.x<sp/>*<sp/>m0.z<sp/>+<sp/>n2.y<sp/>*<sp/>m1.z<sp/>+<sp/>n2.z<sp/>*<sp/>m2.z);</highlight></codeline>
 <codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>vn;</highlight></codeline>
 <codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
 <codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -327,9 +327,9 @@
 <codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespacehmap_1abc952321c99ec11d60b4037e3d27db9ba6ba5e07d11326f7567d533f169321e37" kindref="member">NormalMapBlendingMethod::NMAP_WHITEOUT</ref>:</highlight></codeline>
 <codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>blending_fct<sp/>=<sp/>[](Vec3&lt;float&gt;<sp/>&amp;n1,<sp/>Vec3&lt;float&gt;<sp/>&amp;n2)</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>blending_fct<sp/>=<sp/>[](glm::vec3<sp/>&amp;n1,<sp/>glm::vec3<sp/>&amp;n2)</highlight></codeline>
 <codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Vec3&lt;float&gt;<sp/>vn<sp/>=<sp/>Vec3&lt;float&gt;(n1.x<sp/>+<sp/>n2.x,<sp/>n1.y<sp/>+<sp/>n2.y,<sp/>n1.z<sp/>*<sp/>n2.z);</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glm::vec3<sp/>vn<sp/>=<sp/>glm::vec3(n1.x<sp/>+<sp/>n2.x,<sp/>n1.y<sp/>+<sp/>n2.y,<sp/>n1.z<sp/>*<sp/>n2.z);</highlight></codeline>
 <codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>vn;</highlight></codeline>
 <codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
 <codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -341,22 +341,22 @@
 <codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>do<sp/>some<sp/>rescaling<sp/>because<sp/>RGBA<sp/>texture<sp/>expected<sp/>in<sp/>[0,<sp/>1]</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>but<sp/>normal<sp/>vector<sp/>expected<sp/>in<sp/>[-1,<sp/>1]</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="333"><highlight class="normal"></highlight></codeline>
-<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Vec3&lt;float&gt;<sp/>v111<sp/>=<sp/>Vec3&lt;float&gt;(1.f,<sp/>1.f,<sp/>1.f);</highlight></codeline>
-<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Vec3&lt;float&gt;<sp/>n1<sp/>=<sp/>2.f<sp/>*<sp/>Vec3&lt;float&gt;((*pa_r1)(i,<sp/>j),</highlight></codeline>
-<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*pa_g1)(i,<sp/>j),</highlight></codeline>
-<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*pa_b1)(i,<sp/>j))<sp/>-</highlight></codeline>
-<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>v111;</highlight></codeline>
-<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Vec3&lt;float&gt;<sp/>n2<sp/>=<sp/>2.f<sp/>*<sp/>Vec3&lt;float&gt;((*pa_r2)(i,<sp/>j),</highlight></codeline>
-<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*pa_g2)(i,<sp/>j),</highlight></codeline>
-<codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*pa_b2)(i,<sp/>j))<sp/>-</highlight></codeline>
-<codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>v111;</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glm::vec3<sp/>v111<sp/>=<sp/>glm::vec3(1.f,<sp/>1.f,<sp/>1.f);</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glm::vec3<sp/>n1<sp/>=<sp/>2.f<sp/>*<sp/>glm::vec3((*pa_r1)(i,<sp/>j),</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*pa_g1)(i,<sp/>j),</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*pa_b1)(i,<sp/>j))<sp/>-</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>v111;</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glm::vec3<sp/>n2<sp/>=<sp/>2.f<sp/>*<sp/>glm::vec3((*pa_r2)(i,<sp/>j),</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*pa_g2)(i,<sp/>j),</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*pa_b2)(i,<sp/>j))<sp/>-</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>v111;</highlight></codeline>
 <codeline lineno="343"><highlight class="normal"></highlight></codeline>
 <codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>n2.x<sp/>*=<sp/>detail_scaling;</highlight></codeline>
 <codeline lineno="345"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>n2.y<sp/>*=<sp/>detail_scaling;</highlight></codeline>
 <codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>n2.z<sp/>*=<sp/>detail_scaling;</highlight></codeline>
 <codeline lineno="347"><highlight class="normal"></highlight></codeline>
-<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Vec3&lt;float&gt;<sp/>vn<sp/>=<sp/>blending_fct(n1,<sp/>n2);</highlight></codeline>
-<codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vn.normalize();</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glm::vec3<sp/>vn<sp/>=<sp/>blending_fct(n1,<sp/>n2);</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vn<sp/>=<sp/>glm::normalize(vn);</highlight></codeline>
 <codeline lineno="350"><highlight class="normal"></highlight></codeline>
 <codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*pa_r1)(i,<sp/>j)<sp/>=<sp/>0.5f<sp/>*<sp/>vn.x<sp/>+<sp/>0.5f;</highlight></codeline>
 <codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*pa_g1)(i,<sp/>j)<sp/>=<sp/>0.5f<sp/>*<sp/>vn.y<sp/>+<sp/>0.5f;</highlight></codeline>

@@ -10,12 +10,12 @@ var point_8hpp =
     [ "interp_bspline", "point_8hpp.html#af148c924b422baa2e359e0788b7392d0", null ],
     [ "interp_catmullrom", "point_8hpp.html#ac7a93fe9501041332e1ff7a128742c6f", null ],
     [ "interp_decasteljau", "point_8hpp.html#aab4ce9b01f013efdc3dd817da4177737", null ],
-    [ "intersect_bounding_boxes", "point_8hpp.html#a61b30a7773960b38e0a231e240a64af6", null ],
-    [ "is_point_within_bounding_box", "point_8hpp.html#a0c5a341999c6f1b64fd04f2a6bd6dd66", null ],
-    [ "is_point_within_bounding_box", "point_8hpp.html#abcecf8666a7291e978c81ba31eae37a4", null ],
+    [ "intersect_bounding_boxes", "point_8hpp.html#a62068967763814bfbf05a505993c544a", null ],
+    [ "is_point_within_bounding_box", "point_8hpp.html#a6f161aa76459d3e12f7844b7d660c980", null ],
+    [ "is_point_within_bounding_box", "point_8hpp.html#a538bb0deab3446abc04bbe26a4dd5da1", null ],
     [ "lerp", "point_8hpp.html#ac14815cf025b7430d31d08125a5c6f0d", null ],
     [ "midpoint", "point_8hpp.html#a520a1e42c4e492e81b334914807abc22", null ],
     [ "sort_points", "point_8hpp.html#a69877ef43645c767daa0735fde59821c", null ],
     [ "triangle_area", "point_8hpp.html#a9249226d73f4396157c1c6415ebf3a7c", null ],
-    [ "unit_square_bbox", "point_8hpp.html#a4910efa1a82d5dd66d7d02a87fab7e7a", null ]
+    [ "unit_square_bbox", "point_8hpp.html#aef71b544e3f4e5321cb3d41a7366e0f3", null ]
 ];

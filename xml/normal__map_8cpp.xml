@@ -23,13 +23,13 @@
 <codeline lineno="13"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="14"><highlight class="normal"><sp/><sp/>Tensor<sp/>nmap<sp/>=<sp/>Tensor(array.shape,<sp/>3);</highlight></codeline>
 <codeline lineno="15"><highlight class="normal"></highlight></codeline>
-<codeline lineno="16"><highlight class="normal"><sp/><sp/>Array<sp/>dx<sp/>=<sp/><ref refid="namespacehmap_1a11d438a3f643427c957d160b7c1a04de" kindref="member">gradient_x</ref>(array)<sp/>*<sp/>array.<ref refid="classhmap_1_1Array_1a3cf6ada373f8af1affcbbed22db1194f" kindref="member">shape</ref>.<ref refid="structhmap_1_1Vec2_1a2dc51e83492f966eeddbdac3d58ab447" kindref="member">x</ref>;</highlight></codeline>
-<codeline lineno="17"><highlight class="normal"><sp/><sp/>Array<sp/>dy<sp/>=<sp/><ref refid="namespacehmap_1a8dbef7ccc1936646831eb5a24db58d81" kindref="member">gradient_y</ref>(array)<sp/>*<sp/>array.<ref refid="classhmap_1_1Array_1a3cf6ada373f8af1affcbbed22db1194f" kindref="member">shape</ref>.<ref refid="structhmap_1_1Vec2_1a087ff9ff4159d1e5778c0b65ee2a1648" kindref="member">y</ref>;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/>Array<sp/>dx<sp/>=<sp/><ref refid="namespacehmap_1a11d438a3f643427c957d160b7c1a04de" kindref="member">gradient_x</ref>(array)<sp/>*<sp/>array.<ref refid="classhmap_1_1Array_1a9ee3e85888021b80660357e73f35a5ea" kindref="member">shape</ref>.x;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/>Array<sp/>dy<sp/>=<sp/><ref refid="namespacehmap_1a8dbef7ccc1936646831eb5a24db58d81" kindref="member">gradient_y</ref>(array)<sp/>*<sp/>array.<ref refid="classhmap_1_1Array_1a9ee3e85888021b80660357e73f35a5ea" kindref="member">shape</ref>.y;</highlight></codeline>
 <codeline lineno="18"><highlight class="normal"></highlight></codeline>
 <codeline lineno="19"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/>array.shape.y;<sp/>j++)</highlight></codeline>
 <codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>array.shape.x;<sp/>i++)</highlight></codeline>
 <codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Vec3&lt;float&gt;<sp/>n<sp/>=<sp/>Vec3&lt;float&gt;(-dx(i,<sp/>j),<sp/>-dy(i,<sp/>j),<sp/>1.f);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>glm::vec3<sp/>n<sp/>=<sp/>glm::vec3(-dx(i,<sp/>j),<sp/>-dy(i,<sp/>j),<sp/>1.f);</highlight></codeline>
 <codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>n<sp/>/=<sp/>std::hypot(n.x,<sp/>n.y,<sp/>n.z);</highlight></codeline>
 <codeline lineno="24"><highlight class="normal"></highlight></codeline>
 <codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>nmap(i,<sp/>j,<sp/>0)<sp/>=<sp/>0.5f<sp/>*<sp/>(n.x<sp/>+<sp/>1.f);</highlight></codeline>
@@ -41,11 +41,11 @@
 <codeline lineno="31"><highlight class="normal"></highlight></codeline>
 <codeline lineno="32"><highlight class="normal">Array<sp/><ref refid="namespacehmap_1a26a0e82cf03ec259e3efae1ea84286db" kindref="member">normal_map_to_heightmap</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Tensor<sp/>&amp;nmap)</highlight></codeline>
 <codeline lineno="33"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/>Vec2&lt;int&gt;<sp/>shape(nmap.shape.x,<sp/>nmap.shape.y);</highlight></codeline>
-<codeline lineno="35"><highlight class="normal"><sp/><sp/>Array<sp/><sp/><sp/><sp/><sp/>z1(shape);</highlight></codeline>
-<codeline lineno="36"><highlight class="normal"><sp/><sp/>Array<sp/><sp/><sp/><sp/><sp/>z2(shape);</highlight></codeline>
-<codeline lineno="37"><highlight class="normal"><sp/><sp/>Array<sp/><sp/><sp/><sp/><sp/>dx(shape);</highlight></codeline>
-<codeline lineno="38"><highlight class="normal"><sp/><sp/>Array<sp/><sp/><sp/><sp/><sp/>dy(shape);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/>glm::ivec2<sp/>shape(nmap.shape.x,<sp/>nmap.shape.y);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/>Array<sp/><sp/><sp/><sp/><sp/><sp/>z1(shape);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/>Array<sp/><sp/><sp/><sp/><sp/><sp/>z2(shape);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/>Array<sp/><sp/><sp/><sp/><sp/><sp/>dx(shape);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/>Array<sp/><sp/><sp/><sp/><sp/><sp/>dy(shape);</highlight></codeline>
 <codeline lineno="39"><highlight class="normal"></highlight></codeline>
 <codeline lineno="40"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>1;<sp/>j<sp/>&lt;<sp/>shape.y;<sp/>++j)</highlight></codeline>
 <codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>1;<sp/>i<sp/>&lt;<sp/>shape.x;<sp/>++i)</highlight></codeline>
@@ -76,11 +76,11 @@
 <codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>iterations,</highlight></codeline>
 <codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>omega)</highlight></codeline>
 <codeline lineno="68"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/>Vec2&lt;int&gt;<sp/>shape(nmap.shape.x,<sp/>nmap.shape.y);</highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/>Array<sp/><sp/><sp/><sp/><sp/>z1(shape);</highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/>Array<sp/><sp/><sp/><sp/><sp/>z2(shape);</highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/>Array<sp/><sp/><sp/><sp/><sp/>dx(shape);</highlight></codeline>
-<codeline lineno="73"><highlight class="normal"><sp/><sp/>Array<sp/><sp/><sp/><sp/><sp/>dy(shape);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/>glm::ivec2<sp/>shape(nmap.shape.x,<sp/>nmap.shape.y);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/>Array<sp/><sp/><sp/><sp/><sp/><sp/>z1(shape);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/>Array<sp/><sp/><sp/><sp/><sp/><sp/>z2(shape);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/>Array<sp/><sp/><sp/><sp/><sp/><sp/>dx(shape);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/>Array<sp/><sp/><sp/><sp/><sp/><sp/>dy(shape);</highlight></codeline>
 <codeline lineno="74"><highlight class="normal"></highlight></codeline>
 <codeline lineno="75"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>1;<sp/>j<sp/>&lt;<sp/>shape.y;<sp/>++j)</highlight></codeline>
 <codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>1;<sp/>i<sp/>&lt;<sp/>shape.x;<sp/>++i)</highlight></codeline>

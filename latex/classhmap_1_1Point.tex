@@ -30,7 +30,7 @@ bool \mbox{\hyperlink{classhmap_1_1Point_ac8b559ae275f04c0d19d8ec66595847d}{oper
 \begin{DoxyCompactList}\small\item\em Divides the point by a scalar. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classhmap_1_1Point_abc414635893bad912e30e009fbf8af35}{print}} ()
 \begin{DoxyCompactList}\small\item\em Prints the coordinates and value of the \doxylink{classhmap_1_1Point}{Point} object. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classhmap_1_1Point_a71f412d383764f8df8f56a5439eb4da7}{set\+\_\+value\+\_\+from\+\_\+array}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ bbox)
+void \mbox{\hyperlink{classhmap_1_1Point_a304e03905a2dcc58b11f79c260df1837}{set\+\_\+value\+\_\+from\+\_\+array}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, glm\+::vec4 bbox)
 \begin{DoxyCompactList}\small\item\em Updates the point\textquotesingle{}s value based on bilinear interpolation from an array. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -202,11 +202,11 @@ The result of the division.
 
 Prints the coordinates and value of the \doxylink{classhmap_1_1Point}{Point} object. 
 
-This function outputs the \doxylink{classhmap_1_1Point}{Point}\textquotesingle{}s x, y coordinates, and an additional value {\ttfamily v} to the standard output in the format {\ttfamily (x, y, v)}, followed by a newline. \Hypertarget{classhmap_1_1Point_a71f412d383764f8df8f56a5439eb4da7}\label{classhmap_1_1Point_a71f412d383764f8df8f56a5439eb4da7} 
+This function outputs the \doxylink{classhmap_1_1Point}{Point}\textquotesingle{}s x, y coordinates, and an additional value {\ttfamily v} to the standard output in the format {\ttfamily (x, y, v)}, followed by a newline. \Hypertarget{classhmap_1_1Point_a304e03905a2dcc58b11f79c260df1837}\label{classhmap_1_1Point_a304e03905a2dcc58b11f79c260df1837} 
 \index{hmap::Point@{hmap::Point}!set\_value\_from\_array@{set\_value\_from\_array}}
 \index{set\_value\_from\_array@{set\_value\_from\_array}!hmap::Point@{hmap::Point}}
 \doxysubsubsection{\texorpdfstring{set\_value\_from\_array()}{set\_value\_from\_array()}}
-{\footnotesize\ttfamily void hmap\+::\+Point\+::set\+\_\+value\+\_\+from\+\_\+array (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{\mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$}]{bbox }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void hmap\+::\+Point\+::set\+\_\+value\+\_\+from\+\_\+array (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{glm\+::vec4}]{bbox }\end{DoxyParamCaption})}
 
 
 
@@ -220,7 +220,7 @@ If the normalized coordinates fall outside the bounds of the array, the point\te
 \begin{DoxyParams}{Parameters}
 {\em array} & The input {\ttfamily \doxylink{classhmap_1_1Array}{Array}} from which the value is interpolated. The {\ttfamily \doxylink{classhmap_1_1Array}{Array}} should support bilinear interpolation. \\
 \hline
-{\em bbox} & Bounding box used for normalizing the {\ttfamily \doxylink{classhmap_1_1Point}{Point}}\textquotesingle{}s coordinates. This box is defined by a {\ttfamily \doxylink{structhmap_1_1Vec4}{Vec4}\texorpdfstring{$<$}{<}float\texorpdfstring{$>$}{>}} containing minimum and maximum values for both x and y dimensions in the format {\ttfamily \{xmin, xmax, ymin, ymax\}}.\\
+{\em bbox} & Bounding box used for normalizing the {\ttfamily \doxylink{classhmap_1_1Point}{Point}}\textquotesingle{}s coordinates. This box is defined by a {\ttfamily glm\+::vec4} containing minimum and maximum values for both x and y dimensions in the format {\ttfamily \{xmin, xmax, ymin, ymax\}}.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyNote}{Note}

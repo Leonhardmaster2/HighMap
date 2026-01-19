@@ -27,9 +27,9 @@
 <codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::function&lt;</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">(Array<sp/>&amp;x)&gt;<sp/>unary_op,</highlight></codeline>
 <codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>apply_prefiltering)</highlight></codeline>
 <codeline lineno="19"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="20"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nc_x<sp/>=<sp/>std::min(array.shape.x,<sp/>std::max(4,<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)(2.f<sp/>*<sp/>kc)));</highlight></codeline>
-<codeline lineno="21"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nc_y<sp/>=<sp/>std::min(array.shape.y,<sp/>std::max(4,<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)(2.f<sp/>*<sp/>kc)));</highlight></codeline>
-<codeline lineno="22"><highlight class="normal"><sp/><sp/>Vec2&lt;int&gt;<sp/>shape_coarse(nc_x,<sp/>nc_y);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nc_x<sp/>=<sp/>std::min(array.shape.x,<sp/>std::max(4,<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)(2.f<sp/>*<sp/>kc)));</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nc_y<sp/>=<sp/>std::min(array.shape.y,<sp/>std::max(4,<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)(2.f<sp/>*<sp/>kc)));</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/>glm::ivec2<sp/>shape_coarse(nc_x,<sp/>nc_y);</highlight></codeline>
 <codeline lineno="23"><highlight class="normal"></highlight></codeline>
 <codeline lineno="24"><highlight class="normal"><sp/><sp/>Array<sp/>array_filtered;</highlight></codeline>
 <codeline lineno="25"><highlight class="normal"></highlight></codeline>
@@ -40,10 +40,10 @@
 <codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/>nk<sp/>=<sp/>std::max(</highlight></codeline>
 <codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1,</highlight></codeline>
 <codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(wavelengths_per_kernel<sp/>*<sp/>array.shape.x<sp/>/<sp/>kc));</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>Vec2&lt;int&gt;<sp/>kernel_shape(nk,<sp/>nk);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>glm::ivec2<sp/>kernel_shape(nk,<sp/>nk);</highlight></codeline>
 <codeline lineno="34"><highlight class="normal"></highlight></codeline>
-<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>Array<sp/>kernel<sp/>=<sp/><ref refid="namespacehmap_1abf04df687d39ce436fc5cbfae573dbff" kindref="member">sinc_separable</ref>(kernel_shape,<sp/>wavelengths_per_kernel);</highlight></codeline>
-<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>kernel<sp/>*=<sp/><ref refid="namespacehmap_1adfc320d14c66c6a40dedd9410efa269d" kindref="member">blackman</ref>(kernel_shape);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>Array<sp/>kernel<sp/>=<sp/><ref refid="namespacehmap_1a675ff649d5e55194bfa93fac4c423adb" kindref="member">sinc_separable</ref>(kernel_shape,<sp/>wavelengths_per_kernel);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>kernel<sp/>*=<sp/><ref refid="namespacehmap_1abc5852a4cae426341235d60a04964fc1" kindref="member">blackman</ref>(kernel_shape);</highlight></codeline>
 <codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>kernel<sp/>/=<sp/>kernel.sum();</highlight></codeline>
 <codeline lineno="38"><highlight class="normal"></highlight></codeline>
 <codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>rank<sp/>=<sp/>1;</highlight></codeline>

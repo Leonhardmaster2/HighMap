@@ -3,7 +3,7 @@ var searchData=
   ['u_0',['u',['../structhmap_1_1Pos.html#a33ddf06bcbb181e1de3a2556ba73d78c',1,'hmap::Pos']]],
   ['uint_1',['uint',['../array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14',1,'uint:&#160;array.hpp'],['../vector__utils_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14',1,'uint:&#160;vector_utils.hpp']]],
   ['unique_5fvalues_2',['unique_values',['../classhmap_1_1Array.html#a7bafe99a2d644e79d638002a19dcc6d5',1,'hmap::Array::unique_values()'],['../structhmap_1_1VirtualArray.html#a8d74c7c6a84b8c54985a5fdeb4e805f0',1,'hmap::VirtualArray::unique_values()']]],
-  ['unit_5fsquare_5fbbox_3',['unit_square_bbox',['../namespacehmap.html#a4910efa1a82d5dd66d7d02a87fab7e7a',1,'hmap']]],
+  ['unit_5fsquare_5fbbox_3',['unit_square_bbox',['../namespacehmap.html#aef71b544e3f4e5321cb3d41a7366e0f3',1,'hmap']]],
   ['unsphericity_4',['unsphericity',['../namespacehmap_1_1gpu.html#a112db22b157fcb69d867e1e5ee3a1afd',1,'hmap::gpu::unsphericity()'],['../namespacehmap.html#a5dc8b3117305f025eb4d0da50bf3c674',1,'hmap::unsphericity(const Array &amp;z, int ir)']]],
   ['unwrap_5fphase_5',['unwrap_phase',['../namespacehmap.html#a3f8dc201377b61428eba8daa4a03a65f',1,'hmap']]],
   ['unwrap_5fphase_2ecpp_6',['unwrap_phase.cpp',['../unwrap__phase_8cpp.html',1,'']]],
@@ -15,7 +15,7 @@ var searchData=
   ['upscale_5famplification_12',['upscale_amplification',['../namespacehmap.html#a868ae7c781d7e72af7b1416898a2f891',1,'hmap']]],
   ['upscale_5famplification_2ecpp_13',['upscale_amplification.cpp',['../upscale__amplification_8cpp.html',1,'']]],
   ['upscaling_2ehpp_14',['upscaling.hpp',['../upscaling_8hpp.html',1,'']]],
-  ['upstream_5ftraversal_15',['upstream_traversal',['../classhmap_1_1DrainageBasins.html#aa53e3dff71d7c9f9c42888b628183a26',1,'hmap::DrainageBasins']]],
+  ['upstream_5ftraversal_15',['upstream_traversal',['../classhmap_1_1DrainageBasins.html#a54a7fd67bac75665ea412d5a681da642',1,'hmap::DrainageBasins']]],
   ['usage_16',['Example usage',['../index.html#autotoc_md7',1,'']]],
   ['usage_20example_3a_17',['Usage Example:',['../classhmap_1_1Timer.html#autotoc_md0',1,'']]]
 ];

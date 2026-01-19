@@ -30,9 +30,9 @@
 <codeline lineno="19"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="20"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>run<sp/>=<sp/>clwrapper::Run(</highlight><highlight class="stringliteral">&quot;advection_warp&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="21"><highlight class="normal"></highlight></codeline>
-<codeline lineno="22"><highlight class="normal"><sp/><sp/>Vec2&lt;int&gt;<sp/>shape<sp/>=<sp/>z.shape;</highlight></codeline>
-<codeline lineno="23"><highlight class="normal"><sp/><sp/>Array<sp/><sp/><sp/><sp/><sp/>out<sp/>=<sp/>Array(shape);</highlight></codeline>
-<codeline lineno="24"><highlight class="normal"><sp/><sp/>Array<sp/><sp/><sp/><sp/><sp/>mask;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/>glm::ivec2<sp/>shape<sp/>=<sp/>z.shape;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/>Array<sp/><sp/><sp/><sp/><sp/><sp/>out<sp/>=<sp/>Array(shape);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/>Array<sp/><sp/><sp/><sp/><sp/><sp/>mask;</highlight></codeline>
 <codeline lineno="25"><highlight class="normal"></highlight></codeline>
 <codeline lineno="26"><highlight class="normal"><sp/><sp/>run.bind_imagef(</highlight><highlight class="stringliteral">&quot;z&quot;</highlight><highlight class="normal">,<sp/>z.vector,<sp/>shape.x,<sp/>shape.y);</highlight></codeline>
 <codeline lineno="27"><highlight class="normal"><sp/><sp/>run.bind_imagef(</highlight><highlight class="stringliteral">&quot;field&quot;</highlight><highlight class="normal">,<sp/>advected_field.vector,<sp/>shape.x,<sp/>shape.y);</highlight></codeline>

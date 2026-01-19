@@ -1,8 +1,8 @@
 var synthesis_8hpp =
 [
-    [ "non_parametric_sampling", "synthesis_8hpp.html#a92483ef87c6a5877abe30af6b270f2a0", null ],
-    [ "quilting", "synthesis_8hpp.html#a94a0d14d841251b9803f6fa11097b175", null ],
-    [ "quilting_blend", "synthesis_8hpp.html#a77691c31ed316374c25becc7ecddd133", null ],
-    [ "quilting_expand", "synthesis_8hpp.html#aa23790e26c213a550660e479a28f21e5", null ],
-    [ "quilting_shuffle", "synthesis_8hpp.html#af2faad7feceeb1059da7303748438a51", null ]
+    [ "non_parametric_sampling", "synthesis_8hpp.html#a7064111b8b50fd4e29928e6d3f5e10f0", null ],
+    [ "quilting", "synthesis_8hpp.html#a9f1bfc155429e75866df0a713a4e68a0", null ],
+    [ "quilting_blend", "synthesis_8hpp.html#a9dd4243c70bb72e9fce8cadc8e6c5c0f", null ],
+    [ "quilting_expand", "synthesis_8hpp.html#a8465f19ac6fb4b51e8fd67346c8f343d", null ],
+    [ "quilting_shuffle", "synthesis_8hpp.html#a565bdd51f2277d5847c183cceaecb260", null ]
 ];

@@ -57,9 +57,20 @@ var hierarchy =
     ] ],
     [ "hmap::Interpolator1D", "classhmap_1_1Interpolator1D.html", null ],
     [ "hmap::InterpolatorCurve", "classhmap_1_1InterpolatorCurve.html", null ],
+    [ "glm::ivec2", null, [
+      [ "hmap::Vec2< int >", "structhmap_1_1Vec2_3_01int_01_4.html", null ]
+    ] ],
+    [ "glm::ivec3", null, [
+      [ "hmap::Vec3< int >", "structhmap_1_1Vec3_3_01int_01_4.html", null ]
+    ] ],
+    [ "glm::ivec4", null, [
+      [ "hmap::Vec4< int >", "structhmap_1_1Vec4_3_01int_01_4.html", null ]
+    ] ],
+    [ "hmap::IVec4Eq", "structhmap_1_1IVec4Eq.html", null ],
+    [ "hmap::IVec4Hash", "structhmap_1_1IVec4Hash.html", null ],
     [ "hmap::LruTileEntry", "structhmap_1_1LruTileEntry.html", null ],
     [ "hmap::Mat< T >", "structhmap_1_1Mat.html", null ],
-    [ "hmap::Mat< hmap::Vec2< int > >", "structhmap_1_1Mat.html", null ],
+    [ "hmap::Mat< glm::ivec2 >", "structhmap_1_1Mat.html", null ],
     [ "hmap::Particle", "structhmap_1_1Particle.html", null ],
     [ "hmap::Point", "classhmap_1_1Point.html", null ],
     [ "hmap::Pos", "structhmap_1_1Pos.html", null ],
@@ -77,11 +88,17 @@ var hierarchy =
       [ "hmap::RamTileStorage", "classhmap_1_1RamTileStorage.html", null ]
     ] ],
     [ "hmap::Timer", "classhmap_1_1Timer.html", null ],
+    [ "glm::vec2", null, [
+      [ "hmap::Vec2< float >", "structhmap_1_1Vec2_3_01float_01_4.html", null ]
+    ] ],
     [ "hmap::Vec2< T >", "structhmap_1_1Vec2.html", null ],
-    [ "hmap::Vec2< float >", "structhmap_1_1Vec2.html", null ],
-    [ "hmap::Vec2< int >", "structhmap_1_1Vec2.html", null ],
+    [ "glm::vec3", null, [
+      [ "hmap::Vec3< float >", "structhmap_1_1Vec3_3_01float_01_4.html", null ]
+    ] ],
     [ "hmap::Vec3< T >", "structhmap_1_1Vec3.html", null ],
-    [ "hmap::Vec3< int >", "structhmap_1_1Vec3.html", null ],
+    [ "glm::vec4", null, [
+      [ "hmap::Vec4< float >", "structhmap_1_1Vec4_3_01float_01_4.html", null ]
+    ] ],
     [ "hmap::Vec4< T >", "structhmap_1_1Vec4.html", null ],
     [ "hmap::VirtualArray", "structhmap_1_1VirtualArray.html", null ],
     [ "hmap::VirtualTexture", "classhmap_1_1VirtualTexture.html", null ],

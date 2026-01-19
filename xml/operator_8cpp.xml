@@ -79,7 +79,7 @@
 <codeline lineno="69"><highlight class="normal">Array<sp/><ref refid="namespacehmap_1ad6fc7fb24960fa6a45bc657ae2d89f80" kindref="member">hstack</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array<sp/>&amp;array1,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array<sp/>&amp;array2)<sp/></highlight><highlight class="comment">//<sp/>friend<sp/>function</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="70"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="71"><highlight class="normal"><sp/><sp/>Array<sp/>array_out<sp/>=<sp/>Array(</highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Vec2&lt;int&gt;(array1.shape.x<sp/>+<sp/>array2.shape.x,<sp/>array1.shape.y));</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>glm::ivec2(array1.shape.x<sp/>+<sp/>array2.shape.x,<sp/>array1.shape.y));</highlight></codeline>
 <codeline lineno="73"><highlight class="normal"></highlight></codeline>
 <codeline lineno="74"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/>array1.shape.y;<sp/>j++)</highlight></codeline>
 <codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>array1.shape.x;<sp/>i++)</highlight></codeline>
@@ -102,7 +102,7 @@
 <codeline lineno="92"><highlight class="normal">Array<sp/><ref refid="namespacehmap_1a462f8b6ebc7b8ab79c619987e0ddfce4" kindref="member">vstack</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array<sp/>&amp;array1,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array<sp/>&amp;array2)<sp/></highlight><highlight class="comment">//<sp/>friend<sp/>function</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="93"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="94"><highlight class="normal"><sp/><sp/>Array<sp/>array_out<sp/>=<sp/>Array(</highlight></codeline>
-<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Vec2&lt;int&gt;(array1.shape.x,<sp/>array1.shape.y<sp/>+<sp/>array2.shape.y));</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>glm::ivec2(array1.shape.x,<sp/>array1.shape.y<sp/>+<sp/>array2.shape.y));</highlight></codeline>
 <codeline lineno="96"><highlight class="normal"></highlight></codeline>
 <codeline lineno="97"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>array1.shape.x;<sp/>i++)</highlight></codeline>
 <codeline lineno="98"><highlight class="normal"><sp/><sp/>{</highlight></codeline>

@@ -61,8 +61,8 @@
 <codeline lineno="51"><highlight class="normal"><sp/><sp/>this-&gt;components.clear();</highlight></codeline>
 <codeline lineno="52"><highlight class="normal"></highlight></codeline>
 <codeline lineno="53"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>working<sp/>array</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="54"><highlight class="normal"><sp/><sp/>Vec2&lt;int&gt;<sp/>level_shape<sp/>=<sp/>this-&gt;p_array-&gt;shape;</highlight></codeline>
-<codeline lineno="55"><highlight class="normal"><sp/><sp/>Array<sp/><sp/><sp/><sp/><sp/>array_low<sp/>=<sp/>*this-&gt;p_array;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/>glm::ivec2<sp/>level_shape<sp/>=<sp/>this-&gt;p_array-&gt;shape;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/>Array<sp/><sp/><sp/><sp/><sp/><sp/>array_low<sp/>=<sp/>*this-&gt;p_array;</highlight></codeline>
 <codeline lineno="56"><highlight class="normal"></highlight></codeline>
 <codeline lineno="57"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n<sp/>=<sp/>0;<sp/>n<sp/>&lt;<sp/>this-&gt;nlevels;<sp/>n++)</highlight></codeline>
 <codeline lineno="58"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
@@ -92,7 +92,7 @@
 <codeline lineno="82"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="83"><highlight class="normal"><sp/><sp/>Array<sp/>array_out<sp/>=<sp/>this-&gt;residual;</highlight></codeline>
 <codeline lineno="84"><highlight class="normal"></highlight></codeline>
-<codeline lineno="85"><highlight class="normal"><sp/><sp/>Vec2&lt;int&gt;<sp/>shape<sp/>=<sp/>array_out.shape;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/>glm::ivec2<sp/>shape<sp/>=<sp/>array_out.shape;</highlight></codeline>
 <codeline lineno="86"><highlight class="normal"></highlight></codeline>
 <codeline lineno="87"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n<sp/>=<sp/>this-&gt;nlevels;<sp/>n--<sp/>&gt;<sp/>0;)</highlight></codeline>
 <codeline lineno="88"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
@@ -100,7 +100,7 @@
 <codeline lineno="90"><highlight class="normal"></highlight></codeline>
 <codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(n<sp/>&gt;<sp/>0)</highlight></codeline>
 <codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>shape<sp/>=<sp/>Vec2&lt;int&gt;(shape.x<sp/>*<sp/>2,<sp/>shape.y<sp/>*<sp/>2);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>shape<sp/>=<sp/>glm::ivec2(shape.x<sp/>*<sp/>2,<sp/>shape.y<sp/>*<sp/>2);</highlight></codeline>
 <codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>array_out<sp/>=<sp/>array_out.resample_to_shape_bicubic(shape);</highlight></codeline>
 <codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="96"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
@@ -113,10 +113,10 @@
 <codeline lineno="103"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>highpass<sp/>and<sp/>lowpass<sp/>storage</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="104"><highlight class="normal"><sp/><sp/>std::vector&lt;Array&gt;<sp/>banner_arrays<sp/>=<sp/>{};</highlight></codeline>
 <codeline lineno="105"><highlight class="normal"></highlight></codeline>
-<codeline lineno="106"><highlight class="normal"><sp/><sp/>Vec2&lt;int&gt;<sp/>shape_ref<sp/>=<sp/>this-&gt;p_array-&gt;shape;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/>glm::ivec2<sp/>shape_ref<sp/>=<sp/>this-&gt;p_array-&gt;shape;</highlight></codeline>
 <codeline lineno="107"><highlight class="normal"></highlight></codeline>
-<codeline lineno="108"><highlight class="normal"><sp/><sp/>Array<sp/><sp/><sp/><sp/><sp/>array_out<sp/>=<sp/>this-&gt;residual;</highlight></codeline>
-<codeline lineno="109"><highlight class="normal"><sp/><sp/>Vec2&lt;int&gt;<sp/>shape<sp/>=<sp/>array_out.shape;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/>Array<sp/><sp/><sp/><sp/><sp/><sp/>array_out<sp/>=<sp/>this-&gt;residual;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/>glm::ivec2<sp/>shape<sp/>=<sp/>array_out.shape;</highlight></codeline>
 <codeline lineno="110"><highlight class="normal"></highlight></codeline>
 <codeline lineno="111"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n<sp/>=<sp/>this-&gt;nlevels;<sp/>n--<sp/>&gt;<sp/>0;)</highlight></codeline>
 <codeline lineno="112"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
@@ -150,8 +150,8 @@
 <codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>std::fill(level_weights.begin(),<sp/>level_weights.end(),<sp/>1);</highlight></codeline>
 <codeline lineno="141"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="142"><highlight class="normal"></highlight></codeline>
-<codeline lineno="143"><highlight class="normal"><sp/><sp/>Array<sp/><sp/><sp/><sp/><sp/>array_out<sp/>=<sp/>this-&gt;residual;</highlight></codeline>
-<codeline lineno="144"><highlight class="normal"><sp/><sp/>Vec2&lt;int&gt;<sp/>shape<sp/>=<sp/>array_out.shape;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/>Array<sp/><sp/><sp/><sp/><sp/><sp/>array_out<sp/>=<sp/>this-&gt;residual;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/>glm::ivec2<sp/>shape<sp/>=<sp/>array_out.shape;</highlight></codeline>
 <codeline lineno="145"><highlight class="normal"></highlight></codeline>
 <codeline lineno="146"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n<sp/>=<sp/>this-&gt;nlevels;<sp/>n--<sp/>&gt;<sp/>finest_level;)</highlight></codeline>
 <codeline lineno="147"><highlight class="normal"><sp/><sp/>{</highlight></codeline>

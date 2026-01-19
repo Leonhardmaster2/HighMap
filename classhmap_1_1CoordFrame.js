@@ -1,18 +1,18 @@
 var classhmap_1_1CoordFrame =
 [
     [ "CoordFrame", "classhmap_1_1CoordFrame.html#ab015ceb2231eee4beeee57ee07bb19f3", null ],
-    [ "CoordFrame", "classhmap_1_1CoordFrame.html#acbfb58058da2e691b903e9fb38fb14fc", null ],
-    [ "get_origin", "classhmap_1_1CoordFrame.html#a36fcc247066a8f861e54ce601c011a2b", null ],
-    [ "get_size", "classhmap_1_1CoordFrame.html#ad287a48d7ec9ce91213d67895f471bbd", null ],
+    [ "CoordFrame", "classhmap_1_1CoordFrame.html#a0d86c82b256a4755eb75bd30b09e9703", null ],
+    [ "get_origin", "classhmap_1_1CoordFrame.html#aafb7aff2dd90eba7aa198a3a7bdb6ccb", null ],
+    [ "get_size", "classhmap_1_1CoordFrame.html#a8971f4090cb5cd1e9ff0ac1f0e1f06cd", null ],
     [ "get_rotation_angle", "classhmap_1_1CoordFrame.html#aebce63606ddca495d41de463cafb33bd", null ],
-    [ "set_origin", "classhmap_1_1CoordFrame.html#a03b6f72775d839e2fbe9b244c7d860e1", null ],
-    [ "set_size", "classhmap_1_1CoordFrame.html#a38eeb1a63ec5bfd703549d5edd916b89", null ],
+    [ "set_origin", "classhmap_1_1CoordFrame.html#a222b1c7967bcff3c088d2c210dd15036", null ],
+    [ "set_size", "classhmap_1_1CoordFrame.html#a6666eb25c743ed5c2f07cc8f12dbf052", null ],
     [ "set_rotation_angle", "classhmap_1_1CoordFrame.html#a309642c71a4058665a48427b0c9248fc", null ],
-    [ "compute_bounding_box", "classhmap_1_1CoordFrame.html#aec33c4aa81bf7c9da22122ae3e8b8967", null ],
+    [ "compute_bounding_box", "classhmap_1_1CoordFrame.html#a8d816754189a8244628bd4c6eefaf09c", null ],
     [ "get_heightmap_value_bilinear", "classhmap_1_1CoordFrame.html#a5187c7f902c93fb4f750fb022d3b19b7", null ],
     [ "is_point_within", "classhmap_1_1CoordFrame.html#a712f76df08417fcffc44b704e4ddd1be", null ],
-    [ "map_to_global_coords", "classhmap_1_1CoordFrame.html#a695f820d6db87e1502cb6562a4e37586", null ],
-    [ "map_to_relative_coords", "classhmap_1_1CoordFrame.html#a714e286bb111d3055ea4a4976ebeb43a", null ],
+    [ "map_to_global_coords", "classhmap_1_1CoordFrame.html#a3c9a2d05acd75d7dd6117263861d3cff", null ],
+    [ "map_to_relative_coords", "classhmap_1_1CoordFrame.html#aeac43550d5345f7d1b16a469b906fefb", null ],
     [ "normalized_distance_to_edges", "classhmap_1_1CoordFrame.html#af1f76997d4d33cc1cc1e63ffb1ca3ebd", null ],
     [ "normalized_shape_factor", "classhmap_1_1CoordFrame.html#ab1c8fa8ed0244f4a54759253b629255c", null ]
 ];

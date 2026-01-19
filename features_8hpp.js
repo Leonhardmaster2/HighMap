@@ -2,8 +2,8 @@ var features_8hpp =
 [
     [ "connected_components", "features_8hpp.html#a11f846a0bacba3463862df220ddf5131", null ],
     [ "geomorphons", "features_8hpp.html#aa60fa2d3f02d1e064b520fa1623200d0", null ],
-    [ "kmeans_clustering2", "features_8hpp.html#ae19d507d917f1f4cbc61fc76cc5baab0", null ],
-    [ "kmeans_clustering3", "features_8hpp.html#ac177e8615e697e3096737cb21a15f3ed", null ],
+    [ "kmeans_clustering2", "features_8hpp.html#ae22891fe79a3745582715cf33a706d8e", null ],
+    [ "kmeans_clustering3", "features_8hpp.html#ad55573a0def0bdf66d3637128cbf08c7", null ],
     [ "local_median_deviation", "features_8hpp.html#a9b6a1d2ca8ef58a4a0605d04bcbff038", null ],
     [ "mean_local", "features_8hpp.html#a39d52250df1825ecea1e63309d94d1fb", null ],
     [ "relative_elevation", "features_8hpp.html#a941d446cad19c166f4f6c4df857dba65", null ],

@@ -24,13 +24,13 @@
 <codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>persistence,</highlight></codeline>
 <codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>std::function&lt;</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">(Array<sp/>&amp;x,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>current_scaling)&gt;<sp/>unary_op)</highlight></codeline>
 <codeline lineno="16"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="17"><highlight class="normal"><sp/><sp/>Vec2&lt;int&gt;<sp/>initial_shape<sp/>=<sp/>array.shape;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/>glm::ivec2<sp/>initial_shape<sp/>=<sp/>array.shape;</highlight></codeline>
 <codeline lineno="18"><highlight class="normal"></highlight></codeline>
 <codeline lineno="19"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>upscale<sp/>amplification<sp/>(NB,<sp/>k<sp/>=<sp/>0<sp/>corresponds<sp/>to<sp/>initial<sp/>resolution)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="20"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>k<sp/>=<sp/>0;<sp/>k<sp/>&lt;<sp/>upscaling_levels<sp/>+<sp/>1;<sp/>k++)</highlight></codeline>
 <codeline lineno="21"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
-<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>Vec2&lt;int&gt;<sp/>upscaled_shape<sp/>=<sp/>std::pow(2,<sp/>k)<sp/>*<sp/>initial_shape;</highlight></codeline>
-<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>current_scaling<sp/>=<sp/>std::pow(persistence,<sp/>k);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>glm::ivec2<sp/>upscaled_shape<sp/>=<sp/>int(std::pow(2,<sp/>k))<sp/>*<sp/>initial_shape;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>current_scaling<sp/>=<sp/>std::pow(persistence,<sp/>k);</highlight></codeline>
 <codeline lineno="24"><highlight class="normal"></highlight></codeline>
 <codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>array<sp/>=<sp/>array.resample_to_shape_bicubic(upscaled_shape);</highlight></codeline>
 <codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>unary_op(array,<sp/>current_scaling);</highlight></codeline>

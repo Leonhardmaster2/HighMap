@@ -1,17 +1,17 @@
 var searchData=
 [
-  ['badlands_0',['badlands',['../namespacehmap_1_1gpu.html#a173df0f0155f3b9ed96827941e419601',1,'hmap::gpu']]],
-  ['basalt_5ffield_1',['basalt_field',['../namespacehmap_1_1gpu.html#a06f0930402ba5e7a66eb73d9da9a09ee',1,'hmap::gpu']]],
-  ['base_5felevation_2',['base_elevation',['../namespacehmap.html#ab54462b486be54fcf316f083f7ea3014',1,'hmap']]],
+  ['badlands_0',['badlands',['../namespacehmap_1_1gpu.html#a9c1f1f4997a6bc734517c77ace10aa73',1,'hmap::gpu']]],
+  ['basalt_5ffield_1',['basalt_field',['../namespacehmap_1_1gpu.html#af53f1253924f0886591cdd989ccf7dbc',1,'hmap::gpu']]],
+  ['base_5felevation_2',['base_elevation',['../namespacehmap.html#ad0679d167a3129dc403e3ca7082579f8',1,'hmap']]],
   ['basin_5fid_3',['basin_id',['../namespacehmap.html#a8284b00f1f460f1d5a406ee45587dcd9',1,'hmap']]],
-  ['bbox_5fto_5franges2d_4',['bbox_to_ranges2d',['../namespacehmap.html#ae3b069feb998593e6bd1ccdbb41f14eb',1,'hmap']]],
+  ['bbox_5fto_5franges2d_4',['bbox_to_ranges2d',['../namespacehmap.html#ad47906fd3938ef2cc8dbae87ad80a4c9',1,'hmap']]],
   ['bezier_5',['bezier',['../classhmap_1_1Path.html#a56cc1e52401d748b540f9bc72a49000b',1,'hmap::Path']]],
   ['bezier_5fround_6',['bezier_round',['../classhmap_1_1Path.html#a9c0c833a2c386bd43fa131520ff6a5f6',1,'hmap::Path']]],
   ['bilinear_5finterp_7',['bilinear_interp',['../namespacehmap.html#ae91029283452ab6d8276e3745a476b48',1,'hmap']]],
-  ['biquad_5fpulse_8',['biquad_pulse',['../namespacehmap.html#a28783971977657055053b3c143502bc2',1,'hmap']]],
-  ['biquadfunction_9',['BiquadFunction',['../classhmap_1_1BiquadFunction.html#a75fdaa5da7556ba9070e7453b710babe',1,'hmap::BiquadFunction']]],
-  ['biweight_10',['biweight',['../namespacehmap.html#ae0ab7faed3577159bc8051ad0e25b051',1,'hmap']]],
-  ['blackman_11',['blackman',['../namespacehmap.html#adfc320d14c66c6a40dedd9410efa269d',1,'hmap']]],
+  ['biquad_5fpulse_8',['biquad_pulse',['../namespacehmap.html#a2b69f27ab2ce6c9bdd87cdc630a0a1d5',1,'hmap']]],
+  ['biquadfunction_9',['BiquadFunction',['../classhmap_1_1BiquadFunction.html#a833dc567076ad412bbe56c72d5e2b154',1,'hmap::BiquadFunction']]],
+  ['biweight_10',['biweight',['../namespacehmap.html#a44931abadbb5fea3bba9dd59540cf9cb',1,'hmap']]],
+  ['blackman_11',['blackman',['../namespacehmap.html#abc5852a4cae426341235d60a04964fc1',1,'hmap']]],
   ['blend_5fexclusion_12',['blend_exclusion',['../namespacehmap.html#aafb76d7961d1655fdc07422982357588',1,'hmap']]],
   ['blend_5fgradients_13',['blend_gradients',['../namespacehmap.html#af91a60a9fcbed7e38f53df57631a5298',1,'hmap::blend_gradients()'],['../namespacehmap_1_1gpu.html#a3a43696b1d6b8f0d966f9f05e5085edf',1,'hmap::gpu::blend_gradients()']]],
   ['blend_5fnegate_14',['blend_negate',['../namespacehmap.html#a183cf8de980d1886130cac97fd41bcc5',1,'hmap']]],
@@ -20,8 +20,8 @@ var searchData=
   ['blend_5fsoft_17',['blend_soft',['../namespacehmap.html#a91e52ae1178d54931a1729a2368a31f7',1,'hmap']]],
   ['border_18',['border',['../namespacehmap.html#af80bcff234bf1482cf26896b9d21d270',1,'hmap::border()'],['../namespacehmap_1_1gpu.html#ac3ce919cb2abf0860493113a90892b79',1,'hmap::gpu::border()']]],
   ['bspline_19',['bspline',['../classhmap_1_1Path.html#a166a6f87dff196efa75abb1b731d3528',1,'hmap::Path']]],
-  ['bulkify_20',['bulkify',['../namespacehmap.html#a7c780f6b35e43e45457af59ce1c761ce',1,'hmap']]],
-  ['bump_21',['bump',['../namespacehmap.html#a80d18b9cba709433d31f37c29f64f01c',1,'hmap']]],
-  ['bump_5florentzian_22',['bump_lorentzian',['../namespacehmap.html#a867abc2da19924fa22525ff69bca398d',1,'hmap']]],
-  ['bumpfunction_23',['BumpFunction',['../classhmap_1_1BumpFunction.html#a178d0bca834491174e38281174d8aa95',1,'hmap::BumpFunction']]]
+  ['bulkify_20',['bulkify',['../namespacehmap.html#ae3ecf5f88476c5d49978a130f8cab2f3',1,'hmap']]],
+  ['bump_21',['bump',['../namespacehmap.html#a205eb3757eb00bd7c92504c01b9d3638',1,'hmap']]],
+  ['bump_5florentzian_22',['bump_lorentzian',['../namespacehmap.html#a4af0bde798f0266db4dfe24e1134a506',1,'hmap']]],
+  ['bumpfunction_23',['BumpFunction',['../classhmap_1_1BumpFunction.html#a80e2476cc674ff1e15c5135829484c68',1,'hmap::BumpFunction']]]
 ];

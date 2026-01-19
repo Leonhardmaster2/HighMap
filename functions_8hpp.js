@@ -52,6 +52,6 @@ var functions_8hpp =
       [ "WORLEY_DOUBLE", "functions_8hpp.html#ab8197c4c7a85dacb616fee7a7d0df195a1d1ba101960a8a8234df2d16ac305d45", null ],
       [ "WORLEY_VALUE", "functions_8hpp.html#ab8197c4c7a85dacb616fee7a7d0df195a803cca1f65b9596dbde7c54039773a39", null ]
     ] ],
-    [ "make_xy_function_from_array", "functions_8hpp.html#a7064ad1eef3ea7b6e19249fe3312e3b9", null ],
-    [ "create_noise_function_from_type", "functions_8hpp.html#a17514d1658d2a065892f061864a538ad", null ]
+    [ "make_xy_function_from_array", "functions_8hpp.html#a84ca1f41de32e4beacb10787127b4b8a", null ],
+    [ "create_noise_function_from_type", "functions_8hpp.html#af72b39fe64d11f55c59bcc8face3981b", null ]
 ];

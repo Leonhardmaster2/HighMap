@@ -8,12 +8,22 @@ Header file defining basic vector and matrix manipulation classes.
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-struct \mbox{\hyperlink{structhmap_1_1Vec2}{hmap\+::\+Vec2$<$ T $>$}}
-\begin{DoxyCompactList}\small\item\em \doxylink{structhmap_1_1Vec2}{Vec2} class for basic manipulation of 2D vectors. \end{DoxyCompactList}\item 
-struct \mbox{\hyperlink{structhmap_1_1Vec3}{hmap\+::\+Vec3$<$ T $>$}}
-\begin{DoxyCompactList}\small\item\em \doxylink{structhmap_1_1Vec3}{Vec3} class for basic manipulation of 3D vectors. \end{DoxyCompactList}\item 
-struct \mbox{\hyperlink{structhmap_1_1Vec4}{hmap\+::\+Vec4$<$ T $>$}}
-\begin{DoxyCompactList}\small\item\em \doxylink{structhmap_1_1Vec4}{Vec4} class for basic manipulation of 4D vectors. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structhmap_1_1Vec2_3_01float_01_4}{hmap\+::\+Vec2$<$ float $>$}}
+\item 
+struct \mbox{\hyperlink{structhmap_1_1Vec2_3_01int_01_4}{hmap\+::\+Vec2$<$ int $>$}}
+\item 
+struct \mbox{\hyperlink{structhmap_1_1Vec3_3_01float_01_4}{hmap\+::\+Vec3$<$ float $>$}}
+\item 
+struct \mbox{\hyperlink{structhmap_1_1Vec3_3_01int_01_4}{hmap\+::\+Vec3$<$ int $>$}}
+\item 
+struct \mbox{\hyperlink{structhmap_1_1Vec4_3_01float_01_4}{hmap\+::\+Vec4$<$ float $>$}}
+\item 
+struct \mbox{\hyperlink{structhmap_1_1Vec4_3_01int_01_4}{hmap\+::\+Vec4$<$ int $>$}}
+\item 
+struct \mbox{\hyperlink{structhmap_1_1IVec4Hash}{hmap\+::\+IVec4\+Hash}}
+\item 
+struct \mbox{\hyperlink{structhmap_1_1IVec4Eq}{hmap\+::\+IVec4\+Eq}}
+\item 
 struct \mbox{\hyperlink{structhmap_1_1Mat}{hmap\+::\+Mat$<$ T $>$}}
 \begin{DoxyCompactList}\small\item\em \doxylink{structhmap_1_1Mat}{Mat} class for basic manipulation of 2D matrices. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Namespaces}
@@ -24,8 +34,8 @@ namespace \mbox{\hyperlink{namespacehmap}{hmap}}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-{\footnotesize template$<$typename T $>$ }\\\mbox{\hyperlink{structhmap_1_1Vec3}{Vec3}}$<$ T $>$ \mbox{\hyperlink{namespacehmap_ad37e39413754484dfb342ffbfbe75c2b}{hmap\+::normalized\+\_\+vec3}} (T x, T y, T z)
-\begin{DoxyCompactList}\small\item\em Constructs a normalized 3D vector. \end{DoxyCompactList}\end{DoxyCompactItemize}
+glm\+::vec4 \mbox{\hyperlink{namespacehmap_adc5300323fa35e021fd83b8b048ef3b1}{hmap\+::adjust}} (const glm\+::vec4 \&v, float dx, float dy, float dz, float dw)
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -34,8 +44,6 @@ Header file defining basic vector and matrix manipulation classes.
 \begin{DoxyAuthor}{Author}
 Otto Link (\href{mailto:otto.link.bv@gmail.com}{\texttt{ otto.\+link.\+bv@gmail.\+com}}) 
 \end{DoxyAuthor}
-This header file provides basic implementations for 2D, 3D, and 4D vector classes ({\ttfamily Vec2}, {\ttfamily Vec3}, {\ttfamily Vec4}) and a simple matrix class ({\ttfamily Mat}). These classes offer fundamental operations such as addition, subtraction, multiplication, division, dot products, and basic matrix manipulation capabilities.
-
 \begin{DoxyVersion}{Version}
 0.\+1 
 \end{DoxyVersion}

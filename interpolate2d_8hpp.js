@@ -7,8 +7,8 @@ var interpolate2d_8hpp =
     [ "bilinear_interp", "interpolate2d_8hpp.html#ae91029283452ab6d8276e3745a476b48", null ],
     [ "cubic_interpolate", "interpolate2d_8hpp.html#aee026d8b23196038c2b16c370b743889", null ],
     [ "harmonic_interpolation", "interpolate2d_8hpp.html#a6cfd7b1fc064e5aaef1550041f1bbc06", null ],
-    [ "interpolate2d", "interpolate2d_8hpp.html#a62fb974ae1d78c0c4ebb4267dc9c8204", null ],
-    [ "interpolate2d_nearest", "interpolate2d_8hpp.html#a608687504dfc1cf55afe6f1db6a90335", null ],
-    [ "interpolate2d_delaunay", "interpolate2d_8hpp.html#a87e9a2e5fc78594e8d88522366ff5396", null ],
+    [ "interpolate2d", "interpolate2d_8hpp.html#a9204361c5b04a66019fa4c24ca2ac904", null ],
+    [ "interpolate2d_nearest", "interpolate2d_8hpp.html#a3c6b2fa133e70ba9f4cf44cb7ab97f3b", null ],
+    [ "interpolate2d_delaunay", "interpolate2d_8hpp.html#ad2581ee8be7619fed2e118310ad469f3", null ],
     [ "harmonic_interpolation", "interpolate2d_8hpp.html#a864cdb10c297b4a59dc761f32dbbc11a", null ]
 ];

@@ -9,12 +9,12 @@ var authoring_8hpp =
       [ "MULTIPLY", "authoring_8hpp.html#a5101273ec456f5267dddc3e22dae223babadb712f0f7627d6892ea66c9743aec1", null ],
       [ "SUBSTRACT", "authoring_8hpp.html#a5101273ec456f5267dddc3e22dae223ba2c10f19f935a5c6dd7fb0ac7bbb2c4ed", null ]
     ] ],
-    [ "alter_elevation", "authoring_8hpp.html#aa0b0e92bd8fa6fdc51ccb39f7a382e92", null ],
-    [ "base_elevation", "authoring_8hpp.html#ab54462b486be54fcf316f083f7ea3014", null ],
-    [ "flatbed_carve", "authoring_8hpp.html#a258949972d4c37ab8250e7befa76d99a", null ],
-    [ "flatbed_carve", "authoring_8hpp.html#aca85ea7a0afd5058ae2ff96f2d3d25f2", null ],
+    [ "alter_elevation", "authoring_8hpp.html#a6123c18788ae302332416d5d7585fd9f", null ],
+    [ "base_elevation", "authoring_8hpp.html#ad0679d167a3129dc403e3ca7082579f8", null ],
+    [ "flatbed_carve", "authoring_8hpp.html#aae12be5c22515d12229d65dc4ecd0db0", null ],
+    [ "flatbed_carve", "authoring_8hpp.html#a5f979c31af1c9ee6ad499882335ca6fb", null ],
     [ "reverse_midpoint", "authoring_8hpp.html#a19bb0a5d0609ac671ca054d18959c7f1", null ],
-    [ "ridgelines", "authoring_8hpp.html#aca4a5b0313f4efe251b20d90652a896b", null ],
-    [ "ridgelines_bezier", "authoring_8hpp.html#a49bf95ae7344e531d7c2af0071e64649", null ],
-    [ "stamping", "authoring_8hpp.html#a52fe1241da6ece981af7a368ef3ad0c4", null ]
+    [ "ridgelines", "authoring_8hpp.html#a74f6ef0464e0ec67df5179f49e14e35a", null ],
+    [ "ridgelines_bezier", "authoring_8hpp.html#a4e7db58b8b58def3b862476f18b6005e", null ],
+    [ "stamping", "authoring_8hpp.html#a4fb4163cdefab63b52484ea8091a11ed", null ]
 ];

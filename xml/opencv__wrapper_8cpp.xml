@@ -21,7 +21,7 @@
 <codeline lineno="11"><highlight class="normal"></highlight></codeline>
 <codeline lineno="12"><highlight class="normal">cv::Mat<sp/><ref refid="classhmap_1_1Array_1abc4875ad6cfe16bd03004ba52f94587c" kindref="member">Array::to_cv_mat</ref>()</highlight></codeline>
 <codeline lineno="13"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="14"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>cv::Mat(this-&gt;<ref refid="classhmap_1_1Array_1a3cf6ada373f8af1affcbbed22db1194f" kindref="member">shape</ref>.<ref refid="structhmap_1_1Vec2_1a087ff9ff4159d1e5778c0b65ee2a1648" kindref="member">y</ref>,<sp/><ref refid="classhmap_1_1Array_1af586ddce153ac93df48a6d26609d7264" kindref="member">this</ref>-&gt;shape.x,<sp/><ref refid="classhmap_1_1Array_1af586ddce153ac93df48a6d26609d7264" kindref="member">CV_32FC1</ref>,<sp/><ref refid="classhmap_1_1Array_1af586ddce153ac93df48a6d26609d7264" kindref="member">this</ref>-&gt;vector.data());</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>cv::Mat(this-&gt;<ref refid="classhmap_1_1Array_1a9ee3e85888021b80660357e73f35a5ea" kindref="member">shape</ref>.y,<sp/>this-&gt;shape.x,<sp/>CV_32FC1,<sp/>this-&gt;vector.data());</highlight></codeline>
 <codeline lineno="15"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="16"><highlight class="normal"></highlight></codeline>
 <codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Helper<sp/>function<sp/>to<sp/>convert<sp/>OpenCV<sp/>matrix<sp/>to<sp/>Array</highlight><highlight class="normal"></highlight></codeline>
@@ -39,8 +39,8 @@
 <codeline lineno="29"><highlight class="normal"></highlight></codeline>
 <codeline lineno="30"><highlight class="normal">Array<sp/><ref refid="namespacehmap_1a518f05118e1b9704160a7c3276a2f483" kindref="member">cv_mat_to_array</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>cv::Mat<sp/>&amp;mat,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>remap_values,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>flip_j)</highlight></codeline>
 <codeline lineno="31"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><sp/><sp/>Vec2&lt;int&gt;<sp/>shape<sp/>=<sp/>{mat.cols,<sp/>mat.rows};</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"><sp/><sp/>Array<sp/><sp/><sp/><sp/><sp/>array(shape);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/>glm::ivec2<sp/>shape<sp/>=<sp/>{mat.cols,<sp/>mat.rows};</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/>Array<sp/><sp/><sp/><sp/><sp/><sp/>array(shape);</highlight></codeline>
 <codeline lineno="34"><highlight class="normal"></highlight></codeline>
 <codeline lineno="35"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(mat.type())</highlight></codeline>
 <codeline lineno="36"><highlight class="normal"><sp/><sp/>{</highlight></codeline>

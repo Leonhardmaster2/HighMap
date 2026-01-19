@@ -172,7 +172,7 @@
 <codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vmin,</highlight></codeline>
 <codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vmax)</highlight></codeline>
 <codeline lineno="164"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="165"><highlight class="normal"><sp/><sp/>Vec2&lt;int&gt;<sp/>shape<sp/>=<sp/>z.shape;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/>glm::ivec2<sp/>shape<sp/>=<sp/>z.shape;</highlight></codeline>
 <codeline lineno="166"><highlight class="normal"></highlight></codeline>
 <codeline lineno="167"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>---<sp/>setup<sp/>input<sp/>parameters</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="168"><highlight class="normal"></highlight></codeline>
@@ -237,13 +237,13 @@
 <codeline lineno="227"><highlight class="normal"></highlight></codeline>
 <codeline lineno="228"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>---<sp/>add<sp/>noise<sp/>on<sp/>the<sp/>ridge<sp/>crest<sp/>lines</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="229"><highlight class="normal"></highlight></codeline>
-<codeline lineno="230"><highlight class="normal"><sp/><sp/>Array<sp/><ref refid="namespacehmap_1a03c0be3a7198eebacefcb208b0cfee99" kindref="member">noise</ref>(shape);</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/>Array<sp/><ref refid="namespacehmap_1a63a7fc5faca6c5018e98b8af700f4b80" kindref="member">noise</ref>(shape);</highlight></codeline>
 <codeline lineno="231"><highlight class="normal"></highlight></codeline>
 <codeline lineno="232"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(noise_ratio<sp/>&gt;<sp/>0.f)</highlight></codeline>
 <codeline lineno="233"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
-<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/>Vec2&lt;float&gt;<sp/>kw_noise<sp/>=<sp/>{4.f<sp/>/<sp/>ridge_wavelength,<sp/>4.f<sp/>/<sp/>ridge_wavelength};</highlight></codeline>
-<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a03c0be3a7198eebacefcb208b0cfee99" kindref="member">noise</ref><sp/>=<sp/><ref refid="namespacehmap_1a40b948c49a05c14f2d540dc1a6952130" kindref="member">noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,<sp/>shape,<sp/>kw_noise,<sp/>++seed);</highlight></codeline>
-<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">remap</ref>(<ref refid="namespacehmap_1a03c0be3a7198eebacefcb208b0cfee99" kindref="member">noise</ref>,<sp/>0.f,<sp/>noise_ratio);</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/>glm::vec2<sp/>kw_noise<sp/>=<sp/>{4.f<sp/>/<sp/>ridge_wavelength,<sp/>4.f<sp/>/<sp/>ridge_wavelength};</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a63a7fc5faca6c5018e98b8af700f4b80" kindref="member">noise</ref><sp/>=<sp/><ref refid="namespacehmap_1acb13e7346085793fda4c94c47b75d9a9" kindref="member">noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,<sp/>shape,<sp/>kw_noise,<sp/>++seed);</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">remap</ref>(<ref refid="namespacehmap_1a63a7fc5faca6c5018e98b8af700f4b80" kindref="member">noise</ref>,<sp/>0.f,<sp/>noise_ratio);</highlight></codeline>
 <codeline lineno="237"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="238"><highlight class="normal"></highlight></codeline>
 <codeline lineno="239"><highlight class="normal"><sp/><sp/>Array<sp/>ridge_mask(shape);</highlight></codeline>
@@ -252,7 +252,7 @@
 <codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>shape.x;<sp/>i++)</highlight></codeline>
 <codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ridge_mask(i,<sp/>j)<sp/>=<sp/>ridges(i,<sp/>j);</highlight></codeline>
-<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ridges(i,<sp/>j)<sp/>+=<sp/>ridge_mask(i,<sp/>j)<sp/>*<sp/><ref refid="namespacehmap_1a03c0be3a7198eebacefcb208b0cfee99" kindref="member">noise</ref>(i,<sp/>j);</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ridges(i,<sp/>j)<sp/>+=<sp/>ridge_mask(i,<sp/>j)<sp/>*<sp/><ref refid="namespacehmap_1a63a7fc5faca6c5018e98b8af700f4b80" kindref="member">noise</ref>(i,<sp/>j);</highlight></codeline>
 <codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="247"><highlight class="normal"></highlight></codeline>
 <codeline lineno="248"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>shift<sp/>amplitude<sp/>to<sp/>&quot;dig&quot;<sp/>instead<sp/>of<sp/>adding<sp/>elevation</highlight><highlight class="normal"></highlight></codeline>

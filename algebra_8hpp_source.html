@@ -108,663 +108,230 @@ $(document).ready(function(){initNavTree('algebra_8hpp_source.html',''); initRes
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">   Public License. The full license is in the file LICENSE, distributed with</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">   this software. */</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &lt;cmath&gt;</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &lt;glm/vec2.hpp&gt;</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#include &lt;glm/vec4.hpp&gt;</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="foldopen" id="foldopen00030" data-start="{" data-end="}">
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="namespacehmap.html">   30</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacehmap.html">hmap</a></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>{</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="foldopen" id="foldopen00042" data-start="{" data-end="};">
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec2.html">   42</a></span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="keyword">struct </span><a class="code hl_struct" href="structhmap_1_1Vec2.html">Vec2</a></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>{</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec2.html#a2dc51e83492f966eeddbdac3d58ab447">   44</a></span>  T <a class="code hl_variable" href="structhmap_1_1Vec2.html#a2dc51e83492f966eeddbdac3d58ab447">x</a>, <a class="code hl_variable" href="structhmap_1_1Vec2.html#a087ff9ff4159d1e5778c0b65ee2a1648">y</a>; </div>
-<div class="foldopen" id="foldopen00051" data-start="{" data-end="}">
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec2.html#ab537a59a10cd7d21e2169a5742cfe2ad">   51</a></span>  <a class="code hl_function" href="structhmap_1_1Vec2.html#ab537a59a10cd7d21e2169a5742cfe2ad">Vec2</a>() : <a class="code hl_variable" href="structhmap_1_1Vec2.html#a2dc51e83492f966eeddbdac3d58ab447">x</a>(0), <a class="code hl_variable" href="structhmap_1_1Vec2.html#a087ff9ff4159d1e5778c0b65ee2a1648">y</a>(0)</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>  {</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>  }</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;cmath&gt;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &lt;glm/glm.hpp&gt;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="foldopen" id="foldopen00021" data-start="{" data-end="}">
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="namespacehmap.html">   21</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacehmap.html">hmap</a></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>{</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment">// --- Backward compatiblity with former custom classes (deprecated)</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec2.html">   26</a></span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="keyword">struct </span><a class="code hl_struct" href="structhmap_1_1Vec2.html">Vec2</a>; <span class="comment">// forward decl only</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keyword">template</span> &lt;&gt;</div>
+<div class="foldopen" id="foldopen00029" data-start="{" data-end="};">
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec2_3_01float_01_4.html">   29</a></span><span class="keyword">struct </span>[[deprecated(<span class="stringliteral">&quot;Replaced by glm::vec2&quot;</span>)]] <a class="code hl_struct" href="structhmap_1_1Vec2.html">Vec2</a>&lt;float&gt; : <span class="keyword">public</span> glm::vec2</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>{</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>  <span class="keyword">using </span>glm::vec2::vec2;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>  <span class="keyword">using </span>glm::vec2::x;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>  <span class="keyword">using </span>glm::vec2::y;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>};</div>
+</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">template</span> &lt;&gt;</div>
+<div class="foldopen" id="foldopen00037" data-start="{" data-end="};">
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec2_3_01int_01_4.html">   37</a></span><span class="keyword">struct </span>[[deprecated(<span class="stringliteral">&quot;Replaced by glm::ivec2&quot;</span>)]] <a class="code hl_struct" href="structhmap_1_1Vec2.html">Vec2</a>&lt;int&gt; : <span class="keyword">public</span> glm::ivec2</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>{</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>  <span class="keyword">using </span>glm::ivec2::ivec2;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>  <span class="keyword">using </span>glm::ivec2::x;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>  <span class="keyword">using </span>glm::ivec2::y;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>};</div>
+</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec3.html">   44</a></span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="keyword">struct </span><a class="code hl_struct" href="structhmap_1_1Vec3.html">Vec3</a>; <span class="comment">// forward decl only</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="keyword">template</span> &lt;&gt;</div>
+<div class="foldopen" id="foldopen00047" data-start="{" data-end="};">
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec3_3_01float_01_4.html">   47</a></span><span class="keyword">struct </span>[[deprecated(<span class="stringliteral">&quot;Replaced by glm::vec3&quot;</span>)]] <a class="code hl_struct" href="structhmap_1_1Vec3.html">Vec3</a>&lt;float&gt; : <span class="keyword">public</span> glm::vec3</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>{</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>  <span class="keyword">using </span>glm::vec3::vec3;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>  <span class="keyword">using </span>glm::vec3::x;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>  <span class="keyword">using </span>glm::vec3::y;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>  <span class="keyword">using </span>glm::vec3::z;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>};</div>
 </div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="foldopen" id="foldopen00062" data-start="{" data-end="}">
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec2.html#ae137e7edf6223fc6aeda839eb2672d92">   62</a></span>  <a class="code hl_function" href="structhmap_1_1Vec2.html#ae137e7edf6223fc6aeda839eb2672d92">Vec2</a>(T <a class="code hl_variable" href="structhmap_1_1Vec2.html#a2dc51e83492f966eeddbdac3d58ab447">x</a>, T <a class="code hl_variable" href="structhmap_1_1Vec2.html#a087ff9ff4159d1e5778c0b65ee2a1648">y</a>) : <a class="code hl_variable" href="structhmap_1_1Vec2.html#a2dc51e83492f966eeddbdac3d58ab447">x</a>(<a class="code hl_variable" href="structhmap_1_1Vec2.html#a2dc51e83492f966eeddbdac3d58ab447">x</a>), <a class="code hl_variable" href="structhmap_1_1Vec2.html#a087ff9ff4159d1e5778c0b65ee2a1648">y</a>(<a class="code hl_variable" href="structhmap_1_1Vec2.html#a087ff9ff4159d1e5778c0b65ee2a1648">y</a>)</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  {</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>  }</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="keyword">template</span> &lt;&gt;</div>
+<div class="foldopen" id="foldopen00056" data-start="{" data-end="};">
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec3_3_01int_01_4.html">   56</a></span><span class="keyword">struct </span>[[deprecated(<span class="stringliteral">&quot;Replaced by glm::ivec3&quot;</span>)]] <a class="code hl_struct" href="structhmap_1_1Vec3.html">Vec3</a>&lt;int&gt; : <span class="keyword">public</span> glm::ivec3</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>{</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  <span class="keyword">using </span>glm::ivec3::ivec3;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  <span class="keyword">using </span>glm::ivec3::x;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>  <span class="keyword">using </span>glm::ivec3::y;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  <span class="keyword">using </span>glm::ivec3::z;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>};</div>
 </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec4.html">   64</a></span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="keyword">struct </span><a class="code hl_struct" href="structhmap_1_1Vec4.html">Vec4</a>; <span class="comment">// forward decl only</span></div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="foldopen" id="foldopen00080" data-start="{" data-end="}">
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec2.html#a7a51b0894ccdea14a7d86fbb8e7289c3">   80</a></span>  <a class="code hl_function" href="structhmap_1_1Vec2.html#a7a51b0894ccdea14a7d86fbb8e7289c3">Vec2</a>(<span class="keyword">const</span> std::vector&lt;T&gt; &amp;vec) : <a class="code hl_variable" href="structhmap_1_1Vec2.html#a2dc51e83492f966eeddbdac3d58ab447">x</a>(0), <a class="code hl_variable" href="structhmap_1_1Vec2.html#a087ff9ff4159d1e5778c0b65ee2a1648">y</a>(0)</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>  {</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keywordflow">if</span> (vec.size() != 2)</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    {</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>      <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;Vector must contain exactly two elements.&quot;</span>);</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    }</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <a class="code hl_variable" href="structhmap_1_1Vec2.html#a2dc51e83492f966eeddbdac3d58ab447">x</a> = vec[0];</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <a class="code hl_variable" href="structhmap_1_1Vec2.html#a087ff9ff4159d1e5778c0b65ee2a1648">y</a> = vec[1];</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>  }</div>
-</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
-<div class="foldopen" id="foldopen00098" data-start="{" data-end="}">
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec2.html#a17f563df244715a4120feac38b48be21">   98</a></span>  <span class="keywordtype">bool</span> <a class="code hl_function" href="structhmap_1_1Vec2.html#a17f563df244715a4120feac38b48be21">operator==</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structhmap_1_1Vec2.html">Vec2</a> &amp;other_vec)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="keyword">  </span>{</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <span class="keywordflow">return</span> ((this-&gt;x == other_vec.<a class="code hl_variable" href="structhmap_1_1Vec2.html#a2dc51e83492f966eeddbdac3d58ab447">x</a>) &amp;&amp; (this-&gt;y == other_vec.<a class="code hl_variable" href="structhmap_1_1Vec2.html#a087ff9ff4159d1e5778c0b65ee2a1648">y</a>));</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>  }</div>
-</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
-<div class="foldopen" id="foldopen00111" data-start="{" data-end="}">
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec2.html#a34b1d441d8fc9bdac23f03f98c46449e">  111</a></span>  <span class="keywordtype">bool</span> <a class="code hl_function" href="structhmap_1_1Vec2.html#a34b1d441d8fc9bdac23f03f98c46449e">operator!=</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structhmap_1_1Vec2.html">Vec2</a> &amp;other_vec)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="keyword">  </span>{</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    <span class="keywordflow">return</span> ((this-&gt;x != other_vec.<a class="code hl_variable" href="structhmap_1_1Vec2.html#a2dc51e83492f966eeddbdac3d58ab447">x</a>) || (this-&gt;y != other_vec.<a class="code hl_variable" href="structhmap_1_1Vec2.html#a087ff9ff4159d1e5778c0b65ee2a1648">y</a>));</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>  }</div>
-</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
-<div class="foldopen" id="foldopen00125" data-start="{" data-end="}">
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec2.html#ae1fb5814b4e498396b5a32418f37e343">  125</a></span>  <a class="code hl_struct" href="structhmap_1_1Vec2.html">Vec2</a> &amp;<a class="code hl_function" href="structhmap_1_1Vec2.html#ae1fb5814b4e498396b5a32418f37e343">operator/=</a>(<span class="keyword">const</span> T value)</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>  {</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    this-&gt;x /= value;</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    this-&gt;y /= value;</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>  }</div>
-</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
-<div class="foldopen" id="foldopen00141" data-start="{" data-end="}">
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec2.html#a0e9a33a8699ada5082f6d4e974993d48">  141</a></span>  <a class="code hl_struct" href="structhmap_1_1Vec2.html">Vec2</a> <a class="code hl_function" href="structhmap_1_1Vec2.html#a0e9a33a8699ada5082f6d4e974993d48">operator/</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structhmap_1_1Vec2.html">Vec2</a> &amp;other_vec)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span><span class="keyword">  </span>{</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    <a class="code hl_struct" href="structhmap_1_1Vec2.html">Vec2</a> out;</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    out.<a class="code hl_variable" href="structhmap_1_1Vec2.html#a2dc51e83492f966eeddbdac3d58ab447">x</a> = this-&gt;x / other_vec.<a class="code hl_variable" href="structhmap_1_1Vec2.html#a2dc51e83492f966eeddbdac3d58ab447">x</a>;</div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    out.<a class="code hl_variable" href="structhmap_1_1Vec2.html#a087ff9ff4159d1e5778c0b65ee2a1648">y</a> = this-&gt;y / other_vec.<a class="code hl_variable" href="structhmap_1_1Vec2.html#a087ff9ff4159d1e5778c0b65ee2a1648">y</a>;</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    <span class="keywordflow">return</span> out;</div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>  }</div>
-</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span> </div>
-<div class="foldopen" id="foldopen00159" data-start="{" data-end="}">
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec2.html#adb6f4c5789a26dfaddaadce1ac5fdc7f">  159</a></span>  <a class="code hl_struct" href="structhmap_1_1Vec2.html">Vec2</a> <a class="code hl_function" href="structhmap_1_1Vec2.html#adb6f4c5789a26dfaddaadce1ac5fdc7f">operator*</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structhmap_1_1Vec2.html">Vec2</a> &amp;other_vec)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span><span class="keyword">  </span>{</div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    <a class="code hl_struct" href="structhmap_1_1Vec2.html">Vec2</a> out;</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    out.<a class="code hl_variable" href="structhmap_1_1Vec2.html#a2dc51e83492f966eeddbdac3d58ab447">x</a> = this-&gt;x * other_vec.<a class="code hl_variable" href="structhmap_1_1Vec2.html#a2dc51e83492f966eeddbdac3d58ab447">x</a>;</div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    out.<a class="code hl_variable" href="structhmap_1_1Vec2.html#a087ff9ff4159d1e5778c0b65ee2a1648">y</a> = this-&gt;y * other_vec.<a class="code hl_variable" href="structhmap_1_1Vec2.html#a087ff9ff4159d1e5778c0b65ee2a1648">y</a>;</div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    <span class="keywordflow">return</span> out;</div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>  }</div>
-</div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span> </div>
-<div class="foldopen" id="foldopen00176" data-start="{" data-end="}">
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec2.html#a1df60c9894d8d6f4380ef9ba932125e2">  176</a></span>  <a class="code hl_struct" href="structhmap_1_1Vec2.html">Vec2</a> <a class="code hl_function" href="structhmap_1_1Vec2.html#a1df60c9894d8d6f4380ef9ba932125e2">operator+</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structhmap_1_1Vec2.html">Vec2</a> &amp;other_vec)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span><span class="keyword">  </span>{</div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>    <a class="code hl_struct" href="structhmap_1_1Vec2.html">Vec2</a> out;</div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>    out.<a class="code hl_variable" href="structhmap_1_1Vec2.html#a2dc51e83492f966eeddbdac3d58ab447">x</a> = this-&gt;x + other_vec.<a class="code hl_variable" href="structhmap_1_1Vec2.html#a2dc51e83492f966eeddbdac3d58ab447">x</a>;</div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    out.<a class="code hl_variable" href="structhmap_1_1Vec2.html#a087ff9ff4159d1e5778c0b65ee2a1648">y</a> = this-&gt;y + other_vec.<a class="code hl_variable" href="structhmap_1_1Vec2.html#a087ff9ff4159d1e5778c0b65ee2a1648">y</a>;</div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    <span class="keywordflow">return</span> out;</div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>  }</div>
-</div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span> </div>
-<div class="foldopen" id="foldopen00193" data-start="{" data-end="}">
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec2.html#a85f26a9e80d8b99b72e3e7d02f4325aa">  193</a></span>  <a class="code hl_struct" href="structhmap_1_1Vec2.html">Vec2</a> <a class="code hl_function" href="structhmap_1_1Vec2.html#a85f26a9e80d8b99b72e3e7d02f4325aa">operator-</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structhmap_1_1Vec2.html">Vec2</a> &amp;other_vec)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span><span class="keyword">  </span>{</div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>    <a class="code hl_struct" href="structhmap_1_1Vec2.html">Vec2</a> out;</div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>    out.<a class="code hl_variable" href="structhmap_1_1Vec2.html#a2dc51e83492f966eeddbdac3d58ab447">x</a> = this-&gt;x - other_vec.<a class="code hl_variable" href="structhmap_1_1Vec2.html#a2dc51e83492f966eeddbdac3d58ab447">x</a>;</div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>    out.<a class="code hl_variable" href="structhmap_1_1Vec2.html#a087ff9ff4159d1e5778c0b65ee2a1648">y</a> = this-&gt;y - other_vec.<a class="code hl_variable" href="structhmap_1_1Vec2.html#a087ff9ff4159d1e5778c0b65ee2a1648">y</a>;</div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>    <span class="keywordflow">return</span> out;</div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>  }</div>
-</div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span> </div>
-<div class="foldopen" id="foldopen00210" data-start="{" data-end="}">
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec2.html#a5fa624eca898ddf0dde96e63891540d8">  210</a></span>  <a class="code hl_struct" href="structhmap_1_1Vec2.html">Vec2</a> <a class="code hl_function" href="structhmap_1_1Vec2.html#a5fa624eca898ddf0dde96e63891540d8">operator*</a>(T scalar)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span><span class="keyword">  </span>{</div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="structhmap_1_1Vec2.html#ab537a59a10cd7d21e2169a5742cfe2ad">Vec2</a>(<a class="code hl_variable" href="structhmap_1_1Vec2.html#a2dc51e83492f966eeddbdac3d58ab447">x</a> * scalar, <a class="code hl_variable" href="structhmap_1_1Vec2.html#a087ff9ff4159d1e5778c0b65ee2a1648">y</a> * scalar);</div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>  }</div>
-</div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span> </div>
-<div class="foldopen" id="foldopen00215" data-start="{" data-end="}">
-<div class="line"><a id="l00215" name="l00215"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec2.html#a700c00c9fc0e754c4ce65d8c8c6e38d2">  215</a></span>  <span class="keywordtype">bool</span> <a class="code hl_function" href="structhmap_1_1Vec2.html#a700c00c9fc0e754c4ce65d8c8c6e38d2">operator&lt;</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structhmap_1_1Vec2.html">Vec2</a> &amp;other) <span class="keyword">const</span> <span class="keyword">noexcept</span></div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>  {</div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structhmap_1_1Vec2.html#a2dc51e83492f966eeddbdac3d58ab447">x</a> != other.x) <span class="keywordflow">return</span> <a class="code hl_variable" href="structhmap_1_1Vec2.html#a2dc51e83492f966eeddbdac3d58ab447">x</a> &lt; other.x;</div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="structhmap_1_1Vec2.html#a087ff9ff4159d1e5778c0b65ee2a1648">y</a> &lt; other.y;</div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>  }</div>
-</div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span> </div>
-<div class="foldopen" id="foldopen00233" data-start="{" data-end="};">
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec2.html#a7a945fff9f1e4964c135dbc5d226fd69">  233</a></span>  <span class="keyword">friend</span> <a class="code hl_struct" href="structhmap_1_1Vec2.html">Vec2</a> <a class="code hl_friend" href="structhmap_1_1Vec2.html#a7a945fff9f1e4964c135dbc5d226fd69">operator*</a>(T scalar, <span class="keyword">const</span> <a class="code hl_struct" href="structhmap_1_1Vec2.html">Vec2</a> &amp;vec)</div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>  {</div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="structhmap_1_1Vec2.html#ab537a59a10cd7d21e2169a5742cfe2ad">Vec2</a>(scalar * vec.<a class="code hl_variable" href="structhmap_1_1Vec2.html#a2dc51e83492f966eeddbdac3d58ab447">x</a>, scalar * vec.<a class="code hl_variable" href="structhmap_1_1Vec2.html#a087ff9ff4159d1e5778c0b65ee2a1648">y</a>);</div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>  }</div>
-</div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span> </div>
-<div class="foldopen" id="foldopen00248" data-start="{" data-end="};">
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec2.html#a975fced8e2bb23c427542159c5641c26">  248</a></span>  <span class="keyword">friend</span> <span class="keywordtype">float</span> <a class="code hl_friend" href="structhmap_1_1Vec2.html#a975fced8e2bb23c427542159c5641c26">dot</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structhmap_1_1Vec2.html">Vec2</a> v1, <span class="keyword">const</span> <a class="code hl_struct" href="structhmap_1_1Vec2.html">Vec2</a> v2)</div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>  {</div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>    <span class="keywordflow">return</span> v1.<a class="code hl_variable" href="structhmap_1_1Vec2.html#a2dc51e83492f966eeddbdac3d58ab447">x</a> * v2.<a class="code hl_variable" href="structhmap_1_1Vec2.html#a2dc51e83492f966eeddbdac3d58ab447">x</a> + v1.<a class="code hl_variable" href="structhmap_1_1Vec2.html#a087ff9ff4159d1e5778c0b65ee2a1648">y</a> * v2.<a class="code hl_variable" href="structhmap_1_1Vec2.html#a087ff9ff4159d1e5778c0b65ee2a1648">y</a>;</div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>  }</div>
-</div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span> </div>
-<div class="foldopen" id="foldopen00258" data-start="{" data-end="}">
-<div class="line"><a id="l00258" name="l00258"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec2.html#a89bca88f3a07365a28ad89477500bf33">  258</a></span>  T <a class="code hl_function" href="structhmap_1_1Vec2.html#a89bca88f3a07365a28ad89477500bf33">magnitude</a>()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span><span class="keyword">  </span>{</div>
-<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>    <span class="keywordflow">return</span> std::sqrt(<a class="code hl_variable" href="structhmap_1_1Vec2.html#a2dc51e83492f966eeddbdac3d58ab447">x</a> * <a class="code hl_variable" href="structhmap_1_1Vec2.html#a2dc51e83492f966eeddbdac3d58ab447">x</a> + <a class="code hl_variable" href="structhmap_1_1Vec2.html#a087ff9ff4159d1e5778c0b65ee2a1648">y</a> * <a class="code hl_variable" href="structhmap_1_1Vec2.html#a087ff9ff4159d1e5778c0b65ee2a1648">y</a>);</div>
-<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>  }</div>
-</div>
-<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span> </div>
-<div class="foldopen" id="foldopen00269" data-start="{" data-end="}">
-<div class="line"><a id="l00269" name="l00269"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec2.html#a46c73f1340298ca58fe607c04ca09ab1">  269</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="structhmap_1_1Vec2.html#a46c73f1340298ca58fe607c04ca09ab1">normalize</a>()</div>
-<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>  {</div>
-<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>    T mag = <a class="code hl_function" href="structhmap_1_1Vec2.html#a89bca88f3a07365a28ad89477500bf33">magnitude</a>();</div>
-<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>    <span class="keywordflow">if</span> (mag &gt; 0) <span class="comment">// Avoid division by zero</span></div>
-<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>    {</div>
-<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>      <a class="code hl_variable" href="structhmap_1_1Vec2.html#a2dc51e83492f966eeddbdac3d58ab447">x</a> /= mag;</div>
-<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>      <a class="code hl_variable" href="structhmap_1_1Vec2.html#a087ff9ff4159d1e5778c0b65ee2a1648">y</a> /= mag;</div>
-<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>    }</div>
-<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>  }</div>
-</div>
-<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span> </div>
-<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>  <span class="comment">// glm adaptors</span></div>
-<div class="foldopen" id="foldopen00280" data-start="{" data-end="}">
-<div class="line"><a id="l00280" name="l00280"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec2.html#a71b22cecf6d34738836e89bbcab1e8af">  280</a></span>  <a class="code hl_function" href="structhmap_1_1Vec2.html#a71b22cecf6d34738836e89bbcab1e8af">Vec2</a>(<span class="keyword">const</span> glm::vec2 &amp;v) : <a class="code hl_variable" href="structhmap_1_1Vec2.html#a2dc51e83492f966eeddbdac3d58ab447">x</a>(static_cast&lt;T&gt;(v.<a class="code hl_variable" href="structhmap_1_1Vec2.html#a2dc51e83492f966eeddbdac3d58ab447">x</a>)), <a class="code hl_variable" href="structhmap_1_1Vec2.html#a087ff9ff4159d1e5778c0b65ee2a1648">y</a>(static_cast&lt;T&gt;(v.<a class="code hl_variable" href="structhmap_1_1Vec2.html#a087ff9ff4159d1e5778c0b65ee2a1648">y</a>))</div>
-<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>  {</div>
-<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>  }</div>
-</div>
-<div class="foldopen" id="foldopen00283" data-start="{" data-end="}">
-<div class="line"><a id="l00283" name="l00283"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec2.html#a1797bb3637bfe76b1716fed7e9b59429">  283</a></span>  <a class="code hl_function" href="structhmap_1_1Vec2.html#a1797bb3637bfe76b1716fed7e9b59429">Vec2</a>(<span class="keyword">const</span> glm::ivec2 &amp;v) : <a class="code hl_variable" href="structhmap_1_1Vec2.html#a2dc51e83492f966eeddbdac3d58ab447">x</a>(static_cast&lt;T&gt;(v.<a class="code hl_variable" href="structhmap_1_1Vec2.html#a2dc51e83492f966eeddbdac3d58ab447">x</a>)), <a class="code hl_variable" href="structhmap_1_1Vec2.html#a087ff9ff4159d1e5778c0b65ee2a1648">y</a>(static_cast&lt;T&gt;(v.<a class="code hl_variable" href="structhmap_1_1Vec2.html#a087ff9ff4159d1e5778c0b65ee2a1648">y</a>))</div>
-<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>  {</div>
-<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>  }</div>
-</div>
-<div class="foldopen" id="foldopen00286" data-start="{" data-end="}">
-<div class="line"><a id="l00286" name="l00286"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec2.html#a37c790cfa819978747df612712ee8311">  286</a></span>  <span class="keyword">operator</span> glm::vec2()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span><span class="keyword">  </span>{</div>
-<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>    <span class="keywordflow">return</span> glm::vec2(<span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(<a class="code hl_variable" href="structhmap_1_1Vec2.html#a2dc51e83492f966eeddbdac3d58ab447">x</a>), <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(<a class="code hl_variable" href="structhmap_1_1Vec2.html#a087ff9ff4159d1e5778c0b65ee2a1648">y</a>));</div>
-<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>  }</div>
-</div>
-<div class="foldopen" id="foldopen00290" data-start="{" data-end="}">
-<div class="line"><a id="l00290" name="l00290"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec2.html#abaac5ab6a67bd3c27171a02113151de9">  290</a></span>  <span class="keyword">operator</span> glm::ivec2()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span><span class="keyword">  </span>{</div>
-<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>    <span class="keywordflow">return</span> glm::ivec2(<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(<a class="code hl_variable" href="structhmap_1_1Vec2.html#a2dc51e83492f966eeddbdac3d58ab447">x</a>), <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(<a class="code hl_variable" href="structhmap_1_1Vec2.html#a087ff9ff4159d1e5778c0b65ee2a1648">y</a>));</div>
-<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>  }</div>
-</div>
-<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>};</div>
-</div>
-<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span> </div>
-<div class="foldopen" id="foldopen00305" data-start="{" data-end="};">
-<div class="line"><a id="l00305" name="l00305"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec3.html">  305</a></span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="keyword">struct </span><a class="code hl_struct" href="structhmap_1_1Vec3.html">Vec3</a></div>
-<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>{</div>
-<div class="line"><a id="l00307" name="l00307"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec3.html#acec187d58afad5c31f51262d3a9c6e55">  307</a></span>  T <a class="code hl_variable" href="structhmap_1_1Vec3.html#acec187d58afad5c31f51262d3a9c6e55">x</a>, <a class="code hl_variable" href="structhmap_1_1Vec3.html#a27037e1371300c6b567539f1e2c1e4de">y</a>, <a class="code hl_variable" href="structhmap_1_1Vec3.html#a5dc78c2ba3f2bf3ca489aac6841e646c">z</a>; </div>
-<div class="foldopen" id="foldopen00314" data-start="{" data-end="}">
-<div class="line"><a id="l00314" name="l00314"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec3.html#a84d1d7ff97f75cb998c1182493c1f6cd">  314</a></span>  <a class="code hl_function" href="structhmap_1_1Vec3.html#a84d1d7ff97f75cb998c1182493c1f6cd">Vec3</a>() : <a class="code hl_variable" href="structhmap_1_1Vec3.html#acec187d58afad5c31f51262d3a9c6e55">x</a>(0), <a class="code hl_variable" href="structhmap_1_1Vec3.html#a27037e1371300c6b567539f1e2c1e4de">y</a>(0), <a class="code hl_variable" href="structhmap_1_1Vec3.html#a5dc78c2ba3f2bf3ca489aac6841e646c">z</a>(0)</div>
-<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>  {</div>
-<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>  }</div>
-</div>
-<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span> </div>
-<div class="foldopen" id="foldopen00326" data-start="{" data-end="}">
-<div class="line"><a id="l00326" name="l00326"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec3.html#a5ec51f4e17f7907e577b0330ef11674f">  326</a></span>  <a class="code hl_function" href="structhmap_1_1Vec3.html#a5ec51f4e17f7907e577b0330ef11674f">Vec3</a>(T <a class="code hl_variable" href="structhmap_1_1Vec3.html#acec187d58afad5c31f51262d3a9c6e55">x</a>, T <a class="code hl_variable" href="structhmap_1_1Vec3.html#a27037e1371300c6b567539f1e2c1e4de">y</a>, T <a class="code hl_variable" href="structhmap_1_1Vec3.html#a5dc78c2ba3f2bf3ca489aac6841e646c">z</a>) : <a class="code hl_variable" href="structhmap_1_1Vec3.html#acec187d58afad5c31f51262d3a9c6e55">x</a>(<a class="code hl_variable" href="structhmap_1_1Vec3.html#acec187d58afad5c31f51262d3a9c6e55">x</a>), <a class="code hl_variable" href="structhmap_1_1Vec3.html#a27037e1371300c6b567539f1e2c1e4de">y</a>(<a class="code hl_variable" href="structhmap_1_1Vec3.html#a27037e1371300c6b567539f1e2c1e4de">y</a>), <a class="code hl_variable" href="structhmap_1_1Vec3.html#a5dc78c2ba3f2bf3ca489aac6841e646c">z</a>(<a class="code hl_variable" href="structhmap_1_1Vec3.html#a5dc78c2ba3f2bf3ca489aac6841e646c">z</a>)</div>
-<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>  {</div>
-<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>  }</div>
-</div>
-<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span> </div>
-<div class="foldopen" id="foldopen00346" data-start="{" data-end="}">
-<div class="line"><a id="l00346" name="l00346"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec3.html#a7ca52e92edc62504e79bcb27e3f52808">  346</a></span>  <a class="code hl_function" href="structhmap_1_1Vec3.html#a7ca52e92edc62504e79bcb27e3f52808">Vec3</a>(<span class="keyword">const</span> std::vector&lt;T&gt; &amp;vec) : <a class="code hl_variable" href="structhmap_1_1Vec3.html#acec187d58afad5c31f51262d3a9c6e55">x</a>(0), <a class="code hl_variable" href="structhmap_1_1Vec3.html#a27037e1371300c6b567539f1e2c1e4de">y</a>(0), <a class="code hl_variable" href="structhmap_1_1Vec3.html#a5dc78c2ba3f2bf3ca489aac6841e646c">z</a>(0)</div>
-<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>  {</div>
-<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span>    <span class="keywordflow">if</span> (vec.size() != 3)</div>
-<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span>    {</div>
-<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>      <span class="keywordflow">throw</span> std::invalid_argument(</div>
-<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>          <span class="stringliteral">&quot;Vector must contain exactly three elements.&quot;</span>);</div>
-<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span>    }</div>
-<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>    <a class="code hl_variable" href="structhmap_1_1Vec3.html#acec187d58afad5c31f51262d3a9c6e55">x</a> = vec[0];</div>
-<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span>    <a class="code hl_variable" href="structhmap_1_1Vec3.html#a27037e1371300c6b567539f1e2c1e4de">y</a> = vec[1];</div>
-<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>    <a class="code hl_variable" href="structhmap_1_1Vec3.html#a5dc78c2ba3f2bf3ca489aac6841e646c">z</a> = vec[2];</div>
-<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span>  }</div>
-</div>
-<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span> </div>
-<div class="foldopen" id="foldopen00366" data-start="{" data-end="}">
-<div class="line"><a id="l00366" name="l00366"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec3.html#a0e30633d110914802691f40fcd0aefc1">  366</a></span>  <span class="keywordtype">bool</span> <a class="code hl_function" href="structhmap_1_1Vec3.html#a0e30633d110914802691f40fcd0aefc1">operator==</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structhmap_1_1Vec3.html">Vec3</a> &amp;other_vec)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span><span class="keyword">  </span>{</div>
-<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span>    <span class="keywordflow">return</span> ((this-&gt;x == other_vec.<a class="code hl_variable" href="structhmap_1_1Vec3.html#acec187d58afad5c31f51262d3a9c6e55">x</a>) &amp;&amp; (this-&gt;y == other_vec.<a class="code hl_variable" href="structhmap_1_1Vec3.html#a27037e1371300c6b567539f1e2c1e4de">y</a>) &amp;&amp;</div>
-<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span>            (this-&gt;z == other_vec.<a class="code hl_variable" href="structhmap_1_1Vec3.html#a5dc78c2ba3f2bf3ca489aac6841e646c">z</a>));</div>
-<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>  }</div>
-</div>
-<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span> </div>
-<div class="foldopen" id="foldopen00380" data-start="{" data-end="}">
-<div class="line"><a id="l00380" name="l00380"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec3.html#af5c635bf5b2faedfc6872a967dc924f5">  380</a></span>  <span class="keywordtype">bool</span> <a class="code hl_function" href="structhmap_1_1Vec3.html#af5c635bf5b2faedfc6872a967dc924f5">operator!=</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structhmap_1_1Vec3.html">Vec3</a> &amp;other_vec)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span><span class="keyword">  </span>{</div>
-<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span>    <span class="keywordflow">return</span> ((this-&gt;x != other_vec.<a class="code hl_variable" href="structhmap_1_1Vec3.html#acec187d58afad5c31f51262d3a9c6e55">x</a>) || (this-&gt;y != other_vec.<a class="code hl_variable" href="structhmap_1_1Vec3.html#a27037e1371300c6b567539f1e2c1e4de">y</a>) ||</div>
-<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span>            (this-&gt;z != other_vec.<a class="code hl_variable" href="structhmap_1_1Vec3.html#a5dc78c2ba3f2bf3ca489aac6841e646c">z</a>));</div>
-<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span>  }</div>
-</div>
-<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span> </div>
-<div class="foldopen" id="foldopen00395" data-start="{" data-end="}">
-<div class="line"><a id="l00395" name="l00395"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec3.html#aa329ee4245b0f16718795890b69713a5">  395</a></span>  <a class="code hl_struct" href="structhmap_1_1Vec3.html">Vec3</a> &amp;<a class="code hl_function" href="structhmap_1_1Vec3.html#aa329ee4245b0f16718795890b69713a5">operator/=</a>(<span class="keyword">const</span> T value)</div>
-<div class="line"><a id="l00396" name="l00396"></a><span class="lineno">  396</span>  {</div>
-<div class="line"><a id="l00397" name="l00397"></a><span class="lineno">  397</span>    this-&gt;x /= value;</div>
-<div class="line"><a id="l00398" name="l00398"></a><span class="lineno">  398</span>    this-&gt;y /= value;</div>
-<div class="line"><a id="l00399" name="l00399"></a><span class="lineno">  399</span>    this-&gt;z /= value;</div>
-<div class="line"><a id="l00400" name="l00400"></a><span class="lineno">  400</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a id="l00401" name="l00401"></a><span class="lineno">  401</span>  }</div>
-</div>
-<div class="line"><a id="l00402" name="l00402"></a><span class="lineno">  402</span> </div>
-<div class="foldopen" id="foldopen00412" data-start="{" data-end="}">
-<div class="line"><a id="l00412" name="l00412"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec3.html#afe3c858db4a6954b95bac6551431b7d3">  412</a></span>  <a class="code hl_struct" href="structhmap_1_1Vec3.html">Vec3</a> <a class="code hl_function" href="structhmap_1_1Vec3.html#afe3c858db4a6954b95bac6551431b7d3">operator/</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structhmap_1_1Vec3.html">Vec3</a> &amp;other_vec)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00413" name="l00413"></a><span class="lineno">  413</span><span class="keyword">  </span>{</div>
-<div class="line"><a id="l00414" name="l00414"></a><span class="lineno">  414</span>    <a class="code hl_struct" href="structhmap_1_1Vec3.html">Vec3</a> out;</div>
-<div class="line"><a id="l00415" name="l00415"></a><span class="lineno">  415</span>    out.<a class="code hl_variable" href="structhmap_1_1Vec3.html#acec187d58afad5c31f51262d3a9c6e55">x</a> = this-&gt;x / other_vec.<a class="code hl_variable" href="structhmap_1_1Vec3.html#acec187d58afad5c31f51262d3a9c6e55">x</a>;</div>
-<div class="line"><a id="l00416" name="l00416"></a><span class="lineno">  416</span>    out.<a class="code hl_variable" href="structhmap_1_1Vec3.html#a27037e1371300c6b567539f1e2c1e4de">y</a> = this-&gt;y / other_vec.<a class="code hl_variable" href="structhmap_1_1Vec3.html#a27037e1371300c6b567539f1e2c1e4de">y</a>;</div>
-<div class="line"><a id="l00417" name="l00417"></a><span class="lineno">  417</span>    out.<a class="code hl_variable" href="structhmap_1_1Vec3.html#a5dc78c2ba3f2bf3ca489aac6841e646c">z</a> = this-&gt;z / other_vec.<a class="code hl_variable" href="structhmap_1_1Vec3.html#a5dc78c2ba3f2bf3ca489aac6841e646c">z</a>;</div>
-<div class="line"><a id="l00418" name="l00418"></a><span class="lineno">  418</span>    <span class="keywordflow">return</span> out;</div>
-<div class="line"><a id="l00419" name="l00419"></a><span class="lineno">  419</span>  }</div>
-</div>
-<div class="line"><a id="l00420" name="l00420"></a><span class="lineno">  420</span> </div>
-<div class="foldopen" id="foldopen00431" data-start="{" data-end="}">
-<div class="line"><a id="l00431" name="l00431"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec3.html#a1a7110adf2e06b12ab86837eef2fc47d">  431</a></span>  <a class="code hl_struct" href="structhmap_1_1Vec3.html">Vec3</a> <a class="code hl_function" href="structhmap_1_1Vec3.html#a1a7110adf2e06b12ab86837eef2fc47d">operator*</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structhmap_1_1Vec3.html">Vec3</a> &amp;other_vec)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00432" name="l00432"></a><span class="lineno">  432</span><span class="keyword">  </span>{</div>
-<div class="line"><a id="l00433" name="l00433"></a><span class="lineno">  433</span>    <a class="code hl_struct" href="structhmap_1_1Vec3.html">Vec3</a> out;</div>
-<div class="line"><a id="l00434" name="l00434"></a><span class="lineno">  434</span>    out.<a class="code hl_variable" href="structhmap_1_1Vec3.html#acec187d58afad5c31f51262d3a9c6e55">x</a> = this-&gt;x * other_vec.<a class="code hl_variable" href="structhmap_1_1Vec3.html#acec187d58afad5c31f51262d3a9c6e55">x</a>;</div>
-<div class="line"><a id="l00435" name="l00435"></a><span class="lineno">  435</span>    out.<a class="code hl_variable" href="structhmap_1_1Vec3.html#a27037e1371300c6b567539f1e2c1e4de">y</a> = this-&gt;y * other_vec.<a class="code hl_variable" href="structhmap_1_1Vec3.html#a27037e1371300c6b567539f1e2c1e4de">y</a>;</div>
-<div class="line"><a id="l00436" name="l00436"></a><span class="lineno">  436</span>    out.<a class="code hl_variable" href="structhmap_1_1Vec3.html#a5dc78c2ba3f2bf3ca489aac6841e646c">z</a> = this-&gt;z * other_vec.<a class="code hl_variable" href="structhmap_1_1Vec3.html#a5dc78c2ba3f2bf3ca489aac6841e646c">z</a>;</div>
-<div class="line"><a id="l00437" name="l00437"></a><span class="lineno">  437</span>    <span class="keywordflow">return</span> out;</div>
-<div class="line"><a id="l00438" name="l00438"></a><span class="lineno">  438</span>  }</div>
-</div>
-<div class="line"><a id="l00439" name="l00439"></a><span class="lineno">  439</span> </div>
-<div class="foldopen" id="foldopen00449" data-start="{" data-end="}">
-<div class="line"><a id="l00449" name="l00449"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec3.html#a5a205b4be12023e538d6bbb22f57834f">  449</a></span>  <a class="code hl_struct" href="structhmap_1_1Vec3.html">Vec3</a> <a class="code hl_function" href="structhmap_1_1Vec3.html#a5a205b4be12023e538d6bbb22f57834f">operator+</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structhmap_1_1Vec3.html">Vec3</a> &amp;other_vec)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00450" name="l00450"></a><span class="lineno">  450</span><span class="keyword">  </span>{</div>
-<div class="line"><a id="l00451" name="l00451"></a><span class="lineno">  451</span>    <a class="code hl_struct" href="structhmap_1_1Vec3.html">Vec3</a> out;</div>
-<div class="line"><a id="l00452" name="l00452"></a><span class="lineno">  452</span>    out.<a class="code hl_variable" href="structhmap_1_1Vec3.html#acec187d58afad5c31f51262d3a9c6e55">x</a> = this-&gt;x + other_vec.<a class="code hl_variable" href="structhmap_1_1Vec3.html#acec187d58afad5c31f51262d3a9c6e55">x</a>;</div>
-<div class="line"><a id="l00453" name="l00453"></a><span class="lineno">  453</span>    out.<a class="code hl_variable" href="structhmap_1_1Vec3.html#a27037e1371300c6b567539f1e2c1e4de">y</a> = this-&gt;y + other_vec.<a class="code hl_variable" href="structhmap_1_1Vec3.html#a27037e1371300c6b567539f1e2c1e4de">y</a>;</div>
-<div class="line"><a id="l00454" name="l00454"></a><span class="lineno">  454</span>    out.<a class="code hl_variable" href="structhmap_1_1Vec3.html#a5dc78c2ba3f2bf3ca489aac6841e646c">z</a> = this-&gt;z + other_vec.<a class="code hl_variable" href="structhmap_1_1Vec3.html#a5dc78c2ba3f2bf3ca489aac6841e646c">z</a>;</div>
-<div class="line"><a id="l00455" name="l00455"></a><span class="lineno">  455</span>    <span class="keywordflow">return</span> out;</div>
-<div class="line"><a id="l00456" name="l00456"></a><span class="lineno">  456</span>  }</div>
-</div>
-<div class="line"><a id="l00457" name="l00457"></a><span class="lineno">  457</span> </div>
-<div class="foldopen" id="foldopen00467" data-start="{" data-end="}">
-<div class="line"><a id="l00467" name="l00467"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec3.html#a138c5b923bada86b7bebcac680ef840d">  467</a></span>  <a class="code hl_struct" href="structhmap_1_1Vec3.html">Vec3</a> <a class="code hl_function" href="structhmap_1_1Vec3.html#a138c5b923bada86b7bebcac680ef840d">operator-</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structhmap_1_1Vec3.html">Vec3</a> &amp;other_vec)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00468" name="l00468"></a><span class="lineno">  468</span><span class="keyword">  </span>{</div>
-<div class="line"><a id="l00469" name="l00469"></a><span class="lineno">  469</span>    <a class="code hl_struct" href="structhmap_1_1Vec3.html">Vec3</a> out;</div>
-<div class="line"><a id="l00470" name="l00470"></a><span class="lineno">  470</span>    out.<a class="code hl_variable" href="structhmap_1_1Vec3.html#acec187d58afad5c31f51262d3a9c6e55">x</a> = this-&gt;x - other_vec.<a class="code hl_variable" href="structhmap_1_1Vec3.html#acec187d58afad5c31f51262d3a9c6e55">x</a>;</div>
-<div class="line"><a id="l00471" name="l00471"></a><span class="lineno">  471</span>    out.<a class="code hl_variable" href="structhmap_1_1Vec3.html#a27037e1371300c6b567539f1e2c1e4de">y</a> = this-&gt;y - other_vec.<a class="code hl_variable" href="structhmap_1_1Vec3.html#a27037e1371300c6b567539f1e2c1e4de">y</a>;</div>
-<div class="line"><a id="l00472" name="l00472"></a><span class="lineno">  472</span>    out.<a class="code hl_variable" href="structhmap_1_1Vec3.html#a5dc78c2ba3f2bf3ca489aac6841e646c">z</a> = this-&gt;z - other_vec.<a class="code hl_variable" href="structhmap_1_1Vec3.html#a5dc78c2ba3f2bf3ca489aac6841e646c">z</a>;</div>
-<div class="line"><a id="l00473" name="l00473"></a><span class="lineno">  473</span>    <span class="keywordflow">return</span> out;</div>
-<div class="line"><a id="l00474" name="l00474"></a><span class="lineno">  474</span>  }</div>
-</div>
-<div class="line"><a id="l00475" name="l00475"></a><span class="lineno">  475</span> </div>
-<div class="foldopen" id="foldopen00485" data-start="{" data-end="}">
-<div class="line"><a id="l00485" name="l00485"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec3.html#a3d41e7c6ee51cf75a2cd35fe087d6c9c">  485</a></span>  <a class="code hl_struct" href="structhmap_1_1Vec3.html">Vec3</a> <a class="code hl_function" href="structhmap_1_1Vec3.html#a3d41e7c6ee51cf75a2cd35fe087d6c9c">operator*</a>(T scalar)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00486" name="l00486"></a><span class="lineno">  486</span><span class="keyword">  </span>{</div>
-<div class="line"><a id="l00487" name="l00487"></a><span class="lineno">  487</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="structhmap_1_1Vec3.html#a84d1d7ff97f75cb998c1182493c1f6cd">Vec3</a>(<a class="code hl_variable" href="structhmap_1_1Vec3.html#acec187d58afad5c31f51262d3a9c6e55">x</a> * scalar, <a class="code hl_variable" href="structhmap_1_1Vec3.html#a27037e1371300c6b567539f1e2c1e4de">y</a> * scalar, <a class="code hl_variable" href="structhmap_1_1Vec3.html#a5dc78c2ba3f2bf3ca489aac6841e646c">z</a> * scalar);</div>
-<div class="line"><a id="l00488" name="l00488"></a><span class="lineno">  488</span>  }</div>
-</div>
-<div class="line"><a id="l00489" name="l00489"></a><span class="lineno">  489</span> </div>
-<div class="foldopen" id="foldopen00502" data-start="{" data-end="};">
-<div class="line"><a id="l00502" name="l00502"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec3.html#ab9508c295d648604d3495e682d8a7573">  502</a></span>  <span class="keyword">friend</span> <a class="code hl_struct" href="structhmap_1_1Vec3.html">Vec3</a> <a class="code hl_friend" href="structhmap_1_1Vec3.html#ab9508c295d648604d3495e682d8a7573">operator*</a>(T scalar, <span class="keyword">const</span> <a class="code hl_struct" href="structhmap_1_1Vec3.html">Vec3</a> &amp;vec)</div>
-<div class="line"><a id="l00503" name="l00503"></a><span class="lineno">  503</span>  {</div>
-<div class="line"><a id="l00504" name="l00504"></a><span class="lineno">  504</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="structhmap_1_1Vec3.html#a84d1d7ff97f75cb998c1182493c1f6cd">Vec3</a>(scalar * vec.<a class="code hl_variable" href="structhmap_1_1Vec3.html#acec187d58afad5c31f51262d3a9c6e55">x</a>, scalar * vec.<a class="code hl_variable" href="structhmap_1_1Vec3.html#a27037e1371300c6b567539f1e2c1e4de">y</a>, scalar * vec.<a class="code hl_variable" href="structhmap_1_1Vec3.html#a5dc78c2ba3f2bf3ca489aac6841e646c">z</a>);</div>
-<div class="line"><a id="l00505" name="l00505"></a><span class="lineno">  505</span>  }</div>
-</div>
-<div class="line"><a id="l00506" name="l00506"></a><span class="lineno">  506</span> </div>
-<div class="foldopen" id="foldopen00517" data-start="{" data-end="};">
-<div class="line"><a id="l00517" name="l00517"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec3.html#a154d24c63ee18b3b4dba4f3b0c39c01a">  517</a></span>  <span class="keyword">friend</span> <a class="code hl_struct" href="structhmap_1_1Vec3.html">Vec3</a> <a class="code hl_friend" href="structhmap_1_1Vec3.html#a154d24c63ee18b3b4dba4f3b0c39c01a">cross</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structhmap_1_1Vec3.html">Vec3</a> v1, <span class="keyword">const</span> <a class="code hl_struct" href="structhmap_1_1Vec3.html">Vec3</a> v2)</div>
-<div class="line"><a id="l00518" name="l00518"></a><span class="lineno">  518</span>  {</div>
-<div class="line"><a id="l00519" name="l00519"></a><span class="lineno">  519</span>    <a class="code hl_struct" href="structhmap_1_1Vec3.html">Vec3</a> out;</div>
-<div class="line"><a id="l00520" name="l00520"></a><span class="lineno">  520</span>    out.<a class="code hl_variable" href="structhmap_1_1Vec3.html#acec187d58afad5c31f51262d3a9c6e55">x</a> = v1.<a class="code hl_variable" href="structhmap_1_1Vec3.html#a27037e1371300c6b567539f1e2c1e4de">y</a> * v2.<a class="code hl_variable" href="structhmap_1_1Vec3.html#a5dc78c2ba3f2bf3ca489aac6841e646c">z</a> - v1.<a class="code hl_variable" href="structhmap_1_1Vec3.html#a5dc78c2ba3f2bf3ca489aac6841e646c">z</a> * v2.<a class="code hl_variable" href="structhmap_1_1Vec3.html#a27037e1371300c6b567539f1e2c1e4de">y</a>;</div>
-<div class="line"><a id="l00521" name="l00521"></a><span class="lineno">  521</span>    out.<a class="code hl_variable" href="structhmap_1_1Vec3.html#a27037e1371300c6b567539f1e2c1e4de">y</a> = v1.<a class="code hl_variable" href="structhmap_1_1Vec3.html#a5dc78c2ba3f2bf3ca489aac6841e646c">z</a> * v2.<a class="code hl_variable" href="structhmap_1_1Vec3.html#acec187d58afad5c31f51262d3a9c6e55">x</a> - v1.<a class="code hl_variable" href="structhmap_1_1Vec3.html#acec187d58afad5c31f51262d3a9c6e55">x</a> * v2.<a class="code hl_variable" href="structhmap_1_1Vec3.html#a5dc78c2ba3f2bf3ca489aac6841e646c">z</a>;</div>
-<div class="line"><a id="l00522" name="l00522"></a><span class="lineno">  522</span>    out.<a class="code hl_variable" href="structhmap_1_1Vec3.html#a5dc78c2ba3f2bf3ca489aac6841e646c">z</a> = v1.<a class="code hl_variable" href="structhmap_1_1Vec3.html#acec187d58afad5c31f51262d3a9c6e55">x</a> * v2.<a class="code hl_variable" href="structhmap_1_1Vec3.html#a27037e1371300c6b567539f1e2c1e4de">y</a> - v1.<a class="code hl_variable" href="structhmap_1_1Vec3.html#a27037e1371300c6b567539f1e2c1e4de">y</a> * v2.<a class="code hl_variable" href="structhmap_1_1Vec3.html#acec187d58afad5c31f51262d3a9c6e55">x</a>;</div>
-<div class="line"><a id="l00523" name="l00523"></a><span class="lineno">  523</span>    <span class="keywordflow">return</span> out;</div>
-<div class="line"><a id="l00524" name="l00524"></a><span class="lineno">  524</span>  }</div>
-</div>
-<div class="line"><a id="l00525" name="l00525"></a><span class="lineno">  525</span> </div>
-<div class="foldopen" id="foldopen00536" data-start="{" data-end="};">
-<div class="line"><a id="l00536" name="l00536"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec3.html#ad0522945ffb81477316ad5ac205092e5">  536</a></span>  <span class="keyword">friend</span> <span class="keywordtype">float</span> <a class="code hl_friend" href="structhmap_1_1Vec3.html#ad0522945ffb81477316ad5ac205092e5">dot</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structhmap_1_1Vec3.html">Vec3</a> v1, <span class="keyword">const</span> <a class="code hl_struct" href="structhmap_1_1Vec3.html">Vec3</a> v2)</div>
-<div class="line"><a id="l00537" name="l00537"></a><span class="lineno">  537</span>  {</div>
-<div class="line"><a id="l00538" name="l00538"></a><span class="lineno">  538</span>    <span class="keywordflow">return</span> v1.<a class="code hl_variable" href="structhmap_1_1Vec3.html#acec187d58afad5c31f51262d3a9c6e55">x</a> * v2.<a class="code hl_variable" href="structhmap_1_1Vec3.html#acec187d58afad5c31f51262d3a9c6e55">x</a> + v1.<a class="code hl_variable" href="structhmap_1_1Vec3.html#a27037e1371300c6b567539f1e2c1e4de">y</a> * v2.<a class="code hl_variable" href="structhmap_1_1Vec3.html#a27037e1371300c6b567539f1e2c1e4de">y</a> + v1.<a class="code hl_variable" href="structhmap_1_1Vec3.html#a5dc78c2ba3f2bf3ca489aac6841e646c">z</a> * v2.<a class="code hl_variable" href="structhmap_1_1Vec3.html#a5dc78c2ba3f2bf3ca489aac6841e646c">z</a>;</div>
-<div class="line"><a id="l00539" name="l00539"></a><span class="lineno">  539</span>  }</div>
-</div>
-<div class="line"><a id="l00540" name="l00540"></a><span class="lineno">  540</span> </div>
-<div class="foldopen" id="foldopen00546" data-start="{" data-end="}">
-<div class="line"><a id="l00546" name="l00546"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec3.html#a9179747a20c0962fced2b03498a676be">  546</a></span>  T <a class="code hl_function" href="structhmap_1_1Vec3.html#a9179747a20c0962fced2b03498a676be">magnitude</a>()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00547" name="l00547"></a><span class="lineno">  547</span><span class="keyword">  </span>{</div>
-<div class="line"><a id="l00548" name="l00548"></a><span class="lineno">  548</span>    <span class="keywordflow">return</span> std::sqrt(<a class="code hl_variable" href="structhmap_1_1Vec3.html#acec187d58afad5c31f51262d3a9c6e55">x</a> * <a class="code hl_variable" href="structhmap_1_1Vec3.html#acec187d58afad5c31f51262d3a9c6e55">x</a> + <a class="code hl_variable" href="structhmap_1_1Vec3.html#a27037e1371300c6b567539f1e2c1e4de">y</a> * <a class="code hl_variable" href="structhmap_1_1Vec3.html#a27037e1371300c6b567539f1e2c1e4de">y</a> + <a class="code hl_variable" href="structhmap_1_1Vec3.html#a5dc78c2ba3f2bf3ca489aac6841e646c">z</a> * <a class="code hl_variable" href="structhmap_1_1Vec3.html#a5dc78c2ba3f2bf3ca489aac6841e646c">z</a>);</div>
-<div class="line"><a id="l00549" name="l00549"></a><span class="lineno">  549</span>  }</div>
-</div>
-<div class="line"><a id="l00550" name="l00550"></a><span class="lineno">  550</span> </div>
-<div class="foldopen" id="foldopen00557" data-start="{" data-end="}">
-<div class="line"><a id="l00557" name="l00557"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec3.html#a7a06f9922471cdffba177cc01602a547">  557</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="structhmap_1_1Vec3.html#a7a06f9922471cdffba177cc01602a547">normalize</a>()</div>
-<div class="line"><a id="l00558" name="l00558"></a><span class="lineno">  558</span>  {</div>
-<div class="line"><a id="l00559" name="l00559"></a><span class="lineno">  559</span>    T mag = <a class="code hl_function" href="structhmap_1_1Vec3.html#a9179747a20c0962fced2b03498a676be">magnitude</a>();</div>
-<div class="line"><a id="l00560" name="l00560"></a><span class="lineno">  560</span>    <span class="keywordflow">if</span> (mag &gt; 0) <span class="comment">// Avoid division by zero</span></div>
-<div class="line"><a id="l00561" name="l00561"></a><span class="lineno">  561</span>    {</div>
-<div class="line"><a id="l00562" name="l00562"></a><span class="lineno">  562</span>      <a class="code hl_variable" href="structhmap_1_1Vec3.html#acec187d58afad5c31f51262d3a9c6e55">x</a> /= mag;</div>
-<div class="line"><a id="l00563" name="l00563"></a><span class="lineno">  563</span>      <a class="code hl_variable" href="structhmap_1_1Vec3.html#a27037e1371300c6b567539f1e2c1e4de">y</a> /= mag;</div>
-<div class="line"><a id="l00564" name="l00564"></a><span class="lineno">  564</span>      <a class="code hl_variable" href="structhmap_1_1Vec3.html#a5dc78c2ba3f2bf3ca489aac6841e646c">z</a> /= mag;</div>
-<div class="line"><a id="l00565" name="l00565"></a><span class="lineno">  565</span>    }</div>
-<div class="line"><a id="l00566" name="l00566"></a><span class="lineno">  566</span>  }</div>
-</div>
-<div class="line"><a id="l00567" name="l00567"></a><span class="lineno">  567</span> </div>
-<div class="foldopen" id="foldopen00573" data-start="{" data-end="}">
-<div class="line"><a id="l00573" name="l00573"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec3.html#a4d1d4c9590347bc2c95fdff5d7b0a097">  573</a></span>  T <a class="code hl_function" href="structhmap_1_1Vec3.html#a4d1d4c9590347bc2c95fdff5d7b0a097">sum</a>()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00574" name="l00574"></a><span class="lineno">  574</span><span class="keyword">  </span>{</div>
-<div class="line"><a id="l00575" name="l00575"></a><span class="lineno">  575</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="structhmap_1_1Vec3.html#acec187d58afad5c31f51262d3a9c6e55">x</a> + <a class="code hl_variable" href="structhmap_1_1Vec3.html#a27037e1371300c6b567539f1e2c1e4de">y</a> + <a class="code hl_variable" href="structhmap_1_1Vec3.html#a5dc78c2ba3f2bf3ca489aac6841e646c">z</a>;</div>
-<div class="line"><a id="l00576" name="l00576"></a><span class="lineno">  576</span>  }</div>
-</div>
-<div class="line"><a id="l00577" name="l00577"></a><span class="lineno">  577</span>};</div>
-</div>
-<div class="line"><a id="l00578" name="l00578"></a><span class="lineno">  578</span> </div>
-<div class="foldopen" id="foldopen00588" data-start="{" data-end="};">
-<div class="line"><a id="l00588" name="l00588"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec4.html">  588</a></span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="keyword">struct </span><a class="code hl_struct" href="structhmap_1_1Vec4.html">Vec4</a></div>
-<div class="line"><a id="l00589" name="l00589"></a><span class="lineno">  589</span>{</div>
-<div class="line"><a id="l00590" name="l00590"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec4.html#abacc46ee2584065b59c1de54df0c4c25">  590</a></span>  T <a class="code hl_variable" href="structhmap_1_1Vec4.html#abacc46ee2584065b59c1de54df0c4c25">a</a>, <a class="code hl_variable" href="structhmap_1_1Vec4.html#a53ccbd36fe92232c1fcdb4b00d0bfd52">b</a>, <a class="code hl_variable" href="structhmap_1_1Vec4.html#ace83278a01cac27dd438a0afcf0bb55d">c</a>, <a class="code hl_variable" href="structhmap_1_1Vec4.html#aa65a4c32ae633eefee047c973fb55982">d</a>; </div>
-<div class="foldopen" id="foldopen00598" data-start="{" data-end="}">
-<div class="line"><a id="l00598" name="l00598"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec4.html#aec07dc20c1becffea00a00270a92253f">  598</a></span>  <a class="code hl_function" href="structhmap_1_1Vec4.html#aec07dc20c1becffea00a00270a92253f">Vec4</a>() : <a class="code hl_variable" href="structhmap_1_1Vec4.html#abacc46ee2584065b59c1de54df0c4c25">a</a>(0), <a class="code hl_variable" href="structhmap_1_1Vec4.html#a53ccbd36fe92232c1fcdb4b00d0bfd52">b</a>(0), <a class="code hl_variable" href="structhmap_1_1Vec4.html#ace83278a01cac27dd438a0afcf0bb55d">c</a>(0), <a class="code hl_variable" href="structhmap_1_1Vec4.html#aa65a4c32ae633eefee047c973fb55982">d</a>(0)</div>
-<div class="line"><a id="l00599" name="l00599"></a><span class="lineno">  599</span>  {</div>
-<div class="line"><a id="l00600" name="l00600"></a><span class="lineno">  600</span>  }</div>
-</div>
-<div class="line"><a id="l00601" name="l00601"></a><span class="lineno">  601</span> </div>
-<div class="foldopen" id="foldopen00611" data-start="{" data-end="}">
-<div class="line"><a id="l00611" name="l00611"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec4.html#ae9a4e44a1c81b1ea06986432a4c1c045">  611</a></span>  <a class="code hl_function" href="structhmap_1_1Vec4.html#ae9a4e44a1c81b1ea06986432a4c1c045">Vec4</a>(T <a class="code hl_variable" href="structhmap_1_1Vec4.html#abacc46ee2584065b59c1de54df0c4c25">a</a>, T <a class="code hl_variable" href="structhmap_1_1Vec4.html#a53ccbd36fe92232c1fcdb4b00d0bfd52">b</a>, T <a class="code hl_variable" href="structhmap_1_1Vec4.html#ace83278a01cac27dd438a0afcf0bb55d">c</a>, T <a class="code hl_variable" href="structhmap_1_1Vec4.html#aa65a4c32ae633eefee047c973fb55982">d</a>) : <a class="code hl_variable" href="structhmap_1_1Vec4.html#abacc46ee2584065b59c1de54df0c4c25">a</a>(<a class="code hl_variable" href="structhmap_1_1Vec4.html#abacc46ee2584065b59c1de54df0c4c25">a</a>), <a class="code hl_variable" href="structhmap_1_1Vec4.html#a53ccbd36fe92232c1fcdb4b00d0bfd52">b</a>(<a class="code hl_variable" href="structhmap_1_1Vec4.html#a53ccbd36fe92232c1fcdb4b00d0bfd52">b</a>), <a class="code hl_variable" href="structhmap_1_1Vec4.html#ace83278a01cac27dd438a0afcf0bb55d">c</a>(<a class="code hl_variable" href="structhmap_1_1Vec4.html#ace83278a01cac27dd438a0afcf0bb55d">c</a>), <a class="code hl_variable" href="structhmap_1_1Vec4.html#aa65a4c32ae633eefee047c973fb55982">d</a>(<a class="code hl_variable" href="structhmap_1_1Vec4.html#aa65a4c32ae633eefee047c973fb55982">d</a>)</div>
-<div class="line"><a id="l00612" name="l00612"></a><span class="lineno">  612</span>  {</div>
-<div class="line"><a id="l00613" name="l00613"></a><span class="lineno">  613</span>  }</div>
-</div>
-<div class="line"><a id="l00614" name="l00614"></a><span class="lineno">  614</span> </div>
-<div class="foldopen" id="foldopen00632" data-start="{" data-end="}">
-<div class="line"><a id="l00632" name="l00632"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec4.html#a0c9fe01131fd18c85148768f4db47733">  632</a></span>  <a class="code hl_function" href="structhmap_1_1Vec4.html#a0c9fe01131fd18c85148768f4db47733">Vec4</a>(<span class="keyword">const</span> std::vector&lt;T&gt; &amp;vec) : <a class="code hl_variable" href="structhmap_1_1Vec4.html#abacc46ee2584065b59c1de54df0c4c25">a</a>(0), <a class="code hl_variable" href="structhmap_1_1Vec4.html#a53ccbd36fe92232c1fcdb4b00d0bfd52">b</a>(0), <a class="code hl_variable" href="structhmap_1_1Vec4.html#ace83278a01cac27dd438a0afcf0bb55d">c</a>(0), <a class="code hl_variable" href="structhmap_1_1Vec4.html#aa65a4c32ae633eefee047c973fb55982">d</a>(0)</div>
-<div class="line"><a id="l00633" name="l00633"></a><span class="lineno">  633</span>  {</div>
-<div class="line"><a id="l00634" name="l00634"></a><span class="lineno">  634</span>    <span class="keywordflow">if</span> (vec.size() != 4)</div>
-<div class="line"><a id="l00635" name="l00635"></a><span class="lineno">  635</span>    {</div>
-<div class="line"><a id="l00636" name="l00636"></a><span class="lineno">  636</span>      <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;Vector must contain exactly four elements.&quot;</span>);</div>
-<div class="line"><a id="l00637" name="l00637"></a><span class="lineno">  637</span>    }</div>
-<div class="line"><a id="l00638" name="l00638"></a><span class="lineno">  638</span>    <a class="code hl_variable" href="structhmap_1_1Vec4.html#abacc46ee2584065b59c1de54df0c4c25">a</a> = vec[0];</div>
-<div class="line"><a id="l00639" name="l00639"></a><span class="lineno">  639</span>    <a class="code hl_variable" href="structhmap_1_1Vec4.html#a53ccbd36fe92232c1fcdb4b00d0bfd52">b</a> = vec[1];</div>
-<div class="line"><a id="l00640" name="l00640"></a><span class="lineno">  640</span>    <a class="code hl_variable" href="structhmap_1_1Vec4.html#ace83278a01cac27dd438a0afcf0bb55d">c</a> = vec[2];</div>
-<div class="line"><a id="l00641" name="l00641"></a><span class="lineno">  641</span>    <a class="code hl_variable" href="structhmap_1_1Vec4.html#aa65a4c32ae633eefee047c973fb55982">d</a> = vec[3];</div>
-<div class="line"><a id="l00642" name="l00642"></a><span class="lineno">  642</span>  }</div>
-</div>
-<div class="line"><a id="l00643" name="l00643"></a><span class="lineno">  643</span> </div>
-<div class="foldopen" id="foldopen00652" data-start="{" data-end="}">
-<div class="line"><a id="l00652" name="l00652"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec4.html#a18f7b68bdda02d98aedabaf8867f226e">  652</a></span>  <span class="keywordtype">bool</span> <a class="code hl_function" href="structhmap_1_1Vec4.html#a18f7b68bdda02d98aedabaf8867f226e">operator==</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structhmap_1_1Vec4.html">Vec4</a> &amp;other_vec)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00653" name="l00653"></a><span class="lineno">  653</span><span class="keyword">  </span>{</div>
-<div class="line"><a id="l00654" name="l00654"></a><span class="lineno">  654</span>    <span class="keywordflow">return</span> ((this-&gt;a == other_vec.<a class="code hl_variable" href="structhmap_1_1Vec4.html#abacc46ee2584065b59c1de54df0c4c25">a</a>) &amp;&amp; (this-&gt;b == other_vec.<a class="code hl_variable" href="structhmap_1_1Vec4.html#a53ccbd36fe92232c1fcdb4b00d0bfd52">b</a>) &amp;&amp;</div>
-<div class="line"><a id="l00655" name="l00655"></a><span class="lineno">  655</span>            (this-&gt;c == other_vec.<a class="code hl_variable" href="structhmap_1_1Vec4.html#ace83278a01cac27dd438a0afcf0bb55d">c</a>) &amp;&amp; (this-&gt;d == other_vec.<a class="code hl_variable" href="structhmap_1_1Vec4.html#aa65a4c32ae633eefee047c973fb55982">d</a>));</div>
-<div class="line"><a id="l00656" name="l00656"></a><span class="lineno">  656</span>  }</div>
-</div>
-<div class="line"><a id="l00657" name="l00657"></a><span class="lineno">  657</span> </div>
-<div class="foldopen" id="foldopen00666" data-start="{" data-end="}">
-<div class="line"><a id="l00666" name="l00666"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec4.html#aa3a7351534f531545194c0a21e1fc401">  666</a></span>  <span class="keywordtype">bool</span> <a class="code hl_function" href="structhmap_1_1Vec4.html#aa3a7351534f531545194c0a21e1fc401">operator!=</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structhmap_1_1Vec4.html">Vec4</a> &amp;other_vec)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00667" name="l00667"></a><span class="lineno">  667</span><span class="keyword">  </span>{</div>
-<div class="line"><a id="l00668" name="l00668"></a><span class="lineno">  668</span>    <span class="keywordflow">return</span> ((this-&gt;a != other_vec.<a class="code hl_variable" href="structhmap_1_1Vec4.html#abacc46ee2584065b59c1de54df0c4c25">a</a>) || (this-&gt;b != other_vec.<a class="code hl_variable" href="structhmap_1_1Vec4.html#a53ccbd36fe92232c1fcdb4b00d0bfd52">b</a>) ||</div>
-<div class="line"><a id="l00669" name="l00669"></a><span class="lineno">  669</span>            (this-&gt;c != other_vec.<a class="code hl_variable" href="structhmap_1_1Vec4.html#ace83278a01cac27dd438a0afcf0bb55d">c</a>) || (this-&gt;d != other_vec.<a class="code hl_variable" href="structhmap_1_1Vec4.html#aa65a4c32ae633eefee047c973fb55982">d</a>));</div>
-<div class="line"><a id="l00670" name="l00670"></a><span class="lineno">  670</span>  }</div>
-</div>
-<div class="line"><a id="l00671" name="l00671"></a><span class="lineno">  671</span> </div>
-<div class="foldopen" id="foldopen00681" data-start="{" data-end="}">
-<div class="line"><a id="l00681" name="l00681"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec4.html#a168a532a13b3fa35d09f0c9ea1a321a9">  681</a></span>  <a class="code hl_struct" href="structhmap_1_1Vec4.html">Vec4</a> &amp;<a class="code hl_function" href="structhmap_1_1Vec4.html#a168a532a13b3fa35d09f0c9ea1a321a9">operator/=</a>(<span class="keyword">const</span> T value)</div>
-<div class="line"><a id="l00682" name="l00682"></a><span class="lineno">  682</span>  {</div>
-<div class="line"><a id="l00683" name="l00683"></a><span class="lineno">  683</span>    this-&gt;a /= value;</div>
-<div class="line"><a id="l00684" name="l00684"></a><span class="lineno">  684</span>    this-&gt;b /= value;</div>
-<div class="line"><a id="l00685" name="l00685"></a><span class="lineno">  685</span>    this-&gt;c /= value;</div>
-<div class="line"><a id="l00686" name="l00686"></a><span class="lineno">  686</span>    this-&gt;d /= value;</div>
-<div class="line"><a id="l00687" name="l00687"></a><span class="lineno">  687</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a id="l00688" name="l00688"></a><span class="lineno">  688</span>  }</div>
-</div>
-<div class="line"><a id="l00689" name="l00689"></a><span class="lineno">  689</span> </div>
-<div class="foldopen" id="foldopen00699" data-start="{" data-end="}">
-<div class="line"><a id="l00699" name="l00699"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec4.html#ae724a00bc2d0d7d7cdf8f0dc614222a9">  699</a></span>  <a class="code hl_struct" href="structhmap_1_1Vec4.html">Vec4</a> <a class="code hl_function" href="structhmap_1_1Vec4.html#ae724a00bc2d0d7d7cdf8f0dc614222a9">operator/</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structhmap_1_1Vec4.html">Vec4</a> &amp;other_vec)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00700" name="l00700"></a><span class="lineno">  700</span><span class="keyword">  </span>{</div>
-<div class="line"><a id="l00701" name="l00701"></a><span class="lineno">  701</span>    <a class="code hl_struct" href="structhmap_1_1Vec4.html">Vec4</a> out;</div>
-<div class="line"><a id="l00702" name="l00702"></a><span class="lineno">  702</span>    out.<a class="code hl_variable" href="structhmap_1_1Vec4.html#abacc46ee2584065b59c1de54df0c4c25">a</a> = this-&gt;a / other_vec.<a class="code hl_variable" href="structhmap_1_1Vec4.html#abacc46ee2584065b59c1de54df0c4c25">a</a>;</div>
-<div class="line"><a id="l00703" name="l00703"></a><span class="lineno">  703</span>    out.<a class="code hl_variable" href="structhmap_1_1Vec4.html#a53ccbd36fe92232c1fcdb4b00d0bfd52">b</a> = this-&gt;b / other_vec.<a class="code hl_variable" href="structhmap_1_1Vec4.html#a53ccbd36fe92232c1fcdb4b00d0bfd52">b</a>;</div>
-<div class="line"><a id="l00704" name="l00704"></a><span class="lineno">  704</span>    out.<a class="code hl_variable" href="structhmap_1_1Vec4.html#ace83278a01cac27dd438a0afcf0bb55d">c</a> = this-&gt;c / other_vec.<a class="code hl_variable" href="structhmap_1_1Vec4.html#ace83278a01cac27dd438a0afcf0bb55d">c</a>;</div>
-<div class="line"><a id="l00705" name="l00705"></a><span class="lineno">  705</span>    out.<a class="code hl_variable" href="structhmap_1_1Vec4.html#aa65a4c32ae633eefee047c973fb55982">d</a> = this-&gt;d / other_vec.<a class="code hl_variable" href="structhmap_1_1Vec4.html#aa65a4c32ae633eefee047c973fb55982">d</a>;</div>
-<div class="line"><a id="l00706" name="l00706"></a><span class="lineno">  706</span>    <span class="keywordflow">return</span> out;</div>
-<div class="line"><a id="l00707" name="l00707"></a><span class="lineno">  707</span>  }</div>
-</div>
-<div class="line"><a id="l00708" name="l00708"></a><span class="lineno">  708</span> </div>
-<div class="foldopen" id="foldopen00719" data-start="{" data-end="}">
-<div class="line"><a id="l00719" name="l00719"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec4.html#a3be874dcf9fffa46cdab762d703ef1ab">  719</a></span>  <a class="code hl_struct" href="structhmap_1_1Vec4.html">Vec4</a> <a class="code hl_function" href="structhmap_1_1Vec4.html#a3be874dcf9fffa46cdab762d703ef1ab">operator*</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structhmap_1_1Vec4.html">Vec4</a> &amp;other_vec)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00720" name="l00720"></a><span class="lineno">  720</span><span class="keyword">  </span>{</div>
-<div class="line"><a id="l00721" name="l00721"></a><span class="lineno">  721</span>    <a class="code hl_struct" href="structhmap_1_1Vec4.html">Vec4</a> out;</div>
-<div class="line"><a id="l00722" name="l00722"></a><span class="lineno">  722</span>    out.<a class="code hl_variable" href="structhmap_1_1Vec4.html#abacc46ee2584065b59c1de54df0c4c25">a</a> = this-&gt;a * other_vec.<a class="code hl_variable" href="structhmap_1_1Vec4.html#abacc46ee2584065b59c1de54df0c4c25">a</a>;</div>
-<div class="line"><a id="l00723" name="l00723"></a><span class="lineno">  723</span>    out.<a class="code hl_variable" href="structhmap_1_1Vec4.html#a53ccbd36fe92232c1fcdb4b00d0bfd52">b</a> = this-&gt;b * other_vec.<a class="code hl_variable" href="structhmap_1_1Vec4.html#a53ccbd36fe92232c1fcdb4b00d0bfd52">b</a>;</div>
-<div class="line"><a id="l00724" name="l00724"></a><span class="lineno">  724</span>    out.<a class="code hl_variable" href="structhmap_1_1Vec4.html#ace83278a01cac27dd438a0afcf0bb55d">c</a> = this-&gt;c * other_vec.<a class="code hl_variable" href="structhmap_1_1Vec4.html#ace83278a01cac27dd438a0afcf0bb55d">c</a>;</div>
-<div class="line"><a id="l00725" name="l00725"></a><span class="lineno">  725</span>    out.<a class="code hl_variable" href="structhmap_1_1Vec4.html#aa65a4c32ae633eefee047c973fb55982">d</a> = this-&gt;d * other_vec.<a class="code hl_variable" href="structhmap_1_1Vec4.html#aa65a4c32ae633eefee047c973fb55982">d</a>;</div>
-<div class="line"><a id="l00726" name="l00726"></a><span class="lineno">  726</span>    <span class="keywordflow">return</span> out;</div>
-<div class="line"><a id="l00727" name="l00727"></a><span class="lineno">  727</span>  }</div>
-</div>
-<div class="line"><a id="l00728" name="l00728"></a><span class="lineno">  728</span> </div>
-<div class="foldopen" id="foldopen00738" data-start="{" data-end="}">
-<div class="line"><a id="l00738" name="l00738"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec4.html#a4cda617d090c216c30c1d0cf954dd2ca">  738</a></span>  <a class="code hl_struct" href="structhmap_1_1Vec4.html">Vec4</a> <a class="code hl_function" href="structhmap_1_1Vec4.html#a4cda617d090c216c30c1d0cf954dd2ca">operator+</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structhmap_1_1Vec4.html">Vec4</a> &amp;other_vec)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00739" name="l00739"></a><span class="lineno">  739</span><span class="keyword">  </span>{</div>
-<div class="line"><a id="l00740" name="l00740"></a><span class="lineno">  740</span>    <a class="code hl_struct" href="structhmap_1_1Vec4.html">Vec4</a> out;</div>
-<div class="line"><a id="l00741" name="l00741"></a><span class="lineno">  741</span>    out.<a class="code hl_variable" href="structhmap_1_1Vec4.html#abacc46ee2584065b59c1de54df0c4c25">a</a> = this-&gt;a + other_vec.<a class="code hl_variable" href="structhmap_1_1Vec4.html#abacc46ee2584065b59c1de54df0c4c25">a</a>;</div>
-<div class="line"><a id="l00742" name="l00742"></a><span class="lineno">  742</span>    out.<a class="code hl_variable" href="structhmap_1_1Vec4.html#a53ccbd36fe92232c1fcdb4b00d0bfd52">b</a> = this-&gt;b + other_vec.<a class="code hl_variable" href="structhmap_1_1Vec4.html#a53ccbd36fe92232c1fcdb4b00d0bfd52">b</a>;</div>
-<div class="line"><a id="l00743" name="l00743"></a><span class="lineno">  743</span>    out.<a class="code hl_variable" href="structhmap_1_1Vec4.html#ace83278a01cac27dd438a0afcf0bb55d">c</a> = this-&gt;c + other_vec.<a class="code hl_variable" href="structhmap_1_1Vec4.html#ace83278a01cac27dd438a0afcf0bb55d">c</a>;</div>
-<div class="line"><a id="l00744" name="l00744"></a><span class="lineno">  744</span>    out.<a class="code hl_variable" href="structhmap_1_1Vec4.html#aa65a4c32ae633eefee047c973fb55982">d</a> = this-&gt;d + other_vec.<a class="code hl_variable" href="structhmap_1_1Vec4.html#aa65a4c32ae633eefee047c973fb55982">d</a>;</div>
-<div class="line"><a id="l00745" name="l00745"></a><span class="lineno">  745</span>    <span class="keywordflow">return</span> out;</div>
-<div class="line"><a id="l00746" name="l00746"></a><span class="lineno">  746</span>  }</div>
-</div>
-<div class="line"><a id="l00747" name="l00747"></a><span class="lineno">  747</span> </div>
-<div class="foldopen" id="foldopen00757" data-start="{" data-end="}">
-<div class="line"><a id="l00757" name="l00757"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec4.html#a67123a8dd8a1a92f99557e099a86af8a">  757</a></span>  <a class="code hl_struct" href="structhmap_1_1Vec4.html">Vec4</a> <a class="code hl_function" href="structhmap_1_1Vec4.html#a67123a8dd8a1a92f99557e099a86af8a">operator-</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structhmap_1_1Vec4.html">Vec4</a> &amp;other_vec)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00758" name="l00758"></a><span class="lineno">  758</span><span class="keyword">  </span>{</div>
-<div class="line"><a id="l00759" name="l00759"></a><span class="lineno">  759</span>    <a class="code hl_struct" href="structhmap_1_1Vec4.html">Vec4</a> out;</div>
-<div class="line"><a id="l00760" name="l00760"></a><span class="lineno">  760</span>    out.<a class="code hl_variable" href="structhmap_1_1Vec4.html#abacc46ee2584065b59c1de54df0c4c25">a</a> = this-&gt;a - other_vec.<a class="code hl_variable" href="structhmap_1_1Vec4.html#abacc46ee2584065b59c1de54df0c4c25">a</a>;</div>
-<div class="line"><a id="l00761" name="l00761"></a><span class="lineno">  761</span>    out.<a class="code hl_variable" href="structhmap_1_1Vec4.html#a53ccbd36fe92232c1fcdb4b00d0bfd52">b</a> = this-&gt;b - other_vec.<a class="code hl_variable" href="structhmap_1_1Vec4.html#a53ccbd36fe92232c1fcdb4b00d0bfd52">b</a>;</div>
-<div class="line"><a id="l00762" name="l00762"></a><span class="lineno">  762</span>    out.<a class="code hl_variable" href="structhmap_1_1Vec4.html#ace83278a01cac27dd438a0afcf0bb55d">c</a> = this-&gt;c - other_vec.<a class="code hl_variable" href="structhmap_1_1Vec4.html#ace83278a01cac27dd438a0afcf0bb55d">c</a>;</div>
-<div class="line"><a id="l00763" name="l00763"></a><span class="lineno">  763</span>    out.<a class="code hl_variable" href="structhmap_1_1Vec4.html#aa65a4c32ae633eefee047c973fb55982">d</a> = this-&gt;d - other_vec.<a class="code hl_variable" href="structhmap_1_1Vec4.html#aa65a4c32ae633eefee047c973fb55982">d</a>;</div>
-<div class="line"><a id="l00764" name="l00764"></a><span class="lineno">  764</span>    <span class="keywordflow">return</span> out;</div>
-<div class="line"><a id="l00765" name="l00765"></a><span class="lineno">  765</span>  }</div>
-</div>
-<div class="line"><a id="l00766" name="l00766"></a><span class="lineno">  766</span> </div>
-<div class="foldopen" id="foldopen00776" data-start="{" data-end="}">
-<div class="line"><a id="l00776" name="l00776"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec4.html#ac4383140ebf1c19af7a5e5465638e89d">  776</a></span>  <a class="code hl_struct" href="structhmap_1_1Vec4.html">Vec4</a> <a class="code hl_function" href="structhmap_1_1Vec4.html#ac4383140ebf1c19af7a5e5465638e89d">operator*</a>(T scalar)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00777" name="l00777"></a><span class="lineno">  777</span><span class="keyword">  </span>{</div>
-<div class="line"><a id="l00778" name="l00778"></a><span class="lineno">  778</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="structhmap_1_1Vec4.html#aec07dc20c1becffea00a00270a92253f">Vec4</a>(<a class="code hl_variable" href="structhmap_1_1Vec4.html#abacc46ee2584065b59c1de54df0c4c25">a</a> * scalar, <a class="code hl_variable" href="structhmap_1_1Vec4.html#a53ccbd36fe92232c1fcdb4b00d0bfd52">b</a> * scalar, <a class="code hl_variable" href="structhmap_1_1Vec4.html#ace83278a01cac27dd438a0afcf0bb55d">c</a> * scalar, <a class="code hl_variable" href="structhmap_1_1Vec4.html#aa65a4c32ae633eefee047c973fb55982">d</a> * scalar);</div>
-<div class="line"><a id="l00779" name="l00779"></a><span class="lineno">  779</span>  }</div>
-</div>
-<div class="line"><a id="l00780" name="l00780"></a><span class="lineno">  780</span> </div>
-<div class="foldopen" id="foldopen00781" data-start="{" data-end="}">
-<div class="line"><a id="l00781" name="l00781"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec4.html#ab9ee5a9e780ba0ef9c64aec3b5fcf8ee">  781</a></span>  <span class="keywordtype">bool</span> <a class="code hl_function" href="structhmap_1_1Vec4.html#ab9ee5a9e780ba0ef9c64aec3b5fcf8ee">operator&lt;</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structhmap_1_1Vec4.html">Vec4</a> &amp;other) <span class="keyword">const</span> <span class="keyword">noexcept</span></div>
-<div class="line"><a id="l00782" name="l00782"></a><span class="lineno">  782</span>  {</div>
-<div class="line"><a id="l00783" name="l00783"></a><span class="lineno">  783</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structhmap_1_1Vec4.html#abacc46ee2584065b59c1de54df0c4c25">a</a> != other.a) <span class="keywordflow">return</span> <a class="code hl_variable" href="structhmap_1_1Vec4.html#abacc46ee2584065b59c1de54df0c4c25">a</a> &lt; other.a;</div>
-<div class="line"><a id="l00784" name="l00784"></a><span class="lineno">  784</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structhmap_1_1Vec4.html#a53ccbd36fe92232c1fcdb4b00d0bfd52">b</a> != other.b) <span class="keywordflow">return</span> <a class="code hl_variable" href="structhmap_1_1Vec4.html#a53ccbd36fe92232c1fcdb4b00d0bfd52">b</a> &lt; other.b;</div>
-<div class="line"><a id="l00785" name="l00785"></a><span class="lineno">  785</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structhmap_1_1Vec4.html#ace83278a01cac27dd438a0afcf0bb55d">c</a> != other.c) <span class="keywordflow">return</span> <a class="code hl_variable" href="structhmap_1_1Vec4.html#ace83278a01cac27dd438a0afcf0bb55d">c</a> &lt; other.c;</div>
-<div class="line"><a id="l00786" name="l00786"></a><span class="lineno">  786</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="structhmap_1_1Vec4.html#aa65a4c32ae633eefee047c973fb55982">d</a> &lt; other.d;</div>
-<div class="line"><a id="l00787" name="l00787"></a><span class="lineno">  787</span>  }</div>
-</div>
-<div class="line"><a id="l00788" name="l00788"></a><span class="lineno">  788</span> </div>
-<div class="foldopen" id="foldopen00801" data-start="{" data-end="};">
-<div class="line"><a id="l00801" name="l00801"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec4.html#a1c2926686abc112047126b7d06859965">  801</a></span>  <span class="keyword">friend</span> <a class="code hl_struct" href="structhmap_1_1Vec4.html">Vec4</a> <a class="code hl_friend" href="structhmap_1_1Vec4.html#a1c2926686abc112047126b7d06859965">operator*</a>(T scalar, <span class="keyword">const</span> <a class="code hl_struct" href="structhmap_1_1Vec4.html">Vec4</a> &amp;vec)</div>
-<div class="line"><a id="l00802" name="l00802"></a><span class="lineno">  802</span>  {</div>
-<div class="line"><a id="l00803" name="l00803"></a><span class="lineno">  803</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="structhmap_1_1Vec4.html#aec07dc20c1becffea00a00270a92253f">Vec4</a>(scalar * vec.<a class="code hl_variable" href="structhmap_1_1Vec4.html#abacc46ee2584065b59c1de54df0c4c25">a</a>, scalar * vec.<a class="code hl_variable" href="structhmap_1_1Vec4.html#a53ccbd36fe92232c1fcdb4b00d0bfd52">b</a>, scalar * vec.<a class="code hl_variable" href="structhmap_1_1Vec4.html#ace83278a01cac27dd438a0afcf0bb55d">c</a>, scalar * vec.<a class="code hl_variable" href="structhmap_1_1Vec4.html#aa65a4c32ae633eefee047c973fb55982">d</a>);</div>
-<div class="line"><a id="l00804" name="l00804"></a><span class="lineno">  804</span>  }</div>
-</div>
-<div class="line"><a id="l00805" name="l00805"></a><span class="lineno">  805</span> </div>
-<div class="foldopen" id="foldopen00819" data-start="{" data-end="}">
-<div class="line"><a id="l00819" name="l00819"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec4.html#a080d1200616967db1349c9b912b1186c">  819</a></span>  <a class="code hl_struct" href="structhmap_1_1Vec4.html">Vec4&lt;T&gt;</a> <a class="code hl_function" href="structhmap_1_1Vec4.html#a080d1200616967db1349c9b912b1186c">adjust</a>(<span class="keywordtype">float</span> da, <span class="keywordtype">float</span> db, <span class="keywordtype">float</span> dc, <span class="keywordtype">float</span> dd)</div>
-<div class="line"><a id="l00820" name="l00820"></a><span class="lineno">  820</span>  {</div>
-<div class="line"><a id="l00821" name="l00821"></a><span class="lineno">  821</span>    <span class="keywordflow">return</span> <a class="code hl_struct" href="structhmap_1_1Vec4.html">Vec4&lt;T&gt;</a>(this-&gt;a + da, this-&gt;b + db, this-&gt;c + dc, this-&gt;d + dd);</div>
-<div class="line"><a id="l00822" name="l00822"></a><span class="lineno">  822</span>  }</div>
-</div>
-<div class="line"><a id="l00823" name="l00823"></a><span class="lineno">  823</span> </div>
-<div class="foldopen" id="foldopen00834" data-start="{" data-end="};">
-<div class="line"><a id="l00834" name="l00834"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec4.html#a2792f6a93dabbfb082fcd8313424747c">  834</a></span>  <span class="keyword">friend</span> <span class="keywordtype">float</span> <a class="code hl_friend" href="structhmap_1_1Vec4.html#a2792f6a93dabbfb082fcd8313424747c">dot</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structhmap_1_1Vec4.html">Vec4</a> v1, <span class="keyword">const</span> <a class="code hl_struct" href="structhmap_1_1Vec4.html">Vec4</a> v2)</div>
-<div class="line"><a id="l00835" name="l00835"></a><span class="lineno">  835</span>  {</div>
-<div class="line"><a id="l00836" name="l00836"></a><span class="lineno">  836</span>    <span class="keywordflow">return</span> v1.<a class="code hl_variable" href="structhmap_1_1Vec4.html#abacc46ee2584065b59c1de54df0c4c25">a</a> * v2.<a class="code hl_variable" href="structhmap_1_1Vec4.html#abacc46ee2584065b59c1de54df0c4c25">a</a> + v1.<a class="code hl_variable" href="structhmap_1_1Vec4.html#a53ccbd36fe92232c1fcdb4b00d0bfd52">b</a> * v2.<a class="code hl_variable" href="structhmap_1_1Vec4.html#a53ccbd36fe92232c1fcdb4b00d0bfd52">b</a> + v1.<a class="code hl_variable" href="structhmap_1_1Vec4.html#ace83278a01cac27dd438a0afcf0bb55d">c</a> * v2.<a class="code hl_variable" href="structhmap_1_1Vec4.html#ace83278a01cac27dd438a0afcf0bb55d">c</a> + v1.<a class="code hl_variable" href="structhmap_1_1Vec4.html#aa65a4c32ae633eefee047c973fb55982">d</a> * v2.<a class="code hl_variable" href="structhmap_1_1Vec4.html#aa65a4c32ae633eefee047c973fb55982">d</a>;</div>
-<div class="line"><a id="l00837" name="l00837"></a><span class="lineno">  837</span>  }</div>
-</div>
-<div class="line"><a id="l00838" name="l00838"></a><span class="lineno">  838</span> </div>
-<div class="line"><a id="l00839" name="l00839"></a><span class="lineno">  839</span>  <span class="comment">// glm adaptors</span></div>
-<div class="foldopen" id="foldopen00840" data-start="{" data-end="}">
-<div class="line"><a id="l00840" name="l00840"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec4.html#a2aa1697fff083c0d310ce106da93acdc">  840</a></span>  <a class="code hl_function" href="structhmap_1_1Vec4.html#a2aa1697fff083c0d310ce106da93acdc">Vec4</a>(<span class="keyword">const</span> glm::vec4 &amp;v)</div>
-<div class="line"><a id="l00841" name="l00841"></a><span class="lineno">  841</span>      : <a class="code hl_variable" href="structhmap_1_1Vec4.html#abacc46ee2584065b59c1de54df0c4c25">a</a>(static_cast&lt;T&gt;(v.x)),</div>
-<div class="line"><a id="l00842" name="l00842"></a><span class="lineno">  842</span>        <a class="code hl_variable" href="structhmap_1_1Vec4.html#a53ccbd36fe92232c1fcdb4b00d0bfd52">b</a>(static_cast&lt;T&gt;(v.y)),</div>
-<div class="line"><a id="l00843" name="l00843"></a><span class="lineno">  843</span>        <a class="code hl_variable" href="structhmap_1_1Vec4.html#ace83278a01cac27dd438a0afcf0bb55d">c</a>(static_cast&lt;T&gt;(v.z)),</div>
-<div class="line"><a id="l00844" name="l00844"></a><span class="lineno">  844</span>        <a class="code hl_variable" href="structhmap_1_1Vec4.html#aa65a4c32ae633eefee047c973fb55982">d</a>(static_cast&lt;T&gt;(v.w))</div>
-<div class="line"><a id="l00845" name="l00845"></a><span class="lineno">  845</span>  {</div>
-<div class="line"><a id="l00846" name="l00846"></a><span class="lineno">  846</span>  }</div>
-</div>
-<div class="foldopen" id="foldopen00847" data-start="{" data-end="}">
-<div class="line"><a id="l00847" name="l00847"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec4.html#a5e537472078bd42e9c50d3939ece2b1c">  847</a></span>  <a class="code hl_function" href="structhmap_1_1Vec4.html#a5e537472078bd42e9c50d3939ece2b1c">Vec4</a>(<span class="keyword">const</span> glm::ivec4 &amp;v)</div>
-<div class="line"><a id="l00848" name="l00848"></a><span class="lineno">  848</span>      : <a class="code hl_variable" href="structhmap_1_1Vec4.html#abacc46ee2584065b59c1de54df0c4c25">a</a>(static_cast&lt;T&gt;(v.x)),</div>
-<div class="line"><a id="l00849" name="l00849"></a><span class="lineno">  849</span>        <a class="code hl_variable" href="structhmap_1_1Vec4.html#a53ccbd36fe92232c1fcdb4b00d0bfd52">b</a>(static_cast&lt;T&gt;(v.y)),</div>
-<div class="line"><a id="l00850" name="l00850"></a><span class="lineno">  850</span>        <a class="code hl_variable" href="structhmap_1_1Vec4.html#ace83278a01cac27dd438a0afcf0bb55d">c</a>(static_cast&lt;T&gt;(v.z)),</div>
-<div class="line"><a id="l00851" name="l00851"></a><span class="lineno">  851</span>        <a class="code hl_variable" href="structhmap_1_1Vec4.html#aa65a4c32ae633eefee047c973fb55982">d</a>(static_cast&lt;T&gt;(v.w))</div>
-<div class="line"><a id="l00852" name="l00852"></a><span class="lineno">  852</span>  {</div>
-<div class="line"><a id="l00853" name="l00853"></a><span class="lineno">  853</span>  }</div>
-</div>
-<div class="foldopen" id="foldopen00854" data-start="{" data-end="}">
-<div class="line"><a id="l00854" name="l00854"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec4.html#aac88058aee521e20925cdc24b2686e61">  854</a></span>  <span class="keyword">operator</span> glm::vec4()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00855" name="l00855"></a><span class="lineno">  855</span><span class="keyword">  </span>{</div>
-<div class="line"><a id="l00856" name="l00856"></a><span class="lineno">  856</span>    <span class="keywordflow">return</span> glm::vec4(<span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(<a class="code hl_variable" href="structhmap_1_1Vec4.html#abacc46ee2584065b59c1de54df0c4c25">a</a>),</div>
-<div class="line"><a id="l00857" name="l00857"></a><span class="lineno">  857</span>                     <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(<a class="code hl_variable" href="structhmap_1_1Vec4.html#a53ccbd36fe92232c1fcdb4b00d0bfd52">b</a>),</div>
-<div class="line"><a id="l00858" name="l00858"></a><span class="lineno">  858</span>                     <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(<a class="code hl_variable" href="structhmap_1_1Vec4.html#ace83278a01cac27dd438a0afcf0bb55d">c</a>),</div>
-<div class="line"><a id="l00859" name="l00859"></a><span class="lineno">  859</span>                     <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(<a class="code hl_variable" href="structhmap_1_1Vec4.html#aa65a4c32ae633eefee047c973fb55982">d</a>));</div>
-<div class="line"><a id="l00860" name="l00860"></a><span class="lineno">  860</span>  }</div>
-</div>
-<div class="foldopen" id="foldopen00861" data-start="{" data-end="}">
-<div class="line"><a id="l00861" name="l00861"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec4.html#a7b5a516fdc43d0146586e6ebc7ac5e12">  861</a></span>  <span class="keyword">operator</span> glm::ivec4()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00862" name="l00862"></a><span class="lineno">  862</span><span class="keyword">  </span>{</div>
-<div class="line"><a id="l00863" name="l00863"></a><span class="lineno">  863</span>    <span class="keywordflow">return</span> glm::ivec4(<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(<a class="code hl_variable" href="structhmap_1_1Vec4.html#abacc46ee2584065b59c1de54df0c4c25">a</a>),</div>
-<div class="line"><a id="l00864" name="l00864"></a><span class="lineno">  864</span>                      <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(<a class="code hl_variable" href="structhmap_1_1Vec4.html#a53ccbd36fe92232c1fcdb4b00d0bfd52">b</a>),</div>
-<div class="line"><a id="l00865" name="l00865"></a><span class="lineno">  865</span>                      <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(<a class="code hl_variable" href="structhmap_1_1Vec4.html#ace83278a01cac27dd438a0afcf0bb55d">c</a>),</div>
-<div class="line"><a id="l00866" name="l00866"></a><span class="lineno">  866</span>                      <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(<a class="code hl_variable" href="structhmap_1_1Vec4.html#aa65a4c32ae633eefee047c973fb55982">d</a>));</div>
-<div class="line"><a id="l00867" name="l00867"></a><span class="lineno">  867</span>  }</div>
-</div>
-<div class="line"><a id="l00868" name="l00868"></a><span class="lineno">  868</span>};</div>
-</div>
-<div class="line"><a id="l00869" name="l00869"></a><span class="lineno">  869</span> </div>
-<div class="foldopen" id="foldopen00879" data-start="{" data-end="};">
-<div class="line"><a id="l00879" name="l00879"></a><span class="lineno"><a class="line" href="structhmap_1_1Mat.html">  879</a></span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="keyword">struct </span><a class="code hl_struct" href="structhmap_1_1Mat.html">Mat</a></div>
-<div class="line"><a id="l00880" name="l00880"></a><span class="lineno">  880</span>{</div>
-<div class="line"><a id="l00881" name="l00881"></a><span class="lineno"><a class="line" href="structhmap_1_1Mat.html#a4a27962ffe15d147fa23386947c08cbf">  881</a></span>  std::vector&lt;T&gt; <a class="code hl_variable" href="structhmap_1_1Mat.html#a4a27962ffe15d147fa23386947c08cbf">vector</a>; </div>
-<div class="line"><a id="l00883" name="l00883"></a><span class="lineno"><a class="line" href="structhmap_1_1Mat.html#a38df202b165735b1eb8cad32d90ac613">  883</a></span>  <a class="code hl_struct" href="structhmap_1_1Vec2.html">Vec2&lt;int&gt;</a> <a class="code hl_variable" href="structhmap_1_1Mat.html#a38df202b165735b1eb8cad32d90ac613">shape</a>;       </div>
-<div class="foldopen" id="foldopen00896" data-start="{" data-end="}">
-<div class="line"><a id="l00896" name="l00896"></a><span class="lineno"><a class="line" href="structhmap_1_1Mat.html#a1a61160398cf1ce3e19b06605ac2c27f">  896</a></span>  <a class="code hl_function" href="structhmap_1_1Mat.html#a1a61160398cf1ce3e19b06605ac2c27f">Mat</a>(<a class="code hl_struct" href="structhmap_1_1Vec2.html">Vec2&lt;int&gt;</a> <a class="code hl_variable" href="structhmap_1_1Mat.html#a38df202b165735b1eb8cad32d90ac613">shape</a>) : <a class="code hl_variable" href="structhmap_1_1Mat.html#a38df202b165735b1eb8cad32d90ac613">shape</a>(<a class="code hl_variable" href="structhmap_1_1Mat.html#a38df202b165735b1eb8cad32d90ac613">shape</a>)</div>
-<div class="line"><a id="l00897" name="l00897"></a><span class="lineno">  897</span>  {</div>
-<div class="line"><a id="l00898" name="l00898"></a><span class="lineno">  898</span>    this-&gt;vector.resize(<a class="code hl_variable" href="structhmap_1_1Mat.html#a38df202b165735b1eb8cad32d90ac613">shape</a>.<a class="code hl_variable" href="structhmap_1_1Vec2.html#a2dc51e83492f966eeddbdac3d58ab447">x</a> * <a class="code hl_variable" href="structhmap_1_1Mat.html#a38df202b165735b1eb8cad32d90ac613">shape</a>.<a class="code hl_variable" href="structhmap_1_1Vec2.html#a087ff9ff4159d1e5778c0b65ee2a1648">y</a>);</div>
-<div class="line"><a id="l00899" name="l00899"></a><span class="lineno">  899</span>  }</div>
-</div>
-<div class="line"><a id="l00900" name="l00900"></a><span class="lineno">  900</span> </div>
-<div class="foldopen" id="foldopen00912" data-start="{" data-end="}">
-<div class="line"><a id="l00912" name="l00912"></a><span class="lineno"><a class="line" href="structhmap_1_1Mat.html#aa425a1ad1a875f46639973d24216f346">  912</a></span>  <a class="code hl_function" href="structhmap_1_1Mat.html#aa425a1ad1a875f46639973d24216f346">Mat</a>(<a class="code hl_struct" href="structhmap_1_1Vec2.html">Vec2&lt;int&gt;</a> <a class="code hl_variable" href="structhmap_1_1Mat.html#a38df202b165735b1eb8cad32d90ac613">shape</a>, T value) : <a class="code hl_variable" href="structhmap_1_1Mat.html#a38df202b165735b1eb8cad32d90ac613">shape</a>(<a class="code hl_variable" href="structhmap_1_1Mat.html#a38df202b165735b1eb8cad32d90ac613">shape</a>)</div>
-<div class="line"><a id="l00913" name="l00913"></a><span class="lineno">  913</span>  {</div>
-<div class="line"><a id="l00914" name="l00914"></a><span class="lineno">  914</span>    this-&gt;vector.resize(<a class="code hl_variable" href="structhmap_1_1Mat.html#a38df202b165735b1eb8cad32d90ac613">shape</a>.<a class="code hl_variable" href="structhmap_1_1Vec2.html#a2dc51e83492f966eeddbdac3d58ab447">x</a> * <a class="code hl_variable" href="structhmap_1_1Mat.html#a38df202b165735b1eb8cad32d90ac613">shape</a>.<a class="code hl_variable" href="structhmap_1_1Vec2.html#a087ff9ff4159d1e5778c0b65ee2a1648">y</a>);</div>
-<div class="line"><a id="l00915" name="l00915"></a><span class="lineno">  915</span>    std::fill(this-&gt;vector.begin(), <a class="code hl_variable" href="structhmap_1_1Mat.html#a4a27962ffe15d147fa23386947c08cbf">this</a>-&gt;vector.end(), value);</div>
-<div class="line"><a id="l00916" name="l00916"></a><span class="lineno">  916</span>  }</div>
-</div>
-<div class="line"><a id="l00917" name="l00917"></a><span class="lineno">  917</span> </div>
-<div class="foldopen" id="foldopen00928" data-start="{" data-end="}">
-<div class="line"><a id="l00928" name="l00928"></a><span class="lineno"><a class="line" href="structhmap_1_1Mat.html#a429366c8daa4495b65f288f3527f2022">  928</a></span>  T &amp;<a class="code hl_function" href="structhmap_1_1Mat.html#a429366c8daa4495b65f288f3527f2022">operator()</a>(<span class="keywordtype">int</span> i, <span class="keywordtype">int</span> j)</div>
-<div class="line"><a id="l00929" name="l00929"></a><span class="lineno">  929</span>  {</div>
-<div class="line"><a id="l00930" name="l00930"></a><span class="lineno">  930</span>    <span class="keywordflow">return</span> this-&gt;vector[j * this-&gt;shape.<a class="code hl_variable" href="structhmap_1_1Vec2.html#a2dc51e83492f966eeddbdac3d58ab447">x</a> + i];</div>
-<div class="line"><a id="l00931" name="l00931"></a><span class="lineno">  931</span>  }</div>
-</div>
-<div class="line"><a id="l00932" name="l00932"></a><span class="lineno">  932</span> </div>
-<div class="foldopen" id="foldopen00944" data-start="{" data-end="}">
-<div class="line"><a id="l00944" name="l00944"></a><span class="lineno"><a class="line" href="structhmap_1_1Mat.html#a4f148a4aa0f08e0bd0c4959b8fcc9aa5">  944</a></span>  <span class="keyword">const</span> T &amp;<a class="code hl_function" href="structhmap_1_1Mat.html#a4f148a4aa0f08e0bd0c4959b8fcc9aa5">operator()</a>(<span class="keywordtype">int</span> i, <span class="keywordtype">int</span> j)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00945" name="l00945"></a><span class="lineno">  945</span><span class="keyword">  </span>{</div>
-<div class="line"><a id="l00946" name="l00946"></a><span class="lineno">  946</span>    <span class="keywordflow">return</span> this-&gt;vector[j * this-&gt;shape.<a class="code hl_variable" href="structhmap_1_1Vec2.html#a2dc51e83492f966eeddbdac3d58ab447">x</a> + i];</div>
-<div class="line"><a id="l00947" name="l00947"></a><span class="lineno">  947</span>  }</div>
-</div>
-<div class="line"><a id="l00948" name="l00948"></a><span class="lineno">  948</span> </div>
-<div class="foldopen" id="foldopen00949" data-start="{" data-end="}">
-<div class="line"><a id="l00949" name="l00949"></a><span class="lineno"><a class="line" href="structhmap_1_1Mat.html#a683a8df2a61c1d8f63dc1ccfe71714b6">  949</a></span>  T &amp;<a class="code hl_function" href="structhmap_1_1Mat.html#a683a8df2a61c1d8f63dc1ccfe71714b6">operator()</a>(<a class="code hl_struct" href="structhmap_1_1Vec2.html">Vec2&lt;int&gt;</a> <a class="code hl_variable" href="structhmap_1_1Mat.html#a4a27962ffe15d147fa23386947c08cbf">ij</a>)</div>
-<div class="line"><a id="l00950" name="l00950"></a><span class="lineno">  950</span>  {</div>
-<div class="line"><a id="l00951" name="l00951"></a><span class="lineno">  951</span>    <span class="keywordflow">return</span> this-&gt;vector[<a class="code hl_variable" href="structhmap_1_1Mat.html#a4a27962ffe15d147fa23386947c08cbf">ij</a>.y * this-&gt;shape.<a class="code hl_variable" href="structhmap_1_1Vec2.html#a2dc51e83492f966eeddbdac3d58ab447">x</a> + <a class="code hl_variable" href="structhmap_1_1Mat.html#a4a27962ffe15d147fa23386947c08cbf">ij</a>.x];</div>
-<div class="line"><a id="l00952" name="l00952"></a><span class="lineno">  952</span>  }</div>
-</div>
-<div class="line"><a id="l00953" name="l00953"></a><span class="lineno">  953</span> </div>
-<div class="foldopen" id="foldopen00954" data-start="{" data-end="}">
-<div class="line"><a id="l00954" name="l00954"></a><span class="lineno"><a class="line" href="structhmap_1_1Mat.html#a1aaffa323b410bb2474ad65feea32da5">  954</a></span>  <span class="keyword">const</span> T &amp;<a class="code hl_function" href="structhmap_1_1Mat.html#a1aaffa323b410bb2474ad65feea32da5">operator()</a>(<a class="code hl_struct" href="structhmap_1_1Vec2.html">Vec2&lt;int&gt;</a> <a class="code hl_variable" href="structhmap_1_1Mat.html#a4a27962ffe15d147fa23386947c08cbf">ij</a>)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00955" name="l00955"></a><span class="lineno">  955</span><span class="keyword">  </span>{</div>
-<div class="line"><a id="l00956" name="l00956"></a><span class="lineno">  956</span>    <span class="keywordflow">return</span> this-&gt;vector[<a class="code hl_variable" href="structhmap_1_1Mat.html#a4a27962ffe15d147fa23386947c08cbf">ij</a>.y * this-&gt;shape.<a class="code hl_variable" href="structhmap_1_1Vec2.html#a2dc51e83492f966eeddbdac3d58ab447">x</a> + <a class="code hl_variable" href="structhmap_1_1Mat.html#a4a27962ffe15d147fa23386947c08cbf">ij</a>.x];</div>
-<div class="line"><a id="l00957" name="l00957"></a><span class="lineno">  957</span>  }</div>
-</div>
-<div class="line"><a id="l00958" name="l00958"></a><span class="lineno">  958</span>};</div>
-</div>
-<div class="line"><a id="l00959" name="l00959"></a><span class="lineno">  959</span> </div>
-<div class="foldopen" id="foldopen00972" data-start="{" data-end="}">
-<div class="line"><a id="l00972" name="l00972"></a><span class="lineno"><a class="line" href="namespacehmap.html#ad37e39413754484dfb342ffbfbe75c2b">  972</a></span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <a class="code hl_struct" href="structhmap_1_1Vec3.html">Vec3&lt;T&gt;</a> <a class="code hl_function" href="namespacehmap.html#ad37e39413754484dfb342ffbfbe75c2b">normalized_vec3</a>(T x, T y, T z)</div>
-<div class="line"><a id="l00973" name="l00973"></a><span class="lineno">  973</span>{</div>
-<div class="line"><a id="l00974" name="l00974"></a><span class="lineno">  974</span>  <a class="code hl_struct" href="structhmap_1_1Vec3.html">Vec3&lt;T&gt;</a> v = <a class="code hl_struct" href="structhmap_1_1Vec3.html">Vec3&lt;T&gt;</a>(x, y, z);</div>
-<div class="line"><a id="l00975" name="l00975"></a><span class="lineno">  975</span>  v.<a class="code hl_function" href="structhmap_1_1Vec3.html#a7a06f9922471cdffba177cc01602a547">normalize</a>();</div>
-<div class="line"><a id="l00976" name="l00976"></a><span class="lineno">  976</span>  <span class="keywordflow">return</span> v;</div>
-<div class="line"><a id="l00977" name="l00977"></a><span class="lineno">  977</span>}</div>
-</div>
-<div class="line"><a id="l00978" name="l00978"></a><span class="lineno">  978</span> </div>
-<div class="line"><a id="l00979" name="l00979"></a><span class="lineno">  979</span>} <span class="comment">// namespace hmap</span></div>
-</div>
-<div class="ttc" id="anamespacehmap_html"><div class="ttname"><a href="namespacehmap.html">hmap</a></div><div class="ttdef"><b>Definition</b> algebra.hpp:31</div></div>
-<div class="ttc" id="anamespacehmap_html_ad37e39413754484dfb342ffbfbe75c2b"><div class="ttname"><a href="namespacehmap.html#ad37e39413754484dfb342ffbfbe75c2b">hmap::normalized_vec3</a></div><div class="ttdeci">Vec3&lt; T &gt; normalized_vec3(T x, T y, T z)</div><div class="ttdoc">Constructs a normalized 3D vector.</div><div class="ttdef"><b>Definition</b> algebra.hpp:972</div></div>
-<div class="ttc" id="astructhmap_1_1Mat_html"><div class="ttname"><a href="structhmap_1_1Mat.html">hmap::Mat</a></div><div class="ttdoc">Mat class for basic manipulation of 2D matrices.</div><div class="ttdef"><b>Definition</b> algebra.hpp:880</div></div>
-<div class="ttc" id="astructhmap_1_1Mat_html_a1a61160398cf1ce3e19b06605ac2c27f"><div class="ttname"><a href="structhmap_1_1Mat.html#a1a61160398cf1ce3e19b06605ac2c27f">hmap::Mat::Mat</a></div><div class="ttdeci">Mat(Vec2&lt; int &gt; shape)</div><div class="ttdoc">Constructor to initialize a matrix with a given shape.</div><div class="ttdef"><b>Definition</b> algebra.hpp:896</div></div>
-<div class="ttc" id="astructhmap_1_1Mat_html_a1aaffa323b410bb2474ad65feea32da5"><div class="ttname"><a href="structhmap_1_1Mat.html#a1aaffa323b410bb2474ad65feea32da5">hmap::Mat::operator()</a></div><div class="ttdeci">const T &amp; operator()(Vec2&lt; int &gt; ij) const</div><div class="ttdef"><b>Definition</b> algebra.hpp:954</div></div>
-<div class="ttc" id="astructhmap_1_1Mat_html_a38df202b165735b1eb8cad32d90ac613"><div class="ttname"><a href="structhmap_1_1Mat.html#a38df202b165735b1eb8cad32d90ac613">hmap::Mat::shape</a></div><div class="ttdeci">Vec2&lt; int &gt; shape</div><div class="ttdoc">Dimensions of the matrix (rows x columns).</div><div class="ttdef"><b>Definition</b> algebra.hpp:883</div></div>
-<div class="ttc" id="astructhmap_1_1Mat_html_a429366c8daa4495b65f288f3527f2022"><div class="ttname"><a href="structhmap_1_1Mat.html#a429366c8daa4495b65f288f3527f2022">hmap::Mat::operator()</a></div><div class="ttdeci">T &amp; operator()(int i, int j)</div><div class="ttdoc">Access operator to get a reference to the element at (i, j).</div><div class="ttdef"><b>Definition</b> algebra.hpp:928</div></div>
-<div class="ttc" id="astructhmap_1_1Mat_html_a4a27962ffe15d147fa23386947c08cbf"><div class="ttname"><a href="structhmap_1_1Mat.html#a4a27962ffe15d147fa23386947c08cbf">hmap::Mat::vector</a></div><div class="ttdeci">std::vector&lt; T &gt; vector</div><div class="ttdoc">1D vector storing matrix elements in row-major order.</div><div class="ttdef"><b>Definition</b> algebra.hpp:881</div></div>
-<div class="ttc" id="astructhmap_1_1Mat_html_a4f148a4aa0f08e0bd0c4959b8fcc9aa5"><div class="ttname"><a href="structhmap_1_1Mat.html#a4f148a4aa0f08e0bd0c4959b8fcc9aa5">hmap::Mat::operator()</a></div><div class="ttdeci">const T &amp; operator()(int i, int j) const</div><div class="ttdoc">Const access operator to get the value of the element at (i, j).</div><div class="ttdef"><b>Definition</b> algebra.hpp:944</div></div>
-<div class="ttc" id="astructhmap_1_1Mat_html_a683a8df2a61c1d8f63dc1ccfe71714b6"><div class="ttname"><a href="structhmap_1_1Mat.html#a683a8df2a61c1d8f63dc1ccfe71714b6">hmap::Mat::operator()</a></div><div class="ttdeci">T &amp; operator()(Vec2&lt; int &gt; ij)</div><div class="ttdef"><b>Definition</b> algebra.hpp:949</div></div>
-<div class="ttc" id="astructhmap_1_1Mat_html_aa425a1ad1a875f46639973d24216f346"><div class="ttname"><a href="structhmap_1_1Mat.html#aa425a1ad1a875f46639973d24216f346">hmap::Mat::Mat</a></div><div class="ttdeci">Mat(Vec2&lt; int &gt; shape, T value)</div><div class="ttdoc">Constructor to initialize a matrix with a given shape and value.</div><div class="ttdef"><b>Definition</b> algebra.hpp:912</div></div>
-<div class="ttc" id="astructhmap_1_1Vec2_html"><div class="ttname"><a href="structhmap_1_1Vec2.html">hmap::Vec2</a></div><div class="ttdoc">Vec2 class for basic manipulation of 2D vectors.</div><div class="ttdef"><b>Definition</b> algebra.hpp:43</div></div>
-<div class="ttc" id="astructhmap_1_1Vec2_html_a087ff9ff4159d1e5778c0b65ee2a1648"><div class="ttname"><a href="structhmap_1_1Vec2.html#a087ff9ff4159d1e5778c0b65ee2a1648">hmap::Vec2::y</a></div><div class="ttdeci">T y</div><div class="ttdoc">The x and y components of the vector.</div><div class="ttdef"><b>Definition</b> algebra.hpp:44</div></div>
-<div class="ttc" id="astructhmap_1_1Vec2_html_a0e9a33a8699ada5082f6d4e974993d48"><div class="ttname"><a href="structhmap_1_1Vec2.html#a0e9a33a8699ada5082f6d4e974993d48">hmap::Vec2::operator/</a></div><div class="ttdeci">Vec2 operator/(const Vec2 &amp;other_vec) const</div><div class="ttdoc">Division operator.</div><div class="ttdef"><b>Definition</b> algebra.hpp:141</div></div>
-<div class="ttc" id="astructhmap_1_1Vec2_html_a1797bb3637bfe76b1716fed7e9b59429"><div class="ttname"><a href="structhmap_1_1Vec2.html#a1797bb3637bfe76b1716fed7e9b59429">hmap::Vec2::Vec2</a></div><div class="ttdeci">Vec2(const glm::ivec2 &amp;v)</div><div class="ttdef"><b>Definition</b> algebra.hpp:283</div></div>
-<div class="ttc" id="astructhmap_1_1Vec2_html_a17f563df244715a4120feac38b48be21"><div class="ttname"><a href="structhmap_1_1Vec2.html#a17f563df244715a4120feac38b48be21">hmap::Vec2::operator==</a></div><div class="ttdeci">bool operator==(const Vec2 &amp;other_vec) const</div><div class="ttdoc">Equality operator.</div><div class="ttdef"><b>Definition</b> algebra.hpp:98</div></div>
-<div class="ttc" id="astructhmap_1_1Vec2_html_a1df60c9894d8d6f4380ef9ba932125e2"><div class="ttname"><a href="structhmap_1_1Vec2.html#a1df60c9894d8d6f4380ef9ba932125e2">hmap::Vec2::operator+</a></div><div class="ttdeci">Vec2 operator+(const Vec2 &amp;other_vec) const</div><div class="ttdoc">Addition operator.</div><div class="ttdef"><b>Definition</b> algebra.hpp:176</div></div>
-<div class="ttc" id="astructhmap_1_1Vec2_html_a2dc51e83492f966eeddbdac3d58ab447"><div class="ttname"><a href="structhmap_1_1Vec2.html#a2dc51e83492f966eeddbdac3d58ab447">hmap::Vec2::x</a></div><div class="ttdeci">T x</div><div class="ttdef"><b>Definition</b> algebra.hpp:44</div></div>
-<div class="ttc" id="astructhmap_1_1Vec2_html_a34b1d441d8fc9bdac23f03f98c46449e"><div class="ttname"><a href="structhmap_1_1Vec2.html#a34b1d441d8fc9bdac23f03f98c46449e">hmap::Vec2::operator!=</a></div><div class="ttdeci">bool operator!=(const Vec2 &amp;other_vec) const</div><div class="ttdoc">Inequality operator.</div><div class="ttdef"><b>Definition</b> algebra.hpp:111</div></div>
-<div class="ttc" id="astructhmap_1_1Vec2_html_a46c73f1340298ca58fe607c04ca09ab1"><div class="ttname"><a href="structhmap_1_1Vec2.html#a46c73f1340298ca58fe607c04ca09ab1">hmap::Vec2::normalize</a></div><div class="ttdeci">void normalize()</div><div class="ttdoc">Normalize the vector to have a magnitude of 1.</div><div class="ttdef"><b>Definition</b> algebra.hpp:269</div></div>
-<div class="ttc" id="astructhmap_1_1Vec2_html_a5fa624eca898ddf0dde96e63891540d8"><div class="ttname"><a href="structhmap_1_1Vec2.html#a5fa624eca898ddf0dde96e63891540d8">hmap::Vec2::operator*</a></div><div class="ttdeci">Vec2 operator*(T scalar) const</div><div class="ttdoc">Scalar multiplication (Vec2 * scalar).</div><div class="ttdef"><b>Definition</b> algebra.hpp:210</div></div>
-<div class="ttc" id="astructhmap_1_1Vec2_html_a700c00c9fc0e754c4ce65d8c8c6e38d2"><div class="ttname"><a href="structhmap_1_1Vec2.html#a700c00c9fc0e754c4ce65d8c8c6e38d2">hmap::Vec2::operator&lt;</a></div><div class="ttdeci">bool operator&lt;(const Vec2 &amp;other) const noexcept</div><div class="ttdef"><b>Definition</b> algebra.hpp:215</div></div>
-<div class="ttc" id="astructhmap_1_1Vec2_html_a71b22cecf6d34738836e89bbcab1e8af"><div class="ttname"><a href="structhmap_1_1Vec2.html#a71b22cecf6d34738836e89bbcab1e8af">hmap::Vec2::Vec2</a></div><div class="ttdeci">Vec2(const glm::vec2 &amp;v)</div><div class="ttdef"><b>Definition</b> algebra.hpp:280</div></div>
-<div class="ttc" id="astructhmap_1_1Vec2_html_a7a51b0894ccdea14a7d86fbb8e7289c3"><div class="ttname"><a href="structhmap_1_1Vec2.html#a7a51b0894ccdea14a7d86fbb8e7289c3">hmap::Vec2::Vec2</a></div><div class="ttdeci">Vec2(const std::vector&lt; T &gt; &amp;vec)</div><div class="ttdoc">Constructs a Vec2 object from a std::vector.</div><div class="ttdef"><b>Definition</b> algebra.hpp:80</div></div>
-<div class="ttc" id="astructhmap_1_1Vec2_html_a7a945fff9f1e4964c135dbc5d226fd69"><div class="ttname"><a href="structhmap_1_1Vec2.html#a7a945fff9f1e4964c135dbc5d226fd69">hmap::Vec2::operator*</a></div><div class="ttdeci">friend Vec2 operator*(T scalar, const Vec2 &amp;vec)</div><div class="ttdoc">Scalar multiplication (scalar * Vec2).</div><div class="ttdef"><b>Definition</b> algebra.hpp:233</div></div>
-<div class="ttc" id="astructhmap_1_1Vec2_html_a85f26a9e80d8b99b72e3e7d02f4325aa"><div class="ttname"><a href="structhmap_1_1Vec2.html#a85f26a9e80d8b99b72e3e7d02f4325aa">hmap::Vec2::operator-</a></div><div class="ttdeci">Vec2 operator-(const Vec2 &amp;other_vec) const</div><div class="ttdoc">Subtraction operator.</div><div class="ttdef"><b>Definition</b> algebra.hpp:193</div></div>
-<div class="ttc" id="astructhmap_1_1Vec2_html_a89bca88f3a07365a28ad89477500bf33"><div class="ttname"><a href="structhmap_1_1Vec2.html#a89bca88f3a07365a28ad89477500bf33">hmap::Vec2::magnitude</a></div><div class="ttdeci">T magnitude() const</div><div class="ttdoc">Calculate the magnitude (length) of the vector.</div><div class="ttdef"><b>Definition</b> algebra.hpp:258</div></div>
-<div class="ttc" id="astructhmap_1_1Vec2_html_a975fced8e2bb23c427542159c5641c26"><div class="ttname"><a href="structhmap_1_1Vec2.html#a975fced8e2bb23c427542159c5641c26">hmap::Vec2::dot</a></div><div class="ttdeci">friend float dot(const Vec2 v1, const Vec2 v2)</div><div class="ttdoc">Friend function to calculate the dot product of two vectors.</div><div class="ttdef"><b>Definition</b> algebra.hpp:248</div></div>
-<div class="ttc" id="astructhmap_1_1Vec2_html_ab537a59a10cd7d21e2169a5742cfe2ad"><div class="ttname"><a href="structhmap_1_1Vec2.html#ab537a59a10cd7d21e2169a5742cfe2ad">hmap::Vec2::Vec2</a></div><div class="ttdeci">Vec2()</div><div class="ttdoc">Default constructor initializing the vector to (0, 0).</div><div class="ttdef"><b>Definition</b> algebra.hpp:51</div></div>
-<div class="ttc" id="astructhmap_1_1Vec2_html_adb6f4c5789a26dfaddaadce1ac5fdc7f"><div class="ttname"><a href="structhmap_1_1Vec2.html#adb6f4c5789a26dfaddaadce1ac5fdc7f">hmap::Vec2::operator*</a></div><div class="ttdeci">Vec2 operator*(const Vec2 &amp;other_vec) const</div><div class="ttdoc">Multiplication operator.</div><div class="ttdef"><b>Definition</b> algebra.hpp:159</div></div>
-<div class="ttc" id="astructhmap_1_1Vec2_html_ae137e7edf6223fc6aeda839eb2672d92"><div class="ttname"><a href="structhmap_1_1Vec2.html#ae137e7edf6223fc6aeda839eb2672d92">hmap::Vec2::Vec2</a></div><div class="ttdeci">Vec2(T x, T y)</div><div class="ttdoc">Parameterized constructor initializing the vector to given values.</div><div class="ttdef"><b>Definition</b> algebra.hpp:62</div></div>
-<div class="ttc" id="astructhmap_1_1Vec2_html_ae1fb5814b4e498396b5a32418f37e343"><div class="ttname"><a href="structhmap_1_1Vec2.html#ae1fb5814b4e498396b5a32418f37e343">hmap::Vec2::operator/=</a></div><div class="ttdeci">Vec2 &amp; operator/=(const T value)</div><div class="ttdoc">Division-assignment operator.</div><div class="ttdef"><b>Definition</b> algebra.hpp:125</div></div>
-<div class="ttc" id="astructhmap_1_1Vec3_html"><div class="ttname"><a href="structhmap_1_1Vec3.html">hmap::Vec3</a></div><div class="ttdoc">Vec3 class for basic manipulation of 3D vectors.</div><div class="ttdef"><b>Definition</b> algebra.hpp:306</div></div>
-<div class="ttc" id="astructhmap_1_1Vec3_html_a0e30633d110914802691f40fcd0aefc1"><div class="ttname"><a href="structhmap_1_1Vec3.html#a0e30633d110914802691f40fcd0aefc1">hmap::Vec3::operator==</a></div><div class="ttdeci">bool operator==(const Vec3 &amp;other_vec) const</div><div class="ttdoc">Equality operator.</div><div class="ttdef"><b>Definition</b> algebra.hpp:366</div></div>
-<div class="ttc" id="astructhmap_1_1Vec3_html_a138c5b923bada86b7bebcac680ef840d"><div class="ttname"><a href="structhmap_1_1Vec3.html#a138c5b923bada86b7bebcac680ef840d">hmap::Vec3::operator-</a></div><div class="ttdeci">Vec3 operator-(const Vec3 &amp;other_vec) const</div><div class="ttdoc">Subtraction operator.</div><div class="ttdef"><b>Definition</b> algebra.hpp:467</div></div>
-<div class="ttc" id="astructhmap_1_1Vec3_html_a154d24c63ee18b3b4dba4f3b0c39c01a"><div class="ttname"><a href="structhmap_1_1Vec3.html#a154d24c63ee18b3b4dba4f3b0c39c01a">hmap::Vec3::cross</a></div><div class="ttdeci">friend Vec3 cross(const Vec3 v1, const Vec3 v2)</div><div class="ttdoc">Friend function to calculate the cross product of two vectors.</div><div class="ttdef"><b>Definition</b> algebra.hpp:517</div></div>
-<div class="ttc" id="astructhmap_1_1Vec3_html_a1a7110adf2e06b12ab86837eef2fc47d"><div class="ttname"><a href="structhmap_1_1Vec3.html#a1a7110adf2e06b12ab86837eef2fc47d">hmap::Vec3::operator*</a></div><div class="ttdeci">Vec3 operator*(const Vec3 &amp;other_vec) const</div><div class="ttdoc">Multiplication operator.</div><div class="ttdef"><b>Definition</b> algebra.hpp:431</div></div>
-<div class="ttc" id="astructhmap_1_1Vec3_html_a27037e1371300c6b567539f1e2c1e4de"><div class="ttname"><a href="structhmap_1_1Vec3.html#a27037e1371300c6b567539f1e2c1e4de">hmap::Vec3::y</a></div><div class="ttdeci">T y</div><div class="ttdef"><b>Definition</b> algebra.hpp:307</div></div>
-<div class="ttc" id="astructhmap_1_1Vec3_html_a3d41e7c6ee51cf75a2cd35fe087d6c9c"><div class="ttname"><a href="structhmap_1_1Vec3.html#a3d41e7c6ee51cf75a2cd35fe087d6c9c">hmap::Vec3::operator*</a></div><div class="ttdeci">Vec3 operator*(T scalar) const</div><div class="ttdoc">Scalar multiplication (Vec3 * scalar).</div><div class="ttdef"><b>Definition</b> algebra.hpp:485</div></div>
-<div class="ttc" id="astructhmap_1_1Vec3_html_a4d1d4c9590347bc2c95fdff5d7b0a097"><div class="ttname"><a href="structhmap_1_1Vec3.html#a4d1d4c9590347bc2c95fdff5d7b0a097">hmap::Vec3::sum</a></div><div class="ttdeci">T sum() const</div><div class="ttdoc">Calculate the sum of the vector components.</div><div class="ttdef"><b>Definition</b> algebra.hpp:573</div></div>
-<div class="ttc" id="astructhmap_1_1Vec3_html_a5a205b4be12023e538d6bbb22f57834f"><div class="ttname"><a href="structhmap_1_1Vec3.html#a5a205b4be12023e538d6bbb22f57834f">hmap::Vec3::operator+</a></div><div class="ttdeci">Vec3 operator+(const Vec3 &amp;other_vec) const</div><div class="ttdoc">Addition operator.</div><div class="ttdef"><b>Definition</b> algebra.hpp:449</div></div>
-<div class="ttc" id="astructhmap_1_1Vec3_html_a5dc78c2ba3f2bf3ca489aac6841e646c"><div class="ttname"><a href="structhmap_1_1Vec3.html#a5dc78c2ba3f2bf3ca489aac6841e646c">hmap::Vec3::z</a></div><div class="ttdeci">T z</div><div class="ttdoc">The x, y, and z components of the vector.</div><div class="ttdef"><b>Definition</b> algebra.hpp:307</div></div>
-<div class="ttc" id="astructhmap_1_1Vec3_html_a5ec51f4e17f7907e577b0330ef11674f"><div class="ttname"><a href="structhmap_1_1Vec3.html#a5ec51f4e17f7907e577b0330ef11674f">hmap::Vec3::Vec3</a></div><div class="ttdeci">Vec3(T x, T y, T z)</div><div class="ttdoc">Parameterized constructor initializing the vector to given values.</div><div class="ttdef"><b>Definition</b> algebra.hpp:326</div></div>
-<div class="ttc" id="astructhmap_1_1Vec3_html_a7a06f9922471cdffba177cc01602a547"><div class="ttname"><a href="structhmap_1_1Vec3.html#a7a06f9922471cdffba177cc01602a547">hmap::Vec3::normalize</a></div><div class="ttdeci">void normalize()</div><div class="ttdoc">Normalize the vector to have a magnitude of 1.</div><div class="ttdef"><b>Definition</b> algebra.hpp:557</div></div>
-<div class="ttc" id="astructhmap_1_1Vec3_html_a7ca52e92edc62504e79bcb27e3f52808"><div class="ttname"><a href="structhmap_1_1Vec3.html#a7ca52e92edc62504e79bcb27e3f52808">hmap::Vec3::Vec3</a></div><div class="ttdeci">Vec3(const std::vector&lt; T &gt; &amp;vec)</div><div class="ttdoc">Constructs a Vec3 object from a std::vector.</div><div class="ttdef"><b>Definition</b> algebra.hpp:346</div></div>
-<div class="ttc" id="astructhmap_1_1Vec3_html_a84d1d7ff97f75cb998c1182493c1f6cd"><div class="ttname"><a href="structhmap_1_1Vec3.html#a84d1d7ff97f75cb998c1182493c1f6cd">hmap::Vec3::Vec3</a></div><div class="ttdeci">Vec3()</div><div class="ttdoc">Default constructor initializing the vector to (0, 0, 0).</div><div class="ttdef"><b>Definition</b> algebra.hpp:314</div></div>
-<div class="ttc" id="astructhmap_1_1Vec3_html_a9179747a20c0962fced2b03498a676be"><div class="ttname"><a href="structhmap_1_1Vec3.html#a9179747a20c0962fced2b03498a676be">hmap::Vec3::magnitude</a></div><div class="ttdeci">T magnitude() const</div><div class="ttdoc">Calculate the magnitude (length) of the vector.</div><div class="ttdef"><b>Definition</b> algebra.hpp:546</div></div>
-<div class="ttc" id="astructhmap_1_1Vec3_html_aa329ee4245b0f16718795890b69713a5"><div class="ttname"><a href="structhmap_1_1Vec3.html#aa329ee4245b0f16718795890b69713a5">hmap::Vec3::operator/=</a></div><div class="ttdeci">Vec3 &amp; operator/=(const T value)</div><div class="ttdoc">Division-assignment operator.</div><div class="ttdef"><b>Definition</b> algebra.hpp:395</div></div>
-<div class="ttc" id="astructhmap_1_1Vec3_html_ab9508c295d648604d3495e682d8a7573"><div class="ttname"><a href="structhmap_1_1Vec3.html#ab9508c295d648604d3495e682d8a7573">hmap::Vec3::operator*</a></div><div class="ttdeci">friend Vec3 operator*(T scalar, const Vec3 &amp;vec)</div><div class="ttdoc">Scalar multiplication (scalar * Vec3).</div><div class="ttdef"><b>Definition</b> algebra.hpp:502</div></div>
-<div class="ttc" id="astructhmap_1_1Vec3_html_acec187d58afad5c31f51262d3a9c6e55"><div class="ttname"><a href="structhmap_1_1Vec3.html#acec187d58afad5c31f51262d3a9c6e55">hmap::Vec3::x</a></div><div class="ttdeci">T x</div><div class="ttdef"><b>Definition</b> algebra.hpp:307</div></div>
-<div class="ttc" id="astructhmap_1_1Vec3_html_ad0522945ffb81477316ad5ac205092e5"><div class="ttname"><a href="structhmap_1_1Vec3.html#ad0522945ffb81477316ad5ac205092e5">hmap::Vec3::dot</a></div><div class="ttdeci">friend float dot(const Vec3 v1, const Vec3 v2)</div><div class="ttdoc">Friend function to calculate the dot product of two vectors.</div><div class="ttdef"><b>Definition</b> algebra.hpp:536</div></div>
-<div class="ttc" id="astructhmap_1_1Vec3_html_af5c635bf5b2faedfc6872a967dc924f5"><div class="ttname"><a href="structhmap_1_1Vec3.html#af5c635bf5b2faedfc6872a967dc924f5">hmap::Vec3::operator!=</a></div><div class="ttdeci">bool operator!=(const Vec3 &amp;other_vec) const</div><div class="ttdoc">Inequality operator.</div><div class="ttdef"><b>Definition</b> algebra.hpp:380</div></div>
-<div class="ttc" id="astructhmap_1_1Vec3_html_afe3c858db4a6954b95bac6551431b7d3"><div class="ttname"><a href="structhmap_1_1Vec3.html#afe3c858db4a6954b95bac6551431b7d3">hmap::Vec3::operator/</a></div><div class="ttdeci">Vec3 operator/(const Vec3 &amp;other_vec) const</div><div class="ttdoc">Division operator.</div><div class="ttdef"><b>Definition</b> algebra.hpp:412</div></div>
-<div class="ttc" id="astructhmap_1_1Vec4_html"><div class="ttname"><a href="structhmap_1_1Vec4.html">hmap::Vec4</a></div><div class="ttdoc">Vec4 class for basic manipulation of 4D vectors.</div><div class="ttdef"><b>Definition</b> algebra.hpp:589</div></div>
-<div class="ttc" id="astructhmap_1_1Vec4_html_a080d1200616967db1349c9b912b1186c"><div class="ttname"><a href="structhmap_1_1Vec4.html#a080d1200616967db1349c9b912b1186c">hmap::Vec4::adjust</a></div><div class="ttdeci">Vec4&lt; T &gt; adjust(float da, float db, float dc, float dd)</div><div class="ttdoc">Adjusts the components of the vector by the given offsets.</div><div class="ttdef"><b>Definition</b> algebra.hpp:819</div></div>
-<div class="ttc" id="astructhmap_1_1Vec4_html_a0c9fe01131fd18c85148768f4db47733"><div class="ttname"><a href="structhmap_1_1Vec4.html#a0c9fe01131fd18c85148768f4db47733">hmap::Vec4::Vec4</a></div><div class="ttdeci">Vec4(const std::vector&lt; T &gt; &amp;vec)</div><div class="ttdoc">Constructs a Vec4 object from a std::vector.</div><div class="ttdef"><b>Definition</b> algebra.hpp:632</div></div>
-<div class="ttc" id="astructhmap_1_1Vec4_html_a168a532a13b3fa35d09f0c9ea1a321a9"><div class="ttname"><a href="structhmap_1_1Vec4.html#a168a532a13b3fa35d09f0c9ea1a321a9">hmap::Vec4::operator/=</a></div><div class="ttdeci">Vec4 &amp; operator/=(const T value)</div><div class="ttdoc">Division-assignment operator.</div><div class="ttdef"><b>Definition</b> algebra.hpp:681</div></div>
-<div class="ttc" id="astructhmap_1_1Vec4_html_a18f7b68bdda02d98aedabaf8867f226e"><div class="ttname"><a href="structhmap_1_1Vec4.html#a18f7b68bdda02d98aedabaf8867f226e">hmap::Vec4::operator==</a></div><div class="ttdeci">bool operator==(const Vec4 &amp;other_vec) const</div><div class="ttdoc">Equality operator.</div><div class="ttdef"><b>Definition</b> algebra.hpp:652</div></div>
-<div class="ttc" id="astructhmap_1_1Vec4_html_a1c2926686abc112047126b7d06859965"><div class="ttname"><a href="structhmap_1_1Vec4.html#a1c2926686abc112047126b7d06859965">hmap::Vec4::operator*</a></div><div class="ttdeci">friend Vec4 operator*(T scalar, const Vec4 &amp;vec)</div><div class="ttdoc">Scalar multiplication (scalar * Vec4).</div><div class="ttdef"><b>Definition</b> algebra.hpp:801</div></div>
-<div class="ttc" id="astructhmap_1_1Vec4_html_a2792f6a93dabbfb082fcd8313424747c"><div class="ttname"><a href="structhmap_1_1Vec4.html#a2792f6a93dabbfb082fcd8313424747c">hmap::Vec4::dot</a></div><div class="ttdeci">friend float dot(const Vec4 v1, const Vec4 v2)</div><div class="ttdoc">Friend function to calculate the dot product of two vectors.</div><div class="ttdef"><b>Definition</b> algebra.hpp:834</div></div>
-<div class="ttc" id="astructhmap_1_1Vec4_html_a2aa1697fff083c0d310ce106da93acdc"><div class="ttname"><a href="structhmap_1_1Vec4.html#a2aa1697fff083c0d310ce106da93acdc">hmap::Vec4::Vec4</a></div><div class="ttdeci">Vec4(const glm::vec4 &amp;v)</div><div class="ttdef"><b>Definition</b> algebra.hpp:840</div></div>
-<div class="ttc" id="astructhmap_1_1Vec4_html_a3be874dcf9fffa46cdab762d703ef1ab"><div class="ttname"><a href="structhmap_1_1Vec4.html#a3be874dcf9fffa46cdab762d703ef1ab">hmap::Vec4::operator*</a></div><div class="ttdeci">Vec4 operator*(const Vec4 &amp;other_vec) const</div><div class="ttdoc">Multiplication operator.</div><div class="ttdef"><b>Definition</b> algebra.hpp:719</div></div>
-<div class="ttc" id="astructhmap_1_1Vec4_html_a4cda617d090c216c30c1d0cf954dd2ca"><div class="ttname"><a href="structhmap_1_1Vec4.html#a4cda617d090c216c30c1d0cf954dd2ca">hmap::Vec4::operator+</a></div><div class="ttdeci">Vec4 operator+(const Vec4 &amp;other_vec) const</div><div class="ttdoc">Addition operator.</div><div class="ttdef"><b>Definition</b> algebra.hpp:738</div></div>
-<div class="ttc" id="astructhmap_1_1Vec4_html_a53ccbd36fe92232c1fcdb4b00d0bfd52"><div class="ttname"><a href="structhmap_1_1Vec4.html#a53ccbd36fe92232c1fcdb4b00d0bfd52">hmap::Vec4::b</a></div><div class="ttdeci">T b</div><div class="ttdef"><b>Definition</b> algebra.hpp:590</div></div>
-<div class="ttc" id="astructhmap_1_1Vec4_html_a5e537472078bd42e9c50d3939ece2b1c"><div class="ttname"><a href="structhmap_1_1Vec4.html#a5e537472078bd42e9c50d3939ece2b1c">hmap::Vec4::Vec4</a></div><div class="ttdeci">Vec4(const glm::ivec4 &amp;v)</div><div class="ttdef"><b>Definition</b> algebra.hpp:847</div></div>
-<div class="ttc" id="astructhmap_1_1Vec4_html_a67123a8dd8a1a92f99557e099a86af8a"><div class="ttname"><a href="structhmap_1_1Vec4.html#a67123a8dd8a1a92f99557e099a86af8a">hmap::Vec4::operator-</a></div><div class="ttdeci">Vec4 operator-(const Vec4 &amp;other_vec) const</div><div class="ttdoc">Subtraction operator.</div><div class="ttdef"><b>Definition</b> algebra.hpp:757</div></div>
-<div class="ttc" id="astructhmap_1_1Vec4_html_aa3a7351534f531545194c0a21e1fc401"><div class="ttname"><a href="structhmap_1_1Vec4.html#aa3a7351534f531545194c0a21e1fc401">hmap::Vec4::operator!=</a></div><div class="ttdeci">bool operator!=(const Vec4 &amp;other_vec) const</div><div class="ttdoc">Inequality operator.</div><div class="ttdef"><b>Definition</b> algebra.hpp:666</div></div>
-<div class="ttc" id="astructhmap_1_1Vec4_html_aa65a4c32ae633eefee047c973fb55982"><div class="ttname"><a href="structhmap_1_1Vec4.html#aa65a4c32ae633eefee047c973fb55982">hmap::Vec4::d</a></div><div class="ttdeci">T d</div><div class="ttdoc">The a, b, c, and d components of the vector.</div><div class="ttdef"><b>Definition</b> algebra.hpp:590</div></div>
-<div class="ttc" id="astructhmap_1_1Vec4_html_ab9ee5a9e780ba0ef9c64aec3b5fcf8ee"><div class="ttname"><a href="structhmap_1_1Vec4.html#ab9ee5a9e780ba0ef9c64aec3b5fcf8ee">hmap::Vec4::operator&lt;</a></div><div class="ttdeci">bool operator&lt;(const Vec4 &amp;other) const noexcept</div><div class="ttdef"><b>Definition</b> algebra.hpp:781</div></div>
-<div class="ttc" id="astructhmap_1_1Vec4_html_abacc46ee2584065b59c1de54df0c4c25"><div class="ttname"><a href="structhmap_1_1Vec4.html#abacc46ee2584065b59c1de54df0c4c25">hmap::Vec4::a</a></div><div class="ttdeci">T a</div><div class="ttdef"><b>Definition</b> algebra.hpp:590</div></div>
-<div class="ttc" id="astructhmap_1_1Vec4_html_ac4383140ebf1c19af7a5e5465638e89d"><div class="ttname"><a href="structhmap_1_1Vec4.html#ac4383140ebf1c19af7a5e5465638e89d">hmap::Vec4::operator*</a></div><div class="ttdeci">Vec4 operator*(T scalar) const</div><div class="ttdoc">Scalar multiplication (Vec4 * scalar).</div><div class="ttdef"><b>Definition</b> algebra.hpp:776</div></div>
-<div class="ttc" id="astructhmap_1_1Vec4_html_ace83278a01cac27dd438a0afcf0bb55d"><div class="ttname"><a href="structhmap_1_1Vec4.html#ace83278a01cac27dd438a0afcf0bb55d">hmap::Vec4::c</a></div><div class="ttdeci">T c</div><div class="ttdef"><b>Definition</b> algebra.hpp:590</div></div>
-<div class="ttc" id="astructhmap_1_1Vec4_html_ae724a00bc2d0d7d7cdf8f0dc614222a9"><div class="ttname"><a href="structhmap_1_1Vec4.html#ae724a00bc2d0d7d7cdf8f0dc614222a9">hmap::Vec4::operator/</a></div><div class="ttdeci">Vec4 operator/(const Vec4 &amp;other_vec) const</div><div class="ttdoc">Division operator.</div><div class="ttdef"><b>Definition</b> algebra.hpp:699</div></div>
-<div class="ttc" id="astructhmap_1_1Vec4_html_ae9a4e44a1c81b1ea06986432a4c1c045"><div class="ttname"><a href="structhmap_1_1Vec4.html#ae9a4e44a1c81b1ea06986432a4c1c045">hmap::Vec4::Vec4</a></div><div class="ttdeci">Vec4(T a, T b, T c, T d)</div><div class="ttdoc">Parameterized constructor initializing the vector to given values.</div><div class="ttdef"><b>Definition</b> algebra.hpp:611</div></div>
-<div class="ttc" id="astructhmap_1_1Vec4_html_aec07dc20c1becffea00a00270a92253f"><div class="ttname"><a href="structhmap_1_1Vec4.html#aec07dc20c1becffea00a00270a92253f">hmap::Vec4::Vec4</a></div><div class="ttdeci">Vec4()</div><div class="ttdoc">Default constructor initializing the vector to (0, 0, 0, 0).</div><div class="ttdef"><b>Definition</b> algebra.hpp:598</div></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="keyword">template</span> &lt;&gt;</div>
+<div class="foldopen" id="foldopen00067" data-start="{" data-end="};">
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec4_3_01float_01_4.html">   67</a></span><span class="keyword">struct </span>[[deprecated(<span class="stringliteral">&quot;Replaced by glm::vec4&quot;</span>)]] <a class="code hl_struct" href="structhmap_1_1Vec4.html">Vec4</a>&lt;float&gt; : <span class="keyword">public</span> glm::vec4</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>{</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>  <span class="keyword">using </span>glm::vec4::vec4;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>  <span class="comment">// expose glm names</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>  <span class="keyword">using </span>glm::vec4::w;</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>  <span class="keyword">using </span>glm::vec4::x;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>  <span class="keyword">using </span>glm::vec4::y;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>  <span class="keyword">using </span>glm::vec4::z;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>  <span class="comment">// retro-compat aliases</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec4_3_01float_01_4.html#a2db4d33abae3b131f9087ea55ce27931">   78</a></span>  <span class="keywordtype">float</span> &amp;a = x;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec4_3_01float_01_4.html#a7c8d3b9636e42e627240ddee38bd9019">   79</a></span>  <span class="keywordtype">float</span> &amp;b = y;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec4_3_01float_01_4.html#aa69095bc270e528f73a8440e5dcea363">   80</a></span>  <span class="keywordtype">float</span> &amp;c = z;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec4_3_01float_01_4.html#a11b64ff1f7d189af375bf42337b849e5">   81</a></span>  <span class="keywordtype">float</span> &amp;d = w;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec4_3_01float_01_4.html#a3929253dc7b3a1509c8f3e8c199f2e02">   83</a></span>  <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;a_const = x;</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec4_3_01float_01_4.html#aff745cb50a7d106f8badc8d8e0e237e7">   84</a></span>  <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;b_const = y;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec4_3_01float_01_4.html#a6625a8b43389e7deea5409cf9c32719f">   85</a></span>  <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;c_const = z;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec4_3_01float_01_4.html#aae8b68d836394b46fecae84c6c4cf325">   86</a></span>  <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;d_const = w;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>};</div>
+</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="keyword">template</span> &lt;&gt;</div>
+<div class="foldopen" id="foldopen00090" data-start="{" data-end="};">
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec4_3_01int_01_4.html">   90</a></span><span class="keyword">struct </span>[[deprecated(<span class="stringliteral">&quot;Replaced by glm::ivec4&quot;</span>)]] <a class="code hl_struct" href="structhmap_1_1Vec4.html">Vec4</a>&lt;int&gt; : <span class="keyword">public</span> glm::ivec4</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>{</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>  <span class="keyword">using </span>glm::ivec4::ivec4;</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>  <span class="comment">// expose glm names</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>  <span class="keyword">using </span>glm::ivec4::w;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>  <span class="keyword">using </span>glm::ivec4::x;</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>  <span class="keyword">using </span>glm::ivec4::y;</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>  <span class="keyword">using </span>glm::ivec4::z;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>  <span class="comment">// retro-compat aliases</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec4_3_01int_01_4.html#ae842539e36b1301e2d730aad973d15bd">  101</a></span>  <span class="keywordtype">int</span> &amp;a = x;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec4_3_01int_01_4.html#a5c2f3aaa713efe1df6c30e96e53935bf">  102</a></span>  <span class="keywordtype">int</span> &amp;b = y;</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec4_3_01int_01_4.html#a4fe691cc372becbfe8489ef746c4de1e">  103</a></span>  <span class="keywordtype">int</span> &amp;c = z;</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec4_3_01int_01_4.html#acf962b6a3d089d28350b2cc9cdeab1a0">  104</a></span>  <span class="keywordtype">int</span> &amp;d = w;</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec4_3_01int_01_4.html#a8cf42a2e5e65136dc51c7225b75319f3">  106</a></span>  <span class="keyword">const</span> <span class="keywordtype">int</span> &amp;a_const = x;</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec4_3_01int_01_4.html#af9712f210b5c404ca3d2e872a2e0a6b8">  107</a></span>  <span class="keyword">const</span> <span class="keywordtype">int</span> &amp;b_const = y;</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec4_3_01int_01_4.html#a2e5335f3d018bb1257f76ef0b7696114">  108</a></span>  <span class="keyword">const</span> <span class="keywordtype">int</span> &amp;c_const = z;</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno"><a class="line" href="structhmap_1_1Vec4_3_01int_01_4.html#adc6a9d9f02857aa1262d6e16f18d0ff1">  109</a></span>  <span class="keyword">const</span> <span class="keywordtype">int</span> &amp;d_const = w;</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>};</div>
+</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="comment">// --- For unordered_map</span></div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="comment">// for glm::ivec4 map</span></div>
+<div class="foldopen" id="foldopen00115" data-start="{" data-end="};">
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno"><a class="line" href="structhmap_1_1IVec4Hash.html">  115</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structhmap_1_1IVec4Hash.html">IVec4Hash</a></div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>{</div>
+<div class="foldopen" id="foldopen00117" data-start="{" data-end="}">
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno"><a class="line" href="structhmap_1_1IVec4Hash.html#a48cda465432cc7181e29227b4502e030">  117</a></span>  std::size_t <a class="code hl_function" href="structhmap_1_1IVec4Hash.html#a48cda465432cc7181e29227b4502e030">operator()</a>(<span class="keyword">const</span> glm::ivec4 &amp;v) <span class="keyword">const</span> <span class="keyword">noexcept</span></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>  {</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    std::size_t h = 0;</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    h ^= std::hash&lt;int&gt;{}(v.x) + 0x9e3779b9 + (h &lt;&lt; 6) + (h &gt;&gt; 2);</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    h ^= std::hash&lt;int&gt;{}(v.y) + 0x9e3779b9 + (h &lt;&lt; 6) + (h &gt;&gt; 2);</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    h ^= std::hash&lt;int&gt;{}(v.z) + 0x9e3779b9 + (h &lt;&lt; 6) + (h &gt;&gt; 2);</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    h ^= std::hash&lt;int&gt;{}(v.w) + 0x9e3779b9 + (h &lt;&lt; 6) + (h &gt;&gt; 2);</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    <span class="keywordflow">return</span> h;</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>  }</div>
+</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>};</div>
+</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
+<div class="foldopen" id="foldopen00128" data-start="{" data-end="};">
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno"><a class="line" href="structhmap_1_1IVec4Eq.html">  128</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structhmap_1_1IVec4Eq.html">IVec4Eq</a></div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>{</div>
+<div class="foldopen" id="foldopen00130" data-start="{" data-end="}">
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno"><a class="line" href="structhmap_1_1IVec4Eq.html#a8221faa8712cb66e0977dbe497383267">  130</a></span>  <span class="keywordtype">bool</span> <a class="code hl_function" href="structhmap_1_1IVec4Eq.html#a8221faa8712cb66e0977dbe497383267">operator()</a>(<span class="keyword">const</span> glm::ivec4 &amp;a, <span class="keyword">const</span> glm::ivec4 &amp;b) <span class="keyword">const</span> <span class="keyword">noexcept</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>  {</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    <span class="keywordflow">return</span> a == b;</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>  }</div>
+</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>};</div>
+</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
+<div class="foldopen" id="foldopen00136" data-start="{" data-end="}">
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno"><a class="line" href="namespacehmap.html#adc5300323fa35e021fd83b8b048ef3b1">  136</a></span><span class="keyword">inline</span> glm::vec4 <a class="code hl_function" href="namespacehmap.html#adc5300323fa35e021fd83b8b048ef3b1">adjust</a>(<span class="keyword">const</span> glm::vec4 &amp;v,</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>                        <span class="keywordtype">float</span>            dx,</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>                        <span class="keywordtype">float</span>            dy,</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>                        <span class="keywordtype">float</span>            dz,</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>                        <span class="keywordtype">float</span>            dw)</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>{</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>  <span class="keywordflow">return</span> glm::vec4{v.x + dx, v.y + dy, v.z + dz, v.w + dw};</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>}</div>
+</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span> </div>
+<div class="foldopen" id="foldopen00154" data-start="{" data-end="};">
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno"><a class="line" href="structhmap_1_1Mat.html">  154</a></span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="keyword">struct </span><a class="code hl_struct" href="structhmap_1_1Mat.html">Mat</a></div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>{</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno"><a class="line" href="structhmap_1_1Mat.html#a4a27962ffe15d147fa23386947c08cbf">  156</a></span>  std::vector&lt;T&gt; <a class="code hl_variable" href="structhmap_1_1Mat.html#a4a27962ffe15d147fa23386947c08cbf">vector</a>; </div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno"><a class="line" href="structhmap_1_1Mat.html#a1ab58820a1efbf5e7c2f7ee1d51dd7c0">  158</a></span>  glm::ivec2 <a class="code hl_variable" href="structhmap_1_1Mat.html#a1ab58820a1efbf5e7c2f7ee1d51dd7c0">shape</a>;      </div>
+<div class="foldopen" id="foldopen00171" data-start="{" data-end="}">
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno"><a class="line" href="structhmap_1_1Mat.html#a6a0451aafcbc5205d7f6bbe534092a9a">  171</a></span>  <a class="code hl_function" href="structhmap_1_1Mat.html#a6a0451aafcbc5205d7f6bbe534092a9a">Mat</a>(glm::ivec2 <a class="code hl_variable" href="structhmap_1_1Mat.html#a1ab58820a1efbf5e7c2f7ee1d51dd7c0">shape</a>) : <a class="code hl_variable" href="structhmap_1_1Mat.html#a1ab58820a1efbf5e7c2f7ee1d51dd7c0">shape</a>(<a class="code hl_variable" href="structhmap_1_1Mat.html#a1ab58820a1efbf5e7c2f7ee1d51dd7c0">shape</a>)</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>  {</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    this-&gt;vector.resize(<a class="code hl_variable" href="structhmap_1_1Mat.html#a1ab58820a1efbf5e7c2f7ee1d51dd7c0">shape</a>.x * <a class="code hl_variable" href="structhmap_1_1Mat.html#a1ab58820a1efbf5e7c2f7ee1d51dd7c0">shape</a>.y);</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>  }</div>
+</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span> </div>
+<div class="foldopen" id="foldopen00187" data-start="{" data-end="}">
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno"><a class="line" href="structhmap_1_1Mat.html#a83bf076cc0c3e6dd8911e05a2b95592e">  187</a></span>  <a class="code hl_function" href="structhmap_1_1Mat.html#a83bf076cc0c3e6dd8911e05a2b95592e">Mat</a>(glm::ivec2 <a class="code hl_variable" href="structhmap_1_1Mat.html#a1ab58820a1efbf5e7c2f7ee1d51dd7c0">shape</a>, T value) : <a class="code hl_variable" href="structhmap_1_1Mat.html#a1ab58820a1efbf5e7c2f7ee1d51dd7c0">shape</a>(<a class="code hl_variable" href="structhmap_1_1Mat.html#a1ab58820a1efbf5e7c2f7ee1d51dd7c0">shape</a>)</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>  {</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>    this-&gt;vector.resize(<a class="code hl_variable" href="structhmap_1_1Mat.html#a1ab58820a1efbf5e7c2f7ee1d51dd7c0">shape</a>.x * <a class="code hl_variable" href="structhmap_1_1Mat.html#a1ab58820a1efbf5e7c2f7ee1d51dd7c0">shape</a>.y);</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>    std::fill(this-&gt;vector.begin(), this-&gt;vector.end(), value);</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>  }</div>
+</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span> </div>
+<div class="foldopen" id="foldopen00203" data-start="{" data-end="}">
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno"><a class="line" href="structhmap_1_1Mat.html#a429366c8daa4495b65f288f3527f2022">  203</a></span>  T &amp;<a class="code hl_function" href="structhmap_1_1Mat.html#a429366c8daa4495b65f288f3527f2022">operator()</a>(<span class="keywordtype">int</span> i, <span class="keywordtype">int</span> j)</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>  {</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>    <span class="keywordflow">return</span> this-&gt;vector[j * this-&gt;shape.x + i];</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>  }</div>
+</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span> </div>
+<div class="foldopen" id="foldopen00219" data-start="{" data-end="}">
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno"><a class="line" href="structhmap_1_1Mat.html#a4f148a4aa0f08e0bd0c4959b8fcc9aa5">  219</a></span>  <span class="keyword">const</span> T &amp;<a class="code hl_function" href="structhmap_1_1Mat.html#a4f148a4aa0f08e0bd0c4959b8fcc9aa5">operator()</a>(<span class="keywordtype">int</span> i, <span class="keywordtype">int</span> j)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span><span class="keyword">  </span>{</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>    <span class="keywordflow">return</span> this-&gt;vector[j * this-&gt;shape.x + i];</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>  }</div>
+</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span> </div>
+<div class="foldopen" id="foldopen00224" data-start="{" data-end="}">
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno"><a class="line" href="structhmap_1_1Mat.html#a64286cac9e847ae6f76dd8f696108b8a">  224</a></span>  T &amp;<a class="code hl_function" href="structhmap_1_1Mat.html#a64286cac9e847ae6f76dd8f696108b8a">operator()</a>(glm::ivec2 ij)</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>  {</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>    <span class="keywordflow">return</span> this-&gt;vector[ij.y * this-&gt;shape.x + ij.x];</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>  }</div>
+</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span> </div>
+<div class="foldopen" id="foldopen00229" data-start="{" data-end="}">
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno"><a class="line" href="structhmap_1_1Mat.html#a7f02ddd8303ad668585dbed93df95b7c">  229</a></span>  <span class="keyword">const</span> T &amp;<a class="code hl_function" href="structhmap_1_1Mat.html#a7f02ddd8303ad668585dbed93df95b7c">operator()</a>(glm::ivec2 ij)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span><span class="keyword">  </span>{</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>    <span class="keywordflow">return</span> this-&gt;vector[ij.y * this-&gt;shape.x + ij.x];</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>  }</div>
+</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>};</div>
+</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span> </div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>} <span class="comment">// namespace hmap</span></div>
+</div>
+<div class="ttc" id="anamespacehmap_html"><div class="ttname"><a href="namespacehmap.html">hmap</a></div><div class="ttdef"><b>Definition</b> algebra.hpp:22</div></div>
+<div class="ttc" id="anamespacehmap_html_adc5300323fa35e021fd83b8b048ef3b1"><div class="ttname"><a href="namespacehmap.html#adc5300323fa35e021fd83b8b048ef3b1">hmap::adjust</a></div><div class="ttdeci">glm::vec4 adjust(const glm::vec4 &amp;v, float dx, float dy, float dz, float dw)</div><div class="ttdef"><b>Definition</b> algebra.hpp:136</div></div>
+<div class="ttc" id="astructhmap_1_1IVec4Eq_html"><div class="ttname"><a href="structhmap_1_1IVec4Eq.html">hmap::IVec4Eq</a></div><div class="ttdef"><b>Definition</b> algebra.hpp:129</div></div>
+<div class="ttc" id="astructhmap_1_1IVec4Eq_html_a8221faa8712cb66e0977dbe497383267"><div class="ttname"><a href="structhmap_1_1IVec4Eq.html#a8221faa8712cb66e0977dbe497383267">hmap::IVec4Eq::operator()</a></div><div class="ttdeci">bool operator()(const glm::ivec4 &amp;a, const glm::ivec4 &amp;b) const noexcept</div><div class="ttdef"><b>Definition</b> algebra.hpp:130</div></div>
+<div class="ttc" id="astructhmap_1_1IVec4Hash_html"><div class="ttname"><a href="structhmap_1_1IVec4Hash.html">hmap::IVec4Hash</a></div><div class="ttdef"><b>Definition</b> algebra.hpp:116</div></div>
+<div class="ttc" id="astructhmap_1_1IVec4Hash_html_a48cda465432cc7181e29227b4502e030"><div class="ttname"><a href="structhmap_1_1IVec4Hash.html#a48cda465432cc7181e29227b4502e030">hmap::IVec4Hash::operator()</a></div><div class="ttdeci">std::size_t operator()(const glm::ivec4 &amp;v) const noexcept</div><div class="ttdef"><b>Definition</b> algebra.hpp:117</div></div>
+<div class="ttc" id="astructhmap_1_1Mat_html"><div class="ttname"><a href="structhmap_1_1Mat.html">hmap::Mat</a></div><div class="ttdoc">Mat class for basic manipulation of 2D matrices.</div><div class="ttdef"><b>Definition</b> algebra.hpp:155</div></div>
+<div class="ttc" id="astructhmap_1_1Mat_html_a1ab58820a1efbf5e7c2f7ee1d51dd7c0"><div class="ttname"><a href="structhmap_1_1Mat.html#a1ab58820a1efbf5e7c2f7ee1d51dd7c0">hmap::Mat::shape</a></div><div class="ttdeci">glm::ivec2 shape</div><div class="ttdoc">Dimensions of the matrix (rows x columns).</div><div class="ttdef"><b>Definition</b> algebra.hpp:158</div></div>
+<div class="ttc" id="astructhmap_1_1Mat_html_a429366c8daa4495b65f288f3527f2022"><div class="ttname"><a href="structhmap_1_1Mat.html#a429366c8daa4495b65f288f3527f2022">hmap::Mat::operator()</a></div><div class="ttdeci">T &amp; operator()(int i, int j)</div><div class="ttdoc">Access operator to get a reference to the element at (i, j).</div><div class="ttdef"><b>Definition</b> algebra.hpp:203</div></div>
+<div class="ttc" id="astructhmap_1_1Mat_html_a4a27962ffe15d147fa23386947c08cbf"><div class="ttname"><a href="structhmap_1_1Mat.html#a4a27962ffe15d147fa23386947c08cbf">hmap::Mat::vector</a></div><div class="ttdeci">std::vector&lt; T &gt; vector</div><div class="ttdoc">1D vector storing matrix elements in row-major order.</div><div class="ttdef"><b>Definition</b> algebra.hpp:156</div></div>
+<div class="ttc" id="astructhmap_1_1Mat_html_a4f148a4aa0f08e0bd0c4959b8fcc9aa5"><div class="ttname"><a href="structhmap_1_1Mat.html#a4f148a4aa0f08e0bd0c4959b8fcc9aa5">hmap::Mat::operator()</a></div><div class="ttdeci">const T &amp; operator()(int i, int j) const</div><div class="ttdoc">Const access operator to get the value of the element at (i, j).</div><div class="ttdef"><b>Definition</b> algebra.hpp:219</div></div>
+<div class="ttc" id="astructhmap_1_1Mat_html_a64286cac9e847ae6f76dd8f696108b8a"><div class="ttname"><a href="structhmap_1_1Mat.html#a64286cac9e847ae6f76dd8f696108b8a">hmap::Mat::operator()</a></div><div class="ttdeci">T &amp; operator()(glm::ivec2 ij)</div><div class="ttdef"><b>Definition</b> algebra.hpp:224</div></div>
+<div class="ttc" id="astructhmap_1_1Mat_html_a6a0451aafcbc5205d7f6bbe534092a9a"><div class="ttname"><a href="structhmap_1_1Mat.html#a6a0451aafcbc5205d7f6bbe534092a9a">hmap::Mat::Mat</a></div><div class="ttdeci">Mat(glm::ivec2 shape)</div><div class="ttdoc">Constructor to initialize a matrix with a given shape.</div><div class="ttdef"><b>Definition</b> algebra.hpp:171</div></div>
+<div class="ttc" id="astructhmap_1_1Mat_html_a7f02ddd8303ad668585dbed93df95b7c"><div class="ttname"><a href="structhmap_1_1Mat.html#a7f02ddd8303ad668585dbed93df95b7c">hmap::Mat::operator()</a></div><div class="ttdeci">const T &amp; operator()(glm::ivec2 ij) const</div><div class="ttdef"><b>Definition</b> algebra.hpp:229</div></div>
+<div class="ttc" id="astructhmap_1_1Mat_html_a83bf076cc0c3e6dd8911e05a2b95592e"><div class="ttname"><a href="structhmap_1_1Mat.html#a83bf076cc0c3e6dd8911e05a2b95592e">hmap::Mat::Mat</a></div><div class="ttdeci">Mat(glm::ivec2 shape, T value)</div><div class="ttdoc">Constructor to initialize a matrix with a given shape and value.</div><div class="ttdef"><b>Definition</b> algebra.hpp:187</div></div>
+<div class="ttc" id="astructhmap_1_1Vec2_html"><div class="ttname"><a href="structhmap_1_1Vec2.html">hmap::Vec2</a></div><div class="ttdef"><b>Definition</b> algebra.hpp:26</div></div>
+<div class="ttc" id="astructhmap_1_1Vec3_html"><div class="ttname"><a href="structhmap_1_1Vec3.html">hmap::Vec3</a></div><div class="ttdef"><b>Definition</b> algebra.hpp:44</div></div>
+<div class="ttc" id="astructhmap_1_1Vec4_html"><div class="ttname"><a href="structhmap_1_1Vec4.html">hmap::Vec4</a></div><div class="ttdef"><b>Definition</b> algebra.hpp:64</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
