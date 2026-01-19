@@ -21,12 +21,27 @@
 namespace hmap
 {
 
+// =====================================
+// Peripheric classes
+// =====================================
+
 enum ForEachMode : int
 {
   VA_SEQUENTIAL,  // tile-by-tile, single thread
   VA_DISTRIBUTED, // tile-by-tile, multi-threaded
   VA_SINGLE_ARRAY // full array materialized at once
 };
+
+inline std::string to_string(ForEachMode m)
+{
+  switch (m)
+  {
+  case ForEachMode::VA_SEQUENTIAL: return "VA_SEQUENTIAL";
+  case ForEachMode::VA_DISTRIBUTED: return "VA_DISTRIBUTED";
+  case ForEachMode::VA_SINGLE_ARRAY: return "VA_SINGLE_ARRAY";
+  }
+  return "UNKNOWN";
+}
 
 static std::map<std::string, int> for_each_mode_as_string = {
     {"Distributed", ForEachMode::VA_DISTRIBUTED},
@@ -38,6 +53,10 @@ struct ComputeMode
   ForEachMode mode;
   bool        trim_storage = false;
 };
+
+// =====================================
+// VirtualArray class
+// =====================================
 
 struct VirtualArray
 {

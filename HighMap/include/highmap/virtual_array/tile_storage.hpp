@@ -21,6 +21,10 @@
 namespace hmap
 {
 
+// =====================================
+// Peripheric classes
+// =====================================
+
 enum StorageMode : int
 {
   VA_RAM,
@@ -28,6 +32,18 @@ enum StorageMode : int
   VA_DISK_LRU_MIN,   // 2 live tiles, min mem footprint
   VA_DISK_SEQUENTIAL // sequential for/each, no smooth_overlap
 };
+
+inline std::string to_string(StorageMode m)
+{
+  switch (m)
+  {
+  case StorageMode::VA_RAM: return "VA_RAM";
+  case StorageMode::VA_DISK_LRU: return "VA_DISK_LRU";
+  case StorageMode::VA_DISK_LRU_MIN: return "VA_DISK_LRU_MIN";
+  case StorageMode::VA_DISK_SEQUENTIAL: return "VA_DISK_SEQUENTIAL";
+  }
+  return "UNKNOWN";
+}
 
 struct TileKeyHash
 {
