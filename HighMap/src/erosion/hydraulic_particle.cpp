@@ -62,8 +62,8 @@ void hydraulic_particle(Array &z,
   // map
   std::vector<float> x0(nparticles);
   std::vector<float> y0(nparticles);
-  Array       density = p_moisture_map ? *p_moisture_map : Array(z.shape, 1.f);
-  Vec4<float> bbox(1.f, (float)z.shape.x - 2.f, 1.f, (float)z.shape.y - 2.f);
+  Array     density = p_moisture_map ? *p_moisture_map : Array(z.shape, 1.f);
+  glm::vec4 bbox(1.f, (float)z.shape.x - 2.f, 1.f, (float)z.shape.y - 2.f);
 
   auto xy = random_points_density(nparticles, density, seed, bbox);
   x0 = xy[0];

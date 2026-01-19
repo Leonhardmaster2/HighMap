@@ -4,9 +4,9 @@ int main(void)
 {
   hmap::gpu::init_opencl();
 
-  hmap::Vec2<int>   shape = {256, 256};
-  hmap::Vec2<float> kw = {4.f, 4.f};
-  uint              seed = 0;
+  glm::ivec2 shape = {256, 256};
+  glm::vec2  kw = {4.f, 4.f};
+  uint       seed = 0;
 
   hmap::Array noise = hmap::noise_fbm(hmap::NoiseType::SIMPLEX2,
                                       shape,

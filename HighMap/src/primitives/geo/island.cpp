@@ -13,24 +13,24 @@
 namespace hmap
 {
 
-Array island_land_mask(Vec2<int>          shape,
-                       float              radius,
-                       uint               seed,
-                       float              displacement,
-                       NoiseType          noise_type,
-                       float              kw,
-                       int                octaves,
-                       float              weight,
-                       float              persistence,
-                       float              lacunarity,
-                       const Vec2<float> &center,
-                       const Vec4<float> &bbox)
+Array island_land_mask(glm::ivec2       shape,
+                       float            radius,
+                       uint             seed,
+                       float            displacement,
+                       NoiseType        noise_type,
+                       float            kw,
+                       int              octaves,
+                       float            weight,
+                       float            persistence,
+                       float            lacunarity,
+                       const glm::vec2 &center,
+                       const glm::vec4 &bbox)
 {
   Array mask(shape);
 
   std::unique_ptr<NoiseFunction> p = create_noise_function_from_type(
       noise_type,
-      Vec2<float>(0.5f * kw, 0.5f * kw),
+      glm::vec2(0.5f * kw, 0.5f * kw),
       seed);
 
   FbmFunction f = FbmFunction(std::move(p),
@@ -45,8 +45,8 @@ Array island_land_mask(Vec2<int>          shape,
       float x = float(i) / float(shape.x - 1);
       float y = float(j) / float(shape.y - 1);
 
-      x = (bbox.b - bbox.a) * x + bbox.a - center.x;
-      y = (bbox.d - bbox.c) * y + bbox.c - center.y;
+      x = (bbox.y - bbox.x) * x + bbox.x - center.x;
+      y = (bbox.w - bbox.z) * y + bbox.z - center.y;
 
       float r = std::hypot(x, y);
       float theta = std::atan2(y, x);
@@ -126,8 +126,8 @@ Array island(const Array &land_mask,
              Array       *p_water_depth,
              Array       *p_inland_mask)
 {
-  Vec2<int> shape = land_mask.shape;
-  float     lee_alpha = lee_angle * (float(M_PI) / 180.f);
+  glm::ivec2 shape = land_mask.shape;
+  float      lee_alpha = lee_angle * (float(M_PI) / 180.f);
 
   // --- distance from land
   Array r_ground = distance_transform(is_zero(land_mask));
@@ -230,7 +230,7 @@ Array island(const Array &land_mask,
 Array island(const Array &land_mask,
              uint         seed,
              float        noise_amp,
-             Vec2<float>  noise_kw,
+             glm::vec2    noise_kw,
              int          noise_octaves,
              float        noise_rugosity,
              float        noise_angle,
@@ -254,7 +254,7 @@ Array island(const Array &land_mask,
              Array       *p_water_depth,
              Array       *p_inland_mask)
 {
-  Vec2<int> shape = land_mask.shape;
+  glm::ivec2 shape = land_mask.shape;
 
   // --- generate ready-made noise
 

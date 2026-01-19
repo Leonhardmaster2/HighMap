@@ -77,7 +77,7 @@ void Array::depose_amount_kernel_bilinear_at(int   i,
                                              int   ir,
                                              float amount)
 {
-  Array kernel = Array(Vec2<int>(2 * ir + 1, 2 * ir + 1));
+  Array kernel = Array(glm::ivec2(2 * ir + 1, 2 * ir + 1));
 
   // compute kernel first
   for (int p = -ir; p < ir + 1; p++)
@@ -126,20 +126,20 @@ void Array::dump_histogram(const std::string &msg) const
   std::cout << make_histogram(this->vector, 16, 6);
 }
 
-Array Array::extract_slice(Vec4<int> idx) const
+Array Array::extract_slice(glm::ivec4 idx) const
 {
-  Array array_out = Array(Vec2<int>(idx.b - idx.a, idx.d - idx.c));
+  Array array_out = Array(glm::ivec2(idx.y - idx.x, idx.w - idx.z));
 
-  for (int j = idx.c; j < idx.d; j++)
-    for (int i = idx.a; i < idx.b; i++)
-      array_out(i - idx.a, j - idx.c) = (*this)(i, j);
+  for (int j = idx.z; j < idx.w; j++)
+    for (int i = idx.x; i < idx.y; i++)
+      array_out(i - idx.x, j - idx.z) = (*this)(i, j);
 
   return array_out;
 }
 
 Array Array::extract_slice(int i1, int i2, int j1, int j2) const
 {
-  Vec4<int> idx(i1, i2, j1, j2);
+  glm::ivec4 idx(i1, i2, j1, j2);
   return this->extract_slice(idx);
 }
 
@@ -181,9 +181,9 @@ float Array::get_gradient_y_bilinear_at(int i, int j, float u, float v) const
   return f00 + a10 * u + a01 * v + a11 * u * v;
 }
 
-Vec3<float> Array::get_normal_at(int i, int j) const
+glm::vec3 Array::get_normal_at(int i, int j) const
 {
-  Vec3<float> normal;
+  glm::vec3 normal;
 
   normal.x = -this->get_gradient_x_at(i, j);
   normal.y = -this->get_gradient_y_at(i, j);
@@ -200,7 +200,7 @@ size_t Array::get_sizeof() const
   return sizeof(float) * this->vector.size();
 }
 
-Vec2<float> Array::normalization_coeff(float vmin, float vmax) const
+glm::vec2 Array::normalization_coeff(float vmin, float vmax) const
 {
   float a = 0.f;
   float b = 0.f;
@@ -209,7 +209,7 @@ Vec2<float> Array::normalization_coeff(float vmin, float vmax) const
     a = 1.f / (vmax - vmin);
     b = -vmin / (vmax - vmin);
   }
-  return Vec2<float>(a, b);
+  return glm::vec2(a, b);
 }
 
 float Array::get_value_bicubic_at(int i, int j, float u, float v) const
@@ -256,11 +256,11 @@ float Array::get_value_bilinear_at(int i, int j, float u, float v) const
   return (*this)(i, j) + a10 * u + a01 * v + a11 * u * v;
 }
 
-float Array::get_value_nearest(float x, float y, Vec4<float> bbox)
+float Array::get_value_nearest(float x, float y, glm::vec4 bbox)
 {
-  int i = (int)(std::clamp((x - bbox.a) / (bbox.b - bbox.a), 0.f, 1.f) *
+  int i = (int)(std::clamp((x - bbox.x) / (bbox.y - bbox.x), 0.f, 1.f) *
                 (this->shape.x - 1));
-  int j = (int)(std::clamp((y - bbox.c) / (bbox.d - bbox.c), 0.f, 1.f) *
+  int j = (int)(std::clamp((y - bbox.z) / (bbox.w - bbox.z), 0.f, 1.f) *
                 (this->shape.y - 1));
   return (*this)(i, j);
 }
@@ -270,9 +270,9 @@ int Array::linear_index(int i, int j) const
   return j * this->shape.x + i;
 }
 
-Vec2<int> Array::linear_index_reverse(int k) const
+glm::ivec2 Array::linear_index_reverse(int k) const
 {
-  Vec2<int> ij;
+  glm::ivec2 ij;
   ij.y = std::floor(k / shape.x);
   ij.x = k - ij.y * shape.x;
   return ij;
@@ -315,12 +315,12 @@ Array Array::remapped() const
   return out;
 }
 
-Array Array::resample_to_shape(Vec2<int> new_shape) const
+Array Array::resample_to_shape(glm::ivec2 new_shape) const
 {
   return this->resample_to_shape_bilinear(new_shape);
 }
 
-Array Array::resample_to_shape_bicubic(Vec2<int> new_shape) const
+Array Array::resample_to_shape_bicubic(glm::ivec2 new_shape) const
 {
   Array array_out = Array(new_shape);
   interpolate_array_bicubic(*this, array_out);
@@ -328,7 +328,7 @@ Array Array::resample_to_shape_bicubic(Vec2<int> new_shape) const
   return array_out;
 }
 
-Array Array::resample_to_shape_bilinear(Vec2<int> new_shape) const
+Array Array::resample_to_shape_bilinear(glm::ivec2 new_shape) const
 {
   Array array_out = Array(new_shape);
   interpolate_array_bilinear(*this, array_out);
@@ -336,7 +336,7 @@ Array Array::resample_to_shape_bilinear(Vec2<int> new_shape) const
   return array_out;
 }
 
-Array Array::resample_to_shape_nearest(Vec2<int> new_shape) const
+Array Array::resample_to_shape_nearest(glm::ivec2 new_shape) const
 {
   Array array_out = Array(new_shape);
   interpolate_array_nearest(*this, array_out);
@@ -352,18 +352,18 @@ std::vector<float> Array::row_to_vector(int i)
   return vec;
 }
 
-void Array::set_slice(Vec4<int> idx, float value)
+void Array::set_slice(glm::ivec4 idx, float value)
 {
-  for (int i = idx.a; i < idx.b; i++)
-    for (int j = idx.c; j < idx.d; j++)
+  for (int i = idx.x; i < idx.y; i++)
+    for (int j = idx.z; j < idx.w; j++)
       (*this)(i, j) = value;
 }
 
-void Array::set_slice(Vec4<int> idx, const Array &array)
+void Array::set_slice(glm::ivec4 idx, const Array &array)
 {
-  for (int i = idx.a; i < idx.b; i++)
-    for (int j = idx.c; j < idx.d; j++)
-      (*this)(i, j) = array(i - idx.a, j - idx.c);
+  for (int i = idx.x; i < idx.y; i++)
+    for (int j = idx.z; j < idx.w; j++)
+      (*this)(i, j) = array(i - idx.x, j - idx.z);
 }
 
 int Array::size() const

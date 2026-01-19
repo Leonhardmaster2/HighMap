@@ -5,11 +5,11 @@ int main(void)
 {
   hmap::gpu::init_opencl();
 
-  hmap::Vec2<int> shape = {256, 256};
+  glm::ivec2 shape = {256, 256};
   shape = {2048, 2048};
   // shape = {4096, 4096};
-  hmap::Vec2<float> res = {4.f, 4.f};
-  int               seed = 1;
+  glm::vec2 res = {4.f, 4.f};
+  int       seed = 1;
 
   hmap::Array z = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, res, seed);
 

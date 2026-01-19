@@ -16,14 +16,14 @@
 namespace hmap
 {
 
-Array biquad_pulse(Vec2<int>    shape,
+Array biquad_pulse(glm::ivec2   shape,
                    float        gain,
                    const Array *p_ctrl_param,
                    const Array *p_noise_x,
                    const Array *p_noise_y,
                    const Array *p_stretching,
-                   Vec2<float>  center,
-                   Vec4<float>  bbox)
+                   glm::vec2    center,
+                   glm::vec4    bbox)
 {
   Array          array = Array(shape);
   BiquadFunction f = BiquadFunction(gain, center);
@@ -38,14 +38,14 @@ Array biquad_pulse(Vec2<int>    shape,
   return array;
 }
 
-Array bump(Vec2<int>    shape,
+Array bump(glm::ivec2   shape,
            float        gain,
            const Array *p_ctrl_param,
            const Array *p_noise_x,
            const Array *p_noise_y,
            const Array *p_stretching,
-           Vec2<float>  center,
-           Vec4<float>  bbox)
+           glm::vec2    center,
+           glm::vec4    bbox)
 {
   Array        array = Array(shape);
   BumpFunction f = BumpFunction(gain, center);
@@ -60,14 +60,14 @@ Array bump(Vec2<int>    shape,
   return array;
 }
 
-Array bump_lorentzian(Vec2<int>    shape,
+Array bump_lorentzian(glm::ivec2   shape,
                       float        width_factor,
                       float        radius,
                       const Array *p_ctrl_param,
                       const Array *p_noise_x,
                       const Array *p_noise_y,
-                      Vec2<float>  center,
-                      Vec4<float>  bbox)
+                      glm::vec2    center,
+                      glm::vec4    bbox)
 {
   Array array = Array(shape);
 
@@ -99,7 +99,7 @@ Array bump_lorentzian(Vec2<int>    shape,
   return array;
 }
 
-Array constant(Vec2<int> shape, float value)
+Array constant(glm::ivec2 shape, float value)
 {
   Array array = Array(shape);
   for (auto &v : array.vector)
@@ -107,11 +107,11 @@ Array constant(Vec2<int> shape, float value)
   return array;
 }
 
-Array cubic_pulse(Vec2<int>    shape,
+Array cubic_pulse(glm::ivec2   shape,
                   const Array *p_noise_x,
                   const Array *p_noise_y,
-                  Vec2<float>  center,
-                  Vec4<float>  bbox)
+                  glm::vec2    center,
+                  glm::vec4    bbox)
 {
   Array array = Array(shape);
 
@@ -137,15 +137,15 @@ Array cubic_pulse(Vec2<int>    shape,
   return array;
 }
 
-Array disk(Vec2<int>    shape,
+Array disk(glm::ivec2   shape,
            float        radius,
            float        slope,
            const Array *p_ctrl_param,
            const Array *p_noise_x,
            const Array *p_noise_y,
            const Array *p_stretching,
-           Vec2<float>  center,
-           Vec4<float>  bbox)
+           glm::vec2    center,
+           glm::vec4    bbox)
 {
   Array        array = Array(shape);
   DiskFunction f = DiskFunction(radius, slope, center);
@@ -160,14 +160,14 @@ Array disk(Vec2<int>    shape,
   return array;
 }
 
-Array gaussian_pulse(Vec2<int>    shape,
+Array gaussian_pulse(glm::ivec2   shape,
                      float        sigma,
                      const Array *p_ctrl_param,
                      const Array *p_noise_x,
                      const Array *p_noise_y,
                      const Array *p_stretching,
-                     Vec2<float>  center,
-                     Vec4<float>  bbox)
+                     glm::vec2    center,
+                     glm::vec4    bbox)
 {
   Array                 array = Array(shape);
   GaussianPulseFunction f = GaussianPulseFunction(sigma, center);
@@ -182,7 +182,7 @@ Array gaussian_pulse(Vec2<int>    shape,
   return array;
 }
 
-Array paraboloid(Vec2<int>    shape,
+Array paraboloid(glm::ivec2   shape,
                  float        angle,
                  float        a,
                  float        b,
@@ -192,8 +192,8 @@ Array paraboloid(Vec2<int>    shape,
                  const Array *p_noise_x,
                  const Array *p_noise_y,
                  const Array *p_stretching,
-                 Vec2<float>  center,
-                 Vec4<float>  bbox)
+                 glm::vec2    center,
+                 glm::vec4    bbox)
 {
   Array array = Array(shape);
 
@@ -222,7 +222,7 @@ Array paraboloid(Vec2<int>    shape,
   return array;
 }
 
-Array rectangle(Vec2<int>    shape,
+Array rectangle(glm::ivec2   shape,
                 float        rx,
                 float        ry,
                 float        angle,
@@ -231,8 +231,8 @@ Array rectangle(Vec2<int>    shape,
                 const Array *p_noise_x,
                 const Array *p_noise_y,
                 const Array *p_stretching,
-                Vec2<float>  center,
-                Vec4<float>  bbox)
+                glm::vec2    center,
+                glm::vec4    bbox)
 {
   Array             array = Array(shape);
   RectangleFunction f = RectangleFunction(rx, ry, angle, slope, center);
@@ -247,17 +247,17 @@ Array rectangle(Vec2<int>    shape,
   return array;
 }
 
-Array rift(Vec2<int>         shape,
-           float             angle,
-           float             slope,
-           float             width,
-           bool              sharp_bottom,
-           const Array      *p_ctrl_param,
-           const Array      *p_noise_x,
-           const Array      *p_noise_y,
-           const Array      *p_stretching,
-           Vec2<float>       center,
-           hmap::Vec4<float> bbox)
+Array rift(glm::ivec2   shape,
+           float        angle,
+           float        slope,
+           float        width,
+           bool         sharp_bottom,
+           const Array *p_ctrl_param,
+           const Array *p_noise_x,
+           const Array *p_noise_y,
+           const Array *p_stretching,
+           glm::vec2    center,
+           glm::vec4    bbox)
 {
   Array              array = Array(shape);
   hmap::RiftFunction f = hmap::RiftFunction(angle,
@@ -276,15 +276,15 @@ Array rift(Vec2<int>         shape,
   return array;
 }
 
-Array slope(Vec2<int>    shape,
+Array slope(glm::ivec2   shape,
             float        angle,
             float        slope,
             const Array *p_ctrl_param,
             const Array *p_noise_x,
             const Array *p_noise_y,
             const Array *p_stretching,
-            Vec2<float>  center,
-            Vec4<float>  bbox)
+            glm::vec2    center,
+            glm::vec4    bbox)
 {
   Array               array = Array(shape);
   hmap::SlopeFunction f = hmap::SlopeFunction(angle, slope, center);
@@ -299,11 +299,11 @@ Array slope(Vec2<int>    shape,
   return array;
 }
 
-Array smooth_cosine(Vec2<int>    shape,
+Array smooth_cosine(glm::ivec2   shape,
                     const Array *p_noise_x,
                     const Array *p_noise_y,
-                    Vec2<float>  center,
-                    Vec4<float>  bbox)
+                    glm::vec2    center,
+                    glm::vec4    bbox)
 {
   Array array = Array(shape);
 
@@ -329,15 +329,15 @@ Array smooth_cosine(Vec2<int>    shape,
   return array;
 }
 
-Array step(Vec2<int>         shape,
-           float             angle,
-           float             slope,
-           const Array      *p_ctrl_param,
-           const Array      *p_noise_x,
-           const Array      *p_noise_y,
-           const Array      *p_stretching,
-           Vec2<float>       center,
-           hmap::Vec4<float> bbox)
+Array step(glm::ivec2   shape,
+           float        angle,
+           float        slope,
+           const Array *p_ctrl_param,
+           const Array *p_noise_x,
+           const Array *p_noise_y,
+           const Array *p_stretching,
+           glm::vec2    center,
+           glm::vec4    bbox)
 {
   Array              array = Array(shape);
   hmap::StepFunction f = hmap::StepFunction(angle, slope, center);
@@ -355,11 +355,11 @@ Array step(Vec2<int>         shape,
 // --- Wrapper
 
 Array get_primitive_base(const PrimitiveType &primitive_type,
-                         const Vec2<int>     &shape,
+                         const glm::ivec2    &shape,
                          const Array         *p_noise_x,
                          const Array         *p_noise_y,
-                         Vec2<float>          center,
-                         Vec4<float>          bbox)
+                         glm::vec2            center,
+                         glm::vec4            bbox)
 {
   switch (primitive_type)
   {

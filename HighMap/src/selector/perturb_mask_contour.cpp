@@ -12,7 +12,7 @@ Array perturb_mask_contour(const Array &mask,
                            float        max_displacement,
                            int          ir)
 {
-  Vec2<int> shape = mask.shape;
+  glm::ivec2 shape = mask.shape;
 
   Array mask_out(shape);
   Array boundary = border(mask, 1);
@@ -23,7 +23,7 @@ Array perturb_mask_contour(const Array &mask,
       if (boundary(i, j) == 0.f) continue;
 
       // compute mask normal at boundary
-      Vec2<float> dir = {0.f, 0.f};
+      glm::vec2 dir = {0.f, 0.f};
 
       for (int p = -ir; p <= ir; ++p)
         for (int q = -ir; q <= ir; ++q)
@@ -33,11 +33,11 @@ Array perturb_mask_contour(const Array &mask,
           if (mask(i + p, j + q) > 0.f)
           {
             float n = std::sqrt(p * p + q * q);
-            dir = dir + Vec2<float>(float(p) / n, float(q) / n);
+            dir = dir + glm::vec2(float(p) / n, float(q) / n);
           }
         }
 
-      dir.normalize();
+      dir = glm::normalize(dir);
 
       // apply
       float dn = max_displacement * noise(i, j);

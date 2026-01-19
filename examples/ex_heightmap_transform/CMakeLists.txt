@@ -1,2 +1,0 @@
-add_executable(ex_heightmap_transform ex_heightmap_transform.cpp)
-target_link_libraries(ex_heightmap_transform highmap)

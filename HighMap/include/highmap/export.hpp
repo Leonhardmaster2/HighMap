@@ -186,7 +186,7 @@ bool export_asset(const std::string &fname,
  * output.
  */
 std::string export_as_ascii(const Array      &array,
-                            const Vec2<int>  &export_shape = {64, 64},
+                            const glm::ivec2 &export_shape = {64, 64},
                             const std::string chars_map = " .:-=+*#%@");
 
 /**
@@ -373,7 +373,7 @@ void export_points_to_ply(
 void export_tiled(const std::string &fname_radical,
                   const std::string &fname_extension,
                   const Array       &array,
-                  const Vec2<int>   &tiling,
+                  const glm::ivec2  &tiling,
                   int                leading_zeros = 0,
                   int                depth = CV_8U,
                   bool               overlapping_edges = false,

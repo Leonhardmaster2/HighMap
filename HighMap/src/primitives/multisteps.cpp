@@ -11,19 +11,19 @@
 namespace hmap
 {
 
-Array multisteps(Vec2<int>          shape,
-                 float              angle,
-                 float              r,
-                 int                nsteps,
-                 float              elevation_exponent,
-                 float              shape_gain,
-                 float              scale,
-                 float              outer_slope,
-                 const Array       *p_ctrl_param,
-                 const Array       *p_noise_x,
-                 const Array       *p_noise_y,
-                 const Vec2<float> &center,
-                 const Vec4<float> &bbox)
+Array multisteps(glm::ivec2       shape,
+                 float            angle,
+                 float            r,
+                 int              nsteps,
+                 float            elevation_exponent,
+                 float            shape_gain,
+                 float            scale,
+                 float            outer_slope,
+                 const Array     *p_ctrl_param,
+                 const Array     *p_noise_x,
+                 const Array     *p_noise_y,
+                 const glm::vec2 &center,
+                 const glm::vec4 &bbox)
 {
   Array array(shape);
 
@@ -80,25 +80,25 @@ Array multisteps(Vec2<int>          shape,
 namespace hmap::gpu
 {
 
-Array multisteps(Vec2<int>          shape,
-                 float              angle,
-                 uint               seed,
-                 Vec2<float>        kw,
-                 float              noise_amp,
-                 float              noise_rugosity,
-                 bool               noise_inflate,
-                 float              r,
-                 int                nsteps,
-                 float              elevation_exponent,
-                 float              shape_gain,
-                 float              scale,
-                 float              outer_slope,
-                 const Array       *p_ctrl_param,
-                 const Vec2<float> &center,
-                 const Vec4<float> &bbox)
+Array multisteps(glm::ivec2       shape,
+                 float            angle,
+                 uint             seed,
+                 glm::vec2        kw,
+                 float            noise_amp,
+                 float            noise_rugosity,
+                 bool             noise_inflate,
+                 float            r,
+                 int              nsteps,
+                 float            elevation_exponent,
+                 float            shape_gain,
+                 float            scale,
+                 float            outer_slope,
+                 const Array     *p_ctrl_param,
+                 const glm::vec2 &center,
+                 const glm::vec4 &bbox)
 {
   // built-in noise
-  Vec2<float>       jitter(1.f, 1.f);
+  glm::vec2         jitter(1.f, 1.f);
   VoronoiReturnType return_type = VoronoiReturnType::EDGE_DISTANCE_SQUARED;
 
   Array noise = 2.f * gpu::voronoi_fbm(shape,

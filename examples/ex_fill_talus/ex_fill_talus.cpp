@@ -2,9 +2,9 @@
 
 int main(void)
 {
-  hmap::Vec2<int>   shape = {256, 256};
-  hmap::Vec2<float> res = {2.f, 2.f};
-  int               seed = 1;
+  glm::ivec2 shape = {256, 256};
+  glm::vec2  res = {2.f, 2.f};
+  int        seed = 1;
 
   hmap::Array z = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, res, seed);
   hmap::remap(z);
@@ -18,7 +18,7 @@ int main(void)
 
   // same algo on a coarser mesh to spare some computational time
   hmap::Array z2 = z;
-  hmap::fill_talus_fast(z2, hmap::Vec2<int>(64, 64), talus, seed);
+  hmap::fill_talus_fast(z2, glm::ivec2(64, 64), talus, seed);
 
   // with seed mask
   hmap::Array z3 = z;

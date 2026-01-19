@@ -55,8 +55,8 @@ int convert_length_to_pixel(float x,
  */
 void grid_xy_vector(std::vector<float> &x,
                     std::vector<float> &y,
-                    Vec2<int>           shape,
-                    Vec4<float>         bbox = {0.f, 1.f, 0.f, 1.f},
+                    glm::ivec2          shape,
+                    glm::vec4           bbox = {0.f, 1.f, 0.f, 1.f},
                     bool                endpoint = false);
 
 } // namespace hmap

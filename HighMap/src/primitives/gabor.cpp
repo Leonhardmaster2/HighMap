@@ -16,12 +16,12 @@
 namespace hmap
 {
 
-Array gabor_noise(Vec2<int> shape,
-                  float     kw,
-                  float     angle,
-                  int       width,
-                  float     density,
-                  uint      seed)
+Array gabor_noise(glm::ivec2 shape,
+                  float      kw,
+                  float      angle,
+                  int        width,
+                  float      density,
+                  uint       seed)
 {
   Array weight = white_sparse(shape, 0.f, 1.f, density, seed);
   Array kernel = gabor({width, width}, kw, angle);

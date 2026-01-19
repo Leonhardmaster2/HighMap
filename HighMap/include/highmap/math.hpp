@@ -374,8 +374,8 @@ void radial_displacement_to_xy(const Array &dr,
                                Array       &dx,
                                Array       &dy,
                                float        smoothing = 1.f,
-                               Vec2<float>  center = {0.5f, 0.5f},
-                               Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
+                               glm::vec2    center = {0.5f, 0.5f},
+                               glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief Rotates a scalar displacement field into directional X and Y

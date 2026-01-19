@@ -36,25 +36,25 @@ bool cmp_queue(std::pair<int, std::pair<int, int>> &a,
 
 // --- sampling
 
-Array non_parametric_sampling(const Array    &array,
-                              hmap::Vec2<int> patch_shape,
-                              uint            seed,
-                              float           error_threshold)
+Array non_parametric_sampling(const Array &array,
+                              glm::ivec2   patch_shape,
+                              uint         seed,
+                              float        error_threshold)
 {
   std::mt19937                          gen(seed);
   std::uniform_real_distribution<float> dis;
 
-  hmap::Vec2<int> shape = array.shape;
-  Array           array_out = Array(shape);
-  Mat<int>        is_cell_done = Mat<int>(shape);
+  glm::ivec2 shape = array.shape;
+  Array      array_out = Array(shape);
+  Mat<int>   is_cell_done = Mat<int>(shape);
 
   Array kernel = smooth_cosine(patch_shape);
 
   // --- initialize output with a small patch in the middle
 
-  Vec2<int> size = Vec2<int>(3, 3);
-  int       i1 = (int)(0.5f * shape.x);
-  int       j1 = (int)(0.5f * shape.y);
+  glm::ivec2 size = glm::ivec2(3, 3);
+  int        i1 = (int)(0.5f * shape.x);
+  int        j1 = (int)(0.5f * shape.y);
 
   {
     Array patch = get_random_patch(array, size, gen);
@@ -106,8 +106,8 @@ Array non_parametric_sampling(const Array    &array,
     for (int q = 0; q < shape.y - patch_shape.y; q++)
       for (int p = 0; p < shape.x - patch_shape.x; p++)
       {
-        Vec4<int> idx = Vec4<int>(p, p + patch_shape.x, q, q + patch_shape.y);
-        Array     patch = array.extract_slice(idx);
+        glm::ivec4 idx = glm::ivec4(p, p + patch_shape.x, q, q + patch_shape.y);
+        Array      patch = array.extract_slice(idx);
 
         // compute SSD
         int npx2 = (int)std::floor(0.5f * patch_shape.x);

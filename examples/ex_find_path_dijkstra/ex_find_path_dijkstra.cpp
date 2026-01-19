@@ -4,15 +4,15 @@
 
 int main(void)
 {
-  hmap::Vec2<int>   shape = {256, 256};
-  hmap::Vec2<float> res = {2.f, 2.f};
-  int               seed = 1;
+  glm::ivec2 shape = {256, 256};
+  glm::vec2  res = {2.f, 2.f};
+  int        seed = 1;
 
   hmap::Array z = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, res, seed);
   z.to_png("ex_find_path_dijkstra0.png", hmap::Cmap::TERRAIN, true);
 
-  hmap::Vec2<int> ij_start = {40, 40};
-  hmap::Vec2<int> ij_end = {230, 230};
+  glm::ivec2 ij_start = {40, 40};
+  glm::ivec2 ij_end = {230, 230};
 
   std::vector<int> i, j;
 

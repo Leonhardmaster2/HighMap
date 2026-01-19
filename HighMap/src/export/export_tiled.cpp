@@ -10,12 +10,12 @@
 namespace hmap
 {
 
-Vec4<int> helper_compute_tile_bounds(int              tile_x,
-                                     int              tile_y,
-                                     const Vec2<int> &tile_count,
-                                     const Vec2<int> &array_shape,
-                                     bool             overlapping_edges,
-                                     bool             reverse_tile_y_indexing)
+glm::ivec4 helper_compute_tile_bounds(int               tile_x,
+                                      int               tile_y,
+                                      const glm::ivec2 &tile_count,
+                                      const glm::ivec2 &array_shape,
+                                      bool              overlapping_edges,
+                                      bool              reverse_tile_y_indexing)
 {
   const int tile_width = ceil_div(array_shape.x, tile_count.x);
   const int tile_height = ceil_div(array_shape.y, tile_count.y);
@@ -44,7 +44,7 @@ Vec4<int> helper_compute_tile_bounds(int              tile_x,
 void export_tiled(const std::string &fname_radical,
                   const std::string &fname_extension,
                   const Array       &array,
-                  const Vec2<int>   &tiling,
+                  const glm::ivec2  &tiling,
                   int                leading_zeros,
                   int                depth,
                   bool               overlapping_edges,
@@ -55,18 +55,19 @@ void export_tiled(const std::string &fname_radical,
   for (int tx = 0; tx < tiling.x; ++tx)
     for (int ty = 0; ty < tiling.y; ++ty)
     {
-      const Vec4<int> b = helper_compute_tile_bounds(tx,
-                                                     ty,
-                                                     tiling,
-                                                     array.shape,
-                                                     overlapping_edges,
-                                                     reverse_tile_y_indexing);
+      const glm::ivec4 b = helper_compute_tile_bounds(tx,
+                                                      ty,
+                                                      tiling,
+                                                      array.shape,
+                                                      overlapping_edges,
+                                                      reverse_tile_y_indexing);
 
-      const auto [x1, x2, y1, y2] = b;
+      const int x1 = b.x;
+      const int x2 = b.y;
+      const int y1 = b.z;
+      const int y2 = b.w;
 
       if (x1 >= x2 || y1 >= y2) continue;
-
-      LOG_DEBUG("tile (%d,%d) -> x[%d,%d) y[%d,%d)", tx, ty, x1, x2, y1, y2);
 
       Array tile = array.extract_slice(x1, x2, y1, y2);
 

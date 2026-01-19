@@ -2,9 +2,9 @@
 
 int main(void)
 {
-  hmap::Vec2<int>   shape = {256, 256};
-  hmap::Vec2<float> res = {4.f, 4.f};
-  uint              seed = 5;
+  glm::ivec2 shape = {256, 256};
+  glm::vec2  res = {4.f, 4.f};
+  uint       seed = 5;
 
   hmap::Array z = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, res, seed);
   hmap::Array dz = hmap::gradient_talus(z);

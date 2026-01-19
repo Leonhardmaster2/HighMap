@@ -2,10 +2,10 @@
 
 int main(void)
 {
-  hmap::Vec2<int> shape = {256, 256};
-  int             seed = 1;
+  glm::ivec2 shape = {256, 256};
+  int        seed = 1;
 
-  hmap::Vec4<float> bbox = {-1.f, 0.f, 0.5f, 1.5f};
+  glm::vec4 bbox = {-1.f, 0.f, 0.5f, 1.5f};
 
   hmap::Cloud cloud = hmap::Cloud(10, seed, bbox);
 

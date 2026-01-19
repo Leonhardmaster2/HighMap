@@ -13,7 +13,7 @@
 namespace hmap
 {
 
-Array interpolate2d(Vec2<int>                 shape,
+Array interpolate2d(glm::ivec2                shape,
                     const std::vector<float> &x,
                     const std::vector<float> &y,
                     const std::vector<float> &values,
@@ -21,7 +21,7 @@ Array interpolate2d(Vec2<int>                 shape,
                     const Array              *p_noise_x,
                     const Array              *p_noise_y,
                     const Array              *p_stretching,
-                    Vec4<float>               bbox)
+                    glm::vec4                 bbox)
 {
   switch (interpolation_method)
   {
@@ -48,14 +48,14 @@ Array interpolate2d(Vec2<int>                 shape,
   }
 }
 
-Array interpolate2d_nearest(Vec2<int>                 shape,
+Array interpolate2d_nearest(glm::ivec2                shape,
                             const std::vector<float> &x,
                             const std::vector<float> &y,
                             const std::vector<float> &values,
                             const Array              *p_noise_x,
                             const Array              *p_noise_y,
                             const Array              *p_stretching,
-                            Vec4<float>               bbox)
+                            glm::vec4                 bbox)
 {
   auto itp_fct = [&x, &y, &values](float x_, float y_, float)
   {
@@ -87,14 +87,14 @@ Array interpolate2d_nearest(Vec2<int>                 shape,
   return array_out;
 }
 
-Array interpolate2d_delaunay(Vec2<int>                 shape,
+Array interpolate2d_delaunay(glm::ivec2                shape,
                              const std::vector<float> &x,
                              const std::vector<float> &y,
                              const std::vector<float> &values,
                              const Array              *p_noise_x,
                              const Array              *p_noise_y,
                              const Array              *p_stretching,
-                             Vec4<float>               bbox)
+                             glm::vec4                 bbox)
 {
   // triangulate
   std::vector<float> coords(2 * x.size());

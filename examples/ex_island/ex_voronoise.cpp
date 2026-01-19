@@ -4,9 +4,9 @@ int main(void)
 {
   hmap::gpu::init_opencl();
 
-  hmap::Vec2<int>   shape = {256, 256};
-  hmap::Vec2<float> kw = {4.f, 4.f};
-  int               seed = 1;
+  glm::ivec2 shape = {256, 256};
+  glm::vec2  kw = {4.f, 4.f};
+  int        seed = 1;
 
   hmap::Array z00 = hmap::gpu::voronoise(shape, kw, 0.f, 0.f, seed);
   hmap::Array z10 = hmap::gpu::voronoise(shape, kw, 1.f, 0.f, seed);

@@ -11,14 +11,14 @@ namespace hmap
 
 void fill_array_using_xy_function(
     Array                                    &array,
-    Vec4<float>                               bbox,
+    glm::vec4                                 bbox,
     const Array                              *p_ctrl_param,
     const Array                              *p_noise_x,
     const Array                              *p_noise_y,
     const Array                              *p_stretching,
     std::function<float(float, float, float)> fct_xy)
 {
-  Vec2<int>          shape = array.shape;
+  glm::ivec2         shape = array.shape;
   std::vector<float> x, y;
   grid_xy_vector(x, y, shape, bbox, false);
 
@@ -98,7 +98,7 @@ void fill_array_using_xy_function(
 
 void fill_array_using_xy_function(
     Array                                    &array,
-    Vec4<float>                               bbox,
+    glm::vec4                                 bbox,
     const Array                              *p_ctrl_param,
     const Array                              *p_noise_x,
     const Array                              *p_noise_y,
@@ -106,9 +106,10 @@ void fill_array_using_xy_function(
     std::function<float(float, float, float)> fct_xy,
     int                                       subsampling)
 {
-  Vec2<int> shape = array.shape;
-  Vec2<int> shape_sub = Vec2<int>(shape.x / subsampling, shape.y / subsampling);
-  Array     array_sub = Array(shape_sub);
+  glm::ivec2 shape = array.shape;
+  glm::ivec2 shape_sub = glm::ivec2(shape.x / subsampling,
+                                    shape.y / subsampling);
+  Array      array_sub = Array(shape_sub);
 
   std::vector<float> x, y;
   grid_xy_vector(x, y, shape, bbox, false);
@@ -118,7 +119,7 @@ void fill_array_using_xy_function(
 
   // subsampled grid (with endpoints to cover the exact same domain as
   // the original grid)
-  Vec4<float> bbox_sub = Vec4<float>(x.front(), x.back(), y.front(), y.back());
+  glm::vec4 bbox_sub = glm::vec4(x.front(), x.back(), y.front(), y.back());
 
   // resample control parameter
   Array ctrl_array_sub = ctrl_array.resample_to_shape(shape_sub);

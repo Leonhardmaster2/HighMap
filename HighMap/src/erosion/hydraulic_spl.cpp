@@ -36,11 +36,11 @@ void hydraulic_spl(Array &z)
 
   // --- initialization
 
-  const Vec2<int>        shape = z.shape;
-  auto                   basins = DrainageBasins();
-  const float            zmin = z.min();
-  const float            zmax = z.max();
-  std::vector<Vec2<int>> outlets;
+  const glm::ivec2        shape = z.shape;
+  auto                    basins = DrainageBasins();
+  const float             zmin = z.min();
+  const float             zmax = z.max();
+  std::vector<glm::ivec2> outlets;
 
   // --- SPL loop
 
@@ -98,7 +98,7 @@ void hydraulic_spl(Array &z)
       const auto &traversal = basins.upstream_traversal[basin_id];
       if (traversal.empty()) return;
 
-      const Vec2<int> outlet = traversal.front();
+      const glm::ivec2 outlet = traversal.front();
 
       // uplift
       float z_out = z(outlet.x, outlet.y);

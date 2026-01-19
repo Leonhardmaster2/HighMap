@@ -14,8 +14,8 @@ namespace hmap
 {
 
 Array generate_riverbed(const Path &path,
-                        Vec2<int>   shape,
-                        Vec4<float> bbox,
+                        glm::ivec2  shape,
+                        glm::vec4   bbox,
                         bool        bezier_smoothing,
                         float       depth_start,
                         float       depth_end,
@@ -47,8 +47,8 @@ Array generate_riverbed(const Path &path,
   std::vector<float> xp = path.get_x();
   std::vector<float> yp = path.get_y();
 
-  Vec2<float> e = {xp.back() - xp.front(), yp.back() - yp.front()};
-  float       dot_ee = dot(e, e);
+  glm::vec2 e = {xp.back() - xp.front(), yp.back() - yp.front()};
+  float     dot_ee = dot(e, e);
 
   // array cell coordinates
   std::vector<float> xg(shape.x);
@@ -59,8 +59,8 @@ Array generate_riverbed(const Path &path,
     for (int i = 0; i < shape.x; ++i)
     {
       // relative position projected onto the start/end segment (in [0, 1])
-      Vec2<float> w = {xg[i] - xp.front(), yg[j] - yp.front()};
-      float       t = std::clamp(dot(w, e) / dot_ee, 0.f, 1.f);
+      glm::vec2 w = {xg[i] - xp.front(), yg[j] - yp.front()};
+      float     t = std::clamp(dot(w, e) / dot_ee, 0.f, 1.f);
 
       // tweak shape with distance
       float alpha = t * shape_exponent_start + (1.f - t) * shape_exponent_end;

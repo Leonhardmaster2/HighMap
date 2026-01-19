@@ -2,9 +2,9 @@
 
 int main(void)
 {
-  hmap::Vec2<int>   shape = {256, 256};
-  hmap::Vec2<float> kw = {2.f, 2.f};
-  int               seed = 0;
+  glm::ivec2 shape = {256, 256};
+  glm::vec2  kw = {2.f, 2.f};
+  int        seed = 0;
 
   hmap::Array z = hmap::noise_fbm(hmap::NoiseType::SIMPLEX2, shape, kw, seed);
   hmap::remap(z);

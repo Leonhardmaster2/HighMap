@@ -12,7 +12,7 @@ namespace hmap::gpu
 
 Array distance_transform_jfa(const Array &array, bool return_squared_distance)
 {
-  const Vec2<int> shape = array.shape;
+  const glm::ivec2 shape = array.shape;
 
   // --- prepare
 

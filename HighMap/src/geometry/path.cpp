@@ -209,28 +209,28 @@ void Path::decimate_vw(int n_points_target)
   this->points = std::move(pts);
 }
 
-void Path::dijkstra(Array      &array,
-                    Vec4<float> bbox,
-                    float       elevation_ratio,
-                    float       distance_exponent,
-                    float       upward_penalization,
-                    Array      *p_mask_nogo)
+void Path::dijkstra(Array    &array,
+                    glm::vec4 bbox,
+                    float     elevation_ratio,
+                    float     distance_exponent,
+                    float     upward_penalization,
+                    Array    *p_mask_nogo)
 {
   size_t ks = this->closed ? 0 : 1; // trick to handle closed contours
   for (size_t k = 0; k < this->get_npoints() - ks; k++)
   {
     size_t knext = (k + 1) % this->get_npoints();
 
-    Vec2<int> ij_start = Vec2<int>(
-        (int)((this->points[k].x - bbox.a) / (bbox.b - bbox.a) *
+    glm::ivec2 ij_start = glm::ivec2(
+        (int)((this->points[k].x - bbox.x) / (bbox.y - bbox.x) *
               (array.shape.x - 1)),
-        (int)((this->points[k].y - bbox.c) / (bbox.d - bbox.c) *
+        (int)((this->points[k].y - bbox.z) / (bbox.w - bbox.z) *
               (array.shape.y - 1)));
 
-    Vec2<int> ij_end = Vec2<int>(
-        (int)((this->points[knext].x - bbox.a) / (bbox.b - bbox.a) *
+    glm::ivec2 ij_end = glm::ivec2(
+        (int)((this->points[knext].x - bbox.x) / (bbox.y - bbox.x) *
               (array.shape.x - 1)),
-        (int)((this->points[knext].y - bbox.c) / (bbox.d - bbox.c) *
+        (int)((this->points[knext].y - bbox.z) / (bbox.w - bbox.z) *
               (array.shape.y - 1)));
 
     std::vector<int> ip, jp;
@@ -250,10 +250,10 @@ void Path::dijkstra(Array      &array,
 
     for (size_t r = 1; r < ip.size() - 1; r++)
     {
-      float x = (float)ip[r] / (float)(array.shape.x - 1) * (bbox.b - bbox.a) +
-                bbox.a;
-      float y = (float)jp[r] / (float)(array.shape.y - 1) * (bbox.d - bbox.c) +
-                bbox.c;
+      float x = (float)ip[r] / (float)(array.shape.x - 1) * (bbox.y - bbox.x) +
+                bbox.x;
+      float y = (float)jp[r] / (float)(array.shape.y - 1) * (bbox.w - bbox.z) +
+                bbox.z;
 
       // use distance to start and end points to determine value at the added
       // point (barycentric value)
@@ -293,13 +293,13 @@ void Path::divide()
   this->points = std::move(new_points);
 }
 
-void Path::fractalize(int         iterations,
-                      uint        seed,
-                      float       sigma,
-                      int         orientation,
-                      float       persistence,
-                      Array      *p_ctrl_array,
-                      Vec4<float> bbox)
+void Path::fractalize(int       iterations,
+                      uint      seed,
+                      float     sigma,
+                      int       orientation,
+                      float     persistence,
+                      Array    *p_ctrl_array,
+                      glm::vec4 bbox)
 {
   std::mt19937                    gen(seed);
   std::normal_distribution<float> dis(0.f, 1.f);
@@ -632,12 +632,12 @@ float Path::sdf_angle_closed(float x, float y)
   for (size_t i = 0, j = this->get_npoints() - 1; i < this->get_npoints();
        j = i, i++)
   {
-    Vec2<float> e = {this->points[j].x - this->points[i].x,
-                     this->points[j].y - this->points[i].y};
-    Vec2<float> w = {x - this->points[i].x, y - this->points[i].y};
-    float       coeff = std::clamp(dot(w, e) / dot(e, e), 0.f, 1.f);
-    Vec2<float> b = {w.x - e.x * coeff, w.y - e.y * coeff};
-    float       di = dot(b, b);
+    glm::vec2 e = {this->points[j].x - this->points[i].x,
+                   this->points[j].y - this->points[i].y};
+    glm::vec2 w = {x - this->points[i].x, y - this->points[i].y};
+    float     coeff = std::clamp(dot(w, e) / dot(e, e), 0.f, 1.f);
+    glm::vec2 b = {w.x - e.x * coeff, w.y - e.y * coeff};
+    float     di = dot(b, b);
     if (di < d)
     {
       d = di;
@@ -658,13 +658,13 @@ float Path::sdf_angle_open(float x, float y)
 
   for (size_t i = 0; i < this->get_npoints() - 1; i++)
   {
-    size_t      j = i + 1;
-    Vec2<float> e = {this->points[j].x - this->points[i].x,
-                     this->points[j].y - this->points[i].y};
-    Vec2<float> w = {x - this->points[i].x, y - this->points[i].y};
-    float       coeff = std::clamp(dot(w, e) / dot(e, e), 0.f, 1.f);
-    Vec2<float> b = {w.x - e.x * coeff, w.y - e.y * coeff};
-    float       di = dot(b, b);
+    size_t    j = i + 1;
+    glm::vec2 e = {this->points[j].x - this->points[i].x,
+                   this->points[j].y - this->points[i].y};
+    glm::vec2 w = {x - this->points[i].x, y - this->points[i].y};
+    float     coeff = std::clamp(dot(w, e) / dot(e, e), 0.f, 1.f);
+    glm::vec2 b = {w.x - e.x * coeff, w.y - e.y * coeff};
+    float     di = dot(b, b);
     if (di <= d)
     {
       d = di;
@@ -681,17 +681,18 @@ float Path::sdf_closed(float x, float y)
   for (size_t i = 0, j = this->get_npoints() - 1; i < this->get_npoints();
        j = i, i++)
   {
-    Vec2<float> e = {this->points[j].x - this->points[i].x,
-                     this->points[j].y - this->points[i].y};
-    Vec2<float> w = {x - this->points[i].x, y - this->points[i].y};
-    float       coeff = std::clamp(dot(w, e) / dot(e, e), 0.f, 1.f);
-    Vec2<float> b = {w.x - e.x * coeff, w.y - e.y * coeff};
+    glm::vec2 e = {this->points[j].x - this->points[i].x,
+                   this->points[j].y - this->points[i].y};
+    glm::vec2 w = {x - this->points[i].x, y - this->points[i].y};
+    float     coeff = std::clamp(dot(w, e) / dot(e, e), 0.f, 1.f);
+    glm::vec2 b = {w.x - e.x * coeff, w.y - e.y * coeff};
     d = std::min(d, dot(b, b));
 
-    Vec3<bool> c = Vec3<bool>(y >= this->points[i].y,
-                              y<this->points[j].y, e.x * w.y> e.y * w.x);
+    std::array<bool, 3> c = {y >= this->points[i].y,
+                             y<this->points[j].y, e.x * w.y> e.y * w.x};
 
-    if ((c.x && c.y && c.z) || (not(c.x) && not(c.y) && not(c.z))) s *= -1.f;
+    if ((c[0] && c[1] && c[2]) || (not(c[0]) && not(c[1]) && not(c[2])))
+      s *= -1.f;
   }
   return s * std::sqrt(d);
 }
@@ -703,11 +704,11 @@ float Path::sdf_elevation_closed(float x, float y, float slope)
   for (size_t i = 0, j = this->get_npoints() - 1; i < this->get_npoints();
        j = i, i++)
   {
-    Vec2<float> e = {this->points[j].x - this->points[i].x,
-                     this->points[j].y - this->points[i].y};
-    Vec2<float> w = {x - this->points[i].x, y - this->points[i].y};
-    float       coeff = std::clamp(dot(w, e) / dot(e, e), 0.f, 1.f);
-    Vec2<float> b = {w.x - e.x * coeff, w.y - e.y * coeff};
+    glm::vec2 e = {this->points[j].x - this->points[i].x,
+                   this->points[j].y - this->points[i].y};
+    glm::vec2 w = {x - this->points[i].x, y - this->points[i].y};
+    float     coeff = std::clamp(dot(w, e) / dot(e, e), 0.f, 1.f);
+    glm::vec2 b = {w.x - e.x * coeff, w.y - e.y * coeff};
     float dtmp = (1.f - coeff) * this->points[i].v + coeff * this->points[j].v -
                  slope * std::sqrt(dot(b, b));
     d = std::max(d, dtmp);
@@ -721,12 +722,12 @@ float Path::sdf_elevation_open(float x, float y, float slope)
 
   for (size_t i = 0; i < this->get_npoints() - 1; i++)
   {
-    size_t      j = i + 1;
-    Vec2<float> e = {this->points[j].x - this->points[i].x,
-                     this->points[j].y - this->points[i].y};
-    Vec2<float> w = {x - this->points[i].x, y - this->points[i].y};
-    float       coeff = std::clamp(dot(w, e) / dot(e, e), 0.f, 1.f);
-    Vec2<float> b = {w.x - e.x * coeff, w.y - e.y * coeff};
+    size_t    j = i + 1;
+    glm::vec2 e = {this->points[j].x - this->points[i].x,
+                   this->points[j].y - this->points[i].y};
+    glm::vec2 w = {x - this->points[i].x, y - this->points[i].y};
+    float     coeff = std::clamp(dot(w, e) / dot(e, e), 0.f, 1.f);
+    glm::vec2 b = {w.x - e.x * coeff, w.y - e.y * coeff};
     float dtmp = (1.f - coeff) * this->points[i].v + coeff * this->points[j].v -
                  slope * std::sqrt(dot(b, b));
     d = std::max(d, dtmp);
@@ -741,12 +742,12 @@ float Path::sdf_open(float x, float y)
 
   for (size_t i = 0; i < this->get_npoints() - 1; i++)
   {
-    size_t      j = i + 1;
-    Vec2<float> e = {this->points[j].x - this->points[i].x,
-                     this->points[j].y - this->points[i].y};
-    Vec2<float> w = {x - this->points[i].x, y - this->points[i].y};
-    float       coeff = std::clamp(dot(w, e) / dot(e, e), 0.f, 1.f);
-    Vec2<float> b = {w.x - e.x * coeff, w.y - e.y * coeff};
+    size_t    j = i + 1;
+    glm::vec2 e = {this->points[j].x - this->points[i].x,
+                   this->points[j].y - this->points[i].y};
+    glm::vec2 w = {x - this->points[i].x, y - this->points[i].y};
+    float     coeff = std::clamp(dot(w, e) / dot(e, e), 0.f, 1.f);
+    glm::vec2 b = {w.x - e.x * coeff, w.y - e.y * coeff};
     d = std::min(d, dot(b, b));
   }
   return std::sqrt(d);
@@ -803,11 +804,11 @@ void Path::subsample(int step)
   }
 }
 
-void Path::to_array(Array &array, Vec4<float> bbox, bool filled) const
+void Path::to_array(Array &array, glm::vec4 bbox, bool filled) const
 {
   // number of pixels per unit length
-  float lx = bbox.b - bbox.a;
-  float ly = bbox.d - bbox.c;
+  float lx = bbox.y - bbox.x;
+  float ly = bbox.w - bbox.z;
   float ppu = std::max(array.shape.x / lx, array.shape.y / ly);
 
   // create a temporary cloud with the right points density (= 1 ppu)
@@ -851,11 +852,11 @@ void Path::to_array(Array &array, Vec4<float> bbox, bool filled) const
   }
 }
 
-Array Path::to_array_sdf(Vec2<int>   shape,
-                         Vec4<float> bbox,
-                         Array      *p_noise_x,
-                         Array      *p_noise_y,
-                         Vec4<float> bbox_array)
+Array Path::to_array_sdf(glm::ivec2 shape,
+                         glm::vec4  bbox,
+                         Array     *p_noise_x,
+                         Array     *p_noise_y,
+                         glm::vec4  bbox_array)
 {
   // Path nodes
   std::vector<float> xp = this->get_x();
@@ -863,8 +864,8 @@ Array Path::to_array_sdf(Vec2<int>   shape,
 
   for (size_t k = 0; k < xp.size(); k++)
   {
-    xp[k] = (xp[k] - bbox.a) / (bbox.b - bbox.a);
-    yp[k] = (yp[k] - bbox.c) / (bbox.d - bbox.c);
+    xp[k] = (xp[k] - bbox.x) / (bbox.y - bbox.x);
+    yp[k] = (yp[k] - bbox.z) / (bbox.w - bbox.z);
   }
 
   // fill heightmap
@@ -888,7 +889,7 @@ Array Path::to_array_sdf(Vec2<int>   shape,
   return z;
 }
 
-void Path::to_png(std::string fname, Vec2<int> shape)
+void Path::to_png(std::string fname, glm::ivec2 shape)
 {
   Array array = Array(shape);
   this->to_array(array, this->get_bbox());
@@ -899,14 +900,14 @@ void Path::to_png(std::string fname, Vec2<int> shape)
 // functions
 //----------------------------------------------------------------------
 
-void dig_path(Array      &z,
-              Path       &path,
-              int         width,
-              int         decay,
-              int         flattening_radius,
-              bool        force_downhill,
-              Vec4<float> bbox,
-              float       depth)
+void dig_path(Array    &z,
+              Path     &path,
+              int       width,
+              int       decay,
+              int       flattening_radius,
+              bool      force_downhill,
+              glm::vec4 bbox,
+              float     depth)
 {
   Array mask = Array(z.shape);
   Path  path_copy = path;
@@ -968,7 +969,7 @@ void dig_river(Array                   &z,
   {
     Path path_copy = path;
     path_copy.set_values(1.f);
-    hmap::Vec4<float> bbox(0.f, 1.f, 0.f, 1.f);
+    glm::vec4 bbox(0.f, 1.f, 0.f, 1.f);
     path_copy.to_array(mask, bbox);
 
     // expand the path

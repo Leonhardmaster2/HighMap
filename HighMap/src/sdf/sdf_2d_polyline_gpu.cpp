@@ -13,8 +13,8 @@ namespace hmap::gpu
 {
 
 Array sdf_2d_polyline(const Path  &path,
-                      Vec2<int>    shape,
-                      Vec4<float>  bbox,
+                      glm::ivec2   shape,
+                      glm::vec4    bbox,
                       const Array *p_noise_x,
                       const Array *p_noise_y)
 {
@@ -57,8 +57,8 @@ Array sdf_2d_polyline(const Path  &path,
 }
 
 Array sdf_2d_polyline_bezier(const Path  &path,
-                             Vec2<int>    shape,
-                             Vec4<float>  bbox,
+                             glm::ivec2   shape,
+                             glm::vec4    bbox,
                              const Array *p_noise_x,
                              const Array *p_noise_y)
 {

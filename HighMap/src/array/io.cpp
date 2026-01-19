@@ -32,7 +32,7 @@ void Array::from_numpy(const std::string &fname)
   npy::npy_data d = npy::read_npy<float>(fname);
 
   // update array shape
-  Vec2<int> new_shape = {(int)d.shape[0], (int)d.shape[1]};
+  glm::ivec2 new_shape = {(int)d.shape[0], (int)d.shape[1]};
   this->set_shape(new_shape);
 
   // copy the data

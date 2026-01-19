@@ -2,9 +2,9 @@
 
 int main(void)
 {
-  hmap::Vec2<int>   shape = {512, 512};
-  hmap::Vec2<float> kw = {4.f, 4.f};
-  int               seed = 1;
+  glm::ivec2 shape = {512, 512};
+  glm::vec2  kw = {4.f, 4.f};
+  int        seed = 1;
 
   auto z = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, kw, seed);
   auto zw = hmap::noise_fbm(hmap::NoiseType::WORLEY, shape, kw, ++seed);
@@ -12,11 +12,10 @@ int main(void)
   hmap::remap(z);
   hmap::remap(zw);
 
-  float           ratio = 0.5f;
-  hmap::Vec2<int> patch_shape = {(int)(ratio * shape.x),
-                                 (int)(ratio * shape.y)};
-  hmap::Vec2<int> tiling = {4, 4};
-  float           overlap = 0.9f;
+  float      ratio = 0.5f;
+  glm::ivec2 patch_shape = {(int)(ratio * shape.x), (int)(ratio * shape.y)};
+  glm::ivec2 tiling = {4, 4};
+  float      overlap = 0.9f;
 
   // --- base function, a list of array can be provided as a source of
   // --- patches. Secondary arrays can be provided, quilting will

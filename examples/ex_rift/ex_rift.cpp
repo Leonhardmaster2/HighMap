@@ -2,10 +2,10 @@
 
 int main(void)
 {
-  hmap::Vec2<int> shape = {256, 256};
-  float           angle = 30.f;
-  float           talus = 4.f;
-  float           width = 0.1f;
+  glm::ivec2 shape = {256, 256};
+  float      angle = 30.f;
+  float      talus = 4.f;
+  float      width = 0.1f;
 
   bool sharp_bottom = false;
 

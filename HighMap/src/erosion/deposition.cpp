@@ -93,7 +93,7 @@ void sediment_deposition_particle(Array &z,
   Array z_bckp = Array();
   if (p_deposition_map != nullptr) z_bckp = z;
 
-  Array kernel = cone(Vec2<int>(2 * ir + 1, 2 * ir + 1));
+  Array kernel = cone(glm::ivec2(2 * ir + 1, 2 * ir + 1));
   kernel.normalize();
 
   for (int ip = 0; ip < nparticles; ip++)

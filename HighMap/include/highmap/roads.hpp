@@ -50,7 +50,7 @@ namespace hmap
 Graph generate_network_alpha_model(const std::vector<float> &xc,
                                    const std::vector<float> &yc,
                                    const std::vector<float> &size,
-                                   Vec4<float>               bbox,
+                                   glm::vec4                 bbox,
                                    const Array              &z,
                                    uint                      seed,
                                    float                     alpha = 0.7f,

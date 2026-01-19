@@ -14,8 +14,8 @@ namespace hmap::gpu
 {
 
 Array generate_riverbed(const Path &path,
-                        Vec2<int>   shape,
-                        Vec4<float> bbox,
+                        glm::ivec2  shape,
+                        glm::vec4   bbox,
                         bool        bezier_smoothing,
                         float       depth_start,
                         float       depth_end,

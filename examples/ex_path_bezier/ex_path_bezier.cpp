@@ -2,11 +2,11 @@
 
 int main(void)
 {
-  hmap::Vec2<int> shape = {256, 256};
-  int             seed = 3;
+  glm::ivec2 shape = {256, 256};
+  int        seed = 3;
 
-  hmap::Vec4<float> bbox = {1.f, 2.f, -0.5f, 0.5f};
-  hmap::Path        path = hmap::Path(10, seed, {1.2f, 1.8f, -0.3, 0.3f});
+  glm::vec4  bbox = {1.f, 2.f, -0.5f, 0.5f};
+  hmap::Path path = hmap::Path(10, seed, {1.2f, 1.8f, -0.3, 0.3f});
   path.reorder_nns();
   path.closed = true;
 

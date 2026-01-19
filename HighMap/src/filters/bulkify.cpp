@@ -13,8 +13,8 @@ Array bulkify(const Array         &z,
               float                amp,
               const Array         *p_noise_x,
               const Array         *p_noise_y,
-              Vec2<float>          center,
-              Vec4<float>          bbox)
+              glm::vec2            center,
+              glm::vec4            bbox)
 {
   return z + amp * get_primitive_base(primitive_type,
                                       z.shape,

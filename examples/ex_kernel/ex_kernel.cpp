@@ -2,7 +2,7 @@
 
 int main(void)
 {
-  hmap::Vec2<int>          shape = {256, 256};
+  glm::ivec2               shape = {256, 256};
   std::vector<hmap::Array> kernels = {};
 
   kernels.push_back(hmap::cone_smooth(shape));

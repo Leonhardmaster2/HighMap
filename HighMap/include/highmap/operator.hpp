@@ -194,7 +194,7 @@ std::vector<float> linspace_jitted(float start,
  */
 void fill_array_using_xy_function(
     Array                                    &array,
-    Vec4<float>                               bbox,
+    glm::vec4                                 bbox,
     const Array                              *p_ctrl_param,
     const Array                              *p_noise_x,
     const Array                              *p_noise_y,
@@ -234,7 +234,7 @@ void fill_array_using_xy_function(
  */
 void fill_array_using_xy_function(
     Array                                    &array,
-    Vec4<float>                               bbox,
+    glm::vec4                                 bbox,
     const Array                              *p_ctrl_param,
     const Array                              *p_noise_x,
     const Array                              *p_noise_y,
@@ -267,7 +267,7 @@ void find_vertical_cut_path(const Array &error, std::vector<int> &path_i);
  * @param  ir         Filtering radius for smoothing the mask.
  * @return            Array The generated smooth mask.
  */
-Array generate_mask(hmap::Vec2<int> shape, std::vector<int> cut_path_i, int ir);
+Array generate_mask(glm::ivec2 shape, std::vector<int> cut_path_i, int ir);
 
 /**
  * @brief Extracts a random sub-array (patch) from the input array, with
@@ -300,7 +300,7 @@ Array generate_mask(hmap::Vec2<int> shape, std::vector<int> cut_path_i, int ir);
  *                             input array.
  */
 Array get_random_patch(const Array          &array,
-                       hmap::Vec2<int>       patch_shape,
+                       glm::ivec2            patch_shape,
                        std::mt19937         &gen,
                        bool                  patch_flip = false,
                        bool                  patch_rotate = false,

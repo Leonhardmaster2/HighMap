@@ -338,7 +338,7 @@ void recast_rocky_slopes(Array       &array,
                          float        kw,
                          float        gamma,
                          const Array *p_noise,
-                         Vec4<float>  bbox)
+                         glm::vec4    bbox)
 {
   // slope-based criteria
   Array c = select_gradient_binary(array, talus);
@@ -348,7 +348,7 @@ void recast_rocky_slopes(Array       &array,
   {
     Array noise = noise_fbm(NoiseType::PERLIN,
                             array.shape,
-                            Vec2<float>(kw, kw),
+                            glm::vec2(kw, kw),
                             seed,
                             8,
                             0.f,
@@ -379,7 +379,7 @@ void recast_rocky_slopes(Array       &array,
                          const Array *p_mask,
                          float        gamma,
                          const Array *p_noise,
-                         Vec4<float>  bbox)
+                         glm::vec4    bbox)
 {
   {
     if (!p_mask)

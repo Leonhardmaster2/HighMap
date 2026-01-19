@@ -115,23 +115,23 @@ Array flooding_from_point(const Array &z,
 {
   Array water_depth(z.shape, 0.f);
 
-  std::vector<Vec2<int>> nbrs =
+  std::vector<glm::ivec2> nbrs =
       {{-1, 0}, {0, 1}, {0, -1}, {1, 0}, {-1, -1}, {-1, 1}, {1, -1}, {1, 1}};
 
   if (depth_min == std::numeric_limits<float>::max()) depth_min = 0.f;
-  std::vector<Vec2<int>> queue = {{i, j}};
+  std::vector<glm::ivec2> queue = {{i, j}};
 
   // loop around the starting point, anything with elevation lower
   // than the reference elevation is water. If not, the cell is
   // outside the "water" mask
   while (queue.size() > 0)
   {
-    Vec2<int> ij = queue.back();
+    glm::ivec2 ij = queue.back();
     queue.pop_back();
 
     for (auto &idx : nbrs)
     {
-      Vec2<int> pq = ij + idx;
+      glm::ivec2 pq = ij + idx;
 
       if (pq.x >= 0 && pq.x < z.shape.x && pq.y >= 0 && pq.y < z.shape.y)
       {
@@ -258,17 +258,17 @@ Array water_depth_increase(const Array &water_depth,
                            const Array &z,
                            float        additional_depth)
 {
-  const Vec2<int> shape = water_depth.shape;
-  Array           water_depth_extended(shape);
+  const glm::ivec2 shape = water_depth.shape;
+  Array            water_depth_extended(shape);
 
-  const std::array<Vec2<int>, 8> neighbors = {
+  const std::array<glm::ivec2, 8> neighbors = {
       {{-1, 0}, {1, 0}, {0, -1}, {0, 1}, {-1, -1}, {-1, 1}, {1, -1}, {1, 1}}};
 
-  auto in_bounds = [&](const Vec2<int> &p)
+  auto in_bounds = [&](const glm::ivec2 &p)
   { return p.x >= 0 && p.x < shape.x && p.y >= 0 && p.y < shape.y; };
 
-  std::deque<Vec2<int>> queue;
-  const size_t          max_it = 2 * shape.x * shape.y;
+  std::deque<glm::ivec2> queue;
+  const size_t           max_it = 2 * shape.x * shape.y;
 
   // --- Seed water cells and enqueue border cells
 
@@ -279,11 +279,11 @@ Array water_depth_increase(const Array &water_depth,
       if (water_depth(x, y) <= 0.f) continue;
 
       water_depth_extended(x, y) = water_depth(x, y) + additional_depth;
-      const Vec2<int> p{x, y};
+      const glm::ivec2 p{x, y};
 
       for (const auto &d : neighbors)
       {
-        Vec2<int> n = p + d;
+        glm::ivec2 n = p + d;
         if (in_bounds(n) && water_depth(n.x, n.y) == 0.f)
         {
           queue.push_back(p);
@@ -297,7 +297,7 @@ Array water_depth_increase(const Array &water_depth,
 
   for (size_t it = 0; !queue.empty() && it < max_it; ++it)
   {
-    Vec2<int> p = queue.front();
+    glm::ivec2 p = queue.front();
     queue.pop_front();
 
     const float base_depth = water_depth_extended(p.x, p.y);
@@ -305,7 +305,7 @@ Array water_depth_increase(const Array &water_depth,
 
     for (const auto &d : neighbors)
     {
-      Vec2<int> n = p + d;
+      glm::ivec2 n = p + d;
       if (!in_bounds(n)) continue;
 
       const float dz = z(n.x, n.y) - base_z;
@@ -330,11 +330,11 @@ Array water_depth_increase(const Array &water_depth,
     {
       if (water_depth_extended(x, y) <= 0.f) continue;
 
-      const Vec2<int> p{x, y};
+      const glm::ivec2 p{x, y};
 
       for (const auto &d : neighbors)
       {
-        Vec2<int> n = p + d;
+        glm::ivec2 n = p + d;
         if (in_bounds(n) && water_depth_extended(n.x, n.y) == 0.f)
         {
           queue.push_back(p);
@@ -346,7 +346,7 @@ Array water_depth_increase(const Array &water_depth,
 
   for (size_t it = 0; !queue.empty() && it < max_it; ++it)
   {
-    Vec2<int> p = queue.front();
+    glm::ivec2 p = queue.front();
     queue.pop_front();
 
     const float base_depth = water_depth_extended(p.x, p.y);
@@ -354,7 +354,7 @@ Array water_depth_increase(const Array &water_depth,
 
     for (const auto &d : neighbors)
     {
-      Vec2<int> n = p + d;
+      glm::ivec2 n = p + d;
       if (!in_bounds(n)) continue;
 
       const float dz = z(n.x, n.y) - base_z;

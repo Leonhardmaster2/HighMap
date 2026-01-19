@@ -10,8 +10,8 @@ namespace hmap
 {
 
 void find_path_dijkstra(const Array                   &z,
-                        Vec2<int>                      ij_start,
-                        std::vector<Vec2<int>>         ij_end_list,
+                        glm::ivec2                     ij_start,
+                        std::vector<glm::ivec2>        ij_end_list,
                         std::vector<std::vector<int>> &i_path_list,
                         std::vector<std::vector<int>> &j_path_list,
                         float                          elevation_ratio,
@@ -21,7 +21,7 @@ void find_path_dijkstra(const Array                   &z,
 {
   // https://math.stackexchange.com/questions/3088292
 
-  Vec2<int> shape = z.shape;
+  glm::ivec2 shape = z.shape;
 
   // neighbors pattern
   const std::vector<int>   di = {-1, 0, 0, 1, -1, -1, 1, 1};
@@ -139,8 +139,8 @@ void find_path_dijkstra(const Array                   &z,
 }
 
 void find_path_dijkstra(const Array      &z,
-                        Vec2<int>         ij_start,
-                        Vec2<int>         ij_end,
+                        glm::ivec2        ij_start,
+                        glm::ivec2        ij_end,
                         std::vector<int> &i_path,
                         std::vector<int> &j_path,
                         float             elevation_ratio,

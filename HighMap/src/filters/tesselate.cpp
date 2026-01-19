@@ -33,7 +33,7 @@ Array tessellate(Array       &array,
 
   std::vector<float> x(nnodes);
   std::vector<float> y(nnodes);
-  Vec4<float>        bbox = unit_square_bbox();
+  glm::vec4          bbox = unit_square_bbox();
 
   auto xy = random_points_density(nnodes, *p_weight, seed, bbox);
   x = xy[0];

@@ -12,7 +12,7 @@
 namespace hmap
 {
 
-Array wave_dune(Vec2<int>    shape,
+Array wave_dune(glm::ivec2   shape,
                 float        kw,
                 float        angle,
                 float        xtop,
@@ -21,7 +21,7 @@ Array wave_dune(Vec2<int>    shape,
                 const Array *p_noise_x,
                 const Array *p_noise_y,
                 const Array *p_stretching,
-                Vec4<float>  bbox)
+                glm::vec4    bbox)
 {
   Array                  array = Array(shape);
   hmap::WaveDuneFunction f = hmap::WaveDuneFunction({kw, kw},
@@ -40,14 +40,14 @@ Array wave_dune(Vec2<int>    shape,
   return array;
 }
 
-Array wave_sine(Vec2<int>    shape,
+Array wave_sine(glm::ivec2   shape,
                 float        kw,
                 float        angle,
                 float        phase_shift,
                 const Array *p_noise_x,
                 const Array *p_noise_y,
                 const Array *p_stretching,
-                Vec4<float>  bbox)
+                glm::vec4    bbox)
 {
   Array                  array = Array(shape);
   hmap::WaveSineFunction f = hmap::WaveSineFunction({kw, kw},
@@ -64,14 +64,14 @@ Array wave_sine(Vec2<int>    shape,
   return array;
 }
 
-Array wave_square(Vec2<int>    shape,
+Array wave_square(glm::ivec2   shape,
                   float        kw,
                   float        angle,
                   float        phase_shift,
                   const Array *p_noise_x,
                   const Array *p_noise_y,
                   const Array *p_stretching,
-                  Vec4<float>  bbox)
+                  glm::vec4    bbox)
 {
   Array                    array = Array(shape);
   hmap::WaveSquareFunction f = hmap::WaveSquareFunction({kw, kw},
@@ -88,7 +88,7 @@ Array wave_square(Vec2<int>    shape,
   return array;
 }
 
-Array wave_triangular(Vec2<int>    shape,
+Array wave_triangular(glm::ivec2   shape,
                       float        kw,
                       float        angle,
                       float        slant_ratio,
@@ -96,7 +96,7 @@ Array wave_triangular(Vec2<int>    shape,
                       const Array *p_noise_x,
                       const Array *p_noise_y,
                       const Array *p_stretching,
-                      Vec4<float>  bbox)
+                      glm::vec4    bbox)
 {
   Array                        array = Array(shape);
   hmap::WaveTriangularFunction f = hmap::WaveTriangularFunction({kw, kw},

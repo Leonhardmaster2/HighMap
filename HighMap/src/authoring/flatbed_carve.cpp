@@ -10,7 +10,7 @@
 namespace hmap
 {
 
-Array flatbed_carve(Vec2<int>     shape,
+Array flatbed_carve(glm::ivec2    shape,
                     const Path   &path,
                     float         bottom_extent,
                     float         vmin,
@@ -22,7 +22,7 @@ Array flatbed_carve(Vec2<int>     shape,
                     float         radial_profile_parameter,
                     Array        *p_falloff_mask,
                     const Array  *p_noise_r,
-                    Vec4<float>   bbox)
+                    glm::vec4     bbox)
 {
   // out
   Array z(shape);
@@ -119,7 +119,7 @@ void flatbed_carve(Array        &z,
                    float         radial_profile_parameter,
                    Array        *p_falloff_mask,
                    const Array  *p_noise_r,
-                   Vec4<float>   bbox)
+                   glm::vec4     bbox)
 {
   hmap::Array mask;
 

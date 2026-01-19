@@ -55,10 +55,10 @@ namespace hmap
  * **Result**
  * @image html non_parametric_sampling.png
  */
-Array non_parametric_sampling(const Array    &array,
-                              hmap::Vec2<int> patch_shape,
-                              uint            seed,
-                              float           error_threshold = 0.1f);
+Array non_parametric_sampling(const Array &array,
+                              glm::ivec2   patch_shape,
+                              uint         seed,
+                              float        error_threshold = 0.1f);
 
 /**
  * @brief Synthesize a new heightmap by stitching together small patches from
@@ -94,8 +94,8 @@ Array non_parametric_sampling(const Array    &array,
  * @image html ex_quilting4.png
  */
 Array quilting(const std::vector<const Array *> &p_arrays,
-               hmap::Vec2<int>                   patch_base_shape,
-               hmap::Vec2<int>                   tiling,
+               glm::ivec2                        patch_base_shape,
+               glm::ivec2                        tiling,
                float                             overlap,
                uint                              seed,
                std::vector<Array *>              secondary_arrays = {},
@@ -137,7 +137,7 @@ Array quilting(const std::vector<const Array *> &p_arrays,
  * @image html ex_quilting4.png
  */
 Array quilting_blend(const std::vector<const Array *> &p_arrays,
-                     hmap::Vec2<int>                   patch_base_shape,
+                     glm::ivec2                        patch_base_shape,
                      float                             overlap,
                      uint                              seed,
                      bool                              patch_flip = true,
@@ -184,7 +184,7 @@ Array quilting_blend(const std::vector<const Array *> &p_arrays,
  */
 Array quilting_expand(const Array         &array,
                       float                expansion_ratio,
-                      hmap::Vec2<int>      patch_base_shape,
+                      glm::ivec2           patch_base_shape,
                       float                overlap,
                       uint                 seed,
                       std::vector<Array *> secondary_arrays = {},
@@ -228,7 +228,7 @@ Array quilting_expand(const Array         &array,
  * @image html ex_quilting4.png
  */
 Array quilting_shuffle(const Array         &array,
-                       hmap::Vec2<int>      patch_base_shape,
+                       glm::ivec2           patch_base_shape,
                        float                overlap,
                        uint                 seed,
                        std::vector<Array *> secondary_arrays = {},

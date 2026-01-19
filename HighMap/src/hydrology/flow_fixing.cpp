@@ -42,9 +42,9 @@ Array flow_fixing(const Array &z,
 
   struct NodePath
   {
-    float     h;  // elevation at end point
-    Vec2<int> p0; // start
-    Vec2<int> p1; // end
+    float      h;  // elevation at end point
+    glm::ivec2 p0; // start
+    glm::ivec2 p1; // end
 
     bool operator<(const NodePath &other) const
     {
@@ -53,9 +53,9 @@ Array flow_fixing(const Array &z,
   };
 
   //
-  const Vec2<int> shape = z.shape;
-  Array           zb = z;
-  size_t          n_sinks = 0;
+  const glm::ivec2 shape = z.shape;
+  Array            zb = z;
+  size_t           n_sinks = 0;
 
   // neighbor search
   const int di[8] = {1, 1, 0, -1, -1, -1, 0, 1};
@@ -71,8 +71,8 @@ Array flow_fixing(const Array &z,
     Array zf = zb;
     smooth_cpulse(zf, prefilter_ir);
 
-    std::vector<Vec2<int>> sinks = find_flow_sinks(zf);
-    Mat<int>               is_sink(shape, 0);
+    std::vector<glm::ivec2> sinks = find_flow_sinks(zf);
+    Mat<int>                is_sink(shape, 0);
 
     for (const auto &p : sinks)
       is_sink(p) = 1;
@@ -87,9 +87,10 @@ Array flow_fixing(const Array &z,
     std::vector<Node> queue;
     queue.reserve(shape.x * shape.y);
 
-    Mat<int>                                    visited(shape, 0);
-    Mat<Vec2<int>>                              flow_map(shape, {0, 0});
-    std::map<Vec4<int>, std::vector<Vec2<int>>> breach_history;
+    Mat<int>        visited(shape, 0);
+    Mat<glm::ivec2> flow_map(shape, {0, 0});
+    std::unordered_map<glm::ivec4, std::vector<glm::ivec2>, IVec4Hash, IVec4Eq>
+        breach_history;
 
     // --- initialize heap queue with the lowest cell of each border
 
@@ -158,14 +159,14 @@ Array flow_fixing(const Array &z,
             int bi = ni;
             int bj = nj;
 
-            bool                   keep_breaching = true;
-            std::vector<Vec2<int>> path = {{bi, bj}};
+            bool                    keep_breaching = true;
+            std::vector<glm::ivec2> path = {{bi, bj}};
 
             // stop on a boundary or at a sink
             while (keep_breaching &&
                    (bi > 0 && bi < shape.x - 1 && bj > 0 && bj < shape.y - 1))
             {
-              Vec2<int> tmp = flow_map(bi, bj);
+              glm::ivec2 tmp = flow_map(bi, bj);
               bi = tmp.x;
               bj = tmp.y;
               path.push_back({bi, bj});
@@ -177,13 +178,13 @@ Array flow_fixing(const Array &z,
             // elevation is monotonic along this path
             if (path.size() > 2)
             {
-              Vec2<int> p0 = path.front();
-              Vec2<int> p1 = path.back();
+              glm::ivec2 p0 = path.front();
+              glm::ivec2 p1 = path.back();
               if (p0 != p1)
               {
                 // store the breaching path for the second
                 // pass of the algorithm
-                Vec4<int> key = {p0.x, p0.y, p1.x, p1.y};
+                glm::ivec4 key = {p0.x, p0.y, p1.x, p1.y};
                 breach_history[key] = path;
 
                 for (size_t r = 0; r < path.size() - 1; ++r)
@@ -209,8 +210,8 @@ Array flow_fixing(const Array &z,
 
     for (const auto &[key, path] : breach_history)
     {
-      Vec2<int> p0 = {key.a, key.b};
-      Vec2<int> p1 = {key.c, key.d};
+      glm::ivec2 p0 = {key.x, key.y};
+      glm::ivec2 p1 = {key.z, key.w};
       queue_path.push_back({z(p1), p0, p1});
     }
     std::make_heap(queue_path.begin(), queue_path.end());
@@ -221,8 +222,8 @@ Array flow_fixing(const Array &z,
       const NodePath current = queue_path.back();
       queue_path.pop_back();
 
-      Vec4<int> key = {current.p0.x, current.p0.y, current.p1.x, current.p1.y};
-      const std::vector<Vec2<int>> &path = breach_history[key];
+      glm::ivec4 key = {current.p0.x, current.p0.y, current.p1.x, current.p1.y};
+      const std::vector<glm::ivec2> &path = breach_history[key];
 
       // breach again
       for (size_t r = 0; r < path.size() - 1; ++r)

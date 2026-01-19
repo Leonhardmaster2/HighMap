@@ -2,9 +2,9 @@
 
 int main(void)
 {
-  hmap::Vec2<int> shape = {256, 256};
-  float           kw = 2.f;
-  uint            seed = 0;
+  glm::ivec2 shape = {256, 256};
+  float      kw = 2.f;
+  uint       seed = 0;
 
   hmap::Array angle(shape, 0.f);
 

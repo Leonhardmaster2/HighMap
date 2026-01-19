@@ -24,7 +24,7 @@ Array phase_field(const Array &array,
                   Array       *p_gnoise_x,
                   Array       *p_gnoise_y)
 {
-  Vec2<int>                       shape = array.shape;
+  glm::ivec2                      shape = array.shape;
   std::mt19937                    gen(seed);
   std::uniform_int_distribution<> dis_i(0, shape.x - 1);
   std::uniform_int_distribution<> dis_j(0, shape.y - 1);
@@ -54,7 +54,7 @@ Array phase_field(const Array &array,
     float angle = theta(i, j) * 180.f / M_PI;
     Array kernel;
 
-    Vec2<int> kernel_shape(width, width);
+    glm::ivec2 kernel_shape(width, width);
 
     kernel = gabor(kernel_shape, kw, angle);
     add_kernel(gnoise_x, kernel, i, j);

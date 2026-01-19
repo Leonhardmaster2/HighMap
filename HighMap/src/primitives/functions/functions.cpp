@@ -8,13 +8,13 @@ namespace hmap
 {
 
 std::function<float(float, float)> make_xy_function_from_array(
-    const Array       &array,
-    const Vec4<float> &bbox)
+    const Array     &array,
+    const glm::vec4 &bbox)
 {
   return [&array, &bbox](float x, float y) -> float
   {
-    x = (x - bbox.a) / (bbox.b - bbox.a);
-    y = (y - bbox.c) / (bbox.d - bbox.c);
+    x = (x - bbox.x) / (bbox.y - bbox.x);
+    y = (y - bbox.z) / (bbox.w - bbox.z);
 
     x = std::clamp(x, 0.f, 1.f);
     y = std::clamp(y, 0.f, 1.f);
@@ -54,7 +54,7 @@ void Function::set_delegate(HMAP_FCT_XY_TYPE new_delegate)
 // derived from Function class
 //----------------------------------------------------------------------
 
-ArrayFunction::ArrayFunction(hmap::Array array, Vec2<float> kw, bool periodic)
+ArrayFunction::ArrayFunction(hmap::Array array, glm::vec2 kw, bool periodic)
     : Function(), kw(kw), array(array)
 {
   if (periodic)
@@ -98,7 +98,7 @@ ArrayFunction::ArrayFunction(hmap::Array array, Vec2<float> kw, bool periodic)
         });
 }
 
-BiquadFunction::BiquadFunction(float gain, Vec2<float> center)
+BiquadFunction::BiquadFunction(float gain, glm::vec2 center)
     : Function(), gain(gain), center(center)
 {
   this->set_delegate(
@@ -110,7 +110,7 @@ BiquadFunction::BiquadFunction(float gain, Vec2<float> center)
       });
 }
 
-BumpFunction::BumpFunction(float gain, Vec2<float> center)
+BumpFunction::BumpFunction(float gain, glm::vec2 center)
     : Function(), gain(gain), center(center)
 {
   this->set_delegate(
@@ -131,11 +131,11 @@ BumpFunction::BumpFunction(float gain, Vec2<float> center)
       });
 }
 
-CraterFunction::CraterFunction(float       radius,
-                               float       depth,
-                               float       lip_decay,
-                               float       lip_height_ratio,
-                               Vec2<float> center)
+CraterFunction::CraterFunction(float     radius,
+                               float     depth,
+                               float     lip_decay,
+                               float     lip_height_ratio,
+                               glm::vec2 center)
     : Function(),
       radius(radius),
       depth(depth),
@@ -160,7 +160,7 @@ CraterFunction::CraterFunction(float       radius,
       });
 }
 
-DiskFunction::DiskFunction(float radius, float slope, Vec2<float> center)
+DiskFunction::DiskFunction(float radius, float slope, glm::vec2 center)
     : Function(), radius(radius), slope(slope), center(center)
 {
   this->set_delegate(
@@ -180,7 +180,7 @@ DiskFunction::DiskFunction(float radius, float slope, Vec2<float> center)
       });
 }
 
-GaussianPulseFunction::GaussianPulseFunction(float sigma, Vec2<float> center)
+GaussianPulseFunction::GaussianPulseFunction(float sigma, glm::vec2 center)
     : Function(), center(center)
 {
   this->set_sigma(sigma);
@@ -194,11 +194,11 @@ GaussianPulseFunction::GaussianPulseFunction(float sigma, Vec2<float> center)
       });
 }
 
-RectangleFunction::RectangleFunction(float       rx,
-                                     float       ry,
-                                     float       angle,
-                                     float       slope,
-                                     Vec2<float> center)
+RectangleFunction::RectangleFunction(float     rx,
+                                     float     ry,
+                                     float     angle,
+                                     float     slope,
+                                     glm::vec2 center)
     : Function(), rx(rx), ry(ry), slope(slope), center(center)
 {
   this->set_angle(angle);
@@ -238,11 +238,11 @@ RectangleFunction::RectangleFunction(float       rx,
       });
 }
 
-RiftFunction::RiftFunction(float       angle,
-                           float       slope,
-                           float       width,
-                           bool        sharp_bottom,
-                           Vec2<float> center)
+RiftFunction::RiftFunction(float     angle,
+                           float     slope,
+                           float     width,
+                           bool      sharp_bottom,
+                           glm::vec2 center)
     : Function(), slope(slope), width(width), center(center)
 {
   this->set_angle(angle);
@@ -289,7 +289,7 @@ RiftFunction::RiftFunction(float       angle,
         });
 }
 
-SlopeFunction::SlopeFunction(float angle, float slope, Vec2<float> center)
+SlopeFunction::SlopeFunction(float angle, float slope, glm::vec2 center)
     : Function(), slope(slope), center(center)
 {
   this->set_angle(angle);
@@ -303,7 +303,7 @@ SlopeFunction::SlopeFunction(float angle, float slope, Vec2<float> center)
       });
 }
 
-StepFunction::StepFunction(float angle, float slope, Vec2<float> center)
+StepFunction::StepFunction(float angle, float slope, glm::vec2 center)
     : Function(), slope(slope), center(center)
 {
   this->set_angle(angle);
@@ -328,11 +328,11 @@ StepFunction::StepFunction(float angle, float slope, Vec2<float> center)
       });
 }
 
-WaveDuneFunction::WaveDuneFunction(Vec2<float> kw,
-                                   float       angle,
-                                   float       xtop,
-                                   float       xbottom,
-                                   float       phase_shift)
+WaveDuneFunction::WaveDuneFunction(glm::vec2 kw,
+                                   float     angle,
+                                   float     xtop,
+                                   float     xbottom,
+                                   float     phase_shift)
     : Function(), kw(kw), xtop(xtop), xbottom(xbottom), phase_shift(phase_shift)
 {
   this->set_angle(angle);
@@ -360,9 +360,7 @@ WaveDuneFunction::WaveDuneFunction(Vec2<float> kw,
       });
 }
 
-WaveSineFunction::WaveSineFunction(Vec2<float> kw,
-                                   float       angle,
-                                   float       phase_shift)
+WaveSineFunction::WaveSineFunction(glm::vec2 kw, float angle, float phase_shift)
     : Function(), kw(kw), phase_shift(phase_shift)
 {
   this->set_angle(angle);
@@ -375,9 +373,9 @@ WaveSineFunction::WaveSineFunction(Vec2<float> kw,
       });
 }
 
-WaveSquareFunction::WaveSquareFunction(Vec2<float> kw,
-                                       float       angle,
-                                       float       phase_shift)
+WaveSquareFunction::WaveSquareFunction(glm::vec2 kw,
+                                       float     angle,
+                                       float     phase_shift)
     : Function(), kw(kw), phase_shift(phase_shift)
 {
   this->set_angle(angle);
@@ -390,10 +388,10 @@ WaveSquareFunction::WaveSquareFunction(Vec2<float> kw,
       });
 }
 
-WaveTriangularFunction::WaveTriangularFunction(Vec2<float> kw,
-                                               float       angle,
-                                               float       slant_ratio,
-                                               float       phase_shift)
+WaveTriangularFunction::WaveTriangularFunction(glm::vec2 kw,
+                                               float     angle,
+                                               float     slant_ratio,
+                                               float     phase_shift)
     : Function(), kw(kw), slant_ratio(slant_ratio), phase_shift(phase_shift)
 {
   this->set_angle(angle);

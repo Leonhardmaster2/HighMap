@@ -16,8 +16,8 @@ void interpolate_array_bicubic(const Array &source,
                                bool         endpoint,
                                bool         pixel_centered)
 {
-  Vec4<float> bbox_source(0.f, 1.f, 0.f, 1.f);
-  Vec4<float> bbox_target(0.f, 1.f, 0.f, 1.f);
+  glm::vec4 bbox_source(0.f, 1.f, 0.f, 1.f);
+  glm::vec4 bbox_target(0.f, 1.f, 0.f, 1.f);
 
   interpolate_array_bicubic(source,
                             target,
@@ -27,12 +27,12 @@ void interpolate_array_bicubic(const Array &source,
                             pixel_centered);
 }
 
-void interpolate_array_bicubic(const Array       &source,
-                               Array             &target,
-                               const Vec4<float> &bbox_source,
-                               const Vec4<float> &bbox_target,
-                               bool               endpoint,
-                               bool               pixel_centered)
+void interpolate_array_bicubic(const Array     &source,
+                               Array           &target,
+                               const glm::vec4 &bbox_source,
+                               const glm::vec4 &bbox_target,
+                               bool             endpoint,
+                               bool             pixel_centered)
 {
   float dx_s = 1.f / static_cast<float>(source.shape.x);
   float dy_s = 1.f / static_cast<float>(source.shape.y);
@@ -46,22 +46,22 @@ void interpolate_array_bicubic(const Array       &source,
   float shift_y_s = pixel_centered ? 0.5f : 0.f;
 
   // grid points (pixel-centered)
-  std::vector<float> x = linspace(bbox_target.a + shift_x_t,
-                                  bbox_target.b,
+  std::vector<float> x = linspace(bbox_target.x + shift_x_t,
+                                  bbox_target.y,
                                   target.shape.x,
                                   endpoint);
 
-  std::vector<float> y = linspace(bbox_target.c + shift_y_t,
-                                  bbox_target.d,
+  std::vector<float> y = linspace(bbox_target.z + shift_y_t,
+                                  bbox_target.w,
                                   target.shape.y,
                                   endpoint);
 
   // rescale to a unit square based on bbox_source
   for (auto &x_ : x)
-    x_ = (x_ - bbox_source.a) / (bbox_source.b - bbox_source.a);
+    x_ = (x_ - bbox_source.x) / (bbox_source.y - bbox_source.x);
 
   for (auto &y_ : y)
-    y_ = (y_ - bbox_source.c) / (bbox_source.d - bbox_source.c);
+    y_ = (y_ - bbox_source.z) / (bbox_source.w - bbox_source.z);
 
   for (int j = 0; j < target.shape.y; ++j)
     for (int i = 0; i < target.shape.x; ++i)
@@ -107,8 +107,8 @@ void interpolate_array_bilinear(const Array &source,
                                 bool         endpoint,
                                 bool         pixel_centered)
 {
-  Vec4<float> bbox_source(0.f, 1.f, 0.f, 1.f);
-  Vec4<float> bbox_target(0.f, 1.f, 0.f, 1.f);
+  glm::vec4 bbox_source(0.f, 1.f, 0.f, 1.f);
+  glm::vec4 bbox_target(0.f, 1.f, 0.f, 1.f);
 
   interpolate_array_bilinear(source,
                              target,
@@ -118,12 +118,12 @@ void interpolate_array_bilinear(const Array &source,
                              pixel_centered);
 }
 
-void interpolate_array_bilinear(const Array       &source,
-                                Array             &target,
-                                const Vec4<float> &bbox_source,
-                                const Vec4<float> &bbox_target,
-                                bool               endpoint,
-                                bool               pixel_centered)
+void interpolate_array_bilinear(const Array     &source,
+                                Array           &target,
+                                const glm::vec4 &bbox_source,
+                                const glm::vec4 &bbox_target,
+                                bool             endpoint,
+                                bool             pixel_centered)
 {
   float dx_s = 1.f / static_cast<float>(source.shape.x);
   float dy_s = 1.f / static_cast<float>(source.shape.y);
@@ -137,22 +137,22 @@ void interpolate_array_bilinear(const Array       &source,
   float shift_y_s = pixel_centered ? 0.5f : 0.f;
 
   // grid points (pixel-centered)
-  std::vector<float> x = linspace(bbox_target.a + shift_x_t,
-                                  bbox_target.b,
+  std::vector<float> x = linspace(bbox_target.x + shift_x_t,
+                                  bbox_target.y,
                                   target.shape.x,
                                   endpoint);
 
-  std::vector<float> y = linspace(bbox_target.c + shift_y_t,
-                                  bbox_target.d,
+  std::vector<float> y = linspace(bbox_target.z + shift_y_t,
+                                  bbox_target.w,
                                   target.shape.y,
                                   endpoint);
 
   // rescale to a unit square based on bbox_source
   for (auto &x_ : x)
-    x_ = (x_ - bbox_source.a) / (bbox_source.b - bbox_source.a);
+    x_ = (x_ - bbox_source.x) / (bbox_source.y - bbox_source.x);
 
   for (auto &y_ : y)
-    y_ = (y_ - bbox_source.c) / (bbox_source.d - bbox_source.c);
+    y_ = (y_ - bbox_source.z) / (bbox_source.w - bbox_source.z);
 
   for (int j = 0; j < target.shape.y; ++j)
     for (int i = 0; i < target.shape.x; ++i)
@@ -187,25 +187,25 @@ void interpolate_array_nearest(const Array &source,
                                Array       &target,
                                bool         endpoint)
 {
-  Vec4<float> bbox_source(0.f, 1.f, 0.f, 1.f);
-  Vec4<float> bbox_target(0.f, 1.f, 0.f, 1.f);
+  glm::vec4 bbox_source(0.f, 1.f, 0.f, 1.f);
+  glm::vec4 bbox_target(0.f, 1.f, 0.f, 1.f);
 
   interpolate_array_nearest(source, target, bbox_source, bbox_target, endpoint);
 }
 
-void interpolate_array_nearest(const Array       &source,
-                               Array             &target,
-                               const Vec4<float> &bbox_source,
-                               const Vec4<float> &bbox_target,
-                               bool               endpoint)
+void interpolate_array_nearest(const Array     &source,
+                               Array           &target,
+                               const glm::vec4 &bbox_source,
+                               const glm::vec4 &bbox_target,
+                               bool             endpoint)
 {
-  std::vector<float> x = linspace(bbox_target.a,
-                                  bbox_target.b,
+  std::vector<float> x = linspace(bbox_target.x,
+                                  bbox_target.y,
                                   target.shape.x,
                                   endpoint);
 
-  std::vector<float> y = linspace(bbox_target.c,
-                                  bbox_target.d,
+  std::vector<float> y = linspace(bbox_target.z,
+                                  bbox_target.w,
                                   target.shape.y,
                                   endpoint);
 
@@ -213,10 +213,10 @@ void interpolate_array_nearest(const Array       &source,
     for (int i = 0; i < target.shape.x; ++i)
     {
       int is = static_cast<int>(
-          std::round((x[i] - bbox_source.a) / (bbox_source.b - bbox_source.a) *
+          std::round((x[i] - bbox_source.x) / (bbox_source.y - bbox_source.x) *
                      source.shape.x));
       int js = static_cast<int>(
-          std::round((y[j] - bbox_source.c) / (bbox_source.d - bbox_source.c) *
+          std::round((y[j] - bbox_source.z) / (bbox_source.w - bbox_source.z) *
                      source.shape.y));
 
       is = std::clamp(is, 0, source.shape.x - 1);

@@ -231,10 +231,10 @@ void radial_displacement_to_xy(const Array &dr,
                                Array       &dx,
                                Array       &dy,
                                float        smoothing,
-                               Vec2<float>  center,
-                               Vec4<float>  bbox)
+                               glm::vec2    center,
+                               glm::vec4    bbox)
 {
-  Vec2<int> shape = dr.shape;
+  glm::ivec2 shape = dr.shape;
   dx = Array(shape);
   dy = Array(shape);
 

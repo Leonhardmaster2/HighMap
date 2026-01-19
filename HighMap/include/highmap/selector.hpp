@@ -262,8 +262,8 @@ Array select_interval(const Array &array, float value1, float value2);
  * @image html ex_select_inward_outward_slope.png
  */
 Array select_inward_outward_slope(const Array &array,
-                                  Vec2<float>  center = {0.5f, 0.5f},
-                                  Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
+                                  glm::vec2    center = {0.5f, 0.5f},
+                                  glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief Return an array with elements equal to 1 where input elements are

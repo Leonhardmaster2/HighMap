@@ -14,7 +14,7 @@ namespace hmap
 {
 
 Array phasor(PhasorProfile phasor_profile,
-             Vec2<int>     shape,
+             glm::ivec2    shape,
              float         kw,
              const Array  &angle,
              uint          seed,
@@ -44,10 +44,10 @@ Array phasor(PhasorProfile phasor_profile,
 
   // generate Gabor kernel "spawn" points
   std::vector<float> x(npoints), y(npoints);
-  Vec4<float>        bbox(0.f, (float)shape.x - 1.f, 0.f, (float)shape.y - 1.f);
+  glm::vec4          bbox(0.f, (float)shape.x - 1.f, 0.f, (float)shape.y - 1.f);
 
-  const Vec2<float> jitter_amount = {0.5f, 0.5f};
-  const Vec2<float> stagger_ratio = {0.f, 0.f};
+  const glm::vec2 jitter_amount = {0.5f, 0.5f};
+  const glm::vec2 stagger_ratio = {0.f, 0.f};
 
   auto xy = random_points_jittered(npoints,
                                    jitter_amount,
@@ -64,7 +64,7 @@ Array phasor(PhasorProfile phasor_profile,
 
     Array kernel;
 
-    Vec2<int> kernel_shape(width, width);
+    glm::ivec2 kernel_shape(width, width);
 
     kernel = gabor(kernel_shape, kw_kernel, angle(i, j));
     add_kernel(gnoise_x, kernel, i, j);
@@ -109,7 +109,7 @@ Array phasor(PhasorProfile phasor_profile,
 }
 
 Array phasor_fbm(PhasorProfile phasor_profile,
-                 Vec2<int>     shape,
+                 glm::ivec2    shape,
                  float         kw,
                  const Array  &angle,
                  uint          seed,

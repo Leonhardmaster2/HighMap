@@ -6,866 +6,141 @@
  * @file algebra.hpp
  * @author  Otto Link (otto.link.bv@gmail.com)
  * @brief Header file defining basic vector and matrix manipulation classes.
- *
- * This header file provides basic implementations for 2D, 3D, and 4D vector
- * classes (`Vec2`, `Vec3`, `Vec4`) and a simple matrix class (`Mat`). These
- * classes offer fundamental operations such as addition, subtraction,
- * multiplication, division, dot products, and basic matrix manipulation
- * capabilities.
- *
  * @version 0.1
  * @date 2023-08-01
  *
  * @copyright Copyright (c) 2023
- *
  */
 #pragma once
 #include <cmath>
 #include <stdexcept>
 #include <vector>
 
-#include <glm/vec2.hpp>
-#include <glm/vec4.hpp>
+#include <glm/glm.hpp>
 
 namespace hmap
 {
 
-/**
- * @brief Vec2 class for basic manipulation of 2D vectors.
- *
- * This class provides basic operations for 2D vectors, such as addition,
- * subtraction, multiplication, division, and dot product calculation. The class
- * supports various data types through templating.
- *
- * @tparam T Data type for the vector components (e.g., int, float, double).
- */
-template <typename T> struct Vec2
+// --- Backward compatiblity with former custom classes (deprecated)
+
+template <typename T> struct Vec2; // forward decl only
+
+template <>
+struct [[deprecated("Replaced by glm::vec2")]] Vec2<float> : public glm::vec2
 {
-  T x, y; /**< @brief The x and y components of the vector. */
+  using glm::vec2::vec2;
+  using glm::vec2::x;
+  using glm::vec2::y;
+};
 
-  /**
-   * @brief Default constructor initializing the vector to (0, 0).
-   *
-   * Initializes both x and y components to zero.
-   */
-  Vec2() : x(0), y(0)
-  {
-  }
+template <>
+struct [[deprecated("Replaced by glm::ivec2")]] Vec2<int> : public glm::ivec2
+{
+  using glm::ivec2::ivec2;
+  using glm::ivec2::x;
+  using glm::ivec2::y;
+};
 
-  /**
-   * @brief Parameterized constructor initializing the vector to given
-   * values.
-   *
-   * @param x The x component of the vector.
-   * @param y The y component of the vector.
-   */
-  Vec2(T x, T y) : x(x), y(y)
-  {
-  }
+template <typename T> struct Vec3; // forward decl only
 
-  /**
-   * @brief Constructs a Vec2 object from a std::vector.
-   *
-   * This constructor takes a vector containing exactly two elements and
-   * assigns the first element to `x` and the second element to `y`.
-   *
-   * @tparam T The type of elements in the vector (e.g., float, int,
-   * double).
-   * @param vec A const reference to a vector of size 2, where the first
-   *            element corresponds to `x` and the second to `y`.
-   *
-   * @throw std::invalid_argument If the vector does not contain exactly
-   * two elements.
-   */
-  Vec2(const std::vector<T> &vec) : x(0), y(0)
-  {
-    if (vec.size() != 2)
-    {
-      throw std::invalid_argument("Vector must contain exactly two elements.");
-    }
-    x = vec[0];
-    y = vec[1];
-  }
+template <>
+struct [[deprecated("Replaced by glm::vec3")]] Vec3<float> : public glm::vec3
+{
+  using glm::vec3::vec3;
+  using glm::vec3::x;
+  using glm::vec3::y;
+  using glm::vec3::z;
+};
 
-  /**
-   * @brief Equality operator.
-   *
-   * Compares two vectors for equality.
-   *
-   * @param  other_vec The vector to compare with.
-   * @return           true if the vectors are equal, false otherwise.
-   */
-  bool operator==(const Vec2 &other_vec) const
-  {
-    return ((this->x == other_vec.x) && (this->y == other_vec.y));
-  }
+template <>
+struct [[deprecated("Replaced by glm::ivec3")]] Vec3<int> : public glm::ivec3
+{
+  using glm::ivec3::ivec3;
+  using glm::ivec3::x;
+  using glm::ivec3::y;
+  using glm::ivec3::z;
+};
 
-  /**
-   * @brief Inequality operator.
-   *
-   * Compares two vectors for inequality.
-   *
-   * @param  other_vec The vector to compare with.
-   * @return           true if the vectors are not equal, false otherwise.
-   */
-  bool operator!=(const Vec2 &other_vec) const
-  {
-    return ((this->x != other_vec.x) || (this->y != other_vec.y));
-  }
+template <typename T> struct Vec4; // forward decl only
 
-  /**
-   * @brief Division-assignment operator.
-   *
-   * Divides both components of the vector by a scalar value and assigns
-   * the result.
-   *
-   * @param  value The scalar value to divide by.
-   * @return       A reference to the current vector after division.
-   */
-  Vec2 &operator/=(const T value)
-  {
-    this->x /= value;
-    this->y /= value;
-    return *this;
-  }
+template <>
+struct [[deprecated("Replaced by glm::vec4")]] Vec4<float> : public glm::vec4
+{
+  using glm::vec4::vec4;
 
-  /**
-   * @brief Division operator.
-   *
-   * Divides each component of the vector by the corresponding component
-   * of another vector.
-   *
-   * @param  other_vec The vector to divide by.
-   * @return           A new vector that is the result of the division.
-   */
-  Vec2 operator/(const Vec2 &other_vec) const
-  {
-    Vec2 out;
-    out.x = this->x / other_vec.x;
-    out.y = this->y / other_vec.y;
-    return out;
-  }
+  // expose glm names
+  using glm::vec4::w;
+  using glm::vec4::x;
+  using glm::vec4::y;
+  using glm::vec4::z;
 
-  /**
-   * @brief Multiplication operator.
-   *
-   * Multiplies each component of the vector by the corresponding
-   * component of another vector.
-   *
-   * @param  other_vec The vector to multiply by.
-   * @return           A new vector that is the result of the
-   *                   multiplication.
-   */
-  Vec2 operator*(const Vec2 &other_vec) const
-  {
-    Vec2 out;
-    out.x = this->x * other_vec.x;
-    out.y = this->y * other_vec.y;
-    return out;
-  }
+  // retro-compat aliases
+  float &a = x;
+  float &b = y;
+  float &c = z;
+  float &d = w;
 
-  /**
-   * @brief Addition operator.
-   *
-   * Adds each component of the vector to the corresponding component of
-   * another vector.
-   *
-   * @param  other_vec The vector to add.
-   * @return           A new vector that is the result of the addition.
-   */
-  Vec2 operator+(const Vec2 &other_vec) const
-  {
-    Vec2 out;
-    out.x = this->x + other_vec.x;
-    out.y = this->y + other_vec.y;
-    return out;
-  }
+  const float &a_const = x;
+  const float &b_const = y;
+  const float &c_const = z;
+  const float &d_const = w;
+};
 
-  /**
-   * @brief Subtraction operator.
-   *
-   * Subtracts each component of another vector from the corresponding
-   * component of this vector.
-   *
-   * @param  other_vec The vector to subtract.
-   * @return           A new vector that is the result of the subtraction.
-   */
-  Vec2 operator-(const Vec2 &other_vec) const
-  {
-    Vec2 out;
-    out.x = this->x - other_vec.x;
-    out.y = this->y - other_vec.y;
-    return out;
-  }
+template <>
+struct [[deprecated("Replaced by glm::ivec4")]] Vec4<int> : public glm::ivec4
+{
+  using glm::ivec4::ivec4;
 
-  /**
-   * @brief Scalar multiplication (Vec2 * scalar).
-   *
-   * Multiplies each component of the vector by a scalar value.
-   *
-   * @param  scalar The scalar value to multiply with.
-   * @return        Vec2 A new vector with each component multiplied by
-   *                the scalar.
-   */
-  Vec2 operator*(T scalar) const
-  {
-    return Vec2(x * scalar, y * scalar);
-  }
+  // expose glm names
+  using glm::ivec4::w;
+  using glm::ivec4::x;
+  using glm::ivec4::y;
+  using glm::ivec4::z;
 
-  bool operator<(const Vec2 &other) const noexcept
-  {
-    if (x != other.x) return x < other.x;
-    return y < other.y;
-  }
+  // retro-compat aliases
+  int &a = x;
+  int &b = y;
+  int &c = z;
+  int &d = w;
 
-  /**
-   * @brief Scalar multiplication (scalar * Vec2).
-   *
-   * Multiplies each component of the vector by a scalar value. This
-   * function allows expressions where the scalar is on the left side of
-   * the multiplication operator.
-   *
-   * @param  scalar The scalar value to multiply with.
-   * @param  vec    The vector to multiply.
-   * @return        Vec2 A new vector with each component multiplied by
-   *                the scalar.
-   */
-  friend Vec2 operator*(T scalar, const Vec2 &vec)
-  {
-    return Vec2(scalar * vec.x, scalar * vec.y);
-  }
+  const int &a_const = x;
+  const int &b_const = y;
+  const int &c_const = z;
+  const int &d_const = w;
+};
 
-  /**
-   * @brief Friend function to calculate the dot product of two vectors.
-   *
-   * The dot product is the sum of the products of the corresponding
-   * components of the vectors.
-   *
-   * @param  v1 The first vector.
-   * @param  v2 The second vector.
-   * @return    The dot product of the two vectors.
-   */
-  friend float dot(const Vec2 v1, const Vec2 v2)
-  {
-    return v1.x * v2.x + v1.y * v2.y;
-  }
+// --- For unordered_map
 
-  /**
-   * @brief Calculate the magnitude (length) of the vector.
-   *
-   * @return The magnitude of the vector.
-   */
-  T magnitude() const
+// for glm::ivec4 map
+struct IVec4Hash
+{
+  std::size_t operator()(const glm::ivec4 &v) const noexcept
   {
-    return std::sqrt(x * x + y * y);
-  }
-
-  /**
-   * @brief Normalize the vector to have a magnitude of 1.
-   *
-   * This method modifies the vector in place. If the vector has zero
-   * length, the components remain unchanged to avoid division by zero.
-   */
-  void normalize()
-  {
-    T mag = magnitude();
-    if (mag > 0) // Avoid division by zero
-    {
-      x /= mag;
-      y /= mag;
-    }
-  }
-
-  // glm adaptors
-  Vec2(const glm::vec2 &v) : x(static_cast<T>(v.x)), y(static_cast<T>(v.y))
-  {
-  }
-  Vec2(const glm::ivec2 &v) : x(static_cast<T>(v.x)), y(static_cast<T>(v.y))
-  {
-  }
-  operator glm::vec2() const
-  {
-    return glm::vec2(static_cast<float>(x), static_cast<float>(y));
-  }
-  operator glm::ivec2() const
-  {
-    return glm::ivec2(static_cast<int>(x), static_cast<int>(y));
+    std::size_t h = 0;
+    h ^= std::hash<int>{}(v.x) + 0x9e3779b9 + (h << 6) + (h >> 2);
+    h ^= std::hash<int>{}(v.y) + 0x9e3779b9 + (h << 6) + (h >> 2);
+    h ^= std::hash<int>{}(v.z) + 0x9e3779b9 + (h << 6) + (h >> 2);
+    h ^= std::hash<int>{}(v.w) + 0x9e3779b9 + (h << 6) + (h >> 2);
+    return h;
   }
 };
 
-/**
- * @brief Vec3 class for basic manipulation of 3D vectors.
- *
- * This class provides basic operations for 3D vectors, such as addition,
- * subtraction, multiplication, division, and dot product calculation. The class
- * supports various data types through templating.
- *
- * @tparam T Data type for the vector components (e.g., int, float, double).
- */
-template <typename T> struct Vec3
+struct IVec4Eq
 {
-  T x, y, z; /**< @brief The x, y, and z components of the vector. */
-
-  /**
-   * @brief Default constructor initializing the vector to (0, 0, 0).
-   *
-   * Initializes the x, y, and z components to zero.
-   */
-  Vec3() : x(0), y(0), z(0)
+  bool operator()(const glm::ivec4 &a, const glm::ivec4 &b) const noexcept
   {
-  }
-
-  /**
-   * @brief Parameterized constructor initializing the vector to given
-   * values.
-   *
-   * @param x The x component of the vector.
-   * @param y The y component of the vector.
-   * @param z The z component of the vector.
-   */
-  Vec3(T x, T y, T z) : x(x), y(y), z(z)
-  {
-  }
-
-  /**
-   * @brief Constructs a Vec3 object from a std::vector.
-   *
-   * This constructor takes a vector containing exactly three elements and
-   * assigns the first element to `x`, the second element to `y`, and the
-   * third to `z`.
-   *
-   * @tparam T The type of elements in the vector (e.g., float, int,
-   * double).
-   * @param vec A const reference to a vector of size 3, where the first
-   *            element corresponds to `x`, the second to `y`, and the
-   *            third to `z`.
-   *
-   * @throw std::invalid_argument If the vector does not contain exactly
-   * three elements.
-   */
-  Vec3(const std::vector<T> &vec) : x(0), y(0), z(0)
-  {
-    if (vec.size() != 3)
-    {
-      throw std::invalid_argument(
-          "Vector must contain exactly three elements.");
-    }
-    x = vec[0];
-    y = vec[1];
-    z = vec[2];
-  }
-
-  /**
-   * @brief Equality operator.
-   *
-   * Compares two vectors for equality.
-   *
-   * @param  other_vec The vector to compare with.
-   * @return           true if the vectors are equal, false otherwise.
-   */
-  bool operator==(const Vec3 &other_vec) const
-  {
-    return ((this->x == other_vec.x) && (this->y == other_vec.y) &&
-            (this->z == other_vec.z));
-  }
-
-  /**
-   * @brief Inequality operator.
-   *
-   * Compares two vectors for inequality.
-   *
-   * @param  other_vec The vector to compare with.
-   * @return           true if the vectors are not equal, false otherwise.
-   */
-  bool operator!=(const Vec3 &other_vec) const
-  {
-    return ((this->x != other_vec.x) || (this->y != other_vec.y) ||
-            (this->z != other_vec.z));
-  }
-
-  /**
-   * @brief Division-assignment operator.
-   *
-   * Divides all components of the vector by a scalar value and assigns
-   * the result.
-   *
-   * @param  value The scalar value to divide by.
-   * @return       A reference to the current vector after division.
-   */
-  Vec3 &operator/=(const T value)
-  {
-    this->x /= value;
-    this->y /= value;
-    this->z /= value;
-    return *this;
-  }
-
-  /**
-   * @brief Division operator.
-   *
-   * Divides each component of the vector by the corresponding component
-   * of another vector.
-   *
-   * @param  other_vec The vector to divide by.
-   * @return           A new vector that is the result of the division.
-   */
-  Vec3 operator/(const Vec3 &other_vec) const
-  {
-    Vec3 out;
-    out.x = this->x / other_vec.x;
-    out.y = this->y / other_vec.y;
-    out.z = this->z / other_vec.z;
-    return out;
-  }
-
-  /**
-   * @brief Multiplication operator.
-   *
-   * Multiplies each component of the vector by the corresponding
-   * component of another vector.
-   *
-   * @param  other_vec The vector to multiply by.
-   * @return           A new vector that is the result of the
-   *                   multiplication.
-   */
-  Vec3 operator*(const Vec3 &other_vec) const
-  {
-    Vec3 out;
-    out.x = this->x * other_vec.x;
-    out.y = this->y * other_vec.y;
-    out.z = this->z * other_vec.z;
-    return out;
-  }
-
-  /**
-   * @brief Addition operator.
-   *
-   * Adds each component of the vector to the corresponding component of
-   * another vector.
-   *
-   * @param  other_vec The vector to add.
-   * @return           A new vector that is the result of the addition.
-   */
-  Vec3 operator+(const Vec3 &other_vec) const
-  {
-    Vec3 out;
-    out.x = this->x + other_vec.x;
-    out.y = this->y + other_vec.y;
-    out.z = this->z + other_vec.z;
-    return out;
-  }
-
-  /**
-   * @brief Subtraction operator.
-   *
-   * Subtracts each component of another vector from the corresponding
-   * component of this vector.
-   *
-   * @param  other_vec The vector to subtract.
-   * @return           A new vector that is the result of the subtraction.
-   */
-  Vec3 operator-(const Vec3 &other_vec) const
-  {
-    Vec3 out;
-    out.x = this->x - other_vec.x;
-    out.y = this->y - other_vec.y;
-    out.z = this->z - other_vec.z;
-    return out;
-  }
-
-  /**
-   * @brief Scalar multiplication (Vec3 * scalar).
-   *
-   * Multiplies each component of the vector by a scalar value.
-   *
-   * @param  scalar The scalar value to multiply with.
-   * @return        Vec3 A new vector with each component multiplied by
-   *                the scalar.
-   */
-  Vec3 operator*(T scalar) const
-  {
-    return Vec3(x * scalar, y * scalar, z * scalar);
-  }
-
-  /**
-   * @brief Scalar multiplication (scalar * Vec3).
-   *
-   * Multiplies each component of the vector by a scalar value. This
-   * function allows expressions where the scalar is on the left side of
-   * the multiplication operator.
-   *
-   * @param  scalar The scalar value to multiply with.
-   * @param  vec    The vector to multiply.
-   * @return        Vec3 A new vector with each component multiplied by
-   *                the scalar.
-   */
-  friend Vec3 operator*(T scalar, const Vec3 &vec)
-  {
-    return Vec3(scalar * vec.x, scalar * vec.y, scalar * vec.z);
-  }
-
-  /**
-   * @brief Friend function to calculate the cross product of two vectors.
-   *
-   * The cross product results in a vector that is perpendicular to the
-   * plane formed by the two input vectors.
-   *
-   * @param  v1 The first vector.
-   * @param  v2 The second vector.
-   * @return    A new vector that is the result of the cross product.
-   */
-  friend Vec3 cross(const Vec3 v1, const Vec3 v2)
-  {
-    Vec3 out;
-    out.x = v1.y * v2.z - v1.z * v2.y;
-    out.y = v1.z * v2.x - v1.x * v2.z;
-    out.z = v1.x * v2.y - v1.y * v2.x;
-    return out;
-  }
-
-  /**
-   * @brief Friend function to calculate the dot product of two vectors.
-   *
-   * The dot product is the sum of the products of the corresponding
-   * components of the vectors.
-   *
-   * @param  v1 The first vector.
-   * @param  v2 The second vector.
-   * @return    The dot product of the two vectors.
-   */
-  friend float dot(const Vec3 v1, const Vec3 v2)
-  {
-    return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
-  }
-
-  /**
-   * @brief Calculate the magnitude (length) of the vector.
-   *
-   * @return The magnitude of the vector.
-   */
-  T magnitude() const
-  {
-    return std::sqrt(x * x + y * y + z * z);
-  }
-
-  /**
-   * @brief Normalize the vector to have a magnitude of 1.
-   *
-   * This method modifies the vector in place. If the vector has zero
-   * length, the components remain unchanged to avoid division by zero.
-   */
-  void normalize()
-  {
-    T mag = magnitude();
-    if (mag > 0) // Avoid division by zero
-    {
-      x /= mag;
-      y /= mag;
-      z /= mag;
-    }
-  }
-
-  /**
-   * @brief Calculate the sum of the vector components.
-   *
-   * @return The sum of the vector components.
-   */
-  T sum() const
-  {
-    return x + y + z;
+    return a == b;
   }
 };
 
-/**
- * @brief Vec4 class for basic manipulation of 4D vectors.
- *
- * This class provides basic operations for 4D vectors, such as addition,
- * subtraction, multiplication, division, and dot product calculation. The class
- * supports various data types through templating.
- *
- * @tparam T Data type for the vector components (e.g., int, float, double).
- */
-template <typename T> struct Vec4
+inline glm::vec4 adjust(const glm::vec4 &v,
+                        float            dx,
+                        float            dy,
+                        float            dz,
+                        float            dw)
 {
-  T a, b, c, d; /**< @brief The a, b, c, and d components of the vector.
-                 */
-
-  /**
-   * @brief Default constructor initializing the vector to (0, 0, 0, 0).
-   *
-   * Initializes the a, b, c, and d components to zero.
-   */
-  Vec4() : a(0), b(0), c(0), d(0)
-  {
-  }
-
-  /**
-   * @brief Parameterized constructor initializing the vector to given
-   * values.
-   *
-   * @param a The a component of the vector.
-   * @param b The b component of the vector.
-   * @param c The c component of the vector.
-   * @param d The d component of the vector.
-   */
-  Vec4(T a, T b, T c, T d) : a(a), b(b), c(c), d(d)
-  {
-  }
-
-  /**
-   * @brief Constructs a Vec4 object from a std::vector.
-   *
-   * This constructor takes a vector containing exactly four elements and
-   * assigns the first element to `a`, the second to `b`, the third to
-   * `c`, and the fourth to `d`.
-   *
-   * @tparam T The type of elements in the vector (e.g., float, int,
-   * double).
-   * @param vec A const reference to a vector of size 4, where the first
-   *            element corresponds to `a`, the second to `b`, the third
-   *            to `c`, and the fourth to
-   * `d`.
-   *
-   * @throw std::invalid_argument If the vector does not contain exactly
-   * four elements.
-   */
-  Vec4(const std::vector<T> &vec) : a(0), b(0), c(0), d(0)
-  {
-    if (vec.size() != 4)
-    {
-      throw std::invalid_argument("Vector must contain exactly four elements.");
-    }
-    a = vec[0];
-    b = vec[1];
-    c = vec[2];
-    d = vec[3];
-  }
-
-  /**
-   * @brief Equality operator.
-   *
-   * Compares two vectors for equality.
-   *
-   * @param  other_vec The vector to compare with.
-   * @return           true if the vectors are equal, false otherwise.
-   */
-  bool operator==(const Vec4 &other_vec) const
-  {
-    return ((this->a == other_vec.a) && (this->b == other_vec.b) &&
-            (this->c == other_vec.c) && (this->d == other_vec.d));
-  }
-
-  /**
-   * @brief Inequality operator.
-   *
-   * Compares two vectors for inequality.
-   *
-   * @param  other_vec The vector to compare with.
-   * @return           true if the vectors are not equal, false otherwise.
-   */
-  bool operator!=(const Vec4 &other_vec) const
-  {
-    return ((this->a != other_vec.a) || (this->b != other_vec.b) ||
-            (this->c != other_vec.c) || (this->d != other_vec.d));
-  }
-
-  /**
-   * @brief Division-assignment operator.
-   *
-   * Divides all components of the vector by a scalar value and assigns
-   * the result.
-   *
-   * @param  value The scalar value to divide by.
-   * @return       A reference to the current vector after division.
-   */
-  Vec4 &operator/=(const T value)
-  {
-    this->a /= value;
-    this->b /= value;
-    this->c /= value;
-    this->d /= value;
-    return *this;
-  }
-
-  /**
-   * @brief Division operator.
-   *
-   * Divides each component of the vector by the corresponding component
-   * of another vector.
-   *
-   * @param  other_vec The vector to divide by.
-   * @return           A new vector that is the result of the division.
-   */
-  Vec4 operator/(const Vec4 &other_vec) const
-  {
-    Vec4 out;
-    out.a = this->a / other_vec.a;
-    out.b = this->b / other_vec.b;
-    out.c = this->c / other_vec.c;
-    out.d = this->d / other_vec.d;
-    return out;
-  }
-
-  /**
-   * @brief Multiplication operator.
-   *
-   * Multiplies each component of the vector by the corresponding
-   * component of another vector.
-   *
-   * @param  other_vec The vector to multiply by.
-   * @return           A new vector that is the result of the
-   *                   multiplication.
-   */
-  Vec4 operator*(const Vec4 &other_vec) const
-  {
-    Vec4 out;
-    out.a = this->a * other_vec.a;
-    out.b = this->b * other_vec.b;
-    out.c = this->c * other_vec.c;
-    out.d = this->d * other_vec.d;
-    return out;
-  }
-
-  /**
-   * @brief Addition operator.
-   *
-   * Adds each component of the vector to the corresponding component of
-   * another vector.
-   *
-   * @param  other_vec The vector to add.
-   * @return           A new vector that is the result of the addition.
-   */
-  Vec4 operator+(const Vec4 &other_vec) const
-  {
-    Vec4 out;
-    out.a = this->a + other_vec.a;
-    out.b = this->b + other_vec.b;
-    out.c = this->c + other_vec.c;
-    out.d = this->d + other_vec.d;
-    return out;
-  }
-
-  /**
-   * @brief Subtraction operator.
-   *
-   * Subtracts each component of another vector from the corresponding
-   * component of this vector.
-   *
-   * @param  other_vec The vector to subtract.
-   * @return           A new vector that is the result of the subtraction.
-   */
-  Vec4 operator-(const Vec4 &other_vec) const
-  {
-    Vec4 out;
-    out.a = this->a - other_vec.a;
-    out.b = this->b - other_vec.b;
-    out.c = this->c - other_vec.c;
-    out.d = this->d - other_vec.d;
-    return out;
-  }
-
-  /**
-   * @brief Scalar multiplication (Vec4 * scalar).
-   *
-   * Multiplies each component of the vector by a scalar value.
-   *
-   * @param  scalar The scalar value to multiply with.
-   * @return        Vec4 A new vector with each component multiplied by
-   *                the scalar.
-   */
-  Vec4 operator*(T scalar) const
-  {
-    return Vec4(a * scalar, b * scalar, c * scalar, d * scalar);
-  }
-
-  bool operator<(const Vec4 &other) const noexcept
-  {
-    if (a != other.a) return a < other.a;
-    if (b != other.b) return b < other.b;
-    if (c != other.c) return c < other.c;
-    return d < other.d;
-  }
-
-  /**
-   * @brief Scalar multiplication (scalar * Vec4).
-   *
-   * Multiplies each component of the vector by a scalar value. This
-   * function allows expressions where the scalar is on the left side of
-   * the multiplication operator.
-   *
-   * @param  scalar The scalar value to multiply with.
-   * @param  vec    The vector to multiply.
-   * @return        Vec4 A new vector with each component multiplied by
-   *                the scalar.
-   */
-  friend Vec4 operator*(T scalar, const Vec4 &vec)
-  {
-    return Vec4(scalar * vec.a, scalar * vec.b, scalar * vec.c, scalar * vec.d);
-  }
-
-  /**
-   * @brief Adjusts the components of the vector by the given offsets.
-   *
-   * This method creates a new vector by adding the specified offsets to
-   * the respective components of the current vector.
-   *
-   * @tparam T The type of the vector components.
-   * @param  da The offset to add to the first component (`a`).
-   * @param  db The offset to add to the second component (`b`).
-   * @param  dc The offset to add to the third component (`c`).
-   * @param  dd The offset to add to the fourth component (`d`).
-   * @return    Vec4<T> A new vector with adjusted components.
-   */
-  Vec4<T> adjust(float da, float db, float dc, float dd)
-  {
-    return Vec4<T>(this->a + da, this->b + db, this->c + dc, this->d + dd);
-  }
-
-  /**
-   * @brief Friend function to calculate the dot product of two vectors.
-   *
-   * The dot product is the sum of the products of the corresponding
-   * components of the vectors.
-   *
-   * @param  v1 The first vector.
-   * @param  v2 The second vector.
-   * @return    The dot product of the two vectors.
-   */
-  friend float dot(const Vec4 v1, const Vec4 v2)
-  {
-    return v1.a * v2.a + v1.b * v2.b + v1.c * v2.c + v1.d * v2.d;
-  }
-
-  // glm adaptors
-  Vec4(const glm::vec4 &v)
-      : a(static_cast<T>(v.x)),
-        b(static_cast<T>(v.y)),
-        c(static_cast<T>(v.z)),
-        d(static_cast<T>(v.w))
-  {
-  }
-  Vec4(const glm::ivec4 &v)
-      : a(static_cast<T>(v.x)),
-        b(static_cast<T>(v.y)),
-        c(static_cast<T>(v.z)),
-        d(static_cast<T>(v.w))
-  {
-  }
-  operator glm::vec4() const
-  {
-    return glm::vec4(static_cast<float>(a),
-                     static_cast<float>(b),
-                     static_cast<float>(c),
-                     static_cast<float>(d));
-  }
-  operator glm::ivec4() const
-  {
-    return glm::ivec4(static_cast<int>(a),
-                      static_cast<int>(b),
-                      static_cast<int>(c),
-                      static_cast<int>(d));
-  }
-};
+  return glm::vec4{v.x + dx, v.y + dy, v.z + dz, v.w + dw};
+}
 
 /**
  * @brief Mat class for basic manipulation of 2D matrices.
@@ -880,7 +155,7 @@ template <typename T> struct Mat
 {
   std::vector<T> vector; /**< @brief 1D vector storing matrix elements in
                             row-major order. */
-  Vec2<int> shape;       /**< @brief Dimensions of the matrix (rows x columns).
+  glm::ivec2 shape;      /**< @brief Dimensions of the matrix (rows x columns).
                           */
 
   /**
@@ -890,10 +165,10 @@ template <typename T> struct Mat
    * shape. The matrix is initialized with the default value of the type
    * T.
    *
-   * @param shape A Vec2<int> representing the number of rows and columns
+   * @param shape A glm::ivec2 representing the number of rows and columns
    *              in the matrix.
    */
-  Mat(Vec2<int> shape) : shape(shape)
+  Mat(glm::ivec2 shape) : shape(shape)
   {
     this->vector.resize(shape.x * shape.y);
   }
@@ -905,11 +180,11 @@ template <typename T> struct Mat
    * Allocates memory for the matrix elements and initializes all elements
    * with the provided value.
    *
-   * @param shape A Vec2<int> representing the number of rows and columns
+   * @param shape A glm::ivec2 representing the number of rows and columns
    *              in the matrix.
    * @param value Initial value assigned to all matrix elements.
    */
-  Mat(Vec2<int> shape, T value) : shape(shape)
+  Mat(glm::ivec2 shape, T value) : shape(shape)
   {
     this->vector.resize(shape.x * shape.y);
     std::fill(this->vector.begin(), this->vector.end(), value);
@@ -946,34 +221,15 @@ template <typename T> struct Mat
     return this->vector[j * this->shape.x + i];
   }
 
-  T &operator()(Vec2<int> ij)
+  T &operator()(glm::ivec2 ij)
   {
     return this->vector[ij.y * this->shape.x + ij.x];
   }
 
-  const T &operator()(Vec2<int> ij) const
+  const T &operator()(glm::ivec2 ij) const
   {
     return this->vector[ij.y * this->shape.x + ij.x];
   }
 };
-
-/**
- * @brief Constructs a normalized 3D vector.
- *
- * This function takes three components of a vector (x, y, z), creates a Vec3<T>
- * object, normalizes it, and returns the normalized vector.
- *
- * @tparam T The data type of the vector components (e.g., float, double, etc.).
- * @param  x The x-component of the vector.
- * @param  y The y-component of the vector.
- * @param  z The z-component of the vector.
- * @return   Vec3<T> A normalized 3D vector of type T.
- */
-template <typename T> Vec3<T> normalized_vec3(T x, T y, T z)
-{
-  Vec3<T> v = Vec3<T>(x, y, z);
-  v.normalize();
-  return v;
-}
 
 } // namespace hmap

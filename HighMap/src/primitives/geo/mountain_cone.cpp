@@ -10,7 +10,7 @@
 namespace hmap::gpu
 {
 
-Array mountain_cone(Vec2<int>    shape,
+Array mountain_cone(glm::ivec2   shape,
                     uint         seed,
                     float        scale,
                     int          octaves,
@@ -22,14 +22,14 @@ Array mountain_cone(Vec2<int>    shape,
                     float        cone_alpha,
                     float        ridge_amp,
                     float        base_noise_amp,
-                    Vec2<float>  center,
+                    glm::vec2    center,
                     const Array *p_noise_x,
                     const Array *p_noise_y,
-                    Vec4<float>  bbox)
+                    glm::vec4    bbox)
 {
   // apply global scaling to reference values
-  const float       radius = 0.5f * scale;
-  const Vec2<float> kw = Vec2<float>(peak_kw / scale, peak_kw / scale);
+  const float     radius = 0.5f * scale;
+  const glm::vec2 kw = glm::vec2(peak_kw / scale, peak_kw / scale);
 
   const float persistence = 0.5f;
   const float lacunarity = 2.f;
@@ -65,7 +65,7 @@ Array mountain_cone(Vec2<int>    shape,
   cone = smoothstep3_lower(cone);
 
   // base primitives
-  Vec2<float>       jitter(1.f, 1.f);
+  glm::vec2         jitter(1.f, 1.f);
   VoronoiReturnType return_type = VoronoiReturnType::EDGE_DISTANCE_SQUARED;
 
   // roughly in [0, 1]

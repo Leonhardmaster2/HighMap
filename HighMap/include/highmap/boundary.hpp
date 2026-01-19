@@ -101,7 +101,7 @@ void falloff(Array           &array,
              float            strength = 1.f,
              DistanceFunction dist_fct = DistanceFunction::EUCLIDIAN,
              const Array     *p_noise = nullptr,
-             Vec4<float>      bbox = {0.f, 1.f, 0.f, 1.f});
+             glm::vec4        bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief Fills the border values of an array (e.g., `i = 0`, `j = 0`, etc.)
@@ -140,7 +140,7 @@ void fill_borders(Array &array, int nbuffer); ///< @overload
  * @return              Array A new array with buffers added at the boundaries.
  */
 Array generate_buffered_array(const Array &array,
-                              Vec4<int>    buffers,
+                              glm::ivec4   buffers,
                               bool         zero_padding = false);
 
 /**
@@ -218,7 +218,9 @@ Array make_periodic_stitching(const Array &array, float overlap);
  * **Result**
  * @image html make_periodic_tiling.png
  */
-Array make_periodic_tiling(const Array &array, float overlap, Vec2<int> tiling);
+Array make_periodic_tiling(const Array &array,
+                           float        overlap,
+                           glm::ivec2   tiling);
 
 /**
  * @brief Enforces specific values at the boundaries of the array.
@@ -241,9 +243,9 @@ Array make_periodic_tiling(const Array &array, float overlap, Vec2<int> tiling);
  * **Result**
  * @image html ex_set_borders.png
  */
-void set_borders(Array      &array,
-                 Vec4<float> border_values,
-                 Vec4<int>   buffer_sizes);
+void set_borders(Array     &array,
+                 glm::vec4  border_values,
+                 glm::ivec4 buffer_sizes);
 
 /**
  * @brief Enforces a uniform value at all boundaries of the array.
@@ -273,7 +275,7 @@ void set_borders(Array &array, float border_values, int buffer_sizes);
  * @param buffer_sizes A vector specifying the buffer sizes at the east, west,
  *                     south, and north borders.
  */
-void sym_borders(Array &array, Vec4<int> buffer_sizes);
+void sym_borders(Array &array, glm::ivec4 buffer_sizes);
 
 /**
  * @brief Fills the border values (e.g., `i = 0`, `j = 0`, etc.) of the array
@@ -319,6 +321,6 @@ void zeroed_edges(Array           &array,
                   float            sigma = 1.f,
                   DistanceFunction dist_fct = DistanceFunction::EUCLIDIAN,
                   const Array     *p_noise = nullptr,
-                  Vec4<float>      bbox = {0.f, 1.f, 0.f, 1.f});
+                  glm::vec4        bbox = {0.f, 1.f, 0.f, 1.f});
 
 } // namespace hmap

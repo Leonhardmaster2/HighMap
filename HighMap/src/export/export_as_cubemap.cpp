@@ -19,21 +19,21 @@ namespace hmap
 // Helpers
 //----------------------------------------------------------------------
 
-void helper_smooth_corners(Array    &cubemap,
-                           int       noverlap,
-                           int       ir,
-                           Vec4<int> idx_front,
-                           Vec4<int> idx_back)
+void helper_smooth_corners(Array     &cubemap,
+                           int        noverlap,
+                           int        ir,
+                           glm::ivec4 idx_front,
+                           glm::ivec4 idx_back)
 {
   Array mask(cubemap.shape);
 
   // horizontal
   for (int r = -noverlap + 1; r < noverlap; r++)
   {
-    mask(idx_front.a + r, idx_front.c) = 1.f;
-    mask(idx_front.a + r, idx_front.d) = 1.f;
-    mask(idx_front.b + r, idx_front.c) = 1.f;
-    mask(idx_front.b + r, idx_front.d) = 1.f;
+    mask(idx_front.x + r, idx_front.z) = 1.f;
+    mask(idx_front.x + r, idx_front.w) = 1.f;
+    mask(idx_front.y + r, idx_front.z) = 1.f;
+    mask(idx_front.y + r, idx_front.w) = 1.f;
   }
 
   smooth_cpulse(mask, 2 * ir);
@@ -44,13 +44,13 @@ void helper_smooth_corners(Array    &cubemap,
   mask = 0.f;
   for (int r = -noverlap + 1; r < noverlap; r++)
   {
-    mask(idx_front.a, idx_front.c + r) = 1.f;
-    mask(idx_front.b, idx_front.c + r) = 1.f;
-    mask(idx_front.a, idx_front.d + r) = 1.f;
-    mask(idx_front.b, idx_front.d + r) = 1.f;
+    mask(idx_front.x, idx_front.z + r) = 1.f;
+    mask(idx_front.y, idx_front.z + r) = 1.f;
+    mask(idx_front.x, idx_front.w + r) = 1.f;
+    mask(idx_front.y, idx_front.w + r) = 1.f;
 
-    mask(idx_back.a, idx_back.c + r) = 1.f;
-    mask(idx_back.a, idx_back.d + r) = 1.f;
+    mask(idx_back.x, idx_back.z + r) = 1.f;
+    mask(idx_back.x, idx_back.w + r) = 1.f;
   }
 
   smooth_cpulse(mask, 2 * ir);
@@ -184,7 +184,7 @@ void export_as_cubemap(const std::string &fname,
 
   // shape of individual texture of the cubemap (work with square
   // arrays to simplify and fasten things...)
-  Vec2<int> cm_shape(cubemap_resolution, cubemap_resolution);
+  glm::ivec2 cm_shape(cubemap_resolution, cubemap_resolution);
 
   int noverlap = static_cast<int>(overlap * cubemap_resolution);
 
@@ -196,8 +196,8 @@ void export_as_cubemap(const std::string &fname,
   // shape. In this array must fit 4 arrays + their buffers in the
   // width and 4 array + their buffers in the height
 
-  Vec2<int> work_shape(4 * cm_shape.x + 2 * noverlap,
-                       3 * cm_shape.y + 2 * noverlap);
+  glm::ivec2 work_shape(4 * cm_shape.x + 2 * noverlap,
+                        3 * cm_shape.y + 2 * noverlap);
 
   Array zfull = z.resample_to_shape_bicubic(work_shape);
 
@@ -230,26 +230,26 @@ void export_as_cubemap(const std::string &fname,
   int i_top = i_front;
   int j_top = noverlap + 2 * cm_shape.y;
 
-  Vec4<int> idx_left(i_left, i_left + cm_shape.x, j_left, j_left + cm_shape.y);
+  glm::ivec4 idx_left(i_left, i_left + cm_shape.x, j_left, j_left + cm_shape.y);
 
-  Vec4<int> idx_right(i_right,
-                      i_right + cm_shape.x,
-                      j_right,
-                      j_right + cm_shape.y);
+  glm::ivec4 idx_right(i_right,
+                       i_right + cm_shape.x,
+                       j_right,
+                       j_right + cm_shape.y);
 
-  Vec4<int> idx_top(i_top, i_top + cm_shape.x, j_top, j_top + cm_shape.y);
+  glm::ivec4 idx_top(i_top, i_top + cm_shape.x, j_top, j_top + cm_shape.y);
 
-  Vec4<int> idx_bottom(i_bottom,
-                       i_bottom + cm_shape.x,
-                       j_bottom,
-                       j_bottom + cm_shape.y);
+  glm::ivec4 idx_bottom(i_bottom,
+                        i_bottom + cm_shape.x,
+                        j_bottom,
+                        j_bottom + cm_shape.y);
 
-  Vec4<int> idx_front(i_front,
-                      i_front + cm_shape.x,
-                      j_front,
-                      j_front + cm_shape.y);
+  glm::ivec4 idx_front(i_front,
+                       i_front + cm_shape.x,
+                       j_front,
+                       j_front + cm_shape.y);
 
-  Vec4<int> idx_back(i_back, i_back + cm_shape.x, j_back, j_back + cm_shape.y);
+  glm::ivec4 idx_back(i_back, i_back + cm_shape.x, j_back, j_back + cm_shape.y);
 
   // --- enforce continuity
 
@@ -271,18 +271,18 @@ void export_as_cubemap(const std::string &fname,
     for (int k = 0; k < cubemap_resolution; k++)
       for (int r = 0; r < noverlap; r++)
       {
-        zfull(idx_left.a + r,
-              idx_left.c + k) = (0.5f + t[r]) *
-                                    zfull_bckp(idx_left.a + r, idx_left.c + k) +
+        zfull(idx_left.x + r,
+              idx_left.z + k) = (0.5f + t[r]) *
+                                    zfull_bckp(idx_left.x + r, idx_left.z + k) +
                                 (0.5f - t[r]) *
-                                    zfull_bckp(idx_back.b + r, idx_back.c + k);
+                                    zfull_bckp(idx_back.y + r, idx_back.z + k);
 
-        zfull(idx_back.a + cm_shape.x - r,
-              idx_left.c + k) = (0.5f + t[r]) *
-                                    zfull(idx_back.a + cm_shape.x - r,
-                                          idx_left.c + k) +
+        zfull(idx_back.x + cm_shape.x - r,
+              idx_left.z + k) = (0.5f + t[r]) *
+                                    zfull(idx_back.x + cm_shape.x - r,
+                                          idx_left.z + k) +
                                 (0.5f - t[r]) *
-                                    zfull_bckp(idx_left.a - r, idx_left.c + k);
+                                    zfull_bckp(idx_left.x - r, idx_left.z + k);
       }
     zfull_bckp = zfull;
 
@@ -290,17 +290,17 @@ void export_as_cubemap(const std::string &fname,
     for (int k = 0; k < cubemap_resolution; k++)
       for (int r = 0; r < noverlap; r++)
       {
-        zfull(idx_bottom.a + k,
-              idx_bottom.c + r) = (0.5f + t[r]) * zfull_bckp(idx_bottom.a + k,
-                                                             idx_bottom.c + r) +
-                                  (0.5f - t[r]) * zfull_bckp(idx_back.b - k,
-                                                             idx_back.c - r);
+        zfull(idx_bottom.x + k,
+              idx_bottom.z + r) = (0.5f + t[r]) * zfull_bckp(idx_bottom.x + k,
+                                                             idx_bottom.z + r) +
+                                  (0.5f - t[r]) * zfull_bckp(idx_back.y - k,
+                                                             idx_back.z - r);
 
-        zfull(idx_back.a + k,
-              idx_back.c + r) = (0.5f + t[r]) *
-                                    zfull_bckp(idx_back.a + k, idx_back.c + r) +
-                                (0.5f - t[r]) * zfull_bckp(idx_bottom.b - k,
-                                                           idx_bottom.c - r);
+        zfull(idx_back.x + k,
+              idx_back.z + r) = (0.5f + t[r]) *
+                                    zfull_bckp(idx_back.x + k, idx_back.z + r) +
+                                (0.5f - t[r]) * zfull_bckp(idx_bottom.y - k,
+                                                           idx_bottom.z - r);
       }
     zfull_bckp = zfull;
 
@@ -308,20 +308,20 @@ void export_as_cubemap(const std::string &fname,
     for (int k = 0; k < cubemap_resolution; k++)
       for (int r = 0; r < noverlap; r++)
       {
-        zfull(idx_top.a + k,
-              idx_top.d - r) = (0.5f + t[r]) *
-                                   zfull_bckp(idx_top.a + k, idx_top.d - r) +
+        zfull(idx_top.x + k,
+              idx_top.w - r) = (0.5f + t[r]) *
+                                   zfull_bckp(idx_top.x + k, idx_top.w - r) +
                                (0.5f - t[r]) *
-                                   zfull_bckp(idx_back.b - k, idx_back.d + r);
+                                   zfull_bckp(idx_back.y - k, idx_back.w + r);
 
-        // zfull(idx_top.a + k,
-        //       idx_top.d - r) =zfull_bckp(idx_back.b - k, idx_back.d + r);
+        // zfull(idx_top.x + k,
+        //       idx_top.w - r) =zfull_bckp(idx_back.y - k, idx_back.w + r);
 
-        zfull(idx_back.a + k,
-              idx_back.d - r) = (0.5f + t[r]) *
-                                    zfull_bckp(idx_back.a + k, idx_back.d - r) +
+        zfull(idx_back.x + k,
+              idx_back.w - r) = (0.5f + t[r]) *
+                                    zfull_bckp(idx_back.x + k, idx_back.w - r) +
                                 (0.5f - t[r]) *
-                                    zfull_bckp(idx_top.b - k, idx_top.d + r);
+                                    zfull_bckp(idx_top.y - k, idx_top.w + r);
       }
     zfull_bckp = zfull;
 
@@ -329,56 +329,56 @@ void export_as_cubemap(const std::string &fname,
       for (int r = 0; r < noverlap; r++)
       {
         // left/top
-        zfull(idx_left.a + k,
-              idx_left.d - r) = (0.5f + t[r]) *
-                                    zfull_bckp(idx_left.a + k, idx_left.d - r) +
+        zfull(idx_left.x + k,
+              idx_left.w - r) = (0.5f + t[r]) *
+                                    zfull_bckp(idx_left.x + k, idx_left.w - r) +
                                 (0.5f - t[r]) *
-                                    zfull_bckp(idx_top.a - r, idx_top.d - k);
+                                    zfull_bckp(idx_top.x - r, idx_top.w - k);
 
-        zfull(idx_top.a + r,
-              idx_top.c + k) = (0.5f + t[r]) *
-                                   zfull_bckp(idx_top.a + r, idx_top.c + k) +
+        zfull(idx_top.x + r,
+              idx_top.z + k) = (0.5f + t[r]) *
+                                   zfull_bckp(idx_top.x + r, idx_top.z + k) +
                                (0.5f - t[r]) *
-                                   zfull_bckp(idx_left.b - k, idx_left.d + r);
+                                   zfull_bckp(idx_left.y - k, idx_left.w + r);
 
         // left/bottom
-        zfull(idx_left.a + k,
-              idx_left.c + r) = (0.5f + t[r]) *
-                                    zfull_bckp(idx_left.a + k, idx_left.c + r) +
-                                (0.5f - t[r]) * zfull_bckp(idx_bottom.a - r,
-                                                           idx_bottom.c + k);
+        zfull(idx_left.x + k,
+              idx_left.z + r) = (0.5f + t[r]) *
+                                    zfull_bckp(idx_left.x + k, idx_left.z + r) +
+                                (0.5f - t[r]) * zfull_bckp(idx_bottom.x - r,
+                                                           idx_bottom.z + k);
 
-        zfull(idx_bottom.a + r,
-              idx_bottom.c + k) = (0.5f + t[r]) * zfull_bckp(idx_bottom.a + r,
-                                                             idx_bottom.c + k) +
-                                  (0.5f - t[r]) * zfull_bckp(idx_left.a + k,
-                                                             idx_left.c - r);
+        zfull(idx_bottom.x + r,
+              idx_bottom.z + k) = (0.5f + t[r]) * zfull_bckp(idx_bottom.x + r,
+                                                             idx_bottom.z + k) +
+                                  (0.5f - t[r]) * zfull_bckp(idx_left.x + k,
+                                                             idx_left.z - r);
 
         // top/right
-        zfull(idx_right.a + k,
-              idx_right.d - r) = (0.5f + t[r]) * zfull_bckp(idx_right.a + k,
-                                                            idx_right.d - r) +
+        zfull(idx_right.x + k,
+              idx_right.w - r) = (0.5f + t[r]) * zfull_bckp(idx_right.x + k,
+                                                            idx_right.w - r) +
                                  (0.5f - t[r]) *
-                                     zfull_bckp(idx_top.b + r, idx_top.c + k);
+                                     zfull_bckp(idx_top.y + r, idx_top.z + k);
 
-        zfull(idx_top.b - r,
-              idx_top.c + k) = (0.5f + t[r]) *
-                                   zfull_bckp(idx_top.b - r, idx_top.c + k) +
+        zfull(idx_top.y - r,
+              idx_top.z + k) = (0.5f + t[r]) *
+                                   zfull_bckp(idx_top.y - r, idx_top.z + k) +
                                (0.5f - t[r]) *
-                                   zfull_bckp(idx_right.a + k, idx_right.d + r);
+                                   zfull_bckp(idx_right.x + k, idx_right.w + r);
 
         // right/bottom
-        zfull(idx_right.a + k,
-              idx_right.c + r) = (0.5f + t[r]) * zfull_bckp(idx_right.a + k,
-                                                            idx_right.c + r) +
-                                 (0.5f - t[r]) * zfull_bckp(idx_bottom.b + r,
-                                                            idx_bottom.d - k);
+        zfull(idx_right.x + k,
+              idx_right.z + r) = (0.5f + t[r]) * zfull_bckp(idx_right.x + k,
+                                                            idx_right.z + r) +
+                                 (0.5f - t[r]) * zfull_bckp(idx_bottom.y + r,
+                                                            idx_bottom.w - k);
 
-        zfull(idx_bottom.b - r,
-              idx_bottom.c + k) = (0.5f + t[r]) * zfull_bckp(idx_bottom.b - r,
-                                                             idx_bottom.c + k) +
-                                  (0.5f - t[r]) * zfull_bckp(idx_right.b - k,
-                                                             idx_right.c - r);
+        zfull(idx_bottom.y - r,
+              idx_bottom.z + k) = (0.5f + t[r]) * zfull_bckp(idx_bottom.y - r,
+                                                             idx_bottom.z + k) +
+                                  (0.5f - t[r]) * zfull_bckp(idx_right.y - k,
+                                                             idx_right.z - r);
       }
   }
 
@@ -387,19 +387,19 @@ void export_as_cubemap(const std::string &fname,
   LOG_DEBUG("triple corners: 1 to 4");
 
   helper_smooth_triple_corner(zfull,
-                              idx_front.a - 1,
-                              idx_front.c,
+                              idx_front.x - 1,
+                              idx_front.z,
                               noverlap,
                               ir,
                               0);
-  helper_smooth_triple_corner(zfull, idx_front.b, idx_front.c, noverlap, ir, 1);
+  helper_smooth_triple_corner(zfull, idx_front.y, idx_front.z, noverlap, ir, 1);
   helper_smooth_triple_corner(zfull,
-                              idx_front.a - 1,
-                              idx_front.d,
+                              idx_front.x - 1,
+                              idx_front.w,
                               noverlap,
                               ir,
                               2);
-  helper_smooth_triple_corner(zfull, idx_front.b, idx_front.d, noverlap, ir, 3);
+  helper_smooth_triple_corner(zfull, idx_front.y, idx_front.w, noverlap, ir, 3);
 
   // zfull.to_png("cubemap3.png", Cmap::TERRAIN, false);
 
@@ -431,26 +431,26 @@ void export_as_cubemap(const std::string &fname,
   zfull_bckp.set_slice(idx_bottom, z_bottom);
 
   helper_smooth_triple_corner(zfull_bckp,
-                              idx_front.a - 1,
-                              idx_front.c,
+                              idx_front.x - 1,
+                              idx_front.z,
                               noverlap,
                               ir,
                               0);
   helper_smooth_triple_corner(zfull_bckp,
-                              idx_front.b,
-                              idx_front.c,
+                              idx_front.y,
+                              idx_front.z,
                               noverlap,
                               ir,
                               1);
   helper_smooth_triple_corner(zfull_bckp,
-                              idx_front.a - 1,
-                              idx_front.d,
+                              idx_front.x - 1,
+                              idx_front.w,
                               noverlap,
                               ir,
                               2);
   helper_smooth_triple_corner(zfull_bckp,
-                              idx_front.b,
-                              idx_front.d,
+                              idx_front.y,
+                              idx_front.w,
                               noverlap,
                               ir,
                               3);
@@ -503,10 +503,10 @@ void export_as_cubemap(const std::string &fname,
   else
   {
     // remove buffers
-    zfull = zfull.extract_slice(Vec4<int>(noverlap,
-                                          zfull.shape.x - noverlap,
-                                          noverlap,
-                                          zfull.shape.y - noverlap));
+    zfull = zfull.extract_slice(glm::ivec4(noverlap,
+                                           zfull.shape.x - noverlap,
+                                           noverlap,
+                                           zfull.shape.y - noverlap));
     zfull.to_png(fname, cmap, false);
   }
 }

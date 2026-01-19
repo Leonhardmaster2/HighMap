@@ -1464,26 +1464,26 @@ void hydraulic_stream_log(Array &z,
  * **Result**
  * @image html ex_rifts.png
  */
-void rifts(Array             &z,
-           const Vec2<float> &kw,    //  = {4.f, 1.2f},
-           float              angle, // degs
-           float              amplitude,
-           uint               seed,
-           float              elevation_noise_shift = 0.f,
-           float              k_smooth_bottom = 0.05f,
-           float              k_smooth_top = 0.05f,
-           float              radial_spread_amp = 0.2f,
-           float              elevation_noise_amp = 0.1f,
-           float              clamp_vmin = 0.f,
-           float              remap_vmin = 0.f,
-           bool               apply_mask = true,
-           bool               reverse_mask = false,
-           float              mask_gamma = 1.f,
-           const Array       *p_noise_x = nullptr,
-           const Array       *p_noise_y = nullptr,
-           const Array       *p_mask = nullptr,
-           const Vec2<float> &center = {0.5f, 0.5f},
-           const Vec4<float> &bbox = {0.f, 1.f, 0.f, 1.f});
+void rifts(Array           &z,
+           const glm::vec2 &kw,    //  = {4.f, 1.2f},
+           float            angle, // degs
+           float            amplitude,
+           uint             seed,
+           float            elevation_noise_shift = 0.f,
+           float            k_smooth_bottom = 0.05f,
+           float            k_smooth_top = 0.05f,
+           float            radial_spread_amp = 0.2f,
+           float            elevation_noise_amp = 0.1f,
+           float            clamp_vmin = 0.f,
+           float            remap_vmin = 0.f,
+           bool             apply_mask = true,
+           bool             reverse_mask = false,
+           float            mask_gamma = 1.f,
+           const Array     *p_noise_x = nullptr,
+           const Array     *p_noise_y = nullptr,
+           const Array     *p_mask = nullptr,
+           const glm::vec2 &center = {0.5f, 0.5f},
+           const glm::vec4 &bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief Applies stratification to a heightfield using directional noise and
@@ -1542,28 +1542,28 @@ void rifts(Array             &z,
  * **Result**
  * @image html ex_strata.png
  */
-void strata(Array             &z,
-            float              angle,
-            float              slope,
-            float              gamma, // e.g 0.5f or 1.5f
-            uint               seed,
-            bool               linear_gamma = true,
-            float              kz = 1.f,
-            int                octaves = 4,
-            float              lacunarity = 2.f,
-            float              gamma_noise_ratio = 0.5f,
-            float              noise_amp = 0.4f,
-            const Vec2<float> &noise_kw = {4.f, 4.f},
-            const Vec2<float> &ridge_noise_kw = {4.f, 1.2f},
-            float              ridge_angle_shift = 45.f,
-            float              ridge_noise_amp = 0.5f,
-            float              ridge_clamp_vmin = 0.f,
-            float              ridge_remap_vmin = 0.f,
-            bool               apply_elevation_mask = true,
-            bool               apply_ridge_mask = true,
-            float              mask_gamma = 0.4f,
-            const Array       *p_mask = nullptr,
-            const Vec4<float> &bbox = {0.f, 1.f, 0.f, 1.f});
+void strata(Array           &z,
+            float            angle,
+            float            slope,
+            float            gamma, // e.g 0.5f or 1.5f
+            uint             seed,
+            bool             linear_gamma = true,
+            float            kz = 1.f,
+            int              octaves = 4,
+            float            lacunarity = 2.f,
+            float            gamma_noise_ratio = 0.5f,
+            float            noise_amp = 0.4f,
+            const glm::vec2 &noise_kw = {4.f, 4.f},
+            const glm::vec2 &ridge_noise_kw = {4.f, 1.2f},
+            float            ridge_angle_shift = 45.f,
+            float            ridge_noise_amp = 0.5f,
+            float            ridge_clamp_vmin = 0.f,
+            float            ridge_remap_vmin = 0.f,
+            bool             apply_elevation_mask = true,
+            bool             apply_ridge_mask = true,
+            float            mask_gamma = 0.4f,
+            const Array     *p_mask = nullptr,
+            const glm::vec4 &bbox = {0.f, 1.f, 0.f, 1.f});
 
 /*! @brief See hmap::thermal */
 void thermal(Array       &z,

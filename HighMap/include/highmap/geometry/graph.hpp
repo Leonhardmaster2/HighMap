@@ -298,9 +298,7 @@ public:
    * @param color_by_edge_weight If `true`, colors the array based on edge
    *                             weights; otherwise, colors by node values.
    */
-  void to_array(Array      &array,
-                Vec4<float> bbox,
-                bool        color_by_edge_weight = true);
+  void to_array(Array &array, glm::vec4 bbox, bool color_by_edge_weight = true);
 
   /**
    * @brief Apply fractalization to graph edges and project to an array.
@@ -322,13 +320,13 @@ public:
    * @param persistence Noise persistence factor with respect to iteration
    * number.
    */
-  void to_array_fractalize(Array      &array,
-                           Vec4<float> bbox,
-                           int         iterations,
-                           uint        seed,
-                           float       sigma = 0.3f,
-                           int         orientation = 0.f,
-                           float       persistence = 1.f);
+  void to_array_fractalize(Array    &array,
+                           glm::vec4 bbox,
+                           int       iterations,
+                           uint      seed,
+                           float     sigma = 0.3f,
+                           int       orientation = 0.f,
+                           float     persistence = 1.f);
 
   /**
    * @brief Generate an array filled with the Signed Distance Function (SDF) to
@@ -354,11 +352,11 @@ public:
    * @include ex_cloud_sdf.cpp Result**
    * @image html ex_cloud_sdf.png
    */
-  Array to_array_sdf(Vec2<int>   shape,
-                     Vec4<float> bbox,
-                     Array      *p_noise_x = nullptr,
-                     Array      *p_noise_y = nullptr,
-                     Vec4<float> bbox_array = {0.f, 1.f, 0.f, 1.f});
+  Array to_array_sdf(glm::ivec2 shape,
+                     glm::vec4  bbox,
+                     Array     *p_noise_x = nullptr,
+                     Array     *p_noise_y = nullptr,
+                     glm::vec4  bbox_array = {0.f, 1.f, 0.f, 1.f});
 
   /**
    * @brief Export graph data to CSV files.
@@ -385,7 +383,7 @@ public:
    * @param fname The file name for the PNG image.
    * @param shape The resolution of the image in pixels (width, height).
    */
-  void to_png(std::string fname, Vec2<int> shape = {512, 512});
+  void to_png(std::string fname, glm::ivec2 shape = {512, 512});
 
   /**
    * @brief Update the adjacency matrix of the graph.

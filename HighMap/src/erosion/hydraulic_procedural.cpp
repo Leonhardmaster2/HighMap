@@ -162,7 +162,7 @@ void hydraulic_procedural(Array         &z,
                           float          vmin,
                           float          vmax)
 {
-  Vec2<int> shape = z.shape;
+  glm::ivec2 shape = z.shape;
 
   // --- setup input parameters
 
@@ -231,7 +231,7 @@ void hydraulic_procedural(Array         &z,
 
   if (noise_ratio > 0.f)
   {
-    Vec2<float> kw_noise = {4.f / ridge_wavelength, 4.f / ridge_wavelength};
+    glm::vec2 kw_noise = {4.f / ridge_wavelength, 4.f / ridge_wavelength};
     noise = noise_fbm(hmap::NoiseType::PERLIN, shape, kw_noise, ++seed);
     remap(noise, 0.f, noise_ratio);
   }

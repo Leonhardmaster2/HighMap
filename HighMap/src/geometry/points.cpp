@@ -10,11 +10,11 @@
 namespace hmap
 {
 
-void Point::set_value_from_array(const Array &array, Vec4<float> bbox)
+void Point::set_value_from_array(const Array &array, glm::vec4 bbox)
 {
   // scale to unit interval
-  float xn = (this->x - bbox.a) / (bbox.b - bbox.a);
-  float yn = (this->y - bbox.c) / (bbox.d - bbox.c);
+  float xn = (this->x - bbox.x) / (bbox.y - bbox.x);
+  float yn = (this->y - bbox.z) / (bbox.w - bbox.z);
 
   // scale to array shape
   xn *= (float)(array.shape.x - 1);
@@ -153,33 +153,33 @@ Point interp_decasteljau(const std::vector<Point> &points, float t)
   return interp_decasteljau(new_points, t);
 }
 
-Vec4<float> intersect_bounding_boxes(const Vec4<float> &bbox1,
-                                     const Vec4<float> &bbox2)
+glm::vec4 intersect_bounding_boxes(const glm::vec4 &bbox1,
+                                   const glm::vec4 &bbox2)
 {
   // Calculate the boundaries of the intersection
-  float min_x = std::max(bbox1.a, bbox2.a);
-  float max_x = std::min(bbox1.b, bbox2.b);
-  float min_y = std::max(bbox1.c, bbox2.c);
-  float max_y = std::min(bbox1.d, bbox2.d);
+  float min_x = std::max(bbox1.x, bbox2.x);
+  float max_x = std::min(bbox1.y, bbox2.y);
+  float min_y = std::max(bbox1.z, bbox2.z);
+  float max_y = std::min(bbox1.w, bbox2.w);
 
   // Check if there is an overlap
   if (min_x <= max_x && min_y <= max_y)
   {
-    return Vec4<float>{min_x, max_x, min_y, max_y};
+    return glm::vec4{min_x, max_x, min_y, max_y};
   }
 
   // else return an "impossible" bounding box with xmin > xmax and ymin > ymax
-  return Vec4<float>(1.f, -1.f, 1.f, -1.f);
+  return glm::vec4(1.f, -1.f, 1.f, -1.f);
 }
 
-bool is_point_within_bounding_box(Point p, Vec4<float> bbox)
+bool is_point_within_bounding_box(Point p, glm::vec4 bbox)
 {
-  return p.x >= bbox.a && p.x <= bbox.b && p.y >= bbox.c && p.y <= bbox.d;
+  return p.x >= bbox.x && p.x <= bbox.y && p.y >= bbox.z && p.y <= bbox.w;
 }
 
-bool is_point_within_bounding_box(float x, float y, Vec4<float> bbox)
+bool is_point_within_bounding_box(float x, float y, glm::vec4 bbox)
 {
-  return x >= bbox.a && x <= bbox.b && y >= bbox.c && y <= bbox.d;
+  return x >= bbox.x && x <= bbox.y && y >= bbox.z && y <= bbox.w;
 }
 
 Point lerp(const Point &p1, const Point &p2, float t)
@@ -216,9 +216,9 @@ Point midpoint(const Point &p1,
   return displaced_midpoint;
 }
 
-Vec4<float> unit_square_bbox()
+glm::vec4 unit_square_bbox()
 {
-  return Vec4<float>(0.f, 1.f, 0.f, 1.f);
+  return glm::vec4(0.f, 1.f, 0.f, 1.f);
 }
 
 // HELPER

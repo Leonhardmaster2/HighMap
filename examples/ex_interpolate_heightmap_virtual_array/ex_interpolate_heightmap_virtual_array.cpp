@@ -34,12 +34,12 @@ int main(void)
 
   // --- coord frames (global, not related to virtual array bbox)
 
-  hmap::CoordFrame frame1 = hmap::CoordFrame(hmap::Vec2<float>(10.f, 20.f),
-                                             hmap::Vec2<float>(50.f, 100.f),
+  hmap::CoordFrame frame1 = hmap::CoordFrame(glm::vec2(10.f, 20.f),
+                                             glm::vec2(50.f, 100.f),
                                              30.f);
 
-  hmap::CoordFrame frame2 = hmap::CoordFrame(hmap::Vec2<float>(-20.f, 50.f),
-                                             hmap::Vec2<float>(100.f, 70.f),
+  hmap::CoordFrame frame2 = hmap::CoordFrame(glm::vec2(-20.f, 50.f),
+                                             glm::vec2(100.f, 70.f),
                                              -30.f);
 
   // --- interpolate

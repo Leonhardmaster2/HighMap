@@ -2,10 +2,10 @@
 
 int main(void)
 {
-  hmap::Vec2<int> shape = {256, 256};
-  int             seed = 1;
+  glm::ivec2 shape = {256, 256};
+  int        seed = 1;
 
-  hmap::Vec4<float> bbox = {-1.f, 2.f, 0.f, 5.f};
+  glm::vec4 bbox = {-1.f, 2.f, 0.f, 5.f};
 
   // --- open path with (x, y) and values defined as vectors
   hmap::Path path = hmap::Path({-0.5f, 1.5f, 0.5f}, // x

@@ -39,7 +39,7 @@ public:
   /**
    * @brief Shape of the tensor in 3D space.
    */
-  Vec3<int> shape;
+  glm::ivec3 shape;
 
   /**
    * @brief Flattened vector containing the tensor's elements.
@@ -51,7 +51,7 @@ public:
    *
    * @param shape 3D shape of the tensor.
    */
-  Tensor(Vec3<int> shape);
+  Tensor(glm::ivec3 shape);
 
   /**
    * @brief Construct a new Tensor object.
@@ -59,7 +59,7 @@ public:
    * @param shape_xy 2D shape (x, y) of the tensor.
    * @param shape_z  Size along the z-axis.
    */
-  Tensor(Vec2<int> shape_xy, int shape_z);
+  Tensor(glm::ivec2 shape_xy, int shape_z);
 
   /**
    * @brief Constructs a new Tensor object from a file.
@@ -127,7 +127,7 @@ public:
    *                      tensor.
    * @return              A new Tensor object with the resampled shape.
    */
-  Tensor resample_to_shape_xy(Vec2<int> new_shape_xy);
+  Tensor resample_to_shape_xy(glm::ivec2 new_shape_xy);
 
   /**
    * @brief Set a 2D slice of the tensor along the z-axis.

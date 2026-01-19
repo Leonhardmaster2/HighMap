@@ -20,7 +20,7 @@ bool cmp_path(std::pair<float, std::vector<int>> &a,
 // with the minimum cost using Dijkstra's algorithm
 void find_vertical_cut_path(const Array &error, std::vector<int> &path_i)
 {
-  Vec2<int> shape = error.shape;
+  glm::ivec2 shape = error.shape;
 
   path_i.clear();
   path_i.reserve(shape.y);
@@ -71,7 +71,7 @@ void find_vertical_cut_path(const Array &error, std::vector<int> &path_i)
   }
 }
 
-Array generate_mask(hmap::Vec2<int> shape, std::vector<int> cut_path_i, int ir)
+Array generate_mask(glm::ivec2 shape, std::vector<int> cut_path_i, int ir)
 {
   Array mask = Array(shape);
 
@@ -130,7 +130,7 @@ void helper_flip_rot_transpose(Array &array,
 }
 
 Array get_random_patch(const Array          &array,
-                       hmap::Vec2<int>       patch_shape,
+                       glm::ivec2            patch_shape,
                        std::mt19937         &gen,
                        bool                  patch_flip,
                        bool                  patch_rotate,
@@ -158,7 +158,7 @@ Array get_random_patch(const Array          &array,
   int i_start = std::max(0, i_end - patch_shape.x);
   int j_start = std::max(0, j_end - patch_shape.y);
 
-  Array patch = array.extract_slice(Vec4<int>(i_start, i_end, j_start, j_end));
+  Array patch = array.extract_slice(glm::ivec4(i_start, i_end, j_start, j_end));
 
   // flipping, etc...
   int imid = (int)(0.5f * (array.shape.x - 1));
@@ -183,7 +183,7 @@ Array get_random_patch(const Array          &array,
     for (auto pa : *p_secondary_arrays)
     {
       Array sec_patch = pa->extract_slice(
-          Vec4<int>(i_start, i_end, j_start, j_end));
+          glm::ivec4(i_start, i_end, j_start, j_end));
       helper_flip_rot_transpose(sec_patch,
                                 do_flip_ud,
                                 do_flip_lr,

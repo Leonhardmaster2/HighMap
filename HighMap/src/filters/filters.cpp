@@ -144,7 +144,7 @@ void expand_directional(Array       &array,
                         float        anisotropy,
                         const Array *p_mask)
 {
-  Array kernel = cubic_pulse_directional(Vec2<int>(2 * ir + 1, 2 * ir + 1),
+  Array kernel = cubic_pulse_directional(glm::ivec2(2 * ir + 1, 2 * ir + 1),
                                          angle,
                                          aspect_ratio,
                                          anisotropy);
@@ -273,7 +273,7 @@ void kuwahara(Array &array, int ir, float mix_ratio)
 {
 
   Array array_buffered = generate_buffered_array(array,
-                                                 Vec4<int>(ir, ir, ir, ir));
+                                                 glm::ivec4(ir, ir, ir, ir));
   Array array_out(array_buffered.shape);
 
   for (int j = ir; j < array_buffered.shape.y - ir; j++)
@@ -281,13 +281,13 @@ void kuwahara(Array &array, int ir, float mix_ratio)
     {
       // build quadrants
       Array q1 = array_buffered.extract_slice(
-          Vec4<int>(i - ir, i + 1, j - ir, j + 1));
+          glm::ivec4(i - ir, i + 1, j - ir, j + 1));
       Array q2 = array_buffered.extract_slice(
-          Vec4<int>(i - ir, i + 1, j + 1, j + ir));
+          glm::ivec4(i - ir, i + 1, j + 1, j + ir));
       Array q3 = array_buffered.extract_slice(
-          Vec4<int>(i + 1, i + ir, j - ir, j + 1));
+          glm::ivec4(i + 1, i + ir, j - ir, j + 1));
       Array q4 = array_buffered.extract_slice(
-          Vec4<int>(i + 1, i + ir, j + 1, j + ir));
+          glm::ivec4(i + 1, i + ir, j + 1, j + ir));
 
       std::vector<float> means = {q1.mean(), q2.mean(), q3.mean(), q4.mean()};
       std::vector<float> stds = {q1.std(), q2.std(), q3.std(), q4.std()};
@@ -298,19 +298,19 @@ void kuwahara(Array &array, int ir, float mix_ratio)
 
   if (mix_ratio == 1.f)
   {
-    array = array_out.extract_slice(Vec4<int>(ir,
-                                              array_buffered.shape.x - ir,
-                                              ir,
-                                              array_buffered.shape.y - ir));
+    array = array_out.extract_slice(glm::ivec4(ir,
+                                               array_buffered.shape.x - ir,
+                                               ir,
+                                               array_buffered.shape.y - ir));
   }
   else
   {
     array = lerp(
         array,
-        array_out.extract_slice(Vec4<int>(ir,
-                                          array_buffered.shape.x - ir,
-                                          ir,
-                                          array_buffered.shape.y - ir)),
+        array_out.extract_slice(glm::ivec4(ir,
+                                           array_buffered.shape.x - ir,
+                                           ir,
+                                           array_buffered.shape.y - ir)),
         mix_ratio);
   }
 }
@@ -330,7 +330,7 @@ void kuwahara(Array &array, int ir, const Array *p_mask, float mix_ratio)
 
 void laplace(Array &array, float sigma, int iterations)
 {
-  Vec2<int> shape = array.shape;
+  glm::ivec2 shape = array.shape;
 
   for (int it = 0; it < iterations; it++)
   {
@@ -478,9 +478,9 @@ Array mean_shift(const Array &array,
                  int          iterations,
                  bool         talus_weighted)
 {
-  const Vec2<int> shape = array.shape;
-  Array           array_next = Array(shape);
-  Array           array_prev = array;
+  const glm::ivec2 shape = array.shape;
+  Array            array_next = Array(shape);
+  Array            array_prev = array;
 
   for (int it = 0; it < iterations; it++)
   {
@@ -618,7 +618,7 @@ void normal_displacement(Array &array, float amount, int ir, bool reverse)
   for (int j = 1; j < array.shape.y - 1; j++)
     for (int i = 1; i < array.shape.x - 1; i++)
     {
-      Vec3<float> n = array_f.get_normal_at(i, j);
+      glm::vec3 n = array_f.get_normal_at(i, j);
 
       float x = (float)i - amount * array.shape.x * n.x * factor(i, j);
       float y = (float)j - amount * array.shape.y * n.y * factor(i, j);
@@ -845,7 +845,7 @@ void shrink_directional(Array       &array,
                         float        anisotropy,
                         const Array *p_mask)
 {
-  Array kernel = cubic_pulse_directional(Vec2<int>(2 * ir + 1, 2 * ir + 1),
+  Array kernel = cubic_pulse_directional(glm::ivec2(2 * ir + 1, 2 * ir + 1),
                                          angle,
                                          aspect_ratio,
                                          anisotropy);
@@ -1270,16 +1270,16 @@ void terrace(Array       &array,
   }
 }
 
-void wrinkle(Array      &array,
-             float       wrinkle_amplitude,
-             float       wrinkle_angle,
-             float       displacement_amplitude,
-             int         ir,
-             float       kw,
-             uint        seed,
-             int         octaves,
-             float       weight,
-             Vec4<float> bbox)
+void wrinkle(Array    &array,
+             float     wrinkle_amplitude,
+             float     wrinkle_angle,
+             float     displacement_amplitude,
+             int       ir,
+             float     kw,
+             uint      seed,
+             int       octaves,
+             float     weight,
+             glm::vec4 bbox)
 {
   Array dx = displacement_amplitude * array;
 
@@ -1290,7 +1290,7 @@ void wrinkle(Array      &array,
 
   Array w = noise_fbm(NoiseType::PERLIN,
                       array.shape,
-                      Vec2<float>(kw, kw),
+                      glm::vec2(kw, kw),
                       seed,
                       octaves,
                       weight,
@@ -1315,7 +1315,7 @@ void wrinkle(Array       &array,
              uint         seed,
              int          octaves,
              float        weight,
-             Vec4<float>  bbox)
+             glm::vec4    bbox)
 {
   if (!p_mask)
     wrinkle(array,

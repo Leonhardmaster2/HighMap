@@ -18,7 +18,7 @@ Array diffusion_retargeting(const Array &array_before,
                             const Array &array_after,
                             int          ir)
 {
-  Vec2<int> shape = array_before.shape;
+  glm::ivec2 shape = array_before.shape;
 
   // select points of interest
   Array delta(shape);

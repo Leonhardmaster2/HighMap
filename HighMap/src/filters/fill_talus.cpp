@@ -104,12 +104,12 @@ void fill_talus(Array       &z,
   fill_talus(z, Array(z.shape, talus), seed, ir, noise_ratio, p_seed_mask);
 }
 
-void fill_talus_fast(Array    &z,
-                     Vec2<int> shape_coarse,
-                     float     talus,
-                     uint      seed,
-                     int       ir,
-                     float     noise_ratio)
+void fill_talus_fast(Array     &z,
+                     glm::ivec2 shape_coarse,
+                     float      talus,
+                     uint       seed,
+                     int        ir,
+                     float      noise_ratio)
 {
   // apply the algorithm on the coarser mesh (and ajust the talus
   // value)

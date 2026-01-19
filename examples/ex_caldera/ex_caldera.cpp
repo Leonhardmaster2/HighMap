@@ -2,7 +2,7 @@
 
 int main(void)
 {
-  hmap::Vec2<int> shape = {256, 256};
+  glm::ivec2 shape = {256, 256};
 
   float radius = 48.f;
   float sigma_inner = 8.f;
@@ -17,8 +17,8 @@ int main(void)
                                  z_bottom);
 
   // with noise
-  hmap::Vec2<float> res = {4.f, 4.f};
-  int               seed = 1;
+  glm::vec2 res = {4.f, 4.f};
+  int       seed = 1;
 
   hmap::Array noise = hmap::noise_fbm(hmap::NoiseType::PERLIN,
                                       shape,

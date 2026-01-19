@@ -39,28 +39,28 @@ enum FlowDirectionMethod : int
 class DrainageBasins
 {
 public:
-  std::vector<std::vector<Vec2<int>>> upstream_traversal;
-  Mat<Vec2<int>>                      next = Mat<Vec2<int>>({0, 0});
-  Vec2<int>                           null_cell = Vec2<int>(-1, -1);
+  std::vector<std::vector<glm::ivec2>> upstream_traversal;
+  Mat<glm::ivec2>                      next = Mat<glm::ivec2>({0, 0});
+  glm::ivec2                           null_cell = glm::ivec2(-1, -1);
 
-  size_t                              get_basins_number() const;
-  std::vector<std::vector<Vec2<int>>> get_main_channels();
-  std::vector<Vec2<int>>              get_outlets() const;
-  std::vector<Vec2<int>>              get_ridges();
-  std::vector<std::vector<Vec2<int>>> get_ridges_neighbors();
+  size_t                               get_basins_number() const;
+  std::vector<std::vector<glm::ivec2>> get_main_channels();
+  std::vector<glm::ivec2>              get_outlets() const;
+  std::vector<glm::ivec2>              get_ridges();
+  std::vector<std::vector<glm::ivec2>> get_ridges_neighbors();
 
   void generate_traversal(
-      const Array                  &z,
-      FlowDirectionMethod           fd_method = FlowDirectionMethod::FDM_D8,
-      bool                          remove_lakes = true,
-      const std::vector<Vec2<int>> &outlets = {});
+      const Array                   &z,
+      FlowDirectionMethod            fd_method = FlowDirectionMethod::FDM_D8,
+      bool                           remove_lakes = true,
+      const std::vector<glm::ivec2> &outlets = {});
 
-  void generate_traversal_d8(const Array                  &z,
-                             bool                          remove_lakes = true,
-                             const std::vector<Vec2<int>> &outlets = {});
+  void generate_traversal_d8(const Array                   &z,
+                             bool                           remove_lakes = true,
+                             const std::vector<glm::ivec2> &outlets = {});
   void generate_traversal_priority_flood(
-      const Array                  &z,
-      const std::vector<Vec2<int>> &outlets = {});
+      const Array                   &z,
+      const std::vector<glm::ivec2> &outlets = {});
 
   void accumulate(Array &acc) const;
   void traverse_downstream(std::function<void(int, int, int, int, int)> op);
@@ -146,7 +146,7 @@ void find_flow_sinks(const Array      &z,
                      std::vector<int> &is,
                      std::vector<int> &js);
 
-std::vector<Vec2<int>> find_flow_sinks(const Array &z);
+std::vector<glm::ivec2> find_flow_sinks(const Array &z);
 
 /**
  * @brief Compute water depth for a uniform flooding level.
@@ -410,11 +410,11 @@ Array flow_fixing(const Array &z,
  * **Result**
  * @image html ex_flow_stream.png
  */
-Path flow_stream(const Array    &z,
-                 const Vec2<int> ij_start,
-                 const float     elevation_ratio = 0.5f,
-                 const float     distance_exponent = 2.f,
-                 const float     upward_penalization = 100.f);
+Path flow_stream(const Array     &z,
+                 const glm::ivec2 ij_start,
+                 const float      elevation_ratio = 0.5f,
+                 const float      distance_exponent = 2.f,
+                 const float      upward_penalization = 100.f);
 
 /**
  * @brief Generates a 2D array representing a riverbed based on a specified
@@ -463,8 +463,8 @@ Path flow_stream(const Array    &z,
  * @image html ex_generate_riverbed.png
  */
 Array generate_riverbed(const Path &path,
-                        Vec2<int>   shape,
-                        Vec4<float> bbox = {0.f, 1.f, 0.f, 1.f},
+                        glm::ivec2  shape,
+                        glm::vec4   bbox = {0.f, 1.f, 0.f, 1.f},
                         bool        bezier_smoothing = false,
                         float       depth_start = 0.01f,
                         float       depth_end = 1.f,
@@ -645,8 +645,8 @@ Array flow_direction_d8(const Array &z);
 
 /*! @brief See hmap::generate_riverbed */
 Array generate_riverbed(const Path &path,
-                        Vec2<int>   shape,
-                        Vec4<float> bbox = {0.f, 1.f, 0.f, 1.f},
+                        glm::ivec2  shape,
+                        glm::vec4   bbox = {0.f, 1.f, 0.f, 1.f},
                         bool        bezier_smoothing = false,
                         float       depth_start = 0.01f,
                         float       depth_end = 1.f,

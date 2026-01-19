@@ -12,7 +12,7 @@ namespace hmap
 Array distance_transform_approx(const Array &array,
                                 bool         return_squared_distance)
 {
-  Vec2<int> shape = array.shape;
+  glm::ivec2 shape = array.shape;
 
   Array edt(shape);
 
@@ -54,7 +54,7 @@ Array distance_transform_approx(const Array &array,
 Array distance_transform_manhattan(const Array &array,
                                    bool         return_squared_distance)
 {
-  Vec2<int> shape = array.shape;
+  glm::ivec2 shape = array.shape;
 
   Array edt(shape);
 

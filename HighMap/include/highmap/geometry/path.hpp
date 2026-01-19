@@ -71,10 +71,10 @@ public:
    * @param bbox    Bounding box for random point generation.
    * @param closed  Open/close path flag.
    */
-  Path(int         npoints,
-       uint        seed,
-       Vec4<float> bbox = {0.f, 1.f, 0.f, 1.f},
-       bool        closed = false)
+  Path(int       npoints,
+       uint      seed,
+       glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f},
+       bool      closed = false)
       : Cloud(npoints, seed, bbox), closed(closed){};
 
   /**
@@ -313,12 +313,12 @@ public:
    *
    * @see                     Array::find_path_dijkstra
    */
-  void dijkstra(Array      &array,
-                Vec4<float> bbox,
-                float       elevation_ratio = 0.f,
-                float       distance_exponent = 0.5f,
-                float       upward_penalization = 1.f,
-                Array      *p_mask_nogo = nullptr);
+  void dijkstra(Array    &array,
+                glm::vec4 bbox,
+                float     elevation_ratio = 0.f,
+                float     distance_exponent = 0.5f,
+                float     upward_penalization = 1.f,
+                Array    *p_mask_nogo = nullptr);
 
   /**
    * @brief Divide the path by adding a point between each pair of consecutive
@@ -373,13 +373,13 @@ public:
    * @param bbox          Bounding box that defines the valid area for the
    * control field's influence.
    */
-  void fractalize(int         iterations,
-                  uint        seed,
-                  float       sigma = 0.3f,
-                  int         orientation = 0,
-                  float       persistence = 1.f,
-                  Array      *p_control_field = nullptr,
-                  Vec4<float> bbox = {0.f, 1.f, 0.f, 1.f});
+  void fractalize(int       iterations,
+                  uint      seed,
+                  float     sigma = 0.3f,
+                  int       orientation = 0,
+                  float     persistence = 1.f,
+                  Array    *p_control_field = nullptr,
+                  glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f});
 
   /**
    * @brief Get the arc length of the path.
@@ -749,9 +749,9 @@ public:
    * @param filled Boolean flag indicating whether to perform flood filling of
    * the path's contour.
    */
-  void to_array(Array      &array,
-                Vec4<float> bbox = {0.f, 1.f, 0.f, 1.f},
-                bool        filled = false) const;
+  void to_array(Array    &array,
+                glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f},
+                bool      filled = false) const;
 
   /**
    * @brief Return an array filled with the signed distance function to the
@@ -783,11 +783,11 @@ public:
    * @return            Array The resulting array filled with the signed
    * distance function values.
    */
-  Array to_array_sdf(Vec2<int>   shape,
-                     Vec4<float> bbox,
-                     Array      *p_noise_x = nullptr,
-                     Array      *p_noise_y = nullptr,
-                     Vec4<float> bbox_array = {0.f, 1.f, 0.f, 1.f});
+  Array to_array_sdf(glm::ivec2 shape,
+                     glm::vec4  bbox,
+                     Array     *p_noise_x = nullptr,
+                     Array     *p_noise_y = nullptr,
+                     glm::vec4  bbox_array = {0.f, 1.f, 0.f, 1.f});
 
   /**
    * @brief Export path as PNG image file.
@@ -802,7 +802,7 @@ public:
    * @param fname The filename for the output PNG image.
    * @param shape Resolution of the image, specified as width and height.
    */
-  void to_png(std::string fname, Vec2<int> shape = {512, 512});
+  void to_png(std::string fname, glm::ivec2 shape = {512, 512});
 };
 
 /**
@@ -843,14 +843,14 @@ public:
  *                          depth of the dig. If not provided, the default depth
  *                          of 0.f is used.
  */
-void dig_path(Array      &z,
-              Path       &path,
-              int         width = 1,
-              int         decay = 2,
-              int         flattening_radius = 16,
-              bool        force_downhill = false,
-              Vec4<float> bbox = {0.f, 1.f, 0.f, 1.f},
-              float       depth = 0.f);
+void dig_path(Array    &z,
+              Path     &path,
+              int       width = 1,
+              int       decay = 2,
+              int       flattening_radius = 16,
+              bool      force_downhill = false,
+              glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f},
+              float     depth = 0.f);
 
 /**
  * @brief Modifies the elevation array to carve a river along a specified path.

@@ -14,8 +14,8 @@ void alter_elevation(Array       &array,
                      const Cloud &cloud,
                      int          ir,
                      float        footprint_ratio,
-                     Vec2<float>  shift,
-                     Vec2<float>  scale)
+                     glm::vec2    shift,
+                     glm::vec2    scale)
 {
   Array amp = Array(array.shape);
   for (auto &p : cloud.points)
@@ -25,7 +25,7 @@ void alter_elevation(Array       &array,
 
     // kernel size
     int   nk = (int)((2 * ir + 1) * (1.f + footprint_ratio * std::abs(p.v)));
-    Array kernel = cubic_pulse(Vec2(nk, nk));
+    Array kernel = cubic_pulse(glm::ivec2(nk, nk));
 
     // --
     // truncate kernel to make it fit into the heightmap array

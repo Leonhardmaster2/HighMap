@@ -12,8 +12,8 @@ namespace hmap
 {
 
 Array sdf_2d_polyline(const Path  &path,
-                      Vec2<int>    shape,
-                      Vec4<float>  bbox,
+                      glm::ivec2   shape,
+                      glm::vec4    bbox,
                       const Array *p_noise_x,
                       const Array *p_noise_y)
 {
@@ -49,11 +49,11 @@ Array sdf_2d_polyline(const Path  &path,
 
       for (size_t k = 0; k < path.get_npoints() - 1; k++)
       {
-        size_t      p = k + 1;
-        Vec2<float> e = {xp[p] - xp[k], yp[p] - yp[k]};
-        Vec2<float> w = {x - xp[k], y - yp[k]};
-        float       t = std::clamp(dot(w, e) / dot(e, e), 0.f, 1.f);
-        Vec2<float> b = {w.x - e.x * t, w.y - e.y * t};
+        size_t    p = k + 1;
+        glm::vec2 e = {xp[p] - xp[k], yp[p] - yp[k]};
+        glm::vec2 w = {x - xp[k], y - yp[k]};
+        float     t = std::clamp(dot(w, e) / dot(e, e), 0.f, 1.f);
+        glm::vec2 b = {w.x - e.x * t, w.y - e.y * t};
         d = std::min(d, dot(b, b));
       }
       sdf2(i, j) = std::sqrt(d);
@@ -63,8 +63,8 @@ Array sdf_2d_polyline(const Path  &path,
 }
 
 Array sdf_2d_polyline_bezier(const Path  &path,
-                             Vec2<int>    shape,
-                             Vec4<float>  bbox,
+                             glm::ivec2   shape,
+                             glm::vec4    bbox,
                              const Array *p_noise_x,
                              const Array *p_noise_y)
 {
@@ -134,11 +134,11 @@ Array sdf_2d_polyline_bezier(const Path  &path,
 
         float dist;
 
-        Vec2<float> a = {xp[j] - xp[i], yp[j] - yp[i]};
-        Vec2<float> b = {xp[i] - 2.f * xp[j] + xp[k],
-                         yp[i] - 2.f * yp[j] + yp[k]};
-        Vec2<float> c = {2.f * a.x, 2.f * a.y};
-        Vec2<float> d = {xp[i] - x, yp[i] - y};
+        glm::vec2 a = {xp[j] - xp[i], yp[j] - yp[i]};
+        glm::vec2 b = {xp[i] - 2.f * xp[j] + xp[k],
+                       yp[i] - 2.f * yp[j] + yp[k]};
+        glm::vec2 c = {2.f * a.x, 2.f * a.y};
+        glm::vec2 d = {xp[i] - x, yp[i] - y};
 
         float kk = 1.f / dot(b, b);
         float kx = kk * dot(a, b);
@@ -152,31 +152,30 @@ Array sdf_2d_polyline_bezier(const Path  &path,
         if (h >= 0.f)
         {
           h = std::sqrt(h);
-          Vec2<float> xx = {0.5f * (h - q), 0.5f * (-h - q)};
-          Vec2<float> uv = {
+          glm::vec2 xx = {0.5f * (h - q), 0.5f * (-h - q)};
+          glm::vec2 uv = {
               std::copysign(1.f, xx.x) * std::pow(std::abs(xx.x), 1.f / 3.f),
               std::copysign(1.f, xx.y) * std::pow(std::abs(xx.y), 1.f / 3.f)};
           float t = std::clamp(uv.x + uv.y - kx, 0.f, 1.f);
 
-          Vec2<float> dd = {d.x + (c.x + b.x * t) * t,
-                            d.y + (c.y + b.y * t) * t};
+          glm::vec2 dd = {d.x + (c.x + b.x * t) * t, d.y + (c.y + b.y * t) * t};
 
           dist = dot(dd, dd);
         }
         else
         {
-          float       zz = std::sqrt(-p);
-          float       v = std::acos(q / (p * zz * 2.f)) / 3.f;
-          float       m = std::cos(v);
-          float       n = std::sin(v) * 1.732050808f;
-          Vec3<float> tt = {std::clamp((m + m) * zz - kx, 0.f, 1.f),
-                            std::clamp((-n - m) * zz - kx, 0.f, 1.f),
-                            std::clamp((n - m) * zz - kx, 0.f, 1.f)};
+          float     zz = std::sqrt(-p);
+          float     v = std::acos(q / (p * zz * 2.f)) / 3.f;
+          float     m = std::cos(v);
+          float     n = std::sin(v) * 1.732050808f;
+          glm::vec3 tt = {std::clamp((m + m) * zz - kx, 0.f, 1.f),
+                          std::clamp((-n - m) * zz - kx, 0.f, 1.f),
+                          std::clamp((n - m) * zz - kx, 0.f, 1.f)};
 
-          Vec2<float> dd1 = {d.x + (c.x + b.x * tt.x) * tt.x,
-                             d.y + (c.y + b.y * tt.x) * tt.x};
-          Vec2<float> dd2 = {d.x + (c.x + b.x * tt.y) * tt.y,
-                             d.y + (c.y + b.y * tt.y) * tt.y};
+          glm::vec2 dd1 = {d.x + (c.x + b.x * tt.x) * tt.x,
+                           d.y + (c.y + b.y * tt.x) * tt.x};
+          glm::vec2 dd2 = {d.x + (c.x + b.x * tt.y) * tt.y,
+                           d.y + (c.y + b.y * tt.y) * tt.y};
 
           float dist1 = dot(dd1, dd1);
           float dist2 = dot(dd2, dd2);

@@ -217,9 +217,9 @@ Array mean_shift(const Array &array,
                  int          iterations,
                  bool         talus_weighted)
 {
-  const Vec2<int> shape = array.shape;
-  Array           array_next = Array(shape);
-  Array           array_prev = array;
+  const glm::ivec2 shape = array.shape;
+  Array            array_next = Array(shape);
+  Array            array_prev = array;
 
   auto run = clwrapper::Run("mean_shift");
 

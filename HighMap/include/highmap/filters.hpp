@@ -45,8 +45,8 @@ Array bulkify(const Array         &z,
               float                amp = 1.f,
               const Array         *p_noise_x = nullptr,
               const Array         *p_noise_y = nullptr,
-              Vec2<float>          center = {0.5f, 0.5f},
-              Vec4<float>          bbox = {0.f, 1.f, 0.f, 1.f});
+              glm::vec2            center = {0.5f, 0.5f},
+              glm::vec4            bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief Applies diffusion retargeting by detecting local maxima and adjusting
@@ -412,12 +412,12 @@ void fill_talus(Array       &z,
  *
  * @see                {@link thermal_scree}, {@link thermal_scree_fast}
  */
-void fill_talus_fast(Array    &z,
-                     Vec2<int> shape_coarse,
-                     float     talus,
-                     uint      seed,
-                     int       ir = 1,
-                     float     noise_ratio = 0.2f);
+void fill_talus_fast(Array     &z,
+                     glm::ivec2 shape_coarse,
+                     float      talus,
+                     uint       seed,
+                     int        ir = 1,
+                     float      noise_ratio = 0.2f);
 
 /**
  * @brief Apply a "folding" filter (successive absolute values) to the array
@@ -1478,19 +1478,18 @@ void recast_rocky_slopes(Array       &array,
                          float        kw,
                          float        gamma = 0.5f,
                          const Array *p_noise = nullptr,
-                         Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
+                         glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
 
-void recast_rocky_slopes(
-    Array       &array,
-    float        talus,
-    int          ir,
-    float        amplitude,
-    uint         seed,
-    float        kw,
-    const Array *p_mask,
-    float        gamma = 0.5f,
-    const Array *p_noise = nullptr,
-    Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f}); ///< @overload
+void recast_rocky_slopes(Array       &array,
+                         float        talus,
+                         int          ir,
+                         float        amplitude,
+                         uint         seed,
+                         float        kw,
+                         const Array *p_mask,
+                         float        gamma = 0.5f,
+                         const Array *p_noise = nullptr,
+                         glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f}); ///< @overload
 
 /**
  * @brief Transform heightmap to give a "cliff" like appearance.
@@ -2423,18 +2422,18 @@ void wrinkle(Array       &array,
              uint         seed = 1,
              int          octaves = 8,
              float        weight = 0.7f,
-             Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
+             glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
 
-void wrinkle(Array      &array,
-             float       wrinkle_amplitude,
-             float       wrinkle_angle = 0.f,
-             float       displacement_amplitude = 1.f,
-             int         ir = 0,
-             float       kw = 2.f,
-             uint        seed = 1,
-             int         octaves = 8,
-             float       weight = 0.7f,
-             Vec4<float> bbox = {0.f, 1.f, 0.f, 1.f}); ///< @overload
+void wrinkle(Array    &array,
+             float     wrinkle_amplitude,
+             float     wrinkle_angle = 0.f,
+             float     displacement_amplitude = 1.f,
+             int       ir = 0,
+             float     kw = 2.f,
+             uint      seed = 1,
+             int       octaves = 8,
+             float     weight = 0.7f,
+             glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f}); ///< @overload
 
 } // namespace hmap
 

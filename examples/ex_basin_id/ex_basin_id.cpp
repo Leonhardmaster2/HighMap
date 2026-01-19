@@ -2,9 +2,9 @@
 
 int main(void)
 {
-  hmap::Vec2<int>   shape = {256, 256};
-  hmap::Vec2<float> res = {8.f, 8.f};
-  int               seed = 0;
+  glm::ivec2 shape = {256, 256};
+  glm::vec2  res = {8.f, 8.f};
+  int        seed = 0;
 
   hmap::Array z = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, res, seed);
   z = hmap::bulkify(z, hmap::PrimitiveType::PRIM_CONE, 1.f);

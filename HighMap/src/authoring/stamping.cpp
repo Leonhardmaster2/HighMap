@@ -14,7 +14,7 @@
 namespace hmap
 {
 
-Array stamping(Vec2<int>                 shape,
+Array stamping(glm::ivec2                shape,
                const std::vector<float> &xr,
                const std::vector<float> &yr,
                const std::vector<float> &zr,
@@ -27,7 +27,7 @@ Array stamping(Vec2<int>                 shape,
                float                     k_smoothing,
                bool                      kernel_flip,
                bool                      kernel_rotate,
-               Vec4<float>               bbox_array)
+               glm::vec4                 bbox_array)
 {
   std::mt19937                          gen(seed);
   std::uniform_real_distribution<float> dis(0.f, 1.f);
@@ -81,7 +81,7 @@ Array stamping(Vec2<int>                 shape,
   // --- do the stamping
 
   // scale kernel
-  Vec2<int> scaled_kernel_shape = {2 * kernel_ir + 1, 2 * kernel_ir + 1};
+  glm::ivec2 scaled_kernel_shape = {2 * kernel_ir + 1, 2 * kernel_ir + 1};
 
   Array kernel_scaled = kernel.resample_to_shape(scaled_kernel_shape);
 
@@ -94,7 +94,7 @@ Array stamping(Vec2<int>                 shape,
     // resize kernel (if requested)
     if (kernel_scale_radius)
     {
-      Vec2<int> new_scaled_kernel_shape = {
+      glm::ivec2 new_scaled_kernel_shape = {
           std::max(3, (int)(zr[k] * (2 * kernel_ir + 1))),
           std::max(3, (int)(zr[k] * (2 * kernel_ir + 1)))};
 

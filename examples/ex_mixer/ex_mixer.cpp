@@ -2,8 +2,8 @@
 
 int main(void)
 {
-  hmap::Vec2<int> shape = {128, 128};
-  int             seed = 1;
+  glm::ivec2 shape = {128, 128};
+  int        seed = 1;
 
   hmap::Array z1 = hmap::noise(hmap::NoiseType::PERLIN,
                                shape,

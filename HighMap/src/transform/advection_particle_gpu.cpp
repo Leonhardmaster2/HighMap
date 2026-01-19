@@ -92,7 +92,7 @@ Array advection_particle(const Array &dx,
 {
   auto run = clwrapper::Run("advection_particle");
 
-  Vec2<int> shape = dx.shape;
+  glm::ivec2 shape = dx.shape;
 
   Array out(shape);
   Array count(shape);

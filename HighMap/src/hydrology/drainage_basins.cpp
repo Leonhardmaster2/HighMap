@@ -18,8 +18,8 @@ void DrainageBasins::accumulate(Array &acc) const
     // so we iterate backwards
     for (int k = int(basin.size()) - 1; k >= 0; --k)
     {
-      Vec2<int> c = basin[k];
-      Vec2<int> p = this->next(c);
+      glm::ivec2 c = basin[k];
+      glm::ivec2 p = this->next(c);
 
       // propagate downstream
       if (p != this->null_cell) acc(p) += acc(c);
@@ -30,7 +30,7 @@ void DrainageBasins::accumulate(Array &acc) const
 void DrainageBasins::generate_traversal(const Array        &z,
                                         FlowDirectionMethod fd_method,
                                         bool                remove_lakes,
-                                        const std::vector<Vec2<int>> &outlets)
+                                        const std::vector<glm::ivec2> &outlets)
 {
   switch (fd_method)
   {
@@ -42,14 +42,14 @@ void DrainageBasins::generate_traversal(const Array        &z,
 }
 
 void DrainageBasins::generate_traversal_d8(
-    const Array                  &z,
-    bool                          remove_lakes,
-    const std::vector<Vec2<int>> &outlets)
+    const Array                   &z,
+    bool                           remove_lakes,
+    const std::vector<glm::ivec2> &outlets)
 {
   this->upstream_traversal.clear();
 
-  const Vec2<int> shape = z.shape;
-  this->next = Mat<Vec2<int>>(shape, this->null_cell);
+  const glm::ivec2 shape = z.shape;
+  this->next = Mat<glm::ivec2>(shape, this->null_cell);
 
   const int   di[8] = {1, 1, 0, -1, -1, -1, 0, 1};
   const int   dj[8] = {0, -1, -1, -1, 0, 1, 1, 1};
@@ -97,8 +97,8 @@ void DrainageBasins::generate_traversal_d8(
 }
 
 void DrainageBasins::generate_traversal_priority_flood(
-    const Array                  &z,
-    const std::vector<Vec2<int>> &outlets)
+    const Array                   &z,
+    const std::vector<glm::ivec2> &outlets)
 {
   this->upstream_traversal.clear();
 
@@ -119,8 +119,8 @@ void DrainageBasins::generate_traversal_priority_flood(
   };
 
   // algo
-  const Vec2<int> shape = z.shape;
-  this->next = Mat<Vec2<int>>(shape, this->null_cell);
+  const glm::ivec2 shape = z.shape;
+  this->next = Mat<glm::ivec2>(shape, this->null_cell);
   Array basin_id(shape, -1);
 
   std::priority_queue<Node, std::vector<Node>, NodeCmp> pq;
@@ -157,7 +157,7 @@ void DrainageBasins::generate_traversal_priority_flood(
     pq.pop();
 
     int bc = basin_id(c.i, c.j);
-    this->upstream_traversal[bc].push_back(Vec2<int>(c.i, c.j));
+    this->upstream_traversal[bc].push_back(glm::ivec2(c.i, c.j));
 
     for (int k = 0; k < 8; ++k)
     {
@@ -193,9 +193,9 @@ size_t DrainageBasins::get_basins_number() const
   return this->upstream_traversal.size();
 }
 
-std::vector<std::vector<Vec2<int>>> DrainageBasins::get_main_channels()
+std::vector<std::vector<glm::ivec2>> DrainageBasins::get_main_channels()
 {
-  const Vec2<int> shape = this->next.shape;
+  const glm::ivec2 shape = this->next.shape;
 
   // compute flow accumulation
   Array area_acc(shape, 1.f);
@@ -208,13 +208,13 @@ std::vector<std::vector<Vec2<int>>> DrainageBasins::get_main_channels()
 
   // for each basin, follow downstream the flow acc maximum to get the
   // basin main channel
-  size_t                              nbasins = this->get_basins_number();
-  std::vector<std::vector<Vec2<int>>> channels(nbasins);
+  size_t                               nbasins = this->get_basins_number();
+  std::vector<std::vector<glm::ivec2>> channels(nbasins);
 
   for (size_t basin_id = 0; basin_id < nbasins; ++basin_id)
   {
     // starting cell (most upstream)
-    Vec2<int> p = this->upstream_traversal[basin_id].back();
+    glm::ivec2 p = this->upstream_traversal[basin_id].back();
     channels[basin_id].push_back(p);
 
     while (p.x > 0 && p.y > 0 && p.x < shape.x - 1 && p.y < shape.y - 1)
@@ -236,10 +236,10 @@ std::vector<std::vector<Vec2<int>>> DrainageBasins::get_main_channels()
   return channels;
 }
 
-std::vector<Vec2<int>> DrainageBasins::get_outlets() const
+std::vector<glm::ivec2> DrainageBasins::get_outlets() const
 {
-  const Vec2<int>        shape = this->next.shape;
-  std::vector<Vec2<int>> outlets = {};
+  const glm::ivec2        shape = this->next.shape;
+  std::vector<glm::ivec2> outlets = {};
 
   for (int j = 0; j < shape.y; ++j)
     for (int i = 0; i < shape.x; ++i)
@@ -250,10 +250,10 @@ std::vector<Vec2<int>> DrainageBasins::get_outlets() const
   return outlets;
 }
 
-std::vector<Vec2<int>> DrainageBasins::get_ridges()
+std::vector<glm::ivec2> DrainageBasins::get_ridges()
 {
-  const Vec2<int>        shape = this->next.shape;
-  std::vector<Vec2<int>> ridges;
+  const glm::ivec2        shape = this->next.shape;
+  std::vector<glm::ivec2> ridges;
 
   // --- get basin ids
 
@@ -272,8 +272,8 @@ std::vector<Vec2<int>> DrainageBasins::get_ridges()
   for (int j = 0; j < shape.y; ++j)
     for (int i = 0; i < shape.x; ++i)
     {
-      int                    current_id = ids(i, j);
-      std::vector<Vec2<int>> ridge_neighbors = {};
+      int                     current_id = ids(i, j);
+      std::vector<glm::ivec2> ridge_neighbors = {};
 
       for (int k = 0; k < 8; ++k)
       {
@@ -291,10 +291,10 @@ std::vector<Vec2<int>> DrainageBasins::get_ridges()
   return ridges;
 }
 
-std::vector<std::vector<Vec2<int>>> DrainageBasins::get_ridges_neighbors()
+std::vector<std::vector<glm::ivec2>> DrainageBasins::get_ridges_neighbors()
 {
-  const Vec2<int>                     shape = this->next.shape;
-  std::vector<std::vector<Vec2<int>>> ridges;
+  const glm::ivec2                     shape = this->next.shape;
+  std::vector<std::vector<glm::ivec2>> ridges;
 
   // --- get basin ids
 
@@ -313,8 +313,8 @@ std::vector<std::vector<Vec2<int>>> DrainageBasins::get_ridges_neighbors()
   for (int j = 0; j < shape.y; ++j)
     for (int i = 0; i < shape.x; ++i)
     {
-      int                    current_id = ids(i, j);
-      std::vector<Vec2<int>> ridge_neighbors = {};
+      int                     current_id = ids(i, j);
+      std::vector<glm::ivec2> ridge_neighbors = {};
 
       for (int k = 0; k < 8; ++k)
       {
@@ -354,7 +354,7 @@ void DrainageBasins::remove_lakes_d8(const Array &z,
     }
   };
 
-  const Vec2<int> shape = z.shape;
+  const glm::ivec2 shape = z.shape;
 
   const int   di[8] = {1, 1, 0, -1, -1, -1, 0, 1};
   const int   dj[8] = {0, -1, -1, -1, 0, 1, 1, 1};
@@ -369,15 +369,15 @@ void DrainageBasins::remove_lakes_d8(const Array &z,
 
   // --- find subroots (includes inner domain sinks)
 
-  Mat<Vec2<int>> subroot(shape, null_cell);
+  Mat<glm::ivec2> subroot(shape, null_cell);
 
   for (int j = 0; j < shape.y; ++j)
     for (int i = 0; i < shape.x; ++i)
     {
       if (subroot(i, j) != null_cell) continue;
 
-      std::vector<Vec2<int>> path;
-      Vec2<int>              p = {i, j};
+      std::vector<glm::ivec2> path;
+      glm::ivec2              p = {i, j};
 
       while ((subroot(p) == null_cell) && (this->next(p) != this->null_cell))
       {
@@ -389,7 +389,7 @@ void DrainageBasins::remove_lakes_d8(const Array &z,
       // - an outlet
       // - or a lake (self-loop but not outlet)
       // - or already assigned
-      Vec2<int> root = p;
+      glm::ivec2 root = p;
 
       if (subroot(p) != null_cell) root = subroot(p);
 
@@ -401,8 +401,8 @@ void DrainageBasins::remove_lakes_d8(const Array &z,
   // --- remove lakes
 
   std::priority_queue<PQItem, std::vector<PQItem>, std::greater<PQItem>> pq;
-  Mat<int>       visited(shape, 0);
-  Mat<Vec2<int>> root(shape, null_cell);
+  Mat<int>        visited(shape, 0);
+  Mat<glm::ivec2> root(shape, null_cell);
 
   // initialize heap queue
   for (int j = 0; j < shape.y; ++j)
@@ -421,14 +421,14 @@ void DrainageBasins::remove_lakes_d8(const Array &z,
   { return i >= 0 && i < shape.x && j >= 0 && j < shape.y; };
 
   // helper - lambda
-  auto reverse_path_to_outlet = [&](Vec2<int> start, Vec2<int> outlet)
+  auto reverse_path_to_outlet = [&](glm::ivec2 start, glm::ivec2 outlet)
   {
-    Vec2<int> current = start;
-    Vec2<int> prev = outlet;
+    glm::ivec2 current = start;
+    glm::ivec2 prev = outlet;
 
     while (next(current) != this->null_cell)
     {
-      Vec2<int> next = this->next(current);
+      glm::ivec2 next = this->next(current);
       this->next(current) = prev;
       prev = current;
       current = next;
@@ -485,8 +485,10 @@ void DrainageBasins::traverse_upstream(
 
     for (size_t k = 0; k < path.size(); ++k)
     {
-      auto [i, j] = path[k];
-      auto [ni, nj] = this->next(i, j);
+      int i = path[k].x;
+      int j = path[k].y;
+      int ni = this->next(i, j).x;
+      int nj = this->next(i, j).y;
 
       if (ni >= 0) op(i, j, ni, nj, basin_id);
     }
@@ -503,7 +505,8 @@ void DrainageBasins::traverse_upstream(
 
     for (size_t k = 0; k < path.size(); ++k)
     {
-      auto [i, j] = path[k];
+      int i = path[k].x;
+      int j = path[k].y;
       op(i, j, int(basin_id));
     }
   }
@@ -521,8 +524,10 @@ void DrainageBasins::traverse_downstream(
     // so we iterate backwards
     for (int k = int(basin.size()) - 1; k >= 0; --k)
     {
-      auto [i, j] = basin[k];
-      auto [ni, nj] = this->next(i, j);
+      int i = basin[k].x;
+      int j = basin[k].y;
+      int ni = this->next(i, j).x;
+      int nj = this->next(i, j).y;
 
       if (ni >= 0) op(i, j, ni, nj, basin_id);
     }
@@ -541,7 +546,8 @@ void DrainageBasins::traverse_downstream(
     // so we iterate backwards
     for (int k = int(basin.size()) - 1; k >= 0; --k)
     {
-      auto [i, j] = basin[k];
+      int i = basin[k].x;
+      int j = basin[k].y;
       op(i, j, basin_id);
     }
   }
@@ -549,8 +555,8 @@ void DrainageBasins::traverse_downstream(
 
 void DrainageBasins::update_traversal()
 {
-  const Vec2<int> shape = this->next.shape;
-  Mat<int>        basin_id(shape, -1);
+  const glm::ivec2 shape = this->next.shape;
+  Mat<int>         basin_id(shape, -1);
 
   this->upstream_traversal.clear();
 
@@ -581,7 +587,7 @@ void DrainageBasins::update_traversal()
 
     while (count < this->upstream_traversal[bid].size())
     {
-      Vec2<int> p = this->upstream_traversal[bid][count];
+      glm::ivec2 p = this->upstream_traversal[bid][count];
       for (int k = 0; k < 8; ++k)
       {
         // add upstream nodes whose receiver points to 'p'

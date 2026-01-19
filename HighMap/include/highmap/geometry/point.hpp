@@ -163,14 +163,14 @@ public:
    * @param array The input `Array` from which the value is interpolated. The
    * `Array` should support bilinear interpolation.
    * @param bbox  Bounding box used for normalizing the `Point`'s coordinates.
-   *              This box is defined by a `Vec4<float>` containing minimum and
+   *              This box is defined by a `glm::vec4` containing minimum and
    *              maximum values for both x and y dimensions in the format
    * `{xmin, xmax, ymin, ymax}`.
    *
    * @note If the coordinates are outside the bounds of the array after scaling,
    * the point's value is set to zero.
    */
-  void set_value_from_array(const Array &array, Vec4<float> bbox);
+  void set_value_from_array(const Array &array, glm::vec4 bbox);
 };
 
 /**
@@ -366,14 +366,14 @@ Point interp_decasteljau(const std::vector<Point> &points, float t);
  * `bbox2`. If they intersect, it returns the intersecting bounding box. If they
  * are disjoint, it returns `std::nullopt`.
  *
- * @param  bbox1 The first bounding box defined as `Vec4<float>`.
- * @param  bbox2 The second bounding box defined as `Vec4<float>`.
- * @return       An `std::optional<Vec4<float>>` containing the intersecting
+ * @param  bbox1 The first bounding box defined as `glm::vec4`.
+ * @param  bbox2 The second bounding box defined as `glm::vec4`.
+ * @return       An `std::optional<glm::vec4>` containing the intersecting
  *               bounding box if an intersection exists; `std::nullopt`
  *               otherwise.
  */
-Vec4<float> intersect_bounding_boxes(const Vec4<float> &bbox1,
-                                     const Vec4<float> &bbox2);
+glm::vec4 intersect_bounding_boxes(const glm::vec4 &bbox1,
+                                   const glm::vec4 &bbox2);
 
 /**
  * @brief Checks if a point is within a specified bounding box.
@@ -383,13 +383,13 @@ Vec4<float> intersect_bounding_boxes(const Vec4<float> &bbox1,
  *
  * @param  p    The point to check, represented as a `Point` with `x` and `y`
  * coordinates.
- * @param  bbox The bounding box defined as a `Vec4<float>`, where `a` and `b`
+ * @param  bbox The bounding box defined as a `glm::vec4`, where `a` and `b`
  * are the horizontal boundaries (min and max x), and `c` and `d` are the
  * vertical boundaries (min and max y).
  * @return      `true` if the point is within the bounding box; `false`
  *              otherwise.
  */
-bool is_point_within_bounding_box(Point p, Vec4<float> bbox);
+bool is_point_within_bounding_box(Point p, glm::vec4 bbox);
 
 /**
  * @brief Checks if a point is within a specified bounding box.
@@ -399,13 +399,13 @@ bool is_point_within_bounding_box(Point p, Vec4<float> bbox);
  *
  * @param  x    The x-coordinate of the point to check.
  * @param  y    The y-coordinate of the point to check.
- * @param  bbox The bounding box defined as a `Vec4<float>`, where `a` and `b`
+ * @param  bbox The bounding box defined as a `glm::vec4`, where `a` and `b`
  * are the horizontal boundaries (min and max x), and `c` and `d` are the
  * vertical boundaries (min and max y).
  * @return      `true` if the point is within the bounding box; `false`
  *              otherwise.
  */
-bool is_point_within_bounding_box(float x, float y, Vec4<float> bbox);
+bool is_point_within_bounding_box(float x, float y, glm::vec4 bbox);
 
 /**
  * @brief Linearly interpolates between two points.
@@ -486,12 +486,12 @@ float triangle_area(const Point &p1, const Point &p2, const Point &p3);
 /**
  * @brief Constructs a 4D bounding box for a unit square.
  *
- * This function returns a Vec4<float> object representing the bounding box of a
+ * This function returns a glm::vec4 object representing the bounding box of a
  * unit square, with components (min_x, max_x, min_y, max_y) set to (0.f, 1.f,
  * 0.f, 1.f).
  *
- * @return Vec4<float> A 4D vector representing the unit square's bounding box.
+ * @return glm::vec4 A 4D vector representing the unit square's bounding box.
  */
-Vec4<float> unit_square_bbox();
+glm::vec4 unit_square_bbox();
 
 } // namespace hmap

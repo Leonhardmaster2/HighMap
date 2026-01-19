@@ -31,7 +31,7 @@ void hydraulic_schott(Array       &z,
 
   auto run = clwrapper::Run("hydraulic_schott");
 
-  Vec2<int> shape = z.shape;
+  glm::ivec2 shape = z.shape;
 
   run.bind_imagef("z", z.vector, shape.x, shape.y);
   run.bind_imagef("flow", flow.vector, shape.x, shape.y);

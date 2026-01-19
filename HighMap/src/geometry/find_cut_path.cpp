@@ -92,8 +92,8 @@ Path find_cut_path_dijkstra(const Array   &z,
   std::vector<int> i_path, j_path;
 
   find_path_dijkstra(z,
-                     Vec2<int>(start_pt.first, start_pt.second),
-                     Vec2<int>(end_pt.first, end_pt.second),
+                     glm::ivec2(start_pt.first, start_pt.second),
+                     glm::ivec2(end_pt.first, end_pt.second),
                      i_path,
                      j_path,
                      dijk_elevation_ratio,

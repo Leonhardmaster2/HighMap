@@ -34,7 +34,7 @@ namespace hmap
 
 Array flow_accumulation_dinf(const Array &z, float talus_ref)
 {
-  const Vec2<int>        shape = z.shape;
+  const glm::ivec2       shape = z.shape;
   const std::vector<int> di = HMAP_DINF_DI;
   const std::vector<int> dj = HMAP_DINF_DJ;
   const int              nb = di.size();
@@ -153,7 +153,7 @@ std::vector<Array> flow_direction_dinf(const Array &z, float talus_ref)
 
 std::vector<float> flow_direction_dinf_flat(const Array &z, float talus_ref)
 {
-  const Vec2<int>          shape = z.shape;
+  const glm::ivec2         shape = z.shape;
   const std::vector<int>   di = HMAP_DINF_DI;
   const std::vector<int>   dj = HMAP_DINF_DJ;
   const std::vector<float> c = HMAP_DINF_C;

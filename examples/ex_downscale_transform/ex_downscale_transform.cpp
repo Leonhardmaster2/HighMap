@@ -2,8 +2,8 @@
 
 int main(void)
 {
-  hmap::Vec2<float> kw = {2.f, 2.f};
-  int               seed = 2;
+  glm::vec2 kw = {2.f, 2.f};
+  int       seed = 2;
 
   hmap::Array z128 = hmap::noise_fbm(hmap::NoiseType::PERLIN,
                                      {128, 128},

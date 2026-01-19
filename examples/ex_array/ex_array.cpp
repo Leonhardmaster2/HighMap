@@ -4,8 +4,8 @@
 
 int main(void)
 {
-  hmap::Vec2<int> shape = {6, 4};
-  hmap::Array     a = hmap::Array(shape);
+  glm::ivec2  shape = {6, 4};
+  hmap::Array a = hmap::Array(shape);
 
   a = 1.f;
 

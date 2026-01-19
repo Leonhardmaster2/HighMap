@@ -17,14 +17,14 @@
 namespace hmap
 {
 
-Array cone(Vec2<int>    shape,
+Array cone(glm::ivec2   shape,
            float        slope,
            float        apex_elevation,
            bool         smooth_profile,
-           Vec2<float>  center,
+           glm::vec2    center,
            const Array *p_noise_x,
            const Array *p_noise_y,
-           Vec4<float>  bbox)
+           glm::vec4    bbox)
 {
   Array array = Array(shape);
 
@@ -70,7 +70,7 @@ Array cone(Vec2<int>    shape,
   return array;
 }
 
-Array cone_complex(Vec2<int>             shape,
+Array cone_complex(glm::ivec2            shape,
                    float                 alpha,
                    float                 radius,
                    bool                  smooth_profile,
@@ -85,11 +85,11 @@ Array cone_complex(Vec2<int>             shape,
                    float                 bias_angle,
                    float                 bias_amp,
                    float                 bias_exponent,
-                   Vec2<float>           center,
+                   glm::vec2             center,
                    const Array          *p_ctrl_param,
                    const Array          *p_noise_x,
                    const Array          *p_noise_y,
-                   Vec4<float>           bbox)
+                   glm::vec4             bbox)
 {
   Array array = Array(shape);
 
@@ -151,13 +151,13 @@ Array cone_complex(Vec2<int>             shape,
   return array;
 }
 
-Array cone_sigmoid(Vec2<int>    shape,
+Array cone_sigmoid(glm::ivec2   shape,
                    float        alpha,
                    float        radius,
-                   Vec2<float>  center,
+                   glm::vec2    center,
                    const Array *p_noise_x,
                    const Array *p_noise_y,
-                   Vec4<float>  bbox)
+                   glm::vec4    bbox)
 {
   Array array = Array(shape);
 

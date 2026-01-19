@@ -171,7 +171,7 @@ Array translate(const Array &array,
                 bool         periodic = false,
                 const Array *p_noise_x = nullptr,
                 const Array *p_noise_y = nullptr,
-                Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
+                glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief Apply a warping effect to the array.
@@ -328,7 +328,7 @@ void warp_downslope(Array       &array,
  *                     the original array bounds are filled with zeros. The
  *                     default is `false`.
  * @param  center      The center of the zoom operation, specified as a
- *                     `Vec2<float>`
+ *                     `glm::vec2`
  * with coordinates in the range [0, 1], where {0.5f, 0.5f} represents the
  * center of the array. The default center is {0.5f, 0.5f}.
  * @param  p_noise_x   Optional pointer to a 2D array that contains x-direction
@@ -355,10 +355,10 @@ void warp_downslope(Array       &array,
 Array zoom(const Array &array,
            float        zoom_factor,
            bool         periodic = false,
-           Vec2<float>  center = {0.5f, 0.5f},
+           glm::vec2    center = {0.5f, 0.5f},
            const Array *p_noise_x = nullptr,
            const Array *p_noise_y = nullptr,
-           Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
+           glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
 
 } // namespace hmap
 

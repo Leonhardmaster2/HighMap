@@ -11,23 +11,23 @@ namespace hmap::gpu
 
 // helpers
 
-Vec4<float> helper_transform_bbox(const Vec4<float> &bbox_source,
-                                  const Vec4<float> &bbox_target)
+glm::vec4 helper_transform_bbox(const glm::vec4 &bbox_source,
+                                const glm::vec4 &bbox_target)
 {
   // in the OpenCL kernel, the bounding box of the source array is
   // assumed to be a unit square. Shift and rescale the target
   // bounding box according to this hypothesis
-  Vec4<float> bbox_target_mod = bbox_target;
+  glm::vec4 bbox_target_mod = bbox_target;
 
-  bbox_target_mod.a = (bbox_target_mod.a - bbox_source.a) /
-                      (bbox_source.b - bbox_source.a);
-  bbox_target_mod.b = (bbox_target_mod.b - bbox_source.a) /
-                      (bbox_source.b - bbox_source.a);
+  bbox_target_mod.x = (bbox_target_mod.x - bbox_source.x) /
+                      (bbox_source.y - bbox_source.x);
+  bbox_target_mod.y = (bbox_target_mod.y - bbox_source.x) /
+                      (bbox_source.y - bbox_source.x);
 
-  bbox_target_mod.c = (bbox_target_mod.c - bbox_source.c) /
-                      (bbox_source.d - bbox_source.c);
-  bbox_target_mod.d = (bbox_target_mod.d - bbox_source.c) /
-                      (bbox_source.d - bbox_source.c);
+  bbox_target_mod.z = (bbox_target_mod.z - bbox_source.z) /
+                      (bbox_source.w - bbox_source.z);
+  bbox_target_mod.w = (bbox_target_mod.w - bbox_source.z) /
+                      (bbox_source.w - bbox_source.z);
 
   return bbox_target_mod;
 }
@@ -36,7 +36,7 @@ Vec4<float> helper_transform_bbox(const Vec4<float> &bbox_source,
 
 void interpolate_array_bicubic(const Array &source, Array &target)
 {
-  Vec4<float> bbox(0.f, 1.f, 0.f, 1.f);
+  glm::vec4 bbox(0.f, 1.f, 0.f, 1.f);
 
   auto run = clwrapper::Run("interpolate_array_bicubic");
 
@@ -58,12 +58,12 @@ void interpolate_array_bicubic(const Array &source, Array &target)
   run.read_imagef("target");
 }
 
-void interpolate_array_bicubic(const Array       &source,
-                               Array             &target,
-                               const Vec4<float> &bbox_source,
-                               const Vec4<float> &bbox_target)
+void interpolate_array_bicubic(const Array     &source,
+                               Array           &target,
+                               const glm::vec4 &bbox_source,
+                               const glm::vec4 &bbox_target)
 {
-  Vec4<float> bbox_target_mod = helper_transform_bbox(bbox_source, bbox_target);
+  glm::vec4 bbox_target_mod = helper_transform_bbox(bbox_source, bbox_target);
 
   // compute
   auto run = clwrapper::Run("interpolate_array_bicubic");
@@ -88,7 +88,7 @@ void interpolate_array_bicubic(const Array       &source,
 
 void interpolate_array_bilinear(const Array &source, Array &target)
 {
-  Vec4<float> bbox(0.f, 1.f, 0.f, 1.f);
+  glm::vec4 bbox(0.f, 1.f, 0.f, 1.f);
 
   auto run = clwrapper::Run("interpolate_array_bilinear");
 
@@ -106,12 +106,12 @@ void interpolate_array_bilinear(const Array &source, Array &target)
   run.read_imagef("target");
 }
 
-void interpolate_array_bilinear(const Array       &source,
-                                Array             &target,
-                                const Vec4<float> &bbox_source,
-                                const Vec4<float> &bbox_target)
+void interpolate_array_bilinear(const Array     &source,
+                                Array           &target,
+                                const glm::vec4 &bbox_source,
+                                const glm::vec4 &bbox_target)
 {
-  Vec4<float> bbox_target_mod = helper_transform_bbox(bbox_source, bbox_target);
+  glm::vec4 bbox_target_mod = helper_transform_bbox(bbox_source, bbox_target);
 
   // compute
   auto run = clwrapper::Run("interpolate_array_bilinear");
@@ -154,7 +154,7 @@ void interpolate_array_lagrange(const Array &source, Array &target, int order)
 
 void interpolate_array_nearest(const Array &source, Array &target)
 {
-  Vec4<float> bbox(0.f, 1.f, 0.f, 1.f);
+  glm::vec4 bbox(0.f, 1.f, 0.f, 1.f);
 
   auto run = clwrapper::Run("interpolate_array_nearest");
 
@@ -172,12 +172,12 @@ void interpolate_array_nearest(const Array &source, Array &target)
   run.read_imagef("target");
 }
 
-void interpolate_array_nearest(const Array       &source,
-                               Array             &target,
-                               const Vec4<float> &bbox_source,
-                               const Vec4<float> &bbox_target)
+void interpolate_array_nearest(const Array     &source,
+                               Array           &target,
+                               const glm::vec4 &bbox_source,
+                               const glm::vec4 &bbox_target)
 {
-  Vec4<float> bbox_target_mod = helper_transform_bbox(bbox_source, bbox_target);
+  glm::vec4 bbox_target_mod = helper_transform_bbox(bbox_source, bbox_target);
 
   // compute
   auto run = clwrapper::Run("interpolate_array_nearest");

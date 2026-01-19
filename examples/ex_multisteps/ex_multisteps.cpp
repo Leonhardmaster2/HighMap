@@ -4,7 +4,7 @@ int main(void)
 {
   hmap::gpu::init_opencl();
 
-  hmap::Vec2<int> shape = {256, 256};
+  glm::ivec2 shape = {256, 256};
 
   auto z1 = hmap::multisteps(shape, 10.f);
 

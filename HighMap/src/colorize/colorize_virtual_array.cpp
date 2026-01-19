@@ -266,23 +266,23 @@ void mix_normal_map(VirtualTexture         &out,
     Array *pa_g2 = p_arrays[5];
     Array *pa_b2 = p_arrays[6];
 
-    std::function<Vec3<float>(Vec3<float> &, Vec3<float> &)> blending_fct;
+    std::function<glm::vec3(glm::vec3 &, glm::vec3 &)> blending_fct;
 
     switch (blending_method)
     {
     case NormalMapBlendingMethod::NMAP_LINEAR:
     {
-      blending_fct = [](Vec3<float> &n1, Vec3<float> &n2) { return n1 + n2; };
+      blending_fct = [](glm::vec3 &n1, glm::vec3 &n2) { return n1 + n2; };
     }
     break;
     //
     case NormalMapBlendingMethod::NMAP_DERIVATIVE:
     {
-      blending_fct = [](Vec3<float> &n1, Vec3<float> &n2)
+      blending_fct = [](glm::vec3 &n1, glm::vec3 &n2)
       {
-        Vec3<float> vn = Vec3<float>(n1.x * n2.z + n2.x * n1.z,
-                                     n1.y * n2.z + n2.y * n1.z,
-                                     n1.z * n2.z);
+        glm::vec3 vn = glm::vec3(n1.x * n2.z + n2.x * n1.z,
+                                 n1.y * n2.z + n2.y * n1.z,
+                                 n1.z * n2.z);
         return vn;
       };
     }
@@ -290,9 +290,9 @@ void mix_normal_map(VirtualTexture         &out,
     //
     case NormalMapBlendingMethod::NMAP_UDN:
     {
-      blending_fct = [](Vec3<float> &n1, Vec3<float> &n2)
+      blending_fct = [](glm::vec3 &n1, glm::vec3 &n2)
       {
-        Vec3<float> vn = Vec3<float>(n1.x + n2.x, n1.y + n2.y, n1.z);
+        glm::vec3 vn = glm::vec3(n1.x + n2.x, n1.y + n2.y, n1.z);
         return vn;
       };
     }
@@ -300,15 +300,15 @@ void mix_normal_map(VirtualTexture         &out,
       //
     case NormalMapBlendingMethod::NMAP_UNITY:
     {
-      blending_fct = [](Vec3<float> &n1, Vec3<float> &n2)
+      blending_fct = [](glm::vec3 &n1, glm::vec3 &n2)
       {
-        Vec3<float> m0 = Vec3<float>(n1.z, n1.x, -n1.x);
-        Vec3<float> m1 = Vec3<float>(n1.x, n1.z, -n1.y);
-        Vec3<float> m2 = Vec3<float>(n1.x, n1.y, n1.z);
+        glm::vec3 m0 = glm::vec3(n1.z, n1.x, -n1.x);
+        glm::vec3 m1 = glm::vec3(n1.x, n1.z, -n1.y);
+        glm::vec3 m2 = glm::vec3(n1.x, n1.y, n1.z);
 
-        Vec3<float> vn = Vec3<float>(n2.x * m0.x + n2.y * m1.x + n2.z * m2.x,
-                                     n2.x * m0.y + n2.y * m1.y + n2.z * m2.y,
-                                     n2.x * m0.z + n2.y * m1.z + n2.z * m2.z);
+        glm::vec3 vn = glm::vec3(n2.x * m0.x + n2.y * m1.x + n2.z * m2.x,
+                                 n2.x * m0.y + n2.y * m1.y + n2.z * m2.y,
+                                 n2.x * m0.z + n2.y * m1.z + n2.z * m2.z);
         return vn;
       };
     }
@@ -317,9 +317,9 @@ void mix_normal_map(VirtualTexture         &out,
     case NormalMapBlendingMethod::NMAP_WHITEOUT:
     default:
     {
-      blending_fct = [](Vec3<float> &n1, Vec3<float> &n2)
+      blending_fct = [](glm::vec3 &n1, glm::vec3 &n2)
       {
-        Vec3<float> vn = Vec3<float>(n1.x + n2.x, n1.y + n2.y, n1.z * n2.z);
+        glm::vec3 vn = glm::vec3(n1.x + n2.x, n1.y + n2.y, n1.z * n2.z);
         return vn;
       };
     }
@@ -331,22 +331,22 @@ void mix_normal_map(VirtualTexture         &out,
         // do some rescaling because RGBA texture expected in [0, 1]
         // but normal vector expected in [-1, 1]
 
-        Vec3<float> v111 = Vec3<float>(1.f, 1.f, 1.f);
-        Vec3<float> n1 = 2.f * Vec3<float>((*pa_r1)(i, j),
-                                           (*pa_g1)(i, j),
-                                           (*pa_b1)(i, j)) -
-                         v111;
-        Vec3<float> n2 = 2.f * Vec3<float>((*pa_r2)(i, j),
-                                           (*pa_g2)(i, j),
-                                           (*pa_b2)(i, j)) -
-                         v111;
+        glm::vec3 v111 = glm::vec3(1.f, 1.f, 1.f);
+        glm::vec3 n1 = 2.f * glm::vec3((*pa_r1)(i, j),
+                                       (*pa_g1)(i, j),
+                                       (*pa_b1)(i, j)) -
+                       v111;
+        glm::vec3 n2 = 2.f * glm::vec3((*pa_r2)(i, j),
+                                       (*pa_g2)(i, j),
+                                       (*pa_b2)(i, j)) -
+                       v111;
 
         n2.x *= detail_scaling;
         n2.y *= detail_scaling;
         n2.z *= detail_scaling;
 
-        Vec3<float> vn = blending_fct(n1, n2);
-        vn.normalize();
+        glm::vec3 vn = blending_fct(n1, n2);
+        vn = glm::normalize(vn);
 
         (*pa_r1)(i, j) = 0.5f * vn.x + 0.5f;
         (*pa_g1)(i, j) = 0.5f * vn.y + 0.5f;

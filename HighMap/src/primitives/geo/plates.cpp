@@ -8,16 +8,16 @@
 namespace hmap::gpu
 {
 
-Array plates(Vec2<int>   shape,
-             Vec2<float> kw,
-             uint        seed,
-             float       talus,
-             int         direction,
-             float       mix_ratio,
-             float       base_noise_amp,
-             float       kw_multiplier,
-             float       rugosity,
-             Vec4<float> bbox)
+Array plates(glm::ivec2 shape,
+             glm::vec2  kw,
+             uint       seed,
+             float      talus,
+             int        direction,
+             float      mix_ratio,
+             float      base_noise_amp,
+             float      kw_multiplier,
+             float      rugosity,
+             glm::vec4  bbox)
 {
   const int   octaves = 8;
   const float persistence = 0.5f;
@@ -40,7 +40,7 @@ Array plates(Vec2<int>   shape,
                                                 bbox);
 
   // base primitive
-  Vec2<float>       jitter(1.f, 1.f);
+  glm::vec2         jitter(1.f, 1.f);
   VoronoiReturnType return_type = VoronoiReturnType::EDGE_DISTANCE_SQUARED;
 
   Array voronoi = 2.f * voronoi_fbm(shape,

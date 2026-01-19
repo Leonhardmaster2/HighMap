@@ -78,7 +78,7 @@ public:
    * @param bbox    Bounding box within which the points will be generated. The
    *                bounding box is defined as {xmin, xmax, ymin, ymax}.
    */
-  Cloud(int npoints, uint seed, Vec4<float> bbox = {0.f, 1.f, 0.f, 1.f});
+  Cloud(int npoints, uint seed, glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f});
 
   /**
    * @brief Constructs a new Cloud object based on a list of existing points.
@@ -163,13 +163,13 @@ public:
    * @brief Get the bounding box of the cloud.
    *
    * This method calculates and returns the axis-aligned bounding box of the
-   * cloud. The bounding box is represented as a `Vec4<float>` containing the
+   * cloud. The bounding box is represented as a `glm::vec4` containing the
    * minimum and maximum coordinates in both the `x` and `y` dimensions.
    *
-   * @return Vec4<float> The bounding box of the cloud in the format `[xmin,
+   * @return glm::vec4 The bounding box of the cloud in the format `[xmin,
    * xmax, ymin, ymax]`.
    */
-  Vec4<float> get_bbox() const;
+  glm::vec4 get_bbox() const;
 
   /**
    * @brief Calculates the centroid of a set of points.
@@ -292,7 +292,7 @@ public:
    * values for each point.
    */
   std::vector<float> interpolate_values_from_array(const Array &array,
-                                                   Vec4<float>  bbox);
+                                                   glm::vec4    bbox);
 
   /**
    * @brief Print information about the cloud's points.
@@ -312,7 +312,7 @@ public:
    * @param seed Random seed number for generating positions and values.
    * @param bbox Bounding box within which the points will be randomized.
    */
-  void randomize(uint seed, Vec4<float> bbox = {0.f, 1.f, 0.f, 1.f});
+  void randomize(uint seed, glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f});
 
   /**
    * @brief Filter a point cloud using rejection sampling based on a density
@@ -343,9 +343,9 @@ public:
    * but reduces the overall number of points according to rejection
    * probability.
    */
-  void rejection_filter_density(const Array       &density_mask,
-                                uint               seed,
-                                const Vec4<float> &bbox = {0.f, 1.f, 0.f, 1.f});
+  void rejection_filter_density(const Array     &density_mask,
+                                uint             seed,
+                                const glm::vec4 &bbox = {0.f, 1.f, 0.f, 1.f});
 
   /**
    * @brief Remap the values of the cloud points to a target range.
@@ -404,8 +404,8 @@ public:
    * @param bbox  The bounding box that defines the mapping from the cloud
    * points' coordinates to the array's coordinates.
    */
-  void set_values_from_array(const Array       &array,
-                             const Vec4<float> &bbox = {0.f, 1.f, 0.f, 1.f});
+  void set_values_from_array(const Array     &array,
+                             const glm::vec4 &bbox = {0.f, 1.f, 0.f, 1.f});
 
   /**
    * @brief Sets point values based on their distance to the bounding box
@@ -422,7 +422,7 @@ public:
    * @param bbox Bounding box in the format {xmin, xmax, ymin, ymax}.
    */
   void set_values_from_border_distance(
-      const Vec4<float> &bbox = {0.f, 1.f, 0.f, 1.f});
+      const glm::vec4 &bbox = {0.f, 1.f, 0.f, 1.f});
 
   /**
    * @brief Set the values of the cloud points based on the distance to the
@@ -477,7 +477,7 @@ public:
    * @param bbox  The bounding box that defines the mapping from the cloud
    * points' coordinates to the array's coordinates.
    */
-  void to_array(Array &array, Vec4<float> bbox = {0.f, 1.f, 0.f, 1.f}) const;
+  void to_array(Array &array, glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f}) const;
 
   /**
    * @brief Generate an array filled with the signed distance function (SDF) to
@@ -505,11 +505,11 @@ public:
    * **Result**
    * @image html ex_cloud_sdf.png
    */
-  Array to_array_sdf(Vec2<int>   shape,
-                     Vec4<float> bbox,
-                     Array      *p_noise_x = nullptr,
-                     Array      *p_noise_y = nullptr,
-                     Vec4<float> bbox_array = {0.f, 1.f, 0.f, 1.f}) const;
+  Array to_array_sdf(glm::ivec2 shape,
+                     glm::vec4  bbox,
+                     Array     *p_noise_x = nullptr,
+                     Array     *p_noise_y = nullptr,
+                     glm::vec4  bbox_array = {0.f, 1.f, 0.f, 1.f}) const;
 
   /**
    * @brief Interpolate the values of an array using the cloud points.
@@ -539,12 +539,12 @@ public:
    * @image html ex_cloud_to_array_interp.png
    */
   void to_array_interp(Array                &array,
-                       Vec4<float>           bbox = {0.f, 1.f, 0.f, 1.f},
+                       glm::vec4             bbox = {0.f, 1.f, 0.f, 1.f},
                        InterpolationMethod2D interpolation_method =
                            InterpolationMethod2D::DELAUNAY,
-                       Array      *p_noise_x = nullptr,
-                       Array      *p_noise_y = nullptr,
-                       Vec4<float> bbox_array = {0.f, 1.f, 0.f, 1.f}) const;
+                       Array    *p_noise_x = nullptr,
+                       Array    *p_noise_y = nullptr,
+                       glm::vec4 bbox_array = {0.f, 1.f, 0.f, 1.f}) const;
 
   /**
    * @brief Export the cloud data to a CSV file.
@@ -580,20 +580,20 @@ public:
    * the file extension (e.g., "output.png").
    * @param cmap  An integer specifying the colormap to be used for rendering
    * the data. This index refers to a predefined colormap.
-   * @param bbox  A `Vec4<float>` specifying the bounding box of the data to be
+   * @param bbox  A `glm::vec4` specifying the bounding box of the data to be
    *              included in the image. It is given as {xmin, xmax, ymin,
    * ymax}. The default is {0.f, 1.f, 0.f, 1.f}.
    * @param depth An integer specifying the bit depth of the image. It should be
    * a value defined by OpenCV (e.g., `CV_8U` for 8-bit unsigned). The default
    * is `CV_8U`.
-   * @param shape A `Vec2<int>` specifying the dimensions of the output image.
+   * @param shape A `glm::ivec2` specifying the dimensions of the output image.
    * It is given as {width, height}. The default is {512, 512}.
    */
   void to_png(const std::string &fname,
               int                cmap,
-              Vec4<float>        bbox = {0.f, 1.f, 0.f, 1.f},
+              glm::vec4          bbox = {0.f, 1.f, 0.f, 1.f},
               int                depth = CV_8U,
-              Vec2<int>          shape = {512, 512});
+              glm::ivec2         shape = {512, 512});
 };
 
 /**
@@ -644,7 +644,7 @@ Cloud random_cloud(
     size_t                     count,
     uint                       seed,
     const PointSamplingMethod &method = PointSamplingMethod::RND_LHS,
-    const Vec4<float>         &bbox = {0.f, 1.f, 0.f, 1.f});
+    const glm::vec4           &bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief Generates a random cloud of points based on a spatial density map.
@@ -669,10 +669,10 @@ Cloud random_cloud(
  * @image html ex_point_sampling2.png
  * @image html ex_point_sampling3.png
  */
-Cloud random_cloud_density(size_t             count,
-                           const Array       &density,
-                           uint               seed,
-                           const Vec4<float> &bbox = {0.f, 1.f, 0.f, 1.f});
+Cloud random_cloud_density(size_t           count,
+                           const Array     &density,
+                           uint             seed,
+                           const glm::vec4 &bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief Generates a random cloud of points separated by at least a given
@@ -697,9 +697,9 @@ Cloud random_cloud_density(size_t             count,
  * @image html ex_point_sampling2.png
  * @image html ex_point_sampling3.png
  */
-Cloud random_cloud_distance(float              min_dist,
-                            uint               seed,
-                            const Vec4<float> &bbox = {0.f, 1.f, 0.f, 1.f});
+Cloud random_cloud_distance(float            min_dist,
+                            uint             seed,
+                            const glm::vec4 &bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief Generates a random cloud of points separated by a distance range,
@@ -726,11 +726,11 @@ Cloud random_cloud_distance(float              min_dist,
  * @image html ex_point_sampling2.png
  * @image html ex_point_sampling3.png
  */
-Cloud random_cloud_distance(float              min_dist,
-                            float              max_dist,
-                            const Array       &density,
-                            uint               seed,
-                            const Vec4<float> &bbox = {0.f, 1.f, 0.f, 1.f});
+Cloud random_cloud_distance(float            min_dist,
+                            float            max_dist,
+                            const Array     &density,
+                            uint             seed,
+                            const glm::vec4 &bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief Generates a random cloud of points with distances drawn from a
@@ -758,11 +758,11 @@ Cloud random_cloud_distance(float              min_dist,
  * @image html ex_point_sampling3.png
  */
 Cloud random_cloud_distance_power_law(
-    float              dist_min,
-    float              dist_max,
-    float              alpha,
-    uint               seed,
-    const Vec4<float> &bbox = {0.f, 1.f, 0.f, 1.f});
+    float            dist_min,
+    float            dist_max,
+    float            alpha,
+    uint             seed,
+    const glm::vec4 &bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief Generates a random cloud of points with distances drawn from a Weibull
@@ -790,11 +790,11 @@ Cloud random_cloud_distance_power_law(
  * @image html ex_point_sampling3.png
  */
 Cloud random_cloud_distance_weibull(
-    float              dist_min,
-    float              lambda,
-    float              k,
-    uint               seed,
-    const Vec4<float> &bbox = {0.f, 1.f, 0.f, 1.f});
+    float            dist_min,
+    float            lambda,
+    float            k,
+    uint             seed,
+    const glm::vec4 &bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief Generates a jittered grid cloud of points.
@@ -820,10 +820,10 @@ Cloud random_cloud_distance_weibull(
  * @image html ex_point_sampling2.png
  * @image html ex_point_sampling3.png
  */
-Cloud random_cloud_jittered(size_t             count,
-                            const Vec2<float> &jitter_amount,
-                            const Vec2<float> &stagger_ratio,
-                            uint               seed,
-                            const Vec4<float> &bbox = {0.f, 1.f, 0.f, 1.f});
+Cloud random_cloud_jittered(size_t           count,
+                            const glm::vec2 &jitter_amount,
+                            const glm::vec2 &stagger_ratio,
+                            uint             seed,
+                            const glm::vec4 &bbox = {0.f, 1.f, 0.f, 1.f});
 
 } // namespace hmap

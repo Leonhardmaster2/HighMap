@@ -2,7 +2,7 @@
 
 int main(void)
 {
-  hmap::Vec2<int> shape = {256, 256};
+  glm::ivec2 shape = {256, 256};
 
   // "segments", coordinates are given by pairs (xa_1, xa_2, xb_1,
   // xb_2, ...)

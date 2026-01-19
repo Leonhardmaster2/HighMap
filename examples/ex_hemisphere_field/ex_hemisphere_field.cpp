@@ -4,9 +4,9 @@ int main(void)
 {
   hmap::gpu::init_opencl();
 
-  hmap::Vec2<int>   shape = {256, 256};
-  hmap::Vec2<float> kw = {16.f, 16.f};
-  int               seed = 0;
+  glm::ivec2 shape = {256, 256};
+  glm::vec2  kw = {16.f, 16.f};
+  int        seed = 0;
 
   hmap::Array z1 = hmap::gpu::hemisphere_field(shape, kw, seed, 0.01f, 1.f);
   hmap::remap(z1);

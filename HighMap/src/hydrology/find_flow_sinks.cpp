@@ -59,9 +59,9 @@ void find_flow_sinks(const Array &z, std::vector<int> &is, std::vector<int> &js)
     }
 }
 
-std::vector<Vec2<int>> find_flow_sinks(const Array &z)
+std::vector<glm::ivec2> find_flow_sinks(const Array &z)
 {
-  std::vector<Vec2<int>> indices;
+  std::vector<glm::ivec2> indices;
 
   const std::vector<int> di = {-1, -1, 0, 1, 1, 1, 0, -1};
   const std::vector<int> dj = {0, 1, 1, 1, 0, -1, -1, -1};

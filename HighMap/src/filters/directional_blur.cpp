@@ -20,7 +20,7 @@ void directional_blur(Array       &array,
 {
   // create interpolation function
   bool          periodic = false;
-  ArrayFunction f = hmap::ArrayFunction(array, Vec2<float>(1.f, 1.f), periodic);
+  ArrayFunction f = hmap::ArrayFunction(array, glm::vec2(1.f, 1.f), periodic);
 
   std::vector<float> t = linspace(0.f, spread, ir);
 

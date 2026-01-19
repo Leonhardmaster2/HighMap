@@ -164,13 +164,13 @@ Array select_interval(const Array &array, float value1, float value2)
 }
 
 Array select_inward_outward_slope(const Array &array,
-                                  Vec2<float>  center,
-                                  Vec4<float>  bbox)
+                                  glm::vec2    center,
+                                  glm::vec4    bbox)
 {
   Array c = Array(array.shape);
 
-  Vec2<float> shift = {bbox.a, bbox.c};
-  Vec2<float> scale = {bbox.b - bbox.a, bbox.d - bbox.c};
+  glm::vec2 shift = {bbox.x, bbox.z};
+  glm::vec2 scale = {bbox.y - bbox.x, bbox.w - bbox.z};
 
   int ic = (int)((center.x - shift.x) / scale.x * array.shape.x);
   int jc = (int)((center.y - shift.y) / scale.y * array.shape.y);

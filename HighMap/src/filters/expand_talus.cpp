@@ -36,8 +36,8 @@ void expand_talus(Array       &z,
   };
 
   // params
-  std::mt19937    gen(seed);
-  const Vec2<int> shape = z.shape;
+  std::mt19937     gen(seed);
+  const glm::ivec2 shape = z.shape;
 
   // ---  expand the talus upward
 

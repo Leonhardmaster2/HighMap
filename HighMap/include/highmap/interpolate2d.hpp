@@ -146,7 +146,7 @@ Array harmonic_interpolation(const Array &array,
  *                              1.f}).
  * @return                      Array Output array with interpolated values.
  */
-Array interpolate2d(Vec2<int>                 shape,
+Array interpolate2d(glm::ivec2                shape,
                     const std::vector<float> &x,
                     const std::vector<float> &y,
                     const std::vector<float> &values,
@@ -154,7 +154,7 @@ Array interpolate2d(Vec2<int>                 shape,
                     const Array              *p_noise_x = nullptr,
                     const Array              *p_noise_y = nullptr,
                     const Array              *p_stretching = nullptr,
-                    Vec4<float>               bbox = {0.f, 1.f, 0.f, 1.f});
+                    glm::vec4                 bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief 2D interpolation using the nearest neighbor method.
@@ -175,14 +175,14 @@ Array interpolate2d(Vec2<int>                 shape,
  * @param  bbox         Domain bounding box (default: {0.f, 1.f, 0.f, 1.f}).
  * @return              Array Output array with interpolated values.
  */
-Array interpolate2d_nearest(Vec2<int>                 shape,
+Array interpolate2d_nearest(glm::ivec2                shape,
                             const std::vector<float> &x,
                             const std::vector<float> &y,
                             const std::vector<float> &values,
                             const Array              *p_noise_x = nullptr,
                             const Array              *p_noise_y = nullptr,
                             const Array              *p_stretching = nullptr,
-                            Vec4<float> bbox = {0.f, 1.f, 0.f, 1.f});
+                            glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief 2D interpolation using the Delaunay triangulation method.
@@ -204,14 +204,14 @@ Array interpolate2d_nearest(Vec2<int>                 shape,
  * @param  bbox         Domain bounding box (default: {0.f, 1.f, 0.f, 1.f}).
  * @return              Array Output array with interpolated values.
  */
-Array interpolate2d_delaunay(Vec2<int>                 shape,
+Array interpolate2d_delaunay(glm::ivec2                shape,
                              const std::vector<float> &x,
                              const std::vector<float> &y,
                              const std::vector<float> &values,
                              const Array              *p_noise_x = nullptr,
                              const Array              *p_noise_y = nullptr,
                              const Array              *p_stretching = nullptr,
-                             Vec4<float> bbox = {0.f, 1.f, 0.f, 1.f});
+                             glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f});
 
 } // namespace hmap
 

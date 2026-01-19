@@ -29,8 +29,8 @@ void convert_mat_to_array(const cv::Mat &mat, Array &array, bool flip_j)
 
 Array cv_mat_to_array(const cv::Mat &mat, bool remap_values, bool flip_j)
 {
-  Vec2<int> shape = {mat.cols, mat.rows};
-  Array     array(shape);
+  glm::ivec2 shape = {mat.cols, mat.rows};
+  Array      array(shape);
 
   switch (mat.type())
   {

@@ -18,9 +18,7 @@ namespace hmap
 
 void warp(Array &array, const Array *p_dx, const Array *p_dy)
 {
-  hmap::ArrayFunction f = hmap::ArrayFunction(array,
-                                              Vec2<float>(1.f, 1.f),
-                                              true);
+  hmap::ArrayFunction f = hmap::ArrayFunction(array, glm::vec2(1.f, 1.f), true);
 
   fill_array_using_xy_function(array,
                                {0.f, 1.f, 0.f, 1.f},
