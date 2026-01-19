@@ -109,13 +109,15 @@ Inheritance diagram for hmap::TileStorage:</div>
 <div class="dyncontent">
 <div class="center"><img src="classhmap_1_1TileStorage__inherit__graph.png" border="0" usemap="#ahmap_1_1TileStorage_inherit__map" alt="Inheritance graph"/></div>
 <map name="ahmap_1_1TileStorage_inherit__map" id="ahmap_1_1TileStorage_inherit__map">
-<area shape="rect" title=" " alt="" coords="125,5,266,31"/>
-<area shape="rect" href="classhmap_1_1LruTileStorage.html" title=" " alt="" coords="20,79,181,104"/>
-<area shape="poly" title=" " alt="" coords="171,41,118,81,115,76,168,37"/>
-<area shape="rect" href="classhmap_1_1RamTileStorage.html" title=" " alt="" coords="206,79,377,104"/>
-<area shape="poly" title=" " alt="" coords="223,37,277,76,274,81,220,41"/>
-<area shape="rect" href="classhmap_1_1DiskLruTileStorage.html" title=" " alt="" coords="5,152,196,177"/>
-<area shape="poly" title=" " alt="" coords="103,118,103,152,98,152,98,118"/>
+<area shape="rect" title=" " alt="" coords="229,5,371,31"/>
+<area shape="rect" href="classhmap_1_1DiskSequentialTileStorage.html" title=" " alt="" coords="5,79,195,119"/>
+<area shape="poly" title=" " alt="" coords="259,38,149,81,147,76,257,33"/>
+<area shape="rect" href="classhmap_1_1LruTileStorage.html" title=" " alt="" coords="219,86,381,111"/>
+<area shape="poly" title=" " alt="" coords="303,44,303,86,297,86,297,44"/>
+<area shape="rect" href="classhmap_1_1RamTileStorage.html" title=" " alt="" coords="405,86,576,111"/>
+<area shape="poly" title=" " alt="" coords="341,33,464,84,462,88,339,38"/>
+<area shape="rect" href="classhmap_1_1DiskLruTileStorage.html" title=" " alt="" coords="205,167,395,192"/>
+<area shape="poly" title=" " alt="" coords="303,125,303,166,297,166,297,125"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -127,6 +129,14 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:afb6d5e8458f71c702a8792bcaa8642f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3dd9f39f008bba2ab9b0bd3baa7e7ea9" id="r_a3dd9f39f008bba2ab9b0bd3baa7e7ea9"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1TileStorage.html#a3dd9f39f008bba2ab9b0bd3baa7e7ea9">release_tile</a> (const <a class="el" href="structhmap_1_1TileRegion.html">TileRegion</a> &amp;region)=0</td></tr>
 <tr class="separator:a3dd9f39f008bba2ab9b0bd3baa7e7ea9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a913e34794112d5e973dc182d831db13e" id="r_a913e34794112d5e973dc182d831db13e"><td class="memItemLeft" align="right" valign="top">virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1TileStorage.html#a913e34794112d5e973dc182d831db13e">max_live_tiles</a> () const =0</td></tr>
+<tr class="separator:a913e34794112d5e973dc182d831db13e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6058caeb55d8e5f1a7d86e6ba1d89047" id="r_a6058caeb55d8e5f1a7d86e6ba1d89047"><td class="memItemLeft" align="right" valign="top">virtual std::unique_ptr&lt; <a class="el" href="classhmap_1_1TileStorage.html">TileStorage</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1TileStorage.html#a6058caeb55d8e5f1a7d86e6ba1d89047">clone</a> () const =0</td></tr>
+<tr class="separator:a6058caeb55d8e5f1a7d86e6ba1d89047"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2feeb317dfb3fa8057fcd4daf4202fd8" id="r_a2feeb317dfb3fa8057fcd4daf4202fd8"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1TileStorage.html#a2feeb317dfb3fa8057fcd4daf4202fd8">info_string</a> () const =0</td></tr>
+<tr class="separator:a2feeb317dfb3fa8057fcd4daf4202fd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a019cb42b6028988281a116f669359935" id="r_a019cb42b6028988281a116f669359935"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1TileStorage.html#a019cb42b6028988281a116f669359935">trim</a> ()</td></tr>
+<tr class="separator:a019cb42b6028988281a116f669359935"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a125f3395811a46b8b104eda9736b6b23" name="a125f3395811a46b8b104eda9736b6b23"></a>
@@ -179,7 +189,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classhmap_1_1RamTileStorage.html#ac01f5b8f15b1c50ebece95106adce7fe">hmap::RamTileStorage</a>, <a class="el" href="classhmap_1_1LruTileStorage.html#ad8d27889892845b867bee79aa596042f">hmap::LruTileStorage</a>, and <a class="el" href="classhmap_1_1DiskLruTileStorage.html#ac55de909caccd23af25b19db9f39d54e">hmap::DiskLruTileStorage</a>.</p>
+<p>Implemented in <a class="el" href="classhmap_1_1RamTileStorage.html#ac01f5b8f15b1c50ebece95106adce7fe">hmap::RamTileStorage</a>, <a class="el" href="classhmap_1_1LruTileStorage.html#ad8d27889892845b867bee79aa596042f">hmap::LruTileStorage</a>, <a class="el" href="classhmap_1_1DiskLruTileStorage.html#ac55de909caccd23af25b19db9f39d54e">hmap::DiskLruTileStorage</a>, and <a class="el" href="classhmap_1_1DiskSequentialTileStorage.html#a4b9b283c99296d371fbbfb12425765b3">hmap::DiskSequentialTileStorage</a>.</p>
 
 </div>
 </div>
@@ -207,7 +217,115 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classhmap_1_1RamTileStorage.html#a6614d1aebd7771e7e2645d7ef2cb1151">hmap::RamTileStorage</a>, and <a class="el" href="classhmap_1_1LruTileStorage.html#ab27b0290974d18f882fdadd7bc5acd96">hmap::LruTileStorage</a>.</p>
+<p>Implemented in <a class="el" href="classhmap_1_1RamTileStorage.html#a6614d1aebd7771e7e2645d7ef2cb1151">hmap::RamTileStorage</a>, <a class="el" href="classhmap_1_1LruTileStorage.html#ab27b0290974d18f882fdadd7bc5acd96">hmap::LruTileStorage</a>, and <a class="el" href="classhmap_1_1DiskSequentialTileStorage.html#a7802fb1110b9105719962676dd582f3d">hmap::DiskSequentialTileStorage</a>.</p>
+
+</div>
+</div>
+<a id="a913e34794112d5e973dc182d831db13e" name="a913e34794112d5e973dc182d831db13e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a913e34794112d5e973dc182d831db13e">&#9670;&#160;</a></span>max_live_tiles()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual size_t hmap::TileStorage::max_live_tiles </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="classhmap_1_1RamTileStorage.html#a0e9c5b72223b7a7118cca997454472ed">hmap::RamTileStorage</a>, <a class="el" href="classhmap_1_1LruTileStorage.html#a62d3db90d62e59fb8e4ff341d2a8c139">hmap::LruTileStorage</a>, <a class="el" href="classhmap_1_1DiskLruTileStorage.html#ab0ce9ec07188c153bbbc267c266fe905">hmap::DiskLruTileStorage</a>, and <a class="el" href="classhmap_1_1DiskSequentialTileStorage.html#a903dd0531930ba6c3f0d43fbf71e7109">hmap::DiskSequentialTileStorage</a>.</p>
+
+</div>
+</div>
+<a id="a6058caeb55d8e5f1a7d86e6ba1d89047" name="a6058caeb55d8e5f1a7d86e6ba1d89047"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6058caeb55d8e5f1a7d86e6ba1d89047">&#9670;&#160;</a></span>clone()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::unique_ptr&lt; <a class="el" href="classhmap_1_1TileStorage.html">TileStorage</a> &gt; hmap::TileStorage::clone </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="classhmap_1_1RamTileStorage.html#af5df1a3fe48a778b06306bb08d212022">hmap::RamTileStorage</a>, <a class="el" href="classhmap_1_1LruTileStorage.html#a958b0fe829345faaec6e9263c5923e02">hmap::LruTileStorage</a>, <a class="el" href="classhmap_1_1DiskLruTileStorage.html#ae451ccb62c7c5aa2958046ae16b6e6e7">hmap::DiskLruTileStorage</a>, and <a class="el" href="classhmap_1_1DiskSequentialTileStorage.html#a33f865e9a64b78e5b2cca810b7833e90">hmap::DiskSequentialTileStorage</a>.</p>
+
+</div>
+</div>
+<a id="a2feeb317dfb3fa8057fcd4daf4202fd8" name="a2feeb317dfb3fa8057fcd4daf4202fd8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2feeb317dfb3fa8057fcd4daf4202fd8">&#9670;&#160;</a></span>info_string()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::string hmap::TileStorage::info_string </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="classhmap_1_1RamTileStorage.html#a741b156e46b8763496e2a3c5110b9a67">hmap::RamTileStorage</a>, <a class="el" href="classhmap_1_1LruTileStorage.html#a904540ee5b81ccda39648248aede3a5a">hmap::LruTileStorage</a>, and <a class="el" href="classhmap_1_1DiskSequentialTileStorage.html#af77e4aeb215d4fdca9c32233c1377c1b">hmap::DiskSequentialTileStorage</a>.</p>
+
+</div>
+</div>
+<a id="a019cb42b6028988281a116f669359935" name="a019cb42b6028988281a116f669359935"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a019cb42b6028988281a116f669359935">&#9670;&#160;</a></span>trim()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void hmap::TileStorage::trim </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented in <a class="el" href="classhmap_1_1DiskLruTileStorage.html#aa36f0f1105b15b5652d28d37793af7aa">hmap::DiskLruTileStorage</a>, and <a class="el" href="classhmap_1_1DiskSequentialTileStorage.html#a1c57df8b1b30d942c70db54ad4557121">hmap::DiskSequentialTileStorage</a>.</p>
 
 </div>
 </div>

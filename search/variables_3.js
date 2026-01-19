@@ -5,5 +5,6 @@ var searchData=
   ['damp_5fscale_2',['damp_scale',['../classhmap_1_1FbmJordanFunction.html#a6d47676cc66bda619a526f361ace79bc',1,'hmap::FbmJordanFunction']]],
   ['depth_3',['depth',['../classhmap_1_1CraterFunction.html#a22cd542ac531801292f1616de8ac4c4a',1,'hmap::CraterFunction']]],
   ['diff_4',['diff',['../structhmap_1_1AssertResults.html#a826a44abf2d5591d84715126be8f354b',1,'hmap::AssertResults']]],
-  ['drag_5frate_5',['drag_rate',['../structhmap_1_1Particle.html#a9fe6d66398ff6cc1d74b308339d23cc8',1,'hmap::Particle']]]
+  ['dither_5famp_5',['dither_amp',['../structhmap_1_1ColorAdjust.html#a0d6901dbb470d8b91a91bbd741c95481',1,'hmap::ColorAdjust']]],
+  ['drag_5frate_6',['drag_rate',['../structhmap_1_1Particle.html#a9fe6d66398ff6cc1d74b308339d23cc8',1,'hmap::Particle']]]
 ];

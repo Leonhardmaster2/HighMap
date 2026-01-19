@@ -29,17 +29,27 @@ Collaboration diagram for hmap\+::Lru\+Tile\+Storage\+:
 \item 
 \mbox{\hyperlink{classhmap_1_1LruTileStorage_a18948b97db31797b0fe45c58d2da883b}{Lru\+Tile\+Storage}} (size\+\_\+t \mbox{\hyperlink{classhmap_1_1LruTileStorage_aa04ddcca3cd4ef62b56823fc99ca1c30}{max\+\_\+tiles}})
 \item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmap_1_1TileStorage}{Tile\+Storage}} $>$ \mbox{\hyperlink{classhmap_1_1LruTileStorage_a958b0fe829345faaec6e9263c5923e02}{clone}} () const override
+\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \& \mbox{\hyperlink{classhmap_1_1LruTileStorage_ad8d27889892845b867bee79aa596042f}{get\+\_\+tile}} (const \mbox{\hyperlink{structhmap_1_1TileRegion}{Tile\+Region}} \&region) override
 \item 
 void \mbox{\hyperlink{classhmap_1_1LruTileStorage_ab27b0290974d18f882fdadd7bc5acd96}{release\+\_\+tile}} (const \mbox{\hyperlink{structhmap_1_1TileRegion}{Tile\+Region}} \&region) override
+\item 
+size\+\_\+t \mbox{\hyperlink{classhmap_1_1LruTileStorage_a62d3db90d62e59fb8e4ff341d2a8c139}{max\+\_\+live\+\_\+tiles}} () const override
+\item 
+std\+::string \mbox{\hyperlink{classhmap_1_1LruTileStorage_a904540ee5b81ccda39648248aede3a5a}{info\+\_\+string}} () const override
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classhmap_1_1TileStorage}{hmap\+::\+Tile\+Storage}}}
 \begin{DoxyCompactItemize}
 \item 
 virtual \mbox{\hyperlink{classhmap_1_1TileStorage_a125f3395811a46b8b104eda9736b6b23}{\texorpdfstring{$\sim$}{\string~}\+Tile\+Storage}} ()=default
+\item 
+virtual void \mbox{\hyperlink{classhmap_1_1TileStorage_a019cb42b6028988281a116f669359935}{trim}} ()
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \& \mbox{\hyperlink{classhmap_1_1LruTileStorage_aafd76cf3da42c38072a60934418898a4}{get\+\_\+tile\+\_\+no\+\_\+mutex\+\_\+lock}} (const \mbox{\hyperlink{structhmap_1_1TileRegion}{Tile\+Region}} \&region)
 \item 
 virtual void \mbox{\hyperlink{classhmap_1_1LruTileStorage_ac7f51bb13ce9dab2d1dac83f8177e8db}{on\+\_\+evict}} (const \mbox{\hyperlink{structhmap_1_1TileKey}{Tile\+Key}} \&key, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&tile)
 \end{DoxyCompactItemize}
@@ -51,6 +61,8 @@ size\+\_\+t \mbox{\hyperlink{classhmap_1_1LruTileStorage_aa04ddcca3cd4ef62b56823
 std\+::list$<$ \mbox{\hyperlink{structhmap_1_1TileKey}{Tile\+Key}} $>$ \mbox{\hyperlink{classhmap_1_1LruTileStorage_a503160ae137678b2255088de204a5d7c}{lru}}
 \item 
 std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{structhmap_1_1TileKey}{Tile\+Key}}, \mbox{\hyperlink{structhmap_1_1LruTileEntry}{Lru\+Tile\+Entry}}, \mbox{\hyperlink{structhmap_1_1TileKeyHash}{Tile\+Key\+Hash}} $>$ \mbox{\hyperlink{classhmap_1_1LruTileStorage_afc5582d2a112b9907a175d101f8dcf30}{tiles}}
+\item 
+std\+::mutex \mbox{\hyperlink{classhmap_1_1LruTileStorage_ab9b7eae867ec2993d2e6f8d28417fcca}{mutex}}
 \end{DoxyCompactItemize}
 
 
@@ -64,6 +76,16 @@ std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{structhmap_1_1TileKey}{Tile\+Key}}
 
 
 \doxysubsection{Member Function Documentation}
+\Hypertarget{classhmap_1_1LruTileStorage_a958b0fe829345faaec6e9263c5923e02}\label{classhmap_1_1LruTileStorage_a958b0fe829345faaec6e9263c5923e02} 
+\index{hmap::LruTileStorage@{hmap::LruTileStorage}!clone@{clone}}
+\index{clone@{clone}!hmap::LruTileStorage@{hmap::LruTileStorage}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmap_1_1TileStorage}{Tile\+Storage}} $>$ hmap\+::\+Lru\+Tile\+Storage\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classhmap_1_1TileStorage_a6058caeb55d8e5f1a7d86e6ba1d89047}{hmap\+::\+Tile\+Storage}}.
+
 \Hypertarget{classhmap_1_1LruTileStorage_ad8d27889892845b867bee79aa596042f}\label{classhmap_1_1LruTileStorage_ad8d27889892845b867bee79aa596042f} 
 \index{hmap::LruTileStorage@{hmap::LruTileStorage}!get\_tile@{get\_tile}}
 \index{get\_tile@{get\_tile}!hmap::LruTileStorage@{hmap::LruTileStorage}}
@@ -83,6 +105,32 @@ Implements \mbox{\hyperlink{classhmap_1_1TileStorage_afb6d5e8458f71c702a8792bcaa
 
 
 Implements \mbox{\hyperlink{classhmap_1_1TileStorage_a3dd9f39f008bba2ab9b0bd3baa7e7ea9}{hmap\+::\+Tile\+Storage}}.
+
+\Hypertarget{classhmap_1_1LruTileStorage_a62d3db90d62e59fb8e4ff341d2a8c139}\label{classhmap_1_1LruTileStorage_a62d3db90d62e59fb8e4ff341d2a8c139} 
+\index{hmap::LruTileStorage@{hmap::LruTileStorage}!max\_live\_tiles@{max\_live\_tiles}}
+\index{max\_live\_tiles@{max\_live\_tiles}!hmap::LruTileStorage@{hmap::LruTileStorage}}
+\doxysubsubsection{\texorpdfstring{max\_live\_tiles()}{max\_live\_tiles()}}
+{\footnotesize\ttfamily size\+\_\+t hmap\+::\+Lru\+Tile\+Storage\+::max\+\_\+live\+\_\+tiles (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classhmap_1_1TileStorage_a913e34794112d5e973dc182d831db13e}{hmap\+::\+Tile\+Storage}}.
+
+\Hypertarget{classhmap_1_1LruTileStorage_a904540ee5b81ccda39648248aede3a5a}\label{classhmap_1_1LruTileStorage_a904540ee5b81ccda39648248aede3a5a} 
+\index{hmap::LruTileStorage@{hmap::LruTileStorage}!info\_string@{info\_string}}
+\index{info\_string@{info\_string}!hmap::LruTileStorage@{hmap::LruTileStorage}}
+\doxysubsubsection{\texorpdfstring{info\_string()}{info\_string()}}
+{\footnotesize\ttfamily std\+::string hmap\+::\+Lru\+Tile\+Storage\+::info\+\_\+string (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classhmap_1_1TileStorage_a2feeb317dfb3fa8057fcd4daf4202fd8}{hmap\+::\+Tile\+Storage}}.
+
+\Hypertarget{classhmap_1_1LruTileStorage_aafd76cf3da42c38072a60934418898a4}\label{classhmap_1_1LruTileStorage_aafd76cf3da42c38072a60934418898a4} 
+\index{hmap::LruTileStorage@{hmap::LruTileStorage}!get\_tile\_no\_mutex\_lock@{get\_tile\_no\_mutex\_lock}}
+\index{get\_tile\_no\_mutex\_lock@{get\_tile\_no\_mutex\_lock}!hmap::LruTileStorage@{hmap::LruTileStorage}}
+\doxysubsubsection{\texorpdfstring{get\_tile\_no\_mutex\_lock()}{get\_tile\_no\_mutex\_lock()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} \& hmap\+::\+Lru\+Tile\+Storage\+::get\+\_\+tile\+\_\+no\+\_\+mutex\+\_\+lock (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structhmap_1_1TileRegion}{Tile\+Region}} \&}]{region }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
 \Hypertarget{classhmap_1_1LruTileStorage_ac7f51bb13ce9dab2d1dac83f8177e8db}\label{classhmap_1_1LruTileStorage_ac7f51bb13ce9dab2d1dac83f8177e8db} 
 \index{hmap::LruTileStorage@{hmap::LruTileStorage}!on\_evict@{on\_evict}}
@@ -114,6 +162,12 @@ Reimplemented in \mbox{\hyperlink{classhmap_1_1DiskLruTileStorage_a6f78ac63137fc
 \index{tiles@{tiles}!hmap::LruTileStorage@{hmap::LruTileStorage}}
 \doxysubsubsection{\texorpdfstring{tiles}{tiles}}
 {\footnotesize\ttfamily std\+::unordered\+\_\+map$<$\mbox{\hyperlink{structhmap_1_1TileKey}{Tile\+Key}}, \mbox{\hyperlink{structhmap_1_1LruTileEntry}{Lru\+Tile\+Entry}}, \mbox{\hyperlink{structhmap_1_1TileKeyHash}{Tile\+Key\+Hash}}$>$ hmap\+::\+Lru\+Tile\+Storage\+::tiles\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classhmap_1_1LruTileStorage_ab9b7eae867ec2993d2e6f8d28417fcca}\label{classhmap_1_1LruTileStorage_ab9b7eae867ec2993d2e6f8d28417fcca} 
+\index{hmap::LruTileStorage@{hmap::LruTileStorage}!mutex@{mutex}}
+\index{mutex@{mutex}!hmap::LruTileStorage@{hmap::LruTileStorage}}
+\doxysubsubsection{\texorpdfstring{mutex}{mutex}}
+{\footnotesize\ttfamily std\+::mutex hmap\+::\+Lru\+Tile\+Storage\+::mutex\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 

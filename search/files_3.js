@@ -11,11 +11,12 @@ var searchData=
   ['dijsktra_2ecpp_8',['dijsktra.cpp',['../dijsktra_8cpp.html',1,'']]],
   ['directional_5fblur_2ecpp_9',['directional_blur.cpp',['../directional__blur_8cpp.html',1,'']]],
   ['disk_5flru_5fstorage_2ecpp_10',['disk_lru_storage.cpp',['../disk__lru__storage_8cpp.html',1,'']]],
-  ['distance_5ffunction_2ecpp_11',['distance_function.cpp',['../distance__function_8cpp.html',1,'']]],
-  ['distance_5ftransform_2ecpp_12',['distance_transform.cpp',['../distance__transform_8cpp.html',1,'']]],
-  ['distance_5ftransform_5fapprox_2ecpp_13',['distance_transform_approx.cpp',['../distance__transform__approx_8cpp.html',1,'']]],
-  ['distance_5ftransform_5fjfa_2ecpp_14',['distance_transform_jfa.cpp',['../distance__transform__jfa_8cpp.html',1,'']]],
-  ['downscale_5ftransform_2ecpp_15',['downscale_transform.cpp',['../downscale__transform_8cpp.html',1,'']]],
-  ['downscaling_2ehpp_16',['downscaling.hpp',['../downscaling_8hpp.html',1,'']]],
-  ['drainage_5fbasins_2ecpp_17',['drainage_basins.cpp',['../drainage__basins_8cpp.html',1,'']]]
+  ['disk_5fsequential_5fstorage_2ecpp_11',['disk_sequential_storage.cpp',['../disk__sequential__storage_8cpp.html',1,'']]],
+  ['distance_5ffunction_2ecpp_12',['distance_function.cpp',['../distance__function_8cpp.html',1,'']]],
+  ['distance_5ftransform_2ecpp_13',['distance_transform.cpp',['../distance__transform_8cpp.html',1,'']]],
+  ['distance_5ftransform_5fapprox_2ecpp_14',['distance_transform_approx.cpp',['../distance__transform__approx_8cpp.html',1,'']]],
+  ['distance_5ftransform_5fjfa_2ecpp_15',['distance_transform_jfa.cpp',['../distance__transform__jfa_8cpp.html',1,'']]],
+  ['downscale_5ftransform_2ecpp_16',['downscale_transform.cpp',['../downscale__transform_8cpp.html',1,'']]],
+  ['downscaling_2ehpp_17',['downscaling.hpp',['../downscaling_8hpp.html',1,'']]],
+  ['drainage_5fbasins_2ecpp_18',['drainage_basins.cpp',['../drainage__basins_8cpp.html',1,'']]]
 ];

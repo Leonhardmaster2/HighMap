@@ -17,21 +17,71 @@ Collaboration diagram for hmap\+::Virtual\+Array\+:
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\hyperlink{structhmap_1_1VirtualArray_a449169067a5399d2bc162a2cade15bcc}{Virtual\+Array}} ()=default
+\item 
 \mbox{\hyperlink{structhmap_1_1VirtualArray_a8311d1152047f08d0388d1a4a048099e}{Virtual\+Array}} (glm\+::ivec2 \mbox{\hyperlink{structhmap_1_1VirtualArray_ab4cb9cb20eb23bc7b1026da3486be975}{shape}}, glm\+::vec4 \mbox{\hyperlink{structhmap_1_1VirtualArray_a7a4e86a56ad72960bc20dfa97cadb8e3}{bbox}}, glm\+::ivec2 \mbox{\hyperlink{structhmap_1_1VirtualArray_a2d3721a573d9e21e941148f2e359434b}{tile\+\_\+shape}}, int \mbox{\hyperlink{structhmap_1_1VirtualArray_a2b173300623c38c8083654ad095217f2}{halo}}, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmap_1_1TileStorage}{Tile\+Storage}} $>$ \mbox{\hyperlink{structhmap_1_1VirtualArray_ac46202fbde3f529ab290f38e73b529d6}{storage}})
+\item 
+\mbox{\hyperlink{structhmap_1_1VirtualArray_ad4d8d3407778b4db8fd3dd4a98ef28a5}{Virtual\+Array}} (glm\+::ivec2 \mbox{\hyperlink{structhmap_1_1VirtualArray_ab4cb9cb20eb23bc7b1026da3486be975}{shape}}, glm\+::vec4 \mbox{\hyperlink{structhmap_1_1VirtualArray_a7a4e86a56ad72960bc20dfa97cadb8e3}{bbox}}, glm\+::ivec2 \mbox{\hyperlink{structhmap_1_1VirtualArray_a2d3721a573d9e21e941148f2e359434b}{tile\+\_\+shape}}, int \mbox{\hyperlink{structhmap_1_1VirtualArray_a2b173300623c38c8083654ad095217f2}{halo}}, \mbox{\hyperlink{namespacehmap_ad21b93a34c88a47d6b54f3a4d5b65e6e}{Storage\+Mode}} storage\+\_\+mode=\mbox{\hyperlink{namespacehmap_ad21b93a34c88a47d6b54f3a4d5b65e6eae10df7db812e0abe9bc94fc28ae907ce}{Storage\+Mode\+::\+VA\+\_\+\+RAM}})
+\item 
+\mbox{\hyperlink{structhmap_1_1VirtualArray_aee46789ef67622a8f65fb9fbeacd41b5}{Virtual\+Array}} (glm\+::ivec2 \mbox{\hyperlink{structhmap_1_1VirtualArray_ab4cb9cb20eb23bc7b1026da3486be975}{shape}}, glm\+::ivec2 \mbox{\hyperlink{structhmap_1_1VirtualArray_a2d3721a573d9e21e941148f2e359434b}{tile\+\_\+shape}}, int \mbox{\hyperlink{structhmap_1_1VirtualArray_a2b173300623c38c8083654ad095217f2}{halo}}, \mbox{\hyperlink{namespacehmap_ad21b93a34c88a47d6b54f3a4d5b65e6e}{Storage\+Mode}} storage\+\_\+mode=\mbox{\hyperlink{namespacehmap_ad21b93a34c88a47d6b54f3a4d5b65e6eae10df7db812e0abe9bc94fc28ae907ce}{Storage\+Mode\+::\+VA\+\_\+\+RAM}})
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} $>$ \mbox{\hyperlink{structhmap_1_1VirtualArray_ab62c06317c15b733a4274a11eba5c8e7}{clone}} (const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&cm, bool deep\+\_\+copy=false)
+\item 
+void \mbox{\hyperlink{structhmap_1_1VirtualArray_a480907077a0c4748ed6f5894226471ac}{copy\+\_\+from}} (\mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \&src, const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&cm, bool copy\+\_\+src\+\_\+data=true)
 \item 
 float \mbox{\hyperlink{structhmap_1_1VirtualArray_a9d0e859ae542634ecb9446f5c2fc7bb9}{get}} (int global\+\_\+i, int global\+\_\+j) const
 \item 
+float \mbox{\hyperlink{structhmap_1_1VirtualArray_ae4adbabb465da57c4056050375886848}{get\+\_\+bilinear}} (float x, float y) const
+\item 
+float \mbox{\hyperlink{structhmap_1_1VirtualArray_af18d79861c72756d23fbde116be927d0}{get\+\_\+nearest}} (float x, float y) const
+\item 
 void \mbox{\hyperlink{structhmap_1_1VirtualArray_ab46eee27ffe32137d1c6076e82cc5195}{set}} (int global\+\_\+i, int global\+\_\+j, float v)
+\item 
+glm\+::ivec2 \mbox{\hyperlink{structhmap_1_1VirtualArray_ac6e25f58944e813be9da550257a33a52}{get\+\_\+max\+\_\+tiles}} () const
+\item 
+int \mbox{\hyperlink{structhmap_1_1VirtualArray_a2245a6c69d4cc5ee8cc6f5506cc61baf}{get\+\_\+ntiles}} () const
+\item 
+std\+::string \mbox{\hyperlink{structhmap_1_1VirtualArray_af3c6671195e6953ad46ae65a64fe88bd}{info\+\_\+string}} (const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&cm, int indent=0) const
+\item 
+void \mbox{\hyperlink{structhmap_1_1VirtualArray_aeff83280c1e81978b24909637bf728a1}{fill}} (float value, const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&cm)
+\item 
+void \mbox{\hyperlink{structhmap_1_1VirtualArray_ab685dda55aa7c9797d2a77e5d75d66c4}{from\+\_\+array}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&cm)
+\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{structhmap_1_1VirtualArray_a81fead26a776d58553e942f0204ce810}{to\+\_\+array}} (const glm\+::ivec2 array\+\_\+shape, const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&cm) const
+\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{structhmap_1_1VirtualArray_a72a1341b322d90e51275dc8336944c16}{to\+\_\+array}} (const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&cm) const
+\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{structhmap_1_1VirtualArray_a037ca97b101483eeb9628bf7662ee7ee}{to\+\_\+array\+\_\+dbg}} () const
+\item 
+float \mbox{\hyperlink{structhmap_1_1VirtualArray_a95ef87e8953451eb40d8b8e43e09f051}{max}} (const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&cm) const
+\item 
+float \mbox{\hyperlink{structhmap_1_1VirtualArray_ac67dd8407b579ec8e8dced6cf45faa7e}{mean}} (const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&cm) const
+\item 
+float \mbox{\hyperlink{structhmap_1_1VirtualArray_a86a3950c3cb912d82c694a752bb20f4c}{min}} (const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&cm) const
+\item 
+float \mbox{\hyperlink{structhmap_1_1VirtualArray_af98faefefaaeb9ffc84bcc5997fbae8e}{sum}} (const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&cm) const
+\item 
+void \mbox{\hyperlink{structhmap_1_1VirtualArray_a277b4009dc26ec99a6f82157b899d8cd}{inverse}} (const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&cm)
+\item 
+void \mbox{\hyperlink{structhmap_1_1VirtualArray_ab040e57e20ecafbe4dbb0a3076560314}{remap}} (float vmin, float vmax, const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&cm)
+\item 
+void \mbox{\hyperlink{structhmap_1_1VirtualArray_a98bfd2a46fdaebd580d44ea766c5829f}{remap}} (float vmin, float vmax, float from\+\_\+min, float from\+\_\+max, const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&cm)
+\item 
+std\+::vector$<$ float $>$ \mbox{\hyperlink{structhmap_1_1VirtualArray_a8d74c7c6a84b8c54985a5fdeb4e805f0}{unique\+\_\+values}} (const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&cm) const
 \item 
 void \mbox{\hyperlink{structhmap_1_1VirtualArray_a7112a736d8497a4b65d5056209f04077}{smooth\+\_\+overlap\+\_\+buffers}} ()
 \item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{structhmap_1_1VirtualArray_a46a7e552ad77c88a527c41c8aeeb5f68}{to\+\_\+array}} () const
+glm\+::vec2 \mbox{\hyperlink{structhmap_1_1VirtualArray_ace64d9290dd6116a38ac034f6b72dc91}{tile\+\_\+region\+\_\+global\+\_\+position}} (const \mbox{\hyperlink{structhmap_1_1TileRegion}{Tile\+Region}} \&region) const
+\item 
+glm\+::ivec2 \mbox{\hyperlink{structhmap_1_1VirtualArray_afd55182a2230d4e68cd542f2bef2ad9e}{tile\+\_\+region\+\_\+global\+\_\+indices}} (const \mbox{\hyperlink{structhmap_1_1TileRegion}{Tile\+Region}} \&region) const
 \item 
 \mbox{\hyperlink{structhmap_1_1TileRegion}{Tile\+Region}} \mbox{\hyperlink{structhmap_1_1VirtualArray_a307123a81d2ea77c85ae28612a1c06c2}{tile\+\_\+region\+\_\+from\+\_\+global\+\_\+index}} (int global\+\_\+i, int global\+\_\+j) const
 \item 
 \mbox{\hyperlink{structhmap_1_1TileRegion}{Tile\+Region}} \mbox{\hyperlink{structhmap_1_1VirtualArray_a157b5a589d01cb7da7fd9b9b759f94c6}{tile\+\_\+region\+\_\+from\+\_\+tile\+\_\+coords}} (int tile\+\_\+x, int tile\+\_\+y) const
 \item 
 glm\+::ivec2 \mbox{\hyperlink{structhmap_1_1VirtualArray_a12c769efc1f74252ff39f2b617f55f33}{local\+\_\+indices}} (const \mbox{\hyperlink{structhmap_1_1TileRegion}{Tile\+Region}} \&region, int global\+\_\+i, int global\+\_\+j) const
+\item 
+void \mbox{\hyperlink{structhmap_1_1VirtualArray_a883004746310f2e6cbd6365ce96d2541}{trim\+\_\+storage}} ()
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -49,20 +99,62 @@ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmap_1_1TileStorage}{Tile\+Stora
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{structhmap_1_1VirtualArray_a449169067a5399d2bc162a2cade15bcc}\label{structhmap_1_1VirtualArray_a449169067a5399d2bc162a2cade15bcc} 
+\index{hmap::VirtualArray@{hmap::VirtualArray}!VirtualArray@{VirtualArray}}
+\index{VirtualArray@{VirtualArray}!hmap::VirtualArray@{hmap::VirtualArray}}
+\doxysubsubsection{\texorpdfstring{VirtualArray()}{VirtualArray()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily hmap\+::\+Virtual\+Array\+::\+Virtual\+Array (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
 \Hypertarget{structhmap_1_1VirtualArray_a8311d1152047f08d0388d1a4a048099e}\label{structhmap_1_1VirtualArray_a8311d1152047f08d0388d1a4a048099e} 
 \index{hmap::VirtualArray@{hmap::VirtualArray}!VirtualArray@{VirtualArray}}
 \index{VirtualArray@{VirtualArray}!hmap::VirtualArray@{hmap::VirtualArray}}
-\doxysubsubsection{\texorpdfstring{VirtualArray()}{VirtualArray()}}
+\doxysubsubsection{\texorpdfstring{VirtualArray()}{VirtualArray()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
 {\footnotesize\ttfamily hmap\+::\+Virtual\+Array\+::\+Virtual\+Array (\begin{DoxyParamCaption}\item[{glm\+::ivec2}]{shape,  }\item[{glm\+::vec4}]{bbox,  }\item[{glm\+::ivec2}]{tile\+\_\+shape,  }\item[{int}]{halo,  }\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmap_1_1TileStorage}{Tile\+Storage}} $>$}]{storage }\end{DoxyParamCaption})}
+
+\Hypertarget{structhmap_1_1VirtualArray_ad4d8d3407778b4db8fd3dd4a98ef28a5}\label{structhmap_1_1VirtualArray_ad4d8d3407778b4db8fd3dd4a98ef28a5} 
+\index{hmap::VirtualArray@{hmap::VirtualArray}!VirtualArray@{VirtualArray}}
+\index{VirtualArray@{VirtualArray}!hmap::VirtualArray@{hmap::VirtualArray}}
+\doxysubsubsection{\texorpdfstring{VirtualArray()}{VirtualArray()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily hmap\+::\+Virtual\+Array\+::\+Virtual\+Array (\begin{DoxyParamCaption}\item[{glm\+::ivec2}]{shape,  }\item[{glm\+::vec4}]{bbox,  }\item[{glm\+::ivec2}]{tile\+\_\+shape,  }\item[{int}]{halo,  }\item[{\mbox{\hyperlink{namespacehmap_ad21b93a34c88a47d6b54f3a4d5b65e6e}{Storage\+Mode}}}]{storage\+\_\+mode = {\ttfamily \mbox{\hyperlink{namespacehmap_ad21b93a34c88a47d6b54f3a4d5b65e6eae10df7db812e0abe9bc94fc28ae907ce}{Storage\+Mode\+::\+VA\+\_\+\+RAM}}} }\end{DoxyParamCaption})}
+
+\Hypertarget{structhmap_1_1VirtualArray_aee46789ef67622a8f65fb9fbeacd41b5}\label{structhmap_1_1VirtualArray_aee46789ef67622a8f65fb9fbeacd41b5} 
+\index{hmap::VirtualArray@{hmap::VirtualArray}!VirtualArray@{VirtualArray}}
+\index{VirtualArray@{VirtualArray}!hmap::VirtualArray@{hmap::VirtualArray}}
+\doxysubsubsection{\texorpdfstring{VirtualArray()}{VirtualArray()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily hmap\+::\+Virtual\+Array\+::\+Virtual\+Array (\begin{DoxyParamCaption}\item[{glm\+::ivec2}]{shape,  }\item[{glm\+::ivec2}]{tile\+\_\+shape,  }\item[{int}]{halo,  }\item[{\mbox{\hyperlink{namespacehmap_ad21b93a34c88a47d6b54f3a4d5b65e6e}{Storage\+Mode}}}]{storage\+\_\+mode = {\ttfamily \mbox{\hyperlink{namespacehmap_ad21b93a34c88a47d6b54f3a4d5b65e6eae10df7db812e0abe9bc94fc28ae907ce}{Storage\+Mode\+::\+VA\+\_\+\+RAM}}} }\end{DoxyParamCaption})}
 
 
 
 \doxysubsection{Member Function Documentation}
+\Hypertarget{structhmap_1_1VirtualArray_ab62c06317c15b733a4274a11eba5c8e7}\label{structhmap_1_1VirtualArray_ab62c06317c15b733a4274a11eba5c8e7} 
+\index{hmap::VirtualArray@{hmap::VirtualArray}!clone@{clone}}
+\index{clone@{clone}!hmap::VirtualArray@{hmap::VirtualArray}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} $>$ hmap\+::\+Virtual\+Array\+::clone (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&}]{cm,  }\item[{bool}]{deep\+\_\+copy = {\ttfamily false} }\end{DoxyParamCaption})}
+
+\Hypertarget{structhmap_1_1VirtualArray_a480907077a0c4748ed6f5894226471ac}\label{structhmap_1_1VirtualArray_a480907077a0c4748ed6f5894226471ac} 
+\index{hmap::VirtualArray@{hmap::VirtualArray}!copy\_from@{copy\_from}}
+\index{copy\_from@{copy\_from}!hmap::VirtualArray@{hmap::VirtualArray}}
+\doxysubsubsection{\texorpdfstring{copy\_from()}{copy\_from()}}
+{\footnotesize\ttfamily void hmap\+::\+Virtual\+Array\+::copy\+\_\+from (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \&}]{src,  }\item[{const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&}]{cm,  }\item[{bool}]{copy\+\_\+src\+\_\+data = {\ttfamily true} }\end{DoxyParamCaption})}
+
 \Hypertarget{structhmap_1_1VirtualArray_a9d0e859ae542634ecb9446f5c2fc7bb9}\label{structhmap_1_1VirtualArray_a9d0e859ae542634ecb9446f5c2fc7bb9} 
 \index{hmap::VirtualArray@{hmap::VirtualArray}!get@{get}}
 \index{get@{get}!hmap::VirtualArray@{hmap::VirtualArray}}
 \doxysubsubsection{\texorpdfstring{get()}{get()}}
 {\footnotesize\ttfamily float hmap\+::\+Virtual\+Array\+::get (\begin{DoxyParamCaption}\item[{int}]{global\+\_\+i,  }\item[{int}]{global\+\_\+j }\end{DoxyParamCaption}) const}
+
+\Hypertarget{structhmap_1_1VirtualArray_ae4adbabb465da57c4056050375886848}\label{structhmap_1_1VirtualArray_ae4adbabb465da57c4056050375886848} 
+\index{hmap::VirtualArray@{hmap::VirtualArray}!get\_bilinear@{get\_bilinear}}
+\index{get\_bilinear@{get\_bilinear}!hmap::VirtualArray@{hmap::VirtualArray}}
+\doxysubsubsection{\texorpdfstring{get\_bilinear()}{get\_bilinear()}}
+{\footnotesize\ttfamily float hmap\+::\+Virtual\+Array\+::get\+\_\+bilinear (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y }\end{DoxyParamCaption}) const}
+
+\Hypertarget{structhmap_1_1VirtualArray_af18d79861c72756d23fbde116be927d0}\label{structhmap_1_1VirtualArray_af18d79861c72756d23fbde116be927d0} 
+\index{hmap::VirtualArray@{hmap::VirtualArray}!get\_nearest@{get\_nearest}}
+\index{get\_nearest@{get\_nearest}!hmap::VirtualArray@{hmap::VirtualArray}}
+\doxysubsubsection{\texorpdfstring{get\_nearest()}{get\_nearest()}}
+{\footnotesize\ttfamily float hmap\+::\+Virtual\+Array\+::get\+\_\+nearest (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y }\end{DoxyParamCaption}) const}
 
 \Hypertarget{structhmap_1_1VirtualArray_ab46eee27ffe32137d1c6076e82cc5195}\label{structhmap_1_1VirtualArray_ab46eee27ffe32137d1c6076e82cc5195} 
 \index{hmap::VirtualArray@{hmap::VirtualArray}!set@{set}}
@@ -70,17 +162,119 @@ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmap_1_1TileStorage}{Tile\+Stora
 \doxysubsubsection{\texorpdfstring{set()}{set()}}
 {\footnotesize\ttfamily void hmap\+::\+Virtual\+Array\+::set (\begin{DoxyParamCaption}\item[{int}]{global\+\_\+i,  }\item[{int}]{global\+\_\+j,  }\item[{float}]{v }\end{DoxyParamCaption})}
 
+\Hypertarget{structhmap_1_1VirtualArray_ac6e25f58944e813be9da550257a33a52}\label{structhmap_1_1VirtualArray_ac6e25f58944e813be9da550257a33a52} 
+\index{hmap::VirtualArray@{hmap::VirtualArray}!get\_max\_tiles@{get\_max\_tiles}}
+\index{get\_max\_tiles@{get\_max\_tiles}!hmap::VirtualArray@{hmap::VirtualArray}}
+\doxysubsubsection{\texorpdfstring{get\_max\_tiles()}{get\_max\_tiles()}}
+{\footnotesize\ttfamily glm\+::ivec2 hmap\+::\+Virtual\+Array\+::get\+\_\+max\+\_\+tiles (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\Hypertarget{structhmap_1_1VirtualArray_a2245a6c69d4cc5ee8cc6f5506cc61baf}\label{structhmap_1_1VirtualArray_a2245a6c69d4cc5ee8cc6f5506cc61baf} 
+\index{hmap::VirtualArray@{hmap::VirtualArray}!get\_ntiles@{get\_ntiles}}
+\index{get\_ntiles@{get\_ntiles}!hmap::VirtualArray@{hmap::VirtualArray}}
+\doxysubsubsection{\texorpdfstring{get\_ntiles()}{get\_ntiles()}}
+{\footnotesize\ttfamily int hmap\+::\+Virtual\+Array\+::get\+\_\+ntiles (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\Hypertarget{structhmap_1_1VirtualArray_af3c6671195e6953ad46ae65a64fe88bd}\label{structhmap_1_1VirtualArray_af3c6671195e6953ad46ae65a64fe88bd} 
+\index{hmap::VirtualArray@{hmap::VirtualArray}!info\_string@{info\_string}}
+\index{info\_string@{info\_string}!hmap::VirtualArray@{hmap::VirtualArray}}
+\doxysubsubsection{\texorpdfstring{info\_string()}{info\_string()}}
+{\footnotesize\ttfamily std\+::string hmap\+::\+Virtual\+Array\+::info\+\_\+string (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&}]{cm,  }\item[{int}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const}
+
+\Hypertarget{structhmap_1_1VirtualArray_aeff83280c1e81978b24909637bf728a1}\label{structhmap_1_1VirtualArray_aeff83280c1e81978b24909637bf728a1} 
+\index{hmap::VirtualArray@{hmap::VirtualArray}!fill@{fill}}
+\index{fill@{fill}!hmap::VirtualArray@{hmap::VirtualArray}}
+\doxysubsubsection{\texorpdfstring{fill()}{fill()}}
+{\footnotesize\ttfamily void hmap\+::\+Virtual\+Array\+::fill (\begin{DoxyParamCaption}\item[{float}]{value,  }\item[{const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&}]{cm }\end{DoxyParamCaption})}
+
+\Hypertarget{structhmap_1_1VirtualArray_ab685dda55aa7c9797d2a77e5d75d66c4}\label{structhmap_1_1VirtualArray_ab685dda55aa7c9797d2a77e5d75d66c4} 
+\index{hmap::VirtualArray@{hmap::VirtualArray}!from\_array@{from\_array}}
+\index{from\_array@{from\_array}!hmap::VirtualArray@{hmap::VirtualArray}}
+\doxysubsubsection{\texorpdfstring{from\_array()}{from\_array()}}
+{\footnotesize\ttfamily void hmap\+::\+Virtual\+Array\+::from\+\_\+array (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&}]{cm }\end{DoxyParamCaption})}
+
+\Hypertarget{structhmap_1_1VirtualArray_a81fead26a776d58553e942f0204ce810}\label{structhmap_1_1VirtualArray_a81fead26a776d58553e942f0204ce810} 
+\index{hmap::VirtualArray@{hmap::VirtualArray}!to\_array@{to\_array}}
+\index{to\_array@{to\_array}!hmap::VirtualArray@{hmap::VirtualArray}}
+\doxysubsubsection{\texorpdfstring{to\_array()}{to\_array()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::\+Virtual\+Array\+::to\+\_\+array (\begin{DoxyParamCaption}\item[{const glm\+::ivec2}]{array\+\_\+shape,  }\item[{const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&}]{cm }\end{DoxyParamCaption}) const}
+
+\Hypertarget{structhmap_1_1VirtualArray_a72a1341b322d90e51275dc8336944c16}\label{structhmap_1_1VirtualArray_a72a1341b322d90e51275dc8336944c16} 
+\index{hmap::VirtualArray@{hmap::VirtualArray}!to\_array@{to\_array}}
+\index{to\_array@{to\_array}!hmap::VirtualArray@{hmap::VirtualArray}}
+\doxysubsubsection{\texorpdfstring{to\_array()}{to\_array()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::\+Virtual\+Array\+::to\+\_\+array (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&}]{cm }\end{DoxyParamCaption}) const}
+
+\Hypertarget{structhmap_1_1VirtualArray_a037ca97b101483eeb9628bf7662ee7ee}\label{structhmap_1_1VirtualArray_a037ca97b101483eeb9628bf7662ee7ee} 
+\index{hmap::VirtualArray@{hmap::VirtualArray}!to\_array\_dbg@{to\_array\_dbg}}
+\index{to\_array\_dbg@{to\_array\_dbg}!hmap::VirtualArray@{hmap::VirtualArray}}
+\doxysubsubsection{\texorpdfstring{to\_array\_dbg()}{to\_array\_dbg()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::\+Virtual\+Array\+::to\+\_\+array\+\_\+dbg (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\Hypertarget{structhmap_1_1VirtualArray_a95ef87e8953451eb40d8b8e43e09f051}\label{structhmap_1_1VirtualArray_a95ef87e8953451eb40d8b8e43e09f051} 
+\index{hmap::VirtualArray@{hmap::VirtualArray}!max@{max}}
+\index{max@{max}!hmap::VirtualArray@{hmap::VirtualArray}}
+\doxysubsubsection{\texorpdfstring{max()}{max()}}
+{\footnotesize\ttfamily float hmap\+::\+Virtual\+Array\+::max (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&}]{cm }\end{DoxyParamCaption}) const}
+
+\Hypertarget{structhmap_1_1VirtualArray_ac67dd8407b579ec8e8dced6cf45faa7e}\label{structhmap_1_1VirtualArray_ac67dd8407b579ec8e8dced6cf45faa7e} 
+\index{hmap::VirtualArray@{hmap::VirtualArray}!mean@{mean}}
+\index{mean@{mean}!hmap::VirtualArray@{hmap::VirtualArray}}
+\doxysubsubsection{\texorpdfstring{mean()}{mean()}}
+{\footnotesize\ttfamily float hmap\+::\+Virtual\+Array\+::mean (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&}]{cm }\end{DoxyParamCaption}) const}
+
+\Hypertarget{structhmap_1_1VirtualArray_a86a3950c3cb912d82c694a752bb20f4c}\label{structhmap_1_1VirtualArray_a86a3950c3cb912d82c694a752bb20f4c} 
+\index{hmap::VirtualArray@{hmap::VirtualArray}!min@{min}}
+\index{min@{min}!hmap::VirtualArray@{hmap::VirtualArray}}
+\doxysubsubsection{\texorpdfstring{min()}{min()}}
+{\footnotesize\ttfamily float hmap\+::\+Virtual\+Array\+::min (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&}]{cm }\end{DoxyParamCaption}) const}
+
+\Hypertarget{structhmap_1_1VirtualArray_af98faefefaaeb9ffc84bcc5997fbae8e}\label{structhmap_1_1VirtualArray_af98faefefaaeb9ffc84bcc5997fbae8e} 
+\index{hmap::VirtualArray@{hmap::VirtualArray}!sum@{sum}}
+\index{sum@{sum}!hmap::VirtualArray@{hmap::VirtualArray}}
+\doxysubsubsection{\texorpdfstring{sum()}{sum()}}
+{\footnotesize\ttfamily float hmap\+::\+Virtual\+Array\+::sum (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&}]{cm }\end{DoxyParamCaption}) const}
+
+\Hypertarget{structhmap_1_1VirtualArray_a277b4009dc26ec99a6f82157b899d8cd}\label{structhmap_1_1VirtualArray_a277b4009dc26ec99a6f82157b899d8cd} 
+\index{hmap::VirtualArray@{hmap::VirtualArray}!inverse@{inverse}}
+\index{inverse@{inverse}!hmap::VirtualArray@{hmap::VirtualArray}}
+\doxysubsubsection{\texorpdfstring{inverse()}{inverse()}}
+{\footnotesize\ttfamily void hmap\+::\+Virtual\+Array\+::inverse (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&}]{cm }\end{DoxyParamCaption})}
+
+\Hypertarget{structhmap_1_1VirtualArray_ab040e57e20ecafbe4dbb0a3076560314}\label{structhmap_1_1VirtualArray_ab040e57e20ecafbe4dbb0a3076560314} 
+\index{hmap::VirtualArray@{hmap::VirtualArray}!remap@{remap}}
+\index{remap@{remap}!hmap::VirtualArray@{hmap::VirtualArray}}
+\doxysubsubsection{\texorpdfstring{remap()}{remap()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void hmap\+::\+Virtual\+Array\+::remap (\begin{DoxyParamCaption}\item[{float}]{vmin,  }\item[{float}]{vmax,  }\item[{const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&}]{cm }\end{DoxyParamCaption})}
+
+\Hypertarget{structhmap_1_1VirtualArray_a98bfd2a46fdaebd580d44ea766c5829f}\label{structhmap_1_1VirtualArray_a98bfd2a46fdaebd580d44ea766c5829f} 
+\index{hmap::VirtualArray@{hmap::VirtualArray}!remap@{remap}}
+\index{remap@{remap}!hmap::VirtualArray@{hmap::VirtualArray}}
+\doxysubsubsection{\texorpdfstring{remap()}{remap()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void hmap\+::\+Virtual\+Array\+::remap (\begin{DoxyParamCaption}\item[{float}]{vmin,  }\item[{float}]{vmax,  }\item[{float}]{from\+\_\+min,  }\item[{float}]{from\+\_\+max,  }\item[{const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&}]{cm }\end{DoxyParamCaption})}
+
+\Hypertarget{structhmap_1_1VirtualArray_a8d74c7c6a84b8c54985a5fdeb4e805f0}\label{structhmap_1_1VirtualArray_a8d74c7c6a84b8c54985a5fdeb4e805f0} 
+\index{hmap::VirtualArray@{hmap::VirtualArray}!unique\_values@{unique\_values}}
+\index{unique\_values@{unique\_values}!hmap::VirtualArray@{hmap::VirtualArray}}
+\doxysubsubsection{\texorpdfstring{unique\_values()}{unique\_values()}}
+{\footnotesize\ttfamily std\+::vector$<$ float $>$ hmap\+::\+Virtual\+Array\+::unique\+\_\+values (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&}]{cm }\end{DoxyParamCaption}) const}
+
 \Hypertarget{structhmap_1_1VirtualArray_a7112a736d8497a4b65d5056209f04077}\label{structhmap_1_1VirtualArray_a7112a736d8497a4b65d5056209f04077} 
 \index{hmap::VirtualArray@{hmap::VirtualArray}!smooth\_overlap\_buffers@{smooth\_overlap\_buffers}}
 \index{smooth\_overlap\_buffers@{smooth\_overlap\_buffers}!hmap::VirtualArray@{hmap::VirtualArray}}
 \doxysubsubsection{\texorpdfstring{smooth\_overlap\_buffers()}{smooth\_overlap\_buffers()}}
 {\footnotesize\ttfamily void hmap\+::\+Virtual\+Array\+::smooth\+\_\+overlap\+\_\+buffers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-\Hypertarget{structhmap_1_1VirtualArray_a46a7e552ad77c88a527c41c8aeeb5f68}\label{structhmap_1_1VirtualArray_a46a7e552ad77c88a527c41c8aeeb5f68} 
-\index{hmap::VirtualArray@{hmap::VirtualArray}!to\_array@{to\_array}}
-\index{to\_array@{to\_array}!hmap::VirtualArray@{hmap::VirtualArray}}
-\doxysubsubsection{\texorpdfstring{to\_array()}{to\_array()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::\+Virtual\+Array\+::to\+\_\+array (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+\Hypertarget{structhmap_1_1VirtualArray_ace64d9290dd6116a38ac034f6b72dc91}\label{structhmap_1_1VirtualArray_ace64d9290dd6116a38ac034f6b72dc91} 
+\index{hmap::VirtualArray@{hmap::VirtualArray}!tile\_region\_global\_position@{tile\_region\_global\_position}}
+\index{tile\_region\_global\_position@{tile\_region\_global\_position}!hmap::VirtualArray@{hmap::VirtualArray}}
+\doxysubsubsection{\texorpdfstring{tile\_region\_global\_position()}{tile\_region\_global\_position()}}
+{\footnotesize\ttfamily glm\+::vec2 hmap\+::\+Virtual\+Array\+::tile\+\_\+region\+\_\+global\+\_\+position (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structhmap_1_1TileRegion}{Tile\+Region}} \&}]{region }\end{DoxyParamCaption}) const}
+
+\Hypertarget{structhmap_1_1VirtualArray_afd55182a2230d4e68cd542f2bef2ad9e}\label{structhmap_1_1VirtualArray_afd55182a2230d4e68cd542f2bef2ad9e} 
+\index{hmap::VirtualArray@{hmap::VirtualArray}!tile\_region\_global\_indices@{tile\_region\_global\_indices}}
+\index{tile\_region\_global\_indices@{tile\_region\_global\_indices}!hmap::VirtualArray@{hmap::VirtualArray}}
+\doxysubsubsection{\texorpdfstring{tile\_region\_global\_indices()}{tile\_region\_global\_indices()}}
+{\footnotesize\ttfamily glm\+::ivec2 hmap\+::\+Virtual\+Array\+::tile\+\_\+region\+\_\+global\+\_\+indices (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structhmap_1_1TileRegion}{Tile\+Region}} \&}]{region }\end{DoxyParamCaption}) const}
 
 \Hypertarget{structhmap_1_1VirtualArray_a307123a81d2ea77c85ae28612a1c06c2}\label{structhmap_1_1VirtualArray_a307123a81d2ea77c85ae28612a1c06c2} 
 \index{hmap::VirtualArray@{hmap::VirtualArray}!tile\_region\_from\_global\_index@{tile\_region\_from\_global\_index}}
@@ -99,6 +293,12 @@ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmap_1_1TileStorage}{Tile\+Stora
 \index{local\_indices@{local\_indices}!hmap::VirtualArray@{hmap::VirtualArray}}
 \doxysubsubsection{\texorpdfstring{local\_indices()}{local\_indices()}}
 {\footnotesize\ttfamily glm\+::ivec2 hmap\+::\+Virtual\+Array\+::local\+\_\+indices (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structhmap_1_1TileRegion}{Tile\+Region}} \&}]{region,  }\item[{int}]{global\+\_\+i,  }\item[{int}]{global\+\_\+j }\end{DoxyParamCaption}) const}
+
+\Hypertarget{structhmap_1_1VirtualArray_a883004746310f2e6cbd6365ce96d2541}\label{structhmap_1_1VirtualArray_a883004746310f2e6cbd6365ce96d2541} 
+\index{hmap::VirtualArray@{hmap::VirtualArray}!trim\_storage@{trim\_storage}}
+\index{trim\_storage@{trim\_storage}!hmap::VirtualArray@{hmap::VirtualArray}}
+\doxysubsubsection{\texorpdfstring{trim\_storage()}{trim\_storage()}}
+{\footnotesize\ttfamily void hmap\+::\+Virtual\+Array\+::trim\+\_\+storage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
@@ -138,4 +338,5 @@ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmap_1_1TileStorage}{Tile\+Stora
 The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
 High\+Map/include/highmap/virtual\+\_\+array/\mbox{\hyperlink{virtual__array_8hpp}{virtual\+\_\+array.\+hpp}}\item 
-High\+Map/src/virtual\+\_\+array/\mbox{\hyperlink{virtual__array_8cpp}{virtual\+\_\+array.\+cpp}}\end{DoxyCompactItemize}
+High\+Map/src/virtual\+\_\+array/\mbox{\hyperlink{virtual__array_8cpp}{virtual\+\_\+array.\+cpp}}\item 
+High\+Map/src/virtual\+\_\+array/\mbox{\hyperlink{virtual__array__processing_8cpp}{virtual\+\_\+array\+\_\+processing.\+cpp}}\end{DoxyCompactItemize}

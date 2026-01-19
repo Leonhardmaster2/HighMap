@@ -10,7 +10,7 @@ var searchData=
   ['basic_20principle_20and_20data_20structure_7',['Basic principle and data structure',['../index.html#autotoc_md5',1,'']]],
   ['basin_5fid_8',['basin_id',['../namespacehmap.html#a8284b00f1f460f1d5a406ee45587dcd9',1,'hmap']]],
   ['basin_5fid_2ecpp_9',['basin_id.cpp',['../basin__id_8cpp.html',1,'']]],
-  ['bbox_10',['bbox',['../classhmap_1_1Tile.html#a91373c77f2a13d8627ad8040f0a24ed0',1,'hmap::Tile::bbox'],['../structhmap_1_1TileRegion.html#a1ee79e1a24fa9d72dd13a2e404026895',1,'hmap::TileRegion::bbox'],['../structhmap_1_1VirtualArray.html#a7a4e86a56ad72960bc20dfa97cadb8e3',1,'hmap::VirtualArray::bbox']]],
+  ['bbox_10',['bbox',['../structhmap_1_1TileRegion.html#a1ee79e1a24fa9d72dd13a2e404026895',1,'hmap::TileRegion::bbox'],['../structhmap_1_1VirtualArray.html#a7a4e86a56ad72960bc20dfa97cadb8e3',1,'hmap::VirtualArray::bbox'],['../classhmap_1_1VirtualTexture.html#a9502a27aecf9f89a52e8939bcc7d6a6f',1,'hmap::VirtualTexture::bbox']]],
   ['bbox_5fto_5franges2d_11',['bbox_to_ranges2d',['../namespacehmap.html#ae3b069feb998593e6bd1ccdbb41f14eb',1,'hmap']]],
   ['bezier_12',['bezier',['../namespacehmap.html#aa78bf111867e13c63d8bd2ec005ad6c8ac56fe3b521e08a04c926e75d7fba28f8',1,'hmap::BEZIER'],['../classhmap_1_1Path.html#a56cc1e52401d748b540f9bc72a49000b',1,'hmap::Path::bezier(float curvature_ratio=0.3f, int edge_divisions=10)']]],
   ['bezier_5fround_13',['bezier_round',['../classhmap_1_1Path.html#a9c0c833a2c386bd43fa131520ff6a5f6',1,'hmap::Path']]],

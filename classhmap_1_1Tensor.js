@@ -12,7 +12,7 @@ var classhmap_1_1Tensor =
     [ "resample_to_shape_xy", "classhmap_1_1Tensor.html#aeba89ed52aeff17783967e7d386336d9", null ],
     [ "set_slice", "classhmap_1_1Tensor.html#aaf3d0e4ca2dcb231210a4b4745777c7b", null ],
     [ "to_cv_mat", "classhmap_1_1Tensor.html#ac267c454e16d1445696ffa5ad2b32cb6", null ],
-    [ "to_img_8bit", "classhmap_1_1Tensor.html#a97bc4a15725b74b3b7de6a2152813cad", null ],
+    [ "to_img_8bit", "classhmap_1_1Tensor.html#a637626689237e2131ba547a81cf7aaaf", null ],
     [ "to_png", "classhmap_1_1Tensor.html#afe46210c8fa2c76229cc4099d63f237e", null ],
     [ "shape", "classhmap_1_1Tensor.html#a908df75bf79098e9c44773865022e823", null ],
     [ "vector", "classhmap_1_1Tensor.html#acf16755884baf3252e48e6989846d91f", null ]

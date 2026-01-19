@@ -81,7 +81,7 @@ var classhmap_1_1Array =
     [ "to_png_grayscale", "classhmap_1_1Array.html#ad7018857827d8e8d263516bbbd77630f", null ],
     [ "to_tiff", "classhmap_1_1Array.html#a75da0609f64b9410741d198330dde33b", null ],
     [ "to_raw_16bit", "classhmap_1_1Array.html#abc72128c4c460e993d877cab54e17454", null ],
-    [ "unique_values", "classhmap_1_1Array.html#acc4ea8fbdc162b16a2b0c8de575ff569", null ],
+    [ "unique_values", "classhmap_1_1Array.html#a7bafe99a2d644e79d638002a19dcc6d5", null ],
     [ "operator*", "classhmap_1_1Array.html#a58ffc99dbcc9c7e8c0dc186202635a4f", null ],
     [ "operator/", "classhmap_1_1Array.html#aaf0bbf93f6dba016b681ac09274b5c66", null ],
     [ "operator+", "classhmap_1_1Array.html#a3286ad1492734bca2ad2412b833c65f1", null ],

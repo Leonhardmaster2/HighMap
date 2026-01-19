@@ -7,5 +7,5 @@ var dir_935215972bef69986a81fe4c59c9ece4 =
     [ "interpolate_array.cpp", "interpolate__array_8cpp.html", "interpolate__array_8cpp" ],
     [ "interpolate_array_gpu.cpp", "interpolate__array__gpu_8cpp.html", "interpolate__array__gpu_8cpp" ],
     [ "interpolate_curve.cpp", "interpolate__curve_8cpp.html", "interpolate__curve_8cpp" ],
-    [ "interpolate_heightmap.cpp", "interpolate__heightmap_8cpp.html", "interpolate__heightmap_8cpp" ]
+    [ "interpolate_heightmap_virtual_array.cpp", "interpolate__heightmap__virtual__array_8cpp.html", "interpolate__heightmap__virtual__array_8cpp" ]
 ];

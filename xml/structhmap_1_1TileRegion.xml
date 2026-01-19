@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/virtual_array/tile_region.hpp" line="32" column="14" bodyfile="HighMap/include/highmap/virtual_array/tile_region.hpp" bodystart="32" bodyend="-1"/>
+        <location file="HighMap/include/highmap/virtual_array/tile_region.hpp" line="39" column="14" bodyfile="HighMap/include/highmap/virtual_array/tile_region.hpp" bodystart="39" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhmap_1_1TileRegion_1a1ee79e1a24fa9d72dd13a2e404026895" prot="public" static="no" mutable="no">
         <type>glm::vec4</type>
@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/virtual_array/tile_region.hpp" line="33" column="14" bodyfile="HighMap/include/highmap/virtual_array/tile_region.hpp" bodystart="33" bodyend="-1"/>
+        <location file="HighMap/include/highmap/virtual_array/tile_region.hpp" line="40" column="14" bodyfile="HighMap/include/highmap/virtual_array/tile_region.hpp" bodystart="40" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhmap_1_1TileRegion_1a525824dd7a3c589436a33b1d232a8433" prot="public" static="no" mutable="no">
         <type>glm::ivec2</type>
@@ -44,7 +44,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/virtual_array/tile_region.hpp" line="34" column="14" bodyfile="HighMap/include/highmap/virtual_array/tile_region.hpp" bodystart="34" bodyend="-1"/>
+        <location file="HighMap/include/highmap/virtual_array/tile_region.hpp" line="41" column="14" bodyfile="HighMap/include/highmap/virtual_array/tile_region.hpp" bodystart="41" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhmap_1_1TileRegion_1a49c3eebc47bb7e161fd3c6ce87f01cca" prot="public" static="no" mutable="no">
         <type>glm::ivec4</type>
@@ -58,7 +58,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/virtual_array/tile_region.hpp" line="35" column="14" bodyfile="HighMap/include/highmap/virtual_array/tile_region.hpp" bodystart="35" bodyend="-1"/>
+        <location file="HighMap/include/highmap/virtual_array/tile_region.hpp" line="42" column="14" bodyfile="HighMap/include/highmap/virtual_array/tile_region.hpp" bodystart="42" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -91,21 +91,65 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/virtual_array/tile_region.hpp" line="37" column="3" bodyfile="HighMap/src/virtual_array/tile_region.cpp" bodystart="11" bodyend="17"/>
+        <location file="HighMap/include/highmap/virtual_array/tile_region.hpp" line="45" column="3" bodyfile="HighMap/src/virtual_array/tile_region.cpp" bodystart="13" bodyend="19"/>
       </memberdef>
-      <memberdef kind="function" id="structhmap_1_1TileRegion_1a49995b0a9eb4602e25d0ee719303b356" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>glm::ivec2</type>
-        <definition>glm::ivec2 hmap::TileRegion::total_shape</definition>
-        <argsstring>() const</argsstring>
-        <name>total_shape</name>
-        <qualifiedname>hmap::TileRegion::total_shape</qualifiedname>
+      <memberdef kind="function" id="structhmap_1_1TileRegion_1a2160f3e52bb07aebad44bf689d5fe690" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>glm::vec2</type>
+        <definition>glm::vec2 hmap::TileRegion::cell_center</definition>
+        <argsstring>(int i, int j) const</argsstring>
+        <name>cell_center</name>
+        <qualifiedname>hmap::TileRegion::cell_center</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>j</declname>
+        </param>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/virtual_array/tile_region.hpp" line="42" column="14" bodyfile="HighMap/src/virtual_array/tile_region.cpp" bodystart="19" bodyend="22"/>
+        <location file="HighMap/include/highmap/virtual_array/tile_region.hpp" line="50" column="15" bodyfile="HighMap/src/virtual_array/tile_region.cpp" bodystart="21" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="structhmap_1_1TileRegion_1a773fcee90fae6c3950a9fa5617de2f62" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>glm::vec2</type>
+        <definition>glm::vec2 hmap::TileRegion::cell_corner</definition>
+        <argsstring>(int i, int j) const</argsstring>
+        <name>cell_corner</name>
+        <qualifiedname>hmap::TileRegion::cell_corner</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>j</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/virtual_array/tile_region.hpp" line="51" column="15" bodyfile="HighMap/src/virtual_array/tile_region.cpp" bodystart="37" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="structhmap_1_1TileRegion_1ae00731982da2e860d89cbdaec916a080" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string hmap::TileRegion::key_as_string</definition>
+        <argsstring>() const</argsstring>
+        <name>key_as_string</name>
+        <qualifiedname>hmap::TileRegion::key_as_string</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/virtual_array/tile_region.hpp" line="52" column="15" bodyfile="HighMap/src/virtual_array/tile_region.cpp" bodystart="44" bodyend="47"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -125,14 +169,16 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="HighMap/include/highmap/virtual_array/tile_region.hpp" line="30" column="1" bodyfile="HighMap/include/highmap/virtual_array/tile_region.hpp" bodystart="31" bodyend="43"/>
+    <location file="HighMap/include/highmap/virtual_array/tile_region.hpp" line="37" column="1" bodyfile="HighMap/include/highmap/virtual_array/tile_region.hpp" bodystart="38" bodyend="53"/>
     <listofallmembers>
       <member refid="structhmap_1_1TileRegion_1a1ee79e1a24fa9d72dd13a2e404026895" prot="public" virt="non-virtual"><scope>hmap::TileRegion</scope><name>bbox</name></member>
+      <member refid="structhmap_1_1TileRegion_1a2160f3e52bb07aebad44bf689d5fe690" prot="public" virt="non-virtual"><scope>hmap::TileRegion</scope><name>cell_center</name></member>
+      <member refid="structhmap_1_1TileRegion_1a773fcee90fae6c3950a9fa5617de2f62" prot="public" virt="non-virtual"><scope>hmap::TileRegion</scope><name>cell_corner</name></member>
       <member refid="structhmap_1_1TileRegion_1a49c3eebc47bb7e161fd3c6ce87f01cca" prot="public" virt="non-virtual"><scope>hmap::TileRegion</scope><name>halo</name></member>
       <member refid="structhmap_1_1TileRegion_1afb89981844bdc0270441e8464f00ccdc" prot="public" virt="non-virtual"><scope>hmap::TileRegion</scope><name>key</name></member>
+      <member refid="structhmap_1_1TileRegion_1ae00731982da2e860d89cbdaec916a080" prot="public" virt="non-virtual"><scope>hmap::TileRegion</scope><name>key_as_string</name></member>
       <member refid="structhmap_1_1TileRegion_1a525824dd7a3c589436a33b1d232a8433" prot="public" virt="non-virtual"><scope>hmap::TileRegion</scope><name>shape</name></member>
       <member refid="structhmap_1_1TileRegion_1a1cf655fd7ee1443572b8db734d836dc7" prot="public" virt="non-virtual"><scope>hmap::TileRegion</scope><name>TileRegion</name></member>
-      <member refid="structhmap_1_1TileRegion_1a49995b0a9eb4602e25d0ee719303b356" prot="public" virt="non-virtual"><scope>hmap::TileRegion</scope><name>total_shape</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

@@ -84,7 +84,7 @@
     <member refid="classhmap_1_1Array_1ad7018857827d8e8d263516bbbd77630f" kind="function"><name>to_png_grayscale</name></member>
     <member refid="classhmap_1_1Array_1a75da0609f64b9410741d198330dde33b" kind="function"><name>to_tiff</name></member>
     <member refid="classhmap_1_1Array_1abc72128c4c460e993d877cab54e17454" kind="function"><name>to_raw_16bit</name></member>
-    <member refid="classhmap_1_1Array_1acc4ea8fbdc162b16a2b0c8de575ff569" kind="function"><name>unique_values</name></member>
+    <member refid="classhmap_1_1Array_1a7bafe99a2d644e79d638002a19dcc6d5" kind="function"><name>unique_values</name></member>
     <member refid="classhmap_1_1Array_1a58ffc99dbcc9c7e8c0dc186202635a4f" kind="friend"><name>operator*</name></member>
     <member refid="classhmap_1_1Array_1aaf0bbf93f6dba016b681ac09274b5c66" kind="friend"><name>operator/</name></member>
     <member refid="classhmap_1_1Array_1a3286ad1492734bca2ad2412b833c65f1" kind="friend"><name>operator+</name></member>
@@ -169,6 +169,22 @@
     <member refid="classhmap_1_1Cloud_1add728a8b00dadb4a1d043ce50876c569" kind="function"><name>to_graph_delaunay</name></member>
     <member refid="classhmap_1_1Cloud_1a91285c977568113029ee6864928d6ee2" kind="function"><name>to_png</name></member>
   </compound>
+  <compound refid="structhmap_1_1ColorAdjust" kind="struct"><name>hmap::ColorAdjust</name>
+    <member refid="structhmap_1_1ColorAdjust_1a093e91b19d2c4fbb10bdae6afd27aa0f" kind="variable"><name>in_min</name></member>
+    <member refid="structhmap_1_1ColorAdjust_1ae5f67f58235a3892f9d6eb6fba75e40c" kind="variable"><name>in_max</name></member>
+    <member refid="structhmap_1_1ColorAdjust_1acd22feabf5d46054cd4f4fd9771c0d26" kind="variable"><name>exposure</name></member>
+    <member refid="structhmap_1_1ColorAdjust_1a9d4b1c3d2a6af81d3d5c61491782a74d" kind="variable"><name>contrast</name></member>
+    <member refid="structhmap_1_1ColorAdjust_1a22890080427433e2c75ad3f15d3fc2b8" kind="variable"><name>saturation</name></member>
+    <member refid="structhmap_1_1ColorAdjust_1a125d99cf1e7850c167137b493f512a76" kind="variable"><name>temperature</name></member>
+    <member refid="structhmap_1_1ColorAdjust_1ae2fc513c6d6915e92410bcd7b43e8055" kind="variable"><name>gamma</name></member>
+    <member refid="structhmap_1_1ColorAdjust_1a0d6901dbb470d8b91a91bbd741c95481" kind="variable"><name>dither_amp</name></member>
+    <member refid="structhmap_1_1ColorAdjust_1abf71052fb9aa59345fff4155d9b33c0d" kind="variable"><name>filmic_tonemap</name></member>
+    <member refid="structhmap_1_1ColorAdjust_1a9205d4724c56c87eb48852cb104db6c5" kind="variable"><name>aces_tonemap</name></member>
+  </compound>
+  <compound refid="structhmap_1_1ComputeMode" kind="struct"><name>hmap::ComputeMode</name>
+    <member refid="structhmap_1_1ComputeMode_1a88f263de26dea2af6e22e2d4f5f02cab" kind="variable"><name>mode</name></member>
+    <member refid="structhmap_1_1ComputeMode_1ae57651b6dc8b188e4781cf3aa6735253" kind="variable"><name>trim_storage</name></member>
+  </compound>
   <compound refid="classhmap_1_1CoordFrame" kind="class"><name>hmap::CoordFrame</name>
     <member refid="classhmap_1_1CoordFrame_1a422dd4c795df3b4475b141661ddadefe" kind="variable"><name>origin</name></member>
     <member refid="classhmap_1_1CoordFrame_1a241155ec9e124d54e99aba014ab3d98b" kind="variable"><name>size</name></member>
@@ -184,8 +200,7 @@
     <member refid="classhmap_1_1CoordFrame_1a38eeb1a63ec5bfd703549d5edd916b89" kind="function"><name>set_size</name></member>
     <member refid="classhmap_1_1CoordFrame_1a309642c71a4058665a48427b0c9248fc" kind="function"><name>set_rotation_angle</name></member>
     <member refid="classhmap_1_1CoordFrame_1aec33c4aa81bf7c9da22122ae3e8b8967" kind="function"><name>compute_bounding_box</name></member>
-    <member refid="classhmap_1_1CoordFrame_1a2aa2757fdf9392b46fe8a68471e276de" kind="function"><name>get_heightmap_value_bilinear</name></member>
-    <member refid="classhmap_1_1CoordFrame_1a2036bedca813d27d6845a258f673fac2" kind="function"><name>get_heightmap_value_nearest</name></member>
+    <member refid="classhmap_1_1CoordFrame_1a5187c7f902c93fb4f750fb022d3b19b7" kind="function"><name>get_heightmap_value_bilinear</name></member>
     <member refid="classhmap_1_1CoordFrame_1a712f76df08417fcffc44b704e4ddd1be" kind="function"><name>is_point_within</name></member>
     <member refid="classhmap_1_1CoordFrame_1a695f820d6db87e1502cb6562a4e37586" kind="function"><name>map_to_global_coords</name></member>
     <member refid="classhmap_1_1CoordFrame_1a714e286bb111d3055ea4a4976ebeb43a" kind="function"><name>map_to_relative_coords</name></member>
@@ -208,11 +223,31 @@
   </compound>
   <compound refid="classhmap_1_1DiskLruTileStorage" kind="class"><name>hmap::DiskLruTileStorage</name>
     <member refid="classhmap_1_1DiskLruTileStorage_1ad45b4ad5aeea4d8a038f49aae112366a" kind="variable"><name>root_dir</name></member>
-    <member refid="classhmap_1_1DiskLruTileStorage_1a1a873a6275b3b945d14ebbc0cc357487" kind="function"><name>DiskLruTileStorage</name></member>
+    <member refid="classhmap_1_1DiskLruTileStorage_1ac282076e9a01c45b19010d16436cd470" kind="function"><name>DiskLruTileStorage</name></member>
+    <member refid="classhmap_1_1DiskLruTileStorage_1a746d7d13b82430e033bca005a3443a9f" kind="function"><name>~DiskLruTileStorage</name></member>
+    <member refid="classhmap_1_1DiskLruTileStorage_1ae451ccb62c7c5aa2958046ae16b6e6e7" kind="function"><name>clone</name></member>
     <member refid="classhmap_1_1DiskLruTileStorage_1ac55de909caccd23af25b19db9f39d54e" kind="function"><name>get_tile</name></member>
+    <member refid="classhmap_1_1DiskLruTileStorage_1ab0ce9ec07188c153bbbc267c266fe905" kind="function"><name>max_live_tiles</name></member>
+    <member refid="classhmap_1_1DiskLruTileStorage_1aa36f0f1105b15b5652d28d37793af7aa" kind="function"><name>trim</name></member>
     <member refid="classhmap_1_1DiskLruTileStorage_1a6f78ac63137fcef483ab53c6a67bc424" kind="function"><name>on_evict</name></member>
     <member refid="classhmap_1_1DiskLruTileStorage_1aa6791795331c232f3bb55d60df295c78" kind="function"><name>tile_path</name></member>
     <member refid="classhmap_1_1DiskLruTileStorage_1a763f7aafcba8788df6b8289e56e9d0dd" kind="function"><name>load_tile_from_disk</name></member>
+  </compound>
+  <compound refid="classhmap_1_1DiskSequentialTileStorage" kind="class"><name>hmap::DiskSequentialTileStorage</name>
+    <member refid="classhmap_1_1DiskSequentialTileStorage_1a39d803c51d515297c4ccffed673cae39" kind="variable"><name>root_dir</name></member>
+    <member refid="classhmap_1_1DiskSequentialTileStorage_1afdcb2ddd387116885a7de1f09915bc8b" kind="variable"><name>current_key</name></member>
+    <member refid="classhmap_1_1DiskSequentialTileStorage_1ac2fb126a34c1bf2ddcf1cf92342b6a41" kind="variable"><name>current_tile</name></member>
+    <member refid="classhmap_1_1DiskSequentialTileStorage_1ab0b83330c9de5a2a8d2b2b24075d3c8c" kind="function"><name>DiskSequentialTileStorage</name></member>
+    <member refid="classhmap_1_1DiskSequentialTileStorage_1a15d12cadbcc636cbdce8f06edc86c149" kind="function"><name>~DiskSequentialTileStorage</name></member>
+    <member refid="classhmap_1_1DiskSequentialTileStorage_1a33f865e9a64b78e5b2cca810b7833e90" kind="function"><name>clone</name></member>
+    <member refid="classhmap_1_1DiskSequentialTileStorage_1a4b9b283c99296d371fbbfb12425765b3" kind="function"><name>get_tile</name></member>
+    <member refid="classhmap_1_1DiskSequentialTileStorage_1a7802fb1110b9105719962676dd582f3d" kind="function"><name>release_tile</name></member>
+    <member refid="classhmap_1_1DiskSequentialTileStorage_1a903dd0531930ba6c3f0d43fbf71e7109" kind="function"><name>max_live_tiles</name></member>
+    <member refid="classhmap_1_1DiskSequentialTileStorage_1a1c57df8b1b30d942c70db54ad4557121" kind="function"><name>trim</name></member>
+    <member refid="classhmap_1_1DiskSequentialTileStorage_1af77e4aeb215d4fdca9c32233c1377c1b" kind="function"><name>info_string</name></member>
+    <member refid="classhmap_1_1DiskSequentialTileStorage_1a71b79925b7817e332b501f3c462b4cde" kind="function"><name>load_or_create</name></member>
+    <member refid="classhmap_1_1DiskSequentialTileStorage_1a6429de2f88adc934f8f57036bb1cc4d7" kind="function"><name>save_tile</name></member>
+    <member refid="classhmap_1_1DiskSequentialTileStorage_1a3e7fe6dbd624d89395930affca42a8cd" kind="function"><name>tile_path</name></member>
   </compound>
   <compound refid="classhmap_1_1DrainageBasins" kind="class"><name>hmap::DrainageBasins</name>
     <member refid="classhmap_1_1DrainageBasins_1aa53e3dff71d7c9f9c42888b628183a26" kind="variable"><name>upstream_traversal</name></member>
@@ -353,81 +388,6 @@
     <member refid="classhmap_1_1Graph_1a6accdaeaf48a49a3a751f4a83e59df47" kind="function"><name>update_adjacency_matrix</name></member>
     <member refid="classhmap_1_1Graph_1ad37ed278a791b43779733f7f22187f15" kind="function"><name>update_connectivity</name></member>
   </compound>
-  <compound refid="classhmap_1_1Heightmap" kind="class"><name>hmap::Heightmap</name>
-    <member refid="classhmap_1_1Heightmap_1a88f20f7b64d0a3c5575fb29d047cf8de" kind="variable"><name>shape</name></member>
-    <member refid="classhmap_1_1Heightmap_1a0449acf3cd11bf117babc80ae54e23b4" kind="variable"><name>tiling</name></member>
-    <member refid="classhmap_1_1Heightmap_1a8298ec219210890eec720792cffdb598" kind="variable"><name>overlap</name></member>
-    <member refid="classhmap_1_1Heightmap_1a1c464dcd079e78751edc88fccc7dd4b5" kind="variable"><name>tiles</name></member>
-    <member refid="classhmap_1_1Heightmap_1ae2c00388213fc4aad8dd29617b4f71a1" kind="function"><name>Heightmap</name></member>
-    <member refid="classhmap_1_1Heightmap_1a15580b39a3489f19a32dd52d234601a7" kind="function"><name>Heightmap</name></member>
-    <member refid="classhmap_1_1Heightmap_1ad2a302ea6666fb5f2c2ffe5ddeb90451" kind="function"><name>Heightmap</name></member>
-    <member refid="classhmap_1_1Heightmap_1a1b72b37e0244f481471c965b86288504" kind="function"><name>Heightmap</name></member>
-    <member refid="classhmap_1_1Heightmap_1aac582367b38b2ccdb5a53f2bd002cac5" kind="function"><name>Heightmap</name></member>
-    <member refid="classhmap_1_1Heightmap_1a51cf765f4ffe966ebe3e9f7c933ecf69" kind="function"><name>get_ntiles</name></member>
-    <member refid="classhmap_1_1Heightmap_1a92216a319cfae7fb7380ea78ba7c1485" kind="function"><name>get_tile_index</name></member>
-    <member refid="classhmap_1_1Heightmap_1a33052feab03d0ee8bb4f89a9c8ea3111" kind="function"><name>get_value_bilinear</name></member>
-    <member refid="classhmap_1_1Heightmap_1ad622aa51772286c4c2b6088e16558012" kind="function"><name>get_value_nearest</name></member>
-    <member refid="classhmap_1_1Heightmap_1a82f4c09a6555cc278a52e85536f04224" kind="function"><name>set_overlap</name></member>
-    <member refid="classhmap_1_1Heightmap_1a5fd80cb8814b56637b2e466c0af9b0d3" kind="function"><name>set_shape</name></member>
-    <member refid="classhmap_1_1Heightmap_1a1788a169993965e3aaed7a2040fe6591" kind="function"><name>set_sto</name></member>
-    <member refid="classhmap_1_1Heightmap_1adf7d0c37562ffdc3463efd8938f5dd62" kind="function"><name>set_tiling</name></member>
-    <member refid="classhmap_1_1Heightmap_1a912a9da1b07157e05787a135737a118c" kind="function"><name>from_array_interp</name></member>
-    <member refid="classhmap_1_1Heightmap_1ad11c364899cc7efe5435b0bbb452a53f" kind="function"><name>from_array_interp_bicubic</name></member>
-    <member refid="classhmap_1_1Heightmap_1ad3ae824068b1c390f5e2c41d9065ff1e" kind="function"><name>from_array_interp_bilinear</name></member>
-    <member refid="classhmap_1_1Heightmap_1aff6ab20163da2db6c9e54d55238c6fa8" kind="function"><name>from_array_interp_nearest</name></member>
-    <member refid="classhmap_1_1Heightmap_1aa2564ec4ee33447cf53c01e9fc143419" kind="function"><name>infos</name></member>
-    <member refid="classhmap_1_1Heightmap_1a83a804689020e229b4428e691eee5b74" kind="function"><name>inverse</name></member>
-    <member refid="classhmap_1_1Heightmap_1a1d7484a3e217925b3602119a032179f2" kind="function"><name>max</name></member>
-    <member refid="classhmap_1_1Heightmap_1a2c77598d7fbf9853ecb15bee3e057d3f" kind="function"><name>mean</name></member>
-    <member refid="classhmap_1_1Heightmap_1ae24bd69e7adfb7ea06ed7809c46dc6c7" kind="function"><name>min</name></member>
-    <member refid="classhmap_1_1Heightmap_1adfc18a86337d8283576ae1fa601433c9" kind="function"><name>remap</name></member>
-    <member refid="classhmap_1_1Heightmap_1ab8aadcca8aa81e221ddd50437b692ffb" kind="function"><name>remap</name></member>
-    <member refid="classhmap_1_1Heightmap_1adc1c2a7a9af9062bfb0124a208882b24" kind="function"><name>smooth_overlap_buffers</name></member>
-    <member refid="classhmap_1_1Heightmap_1a655ef5409be462ce32f37f203ad78c27" kind="function"><name>sum</name></member>
-    <member refid="classhmap_1_1Heightmap_1af954e5baef4bba2faa8ae5b1c16a7720" kind="function"><name>to_array</name></member>
-    <member refid="classhmap_1_1Heightmap_1a24cdedde3cdca21c2b1fa016cc9a1a3a" kind="function"><name>to_array</name></member>
-    <member refid="classhmap_1_1Heightmap_1ad133d0b58d12221384e024c02f6a916b" kind="function"><name>to_grayscale_image_16bit</name></member>
-    <member refid="classhmap_1_1Heightmap_1ae094aadc9d5ffef0f1bfc812612e1340" kind="function"><name>to_grayscale_image_16bit_multithread</name></member>
-    <member refid="classhmap_1_1Heightmap_1a14f24a37b572ca2e51ed03d9b69bff25" kind="function"><name>to_grayscale_image_8bit</name></member>
-    <member refid="classhmap_1_1Heightmap_1aad0014b044807456d80479f50c96395c" kind="function"><name>unique_values</name></member>
-    <member refid="classhmap_1_1Heightmap_1a7efe2f6a3e1deccc86772797eacf89c4" kind="function"><name>update_tile_parameters</name></member>
-  </compound>
-  <compound refid="structhmap_1_1HeightmapRGB" kind="struct"><name>hmap::HeightmapRGB</name>
-    <member refid="structhmap_1_1HeightmapRGB_1a8cc2f556db5595f59b550a8c27db9773" kind="variable"><name>rgb</name></member>
-    <member refid="structhmap_1_1HeightmapRGB_1a341d9a75de566a83fc917178009c86e7" kind="variable"><name>shape</name></member>
-    <member refid="structhmap_1_1HeightmapRGB_1a12d5a0cca8f12ea7ecbaf1a7702dbba9" kind="function"><name>HeightmapRGB</name></member>
-    <member refid="structhmap_1_1HeightmapRGB_1a84f3a181b5000a10acfc305f62d09f30" kind="function"><name>HeightmapRGB</name></member>
-    <member refid="structhmap_1_1HeightmapRGB_1aac7276c2cb809518105e9a26a34230e5" kind="function"><name>set_sto</name></member>
-    <member refid="structhmap_1_1HeightmapRGB_1a825f6a2b290260e15db5e32991568808" kind="function"><name>colorize</name></member>
-    <member refid="structhmap_1_1HeightmapRGB_1af7c1acf60fdfb2cd857d192776c1ea92" kind="function"><name>colorize</name></member>
-    <member refid="structhmap_1_1HeightmapRGB_1a3929354b705e591a20d974ae2fbf95cd" kind="function"><name>normalize</name></member>
-    <member refid="structhmap_1_1HeightmapRGB_1ab77bcf68a5300425debf8720a87a8eb5" kind="function"><name>to_img_8bit</name></member>
-    <member refid="structhmap_1_1HeightmapRGB_1a75ace637e95e018051924ddada4d2b0f" kind="function"><name>to_png</name></member>
-    <member refid="structhmap_1_1HeightmapRGB_1aefc1fce6e380bfb733f9a3e19f1b59a9" kind="friend"><name>mix_heightmap_rgb</name></member>
-    <member refid="structhmap_1_1HeightmapRGB_1ad6831dcc44b9b88a5f863bfd812d7d9e" kind="friend"><name>mix_heightmap_rgb</name></member>
-    <member refid="structhmap_1_1HeightmapRGB_1ae10e0e5dbad18d504427e190822ccec2" kind="friend"><name>mix_heightmap_rgb_sqrt</name></member>
-    <member refid="structhmap_1_1HeightmapRGB_1a91ea974c40f6c9b26f6c26f047920574" kind="friend"><name>mix_heightmap_rgb_sqrt</name></member>
-  </compound>
-  <compound refid="structhmap_1_1HeightmapRGBA" kind="struct"><name>hmap::HeightmapRGBA</name>
-    <member refid="structhmap_1_1HeightmapRGBA_1a0457a9b7447ec755b833c43e9650d15c" kind="variable"><name>rgba</name></member>
-    <member refid="structhmap_1_1HeightmapRGBA_1a41dd53b903b28b4f78f511ea7f48feb9" kind="variable"><name>shape</name></member>
-    <member refid="structhmap_1_1HeightmapRGBA_1ab3df9c336ae8f0b46eee79a481b88be0" kind="function"><name>HeightmapRGBA</name></member>
-    <member refid="structhmap_1_1HeightmapRGBA_1a632fb2381aaaf0c0a02a533de0fc3061" kind="function"><name>HeightmapRGBA</name></member>
-    <member refid="structhmap_1_1HeightmapRGBA_1a4e7b38e9de1767bb9bb983291e273cff" kind="function"><name>HeightmapRGBA</name></member>
-    <member refid="structhmap_1_1HeightmapRGBA_1ab85e97e518d07bcb2c56fac612885d8c" kind="function"><name>HeightmapRGBA</name></member>
-    <member refid="structhmap_1_1HeightmapRGBA_1a9de9ba26672485c5f5e19b2f35bf26eb" kind="function"><name>set_alpha</name></member>
-    <member refid="structhmap_1_1HeightmapRGBA_1aed79841db9d57dc03afc2ccdaa899a86" kind="function"><name>set_alpha</name></member>
-    <member refid="structhmap_1_1HeightmapRGBA_1a16bcb5357cbc49ae4bff6f0713c4985c" kind="function"><name>set_sto</name></member>
-    <member refid="structhmap_1_1HeightmapRGBA_1a862282b5cffd9391fece507ac6fd3236" kind="function"><name>to_png</name></member>
-    <member refid="structhmap_1_1HeightmapRGBA_1a9fb8149f2080b36e191ed97f70af09ad" kind="function"><name>colorize</name></member>
-    <member refid="structhmap_1_1HeightmapRGBA_1a679ac4a0febf5e4def5ab6b07d641dbb" kind="function"><name>colorize</name></member>
-    <member refid="structhmap_1_1HeightmapRGBA_1a9e385e734a686b79a12211edf0258902" kind="function"><name>colorize</name></member>
-    <member refid="structhmap_1_1HeightmapRGBA_1af53c9f791817ea400f3b8cdfe152bd3a" kind="function"><name>luminance</name></member>
-    <member refid="structhmap_1_1HeightmapRGBA_1a144c800a402bba5570820c83c8b8535b" kind="function"><name>normalize</name></member>
-    <member refid="structhmap_1_1HeightmapRGBA_1ab52832c5db286659aab59c6a554d4e59" kind="function"><name>to_img_8bit</name></member>
-    <member refid="structhmap_1_1HeightmapRGBA_1a1fa412d908912e2f55defbf67cb42edd" kind="friend"><name>mix_heightmap_rgba</name></member>
-    <member refid="structhmap_1_1HeightmapRGBA_1a3b3ac1df8b7c96027ccb28878b2894cd" kind="friend"><name>mix_heightmap_rgba</name></member>
-  </compound>
   <compound refid="classhmap_1_1Interpolator1D" kind="class"><name>hmap::Interpolator1D</name>
     <member refid="classhmap_1_1Interpolator1D_1ac8915becfa63f098c2c61fcfe5ae22e3" kind="variable"><name>interp</name></member>
     <member refid="classhmap_1_1Interpolator1D_1af471e64b2d1cd93a8ad65d0c10500af7" kind="variable"><name>accel_</name></member>
@@ -457,9 +417,14 @@
     <member refid="classhmap_1_1LruTileStorage_1aa04ddcca3cd4ef62b56823fc99ca1c30" kind="variable"><name>max_tiles</name></member>
     <member refid="classhmap_1_1LruTileStorage_1a503160ae137678b2255088de204a5d7c" kind="variable"><name>lru</name></member>
     <member refid="classhmap_1_1LruTileStorage_1afc5582d2a112b9907a175d101f8dcf30" kind="variable"><name>tiles</name></member>
+    <member refid="classhmap_1_1LruTileStorage_1ab9b7eae867ec2993d2e6f8d28417fcca" kind="variable"><name>mutex</name></member>
     <member refid="classhmap_1_1LruTileStorage_1a18948b97db31797b0fe45c58d2da883b" kind="function"><name>LruTileStorage</name></member>
+    <member refid="classhmap_1_1LruTileStorage_1a958b0fe829345faaec6e9263c5923e02" kind="function"><name>clone</name></member>
     <member refid="classhmap_1_1LruTileStorage_1ad8d27889892845b867bee79aa596042f" kind="function"><name>get_tile</name></member>
     <member refid="classhmap_1_1LruTileStorage_1ab27b0290974d18f882fdadd7bc5acd96" kind="function"><name>release_tile</name></member>
+    <member refid="classhmap_1_1LruTileStorage_1a62d3db90d62e59fb8e4ff341d2a8c139" kind="function"><name>max_live_tiles</name></member>
+    <member refid="classhmap_1_1LruTileStorage_1a904540ee5b81ccda39648248aede3a5a" kind="function"><name>info_string</name></member>
+    <member refid="classhmap_1_1LruTileStorage_1aafd76cf3da42c38072a60934418898a4" kind="function"><name>get_tile_no_mutex_lock</name></member>
     <member refid="classhmap_1_1LruTileStorage_1ac7f51bb13ce9dab2d1dac83f8177e8db" kind="function"><name>on_evict</name></member>
   </compound>
   <compound refid="structhmap_1_1Mat" kind="struct"><name>hmap::Mat</name>
@@ -613,8 +578,11 @@
   </compound>
   <compound refid="classhmap_1_1RamTileStorage" kind="class"><name>hmap::RamTileStorage</name>
     <member refid="classhmap_1_1RamTileStorage_1a05792cb43cf15b48c74e196874b4fcf3" kind="variable"><name>tiles</name></member>
+    <member refid="classhmap_1_1RamTileStorage_1af5df1a3fe48a778b06306bb08d212022" kind="function"><name>clone</name></member>
     <member refid="classhmap_1_1RamTileStorage_1ac01f5b8f15b1c50ebece95106adce7fe" kind="function"><name>get_tile</name></member>
     <member refid="classhmap_1_1RamTileStorage_1a6614d1aebd7771e7e2645d7ef2cb1151" kind="function"><name>release_tile</name></member>
+    <member refid="classhmap_1_1RamTileStorage_1a0e9c5b72223b7a7118cca997454472ed" kind="function"><name>max_live_tiles</name></member>
+    <member refid="classhmap_1_1RamTileStorage_1a741b156e46b8763496e2a3c5110b9a67" kind="function"><name>info_string</name></member>
   </compound>
   <compound refid="structhmap_1_1Recorder" kind="struct"><name>hmap::Recorder</name>
     <member refid="structhmap_1_1Recorder_1a383fac701048b5d6717ed4c007161ba3" kind="variable"><name>name</name></member>
@@ -691,26 +659,14 @@
     <member refid="classhmap_1_1Tensor_1aeba89ed52aeff17783967e7d386336d9" kind="function"><name>resample_to_shape_xy</name></member>
     <member refid="classhmap_1_1Tensor_1aaf3d0e4ca2dcb231210a4b4745777c7b" kind="function"><name>set_slice</name></member>
     <member refid="classhmap_1_1Tensor_1ac267c454e16d1445696ffa5ad2b32cb6" kind="function"><name>to_cv_mat</name></member>
-    <member refid="classhmap_1_1Tensor_1a97bc4a15725b74b3b7de6a2152813cad" kind="function"><name>to_img_8bit</name></member>
+    <member refid="classhmap_1_1Tensor_1a637626689237e2131ba547a81cf7aaaf" kind="function"><name>to_img_8bit</name></member>
     <member refid="classhmap_1_1Tensor_1afe46210c8fa2c76229cc4099d63f237e" kind="function"><name>to_png</name></member>
-  </compound>
-  <compound refid="classhmap_1_1Tile" kind="class"><name>hmap::Tile</name>
-    <member refid="classhmap_1_1Tile_1a48abac45866586d08562290cd1cbf771" kind="variable"><name>shift</name></member>
-    <member refid="classhmap_1_1Tile_1aae914c15147af89217a6af5af8b08af1" kind="variable"><name>scale</name></member>
-    <member refid="classhmap_1_1Tile_1a91373c77f2a13d8627ad8040f0a24ed0" kind="variable"><name>bbox</name></member>
-    <member refid="classhmap_1_1Tile_1ad9f7b9113ac49377aaae9d53d905bd9a" kind="function"><name>Tile</name></member>
-    <member refid="classhmap_1_1Tile_1a3ef4061316f6315cf5ce2582842f6f32" kind="function"><name>Tile</name></member>
-    <member refid="classhmap_1_1Tile_1ae15f1ce2ed00cc0e3466e2e6e9732778" kind="function"><name>operator=</name></member>
-    <member refid="classhmap_1_1Tile_1a71c8b5b077f46a291f2ac37c58bee416" kind="function"><name>from_array_interp</name></member>
-    <member refid="classhmap_1_1Tile_1a50894d6bd3db58c969d37befe6f453d9" kind="function"><name>from_array_interp_bicubic</name></member>
-    <member refid="classhmap_1_1Tile_1aef02035e9f699d9e7e98d45f1e3875e4" kind="function"><name>from_array_interp_bilinear</name></member>
-    <member refid="classhmap_1_1Tile_1aaea839a4732611e0abdb5c3b64f509b2" kind="function"><name>from_array_interp_nearest</name></member>
-    <member refid="classhmap_1_1Tile_1a5ac4f9e9129abfbc790393ac47450096" kind="function"><name>infos</name></member>
   </compound>
   <compound refid="structhmap_1_1TileKey" kind="struct"><name>hmap::TileKey</name>
     <member refid="structhmap_1_1TileKey_1aa1b61a92a4562444455e7461cd65d642" kind="variable"><name>tx</name></member>
     <member refid="structhmap_1_1TileKey_1a0c2bad93215283eb8baedc5cbc2fa2f1" kind="variable"><name>ty</name></member>
     <member refid="structhmap_1_1TileKey_1a40d424bd1194dae00a214f663e8412a0" kind="function"><name>operator==</name></member>
+    <member refid="structhmap_1_1TileKey_1aec9650a21e7c6f8765b9c4932f05ac61" kind="function"><name>hash</name></member>
   </compound>
   <compound refid="structhmap_1_1TileKeyHash" kind="struct"><name>hmap::TileKeyHash</name>
     <member refid="structhmap_1_1TileKeyHash_1a7231b3026e5cbd723cba9e9ee184f500" kind="function"><name>operator()</name></member>
@@ -721,12 +677,18 @@
     <member refid="structhmap_1_1TileRegion_1a525824dd7a3c589436a33b1d232a8433" kind="variable"><name>shape</name></member>
     <member refid="structhmap_1_1TileRegion_1a49c3eebc47bb7e161fd3c6ce87f01cca" kind="variable"><name>halo</name></member>
     <member refid="structhmap_1_1TileRegion_1a1cf655fd7ee1443572b8db734d836dc7" kind="function"><name>TileRegion</name></member>
-    <member refid="structhmap_1_1TileRegion_1a49995b0a9eb4602e25d0ee719303b356" kind="function"><name>total_shape</name></member>
+    <member refid="structhmap_1_1TileRegion_1a2160f3e52bb07aebad44bf689d5fe690" kind="function"><name>cell_center</name></member>
+    <member refid="structhmap_1_1TileRegion_1a773fcee90fae6c3950a9fa5617de2f62" kind="function"><name>cell_corner</name></member>
+    <member refid="structhmap_1_1TileRegion_1ae00731982da2e860d89cbdaec916a080" kind="function"><name>key_as_string</name></member>
   </compound>
   <compound refid="classhmap_1_1TileStorage" kind="class"><name>hmap::TileStorage</name>
     <member refid="classhmap_1_1TileStorage_1a125f3395811a46b8b104eda9736b6b23" kind="function"><name>~TileStorage</name></member>
     <member refid="classhmap_1_1TileStorage_1afb6d5e8458f71c702a8792bcaa8642f8" kind="function"><name>get_tile</name></member>
     <member refid="classhmap_1_1TileStorage_1a3dd9f39f008bba2ab9b0bd3baa7e7ea9" kind="function"><name>release_tile</name></member>
+    <member refid="classhmap_1_1TileStorage_1a913e34794112d5e973dc182d831db13e" kind="function"><name>max_live_tiles</name></member>
+    <member refid="classhmap_1_1TileStorage_1a6058caeb55d8e5f1a7d86e6ba1d89047" kind="function"><name>clone</name></member>
+    <member refid="classhmap_1_1TileStorage_1a2feeb317dfb3fa8057fcd4daf4202fd8" kind="function"><name>info_string</name></member>
+    <member refid="classhmap_1_1TileStorage_1a019cb42b6028988281a116f669359935" kind="function"><name>trim</name></member>
   </compound>
   <compound refid="classhmap_1_1Timer" kind="class"><name>hmap::Timer</name>
     <member refid="classhmap_1_1Timer_1aac51dbbcb2b7ea63765c0f95764f27cb" kind="variable"><name>sid</name></member>
@@ -845,14 +807,72 @@
     <member refid="structhmap_1_1VirtualArray_1a2d3721a573d9e21e941148f2e359434b" kind="variable"><name>tile_shape</name></member>
     <member refid="structhmap_1_1VirtualArray_1a2b173300623c38c8083654ad095217f2" kind="variable"><name>halo</name></member>
     <member refid="structhmap_1_1VirtualArray_1ac46202fbde3f529ab290f38e73b529d6" kind="variable"><name>storage</name></member>
+    <member refid="structhmap_1_1VirtualArray_1a449169067a5399d2bc162a2cade15bcc" kind="function"><name>VirtualArray</name></member>
     <member refid="structhmap_1_1VirtualArray_1a8311d1152047f08d0388d1a4a048099e" kind="function"><name>VirtualArray</name></member>
+    <member refid="structhmap_1_1VirtualArray_1ad4d8d3407778b4db8fd3dd4a98ef28a5" kind="function"><name>VirtualArray</name></member>
+    <member refid="structhmap_1_1VirtualArray_1aee46789ef67622a8f65fb9fbeacd41b5" kind="function"><name>VirtualArray</name></member>
+    <member refid="structhmap_1_1VirtualArray_1ab62c06317c15b733a4274a11eba5c8e7" kind="function"><name>clone</name></member>
+    <member refid="structhmap_1_1VirtualArray_1a480907077a0c4748ed6f5894226471ac" kind="function"><name>copy_from</name></member>
     <member refid="structhmap_1_1VirtualArray_1a9d0e859ae542634ecb9446f5c2fc7bb9" kind="function"><name>get</name></member>
+    <member refid="structhmap_1_1VirtualArray_1ae4adbabb465da57c4056050375886848" kind="function"><name>get_bilinear</name></member>
+    <member refid="structhmap_1_1VirtualArray_1af18d79861c72756d23fbde116be927d0" kind="function"><name>get_nearest</name></member>
     <member refid="structhmap_1_1VirtualArray_1ab46eee27ffe32137d1c6076e82cc5195" kind="function"><name>set</name></member>
+    <member refid="structhmap_1_1VirtualArray_1ac6e25f58944e813be9da550257a33a52" kind="function"><name>get_max_tiles</name></member>
+    <member refid="structhmap_1_1VirtualArray_1a2245a6c69d4cc5ee8cc6f5506cc61baf" kind="function"><name>get_ntiles</name></member>
+    <member refid="structhmap_1_1VirtualArray_1af3c6671195e6953ad46ae65a64fe88bd" kind="function"><name>info_string</name></member>
+    <member refid="structhmap_1_1VirtualArray_1aeff83280c1e81978b24909637bf728a1" kind="function"><name>fill</name></member>
+    <member refid="structhmap_1_1VirtualArray_1ab685dda55aa7c9797d2a77e5d75d66c4" kind="function"><name>from_array</name></member>
+    <member refid="structhmap_1_1VirtualArray_1a81fead26a776d58553e942f0204ce810" kind="function"><name>to_array</name></member>
+    <member refid="structhmap_1_1VirtualArray_1a72a1341b322d90e51275dc8336944c16" kind="function"><name>to_array</name></member>
+    <member refid="structhmap_1_1VirtualArray_1a037ca97b101483eeb9628bf7662ee7ee" kind="function"><name>to_array_dbg</name></member>
+    <member refid="structhmap_1_1VirtualArray_1a95ef87e8953451eb40d8b8e43e09f051" kind="function"><name>max</name></member>
+    <member refid="structhmap_1_1VirtualArray_1ac67dd8407b579ec8e8dced6cf45faa7e" kind="function"><name>mean</name></member>
+    <member refid="structhmap_1_1VirtualArray_1a86a3950c3cb912d82c694a752bb20f4c" kind="function"><name>min</name></member>
+    <member refid="structhmap_1_1VirtualArray_1af98faefefaaeb9ffc84bcc5997fbae8e" kind="function"><name>sum</name></member>
+    <member refid="structhmap_1_1VirtualArray_1a277b4009dc26ec99a6f82157b899d8cd" kind="function"><name>inverse</name></member>
+    <member refid="structhmap_1_1VirtualArray_1ab040e57e20ecafbe4dbb0a3076560314" kind="function"><name>remap</name></member>
+    <member refid="structhmap_1_1VirtualArray_1a98bfd2a46fdaebd580d44ea766c5829f" kind="function"><name>remap</name></member>
+    <member refid="structhmap_1_1VirtualArray_1a8d74c7c6a84b8c54985a5fdeb4e805f0" kind="function"><name>unique_values</name></member>
     <member refid="structhmap_1_1VirtualArray_1a7112a736d8497a4b65d5056209f04077" kind="function"><name>smooth_overlap_buffers</name></member>
-    <member refid="structhmap_1_1VirtualArray_1a46a7e552ad77c88a527c41c8aeeb5f68" kind="function"><name>to_array</name></member>
+    <member refid="structhmap_1_1VirtualArray_1ace64d9290dd6116a38ac034f6b72dc91" kind="function"><name>tile_region_global_position</name></member>
+    <member refid="structhmap_1_1VirtualArray_1afd55182a2230d4e68cd542f2bef2ad9e" kind="function"><name>tile_region_global_indices</name></member>
     <member refid="structhmap_1_1VirtualArray_1a307123a81d2ea77c85ae28612a1c06c2" kind="function"><name>tile_region_from_global_index</name></member>
     <member refid="structhmap_1_1VirtualArray_1a157b5a589d01cb7da7fd9b9b759f94c6" kind="function"><name>tile_region_from_tile_coords</name></member>
     <member refid="structhmap_1_1VirtualArray_1a12c769efc1f74252ff39f2b617f55f33" kind="function"><name>local_indices</name></member>
+    <member refid="structhmap_1_1VirtualArray_1a883004746310f2e6cbd6365ce96d2541" kind="function"><name>trim_storage</name></member>
+  </compound>
+  <compound refid="classhmap_1_1VirtualTexture" kind="class"><name>hmap::VirtualTexture</name>
+    <member refid="classhmap_1_1VirtualTexture_1ae999f1abfe76819639a319ce795924b7" kind="variable"><name>shape</name></member>
+    <member refid="classhmap_1_1VirtualTexture_1a9502a27aecf9f89a52e8939bcc7d6a6f" kind="variable"><name>bbox</name></member>
+    <member refid="classhmap_1_1VirtualTexture_1a5715cc1c46c0d01c6d12648c49c7c3ba" kind="variable"><name>tile_shape</name></member>
+    <member refid="classhmap_1_1VirtualTexture_1a086adf51b2d8005792bc505045a1974c" kind="variable"><name>halo</name></member>
+    <member refid="classhmap_1_1VirtualTexture_1aed6a15ceb99e2c0bf9ed7f8830c91336" kind="variable"><name>arrays</name></member>
+    <member refid="classhmap_1_1VirtualTexture_1a595d89efb147f4a5af4d6cb1ccb54189" kind="function"><name>VirtualTexture</name></member>
+    <member refid="classhmap_1_1VirtualTexture_1a0a6dc1842e4a8b5f90fe444d9ccc3f8d" kind="function"><name>VirtualTexture</name></member>
+    <member refid="classhmap_1_1VirtualTexture_1a3c495d8345eeaf7b043484e18f554766" kind="function"><name>VirtualTexture</name></member>
+    <member refid="classhmap_1_1VirtualTexture_1add23ab327f5d8f8951c619575c9cb93b" kind="function"><name>VirtualTexture</name></member>
+    <member refid="classhmap_1_1VirtualTexture_1a27fe173d52fad2b3246dbcec8974d291" kind="function"><name>copy_from</name></member>
+    <member refid="classhmap_1_1VirtualTexture_1a3cde7b31158124e72d7fb81847b9f565" kind="function"><name>channels</name></member>
+    <member refid="classhmap_1_1VirtualTexture_1aae1f588acc9e3d8a08fdc90bfdf3ed1f" kind="function"><name>channel</name></member>
+    <member refid="classhmap_1_1VirtualTexture_1a1eb1b7178328060b7d3095f8edebce7e" kind="function"><name>channel</name></member>
+    <member refid="classhmap_1_1VirtualTexture_1a3b33275bb42a9303292c0c38e19c4830" kind="function"><name>channels_ptr</name></member>
+    <member refid="classhmap_1_1VirtualTexture_1ab64d331cec6f1ea671aeff0a161be25f" kind="function"><name>channels_ptr</name></member>
+    <member refid="classhmap_1_1VirtualTexture_1aef2c4583c0f5cc97123cbd95375c0747" kind="function"><name>get_arrays</name></member>
+    <member refid="classhmap_1_1VirtualTexture_1a2b5ec03d42a1570a9706bfbc653e5a0b" kind="function"><name>fill</name></member>
+    <member refid="classhmap_1_1VirtualTexture_1add7dea2080424adca079a955625f77fc" kind="function"><name>fill</name></member>
+    <member refid="classhmap_1_1VirtualTexture_1a26d24df0ac625d8b46c78f45e06638a9" kind="function"><name>from_arrays</name></member>
+    <member refid="classhmap_1_1VirtualTexture_1a1bfe8a01c2605b6a464d1e2f96165452" kind="function"><name>to_img_8bit</name></member>
+    <member refid="classhmap_1_1VirtualTexture_1ac63588628e2189680a479c6779bc93fe" kind="function"><name>to_png</name></member>
+    <member refid="classhmap_1_1VirtualTexture_1a377675bfed09cf8dc2d9cb91cd408c3a" kind="function"><name>to_png</name></member>
+    <member refid="classhmap_1_1VirtualTexture_1a91219834a1eafb8bdb0070b02219aa43" kind="function"><name>to_tensor</name></member>
+  </compound>
+  <compound refid="structhmap_1_1VirtualTextureStorage" kind="struct"><name>hmap::VirtualTextureStorage</name>
+    <member refid="structhmap_1_1VirtualTextureStorage_1a518936a932a928a0b1b135f976491e8b" kind="variable"><name>channel_storages</name></member>
+    <member refid="structhmap_1_1VirtualTextureStorage_1a9fdf43c566dfc78f1310f395377965fa" kind="function"><name>VirtualTextureStorage</name></member>
+    <member refid="structhmap_1_1VirtualTextureStorage_1ae5cc37ced709362425ca9e1ce8e766e1" kind="function"><name>channel</name></member>
+    <member refid="structhmap_1_1VirtualTextureStorage_1a21c8303565af1216ffd3ebc96f5751b1" kind="function"><name>channel</name></member>
+    <member refid="structhmap_1_1VirtualTextureStorage_1aad5813d1a2c06527f85ffb823a24c2b9" kind="function"><name>channel_count</name></member>
+    <member refid="structhmap_1_1VirtualTextureStorage_1a4f2d03a10a486427a4792228477c8d8c" kind="function"><name>trim_storage</name></member>
   </compound>
   <compound refid="classhmap_1_1WaveDuneFunction" kind="class"><name>hmap::WaveDuneFunction</name>
     <member refid="classhmap_1_1WaveDuneFunction_1a326078132dfa53ad87e7b67f49e611d8" kind="variable"><name>kw</name></member>
@@ -936,6 +956,12 @@
     <member refid="namespacehmap_1a1ba9d4ce7afe3309f8ae8e617f7154eeadb9a04ab3508704543b5dd43ae495fe7" kind="enumvalue"><name>BOUNDARY_RIGHT</name></member>
     <member refid="namespacehmap_1a1ba9d4ce7afe3309f8ae8e617f7154eea1bda4002f204a3b745ea70dab2b6b6d8" kind="enumvalue"><name>BOUNDARY_TOP</name></member>
     <member refid="namespacehmap_1a1ba9d4ce7afe3309f8ae8e617f7154eeac7495a13a71417dd76751518cd185309" kind="enumvalue"><name>BOUNDARY_BOTTOM</name></member>
+    <member refid="namespacehmap_1abc952321c99ec11d60b4037e3d27db9b" kind="enum"><name>NormalMapBlendingMethod</name></member>
+    <member refid="namespacehmap_1abc952321c99ec11d60b4037e3d27db9bac248af7dd230247485e3c09a663cedd0" kind="enumvalue"><name>NMAP_LINEAR</name></member>
+    <member refid="namespacehmap_1abc952321c99ec11d60b4037e3d27db9ba97d5a1740991179c436482de8c1c1f34" kind="enumvalue"><name>NMAP_DERIVATIVE</name></member>
+    <member refid="namespacehmap_1abc952321c99ec11d60b4037e3d27db9ba25b053ebbd8db9d348737e6f343c61bf" kind="enumvalue"><name>NMAP_UDN</name></member>
+    <member refid="namespacehmap_1abc952321c99ec11d60b4037e3d27db9ba54fd5928677cd19616ec52d6d59d4c60" kind="enumvalue"><name>NMAP_UNITY</name></member>
+    <member refid="namespacehmap_1abc952321c99ec11d60b4037e3d27db9ba6ba5e07d11326f7567d533f169321e37" kind="enumvalue"><name>NMAP_WHITEOUT</name></member>
     <member refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369" kind="enum"><name>Cmap</name></member>
     <member refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a4eb53d94f58e93c3bdb554d8cca7f306" kind="enumvalue"><name>BONE</name></member>
     <member refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d" kind="enumvalue"><name>GRAY</name></member>
@@ -1004,16 +1030,6 @@
     <member refid="namespacehmap_1aba758c4143b6e499ec6f4385467a6d77a99ca15104343ff0356c6fc0ffe4f837d" kind="enumvalue"><name>RND_HALTON</name></member>
     <member refid="namespacehmap_1aba758c4143b6e499ec6f4385467a6d77aeebf5714b383e3b3be100ceba46d8fe5" kind="enumvalue"><name>RND_HAMMERSLEY</name></member>
     <member refid="namespacehmap_1aba758c4143b6e499ec6f4385467a6d77a8943dd2a2e3993c1e0cff37be3f65957" kind="enumvalue"><name>RND_LHS</name></member>
-    <member refid="namespacehmap_1abc952321c99ec11d60b4037e3d27db9b" kind="enum"><name>NormalMapBlendingMethod</name></member>
-    <member refid="namespacehmap_1abc952321c99ec11d60b4037e3d27db9bac248af7dd230247485e3c09a663cedd0" kind="enumvalue"><name>NMAP_LINEAR</name></member>
-    <member refid="namespacehmap_1abc952321c99ec11d60b4037e3d27db9ba97d5a1740991179c436482de8c1c1f34" kind="enumvalue"><name>NMAP_DERIVATIVE</name></member>
-    <member refid="namespacehmap_1abc952321c99ec11d60b4037e3d27db9ba25b053ebbd8db9d348737e6f343c61bf" kind="enumvalue"><name>NMAP_UDN</name></member>
-    <member refid="namespacehmap_1abc952321c99ec11d60b4037e3d27db9ba54fd5928677cd19616ec52d6d59d4c60" kind="enumvalue"><name>NMAP_UNITY</name></member>
-    <member refid="namespacehmap_1abc952321c99ec11d60b4037e3d27db9ba6ba5e07d11326f7567d533f169321e37" kind="enumvalue"><name>NMAP_WHITEOUT</name></member>
-    <member refid="namespacehmap_1ab36df744301ada377d4a3f3a34bca77f" kind="enum"><name>TransformMode</name></member>
-    <member refid="namespacehmap_1ab36df744301ada377d4a3f3a34bca77fac40707c2538151422af1c84dfd46252b" kind="enumvalue"><name>DISTRIBUTED</name></member>
-    <member refid="namespacehmap_1ab36df744301ada377d4a3f3a34bca77fabd8181f845a88e68d0653323c26ac4ac" kind="enumvalue"><name>SEQUENTIAL</name></member>
-    <member refid="namespacehmap_1ab36df744301ada377d4a3f3a34bca77fadb0544f4a0452ffb75e88eff0b39095d" kind="enumvalue"><name>SINGLE_ARRAY</name></member>
     <member refid="namespacehmap_1a0c714c7fa78e9384806de52a5d039f2f" kind="enum"><name>FlowDirectionMethod</name></member>
     <member refid="namespacehmap_1a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894" kind="enumvalue"><name>FDM_D8</name></member>
     <member refid="namespacehmap_1a0c714c7fa78e9384806de52a5d039f2faaf8f41c39c71902022e1aec12f10d372" kind="enumvalue"><name>FDM_PRIORITY_FLOOD</name></member>
@@ -1093,13 +1109,22 @@
     <member refid="namespacehmap_1ad4876bd26d1f3b33a1492645bfe50fbea10478d523fc507b9738e9cfdd5b7539c" kind="enumvalue"><name>NEGATIVE_ONLY</name></member>
     <member refid="namespacehmap_1ad4876bd26d1f3b33a1492645bfe50fbead7d8162264f038302952e47ad5e7a2ed" kind="enumvalue"><name>BOTH</name></member>
     <member refid="namespacehmap_1ad4876bd26d1f3b33a1492645bfe50fbea8a618ee5b7e734d56e2d5957bd9893fd" kind="enumvalue"><name>NONE</name></member>
+    <member refid="namespacehmap_1ad21b93a34c88a47d6b54f3a4d5b65e6e" kind="enum"><name>StorageMode</name></member>
+    <member refid="namespacehmap_1ad21b93a34c88a47d6b54f3a4d5b65e6eae10df7db812e0abe9bc94fc28ae907ce" kind="enumvalue"><name>VA_RAM</name></member>
+    <member refid="namespacehmap_1ad21b93a34c88a47d6b54f3a4d5b65e6ea671262171ccce9633cc42db046ea63d4" kind="enumvalue"><name>VA_DISK_LRU</name></member>
+    <member refid="namespacehmap_1ad21b93a34c88a47d6b54f3a4d5b65e6ea3696aa48b93c260deb79c830ae605781" kind="enumvalue"><name>VA_DISK_LRU_MIN</name></member>
+    <member refid="namespacehmap_1ad21b93a34c88a47d6b54f3a4d5b65e6eac3fa4d259d437f79a95c11d38da93b8a" kind="enumvalue"><name>VA_DISK_SEQUENTIAL</name></member>
+    <member refid="namespacehmap_1ae383414b46ae8992e621c407f09ce7c5" kind="enum"><name>ForEachMode</name></member>
+    <member refid="namespacehmap_1ae383414b46ae8992e621c407f09ce7c5ad610a3b158cd10452fc144bda389aa19" kind="enumvalue"><name>VA_SEQUENTIAL</name></member>
+    <member refid="namespacehmap_1ae383414b46ae8992e621c407f09ce7c5a5356cbfe824240ce4bd458109890b9d5" kind="enumvalue"><name>VA_DISTRIBUTED</name></member>
+    <member refid="namespacehmap_1ae383414b46ae8992e621c407f09ce7c5afd32b1bf1363b0e44143bda30f00cffa" kind="enumvalue"><name>VA_SINGLE_ARRAY</name></member>
+    <member refid="namespacehmap_1aed9d644531f4c1132298258bfb9dbf36" kind="variable"><name>normal_map_blending_method_as_string</name></member>
     <member refid="namespacehmap_1a88ca6ccdcae8eba404dc38abac40991d" kind="variable"><name>cmap_as_string</name></member>
     <member refid="namespacehmap_1abba6b48f25191652ca4a9d643bb6542b" kind="variable"><name>mesh_type_as_string</name></member>
     <member refid="namespacehmap_1a53ee5c5907cfb58acb8f30d94f536b21" kind="variable"><name>asset_export_format_as_string</name></member>
     <member refid="namespacehmap_1a10e5f27f8bd4a9e5feecc7016f754ebb" kind="variable"><name>point_sampling_method_as_string</name></member>
-    <member refid="namespacehmap_1aed9d644531f4c1132298258bfb9dbf36" kind="variable"><name>normal_map_blending_method_as_string</name></member>
-    <member refid="namespacehmap_1a5dfb33caf527f7b85895937c1e05286b" kind="variable"><name>transform_mode_as_string</name></member>
     <member refid="namespacehmap_1af6d8f4ad58c37bccc50d1f8227c6999d" kind="variable"><name>interpolation_method_2d_as_string</name></member>
+    <member refid="namespacehmap_1a2828152429273d081863dfafb293b0b6" kind="variable"><name>for_each_mode_as_string</name></member>
     <member refid="namespacehmap_1ad37e39413754484dfb342ffbfbe75c2b" kind="function"><name>normalized_vec3</name></member>
     <member refid="namespacehmap_1a518f05118e1b9704160a7c3276a2f483" kind="function"><name>cv_mat_to_array</name></member>
     <member refid="namespacehmap_1aa0b0e92bd8fa6fdc51ccb39f7a382e92" kind="function"><name>alter_elevation</name></member>
@@ -1132,11 +1157,18 @@
     <member refid="namespacehmap_1aea2ac2d901a1bf47ce8f19d463a7079e" kind="function"><name>zeroed_edges</name></member>
     <member refid="namespacehmap_1a4960846742ad118ec9eadaba40ca39ac" kind="function"><name>apply_hillshade</name></member>
     <member refid="namespacehmap_1aefc8cbe645337bb5b663436c0324f9e2" kind="function"><name>apply_hillshade</name></member>
+    <member refid="namespacehmap_1a1175ee497ff12b2f3c6cdb7cc805949f" kind="function"><name>color_adjust</name></member>
     <member refid="namespacehmap_1a33a635351aa13228557a585470ba4563" kind="function"><name>colorize</name></member>
+    <member refid="namespacehmap_1a6f991e3bdf7c5c4bed631f2b7fb4f072" kind="function"><name>colorize</name></member>
+    <member refid="namespacehmap_1abc8fb0970d44a6627145587080c715bb" kind="function"><name>colorize</name></member>
     <member refid="namespacehmap_1aa76bdaf8b572bcea0778ef8815965307" kind="function"><name>colorize_grayscale</name></member>
     <member refid="namespacehmap_1afda3d37dc8fba4a56818964784d2178b" kind="function"><name>colorize_histogram</name></member>
     <member refid="namespacehmap_1aa60f142e186d43472cdda569c03b31b2" kind="function"><name>colorize_slope_height_heatmap</name></member>
     <member refid="namespacehmap_1a9f21720d5e7b1c93e0d5b50631f1ca8f" kind="function"><name>colorize_vec2</name></member>
+    <member refid="namespacehmap_1a051c3f6f1ceda0feaf3c36c97bd7fef9" kind="function"><name>luminance</name></member>
+    <member refid="namespacehmap_1ac5229d29466796bb6afcdebe997731a3" kind="function"><name>mix</name></member>
+    <member refid="namespacehmap_1a663df316bd09bb4072cbfe655e389668" kind="function"><name>mix</name></member>
+    <member refid="namespacehmap_1a034df9fe48c4e9a2bead1da021ffd437" kind="function"><name>mix_normal_map</name></member>
     <member refid="namespacehmap_1aea4d1a92934de93437705abd7dde6b06" kind="function"><name>get_colormap_data</name></member>
     <member refid="namespacehmap_1a9411ccef8a74e06ef51efd1f5041c7b4" kind="function"><name>convolve1d_i</name></member>
     <member refid="namespacehmap_1a2f3f79308ada9782de6c4866b567b167" kind="function"><name>convolve1d_j</name></member>
@@ -1360,6 +1392,7 @@
     <member refid="namespacehmap_1a7064ad1eef3ea7b6e19249fe3312e3b9" kind="function"><name>make_xy_function_from_array</name></member>
     <member refid="namespacehmap_1a17514d1658d2a065892f061864a538ad" kind="function"><name>create_noise_function_from_type</name></member>
     <member refid="namespacehmap_1abd7c616c225d31eb2fd4e3ff023e3ed5" kind="function"><name>merge_cloud</name></member>
+    <member refid="namespacehmap_1afc6e9a8850aaebd3cca94aefb3c54114" kind="function"><name>merge_clouds</name></member>
     <member refid="namespacehmap_1aa0bf57ef5e675f0aa851bc8f4b734acd" kind="function"><name>random_cloud</name></member>
     <member refid="namespacehmap_1a83368f74414e23015bf543c36d8bfbef" kind="function"><name>random_cloud_density</name></member>
     <member refid="namespacehmap_1a3c7d0352e60c2fd0ea923a68b569ffb0" kind="function"><name>random_cloud_distance</name></member>
@@ -1426,34 +1459,6 @@
     <member refid="namespacehmap_1a6e66245d2cf9c7944ed35a1010c54f77" kind="function"><name>phase_field</name></member>
     <member refid="namespacehmap_1a0bcc84aa462aee73e1a3a52729f21ea6" kind="function"><name>solve_poisson_gauss_seidel</name></member>
     <member refid="namespacehmap_1a3f8dc201377b61428eba8daa4a03a65f" kind="function"><name>unwrap_phase</name></member>
-    <member refid="namespacehmap_1a054b11b366d585ac3d228619d9cb5928" kind="function"><name>mix_heightmap_rgba</name></member>
-    <member refid="namespacehmap_1ab5bf9c7f8dd053e585c61c1fdb532b7a" kind="function"><name>mix_heightmap_rgba</name></member>
-    <member refid="namespacehmap_1a2751ce7799f172484dd06a1b72d168da" kind="function"><name>mix_normal_map_rgba</name></member>
-    <member refid="namespacehmap_1a0c5529e52be9242f4e2587d043ece704" kind="function"><name>fill</name></member>
-    <member refid="namespacehmap_1a3751517b263e1178a1ab3a2378d77dfa" kind="function"><name>fill</name></member>
-    <member refid="namespacehmap_1ad4261372b2cfa77557684f8d15c3ce39" kind="function"><name>fill</name></member>
-    <member refid="namespacehmap_1afaa31506353c8fe10a751a0cbf992c33" kind="function"><name>fill</name></member>
-    <member refid="namespacehmap_1a3e1330c25846f757ce15146d8fba4724" kind="function"><name>fill</name></member>
-    <member refid="namespacehmap_1a808d4ce63d0da9e4bab0f204991d88b0" kind="function"><name>fill</name></member>
-    <member refid="namespacehmap_1a6d8728c019a17094c326f31501ea5482" kind="function"><name>transform</name></member>
-    <member refid="namespacehmap_1afd9639dca483f8e95f83f58e7171c8ad" kind="function"><name>transform</name></member>
-    <member refid="namespacehmap_1a0c9955183689e50bb323cb74e14d47ee" kind="function"><name>transform</name></member>
-    <member refid="namespacehmap_1a8097627251f8fca6407bf397bbdb2eeb" kind="function"><name>transform</name></member>
-    <member refid="namespacehmap_1a7834b788b003e00411db069fe53dd8da" kind="function"><name>transform</name></member>
-    <member refid="namespacehmap_1a3124c0500ac67c3c6bafc77c6486d7a1" kind="function"><name>transform</name></member>
-    <member refid="namespacehmap_1aed492e4ecec2a21b7525e06760c99e48" kind="function"><name>transform</name></member>
-    <member refid="namespacehmap_1aa7a794c92aebf181390461a3d8f85721" kind="function"><name>transform</name></member>
-    <member refid="namespacehmap_1a8189a2f0b773b7883777e6601f247634" kind="function"><name>transform</name></member>
-    <member refid="namespacehmap_1a02f88b129d0c61ec241c54333a617109" kind="function"><name>transform</name></member>
-    <member refid="namespacehmap_1a59b8719b8ab27bf954ebaa961e25c2e7" kind="function"><name>transform</name></member>
-    <member refid="namespacehmap_1a32d77f6607e40ad1429906e5e9e08e17" kind="function"><name>transform</name></member>
-    <member refid="namespacehmap_1a9ee71d4c48644e9f0e29601eb0636b07" kind="function"><name>transform</name></member>
-    <member refid="namespacehmap_1a23b3861a8be80a910c10401284fe9e59" kind="function"><name>transform</name></member>
-    <member refid="namespacehmap_1a529a8a23044dcdd9ed0fb7f0e628d4c7" kind="function"><name>transform</name></member>
-    <member refid="namespacehmap_1a31d9bb3f85a02d60bd03e8bb6ef4f4f4" kind="function"><name>transform</name></member>
-    <member refid="namespacehmap_1aa6f9b7363268c106d5154d7370053c35" kind="function"><name>transform</name></member>
-    <member refid="namespacehmap_1a086b4d007e08e88d2fc1166e67c524ee" kind="function"><name>transform</name></member>
-    <member refid="namespacehmap_1a3438427cf944820ce19e7ca9ce438985" kind="function"><name>transform</name></member>
     <member refid="namespacehmap_1a8284b00f1f460f1d5a406ee45587dcd9" kind="function"><name>basin_id</name></member>
     <member refid="namespacehmap_1a2e0533063a77bfc047472d1d85f3f63c" kind="function"><name>d8_compute_ndip</name></member>
     <member refid="namespacehmap_1a05b9777b63947937181d7b7406e4b50d" kind="function"><name>find_flow_apex</name></member>
@@ -1480,6 +1485,7 @@
     <member refid="namespacehmap_1ad39c72e2b4c07d3013f7b0143c31137c" kind="function"><name>water_mask</name></member>
     <member refid="namespacehmap_1abc5928f49e530927c8fb61a9afea3274" kind="function"><name>water_mask</name></member>
     <member refid="namespacehmap_1a67eae4546cbed6a804eaddcde9350e1c" kind="function"><name>add_filename_suffix</name></member>
+    <member refid="namespacehmap_1a0a506d871b395e49e6175499dfa1e903" kind="function"><name>make_unique_temp_dir</name></member>
     <member refid="namespacehmap_1a3f38b7faedc76835a0a902eb48e3d94b" kind="function"><name>zfill</name></member>
     <member refid="namespacehmap_1a0b7db6f8ce57fcdeca7ca1e3b7d1e686" kind="function"><name>upperbound_right</name></member>
     <member refid="namespacehmap_1a8be122241fa42b0f6a7ef67106391780" kind="function"><name>argsort</name></member>
@@ -1494,16 +1500,15 @@
     <member refid="namespacehmap_1a62fb974ae1d78c0c4ebb4267dc9c8204" kind="function"><name>interpolate2d</name></member>
     <member refid="namespacehmap_1a608687504dfc1cf55afe6f1db6a90335" kind="function"><name>interpolate2d_nearest</name></member>
     <member refid="namespacehmap_1a87e9a2e5fc78594e8d88522366ff5396" kind="function"><name>interpolate2d_delaunay</name></member>
-    <member refid="namespacehmap_1a0039057c9e4adf1498fa0a91b94d7fb8" kind="function"><name>flatten_heightmap</name></member>
-    <member refid="namespacehmap_1a2ecd308a993a3d85640aea025e02f3b1" kind="function"><name>flatten_heightmap</name></member>
-    <member refid="namespacehmap_1a17f8f7249f91ef9bbcc0b1b5e38e20f3" kind="function"><name>flatten_heightmap</name></member>
     <member refid="namespacehmap_1a9e8b724d238450ef72e9bd083acb9b8a" kind="function"><name>interpolate_array_bicubic</name></member>
     <member refid="namespacehmap_1aa17e96003ede1772e676bddd576091fc" kind="function"><name>interpolate_array_bicubic</name></member>
     <member refid="namespacehmap_1a28a6744fc26597330ca8eb9bbc4cd68e" kind="function"><name>interpolate_array_bilinear</name></member>
     <member refid="namespacehmap_1aa9d1771597fa0fc6c75d5db96096d4e9" kind="function"><name>interpolate_array_bilinear</name></member>
     <member refid="namespacehmap_1ab55e8132857fc52e7ac7947d82c334e1" kind="function"><name>interpolate_array_nearest</name></member>
     <member refid="namespacehmap_1a08eecd57d3c4f993b6f205beabd2f12b" kind="function"><name>interpolate_array_nearest</name></member>
-    <member refid="namespacehmap_1a14135f92a275f8857aac1bc9480e426f" kind="function"><name>interpolate_heightmap</name></member>
+    <member refid="namespacehmap_1ace2076a7808458f99aeaeec2bc404d6b" kind="function"><name>flatten_heightmap</name></member>
+    <member refid="namespacehmap_1a3dadec4e8aa2c67598a0e158756308c8" kind="function"><name>flatten_heightmap</name></member>
+    <member refid="namespacehmap_1aab05ca060b3dd80724ff669864c0f4d2" kind="function"><name>interpolate_heightmap</name></member>
     <member refid="namespacehmap_1a4ad7940c796973a615558a8dc773281c" kind="function"><name>get_kernel</name></member>
     <member refid="namespacehmap_1ae0ab7faed3577159bc8051ad0e25b051" kind="function"><name>biweight</name></member>
     <member refid="namespacehmap_1adfc320d14c66c6a40dedd9410efa269d" kind="function"><name>blackman</name></member>
@@ -1742,8 +1747,13 @@
     <member refid="namespacehmap_1a5d5baa80ff76a31a24e3b348edb0520a" kind="function"><name>warp_downslope</name></member>
     <member refid="namespacehmap_1a2dba417aca5a0dcd02509617939d741b" kind="function"><name>warp_downslope</name></member>
     <member refid="namespacehmap_1aa49ad80ba2711183ea6758d6d6d4d5f7" kind="function"><name>zoom</name></member>
-    <member refid="namespacehmap_1aae8f6a3d45b6f43c1d3534ef08355598" kind="function"><name>for_each_tile_sequential</name></member>
-    <member refid="namespacehmap_1a99ff01a3a6bc3608247f0be2a1d38871" kind="function"><name>for_each_tile_distributed</name></member>
+    <member refid="namespacehmap_1a253c7aaa3976c17e0aae21b7b3f6cc9e" kind="function"><name>to_string</name></member>
+    <member refid="namespacehmap_1a43075b5f93cea5525adb69b8d6990683" kind="function"><name>make_storage</name></member>
+    <member refid="namespacehmap_1af8dc7ce1ae44750316d846345854c408" kind="function"><name>to_string</name></member>
+    <member refid="namespacehmap_1a4216f86be919aeb4a2cb6aab44609a71" kind="function"><name>copy_data</name></member>
+    <member refid="namespacehmap_1af66b37de86e8de6261ab902110b118a0" kind="function"><name>convert_texture_channels</name></member>
+    <member refid="namespacehmap_1a1025088e008bb5709c8f88bc025ab1cb" kind="function"><name>for_each_tile</name></member>
+    <member refid="namespacehmap_1a6bbca26bba2f2faac320f59df0ae8d8a" kind="function"><name>for_each_pixel</name></member>
     <member refid="namespacehmap_1aac1a15042e8fae93d9caed60c2318fcc" kind="function"><name>operator*</name></member>
     <member refid="namespacehmap_1a7f71bb0e96a77a1302a4d6e151f540cf" kind="function"><name>operator/</name></member>
     <member refid="namespacehmap_1ab47e8203dd4ddf61741a3a8e25a5e2f9" kind="function"><name>operator+</name></member>
@@ -1751,6 +1761,8 @@
     <member refid="namespacehmap_1a4fca3ce1ffb84dbc8a627b3313b1d1fb" kind="function"><name>convert_mat_to_array</name></member>
     <member refid="namespacehmap_1a3d953aa5fcf59193b3b8b98db3f5a872" kind="function"><name>square_fill_md</name></member>
     <member refid="namespacehmap_1af5440364a346b297246885e95793ef45" kind="function"><name>square_md</name></member>
+    <member refid="namespacehmap_1a3694cff871813c283356c8edf1db3f55" kind="function"><name>helper_hash_u32</name></member>
+    <member refid="namespacehmap_1a5e1e11e11949bc172f52c62ae984ded4" kind="function"><name>helper_hash_01</name></member>
     <member refid="namespacehmap_1aba0d25f051d23c9c637973b7edf19922" kind="function"><name>helper_thermal_exchange</name></member>
     <member refid="namespacehmap_1a108e699ce689fbb425f11ed2485150ce" kind="function"><name>helper_smooth_corners</name></member>
     <member refid="namespacehmap_1a9bab94bd2d87290be7f4fde49095b311" kind="function"><name>helper_get_rtheta_stretch</name></member>
@@ -1765,12 +1777,6 @@
     <member refid="namespacehmap_1ac070e7f9253f57fe6b44ad1f6c9fd753" kind="function"><name>cmp_inf</name></member>
     <member refid="namespacehmap_1ad97b6a0082efd4063f7839c95a51b294" kind="function"><name>compute_gradient</name></member>
     <member refid="namespacehmap_1aa2c4a82ac72b15cac34f868be9743471" kind="function"><name>compute_gradient_norm</name></member>
-    <member refid="namespacehmap_1a79a02efb856e14f99c2accbfa595e0d4" kind="function"><name>mix_heightmap_rgb</name></member>
-    <member refid="namespacehmap_1ad16911f0a44281ab16b10eb90926f674" kind="function"><name>mix_heightmap_rgb</name></member>
-    <member refid="namespacehmap_1a87f3209d8f2aa9ce947a292fbfe4fe4e" kind="function"><name>mix_heightmap_rgb_sqrt</name></member>
-    <member refid="namespacehmap_1ac5c38a2d95e658542576c82eee91d4e1" kind="function"><name>mix_heightmap_rgb_sqrt</name></member>
-    <member refid="namespacehmap_1a0218fc9914980f2103a86ec7f4fa7d44" kind="function"><name>fill</name></member>
-    <member refid="namespacehmap_1a7c7bafbcc451b2ebb4c199e40f07a041" kind="function"><name>fill</name></member>
     <member refid="namespacehmap_1a7376f7c00281f0616024d33069971ca4" kind="function"><name>helper_find_up_downslope</name></member>
     <member refid="namespacehmap_1a567abeb8b68a281411d811987a84ee42" kind="function"><name>is_monotonic</name></member>
     <member refid="namespacehmap_1ad2cd9e279b20e6621b1daca2d2b732bf" kind="function"><name>find_last_index_smaller_than</name></member>
@@ -1821,8 +1827,8 @@
     <member refid="namespacehmap_1_1gpu_1ad0a05ed0beea669300d62197a0dadaf2" kind="function"><name>thermal_ridge</name></member>
     <member refid="namespacehmap_1_1gpu_1ab753c4abd819aa6945c1cfc5e25ccec4" kind="function"><name>thermal_scree</name></member>
     <member refid="namespacehmap_1_1gpu_1acfe28321531d2c03721588054da1446a" kind="function"><name>thermal_scree</name></member>
-    <member refid="namespacehmap_1_1gpu_1a0b4b472bb63e048e1c2bbfaf177495f3" kind="function"><name>valley_fill</name></member>
-    <member refid="namespacehmap_1_1gpu_1a954c28983c6bd7ca6657870ccbb384f5" kind="function"><name>valley_fill</name></member>
+    <member refid="namespacehmap_1_1gpu_1ae8a8da3d95deb978d813ce782a1492bb" kind="function"><name>valley_fill</name></member>
+    <member refid="namespacehmap_1_1gpu_1aa7ce5c44914d54ec7fa0162c5ccbab86" kind="function"><name>valley_fill</name></member>
     <member refid="namespacehmap_1_1gpu_1a022f5800d7e28f79f9e2d3abf687f490" kind="function"><name>local_median_deviation</name></member>
     <member refid="namespacehmap_1_1gpu_1afed4e84e60dd0cdc453e7da72940ed27" kind="function"><name>mean_local</name></member>
     <member refid="namespacehmap_1_1gpu_1a2dcbc7dac085b61f3c47e17256741a9a" kind="function"><name>relative_elevation</name></member>
@@ -2008,8 +2014,6 @@
   </compound>
   <compound refid="gradient_8hpp" kind="file"><name>gradient.hpp</name>
   </compound>
-  <compound refid="heightmap_8hpp" kind="file"><name>heightmap.hpp</name>
-  </compound>
   <compound refid="hydrology_8hpp" kind="file"><name>hydrology.hpp</name>
   </compound>
   <compound refid="dendry__array__control__function_8hpp" kind="file"><name>dendry_array_control_function.hpp</name>
@@ -2072,9 +2076,24 @@
   <compound refid="virtual__array_8hpp" kind="file"><name>virtual_array.hpp</name>
   </compound>
   <compound refid="virtual__array_8inl" kind="file"><name>virtual_array.inl</name>
-    <member refid="virtual__array_8inl_1a1667bffbf59a0c6e7f631f67babec5d9" kind="function"><name>for_each_tile_sequential</name></member>
-    <member refid="virtual__array_8inl_1ae9b022962430a5b4e223591606a64999" kind="function"><name>for_each_tile_distributed</name></member>
     <member refid="virtual__array_8inl_1a8f931ef5a699d8756ed83bf678cc5110" kind="function"><name>for_each_tile_distributed</name></member>
+    <member refid="virtual__array_8inl_1ae1287a4a7907542f6957baae838a870d" kind="function"><name>for_each_tile_distributed</name></member>
+    <member refid="virtual__array_8inl_1a572aa9da0eb51d6160bef6d9e5b0c48e" kind="function"><name>for_each_tile_sequential</name></member>
+    <member refid="virtual__array_8inl_1a1667bffbf59a0c6e7f631f67babec5d9" kind="function"><name>for_each_tile_sequential</name></member>
+    <member refid="virtual__array_8inl_1a6c754aad8996d3ebadcb3989dfa43f24" kind="function"><name>for_each_tile_single_array</name></member>
+    <member refid="virtual__array_8inl_1a6c13c921b7722aa5e4d60d53155b3bbb" kind="function"><name>for_each_tile_single_array</name></member>
+    <member refid="virtual__array_8inl_1a36108d74d7e5f3d6c311972490e1efff" kind="function"><name>for_each_tile</name></member>
+    <member refid="virtual__array_8inl_1a22b2c2c836594a23051ee27f190ea4f1" kind="function"><name>for_each_tile</name></member>
+    <member refid="virtual__array_8inl_1ae478874f7642c88ddd72ff98cd6db121" kind="function"><name>for_each_tile</name></member>
+    <member refid="virtual__array_8inl_1a54eec3c94e3409f3990876e68a581322" kind="function"><name>for_each_cell</name></member>
+  </compound>
+  <compound refid="virtual__texture_8hpp" kind="file"><name>virtual_texture.hpp</name>
+  </compound>
+  <compound refid="virtual__texture_8inl" kind="file"><name>virtual_texture.inl</name>
+    <member refid="virtual__texture_8inl_1a4c715b27b6eb8b36e1caccdcc86687ec" kind="function"><name>for_each_tile</name></member>
+    <member refid="virtual__texture_8inl_1a4d40066bfc89c4a99adf4b09355ec709" kind="function"><name>for_each_pixel</name></member>
+  </compound>
+  <compound refid="virtual__texture__storage_8hpp" kind="file"><name>virtual_texture_storage.hpp</name>
   </compound>
   <compound refid="array_8cpp" kind="file"><name>array.cpp</name>
   </compound>
@@ -2102,7 +2121,11 @@
   </compound>
   <compound refid="boundary_8cpp" kind="file"><name>boundary.cpp</name>
   </compound>
+  <compound refid="color__adjust_8cpp" kind="file"><name>color_adjust.cpp</name>
+  </compound>
   <compound refid="colorize_8cpp" kind="file"><name>colorize.cpp</name>
+  </compound>
+  <compound refid="colorize__virtual__array_8cpp" kind="file"><name>colorize_virtual_array.cpp</name>
   </compound>
   <compound refid="get__colormap__data_8cpp" kind="file"><name>get_colormap_data.cpp</name>
   </compound>
@@ -2262,20 +2285,6 @@
   </compound>
   <compound refid="unwrap__phase_8cpp" kind="file"><name>unwrap_phase.cpp</name>
   </compound>
-  <compound refid="heightmap__base_8cpp" kind="file"><name>heightmap_base.cpp</name>
-  </compound>
-  <compound refid="heightmap__rgb_8cpp" kind="file"><name>heightmap_rgb.cpp</name>
-  </compound>
-  <compound refid="heightmap__rgba_8cpp" kind="file"><name>heightmap_rgba.cpp</name>
-  </compound>
-  <compound refid="heightmap__transform_8cpp" kind="file"><name>heightmap_transform.cpp</name>
-  </compound>
-  <compound refid="tile__base_8cpp" kind="file"><name>tile_base.cpp</name>
-  </compound>
-  <compound refid="heightmap_2transform_8cpp" kind="file"><name>transform.cpp</name>
-  </compound>
-  <compound refid="transform_2transform_8cpp" kind="file"><name>transform.cpp</name>
-  </compound>
   <compound refid="basin__id_8cpp" kind="file"><name>basin_id.cpp</name>
   </compound>
   <compound refid="drainage__basins_8cpp" kind="file"><name>drainage_basins.cpp</name>
@@ -2312,7 +2321,7 @@
   </compound>
   <compound refid="interpolate__curve_8cpp" kind="file"><name>interpolate_curve.cpp</name>
   </compound>
-  <compound refid="interpolate__heightmap_8cpp" kind="file"><name>interpolate_heightmap.cpp</name>
+  <compound refid="interpolate__heightmap__virtual__array_8cpp" kind="file"><name>interpolate_heightmap_virtual_array.cpp</name>
   </compound>
   <compound refid="kernels_8cpp" kind="file"><name>kernels.cpp</name>
   </compound>
@@ -2454,6 +2463,8 @@
   </compound>
   <compound refid="advection__warp__gpu_8cpp" kind="file"><name>advection_warp_gpu.cpp</name>
   </compound>
+  <compound refid="transform_8cpp" kind="file"><name>transform.cpp</name>
+  </compound>
   <compound refid="transform__gpu_8cpp" kind="file"><name>transform_gpu.cpp</name>
   </compound>
   <compound refid="warp_8cpp" kind="file"><name>warp.cpp</name>
@@ -2462,7 +2473,11 @@
   </compound>
   <compound refid="string__utils_8cpp" kind="file"><name>string_utils.cpp</name>
   </compound>
+  <compound refid="convert__texture__channels_8cpp" kind="file"><name>convert_texture_channels.cpp</name>
+  </compound>
   <compound refid="disk__lru__storage_8cpp" kind="file"><name>disk_lru_storage.cpp</name>
+  </compound>
+  <compound refid="disk__sequential__storage_8cpp" kind="file"><name>disk_sequential_storage.cpp</name>
   </compound>
   <compound refid="lru__tile__storage_8cpp" kind="file"><name>lru_tile_storage.cpp</name>
   </compound>
@@ -2470,7 +2485,15 @@
   </compound>
   <compound refid="tile__region_8cpp" kind="file"><name>tile_region.cpp</name>
   </compound>
+  <compound refid="tile__storage_8cpp" kind="file"><name>tile_storage.cpp</name>
+  </compound>
   <compound refid="virtual__array_8cpp" kind="file"><name>virtual_array.cpp</name>
+  </compound>
+  <compound refid="virtual__array__processing_8cpp" kind="file"><name>virtual_array_processing.cpp</name>
+  </compound>
+  <compound refid="virtual__texture_8cpp" kind="file"><name>virtual_texture.cpp</name>
+  </compound>
+  <compound refid="virtual__texture__storage_8cpp" kind="file"><name>virtual_texture_storage.cpp</name>
   </compound>
   <compound refid="todo" kind="page"><name>todo</name>
   </compound>
@@ -2519,8 +2542,6 @@
   <compound refid="dir_3c4172100491f31b556c8f9a4d709dfc" kind="dir"><name>HighMap/src/gpu_opencl</name>
   </compound>
   <compound refid="dir_052e2c45636af7fa2c38860b06d4db60" kind="dir"><name>HighMap/src/gradient</name>
-  </compound>
-  <compound refid="dir_566db01fb988f9afe1600b0dcd492ac3" kind="dir"><name>HighMap/src/heightmap</name>
   </compound>
   <compound refid="dir_d1628ce034b494ec45a6557150a1be1b" kind="dir"><name>HighMap</name>
   </compound>

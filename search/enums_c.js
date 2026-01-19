@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['transformmode_0',['TransformMode',['../namespacehmap.html#ab36df744301ada377d4a3f3a34bca77f',1,'hmap']]]
+  ['voronoireturntype_0',['VoronoiReturnType',['../namespacehmap.html#a8e3756915e28aa80cec2190043cc8c2f',1,'hmap']]]
 ];

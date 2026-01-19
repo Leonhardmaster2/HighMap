@@ -1,0 +1,6 @@
+var color__adjust_8cpp =
+[
+    [ "helper_hash_u32", "color__adjust_8cpp.html#a3694cff871813c283356c8edf1db3f55", null ],
+    [ "helper_hash_01", "color__adjust_8cpp.html#a5e1e11e11949bc172f52c62ae984ded4", null ],
+    [ "color_adjust", "color__adjust_8cpp.html#a1175ee497ff12b2f3c6cdb7cc805949f", null ]
+];

@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="46" column="32" bodyfile="HighMap/include/highmap/virtual_array/virtual_array.hpp" bodystart="46" bodyend="-1"/>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="140" column="32" bodyfile="HighMap/include/highmap/virtual_array/virtual_array.hpp" bodystart="140" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhmap_1_1VirtualArray_1a7a4e86a56ad72960bc20dfa97cadb8e3" prot="public" static="no" mutable="no">
         <type>glm::vec4</type>
@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="47" column="32" bodyfile="HighMap/include/highmap/virtual_array/virtual_array.hpp" bodystart="47" bodyend="-1"/>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="141" column="32" bodyfile="HighMap/include/highmap/virtual_array/virtual_array.hpp" bodystart="141" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhmap_1_1VirtualArray_1a2d3721a573d9e21e941148f2e359434b" prot="public" static="no" mutable="no">
         <type>glm::ivec2</type>
@@ -44,7 +44,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="48" column="32" bodyfile="HighMap/include/highmap/virtual_array/virtual_array.hpp" bodystart="48" bodyend="-1"/>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="142" column="32" bodyfile="HighMap/include/highmap/virtual_array/virtual_array.hpp" bodystart="142" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhmap_1_1VirtualArray_1a2b173300623c38c8083654ad095217f2" prot="public" static="no" mutable="no">
         <type>int</type>
@@ -58,7 +58,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="49" column="32" bodyfile="HighMap/include/highmap/virtual_array/virtual_array.hpp" bodystart="49" bodyend="-1"/>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="143" column="32" bodyfile="HighMap/include/highmap/virtual_array/virtual_array.hpp" bodystart="143" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhmap_1_1VirtualArray_1ac46202fbde3f529ab290f38e73b529d6" prot="public" static="no" mutable="no">
         <type>std::unique_ptr&lt; <ref refid="classhmap_1_1TileStorage" kindref="compound">TileStorage</ref> &gt;</type>
@@ -72,10 +72,24 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="50" column="19" bodyfile="HighMap/include/highmap/virtual_array/virtual_array.hpp" bodystart="50" bodyend="-1"/>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="144" column="19" bodyfile="HighMap/include/highmap/virtual_array/virtual_array.hpp" bodystart="144" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhmap_1_1VirtualArray_1a449169067a5399d2bc162a2cade15bcc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>hmap::VirtualArray::VirtualArray</definition>
+        <argsstring>()=default</argsstring>
+        <name>VirtualArray</name>
+        <qualifiedname>hmap::VirtualArray::VirtualArray</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="65" column="3"/>
+      </memberdef>
       <memberdef kind="function" id="structhmap_1_1VirtualArray_1a8311d1152047f08d0388d1a4a048099e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>hmap::VirtualArray::VirtualArray</definition>
@@ -108,7 +122,123 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="25" column="3" bodyfile="HighMap/src/virtual_array/virtual_array.cpp" bodystart="12" bodyend="23"/>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="67" column="3" bodyfile="HighMap/src/virtual_array/virtual_array.cpp" bodystart="17" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="structhmap_1_1VirtualArray_1ad4d8d3407778b4db8fd3dd4a98ef28a5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>hmap::VirtualArray::VirtualArray</definition>
+        <argsstring>(glm::ivec2 shape, glm::vec4 bbox, glm::ivec2 tile_shape, int halo, StorageMode storage_mode=StorageMode::VA_RAM)</argsstring>
+        <name>VirtualArray</name>
+        <qualifiedname>hmap::VirtualArray::VirtualArray</qualifiedname>
+        <param>
+          <type>glm::ivec2</type>
+          <declname>shape</declname>
+        </param>
+        <param>
+          <type>glm::vec4</type>
+          <declname>bbox</declname>
+        </param>
+        <param>
+          <type>glm::ivec2</type>
+          <declname>tile_shape</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>halo</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacehmap_1ad21b93a34c88a47d6b54f3a4d5b65e6e" kindref="member">StorageMode</ref></type>
+          <declname>storage_mode</declname>
+          <defval><ref refid="namespacehmap_1ad21b93a34c88a47d6b54f3a4d5b65e6eae10df7db812e0abe9bc94fc28ae907ce" kindref="member">StorageMode::VA_RAM</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="73" column="3" bodyfile="HighMap/src/virtual_array/virtual_array.cpp" bodystart="30" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="structhmap_1_1VirtualArray_1aee46789ef67622a8f65fb9fbeacd41b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>hmap::VirtualArray::VirtualArray</definition>
+        <argsstring>(glm::ivec2 shape, glm::ivec2 tile_shape, int halo, StorageMode storage_mode=StorageMode::VA_RAM)</argsstring>
+        <name>VirtualArray</name>
+        <qualifiedname>hmap::VirtualArray::VirtualArray</qualifiedname>
+        <param>
+          <type>glm::ivec2</type>
+          <declname>shape</declname>
+        </param>
+        <param>
+          <type>glm::ivec2</type>
+          <declname>tile_shape</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>halo</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacehmap_1ad21b93a34c88a47d6b54f3a4d5b65e6e" kindref="member">StorageMode</ref></type>
+          <declname>storage_mode</declname>
+          <defval><ref refid="namespacehmap_1ad21b93a34c88a47d6b54f3a4d5b65e6eae10df7db812e0abe9bc94fc28ae907ce" kindref="member">StorageMode::VA_RAM</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="79" column="3" bodyfile="HighMap/src/virtual_array/virtual_array.cpp" bodystart="40" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="structhmap_1_1VirtualArray_1ab62c06317c15b733a4274a11eba5c8e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::unique_ptr&lt; <ref refid="structhmap_1_1VirtualArray" kindref="compound">VirtualArray</ref> &gt;</type>
+        <definition>std::unique_ptr&lt; VirtualArray &gt; hmap::VirtualArray::clone</definition>
+        <argsstring>(const ComputeMode &amp;cm, bool deep_copy=false)</argsstring>
+        <name>clone</name>
+        <qualifiedname>hmap::VirtualArray::clone</qualifiedname>
+        <param>
+          <type>const <ref refid="structhmap_1_1ComputeMode" kindref="compound">ComputeMode</ref> &amp;</type>
+          <declname>cm</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>deep_copy</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="86" column="19" bodyfile="HighMap/src/virtual_array/virtual_array.cpp" bodystart="68" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="function" id="structhmap_1_1VirtualArray_1a480907077a0c4748ed6f5894226471ac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hmap::VirtualArray::copy_from</definition>
+        <argsstring>(VirtualArray &amp;src, const ComputeMode &amp;cm, bool copy_src_data=true)</argsstring>
+        <name>copy_from</name>
+        <qualifiedname>hmap::VirtualArray::copy_from</qualifiedname>
+        <param>
+          <type><ref refid="structhmap_1_1VirtualArray" kindref="compound">VirtualArray</ref> &amp;</type>
+          <declname>src</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structhmap_1_1ComputeMode" kindref="compound">ComputeMode</ref> &amp;</type>
+          <declname>cm</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>copy_src_data</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="88" column="33" bodyfile="HighMap/src/virtual_array/virtual_array.cpp" bodystart="52" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="structhmap_1_1VirtualArray_1a9d0e859ae542634ecb9446f5c2fc7bb9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>float</type>
@@ -130,7 +260,51 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="32" column="9" bodyfile="HighMap/src/virtual_array/virtual_array.cpp" bodystart="26" bodyend="35"/>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="94" column="15" bodyfile="HighMap/src/virtual_array/virtual_array.cpp" bodystart="129" bodyend="138"/>
+      </memberdef>
+      <memberdef kind="function" id="structhmap_1_1VirtualArray_1ae4adbabb465da57c4056050375886848" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float hmap::VirtualArray::get_bilinear</definition>
+        <argsstring>(float x, float y) const</argsstring>
+        <name>get_bilinear</name>
+        <qualifiedname>hmap::VirtualArray::get_bilinear</qualifiedname>
+        <param>
+          <type>float</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="95" column="15" bodyfile="HighMap/src/virtual_array/virtual_array.cpp" bodystart="148" bodyend="176"/>
+      </memberdef>
+      <memberdef kind="function" id="structhmap_1_1VirtualArray_1af18d79861c72756d23fbde116be927d0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float hmap::VirtualArray::get_nearest</definition>
+        <argsstring>(float x, float y) const</argsstring>
+        <name>get_nearest</name>
+        <qualifiedname>hmap::VirtualArray::get_nearest</qualifiedname>
+        <param>
+          <type>float</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="96" column="15" bodyfile="HighMap/src/virtual_array/virtual_array.cpp" bodystart="178" bodyend="190"/>
       </memberdef>
       <memberdef kind="function" id="structhmap_1_1VirtualArray_1ab46eee27ffe32137d1c6076e82cc5195" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -156,7 +330,324 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="33" column="9" bodyfile="HighMap/src/virtual_array/virtual_array.cpp" bodystart="54" bodyend="65"/>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="97" column="15" bodyfile="HighMap/src/virtual_array/virtual_array.cpp" bodystart="241" bodyend="248"/>
+      </memberdef>
+      <memberdef kind="function" id="structhmap_1_1VirtualArray_1ac6e25f58944e813be9da550257a33a52" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>glm::ivec2</type>
+        <definition>glm::ivec2 hmap::VirtualArray::get_max_tiles</definition>
+        <argsstring>() const</argsstring>
+        <name>get_max_tiles</name>
+        <qualifiedname>hmap::VirtualArray::get_max_tiles</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="98" column="15" bodyfile="HighMap/src/virtual_array/virtual_array.cpp" bodystart="140" bodyend="146"/>
+      </memberdef>
+      <memberdef kind="function" id="structhmap_1_1VirtualArray_1a2245a6c69d4cc5ee8cc6f5506cc61baf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int hmap::VirtualArray::get_ntiles</definition>
+        <argsstring>() const</argsstring>
+        <name>get_ntiles</name>
+        <qualifiedname>hmap::VirtualArray::get_ntiles</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="99" column="15" bodyfile="HighMap/src/virtual_array/virtual_array.cpp" bodystart="192" bodyend="196"/>
+      </memberdef>
+      <memberdef kind="function" id="structhmap_1_1VirtualArray_1af3c6671195e6953ad46ae65a64fe88bd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string hmap::VirtualArray::info_string</definition>
+        <argsstring>(const ComputeMode &amp;cm, int indent=0) const</argsstring>
+        <name>info_string</name>
+        <qualifiedname>hmap::VirtualArray::info_string</qualifiedname>
+        <param>
+          <type>const <ref refid="structhmap_1_1ComputeMode" kindref="compound">ComputeMode</ref> &amp;</type>
+          <declname>cm</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>indent</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="100" column="15" bodyfile="HighMap/src/virtual_array/virtual_array.cpp" bodystart="198" bodyend="222"/>
+      </memberdef>
+      <memberdef kind="function" id="structhmap_1_1VirtualArray_1aeff83280c1e81978b24909637bf728a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hmap::VirtualArray::fill</definition>
+        <argsstring>(float value, const ComputeMode &amp;cm)</argsstring>
+        <name>fill</name>
+        <qualifiedname>hmap::VirtualArray::fill</qualifiedname>
+        <param>
+          <type>float</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structhmap_1_1ComputeMode" kindref="compound">ComputeMode</ref> &amp;</type>
+          <declname>cm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="102" column="9" bodyfile="HighMap/src/virtual_array/virtual_array.cpp" bodystart="89" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="structhmap_1_1VirtualArray_1ab685dda55aa7c9797d2a77e5d75d66c4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hmap::VirtualArray::from_array</definition>
+        <argsstring>(const Array &amp;array, const ComputeMode &amp;cm)</argsstring>
+        <name>from_array</name>
+        <qualifiedname>hmap::VirtualArray::from_array</qualifiedname>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>array</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structhmap_1_1ComputeMode" kindref="compound">ComputeMode</ref> &amp;</type>
+          <declname>cm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="103" column="9" bodyfile="HighMap/src/virtual_array/virtual_array.cpp" bodystart="97" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="function" id="structhmap_1_1VirtualArray_1a81fead26a776d58553e942f0204ce810" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
+        <definition>Array hmap::VirtualArray::to_array</definition>
+        <argsstring>(const glm::ivec2 array_shape, const ComputeMode &amp;cm) const</argsstring>
+        <name>to_array</name>
+        <qualifiedname>hmap::VirtualArray::to_array</qualifiedname>
+        <param>
+          <type>const glm::ivec2</type>
+          <declname>array_shape</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structhmap_1_1ComputeMode" kindref="compound">ComputeMode</ref> &amp;</type>
+          <declname>cm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="104" column="9" bodyfile="HighMap/src/virtual_array/virtual_array.cpp" bodystart="388" bodyend="415"/>
+      </memberdef>
+      <memberdef kind="function" id="structhmap_1_1VirtualArray_1a72a1341b322d90e51275dc8336944c16" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
+        <definition>Array hmap::VirtualArray::to_array</definition>
+        <argsstring>(const ComputeMode &amp;cm) const</argsstring>
+        <name>to_array</name>
+        <qualifiedname>hmap::VirtualArray::to_array</qualifiedname>
+        <param>
+          <type>const <ref refid="structhmap_1_1ComputeMode" kindref="compound">ComputeMode</ref> &amp;</type>
+          <declname>cm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="105" column="9" bodyfile="HighMap/src/virtual_array/virtual_array.cpp" bodystart="417" bodyend="420"/>
+      </memberdef>
+      <memberdef kind="function" id="structhmap_1_1VirtualArray_1a037ca97b101483eeb9628bf7662ee7ee" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
+        <definition>Array hmap::VirtualArray::to_array_dbg</definition>
+        <argsstring>() const</argsstring>
+        <name>to_array_dbg</name>
+        <qualifiedname>hmap::VirtualArray::to_array_dbg</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="106" column="9" bodyfile="HighMap/src/virtual_array/virtual_array.cpp" bodystart="422" bodyend="431"/>
+      </memberdef>
+      <memberdef kind="function" id="structhmap_1_1VirtualArray_1a95ef87e8953451eb40d8b8e43e09f051" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float hmap::VirtualArray::max</definition>
+        <argsstring>(const ComputeMode &amp;cm) const</argsstring>
+        <name>max</name>
+        <qualifiedname>hmap::VirtualArray::max</qualifiedname>
+        <param>
+          <type>const <ref refid="structhmap_1_1ComputeMode" kindref="compound">ComputeMode</ref> &amp;</type>
+          <declname>cm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="110" column="9" bodyfile="HighMap/src/virtual_array/virtual_array_processing.cpp" bodystart="32" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="structhmap_1_1VirtualArray_1ac67dd8407b579ec8e8dced6cf45faa7e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float hmap::VirtualArray::mean</definition>
+        <argsstring>(const ComputeMode &amp;cm) const</argsstring>
+        <name>mean</name>
+        <qualifiedname>hmap::VirtualArray::mean</qualifiedname>
+        <param>
+          <type>const <ref refid="structhmap_1_1ComputeMode" kindref="compound">ComputeMode</ref> &amp;</type>
+          <declname>cm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="111" column="9" bodyfile="HighMap/src/virtual_array/virtual_array_processing.cpp" bodystart="49" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="structhmap_1_1VirtualArray_1a86a3950c3cb912d82c694a752bb20f4c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float hmap::VirtualArray::min</definition>
+        <argsstring>(const ComputeMode &amp;cm) const</argsstring>
+        <name>min</name>
+        <qualifiedname>hmap::VirtualArray::min</qualifiedname>
+        <param>
+          <type>const <ref refid="structhmap_1_1ComputeMode" kindref="compound">ComputeMode</ref> &amp;</type>
+          <declname>cm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="112" column="9" bodyfile="HighMap/src/virtual_array/virtual_array_processing.cpp" bodystart="55" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="structhmap_1_1VirtualArray_1af98faefefaaeb9ffc84bcc5997fbae8e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float hmap::VirtualArray::sum</definition>
+        <argsstring>(const ComputeMode &amp;cm) const</argsstring>
+        <name>sum</name>
+        <qualifiedname>hmap::VirtualArray::sum</qualifiedname>
+        <param>
+          <type>const <ref refid="structhmap_1_1ComputeMode" kindref="compound">ComputeMode</ref> &amp;</type>
+          <declname>cm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="113" column="9" bodyfile="HighMap/src/virtual_array/virtual_array_processing.cpp" bodystart="93" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="function" id="structhmap_1_1VirtualArray_1a277b4009dc26ec99a6f82157b899d8cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hmap::VirtualArray::inverse</definition>
+        <argsstring>(const ComputeMode &amp;cm)</argsstring>
+        <name>inverse</name>
+        <qualifiedname>hmap::VirtualArray::inverse</qualifiedname>
+        <param>
+          <type>const <ref refid="structhmap_1_1ComputeMode" kindref="compound">ComputeMode</ref> &amp;</type>
+          <declname>cm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="115" column="8" bodyfile="HighMap/src/virtual_array/virtual_array_processing.cpp" bodystart="17" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="structhmap_1_1VirtualArray_1ab040e57e20ecafbe4dbb0a3076560314" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hmap::VirtualArray::remap</definition>
+        <argsstring>(float vmin, float vmax, const ComputeMode &amp;cm)</argsstring>
+        <name>remap</name>
+        <qualifiedname>hmap::VirtualArray::remap</qualifiedname>
+        <param>
+          <type>float</type>
+          <declname>vmin</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>vmax</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structhmap_1_1ComputeMode" kindref="compound">ComputeMode</ref> &amp;</type>
+          <declname>cm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="116" column="8" bodyfile="HighMap/src/virtual_array/virtual_array_processing.cpp" bodystart="72" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="structhmap_1_1VirtualArray_1a98bfd2a46fdaebd580d44ea766c5829f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hmap::VirtualArray::remap</definition>
+        <argsstring>(float vmin, float vmax, float from_min, float from_max, const ComputeMode &amp;cm)</argsstring>
+        <name>remap</name>
+        <qualifiedname>hmap::VirtualArray::remap</qualifiedname>
+        <param>
+          <type>float</type>
+          <declname>vmin</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>vmax</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>from_min</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>from_max</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structhmap_1_1ComputeMode" kindref="compound">ComputeMode</ref> &amp;</type>
+          <declname>cm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="117" column="8" bodyfile="HighMap/src/virtual_array/virtual_array_processing.cpp" bodystart="80" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="structhmap_1_1VirtualArray_1a8d74c7c6a84b8c54985a5fdeb4e805f0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; float &gt;</type>
+        <definition>std::vector&lt; float &gt; hmap::VirtualArray::unique_values</definition>
+        <argsstring>(const ComputeMode &amp;cm) const</argsstring>
+        <name>unique_values</name>
+        <qualifiedname>hmap::VirtualArray::unique_values</qualifiedname>
+        <param>
+          <type>const <ref refid="structhmap_1_1ComputeMode" kindref="compound">ComputeMode</ref> &amp;</type>
+          <declname>cm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="123" column="15" bodyfile="HighMap/src/virtual_array/virtual_array_processing.cpp" bodystart="114" bodyend="136"/>
       </memberdef>
       <memberdef kind="function" id="structhmap_1_1VirtualArray_1a7112a736d8497a4b65d5056209f04077" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -170,21 +661,43 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="35" column="9" bodyfile="HighMap/src/virtual_array/virtual_array.cpp" bodystart="67" bodyend="127"/>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="125" column="8" bodyfile="HighMap/src/virtual_array/virtual_array.cpp" bodystart="250" bodyend="317"/>
       </memberdef>
-      <memberdef kind="function" id="structhmap_1_1VirtualArray_1a46a7e552ad77c88a527c41c8aeeb5f68" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
-        <definition>Array hmap::VirtualArray::to_array</definition>
-        <argsstring>() const</argsstring>
-        <name>to_array</name>
-        <qualifiedname>hmap::VirtualArray::to_array</qualifiedname>
+      <memberdef kind="function" id="structhmap_1_1VirtualArray_1ace64d9290dd6116a38ac034f6b72dc91" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>glm::vec2</type>
+        <definition>glm::vec2 hmap::VirtualArray::tile_region_global_position</definition>
+        <argsstring>(const TileRegion &amp;region) const</argsstring>
+        <name>tile_region_global_position</name>
+        <qualifiedname>hmap::VirtualArray::tile_region_global_position</qualifiedname>
+        <param>
+          <type>const <ref refid="structhmap_1_1TileRegion" kindref="compound">TileRegion</ref> &amp;</type>
+          <declname>region</declname>
+        </param>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="36" column="9" bodyfile="HighMap/src/virtual_array/virtual_array.cpp" bodystart="180" bodyend="189"/>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="128" column="14" bodyfile="HighMap/src/virtual_array/virtual_array.cpp" bodystart="370" bodyend="378"/>
+      </memberdef>
+      <memberdef kind="function" id="structhmap_1_1VirtualArray_1afd55182a2230d4e68cd542f2bef2ad9e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>glm::ivec2</type>
+        <definition>glm::ivec2 hmap::VirtualArray::tile_region_global_indices</definition>
+        <argsstring>(const TileRegion &amp;region) const</argsstring>
+        <name>tile_region_global_indices</name>
+        <qualifiedname>hmap::VirtualArray::tile_region_global_indices</qualifiedname>
+        <param>
+          <type>const <ref refid="structhmap_1_1TileRegion" kindref="compound">TileRegion</ref> &amp;</type>
+          <declname>region</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="129" column="14" bodyfile="HighMap/src/virtual_array/virtual_array.cpp" bodystart="380" bodyend="386"/>
       </memberdef>
       <memberdef kind="function" id="structhmap_1_1VirtualArray_1a307123a81d2ea77c85ae28612a1c06c2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structhmap_1_1TileRegion" kindref="compound">TileRegion</ref></type>
@@ -206,7 +719,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="39" column="14" bodyfile="HighMap/src/virtual_array/virtual_array.cpp" bodystart="129" bodyend="137"/>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="130" column="14" bodyfile="HighMap/src/virtual_array/virtual_array.cpp" bodystart="319" bodyend="327"/>
       </memberdef>
       <memberdef kind="function" id="structhmap_1_1VirtualArray_1a157b5a589d01cb7da7fd9b9b759f94c6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structhmap_1_1TileRegion" kindref="compound">TileRegion</ref></type>
@@ -228,7 +741,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="40" column="14" bodyfile="HighMap/src/virtual_array/virtual_array.cpp" bodystart="139" bodyend="178"/>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="131" column="14" bodyfile="HighMap/src/virtual_array/virtual_array.cpp" bodystart="329" bodyend="368"/>
       </memberdef>
       <memberdef kind="function" id="structhmap_1_1VirtualArray_1a12c769efc1f74252ff39f2b617f55f33" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>glm::ivec2</type>
@@ -254,7 +767,21 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="41" column="14" bodyfile="HighMap/src/virtual_array/virtual_array.cpp" bodystart="37" bodyend="52"/>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="132" column="14" bodyfile="HighMap/src/virtual_array/virtual_array.cpp" bodystart="224" bodyend="239"/>
+      </memberdef>
+      <memberdef kind="function" id="structhmap_1_1VirtualArray_1a883004746310f2e6cbd6365ce96d2541" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hmap::VirtualArray::trim_storage</definition>
+        <argsstring>()</argsstring>
+        <name>trim_storage</name>
+        <qualifiedname>hmap::VirtualArray::trim_storage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="136" column="8" bodyfile="HighMap/src/virtual_array/virtual_array.cpp" bodystart="433" bodyend="436"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -280,21 +807,46 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="23" column="1" bodyfile="HighMap/include/highmap/virtual_array/virtual_array.hpp" bodystart="24" bodyend="51"/>
+    <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="61" column="1" bodyfile="HighMap/include/highmap/virtual_array/virtual_array.hpp" bodystart="62" bodyend="145"/>
     <listofallmembers>
       <member refid="structhmap_1_1VirtualArray_1a7a4e86a56ad72960bc20dfa97cadb8e3" prot="public" virt="non-virtual"><scope>hmap::VirtualArray</scope><name>bbox</name></member>
+      <member refid="structhmap_1_1VirtualArray_1ab62c06317c15b733a4274a11eba5c8e7" prot="public" virt="non-virtual"><scope>hmap::VirtualArray</scope><name>clone</name></member>
+      <member refid="structhmap_1_1VirtualArray_1a480907077a0c4748ed6f5894226471ac" prot="public" virt="non-virtual"><scope>hmap::VirtualArray</scope><name>copy_from</name></member>
+      <member refid="structhmap_1_1VirtualArray_1aeff83280c1e81978b24909637bf728a1" prot="public" virt="non-virtual"><scope>hmap::VirtualArray</scope><name>fill</name></member>
+      <member refid="structhmap_1_1VirtualArray_1ab685dda55aa7c9797d2a77e5d75d66c4" prot="public" virt="non-virtual"><scope>hmap::VirtualArray</scope><name>from_array</name></member>
       <member refid="structhmap_1_1VirtualArray_1a9d0e859ae542634ecb9446f5c2fc7bb9" prot="public" virt="non-virtual"><scope>hmap::VirtualArray</scope><name>get</name></member>
+      <member refid="structhmap_1_1VirtualArray_1ae4adbabb465da57c4056050375886848" prot="public" virt="non-virtual"><scope>hmap::VirtualArray</scope><name>get_bilinear</name></member>
+      <member refid="structhmap_1_1VirtualArray_1ac6e25f58944e813be9da550257a33a52" prot="public" virt="non-virtual"><scope>hmap::VirtualArray</scope><name>get_max_tiles</name></member>
+      <member refid="structhmap_1_1VirtualArray_1af18d79861c72756d23fbde116be927d0" prot="public" virt="non-virtual"><scope>hmap::VirtualArray</scope><name>get_nearest</name></member>
+      <member refid="structhmap_1_1VirtualArray_1a2245a6c69d4cc5ee8cc6f5506cc61baf" prot="public" virt="non-virtual"><scope>hmap::VirtualArray</scope><name>get_ntiles</name></member>
       <member refid="structhmap_1_1VirtualArray_1a2b173300623c38c8083654ad095217f2" prot="public" virt="non-virtual"><scope>hmap::VirtualArray</scope><name>halo</name></member>
+      <member refid="structhmap_1_1VirtualArray_1af3c6671195e6953ad46ae65a64fe88bd" prot="public" virt="non-virtual"><scope>hmap::VirtualArray</scope><name>info_string</name></member>
+      <member refid="structhmap_1_1VirtualArray_1a277b4009dc26ec99a6f82157b899d8cd" prot="public" virt="non-virtual"><scope>hmap::VirtualArray</scope><name>inverse</name></member>
       <member refid="structhmap_1_1VirtualArray_1a12c769efc1f74252ff39f2b617f55f33" prot="public" virt="non-virtual"><scope>hmap::VirtualArray</scope><name>local_indices</name></member>
+      <member refid="structhmap_1_1VirtualArray_1a95ef87e8953451eb40d8b8e43e09f051" prot="public" virt="non-virtual"><scope>hmap::VirtualArray</scope><name>max</name></member>
+      <member refid="structhmap_1_1VirtualArray_1ac67dd8407b579ec8e8dced6cf45faa7e" prot="public" virt="non-virtual"><scope>hmap::VirtualArray</scope><name>mean</name></member>
+      <member refid="structhmap_1_1VirtualArray_1a86a3950c3cb912d82c694a752bb20f4c" prot="public" virt="non-virtual"><scope>hmap::VirtualArray</scope><name>min</name></member>
+      <member refid="structhmap_1_1VirtualArray_1ab040e57e20ecafbe4dbb0a3076560314" prot="public" virt="non-virtual"><scope>hmap::VirtualArray</scope><name>remap</name></member>
+      <member refid="structhmap_1_1VirtualArray_1a98bfd2a46fdaebd580d44ea766c5829f" prot="public" virt="non-virtual"><scope>hmap::VirtualArray</scope><name>remap</name></member>
       <member refid="structhmap_1_1VirtualArray_1ab46eee27ffe32137d1c6076e82cc5195" prot="public" virt="non-virtual"><scope>hmap::VirtualArray</scope><name>set</name></member>
       <member refid="structhmap_1_1VirtualArray_1ab4cb9cb20eb23bc7b1026da3486be975" prot="public" virt="non-virtual"><scope>hmap::VirtualArray</scope><name>shape</name></member>
       <member refid="structhmap_1_1VirtualArray_1a7112a736d8497a4b65d5056209f04077" prot="public" virt="non-virtual"><scope>hmap::VirtualArray</scope><name>smooth_overlap_buffers</name></member>
       <member refid="structhmap_1_1VirtualArray_1ac46202fbde3f529ab290f38e73b529d6" prot="public" virt="non-virtual"><scope>hmap::VirtualArray</scope><name>storage</name></member>
+      <member refid="structhmap_1_1VirtualArray_1af98faefefaaeb9ffc84bcc5997fbae8e" prot="public" virt="non-virtual"><scope>hmap::VirtualArray</scope><name>sum</name></member>
       <member refid="structhmap_1_1VirtualArray_1a307123a81d2ea77c85ae28612a1c06c2" prot="public" virt="non-virtual"><scope>hmap::VirtualArray</scope><name>tile_region_from_global_index</name></member>
       <member refid="structhmap_1_1VirtualArray_1a157b5a589d01cb7da7fd9b9b759f94c6" prot="public" virt="non-virtual"><scope>hmap::VirtualArray</scope><name>tile_region_from_tile_coords</name></member>
+      <member refid="structhmap_1_1VirtualArray_1afd55182a2230d4e68cd542f2bef2ad9e" prot="public" virt="non-virtual"><scope>hmap::VirtualArray</scope><name>tile_region_global_indices</name></member>
+      <member refid="structhmap_1_1VirtualArray_1ace64d9290dd6116a38ac034f6b72dc91" prot="public" virt="non-virtual"><scope>hmap::VirtualArray</scope><name>tile_region_global_position</name></member>
       <member refid="structhmap_1_1VirtualArray_1a2d3721a573d9e21e941148f2e359434b" prot="public" virt="non-virtual"><scope>hmap::VirtualArray</scope><name>tile_shape</name></member>
-      <member refid="structhmap_1_1VirtualArray_1a46a7e552ad77c88a527c41c8aeeb5f68" prot="public" virt="non-virtual"><scope>hmap::VirtualArray</scope><name>to_array</name></member>
+      <member refid="structhmap_1_1VirtualArray_1a81fead26a776d58553e942f0204ce810" prot="public" virt="non-virtual"><scope>hmap::VirtualArray</scope><name>to_array</name></member>
+      <member refid="structhmap_1_1VirtualArray_1a72a1341b322d90e51275dc8336944c16" prot="public" virt="non-virtual"><scope>hmap::VirtualArray</scope><name>to_array</name></member>
+      <member refid="structhmap_1_1VirtualArray_1a037ca97b101483eeb9628bf7662ee7ee" prot="public" virt="non-virtual"><scope>hmap::VirtualArray</scope><name>to_array_dbg</name></member>
+      <member refid="structhmap_1_1VirtualArray_1a883004746310f2e6cbd6365ce96d2541" prot="public" virt="non-virtual"><scope>hmap::VirtualArray</scope><name>trim_storage</name></member>
+      <member refid="structhmap_1_1VirtualArray_1a8d74c7c6a84b8c54985a5fdeb4e805f0" prot="public" virt="non-virtual"><scope>hmap::VirtualArray</scope><name>unique_values</name></member>
+      <member refid="structhmap_1_1VirtualArray_1a449169067a5399d2bc162a2cade15bcc" prot="public" virt="non-virtual"><scope>hmap::VirtualArray</scope><name>VirtualArray</name></member>
       <member refid="structhmap_1_1VirtualArray_1a8311d1152047f08d0388d1a4a048099e" prot="public" virt="non-virtual"><scope>hmap::VirtualArray</scope><name>VirtualArray</name></member>
+      <member refid="structhmap_1_1VirtualArray_1ad4d8d3407778b4db8fd3dd4a98ef28a5" prot="public" virt="non-virtual"><scope>hmap::VirtualArray</scope><name>VirtualArray</name></member>
+      <member refid="structhmap_1_1VirtualArray_1aee46789ef67622a8f65fb9fbeacd41b5" prot="public" virt="non-virtual"><scope>hmap::VirtualArray</scope><name>VirtualArray</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

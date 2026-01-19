@@ -35,7 +35,7 @@ var searchData=
   ['normal_5fmap_5fto_5fheightmap_32',['normal_map_to_heightmap',['../namespacehmap.html#a26a0e82cf03ec259e3efae1ea84286db',1,'hmap']]],
   ['normal_5fmap_5fto_5fheightmap_5fpoisson_33',['normal_map_to_heightmap_poisson',['../namespacehmap.html#a58b2e7cdca93719d3e1fca73fd68421c',1,'hmap']]],
   ['normalization_5fcoeff_34',['normalization_coeff',['../classhmap_1_1Array.html#a7bf76abbc7ad183514f41f2b54a0ad2e',1,'hmap::Array']]],
-  ['normalize_35',['normalize',['../structhmap_1_1HeightmapRGBA.html#a144c800a402bba5570820c83c8b8535b',1,'hmap::HeightmapRGBA::normalize()'],['../structhmap_1_1HeightmapRGB.html#a3929354b705e591a20d974ae2fbf95cd',1,'hmap::HeightmapRGB::normalize()'],['../classhmap_1_1Array.html#ab55ee6021288a467f7d782b09e888f25',1,'hmap::Array::normalize()'],['../structhmap_1_1Vec3.html#a7a06f9922471cdffba177cc01602a547',1,'hmap::Vec3::normalize()'],['../structhmap_1_1Vec2.html#a46c73f1340298ca58fe607c04ca09ab1',1,'hmap::Vec2::normalize()']]],
+  ['normalize_35',['normalize',['../classhmap_1_1Array.html#ab55ee6021288a467f7d782b09e888f25',1,'hmap::Array::normalize()'],['../structhmap_1_1Vec3.html#a7a06f9922471cdffba177cc01602a547',1,'hmap::Vec3::normalize()'],['../structhmap_1_1Vec2.html#a46c73f1340298ca58fe607c04ca09ab1',1,'hmap::Vec2::normalize()']]],
   ['normalized_5fdistance_5fto_5fedges_36',['normalized_distance_to_edges',['../classhmap_1_1CoordFrame.html#af1f76997d4d33cc1cc1e63ffb1ca3ebd',1,'hmap::CoordFrame']]],
   ['normalized_5fshape_5ffactor_37',['normalized_shape_factor',['../classhmap_1_1CoordFrame.html#ab1c8fa8ed0244f4a54759253b629255c',1,'hmap::CoordFrame']]],
   ['normalized_5fvec3_38',['normalized_vec3',['../namespacehmap.html#ad37e39413754484dfb342ffbfbe75c2b',1,'hmap']]],

@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['name_0',['name',['../structhmap_1_1Recorder.html#a383fac701048b5d6717ed4c007161ba3',1,'hmap::Recorder']]],
-  ['nb_5fcalls_1',['nb_calls',['../structhmap_1_1Recorder.html#ad553f417348e2de1e528eaacdfbf2d5e',1,'hmap::Recorder']]],
-  ['next_2',['next',['../classhmap_1_1DrainageBasins.html#aa0eb57907d1858bdf8a095f62b2b2587',1,'hmap::DrainageBasins']]],
-  ['nlevels_3',['nlevels',['../classhmap_1_1PyramidDecomposition.html#ac3688f38d739c9eed21b4d32b49648bc',1,'hmap::PyramidDecomposition']]],
-  ['null_5fcell_4',['null_cell',['../classhmap_1_1DrainageBasins.html#adcd6d1d0e2daf16f7f5bd317829644b5',1,'hmap::DrainageBasins']]]
+  ['max_5ftiles_0',['max_tiles',['../classhmap_1_1LruTileStorage.html#aa04ddcca3cd4ef62b56823fc99ca1c30',1,'hmap::LruTileStorage']]],
+  ['mode_1',['mode',['../structhmap_1_1ComputeMode.html#a88f263de26dea2af6e22e2d4f5f02cab',1,'hmap::ComputeMode']]],
+  ['msg_2',['msg',['../structhmap_1_1AssertResults.html#a6cf92a095426d2effa78d2e3113d5cca',1,'hmap::AssertResults']]],
+  ['mu_3',['mu',['../classhmap_1_1ParberryFunction.html#aa696f9cd712760f68d9aa0a376bcef9d',1,'hmap::ParberryFunction']]],
+  ['mutex_4',['mutex',['../classhmap_1_1LruTileStorage.html#ab9b7eae867ec2993d2e6f8d28417fcca',1,'hmap::LruTileStorage']]]
 ];

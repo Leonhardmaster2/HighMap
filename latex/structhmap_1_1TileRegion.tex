@@ -19,7 +19,11 @@ Collaboration diagram for hmap\+::Tile\+Region\+:
 \item 
 \mbox{\hyperlink{structhmap_1_1TileRegion_a1cf655fd7ee1443572b8db734d836dc7}{Tile\+Region}} (const \mbox{\hyperlink{structhmap_1_1TileKey}{Tile\+Key}} \&\mbox{\hyperlink{structhmap_1_1TileRegion_afb89981844bdc0270441e8464f00ccdc}{key}}, const glm\+::vec4 \&\mbox{\hyperlink{structhmap_1_1TileRegion_a1ee79e1a24fa9d72dd13a2e404026895}{bbox}}, const glm\+::ivec2 \&\mbox{\hyperlink{structhmap_1_1TileRegion_a525824dd7a3c589436a33b1d232a8433}{shape}}, const glm\+::vec4 \&\mbox{\hyperlink{structhmap_1_1TileRegion_a49c3eebc47bb7e161fd3c6ce87f01cca}{halo}}=\{0, 0, 0, 0\})
 \item 
-glm\+::ivec2 \mbox{\hyperlink{structhmap_1_1TileRegion_a49995b0a9eb4602e25d0ee719303b356}{total\+\_\+shape}} () const
+glm\+::vec2 \mbox{\hyperlink{structhmap_1_1TileRegion_a2160f3e52bb07aebad44bf689d5fe690}{cell\+\_\+center}} (int i, int j) const
+\item 
+glm\+::vec2 \mbox{\hyperlink{structhmap_1_1TileRegion_a773fcee90fae6c3950a9fa5617de2f62}{cell\+\_\+corner}} (int i, int j) const
+\item 
+std\+::string \mbox{\hyperlink{structhmap_1_1TileRegion_ae00731982da2e860d89cbdaec916a080}{key\+\_\+as\+\_\+string}} () const
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -44,11 +48,23 @@ glm\+::ivec4 \mbox{\hyperlink{structhmap_1_1TileRegion_a49c3eebc47bb7e161fd3c6ce
 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{structhmap_1_1TileRegion_a49995b0a9eb4602e25d0ee719303b356}\label{structhmap_1_1TileRegion_a49995b0a9eb4602e25d0ee719303b356} 
-\index{hmap::TileRegion@{hmap::TileRegion}!total\_shape@{total\_shape}}
-\index{total\_shape@{total\_shape}!hmap::TileRegion@{hmap::TileRegion}}
-\doxysubsubsection{\texorpdfstring{total\_shape()}{total\_shape()}}
-{\footnotesize\ttfamily glm\+::ivec2 hmap\+::\+Tile\+Region\+::total\+\_\+shape (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+\Hypertarget{structhmap_1_1TileRegion_a2160f3e52bb07aebad44bf689d5fe690}\label{structhmap_1_1TileRegion_a2160f3e52bb07aebad44bf689d5fe690} 
+\index{hmap::TileRegion@{hmap::TileRegion}!cell\_center@{cell\_center}}
+\index{cell\_center@{cell\_center}!hmap::TileRegion@{hmap::TileRegion}}
+\doxysubsubsection{\texorpdfstring{cell\_center()}{cell\_center()}}
+{\footnotesize\ttfamily glm\+::vec2 hmap\+::\+Tile\+Region\+::cell\+\_\+center (\begin{DoxyParamCaption}\item[{int}]{i,  }\item[{int}]{j }\end{DoxyParamCaption}) const}
+
+\Hypertarget{structhmap_1_1TileRegion_a773fcee90fae6c3950a9fa5617de2f62}\label{structhmap_1_1TileRegion_a773fcee90fae6c3950a9fa5617de2f62} 
+\index{hmap::TileRegion@{hmap::TileRegion}!cell\_corner@{cell\_corner}}
+\index{cell\_corner@{cell\_corner}!hmap::TileRegion@{hmap::TileRegion}}
+\doxysubsubsection{\texorpdfstring{cell\_corner()}{cell\_corner()}}
+{\footnotesize\ttfamily glm\+::vec2 hmap\+::\+Tile\+Region\+::cell\+\_\+corner (\begin{DoxyParamCaption}\item[{int}]{i,  }\item[{int}]{j }\end{DoxyParamCaption}) const}
+
+\Hypertarget{structhmap_1_1TileRegion_ae00731982da2e860d89cbdaec916a080}\label{structhmap_1_1TileRegion_ae00731982da2e860d89cbdaec916a080} 
+\index{hmap::TileRegion@{hmap::TileRegion}!key\_as\_string@{key\_as\_string}}
+\index{key\_as\_string@{key\_as\_string}!hmap::TileRegion@{hmap::TileRegion}}
+\doxysubsubsection{\texorpdfstring{key\_as\_string()}{key\_as\_string()}}
+{\footnotesize\ttfamily std\+::string hmap\+::\+Tile\+Region\+::key\+\_\+as\+\_\+string (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
 

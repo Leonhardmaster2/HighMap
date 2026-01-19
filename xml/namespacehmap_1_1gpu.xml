@@ -2343,10 +2343,10 @@
         </inbodydescription>
         <location file="HighMap/src/erosion/thermal_gpu.cpp" line="312" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="312" bodyend="329" declfile="HighMap/include/highmap/erosion.hpp" declline="1695" declcolumn="6"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1_1gpu_1a0b4b472bb63e048e1c2bbfaf177495f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacehmap_1_1gpu_1ae8a8da3d95deb978d813ce782a1492bb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void hmap::gpu::valley_fill</definition>
-        <argsstring>(Array &amp;z, const Array &amp;talus, int iterations=100, float gamma=2.f, float ratio=0.8f, float zmin=0.f, float zmax=0.f, float elevation_max_ratio=1.f, bool preserve_elevation_range=true, Array *p_deposition_map=nullptr)</argsstring>
+        <argsstring>(Array &amp;z, const Array &amp;talus, int iterations=100, float gamma=2.f, float ratio=0.8f, float zmin=0.f, float zmax=0.f, float elevation_max_ratio=1.f, bool preserve_elevation_range=true, const Array *p_noise=nullptr, Array *p_deposition_map=nullptr)</argsstring>
         <name>valley_fill</name>
         <qualifiedname>hmap::gpu::valley_fill</qualifiedname>
         <param>
@@ -2393,6 +2393,11 @@
           <defval>true</defval>
         </param>
         <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
+          <declname>p_noise</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
           <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
           <declname>p_deposition_map</declname>
           <defval>nullptr</defval>
@@ -2407,7 +2412,7 @@
 <parametername>z</parametername>
 </parameternamelist>
 <parameterdescription>
-<para><ref refid="classhmap_1_1Heightmap" kindref="compound">Heightmap</ref> to modify in place. </para>
+<para>Heightmap to modify in place. </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -2473,7 +2478,7 @@
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>z0<sp/>=<sp/>z;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>iterations<sp/>=<sp/>250;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1a0b4b472bb63e048e1c2bbfaf177495f3" kindref="member">hmap::gpu::valley_fill</ref>(z,<sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref>(shape,<sp/>2.f<sp/>/<sp/>shape.<ref refid="structhmap_1_1Vec2_1a2dc51e83492f966eeddbdac3d58ab447" kindref="member">x</ref>),<sp/>iterations);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1ae8a8da3d95deb978d813ce782a1492bb" kindref="member">hmap::gpu::valley_fill</ref>(z,<sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref>(shape,<sp/>2.f<sp/>/<sp/>shape.<ref refid="structhmap_1_1Vec2_1a2dc51e83492f966eeddbdac3d58ab447" kindref="member">x</ref>),<sp/>iterations);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_valley_fill.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z0,<sp/>z},</highlight></codeline>
@@ -2486,12 +2491,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/valley_fill.cpp" line="12" column="6" bodyfile="HighMap/src/erosion/valley_fill.cpp" bodystart="12" bodyend="51" declfile="HighMap/include/highmap/erosion.hpp" declline="1722" declcolumn="6"/>
+        <location file="HighMap/src/erosion/valley_fill.cpp" line="12" column="6" bodyfile="HighMap/src/erosion/valley_fill.cpp" bodystart="12" bodyend="63" declfile="HighMap/include/highmap/erosion.hpp" declline="1722" declcolumn="6"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1_1gpu_1a954c28983c6bd7ca6657870ccbb384f5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacehmap_1_1gpu_1aa7ce5c44914d54ec7fa0162c5ccbab86" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void hmap::gpu::valley_fill</definition>
-        <argsstring>(Array &amp;z, const Array *p_mask, const Array &amp;talus, int iterations=100, float gamma=2.f, float ratio=0.8f, float zmin=0.f, float zmax=0.f, float elevation_max_ratio=1.f, bool preserve_elevation_range=true, Array *p_deposition_map=nullptr)</argsstring>
+        <argsstring>(Array &amp;z, const Array *p_mask, const Array &amp;talus, int iterations=100, float gamma=2.f, float ratio=0.8f, float zmin=0.f, float zmax=0.f, float elevation_max_ratio=1.f, bool preserve_elevation_range=true, const Array *p_noise=nullptr, Array *p_deposition_map=nullptr)</argsstring>
         <name>valley_fill</name>
         <qualifiedname>hmap::gpu::valley_fill</qualifiedname>
         <param>
@@ -2542,6 +2547,11 @@
           <defval>true</defval>
         </param>
         <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
+          <declname>p_noise</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
           <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
           <declname>p_deposition_map</declname>
           <defval>nullptr</defval>
@@ -2552,7 +2562,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/valley_fill.cpp" line="53" column="6" bodyfile="HighMap/src/erosion/valley_fill.cpp" bodystart="53" bodyend="93" declfile="HighMap/include/highmap/erosion.hpp" declline="1733" declcolumn="6"/>
+        <location file="HighMap/src/erosion/valley_fill.cpp" line="65" column="6" bodyfile="HighMap/src/erosion/valley_fill.cpp" bodystart="65" bodyend="108" declfile="HighMap/include/highmap/erosion.hpp" declline="1734" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a022f5800d7e28f79f9e2d3abf687f490" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -3971,7 +3981,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/interpolate/interpolate_array_gpu.cpp" line="37" column="6" bodyfile="HighMap/src/interpolate/interpolate_array_gpu.cpp" bodystart="37" bodyend="59" declfile="HighMap/include/highmap/interpolate_array.hpp" declline="82" declcolumn="6"/>
+        <location file="HighMap/src/interpolate/interpolate_array_gpu.cpp" line="37" column="6" bodyfile="HighMap/src/interpolate/interpolate_array_gpu.cpp" bodystart="37" bodyend="59" declfile="HighMap/include/highmap/interpolate_array.hpp" declline="79" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a08d2a6e771f70513a5fdbc27783f5f55" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -4001,7 +4011,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/interpolate/interpolate_array_gpu.cpp" line="61" column="6" bodyfile="HighMap/src/interpolate/interpolate_array_gpu.cpp" bodystart="61" bodyend="87" declfile="HighMap/include/highmap/interpolate_array.hpp" declline="84" declcolumn="6"/>
+        <location file="HighMap/src/interpolate/interpolate_array_gpu.cpp" line="61" column="6" bodyfile="HighMap/src/interpolate/interpolate_array_gpu.cpp" bodystart="61" bodyend="87" declfile="HighMap/include/highmap/interpolate_array.hpp" declline="81" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a9c6bf942ee590b7a1b1fa7e5d87d890a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -4023,7 +4033,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/interpolate/interpolate_array_gpu.cpp" line="89" column="6" bodyfile="HighMap/src/interpolate/interpolate_array_gpu.cpp" bodystart="89" bodyend="107" declfile="HighMap/include/highmap/interpolate_array.hpp" declline="89" declcolumn="6"/>
+        <location file="HighMap/src/interpolate/interpolate_array_gpu.cpp" line="89" column="6" bodyfile="HighMap/src/interpolate/interpolate_array_gpu.cpp" bodystart="89" bodyend="107" declfile="HighMap/include/highmap/interpolate_array.hpp" declline="86" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a7afd3be09339152030aed3d5ee28614c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -4053,7 +4063,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/interpolate/interpolate_array_gpu.cpp" line="109" column="6" bodyfile="HighMap/src/interpolate/interpolate_array_gpu.cpp" bodystart="109" bodyend="131" declfile="HighMap/include/highmap/interpolate_array.hpp" declline="91" declcolumn="6"/>
+        <location file="HighMap/src/interpolate/interpolate_array_gpu.cpp" line="109" column="6" bodyfile="HighMap/src/interpolate/interpolate_array_gpu.cpp" bodystart="109" bodyend="131" declfile="HighMap/include/highmap/interpolate_array.hpp" declline="88" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1ac2dbdcbbe157f0a820f8eb07d4544471" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -4079,7 +4089,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/interpolate/interpolate_array_gpu.cpp" line="133" column="6" bodyfile="HighMap/src/interpolate/interpolate_array_gpu.cpp" bodystart="133" bodyend="153" declfile="HighMap/include/highmap/interpolate_array.hpp" declline="96" declcolumn="6"/>
+        <location file="HighMap/src/interpolate/interpolate_array_gpu.cpp" line="133" column="6" bodyfile="HighMap/src/interpolate/interpolate_array_gpu.cpp" bodystart="133" bodyend="153" declfile="HighMap/include/highmap/interpolate_array.hpp" declline="93" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1aa345d48e3c7b1f25ae8823a58a17beef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -4101,7 +4111,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/interpolate/interpolate_array_gpu.cpp" line="155" column="6" bodyfile="HighMap/src/interpolate/interpolate_array_gpu.cpp" bodystart="155" bodyend="173" declfile="HighMap/include/highmap/interpolate_array.hpp" declline="98" declcolumn="6"/>
+        <location file="HighMap/src/interpolate/interpolate_array_gpu.cpp" line="155" column="6" bodyfile="HighMap/src/interpolate/interpolate_array_gpu.cpp" bodystart="155" bodyend="173" declfile="HighMap/include/highmap/interpolate_array.hpp" declline="95" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1aec291339e9356e2b2f57c5641d955a24" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -4131,7 +4141,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/interpolate/interpolate_array_gpu.cpp" line="175" column="6" bodyfile="HighMap/src/interpolate/interpolate_array_gpu.cpp" bodystart="175" bodyend="197" declfile="HighMap/include/highmap/interpolate_array.hpp" declline="100" declcolumn="6"/>
+        <location file="HighMap/src/interpolate/interpolate_array_gpu.cpp" line="175" column="6" bodyfile="HighMap/src/interpolate/interpolate_array_gpu.cpp" bodystart="175" bodyend="197" declfile="HighMap/include/highmap/interpolate_array.hpp" declline="97" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1ac3ce919cb2abf0860493113a90892b79" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -6679,7 +6689,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para><ref refid="classhmap_1_1Heightmap" kindref="compound">Heightmap</ref> array representing the generated island.</para>
+<simplesect kind="return"><para>Heightmap array representing the generated island.</para>
 </simplesect>
 <bold>Example</bold> <programlisting filename="ex_island.cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
@@ -7083,7 +7093,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para><ref refid="classhmap_1_1Heightmap" kindref="compound">Heightmap</ref> array representing the generated island.</para>
+<simplesect kind="return"><para>Heightmap array representing the generated island.</para>
 </simplesect>
 <bold>Example</bold> <programlisting filename="ex_island.cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
@@ -12607,7 +12617,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/transform/advection_particle_gpu.cpp" line="79" column="7" bodyfile="HighMap/src/transform/advection_particle_gpu.cpp" bodystart="79" bodyend="151" declfile="HighMap/include/highmap/transform.hpp" declline="438" declcolumn="7"/>
+        <location file="HighMap/src/transform/advection_particle_gpu.cpp" line="79" column="7" bodyfile="HighMap/src/transform/advection_particle_gpu.cpp" bodystart="79" bodyend="152" declfile="HighMap/include/highmap/transform.hpp" declline="438" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a6e5f495c359df88d1185220ab1cc8c23" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>

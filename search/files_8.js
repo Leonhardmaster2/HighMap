@@ -11,7 +11,7 @@ var searchData=
   ['interpolate_5farray_5fgpu_2ecpp_8',['interpolate_array_gpu.cpp',['../interpolate__array__gpu_8cpp.html',1,'']]],
   ['interpolate_5fcurve_2ecpp_9',['interpolate_curve.cpp',['../interpolate__curve_8cpp.html',1,'']]],
   ['interpolate_5fcurve_2ehpp_10',['interpolate_curve.hpp',['../interpolate__curve_8hpp.html',1,'']]],
-  ['interpolate_5fheightmap_2ecpp_11',['interpolate_heightmap.cpp',['../interpolate__heightmap_8cpp.html',1,'']]],
+  ['interpolate_5fheightmap_5fvirtual_5farray_2ecpp_11',['interpolate_heightmap_virtual_array.cpp',['../interpolate__heightmap__virtual__array_8cpp.html',1,'']]],
   ['io_2ecpp_12',['io.cpp',['../io_8cpp.html',1,'']]],
   ['island_2ecpp_13',['island.cpp',['../island_8cpp.html',1,'']]]
 ];

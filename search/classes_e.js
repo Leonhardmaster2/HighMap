@@ -1,7 +1,9 @@
 var searchData=
 [
-  ['simplex2function_0',['Simplex2Function',['../classhmap_1_1Simplex2Function.html',1,'hmap']]],
-  ['simplex2sfunction_1',['Simplex2SFunction',['../classhmap_1_1Simplex2SFunction.html',1,'hmap']]],
-  ['slopefunction_2',['SlopeFunction',['../classhmap_1_1SlopeFunction.html',1,'hmap']]],
-  ['stepfunction_3',['StepFunction',['../classhmap_1_1StepFunction.html',1,'hmap']]]
+  ['tensor_0',['Tensor',['../classhmap_1_1Tensor.html',1,'hmap']]],
+  ['tilekey_1',['TileKey',['../structhmap_1_1TileKey.html',1,'hmap']]],
+  ['tilekeyhash_2',['TileKeyHash',['../structhmap_1_1TileKeyHash.html',1,'hmap']]],
+  ['tileregion_3',['TileRegion',['../structhmap_1_1TileRegion.html',1,'hmap']]],
+  ['tilestorage_4',['TileStorage',['../classhmap_1_1TileStorage.html',1,'hmap']]],
+  ['timer_5',['Timer',['../classhmap_1_1Timer.html',1,'hmap']]]
 ];

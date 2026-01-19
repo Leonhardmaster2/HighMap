@@ -159,9 +159,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac267c454e16d1445696ffa5ad2b32cb6" id="r_ac267c454e16d1445696ffa5ad2b32cb6"><td class="memItemLeft" align="right" valign="top">cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1Tensor.html#ac267c454e16d1445696ffa5ad2b32cb6">to_cv_mat</a> ()</td></tr>
 <tr class="memdesc:ac267c454e16d1445696ffa5ad2b32cb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert the tensor to an OpenCV matrix.  <br /></td></tr>
 <tr class="separator:ac267c454e16d1445696ffa5ad2b32cb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a97bc4a15725b74b3b7de6a2152813cad" id="r_a97bc4a15725b74b3b7de6a2152813cad"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classhmap_1_1Tensor.html#acf16755884baf3252e48e6989846d91f">uint8_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1Tensor.html#a97bc4a15725b74b3b7de6a2152813cad">to_img_8bit</a> ()</td></tr>
-<tr class="memdesc:a97bc4a15725b74b3b7de6a2152813cad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert the tensor to an 8-bit image represented as a vector.  <br /></td></tr>
-<tr class="separator:a97bc4a15725b74b3b7de6a2152813cad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a637626689237e2131ba547a81cf7aaaf" id="r_a637626689237e2131ba547a81cf7aaaf"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classhmap_1_1Tensor.html#acf16755884baf3252e48e6989846d91f">uint8_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1Tensor.html#a637626689237e2131ba547a81cf7aaaf">to_img_8bit</a> (<a class="el" href="classhmap_1_1Tensor.html#acf16755884baf3252e48e6989846d91f">bool</a> <a class="el" href="classhmap_1_1Tensor.html#acf16755884baf3252e48e6989846d91f">flip_y</a>=<a class="el" href="classhmap_1_1Tensor.html#acf16755884baf3252e48e6989846d91f">false</a>)</td></tr>
+<tr class="memdesc:a637626689237e2131ba547a81cf7aaaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert the tensor to an 8-bit image represented as a vector.  <br /></td></tr>
+<tr class="separator:a637626689237e2131ba547a81cf7aaaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe46210c8fa2c76229cc4099d63f237e" id="r_afe46210c8fa2c76229cc4099d63f237e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Tensor.html#acf16755884baf3252e48e6989846d91f">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1Tensor.html#afe46210c8fa2c76229cc4099d63f237e">to_png</a> (<a class="el" href="classhmap_1_1Tensor.html#acf16755884baf3252e48e6989846d91f">const</a> std::string &amp;<a class="el" href="classhmap_1_1Tensor.html#acf16755884baf3252e48e6989846d91f">fname</a>, <a class="el" href="classhmap_1_1Tensor.html#acf16755884baf3252e48e6989846d91f">int</a> depth=<a class="el" href="classhmap_1_1Tensor.html#acf16755884baf3252e48e6989846d91f">CV_8U</a>)</td></tr>
 <tr class="memdesc:afe46210c8fa2c76229cc4099d63f237e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves the <a class="el" href="classhmap_1_1Tensor.html" title="A class to represent a multi-dimensional tensor.">Tensor</a> as a PNG image file.  <br /></td></tr>
 <tr class="separator:afe46210c8fa2c76229cc4099d63f237e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -558,8 +558,8 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a97bc4a15725b74b3b7de6a2152813cad" name="a97bc4a15725b74b3b7de6a2152813cad"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a97bc4a15725b74b3b7de6a2152813cad">&#9670;&#160;</a></span>to_img_8bit()</h2>
+<a id="a637626689237e2131ba547a81cf7aaaf" name="a637626689237e2131ba547a81cf7aaaf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a637626689237e2131ba547a81cf7aaaf">&#9670;&#160;</a></span>to_img_8bit()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -567,7 +567,8 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="memname">std::vector&lt; <a class="el" href="classhmap_1_1Tensor.html#acf16755884baf3252e48e6989846d91f">uint8_t</a> &gt; hmap::Tensor::to_img_8bit </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classhmap_1_1Tensor.html#acf16755884baf3252e48e6989846d91f">bool</a>&#160;</td>
+          <td class="paramname"><em>flip_y</em> = <code><a class="el" href="classhmap_1_1Tensor.html#acf16755884baf3252e48e6989846d91f">false</a></code></td><td>)</td>
           <td></td>
         </tr>
       </table>

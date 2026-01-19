@@ -1,11 +1,12 @@
 var searchData=
 [
-  ['t0_0',['t0',['../structhmap_1_1Recorder.html#a0ec174294138be0e1d677a7c33011959',1,'hmap::Recorder']]],
-  ['tile_5fshape_1',['tile_shape',['../structhmap_1_1VirtualArray.html#a2d3721a573d9e21e941148f2e359434b',1,'hmap::VirtualArray']]],
-  ['tiles_2',['tiles',['../classhmap_1_1Heightmap.html#a1c464dcd079e78751edc88fccc7dd4b5',1,'hmap::Heightmap::tiles'],['../classhmap_1_1LruTileStorage.html#afc5582d2a112b9907a175d101f8dcf30',1,'hmap::LruTileStorage::tiles']]],
-  ['tiling_3',['tiling',['../classhmap_1_1Heightmap.html#a0449acf3cd11bf117babc80ae54e23b4',1,'hmap::Heightmap']]],
-  ['tolerance_4',['tolerance',['../structhmap_1_1AssertResults.html#ab0ed69d0f46cf150c4d025776f412ddf',1,'hmap::AssertResults']]],
-  ['total_5',['total',['../structhmap_1_1Recorder.html#af6f300d4c80eabfbaf57fdbebde9062e',1,'hmap::Recorder']]],
-  ['tx_6',['tx',['../structhmap_1_1TileKey.html#aa1b61a92a4562444455e7461cd65d642',1,'hmap::TileKey']]],
-  ['ty_7',['ty',['../structhmap_1_1TileKey.html#a0c2bad93215283eb8baedc5cbc2fa2f1',1,'hmap::TileKey']]]
+  ['saturation_0',['saturation',['../structhmap_1_1ColorAdjust.html#a22890080427433e2c75ad3f15d3fc2b8',1,'hmap::ColorAdjust']]],
+  ['sediment_1',['sediment',['../structhmap_1_1Particle.html#ab2b144ca00a4749b96dd99947cb4ef39',1,'hmap::Particle']]],
+  ['seed_2',['seed',['../classhmap_1_1NoiseFunction.html#a9f125dfcb60e4d9bd2b0fbc44b21d406',1,'hmap::NoiseFunction']]],
+  ['shape_3',['shape',['../structhmap_1_1Mat.html#a38df202b165735b1eb8cad32d90ac613',1,'hmap::Mat::shape'],['../classhmap_1_1Array.html#a3cf6ada373f8af1affcbbed22db1194f',1,'hmap::Array::shape'],['../classhmap_1_1Tensor.html#a908df75bf79098e9c44773865022e823',1,'hmap::Tensor::shape'],['../structhmap_1_1TileRegion.html#a525824dd7a3c589436a33b1d232a8433',1,'hmap::TileRegion::shape'],['../structhmap_1_1VirtualArray.html#ab4cb9cb20eb23bc7b1026da3486be975',1,'hmap::VirtualArray::shape'],['../classhmap_1_1VirtualTexture.html#ae999f1abfe76819639a319ce795924b7',1,'hmap::VirtualTexture::shape']]],
+  ['sharp_5fbottom_4',['sharp_bottom',['../classhmap_1_1RiftFunction.html#a056a341d81791505ea6c270c95bd86ae',1,'hmap::RiftFunction']]],
+  ['sigma_5',['sigma',['../classhmap_1_1GaussianPulseFunction.html#ae2a824a67b6250f8952315b5ba4a1bc3',1,'hmap::GaussianPulseFunction']]],
+  ['slant_5fratio_6',['slant_ratio',['../classhmap_1_1WaveTriangularFunction.html#a58593bbbdade49717f157e44d4f196df',1,'hmap::WaveTriangularFunction']]],
+  ['slope_7',['slope',['../classhmap_1_1DiskFunction.html#ac4f8ca7a5c078e4c2ac43d9156b4e90f',1,'hmap::DiskFunction::slope'],['../classhmap_1_1RectangleFunction.html#a769da9c7dc6c357079ee0ab88a3dd819',1,'hmap::RectangleFunction::slope'],['../classhmap_1_1RiftFunction.html#acefec2e75c48c8bfb4f1264110b9357d',1,'hmap::RiftFunction::slope'],['../classhmap_1_1SlopeFunction.html#a0b5ac89d2bc694aa260ae131a90e8acd',1,'hmap::SlopeFunction::slope'],['../classhmap_1_1StepFunction.html#aae15d0fef186bc37378c6dfc029dcbc7',1,'hmap::StepFunction::slope']]],
+  ['storage_8',['storage',['../structhmap_1_1VirtualArray.html#ac46202fbde3f529ab290f38e73b529d6',1,'hmap::VirtualArray']]]
 ];

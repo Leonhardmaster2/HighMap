@@ -1,13 +1,13 @@
 var hierarchy =
 [
-    [ "hmap::Array", "classhmap_1_1Array.html", [
-      [ "hmap::Tile", "classhmap_1_1Tile.html", null ]
-    ] ],
+    [ "hmap::Array", "classhmap_1_1Array.html", null ],
     [ "hmap::AssertResults", "structhmap_1_1AssertResults.html", null ],
     [ "hmap::Cloud", "classhmap_1_1Cloud.html", [
       [ "hmap::Graph", "classhmap_1_1Graph.html", null ],
       [ "hmap::Path", "classhmap_1_1Path.html", null ]
     ] ],
+    [ "hmap::ColorAdjust", "structhmap_1_1ColorAdjust.html", null ],
+    [ "hmap::ComputeMode", "structhmap_1_1ComputeMode.html", null ],
     [ "ControlFunction", null, [
       [ "hmap::ArrayControlFunction", "classhmap_1_1ArrayControlFunction.html", null ],
       [ "hmap::XyControlFunction", "classhmap_1_1XyControlFunction.html", null ]
@@ -55,9 +55,6 @@ var hierarchy =
       [ "hmap::WaveSquareFunction", "classhmap_1_1WaveSquareFunction.html", null ],
       [ "hmap::WaveTriangularFunction", "classhmap_1_1WaveTriangularFunction.html", null ]
     ] ],
-    [ "hmap::Heightmap", "classhmap_1_1Heightmap.html", null ],
-    [ "hmap::HeightmapRGB", "structhmap_1_1HeightmapRGB.html", null ],
-    [ "hmap::HeightmapRGBA", "structhmap_1_1HeightmapRGBA.html", null ],
     [ "hmap::Interpolator1D", "classhmap_1_1Interpolator1D.html", null ],
     [ "hmap::InterpolatorCurve", "classhmap_1_1InterpolatorCurve.html", null ],
     [ "hmap::LruTileEntry", "structhmap_1_1LruTileEntry.html", null ],
@@ -73,6 +70,7 @@ var hierarchy =
     [ "hmap::TileKeyHash", "structhmap_1_1TileKeyHash.html", null ],
     [ "hmap::TileRegion", "structhmap_1_1TileRegion.html", null ],
     [ "hmap::TileStorage", "classhmap_1_1TileStorage.html", [
+      [ "hmap::DiskSequentialTileStorage", "classhmap_1_1DiskSequentialTileStorage.html", null ],
       [ "hmap::LruTileStorage", "classhmap_1_1LruTileStorage.html", [
         [ "hmap::DiskLruTileStorage", "classhmap_1_1DiskLruTileStorage.html", null ]
       ] ],
@@ -85,6 +83,7 @@ var hierarchy =
     [ "hmap::Vec3< T >", "structhmap_1_1Vec3.html", null ],
     [ "hmap::Vec3< int >", "structhmap_1_1Vec3.html", null ],
     [ "hmap::Vec4< T >", "structhmap_1_1Vec4.html", null ],
-    [ "hmap::Vec4< float >", "structhmap_1_1Vec4.html", null ],
-    [ "hmap::VirtualArray", "structhmap_1_1VirtualArray.html", null ]
+    [ "hmap::VirtualArray", "structhmap_1_1VirtualArray.html", null ],
+    [ "hmap::VirtualTexture", "classhmap_1_1VirtualTexture.html", null ],
+    [ "hmap::VirtualTextureStorage", "structhmap_1_1VirtualTextureStorage.html", null ]
 ];

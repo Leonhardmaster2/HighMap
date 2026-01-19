@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['interpolator1d_0',['Interpolator1D',['../classhmap_1_1Interpolator1D.html',1,'hmap']]],
-  ['interpolatorcurve_1',['InterpolatorCurve',['../classhmap_1_1InterpolatorCurve.html',1,'hmap']]]
+  ['lrutileentry_0',['LruTileEntry',['../structhmap_1_1LruTileEntry.html',1,'hmap']]],
+  ['lrutilestorage_1',['LruTileStorage',['../classhmap_1_1LruTileStorage.html',1,'hmap']]]
 ];

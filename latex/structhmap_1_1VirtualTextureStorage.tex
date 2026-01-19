@@ -1,0 +1,95 @@
+\doxysection{hmap\+::Virtual\+Texture\+Storage Struct Reference}
+\hypertarget{structhmap_1_1VirtualTextureStorage}{}\label{structhmap_1_1VirtualTextureStorage}\index{hmap::VirtualTextureStorage@{hmap::VirtualTextureStorage}}
+
+
+Storage manager for \doxylink{classhmap_1_1VirtualTexture}{Virtual\+Texture}.  
+
+
+
+
+{\ttfamily \#include $<$virtual\+\_\+texture\+\_\+storage.\+hpp$>$}
+
+
+
+Collaboration diagram for hmap\+::Virtual\+Texture\+Storage\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=248pt]{structhmap_1_1VirtualTextureStorage__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structhmap_1_1VirtualTextureStorage_a9fdf43c566dfc78f1310f395377965fa}{Virtual\+Texture\+Storage}} (int nchannels, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmap_1_1TileStorage}{Tile\+Storage}} $>$ storage\+\_\+proto)
+\item 
+\mbox{\hyperlink{classhmap_1_1TileStorage}{Tile\+Storage}} \& \mbox{\hyperlink{structhmap_1_1VirtualTextureStorage_ae5cc37ced709362425ca9e1ce8e766e1}{channel}} (int idx)
+\item 
+const \mbox{\hyperlink{classhmap_1_1TileStorage}{Tile\+Storage}} \& \mbox{\hyperlink{structhmap_1_1VirtualTextureStorage_a21c8303565af1216ffd3ebc96f5751b1}{channel}} (int idx) const
+\item 
+int \mbox{\hyperlink{structhmap_1_1VirtualTextureStorage_aad5813d1a2c06527f85ffb823a24c2b9}{channel\+\_\+count}} () const
+\item 
+void \mbox{\hyperlink{structhmap_1_1VirtualTextureStorage_a4f2d03a10a486427a4792228477c8d8c}{trim\+\_\+storage}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmap_1_1TileStorage}{Tile\+Storage}} $>$ $>$ \mbox{\hyperlink{structhmap_1_1VirtualTextureStorage_a518936a932a928a0b1b135f976491e8b}{channel\+\_\+storages}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Storage manager for \doxylink{classhmap_1_1VirtualTexture}{Virtual\+Texture}. 
+
+A \doxylink{classhmap_1_1VirtualTexture}{Virtual\+Texture} is composed of multiple Virtual\+Arrays (channels). This storage wrapper ensures that each channel has a proper \doxylink{classhmap_1_1TileStorage}{Tile\+Storage} (RAM, Disk\+LRU, Sequential) and can manage shared directories, cleanup, etc. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{structhmap_1_1VirtualTextureStorage_a9fdf43c566dfc78f1310f395377965fa}\label{structhmap_1_1VirtualTextureStorage_a9fdf43c566dfc78f1310f395377965fa} 
+\index{hmap::VirtualTextureStorage@{hmap::VirtualTextureStorage}!VirtualTextureStorage@{VirtualTextureStorage}}
+\index{VirtualTextureStorage@{VirtualTextureStorage}!hmap::VirtualTextureStorage@{hmap::VirtualTextureStorage}}
+\doxysubsubsection{\texorpdfstring{VirtualTextureStorage()}{VirtualTextureStorage()}}
+{\footnotesize\ttfamily hmap\+::\+Virtual\+Texture\+Storage\+::\+Virtual\+Texture\+Storage (\begin{DoxyParamCaption}\item[{int}]{nchannels,  }\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmap_1_1TileStorage}{Tile\+Storage}} $>$}]{storage\+\_\+proto }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{structhmap_1_1VirtualTextureStorage_ae5cc37ced709362425ca9e1ce8e766e1}\label{structhmap_1_1VirtualTextureStorage_ae5cc37ced709362425ca9e1ce8e766e1} 
+\index{hmap::VirtualTextureStorage@{hmap::VirtualTextureStorage}!channel@{channel}}
+\index{channel@{channel}!hmap::VirtualTextureStorage@{hmap::VirtualTextureStorage}}
+\doxysubsubsection{\texorpdfstring{channel()}{channel()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1TileStorage}{Tile\+Storage}} \& hmap\+::\+Virtual\+Texture\+Storage\+::channel (\begin{DoxyParamCaption}\item[{int}]{idx }\end{DoxyParamCaption})}
+
+\Hypertarget{structhmap_1_1VirtualTextureStorage_a21c8303565af1216ffd3ebc96f5751b1}\label{structhmap_1_1VirtualTextureStorage_a21c8303565af1216ffd3ebc96f5751b1} 
+\index{hmap::VirtualTextureStorage@{hmap::VirtualTextureStorage}!channel@{channel}}
+\index{channel@{channel}!hmap::VirtualTextureStorage@{hmap::VirtualTextureStorage}}
+\doxysubsubsection{\texorpdfstring{channel()}{channel()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classhmap_1_1TileStorage}{Tile\+Storage}} \& hmap\+::\+Virtual\+Texture\+Storage\+::channel (\begin{DoxyParamCaption}\item[{int}]{idx }\end{DoxyParamCaption}) const}
+
+\Hypertarget{structhmap_1_1VirtualTextureStorage_aad5813d1a2c06527f85ffb823a24c2b9}\label{structhmap_1_1VirtualTextureStorage_aad5813d1a2c06527f85ffb823a24c2b9} 
+\index{hmap::VirtualTextureStorage@{hmap::VirtualTextureStorage}!channel\_count@{channel\_count}}
+\index{channel\_count@{channel\_count}!hmap::VirtualTextureStorage@{hmap::VirtualTextureStorage}}
+\doxysubsubsection{\texorpdfstring{channel\_count()}{channel\_count()}}
+{\footnotesize\ttfamily int hmap\+::\+Virtual\+Texture\+Storage\+::channel\+\_\+count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\Hypertarget{structhmap_1_1VirtualTextureStorage_a4f2d03a10a486427a4792228477c8d8c}\label{structhmap_1_1VirtualTextureStorage_a4f2d03a10a486427a4792228477c8d8c} 
+\index{hmap::VirtualTextureStorage@{hmap::VirtualTextureStorage}!trim\_storage@{trim\_storage}}
+\index{trim\_storage@{trim\_storage}!hmap::VirtualTextureStorage@{hmap::VirtualTextureStorage}}
+\doxysubsubsection{\texorpdfstring{trim\_storage()}{trim\_storage()}}
+{\footnotesize\ttfamily void hmap\+::\+Virtual\+Texture\+Storage\+::trim\+\_\+storage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structhmap_1_1VirtualTextureStorage_a518936a932a928a0b1b135f976491e8b}\label{structhmap_1_1VirtualTextureStorage_a518936a932a928a0b1b135f976491e8b} 
+\index{hmap::VirtualTextureStorage@{hmap::VirtualTextureStorage}!channel\_storages@{channel\_storages}}
+\index{channel\_storages@{channel\_storages}!hmap::VirtualTextureStorage@{hmap::VirtualTextureStorage}}
+\doxysubsubsection{\texorpdfstring{channel\_storages}{channel\_storages}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classhmap_1_1TileStorage}{Tile\+Storage}}$>$ $>$ hmap\+::\+Virtual\+Texture\+Storage\+::channel\+\_\+storages}
+
+
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+High\+Map/include/highmap/virtual\+\_\+array/\mbox{\hyperlink{virtual__texture__storage_8hpp}{virtual\+\_\+texture\+\_\+storage.\+hpp}}\item 
+High\+Map/src/virtual\+\_\+array/\mbox{\hyperlink{virtual__texture__storage_8cpp}{virtual\+\_\+texture\+\_\+storage.\+cpp}}\end{DoxyCompactItemize}

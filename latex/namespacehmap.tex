@@ -22,6 +22,10 @@ class \mbox{\hyperlink{classhmap_1_1BumpFunction}{Bump\+Function}}
 \begin{DoxyCompactList}\small\item\em Bump (x, y) function class. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}}
 \begin{DoxyCompactList}\small\item\em Represents a collection of unordered points in 2D space. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structhmap_1_1ColorAdjust}{Color\+Adjust}}
+\item 
+struct \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}}
+\item 
 class \mbox{\hyperlink{classhmap_1_1CoordFrame}{Coord\+Frame}}
 \item 
 class \mbox{\hyperlink{classhmap_1_1CraterFunction}{Crater\+Function}}
@@ -29,6 +33,8 @@ class \mbox{\hyperlink{classhmap_1_1CraterFunction}{Crater\+Function}}
 class \mbox{\hyperlink{classhmap_1_1DiskFunction}{Disk\+Function}}
 \begin{DoxyCompactList}\small\item\em \doxylink{classhmap_1_1DiskFunction}{Disk\+Function} (x, y) function class. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classhmap_1_1DiskLruTileStorage}{Disk\+Lru\+Tile\+Storage}}
+\item 
+class \mbox{\hyperlink{classhmap_1_1DiskSequentialTileStorage}{Disk\+Sequential\+Tile\+Storage}}
 \item 
 class \mbox{\hyperlink{classhmap_1_1DrainageBasins}{Drainage\+Basins}}
 \item 
@@ -56,12 +62,6 @@ class \mbox{\hyperlink{classhmap_1_1GenericFractalFunction}{Generic\+Fractal\+Fu
 \begin{DoxyCompactList}\small\item\em A class for generating fractal noise functions based on an underlying noise function. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classhmap_1_1Graph}{Graph}}
 \begin{DoxyCompactList}\small\item\em \doxylink{classhmap_1_1Graph}{Graph} class, to manipulate graphs in 2D. \end{DoxyCompactList}\item 
-class \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}}
-\begin{DoxyCompactList}\small\item\em Height\+Map class, to manipulate heightmap (with contextual informations). \end{DoxyCompactList}\item 
-struct \mbox{\hyperlink{structhmap_1_1HeightmapRGB}{Heightmap\+RGB}}
-\begin{DoxyCompactList}\small\item\em Height\+Map class, to manipulate a set of RGB heightmap for heightmap texturing. \end{DoxyCompactList}\item 
-struct \mbox{\hyperlink{structhmap_1_1HeightmapRGBA}{Heightmap\+RGBA}}
-\begin{DoxyCompactList}\small\item\em Height\+Map class, to manipulate a set of RGBA heightmap for heightmap texturing. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classhmap_1_1Interpolator1D}{Interpolator1D}}
 \begin{DoxyCompactList}\small\item\em A class for performing 1D interpolation using the GSL library. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classhmap_1_1InterpolatorCurve}{Interpolator\+Curve}}
@@ -112,8 +112,6 @@ class \mbox{\hyperlink{classhmap_1_1StepFunction}{Step\+Function}}
 \begin{DoxyCompactList}\small\item\em Step (x, y) function class. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classhmap_1_1Tensor}{Tensor}}
 \begin{DoxyCompactList}\small\item\em A class to represent a multi-\/dimensional tensor. \end{DoxyCompactList}\item 
-class \mbox{\hyperlink{classhmap_1_1Tile}{Tile}}
-\begin{DoxyCompactList}\small\item\em \doxylink{classhmap_1_1Tile}{Tile} class, to manipulate a restricted region of an heightmap (with contextual informations). \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structhmap_1_1TileKey}{Tile\+Key}}
 \item 
 struct \mbox{\hyperlink{structhmap_1_1TileKeyHash}{Tile\+Key\+Hash}}
@@ -140,6 +138,10 @@ struct \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}
 \begin{DoxyCompactList}\small\item\em \doxylink{structhmap_1_1Vec4}{Vec4} class for basic manipulation of 4D vectors. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}}
 \item 
+class \mbox{\hyperlink{classhmap_1_1VirtualTexture}{Virtual\+Texture}}
+\item 
+struct \mbox{\hyperlink{structhmap_1_1VirtualTextureStorage}{Virtual\+Texture\+Storage}}
+\begin{DoxyCompactList}\small\item\em Storage manager for \doxylink{classhmap_1_1VirtualTexture}{Virtual\+Texture}. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classhmap_1_1WaveDuneFunction}{Wave\+Dune\+Function}}
 \begin{DoxyCompactList}\small\item\em Wave dune (x, y) function class. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classhmap_1_1WaveSineFunction}{Wave\+Sine\+Function}}
@@ -179,6 +181,15 @@ enum \mbox{\hyperlink{namespacehmap_a1ba9d4ce7afe3309f8ae8e617f7154ee}{Domain\+B
 , \mbox{\hyperlink{namespacehmap_a1ba9d4ce7afe3309f8ae8e617f7154eeac7495a13a71417dd76751518cd185309}{BOUNDARY\+\_\+\+BOTTOM}}
  \}
 \begin{DoxyCompactList}\small\item\em Describes which domain boundary. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{namespacehmap_abc952321c99ec11d60b4037e3d27db9b}{Normal\+Map\+Blending\+Method}} \+: int \{ \newline
+\mbox{\hyperlink{namespacehmap_abc952321c99ec11d60b4037e3d27db9bac248af7dd230247485e3c09a663cedd0}{NMAP\+\_\+\+LINEAR}}
+, \mbox{\hyperlink{namespacehmap_abc952321c99ec11d60b4037e3d27db9ba97d5a1740991179c436482de8c1c1f34}{NMAP\+\_\+\+DERIVATIVE}}
+, \mbox{\hyperlink{namespacehmap_abc952321c99ec11d60b4037e3d27db9ba25b053ebbd8db9d348737e6f343c61bf}{NMAP\+\_\+\+UDN}}
+, \mbox{\hyperlink{namespacehmap_abc952321c99ec11d60b4037e3d27db9ba54fd5928677cd19616ec52d6d59d4c60}{NMAP\+\_\+\+UNITY}}
+, \newline
+\mbox{\hyperlink{namespacehmap_abc952321c99ec11d60b4037e3d27db9ba6ba5e07d11326f7567d533f169321e37}{NMAP\+\_\+\+WHITEOUT}}
+ \}
+\item 
 enum \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369}{Cmap}} \+: int \{ \newline
 \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a4eb53d94f58e93c3bdb554d8cca7f306}{BONE}}
 , \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d}{GRAY}}
@@ -268,20 +279,6 @@ enum \mbox{\hyperlink{namespacehmap_aba758c4143b6e499ec6f4385467a6d77}{Point\+Sa
 , \mbox{\hyperlink{namespacehmap_aba758c4143b6e499ec6f4385467a6d77a8943dd2a2e3993c1e0cff37be3f65957}{RND\+\_\+\+LHS}}
  \}
 \begin{DoxyCompactList}\small\item\em Enumeration of point sampling methods. \end{DoxyCompactList}\item 
-enum \mbox{\hyperlink{namespacehmap_abc952321c99ec11d60b4037e3d27db9b}{Normal\+Map\+Blending\+Method}} \+: int \{ \newline
-\mbox{\hyperlink{namespacehmap_abc952321c99ec11d60b4037e3d27db9bac248af7dd230247485e3c09a663cedd0}{NMAP\+\_\+\+LINEAR}}
-, \mbox{\hyperlink{namespacehmap_abc952321c99ec11d60b4037e3d27db9ba97d5a1740991179c436482de8c1c1f34}{NMAP\+\_\+\+DERIVATIVE}}
-, \mbox{\hyperlink{namespacehmap_abc952321c99ec11d60b4037e3d27db9ba25b053ebbd8db9d348737e6f343c61bf}{NMAP\+\_\+\+UDN}}
-, \mbox{\hyperlink{namespacehmap_abc952321c99ec11d60b4037e3d27db9ba54fd5928677cd19616ec52d6d59d4c60}{NMAP\+\_\+\+UNITY}}
-, \newline
-\mbox{\hyperlink{namespacehmap_abc952321c99ec11d60b4037e3d27db9ba6ba5e07d11326f7567d533f169321e37}{NMAP\+\_\+\+WHITEOUT}}
- \}
-\item 
-enum \mbox{\hyperlink{namespacehmap_ab36df744301ada377d4a3f3a34bca77f}{Transform\+Mode}} \+: int \{ \mbox{\hyperlink{namespacehmap_ab36df744301ada377d4a3f3a34bca77fac40707c2538151422af1c84dfd46252b}{DISTRIBUTED}}
-, \mbox{\hyperlink{namespacehmap_ab36df744301ada377d4a3f3a34bca77fabd8181f845a88e68d0653323c26ac4ac}{SEQUENTIAL}}
-, \mbox{\hyperlink{namespacehmap_ab36df744301ada377d4a3f3a34bca77fadb0544f4a0452ffb75e88eff0b39095d}{SINGLE\+\_\+\+ARRAY}}
- \}
-\item 
 enum \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}{Flow\+Direction\+Method}} \+: int \{ \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894}{FDM\+\_\+\+D8}}
 , \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2faaf8f41c39c71902022e1aec12f10d372}{FDM\+\_\+\+PRIORITY\+\_\+\+FLOOD}}
  \}
@@ -389,6 +386,17 @@ enum \mbox{\hyperlink{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbe}{Clamp\+Mo
 , \mbox{\hyperlink{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbead7d8162264f038302952e47ad5e7a2ed}{BOTH}}
 , \mbox{\hyperlink{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbea8a618ee5b7e734d56e2d5957bd9893fd}{NONE}}
  \}
+\item 
+enum \mbox{\hyperlink{namespacehmap_ad21b93a34c88a47d6b54f3a4d5b65e6e}{Storage\+Mode}} \+: int \{ \mbox{\hyperlink{namespacehmap_ad21b93a34c88a47d6b54f3a4d5b65e6eae10df7db812e0abe9bc94fc28ae907ce}{VA\+\_\+\+RAM}}
+, \mbox{\hyperlink{namespacehmap_ad21b93a34c88a47d6b54f3a4d5b65e6ea671262171ccce9633cc42db046ea63d4}{VA\+\_\+\+DISK\+\_\+\+LRU}}
+, \mbox{\hyperlink{namespacehmap_ad21b93a34c88a47d6b54f3a4d5b65e6ea3696aa48b93c260deb79c830ae605781}{VA\+\_\+\+DISK\+\_\+\+LRU\+\_\+\+MIN}}
+, \mbox{\hyperlink{namespacehmap_ad21b93a34c88a47d6b54f3a4d5b65e6eac3fa4d259d437f79a95c11d38da93b8a}{VA\+\_\+\+DISK\+\_\+\+SEQUENTIAL}}
+ \}
+\item 
+enum \mbox{\hyperlink{namespacehmap_ae383414b46ae8992e621c407f09ce7c5}{For\+Each\+Mode}} \+: int \{ \mbox{\hyperlink{namespacehmap_ae383414b46ae8992e621c407f09ce7c5ad610a3b158cd10452fc144bda389aa19}{VA\+\_\+\+SEQUENTIAL}}
+, \mbox{\hyperlink{namespacehmap_ae383414b46ae8992e621c407f09ce7c5a5356cbfe824240ce4bd458109890b9d5}{VA\+\_\+\+DISTRIBUTED}}
+, \mbox{\hyperlink{namespacehmap_ae383414b46ae8992e621c407f09ce7c5afd32b1bf1363b0e44143bda30f00cffa}{VA\+\_\+\+SINGLE\+\_\+\+ARRAY}}
+ \}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
@@ -457,8 +465,14 @@ void \mbox{\hyperlink{namespacehmap_a4960846742ad118ec9eadaba40ca39ac}{apply\+\_
 \begin{DoxyCompactList}\small\item\em Apply hillshading to a \doxylink{classhmap_1_1Tensor}{Tensor} image. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_aefc8cbe645337bb5b663436c0324f9e2}{apply\+\_\+hillshade}} (std\+::vector$<$ uint8\+\_\+t $>$ \&img, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float vmin=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float vmax=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float exponent=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, bool is\+\_\+img\+\_\+rgba=false)
 \begin{DoxyCompactList}\small\item\em Apply hillshading to an 8-\/bit image. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacehmap_a1175ee497ff12b2f3c6cdb7cc805949f}{color\+\_\+adjust}} (\mbox{\hyperlink{classhmap_1_1VirtualTexture}{Virtual\+Texture}} \&tex, \mbox{\hyperlink{structhmap_1_1ColorAdjust}{Color\+Adjust}} param, const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&cm)
+\item 
 \mbox{\hyperlink{classhmap_1_1Tensor}{Tensor}} \mbox{\hyperlink{namespacehmap_a33a635351aa13228557a585470ba4563}{colorize}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float vmin, float vmax, int cmap, bool hillshading, bool reverse=false, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise=nullptr)
 \begin{DoxyCompactList}\small\item\em Apply colorization to an array. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacehmap_a6f991e3bdf7c5c4bed631f2b7fb4f072}{colorize}} (\mbox{\hyperlink{classhmap_1_1VirtualTexture}{Virtual\+Texture}} \&out, \mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \&level, const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&cm, float vmin, float vmax, int cmap, \mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \texorpdfstring{$\ast$}{*}p\+\_\+alpha=nullptr, bool reverse=false, \mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise=nullptr)
+\begin{DoxyCompactList}\small\item\em Colorize a scalar field into a texture using a predefined colormap. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacehmap_abc8fb0970d44a6627145587080c715bb}{colorize}} (\mbox{\hyperlink{classhmap_1_1VirtualTexture}{Virtual\+Texture}} \&out, \mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \&level, const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&cm, float vmin, float vmax, const std\+::vector$<$ float $>$ \&positions, const std\+::vector$<$ std\+::vector$<$ float $>$ $>$ \&colormap\+\_\+colors, \mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \texorpdfstring{$\ast$}{*}p\+\_\+alpha=nullptr, bool reverse=false, \mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise=nullptr)
+\begin{DoxyCompactList}\small\item\em Colorize a scalar field into a texture using a custom colormap. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Tensor}{Tensor}} \mbox{\hyperlink{namespacehmap_aa76bdaf8b572bcea0778ef8815965307}{colorize\+\_\+grayscale}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array)
 \begin{DoxyCompactList}\small\item\em Convert an array to a grayscale image. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Tensor}{Tensor}} \mbox{\hyperlink{namespacehmap_afda3d37dc8fba4a56818964784d2178b}{colorize\+\_\+histogram}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array)
@@ -467,6 +481,14 @@ void \mbox{\hyperlink{namespacehmap_aefc8cbe645337bb5b663436c0324f9e2}{apply\+\_
 \begin{DoxyCompactList}\small\item\em Colorizes a slope height heatmap based on the gradient norms of a given array. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Tensor}{Tensor}} \mbox{\hyperlink{namespacehmap_a9f21720d5e7b1c93e0d5b50631f1ca8f}{colorize\+\_\+vec2}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array1, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array2)
 \begin{DoxyCompactList}\small\item\em Combine two arrays into a colored image. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacehmap_a051c3f6f1ceda0feaf3c36c97bd7fef9}{luminance}} (\mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \&out, \mbox{\hyperlink{classhmap_1_1VirtualTexture}{Virtual\+Texture}} \&tex, const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&cm)
+\begin{DoxyCompactList}\small\item\em Compute luminance from a texture. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacehmap_ac5229d29466796bb6afcdebe997731a3}{mix}} (\mbox{\hyperlink{classhmap_1_1VirtualTexture}{Virtual\+Texture}} \&out, \mbox{\hyperlink{classhmap_1_1VirtualTexture}{Virtual\+Texture}} \&tex1, \mbox{\hyperlink{classhmap_1_1VirtualTexture}{Virtual\+Texture}} \&tex2, const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&cm, bool use\+\_\+sqrt\+\_\+avg=true)
+\begin{DoxyCompactList}\small\item\em Mix two textures into an output texture. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacehmap_a663df316bd09bb4072cbfe655e389668}{mix}} (\mbox{\hyperlink{classhmap_1_1VirtualTexture}{Virtual\+Texture}} \&out, std\+::vector$<$ \mbox{\hyperlink{classhmap_1_1VirtualTexture}{Virtual\+Texture}} \texorpdfstring{$\ast$}{*} $>$ \&texs, const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&cm, bool use\+\_\+sqrt\+\_\+avg=true)
+\item 
+void \mbox{\hyperlink{namespacehmap_a034df9fe48c4e9a2bead1da021ffd437}{mix\+\_\+normal\+\_\+map}} (\mbox{\hyperlink{classhmap_1_1VirtualTexture}{Virtual\+Texture}} \&out, \mbox{\hyperlink{classhmap_1_1VirtualTexture}{Virtual\+Texture}} \&nmap\+\_\+base, \mbox{\hyperlink{classhmap_1_1VirtualTexture}{Virtual\+Texture}} \&nmap\+\_\+detail, const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&cm, float detail\+\_\+scaling, \mbox{\hyperlink{namespacehmap_abc952321c99ec11d60b4037e3d27db9b}{Normal\+Map\+Blending\+Method}} blending\+\_\+method)
+\begin{DoxyCompactList}\small\item\em Blend two normal maps into a single output normal map. \end{DoxyCompactList}\item 
 std\+::vector$<$ std\+::vector$<$ float $>$ $>$ \mbox{\hyperlink{namespacehmap_aea4d1a92934de93437705abd7dde6b06}{get\+\_\+colormap\+\_\+data}} (int cmap)
 \item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a9411ccef8a74e06ef51efd1f5041c7b4}{convolve1d\+\_\+i}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, const std\+::vector$<$ float $>$ \&kernel)
@@ -913,6 +935,8 @@ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmap_1_1NoiseFunction}{hmap\+::\
 \begin{DoxyCompactList}\small\item\em Create a noise function based on the specified noise type. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} \mbox{\hyperlink{namespacehmap_abd7c616c225d31eb2fd4e3ff023e3ed5}{merge\+\_\+cloud}} (const \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} \&cloud1, const \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} \&cloud2)
 \begin{DoxyCompactList}\small\item\em Merges two point clouds into one. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} \mbox{\hyperlink{namespacehmap_afc6e9a8850aaebd3cca94aefb3c54114}{merge\+\_\+clouds}} (const std\+::vector$<$ \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} $>$ \&clouds)
+\item 
 \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} \mbox{\hyperlink{namespacehmap_aa0bf57ef5e675f0aa851bc8f4b734acd}{random\+\_\+cloud}} (size\+\_\+t count, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, const \mbox{\hyperlink{namespacehmap_aba758c4143b6e499ec6f4385467a6d77}{Point\+Sampling\+Method}} \&method=\mbox{\hyperlink{namespacehmap_aba758c4143b6e499ec6f4385467a6d77a8943dd2a2e3993c1e0cff37be3f65957}{Point\+Sampling\+Method\+::\+RND\+\_\+\+LHS}}, const \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ \&bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
 \begin{DoxyCompactList}\small\item\em Generates a random cloud of points within a bounding box. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} \mbox{\hyperlink{namespacehmap_a83368f74414e23015bf543c36d8bfbef}{random\+\_\+cloud\+\_\+density}} (size\+\_\+t count, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&density, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, const \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ \&bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
@@ -1045,62 +1069,6 @@ void \mbox{\hyperlink{namespacehmap_a0bcc84aa462aee73e1a3a52729f21ea6}{solve\+\_
 \begin{DoxyCompactList}\small\item\em Solve the Poisson equation ∇²h = rhs using Gauss–\+Seidel iteration. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a3f8dc201377b61428eba8daa4a03a65f}{unwrap\+\_\+phase}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&alpha)
 \begin{DoxyCompactList}\small\item\em Unwraps a 2D phase array to correct discontinuities in phase data. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{structhmap_1_1HeightmapRGBA}{Heightmap\+RGBA}} \mbox{\hyperlink{namespacehmap_a054b11b366d585ac3d228619d9cb5928}{mix\+\_\+heightmap\+\_\+rgba}} (\mbox{\hyperlink{structhmap_1_1HeightmapRGBA}{Heightmap\+RGBA}} \&rgba1, \mbox{\hyperlink{structhmap_1_1HeightmapRGBA}{Heightmap\+RGBA}} \&rgba2, bool use\+\_\+sqrt\+\_\+avg=true)
-\item 
-\mbox{\hyperlink{structhmap_1_1HeightmapRGBA}{Heightmap\+RGBA}} \mbox{\hyperlink{namespacehmap_ab5bf9c7f8dd053e585c61c1fdb532b7a}{mix\+\_\+heightmap\+\_\+rgba}} (std\+::vector$<$ \mbox{\hyperlink{structhmap_1_1HeightmapRGBA}{Heightmap\+RGBA}} \texorpdfstring{$\ast$}{*} $>$ p\+\_\+rgba\+\_\+list, bool use\+\_\+sqrt\+\_\+avg=true)
-\item 
-\mbox{\hyperlink{structhmap_1_1HeightmapRGBA}{Heightmap\+RGBA}} \mbox{\hyperlink{namespacehmap_a2751ce7799f172484dd06a1b72d168da}{mix\+\_\+normal\+\_\+map\+\_\+rgba}} (\mbox{\hyperlink{structhmap_1_1HeightmapRGBA}{Heightmap\+RGBA}} \&nmap\+\_\+base, \mbox{\hyperlink{structhmap_1_1HeightmapRGBA}{Heightmap\+RGBA}} \&nmap\+\_\+detail, float detail\+\_\+scaling=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, \mbox{\hyperlink{namespacehmap_abc952321c99ec11d60b4037e3d27db9b}{Normal\+Map\+Blending\+Method}} blending\+\_\+method=\mbox{\hyperlink{namespacehmap_abc952321c99ec11d60b4037e3d27db9ba97d5a1740991179c436482de8c1c1f34}{Normal\+Map\+Blending\+Method\+::\+NMAP\+\_\+\+DERIVATIVE}})
-\begin{DoxyCompactList}\small\item\em Mixes two normal maps in RGBA format to create a blended normal map. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{namespacehmap_a0c5529e52be9242f4e2587d043ece704}{fill}} (\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&h, \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x, \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y, std\+::function$<$ \mbox{\hyperlink{classhmap_1_1Array}{Array}}(\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y)$>$ nullary\+\_\+op)
-\begin{DoxyCompactList}\small\item\em Fills the heightmap using the provided noise maps and operation. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{namespacehmap_a3751517b263e1178a1ab3a2378d77dfa}{fill}} (\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&h, \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&hin, \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x, \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y, std\+::function$<$ \mbox{\hyperlink{classhmap_1_1Array}{Array}}(\mbox{\hyperlink{classhmap_1_1Array}{hmap\+::\+Array}} \&, \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$, \mbox{\hyperlink{classhmap_1_1Array}{hmap\+::\+Array}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{classhmap_1_1Array}{hmap\+::\+Array}} \texorpdfstring{$\ast$}{*})$>$ nullary\+\_\+op)
-\item 
-void \mbox{\hyperlink{namespacehmap_ad4261372b2cfa77557684f8d15c3ce39}{fill}} (\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&h, \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x, \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y, \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \texorpdfstring{$\ast$}{*}p\+\_\+stretching, std\+::function$<$ \mbox{\hyperlink{classhmap_1_1Array}{Array}}(\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$, \mbox{\hyperlink{classhmap_1_1Array}{hmap\+::\+Array}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{classhmap_1_1Array}{hmap\+::\+Array}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{classhmap_1_1Array}{hmap\+::\+Array}} \texorpdfstring{$\ast$}{*})$>$ nullary\+\_\+op)
-\item 
-void \mbox{\hyperlink{namespacehmap_afaa31506353c8fe10a751a0cbf992c33}{fill}} (\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&h, \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \texorpdfstring{$\ast$}{*}p\+\_\+noise, std\+::function$<$ \mbox{\hyperlink{classhmap_1_1Array}{Array}}(\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise)$>$ nullary\+\_\+op)
-\item 
-void \mbox{\hyperlink{namespacehmap_a3e1330c25846f757ce15146d8fba4724}{fill}} (\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&h, std\+::function$<$ \mbox{\hyperlink{classhmap_1_1Array}{Array}}(\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$)$>$ nullary\+\_\+op)
-\item 
-void \mbox{\hyperlink{namespacehmap_a808d4ce63d0da9e4bab0f204991d88b0}{fill}} (\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&h, std\+::function$<$ \mbox{\hyperlink{classhmap_1_1Array}{Array}}(\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$)$>$ nullary\+\_\+op)
-\item 
-void \mbox{\hyperlink{namespacehmap_a6d8728c019a17094c326f31501ea5482}{transform}} (\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&h, std\+::function$<$ void(\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&)$>$ unary\+\_\+op)
-\item 
-void \mbox{\hyperlink{namespacehmap_afd9639dca483f8e95f83f58e7171c8ad}{transform}} (\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&h, std\+::function$<$ void(\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$)$>$ unary\+\_\+op)
-\item 
-void \mbox{\hyperlink{namespacehmap_a0c9955183689e50bb323cb74e14d47ee}{transform}} (\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&h, \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x, std\+::function$<$ void(\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*})$>$ unary\+\_\+op)
-\item 
-void \mbox{\hyperlink{namespacehmap_a8097627251f8fca6407bf397bbdb2eeb}{transform}} (\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&h, \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x, \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y, std\+::function$<$ void(\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*})$>$ unary\+\_\+op)
-\item 
-void \mbox{\hyperlink{namespacehmap_a7834b788b003e00411db069fe53dd8da}{transform}} (\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&h, std\+::function$<$ void(\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&, \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ float $>$, \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ float $>$)$>$ unary\+\_\+op)
-\item 
-void \mbox{\hyperlink{namespacehmap_a3124c0500ac67c3c6bafc77c6486d7a1}{transform}} (\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&h, \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \texorpdfstring{$\ast$}{*}p\+\_\+mask, std\+::function$<$ void(\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*})$>$ unary\+\_\+op)
-\item 
-void \mbox{\hyperlink{namespacehmap_aed492e4ecec2a21b7525e06760c99e48}{transform}} (\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&h, \mbox{\hyperlink{classhmap_1_1Heightmap}{hmap\+::\+Heightmap}} \texorpdfstring{$\ast$}{*}p\+\_\+1, \mbox{\hyperlink{classhmap_1_1Heightmap}{hmap\+::\+Heightmap}} \texorpdfstring{$\ast$}{*}p\+\_\+2, \mbox{\hyperlink{classhmap_1_1Heightmap}{hmap\+::\+Heightmap}} \texorpdfstring{$\ast$}{*}p\+\_\+3, \mbox{\hyperlink{classhmap_1_1Heightmap}{hmap\+::\+Heightmap}} \texorpdfstring{$\ast$}{*}p\+\_\+4, \mbox{\hyperlink{classhmap_1_1Heightmap}{hmap\+::\+Heightmap}} \texorpdfstring{$\ast$}{*}p\+\_\+5, std\+::function$<$ void(\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*})$>$ unary\+\_\+op)
-\item 
-void \mbox{\hyperlink{namespacehmap_aa7a794c92aebf181390461a3d8f85721}{transform}} (\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&h, \mbox{\hyperlink{classhmap_1_1Heightmap}{hmap\+::\+Heightmap}} \texorpdfstring{$\ast$}{*}p\+\_\+1, \mbox{\hyperlink{classhmap_1_1Heightmap}{hmap\+::\+Heightmap}} \texorpdfstring{$\ast$}{*}p\+\_\+2, \mbox{\hyperlink{classhmap_1_1Heightmap}{hmap\+::\+Heightmap}} \texorpdfstring{$\ast$}{*}p\+\_\+3, std\+::function$<$ void(\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*})$>$ unary\+\_\+op)
-\item 
-void \mbox{\hyperlink{namespacehmap_a8189a2f0b773b7883777e6601f247634}{transform}} (\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&h, \mbox{\hyperlink{classhmap_1_1Heightmap}{hmap\+::\+Heightmap}} \texorpdfstring{$\ast$}{*}p\+\_\+1, \mbox{\hyperlink{classhmap_1_1Heightmap}{hmap\+::\+Heightmap}} \texorpdfstring{$\ast$}{*}p\+\_\+2, std\+::function$<$ void(\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*})$>$ unary\+\_\+op)
-\item 
-void \mbox{\hyperlink{namespacehmap_a02f88b129d0c61ec241c54333a617109}{transform}} (\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&h1, \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&h2, std\+::function$<$ void(\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&)$>$ binary\+\_\+op)
-\item 
-void \mbox{\hyperlink{namespacehmap_a59b8719b8ab27bf954ebaa961e25c2e7}{transform}} (\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&h1, \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&h2, std\+::function$<$ void(\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$)$>$ binary\+\_\+op)
-\item 
-void \mbox{\hyperlink{namespacehmap_a32d77f6607e40ad1429906e5e9e08e17}{transform}} (\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&h1, \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&h2, \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&h3, std\+::function$<$ void(\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&)$>$ ternary\+\_\+op)
-\item 
-void \mbox{\hyperlink{namespacehmap_a9ee71d4c48644e9f0e29601eb0636b07}{transform}} (\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&h1, \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&h2, \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&h3, std\+::function$<$ void(\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$)$>$ ternary\+\_\+op)
-\item 
-void \mbox{\hyperlink{namespacehmap_a23b3861a8be80a910c10401284fe9e59}{transform}} (\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&h\+\_\+out, \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&h1, std\+::function$<$ \mbox{\hyperlink{classhmap_1_1Array}{Array}}(\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&)$>$ unary\+\_\+op)
-\item 
-void \mbox{\hyperlink{namespacehmap_a529a8a23044dcdd9ed0fb7f0e628d4c7}{transform}} (\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&h\+\_\+out, \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&h1, \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&h2, std\+::function$<$ \mbox{\hyperlink{classhmap_1_1Array}{Array}}(\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&)$>$ binary\+\_\+op)
-\item 
-void \mbox{\hyperlink{namespacehmap_a31d9bb3f85a02d60bd03e8bb6ef4f4f4}{transform}} (\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&h1, \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&h2, \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&h3, \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&h4, std\+::function$<$ void(\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&)$>$ ternary\+\_\+op)
-\item 
-void \mbox{\hyperlink{namespacehmap_aa6f9b7363268c106d5154d7370053c35}{transform}} (\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&h1, \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&h2, \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&h3, \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&h4, \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&h5, \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&h6, std\+::function$<$ void(\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&)$>$ op)
-\item 
-void \mbox{\hyperlink{namespacehmap_a086b4d007e08e88d2fc1166e67c524ee}{transform}} (std\+::vector$<$ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \texorpdfstring{$\ast$}{*} $>$ p\+\_\+hmaps, std\+::function$<$ void(const std\+::vector$<$ \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*} $>$, const \mbox{\hyperlink{structhmap_1_1Vec2}{hmap\+::\+Vec2}}$<$ int $>$, const \mbox{\hyperlink{structhmap_1_1Vec4}{hmap\+::\+Vec4}}$<$ float $>$)$>$ op, \mbox{\hyperlink{namespacehmap_ab36df744301ada377d4a3f3a34bca77f}{Transform\+Mode}} transform\+\_\+mode=\mbox{\hyperlink{namespacehmap_ab36df744301ada377d4a3f3a34bca77fac40707c2538151422af1c84dfd46252b}{Transform\+Mode\+::\+DISTRIBUTED}})
-\begin{DoxyCompactList}\small\item\em Applies a transformation operation to a collection of heightmaps. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{namespacehmap_a3438427cf944820ce19e7ca9ce438985}{transform}} (std\+::vector$<$ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \texorpdfstring{$\ast$}{*} $>$ p\+\_\+hmaps, std\+::function$<$ void(const std\+::vector$<$ \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*} $>$)$>$ op, \mbox{\hyperlink{namespacehmap_ab36df744301ada377d4a3f3a34bca77f}{Transform\+Mode}} transform\+\_\+mode=\mbox{\hyperlink{namespacehmap_ab36df744301ada377d4a3f3a34bca77fac40707c2538151422af1c84dfd46252b}{Transform\+Mode\+::\+DISTRIBUTED}})
-\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a8284b00f1f460f1d5a406ee45587dcd9}{basin\+\_\+id}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}{Flow\+Direction\+Method}} fd\+\_\+method=\mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894}{Flow\+Direction\+Method\+::\+FDM\+\_\+\+D8}}, bool remove\+\_\+lakes=true)
 \begin{DoxyCompactList}\small\item\em Label drainage basins using a priority-\/flood algorithm. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a2e0533063a77bfc047472d1d85f3f63c}{d8\+\_\+compute\+\_\+ndip}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&d8)
@@ -1153,6 +1121,8 @@ void \mbox{\hyperlink{namespacehmap_a3aebd62906b90ccfde11140e13b0853f}{water\+\_
 \begin{DoxyCompactList}\small\item\em Computes a gradient-\/based water mask using an extended water depth model. \end{DoxyCompactList}\item 
 std\+::filesystem\+::path \mbox{\hyperlink{namespacehmap_a67eae4546cbed6a804eaddcde9350e1c}{add\+\_\+filename\+\_\+suffix}} (const std\+::filesystem\+::path \&file\+\_\+path, const std\+::string \&suffix)
 \item 
+std\+::filesystem\+::path \mbox{\hyperlink{namespacehmap_a0a506d871b395e49e6175499dfa1e903}{make\+\_\+unique\+\_\+temp\+\_\+dir}} (const std\+::string \&prefix)
+\begin{DoxyCompactList}\small\item\em Create a unique temporary directory. \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{namespacehmap_a3f38b7faedc76835a0a902eb48e3d94b}{zfill}} (const std\+::string \&str, int n\+\_\+zero)
 \item 
 size\+\_\+t \mbox{\hyperlink{namespacehmap_a0b7db6f8ce57fcdeca7ca1e3b7d1e686}{upperbound\+\_\+right}} (const std\+::vector$<$ float $>$ \&v, float value)
@@ -1181,12 +1151,6 @@ float \mbox{\hyperlink{namespacehmap_aee026d8b23196038c2b16c370b743889}{cubic\+\
 \begin{DoxyCompactList}\small\item\em 2D interpolation using the nearest neighbor method. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a87e9a2e5fc78594e8d88522366ff5396}{interpolate2d\+\_\+delaunay}} (\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$ shape, const std\+::vector$<$ float $>$ \&x, const std\+::vector$<$ float $>$ \&y, const std\+::vector$<$ float $>$ \&values, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+stretching=nullptr, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
 \begin{DoxyCompactList}\small\item\em 2D interpolation using the Delaunay triangulation method. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{namespacehmap_a0039057c9e4adf1498fa0a91b94d7fb8}{flatten\+\_\+heightmap}} (\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&h\+\_\+source1, const \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&h\+\_\+source2, const \mbox{\hyperlink{classhmap_1_1CoordFrame}{Coord\+Frame}} \&t\+\_\+source1, const \mbox{\hyperlink{classhmap_1_1CoordFrame}{Coord\+Frame}} \&t\+\_\+source2)
-\item 
-void \mbox{\hyperlink{namespacehmap_a2ecd308a993a3d85640aea025e02f3b1}{flatten\+\_\+heightmap}} (const \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&h\+\_\+source1, const \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&h\+\_\+source2, \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&h\+\_\+target, const \mbox{\hyperlink{classhmap_1_1CoordFrame}{Coord\+Frame}} \&t\+\_\+source1, const \mbox{\hyperlink{classhmap_1_1CoordFrame}{Coord\+Frame}} \&t\+\_\+source2, const \mbox{\hyperlink{classhmap_1_1CoordFrame}{Coord\+Frame}} \&t\+\_\+target)
-\item 
-void \mbox{\hyperlink{namespacehmap_a17f8f7249f91ef9bbcc0b1b5e38e20f3}{flatten\+\_\+heightmap}} (const std\+::vector$<$ const \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \texorpdfstring{$\ast$}{*} $>$ \&h\+\_\+sources, \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&h\+\_\+target, const std\+::vector$<$ const \mbox{\hyperlink{classhmap_1_1CoordFrame}{Coord\+Frame}} \texorpdfstring{$\ast$}{*} $>$ \&t\+\_\+sources, const \mbox{\hyperlink{classhmap_1_1CoordFrame}{Coord\+Frame}} \&t\+\_\+target)
-\item 
 void \mbox{\hyperlink{namespacehmap_a9e8b724d238450ef72e9bd083acb9b8a}{interpolate\+\_\+array\+\_\+bicubic}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&source, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&target, bool endpoint=false, bool pixel\+\_\+centered=true)
 \item 
 void \mbox{\hyperlink{namespacehmap_aa17e96003ede1772e676bddd576091fc}{interpolate\+\_\+array\+\_\+bicubic}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&source, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&target, const \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ \&bbox\+\_\+source, const \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ \&bbox\+\_\+target, bool endpoint=false, bool pixel\+\_\+centered=true)
@@ -1199,7 +1163,11 @@ void \mbox{\hyperlink{namespacehmap_ab55e8132857fc52e7ac7947d82c334e1}{interpola
 \item 
 void \mbox{\hyperlink{namespacehmap_a08eecd57d3c4f993b6f205beabd2f12b}{interpolate\+\_\+array\+\_\+nearest}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&source, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&target, const \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ \&bbox\+\_\+source, const \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ \&bbox\+\_\+target, bool endpoint=false)
 \item 
-void \mbox{\hyperlink{namespacehmap_a14135f92a275f8857aac1bc9480e426f}{interpolate\+\_\+heightmap}} (const \mbox{\hyperlink{classhmap_1_1Heightmap}{hmap\+::\+Heightmap}} \&h\+\_\+source, \mbox{\hyperlink{classhmap_1_1Heightmap}{hmap\+::\+Heightmap}} \&h\+\_\+target, const \mbox{\hyperlink{classhmap_1_1CoordFrame}{Coord\+Frame}} \&t\+\_\+source, const \mbox{\hyperlink{classhmap_1_1CoordFrame}{Coord\+Frame}} \&t\+\_\+target)
+void \mbox{\hyperlink{namespacehmap_ace2076a7808458f99aeaeec2bc404d6b}{flatten\+\_\+heightmap}} (\mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \&h\+\_\+source1, const \mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \&h\+\_\+source2, const \mbox{\hyperlink{classhmap_1_1CoordFrame}{Coord\+Frame}} \&t\+\_\+source1, const \mbox{\hyperlink{classhmap_1_1CoordFrame}{Coord\+Frame}} \&t\+\_\+source2, const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&cm)
+\item 
+void \mbox{\hyperlink{namespacehmap_a3dadec4e8aa2c67598a0e158756308c8}{flatten\+\_\+heightmap}} (const std\+::vector$<$ const \mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \texorpdfstring{$\ast$}{*} $>$ \&h\+\_\+sources, \mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \&h\+\_\+target, const std\+::vector$<$ const \mbox{\hyperlink{classhmap_1_1CoordFrame}{Coord\+Frame}} \texorpdfstring{$\ast$}{*} $>$ \&t\+\_\+sources, const \mbox{\hyperlink{classhmap_1_1CoordFrame}{Coord\+Frame}} \&t\+\_\+target, const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&cm)
+\item 
+void \mbox{\hyperlink{namespacehmap_aab05ca060b3dd80724ff669864c0f4d2}{interpolate\+\_\+heightmap}} (const \mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \&h\+\_\+source, \mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \&h\+\_\+target, const \mbox{\hyperlink{classhmap_1_1CoordFrame}{Coord\+Frame}} \&t\+\_\+source, const \mbox{\hyperlink{classhmap_1_1CoordFrame}{Coord\+Frame}} \&t\+\_\+target, const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&cm)
 \item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a4ad7940c796973a615558a8dc773281c}{get\+\_\+kernel}} (\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$ shape, \mbox{\hyperlink{namespacehmap_a4b6f135c6e81d313ca54ae1efac5f2c9}{Kernel\+Type}} kernel\+\_\+type)
 \begin{DoxyCompactList}\small\item\em Generate a kernel of the specified type. \end{DoxyCompactList}\item 
@@ -1677,9 +1645,19 @@ void \mbox{\hyperlink{namespacehmap_a2dba417aca5a0dcd02509617939d741b}{warp\+\_\
 \begin{DoxyCompactList}\small\item\em Apply a warping effect following the downward local gradient direction (deflate/inflate effect) with a mask. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_aa49ad80ba2711183ea6758d6d6d4d5f7}{zoom}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float zoom\+\_\+factor, bool periodic=false, \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ float $>$ center=\{0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
 \begin{DoxyCompactList}\small\item\em Applies a zoom effect to a 2D array with an adjustable center. \end{DoxyCompactList}\item 
-{\footnotesize template$<$typename Func $>$ }\\void \mbox{\hyperlink{namespacehmap_aae8f6a3d45b6f43c1d3534ef08355598}{for\+\_\+each\+\_\+tile\+\_\+sequential}} (\mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \&va, Func \&\&func)
+std\+::string \mbox{\hyperlink{namespacehmap_a253c7aaa3976c17e0aae21b7b3f6cc9e}{to\+\_\+string}} (\mbox{\hyperlink{namespacehmap_ad21b93a34c88a47d6b54f3a4d5b65e6e}{Storage\+Mode}} m)
 \item 
-{\footnotesize template$<$typename Func $>$ }\\void \mbox{\hyperlink{namespacehmap_a99ff01a3a6bc3608247f0be2a1d38871}{for\+\_\+each\+\_\+tile\+\_\+distributed}} (\mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \&va, Func \&\&func)
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmap_1_1TileStorage}{Tile\+Storage}} $>$ \mbox{\hyperlink{namespacehmap_a43075b5f93cea5525adb69b8d6990683}{make\+\_\+storage}} (glm\+::ivec2 shape, glm\+::ivec2 tile\+\_\+shape, \mbox{\hyperlink{namespacehmap_ad21b93a34c88a47d6b54f3a4d5b65e6e}{Storage\+Mode}} storage\+\_\+mode)
+\item 
+std\+::string \mbox{\hyperlink{namespacehmap_af8dc7ce1ae44750316d846345854c408}{to\+\_\+string}} (\mbox{\hyperlink{namespacehmap_ae383414b46ae8992e621c407f09ce7c5}{For\+Each\+Mode}} m)
+\item 
+void \mbox{\hyperlink{namespacehmap_a4216f86be919aeb4a2cb6aab44609a71}{copy\+\_\+data}} (\mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \&src, \mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \&dst, const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&cm)
+\item 
+\mbox{\hyperlink{classhmap_1_1VirtualTexture}{Virtual\+Texture}} \mbox{\hyperlink{namespacehmap_af66b37de86e8de6261ab902110b118a0}{convert\+\_\+texture\+\_\+channels}} (const \mbox{\hyperlink{classhmap_1_1VirtualTexture}{Virtual\+Texture}} \&src, int dst\+\_\+channels, float fill\+\_\+value, const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&cm)
+\item 
+{\footnotesize template$<$typename Func $>$ }\\void \mbox{\hyperlink{namespacehmap_a1025088e008bb5709c8f88bc025ab1cb}{for\+\_\+each\+\_\+tile}} (\mbox{\hyperlink{classhmap_1_1VirtualTexture}{Virtual\+Texture}} \&tex, Func \&\&func, const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&cm)
+\item 
+{\footnotesize template$<$typename Func $>$ }\\void \mbox{\hyperlink{namespacehmap_a6bbca26bba2f2faac320f59df0ae8d8a}{for\+\_\+each\+\_\+pixel}} (\mbox{\hyperlink{classhmap_1_1VirtualTexture}{Virtual\+Texture}} \&tex, Func \&\&func, const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&cm)
 \item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_aac1a15042e8fae93d9caed60c2318fcc}{operator\texorpdfstring{$\ast$}{*}}} (const float value, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array)
 \item 
@@ -1694,6 +1672,10 @@ const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehma
 void \mbox{\hyperlink{namespacehmap_a3d953aa5fcf59193b3b8b98db3f5a872}{square\+\_\+fill\+\_\+md}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, \mbox{\hyperlink{structhmap_1_1Mat}{Mat}}$<$ int $>$ \&is\+\_\+done, int i1, int i2, int j1, int j2, float noise\+\_\+scale, std\+::mt19937 gen, std\+::uniform\+\_\+real\+\_\+distribution$<$ float $>$ dis)
 \item 
 void \mbox{\hyperlink{namespacehmap_af5440364a346b297246885e95793ef45}{square\+\_\+md}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, \mbox{\hyperlink{structhmap_1_1Mat}{Mat}}$<$ int $>$ \&is\+\_\+done, int \mbox{\hyperlink{namespacehmap_ab00af49fafd706242919ea18dc4817ee}{step}}, float noise\+\_\+scale, std\+::mt19937 gen, std\+::uniform\+\_\+real\+\_\+distribution$<$ float $>$ dis)
+\item 
+uint32\+\_\+t \mbox{\hyperlink{namespacehmap_a3694cff871813c283356c8edf1db3f55}{helper\+\_\+hash\+\_\+u32}} (uint32\+\_\+t x)
+\item 
+float \mbox{\hyperlink{namespacehmap_a5e1e11e11949bc172f52c62ae984ded4}{helper\+\_\+hash\+\_\+01}} (uint32\+\_\+t x)
 \item 
 float \mbox{\hyperlink{namespacehmap_aba0d25f051d23c9c637973b7edf19922}{helper\+\_\+thermal\+\_\+exchange}} (float self, float other, float dist, float talus)
 \item 
@@ -1722,18 +1704,6 @@ bool \mbox{\hyperlink{namespacehmap_ac070e7f9253f57fe6b44ad1f6c9fd753}{cmp\+\_\+
 void \mbox{\hyperlink{namespacehmap_ad97b6a0082efd4063f7839c95a51b294}{compute\+\_\+gradient}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&dx, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&dy, float x\+\_\+coeff\mbox{[}3\mbox{]}, float y\+\_\+coeff\mbox{[}3\mbox{]}, float normalize\+\_\+factor)
 \item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_aa2c4a82ac72b15cac34f868be9743471}{compute\+\_\+gradient\+\_\+norm}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float x\+\_\+coeff\mbox{[}3\mbox{]}, float y\+\_\+coeff\mbox{[}3\mbox{]}, float normalize\+\_\+factor, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+dx=nullptr, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+dy=nullptr)
-\item 
-\mbox{\hyperlink{structhmap_1_1HeightmapRGB}{Heightmap\+RGB}} \mbox{\hyperlink{namespacehmap_a79a02efb856e14f99c2accbfa595e0d4}{mix\+\_\+heightmap\+\_\+rgb}} (\mbox{\hyperlink{structhmap_1_1HeightmapRGB}{Heightmap\+RGB}} \&rgb1, \mbox{\hyperlink{structhmap_1_1HeightmapRGB}{Heightmap\+RGB}} \&rgb2, \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&t)
-\item 
-\mbox{\hyperlink{structhmap_1_1HeightmapRGB}{Heightmap\+RGB}} \mbox{\hyperlink{namespacehmap_ad16911f0a44281ab16b10eb90926f674}{mix\+\_\+heightmap\+\_\+rgb}} (\mbox{\hyperlink{structhmap_1_1HeightmapRGB}{Heightmap\+RGB}} \&rgb1, \mbox{\hyperlink{structhmap_1_1HeightmapRGB}{Heightmap\+RGB}} \&rgb2, float t)
-\item 
-\mbox{\hyperlink{structhmap_1_1HeightmapRGB}{Heightmap\+RGB}} \mbox{\hyperlink{namespacehmap_a87f3209d8f2aa9ce947a292fbfe4fe4e}{mix\+\_\+heightmap\+\_\+rgb\+\_\+sqrt}} (\mbox{\hyperlink{structhmap_1_1HeightmapRGB}{Heightmap\+RGB}} \&rgb1, \mbox{\hyperlink{structhmap_1_1HeightmapRGB}{Heightmap\+RGB}} \&rgb2, \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&t)
-\item 
-\mbox{\hyperlink{structhmap_1_1HeightmapRGB}{Heightmap\+RGB}} \mbox{\hyperlink{namespacehmap_ac5c38a2d95e658542576c82eee91d4e1}{mix\+\_\+heightmap\+\_\+rgb\+\_\+sqrt}} (\mbox{\hyperlink{structhmap_1_1HeightmapRGB}{Heightmap\+RGB}} \&rgb1, \mbox{\hyperlink{structhmap_1_1HeightmapRGB}{Heightmap\+RGB}} \&rgb2, float t)
-\item 
-void \mbox{\hyperlink{namespacehmap_a0218fc9914980f2103a86ec7f4fa7d44}{fill}} (\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&h, \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x, \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y, std\+::function$<$ \mbox{\hyperlink{classhmap_1_1Array}{Array}}(\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$, \mbox{\hyperlink{classhmap_1_1Array}{hmap\+::\+Array}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{classhmap_1_1Array}{hmap\+::\+Array}} \texorpdfstring{$\ast$}{*})$>$ nullary\+\_\+op)
-\item 
-void \mbox{\hyperlink{namespacehmap_a7c7bafbcc451b2ebb4c199e40f07a041}{fill}} (\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&h, \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \texorpdfstring{$\ast$}{*}p\+\_\+noise, std\+::function$<$ \mbox{\hyperlink{classhmap_1_1Array}{Array}}(\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$, \mbox{\hyperlink{classhmap_1_1Array}{hmap\+::\+Array}} \texorpdfstring{$\ast$}{*})$>$ nullary\+\_\+op)
 \item 
 void \mbox{\hyperlink{namespacehmap_a7376f7c00281f0616024d33069971ca4}{helper\+\_\+find\+\_\+up\+\_\+downslope}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, const \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$ \&ij, \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$ \&ij\+\_\+dw, \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$ \&ij\+\_\+up)
 \item 
@@ -1849,6 +1819,34 @@ BOUNDARY\+\_\+\+TOP&j = 0 \\
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{BOUNDARY\_BOTTOM@{BOUNDARY\_BOTTOM}!hmap@{hmap}}\index{hmap@{hmap}!BOUNDARY\_BOTTOM@{BOUNDARY\_BOTTOM}}}\Hypertarget{namespacehmap_a1ba9d4ce7afe3309f8ae8e617f7154eeac7495a13a71417dd76751518cd185309}\label{namespacehmap_a1ba9d4ce7afe3309f8ae8e617f7154eeac7495a13a71417dd76751518cd185309} 
 BOUNDARY\+\_\+\+BOTTOM&j = ny -\/ 1 \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{namespacehmap_abc952321c99ec11d60b4037e3d27db9b}\label{namespacehmap_abc952321c99ec11d60b4037e3d27db9b} 
+\index{hmap@{hmap}!NormalMapBlendingMethod@{NormalMapBlendingMethod}}
+\index{NormalMapBlendingMethod@{NormalMapBlendingMethod}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{NormalMapBlendingMethod}{NormalMapBlendingMethod}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespacehmap_abc952321c99ec11d60b4037e3d27db9b}{hmap\+::\+Normal\+Map\+Blending\+Method}} \+: int}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMAP\_LINEAR@{NMAP\_LINEAR}!hmap@{hmap}}\index{hmap@{hmap}!NMAP\_LINEAR@{NMAP\_LINEAR}}}\Hypertarget{namespacehmap_abc952321c99ec11d60b4037e3d27db9bac248af7dd230247485e3c09a663cedd0}\label{namespacehmap_abc952321c99ec11d60b4037e3d27db9bac248af7dd230247485e3c09a663cedd0} 
+NMAP\+\_\+\+LINEAR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMAP\_DERIVATIVE@{NMAP\_DERIVATIVE}!hmap@{hmap}}\index{hmap@{hmap}!NMAP\_DERIVATIVE@{NMAP\_DERIVATIVE}}}\Hypertarget{namespacehmap_abc952321c99ec11d60b4037e3d27db9ba97d5a1740991179c436482de8c1c1f34}\label{namespacehmap_abc952321c99ec11d60b4037e3d27db9ba97d5a1740991179c436482de8c1c1f34} 
+NMAP\+\_\+\+DERIVATIVE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMAP\_UDN@{NMAP\_UDN}!hmap@{hmap}}\index{hmap@{hmap}!NMAP\_UDN@{NMAP\_UDN}}}\Hypertarget{namespacehmap_abc952321c99ec11d60b4037e3d27db9ba25b053ebbd8db9d348737e6f343c61bf}\label{namespacehmap_abc952321c99ec11d60b4037e3d27db9ba25b053ebbd8db9d348737e6f343c61bf} 
+NMAP\+\_\+\+UDN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMAP\_UNITY@{NMAP\_UNITY}!hmap@{hmap}}\index{hmap@{hmap}!NMAP\_UNITY@{NMAP\_UNITY}}}\Hypertarget{namespacehmap_abc952321c99ec11d60b4037e3d27db9ba54fd5928677cd19616ec52d6d59d4c60}\label{namespacehmap_abc952321c99ec11d60b4037e3d27db9ba54fd5928677cd19616ec52d6d59d4c60} 
+NMAP\+\_\+\+UNITY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMAP\_WHITEOUT@{NMAP\_WHITEOUT}!hmap@{hmap}}\index{hmap@{hmap}!NMAP\_WHITEOUT@{NMAP\_WHITEOUT}}}\Hypertarget{namespacehmap_abc952321c99ec11d60b4037e3d27db9ba6ba5e07d11326f7567d533f169321e37}\label{namespacehmap_abc952321c99ec11d60b4037e3d27db9ba6ba5e07d11326f7567d533f169321e37} 
+NMAP\+\_\+\+WHITEOUT&\\
 \hline
 
 \end{DoxyEnumFields}
@@ -2181,54 +2179,6 @@ RND\+\_\+\+HAMMERSLEY&Low-\/discrepancy Hammersley sequence sampling. \\
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{RND\_LHS@{RND\_LHS}!hmap@{hmap}}\index{hmap@{hmap}!RND\_LHS@{RND\_LHS}}}\Hypertarget{namespacehmap_aba758c4143b6e499ec6f4385467a6d77a8943dd2a2e3993c1e0cff37be3f65957}\label{namespacehmap_aba758c4143b6e499ec6f4385467a6d77a8943dd2a2e3993c1e0cff37be3f65957} 
 RND\+\_\+\+LHS&Latin Hypercube Sampling. \\
-\hline
-
-\end{DoxyEnumFields}
-\Hypertarget{namespacehmap_abc952321c99ec11d60b4037e3d27db9b}\label{namespacehmap_abc952321c99ec11d60b4037e3d27db9b} 
-\index{hmap@{hmap}!NormalMapBlendingMethod@{NormalMapBlendingMethod}}
-\index{NormalMapBlendingMethod@{NormalMapBlendingMethod}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{NormalMapBlendingMethod}{NormalMapBlendingMethod}}
-{\footnotesize\ttfamily enum \mbox{\hyperlink{namespacehmap_abc952321c99ec11d60b4037e3d27db9b}{hmap\+::\+Normal\+Map\+Blending\+Method}} \+: int}
-
-\begin{DoxyEnumFields}{Enumerator}
-\raisebox{\heightof{T}}[0pt][0pt]{\index{NMAP\_LINEAR@{NMAP\_LINEAR}!hmap@{hmap}}\index{hmap@{hmap}!NMAP\_LINEAR@{NMAP\_LINEAR}}}\Hypertarget{namespacehmap_abc952321c99ec11d60b4037e3d27db9bac248af7dd230247485e3c09a663cedd0}\label{namespacehmap_abc952321c99ec11d60b4037e3d27db9bac248af7dd230247485e3c09a663cedd0} 
-NMAP\+\_\+\+LINEAR&\\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{NMAP\_DERIVATIVE@{NMAP\_DERIVATIVE}!hmap@{hmap}}\index{hmap@{hmap}!NMAP\_DERIVATIVE@{NMAP\_DERIVATIVE}}}\Hypertarget{namespacehmap_abc952321c99ec11d60b4037e3d27db9ba97d5a1740991179c436482de8c1c1f34}\label{namespacehmap_abc952321c99ec11d60b4037e3d27db9ba97d5a1740991179c436482de8c1c1f34} 
-NMAP\+\_\+\+DERIVATIVE&\\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{NMAP\_UDN@{NMAP\_UDN}!hmap@{hmap}}\index{hmap@{hmap}!NMAP\_UDN@{NMAP\_UDN}}}\Hypertarget{namespacehmap_abc952321c99ec11d60b4037e3d27db9ba25b053ebbd8db9d348737e6f343c61bf}\label{namespacehmap_abc952321c99ec11d60b4037e3d27db9ba25b053ebbd8db9d348737e6f343c61bf} 
-NMAP\+\_\+\+UDN&\\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{NMAP\_UNITY@{NMAP\_UNITY}!hmap@{hmap}}\index{hmap@{hmap}!NMAP\_UNITY@{NMAP\_UNITY}}}\Hypertarget{namespacehmap_abc952321c99ec11d60b4037e3d27db9ba54fd5928677cd19616ec52d6d59d4c60}\label{namespacehmap_abc952321c99ec11d60b4037e3d27db9ba54fd5928677cd19616ec52d6d59d4c60} 
-NMAP\+\_\+\+UNITY&\\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{NMAP\_WHITEOUT@{NMAP\_WHITEOUT}!hmap@{hmap}}\index{hmap@{hmap}!NMAP\_WHITEOUT@{NMAP\_WHITEOUT}}}\Hypertarget{namespacehmap_abc952321c99ec11d60b4037e3d27db9ba6ba5e07d11326f7567d533f169321e37}\label{namespacehmap_abc952321c99ec11d60b4037e3d27db9ba6ba5e07d11326f7567d533f169321e37} 
-NMAP\+\_\+\+WHITEOUT&\\
-\hline
-
-\end{DoxyEnumFields}
-\Hypertarget{namespacehmap_ab36df744301ada377d4a3f3a34bca77f}\label{namespacehmap_ab36df744301ada377d4a3f3a34bca77f} 
-\index{hmap@{hmap}!TransformMode@{TransformMode}}
-\index{TransformMode@{TransformMode}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{TransformMode}{TransformMode}}
-{\footnotesize\ttfamily enum \mbox{\hyperlink{namespacehmap_ab36df744301ada377d4a3f3a34bca77f}{hmap\+::\+Transform\+Mode}} \+: int}
-
-\begin{DoxyEnumFields}{Enumerator}
-\raisebox{\heightof{T}}[0pt][0pt]{\index{DISTRIBUTED@{DISTRIBUTED}!hmap@{hmap}}\index{hmap@{hmap}!DISTRIBUTED@{DISTRIBUTED}}}\Hypertarget{namespacehmap_ab36df744301ada377d4a3f3a34bca77fac40707c2538151422af1c84dfd46252b}\label{namespacehmap_ab36df744301ada377d4a3f3a34bca77fac40707c2538151422af1c84dfd46252b} 
-DISTRIBUTED&Distributed across multiple processors or threads. \\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{SEQUENTIAL@{SEQUENTIAL}!hmap@{hmap}}\index{hmap@{hmap}!SEQUENTIAL@{SEQUENTIAL}}}\Hypertarget{namespacehmap_ab36df744301ada377d4a3f3a34bca77fabd8181f845a88e68d0653323c26ac4ac}\label{namespacehmap_ab36df744301ada377d4a3f3a34bca77fabd8181f845a88e68d0653323c26ac4ac} 
-SEQUENTIAL&Performed sequentially in a single thread. \\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{SINGLE\_ARRAY@{SINGLE\_ARRAY}!hmap@{hmap}}\index{hmap@{hmap}!SINGLE\_ARRAY@{SINGLE\_ARRAY}}}\Hypertarget{namespacehmap_ab36df744301ada377d4a3f3a34bca77fadb0544f4a0452ffb75e88eff0b39095d}\label{namespacehmap_ab36df744301ada377d4a3f3a34bca77fadb0544f4a0452ffb75e88eff0b39095d} 
-SINGLE\+\_\+\+ARRAY&Transformation is applied to a single array of data. \\
 \hline
 
 \end{DoxyEnumFields}
@@ -2653,6 +2603,50 @@ NONE&\\
 \hline
 
 \end{DoxyEnumFields}
+\Hypertarget{namespacehmap_ad21b93a34c88a47d6b54f3a4d5b65e6e}\label{namespacehmap_ad21b93a34c88a47d6b54f3a4d5b65e6e} 
+\index{hmap@{hmap}!StorageMode@{StorageMode}}
+\index{StorageMode@{StorageMode}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{StorageMode}{StorageMode}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespacehmap_ad21b93a34c88a47d6b54f3a4d5b65e6e}{hmap\+::\+Storage\+Mode}} \+: int}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VA\_RAM@{VA\_RAM}!hmap@{hmap}}\index{hmap@{hmap}!VA\_RAM@{VA\_RAM}}}\Hypertarget{namespacehmap_ad21b93a34c88a47d6b54f3a4d5b65e6eae10df7db812e0abe9bc94fc28ae907ce}\label{namespacehmap_ad21b93a34c88a47d6b54f3a4d5b65e6eae10df7db812e0abe9bc94fc28ae907ce} 
+VA\+\_\+\+RAM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VA\_DISK\_LRU@{VA\_DISK\_LRU}!hmap@{hmap}}\index{hmap@{hmap}!VA\_DISK\_LRU@{VA\_DISK\_LRU}}}\Hypertarget{namespacehmap_ad21b93a34c88a47d6b54f3a4d5b65e6ea671262171ccce9633cc42db046ea63d4}\label{namespacehmap_ad21b93a34c88a47d6b54f3a4d5b65e6ea671262171ccce9633cc42db046ea63d4} 
+VA\+\_\+\+DISK\+\_\+\+LRU&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VA\_DISK\_LRU\_MIN@{VA\_DISK\_LRU\_MIN}!hmap@{hmap}}\index{hmap@{hmap}!VA\_DISK\_LRU\_MIN@{VA\_DISK\_LRU\_MIN}}}\Hypertarget{namespacehmap_ad21b93a34c88a47d6b54f3a4d5b65e6ea3696aa48b93c260deb79c830ae605781}\label{namespacehmap_ad21b93a34c88a47d6b54f3a4d5b65e6ea3696aa48b93c260deb79c830ae605781} 
+VA\+\_\+\+DISK\+\_\+\+LRU\+\_\+\+MIN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VA\_DISK\_SEQUENTIAL@{VA\_DISK\_SEQUENTIAL}!hmap@{hmap}}\index{hmap@{hmap}!VA\_DISK\_SEQUENTIAL@{VA\_DISK\_SEQUENTIAL}}}\Hypertarget{namespacehmap_ad21b93a34c88a47d6b54f3a4d5b65e6eac3fa4d259d437f79a95c11d38da93b8a}\label{namespacehmap_ad21b93a34c88a47d6b54f3a4d5b65e6eac3fa4d259d437f79a95c11d38da93b8a} 
+VA\+\_\+\+DISK\+\_\+\+SEQUENTIAL&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{namespacehmap_ae383414b46ae8992e621c407f09ce7c5}\label{namespacehmap_ae383414b46ae8992e621c407f09ce7c5} 
+\index{hmap@{hmap}!ForEachMode@{ForEachMode}}
+\index{ForEachMode@{ForEachMode}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{ForEachMode}{ForEachMode}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespacehmap_ae383414b46ae8992e621c407f09ce7c5}{hmap\+::\+For\+Each\+Mode}} \+: int}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VA\_SEQUENTIAL@{VA\_SEQUENTIAL}!hmap@{hmap}}\index{hmap@{hmap}!VA\_SEQUENTIAL@{VA\_SEQUENTIAL}}}\Hypertarget{namespacehmap_ae383414b46ae8992e621c407f09ce7c5ad610a3b158cd10452fc144bda389aa19}\label{namespacehmap_ae383414b46ae8992e621c407f09ce7c5ad610a3b158cd10452fc144bda389aa19} 
+VA\+\_\+\+SEQUENTIAL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VA\_DISTRIBUTED@{VA\_DISTRIBUTED}!hmap@{hmap}}\index{hmap@{hmap}!VA\_DISTRIBUTED@{VA\_DISTRIBUTED}}}\Hypertarget{namespacehmap_ae383414b46ae8992e621c407f09ce7c5a5356cbfe824240ce4bd458109890b9d5}\label{namespacehmap_ae383414b46ae8992e621c407f09ce7c5a5356cbfe824240ce4bd458109890b9d5} 
+VA\+\_\+\+DISTRIBUTED&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VA\_SINGLE\_ARRAY@{VA\_SINGLE\_ARRAY}!hmap@{hmap}}\index{hmap@{hmap}!VA\_SINGLE\_ARRAY@{VA\_SINGLE\_ARRAY}}}\Hypertarget{namespacehmap_ae383414b46ae8992e621c407f09ce7c5afd32b1bf1363b0e44143bda30f00cffa}\label{namespacehmap_ae383414b46ae8992e621c407f09ce7c5afd32b1bf1363b0e44143bda30f00cffa} 
+VA\+\_\+\+SINGLE\+\_\+\+ARRAY&\\
+\hline
+
+\end{DoxyEnumFields}
 
 
 \doxysubsection{Function Documentation}
@@ -2968,7 +2962,7 @@ Carves and blends a flatbed shape along a path into the provided array, using a 
 
 
 \begin{DoxyParams}{Parameters}
-{\em z} & \doxylink{classhmap_1_1Heightmap}{Heightmap} to modify in place. \\
+{\em z} & Heightmap to modify in place. \\
 \hline
 {\em path} & \doxylink{classhmap_1_1Path}{Path} defining the bed centerline. \\
 \hline
@@ -4159,10 +4153,16 @@ This function applies a hillshading effect to a vector of 8-\/bit image data. Th
 {\em is\+\_\+img\+\_\+rgba} & Boolean flag indicating if the input image has an alpha channel (default is false). \\
 \hline
 \end{DoxyParams}
+\Hypertarget{namespacehmap_a1175ee497ff12b2f3c6cdb7cc805949f}\label{namespacehmap_a1175ee497ff12b2f3c6cdb7cc805949f} 
+\index{hmap@{hmap}!color\_adjust@{color\_adjust}}
+\index{color\_adjust@{color\_adjust}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{color\_adjust()}{color\_adjust()}}
+{\footnotesize\ttfamily void hmap\+::color\+\_\+adjust (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1VirtualTexture}{Virtual\+Texture}} \&}]{tex,  }\item[{\mbox{\hyperlink{structhmap_1_1ColorAdjust}{Color\+Adjust}}}]{param,  }\item[{const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&}]{cm }\end{DoxyParamCaption})}
+
 \Hypertarget{namespacehmap_a33a635351aa13228557a585470ba4563}\label{namespacehmap_a33a635351aa13228557a585470ba4563} 
 \index{hmap@{hmap}!colorize@{colorize}}
 \index{colorize@{colorize}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{colorize()}{colorize()}}
+\doxysubsubsection{\texorpdfstring{colorize()}{colorize()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Tensor}{Tensor}} hmap\+::colorize (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{float}]{vmin,  }\item[{float}]{vmax,  }\item[{int}]{cmap,  }\item[{bool}]{hillshading,  }\item[{bool}]{reverse = {\ttfamily false},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise = {\ttfamily nullptr} }\end{DoxyParamCaption})}
 
 
@@ -4191,7 +4191,355 @@ This function applies a colormap to the input array and optionally applies hills
 \begin{DoxyReturn}{Returns}
 \doxylink{classhmap_1_1Tensor}{Tensor} Colorized \doxylink{classhmap_1_1Tensor}{Tensor} image. 
 \end{DoxyReturn}
-\Hypertarget{namespacehmap_aa76bdaf8b572bcea0778ef8815965307}\label{namespacehmap_aa76bdaf8b572bcea0778ef8815965307} 
+\Hypertarget{namespacehmap_a6f991e3bdf7c5c4bed631f2b7fb4f072}\label{namespacehmap_a6f991e3bdf7c5c4bed631f2b7fb4f072} 
+\index{hmap@{hmap}!colorize@{colorize}}
+\index{colorize@{colorize}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{colorize()}{colorize()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily void hmap\+::colorize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1VirtualTexture}{Virtual\+Texture}} \&}]{out,  }\item[{\mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \&}]{level,  }\item[{const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&}]{cm,  }\item[{float}]{vmin,  }\item[{float}]{vmax,  }\item[{int}]{cmap,  }\item[{\mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+alpha = {\ttfamily nullptr},  }\item[{bool}]{reverse = {\ttfamily false},  }\item[{\mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+
+
+Colorize a scalar field into a texture using a predefined colormap. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out} & Output texture. \\
+\hline
+{\em level} & Input scalar values. \\
+\hline
+{\em cm} & Compute mode (CPU/\+GPU). \\
+\hline
+{\em vmin} & Lower bound for normalization. \\
+\hline
+{\em vmax} & Upper bound for normalization. \\
+\hline
+{\em cmap} & Colormap identifier. \\
+\hline
+{\em p\+\_\+alpha} & Optional alpha channel. \\
+\hline
+{\em reverse} & Reverse colormap mapping. \\
+\hline
+{\em p\+\_\+noise} & Optional noise for dithering.\\
+\hline
+\end{DoxyParams}
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ glm::vec4\ \ bbox(0.f,\ 1.0f,\ 0.f,\ 1.f);\ \textcolor{comment}{//\ x1,x2,y1,y2}}
+\DoxyCodeLine{\ \ glm::ivec2\ shape(1024,\ 1024);}
+\DoxyCodeLine{\ \ glm::ivec2\ tile\_shape(256,\ 256);}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{size\_t}\ \ \ \ \ halo\ =\ 32;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ shape\ =\ \{1000,\ 581\};}
+\DoxyCodeLine{\ \ tile\_shape\ =\ \{220,\ 312\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ shape\ =\ \{10000,\ 10000\};}}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ tile\_shape\ =\ \{4096,\ 4096\};}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ auto\ mode\ =\ hmap::ForEachMode::VA\_SEQUENTIAL;}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ mode\ =\ \mbox{\hyperlink{namespacehmap_ae383414b46ae8992e621c407f09ce7c5a5356cbfe824240ce4bd458109890b9d5}{hmap::ForEachMode::VA\_DISTRIBUTED}};}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ auto\ mode\ =\ hmap::ForEachMode::VA\_SINGLE\_ARRAY;}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ bool\ trim\_storage\ =\ true;}}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{bool}\ trim\_storage\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ auto\ storage\_mode\ =\ hmap::StorageMode::VA\_RAM;}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ storage\_mode\ =\ \mbox{\hyperlink{namespacehmap_ad21b93a34c88a47d6b54f3a4d5b65e6ea671262171ccce9633cc42db046ea63d4}{hmap::StorageMode::VA\_DISK\_LRU}};}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ auto\ storage\_mode\ =\ hmap::StorageMode::VA\_DISK\_LRU\_MIN;}}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ auto\ storage\_mode\ =\ hmap::StorageMode::VA\_DISK\_SEQUENTIAL;}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{structhmap_1_1ComputeMode}{hmap::ComputeMode}}\ cm\ =\ \{.\mbox{\hyperlink{structhmap_1_1ComputeMode_a88f263de26dea2af6e22e2d4f5f02cab}{mode}}\ =\ mode,\ .trim\_storage\ =\ trim\_storage\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ tex\ =\ \mbox{\hyperlink{classhmap_1_1VirtualTexture}{hmap::VirtualTexture}}(shape,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bbox,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tile\_shape,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ halo,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 3,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ storage\_mode);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ lambda0\ =}
+\DoxyCodeLine{\ \ \ \ \ \ [](std::vector<hmap::Array\ *>\ \&tiles,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structhmap_1_1TileRegion}{hmap::TileRegion}}\ \&region)}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ \&R\ =\ *tiles[0];}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ \&G\ =\ *tiles[1];}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ \&B\ =\ *tiles[2];}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ region.shape.y;\ ++j)}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ region.shape.x;\ ++i)}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ glm::vec2\ pos\ =\ region.cell\_center(i,\ j);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ R(i,\ j)\ =\ pos.x;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ G(i,\ j)\ =\ 0.f;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ B(i,\ j)\ =\ pos.y;}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a1025088e008bb5709c8f88bc025ab1cb}{hmap::for\_each\_tile}}(tex.channels\_ptr(),\ lambda0,\ cm);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ tex.fill(0.5f,\ cm);}}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ tex.fill(3,\ 1.f,\ cm);}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ tex.to\_png(\textcolor{stringliteral}{"{}out0.png"{}},\ cm);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ per\ pixel}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ tex2\ =\ \mbox{\hyperlink{classhmap_1_1VirtualTexture}{hmap::VirtualTexture}}(shape,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bbox,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tile\_shape,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ halo,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 4,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ storage\_mode);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ lambda1\ =}
+\DoxyCodeLine{\ \ \ \ \ \ [](std::vector<float>\ \&px,\ \textcolor{keywordtype}{int}\ i,\ \textcolor{keywordtype}{int}\ j,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structhmap_1_1TileRegion}{hmap::TileRegion}}\ \&region)}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ glm::vec2\ pos\ =\ region.cell\_center(i,\ j);}
+\DoxyCodeLine{\ \ \ \ px[0]\ =\ pos.x;}
+\DoxyCodeLine{\ \ \ \ px[1]\ =\ 0.f;}
+\DoxyCodeLine{\ \ \ \ px[2]\ =\ pos.y;}
+\DoxyCodeLine{\ \ \ \ px[3]\ =\ 1.f;\ \textcolor{comment}{//\ pos.x;}}
+\DoxyCodeLine{\ \ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a6bbca26bba2f2faac320f59df0ae8d8a}{hmap::for\_each\_pixel}}(tex2,\ lambda1,\ cm);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ tex2.to\_png(\textcolor{stringliteral}{"{}out1.png"{}},\ cm);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ colorize}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ level\ =\ \mbox{\hyperlink{structhmap_1_1VirtualArray}{hmap::VirtualArray}}(shape,\ bbox,\ tile\_shape,\ halo,\ storage\_mode);}
+\DoxyCodeLine{\ \ level.remap(0.f,\ 1.f,\ cm);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ tex\_c\ =\ \mbox{\hyperlink{classhmap_1_1VirtualTexture}{hmap::VirtualTexture}}(shape,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bbox,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tile\_shape,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ halo,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 4,\ \textcolor{comment}{//\ 4\ channels\ RGBA}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ storage\_mode);}
+\DoxyCodeLine{\ \ tex\_c.fill(3,\ 1.f,\ cm);\ \textcolor{comment}{//\ set\ alpha\ to\ 1}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ lambda\_noise\ =\ [](\mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ \&tile,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structhmap_1_1TileRegion}{hmap::TileRegion}}\ \&region)}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ tile\ =\ \mbox{\hyperlink{namespacehmap_a03c0be3a7198eebacefcb208b0cfee99}{hmap::noise}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ region.shape,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{2.f,\ 2.f\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ region.bbox);}
+\DoxyCodeLine{\ \ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a1025088e008bb5709c8f88bc025ab1cb}{hmap::for\_each\_tile}}(level,\ lambda\_noise,\ cm);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a33a635351aa13228557a585470ba4563}{hmap::colorize}}(tex\_c,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ level,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cm,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ level.min(cm),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ level.max(cm),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&level);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ tex\_c.to\_png(\textcolor{stringliteral}{"{}out2.png"{}},\ cm);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ mix}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ tex\_m\ =\ \mbox{\hyperlink{classhmap_1_1VirtualTexture}{hmap::VirtualTexture}}(shape,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bbox,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tile\_shape,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ halo,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 4,\ \textcolor{comment}{//\ 4\ channels\ RGBA}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ storage\_mode);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac5229d29466796bb6afcdebe997731a3}{hmap::mix}}(tex\_m,\ tex2,\ tex\_c,\ cm);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ tex\_m.to\_png(\textcolor{stringliteral}{"{}out3.png"{}},\ cm);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}}  \Hypertarget{namespacehmap_abc8fb0970d44a6627145587080c715bb}\label{namespacehmap_abc8fb0970d44a6627145587080c715bb} 
+\index{hmap@{hmap}!colorize@{colorize}}
+\index{colorize@{colorize}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{colorize()}{colorize()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily void hmap\+::colorize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1VirtualTexture}{Virtual\+Texture}} \&}]{out,  }\item[{\mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \&}]{level,  }\item[{const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&}]{cm,  }\item[{float}]{vmin,  }\item[{float}]{vmax,  }\item[{const std\+::vector$<$ float $>$ \&}]{positions,  }\item[{const std\+::vector$<$ std\+::vector$<$ float $>$ $>$ \&}]{colormap\+\_\+colors,  }\item[{\mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+alpha = {\ttfamily nullptr},  }\item[{bool}]{reverse = {\ttfamily false},  }\item[{\mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+
+
+Colorize a scalar field into a texture using a custom colormap. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out} & Output texture. \\
+\hline
+{\em level} & Input scalar values. \\
+\hline
+{\em cm} & Compute mode (CPU/\+GPU). \\
+\hline
+{\em vmin} & Lower bound for normalization. \\
+\hline
+{\em vmax} & Upper bound for normalization. \\
+\hline
+{\em positions} & Normalized color positions. \\
+\hline
+{\em colormap\+\_\+colors} & RGB(\+A) colors per position. \\
+\hline
+{\em p\+\_\+alpha} & Optional alpha channel. \\
+\hline
+{\em reverse} & Reverse colormap mapping. \\
+\hline
+{\em p\+\_\+noise} & Optional noise for dithering.\\
+\hline
+\end{DoxyParams}
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ glm::vec4\ \ bbox(0.f,\ 1.0f,\ 0.f,\ 1.f);\ \textcolor{comment}{//\ x1,x2,y1,y2}}
+\DoxyCodeLine{\ \ glm::ivec2\ shape(1024,\ 1024);}
+\DoxyCodeLine{\ \ glm::ivec2\ tile\_shape(256,\ 256);}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{size\_t}\ \ \ \ \ halo\ =\ 32;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ shape\ =\ \{1000,\ 581\};}
+\DoxyCodeLine{\ \ tile\_shape\ =\ \{220,\ 312\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ shape\ =\ \{10000,\ 10000\};}}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ tile\_shape\ =\ \{4096,\ 4096\};}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ auto\ mode\ =\ hmap::ForEachMode::VA\_SEQUENTIAL;}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ mode\ =\ \mbox{\hyperlink{namespacehmap_ae383414b46ae8992e621c407f09ce7c5a5356cbfe824240ce4bd458109890b9d5}{hmap::ForEachMode::VA\_DISTRIBUTED}};}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ auto\ mode\ =\ hmap::ForEachMode::VA\_SINGLE\_ARRAY;}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ bool\ trim\_storage\ =\ true;}}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{bool}\ trim\_storage\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ auto\ storage\_mode\ =\ hmap::StorageMode::VA\_RAM;}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ storage\_mode\ =\ \mbox{\hyperlink{namespacehmap_ad21b93a34c88a47d6b54f3a4d5b65e6ea671262171ccce9633cc42db046ea63d4}{hmap::StorageMode::VA\_DISK\_LRU}};}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ auto\ storage\_mode\ =\ hmap::StorageMode::VA\_DISK\_LRU\_MIN;}}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ auto\ storage\_mode\ =\ hmap::StorageMode::VA\_DISK\_SEQUENTIAL;}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{structhmap_1_1ComputeMode}{hmap::ComputeMode}}\ cm\ =\ \{.\mbox{\hyperlink{structhmap_1_1ComputeMode_a88f263de26dea2af6e22e2d4f5f02cab}{mode}}\ =\ mode,\ .trim\_storage\ =\ trim\_storage\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ tex\ =\ \mbox{\hyperlink{classhmap_1_1VirtualTexture}{hmap::VirtualTexture}}(shape,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bbox,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tile\_shape,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ halo,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 3,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ storage\_mode);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ lambda0\ =}
+\DoxyCodeLine{\ \ \ \ \ \ [](std::vector<hmap::Array\ *>\ \&tiles,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structhmap_1_1TileRegion}{hmap::TileRegion}}\ \&region)}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ \&R\ =\ *tiles[0];}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ \&G\ =\ *tiles[1];}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ \&B\ =\ *tiles[2];}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ region.shape.y;\ ++j)}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ region.shape.x;\ ++i)}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ glm::vec2\ pos\ =\ region.cell\_center(i,\ j);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ R(i,\ j)\ =\ pos.x;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ G(i,\ j)\ =\ 0.f;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ B(i,\ j)\ =\ pos.y;}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a1025088e008bb5709c8f88bc025ab1cb}{hmap::for\_each\_tile}}(tex.channels\_ptr(),\ lambda0,\ cm);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ tex.fill(0.5f,\ cm);}}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ tex.fill(3,\ 1.f,\ cm);}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ tex.to\_png(\textcolor{stringliteral}{"{}out0.png"{}},\ cm);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ per\ pixel}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ tex2\ =\ \mbox{\hyperlink{classhmap_1_1VirtualTexture}{hmap::VirtualTexture}}(shape,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bbox,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tile\_shape,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ halo,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 4,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ storage\_mode);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ lambda1\ =}
+\DoxyCodeLine{\ \ \ \ \ \ [](std::vector<float>\ \&px,\ \textcolor{keywordtype}{int}\ i,\ \textcolor{keywordtype}{int}\ j,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structhmap_1_1TileRegion}{hmap::TileRegion}}\ \&region)}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ glm::vec2\ pos\ =\ region.cell\_center(i,\ j);}
+\DoxyCodeLine{\ \ \ \ px[0]\ =\ pos.x;}
+\DoxyCodeLine{\ \ \ \ px[1]\ =\ 0.f;}
+\DoxyCodeLine{\ \ \ \ px[2]\ =\ pos.y;}
+\DoxyCodeLine{\ \ \ \ px[3]\ =\ 1.f;\ \textcolor{comment}{//\ pos.x;}}
+\DoxyCodeLine{\ \ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a6bbca26bba2f2faac320f59df0ae8d8a}{hmap::for\_each\_pixel}}(tex2,\ lambda1,\ cm);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ tex2.to\_png(\textcolor{stringliteral}{"{}out1.png"{}},\ cm);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ colorize}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ level\ =\ \mbox{\hyperlink{structhmap_1_1VirtualArray}{hmap::VirtualArray}}(shape,\ bbox,\ tile\_shape,\ halo,\ storage\_mode);}
+\DoxyCodeLine{\ \ level.remap(0.f,\ 1.f,\ cm);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ tex\_c\ =\ \mbox{\hyperlink{classhmap_1_1VirtualTexture}{hmap::VirtualTexture}}(shape,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bbox,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tile\_shape,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ halo,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 4,\ \textcolor{comment}{//\ 4\ channels\ RGBA}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ storage\_mode);}
+\DoxyCodeLine{\ \ tex\_c.fill(3,\ 1.f,\ cm);\ \textcolor{comment}{//\ set\ alpha\ to\ 1}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ lambda\_noise\ =\ [](\mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ \&tile,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structhmap_1_1TileRegion}{hmap::TileRegion}}\ \&region)}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ tile\ =\ \mbox{\hyperlink{namespacehmap_a03c0be3a7198eebacefcb208b0cfee99}{hmap::noise}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ region.shape,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{2.f,\ 2.f\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ region.bbox);}
+\DoxyCodeLine{\ \ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a1025088e008bb5709c8f88bc025ab1cb}{hmap::for\_each\_tile}}(level,\ lambda\_noise,\ cm);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a33a635351aa13228557a585470ba4563}{hmap::colorize}}(tex\_c,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ level,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cm,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ level.min(cm),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ level.max(cm),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&level);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ tex\_c.to\_png(\textcolor{stringliteral}{"{}out2.png"{}},\ cm);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ mix}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ tex\_m\ =\ \mbox{\hyperlink{classhmap_1_1VirtualTexture}{hmap::VirtualTexture}}(shape,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bbox,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tile\_shape,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ halo,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 4,\ \textcolor{comment}{//\ 4\ channels\ RGBA}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ storage\_mode);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac5229d29466796bb6afcdebe997731a3}{hmap::mix}}(tex\_m,\ tex2,\ tex\_c,\ cm);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ tex\_m.to\_png(\textcolor{stringliteral}{"{}out3.png"{}},\ cm);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}}  \Hypertarget{namespacehmap_aa76bdaf8b572bcea0778ef8815965307}\label{namespacehmap_aa76bdaf8b572bcea0778ef8815965307} 
 \index{hmap@{hmap}!colorize\_grayscale@{colorize\_grayscale}}
 \index{colorize\_grayscale@{colorize\_grayscale}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{colorize\_grayscale()}{colorize\_grayscale()}}
@@ -4325,7 +4673,226 @@ This function takes two input arrays and combines them into a single 8-\/bit col
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}  \Hypertarget{namespacehmap_aea4d1a92934de93437705abd7dde6b06}\label{namespacehmap_aea4d1a92934de93437705abd7dde6b06} 
+{\bfseries{Result}}  \Hypertarget{namespacehmap_a051c3f6f1ceda0feaf3c36c97bd7fef9}\label{namespacehmap_a051c3f6f1ceda0feaf3c36c97bd7fef9} 
+\index{hmap@{hmap}!luminance@{luminance}}
+\index{luminance@{luminance}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{luminance()}{luminance()}}
+{\footnotesize\ttfamily void hmap\+::luminance (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \&}]{out,  }\item[{\mbox{\hyperlink{classhmap_1_1VirtualTexture}{Virtual\+Texture}} \&}]{tex,  }\item[{const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&}]{cm }\end{DoxyParamCaption})}
+
+
+
+Compute luminance from a texture. 
+
+Computes a grayscale luminance array from the RGB channels of a virtual texture and stores the result in {\ttfamily out}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em out} & Output luminance array. \\
+\hline
+{\em tex} & Input virtual texture (expects at least 3 channels). \\
+\hline
+{\em cm} & Compute mode (execution and storage behavior). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{namespacehmap_ac5229d29466796bb6afcdebe997731a3}\label{namespacehmap_ac5229d29466796bb6afcdebe997731a3} 
+\index{hmap@{hmap}!mix@{mix}}
+\index{mix@{mix}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{mix()}{mix()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void hmap\+::mix (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1VirtualTexture}{Virtual\+Texture}} \&}]{out,  }\item[{\mbox{\hyperlink{classhmap_1_1VirtualTexture}{Virtual\+Texture}} \&}]{tex1,  }\item[{\mbox{\hyperlink{classhmap_1_1VirtualTexture}{Virtual\+Texture}} \&}]{tex2,  }\item[{const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&}]{cm,  }\item[{bool}]{use\+\_\+sqrt\+\_\+avg = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+Mix two textures into an output texture. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out} & Output texture. \\
+\hline
+{\em tex1} & First input texture. \\
+\hline
+{\em tex2} & Second input texture. \\
+\hline
+{\em cm} & Compute mode (CPU/\+GPU). \\
+\hline
+{\em use\+\_\+sqrt\+\_\+avg} & Use square-\/root averaging.\\
+\hline
+\end{DoxyParams}
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ glm::vec4\ \ bbox(0.f,\ 1.0f,\ 0.f,\ 1.f);\ \textcolor{comment}{//\ x1,x2,y1,y2}}
+\DoxyCodeLine{\ \ glm::ivec2\ shape(1024,\ 1024);}
+\DoxyCodeLine{\ \ glm::ivec2\ tile\_shape(256,\ 256);}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{size\_t}\ \ \ \ \ halo\ =\ 32;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ shape\ =\ \{1000,\ 581\};}
+\DoxyCodeLine{\ \ tile\_shape\ =\ \{220,\ 312\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ shape\ =\ \{10000,\ 10000\};}}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ tile\_shape\ =\ \{4096,\ 4096\};}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ auto\ mode\ =\ hmap::ForEachMode::VA\_SEQUENTIAL;}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ mode\ =\ \mbox{\hyperlink{namespacehmap_ae383414b46ae8992e621c407f09ce7c5a5356cbfe824240ce4bd458109890b9d5}{hmap::ForEachMode::VA\_DISTRIBUTED}};}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ auto\ mode\ =\ hmap::ForEachMode::VA\_SINGLE\_ARRAY;}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ bool\ trim\_storage\ =\ true;}}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{bool}\ trim\_storage\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ auto\ storage\_mode\ =\ hmap::StorageMode::VA\_RAM;}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ storage\_mode\ =\ \mbox{\hyperlink{namespacehmap_ad21b93a34c88a47d6b54f3a4d5b65e6ea671262171ccce9633cc42db046ea63d4}{hmap::StorageMode::VA\_DISK\_LRU}};}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ auto\ storage\_mode\ =\ hmap::StorageMode::VA\_DISK\_LRU\_MIN;}}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ auto\ storage\_mode\ =\ hmap::StorageMode::VA\_DISK\_SEQUENTIAL;}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{structhmap_1_1ComputeMode}{hmap::ComputeMode}}\ cm\ =\ \{.\mbox{\hyperlink{structhmap_1_1ComputeMode_a88f263de26dea2af6e22e2d4f5f02cab}{mode}}\ =\ mode,\ .trim\_storage\ =\ trim\_storage\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ tex\ =\ \mbox{\hyperlink{classhmap_1_1VirtualTexture}{hmap::VirtualTexture}}(shape,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bbox,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tile\_shape,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ halo,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 3,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ storage\_mode);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ lambda0\ =}
+\DoxyCodeLine{\ \ \ \ \ \ [](std::vector<hmap::Array\ *>\ \&tiles,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structhmap_1_1TileRegion}{hmap::TileRegion}}\ \&region)}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ \&R\ =\ *tiles[0];}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ \&G\ =\ *tiles[1];}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ \&B\ =\ *tiles[2];}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ region.shape.y;\ ++j)}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ region.shape.x;\ ++i)}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ glm::vec2\ pos\ =\ region.cell\_center(i,\ j);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ R(i,\ j)\ =\ pos.x;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ G(i,\ j)\ =\ 0.f;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ B(i,\ j)\ =\ pos.y;}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a1025088e008bb5709c8f88bc025ab1cb}{hmap::for\_each\_tile}}(tex.channels\_ptr(),\ lambda0,\ cm);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ tex.fill(0.5f,\ cm);}}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ tex.fill(3,\ 1.f,\ cm);}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ tex.to\_png(\textcolor{stringliteral}{"{}out0.png"{}},\ cm);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ per\ pixel}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ tex2\ =\ \mbox{\hyperlink{classhmap_1_1VirtualTexture}{hmap::VirtualTexture}}(shape,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bbox,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tile\_shape,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ halo,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 4,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ storage\_mode);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ lambda1\ =}
+\DoxyCodeLine{\ \ \ \ \ \ [](std::vector<float>\ \&px,\ \textcolor{keywordtype}{int}\ i,\ \textcolor{keywordtype}{int}\ j,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structhmap_1_1TileRegion}{hmap::TileRegion}}\ \&region)}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ glm::vec2\ pos\ =\ region.cell\_center(i,\ j);}
+\DoxyCodeLine{\ \ \ \ px[0]\ =\ pos.x;}
+\DoxyCodeLine{\ \ \ \ px[1]\ =\ 0.f;}
+\DoxyCodeLine{\ \ \ \ px[2]\ =\ pos.y;}
+\DoxyCodeLine{\ \ \ \ px[3]\ =\ 1.f;\ \textcolor{comment}{//\ pos.x;}}
+\DoxyCodeLine{\ \ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a6bbca26bba2f2faac320f59df0ae8d8a}{hmap::for\_each\_pixel}}(tex2,\ lambda1,\ cm);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ tex2.to\_png(\textcolor{stringliteral}{"{}out1.png"{}},\ cm);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ colorize}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ level\ =\ \mbox{\hyperlink{structhmap_1_1VirtualArray}{hmap::VirtualArray}}(shape,\ bbox,\ tile\_shape,\ halo,\ storage\_mode);}
+\DoxyCodeLine{\ \ level.remap(0.f,\ 1.f,\ cm);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ tex\_c\ =\ \mbox{\hyperlink{classhmap_1_1VirtualTexture}{hmap::VirtualTexture}}(shape,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bbox,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tile\_shape,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ halo,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 4,\ \textcolor{comment}{//\ 4\ channels\ RGBA}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ storage\_mode);}
+\DoxyCodeLine{\ \ tex\_c.fill(3,\ 1.f,\ cm);\ \textcolor{comment}{//\ set\ alpha\ to\ 1}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ lambda\_noise\ =\ [](\mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ \&tile,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structhmap_1_1TileRegion}{hmap::TileRegion}}\ \&region)}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ tile\ =\ \mbox{\hyperlink{namespacehmap_a03c0be3a7198eebacefcb208b0cfee99}{hmap::noise}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ region.shape,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{2.f,\ 2.f\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ region.bbox);}
+\DoxyCodeLine{\ \ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a1025088e008bb5709c8f88bc025ab1cb}{hmap::for\_each\_tile}}(level,\ lambda\_noise,\ cm);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a33a635351aa13228557a585470ba4563}{hmap::colorize}}(tex\_c,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ level,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cm,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ level.min(cm),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ level.max(cm),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&level);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ tex\_c.to\_png(\textcolor{stringliteral}{"{}out2.png"{}},\ cm);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ mix}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ tex\_m\ =\ \mbox{\hyperlink{classhmap_1_1VirtualTexture}{hmap::VirtualTexture}}(shape,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bbox,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tile\_shape,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ halo,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 4,\ \textcolor{comment}{//\ 4\ channels\ RGBA}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ storage\_mode);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac5229d29466796bb6afcdebe997731a3}{hmap::mix}}(tex\_m,\ tex2,\ tex\_c,\ cm);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ tex\_m.to\_png(\textcolor{stringliteral}{"{}out3.png"{}},\ cm);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}}  \Hypertarget{namespacehmap_a663df316bd09bb4072cbfe655e389668}\label{namespacehmap_a663df316bd09bb4072cbfe655e389668} 
+\index{hmap@{hmap}!mix@{mix}}
+\index{mix@{mix}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{mix()}{mix()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void hmap\+::mix (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1VirtualTexture}{Virtual\+Texture}} \&}]{out,  }\item[{std\+::vector$<$ \mbox{\hyperlink{classhmap_1_1VirtualTexture}{Virtual\+Texture}} \texorpdfstring{$\ast$}{*} $>$ \&}]{texs,  }\item[{const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&}]{cm,  }\item[{bool}]{use\+\_\+sqrt\+\_\+avg = {\ttfamily true} }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacehmap_a034df9fe48c4e9a2bead1da021ffd437}\label{namespacehmap_a034df9fe48c4e9a2bead1da021ffd437} 
+\index{hmap@{hmap}!mix\_normal\_map@{mix\_normal\_map}}
+\index{mix\_normal\_map@{mix\_normal\_map}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{mix\_normal\_map()}{mix\_normal\_map()}}
+{\footnotesize\ttfamily void hmap\+::mix\+\_\+normal\+\_\+map (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1VirtualTexture}{Virtual\+Texture}} \&}]{out,  }\item[{\mbox{\hyperlink{classhmap_1_1VirtualTexture}{Virtual\+Texture}} \&}]{nmap\+\_\+base,  }\item[{\mbox{\hyperlink{classhmap_1_1VirtualTexture}{Virtual\+Texture}} \&}]{nmap\+\_\+detail,  }\item[{const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&}]{cm,  }\item[{float}]{detail\+\_\+scaling,  }\item[{\mbox{\hyperlink{namespacehmap_abc952321c99ec11d60b4037e3d27db9b}{Normal\+Map\+Blending\+Method}}}]{blending\+\_\+method }\end{DoxyParamCaption})}
+
+
+
+Blend two normal maps into a single output normal map. 
+
+Combines a base normal map with a detail normal map using the specified blending method and scaling factor.
+
+
+\begin{DoxyParams}{Parameters}
+{\em out} & Output normal map texture. \\
+\hline
+{\em nmap\+\_\+base} & Base normal map texture. \\
+\hline
+{\em nmap\+\_\+detail} & Detail normal map texture. \\
+\hline
+{\em cm} & Compute mode (execution and storage behavior). \\
+\hline
+{\em detail\+\_\+scaling} & Strength of the detail normal map. \\
+\hline
+{\em blending\+\_\+method} & Normal map blending method. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{namespacehmap_aea4d1a92934de93437705abd7dde6b06}\label{namespacehmap_aea4d1a92934de93437705abd7dde6b06} 
 \index{hmap@{hmap}!get\_colormap\_data@{get\_colormap\_data}}
 \index{get\_colormap\_data@{get\_colormap\_data}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{get\_colormap\_data()}{get\_colormap\_data()}}
@@ -9642,8 +10209,8 @@ This overloaded version of the Kuwahara filter allows applying the filter with a
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ad3c6f230996ef2d2313278103b75fbd1}{hmap::kuwahara}}(z1,\ ir);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ \ z2\ =\ z;}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ mix\ =\ 0.25f;}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ad3c6f230996ef2d2313278103b75fbd1}{hmap::kuwahara}}(z2,\ ir,\ mix);}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{namespacehmap_ac5229d29466796bb6afcdebe997731a3}{mix}}\ =\ 0.25f;}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ad3c6f230996ef2d2313278103b75fbd1}{hmap::kuwahara}}(z2,\ ir,\ \mbox{\hyperlink{namespacehmap_ac5229d29466796bb6afcdebe997731a3}{mix}});}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_kuwahara.png"{}},\ \{z,\ z1,\ z2\},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}});}
 \DoxyCodeLine{\}}
@@ -9696,8 +10263,8 @@ If no mask is provided\+:
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ad3c6f230996ef2d2313278103b75fbd1}{hmap::kuwahara}}(z1,\ ir);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ \ z2\ =\ z;}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ mix\ =\ 0.25f;}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ad3c6f230996ef2d2313278103b75fbd1}{hmap::kuwahara}}(z2,\ ir,\ mix);}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{namespacehmap_ac5229d29466796bb6afcdebe997731a3}{mix}}\ =\ 0.25f;}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ad3c6f230996ef2d2313278103b75fbd1}{hmap::kuwahara}}(z2,\ ir,\ \mbox{\hyperlink{namespacehmap_ac5229d29466796bb6afcdebe997731a3}{mix}});}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_kuwahara.png"{}},\ \{z,\ z1,\ z2\},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}});}
 \DoxyCodeLine{\}}
@@ -13381,6 +13948,12 @@ This function combines two separate point clouds into a single cloud by appendin
 \begin{DoxyReturn}{Returns}
 \doxylink{classhmap_1_1Cloud}{Cloud} The resulting point cloud that includes all points from both {\ttfamily cloud1} and {\ttfamily cloud2}. 
 \end{DoxyReturn}
+\Hypertarget{namespacehmap_afc6e9a8850aaebd3cca94aefb3c54114}\label{namespacehmap_afc6e9a8850aaebd3cca94aefb3c54114} 
+\index{hmap@{hmap}!merge\_clouds@{merge\_clouds}}
+\index{merge\_clouds@{merge\_clouds}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{merge\_clouds()}{merge\_clouds()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} hmap\+::merge\+\_\+clouds (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} $>$ \&}]{clouds }\end{DoxyParamCaption})}
+
 \Hypertarget{namespacehmap_aa0bf57ef5e675f0aa851bc8f4b734acd}\label{namespacehmap_aa0bf57ef5e675f0aa851bc8f4b734acd} 
 \index{hmap@{hmap}!random\_cloud@{random\_cloud}}
 \index{random\_cloud@{random\_cloud}!hmap@{hmap}}
@@ -14905,7 +15478,7 @@ Selects the lowest point on the {\ttfamily start} and {\ttfamily end} boundaries
 
 
 \begin{DoxyParams}{Parameters}
-{\em z} & \doxylink{classhmap_1_1Heightmap}{Heightmap} array. \\
+{\em z} & Heightmap array. \\
 \hline
 {\em start} & Boundary where the path begins. \\
 \hline
@@ -15567,10 +16140,10 @@ The area of the triangle as a floating-\/point value. Returns 0 if the points ar
 
 Constructs a 4D bounding box for a unit square. 
 
-This function returns a \doxylink{structhmap_1_1Vec4}{Vec4$<$float$>$} object representing the bounding box of a unit square, with components (min\+\_\+x, max\+\_\+x, min\+\_\+y, max\+\_\+y) set to (0.\+f, 1.\+f, 0.\+f, 1.\+f).
+This function returns a Vec4$<$float$>$ object representing the bounding box of a unit square, with components (min\+\_\+x, max\+\_\+x, min\+\_\+y, max\+\_\+y) set to (0.\+f, 1.\+f, 0.\+f, 1.\+f).
 
 \begin{DoxyReturn}{Returns}
-\doxylink{structhmap_1_1Vec4}{Vec4$<$float$>$} A 4D vector representing the unit square\textquotesingle{}s bounding box. 
+Vec4$<$float$>$ A 4D vector representing the unit square\textquotesingle{}s bounding box. 
 \end{DoxyReturn}
 \Hypertarget{namespacehmap_ae3b069feb998593e6bd1ccdbb41f14eb}\label{namespacehmap_ae3b069feb998593e6bd1ccdbb41f14eb} 
 \index{hmap@{hmap}!bbox\_to\_ranges2d@{bbox\_to\_ranges2d}}
@@ -15582,7 +16155,7 @@ This function returns a \doxylink{structhmap_1_1Vec4}{Vec4$<$float$>$} object re
 
 Converts a 2D bounding box into coordinate ranges. 
 
-This function takes a bounding box defined by four values (xmin, xmax, ymin, ymax) stored in a \doxylink{structhmap_1_1Vec4}{Vec4$<$float$>$} and returns an array of two ranges\+:
+This function takes a bounding box defined by four values (xmin, xmax, ymin, ymax) stored in a Vec4$<$float$>$ and returns an array of two ranges\+:
 \begin{DoxyItemize}
 \item ranges\mbox{[}0\mbox{]} = \{xmin, xmax\}
 \item ranges\mbox{[}1\mbox{]} = \{ymin, ymax\}
@@ -16682,362 +17255,7 @@ A 2D array of unwrapped phase values.
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}  \Hypertarget{namespacehmap_a054b11b366d585ac3d228619d9cb5928}\label{namespacehmap_a054b11b366d585ac3d228619d9cb5928} 
-\index{hmap@{hmap}!mix\_heightmap\_rgba@{mix\_heightmap\_rgba}}
-\index{mix\_heightmap\_rgba@{mix\_heightmap\_rgba}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{mix\_heightmap\_rgba()}{mix\_heightmap\_rgba()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structhmap_1_1HeightmapRGBA}{Heightmap\+RGBA}} hmap\+::mix\+\_\+heightmap\+\_\+rgba (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structhmap_1_1HeightmapRGBA}{Heightmap\+RGBA}} \&}]{rgba1,  }\item[{\mbox{\hyperlink{structhmap_1_1HeightmapRGBA}{Heightmap\+RGBA}} \&}]{rgba2,  }\item[{bool}]{use\+\_\+sqrt\+\_\+avg = {\ttfamily true} }\end{DoxyParamCaption})}
-
-
-\begin{DoxyParams}{Parameters}
-{\em rgba1} & 1st RGBA heightmap. \\
-\hline
-{\em rgba2} & 2st RGBA heightmap. \\
-\hline
-{\em use\+\_\+sqrt\+\_\+avg} & Whether to use or not square averaging. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-RGBA heightmap. 
-\end{DoxyReturn}
-\Hypertarget{namespacehmap_ab5bf9c7f8dd053e585c61c1fdb532b7a}\label{namespacehmap_ab5bf9c7f8dd053e585c61c1fdb532b7a} 
-\index{hmap@{hmap}!mix\_heightmap\_rgba@{mix\_heightmap\_rgba}}
-\index{mix\_heightmap\_rgba@{mix\_heightmap\_rgba}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{mix\_heightmap\_rgba()}{mix\_heightmap\_rgba()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structhmap_1_1HeightmapRGBA}{Heightmap\+RGBA}} hmap\+::mix\+\_\+heightmap\+\_\+rgba (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{structhmap_1_1HeightmapRGBA}{Heightmap\+RGBA}} \texorpdfstring{$\ast$}{*} $>$}]{p\+\_\+rgba\+\_\+list,  }\item[{bool}]{use\+\_\+sqrt\+\_\+avg = {\ttfamily true} }\end{DoxyParamCaption})}
-
-
-\begin{DoxyParams}{Parameters}
-{\em rgba\+\_\+plist} & \doxylink{classhmap_1_1Heightmap}{Heightmap} reference list. \\
-\hline
-{\em use\+\_\+sqrt\+\_\+avg} & Whether to use or not square averaging. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-RGBA heightmap. 
-\end{DoxyReturn}
-\Hypertarget{namespacehmap_a2751ce7799f172484dd06a1b72d168da}\label{namespacehmap_a2751ce7799f172484dd06a1b72d168da} 
-\index{hmap@{hmap}!mix\_normal\_map\_rgba@{mix\_normal\_map\_rgba}}
-\index{mix\_normal\_map\_rgba@{mix\_normal\_map\_rgba}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{mix\_normal\_map\_rgba()}{mix\_normal\_map\_rgba()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structhmap_1_1HeightmapRGBA}{Heightmap\+RGBA}} hmap\+::mix\+\_\+normal\+\_\+map\+\_\+rgba (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structhmap_1_1HeightmapRGBA}{Heightmap\+RGBA}} \&}]{nmap\+\_\+base,  }\item[{\mbox{\hyperlink{structhmap_1_1HeightmapRGBA}{Heightmap\+RGBA}} \&}]{nmap\+\_\+detail,  }\item[{float}]{detail\+\_\+scaling = {\ttfamily 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{\mbox{\hyperlink{namespacehmap_abc952321c99ec11d60b4037e3d27db9b}{Normal\+Map\+Blending\+Method}}}]{blending\+\_\+method = {\ttfamily \mbox{\hyperlink{namespacehmap_abc952321c99ec11d60b4037e3d27db9ba97d5a1740991179c436482de8c1c1f34}{Normal\+Map\+Blending\+Method\+::\+NMAP\+\_\+\+DERIVATIVE}}} }\end{DoxyParamCaption})}
-
-
-
-Mixes two normal maps in RGBA format to create a blended normal map. 
-
-This function blends a base normal map and a detail normal map using a specified blending method. The detail map can be scaled to control the intensity of its effect.
-
-
-\begin{DoxyParams}{Parameters}
-{\em nmap\+\_\+base} & Reference to the base normal map in RGBA format. \\
-\hline
-{\em nmap\+\_\+detail} & Reference to the detail normal map in RGBA format. \\
-\hline
-{\em detail\+\_\+scaling} & Scaling factor for the detail normal map intensity in \mbox{[}-\/1.\+f, 1.\+f\mbox{]}. Default is 1.\+0f. \\
-\hline
-{\em blending\+\_\+method} & Method to blend the two normal maps. Options are specified by the Normal\+Map\+Blending\+Method enum (e.\+g., NMAP\+\_\+\+DERIVATIVE).\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-A Height\+Map\+RGBA object that contains the result of blending the base and detail normal maps.
-\end{DoxyReturn}
-{\bfseries{Example}} 
-\begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
-\DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
-\DoxyCodeLine{\{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{structhmap_1_1Vec2}{hmap::Vec2<int>}}\ shape\ =\ \{256,\ 256\};}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{structhmap_1_1Vec2}{hmap::Vec2<int>}}\ tiling\ =\ \{4,\ 4\};}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ overlap\ =\ 0.25f;}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{structhmap_1_1Vec2}{hmap::Vec2<float>}}\ kw\ =\ \{16.f,\ 16.f\};}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed\ =\ 1;}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ generate\ normal\ maps\ as\ RGBA\ heightmaps}}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ z1\ =\ \mbox{\hyperlink{namespacehmap_a9880bdc35440162c24103a5df4c137a6}{cone}}(shape);}
-\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ z2\ =\ 0.1f\ *\ \mbox{\hyperlink{namespacehmap_a40b948c49a05c14f2d540dc1a6952130}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ kw,\ seed++);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Tensor}{hmap::Tensor}}\ n1\ =\ \mbox{\hyperlink{namespacehmap_aef53e65fc9b8bc74c342367b0034cfa7}{hmap::normal\_map}}(z1);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Tensor}{hmap::Tensor}}\ n2\ =\ \mbox{\hyperlink{namespacehmap_aef53e65fc9b8bc74c342367b0034cfa7}{hmap::normal\_map}}(z2);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ h1\ =\ \mbox{\hyperlink{structhmap_1_1HeightmapRGBA}{hmap::HeightmapRGBA}}(shape,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tiling,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ overlap,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n1.\mbox{\hyperlink{classhmap_1_1Tensor_a59e7ac9122e705d05f6e8b00a26ef738}{get\_slice}}(0),}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n1.\mbox{\hyperlink{classhmap_1_1Tensor_a59e7ac9122e705d05f6e8b00a26ef738}{get\_slice}}(1),}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n1.\mbox{\hyperlink{classhmap_1_1Tensor_a59e7ac9122e705d05f6e8b00a26ef738}{get\_slice}}(2),}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}(shape,\ 1.f));}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ h2\ =\ \mbox{\hyperlink{structhmap_1_1HeightmapRGBA}{hmap::HeightmapRGBA}}(shape,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tiling,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ overlap,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n2.\mbox{\hyperlink{classhmap_1_1Tensor_a59e7ac9122e705d05f6e8b00a26ef738}{get\_slice}}(0),}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n2.\mbox{\hyperlink{classhmap_1_1Tensor_a59e7ac9122e705d05f6e8b00a26ef738}{get\_slice}}(1),}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n2.\mbox{\hyperlink{classhmap_1_1Tensor_a59e7ac9122e705d05f6e8b00a26ef738}{get\_slice}}(2),}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}(shape,\ 1.f));}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ scaling\ =\ 1.f;}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ ha\ =\ \mbox{\hyperlink{namespacehmap_a2751ce7799f172484dd06a1b72d168da}{mix\_normal\_map\_rgba}}(h1,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ h2,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ scaling,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_abc952321c99ec11d60b4037e3d27db9bac248af7dd230247485e3c09a663cedd0}{hmap::NormalMapBlendingMethod::NMAP\_LINEAR}});}
-\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ hb\ =\ \mbox{\hyperlink{namespacehmap_a2751ce7799f172484dd06a1b72d168da}{mix\_normal\_map\_rgba}}(h1,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ h2,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ scaling,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_abc952321c99ec11d60b4037e3d27db9ba97d5a1740991179c436482de8c1c1f34}{hmap::NormalMapBlendingMethod::NMAP\_DERIVATIVE}});}
-\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ hc\ =\ \mbox{\hyperlink{namespacehmap_a2751ce7799f172484dd06a1b72d168da}{mix\_normal\_map\_rgba}}(h1,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ h2,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ scaling,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_abc952321c99ec11d60b4037e3d27db9ba25b053ebbd8db9d348737e6f343c61bf}{hmap::NormalMapBlendingMethod::NMAP\_UDN}});}
-\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ hd\ =\ \mbox{\hyperlink{namespacehmap_a2751ce7799f172484dd06a1b72d168da}{mix\_normal\_map\_rgba}}(h1,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ h2,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ scaling,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_abc952321c99ec11d60b4037e3d27db9ba54fd5928677cd19616ec52d6d59d4c60}{hmap::NormalMapBlendingMethod::NMAP\_UNITY}});}
-\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ he\ =\ \mbox{\hyperlink{namespacehmap_a2751ce7799f172484dd06a1b72d168da}{mix\_normal\_map\_rgba}}(h1,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ h2,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ scaling,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_abc952321c99ec11d60b4037e3d27db9ba6ba5e07d11326f7567d533f169321e37}{hmap::NormalMapBlendingMethod::NMAP\_WHITEOUT}});}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ h1.to\_png(\textcolor{stringliteral}{"{}ex\_mix\_normal\_map\_rgba0.png"{}});}
-\DoxyCodeLine{\ \ h2.to\_png(\textcolor{stringliteral}{"{}ex\_mix\_normal\_map\_rgba1.png"{}});}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ ha.to\_png(\textcolor{stringliteral}{"{}ex\_mix\_normal\_map\_rgba2.png"{}});}
-\DoxyCodeLine{\ \ hb.to\_png(\textcolor{stringliteral}{"{}ex\_mix\_normal\_map\_rgba3.png"{}});}
-\DoxyCodeLine{\ \ hc.to\_png(\textcolor{stringliteral}{"{}ex\_mix\_normal\_map\_rgba4.png"{}});}
-\DoxyCodeLine{\ \ hd.to\_png(\textcolor{stringliteral}{"{}ex\_mix\_normal\_map\_rgba5.png"{}});}
-\DoxyCodeLine{\ \ he.to\_png(\textcolor{stringliteral}{"{}ex\_mix\_normal\_map\_rgba6.png"{}});}
-\DoxyCodeLine{\}}
-
-\end{DoxyCodeInclude}
-
-
-{\bfseries{Result}}        \Hypertarget{namespacehmap_a0c5529e52be9242f4e2587d043ece704}\label{namespacehmap_a0c5529e52be9242f4e2587d043ece704} 
-\index{hmap@{hmap}!fill@{fill}}
-\index{fill@{fill}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{fill()}{fill()}\hspace{0.1cm}{\footnotesize\ttfamily [1/8]}}
-{\footnotesize\ttfamily void hmap\+::fill (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{h,  }\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+x,  }\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+y,  }\item[{std\+::function$<$ \mbox{\hyperlink{classhmap_1_1Array}{Array}}(\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y)$>$}]{nullary\+\_\+op }\end{DoxyParamCaption})}
-
-
-
-Fills the heightmap using the provided noise maps and operation. 
-
-This function fills the heightmap {\ttfamily h} using the noise maps {\ttfamily p\+\_\+noise\+\_\+x} and {\ttfamily p\+\_\+noise\+\_\+y} and the provided {\ttfamily nullary\+\_\+op} function. The {\ttfamily nullary\+\_\+op} function is expected to take a {\ttfamily \doxylink{structhmap_1_1Vec2}{Vec2}\texorpdfstring{$<$}{<}int\texorpdfstring{$>$}{>}} and {\ttfamily \doxylink{structhmap_1_1Vec4}{Vec4}\texorpdfstring{$<$}{<}float\texorpdfstring{$>$}{>}} as input and return an {\ttfamily \doxylink{classhmap_1_1Array}{Array}} using the noise maps.
-
-
-\begin{DoxyParams}{Parameters}
-{\em h} & The heightmap to be filled. \\
-\hline
-{\em p\+\_\+noise\+\_\+x} & Pointer to the noise map for the x-\/axis. \\
-\hline
-{\em p\+\_\+noise\+\_\+y} & Pointer to the noise map for the y-\/axis. \\
-\hline
-{\em nullary\+\_\+op} & The operation to be applied for filling the heightmap.\\
-\hline
-\end{DoxyParams}
-{\bfseries{Example}} 
-\begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
-\DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
-\DoxyCodeLine{\{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{structhmap_1_1Vec2}{hmap::Vec2<int>}}\ \ \ shape\ =\ \{256,\ 256\};}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{structhmap_1_1Vec2}{hmap::Vec2<int>}}\ \ \ tiling\ =\ \{4,\ 2\};}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ overlap\ =\ 0.25;}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{structhmap_1_1Vec2}{hmap::Vec2<float>}}\ kw\ =\ \{4.f,\ 4.f\};}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed\ =\ 1;}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ count\ =\ 0;}
-\DoxyCodeLine{\ \ std::string\ \ \ \ \ \ \ fname;}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Heightmap}{hmap::Heightmap}}\ h\ =\ \mbox{\hyperlink{classhmap_1_1Heightmap}{hmap::Heightmap}}(shape,\ tiling,\ overlap);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a6d8728c019a17094c326f31501ea5482}{hmap::transform}}(}
-\DoxyCodeLine{\ \ \ \ \ \ \{\&h\},}
-\DoxyCodeLine{\ \ \ \ \ \ [kw,\ seed](std::vector<hmap::Array\ *>\ p\_arrays,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structhmap_1_1Vec2}{hmap::Vec2<int>}}\ \ \ \ \ \ \ \ \ \ \ \ shape,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structhmap_1_1Vec4}{hmap::Vec4<float>}}\ \ \ \ \ \ \ \ \ \ bbox)}
-\DoxyCodeLine{\ \ \ \ \ \ \{}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ *pa\_out\ =\ p\_arrays[0];}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ *pa\_out\ =\ \mbox{\hyperlink{namespacehmap_a03c0be3a7198eebacefcb208b0cfee99}{hmap::noise}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ shape,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ kw,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bbox);}
-\DoxyCodeLine{\ \ \ \ \ \ \},}
-\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ab36df744301ada377d4a3f3a34bca77fac40707c2538151422af1c84dfd46252b}{hmap::TransformMode::DISTRIBUTED}});}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ fname\ =\ \textcolor{stringliteral}{"{}ex\_heightmap\_fill"{}}\ +\ std::to\_string(count++)\ +\ \textcolor{stringliteral}{"{}.png"{}};}
-\DoxyCodeLine{\ \ h.\mbox{\hyperlink{classhmap_1_1Heightmap_af954e5baef4bba2faa8ae5b1c16a7720}{to\_array}}().\mbox{\hyperlink{classhmap_1_1Array_a9ff7b2c0be8f2b5dd9fc33085cd647d1}{to\_png}}(fname.c\_str(),\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}});}
-\DoxyCodeLine{\}}
-
-\end{DoxyCodeInclude}
-
-
-{\bfseries{Result}}   \Hypertarget{namespacehmap_a3751517b263e1178a1ab3a2378d77dfa}\label{namespacehmap_a3751517b263e1178a1ab3a2378d77dfa} 
-\index{hmap@{hmap}!fill@{fill}}
-\index{fill@{fill}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{fill()}{fill()}\hspace{0.1cm}{\footnotesize\ttfamily [2/8]}}
-{\footnotesize\ttfamily void hmap\+::fill (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{h,  }\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{hin,  }\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+x,  }\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+y,  }\item[{std\+::function$<$ \mbox{\hyperlink{classhmap_1_1Array}{Array}}(\mbox{\hyperlink{classhmap_1_1Array}{hmap\+::\+Array}} \&, \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$, \mbox{\hyperlink{classhmap_1_1Array}{hmap\+::\+Array}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{classhmap_1_1Array}{hmap\+::\+Array}} \texorpdfstring{$\ast$}{*})$>$}]{nullary\+\_\+op }\end{DoxyParamCaption})}
-
-\Hypertarget{namespacehmap_ad4261372b2cfa77557684f8d15c3ce39}\label{namespacehmap_ad4261372b2cfa77557684f8d15c3ce39} 
-\index{hmap@{hmap}!fill@{fill}}
-\index{fill@{fill}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{fill()}{fill()}\hspace{0.1cm}{\footnotesize\ttfamily [3/8]}}
-{\footnotesize\ttfamily void hmap\+::fill (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{h,  }\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+x,  }\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+y,  }\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+stretching,  }\item[{std\+::function$<$ \mbox{\hyperlink{classhmap_1_1Array}{Array}}(\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$, \mbox{\hyperlink{classhmap_1_1Array}{hmap\+::\+Array}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{classhmap_1_1Array}{hmap\+::\+Array}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{classhmap_1_1Array}{hmap\+::\+Array}} \texorpdfstring{$\ast$}{*})$>$}]{nullary\+\_\+op }\end{DoxyParamCaption})}
-
-\Hypertarget{namespacehmap_afaa31506353c8fe10a751a0cbf992c33}\label{namespacehmap_afaa31506353c8fe10a751a0cbf992c33} 
-\index{hmap@{hmap}!fill@{fill}}
-\index{fill@{fill}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{fill()}{fill()}\hspace{0.1cm}{\footnotesize\ttfamily [4/8]}}
-{\footnotesize\ttfamily void hmap\+::fill (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{h,  }\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise,  }\item[{std\+::function$<$ \mbox{\hyperlink{classhmap_1_1Array}{Array}}(\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise)$>$}]{nullary\+\_\+op }\end{DoxyParamCaption})}
-
-\Hypertarget{namespacehmap_a3e1330c25846f757ce15146d8fba4724}\label{namespacehmap_a3e1330c25846f757ce15146d8fba4724} 
-\index{hmap@{hmap}!fill@{fill}}
-\index{fill@{fill}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{fill()}{fill()}\hspace{0.1cm}{\footnotesize\ttfamily [5/8]}}
-{\footnotesize\ttfamily void hmap\+::fill (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{h,  }\item[{std\+::function$<$ \mbox{\hyperlink{classhmap_1_1Array}{Array}}(\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$)$>$}]{nullary\+\_\+op }\end{DoxyParamCaption})}
-
-\Hypertarget{namespacehmap_a808d4ce63d0da9e4bab0f204991d88b0}\label{namespacehmap_a808d4ce63d0da9e4bab0f204991d88b0} 
-\index{hmap@{hmap}!fill@{fill}}
-\index{fill@{fill}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{fill()}{fill()}\hspace{0.1cm}{\footnotesize\ttfamily [6/8]}}
-{\footnotesize\ttfamily void hmap\+::fill (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{h,  }\item[{std\+::function$<$ \mbox{\hyperlink{classhmap_1_1Array}{Array}}(\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$)$>$}]{nullary\+\_\+op }\end{DoxyParamCaption})}
-
-\Hypertarget{namespacehmap_a6d8728c019a17094c326f31501ea5482}\label{namespacehmap_a6d8728c019a17094c326f31501ea5482} 
-\index{hmap@{hmap}!transform@{transform}}
-\index{transform@{transform}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{transform()}{transform()}\hspace{0.1cm}{\footnotesize\ttfamily [1/19]}}
-{\footnotesize\ttfamily void hmap\+::transform (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{h,  }\item[{std\+::function$<$ void(\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&)$>$}]{unary\+\_\+op }\end{DoxyParamCaption})}
-
-\Hypertarget{namespacehmap_afd9639dca483f8e95f83f58e7171c8ad}\label{namespacehmap_afd9639dca483f8e95f83f58e7171c8ad} 
-\index{hmap@{hmap}!transform@{transform}}
-\index{transform@{transform}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{transform()}{transform()}\hspace{0.1cm}{\footnotesize\ttfamily [2/19]}}
-{\footnotesize\ttfamily void hmap\+::transform (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{h,  }\item[{std\+::function$<$ void(\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$)$>$}]{unary\+\_\+op }\end{DoxyParamCaption})}
-
-\Hypertarget{namespacehmap_a0c9955183689e50bb323cb74e14d47ee}\label{namespacehmap_a0c9955183689e50bb323cb74e14d47ee} 
-\index{hmap@{hmap}!transform@{transform}}
-\index{transform@{transform}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{transform()}{transform()}\hspace{0.1cm}{\footnotesize\ttfamily [3/19]}}
-{\footnotesize\ttfamily void hmap\+::transform (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{h,  }\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+x,  }\item[{std\+::function$<$ void(\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*})$>$}]{unary\+\_\+op }\end{DoxyParamCaption})}
-
-\Hypertarget{namespacehmap_a8097627251f8fca6407bf397bbdb2eeb}\label{namespacehmap_a8097627251f8fca6407bf397bbdb2eeb} 
-\index{hmap@{hmap}!transform@{transform}}
-\index{transform@{transform}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{transform()}{transform()}\hspace{0.1cm}{\footnotesize\ttfamily [4/19]}}
-{\footnotesize\ttfamily void hmap\+::transform (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{h,  }\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+x,  }\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+y,  }\item[{std\+::function$<$ void(\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*})$>$}]{unary\+\_\+op }\end{DoxyParamCaption})}
-
-\Hypertarget{namespacehmap_a7834b788b003e00411db069fe53dd8da}\label{namespacehmap_a7834b788b003e00411db069fe53dd8da} 
-\index{hmap@{hmap}!transform@{transform}}
-\index{transform@{transform}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{transform()}{transform()}\hspace{0.1cm}{\footnotesize\ttfamily [5/19]}}
-{\footnotesize\ttfamily void hmap\+::transform (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{h,  }\item[{std\+::function$<$ void(\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&, \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ float $>$, \mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ float $>$)$>$}]{unary\+\_\+op }\end{DoxyParamCaption})}
-
-\Hypertarget{namespacehmap_a3124c0500ac67c3c6bafc77c6486d7a1}\label{namespacehmap_a3124c0500ac67c3c6bafc77c6486d7a1} 
-\index{hmap@{hmap}!transform@{transform}}
-\index{transform@{transform}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{transform()}{transform()}\hspace{0.1cm}{\footnotesize\ttfamily [6/19]}}
-{\footnotesize\ttfamily void hmap\+::transform (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{h,  }\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+mask,  }\item[{std\+::function$<$ void(\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*})$>$}]{unary\+\_\+op }\end{DoxyParamCaption})}
-
-\Hypertarget{namespacehmap_aed492e4ecec2a21b7525e06760c99e48}\label{namespacehmap_aed492e4ecec2a21b7525e06760c99e48} 
-\index{hmap@{hmap}!transform@{transform}}
-\index{transform@{transform}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{transform()}{transform()}\hspace{0.1cm}{\footnotesize\ttfamily [7/19]}}
-{\footnotesize\ttfamily void hmap\+::transform (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{h,  }\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{hmap\+::\+Heightmap}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+1,  }\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{hmap\+::\+Heightmap}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+2,  }\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{hmap\+::\+Heightmap}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+3,  }\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{hmap\+::\+Heightmap}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+4,  }\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{hmap\+::\+Heightmap}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+5,  }\item[{std\+::function$<$ void(\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*})$>$}]{unary\+\_\+op }\end{DoxyParamCaption})}
-
-\Hypertarget{namespacehmap_aa7a794c92aebf181390461a3d8f85721}\label{namespacehmap_aa7a794c92aebf181390461a3d8f85721} 
-\index{hmap@{hmap}!transform@{transform}}
-\index{transform@{transform}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{transform()}{transform()}\hspace{0.1cm}{\footnotesize\ttfamily [8/19]}}
-{\footnotesize\ttfamily void hmap\+::transform (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{h,  }\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{hmap\+::\+Heightmap}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+1,  }\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{hmap\+::\+Heightmap}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+2,  }\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{hmap\+::\+Heightmap}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+3,  }\item[{std\+::function$<$ void(\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*})$>$}]{unary\+\_\+op }\end{DoxyParamCaption})}
-
-\Hypertarget{namespacehmap_a8189a2f0b773b7883777e6601f247634}\label{namespacehmap_a8189a2f0b773b7883777e6601f247634} 
-\index{hmap@{hmap}!transform@{transform}}
-\index{transform@{transform}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{transform()}{transform()}\hspace{0.1cm}{\footnotesize\ttfamily [9/19]}}
-{\footnotesize\ttfamily void hmap\+::transform (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{h,  }\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{hmap\+::\+Heightmap}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+1,  }\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{hmap\+::\+Heightmap}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+2,  }\item[{std\+::function$<$ void(\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*})$>$}]{unary\+\_\+op }\end{DoxyParamCaption})}
-
-\Hypertarget{namespacehmap_a02f88b129d0c61ec241c54333a617109}\label{namespacehmap_a02f88b129d0c61ec241c54333a617109} 
-\index{hmap@{hmap}!transform@{transform}}
-\index{transform@{transform}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{transform()}{transform()}\hspace{0.1cm}{\footnotesize\ttfamily [10/19]}}
-{\footnotesize\ttfamily void hmap\+::transform (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{h1,  }\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{h2,  }\item[{std\+::function$<$ void(\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&)$>$}]{binary\+\_\+op }\end{DoxyParamCaption})}
-
-\Hypertarget{namespacehmap_a59b8719b8ab27bf954ebaa961e25c2e7}\label{namespacehmap_a59b8719b8ab27bf954ebaa961e25c2e7} 
-\index{hmap@{hmap}!transform@{transform}}
-\index{transform@{transform}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{transform()}{transform()}\hspace{0.1cm}{\footnotesize\ttfamily [11/19]}}
-{\footnotesize\ttfamily void hmap\+::transform (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{h1,  }\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{h2,  }\item[{std\+::function$<$ void(\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$)$>$}]{binary\+\_\+op }\end{DoxyParamCaption})}
-
-\Hypertarget{namespacehmap_a32d77f6607e40ad1429906e5e9e08e17}\label{namespacehmap_a32d77f6607e40ad1429906e5e9e08e17} 
-\index{hmap@{hmap}!transform@{transform}}
-\index{transform@{transform}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{transform()}{transform()}\hspace{0.1cm}{\footnotesize\ttfamily [12/19]}}
-{\footnotesize\ttfamily void hmap\+::transform (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{h1,  }\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{h2,  }\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{h3,  }\item[{std\+::function$<$ void(\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&)$>$}]{ternary\+\_\+op }\end{DoxyParamCaption})}
-
-\Hypertarget{namespacehmap_a9ee71d4c48644e9f0e29601eb0636b07}\label{namespacehmap_a9ee71d4c48644e9f0e29601eb0636b07} 
-\index{hmap@{hmap}!transform@{transform}}
-\index{transform@{transform}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{transform()}{transform()}\hspace{0.1cm}{\footnotesize\ttfamily [13/19]}}
-{\footnotesize\ttfamily void hmap\+::transform (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{h1,  }\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{h2,  }\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{h3,  }\item[{std\+::function$<$ void(\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$)$>$}]{ternary\+\_\+op }\end{DoxyParamCaption})}
-
-\Hypertarget{namespacehmap_a23b3861a8be80a910c10401284fe9e59}\label{namespacehmap_a23b3861a8be80a910c10401284fe9e59} 
-\index{hmap@{hmap}!transform@{transform}}
-\index{transform@{transform}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{transform()}{transform()}\hspace{0.1cm}{\footnotesize\ttfamily [14/19]}}
-{\footnotesize\ttfamily void hmap\+::transform (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{h\+\_\+out,  }\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{h1,  }\item[{std\+::function$<$ \mbox{\hyperlink{classhmap_1_1Array}{Array}}(\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&)$>$}]{unary\+\_\+op }\end{DoxyParamCaption})}
-
-\Hypertarget{namespacehmap_a529a8a23044dcdd9ed0fb7f0e628d4c7}\label{namespacehmap_a529a8a23044dcdd9ed0fb7f0e628d4c7} 
-\index{hmap@{hmap}!transform@{transform}}
-\index{transform@{transform}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{transform()}{transform()}\hspace{0.1cm}{\footnotesize\ttfamily [15/19]}}
-{\footnotesize\ttfamily void hmap\+::transform (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{h\+\_\+out,  }\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{h1,  }\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{h2,  }\item[{std\+::function$<$ \mbox{\hyperlink{classhmap_1_1Array}{Array}}(\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&)$>$}]{binary\+\_\+op }\end{DoxyParamCaption})}
-
-\Hypertarget{namespacehmap_a31d9bb3f85a02d60bd03e8bb6ef4f4f4}\label{namespacehmap_a31d9bb3f85a02d60bd03e8bb6ef4f4f4} 
-\index{hmap@{hmap}!transform@{transform}}
-\index{transform@{transform}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{transform()}{transform()}\hspace{0.1cm}{\footnotesize\ttfamily [16/19]}}
-{\footnotesize\ttfamily void hmap\+::transform (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{h1,  }\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{h2,  }\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{h3,  }\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{h4,  }\item[{std\+::function$<$ void(\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&)$>$}]{ternary\+\_\+op }\end{DoxyParamCaption})}
-
-\Hypertarget{namespacehmap_aa6f9b7363268c106d5154d7370053c35}\label{namespacehmap_aa6f9b7363268c106d5154d7370053c35} 
-\index{hmap@{hmap}!transform@{transform}}
-\index{transform@{transform}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{transform()}{transform()}\hspace{0.1cm}{\footnotesize\ttfamily [17/19]}}
-{\footnotesize\ttfamily void hmap\+::transform (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{h1,  }\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{h2,  }\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{h3,  }\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{h4,  }\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{h5,  }\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{h6,  }\item[{std\+::function$<$ void(\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&)$>$}]{op }\end{DoxyParamCaption})}
-
-\Hypertarget{namespacehmap_a086b4d007e08e88d2fc1166e67c524ee}\label{namespacehmap_a086b4d007e08e88d2fc1166e67c524ee} 
-\index{hmap@{hmap}!transform@{transform}}
-\index{transform@{transform}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{transform()}{transform()}\hspace{0.1cm}{\footnotesize\ttfamily [18/19]}}
-{\footnotesize\ttfamily void hmap\+::transform (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \texorpdfstring{$\ast$}{*} $>$}]{p\+\_\+hmaps,  }\item[{std\+::function$<$ void(const std\+::vector$<$ \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*} $>$, const \mbox{\hyperlink{structhmap_1_1Vec2}{hmap\+::\+Vec2}}$<$ int $>$, const \mbox{\hyperlink{structhmap_1_1Vec4}{hmap\+::\+Vec4}}$<$ float $>$)$>$}]{op,  }\item[{\mbox{\hyperlink{namespacehmap_ab36df744301ada377d4a3f3a34bca77f}{Transform\+Mode}}}]{transform\+\_\+mode = {\ttfamily \mbox{\hyperlink{namespacehmap_ab36df744301ada377d4a3f3a34bca77fac40707c2538151422af1c84dfd46252b}{Transform\+Mode\+::\+DISTRIBUTED}}} }\end{DoxyParamCaption})}
-
-
-
-Applies a transformation operation to a collection of heightmaps. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em p\+\_\+hmaps} & A vector of pointers to \doxylink{classhmap_1_1Heightmap}{Heightmap} objects to be transformed. \\
-\hline
-{\em op} & A function that defines the transformation operation. It takes a vector of \doxylink{classhmap_1_1Array}{Array} pointers, a \doxylink{structhmap_1_1Vec2}{Vec2$<$int$>$} representing dimensions, and a \doxylink{structhmap_1_1Vec4}{Vec4$<$float$>$} representing transformation parameters. \\
-\hline
-{\em transform\+\_\+mode} & The mode of transformation to be applied. Default is \doxylink{namespacehmap_ab36df744301ada377d4a3f3a34bca77fac40707c2538151422af1c84dfd46252b}{Transform\+Mode\+::\+DISTRIBUTED}. \\
-\hline
-\end{DoxyParams}
-\Hypertarget{namespacehmap_a3438427cf944820ce19e7ca9ce438985}\label{namespacehmap_a3438427cf944820ce19e7ca9ce438985} 
-\index{hmap@{hmap}!transform@{transform}}
-\index{transform@{transform}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{transform()}{transform()}\hspace{0.1cm}{\footnotesize\ttfamily [19/19]}}
-{\footnotesize\ttfamily void hmap\+::transform (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \texorpdfstring{$\ast$}{*} $>$}]{p\+\_\+hmaps,  }\item[{std\+::function$<$ void(const std\+::vector$<$ \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*} $>$)$>$}]{op,  }\item[{\mbox{\hyperlink{namespacehmap_ab36df744301ada377d4a3f3a34bca77f}{Transform\+Mode}}}]{transform\+\_\+mode = {\ttfamily \mbox{\hyperlink{namespacehmap_ab36df744301ada377d4a3f3a34bca77fac40707c2538151422af1c84dfd46252b}{Transform\+Mode\+::\+DISTRIBUTED}}} }\end{DoxyParamCaption})}
-
-\Hypertarget{namespacehmap_a8284b00f1f460f1d5a406ee45587dcd9}\label{namespacehmap_a8284b00f1f460f1d5a406ee45587dcd9} 
+{\bfseries{Result}}  \Hypertarget{namespacehmap_a8284b00f1f460f1d5a406ee45587dcd9}\label{namespacehmap_a8284b00f1f460f1d5a406ee45587dcd9} 
 \index{hmap@{hmap}!basin\_id@{basin\_id}}
 \index{basin\_id@{basin\_id}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{basin\_id()}{basin\_id()}}
@@ -18165,6 +18383,32 @@ An \doxylink{classhmap_1_1Array}{Array} representing the normalized water extens
 \begin{Desc}
 \item[Examples]\par
 \mbox{\hyperlink{_2home_2runner_2work_2HighMap_2HighMap_2HighMap_2include_2highmap_2internal_2string_utils_8hpp-example}{/home/runner/work/\+High\+Map/\+High\+Map/\+High\+Map/include/highmap/internal/string\+\_\+utils.\+hpp}}.\end{Desc}
+\Hypertarget{namespacehmap_a0a506d871b395e49e6175499dfa1e903}\label{namespacehmap_a0a506d871b395e49e6175499dfa1e903} 
+\index{hmap@{hmap}!make\_unique\_temp\_dir@{make\_unique\_temp\_dir}}
+\index{make\_unique\_temp\_dir@{make\_unique\_temp\_dir}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{make\_unique\_temp\_dir()}{make\_unique\_temp\_dir()}}
+{\footnotesize\ttfamily std\+::filesystem\+::path hmap\+::make\+\_\+unique\+\_\+temp\+\_\+dir (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{prefix }\end{DoxyParamCaption})}
+
+
+
+Create a unique temporary directory. 
+
+Creates and returns a unique directory inside the system temporary directory using the given prefix.
+
+
+\begin{DoxyParams}{Parameters}
+{\em prefix} & Directory name prefix. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classhmap_1_1Path}{Path} to the created temporary directory.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+The caller is responsible for deleting the directory. 
+\end{DoxyNote}
+\begin{Desc}
+\item[Examples]\par
+\mbox{\hyperlink{_2home_2runner_2work_2HighMap_2HighMap_2HighMap_2include_2highmap_2internal_2string_utils_8hpp-example}{/home/runner/work/\+High\+Map/\+High\+Map/\+High\+Map/include/highmap/internal/string\+\_\+utils.\+hpp}}.\end{Desc}
 \Hypertarget{namespacehmap_a3f38b7faedc76835a0a902eb48e3d94b}\label{namespacehmap_a3f38b7faedc76835a0a902eb48e3d94b} 
 \index{hmap@{hmap}!zfill@{zfill}}
 \index{zfill@{zfill}!hmap@{hmap}}
@@ -18395,24 +18639,6 @@ This function performs 2D interpolation by generating a Delaunay triangulation o
 \begin{DoxyReturn}{Returns}
 \doxylink{classhmap_1_1Array}{Array} Output array with interpolated values. 
 \end{DoxyReturn}
-\Hypertarget{namespacehmap_a0039057c9e4adf1498fa0a91b94d7fb8}\label{namespacehmap_a0039057c9e4adf1498fa0a91b94d7fb8} 
-\index{hmap@{hmap}!flatten\_heightmap@{flatten\_heightmap}}
-\index{flatten\_heightmap@{flatten\_heightmap}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{flatten\_heightmap()}{flatten\_heightmap()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
-{\footnotesize\ttfamily void hmap\+::flatten\+\_\+heightmap (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{h\+\_\+source1,  }\item[{const \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{h\+\_\+source2,  }\item[{const \mbox{\hyperlink{classhmap_1_1CoordFrame}{Coord\+Frame}} \&}]{t\+\_\+source1,  }\item[{const \mbox{\hyperlink{classhmap_1_1CoordFrame}{Coord\+Frame}} \&}]{t\+\_\+source2 }\end{DoxyParamCaption})}
-
-\Hypertarget{namespacehmap_a2ecd308a993a3d85640aea025e02f3b1}\label{namespacehmap_a2ecd308a993a3d85640aea025e02f3b1} 
-\index{hmap@{hmap}!flatten\_heightmap@{flatten\_heightmap}}
-\index{flatten\_heightmap@{flatten\_heightmap}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{flatten\_heightmap()}{flatten\_heightmap()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
-{\footnotesize\ttfamily void hmap\+::flatten\+\_\+heightmap (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{h\+\_\+source1,  }\item[{const \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{h\+\_\+source2,  }\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{hmap\+::\+Heightmap}} \&}]{h\+\_\+target,  }\item[{const \mbox{\hyperlink{classhmap_1_1CoordFrame}{Coord\+Frame}} \&}]{t\+\_\+source1,  }\item[{const \mbox{\hyperlink{classhmap_1_1CoordFrame}{Coord\+Frame}} \&}]{t\+\_\+source2,  }\item[{const \mbox{\hyperlink{classhmap_1_1CoordFrame}{Coord\+Frame}} \&}]{t\+\_\+target }\end{DoxyParamCaption})}
-
-\Hypertarget{namespacehmap_a17f8f7249f91ef9bbcc0b1b5e38e20f3}\label{namespacehmap_a17f8f7249f91ef9bbcc0b1b5e38e20f3} 
-\index{hmap@{hmap}!flatten\_heightmap@{flatten\_heightmap}}
-\index{flatten\_heightmap@{flatten\_heightmap}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{flatten\_heightmap()}{flatten\_heightmap()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
-{\footnotesize\ttfamily void hmap\+::flatten\+\_\+heightmap (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ const \mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \texorpdfstring{$\ast$}{*} $>$ \&}]{h\+\_\+sources,  }\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{h\+\_\+target,  }\item[{const std\+::vector$<$ const \mbox{\hyperlink{classhmap_1_1CoordFrame}{Coord\+Frame}} \texorpdfstring{$\ast$}{*} $>$ \&}]{t\+\_\+sources,  }\item[{const \mbox{\hyperlink{classhmap_1_1CoordFrame}{Coord\+Frame}} \&}]{t\+\_\+target }\end{DoxyParamCaption})}
-
 \Hypertarget{namespacehmap_a9e8b724d238450ef72e9bd083acb9b8a}\label{namespacehmap_a9e8b724d238450ef72e9bd083acb9b8a} 
 \index{hmap@{hmap}!interpolate\_array\_bicubic@{interpolate\_array\_bicubic}}
 \index{interpolate\_array\_bicubic@{interpolate\_array\_bicubic}!hmap@{hmap}}
@@ -18449,11 +18675,23 @@ This function performs 2D interpolation by generating a Delaunay triangulation o
 \doxysubsubsection{\texorpdfstring{interpolate\_array\_nearest()}{interpolate\_array\_nearest()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily void hmap\+::interpolate\+\_\+array\+\_\+nearest (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{source,  }\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{target,  }\item[{const \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ \&}]{bbox\+\_\+source,  }\item[{const \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$ \&}]{bbox\+\_\+target,  }\item[{bool}]{endpoint = {\ttfamily false} }\end{DoxyParamCaption})}
 
-\Hypertarget{namespacehmap_a14135f92a275f8857aac1bc9480e426f}\label{namespacehmap_a14135f92a275f8857aac1bc9480e426f} 
+\Hypertarget{namespacehmap_ace2076a7808458f99aeaeec2bc404d6b}\label{namespacehmap_ace2076a7808458f99aeaeec2bc404d6b} 
+\index{hmap@{hmap}!flatten\_heightmap@{flatten\_heightmap}}
+\index{flatten\_heightmap@{flatten\_heightmap}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{flatten\_heightmap()}{flatten\_heightmap()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void hmap\+::flatten\+\_\+heightmap (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \&}]{h\+\_\+source1,  }\item[{const \mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \&}]{h\+\_\+source2,  }\item[{const \mbox{\hyperlink{classhmap_1_1CoordFrame}{Coord\+Frame}} \&}]{t\+\_\+source1,  }\item[{const \mbox{\hyperlink{classhmap_1_1CoordFrame}{Coord\+Frame}} \&}]{t\+\_\+source2,  }\item[{const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&}]{cm }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacehmap_a3dadec4e8aa2c67598a0e158756308c8}\label{namespacehmap_a3dadec4e8aa2c67598a0e158756308c8} 
+\index{hmap@{hmap}!flatten\_heightmap@{flatten\_heightmap}}
+\index{flatten\_heightmap@{flatten\_heightmap}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{flatten\_heightmap()}{flatten\_heightmap()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void hmap\+::flatten\+\_\+heightmap (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ const \mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \texorpdfstring{$\ast$}{*} $>$ \&}]{h\+\_\+sources,  }\item[{\mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \&}]{h\+\_\+target,  }\item[{const std\+::vector$<$ const \mbox{\hyperlink{classhmap_1_1CoordFrame}{Coord\+Frame}} \texorpdfstring{$\ast$}{*} $>$ \&}]{t\+\_\+sources,  }\item[{const \mbox{\hyperlink{classhmap_1_1CoordFrame}{Coord\+Frame}} \&}]{t\+\_\+target,  }\item[{const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&}]{cm }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacehmap_aab05ca060b3dd80724ff669864c0f4d2}\label{namespacehmap_aab05ca060b3dd80724ff669864c0f4d2} 
 \index{hmap@{hmap}!interpolate\_heightmap@{interpolate\_heightmap}}
 \index{interpolate\_heightmap@{interpolate\_heightmap}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{interpolate\_heightmap()}{interpolate\_heightmap()}}
-{\footnotesize\ttfamily void hmap\+::interpolate\+\_\+heightmap (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Heightmap}{hmap\+::\+Heightmap}} \&}]{h\+\_\+source,  }\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{hmap\+::\+Heightmap}} \&}]{h\+\_\+target,  }\item[{const \mbox{\hyperlink{classhmap_1_1CoordFrame}{Coord\+Frame}} \&}]{t\+\_\+source,  }\item[{const \mbox{\hyperlink{classhmap_1_1CoordFrame}{Coord\+Frame}} \&}]{t\+\_\+target }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void hmap\+::interpolate\+\_\+heightmap (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \&}]{h\+\_\+source,  }\item[{\mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \&}]{h\+\_\+target,  }\item[{const \mbox{\hyperlink{classhmap_1_1CoordFrame}{Coord\+Frame}} \&}]{t\+\_\+source,  }\item[{const \mbox{\hyperlink{classhmap_1_1CoordFrame}{Coord\+Frame}} \&}]{t\+\_\+target,  }\item[{const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&}]{cm }\end{DoxyParamCaption})}
 
 \Hypertarget{namespacehmap_a4ad7940c796973a615558a8dc773281c}\label{namespacehmap_a4ad7940c796973a615558a8dc773281c} 
 \index{hmap@{hmap}!get\_kernel@{get\_kernel}}
@@ -25855,7 +26093,7 @@ Based on the paper of Molinero et al. {\bfseries [Molinero2020]}.
 \hline
 {\em bbox} & Bounding box. \\
 \hline
-{\em z} & \doxylink{classhmap_1_1Heightmap}{Heightmap}. \\
+{\em z} & Heightmap. \\
 \hline
 {\em seed} & Random seed number. \\
 \hline
@@ -28497,19 +28735,49 @@ A new 2D array that is the result of applying the zoom effect to the input {\ttf
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}  \Hypertarget{namespacehmap_aae8f6a3d45b6f43c1d3534ef08355598}\label{namespacehmap_aae8f6a3d45b6f43c1d3534ef08355598} 
-\index{hmap@{hmap}!for\_each\_tile\_sequential@{for\_each\_tile\_sequential}}
-\index{for\_each\_tile\_sequential@{for\_each\_tile\_sequential}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{for\_each\_tile\_sequential()}{for\_each\_tile\_sequential()}}
-{\footnotesize\ttfamily template$<$typename Func $>$ \\
-void hmap\+::for\+\_\+each\+\_\+tile\+\_\+sequential (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \&}]{va,  }\item[{Func \&\&}]{func }\end{DoxyParamCaption})}
+{\bfseries{Result}}  \Hypertarget{namespacehmap_a253c7aaa3976c17e0aae21b7b3f6cc9e}\label{namespacehmap_a253c7aaa3976c17e0aae21b7b3f6cc9e} 
+\index{hmap@{hmap}!to\_string@{to\_string}}
+\index{to\_string@{to\_string}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{to\_string()}{to\_string()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::string hmap\+::to\+\_\+string (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacehmap_ad21b93a34c88a47d6b54f3a4d5b65e6e}{Storage\+Mode}}}]{m }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-\Hypertarget{namespacehmap_a99ff01a3a6bc3608247f0be2a1d38871}\label{namespacehmap_a99ff01a3a6bc3608247f0be2a1d38871} 
-\index{hmap@{hmap}!for\_each\_tile\_distributed@{for\_each\_tile\_distributed}}
-\index{for\_each\_tile\_distributed@{for\_each\_tile\_distributed}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{for\_each\_tile\_distributed()}{for\_each\_tile\_distributed()}}
+\Hypertarget{namespacehmap_a43075b5f93cea5525adb69b8d6990683}\label{namespacehmap_a43075b5f93cea5525adb69b8d6990683} 
+\index{hmap@{hmap}!make\_storage@{make\_storage}}
+\index{make\_storage@{make\_storage}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{make\_storage()}{make\_storage()}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmap_1_1TileStorage}{Tile\+Storage}} $>$ hmap\+::make\+\_\+storage (\begin{DoxyParamCaption}\item[{glm\+::ivec2}]{shape,  }\item[{glm\+::ivec2}]{tile\+\_\+shape,  }\item[{\mbox{\hyperlink{namespacehmap_ad21b93a34c88a47d6b54f3a4d5b65e6e}{Storage\+Mode}}}]{storage\+\_\+mode }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacehmap_af8dc7ce1ae44750316d846345854c408}\label{namespacehmap_af8dc7ce1ae44750316d846345854c408} 
+\index{hmap@{hmap}!to\_string@{to\_string}}
+\index{to\_string@{to\_string}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{to\_string()}{to\_string()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::string hmap\+::to\+\_\+string (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacehmap_ae383414b46ae8992e621c407f09ce7c5}{For\+Each\+Mode}}}]{m }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{namespacehmap_a4216f86be919aeb4a2cb6aab44609a71}\label{namespacehmap_a4216f86be919aeb4a2cb6aab44609a71} 
+\index{hmap@{hmap}!copy\_data@{copy\_data}}
+\index{copy\_data@{copy\_data}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{copy\_data()}{copy\_data()}}
+{\footnotesize\ttfamily void hmap\+::copy\+\_\+data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \&}]{src,  }\item[{\mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \&}]{dst,  }\item[{const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&}]{cm }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacehmap_af66b37de86e8de6261ab902110b118a0}\label{namespacehmap_af66b37de86e8de6261ab902110b118a0} 
+\index{hmap@{hmap}!convert\_texture\_channels@{convert\_texture\_channels}}
+\index{convert\_texture\_channels@{convert\_texture\_channels}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{convert\_texture\_channels()}{convert\_texture\_channels()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1VirtualTexture}{Virtual\+Texture}} hmap\+::convert\+\_\+texture\+\_\+channels (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1VirtualTexture}{Virtual\+Texture}} \&}]{src,  }\item[{int}]{dst\+\_\+channels,  }\item[{float}]{fill\+\_\+value,  }\item[{const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&}]{cm }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacehmap_a1025088e008bb5709c8f88bc025ab1cb}\label{namespacehmap_a1025088e008bb5709c8f88bc025ab1cb} 
+\index{hmap@{hmap}!for\_each\_tile@{for\_each\_tile}}
+\index{for\_each\_tile@{for\_each\_tile}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{for\_each\_tile()}{for\_each\_tile()}}
 {\footnotesize\ttfamily template$<$typename Func $>$ \\
-void hmap\+::for\+\_\+each\+\_\+tile\+\_\+distributed (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \&}]{va,  }\item[{Func \&\&}]{func }\end{DoxyParamCaption})}
+void hmap\+::for\+\_\+each\+\_\+tile (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1VirtualTexture}{Virtual\+Texture}} \&}]{tex,  }\item[{Func \&\&}]{func,  }\item[{const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&}]{cm }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacehmap_a6bbca26bba2f2faac320f59df0ae8d8a}\label{namespacehmap_a6bbca26bba2f2faac320f59df0ae8d8a} 
+\index{hmap@{hmap}!for\_each\_pixel@{for\_each\_pixel}}
+\index{for\_each\_pixel@{for\_each\_pixel}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{for\_each\_pixel()}{for\_each\_pixel()}}
+{\footnotesize\ttfamily template$<$typename Func $>$ \\
+void hmap\+::for\+\_\+each\+\_\+pixel (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1VirtualTexture}{Virtual\+Texture}} \&}]{tex,  }\item[{Func \&\&}]{func,  }\item[{const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&}]{cm }\end{DoxyParamCaption})}
 
 \Hypertarget{namespacehmap_aac1a15042e8fae93d9caed60c2318fcc}\label{namespacehmap_aac1a15042e8fae93d9caed60c2318fcc} 
 \index{hmap@{hmap}!operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}}
@@ -28594,6 +28862,18 @@ void hmap\+::convert\+\_\+mat\+\_\+to\+\_\+array (\begin{DoxyParamCaption}\item[
 \doxysubsubsection{\texorpdfstring{square\_md()}{square\_md()}}
 {\footnotesize\ttfamily void hmap\+::square\+\_\+md (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{\mbox{\hyperlink{structhmap_1_1Mat}{Mat}}$<$ int $>$ \&}]{is\+\_\+done,  }\item[{int}]{step,  }\item[{float}]{noise\+\_\+scale,  }\item[{std\+::mt19937}]{gen,  }\item[{std\+::uniform\+\_\+real\+\_\+distribution$<$ float $>$}]{dis }\end{DoxyParamCaption})}
 
+\Hypertarget{namespacehmap_a3694cff871813c283356c8edf1db3f55}\label{namespacehmap_a3694cff871813c283356c8edf1db3f55} 
+\index{hmap@{hmap}!helper\_hash\_u32@{helper\_hash\_u32}}
+\index{helper\_hash\_u32@{helper\_hash\_u32}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{helper\_hash\_u32()}{helper\_hash\_u32()}}
+{\footnotesize\ttfamily uint32\+\_\+t hmap\+::helper\+\_\+hash\+\_\+u32 (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{namespacehmap_a5e1e11e11949bc172f52c62ae984ded4}\label{namespacehmap_a5e1e11e11949bc172f52c62ae984ded4} 
+\index{hmap@{hmap}!helper\_hash\_01@{helper\_hash\_01}}
+\index{helper\_hash\_01@{helper\_hash\_01}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{helper\_hash\_01()}{helper\_hash\_01()}}
+{\footnotesize\ttfamily float hmap\+::helper\+\_\+hash\+\_\+01 (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
 \Hypertarget{namespacehmap_aba0d25f051d23c9c637973b7edf19922}\label{namespacehmap_aba0d25f051d23c9c637973b7edf19922} 
 \index{hmap@{hmap}!helper\_thermal\_exchange@{helper\_thermal\_exchange}}
 \index{helper\_thermal\_exchange@{helper\_thermal\_exchange}!hmap@{hmap}}
@@ -28677,66 +28957,6 @@ void hmap\+::convert\+\_\+mat\+\_\+to\+\_\+array (\begin{DoxyParamCaption}\item[
 \index{compute\_gradient\_norm@{compute\_gradient\_norm}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{compute\_gradient\_norm()}{compute\_gradient\_norm()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::compute\+\_\+gradient\+\_\+norm (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{float}]{x\+\_\+coeff\mbox{[}3\mbox{]},  }\item[{float}]{y\+\_\+coeff\mbox{[}3\mbox{]},  }\item[{float}]{normalize\+\_\+factor,  }\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+dx = {\ttfamily nullptr},  }\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+dy = {\ttfamily nullptr} }\end{DoxyParamCaption})}
-
-\Hypertarget{namespacehmap_a79a02efb856e14f99c2accbfa595e0d4}\label{namespacehmap_a79a02efb856e14f99c2accbfa595e0d4} 
-\index{hmap@{hmap}!mix\_heightmap\_rgb@{mix\_heightmap\_rgb}}
-\index{mix\_heightmap\_rgb@{mix\_heightmap\_rgb}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{mix\_heightmap\_rgb()}{mix\_heightmap\_rgb()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structhmap_1_1HeightmapRGB}{Heightmap\+RGB}} hmap\+::mix\+\_\+heightmap\+\_\+rgb (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structhmap_1_1HeightmapRGB}{Heightmap\+RGB}} \&}]{rgb1,  }\item[{\mbox{\hyperlink{structhmap_1_1HeightmapRGB}{Heightmap\+RGB}} \&}]{rgb2,  }\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{t }\end{DoxyParamCaption})}
-
-
-\begin{DoxyParams}{Parameters}
-{\em rgb1} & 1st RGB heightmap. \\
-\hline
-{\em rgb2} & 2st RGB heightmap. \\
-\hline
-{\em t} & Mixing parameter, in \mbox{[}0, 1\mbox{]}. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-RGB heightmap. 
-\end{DoxyReturn}
-\Hypertarget{namespacehmap_ad16911f0a44281ab16b10eb90926f674}\label{namespacehmap_ad16911f0a44281ab16b10eb90926f674} 
-\index{hmap@{hmap}!mix\_heightmap\_rgb@{mix\_heightmap\_rgb}}
-\index{mix\_heightmap\_rgb@{mix\_heightmap\_rgb}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{mix\_heightmap\_rgb()}{mix\_heightmap\_rgb()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structhmap_1_1HeightmapRGB}{Heightmap\+RGB}} hmap\+::mix\+\_\+heightmap\+\_\+rgb (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structhmap_1_1HeightmapRGB}{Heightmap\+RGB}} \&}]{rgb1,  }\item[{\mbox{\hyperlink{structhmap_1_1HeightmapRGB}{Heightmap\+RGB}} \&}]{rgb2,  }\item[{float}]{t }\end{DoxyParamCaption})}
-
-\Hypertarget{namespacehmap_a87f3209d8f2aa9ce947a292fbfe4fe4e}\label{namespacehmap_a87f3209d8f2aa9ce947a292fbfe4fe4e} 
-\index{hmap@{hmap}!mix\_heightmap\_rgb\_sqrt@{mix\_heightmap\_rgb\_sqrt}}
-\index{mix\_heightmap\_rgb\_sqrt@{mix\_heightmap\_rgb\_sqrt}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{mix\_heightmap\_rgb\_sqrt()}{mix\_heightmap\_rgb\_sqrt()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structhmap_1_1HeightmapRGB}{Heightmap\+RGB}} hmap\+::mix\+\_\+heightmap\+\_\+rgb\+\_\+sqrt (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structhmap_1_1HeightmapRGB}{Heightmap\+RGB}} \&}]{rgb1,  }\item[{\mbox{\hyperlink{structhmap_1_1HeightmapRGB}{Heightmap\+RGB}} \&}]{rgb2,  }\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{t }\end{DoxyParamCaption})}
-
-
-\begin{DoxyParams}{Parameters}
-{\em rgb1} & 1st RGB heightmap. \\
-\hline
-{\em rgb2} & 2st RGB heightmap. \\
-\hline
-{\em t} & Mixing parameter, in \mbox{[}0, 1\mbox{]}. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-RGB heightmap. 
-\end{DoxyReturn}
-\Hypertarget{namespacehmap_ac5c38a2d95e658542576c82eee91d4e1}\label{namespacehmap_ac5c38a2d95e658542576c82eee91d4e1} 
-\index{hmap@{hmap}!mix\_heightmap\_rgb\_sqrt@{mix\_heightmap\_rgb\_sqrt}}
-\index{mix\_heightmap\_rgb\_sqrt@{mix\_heightmap\_rgb\_sqrt}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{mix\_heightmap\_rgb\_sqrt()}{mix\_heightmap\_rgb\_sqrt()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structhmap_1_1HeightmapRGB}{Heightmap\+RGB}} hmap\+::mix\+\_\+heightmap\+\_\+rgb\+\_\+sqrt (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structhmap_1_1HeightmapRGB}{Heightmap\+RGB}} \&}]{rgb1,  }\item[{\mbox{\hyperlink{structhmap_1_1HeightmapRGB}{Heightmap\+RGB}} \&}]{rgb2,  }\item[{float}]{t }\end{DoxyParamCaption})}
-
-\Hypertarget{namespacehmap_a0218fc9914980f2103a86ec7f4fa7d44}\label{namespacehmap_a0218fc9914980f2103a86ec7f4fa7d44} 
-\index{hmap@{hmap}!fill@{fill}}
-\index{fill@{fill}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{fill()}{fill()}\hspace{0.1cm}{\footnotesize\ttfamily [7/8]}}
-{\footnotesize\ttfamily void hmap\+::fill (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{h,  }\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+x,  }\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+y,  }\item[{std\+::function$<$ \mbox{\hyperlink{classhmap_1_1Array}{Array}}(\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$, \mbox{\hyperlink{classhmap_1_1Array}{hmap\+::\+Array}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{classhmap_1_1Array}{hmap\+::\+Array}} \texorpdfstring{$\ast$}{*})$>$}]{nullary\+\_\+op }\end{DoxyParamCaption})}
-
-\Hypertarget{namespacehmap_a7c7bafbcc451b2ebb4c199e40f07a041}\label{namespacehmap_a7c7bafbcc451b2ebb4c199e40f07a041} 
-\index{hmap@{hmap}!fill@{fill}}
-\index{fill@{fill}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{fill()}{fill()}\hspace{0.1cm}{\footnotesize\ttfamily [8/8]}}
-{\footnotesize\ttfamily void hmap\+::fill (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \&}]{h,  }\item[{\mbox{\hyperlink{classhmap_1_1Heightmap}{Heightmap}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise,  }\item[{std\+::function$<$ \mbox{\hyperlink{classhmap_1_1Array}{Array}}(\mbox{\hyperlink{structhmap_1_1Vec2}{Vec2}}$<$ int $>$, \mbox{\hyperlink{structhmap_1_1Vec4}{Vec4}}$<$ float $>$, \mbox{\hyperlink{classhmap_1_1Array}{hmap\+::\+Array}} \texorpdfstring{$\ast$}{*})$>$}]{nullary\+\_\+op }\end{DoxyParamCaption})}
 
 \Hypertarget{namespacehmap_a7376f7c00281f0616024d33069971ca4}\label{namespacehmap_a7376f7c00281f0616024d33069971ca4} 
 \index{hmap@{hmap}!helper\_find\_up\_downslope@{helper\_find\_up\_downslope}}

@@ -1,11 +1,11 @@
 var searchData=
 [
-  ['radius_0',['radius',['../classhmap_1_1CraterFunction.html#adae66715438224e2baf42c710132a856',1,'hmap::CraterFunction::radius'],['../classhmap_1_1DiskFunction.html#a94f70fc17523d10d49f443d7d4a2ebec',1,'hmap::DiskFunction::radius']]],
-  ['ratio_1',['ratio',['../classhmap_1_1WorleyDoubleFunction.html#a88899456b80da0d707ae74964ead8bc0',1,'hmap::WorleyDoubleFunction']]],
-  ['residual_2',['residual',['../classhmap_1_1PyramidDecomposition.html#ac711ffdbd5c38eb1f028106ceed16075',1,'hmap::PyramidDecomposition']]],
-  ['ret_3',['ret',['../structhmap_1_1AssertResults.html#a8999b609fb640f3c04ee1c54d2195ef5',1,'hmap::AssertResults']]],
-  ['rgb_4',['rgb',['../structhmap_1_1HeightmapRGB.html#a8cc2f556db5595f59b550a8c27db9773',1,'hmap::HeightmapRGB']]],
-  ['rgba_5',['rgba',['../structhmap_1_1HeightmapRGBA.html#a0457a9b7447ec755b833c43e9650d15c',1,'hmap::HeightmapRGBA']]],
-  ['rx_6',['rx',['../classhmap_1_1RectangleFunction.html#a4cb4e1ecf55533045db6f660d410de2f',1,'hmap::RectangleFunction']]],
-  ['ry_7',['ry',['../classhmap_1_1RectangleFunction.html#a522e126417d6f1b6b8069ee05cf523a7',1,'hmap::RectangleFunction']]]
+  ['p1_0',['p1',['../classhmap_1_1Edge.html#aaafc727142dadc4d1e5a5e040aade087',1,'hmap::Edge']]],
+  ['p2_1',['p2',['../classhmap_1_1Edge.html#a3ced3b4d72d4829fe8ddef173db5bb5a',1,'hmap::Edge']]],
+  ['p_5fbase_2',['p_base',['../classhmap_1_1GenericFractalFunction.html#a8fec1973e7b8a6dcca079c8017326ab2',1,'hmap::GenericFractalFunction']]],
+  ['periodic_3',['periodic',['../classhmap_1_1ArrayFunction.html#a5f74e2ba75875e4cc02827be36c933da',1,'hmap::ArrayFunction']]],
+  ['persistence_4',['persistence',['../classhmap_1_1GenericFractalFunction.html#ab14745ebb9beee94828d13aa587de69a',1,'hmap::GenericFractalFunction']]],
+  ['phase_5fshift_5',['phase_shift',['../classhmap_1_1WaveDuneFunction.html#abc24fb97142a7688cb1c14f1f67259c3',1,'hmap::WaveDuneFunction::phase_shift'],['../classhmap_1_1WaveSineFunction.html#afeb64dcd835089aca43509acd96d07e3',1,'hmap::WaveSineFunction::phase_shift'],['../classhmap_1_1WaveSquareFunction.html#acafda7056c558f5daf9090944ab43e47',1,'hmap::WaveSquareFunction::phase_shift'],['../classhmap_1_1WaveTriangularFunction.html#abf7528af6e80038e800596f70d863bdb',1,'hmap::WaveTriangularFunction::phase_shift']]],
+  ['points_6',['points',['../classhmap_1_1Cloud.html#aad75fb7bcfa7a2c3f139d2e3d3d6cc54',1,'hmap::Cloud']]],
+  ['pos_7',['pos',['../structhmap_1_1Particle.html#a562e380263d7ec95a836210440438fd6',1,'hmap::Particle']]]
 ];

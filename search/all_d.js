@@ -21,7 +21,7 @@ var searchData=
   ['lip_5fheight_5fratio_18',['lip_height_ratio',['../classhmap_1_1CraterFunction.html#af2b79780902a1088c500476267163cbe',1,'hmap::CraterFunction']]],
   ['list_19',['Todo List',['../todo.html',1,'']]],
   ['local_5findices_20',['local_indices',['../structhmap_1_1VirtualArray.html#a12c769efc1f74252ff39f2b617f55f33',1,'hmap::VirtualArray']]],
-  ['local_5fmedian_5fdeviation_21',['local_median_deviation',['../namespacehmap_1_1gpu.html#a022f5800d7e28f79f9e2d3abf687f490',1,'hmap::gpu::local_median_deviation()'],['../namespacehmap.html#a9b6a1d2ca8ef58a4a0605d04bcbff038',1,'hmap::local_median_deviation(const Array &amp;array, int ir)']]],
+  ['local_5fmedian_5fdeviation_21',['local_median_deviation',['../namespacehmap.html#a9b6a1d2ca8ef58a4a0605d04bcbff038',1,'hmap::local_median_deviation()'],['../namespacehmap_1_1gpu.html#a022f5800d7e28f79f9e2d3abf687f490',1,'hmap::gpu::local_median_deviation()']]],
   ['log10_22',['log10',['../namespacehmap.html#a75475b6109023ce0ad64f6f9f7c4c525',1,'hmap']]],
   ['lorentzian_23',['lorentzian',['../namespacehmap.html#a1d9165a0056e99a90b7734268f231901',1,'hmap::lorentzian(Vec2&lt; int &gt; shape, float footprint_threshold=0.1f)'],['../namespacehmap.html#a4b6f135c6e81d313ca54ae1efac5f2c9adca1c57725ab84b424723316de5ba3dc',1,'hmap::LORENTZIAN']]],
   ['lorentzian_5fcompact_24',['lorentzian_compact',['../namespacehmap.html#a8be1ca22c14c4989ec8f18842fda2766',1,'hmap']]],
@@ -33,5 +33,5 @@ var searchData=
   ['lru_5ftile_5fstorage_2ecpp_30',['lru_tile_storage.cpp',['../lru__tile__storage_8cpp.html',1,'']]],
   ['lrutileentry_31',['LruTileEntry',['../structhmap_1_1LruTileEntry.html',1,'hmap']]],
   ['lrutilestorage_32',['lrutilestorage',['../classhmap_1_1LruTileStorage.html#a18948b97db31797b0fe45c58d2da883b',1,'hmap::LruTileStorage::LruTileStorage()'],['../classhmap_1_1LruTileStorage.html',1,'hmap::LruTileStorage']]],
-  ['luminance_33',['luminance',['../structhmap_1_1HeightmapRGBA.html#af53c9f791817ea400f3b8cdfe152bd3a',1,'hmap::HeightmapRGBA']]]
+  ['luminance_33',['luminance',['../namespacehmap.html#a051c3f6f1ceda0feaf3c36c97bd7fef9',1,'hmap']]]
 ];

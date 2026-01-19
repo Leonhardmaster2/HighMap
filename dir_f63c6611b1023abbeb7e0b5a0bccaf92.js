@@ -17,7 +17,6 @@ var dir_f63c6611b1023abbeb7e0b5a0bccaf92 =
     [ "geometry", "dir_180bcd2bac99fc5b4a48aa19ac3c5b63.html", "dir_180bcd2bac99fc5b4a48aa19ac3c5b63" ],
     [ "gpu_opencl", "dir_3c4172100491f31b556c8f9a4d709dfc.html", "dir_3c4172100491f31b556c8f9a4d709dfc" ],
     [ "gradient", "dir_052e2c45636af7fa2c38860b06d4db60.html", "dir_052e2c45636af7fa2c38860b06d4db60" ],
-    [ "heightmap", "dir_566db01fb988f9afe1600b0dcd492ac3.html", "dir_566db01fb988f9afe1600b0dcd492ac3" ],
     [ "hydrology", "dir_ce6c722236ab9f2244a54aefafe425a2.html", "dir_ce6c722236ab9f2244a54aefafe425a2" ],
     [ "interpolate", "dir_935215972bef69986a81fe4c59c9ece4.html", "dir_935215972bef69986a81fe4c59c9ece4" ],
     [ "kernels", "dir_d28e56f0bcd00353ff35f2c577e0eb78.html", "dir_d28e56f0bcd00353ff35f2c577e0eb78" ],

@@ -1,6 +1,12 @@
 var virtual__array_8hpp =
 [
+    [ "hmap::ComputeMode", "structhmap_1_1ComputeMode.html", "structhmap_1_1ComputeMode" ],
     [ "hmap::VirtualArray", "structhmap_1_1VirtualArray.html", "structhmap_1_1VirtualArray" ],
-    [ "for_each_tile_sequential", "virtual__array_8hpp.html#aae8f6a3d45b6f43c1d3534ef08355598", null ],
-    [ "for_each_tile_distributed", "virtual__array_8hpp.html#a99ff01a3a6bc3608247f0be2a1d38871", null ]
+    [ "ForEachMode", "virtual__array_8hpp.html#ae383414b46ae8992e621c407f09ce7c5", [
+      [ "VA_SEQUENTIAL", "virtual__array_8hpp.html#ae383414b46ae8992e621c407f09ce7c5ad610a3b158cd10452fc144bda389aa19", null ],
+      [ "VA_DISTRIBUTED", "virtual__array_8hpp.html#ae383414b46ae8992e621c407f09ce7c5a5356cbfe824240ce4bd458109890b9d5", null ],
+      [ "VA_SINGLE_ARRAY", "virtual__array_8hpp.html#ae383414b46ae8992e621c407f09ce7c5afd32b1bf1363b0e44143bda30f00cffa", null ]
+    ] ],
+    [ "to_string", "virtual__array_8hpp.html#af8dc7ce1ae44750316d846345854c408", null ],
+    [ "copy_data", "virtual__array_8hpp.html#a4216f86be919aeb4a2cb6aab44609a71", null ]
 ];
