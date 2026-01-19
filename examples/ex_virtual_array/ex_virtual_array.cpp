@@ -108,6 +108,28 @@ int main(void)
   aitp0.to_png("out_itp0.png", hmap::Cmap::JET);
   aitp1.to_png("out_itp1.png", hmap::Cmap::JET);
 
+  // --- from array
+
+  hmap::VirtualArray varray_fa(shape, bbox, tile_shape, halo, storage_mode);
+
+  {
+    hmap::Array arr = hmap::noise_fbm(hmap::NoiseType::PERLIN,
+                                      {51, 67},
+                                      {2.f, 2.f},
+                                      0);
+    varray_fa.from_array(arr, cm);
+    varray_fa.to_array(cm).to_png("out_fa0.png", hmap::Cmap::JET);
+  }
+
+  // {
+  //   hmap::Array arr = hmap::noise_fbm(hmap::NoiseType::PERLIN,
+  //                                     shape,
+  //                                     {2.f, 2.f},
+  //                                     0);
+  //   varray_fa.from_array(arr, cm);
+  //   varray_fa.to_array(cm).to_png("out_fa1.png", hmap::Cmap::JET);
+  // }
+
   // --- output
 
   auto a = varray.to_array(cm);
@@ -118,7 +140,4 @@ int main(void)
 
   auto a2 = varray2.to_array(cm);
   a2.to_png("out1.png", hmap::Cmap::JET);
-
-  // auto gn = hmap::gradient_norm(a);
-  // gn.to_png("out1.png", hmap::Cmap::JET);
 }

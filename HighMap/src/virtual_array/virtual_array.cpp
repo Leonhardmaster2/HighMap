@@ -118,9 +118,6 @@ void VirtualArray::from_array(const Array &array, const ComputeMode &cm)
         ig = std::clamp(ig, 0, array.shape.x - 1);
         jg = std::clamp(jg, 0, array.shape.y - 1);
 
-        ig = ij0.x + i;
-        jg = ij0.y + j;
-
         tile(i, j) = array(ig, jg);
       }
   };
