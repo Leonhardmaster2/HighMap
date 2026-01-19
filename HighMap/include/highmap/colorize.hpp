@@ -48,8 +48,8 @@ struct ColorAdjust
   float contrast = 1.0f;
   float saturation = 1.0f;
   float temperature = 0.0f;
-  float gamma = 2.2f;
-  float dither_amp = 1.f / 255.f;
+  float gamma = 1.f;
+  float dither_amp = 0.f;
   bool  filmic_tonemap = false;
   bool  aces_tonemap = false;
 };
