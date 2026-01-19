@@ -18,6 +18,7 @@ void valley_fill(Array       &z,
                  float        zmax,
                  float        elevation_max_ratio,
                  bool         preserve_elevation_range,
+                 const Array *p_noise,
                  Array       *p_deposition_map)
 {
   if (zmax <= zmin)
@@ -29,10 +30,20 @@ void valley_fill(Array       &z,
   Array z_bckp;
   if (p_deposition_map) z_bckp = z;
 
+  // add noise if any
+  const  Array *p_talus = &talus;
+  Array  talus_with_noise;
+
+  if (p_noise)
+  {
+    talus_with_noise = talus * (1.f + *p_noise);
+    p_talus = &talus_with_noise;
+  }
+
   // scree deposition
   Array ze = z;
   gpu::thermal_scree(ze,
-                     talus,
+                     *p_talus,
                      Array(z.shape, elevation_max_ratio * zmax),
                      iterations);
 
@@ -60,6 +71,7 @@ void valley_fill(Array       &z,
                  float        zmax,
                  float        elevation_max_ratio,
                  bool         preserve_elevation_range,
+                 const Array *p_noise,
                  Array       *p_deposition_map)
 {
   if (!p_mask)
@@ -73,6 +85,7 @@ void valley_fill(Array       &z,
                      zmax,
                      elevation_max_ratio,
                      preserve_elevation_range,
+                     p_noise,
                      p_deposition_map);
   }
   else
@@ -87,6 +100,7 @@ void valley_fill(Array       &z,
                      zmax,
                      elevation_max_ratio,
                      preserve_elevation_range,
+                     p_noise,
                      p_deposition_map);
     z = lerp(z, z_f, *(p_mask));
   }
