@@ -130,6 +130,7 @@ Array advection_particle(const Array &dx,
       {
         out(i, j) += advected_field(i, j);
         out(i, j) /= (count(i, j) + 1.f);
+        out(i, j) = std::clamp(out(i, j), 0.f, 1.f);
       }
       else
       {
