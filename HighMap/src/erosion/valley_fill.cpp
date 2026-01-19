@@ -31,12 +31,13 @@ void valley_fill(Array       &z,
   if (p_deposition_map) z_bckp = z;
 
   // add noise if any
-  const  Array *p_talus = &talus;
-  Array  talus_with_noise;
+  const Array *p_talus = &talus;
+  Array        talus_with_noise;
 
   if (p_noise)
   {
     talus_with_noise = talus * (1.f + *p_noise);
+    clamp_min(talus_with_noise, 0.f);
     p_talus = &talus_with_noise;
   }
 
