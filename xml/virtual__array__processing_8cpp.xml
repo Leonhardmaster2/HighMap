@@ -109,43 +109,53 @@
 <codeline lineno="99"><highlight class="normal"><sp/><sp/>std::vector&lt;float&gt;<sp/>sum_per_tile;</highlight></codeline>
 <codeline lineno="100"><highlight class="normal"><sp/><sp/>sum_per_tile.reserve(nt.x<sp/>*<sp/>nt.y);</highlight></codeline>
 <codeline lineno="101"><highlight class="normal"></highlight></codeline>
-<codeline lineno="102"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>lambda<sp/>=<sp/>[&amp;sum_per_tile](</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array<sp/>&amp;tile,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TileRegion<sp/>&amp;)</highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/>{<sp/>sum_per_tile.push_back(tile.sum());<sp/>};</highlight></codeline>
-<codeline lineno="104"><highlight class="normal"></highlight></codeline>
-<codeline lineno="105"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a1025088e008bb5709c8f88bc025ab1cb" kindref="member">for_each_tile</ref>(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>lambda,<sp/>cm);</highlight></codeline>
-<codeline lineno="106"><highlight class="normal"></highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structhmap_1_1VirtualArray_1af98faefefaaeb9ffc84bcc5997fbae8e" kindref="member">sum</ref><sp/>=<sp/>0.f;</highlight></codeline>
-<codeline lineno="108"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;v<sp/>:<sp/>sum_per_tile)</highlight></codeline>
-<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structhmap_1_1VirtualArray_1af98faefefaaeb9ffc84bcc5997fbae8e" kindref="member">sum</ref><sp/>+=<sp/>v;</highlight></codeline>
-<codeline lineno="110"><highlight class="normal"></highlight></codeline>
-<codeline lineno="111"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structhmap_1_1VirtualArray_1af98faefefaaeb9ffc84bcc5997fbae8e" kindref="member">sum</ref>;</highlight></codeline>
-<codeline lineno="112"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="113"><highlight class="normal"></highlight></codeline>
-<codeline lineno="114"><highlight class="normal">std::vector&lt;float&gt;<sp/><ref refid="structhmap_1_1VirtualArray_1a8d74c7c6a84b8c54985a5fdeb4e805f0" kindref="member">VirtualArray::unique_values</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>ComputeMode<sp/>&amp;cm)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="115"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="116"><highlight class="normal"><sp/><sp/>glm::ivec2<sp/>nt<sp/>=<sp/>this-&gt;<ref refid="structhmap_1_1VirtualArray_1ac6e25f58944e813be9da550257a33a52" kindref="member">get_max_tiles</ref>();</highlight></codeline>
-<codeline lineno="117"><highlight class="normal"></highlight></codeline>
-<codeline lineno="118"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nt.x<sp/>*<sp/>nt.y<sp/>==<sp/>0)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{0.f};</highlight></codeline>
-<codeline lineno="119"><highlight class="normal"></highlight></codeline>
-<codeline lineno="120"><highlight class="normal"><sp/><sp/>std::vector&lt;std::vector&lt;float&gt;&gt;<sp/>unique_per_tile;</highlight></codeline>
-<codeline lineno="121"><highlight class="normal"><sp/><sp/>unique_per_tile.reserve(nt.x<sp/>*<sp/>nt.y);</highlight></codeline>
-<codeline lineno="122"><highlight class="normal"></highlight></codeline>
-<codeline lineno="123"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>lambda<sp/>=<sp/>[&amp;unique_per_tile](</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array<sp/>&amp;tile,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TileRegion<sp/>&amp;)</highlight></codeline>
-<codeline lineno="124"><highlight class="normal"><sp/><sp/>{<sp/>unique_per_tile.push_back(tile.unique_values());<sp/>};</highlight></codeline>
-<codeline lineno="125"><highlight class="normal"></highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a1025088e008bb5709c8f88bc025ab1cb" kindref="member">for_each_tile</ref>(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>lambda,<sp/>cm);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>lambda<sp/>=<sp/>[&amp;sum_per_tile](</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array<sp/>&amp;tile,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TileRegion<sp/>&amp;region)</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>sum<sp/>over<sp/>the<sp/>inner<sp/>cells<sp/>only<sp/>to<sp/>avoid<sp/>double<sp/>count</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>glm::ivec4<sp/>&amp;h<sp/>=<sp/>region.halo;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhmap_1_1VirtualArray_1af98faefefaaeb9ffc84bcc5997fbae8e" kindref="member">sum</ref><sp/>=<sp/>0.f;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>h.z;<sp/>j<sp/>&lt;<sp/>region.shape.y<sp/>-<sp/>h.w;<sp/>++j)</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>h.x;<sp/>i<sp/>&lt;<sp/>region.shape.x<sp/>-<sp/>h.y;<sp/>++i)</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhmap_1_1VirtualArray_1af98faefefaaeb9ffc84bcc5997fbae8e" kindref="member">sum</ref><sp/>+=<sp/>tile(i,<sp/>j);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>sum_per_tile.push_back(<ref refid="structhmap_1_1VirtualArray_1af98faefefaaeb9ffc84bcc5997fbae8e" kindref="member">sum</ref>);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/>};</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a1025088e008bb5709c8f88bc025ab1cb" kindref="member">for_each_tile</ref>(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>lambda,<sp/>cm);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structhmap_1_1VirtualArray_1af98faefefaaeb9ffc84bcc5997fbae8e" kindref="member">sum</ref><sp/>=<sp/>0.f;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;v<sp/>:<sp/>sum_per_tile)</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structhmap_1_1VirtualArray_1af98faefefaaeb9ffc84bcc5997fbae8e" kindref="member">sum</ref><sp/>+=<sp/>v;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structhmap_1_1VirtualArray_1af98faefefaaeb9ffc84bcc5997fbae8e" kindref="member">sum</ref>;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal">std::vector&lt;float&gt;<sp/><ref refid="structhmap_1_1VirtualArray_1a8d74c7c6a84b8c54985a5fdeb4e805f0" kindref="member">VirtualArray::unique_values</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>ComputeMode<sp/>&amp;cm)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="125"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/>glm::ivec2<sp/>nt<sp/>=<sp/>this-&gt;<ref refid="structhmap_1_1VirtualArray_1ac6e25f58944e813be9da550257a33a52" kindref="member">get_max_tiles</ref>();</highlight></codeline>
 <codeline lineno="127"><highlight class="normal"></highlight></codeline>
-<codeline lineno="128"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>flatten</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="129"><highlight class="normal"><sp/><sp/>std::vector&lt;float&gt;<sp/><ref refid="structhmap_1_1VirtualArray_1a8d74c7c6a84b8c54985a5fdeb4e805f0" kindref="member">unique_values</ref><sp/>=<sp/>{};</highlight></codeline>
-<codeline lineno="130"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;vec<sp/>:<sp/>unique_per_tile)</highlight></codeline>
-<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/>for<sp/>(const<sp/>auto<sp/>&amp;v<sp/>:<sp/>vec)</highlight></codeline>
-<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhmap_1_1VirtualArray_1a8d74c7c6a84b8c54985a5fdeb4e805f0" kindref="member">unique_values</ref>.push_back(v);</highlight></codeline>
-<codeline lineno="133"><highlight class="normal"></highlight></codeline>
-<codeline lineno="134"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac95d63662a6878f27011c0b4c7c70078" kindref="member">vector_unique_values</ref>(<ref refid="structhmap_1_1VirtualArray_1a8d74c7c6a84b8c54985a5fdeb4e805f0" kindref="member">unique_values</ref>);</highlight></codeline>
-<codeline lineno="135"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structhmap_1_1VirtualArray_1a8d74c7c6a84b8c54985a5fdeb4e805f0" kindref="member">unique_values</ref>;</highlight></codeline>
-<codeline lineno="136"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nt.x<sp/>*<sp/>nt.y<sp/>==<sp/>0)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{0.f};</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/>std::vector&lt;std::vector&lt;float&gt;&gt;<sp/>unique_per_tile;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/>unique_per_tile.reserve(nt.x<sp/>*<sp/>nt.y);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>lambda<sp/>=<sp/>[&amp;unique_per_tile](</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array<sp/>&amp;tile,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TileRegion<sp/>&amp;)</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/>{<sp/>unique_per_tile.push_back(tile.unique_values());<sp/>};</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a1025088e008bb5709c8f88bc025ab1cb" kindref="member">for_each_tile</ref>(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>lambda,<sp/>cm);</highlight></codeline>
 <codeline lineno="137"><highlight class="normal"></highlight></codeline>
-<codeline lineno="138"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>hmap</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>flatten</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/>std::vector&lt;float&gt;<sp/><ref refid="structhmap_1_1VirtualArray_1a8d74c7c6a84b8c54985a5fdeb4e805f0" kindref="member">unique_values</ref><sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;vec<sp/>:<sp/>unique_per_tile)</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>for<sp/>(const<sp/>auto<sp/>&amp;v<sp/>:<sp/>vec)</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhmap_1_1VirtualArray_1a8d74c7c6a84b8c54985a5fdeb4e805f0" kindref="member">unique_values</ref>.push_back(v);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac95d63662a6878f27011c0b4c7c70078" kindref="member">vector_unique_values</ref>(<ref refid="structhmap_1_1VirtualArray_1a8d74c7c6a84b8c54985a5fdeb4e805f0" kindref="member">unique_values</ref>);</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structhmap_1_1VirtualArray_1a8d74c7c6a84b8c54985a5fdeb4e805f0" kindref="member">unique_values</ref>;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>hmap</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="HighMap/src/virtual_array/virtual_array_processing.cpp"/>
   </compounddef>

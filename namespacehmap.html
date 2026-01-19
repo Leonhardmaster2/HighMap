@@ -5949,106 +5949,120 @@ template&lt;typename T &gt; </div>
   </table>
   </dd>
 </dl>
-<p><b>Example</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<p><b>Example</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;cmath&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &quot;<a class="code" href="highmap_8hpp.html">highmap.hpp</a>&quot;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
+<div class="line"><span class="preprocessor">#define EXPECT(cond, msg)                                                      \</span></div>
+<div class="line"><span class="preprocessor">  do                                                                           \</span></div>
+<div class="line"><span class="preprocessor">  {                                                                            \</span></div>
+<div class="line"><span class="preprocessor">    if (!(cond))                                                               \</span></div>
+<div class="line"><span class="preprocessor">      std::cerr &lt;&lt; &quot;[FAIL] &quot; &lt;&lt; msg &lt;&lt; &quot;\n&quot;;                                   \</span></div>
+<div class="line"><span class="preprocessor">    else                                                                       \</span></div>
+<div class="line"><span class="preprocessor">      std::cout &lt;&lt; &quot;[ OK ] &quot; &lt;&lt; msg &lt;&lt; &quot;\n&quot;;                                   \</span></div>
+<div class="line"><span class="preprocessor">  } while (0)</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main()</div>
 <div class="line">{</div>
-<div class="line">  glm::vec4  bbox(0.f, 1.0f, 0.f, 1.f); <span class="comment">// x1,x2,y1,y2</span></div>
-<div class="line">  glm::ivec2 shape(1024, 1024);</div>
-<div class="line">  glm::ivec2 tile_shape(256, 256);</div>
-<div class="line">  <span class="keywordtype">size_t</span>     halo = 32;</div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
+<div class="line">  <span class="comment">// Configuration</span></div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
 <div class="line"> </div>
-<div class="line">  shape = {1000, 581};</div>
-<div class="line">  tile_shape = {220, 312};</div>
+<div class="line">  <span class="keyword">const</span> glm::vec4  bbox{0.f, 1.f, 0.f, 1.f};</div>
+<div class="line">  <span class="keyword">const</span> glm::ivec2 shape{1000, 581};</div>
+<div class="line">  <span class="keyword">const</span> glm::ivec2 tile_shape{220, 312};</div>
+<div class="line">  <span class="keyword">const</span> <span class="keywordtype">size_t</span>     halo = 32;</div>
 <div class="line"> </div>
-<div class="line">  <span class="comment">// shape = {10000, 10000};</span></div>
-<div class="line">  <span class="comment">// tile_shape = {4096, 4096};</span></div>
+<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> foreach_mode = <a class="code hl_enumvalue" href="namespacehmap.html#ae383414b46ae8992e621c407f09ce7c5a5356cbfe824240ce4bd458109890b9d5">hmap::ForEachMode::VA_DISTRIBUTED</a>;</div>
+<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> storage_mode = <a class="code hl_enumvalue" href="namespacehmap.html#ad21b93a34c88a47d6b54f3a4d5b65e6ea671262171ccce9633cc42db046ea63d4">hmap::StorageMode::VA_DISK_LRU</a>;</div>
 <div class="line"> </div>
-<div class="line">  <span class="comment">// auto mode = hmap::ForEachMode::VA_SEQUENTIAL;</span></div>
-<div class="line">  <span class="keyword">auto</span> mode = <a class="code hl_enumvalue" href="namespacehmap.html#ae383414b46ae8992e621c407f09ce7c5a5356cbfe824240ce4bd458109890b9d5">hmap::ForEachMode::VA_DISTRIBUTED</a>;</div>
-<div class="line">  <span class="comment">// auto mode = hmap::ForEachMode::VA_SINGLE_ARRAY;</span></div>
+<div class="line">  <span class="keyword">const</span> <a class="code hl_struct" href="structhmap_1_1ComputeMode.html">hmap::ComputeMode</a> cm{</div>
+<div class="line">      .<a class="code hl_variable" href="structhmap_1_1ComputeMode.html#a88f263de26dea2af6e22e2d4f5f02cab">mode</a> = foreach_mode,</div>
+<div class="line">      .trim_storage = <span class="keyword">false</span>,</div>
+<div class="line">  };</div>
 <div class="line"> </div>
-<div class="line">  <span class="comment">// bool trim_storage = true;</span></div>
-<div class="line">  <span class="keywordtype">bool</span> trim_storage = <span class="keyword">false</span>;</div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
+<div class="line">  <span class="comment">// Channel-based VirtualTexture</span></div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
 <div class="line"> </div>
-<div class="line">  <span class="comment">// auto storage_mode = hmap::StorageMode::VA_RAM;</span></div>
-<div class="line">  <span class="keyword">auto</span> storage_mode = <a class="code hl_enumvalue" href="namespacehmap.html#ad21b93a34c88a47d6b54f3a4d5b65e6ea671262171ccce9633cc42db046ea63d4">hmap::StorageMode::VA_DISK_LRU</a>;</div>
-<div class="line">  <span class="comment">// auto storage_mode = hmap::StorageMode::VA_DISK_LRU_MIN;</span></div>
-<div class="line">  <span class="comment">// auto storage_mode = hmap::StorageMode::VA_DISK_SEQUENTIAL;</span></div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1VirtualTexture.html">hmap::VirtualTexture</a> tex(shape, bbox, tile_shape, halo, 3, storage_mode);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_struct" href="structhmap_1_1ComputeMode.html">hmap::ComputeMode</a> cm = {.<a class="code hl_variable" href="structhmap_1_1ComputeMode.html#a88f263de26dea2af6e22e2d4f5f02cab">mode</a> = mode, .trim_storage = trim_storage};</div>
-<div class="line"> </div>
-<div class="line">  <span class="keyword">auto</span> tex = <a class="code hl_class" href="classhmap_1_1VirtualTexture.html">hmap::VirtualTexture</a>(shape,</div>
-<div class="line">                                  bbox,</div>
-<div class="line">                                  tile_shape,</div>
-<div class="line">                                  halo,</div>
-<div class="line">                                  3,</div>
-<div class="line">                                  storage_mode);</div>
-<div class="line"> </div>
-<div class="line">  <span class="keyword">auto</span> lambda0 =</div>
+<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> fill_channels =</div>
 <div class="line">      [](std::vector&lt;hmap::Array *&gt; &amp;tiles, <span class="keyword">const</span> <a class="code hl_struct" href="structhmap_1_1TileRegion.html">hmap::TileRegion</a> &amp;region)</div>
 <div class="line">  {</div>
-<div class="line">    <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> &amp;R = *tiles[0];</div>
-<div class="line">    <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> &amp;G = *tiles[1];</div>
-<div class="line">    <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> &amp;B = *tiles[2];</div>
+<div class="line">    <span class="keyword">auto</span> &amp;R = *tiles[0];</div>
+<div class="line">    <span class="keyword">auto</span> &amp;G = *tiles[1];</div>
+<div class="line">    <span class="keyword">auto</span> &amp;B = *tiles[2];</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; region.shape.y; ++j)</div>
 <div class="line">      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; region.shape.x; ++i)</div>
 <div class="line">      {</div>
 <div class="line">        glm::vec2 pos = region.cell_center(i, j);</div>
-<div class="line"> </div>
 <div class="line">        R(i, j) = pos.x;</div>
 <div class="line">        G(i, j) = 0.f;</div>
 <div class="line">        B(i, j) = pos.y;</div>
 <div class="line">      }</div>
 <div class="line">  };</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1025088e008bb5709c8f88bc025ab1cb">hmap::for_each_tile</a>(tex.channels_ptr(), lambda0, cm);</div>
-<div class="line"> </div>
-<div class="line">  <span class="comment">// tex.fill(0.5f, cm);</span></div>
-<div class="line">  <span class="comment">// tex.fill(3, 1.f, cm);</span></div>
-<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1025088e008bb5709c8f88bc025ab1cb">hmap::for_each_tile</a>(tex.channels_ptr(), fill_channels, cm);</div>
 <div class="line">  tex.to_png(<span class="stringliteral">&quot;out0.png&quot;</span>, cm);</div>
 <div class="line"> </div>
-<div class="line">  <span class="comment">// --- per pixel</span></div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
+<div class="line">  <span class="comment">// Tests: channel invariants</span></div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
 <div class="line"> </div>
-<div class="line">  <span class="keyword">auto</span> tex2 = <a class="code hl_class" href="classhmap_1_1VirtualTexture.html">hmap::VirtualTexture</a>(shape,</div>
-<div class="line">                                   bbox,</div>
-<div class="line">                                   tile_shape,</div>
-<div class="line">                                   halo,</div>
-<div class="line">                                   4,</div>
-<div class="line">                                   storage_mode);</div>
+<div class="line">  {</div>
+<div class="line">    <span class="keyword">auto</span> R = tex.channel(0).to_array(cm);</div>
+<div class="line">    <span class="keyword">auto</span> G = tex.channel(1).to_array(cm);</div>
+<div class="line">    <span class="keyword">auto</span> B = tex.channel(2).to_array(cm);</div>
 <div class="line"> </div>
-<div class="line">  <span class="keyword">auto</span> lambda1 =</div>
+<div class="line">    EXPECT(R.shape == shape, <span class="stringliteral">&quot;R channel shape&quot;</span>);</div>
+<div class="line">    EXPECT(G.shape == shape, <span class="stringliteral">&quot;G channel shape&quot;</span>);</div>
+<div class="line">    EXPECT(B.shape == shape, <span class="stringliteral">&quot;B channel shape&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">    EXPECT(G.min() == 0.f, <span class="stringliteral">&quot;G channel == 0&quot;</span>);</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
+<div class="line">  <span class="comment">// Per-pixel VirtualTexture</span></div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1VirtualTexture.html">hmap::VirtualTexture</a> tex_px(shape, bbox, tile_shape, halo, 4, storage_mode);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> fill_pixel =</div>
 <div class="line">      [](std::vector&lt;float&gt; &amp;px, <span class="keywordtype">int</span> i, <span class="keywordtype">int</span> j, <span class="keyword">const</span> <a class="code hl_struct" href="structhmap_1_1TileRegion.html">hmap::TileRegion</a> &amp;region)</div>
 <div class="line">  {</div>
 <div class="line">    glm::vec2 pos = region.cell_center(i, j);</div>
 <div class="line">    px[0] = pos.x;</div>
 <div class="line">    px[1] = 0.f;</div>
 <div class="line">    px[2] = pos.y;</div>
-<div class="line">    px[3] = 1.f; <span class="comment">// pos.x;</span></div>
+<div class="line">    px[3] = 1.f;</div>
 <div class="line">  };</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a6bbca26bba2f2faac320f59df0ae8d8a">hmap::for_each_pixel</a>(tex2, lambda1, cm);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a6bbca26bba2f2faac320f59df0ae8d8a">hmap::for_each_pixel</a>(tex_px, fill_pixel, cm);</div>
+<div class="line">  tex_px.to_png(<span class="stringliteral">&quot;out1.png&quot;</span>, cm);</div>
 <div class="line"> </div>
-<div class="line">  tex2.to_png(<span class="stringliteral">&quot;out1.png&quot;</span>, cm);</div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
+<div class="line">  <span class="comment">// Tests: per-pixel alpha</span></div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
 <div class="line"> </div>
-<div class="line">  <span class="comment">// --- colorize</span></div>
+<div class="line">  {</div>
+<div class="line">    <span class="keyword">auto</span> A = tex_px.channel(3).to_array(cm);</div>
 <div class="line"> </div>
-<div class="line">  <span class="keyword">auto</span> level = <a class="code hl_struct" href="structhmap_1_1VirtualArray.html">hmap::VirtualArray</a>(shape, bbox, tile_shape, halo, storage_mode);</div>
-<div class="line">  level.remap(0.f, 1.f, cm);</div>
+<div class="line">    EXPECT(A.min() == 1.f, <span class="stringliteral">&quot;alpha min == 1&quot;</span>);</div>
+<div class="line">    EXPECT(A.max() == 1.f, <span class="stringliteral">&quot;alpha max == 1&quot;</span>);</div>
+<div class="line">  }</div>
 <div class="line"> </div>
-<div class="line">  <span class="keyword">auto</span> tex_c = <a class="code hl_class" href="classhmap_1_1VirtualTexture.html">hmap::VirtualTexture</a>(shape,</div>
-<div class="line">                                    bbox,</div>
-<div class="line">                                    tile_shape,</div>
-<div class="line">                                    halo,</div>
-<div class="line">                                    4, <span class="comment">// 4 channels RGBA</span></div>
-<div class="line">                                    storage_mode);</div>
-<div class="line">  tex_c.fill(3, 1.f, cm); <span class="comment">// set alpha to 1</span></div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
+<div class="line">  <span class="comment">// Colorize test</span></div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
 <div class="line"> </div>
-<div class="line">  <span class="keyword">auto</span> lambda_noise = [](<a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> &amp;tile, <span class="keyword">const</span> <a class="code hl_struct" href="structhmap_1_1TileRegion.html">hmap::TileRegion</a> &amp;region)</div>
+<div class="line">  <a class="code hl_struct" href="structhmap_1_1VirtualArray.html">hmap::VirtualArray</a> level(shape, bbox, tile_shape, halo, storage_mode);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> gen_noise = [](<a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> &amp;tile, <span class="keyword">const</span> <a class="code hl_struct" href="structhmap_1_1TileRegion.html">hmap::TileRegion</a> &amp;region)</div>
 <div class="line">  {</div>
 <div class="line">    tile = <a class="code hl_function" href="namespacehmap.html#a03c0be3a7198eebacefcb208b0cfee99">hmap::noise</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>,</div>
 <div class="line">                       region.shape,</div>
@@ -6060,30 +6074,90 @@ template&lt;typename T &gt; </div>
 <div class="line">                       region.bbox);</div>
 <div class="line">  };</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1025088e008bb5709c8f88bc025ab1cb">hmap::for_each_tile</a>(level, lambda_noise, cm);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1025088e008bb5709c8f88bc025ab1cb">hmap::for_each_tile</a>(level, gen_noise, cm);</div>
+<div class="line">  level.remap(0.f, 1.f, cm);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a33a635351aa13228557a585470ba4563">hmap::colorize</a>(tex_c,</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1VirtualTexture.html">hmap::VirtualTexture</a> tex_color(shape,</div>
+<div class="line">                                 bbox,</div>
+<div class="line">                                 tile_shape,</div>
+<div class="line">                                 halo,</div>
+<div class="line">                                 4,</div>
+<div class="line">                                 storage_mode);</div>
+<div class="line"> </div>
+<div class="line">  tex_color.fill(3, 1.f, cm);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a33a635351aa13228557a585470ba4563">hmap::colorize</a>(tex_color,</div>
 <div class="line">                 level,</div>
 <div class="line">                 cm,</div>
 <div class="line">                 level.min(cm),</div>
 <div class="line">                 level.max(cm),</div>
 <div class="line">                 <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>,</div>
-<div class="line">                 &amp;level);</div>
+<div class="line">                 <span class="keyword">nullptr</span>);</div>
 <div class="line"> </div>
-<div class="line">  tex_c.to_png(<span class="stringliteral">&quot;out2.png&quot;</span>, cm);</div>
+<div class="line">  tex_color.to_png(<span class="stringliteral">&quot;out2.png&quot;</span>, cm);</div>
 <div class="line"> </div>
-<div class="line">  <span class="comment">// --- mix</span></div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
+<div class="line">  <span class="comment">// Tests: colorize invariants</span></div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
 <div class="line"> </div>
-<div class="line">  <span class="keyword">auto</span> tex_m = <a class="code hl_class" href="classhmap_1_1VirtualTexture.html">hmap::VirtualTexture</a>(shape,</div>
-<div class="line">                                    bbox,</div>
-<div class="line">                                    tile_shape,</div>
-<div class="line">                                    halo,</div>
-<div class="line">                                    4, <span class="comment">// 4 channels RGBA</span></div>
-<div class="line">                                    storage_mode);</div>
+<div class="line">  {</div>
+<div class="line">    <span class="keyword">auto</span> A = tex_color.channel(3).to_array(cm);</div>
+<div class="line">    <span class="keyword">auto</span> R = tex_color.channel(0).to_array(cm);</div>
+<div class="line">    <span class="keyword">auto</span> G = tex_color.channel(1).to_array(cm);</div>
+<div class="line">    <span class="keyword">auto</span> B = tex_color.channel(2).to_array(cm);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac5229d29466796bb6afcdebe997731a3">hmap::mix</a>(tex_m, tex2, tex_c, cm);</div>
+<div class="line">    EXPECT(A.min() == 1.f, <span class="stringliteral">&quot;colorize alpha preserved&quot;</span>);</div>
+<div class="line">    EXPECT(R.max() &lt;= 1.f, <span class="stringliteral">&quot;R &lt;= 1&quot;</span>);</div>
+<div class="line">    EXPECT(G.max() &lt;= 1.f, <span class="stringliteral">&quot;G &lt;= 1&quot;</span>);</div>
+<div class="line">    EXPECT(B.max() &lt;= 1.f, <span class="stringliteral">&quot;B &lt;= 1&quot;</span>);</div>
+<div class="line">  }</div>
 <div class="line"> </div>
-<div class="line">  tex_m.to_png(<span class="stringliteral">&quot;out3.png&quot;</span>, cm);</div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
+<div class="line">  <span class="comment">// Mix test</span></div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1VirtualTexture.html">hmap::VirtualTexture</a> tex_mix(shape, bbox, tile_shape, halo, 4, storage_mode);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac5229d29466796bb6afcdebe997731a3">hmap::mix</a>(tex_mix, tex_px, tex_color, cm);</div>
+<div class="line">  tex_mix.to_png(<span class="stringliteral">&quot;out3.png&quot;</span>, cm);</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
+<div class="line">  <span class="comment">// Tests: mix sanity</span></div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
+<div class="line"> </div>
+<div class="line">  {</div>
+<div class="line">    <span class="keyword">auto</span> A = tex_mix.channel(3).to_array(cm);</div>
+<div class="line"> </div>
+<div class="line">    EXPECT(A.min() &gt;= 0.f, <span class="stringliteral">&quot;mix alpha &gt;= 0&quot;</span>);</div>
+<div class="line">    EXPECT(A.max() &lt;= 1.f, <span class="stringliteral">&quot;mix alpha &lt;= 1&quot;</span>);</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
+<div class="line">  <span class="comment">// Small tile stress test</span></div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
+<div class="line"> </div>
+<div class="line">  {</div>
+<div class="line">    <span class="keyword">const</span> glm::ivec2 small_tile{8, 8};</div>
+<div class="line">    <span class="keyword">const</span> <span class="keywordtype">size_t</span>     big_halo = 7;</div>
+<div class="line"> </div>
+<div class="line">    <a class="code hl_class" href="classhmap_1_1VirtualTexture.html">hmap::VirtualTexture</a> tex_small(shape,</div>
+<div class="line">                                   bbox,</div>
+<div class="line">                                   small_tile,</div>
+<div class="line">                                   big_halo,</div>
+<div class="line">                                   3,</div>
+<div class="line">                                   storage_mode);</div>
+<div class="line"> </div>
+<div class="line">    <a class="code hl_function" href="namespacehmap.html#a1025088e008bb5709c8f88bc025ab1cb">hmap::for_each_tile</a>(tex_small.channels_ptr(), fill_channels, cm);</div>
+<div class="line"> </div>
+<div class="line">    <span class="keyword">auto</span> R = tex_small.channel(0).to_array(cm);</div>
+<div class="line">    <span class="keyword">auto</span> B = tex_small.channel(2).to_array(cm);</div>
+<div class="line"> </div>
+<div class="line">    EXPECT(R.shape == shape, <span class="stringliteral">&quot;small tile R shape&quot;</span>);</div>
+<div class="line">    EXPECT(std::isfinite(R.min()), <span class="stringliteral">&quot;small tile finite R&quot;</span>);</div>
+<div class="line">    EXPECT(std::isfinite(B.max()), <span class="stringliteral">&quot;small tile finite B&quot;</span>);</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
 <div class="ttc" id="aclasshmap_1_1VirtualTexture_html"><div class="ttname"><a href="classhmap_1_1VirtualTexture.html">hmap::VirtualTexture</a></div><div class="ttdef"><b>Definition</b> virtual_texture.hpp:28</div></div>
 <div class="ttc" id="anamespacehmap_html_a1025088e008bb5709c8f88bc025ab1cb"><div class="ttname"><a href="namespacehmap.html#a1025088e008bb5709c8f88bc025ab1cb">hmap::for_each_tile</a></div><div class="ttdeci">void for_each_tile(VirtualTexture &amp;tex, Func &amp;&amp;func, const ComputeMode &amp;cm)</div></div>
@@ -6192,106 +6266,120 @@ template&lt;typename T &gt; </div>
   </table>
   </dd>
 </dl>
-<p><b>Example</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<p><b>Example</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;cmath&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &quot;<a class="code" href="highmap_8hpp.html">highmap.hpp</a>&quot;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
+<div class="line"><span class="preprocessor">#define EXPECT(cond, msg)                                                      \</span></div>
+<div class="line"><span class="preprocessor">  do                                                                           \</span></div>
+<div class="line"><span class="preprocessor">  {                                                                            \</span></div>
+<div class="line"><span class="preprocessor">    if (!(cond))                                                               \</span></div>
+<div class="line"><span class="preprocessor">      std::cerr &lt;&lt; &quot;[FAIL] &quot; &lt;&lt; msg &lt;&lt; &quot;\n&quot;;                                   \</span></div>
+<div class="line"><span class="preprocessor">    else                                                                       \</span></div>
+<div class="line"><span class="preprocessor">      std::cout &lt;&lt; &quot;[ OK ] &quot; &lt;&lt; msg &lt;&lt; &quot;\n&quot;;                                   \</span></div>
+<div class="line"><span class="preprocessor">  } while (0)</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main()</div>
 <div class="line">{</div>
-<div class="line">  glm::vec4  bbox(0.f, 1.0f, 0.f, 1.f); <span class="comment">// x1,x2,y1,y2</span></div>
-<div class="line">  glm::ivec2 shape(1024, 1024);</div>
-<div class="line">  glm::ivec2 tile_shape(256, 256);</div>
-<div class="line">  <span class="keywordtype">size_t</span>     halo = 32;</div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
+<div class="line">  <span class="comment">// Configuration</span></div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
 <div class="line"> </div>
-<div class="line">  shape = {1000, 581};</div>
-<div class="line">  tile_shape = {220, 312};</div>
+<div class="line">  <span class="keyword">const</span> glm::vec4  bbox{0.f, 1.f, 0.f, 1.f};</div>
+<div class="line">  <span class="keyword">const</span> glm::ivec2 shape{1000, 581};</div>
+<div class="line">  <span class="keyword">const</span> glm::ivec2 tile_shape{220, 312};</div>
+<div class="line">  <span class="keyword">const</span> <span class="keywordtype">size_t</span>     halo = 32;</div>
 <div class="line"> </div>
-<div class="line">  <span class="comment">// shape = {10000, 10000};</span></div>
-<div class="line">  <span class="comment">// tile_shape = {4096, 4096};</span></div>
+<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> foreach_mode = <a class="code hl_enumvalue" href="namespacehmap.html#ae383414b46ae8992e621c407f09ce7c5a5356cbfe824240ce4bd458109890b9d5">hmap::ForEachMode::VA_DISTRIBUTED</a>;</div>
+<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> storage_mode = <a class="code hl_enumvalue" href="namespacehmap.html#ad21b93a34c88a47d6b54f3a4d5b65e6ea671262171ccce9633cc42db046ea63d4">hmap::StorageMode::VA_DISK_LRU</a>;</div>
 <div class="line"> </div>
-<div class="line">  <span class="comment">// auto mode = hmap::ForEachMode::VA_SEQUENTIAL;</span></div>
-<div class="line">  <span class="keyword">auto</span> mode = <a class="code hl_enumvalue" href="namespacehmap.html#ae383414b46ae8992e621c407f09ce7c5a5356cbfe824240ce4bd458109890b9d5">hmap::ForEachMode::VA_DISTRIBUTED</a>;</div>
-<div class="line">  <span class="comment">// auto mode = hmap::ForEachMode::VA_SINGLE_ARRAY;</span></div>
+<div class="line">  <span class="keyword">const</span> <a class="code hl_struct" href="structhmap_1_1ComputeMode.html">hmap::ComputeMode</a> cm{</div>
+<div class="line">      .<a class="code hl_variable" href="structhmap_1_1ComputeMode.html#a88f263de26dea2af6e22e2d4f5f02cab">mode</a> = foreach_mode,</div>
+<div class="line">      .trim_storage = <span class="keyword">false</span>,</div>
+<div class="line">  };</div>
 <div class="line"> </div>
-<div class="line">  <span class="comment">// bool trim_storage = true;</span></div>
-<div class="line">  <span class="keywordtype">bool</span> trim_storage = <span class="keyword">false</span>;</div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
+<div class="line">  <span class="comment">// Channel-based VirtualTexture</span></div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
 <div class="line"> </div>
-<div class="line">  <span class="comment">// auto storage_mode = hmap::StorageMode::VA_RAM;</span></div>
-<div class="line">  <span class="keyword">auto</span> storage_mode = <a class="code hl_enumvalue" href="namespacehmap.html#ad21b93a34c88a47d6b54f3a4d5b65e6ea671262171ccce9633cc42db046ea63d4">hmap::StorageMode::VA_DISK_LRU</a>;</div>
-<div class="line">  <span class="comment">// auto storage_mode = hmap::StorageMode::VA_DISK_LRU_MIN;</span></div>
-<div class="line">  <span class="comment">// auto storage_mode = hmap::StorageMode::VA_DISK_SEQUENTIAL;</span></div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1VirtualTexture.html">hmap::VirtualTexture</a> tex(shape, bbox, tile_shape, halo, 3, storage_mode);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_struct" href="structhmap_1_1ComputeMode.html">hmap::ComputeMode</a> cm = {.<a class="code hl_variable" href="structhmap_1_1ComputeMode.html#a88f263de26dea2af6e22e2d4f5f02cab">mode</a> = mode, .trim_storage = trim_storage};</div>
-<div class="line"> </div>
-<div class="line">  <span class="keyword">auto</span> tex = <a class="code hl_class" href="classhmap_1_1VirtualTexture.html">hmap::VirtualTexture</a>(shape,</div>
-<div class="line">                                  bbox,</div>
-<div class="line">                                  tile_shape,</div>
-<div class="line">                                  halo,</div>
-<div class="line">                                  3,</div>
-<div class="line">                                  storage_mode);</div>
-<div class="line"> </div>
-<div class="line">  <span class="keyword">auto</span> lambda0 =</div>
+<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> fill_channels =</div>
 <div class="line">      [](std::vector&lt;hmap::Array *&gt; &amp;tiles, <span class="keyword">const</span> <a class="code hl_struct" href="structhmap_1_1TileRegion.html">hmap::TileRegion</a> &amp;region)</div>
 <div class="line">  {</div>
-<div class="line">    <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> &amp;R = *tiles[0];</div>
-<div class="line">    <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> &amp;G = *tiles[1];</div>
-<div class="line">    <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> &amp;B = *tiles[2];</div>
+<div class="line">    <span class="keyword">auto</span> &amp;R = *tiles[0];</div>
+<div class="line">    <span class="keyword">auto</span> &amp;G = *tiles[1];</div>
+<div class="line">    <span class="keyword">auto</span> &amp;B = *tiles[2];</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; region.shape.y; ++j)</div>
 <div class="line">      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; region.shape.x; ++i)</div>
 <div class="line">      {</div>
 <div class="line">        glm::vec2 pos = region.cell_center(i, j);</div>
-<div class="line"> </div>
 <div class="line">        R(i, j) = pos.x;</div>
 <div class="line">        G(i, j) = 0.f;</div>
 <div class="line">        B(i, j) = pos.y;</div>
 <div class="line">      }</div>
 <div class="line">  };</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1025088e008bb5709c8f88bc025ab1cb">hmap::for_each_tile</a>(tex.channels_ptr(), lambda0, cm);</div>
-<div class="line"> </div>
-<div class="line">  <span class="comment">// tex.fill(0.5f, cm);</span></div>
-<div class="line">  <span class="comment">// tex.fill(3, 1.f, cm);</span></div>
-<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1025088e008bb5709c8f88bc025ab1cb">hmap::for_each_tile</a>(tex.channels_ptr(), fill_channels, cm);</div>
 <div class="line">  tex.to_png(<span class="stringliteral">&quot;out0.png&quot;</span>, cm);</div>
 <div class="line"> </div>
-<div class="line">  <span class="comment">// --- per pixel</span></div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
+<div class="line">  <span class="comment">// Tests: channel invariants</span></div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
 <div class="line"> </div>
-<div class="line">  <span class="keyword">auto</span> tex2 = <a class="code hl_class" href="classhmap_1_1VirtualTexture.html">hmap::VirtualTexture</a>(shape,</div>
-<div class="line">                                   bbox,</div>
-<div class="line">                                   tile_shape,</div>
-<div class="line">                                   halo,</div>
-<div class="line">                                   4,</div>
-<div class="line">                                   storage_mode);</div>
+<div class="line">  {</div>
+<div class="line">    <span class="keyword">auto</span> R = tex.channel(0).to_array(cm);</div>
+<div class="line">    <span class="keyword">auto</span> G = tex.channel(1).to_array(cm);</div>
+<div class="line">    <span class="keyword">auto</span> B = tex.channel(2).to_array(cm);</div>
 <div class="line"> </div>
-<div class="line">  <span class="keyword">auto</span> lambda1 =</div>
+<div class="line">    EXPECT(R.shape == shape, <span class="stringliteral">&quot;R channel shape&quot;</span>);</div>
+<div class="line">    EXPECT(G.shape == shape, <span class="stringliteral">&quot;G channel shape&quot;</span>);</div>
+<div class="line">    EXPECT(B.shape == shape, <span class="stringliteral">&quot;B channel shape&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">    EXPECT(G.min() == 0.f, <span class="stringliteral">&quot;G channel == 0&quot;</span>);</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
+<div class="line">  <span class="comment">// Per-pixel VirtualTexture</span></div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1VirtualTexture.html">hmap::VirtualTexture</a> tex_px(shape, bbox, tile_shape, halo, 4, storage_mode);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> fill_pixel =</div>
 <div class="line">      [](std::vector&lt;float&gt; &amp;px, <span class="keywordtype">int</span> i, <span class="keywordtype">int</span> j, <span class="keyword">const</span> <a class="code hl_struct" href="structhmap_1_1TileRegion.html">hmap::TileRegion</a> &amp;region)</div>
 <div class="line">  {</div>
 <div class="line">    glm::vec2 pos = region.cell_center(i, j);</div>
 <div class="line">    px[0] = pos.x;</div>
 <div class="line">    px[1] = 0.f;</div>
 <div class="line">    px[2] = pos.y;</div>
-<div class="line">    px[3] = 1.f; <span class="comment">// pos.x;</span></div>
+<div class="line">    px[3] = 1.f;</div>
 <div class="line">  };</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a6bbca26bba2f2faac320f59df0ae8d8a">hmap::for_each_pixel</a>(tex2, lambda1, cm);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a6bbca26bba2f2faac320f59df0ae8d8a">hmap::for_each_pixel</a>(tex_px, fill_pixel, cm);</div>
+<div class="line">  tex_px.to_png(<span class="stringliteral">&quot;out1.png&quot;</span>, cm);</div>
 <div class="line"> </div>
-<div class="line">  tex2.to_png(<span class="stringliteral">&quot;out1.png&quot;</span>, cm);</div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
+<div class="line">  <span class="comment">// Tests: per-pixel alpha</span></div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
 <div class="line"> </div>
-<div class="line">  <span class="comment">// --- colorize</span></div>
+<div class="line">  {</div>
+<div class="line">    <span class="keyword">auto</span> A = tex_px.channel(3).to_array(cm);</div>
 <div class="line"> </div>
-<div class="line">  <span class="keyword">auto</span> level = <a class="code hl_struct" href="structhmap_1_1VirtualArray.html">hmap::VirtualArray</a>(shape, bbox, tile_shape, halo, storage_mode);</div>
-<div class="line">  level.remap(0.f, 1.f, cm);</div>
+<div class="line">    EXPECT(A.min() == 1.f, <span class="stringliteral">&quot;alpha min == 1&quot;</span>);</div>
+<div class="line">    EXPECT(A.max() == 1.f, <span class="stringliteral">&quot;alpha max == 1&quot;</span>);</div>
+<div class="line">  }</div>
 <div class="line"> </div>
-<div class="line">  <span class="keyword">auto</span> tex_c = <a class="code hl_class" href="classhmap_1_1VirtualTexture.html">hmap::VirtualTexture</a>(shape,</div>
-<div class="line">                                    bbox,</div>
-<div class="line">                                    tile_shape,</div>
-<div class="line">                                    halo,</div>
-<div class="line">                                    4, <span class="comment">// 4 channels RGBA</span></div>
-<div class="line">                                    storage_mode);</div>
-<div class="line">  tex_c.fill(3, 1.f, cm); <span class="comment">// set alpha to 1</span></div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
+<div class="line">  <span class="comment">// Colorize test</span></div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
 <div class="line"> </div>
-<div class="line">  <span class="keyword">auto</span> lambda_noise = [](<a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> &amp;tile, <span class="keyword">const</span> <a class="code hl_struct" href="structhmap_1_1TileRegion.html">hmap::TileRegion</a> &amp;region)</div>
+<div class="line">  <a class="code hl_struct" href="structhmap_1_1VirtualArray.html">hmap::VirtualArray</a> level(shape, bbox, tile_shape, halo, storage_mode);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> gen_noise = [](<a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> &amp;tile, <span class="keyword">const</span> <a class="code hl_struct" href="structhmap_1_1TileRegion.html">hmap::TileRegion</a> &amp;region)</div>
 <div class="line">  {</div>
 <div class="line">    tile = <a class="code hl_function" href="namespacehmap.html#a03c0be3a7198eebacefcb208b0cfee99">hmap::noise</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>,</div>
 <div class="line">                       region.shape,</div>
@@ -6303,30 +6391,90 @@ template&lt;typename T &gt; </div>
 <div class="line">                       region.bbox);</div>
 <div class="line">  };</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1025088e008bb5709c8f88bc025ab1cb">hmap::for_each_tile</a>(level, lambda_noise, cm);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1025088e008bb5709c8f88bc025ab1cb">hmap::for_each_tile</a>(level, gen_noise, cm);</div>
+<div class="line">  level.remap(0.f, 1.f, cm);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a33a635351aa13228557a585470ba4563">hmap::colorize</a>(tex_c,</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1VirtualTexture.html">hmap::VirtualTexture</a> tex_color(shape,</div>
+<div class="line">                                 bbox,</div>
+<div class="line">                                 tile_shape,</div>
+<div class="line">                                 halo,</div>
+<div class="line">                                 4,</div>
+<div class="line">                                 storage_mode);</div>
+<div class="line"> </div>
+<div class="line">  tex_color.fill(3, 1.f, cm);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a33a635351aa13228557a585470ba4563">hmap::colorize</a>(tex_color,</div>
 <div class="line">                 level,</div>
 <div class="line">                 cm,</div>
 <div class="line">                 level.min(cm),</div>
 <div class="line">                 level.max(cm),</div>
 <div class="line">                 <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>,</div>
-<div class="line">                 &amp;level);</div>
+<div class="line">                 <span class="keyword">nullptr</span>);</div>
 <div class="line"> </div>
-<div class="line">  tex_c.to_png(<span class="stringliteral">&quot;out2.png&quot;</span>, cm);</div>
+<div class="line">  tex_color.to_png(<span class="stringliteral">&quot;out2.png&quot;</span>, cm);</div>
 <div class="line"> </div>
-<div class="line">  <span class="comment">// --- mix</span></div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
+<div class="line">  <span class="comment">// Tests: colorize invariants</span></div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
 <div class="line"> </div>
-<div class="line">  <span class="keyword">auto</span> tex_m = <a class="code hl_class" href="classhmap_1_1VirtualTexture.html">hmap::VirtualTexture</a>(shape,</div>
-<div class="line">                                    bbox,</div>
-<div class="line">                                    tile_shape,</div>
-<div class="line">                                    halo,</div>
-<div class="line">                                    4, <span class="comment">// 4 channels RGBA</span></div>
-<div class="line">                                    storage_mode);</div>
+<div class="line">  {</div>
+<div class="line">    <span class="keyword">auto</span> A = tex_color.channel(3).to_array(cm);</div>
+<div class="line">    <span class="keyword">auto</span> R = tex_color.channel(0).to_array(cm);</div>
+<div class="line">    <span class="keyword">auto</span> G = tex_color.channel(1).to_array(cm);</div>
+<div class="line">    <span class="keyword">auto</span> B = tex_color.channel(2).to_array(cm);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac5229d29466796bb6afcdebe997731a3">hmap::mix</a>(tex_m, tex2, tex_c, cm);</div>
+<div class="line">    EXPECT(A.min() == 1.f, <span class="stringliteral">&quot;colorize alpha preserved&quot;</span>);</div>
+<div class="line">    EXPECT(R.max() &lt;= 1.f, <span class="stringliteral">&quot;R &lt;= 1&quot;</span>);</div>
+<div class="line">    EXPECT(G.max() &lt;= 1.f, <span class="stringliteral">&quot;G &lt;= 1&quot;</span>);</div>
+<div class="line">    EXPECT(B.max() &lt;= 1.f, <span class="stringliteral">&quot;B &lt;= 1&quot;</span>);</div>
+<div class="line">  }</div>
 <div class="line"> </div>
-<div class="line">  tex_m.to_png(<span class="stringliteral">&quot;out3.png&quot;</span>, cm);</div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
+<div class="line">  <span class="comment">// Mix test</span></div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1VirtualTexture.html">hmap::VirtualTexture</a> tex_mix(shape, bbox, tile_shape, halo, 4, storage_mode);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac5229d29466796bb6afcdebe997731a3">hmap::mix</a>(tex_mix, tex_px, tex_color, cm);</div>
+<div class="line">  tex_mix.to_png(<span class="stringliteral">&quot;out3.png&quot;</span>, cm);</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
+<div class="line">  <span class="comment">// Tests: mix sanity</span></div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
+<div class="line"> </div>
+<div class="line">  {</div>
+<div class="line">    <span class="keyword">auto</span> A = tex_mix.channel(3).to_array(cm);</div>
+<div class="line"> </div>
+<div class="line">    EXPECT(A.min() &gt;= 0.f, <span class="stringliteral">&quot;mix alpha &gt;= 0&quot;</span>);</div>
+<div class="line">    EXPECT(A.max() &lt;= 1.f, <span class="stringliteral">&quot;mix alpha &lt;= 1&quot;</span>);</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
+<div class="line">  <span class="comment">// Small tile stress test</span></div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
+<div class="line"> </div>
+<div class="line">  {</div>
+<div class="line">    <span class="keyword">const</span> glm::ivec2 small_tile{8, 8};</div>
+<div class="line">    <span class="keyword">const</span> <span class="keywordtype">size_t</span>     big_halo = 7;</div>
+<div class="line"> </div>
+<div class="line">    <a class="code hl_class" href="classhmap_1_1VirtualTexture.html">hmap::VirtualTexture</a> tex_small(shape,</div>
+<div class="line">                                   bbox,</div>
+<div class="line">                                   small_tile,</div>
+<div class="line">                                   big_halo,</div>
+<div class="line">                                   3,</div>
+<div class="line">                                   storage_mode);</div>
+<div class="line"> </div>
+<div class="line">    <a class="code hl_function" href="namespacehmap.html#a1025088e008bb5709c8f88bc025ab1cb">hmap::for_each_tile</a>(tex_small.channels_ptr(), fill_channels, cm);</div>
+<div class="line"> </div>
+<div class="line">    <span class="keyword">auto</span> R = tex_small.channel(0).to_array(cm);</div>
+<div class="line">    <span class="keyword">auto</span> B = tex_small.channel(2).to_array(cm);</div>
+<div class="line"> </div>
+<div class="line">    EXPECT(R.shape == shape, <span class="stringliteral">&quot;small tile R shape&quot;</span>);</div>
+<div class="line">    EXPECT(std::isfinite(R.min()), <span class="stringliteral">&quot;small tile finite R&quot;</span>);</div>
+<div class="line">    EXPECT(std::isfinite(B.max()), <span class="stringliteral">&quot;small tile finite B&quot;</span>);</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_virtual_texture.png" alt=""/>
@@ -6610,106 +6758,120 @@ template&lt;typename T &gt; </div>
   </table>
   </dd>
 </dl>
-<p><b>Example</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<p><b>Example</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;cmath&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &quot;<a class="code" href="highmap_8hpp.html">highmap.hpp</a>&quot;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
+<div class="line"><span class="preprocessor">#define EXPECT(cond, msg)                                                      \</span></div>
+<div class="line"><span class="preprocessor">  do                                                                           \</span></div>
+<div class="line"><span class="preprocessor">  {                                                                            \</span></div>
+<div class="line"><span class="preprocessor">    if (!(cond))                                                               \</span></div>
+<div class="line"><span class="preprocessor">      std::cerr &lt;&lt; &quot;[FAIL] &quot; &lt;&lt; msg &lt;&lt; &quot;\n&quot;;                                   \</span></div>
+<div class="line"><span class="preprocessor">    else                                                                       \</span></div>
+<div class="line"><span class="preprocessor">      std::cout &lt;&lt; &quot;[ OK ] &quot; &lt;&lt; msg &lt;&lt; &quot;\n&quot;;                                   \</span></div>
+<div class="line"><span class="preprocessor">  } while (0)</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main()</div>
 <div class="line">{</div>
-<div class="line">  glm::vec4  bbox(0.f, 1.0f, 0.f, 1.f); <span class="comment">// x1,x2,y1,y2</span></div>
-<div class="line">  glm::ivec2 shape(1024, 1024);</div>
-<div class="line">  glm::ivec2 tile_shape(256, 256);</div>
-<div class="line">  <span class="keywordtype">size_t</span>     halo = 32;</div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
+<div class="line">  <span class="comment">// Configuration</span></div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
 <div class="line"> </div>
-<div class="line">  shape = {1000, 581};</div>
-<div class="line">  tile_shape = {220, 312};</div>
+<div class="line">  <span class="keyword">const</span> glm::vec4  bbox{0.f, 1.f, 0.f, 1.f};</div>
+<div class="line">  <span class="keyword">const</span> glm::ivec2 shape{1000, 581};</div>
+<div class="line">  <span class="keyword">const</span> glm::ivec2 tile_shape{220, 312};</div>
+<div class="line">  <span class="keyword">const</span> <span class="keywordtype">size_t</span>     halo = 32;</div>
 <div class="line"> </div>
-<div class="line">  <span class="comment">// shape = {10000, 10000};</span></div>
-<div class="line">  <span class="comment">// tile_shape = {4096, 4096};</span></div>
+<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> foreach_mode = <a class="code hl_enumvalue" href="namespacehmap.html#ae383414b46ae8992e621c407f09ce7c5a5356cbfe824240ce4bd458109890b9d5">hmap::ForEachMode::VA_DISTRIBUTED</a>;</div>
+<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> storage_mode = <a class="code hl_enumvalue" href="namespacehmap.html#ad21b93a34c88a47d6b54f3a4d5b65e6ea671262171ccce9633cc42db046ea63d4">hmap::StorageMode::VA_DISK_LRU</a>;</div>
 <div class="line"> </div>
-<div class="line">  <span class="comment">// auto mode = hmap::ForEachMode::VA_SEQUENTIAL;</span></div>
-<div class="line">  <span class="keyword">auto</span> mode = <a class="code hl_enumvalue" href="namespacehmap.html#ae383414b46ae8992e621c407f09ce7c5a5356cbfe824240ce4bd458109890b9d5">hmap::ForEachMode::VA_DISTRIBUTED</a>;</div>
-<div class="line">  <span class="comment">// auto mode = hmap::ForEachMode::VA_SINGLE_ARRAY;</span></div>
+<div class="line">  <span class="keyword">const</span> <a class="code hl_struct" href="structhmap_1_1ComputeMode.html">hmap::ComputeMode</a> cm{</div>
+<div class="line">      .<a class="code hl_variable" href="structhmap_1_1ComputeMode.html#a88f263de26dea2af6e22e2d4f5f02cab">mode</a> = foreach_mode,</div>
+<div class="line">      .trim_storage = <span class="keyword">false</span>,</div>
+<div class="line">  };</div>
 <div class="line"> </div>
-<div class="line">  <span class="comment">// bool trim_storage = true;</span></div>
-<div class="line">  <span class="keywordtype">bool</span> trim_storage = <span class="keyword">false</span>;</div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
+<div class="line">  <span class="comment">// Channel-based VirtualTexture</span></div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
 <div class="line"> </div>
-<div class="line">  <span class="comment">// auto storage_mode = hmap::StorageMode::VA_RAM;</span></div>
-<div class="line">  <span class="keyword">auto</span> storage_mode = <a class="code hl_enumvalue" href="namespacehmap.html#ad21b93a34c88a47d6b54f3a4d5b65e6ea671262171ccce9633cc42db046ea63d4">hmap::StorageMode::VA_DISK_LRU</a>;</div>
-<div class="line">  <span class="comment">// auto storage_mode = hmap::StorageMode::VA_DISK_LRU_MIN;</span></div>
-<div class="line">  <span class="comment">// auto storage_mode = hmap::StorageMode::VA_DISK_SEQUENTIAL;</span></div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1VirtualTexture.html">hmap::VirtualTexture</a> tex(shape, bbox, tile_shape, halo, 3, storage_mode);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_struct" href="structhmap_1_1ComputeMode.html">hmap::ComputeMode</a> cm = {.<a class="code hl_variable" href="structhmap_1_1ComputeMode.html#a88f263de26dea2af6e22e2d4f5f02cab">mode</a> = mode, .trim_storage = trim_storage};</div>
-<div class="line"> </div>
-<div class="line">  <span class="keyword">auto</span> tex = <a class="code hl_class" href="classhmap_1_1VirtualTexture.html">hmap::VirtualTexture</a>(shape,</div>
-<div class="line">                                  bbox,</div>
-<div class="line">                                  tile_shape,</div>
-<div class="line">                                  halo,</div>
-<div class="line">                                  3,</div>
-<div class="line">                                  storage_mode);</div>
-<div class="line"> </div>
-<div class="line">  <span class="keyword">auto</span> lambda0 =</div>
+<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> fill_channels =</div>
 <div class="line">      [](std::vector&lt;hmap::Array *&gt; &amp;tiles, <span class="keyword">const</span> <a class="code hl_struct" href="structhmap_1_1TileRegion.html">hmap::TileRegion</a> &amp;region)</div>
 <div class="line">  {</div>
-<div class="line">    <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> &amp;R = *tiles[0];</div>
-<div class="line">    <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> &amp;G = *tiles[1];</div>
-<div class="line">    <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> &amp;B = *tiles[2];</div>
+<div class="line">    <span class="keyword">auto</span> &amp;R = *tiles[0];</div>
+<div class="line">    <span class="keyword">auto</span> &amp;G = *tiles[1];</div>
+<div class="line">    <span class="keyword">auto</span> &amp;B = *tiles[2];</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; region.shape.y; ++j)</div>
 <div class="line">      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; region.shape.x; ++i)</div>
 <div class="line">      {</div>
 <div class="line">        glm::vec2 pos = region.cell_center(i, j);</div>
-<div class="line"> </div>
 <div class="line">        R(i, j) = pos.x;</div>
 <div class="line">        G(i, j) = 0.f;</div>
 <div class="line">        B(i, j) = pos.y;</div>
 <div class="line">      }</div>
 <div class="line">  };</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1025088e008bb5709c8f88bc025ab1cb">hmap::for_each_tile</a>(tex.channels_ptr(), lambda0, cm);</div>
-<div class="line"> </div>
-<div class="line">  <span class="comment">// tex.fill(0.5f, cm);</span></div>
-<div class="line">  <span class="comment">// tex.fill(3, 1.f, cm);</span></div>
-<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1025088e008bb5709c8f88bc025ab1cb">hmap::for_each_tile</a>(tex.channels_ptr(), fill_channels, cm);</div>
 <div class="line">  tex.to_png(<span class="stringliteral">&quot;out0.png&quot;</span>, cm);</div>
 <div class="line"> </div>
-<div class="line">  <span class="comment">// --- per pixel</span></div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
+<div class="line">  <span class="comment">// Tests: channel invariants</span></div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
 <div class="line"> </div>
-<div class="line">  <span class="keyword">auto</span> tex2 = <a class="code hl_class" href="classhmap_1_1VirtualTexture.html">hmap::VirtualTexture</a>(shape,</div>
-<div class="line">                                   bbox,</div>
-<div class="line">                                   tile_shape,</div>
-<div class="line">                                   halo,</div>
-<div class="line">                                   4,</div>
-<div class="line">                                   storage_mode);</div>
+<div class="line">  {</div>
+<div class="line">    <span class="keyword">auto</span> R = tex.channel(0).to_array(cm);</div>
+<div class="line">    <span class="keyword">auto</span> G = tex.channel(1).to_array(cm);</div>
+<div class="line">    <span class="keyword">auto</span> B = tex.channel(2).to_array(cm);</div>
 <div class="line"> </div>
-<div class="line">  <span class="keyword">auto</span> lambda1 =</div>
+<div class="line">    EXPECT(R.shape == shape, <span class="stringliteral">&quot;R channel shape&quot;</span>);</div>
+<div class="line">    EXPECT(G.shape == shape, <span class="stringliteral">&quot;G channel shape&quot;</span>);</div>
+<div class="line">    EXPECT(B.shape == shape, <span class="stringliteral">&quot;B channel shape&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">    EXPECT(G.min() == 0.f, <span class="stringliteral">&quot;G channel == 0&quot;</span>);</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
+<div class="line">  <span class="comment">// Per-pixel VirtualTexture</span></div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1VirtualTexture.html">hmap::VirtualTexture</a> tex_px(shape, bbox, tile_shape, halo, 4, storage_mode);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> fill_pixel =</div>
 <div class="line">      [](std::vector&lt;float&gt; &amp;px, <span class="keywordtype">int</span> i, <span class="keywordtype">int</span> j, <span class="keyword">const</span> <a class="code hl_struct" href="structhmap_1_1TileRegion.html">hmap::TileRegion</a> &amp;region)</div>
 <div class="line">  {</div>
 <div class="line">    glm::vec2 pos = region.cell_center(i, j);</div>
 <div class="line">    px[0] = pos.x;</div>
 <div class="line">    px[1] = 0.f;</div>
 <div class="line">    px[2] = pos.y;</div>
-<div class="line">    px[3] = 1.f; <span class="comment">// pos.x;</span></div>
+<div class="line">    px[3] = 1.f;</div>
 <div class="line">  };</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a6bbca26bba2f2faac320f59df0ae8d8a">hmap::for_each_pixel</a>(tex2, lambda1, cm);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a6bbca26bba2f2faac320f59df0ae8d8a">hmap::for_each_pixel</a>(tex_px, fill_pixel, cm);</div>
+<div class="line">  tex_px.to_png(<span class="stringliteral">&quot;out1.png&quot;</span>, cm);</div>
 <div class="line"> </div>
-<div class="line">  tex2.to_png(<span class="stringliteral">&quot;out1.png&quot;</span>, cm);</div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
+<div class="line">  <span class="comment">// Tests: per-pixel alpha</span></div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
 <div class="line"> </div>
-<div class="line">  <span class="comment">// --- colorize</span></div>
+<div class="line">  {</div>
+<div class="line">    <span class="keyword">auto</span> A = tex_px.channel(3).to_array(cm);</div>
 <div class="line"> </div>
-<div class="line">  <span class="keyword">auto</span> level = <a class="code hl_struct" href="structhmap_1_1VirtualArray.html">hmap::VirtualArray</a>(shape, bbox, tile_shape, halo, storage_mode);</div>
-<div class="line">  level.remap(0.f, 1.f, cm);</div>
+<div class="line">    EXPECT(A.min() == 1.f, <span class="stringliteral">&quot;alpha min == 1&quot;</span>);</div>
+<div class="line">    EXPECT(A.max() == 1.f, <span class="stringliteral">&quot;alpha max == 1&quot;</span>);</div>
+<div class="line">  }</div>
 <div class="line"> </div>
-<div class="line">  <span class="keyword">auto</span> tex_c = <a class="code hl_class" href="classhmap_1_1VirtualTexture.html">hmap::VirtualTexture</a>(shape,</div>
-<div class="line">                                    bbox,</div>
-<div class="line">                                    tile_shape,</div>
-<div class="line">                                    halo,</div>
-<div class="line">                                    4, <span class="comment">// 4 channels RGBA</span></div>
-<div class="line">                                    storage_mode);</div>
-<div class="line">  tex_c.fill(3, 1.f, cm); <span class="comment">// set alpha to 1</span></div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
+<div class="line">  <span class="comment">// Colorize test</span></div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
 <div class="line"> </div>
-<div class="line">  <span class="keyword">auto</span> lambda_noise = [](<a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> &amp;tile, <span class="keyword">const</span> <a class="code hl_struct" href="structhmap_1_1TileRegion.html">hmap::TileRegion</a> &amp;region)</div>
+<div class="line">  <a class="code hl_struct" href="structhmap_1_1VirtualArray.html">hmap::VirtualArray</a> level(shape, bbox, tile_shape, halo, storage_mode);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> gen_noise = [](<a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> &amp;tile, <span class="keyword">const</span> <a class="code hl_struct" href="structhmap_1_1TileRegion.html">hmap::TileRegion</a> &amp;region)</div>
 <div class="line">  {</div>
 <div class="line">    tile = <a class="code hl_function" href="namespacehmap.html#a03c0be3a7198eebacefcb208b0cfee99">hmap::noise</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>,</div>
 <div class="line">                       region.shape,</div>
@@ -6721,30 +6883,90 @@ template&lt;typename T &gt; </div>
 <div class="line">                       region.bbox);</div>
 <div class="line">  };</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1025088e008bb5709c8f88bc025ab1cb">hmap::for_each_tile</a>(level, lambda_noise, cm);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a1025088e008bb5709c8f88bc025ab1cb">hmap::for_each_tile</a>(level, gen_noise, cm);</div>
+<div class="line">  level.remap(0.f, 1.f, cm);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a33a635351aa13228557a585470ba4563">hmap::colorize</a>(tex_c,</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1VirtualTexture.html">hmap::VirtualTexture</a> tex_color(shape,</div>
+<div class="line">                                 bbox,</div>
+<div class="line">                                 tile_shape,</div>
+<div class="line">                                 halo,</div>
+<div class="line">                                 4,</div>
+<div class="line">                                 storage_mode);</div>
+<div class="line"> </div>
+<div class="line">  tex_color.fill(3, 1.f, cm);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a33a635351aa13228557a585470ba4563">hmap::colorize</a>(tex_color,</div>
 <div class="line">                 level,</div>
 <div class="line">                 cm,</div>
 <div class="line">                 level.min(cm),</div>
 <div class="line">                 level.max(cm),</div>
 <div class="line">                 <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>,</div>
-<div class="line">                 &amp;level);</div>
+<div class="line">                 <span class="keyword">nullptr</span>);</div>
 <div class="line"> </div>
-<div class="line">  tex_c.to_png(<span class="stringliteral">&quot;out2.png&quot;</span>, cm);</div>
+<div class="line">  tex_color.to_png(<span class="stringliteral">&quot;out2.png&quot;</span>, cm);</div>
 <div class="line"> </div>
-<div class="line">  <span class="comment">// --- mix</span></div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
+<div class="line">  <span class="comment">// Tests: colorize invariants</span></div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
 <div class="line"> </div>
-<div class="line">  <span class="keyword">auto</span> tex_m = <a class="code hl_class" href="classhmap_1_1VirtualTexture.html">hmap::VirtualTexture</a>(shape,</div>
-<div class="line">                                    bbox,</div>
-<div class="line">                                    tile_shape,</div>
-<div class="line">                                    halo,</div>
-<div class="line">                                    4, <span class="comment">// 4 channels RGBA</span></div>
-<div class="line">                                    storage_mode);</div>
+<div class="line">  {</div>
+<div class="line">    <span class="keyword">auto</span> A = tex_color.channel(3).to_array(cm);</div>
+<div class="line">    <span class="keyword">auto</span> R = tex_color.channel(0).to_array(cm);</div>
+<div class="line">    <span class="keyword">auto</span> G = tex_color.channel(1).to_array(cm);</div>
+<div class="line">    <span class="keyword">auto</span> B = tex_color.channel(2).to_array(cm);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac5229d29466796bb6afcdebe997731a3">hmap::mix</a>(tex_m, tex2, tex_c, cm);</div>
+<div class="line">    EXPECT(A.min() == 1.f, <span class="stringliteral">&quot;colorize alpha preserved&quot;</span>);</div>
+<div class="line">    EXPECT(R.max() &lt;= 1.f, <span class="stringliteral">&quot;R &lt;= 1&quot;</span>);</div>
+<div class="line">    EXPECT(G.max() &lt;= 1.f, <span class="stringliteral">&quot;G &lt;= 1&quot;</span>);</div>
+<div class="line">    EXPECT(B.max() &lt;= 1.f, <span class="stringliteral">&quot;B &lt;= 1&quot;</span>);</div>
+<div class="line">  }</div>
 <div class="line"> </div>
-<div class="line">  tex_m.to_png(<span class="stringliteral">&quot;out3.png&quot;</span>, cm);</div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
+<div class="line">  <span class="comment">// Mix test</span></div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1VirtualTexture.html">hmap::VirtualTexture</a> tex_mix(shape, bbox, tile_shape, halo, 4, storage_mode);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac5229d29466796bb6afcdebe997731a3">hmap::mix</a>(tex_mix, tex_px, tex_color, cm);</div>
+<div class="line">  tex_mix.to_png(<span class="stringliteral">&quot;out3.png&quot;</span>, cm);</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
+<div class="line">  <span class="comment">// Tests: mix sanity</span></div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
+<div class="line"> </div>
+<div class="line">  {</div>
+<div class="line">    <span class="keyword">auto</span> A = tex_mix.channel(3).to_array(cm);</div>
+<div class="line"> </div>
+<div class="line">    EXPECT(A.min() &gt;= 0.f, <span class="stringliteral">&quot;mix alpha &gt;= 0&quot;</span>);</div>
+<div class="line">    EXPECT(A.max() &lt;= 1.f, <span class="stringliteral">&quot;mix alpha &lt;= 1&quot;</span>);</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
+<div class="line">  <span class="comment">// Small tile stress test</span></div>
+<div class="line">  <span class="comment">// ===========================================================================</span></div>
+<div class="line"> </div>
+<div class="line">  {</div>
+<div class="line">    <span class="keyword">const</span> glm::ivec2 small_tile{8, 8};</div>
+<div class="line">    <span class="keyword">const</span> <span class="keywordtype">size_t</span>     big_halo = 7;</div>
+<div class="line"> </div>
+<div class="line">    <a class="code hl_class" href="classhmap_1_1VirtualTexture.html">hmap::VirtualTexture</a> tex_small(shape,</div>
+<div class="line">                                   bbox,</div>
+<div class="line">                                   small_tile,</div>
+<div class="line">                                   big_halo,</div>
+<div class="line">                                   3,</div>
+<div class="line">                                   storage_mode);</div>
+<div class="line"> </div>
+<div class="line">    <a class="code hl_function" href="namespacehmap.html#a1025088e008bb5709c8f88bc025ab1cb">hmap::for_each_tile</a>(tex_small.channels_ptr(), fill_channels, cm);</div>
+<div class="line"> </div>
+<div class="line">    <span class="keyword">auto</span> R = tex_small.channel(0).to_array(cm);</div>
+<div class="line">    <span class="keyword">auto</span> B = tex_small.channel(2).to_array(cm);</div>
+<div class="line"> </div>
+<div class="line">    EXPECT(R.shape == shape, <span class="stringliteral">&quot;small tile R shape&quot;</span>);</div>
+<div class="line">    EXPECT(std::isfinite(R.min()), <span class="stringliteral">&quot;small tile finite R&quot;</span>);</div>
+<div class="line">    EXPECT(std::isfinite(B.max()), <span class="stringliteral">&quot;small tile finite B&quot;</span>);</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_virtual_texture.png" alt=""/>
