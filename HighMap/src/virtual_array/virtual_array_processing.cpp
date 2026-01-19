@@ -99,8 +99,18 @@ float VirtualArray::sum(const ComputeMode &cm) const
   std::vector<float> sum_per_tile;
   sum_per_tile.reserve(nt.x * nt.y);
 
-  auto lambda = [&sum_per_tile](const Array &tile, const TileRegion &)
-  { sum_per_tile.push_back(tile.sum()); };
+  auto lambda = [&sum_per_tile](const Array &tile, const TileRegion &region)
+  {
+    // sum over the inner cells only to avoid double count
+    const glm::ivec4 &h = region.halo;
+    float             sum = 0.f;
+
+    for (int j = h.z; j < region.shape.y - h.w; ++j)
+      for (int i = h.x; i < region.shape.x - h.y; ++i)
+        sum += tile(i, j);
+
+    sum_per_tile.push_back(sum);
+  };
 
   for_each_tile(*this, lambda, cm);
 
