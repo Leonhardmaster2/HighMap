@@ -35,7 +35,7 @@ var searchData=
   ['get_5fbbox_32',['get_bbox',['../classhmap_1_1Cloud.html#ae5ba6ffbe371603545c312e51601615f',1,'hmap::Cloud']]],
   ['get_5fbilinear_33',['get_bilinear',['../structhmap_1_1VirtualArray.html#ae4adbabb465da57c4056050375886848',1,'hmap::VirtualArray']]],
   ['get_5fcenter_34',['get_center',['../classhmap_1_1Cloud.html#a2f4679015ee69b12c50f60a607388965',1,'hmap::Cloud']]],
-  ['get_5fcolormap_5fdata_35',['get_colormap_data',['../namespacehmap.html#aea4d1a92934de93437705abd7dde6b06',1,'hmap']]],
+  ['get_5fcolormap_5fdata_35',['get_colormap_data',['../namespacehmap.html#a2f2ca726f4e41128135e6c77120c66d8',1,'hmap']]],
   ['get_5fcolormap_5fdata_2ecpp_36',['get_colormap_data.cpp',['../get__colormap__data_8cpp.html',1,'']]],
   ['get_5fconvex_5fhull_5fpoint_5findices_37',['get_convex_hull_point_indices',['../classhmap_1_1Cloud.html#a10f22c402c1e8e4043c01327bca0f9e8',1,'hmap::Cloud']]],
   ['get_5fcumulative_5fdistance_38',['get_cumulative_distance',['../classhmap_1_1Path.html#af379ec4946bde23277f2bd8112cc086c',1,'hmap::Path']]],

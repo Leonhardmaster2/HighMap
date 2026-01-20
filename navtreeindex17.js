@@ -1,5 +1,7 @@
 var NAVTREEINDEX17 =
 {
+"stitching__helpers_8cpp.html#a1efabd6902468a707a2029f684b45ba1":[5,0,1,1,23,4,4],
+"stitching__helpers_8cpp.html#a36f7eca67d2fdc5dd03a63f8b1d7255e":[5,0,1,1,23,4,3],
 "stitching__helpers_8cpp.html#a5ce9334e0b274e48f7ba8bcaa9dd12a3":[5,0,1,1,23,4,0],
 "stitching__helpers_8cpp.html#ae0a3c73cc23a288fe03bf5ed6ac73c3d":[5,0,1,1,23,4,1],
 "stitching__helpers_8cpp.html#ae6817ca5deb78b7edb959b3ea334b25b":[5,0,1,1,23,4,2],
@@ -247,7 +249,5 @@ var NAVTREEINDEX17 =
 "structhmap_1_1VirtualArray.html#a037ca97b101483eeb9628bf7662ee7ee":[3,0,0,73,17],
 "structhmap_1_1VirtualArray.html#a037ca97b101483eeb9628bf7662ee7ee":[4,0,0,72,17],
 "structhmap_1_1VirtualArray.html#a12c769efc1f74252ff39f2b617f55f33":[4,0,0,72,31],
-"structhmap_1_1VirtualArray.html#a12c769efc1f74252ff39f2b617f55f33":[3,0,0,73,31],
-"structhmap_1_1VirtualArray.html#a157b5a589d01cb7da7fd9b9b759f94c6":[3,0,0,73,30],
-"structhmap_1_1VirtualArray.html#a157b5a589d01cb7da7fd9b9b759f94c6":[4,0,0,72,30]
+"structhmap_1_1VirtualArray.html#a12c769efc1f74252ff39f2b617f55f33":[3,0,0,73,31]
 };

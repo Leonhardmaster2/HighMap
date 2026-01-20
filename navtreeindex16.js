@@ -1,5 +1,7 @@
 var NAVTREEINDEX16 =
 {
+"primitives__gpu_8cpp.html#a8b4f0ce7f877624d2120fd2415066aad":[5,0,1,1,25,11,4],
+"primitives__gpu_8cpp.html#a970d42d8f9305065f89dc019be7ae1cf":[5,0,1,1,25,11,5],
 "primitives__gpu_8cpp.html#aafc7d621ebf149a27f287222127294ab":[5,0,1,1,25,11,19],
 "primitives__gpu_8cpp.html#ab5aba8cd3981de6f363f6ae287d7be5f":[5,0,1,1,25,11,11],
 "primitives__gpu_8cpp.html#ac7c2489dd7079a4904b481815bb7dd0d":[5,0,1,1,25,11,13],
@@ -247,7 +249,5 @@ var NAVTREEINDEX16 =
 "solve__poisson__gauss__seidel_8cpp.html#a0bcc84aa462aee73e1a3a52729f21ea6":[5,0,1,1,16,4,0],
 "stamping_8cpp.html":[5,0,1,1,1,5],
 "stamping_8cpp.html#a4fb4163cdefab63b52484ea8091a11ed":[5,0,1,1,1,5,0],
-"stitching__helpers_8cpp.html":[5,0,1,1,23,4],
-"stitching__helpers_8cpp.html#a1efabd6902468a707a2029f684b45ba1":[5,0,1,1,23,4,4],
-"stitching__helpers_8cpp.html#a36f7eca67d2fdc5dd03a63f8b1d7255e":[5,0,1,1,23,4,3]
+"stitching__helpers_8cpp.html":[5,0,1,1,23,4]
 };

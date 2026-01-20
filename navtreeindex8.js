@@ -67,8 +67,8 @@ var NAVTREEINDEX8 =
 "flow__stream_8cpp.html#a948b4703486f175cd2681bd9bc7b5a88":[5,0,1,1,17,8,1],
 "format__raw_8cpp.html":[5,0,1,1,11,8],
 "format__raw_8cpp.html#a466d4275bb86ca9ca603c9d4192f931a":[5,0,1,1,11,8,0],
-"functions.html":[4,3,0],
 "functions.html":[4,3,0,0],
+"functions.html":[4,3,0],
 "functions_8cpp.html":[5,0,1,1,25,0,2],
 "functions_8cpp.html#a84ca1f41de32e4beacb10787127b4b8a":[5,0,1,1,25,0,2,0],
 "functions_8hpp.html":[5,0,1,0,0,20],
@@ -153,7 +153,8 @@ var NAVTREEINDEX8 =
 "geomorphons_8cpp.html":[5,0,1,1,12,3],
 "geomorphons_8cpp.html#aa60fa2d3f02d1e064b520fa1623200d0":[5,0,1,1,12,3,0],
 "get__colormap__data_8cpp.html":[5,0,1,1,5,0],
-"get__colormap__data_8cpp.html#aea4d1a92934de93437705abd7dde6b06":[5,0,1,1,5,0,0],
+"get__colormap__data_8cpp.html#a2f2ca726f4e41128135e6c77120c66d8":[5,0,1,1,5,0,1],
+"get__colormap__data_8cpp.html#afb2677facc34ce83019137fd5a9818dd":[5,0,1,1,5,0,0],
 "globals.html":[5,1,0],
 "globals_func.html":[5,1,1],
 "globals_type.html":[5,1,2],
@@ -248,6 +249,5 @@ var NAVTREEINDEX8 =
 "hydraulic__particle__multiscale_8cpp.html":[5,0,1,1,10,12],
 "hydraulic__particle__multiscale_8cpp.html#ab2b38a401eebca7bd3c9a96a072f0df7":[5,0,1,1,10,12,0],
 "hydraulic__procedural_8cpp.html":[5,0,1,1,10,13],
-"hydraulic__procedural_8cpp.html#a02f191e398bfc3c0e87999d8576d7c3d":[5,0,1,1,10,13,0],
-"hydraulic__procedural_8cpp.html#af65bb48580b5f860571161387a22fbb4":[5,0,1,1,10,13,1]
+"hydraulic__procedural_8cpp.html#a02f191e398bfc3c0e87999d8576d7c3d":[5,0,1,1,10,13,0]
 };

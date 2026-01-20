@@ -487,7 +487,7 @@ void \mbox{\hyperlink{namespacehmap_a1175ee497ff12b2f3c6cdb7cc805949f}{color\+\_
 \begin{DoxyCompactList}\small\item\em Apply colorization to an array. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a6f991e3bdf7c5c4bed631f2b7fb4f072}{colorize}} (\mbox{\hyperlink{classhmap_1_1VirtualTexture}{Virtual\+Texture}} \&out, \mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \&level, const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&cm, float vmin, float vmax, int cmap, \mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \texorpdfstring{$\ast$}{*}p\+\_\+alpha=nullptr, bool reverse=false, \mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise=nullptr)
 \begin{DoxyCompactList}\small\item\em Colorize a scalar field into a texture using a predefined colormap. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{namespacehmap_abc8fb0970d44a6627145587080c715bb}{colorize}} (\mbox{\hyperlink{classhmap_1_1VirtualTexture}{Virtual\+Texture}} \&out, \mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \&level, const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&cm, float vmin, float vmax, const std\+::vector$<$ float $>$ \&positions, const std\+::vector$<$ std\+::vector$<$ float $>$ $>$ \&colormap\+\_\+colors, \mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \texorpdfstring{$\ast$}{*}p\+\_\+alpha=nullptr, bool reverse=false, \mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise=nullptr)
+void \mbox{\hyperlink{namespacehmap_a221887dae102efd3756a1a8559eadeee}{colorize}} (\mbox{\hyperlink{classhmap_1_1VirtualTexture}{Virtual\+Texture}} \&out, \mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \&level, const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&cm, float vmin, float vmax, const std\+::vector$<$ float $>$ \&positions, const std\+::vector$<$ glm\+::vec3 $>$ \&colormap\+\_\+colors, \mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \texorpdfstring{$\ast$}{*}p\+\_\+alpha=nullptr, bool reverse=false, \mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise=nullptr)
 \begin{DoxyCompactList}\small\item\em Colorize a scalar field into a texture using a custom colormap. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Tensor}{Tensor}} \mbox{\hyperlink{namespacehmap_aa76bdaf8b572bcea0778ef8815965307}{colorize\+\_\+grayscale}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array)
 \begin{DoxyCompactList}\small\item\em Convert an array to a grayscale image. \end{DoxyCompactList}\item 
@@ -505,7 +505,7 @@ void \mbox{\hyperlink{namespacehmap_a663df316bd09bb4072cbfe655e389668}{mix}} (\m
 \item 
 void \mbox{\hyperlink{namespacehmap_a034df9fe48c4e9a2bead1da021ffd437}{mix\+\_\+normal\+\_\+map}} (\mbox{\hyperlink{classhmap_1_1VirtualTexture}{Virtual\+Texture}} \&out, \mbox{\hyperlink{classhmap_1_1VirtualTexture}{Virtual\+Texture}} \&nmap\+\_\+base, \mbox{\hyperlink{classhmap_1_1VirtualTexture}{Virtual\+Texture}} \&nmap\+\_\+detail, const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&cm, float detail\+\_\+scaling, \mbox{\hyperlink{namespacehmap_abc952321c99ec11d60b4037e3d27db9b}{Normal\+Map\+Blending\+Method}} blending\+\_\+method)
 \begin{DoxyCompactList}\small\item\em Blend two normal maps into a single output normal map. \end{DoxyCompactList}\item 
-std\+::vector$<$ std\+::vector$<$ float $>$ $>$ \mbox{\hyperlink{namespacehmap_aea4d1a92934de93437705abd7dde6b06}{get\+\_\+colormap\+\_\+data}} (int cmap)
+std\+::vector$<$ glm\+::vec3 $>$ \mbox{\hyperlink{namespacehmap_a2f2ca726f4e41128135e6c77120c66d8}{get\+\_\+colormap\+\_\+data}} (int cmap)
 \item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a9411ccef8a74e06ef51efd1f5041c7b4}{convolve1d\+\_\+i}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, const std\+::vector$<$ float $>$ \&kernel)
 \begin{DoxyCompactList}\small\item\em Return the convolution product of the array with a 1D kernel along the \textquotesingle{}i\textquotesingle{} direction. \end{DoxyCompactList}\item 
@@ -1692,6 +1692,8 @@ void \mbox{\hyperlink{namespacehmap_af5440364a346b297246885e95793ef45}{square\+\
 uint32\+\_\+t \mbox{\hyperlink{namespacehmap_a3694cff871813c283356c8edf1db3f55}{helper\+\_\+hash\+\_\+u32}} (uint32\+\_\+t x)
 \item 
 float \mbox{\hyperlink{namespacehmap_a5e1e11e11949bc172f52c62ae984ded4}{helper\+\_\+hash\+\_\+01}} (uint32\+\_\+t x)
+\item 
+std\+::vector$<$ glm\+::vec3 $>$ \mbox{\hyperlink{namespacehmap_afb2677facc34ce83019137fd5a9818dd}{helper\+\_\+tov3}} (const std\+::vector$<$ std\+::vector$<$ float $>$ $>$ \&colors)
 \item 
 float \mbox{\hyperlink{namespacehmap_aba0d25f051d23c9c637973b7edf19922}{helper\+\_\+thermal\+\_\+exchange}} (float self, float other, float dist, float talus)
 \item 
@@ -4430,11 +4432,11 @@ Colorize a scalar field into a texture using a predefined colormap.
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}  \Hypertarget{namespacehmap_abc8fb0970d44a6627145587080c715bb}\label{namespacehmap_abc8fb0970d44a6627145587080c715bb} 
+{\bfseries{Result}}  \Hypertarget{namespacehmap_a221887dae102efd3756a1a8559eadeee}\label{namespacehmap_a221887dae102efd3756a1a8559eadeee} 
 \index{hmap@{hmap}!colorize@{colorize}}
 \index{colorize@{colorize}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{colorize()}{colorize()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
-{\footnotesize\ttfamily void hmap\+::colorize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1VirtualTexture}{Virtual\+Texture}} \&}]{out,  }\item[{\mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \&}]{level,  }\item[{const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&}]{cm,  }\item[{float}]{vmin,  }\item[{float}]{vmax,  }\item[{const std\+::vector$<$ float $>$ \&}]{positions,  }\item[{const std\+::vector$<$ std\+::vector$<$ float $>$ $>$ \&}]{colormap\+\_\+colors,  }\item[{\mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+alpha = {\ttfamily nullptr},  }\item[{bool}]{reverse = {\ttfamily false},  }\item[{\mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void hmap\+::colorize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1VirtualTexture}{Virtual\+Texture}} \&}]{out,  }\item[{\mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \&}]{level,  }\item[{const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&}]{cm,  }\item[{float}]{vmin,  }\item[{float}]{vmax,  }\item[{const std\+::vector$<$ float $>$ \&}]{positions,  }\item[{const std\+::vector$<$ glm\+::vec3 $>$ \&}]{colormap\+\_\+colors,  }\item[{\mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+alpha = {\ttfamily nullptr},  }\item[{bool}]{reverse = {\ttfamily false},  }\item[{\mbox{\hyperlink{structhmap_1_1VirtualArray}{Virtual\+Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise = {\ttfamily nullptr} }\end{DoxyParamCaption})}
 
 
 
@@ -5106,11 +5108,11 @@ Combines a base normal map with a detail normal map using the specified blending
 {\em blending\+\_\+method} & Normal map blending method. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{namespacehmap_aea4d1a92934de93437705abd7dde6b06}\label{namespacehmap_aea4d1a92934de93437705abd7dde6b06} 
+\Hypertarget{namespacehmap_a2f2ca726f4e41128135e6c77120c66d8}\label{namespacehmap_a2f2ca726f4e41128135e6c77120c66d8} 
 \index{hmap@{hmap}!get\_colormap\_data@{get\_colormap\_data}}
 \index{get\_colormap\_data@{get\_colormap\_data}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{get\_colormap\_data()}{get\_colormap\_data()}}
-{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ float $>$ $>$ hmap\+::get\+\_\+colormap\+\_\+data (\begin{DoxyParamCaption}\item[{int}]{cmap }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily std\+::vector$<$ glm\+::vec3 $>$ hmap\+::get\+\_\+colormap\+\_\+data (\begin{DoxyParamCaption}\item[{int}]{cmap }\end{DoxyParamCaption})}
 
 \Hypertarget{namespacehmap_a9411ccef8a74e06ef51efd1f5041c7b4}\label{namespacehmap_a9411ccef8a74e06ef51efd1f5041c7b4} 
 \index{hmap@{hmap}!convolve1d\_i@{convolve1d\_i}}
@@ -29085,6 +29087,12 @@ void hmap\+::convert\+\_\+mat\+\_\+to\+\_\+array (\begin{DoxyParamCaption}\item[
 \index{helper\_hash\_01@{helper\_hash\_01}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{helper\_hash\_01()}{helper\_hash\_01()}}
 {\footnotesize\ttfamily float hmap\+::helper\+\_\+hash\+\_\+01 (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{namespacehmap_afb2677facc34ce83019137fd5a9818dd}\label{namespacehmap_afb2677facc34ce83019137fd5a9818dd} 
+\index{hmap@{hmap}!helper\_tov3@{helper\_tov3}}
+\index{helper\_tov3@{helper\_tov3}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{helper\_tov3()}{helper\_tov3()}}
+{\footnotesize\ttfamily std\+::vector$<$ glm\+::vec3 $>$ hmap\+::helper\+\_\+tov3 (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::vector$<$ float $>$ $>$ \&}]{colors }\end{DoxyParamCaption})}
 
 \Hypertarget{namespacehmap_aba0d25f051d23c9c637973b7edf19922}\label{namespacehmap_aba0d25f051d23c9c637973b7edf19922} 
 \index{hmap@{hmap}!helper\_thermal\_exchange@{helper\_thermal\_exchange}}

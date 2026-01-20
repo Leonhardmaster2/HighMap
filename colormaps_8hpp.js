@@ -14,5 +14,5 @@ var colormaps_8hpp =
       [ "VIRIDIS", "colormaps_8hpp.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492", null ],
       [ "WHITE_UNIFORM", "colormaps_8hpp.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a3cd98c63d7e70c2bcc14d9c9911bdc55", null ]
     ] ],
-    [ "get_colormap_data", "colormaps_8hpp.html#aea4d1a92934de93437705abd7dde6b06", null ]
+    [ "get_colormap_data", "colormaps_8hpp.html#a2f2ca726f4e41128135e6c77120c66d8", null ]
 ];

@@ -13,7 +13,7 @@ var colorize_8hpp =
     [ "color_adjust", "colorize_8hpp.html#a1175ee497ff12b2f3c6cdb7cc805949f", null ],
     [ "colorize", "colorize_8hpp.html#a33a635351aa13228557a585470ba4563", null ],
     [ "colorize", "colorize_8hpp.html#a6f991e3bdf7c5c4bed631f2b7fb4f072", null ],
-    [ "colorize", "colorize_8hpp.html#abc8fb0970d44a6627145587080c715bb", null ],
+    [ "colorize", "colorize_8hpp.html#a221887dae102efd3756a1a8559eadeee", null ],
     [ "colorize_grayscale", "colorize_8hpp.html#aa76bdaf8b572bcea0778ef8815965307", null ],
     [ "colorize_histogram", "colorize_8hpp.html#afda3d37dc8fba4a56818964784d2178b", null ],
     [ "colorize_slope_height_heatmap", "colorize_8hpp.html#aa60f142e186d43472cdda569c03b31b2", null ],
