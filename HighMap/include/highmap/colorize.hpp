@@ -185,16 +185,16 @@ void colorize(VirtualTexture    &out,
  * **Result**
  * @image html ex_virtual_texture.png
  */
-void colorize(VirtualTexture                        &out,
-              VirtualArray                          &level,
-              const ComputeMode                     &cm,
-              float                                  vmin,
-              float                                  vmax,
-              const std::vector<float>              &positions,
-              const std::vector<std::vector<float>> &colormap_colors,
-              VirtualArray                          *p_alpha = nullptr,
-              bool                                   reverse = false,
-              VirtualArray                          *p_noise = nullptr);
+void colorize(VirtualTexture               &out,
+              VirtualArray                 &level,
+              const ComputeMode            &cm,
+              float                         vmin,
+              float                         vmax,
+              const std::vector<float>     &positions,
+              const std::vector<glm::vec3> &colormap_colors,
+              VirtualArray                 *p_alpha = nullptr,
+              bool                          reverse = false,
+              VirtualArray                 *p_noise = nullptr);
 
 /**
  * @brief Convert an array to a grayscale image.

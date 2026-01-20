@@ -24,7 +24,7 @@ void colorize(VirtualTexture    &out,
               bool               reverse,
               VirtualArray      *p_noise)
 {
-  std::vector<std::vector<float>> colors = get_colormap_data(cmap);
+  std::vector<glm::vec3> colors = get_colormap_data(cmap);
 
   std::vector<float> positions = linspace(0.f, 1.f, colors.size(), true);
 
@@ -40,16 +40,16 @@ void colorize(VirtualTexture    &out,
            p_noise);
 }
 
-void colorize(VirtualTexture                        &out,
-              VirtualArray                          &level,
-              const ComputeMode                     &cm,
-              float                                  vmin,
-              float                                  vmax,
-              const std::vector<float>              &positions,
-              const std::vector<std::vector<float>> &colormap_colors,
-              VirtualArray                          *p_alpha,
-              bool                                   reverse,
-              VirtualArray                          *p_noise)
+void colorize(VirtualTexture               &out,
+              VirtualArray                 &level,
+              const ComputeMode            &cm,
+              float                         vmin,
+              float                         vmax,
+              const std::vector<float>     &positions,
+              const std::vector<glm::vec3> &colormap_colors,
+              VirtualArray                 *p_alpha,
+              bool                          reverse,
+              VirtualArray                 *p_noise)
 {
   if (out.channels() < 3)
   {

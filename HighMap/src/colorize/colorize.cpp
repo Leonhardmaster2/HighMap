@@ -111,14 +111,10 @@ Tensor colorize(const Array &array,
     int   q = static_cast<int>(value);
     float t = value - q;
 
-    auto make_vec3 = [](const std::vector<float> &c) -> glm::vec3
-    { return glm::vec3(c[0], c[1], c[2]); };
-
     if (q < nc - 1)
-      return (1.f - t) * make_vec3(colormap_colors[q]) +
-             t * make_vec3(colormap_colors[q + 1]);
+      return (1.f - t) * colormap_colors[q] + t * colormap_colors[q + 1];
     else
-      return make_vec3(colormap_colors[q]);
+      return colormap_colors[q];
   };
 
   // process each pixel

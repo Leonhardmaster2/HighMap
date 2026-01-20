@@ -8,23 +8,33 @@
 namespace hmap
 {
 
-std::vector<std::vector<float>> get_colormap_data(int cmap)
+std::vector<glm::vec3> helper_tov3(
+    const std::vector<std::vector<float>> &colors)
+{
+  std::vector<glm::vec3> out;
+  out.reserve(colors.size());
+  for (const auto &v : colors)
+    out.push_back({v[0], v[1], v[2]});
+  return out;
+}
+
+std::vector<glm::vec3> get_colormap_data(int cmap)
 {
   switch (cmap)
   {
-  case Cmap::BONE: return CMAP_BONE;
-  case Cmap::GRAY: return CMAP_GRAY;
-  case Cmap::HOT: return CMAP_HOT;
-  case Cmap::INFERNO: return CMAP_INFERNO;
-  case Cmap::JET: return CMAP_JET;
-  case Cmap::MAGMA: return CMAP_MAGMA;
-  case Cmap::NIPY_SPECTRAL: return CMAP_NIPY_SPECTRAL;
-  case Cmap::SEISMIC: return CMAP_SEISMIC;
-  case Cmap::TERRAIN: return CMAP_TERRAIN;
-  case Cmap::TURBO: return CMAP_TURBO;
-  case Cmap::VIRIDIS: return CMAP_VIRIDIS;
-  case Cmap::WHITE_UNIFORM: return CMAP_WHITE_UNIFORM;
-  default: return CMAP_WHITE_UNIFORM;
+  case Cmap::BONE: return helper_tov3(CMAP_BONE);
+  case Cmap::GRAY: return helper_tov3(CMAP_GRAY);
+  case Cmap::HOT: return helper_tov3(CMAP_HOT);
+  case Cmap::INFERNO: return helper_tov3(CMAP_INFERNO);
+  case Cmap::JET: return helper_tov3(CMAP_JET);
+  case Cmap::MAGMA: return helper_tov3(CMAP_MAGMA);
+  case Cmap::NIPY_SPECTRAL: return helper_tov3(CMAP_NIPY_SPECTRAL);
+  case Cmap::SEISMIC: return helper_tov3(CMAP_SEISMIC);
+  case Cmap::TERRAIN: return helper_tov3(CMAP_TERRAIN);
+  case Cmap::TURBO: return helper_tov3(CMAP_TURBO);
+  case Cmap::VIRIDIS: return helper_tov3(CMAP_VIRIDIS);
+  case Cmap::WHITE_UNIFORM: return helper_tov3(CMAP_WHITE_UNIFORM);
+  default: return helper_tov3(CMAP_WHITE_UNIFORM);
   }
 }
 
