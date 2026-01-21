@@ -28,7 +28,7 @@ struct TileKey
     return tx == other.tx && ty == other.ty;
   }
 
-  uint hash() const
+  unsigned int hash() const
   {
     return (static_cast<uint64_t>(tx) << 32) | (static_cast<uint32_t>(ty));
   }
