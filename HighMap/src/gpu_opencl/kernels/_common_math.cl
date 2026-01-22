@@ -2,7 +2,7 @@ R""(
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-inline void atomic_max(volatile __global float *source, const float value)
+inline void atomic_max_float(volatile __global float *source, const float value)
 {
   // https://stackoverflow.com/questions/18950732
   union

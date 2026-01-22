@@ -35,7 +35,7 @@ void kernel project_talus_along_direction(global float *array,
 
     if (v < vref) break;
 
-    atomic_max(&out[idx], v);
+    atomic_max_float(&out[idx], v);
   }
 }
 )""
