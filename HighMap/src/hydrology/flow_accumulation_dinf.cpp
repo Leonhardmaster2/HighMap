@@ -122,7 +122,7 @@ std::vector<Array> flow_direction_dinf(const Array &z, float talus_ref)
   Array p = Array(z.shape);
   {
     Array talus = gradient_talus(z) / talus_ref;
-    clamp_max(talus, 1.f);
+    clamp(talus, 0.f, 1.f);
     p = 10.f * talus + 1.f;
   }
 
@@ -135,7 +135,7 @@ std::vector<Array> flow_direction_dinf(const Array &z, float talus_ref)
       for (int k = 0; k < nb; k++)
       {
         float dz = z(i, j) - z(i + di[k], j + dj[k]);
-        if (dz > 0) dinf[k](i, j) = std::pow(dz * c[k], p(i, j)) * ecl[k];
+        if (dz > 0.f) dinf[k](i, j) = std::pow(dz * c[k], p(i, j)) * ecl[k];
       }
 
       // normalize
@@ -169,7 +169,8 @@ std::vector<float> flow_direction_dinf_flat(const Array &z, float talus_ref)
   for (int j = 1; j < shape.y - 1; ++j)
     for (int i = 1; i < shape.x - 1; ++i)
     {
-      const float pij = 10.f * talus(i, j) + 1.f;
+      // const float pij = 10.f * talus(i, j) + 1.f;
+      const float pij = std::clamp(10.f * talus(i,j) + 1.f, 1.f, 8.f);
 
       float sum = 0.f;
       float tmp[8];
