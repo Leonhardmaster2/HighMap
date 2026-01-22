@@ -45,9 +45,7 @@ Array flow_accumulation_dinf(const Array &z, float talus_ref)
 
   // --- compute Dinf directions (flattened)
 
-  Array zf = z;
-  laplace(zf);
-  std::vector<float> dinf = flow_direction_dinf_flat(zf, talus_ref);
+  std::vector<float> dinf = flow_direction_dinf_flat(z, talus_ref);
 
   // --- number of incoming drainage paths (integer!)
 
