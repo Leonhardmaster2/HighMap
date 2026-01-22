@@ -2652,6 +2652,7 @@ Array plates(glm::ivec2 shape,
              float      mix_ratio = 0.9f,
              float      base_noise_amp = 0.05f,
              float      kw_multiplier = 2.f,
+             int        octaves = 8,
              float      rugosity = 0.f,
              glm::vec4  bbox = {0.f, 1.f, 0.f, 1.f});
 

@@ -16,10 +16,10 @@ Array plates(glm::ivec2 shape,
              float      mix_ratio,
              float      base_noise_amp,
              float      kw_multiplier,
+             int        octaves,
              float      rugosity,
              glm::vec4  bbox)
 {
-  const int   octaves = 8;
   const float persistence = 0.5f;
   const float lacunarity = 2.f;
   const float k_smoothing = 0.f;
