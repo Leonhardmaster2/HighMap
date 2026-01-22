@@ -14,7 +14,7 @@ var searchData=
   ['phasor_11',['phasor',['../namespacehmap.html#a5cbe10d6852cd789580e57a22049e29d',1,'hmap']]],
   ['phasor_5ffbm_12',['phasor_fbm',['../namespacehmap.html#a8a24c5ba59504664638793a4af54f92b',1,'hmap']]],
   ['plateau_13',['plateau',['../namespacehmap.html#a9f49d016a05aa8636bb0ff3c3d30aaf7',1,'hmap::plateau(Array &amp;array, int ir, float factor)'],['../namespacehmap.html#a558c273680de2328f37e5df7ee598813',1,'hmap::plateau(Array &amp;array, const Array *p_mask, int ir, float factor)'],['../namespacehmap_1_1gpu.html#ae197a615380c768a5ce30df18397db52',1,'hmap::gpu::plateau(Array &amp;array, const Array *p_mask, int ir, float factor)'],['../namespacehmap_1_1gpu.html#aa1d48aaeafd42970a2b0c9b6795d73b5',1,'hmap::gpu::plateau(Array &amp;array, int ir, float factor)']]],
-  ['plates_14',['plates',['../namespacehmap_1_1gpu.html#a8d9055aba438fb01cfca9d62b17fb31e',1,'hmap::gpu']]],
+  ['plates_14',['plates',['../namespacehmap_1_1gpu.html#af761cf856c30010f78ad15cb374eb1e3',1,'hmap::gpu']]],
   ['point_15',['point',['../classhmap_1_1Point.html#ad1041e7d925d820f47e80f0986a5e047',1,'hmap::Point::Point(float x, float y, float v=0.f)'],['../classhmap_1_1Point.html#a986aebcb6409cd7836a48e0e8b973c81',1,'hmap::Point::Point()']]],
   ['polygon_5ffield_16',['polygon_field',['../namespacehmap_1_1gpu.html#ac7c2489dd7079a4904b481815bb7dd0d',1,'hmap::gpu']]],
   ['polygon_5ffield_5ffbm_17',['polygon_field_fbm',['../namespacehmap_1_1gpu.html#a350a865719e4a4834b6aa38e27c3a9d8',1,'hmap::gpu']]],

@@ -8735,10 +8735,10 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </inbodydescription>
         <location file="HighMap/src/primitives/primitives_gpu.cpp" line="530" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="530" bodyend="576" declfile="HighMap/include/highmap/primitives.hpp" declline="2607" declcolumn="7"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1_1gpu_1a8d9055aba438fb01cfca9d62b17fb31e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacehmap_1_1gpu_1af761cf856c30010f78ad15cb374eb1e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
         <definition>Array hmap::gpu::plates</definition>
-        <argsstring>(glm::ivec2 shape, glm::vec2 kw, uint seed, float talus, int direction=0, float mix_ratio=0.9f, float base_noise_amp=0.05f, float kw_multiplier=2.f, float rugosity=0.f, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</argsstring>
+        <argsstring>(glm::ivec2 shape, glm::vec2 kw, uint seed, float talus, int direction=0, float mix_ratio=0.9f, float base_noise_amp=0.05f, float kw_multiplier=2.f, int octaves=8, float rugosity=0.f, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</argsstring>
         <name>plates</name>
         <qualifiedname>hmap::gpu::plates</qualifiedname>
         <param>
@@ -8776,6 +8776,11 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
           <type>float</type>
           <declname>kw_multiplier</declname>
           <defval>2.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>octaves</declname>
+          <defval>8</defval>
         </param>
         <param>
           <type>float</type>
@@ -8886,7 +8891,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
 <codeline><highlight class="normal"><sp/><sp/>glm::vec2<sp/>kw<sp/>=<sp/>{4.f,<sp/>4.f};</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="array_8hpp_1a91ad9478d81a7aaf2593e8d9c3d06a14" kindref="member">uint</ref><sp/><sp/><sp/><sp/><sp/><sp/>seed<sp/>=<sp/>0;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z1<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1a8d9055aba438fb01cfca9d62b17fb31e" kindref="member">hmap::gpu::plates</ref>(shape,<sp/>kw,<sp/>seed,<sp/>2.f<sp/>/<sp/>shape.x);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z1<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1af761cf856c30010f78ad15cb374eb1e3" kindref="member">hmap::gpu::plates</ref>(shape,<sp/>kw,<sp/>seed,<sp/>2.f<sp/>/<sp/>shape.x);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>z1.<ref refid="classhmap_1_1Array_1a00b8f7462c1e22b1da8a67ec62d4c8c8" kindref="member">dump</ref>();</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
@@ -9131,7 +9136,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="578" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="578" bodyend="636" declfile="HighMap/include/highmap/primitives.hpp" declline="2703" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="578" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="578" bodyend="636" declfile="HighMap/include/highmap/primitives.hpp" declline="2704" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a350a865719e4a4834b6aa38e27c3a9d8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -9401,7 +9406,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="638" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="638" bodyend="702" declfile="HighMap/include/highmap/primitives.hpp" declline="2766" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="638" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="638" bodyend="702" declfile="HighMap/include/highmap/primitives.hpp" declline="2767" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1abbdd364965f18e629307200a4dbfa5a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -9637,7 +9642,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/geo/shattered_peak.cpp" line="13" column="7" bodyfile="HighMap/src/primitives/geo/shattered_peak.cpp" bodystart="13" bodyend="102" declfile="HighMap/include/highmap/primitives.hpp" declline="2832" declcolumn="7"/>
+        <location file="HighMap/src/primitives/geo/shattered_peak.cpp" line="13" column="7" bodyfile="HighMap/src/primitives/geo/shattered_peak.cpp" bodystart="13" bodyend="102" declfile="HighMap/include/highmap/primitives.hpp" declline="2833" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a845e5938c39cdab886b3e354cb53d078" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -9881,7 +9886,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="704" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="704" bodyend="781" declfile="HighMap/include/highmap/primitives.hpp" declline="2894" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="704" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="704" bodyend="781" declfile="HighMap/include/highmap/primitives.hpp" declline="2895" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1acc7dccf4ab556f489ffbaef1592fe375" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -10177,7 +10182,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="783" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="783" bodyend="826" declfile="HighMap/include/highmap/primitives.hpp" declline="2962" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="783" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="783" bodyend="826" declfile="HighMap/include/highmap/primitives.hpp" declline="2963" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a12bceca15985a29f6827f016fa18ebb3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -10379,7 +10384,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="828" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="828" bodyend="868" declfile="HighMap/include/highmap/primitives.hpp" declline="3019" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="828" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="828" bodyend="868" declfile="HighMap/include/highmap/primitives.hpp" declline="3020" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1accda29e5219749593e6dfa57717707d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -10633,7 +10638,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="870" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="870" bodyend="918" declfile="HighMap/include/highmap/primitives.hpp" declline="3077" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="870" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="870" bodyend="918" declfile="HighMap/include/highmap/primitives.hpp" declline="3078" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a4e087a8e6a1ecbeb3bffe199a946c8ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -10750,7 +10755,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="1001" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="1001" bodyend="1035" declfile="HighMap/include/highmap/primitives.hpp" declline="3119" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="1001" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="1001" bodyend="1035" declfile="HighMap/include/highmap/primitives.hpp" declline="3120" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1aafc7d621ebf149a27f287222127294ab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -10891,7 +10896,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="920" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="920" bodyend="953" declfile="HighMap/include/highmap/primitives.hpp" declline="3164" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="920" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="920" bodyend="953" declfile="HighMap/include/highmap/primitives.hpp" declline="3165" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1aefe1a52023c39a9e20f5b30ce5dc1da7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -11080,7 +11085,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="955" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="955" bodyend="999" declfile="HighMap/include/highmap/primitives.hpp" declline="3200" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="955" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="955" bodyend="999" declfile="HighMap/include/highmap/primitives.hpp" declline="3201" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1af15ee9a79a551cf83cdabdadc2065cf5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -11290,7 +11295,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="1037" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="1037" bodyend="1081" declfile="HighMap/include/highmap/primitives.hpp" declline="3262" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="1037" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="1037" bodyend="1081" declfile="HighMap/include/highmap/primitives.hpp" declline="3263" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a33d9640c06dfec4032dbf8b2116ff803" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -11346,7 +11351,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="1083" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="1083" bodyend="1127" declfile="HighMap/include/highmap/primitives.hpp" declline="3274" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="1083" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="1083" bodyend="1127" declfile="HighMap/include/highmap/primitives.hpp" declline="3275" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a3e358c95d75cd4df78381a7d6700c2fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -11561,7 +11566,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="1129" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="1129" bodyend="1174" declfile="HighMap/include/highmap/primitives.hpp" declline="3340" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="1129" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="1129" bodyend="1174" declfile="HighMap/include/highmap/primitives.hpp" declline="3341" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a9a3f272d7c8294ab3418be67e3c9b3eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>

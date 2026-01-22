@@ -88,7 +88,7 @@ var primitives_8hpp =
     [ "multisteps", "primitives_8hpp.html#aaa93c5f0c20e23dfb4d0f67b99489178", null ],
     [ "noise", "primitives_8hpp.html#ab5aba8cd3981de6f363f6ae287d7be5f", null ],
     [ "noise_fbm", "primitives_8hpp.html#a2c5d8132bf19f36c2934f17a3dcd1cf7", null ],
-    [ "plates", "primitives_8hpp.html#a8d9055aba438fb01cfca9d62b17fb31e", null ],
+    [ "plates", "primitives_8hpp.html#af761cf856c30010f78ad15cb374eb1e3", null ],
     [ "polygon_field", "primitives_8hpp.html#ac7c2489dd7079a4904b481815bb7dd0d", null ],
     [ "polygon_field_fbm", "primitives_8hpp.html#a350a865719e4a4834b6aa38e27c3a9d8", null ],
     [ "shattered_peak", "primitives_8hpp.html#abbdd364965f18e629307200a4dbfa5a8", null ],

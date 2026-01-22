@@ -40,7 +40,7 @@ var searchData=
   ['phasorprofile_37',['PhasorProfile',['../namespacehmap.html#a67d6620c147710ebb09b64f0f738241a',1,'hmap']]],
   ['physical_20processes_38',['Physical processes',['../index.html#autotoc_md10',1,'']]],
   ['plateau_39',['plateau',['../namespacehmap.html#a558c273680de2328f37e5df7ee598813',1,'hmap::plateau(Array &amp;array, const Array *p_mask, int ir, float factor)'],['../namespacehmap.html#a9f49d016a05aa8636bb0ff3c3d30aaf7',1,'hmap::plateau(Array &amp;array, int ir, float factor)'],['../namespacehmap_1_1gpu.html#ae197a615380c768a5ce30df18397db52',1,'hmap::gpu::plateau(Array &amp;array, const Array *p_mask, int ir, float factor)'],['../namespacehmap_1_1gpu.html#aa1d48aaeafd42970a2b0c9b6795d73b5',1,'hmap::gpu::plateau(Array &amp;array, int ir, float factor)']]],
-  ['plates_40',['plates',['../namespacehmap_1_1gpu.html#a8d9055aba438fb01cfca9d62b17fb31e',1,'hmap::gpu']]],
+  ['plates_40',['plates',['../namespacehmap_1_1gpu.html#af761cf856c30010f78ad15cb374eb1e3',1,'hmap::gpu']]],
   ['plates_2ecpp_41',['plates.cpp',['../plates_8cpp.html',1,'']]],
   ['ply_42',['PLY',['../namespacehmap.html#ac3d35efc6e5b596f508e2b17a5aa871ba01b4a6af39216cb5ba424ef1bd4f66f7',1,'hmap']]],
   ['plyb_43',['PLYB',['../namespacehmap.html#ac3d35efc6e5b596f508e2b17a5aa871bae0ce3a88364042b24f65140c351fb6e8',1,'hmap']]],
