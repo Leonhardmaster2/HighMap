@@ -55,7 +55,7 @@ var searchData=
   ['distance_5ftransform_5fjfa_52',['distance_transform_jfa',['../namespacehmap_1_1gpu.html#a1dbc83521075f7c0179c7157f292b2b2',1,'hmap::gpu']]],
   ['distance_5ftransform_5fjfa_2ecpp_53',['distance_transform_jfa.cpp',['../distance__transform__jfa_8cpp.html',1,'']]],
   ['distance_5ftransform_5fmanhattan_54',['distance_transform_manhattan',['../namespacehmap.html#add641a7fc26ae08b1f679cbb7dd43177',1,'hmap']]],
-  ['distance_5ftransform_5fwith_5fclosest_55',['distance_transform_with_closest',['../namespacehmap.html#afe0a1409b90526591f1974b84b68009a',1,'hmap']]],
+  ['distance_5ftransform_5fwith_5fclosest_55',['distance_transform_with_closest',['../namespacehmap.html#a8e7ea79047868729667b72aed4ddd81d',1,'hmap']]],
   ['distancefunction_56',['DistanceFunction',['../namespacehmap.html#a670f50d6c08ecd639d42db9c75a5273a',1,'hmap']]],
   ['distancetransformtype_57',['DistanceTransformType',['../namespacehmap.html#a9e2493cec1a67b3140691e617ddc925a',1,'hmap']]],
   ['disttodomainimpl_58',['disttodomainimpl',['../classhmap_1_1XyControlFunction.html#a7812fe0b327e2d30cda5656c10fd1a75',1,'hmap::XyControlFunction::DistToDomainImpl()'],['../classhmap_1_1ArrayControlFunction.html#a3c40696e8f26f0e6fbd66f0f97b83082',1,'hmap::ArrayControlFunction::DistToDomainImpl()']]],

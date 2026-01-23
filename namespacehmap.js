@@ -918,7 +918,7 @@ var namespacehmap =
     [ "distance_transform", "namespacehmap.html#a3bad25b24d9ae0e07e692c546bc3480d", null ],
     [ "distance_transform_approx", "namespacehmap.html#a23fdcd258e0bab2a5fcad31d6459c3fa", null ],
     [ "distance_transform_manhattan", "namespacehmap.html#add641a7fc26ae08b1f679cbb7dd43177", null ],
-    [ "distance_transform_with_closest", "namespacehmap.html#afe0a1409b90526591f1974b84b68009a", null ],
+    [ "distance_transform_with_closest", "namespacehmap.html#a8e7ea79047868729667b72aed4ddd81d", null ],
     [ "erosion", "namespacehmap.html#a9cf7773f6141162bf60708a93acdfcee", null ],
     [ "flood_fill", "namespacehmap.html#adff494af7c8bf4db7f3e6fddd3261793", null ],
     [ "morphological_black_hat", "namespacehmap.html#a1cf22c68188d0e35aa74983f3a01c488", null ],
