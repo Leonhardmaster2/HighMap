@@ -181,9 +181,8 @@ Array distance_transform_manhattan(const Array &array,
  *                                 not.
  * @return                         Array Reference to the output array.
  */
-Array distance_transform_with_closest(const Array &array,
-                                      Mat<int>    &closest_i,
-                                      Mat<int>    &closest_j,
+Array distance_transform_with_closest(const Array     &array,
+                                      Mat<glm::ivec2> &closest,
                                       bool return_squared_distance = false);
 
 /**

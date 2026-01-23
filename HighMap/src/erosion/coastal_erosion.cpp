@@ -50,19 +50,14 @@ void coastal_erosion_profile(Array &z,
                              bool   apply_post_filter,
                              Array *p_shore_mask)
 {
-  Array    z_bckp = z;
-  Array    shore_mask(z.shape);  // includes ground & water
-  Mat<int> closest_g_i(z.shape); // ground
-  Mat<int> closest_g_j(z.shape);
-  Mat<int> closest_w_i(z.shape); // water
-  Mat<int> closest_w_j(z.shape);
+  Array           z_bckp = z;
+  Array           shore_mask(z.shape); // includes ground & water
+  Mat<glm::ivec2> closest_g(z.shape);  // ground
+  Mat<glm::ivec2> closest_w(z.shape);  // water
 
-  Array r_ground = distance_transform_with_closest(water_depth,
-                                                   closest_g_i,
-                                                   closest_g_j);
+  Array r_ground = distance_transform_with_closest(water_depth, closest_g);
   Array r_water = distance_transform_with_closest(is_zero(water_depth),
-                                                  closest_w_i,
-                                                  closest_w_j);
+                                                  closest_w);
 
   float slope_shore_n = slope_shore / float(z.shape.x);
   float slope_shore_water_n = slope_shore_water / float(z.shape.x);
@@ -82,7 +77,7 @@ void coastal_erosion_profile(Array &z,
           shore_mask(i, j) = 1.f - t;
 
           float t_scarp = 1.f - scarp_extent_ratio;
-          float zref = z(closest_g_i(i, j), closest_g_j(i, j));
+          float zref = z(closest_g(i, j));
           float h = zref + slope_shore_n * r_ground(i, j);
 
           float new_z = 0.f;
@@ -118,7 +113,7 @@ void coastal_erosion_profile(Array &z,
           // ensure slope continuity at water level
           float slope = lerp(slope_shore_n, slope_shore_water_n, t);
 
-          float zref = z(closest_w_i(i, j), closest_w_j(i, j));
+          float zref = z(closest_w(i, j));
           float h = zref - slope * r_water(i, j);
           float new_z = lerp(h, z(i, j), smoothstep3(t));
 

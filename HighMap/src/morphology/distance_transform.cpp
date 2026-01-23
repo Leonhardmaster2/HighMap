@@ -99,10 +99,9 @@ Array distance_transform(const Array &array, bool return_squared_distance)
     return sqrt(dt);
 }
 
-Array distance_transform_with_closest(const Array &array,
-                                      Mat<int>    &closest_i,
-                                      Mat<int>    &closest_j,
-                                      bool         return_squared_distance)
+Array distance_transform_with_closest(const Array     &array,
+                                      Mat<glm::ivec2> &closest,
+                                      bool             return_squared_distance)
 {
   Array dt = Array(array.shape); // output distance
   Array g = Array(array.shape);
@@ -190,9 +189,7 @@ Array distance_transform_with_closest(const Array &array,
     for (int u = ni - 1; u > -1; u--)
     {
       dt(u, j) = f(u - s[q], g(s[q], j));
-
-      closest_i(u, j) = row_closest_i(s[q], j);
-      closest_j(u, j) = row_closest_j(s[q], j);
+      closest(u, j) = {row_closest_i(s[q], j), row_closest_j(s[q], j)};
 
       if (u == t[q]) q--;
     }
