@@ -28,6 +28,7 @@ var math_8hpp =
     [ "almost_unit_identity", "math_8hpp.html#a2e282a2ea8008f2eccd99e47863adb6d", null ],
     [ "almost_unit_identity", "math_8hpp.html#a8ddf0121ee2b8c701a61a12274b5f3e3", null ],
     [ "almost_unit_identity_c2", "math_8hpp.html#ab0aafd1928d46167f782de3c00b937ac", null ],
+    [ "almost_unit_identity_c2", "math_8hpp.html#ab6c6ac44aeeb411adb03eba470d32700", null ],
     [ "approx_hypot", "math_8hpp.html#a85cee5ad021421a670fb62211b5913e5", null ],
     [ "approx_rsqrt", "math_8hpp.html#a7c2762e4ccc798e8c90d128c2c2858fe", null ],
     [ "atan", "math_8hpp.html#abfd3f58454c7064010dc2dd58d1a03aa", null ],

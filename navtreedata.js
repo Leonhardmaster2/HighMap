@@ -89,19 +89,19 @@ var NAVTREEINDEX =
 "classhmap_1_1RectangleFunction.html#a3761121de6651fb0184c3c1d85bf3700",
 "classhmap_1_1WaveTriangularFunction.html#af4b2e32e38e99dcaee78fe998bec84c1",
 "dir_6e375fef8169f9dfb42b397d57678e79.html",
-"features__gpu_8cpp.html#afed4e84e60dd0cdc453e7da72940ed27",
-"filters__gpu_8cpp.html#a37f556d4d43005e2d618f0aa6c3527bb",
-"hydraulic__procedural_8cpp.html#af65bb48580b5f860571161387a22fbb4",
-"math_8cpp.html#abfd3f58454c7064010dc2dd58d1a03aa",
-"namespacehmap.html#a22656a7e71302244f5f79f237a81c985",
-"namespacehmap.html#a67d6620c147710ebb09b64f0f738241aa1ee22d304b9b93cd76da1fbc9d32a75a",
-"namespacehmap.html#ab9b560067f09332a4ff50670dfef00a5",
-"namespacehmap.html#afda3d37dc8fba4a56818964784d2178b",
-"operator_8cpp.html#a81ae845564fe0e6f2f641451c063bc65",
-"primitives__gpu_8cpp.html#a8b4f0ce7f877624d2120fd2415066aad",
-"stitching__helpers_8cpp.html#a1efabd6902468a707a2029f684b45ba1",
-"structhmap_1_1VirtualArray.html#a157b5a589d01cb7da7fd9b9b759f94c6",
-"virtual__texture_8hpp.html#af66b37de86e8de6261ab902110b118a0"
+"features__gpu_8cpp.html#aa5a3e087822525c41f057a51255e2bad",
+"filters__gpu_8cpp.html#a2e2bccfafc05679f1762ba039df58dbf",
+"hydraulic__procedural_8cpp.html",
+"math_8cpp.html#ab6c6ac44aeeb411adb03eba470d32700",
+"namespacehmap.html#a21def375eb7059931a64b6cb9f628a23",
+"namespacehmap.html#a675ff649d5e55194bfa93fac4c423adb",
+"namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195add03c6de4abc2f9a84778572c433f4ca",
+"namespacehmap.html#afb57b7af88ca225ff5a343d4583ab998",
+"normal__map_8cpp.html#aef53e65fc9b8bc74c342367b0034cfa7",
+"primitives__gpu_8cpp.html#a3e358c95d75cd4df78381a7d6700c2fd",
+"signed__curvature__from__distance_8cpp.html#ad4ab7bb38b3ea37fa912190251c1ed76",
+"structhmap_1_1Vec4_3_01int_01_4.html#af9712f210b5c404ca3d2e872a2e0a6b8",
+"virtual__array_8inl.html#ae1287a4a7907542f6957baae838a870d"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

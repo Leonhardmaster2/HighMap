@@ -64,8 +64,8 @@ var erosion_8hpp =
     [ "thermal_schott", "erosion_8hpp.html#a934a4f6e9ae0f315a2296d488b9333b4", null ],
     [ "thermal_schott", "erosion_8hpp.html#aa328e3342e845d021f300dcb6cb42fbc", null ],
     [ "thermal_schott", "erosion_8hpp.html#afe2e4c1e06205f5051ce6e86ea647a77", null ],
-    [ "watershed_ridge", "erosion_8hpp.html#a01f065379d2975b5ddf4bda2e6ede8cf", null ],
-    [ "watershed_ridge", "erosion_8hpp.html#ab14e16da16f8b73f1b5940dc3c1060dd", null ],
+    [ "watershed_ridge", "erosion_8hpp.html#a9588003e71523b45a4eee88d8debc9b5", null ],
+    [ "watershed_ridge", "erosion_8hpp.html#a4747b0405463a134d6af358fe779c62f", null ],
     [ "hydraulic_particle", "erosion_8hpp.html#a7bc17570e205e4eb84ed4d434998555e", null ],
     [ "hydraulic_particle", "erosion_8hpp.html#aacdd29247e4f3e008be3bacced178b50", null ],
     [ "hydraulic_schott", "erosion_8hpp.html#a9749d24b9dd9bed8ee333910951db395", null ],
@@ -90,5 +90,7 @@ var erosion_8hpp =
     [ "thermal_scree", "erosion_8hpp.html#ab753c4abd819aa6945c1cfc5e25ccec4", null ],
     [ "thermal_scree", "erosion_8hpp.html#acfe28321531d2c03721588054da1446a", null ],
     [ "valley_fill", "erosion_8hpp.html#ae8a8da3d95deb978d813ce782a1492bb", null ],
-    [ "valley_fill", "erosion_8hpp.html#aa7ce5c44914d54ec7fa0162c5ccbab86", null ]
+    [ "valley_fill", "erosion_8hpp.html#aa7ce5c44914d54ec7fa0162c5ccbab86", null ],
+    [ "watershed_ridge", "erosion_8hpp.html#a2d457184ae33b12dee131a77c0817436", null ],
+    [ "watershed_ridge", "erosion_8hpp.html#a803b34b08aca4ca5feb139347f950baf", null ]
 ];

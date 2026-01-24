@@ -1,5 +1,12 @@
 var NAVTREEINDEX16 =
 {
+"primitives__gpu_8cpp.html#a3e358c95d75cd4df78381a7d6700c2fd":[5,0,1,1,25,11,24],
+"primitives__gpu_8cpp.html#a4e087a8e6a1ecbeb3bffe199a946c8ae":[5,0,1,1,25,11,21],
+"primitives__gpu_8cpp.html#a61fba559990c0118ed04eaca3a8f4f43":[5,0,1,1,25,11,3],
+"primitives__gpu_8cpp.html#a6845a9d8b8c1638e88f1a84feaf86231":[5,0,1,1,25,11,8],
+"primitives__gpu_8cpp.html#a705eb500528864806b3a3afe4e7174af":[5,0,1,1,25,11,10],
+"primitives__gpu_8cpp.html#a845e5938c39cdab886b3e354cb53d078":[5,0,1,1,25,11,15],
+"primitives__gpu_8cpp.html#a873a34782b80a8d49667e9d16430b357":[5,0,1,1,25,11,1],
 "primitives__gpu_8cpp.html#a8b4f0ce7f877624d2120fd2415066aad":[5,0,1,1,25,11,4],
 "primitives__gpu_8cpp.html#a970d42d8f9305065f89dc019be7ae1cf":[5,0,1,1,25,11,5],
 "primitives__gpu_8cpp.html#aafc7d621ebf149a27f287222127294ab":[5,0,1,1,25,11,19],
@@ -242,12 +249,5 @@ var NAVTREEINDEX16 =
 "shortest__path_8hpp_source.html":[5,0,1,0,0,37],
 "signed__curvature__from__distance_8cpp.html":[5,0,1,1,21,5],
 "signed__curvature__from__distance_8cpp.html#a76cfd96b971a288964561449d83e21aa":[5,0,1,1,21,5,3],
-"signed__curvature__from__distance_8cpp.html#ac56515202b30368216c7324b819cc838":[5,0,1,1,21,5,0],
-"signed__curvature__from__distance_8cpp.html#ad4ab7bb38b3ea37fa912190251c1ed76":[5,0,1,1,21,5,1],
-"signed__curvature__from__distance_8cpp.html#afffb85b7bc6b9884cd00254c122da8e6":[5,0,1,1,21,5,2],
-"solve__poisson__gauss__seidel_8cpp.html":[5,0,1,1,16,4],
-"solve__poisson__gauss__seidel_8cpp.html#a0bcc84aa462aee73e1a3a52729f21ea6":[5,0,1,1,16,4,0],
-"stamping_8cpp.html":[5,0,1,1,1,5],
-"stamping_8cpp.html#a4fb4163cdefab63b52484ea8091a11ed":[5,0,1,1,1,5,0],
-"stitching__helpers_8cpp.html":[5,0,1,1,23,4]
+"signed__curvature__from__distance_8cpp.html#ac56515202b30368216c7324b819cc838":[5,0,1,1,21,5,0]
 };
