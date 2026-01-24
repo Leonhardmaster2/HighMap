@@ -11,6 +11,7 @@
 #include "highmap/math.hpp"
 #include "highmap/morphology.hpp"
 #include "highmap/range.hpp"
+#include "highmap/transform.hpp"
 
 namespace hmap
 {
