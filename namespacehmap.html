@@ -611,6 +611,22 @@ Functions</h2></td></tr>
 <tr class="memitem:a518f05118e1b9704160a7c3276a2f483" id="r_a518f05118e1b9704160a7c3276a2f483"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a518f05118e1b9704160a7c3276a2f483">cv_mat_to_array</a> (const cv::Mat &amp;mat, bool remap_values=true, bool flip_j=false)</td></tr>
 <tr class="memdesc:a518f05118e1b9704160a7c3276a2f483"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts an OpenCV <code>cv::Mat</code> to a 2D <code><a class="el" href="classhmap_1_1Array.html" title="Array class, helper to manipulate 2D float array with &quot;(i, j)&quot; indexing.">Array</a></code> with optional value scaling to [0, 1].  <br /></td></tr>
 <tr class="separator:a518f05118e1b9704160a7c3276a2f483"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05ee0ea53f1a06ac43741f11e25ec2cc" id="r_a05ee0ea53f1a06ac43741f11e25ec2cc"><td class="memTemplParams" colspan="2">template&lt;typename Fn &gt; </td></tr>
+<tr class="memitem:a05ee0ea53f1a06ac43741f11e25ec2cc"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a05ee0ea53f1a06ac43741f11e25ec2cc">for_each_cell</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;a, Fn &amp;&amp;fn)</td></tr>
+<tr class="memdesc:a05ee0ea53f1a06ac43741f11e25ec2cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply a function to every cell (mutable).  <br /></td></tr>
+<tr class="separator:a05ee0ea53f1a06ac43741f11e25ec2cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a43091b3356d69271fa6d185f5bdcbe" id="r_a8a43091b3356d69271fa6d185f5bdcbe"><td class="memTemplParams" colspan="2">template&lt;typename Fn &gt; </td></tr>
+<tr class="memitem:a8a43091b3356d69271fa6d185f5bdcbe"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a8a43091b3356d69271fa6d185f5bdcbe">for_each_cell</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;a, Fn &amp;&amp;fn)</td></tr>
+<tr class="memdesc:a8a43091b3356d69271fa6d185f5bdcbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply a function to every cell (read-only).  <br /></td></tr>
+<tr class="separator:a8a43091b3356d69271fa6d185f5bdcbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a839a208ff16a89feb85d52ac9db5b971" id="r_a839a208ff16a89feb85d52ac9db5b971"><td class="memTemplParams" colspan="2">template&lt;typename T , typename Fn , typename Reduce &gt; </td></tr>
+<tr class="memitem:a839a208ff16a89feb85d52ac9db5b971"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a839a208ff16a89feb85d52ac9db5b971">reduce_cells</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;a, T init, Fn &amp;&amp;fn, Reduce &amp;&amp;reduce)</td></tr>
+<tr class="memdesc:a839a208ff16a89feb85d52ac9db5b971"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reduce all cells to a single value.  <br /></td></tr>
+<tr class="separator:a839a208ff16a89feb85d52ac9db5b971"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75f07aa871c112ed5a91bd259ce0b6ed" id="r_a75f07aa871c112ed5a91bd259ce0b6ed"><td class="memTemplParams" colspan="2">template&lt;typename T , typename Fn , typename Reduce &gt; </td></tr>
+<tr class="memitem:a75f07aa871c112ed5a91bd259ce0b6ed"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a75f07aa871c112ed5a91bd259ce0b6ed">reduce_cells</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;a, T init, Reduce &amp;&amp;reduce)</td></tr>
+<tr class="memdesc:a75f07aa871c112ed5a91bd259ce0b6ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reduce all cells to a single value.  <br /></td></tr>
+<tr class="separator:a75f07aa871c112ed5a91bd259ce0b6ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6123c18788ae302332416d5d7585fd9f" id="r_a6123c18788ae302332416d5d7585fd9f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a6123c18788ae302332416d5d7585fd9f">alter_elevation</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, const <a class="el" href="classhmap_1_1Cloud.html">Cloud</a> &amp;cloud, int ir, float footprint_ratio=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, glm::vec2 shift={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>}, glm::vec2 scale={1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>})</td></tr>
 <tr class="memdesc:a6123c18788ae302332416d5d7585fd9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Point-wise alteration: locally enforce a new elevation value while maintaining the 'shape' of the heightmap.  <br /></td></tr>
 <tr class="separator:a6123c18788ae302332416d5d7585fd9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -3334,6 +3350,184 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A 2D <code><a class="el" href="classhmap_1_1Array.html" title="Array class, helper to manipulate 2D float array with &quot;(i, j)&quot; indexing.">Array</a></code> object containing a copy of the data from the input <code>cv::Mat</code>, with optional scaling to the interval [0, 1].</dd></dl>
 <p><b>Example</b> </p><div class="fragment"></div><!-- fragment --> 
+</div>
+</div>
+<a id="a05ee0ea53f1a06ac43741f11e25ec2cc" name="a05ee0ea53f1a06ac43741f11e25ec2cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05ee0ea53f1a06ac43741f11e25ec2cc">&#9670;&#160;</a></span>for_each_cell() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Fn &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hmap::for_each_cell </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Fn &amp;&amp;&#160;</td>
+          <td class="paramname"><em>fn</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Apply a function to every cell (mutable). </p>
+
+</div>
+</div>
+<a id="a8a43091b3356d69271fa6d185f5bdcbe" name="a8a43091b3356d69271fa6d185f5bdcbe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a43091b3356d69271fa6d185f5bdcbe">&#9670;&#160;</a></span>for_each_cell() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Fn &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hmap::for_each_cell </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Fn &amp;&amp;&#160;</td>
+          <td class="paramname"><em>fn</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Apply a function to every cell (read-only). </p>
+
+</div>
+</div>
+<a id="a839a208ff16a89feb85d52ac9db5b971" name="a839a208ff16a89feb85d52ac9db5b971"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a839a208ff16a89feb85d52ac9db5b971">&#9670;&#160;</a></span>reduce_cells() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , typename Fn , typename Reduce &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">T hmap::reduce_cells </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>init</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Fn &amp;&amp;&#160;</td>
+          <td class="paramname"><em>fn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Reduce &amp;&amp;&#160;</td>
+          <td class="paramname"><em>reduce</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reduce all cells to a single value. </p>
+
+</div>
+</div>
+<a id="a75f07aa871c112ed5a91bd259ce0b6ed" name="a75f07aa871c112ed5a91bd259ce0b6ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75f07aa871c112ed5a91bd259ce0b6ed">&#9670;&#160;</a></span>reduce_cells() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , typename Fn , typename Reduce &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">T hmap::reduce_cells </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>init</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Reduce &amp;&amp;&#160;</td>
+          <td class="paramname"><em>reduce</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reduce all cells to a single value. </p>
+
 </div>
 </div>
 <a id="a6123c18788ae302332416d5d7585fd9f" name="a6123c18788ae302332416d5d7585fd9f"></a>
@@ -13486,9 +13680,9 @@ levelled out".</p>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>,</div>
 <div class="line">                          <span class="keyword">true</span>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_1_1gpu_html_a2d457184ae33b12dee131a77c0817436"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a2d457184ae33b12dee131a77c0817436">hmap::gpu::watershed_ridge</a></div><div class="ttdeci">Array watershed_ridge(const Array &amp;z, float amplitude=0.5f, int ir=1, float edt_exponent=0.5f, FlowDirectionMethod fd_method=FlowDirectionMethod::FDM_D8, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr)</div><div class="ttdoc">See hmap::watershed_ridge.</div><div class="ttdef"><b>Definition</b> watershed_ridge.cpp:79</div></div>
+<div class="ttc" id="anamespacehmap_1_1gpu_html_a2d457184ae33b12dee131a77c0817436"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a2d457184ae33b12dee131a77c0817436">hmap::gpu::watershed_ridge</a></div><div class="ttdeci">Array watershed_ridge(const Array &amp;z, float amplitude=0.5f, int ir=1, float edt_exponent=0.5f, FlowDirectionMethod fd_method=FlowDirectionMethod::FDM_D8, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr)</div><div class="ttdoc">See hmap::watershed_ridge.</div><div class="ttdef"><b>Definition</b> watershed_ridge.cpp:87</div></div>
 <div class="ttc" id="anamespacehmap_html_a55542a66f890ef9ecf5f82af2c23a0cfae2c78e075109f330e3109c52e9bf90ff"><div class="ttname"><a href="namespacehmap.html#a55542a66f890ef9ecf5f82af2c23a0cfae2c78e075109f330e3109c52e9bf90ff">hmap::PRIM_CONE</a></div><div class="ttdeci">@ PRIM_CONE</div><div class="ttdef"><b>Definition</b> primitives.hpp:56</div></div>
-<div class="ttc" id="anamespacehmap_html_a9588003e71523b45a4eee88d8debc9b5"><div class="ttname"><a href="namespacehmap.html#a9588003e71523b45a4eee88d8debc9b5">hmap::watershed_ridge</a></div><div class="ttdeci">Array watershed_ridge(const Array &amp;z, float amplitude=0.5f, int ir=1, float edt_exponent=0.5f, FlowDirectionMethod fd_method=FlowDirectionMethod::FDM_D8)</div><div class="ttdoc">Carves watershed ridges using basin-wise distance transforms.</div><div class="ttdef"><b>Definition</b> watershed_ridge.cpp:19</div></div>
+<div class="ttc" id="anamespacehmap_html_a9588003e71523b45a4eee88d8debc9b5"><div class="ttname"><a href="namespacehmap.html#a9588003e71523b45a4eee88d8debc9b5">hmap::watershed_ridge</a></div><div class="ttdeci">Array watershed_ridge(const Array &amp;z, float amplitude=0.5f, int ir=1, float edt_exponent=0.5f, FlowDirectionMethod fd_method=FlowDirectionMethod::FDM_D8)</div><div class="ttdoc">Carves watershed ridges using basin-wise distance transforms.</div><div class="ttdef"><b>Definition</b> watershed_ridge.cpp:21</div></div>
 <div class="ttc" id="anamespacehmap_html_ae3ecf5f88476c5d49978a130f8cab2f3"><div class="ttname"><a href="namespacehmap.html#ae3ecf5f88476c5d49978a130f8cab2f3">hmap::bulkify</a></div><div class="ttdeci">Array bulkify(const Array &amp;z, const PrimitiveType &amp;primitive_type, float amp=1.f, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, glm::vec2 center={0.5f, 0.5f}, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdef"><b>Definition</b> bulkify.cpp:11</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_watershed_ridge.png" alt=""/>

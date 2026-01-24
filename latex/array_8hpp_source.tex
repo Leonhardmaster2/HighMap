@@ -228,6 +228,51 @@
 \DoxyCodeLine{00986\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ remap\_values\ =\ \textcolor{keyword}{true},}
 \DoxyCodeLine{00987\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ flip\_j\ =\ \textcolor{keyword}{false});}
 \DoxyCodeLine{00988\ }
-\DoxyCodeLine{00989\ \}\ \textcolor{comment}{//\ namespace\ hmap}}
+\DoxyCodeLine{00989\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00990\ \textcolor{comment}{//\ per\ cell\ operations\ wrapper(s)}}
+\DoxyCodeLine{00991\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00992\ }
+\DoxyCodeLine{00994\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Fn>\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a05ee0ea53f1a06ac43741f11e25ec2cc}{for\_each\_cell}}(\mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&a,\ Fn\ \&\&fn)}
+\DoxyCodeLine{00995\ \{}
+\DoxyCodeLine{00996\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ w\ =\ a.\mbox{\hyperlink{classhmap_1_1Array_a9ee3e85888021b80660357e73f35a5ea}{shape}}.x;}
+\DoxyCodeLine{00997\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ h\ =\ a.\mbox{\hyperlink{classhmap_1_1Array_a9ee3e85888021b80660357e73f35a5ea}{shape}}.y;}
+\DoxyCodeLine{00998\ }
+\DoxyCodeLine{00999\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ h;\ ++j)}
+\DoxyCodeLine{01000\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ w;\ ++i)}
+\DoxyCodeLine{01001\ \ \ \ \ \ \ fn(i,\ j,\ a(i,\ j));}
+\DoxyCodeLine{01002\ \}}
+\DoxyCodeLine{01003\ }
+\DoxyCodeLine{01005\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Fn>\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a05ee0ea53f1a06ac43741f11e25ec2cc}{for\_each\_cell}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&a,\ Fn\ \&\&fn)}
+\DoxyCodeLine{01006\ \{}
+\DoxyCodeLine{01007\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ w\ =\ a.\mbox{\hyperlink{classhmap_1_1Array_a9ee3e85888021b80660357e73f35a5ea}{shape}}.x;}
+\DoxyCodeLine{01008\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ h\ =\ a.\mbox{\hyperlink{classhmap_1_1Array_a9ee3e85888021b80660357e73f35a5ea}{shape}}.y;}
+\DoxyCodeLine{01009\ }
+\DoxyCodeLine{01010\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ h;\ ++j)}
+\DoxyCodeLine{01011\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ w;\ ++i)}
+\DoxyCodeLine{01012\ \ \ \ \ \ \ fn(i,\ j,\ a(i,\ j));}
+\DoxyCodeLine{01013\ \}}
+\DoxyCodeLine{01014\ }
+\DoxyCodeLine{01016\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ Fn,\ \textcolor{keyword}{typename}\ Reduce>}
+\DoxyCodeLine{01017\ \textcolor{keyword}{inline}\ T\ \mbox{\hyperlink{namespacehmap_a839a208ff16a89feb85d52ac9db5b971}{reduce\_cells}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&a,\ T\ init,\ Fn\ \&\&fn,\ Reduce\ \&\&reduce)}
+\DoxyCodeLine{01018\ \{}
+\DoxyCodeLine{01019\ \ \ T\ acc\ =\ init;}
+\DoxyCodeLine{01020\ }
+\DoxyCodeLine{01021\ \ \ \mbox{\hyperlink{namespacehmap_a05ee0ea53f1a06ac43741f11e25ec2cc}{for\_each\_cell}}(a,}
+\DoxyCodeLine{01022\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [\&](\textcolor{keywordtype}{int}\ i,\ \textcolor{keywordtype}{int}\ j,\ \textcolor{keywordtype}{float}\ v)\ \{\ acc\ =\ reduce(acc,\ fn(i,\ j,\ v));\ \});}
+\DoxyCodeLine{01023\ }
+\DoxyCodeLine{01024\ \ \ \textcolor{keywordflow}{return}\ acc;}
+\DoxyCodeLine{01025\ \}}
+\DoxyCodeLine{01026\ }
+\DoxyCodeLine{01028\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ Fn,\ \textcolor{keyword}{typename}\ Reduce>}
+\DoxyCodeLine{01029\ \textcolor{keyword}{inline}\ T\ \mbox{\hyperlink{namespacehmap_a839a208ff16a89feb85d52ac9db5b971}{reduce\_cells}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&a,\ T\ init,\ Reduce\ \&\&reduce)}
+\DoxyCodeLine{01030\ \{}
+\DoxyCodeLine{01031\ \ \ T\ acc\ =\ init;}
+\DoxyCodeLine{01032\ }
+\DoxyCodeLine{01033\ \ \ \mbox{\hyperlink{namespacehmap_a05ee0ea53f1a06ac43741f11e25ec2cc}{for\_each\_cell}}(a,\ [\&](\textcolor{keywordtype}{int}\ i,\ \textcolor{keywordtype}{int}\ j,\ \textcolor{keywordtype}{float}\ v)\ \{\ acc\ =\ reduce(acc,\ a(i,\ j));\ \});}
+\DoxyCodeLine{01034\ }
+\DoxyCodeLine{01035\ \ \ \textcolor{keywordflow}{return}\ acc;}
+\DoxyCodeLine{01036\ \}}
+\DoxyCodeLine{01037\ }
+\DoxyCodeLine{01038\ \}\ \textcolor{comment}{//\ namespace\ hmap}}
 
 \end{DoxyCode}

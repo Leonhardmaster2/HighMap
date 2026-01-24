@@ -1872,6 +1872,142 @@
         </inbodydescription>
         <location file="HighMap/src/array/opencv_wrapper.cpp" line="30" column="7" bodyfile="HighMap/src/array/opencv_wrapper.cpp" bodystart="30" bodyend="50" declfile="HighMap/include/highmap/array.hpp" declline="985" declcolumn="7"/>
       </memberdef>
+      <memberdef kind="function" id="namespacehmap_1a05ee0ea53f1a06ac43741f11e25ec2cc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Fn</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void hmap::for_each_cell</definition>
+        <argsstring>(Array &amp;a, Fn &amp;&amp;fn)</argsstring>
+        <name>for_each_cell</name>
+        <qualifiedname>hmap::for_each_cell</qualifiedname>
+        <param>
+          <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>Fn &amp;&amp;</type>
+          <declname>fn</declname>
+        </param>
+        <briefdescription>
+<para>Apply a function to every cell (mutable). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/array.hpp" line="994" column="25" bodyfile="HighMap/include/highmap/array.hpp" bodystart="994" bodyend="1002"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehmap_1a8a43091b3356d69271fa6d185f5bdcbe" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Fn</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void hmap::for_each_cell</definition>
+        <argsstring>(const Array &amp;a, Fn &amp;&amp;fn)</argsstring>
+        <name>for_each_cell</name>
+        <qualifiedname>hmap::for_each_cell</qualifiedname>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>Fn &amp;&amp;</type>
+          <declname>fn</declname>
+        </param>
+        <briefdescription>
+<para>Apply a function to every cell (read-only). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/array.hpp" line="1005" column="25" bodyfile="HighMap/include/highmap/array.hpp" bodystart="1005" bodyend="1013"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehmap_1a839a208ff16a89feb85d52ac9db5b971" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>typename Fn</type>
+          </param>
+          <param>
+            <type>typename Reduce</type>
+          </param>
+        </templateparamlist>
+        <type>T</type>
+        <definition>T hmap::reduce_cells</definition>
+        <argsstring>(const Array &amp;a, T init, Fn &amp;&amp;fn, Reduce &amp;&amp;reduce)</argsstring>
+        <name>reduce_cells</name>
+        <qualifiedname>hmap::reduce_cells</qualifiedname>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>T</type>
+          <declname>init</declname>
+        </param>
+        <param>
+          <type>Fn &amp;&amp;</type>
+          <declname>fn</declname>
+        </param>
+        <param>
+          <type>Reduce &amp;&amp;</type>
+          <declname>reduce</declname>
+        </param>
+        <briefdescription>
+<para>Reduce all cells to a single value. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/array.hpp" line="1017" column="10" bodyfile="HighMap/include/highmap/array.hpp" bodystart="1017" bodyend="1025"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehmap_1a75f07aa871c112ed5a91bd259ce0b6ed" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>typename Fn</type>
+          </param>
+          <param>
+            <type>typename Reduce</type>
+          </param>
+        </templateparamlist>
+        <type>T</type>
+        <definition>T hmap::reduce_cells</definition>
+        <argsstring>(const Array &amp;a, T init, Reduce &amp;&amp;reduce)</argsstring>
+        <name>reduce_cells</name>
+        <qualifiedname>hmap::reduce_cells</qualifiedname>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>T</type>
+          <declname>init</declname>
+        </param>
+        <param>
+          <type>Reduce &amp;&amp;</type>
+          <declname>reduce</declname>
+        </param>
+        <briefdescription>
+<para>Reduce all cells to a single value. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/array.hpp" line="1029" column="10" bodyfile="HighMap/include/highmap/array.hpp" bodystart="1029" bodyend="1036"/>
+      </memberdef>
       <memberdef kind="function" id="namespacehmap_1a6123c18788ae302332416d5d7585fd9f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void hmap::alter_elevation</definition>
@@ -13428,7 +13564,7 @@ levelled out&quot;.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/watershed_ridge.cpp" line="19" column="7" bodyfile="HighMap/src/erosion/watershed_ridge.cpp" bodystart="19" bodyend="56" declfile="HighMap/include/highmap/erosion.hpp" declline="1263" declcolumn="7"/>
+        <location file="HighMap/src/erosion/watershed_ridge.cpp" line="21" column="7" bodyfile="HighMap/src/erosion/watershed_ridge.cpp" bodystart="21" bodyend="64" declfile="HighMap/include/highmap/erosion.hpp" declline="1263" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a4747b0405463a134d6af358fe779c62f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -13470,7 +13606,7 @@ levelled out&quot;.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/watershed_ridge.cpp" line="58" column="7" bodyfile="HighMap/src/erosion/watershed_ridge.cpp" bodystart="58" bodyend="72" declfile="HighMap/include/highmap/erosion.hpp" declline="1270" declcolumn="7"/>
+        <location file="HighMap/src/erosion/watershed_ridge.cpp" line="66" column="7" bodyfile="HighMap/src/erosion/watershed_ridge.cpp" bodystart="66" bodyend="80" declfile="HighMap/include/highmap/erosion.hpp" declline="1270" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a7b8945745feaeaa365d965ce66b32f58" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
