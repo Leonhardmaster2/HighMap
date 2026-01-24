@@ -13,6 +13,8 @@
 #include "highmap/range.hpp"
 #include "highmap/transform.hpp"
 
+#include "highmap/dbg/timer.hpp"
+
 namespace hmap
 {
 
@@ -43,16 +45,22 @@ Array watershed_ridge(const Array        &z,
 
   // filter but keep sharp valley bottoms
   Array mask = edt;
-  for (auto &v : mask.vector)
-    v = 1.f - std::exp(-v * v / 0.01f);
+
+  for_each_cell(mask,
+                [](int, int, float &v) { v = 1.f - std::exp(-v * v / 0.01f); });
+
   smooth_cpulse(edt, ir, &mask);
 
-  edt = 1.f - edt;
+  for_each_cell(edt,
+                [edt_exponent, amplitude](int, int, float &v)
+                {
+                  v = 1.f - v;
+                  v = std::pow(v, edt_exponent);
+                });
 
-  // apply
-  edt = pow(edt, edt_exponent);
-
-  return z - amplitude * edt;
+  Array out = z - amplitude * edt;
+ 
+  return out;
 }
 
 Array watershed_ridge(const Array        &z,

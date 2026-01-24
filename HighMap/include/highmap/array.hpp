@@ -986,4 +986,53 @@ Array cv_mat_to_array(const cv::Mat &mat,
                       bool           remap_values = true,
                       bool           flip_j = false);
 
+//-----------------------------------
+// per cell operations wrapper(s)
+//-----------------------------------
+
+/// Apply a function to every cell (mutable).
+template <typename Fn> inline void for_each_cell(Array &a, Fn &&fn)
+{
+  const int w = a.shape.x;
+  const int h = a.shape.y;
+
+  for (int j = 0; j < h; ++j)
+    for (int i = 0; i < w; ++i)
+      fn(i, j, a(i, j));
+}
+
+/// Apply a function to every cell (read-only).
+template <typename Fn> inline void for_each_cell(const Array &a, Fn &&fn)
+{
+  const int w = a.shape.x;
+  const int h = a.shape.y;
+
+  for (int j = 0; j < h; ++j)
+    for (int i = 0; i < w; ++i)
+      fn(i, j, a(i, j));
+}
+
+/// Reduce all cells to a single value.
+template <typename T, typename Fn, typename Reduce>
+inline T reduce_cells(const Array &a, T init, Fn &&fn, Reduce &&reduce)
+{
+  T acc = init;
+
+  for_each_cell(a,
+                [&](int i, int j, float v) { acc = reduce(acc, fn(i, j, v)); });
+
+  return acc;
+}
+
+/// Reduce all cells to a single value.
+template <typename T, typename Fn, typename Reduce>
+inline T reduce_cells(const Array &a, T init, Reduce &&reduce)
+{
+  T acc = init;
+
+  for_each_cell(a, [&](int i, int j, float v) { acc = reduce(acc, a(i, j)); });
+
+  return acc;
+}
+
 } // namespace hmap
