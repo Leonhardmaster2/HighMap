@@ -45,9 +45,9 @@ void helper_find_up_downslope(const Array      &z,
 
 Path flow_stream(const Array     &z,
                  const glm::ivec2 ij_start,
-                 const float      elevation_ratio = 0.5f,
-                 const float      distance_exponent = 2.f,
-                 const float      upward_penalization = 100.f)
+                 const float      elevation_ratio,
+                 const float      distance_exponent,
+                 const float      upward_penalization)
 {
 
   // --

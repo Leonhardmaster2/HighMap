@@ -68,14 +68,19 @@ float abs_smooth(float a, float k)
   return std::sqrt(a * a + k2);
 }
 
-Array almost_unit_identity(const Array &array)
-{
-  return (2.f - array) * array * array;
-}
-
 float almost_unit_identity(float x)
 {
   return (2.f - x) * x * x;
+}
+
+Array almost_unit_identity(const Array &array)
+{
+  Array array_out = Array(array.shape);
+  std::transform(array.vector.begin(),
+                 array.vector.end(),
+                 array_out.vector.begin(),
+                 [](float v) { return almost_unit_identity(v); });
+  return array_out;
 }
 
 float almost_unit_identity_c2(float x)
@@ -83,6 +88,16 @@ float almost_unit_identity_c2(float x)
   // second-order derivative equals 0 at x = 1 also to avoid
   // discontinuities in some cases
   return x * x * (x * x - 3.f * x + 3.f);
+}
+
+Array almost_unit_identity_c2(const Array &array)
+{
+  Array array_out = Array(array.shape);
+  std::transform(array.vector.begin(),
+                 array.vector.end(),
+                 array_out.vector.begin(),
+                 [](float v) { return almost_unit_identity_c2(v); });
+  return array_out;
 }
 
 Array atan(const Array &array)

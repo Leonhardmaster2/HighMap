@@ -201,8 +201,6 @@ std::vector<std::vector<glm::ivec2>> DrainageBasins::get_main_channels()
   Array area_acc(shape, 1.f);
   this->accumulate(area_acc);
 
-  (log10(area_acc)).dump("acc.png");
-
   const int di[8] = {1, 1, 0, -1, -1, -1, 0, 1};
   const int dj[8] = {0, -1, -1, -1, 0, 1, 1, 1};
 
@@ -226,7 +224,7 @@ std::vector<std::vector<glm::ivec2>> DrainageBasins::get_main_channels()
 
         if (ni < 0 || nj < 0 || ni >= shape.x || nj >= shape.y) continue;
 
-        if (area_acc(ni, nj) >= area_acc(p)) p = {ni, nj};
+        if (area_acc(ni, nj) > area_acc(p)) p = {ni, nj};
       }
 
       channels[basin_id].push_back(p);

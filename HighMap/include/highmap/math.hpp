@@ -120,6 +120,7 @@ float almost_unit_identity(float x); ///< @overload
  * @return   float Output.
  */
 float almost_unit_identity_c2(float x);
+float almost_unit_identity_c2(const Array &array);
 
 /**
  * @brief Return the approximate hypothenuse of two numbers.

@@ -17,6 +17,7 @@
 #include <cmath>
 
 #include "highmap/array.hpp"
+#include "highmap/hydrology.hpp"
 
 // neighbor pattern search based on Moore pattern and define diagonal
 // weight coefficients ('c' corresponds to a weight coefficient
@@ -1247,7 +1248,7 @@ void thermal_schott(Array      &z,
  *
  * @param  z                  Input elevation field.
  * @param  amplitude          Ridge carving strength.
- * @param  smooth_ridge_crest Smooth ridge crests if true.
+ * @param  ir Smoothing.
  * @param  edt_exponent       Exponent applied to the distance field to control
  *                            ridge sharpness.
  *
@@ -1259,16 +1260,20 @@ void thermal_schott(Array      &z,
  * **Result**
  * @image html ex_watershed_ridge.png
  */
-Array watershed_ridge(const Array &z,
-                      float        amplitude = 0.8f,
-                      bool         smooth_ridge_crest = true,
-                      float        edt_exponent = 0.5f);
+Array watershed_ridge(
+    const Array        &z,
+    float               amplitude = 0.5f,
+    int                 ir = 1,
+    float               edt_exponent = 0.5f,
+    FlowDirectionMethod fd_method = FlowDirectionMethod::FDM_D8);
 
-Array watershed_ridge(const Array &z,
-                      Array       *p_mask,
-                      float        amplitude = 0.8f,
-                      bool         smooth_ridge_crest = true,
-                      float        edt_exponent = 0.5f);
+Array watershed_ridge(
+    const Array        &z,
+    Array              *p_mask,
+    float               amplitude = 0.5f,
+    int                 ir = 1,
+    float               edt_exponent = 0.5f,
+    FlowDirectionMethod fd_method = FlowDirectionMethod::FDM_D8);
 
 } // namespace hmap
 
@@ -1743,5 +1748,26 @@ void valley_fill(Array       &z,
                  bool         preserve_elevation_range = true,
                  const Array *p_noise = nullptr,
                  Array       *p_deposition_map = nullptr);
+
+/*! @brief See hmap::watershed_ridge */
+Array watershed_ridge(
+    const Array        &z,
+    float               amplitude = 0.5f,
+    int                 ir = 1,
+    float               edt_exponent = 0.5f,
+    FlowDirectionMethod fd_method = FlowDirectionMethod::FDM_D8,
+    const Array        *p_noise_x = nullptr,
+    const Array        *p_noise_y = nullptr);
+
+/*! @brief See hmap::watershed_ridge */
+Array watershed_ridge(
+    const Array        &z,
+    Array              *p_mask,
+    float               amplitude = 0.5f,
+    int                 ir = 1,
+    float               edt_exponent = 0.5f,
+    FlowDirectionMethod fd_method = FlowDirectionMethod::FDM_D8,
+    const Array        *p_noise_x = nullptr,
+    const Array        *p_noise_y = nullptr);
 
 } // namespace hmap::gpu
