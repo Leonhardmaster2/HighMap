@@ -2,8 +2,11 @@ R""(
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
+#define VELOCITY_INIT 0.9f
 #define VELOCITY_MIN 0.005f
 #define VOLUME_MIN 0.001f
+
+// --- HELPERS
 
 float helper_bilinear_interp(const float f00,
                              const float f10,
@@ -93,6 +96,8 @@ inline void helper_bilinear_deposition(global float *z,
   z[linear_index(i + 1, j + 1, nx)] -= amount * d4;
 }
 
+// --- MAIN KERNEL
+
 void kernel hydraulic_particle(global float *z_in,
                                global float *bedrock,
                                global float *moisture_map,
@@ -104,6 +109,7 @@ void kernel hydraulic_particle(global float *z_in,
                                const float   c_erosion,
                                const float   c_deposition,
                                const float   c_inertia,
+                               const float   c_gravity,
                                const float   drag_rate,
                                const float   evap_rate,
                                const int     has_bedrock,
@@ -122,7 +128,8 @@ void kernel hydraulic_particle(global float *z_in,
 
   update_interp_param(pos, &i, &j, &u, &v);
 
-  float2 vel = {0.f, 0.f};
+  float  vel = VELOCITY_INIT;
+  float2 dir = {0.f, 0.f};
   float  volume = has_moisture_map > 0 ? moisture_map[linear_index(i, j, nx)]
                                        : 1.f;
 
@@ -140,12 +147,10 @@ void kernel hydraulic_particle(global float *z_in,
     float2 gz = helper_compute_gradient(z_in, i, j, nx);
 
     // particle goes downhill, opposite local gradient
-    vel += dt * (float2)(-gz.x, -gz.y) / c_inertia;
-    vel *= (1.f - dt * drag_rate);
+    dir += dt * (float2)(-gz.x, -gz.y) / c_inertia;
+    dir *= (1.f - dt * drag_rate);
 
-    float vnorm = length(vel);
-
-    if (vnorm < VELOCITY_MIN) break;
+    if (vel < VELOCITY_MIN) break;
 
     float zp = helper_sample_height(z_in, i, j, nx, u, v);
 
@@ -156,7 +161,7 @@ void kernel hydraulic_particle(global float *z_in,
     float vp = v;
 
     // move particle
-    pos += dt * vel;
+    pos += dt * dir;
 
     // elevation at new position
     update_interp_param(pos, &i, &j, &u, &v);
@@ -164,7 +169,7 @@ void kernel hydraulic_particle(global float *z_in,
 
     float z = helper_sample_height(z_in, i, j, nx, u, v);
     float dz = zp - z;
-    float sc = max(c_capacity * volume * vnorm * dz, 0.0001f);
+    float sc = max(c_capacity * volume * vel * dz, 0.0001f);
     float delta_sc = dt * (sc - s);
     float amount = 0.f;
 
@@ -208,6 +213,7 @@ void kernel hydraulic_particle(global float *z_in,
           z_in[linear_index(ip + 1, jp + 1, nx)]);
     }
 
+    vel = sqrt(vel * vel - dz * c_gravity);
     volume *= evap_factor;
   }
 }
