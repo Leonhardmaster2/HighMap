@@ -59,7 +59,7 @@ Array watershed_ridge(const Array        &z,
                 });
 
   Array out = z - amplitude * edt;
- 
+
   return out;
 }
 
