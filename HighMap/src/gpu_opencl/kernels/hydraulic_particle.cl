@@ -19,6 +19,80 @@ float helper_bilinear_interp(const float f00,
   return f00 + a10 * u + a01 * v + a11 * u * v;
 }
 
+inline float helper_sample_height(global float *z,
+                                  int           i,
+                                  int           j,
+                                  int           nx,
+                                  float         u,
+                                  float         v)
+{
+  return helper_bilinear_interp(z[linear_index(i, j, nx)],
+                                z[linear_index(i + 1, j, nx)],
+                                z[linear_index(i, j + 1, nx)],
+                                z[linear_index(i + 1, j + 1, nx)],
+                                u,
+                                v);
+}
+
+inline float2 helper_compute_gradient(global float *z, int i, int j, int nx)
+{
+  float f_p1_0 = z[linear_index(i + 1, j, nx)];
+  float f_m1_0 = z[linear_index(i - 1, j, nx)];
+  float f_0_p1 = z[linear_index(i, j + 1, nx)];
+  float f_0_m1 = z[linear_index(i, j - 1, nx)];
+
+  return (float2)(0.5f * (f_p1_0 - f_m1_0), 0.5f * (f_0_p1 - f_0_m1));
+}
+
+// Smoothed radial erosion kernel
+inline void helper_radial_kernel_deposition(global float *z,
+                                            int           i,
+                                            int           j,
+                                            int           nx,
+                                            int           ny,
+                                            float         amount,
+                                            int           radius)
+{
+  float dmax = (float)radius;
+  float sum = 0.f;
+
+  // normalization
+  for (int p = -radius; p <= radius; ++p)
+    for (int q = -radius; q <= radius; ++q)
+      if (is_inside(i + p, j + q, nx, ny))
+        sum += max(0.f, 1.f - length((float2)(p, q)) / dmax);
+
+  // apply
+  for (int p = -radius; p <= radius; ++p)
+    for (int q = -radius; q <= radius; ++q)
+    {
+      float w = max(0.f, 1.f - length((float2)(p, q)) / dmax) / sum;
+      int   in = i + p;
+      int   jn = j + q;
+      if (w > 0.f && is_inside(in, jn, nx, ny))
+        z[linear_index(in, jn, nx)] -= amount * w;
+    }
+}
+
+inline void helper_bilinear_deposition(global float *z,
+                                       int           i,
+                                       int           j,
+                                       int           nx,
+                                       float         u,
+                                       float         v,
+                                       float         amount)
+{
+  float d1 = (1.f - u) * (1.f - v);
+  float d2 = u * (1.f - v);
+  float d3 = (1.f - u) * v;
+  float d4 = u * v;
+
+  z[linear_index(i, j, nx)] -= amount * d1;
+  z[linear_index(i + 1, j, nx)] -= amount * d2;
+  z[linear_index(i, j + 1, nx)] -= amount * d3;
+  z[linear_index(i + 1, j + 1, nx)] -= amount * d4;
+}
+
 void kernel hydraulic_particle(global float *z_in,
                                global float *bedrock,
                                global float *moisture_map,
@@ -63,34 +137,23 @@ void kernel hydraulic_particle(global float *z_in,
     // stop if the particle reaches the domain limits
     if (i < 1 || i > nx - 2 || j < 1 || j > ny - 2) break;
 
-    // retrieve neighborhood elevation values
-    float f_0_0 = z_in[linear_index(i, j, nx)];
-    float f_p1_0 = z_in[linear_index(i + 1, j, nx)];
-    float f_0_p1 = z_in[linear_index(i, j + 1, nx)];
-    float f_p1_p1 = z_in[linear_index(i + 1, j + 1, nx)];
-    float f_m1_0 = z_in[linear_index(i - 1, j, nx)];
-    float f_0_m1 = z_in[linear_index(i, j - 1, nx)];
-
-    // local gradient
-    float dzx = 0.5f * (f_p1_0 - f_m1_0);
-    float dzy = 0.5f * (f_0_p1 - f_0_m1);
+    float2 gz = helper_compute_gradient(z_in, i, j, nx);
 
     // particle goes downhill, opposite local gradient
-    vel += dt * (float2)(-dzx, -dzy) / c_inertia;
+    vel += dt * (float2)(-gz.x, -gz.y) / c_inertia;
     vel *= (1.f - dt * drag_rate);
 
     float vnorm = length(vel);
 
     if (vnorm < VELOCITY_MIN) break;
 
-    float z_p = helper_bilinear_interp(f_0_0, f_p1_0, f_0_p1, f_p1_p1, u, v);
+    float zp = helper_sample_height(z_in, i, j, nx, u, v);
 
     // backup previous position
-    float2 pos_p = pos;
-    int    i_p = i;
-    int    j_p = j;
-    float  u_p = u;
-    float  v_p = v;
+    int   ip = i;
+    int   jp = j;
+    float up = u;
+    float vp = v;
 
     // move particle
     pos += dt * vel;
@@ -99,53 +162,50 @@ void kernel hydraulic_particle(global float *z_in,
     update_interp_param(pos, &i, &j, &u, &v);
     if (i < 1 || i > nx - 2 || j < 1 || j > ny - 2) break;
 
-    float z = helper_bilinear_interp(z_in[linear_index(i, j, nx)],
-                                     z_in[linear_index(i + 1, j, nx)],
-                                     z_in[linear_index(i, j + 1, nx)],
-                                     z_in[linear_index(i + 1, j + 1, nx)],
-                                     u,
-                                     v);
-
-    float dz = z_p - z;
-    float sc = c_capacity * volume * vnorm * dz;
+    float z = helper_sample_height(z_in, i, j, nx, u, v);
+    float dz = zp - z;
+    float sc = max(c_capacity * volume * vnorm * dz, 0.0001f);
     float delta_sc = dt * (sc - s);
     float amount = 0.f;
 
-    if (delta_sc > 0.f)
-      amount = c_erosion * delta_sc; // erosion
+    // if more sediments than capacity or if uphill motion
+    if (delta_sc < 0.f || dz < 0.f)
+    {
+      // deposition
+      amount = (dz < 0.f) ? -min(-dz, s) : c_deposition * delta_sc;
+      helper_bilinear_deposition(z_in, ip, jp, nx, up, vp, amount);
+
+      /* int ir = 3; */
+      /* helper_radial_kernel_deposition(z_in, ip, jp, nx, ny, amount, ir); */
+    }
     else
-      amount = c_deposition * delta_sc; // deposition
+    {
+      // erosion
+      amount = c_erosion * delta_sc;
+
+      int ir = 2;
+      helper_radial_kernel_deposition(z_in, ip, jp, nx, ny, amount, ir);
+    }
 
     s += amount;
-
-    float d1 = (1.f - u_p) * (1.f - v_p);
-    float d2 = u_p * (1.f - v_p);
-    float d3 = (1.f - u_p) * v_p;
-    float d4 = u_p * v_p;
-
-    z_in[linear_index(i_p, j_p, nx)] -= amount * d1;
-    z_in[linear_index(i_p + 1, j_p, nx)] -= amount * d2;
-    z_in[linear_index(i_p, j_p + 1, nx)] -= amount * d3;
-    z_in[linear_index(i_p + 1, j_p + 1, nx)] -= amount * d4;
 
     // bedrock limit enforcement
     if (amount > 0.f && has_bedrock != 0) // erosion
     {
-      z_in[linear_index(i_p, j_p, nx)] = max(
-          bedrock[linear_index(i_p, j_p, nx)],
-          z_in[linear_index(i_p, j_p, nx)]);
+      z_in[linear_index(ip, jp, nx)] = max(bedrock[linear_index(ip, jp, nx)],
+                                           z_in[linear_index(ip, jp, nx)]);
 
-      z_in[linear_index(i_p + 1, j_p, nx)] = max(
-          bedrock[linear_index(i_p + 1, j_p, nx)],
-          z_in[linear_index(i_p + 1, j_p, nx)]);
+      z_in[linear_index(ip + 1, jp, nx)] = max(
+          bedrock[linear_index(ip + 1, jp, nx)],
+          z_in[linear_index(ip + 1, jp, nx)]);
 
-      z_in[linear_index(i_p, j_p + 1, nx)] = max(
-          bedrock[linear_index(i_p, j_p + 1, nx)],
-          z_in[linear_index(i_p, j_p + 1, nx)]);
+      z_in[linear_index(ip, jp + 1, nx)] = max(
+          bedrock[linear_index(ip, jp + 1, nx)],
+          z_in[linear_index(ip, jp + 1, nx)]);
 
-      z_in[linear_index(i_p + 1, j_p + 1, nx)] = max(
-          bedrock[linear_index(i_p + 1, j_p + 1, nx)],
-          z_in[linear_index(i_p + 1, j_p + 1, nx)]);
+      z_in[linear_index(ip + 1, jp + 1, nx)] = max(
+          bedrock[linear_index(ip + 1, jp + 1, nx)],
+          z_in[linear_index(ip + 1, jp + 1, nx)]);
     }
 
     volume *= evap_factor;
