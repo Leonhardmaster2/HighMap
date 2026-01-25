@@ -137,6 +137,7 @@ void kernel hydraulic_particle(global float *z_in,
                                const float   c_deposition,
                                const float   c_inertia,
                                const float   c_gravity,
+                               const int     radius,
                                const float   drag_rate,
                                const float   evap_rate,
                                const int     has_bedrock,
@@ -214,9 +215,7 @@ void kernel hydraulic_particle(global float *z_in,
     {
       // erosion
       amount = c_erosion * delta_sc;
-
-      int ir = 2;
-      helper_radial_kernel_deposition(z_in, ip, jp, nx, ny, amount, ir);
+      helper_radial_kernel_deposition(z_in, ip, jp, nx, ny, amount, radius);
     }
 
     s += amount;
