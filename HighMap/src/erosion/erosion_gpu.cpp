@@ -52,9 +52,7 @@ void hydraulic_particle(Array &z,
                      p_moisture_map ? 1 : 0);
 
   run.write_buffer("z");
-
   run.execute(nparticles);
-
   run.read_buffer("z");
 
   extrapolate_borders(z);
@@ -110,7 +108,7 @@ void hydraulic_particle(Array &z,
                             c_erosion,
                             c_deposition,
                             c_inertia,
-			    c_gravity,
+                            c_gravity,
                             drag_rate,
                             evap_rate,
                             post_filtering);

@@ -26,9 +26,13 @@ inline float helper_sample_height(global float *z,
                                   int           i,
                                   int           j,
                                   int           nx,
+                                  int           ny,
                                   float         u,
                                   float         v)
 {
+  if (i == nx - 1) i--;
+  if (j == ny - 1) j--;
+
   return helper_bilinear_interp(z[linear_index(i, j, nx)],
                                 z[linear_index(i + 1, j, nx)],
                                 z[linear_index(i, j + 1, nx)],
@@ -37,14 +41,33 @@ inline float helper_sample_height(global float *z,
                                 v);
 }
 
-inline float2 helper_compute_gradient(global float *z, int i, int j, int nx)
+inline float2 helper_bilinear_gradient(global float *z,
+                                       int           i,
+                                       int           j,
+                                       int           nx,
+                                       int           ny,
+                                       float         u,
+                                       float         v)
 {
-  float f_p1_0 = z[linear_index(i + 1, j, nx)];
-  float f_m1_0 = z[linear_index(i - 1, j, nx)];
-  float f_0_p1 = z[linear_index(i, j + 1, nx)];
-  float f_0_m1 = z[linear_index(i, j - 1, nx)];
+  if (i == nx - 1) i--;
+  if (j == ny - 1) j--;
 
-  return (float2)(0.5f * (f_p1_0 - f_m1_0), 0.5f * (f_0_p1 - f_0_m1));
+  // cell corners
+  float f00 = z[linear_index(i, j, nx)];
+  float f10 = z[linear_index(i + 1, j, nx)];
+  float f01 = z[linear_index(i, j + 1, nx)];
+  float f11 = z[linear_index(i + 1, j + 1, nx)];
+
+  // bilinear surface coefficients
+  float b = f10 - f00;
+  float c = f01 - f00;
+  float d = f11 - f10 - f01 + f00;
+
+  // analytic gradient
+  float dzdx = b + d * v;
+  float dzdy = c + d * u;
+
+  return (float2)(dzdx, dzdy);
 }
 
 // Smoothed radial erosion kernel
@@ -81,10 +104,14 @@ inline void helper_bilinear_deposition(global float *z,
                                        int           i,
                                        int           j,
                                        int           nx,
+                                       int           ny,
                                        float         u,
                                        float         v,
                                        float         amount)
 {
+  if (i == nx - 1) i--;
+  if (j == ny - 1) j--;
+
   float d1 = (1.f - u) * (1.f - v);
   float d2 = u * (1.f - v);
   float d3 = (1.f - u) * v;
@@ -142,9 +169,9 @@ void kernel hydraulic_particle(global float *z_in,
     update_interp_param(pos, &i, &j, &u, &v);
 
     // stop if the particle reaches the domain limits
-    if (i < 1 || i > nx - 2 || j < 1 || j > ny - 2) break;
+    if (!is_inside(i, j, nx, ny)) break;
 
-    float2 gz = helper_compute_gradient(z_in, i, j, nx);
+    float2 gz = helper_bilinear_gradient(z_in, i, j, nx, ny, u, v);
 
     // particle goes downhill, opposite local gradient
     dir += dt * (float2)(-gz.x, -gz.y) / c_inertia;
@@ -152,7 +179,7 @@ void kernel hydraulic_particle(global float *z_in,
 
     if (vel < VELOCITY_MIN) break;
 
-    float zp = helper_sample_height(z_in, i, j, nx, u, v);
+    float zp = helper_sample_height(z_in, i, j, nx, ny, u, v);
 
     // backup previous position
     int   ip = i;
@@ -165,9 +192,9 @@ void kernel hydraulic_particle(global float *z_in,
 
     // elevation at new position
     update_interp_param(pos, &i, &j, &u, &v);
-    if (i < 1 || i > nx - 2 || j < 1 || j > ny - 2) break;
+    if (!is_inside(i, j, nx, ny)) break;
 
-    float z = helper_sample_height(z_in, i, j, nx, u, v);
+    float z = helper_sample_height(z_in, i, j, nx, ny, u, v);
     float dz = zp - z;
     float sc = max(c_capacity * volume * vel * dz, 0.0001f);
     float delta_sc = dt * (sc - s);
@@ -178,7 +205,7 @@ void kernel hydraulic_particle(global float *z_in,
     {
       // deposition
       amount = (dz < 0.f) ? -min(-dz, s) : c_deposition * delta_sc;
-      helper_bilinear_deposition(z_in, ip, jp, nx, up, vp, amount);
+      helper_bilinear_deposition(z_in, ip, jp, nx, ny, up, vp, amount);
 
       /* int ir = 3; */
       /* helper_radial_kernel_deposition(z_in, ip, jp, nx, ny, amount, ir); */
@@ -199,18 +226,6 @@ void kernel hydraulic_particle(global float *z_in,
     {
       z_in[linear_index(ip, jp, nx)] = max(bedrock[linear_index(ip, jp, nx)],
                                            z_in[linear_index(ip, jp, nx)]);
-
-      z_in[linear_index(ip + 1, jp, nx)] = max(
-          bedrock[linear_index(ip + 1, jp, nx)],
-          z_in[linear_index(ip + 1, jp, nx)]);
-
-      z_in[linear_index(ip, jp + 1, nx)] = max(
-          bedrock[linear_index(ip, jp + 1, nx)],
-          z_in[linear_index(ip, jp + 1, nx)]);
-
-      z_in[linear_index(ip + 1, jp + 1, nx)] = max(
-          bedrock[linear_index(ip + 1, jp + 1, nx)],
-          z_in[linear_index(ip + 1, jp + 1, nx)]);
     }
 
     vel = sqrt(vel * vel - dz * c_gravity);
