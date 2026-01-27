@@ -56,18 +56,20 @@ void Array::from_numpy(const std::string &fname)
   }
 }
 
-void Array::infos(std::string msg) const
+void Array::infos(const std::string &msg) const
 {
-  float vmin = this->min();
-  float vmax = this->max();
+  const float vmin = min();
+  const float vmax = max();
 
-  std::cout << "Array: " << msg << "\n";
-  std::cout << " - address: " << this << "\n";
-  std::cout << " - shape: {" << this->shape.x << ", " << this->shape.y << "}"
-            << "\n";
-  std::cout << " - min: " << vmin << "\n";
-  std::cout << " - max: " << vmax << "\n";
-  std::cout << " - ptp: " << vmax - vmin << "\n";
+  std::cout << "Array infos\n"
+            << "--------------------------------\n"
+            << " message : " << msg << '\n'
+            << " address : " << this << '\n'
+            << " shape   : {" << shape.x << ", " << shape.y << "}\n"
+            << " min     : " << vmin << '\n'
+            << " max     : " << vmax << '\n'
+            << " ptp     : " << (vmax - vmin) << '\n'
+            << "--------------------------------\n";
 }
 
 void Array::print() const

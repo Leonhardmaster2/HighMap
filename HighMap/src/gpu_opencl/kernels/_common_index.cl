@@ -2,6 +2,8 @@ R""(
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
+#define TGET(tex, i, j) read_imagef(tex, sampler, (int2)((i), (j))).x
+#define TSET(tex, i, j, v) write_imagef(tex, (int2)((i), (j)), (v))
 
 float2 g_to_xy(const int2   g,
                const int    nx,

@@ -1422,6 +1422,25 @@ void hydraulic_stream_log(Array &z,
                           Array *p_deposition_map = nullptr,
                           Array *p_flow_map = nullptr); ///< @overload
 
+/*! @brief See hmap::hydraulic_vpipes */
+void hydraulic_vpipes(Array &z,
+                      float  water_height = 1e-2f,
+                      bool   maintain_water_volume = true,
+                      float  evap_rate = 0.1f,
+                      int    iterations = 50,
+                      float  dt = 0.5f,
+                      float  k_capacity = 0.5f,
+                      float  k_erode = 0.001f,
+                      float  k_depose = 0.01f,
+                      float  k_discharge_exp = 1.f,
+                      bool   flux_diffusion = true,
+                      float  flux_diffusion_strength = 0.001f,
+                      Array *p_rain_map = nullptr,
+                      Array *p_water_depth = nullptr,
+                      Array *p_sediment = nullptr,
+                      Array *p_vel_u = nullptr,
+                      Array *p_vel_v = nullptr);
+
 /**
  * @brief Applies a "rift" deformation effect to a heightmap array.
  *

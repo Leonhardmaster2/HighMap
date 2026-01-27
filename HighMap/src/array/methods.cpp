@@ -115,7 +115,6 @@ void Array::depose_amount_kernel_at(int          i,
 
 void Array::dump(const std::string &fname) const
 {
-  LOG_DEBUG("DUMPING...");
   this->infos(fname);
   this->to_png_grayscale(fname, CV_16U);
 }

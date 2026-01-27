@@ -206,7 +206,6 @@ void hydraulic_vpipes(Array &z,
 
       fill_borders(u);
       fill_borders(v);
-
     } // flow sim
 
     // --- erosion and deposition

@@ -1,0 +1,2 @@
+add_executable(ex_hydraulic_vpipes_gpu ex_hydraulic_vpipes_gpu.cpp)
+target_link_libraries(ex_hydraulic_vpipes_gpu highmap)

@@ -591,7 +591,7 @@ public:
    *
    * @param msg Optional message to include in the output.
    */
-  void infos(std::string msg = "") const;
+  void infos(const std::string &msg = "") const;
 
   /**
    * @brief Return the linear index corresponding to the (i, j) cell in a 2D

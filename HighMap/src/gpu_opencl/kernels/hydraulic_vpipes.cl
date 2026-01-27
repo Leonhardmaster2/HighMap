@@ -1,0 +1,207 @@
+R""(
+/* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
+ * Public License. The full license is in the file LICENSE, distributed with
+ * this software. */
+void kernel hydraulic_vpipes_flow_pass(read_only image2d_t  z,
+                                       read_only image2d_t  fl,
+                                       read_only image2d_t  fr,
+                                       read_only image2d_t  ft,
+                                       read_only image2d_t  fb,
+                                       read_only image2d_t  d1,
+                                       write_only image2d_t fl_out,
+                                       write_only image2d_t fr_out,
+                                       write_only image2d_t ft_out,
+                                       write_only image2d_t fb_out,
+                                       const int            nx,
+                                       const int            ny,
+                                       const float          dt,
+                                       const int            flux_diffusion,
+                                       const float flux_diffusion_strength)
+{
+  const int2 g = {get_global_id(0), get_global_id(1)};
+
+  if (g.x >= nx || g.y >= ny) return;
+
+  const sampler_t sampler = CLK_NORMALIZED_COORDS_FALSE |
+                            CLK_ADDRESS_CLAMP_TO_EDGE | CLK_FILTER_NEAREST;
+
+  const int   i = g.x;
+  const int   j = g.y;
+  const float plength = 1.f;
+  const float gv = 1.f; // gravity
+
+  float base_value = TGET(z, i, j) + TGET(d1, i, j);
+
+  float dhl = base_value - TGET(z, i - 1, j) - TGET(d1, i - 1, j);
+  float dhr = base_value - TGET(z, i + 1, j) - TGET(d1, i + 1, j);
+  float dht = base_value - TGET(z, i, j + 1) - TGET(d1, i, j + 1);
+  float dhb = base_value - TGET(z, i, j - 1) - TGET(d1, i, j - 1);
+
+  float fl_new = max(0.f, TGET(fl, i, j) + dt * gv * dhl / plength);
+  float fr_new = max(0.f, TGET(fr, i, j) + dt * gv * dhr / plength);
+  float ft_new = max(0.f, TGET(ft, i, j) + dt * gv * dht / plength);
+  float fb_new = max(0.f, TGET(fb, i, j) + dt * gv * dhb / plength);
+
+  // flux diffusion
+  if (flux_diffusion)
+  {
+    float c0 = flux_diffusion_strength;
+    float c1 = 1.f - 4.f * c0;
+    float f_diff = c0 * (fl_new + fr_new + ft_new + fb_new);
+
+    fl_new = c1 * fl_new + f_diff;
+    fr_new = c1 * fr_new + f_diff;
+    ft_new = c1 * ft_new + f_diff;
+    fb_new = c1 * fb_new + f_diff;
+  }
+
+  // normalize
+  float sum = fl_new + fr_new + ft_new + fb_new;
+  float k = 0.f;
+  if (sum > 1e-5f) k = TGET(d1, i, j) * plength * plength / (sum * dt);
+  k = clamp(k, 0.f, 1.f);
+
+  // output
+  TSET(fl_out, i, j, fl_new * k);
+  TSET(fr_out, i, j, fr_new * k);
+  TSET(ft_out, i, j, ft_new * k);
+  TSET(fb_out, i, j, fb_new * k);
+}
+
+void kernel hydraulic_vpipes_water_pass(read_only image2d_t  z,
+                                        read_only image2d_t  fl,
+                                        read_only image2d_t  fr,
+                                        read_only image2d_t  ft,
+                                        read_only image2d_t  fb,
+                                        read_only image2d_t  d1,
+                                        write_only image2d_t d2_out,
+                                        write_only image2d_t u_out,
+                                        write_only image2d_t v_out,
+                                        const int            nx,
+                                        const int            ny,
+                                        const float          dt,
+                                        const float          water_height)
+{
+  const int2 g = {get_global_id(0), get_global_id(1)};
+
+  if (g.x >= nx || g.y >= ny) return;
+
+  const sampler_t sampler = CLK_NORMALIZED_COORDS_FALSE |
+                            CLK_ADDRESS_CLAMP_TO_EDGE | CLK_FILTER_NEAREST;
+
+  const int   i = g.x;
+  const int   j = g.y;
+  const float plength = 1.f;
+  const float gv = 1.f; // gravity
+
+  float dv = dt * (TGET(fr, i - 1, j) + TGET(ft, i, j - 1) +
+                   TGET(fl, i + 1, j) + TGET(fb, i, j + 1) - TGET(fl, i, j) -
+                   TGET(fr, i, j) - TGET(ft, i, j) - TGET(fb, i, j));
+  float d2_new = max(0.f, TGET(d1, i, j) + dv / (plength * plength));
+
+  TSET(d2_out, i, j, d2_new);
+
+  float u_new = 0.5f * (TGET(fr, i - 1, j) - TGET(fl, i, j) + TGET(fr, i, j) -
+                        TGET(fl, i + 1, j));
+  float v_new = 0.5f * (TGET(ft, i, j - 1) - TGET(fb, i, j) + TGET(ft, i, j) -
+                        TGET(fb, i, j + 1));
+
+  float dmean = max(0.001f * water_height / dt, d2_new);
+
+  u_new /= dmean;
+  v_new /= dmean;
+
+  TSET(u_out, i, j, u_new);
+  TSET(v_out, i, j, v_new);
+}
+
+void kernel hydraulic_vpipes_erosion_pass(read_only image2d_t  z,
+                                          read_only image2d_t  d2,
+                                          read_only image2d_t  u,
+                                          read_only image2d_t  v,
+                                          read_only image2d_t  s,
+                                          write_only image2d_t z_out,
+                                          write_only image2d_t s_out,
+                                          const int            nx,
+                                          const int            ny,
+                                          const float          water_height,
+                                          const float          k_capacity,
+                                          const float          k_erode,
+                                          const float          k_depose,
+                                          const float          k_discharge_exp)
+{
+  const float salpha_min = 0.001f;
+
+  //
+
+  const int2 g = {get_global_id(0), get_global_id(1)};
+
+  if (g.x >= nx || g.y >= ny) return;
+
+  const sampler_t sampler = CLK_NORMALIZED_COORDS_FALSE |
+                            CLK_ADDRESS_CLAMP_TO_EDGE | CLK_FILTER_NEAREST;
+
+  const int i = g.x;
+  const int j = g.y;
+
+  // gradient norm
+  float dzx = 0.5f * (TGET(z, i + 1, j) - TGET(z, i - 1, j));
+  float dzy = 0.5f * (TGET(z, i, j + 1) - TGET(z, i, j - 1));
+
+  float talus = hypot(dzx, dzy);
+  float dzn = max(1e-6f, nx * talus);
+
+  // sediment capacity
+  float salpha = 1.f;
+  // float salpha = max(salpha_min, dzn / hypot(1.f, dzn));
+  float speed = hypot(TGET(u, i, j), TGET(v, i, j));
+  float depth = min_smooth(1.f, TGET(d2, i, j) / (1.f * water_height), 0.1f);
+  float discharge = depth * speed;
+  float capa = k_capacity * pow(discharge, k_discharge_exp) * salpha;
+
+  float st = TGET(s, i, j);
+  float zt = TGET(z, i, j);
+
+  if (capa > st)
+  {
+    // erosion
+    float amount = k_erode * (capa - st);
+    TSET(z_out, i, j, zt - amount);
+    TSET(s_out, i, j, st + amount);
+  }
+  else
+  {
+    // deposition
+    float amount = k_depose * (st - capa);
+    TSET(z_out, i, j, zt + amount);
+    TSET(s_out, i, j, st - amount);
+  }
+}
+
+void kernel hydraulic_vpipes_sediment_transport_pass(read_only image2d_t  u,
+                                                     read_only image2d_t  v,
+                                                     read_only image2d_t  s,
+                                                     write_only image2d_t s_out,
+                                                     const int            nx,
+                                                     const int            ny,
+                                                     const float          dt)
+{
+  const int2 g = {get_global_id(0), get_global_id(1)};
+
+  if (g.x >= nx || g.y >= ny) return;
+
+  const sampler_t sampler = CLK_NORMALIZED_COORDS_FALSE |
+                            CLK_ADDRESS_CLAMP_TO_EDGE | CLK_FILTER_NEAREST;
+
+  const sampler_t sampler_itp = CLK_NORMALIZED_COORDS_FALSE |
+                                CLK_ADDRESS_MIRRORED_REPEAT | CLK_FILTER_LINEAR;
+
+  const int i = g.x;
+  const int j = g.y;
+
+  float2 pos = (float2)(i - dt * TGET(u, i, j), j - dt * TGET(v, i, j));
+  float  s_new = read_imagef(s, sampler_itp, pos).x;
+
+  TSET(s_out, i, j, s_new);
+}
+)""

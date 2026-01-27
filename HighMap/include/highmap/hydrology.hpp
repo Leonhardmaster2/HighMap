@@ -640,6 +640,10 @@ Array water_mask(const Array &water_depth,
 namespace hmap::gpu
 {
 
+Array flow_accumulation_from_velocity_field(const Array &u,
+                                            const Array &v,
+                                            int          iterations);
+
 /*! @brief See hmap::flow_direction_d8 */
 Array flow_direction_d8(const Array &z);
 
