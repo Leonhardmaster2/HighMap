@@ -164,6 +164,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a1d7ddc82f911f49410104473949f386a" id="r_a1d7ddc82f911f49410104473949f386a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a1d7ddc82f911f49410104473949f386a">hydraulic_stream_log</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, float c_erosion, float talus_ref, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_mask, int deposition_ir=32, float deposition_scale_ratio=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float gradient_power=0.8<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float gradient_scaling_ratio=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, int gradient_prefilter_ir=16, float saturation_ratio=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_bedrock=nullptr, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_moisture_map=nullptr, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_erosion_map=nullptr, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_deposition_map=nullptr, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_flow_map=nullptr)</td></tr>
 <tr class="memdesc:a1d7ddc82f911f49410104473949f386a"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.  <br /></td></tr>
 <tr class="separator:a1d7ddc82f911f49410104473949f386a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0793887c55ef381b2d2d04beac3e9576" id="r_a0793887c55ef381b2d2d04beac3e9576"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a0793887c55ef381b2d2d04beac3e9576">hydraulic_vpipes</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, float water_height=1e-2<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, bool maintain_water_volume=true, float evap_rate=0.1<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, int iterations=50, float dt=0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float k_capacity=0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float k_erode=0.001<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float k_depose=0.01<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float k_discharge_exp=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, bool flux_diffusion=true, float flux_diffusion_strength=0.001<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_rain_map=nullptr, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_water_depth=nullptr, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_sediment=nullptr, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_vel_u=nullptr, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_vel_v=nullptr)</td></tr>
+<tr class="memdesc:a0793887c55ef381b2d2d04beac3e9576"><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="namespacehmap.html#aa6efdb6d9fbf995b00f889ca290819cd" title="Apply hydraulic erosion using the &#39;virtual pipes&#39; algorithm.">hmap::hydraulic_vpipes</a>.  <br /></td></tr>
+<tr class="separator:a0793887c55ef381b2d2d04beac3e9576"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adca53669496f6a636042e11a859d1a16" id="r_adca53669496f6a636042e11a859d1a16"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#adca53669496f6a636042e11a859d1a16">rifts</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, const glm::vec2 &amp;kw, float <a class="el" href="namespacehmap.html#aac71bb6c14edc17967957f7918acdbdd">angle</a>, float amplitude, <a class="el" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> seed, float elevation_noise_shift=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float k_smooth_bottom=0.05<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float k_smooth_top=0.05<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float radial_spread_amp=0.2<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float elevation_noise_amp=0.1<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float clamp_vmin=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float remap_vmin=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, bool apply_mask=true, bool reverse_mask=false, float mask_gamma=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_x=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_y=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_mask=nullptr, const glm::vec2 &amp;center={0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>}, const glm::vec4 &amp;bbox={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>})</td></tr>
 <tr class="memdesc:adca53669496f6a636042e11a859d1a16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies a "rift" deformation effect to a heightmap array.  <br /></td></tr>
 <tr class="separator:adca53669496f6a636042e11a859d1a16"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1762,6 +1765,126 @@ Only available if OpenCL is enabled.</dd></dl>
 </div><div class="memdoc">
 
 <p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </p>
+
+</div>
+</div>
+<a id="a0793887c55ef381b2d2d04beac3e9576" name="a0793887c55ef381b2d2d04beac3e9576"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0793887c55ef381b2d2d04beac3e9576">&#9670;&#160;</a></span>hydraulic_vpipes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hmap::gpu::hydraulic_vpipes </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>z</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>water_height</em> = <code>1e-2<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>maintain_water_volume</em> = <code>true</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>evap_rate</em> = <code>0.1<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iterations</em> = <code>50</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>dt</em> = <code>0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>k_capacity</em> = <code>0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>k_erode</em> = <code>0.001<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>k_depose</em> = <code>0.01<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>k_discharge_exp</em> = <code>1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>flux_diffusion</em> = <code>true</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>flux_diffusion_strength</em> = <code>0.001<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
+          <td class="paramname"><em>p_rain_map</em> = <code>nullptr</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
+          <td class="paramname"><em>p_water_depth</em> = <code>nullptr</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
+          <td class="paramname"><em>p_sediment</em> = <code>nullptr</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
+          <td class="paramname"><em>p_vel_u</em> = <code>nullptr</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
+          <td class="paramname"><em>p_vel_v</em> = <code>nullptr</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>See <a class="el" href="namespacehmap.html#aa6efdb6d9fbf995b00f889ca290819cd" title="Apply hydraulic erosion using the &#39;virtual pipes&#39; algorithm.">hmap::hydraulic_vpipes</a>. </p>
 
 </div>
 </div>
@@ -5377,7 +5500,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">  d2.to_png(<span class="stringliteral">&quot;ex_distance_transform3.png&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492">hmap::Cmap::VIRIDIS</a>);</div>
 <div class="line">  d3.to_png(<span class="stringliteral">&quot;ex_distance_transform4.png&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492">hmap::Cmap::VIRIDIS</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclasshmap_1_1Array_html_a9ff7b2c0be8f2b5dd9fc33085cd647d1"><div class="ttname"><a href="classhmap_1_1Array.html#a9ff7b2c0be8f2b5dd9fc33085cd647d1">hmap::Array::to_png</a></div><div class="ttdeci">void to_png(const std::string &amp;fname, int cmap, bool hillshading=false, int depth=CV_8U) const</div><div class="ttdoc">Export the array as a PNG image file with a specified colormap and hillshading.</div><div class="ttdef"><b>Definition</b> io.cpp:123</div></div>
+<div class="ttc" id="aclasshmap_1_1Array_html_a9ff7b2c0be8f2b5dd9fc33085cd647d1"><div class="ttname"><a href="classhmap_1_1Array.html#a9ff7b2c0be8f2b5dd9fc33085cd647d1">hmap::Array::to_png</a></div><div class="ttdeci">void to_png(const std::string &amp;fname, int cmap, bool hillshading=false, int depth=CV_8U) const</div><div class="ttdoc">Export the array as a PNG image file with a specified colormap and hillshading.</div><div class="ttdef"><b>Definition</b> io.cpp:125</div></div>
 <div class="ttc" id="aclasshmap_1_1Timer_html_a6054c197a10338a1bd48299be29593b5"><div class="ttname"><a href="classhmap_1_1Timer.html#a6054c197a10338a1bd48299be29593b5">hmap::Timer::Stop</a></div><div class="ttdeci">static void Stop(const std::string &amp;name)</div><div class="ttdoc">Stops the timer for the specified event name.</div><div class="ttdef"><b>Definition</b> timer.cpp:51</div></div>
 <div class="ttc" id="aclasshmap_1_1Timer_html_ae9248cf01bfd4d8f680a6c7d5b80f45b"><div class="ttname"><a href="classhmap_1_1Timer.html#ae9248cf01bfd4d8f680a6c7d5b80f45b">hmap::Timer::Start</a></div><div class="ttdeci">static void Start(const std::string &amp;name)</div><div class="ttdoc">Starts a timer for the specified event name.</div><div class="ttdef"><b>Definition</b> timer.cpp:46</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_a1dbc83521075f7c0179c7157f292b2b2"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a1dbc83521075f7c0179c7157f292b2b2">hmap::gpu::distance_transform_jfa</a></div><div class="ttdeci">Array distance_transform_jfa(const Array &amp;array, bool return_squared_distance=false)</div><div class="ttdoc">Return the Euclidean distance transform.</div><div class="ttdef"><b>Definition</b> distance_transform_jfa.cpp:13</div></div>
@@ -10386,13 +10509,13 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> zfbm = <a class="code hl_function" href="namespacehmap_1_1gpu.html#aefe1a52023c39a9e20f5b30ce5dc1da7">hmap::gpu::voronoise_fbm</a>(shape, kw, 1.f, 0.3f, seed);</div>
 <div class="line"> </div>
-<div class="line">  zfbm.<a class="code hl_function" href="classhmap_1_1Array.html#a3517b483a468873cefa73f7773a893ec">infos</a>();</div>
+<div class="line">  zfbm.<a class="code hl_function" href="classhmap_1_1Array.html#a0a68f43a6e0cf3a2b0392a161ea18339">infos</a>();</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_voronoise.png&quot;</span>,</div>
 <div class="line">                          {z00, z10, z01, z11, zfbm},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclasshmap_1_1Array_html_a3517b483a468873cefa73f7773a893ec"><div class="ttname"><a href="classhmap_1_1Array.html#a3517b483a468873cefa73f7773a893ec">hmap::Array::infos</a></div><div class="ttdeci">void infos(std::string msg=&quot;&quot;) const</div><div class="ttdoc">Display various information about the array.</div><div class="ttdef"><b>Definition</b> io.cpp:59</div></div>
+<div class="ttc" id="aclasshmap_1_1Array_html_a0a68f43a6e0cf3a2b0392a161ea18339"><div class="ttname"><a href="classhmap_1_1Array.html#a0a68f43a6e0cf3a2b0392a161ea18339">hmap::Array::infos</a></div><div class="ttdeci">void infos(const std::string &amp;msg=&quot;&quot;) const</div><div class="ttdoc">Display various information about the array.</div><div class="ttdef"><b>Definition</b> io.cpp:59</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_aafc7d621ebf149a27f287222127294ab"><div class="ttname"><a href="namespacehmap_1_1gpu.html#aafc7d621ebf149a27f287222127294ab">hmap::gpu::voronoise</a></div><div class="ttdeci">Array voronoise(glm::ivec2 shape, glm::vec2 kw, float u_param, float v_param, uint seed, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Generates a 2D Voronoi noise array.</div><div class="ttdef"><b>Definition</b> primitives_gpu.cpp:920</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_aefe1a52023c39a9e20f5b30ce5dc1da7"><div class="ttname"><a href="namespacehmap_1_1gpu.html#aefe1a52023c39a9e20f5b30ce5dc1da7">hmap::gpu::voronoise_fbm</a></div><div class="ttdeci">Array voronoise_fbm(glm::ivec2 shape, glm::vec2 kw, float u_param, float v_param, uint seed, int octaves=8, float weight=0.7f, float persistence=0.5f, float lacunarity=2.f, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Return an array filled with coherence Voronoise.</div><div class="ttdef"><b>Definition</b> primitives_gpu.cpp:955</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
@@ -10530,7 +10653,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> zfbm = <a class="code hl_function" href="namespacehmap_1_1gpu.html#aefe1a52023c39a9e20f5b30ce5dc1da7">hmap::gpu::voronoise_fbm</a>(shape, kw, 1.f, 0.3f, seed);</div>
 <div class="line"> </div>
-<div class="line">  zfbm.<a class="code hl_function" href="classhmap_1_1Array.html#a3517b483a468873cefa73f7773a893ec">infos</a>();</div>
+<div class="line">  zfbm.<a class="code hl_function" href="classhmap_1_1Array.html#a0a68f43a6e0cf3a2b0392a161ea18339">infos</a>();</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_voronoise.png&quot;</span>,</div>
 <div class="line">                          {z00, z10, z01, z11, zfbm},</div>

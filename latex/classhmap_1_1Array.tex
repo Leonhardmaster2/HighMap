@@ -124,7 +124,7 @@ float \mbox{\hyperlink{classhmap_1_1Array_ac0ae248f0c3bba1dc2f7e35460ec6b68}{get
 \begin{DoxyCompactList}\small\item\em Retrieves the nearest value at the location (x, y) within a bounded domain. \end{DoxyCompactList}\item 
 std\+::vector$<$ float $>$ \mbox{\hyperlink{classhmap_1_1Array_a65336e3091ee64a91b3ecce8c01c837b}{get\+\_\+vector}} () const
 \begin{DoxyCompactList}\small\item\em Retrieves the underlying data vector. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classhmap_1_1Array_a3517b483a468873cefa73f7773a893ec}{infos}} (std\+::string msg="{}"{}) const
+void \mbox{\hyperlink{classhmap_1_1Array_a0a68f43a6e0cf3a2b0392a161ea18339}{infos}} (const std\+::string \&msg="{}"{}) const
 \begin{DoxyCompactList}\small\item\em Display various information about the array. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{classhmap_1_1Array_a296cad1c7a3fd75b30a39a628bc7bcbe}{linear\+\_\+index}} (int i, int j) const
 \begin{DoxyCompactList}\small\item\em Return the linear index corresponding to the (i, j) cell in a 2D array. \end{DoxyCompactList}\item 
@@ -1164,11 +1164,11 @@ Retrieves the underlying data vector.
 \begin{DoxyReturn}{Returns}
 std\+::vector$<$float$>$ The vector containing the array\textquotesingle{}s data. 
 \end{DoxyReturn}
-\Hypertarget{classhmap_1_1Array_a3517b483a468873cefa73f7773a893ec}\label{classhmap_1_1Array_a3517b483a468873cefa73f7773a893ec} 
+\Hypertarget{classhmap_1_1Array_a0a68f43a6e0cf3a2b0392a161ea18339}\label{classhmap_1_1Array_a0a68f43a6e0cf3a2b0392a161ea18339} 
 \index{hmap::Array@{hmap::Array}!infos@{infos}}
 \index{infos@{infos}!hmap::Array@{hmap::Array}}
 \doxysubsubsection{\texorpdfstring{infos()}{infos()}}
-{\footnotesize\ttfamily void hmap\+::\+Array\+::infos (\begin{DoxyParamCaption}\item[{std\+::string}]{msg = {\ttfamily "{}"{}} }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily void hmap\+::\+Array\+::infos (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{msg = {\ttfamily "{}"{}} }\end{DoxyParamCaption}) const}
 
 
 
@@ -1626,7 +1626,7 @@ A {\ttfamily cv\+::\+Mat} object that shares the data with the input {\ttfamily 
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ z.\mbox{\hyperlink{classhmap_1_1Array_a9ff7b2c0be8f2b5dd9fc33085cd647d1}{to\_png}}(\textcolor{stringliteral}{"{}out.png"{}},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d}{hmap::Cmap::GRAY}});}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ z.\mbox{\hyperlink{classhmap_1_1Array_a3517b483a468873cefa73f7773a893ec}{infos}}();}
+\DoxyCodeLine{\ \ z.\mbox{\hyperlink{classhmap_1_1Array_a0a68f43a6e0cf3a2b0392a161ea18339}{infos}}();}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ cv::Mat\ img\ =\ z.\mbox{\hyperlink{classhmap_1_1Array_abc4875ad6cfe16bd03004ba52f94587c}{to\_cv\_mat}}();}
 \DoxyCodeLine{\ \ cv::cvtColor(img,\ img,\ cv::COLOR\_GRAY2BGR);}

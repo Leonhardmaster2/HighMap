@@ -51,7 +51,7 @@ var classhmap_1_1Array =
     [ "get_value_bilinear_at", "classhmap_1_1Array.html#a12eb51c18154e3e452afe9743636085f", null ],
     [ "get_value_nearest", "classhmap_1_1Array.html#ac0ae248f0c3bba1dc2f7e35460ec6b68", null ],
     [ "get_vector", "classhmap_1_1Array.html#a65336e3091ee64a91b3ecce8c01c837b", null ],
-    [ "infos", "classhmap_1_1Array.html#a3517b483a468873cefa73f7773a893ec", null ],
+    [ "infos", "classhmap_1_1Array.html#a0a68f43a6e0cf3a2b0392a161ea18339", null ],
     [ "linear_index", "classhmap_1_1Array.html#a296cad1c7a3fd75b30a39a628bc7bcbe", null ],
     [ "linear_index_reverse", "classhmap_1_1Array.html#a15bdceec6c77955e7c4a640f0a231ac7", null ],
     [ "max", "classhmap_1_1Array.html#a68aac609ccba8f581da1cdf5cee671b9", null ],

@@ -7,7 +7,7 @@ var searchData=
   ['index_2emd_4',['index.md',['../index_8md.html',1,'']]],
   ['inferno_5',['INFERNO',['../namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143',1,'hmap']]],
   ['info_5fstring_6',['info_string',['../structhmap_1_1VirtualArray.html#af3c6671195e6953ad46ae65a64fe88bd',1,'hmap::VirtualArray::info_string()'],['../classhmap_1_1DiskSequentialTileStorage.html#af77e4aeb215d4fdca9c32233c1377c1b',1,'hmap::DiskSequentialTileStorage::info_string()'],['../classhmap_1_1LruTileStorage.html#a904540ee5b81ccda39648248aede3a5a',1,'hmap::LruTileStorage::info_string()'],['../classhmap_1_1RamTileStorage.html#a741b156e46b8763496e2a3c5110b9a67',1,'hmap::RamTileStorage::info_string()'],['../classhmap_1_1TileStorage.html#a2feeb317dfb3fa8057fcd4daf4202fd8',1,'hmap::TileStorage::info_string()']]],
-  ['infos_7',['infos',['../classhmap_1_1Array.html#a3517b483a468873cefa73f7773a893ec',1,'hmap::Array']]],
+  ['infos_7',['infos',['../classhmap_1_1Array.html#a0a68f43a6e0cf3a2b0392a161ea18339',1,'hmap::Array']]],
   ['init_5fopencl_8',['init_opencl',['../namespacehmap_1_1gpu.html#adb8336ed4d83c15500872185dee45d50',1,'hmap::gpu']]],
   ['initialize_9',['initialize',['../classhmap_1_1ParberryFunction.html#a4891e1931b857fb12b8da7047fb1200a',1,'hmap::ParberryFunction']]],
   ['inpainting_5fdiffusion_10',['inpainting_diffusion',['../namespacehmap.html#ab642074e3e056d07ae13cf346e208c79',1,'hmap']]],
