@@ -46,8 +46,8 @@ float schott_get_weight(read_only image2d_t z,
   float weight = 0.f;
   float total_weight = 0.f;
 
-  for (int r = -1; r < 2; r++)
-    for (int s = -1; s < 2; s++)
+  for (int r = -1; r <= 1; r++)
+    for (int s = -1; s <= 1; s++)
       if (!(r == 0 && s == 0))
       {
         int2  pn = (int2)(p.x + r, p.y + s);
@@ -187,6 +187,46 @@ void kernel hydraulic_schott(read_only image2d_t  z,
     write_imagef(sediment_new, g, sed);
   }
 
+  write_imagef(z_new, g, z_val);
+
+  float flow_val = 1.f +
+                   schott_get_flow(z, flow, sampler, g, flow_routing_exponent);
+  write_imagef(flow_new, g, flow_val);
+}
+
+void kernel hydraulic_schott_erosion(read_only image2d_t  z,
+                                     read_only image2d_t  flow,
+                                     write_only image2d_t z_new,
+                                     write_only image2d_t flow_new,
+                                     const int            nx,
+                                     const int            ny,
+                                     const float          c_erosion,
+                                     const float          flow_acc_exponent,
+                                     const float          flow_routing_exponent)
+{
+  const int2 g = {get_global_id(0), get_global_id(1)};
+
+  if (g.x >= nx || g.y >= ny) return;
+
+  const sampler_t sampler = CLK_NORMALIZED_COORDS_FALSE |
+                            CLK_ADDRESS_CLAMP_TO_EDGE | CLK_FILTER_NEAREST;
+
+  // neighbor
+  int2  nbrs;
+  float slope_max = find_steepest_downslope_neighbor(z, sampler, g, &nbrs);
+  float speed = clamp(slope_max * slope_max, 0.f, 1.f);
+
+  float z_val = read_imagef(z, sampler, g).x;
+
+  // --- hydraulic erosion
+
+  float spe = c_erosion * min(3.f,
+                              pow_float(read_imagef(flow, sampler, g).x,
+                                        flow_acc_exponent) *
+                                  speed);
+
+  float z_steepest = read_imagef(z, sampler, nbrs).x;
+  z_val = max(z_steepest, z_val - spe);
   write_imagef(z_new, g, z_val);
 
   float flow_val = 1.f +

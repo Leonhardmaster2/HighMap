@@ -5,8 +5,8 @@ int main(void)
   hmap::gpu::init_opencl();
 
   glm::ivec2 shape = {512, 512};
-  glm::vec2 kw = {4.f, 4.f};
-  int       seed = 2;
+  glm::vec2  kw = {4.f, 4.f};
+  int        seed = 2;
 
   hmap::Array z = hmap::noise_fbm(hmap::NoiseType::PERLIN,
                                   shape,
@@ -24,8 +24,8 @@ int main(void)
   z0.dump("z0.png");
   z.dump("z.png");
 
-
   hmap::export_banner_png("ex_hydraulic_vpipes.png",
                           {z0, z},
-                          hmap::Cmap::TERRAIN, true);
+                          hmap::Cmap::TERRAIN,
+                          true);
 }

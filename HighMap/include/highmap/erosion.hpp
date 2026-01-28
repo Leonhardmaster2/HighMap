@@ -1390,6 +1390,14 @@ void hydraulic_schott(Array       &z,
                       float        deposition_weight = 2.5f,
                       Array       *p_flow = nullptr); ///< @overload
 
+/*! @brief See hmap::hydraulic_schott */
+void hydraulic_schott_erosion(Array &z,
+                              int    iterations,
+                              float  c_erosion = 1.f,
+                              float  flow_acc_exponent = 0.8f,
+                              float  flow_routing_exponent = 1.3f,
+                              Array *p_flow = nullptr);
+
 /*! @brief See hmap::hydraulic_stream_log */
 void hydraulic_stream_log(Array &z,
                           float  c_erosion,
