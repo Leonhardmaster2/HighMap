@@ -70,6 +70,7 @@ var erosion_8hpp =
     [ "hydraulic_particle", "erosion_8hpp.html#a41f7922073b63e4bba4182bda4aafa23", null ],
     [ "hydraulic_schott", "erosion_8hpp.html#a9749d24b9dd9bed8ee333910951db395", null ],
     [ "hydraulic_schott", "erosion_8hpp.html#a54cd96bb811138a9c7f9768c4b0a8f98", null ],
+    [ "hydraulic_schott_erosion", "erosion_8hpp.html#a67c57e8047f8b473b93a9592dd8783e3", null ],
     [ "hydraulic_stream_log", "erosion_8hpp.html#a7814928e0f3b995421d298677934d11d", null ],
     [ "hydraulic_stream_log", "erosion_8hpp.html#a1d7ddc82f911f49410104473949f386a", null ],
     [ "hydraulic_vpipes", "erosion_8hpp.html#a0793887c55ef381b2d2d04beac3e9576", null ],
