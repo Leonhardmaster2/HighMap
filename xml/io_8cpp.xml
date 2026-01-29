@@ -146,38 +146,45 @@
 <codeline lineno="136"><highlight class="normal"><sp/><sp/>color3.to_png(fname,<sp/>depth);</highlight></codeline>
 <codeline lineno="137"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="138"><highlight class="normal"></highlight></codeline>
-<codeline lineno="139"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classhmap_1_1Array_1ad7018857827d8e8d263516bbbd77630f" kindref="member">Array::to_png_grayscale</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;fname,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>depth)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="140"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="141"><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array_1a96b9bd19d1212e61b4ac4eb21931b298" kindref="member">Array</ref><sp/>array_copy<sp/>=<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="142"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">remap</ref>(array_copy);</highlight></codeline>
-<codeline lineno="143"><highlight class="normal"></highlight></codeline>
-<codeline lineno="144"><highlight class="normal"><sp/><sp/>cv::Mat<sp/>mat<sp/>=<sp/>array_copy.to_cv_mat();</highlight></codeline>
-<codeline lineno="145"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>scale_factor<sp/>=<sp/>(depth<sp/>==<sp/>CV_8U)<sp/>?<sp/>255<sp/>:<sp/>65535;</highlight></codeline>
-<codeline lineno="146"><highlight class="normal"><sp/><sp/>mat.convertTo(mat,<sp/>depth,<sp/>scale_factor);</highlight></codeline>
-<codeline lineno="147"><highlight class="normal"><sp/><sp/>cv::flip(mat,<sp/>mat,<sp/>0);<sp/></highlight><highlight class="comment">//<sp/>flipud</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="148"><highlight class="normal"><sp/><sp/>cv::imwrite(fname,<sp/>mat);</highlight></codeline>
-<codeline lineno="149"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classhmap_1_1Array_1ab2c7afe05160d85b0997d733cbb7d286" kindref="member">Array::to_png_grayscale</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;fname,</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>depth,</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vmin,</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vmax)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="143"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array_1a96b9bd19d1212e61b4ac4eb21931b298" kindref="member">Array</ref><sp/>array_copy<sp/>=<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(vmin<sp/>&gt;=<sp/>vmax)</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">remap</ref>(array_copy);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">remap</ref>(array_copy,<sp/>0.f,<sp/>1.f,<sp/>vmin,<sp/>vmax);</highlight></codeline>
 <codeline lineno="150"><highlight class="normal"></highlight></codeline>
-<codeline lineno="151"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classhmap_1_1Array_1abc72128c4c460e993d877cab54e17454" kindref="member">Array::to_raw_16bit</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;fname)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="152"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="153"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a466d4275bb86ca9ca603c9d4192f931a" kindref="member">write_raw_16bit</ref>(fname,<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="154"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="155"><highlight class="normal"></highlight></codeline>
-<codeline lineno="156"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classhmap_1_1Array_1a75da0609f64b9410741d198330dde33b" kindref="member">Array::to_tiff</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;fname)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="157"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="158"><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array_1a96b9bd19d1212e61b4ac4eb21931b298" kindref="member">Array</ref><sp/>array_copy<sp/>=<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="159"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">remap</ref>(array_copy);</highlight></codeline>
-<codeline lineno="160"><highlight class="normal"></highlight></codeline>
-<codeline lineno="161"><highlight class="normal"><sp/><sp/>cv::Mat<sp/>mat<sp/>=<sp/>array_copy.to_cv_mat();</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/>cv::Mat<sp/>mat<sp/>=<sp/>array_copy.to_cv_mat();</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>scale_factor<sp/>=<sp/>(depth<sp/>==<sp/>CV_8U)<sp/>?<sp/>255<sp/>:<sp/>65535;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/>mat.convertTo(mat,<sp/>depth,<sp/>scale_factor);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/>cv::flip(mat,<sp/>mat,<sp/>0);<sp/></highlight><highlight class="comment">//<sp/>flipud</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/>cv::imwrite(fname,<sp/>mat);</highlight></codeline>
+<codeline lineno="156"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classhmap_1_1Array_1abc72128c4c460e993d877cab54e17454" kindref="member">Array::to_raw_16bit</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;fname)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="159"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a466d4275bb86ca9ca603c9d4192f931a" kindref="member">write_raw_16bit</ref>(fname,<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="161"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="162"><highlight class="normal"></highlight></codeline>
-<codeline lineno="163"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>set<sp/>compression<sp/>to<sp/>cv::IMWRITE_TIFF_COMPRESSION_LZW<sp/>(apparently</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="164"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>not<sp/>available<sp/>in<sp/>openCV<sp/>public<sp/>header?)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="165"><highlight class="normal"><sp/><sp/>std::vector&lt;int&gt;<sp/>codec_params<sp/>=<sp/>{cv::IMWRITE_TIFF_COMPRESSION,<sp/>5};</highlight></codeline>
-<codeline lineno="166"><highlight class="normal"></highlight></codeline>
-<codeline lineno="167"><highlight class="normal"><sp/><sp/>cv::imwrite(fname,<sp/>mat,<sp/>codec_params);</highlight></codeline>
-<codeline lineno="168"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classhmap_1_1Array_1a75da0609f64b9410741d198330dde33b" kindref="member">Array::to_tiff</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;fname)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="164"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array_1a96b9bd19d1212e61b4ac4eb21931b298" kindref="member">Array</ref><sp/>array_copy<sp/>=<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">remap</ref>(array_copy);</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/>cv::Mat<sp/>mat<sp/>=<sp/>array_copy.to_cv_mat();</highlight></codeline>
 <codeline lineno="169"><highlight class="normal"></highlight></codeline>
-<codeline lineno="170"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>hmap</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>set<sp/>compression<sp/>to<sp/>cv::IMWRITE_TIFF_COMPRESSION_LZW<sp/>(apparently</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>not<sp/>available<sp/>in<sp/>openCV<sp/>public<sp/>header?)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/>std::vector&lt;int&gt;<sp/>codec_params<sp/>=<sp/>{cv::IMWRITE_TIFF_COMPRESSION,<sp/>5};</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/>cv::imwrite(fname,<sp/>mat,<sp/>codec_params);</highlight></codeline>
+<codeline lineno="175"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>hmap</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="HighMap/src/array/io.cpp"/>
   </compounddef>

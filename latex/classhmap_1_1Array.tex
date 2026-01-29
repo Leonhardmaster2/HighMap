@@ -178,7 +178,7 @@ void \mbox{\hyperlink{classhmap_1_1Array_a35ce8d4088ce4ae21003df18c204b7c6}{to\+
 \begin{DoxyCompactList}\small\item\em Export the array to a numpy binary file. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classhmap_1_1Array_a9ff7b2c0be8f2b5dd9fc33085cd647d1}{to\+\_\+png}} (const std\+::string \&fname, int cmap, bool hillshading=false, int depth=CV\+\_\+8U) const
 \begin{DoxyCompactList}\small\item\em Export the array as a PNG image file with a specified colormap and hillshading. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classhmap_1_1Array_ad7018857827d8e8d263516bbbd77630f}{to\+\_\+png\+\_\+grayscale}} (const std\+::string \&fname, int depth=CV\+\_\+8U) const
+void \mbox{\hyperlink{classhmap_1_1Array_ab2c7afe05160d85b0997d733cbb7d286}{to\+\_\+png\+\_\+grayscale}} (const std\+::string \&fname, int depth=CV\+\_\+8U, float vmin=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float vmax=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}) const
 \begin{DoxyCompactList}\small\item\em Export the array as a grayscale PNG image file with specified bit depth. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classhmap_1_1Array_a75da0609f64b9410741d198330dde33b}{to\+\_\+tiff}} (const std\+::string \&fname) const
 \begin{DoxyCompactList}\small\item\em Export the array as a TIFF image file. \end{DoxyCompactList}\item 
@@ -267,8 +267,8 @@ Constructs a new \doxylink{classhmap_1_1Array}{Array} object.
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 8);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(z1);}
 \DoxyCodeLine{\ \ z1.\mbox{\hyperlink{classhmap_1_1Array_a9ff7b2c0be8f2b5dd9fc33085cd647d1}{to\_png}}(\textcolor{stringliteral}{"{}out\_rgb.png"{}},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}});}
-\DoxyCodeLine{\ \ z1.\mbox{\hyperlink{classhmap_1_1Array_ad7018857827d8e8d263516bbbd77630f}{to\_png\_grayscale}}(\textcolor{stringliteral}{"{}out\_8bit.png"{}});}
-\DoxyCodeLine{\ \ z1.\mbox{\hyperlink{classhmap_1_1Array_ad7018857827d8e8d263516bbbd77630f}{to\_png\_grayscale}}(\textcolor{stringliteral}{"{}out\_16bit.png"{}},\ CV\_16U);}
+\DoxyCodeLine{\ \ z1.\mbox{\hyperlink{classhmap_1_1Array_ab2c7afe05160d85b0997d733cbb7d286}{to\_png\_grayscale}}(\textcolor{stringliteral}{"{}out\_8bit.png"{}});}
+\DoxyCodeLine{\ \ z1.\mbox{\hyperlink{classhmap_1_1Array_ab2c7afe05160d85b0997d733cbb7d286}{to\_png\_grayscale}}(\textcolor{stringliteral}{"{}out\_16bit.png"{}},\ CV\_16U);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ create\ Array\ from\ png}}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z2\ =\ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}(\textcolor{stringliteral}{"{}out\_8bit.png"{}});}
@@ -1782,8 +1782,8 @@ Export the array as a PNG image file with a specified colormap and hillshading.
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 8);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(z1);}
 \DoxyCodeLine{\ \ z1.\mbox{\hyperlink{classhmap_1_1Array_a9ff7b2c0be8f2b5dd9fc33085cd647d1}{to\_png}}(\textcolor{stringliteral}{"{}out\_rgb.png"{}},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}});}
-\DoxyCodeLine{\ \ z1.\mbox{\hyperlink{classhmap_1_1Array_ad7018857827d8e8d263516bbbd77630f}{to\_png\_grayscale}}(\textcolor{stringliteral}{"{}out\_8bit.png"{}});}
-\DoxyCodeLine{\ \ z1.\mbox{\hyperlink{classhmap_1_1Array_ad7018857827d8e8d263516bbbd77630f}{to\_png\_grayscale}}(\textcolor{stringliteral}{"{}out\_16bit.png"{}},\ CV\_16U);}
+\DoxyCodeLine{\ \ z1.\mbox{\hyperlink{classhmap_1_1Array_ab2c7afe05160d85b0997d733cbb7d286}{to\_png\_grayscale}}(\textcolor{stringliteral}{"{}out\_8bit.png"{}});}
+\DoxyCodeLine{\ \ z1.\mbox{\hyperlink{classhmap_1_1Array_ab2c7afe05160d85b0997d733cbb7d286}{to\_png\_grayscale}}(\textcolor{stringliteral}{"{}out\_16bit.png"{}},\ CV\_16U);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ create\ Array\ from\ png}}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z2\ =\ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}(\textcolor{stringliteral}{"{}out\_8bit.png"{}});}
@@ -1795,11 +1795,11 @@ Export the array as a PNG image file with a specified colormap and hillshading.
 \DoxyCodeLine{\}}
 
 \end{DoxyCodeInclude}
- \Hypertarget{classhmap_1_1Array_ad7018857827d8e8d263516bbbd77630f}\label{classhmap_1_1Array_ad7018857827d8e8d263516bbbd77630f} 
+ \Hypertarget{classhmap_1_1Array_ab2c7afe05160d85b0997d733cbb7d286}\label{classhmap_1_1Array_ab2c7afe05160d85b0997d733cbb7d286} 
 \index{hmap::Array@{hmap::Array}!to\_png\_grayscale@{to\_png\_grayscale}}
 \index{to\_png\_grayscale@{to\_png\_grayscale}!hmap::Array@{hmap::Array}}
 \doxysubsubsection{\texorpdfstring{to\_png\_grayscale()}{to\_png\_grayscale()}}
-{\footnotesize\ttfamily void hmap\+::\+Array\+::to\+\_\+png\+\_\+grayscale (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{fname,  }\item[{int}]{depth = {\ttfamily CV\+\_\+8U} }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily void hmap\+::\+Array\+::to\+\_\+png\+\_\+grayscale (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{fname,  }\item[{int}]{depth = {\ttfamily CV\+\_\+8U},  }\item[{float}]{vmin = {\ttfamily 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{vmax = {\ttfamily 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption}) const}
 
 
 
@@ -1833,8 +1833,8 @@ This function saves the array data as a grayscale PNG image file. The bit depth 
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 8);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(z1);}
 \DoxyCodeLine{\ \ z1.\mbox{\hyperlink{classhmap_1_1Array_a9ff7b2c0be8f2b5dd9fc33085cd647d1}{to\_png}}(\textcolor{stringliteral}{"{}out\_rgb.png"{}},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}});}
-\DoxyCodeLine{\ \ z1.\mbox{\hyperlink{classhmap_1_1Array_ad7018857827d8e8d263516bbbd77630f}{to\_png\_grayscale}}(\textcolor{stringliteral}{"{}out\_8bit.png"{}});}
-\DoxyCodeLine{\ \ z1.\mbox{\hyperlink{classhmap_1_1Array_ad7018857827d8e8d263516bbbd77630f}{to\_png\_grayscale}}(\textcolor{stringliteral}{"{}out\_16bit.png"{}},\ CV\_16U);}
+\DoxyCodeLine{\ \ z1.\mbox{\hyperlink{classhmap_1_1Array_ab2c7afe05160d85b0997d733cbb7d286}{to\_png\_grayscale}}(\textcolor{stringliteral}{"{}out\_8bit.png"{}});}
+\DoxyCodeLine{\ \ z1.\mbox{\hyperlink{classhmap_1_1Array_ab2c7afe05160d85b0997d733cbb7d286}{to\_png\_grayscale}}(\textcolor{stringliteral}{"{}out\_16bit.png"{}},\ CV\_16U);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ create\ Array\ from\ png}}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z2\ =\ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}(\textcolor{stringliteral}{"{}out\_8bit.png"{}});}

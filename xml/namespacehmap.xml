@@ -1870,7 +1870,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/array/opencv_wrapper.cpp" line="30" column="7" bodyfile="HighMap/src/array/opencv_wrapper.cpp" bodystart="30" bodyend="50" declfile="HighMap/include/highmap/array.hpp" declline="985" declcolumn="7"/>
+        <location file="HighMap/src/array/opencv_wrapper.cpp" line="30" column="7" bodyfile="HighMap/src/array/opencv_wrapper.cpp" bodystart="30" bodyend="50" declfile="HighMap/include/highmap/array.hpp" declline="988" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a05ee0ea53f1a06ac43741f11e25ec2cc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -1898,7 +1898,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/array.hpp" line="994" column="25" bodyfile="HighMap/include/highmap/array.hpp" bodystart="994" bodyend="1002"/>
+        <location file="HighMap/include/highmap/array.hpp" line="997" column="25" bodyfile="HighMap/include/highmap/array.hpp" bodystart="997" bodyend="1005"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a8a43091b3356d69271fa6d185f5bdcbe" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -1926,7 +1926,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/array.hpp" line="1005" column="25" bodyfile="HighMap/include/highmap/array.hpp" bodystart="1005" bodyend="1013"/>
+        <location file="HighMap/include/highmap/array.hpp" line="1008" column="25" bodyfile="HighMap/include/highmap/array.hpp" bodystart="1008" bodyend="1016"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a839a208ff16a89feb85d52ac9db5b971" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -1968,7 +1968,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/array.hpp" line="1017" column="10" bodyfile="HighMap/include/highmap/array.hpp" bodystart="1017" bodyend="1025"/>
+        <location file="HighMap/include/highmap/array.hpp" line="1020" column="10" bodyfile="HighMap/include/highmap/array.hpp" bodystart="1020" bodyend="1028"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a75f07aa871c112ed5a91bd259ce0b6ed" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -2006,7 +2006,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/array.hpp" line="1029" column="10" bodyfile="HighMap/include/highmap/array.hpp" bodystart="1029" bodyend="1036"/>
+        <location file="HighMap/include/highmap/array.hpp" line="1032" column="10" bodyfile="HighMap/include/highmap/array.hpp" bodystart="1032" bodyend="1039"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a6123c18788ae302332416d5d7585fd9f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -14419,7 +14419,6 @@ Each tile is extracted using slicing, adjusted for overlap if specified, and the
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed<sp/>=<sp/>0;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1acb13e7346085793fda4c94c47b75d9a9" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,<sp/>shape,<sp/>res,<sp/>seed);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(z);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>glm::ivec2<sp/><sp/>tiling<sp/>=<sp/>{4,<sp/>3};</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>std::string<sp/>fname_radical<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;ex_export_tiled&quot;</highlight><highlight class="normal">;</highlight></codeline>
@@ -14428,6 +14427,8 @@ Each tile is extracted using slicing, adjusted for overlap if specified, and the
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>depth<sp/>=<sp/>CV_16U;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>overlapping_edges<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>reverse_tile_y_indexing<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>z.<ref refid="classhmap_1_1Array_1a9ff7b2c0be8f2b5dd9fc33085cd647d1" kindref="member">to_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_export_tiled.png&quot;</highlight><highlight class="normal">,<sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced" kindref="member">hmap::Cmap::JET</ref>);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a91708f107a53c4b8ef68bb1d0291c73f" kindref="member">hmap::export_tiled</ref>(fname_radical,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fname_extension,</highlight></codeline>
@@ -14442,7 +14443,7 @@ Each tile is extracted using slicing, adjusted for overlap if specified, and the
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/export/export_tiled.cpp" line="44" column="6" bodyfile="HighMap/src/export/export_tiled.cpp" bodystart="44" bodyend="82" declfile="HighMap/include/highmap/export.hpp" declline="373" declcolumn="6"/>
+        <location file="HighMap/src/export/export_tiled.cpp" line="44" column="6" bodyfile="HighMap/src/export/export_tiled.cpp" bodystart="44" bodyend="85" declfile="HighMap/include/highmap/export.hpp" declline="373" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1acc812ae7d5ab25071e94faaf7be03bca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -18436,7 +18437,7 @@ This is an overloaded member function, provided for convenience. It differs from
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zm<sp/>=<sp/><ref refid="namespacehmap_1a8ac4638525bb243024d50793d97bc9ee" kindref="member">hmap::mean_shift</ref>(z,<sp/>ir,<sp/>talus,<sp/>iterations);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>zm.<ref refid="classhmap_1_1Array_1ad7018857827d8e8d263516bbbd77630f" kindref="member">to_png_grayscale</ref>(</highlight><highlight class="stringliteral">&quot;out.png&quot;</highlight><highlight class="normal">,<sp/>CV_16U);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>zm.<ref refid="classhmap_1_1Array_1ab2c7afe05160d85b0997d733cbb7d286" kindref="member">to_png_grayscale</ref>(</highlight><highlight class="stringliteral">&quot;out.png&quot;</highlight><highlight class="normal">,<sp/>CV_16U);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_mean_shift.png&quot;</highlight><highlight class="normal">,<sp/>{z,<sp/>zm},<sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced" kindref="member">hmap::Cmap::JET</ref>);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -26546,7 +26547,7 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;mask);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>zd2.<ref refid="classhmap_1_1Array_1ad7018857827d8e8d263516bbbd77630f" kindref="member">to_png_grayscale</ref>(</highlight><highlight class="stringliteral">&quot;out.png&quot;</highlight><highlight class="normal">,<sp/>CV_16U);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>zd2.<ref refid="classhmap_1_1Array_1ab2c7afe05160d85b0997d733cbb7d286" kindref="member">to_png_grayscale</ref>(</highlight><highlight class="stringliteral">&quot;out.png&quot;</highlight><highlight class="normal">,<sp/>CV_16U);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_flow_stream.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,<sp/>zv,<sp/>zd1,<sp/>zd2,<sp/>mask},</highlight></codeline>
@@ -31373,7 +31374,7 @@ The output path consists of:<itemizedlist>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;mask);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>zd2.<ref refid="classhmap_1_1Array_1ad7018857827d8e8d263516bbbd77630f" kindref="member">to_png_grayscale</ref>(</highlight><highlight class="stringliteral">&quot;out.png&quot;</highlight><highlight class="normal">,<sp/>CV_16U);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>zd2.<ref refid="classhmap_1_1Array_1ab2c7afe05160d85b0997d733cbb7d286" kindref="member">to_png_grayscale</ref>(</highlight><highlight class="stringliteral">&quot;out.png&quot;</highlight><highlight class="normal">,<sp/>CV_16U);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_flow_stream.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,<sp/>zv,<sp/>zd1,<sp/>zd2,<sp/>mask},</highlight></codeline>
@@ -31628,7 +31629,7 @@ The output path consists of:<itemizedlist>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>dz<sp/>=<sp/><ref refid="namespacehmap_1a30d55fae5c75a1c45a005a3f9a9467eb" kindref="member">hmap::generate_riverbed</ref>(path,<sp/>shape,<sp/>bbox);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(dz);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>dz.<ref refid="classhmap_1_1Array_1ad7018857827d8e8d263516bbbd77630f" kindref="member">to_png_grayscale</ref>(</highlight><highlight class="stringliteral">&quot;out.png&quot;</highlight><highlight class="normal">,<sp/>CV_16U);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>dz.<ref refid="classhmap_1_1Array_1ab2c7afe05160d85b0997d733cbb7d286" kindref="member">to_png_grayscale</ref>(</highlight><highlight class="stringliteral">&quot;out.png&quot;</highlight><highlight class="normal">,<sp/>CV_16U);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>dz.<ref refid="classhmap_1_1Array_1a9ff7b2c0be8f2b5dd9fc33085cd647d1" kindref="member">to_png</ref>(</highlight><highlight class="stringliteral">&quot;out1.png&quot;</highlight><highlight class="normal">,<sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced" kindref="member">hmap::Cmap::JET</ref>);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_generate_riverbed.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
@@ -44892,7 +44893,7 @@ The function performs the following steps:<itemizedlist>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>arrays.push_back(z);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>z.<ref refid="classhmap_1_1Array_1ad7018857827d8e8d263516bbbd77630f" kindref="member">to_png_grayscale</ref>(</highlight><highlight class="stringliteral">&quot;out.png&quot;</highlight><highlight class="normal">,<sp/>CV_16U);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>z.<ref refid="classhmap_1_1Array_1ab2c7afe05160d85b0997d733cbb7d286" kindref="member">to_png_grayscale</ref>(</highlight><highlight class="stringliteral">&quot;out.png&quot;</highlight><highlight class="normal">,<sp/>CV_16U);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_phasor.png&quot;</highlight><highlight class="normal">,<sp/>arrays,<sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9" kindref="member">hmap::Cmap::TERRAIN</ref>);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -45124,7 +45125,7 @@ The function performs the following steps:<itemizedlist>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>arrays.push_back(z);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>z.<ref refid="classhmap_1_1Array_1ad7018857827d8e8d263516bbbd77630f" kindref="member">to_png_grayscale</ref>(</highlight><highlight class="stringliteral">&quot;out.png&quot;</highlight><highlight class="normal">,<sp/>CV_16U);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>z.<ref refid="classhmap_1_1Array_1ab2c7afe05160d85b0997d733cbb7d286" kindref="member">to_png_grayscale</ref>(</highlight><highlight class="stringliteral">&quot;out.png&quot;</highlight><highlight class="normal">,<sp/>CV_16U);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_phasor.png&quot;</highlight><highlight class="normal">,<sp/>arrays,<sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9" kindref="member">hmap::Cmap::TERRAIN</ref>);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>

@@ -14363,7 +14363,6 @@ The y-axis is flipped so that higher indices appear lower in the text output. </
 <div class="line">  <span class="keywordtype">int</span>              seed = 0;</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z = <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, res, seed);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z);</div>
 <div class="line"> </div>
 <div class="line">  glm::ivec2  tiling = {4, 3};</div>
 <div class="line">  std::string fname_radical = <span class="stringliteral">&quot;ex_export_tiled&quot;</span>;</div>
@@ -14372,6 +14371,8 @@ The y-axis is flipped so that higher indices appear lower in the text output. </
 <div class="line">  <span class="keywordtype">int</span>         depth = CV_16U;</div>
 <div class="line">  <span class="keywordtype">bool</span>        overlapping_edges = <span class="keyword">false</span>;</div>
 <div class="line">  <span class="keywordtype">bool</span>        reverse_tile_y_indexing = <span class="keyword">false</span>;</div>
+<div class="line"> </div>
+<div class="line">  z.<a class="code hl_function" href="classhmap_1_1Array.html#a9ff7b2c0be8f2b5dd9fc33085cd647d1">to_png</a>(<span class="stringliteral">&quot;ex_export_tiled.png&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#a91708f107a53c4b8ef68bb1d0291c73f">hmap::export_tiled</a>(fname_radical,</div>
 <div class="line">                     fname_extension,</div>
@@ -17962,11 +17963,11 @@ A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> zm = <a class="code hl_function" href="namespacehmap.html#a8ac4638525bb243024d50793d97bc9ee">hmap::mean_shift</a>(z, ir, talus, iterations);</div>
 <div class="line"> </div>
-<div class="line">  zm.<a class="code hl_function" href="classhmap_1_1Array.html#ad7018857827d8e8d263516bbbd77630f">to_png_grayscale</a>(<span class="stringliteral">&quot;out.png&quot;</span>, CV_16U);</div>
+<div class="line">  zm.<a class="code hl_function" href="classhmap_1_1Array.html#ab2c7afe05160d85b0997d733cbb7d286">to_png_grayscale</a>(<span class="stringliteral">&quot;out.png&quot;</span>, CV_16U);</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_mean_shift.png&quot;</span>, {z, zm}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclasshmap_1_1Array_html_ad7018857827d8e8d263516bbbd77630f"><div class="ttname"><a href="classhmap_1_1Array.html#ad7018857827d8e8d263516bbbd77630f">hmap::Array::to_png_grayscale</a></div><div class="ttdeci">void to_png_grayscale(const std::string &amp;fname, int depth=CV_8U) const</div><div class="ttdoc">Export the array as a grayscale PNG image file with specified bit depth.</div><div class="ttdef"><b>Definition</b> io.cpp:139</div></div>
+<div class="ttc" id="aclasshmap_1_1Array_html_ab2c7afe05160d85b0997d733cbb7d286"><div class="ttname"><a href="classhmap_1_1Array.html#ab2c7afe05160d85b0997d733cbb7d286">hmap::Array::to_png_grayscale</a></div><div class="ttdeci">void to_png_grayscale(const std::string &amp;fname, int depth=CV_8U, float vmin=0.f, float vmax=0.f) const</div><div class="ttdoc">Export the array as a grayscale PNG image file with specified bit depth.</div><div class="ttdef"><b>Definition</b> io.cpp:139</div></div>
 <div class="ttc" id="anamespacehmap_html_a8ac4638525bb243024d50793d97bc9ee"><div class="ttname"><a href="namespacehmap.html#a8ac4638525bb243024d50793d97bc9ee">hmap::mean_shift</a></div><div class="ttdeci">Array mean_shift(const Array &amp;array, int ir, float talus, int iterations=1, bool talus_weighted=true)</div><div class="ttdoc">Applies the mean shift algorithm to the input array.</div><div class="ttdef"><b>Definition</b> filters.cpp:475</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_mean_shift.png" alt=""/>
@@ -25493,7 +25494,7 @@ A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
 <div class="line">                  seed,</div>
 <div class="line">                  &amp;mask);</div>
 <div class="line"> </div>
-<div class="line">  zd2.<a class="code hl_function" href="classhmap_1_1Array.html#ad7018857827d8e8d263516bbbd77630f">to_png_grayscale</a>(<span class="stringliteral">&quot;out.png&quot;</span>, CV_16U);</div>
+<div class="line">  zd2.<a class="code hl_function" href="classhmap_1_1Array.html#ab2c7afe05160d85b0997d733cbb7d286">to_png_grayscale</a>(<span class="stringliteral">&quot;out.png&quot;</span>, CV_16U);</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_flow_stream.png&quot;</span>,</div>
 <div class="line">                          {z, zv, zd1, zd2, mask},</div>
@@ -29689,7 +29690,7 @@ h}{\partial y}
 <div class="line">                  seed,</div>
 <div class="line">                  &amp;mask);</div>
 <div class="line"> </div>
-<div class="line">  zd2.<a class="code hl_function" href="classhmap_1_1Array.html#ad7018857827d8e8d263516bbbd77630f">to_png_grayscale</a>(<span class="stringliteral">&quot;out.png&quot;</span>, CV_16U);</div>
+<div class="line">  zd2.<a class="code hl_function" href="classhmap_1_1Array.html#ab2c7afe05160d85b0997d733cbb7d286">to_png_grayscale</a>(<span class="stringliteral">&quot;out.png&quot;</span>, CV_16U);</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_flow_stream.png&quot;</span>,</div>
 <div class="line">                          {z, zv, zd1, zd2, mask},</div>
@@ -29861,7 +29862,7 @@ h}{\partial y}
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> dz = <a class="code hl_function" href="namespacehmap.html#a30d55fae5c75a1c45a005a3f9a9467eb">hmap::generate_riverbed</a>(path, shape, bbox);</div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(dz);</div>
 <div class="line"> </div>
-<div class="line">  dz.<a class="code hl_function" href="classhmap_1_1Array.html#ad7018857827d8e8d263516bbbd77630f">to_png_grayscale</a>(<span class="stringliteral">&quot;out.png&quot;</span>, CV_16U);</div>
+<div class="line">  dz.<a class="code hl_function" href="classhmap_1_1Array.html#ab2c7afe05160d85b0997d733cbb7d286">to_png_grayscale</a>(<span class="stringliteral">&quot;out.png&quot;</span>, CV_16U);</div>
 <div class="line">  dz.<a class="code hl_function" href="classhmap_1_1Array.html#a9ff7b2c0be8f2b5dd9fc33085cd647d1">to_png</a>(<span class="stringliteral">&quot;out1.png&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_generate_riverbed.png&quot;</span>,</div>
@@ -41197,7 +41198,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 <div class="line">                                   seed);</div>
 <div class="line">  arrays.push_back(z);</div>
 <div class="line"> </div>
-<div class="line">  z.<a class="code hl_function" href="classhmap_1_1Array.html#ad7018857827d8e8d263516bbbd77630f">to_png_grayscale</a>(<span class="stringliteral">&quot;out.png&quot;</span>, CV_16U);</div>
+<div class="line">  z.<a class="code hl_function" href="classhmap_1_1Array.html#ab2c7afe05160d85b0997d733cbb7d286">to_png_grayscale</a>(<span class="stringliteral">&quot;out.png&quot;</span>, CV_16U);</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_phasor.png&quot;</span>, arrays, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>);</div>
 <div class="line">}</div>
@@ -41366,7 +41367,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 <div class="line">                                   seed);</div>
 <div class="line">  arrays.push_back(z);</div>
 <div class="line"> </div>
-<div class="line">  z.<a class="code hl_function" href="classhmap_1_1Array.html#ad7018857827d8e8d263516bbbd77630f">to_png_grayscale</a>(<span class="stringliteral">&quot;out.png&quot;</span>, CV_16U);</div>
+<div class="line">  z.<a class="code hl_function" href="classhmap_1_1Array.html#ab2c7afe05160d85b0997d733cbb7d286">to_png_grayscale</a>(<span class="stringliteral">&quot;out.png&quot;</span>, CV_16U);</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_phasor.png&quot;</span>, arrays, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>);</div>
 <div class="line">}</div>

@@ -8767,7 +8767,6 @@ Each tile is extracted using slicing, adjusted for overlap if specified, and the
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ seed\ =\ 0;}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_acb13e7346085793fda4c94c47b75d9a9}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ res,\ seed);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(z);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ glm::ivec2\ \ tiling\ =\ \{4,\ 3\};}
 \DoxyCodeLine{\ \ std::string\ fname\_radical\ =\ \textcolor{stringliteral}{"{}ex\_export\_tiled"{}};}
@@ -8776,6 +8775,8 @@ Each tile is extracted using slicing, adjusted for overlap if specified, and the
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ depth\ =\ CV\_16U;}
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ overlapping\_edges\ =\ \textcolor{keyword}{false};}
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ reverse\_tile\_y\_indexing\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ z.\mbox{\hyperlink{classhmap_1_1Array_a9ff7b2c0be8f2b5dd9fc33085cd647d1}{to\_png}}(\textcolor{stringliteral}{"{}ex\_export\_tiled.png"{}},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}});}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a91708f107a53c4b8ef68bb1d0291c73f}{hmap::export\_tiled}}(fname\_radical,}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fname\_extension,}
@@ -10996,7 +10997,7 @@ A new array containing the result of the mean shift process.
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zm\ =\ \mbox{\hyperlink{namespacehmap_a8ac4638525bb243024d50793d97bc9ee}{hmap::mean\_shift}}(z,\ ir,\ talus,\ iterations);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ zm.\mbox{\hyperlink{classhmap_1_1Array_ad7018857827d8e8d263516bbbd77630f}{to\_png\_grayscale}}(\textcolor{stringliteral}{"{}out.png"{}},\ CV\_16U);}
+\DoxyCodeLine{\ \ zm.\mbox{\hyperlink{classhmap_1_1Array_ab2c7afe05160d85b0997d733cbb7d286}{to\_png\_grayscale}}(\textcolor{stringliteral}{"{}out.png"{}},\ CV\_16U);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_mean\_shift.png"{}},\ \{z,\ zm\},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}});}
 \DoxyCodeLine{\}}
@@ -15722,7 +15723,7 @@ This function adjusts the elevation values in the input array {\ttfamily z} to s
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed,}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&mask);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ zd2.\mbox{\hyperlink{classhmap_1_1Array_ad7018857827d8e8d263516bbbd77630f}{to\_png\_grayscale}}(\textcolor{stringliteral}{"{}out.png"{}},\ CV\_16U);}
+\DoxyCodeLine{\ \ zd2.\mbox{\hyperlink{classhmap_1_1Array_ab2c7afe05160d85b0997d733cbb7d286}{to\_png\_grayscale}}(\textcolor{stringliteral}{"{}out.png"{}},\ CV\_16U);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_flow\_stream.png"{}},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ zv,\ zd1,\ zd2,\ mask\},}
@@ -18277,7 +18278,7 @@ The output path consists of\+:
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed,}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&mask);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ zd2.\mbox{\hyperlink{classhmap_1_1Array_ad7018857827d8e8d263516bbbd77630f}{to\_png\_grayscale}}(\textcolor{stringliteral}{"{}out.png"{}},\ CV\_16U);}
+\DoxyCodeLine{\ \ zd2.\mbox{\hyperlink{classhmap_1_1Array_ab2c7afe05160d85b0997d733cbb7d286}{to\_png\_grayscale}}(\textcolor{stringliteral}{"{}out.png"{}},\ CV\_16U);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_flow\_stream.png"{}},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ zv,\ zd1,\ zd2,\ mask\},}
@@ -18372,7 +18373,7 @@ The function requires the path to have at least two points. If the path has fewe
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ dz\ =\ \mbox{\hyperlink{namespacehmap_a30d55fae5c75a1c45a005a3f9a9467eb}{hmap::generate\_riverbed}}(path,\ shape,\ bbox);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(dz);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ dz.\mbox{\hyperlink{classhmap_1_1Array_ad7018857827d8e8d263516bbbd77630f}{to\_png\_grayscale}}(\textcolor{stringliteral}{"{}out.png"{}},\ CV\_16U);}
+\DoxyCodeLine{\ \ dz.\mbox{\hyperlink{classhmap_1_1Array_ab2c7afe05160d85b0997d733cbb7d286}{to\_png\_grayscale}}(\textcolor{stringliteral}{"{}out.png"{}},\ CV\_16U);}
 \DoxyCodeLine{\ \ dz.\mbox{\hyperlink{classhmap_1_1Array_a9ff7b2c0be8f2b5dd9fc33085cd647d1}{to\_png}}(\textcolor{stringliteral}{"{}out1.png"{}},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}});}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_generate\_riverbed.png"{}},}
@@ -24728,7 +24729,7 @@ The function performs the following steps\+:
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed);}
 \DoxyCodeLine{\ \ arrays.push\_back(z);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ z.\mbox{\hyperlink{classhmap_1_1Array_ad7018857827d8e8d263516bbbd77630f}{to\_png\_grayscale}}(\textcolor{stringliteral}{"{}out.png"{}},\ CV\_16U);}
+\DoxyCodeLine{\ \ z.\mbox{\hyperlink{classhmap_1_1Array_ab2c7afe05160d85b0997d733cbb7d286}{to\_png\_grayscale}}(\textcolor{stringliteral}{"{}out.png"{}},\ CV\_16U);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_phasor.png"{}},\ arrays,\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9}{hmap::Cmap::TERRAIN}});}
 \DoxyCodeLine{\}}
@@ -24819,7 +24820,7 @@ An {\ttfamily \doxylink{classhmap_1_1Array}{Array}} containing the generated f\+
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed);}
 \DoxyCodeLine{\ \ arrays.push\_back(z);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ z.\mbox{\hyperlink{classhmap_1_1Array_ad7018857827d8e8d263516bbbd77630f}{to\_png\_grayscale}}(\textcolor{stringliteral}{"{}out.png"{}},\ CV\_16U);}
+\DoxyCodeLine{\ \ z.\mbox{\hyperlink{classhmap_1_1Array_ab2c7afe05160d85b0997d733cbb7d286}{to\_png\_grayscale}}(\textcolor{stringliteral}{"{}out.png"{}},\ CV\_16U);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_phasor.png"{}},\ arrays,\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9}{hmap::Cmap::TERRAIN}});}
 \DoxyCodeLine{\}}
