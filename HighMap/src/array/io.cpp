@@ -136,10 +136,17 @@ void Array::to_png(const std::string &fname,
   color3.to_png(fname, depth);
 }
 
-void Array::to_png_grayscale(const std::string &fname, int depth) const
+void Array::to_png_grayscale(const std::string &fname,
+                             int                depth,
+                             float              vmin,
+                             float              vmax) const
 {
   Array array_copy = *this;
-  remap(array_copy);
+
+  if (vmin >= vmax)
+    remap(array_copy);
+  else
+    remap(array_copy, 0.f, 1.f, vmin, vmax);
 
   cv::Mat mat = array_copy.to_cv_mat();
   int     scale_factor = (depth == CV_8U) ? 255 : 65535;

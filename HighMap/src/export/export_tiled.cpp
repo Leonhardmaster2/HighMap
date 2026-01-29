@@ -52,6 +52,9 @@ void export_tiled(const std::string &fname_radical,
 {
   if (tiling.x <= 0 || tiling.y <= 0) return;
 
+  const float vmin = array.min();
+  const float vmax = array.max();
+
   for (int tx = 0; tx < tiling.x; ++tx)
     for (int ty = 0; ty < tiling.y; ++ty)
     {
@@ -77,7 +80,7 @@ void export_tiled(const std::string &fname_radical,
       const std::string fname = fname_radical + "_" + str_tx + "_" + str_ty +
                                 "." + fname_extension;
 
-      tile.to_png_grayscale(fname, depth);
+      tile.to_png_grayscale(fname, depth, vmin, vmax);
     }
 }
 

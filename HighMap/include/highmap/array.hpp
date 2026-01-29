@@ -916,7 +916,10 @@ public:
    * **Example**
    * @include ex_to_png.cpp
    */
-  void to_png_grayscale(const std::string &fname, int depth = CV_8U) const;
+  void to_png_grayscale(const std::string &fname,
+                        int                depth = CV_8U,
+                        float              vmin = 0.f,
+                        float              vmax = 0.f) const;
 
   /**
    * @brief Export the array as a TIFF image file.

@@ -8,7 +8,6 @@ int main(void)
   int              seed = 0;
 
   hmap::Array z = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, res, seed);
-  hmap::remap(z);
 
   glm::ivec2  tiling = {4, 3};
   std::string fname_radical = "ex_export_tiled";
@@ -17,6 +16,8 @@ int main(void)
   int         depth = CV_16U;
   bool        overlapping_edges = false;
   bool        reverse_tile_y_indexing = false;
+
+  z.to_png("ex_export_tiled.png", hmap::Cmap::JET);
 
   hmap::export_tiled(fname_radical,
                      fname_extension,
