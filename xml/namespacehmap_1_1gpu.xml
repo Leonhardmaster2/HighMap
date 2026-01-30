@@ -4178,6 +4178,125 @@
         </inbodydescription>
         <location file="HighMap/src/hydrology/flow_accumulation_d8_gpu.cpp" line="10" column="7" bodyfile="HighMap/src/hydrology/flow_accumulation_d8_gpu.cpp" bodystart="10" bodyend="24" declfile="HighMap/include/highmap/hydrology.hpp" declline="661" declcolumn="7"/>
       </memberdef>
+      <memberdef kind="function" id="namespacehmap_1_1gpu_1a1d4b7487013d682c572fa7c2b42d8fea" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
+        <definition>Array hmap::gpu::flow_simulation</definition>
+        <argsstring>(const Array &amp;z, float water_depth, const Array &amp;depth_map, int iterations, float dt=0.5f, bool flux_diffusion=true, float flux_diffusion_strength=0.01f, float water_depth_clamping_ratio=0.f)</argsstring>
+        <name>flow_simulation</name>
+        <qualifiedname>hmap::gpu::flow_simulation</qualifiedname>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>z</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>water_depth</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>depth_map</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>iterations</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>dt</declname>
+          <defval>0.5<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>flux_diffusion</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>flux_diffusion_strength</declname>
+          <defval>0.01<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>water_depth_clamping_ratio</declname>
+          <defval>0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <briefdescription>
+<para>GPU hydraulic flow simulation using a virtual-pipes model; simulates shallow-water transport over a height field using iterative flux computation and water transport passes, with optional flux diffusion and post-simulation depth clamping to remove thin residual water layers. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Terrain height field. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>water_height</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Global water scaling factor. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>depth_map</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Initial relative water distribution. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>iterations</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of simulation steps. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Time step size. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>flux_diffusion</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Enables flux smoothing. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>flux_diffusion_strength</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Strength of flux diffusion. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>water_depth_clamping_ratio</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Ratio for clamping thin remaining water layers (0 disables).</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classhmap_1_1Array" kindref="compound">Array</ref> Final simulated water depth map. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/hydrology/flow_simulation.cpp" line="12" column="7" bodyfile="HighMap/src/hydrology/flow_simulation.cpp" bodystart="12" bodyend="97" declfile="HighMap/include/highmap/hydrology.hpp" declline="681" declcolumn="7"/>
+      </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a129b54789c706428d04afd91d5eb8ae6" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
         <definition>Array hmap::gpu::generate_riverbed</definition>
@@ -4264,7 +4383,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/generate_riverbed_gpu.cpp" line="16" column="7" bodyfile="HighMap/src/hydrology/generate_riverbed_gpu.cpp" bodystart="16" bodyend="86" declfile="HighMap/include/highmap/hydrology.hpp" declline="664" declcolumn="7"/>
+        <location file="HighMap/src/hydrology/generate_riverbed_gpu.cpp" line="16" column="7" bodyfile="HighMap/src/hydrology/generate_riverbed_gpu.cpp" bodystart="16" bodyend="86" declfile="HighMap/include/highmap/hydrology.hpp" declline="691" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a864cdb10c297b4a59dc761f32dbbc11a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
