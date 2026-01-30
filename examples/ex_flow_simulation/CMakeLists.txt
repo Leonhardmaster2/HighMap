@@ -1,0 +1,2 @@
+add_executable(ex_flow_simulation ex_flow_simulation.cpp)
+target_link_libraries(ex_flow_simulation highmap)

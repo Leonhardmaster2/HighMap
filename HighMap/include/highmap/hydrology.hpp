@@ -660,6 +660,33 @@ Array flow_accumulation_from_velocity_field(const Array &u,
 /*! @brief See hmap::flow_direction_d8 */
 Array flow_direction_d8(const Array &z);
 
+/**
+ * @brief GPU hydraulic flow simulation using a virtual-pipes model; simulates
+ * shallow-water transport over a height field using iterative flux computation
+ * and water transport passes, with optional flux diffusion and post-simulation
+ * depth clamping to remove thin residual water layers.
+ *
+ * @param  z                          Terrain height field.
+ * @param  water_height               Global water scaling factor.
+ * @param  depth_map                  Initial relative water distribution.
+ * @param  iterations                 Number of simulation steps.
+ * @param  dt                         Time step size.
+ * @param  flux_diffusion             Enables flux smoothing.
+ * @param  flux_diffusion_strength    Strength of flux diffusion.
+ * @param  water_depth_clamping_ratio Ratio for clamping thin remaining water
+ *                                    layers (0 disables).
+ *
+ * @return                            Array Final simulated water depth map.
+ */
+Array flow_simulation(const Array &z,
+                      float        water_depth,
+                      const Array &depth_map,
+                      int          iterations,
+                      float        dt = 0.5f,
+                      bool         flux_diffusion = true,
+                      float        flux_diffusion_strength = 0.01f,
+                      float        water_depth_clamping_ratio = 0.f);
+
 /*! @brief See hmap::generate_riverbed */
 Array generate_riverbed(const Path &path,
                         glm::ivec2  shape,
