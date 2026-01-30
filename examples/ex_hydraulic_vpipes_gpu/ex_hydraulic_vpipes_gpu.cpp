@@ -24,7 +24,7 @@ int main(void)
   z0.dump("z0.png");
   z.dump("z.png");
 
-  hmap::export_banner_png("ex_hydraulic_vpipes.png",
+  hmap::export_banner_png("ex_hydraulic_vpipes_gpu.png",
                           {z0, z},
                           hmap::Cmap::TERRAIN,
                           true);

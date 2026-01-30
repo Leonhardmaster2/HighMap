@@ -115,20 +115,22 @@ void kernel hydraulic_vpipes_water_pass(read_only image2d_t  z,
   TSET(v_out, i, j, v_new);
 }
 
-void kernel hydraulic_vpipes_erosion_pass(read_only image2d_t  z,
-                                          read_only image2d_t  d2,
-                                          read_only image2d_t  u,
-                                          read_only image2d_t  v,
-                                          read_only image2d_t  s,
-                                          write_only image2d_t z_out,
-                                          write_only image2d_t s_out,
-                                          const int            nx,
-                                          const int            ny,
-                                          const float          water_height,
-                                          const float          k_capacity,
-                                          const float          k_erode,
-                                          const float          k_depose,
-                                          const float          k_discharge_exp)
+void kernel
+hydraulic_vpipes_erosion_pass(read_only image2d_t  z,
+                              read_only image2d_t  d2,
+                              read_only image2d_t  u,
+                              read_only image2d_t  v,
+                              read_only image2d_t  s,
+                              write_only image2d_t z_out,
+                              write_only image2d_t s_out,
+                              const int            nx,
+                              const int            ny,
+                              const float          water_height,
+                              const float          k_capacity,
+                              const float          k_erode,
+                              const float          k_depose,
+                              const float          k_discharge_exp,
+                              const float          downcutting_max_depth_ratio)
 {
   const float salpha_min = 0.001f;
 
@@ -152,10 +154,11 @@ void kernel hydraulic_vpipes_erosion_pass(read_only image2d_t  z,
   float dzn = max(1e-6f, nx * talus);
 
   // sediment capacity
-  float salpha = 1.f;
-  // float salpha = max(salpha_min, dzn / hypot(1.f, dzn));
+  const float dmax = water_height;
+
+  float salpha = max(salpha_min, dzn / hypot(1.f, dzn));
   float speed = hypot(TGET(u, i, j), TGET(v, i, j));
-  float depth = min_smooth(1.f, TGET(d2, i, j) / (1.f * water_height), 0.1f);
+  float depth = min(TGET(d2, i, j) / dmax, downcutting_max_depth_ratio);
   float discharge = depth * speed;
   float capa = k_capacity * pow(discharge, k_discharge_exp) * salpha;
 

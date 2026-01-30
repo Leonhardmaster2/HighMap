@@ -1391,12 +1391,13 @@ void hydraulic_schott(Array       &z,
                       Array       *p_flow = nullptr); ///< @overload
 
 /*! @brief See hmap::hydraulic_schott */
-void hydraulic_schott_erosion(Array &z,
-                              int    iterations,
-                              float  c_erosion = 1.f,
-                              float  flow_acc_exponent = 0.8f,
-                              float  flow_routing_exponent = 1.3f,
-                              Array *p_flow = nullptr);
+void hydraulic_schott_erosion(Array       &z,
+                              int          iterations,
+                              float        c_erosion = 1.f,
+                              float        flow_acc_exponent = 0.8f,
+                              float        flow_routing_exponent = 1.3f,
+                              const Array *p_moisture_map = nullptr,
+                              Array       *p_flow = nullptr);
 
 /*! @brief See hmap::hydraulic_stream_log */
 void hydraulic_stream_log(Array &z,
@@ -1441,6 +1442,7 @@ void hydraulic_vpipes(Array &z,
                       float  k_erode = 0.001f,
                       float  k_depose = 0.01f,
                       float  k_discharge_exp = 1.f,
+                      float  downcutting_max_depth_ratio = 10.f,
                       bool   flux_diffusion = true,
                       float  flux_diffusion_strength = 0.001f,
                       Array *p_rain_map = nullptr,

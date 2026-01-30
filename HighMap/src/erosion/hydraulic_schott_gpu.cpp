@@ -122,14 +122,16 @@ void hydraulic_schott(Array       &z,
   }
 }
 
-void hydraulic_schott_erosion(Array &z,
-                              int    iterations,
-                              float  c_erosion,
-                              float  flow_acc_exponent,
-                              float  flow_routing_exponent,
-                              Array *p_flow = nullptr)
+void hydraulic_schott_erosion(Array       &z,
+                              int          iterations,
+                              float        c_erosion,
+                              float        flow_acc_exponent,
+                              float        flow_routing_exponent,
+                              const Array *p_moisture_map,
+                              Array       *p_flow)
 {
   Array flow = p_flow ? *p_flow : Array(z.shape, 1.f);
+  Array moisture_map = p_moisture_map ? *p_moisture_map : Array(z.shape, 1.f);
 
   auto run = clwrapper::Run("hydraulic_schott_erosion");
 
@@ -137,6 +139,7 @@ void hydraulic_schott_erosion(Array &z,
 
   run.bind_imagef("z", z.vector, shape.x, shape.y);
   run.bind_imagef("flow", flow.vector, shape.x, shape.y);
+  run.bind_imagef("moisture_map", moisture_map.vector, shape.x, shape.y);
 
   run.bind_imagef("z_new", z.vector, shape.x, shape.y, true);
   run.bind_imagef("flow_new", flow.vector, shape.x, shape.y, true);

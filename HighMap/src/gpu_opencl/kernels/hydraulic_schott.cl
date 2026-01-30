@@ -196,6 +196,7 @@ void kernel hydraulic_schott(read_only image2d_t  z,
 
 void kernel hydraulic_schott_erosion(read_only image2d_t  z,
                                      read_only image2d_t  flow,
+                                     read_only image2d_t  moisture_map,
                                      write_only image2d_t z_new,
                                      write_only image2d_t flow_new,
                                      const int            nx,
@@ -229,7 +230,7 @@ void kernel hydraulic_schott_erosion(read_only image2d_t  z,
   z_val = max(z_steepest, z_val - spe);
   write_imagef(z_new, g, z_val);
 
-  float flow_val = 1.f +
+  float flow_val = read_imagef(moisture_map, sampler, g).x +
                    schott_get_flow(z, flow, sampler, g, flow_routing_exponent);
   write_imagef(flow_new, g, flow_val);
 }
