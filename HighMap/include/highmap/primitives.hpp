@@ -533,7 +533,8 @@ Array dendry(glm::ivec2     shape,
  * @param  shape                      The dimensions of the grid where the DLA
  *                                    pattern will be generated. It is
  *                                    represented as a `glm::ivec2` object,
- * where the first element is the width and the second element is the height.
+ *                                    where the first element is the width and
+ *                                    the second element is the height.
  * @param  scale                      A scaling factor that influences the
  *                                    density of the particles in the DLA
  *                                    pattern.

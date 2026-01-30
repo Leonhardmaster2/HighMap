@@ -1246,13 +1246,13 @@ void thermal_schott(Array      &z,
  * distance transform to the basin boundary is evaluated and used to lower
  * elevations near watershed divides, forming ridge lines.
  *
- * @param  z                  Input elevation field.
- * @param  amplitude          Ridge carving strength.
- * @param  ir Smoothing.
- * @param  edt_exponent       Exponent applied to the distance field to control
- *                            ridge sharpness.
+ * @param  z            Input elevation field.
+ * @param  amplitude    Ridge carving strength.
+ * @param  ir           Smoothing.
+ * @param  edt_exponent Exponent applied to the distance field to control ridge
+ *                      sharpness.
  *
- * @return                    Elevation field with watershed ridges emphasized.
+ * @return              Elevation field with watershed ridges emphasized.
  *
  * **Example**
  * @include ex_watershed_ridge.cpp

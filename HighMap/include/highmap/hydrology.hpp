@@ -640,6 +640,19 @@ Array water_mask(const Array &water_depth,
 namespace hmap::gpu
 {
 
+/**
+ * @brief Approximates flow accumulation from a 2D velocity field.
+ *
+ * Advects a scalar accumulation field using an Eulerian transport scheme driven
+ * by the velocity components (u, v). Repeated iterations approximate upstream
+ * contributing area and highlight flow convergence (thalwegs).
+ *
+ * @param  u          X-component of the flow velocity field.
+ * @param  v          Y-component of the flow velocity field.
+ * @param  iterations Number of transport iterations to perform.
+ *
+ * @return            Flow accumulation field.
+ */
 Array flow_accumulation_from_velocity_field(const Array &u,
                                             const Array &v,
                                             int          iterations);

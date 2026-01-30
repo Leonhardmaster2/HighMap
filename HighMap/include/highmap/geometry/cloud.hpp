@@ -166,8 +166,8 @@ public:
    * cloud. The bounding box is represented as a `glm::vec4` containing the
    * minimum and maximum coordinates in both the `x` and `y` dimensions.
    *
-   * @return glm::vec4 The bounding box of the cloud in the format `[xmin,
-   * xmax, ymin, ymax]`.
+   * @return glm::vec4 The bounding box of the cloud in the format `[xmin, xmax,
+   *         ymin, ymax]`.
    */
   glm::vec4 get_bbox() const;
 

@@ -38,9 +38,9 @@ void hydraulic_vpipes(Array &z,
   k_capacity = 0.5f;
   downcutting_max_depth_ratio = 2.5f;
 
-  bool add_rain_map_noise = true;
+  bool  add_rain_map_noise = true;
   float spl_erosion_strength = 10.f;
-  
+
   //
 
   const glm::ivec2 shape = z.shape;
@@ -52,8 +52,7 @@ void hydraulic_vpipes(Array &z,
 
   // rain_map = cubic_pulse(shape, nullptr, nullptr);
 
-  if (add_rain_map_noise)
-    rain_map *= white(shape, 0.f, 1.f, 0);
+  if (add_rain_map_noise) rain_map *= white(shape, 0.f, 1.f, 0);
 
   Array d(shape, water_height); // water height
   Array d1(shape);

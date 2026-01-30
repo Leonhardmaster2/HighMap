@@ -360,7 +360,7 @@ public:
    * are excluded from the slice.
    *
    * @param  idx A glm::ivec4 containing the slice extent indices {i1, i2, j1,
-   * j2}.
+   *             j2}.
    * @return     Array The extracted subarray.
    */
   Array extract_slice(glm::ivec4 idx) const;
@@ -672,7 +672,7 @@ public:
    * @param  vmin Lower bound of the desired range.
    * @param  vmax Upper bound of the desired range.
    * @return      glm::vec2 Normalization coefficients (a, b) where `a` scales
-   *              the values and `b` shifts them.
+   * the values and `b` shifts them.
    */
   glm::vec2 normalization_coeff(float vmin = 0.f, float vmax = 1.f) const;
 
