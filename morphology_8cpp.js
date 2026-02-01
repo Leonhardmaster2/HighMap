@@ -4,6 +4,7 @@ var morphology_8cpp =
     [ "closing", "morphology_8cpp.html#a889405ce11be91e33cc80ca4dbd192b0", null ],
     [ "dilation", "morphology_8cpp.html#ac91a2dacd050d8588b4135f02dd8f2a5", null ],
     [ "dilation_expand_border_only", "morphology_8cpp.html#a268e133ae504eaa1b31c91d13135f4c5", null ],
+    [ "dilation_expand_min_value_border_only", "morphology_8cpp.html#a511226f8c6989729ff59e5079a6cff29", null ],
     [ "erosion", "morphology_8cpp.html#a9cf7773f6141162bf60708a93acdfcee", null ],
     [ "flood_fill", "morphology_8cpp.html#adff494af7c8bf4db7f3e6fddd3261793", null ],
     [ "morphological_black_hat", "morphology_8cpp.html#a1cf22c68188d0e35aa74983f3a01c488", null ],
