@@ -673,8 +673,8 @@ Array flow_direction_d8(const Array &z);
  * @param  dt                         Time step size.
  * @param  flux_diffusion             Enables flux smoothing.
  * @param  flux_diffusion_strength    Strength of flux diffusion.
- * @param  water_depth_clamping_ratio Ratio for clamping thin remaining water
- *                                    layers (0 disables).
+ * @param  dry_out_ratio              Ratio for removing thin remaining water
+ * layers.
  *
  * @return                            Array Final simulated water depth map.
  */
@@ -685,7 +685,7 @@ Array flow_simulation(const Array &z,
                       float        dt = 0.5f,
                       bool         flux_diffusion = true,
                       float        flux_diffusion_strength = 0.01f,
-                      float        water_depth_clamping_ratio = 0.f);
+                      float        dry_out_ratio = 0.f);
 
 /*! @brief See hmap::generate_riverbed */
 Array generate_riverbed(const Path &path,

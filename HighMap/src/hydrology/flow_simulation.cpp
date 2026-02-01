@@ -16,7 +16,7 @@ Array flow_simulation(const Array &z,
                       float        dt,
                       bool         flux_diffusion,
                       float        flux_diffusion_strength,
-                      float        water_depth_clamping_ratio)
+                      float        dry_out_ratio)
 {
   glm::ivec2 shape = z.shape;
 
@@ -87,10 +87,10 @@ Array flow_simulation(const Array &z,
   }
 
   // remove thin layer of remaining water
-  if (water_depth_clamping_ratio != 0.f)
+  if (dry_out_ratio != 0.f)
   {
     float dmax = d.max();
-    saturate(d, water_depth_clamping_ratio * dmax, dmax);
+    water_depth_dry_out(d, dry_out_ratio, nullptr, dmax);
   }
 
   return d; // water depth
