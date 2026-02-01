@@ -31,14 +31,14 @@ int main()
   // const auto storage_mode = hmap::StorageMode::VA_DISK_LRU_MIN;
   // const auto storage_mode = hmap::StorageMode::VA_DISK_SEQUENTIAL;
 
-  const auto foreach_mode = hmap::ForEachMode::VA_DISTRIBUTED;
+  // const auto foreach_mode = hmap::ForEachMode::VA_DISTRIBUTED;
   // const auto foreach_mode = hmap::ForEachMode::VA_SEQUENTIAL;
-  // const auto foreach_mode = hmap::ForEachMode::VA_SINGLE_ARRAY;
+  const auto foreach_mode = hmap::ForEachMode::VA_SINGLE_ARRAY;
+  // const auto foreach_mode = hmap::ForEachMode::VA_SINGLE_ARRAY_STRIDED;
 
-  const hmap::ComputeMode compute_mode{
-      .mode = foreach_mode,
-      .trim_storage = true,
-  };
+  const hmap::ComputeMode compute_mode{.mode = foreach_mode,
+                                       .trim_storage = true,
+                                       .stride = 32};
 
   // ===========================================================================
   // Virtual arrays
@@ -73,6 +73,11 @@ int main()
   hmap::for_each_tile(varray, generate_noise, compute_mode);
   hmap::for_each_tile(varray, apply_gamma, compute_mode);
   hmap::for_each_tile(varray, smooth, compute_mode);
+
+  const hmap::ComputeMode cm_local = {.mode = hmap::ForEachMode::VA_SEQUENTIAL,
+                                      .trim_storage = false};
+
+  varray.to_array(cm_local).to_png("out.png", hmap::Cmap::JET);
 
   // ===========================================================================
   // Multi-array operation

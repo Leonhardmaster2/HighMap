@@ -125,6 +125,85 @@ void VirtualArray::from_array(const Array &array, const ComputeMode &cm)
   for_each_tile(*this, lambda, cm);
 }
 
+void VirtualArray::from_array_bilinear(const Array       &array,
+                                       const ComputeMode &cm)
+{
+  auto lambda = [&array, this](Array &tile, const TileRegion &region)
+  {
+    const float rx = float(array.shape.x - 1) / float(this->shape.x - 1);
+    const float ry = float(array.shape.y - 1) / float(this->shape.y - 1);
+
+    const glm::ivec2 ij0 = this->tile_region_global_indices(region);
+
+    for (int j = 0; j < region.shape.y; ++j)
+      for (int i = 0; i < region.shape.x; ++i)
+      {
+        // destination pixel center (global)
+        const float xd = float(ij0.x + i) + 0.5f;
+        const float yd = float(ij0.y + j) + 0.5f;
+
+        // source position in continuous space
+        const float xs = xd * rx;
+        const float ys = yd * ry;
+
+        // integer base index
+        const int ig = int(std::floor(xs));
+        const int jg = int(std::floor(ys));
+
+        // fractional part
+        const float u = xs - float(ig);
+        const float v = ys - float(jg);
+
+        // clamp base index so bilinear neighborhood is valid
+        const int ig0 = std::clamp(ig, 0, array.shape.x - 2);
+        const int jg0 = std::clamp(jg, 0, array.shape.y - 2);
+
+        tile(i, j) = array.get_value_bilinear_at(ig0, jg0, u, v);
+      }
+  };
+
+  for_each_tile(*this, lambda, cm);
+}
+
+void VirtualArray::from_array_bicubic(const Array &array, const ComputeMode &cm)
+{
+  auto lambda = [&array, this](Array &tile, const TileRegion &region)
+  {
+    const float rx = float(array.shape.x - 1) / float(this->shape.x - 1);
+    const float ry = float(array.shape.y - 1) / float(this->shape.y - 1);
+
+    const glm::ivec2 ij0 = this->tile_region_global_indices(region);
+
+    for (int j = 0; j < region.shape.y; ++j)
+      for (int i = 0; i < region.shape.x; ++i)
+      {
+        // destination pixel center (global)
+        const float xd = float(ij0.x + i) + 0.5f;
+        const float yd = float(ij0.y + j) + 0.5f;
+
+        // source position in continuous space
+        const float xs = xd * rx;
+        const float ys = yd * ry;
+
+        // integer base index
+        const int ig = int(std::floor(xs));
+        const int jg = int(std::floor(ys));
+
+        // fractional part
+        const float u = xs - float(ig);
+        const float v = ys - float(jg);
+
+        // clamp base index so bilinear neighborhood is valid
+        const int ig0 = std::clamp(ig, 0, array.shape.x - 1);
+        const int jg0 = std::clamp(jg, 0, array.shape.y - 1);
+
+        tile(i, j) = array.get_value_bicubic_at(ig0, jg0, u, v);
+      }
+  };
+
+  for_each_tile(*this, lambda, cm);
+}
+
 // Access individual cells (slower)
 float VirtualArray::get(int global_i, int global_j) const
 {
