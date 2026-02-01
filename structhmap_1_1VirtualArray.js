@@ -15,6 +15,8 @@ var structhmap_1_1VirtualArray =
     [ "info_string", "structhmap_1_1VirtualArray.html#af3c6671195e6953ad46ae65a64fe88bd", null ],
     [ "fill", "structhmap_1_1VirtualArray.html#aeff83280c1e81978b24909637bf728a1", null ],
     [ "from_array", "structhmap_1_1VirtualArray.html#ab685dda55aa7c9797d2a77e5d75d66c4", null ],
+    [ "from_array_bilinear", "structhmap_1_1VirtualArray.html#a6b79aa001d876e725effb0e5659ffc44", null ],
+    [ "from_array_bicubic", "structhmap_1_1VirtualArray.html#a7753aef78b80e55ac2114ec8970ba765", null ],
     [ "to_array", "structhmap_1_1VirtualArray.html#a81fead26a776d58553e942f0204ce810", null ],
     [ "to_array", "structhmap_1_1VirtualArray.html#a72a1341b322d90e51275dc8336944c16", null ],
     [ "to_array_dbg", "structhmap_1_1VirtualArray.html#a037ca97b101483eeb9628bf7662ee7ee", null ],
