@@ -4178,10 +4178,10 @@
         </inbodydescription>
         <location file="HighMap/src/hydrology/flow_accumulation_d8_gpu.cpp" line="10" column="7" bodyfile="HighMap/src/hydrology/flow_accumulation_d8_gpu.cpp" bodystart="10" bodyend="24" declfile="HighMap/include/highmap/hydrology.hpp" declline="661" declcolumn="7"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1_1gpu_1a1d4b7487013d682c572fa7c2b42d8fea" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacehmap_1_1gpu_1ab2ccca5e12b451191af1edc97cb86fbf" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
         <definition>Array hmap::gpu::flow_simulation</definition>
-        <argsstring>(const Array &amp;z, float water_depth, const Array &amp;depth_map, int iterations, float dt=0.5f, bool flux_diffusion=true, float flux_diffusion_strength=0.01f, float water_depth_clamping_ratio=0.f)</argsstring>
+        <argsstring>(const Array &amp;z, float water_depth, const Array &amp;depth_map, int iterations, float dt=0.5f, bool flux_diffusion=true, float flux_diffusion_strength=0.01f, float dry_out_ratio=0.f)</argsstring>
         <name>flow_simulation</name>
         <qualifiedname>hmap::gpu::flow_simulation</qualifiedname>
         <param>
@@ -4217,7 +4217,7 @@
         </param>
         <param>
           <type>float</type>
-          <declname>water_depth_clamping_ratio</declname>
+          <declname>dry_out_ratio</declname>
           <defval>0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
         </param>
         <briefdescription>
@@ -4282,10 +4282,10 @@
 </parameteritem>
 <parameteritem>
 <parameternamelist>
-<parametername>water_depth_clamping_ratio</parametername>
+<parametername>dry_out_ratio</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Ratio for clamping thin remaining water layers (0 disables).</para>
+<para>Ratio for removing thin remaining water layers.</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
