@@ -99,6 +99,8 @@ Array dilation(const Array &array, int ir);
  */
 Array dilation_expand_border_only(const Array &array, int ir);
 
+Array dilation_expand_min_value_border_only(const Array &array);
+
 /**
  * @brief Return the Euclidean distance transform.
  *
