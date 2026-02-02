@@ -34,7 +34,7 @@ var structhmap_1_1VirtualArray =
     [ "tile_region_from_global_index", "structhmap_1_1VirtualArray.html#a307123a81d2ea77c85ae28612a1c06c2", null ],
     [ "tile_region_from_tile_coords", "structhmap_1_1VirtualArray.html#a157b5a589d01cb7da7fd9b9b759f94c6", null ],
     [ "local_indices", "structhmap_1_1VirtualArray.html#a12c769efc1f74252ff39f2b617f55f33", null ],
-    [ "trim_storage", "structhmap_1_1VirtualArray.html#a883004746310f2e6cbd6365ce96d2541", null ],
+    [ "trim_storage", "structhmap_1_1VirtualArray.html#a9a319d40a7059ab7f41447b0960b772c", null ],
     [ "shape", "structhmap_1_1VirtualArray.html#ab4cb9cb20eb23bc7b1026da3486be975", null ],
     [ "bbox", "structhmap_1_1VirtualArray.html#a7a4e86a56ad72960bc20dfa97cadb8e3", null ],
     [ "tile_shape", "structhmap_1_1VirtualArray.html#a2d3721a573d9e21e941148f2e359434b", null ],

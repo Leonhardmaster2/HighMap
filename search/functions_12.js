@@ -45,5 +45,5 @@ var searchData=
   ['triangle_5farea_42',['triangle_area',['../namespacehmap.html#a9249226d73f4396157c1c6415ebf3a7c',1,'hmap']]],
   ['tricube_43',['tricube',['../namespacehmap.html#af79b0d6faf3275a80f3948dfff6adaf5',1,'hmap']]],
   ['trim_44',['trim',['../classhmap_1_1DiskSequentialTileStorage.html#a1c57df8b1b30d942c70db54ad4557121',1,'hmap::DiskSequentialTileStorage::trim()'],['../classhmap_1_1DiskLruTileStorage.html#aa36f0f1105b15b5652d28d37793af7aa',1,'hmap::DiskLruTileStorage::trim()'],['../classhmap_1_1TileStorage.html#a019cb42b6028988281a116f669359935',1,'hmap::TileStorage::trim()']]],
-  ['trim_5fstorage_45',['trim_storage',['../structhmap_1_1VirtualTextureStorage.html#a4f2d03a10a486427a4792228477c8d8c',1,'hmap::VirtualTextureStorage::trim_storage()'],['../structhmap_1_1VirtualArray.html#a883004746310f2e6cbd6365ce96d2541',1,'hmap::VirtualArray::trim_storage()']]]
+  ['trim_5fstorage_45',['trim_storage',['../structhmap_1_1VirtualTextureStorage.html#a4f2d03a10a486427a4792228477c8d8c',1,'hmap::VirtualTextureStorage::trim_storage()'],['../structhmap_1_1VirtualArray.html#a9a319d40a7059ab7f41447b0960b772c',1,'hmap::VirtualArray::trim_storage()']]]
 ];
