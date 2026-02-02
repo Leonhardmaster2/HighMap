@@ -21,7 +21,7 @@ var searchData=
   ['dilation_5fexpand_5fborder_5fonly_18',['dilation_expand_border_only',['../namespacehmap_1_1gpu.html#ab553a95bb6b2680debb98284517c863d',1,'hmap::gpu::dilation_expand_border_only()'],['../namespacehmap.html#a268e133ae504eaa1b31c91d13135f4c5',1,'hmap::dilation_expand_border_only(const Array &amp;array, int ir)']]],
   ['dilation_5fexpand_5fmin_5fvalue_5fborder_5fonly_19',['dilation_expand_min_value_border_only',['../namespacehmap.html#a511226f8c6989729ff59e5079a6cff29',1,'hmap']]],
   ['directional_5fblur_20',['directional_blur',['../namespacehmap.html#afb9b18e93276f49b347d2efbd94c1df4',1,'hmap::directional_blur(Array &amp;array, int ir, const Array &amp;angle, float intensity, float stretch=1.f, float spread=1.f)'],['../namespacehmap.html#a22656a7e71302244f5f79f237a81c985',1,'hmap::directional_blur(Array &amp;array, int ir, float angle, float intensity, float stretch=1.f, float spread=1.f)']]],
-  ['disk_21',['disk',['../namespacehmap.html#ab9b4237b1eef6255e59cc20255757dcf',1,'hmap::disk(glm::ivec2 shape)'],['../namespacehmap.html#a3faedeb1505b5224b1f7e82e840beb73',1,'hmap::disk(glm::ivec2 shape, float radius, float slope=1.f, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, glm::vec2 center={0.5f, 0.5f}, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})']]],
+  ['disk_21',['disk',['../namespacehmap.html#a3faedeb1505b5224b1f7e82e840beb73',1,'hmap::disk(glm::ivec2 shape, float radius, float slope=1.f, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, glm::vec2 center={0.5f, 0.5f}, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})'],['../namespacehmap.html#ab9b4237b1eef6255e59cc20255757dcf',1,'hmap::disk(glm::ivec2 shape)']]],
   ['disk_5fsmooth_22',['disk_smooth',['../namespacehmap.html#a39b5e3442edf55eaf7392b2bca967242',1,'hmap']]],
   ['diskfunction_23',['DiskFunction',['../classhmap_1_1DiskFunction.html#afe098ec4431618692a64b4b626c3cfeb',1,'hmap::DiskFunction']]],
   ['disklrutilestorage_24',['DiskLruTileStorage',['../classhmap_1_1DiskLruTileStorage.html#ac282076e9a01c45b19010d16436cd470',1,'hmap::DiskLruTileStorage']]],
@@ -32,11 +32,12 @@ var searchData=
   ['distance_5ftransform_5fjfa_29',['distance_transform_jfa',['../namespacehmap_1_1gpu.html#a1dbc83521075f7c0179c7157f292b2b2',1,'hmap::gpu']]],
   ['distance_5ftransform_5fmanhattan_30',['distance_transform_manhattan',['../namespacehmap.html#add641a7fc26ae08b1f679cbb7dd43177',1,'hmap']]],
   ['distance_5ftransform_5fwith_5fclosest_31',['distance_transform_with_closest',['../namespacehmap.html#a8e7ea79047868729667b72aed4ddd81d',1,'hmap']]],
-  ['disttodomainimpl_32',['disttodomainimpl',['../classhmap_1_1ArrayControlFunction.html#a3c40696e8f26f0e6fbd66f0f97b83082',1,'hmap::ArrayControlFunction::DistToDomainImpl()'],['../classhmap_1_1XyControlFunction.html#a7812fe0b327e2d30cda5656c10fd1a75',1,'hmap::XyControlFunction::DistToDomainImpl()']]],
-  ['divergence_5ffrom_5fgradients_33',['divergence_from_gradients',['../namespacehmap.html#a27518ea42feb447ad4eb83147663c24d',1,'hmap']]],
-  ['divide_34',['divide',['../classhmap_1_1Path.html#a8650db137a1b4ecccf05cfd0fd7d320b',1,'hmap::Path']]],
-  ['downscale_5ftransform_35',['downscale_transform',['../namespacehmap.html#a1fb8077215c98a741e0de5366c2f7ca3',1,'hmap']]],
-  ['downscale_5ftransform_5fmulti_36',['downscale_transform_multi',['../namespacehmap.html#a669a4f9586f3df4b018e321048c9bc7d',1,'hmap']]],
-  ['dump_37',['dump',['../classhmap_1_1Timer.html#a5bc931885a549c561740f39cea91dd5f',1,'hmap::Timer::Dump()'],['../structhmap_1_1Recorder.html#ac5bd6628a256636229047bbc12ced680',1,'hmap::Recorder::dump()'],['../classhmap_1_1Array.html#a00b8f7462c1e22b1da8a67ec62d4c8c8',1,'hmap::Array::dump(const std::string &amp;fname=&quot;out.png&quot;) const']]],
-  ['dump_5fhistogram_38',['dump_histogram',['../classhmap_1_1Array.html#a172a6d1a17ceae78548ff7e12d21d87c',1,'hmap::Array']]]
+  ['distributed_5ftile_5floop_32',['distributed_tile_loop',['../virtual__array_8inl.html#afb0e81819ec38d3f973035c263fa13df',1,'virtual_array.inl']]],
+  ['disttodomainimpl_33',['disttodomainimpl',['../classhmap_1_1ArrayControlFunction.html#a3c40696e8f26f0e6fbd66f0f97b83082',1,'hmap::ArrayControlFunction::DistToDomainImpl()'],['../classhmap_1_1XyControlFunction.html#a7812fe0b327e2d30cda5656c10fd1a75',1,'hmap::XyControlFunction::DistToDomainImpl()']]],
+  ['divergence_5ffrom_5fgradients_34',['divergence_from_gradients',['../namespacehmap.html#a27518ea42feb447ad4eb83147663c24d',1,'hmap']]],
+  ['divide_35',['divide',['../classhmap_1_1Path.html#a8650db137a1b4ecccf05cfd0fd7d320b',1,'hmap::Path']]],
+  ['downscale_5ftransform_36',['downscale_transform',['../namespacehmap.html#a1fb8077215c98a741e0de5366c2f7ca3',1,'hmap']]],
+  ['downscale_5ftransform_5fmulti_37',['downscale_transform_multi',['../namespacehmap.html#a669a4f9586f3df4b018e321048c9bc7d',1,'hmap']]],
+  ['dump_38',['dump',['../structhmap_1_1Recorder.html#ac5bd6628a256636229047bbc12ced680',1,'hmap::Recorder::dump()'],['../classhmap_1_1Array.html#a00b8f7462c1e22b1da8a67ec62d4c8c8',1,'hmap::Array::dump()'],['../classhmap_1_1Timer.html#a5bc931885a549c561740f39cea91dd5f',1,'hmap::Timer::Dump()']]],
+  ['dump_5fhistogram_39',['dump_histogram',['../classhmap_1_1Array.html#a172a6d1a17ceae78548ff7e12d21d87c',1,'hmap::Array']]]
 ];

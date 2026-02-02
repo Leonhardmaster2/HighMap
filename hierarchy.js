@@ -77,6 +77,7 @@ var hierarchy =
     [ "hmap::PyramidDecomposition", "classhmap_1_1PyramidDecomposition.html", null ],
     [ "hmap::Recorder", "structhmap_1_1Recorder.html", null ],
     [ "hmap::Tensor", "classhmap_1_1Tensor.html", null ],
+    [ "TileAccess", "structTileAccess.html", null ],
     [ "hmap::TileKey", "structhmap_1_1TileKey.html", null ],
     [ "hmap::TileKeyHash", "structhmap_1_1TileKeyHash.html", null ],
     [ "hmap::TileRegion", "structhmap_1_1TileRegion.html", null ],

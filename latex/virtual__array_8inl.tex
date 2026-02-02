@@ -1,102 +1,80 @@
 \doxysection{High\+Map/include/highmap/virtual\+\_\+array/virtual\+\_\+array.inl File Reference}
 \hypertarget{virtual__array_8inl}{}\label{virtual__array_8inl}\index{HighMap/include/highmap/virtual\_array/virtual\_array.inl@{HighMap/include/highmap/virtual\_array/virtual\_array.inl}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structTileAccess}{Tile\+Access}}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-{\footnotesize template$<$typename Func $>$ }\\void \mbox{\hyperlink{virtual__array_8inl_a8f931ef5a699d8756ed83bf678cc5110}{for\+\_\+each\+\_\+tile\+\_\+distributed}} (const std\+::vector$<$ Virtual\+Array \texorpdfstring{$\ast$}{*} $>$ \&p\+\_\+vas, Func \&\&func, int nthreads=0)
+{\footnotesize template$<$typename Func $>$ }\\void \mbox{\hyperlink{virtual__array_8inl_ab533899554e393dbefccf9a5602faa39}{for\+\_\+each\+\_\+tile}} (const \mbox{\hyperlink{structTileAccess}{Tile\+Access}} \&access, Func \&\&func, const Compute\+Mode \&cm)
 \item 
-{\footnotesize template$<$typename Func $>$ }\\void \mbox{\hyperlink{virtual__array_8inl_ae1287a4a7907542f6957baae838a870d}{for\+\_\+each\+\_\+tile\+\_\+distributed}} (Virtual\+Array \&va, Func \&\&func, int nthreads=0)
-\item 
-{\footnotesize template$<$typename Func $>$ }\\void \mbox{\hyperlink{virtual__array_8inl_a572aa9da0eb51d6160bef6d9e5b0c48e}{for\+\_\+each\+\_\+tile\+\_\+sequential}} (const std\+::vector$<$ Virtual\+Array \texorpdfstring{$\ast$}{*} $>$ \&p\+\_\+vas, Func \&\&func)
-\item 
-{\footnotesize template$<$typename Func $>$ }\\void \mbox{\hyperlink{virtual__array_8inl_a1667bffbf59a0c6e7f631f67babec5d9}{for\+\_\+each\+\_\+tile\+\_\+sequential}} (Virtual\+Array \&va, Func \&\&func)
-\item 
-{\footnotesize template$<$typename Func $>$ }\\void \mbox{\hyperlink{virtual__array_8inl_a6c754aad8996d3ebadcb3989dfa43f24}{for\+\_\+each\+\_\+tile\+\_\+single\+\_\+array}} (const std\+::vector$<$ Virtual\+Array \texorpdfstring{$\ast$}{*} $>$ \&p\+\_\+vas, Func \&\&func)
-\item 
-{\footnotesize template$<$typename Func $>$ }\\void \mbox{\hyperlink{virtual__array_8inl_a49ef291ba175a66cfe51000423d35b82}{for\+\_\+each\+\_\+tile\+\_\+single\+\_\+array\+\_\+strided}} (const std\+::vector$<$ Virtual\+Array \texorpdfstring{$\ast$}{*} $>$ \&p\+\_\+vas, Func \&\&func, int stride)
-\item 
-{\footnotesize template$<$typename Func $>$ }\\void \mbox{\hyperlink{virtual__array_8inl_a6c13c921b7722aa5e4d60d53155b3bbb}{for\+\_\+each\+\_\+tile\+\_\+single\+\_\+array}} (Virtual\+Array \&va, Func \&\&func)
-\item 
-{\footnotesize template$<$typename Func $>$ }\\void \mbox{\hyperlink{virtual__array_8inl_a36108d74d7e5f3d6c311972490e1efff}{for\+\_\+each\+\_\+tile}} (const std\+::vector$<$ Virtual\+Array \texorpdfstring{$\ast$}{*} $>$ \&p\+\_\+vas, Func \&\&func, const Compute\+Mode \&cm)
+{\footnotesize template$<$typename Func $>$ }\\void \mbox{\hyperlink{virtual__array_8inl_ae478874f7642c88ddd72ff98cd6db121}{for\+\_\+each\+\_\+tile}} (const Virtual\+Array \&va, Func \&\&func, const Compute\+Mode \&cm)
 \item 
 {\footnotesize template$<$typename Func $>$ }\\void \mbox{\hyperlink{virtual__array_8inl_a22b2c2c836594a23051ee27f190ea4f1}{for\+\_\+each\+\_\+tile}} (Virtual\+Array \&va, Func \&\&func, const Compute\+Mode \&cm)
 \item 
-{\footnotesize template$<$typename Func $>$ }\\void \mbox{\hyperlink{virtual__array_8inl_ae478874f7642c88ddd72ff98cd6db121}{for\+\_\+each\+\_\+tile}} (const Virtual\+Array \&va, Func \&\&func, const Compute\+Mode \&cm)
+{\footnotesize template$<$typename Func $>$ }\\void \mbox{\hyperlink{virtual__array_8inl_aa9e1146ecba957bddab362cb8c1e21ff}{for\+\_\+each\+\_\+tile}} (const std\+::vector$<$ Virtual\+Array \texorpdfstring{$\ast$}{*} $>$ \&outputs, Func \&\&func, const Compute\+Mode \&cm)
+\item 
+{\footnotesize template$<$typename Region\+Dispatcher $>$ }\\void \mbox{\hyperlink{virtual__array_8inl_a248e8e1edddfcc281ea3ce1b2c69b944}{sequential\+\_\+tile\+\_\+loop}} (const Virtual\+Array \&ref\+\_\+va, Region\+Dispatcher \&\&dispatcher)
+\item 
+{\footnotesize template$<$typename Region\+Dispatcher $>$ }\\void \mbox{\hyperlink{virtual__array_8inl_afb0e81819ec38d3f973035c263fa13df}{distributed\+\_\+tile\+\_\+loop}} (const Virtual\+Array \&ref\+\_\+va, Region\+Dispatcher \&\&dispatcher, int nthreads=0)
+\item 
+{\footnotesize template$<$typename Func $>$ }\\void \mbox{\hyperlink{virtual__array_8inl_a6333fa79cbfccc35fae582fceaf2f1d0}{single\+\_\+array\+\_\+projection\+\_\+compute}} (const \mbox{\hyperlink{structTileAccess}{Tile\+Access}} \&access, Func \&\&func, int stride=1)
 \item 
 {\footnotesize template$<$typename Func $>$ }\\void \mbox{\hyperlink{virtual__array_8inl_a54eec3c94e3409f3990876e68a581322}{for\+\_\+each\+\_\+cell}} (Virtual\+Array \&va, Func \&\&func, const Compute\+Mode \&cm)
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{virtual__array_8inl_a8f931ef5a699d8756ed83bf678cc5110}\label{virtual__array_8inl_a8f931ef5a699d8756ed83bf678cc5110} 
-\index{virtual\_array.inl@{virtual\_array.inl}!for\_each\_tile\_distributed@{for\_each\_tile\_distributed}}
-\index{for\_each\_tile\_distributed@{for\_each\_tile\_distributed}!virtual\_array.inl@{virtual\_array.inl}}
-\doxysubsubsection{\texorpdfstring{for\_each\_tile\_distributed()}{for\_each\_tile\_distributed()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily template$<$typename Func $>$ \\
-void for\+\_\+each\+\_\+tile\+\_\+distributed (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ Virtual\+Array \texorpdfstring{$\ast$}{*} $>$ \&}]{p\+\_\+vas,  }\item[{Func \&\&}]{func,  }\item[{int}]{nthreads = {\ttfamily 0} }\end{DoxyParamCaption})}
-
-\Hypertarget{virtual__array_8inl_ae1287a4a7907542f6957baae838a870d}\label{virtual__array_8inl_ae1287a4a7907542f6957baae838a870d} 
-\index{virtual\_array.inl@{virtual\_array.inl}!for\_each\_tile\_distributed@{for\_each\_tile\_distributed}}
-\index{for\_each\_tile\_distributed@{for\_each\_tile\_distributed}!virtual\_array.inl@{virtual\_array.inl}}
-\doxysubsubsection{\texorpdfstring{for\_each\_tile\_distributed()}{for\_each\_tile\_distributed()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily template$<$typename Func $>$ \\
-void for\+\_\+each\+\_\+tile\+\_\+distributed (\begin{DoxyParamCaption}\item[{Virtual\+Array \&}]{va,  }\item[{Func \&\&}]{func,  }\item[{int}]{nthreads = {\ttfamily 0} }\end{DoxyParamCaption})}
-
-\Hypertarget{virtual__array_8inl_a572aa9da0eb51d6160bef6d9e5b0c48e}\label{virtual__array_8inl_a572aa9da0eb51d6160bef6d9e5b0c48e} 
-\index{virtual\_array.inl@{virtual\_array.inl}!for\_each\_tile\_sequential@{for\_each\_tile\_sequential}}
-\index{for\_each\_tile\_sequential@{for\_each\_tile\_sequential}!virtual\_array.inl@{virtual\_array.inl}}
-\doxysubsubsection{\texorpdfstring{for\_each\_tile\_sequential()}{for\_each\_tile\_sequential()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily template$<$typename Func $>$ \\
-void for\+\_\+each\+\_\+tile\+\_\+sequential (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ Virtual\+Array \texorpdfstring{$\ast$}{*} $>$ \&}]{p\+\_\+vas,  }\item[{Func \&\&}]{func }\end{DoxyParamCaption})}
-
-\Hypertarget{virtual__array_8inl_a1667bffbf59a0c6e7f631f67babec5d9}\label{virtual__array_8inl_a1667bffbf59a0c6e7f631f67babec5d9} 
-\index{virtual\_array.inl@{virtual\_array.inl}!for\_each\_tile\_sequential@{for\_each\_tile\_sequential}}
-\index{for\_each\_tile\_sequential@{for\_each\_tile\_sequential}!virtual\_array.inl@{virtual\_array.inl}}
-\doxysubsubsection{\texorpdfstring{for\_each\_tile\_sequential()}{for\_each\_tile\_sequential()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily template$<$typename Func $>$ \\
-void for\+\_\+each\+\_\+tile\+\_\+sequential (\begin{DoxyParamCaption}\item[{Virtual\+Array \&}]{va,  }\item[{Func \&\&}]{func }\end{DoxyParamCaption})}
-
-\Hypertarget{virtual__array_8inl_a6c754aad8996d3ebadcb3989dfa43f24}\label{virtual__array_8inl_a6c754aad8996d3ebadcb3989dfa43f24} 
-\index{virtual\_array.inl@{virtual\_array.inl}!for\_each\_tile\_single\_array@{for\_each\_tile\_single\_array}}
-\index{for\_each\_tile\_single\_array@{for\_each\_tile\_single\_array}!virtual\_array.inl@{virtual\_array.inl}}
-\doxysubsubsection{\texorpdfstring{for\_each\_tile\_single\_array()}{for\_each\_tile\_single\_array()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily template$<$typename Func $>$ \\
-void for\+\_\+each\+\_\+tile\+\_\+single\+\_\+array (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ Virtual\+Array \texorpdfstring{$\ast$}{*} $>$ \&}]{p\+\_\+vas,  }\item[{Func \&\&}]{func }\end{DoxyParamCaption})}
-
-\Hypertarget{virtual__array_8inl_a49ef291ba175a66cfe51000423d35b82}\label{virtual__array_8inl_a49ef291ba175a66cfe51000423d35b82} 
-\index{virtual\_array.inl@{virtual\_array.inl}!for\_each\_tile\_single\_array\_strided@{for\_each\_tile\_single\_array\_strided}}
-\index{for\_each\_tile\_single\_array\_strided@{for\_each\_tile\_single\_array\_strided}!virtual\_array.inl@{virtual\_array.inl}}
-\doxysubsubsection{\texorpdfstring{for\_each\_tile\_single\_array\_strided()}{for\_each\_tile\_single\_array\_strided()}}
-{\footnotesize\ttfamily template$<$typename Func $>$ \\
-void for\+\_\+each\+\_\+tile\+\_\+single\+\_\+array\+\_\+strided (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ Virtual\+Array \texorpdfstring{$\ast$}{*} $>$ \&}]{p\+\_\+vas,  }\item[{Func \&\&}]{func,  }\item[{int}]{stride }\end{DoxyParamCaption})}
-
-\Hypertarget{virtual__array_8inl_a6c13c921b7722aa5e4d60d53155b3bbb}\label{virtual__array_8inl_a6c13c921b7722aa5e4d60d53155b3bbb} 
-\index{virtual\_array.inl@{virtual\_array.inl}!for\_each\_tile\_single\_array@{for\_each\_tile\_single\_array}}
-\index{for\_each\_tile\_single\_array@{for\_each\_tile\_single\_array}!virtual\_array.inl@{virtual\_array.inl}}
-\doxysubsubsection{\texorpdfstring{for\_each\_tile\_single\_array()}{for\_each\_tile\_single\_array()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily template$<$typename Func $>$ \\
-void for\+\_\+each\+\_\+tile\+\_\+single\+\_\+array (\begin{DoxyParamCaption}\item[{Virtual\+Array \&}]{va,  }\item[{Func \&\&}]{func }\end{DoxyParamCaption})}
-
-\Hypertarget{virtual__array_8inl_a36108d74d7e5f3d6c311972490e1efff}\label{virtual__array_8inl_a36108d74d7e5f3d6c311972490e1efff} 
+\Hypertarget{virtual__array_8inl_ab533899554e393dbefccf9a5602faa39}\label{virtual__array_8inl_ab533899554e393dbefccf9a5602faa39} 
 \index{virtual\_array.inl@{virtual\_array.inl}!for\_each\_tile@{for\_each\_tile}}
 \index{for\_each\_tile@{for\_each\_tile}!virtual\_array.inl@{virtual\_array.inl}}
-\doxysubsubsection{\texorpdfstring{for\_each\_tile()}{for\_each\_tile()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+\doxysubsubsection{\texorpdfstring{for\_each\_tile()}{for\_each\_tile()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
 {\footnotesize\ttfamily template$<$typename Func $>$ \\
-void for\+\_\+each\+\_\+tile (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ Virtual\+Array \texorpdfstring{$\ast$}{*} $>$ \&}]{p\+\_\+vas,  }\item[{Func \&\&}]{func,  }\item[{const Compute\+Mode \&}]{cm }\end{DoxyParamCaption})}
-
-\Hypertarget{virtual__array_8inl_a22b2c2c836594a23051ee27f190ea4f1}\label{virtual__array_8inl_a22b2c2c836594a23051ee27f190ea4f1} 
-\index{virtual\_array.inl@{virtual\_array.inl}!for\_each\_tile@{for\_each\_tile}}
-\index{for\_each\_tile@{for\_each\_tile}!virtual\_array.inl@{virtual\_array.inl}}
-\doxysubsubsection{\texorpdfstring{for\_each\_tile()}{for\_each\_tile()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
-{\footnotesize\ttfamily template$<$typename Func $>$ \\
-void for\+\_\+each\+\_\+tile (\begin{DoxyParamCaption}\item[{Virtual\+Array \&}]{va,  }\item[{Func \&\&}]{func,  }\item[{const Compute\+Mode \&}]{cm }\end{DoxyParamCaption})}
+void for\+\_\+each\+\_\+tile (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structTileAccess}{Tile\+Access}} \&}]{access,  }\item[{Func \&\&}]{func,  }\item[{const Compute\+Mode \&}]{cm }\end{DoxyParamCaption})}
 
 \Hypertarget{virtual__array_8inl_ae478874f7642c88ddd72ff98cd6db121}\label{virtual__array_8inl_ae478874f7642c88ddd72ff98cd6db121} 
 \index{virtual\_array.inl@{virtual\_array.inl}!for\_each\_tile@{for\_each\_tile}}
 \index{for\_each\_tile@{for\_each\_tile}!virtual\_array.inl@{virtual\_array.inl}}
-\doxysubsubsection{\texorpdfstring{for\_each\_tile()}{for\_each\_tile()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+\doxysubsubsection{\texorpdfstring{for\_each\_tile()}{for\_each\_tile()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
 {\footnotesize\ttfamily template$<$typename Func $>$ \\
 void for\+\_\+each\+\_\+tile (\begin{DoxyParamCaption}\item[{const Virtual\+Array \&}]{va,  }\item[{Func \&\&}]{func,  }\item[{const Compute\+Mode \&}]{cm }\end{DoxyParamCaption})}
+
+\Hypertarget{virtual__array_8inl_a22b2c2c836594a23051ee27f190ea4f1}\label{virtual__array_8inl_a22b2c2c836594a23051ee27f190ea4f1} 
+\index{virtual\_array.inl@{virtual\_array.inl}!for\_each\_tile@{for\_each\_tile}}
+\index{for\_each\_tile@{for\_each\_tile}!virtual\_array.inl@{virtual\_array.inl}}
+\doxysubsubsection{\texorpdfstring{for\_each\_tile()}{for\_each\_tile()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily template$<$typename Func $>$ \\
+void for\+\_\+each\+\_\+tile (\begin{DoxyParamCaption}\item[{Virtual\+Array \&}]{va,  }\item[{Func \&\&}]{func,  }\item[{const Compute\+Mode \&}]{cm }\end{DoxyParamCaption})}
+
+\Hypertarget{virtual__array_8inl_aa9e1146ecba957bddab362cb8c1e21ff}\label{virtual__array_8inl_aa9e1146ecba957bddab362cb8c1e21ff} 
+\index{virtual\_array.inl@{virtual\_array.inl}!for\_each\_tile@{for\_each\_tile}}
+\index{for\_each\_tile@{for\_each\_tile}!virtual\_array.inl@{virtual\_array.inl}}
+\doxysubsubsection{\texorpdfstring{for\_each\_tile()}{for\_each\_tile()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily template$<$typename Func $>$ \\
+void for\+\_\+each\+\_\+tile (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ Virtual\+Array \texorpdfstring{$\ast$}{*} $>$ \&}]{outputs,  }\item[{Func \&\&}]{func,  }\item[{const Compute\+Mode \&}]{cm }\end{DoxyParamCaption})}
+
+\Hypertarget{virtual__array_8inl_a248e8e1edddfcc281ea3ce1b2c69b944}\label{virtual__array_8inl_a248e8e1edddfcc281ea3ce1b2c69b944} 
+\index{virtual\_array.inl@{virtual\_array.inl}!sequential\_tile\_loop@{sequential\_tile\_loop}}
+\index{sequential\_tile\_loop@{sequential\_tile\_loop}!virtual\_array.inl@{virtual\_array.inl}}
+\doxysubsubsection{\texorpdfstring{sequential\_tile\_loop()}{sequential\_tile\_loop()}}
+{\footnotesize\ttfamily template$<$typename Region\+Dispatcher $>$ \\
+void sequential\+\_\+tile\+\_\+loop (\begin{DoxyParamCaption}\item[{const Virtual\+Array \&}]{ref\+\_\+va,  }\item[{Region\+Dispatcher \&\&}]{dispatcher }\end{DoxyParamCaption})}
+
+\Hypertarget{virtual__array_8inl_afb0e81819ec38d3f973035c263fa13df}\label{virtual__array_8inl_afb0e81819ec38d3f973035c263fa13df} 
+\index{virtual\_array.inl@{virtual\_array.inl}!distributed\_tile\_loop@{distributed\_tile\_loop}}
+\index{distributed\_tile\_loop@{distributed\_tile\_loop}!virtual\_array.inl@{virtual\_array.inl}}
+\doxysubsubsection{\texorpdfstring{distributed\_tile\_loop()}{distributed\_tile\_loop()}}
+{\footnotesize\ttfamily template$<$typename Region\+Dispatcher $>$ \\
+void distributed\+\_\+tile\+\_\+loop (\begin{DoxyParamCaption}\item[{const Virtual\+Array \&}]{ref\+\_\+va,  }\item[{Region\+Dispatcher \&\&}]{dispatcher,  }\item[{int}]{nthreads = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+\Hypertarget{virtual__array_8inl_a6333fa79cbfccc35fae582fceaf2f1d0}\label{virtual__array_8inl_a6333fa79cbfccc35fae582fceaf2f1d0} 
+\index{virtual\_array.inl@{virtual\_array.inl}!single\_array\_projection\_compute@{single\_array\_projection\_compute}}
+\index{single\_array\_projection\_compute@{single\_array\_projection\_compute}!virtual\_array.inl@{virtual\_array.inl}}
+\doxysubsubsection{\texorpdfstring{single\_array\_projection\_compute()}{single\_array\_projection\_compute()}}
+{\footnotesize\ttfamily template$<$typename Func $>$ \\
+void single\+\_\+array\+\_\+projection\+\_\+compute (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structTileAccess}{Tile\+Access}} \&}]{access,  }\item[{Func \&\&}]{func,  }\item[{int}]{stride = {\ttfamily 1} }\end{DoxyParamCaption})}
 
 \Hypertarget{virtual__array_8inl_a54eec3c94e3409f3990876e68a581322}\label{virtual__array_8inl_a54eec3c94e3409f3990876e68a581322} 
 \index{virtual\_array.inl@{virtual\_array.inl}!for\_each\_cell@{for\_each\_cell}}
