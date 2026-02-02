@@ -149,6 +149,24 @@ void for_each_tile(const std::vector<VirtualArray *> &outputs,
       cm);
 }
 
+template <typename Func>
+void for_each_tile(const std::vector<const VirtualArray *> &inputs,
+                   const std::vector<VirtualArray *>       &outputs,
+                   Func                                   &&func,
+                   const ComputeMode                       &cm)
+{
+  TileAccess acc;
+  acc.inputs = inputs;
+  acc.outputs = outputs;
+
+  for_each_tile(
+      acc,
+      [&](const std::vector<const Array *> &in,
+          std::vector<Array *>             &out,
+          const TileRegion                 &region) { func(in, out, region); },
+      cm);
+}
+
 // --- COMPUTE
 
 template <typename RegionDispatcher>
@@ -243,11 +261,11 @@ void single_array_projection_compute(const TileAccess &access,
   in_tiles.reserve(access.inputs.size());
   out_tiles.reserve(access.outputs.size());
 
-  for (auto &a : arrays_in)
-    in_tiles.push_back(&a);
+  for (size_t i = 0; i < access.inputs.size(); ++i)
+    in_tiles.push_back(access.inputs[i] ? &arrays_in[i] : nullptr);
 
-  for (auto &a : arrays_out)
-    out_tiles.push_back(&a);
+  for (size_t i = 0; i < access.outputs.size(); ++i)
+    out_tiles.push_back(access.outputs[i] ? &arrays_out[i] : nullptr);
 
   // call user operation
   const TileRegion va_region = TileRegion(TileKey(),

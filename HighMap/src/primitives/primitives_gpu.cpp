@@ -100,6 +100,9 @@ Array gabor_wave_fbm(glm::ivec2   shape,
 
   auto run = clwrapper::Run("gabor_wave_fbm");
 
+  LOG_DEBUG("%d %d", shape.x, shape.y);
+  if (p_noise_x) LOG_DEBUG("NOT NULLPTR");
+
   run.bind_buffer<float>("array", array.vector);
   run.bind_buffer<float>("angle", angle.vector);
 
