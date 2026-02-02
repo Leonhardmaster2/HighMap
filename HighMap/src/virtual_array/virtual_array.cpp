@@ -509,7 +509,7 @@ Array VirtualArray::to_array_dbg() const
   return array;
 }
 
-void VirtualArray::trim_storage()
+void VirtualArray::trim_storage() const
 {
   this->storage->trim();
 }

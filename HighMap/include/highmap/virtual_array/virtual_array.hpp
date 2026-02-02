@@ -139,7 +139,7 @@ struct VirtualArray
                            int               global_i,
                            int               global_j) const;
 
-  void trim_storage();
+  void trim_storage() const;
 
   // --- Members
 
