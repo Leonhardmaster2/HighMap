@@ -5,6 +5,7 @@ var virtual__array_8inl =
     [ "for_each_tile", "virtual__array_8inl.html#ae478874f7642c88ddd72ff98cd6db121", null ],
     [ "for_each_tile", "virtual__array_8inl.html#a22b2c2c836594a23051ee27f190ea4f1", null ],
     [ "for_each_tile", "virtual__array_8inl.html#aa9e1146ecba957bddab362cb8c1e21ff", null ],
+    [ "for_each_tile", "virtual__array_8inl.html#a21df0c4a341d977fd39ad5291c252a5f", null ],
     [ "sequential_tile_loop", "virtual__array_8inl.html#a248e8e1edddfcc281ea3ce1b2c69b944", null ],
     [ "distributed_tile_loop", "virtual__array_8inl.html#afb0e81819ec38d3f973035c263fa13df", null ],
     [ "single_array_projection_compute", "virtual__array_8inl.html#a6333fa79cbfccc35fae582fceaf2f1d0", null ],
