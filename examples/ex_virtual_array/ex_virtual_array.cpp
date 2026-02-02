@@ -38,7 +38,7 @@ int main()
 
   const hmap::ComputeMode compute_mode{.mode = foreach_mode,
                                        .trim_storage = true,
-                                       .stride = 32};
+                                       .stride = 8};
 
   // ===========================================================================
   // Virtual arrays
@@ -77,7 +77,7 @@ int main()
   const hmap::ComputeMode cm_local = {.mode = hmap::ForEachMode::VA_SEQUENTIAL,
                                       .trim_storage = false};
 
-  varray.to_array(cm_local).to_png("out.png", hmap::Cmap::JET);
+  varray.to_array(cm_local).to_png("out_noise.png", hmap::Cmap::JET);
 
   // ===========================================================================
   // Multi-array operation
@@ -96,6 +96,8 @@ int main()
   varray.trim_storage();
 
   hmap::for_each_tile({&varray, &varray_binary}, binarize_copy, compute_mode);
+
+  varray_binary.to_array(cm_local).to_png("out_binary.png", hmap::Cmap::JET);
 
   // ===========================================================================
   // Global operations
@@ -214,15 +216,6 @@ int main()
     auto arr = v_small.to_array(compute_mode);
     EXPECT(arr.shape == shape, "small tile shape preserved");
   }
-
-  // ===========================================================================
-  // Outputs (visual sanity)
-  // ===========================================================================
-
-  varray.to_array(compute_mode).to_png("out_full.png", hmap::Cmap::JET);
-
-  varray_binary.to_array(compute_mode)
-      .to_png("out_binary.png", hmap::Cmap::JET);
 
   return 0;
 }

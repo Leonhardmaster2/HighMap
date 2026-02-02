@@ -3,39 +3,176 @@
    this software. */
 #pragma once
 
-template <typename Func>
-void for_each_tile_distributed(const std::vector<VirtualArray *> &p_vas,
-                               Func                             &&func,
-                               int                                nthreads = 0)
+struct TileAccess
 {
-  // --- Failsafe
+  std::vector<const VirtualArray *> inputs;
+  std::vector<VirtualArray *>       outputs;
 
-  if (p_vas.empty())
+  const VirtualArray *ref_va() const
   {
-    LOG_ERROR("Empty VirtualArray list");
+    return this->outputs.front()
+               ? this->outputs.front()
+               : (!this->inputs.empty() ? this->inputs.front() : nullptr);
+  }
+};
+
+template <typename Func>
+void for_each_tile(const TileAccess &access, Func &&func, const ComputeMode &cm)
+{
+  if (access.outputs.empty())
+  {
+    LOG_ERROR("for_each_tile: no output VirtualArray");
     return;
   }
 
-  if (!p_vas.front()) return;
+  const VirtualArray *ref_va = access.ref_va();
+  if (!ref_va) return;
 
-  const VirtualArray &va = *p_vas.front();
+  // --- validate compatibility
 
-  // --- Validate compatibility
-
-  for (auto p_va : p_vas)
+  auto check = [&](const VirtualArray *va)
   {
-    if (!p_va) continue;
-    if (p_va->shape != va.shape || p_va->tile_shape != va.tile_shape)
+    if (!va) return true;
+    return va->shape == ref_va->shape && va->tile_shape == ref_va->tile_shape;
+  };
+
+  for (auto *va : access.inputs)
+    if (!check(va))
     {
-      LOG_ERROR("Incompatible VirtualArray configuration");
+      LOG_ERROR("Incompatible input VirtualArray");
       return;
     }
+
+  for (auto *va : access.outputs)
+    if (!check(va))
+    {
+      LOG_ERROR("Incompatible output VirtualArray");
+      return;
+    }
+
+  // --- region dispatcher for tiled computations
+
+  auto region_dispatcher = [&](const TileRegion &region)
+  {
+    std::vector<const Array *> in_tiles;
+    std::vector<Array *>       out_tiles;
+
+    in_tiles.reserve(access.inputs.size());
+    out_tiles.reserve(access.outputs.size());
+
+    for (auto *va : access.inputs)
+      in_tiles.push_back(va ? &va->storage->get_tile(region) : nullptr);
+
+    for (auto *va : access.outputs)
+      out_tiles.push_back(va ? &va->storage->get_tile(region) : nullptr);
+
+    func(in_tiles, out_tiles, region);
+
+    for (auto *va : access.inputs)
+      if (va) va->storage->release_tile(region);
+
+    for (auto *va : access.outputs)
+      if (va) va->storage->release_tile(region);
+  };
+
+  // reuse your existing modes
+  switch (cm.mode)
+  {
+  case ForEachMode::VA_SEQUENTIAL:
+    sequential_tile_loop(*ref_va, region_dispatcher);
+    break;
+  case ForEachMode::VA_DISTRIBUTED:
+    distributed_tile_loop(*ref_va, region_dispatcher);
+    break;
+  case ForEachMode::VA_SINGLE_ARRAY:
+    single_array_projection_compute(access, func);
+    break;
+  case ForEachMode::VA_SINGLE_ARRAY_STRIDED:
+    single_array_projection_compute(access, func, cm.stride);
+    break;
   }
 
-  // --- Compute
+  if (cm.trim_storage)
+  {
+    for (auto *va : access.inputs)
+      if (va) va->trim_storage();
+    for (auto *va : access.outputs)
+      if (va) va->trim_storage();
+  }
+}
 
-  const int nx = ceil_div(va.shape.x, va.tile_shape.x);
-  const int ny = ceil_div(va.shape.y, va.tile_shape.y);
+// fake const...
+template <typename Func>
+void for_each_tile(const VirtualArray &va, Func &&func, const ComputeMode &cm)
+{
+  auto &mutable_va = const_cast<VirtualArray &>(va);
+
+  TileAccess acc;
+  acc.outputs = {&mutable_va};
+
+  for_each_tile(
+      acc,
+      [&](const std::vector<const Array *> &,
+          std::vector<Array *> &out,
+          const TileRegion     &region) { func(*out[0], region); },
+      cm);
+}
+
+// no-const
+template <typename Func>
+void for_each_tile(VirtualArray &va, Func &&func, const ComputeMode &cm)
+{
+  TileAccess acc;
+  acc.outputs = {&va};
+
+  for_each_tile(
+      acc,
+      [&](const std::vector<const Array *> &,
+          std::vector<Array *> &out,
+          const TileRegion     &region) { func(*out[0], region); },
+      cm);
+}
+
+template <typename Func>
+void for_each_tile(const std::vector<VirtualArray *> &outputs,
+                   Func                             &&func,
+                   const ComputeMode                 &cm)
+{
+  TileAccess acc;
+  acc.outputs = outputs;
+
+  for_each_tile(
+      acc,
+      [&](const std::vector<const Array *> &,
+          std::vector<Array *> &out,
+          const TileRegion     &region) { func(out, region); },
+      cm);
+}
+
+// --- COMPUTE
+
+template <typename RegionDispatcher>
+void sequential_tile_loop(const VirtualArray &ref_va,
+                          RegionDispatcher  &&dispatcher)
+{
+  const int nx = ceil_div(ref_va.shape.x, ref_va.tile_shape.x);
+  const int ny = ceil_div(ref_va.shape.y, ref_va.tile_shape.y);
+
+  for (int ty = 0; ty < ny; ++ty)
+    for (int tx = 0; tx < nx; ++tx)
+    {
+      TileRegion region = ref_va.tile_region_from_tile_coords(tx, ty);
+      dispatcher(region);
+    }
+}
+
+template <typename RegionDispatcher>
+void distributed_tile_loop(const VirtualArray &ref_va,
+                           RegionDispatcher  &&dispatcher,
+                           int                 nthreads = 0)
+{
+  const int nx = ceil_div(ref_va.shape.x, ref_va.tile_shape.x);
+  const int ny = ceil_div(ref_va.shape.y, ref_va.tile_shape.y);
   const int ntasks = nx * ny;
 
   if (nthreads <= 0) nthreads = std::thread::hardware_concurrency();
@@ -47,34 +184,13 @@ void for_each_tile_distributed(const std::vector<VirtualArray *> &p_vas,
 
   auto worker = [&](int thread_id)
   {
-    std::vector<Array *> p_arrays;
-    p_arrays.reserve(p_vas.size());
-
     for (int k = thread_id; k < ntasks; k += nthreads)
     {
       const int ty = k / nx;
       const int tx = k % nx;
 
-      TileRegion region = va.tile_region_from_tile_coords(tx, ty);
-
-      p_arrays.clear();
-
-      for (auto p_va : p_vas)
-      {
-        if (!p_va)
-        {
-          p_arrays.push_back(nullptr);
-          continue;
-        }
-
-        Array &tile = p_va->storage->get_tile(region);
-        p_arrays.push_back(&tile);
-      }
-
-      func(p_arrays, region);
-
-      for (auto p_va : p_vas)
-        if (p_va) p_va->storage->release_tile(region);
+      TileRegion region = ref_va.tile_region_from_tile_coords(tx, ty);
+      dispatcher(region);
     }
   };
 
@@ -88,299 +204,69 @@ void for_each_tile_distributed(const std::vector<VirtualArray *> &p_vas,
 }
 
 template <typename Func>
-void for_each_tile_distributed(VirtualArray &va, Func &&func, int nthreads = 0)
+void single_array_projection_compute(const TileAccess &access,
+                                     Func            &&func,
+                                     int               stride = 1)
 {
-  for_each_tile_distributed(
-      std::vector<VirtualArray *>{&va},
-      [&](std::vector<Array *> &p_arrays, const hmap::TileRegion &region)
-      { func(*p_arrays[0], region); },
-      nthreads);
-}
-
-template <typename Func>
-void for_each_tile_sequential(const std::vector<VirtualArray *> &p_vas,
-                              Func                             &&func)
-{
-  // --- Failsafe
-
-  if (p_vas.empty())
-  {
-    LOG_ERROR("Empty VirtualArray list");
-    return;
-  }
-
-  if (!p_vas.front()) return;
-
-  const VirtualArray &va = *p_vas.front();
-
-  // --- Validate compatibility
-
-  for (auto p_va : p_vas)
-  {
-    if (!p_va) continue;
-    if (p_va->shape != va.shape || p_va->tile_shape != va.tile_shape)
-    {
-      LOG_ERROR("Incompatible VirtualArray configuration");
-      return;
-    }
-  }
-
-  // --- Compute
-
-  const int nx = ceil_div(va.shape.x, va.tile_shape.x);
-  const int ny = ceil_div(va.shape.y, va.tile_shape.y);
-
-  std::vector<Array *> p_arrays;
-  p_arrays.reserve(p_vas.size());
-
-  for (int ty = 0; ty < ny; ++ty)
-    for (int tx = 0; tx < nx; ++tx)
-    {
-      TileRegion region = va.tile_region_from_tile_coords(tx, ty);
-
-      p_arrays.clear();
-
-      // acquire tiles
-      for (auto p_va : p_vas)
-      {
-        if (!p_va)
-        {
-          p_arrays.push_back(nullptr);
-          continue;
-        }
-
-        Array &tile = p_va->storage->get_tile(region);
-        p_arrays.push_back(&tile);
-      }
-
-      // user computation
-      func(p_arrays, region);
-
-      // release tiles
-      for (auto p_va : p_vas)
-        if (p_va) p_va->storage->release_tile(region);
-    }
-}
-
-template <typename Func>
-void for_each_tile_sequential(VirtualArray &va, Func &&func)
-{
-  for_each_tile_sequential(
-      std::vector<VirtualArray *>{&va},
-      [&](std::vector<Array *> &p_arrays, const TileRegion &region)
-      { func(*p_arrays[0], region); });
-}
-
-template <typename Func>
-void for_each_tile_single_array(const std::vector<VirtualArray *> &p_vas,
-                                Func                             &&func)
-{
-  // --- Failsafe
-
-  if (p_vas.empty())
-  {
-    LOG_ERROR("Empty VirtualArray list");
-    return;
-  }
-
-  if (!p_vas.front()) return;
-
-  const VirtualArray &va = *p_vas.front();
-
-  // --- Validate compatibility
-
-  for (auto p_va : p_vas)
-  {
-    if (!p_va) continue;
-    if (p_va->shape != va.shape || p_va->tile_shape != va.tile_shape)
-    {
-      LOG_ERROR("Incompatible VirtualArray configuration");
-      return;
-    }
-  }
-
-  // --- Compute
+  const VirtualArray *ref_va = access.ref_va();
+  if (!ref_va) return;
 
   // create temporary arrays
-  std::vector<Array> arrays;
-  arrays.reserve(p_vas.size());
+  std::vector<Array> arrays_in;
+  std::vector<Array> arrays_out;
+  arrays_in.reserve(access.inputs.size());
+  arrays_out.reserve(access.outputs.size());
 
-  // force a sequential mode for data gathering operations
-  const ComputeMode cm_local = {.mode = ForEachMode::VA_SEQUENTIAL,
+  // force a CPU mode for data gathering operations
+  const ComputeMode cm_local = {.mode = ForEachMode::VA_DISTRIBUTED,
                                 .trim_storage = false};
 
-  for (auto p_va : p_vas)
-    arrays.push_back(p_va ? p_va->to_array(cm_local) : Array());
+  glm::ivec2 shape_wrk = ref_va->shape;
+
+  if (stride > 1)
+  {
+    shape_wrk = glm::ivec2(int(ref_va->shape.x / float(stride)),
+                           int(ref_va->shape.y / float(stride)));
+  }
+
+  // project
+  for (auto *va : access.inputs)
+    arrays_in.push_back(va ? va->to_array(shape_wrk, cm_local) : Array());
+
+  for (auto *va : access.outputs)
+    // TODO remove to_array(), left for retor-fit but misusage
+    arrays_out.push_back(va ? va->to_array(shape_wrk, cm_local) : Array());
 
   // create pointer vector for user func
-  std::vector<Array *> p_arrays;
-  p_arrays.reserve(p_vas.size());
+  std::vector<const Array *> in_tiles;
+  std::vector<Array *>       out_tiles;
+  in_tiles.reserve(access.inputs.size());
+  out_tiles.reserve(access.outputs.size());
 
-  for (size_t i = 0; i < p_vas.size(); ++i)
-    p_arrays.push_back(p_vas[i] ? &arrays[i] : nullptr);
+  for (auto &a : arrays_in)
+    in_tiles.push_back(&a);
+
+  for (auto &a : arrays_out)
+    out_tiles.push_back(&a);
 
   // call user operation
   const TileRegion va_region = TileRegion(TileKey(),
-                                          va.bbox,
-                                          va.shape,
-                                          {0, 0, 0, 0});
-
-  func(p_arrays, va_region);
-
-  // copy back to VirtualArrays
-  for (size_t i = 0; i < p_vas.size(); ++i)
-    if (p_vas[i]) p_vas[i]->from_array(arrays[i], cm_local);
-}
-
-template <typename Func>
-void for_each_tile_single_array_strided(
-    const std::vector<VirtualArray *> &p_vas,
-    Func                             &&func,
-    int                                stride)
-{
-  // --- Failsafe
-
-  if (p_vas.empty())
-  {
-    LOG_ERROR("Empty VirtualArray list");
-    return;
-  }
-
-  if (!p_vas.front()) return;
-
-  const VirtualArray &va = *p_vas.front();
-
-  // --- Validate compatibility
-
-  for (auto p_va : p_vas)
-  {
-    if (!p_va) continue;
-    if (p_va->shape != va.shape || p_va->tile_shape != va.tile_shape)
-    {
-      LOG_ERROR("Incompatible VirtualArray configuration");
-      return;
-    }
-  }
-
-  // --- Compute
-
-  // create temporary arrays
-  std::vector<Array> arrays;
-  arrays.reserve(p_vas.size());
-
-  // force a sequential mode for data gathering operations
-  const ComputeMode cm_local = {.mode = ForEachMode::VA_SEQUENTIAL,
-                                .trim_storage = false};
-
-  glm::ivec2 shape_wrk = glm::ivec2(int(va.shape.x / float(stride)),
-                                    int(va.shape.x / float(stride)));
-
-  for (auto p_va : p_vas)
-    arrays.push_back(p_va ? p_va->to_array(shape_wrk, cm_local) : Array());
-
-  // create pointer vector for user func
-  std::vector<Array *> p_arrays;
-  p_arrays.reserve(p_vas.size());
-
-  for (size_t i = 0; i < p_vas.size(); ++i)
-    p_arrays.push_back(p_vas[i] ? &arrays[i] : nullptr);
-
-  // call user operation
-  const TileRegion va_region = TileRegion(TileKey(),
-                                          va.bbox,
+                                          ref_va->bbox,
                                           shape_wrk,
                                           {0, 0, 0, 0});
 
-  func(p_arrays, va_region);
+  func(in_tiles, out_tiles, va_region);
 
-  // copy back to VirtualArrays
-  for (size_t i = 0; i < p_vas.size(); ++i)
-    if (p_vas[i]) p_vas[i]->from_array_bicubic(arrays[i], cm_local);
-}
-
-template <typename Func>
-void for_each_tile_single_array(VirtualArray &va, Func &&func)
-{
-  for_each_tile_single_array(
-      std::vector<VirtualArray *>{&va},
-      [&](std::vector<Array *> &p_arrays, const TileRegion &region)
-      { func(*p_arrays[0], region); });
-}
-
-template <typename Func>
-void for_each_tile(const std::vector<VirtualArray *> &p_vas,
-                   Func                             &&func,
-                   const ComputeMode                 &cm)
-{
-  switch (cm.mode)
-  {
-  case ForEachMode::VA_SEQUENTIAL: for_each_tile_sequential(p_vas, func); break;
-  case ForEachMode::VA_DISTRIBUTED:
-    for_each_tile_distributed(p_vas, func);
-    break;
-  case ForEachMode::VA_SINGLE_ARRAY:
-    for_each_tile_single_array(p_vas, func);
-    break;
-  case ForEachMode::VA_SINGLE_ARRAY_STRIDED:
-    for_each_tile_single_array_strided(p_vas, func, cm.stride);
-    break;
-  }
-
-  if (cm.trim_storage)
-  {
-    for (auto p_va : p_vas)
-      if (p_va) p_va->trim_storage();
-  }
-}
-
-template <typename Func>
-void for_each_tile(VirtualArray &va, Func &&func, const ComputeMode &cm)
-{
-  switch (cm.mode)
-  {
-  case ForEachMode::VA_SEQUENTIAL:
-    for_each_tile_sequential(
-        std::vector<VirtualArray *>{&va},
-        [&](std::vector<Array *> &p_arrays, const TileRegion &region)
-        { func(*p_arrays[0], region); });
-    break;
-    //
-  case ForEachMode::VA_DISTRIBUTED:
-    for_each_tile_distributed(
-        std::vector<VirtualArray *>{&va},
-        [&](std::vector<Array *> &p_arrays, const TileRegion &region)
-        { func(*p_arrays[0], region); });
-    break;
-    //
-  case ForEachMode::VA_SINGLE_ARRAY:
-    for_each_tile_single_array(
-        std::vector<VirtualArray *>{&va},
-        [&](std::vector<Array *> &p_arrays, const TileRegion &region)
-        { func(*p_arrays[0], region); });
-    break;
-    //
-  case ForEachMode::VA_SINGLE_ARRAY_STRIDED:
-    for_each_tile_single_array_strided(
-        std::vector<VirtualArray *>{&va},
-        [&](std::vector<Array *> &p_arrays, const TileRegion &region)
-        { func(*p_arrays[0], region); },
-        cm.stride);
-    break;
-  }
-
-  if (cm.trim_storage) va.trim_storage();
-}
-
-template <typename Func>
-void for_each_tile(const VirtualArray &va, Func &&func, const ComputeMode &cm)
-{
-  auto &mutable_va = const_cast<VirtualArray &>(va);
-
-  for_each_tile(
-      mutable_va,
-      [&](Array &tile, const TileRegion &region)
-      { func(static_cast<const Array &>(tile), region); },
-      cm);
+  // copy back to VirtualArrays (only outputs do not need to update const
+  // inputs)
+  for (size_t i = 0; i < access.outputs.size(); ++i)
+    if (access.outputs[i])
+    {
+      if (shape_wrk != ref_va->shape)
+        access.outputs[i]->from_array_bicubic(arrays_out[i], cm_local);
+      else
+        access.outputs[i]->from_array(arrays_out[i], cm_local);
+    }
 }
 
 template <typename Func>

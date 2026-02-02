@@ -50,6 +50,7 @@ struct TileRegion
   glm::vec2   cell_center(int i, int j) const;
   glm::vec2   cell_corner(int i, int j) const;
   std::string key_as_string() const;
+  std::string info_string(int indent = 0) const;
 };
 
 } // namespace hmap
