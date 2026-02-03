@@ -262,7 +262,7 @@
 <codeline lineno="251"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>retrieve<sp/>depth</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="252"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/>shape.y;<sp/>++j)</highlight></codeline>
 <codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>shape.x;<sp/>++i)</highlight></codeline>
-<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(depth(i,<sp/>j)<sp/>!=<sp/>0.f)<sp/>depth(i,<sp/>j)<sp/>=<sp/>zt(i,<sp/>j)<sp/>-<sp/>z(i,<sp/>j);</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(depth(i,<sp/>j)<sp/>!=<sp/>0.f)<sp/>depth(i,<sp/>j)<sp/>=<sp/>std::max(0.f,<sp/>zt(i,<sp/>j)<sp/>-<sp/>z(i,<sp/>j));</highlight></codeline>
 <codeline lineno="255"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="256"><highlight class="normal"></highlight></codeline>
 <codeline lineno="257"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>hmap::gpu</highlight><highlight class="normal"></highlight></codeline>
