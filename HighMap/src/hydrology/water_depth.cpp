@@ -251,7 +251,7 @@ void water_depth_filter(Array &depth, const Array &z, int ir)
   // retrieve depth
   for (int j = 0; j < shape.y; ++j)
     for (int i = 0; i < shape.x; ++i)
-      if (depth(i, j) != 0.f) depth(i, j) = zt(i, j) - z(i, j);
+      if (depth(i, j) != 0.f) depth(i, j) = std::max(0.f, zt(i, j) - z(i, j));
 }
 
 } // namespace hmap::gpu
