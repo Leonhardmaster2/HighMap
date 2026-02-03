@@ -1,5 +1,6 @@
 var dir_4c063b982921a5b8720ca60b9a5562e1 =
 [
+    [ "bilateral_filter.cpp", "bilateral__filter_8cpp.html", "bilateral__filter_8cpp" ],
     [ "bulkify.cpp", "bulkify_8cpp.html", "bulkify_8cpp" ],
     [ "diffusion_retargeting.cpp", "diffusion__retargeting_8cpp.html", "diffusion__retargeting_8cpp" ],
     [ "directional_blur.cpp", "directional__blur_8cpp.html", "directional__blur_8cpp" ],

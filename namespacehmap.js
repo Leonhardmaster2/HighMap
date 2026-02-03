@@ -51,6 +51,8 @@ var namespacehmap =
       [ "rugosity", "namespacehmap_1_1gpu.html#aa5a3e087822525c41f057a51255e2bad", null ],
       [ "std_local", "namespacehmap_1_1gpu.html#aa5f9b68baa2c17c23c8f21708e8fac9e", null ],
       [ "z_score", "namespacehmap_1_1gpu.html#a802ae2cfde5f1a4124ebd0bd2f2dc6c4", null ],
+      [ "bilateral_filter", "namespacehmap_1_1gpu.html#ad6240ccabf3a0f858698dc0b77ab619e", null ],
+      [ "bilateral_filter", "namespacehmap_1_1gpu.html#a0cd7116e5c346fe9534e25b53d5e054a", null ],
       [ "expand", "namespacehmap_1_1gpu.html#a3638798808a7e69482de679ffbe86c95", null ],
       [ "expand", "namespacehmap_1_1gpu.html#a4078e5f2ad3a01d6aa282011662a3b5d", null ],
       [ "expand", "namespacehmap_1_1gpu.html#a70fde21fb8301d39cc7a0ed919457917", null ],

@@ -252,6 +252,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a802ae2cfde5f1a4124ebd0bd2f2dc6c4" id="r_a802ae2cfde5f1a4124ebd0bd2f2dc6c4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a802ae2cfde5f1a4124ebd0bd2f2dc6c4">z_score</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, int ir)</td></tr>
 <tr class="memdesc:a802ae2cfde5f1a4124ebd0bd2f2dc6c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="namespacehmap.html#a732a83c92c4a2d232fc9f421f98c0c6b">hmap::z_score</a>.  <br /></td></tr>
 <tr class="separator:a802ae2cfde5f1a4124ebd0bd2f2dc6c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6240ccabf3a0f858698dc0b77ab619e" id="r_ad6240ccabf3a0f858698dc0b77ab619e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#ad6240ccabf3a0f858698dc0b77ab619e">bilateral_filter</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;kernel2d, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;kernel1d, float kernel1d_value_scaling)</td></tr>
+<tr class="memdesc:ad6240ccabf3a0f858698dc0b77ab619e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply a bilateral filter to an array.  <br /></td></tr>
+<tr class="separator:ad6240ccabf3a0f858698dc0b77ab619e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0cd7116e5c346fe9534e25b53d5e054a" id="r_a0cd7116e5c346fe9534e25b53d5e054a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a0cd7116e5c346fe9534e25b53d5e054a">bilateral_filter</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, int ir, float kernel1d_value_scaling)</td></tr>
+<tr class="memdesc:a0cd7116e5c346fe9534e25b53d5e054a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply a bilateral filter to an array using a radius-based Gaussian kernel.  <br /></td></tr>
+<tr class="separator:a0cd7116e5c346fe9534e25b53d5e054a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3638798808a7e69482de679ffbe86c95" id="r_a3638798808a7e69482de679ffbe86c95"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a3638798808a7e69482de679ffbe86c95">expand</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, int ir, int iterations=1)</td></tr>
 <tr class="memdesc:a3638798808a7e69482de679ffbe86c95"><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="namespacehmap.html#ae00605c7af4addcb5092c90260e2d61b" title="Apply expansion, or &quot;inflation&quot;, to emphasize the bulk of the terrain.">hmap::expand</a>.  <br /></td></tr>
 <tr class="separator:a3638798808a7e69482de679ffbe86c95"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -3689,6 +3695,113 @@ Only available if OpenCL is enabled.</dd></dl>
 </div><div class="memdoc">
 
 <p>See <a class="el" href="namespacehmap.html#a732a83c92c4a2d232fc9f421f98c0c6b">hmap::z_score</a>. </p>
+
+</div>
+</div>
+<a id="ad6240ccabf3a0f858698dc0b77ab619e" name="ad6240ccabf3a0f858698dc0b77ab619e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6240ccabf3a0f858698dc0b77ab619e">&#9670;&#160;</a></span>bilateral_filter() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classhmap_1_1Array.html">Array</a> hmap::gpu::bilateral_filter </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>array</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>kernel2d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>kernel1d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>kernel1d_value_scaling</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Apply a bilateral filter to an array. </p>
+<p>This function performs edge-preserving smoothing by combining a spatial kernel (2D) and a value-domain kernel (1D). The spatial kernel controls the influence of neighboring samples based on their position, while the value kernel weights samples according to their value difference.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">array</td><td>Input array to be filtered. </td></tr>
+    <tr><td class="paramname">kernel2d</td><td>2D spatial kernel defining neighborhood weights. </td></tr>
+    <tr><td class="paramname">kernel1d</td><td>1D kernel applied in the value domain. </td></tr>
+    <tr><td class="paramname">kernel1d_value_scaling</td><td>Scaling factor applied to value differences before sampling the 1D kernel.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A new array containing the filtered result.</dd></dl>
+<p><b>Example</b> </p><div class="fragment"></div><!-- fragment --><p><b>Result</b> </p><div class="image">
+<img src="ex_bilateral_filter.png" alt=""/>
+</div>
+ 
+</div>
+</div>
+<a id="a0cd7116e5c346fe9534e25b53d5e054a" name="a0cd7116e5c346fe9534e25b53d5e054a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0cd7116e5c346fe9534e25b53d5e054a">&#9670;&#160;</a></span>bilateral_filter() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classhmap_1_1Array.html">Array</a> hmap::gpu::bilateral_filter </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>array</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ir</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>kernel1d_value_scaling</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Apply a bilateral filter to an array using a radius-based Gaussian kernel. </p>
+<p>This overload builds the spatial kernel implicitly from the given radius. The value-domain kernel behavior is controlled by the same scaling factor as the main overload.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">array</td><td>Input array to be filtered. </td></tr>
+    <tr><td class="paramname">ir</td><td>Radius of the spatial neighborhood. </td></tr>
+    <tr><td class="paramname">kernel1d_value_scaling</td><td>Scaling factor applied to value differences before computing value-domain weights.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A new array containing the filtered result.</dd></dl>
+<p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.</p>
+<p><b>Example</b> </p><div class="fragment"></div><!-- fragment --><p><b>Result</b> </p><div class="image">
+<img src="ex_bilateral_filter.png" alt=""/>
+</div>
+<p> This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </p>
 
 </div>
 </div>

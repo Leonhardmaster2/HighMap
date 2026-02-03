@@ -4,10 +4,11 @@ var searchData=
   ['basalt_5ffield_2ecpp_1',['basalt_field.cpp',['../basalt__field_8cpp.html',1,'']]],
   ['base_5felevation_2ecpp_2',['base_elevation.cpp',['../base__elevation_8cpp.html',1,'']]],
   ['basin_5fid_2ecpp_3',['basin_id.cpp',['../basin__id_8cpp.html',1,'']]],
-  ['blending_2ecpp_4',['blending.cpp',['../blending_8cpp.html',1,'']]],
-  ['blending_2ehpp_5',['blending.hpp',['../blending_8hpp.html',1,'']]],
-  ['blending_5fgpu_2ecpp_6',['blending_gpu.cpp',['../blending__gpu_8cpp.html',1,'']]],
-  ['boundary_2ecpp_7',['boundary.cpp',['../boundary_8cpp.html',1,'']]],
-  ['boundary_2ehpp_8',['boundary.hpp',['../boundary_8hpp.html',1,'']]],
-  ['bulkify_2ecpp_9',['bulkify.cpp',['../bulkify_8cpp.html',1,'']]]
+  ['bilateral_5ffilter_2ecpp_4',['bilateral_filter.cpp',['../bilateral__filter_8cpp.html',1,'']]],
+  ['blending_2ecpp_5',['blending.cpp',['../blending_8cpp.html',1,'']]],
+  ['blending_2ehpp_6',['blending.hpp',['../blending_8hpp.html',1,'']]],
+  ['blending_5fgpu_2ecpp_7',['blending_gpu.cpp',['../blending__gpu_8cpp.html',1,'']]],
+  ['boundary_2ecpp_8',['boundary.cpp',['../boundary_8cpp.html',1,'']]],
+  ['boundary_2ehpp_9',['boundary.hpp',['../boundary_8hpp.html',1,'']]],
+  ['bulkify_2ecpp_10',['bulkify.cpp',['../bulkify_8cpp.html',1,'']]]
 ];

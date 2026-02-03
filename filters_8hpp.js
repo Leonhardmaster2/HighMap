@@ -123,6 +123,8 @@ var filters_8hpp =
     [ "tessellate", "filters_8hpp.html#a473007073da159b88b14711dbd6553fb", null ],
     [ "wrinkle", "filters_8hpp.html#a3537908cc646f5e7eb8350690ccec2db", null ],
     [ "wrinkle", "filters_8hpp.html#aa0033ed394620c8749d0f8c48c2c4120", null ],
+    [ "bilateral_filter", "filters_8hpp.html#ad6240ccabf3a0f858698dc0b77ab619e", null ],
+    [ "bilateral_filter", "filters_8hpp.html#a0cd7116e5c346fe9534e25b53d5e054a", null ],
     [ "expand", "filters_8hpp.html#a3638798808a7e69482de679ffbe86c95", null ],
     [ "expand", "filters_8hpp.html#a4078e5f2ad3a01d6aa282011662a3b5d", null ],
     [ "expand", "filters_8hpp.html#a70fde21fb8301d39cc7a0ed919457917", null ],
