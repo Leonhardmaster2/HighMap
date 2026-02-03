@@ -2440,6 +2440,61 @@ void wrinkle(Array    &array,
 namespace hmap::gpu
 {
 
+/**
+ * @brief Apply a bilateral filter to an array.
+ *
+ * This function performs edge-preserving smoothing by combining a spatial
+ * kernel (2D) and a value-domain kernel (1D). The spatial kernel controls the
+ * influence of neighboring samples based on their position, while the value
+ * kernel weights samples according to their value difference.
+ *
+ * @param  array                  Input array to be filtered.
+ * @param  kernel2d               2D spatial kernel defining neighborhood
+ *                                weights.
+ * @param  kernel1d               1D kernel applied in the value domain.
+ * @param  kernel1d_value_scaling Scaling factor applied to value differences
+ *                                before sampling the 1D kernel.
+ *
+ * @return                        A new array containing the filtered result.
+ *
+ * **Example**
+ * @include ex_bilateral_filter.png
+ *
+ * **Result**
+ * @image html ex_bilateral_filter.png
+ */
+Array bilateral_filter(const Array &array,
+                       const Array &kernel2d,
+                       const Array &kernel1d,
+                       float        kernel1d_value_scaling);
+
+/**
+ * @brief Apply a bilateral filter to an array using a radius-based Gaussian
+ * kernel.
+ *
+ * This overload builds the spatial kernel implicitly from the given radius. The
+ * value-domain kernel behavior is controlled by the same scaling factor as the
+ * main overload.
+ *
+ * @param  array                  Input array to be filtered.
+ * @param  ir                     Radius of the spatial neighborhood.
+ * @param  kernel1d_value_scaling Scaling factor applied to value differences
+ *                                before computing value-domain weights.
+ *
+ * @return                        A new array containing the filtered result.
+ *
+ * @overload
+ *
+ * **Example**
+ * @include ex_bilateral_filter.png
+ *
+ * **Result**
+ * @image html ex_bilateral_filter.png
+ */
+Array bilateral_filter(const Array &array,
+                       int          ir,
+                       float        kernel1d_value_scaling); ///< @overload
+
 /*! @brief See hmap::expand */
 void expand(Array &array, int ir, int iterations = 1);
 void expand(Array       &array,

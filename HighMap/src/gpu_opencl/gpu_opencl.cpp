@@ -34,6 +34,7 @@ bool init_opencl()
   //
 #include "kernels/advection_particle.cl"
 #include "kernels/advection_warp.cl"
+#include "kernels/bilateral_filter.cl"
 #include "kernels/blend_poisson_bf.cl"
 #include "kernels/eulerian_transport.cl"
 #include "kernels/expand.cl"

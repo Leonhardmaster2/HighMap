@@ -666,17 +666,17 @@ Array flow_direction_d8(const Array &z);
  * and water transport passes, with optional flux diffusion and post-simulation
  * depth clamping to remove thin residual water layers.
  *
- * @param  z                          Terrain height field.
- * @param  water_height               Global water scaling factor.
- * @param  depth_map                  Initial relative water distribution.
- * @param  iterations                 Number of simulation steps.
- * @param  dt                         Time step size.
- * @param  flux_diffusion             Enables flux smoothing.
- * @param  flux_diffusion_strength    Strength of flux diffusion.
- * @param  dry_out_ratio              Ratio for removing thin remaining water
- * layers.
+ * @param  z                       Terrain height field.
+ * @param  water_height            Global water scaling factor.
+ * @param  depth_map               Initial relative water distribution.
+ * @param  iterations              Number of simulation steps.
+ * @param  dt                      Time step size.
+ * @param  flux_diffusion          Enables flux smoothing.
+ * @param  flux_diffusion_strength Strength of flux diffusion.
+ * @param  dry_out_ratio           Ratio for removing thin remaining water
+ *                                 layers.
  *
- * @return                            Array Final simulated water depth map.
+ * @return                         Array Final simulated water depth map.
  */
 Array flow_simulation(const Array &z,
                       float        water_depth,

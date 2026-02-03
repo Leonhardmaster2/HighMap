@@ -1,0 +1,2 @@
+add_executable(ex_bilateral_filter ex_bilateral_filter.cpp)
+target_link_libraries(ex_bilateral_filter highmap)
