@@ -91,17 +91,17 @@ var NAVTREEINDEX =
 "dir_4c063b982921a5b8720ca60b9a5562e1.html",
 "features_8hpp.html#ae22891fe79a3745582715cf33a706d8e",
 "filters_8hpp.html#afddb3c456ba0f74b521d10c4022925a6",
-"hydraulic__benes_8cpp.html#ae791758f736d5ed3e164262f3b1c5d20",
-"math_8cpp.html#a527cfdcf7f7e2ca0e270875526c9b1ee",
-"namespacehmap.html#a1ba9d4ce7afe3309f8ae8e617f7154ee",
-"namespacehmap.html#a62068967763814bfbf05a505993c544a",
-"namespacehmap.html#ab55e8132857fc52e7ac7947d82c334e1",
-"namespacehmap.html#af3d5a6d239d30fe1698a524dfedcd63f",
-"namespacemembers_q.html",
-"primitives_8hpp.html#acc7dccf4ab556f489ffbaef1592fe375",
-"selector_8hpp.html#ae394dd88c39510d2ada01cf120922719",
-"structhmap_1_1Vec4.html",
-"vector_8cpp.html#a3e6de5f9e14f11872651af22e5756c32"
+"hydraulic__musgrave_8cpp.html#a5aceac22b926cbff676c323e1aca4db0",
+"math_8cpp.html#a826591db096cb2ca4d836d4c5eeaac02",
+"namespacehmap.html#a1bf0dae54c5b8bd4e0aeb738c26644fc",
+"namespacehmap.html#a64fd39fbc155858c359b051c1a2dff8c",
+"namespacehmap.html#ab6f7c0ceeef247a339b3f3047dec0271",
+"namespacehmap.html#af66b37de86e8de6261ab902110b118a0",
+"namespacemembers_w.html",
+"primitives_8hpp.html#ae20d5b7f78d4c3eb5064490a3a407533",
+"selector__gpu_8cpp.html#a13f97a9cf5f7f219e5ed9a32fefbfa1a",
+"structhmap_1_1Vec4_3_01float_01_4.html#a2db4d33abae3b131f9087ea55ce27931",
+"vector__utils_8cpp.html#a47f7c4ead587ead4a75c9c7f4fc4b079"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
