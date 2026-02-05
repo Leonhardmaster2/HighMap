@@ -316,7 +316,8 @@ void single_array_downscaled_compute(const TileAccess &access,
 
   // project
   for (auto *va : access.inputs)
-    arrays_in.push_back(va ? va->to_array(shape_wrk, cm_local) : Array());
+    arrays_in.push_back(va ? va->to_array(cm_local).resample_to_shape(shape_wrk)
+                           : Array());
 
   for (auto *va : access.outputs)
     // TODO remove to_array(), left for retor-fit but misusage

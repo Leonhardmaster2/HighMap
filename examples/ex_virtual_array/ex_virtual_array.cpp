@@ -24,7 +24,7 @@ int main()
 
   const glm::vec4 bbox{0.f, 1.f, 0.f, 1.f};
 
-  const glm::ivec2 shape{1000, 581};
+  const glm::ivec2 shape{1024, 1024};
   const glm::ivec2 tile_shape{220, 312};
   const size_t     halo = 32;
 
