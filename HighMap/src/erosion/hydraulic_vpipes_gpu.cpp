@@ -33,26 +33,10 @@ void hydraulic_vpipes(Array &z,
                       Array *p_vel_u,
                       Array *p_vel_v)
 {
-  // TODO DBG REMOVE
-  water_height = 1e-2f;
-  k_capacity = 0.5f;
-  downcutting_max_depth_ratio = 2.5f;
-
-  bool  add_rain_map_noise = true;
-  float spl_erosion_strength = 10.f;
-
-  //
-
   const glm::ivec2 shape = z.shape;
 
   Array rain_map(shape, 1.f);
   if (p_rain_map) rain_map = *p_rain_map;
-
-  // TODO DBG REMOVE
-
-  // rain_map = cubic_pulse(shape, nullptr, nullptr);
-
-  if (add_rain_map_noise) rain_map *= white(shape, 0.f, 1.f, 0);
 
   Array d(shape, water_height); // water height
   Array d1(shape);
@@ -76,18 +60,6 @@ void hydraulic_vpipes(Array &z,
 
   for (int it = 0; it < iterations; ++it)
   {
-
-    // ---
-
-    // TODO tune, parametrize
-    gpu::hydraulic_schott_erosion(z,
-                                  1,
-                                  spl_erosion_strength,
-                                  0.5f,
-                                  1.3f,
-                                  &rain_map);
-    // gpu::thermal(z, &rain_map, Array(shape, 1.f / shape.x), 1);
-
     // --- water increase (CPU)
 
     d1 = d; // TODO kept as reference, TO REMOVE

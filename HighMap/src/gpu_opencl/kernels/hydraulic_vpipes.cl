@@ -132,7 +132,7 @@ hydraulic_vpipes_erosion_pass(read_only image2d_t  z,
                               const float          k_discharge_exp,
                               const float          downcutting_max_depth_ratio)
 {
-  const float salpha_min = 0.001f;
+  const float salpha_min = 0.01f;
 
   //
 
@@ -147,11 +147,13 @@ hydraulic_vpipes_erosion_pass(read_only image2d_t  z,
   const int j = g.y;
 
   // gradient norm
-  float dzx = 0.5f * (TGET(z, i + 1, j) - TGET(z, i - 1, j));
-  float dzy = 0.5f * (TGET(z, i, j + 1) - TGET(z, i, j - 1));
+  float dzx = 0.5f * (TGET(z, i + 1, j) - TGET(z, i - 1, j) +
+                      TGET(s, i + 1, j) - TGET(s, i - 1, j));
+  float dzy = 0.5f * (TGET(z, i, j + 1) - TGET(z, i, j - 1) +
+                      TGET(s, i, j + 1) - TGET(s, i, j - 1));
 
   float talus = hypot(dzx, dzy);
-  float dzn = max(1e-6f, nx * talus);
+  float dzn = max(1e-3f, nx * talus);
 
   // sediment capacity
   const float dmax = water_height;
