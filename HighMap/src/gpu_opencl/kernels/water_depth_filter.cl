@@ -28,7 +28,7 @@ void kernel water_depth_filter(read_only image2d_t  depth,
       // only taken into account "water" cells
       if (TGET(depth, i + r, j + s) > 0.f)
       {
-	float r = max(0.f, 1.f - hypot(r, s) / ir);
+        float r = max(0.f, 1.f - hypot(r, s) / ir);
         val += r * TGET(zt, i + r, j + r);
         sum += r;
       }

@@ -167,21 +167,21 @@ void hydraulic_stream_log(Array &z,
   if (p_flow_map) *p_flow_map = facc;
 }
 
-void hydraulic_stream_log(Array &z,
-                          float  c_erosion,
-                          float  talus_ref,
-                          Array *p_mask,
-                          int    deposition_ir,
-                          float  deposition_scale_ratio,
-                          float  gradient_power,
-                          float  gradient_scaling_ratio,
-                          int    gradient_prefilter_ir,
-                          float  saturation_ratio,
-                          Array *p_moisture_map,
-                          Array *p_bedrock,
-                          Array *p_erosion_map,
-                          Array *p_deposition_map,
-                          Array *p_flow_map)
+void hydraulic_stream_log(Array       &z,
+                          float        c_erosion,
+                          float        talus_ref,
+                          const Array *p_mask,
+                          int          deposition_ir,
+                          float        deposition_scale_ratio,
+                          float        gradient_power,
+                          float        gradient_scaling_ratio,
+                          int          gradient_prefilter_ir,
+                          float        saturation_ratio,
+                          Array       *p_moisture_map,
+                          Array       *p_bedrock,
+                          Array       *p_erosion_map,
+                          Array       *p_deposition_map,
+                          Array       *p_flow_map)
 {
   if (!p_mask)
     hydraulic_stream_log(z,

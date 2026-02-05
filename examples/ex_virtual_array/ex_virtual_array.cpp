@@ -85,9 +85,7 @@ int main()
   // specific
   {
     const auto erosion = [](hmap::Array &tile, const hmap::TileRegion &)
-    {
-      hmap::gpu::hydraulic_stream_log(tile, 0.2f, 1e0f);
-    };
+    { hmap::gpu::hydraulic_stream_log(tile, 0.2f, 1e0f); };
 
     hmap::ComputeMode cm_dwn = {
         .mode = hmap::ForEachMode::VA_SINGLE_ARRAY_DOWNSCALED,
