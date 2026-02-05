@@ -43,84 +43,85 @@
 \DoxyCodeLine{00052\ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{structhmap_1_1ColorAdjust_a0d6901dbb470d8b91a91bbd741c95481}{dither\_amp}}\ =\ 0.f;}
 \DoxyCodeLine{00053\ \ \ \textcolor{keywordtype}{bool}\ \ \mbox{\hyperlink{structhmap_1_1ColorAdjust_abf71052fb9aa59345fff4155d9b33c0d}{filmic\_tonemap}}\ =\ \textcolor{keyword}{false};}
 \DoxyCodeLine{00054\ \ \ \textcolor{keywordtype}{bool}\ \ \mbox{\hyperlink{structhmap_1_1ColorAdjust_a9205d4724c56c87eb48852cb104db6c5}{aces\_tonemap}}\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00055\ \};}
-\DoxyCodeLine{00056\ }
-\DoxyCodeLine{00064\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369}{Cmap}}\ :\ int;\ \textcolor{comment}{//\ highmap/colormap.hpp}}
-\DoxyCodeLine{00065\ }
-\DoxyCodeLine{00082\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a4960846742ad118ec9eadaba40ca39ac}{apply\_hillshade}}(\mbox{\hyperlink{classhmap_1_1Tensor}{Tensor}}\ \ \ \ \ \ \&img,}
-\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&array,}
-\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ vmin\ =\ 0.f,}
-\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ vmax\ =\ 1.f,}
-\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ exponent\ =\ 1.f);}
-\DoxyCodeLine{00087\ }
-\DoxyCodeLine{00106\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a4960846742ad118ec9eadaba40ca39ac}{apply\_hillshade}}(std::vector<uint8\_t>\ \&img,}
-\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \ \ \ \ \ \ \ \ \ \&array,}
-\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vmin\ =\ 0.f,}
-\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vmax\ =\ 1.f,}
-\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ exponent\ =\ 1.f,}
-\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ is\_img\_rgba\ =\ \textcolor{keyword}{false});}
-\DoxyCodeLine{00112\ }
-\DoxyCodeLine{00113\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a1175ee497ff12b2f3c6cdb7cc805949f}{color\_adjust}}(\mbox{\hyperlink{classhmap_1_1VirtualTexture}{VirtualTexture}}\ \ \ \ \&tex,}
-\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structhmap_1_1ColorAdjust}{ColorAdjust}}\ \ \ \ \ \ \ \ param,}
-\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structhmap_1_1ComputeMode}{ComputeMode}}\ \&cm);}
-\DoxyCodeLine{00116\ }
-\DoxyCodeLine{00133\ \mbox{\hyperlink{classhmap_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{namespacehmap_a33a635351aa13228557a585470ba4563}{colorize}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&array,}
-\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ vmin,}
-\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ vmax,}
-\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ cmap,}
-\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ hillshading,}
-\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ reverse\ =\ \textcolor{keyword}{false},}
-\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ *p\_noise\ =\ \textcolor{keyword}{nullptr});}
-\DoxyCodeLine{00140\ }
-\DoxyCodeLine{00159\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a33a635351aa13228557a585470ba4563}{colorize}}(\mbox{\hyperlink{classhmap_1_1VirtualTexture}{VirtualTexture}}\ \ \ \ \&out,}
-\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structhmap_1_1VirtualArray}{VirtualArray}}\ \ \ \ \ \ \&level,}
-\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structhmap_1_1ComputeMode}{ComputeMode}}\ \&cm,}
-\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ vmin,}
-\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ vmax,}
-\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cmap,}
-\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structhmap_1_1VirtualArray}{VirtualArray}}\ \ \ \ \ \ *p\_alpha\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ reverse\ =\ \textcolor{keyword}{false},}
-\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structhmap_1_1VirtualArray}{VirtualArray}}\ \ \ \ \ \ *p\_noise\ =\ \textcolor{keyword}{nullptr});}
-\DoxyCodeLine{00168\ }
-\DoxyCodeLine{00188\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a33a635351aa13228557a585470ba4563}{colorize}}(\mbox{\hyperlink{classhmap_1_1VirtualTexture}{VirtualTexture}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&out,}
-\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structhmap_1_1VirtualArray}{VirtualArray}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&level,}
-\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structhmap_1_1ComputeMode}{ComputeMode}}\ \ \ \ \ \ \ \ \ \ \ \ \&cm,}
-\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vmin,}
-\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vmax,}
-\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<float>\ \ \ \ \ \&positions,}
-\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<glm::vec3>\ \&colormap\_colors,}
-\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structhmap_1_1VirtualArray}{VirtualArray}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *p\_alpha\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ reverse\ =\ \textcolor{keyword}{false},}
-\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structhmap_1_1VirtualArray}{VirtualArray}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *p\_noise\ =\ \textcolor{keyword}{nullptr});}
-\DoxyCodeLine{00198\ }
-\DoxyCodeLine{00207\ \mbox{\hyperlink{classhmap_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{namespacehmap_aa76bdaf8b572bcea0778ef8815965307}{colorize\_grayscale}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&array);}
-\DoxyCodeLine{00208\ }
-\DoxyCodeLine{00218\ \mbox{\hyperlink{classhmap_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{namespacehmap_afda3d37dc8fba4a56818964784d2178b}{colorize\_histogram}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&array);}
-\DoxyCodeLine{00219\ }
-\DoxyCodeLine{00259\ \mbox{\hyperlink{classhmap_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{namespacehmap_aa60f142e186d43472cdda569c03b31b2}{colorize\_slope\_height\_heatmap}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&array,\ \textcolor{keywordtype}{int}\ cmap);}
-\DoxyCodeLine{00260\ }
-\DoxyCodeLine{00278\ \mbox{\hyperlink{classhmap_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{namespacehmap_a9f21720d5e7b1c93e0d5b50631f1ca8f}{colorize\_vec2}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&array1,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&array2);}
-\DoxyCodeLine{00279\ }
-\DoxyCodeLine{00290\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a051c3f6f1ceda0feaf3c36c97bd7fef9}{luminance}}(\mbox{\hyperlink{structhmap_1_1VirtualArray}{VirtualArray}}\ \&out,\ \mbox{\hyperlink{classhmap_1_1VirtualTexture}{VirtualTexture}}\ \&tex,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structhmap_1_1ComputeMode}{ComputeMode}}\ \&cm);}
-\DoxyCodeLine{00291\ }
-\DoxyCodeLine{00306\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_ac5229d29466796bb6afcdebe997731a3}{mix}}(\mbox{\hyperlink{classhmap_1_1VirtualTexture}{VirtualTexture}}\ \ \ \ \&out,}
-\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1VirtualTexture}{VirtualTexture}}\ \ \ \ \&tex1,}
-\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1VirtualTexture}{VirtualTexture}}\ \ \ \ \&tex2,}
-\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structhmap_1_1ComputeMode}{ComputeMode}}\ \&cm,}
-\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ use\_sqrt\_avg\ =\ \textcolor{keyword}{true});}
-\DoxyCodeLine{00311\ }
-\DoxyCodeLine{00312\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_ac5229d29466796bb6afcdebe997731a3}{mix}}(\mbox{\hyperlink{classhmap_1_1VirtualTexture}{VirtualTexture}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&out,}
-\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ \ std::vector<VirtualTexture\ *>\ \&texs,}
-\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structhmap_1_1ComputeMode}{ComputeMode}}\ \ \ \ \ \ \ \ \ \ \ \ \ \&cm,}
-\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ use\_sqrt\_avg\ =\ \textcolor{keyword}{true});}
-\DoxyCodeLine{00316\ }
-\DoxyCodeLine{00330\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a034df9fe48c4e9a2bead1da021ffd437}{mix\_normal\_map}}(\mbox{\hyperlink{classhmap_1_1VirtualTexture}{VirtualTexture}}\ \ \ \ \ \ \ \ \ \&out,}
-\DoxyCodeLine{00331\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1VirtualTexture}{VirtualTexture}}\ \ \ \ \ \ \ \ \ \&nmap\_base,}
-\DoxyCodeLine{00332\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1VirtualTexture}{VirtualTexture}}\ \ \ \ \ \ \ \ \ \&nmap\_detail,}
-\DoxyCodeLine{00333\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structhmap_1_1ComputeMode}{ComputeMode}}\ \ \ \ \ \ \&cm,}
-\DoxyCodeLine{00334\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ detail\_scaling,}
-\DoxyCodeLine{00335\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_abc952321c99ec11d60b4037e3d27db9b}{NormalMapBlendingMethod}}\ blending\_method);}
-\DoxyCodeLine{00336\ }
-\DoxyCodeLine{00337\ \}\ \textcolor{comment}{//\ namespace\ hmap}}
+\DoxyCodeLine{00055\ \ \ \textcolor{keywordtype}{bool}\ \ \mbox{\hyperlink{structhmap_1_1ColorAdjust_a4c9f3e46e241abba388ee27b20602fe5}{agx\_tonemap}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00056\ \};}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00065\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369}{Cmap}}\ :\ int;\ \textcolor{comment}{//\ highmap/colormap.hpp}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00083\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a4960846742ad118ec9eadaba40ca39ac}{apply\_hillshade}}(\mbox{\hyperlink{classhmap_1_1Tensor}{Tensor}}\ \ \ \ \ \ \&img,}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&array,}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ vmin\ =\ 0.f,}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ vmax\ =\ 1.f,}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ exponent\ =\ 1.f);}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00107\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a4960846742ad118ec9eadaba40ca39ac}{apply\_hillshade}}(std::vector<uint8\_t>\ \&img,}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \ \ \ \ \ \ \ \ \ \&array,}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vmin\ =\ 0.f,}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vmax\ =\ 1.f,}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ exponent\ =\ 1.f,}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ is\_img\_rgba\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a1175ee497ff12b2f3c6cdb7cc805949f}{color\_adjust}}(\mbox{\hyperlink{classhmap_1_1VirtualTexture}{VirtualTexture}}\ \ \ \ \&tex,}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structhmap_1_1ColorAdjust}{ColorAdjust}}\ \ \ \ \ \ \ \ param,}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structhmap_1_1ComputeMode}{ComputeMode}}\ \&cm);}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00134\ \mbox{\hyperlink{classhmap_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{namespacehmap_a33a635351aa13228557a585470ba4563}{colorize}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&array,}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ vmin,}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ vmax,}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ cmap,}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ hillshading,}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ reverse\ =\ \textcolor{keyword}{false},}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ *p\_noise\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00160\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a33a635351aa13228557a585470ba4563}{colorize}}(\mbox{\hyperlink{classhmap_1_1VirtualTexture}{VirtualTexture}}\ \ \ \ \&out,}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structhmap_1_1VirtualArray}{VirtualArray}}\ \ \ \ \ \ \&level,}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structhmap_1_1ComputeMode}{ComputeMode}}\ \&cm,}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ vmin,}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ vmax,}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cmap,}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structhmap_1_1VirtualArray}{VirtualArray}}\ \ \ \ \ \ *p\_alpha\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ reverse\ =\ \textcolor{keyword}{false},}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structhmap_1_1VirtualArray}{VirtualArray}}\ \ \ \ \ \ *p\_noise\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00189\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a33a635351aa13228557a585470ba4563}{colorize}}(\mbox{\hyperlink{classhmap_1_1VirtualTexture}{VirtualTexture}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&out,}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structhmap_1_1VirtualArray}{VirtualArray}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&level,}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structhmap_1_1ComputeMode}{ComputeMode}}\ \ \ \ \ \ \ \ \ \ \ \ \&cm,}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vmin,}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vmax,}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<float>\ \ \ \ \ \&positions,}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<glm::vec3>\ \&colormap\_colors,}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structhmap_1_1VirtualArray}{VirtualArray}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *p\_alpha\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ reverse\ =\ \textcolor{keyword}{false},}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structhmap_1_1VirtualArray}{VirtualArray}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *p\_noise\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00199\ }
+\DoxyCodeLine{00208\ \mbox{\hyperlink{classhmap_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{namespacehmap_aa76bdaf8b572bcea0778ef8815965307}{colorize\_grayscale}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&array);}
+\DoxyCodeLine{00209\ }
+\DoxyCodeLine{00219\ \mbox{\hyperlink{classhmap_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{namespacehmap_afda3d37dc8fba4a56818964784d2178b}{colorize\_histogram}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&array);}
+\DoxyCodeLine{00220\ }
+\DoxyCodeLine{00260\ \mbox{\hyperlink{classhmap_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{namespacehmap_aa60f142e186d43472cdda569c03b31b2}{colorize\_slope\_height\_heatmap}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&array,\ \textcolor{keywordtype}{int}\ cmap);}
+\DoxyCodeLine{00261\ }
+\DoxyCodeLine{00279\ \mbox{\hyperlink{classhmap_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{namespacehmap_a9f21720d5e7b1c93e0d5b50631f1ca8f}{colorize\_vec2}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&array1,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&array2);}
+\DoxyCodeLine{00280\ }
+\DoxyCodeLine{00291\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a051c3f6f1ceda0feaf3c36c97bd7fef9}{luminance}}(\mbox{\hyperlink{structhmap_1_1VirtualArray}{VirtualArray}}\ \&out,\ \mbox{\hyperlink{classhmap_1_1VirtualTexture}{VirtualTexture}}\ \&tex,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structhmap_1_1ComputeMode}{ComputeMode}}\ \&cm);}
+\DoxyCodeLine{00292\ }
+\DoxyCodeLine{00307\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_ac5229d29466796bb6afcdebe997731a3}{mix}}(\mbox{\hyperlink{classhmap_1_1VirtualTexture}{VirtualTexture}}\ \ \ \ \&out,}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1VirtualTexture}{VirtualTexture}}\ \ \ \ \&tex1,}
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1VirtualTexture}{VirtualTexture}}\ \ \ \ \&tex2,}
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structhmap_1_1ComputeMode}{ComputeMode}}\ \&cm,}
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ use\_sqrt\_avg\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00312\ }
+\DoxyCodeLine{00313\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_ac5229d29466796bb6afcdebe997731a3}{mix}}(\mbox{\hyperlink{classhmap_1_1VirtualTexture}{VirtualTexture}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&out,}
+\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ \ std::vector<VirtualTexture\ *>\ \&texs,}
+\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structhmap_1_1ComputeMode}{ComputeMode}}\ \ \ \ \ \ \ \ \ \ \ \ \ \&cm,}
+\DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ use\_sqrt\_avg\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00317\ }
+\DoxyCodeLine{00331\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a034df9fe48c4e9a2bead1da021ffd437}{mix\_normal\_map}}(\mbox{\hyperlink{classhmap_1_1VirtualTexture}{VirtualTexture}}\ \ \ \ \ \ \ \ \ \&out,}
+\DoxyCodeLine{00332\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1VirtualTexture}{VirtualTexture}}\ \ \ \ \ \ \ \ \ \&nmap\_base,}
+\DoxyCodeLine{00333\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1VirtualTexture}{VirtualTexture}}\ \ \ \ \ \ \ \ \ \&nmap\_detail,}
+\DoxyCodeLine{00334\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structhmap_1_1ComputeMode}{ComputeMode}}\ \ \ \ \ \ \&cm,}
+\DoxyCodeLine{00335\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ detail\_scaling,}
+\DoxyCodeLine{00336\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_abc952321c99ec11d60b4037e3d27db9b}{NormalMapBlendingMethod}}\ blending\_method);}
+\DoxyCodeLine{00337\ }
+\DoxyCodeLine{00338\ \}\ \textcolor{comment}{//\ namespace\ hmap}}
 
 \end{DoxyCode}
