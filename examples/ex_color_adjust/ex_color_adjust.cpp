@@ -69,7 +69,8 @@ int main(void)
 
   hmap::ColorAdjust param;
   // param.gamma = 2.1f;
-  param.aces_tonemap = true;
+  // param.aces_tonemap = true;
+  param.agx_tonemap = true;
 
   hmap::color_adjust(tex, param, cm);
 

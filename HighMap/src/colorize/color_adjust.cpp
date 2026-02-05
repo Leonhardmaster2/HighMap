@@ -56,6 +56,27 @@ void color_adjust(VirtualTexture &tex, ColorAdjust param, const ComputeMode &cm)
           c = a / b;
         }
 
+        if (param.agx_tonemap)
+        {
+          // Scene-linear → log2
+          glm::vec3 x = glm::max(c, glm::vec3(1e-6f));
+          x = glm::log2(x);
+
+          // Normalize log range (AGX working range)
+          x = (x + 12.0f) / 14.0f;
+          x = glm::clamp(x, 0.0f, 1.0f);
+
+          // AGX contrast curve (smooth filmic sigmoid)
+          x = x * x * (3.0f - 2.0f * x);
+
+          // Back to linear
+          c = glm::exp2(x * 14.0f - 12.0f);
+
+          // Gamut / saturation compression (very important for AGX look)
+          float luma = glm::dot(c, glm::vec3(0.2126f, 0.7152f, 0.0722f));
+          c = glm::mix(glm::vec3(luma), c, 1.1f);
+        }
+
         // contrast
         c = (c - 0.5f) * param.contrast + 0.5f;
 

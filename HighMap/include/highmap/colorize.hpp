@@ -52,6 +52,7 @@ struct ColorAdjust
   float dither_amp = 0.f;
   bool  filmic_tonemap = false;
   bool  aces_tonemap = false;
+  bool  agx_tonemap = false;
 };
 
 /**
