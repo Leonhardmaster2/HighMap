@@ -464,32 +464,40 @@ glm::ivec2 VirtualArray::tile_region_global_indices(
   return {di, dj};
 }
 
-Array VirtualArray::to_array(const glm::ivec2   array_shape,
+Array VirtualArray::to_array(const glm::ivec2  &array_shape,
                              const ComputeMode &cm) const
 {
   Array array(array_shape);
 
   auto lambda = [&array, this](const Array &tile, const TileRegion &region)
   {
-    float rx = (array.shape.x - 1.f) / (this->shape.x - 1.f);
-    float ry = (array.shape.y - 1.f) / (this->shape.y - 1.f);
+    const float rx = float(array.shape.x - 1) / float(this->shape.x - 1);
+    const float ry = float(array.shape.y - 1) / float(this->shape.y - 1);
 
-    glm::ivec2       ij0 = this->tile_region_global_indices(region);
+    const glm::ivec2 ij0 = this->tile_region_global_indices(region);
     const glm::vec4 &b = region.halo;
 
-    // use only tile inner points, skip the halos
+    // iterate only inner tile cells
     for (int j = b.z; j < region.shape.y - b.w; ++j)
       for (int i = b.x; i < region.shape.x - b.y; ++i)
       {
-        int ig = int(rx * (ij0.x + i));
-        int jg = int(ry * (ij0.y + j));
+        // source pixel center (global VA space)
+        const float xs = float(ij0.x + i) + 0.5f;
+        const float ys = float(ij0.y + j) + 0.5f;
+
+        // destination pixel index
+        int ig = int(std::floor(xs * rx));
+        int jg = int(std::floor(ys * ry));
+
+        // clamp
+        ig = std::clamp(ig, 0, array.shape.x - 1);
+        jg = std::clamp(jg, 0, array.shape.y - 1);
 
         array(ig, jg) = tile(i, j);
       }
   };
 
   for_each_tile(*this, lambda, cm);
-
   return array;
 }
 

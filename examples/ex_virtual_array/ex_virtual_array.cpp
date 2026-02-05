@@ -16,6 +16,8 @@
 
 int main()
 {
+  hmap::gpu::init_opencl();
+
   // ===========================================================================
   // Configuration
   // ===========================================================================
@@ -35,6 +37,7 @@ int main()
   // const auto foreach_mode = hmap::ForEachMode::VA_SEQUENTIAL;
   const auto foreach_mode = hmap::ForEachMode::VA_SINGLE_ARRAY;
   // const auto foreach_mode = hmap::ForEachMode::VA_SINGLE_ARRAY_STRIDED;
+  // const auto foreach_mode = hmap::ForEachMode::VA_SINGLE_ARRAY_DOWNSCALED;
 
   const hmap::ComputeMode compute_mode{.mode = foreach_mode,
                                        .trim_storage = true,
@@ -54,14 +57,19 @@ int main()
   const auto generate_noise =
       [](hmap::Array &tile, const hmap::TileRegion &region)
   {
-    tile = hmap::noise(hmap::NoiseType::PERLIN,
-                       region.shape,
-                       {2.f, 2.f},
-                       0,
-                       nullptr,
-                       nullptr,
-                       nullptr,
-                       region.bbox);
+    tile = hmap::noise_fbm(hmap::NoiseType::PERLIN,
+                           region.shape,
+                           {2.f, 2.f},
+                           0,
+                           8,
+                           0.7f,
+                           0.5f,
+                           2.f,
+                           nullptr,
+                           nullptr,
+                           nullptr,
+                           nullptr,
+                           region.bbox);
   };
 
   const auto apply_gamma = [](hmap::Array &tile, const hmap::TileRegion &)
@@ -72,7 +80,22 @@ int main()
 
   hmap::for_each_tile(varray, generate_noise, compute_mode);
   hmap::for_each_tile(varray, apply_gamma, compute_mode);
-  hmap::for_each_tile(varray, smooth, compute_mode);
+  // hmap::for_each_tile(varray, smooth, compute_mode);
+
+  // specific
+  {
+    const auto erosion = [](hmap::Array &tile, const hmap::TileRegion &)
+    {
+      hmap::gpu::hydraulic_stream_log(tile, 0.2f, 1e0f);
+    };
+
+    hmap::ComputeMode cm_dwn = {
+        .mode = hmap::ForEachMode::VA_SINGLE_ARRAY_DOWNSCALED,
+        .trim_storage = false,
+        .k_cutoff = 0.3f};
+
+    hmap::for_each_tile(varray, erosion, cm_dwn);
+  }
 
   const hmap::ComputeMode cm_local = {.mode = hmap::ForEachMode::VA_SEQUENTIAL,
                                       .trim_storage = false};

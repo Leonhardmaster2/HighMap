@@ -43,7 +43,7 @@ void hydraulic_stream_log(Array &z,
     saturate(facc, 0.f, saturation_ratio, 0.1f * saturation_ratio);
 
   // scale erosion with local gradient
-  Array gn = gpu::gradient_norm(z);
+  Array gn = hmap::gradient_norm(z);
 
   // TODO next operations in one local pass
   {

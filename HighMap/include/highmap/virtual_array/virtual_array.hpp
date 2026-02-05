@@ -14,6 +14,7 @@
 #include "macrologger.h"
 
 #include "highmap/array.hpp"
+#include "highmap/filters.hpp"
 #include "highmap/math.hpp"
 #include "highmap/virtual_array/tile_region.hpp"
 #include "highmap/virtual_array/tile_storage.hpp"
@@ -27,10 +28,11 @@ namespace hmap
 
 enum ForEachMode : int
 {
-  VA_SEQUENTIAL,          // tile-by-tile, single thread
-  VA_DISTRIBUTED,         // tile-by-tile, multi-threaded
-  VA_SINGLE_ARRAY,        // full array materialized at once
-  VA_SINGLE_ARRAY_STRIDED // full array materialized at once
+  VA_SEQUENTIAL,             // tile-by-tile, single thread
+  VA_DISTRIBUTED,            // tile-by-tile, multi-threaded
+  VA_SINGLE_ARRAY,           // full array materialized at once
+  VA_SINGLE_ARRAY_STRIDED,   // full array materialized at once
+  VA_SINGLE_ARRAY_DOWNSCALED // full array materialized at once
 };
 
 inline std::string to_string(ForEachMode m)
@@ -41,6 +43,8 @@ inline std::string to_string(ForEachMode m)
   case ForEachMode::VA_DISTRIBUTED: return "VA_DISTRIBUTED";
   case ForEachMode::VA_SINGLE_ARRAY: return "VA_SINGLE_ARRAY";
   case ForEachMode::VA_SINGLE_ARRAY_STRIDED: return "VA_SINGLE_ARRAY_STRIDED";
+  case ForEachMode::VA_SINGLE_ARRAY_DOWNSCALED:
+    return "VA_SINGLE_ARRAY_DOWNSCALED";
   }
   return "UNKNOWN";
 }
@@ -49,13 +53,15 @@ static std::map<std::string, int> for_each_mode_as_string = {
     {"Distributed", ForEachMode::VA_DISTRIBUTED},
     {"Sequential", ForEachMode::VA_SEQUENTIAL},
     {"Single array", ForEachMode::VA_SINGLE_ARRAY},
-    {"Single array strided", ForEachMode::VA_SINGLE_ARRAY_STRIDED}};
+    {"Single array strided", ForEachMode::VA_SINGLE_ARRAY_STRIDED},
+    {"Single array downscaled", ForEachMode::VA_SINGLE_ARRAY_DOWNSCALED}};
 
 struct ComputeMode
 {
   ForEachMode mode;
   bool        trim_storage = false;
   int         stride = 1;
+  float       k_cutoff = 1.f; // freq. cut-off ratio in ]0, 1]
 };
 
 // =====================================
@@ -107,7 +113,7 @@ struct VirtualArray
   void  from_array(const Array &array, const ComputeMode &cm);
   void  from_array_bilinear(const Array &array, const ComputeMode &cm);
   void  from_array_bicubic(const Array &array, const ComputeMode &cm);
-  Array to_array(const glm::ivec2 array_shape, const ComputeMode &cm) const;
+  Array to_array(const glm::ivec2 &array_shape, const ComputeMode &cm) const;
   Array to_array(const ComputeMode &cm) const;
   Array to_array_dbg() const;
 
