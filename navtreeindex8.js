@@ -1,8 +1,5 @@
 var NAVTREEINDEX8 =
 {
-"filters_8hpp.html#afddb3c456ba0f74b521d10c4022925a6":[5,0,1,0,0,19,11],
-"filters_8hpp.html#affcc500f17897f37cdb0717bc579d2b4":[5,0,1,0,0,19,77],
-"filters_8hpp.html#affdf6ff9564f31cb988131c2b2c4c280":[5,0,1,0,0,19,12],
 "filters_8hpp_source.html":[5,0,1,0,0,19],
 "filters__gpu_8cpp.html":[5,0,1,1,13,8],
 "filters__gpu_8cpp.html#a047da8b8ee68b5e54b3bf42041e1d9d0":[5,0,1,1,13,8,16],
@@ -249,5 +246,8 @@ var NAVTREEINDEX8 =
 "hydraulic__blur_8cpp.html#a2074cabb598086fe29f52247bfadceb9":[5,0,1,1,10,8,0],
 "hydraulic__diffusion_8cpp.html":[5,0,1,1,10,9],
 "hydraulic__diffusion_8cpp.html#a7b2c04c0b2cd0da363d2382f5a753a81":[5,0,1,1,10,9,0],
-"hydraulic__musgrave_8cpp.html":[5,0,1,1,10,10]
+"hydraulic__musgrave_8cpp.html":[5,0,1,1,10,10],
+"hydraulic__musgrave_8cpp.html#a5aceac22b926cbff676c323e1aca4db0":[5,0,1,1,10,10,0],
+"hydraulic__musgrave_8cpp.html#a8c20cd6c2b1cd1ec20ffb2ce86ed0ecb":[5,0,1,1,10,10,1],
+"hydraulic__procedural_8cpp.html":[5,0,1,1,10,11]
 };

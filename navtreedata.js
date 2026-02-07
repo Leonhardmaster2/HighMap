@@ -89,19 +89,19 @@ var NAVTREEINDEX =
 "classhmap_1_1RamTileStorage.html#a741b156e46b8763496e2a3c5110b9a67",
 "classhmap_1_1WaveTriangularFunction.html#a58593bbbdade49717f157e44d4f196df",
 "dir_4c063b982921a5b8720ca60b9a5562e1.html",
-"features_8hpp.html#ae22891fe79a3745582715cf33a706d8e",
-"filters_8hpp.html#afddb3c456ba0f74b521d10c4022925a6",
-"hydraulic__musgrave_8cpp.html#a5aceac22b926cbff676c323e1aca4db0",
-"math_8cpp.html#a826591db096cb2ca4d836d4c5eeaac02",
-"namespacehmap.html#a1bf0dae54c5b8bd4e0aeb738c26644fc",
-"namespacehmap.html#a64fbc0261e13ea842762efd3ac6bcc53",
-"namespacehmap.html#ab72874a8c8c2a5f78b824ef21b35f9e4",
-"namespacehmap.html#af65bb48580b5f860571161387a22fbb4",
-"namespacemembers_v.html",
-"primitives_8hpp.html#adafc477ac182ce40ebf2cee1c84cb936",
-"selector__gpu_8cpp.html",
-"structhmap_1_1Vec4.html",
-"vector_8cpp.html#a3e6de5f9e14f11872651af22e5756c32"
+"features_8hpp_source.html",
+"filters_8hpp_source.html",
+"hydraulic__procedural_8cpp.html#a02f191e398bfc3c0e87999d8576d7c3d",
+"math_8cpp.html#aae372587e98d5acb969a89a5f0661019",
+"namespacehmap.html#a1fb8077215c98a741e0de5366c2f7ca3",
+"namespacehmap.html#a669a4f9586f3df4b018e321048c9bc7d",
+"namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a803cca1f65b9596dbde7c54039773a39",
+"namespacehmap.html#af91e2b8638aab2c4357ce37812b8a99c",
+"noise_8cpp.html#ac9dcffb793a9a36d39ea420e8d70a5df",
+"primitives_8hpp.html#af53f1253924f0886591cdd989ccf7dbc",
+"shadows_8hpp.html#ac28f43b4f0b1b481dc8eb528f1be0f3d",
+"structhmap_1_1Vec4_3_01float_01_4.html#a7c8d3b9636e42e627240ddee38bd9019",
+"vector__utils_8hpp.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
