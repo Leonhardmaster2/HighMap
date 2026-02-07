@@ -1,5 +1,6 @@
 var NAVTREEINDEX18 =
 {
+"structhmap_1_1Vec4.html":[4,0,0,69],
 "structhmap_1_1Vec4_3_01float_01_4.html":[4,0,0,70],
 "structhmap_1_1Vec4_3_01float_01_4.html":[3,0,0,71],
 "structhmap_1_1Vec4_3_01float_01_4.html#a11b64ff1f7d189af375bf42337b849e5":[4,0,0,70,3],
@@ -248,6 +249,5 @@ var NAVTREEINDEX18 =
 "vector_8cpp.html":[5,0,1,1,23,5],
 "vector_8cpp.html#a068e4d5be8c16ab9e708dca9678dc8de":[5,0,1,1,23,5,3],
 "vector_8cpp.html#a20f9714aa8853d2971fa627750226985":[5,0,1,1,23,5,5],
-"vector_8cpp.html#a3957ac4ae673f8ad402b5dd71e99b015":[5,0,1,1,23,5,2],
-"vector_8cpp.html#a3e6de5f9e14f11872651af22e5756c32":[5,0,1,1,23,5,4]
+"vector_8cpp.html#a3957ac4ae673f8ad402b5dd71e99b015":[5,0,1,1,23,5,2]
 };
