@@ -1,0 +1,2 @@
+add_executable(ex_snow_simulation ex_snow_simulation.cpp)
+target_link_libraries(ex_snow_simulation highmap)

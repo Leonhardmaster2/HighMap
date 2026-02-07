@@ -69,6 +69,7 @@ bool init_opencl()
 #include "kernels/sdf_2d_polyline.cl"
 #include "kernels/skeleton.cl"
 #include "kernels/smooth_cpulse.cl"
+#include "kernels/snow_simulation.cl"
 #include "kernels/thermal.cl"
 #include "kernels/thermal_inflate.cl"
 #include "kernels/thermal_olsen.cl"

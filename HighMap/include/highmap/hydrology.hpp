@@ -719,4 +719,52 @@ Array generate_riverbed(const Path &path,
  */
 void water_depth_filter(Array &depth, const Array &z, int ir);
 
+/**
+ * @brief Simulate snow accumulation and redistribution over a terrain.
+ *
+ * Models snow fall, depth-dependent avalanching (above repose angle) and
+ * thermal creep smoothing (below repose angle), with optional melting and
+ * post-filtering. Snow progressively stabilizes into smooth, rounded forms.
+ *
+ * @param  z                     Heightfield of the underlying terrain.
+ * @param  snow_depth            Total amount of snow to deposit.
+ * @param  fall_map              Spatial modulation of snow deposition.
+ * @param  melting_map           Spatial melting factor in [0,1].
+ * @param  talus                 Local repose angle (talus slope).
+ * @param  iterations            Number of simulation steps.
+ * @param  dt                    Time step.
+ * @param  fall_iterations_ratio Fraction of iterations used for snowfall.
+ * @param  k_snow                Avalanche transport coefficient.
+ * @param  k_visc                Thermal creep (sub-repose smoothing)
+ *                               coefficient.
+ * @param  k_melt_factor         Global melting strength.
+ * @param  k_depth_ratio         Controls snow stiffening with depth.
+ * @param  k_depth_slope_ratio   Depth influence on repose angle.
+ * @param  post_filter           Apply final smoothing pass if true.
+ * @param  thermal_talus_ratio   Controls creep strength relative to talus.
+ *
+ * @return                       Final snow depth field.
+ *
+ * **Example**
+ * @include ex_snow_simulation.cpp
+ *
+ * **Result**
+ * @image html ex_snow_simulation.png
+ */
+Array snow_simulation(const Array &z,
+                      float        snow_depth,
+                      const Array &fall_map,
+                      const Array &melting_map,
+                      const Array &talus,
+                      int          iterations,
+                      float        dt = 0.5f,
+                      float        fall_iterations_ratio = 1.f,
+                      float        k_snow = 0.6f,
+                      float        k_visc = 0.1f,
+                      float        k_melt_factor = 0.8f,
+                      float        k_depth_ratio = 0.1f,
+                      float        k_depth_slope_ratio = 1.f,
+                      bool         post_filter = true,
+                      float        thermal_talus_ratio = 0.2f);
+
 } // namespace hmap::gpu
