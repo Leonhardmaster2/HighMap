@@ -20,9 +20,7 @@ int main(void)
 
   auto lambda = [](hmap::Array &x, const int current_index)
   {
-    int  nparticles = 5000;
-    uint seed = 0;
-    hmap::hydraulic_particle(x, nparticles, seed);
+    hmap::hydraulic_stream_log(x, 0.1f, 0.001f);
   };
 
   // apply the erosion to each array with different resolutions

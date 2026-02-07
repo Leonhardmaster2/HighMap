@@ -1,2 +1,0 @@
-add_executable(ex_erosion_maps ex_erosion_maps.cpp)
-target_link_libraries(ex_erosion_maps highmap)

@@ -179,16 +179,6 @@ int main(void)
           1e-3f,
           "gradient_norm");
 
-  {
-    int nparticles = 50000;
-    compare([&nparticles](hmap::Array &z)
-            { hmap::hydraulic_particle(z, nparticles, 0); },
-            [&nparticles](hmap::Array &z)
-            { hmap::gpu::hydraulic_particle(z, &z, nparticles, 0); },
-            1e-3f,
-            "hydraulic_particle");
-  }
-
   compare([ir](hmap::Array &z)
           { hmap::hydraulic_stream_log(z, 0.1f, 5.f / 512.f, 64); },
           [ir](hmap::Array &z)

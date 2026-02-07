@@ -25,9 +25,7 @@ int main(void)
 
     // apply hydraulic erosion to each component
     hmap::Array output = input;
-    float       particle_density = 0.4f;
-    int         nparticles = (int)(particle_density * input.size());
-    hydraulic_particle(output, nparticles, ++seed);
+    hydraulic_stream_log(output, 0.1f, 0.001f);
 
     return output;
   };
