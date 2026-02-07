@@ -422,36 +422,36 @@ void hydraulic_musgrave(Array &z,
  * @image html ex_hydraulic_particle0.png
  * @image html ex_hydraulic_particle1.png
  */
-void hydraulic_particle(Array &z,
-                        Array *p_mask,
-                        int    nparticles,
-                        int    seed,
-                        Array *p_bedrock = nullptr,
-                        Array *p_moisture_map = nullptr,
-                        Array *p_erosion_map = nullptr,    // -> out
-                        Array *p_deposition_map = nullptr, // -> out
-                        float  c_capacity = 10.f,
-                        float  c_erosion = 0.05f,
-                        float  c_deposition = 0.05f,
-                        float  c_inertia = 0.3f,
-                        float  drag_rate = 0.001f,
-                        float  evap_rate = 0.001f,
-                        bool   post_filtering = false);
+void hydraulic_particle(Array       &z,
+                        const Array *p_mask,
+                        int          nparticles,
+                        int          seed,
+                        const Array *p_bedrock = nullptr,
+                        const Array *p_moisture_map = nullptr,
+                        Array       *p_erosion_map = nullptr,    // -> out
+                        Array       *p_deposition_map = nullptr, // -> out
+                        float        c_capacity = 10.f,
+                        float        c_erosion = 0.05f,
+                        float        c_deposition = 0.05f,
+                        float        c_inertia = 0.3f,
+                        float        drag_rate = 0.001f,
+                        float        evap_rate = 0.001f,
+                        bool         post_filtering = false);
 
-void hydraulic_particle(Array &z,
-                        int    nparticles,
-                        int    seed,
-                        Array *p_bedrock = nullptr,
-                        Array *p_moisture_map = nullptr,
-                        Array *p_erosion_map = nullptr,    // -> out
-                        Array *p_deposition_map = nullptr, // -> out
-                        float  c_capacity = 10.f,
-                        float  c_erosion = 0.05f,
-                        float  c_deposition = 0.05f,
-                        float  c_inertia = 0.3f,
-                        float  drag_rate = 0.001f,
-                        float  evap_rate = 0.001f,
-                        bool   post_filtering = false); ///< @overload
+void hydraulic_particle(Array       &z,
+                        int          nparticles,
+                        int          seed,
+                        const Array *p_bedrock = nullptr,
+                        const Array *p_moisture_map = nullptr,
+                        Array       *p_erosion_map = nullptr,    // -> out
+                        Array       *p_deposition_map = nullptr, // -> out
+                        float        c_capacity = 10.f,
+                        float        c_erosion = 0.05f,
+                        float        c_deposition = 0.05f,
+                        float        c_inertia = 0.3f,
+                        float        drag_rate = 0.001f,
+                        float        evap_rate = 0.001f,
+                        bool         post_filtering = false); ///< @overload
 
 /**
  * @brief Apply hydraulic erosion using a particle based procedure, using a
@@ -1281,41 +1281,41 @@ namespace hmap::gpu
 {
 
 /*! @brief See hmap::hydraulic_particle */
-void hydraulic_particle(Array &z,
-                        int    nparticles,
-                        int    seed,
-                        Array *p_bedrock = nullptr,
-                        Array *p_moisture_map = nullptr,
-                        Array *p_erosion_map = nullptr,
-                        Array *p_deposition_map = nullptr,
-                        float  c_capacity = 10.f,
-                        float  c_erosion = 0.05f,
-                        float  c_deposition = 0.05f,
-                        float  c_inertia = 0.3f,
-                        float  c_gravity = 1.f,
-                        int    radius = 2,
-                        float  drag_rate = 0.001f,
-                        float  evap_rate = 0.001f,
-                        bool   post_filtering = false);
+void hydraulic_particle(Array       &z,
+                        int          nparticles,
+                        int          seed,
+                        const Array *p_bedrock = nullptr,
+                        const Array *p_moisture_map = nullptr,
+                        Array       *p_erosion_map = nullptr,
+                        Array       *p_deposition_map = nullptr,
+                        float        c_capacity = 10.f,
+                        float        c_erosion = 0.05f,
+                        float        c_deposition = 0.05f,
+                        float        c_inertia = 0.3f,
+                        float        c_gravity = 1.f,
+                        int          radius = 2,
+                        float        drag_rate = 0.001f,
+                        float        evap_rate = 0.001f,
+                        bool         post_filtering = false);
 
 /*! @brief See hmap::hydraulic_particle */
-void hydraulic_particle(Array &z,
-                        Array *p_mask,
-                        int    nparticles,
-                        int    seed,
-                        Array *p_bedrock = nullptr,
-                        Array *p_moisture_map = nullptr,
-                        Array *p_erosion_map = nullptr,
-                        Array *p_deposition_map = nullptr,
-                        float  c_capacity = 10.f,
-                        float  c_erosion = 0.05f,
-                        float  c_deposition = 0.05f,
-                        float  c_inertia = 0.3f,
-                        float  c_gravity = 1.f,
-                        int    radius = 2,
-                        float  drag_rate = 0.001f,
-                        float  evap_rate = 0.001f,
-                        bool   post_filtering = false);
+void hydraulic_particle(Array       &z,
+                        const Array *p_mask,
+                        int          nparticles,
+                        int          seed,
+                        const Array *p_bedrock = nullptr,
+                        const Array *p_moisture_map = nullptr,
+                        Array       *p_erosion_map = nullptr,
+                        Array       *p_deposition_map = nullptr,
+                        float        c_capacity = 10.f,
+                        float        c_erosion = 0.05f,
+                        float        c_deposition = 0.05f,
+                        float        c_inertia = 0.3f,
+                        float        c_gravity = 1.f,
+                        int          radius = 2,
+                        float        drag_rate = 0.001f,
+                        float        evap_rate = 0.001f,
+                        bool         post_filtering = false);
 
 /**
  * @brief Simulates hydraulic erosion and deposition on a heightmap using the

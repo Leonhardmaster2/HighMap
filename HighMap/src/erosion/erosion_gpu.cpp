@@ -10,22 +10,22 @@
 namespace hmap::gpu
 {
 
-void hydraulic_particle(Array &z,
-                        int    nparticles,
-                        int    seed,
-                        Array *p_bedrock,
-                        Array *p_moisture_map,
-                        Array *p_erosion_map,
-                        Array *p_deposition_map,
-                        float  c_capacity,
-                        float  c_erosion,
-                        float  c_deposition,
-                        float  c_inertia,
-                        float  c_gravity,
-                        int    radius,
-                        float  drag_rate,
-                        float  evap_rate,
-                        bool   post_filtering)
+void hydraulic_particle(Array       &z,
+                        int          nparticles,
+                        int          seed,
+                        const Array *p_bedrock,
+                        const Array *p_moisture_map,
+                        Array       *p_erosion_map,
+                        Array       *p_deposition_map,
+                        float        c_capacity,
+                        float        c_erosion,
+                        float        c_deposition,
+                        float        c_inertia,
+                        float        c_gravity,
+                        int          radius,
+                        float        drag_rate,
+                        float        evap_rate,
+                        bool         post_filtering)
 {
   Array z_bckp = Array();
   if ((p_erosion_map != nullptr) | (p_deposition_map != nullptr)) z_bckp = z;
@@ -81,23 +81,23 @@ void hydraulic_particle(Array &z,
   }
 }
 
-void hydraulic_particle(Array &z,
-                        Array *p_mask,
-                        int    nparticles,
-                        int    seed,
-                        Array *p_bedrock,
-                        Array *p_moisture_map,
-                        Array *p_erosion_map,
-                        Array *p_deposition_map,
-                        float  c_capacity,
-                        float  c_erosion,
-                        float  c_deposition,
-                        float  c_inertia,
-                        float  c_gravity,
-                        int    radius,
-                        float  drag_rate,
-                        float  evap_rate,
-                        bool   post_filtering)
+void hydraulic_particle(Array       &z,
+                        const Array *p_mask,
+                        int          nparticles,
+                        int          seed,
+                        const Array *p_bedrock,
+                        const Array *p_moisture_map,
+                        Array       *p_erosion_map,
+                        Array       *p_deposition_map,
+                        float        c_capacity,
+                        float        c_erosion,
+                        float        c_deposition,
+                        float        c_inertia,
+                        float        c_gravity,
+                        int          radius,
+                        float        drag_rate,
+                        float        evap_rate,
+                        bool         post_filtering)
 {
   if (!p_mask)
     gpu::hydraulic_particle(z,

@@ -29,20 +29,20 @@ namespace hmap
 // Main operator(s)
 //----------------------------------------------------------------------
 
-void hydraulic_particle(Array &z,
-                        int    nparticles,
-                        int    seed,
-                        Array *p_bedrock,
-                        Array *p_moisture_map,
-                        Array *p_erosion_map,
-                        Array *p_deposition_map,
-                        float  c_capacity,
-                        float  c_erosion,
-                        float  c_deposition,
-                        float  c_inertia,
-                        float  drag_rate,
-                        float  evap_rate,
-                        bool   post_filtering)
+void hydraulic_particle(Array       &z,
+                        int          nparticles,
+                        int          seed,
+                        const Array *p_bedrock,
+                        const Array *p_moisture_map,
+                        Array       *p_erosion_map,
+                        Array       *p_deposition_map,
+                        float        c_capacity,
+                        float        c_erosion,
+                        float        c_deposition,
+                        float        c_inertia,
+                        float        drag_rate,
+                        float        evap_rate,
+                        bool         post_filtering)
 {
   const int ni = z.shape.x;
   const int nj = z.shape.y;
@@ -181,21 +181,21 @@ void hydraulic_particle(Array &z,
   }
 }
 
-void hydraulic_particle(Array &z,
-                        Array *p_mask,
-                        int    nparticles,
-                        int    seed,
-                        Array *p_bedrock,
-                        Array *p_moisture_map,
-                        Array *p_erosion_map,
-                        Array *p_deposition_map,
-                        float  c_capacity,
-                        float  c_erosion,
-                        float  c_deposition,
-                        float  c_inertia,
-                        float  drag_rate,
-                        float  evap_rate,
-                        bool   post_filtering)
+void hydraulic_particle(Array       &z,
+                        const Array *p_mask,
+                        int          nparticles,
+                        int          seed,
+                        const Array *p_bedrock,
+                        const Array *p_moisture_map,
+                        Array       *p_erosion_map,
+                        Array       *p_deposition_map,
+                        float        c_capacity,
+                        float        c_erosion,
+                        float        c_deposition,
+                        float        c_inertia,
+                        float        drag_rate,
+                        float        evap_rate,
+                        bool         post_filtering)
 {
   if (!p_mask)
     hydraulic_particle(z,
