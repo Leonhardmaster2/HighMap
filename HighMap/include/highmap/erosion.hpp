@@ -718,43 +718,6 @@ void hydraulic_vpipes(Array &z,
                       float  evap_rate = 0.01f); ///< @overload
 
 /**
- * @brief Perform sediment deposition combined with thermal erosion.
- *
- * @todo deposition map
- *
- * @param z                             Input array.
- * @param p_mask                        Intensity mask, expected in [0, 1]
- *                                      (applied as a post-processing).
- * @param talus                         Talus limit.
- * @param p_deposition_map              [out] Reference to the deposition map,
- *                                      provided as an output field.
- * @param max_deposition                Maximum height of sediment deposition.
- * @param iterations                    Number of iterations.
- * @param thermal_erosion_subiterations Number of thermal erosion iterations for
- *                                      each pass.
- *
- * **Example**
- * @include ex_sediment_deposition.cpp
- *
- * **Result**
- * @image html ex_sediment_deposition.png
- */
-void sediment_deposition(Array       &z,
-                         Array       *p_mask,
-                         const Array &talus,
-                         Array       *p_deposition_map = nullptr,
-                         float        max_deposition = 0.01,
-                         int          iterations = 5,
-                         int          thermal_subiterations = 10);
-
-void sediment_deposition(Array       &z,
-                         const Array &talus,
-                         Array       *p_deposition_map = nullptr,
-                         float        max_deposition = 0.01,
-                         int          iterations = 5,
-                         int          thermal_subiterations = 10);
-
-/**
  * @brief
  *
  * @param z                         Input array.
@@ -1406,6 +1369,43 @@ void rifts(Array           &z,
            const Array     *p_mask = nullptr,
            const glm::vec2 &center = {0.5f, 0.5f},
            const glm::vec4 &bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
+ * @brief Perform sediment deposition combined with thermal erosion.
+ *
+ * @todo deposition map
+ *
+ * @param z                             Input array.
+ * @param p_mask                        Intensity mask, expected in [0, 1]
+ *                                      (applied as a post-processing).
+ * @param talus                         Talus limit.
+ * @param p_deposition_map              [out] Reference to the deposition map,
+ *                                      provided as an output field.
+ * @param max_deposition                Maximum height of sediment deposition.
+ * @param iterations                    Number of iterations.
+ * @param thermal_erosion_subiterations Number of thermal erosion iterations for
+ *                                      each pass.
+ *
+ * **Example**
+ * @include ex_sediment_deposition.cpp
+ *
+ * **Result**
+ * @image html ex_sediment_deposition.png
+ */
+void sediment_deposition(Array       &z,
+                         Array       *p_mask,
+                         const Array &talus,
+                         Array       *p_deposition_map = nullptr,
+                         float        max_deposition = 0.01,
+                         int          iterations = 5,
+                         int          thermal_subiterations = 10);
+
+void sediment_deposition(Array       &z,
+                         const Array &talus,
+                         Array       *p_deposition_map = nullptr,
+                         float        max_deposition = 0.01,
+                         int          iterations = 5,
+                         int          thermal_subiterations = 10);
 
 /**
  * @brief Applies a talus-based sediment deposition layer.

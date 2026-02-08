@@ -21,57 +21,6 @@
 namespace hmap
 {
 
-void sediment_deposition(Array       &z,
-                         const Array &talus,
-                         Array       *p_deposition_map,
-                         float        max_deposition,
-                         int          iterations,
-                         int          thermal_subiterations)
-{
-  float deposition_step = max_deposition / (int)iterations;
-  Array smap = Array(z.shape); // sediment map
-
-  for (int it = 0; it < iterations; it++)
-  {
-    smap = smap + deposition_step;
-    Array z_tot = z + smap;
-
-    thermal(z_tot, talus, thermal_subiterations, &z);
-    smap = z_tot - z;
-  }
-  z = z + smap;
-
-  if (p_deposition_map) *p_deposition_map = smap;
-}
-
-void sediment_deposition(Array       &z,
-                         Array       *p_mask,
-                         const Array &talus,
-                         Array       *p_deposition_map,
-                         float        max_deposition,
-                         int          iterations,
-                         int          thermal_subiterations)
-{
-  if (!p_mask)
-    sediment_deposition(z,
-                        talus,
-                        p_deposition_map,
-                        max_deposition,
-                        iterations,
-                        thermal_subiterations);
-  else
-  {
-    Array z_f = z;
-    sediment_deposition(z_f,
-                        talus,
-                        p_deposition_map,
-                        max_deposition,
-                        iterations,
-                        thermal_subiterations);
-    z = lerp(z, z_f, *(p_mask));
-  }
-}
-
 void sediment_deposition_particle(Array &z,
                                   int    nparticles,
                                   int    ir,
@@ -210,6 +159,57 @@ void sediment_deposition_particle(Array &z,
 
 namespace hmap::gpu
 {
+
+void sediment_deposition(Array       &z,
+                         const Array &talus,
+                         Array       *p_deposition_map,
+                         float        max_deposition,
+                         int          iterations,
+                         int          thermal_subiterations)
+{
+  float deposition_step = max_deposition / (int)iterations;
+  Array smap = Array(z.shape); // sediment map
+
+  for (int it = 0; it < iterations; it++)
+  {
+    smap = smap + deposition_step;
+    Array z_tot = z + smap;
+
+    gpu::thermal(z_tot, talus, thermal_subiterations);
+    smap = maximum(z_tot - z, 0.f);
+  }
+  z = z + smap;
+
+  if (p_deposition_map) *p_deposition_map = smap;
+}
+
+void sediment_deposition(Array       &z,
+                         Array       *p_mask,
+                         const Array &talus,
+                         Array       *p_deposition_map,
+                         float        max_deposition,
+                         int          iterations,
+                         int          thermal_subiterations)
+{
+  if (!p_mask)
+    sediment_deposition(z,
+                        talus,
+                        p_deposition_map,
+                        max_deposition,
+                        iterations,
+                        thermal_subiterations);
+  else
+  {
+    Array z_f = z;
+    sediment_deposition(z_f,
+                        talus,
+                        p_deposition_map,
+                        max_deposition,
+                        iterations,
+                        thermal_subiterations);
+    z = lerp(z, z_f, *(p_mask));
+  }
+}
 
 void sediment_layer(Array       &z,
                     const Array &talus_layer,
