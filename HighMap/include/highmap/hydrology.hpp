@@ -705,21 +705,6 @@ Array generate_riverbed(const Path &path,
                         Array      *p_noise_r = nullptr);
 
 /**
- * @brief Filters water depth values using elevation data and a given radius.
- *
- * @param depth Water depth array to filter (in/out).
- * @param z     Elevation array used for filtering.
- * @param ir    Filter radius.
- *
- * **Example**
- * @include ex_water_depth_filter.cpp
- *
- * **Result**
- * @image html ex_water_depth_filter.png
- */
-void water_depth_filter(Array &depth, const Array &z, int ir);
-
-/**
  * @brief Simulate snow accumulation and redistribution over a terrain.
  *
  * Models snow fall, depth-dependent avalanching (above repose angle) and
@@ -766,5 +751,20 @@ Array snow_simulation(const Array &z,
                       float        k_depth_slope_ratio = 1.f,
                       bool         post_filter = true,
                       float        thermal_talus_ratio = 0.2f);
+
+/**
+ * @brief Filters water depth values using elevation data and a given radius.
+ *
+ * @param depth Water depth array to filter (in/out).
+ * @param z     Elevation array used for filtering.
+ * @param ir    Filter radius.
+ *
+ * **Example**
+ * @include ex_water_depth_filter.cpp
+ *
+ * **Result**
+ * @image html ex_water_depth_filter.png
+ */
+void water_depth_filter(Array &depth, const Array &z, int ir);
 
 } // namespace hmap::gpu
