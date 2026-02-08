@@ -10961,177 +10961,6 @@ additional_depth)</computeroutput>.</para>
         </inbodydescription>
         <location file="HighMap/src/erosion/hydraulic_vpipes.cpp" line="25" column="6" bodyfile="HighMap/src/erosion/hydraulic_vpipes.cpp" bodystart="25" bodyend="286" declfile="HighMap/include/highmap/erosion.hpp" declline="707" declcolumn="6"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1a2f83e2631c0b0dee67aae188f439f1bb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void hmap::sediment_deposition</definition>
-        <argsstring>(Array &amp;z, Array *p_mask, const Array &amp;talus, Array *p_deposition_map=nullptr, float max_deposition=0.01, int iterations=5, int thermal_subiterations=10)</argsstring>
-        <name>sediment_deposition</name>
-        <qualifiedname>hmap::sediment_deposition</qualifiedname>
-        <param>
-          <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
-          <declname>z</declname>
-        </param>
-        <param>
-          <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
-          <declname>p_mask</declname>
-        </param>
-        <param>
-          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
-          <declname>talus</declname>
-        </param>
-        <param>
-          <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
-          <declname>p_deposition_map</declname>
-          <defval>nullptr</defval>
-        </param>
-        <param>
-          <type>float</type>
-          <declname>max_deposition</declname>
-          <defval>0.01</defval>
-        </param>
-        <param>
-          <type>int</type>
-          <declname>iterations</declname>
-          <defval>5</defval>
-        </param>
-        <param>
-          <type>int</type>
-          <declname>thermal_subiterations</declname>
-          <defval>10</defval>
-        </param>
-        <briefdescription>
-<para>Perform sediment deposition combined with thermal erosion. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><xrefsect id="todo_1_todo000001"><xreftitle>Todo</xreftitle><xrefdescription><para>deposition map</para>
-</xrefdescription></xrefsect></para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>z</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Input array. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>p_mask</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Intensity mask, expected in [0, 1] (applied as a post-processing). </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>talus</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Talus limit. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>p_deposition_map</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>[out] Reference to the deposition map, provided as an output field. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>max_deposition</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Maximum height of sediment deposition. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>iterations</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Number of iterations. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>thermal_erosion_subiterations</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Number of thermal erosion iterations for each pass.</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<bold>Example</bold> <programlisting filename="ex_sediment_deposition.cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
-<codeline><highlight class="normal">{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>glm::ivec2<sp/>shape<sp/>=<sp/>{256,<sp/>256};</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>glm::vec2<sp/><sp/>res<sp/>=<sp/>{4.f,<sp/>4.f};</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed<sp/>=<sp/>1;</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1acb13e7346085793fda4c94c47b75d9a9" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,<sp/>shape,<sp/>res,<sp/>seed);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>z0<sp/>=<sp/>z;</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>talus<sp/>limit<sp/>defined<sp/>locally</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>talus<sp/>=<sp/><ref refid="namespacehmap_1a2b25a71f7da0b8324df986e01e5b08dc" kindref="member">hmap::constant</ref>(shape,<sp/>0.2f<sp/>/<sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)shape.x);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a2f83e2631c0b0dee67aae188f439f1bb" kindref="member">hmap::sediment_deposition</ref>(z,<sp/>talus);</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_sediment_deposition.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z0,<sp/>z},</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9" kindref="member">hmap::Cmap::TERRAIN</ref>,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting></para>
-<para><bold>Result</bold> <image type="html" name="ex_sediment_deposition.png"></image>
- </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="HighMap/src/erosion/deposition.cpp" line="47" column="6" bodyfile="HighMap/src/erosion/deposition.cpp" bodystart="47" bodyend="73" declfile="HighMap/include/highmap/erosion.hpp" declline="742" declcolumn="6"/>
-      </memberdef>
-      <memberdef kind="function" id="namespacehmap_1a7f31b214bbcc3083c75cbcac905b5a1d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void hmap::sediment_deposition</definition>
-        <argsstring>(Array &amp;z, const Array &amp;talus, Array *p_deposition_map=nullptr, float max_deposition=0.01, int iterations=5, int thermal_subiterations=10)</argsstring>
-        <name>sediment_deposition</name>
-        <qualifiedname>hmap::sediment_deposition</qualifiedname>
-        <param>
-          <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
-          <declname>z</declname>
-        </param>
-        <param>
-          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
-          <declname>talus</declname>
-        </param>
-        <param>
-          <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
-          <declname>p_deposition_map</declname>
-          <defval>nullptr</defval>
-        </param>
-        <param>
-          <type>float</type>
-          <declname>max_deposition</declname>
-          <defval>0.01</defval>
-        </param>
-        <param>
-          <type>int</type>
-          <declname>iterations</declname>
-          <defval>5</defval>
-        </param>
-        <param>
-          <type>int</type>
-          <declname>thermal_subiterations</declname>
-          <defval>10</defval>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="HighMap/src/erosion/deposition.cpp" line="24" column="6" bodyfile="HighMap/src/erosion/deposition.cpp" bodystart="24" bodyend="45" declfile="HighMap/include/highmap/erosion.hpp" declline="750" declcolumn="6"/>
-      </memberdef>
       <memberdef kind="function" id="namespacehmap_1aef448d1fdaa3277652ef0d5616e4fc2f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void hmap::sediment_deposition_particle</definition>
@@ -11292,7 +11121,7 @@ additional_depth)</computeroutput>.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/deposition.cpp" line="172" column="6" bodyfile="HighMap/src/erosion/deposition.cpp" bodystart="172" bodyend="207" declfile="HighMap/include/highmap/erosion.hpp" declline="780" declcolumn="6"/>
+        <location file="HighMap/src/erosion/deposition.cpp" line="121" column="6" bodyfile="HighMap/src/erosion/deposition.cpp" bodystart="121" bodyend="156" declfile="HighMap/include/highmap/erosion.hpp" declline="743" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a692c074c2a2f7c4560364f5770411894" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -11348,7 +11177,7 @@ additional_depth)</computeroutput>.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/deposition.cpp" line="75" column="6" bodyfile="HighMap/src/erosion/deposition.cpp" bodystart="75" bodyend="170" declfile="HighMap/include/highmap/erosion.hpp" declline="791" declcolumn="6"/>
+        <location file="HighMap/src/erosion/deposition.cpp" line="24" column="6" bodyfile="HighMap/src/erosion/deposition.cpp" bodystart="24" bodyend="119" declfile="HighMap/include/highmap/erosion.hpp" declline="754" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1abc0ddcae8cec8a556b8a343eaafe1dc4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -11476,7 +11305,7 @@ additional_depth)</computeroutput>.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/stratify.cpp" line="46" column="6" bodyfile="HighMap/src/erosion/stratify.cpp" bodystart="46" bodyend="60" declfile="HighMap/include/highmap/erosion.hpp" declline="820" declcolumn="6"/>
+        <location file="HighMap/src/erosion/stratify.cpp" line="46" column="6" bodyfile="HighMap/src/erosion/stratify.cpp" bodystart="46" bodyend="60" declfile="HighMap/include/highmap/erosion.hpp" declline="783" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ad117ced78d758baa0bb5e1e7655bd0b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -11508,7 +11337,7 @@ additional_depth)</computeroutput>.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/stratify.cpp" line="17" column="6" bodyfile="HighMap/src/erosion/stratify.cpp" bodystart="17" bodyend="44" declfile="HighMap/include/highmap/erosion.hpp" declline="826" declcolumn="6"/>
+        <location file="HighMap/src/erosion/stratify.cpp" line="17" column="6" bodyfile="HighMap/src/erosion/stratify.cpp" bodystart="17" bodyend="44" declfile="HighMap/include/highmap/erosion.hpp" declline="789" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1abca93ca8447abd2fc06c9892a4dc248c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -11541,7 +11370,7 @@ additional_depth)</computeroutput>.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/stratify.cpp" line="131" column="6" bodyfile="HighMap/src/erosion/stratify.cpp" bodystart="131" bodyend="139" declfile="HighMap/include/highmap/erosion.hpp" declline="831" declcolumn="6"/>
+        <location file="HighMap/src/erosion/stratify.cpp" line="131" column="6" bodyfile="HighMap/src/erosion/stratify.cpp" bodystart="131" bodyend="139" declfile="HighMap/include/highmap/erosion.hpp" declline="794" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a9b3fc59af5c418c494eec160399839bb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -11608,7 +11437,7 @@ additional_depth)</computeroutput>.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/stratify.cpp" line="141" column="6" bodyfile="HighMap/src/erosion/stratify.cpp" bodystart="141" bodyend="188" declfile="HighMap/include/highmap/erosion.hpp" declline="836" declcolumn="6"/>
+        <location file="HighMap/src/erosion/stratify.cpp" line="141" column="6" bodyfile="HighMap/src/erosion/stratify.cpp" bodystart="141" bodyend="188" declfile="HighMap/include/highmap/erosion.hpp" declline="799" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a815d3c721091a5525f872527a994ec1f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -11780,7 +11609,7 @@ additional_depth)</computeroutput>.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/stratify.cpp" line="62" column="6" bodyfile="HighMap/src/erosion/stratify.cpp" bodystart="62" bodyend="129" declfile="HighMap/include/highmap/erosion.hpp" declline="872" declcolumn="6"/>
+        <location file="HighMap/src/erosion/stratify.cpp" line="62" column="6" bodyfile="HighMap/src/erosion/stratify.cpp" bodystart="62" bodyend="129" declfile="HighMap/include/highmap/erosion.hpp" declline="835" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a06a4f7bbf99b83632ceb8a9ba5989823" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -11938,7 +11767,7 @@ additional_depth)</computeroutput>.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/stratify.cpp" line="241" column="6" bodyfile="HighMap/src/erosion/stratify.cpp" bodystart="241" bodyend="257" declfile="HighMap/include/highmap/erosion.hpp" declline="903" declcolumn="6"/>
+        <location file="HighMap/src/erosion/stratify.cpp" line="241" column="6" bodyfile="HighMap/src/erosion/stratify.cpp" bodystart="241" bodyend="257" declfile="HighMap/include/highmap/erosion.hpp" declline="866" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a1d3b4f4dbe769a1f71f8fcc44cfcaf8c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -11978,7 +11807,7 @@ additional_depth)</computeroutput>.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/stratify.cpp" line="190" column="6" bodyfile="HighMap/src/erosion/stratify.cpp" bodystart="190" bodyend="239" declfile="HighMap/include/highmap/erosion.hpp" declline="911" declcolumn="6"/>
+        <location file="HighMap/src/erosion/stratify.cpp" line="190" column="6" bodyfile="HighMap/src/erosion/stratify.cpp" bodystart="190" bodyend="239" declfile="HighMap/include/highmap/erosion.hpp" declline="874" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ab6221592aa07d117715b474afab7db1c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -12090,7 +11919,7 @@ additional_depth)</computeroutput>.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal.cpp" line="174" column="6" bodyfile="HighMap/src/erosion/thermal.cpp" bodystart="174" bodyend="189" declfile="HighMap/include/highmap/erosion.hpp" declline="937" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal.cpp" line="174" column="6" bodyfile="HighMap/src/erosion/thermal.cpp" bodystart="174" bodyend="189" declfile="HighMap/include/highmap/erosion.hpp" declline="900" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aeb883524caa1b5ce67ee3b60376b4abb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -12127,7 +11956,7 @@ additional_depth)</computeroutput>.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal.cpp" line="45" column="6" bodyfile="HighMap/src/erosion/thermal.cpp" bodystart="45" bodyend="168" declfile="HighMap/include/highmap/erosion.hpp" declline="944" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal.cpp" line="45" column="6" bodyfile="HighMap/src/erosion/thermal.cpp" bodystart="45" bodyend="168" declfile="HighMap/include/highmap/erosion.hpp" declline="907" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a515af2d938d55488bbb549c708597886" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -12165,7 +11994,7 @@ additional_depth)</computeroutput>.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal.cpp" line="192" column="6" bodyfile="HighMap/src/erosion/thermal.cpp" bodystart="192" bodyend="200" declfile="HighMap/include/highmap/erosion.hpp" declline="950" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal.cpp" line="192" column="6" bodyfile="HighMap/src/erosion/thermal.cpp" bodystart="192" bodyend="200" declfile="HighMap/include/highmap/erosion.hpp" declline="913" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1acbd2a3c82ec3ce4eaf77dbc92d580321" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -12195,7 +12024,7 @@ additional_depth)</computeroutput>.</para>
 <para>Apply thermal weathering erosion with automatic determination of the bedrock. </para>
         </briefdescription>
         <detaileddescription>
-<para><xrefsect id="todo_1_todo000002"><xreftitle>Todo</xreftitle><xrefdescription><para>more comprehensive documentation on auto-bedrock algo. </para>
+<para><xrefsect id="todo_1_todo000001"><xreftitle>Todo</xreftitle><xrefdescription><para>more comprehensive documentation on auto-bedrock algo. </para>
 <para>fix hard-coded parameters.</para>
 </xrefdescription></xrefsect></para>
 <para><simplesect kind="see"><para><computeroutput><ref refid="namespacehmap_1ab6221592aa07d117715b474afab7db1c" kindref="member">thermal</ref></computeroutput></para>
@@ -12257,7 +12086,7 @@ additional_depth)</computeroutput>.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal.cpp" line="206" column="6" bodyfile="HighMap/src/erosion/thermal.cpp" bodystart="206" bodyend="242" declfile="HighMap/include/highmap/erosion.hpp" declline="977" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal.cpp" line="206" column="6" bodyfile="HighMap/src/erosion/thermal.cpp" bodystart="206" bodyend="242" declfile="HighMap/include/highmap/erosion.hpp" declline="940" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a2e350857ce33125722d9c8ff6663f1c8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -12290,7 +12119,7 @@ additional_depth)</computeroutput>.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal.cpp" line="244" column="6" bodyfile="HighMap/src/erosion/thermal.cpp" bodystart="244" bodyend="251" declfile="HighMap/include/highmap/erosion.hpp" declline="982" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal.cpp" line="244" column="6" bodyfile="HighMap/src/erosion/thermal.cpp" bodystart="244" bodyend="251" declfile="HighMap/include/highmap/erosion.hpp" declline="945" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1af6a1650f303f70801a19aba318090664" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -12327,7 +12156,7 @@ additional_depth)</computeroutput>.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal.cpp" line="253" column="6" bodyfile="HighMap/src/erosion/thermal.cpp" bodystart="253" bodyend="267" declfile="HighMap/include/highmap/erosion.hpp" declline="987" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal.cpp" line="253" column="6" bodyfile="HighMap/src/erosion/thermal.cpp" bodystart="253" bodyend="267" declfile="HighMap/include/highmap/erosion.hpp" declline="950" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a600b794acf99e4b8d41ee7526e5c21ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -12413,7 +12242,7 @@ levelled out&quot;.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_flatten.cpp" line="22" column="6" bodyfile="HighMap/src/erosion/thermal_flatten.cpp" bodystart="22" bodyend="81" declfile="HighMap/include/highmap/erosion.hpp" declline="1010" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_flatten.cpp" line="22" column="6" bodyfile="HighMap/src/erosion/thermal_flatten.cpp" bodystart="22" bodyend="81" declfile="HighMap/include/highmap/erosion.hpp" declline="973" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aad5d723c32c1cd431ad4ab6638fb523d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -12446,7 +12275,7 @@ levelled out&quot;.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_flatten.cpp" line="87" column="6" bodyfile="HighMap/src/erosion/thermal_flatten.cpp" bodystart="87" bodyend="92" declfile="HighMap/include/highmap/erosion.hpp" declline="1016" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_flatten.cpp" line="87" column="6" bodyfile="HighMap/src/erosion/thermal_flatten.cpp" bodystart="87" bodyend="92" declfile="HighMap/include/highmap/erosion.hpp" declline="979" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a1ebb59674f1b317db20cc87385bc41a5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -12536,7 +12365,7 @@ levelled out&quot;.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_olsen.cpp" line="23" column="6" bodyfile="HighMap/src/erosion/thermal_olsen.cpp" bodystart="23" bodyend="177" declfile="HighMap/include/highmap/erosion.hpp" declline="1040" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_olsen.cpp" line="23" column="6" bodyfile="HighMap/src/erosion/thermal_olsen.cpp" bodystart="23" bodyend="177" declfile="HighMap/include/highmap/erosion.hpp" declline="1003" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a4ca4c918ef88ea4fc16e25c7017e15c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -12610,7 +12439,7 @@ levelled out&quot;.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_rib.cpp" line="17" column="6" bodyfile="HighMap/src/erosion/thermal_rib.cpp" bodystart="17" bodyend="45" declfile="HighMap/include/highmap/erosion.hpp" declline="1058" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_rib.cpp" line="17" column="6" bodyfile="HighMap/src/erosion/thermal_rib.cpp" bodystart="17" bodyend="45" declfile="HighMap/include/highmap/erosion.hpp" declline="1021" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ab38af66da103b9be4e5aaeed7213b9c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -12711,7 +12540,7 @@ levelled out&quot;.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_schott.cpp" line="24" column="6" bodyfile="HighMap/src/erosion/thermal_schott.cpp" bodystart="24" bodyend="66" declfile="HighMap/include/highmap/erosion.hpp" declline="1083" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_schott.cpp" line="24" column="6" bodyfile="HighMap/src/erosion/thermal_schott.cpp" bodystart="24" bodyend="66" declfile="HighMap/include/highmap/erosion.hpp" declline="1046" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a934a4f6e9ae0f315a2296d488b9333b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -12748,7 +12577,7 @@ levelled out&quot;.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_schott.cpp" line="68" column="6" bodyfile="HighMap/src/erosion/thermal_schott.cpp" bodystart="68" bodyend="82" declfile="HighMap/include/highmap/erosion.hpp" declline="1088" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_schott.cpp" line="68" column="6" bodyfile="HighMap/src/erosion/thermal_schott.cpp" bodystart="68" bodyend="82" declfile="HighMap/include/highmap/erosion.hpp" declline="1051" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aa328e3342e845d021f300dcb6cb42fbc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -12849,7 +12678,7 @@ levelled out&quot;.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_schott.cpp" line="84" column="6" bodyfile="HighMap/src/erosion/thermal_schott.cpp" bodystart="84" bodyend="91" declfile="HighMap/include/highmap/erosion.hpp" declline="1115" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_schott.cpp" line="84" column="6" bodyfile="HighMap/src/erosion/thermal_schott.cpp" bodystart="84" bodyend="91" declfile="HighMap/include/highmap/erosion.hpp" declline="1078" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1afe2e4c1e06205f5051ce6e86ea647a77" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -12886,7 +12715,7 @@ levelled out&quot;.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_schott.cpp" line="93" column="6" bodyfile="HighMap/src/erosion/thermal_schott.cpp" bodystart="93" bodyend="107" declfile="HighMap/include/highmap/erosion.hpp" declline="1120" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_schott.cpp" line="93" column="6" bodyfile="HighMap/src/erosion/thermal_schott.cpp" bodystart="93" bodyend="107" declfile="HighMap/include/highmap/erosion.hpp" declline="1083" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a9588003e71523b45a4eee88d8debc9b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -12989,7 +12818,7 @@ levelled out&quot;.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/watershed_ridge.cpp" line="21" column="7" bodyfile="HighMap/src/erosion/watershed_ridge.cpp" bodystart="21" bodyend="64" declfile="HighMap/include/highmap/erosion.hpp" declline="1147" declcolumn="7"/>
+        <location file="HighMap/src/erosion/watershed_ridge.cpp" line="21" column="7" bodyfile="HighMap/src/erosion/watershed_ridge.cpp" bodystart="21" bodyend="64" declfile="HighMap/include/highmap/erosion.hpp" declline="1110" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a4747b0405463a134d6af358fe779c62f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -13031,7 +12860,7 @@ levelled out&quot;.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/watershed_ridge.cpp" line="66" column="7" bodyfile="HighMap/src/erosion/watershed_ridge.cpp" bodystart="66" bodyend="80" declfile="HighMap/include/highmap/erosion.hpp" declline="1154" declcolumn="7"/>
+        <location file="HighMap/src/erosion/watershed_ridge.cpp" line="66" column="7" bodyfile="HighMap/src/erosion/watershed_ridge.cpp" bodystart="66" bodyend="80" declfile="HighMap/include/highmap/erosion.hpp" declline="1117" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a7b8945745feaeaa365d965ce66b32f58" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>

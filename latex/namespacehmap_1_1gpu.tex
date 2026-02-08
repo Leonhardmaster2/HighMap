@@ -49,6 +49,10 @@ void \mbox{\hyperlink{namespacehmap_1_1gpu_a548895d6665a5466b8541122338b59a9}{hy
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_aa6efdb6d9fbf995b00f889ca290819cd}{hmap\+::hydraulic\+\_\+vpipes}. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_1_1gpu_adca53669496f6a636042e11a859d1a16}{rifts}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, const glm\+::vec2 \&kw, float \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}}, float amplitude, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, float elevation\+\_\+noise\+\_\+shift=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float k\+\_\+smooth\+\_\+bottom=0.\+05\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float k\+\_\+smooth\+\_\+top=0.\+05\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float radial\+\_\+spread\+\_\+amp=0.\+2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float elevation\+\_\+noise\+\_\+amp=0.\+1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float clamp\+\_\+vmin=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float remap\+\_\+vmin=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, bool apply\+\_\+mask=true, bool reverse\+\_\+mask=false, float mask\+\_\+gamma=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+mask=nullptr, const glm\+::vec2 \&center=\{0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, const glm\+::vec4 \&bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
 \begin{DoxyCompactList}\small\item\em Applies a "{}rift"{} deformation effect to a heightmap array. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacehmap_1_1gpu_a1c2651f7a65e696e8b444364abf0b3cc}{sediment\+\_\+deposition}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+mask, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&talus, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+deposition\+\_\+map=nullptr, float max\+\_\+deposition=0.\+01, int iterations=5, int thermal\+\_\+subiterations=10)
+\begin{DoxyCompactList}\small\item\em Perform sediment deposition combined with thermal erosion. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacehmap_1_1gpu_a26ed284f1df761074c2a49a2fbbd582e}{sediment\+\_\+deposition}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&talus, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+deposition\+\_\+map=nullptr, float max\+\_\+deposition=0.\+01, int iterations=5, int thermal\+\_\+subiterations=10)
+\item 
 void \mbox{\hyperlink{namespacehmap_1_1gpu_aec782e6aba3f4cfbbd97aafa46cc700b}{sediment\+\_\+layer}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&talus\+\_\+layer, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&talus\+\_\+upper\+\_\+limit, int iterations, bool apply\+\_\+post\+\_\+filter=true, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+deposition\+\_\+map=nullptr)
 \begin{DoxyCompactList}\small\item\em Applies a talus-\/based sediment deposition layer. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_1_1gpu_afb140daa72128c65f1af72ed17dae9a5}{strata}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, float \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}}, float \mbox{\hyperlink{namespacehmap_a79ad6fb857a38f8de9915d01992e5161}{slope}}, float gamma, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, bool linear\+\_\+gamma=true, float kz=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, int octaves=4, float lacunarity=2.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float gamma\+\_\+noise\+\_\+ratio=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float noise\+\_\+amp=0.\+4\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, const glm\+::vec2 \&noise\+\_\+kw=\{4.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 4.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, const glm\+::vec2 \&ridge\+\_\+noise\+\_\+kw=\{4.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\+2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, float ridge\+\_\+angle\+\_\+shift=45.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float ridge\+\_\+noise\+\_\+amp=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float ridge\+\_\+clamp\+\_\+vmin=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float ridge\+\_\+remap\+\_\+vmin=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, bool apply\+\_\+elevation\+\_\+mask=true, bool apply\+\_\+ridge\+\_\+mask=true, float mask\+\_\+gamma=0.\+4\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+mask=nullptr, const glm\+::vec4 \&bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
@@ -768,7 +772,72 @@ This function modifies the given heightmap by introducing linear or radial "{}ri
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}  \Hypertarget{namespacehmap_1_1gpu_aec782e6aba3f4cfbbd97aafa46cc700b}\label{namespacehmap_1_1gpu_aec782e6aba3f4cfbbd97aafa46cc700b} 
+{\bfseries{Result}}  \Hypertarget{namespacehmap_1_1gpu_a1c2651f7a65e696e8b444364abf0b3cc}\label{namespacehmap_1_1gpu_a1c2651f7a65e696e8b444364abf0b3cc} 
+\index{hmap::gpu@{hmap::gpu}!sediment\_deposition@{sediment\_deposition}}
+\index{sediment\_deposition@{sediment\_deposition}!hmap::gpu@{hmap::gpu}}
+\doxysubsubsection{\texorpdfstring{sediment\_deposition()}{sediment\_deposition()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void hmap\+::gpu\+::sediment\+\_\+deposition (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+mask,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{talus,  }\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+deposition\+\_\+map = {\ttfamily nullptr},  }\item[{float}]{max\+\_\+deposition = {\ttfamily 0.01},  }\item[{int}]{iterations = {\ttfamily 5},  }\item[{int}]{thermal\+\_\+subiterations = {\ttfamily 10} }\end{DoxyParamCaption})}
+
+
+
+Perform sediment deposition combined with thermal erosion. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000002}{Todo}}]deposition map\end{DoxyRefDesc}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em z} & Input array. \\
+\hline
+{\em p\+\_\+mask} & Intensity mask, expected in \mbox{[}0, 1\mbox{]} (applied as a post-\/processing). \\
+\hline
+{\em talus} & Talus limit. \\
+\hline
+{\em p\+\_\+deposition\+\_\+map} & \mbox{[}out\mbox{]} Reference to the deposition map, provided as an output field. \\
+\hline
+{\em max\+\_\+deposition} & Maximum height of sediment deposition. \\
+\hline
+{\em iterations} & Number of iterations. \\
+\hline
+{\em thermal\+\_\+erosion\+\_\+subiterations} & Number of thermal erosion iterations for each pass.\\
+\hline
+\end{DoxyParams}
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_1_1gpu_adb8336ed4d83c15500872185dee45d50}{hmap::gpu::init\_opencl}}();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
+\DoxyCodeLine{\ \ glm::vec2\ \ kw\ =\ \{4.f,\ 4.f\};}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 1;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_acb13e7346085793fda4c94c47b75d9a9}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ kw,\ seed);}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ \ \ \ \ \ \ \ z0\ =\ z;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ talus\ limit\ defined\ locally}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ talus\ =\ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}(shape,\ 2.f\ /\ (\textcolor{keywordtype}{float})shape.x);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_1_1gpu_a1c2651f7a65e696e8b444364abf0b3cc}{hmap::gpu::sediment\_deposition}}(z,\ talus,\ \textcolor{keyword}{nullptr},\ 0.01f,\ 10,\ 50);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_sediment\_deposition.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z0,\ z\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9}{hmap::Cmap::TERRAIN}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}}  \Hypertarget{namespacehmap_1_1gpu_a26ed284f1df761074c2a49a2fbbd582e}\label{namespacehmap_1_1gpu_a26ed284f1df761074c2a49a2fbbd582e} 
+\index{hmap::gpu@{hmap::gpu}!sediment\_deposition@{sediment\_deposition}}
+\index{sediment\_deposition@{sediment\_deposition}!hmap::gpu@{hmap::gpu}}
+\doxysubsubsection{\texorpdfstring{sediment\_deposition()}{sediment\_deposition()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void hmap\+::gpu\+::sediment\+\_\+deposition (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{talus,  }\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+deposition\+\_\+map = {\ttfamily nullptr},  }\item[{float}]{max\+\_\+deposition = {\ttfamily 0.01},  }\item[{int}]{iterations = {\ttfamily 5},  }\item[{int}]{thermal\+\_\+subiterations = {\ttfamily 10} }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacehmap_1_1gpu_aec782e6aba3f4cfbbd97aafa46cc700b}\label{namespacehmap_1_1gpu_aec782e6aba3f4cfbbd97aafa46cc700b} 
 \index{hmap::gpu@{hmap::gpu}!sediment\_layer@{sediment\_layer}}
 \index{sediment\_layer@{sediment\_layer}!hmap::gpu@{hmap::gpu}}
 \doxysubsubsection{\texorpdfstring{sediment\_layer()}{sediment\_layer()}}
