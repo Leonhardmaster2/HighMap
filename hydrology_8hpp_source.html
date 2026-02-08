@@ -311,23 +311,23 @@ $(document).ready(function(){initNavTree('hydrology_8hpp_source.html',''); initR
 <div class="line"><a id="l00704" name="l00704"></a><span class="lineno">  704</span>                        Array      *p_noise_y = <span class="keyword">nullptr</span>,</div>
 <div class="line"><a id="l00705" name="l00705"></a><span class="lineno">  705</span>                        Array      *p_noise_r = <span class="keyword">nullptr</span>);</div>
 <div class="line"><a id="l00706" name="l00706"></a><span class="lineno">  706</span> </div>
-<div class="line"><a id="l00720" name="l00720"></a><span class="lineno">  720</span><span class="keywordtype">void</span> water_depth_filter(Array &amp;depth, <span class="keyword">const</span> Array &amp;z, <span class="keywordtype">int</span> ir);</div>
-<div class="line"><a id="l00721" name="l00721"></a><span class="lineno">  721</span> </div>
-<div class="line"><a id="l00754" name="l00754"></a><span class="lineno">  754</span>Array snow_simulation(<span class="keyword">const</span> Array &amp;z,</div>
-<div class="line"><a id="l00755" name="l00755"></a><span class="lineno">  755</span>                      <span class="keywordtype">float</span>        snow_depth,</div>
-<div class="line"><a id="l00756" name="l00756"></a><span class="lineno">  756</span>                      <span class="keyword">const</span> Array &amp;fall_map,</div>
-<div class="line"><a id="l00757" name="l00757"></a><span class="lineno">  757</span>                      <span class="keyword">const</span> Array &amp;melting_map,</div>
-<div class="line"><a id="l00758" name="l00758"></a><span class="lineno">  758</span>                      <span class="keyword">const</span> Array &amp;talus,</div>
-<div class="line"><a id="l00759" name="l00759"></a><span class="lineno">  759</span>                      <span class="keywordtype">int</span>          iterations,</div>
-<div class="line"><a id="l00760" name="l00760"></a><span class="lineno">  760</span>                      <span class="keywordtype">float</span>        dt = 0.5f,</div>
-<div class="line"><a id="l00761" name="l00761"></a><span class="lineno">  761</span>                      <span class="keywordtype">float</span>        fall_iterations_ratio = 1.f,</div>
-<div class="line"><a id="l00762" name="l00762"></a><span class="lineno">  762</span>                      <span class="keywordtype">float</span>        k_snow = 0.6f,</div>
-<div class="line"><a id="l00763" name="l00763"></a><span class="lineno">  763</span>                      <span class="keywordtype">float</span>        k_visc = 0.1f,</div>
-<div class="line"><a id="l00764" name="l00764"></a><span class="lineno">  764</span>                      <span class="keywordtype">float</span>        k_melt_factor = 0.8f,</div>
-<div class="line"><a id="l00765" name="l00765"></a><span class="lineno">  765</span>                      <span class="keywordtype">float</span>        k_depth_ratio = 0.1f,</div>
-<div class="line"><a id="l00766" name="l00766"></a><span class="lineno">  766</span>                      <span class="keywordtype">float</span>        k_depth_slope_ratio = 1.f,</div>
-<div class="line"><a id="l00767" name="l00767"></a><span class="lineno">  767</span>                      <span class="keywordtype">bool</span>         post_filter = <span class="keyword">true</span>,</div>
-<div class="line"><a id="l00768" name="l00768"></a><span class="lineno">  768</span>                      <span class="keywordtype">float</span>        thermal_talus_ratio = 0.2f);</div>
+<div class="line"><a id="l00739" name="l00739"></a><span class="lineno">  739</span>Array snow_simulation(<span class="keyword">const</span> Array &amp;z,</div>
+<div class="line"><a id="l00740" name="l00740"></a><span class="lineno">  740</span>                      <span class="keywordtype">float</span>        snow_depth,</div>
+<div class="line"><a id="l00741" name="l00741"></a><span class="lineno">  741</span>                      <span class="keyword">const</span> Array &amp;fall_map,</div>
+<div class="line"><a id="l00742" name="l00742"></a><span class="lineno">  742</span>                      <span class="keyword">const</span> Array &amp;melting_map,</div>
+<div class="line"><a id="l00743" name="l00743"></a><span class="lineno">  743</span>                      <span class="keyword">const</span> Array &amp;talus,</div>
+<div class="line"><a id="l00744" name="l00744"></a><span class="lineno">  744</span>                      <span class="keywordtype">int</span>          iterations,</div>
+<div class="line"><a id="l00745" name="l00745"></a><span class="lineno">  745</span>                      <span class="keywordtype">float</span>        dt = 0.5f,</div>
+<div class="line"><a id="l00746" name="l00746"></a><span class="lineno">  746</span>                      <span class="keywordtype">float</span>        fall_iterations_ratio = 1.f,</div>
+<div class="line"><a id="l00747" name="l00747"></a><span class="lineno">  747</span>                      <span class="keywordtype">float</span>        k_snow = 0.6f,</div>
+<div class="line"><a id="l00748" name="l00748"></a><span class="lineno">  748</span>                      <span class="keywordtype">float</span>        k_visc = 0.1f,</div>
+<div class="line"><a id="l00749" name="l00749"></a><span class="lineno">  749</span>                      <span class="keywordtype">float</span>        k_melt_factor = 0.8f,</div>
+<div class="line"><a id="l00750" name="l00750"></a><span class="lineno">  750</span>                      <span class="keywordtype">float</span>        k_depth_ratio = 0.1f,</div>
+<div class="line"><a id="l00751" name="l00751"></a><span class="lineno">  751</span>                      <span class="keywordtype">float</span>        k_depth_slope_ratio = 1.f,</div>
+<div class="line"><a id="l00752" name="l00752"></a><span class="lineno">  752</span>                      <span class="keywordtype">bool</span>         post_filter = <span class="keyword">true</span>,</div>
+<div class="line"><a id="l00753" name="l00753"></a><span class="lineno">  753</span>                      <span class="keywordtype">float</span>        thermal_talus_ratio = 0.2f);</div>
+<div class="line"><a id="l00754" name="l00754"></a><span class="lineno">  754</span> </div>
+<div class="line"><a id="l00768" name="l00768"></a><span class="lineno">  768</span><span class="keywordtype">void</span> water_depth_filter(Array &amp;depth, <span class="keyword">const</span> Array &amp;z, <span class="keywordtype">int</span> ir);</div>
 <div class="line"><a id="l00769" name="l00769"></a><span class="lineno">  769</span> </div>
 <div class="line"><a id="l00770" name="l00770"></a><span class="lineno">  770</span>} <span class="comment">// namespace hmap::gpu</span></div>
 <div class="ttc" id="aarray_8hpp_html"><div class="ttname"><a href="array_8hpp.html">array.hpp</a></div><div class="ttdoc">Declaration of the Array class for 2D floating-point arrays with various mathematical operations and ...</div></div>
