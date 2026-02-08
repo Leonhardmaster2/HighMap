@@ -3,6 +3,7 @@
   <compounddef id="deposition_8cpp" kind="file" language="C++">
     <compoundname>deposition.cpp</compoundname>
     <innernamespace refid="namespacehmap">hmap</innernamespace>
+    <innernamespace refid="namespacehmap_1_1gpu">hmap::gpu</innernamespace>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
@@ -216,52 +217,57 @@
 <codeline lineno="206"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="207"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="208"><highlight class="normal"></highlight></codeline>
-<codeline lineno="209"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespacehmap_1a9d594d0e16132aeef59e1680789b886e" kindref="member">sediment_layer</ref>(Array<sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;z,</highlight></codeline>
-<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array<sp/>&amp;talus_layer,</highlight></codeline>
-<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array<sp/>&amp;talus_upper_limit,</highlight></codeline>
-<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>iterations,</highlight></codeline>
-<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>apply_post_filter,</highlight></codeline>
-<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Array<sp/><sp/><sp/><sp/><sp/><sp/><sp/>*p_deposition_map)</highlight></codeline>
-<codeline lineno="215"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="216"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>backup<sp/>input</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="217"><highlight class="normal"><sp/><sp/>Array<sp/>z_bckp<sp/>=<sp/>z;</highlight></codeline>
-<codeline lineno="218"><highlight class="normal"></highlight></codeline>
-<codeline lineno="219"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>prepare<sp/>talus</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="220"><highlight class="normal"><sp/><sp/>Array<sp/>g_talus<sp/>=<sp/><ref refid="namespacehmap_1a618fb6d396a832c3dd1f053bfd27eed4" kindref="member">gradient_talus</ref>(z);</highlight></codeline>
-<codeline lineno="221"><highlight class="normal"><sp/><sp/>Array<sp/>talus_ref<sp/>=<sp/>talus_layer;</highlight></codeline>
-<codeline lineno="222"><highlight class="normal"><sp/><sp/>Array<sp/>fmask<sp/>=<sp/>Array(z.shape,<sp/>1.f);</highlight></codeline>
+<codeline lineno="209"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>hmap</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacehmap_1_1gpu" kindref="compound">hmap::gpu</ref></highlight></codeline>
+<codeline lineno="212"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespacehmap_1_1gpu_1aec782e6aba3f4cfbbd97aafa46cc700b" kindref="member">sediment_layer</ref>(Array<sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;z,</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array<sp/>&amp;talus_layer,</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array<sp/>&amp;talus_upper_limit,</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>iterations,</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>apply_post_filter,</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Array<sp/><sp/><sp/><sp/><sp/><sp/><sp/>*p_deposition_map)</highlight></codeline>
+<codeline lineno="220"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>backup<sp/>input</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/>Array<sp/>z_bckp<sp/>=<sp/>z;</highlight></codeline>
 <codeline lineno="223"><highlight class="normal"></highlight></codeline>
-<codeline lineno="224"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/>z.shape.y;<sp/>j++)</highlight></codeline>
-<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>z.shape.x;<sp/>i++)</highlight></codeline>
-<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(g_talus(i,<sp/>j)<sp/>&gt;<sp/>talus_upper_limit(i,<sp/>j))</highlight></codeline>
-<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fmask(i,<sp/>j)<sp/>=<sp/>0.f;</highlight></codeline>
-<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>talus_ref(i,<sp/>j)<sp/>=<sp/>4.f<sp/>*<sp/>(g_talus(i,<sp/>j)<sp/>-<sp/>talus_upper_limit(i,<sp/>j))<sp/>+</highlight></codeline>
-<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>talus_upper_limit(i,<sp/>j);</highlight></codeline>
-<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="232"><highlight class="normal"></highlight></codeline>
-<codeline lineno="233"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>apply<sp/>thermal<sp/>erosion<sp/>with<sp/>prepared<sp/>inputs</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="234"><highlight class="normal"><sp/><sp/>Array<sp/>sediment_layer_map(z.shape);</highlight></codeline>
-<codeline lineno="235"><highlight class="normal"></highlight></codeline>
-<codeline lineno="236"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ab6221592aa07d117715b474afab7db1c" kindref="member">thermal</ref>(z,<sp/>talus_ref,<sp/>iterations,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>&amp;sediment_layer_map);</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>prepare<sp/>talus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/>Array<sp/>g_talus<sp/>=<sp/><ref refid="namespacehmap_1a618fb6d396a832c3dd1f053bfd27eed4" kindref="member">gradient_talus</ref>(z);</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/>Array<sp/>talus_ref<sp/>=<sp/>talus_layer;</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/>Array<sp/>fmask<sp/>=<sp/>Array(z.shape,<sp/>1.f);</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/>z.shape.y;<sp/>j++)</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>z.shape.x;<sp/>i++)</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(g_talus(i,<sp/>j)<sp/>&gt;<sp/>talus_upper_limit(i,<sp/>j))</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fmask(i,<sp/>j)<sp/>=<sp/>0.f;</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>talus_ref(i,<sp/>j)<sp/>=<sp/>4.f<sp/>*<sp/>(g_talus(i,<sp/>j)<sp/>-<sp/>talus_upper_limit(i,<sp/>j))<sp/>+</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>talus_upper_limit(i,<sp/>j);</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="237"><highlight class="normal"></highlight></codeline>
-<codeline lineno="238"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>smooth<sp/>transitions</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="239"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(apply_post_filter)</highlight></codeline>
-<codeline lineno="240"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
-<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a62f3ce1778309a90b37d34e727e4f040" kindref="member">laplace</ref>(sediment_layer_map,<sp/>0.2f);</highlight></codeline>
-<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/>z<sp/>=<sp/>z_bckp<sp/>+<sp/>sediment_layer_map;</highlight></codeline>
-<codeline lineno="243"><highlight class="normal"></highlight></codeline>
-<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>filter<sp/>also<sp/>the<sp/>deposition<sp/>layer<sp/>only<sp/>(and<sp/>also<sp/>filter<sp/>the<sp/>mask</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>itself<sp/>to<sp/>avoid<sp/>kinky<sp/>spatial<sp/>transitions)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a62f3ce1778309a90b37d34e727e4f040" kindref="member">laplace</ref>(fmask,<sp/>0.2f);</highlight></codeline>
-<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a62f3ce1778309a90b37d34e727e4f040" kindref="member">laplace</ref>(z,<sp/>&amp;fmask,<sp/>0.2f);</highlight></codeline>
-<codeline lineno="248"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="249"><highlight class="normal"></highlight></codeline>
-<codeline lineno="250"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>output<sp/>deposition<sp/>map</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="251"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(p_deposition_map)<sp/>*p_deposition_map<sp/>=<sp/>sediment_layer_map;</highlight></codeline>
-<codeline lineno="252"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="253"><highlight class="normal"></highlight></codeline>
-<codeline lineno="254"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>hmap</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>apply<sp/>thermal<sp/>erosion<sp/>with<sp/>prepared<sp/>inputs</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/>Array<sp/>sediment_layer_map(z.shape);</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"></highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1a2eb4bdf2d7dc4441e56865027764425e" kindref="member">gpu::thermal</ref>(z,<sp/>talus_ref,<sp/>iterations,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>&amp;sediment_layer_map);</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"></highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>smooth<sp/>transitions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(apply_post_filter)</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>hmap::laplace(sediment_layer_map);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/>z<sp/>=<sp/>z_bckp<sp/>+<sp/>sediment_layer_map;</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>filter<sp/>also<sp/>the<sp/>deposition<sp/>layer<sp/>only<sp/>(and<sp/>also<sp/>filter<sp/>the<sp/>mask</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>itself<sp/>to<sp/>avoid<sp/>kinky<sp/>spatial<sp/>transitions)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a62f3ce1778309a90b37d34e727e4f040" kindref="member">hmap::laplace</ref>(fmask);</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a62f3ce1778309a90b37d34e727e4f040" kindref="member">hmap::laplace</ref>(z,<sp/>&amp;fmask);</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>output<sp/>deposition<sp/>map</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(p_deposition_map)<sp/>*p_deposition_map<sp/>=<sp/>sediment_layer_map;</highlight></codeline>
+<codeline lineno="257"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"></highlight></codeline>
+<codeline lineno="259"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>hmap::gpu</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="HighMap/src/erosion/deposition.cpp"/>
   </compounddef>
