@@ -26,9 +26,7 @@ int main(void)
   float kc = 64.f;
 
   auto lambda = [](hmap::Array &x)
-  {
-    hmap::hydraulic_stream_log(x, 0.1f, 0.001f);
-  };
+  { hmap::hydraulic_stream_log(x, 0.1f, 0.001f); };
 
   // apply the erosion to each array with different resolutions
   // (results should be the same)

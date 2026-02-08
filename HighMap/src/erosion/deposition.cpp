@@ -206,6 +206,11 @@ void sediment_deposition_particle(Array &z,
   }
 }
 
+} // namespace hmap
+
+namespace hmap::gpu
+{
+
 void sediment_layer(Array       &z,
                     const Array &talus_layer,
                     const Array &talus_upper_limit,
@@ -233,22 +238,22 @@ void sediment_layer(Array       &z,
   // apply thermal erosion with prepared inputs
   Array sediment_layer_map(z.shape);
 
-  thermal(z, talus_ref, iterations, nullptr, &sediment_layer_map);
+  gpu::thermal(z, talus_ref, iterations, nullptr, &sediment_layer_map);
 
   // smooth transitions
   if (apply_post_filter)
   {
-    laplace(sediment_layer_map, 0.2f);
+    // hmap::laplace(sediment_layer_map);
     z = z_bckp + sediment_layer_map;
 
     // filter also the deposition layer only (and also filter the mask
     // itself to avoid kinky spatial transitions)
-    laplace(fmask, 0.2f);
-    laplace(z, &fmask, 0.2f);
+    hmap::laplace(fmask);
+    hmap::laplace(z, &fmask);
   }
 
   // output deposition map
   if (p_deposition_map) *p_deposition_map = sediment_layer_map;
 }
 
-} // namespace hmap
+} // namespace hmap::gpu

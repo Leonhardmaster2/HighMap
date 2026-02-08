@@ -798,13 +798,6 @@ void sediment_deposition_particle(Array &z,
                                   float  deposition_velocity_limit = 0.01f,
                                   float  drag_rate = 0.001f);
 
-void sediment_layer(Array       &z,
-                    const Array &talus_layer,
-                    const Array &talus_upper_limit,
-                    int          iterations,
-                    bool         apply_post_filter = true,
-                    Array       *p_deposition_map = nullptr);
-
 /**
  * @brief Stratify the heightmap by creating a series of layers with elevations
  * corrected by a gamma factor.
@@ -1413,6 +1406,34 @@ void rifts(Array           &z,
            const Array     *p_mask = nullptr,
            const glm::vec2 &center = {0.5f, 0.5f},
            const glm::vec4 &bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
+ * @brief Applies a talus-based sediment deposition layer.
+ *
+ * Computes a sediment (deposition) map using thermal erosion constrained by
+ * per-cell talus limits. Optionally smooths the result and blends it back into
+ * the heightmap.
+ *
+ * @param[in,out] z                 Heightmap to modify.
+ * @param[in]     talus_layer       Base talus values for erosion.
+ * @param[in]     talus_upper_limit Upper talus threshold used for masking.
+ * @param[in]     iterations        Number of erosion iterations.
+ * @param[in]     apply_post_filter Enable post smoothing and blending.
+ * @param[out]    p_deposition_map  Optional output deposition map (may be
+ *                                  null).
+ *
+ * **Example**
+ * @include ex_sediment_layer.cpp
+ *
+ * **Result**
+ * @image html ex_sediment_layer.png
+ */
+void sediment_layer(Array       &z,
+                    const Array &talus_layer,
+                    const Array &talus_upper_limit,
+                    int          iterations,
+                    bool         apply_post_filter = true,
+                    Array       *p_deposition_map = nullptr);
 
 /**
  * @brief Applies stratification to a heightfield using directional noise and
