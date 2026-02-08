@@ -59,6 +59,10 @@ kernel void snow_simulation(read_only image2d_t  z,
   float flux_out = k_snow * excess * dt;
   flux_out = fmin(flux_out, sc);
 
+  // depth at which snow starts to lock
+  float mobility = exp(-sc / sc0);
+  flux_out *= mobility;
+
   float wl = max(0.f, Hc - Hl);
   float wr = max(0.f, Hc - Hr);
   float wd = max(0.f, Hc - Hd);
