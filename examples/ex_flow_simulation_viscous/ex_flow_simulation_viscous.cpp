@@ -14,18 +14,15 @@ int main(void)
                                   seed,
                                   8,
                                   0.7f);
-  z = hmap::bulkify(z, hmap::PrimitiveType::PRIM_CUBIC_PULSE, -1.f);
+  z = hmap::bulkify(z, hmap::PrimitiveType::PRIM_CUBIC_PULSE, 2.f);
   hmap::remap(z);
 
-  hmap::Array water_depth = hmap::gpu::flow_simulation(z,
-                                                       1e-2f,
-                                                       hmap::Array(shape, 1.f),
-                                                       400);
+  hmap::Array water_depth = hmap::gpu::flow_simulation_viscous(z);
 
   z.dump("z.png");
   water_depth.dump("depth.png");
 
-  hmap::export_banner_png("ex_flow_simulation.png",
+  hmap::export_banner_png("ex_flow_simulation_viscous.png",
                           {z, z + water_depth, water_depth},
                           hmap::Cmap::JET);
 }

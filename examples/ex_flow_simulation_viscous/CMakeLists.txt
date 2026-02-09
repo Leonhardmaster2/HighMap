@@ -1,0 +1,2 @@
+add_executable(ex_flow_simulation_viscous ex_flow_simulation_viscous.cpp)
+target_link_libraries(ex_flow_simulation_viscous highmap)
