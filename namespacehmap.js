@@ -814,6 +814,7 @@ var namespacehmap =
     [ "flow_stream", "namespacehmap.html#a948b4703486f175cd2681bd9bc7b5a88", null ],
     [ "generate_riverbed", "namespacehmap.html#a30d55fae5c75a1c45a005a3f9a9467eb", null ],
     [ "merge_water_depths", "namespacehmap.html#a64fbc0261e13ea842762efd3ac6bcc53", null ],
+    [ "snow_melting_map", "namespacehmap.html#a42fec0cdda2ebdb7cbf67dd6d0da5f9f", null ],
     [ "water_depth_from_mask", "namespacehmap.html#a121c42071766df393b6e049315876d5e", null ],
     [ "water_depth_dry_out", "namespacehmap.html#a3aebd62906b90ccfde11140e13b0853f", null ],
     [ "water_depth_increase", "namespacehmap.html#a136f042ce2ad8c14033f4d839f56265d", null ],

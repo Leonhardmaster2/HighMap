@@ -13,6 +13,6 @@ var dir_ce6c722236ab9f2244a54aefafe425a2 =
     [ "flow_stream.cpp", "flow__stream_8cpp.html", "flow__stream_8cpp" ],
     [ "generate_riverbed.cpp", "generate__riverbed_8cpp.html", "generate__riverbed_8cpp" ],
     [ "generate_riverbed_gpu.cpp", "generate__riverbed__gpu_8cpp.html", null ],
-    [ "snow_simulation.cpp", "snow__simulation_8cpp.html", null ],
+    [ "snow_simulation.cpp", "snow__simulation_8cpp.html", "snow__simulation_8cpp" ],
     [ "water_depth.cpp", "water__depth_8cpp.html", "water__depth_8cpp" ]
 ];
