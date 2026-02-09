@@ -114,7 +114,7 @@ var searchData=
   ['smoothstep5_5fupper_111',['smoothstep5_upper',['../namespacehmap.html#aae372587e98d5acb969a89a5f0661019',1,'hmap::smoothstep5_upper(float x)'],['../namespacehmap.html#a8ca69cf3fef2d995719ff4284f6c50b8',1,'hmap::smoothstep5_upper(const Array &amp;x)']]],
   ['smoothstep7_112',['smoothstep7',['../namespacehmap.html#ae7d9d43c2cd453af7a6395cbcb2ac3b2',1,'hmap::smoothstep7(float x)'],['../namespacehmap.html#af37d772a8b2ab47144d459fd35aaf7dc',1,'hmap::smoothstep7(const Array &amp;x)']]],
   ['smoothstep_5flocal_113',['smoothstep_local',['../namespacehmap.html#aa0d8c9cba830c501ac318cf6510a78ad',1,'hmap::smoothstep_local(Array &amp;array, int ir)'],['../namespacehmap.html#ac4ed13c5d45906009461972781263b06',1,'hmap::smoothstep_local(Array &amp;array, int ir, const Array *p_mask)']]],
-  ['snow_5fmelting_5fmap_114',['snow_melting_map',['../namespacehmap.html#a42fec0cdda2ebdb7cbf67dd6d0da5f9f',1,'hmap']]],
+  ['snow_5fmelting_5fmap_114',['snow_melting_map',['../namespacehmap.html#a78419f7981186b40c4a2d04456e4e63f',1,'hmap']]],
   ['solve_5fpoisson_5fgauss_5fseidel_115',['solve_poisson_gauss_seidel',['../namespacehmap.html#a0bcc84aa462aee73e1a3a52729f21ea6',1,'hmap']]],
   ['sort_5fpoints_116',['sort_points',['../namespacehmap.html#a69877ef43645c767daa0735fde59821c',1,'hmap']]],
   ['sqrt_117',['sqrt',['../namespacehmap.html#a6b608e2826c1f9ba54a0e8922d5faa6b',1,'hmap']]],
