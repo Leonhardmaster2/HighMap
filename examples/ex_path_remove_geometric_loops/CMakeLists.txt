@@ -1,0 +1,2 @@
+add_executable(ex_path_remove_geometric_loops ex_path_remove_geometric_loops.cpp)
+target_link_libraries(ex_path_remove_geometric_loops highmap)

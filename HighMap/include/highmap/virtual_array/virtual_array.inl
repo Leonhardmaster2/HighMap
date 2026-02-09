@@ -249,11 +249,13 @@ void single_array_compute(const TileAccess &access, Func &&func, int stride = 1)
 
   // project
   for (auto *va : access.inputs)
-    arrays_in.push_back(va ?  va->to_array(cm_local).resample_to_shape(shape_wrk) : Array());
+    arrays_in.push_back(va ? va->to_array(cm_local).resample_to_shape(shape_wrk)
+                           : Array());
 
   for (auto *va : access.outputs)
     // TODO remove to_array(), left for retor-fit but misusage
-    arrays_out.push_back(va ?  va->to_array(cm_local).resample_to_shape(shape_wrk) : Array());
+    arrays_out.push_back(
+        va ? va->to_array(cm_local).resample_to_shape(shape_wrk) : Array());
 
   // create pointer vector for user func
   std::vector<const Array *> in_tiles;

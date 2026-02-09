@@ -80,6 +80,11 @@ float cross_product(const Point &p0, const Point &p1, const Point &p2)
   return v1x * v2y - v1y * v2x;
 }
 
+float cross_product(const Point &p1, const Point &p2)
+{
+  return p1.x * p2.y - p1.y * p2.x;
+}
+
 float curvature(const Point &p1, const Point &p2, const Point &p3)
 {
   float d = distance(p1, p2) * distance(p1, p3) * distance(p1, p3);
@@ -216,9 +221,25 @@ Point midpoint(const Point &p1,
   return displaced_midpoint;
 }
 
-glm::vec4 unit_square_bbox()
+std::optional<Point> segment_intersection(const Point &p1,
+                                          const Point &p2,
+                                          const Point &q1,
+                                          const Point &q2)
 {
-  return glm::vec4(0.f, 1.f, 0.f, 1.f);
+  Point r{p2.x - p1.x, p2.y - p1.y};
+  Point s{q2.x - q1.x, q2.y - q1.y};
+  float rxs = cross_product(r, s);
+  float qpxr = cross_product({q1.x - p1.x, q1.y - p1.y}, r);
+
+  if (std::abs(rxs) < 1e-10) return std::nullopt; // parallel or collinear
+
+  float t = cross_product({q1.x - p1.x, q1.y - p1.y}, s) / rxs;
+  float u = qpxr / rxs;
+
+  if (t >= 0 && t <= 1 && u >= 0 && u <= 1)
+    return Point{p1.x + t * r.x, p1.y + t * r.y, p1.v + t * r.v};
+
+  return std::nullopt; // no intersection
 }
 
 // HELPER
@@ -237,6 +258,11 @@ float triangle_area(const Point &p1, const Point &p2, const Point &p3)
 {
   return 0.5f * std::abs(p1.x * (p2.y - p3.y) + p2.x * (p3.y - p1.y) +
                          p3.x * (p1.y - p2.y));
+}
+
+glm::vec4 unit_square_bbox()
+{
+  return glm::vec4(0.f, 1.f, 0.f, 1.f);
 }
 
 } // namespace hmap

@@ -942,4 +942,22 @@ Path find_cut_path_midpoint(const Array   &z,
                             int            midp_iterations = 4,
                             float          midp_sigma = 0.2f);
 
+/**
+ * @brief Removes geometric loops in a 2D path caused by self-intersections.
+ *
+ * This function iteratively detects self-intersections in the path and removes
+ * the segments forming loops, optionally inserting the exact intersection
+ * points.
+ *
+ * @param  path The input path as a vector of 2D points.
+ * @return      Path The simplified path with self-intersecting loops removed.
+ *
+ * **Example**
+ * @include ex_path_remove_geometry_loops.cpp
+ *
+ * **Result**
+ * @image html ex_path_remove_geometry_loops.png
+ */
+Path remove_geometric_loops(const Path &path);
+
 } // namespace hmap

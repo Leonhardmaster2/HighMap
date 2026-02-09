@@ -24,6 +24,7 @@
  */
 #pragma once
 #include <cmath>
+#include <optional>
 
 #include "highmap/array.hpp"
 
@@ -226,6 +227,7 @@ float angle(const Point &p0, const Point &p1, const Point &p2);
  *         - Zero if the points are collinear.
  */
 float cross_product(const Point &p0, const Point &p1, const Point &p2);
+float cross_product(const Point &p1, const Point &p2);
 
 /**
  * @brief Calculates the curvature formed by three points in 2D space.
@@ -454,6 +456,21 @@ Point midpoint(const Point &p1,
                int          orientation,
                float        distance_ratio,
                float        t = 0.5f);
+
+/**
+ * @brief Computes the intersection point of two 2D segments, if it exists.
+ *
+ * @param  p1 Start point of the first segment.
+ * @param  p2 End point of the first segment.
+ * @param  q1 Start point of the second segment.
+ * @param  q2 End point of the second segment.
+ * @return    std::optional<Point> The intersection point if the segments
+ *            intersect; std::nullopt otherwise.
+ */
+std::optional<Point> segment_intersection(const Point &p1,
+                                          const Point &p2,
+                                          const Point &q1,
+                                          const Point &q2);
 
 /**
  * @brief Sorts a vector of points in ascending order based on their

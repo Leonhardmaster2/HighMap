@@ -1043,4 +1043,41 @@ void dig_river(Array      &z,
             p_mask);
 }
 
+Path remove_geometric_loops(const Path &path)
+{
+  if (path.get_npoints() < 4) return path; // no loops possible
+
+  Path result = path;
+  bool changed;
+
+  do
+  {
+    changed = false;
+    for (size_t i = 0; i + 1 < result.get_npoints(); ++i)
+    {
+      for (size_t j = i + 2; j + 1 < result.get_npoints(); ++j)
+      {
+        auto inter = segment_intersection(result.points[i],
+                                          result.points[i + 1],
+                                          result.points[j],
+                                          result.points[j + 1]);
+        if (inter)
+        {
+          // remove points between segments i+1 and j
+          result.points.erase(result.points.begin() + i + 1,
+                              result.points.begin() + j + 1);
+
+          // insert intersection point
+          result.points.insert(result.points.begin() + i + 1, *inter);
+          changed = true;
+          break;
+        }
+      }
+      if (changed) break;
+    }
+  } while (changed);
+
+  return result;
+}
+
 } // namespace hmap
