@@ -16,6 +16,7 @@ Array snow_melting_map(const Array &z,
                        float        melt_start_elevation,
                        float        melt_end_elevation,
                        float        elevation_exp,
+                       float        elevation_strength,
                        float        sun_azimuth,
                        float        sun_zenith,
                        float        aspect_strength,
@@ -57,14 +58,12 @@ Array snow_melting_map(const Array &z,
       m_slope = std::clamp(m_slope, 0.f, 1.f);
 
       // combine
-      float mc = 1.f - m_elev;
+      float mc = elevation_strength * (1.f - m_elev);
       mc = std::max(mc, m_aspect * aspect_strength);
       mc = std::max(mc, m_slope * slope_strength);
 
       map(i, j) = mc;
     }
-
-  map.dump("map.png");
 
   return map;
 }
