@@ -493,6 +493,41 @@ Array merge_water_depths(const Array &depth1,
                          float        k_smooth = 0.f);
 
 /**
+ * @brief Generate a spatial snow melting map from terrain features.
+ *
+ * Computes a melting factor in [0,1] from elevation, slope, and sun exposure.
+ * Low elevations, steep slopes, and sun-facing orientations increase melting.
+ *
+ * @param  z                    Input terrain elevation.
+ * @param  melt_start_elevation Elevation where melting starts (no melt below).
+ * @param  melt_end_elevation   Elevation where melting reaches full effect.
+ * @param  elevation_exp        Exponent controlling elevation melt falloff.
+ * @param  sun_azimuth          Sun azimuth angle in degrees.
+ * @param  sun_zenith           Sun zenith angle in degrees.
+ * @param  aspect_strength      Weight of sun exposure contribution.
+ * @param  slope_exp            Exponent controlling slope sensitivity.
+ * @param  slope_strength       Weight of slope contribution.
+ *
+ * @return                      Melting map with values in [0,1], where higher
+ *                              values indicate stronger melting.
+ *
+ * **Example**
+ * @include ex_snow_simulation.cpp
+ *
+ * **Result**
+ * @image html ex_snow_simulation.png
+ */
+Array snow_melting_map(const Array &z,
+                       float        melt_start_elevation = 0.f,
+                       float        melt_end_elevation = 0.5f,
+                       float        elevation_exp = 1.f,
+                       float        sun_azimuth = 0.f,
+                       float        sun_zenith = 60.f,
+                       float        aspect_strength = 0.f,
+                       float        slope_exp = 1.f,
+                       float        slope_strength = 0.f);
+
+/**
  * @brief Compute water depth over a masked terrain using harmonic
  * interpolation.
  *
@@ -744,10 +779,10 @@ Array snow_simulation(const Array &z,
                       int          iterations,
                       float        dt = 0.5f,
                       float        fall_iterations_ratio = 1.f,
-                      float        k_snow = 0.6f,
+                      float        k_snow = 0.5f,
                       float        k_visc = 0.1f,
                       float        k_melt_factor = 0.8f,
-                      float        k_depth_ratio = 0.1f,
+                      float        k_depth_ratio = 1.f,
                       float        k_depth_slope_ratio = 1.f,
                       bool         post_filter = true,
                       float        thermal_talus_ratio = 0.2f);

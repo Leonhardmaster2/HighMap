@@ -2,11 +2,74 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 #include "highmap/boundary.hpp"
+#include "highmap/curvature.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/gradient.hpp"
 #include "highmap/math.hpp"
 #include "highmap/opencl/gpu_opencl.hpp"
 #include "highmap/range.hpp"
+
+namespace hmap
+{
+
+Array snow_melting_map(const Array &z,
+                       float        melt_start_elevation,
+                       float        melt_end_elevation,
+                       float        elevation_exp,
+                       float        sun_azimuth,
+                       float        sun_zenith,
+                       float        aspect_strength,
+                       float        slope_exp,
+                       float        slope_strength)
+{
+  const glm::ivec2 shape = z.shape;
+  Array            map(shape); // output
+
+  const float azimuth_rad = M_PI * sun_azimuth / 180.f;
+  const float zenith_rad = M_PI * sun_zenith / 180.f;
+  const float cz = std::cos(zenith_rad);
+  const float sz = std::sin(zenith_rad);
+
+  // gradient features
+  Array aspect = gradient_angle(z, true);
+  Array dn = 0.5f * gradient_norm(z) * shape.x;
+
+  for (int j = 0; j < shape.y; ++j)
+    for (int i = 0; i < shape.x; ++i)
+    {
+      float h = z(i, j);
+
+      // elevation
+      float m_elev = (h - melt_start_elevation) /
+                     (melt_end_elevation - melt_start_elevation);
+      m_elev = std::clamp(m_elev, 0.f, 1.f);
+      m_elev = gain(m_elev, elevation_exp);
+
+      // sun
+      float slope = std::atan(dn(i, j));
+      float m_aspect = cz * std::cos(slope) +
+                       sz * std::sin(slope) *
+                           std::cos(azimuth_rad - aspect(i, j));
+      m_aspect = std::clamp(m_aspect, 0.f, 1.f);
+
+      // slope
+      float m_slope = std::pow(slope, slope_exp);
+      m_slope = std::clamp(m_slope, 0.f, 1.f);
+
+      // combine
+      float mc = 1.f - m_elev;
+      mc = std::max(mc, m_aspect * aspect_strength);
+      mc = std::max(mc, m_slope * slope_strength);
+
+      map(i, j) = mc;
+    }
+
+  map.dump("map.png");
+
+  return map;
+}
+
+} // namespace hmap
 
 namespace hmap::gpu
 {
@@ -28,9 +91,7 @@ Array snow_simulation(const Array &z,
                       float        thermal_talus_ratio)
 {
   const glm::ivec2 shape = z.shape;
-
-  // output
-  Array s(shape);
+  Array            s(shape); // output
 
   // computed parameters
   const float k_melt = k_melt_factor / int(iterations);
