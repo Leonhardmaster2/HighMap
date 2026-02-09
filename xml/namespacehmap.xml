@@ -25830,6 +25830,40 @@ This function:<itemizedlist>
         </inbodydescription>
         <location file="HighMap/src/geometry/find_cut_path.cpp" line="120" column="6" bodyfile="HighMap/src/geometry/find_cut_path.cpp" bodystart="120" bodyend="229" declfile="HighMap/include/highmap/geometry/path.hpp" declline="938" declcolumn="6"/>
       </memberdef>
+      <memberdef kind="function" id="namespacehmap_1a650c6eaf8bd10356a77c7c1f9ef9af3c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classhmap_1_1Path" kindref="compound">Path</ref></type>
+        <definition>Path hmap::remove_geometric_loops</definition>
+        <argsstring>(const Path &amp;path)</argsstring>
+        <name>remove_geometric_loops</name>
+        <qualifiedname>hmap::remove_geometric_loops</qualifiedname>
+        <param>
+          <type>const <ref refid="classhmap_1_1Path" kindref="compound">Path</ref> &amp;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+<para>Removes geometric loops in a 2D path caused by self-intersections. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function iteratively detects self-intersections in the path and removes the segments forming loops, optionally inserting the exact intersection points.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>path</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The input path as a vector of 2D points. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classhmap_1_1Path" kindref="compound">Path</ref> The simplified path with self-intersecting loops removed.</para>
+</simplesect>
+<bold>Example</bold> <programlisting filename="ex_path_remove_geometry_loops.cpp"></programlisting></para>
+<para><bold>Result</bold> <image type="html" name="ex_path_remove_geometry_loops.png"></image>
+ </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/geometry/path.cpp" line="1046" column="6" bodyfile="HighMap/src/geometry/path.cpp" bodystart="1046" bodyend="1081" declfile="HighMap/include/highmap/geometry/path.hpp" declline="961" declcolumn="6"/>
+      </memberdef>
       <memberdef kind="function" id="namespacehmap_1aac71bb6c14edc17967957f7918acdbdd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>float</type>
         <definition>float hmap::angle</definition>
@@ -25872,7 +25906,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/points.cpp" line="42" column="7" bodyfile="HighMap/src/geometry/points.cpp" bodystart="42" bodyend="45" declfile="HighMap/include/highmap/geometry/point.hpp" declline="188" declcolumn="7"/>
+        <location file="HighMap/src/geometry/points.cpp" line="42" column="7" bodyfile="HighMap/src/geometry/points.cpp" bodystart="42" bodyend="45" declfile="HighMap/include/highmap/geometry/point.hpp" declline="189" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a1f02679c93973b91046f26960bf266d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>float</type>
@@ -25930,7 +25964,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/points.cpp" line="47" column="7" bodyfile="HighMap/src/geometry/points.cpp" bodystart="47" bodyend="69" declfile="HighMap/include/highmap/geometry/point.hpp" declline="209" declcolumn="7"/>
+        <location file="HighMap/src/geometry/points.cpp" line="47" column="7" bodyfile="HighMap/src/geometry/points.cpp" bodystart="47" bodyend="69" declfile="HighMap/include/highmap/geometry/point.hpp" declline="210" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a81ad5d7feec9716598307f4de02d47de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>float</type>
@@ -25991,7 +26025,29 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/points.cpp" line="71" column="7" bodyfile="HighMap/src/geometry/points.cpp" bodystart="71" bodyend="81" declfile="HighMap/include/highmap/geometry/point.hpp" declline="228" declcolumn="7"/>
+        <location file="HighMap/src/geometry/points.cpp" line="71" column="7" bodyfile="HighMap/src/geometry/points.cpp" bodystart="71" bodyend="81" declfile="HighMap/include/highmap/geometry/point.hpp" declline="229" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehmap_1a088f13a41a6ec41ad6fbc7f235da0dbc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float hmap::cross_product</definition>
+        <argsstring>(const Point &amp;p1, const Point &amp;p2)</argsstring>
+        <name>cross_product</name>
+        <qualifiedname>hmap::cross_product</qualifiedname>
+        <param>
+          <type>const <ref refid="classhmap_1_1Point" kindref="compound">Point</ref> &amp;</type>
+          <declname>p1</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classhmap_1_1Point" kindref="compound">Point</ref> &amp;</type>
+          <declname>p2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/geometry/points.cpp" line="83" column="7" bodyfile="HighMap/src/geometry/points.cpp" bodystart="83" bodyend="86" declfile="HighMap/include/highmap/geometry/point.hpp" declline="230" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a30122e874f6a99af65954458cc9e4de9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>float</type>
@@ -26046,7 +26102,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/points.cpp" line="83" column="7" bodyfile="HighMap/src/geometry/points.cpp" bodystart="83" bodyend="91" declfile="HighMap/include/highmap/geometry/point.hpp" declline="238" declcolumn="7"/>
+        <location file="HighMap/src/geometry/points.cpp" line="88" column="7" bodyfile="HighMap/src/geometry/points.cpp" bodystart="88" bodyend="96" declfile="HighMap/include/highmap/geometry/point.hpp" declline="240" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a567410971127d39a9e3c2d7b75364def" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>float</type>
@@ -26090,7 +26146,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/points.cpp" line="93" column="7" bodyfile="HighMap/src/geometry/points.cpp" bodystart="93" bodyend="98" declfile="HighMap/include/highmap/geometry/point.hpp" declline="249" declcolumn="7"/>
+        <location file="HighMap/src/geometry/points.cpp" line="98" column="7" bodyfile="HighMap/src/geometry/points.cpp" bodystart="98" bodyend="103" declfile="HighMap/include/highmap/geometry/point.hpp" declline="251" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ac5cbdd19410027f3d4e26fd68fd9bdb7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Point" kindref="compound">Point</ref></type>
@@ -26214,7 +26270,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/points.cpp" line="100" column="7" bodyfile="HighMap/src/geometry/points.cpp" bodystart="100" bodyend="114" declfile="HighMap/include/highmap/geometry/point.hpp" declline="273" declcolumn="7"/>
+        <location file="HighMap/src/geometry/points.cpp" line="105" column="7" bodyfile="HighMap/src/geometry/points.cpp" bodystart="105" bodyend="119" declfile="HighMap/include/highmap/geometry/point.hpp" declline="275" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1af148c924b422baa2e359e0788b7392d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Point" kindref="compound">Point</ref></type>
@@ -26338,7 +26394,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/points.cpp" line="116" column="7" bodyfile="HighMap/src/geometry/points.cpp" bodystart="116" bodyend="129" declfile="HighMap/include/highmap/geometry/point.hpp" declline="302" declcolumn="7"/>
+        <location file="HighMap/src/geometry/points.cpp" line="121" column="7" bodyfile="HighMap/src/geometry/points.cpp" bodystart="121" bodyend="134" declfile="HighMap/include/highmap/geometry/point.hpp" declline="304" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ac7a93fe9501041332e1ff7a128742c6f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Point" kindref="compound">Point</ref></type>
@@ -26462,7 +26518,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/points.cpp" line="131" column="7" bodyfile="HighMap/src/geometry/points.cpp" bodystart="131" bodyend="143" declfile="HighMap/include/highmap/geometry/point.hpp" declline="331" declcolumn="7"/>
+        <location file="HighMap/src/geometry/points.cpp" line="136" column="7" bodyfile="HighMap/src/geometry/points.cpp" bodystart="136" bodyend="148" declfile="HighMap/include/highmap/geometry/point.hpp" declline="333" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aab4ce9b01f013efdc3dd817da4177737" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Point" kindref="compound">Point</ref></type>
@@ -26551,7 +26607,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/points.cpp" line="145" column="7" bodyfile="HighMap/src/geometry/points.cpp" bodystart="145" bodyend="154" declfile="HighMap/include/highmap/geometry/point.hpp" declline="360" declcolumn="7"/>
+        <location file="HighMap/src/geometry/points.cpp" line="150" column="7" bodyfile="HighMap/src/geometry/points.cpp" bodystart="150" bodyend="159" declfile="HighMap/include/highmap/geometry/point.hpp" declline="362" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a62068967763814bfbf05a505993c544a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>glm::vec4</type>
@@ -26595,7 +26651,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/points.cpp" line="156" column="11" bodyfile="HighMap/src/geometry/points.cpp" bodystart="156" bodyend="173" declfile="HighMap/include/highmap/geometry/point.hpp" declline="375" declcolumn="11"/>
+        <location file="HighMap/src/geometry/points.cpp" line="161" column="11" bodyfile="HighMap/src/geometry/points.cpp" bodystart="161" bodyend="178" declfile="HighMap/include/highmap/geometry/point.hpp" declline="377" declcolumn="11"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a6f161aa76459d3e12f7844b7d660c980" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -26639,7 +26695,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/points.cpp" line="175" column="6" bodyfile="HighMap/src/geometry/points.cpp" bodystart="175" bodyend="178" declfile="HighMap/include/highmap/geometry/point.hpp" declline="392" declcolumn="6"/>
+        <location file="HighMap/src/geometry/points.cpp" line="180" column="6" bodyfile="HighMap/src/geometry/points.cpp" bodystart="180" bodyend="183" declfile="HighMap/include/highmap/geometry/point.hpp" declline="394" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a538bb0deab3446abc04bbe26a4dd5da1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -26695,7 +26751,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/points.cpp" line="180" column="6" bodyfile="HighMap/src/geometry/points.cpp" bodystart="180" bodyend="183" declfile="HighMap/include/highmap/geometry/point.hpp" declline="408" declcolumn="6"/>
+        <location file="HighMap/src/geometry/points.cpp" line="185" column="6" bodyfile="HighMap/src/geometry/points.cpp" bodystart="185" bodyend="188" declfile="HighMap/include/highmap/geometry/point.hpp" declline="410" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ac14815cf025b7430d31d08125a5c6f0d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Point" kindref="compound">Point</ref></type>
@@ -26753,7 +26809,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/points.cpp" line="185" column="7" bodyfile="HighMap/src/geometry/points.cpp" bodystart="185" bodyend="188" declfile="HighMap/include/highmap/geometry/point.hpp" declline="425" declcolumn="7"/>
+        <location file="HighMap/src/geometry/points.cpp" line="190" column="7" bodyfile="HighMap/src/geometry/points.cpp" bodystart="190" bodyend="193" declfile="HighMap/include/highmap/geometry/point.hpp" declline="427" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a520a1e42c4e492e81b334914807abc22" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Point" kindref="compound">Point</ref></type>
@@ -26838,7 +26894,74 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/points.cpp" line="190" column="7" bodyfile="HighMap/src/geometry/points.cpp" bodystart="190" bodyend="217" declfile="HighMap/include/highmap/geometry/point.hpp" declline="452" declcolumn="7"/>
+        <location file="HighMap/src/geometry/points.cpp" line="195" column="7" bodyfile="HighMap/src/geometry/points.cpp" bodystart="195" bodyend="222" declfile="HighMap/include/highmap/geometry/point.hpp" declline="454" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehmap_1ae6135d0c9d4716e3edbd06bb67f26fb2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; <ref refid="classhmap_1_1Point" kindref="compound">Point</ref> &gt;</type>
+        <definition>std::optional&lt; Point &gt; hmap::segment_intersection</definition>
+        <argsstring>(const Point &amp;p1, const Point &amp;p2, const Point &amp;q1, const Point &amp;q2)</argsstring>
+        <name>segment_intersection</name>
+        <qualifiedname>hmap::segment_intersection</qualifiedname>
+        <param>
+          <type>const <ref refid="classhmap_1_1Point" kindref="compound">Point</ref> &amp;</type>
+          <declname>p1</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classhmap_1_1Point" kindref="compound">Point</ref> &amp;</type>
+          <declname>p2</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classhmap_1_1Point" kindref="compound">Point</ref> &amp;</type>
+          <declname>q1</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classhmap_1_1Point" kindref="compound">Point</ref> &amp;</type>
+          <declname>q2</declname>
+        </param>
+        <briefdescription>
+<para>Computes the intersection point of two 2D segments, if it exists. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>p1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Start point of the first segment. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>p2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>End point of the first segment. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>q1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Start point of the second segment. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>q2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>End point of the second segment. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>std::optional&lt;Point&gt; The intersection point if the segments intersect; std::nullopt otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/geometry/points.cpp" line="224" column="15" bodyfile="HighMap/src/geometry/points.cpp" bodystart="224" bodyend="243" declfile="HighMap/include/highmap/geometry/point.hpp" declline="470" declcolumn="15"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a69877ef43645c767daa0735fde59821c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -26868,7 +26991,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/points.cpp" line="231" column="6" bodyfile="HighMap/src/geometry/points.cpp" bodystart="231" bodyend="234" declfile="HighMap/include/highmap/geometry/point.hpp" declline="469" declcolumn="6"/>
+        <location file="HighMap/src/geometry/points.cpp" line="252" column="6" bodyfile="HighMap/src/geometry/points.cpp" bodystart="252" bodyend="255" declfile="HighMap/include/highmap/geometry/point.hpp" declline="486" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a9249226d73f4396157c1c6415ebf3a7c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>float</type>
@@ -26924,7 +27047,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/points.cpp" line="236" column="7" bodyfile="HighMap/src/geometry/points.cpp" bodystart="236" bodyend="240" declfile="HighMap/include/highmap/geometry/point.hpp" declline="484" declcolumn="7"/>
+        <location file="HighMap/src/geometry/points.cpp" line="257" column="7" bodyfile="HighMap/src/geometry/points.cpp" bodystart="257" bodyend="261" declfile="HighMap/include/highmap/geometry/point.hpp" declline="501" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aef71b544e3f4e5321cb3d41a7366e0f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>glm::vec4</type>
@@ -26943,7 +27066,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/points.cpp" line="219" column="11" bodyfile="HighMap/src/geometry/points.cpp" bodystart="219" bodyend="222" declfile="HighMap/include/highmap/geometry/point.hpp" declline="495" declcolumn="11"/>
+        <location file="HighMap/src/geometry/points.cpp" line="263" column="11" bodyfile="HighMap/src/geometry/points.cpp" bodystart="263" bodyend="266" declfile="HighMap/include/highmap/geometry/point.hpp" declline="512" declcolumn="11"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ad47906fd3938ef2cc8dbae87ad80a4c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::array&lt; std::pair&lt; float, float &gt;, 2 &gt;</type>
@@ -53426,7 +53549,7 @@ off&quot; values that fall below the threshold, which can be useful for filterin
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/points.cpp" line="225" column="6" bodyfile="HighMap/src/geometry/points.cpp" bodystart="225" bodyend="229"/>
+        <location file="HighMap/src/geometry/points.cpp" line="246" column="6" bodyfile="HighMap/src/geometry/points.cpp" bodystart="246" bodyend="250"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ad97b6a0082efd4063f7839c95a51b294" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>

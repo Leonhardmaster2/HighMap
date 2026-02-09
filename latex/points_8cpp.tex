@@ -14,6 +14,8 @@ float \mbox{\hyperlink{namespacehmap_a1f02679c93973b91046f26960bf266d4}{hmap\+::
 \begin{DoxyCompactList}\small\item\em Computes the angle formed by three points with the reference point as the origin. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{namespacehmap_a81ad5d7feec9716598307f4de02d47de}{hmap\+::cross\+\_\+product}} (const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p0, const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p1, const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p2)
 \begin{DoxyCompactList}\small\item\em Computes the 2D cross product of vectors formed by three points. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{namespacehmap_a088f13a41a6ec41ad6fbc7f235da0dbc}{hmap\+::cross\+\_\+product}} (const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p1, const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p2)
+\item 
 float \mbox{\hyperlink{namespacehmap_a30122e874f6a99af65954458cc9e4de9}{hmap\+::curvature}} (const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p1, const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p2, const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p3)
 \begin{DoxyCompactList}\small\item\em Calculates the curvature formed by three points in 2D space. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{namespacehmap_a567410971127d39a9e3c2d7b75364def}{hmap\+::distance}} (const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p1, const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p2)
@@ -36,11 +38,13 @@ bool \mbox{\hyperlink{namespacehmap_a538bb0deab3446abc04bbe26a4dd5da1}{hmap\+::i
 \begin{DoxyCompactList}\small\item\em Linearly interpolates between two points. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Point}{Point}} \mbox{\hyperlink{namespacehmap_a520a1e42c4e492e81b334914807abc22}{hmap\+::midpoint}} (const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p1, const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p2, int orientation, float distance\+\_\+ratio, float t=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Computes the midpoint displacement in 1D with a perpendicular displacement. \end{DoxyCompactList}\item 
-glm\+::vec4 \mbox{\hyperlink{namespacehmap_aef71b544e3f4e5321cb3d41a7366e0f3}{hmap\+::unit\+\_\+square\+\_\+bbox}} ()
-\begin{DoxyCompactList}\small\item\em Constructs a 4D bounding box for a unit square. \end{DoxyCompactList}\item 
+std\+::optional$<$ \mbox{\hyperlink{classhmap_1_1Point}{Point}} $>$ \mbox{\hyperlink{namespacehmap_ae6135d0c9d4716e3edbd06bb67f26fb2}{hmap\+::segment\+\_\+intersection}} (const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p1, const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p2, const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&q1, const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&q2)
+\begin{DoxyCompactList}\small\item\em Computes the intersection point of two 2D segments, if it exists. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{namespacehmap_ac070e7f9253f57fe6b44ad1f6c9fd753}{hmap\+::cmp\+\_\+inf}} (\mbox{\hyperlink{classhmap_1_1Point}{Point}} \&a, \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&b)
 \item 
 void \mbox{\hyperlink{namespacehmap_a69877ef43645c767daa0735fde59821c}{hmap\+::sort\+\_\+points}} (std\+::vector$<$ \mbox{\hyperlink{classhmap_1_1Point}{Point}} $>$ \&points)
 \begin{DoxyCompactList}\small\item\em Sorts a vector of points in ascending order based on their coordinates. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{namespacehmap_a9249226d73f4396157c1c6415ebf3a7c}{hmap\+::triangle\+\_\+area}} (const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p1, const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p2, const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p3)
-\begin{DoxyCompactList}\small\item\em Calculates the area of a triangle formed by three points in 2D space. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Calculates the area of a triangle formed by three points in 2D space. \end{DoxyCompactList}\item 
+glm\+::vec4 \mbox{\hyperlink{namespacehmap_aef71b544e3f4e5321cb3d41a7366e0f3}{hmap\+::unit\+\_\+square\+\_\+bbox}} ()
+\begin{DoxyCompactList}\small\item\em Constructs a 4D bounding box for a unit square. \end{DoxyCompactList}\end{DoxyCompactItemize}

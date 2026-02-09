@@ -977,12 +977,16 @@ void \mbox{\hyperlink{namespacehmap_a31b3cde3ce1fa52f1856b962f4443d49}{dig\+\_\+
 \begin{DoxyCompactList}\small\item\em Find a Dijkstra-\/based cut path between two domain boundaries. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Path}{Path}} \mbox{\hyperlink{namespacehmap_ae4132d5be84f747a499cbabcbc524cd8}{find\+\_\+cut\+\_\+path\+\_\+midpoint}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, \mbox{\hyperlink{namespacehmap_a1ba9d4ce7afe3309f8ae8e617f7154ee}{Domain\+Boundary}} start, \mbox{\hyperlink{namespacehmap_a1ba9d4ce7afe3309f8ae8e617f7154ee}{Domain\+Boundary}} end, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, int midp\+\_\+iterations=4, float midp\+\_\+sigma=0.\+2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \item 
+\mbox{\hyperlink{classhmap_1_1Path}{Path}} \mbox{\hyperlink{namespacehmap_a650c6eaf8bd10356a77c7c1f9ef9af3c}{remove\+\_\+geometric\+\_\+loops}} (const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&path)
+\begin{DoxyCompactList}\small\item\em Removes geometric loops in a 2D path caused by self-\/intersections. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}} (const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p1, const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p2)
 \begin{DoxyCompactList}\small\item\em Computes the angle between two points relative to the x-\/axis. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{namespacehmap_a1f02679c93973b91046f26960bf266d4}{angle}} (const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p0, const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p1, const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p2)
 \begin{DoxyCompactList}\small\item\em Computes the angle formed by three points with the reference point as the origin. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{namespacehmap_a81ad5d7feec9716598307f4de02d47de}{cross\+\_\+product}} (const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p0, const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p1, const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p2)
 \begin{DoxyCompactList}\small\item\em Computes the 2D cross product of vectors formed by three points. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{namespacehmap_a088f13a41a6ec41ad6fbc7f235da0dbc}{cross\+\_\+product}} (const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p1, const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p2)
+\item 
 float \mbox{\hyperlink{namespacehmap_a30122e874f6a99af65954458cc9e4de9}{curvature}} (const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p1, const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p2, const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p3)
 \begin{DoxyCompactList}\small\item\em Calculates the curvature formed by three points in 2D space. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{namespacehmap_a567410971127d39a9e3c2d7b75364def}{distance}} (const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p1, const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p2)
@@ -1005,6 +1009,8 @@ bool \mbox{\hyperlink{namespacehmap_a538bb0deab3446abc04bbe26a4dd5da1}{is\+\_\+p
 \begin{DoxyCompactList}\small\item\em Linearly interpolates between two points. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Point}{Point}} \mbox{\hyperlink{namespacehmap_a520a1e42c4e492e81b334914807abc22}{midpoint}} (const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p1, const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p2, int orientation, float distance\+\_\+ratio, float t=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Computes the midpoint displacement in 1D with a perpendicular displacement. \end{DoxyCompactList}\item 
+std\+::optional$<$ \mbox{\hyperlink{classhmap_1_1Point}{Point}} $>$ \mbox{\hyperlink{namespacehmap_ae6135d0c9d4716e3edbd06bb67f26fb2}{segment\+\_\+intersection}} (const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p1, const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p2, const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&q1, const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&q2)
+\begin{DoxyCompactList}\small\item\em Computes the intersection point of two 2D segments, if it exists. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a69877ef43645c767daa0735fde59821c}{sort\+\_\+points}} (std\+::vector$<$ \mbox{\hyperlink{classhmap_1_1Point}{Point}} $>$ \&points)
 \begin{DoxyCompactList}\small\item\em Sorts a vector of points in ascending order based on their coordinates. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{namespacehmap_a9249226d73f4396157c1c6415ebf3a7c}{triangle\+\_\+area}} (const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p1, const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p2, const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p3)
@@ -15504,7 +15510,33 @@ Selects the lowest point on the {\ttfamily start} and {\ttfamily end} boundaries
 \doxysubsubsection{\texorpdfstring{find\_cut\_path\_midpoint()}{find\_cut\_path\_midpoint()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Path}{Path}} hmap\+::find\+\_\+cut\+\_\+path\+\_\+midpoint (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{\mbox{\hyperlink{namespacehmap_a1ba9d4ce7afe3309f8ae8e617f7154ee}{Domain\+Boundary}}}]{start,  }\item[{\mbox{\hyperlink{namespacehmap_a1ba9d4ce7afe3309f8ae8e617f7154ee}{Domain\+Boundary}}}]{end,  }\item[{\mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{seed,  }\item[{int}]{midp\+\_\+iterations = {\ttfamily 4},  }\item[{float}]{midp\+\_\+sigma = {\ttfamily 0.2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
 
-\Hypertarget{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}\label{namespacehmap_aac71bb6c14edc17967957f7918acdbdd} 
+\Hypertarget{namespacehmap_a650c6eaf8bd10356a77c7c1f9ef9af3c}\label{namespacehmap_a650c6eaf8bd10356a77c7c1f9ef9af3c} 
+\index{hmap@{hmap}!remove\_geometric\_loops@{remove\_geometric\_loops}}
+\index{remove\_geometric\_loops@{remove\_geometric\_loops}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{remove\_geometric\_loops()}{remove\_geometric\_loops()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Path}{Path}} hmap\+::remove\+\_\+geometric\+\_\+loops (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&}]{path }\end{DoxyParamCaption})}
+
+
+
+Removes geometric loops in a 2D path caused by self-\/intersections. 
+
+This function iteratively detects self-\/intersections in the path and removes the segments forming loops, optionally inserting the exact intersection points.
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & The input path as a vector of 2D points. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classhmap_1_1Path}{Path} The simplified path with self-\/intersecting loops removed.
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}}  \Hypertarget{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}\label{namespacehmap_aac71bb6c14edc17967957f7918acdbdd} 
 \index{hmap@{hmap}!angle@{angle}}
 \index{angle@{angle}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{angle()}{angle()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
@@ -15556,7 +15588,7 @@ The angle is calculated using the 2D vectors defined by ( p0 \textbackslash{}rig
 \Hypertarget{namespacehmap_a81ad5d7feec9716598307f4de02d47de}\label{namespacehmap_a81ad5d7feec9716598307f4de02d47de} 
 \index{hmap@{hmap}!cross\_product@{cross\_product}}
 \index{cross\_product@{cross\_product}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{cross\_product()}{cross\_product()}}
+\doxysubsubsection{\texorpdfstring{cross\_product()}{cross\_product()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily float hmap\+::cross\+\_\+product (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&}]{p0,  }\item[{const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&}]{p1,  }\item[{const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&}]{p2 }\end{DoxyParamCaption})}
 
 
@@ -15582,6 +15614,12 @@ The scalar value of the 2D cross product.
 \item Zero if the points are collinear. 
 \end{DoxyItemize}
 \end{DoxyReturn}
+\Hypertarget{namespacehmap_a088f13a41a6ec41ad6fbc7f235da0dbc}\label{namespacehmap_a088f13a41a6ec41ad6fbc7f235da0dbc} 
+\index{hmap@{hmap}!cross\_product@{cross\_product}}
+\index{cross\_product@{cross\_product}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{cross\_product()}{cross\_product()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily float hmap\+::cross\+\_\+product (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&}]{p1,  }\item[{const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&}]{p2 }\end{DoxyParamCaption})}
+
 \Hypertarget{namespacehmap_a30122e874f6a99af65954458cc9e4de9}\label{namespacehmap_a30122e874f6a99af65954458cc9e4de9} 
 \index{hmap@{hmap}!curvature@{curvature}}
 \index{curvature@{curvature}!hmap@{hmap}}
@@ -16052,6 +16090,30 @@ This function generates a midpoint between two points {\ttfamily p1} and {\ttfam
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 A {\ttfamily \doxylink{classhmap_1_1Point}{Point}} representing the displaced midpoint. 
+\end{DoxyReturn}
+\Hypertarget{namespacehmap_ae6135d0c9d4716e3edbd06bb67f26fb2}\label{namespacehmap_ae6135d0c9d4716e3edbd06bb67f26fb2} 
+\index{hmap@{hmap}!segment\_intersection@{segment\_intersection}}
+\index{segment\_intersection@{segment\_intersection}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{segment\_intersection()}{segment\_intersection()}}
+{\footnotesize\ttfamily std\+::optional$<$ \mbox{\hyperlink{classhmap_1_1Point}{Point}} $>$ hmap\+::segment\+\_\+intersection (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&}]{p1,  }\item[{const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&}]{p2,  }\item[{const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&}]{q1,  }\item[{const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&}]{q2 }\end{DoxyParamCaption})}
+
+
+
+Computes the intersection point of two 2D segments, if it exists. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p1} & Start point of the first segment. \\
+\hline
+{\em p2} & End point of the first segment. \\
+\hline
+{\em q1} & Start point of the second segment. \\
+\hline
+{\em q2} & End point of the second segment. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::optional$<$\+Point$>$ The intersection point if the segments intersect; std\+::nullopt otherwise. 
 \end{DoxyReturn}
 \Hypertarget{namespacehmap_a69877ef43645c767daa0735fde59821c}\label{namespacehmap_a69877ef43645c767daa0735fde59821c} 
 \index{hmap@{hmap}!sort\_points@{sort\_points}}
