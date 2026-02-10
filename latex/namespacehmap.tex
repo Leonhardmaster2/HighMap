@@ -654,10 +654,6 @@ void \mbox{\hyperlink{namespacehmap_aa328e3342e845d021f300dcb6cb42fbc}{thermal\+
 \begin{DoxyCompactList}\small\item\em Applies the thermal erosion process with a uniform slope threshold. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_afe2e4c1e06205f5051ce6e86ea647a77}{thermal\+\_\+schott}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, const float talus, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+mask, int iterations=10, float intensity=0.\+001\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a9588003e71523b45a4eee88d8debc9b5}{watershed\+\_\+ridge}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, float amplitude=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, int ir=1, float edt\+\_\+exponent=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}{Flow\+Direction\+Method}} fd\+\_\+method=\mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894}{Flow\+Direction\+Method\+::\+FDM\+\_\+\+D8}})
-\begin{DoxyCompactList}\small\item\em Carves watershed ridges using basin-\/wise distance transforms. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a4747b0405463a134d6af358fe779c62f}{watershed\+\_\+ridge}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+mask, float amplitude=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, int ir=1, float edt\+\_\+exponent=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}{Flow\+Direction\+Method}} fd\+\_\+method=\mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894}{Flow\+Direction\+Method\+::\+FDM\+\_\+\+D8}})
-\item 
 bool \mbox{\hyperlink{namespacehmap_a7b8945745feaeaa365d965ce66b32f58}{export\+\_\+asset}} (const std\+::string \&fname, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, \mbox{\hyperlink{namespacehmap_ac81a92060b89699c4eb9826495d87250}{Mesh\+Type}} mesh\+\_\+type=\mbox{\hyperlink{namespacehmap_ac81a92060b89699c4eb9826495d87250a68dced9d7f19cbd741feae05ad17ca14}{Mesh\+Type\+::\+TRI}}, \mbox{\hyperlink{namespacehmap_ac3d35efc6e5b596f508e2b17a5aa871b}{Asset\+Export\+Format}} export\+\_\+format=\mbox{\hyperlink{namespacehmap_ac3d35efc6e5b596f508e2b17a5aa871ba0766d2c2cb91f6e1e9a1b4dfcbffd562}{Asset\+Export\+Format\+::\+GLB2}}, float elevation\+\_\+scaling=0.\+2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, const std\+::string \&texture\+\_\+fname="{}"{}, const std\+::string \&normal\+\_\+map\+\_\+fname="{}"{}, float max\+\_\+error=5e-\/4\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Exports a heightmap to various 3D file formats. \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{namespacehmap_a2f24b35f08d0ba5cce622c8896690fbd}{export\+\_\+as\+\_\+ascii}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, const glm\+::ivec2 \&export\+\_\+shape=\{64, 64\}, const std\+::string chars\+\_\+map="{} .\+:-\/=+\texorpdfstring{$\ast$}{*}\#\%@"{})
@@ -8055,69 +8051,6 @@ This overload of {\ttfamily thermal\+\_\+schott} applies thermal erosion with a 
 
 
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. 
-
-\Hypertarget{namespacehmap_a9588003e71523b45a4eee88d8debc9b5}\label{namespacehmap_a9588003e71523b45a4eee88d8debc9b5} 
-\index{hmap@{hmap}!watershed\_ridge@{watershed\_ridge}}
-\index{watershed\_ridge@{watershed\_ridge}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{watershed\_ridge()}{watershed\_ridge()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::watershed\+\_\+ridge (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{float}]{amplitude = {\ttfamily 0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{int}]{ir = {\ttfamily 1},  }\item[{float}]{edt\+\_\+exponent = {\ttfamily 0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{\mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}{Flow\+Direction\+Method}}}]{fd\+\_\+method = {\ttfamily \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894}{Flow\+Direction\+Method\+::\+FDM\+\_\+\+D8}}} }\end{DoxyParamCaption})}
-
-
-
-Carves watershed ridges using basin-\/wise distance transforms. 
-
-Drainage basins are computed using D8 flow routing. For each basin, a distance transform to the basin boundary is evaluated and used to lower elevations near watershed divides, forming ridge lines.
-
-
-\begin{DoxyParams}{Parameters}
-{\em z} & Input elevation field. \\
-\hline
-{\em amplitude} & Ridge carving strength. \\
-\hline
-{\em ir} & Smoothing. \\
-\hline
-{\em edt\+\_\+exponent} & Exponent applied to the distance field to control ridge sharpness.\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Elevation field with watershed ridges emphasized.
-\end{DoxyReturn}
-{\bfseries{Example}} 
-\begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
-\DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
-\DoxyCodeLine{\{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_1_1gpu_adb8336ed4d83c15500872185dee45d50}{hmap::gpu::init\_opencl}}();}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
-\DoxyCodeLine{\ \ glm::vec2\ \ res\ =\ \{4.f,\ 4.f\};}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 0;}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z0\ =\ \mbox{\hyperlink{namespacehmap_acb13e7346085793fda4c94c47b75d9a9}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ res,\ seed);}
-\DoxyCodeLine{\ \ z0\ =\ \mbox{\hyperlink{namespacehmap_ae3ecf5f88476c5d49978a130f8cab2f3}{hmap::bulkify}}(z0,\ \mbox{\hyperlink{namespacehmap_a55542a66f890ef9ecf5f82af2c23a0cfae2c78e075109f330e3109c52e9bf90ff}{hmap::PrimitiveType::PRIM\_CONE}},\ 0.5f);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ amplitude\ =\ 0.8f;}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ ir\ =\ 32;}
-\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ \ z1\ =\ \mbox{\hyperlink{namespacehmap_a9588003e71523b45a4eee88d8debc9b5}{hmap::watershed\_ridge}}(z0,\ amplitude,\ ir);}
-\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ \ z2\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_a2d457184ae33b12dee131a77c0817436}{hmap::gpu::watershed\_ridge}}(z0,\ amplitude,\ ir);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ z1.dump(\textcolor{stringliteral}{"{}z.png"{}});}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_watershed\_ridge.png"{}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z0,\ z1,\ z2\},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9}{hmap::Cmap::TERRAIN}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
-\DoxyCodeLine{\}}
-
-\end{DoxyCodeInclude}
-
-
-{\bfseries{Result}}  \Hypertarget{namespacehmap_a4747b0405463a134d6af358fe779c62f}\label{namespacehmap_a4747b0405463a134d6af358fe779c62f} 
-\index{hmap@{hmap}!watershed\_ridge@{watershed\_ridge}}
-\index{watershed\_ridge@{watershed\_ridge}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{watershed\_ridge()}{watershed\_ridge()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::watershed\+\_\+ridge (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+mask,  }\item[{float}]{amplitude = {\ttfamily 0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{int}]{ir = {\ttfamily 1},  }\item[{float}]{edt\+\_\+exponent = {\ttfamily 0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{\mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}{Flow\+Direction\+Method}}}]{fd\+\_\+method = {\ttfamily \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894}{Flow\+Direction\+Method\+::\+FDM\+\_\+\+D8}}} }\end{DoxyParamCaption})}
 
 \Hypertarget{namespacehmap_a7b8945745feaeaa365d965ce66b32f58}\label{namespacehmap_a7b8945745feaeaa365d965ce66b32f58} 
 \index{hmap@{hmap}!export\_asset@{export\_asset}}
