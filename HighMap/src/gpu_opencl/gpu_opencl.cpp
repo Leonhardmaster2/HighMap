@@ -60,6 +60,8 @@ bool init_opencl()
 #include "kernels/mountain_range_radial.cl"
 #include "kernels/noise.cl"
 #include "kernels/normal_displacement.cl"
+#include "kernels/phase_averaging.cl"
+#include "kernels/phase_field.cl"
 #include "kernels/plateau.cl"
 #include "kernels/polygon_field.cl"
 #include "kernels/project_slope_along_direction.cl"

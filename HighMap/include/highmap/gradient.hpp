@@ -450,6 +450,26 @@ Array unwrap_phase(const Array &alpha);
 namespace hmap::gpu
 {
 
+void phase_averaging(Array &field_real, Array &field_imag, int ir);
+
+Array phase_field(const Array     &array,
+                  const glm::vec2 &kw,
+                  uint             seed,
+                  float            kp = 8.f,
+                  bool             rotate90 = false,
+                  int              n_kernel_samples = 8,
+                  const glm::vec2 &jitter = {0.5f, 0.5f},
+                  int              angle_filter_ir = 8,
+                  Array           *p_ctrl_param = nullptr,
+                  Array           *p_noise_x = nullptr,
+                  Array           *p_noise_y = nullptr,
+                  glm::vec4        bbox = {0.f, 1.f, 0.f, 1.f});
+
+/*! @brief See hmap::gradient_angle_circular_smoothing */
+Array gradient_angle_circular_smoothing(const Array &array,
+                                        int          ir,
+                                        bool         downward = false);
+
 /*! @brief See hmap::gradient_norm */
 Array gradient_norm(const Array &array);
 

@@ -6,6 +6,7 @@
 #include "highmap/filters.hpp"
 #include "highmap/gradient.hpp"
 #include "highmap/kernels.hpp"
+#include "highmap/opencl/gpu_opencl.hpp"
 #include "highmap/operator.hpp"
 #include "highmap/primitives.hpp"
 #include "highmap/range.hpp"
@@ -88,3 +89,89 @@ Array phase_field(const Array &array,
 }
 
 } // namespace hmap
+
+namespace hmap::gpu
+{
+
+void phase_averaging(Array &field_real, Array &field_imag, int ir)
+{
+  const glm::ivec2 shape = field_real.shape;
+
+  auto run = clwrapper::Run("phase_averaging");
+
+  // inputs
+  run.bind_imagef("fr", field_real.vector, shape.x, shape.y);
+  run.bind_imagef("fi", field_imag.vector, shape.x, shape.y);
+
+  // outputs
+  run.bind_imagef("fr_out", field_real.vector, shape.x, shape.y, true);
+  run.bind_imagef("fi_out", field_imag.vector, shape.x, shape.y, true);
+
+  run.bind_arguments(shape.x, shape.y, ir);
+
+  run.execute({shape.x, shape.y});
+
+  // update flux (from GPU to CPU)
+  run.read_imagef("fr_out");
+  run.read_imagef("fi_out");
+}
+
+Array phase_field(const Array     &array,
+                  const glm::vec2 &kw,
+                  uint             seed,
+                  float            kp,
+                  bool             rotate90,
+                  int              n_kernel_samples,
+                  const glm::vec2 &jitter,
+                  int              angle_filter_ir,
+                  Array           *p_ctrl_param,
+                  Array           *p_noise_x,
+                  Array           *p_noise_y,
+                  glm::vec4        bbox)
+{
+  const glm::ivec2 shape = array.shape;
+  Array            phase(shape);
+
+  // --- compute local angle
+
+  float phi = rotate90 ? M_PI : 0.5 * M_PI;
+  Array dx = gradient_x(array);
+  Array dy = gradient_y(array);
+  phase_averaging(dx, dy, angle_filter_ir);
+  const Array angle = atan2(dy, dx) + phi;
+
+  // --- compute phase
+
+  auto run = clwrapper::Run("phase_field");
+
+  run.bind_buffer<float>("angle", angle.vector);
+  run.bind_buffer<float>("phase", phase.vector);
+
+  helper_bind_optional_buffer(run, "ctrl_param", p_ctrl_param);
+  helper_bind_optional_buffer(run, "p_noise_x", p_noise_x);
+  helper_bind_optional_buffer(run, "p_noise_y", p_noise_y);
+
+  run.bind_arguments(shape.x,
+                     shape.y,
+                     kw.x,
+                     kw.y,
+                     seed,
+                     jitter,
+                     n_kernel_samples,
+                     kp,
+                     p_ctrl_param ? 1 : 0,
+                     p_noise_x ? 1 : 0,
+                     p_noise_y ? 1 : 0,
+                     bbox);
+
+  run.write_buffer("angle");
+  run.write_buffer("phase");
+
+  run.execute({shape.x, shape.y});
+
+  run.read_buffer("phase");
+
+  return phase;
+}
+
+} // namespace hmap::gpu
