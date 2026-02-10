@@ -114,13 +114,6 @@ Array flow_simulation_viscous(const Array &z,
                               float        viscosity,
                               float        power)
 {
-  dt = 1.f;
-  dry_out_ratio = 0.f;
-  viscosity = 1.f;
-  power = 2.5f;
-
-  //
-
   const glm::ivec2 shape = z.shape;
 
   Array d = water_height * depth_map;

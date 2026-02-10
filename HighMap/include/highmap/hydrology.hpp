@@ -730,7 +730,7 @@ Array flow_simulation_viscous(const Array &z,
                               float        dt = 0.5f,
                               float        dry_out_ratio = 0.f,
                               float        viscosity = 1.f,
-                              float        power = 1.f);
+                              float        power = 2.5f);
 
 /*! @brief See hmap::generate_riverbed */
 Array generate_riverbed(const Path &path,

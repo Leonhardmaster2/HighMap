@@ -5,8 +5,8 @@ int main(void)
   hmap::gpu::init_opencl();
 
   glm::ivec2 shape = {256, 256};
-  glm::vec2 kw = {4.f, 4.f};
-  int       seed = 2;
+  glm::vec2  kw = {4.f, 4.f};
+  int        seed = 2;
 
   hmap::Array z = hmap::noise_fbm(hmap::NoiseType::PERLIN,
                                   shape,
@@ -27,8 +27,8 @@ int main(void)
                         {0.5f, 0.45f});
 
   float amount = 1e-1f;
-  int iterations = 5000;
-  
+  int   iterations = 5000;
+
   hmap::Array water_depth = hmap::gpu::flow_simulation_viscous(z,
                                                                amount,
                                                                map,
