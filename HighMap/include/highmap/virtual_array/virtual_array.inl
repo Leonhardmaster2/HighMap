@@ -84,8 +84,7 @@ void for_each_tile(const TileAccess &access, Func &&func, const ComputeMode &cm)
   case ForEachMode::VA_DISTRIBUTED:
     distributed_tile_loop(*ref_va, region_dispatcher);
     break;
-  case ForEachMode::VA_SINGLE_ARRAY: single_array_compute(access, func); break;
-  case ForEachMode::VA_SINGLE_ARRAY_STRIDED:
+  case ForEachMode::VA_SINGLE_ARRAY:
     single_array_compute(access, func, cm.stride);
     break;
   case ForEachMode::VA_SINGLE_ARRAY_DOWNSCALED:
@@ -282,8 +281,6 @@ void single_array_compute(const TileAccess &access, Func &&func, int stride = 1)
   for (size_t i = 0; i < access.outputs.size(); ++i)
     if (access.outputs[i])
     {
-      arrays_out[i].dump();
-
       if (shape_wrk != ref_va->shape)
         access.outputs[i]->from_array_bicubic(arrays_out[i], cm_local);
       else

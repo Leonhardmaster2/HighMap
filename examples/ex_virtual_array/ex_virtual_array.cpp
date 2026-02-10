@@ -36,12 +36,11 @@ int main()
   // const auto foreach_mode = hmap::ForEachMode::VA_DISTRIBUTED;
   // const auto foreach_mode = hmap::ForEachMode::VA_SEQUENTIAL;
   const auto foreach_mode = hmap::ForEachMode::VA_SINGLE_ARRAY;
-  // const auto foreach_mode = hmap::ForEachMode::VA_SINGLE_ARRAY_STRIDED;
   // const auto foreach_mode = hmap::ForEachMode::VA_SINGLE_ARRAY_DOWNSCALED;
 
   const hmap::ComputeMode compute_mode{.mode = foreach_mode,
                                        .trim_storage = true,
-                                       .stride = 8};
+                                       .stride = 1};
 
   // ===========================================================================
   // Virtual arrays
