@@ -728,11 +728,8 @@ Array flow_simulation_viscous(const Array &z,
                               const Array &depth_map,
                               int          iterations,
                               float        dt = 0.5f,
-                              bool         flux_diffusion = true,
-                              float        flux_diffusion_strength = 0.01f,
                               float        dry_out_ratio = 0.f,
                               float        viscosity = 1.f,
-                              float        yield_stress = 0.f,
                               float        power = 1.f);
 
 /*! @brief See hmap::generate_riverbed */

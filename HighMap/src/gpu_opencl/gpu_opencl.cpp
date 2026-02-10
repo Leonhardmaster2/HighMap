@@ -67,6 +67,7 @@ bool init_opencl()
 #include "kernels/ruggedness.cl"
 #include "kernels/rugosity.cl"
 #include "kernels/sdf_2d_polyline.cl"
+#include "kernels/shallow_viscous_flow.cl"
 #include "kernels/skeleton.cl"
 #include "kernels/smooth_cpulse.cl"
 #include "kernels/snow_simulation.cl"
