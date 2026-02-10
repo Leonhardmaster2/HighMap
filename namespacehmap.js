@@ -46,7 +46,7 @@ var namespacehmap =
       [ "valley_fill", "namespacehmap_1_1gpu.html#ae8a8da3d95deb978d813ce782a1492bb", null ],
       [ "valley_fill", "namespacehmap_1_1gpu.html#aa7ce5c44914d54ec7fa0162c5ccbab86", null ],
       [ "watershed_ridge", "namespacehmap_1_1gpu.html#ade86ae821709f5311fa37fd0ea482e2f", null ],
-      [ "watershed_ridge", "namespacehmap_1_1gpu.html#ab93fd2e2e47aadb2af39f22af60b8efa", null ],
+      [ "watershed_ridge", "namespacehmap_1_1gpu.html#a50276d1796ab55d336eac992aa758f14", null ],
       [ "local_median_deviation", "namespacehmap_1_1gpu.html#a022f5800d7e28f79f9e2d3abf687f490", null ],
       [ "mean_local", "namespacehmap_1_1gpu.html#afed4e84e60dd0cdc453e7da72940ed27", null ],
       [ "relative_elevation", "namespacehmap_1_1gpu.html#a2dcbc7dac085b61f3c47e17256741a9a", null ],
