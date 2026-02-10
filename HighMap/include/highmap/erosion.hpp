@@ -1647,7 +1647,7 @@ Array watershed_ridge(
 
 Array watershed_ridge(
     const Array        &z,
-    Array              *p_mask,
+    const Array        *p_mask,
     float               amplitude = 0.2f,
     float               width = 32.f,
     float               edt_exponent = 0.5f,
