@@ -4,9 +4,15 @@
 \begin{DoxyCompactItemize}
 \item 
 namespace \mbox{\hyperlink{namespacehmap}{hmap}}
+\item 
+namespace \mbox{\hyperlink{namespacehmap_1_1gpu}{hmap\+::gpu}}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a6e66245d2cf9c7944ed35a1010c54f77}{hmap\+::phase\+\_\+field}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float kw, int width, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, float noise\+\_\+amp=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, int prefilter\+\_\+ir=-\/1, float density\+\_\+factor=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, bool rotate90=false, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+gnoise\+\_\+x=nullptr, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+gnoise\+\_\+y=nullptr)
-\begin{DoxyCompactList}\small\item\em Computes a phase field using spatially varying Gabor noise based on the input heightmap. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Computes a phase field using spatially varying Gabor noise based on the input heightmap. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacehmap_1_1gpu_a8a89eb3b3dcbdd39e57abc1770420bf1}{hmap\+::gpu\+::phase\+\_\+averaging}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&field\+\_\+real, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&field\+\_\+imag, int ir)
+\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a57d4f1e5edc601c10fbe33c4a3a8d644}{hmap\+::gpu\+::phase\+\_\+field}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, const glm\+::vec2 \&kw, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, float kp=8.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, bool rotate90=false, int n\+\_\+kernel\+\_\+samples=8, const glm\+::vec2 \&jitter=\{0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, int angle\+\_\+filter\+\_\+ir=8, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+ctrl\+\_\+param=nullptr, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
+\end{DoxyCompactItemize}

@@ -87,7 +87,7 @@ var searchData=
   ['get_5fy_84',['get_y',['../classhmap_1_1Path.html#ab9ff9f7a0ea9c090c34810536458da8d',1,'hmap::Path::get_y()'],['../classhmap_1_1Cloud.html#abf5f933e3506395b5369cb090119002e',1,'hmap::Cloud::get_y()']]],
   ['gradient1d_85',['gradient1d',['../namespacehmap.html#ab0755dccfcae2b02a211c091e33f79a9',1,'hmap']]],
   ['gradient_5fangle_86',['gradient_angle',['../namespacehmap.html#ae23a30f7964baacd6d0457c288fd3598',1,'hmap']]],
-  ['gradient_5fangle_5fcircular_5fsmoothing_87',['gradient_angle_circular_smoothing',['../namespacehmap.html#a5d7bb7244ff862834560b9145866e1b2',1,'hmap']]],
+  ['gradient_5fangle_5fcircular_5fsmoothing_87',['gradient_angle_circular_smoothing',['../namespacehmap.html#a5d7bb7244ff862834560b9145866e1b2',1,'hmap::gradient_angle_circular_smoothing()'],['../namespacehmap_1_1gpu.html#ab4b68e1b48d16193615105656680ced8',1,'hmap::gpu::gradient_angle_circular_smoothing(const Array &amp;array, int ir, bool downward=false)']]],
   ['gradient_5fnorm_88',['gradient_norm',['../namespacehmap_1_1gpu.html#a1c5e49734e49973fe1b275b6988dba12',1,'hmap::gpu::gradient_norm()'],['../namespacehmap.html#a5f58c4149344b401d82f0be3c3807156',1,'hmap::gradient_norm(const Array &amp;array, Array *p_dx=nullptr, Array *p_dy=nullptr)']]],
   ['gradient_5fnorm_5fprewitt_89',['gradient_norm_prewitt',['../namespacehmap.html#ab02a5e564763a35cd3baa727b825db4a',1,'hmap']]],
   ['gradient_5fnorm_5fscharr_90',['gradient_norm_scharr',['../namespacehmap.html#a522e28e6f997165bb492aa68327556d9',1,'hmap']]],
