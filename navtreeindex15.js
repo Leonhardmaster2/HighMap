@@ -1,6 +1,5 @@
 var NAVTREEINDEX15 =
 {
-"noise_8cpp.html#a8765c9b9011f8ecb9fc2993a5ae73113":[5,0,1,1,25,8,3],
 "noise_8cpp.html#ac9dcffb793a9a36d39ea420e8d70a5df":[5,0,1,1,25,8,2],
 "noise_8cpp.html#acb13e7346085793fda4c94c47b75d9a9":[5,0,1,1,25,8,1],
 "noise_8cpp.html#acfe4aa12e766873dc71cb5bdc2bf5b2c":[5,0,1,1,25,8,7],
@@ -249,5 +248,6 @@ var NAVTREEINDEX15 =
 "primitives_8hpp.html#adafc477ac182ce40ebf2cee1c84cb936":[5,0,1,0,0,31,35],
 "primitives_8hpp.html#ae20d5b7f78d4c3eb5064490a3a407533":[5,0,1,0,0,31,61],
 "primitives_8hpp.html#ae692921d08ee6f12bf9fdf099b6bb8a8":[5,0,1,0,0,31,44],
-"primitives_8hpp.html#ae762ec389b313e1ae038583b2aa6ba46":[5,0,1,0,0,31,43]
+"primitives_8hpp.html#ae762ec389b313e1ae038583b2aa6ba46":[5,0,1,0,0,31,43],
+"primitives_8hpp.html#aeba108d9126f43af6f6a0a7302714767":[5,0,1,0,0,31,58]
 };
