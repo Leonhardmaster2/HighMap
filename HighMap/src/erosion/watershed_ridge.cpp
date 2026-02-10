@@ -13,24 +13,26 @@
 #include "highmap/range.hpp"
 #include "highmap/transform.hpp"
 
-#include "highmap/dbg/timer.hpp"
-
-namespace hmap
+namespace hmap::gpu
 {
 
 Array watershed_ridge(const Array        &z,
                       float               amplitude,
-                      int                 ir,
+                      float               width,
                       float               edt_exponent,
-                      FlowDirectionMethod fd_method)
+                      FlowDirectionMethod fd_method,
+                      const Array        *p_noise_x,
+                      const Array        *p_noise_y,
+                      const Array        *p_scaling)
 {
   DrainageBasins   basins;
   bool             remove_lakes = true;
   const glm::ivec2 shape = z.shape;
 
+  // --- distance transform to main channel
+
   // retrieve main channel (valley bottom)
   basins.generate_traversal(z, fd_method, remove_lakes);
-
   auto mcs = basins.get_main_channels();
 
   // distance transform to generate valley shape
@@ -41,130 +43,55 @@ Array watershed_ridge(const Array        &z,
       edt(p) = 1.f;
 
   edt = distance_transform(edt);
-  remap(edt);
 
-  // filter but keep sharp valley bottoms
-  Array mask = edt;
+  gpu::warp(edt, p_noise_x, p_noise_y);
 
-  for_each_cell(mask,
-                [](int, int, float &v) { v = 1.f - std::exp(-v * v / 0.01f); });
-
-  smooth_cpulse(edt, ir, &mask);
+  // --- generate rift profile
 
   for_each_cell(edt,
-                [edt_exponent, amplitude](int, int, float &v)
+                [&](int i, int j, float &d)
                 {
-                  v = 1.f - v;
-                  v = std::pow(v, edt_exponent);
+                  float sc = p_scaling ? (*p_scaling)(i, j) : 1.f;
+                  float r = std::clamp(d / (sc * width), 0.f, 1.f);
+                  r = smoothstep3_upper(r);
+                  d = sc * (1.f - std::pow(r, edt_exponent));
                 });
 
-  Array out = z - amplitude * edt;
+  // --- apply and output
 
+  Array out = z - amplitude * edt;
   return out;
 }
 
 Array watershed_ridge(const Array        &z,
                       Array              *p_mask,
                       float               amplitude,
-                      int                 ir,
-                      float               edt_exponent,
-                      FlowDirectionMethod fd_method)
-{
-  if (!p_mask)
-    return watershed_ridge(z, amplitude, ir, edt_exponent, fd_method);
-  else
-  {
-    Array z_f = watershed_ridge(z, amplitude, ir, edt_exponent, fd_method);
-    return lerp(z, z_f, *(p_mask));
-  }
-}
-
-} // namespace hmap
-
-namespace hmap::gpu
-{
-
-Array watershed_ridge(const Array        &z,
-                      float               amplitude,
-                      int                 ir,
+                      float               width,
                       float               edt_exponent,
                       FlowDirectionMethod fd_method,
                       const Array        *p_noise_x,
-                      const Array        *p_noise_y)
-{
-  Array        ze;
-  const Array *p_z;
-
-  if (p_noise_x || p_noise_y)
-  {
-    ze = z;
-    gpu::warp(ze, p_noise_x, p_noise_y);
-    p_z = &ze;
-  }
-  else
-  {
-    p_z = &z;
-  }
-
-  DrainageBasins   basins;
-  bool             remove_lakes = true;
-  const glm::ivec2 shape = z.shape;
-
-  // retrieve main channel (valley bottom)
-  basins.generate_traversal(*p_z, fd_method, remove_lakes);
-
-  auto mcs = basins.get_main_channels();
-
-  // distance transform to generate valley shape
-  Array edt(shape);
-
-  for (const auto &vec : mcs)
-    for (const auto &p : vec)
-      edt(p) = 1.f;
-
-  edt = distance_transform(edt);
-  remap(edt);
-
-  // filter but keep sharp valley bottoms
-  Array mask = edt;
-  for (auto &v : mask.vector)
-    v = 1.f - std::exp(-v * v / 0.01f);
-  gpu::smooth_cpulse(edt, ir, &mask);
-
-  edt = 1.f - edt;
-
-  // apply
-  edt = pow(edt, edt_exponent);
-
-  return z - amplitude * edt;
-}
-
-Array watershed_ridge(const Array        &z,
-                      Array              *p_mask,
-                      float               amplitude,
-                      int                 ir,
-                      float               edt_exponent,
-                      FlowDirectionMethod fd_method,
-                      const Array        *p_noise_x,
-                      const Array        *p_noise_y)
+                      const Array        *p_noise_y,
+                      const Array        *p_scaling)
 {
   if (!p_mask)
-    return gpu::watershed_ridge(z,
+    return watershed_ridge(z,
+                           amplitude,
+                           width,
+                           edt_exponent,
+                           fd_method,
+                           p_noise_x,
+                           p_noise_y,
+                           p_scaling);
+  else
+  {
+    Array z_f = watershed_ridge(z,
                                 amplitude,
-                                ir,
+                                width,
                                 edt_exponent,
                                 fd_method,
                                 p_noise_x,
-                                p_noise_y);
-  else
-  {
-    Array z_f = gpu::watershed_ridge(z,
-                                     amplitude,
-                                     ir,
-                                     edt_exponent,
-                                     fd_method,
-                                     p_noise_x,
-                                     p_noise_y);
+                                p_noise_y,
+                                p_scaling);
     return lerp(z, z_f, *(p_mask));
   }
 }

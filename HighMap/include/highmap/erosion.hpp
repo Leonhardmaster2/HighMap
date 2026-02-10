@@ -1042,42 +1042,6 @@ void thermal_schott(Array      &z,
                     int         iterations = 10,
                     float       intensity = 0.001f); ///< @overload
 
-/**
- * @brief Carves watershed ridges using basin-wise distance transforms.
- *
- * Drainage basins are computed using D8 flow routing. For each basin, a
- * distance transform to the basin boundary is evaluated and used to lower
- * elevations near watershed divides, forming ridge lines.
- *
- * @param  z            Input elevation field.
- * @param  amplitude    Ridge carving strength.
- * @param  ir           Smoothing.
- * @param  edt_exponent Exponent applied to the distance field to control ridge
- *                      sharpness.
- *
- * @return              Elevation field with watershed ridges emphasized.
- *
- * **Example**
- * @include ex_watershed_ridge.cpp
- *
- * **Result**
- * @image html ex_watershed_ridge.png
- */
-Array watershed_ridge(
-    const Array        &z,
-    float               amplitude = 0.5f,
-    int                 ir = 1,
-    float               edt_exponent = 0.5f,
-    FlowDirectionMethod fd_method = FlowDirectionMethod::FDM_D8);
-
-Array watershed_ridge(
-    const Array        &z,
-    Array              *p_mask,
-    float               amplitude = 0.5f,
-    int                 ir = 1,
-    float               edt_exponent = 0.5f,
-    FlowDirectionMethod fd_method = FlowDirectionMethod::FDM_D8);
-
 } // namespace hmap
 
 namespace hmap::gpu
@@ -1650,25 +1614,46 @@ void valley_fill(Array       &z,
                  const Array *p_noise = nullptr,
                  Array       *p_deposition_map = nullptr);
 
-/*! @brief See hmap::watershed_ridge */
+/**
+ * @brief Carves watershed ridges using basin-wise distance transforms.
+ *
+ * Drainage basins are computed using D8 flow routing. For each basin, a
+ * distance transform to the basin boundary is evaluated and used to lower
+ * elevations near watershed divides, forming ridge lines.
+ *
+ * @param  z            Input elevation field.
+ * @param  amplitude    Ridge carving strength.
+ * @param  ir           Smoothing.
+ * @param  edt_exponent Exponent applied to the distance field to control ridge
+ *                      sharpness.
+ *
+ * @return              Elevation field with watershed ridges emphasized.
+ *
+ * **Example**
+ * @include ex_watershed_ridge.cpp
+ *
+ * **Result**
+ * @image html ex_watershed_ridge.png
+ */
 Array watershed_ridge(
     const Array        &z,
-    float               amplitude = 0.5f,
-    int                 ir = 1,
+    float               amplitude = 0.2f,
+    float               width = 32.f, // pixels
     float               edt_exponent = 0.5f,
     FlowDirectionMethod fd_method = FlowDirectionMethod::FDM_D8,
     const Array        *p_noise_x = nullptr,
-    const Array        *p_noise_y = nullptr);
+    const Array        *p_noise_y = nullptr,
+    const Array        *p_scaling = nullptr);
 
-/*! @brief See hmap::watershed_ridge */
 Array watershed_ridge(
     const Array        &z,
     Array              *p_mask,
-    float               amplitude = 0.5f,
-    int                 ir = 1,
+    float               amplitude = 0.2f,
+    float               width = 32.f,
     float               edt_exponent = 0.5f,
     FlowDirectionMethod fd_method = FlowDirectionMethod::FDM_D8,
     const Array        *p_noise_x = nullptr,
-    const Array        *p_noise_y = nullptr);
+    const Array        *p_noise_y = nullptr,
+    const Array        *p_scaling = nullptr);
 
 } // namespace hmap::gpu
