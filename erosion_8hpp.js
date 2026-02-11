@@ -86,6 +86,6 @@ var erosion_8hpp =
     [ "thermal_scree", "erosion_8hpp.html#acfe28321531d2c03721588054da1446a", null ],
     [ "valley_fill", "erosion_8hpp.html#ae8a8da3d95deb978d813ce782a1492bb", null ],
     [ "valley_fill", "erosion_8hpp.html#aa7ce5c44914d54ec7fa0162c5ccbab86", null ],
-    [ "watershed_ridge", "erosion_8hpp.html#ade86ae821709f5311fa37fd0ea482e2f", null ],
-    [ "watershed_ridge", "erosion_8hpp.html#a50276d1796ab55d336eac992aa758f14", null ]
+    [ "watershed_ridge", "erosion_8hpp.html#a52a653b3b3be84e8ff2330f30a6b5bf3", null ],
+    [ "watershed_ridge", "erosion_8hpp.html#a04047f16ece68b32c1c8e68b4780f0df", null ]
 ];
