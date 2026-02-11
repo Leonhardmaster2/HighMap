@@ -24,11 +24,13 @@ int main(void)
   float amplitude = 0.2f;
   float width = 12.f;
   float exponent = 0.5f;
+  int   prefilter_ir = 4;
 
   auto z1 = hmap::gpu::watershed_ridge(z0,
                                        amplitude,
                                        width,
                                        exponent,
+                                       prefilter_ir,
                                        hmap::FlowDirectionMethod::FDM_D8,
                                        &dx,
                                        &dx,

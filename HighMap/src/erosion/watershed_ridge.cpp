@@ -20,6 +20,7 @@ Array watershed_ridge(const Array        &z,
                       float               amplitude,
                       float               width,
                       float               edt_exponent,
+                      int                 prefilter_ir,
                       FlowDirectionMethod fd_method,
                       const Array        *p_noise_x,
                       const Array        *p_noise_y,
@@ -32,7 +33,10 @@ Array watershed_ridge(const Array        &z,
   // --- distance transform to main channel
 
   // retrieve main channel (valley bottom)
-  basins.generate_traversal(z, fd_method, remove_lakes);
+  Array zf = z;
+  if (prefilter_ir > 0) gpu::smooth_cpulse(zf, prefilter_ir);
+
+  basins.generate_traversal(zf, fd_method, remove_lakes);
   auto mcs = basins.get_main_channels();
 
   // distance transform to generate valley shape
@@ -68,6 +72,7 @@ Array watershed_ridge(const Array        &z,
                       float               amplitude,
                       float               width,
                       float               edt_exponent,
+                      int                 prefilter_ir,
                       FlowDirectionMethod fd_method,
                       const Array        *p_noise_x,
                       const Array        *p_noise_y,
@@ -78,6 +83,7 @@ Array watershed_ridge(const Array        &z,
                            amplitude,
                            width,
                            edt_exponent,
+                           prefilter_ir,
                            fd_method,
                            p_noise_x,
                            p_noise_y,
@@ -88,6 +94,7 @@ Array watershed_ridge(const Array        &z,
                                 amplitude,
                                 width,
                                 edt_exponent,
+                                prefilter_ir,
                                 fd_method,
                                 p_noise_x,
                                 p_noise_y,
