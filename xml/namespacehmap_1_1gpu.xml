@@ -4643,10 +4643,10 @@ This is an overloaded member function, provided for convenience. It differs from
         </inbodydescription>
         <location file="HighMap/src/gradient/phase_field.cpp" line="96" column="6" bodyfile="HighMap/src/gradient/phase_field.cpp" bodystart="96" bodyend="117" declfile="HighMap/include/highmap/gradient.hpp" declline="453" declcolumn="6"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1_1gpu_1a57d4f1e5edc601c10fbe33c4a3a8d644" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacehmap_1_1gpu_1adee4244c2a13f575a789347284d8fc68" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
         <definition>Array hmap::gpu::phase_field</definition>
-        <argsstring>(const Array &amp;array, const glm::vec2 &amp;kw, uint seed, float kp=8.f, bool rotate90=false, int n_kernel_samples=8, const glm::vec2 &amp;jitter={0.5f, 0.5f}, int angle_filter_ir=8, Array *p_ctrl_param=nullptr, Array *p_noise_x=nullptr, Array *p_noise_y=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</argsstring>
+        <argsstring>(const Array &amp;array, const glm::vec2 &amp;kw, uint seed, float kp, bool rotate90=false, int n_kernel_samples=8, const glm::vec2 &amp;jitter={0.5f, 0.5f}, int angle_filter_ir=8, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, Array *p_field_x=nullptr, Array *p_field_y=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</argsstring>
         <name>phase_field</name>
         <qualifiedname>hmap::gpu::phase_field</qualifiedname>
         <param>
@@ -4664,7 +4664,6 @@ This is an overloaded member function, provided for convenience. It differs from
         <param>
           <type>float</type>
           <declname>kp</declname>
-          <defval>8.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
         </param>
         <param>
           <type>bool</type>
@@ -4687,18 +4686,28 @@ This is an overloaded member function, provided for convenience. It differs from
           <defval>8</defval>
         </param>
         <param>
-          <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
           <declname>p_ctrl_param</declname>
           <defval>nullptr</defval>
         </param>
         <param>
-          <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
           <declname>p_noise_x</declname>
           <defval>nullptr</defval>
         </param>
         <param>
-          <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
           <declname>p_noise_y</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
+          <declname>p_field_x</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
+          <declname>p_field_y</declname>
           <defval>nullptr</defval>
         </param>
         <param>
@@ -4712,7 +4721,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/gradient/phase_field.cpp" line="119" column="7" bodyfile="HighMap/src/gradient/phase_field.cpp" bodystart="119" bodyend="175" declfile="HighMap/include/highmap/gradient.hpp" declline="455" declcolumn="7"/>
+        <location file="HighMap/src/gradient/phase_field.cpp" line="119" column="7" bodyfile="HighMap/src/gradient/phase_field.cpp" bodystart="119" bodyend="186" declfile="HighMap/include/highmap/gradient.hpp" declline="455" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1ab4b68e1b48d16193615105656680ced8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -4740,7 +4749,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/gradient/gradient_gpu.cpp" line="13" column="7" bodyfile="HighMap/src/gradient/gradient_gpu.cpp" bodystart="13" bodyend="44" declfile="HighMap/include/highmap/gradient.hpp" declline="469" declcolumn="7"/>
+        <location file="HighMap/src/gradient/gradient_gpu.cpp" line="13" column="7" bodyfile="HighMap/src/gradient/gradient_gpu.cpp" bodystart="13" bodyend="44" declfile="HighMap/include/highmap/gradient.hpp" declline="471" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a1c5e49734e49973fe1b275b6988dba12" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -4759,7 +4768,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/gradient/gradient_gpu.cpp" line="46" column="7" bodyfile="HighMap/src/gradient/gradient_gpu.cpp" bodystart="46" bodyend="64" declfile="HighMap/include/highmap/gradient.hpp" declline="474" declcolumn="7"/>
+        <location file="HighMap/src/gradient/gradient_gpu.cpp" line="46" column="7" bodyfile="HighMap/src/gradient/gradient_gpu.cpp" bodystart="46" bodyend="64" declfile="HighMap/include/highmap/gradient.hpp" declline="476" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a1ac328bd9a69f8737550a131d3f9c516" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>

@@ -17105,7 +17105,7 @@ A 2D array representing the computed phase field.
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ CPU\ phase\ field}}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ kp\ =\ 4.f;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ kp\ =\ 8.f;}
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ width\ =\ 64;}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ density\ =\ 32.f;}
@@ -17122,7 +17122,7 @@ A 2D array representing the computed phase field.
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ GPU\ phase\ field}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ glm::vec2\ \ \ kcells\ =\ \{8.f,\ 8.f\};}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ phi2\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_a57d4f1e5edc601c10fbe33c4a3a8d644}{hmap::gpu::phase\_field}}(z,\ kcells,\ seed);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ phi2\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_adee4244c2a13f575a789347284d8fc68}{hmap::gpu::phase\_field}}(z,\ kcells,\ seed,\ kp);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(phi2);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_phase\_field.png"{}},}

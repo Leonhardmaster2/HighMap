@@ -31,7 +31,7 @@ var searchData=
   ['perturb_5fmask_5fcontour_28',['perturb_mask_contour',['../namespacehmap.html#a0524c28c03b2976dae0da680a55fec5f',1,'hmap']]],
   ['perturb_5fmask_5fcontour_2ecpp_29',['perturb_mask_contour.cpp',['../perturb__mask__contour_8cpp.html',1,'']]],
   ['phase_5faveraging_30',['phase_averaging',['../namespacehmap_1_1gpu.html#a8a89eb3b3dcbdd39e57abc1770420bf1',1,'hmap::gpu']]],
-  ['phase_5ffield_31',['phase_field',['../namespacehmap.html#a6e66245d2cf9c7944ed35a1010c54f77',1,'hmap::phase_field()'],['../namespacehmap_1_1gpu.html#a57d4f1e5edc601c10fbe33c4a3a8d644',1,'hmap::gpu::phase_field()']]],
+  ['phase_5ffield_31',['phase_field',['../namespacehmap.html#a6e66245d2cf9c7944ed35a1010c54f77',1,'hmap::phase_field()'],['../namespacehmap_1_1gpu.html#adee4244c2a13f575a789347284d8fc68',1,'hmap::gpu::phase_field()']]],
   ['phase_5ffield_2ecpp_32',['phase_field.cpp',['../phase__field_8cpp.html',1,'']]],
   ['phase_5fshift_33',['phase_shift',['../classhmap_1_1WaveTriangularFunction.html#abf7528af6e80038e800596f70d863bdb',1,'hmap::WaveTriangularFunction::phase_shift'],['../classhmap_1_1WaveSquareFunction.html#acafda7056c558f5daf9090944ab43e47',1,'hmap::WaveSquareFunction::phase_shift'],['../classhmap_1_1WaveSineFunction.html#afeb64dcd835089aca43509acd96d07e3',1,'hmap::WaveSineFunction::phase_shift'],['../classhmap_1_1WaveDuneFunction.html#abc24fb97142a7688cb1c14f1f67259c3',1,'hmap::WaveDuneFunction::phase_shift']]],
   ['phasor_34',['phasor',['../namespacehmap.html#a5cbe10d6852cd789580e57a22049e29d',1,'hmap']]],
