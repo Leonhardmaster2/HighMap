@@ -94,6 +94,7 @@ var namespacehmap =
       [ "smooth_fill_smear_peaks", "namespacehmap_1_1gpu.html#acb80d6cda31177534d6e63c97675d46d", null ],
       [ "phase_averaging", "namespacehmap_1_1gpu.html#a8a89eb3b3dcbdd39e57abc1770420bf1", null ],
       [ "phase_field", "namespacehmap_1_1gpu.html#adee4244c2a13f575a789347284d8fc68", null ],
+      [ "phase_field", "namespacehmap_1_1gpu.html#ab216c7eef8f5d71b1244421e2e6a94da", null ],
       [ "gradient_angle_circular_smoothing", "namespacehmap_1_1gpu.html#ab4b68e1b48d16193615105656680ced8", null ],
       [ "gradient_norm", "namespacehmap_1_1gpu.html#a1c5e49734e49973fe1b275b6988dba12", null ],
       [ "harmonic_interpolation", "namespacehmap_1_1gpu.html#a864cdb10c297b4a59dc761f32dbbc11a", null ],
