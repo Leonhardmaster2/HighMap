@@ -122,7 +122,7 @@ void kernel phase_field(global float *angle,
                                   angle[idx],
                                   fseed);
 
-  phase[idx] = r * atan2(gabor.y, gabor.x);
+  phase[idx] = atan2(gabor.y, gabor.x);
 
   if (has_field_x) field_x[idx] = gabor.x;
   if (has_field_y) field_y[idx] = gabor.y;

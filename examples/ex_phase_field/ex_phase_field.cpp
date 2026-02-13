@@ -29,8 +29,8 @@ int main(void)
 
   // --- GPU phase field
 
-  glm::vec2   kcells = {8.f, 8.f};
-  hmap::Array phi2 = hmap::gpu::phase_field(z, kcells, seed, kp);
+  float       kp_global = 64.f;
+  hmap::Array phi2 = hmap::gpu::phase_field(z, seed, kp_global);
   hmap::remap(phi2);
 
   hmap::export_banner_png("ex_phase_field.png",

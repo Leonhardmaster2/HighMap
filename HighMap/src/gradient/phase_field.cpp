@@ -185,4 +185,37 @@ Array phase_field(const Array     &array,
   return phase;
 }
 
+Array phase_field(const Array     &array,
+                  uint             seed,
+                  float            kp_global,
+                  bool             rotate90,
+                  int              n_kernel_samples,
+                  const glm::vec2 &jitter,
+                  int              angle_filter_ir,
+                  const Array     *p_ctrl_param,
+                  const Array     *p_noise_x,
+                  const Array     *p_noise_y,
+                  Array           *p_field_x,
+                  Array           *p_field_y,
+                  glm::vec4        bbox)
+{
+  float           kp = std::sqrt(kp_global);
+  const glm::vec2 kw = {kp, kp};
+
+  return phase_field(array,
+                     kw,
+                     seed,
+                     kp,
+                     rotate90,
+                     n_kernel_samples,
+                     jitter,
+                     angle_filter_ir,
+                     p_ctrl_param,
+                     p_noise_x,
+                     p_noise_y,
+                     p_field_x,
+                     p_field_y,
+                     bbox);
+}
+
 } // namespace hmap::gpu
