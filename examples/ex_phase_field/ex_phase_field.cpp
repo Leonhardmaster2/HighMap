@@ -13,7 +13,7 @@ int main(void)
 
   // --- CPU phase field
 
-  float kp = 4.f;
+  float kp = 8.f;
   int   width = 64;
 
   float density = 32.f;
@@ -30,7 +30,7 @@ int main(void)
   // --- GPU phase field
 
   glm::vec2   kcells = {8.f, 8.f};
-  hmap::Array phi2 = hmap::gpu::phase_field(z, kcells, seed);
+  hmap::Array phi2 = hmap::gpu::phase_field(z, kcells, seed, kp);
   hmap::remap(phi2);
 
   hmap::export_banner_png("ex_phase_field.png",

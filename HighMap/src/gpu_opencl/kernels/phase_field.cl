@@ -41,8 +41,9 @@ float2 base_phasor_cell(const float2 p,
 
     // random phase
     float phi = 2.f * 3.14159f * hash12f(cell_ij + (float2)(n, 0), fseed);
+    float width = 1.f;
 
-    sum += phasor_kernel(p_relative, kp, angle, phi, 1.f);
+    sum += phasor_kernel(p_relative, kp, angle, phi, width);
   }
 
   return sum;
@@ -80,6 +81,8 @@ void kernel phase_field(global float *angle,
                         global float *ctrl_param,
                         global float *noise_x,
                         global float *noise_y,
+                        global float *field_x,
+                        global float *field_y,
                         const int     nx,
                         const int     ny,
                         const float   kx,
@@ -91,6 +94,8 @@ void kernel phase_field(global float *angle,
                         const int     has_ctrl_param,
                         const int     has_noise_x,
                         const int     has_noise_y,
+                        const int     has_field_x,
+                        const int     has_field_y,
                         const float4  bbox)
 {
   int2 g = {get_global_id(0), get_global_id(1)};
@@ -117,6 +122,9 @@ void kernel phase_field(global float *angle,
                                   angle[idx],
                                   fseed);
 
-  phase[idx] = atan2(gabor.y, gabor.x);
+  phase[idx] = r * atan2(gabor.y, gabor.x);
+
+  if (has_field_x) field_x[idx] = gabor.x;
+  if (has_field_y) field_y[idx] = gabor.y;
 }
 )""

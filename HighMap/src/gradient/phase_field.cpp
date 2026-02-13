@@ -124,13 +124,14 @@ Array phase_field(const Array     &array,
                   int              n_kernel_samples,
                   const glm::vec2 &jitter,
                   int              angle_filter_ir,
-                  Array           *p_ctrl_param,
-                  Array           *p_noise_x,
-                  Array           *p_noise_y,
+                  const Array     *p_ctrl_param,
+                  const Array     *p_noise_x,
+                  const Array     *p_noise_y,
+                  Array           *p_field_x,
+                  Array           *p_field_y,
                   glm::vec4        bbox)
 {
   const glm::ivec2 shape = array.shape;
-  Array            phase(shape);
 
   // --- compute local angle
 
@@ -142,6 +143,8 @@ Array phase_field(const Array     &array,
 
   // --- compute phase
 
+  Array phase(shape);
+
   auto run = clwrapper::Run("phase_field");
 
   run.bind_buffer<float>("angle", angle.vector);
@@ -150,6 +153,8 @@ Array phase_field(const Array     &array,
   helper_bind_optional_buffer(run, "ctrl_param", p_ctrl_param);
   helper_bind_optional_buffer(run, "p_noise_x", p_noise_x);
   helper_bind_optional_buffer(run, "p_noise_y", p_noise_y);
+  helper_bind_optional_buffer(run, "p_field_x", p_field_x);
+  helper_bind_optional_buffer(run, "p_field_y", p_field_y);
 
   run.bind_arguments(shape.x,
                      shape.y,
@@ -162,6 +167,8 @@ Array phase_field(const Array     &array,
                      p_ctrl_param ? 1 : 0,
                      p_noise_x ? 1 : 0,
                      p_noise_y ? 1 : 0,
+                     p_field_x ? 1 : 0,
+                     p_field_y ? 1 : 0,
                      bbox);
 
   run.write_buffer("angle");
@@ -170,6 +177,10 @@ Array phase_field(const Array     &array,
   run.execute({shape.x, shape.y});
 
   run.read_buffer("phase");
+  if (p_field_x) run.read_buffer("field_x");
+  if (p_field_y) run.read_buffer("field_y");
+
+  phase.infos();
 
   return phase;
 }
