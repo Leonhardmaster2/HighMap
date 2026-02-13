@@ -450,8 +450,40 @@ Array unwrap_phase(const Array &alpha);
 namespace hmap::gpu
 {
 
+/**
+ * @brief Apply phase averaging on real and imaginary fields using a GPU kernel.
+ * @param field_real Real component (input/output).
+ * @param field_imag Imaginary component (input/output).
+ * @param ir         Averaging radius.
+ */
 void phase_averaging(Array &field_real, Array &field_imag, int ir);
 
+/**
+ * @brief Compute a phase field from an input array using local orientation and
+ * noise.
+ *
+ * @param  array            Input scalar field.
+ * @param  kw               Wave vector.
+ * @param  seed             Random seed.
+ * @param  kp               Phase gain.
+ * @param  rotate90         Rotate local angle by 90 degrees if true.
+ * @param  n_kernel_samples Number of kernel samples.
+ * @param  jitter           Jitter applied to sampling.
+ * @param  angle_filter_ir  Radius for angle filtering.
+ * @param  p_ctrl_param     Optional control parameter field.
+ * @param  p_noise_x        Optional noise field (x).
+ * @param  p_noise_y        Optional noise field (y).
+ * @param  p_field_x        Optional output vector field (x).
+ * @param  p_field_y        Optional output vector field (y).
+ * @param  bbox             Bounding box for evaluation.
+ * @return                  Computed phase field.
+ *
+ * * **Example**
+ * @include ex_phase_field.cpp
+ *
+ * **Result**
+ * @image html ex_phase_field.png
+ */
 Array phase_field(const Array     &array,
                   const glm::vec2 &kw,
                   uint             seed,
@@ -467,6 +499,30 @@ Array phase_field(const Array     &array,
                   Array           *p_field_y = nullptr,
                   glm::vec4        bbox = {0.f, 1.f, 0.f, 1.f});
 
+/**
+ * @brief Compute a phase field using a global isotropic kp value.
+ *
+ * @param  array            Input scalar field.
+ * @param  seed             Random seed.
+ * @param  kp_global        Global phase gain.
+ * @param  rotate90         Rotate local angle by 90 degrees if true.
+ * @param  n_kernel_samples Number of kernel samples.
+ * @param  jitter           Jitter applied to sampling.
+ * @param  angle_filter_ir  Radius for angle filtering.
+ * @param  p_ctrl_param     Optional control parameter field.
+ * @param  p_noise_x        Optional noise field (x).
+ * @param  p_noise_y        Optional noise field (y).
+ * @param  p_field_x        Optional output vector field (x).
+ * @param  p_field_y        Optional output vector field (y).
+ * @param  bbox             Bounding box for evaluation.
+ * @return                  Computed phase field.
+ *
+ * * **Example**
+ * @include ex_phase_field.cpp
+ *
+ * **Result**
+ * @image html ex_phase_field.png
+ */
 Array phase_field(const Array     &array,
                   uint             seed,
                   float            kp_global,
