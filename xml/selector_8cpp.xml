@@ -327,80 +327,84 @@
 <codeline lineno="317"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>see<sp/>erosion/hydraulic_stream</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="318"><highlight class="normal"><sp/><sp/>Array<sp/>facc<sp/>=<sp/><ref refid="namespacehmap_1a58ba4910af868f70849f343e0c73adf3" kindref="member">flow_accumulation_dinf</ref>(array,<sp/>talus_ref);</highlight></codeline>
 <codeline lineno="319"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>vmax<sp/>=<sp/>clipping_ratio<sp/>*<sp/>std::pow(facc.sum()<sp/>/<sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)facc.size(),<sp/>0.5f);</highlight></codeline>
-<codeline lineno="320"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ae6dfd87b0368629657c3138dbf24cbc4" kindref="member">clamp</ref>(facc,<sp/>0.f,<sp/>vmax);</highlight></codeline>
-<codeline lineno="321"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>facc<sp/>/<sp/>vmax;</highlight></codeline>
-<codeline lineno="322"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"></highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(vmax<sp/>==<sp/>0.f)<sp/></highlight><highlight class="comment">//<sp/>failsafe</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>Array(array.shape);</highlight></codeline>
 <codeline lineno="323"><highlight class="normal"></highlight></codeline>
-<codeline lineno="324"><highlight class="normal">Array<sp/><ref refid="namespacehmap_1ac6dcaa05c7c34302fa2560ddedbb9931" kindref="member">select_transitions</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array<sp/>&amp;array1,</highlight></codeline>
-<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array<sp/>&amp;array2,</highlight></codeline>
-<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array<sp/>&amp;array_blend)</highlight></codeline>
-<codeline lineno="327"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="328"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>set<sp/>the<sp/>whole<sp/>mask<sp/>to<sp/>1<sp/>and<sp/>look<sp/>for<sp/>&quot;non-transitioning&quot;<sp/>regions</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="329"><highlight class="normal"><sp/><sp/>Array<sp/>mask<sp/>=<sp/>Array(array1.shape,<sp/>1.f);</highlight></codeline>
-<codeline lineno="330"><highlight class="normal"></highlight></codeline>
-<codeline lineno="331"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/>array1.shape.y<sp/>-<sp/>1;<sp/>j++)</highlight></codeline>
-<codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>array1.shape.x<sp/>-<sp/>1;<sp/>i++)</highlight></codeline>
-<codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((array_blend(i,<sp/>j)<sp/>==<sp/>array1(i,<sp/>j))<sp/>&amp;</highlight></codeline>
-<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(array_blend(i<sp/>+<sp/>1,<sp/>j)<sp/>==<sp/>array1(i<sp/>+<sp/>1,<sp/>j))<sp/>&amp;</highlight></codeline>
-<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(array_blend(i,<sp/>j)<sp/>==<sp/>array1(i,<sp/>j))<sp/>&amp;</highlight></codeline>
-<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(array_blend(i,<sp/>j<sp/>+<sp/>1)<sp/>==<sp/>array1(i,<sp/>j<sp/>+<sp/>1)))</highlight></codeline>
-<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mask(i,<sp/>j)<sp/>=<sp/>0.f;</highlight></codeline>
-<codeline lineno="339"><highlight class="normal"></highlight></codeline>
-<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((array_blend(i,<sp/>j)<sp/>==<sp/>array2(i,<sp/>j))<sp/>&amp;</highlight></codeline>
-<codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(array_blend(i<sp/>+<sp/>1,<sp/>j)<sp/>==<sp/>array2(i<sp/>+<sp/>1,<sp/>j))<sp/>&amp;</highlight></codeline>
-<codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(array_blend(i,<sp/>j)<sp/>==<sp/>array2(i,<sp/>j))<sp/>&amp;</highlight></codeline>
-<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(array_blend(i,<sp/>j<sp/>+<sp/>1)<sp/>==<sp/>array2(i,<sp/>j<sp/>+<sp/>1)))</highlight></codeline>
-<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mask(i,<sp/>j)<sp/>=<sp/>0.f;</highlight></codeline>
-<codeline lineno="345"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="346"><highlight class="normal"></highlight></codeline>
-<codeline lineno="347"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>boundaries</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="348"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/>array1.shape.y<sp/>-<sp/>1;<sp/>j++)</highlight></codeline>
-<codeline lineno="349"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
-<codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>array1.shape.x<sp/>-<sp/>1;</highlight></codeline>
-<codeline lineno="351"><highlight class="normal"></highlight></codeline>
-<codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((array_blend(i,<sp/>j)<sp/>==<sp/>array1(i,<sp/>j))<sp/>&amp;</highlight></codeline>
-<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(array_blend(i<sp/>-<sp/>1,<sp/>j)<sp/>==<sp/>array1(i<sp/>-<sp/>1,<sp/>j))<sp/>&amp;</highlight></codeline>
-<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(array_blend(i,<sp/>j)<sp/>==<sp/>array1(i,<sp/>j))<sp/>&amp;</highlight></codeline>
-<codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(array_blend(i,<sp/>j<sp/>+<sp/>1)<sp/>==<sp/>array1(i,<sp/>j<sp/>+<sp/>1)))</highlight></codeline>
-<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>mask(i,<sp/>j)<sp/>=<sp/>0.f;</highlight></codeline>
-<codeline lineno="357"><highlight class="normal"></highlight></codeline>
-<codeline lineno="358"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((array_blend(i,<sp/>j)<sp/>==<sp/>array2(i,<sp/>j))<sp/>&amp;</highlight></codeline>
-<codeline lineno="359"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(array_blend(i<sp/>-<sp/>1,<sp/>j)<sp/>==<sp/>array2(i<sp/>-<sp/>1,<sp/>j))<sp/>&amp;</highlight></codeline>
-<codeline lineno="360"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(array_blend(i,<sp/>j)<sp/>==<sp/>array2(i,<sp/>j))<sp/>&amp;</highlight></codeline>
-<codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(array_blend(i,<sp/>j<sp/>+<sp/>1)<sp/>==<sp/>array2(i,<sp/>j<sp/>+<sp/>1)))</highlight></codeline>
-<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>mask(i,<sp/>j)<sp/>=<sp/>0.f;</highlight></codeline>
-<codeline lineno="363"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="364"><highlight class="normal"></highlight></codeline>
-<codeline lineno="365"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>array1.shape.x<sp/>-<sp/>1;<sp/>i++)</highlight></codeline>
-<codeline lineno="366"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
-<codeline lineno="367"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>array1.shape.y<sp/>-<sp/>1;</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ae6dfd87b0368629657c3138dbf24cbc4" kindref="member">clamp</ref>(facc,<sp/>0.f,<sp/>vmax);</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>facc<sp/>/<sp/>vmax;</highlight></codeline>
+<codeline lineno="326"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"></highlight></codeline>
+<codeline lineno="328"><highlight class="normal">Array<sp/><ref refid="namespacehmap_1ac6dcaa05c7c34302fa2560ddedbb9931" kindref="member">select_transitions</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array<sp/>&amp;array1,</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array<sp/>&amp;array2,</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array<sp/>&amp;array_blend)</highlight></codeline>
+<codeline lineno="331"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>set<sp/>the<sp/>whole<sp/>mask<sp/>to<sp/>1<sp/>and<sp/>look<sp/>for<sp/>&quot;non-transitioning&quot;<sp/>regions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/>Array<sp/>mask<sp/>=<sp/>Array(array1.shape,<sp/>1.f);</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"></highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/>array1.shape.y<sp/>-<sp/>1;<sp/>j++)</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>array1.shape.x<sp/>-<sp/>1;<sp/>i++)</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((array_blend(i,<sp/>j)<sp/>==<sp/>array1(i,<sp/>j))<sp/>&amp;</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(array_blend(i<sp/>+<sp/>1,<sp/>j)<sp/>==<sp/>array1(i<sp/>+<sp/>1,<sp/>j))<sp/>&amp;</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(array_blend(i,<sp/>j)<sp/>==<sp/>array1(i,<sp/>j))<sp/>&amp;</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(array_blend(i,<sp/>j<sp/>+<sp/>1)<sp/>==<sp/>array1(i,<sp/>j<sp/>+<sp/>1)))</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mask(i,<sp/>j)<sp/>=<sp/>0.f;</highlight></codeline>
+<codeline lineno="343"><highlight class="normal"></highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((array_blend(i,<sp/>j)<sp/>==<sp/>array2(i,<sp/>j))<sp/>&amp;</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(array_blend(i<sp/>+<sp/>1,<sp/>j)<sp/>==<sp/>array2(i<sp/>+<sp/>1,<sp/>j))<sp/>&amp;</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(array_blend(i,<sp/>j)<sp/>==<sp/>array2(i,<sp/>j))<sp/>&amp;</highlight></codeline>
+<codeline lineno="347"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(array_blend(i,<sp/>j<sp/>+<sp/>1)<sp/>==<sp/>array2(i,<sp/>j<sp/>+<sp/>1)))</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mask(i,<sp/>j)<sp/>=<sp/>0.f;</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="350"><highlight class="normal"></highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>boundaries</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="352"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/>array1.shape.y<sp/>-<sp/>1;<sp/>j++)</highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>array1.shape.x<sp/>-<sp/>1;</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"></highlight></codeline>
+<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((array_blend(i,<sp/>j)<sp/>==<sp/>array1(i,<sp/>j))<sp/>&amp;</highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(array_blend(i<sp/>-<sp/>1,<sp/>j)<sp/>==<sp/>array1(i<sp/>-<sp/>1,<sp/>j))<sp/>&amp;</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(array_blend(i,<sp/>j)<sp/>==<sp/>array1(i,<sp/>j))<sp/>&amp;</highlight></codeline>
+<codeline lineno="359"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(array_blend(i,<sp/>j<sp/>+<sp/>1)<sp/>==<sp/>array1(i,<sp/>j<sp/>+<sp/>1)))</highlight></codeline>
+<codeline lineno="360"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>mask(i,<sp/>j)<sp/>=<sp/>0.f;</highlight></codeline>
+<codeline lineno="361"><highlight class="normal"></highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((array_blend(i,<sp/>j)<sp/>==<sp/>array2(i,<sp/>j))<sp/>&amp;</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(array_blend(i<sp/>-<sp/>1,<sp/>j)<sp/>==<sp/>array2(i<sp/>-<sp/>1,<sp/>j))<sp/>&amp;</highlight></codeline>
+<codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(array_blend(i,<sp/>j)<sp/>==<sp/>array2(i,<sp/>j))<sp/>&amp;</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(array_blend(i,<sp/>j<sp/>+<sp/>1)<sp/>==<sp/>array2(i,<sp/>j<sp/>+<sp/>1)))</highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>mask(i,<sp/>j)<sp/>=<sp/>0.f;</highlight></codeline>
+<codeline lineno="367"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="368"><highlight class="normal"></highlight></codeline>
-<codeline lineno="369"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((array_blend(i,<sp/>j)<sp/>==<sp/>array1(i,<sp/>j))<sp/>&amp;</highlight></codeline>
-<codeline lineno="370"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(array_blend(i<sp/>+<sp/>1,<sp/>j)<sp/>==<sp/>array1(i<sp/>+<sp/>1,<sp/>j))<sp/>&amp;</highlight></codeline>
-<codeline lineno="371"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(array_blend(i,<sp/>j)<sp/>==<sp/>array1(i,<sp/>j))<sp/>&amp;</highlight></codeline>
-<codeline lineno="372"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(array_blend(i,<sp/>j<sp/>-<sp/>1)<sp/>==<sp/>array1(i,<sp/>j<sp/>-<sp/>1)))</highlight></codeline>
-<codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>mask(i,<sp/>j)<sp/>=<sp/>0.f;</highlight></codeline>
-<codeline lineno="374"><highlight class="normal"></highlight></codeline>
-<codeline lineno="375"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((array_blend(i,<sp/>j)<sp/>==<sp/>array2(i,<sp/>j))<sp/>&amp;</highlight></codeline>
-<codeline lineno="376"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(array_blend(i<sp/>+<sp/>1,<sp/>j)<sp/>==<sp/>array2(i<sp/>+<sp/>1,<sp/>j))<sp/>&amp;</highlight></codeline>
-<codeline lineno="377"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(array_blend(i,<sp/>j)<sp/>==<sp/>array2(i,<sp/>j))<sp/>&amp;</highlight></codeline>
-<codeline lineno="378"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(array_blend(i,<sp/>j<sp/>-<sp/>1)<sp/>==<sp/>array2(i,<sp/>j<sp/>-<sp/>1)))</highlight></codeline>
-<codeline lineno="379"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>mask(i,<sp/>j)<sp/>=<sp/>0.f;</highlight></codeline>
-<codeline lineno="380"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="381"><highlight class="normal"></highlight></codeline>
-<codeline lineno="382"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>mask;</highlight></codeline>
-<codeline lineno="383"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="384"><highlight class="normal"></highlight></codeline>
-<codeline lineno="385"><highlight class="normal">Array<sp/><ref refid="namespacehmap_1ac72cb684be1045c7f2a5c8941f905772" kindref="member">select_valley</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array<sp/>&amp;z,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ir,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>ridge_select)</highlight></codeline>
-<codeline lineno="386"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="387"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ridge_select)</highlight></codeline>
-<codeline lineno="388"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacehmap_1a211108a73f7ebadb6ac87621c4e47301" kindref="member">morphological_top_hat</ref>(z,<sp/>ir);</highlight></codeline>
-<codeline lineno="389"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="390"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacehmap_1a1cf22c68188d0e35aa74983f3a01c488" kindref="member">morphological_black_hat</ref>(z,<sp/>ir);</highlight></codeline>
-<codeline lineno="391"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="392"><highlight class="normal"></highlight></codeline>
-<codeline lineno="393"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>hmap</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="369"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>array1.shape.x<sp/>-<sp/>1;<sp/>i++)</highlight></codeline>
+<codeline lineno="370"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="371"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>array1.shape.y<sp/>-<sp/>1;</highlight></codeline>
+<codeline lineno="372"><highlight class="normal"></highlight></codeline>
+<codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((array_blend(i,<sp/>j)<sp/>==<sp/>array1(i,<sp/>j))<sp/>&amp;</highlight></codeline>
+<codeline lineno="374"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(array_blend(i<sp/>+<sp/>1,<sp/>j)<sp/>==<sp/>array1(i<sp/>+<sp/>1,<sp/>j))<sp/>&amp;</highlight></codeline>
+<codeline lineno="375"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(array_blend(i,<sp/>j)<sp/>==<sp/>array1(i,<sp/>j))<sp/>&amp;</highlight></codeline>
+<codeline lineno="376"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(array_blend(i,<sp/>j<sp/>-<sp/>1)<sp/>==<sp/>array1(i,<sp/>j<sp/>-<sp/>1)))</highlight></codeline>
+<codeline lineno="377"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>mask(i,<sp/>j)<sp/>=<sp/>0.f;</highlight></codeline>
+<codeline lineno="378"><highlight class="normal"></highlight></codeline>
+<codeline lineno="379"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((array_blend(i,<sp/>j)<sp/>==<sp/>array2(i,<sp/>j))<sp/>&amp;</highlight></codeline>
+<codeline lineno="380"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(array_blend(i<sp/>+<sp/>1,<sp/>j)<sp/>==<sp/>array2(i<sp/>+<sp/>1,<sp/>j))<sp/>&amp;</highlight></codeline>
+<codeline lineno="381"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(array_blend(i,<sp/>j)<sp/>==<sp/>array2(i,<sp/>j))<sp/>&amp;</highlight></codeline>
+<codeline lineno="382"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(array_blend(i,<sp/>j<sp/>-<sp/>1)<sp/>==<sp/>array2(i,<sp/>j<sp/>-<sp/>1)))</highlight></codeline>
+<codeline lineno="383"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>mask(i,<sp/>j)<sp/>=<sp/>0.f;</highlight></codeline>
+<codeline lineno="384"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="385"><highlight class="normal"></highlight></codeline>
+<codeline lineno="386"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>mask;</highlight></codeline>
+<codeline lineno="387"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="388"><highlight class="normal"></highlight></codeline>
+<codeline lineno="389"><highlight class="normal">Array<sp/><ref refid="namespacehmap_1ac72cb684be1045c7f2a5c8941f905772" kindref="member">select_valley</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array<sp/>&amp;z,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ir,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>ridge_select)</highlight></codeline>
+<codeline lineno="390"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="391"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ridge_select)</highlight></codeline>
+<codeline lineno="392"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacehmap_1a211108a73f7ebadb6ac87621c4e47301" kindref="member">morphological_top_hat</ref>(z,<sp/>ir);</highlight></codeline>
+<codeline lineno="393"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="394"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacehmap_1a1cf22c68188d0e35aa74983f3a01c488" kindref="member">morphological_black_hat</ref>(z,<sp/>ir);</highlight></codeline>
+<codeline lineno="395"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="396"><highlight class="normal"></highlight></codeline>
+<codeline lineno="397"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>hmap</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="HighMap/src/selector/selector.cpp"/>
   </compounddef>
