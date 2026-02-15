@@ -346,6 +346,20 @@ Array smoothstep3_lower(const Array &x)
   return array_out;
 }
 
+float smoothstep3_remap(float x, float vmin, float vmax)
+{
+  if (x < vmin)
+    return 0.f;
+  else if (x > vmax)
+    return 1.f;
+  else
+  {
+    float xn = (x - vmin) / (vmax - vmin);
+    // xn = xn * xn * (3.f - 2.f * xn);
+    return xn;
+  }
+}
+
 float smoothstep3_upper(float x)
 {
   return x * (1.f + x - x * x);
@@ -479,5 +493,15 @@ Array sqrt_safe(const Array &array)
                  array_out.vector.begin(),
                  [](float v) { return v > 0.f ? std::sqrt(v) : 0.f; });
   return array_out;
+}
+
+float triangle(float x, float vmin, float vmax)
+{
+  if (x <= vmin || x >= vmax) return 0.f;
+
+  float mid = 0.5f * (vmin + vmax);
+  float half_width = 0.5f * (vmax - vmin);
+
+  return 1.f - std::abs((x - mid) / half_width);
 }
 } // namespace hmap

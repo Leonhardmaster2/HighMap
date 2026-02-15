@@ -60,8 +60,8 @@ float2 base_phase_field(const float2 p,
   float2 pi;
   float2 sum = 0.f;
 
-  for (int dx = -2; dx <= 2; dx++)
-    for (int dy = -2; dy <= 2; dy++)
+  for (int dx = -1; dx <= 1; ++dx)
+    for (int dy = -1; dy <= 1; ++dy)
     {
       float2 dr = (float2)(dx, dy);
       sum += base_phasor_cell(p,

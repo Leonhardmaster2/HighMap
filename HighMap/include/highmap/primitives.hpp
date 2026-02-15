@@ -346,7 +346,7 @@ Array cone_complex(
     int                   valley_nb = 5,
     float                 valley_decay_ratio = 0.5f,
     float                 valley_angle0 = 15.f,
-    const ErosionProfile &erosion_profile = ErosionProfile::TRIANGLE_GRENIER,
+    const ErosionProfile &erosion_profile = ErosionProfile::EP_TRIANGLE_GRENIER,
     float                 erosion_delta = 0.01f,
     float                 radial_waviness_amp = 0.05f,
     float                 radial_waviness_kw = 2.f,

@@ -573,4 +573,17 @@ Array sqrt(const Array &array);
 
 Array sqrt_safe(const Array &array);
 
+/**
+ * @brief Triangle function between two bounds.
+ *
+ * Returns 0 if x <= vmin or x >= vmax. Between vmin and vmax, returns a linear
+ * triangle reaching 1 at the midpoint and 0 at the bounds.
+ *
+ * @param  x    Input value.
+ * @param  vmin Lower bound.
+ * @param  vmax Upper bound.
+ * @return      Triangle-shaped value in [0,1].
+ */
+float triangle(float x, float vmin, float vmax);
+
 } // namespace hmap

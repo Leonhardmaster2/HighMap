@@ -2,43 +2,53 @@
 
 int main(void)
 {
+  hmap::gpu::init_opencl();
+
   glm::ivec2 shape = {256, 256};
-  glm::vec2  kw = {2.f, 2.f};
-  int        seed = 0;
+  // shape = {1024, 1024};
+  glm::vec2 kw = {2.f, 2.f};
+  int       seed = 0;
 
-  hmap::Array z = hmap::noise_fbm(hmap::NoiseType::SIMPLEX2, shape, kw, seed);
-  hmap::remap(z);
-  auto z0 = z;
+  hmap::Array z0 = hmap::noise_fbm(hmap::NoiseType::SIMPLEX2,
+                                   shape,
+                                   kw,
+                                   seed,
+                                   8);
+  z0 = hmap::bulkify(z0, hmap::PrimitiveType::PRIM_CONE_SMOOTH, 1.f);
+  hmap::remap(z0);
 
-  // --- 2-step erosion at different scales
+  auto  z1 = z0;
+  float kp_global = 16.f;
+  float c_erosion = 0.2f;
+  auto  erosion_profile = hmap::ErosionProfile::EP_TRIANGLE_GRENIER;
 
-  hmap::hydraulic_procedural(z, ++seed, 1.f / 8.f, 0.2f);
-  auto z1 = z;
-  hmap::hydraulic_procedural(z, ++seed, 1.f / 32.f, 0.2f / 8.f);
+  hmap::gpu::hydraulic_procedural_fbm(z1,
+                                      kp_global,
+                                      c_erosion,
+                                      seed,
+                                      erosion_profile);
+
+  auto z2 = z0;
+  hmap::gpu::hydraulic_procedural(z2, kp_global, c_erosion, seed);
+
+  z0.dump("out0.png");
+  z1.dump("out1.png");
+  z2.dump("out2.png");
 
   hmap::export_banner_png("ex_hydraulic_procedural0.png",
-                          {z0, z1, z},
+                          {z0, z1, z2},
                           hmap::Cmap::TERRAIN,
                           true);
 
   // --- all profiles
 
-  std::vector<hmap::ErosionProfile> profiles = {
-      hmap::ErosionProfile::COSINE,
-      hmap::ErosionProfile::SAW_SHARP,
-      hmap::ErosionProfile::SAW_SMOOTH,
-      hmap::ErosionProfile::SHARP_VALLEYS,
-      hmap::ErosionProfile::SQUARE_SMOOTH,
-      hmap::ErosionProfile::TRIANGLE_GRENIER,
-      hmap::ErosionProfile::TRIANGLE_SHARP,
-      hmap::ErosionProfile::TRIANGLE_SMOOTH,
-  };
+  auto profiles = hmap::check_erosion_profile_function();
 
   std::vector<hmap::Array> stack = {z0};
   for (auto ep : profiles)
   {
     hmap::Array ze = z0;
-    hmap::hydraulic_procedural(ze, seed, 1.f / 8.f, 0.2f, ep);
+    hmap::gpu::hydraulic_procedural(ze, kp_global, c_erosion, seed, ep);
     stack.push_back(ze);
   }
 
@@ -46,6 +56,4 @@ int main(void)
                           stack,
                           hmap::Cmap::TERRAIN,
                           true);
-
-  z1.to_png_grayscale("hmap.png", CV_16U);
 }

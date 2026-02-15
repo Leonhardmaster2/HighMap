@@ -42,20 +42,25 @@ namespace hmap
  */
 enum ErosionProfile : int
 {
-  COSINE,
-  SAW_SHARP,
-  SAW_SMOOTH,
-  SHARP_VALLEYS,
-  SQUARE_SMOOTH,
-  TRIANGLE_GRENIER,
-  TRIANGLE_SHARP,
-  TRIANGLE_SMOOTH,
+  EP_COSINE,
+  EP_COSINE_BULK,
+  EP_PARABOL,
+  EP_SAW_SHARP,
+  EP_SAW_SMOOTH,
+  EP_SHARP_VALLEYS,
+  EP_SQRT,
+  EP_TRIANGLE_GRENIER,
+  EP_TRIANGLE_SHARP,
+  EP_TRIANGLE_SMOOTH,
 };
 
 std::function<float(float)> get_erosion_profile_function(
     const ErosionProfile &erosion_profile,
     float                 delta,
     float                &profile_avg);
+
+std::vector<hmap::ErosionProfile> check_erosion_profile_function(
+    float delta = 0.01f);
 
 /**
  * @brief Simulates terrain diffusion due to coastal erosion.
@@ -391,76 +396,6 @@ void hydraulic_musgrave(Array &z,
                         float  c_deposition = 0.1f,
                         float  water_level = 0.01f,
                         float  evap_rate = 0.01f); ///< @overload
-
-/**
- * @brief Generates a procedurally eroded terrain using hydraulic erosion and
- * ridge generation techniques.
- *
- * This function applies a combination of hydraulic erosion and ridge formation
- * to modify a heightmap, leveraging parameters such as erosion profiles, ridge
- * scaling, and noise characteristics. It also supports custom or default masks
- * to influence the erosion process.
- *
- * @param[out] z                  The heightmap to be modified, represented as a
- *                                2D array.
- * @param[in]  seed               Random seed for procedural generation.
- * @param[in]  ridge_wavelength   Wavelength of the ridge structures in the
- *                                heightmap.
- * @param[in]  ridge_scaling      Scaling factor for the ridge height.
- * @param[in]  erosion_profile    The profile that defines the erosion curve
- *                                behavior.
- * @param[in]  delta              Parameter controlling the erosion intensity.
- * @param[in]  noise_ratio        Ratio of noise added to the ridge crest lines.
- * @param[in]  prefilter_ir       Kernel radius for pre-smoothing the heightmap.
- *                                If negative, a default value is computed.
- * @param[in]  density_factor     Factor influencing the density of the ridges.
- * @param[in]  kernel_width_ratio Ratio defining the width of the ridge
- *                                generation kernel.
- * @param[in]  phase_smoothing    Smoothing factor for the phase field used in
- *                                ridge generation.
- * @param[in]  use_default_mask   Whether to use a default mask for erosion if
- *                                no mask is provided.
- * @param[in]  talus_mask         Threshold for default mask slope to identify
- *                                regions prone to erosion.
- * @param[in]  p_mask             Optional pointer to a custom mask array to
- *                                influence the erosion process.
- * @param[out] p_ridge_mask       Optional pointer to store the ridge mask
- *                                resulting from the operation.
- * @param[in]  vmin               Minimum elevation value. If set to a sentinel
- *                                value (vmax <
- * vmin), it is calculated from the heightmap.
- * @param[in]  vmax               Maximum elevation value. If set to a sentinel
- *                                value (vmax <
- * vmin), it is calculated from the heightmap.
- *
- * **Example**
- * @include ex_hydraulic_procedural.cpp
- *
- * **Result**
- * @image html ex_hydraulic_procedural0.png
- * @image html ex_hydraulic_procedural1.png
- */
-void hydraulic_procedural(
-    Array         &z,
-    uint           seed,
-    float          ridge_wavelength,
-    float          ridge_scaling = 0.1f,
-    ErosionProfile erosion_profile = ErosionProfile::TRIANGLE_SMOOTH,
-    float          delta = 0.02f,
-    float          noise_ratio = 0.2f,
-    int            prefilter_ir = -1,
-    float          density_factor = 1.f,
-    float          kernel_width_ratio = 2.f,
-    float          phase_smoothing = 2.f,
-    float          phase_noise_amp = M_PI,
-    bool           reverse_phase = false,
-    bool           rotate90 = false,
-    bool           use_default_mask = true,
-    float          talus_mask = 0.f,
-    Array         *p_mask = nullptr,
-    Array         *p_ridge_mask = nullptr,
-    float          vmin = 0.f,
-    float          vmax = -1.f);
 
 void hydraulic_spl(Array &z);
 
@@ -1085,6 +1020,141 @@ void hydraulic_particle(Array       &z,
                         bool         post_filtering = false);
 
 /**
+ * @brief Apply phase-guided hydraulic procedural erosion to a heightmap.
+ *
+ * Computes a phase field from the input terrain and generates ridge-aligned
+ * erosion patterns modulated by flow accumulation and local gradient.
+ * Optionally applies procedural noise, deposition, and outputs a ridge mask.
+ *
+ * @param[in,out] z                         Heightmap to erode (modified in
+ *                                          place).
+ * @param         kp_global                 Global kernel size controlling
+ *                                          feature scale.
+ * @param         c_erosion                 Global erosion intensity.
+ * @param         seed                      Random seed for phase/noise
+ *                                          generation.
+ * @param         erosion_profile           Ridge shaping profile type.
+ * @param         erosion_profile_parameter Parameter controlling the profile
+ *                                          shape.
+ * @param         angle_shift               Global phase angle offset (degrees).
+ * @param         phase_smoothing           Controls smoothing between phase
+ *                                          transitions.
+ * @param         talus_ref                 Reference talus angle for flow
+ *                                          accumulation.
+ * @param         gradient_scaling_ratio    Blend factor for gradient-based
+ *                                          modulation.
+ * @param         gradient_power            Exponent applied to normalized
+ *                                          gradient.
+ * @param         apply_deposition          If true, applies post-erosion
+ *                                          deposition pass.
+ * @param         enable_default_noise      If true, generates internal FBM
+ *                                          noise fields.
+ * @param         noise_amp                 Amplitude of procedural noise.
+ * @param         p_kp_multiplier           Optional spatial modulation of
+ *                                          kernel size.
+ * @param         p_angle_shift             Optional spatial phase shift.
+ * @param         p_noise_x                 Optional external noise field (x
+ *                                          component).
+ * @param         p_noise_y                 Optional external noise field (y
+ *                                          component).
+ * @param         p_ridge_mask              Optional output ridge mask (cosine
+ *                                          of phase).
+ * @param         bbox                      World-space bounding box.
+ *
+ * **Example**
+ * @include ex_hydraulic_procedural.cpp
+ *
+ * **Result**
+ * @image html ex_hydraulic_procedural.png
+ */
+void hydraulic_procedural(
+    Array         &z,
+    float          kp_global,
+    float          c_erosion,
+    uint           seed,
+    ErosionProfile erosion_profile = ErosionProfile::EP_TRIANGLE_GRENIER,
+    float          erosion_profile_parameter = 0.01f,
+    float          angle_shift = 0.f, // degs
+    float          phase_smoothing = 0.1f,
+    float          talus_ref = 0.001f,
+    float          gradient_scaling_ratio = 1.f,
+    float          gradient_power = 0.8f,
+    bool           apply_deposition = false,
+    float          deposition_strength = 1.f,
+    bool           enable_default_noise = true,
+    float          noise_amp = 0.01f,
+    const Array   *p_kp_multiplier = nullptr,
+    const Array   *p_angle_shift = nullptr,
+    const Array   *p_noise_x = nullptr,
+    const Array   *p_noise_y = nullptr,
+    Array         *p_ridge_mask = nullptr, // ouptput
+    glm::vec4      bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
+ * @brief Multi-octave (fBm) variant of hydraulic_procedural().
+ *
+ * Applies the erosion operator across multiple octaves with
+ * lacunarity/persistence scaling, accumulating a normalized ridge mask.
+ *
+ * @param[in,out] z                         Heightmap to erode (modified in
+ *                                          place).
+ * @param         kp_global                 Base kernel size.
+ * @param         c_erosion                 Base erosion intensity.
+ * @param         seed                      Random seed.
+ * @param         erosion_profile           Ridge shaping profile.
+ * @param         octaves                   Number of fBm octaves.
+ * @param         persistence               Amplitude decay per octave.
+ * @param         lacunarity                Frequency growth per octave.
+ * @param         erosion_profile_parameter Profile parameter.
+ * @param         angle_shift               Global phase shift (degrees).
+ * @param         phase_smoothing           Phase smoothing factor.
+ * @param         talus_ref                 Reference talus angle.
+ * @param         gradient_scaling_ratio    Gradient modulation ratio.
+ * @param         gradient_power            Gradient exponent.
+ * @param         apply_deposition          Enable deposition pass.
+ * @param         enable_default_noise      Enable internal noise generation.
+ * @param         noise_amp                 Noise amplitude.
+ * @param         p_kp_multiplier           Optional spatial kernel modulation.
+ * @param         p_angle_shift             Optional spatial phase shift.
+ * @param         p_noise_x                 Optional external noise (x).
+ * @param         p_noise_y                 Optional external noise (y).
+ * @param         p_ridge_mask              Optional accumulated ridge mask
+ *                                          output.
+ * @param         bbox                      World-space bounding box.
+ *
+ * **Example**
+ * @include ex_hydraulic_procedural.cpp
+ *
+ * **Result**
+ * @image html ex_hydraulic_procedural.png
+ */
+void hydraulic_procedural_fbm(
+    Array         &z,
+    float          kp_global,
+    float          c_erosion,
+    uint           seed,
+    ErosionProfile erosion_profile = ErosionProfile::EP_TRIANGLE_GRENIER,
+    int            octaves = 3,
+    float          persistence = 0.5f,
+    float          lacunarity = 2.f,
+    float          erosion_profile_parameter = 0.01f,
+    float          angle_shift = 0.f, // degs
+    float          phase_smoothing = 0.1f,
+    float          talus_ref = 0.001f,
+    float          gradient_scaling_ratio = 1.f,
+    float          gradient_power = 0.8f,
+    bool           apply_deposition = false,
+    float          deposition_strength = 1.f,
+    bool           enable_default_noise = true,
+    float          noise_amp = 0.01f,
+    const Array   *p_kp_multiplier = nullptr,
+    const Array   *p_angle_shift = nullptr,
+    const Array   *p_noise_x = nullptr,
+    const Array   *p_noise_y = nullptr,
+    Array         *p_ridge_mask = nullptr, // ouptput
+    glm::vec4      bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
  * @brief Simulates hydraulic erosion and deposition on a heightmap using the
  * Schott method.
  *
@@ -1102,7 +1172,8 @@ void hydraulic_particle(Array       &z,
  * @param[in]     c_erosion              Erosion coefficient (default: 1.0f).
  * @param[in]     c_thermal              Thermal erosion coefficient (default:
  *                                       0.1f).
- * @param[in]     c_deposition           Deposition coefficient (default: 0.2f).
+ * @param[in]     c_deposition           Deposition coefficient (default:
+ * 0.2f).
  * @param[in]     flow_acc_exponent      Exponent controlling the influence of
  *                                       flow accumulation on erosion (default:
  *                                       0.8f).

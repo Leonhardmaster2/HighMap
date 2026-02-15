@@ -177,10 +177,8 @@ Array phase_field(const Array     &array,
   run.execute({shape.x, shape.y});
 
   run.read_buffer("phase");
-  if (p_field_x) run.read_buffer("field_x");
-  if (p_field_y) run.read_buffer("field_y");
-
-  phase.infos();
+  if (p_field_x) run.read_buffer("p_field_x");
+  if (p_field_y) run.read_buffer("p_field_y");
 
   return phase;
 }
