@@ -317,6 +317,10 @@ Array select_rivers(const Array &array, float talus_ref, float clipping_ratio)
   // see erosion/hydraulic_stream
   Array facc = flow_accumulation_dinf(array, talus_ref);
   float vmax = clipping_ratio * std::pow(facc.sum() / (float)facc.size(), 0.5f);
+
+  if (vmax == 0.f) // failsafe
+    return Array(array.shape);
+
   clamp(facc, 0.f, vmax);
   return facc / vmax;
 }
