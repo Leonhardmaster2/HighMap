@@ -152,6 +152,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a8fa1d052ea9b3fcf52be9a4374093594" id="r_a8fa1d052ea9b3fcf52be9a4374093594"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a8fa1d052ea9b3fcf52be9a4374093594">hydraulic_particle</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_mask, int nparticles, int seed, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_bedrock=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_moisture_map=nullptr, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_erosion_map=nullptr, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_deposition_map=nullptr, float c_capacity=10.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float c_erosion=0.05<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float c_deposition=0.05<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float c_inertia=0.3<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float c_gravity=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, int radius=2, float drag_rate=0.001<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float evap_rate=0.001<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, bool post_filtering=false)</td></tr>
 <tr class="memdesc:a8fa1d052ea9b3fcf52be9a4374093594"><td class="mdescLeft">&#160;</td><td class="mdescRight">See hmap::hydraulic_particle.  <br /></td></tr>
 <tr class="separator:a8fa1d052ea9b3fcf52be9a4374093594"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed9bd85558e0c83ea541c9e124cb85b0" id="r_aed9bd85558e0c83ea541c9e124cb85b0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#aed9bd85558e0c83ea541c9e124cb85b0">hydraulic_procedural</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, float kp_global, float c_erosion, <a class="el" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> seed, <a class="el" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6">ErosionProfile</a> erosion_profile=<a class="el" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a61a4a71c0e8d1a97da9657b03d51680f">ErosionProfile::EP_TRIANGLE_GRENIER</a>, float erosion_profile_parameter=0.01<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float angle_shift=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float phase_smoothing=0.1<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float talus_ref=0.001<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float gradient_scaling_ratio=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float gradient_power=0.8<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, bool apply_deposition=false, float deposition_strength=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, bool enable_default_noise=true, float noise_amp=0.01<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_kp_multiplier=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_angle_shift=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_x=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_y=nullptr, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_ridge_mask=nullptr, glm::vec4 bbox={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>})</td></tr>
+<tr class="memdesc:aed9bd85558e0c83ea541c9e124cb85b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply phase-guided hydraulic procedural erosion to a heightmap.  <br /></td></tr>
+<tr class="separator:aed9bd85558e0c83ea541c9e124cb85b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fc2b0a8a03a5048b6aad716fa278c2e" id="r_a2fc2b0a8a03a5048b6aad716fa278c2e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a2fc2b0a8a03a5048b6aad716fa278c2e">hydraulic_procedural_fbm</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, float kp_global, float c_erosion, <a class="el" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> seed, <a class="el" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6">ErosionProfile</a> erosion_profile=<a class="el" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a61a4a71c0e8d1a97da9657b03d51680f">ErosionProfile::EP_TRIANGLE_GRENIER</a>, int octaves=3, float persistence=0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float lacunarity=2.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float erosion_profile_parameter=0.01<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float angle_shift=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float phase_smoothing=0.1<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float talus_ref=0.001<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float gradient_scaling_ratio=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float gradient_power=0.8<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, bool apply_deposition=false, float deposition_strength=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, bool enable_default_noise=true, float noise_amp=0.01<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_kp_multiplier=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_angle_shift=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_x=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_y=nullptr, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_ridge_mask=nullptr, glm::vec4 bbox={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>})</td></tr>
+<tr class="memdesc:a2fc2b0a8a03a5048b6aad716fa278c2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multi-octave (fBm) variant of <a class="el" href="namespacehmap_1_1gpu.html#aed9bd85558e0c83ea541c9e124cb85b0" title="Apply phase-guided hydraulic procedural erosion to a heightmap.">hydraulic_procedural()</a>.  <br /></td></tr>
+<tr class="separator:a2fc2b0a8a03a5048b6aad716fa278c2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9749d24b9dd9bed8ee333910951db395" id="r_a9749d24b9dd9bed8ee333910951db395"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a9749d24b9dd9bed8ee333910951db395">hydraulic_schott</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, int iterations, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;talus, float c_erosion=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float c_thermal=0.1<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float c_deposition=0.2<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float flow_acc_exponent=0.8<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float flow_acc_exponent_depo=0.8<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float flow_routing_exponent=1.3<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float thermal_weight=1.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float deposition_weight=2.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_flow=nullptr)</td></tr>
 <tr class="memdesc:a9749d24b9dd9bed8ee333910951db395"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simulates hydraulic erosion and deposition on a heightmap using the Schott method.  <br /></td></tr>
 <tr class="separator:a9749d24b9dd9bed8ee333910951db395"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1351,6 +1357,500 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="aed9bd85558e0c83ea541c9e124cb85b0" name="aed9bd85558e0c83ea541c9e124cb85b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed9bd85558e0c83ea541c9e124cb85b0">&#9670;&#160;</a></span>hydraulic_procedural()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hmap::gpu::hydraulic_procedural </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>z</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>kp_global</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>c_erosion</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramname"><em>seed</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6">ErosionProfile</a>&#160;</td>
+          <td class="paramname"><em>erosion_profile</em> = <code><a class="el" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a61a4a71c0e8d1a97da9657b03d51680f">ErosionProfile::EP_TRIANGLE_GRENIER</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>erosion_profile_parameter</em> = <code>0.01<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>angle_shift</em> = <code>0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>phase_smoothing</em> = <code>0.1<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>talus_ref</em> = <code>0.001<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>gradient_scaling_ratio</em> = <code>1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>gradient_power</em> = <code>0.8<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>apply_deposition</em> = <code>false</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>deposition_strength</em> = <code>1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>enable_default_noise</em> = <code>true</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>noise_amp</em> = <code>0.01<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
+          <td class="paramname"><em>p_kp_multiplier</em> = <code>nullptr</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
+          <td class="paramname"><em>p_angle_shift</em> = <code>nullptr</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
+          <td class="paramname"><em>p_noise_x</em> = <code>nullptr</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
+          <td class="paramname"><em>p_noise_y</em> = <code>nullptr</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
+          <td class="paramname"><em>p_ridge_mask</em> = <code>nullptr</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">glm::vec4&#160;</td>
+          <td class="paramname"><em>bbox</em> = <code>{0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>}</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Apply phase-guided hydraulic procedural erosion to a heightmap. </p>
+<p>Computes a phase field from the input terrain and generates ridge-aligned erosion patterns modulated by flow accumulation and local gradient. Optionally applies procedural noise, deposition, and outputs a ridge mask.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">z</td><td>Heightmap to erode (modified in place). </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">kp_global</td><td>Global kernel size controlling feature scale. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">c_erosion</td><td>Global erosion intensity. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">seed</td><td>Random seed for phase/noise generation. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">erosion_profile</td><td>Ridge shaping profile type. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">erosion_profile_parameter</td><td>Parameter controlling the profile shape. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">angle_shift</td><td>Global phase angle offset (degrees). </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">phase_smoothing</td><td>Controls smoothing between phase transitions. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">talus_ref</td><td>Reference talus angle for flow accumulation. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">gradient_scaling_ratio</td><td>Blend factor for gradient-based modulation. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">gradient_power</td><td>Exponent applied to normalized gradient. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">apply_deposition</td><td>If true, applies post-erosion deposition pass. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">enable_default_noise</td><td>If true, generates internal FBM noise fields. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">noise_amp</td><td>Amplitude of procedural noise. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">p_kp_multiplier</td><td>Optional spatial modulation of kernel size. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">p_angle_shift</td><td>Optional spatial phase shift. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">p_noise_x</td><td>Optional external noise field (x component). </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">p_noise_y</td><td>Optional external noise field (y component). </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">p_ridge_mask</td><td>Optional output ridge mask (cosine of phase). </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">bbox</td><td>World-space bounding box.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p><b>Example</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="highmap_8hpp.html">highmap.hpp</a>&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
+<div class="line">{</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap_1_1gpu.html#adb8336ed4d83c15500872185dee45d50">hmap::gpu::init_opencl</a>();</div>
+<div class="line"> </div>
+<div class="line">  glm::ivec2 shape = {256, 256};</div>
+<div class="line">  <span class="comment">// shape = {1024, 1024};</span></div>
+<div class="line">  glm::vec2 kw = {2.f, 2.f};</div>
+<div class="line">  <span class="keywordtype">int</span>       seed = 0;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z0 = <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195ac5113a637d69eb3c549e6d561da167ed">hmap::NoiseType::SIMPLEX2</a>,</div>
+<div class="line">                                   shape,</div>
+<div class="line">                                   kw,</div>
+<div class="line">                                   seed,</div>
+<div class="line">                                   8);</div>
+<div class="line">  z0 = <a class="code hl_function" href="namespacehmap.html#ae3ecf5f88476c5d49978a130f8cab2f3">hmap::bulkify</a>(z0, <a class="code hl_enumvalue" href="namespacehmap.html#a55542a66f890ef9ecf5f82af2c23a0cfa71a3d57896b6c2d066433962e74e8961">hmap::PrimitiveType::PRIM_CONE_SMOOTH</a>, 1.f);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z0);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">auto</span>  z1 = z0;</div>
+<div class="line">  <span class="keywordtype">float</span> kp_global = 16.f;</div>
+<div class="line">  <span class="keywordtype">float</span> c_erosion = 0.2f;</div>
+<div class="line">  <span class="keyword">auto</span>  erosion_profile = <a class="code hl_enumvalue" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a61a4a71c0e8d1a97da9657b03d51680f">hmap::ErosionProfile::EP_TRIANGLE_GRENIER</a>;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap_1_1gpu.html#a2fc2b0a8a03a5048b6aad716fa278c2e">hmap::gpu::hydraulic_procedural_fbm</a>(z1,</div>
+<div class="line">                                      kp_global,</div>
+<div class="line">                                      c_erosion,</div>
+<div class="line">                                      seed,</div>
+<div class="line">                                      erosion_profile);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">auto</span> z2 = z0;</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap_1_1gpu.html#aed9bd85558e0c83ea541c9e124cb85b0">hmap::gpu::hydraulic_procedural</a>(z2, kp_global, c_erosion, seed);</div>
+<div class="line"> </div>
+<div class="line">  z0.<a class="code hl_function" href="classhmap_1_1Array.html#a00b8f7462c1e22b1da8a67ec62d4c8c8">dump</a>(<span class="stringliteral">&quot;out0.png&quot;</span>);</div>
+<div class="line">  z1.dump(<span class="stringliteral">&quot;out1.png&quot;</span>);</div>
+<div class="line">  z2.dump(<span class="stringliteral">&quot;out2.png&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_hydraulic_procedural0.png&quot;</span>,</div>
+<div class="line">                          {z0, z1, z2},</div>
+<div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>,</div>
+<div class="line">                          <span class="keyword">true</span>);</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// --- all profiles</span></div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">auto</span> profiles = <a class="code hl_function" href="namespacehmap.html#ac718f038155dde59fb50eb22684ed255">hmap::check_erosion_profile_function</a>();</div>
+<div class="line"> </div>
+<div class="line">  std::vector&lt;hmap::Array&gt; stack = {z0};</div>
+<div class="line">  <span class="keywordflow">for</span> (<span class="keyword">auto</span> ep : profiles)</div>
+<div class="line">  {</div>
+<div class="line">    <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> ze = z0;</div>
+<div class="line">    <a class="code hl_function" href="namespacehmap_1_1gpu.html#aed9bd85558e0c83ea541c9e124cb85b0">hmap::gpu::hydraulic_procedural</a>(ze, kp_global, c_erosion, seed, ep);</div>
+<div class="line">    stack.push_back(ze);</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_hydraulic_procedural1.png&quot;</span>,</div>
+<div class="line">                          stack,</div>
+<div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>,</div>
+<div class="line">                          <span class="keyword">true</span>);</div>
+<div class="line">}</div>
+<div class="ttc" id="aclasshmap_1_1Array_html_a00b8f7462c1e22b1da8a67ec62d4c8c8"><div class="ttname"><a href="classhmap_1_1Array.html#a00b8f7462c1e22b1da8a67ec62d4c8c8">hmap::Array::dump</a></div><div class="ttdeci">void dump(const std::string &amp;fname=&quot;out.png&quot;) const</div><div class="ttdoc">Debug tool, dump some infos and generate an output file (16bits grayscale)</div><div class="ttdef"><b>Definition</b> methods.cpp:116</div></div>
+<div class="ttc" id="anamespacehmap_1_1gpu_html_a2fc2b0a8a03a5048b6aad716fa278c2e"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a2fc2b0a8a03a5048b6aad716fa278c2e">hmap::gpu::hydraulic_procedural_fbm</a></div><div class="ttdeci">void hydraulic_procedural_fbm(Array &amp;z, float kp_global, float c_erosion, uint seed, ErosionProfile erosion_profile=ErosionProfile::EP_TRIANGLE_GRENIER, int octaves=3, float persistence=0.5f, float lacunarity=2.f, float erosion_profile_parameter=0.01f, float angle_shift=0.f, float phase_smoothing=0.1f, float talus_ref=0.001f, float gradient_scaling_ratio=1.f, float gradient_power=0.8f, bool apply_deposition=false, float deposition_strength=1.f, bool enable_default_noise=true, float noise_amp=0.01f, const Array *p_kp_multiplier=nullptr, const Array *p_angle_shift=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, Array *p_ridge_mask=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Multi-octave (fBm) variant of hydraulic_procedural().</div><div class="ttdef"><b>Definition</b> hydraulic_procedural.cpp:185</div></div>
+<div class="ttc" id="anamespacehmap_1_1gpu_html_aed9bd85558e0c83ea541c9e124cb85b0"><div class="ttname"><a href="namespacehmap_1_1gpu.html#aed9bd85558e0c83ea541c9e124cb85b0">hmap::gpu::hydraulic_procedural</a></div><div class="ttdeci">void hydraulic_procedural(Array &amp;z, float kp_global, float c_erosion, uint seed, ErosionProfile erosion_profile=ErosionProfile::EP_TRIANGLE_GRENIER, float erosion_profile_parameter=0.01f, float angle_shift=0.f, float phase_smoothing=0.1f, float talus_ref=0.001f, float gradient_scaling_ratio=1.f, float gradient_power=0.8f, bool apply_deposition=false, float deposition_strength=1.f, bool enable_default_noise=true, float noise_amp=0.01f, const Array *p_kp_multiplier=nullptr, const Array *p_angle_shift=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, Array *p_ridge_mask=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Apply phase-guided hydraulic procedural erosion to a heightmap.</div><div class="ttdef"><b>Definition</b> hydraulic_procedural.cpp:23</div></div>
+<div class="ttc" id="anamespacehmap_html_a25a4e4775f3c0918ed75f0503f5ed0a6a61a4a71c0e8d1a97da9657b03d51680f"><div class="ttname"><a href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a61a4a71c0e8d1a97da9657b03d51680f">hmap::EP_TRIANGLE_GRENIER</a></div><div class="ttdeci">@ EP_TRIANGLE_GRENIER</div><div class="ttdef"><b>Definition</b> erosion.hpp:52</div></div>
+<div class="ttc" id="anamespacehmap_html_a55542a66f890ef9ecf5f82af2c23a0cfa71a3d57896b6c2d066433962e74e8961"><div class="ttname"><a href="namespacehmap.html#a55542a66f890ef9ecf5f82af2c23a0cfa71a3d57896b6c2d066433962e74e8961">hmap::PRIM_CONE_SMOOTH</a></div><div class="ttdeci">@ PRIM_CONE_SMOOTH</div><div class="ttdef"><b>Definition</b> primitives.hpp:57</div></div>
+<div class="ttc" id="anamespacehmap_html_ab8197c4c7a85dacb616fee7a7d0df195ac5113a637d69eb3c549e6d561da167ed"><div class="ttname"><a href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195ac5113a637d69eb3c549e6d561da167ed">hmap::SIMPLEX2</a></div><div class="ttdeci">@ SIMPLEX2</div><div class="ttdoc">OpenSimplex2.</div><div class="ttdef"><b>Definition</b> functions.hpp:67</div></div>
+<div class="ttc" id="anamespacehmap_html_ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9"><div class="ttname"><a href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::TERRAIN</a></div><div class="ttdeci">@ TERRAIN</div><div class="ttdef"><b>Definition</b> colormaps.hpp:92</div></div>
+<div class="ttc" id="anamespacehmap_html_ac718f038155dde59fb50eb22684ed255"><div class="ttname"><a href="namespacehmap.html#ac718f038155dde59fb50eb22684ed255">hmap::check_erosion_profile_function</a></div><div class="ttdeci">std::vector&lt; hmap::ErosionProfile &gt; check_erosion_profile_function(float delta=0.01f)</div><div class="ttdef"><b>Definition</b> get_erosion_profile_function.cpp:17</div></div>
+<div class="ttc" id="anamespacehmap_html_ae3ecf5f88476c5d49978a130f8cab2f3"><div class="ttname"><a href="namespacehmap.html#ae3ecf5f88476c5d49978a130f8cab2f3">hmap::bulkify</a></div><div class="ttdeci">Array bulkify(const Array &amp;z, const PrimitiveType &amp;primitive_type, float amp=1.f, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, glm::vec2 center={0.5f, 0.5f}, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdef"><b>Definition</b> bulkify.cpp:11</div></div>
+</div><!-- fragment --><p><b>Result</b> </p><div class="image">
+<img src="ex_hydraulic_procedural.png" alt=""/>
+</div>
+ 
+</div>
+</div>
+<a id="a2fc2b0a8a03a5048b6aad716fa278c2e" name="a2fc2b0a8a03a5048b6aad716fa278c2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2fc2b0a8a03a5048b6aad716fa278c2e">&#9670;&#160;</a></span>hydraulic_procedural_fbm()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hmap::gpu::hydraulic_procedural_fbm </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>z</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>kp_global</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>c_erosion</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramname"><em>seed</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6">ErosionProfile</a>&#160;</td>
+          <td class="paramname"><em>erosion_profile</em> = <code><a class="el" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a61a4a71c0e8d1a97da9657b03d51680f">ErosionProfile::EP_TRIANGLE_GRENIER</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>octaves</em> = <code>3</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>persistence</em> = <code>0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>lacunarity</em> = <code>2.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>erosion_profile_parameter</em> = <code>0.01<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>angle_shift</em> = <code>0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>phase_smoothing</em> = <code>0.1<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>talus_ref</em> = <code>0.001<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>gradient_scaling_ratio</em> = <code>1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>gradient_power</em> = <code>0.8<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>apply_deposition</em> = <code>false</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>deposition_strength</em> = <code>1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>enable_default_noise</em> = <code>true</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>noise_amp</em> = <code>0.01<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
+          <td class="paramname"><em>p_kp_multiplier</em> = <code>nullptr</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
+          <td class="paramname"><em>p_angle_shift</em> = <code>nullptr</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
+          <td class="paramname"><em>p_noise_x</em> = <code>nullptr</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
+          <td class="paramname"><em>p_noise_y</em> = <code>nullptr</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
+          <td class="paramname"><em>p_ridge_mask</em> = <code>nullptr</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">glm::vec4&#160;</td>
+          <td class="paramname"><em>bbox</em> = <code>{0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>}</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Multi-octave (fBm) variant of <a class="el" href="namespacehmap_1_1gpu.html#aed9bd85558e0c83ea541c9e124cb85b0" title="Apply phase-guided hydraulic procedural erosion to a heightmap.">hydraulic_procedural()</a>. </p>
+<p>Applies the erosion operator across multiple octaves with lacunarity/persistence scaling, accumulating a normalized ridge mask.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">z</td><td>Heightmap to erode (modified in place). </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">kp_global</td><td>Base kernel size. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">c_erosion</td><td>Base erosion intensity. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">seed</td><td>Random seed. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">erosion_profile</td><td>Ridge shaping profile. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">octaves</td><td>Number of fBm octaves. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">persistence</td><td>Amplitude decay per octave. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">lacunarity</td><td>Frequency growth per octave. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">erosion_profile_parameter</td><td>Profile parameter. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">angle_shift</td><td>Global phase shift (degrees). </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">phase_smoothing</td><td>Phase smoothing factor. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">talus_ref</td><td>Reference talus angle. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">gradient_scaling_ratio</td><td>Gradient modulation ratio. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">gradient_power</td><td>Gradient exponent. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">apply_deposition</td><td>Enable deposition pass. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">enable_default_noise</td><td>Enable internal noise generation. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">noise_amp</td><td>Noise amplitude. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">p_kp_multiplier</td><td>Optional spatial kernel modulation. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">p_angle_shift</td><td>Optional spatial phase shift. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">p_noise_x</td><td>Optional external noise (x). </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">p_noise_y</td><td>Optional external noise (y). </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">p_ridge_mask</td><td>Optional accumulated ridge mask output. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">bbox</td><td>World-space bounding box.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p><b>Example</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="highmap_8hpp.html">highmap.hpp</a>&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
+<div class="line">{</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap_1_1gpu.html#adb8336ed4d83c15500872185dee45d50">hmap::gpu::init_opencl</a>();</div>
+<div class="line"> </div>
+<div class="line">  glm::ivec2 shape = {256, 256};</div>
+<div class="line">  <span class="comment">// shape = {1024, 1024};</span></div>
+<div class="line">  glm::vec2 kw = {2.f, 2.f};</div>
+<div class="line">  <span class="keywordtype">int</span>       seed = 0;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z0 = <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195ac5113a637d69eb3c549e6d561da167ed">hmap::NoiseType::SIMPLEX2</a>,</div>
+<div class="line">                                   shape,</div>
+<div class="line">                                   kw,</div>
+<div class="line">                                   seed,</div>
+<div class="line">                                   8);</div>
+<div class="line">  z0 = <a class="code hl_function" href="namespacehmap.html#ae3ecf5f88476c5d49978a130f8cab2f3">hmap::bulkify</a>(z0, <a class="code hl_enumvalue" href="namespacehmap.html#a55542a66f890ef9ecf5f82af2c23a0cfa71a3d57896b6c2d066433962e74e8961">hmap::PrimitiveType::PRIM_CONE_SMOOTH</a>, 1.f);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z0);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">auto</span>  z1 = z0;</div>
+<div class="line">  <span class="keywordtype">float</span> kp_global = 16.f;</div>
+<div class="line">  <span class="keywordtype">float</span> c_erosion = 0.2f;</div>
+<div class="line">  <span class="keyword">auto</span>  erosion_profile = <a class="code hl_enumvalue" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a61a4a71c0e8d1a97da9657b03d51680f">hmap::ErosionProfile::EP_TRIANGLE_GRENIER</a>;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap_1_1gpu.html#a2fc2b0a8a03a5048b6aad716fa278c2e">hmap::gpu::hydraulic_procedural_fbm</a>(z1,</div>
+<div class="line">                                      kp_global,</div>
+<div class="line">                                      c_erosion,</div>
+<div class="line">                                      seed,</div>
+<div class="line">                                      erosion_profile);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">auto</span> z2 = z0;</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap_1_1gpu.html#aed9bd85558e0c83ea541c9e124cb85b0">hmap::gpu::hydraulic_procedural</a>(z2, kp_global, c_erosion, seed);</div>
+<div class="line"> </div>
+<div class="line">  z0.<a class="code hl_function" href="classhmap_1_1Array.html#a00b8f7462c1e22b1da8a67ec62d4c8c8">dump</a>(<span class="stringliteral">&quot;out0.png&quot;</span>);</div>
+<div class="line">  z1.dump(<span class="stringliteral">&quot;out1.png&quot;</span>);</div>
+<div class="line">  z2.dump(<span class="stringliteral">&quot;out2.png&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_hydraulic_procedural0.png&quot;</span>,</div>
+<div class="line">                          {z0, z1, z2},</div>
+<div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>,</div>
+<div class="line">                          <span class="keyword">true</span>);</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// --- all profiles</span></div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">auto</span> profiles = <a class="code hl_function" href="namespacehmap.html#ac718f038155dde59fb50eb22684ed255">hmap::check_erosion_profile_function</a>();</div>
+<div class="line"> </div>
+<div class="line">  std::vector&lt;hmap::Array&gt; stack = {z0};</div>
+<div class="line">  <span class="keywordflow">for</span> (<span class="keyword">auto</span> ep : profiles)</div>
+<div class="line">  {</div>
+<div class="line">    <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> ze = z0;</div>
+<div class="line">    <a class="code hl_function" href="namespacehmap_1_1gpu.html#aed9bd85558e0c83ea541c9e124cb85b0">hmap::gpu::hydraulic_procedural</a>(ze, kp_global, c_erosion, seed, ep);</div>
+<div class="line">    stack.push_back(ze);</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_hydraulic_procedural1.png&quot;</span>,</div>
+<div class="line">                          stack,</div>
+<div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>,</div>
+<div class="line">                          <span class="keyword">true</span>);</div>
+<div class="line">}</div>
+</div><!-- fragment --><p><b>Result</b> </p><div class="image">
+<img src="ex_hydraulic_procedural.png" alt=""/>
+</div>
+ 
+</div>
+</div>
 <a id="a9749d24b9dd9bed8ee333910951db395" name="a9749d24b9dd9bed8ee333910951db395"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9749d24b9dd9bed8ee333910951db395">&#9670;&#160;</a></span>hydraulic_schott() <span class="overload">[1/2]</span></h2>
 
@@ -1489,7 +1989,6 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">}</div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_a9749d24b9dd9bed8ee333910951db395"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a9749d24b9dd9bed8ee333910951db395">hmap::gpu::hydraulic_schott</a></div><div class="ttdeci">void hydraulic_schott(Array &amp;z, int iterations, const Array &amp;talus, float c_erosion=1.f, float c_thermal=0.1f, float c_deposition=0.2f, float flow_acc_exponent=0.8f, float flow_acc_exponent_depo=0.8f, float flow_routing_exponent=1.3f, float thermal_weight=1.5f, float deposition_weight=2.5f, Array *p_flow=nullptr)</div><div class="ttdoc">Simulates hydraulic erosion and deposition on a heightmap using the Schott method.</div><div class="ttdef"><b>Definition</b> hydraulic_schott_gpu.cpp:10</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_aa3c0fc5295f81856967feed8cf87f711"><div class="ttname"><a href="namespacehmap_1_1gpu.html#aa3c0fc5295f81856967feed8cf87f711">hmap::gpu::hydraulic_schott_erosion</a></div><div class="ttdeci">void hydraulic_schott_erosion(Array &amp;z, int iterations, float c_erosion=1.f, float flow_acc_exponent=0.8f, float flow_routing_exponent=1.3f, const Array *p_moisture_map=nullptr, Array *p_flow=nullptr)</div><div class="ttdoc">See hmap::hydraulic_schott.</div><div class="ttdef"><b>Definition</b> hydraulic_schott_gpu.cpp:125</div></div>
-<div class="ttc" id="anamespacehmap_html_ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9"><div class="ttname"><a href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::TERRAIN</a></div><div class="ttdeci">@ TERRAIN</div><div class="ttdef"><b>Definition</b> colormaps.hpp:92</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_hydraulic_schott.png" alt=""/>
 </div>
@@ -2432,7 +2931,6 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">}</div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_aec782e6aba3f4cfbbd97aafa46cc700b"><div class="ttname"><a href="namespacehmap_1_1gpu.html#aec782e6aba3f4cfbbd97aafa46cc700b">hmap::gpu::sediment_layer</a></div><div class="ttdeci">void sediment_layer(Array &amp;z, const Array &amp;talus_layer, const Array &amp;talus_upper_limit, int iterations, bool apply_post_filter=true, Array *p_deposition_map=nullptr)</div><div class="ttdoc">Applies a talus-based sediment deposition layer.</div><div class="ttdef"><b>Definition</b> deposition.cpp:75</div></div>
 <div class="ttc" id="anamespacehmap_html_a55542a66f890ef9ecf5f82af2c23a0cfae1780174f7412d5a5593b324ea0db7cb"><div class="ttname"><a href="namespacehmap.html#a55542a66f890ef9ecf5f82af2c23a0cfae1780174f7412d5a5593b324ea0db7cb">hmap::PRIM_CUBIC_PULSE</a></div><div class="ttdeci">@ PRIM_CUBIC_PULSE</div><div class="ttdef"><b>Definition</b> primitives.hpp:58</div></div>
-<div class="ttc" id="anamespacehmap_html_ae3ecf5f88476c5d49978a130f8cab2f3"><div class="ttname"><a href="namespacehmap.html#ae3ecf5f88476c5d49978a130f8cab2f3">hmap::bulkify</a></div><div class="ttdeci">Array bulkify(const Array &amp;z, const PrimitiveType &amp;primitive_type, float amp=1.f, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, glm::vec2 center={0.5f, 0.5f}, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdef"><b>Definition</b> bulkify.cpp:11</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_sediment_layer.png" alt=""/>
 </div>
@@ -2643,7 +3141,6 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_strata.png&quot;</span>, {z1, z2}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>, <span class="keyword">true</span>);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclasshmap_1_1Array_html_a00b8f7462c1e22b1da8a67ec62d4c8c8"><div class="ttname"><a href="classhmap_1_1Array.html#a00b8f7462c1e22b1da8a67ec62d4c8c8">hmap::Array::dump</a></div><div class="ttdeci">void dump(const std::string &amp;fname=&quot;out.png&quot;) const</div><div class="ttdoc">Debug tool, dump some infos and generate an output file (16bits grayscale)</div><div class="ttdef"><b>Definition</b> methods.cpp:116</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_afb140daa72128c65f1af72ed17dae9a5"><div class="ttname"><a href="namespacehmap_1_1gpu.html#afb140daa72128c65f1af72ed17dae9a5">hmap::gpu::strata</a></div><div class="ttdeci">void strata(Array &amp;z, float angle, float slope, float gamma, uint seed, bool linear_gamma=true, float kz=1.f, int octaves=4, float lacunarity=2.f, float gamma_noise_ratio=0.5f, float noise_amp=0.4f, const glm::vec2 &amp;noise_kw={4.f, 4.f}, const glm::vec2 &amp;ridge_noise_kw={4.f, 1.2f}, float ridge_angle_shift=45.f, float ridge_noise_amp=0.5f, float ridge_clamp_vmin=0.f, float ridge_remap_vmin=0.f, bool apply_elevation_mask=true, bool apply_ridge_mask=true, float mask_gamma=0.4f, const Array *p_mask=nullptr, const glm::vec4 &amp;bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Applies stratification to a heightfield using directional noise and multiscale gamma transformations.</div><div class="ttdef"><b>Definition</b> strata_gpu.cpp:12</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_strata.png" alt=""/>
@@ -3762,8 +4259,6 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_a52a653b3b3be84e8ff2330f30a6b5bf3"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a52a653b3b3be84e8ff2330f30a6b5bf3">hmap::gpu::watershed_ridge</a></div><div class="ttdeci">Array watershed_ridge(const Array &amp;z, float amplitude=0.2f, float width=32.f, float edt_exponent=0.5f, int prefilter_ir=0, FlowDirectionMethod fd_method=FlowDirectionMethod::FDM_D8, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_scaling=nullptr)</div><div class="ttdoc">Carves watershed ridges using basin-wise distance transforms.</div><div class="ttdef"><b>Definition</b> watershed_ridge.cpp:19</div></div>
 <div class="ttc" id="anamespacehmap_html_a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894"><div class="ttname"><a href="namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894">hmap::FDM_D8</a></div><div class="ttdeci">@ FDM_D8</div><div class="ttdef"><b>Definition</b> hydrology.hpp:35</div></div>
 <div class="ttc" id="anamespacehmap_html_a38c0a582a98d48f73f49f12ebf1b78f9"><div class="ttname"><a href="namespacehmap.html#a38c0a582a98d48f73f49f12ebf1b78f9">hmap::cubic_pulse</a></div><div class="ttdeci">Array cubic_pulse(glm::ivec2 shape)</div><div class="ttdoc">Generates a cubic pulse kernel array.</div><div class="ttdef"><b>Definition</b> kernels.cpp:97</div></div>
-<div class="ttc" id="anamespacehmap_html_a55542a66f890ef9ecf5f82af2c23a0cfa71a3d57896b6c2d066433962e74e8961"><div class="ttname"><a href="namespacehmap.html#a55542a66f890ef9ecf5f82af2c23a0cfa71a3d57896b6c2d066433962e74e8961">hmap::PRIM_CONE_SMOOTH</a></div><div class="ttdeci">@ PRIM_CONE_SMOOTH</div><div class="ttdef"><b>Definition</b> primitives.hpp:57</div></div>
-<div class="ttc" id="anamespacehmap_html_ab8197c4c7a85dacb616fee7a7d0df195ac5113a637d69eb3c549e6d561da167ed"><div class="ttname"><a href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195ac5113a637d69eb3c549e6d561da167ed">hmap::SIMPLEX2</a></div><div class="ttdeci">@ SIMPLEX2</div><div class="ttdoc">OpenSimplex2.</div><div class="ttdef"><b>Definition</b> functions.hpp:67</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_watershed_ridge.png" alt=""/>
 </div>
@@ -10712,7 +11207,7 @@ The OpenCL kernel "vorolines" must be defined and compiled beforehand.</dd></dl>
 <div class="line">}</div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_a845e5938c39cdab886b3e354cb53d078"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a845e5938c39cdab886b3e354cb53d078">hmap::gpu::vorolines</a></div><div class="ttdeci">Array vorolines(glm::ivec2 shape, float density, uint seed, float k_smoothing=0.f, float exp_sigma=0.f, float alpha=0.f, float alpha_span=M_PI, VoronoiReturnType return_type=VoronoiReturnType::F1_SQUARED, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f}, glm::vec4 bbox_points={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Generates a Voronoi-based pattern where cells are defined by proximity to random lines.</div><div class="ttdef"><b>Definition</b> primitives_gpu.cpp:707</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_acc7dccf4ab556f489ffbaef1592fe375"><div class="ttname"><a href="namespacehmap_1_1gpu.html#acc7dccf4ab556f489ffbaef1592fe375">hmap::gpu::vorolines_fbm</a></div><div class="ttdeci">Array vorolines_fbm(glm::ivec2 shape, float density, uint seed, float k_smoothing=0.f, float exp_sigma=0.f, float alpha=0.f, float alpha_span=M_PI, VoronoiReturnType return_type=VoronoiReturnType::F1_SQUARED, int octaves=8, float weight=0.7f, float persistence=0.5f, float lacunarity=2.f, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f}, glm::vec4 bbox_points={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Generates a Voronoi-based pattern using distances to lines defined by random points and angles,...</div><div class="ttdef"><b>Definition</b> primitives_gpu.cpp:786</div></div>
-<div class="ttc" id="anamespacehmap_html_a6b608e2826c1f9ba54a0e8922d5faa6b"><div class="ttname"><a href="namespacehmap.html#a6b608e2826c1f9ba54a0e8922d5faa6b">hmap::sqrt</a></div><div class="ttdeci">Array sqrt(const Array &amp;array)</div><div class="ttdoc">Return the square root of the array elements.</div><div class="ttdef"><b>Definition</b> math.cpp:464</div></div>
+<div class="ttc" id="anamespacehmap_html_a6b608e2826c1f9ba54a0e8922d5faa6b"><div class="ttname"><a href="namespacehmap.html#a6b608e2826c1f9ba54a0e8922d5faa6b">hmap::sqrt</a></div><div class="ttdeci">Array sqrt(const Array &amp;array)</div><div class="ttdoc">Return the square root of the array elements.</div><div class="ttdef"><b>Definition</b> math.cpp:478</div></div>
 <div class="ttc" id="anamespacehmap_html_a8e3756915e28aa80cec2190043cc8c2fa1d0f88509ad557940f07cd8c5d721820"><div class="ttname"><a href="namespacehmap.html#a8e3756915e28aa80cec2190043cc8c2fa1d0f88509ad557940f07cd8c5d721820">hmap::EDGE_DISTANCE_SQUARED</a></div><div class="ttdeci">@ EDGE_DISTANCE_SQUARED</div><div class="ttdoc">Squared edge distance.</div><div class="ttdef"><b>Definition</b> primitives.hpp:43</div></div>
 <div class="ttc" id="anamespacehmap_html_a8e3756915e28aa80cec2190043cc8c2fa3e5996ed4314058911435c50bc95e1c2"><div class="ttname"><a href="namespacehmap.html#a8e3756915e28aa80cec2190043cc8c2fa3e5996ed4314058911435c50bc95e1c2">hmap::F1_SQUARED</a></div><div class="ttdeci">@ F1_SQUARED</div><div class="ttdoc">Returns F1^2.</div><div class="ttdef"><b>Definition</b> primitives.hpp:37</div></div>
 <div class="ttc" id="anamespacehmap_html_a8e3756915e28aa80cec2190043cc8c2fa85f252453c9797b7e00cc96cb7147537"><div class="ttname"><a href="namespacehmap.html#a8e3756915e28aa80cec2190043cc8c2fa85f252453c9797b7e00cc96cb7147537">hmap::CONSTANT_F2MF1_SQUARED</a></div><div class="ttdeci">@ CONSTANT_F2MF1_SQUARED</div><div class="ttdoc">Constant × (F2 - F1)^2.</div><div class="ttdef"><b>Definition</b> primitives.hpp:45</div></div>

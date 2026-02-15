@@ -6,13 +6,14 @@ var searchData=
   ['geo_2ecpp_3',['geo.cpp',['../geo_8cpp.html',1,'']]],
   ['geomorphons_2ecpp_4',['geomorphons.cpp',['../geomorphons_8cpp.html',1,'']]],
   ['get_5fcolormap_5fdata_2ecpp_5',['get_colormap_data.cpp',['../get__colormap__data_8cpp.html',1,'']]],
-  ['gpu_5fopencl_2ecpp_6',['gpu_opencl.cpp',['../gpu__opencl_8cpp.html',1,'']]],
-  ['gpu_5fopencl_2ehpp_7',['gpu_opencl.hpp',['../gpu__opencl_8hpp.html',1,'']]],
-  ['gradient_2ecpp_8',['gradient.cpp',['../gradient_8cpp.html',1,'']]],
-  ['gradient_2ehpp_9',['gradient.hpp',['../gradient_8hpp.html',1,'']]],
-  ['gradient_5fgpu_2ecpp_10',['gradient_gpu.cpp',['../gradient__gpu_8cpp.html',1,'']]],
-  ['graph_2ecpp_11',['graph.cpp',['../graph_8cpp.html',1,'']]],
-  ['graph_2ehpp_12',['graph.hpp',['../graph_8hpp.html',1,'']]],
-  ['grid_2ecpp_13',['grid.cpp',['../grid_8cpp.html',1,'']]],
-  ['grids_2ehpp_14',['grids.hpp',['../grids_8hpp.html',1,'']]]
+  ['get_5ferosion_5fprofile_5ffunction_2ecpp_6',['get_erosion_profile_function.cpp',['../get__erosion__profile__function_8cpp.html',1,'']]],
+  ['gpu_5fopencl_2ecpp_7',['gpu_opencl.cpp',['../gpu__opencl_8cpp.html',1,'']]],
+  ['gpu_5fopencl_2ehpp_8',['gpu_opencl.hpp',['../gpu__opencl_8hpp.html',1,'']]],
+  ['gradient_2ecpp_9',['gradient.cpp',['../gradient_8cpp.html',1,'']]],
+  ['gradient_2ehpp_10',['gradient.hpp',['../gradient_8hpp.html',1,'']]],
+  ['gradient_5fgpu_2ecpp_11',['gradient_gpu.cpp',['../gradient__gpu_8cpp.html',1,'']]],
+  ['graph_2ecpp_12',['graph.cpp',['../graph_8cpp.html',1,'']]],
+  ['graph_2ehpp_13',['graph.hpp',['../graph_8hpp.html',1,'']]],
+  ['grid_2ecpp_14',['grid.cpp',['../grid_8cpp.html',1,'']]],
+  ['grids_2ehpp_15',['grids.hpp',['../grids_8hpp.html',1,'']]]
 ];

@@ -224,15 +224,18 @@ enum \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369}{Cmap}} \+
  \}
 \begin{DoxyCompactList}\small\item\em Enumeration for different colormap types. \end{DoxyCompactList}\item 
 enum \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6}{Erosion\+Profile}} \+: int \{ \newline
-\mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6af8c94bc76e5d0a80a0ea8a6cda58832e}{COSINE}}
-, \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6aa7fce3ae63e2de0b582f1af344e798fd}{SAW\+\_\+\+SHARP}}
-, \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a18fba3380d9dbcb57378fbbbc522965c}{SAW\+\_\+\+SMOOTH}}
-, \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6aeb684e263530f3a9ebfd94816e8bf60c}{SHARP\+\_\+\+VALLEYS}}
+\mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a0f02f3dc5c8d286f8586965cf4633cd1}{EP\+\_\+\+COSINE}}
+, \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a856508f652cc10eede30d7080659bc02}{EP\+\_\+\+COSINE\+\_\+\+BULK}}
+, \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a32800f7d362669cd48371709a2486f21}{EP\+\_\+\+PARABOL}}
+, \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a993ff6b03f892d19c56227ffbbbfd93f}{EP\+\_\+\+SAW\+\_\+\+SHARP}}
 , \newline
-\mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a8aa5067161e7490dd7a989f1b33cf57d}{SQUARE\+\_\+\+SMOOTH}}
-, \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a3b4b1fb15aaf3888333a9d6958eae76a}{TRIANGLE\+\_\+\+GRENIER}}
-, \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6ac6ec19319c947a3b6484c42b69007636}{TRIANGLE\+\_\+\+SHARP}}
-, \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6af078cf93214e8043479eb5906a456880}{TRIANGLE\+\_\+\+SMOOTH}}
+\mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a98a4bd25b2a1f7d7933942b2fca9bc0f}{EP\+\_\+\+SAW\+\_\+\+SMOOTH}}
+, \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a86984b9d7ea6041722ae4f3f40b3eb3f}{EP\+\_\+\+SHARP\+\_\+\+VALLEYS}}
+, \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6ad2cbba7068fc06688723838cc6de36ae}{EP\+\_\+\+SQRT}}
+, \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a61a4a71c0e8d1a97da9657b03d51680f}{EP\+\_\+\+TRIANGLE\+\_\+\+GRENIER}}
+, \newline
+\mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6abd62370bad5912fe7918895b6ddb0176}{EP\+\_\+\+TRIANGLE\+\_\+\+SHARP}}
+, \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a4ac60b8049aacabb3b5546b20cc87e9e}{EP\+\_\+\+TRIANGLE\+\_\+\+SMOOTH}}
  \}
 \begin{DoxyCompactList}\small\item\em Procedural erosion angular profile type. \end{DoxyCompactList}\item 
 enum \mbox{\hyperlink{namespacehmap_ac81a92060b89699c4eb9826495d87250}{Mesh\+Type}} \+: int \{ \mbox{\hyperlink{namespacehmap_ac81a92060b89699c4eb9826495d87250a64d964458b2812e59ec68af2ee53a8ae}{TRI\+\_\+\+OPTIMIZED}}
@@ -564,6 +567,8 @@ bool \mbox{\hyperlink{namespacehmap_a2c154806321deecb3240ac71eb7ccf29}{assert\+\
 \item 
 std\+::function$<$ float(float)$>$ \mbox{\hyperlink{namespacehmap_a02f191e398bfc3c0e87999d8576d7c3d}{get\+\_\+erosion\+\_\+profile\+\_\+function}} (const \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6}{Erosion\+Profile}} \&erosion\+\_\+profile, float delta, float \&profile\+\_\+avg)
 \item 
+std\+::vector$<$ \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6}{hmap\+::\+Erosion\+Profile}} $>$ \mbox{\hyperlink{namespacehmap_ac718f038155dde59fb50eb22684ed255}{check\+\_\+erosion\+\_\+profile\+\_\+function}} (float delta=0.\+01\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
+\item 
 void \mbox{\hyperlink{namespacehmap_a54724c8701b75260e97924451731e41f}{coastal\+\_\+erosion\+\_\+diffusion}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&water\+\_\+depth, float additional\+\_\+depth, int iterations=10, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+water\+\_\+mask=nullptr)
 \begin{DoxyCompactList}\small\item\em Simulates terrain diffusion due to coastal erosion. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a30dd1027fd8da1839f584687aedfdaf5}{coastal\+\_\+erosion\+\_\+profile}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&water\+\_\+depth, float shore\+\_\+ground\+\_\+extent, float shore\+\_\+water\+\_\+extent, float slope\+\_\+shore=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float slope\+\_\+shore\+\_\+water=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float scarp\+\_\+extent\+\_\+ratio=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, bool apply\+\_\+post\+\_\+filter=true, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+shore\+\_\+mask=nullptr)
@@ -592,8 +597,6 @@ void \mbox{\hyperlink{namespacehmap_a5aceac22b926cbff676c323e1aca4db0}{hydraulic
 \begin{DoxyCompactList}\small\item\em Apply cell-\/based hydraulic erosion/deposition of Musgrave et al. (1989). \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a8c20cd6c2b1cd1ec20ffb2ce86ed0ecb}{hydraulic\+\_\+musgrave}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int iterations=100, float c\+\_\+capacity=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float c\+\_\+erosion=0.\+1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float c\+\_\+deposition=0.\+1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float water\+\_\+level=0.\+01\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float evap\+\_\+rate=0.\+01\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{namespacehmap_af65bb48580b5f860571161387a22fbb4}{hydraulic\+\_\+procedural}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, float ridge\+\_\+wavelength, float ridge\+\_\+scaling=0.\+1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6}{Erosion\+Profile}} erosion\+\_\+profile=\mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6af078cf93214e8043479eb5906a456880}{Erosion\+Profile\+::\+TRIANGLE\+\_\+\+SMOOTH}}, float delta=0.\+02\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float noise\+\_\+ratio=0.\+2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, int prefilter\+\_\+ir=-\/1, float density\+\_\+factor=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float kernel\+\_\+width\+\_\+ratio=2.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float phase\+\_\+smoothing=2.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float phase\+\_\+noise\+\_\+amp=M\+\_\+\+PI, bool reverse\+\_\+phase=false, bool rotate90=false, bool use\+\_\+default\+\_\+mask=true, float talus\+\_\+mask=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+mask=nullptr, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+ridge\+\_\+mask=nullptr, float vmin=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float vmax=-\/1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
-\begin{DoxyCompactList}\small\item\em Generates a procedurally eroded terrain using hydraulic erosion and ridge generation techniques. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_ac926368d8d3f621a876039cad384e3b2}{hydraulic\+\_\+spl}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z)
 \item 
 void \mbox{\hyperlink{namespacehmap_acbf32c30d68183eb5522888af2ede316}{hydraulic\+\_\+stream}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, float c\+\_\+erosion, float talus\+\_\+ref, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+bedrock=nullptr, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+moisture\+\_\+map=nullptr, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+erosion\+\_\+map=nullptr, int ir=1, float clipping\+\_\+ratio=10.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
@@ -1332,6 +1335,8 @@ float \mbox{\hyperlink{namespacehmap_ae7d9d43c2cd453af7a6395cbcb2ac3b2}{smoothst
 \begin{DoxyCompactList}\small\item\em Return the square root of the array elements. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a30e6961ce99edeb86af6f4ce61651bd0}{sqrt\+\_\+safe}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array)
 \item 
+float \mbox{\hyperlink{namespacehmap_adce0295b768dd046d1ddcd117cb1b8b4}{triangle}} (float x, float vmin, float vmax)
+\begin{DoxyCompactList}\small\item\em Triangle function between two bounds. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_af80bcff234bf1482cf26896b9d21d270}{border}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
 \begin{DoxyCompactList}\small\item\em Apply a border algorithm to the input array using a square structure. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a889405ce11be91e33cc80ca4dbd192b0}{closing}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
@@ -1426,7 +1431,7 @@ void \mbox{\hyperlink{namespacehmap_a81ae845564fe0e6f2f641451c063bc65}{swap}} (\
 \begin{DoxyCompactList}\small\item\em Return a checkerboard heightmap. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_afa7a527eb0a2a57c0eac7e0c5723a982}{cone}} (glm\+::ivec2 shape, float \mbox{\hyperlink{namespacehmap_a79ad6fb857a38f8de9915d01992e5161}{slope}}, float apex\+\_\+elevation=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, bool smooth\+\_\+profile=false, glm\+::vec2 center=\{0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
 \begin{DoxyCompactList}\small\item\em Generates a synthetic conical mountain heightmap. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a7832bf668d2ab39f31b6c90d96a76139}{cone\+\_\+complex}} (glm\+::ivec2 shape, float alpha, float radius=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, bool smooth\+\_\+profile=true, float valley\+\_\+amp=0.\+2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, int valley\+\_\+nb=5, float valley\+\_\+decay\+\_\+ratio=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float valley\+\_\+angle0=15.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, const \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6}{Erosion\+Profile}} \&erosion\+\_\+profile=\mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a3b4b1fb15aaf3888333a9d6958eae76a}{Erosion\+Profile\+::\+TRIANGLE\+\_\+\+GRENIER}}, float erosion\+\_\+delta=0.\+01\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float radial\+\_\+waviness\+\_\+amp=0.\+05\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float radial\+\_\+waviness\+\_\+kw=2.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float bias\+\_\+angle=30.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float bias\+\_\+amp=0.\+75\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float bias\+\_\+exponent=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, glm\+::vec2 center=\{0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+ctrl\+\_\+param=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_ace61bbd6a24c696dc24901dbe39be203}{cone\+\_\+complex}} (glm\+::ivec2 shape, float alpha, float radius=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, bool smooth\+\_\+profile=true, float valley\+\_\+amp=0.\+2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, int valley\+\_\+nb=5, float valley\+\_\+decay\+\_\+ratio=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float valley\+\_\+angle0=15.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, const \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6}{Erosion\+Profile}} \&erosion\+\_\+profile=\mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a61a4a71c0e8d1a97da9657b03d51680f}{Erosion\+Profile\+::\+EP\+\_\+\+TRIANGLE\+\_\+\+GRENIER}}, float erosion\+\_\+delta=0.\+01\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float radial\+\_\+waviness\+\_\+amp=0.\+05\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float radial\+\_\+waviness\+\_\+kw=2.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float bias\+\_\+angle=30.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float bias\+\_\+amp=0.\+75\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float bias\+\_\+exponent=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, glm\+::vec2 center=\{0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+ctrl\+\_\+param=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
 \begin{DoxyCompactList}\small\item\em Generates a complex conical heightfield with valleys, directional bias, and radial waviness. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a78b0b574724e2036ad5da6148e21acd8}{cone\+\_\+sigmoid}} (glm\+::ivec2 shape, float alpha, float radius=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, glm\+::vec2 center=\{0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
 \begin{DoxyCompactList}\small\item\em Generates a smooth conical heightmap using a sigmoid-\/based profile. \end{DoxyCompactList}\item 
@@ -1732,6 +1737,8 @@ int \mbox{\hyperlink{namespacehmap_ad2cd9e279b20e6621b1daca2d2b732bf}{find\+\_\+
 \item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_acc88d4cddcb41e8142b7fef4846e3454}{hypot}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array1, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array2)
 \item 
+float \mbox{\hyperlink{namespacehmap_aa40ed8e52770b4aa56fe9dbfdd63de8b}{smoothstep3\+\_\+remap}} (float x, float vmin, float vmax)
+\item 
 void \mbox{\hyperlink{namespacehmap_a2c98f2116e221df5f6684a7546bb233f}{helper\+\_\+thinning}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&in, int iter)
 \item 
 bool \mbox{\hyperlink{namespacehmap_a5ce9334e0b274e48f7ba8bcaa9dd12a3}{cmp\+\_\+path}} (std\+::pair$<$ float, std\+::vector$<$ int $>$ $>$ \&a, std\+::pair$<$ float, std\+::vector$<$ int $>$ $>$ \&b)
@@ -1944,36 +1951,44 @@ WHITE\+\_\+\+UNIFORM&\\
 Procedural erosion angular profile type. 
 
 \begin{DoxyEnumFields}{Enumerator}
-\raisebox{\heightof{T}}[0pt][0pt]{\index{COSINE@{COSINE}!hmap@{hmap}}\index{hmap@{hmap}!COSINE@{COSINE}}}\Hypertarget{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6af8c94bc76e5d0a80a0ea8a6cda58832e}\label{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6af8c94bc76e5d0a80a0ea8a6cda58832e} 
-COSINE&\\
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EP\_COSINE@{EP\_COSINE}!hmap@{hmap}}\index{hmap@{hmap}!EP\_COSINE@{EP\_COSINE}}}\Hypertarget{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a0f02f3dc5c8d286f8586965cf4633cd1}\label{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a0f02f3dc5c8d286f8586965cf4633cd1} 
+EP\+\_\+\+COSINE&\\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{SAW\_SHARP@{SAW\_SHARP}!hmap@{hmap}}\index{hmap@{hmap}!SAW\_SHARP@{SAW\_SHARP}}}\Hypertarget{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6aa7fce3ae63e2de0b582f1af344e798fd}\label{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6aa7fce3ae63e2de0b582f1af344e798fd} 
-SAW\+\_\+\+SHARP&\\
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EP\_COSINE\_BULK@{EP\_COSINE\_BULK}!hmap@{hmap}}\index{hmap@{hmap}!EP\_COSINE\_BULK@{EP\_COSINE\_BULK}}}\Hypertarget{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a856508f652cc10eede30d7080659bc02}\label{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a856508f652cc10eede30d7080659bc02} 
+EP\+\_\+\+COSINE\+\_\+\+BULK&\\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{SAW\_SMOOTH@{SAW\_SMOOTH}!hmap@{hmap}}\index{hmap@{hmap}!SAW\_SMOOTH@{SAW\_SMOOTH}}}\Hypertarget{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a18fba3380d9dbcb57378fbbbc522965c}\label{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a18fba3380d9dbcb57378fbbbc522965c} 
-SAW\+\_\+\+SMOOTH&\\
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EP\_PARABOL@{EP\_PARABOL}!hmap@{hmap}}\index{hmap@{hmap}!EP\_PARABOL@{EP\_PARABOL}}}\Hypertarget{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a32800f7d362669cd48371709a2486f21}\label{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a32800f7d362669cd48371709a2486f21} 
+EP\+\_\+\+PARABOL&\\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{SHARP\_VALLEYS@{SHARP\_VALLEYS}!hmap@{hmap}}\index{hmap@{hmap}!SHARP\_VALLEYS@{SHARP\_VALLEYS}}}\Hypertarget{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6aeb684e263530f3a9ebfd94816e8bf60c}\label{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6aeb684e263530f3a9ebfd94816e8bf60c} 
-SHARP\+\_\+\+VALLEYS&\\
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EP\_SAW\_SHARP@{EP\_SAW\_SHARP}!hmap@{hmap}}\index{hmap@{hmap}!EP\_SAW\_SHARP@{EP\_SAW\_SHARP}}}\Hypertarget{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a993ff6b03f892d19c56227ffbbbfd93f}\label{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a993ff6b03f892d19c56227ffbbbfd93f} 
+EP\+\_\+\+SAW\+\_\+\+SHARP&\\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{SQUARE\_SMOOTH@{SQUARE\_SMOOTH}!hmap@{hmap}}\index{hmap@{hmap}!SQUARE\_SMOOTH@{SQUARE\_SMOOTH}}}\Hypertarget{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a8aa5067161e7490dd7a989f1b33cf57d}\label{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a8aa5067161e7490dd7a989f1b33cf57d} 
-SQUARE\+\_\+\+SMOOTH&\\
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EP\_SAW\_SMOOTH@{EP\_SAW\_SMOOTH}!hmap@{hmap}}\index{hmap@{hmap}!EP\_SAW\_SMOOTH@{EP\_SAW\_SMOOTH}}}\Hypertarget{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a98a4bd25b2a1f7d7933942b2fca9bc0f}\label{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a98a4bd25b2a1f7d7933942b2fca9bc0f} 
+EP\+\_\+\+SAW\+\_\+\+SMOOTH&\\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{TRIANGLE\_GRENIER@{TRIANGLE\_GRENIER}!hmap@{hmap}}\index{hmap@{hmap}!TRIANGLE\_GRENIER@{TRIANGLE\_GRENIER}}}\Hypertarget{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a3b4b1fb15aaf3888333a9d6958eae76a}\label{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a3b4b1fb15aaf3888333a9d6958eae76a} 
-TRIANGLE\+\_\+\+GRENIER&\\
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EP\_SHARP\_VALLEYS@{EP\_SHARP\_VALLEYS}!hmap@{hmap}}\index{hmap@{hmap}!EP\_SHARP\_VALLEYS@{EP\_SHARP\_VALLEYS}}}\Hypertarget{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a86984b9d7ea6041722ae4f3f40b3eb3f}\label{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a86984b9d7ea6041722ae4f3f40b3eb3f} 
+EP\+\_\+\+SHARP\+\_\+\+VALLEYS&\\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{TRIANGLE\_SHARP@{TRIANGLE\_SHARP}!hmap@{hmap}}\index{hmap@{hmap}!TRIANGLE\_SHARP@{TRIANGLE\_SHARP}}}\Hypertarget{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6ac6ec19319c947a3b6484c42b69007636}\label{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6ac6ec19319c947a3b6484c42b69007636} 
-TRIANGLE\+\_\+\+SHARP&\\
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EP\_SQRT@{EP\_SQRT}!hmap@{hmap}}\index{hmap@{hmap}!EP\_SQRT@{EP\_SQRT}}}\Hypertarget{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6ad2cbba7068fc06688723838cc6de36ae}\label{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6ad2cbba7068fc06688723838cc6de36ae} 
+EP\+\_\+\+SQRT&\\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{TRIANGLE\_SMOOTH@{TRIANGLE\_SMOOTH}!hmap@{hmap}}\index{hmap@{hmap}!TRIANGLE\_SMOOTH@{TRIANGLE\_SMOOTH}}}\Hypertarget{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6af078cf93214e8043479eb5906a456880}\label{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6af078cf93214e8043479eb5906a456880} 
-TRIANGLE\+\_\+\+SMOOTH&\\
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EP\_TRIANGLE\_GRENIER@{EP\_TRIANGLE\_GRENIER}!hmap@{hmap}}\index{hmap@{hmap}!EP\_TRIANGLE\_GRENIER@{EP\_TRIANGLE\_GRENIER}}}\Hypertarget{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a61a4a71c0e8d1a97da9657b03d51680f}\label{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a61a4a71c0e8d1a97da9657b03d51680f} 
+EP\+\_\+\+TRIANGLE\+\_\+\+GRENIER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EP\_TRIANGLE\_SHARP@{EP\_TRIANGLE\_SHARP}!hmap@{hmap}}\index{hmap@{hmap}!EP\_TRIANGLE\_SHARP@{EP\_TRIANGLE\_SHARP}}}\Hypertarget{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6abd62370bad5912fe7918895b6ddb0176}\label{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6abd62370bad5912fe7918895b6ddb0176} 
+EP\+\_\+\+TRIANGLE\+\_\+\+SHARP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EP\_TRIANGLE\_SMOOTH@{EP\_TRIANGLE\_SMOOTH}!hmap@{hmap}}\index{hmap@{hmap}!EP\_TRIANGLE\_SMOOTH@{EP\_TRIANGLE\_SMOOTH}}}\Hypertarget{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a4ac60b8049aacabb3b5546b20cc87e9e}\label{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a4ac60b8049aacabb3b5546b20cc87e9e} 
+EP\+\_\+\+TRIANGLE\+\_\+\+SMOOTH&\\
 \hline
 
 \end{DoxyEnumFields}
@@ -6255,6 +6270,12 @@ Calculates the unsphericity of a surface, indicating how much the terrain deviat
 \doxysubsubsection{\texorpdfstring{get\_erosion\_profile\_function()}{get\_erosion\_profile\_function()}}
 {\footnotesize\ttfamily std\+::function$<$ float(float)$>$ hmap\+::get\+\_\+erosion\+\_\+profile\+\_\+function (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6}{Erosion\+Profile}} \&}]{erosion\+\_\+profile,  }\item[{float}]{delta,  }\item[{float \&}]{profile\+\_\+avg }\end{DoxyParamCaption})}
 
+\Hypertarget{namespacehmap_ac718f038155dde59fb50eb22684ed255}\label{namespacehmap_ac718f038155dde59fb50eb22684ed255} 
+\index{hmap@{hmap}!check\_erosion\_profile\_function@{check\_erosion\_profile\_function}}
+\index{check\_erosion\_profile\_function@{check\_erosion\_profile\_function}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{check\_erosion\_profile\_function()}{check\_erosion\_profile\_function()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6}{Erosion\+Profile}} $>$ hmap\+::check\+\_\+erosion\+\_\+profile\+\_\+function (\begin{DoxyParamCaption}\item[{float}]{delta = {\ttfamily 0.01\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
+
 \Hypertarget{namespacehmap_a54724c8701b75260e97924451731e41f}\label{namespacehmap_a54724c8701b75260e97924451731e41f} 
 \index{hmap@{hmap}!coastal\_erosion\_diffusion@{coastal\_erosion\_diffusion}}
 \index{coastal\_erosion\_diffusion@{coastal\_erosion\_diffusion}!hmap@{hmap}}
@@ -6811,113 +6832,7 @@ A simple grid-\/based erosion technique was published by Musgrave, Kolb, and Mac
 
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. 
 
-\Hypertarget{namespacehmap_af65bb48580b5f860571161387a22fbb4}\label{namespacehmap_af65bb48580b5f860571161387a22fbb4} 
-\index{hmap@{hmap}!hydraulic\_procedural@{hydraulic\_procedural}}
-\index{hydraulic\_procedural@{hydraulic\_procedural}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{hydraulic\_procedural()}{hydraulic\_procedural()}}
-{\footnotesize\ttfamily void hmap\+::hydraulic\+\_\+procedural (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{\mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{seed,  }\item[{float}]{ridge\+\_\+wavelength,  }\item[{float}]{ridge\+\_\+scaling = {\ttfamily 0.1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{\mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6}{Erosion\+Profile}}}]{erosion\+\_\+profile = {\ttfamily \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6af078cf93214e8043479eb5906a456880}{Erosion\+Profile\+::\+TRIANGLE\+\_\+\+SMOOTH}}},  }\item[{float}]{delta = {\ttfamily 0.02\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{noise\+\_\+ratio = {\ttfamily 0.2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{int}]{prefilter\+\_\+ir = {\ttfamily -\/1},  }\item[{float}]{density\+\_\+factor = {\ttfamily 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{kernel\+\_\+width\+\_\+ratio = {\ttfamily 2.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{phase\+\_\+smoothing = {\ttfamily 2.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{phase\+\_\+noise\+\_\+amp = {\ttfamily M\+\_\+PI},  }\item[{bool}]{reverse\+\_\+phase = {\ttfamily false},  }\item[{bool}]{rotate90 = {\ttfamily false},  }\item[{bool}]{use\+\_\+default\+\_\+mask = {\ttfamily true},  }\item[{float}]{talus\+\_\+mask = {\ttfamily 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+mask = {\ttfamily nullptr},  }\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+ridge\+\_\+mask = {\ttfamily nullptr},  }\item[{float}]{vmin = {\ttfamily 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{vmax = {\ttfamily -\/1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
-
-
-
-Generates a procedurally eroded terrain using hydraulic erosion and ridge generation techniques. 
-
-This function applies a combination of hydraulic erosion and ridge formation to modify a heightmap, leveraging parameters such as erosion profiles, ridge scaling, and noise characteristics. It also supports custom or default masks to influence the erosion process.
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ out}}  & {\em z} & The heightmap to be modified, represented as a 2D array. \\
-\hline
-\mbox{\texttt{ in}}  & {\em seed} & Random seed for procedural generation. \\
-\hline
-\mbox{\texttt{ in}}  & {\em ridge\+\_\+wavelength} & Wavelength of the ridge structures in the heightmap. \\
-\hline
-\mbox{\texttt{ in}}  & {\em ridge\+\_\+scaling} & Scaling factor for the ridge height. \\
-\hline
-\mbox{\texttt{ in}}  & {\em erosion\+\_\+profile} & The profile that defines the erosion curve behavior. \\
-\hline
-\mbox{\texttt{ in}}  & {\em delta} & Parameter controlling the erosion intensity. \\
-\hline
-\mbox{\texttt{ in}}  & {\em noise\+\_\+ratio} & Ratio of noise added to the ridge crest lines. \\
-\hline
-\mbox{\texttt{ in}}  & {\em prefilter\+\_\+ir} & Kernel radius for pre-\/smoothing the heightmap. If negative, a default value is computed. \\
-\hline
-\mbox{\texttt{ in}}  & {\em density\+\_\+factor} & Factor influencing the density of the ridges. \\
-\hline
-\mbox{\texttt{ in}}  & {\em kernel\+\_\+width\+\_\+ratio} & Ratio defining the width of the ridge generation kernel. \\
-\hline
-\mbox{\texttt{ in}}  & {\em phase\+\_\+smoothing} & Smoothing factor for the phase field used in ridge generation. \\
-\hline
-\mbox{\texttt{ in}}  & {\em use\+\_\+default\+\_\+mask} & Whether to use a default mask for erosion if no mask is provided. \\
-\hline
-\mbox{\texttt{ in}}  & {\em talus\+\_\+mask} & Threshold for default mask slope to identify regions prone to erosion. \\
-\hline
-\mbox{\texttt{ in}}  & {\em p\+\_\+mask} & Optional pointer to a custom mask array to influence the erosion process. \\
-\hline
-\mbox{\texttt{ out}}  & {\em p\+\_\+ridge\+\_\+mask} & Optional pointer to store the ridge mask resulting from the operation. \\
-\hline
-\mbox{\texttt{ in}}  & {\em vmin} & Minimum elevation value. If set to a sentinel value (vmax \texorpdfstring{$<$}{<} vmin), it is calculated from the heightmap. \\
-\hline
-\mbox{\texttt{ in}}  & {\em vmax} & Maximum elevation value. If set to a sentinel value (vmax \texorpdfstring{$<$}{<} vmin), it is calculated from the heightmap.\\
-\hline
-\end{DoxyParams}
-{\bfseries{Example}} 
-\begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
-\DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
-\DoxyCodeLine{\{}
-\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
-\DoxyCodeLine{\ \ glm::vec2\ \ kw\ =\ \{2.f,\ 2.f\};}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 0;}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_acb13e7346085793fda4c94c47b75d9a9}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195ac5113a637d69eb3c549e6d561da167ed}{hmap::NoiseType::SIMPLEX2}},\ shape,\ kw,\ seed);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(z);}
-\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ z0\ =\ z;}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ 2-\/step\ erosion\ at\ different\ scales}}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_af65bb48580b5f860571161387a22fbb4}{hmap::hydraulic\_procedural}}(z,\ ++seed,\ 1.f\ /\ 8.f,\ 0.2f);}
-\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ z1\ =\ z;}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_af65bb48580b5f860571161387a22fbb4}{hmap::hydraulic\_procedural}}(z,\ ++seed,\ 1.f\ /\ 32.f,\ 0.2f\ /\ 8.f);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_hydraulic\_procedural0.png"{}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z0,\ z1,\ z\},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9}{hmap::Cmap::TERRAIN}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ all\ profiles}}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ std::vector<hmap::ErosionProfile>\ profiles\ =\ \{}
-\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6af8c94bc76e5d0a80a0ea8a6cda58832e}{hmap::ErosionProfile::COSINE}},}
-\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6aa7fce3ae63e2de0b582f1af344e798fd}{hmap::ErosionProfile::SAW\_SHARP}},}
-\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a18fba3380d9dbcb57378fbbbc522965c}{hmap::ErosionProfile::SAW\_SMOOTH}},}
-\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6aeb684e263530f3a9ebfd94816e8bf60c}{hmap::ErosionProfile::SHARP\_VALLEYS}},}
-\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a8aa5067161e7490dd7a989f1b33cf57d}{hmap::ErosionProfile::SQUARE\_SMOOTH}},}
-\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a3b4b1fb15aaf3888333a9d6958eae76a}{hmap::ErosionProfile::TRIANGLE\_GRENIER}},}
-\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6ac6ec19319c947a3b6484c42b69007636}{hmap::ErosionProfile::TRIANGLE\_SHARP}},}
-\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6af078cf93214e8043479eb5906a456880}{hmap::ErosionProfile::TRIANGLE\_SMOOTH}},}
-\DoxyCodeLine{\ \ \};}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ std::vector<hmap::Array>\ stack\ =\ \{z0\};}
-\DoxyCodeLine{\ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ ep\ :\ profiles)}
-\DoxyCodeLine{\ \ \{}
-\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ ze\ =\ z0;}
-\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{namespacehmap_af65bb48580b5f860571161387a22fbb4}{hmap::hydraulic\_procedural}}(ze,\ seed,\ 1.f\ /\ 8.f,\ 0.2f,\ ep);}
-\DoxyCodeLine{\ \ \ \ stack.push\_back(ze);}
-\DoxyCodeLine{\ \ \}}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_hydraulic\_procedural1.png"{}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stack,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9}{hmap::Cmap::TERRAIN}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ z1.to\_png\_grayscale(\textcolor{stringliteral}{"{}hmap.png"{}},\ CV\_16U);}
-\DoxyCodeLine{\}}
-
-\end{DoxyCodeInclude}
-
-
-{\bfseries{Result}}   \Hypertarget{namespacehmap_ac926368d8d3f621a876039cad384e3b2}\label{namespacehmap_ac926368d8d3f621a876039cad384e3b2} 
+\Hypertarget{namespacehmap_ac926368d8d3f621a876039cad384e3b2}\label{namespacehmap_ac926368d8d3f621a876039cad384e3b2} 
 \index{hmap@{hmap}!hydraulic\_spl@{hydraulic\_spl}}
 \index{hydraulic\_spl@{hydraulic\_spl}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{hydraulic\_spl()}{hydraulic\_spl()}}
@@ -20381,6 +20296,30 @@ Return the square root of the array elements.
 \doxysubsubsection{\texorpdfstring{sqrt\_safe()}{sqrt\_safe()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::sqrt\+\_\+safe (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array }\end{DoxyParamCaption})}
 
+\Hypertarget{namespacehmap_adce0295b768dd046d1ddcd117cb1b8b4}\label{namespacehmap_adce0295b768dd046d1ddcd117cb1b8b4} 
+\index{hmap@{hmap}!triangle@{triangle}}
+\index{triangle@{triangle}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{triangle()}{triangle()}}
+{\footnotesize\ttfamily float hmap\+::triangle (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{vmin,  }\item[{float}]{vmax }\end{DoxyParamCaption})}
+
+
+
+Triangle function between two bounds. 
+
+Returns 0 if x \texorpdfstring{$<$}{<}= vmin or x \texorpdfstring{$>$}{>}= vmax. Between vmin and vmax, returns a linear triangle reaching 1 at the midpoint and 0 at the bounds.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Input value. \\
+\hline
+{\em vmin} & Lower bound. \\
+\hline
+{\em vmax} & Upper bound. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Triangle-\/shaped value in \mbox{[}0,1\mbox{]}. 
+\end{DoxyReturn}
 \Hypertarget{namespacehmap_af80bcff234bf1482cf26896b9d21d270}\label{namespacehmap_af80bcff234bf1482cf26896b9d21d270} 
 \index{hmap@{hmap}!border@{border}}
 \index{border@{border}!hmap@{hmap}}
@@ -22393,7 +22332,7 @@ This function creates a simple cone-\/shaped elevation field centered at a given
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z1\ =\ \mbox{\hyperlink{namespacehmap_afb6b1a073428729f0dc9afc0ba42f8b2}{hmap::cone}}(shape,\ 4.f);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z2\ =\ \mbox{\hyperlink{namespacehmap_a78b0b574724e2036ad5da6148e21acd8}{hmap::cone\_sigmoid}}(shape,\ 0.8f);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z3\ =\ \mbox{\hyperlink{namespacehmap_a7832bf668d2ab39f31b6c90d96a76139}{hmap::cone\_complex}}(shape,\ 1.2f);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z3\ =\ \mbox{\hyperlink{namespacehmap_ace61bbd6a24c696dc24901dbe39be203}{hmap::cone\_complex}}(shape,\ 1.2f);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_cone.png"{}},\ \{z1,\ z2,\ z3\},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a744ead0b170889e33126895264f1af2c}{hmap::Cmap::MAGMA}});}
 \DoxyCodeLine{\}}
@@ -22401,11 +22340,11 @@ This function creates a simple cone-\/shaped elevation field centered at a given
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}  \Hypertarget{namespacehmap_a7832bf668d2ab39f31b6c90d96a76139}\label{namespacehmap_a7832bf668d2ab39f31b6c90d96a76139} 
+{\bfseries{Result}}  \Hypertarget{namespacehmap_ace61bbd6a24c696dc24901dbe39be203}\label{namespacehmap_ace61bbd6a24c696dc24901dbe39be203} 
 \index{hmap@{hmap}!cone\_complex@{cone\_complex}}
 \index{cone\_complex@{cone\_complex}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{cone\_complex()}{cone\_complex()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::cone\+\_\+complex (\begin{DoxyParamCaption}\item[{glm\+::ivec2}]{shape,  }\item[{float}]{alpha,  }\item[{float}]{radius = {\ttfamily 0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{bool}]{smooth\+\_\+profile = {\ttfamily true},  }\item[{float}]{valley\+\_\+amp = {\ttfamily 0.2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{int}]{valley\+\_\+nb = {\ttfamily 5},  }\item[{float}]{valley\+\_\+decay\+\_\+ratio = {\ttfamily 0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{valley\+\_\+angle0 = {\ttfamily 15.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{const \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6}{Erosion\+Profile}} \&}]{erosion\+\_\+profile = {\ttfamily \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a3b4b1fb15aaf3888333a9d6958eae76a}{Erosion\+Profile\+::\+TRIANGLE\+\_\+\+GRENIER}}},  }\item[{float}]{erosion\+\_\+delta = {\ttfamily 0.01\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{radial\+\_\+waviness\+\_\+amp = {\ttfamily 0.05\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{radial\+\_\+waviness\+\_\+kw = {\ttfamily 2.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{bias\+\_\+angle = {\ttfamily 30.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{bias\+\_\+amp = {\ttfamily 0.75\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{bias\+\_\+exponent = {\ttfamily 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{glm\+::vec2}]{center = {\ttfamily \{0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+ctrl\+\_\+param = {\ttfamily nullptr},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+x = {\ttfamily nullptr},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+y = {\ttfamily nullptr},  }\item[{glm\+::vec4}]{bbox = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::cone\+\_\+complex (\begin{DoxyParamCaption}\item[{glm\+::ivec2}]{shape,  }\item[{float}]{alpha,  }\item[{float}]{radius = {\ttfamily 0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{bool}]{smooth\+\_\+profile = {\ttfamily true},  }\item[{float}]{valley\+\_\+amp = {\ttfamily 0.2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{int}]{valley\+\_\+nb = {\ttfamily 5},  }\item[{float}]{valley\+\_\+decay\+\_\+ratio = {\ttfamily 0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{valley\+\_\+angle0 = {\ttfamily 15.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{const \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6}{Erosion\+Profile}} \&}]{erosion\+\_\+profile = {\ttfamily \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a61a4a71c0e8d1a97da9657b03d51680f}{Erosion\+Profile\+::\+EP\+\_\+\+TRIANGLE\+\_\+\+GRENIER}}},  }\item[{float}]{erosion\+\_\+delta = {\ttfamily 0.01\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{radial\+\_\+waviness\+\_\+amp = {\ttfamily 0.05\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{radial\+\_\+waviness\+\_\+kw = {\ttfamily 2.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{bias\+\_\+angle = {\ttfamily 30.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{bias\+\_\+amp = {\ttfamily 0.75\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{bias\+\_\+exponent = {\ttfamily 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{glm\+::vec2}]{center = {\ttfamily \{0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+ctrl\+\_\+param = {\ttfamily nullptr},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+x = {\ttfamily nullptr},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+y = {\ttfamily nullptr},  }\item[{glm\+::vec4}]{bbox = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}} }\end{DoxyParamCaption})}
 
 
 
@@ -22467,7 +22406,7 @@ A 2D \doxylink{classhmap_1_1Array}{Array} containing the generated heightfield v
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z1\ =\ \mbox{\hyperlink{namespacehmap_afb6b1a073428729f0dc9afc0ba42f8b2}{hmap::cone}}(shape,\ 4.f);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z2\ =\ \mbox{\hyperlink{namespacehmap_a78b0b574724e2036ad5da6148e21acd8}{hmap::cone\_sigmoid}}(shape,\ 0.8f);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z3\ =\ \mbox{\hyperlink{namespacehmap_a7832bf668d2ab39f31b6c90d96a76139}{hmap::cone\_complex}}(shape,\ 1.2f);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z3\ =\ \mbox{\hyperlink{namespacehmap_ace61bbd6a24c696dc24901dbe39be203}{hmap::cone\_complex}}(shape,\ 1.2f);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_cone.png"{}},\ \{z1,\ z2,\ z3\},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a744ead0b170889e33126895264f1af2c}{hmap::Cmap::MAGMA}});}
 \DoxyCodeLine{\}}
@@ -22517,7 +22456,7 @@ A 2D \doxylink{classhmap_1_1Array}{Array} object containing the generated conica
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z1\ =\ \mbox{\hyperlink{namespacehmap_afb6b1a073428729f0dc9afc0ba42f8b2}{hmap::cone}}(shape,\ 4.f);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z2\ =\ \mbox{\hyperlink{namespacehmap_a78b0b574724e2036ad5da6148e21acd8}{hmap::cone\_sigmoid}}(shape,\ 0.8f);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z3\ =\ \mbox{\hyperlink{namespacehmap_a7832bf668d2ab39f31b6c90d96a76139}{hmap::cone\_complex}}(shape,\ 1.2f);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z3\ =\ \mbox{\hyperlink{namespacehmap_ace61bbd6a24c696dc24901dbe39be203}{hmap::cone\_complex}}(shape,\ 1.2f);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_cone.png"{}},\ \{z1,\ z2,\ z3\},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a744ead0b170889e33126895264f1af2c}{hmap::Cmap::MAGMA}});}
 \DoxyCodeLine{\}}
@@ -29048,6 +28987,12 @@ void hmap\+::convert\+\_\+mat\+\_\+to\+\_\+array (\begin{DoxyParamCaption}\item[
 \index{hypot@{hypot}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{hypot()}{hypot()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::hypot (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array1,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array2 }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacehmap_aa40ed8e52770b4aa56fe9dbfdd63de8b}\label{namespacehmap_aa40ed8e52770b4aa56fe9dbfdd63de8b} 
+\index{hmap@{hmap}!smoothstep3\_remap@{smoothstep3\_remap}}
+\index{smoothstep3\_remap@{smoothstep3\_remap}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{smoothstep3\_remap()}{smoothstep3\_remap()}}
+{\footnotesize\ttfamily float hmap\+::smoothstep3\+\_\+remap (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{vmin,  }\item[{float}]{vmax }\end{DoxyParamCaption})}
 
 \Hypertarget{namespacehmap_a2c98f2116e221df5f6684a7546bb233f}\label{namespacehmap_a2c98f2116e221df5f6684a7546bb233f} 
 \index{hmap@{hmap}!helper\_thinning@{helper\_thinning}}

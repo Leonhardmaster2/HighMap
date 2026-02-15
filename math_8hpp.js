@@ -71,5 +71,6 @@ var math_8hpp =
     [ "smoothstep7", "math_8hpp.html#ae7d9d43c2cd453af7a6395cbcb2ac3b2", null ],
     [ "smoothstep7", "math_8hpp.html#af37d772a8b2ab47144d459fd35aaf7dc", null ],
     [ "sqrt", "math_8hpp.html#a6b608e2826c1f9ba54a0e8922d5faa6b", null ],
-    [ "sqrt_safe", "math_8hpp.html#a30e6961ce99edeb86af6f4ce61651bd0", null ]
+    [ "sqrt_safe", "math_8hpp.html#a30e6961ce99edeb86af6f4ce61651bd0", null ],
+    [ "triangle", "math_8hpp.html#adce0295b768dd046d1ddcd117cb1b8b4", null ]
 ];

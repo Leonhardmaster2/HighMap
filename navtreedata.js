@@ -89,19 +89,19 @@ var NAVTREEINDEX =
 "classhmap_1_1RamTileStorage.html#a741b156e46b8763496e2a3c5110b9a67",
 "classhmap_1_1WaveTriangularFunction.html#a58593bbbdade49717f157e44d4f196df",
 "dir_53d4573766d056de5de1beaeca2ff3aa.html",
-"features__gpu_8cpp.html#aa5a3e087822525c41f057a51255e2bad",
-"filters__gpu_8cpp.html#a22bc7f003aeaf38ed8511676cd9c83fb",
-"hydraulic__procedural_8cpp.html#a02f191e398bfc3c0e87999d8576d7c3d",
-"math_8cpp.html#aad00066161ccf5ba4d6f93ab48c10876",
-"namespacehmap.html#a1f02679c93973b91046f26960bf266d4",
-"namespacehmap.html#a663df316bd09bb4072cbfe655e389668",
-"namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195ac5113a637d69eb3c549e6d561da167ed",
-"namespacehmap.html#af9e3033eb08345c1e3c46bde5dcd29a1",
-"noise_8cpp.html#a0443ce4f327a3971834343d6fa5e131b",
-"primitives_8hpp.html#acfe4aa12e766873dc71cb5bdc2bf5b2c",
-"selector_8hpp.html#aee36bf04c8ae880814a5341d4ea262f4",
-"structhmap_1_1Vec3_3_01float_01_4.html",
-"vector_8cpp.html"
+"features__gpu_8cpp.html#a022f5800d7e28f79f9e2d3abf687f490",
+"filters__gpu_8cpp.html#a047da8b8ee68b5e54b3bf42041e1d9d0",
+"hydraulic__blur_8cpp.html#a2074cabb598086fe29f52247bfadceb9",
+"math_8cpp.html#a826591db096cb2ca4d836d4c5eeaac02",
+"namespacehmap.html#a1ba9d4ce7afe3309f8ae8e617f7154eea760545322569136cd3be89e004ab10d4",
+"namespacehmap.html#a62f3ce1778309a90b37d34e727e4f040",
+"namespacehmap.html#ab72874a8c8c2a5f78b824ef21b35f9e4",
+"namespacehmap.html#af5e2b95dd35c64ba4ff24ca2697d87f9",
+"namespacemembers_l.html",
+"primitives_8hpp.html#a9c1f1f4997a6bc734517c77ace10aa73",
+"selector_8hpp.html#a60843740c9f6153042e0466b696239fd",
+"structhmap_1_1TileRegion.html#a773fcee90fae6c3950a9fa5617de2f62",
+"transform_8hpp.html#aae30761d88314a8d7198baa199b55f98"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
