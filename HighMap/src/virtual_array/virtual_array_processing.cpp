@@ -35,11 +35,13 @@ float VirtualArray::max(const ComputeMode &cm) const
 
   if (nt.x * nt.y == 0) return 0.f;
 
-  std::vector<float> max_per_tile;
-  max_per_tile.reserve(nt.x * nt.y);
+  std::vector<float> max_per_tile(nt.x * nt.y);
 
-  auto lambda = [&max_per_tile](const Array &tile, const TileRegion &)
-  { max_per_tile.push_back(tile.max()); };
+  auto lambda = [&max_per_tile, nt](const Array &tile, const TileRegion &region)
+  {
+    int tile_idx = region.key.ty * nt.x + region.key.tx;
+    max_per_tile[tile_idx] = tile.max();
+  };
 
   for_each_tile(*this, lambda, cm);
 
@@ -58,11 +60,13 @@ float VirtualArray::min(const ComputeMode &cm) const
 
   if (nt.x * nt.y == 0) return 0.f;
 
-  std::vector<float> min_per_tile;
-  min_per_tile.reserve(nt.x * nt.y);
+  std::vector<float> min_per_tile(nt.x * nt.y);
 
-  auto lambda = [&min_per_tile](const Array &tile, const TileRegion &)
-  { min_per_tile.push_back(tile.min()); };
+  auto lambda = [&min_per_tile, nt](const Array &tile, const TileRegion &region)
+  {
+    int tile_idx = region.key.ty * nt.x + region.key.tx;
+    min_per_tile[tile_idx] = tile.min();
+  };
 
   for_each_tile(*this, lambda, cm);
 
@@ -96,20 +100,20 @@ float VirtualArray::sum(const ComputeMode &cm) const
 
   if (nt.x * nt.y == 0) return 0.f;
 
-  std::vector<float> sum_per_tile;
-  sum_per_tile.reserve(nt.x * nt.y);
+  std::vector<float> sum_per_tile(nt.x * nt.y);
 
-  auto lambda = [&sum_per_tile](const Array &tile, const TileRegion &region)
+  auto lambda = [&sum_per_tile, nt](const Array &tile, const TileRegion &region)
   {
     // sum over the inner cells only to avoid double count
     const glm::ivec4 &h = region.halo;
     float             sum = 0.f;
+    int               tile_idx = region.key.ty * nt.x + region.key.tx;
 
     for (int j = h.z; j < region.shape.y - h.w; ++j)
       for (int i = h.x; i < region.shape.x - h.y; ++i)
         sum += tile(i, j);
 
-    sum_per_tile.push_back(sum);
+    sum_per_tile[tile_idx] = sum;
   };
 
   for_each_tile(*this, lambda, cm);
@@ -127,11 +131,14 @@ std::vector<float> VirtualArray::unique_values(const ComputeMode &cm) const
 
   if (nt.x * nt.y == 0) return {0.f};
 
-  std::vector<std::vector<float>> unique_per_tile;
-  unique_per_tile.reserve(nt.x * nt.y);
+  std::vector<std::vector<float>> unique_per_tile(nt.x * nt.y);
 
-  auto lambda = [&unique_per_tile](const Array &tile, const TileRegion &)
-  { unique_per_tile.push_back(tile.unique_values()); };
+  auto lambda =
+      [&unique_per_tile, nt](const Array &tile, const TileRegion &region)
+  {
+    int tile_idx = region.key.ty * nt.x + region.key.tx;
+    unique_per_tile[tile_idx] = tile.unique_values();
+  };
 
   for_each_tile(*this, lambda, cm);
 

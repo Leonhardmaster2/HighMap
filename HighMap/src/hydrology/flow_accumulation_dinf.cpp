@@ -167,8 +167,7 @@ std::vector<float> flow_direction_dinf_flat(const Array &z, float talus_ref)
   for (int j = 1; j < shape.y - 1; ++j)
     for (int i = 1; i < shape.x - 1; ++i)
     {
-      // const float pij = 10.f * talus(i, j) + 1.f;
-      const float pij = std::clamp(10.f * talus(i, j) + 1.f, 1.f, 8.f);
+      const float pij = std::clamp(10.f * talus(i, j) + 1.f, 1.f, 3.f);
 
       float sum = 0.f;
       float tmp[8];
