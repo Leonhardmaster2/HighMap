@@ -122,6 +122,7 @@ std::vector<Array> flow_direction_dinf(const Array &z, float talus_ref)
     Array talus = gradient_talus(z) / talus_ref;
     clamp(talus, 0.f, 1.f);
     p = 10.f * talus + 1.f;
+    clamp(p, 1.f, 3.f);
   }
 
   // memory consuming... every 8 direction needs a full array
@@ -212,6 +213,7 @@ Array flow_direction_dinf_angle(const Array &z, float talus_ref)
     Array talus = gradient_talus(z) / talus_ref;
     clamp_max(talus, 1.f);
     p = 10.f * talus + 1.f;
+    clamp(p, 1.f, 3.f);
   }
 
   Array angle(z.shape, 0.f); // dominant flow direction in radians
