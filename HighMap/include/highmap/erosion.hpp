@@ -44,6 +44,7 @@ enum ErosionProfile : int
 {
   EP_COSINE,
   EP_COSINE_BULK,
+  EP_COSINE_PEAK,
   EP_PARABOL,
   EP_SAW_SHARP,
   EP_SAW_SMOOTH,

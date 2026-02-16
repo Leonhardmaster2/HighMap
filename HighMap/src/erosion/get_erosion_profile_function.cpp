@@ -19,6 +19,7 @@ std::vector<ErosionProfile> check_erosion_profile_function(float delta)
   std::vector<ErosionProfile> profiles = {
       ErosionProfile::EP_COSINE,
       ErosionProfile::EP_COSINE_BULK,
+      ErosionProfile::EP_COSINE_PEAK,
       ErosionProfile::EP_PARABOL,
       ErosionProfile::EP_SAW_SHARP,
       ErosionProfile::EP_SAW_SMOOTH,
@@ -96,6 +97,15 @@ std::function<float(float)> get_erosion_profile_function(
   case ErosionProfile::EP_COSINE_BULK:
     lambda_p = [](float phi)
     { return 0.5f - 0.5f * std::cos(M_PI * std::pow(phi / M_PI, 2)); };
+    break;
+  //
+  case ErosionProfile::EP_COSINE_PEAK:
+    lambda_p = [](float phi)
+    {
+      float t = phi / M_PI;
+      t = std::fmod(t + 2.f, 2.f) - 1.f;
+      return 0.5f * std::cos(M_PI * t * t) + 0.5f;
+    };
     break;
   //
   case ErosionProfile::EP_PARABOL:
