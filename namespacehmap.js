@@ -308,6 +308,7 @@ var namespacehmap =
     [ "ErosionProfile", "namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6", [
       [ "EP_COSINE", "namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a0f02f3dc5c8d286f8586965cf4633cd1", null ],
       [ "EP_COSINE_BULK", "namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a856508f652cc10eede30d7080659bc02", null ],
+      [ "EP_COSINE_PEAK", "namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6aa0e93408dd618a51c4f52260215bb726", null ],
       [ "EP_PARABOL", "namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a32800f7d362669cd48371709a2486f21", null ],
       [ "EP_SAW_SHARP", "namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a993ff6b03f892d19c56227ffbbbfd93f", null ],
       [ "EP_SAW_SMOOTH", "namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a98a4bd25b2a1f7d7933942b2fca9bc0f", null ],

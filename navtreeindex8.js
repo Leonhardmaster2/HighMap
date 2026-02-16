@@ -1,5 +1,6 @@
 var NAVTREEINDEX8 =
 {
+"filters__gpu_8cpp.html":[5,0,1,1,13,8],
 "filters__gpu_8cpp.html#a047da8b8ee68b5e54b3bf42041e1d9d0":[5,0,1,1,13,8,16],
 "filters__gpu_8cpp.html#a0c8c9b43fbd562b0cc3364c9d85c9433":[5,0,1,1,13,8,21],
 "filters__gpu_8cpp.html#a11bc9aa25f858fb2587a8b6118570fa0":[5,0,1,1,13,8,26],
@@ -72,8 +73,8 @@ var NAVTREEINDEX8 =
 "flow__stream_8cpp.html#a948b4703486f175cd2681bd9bc7b5a88":[5,0,1,1,17,10,1],
 "format__raw_8cpp.html":[5,0,1,1,11,8],
 "format__raw_8cpp.html#a466d4275bb86ca9ca603c9d4192f931a":[5,0,1,1,11,8,0],
-"functions.html":[4,3,0],
 "functions.html":[4,3,0,0],
+"functions.html":[4,3,0],
 "functions_8cpp.html":[5,0,1,1,25,0,2],
 "functions_8cpp.html#a84ca1f41de32e4beacb10787127b4b8a":[5,0,1,1,25,0,2,0],
 "functions_8hpp.html":[5,0,1,0,0,20],
@@ -248,6 +249,5 @@ var NAVTREEINDEX8 =
 "hydraulic__algebric_8cpp.html#ac4f3c8b3d5f766b15c0ac64359fdc219":[5,0,1,1,10,7,1],
 "hydraulic__benes_8cpp.html":[5,0,1,1,10,8],
 "hydraulic__benes_8cpp.html#ab36a27b4c79ad5b201d79ac92388caa8":[5,0,1,1,10,8,0],
-"hydraulic__benes_8cpp.html#ae791758f736d5ed3e164262f3b1c5d20":[5,0,1,1,10,8,1],
-"hydraulic__blur_8cpp.html":[5,0,1,1,10,9]
+"hydraulic__benes_8cpp.html#ae791758f736d5ed3e164262f3b1c5d20":[5,0,1,1,10,8,1]
 };
