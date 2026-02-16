@@ -107,6 +107,34 @@ Array flow_accumulation_dinf(const Array &z, float talus_ref)
   return facc;
 }
 
+Array flow_accumulation_dinf_perturbed(const Array &z,
+                                       float        talus_ref,
+                                       int          nsamples,
+                                       glm::vec2    kw,
+                                       uint         seed,
+                                       float        amp,
+                                       glm::vec4    bbox)
+{
+  const glm::ivec2 shape = z.shape;
+  Array            facc(shape);
+
+  for (int n = 0; n < nsamples; ++n)
+  {
+    Array zp = z;
+    zp += amp * noise(hmap::NoiseType::PERLIN,
+                      shape,
+                      kw,
+                      seed + n,
+                      nullptr,
+                      nullptr,
+                      nullptr,
+                      bbox);
+    facc += flow_accumulation_dinf(zp, talus_ref);
+  }
+
+  return facc / float(nsamples);
+}
+
 std::vector<Array> flow_direction_dinf(const Array &z, float talus_ref)
 {
   const std::vector<int>   di = HMAP_DINF_DI;

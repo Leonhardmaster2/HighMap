@@ -314,10 +314,51 @@ Array flow_accumulation_d8(const Array &z);
  * **Result**
  * @image html ex_flow_accumulation_dinf0.png
  * @image html ex_flow_accumulation_dinf1.png
+ * @image html ex_flow_accumulation_dinf2.png
  *
  * @see              flow_direction_dinf, flow_accumulation_d8
  */
 Array flow_accumulation_dinf(const Array &z, float talus_ref);
+
+/**
+ * @brief Computes averaged D-infinity flow accumulation with terrain
+ * perturbations.
+ *
+ * This function estimates flow accumulation using the D∞ (D-infinity) method by
+ * perturbing the input elevation map multiple times with Perlin noise. For each
+ * sample, a noise field is added to the terrain, the flow accumulation is
+ * computed, and results are accumulated and averaged.
+ *
+ * The perturbation introduces stochastic variability, which can help reduce
+ * numerical artifacts and improve robustness in flat or ambiguous flow regions.
+ *
+ * @param  z         Input elevation array.
+ * @param  talus_ref Reference talus angle (or slope threshold) used by the D∞
+ *                   algorithm.
+ * @param  nsamples  Number of noise-perturbed samples to average.
+ * @param  kw        Noise frequency scaling factor.
+ * @param  seed      Base random seed (incremented for each sample).
+ * @param  amp       Amplitude of the noise perturbation.
+ * @param  bbox      Bounding box used for noise generation.
+ *
+ * @return           Averaged flow accumulation array.
+ *
+ * **Example**
+ * @include ex_flow_accumulation_dinf.cpp
+ *
+ * **Result**
+ * @image html ex_flow_accumulation_dinf0.png
+ * @image html ex_flow_accumulation_dinf1.png
+ * @image html ex_flow_accumulation_dinf2.png
+ */
+
+Array flow_accumulation_dinf_perturbed(const Array &z,
+                                       float        talus_ref,
+                                       int          nsamples,
+                                       glm::vec2    kw,
+                                       uint         seed,
+                                       float        amp,
+                                       glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief Computes the flow direction from each cell to its downslope neighbor

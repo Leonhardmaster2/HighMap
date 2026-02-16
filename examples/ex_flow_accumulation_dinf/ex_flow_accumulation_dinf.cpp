@@ -14,6 +14,19 @@ int main(void)
   // very high values are less relevant
   hmap::clamp_max(facc, 100.f);
 
+  int       nsamples = 20;
+  glm::vec2 kw = {4.f, 4.f};
+  float     amp = 0.1f;
+
+  auto facc_p = hmap::flow_accumulation_dinf_perturbed(z,
+                                                       talus.max(),
+                                                       nsamples,
+                                                       kw,
+                                                       seed,
+                                                       amp);
+  hmap::clamp_max(facc_p, 100.f);
+
   z.to_png("ex_flow_accumulation_dinf0.png", hmap::Cmap::TERRAIN, true);
   facc.to_png("ex_flow_accumulation_dinf1.png", hmap::Cmap::HOT);
+  facc_p.to_png("ex_flow_accumulation_dinf2.png", hmap::Cmap::HOT);
 }
