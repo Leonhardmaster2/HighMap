@@ -816,6 +816,7 @@ var namespacehmap =
     [ "flooding_lake_system", "namespacehmap.html#a3624c1660e60d16a87c90222606f7050", null ],
     [ "flow_accumulation_d8", "namespacehmap.html#a27b43e17baebd07ebb43808ca0dceb42", null ],
     [ "flow_accumulation_dinf", "namespacehmap.html#a58ba4910af868f70849f343e0c73adf3", null ],
+    [ "flow_accumulation_dinf_perturbed", "namespacehmap.html#a71e488587eb413feedaeb08f9a220d2d", null ],
     [ "flow_direction_d8", "namespacehmap.html#af8f580c9d50a07585257569bd1160891", null ],
     [ "flow_direction_dinf", "namespacehmap.html#a819fc20190d598c4664d442ee824fc96", null ],
     [ "flow_direction_dinf_flat", "namespacehmap.html#aa84fc9cbd0704c16abf21ef12c9c5fad", null ],
