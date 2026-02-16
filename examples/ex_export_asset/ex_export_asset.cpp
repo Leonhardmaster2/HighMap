@@ -16,6 +16,7 @@ int main(void)
   hmap::remap(z);
 
   z.to_png("hmap.png", hmap::Cmap::TERRAIN);
+  hmap::export_normal_map_png("name.png", z);
 
   for (auto &[export_id, export_infos] : hmap::asset_export_format_as_string)
   {
@@ -25,11 +26,20 @@ int main(void)
 
     hmap::export_asset("hmap.dummy_extension",
                        z,
+                       hmap::MeshType::TRI,
+                       export_id,
+                       0.2f,
+                       "hmap.png",
+                       "nmap.png", // normal map
+                       error_tolerance);
+
+    hmap::export_asset("hmap.dummy_extension_opt",
+                       z,
                        hmap::MeshType::TRI_OPTIMIZED,
                        export_id,
                        0.2f,
                        "hmap.png",
-                       "", // normal map
+                       "nmap.png", // normal map
                        error_tolerance);
   }
 

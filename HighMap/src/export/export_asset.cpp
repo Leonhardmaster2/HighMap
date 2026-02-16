@@ -84,9 +84,9 @@ bool export_asset(const std::string &fname,
       for (int i = 0; i < array.shape.x; i++)
       {
         int k = array.linear_index(i, j);
-        p_mesh->mVertices[k] = aiVector3D(x[i],
+        p_mesh->mVertices[k] = aiVector3D(1.f - y[j],
                                           elevation_scaling * array(i, j),
-                                          y[j]);
+                                          1.f - x[i]);
         p_mesh->mTextureCoords[0][k] = aiVector3D(1.f - x[i], y[j], 0.f);
       }
 
@@ -103,15 +103,15 @@ bool export_asset(const std::string &fname,
         p_mesh->mFaces[k].mNumIndices = 3;
         p_mesh->mFaces[k].mIndices = new unsigned[]{
             (uint)array.linear_index(i, j),
-            (uint)array.linear_index(i + 1, j),
-            (uint)array.linear_index(i, j + 1)};
+            (uint)array.linear_index(i, j + 1),
+            (uint)array.linear_index(i + 1, j)};
         k++;
 
         p_mesh->mFaces[k].mNumIndices = 3;
         p_mesh->mFaces[k].mIndices = new unsigned[]{
             (uint)array.linear_index(i + 1, j),
-            (uint)array.linear_index(i + 1, j + 1),
-            (uint)array.linear_index(i, j + 1)};
+            (uint)array.linear_index(i, j + 1),
+            (uint)array.linear_index(i + 1, j + 1)};
         k++;
       }
   }
@@ -156,8 +156,8 @@ bool export_asset(const std::string &fname,
       p_mesh->mVertices[k] = aiVector3D(ay * points[k].y,
                                         points[k].z,
                                         ax * points[k].x);
-      p_mesh->mTextureCoords[0][k] = aiVector3D(1.f - ay * points[k].y,
-                                                ax * points[k].x,
+      p_mesh->mTextureCoords[0][k] = aiVector3D(ax * points[k].x,
+                                                1.f - ay * points[k].y,
                                                 0.f);
     }
 
