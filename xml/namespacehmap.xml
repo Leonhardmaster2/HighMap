@@ -29764,7 +29764,7 @@ h}{\partial y}
 <codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
 <codeline><highlight class="normal">{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>glm::ivec2<sp/>shape<sp/>=<sp/>{256,<sp/>256};</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>glm::vec2<sp/><sp/>res<sp/>=<sp/>{2.f,<sp/>2.f};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>glm::vec2<sp/><sp/>res<sp/>=<sp/>{1.f,<sp/>1.f};</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed<sp/>=<sp/>1;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1acb13e7346085793fda4c94c47b75d9a9" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,<sp/>shape,<sp/>res,<sp/>seed);</highlight></codeline>
@@ -29773,19 +29773,22 @@ h}{\partial y}
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>facc<sp/>=<sp/><ref refid="namespacehmap_1a58ba4910af868f70849f343e0c73adf3" kindref="member">hmap::flow_accumulation_dinf</ref>(z,<sp/>talus.<ref refid="classhmap_1_1Array_1a68aac609ccba8f581da1cdf5cee671b9" kindref="member">max</ref>());</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>very<sp/>high<sp/>values<sp/>are<sp/>less<sp/>relevant</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ae239201a0a4193e1ce78bdf1fce4c151" kindref="member">hmap::clamp_max</ref>(facc,<sp/>100.f);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ae239201a0a4193e1ce78bdf1fce4c151" kindref="member">hmap::clamp_max</ref>(facc,<sp/>200.f);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nsamples<sp/>=<sp/>20;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>glm::vec2<sp/>kw<sp/>=<sp/>{4.f,<sp/>4.f};</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>amp<sp/>=<sp/>0.1f;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nsamples<sp/>=<sp/>20;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>glm::vec2<sp/><sp/><sp/>kw<sp/>=<sp/>{4.f,<sp/>4.f};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>amp<sp/>=<sp/>0.1f;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>scaling<sp/>=<sp/><ref refid="namespacehmap_1a38c0a582a98d48f73f49f12ebf1b78f9" kindref="member">hmap::cubic_pulse</ref>(shape,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>facc_p<sp/>=<sp/><ref refid="namespacehmap_1a71e488587eb413feedaeb08f9a220d2d" kindref="member">hmap::flow_accumulation_dinf_perturbed</ref>(z,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>facc_p<sp/>=<sp/><ref refid="namespacehmap_1a65291377b8b0a24636f60c36fd1e4044" kindref="member">hmap::flow_accumulation_dinf_perturbed</ref>(z,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>talus.<ref refid="classhmap_1_1Array_1a68aac609ccba8f581da1cdf5cee671b9" kindref="member">max</ref>(),</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nsamples,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kw,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>amp);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ae239201a0a4193e1ce78bdf1fce4c151" kindref="member">hmap::clamp_max</ref>(facc_p,<sp/>100.f);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>amp,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;scaling);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ae239201a0a4193e1ce78bdf1fce4c151" kindref="member">hmap::clamp_max</ref>(facc_p,<sp/>200.f);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>z.<ref refid="classhmap_1_1Array_1a9ff7b2c0be8f2b5dd9fc33085cd647d1" kindref="member">to_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_flow_accumulation_dinf0.png&quot;</highlight><highlight class="normal">,<sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9" kindref="member">hmap::Cmap::TERRAIN</ref>,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>facc.to_png(</highlight><highlight class="stringliteral">&quot;ex_flow_accumulation_dinf1.png&quot;</highlight><highlight class="normal">,<sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a320107cf3138d908a78d3c6d97705717" kindref="member">hmap::Cmap::HOT</ref>);</highlight></codeline>
@@ -29804,10 +29807,10 @@ h}{\partial y}
         </inbodydescription>
         <location file="HighMap/src/hydrology/flow_accumulation_dinf.cpp" line="35" column="7" bodyfile="HighMap/src/hydrology/flow_accumulation_dinf.cpp" bodystart="35" bodyend="108" declfile="HighMap/include/highmap/hydrology.hpp" declline="321" declcolumn="7"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1a71e488587eb413feedaeb08f9a220d2d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacehmap_1a65291377b8b0a24636f60c36fd1e4044" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
         <definition>Array hmap::flow_accumulation_dinf_perturbed</definition>
-        <argsstring>(const Array &amp;z, float talus_ref, int nsamples, glm::vec2 kw, uint seed, float amp, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</argsstring>
+        <argsstring>(const Array &amp;z, float talus_ref, int nsamples, glm::vec2 kw, uint seed, float amp, const Array *p_perturb_scaling=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</argsstring>
         <name>flow_accumulation_dinf_perturbed</name>
         <qualifiedname>hmap::flow_accumulation_dinf_perturbed</qualifiedname>
         <param>
@@ -29833,6 +29836,11 @@ h}{\partial y}
         <param>
           <type>float</type>
           <declname>amp</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
+          <declname>p_perturb_scaling</declname>
+          <defval>nullptr</defval>
         </param>
         <param>
           <type>glm::vec4</type>
@@ -29909,7 +29917,7 @@ h}{\partial y}
 <codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
 <codeline><highlight class="normal">{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>glm::ivec2<sp/>shape<sp/>=<sp/>{256,<sp/>256};</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>glm::vec2<sp/><sp/>res<sp/>=<sp/>{2.f,<sp/>2.f};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>glm::vec2<sp/><sp/>res<sp/>=<sp/>{1.f,<sp/>1.f};</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed<sp/>=<sp/>1;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1acb13e7346085793fda4c94c47b75d9a9" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,<sp/>shape,<sp/>res,<sp/>seed);</highlight></codeline>
@@ -29918,19 +29926,22 @@ h}{\partial y}
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>facc<sp/>=<sp/><ref refid="namespacehmap_1a58ba4910af868f70849f343e0c73adf3" kindref="member">hmap::flow_accumulation_dinf</ref>(z,<sp/>talus.<ref refid="classhmap_1_1Array_1a68aac609ccba8f581da1cdf5cee671b9" kindref="member">max</ref>());</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>very<sp/>high<sp/>values<sp/>are<sp/>less<sp/>relevant</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ae239201a0a4193e1ce78bdf1fce4c151" kindref="member">hmap::clamp_max</ref>(facc,<sp/>100.f);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ae239201a0a4193e1ce78bdf1fce4c151" kindref="member">hmap::clamp_max</ref>(facc,<sp/>200.f);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nsamples<sp/>=<sp/>20;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>glm::vec2<sp/>kw<sp/>=<sp/>{4.f,<sp/>4.f};</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>amp<sp/>=<sp/>0.1f;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nsamples<sp/>=<sp/>20;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>glm::vec2<sp/><sp/><sp/>kw<sp/>=<sp/>{4.f,<sp/>4.f};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>amp<sp/>=<sp/>0.1f;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>scaling<sp/>=<sp/><ref refid="namespacehmap_1a38c0a582a98d48f73f49f12ebf1b78f9" kindref="member">hmap::cubic_pulse</ref>(shape,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>facc_p<sp/>=<sp/><ref refid="namespacehmap_1a71e488587eb413feedaeb08f9a220d2d" kindref="member">hmap::flow_accumulation_dinf_perturbed</ref>(z,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>facc_p<sp/>=<sp/><ref refid="namespacehmap_1a65291377b8b0a24636f60c36fd1e4044" kindref="member">hmap::flow_accumulation_dinf_perturbed</ref>(z,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>talus.<ref refid="classhmap_1_1Array_1a68aac609ccba8f581da1cdf5cee671b9" kindref="member">max</ref>(),</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nsamples,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kw,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>amp);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ae239201a0a4193e1ce78bdf1fce4c151" kindref="member">hmap::clamp_max</ref>(facc_p,<sp/>100.f);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>amp,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;scaling);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ae239201a0a4193e1ce78bdf1fce4c151" kindref="member">hmap::clamp_max</ref>(facc_p,<sp/>200.f);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>z.<ref refid="classhmap_1_1Array_1a9ff7b2c0be8f2b5dd9fc33085cd647d1" kindref="member">to_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_flow_accumulation_dinf0.png&quot;</highlight><highlight class="normal">,<sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9" kindref="member">hmap::Cmap::TERRAIN</ref>,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>facc.to_png(</highlight><highlight class="stringliteral">&quot;ex_flow_accumulation_dinf1.png&quot;</highlight><highlight class="normal">,<sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a320107cf3138d908a78d3c6d97705717" kindref="member">hmap::Cmap::HOT</ref>);</highlight></codeline>
@@ -29944,7 +29955,7 @@ h}{\partial y}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/flow_accumulation_dinf.cpp" line="110" column="7" bodyfile="HighMap/src/hydrology/flow_accumulation_dinf.cpp" bodystart="110" bodyend="136" declfile="HighMap/include/highmap/hydrology.hpp" declline="355" declcolumn="7"/>
+        <location file="HighMap/src/hydrology/flow_accumulation_dinf.cpp" line="110" column="7" bodyfile="HighMap/src/hydrology/flow_accumulation_dinf.cpp" bodystart="110" bodyend="141" declfile="HighMap/include/highmap/hydrology.hpp" declline="355" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1af8f580c9d50a07585257569bd1160891" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -29979,7 +29990,7 @@ h}{\partial y}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/flow_accumulation_d8.cpp" line="100" column="7" bodyfile="HighMap/src/hydrology/flow_accumulation_d8.cpp" bodystart="100" bodyend="130" declfile="HighMap/include/highmap/hydrology.hpp" declline="379" declcolumn="7"/>
+        <location file="HighMap/src/hydrology/flow_accumulation_d8.cpp" line="100" column="7" bodyfile="HighMap/src/hydrology/flow_accumulation_d8.cpp" bodystart="100" bodyend="130" declfile="HighMap/include/highmap/hydrology.hpp" declline="380" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a819fc20190d598c4664d442ee824fc96" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &gt;</type>
@@ -30023,7 +30034,7 @@ h}{\partial y}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/flow_accumulation_dinf.cpp" line="138" column="13" bodyfile="HighMap/src/hydrology/flow_accumulation_dinf.cpp" bodystart="138" bodyend="179" declfile="HighMap/include/highmap/hydrology.hpp" declline="398" declcolumn="13"/>
+        <location file="HighMap/src/hydrology/flow_accumulation_dinf.cpp" line="143" column="13" bodyfile="HighMap/src/hydrology/flow_accumulation_dinf.cpp" bodystart="143" bodyend="184" declfile="HighMap/include/highmap/hydrology.hpp" declline="399" declcolumn="13"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aa84fc9cbd0704c16abf21ef12c9c5fad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; float &gt;</type>
@@ -30045,7 +30056,7 @@ h}{\partial y}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/flow_accumulation_dinf.cpp" line="181" column="13" bodyfile="HighMap/src/hydrology/flow_accumulation_dinf.cpp" bodystart="181" bodyend="227" declfile="HighMap/include/highmap/hydrology.hpp" declline="400" declcolumn="13"/>
+        <location file="HighMap/src/hydrology/flow_accumulation_dinf.cpp" line="186" column="13" bodyfile="HighMap/src/hydrology/flow_accumulation_dinf.cpp" bodystart="186" bodyend="232" declfile="HighMap/include/highmap/hydrology.hpp" declline="401" declcolumn="13"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ad1d77ab375dfcca54183bbb687c82e9d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -30068,7 +30079,7 @@ h}{\partial y}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/flow_accumulation_dinf.cpp" line="229" column="7" bodyfile="HighMap/src/hydrology/flow_accumulation_dinf.cpp" bodystart="229" bodyend="277" declfile="HighMap/include/highmap/hydrology.hpp" declline="406" declcolumn="7"/>
+        <location file="HighMap/src/hydrology/flow_accumulation_dinf.cpp" line="234" column="7" bodyfile="HighMap/src/hydrology/flow_accumulation_dinf.cpp" bodystart="234" bodyend="282" declfile="HighMap/include/highmap/hydrology.hpp" declline="407" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a2e6b6c9b6294508953b6bce5f7daef12" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -30141,7 +30152,7 @@ h}{\partial y}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/flow_fixing.cpp" line="17" column="7" bodyfile="HighMap/src/hydrology/flow_fixing.cpp" bodystart="17" bodyend="269" declfile="HighMap/include/highmap/hydrology.hpp" declline="408" declcolumn="7"/>
+        <location file="HighMap/src/hydrology/flow_fixing.cpp" line="17" column="7" bodyfile="HighMap/src/hydrology/flow_fixing.cpp" bodystart="17" bodyend="269" declfile="HighMap/include/highmap/hydrology.hpp" declline="409" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a948b4703486f175cd2681bd9bc7b5a88" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Path" kindref="compound">Path</ref></type>
@@ -30295,7 +30306,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/flow_stream.cpp" line="46" column="6" bodyfile="HighMap/src/hydrology/flow_stream.cpp" bodystart="46" bodyend="117" declfile="HighMap/include/highmap/hydrology.hpp" declline="454" declcolumn="6"/>
+        <location file="HighMap/src/hydrology/flow_stream.cpp" line="46" column="6" bodyfile="HighMap/src/hydrology/flow_stream.cpp" bodystart="46" bodyend="117" declfile="HighMap/include/highmap/hydrology.hpp" declline="455" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a30d55fae5c75a1c45a005a3f9a9467eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -30550,7 +30561,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/generate_riverbed.cpp" line="16" column="7" bodyfile="HighMap/src/hydrology/generate_riverbed.cpp" bodystart="16" bodyend="85" declfile="HighMap/include/highmap/hydrology.hpp" declline="506" declcolumn="7"/>
+        <location file="HighMap/src/hydrology/generate_riverbed.cpp" line="16" column="7" bodyfile="HighMap/src/hydrology/generate_riverbed.cpp" bodystart="16" bodyend="85" declfile="HighMap/include/highmap/hydrology.hpp" declline="507" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a64fbc0261e13ea842762efd3ac6bcc53" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -30607,7 +30618,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/water_depth.cpp" line="21" column="7" bodyfile="HighMap/src/hydrology/water_depth.cpp" bodystart="21" bodyend="35" declfile="HighMap/include/highmap/hydrology.hpp" declline="532" declcolumn="7"/>
+        <location file="HighMap/src/hydrology/water_depth.cpp" line="21" column="7" bodyfile="HighMap/src/hydrology/water_depth.cpp" bodystart="21" bodyend="35" declfile="HighMap/include/highmap/hydrology.hpp" declline="533" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a78419f7981186b40c4a2d04456e4e63f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -30798,7 +30809,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/snow_simulation.cpp" line="15" column="7" bodyfile="HighMap/src/hydrology/snow_simulation.cpp" bodystart="15" bodyend="69" declfile="HighMap/include/highmap/hydrology.hpp" declline="561" declcolumn="7"/>
+        <location file="HighMap/src/hydrology/snow_simulation.cpp" line="15" column="7" bodyfile="HighMap/src/hydrology/snow_simulation.cpp" bodystart="15" bodyend="69" declfile="HighMap/include/highmap/hydrology.hpp" declline="562" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a121c42071766df393b6e049315876d5e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -30921,7 +30932,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/water_depth.cpp" line="65" column="7" bodyfile="HighMap/src/hydrology/water_depth.cpp" bodystart="65" bodyend="87" declfile="HighMap/include/highmap/hydrology.hpp" declline="610" declcolumn="7"/>
+        <location file="HighMap/src/hydrology/water_depth.cpp" line="65" column="7" bodyfile="HighMap/src/hydrology/water_depth.cpp" bodystart="65" bodyend="87" declfile="HighMap/include/highmap/hydrology.hpp" declline="611" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a3aebd62906b90ccfde11140e13b0853f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -31020,7 +31031,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/water_depth.cpp" line="37" column="6" bodyfile="HighMap/src/hydrology/water_depth.cpp" bodystart="37" bodyend="63" declfile="HighMap/include/highmap/hydrology.hpp" declline="641" declcolumn="6"/>
+        <location file="HighMap/src/hydrology/water_depth.cpp" line="37" column="6" bodyfile="HighMap/src/hydrology/water_depth.cpp" bodystart="37" bodyend="63" declfile="HighMap/include/highmap/hydrology.hpp" declline="642" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a136f042ce2ad8c14033f4d839f56265d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -31078,7 +31089,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/water_depth.cpp" line="89" column="7" bodyfile="HighMap/src/hydrology/water_depth.cpp" bodystart="89" bodyend="205" declfile="HighMap/include/highmap/hydrology.hpp" declline="667" declcolumn="7"/>
+        <location file="HighMap/src/hydrology/water_depth.cpp" line="89" column="7" bodyfile="HighMap/src/hydrology/water_depth.cpp" bodystart="89" bodyend="205" declfile="HighMap/include/highmap/hydrology.hpp" declline="668" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ad39c72e2b4c07d3013f7b0143c31137c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -31133,7 +31144,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/water_depth.cpp" line="207" column="7" bodyfile="HighMap/src/hydrology/water_depth.cpp" bodystart="207" bodyend="212" declfile="HighMap/include/highmap/hydrology.hpp" declline="687" declcolumn="7"/>
+        <location file="HighMap/src/hydrology/water_depth.cpp" line="207" column="7" bodyfile="HighMap/src/hydrology/water_depth.cpp" bodystart="207" bodyend="212" declfile="HighMap/include/highmap/hydrology.hpp" declline="688" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1abc5928f49e530927c8fb61a9afea3274" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -31212,7 +31223,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/water_depth.cpp" line="214" column="7" bodyfile="HighMap/src/hydrology/water_depth.cpp" bodystart="214" bodyend="228" declfile="HighMap/include/highmap/hydrology.hpp" declline="711" declcolumn="7"/>
+        <location file="HighMap/src/hydrology/water_depth.cpp" line="214" column="7" bodyfile="HighMap/src/hydrology/water_depth.cpp" bodystart="214" bodyend="228" declfile="HighMap/include/highmap/hydrology.hpp" declline="712" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a67eae4546cbed6a804eaddcde9350e1c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::filesystem::path</type>
