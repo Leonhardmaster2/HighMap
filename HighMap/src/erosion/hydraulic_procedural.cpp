@@ -265,4 +265,91 @@ void hydraulic_procedural_fbm(Array         &z,
   if (p_ridge_mask) *p_ridge_mask = 0.5f * (ridge_mask / a_sum) + 0.5f;
 }
 
+void hydraulic_procedural_fbm(Array         &z,
+                              float          kp_global,
+                              float          c_erosion,
+                              uint           seed,
+                              const Array   *p_mask,
+                              ErosionProfile erosion_profile,
+                              int            octaves,
+                              float          persistence,
+                              float          lacunarity,
+                              float          erosion_profile_parameter,
+                              float          angle_shift,
+                              float          phase_smoothing,
+                              float          talus_ref,
+                              float          gradient_scaling_ratio,
+                              float          gradient_power,
+                              bool           exclude_ridges,
+                              bool           apply_deposition,
+                              float          deposition_strength,
+                              bool           enable_default_noise,
+                              float          noise_amp,
+                              const Array   *p_kp_multiplier,
+                              const Array   *p_angle_shift,
+                              const Array   *p_noise_x,
+                              const Array   *p_noise_y,
+                              Array         *p_ridge_mask,
+                              glm::vec4      bbox)
+{
+  if (!p_mask)
+  {
+    hydraulic_procedural_fbm(z,
+                             kp_global,
+                             c_erosion,
+                             seed,
+                             erosion_profile,
+                             octaves,
+                             persistence,
+                             lacunarity,
+                             erosion_profile_parameter,
+                             angle_shift,
+                             phase_smoothing,
+                             talus_ref,
+                             gradient_scaling_ratio,
+                             gradient_power,
+                             exclude_ridges,
+                             apply_deposition,
+                             deposition_strength,
+                             enable_default_noise,
+                             noise_amp,
+                             p_kp_multiplier,
+                             p_angle_shift,
+                             p_noise_x,
+                             p_noise_y,
+                             p_ridge_mask,
+                             bbox);
+  }
+  else
+  {
+    Array z_f = z;
+    hydraulic_procedural_fbm(z_f,
+                             kp_global,
+                             c_erosion,
+                             seed,
+                             erosion_profile,
+                             octaves,
+                             persistence,
+                             lacunarity,
+                             erosion_profile_parameter,
+                             angle_shift,
+                             phase_smoothing,
+                             talus_ref,
+                             gradient_scaling_ratio,
+                             gradient_power,
+                             exclude_ridges,
+                             apply_deposition,
+                             deposition_strength,
+                             enable_default_noise,
+                             noise_amp,
+                             p_kp_multiplier,
+                             p_angle_shift,
+                             p_noise_x,
+                             p_noise_y,
+                             p_ridge_mask,
+                             bbox);
+    z = lerp(z, z_f, *(p_mask));
+  }
+}
+
 } // namespace hmap::gpu

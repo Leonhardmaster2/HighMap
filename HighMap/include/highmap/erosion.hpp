@@ -1157,6 +1157,34 @@ void hydraulic_procedural_fbm(
     Array         *p_ridge_mask = nullptr, // ouptput
     glm::vec4      bbox = {0.f, 1.f, 0.f, 1.f});
 
+void hydraulic_procedural_fbm(
+    Array         &z,
+    float          kp_global,
+    float          c_erosion,
+    uint           seed,
+    const Array   *p_mask,
+    ErosionProfile erosion_profile = ErosionProfile::EP_TRIANGLE_GRENIER,
+    int            octaves = 3,
+    float          persistence = 0.5f,
+    float          lacunarity = 2.f,
+    float          erosion_profile_parameter = 0.01f,
+    float          angle_shift = 0.f, // degs
+    float          phase_smoothing = 0.1f,
+    float          talus_ref = 0.001f,
+    float          gradient_scaling_ratio = 1.f,
+    float          gradient_power = 0.8f,
+    bool           exclude_ridges = true,
+    bool           apply_deposition = false,
+    float          deposition_strength = 1.f,
+    bool           enable_default_noise = true,
+    float          noise_amp = 0.01f,
+    const Array   *p_kp_multiplier = nullptr,
+    const Array   *p_angle_shift = nullptr,
+    const Array   *p_noise_x = nullptr,
+    const Array   *p_noise_y = nullptr,
+    Array         *p_ridge_mask = nullptr, // ouptput
+    glm::vec4      bbox = {0.f, 1.f, 0.f, 1.f});
+
 /**
  * @brief Simulates hydraulic erosion and deposition on a heightmap using the
  * Schott method.

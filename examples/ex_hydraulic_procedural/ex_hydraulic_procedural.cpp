@@ -18,7 +18,7 @@ int main(void)
   hmap::remap(z0);
 
   auto  z1 = z0;
-  float kp_global = 16.f;
+  float kp_global = 24.f;
   float c_erosion = 0.2f;
   auto  erosion_profile = hmap::ErosionProfile::EP_TRIANGLE_GRENIER;
 
