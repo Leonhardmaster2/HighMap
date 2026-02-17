@@ -46,7 +46,7 @@ void hydraulic_procedural(Array         &z,
   // ---Resolve derived parameters
 
   const glm::ivec2 shape = z.shape;
-  const int        kp_ir = int(1.f * shape.x / kp_global);
+  const int        kp_ir = int(shape.x / kp_global);
   const int        angle_filter_ir = kp_ir;
   const bool       rotate90 = false;
   const int        n_kernel_samples = 16;
@@ -216,6 +216,8 @@ void hydraulic_procedural_fbm(Array         &z,
   for (int k = 0; k < octaves; ++k)
   {
     Array ridge_mask_current(z.shape);
+
+    if (k > 0) apply_deposition = false;
 
     hmap::gpu::hydraulic_procedural(z,
                                     m * kp_global,
