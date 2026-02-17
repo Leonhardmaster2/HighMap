@@ -473,8 +473,7 @@ void phase_averaging(Array &field_real, Array &field_imag, int ir);
  * @param  p_ctrl_param     Optional control parameter field.
  * @param  p_noise_x        Optional noise field (x).
  * @param  p_noise_y        Optional noise field (y).
- * @param  p_field_x        Optional output vector field (x).
- * @param  p_field_y        Optional output vector field (y).
+ * @param  p_modulus        Optional output.
  * @param  bbox             Bounding box for evaluation.
  * @return                  Computed phase field.
  *
@@ -495,8 +494,7 @@ Array phase_field(const Array     &array,
                   const Array     *p_ctrl_param = nullptr,
                   const Array     *p_noise_x = nullptr,
                   const Array     *p_noise_y = nullptr,
-                  Array           *p_field_x = nullptr,
-                  Array           *p_field_y = nullptr,
+                  Array           *p_modulus = nullptr,
                   glm::vec4        bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
@@ -512,8 +510,7 @@ Array phase_field(const Array     &array,
  * @param  p_ctrl_param     Optional control parameter field.
  * @param  p_noise_x        Optional noise field (x).
  * @param  p_noise_y        Optional noise field (y).
- * @param  p_field_x        Optional output vector field (x).
- * @param  p_field_y        Optional output vector field (y).
+ * @param  p_modulus        Optional output.
  * @param  bbox             Bounding box for evaluation.
  * @return                  Computed phase field.
  *
@@ -533,8 +530,7 @@ Array phase_field(const Array     &array,
                   const Array     *p_ctrl_param = nullptr,
                   const Array     *p_noise_x = nullptr,
                   const Array     *p_noise_y = nullptr,
-                  Array           *p_field_x = nullptr,
-                  Array           *p_field_y = nullptr,
+                  Array           *p_modulus = nullptr,
                   glm::vec4        bbox = {0.f, 1.f, 0.f, 1.f});
 
 /*! @brief See hmap::gradient_angle_circular_smoothing */

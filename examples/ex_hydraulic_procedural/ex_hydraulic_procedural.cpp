@@ -14,7 +14,7 @@ int main(void)
                                    kw,
                                    seed,
                                    8);
-  z0 = hmap::bulkify(z0, hmap::PrimitiveType::PRIM_CONE_SMOOTH, 1.f);
+  // z0 = hmap::bulkify(z0, hmap::PrimitiveType::PRIM_CONE_SMOOTH, 1.f);
   hmap::remap(z0);
 
   auto  z1 = z0;
@@ -39,6 +39,8 @@ int main(void)
                           {z0, z1, z2},
                           hmap::Cmap::TERRAIN,
                           true);
+
+  return 0;
 
   // --- all profiles
 

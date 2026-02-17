@@ -16,6 +16,7 @@
 #include "highmap/operator.hpp"
 #include "highmap/primitives.hpp"
 #include "highmap/range.hpp"
+#include "highmap/selector.hpp"
 
 namespace hmap::gpu
 {
@@ -31,6 +32,7 @@ void hydraulic_procedural(Array         &z,
                           float          talus_ref,
                           float          gradient_scaling_ratio,
                           float          gradient_power,
+                          bool           exclude_ridges,
                           bool           apply_deposition,
                           float          deposition_strength,
                           bool           enable_default_noise,
@@ -95,8 +97,7 @@ void hydraulic_procedural(Array         &z,
 
   // --- Compute phase field
 
-  Array field_x(shape);
-  Array field_y(shape);
+  Array modulus(shape);
 
   Array phase = gpu::phase_field(z,
                                  seed,
@@ -109,8 +110,7 @@ void hydraulic_procedural(Array         &z,
                                  p_kp_multiplier,
                                  p_noise_x,
                                  p_noise_y,
-                                 &field_x,
-                                 &field_y,
+                                 &modulus,
                                  bbox);
 
   // add optional local or global angle shifts
@@ -134,20 +134,23 @@ void hydraulic_procedural(Array         &z,
 
       // modulus-based smoothing to avoid kinky transitions between
       // phases
-      float t = 2.f / M_PI *
-                std::atan(phase_smoothing *
-                          std::hypot(field_x(i, j), field_y(i, j)));
+      float t = 2.f / M_PI * std::atan(phase_smoothing * modulus(i, j));
 
       ridge(i, j) = lerp(profile_avg, value, t);
     }
 
   // --- Erosion amplitude
 
-  Array amp = flow_accumulation_dinf(z, talus_ref);
+  Array zb = z;
+  // zb = hmap::bulkify(zb, hmap::PrimitiveType::PRIM_SMOOTH_COSINE, 1.f);
+
+  Array amp = flow_accumulation_dinf(zb, talus_ref);
   amp = log10(amp);
 
+  amp.dump("amp.png");
+
   // scale erosion with local gradient
-  Array gn = hmap::gradient_norm(z);
+  Array gn = hmap::gradient_norm(zb);
 
   {
     gpu::smooth_cpulse(gn, gradient_prefilter_ir);
@@ -161,6 +164,15 @@ void hydraulic_procedural(Array         &z,
   remap(amp);
 
   ridge *= amp;
+
+  // --- remove line ridges and sinks to avoid artifacts
+
+  if (exclude_ridges)
+  {
+    Array mr = 1.f - gpu::morphological_top_hat(z, kp_ir); // ridges
+    remap(mr);
+    ridge *= mr;
+  }
 
   // --- erode
 
@@ -196,6 +208,7 @@ void hydraulic_procedural_fbm(Array         &z,
                               float          talus_ref,
                               float          gradient_scaling_ratio,
                               float          gradient_power,
+                              bool           exclude_ridges,
                               bool           apply_deposition,
                               float          deposition_strength,
                               bool           enable_default_noise,
@@ -230,6 +243,7 @@ void hydraulic_procedural_fbm(Array         &z,
                                     talus_ref,
                                     gradient_scaling_ratio,
                                     gradient_power,
+                                    exclude_ridges,
                                     apply_deposition,
                                     deposition_strength,
                                     enable_default_noise,

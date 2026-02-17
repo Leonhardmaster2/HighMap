@@ -81,8 +81,7 @@ void kernel phase_field(global float *angle,
                         global float *ctrl_param,
                         global float *noise_x,
                         global float *noise_y,
-                        global float *field_x,
-                        global float *field_y,
+                        global float *modulus,
                         const int     nx,
                         const int     ny,
                         const float   kx,
@@ -94,8 +93,7 @@ void kernel phase_field(global float *angle,
                         const int     has_ctrl_param,
                         const int     has_noise_x,
                         const int     has_noise_y,
-                        const int     has_field_x,
-                        const int     has_field_y,
+                        const int     has_modulus,
                         const float4  bbox)
 {
   int2 g = {get_global_id(0), get_global_id(1)};
@@ -124,7 +122,6 @@ void kernel phase_field(global float *angle,
 
   phase[idx] = atan2(gabor.y, gabor.x);
 
-  if (has_field_x) field_x[idx] = gabor.x;
-  if (has_field_y) field_y[idx] = gabor.y;
+  if (has_modulus) modulus[idx] = hypot(gabor.x, gabor.y);
 }
 )""
