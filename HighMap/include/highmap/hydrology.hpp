@@ -358,6 +358,7 @@ Array flow_accumulation_dinf_perturbed(const Array &z,
                                        glm::vec2    kw,
                                        uint         seed,
                                        float        amp,
+                                       const Array *p_perturb_scaling = nullptr,
                                        glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**

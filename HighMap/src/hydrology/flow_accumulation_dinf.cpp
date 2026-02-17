@@ -113,6 +113,7 @@ Array flow_accumulation_dinf_perturbed(const Array &z,
                                        glm::vec2    kw,
                                        uint         seed,
                                        float        amp,
+                                       const Array *p_perturb_scaling,
                                        glm::vec4    bbox)
 {
   const glm::ivec2 shape = z.shape;
@@ -121,14 +122,18 @@ Array flow_accumulation_dinf_perturbed(const Array &z,
   for (int n = 0; n < nsamples; ++n)
   {
     Array zp = z;
-    zp += amp * noise(hmap::NoiseType::PERLIN,
-                      shape,
-                      kw,
-                      seed + n,
-                      nullptr,
-                      nullptr,
-                      nullptr,
-                      bbox);
+    Array dz = noise(hmap::NoiseType::PERLIN,
+                     shape,
+                     kw,
+                     seed + n,
+                     nullptr,
+                     nullptr,
+                     nullptr,
+                     bbox);
+
+    if (p_perturb_scaling) dz *= *p_perturb_scaling;
+    zp += amp * dz;
+
     facc += flow_accumulation_dinf(zp, talus_ref);
   }
 
