@@ -445,6 +445,8 @@ void solve_poisson_gauss_seidel(const Array &rhs,
  */
 Array unwrap_phase(const Array &alpha);
 
+Array talus_jump_mask(const Array &z, float threshold, float sigma);
+
 } // namespace hmap
 
 namespace hmap::gpu

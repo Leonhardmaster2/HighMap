@@ -138,7 +138,7 @@ Array phase_field(const Array     &array,
   Array dx = gradient_x(array);
   Array dy = gradient_y(array);
   phase_averaging(dx, dy, angle_filter_ir);
-  const Array angle = atan2(dy, dx) + phi;
+  Array angle = atan2(dy, dx) + phi;
 
   // --- compute phase
 

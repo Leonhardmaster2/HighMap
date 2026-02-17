@@ -1,7 +1,6 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-
 #include <cmath>
 
 #include "highmap/array.hpp"
@@ -252,6 +251,13 @@ Array laplacian(const Array &array)
 
   extrapolate_borders(delta);
   return delta;
+}
+
+Array talus_jump_mask(const Array &z, float threshold, float sigma)
+{
+  const Array talus = gradient_norm(z);
+  Array c = sigmoid(talus, sigma, 0.f /* vmin */, 1.f /* vmax */, threshold);
+  return c;
 }
 
 } // namespace hmap
