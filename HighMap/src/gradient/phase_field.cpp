@@ -128,6 +128,7 @@ Array phase_field(const Array     &array,
                   const Array     *p_noise_x,
                   const Array     *p_noise_y,
                   Array           *p_modulus,
+                  Array           *p_angle_jump_mask,
                   glm::vec4        bbox)
 {
   const glm::ivec2 shape = array.shape;
@@ -139,6 +140,9 @@ Array phase_field(const Array     &array,
   Array dy = gradient_y(array);
   phase_averaging(dx, dy, angle_filter_ir);
   Array angle = atan2(dy, dx) + phi;
+
+  if (p_angle_jump_mask)
+    *p_angle_jump_mask = talus_jump_mask(angle, M_PI, 0.1f * M_PI);
 
   // --- compute phase
 
@@ -190,6 +194,7 @@ Array phase_field(const Array     &array,
                   const Array     *p_noise_x,
                   const Array     *p_noise_y,
                   Array           *p_modulus,
+                  Array           *p_angle_jump_mask,
                   glm::vec4        bbox)
 {
   float           kp = std::sqrt(kp_global);
@@ -207,6 +212,7 @@ Array phase_field(const Array     &array,
                      p_noise_x,
                      p_noise_y,
                      p_modulus,
+                     p_angle_jump_mask,
                      bbox);
 }
 

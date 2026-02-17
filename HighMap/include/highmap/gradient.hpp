@@ -497,6 +497,7 @@ Array phase_field(const Array     &array,
                   const Array     *p_noise_x = nullptr,
                   const Array     *p_noise_y = nullptr,
                   Array           *p_modulus = nullptr,
+                  Array           *p_angle_jump_mask = nullptr,
                   glm::vec4        bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
@@ -533,6 +534,7 @@ Array phase_field(const Array     &array,
                   const Array     *p_noise_x = nullptr,
                   const Array     *p_noise_y = nullptr,
                   Array           *p_modulus = nullptr,
+                  Array           *p_angle_jump_mask = nullptr,
                   glm::vec4        bbox = {0.f, 1.f, 0.f, 1.f});
 
 /*! @brief See hmap::gradient_angle_circular_smoothing */

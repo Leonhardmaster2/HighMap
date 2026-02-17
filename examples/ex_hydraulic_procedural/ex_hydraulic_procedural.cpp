@@ -9,11 +9,7 @@ int main(void)
   glm::vec2 kw = {2.f, 2.f};
   int       seed = 0;
 
-  hmap::Array z0 = hmap::noise_fbm(hmap::NoiseType::SIMPLEX2,
-                                   shape,
-                                   kw,
-                                   seed,
-                                   8);
+  hmap::Array z0 = hmap::noise_fbm(hmap::NoiseType::SIMPLEX2, shape, kw, seed);
   // z0 = hmap::bulkify(z0, hmap::PrimitiveType::PRIM_CONE_SMOOTH, 1.f);
   hmap::remap(z0);
 

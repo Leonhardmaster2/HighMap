@@ -111,6 +111,7 @@ void hydraulic_procedural(Array         &z,
                                  p_noise_x,
                                  p_noise_y,
                                  &modulus,
+                                 /* p_angle_jump_mask */ nullptr,
                                  bbox);
 
   // add optional local or global angle shifts
