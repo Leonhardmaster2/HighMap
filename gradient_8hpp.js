@@ -21,9 +21,10 @@ var gradient_8hpp =
     [ "phase_field", "gradient_8hpp.html#a6e66245d2cf9c7944ed35a1010c54f77", null ],
     [ "solve_poisson_gauss_seidel", "gradient_8hpp.html#a0bcc84aa462aee73e1a3a52729f21ea6", null ],
     [ "unwrap_phase", "gradient_8hpp.html#a3f8dc201377b61428eba8daa4a03a65f", null ],
+    [ "talus_jump_mask", "gradient_8hpp.html#a184b9eed77a8732a8631f8dd73d75a44", null ],
     [ "phase_averaging", "gradient_8hpp.html#a8a89eb3b3dcbdd39e57abc1770420bf1", null ],
-    [ "phase_field", "gradient_8hpp.html#a5fa08293d71791cc56da07dd46aff6c9", null ],
-    [ "phase_field", "gradient_8hpp.html#a1340d30471bbc03473be1ebd4778c053", null ],
+    [ "phase_field", "gradient_8hpp.html#a0eab8e0319f11623e88016ce6cd44d72", null ],
+    [ "phase_field", "gradient_8hpp.html#a8bacd8632631365c7efdcf842e3b49d0", null ],
     [ "gradient_angle_circular_smoothing", "gradient_8hpp.html#ab4b68e1b48d16193615105656680ced8", null ],
     [ "gradient_norm", "gradient_8hpp.html#a1c5e49734e49973fe1b275b6988dba12", null ]
 ];

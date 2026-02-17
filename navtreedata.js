@@ -91,17 +91,17 @@ var NAVTREEINDEX =
 "dir_53d4573766d056de5de1beaeca2ff3aa.html",
 "features_8hpp_source.html",
 "filters_8hpp_source.html",
-"hydraulic__benes_8cpp.html#ab36a27b4c79ad5b201d79ac92388caa8",
-"math_8cpp.html#a6294951db2b05d8b1081e4d865c11244",
-"namespacehmap.html#a19bb0a5d0609ac671ca054d18959c7f1",
-"namespacehmap.html#a6108df0909730083cb6dd7cf4a217c1b",
-"namespacehmap.html#ab55e8132857fc52e7ac7947d82c334e1",
-"namespacehmap.html#af2851ea650ce411e47bac5ba4327c652",
-"namespacemembers_func_v.html",
-"primitives_8hpp.html#a8e3756915e28aa80cec2190043cc8c2fac73478836b3a989e9325f861fe2059e2",
-"selector_8hpp.html#a13f97a9cf5f7f219e5ed9a32fefbfa1a",
-"structhmap_1_1TileRegion.html#a1ee79e1a24fa9d72dd13a2e404026895",
-"transform_8hpp.html#a6b780e74228ec5cca45602eb19b8975c"
+"hydraulic__algebric_8cpp.html#ac4f3c8b3d5f766b15c0ac64359fdc219",
+"math_8cpp.html#a4c21ef9d4f7d33f2413c7fe391b86253",
+"namespacehmap.html#a1857226aa04d2a7d7e3bfbb7af9a12c9",
+"namespacehmap.html#a600b794acf99e4b8d41ee7526e5c21ec",
+"namespacehmap.html#ab46e625ea919327a4e2899dd53fff18d",
+"namespacehmap.html#af1b7865647bb6acd5f3c9720b3677da7",
+"namespacemembers_func_s.html",
+"primitives_8hpp.html#a8e3756915e28aa80cec2190043cc8c2faaf0f73f1150aae0a8affdab8b5f38eca",
+"selector_8hpp.html#a0524c28c03b2976dae0da680a55fec5f",
+"structhmap_1_1TileRegion.html#a1cf655fd7ee1443572b8db734d836dc7",
+"transform_8hpp.html#a339ed429925a27b3dad7a366e89bfe74"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

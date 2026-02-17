@@ -15,5 +15,6 @@ var gradient_8cpp =
     [ "gradient_y", "gradient_8cpp.html#a6032811e40d11b8957dc48d98711acf9", null ],
     [ "gradient_talus", "gradient_8cpp.html#a618fb6d396a832c3dd1f053bfd27eed4", null ],
     [ "gradient_talus", "gradient_8cpp.html#aba851d370796b7b6654e681339561eb2", null ],
-    [ "laplacian", "gradient_8cpp.html#a893bb80f635c4711c075e078cde18cf5", null ]
+    [ "laplacian", "gradient_8cpp.html#a893bb80f635c4711c075e078cde18cf5", null ],
+    [ "talus_jump_mask", "gradient_8cpp.html#a184b9eed77a8732a8631f8dd73d75a44", null ]
 ];

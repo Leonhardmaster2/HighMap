@@ -1,5 +1,7 @@
 var NAVTREEINDEX9 =
 {
+"hydraulic__algebric_8cpp.html#ac4f3c8b3d5f766b15c0ac64359fdc219":[5,0,1,1,10,7,1],
+"hydraulic__benes_8cpp.html":[5,0,1,1,10,8],
 "hydraulic__benes_8cpp.html#ab36a27b4c79ad5b201d79ac92388caa8":[5,0,1,1,10,8,0],
 "hydraulic__benes_8cpp.html#ae791758f736d5ed3e164262f3b1c5d20":[5,0,1,1,10,8,1],
 "hydraulic__blur_8cpp.html":[5,0,1,1,10,9],
@@ -247,7 +249,5 @@ var NAVTREEINDEX9 =
 "math_8cpp.html#a339d883dc34fc818dd25077c5daab953":[5,0,1,1,20,1,18],
 "math_8cpp.html#a3a1e261b646c9df967e78fb77e5bf8c1":[5,0,1,1,20,1,19],
 "math_8cpp.html#a413648e2595721d8ba4096357dbb1f84":[5,0,1,1,20,1,30],
-"math_8cpp.html#a4a3589145183ecdcc6392e28cd1ebef8":[5,0,1,1,20,1,12],
-"math_8cpp.html#a4c21ef9d4f7d33f2413c7fe391b86253":[5,0,1,1,20,1,32],
-"math_8cpp.html#a527cfdcf7f7e2ca0e270875526c9b1ee":[5,0,1,1,20,1,0]
+"math_8cpp.html#a4a3589145183ecdcc6392e28cd1ebef8":[5,0,1,1,20,1,12]
 };

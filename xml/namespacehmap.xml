@@ -27656,7 +27656,7 @@ h}{\partial y}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/gradient/gradient.cpp" line="62" column="7" bodyfile="HighMap/src/gradient/gradient.cpp" bodystart="62" bodyend="67" declfile="HighMap/include/highmap/gradient.hpp" declline="50" declcolumn="7"/>
+        <location file="HighMap/src/gradient/gradient.cpp" line="61" column="7" bodyfile="HighMap/src/gradient/gradient.cpp" bodystart="61" bodyend="66" declfile="HighMap/include/highmap/gradient.hpp" declline="50" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ab0755dccfcae2b02a211c091e33f79a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; float &gt;</type>
@@ -27734,12 +27734,16 @@ h}{\partial y}
 <codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
 <codeline><highlight class="normal">{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>glm::ivec2<sp/>shape<sp/>=<sp/>{256,<sp/>256};</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>glm::vec2<sp/><sp/>res<sp/>=<sp/>{4.f,<sp/>4.f};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>glm::vec2<sp/><sp/>kw<sp/>=<sp/>{4.f,<sp/>4.f};</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed<sp/>=<sp/>1;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1acb13e7346085793fda4c94c47b75d9a9" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,<sp/>shape,<sp/>res,<sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1acb13e7346085793fda4c94c47b75d9a9" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,<sp/>shape,<sp/>kw,<sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>---<sp/>Angle<sp/>compute</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>a0<sp/>=<sp/><ref refid="namespacehmap_1ae23a30f7964baacd6d0457c288fd3598" kindref="member">hmap::gradient_angle</ref>(z);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>---<sp/>Smoothing</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/>ir<sp/>=<sp/>16;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>a1<sp/>=<sp/><ref refid="namespacehmap_1a5d7bb7244ff862834560b9145866e1b2" kindref="member">hmap::gradient_angle_circular_smoothing</ref>(z,<sp/>ir);</highlight></codeline>
@@ -27748,11 +27752,14 @@ h}{\partial y}
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>talus<sp/>=<sp/>M_PI;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>talus_width<sp/>=<sp/>0.01f<sp/>*<sp/>talus;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>ir<sp/>=<sp/>16;</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1aa2de65aa233324cf294faf2421ccec2a" kindref="member">hmap::smooth_cpulse_edge_removing</ref>(a2,<sp/>talus,<sp/>talus_width,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>---<sp/>Jump<sp/>mask</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>mask<sp/>=<sp/><ref refid="namespacehmap_1a184b9eed77a8732a8631f8dd73d75a44" kindref="member">hmap::talus_jump_mask</ref>(a1,<sp/>M_PI,<sp/>0.1f<sp/>*<sp/>M_PI);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_gradient_angle.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,<sp/>a0,<sp/>a1,<sp/>a2},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,<sp/>a0,<sp/>a1,<sp/>a2,<sp/>mask},</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143" kindref="member">hmap::Cmap::INFERNO</ref>,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
@@ -27763,7 +27770,7 @@ h}{\partial y}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/gradient/gradient.cpp" line="69" column="7" bodyfile="HighMap/src/gradient/gradient.cpp" bodystart="69" bodyend="88" declfile="HighMap/include/highmap/gradient.hpp" declline="81" declcolumn="7"/>
+        <location file="HighMap/src/gradient/gradient.cpp" line="68" column="7" bodyfile="HighMap/src/gradient/gradient.cpp" bodystart="68" bodyend="87" declfile="HighMap/include/highmap/gradient.hpp" declline="81" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a5d7bb7244ff862834560b9145866e1b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -27827,12 +27834,16 @@ h}{\partial y}
 <codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
 <codeline><highlight class="normal">{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>glm::ivec2<sp/>shape<sp/>=<sp/>{256,<sp/>256};</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>glm::vec2<sp/><sp/>res<sp/>=<sp/>{4.f,<sp/>4.f};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>glm::vec2<sp/><sp/>kw<sp/>=<sp/>{4.f,<sp/>4.f};</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed<sp/>=<sp/>1;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1acb13e7346085793fda4c94c47b75d9a9" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,<sp/>shape,<sp/>res,<sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1acb13e7346085793fda4c94c47b75d9a9" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,<sp/>shape,<sp/>kw,<sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>---<sp/>Angle<sp/>compute</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>a0<sp/>=<sp/><ref refid="namespacehmap_1ae23a30f7964baacd6d0457c288fd3598" kindref="member">hmap::gradient_angle</ref>(z);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>---<sp/>Smoothing</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/>ir<sp/>=<sp/>16;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>a1<sp/>=<sp/><ref refid="namespacehmap_1a5d7bb7244ff862834560b9145866e1b2" kindref="member">hmap::gradient_angle_circular_smoothing</ref>(z,<sp/>ir);</highlight></codeline>
@@ -27841,11 +27852,14 @@ h}{\partial y}
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>talus<sp/>=<sp/>M_PI;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>talus_width<sp/>=<sp/>0.01f<sp/>*<sp/>talus;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>ir<sp/>=<sp/>16;</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1aa2de65aa233324cf294faf2421ccec2a" kindref="member">hmap::smooth_cpulse_edge_removing</ref>(a2,<sp/>talus,<sp/>talus_width,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>---<sp/>Jump<sp/>mask</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>mask<sp/>=<sp/><ref refid="namespacehmap_1a184b9eed77a8732a8631f8dd73d75a44" kindref="member">hmap::talus_jump_mask</ref>(a1,<sp/>M_PI,<sp/>0.1f<sp/>*<sp/>M_PI);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_gradient_angle.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,<sp/>a0,<sp/>a1,<sp/>a2},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,<sp/>a0,<sp/>a1,<sp/>a2,<sp/>mask},</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143" kindref="member">hmap::Cmap::INFERNO</ref>,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
@@ -27856,7 +27870,7 @@ h}{\partial y}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/gradient/gradient.cpp" line="90" column="7" bodyfile="HighMap/src/gradient/gradient.cpp" bodystart="90" bodyend="121" declfile="HighMap/include/highmap/gradient.hpp" declline="117" declcolumn="7"/>
+        <location file="HighMap/src/gradient/gradient.cpp" line="89" column="7" bodyfile="HighMap/src/gradient/gradient.cpp" bodystart="89" bodyend="120" declfile="HighMap/include/highmap/gradient.hpp" declline="117" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a5f58c4149344b401d82f0be3c3807156" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -27935,7 +27949,7 @@ h}{\partial y}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/gradient/gradient.cpp" line="123" column="7" bodyfile="HighMap/src/gradient/gradient.cpp" bodystart="123" bodyend="134" declfile="HighMap/include/highmap/gradient.hpp" declline="141" declcolumn="7"/>
+        <location file="HighMap/src/gradient/gradient.cpp" line="122" column="7" bodyfile="HighMap/src/gradient/gradient.cpp" bodystart="122" bodyend="133" declfile="HighMap/include/highmap/gradient.hpp" declline="141" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ab02a5e564763a35cd3baa727b825db4a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -28014,7 +28028,7 @@ h}{\partial y}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/gradient/gradient.cpp" line="136" column="7" bodyfile="HighMap/src/gradient/gradient.cpp" bodystart="136" bodyend="146" declfile="HighMap/include/highmap/gradient.hpp" declline="165" declcolumn="7"/>
+        <location file="HighMap/src/gradient/gradient.cpp" line="135" column="7" bodyfile="HighMap/src/gradient/gradient.cpp" bodystart="135" bodyend="145" declfile="HighMap/include/highmap/gradient.hpp" declline="165" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a522e28e6f997165bb492aa68327556d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -28072,7 +28086,7 @@ h}{\partial y}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/gradient/gradient.cpp" line="162" column="7" bodyfile="HighMap/src/gradient/gradient.cpp" bodystart="162" bodyend="172" declfile="HighMap/include/highmap/gradient.hpp" declline="183" declcolumn="7"/>
+        <location file="HighMap/src/gradient/gradient.cpp" line="161" column="7" bodyfile="HighMap/src/gradient/gradient.cpp" bodystart="161" bodyend="171" declfile="HighMap/include/highmap/gradient.hpp" declline="183" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ad0956aa203f9962dba258a91543d2969" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -28130,7 +28144,7 @@ h}{\partial y}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/gradient/gradient.cpp" line="149" column="7" bodyfile="HighMap/src/gradient/gradient.cpp" bodystart="149" bodyend="159" declfile="HighMap/include/highmap/gradient.hpp" declline="201" declcolumn="7"/>
+        <location file="HighMap/src/gradient/gradient.cpp" line="148" column="7" bodyfile="HighMap/src/gradient/gradient.cpp" bodystart="148" bodyend="158" declfile="HighMap/include/highmap/gradient.hpp" declline="201" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a618fb6d396a832c3dd1f053bfd27eed4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -28164,7 +28178,7 @@ h}{\partial y}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/gradient/gradient.cpp" line="216" column="7" bodyfile="HighMap/src/gradient/gradient.cpp" bodystart="216" bodyend="221" declfile="HighMap/include/highmap/gradient.hpp" declline="217" declcolumn="7"/>
+        <location file="HighMap/src/gradient/gradient.cpp" line="215" column="7" bodyfile="HighMap/src/gradient/gradient.cpp" bodystart="215" bodyend="220" declfile="HighMap/include/highmap/gradient.hpp" declline="217" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aba851d370796b7b6654e681339561eb2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -28206,7 +28220,7 @@ h}{\partial y}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/gradient/gradient.cpp" line="223" column="6" bodyfile="HighMap/src/gradient/gradient.cpp" bodystart="223" bodyend="242" declfile="HighMap/include/highmap/gradient.hpp" declline="228" declcolumn="6"/>
+        <location file="HighMap/src/gradient/gradient.cpp" line="222" column="6" bodyfile="HighMap/src/gradient/gradient.cpp" bodystart="222" bodyend="241" declfile="HighMap/include/highmap/gradient.hpp" declline="228" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a11d438a3f643427c957d160b7c1a04de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -28238,7 +28252,7 @@ h}{\partial y}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/gradient/gradient.cpp" line="174" column="7" bodyfile="HighMap/src/gradient/gradient.cpp" bodystart="174" bodyend="179" declfile="HighMap/include/highmap/gradient.hpp" declline="239" declcolumn="7"/>
+        <location file="HighMap/src/gradient/gradient.cpp" line="173" column="7" bodyfile="HighMap/src/gradient/gradient.cpp" bodystart="173" bodyend="178" declfile="HighMap/include/highmap/gradient.hpp" declline="239" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a11c1600c2d67387c1b037fadcca9a069" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -28280,7 +28294,7 @@ h}{\partial y}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/gradient/gradient.cpp" line="181" column="6" bodyfile="HighMap/src/gradient/gradient.cpp" bodystart="181" bodyend="193" declfile="HighMap/include/highmap/gradient.hpp" declline="251" declcolumn="6"/>
+        <location file="HighMap/src/gradient/gradient.cpp" line="180" column="6" bodyfile="HighMap/src/gradient/gradient.cpp" bodystart="180" bodyend="192" declfile="HighMap/include/highmap/gradient.hpp" declline="251" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a8dbef7ccc1936646831eb5a24db58d81" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -28312,7 +28326,7 @@ h}{\partial y}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/gradient/gradient.cpp" line="195" column="7" bodyfile="HighMap/src/gradient/gradient.cpp" bodystart="195" bodyend="200" declfile="HighMap/include/highmap/gradient.hpp" declline="262" declcolumn="7"/>
+        <location file="HighMap/src/gradient/gradient.cpp" line="194" column="7" bodyfile="HighMap/src/gradient/gradient.cpp" bodystart="194" bodyend="199" declfile="HighMap/include/highmap/gradient.hpp" declline="262" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a6032811e40d11b8957dc48d98711acf9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -28354,7 +28368,7 @@ h}{\partial y}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/gradient/gradient.cpp" line="202" column="6" bodyfile="HighMap/src/gradient/gradient.cpp" bodystart="202" bodyend="214" declfile="HighMap/include/highmap/gradient.hpp" declline="274" declcolumn="6"/>
+        <location file="HighMap/src/gradient/gradient.cpp" line="201" column="6" bodyfile="HighMap/src/gradient/gradient.cpp" bodystart="201" bodyend="213" declfile="HighMap/include/highmap/gradient.hpp" declline="274" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a893bb80f635c4711c075e078cde18cf5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -28386,7 +28400,7 @@ h}{\partial y}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/gradient/gradient.cpp" line="244" column="7" bodyfile="HighMap/src/gradient/gradient.cpp" bodystart="244" bodyend="255" declfile="HighMap/include/highmap/gradient.hpp" declline="285" declcolumn="7"/>
+        <location file="HighMap/src/gradient/gradient.cpp" line="243" column="7" bodyfile="HighMap/src/gradient/gradient.cpp" bodystart="243" bodyend="254" declfile="HighMap/include/highmap/gradient.hpp" declline="285" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aef53e65fc9b8bc74c342367b0034cfa7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Tensor" kindref="compound">Tensor</ref></type>
@@ -28748,7 +28762,7 @@ h}{\partial y}
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>---<sp/>GPU<sp/>phase<sp/>field</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kp_global<sp/>=<sp/>64.f;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>phi2<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1a5fa08293d71791cc56da07dd46aff6c9" kindref="member">hmap::gpu::phase_field</ref>(z,<sp/>seed,<sp/>kp_global);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>phi2<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1a0eab8e0319f11623e88016ce6cd44d72" kindref="member">hmap::gpu::phase_field</ref>(z,<sp/>seed,<sp/>kp_global);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(phi2);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_phase_field.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
@@ -28901,6 +28915,32 @@ h}{\partial y}
         <inbodydescription>
         </inbodydescription>
         <location file="HighMap/src/gradient/unwrap_phase.cpp" line="14" column="7" bodyfile="HighMap/src/gradient/unwrap_phase.cpp" bodystart="14" bodyend="68" declfile="HighMap/include/highmap/gradient.hpp" declline="446" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehmap_1a184b9eed77a8732a8631f8dd73d75a44" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
+        <definition>Array hmap::talus_jump_mask</definition>
+        <argsstring>(const Array &amp;z, float threshold, float sigma)</argsstring>
+        <name>talus_jump_mask</name>
+        <qualifiedname>hmap::talus_jump_mask</qualifiedname>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>z</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>threshold</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>sigma</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/gradient/gradient.cpp" line="256" column="7" bodyfile="HighMap/src/gradient/gradient.cpp" bodystart="256" bodyend="261" declfile="HighMap/include/highmap/gradient.hpp" declline="448" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a8284b00f1f460f1d5a406ee45587dcd9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -53405,7 +53445,7 @@ off&quot; values that fall below the threshold, which can be useful for filterin
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/gradient/gradient.cpp" line="18" column="6" bodyfile="HighMap/src/gradient/gradient.cpp" bodystart="18" bodyend="42"/>
+        <location file="HighMap/src/gradient/gradient.cpp" line="17" column="6" bodyfile="HighMap/src/gradient/gradient.cpp" bodystart="17" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aa2c4a82ac72b15cac34f868be9743471" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -53447,7 +53487,7 @@ off&quot; values that fall below the threshold, which can be useful for filterin
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/gradient/gradient.cpp" line="44" column="7" bodyfile="HighMap/src/gradient/gradient.cpp" bodystart="44" bodyend="58"/>
+        <location file="HighMap/src/gradient/gradient.cpp" line="43" column="7" bodyfile="HighMap/src/gradient/gradient.cpp" bodystart="43" bodyend="57"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a5acae3ca582cc9a70ad321ef484c05f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
