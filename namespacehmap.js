@@ -19,6 +19,7 @@ var namespacehmap =
       [ "hydraulic_particle", "namespacehmap_1_1gpu.html#a8fa1d052ea9b3fcf52be9a4374093594", null ],
       [ "hydraulic_procedural", "namespacehmap_1_1gpu.html#afbecd3a8ce025fb08ca3296ce81f695d", null ],
       [ "hydraulic_procedural_fbm", "namespacehmap_1_1gpu.html#a60f3eb887b87ec545d68977b8811cadc", null ],
+      [ "hydraulic_procedural_fbm", "namespacehmap_1_1gpu.html#a3676ca8e853b3b3629d4efee24fb7211", null ],
       [ "hydraulic_schott", "namespacehmap_1_1gpu.html#a9749d24b9dd9bed8ee333910951db395", null ],
       [ "hydraulic_schott", "namespacehmap_1_1gpu.html#a54cd96bb811138a9c7f9768c4b0a8f98", null ],
       [ "hydraulic_schott_erosion", "namespacehmap_1_1gpu.html#aa3c0fc5295f81856967feed8cf87f711", null ],
