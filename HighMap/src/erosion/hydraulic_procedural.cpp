@@ -148,8 +148,6 @@ void hydraulic_procedural(Array         &z,
   Array amp = flow_accumulation_dinf(zb, talus_ref);
   amp = log10(amp);
 
-  amp.dump("amp.png");
-
   // scale erosion with local gradient
   Array gn = hmap::gradient_norm(zb);
 
