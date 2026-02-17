@@ -22,8 +22,8 @@ var gradient_8hpp =
     [ "solve_poisson_gauss_seidel", "gradient_8hpp.html#a0bcc84aa462aee73e1a3a52729f21ea6", null ],
     [ "unwrap_phase", "gradient_8hpp.html#a3f8dc201377b61428eba8daa4a03a65f", null ],
     [ "phase_averaging", "gradient_8hpp.html#a8a89eb3b3dcbdd39e57abc1770420bf1", null ],
-    [ "phase_field", "gradient_8hpp.html#adee4244c2a13f575a789347284d8fc68", null ],
-    [ "phase_field", "gradient_8hpp.html#ab216c7eef8f5d71b1244421e2e6a94da", null ],
+    [ "phase_field", "gradient_8hpp.html#a5fa08293d71791cc56da07dd46aff6c9", null ],
+    [ "phase_field", "gradient_8hpp.html#a1340d30471bbc03473be1ebd4778c053", null ],
     [ "gradient_angle_circular_smoothing", "gradient_8hpp.html#ab4b68e1b48d16193615105656680ced8", null ],
     [ "gradient_norm", "gradient_8hpp.html#a1c5e49734e49973fe1b275b6988dba12", null ]
 ];
