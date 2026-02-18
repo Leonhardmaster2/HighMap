@@ -92,6 +92,7 @@ bool init_opencl()
 //
 #include "kernels/rifts.cl"
 #include "kernels/strata.cl"
+#include "kernels/strata_cells.cl"
       ;
 
   std::string opencl_build_options = "-cl-fast-relaxed-math "
