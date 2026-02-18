@@ -175,7 +175,8 @@ void strata_cells_fbm(Array       &z,
                       float        gamma,
                       float        gamma_lateral,
                       float        angle,
-                      float        noise_amp,
+                      bool         enable_default_noise,
+                      float        default_noise_amp,
                       bool         absolute_displacement,
                       float        occurence_probability,
                       int          octaves,
@@ -185,6 +186,49 @@ void strata_cells_fbm(Array       &z,
                       const Array *p_noise_y,
                       glm::vec4    bbox)
 {
+
+  // --- Default noise
+
+  Array dx, dy;
+
+  if (enable_default_noise)
+  {
+    const glm::vec2 kw_noise = kw;
+
+    dx = default_noise_amp * gpu::noise_fbm(hmap::NoiseType::SIMPLEX2,
+                                            z.shape,
+                                            kw_noise,
+                                            ++seed,
+                                            /* octaves */ 8,
+                                            /* weight*/ 0.f,
+                                            /* persistence */ 0.5f,
+                                            /* lacunarity */ 2.f,
+                                            nullptr,
+                                            nullptr,
+                                            nullptr,
+                                            nullptr,
+                                            bbox);
+
+    dy = default_noise_amp * gpu::noise_fbm(hmap::NoiseType::SIMPLEX2,
+                                            z.shape,
+                                            kw_noise,
+                                            ++seed,
+                                            /* octaves */ 8,
+                                            /* weight*/ 0.f,
+                                            /* persistence */ 0.5f,
+                                            /* lacunarity */ 2.f,
+                                            nullptr,
+                                            nullptr,
+                                            nullptr,
+                                            nullptr,
+                                            bbox);
+
+    p_noise_x = &dx;
+    p_noise_y = &dy;
+  }
+
+  // --- Fbm layers
+
   float a = 1.f;
   float m = 1.f;
 
@@ -197,7 +241,7 @@ void strata_cells_fbm(Array       &z,
                  gamma,
                  gamma_lateral,
                  angle,
-                 noise_amp,
+                 /* noise_amp */ 1.f,
                  absolute_displacement,
                  occurence_probability,
                  p_noise_x,
@@ -217,7 +261,8 @@ void strata_cells_fbm(Array       &z,
                       float        gamma,
                       float        gamma_lateral,
                       float        angle,
-                      float        noise_amp,
+                      bool         enable_default_noise,
+                      float        default_noise_amp,
                       bool         absolute_displacement,
                       float        occurence_probability,
                       int          octaves,
@@ -236,7 +281,8 @@ void strata_cells_fbm(Array       &z,
                      gamma,
                      gamma_lateral,
                      angle,
-                     noise_amp,
+                     enable_default_noise,
+                     default_noise_amp,
                      absolute_displacement,
                      occurence_probability,
                      octaves,
@@ -256,7 +302,8 @@ void strata_cells_fbm(Array       &z,
                      gamma,
                      gamma_lateral,
                      angle,
-                     noise_amp,
+                     enable_default_noise,
+                     default_noise_amp,
                      absolute_displacement,
                      occurence_probability,
                      octaves,
