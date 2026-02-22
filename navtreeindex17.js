@@ -1,5 +1,6 @@
 var NAVTREEINDEX17 =
 {
+"selector_8cpp.html#ac3436096f5ea39274658f503d7c950c1":[5,0,1,1,29,4,3],
 "selector_8cpp.html#ac6dcaa05c7c34302fa2560ddedbb9931":[5,0,1,1,29,4,21],
 "selector_8cpp.html#ac72cb684be1045c7f2a5c8941f905772":[5,0,1,1,29,4,22],
 "selector_8cpp.html#acd0eee71be926266e51f908bdc7e2199":[5,0,1,1,29,4,9],
@@ -76,9 +77,9 @@ var NAVTREEINDEX17 =
 "stitching__helpers_8cpp.html#ae0a3c73cc23a288fe03bf5ed6ac73c3d":[5,0,1,1,23,4,1],
 "stitching__helpers_8cpp.html#ae6817ca5deb78b7edb959b3ea334b25b":[5,0,1,1,23,4,2],
 "strata__gpu_8cpp.html":[5,0,1,1,10,21],
-"strata__gpu_8cpp.html#a356306b0cf1f39baa709f4e0a298df47":[5,0,1,1,10,21,4],
+"strata__gpu_8cpp.html#a182b5cbe63e2d42368c19f66dd9febb3":[5,0,1,1,10,21,3],
 "strata__gpu_8cpp.html#a663d541671a7a9afbd694ccb11351ec5":[5,0,1,1,10,21,1],
-"strata__gpu_8cpp.html#ab052dd46c9182768c9ebd0e6046d31cf":[5,0,1,1,10,21,3],
+"strata__gpu_8cpp.html#abf47ed6cea5c36afa47bf5463310db52":[5,0,1,1,10,21,4],
 "strata__gpu_8cpp.html#aea0ca081d8da637b22e20799b2d8e914":[5,0,1,1,10,21,2],
 "strata__gpu_8cpp.html#afb140daa72128c65f1af72ed17dae9a5":[5,0,1,1,10,21,0],
 "stratify_8cpp.html":[5,0,1,1,10,22],
@@ -248,6 +249,5 @@ var NAVTREEINDEX17 =
 "structhmap_1_1Recorder.html#af6f300d4c80eabfbaf57fdbebde9062e":[3,0,0,47,7],
 "structhmap_1_1TileKey.html":[4,0,0,54],
 "structhmap_1_1TileKey.html":[3,0,0,55],
-"structhmap_1_1TileKey.html#a0c2bad93215283eb8baedc5cbc2fa2f1":[3,0,0,55,3],
-"structhmap_1_1TileKey.html#a0c2bad93215283eb8baedc5cbc2fa2f1":[4,0,0,54,3]
+"structhmap_1_1TileKey.html#a0c2bad93215283eb8baedc5cbc2fa2f1":[3,0,0,55,3]
 };

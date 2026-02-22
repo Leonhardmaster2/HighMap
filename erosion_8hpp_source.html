@@ -501,475 +501,480 @@ $(document).ready(function(){initNavTree('erosion_8hpp_source.html',''); initRes
 <div class="line"><a id="l00983" name="l00983"></a><span class="lineno">  983</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacehmap_1_1gpu.html">hmap::gpu</a></div>
 <div class="line"><a id="l00984" name="l00984"></a><span class="lineno">  984</span>{</div>
 <div class="line"><a id="l00985" name="l00985"></a><span class="lineno">  985</span> </div>
-<div class="line"><a id="l00987" name="l00987"></a><span class="lineno">  987</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#a60dfa226fed1ab1e12c626a0a05d5eba">hydraulic_particle</a>(Array       &amp;z,</div>
+<div class="line"><a id="l00987" name="l00987"></a><span class="lineno">  987</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#ae084938139cca4f7c15866ceabe18ab7">hydraulic_particle</a>(Array       &amp;z,</div>
 <div class="line"><a id="l00988" name="l00988"></a><span class="lineno">  988</span>                        <span class="keywordtype">int</span>          nparticles,</div>
-<div class="line"><a id="l00989" name="l00989"></a><span class="lineno">  989</span>                        <span class="keywordtype">int</span>          seed,</div>
+<div class="line"><a id="l00989" name="l00989"></a><span class="lineno">  989</span>                        <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>         seed,</div>
 <div class="line"><a id="l00990" name="l00990"></a><span class="lineno">  990</span>                        <span class="keyword">const</span> Array *p_bedrock = <span class="keyword">nullptr</span>,</div>
 <div class="line"><a id="l00991" name="l00991"></a><span class="lineno">  991</span>                        <span class="keyword">const</span> Array *p_moisture_map = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l00992" name="l00992"></a><span class="lineno">  992</span>                        Array       *p_erosion_map = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l00993" name="l00993"></a><span class="lineno">  993</span>                        Array       *p_deposition_map = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l00994" name="l00994"></a><span class="lineno">  994</span>                        <span class="keywordtype">float</span>        c_capacity = 10.f,</div>
-<div class="line"><a id="l00995" name="l00995"></a><span class="lineno">  995</span>                        <span class="keywordtype">float</span>        c_erosion = 0.05f,</div>
-<div class="line"><a id="l00996" name="l00996"></a><span class="lineno">  996</span>                        <span class="keywordtype">float</span>        c_deposition = 0.05f,</div>
-<div class="line"><a id="l00997" name="l00997"></a><span class="lineno">  997</span>                        <span class="keywordtype">float</span>        c_inertia = 0.3f,</div>
-<div class="line"><a id="l00998" name="l00998"></a><span class="lineno">  998</span>                        <span class="keywordtype">float</span>        c_gravity = 1.f,</div>
-<div class="line"><a id="l00999" name="l00999"></a><span class="lineno">  999</span>                        <span class="keywordtype">int</span>          radius = 2,</div>
+<div class="line"><a id="l00992" name="l00992"></a><span class="lineno">  992</span>                        <span class="keyword">const</span> Array *p_elevation_shift = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l00993" name="l00993"></a><span class="lineno">  993</span>                        Array       *p_erosion_map = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l00994" name="l00994"></a><span class="lineno">  994</span>                        Array       *p_deposition_map = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l00995" name="l00995"></a><span class="lineno">  995</span>                        <span class="keywordtype">float</span>        c_capacity = 10.f,</div>
+<div class="line"><a id="l00996" name="l00996"></a><span class="lineno">  996</span>                        <span class="keywordtype">float</span>        c_erosion = 0.05f,</div>
+<div class="line"><a id="l00997" name="l00997"></a><span class="lineno">  997</span>                        <span class="keywordtype">float</span>        c_deposition = 0.05f,</div>
+<div class="line"><a id="l00998" name="l00998"></a><span class="lineno">  998</span>                        <span class="keywordtype">float</span>        c_inertia = 0.1f,</div>
+<div class="line"><a id="l00999" name="l00999"></a><span class="lineno">  999</span>                        <span class="keywordtype">float</span>        c_gravity = 1.f,</div>
 <div class="line"><a id="l01000" name="l01000"></a><span class="lineno"> 1000</span>                        <span class="keywordtype">float</span>        drag_rate = 0.001f,</div>
 <div class="line"><a id="l01001" name="l01001"></a><span class="lineno"> 1001</span>                        <span class="keywordtype">float</span>        evap_rate = 0.001f,</div>
-<div class="line"><a id="l01002" name="l01002"></a><span class="lineno"> 1002</span>                        <span class="keywordtype">bool</span>         post_filtering = <span class="keyword">false</span>);</div>
-<div class="line"><a id="l01003" name="l01003"></a><span class="lineno"> 1003</span> </div>
-<div class="line"><a id="l01005" name="l01005"></a><span class="lineno"> 1005</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#a60dfa226fed1ab1e12c626a0a05d5eba">hydraulic_particle</a>(Array       &amp;z,</div>
-<div class="line"><a id="l01006" name="l01006"></a><span class="lineno"> 1006</span>                        <span class="keyword">const</span> Array *p_mask,</div>
-<div class="line"><a id="l01007" name="l01007"></a><span class="lineno"> 1007</span>                        <span class="keywordtype">int</span>          nparticles,</div>
-<div class="line"><a id="l01008" name="l01008"></a><span class="lineno"> 1008</span>                        <span class="keywordtype">int</span>          seed,</div>
-<div class="line"><a id="l01009" name="l01009"></a><span class="lineno"> 1009</span>                        <span class="keyword">const</span> Array *p_bedrock = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01010" name="l01010"></a><span class="lineno"> 1010</span>                        <span class="keyword">const</span> Array *p_moisture_map = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01011" name="l01011"></a><span class="lineno"> 1011</span>                        Array       *p_erosion_map = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01012" name="l01012"></a><span class="lineno"> 1012</span>                        Array       *p_deposition_map = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01013" name="l01013"></a><span class="lineno"> 1013</span>                        <span class="keywordtype">float</span>        c_capacity = 10.f,</div>
-<div class="line"><a id="l01014" name="l01014"></a><span class="lineno"> 1014</span>                        <span class="keywordtype">float</span>        c_erosion = 0.05f,</div>
-<div class="line"><a id="l01015" name="l01015"></a><span class="lineno"> 1015</span>                        <span class="keywordtype">float</span>        c_deposition = 0.05f,</div>
-<div class="line"><a id="l01016" name="l01016"></a><span class="lineno"> 1016</span>                        <span class="keywordtype">float</span>        c_inertia = 0.3f,</div>
-<div class="line"><a id="l01017" name="l01017"></a><span class="lineno"> 1017</span>                        <span class="keywordtype">float</span>        c_gravity = 1.f,</div>
-<div class="line"><a id="l01018" name="l01018"></a><span class="lineno"> 1018</span>                        <span class="keywordtype">int</span>          radius = 2,</div>
-<div class="line"><a id="l01019" name="l01019"></a><span class="lineno"> 1019</span>                        <span class="keywordtype">float</span>        drag_rate = 0.001f,</div>
-<div class="line"><a id="l01020" name="l01020"></a><span class="lineno"> 1020</span>                        <span class="keywordtype">float</span>        evap_rate = 0.001f,</div>
-<div class="line"><a id="l01021" name="l01021"></a><span class="lineno"> 1021</span>                        <span class="keywordtype">bool</span>         post_filtering = <span class="keyword">false</span>);</div>
-<div class="line"><a id="l01022" name="l01022"></a><span class="lineno"> 1022</span> </div>
-<div class="line"><a id="l01071" name="l01071"></a><span class="lineno"> 1071</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#afbecd3a8ce025fb08ca3296ce81f695d">hydraulic_procedural</a>(</div>
-<div class="line"><a id="l01072" name="l01072"></a><span class="lineno"> 1072</span>    Array         &amp;z,</div>
-<div class="line"><a id="l01073" name="l01073"></a><span class="lineno"> 1073</span>    <span class="keywordtype">float</span>          kp_global,</div>
-<div class="line"><a id="l01074" name="l01074"></a><span class="lineno"> 1074</span>    <span class="keywordtype">float</span>          c_erosion,</div>
-<div class="line"><a id="l01075" name="l01075"></a><span class="lineno"> 1075</span>    <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>           seed,</div>
-<div class="line"><a id="l01076" name="l01076"></a><span class="lineno"> 1076</span>    <a class="code hl_enumeration" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6">ErosionProfile</a> erosion_profile = <a class="code hl_enumvalue" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a61a4a71c0e8d1a97da9657b03d51680f">ErosionProfile::EP_TRIANGLE_GRENIER</a>,</div>
-<div class="line"><a id="l01077" name="l01077"></a><span class="lineno"> 1077</span>    <span class="keywordtype">float</span>          erosion_profile_parameter = 0.01f,</div>
-<div class="line"><a id="l01078" name="l01078"></a><span class="lineno"> 1078</span>    <span class="keywordtype">float</span>          angle_shift = 0.f, <span class="comment">// degs</span></div>
-<div class="line"><a id="l01079" name="l01079"></a><span class="lineno"> 1079</span>    <span class="keywordtype">float</span>          phase_smoothing = 0.1f,</div>
-<div class="line"><a id="l01080" name="l01080"></a><span class="lineno"> 1080</span>    <span class="keywordtype">float</span>          talus_ref = 0.001f,</div>
-<div class="line"><a id="l01081" name="l01081"></a><span class="lineno"> 1081</span>    <span class="keywordtype">float</span>          gradient_scaling_ratio = 1.f,</div>
-<div class="line"><a id="l01082" name="l01082"></a><span class="lineno"> 1082</span>    <span class="keywordtype">float</span>          gradient_power = 0.8f,</div>
-<div class="line"><a id="l01083" name="l01083"></a><span class="lineno"> 1083</span>    <span class="keywordtype">bool</span>           exclude_ridges = <span class="keyword">true</span>,</div>
-<div class="line"><a id="l01084" name="l01084"></a><span class="lineno"> 1084</span>    <span class="keywordtype">bool</span>           apply_deposition = <span class="keyword">false</span>,</div>
-<div class="line"><a id="l01085" name="l01085"></a><span class="lineno"> 1085</span>    <span class="keywordtype">float</span>          deposition_strength = 1.f,</div>
-<div class="line"><a id="l01086" name="l01086"></a><span class="lineno"> 1086</span>    <span class="keywordtype">bool</span>           enable_default_noise = <span class="keyword">true</span>,</div>
-<div class="line"><a id="l01087" name="l01087"></a><span class="lineno"> 1087</span>    <span class="keywordtype">float</span>          noise_amp = 0.01f,</div>
-<div class="line"><a id="l01088" name="l01088"></a><span class="lineno"> 1088</span>    <span class="keyword">const</span> Array   *p_kp_multiplier = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01089" name="l01089"></a><span class="lineno"> 1089</span>    <span class="keyword">const</span> Array   *p_angle_shift = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01090" name="l01090"></a><span class="lineno"> 1090</span>    <span class="keyword">const</span> Array   *p_noise_x = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01091" name="l01091"></a><span class="lineno"> 1091</span>    <span class="keyword">const</span> Array   *p_noise_y = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01092" name="l01092"></a><span class="lineno"> 1092</span>    Array         *p_ridge_mask = <span class="keyword">nullptr</span>, <span class="comment">// ouptput</span></div>
-<div class="line"><a id="l01093" name="l01093"></a><span class="lineno"> 1093</span>    glm::vec4      bbox = {0.f, 1.f, 0.f, 1.f});</div>
-<div class="line"><a id="l01094" name="l01094"></a><span class="lineno"> 1094</span> </div>
-<div class="line"><a id="l01133" name="l01133"></a><span class="lineno"> 1133</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#a60f3eb887b87ec545d68977b8811cadc">hydraulic_procedural_fbm</a>(</div>
-<div class="line"><a id="l01134" name="l01134"></a><span class="lineno"> 1134</span>    Array         &amp;z,</div>
-<div class="line"><a id="l01135" name="l01135"></a><span class="lineno"> 1135</span>    <span class="keywordtype">float</span>          kp_global,</div>
-<div class="line"><a id="l01136" name="l01136"></a><span class="lineno"> 1136</span>    <span class="keywordtype">float</span>          c_erosion,</div>
-<div class="line"><a id="l01137" name="l01137"></a><span class="lineno"> 1137</span>    <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>           seed,</div>
-<div class="line"><a id="l01138" name="l01138"></a><span class="lineno"> 1138</span>    <a class="code hl_enumeration" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6">ErosionProfile</a> erosion_profile = <a class="code hl_enumvalue" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a61a4a71c0e8d1a97da9657b03d51680f">ErosionProfile::EP_TRIANGLE_GRENIER</a>,</div>
-<div class="line"><a id="l01139" name="l01139"></a><span class="lineno"> 1139</span>    <span class="keywordtype">int</span>            octaves = 3,</div>
-<div class="line"><a id="l01140" name="l01140"></a><span class="lineno"> 1140</span>    <span class="keywordtype">float</span>          persistence = 0.5f,</div>
-<div class="line"><a id="l01141" name="l01141"></a><span class="lineno"> 1141</span>    <span class="keywordtype">float</span>          lacunarity = 2.f,</div>
-<div class="line"><a id="l01142" name="l01142"></a><span class="lineno"> 1142</span>    <span class="keywordtype">float</span>          erosion_profile_parameter = 0.01f,</div>
-<div class="line"><a id="l01143" name="l01143"></a><span class="lineno"> 1143</span>    <span class="keywordtype">float</span>          angle_shift = 0.f, <span class="comment">// degs</span></div>
-<div class="line"><a id="l01144" name="l01144"></a><span class="lineno"> 1144</span>    <span class="keywordtype">float</span>          phase_smoothing = 0.1f,</div>
-<div class="line"><a id="l01145" name="l01145"></a><span class="lineno"> 1145</span>    <span class="keywordtype">float</span>          talus_ref = 0.001f,</div>
-<div class="line"><a id="l01146" name="l01146"></a><span class="lineno"> 1146</span>    <span class="keywordtype">float</span>          gradient_scaling_ratio = 1.f,</div>
-<div class="line"><a id="l01147" name="l01147"></a><span class="lineno"> 1147</span>    <span class="keywordtype">float</span>          gradient_power = 0.8f,</div>
-<div class="line"><a id="l01148" name="l01148"></a><span class="lineno"> 1148</span>    <span class="keywordtype">bool</span>           exclude_ridges = <span class="keyword">true</span>,</div>
-<div class="line"><a id="l01149" name="l01149"></a><span class="lineno"> 1149</span>    <span class="keywordtype">bool</span>           apply_deposition = <span class="keyword">false</span>,</div>
-<div class="line"><a id="l01150" name="l01150"></a><span class="lineno"> 1150</span>    <span class="keywordtype">float</span>          deposition_strength = 1.f,</div>
-<div class="line"><a id="l01151" name="l01151"></a><span class="lineno"> 1151</span>    <span class="keywordtype">bool</span>           enable_default_noise = <span class="keyword">true</span>,</div>
-<div class="line"><a id="l01152" name="l01152"></a><span class="lineno"> 1152</span>    <span class="keywordtype">float</span>          noise_amp = 0.01f,</div>
-<div class="line"><a id="l01153" name="l01153"></a><span class="lineno"> 1153</span>    <span class="keyword">const</span> Array   *p_kp_multiplier = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01154" name="l01154"></a><span class="lineno"> 1154</span>    <span class="keyword">const</span> Array   *p_angle_shift = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01155" name="l01155"></a><span class="lineno"> 1155</span>    <span class="keyword">const</span> Array   *p_noise_x = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01156" name="l01156"></a><span class="lineno"> 1156</span>    <span class="keyword">const</span> Array   *p_noise_y = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01157" name="l01157"></a><span class="lineno"> 1157</span>    Array         *p_ridge_mask = <span class="keyword">nullptr</span>, <span class="comment">// ouptput</span></div>
-<div class="line"><a id="l01158" name="l01158"></a><span class="lineno"> 1158</span>    glm::vec4      bbox = {0.f, 1.f, 0.f, 1.f});</div>
-<div class="line"><a id="l01159" name="l01159"></a><span class="lineno"> 1159</span> </div>
-<div class="line"><a id="l01160" name="l01160"></a><span class="lineno"> 1160</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#a60f3eb887b87ec545d68977b8811cadc">hydraulic_procedural_fbm</a>(</div>
-<div class="line"><a id="l01161" name="l01161"></a><span class="lineno"> 1161</span>    Array         &amp;z,</div>
-<div class="line"><a id="l01162" name="l01162"></a><span class="lineno"> 1162</span>    <span class="keywordtype">float</span>          kp_global,</div>
-<div class="line"><a id="l01163" name="l01163"></a><span class="lineno"> 1163</span>    <span class="keywordtype">float</span>          c_erosion,</div>
-<div class="line"><a id="l01164" name="l01164"></a><span class="lineno"> 1164</span>    <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>           seed,</div>
-<div class="line"><a id="l01165" name="l01165"></a><span class="lineno"> 1165</span>    <span class="keyword">const</span> Array   *p_mask,</div>
-<div class="line"><a id="l01166" name="l01166"></a><span class="lineno"> 1166</span>    <a class="code hl_enumeration" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6">ErosionProfile</a> erosion_profile = <a class="code hl_enumvalue" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a61a4a71c0e8d1a97da9657b03d51680f">ErosionProfile::EP_TRIANGLE_GRENIER</a>,</div>
-<div class="line"><a id="l01167" name="l01167"></a><span class="lineno"> 1167</span>    <span class="keywordtype">int</span>            octaves = 3,</div>
-<div class="line"><a id="l01168" name="l01168"></a><span class="lineno"> 1168</span>    <span class="keywordtype">float</span>          persistence = 0.5f,</div>
-<div class="line"><a id="l01169" name="l01169"></a><span class="lineno"> 1169</span>    <span class="keywordtype">float</span>          lacunarity = 2.f,</div>
-<div class="line"><a id="l01170" name="l01170"></a><span class="lineno"> 1170</span>    <span class="keywordtype">float</span>          erosion_profile_parameter = 0.01f,</div>
-<div class="line"><a id="l01171" name="l01171"></a><span class="lineno"> 1171</span>    <span class="keywordtype">float</span>          angle_shift = 0.f, <span class="comment">// degs</span></div>
-<div class="line"><a id="l01172" name="l01172"></a><span class="lineno"> 1172</span>    <span class="keywordtype">float</span>          phase_smoothing = 0.1f,</div>
-<div class="line"><a id="l01173" name="l01173"></a><span class="lineno"> 1173</span>    <span class="keywordtype">float</span>          talus_ref = 0.001f,</div>
-<div class="line"><a id="l01174" name="l01174"></a><span class="lineno"> 1174</span>    <span class="keywordtype">float</span>          gradient_scaling_ratio = 1.f,</div>
-<div class="line"><a id="l01175" name="l01175"></a><span class="lineno"> 1175</span>    <span class="keywordtype">float</span>          gradient_power = 0.8f,</div>
-<div class="line"><a id="l01176" name="l01176"></a><span class="lineno"> 1176</span>    <span class="keywordtype">bool</span>           exclude_ridges = <span class="keyword">true</span>,</div>
-<div class="line"><a id="l01177" name="l01177"></a><span class="lineno"> 1177</span>    <span class="keywordtype">bool</span>           apply_deposition = <span class="keyword">false</span>,</div>
-<div class="line"><a id="l01178" name="l01178"></a><span class="lineno"> 1178</span>    <span class="keywordtype">float</span>          deposition_strength = 1.f,</div>
-<div class="line"><a id="l01179" name="l01179"></a><span class="lineno"> 1179</span>    <span class="keywordtype">bool</span>           enable_default_noise = <span class="keyword">true</span>,</div>
-<div class="line"><a id="l01180" name="l01180"></a><span class="lineno"> 1180</span>    <span class="keywordtype">float</span>          noise_amp = 0.01f,</div>
-<div class="line"><a id="l01181" name="l01181"></a><span class="lineno"> 1181</span>    <span class="keyword">const</span> Array   *p_kp_multiplier = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01182" name="l01182"></a><span class="lineno"> 1182</span>    <span class="keyword">const</span> Array   *p_angle_shift = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01183" name="l01183"></a><span class="lineno"> 1183</span>    <span class="keyword">const</span> Array   *p_noise_x = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01184" name="l01184"></a><span class="lineno"> 1184</span>    <span class="keyword">const</span> Array   *p_noise_y = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01185" name="l01185"></a><span class="lineno"> 1185</span>    Array         *p_ridge_mask = <span class="keyword">nullptr</span>, <span class="comment">// ouptput</span></div>
-<div class="line"><a id="l01186" name="l01186"></a><span class="lineno"> 1186</span>    glm::vec4      bbox = {0.f, 1.f, 0.f, 1.f});</div>
-<div class="line"><a id="l01187" name="l01187"></a><span class="lineno"> 1187</span> </div>
-<div class="line"><a id="l01235" name="l01235"></a><span class="lineno"> 1235</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#a9749d24b9dd9bed8ee333910951db395">hydraulic_schott</a>(Array       &amp;z,</div>
-<div class="line"><a id="l01236" name="l01236"></a><span class="lineno"> 1236</span>                      <span class="keywordtype">int</span>          iterations,</div>
-<div class="line"><a id="l01237" name="l01237"></a><span class="lineno"> 1237</span>                      <span class="keyword">const</span> Array &amp;talus,</div>
-<div class="line"><a id="l01238" name="l01238"></a><span class="lineno"> 1238</span>                      <span class="keywordtype">float</span>        c_erosion = 1.f,</div>
-<div class="line"><a id="l01239" name="l01239"></a><span class="lineno"> 1239</span>                      <span class="keywordtype">float</span>        c_thermal = 0.1f,</div>
-<div class="line"><a id="l01240" name="l01240"></a><span class="lineno"> 1240</span>                      <span class="keywordtype">float</span>        c_deposition = 0.2f,</div>
-<div class="line"><a id="l01241" name="l01241"></a><span class="lineno"> 1241</span>                      <span class="keywordtype">float</span>        flow_acc_exponent = 0.8f,</div>
-<div class="line"><a id="l01242" name="l01242"></a><span class="lineno"> 1242</span>                      <span class="keywordtype">float</span>        flow_acc_exponent_depo = 0.8f,</div>
-<div class="line"><a id="l01243" name="l01243"></a><span class="lineno"> 1243</span>                      <span class="keywordtype">float</span>        flow_routing_exponent = 1.3f,</div>
-<div class="line"><a id="l01244" name="l01244"></a><span class="lineno"> 1244</span>                      <span class="keywordtype">float</span>        thermal_weight = 1.5f,</div>
-<div class="line"><a id="l01245" name="l01245"></a><span class="lineno"> 1245</span>                      <span class="keywordtype">float</span>        deposition_weight = 2.5f,</div>
-<div class="line"><a id="l01246" name="l01246"></a><span class="lineno"> 1246</span>                      Array       *p_flow = <span class="keyword">nullptr</span>);</div>
-<div class="line"><a id="l01247" name="l01247"></a><span class="lineno"> 1247</span> </div>
-<div class="line"><a id="l01248" name="l01248"></a><span class="lineno"> 1248</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#a9749d24b9dd9bed8ee333910951db395">hydraulic_schott</a>(Array       &amp;z,</div>
-<div class="line"><a id="l01249" name="l01249"></a><span class="lineno"> 1249</span>                      <span class="keywordtype">int</span>          iterations,</div>
-<div class="line"><a id="l01250" name="l01250"></a><span class="lineno"> 1250</span>                      <span class="keyword">const</span> Array &amp;talus,</div>
-<div class="line"><a id="l01251" name="l01251"></a><span class="lineno"> 1251</span>                      Array       *p_mask,</div>
-<div class="line"><a id="l01252" name="l01252"></a><span class="lineno"> 1252</span>                      <span class="keywordtype">float</span>        c_erosion = 1.f,</div>
-<div class="line"><a id="l01253" name="l01253"></a><span class="lineno"> 1253</span>                      <span class="keywordtype">float</span>        c_thermal = 0.1f,</div>
-<div class="line"><a id="l01254" name="l01254"></a><span class="lineno"> 1254</span>                      <span class="keywordtype">float</span>        c_deposition = 0.2f,</div>
-<div class="line"><a id="l01255" name="l01255"></a><span class="lineno"> 1255</span>                      <span class="keywordtype">float</span>        flow_acc_exponent = 0.8f,</div>
-<div class="line"><a id="l01256" name="l01256"></a><span class="lineno"> 1256</span>                      <span class="keywordtype">float</span>        flow_acc_exponent_depo = 0.8f,</div>
-<div class="line"><a id="l01257" name="l01257"></a><span class="lineno"> 1257</span>                      <span class="keywordtype">float</span>        flow_routing_exponent = 1.3f,</div>
-<div class="line"><a id="l01258" name="l01258"></a><span class="lineno"> 1258</span>                      <span class="keywordtype">float</span>        thermal_weight = 1.5f,</div>
-<div class="line"><a id="l01259" name="l01259"></a><span class="lineno"> 1259</span>                      <span class="keywordtype">float</span>        deposition_weight = 2.5f,</div>
-<div class="line"><a id="l01260" name="l01260"></a><span class="lineno"> 1260</span>                      Array       *p_flow = <span class="keyword">nullptr</span>); </div>
-<div class="line"><a id="l01261" name="l01261"></a><span class="lineno"> 1261</span> </div>
-<div class="line"><a id="l01263" name="l01263"></a><span class="lineno"> 1263</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#aa3c0fc5295f81856967feed8cf87f711">hydraulic_schott_erosion</a>(Array       &amp;z,</div>
-<div class="line"><a id="l01264" name="l01264"></a><span class="lineno"> 1264</span>                              <span class="keywordtype">int</span>          iterations,</div>
-<div class="line"><a id="l01265" name="l01265"></a><span class="lineno"> 1265</span>                              <span class="keywordtype">float</span>        c_erosion = 1.f,</div>
-<div class="line"><a id="l01266" name="l01266"></a><span class="lineno"> 1266</span>                              <span class="keywordtype">float</span>        flow_acc_exponent = 0.8f,</div>
-<div class="line"><a id="l01267" name="l01267"></a><span class="lineno"> 1267</span>                              <span class="keywordtype">float</span>        flow_routing_exponent = 1.3f,</div>
-<div class="line"><a id="l01268" name="l01268"></a><span class="lineno"> 1268</span>                              <span class="keyword">const</span> Array *p_moisture_map = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01269" name="l01269"></a><span class="lineno"> 1269</span>                              Array       *p_flow = <span class="keyword">nullptr</span>);</div>
-<div class="line"><a id="l01270" name="l01270"></a><span class="lineno"> 1270</span> </div>
-<div class="line"><a id="l01272" name="l01272"></a><span class="lineno"> 1272</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#a7814928e0f3b995421d298677934d11d">hydraulic_stream_log</a>(Array &amp;z,</div>
-<div class="line"><a id="l01273" name="l01273"></a><span class="lineno"> 1273</span>                          <span class="keywordtype">float</span>  c_erosion,</div>
-<div class="line"><a id="l01274" name="l01274"></a><span class="lineno"> 1274</span>                          <span class="keywordtype">float</span>  talus_ref,</div>
-<div class="line"><a id="l01275" name="l01275"></a><span class="lineno"> 1275</span>                          <span class="keywordtype">int</span>    deposition_ir = 32,</div>
-<div class="line"><a id="l01276" name="l01276"></a><span class="lineno"> 1276</span>                          <span class="keywordtype">float</span>  deposition_scale_ratio = 1.f,</div>
-<div class="line"><a id="l01277" name="l01277"></a><span class="lineno"> 1277</span>                          <span class="keywordtype">float</span>  gradient_power = 0.8f,</div>
-<div class="line"><a id="l01278" name="l01278"></a><span class="lineno"> 1278</span>                          <span class="keywordtype">float</span>  gradient_scaling_ratio = 1.f,</div>
-<div class="line"><a id="l01279" name="l01279"></a><span class="lineno"> 1279</span>                          <span class="keywordtype">int</span>    gradient_prefilter_ir = 16,</div>
-<div class="line"><a id="l01280" name="l01280"></a><span class="lineno"> 1280</span>                          <span class="keywordtype">float</span>  saturation_ratio = 1.f,</div>
-<div class="line"><a id="l01281" name="l01281"></a><span class="lineno"> 1281</span>                          Array *p_bedrock = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01282" name="l01282"></a><span class="lineno"> 1282</span>                          Array *p_moisture_map = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01283" name="l01283"></a><span class="lineno"> 1283</span>                          Array *p_erosion_map = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01284" name="l01284"></a><span class="lineno"> 1284</span>                          Array *p_deposition_map = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01285" name="l01285"></a><span class="lineno"> 1285</span>                          Array *p_flow_map = <span class="keyword">nullptr</span>);</div>
-<div class="line"><a id="l01286" name="l01286"></a><span class="lineno"> 1286</span> </div>
-<div class="line"><a id="l01287" name="l01287"></a><span class="lineno"> 1287</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#a7814928e0f3b995421d298677934d11d">hydraulic_stream_log</a>(Array       &amp;z,</div>
-<div class="line"><a id="l01288" name="l01288"></a><span class="lineno"> 1288</span>                          <span class="keywordtype">float</span>        c_erosion,</div>
-<div class="line"><a id="l01289" name="l01289"></a><span class="lineno"> 1289</span>                          <span class="keywordtype">float</span>        talus_ref,</div>
-<div class="line"><a id="l01290" name="l01290"></a><span class="lineno"> 1290</span>                          <span class="keyword">const</span> Array *p_mask,</div>
-<div class="line"><a id="l01291" name="l01291"></a><span class="lineno"> 1291</span>                          <span class="keywordtype">int</span>          deposition_ir = 32,</div>
-<div class="line"><a id="l01292" name="l01292"></a><span class="lineno"> 1292</span>                          <span class="keywordtype">float</span>        deposition_scale_ratio = 1.f,</div>
-<div class="line"><a id="l01293" name="l01293"></a><span class="lineno"> 1293</span>                          <span class="keywordtype">float</span>        gradient_power = 0.8f,</div>
-<div class="line"><a id="l01294" name="l01294"></a><span class="lineno"> 1294</span>                          <span class="keywordtype">float</span>        gradient_scaling_ratio = 1.f,</div>
-<div class="line"><a id="l01295" name="l01295"></a><span class="lineno"> 1295</span>                          <span class="keywordtype">int</span>          gradient_prefilter_ir = 16,</div>
-<div class="line"><a id="l01296" name="l01296"></a><span class="lineno"> 1296</span>                          <span class="keywordtype">float</span>        saturation_ratio = 1.f,</div>
-<div class="line"><a id="l01297" name="l01297"></a><span class="lineno"> 1297</span>                          Array       *p_bedrock = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01298" name="l01298"></a><span class="lineno"> 1298</span>                          Array       *p_moisture_map = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01299" name="l01299"></a><span class="lineno"> 1299</span>                          Array       *p_erosion_map = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01300" name="l01300"></a><span class="lineno"> 1300</span>                          Array       *p_deposition_map = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01301" name="l01301"></a><span class="lineno"> 1301</span>                          Array       *p_flow_map = <span class="keyword">nullptr</span>); </div>
-<div class="line"><a id="l01302" name="l01302"></a><span class="lineno"> 1302</span> </div>
-<div class="line"><a id="l01304" name="l01304"></a><span class="lineno"> 1304</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#a548895d6665a5466b8541122338b59a9">hydraulic_vpipes</a>(Array &amp;z,</div>
-<div class="line"><a id="l01305" name="l01305"></a><span class="lineno"> 1305</span>                      <span class="keywordtype">float</span>  water_height = 1e-2f,</div>
-<div class="line"><a id="l01306" name="l01306"></a><span class="lineno"> 1306</span>                      <span class="keywordtype">bool</span>   maintain_water_volume = <span class="keyword">true</span>,</div>
-<div class="line"><a id="l01307" name="l01307"></a><span class="lineno"> 1307</span>                      <span class="keywordtype">float</span>  evap_rate = 0.1f,</div>
-<div class="line"><a id="l01308" name="l01308"></a><span class="lineno"> 1308</span>                      <span class="keywordtype">int</span>    iterations = 50,</div>
-<div class="line"><a id="l01309" name="l01309"></a><span class="lineno"> 1309</span>                      <span class="keywordtype">float</span>  dt = 0.5f,</div>
-<div class="line"><a id="l01310" name="l01310"></a><span class="lineno"> 1310</span>                      <span class="keywordtype">float</span>  k_capacity = 0.5f,</div>
-<div class="line"><a id="l01311" name="l01311"></a><span class="lineno"> 1311</span>                      <span class="keywordtype">float</span>  k_erode = 0.001f,</div>
-<div class="line"><a id="l01312" name="l01312"></a><span class="lineno"> 1312</span>                      <span class="keywordtype">float</span>  k_depose = 0.01f,</div>
-<div class="line"><a id="l01313" name="l01313"></a><span class="lineno"> 1313</span>                      <span class="keywordtype">float</span>  k_discharge_exp = 1.f,</div>
-<div class="line"><a id="l01314" name="l01314"></a><span class="lineno"> 1314</span>                      <span class="keywordtype">float</span>  downcutting_max_depth_ratio = 10.f,</div>
-<div class="line"><a id="l01315" name="l01315"></a><span class="lineno"> 1315</span>                      <span class="keywordtype">bool</span>   flux_diffusion = <span class="keyword">true</span>,</div>
-<div class="line"><a id="l01316" name="l01316"></a><span class="lineno"> 1316</span>                      <span class="keywordtype">float</span>  flux_diffusion_strength = 0.01f,</div>
-<div class="line"><a id="l01317" name="l01317"></a><span class="lineno"> 1317</span>                      Array *p_rain_map = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01318" name="l01318"></a><span class="lineno"> 1318</span>                      Array *p_water_depth = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01319" name="l01319"></a><span class="lineno"> 1319</span>                      Array *p_sediment = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01320" name="l01320"></a><span class="lineno"> 1320</span>                      Array *p_vel_u = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01321" name="l01321"></a><span class="lineno"> 1321</span>                      Array *p_vel_v = <span class="keyword">nullptr</span>);</div>
-<div class="line"><a id="l01322" name="l01322"></a><span class="lineno"> 1322</span> </div>
-<div class="line"><a id="l01374" name="l01374"></a><span class="lineno"> 1374</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#adca53669496f6a636042e11a859d1a16">rifts</a>(Array           &amp;z,</div>
-<div class="line"><a id="l01375" name="l01375"></a><span class="lineno"> 1375</span>           <span class="keyword">const</span> glm::vec2 &amp;kw,    <span class="comment">//  = {4.f, 1.2f},</span></div>
-<div class="line"><a id="l01376" name="l01376"></a><span class="lineno"> 1376</span>           <span class="keywordtype">float</span>            <a class="code hl_function" href="namespacehmap.html#aac71bb6c14edc17967957f7918acdbdd">angle</a>, <span class="comment">// degs</span></div>
-<div class="line"><a id="l01377" name="l01377"></a><span class="lineno"> 1377</span>           <span class="keywordtype">float</span>            amplitude,</div>
-<div class="line"><a id="l01378" name="l01378"></a><span class="lineno"> 1378</span>           <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>             seed,</div>
-<div class="line"><a id="l01379" name="l01379"></a><span class="lineno"> 1379</span>           <span class="keywordtype">float</span>            elevation_noise_shift = 0.f,</div>
-<div class="line"><a id="l01380" name="l01380"></a><span class="lineno"> 1380</span>           <span class="keywordtype">float</span>            k_smooth_bottom = 0.05f,</div>
-<div class="line"><a id="l01381" name="l01381"></a><span class="lineno"> 1381</span>           <span class="keywordtype">float</span>            k_smooth_top = 0.05f,</div>
-<div class="line"><a id="l01382" name="l01382"></a><span class="lineno"> 1382</span>           <span class="keywordtype">float</span>            radial_spread_amp = 0.2f,</div>
-<div class="line"><a id="l01383" name="l01383"></a><span class="lineno"> 1383</span>           <span class="keywordtype">float</span>            elevation_noise_amp = 0.1f,</div>
-<div class="line"><a id="l01384" name="l01384"></a><span class="lineno"> 1384</span>           <span class="keywordtype">float</span>            clamp_vmin = 0.f,</div>
-<div class="line"><a id="l01385" name="l01385"></a><span class="lineno"> 1385</span>           <span class="keywordtype">float</span>            remap_vmin = 0.f,</div>
-<div class="line"><a id="l01386" name="l01386"></a><span class="lineno"> 1386</span>           <span class="keywordtype">bool</span>             apply_mask = <span class="keyword">true</span>,</div>
-<div class="line"><a id="l01387" name="l01387"></a><span class="lineno"> 1387</span>           <span class="keywordtype">bool</span>             reverse_mask = <span class="keyword">false</span>,</div>
-<div class="line"><a id="l01388" name="l01388"></a><span class="lineno"> 1388</span>           <span class="keywordtype">float</span>            mask_gamma = 1.f,</div>
-<div class="line"><a id="l01389" name="l01389"></a><span class="lineno"> 1389</span>           <span class="keyword">const</span> Array     *p_noise_x = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01390" name="l01390"></a><span class="lineno"> 1390</span>           <span class="keyword">const</span> Array     *p_noise_y = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01391" name="l01391"></a><span class="lineno"> 1391</span>           <span class="keyword">const</span> Array     *p_mask = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01392" name="l01392"></a><span class="lineno"> 1392</span>           <span class="keyword">const</span> glm::vec2 &amp;center = {0.5f, 0.5f},</div>
-<div class="line"><a id="l01393" name="l01393"></a><span class="lineno"> 1393</span>           <span class="keyword">const</span> glm::vec4 &amp;bbox = {0.f, 1.f, 0.f, 1.f});</div>
-<div class="line"><a id="l01394" name="l01394"></a><span class="lineno"> 1394</span> </div>
-<div class="line"><a id="l01417" name="l01417"></a><span class="lineno"> 1417</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#a1c2651f7a65e696e8b444364abf0b3cc">sediment_deposition</a>(Array       &amp;z,</div>
-<div class="line"><a id="l01418" name="l01418"></a><span class="lineno"> 1418</span>                         Array       *p_mask,</div>
-<div class="line"><a id="l01419" name="l01419"></a><span class="lineno"> 1419</span>                         <span class="keyword">const</span> Array &amp;talus,</div>
-<div class="line"><a id="l01420" name="l01420"></a><span class="lineno"> 1420</span>                         Array       *p_deposition_map = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01421" name="l01421"></a><span class="lineno"> 1421</span>                         <span class="keywordtype">float</span>        max_deposition = 0.01,</div>
-<div class="line"><a id="l01422" name="l01422"></a><span class="lineno"> 1422</span>                         <span class="keywordtype">int</span>          iterations = 5,</div>
-<div class="line"><a id="l01423" name="l01423"></a><span class="lineno"> 1423</span>                         <span class="keywordtype">int</span>          thermal_subiterations = 10);</div>
-<div class="line"><a id="l01424" name="l01424"></a><span class="lineno"> 1424</span> </div>
-<div class="line"><a id="l01425" name="l01425"></a><span class="lineno"> 1425</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#a1c2651f7a65e696e8b444364abf0b3cc">sediment_deposition</a>(Array       &amp;z,</div>
-<div class="line"><a id="l01426" name="l01426"></a><span class="lineno"> 1426</span>                         <span class="keyword">const</span> Array &amp;talus,</div>
-<div class="line"><a id="l01427" name="l01427"></a><span class="lineno"> 1427</span>                         Array       *p_deposition_map = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01428" name="l01428"></a><span class="lineno"> 1428</span>                         <span class="keywordtype">float</span>        max_deposition = 0.01,</div>
-<div class="line"><a id="l01429" name="l01429"></a><span class="lineno"> 1429</span>                         <span class="keywordtype">int</span>          iterations = 5,</div>
-<div class="line"><a id="l01430" name="l01430"></a><span class="lineno"> 1430</span>                         <span class="keywordtype">int</span>          thermal_subiterations = 10);</div>
-<div class="line"><a id="l01431" name="l01431"></a><span class="lineno"> 1431</span> </div>
-<div class="line"><a id="l01453" name="l01453"></a><span class="lineno"> 1453</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#aec782e6aba3f4cfbbd97aafa46cc700b">sediment_layer</a>(Array       &amp;z,</div>
-<div class="line"><a id="l01454" name="l01454"></a><span class="lineno"> 1454</span>                    <span class="keyword">const</span> Array &amp;talus_layer,</div>
-<div class="line"><a id="l01455" name="l01455"></a><span class="lineno"> 1455</span>                    <span class="keyword">const</span> Array &amp;talus_upper_limit,</div>
-<div class="line"><a id="l01456" name="l01456"></a><span class="lineno"> 1456</span>                    <span class="keywordtype">int</span>          iterations,</div>
-<div class="line"><a id="l01457" name="l01457"></a><span class="lineno"> 1457</span>                    <span class="keywordtype">bool</span>         apply_post_filter = <span class="keyword">true</span>,</div>
-<div class="line"><a id="l01458" name="l01458"></a><span class="lineno"> 1458</span>                    Array       *p_deposition_map = <span class="keyword">nullptr</span>);</div>
-<div class="line"><a id="l01459" name="l01459"></a><span class="lineno"> 1459</span> </div>
-<div class="line"><a id="l01517" name="l01517"></a><span class="lineno"> 1517</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#afb140daa72128c65f1af72ed17dae9a5">strata</a>(Array           &amp;z,</div>
-<div class="line"><a id="l01518" name="l01518"></a><span class="lineno"> 1518</span>            <span class="keywordtype">float</span>            <a class="code hl_function" href="namespacehmap.html#aac71bb6c14edc17967957f7918acdbdd">angle</a>,</div>
-<div class="line"><a id="l01519" name="l01519"></a><span class="lineno"> 1519</span>            <span class="keywordtype">float</span>            <a class="code hl_function" href="namespacehmap.html#a79ad6fb857a38f8de9915d01992e5161">slope</a>,</div>
-<div class="line"><a id="l01520" name="l01520"></a><span class="lineno"> 1520</span>            <span class="keywordtype">float</span>            gamma, <span class="comment">// e.g 0.5f or 1.5f</span></div>
-<div class="line"><a id="l01521" name="l01521"></a><span class="lineno"> 1521</span>            <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>             seed,</div>
-<div class="line"><a id="l01522" name="l01522"></a><span class="lineno"> 1522</span>            <span class="keywordtype">bool</span>             linear_gamma = <span class="keyword">true</span>,</div>
-<div class="line"><a id="l01523" name="l01523"></a><span class="lineno"> 1523</span>            <span class="keywordtype">float</span>            kz = 1.f,</div>
-<div class="line"><a id="l01524" name="l01524"></a><span class="lineno"> 1524</span>            <span class="keywordtype">int</span>              octaves = 4,</div>
-<div class="line"><a id="l01525" name="l01525"></a><span class="lineno"> 1525</span>            <span class="keywordtype">float</span>            lacunarity = 2.f,</div>
-<div class="line"><a id="l01526" name="l01526"></a><span class="lineno"> 1526</span>            <span class="keywordtype">float</span>            gamma_noise_ratio = 0.5f,</div>
-<div class="line"><a id="l01527" name="l01527"></a><span class="lineno"> 1527</span>            <span class="keywordtype">float</span>            noise_amp = 0.4f,</div>
-<div class="line"><a id="l01528" name="l01528"></a><span class="lineno"> 1528</span>            <span class="keyword">const</span> glm::vec2 &amp;noise_kw = {4.f, 4.f},</div>
-<div class="line"><a id="l01529" name="l01529"></a><span class="lineno"> 1529</span>            <span class="keyword">const</span> glm::vec2 &amp;ridge_noise_kw = {4.f, 1.2f},</div>
-<div class="line"><a id="l01530" name="l01530"></a><span class="lineno"> 1530</span>            <span class="keywordtype">float</span>            ridge_angle_shift = 45.f,</div>
-<div class="line"><a id="l01531" name="l01531"></a><span class="lineno"> 1531</span>            <span class="keywordtype">float</span>            ridge_noise_amp = 0.5f,</div>
-<div class="line"><a id="l01532" name="l01532"></a><span class="lineno"> 1532</span>            <span class="keywordtype">float</span>            ridge_clamp_vmin = 0.f,</div>
-<div class="line"><a id="l01533" name="l01533"></a><span class="lineno"> 1533</span>            <span class="keywordtype">float</span>            ridge_remap_vmin = 0.f,</div>
-<div class="line"><a id="l01534" name="l01534"></a><span class="lineno"> 1534</span>            <span class="keywordtype">bool</span>             apply_elevation_mask = <span class="keyword">true</span>,</div>
-<div class="line"><a id="l01535" name="l01535"></a><span class="lineno"> 1535</span>            <span class="keywordtype">bool</span>             apply_ridge_mask = <span class="keyword">true</span>,</div>
-<div class="line"><a id="l01536" name="l01536"></a><span class="lineno"> 1536</span>            <span class="keywordtype">float</span>            mask_gamma = 0.4f,</div>
-<div class="line"><a id="l01537" name="l01537"></a><span class="lineno"> 1537</span>            <span class="keyword">const</span> Array     *p_mask = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01538" name="l01538"></a><span class="lineno"> 1538</span>            <span class="keyword">const</span> glm::vec4 &amp;bbox = {0.f, 1.f, 0.f, 1.f});</div>
-<div class="line"><a id="l01539" name="l01539"></a><span class="lineno"> 1539</span> </div>
-<div class="line"><a id="l01540" name="l01540"></a><span class="lineno"> 1540</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#a663d541671a7a9afbd694ccb11351ec5">strata_cells</a>(Array       &amp;z,</div>
-<div class="line"><a id="l01541" name="l01541"></a><span class="lineno"> 1541</span>                  glm::vec2    kw,</div>
-<div class="line"><a id="l01542" name="l01542"></a><span class="lineno"> 1542</span>                  <span class="keywordtype">float</span>        amp,</div>
-<div class="line"><a id="l01543" name="l01543"></a><span class="lineno"> 1543</span>                  <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>         seed,</div>
-<div class="line"><a id="l01544" name="l01544"></a><span class="lineno"> 1544</span>                  <span class="keywordtype">float</span>        gamma = 0.5f,</div>
-<div class="line"><a id="l01545" name="l01545"></a><span class="lineno"> 1545</span>                  <span class="keywordtype">float</span>        gamma_lateral = 0.4f,</div>
-<div class="line"><a id="l01546" name="l01546"></a><span class="lineno"> 1546</span>                  <span class="keywordtype">float</span>        <a class="code hl_function" href="namespacehmap.html#aac71bb6c14edc17967957f7918acdbdd">angle</a> = 0.f,</div>
-<div class="line"><a id="l01547" name="l01547"></a><span class="lineno"> 1547</span>                  <span class="keywordtype">float</span>        noise_amp = 0.5f,</div>
-<div class="line"><a id="l01548" name="l01548"></a><span class="lineno"> 1548</span>                  <span class="keywordtype">bool</span>         absolute_displacement = <span class="keyword">true</span>,</div>
-<div class="line"><a id="l01549" name="l01549"></a><span class="lineno"> 1549</span>                  <span class="keywordtype">float</span>        occurence_probability = 0.5f,</div>
-<div class="line"><a id="l01550" name="l01550"></a><span class="lineno"> 1550</span>                  <span class="keyword">const</span> Array *p_noise_x = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01551" name="l01551"></a><span class="lineno"> 1551</span>                  <span class="keyword">const</span> Array *p_noise_y = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01552" name="l01552"></a><span class="lineno"> 1552</span>                  glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});</div>
-<div class="line"><a id="l01553" name="l01553"></a><span class="lineno"> 1553</span> </div>
-<div class="line"><a id="l01554" name="l01554"></a><span class="lineno"> 1554</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#a663d541671a7a9afbd694ccb11351ec5">strata_cells</a>(Array       &amp;z,</div>
-<div class="line"><a id="l01555" name="l01555"></a><span class="lineno"> 1555</span>                  glm::vec2    kw,</div>
-<div class="line"><a id="l01556" name="l01556"></a><span class="lineno"> 1556</span>                  <span class="keywordtype">float</span>        amp,</div>
-<div class="line"><a id="l01557" name="l01557"></a><span class="lineno"> 1557</span>                  <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>         seed,</div>
-<div class="line"><a id="l01558" name="l01558"></a><span class="lineno"> 1558</span>                  <span class="keyword">const</span> Array *p_mask,</div>
-<div class="line"><a id="l01559" name="l01559"></a><span class="lineno"> 1559</span>                  <span class="keywordtype">float</span>        gamma = 0.5f,</div>
-<div class="line"><a id="l01560" name="l01560"></a><span class="lineno"> 1560</span>                  <span class="keywordtype">float</span>        gamma_lateral = 0.4f,</div>
-<div class="line"><a id="l01561" name="l01561"></a><span class="lineno"> 1561</span>                  <span class="keywordtype">float</span>        <a class="code hl_function" href="namespacehmap.html#aac71bb6c14edc17967957f7918acdbdd">angle</a> = 0.f,</div>
-<div class="line"><a id="l01562" name="l01562"></a><span class="lineno"> 1562</span>                  <span class="keywordtype">float</span>        noise_amp = 0.5f,</div>
-<div class="line"><a id="l01563" name="l01563"></a><span class="lineno"> 1563</span>                  <span class="keywordtype">bool</span>         absolute_displacement = <span class="keyword">true</span>,</div>
-<div class="line"><a id="l01564" name="l01564"></a><span class="lineno"> 1564</span>                  <span class="keywordtype">float</span>        occurence_probability = 0.5f,</div>
-<div class="line"><a id="l01565" name="l01565"></a><span class="lineno"> 1565</span>                  <span class="keyword">const</span> Array *p_noise_x = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01566" name="l01566"></a><span class="lineno"> 1566</span>                  <span class="keyword">const</span> Array *p_noise_y = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01567" name="l01567"></a><span class="lineno"> 1567</span>                  glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});</div>
-<div class="line"><a id="l01568" name="l01568"></a><span class="lineno"> 1568</span> </div>
-<div class="line"><a id="l01569" name="l01569"></a><span class="lineno"> 1569</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#ab052dd46c9182768c9ebd0e6046d31cf">strata_cells_fbm</a>(Array       &amp;z,</div>
-<div class="line"><a id="l01570" name="l01570"></a><span class="lineno"> 1570</span>                      glm::vec2    kw,</div>
-<div class="line"><a id="l01571" name="l01571"></a><span class="lineno"> 1571</span>                      <span class="keywordtype">float</span>        amp,</div>
-<div class="line"><a id="l01572" name="l01572"></a><span class="lineno"> 1572</span>                      <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>         seed,</div>
-<div class="line"><a id="l01573" name="l01573"></a><span class="lineno"> 1573</span>                      <span class="keywordtype">float</span>        gamma = 0.5f,</div>
-<div class="line"><a id="l01574" name="l01574"></a><span class="lineno"> 1574</span>                      <span class="keywordtype">float</span>        gamma_lateral = 0.4f,</div>
-<div class="line"><a id="l01575" name="l01575"></a><span class="lineno"> 1575</span>                      <span class="keywordtype">float</span>        <a class="code hl_function" href="namespacehmap.html#aac71bb6c14edc17967957f7918acdbdd">angle</a> = 0.f,</div>
-<div class="line"><a id="l01576" name="l01576"></a><span class="lineno"> 1576</span>                      <span class="keywordtype">float</span>        noise_amp = 0.5f,</div>
-<div class="line"><a id="l01577" name="l01577"></a><span class="lineno"> 1577</span>                      <span class="keywordtype">bool</span>         absolute_displacement = <span class="keyword">true</span>,</div>
-<div class="line"><a id="l01578" name="l01578"></a><span class="lineno"> 1578</span>                      <span class="keywordtype">float</span>        occurence_probability = 0.5f,</div>
-<div class="line"><a id="l01579" name="l01579"></a><span class="lineno"> 1579</span>                      <span class="keywordtype">int</span>          octaves = 8,</div>
-<div class="line"><a id="l01580" name="l01580"></a><span class="lineno"> 1580</span>                      <span class="keywordtype">float</span>        persistence = 0.4f,</div>
-<div class="line"><a id="l01581" name="l01581"></a><span class="lineno"> 1581</span>                      <span class="keywordtype">float</span>        lacunarity = 2.2f,</div>
-<div class="line"><a id="l01582" name="l01582"></a><span class="lineno"> 1582</span>                      <span class="keyword">const</span> Array *p_noise_x = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01583" name="l01583"></a><span class="lineno"> 1583</span>                      <span class="keyword">const</span> Array *p_noise_y = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01584" name="l01584"></a><span class="lineno"> 1584</span>                      glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});</div>
-<div class="line"><a id="l01585" name="l01585"></a><span class="lineno"> 1585</span> </div>
-<div class="line"><a id="l01586" name="l01586"></a><span class="lineno"> 1586</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#ab052dd46c9182768c9ebd0e6046d31cf">strata_cells_fbm</a>(Array       &amp;z,</div>
-<div class="line"><a id="l01587" name="l01587"></a><span class="lineno"> 1587</span>                      glm::vec2    kw,</div>
-<div class="line"><a id="l01588" name="l01588"></a><span class="lineno"> 1588</span>                      <span class="keywordtype">float</span>        amp,</div>
-<div class="line"><a id="l01589" name="l01589"></a><span class="lineno"> 1589</span>                      <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>         seed,</div>
-<div class="line"><a id="l01590" name="l01590"></a><span class="lineno"> 1590</span>                      <span class="keyword">const</span> Array *p_mask,</div>
-<div class="line"><a id="l01591" name="l01591"></a><span class="lineno"> 1591</span>                      <span class="keywordtype">float</span>        gamma = 0.5f,</div>
-<div class="line"><a id="l01592" name="l01592"></a><span class="lineno"> 1592</span>                      <span class="keywordtype">float</span>        gamma_lateral = 0.4f,</div>
-<div class="line"><a id="l01593" name="l01593"></a><span class="lineno"> 1593</span>                      <span class="keywordtype">float</span>        <a class="code hl_function" href="namespacehmap.html#aac71bb6c14edc17967957f7918acdbdd">angle</a> = 0.f,</div>
-<div class="line"><a id="l01594" name="l01594"></a><span class="lineno"> 1594</span>                      <span class="keywordtype">float</span>        noise_amp = 0.5f,</div>
-<div class="line"><a id="l01595" name="l01595"></a><span class="lineno"> 1595</span>                      <span class="keywordtype">bool</span>         absolute_displacement = <span class="keyword">true</span>,</div>
-<div class="line"><a id="l01596" name="l01596"></a><span class="lineno"> 1596</span>                      <span class="keywordtype">float</span>        occurence_probability = 0.5f,</div>
-<div class="line"><a id="l01597" name="l01597"></a><span class="lineno"> 1597</span>                      <span class="keywordtype">int</span>          octaves = 8,</div>
-<div class="line"><a id="l01598" name="l01598"></a><span class="lineno"> 1598</span>                      <span class="keywordtype">float</span>        persistence = 0.4f,</div>
-<div class="line"><a id="l01599" name="l01599"></a><span class="lineno"> 1599</span>                      <span class="keywordtype">float</span>        lacunarity = 2.2f,</div>
-<div class="line"><a id="l01600" name="l01600"></a><span class="lineno"> 1600</span>                      <span class="keyword">const</span> Array *p_noise_x = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01601" name="l01601"></a><span class="lineno"> 1601</span>                      <span class="keyword">const</span> Array *p_noise_y = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01602" name="l01602"></a><span class="lineno"> 1602</span>                      glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});</div>
-<div class="line"><a id="l01603" name="l01603"></a><span class="lineno"> 1603</span> </div>
-<div class="line"><a id="l01605" name="l01605"></a><span class="lineno"> 1605</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#a2eb4bdf2d7dc4441e56865027764425e">thermal</a>(Array       &amp;z,</div>
-<div class="line"><a id="l01606" name="l01606"></a><span class="lineno"> 1606</span>             <span class="keyword">const</span> Array &amp;talus,</div>
-<div class="line"><a id="l01607" name="l01607"></a><span class="lineno"> 1607</span>             <span class="keywordtype">int</span>          iterations = 10,</div>
-<div class="line"><a id="l01608" name="l01608"></a><span class="lineno"> 1608</span>             Array       *p_bedrock = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01609" name="l01609"></a><span class="lineno"> 1609</span>             Array       *p_deposition_map = <span class="keyword">nullptr</span>);</div>
-<div class="line"><a id="l01610" name="l01610"></a><span class="lineno"> 1610</span> </div>
-<div class="line"><a id="l01612" name="l01612"></a><span class="lineno"> 1612</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#a2eb4bdf2d7dc4441e56865027764425e">thermal</a>(Array       &amp;z,</div>
-<div class="line"><a id="l01613" name="l01613"></a><span class="lineno"> 1613</span>             Array       *p_mask,</div>
-<div class="line"><a id="l01614" name="l01614"></a><span class="lineno"> 1614</span>             <span class="keyword">const</span> Array &amp;talus,</div>
-<div class="line"><a id="l01615" name="l01615"></a><span class="lineno"> 1615</span>             <span class="keywordtype">int</span>          iterations = 10,</div>
-<div class="line"><a id="l01616" name="l01616"></a><span class="lineno"> 1616</span>             Array       *p_bedrock = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01617" name="l01617"></a><span class="lineno"> 1617</span>             Array       *p_deposition_map = <span class="keyword">nullptr</span>);</div>
-<div class="line"><a id="l01618" name="l01618"></a><span class="lineno"> 1618</span> </div>
-<div class="line"><a id="l01620" name="l01620"></a><span class="lineno"> 1620</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#a2eb4bdf2d7dc4441e56865027764425e">thermal</a>(Array &amp;z,</div>
-<div class="line"><a id="l01621" name="l01621"></a><span class="lineno"> 1621</span>             <span class="keywordtype">float</span>  talus,</div>
-<div class="line"><a id="l01622" name="l01622"></a><span class="lineno"> 1622</span>             <span class="keywordtype">int</span>    iterations = 10,</div>
-<div class="line"><a id="l01623" name="l01623"></a><span class="lineno"> 1623</span>             Array *p_bedrock = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01624" name="l01624"></a><span class="lineno"> 1624</span>             Array *p_deposition_map = <span class="keyword">nullptr</span>);</div>
-<div class="line"><a id="l01625" name="l01625"></a><span class="lineno"> 1625</span> </div>
-<div class="line"><a id="l01627" name="l01627"></a><span class="lineno"> 1627</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#a36a2eba6d158e44d0ef917d9582987fe">thermal_auto_bedrock</a>(Array       &amp;z,</div>
-<div class="line"><a id="l01628" name="l01628"></a><span class="lineno"> 1628</span>                          <span class="keyword">const</span> Array &amp;talus,</div>
-<div class="line"><a id="l01629" name="l01629"></a><span class="lineno"> 1629</span>                          <span class="keywordtype">int</span>          iterations = 10,</div>
-<div class="line"><a id="l01630" name="l01630"></a><span class="lineno"> 1630</span>                          Array       *p_deposition_map = <span class="keyword">nullptr</span>);</div>
-<div class="line"><a id="l01631" name="l01631"></a><span class="lineno"> 1631</span> </div>
-<div class="line"><a id="l01633" name="l01633"></a><span class="lineno"> 1633</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#a36a2eba6d158e44d0ef917d9582987fe">thermal_auto_bedrock</a>(Array       &amp;z,</div>
-<div class="line"><a id="l01634" name="l01634"></a><span class="lineno"> 1634</span>                          Array       *p_mask,</div>
-<div class="line"><a id="l01635" name="l01635"></a><span class="lineno"> 1635</span>                          <span class="keyword">const</span> Array &amp;talus,</div>
-<div class="line"><a id="l01636" name="l01636"></a><span class="lineno"> 1636</span>                          <span class="keywordtype">int</span>          iterations = 10,</div>
-<div class="line"><a id="l01637" name="l01637"></a><span class="lineno"> 1637</span>                          Array       *p_deposition_map = <span class="keyword">nullptr</span>);</div>
-<div class="line"><a id="l01638" name="l01638"></a><span class="lineno"> 1638</span> </div>
-<div class="line"><a id="l01640" name="l01640"></a><span class="lineno"> 1640</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#a36a2eba6d158e44d0ef917d9582987fe">thermal_auto_bedrock</a>(Array &amp;z,</div>
-<div class="line"><a id="l01641" name="l01641"></a><span class="lineno"> 1641</span>                          <span class="keywordtype">float</span>,</div>
-<div class="line"><a id="l01642" name="l01642"></a><span class="lineno"> 1642</span>                          <span class="keywordtype">int</span>    iterations = 10,</div>
-<div class="line"><a id="l01643" name="l01643"></a><span class="lineno"> 1643</span>                          Array *p_deposition_map = <span class="keyword">nullptr</span>);</div>
-<div class="line"><a id="l01644" name="l01644"></a><span class="lineno"> 1644</span> </div>
-<div class="line"><a id="l01646" name="l01646"></a><span class="lineno"> 1646</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#a00b54f4e60a8fbd6ed5213600d598869">thermal_olsen</a>(Array &amp;z, <span class="keyword">const</span> Array &amp;talus, <span class="keywordtype">int</span> iterations);</div>
-<div class="line"><a id="l01647" name="l01647"></a><span class="lineno"> 1647</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#a00b54f4e60a8fbd6ed5213600d598869">thermal_olsen</a>(Array &amp;z, Array *p_mask, <span class="keyword">const</span> Array &amp;talus, <span class="keywordtype">int</span> iterations);</div>
+<div class="line"><a id="l01002" name="l01002"></a><span class="lineno"> 1002</span>                        <span class="keywordtype">bool</span>         enable_directional_bias = <span class="keyword">false</span>,</div>
+<div class="line"><a id="l01003" name="l01003"></a><span class="lineno"> 1003</span>                        <span class="keywordtype">float</span>        angle_bias = 30.f);</div>
+<div class="line"><a id="l01004" name="l01004"></a><span class="lineno"> 1004</span> </div>
+<div class="line"><a id="l01006" name="l01006"></a><span class="lineno"><a class="line" href="namespacehmap_1_1gpu.html#a24498e2366d9797fe9e585f494bff98f"> 1006</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#ae084938139cca4f7c15866ceabe18ab7">hydraulic_particle</a>(<a class="code hl_class" href="classhmap_1_1Array.html">Array</a>       &amp;z,</div>
+<div class="line"><a id="l01007" name="l01007"></a><span class="lineno"> 1007</span>                        <span class="keyword">const</span> <a class="code hl_class" href="classhmap_1_1Array.html">Array</a> *p_mask,</div>
+<div class="line"><a id="l01008" name="l01008"></a><span class="lineno"> 1008</span>                        <span class="keywordtype">int</span>          nparticles,</div>
+<div class="line"><a id="l01009" name="l01009"></a><span class="lineno"> 1009</span>                        <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>         seed,</div>
+<div class="line"><a id="l01010" name="l01010"></a><span class="lineno"> 1010</span>                        <span class="keyword">const</span> <a class="code hl_class" href="classhmap_1_1Array.html">Array</a> *p_bedrock = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01011" name="l01011"></a><span class="lineno"> 1011</span>                        <span class="keyword">const</span> <a class="code hl_class" href="classhmap_1_1Array.html">Array</a> *p_moisture_map = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01012" name="l01012"></a><span class="lineno"> 1012</span>                        <span class="keyword">const</span> <a class="code hl_class" href="classhmap_1_1Array.html">Array</a> *p_elevation_shift = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01013" name="l01013"></a><span class="lineno"> 1013</span>                        <a class="code hl_class" href="classhmap_1_1Array.html">Array</a>       *p_erosion_map = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01014" name="l01014"></a><span class="lineno"> 1014</span>                        <a class="code hl_class" href="classhmap_1_1Array.html">Array</a>       *p_deposition_map = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01015" name="l01015"></a><span class="lineno"> 1015</span>                        <span class="keywordtype">float</span>        c_capacity = 10.f,</div>
+<div class="line"><a id="l01016" name="l01016"></a><span class="lineno"> 1016</span>                        <span class="keywordtype">float</span>        c_erosion = 0.05f,</div>
+<div class="line"><a id="l01017" name="l01017"></a><span class="lineno"> 1017</span>                        <span class="keywordtype">float</span>        c_deposition = 0.05f,</div>
+<div class="line"><a id="l01018" name="l01018"></a><span class="lineno"> 1018</span>                        <span class="keywordtype">float</span>        c_inertia = 0.1f,</div>
+<div class="line"><a id="l01019" name="l01019"></a><span class="lineno"> 1019</span>                        <span class="keywordtype">float</span>        c_gravity = 1.f,</div>
+<div class="line"><a id="l01020" name="l01020"></a><span class="lineno"> 1020</span>                        <span class="keywordtype">float</span>        drag_rate = 0.001f,</div>
+<div class="line"><a id="l01021" name="l01021"></a><span class="lineno"> 1021</span>                        <span class="keywordtype">float</span>        evap_rate = 0.001f,</div>
+<div class="line"><a id="l01022" name="l01022"></a><span class="lineno"> 1022</span>                        <span class="keywordtype">bool</span>         enable_directional_bias = <span class="keyword">false</span>,</div>
+<div class="line"><a id="l01023" name="l01023"></a><span class="lineno"> 1023</span>                        <span class="keywordtype">float</span>        angle_bias = 30.f);</div>
+<div class="line"><a id="l01024" name="l01024"></a><span class="lineno"> 1024</span> </div>
+<div class="line"><a id="l01073" name="l01073"></a><span class="lineno"> 1073</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#afbecd3a8ce025fb08ca3296ce81f695d">hydraulic_procedural</a>(</div>
+<div class="line"><a id="l01074" name="l01074"></a><span class="lineno"> 1074</span>    <a class="code hl_class" href="classhmap_1_1Array.html">Array</a>         &amp;z,</div>
+<div class="line"><a id="l01075" name="l01075"></a><span class="lineno"> 1075</span>    <span class="keywordtype">float</span>          kp_global,</div>
+<div class="line"><a id="l01076" name="l01076"></a><span class="lineno"> 1076</span>    <span class="keywordtype">float</span>          c_erosion,</div>
+<div class="line"><a id="l01077" name="l01077"></a><span class="lineno"> 1077</span>    <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>           seed,</div>
+<div class="line"><a id="l01078" name="l01078"></a><span class="lineno"> 1078</span>    <a class="code hl_enumeration" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6">ErosionProfile</a> erosion_profile = <a class="code hl_enumvalue" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a61a4a71c0e8d1a97da9657b03d51680f">ErosionProfile::EP_TRIANGLE_GRENIER</a>,</div>
+<div class="line"><a id="l01079" name="l01079"></a><span class="lineno"> 1079</span>    <span class="keywordtype">float</span>          erosion_profile_parameter = 0.01f,</div>
+<div class="line"><a id="l01080" name="l01080"></a><span class="lineno"> 1080</span>    <span class="keywordtype">float</span>          angle_shift = 0.f, <span class="comment">// degs</span></div>
+<div class="line"><a id="l01081" name="l01081"></a><span class="lineno"> 1081</span>    <span class="keywordtype">float</span>          phase_smoothing = 0.1f,</div>
+<div class="line"><a id="l01082" name="l01082"></a><span class="lineno"> 1082</span>    <span class="keywordtype">float</span>          talus_ref = 0.001f,</div>
+<div class="line"><a id="l01083" name="l01083"></a><span class="lineno"> 1083</span>    <span class="keywordtype">float</span>          gradient_scaling_ratio = 1.f,</div>
+<div class="line"><a id="l01084" name="l01084"></a><span class="lineno"> 1084</span>    <span class="keywordtype">float</span>          gradient_power = 0.8f,</div>
+<div class="line"><a id="l01085" name="l01085"></a><span class="lineno"> 1085</span>    <span class="keywordtype">bool</span>           exclude_ridges = <span class="keyword">true</span>,</div>
+<div class="line"><a id="l01086" name="l01086"></a><span class="lineno"> 1086</span>    <span class="keywordtype">bool</span>           apply_deposition = <span class="keyword">false</span>,</div>
+<div class="line"><a id="l01087" name="l01087"></a><span class="lineno"> 1087</span>    <span class="keywordtype">float</span>          deposition_strength = 1.f,</div>
+<div class="line"><a id="l01088" name="l01088"></a><span class="lineno"> 1088</span>    <span class="keywordtype">bool</span>           enable_default_noise = <span class="keyword">true</span>,</div>
+<div class="line"><a id="l01089" name="l01089"></a><span class="lineno"> 1089</span>    <span class="keywordtype">float</span>          noise_amp = 0.01f,</div>
+<div class="line"><a id="l01090" name="l01090"></a><span class="lineno"> 1090</span>    <span class="keyword">const</span> <a class="code hl_class" href="classhmap_1_1Array.html">Array</a>   *p_kp_multiplier = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01091" name="l01091"></a><span class="lineno"> 1091</span>    <span class="keyword">const</span> <a class="code hl_class" href="classhmap_1_1Array.html">Array</a>   *p_angle_shift = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01092" name="l01092"></a><span class="lineno"> 1092</span>    <span class="keyword">const</span> <a class="code hl_class" href="classhmap_1_1Array.html">Array</a>   *p_noise_x = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01093" name="l01093"></a><span class="lineno"> 1093</span>    <span class="keyword">const</span> <a class="code hl_class" href="classhmap_1_1Array.html">Array</a>   *p_noise_y = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01094" name="l01094"></a><span class="lineno"> 1094</span>    <a class="code hl_class" href="classhmap_1_1Array.html">Array</a>         *p_ridge_mask = <span class="keyword">nullptr</span>, <span class="comment">// ouptput</span></div>
+<div class="line"><a id="l01095" name="l01095"></a><span class="lineno"> 1095</span>    glm::vec4      bbox = {0.f, 1.f, 0.f, 1.f});</div>
+<div class="line"><a id="l01096" name="l01096"></a><span class="lineno"> 1096</span> </div>
+<div class="line"><a id="l01135" name="l01135"></a><span class="lineno"> 1135</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#a60f3eb887b87ec545d68977b8811cadc">hydraulic_procedural_fbm</a>(</div>
+<div class="line"><a id="l01136" name="l01136"></a><span class="lineno"> 1136</span>    <a class="code hl_class" href="classhmap_1_1Array.html">Array</a>         &amp;z,</div>
+<div class="line"><a id="l01137" name="l01137"></a><span class="lineno"> 1137</span>    <span class="keywordtype">float</span>          kp_global,</div>
+<div class="line"><a id="l01138" name="l01138"></a><span class="lineno"> 1138</span>    <span class="keywordtype">float</span>          c_erosion,</div>
+<div class="line"><a id="l01139" name="l01139"></a><span class="lineno"> 1139</span>    <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>           seed,</div>
+<div class="line"><a id="l01140" name="l01140"></a><span class="lineno"> 1140</span>    <a class="code hl_enumeration" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6">ErosionProfile</a> erosion_profile = <a class="code hl_enumvalue" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a61a4a71c0e8d1a97da9657b03d51680f">ErosionProfile::EP_TRIANGLE_GRENIER</a>,</div>
+<div class="line"><a id="l01141" name="l01141"></a><span class="lineno"> 1141</span>    <span class="keywordtype">int</span>            octaves = 3,</div>
+<div class="line"><a id="l01142" name="l01142"></a><span class="lineno"> 1142</span>    <span class="keywordtype">float</span>          persistence = 0.5f,</div>
+<div class="line"><a id="l01143" name="l01143"></a><span class="lineno"> 1143</span>    <span class="keywordtype">float</span>          lacunarity = 2.f,</div>
+<div class="line"><a id="l01144" name="l01144"></a><span class="lineno"> 1144</span>    <span class="keywordtype">float</span>          erosion_profile_parameter = 0.01f,</div>
+<div class="line"><a id="l01145" name="l01145"></a><span class="lineno"> 1145</span>    <span class="keywordtype">float</span>          angle_shift = 0.f, <span class="comment">// degs</span></div>
+<div class="line"><a id="l01146" name="l01146"></a><span class="lineno"> 1146</span>    <span class="keywordtype">float</span>          phase_smoothing = 0.1f,</div>
+<div class="line"><a id="l01147" name="l01147"></a><span class="lineno"> 1147</span>    <span class="keywordtype">float</span>          talus_ref = 0.001f,</div>
+<div class="line"><a id="l01148" name="l01148"></a><span class="lineno"> 1148</span>    <span class="keywordtype">float</span>          gradient_scaling_ratio = 1.f,</div>
+<div class="line"><a id="l01149" name="l01149"></a><span class="lineno"> 1149</span>    <span class="keywordtype">float</span>          gradient_power = 0.8f,</div>
+<div class="line"><a id="l01150" name="l01150"></a><span class="lineno"> 1150</span>    <span class="keywordtype">bool</span>           exclude_ridges = <span class="keyword">true</span>,</div>
+<div class="line"><a id="l01151" name="l01151"></a><span class="lineno"> 1151</span>    <span class="keywordtype">bool</span>           apply_deposition = <span class="keyword">false</span>,</div>
+<div class="line"><a id="l01152" name="l01152"></a><span class="lineno"> 1152</span>    <span class="keywordtype">float</span>          deposition_strength = 1.f,</div>
+<div class="line"><a id="l01153" name="l01153"></a><span class="lineno"> 1153</span>    <span class="keywordtype">bool</span>           enable_default_noise = <span class="keyword">true</span>,</div>
+<div class="line"><a id="l01154" name="l01154"></a><span class="lineno"> 1154</span>    <span class="keywordtype">float</span>          noise_amp = 0.01f,</div>
+<div class="line"><a id="l01155" name="l01155"></a><span class="lineno"> 1155</span>    <span class="keyword">const</span> <a class="code hl_class" href="classhmap_1_1Array.html">Array</a>   *p_kp_multiplier = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01156" name="l01156"></a><span class="lineno"> 1156</span>    <span class="keyword">const</span> <a class="code hl_class" href="classhmap_1_1Array.html">Array</a>   *p_angle_shift = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01157" name="l01157"></a><span class="lineno"> 1157</span>    <span class="keyword">const</span> <a class="code hl_class" href="classhmap_1_1Array.html">Array</a>   *p_noise_x = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01158" name="l01158"></a><span class="lineno"> 1158</span>    <span class="keyword">const</span> <a class="code hl_class" href="classhmap_1_1Array.html">Array</a>   *p_noise_y = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01159" name="l01159"></a><span class="lineno"> 1159</span>    <a class="code hl_class" href="classhmap_1_1Array.html">Array</a>         *p_ridge_mask = <span class="keyword">nullptr</span>, <span class="comment">// ouptput</span></div>
+<div class="line"><a id="l01160" name="l01160"></a><span class="lineno"> 1160</span>    glm::vec4      bbox = {0.f, 1.f, 0.f, 1.f});</div>
+<div class="line"><a id="l01161" name="l01161"></a><span class="lineno"> 1161</span> </div>
+<div class="line"><a id="l01162" name="l01162"></a><span class="lineno"> 1162</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#a60f3eb887b87ec545d68977b8811cadc">hydraulic_procedural_fbm</a>(</div>
+<div class="line"><a id="l01163" name="l01163"></a><span class="lineno"> 1163</span>    Array         &amp;z,</div>
+<div class="line"><a id="l01164" name="l01164"></a><span class="lineno"> 1164</span>    <span class="keywordtype">float</span>          kp_global,</div>
+<div class="line"><a id="l01165" name="l01165"></a><span class="lineno"> 1165</span>    <span class="keywordtype">float</span>          c_erosion,</div>
+<div class="line"><a id="l01166" name="l01166"></a><span class="lineno"> 1166</span>    <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>           seed,</div>
+<div class="line"><a id="l01167" name="l01167"></a><span class="lineno"> 1167</span>    <span class="keyword">const</span> Array   *p_mask,</div>
+<div class="line"><a id="l01168" name="l01168"></a><span class="lineno"> 1168</span>    <a class="code hl_enumeration" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6">ErosionProfile</a> erosion_profile = <a class="code hl_enumvalue" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a61a4a71c0e8d1a97da9657b03d51680f">ErosionProfile::EP_TRIANGLE_GRENIER</a>,</div>
+<div class="line"><a id="l01169" name="l01169"></a><span class="lineno"> 1169</span>    <span class="keywordtype">int</span>            octaves = 3,</div>
+<div class="line"><a id="l01170" name="l01170"></a><span class="lineno"> 1170</span>    <span class="keywordtype">float</span>          persistence = 0.5f,</div>
+<div class="line"><a id="l01171" name="l01171"></a><span class="lineno"> 1171</span>    <span class="keywordtype">float</span>          lacunarity = 2.f,</div>
+<div class="line"><a id="l01172" name="l01172"></a><span class="lineno"> 1172</span>    <span class="keywordtype">float</span>          erosion_profile_parameter = 0.01f,</div>
+<div class="line"><a id="l01173" name="l01173"></a><span class="lineno"> 1173</span>    <span class="keywordtype">float</span>          angle_shift = 0.f, <span class="comment">// degs</span></div>
+<div class="line"><a id="l01174" name="l01174"></a><span class="lineno"> 1174</span>    <span class="keywordtype">float</span>          phase_smoothing = 0.1f,</div>
+<div class="line"><a id="l01175" name="l01175"></a><span class="lineno"> 1175</span>    <span class="keywordtype">float</span>          talus_ref = 0.001f,</div>
+<div class="line"><a id="l01176" name="l01176"></a><span class="lineno"> 1176</span>    <span class="keywordtype">float</span>          gradient_scaling_ratio = 1.f,</div>
+<div class="line"><a id="l01177" name="l01177"></a><span class="lineno"> 1177</span>    <span class="keywordtype">float</span>          gradient_power = 0.8f,</div>
+<div class="line"><a id="l01178" name="l01178"></a><span class="lineno"> 1178</span>    <span class="keywordtype">bool</span>           exclude_ridges = <span class="keyword">true</span>,</div>
+<div class="line"><a id="l01179" name="l01179"></a><span class="lineno"> 1179</span>    <span class="keywordtype">bool</span>           apply_deposition = <span class="keyword">false</span>,</div>
+<div class="line"><a id="l01180" name="l01180"></a><span class="lineno"> 1180</span>    <span class="keywordtype">float</span>          deposition_strength = 1.f,</div>
+<div class="line"><a id="l01181" name="l01181"></a><span class="lineno"> 1181</span>    <span class="keywordtype">bool</span>           enable_default_noise = <span class="keyword">true</span>,</div>
+<div class="line"><a id="l01182" name="l01182"></a><span class="lineno"> 1182</span>    <span class="keywordtype">float</span>          noise_amp = 0.01f,</div>
+<div class="line"><a id="l01183" name="l01183"></a><span class="lineno"> 1183</span>    <span class="keyword">const</span> Array   *p_kp_multiplier = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01184" name="l01184"></a><span class="lineno"> 1184</span>    <span class="keyword">const</span> Array   *p_angle_shift = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01185" name="l01185"></a><span class="lineno"> 1185</span>    <span class="keyword">const</span> Array   *p_noise_x = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01186" name="l01186"></a><span class="lineno"> 1186</span>    <span class="keyword">const</span> Array   *p_noise_y = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01187" name="l01187"></a><span class="lineno"> 1187</span>    Array         *p_ridge_mask = <span class="keyword">nullptr</span>, <span class="comment">// ouptput</span></div>
+<div class="line"><a id="l01188" name="l01188"></a><span class="lineno"> 1188</span>    glm::vec4      bbox = {0.f, 1.f, 0.f, 1.f});</div>
+<div class="line"><a id="l01189" name="l01189"></a><span class="lineno"> 1189</span> </div>
+<div class="line"><a id="l01237" name="l01237"></a><span class="lineno"> 1237</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#a9749d24b9dd9bed8ee333910951db395">hydraulic_schott</a>(Array       &amp;z,</div>
+<div class="line"><a id="l01238" name="l01238"></a><span class="lineno"> 1238</span>                      <span class="keywordtype">int</span>          iterations,</div>
+<div class="line"><a id="l01239" name="l01239"></a><span class="lineno"> 1239</span>                      <span class="keyword">const</span> Array &amp;talus,</div>
+<div class="line"><a id="l01240" name="l01240"></a><span class="lineno"> 1240</span>                      <span class="keywordtype">float</span>        c_erosion = 1.f,</div>
+<div class="line"><a id="l01241" name="l01241"></a><span class="lineno"> 1241</span>                      <span class="keywordtype">float</span>        c_thermal = 0.1f,</div>
+<div class="line"><a id="l01242" name="l01242"></a><span class="lineno"> 1242</span>                      <span class="keywordtype">float</span>        c_deposition = 0.2f,</div>
+<div class="line"><a id="l01243" name="l01243"></a><span class="lineno"> 1243</span>                      <span class="keywordtype">float</span>        flow_acc_exponent = 0.8f,</div>
+<div class="line"><a id="l01244" name="l01244"></a><span class="lineno"> 1244</span>                      <span class="keywordtype">float</span>        flow_acc_exponent_depo = 0.8f,</div>
+<div class="line"><a id="l01245" name="l01245"></a><span class="lineno"> 1245</span>                      <span class="keywordtype">float</span>        flow_routing_exponent = 1.3f,</div>
+<div class="line"><a id="l01246" name="l01246"></a><span class="lineno"> 1246</span>                      <span class="keywordtype">float</span>        thermal_weight = 1.5f,</div>
+<div class="line"><a id="l01247" name="l01247"></a><span class="lineno"> 1247</span>                      <span class="keywordtype">float</span>        deposition_weight = 2.5f,</div>
+<div class="line"><a id="l01248" name="l01248"></a><span class="lineno"> 1248</span>                      Array       *p_flow = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l01249" name="l01249"></a><span class="lineno"> 1249</span> </div>
+<div class="line"><a id="l01250" name="l01250"></a><span class="lineno"> 1250</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#a9749d24b9dd9bed8ee333910951db395">hydraulic_schott</a>(Array       &amp;z,</div>
+<div class="line"><a id="l01251" name="l01251"></a><span class="lineno"> 1251</span>                      <span class="keywordtype">int</span>          iterations,</div>
+<div class="line"><a id="l01252" name="l01252"></a><span class="lineno"> 1252</span>                      <span class="keyword">const</span> Array &amp;talus,</div>
+<div class="line"><a id="l01253" name="l01253"></a><span class="lineno"> 1253</span>                      Array       *p_mask,</div>
+<div class="line"><a id="l01254" name="l01254"></a><span class="lineno"> 1254</span>                      <span class="keywordtype">float</span>        c_erosion = 1.f,</div>
+<div class="line"><a id="l01255" name="l01255"></a><span class="lineno"> 1255</span>                      <span class="keywordtype">float</span>        c_thermal = 0.1f,</div>
+<div class="line"><a id="l01256" name="l01256"></a><span class="lineno"> 1256</span>                      <span class="keywordtype">float</span>        c_deposition = 0.2f,</div>
+<div class="line"><a id="l01257" name="l01257"></a><span class="lineno"> 1257</span>                      <span class="keywordtype">float</span>        flow_acc_exponent = 0.8f,</div>
+<div class="line"><a id="l01258" name="l01258"></a><span class="lineno"> 1258</span>                      <span class="keywordtype">float</span>        flow_acc_exponent_depo = 0.8f,</div>
+<div class="line"><a id="l01259" name="l01259"></a><span class="lineno"> 1259</span>                      <span class="keywordtype">float</span>        flow_routing_exponent = 1.3f,</div>
+<div class="line"><a id="l01260" name="l01260"></a><span class="lineno"> 1260</span>                      <span class="keywordtype">float</span>        thermal_weight = 1.5f,</div>
+<div class="line"><a id="l01261" name="l01261"></a><span class="lineno"> 1261</span>                      <span class="keywordtype">float</span>        deposition_weight = 2.5f,</div>
+<div class="line"><a id="l01262" name="l01262"></a><span class="lineno"> 1262</span>                      Array       *p_flow = <span class="keyword">nullptr</span>); </div>
+<div class="line"><a id="l01263" name="l01263"></a><span class="lineno"> 1263</span> </div>
+<div class="line"><a id="l01265" name="l01265"></a><span class="lineno"> 1265</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#aa3c0fc5295f81856967feed8cf87f711">hydraulic_schott_erosion</a>(Array       &amp;z,</div>
+<div class="line"><a id="l01266" name="l01266"></a><span class="lineno"> 1266</span>                              <span class="keywordtype">int</span>          iterations,</div>
+<div class="line"><a id="l01267" name="l01267"></a><span class="lineno"> 1267</span>                              <span class="keywordtype">float</span>        c_erosion = 1.f,</div>
+<div class="line"><a id="l01268" name="l01268"></a><span class="lineno"> 1268</span>                              <span class="keywordtype">float</span>        flow_acc_exponent = 0.8f,</div>
+<div class="line"><a id="l01269" name="l01269"></a><span class="lineno"> 1269</span>                              <span class="keywordtype">float</span>        flow_routing_exponent = 1.3f,</div>
+<div class="line"><a id="l01270" name="l01270"></a><span class="lineno"> 1270</span>                              <span class="keyword">const</span> Array *p_moisture_map = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01271" name="l01271"></a><span class="lineno"> 1271</span>                              Array       *p_flow = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l01272" name="l01272"></a><span class="lineno"> 1272</span> </div>
+<div class="line"><a id="l01274" name="l01274"></a><span class="lineno"> 1274</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#a7814928e0f3b995421d298677934d11d">hydraulic_stream_log</a>(Array &amp;z,</div>
+<div class="line"><a id="l01275" name="l01275"></a><span class="lineno"> 1275</span>                          <span class="keywordtype">float</span>  c_erosion,</div>
+<div class="line"><a id="l01276" name="l01276"></a><span class="lineno"> 1276</span>                          <span class="keywordtype">float</span>  talus_ref,</div>
+<div class="line"><a id="l01277" name="l01277"></a><span class="lineno"> 1277</span>                          <span class="keywordtype">int</span>    deposition_ir = 32,</div>
+<div class="line"><a id="l01278" name="l01278"></a><span class="lineno"> 1278</span>                          <span class="keywordtype">float</span>  deposition_scale_ratio = 1.f,</div>
+<div class="line"><a id="l01279" name="l01279"></a><span class="lineno"> 1279</span>                          <span class="keywordtype">float</span>  gradient_power = 0.8f,</div>
+<div class="line"><a id="l01280" name="l01280"></a><span class="lineno"> 1280</span>                          <span class="keywordtype">float</span>  gradient_scaling_ratio = 1.f,</div>
+<div class="line"><a id="l01281" name="l01281"></a><span class="lineno"> 1281</span>                          <span class="keywordtype">int</span>    gradient_prefilter_ir = 16,</div>
+<div class="line"><a id="l01282" name="l01282"></a><span class="lineno"> 1282</span>                          <span class="keywordtype">float</span>  saturation_ratio = 1.f,</div>
+<div class="line"><a id="l01283" name="l01283"></a><span class="lineno"> 1283</span>                          Array *p_bedrock = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01284" name="l01284"></a><span class="lineno"> 1284</span>                          Array *p_moisture_map = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01285" name="l01285"></a><span class="lineno"> 1285</span>                          Array *p_erosion_map = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01286" name="l01286"></a><span class="lineno"> 1286</span>                          Array *p_deposition_map = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01287" name="l01287"></a><span class="lineno"> 1287</span>                          Array *p_flow_map = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l01288" name="l01288"></a><span class="lineno"> 1288</span> </div>
+<div class="line"><a id="l01289" name="l01289"></a><span class="lineno"> 1289</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#a7814928e0f3b995421d298677934d11d">hydraulic_stream_log</a>(Array       &amp;z,</div>
+<div class="line"><a id="l01290" name="l01290"></a><span class="lineno"> 1290</span>                          <span class="keywordtype">float</span>        c_erosion,</div>
+<div class="line"><a id="l01291" name="l01291"></a><span class="lineno"> 1291</span>                          <span class="keywordtype">float</span>        talus_ref,</div>
+<div class="line"><a id="l01292" name="l01292"></a><span class="lineno"> 1292</span>                          <span class="keyword">const</span> Array *p_mask,</div>
+<div class="line"><a id="l01293" name="l01293"></a><span class="lineno"> 1293</span>                          <span class="keywordtype">int</span>          deposition_ir = 32,</div>
+<div class="line"><a id="l01294" name="l01294"></a><span class="lineno"> 1294</span>                          <span class="keywordtype">float</span>        deposition_scale_ratio = 1.f,</div>
+<div class="line"><a id="l01295" name="l01295"></a><span class="lineno"> 1295</span>                          <span class="keywordtype">float</span>        gradient_power = 0.8f,</div>
+<div class="line"><a id="l01296" name="l01296"></a><span class="lineno"> 1296</span>                          <span class="keywordtype">float</span>        gradient_scaling_ratio = 1.f,</div>
+<div class="line"><a id="l01297" name="l01297"></a><span class="lineno"> 1297</span>                          <span class="keywordtype">int</span>          gradient_prefilter_ir = 16,</div>
+<div class="line"><a id="l01298" name="l01298"></a><span class="lineno"> 1298</span>                          <span class="keywordtype">float</span>        saturation_ratio = 1.f,</div>
+<div class="line"><a id="l01299" name="l01299"></a><span class="lineno"> 1299</span>                          Array       *p_bedrock = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01300" name="l01300"></a><span class="lineno"> 1300</span>                          Array       *p_moisture_map = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01301" name="l01301"></a><span class="lineno"> 1301</span>                          Array       *p_erosion_map = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01302" name="l01302"></a><span class="lineno"> 1302</span>                          Array       *p_deposition_map = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01303" name="l01303"></a><span class="lineno"> 1303</span>                          Array       *p_flow_map = <span class="keyword">nullptr</span>); </div>
+<div class="line"><a id="l01304" name="l01304"></a><span class="lineno"> 1304</span> </div>
+<div class="line"><a id="l01306" name="l01306"></a><span class="lineno"> 1306</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#a548895d6665a5466b8541122338b59a9">hydraulic_vpipes</a>(Array &amp;z,</div>
+<div class="line"><a id="l01307" name="l01307"></a><span class="lineno"> 1307</span>                      <span class="keywordtype">float</span>  water_height = 1e-2f,</div>
+<div class="line"><a id="l01308" name="l01308"></a><span class="lineno"> 1308</span>                      <span class="keywordtype">bool</span>   maintain_water_volume = <span class="keyword">true</span>,</div>
+<div class="line"><a id="l01309" name="l01309"></a><span class="lineno"> 1309</span>                      <span class="keywordtype">float</span>  evap_rate = 0.1f,</div>
+<div class="line"><a id="l01310" name="l01310"></a><span class="lineno"> 1310</span>                      <span class="keywordtype">int</span>    iterations = 50,</div>
+<div class="line"><a id="l01311" name="l01311"></a><span class="lineno"> 1311</span>                      <span class="keywordtype">float</span>  dt = 0.5f,</div>
+<div class="line"><a id="l01312" name="l01312"></a><span class="lineno"> 1312</span>                      <span class="keywordtype">float</span>  k_capacity = 0.5f,</div>
+<div class="line"><a id="l01313" name="l01313"></a><span class="lineno"> 1313</span>                      <span class="keywordtype">float</span>  k_erode = 0.001f,</div>
+<div class="line"><a id="l01314" name="l01314"></a><span class="lineno"> 1314</span>                      <span class="keywordtype">float</span>  k_depose = 0.01f,</div>
+<div class="line"><a id="l01315" name="l01315"></a><span class="lineno"> 1315</span>                      <span class="keywordtype">float</span>  k_discharge_exp = 1.f,</div>
+<div class="line"><a id="l01316" name="l01316"></a><span class="lineno"> 1316</span>                      <span class="keywordtype">float</span>  downcutting_max_depth_ratio = 10.f,</div>
+<div class="line"><a id="l01317" name="l01317"></a><span class="lineno"> 1317</span>                      <span class="keywordtype">bool</span>   flux_diffusion = <span class="keyword">true</span>,</div>
+<div class="line"><a id="l01318" name="l01318"></a><span class="lineno"> 1318</span>                      <span class="keywordtype">float</span>  flux_diffusion_strength = 0.01f,</div>
+<div class="line"><a id="l01319" name="l01319"></a><span class="lineno"> 1319</span>                      Array *p_rain_map = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01320" name="l01320"></a><span class="lineno"> 1320</span>                      Array *p_water_depth = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01321" name="l01321"></a><span class="lineno"> 1321</span>                      Array *p_sediment = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01322" name="l01322"></a><span class="lineno"> 1322</span>                      Array *p_vel_u = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01323" name="l01323"></a><span class="lineno"> 1323</span>                      Array *p_vel_v = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l01324" name="l01324"></a><span class="lineno"> 1324</span> </div>
+<div class="line"><a id="l01376" name="l01376"></a><span class="lineno"> 1376</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#adca53669496f6a636042e11a859d1a16">rifts</a>(Array           &amp;z,</div>
+<div class="line"><a id="l01377" name="l01377"></a><span class="lineno"> 1377</span>           <span class="keyword">const</span> glm::vec2 &amp;kw,    <span class="comment">//  = {4.f, 1.2f},</span></div>
+<div class="line"><a id="l01378" name="l01378"></a><span class="lineno"> 1378</span>           <span class="keywordtype">float</span>            <a class="code hl_function" href="namespacehmap.html#aac71bb6c14edc17967957f7918acdbdd">angle</a>, <span class="comment">// degs</span></div>
+<div class="line"><a id="l01379" name="l01379"></a><span class="lineno"> 1379</span>           <span class="keywordtype">float</span>            amplitude,</div>
+<div class="line"><a id="l01380" name="l01380"></a><span class="lineno"> 1380</span>           <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>             seed,</div>
+<div class="line"><a id="l01381" name="l01381"></a><span class="lineno"> 1381</span>           <span class="keywordtype">float</span>            elevation_noise_shift = 0.f,</div>
+<div class="line"><a id="l01382" name="l01382"></a><span class="lineno"> 1382</span>           <span class="keywordtype">float</span>            k_smooth_bottom = 0.05f,</div>
+<div class="line"><a id="l01383" name="l01383"></a><span class="lineno"> 1383</span>           <span class="keywordtype">float</span>            k_smooth_top = 0.05f,</div>
+<div class="line"><a id="l01384" name="l01384"></a><span class="lineno"> 1384</span>           <span class="keywordtype">float</span>            radial_spread_amp = 0.2f,</div>
+<div class="line"><a id="l01385" name="l01385"></a><span class="lineno"> 1385</span>           <span class="keywordtype">float</span>            elevation_noise_amp = 0.1f,</div>
+<div class="line"><a id="l01386" name="l01386"></a><span class="lineno"> 1386</span>           <span class="keywordtype">float</span>            clamp_vmin = 0.f,</div>
+<div class="line"><a id="l01387" name="l01387"></a><span class="lineno"> 1387</span>           <span class="keywordtype">float</span>            remap_vmin = 0.f,</div>
+<div class="line"><a id="l01388" name="l01388"></a><span class="lineno"> 1388</span>           <span class="keywordtype">bool</span>             apply_mask = <span class="keyword">true</span>,</div>
+<div class="line"><a id="l01389" name="l01389"></a><span class="lineno"> 1389</span>           <span class="keywordtype">bool</span>             reverse_mask = <span class="keyword">false</span>,</div>
+<div class="line"><a id="l01390" name="l01390"></a><span class="lineno"> 1390</span>           <span class="keywordtype">float</span>            mask_gamma = 1.f,</div>
+<div class="line"><a id="l01391" name="l01391"></a><span class="lineno"> 1391</span>           <span class="keyword">const</span> Array     *p_noise_x = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01392" name="l01392"></a><span class="lineno"> 1392</span>           <span class="keyword">const</span> Array     *p_noise_y = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01393" name="l01393"></a><span class="lineno"> 1393</span>           <span class="keyword">const</span> Array     *p_mask = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01394" name="l01394"></a><span class="lineno"> 1394</span>           <span class="keyword">const</span> glm::vec2 &amp;center = {0.5f, 0.5f},</div>
+<div class="line"><a id="l01395" name="l01395"></a><span class="lineno"> 1395</span>           <span class="keyword">const</span> glm::vec4 &amp;bbox = {0.f, 1.f, 0.f, 1.f});</div>
+<div class="line"><a id="l01396" name="l01396"></a><span class="lineno"> 1396</span> </div>
+<div class="line"><a id="l01419" name="l01419"></a><span class="lineno"> 1419</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#a1c2651f7a65e696e8b444364abf0b3cc">sediment_deposition</a>(Array       &amp;z,</div>
+<div class="line"><a id="l01420" name="l01420"></a><span class="lineno"> 1420</span>                         Array       *p_mask,</div>
+<div class="line"><a id="l01421" name="l01421"></a><span class="lineno"> 1421</span>                         <span class="keyword">const</span> Array &amp;talus,</div>
+<div class="line"><a id="l01422" name="l01422"></a><span class="lineno"> 1422</span>                         Array       *p_deposition_map = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01423" name="l01423"></a><span class="lineno"> 1423</span>                         <span class="keywordtype">float</span>        max_deposition = 0.01,</div>
+<div class="line"><a id="l01424" name="l01424"></a><span class="lineno"> 1424</span>                         <span class="keywordtype">int</span>          iterations = 5,</div>
+<div class="line"><a id="l01425" name="l01425"></a><span class="lineno"> 1425</span>                         <span class="keywordtype">int</span>          thermal_subiterations = 10);</div>
+<div class="line"><a id="l01426" name="l01426"></a><span class="lineno"> 1426</span> </div>
+<div class="line"><a id="l01427" name="l01427"></a><span class="lineno"> 1427</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#a1c2651f7a65e696e8b444364abf0b3cc">sediment_deposition</a>(Array       &amp;z,</div>
+<div class="line"><a id="l01428" name="l01428"></a><span class="lineno"> 1428</span>                         <span class="keyword">const</span> Array &amp;talus,</div>
+<div class="line"><a id="l01429" name="l01429"></a><span class="lineno"> 1429</span>                         Array       *p_deposition_map = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01430" name="l01430"></a><span class="lineno"> 1430</span>                         <span class="keywordtype">float</span>        max_deposition = 0.01,</div>
+<div class="line"><a id="l01431" name="l01431"></a><span class="lineno"> 1431</span>                         <span class="keywordtype">int</span>          iterations = 5,</div>
+<div class="line"><a id="l01432" name="l01432"></a><span class="lineno"> 1432</span>                         <span class="keywordtype">int</span>          thermal_subiterations = 10);</div>
+<div class="line"><a id="l01433" name="l01433"></a><span class="lineno"> 1433</span> </div>
+<div class="line"><a id="l01455" name="l01455"></a><span class="lineno"> 1455</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#aec782e6aba3f4cfbbd97aafa46cc700b">sediment_layer</a>(Array       &amp;z,</div>
+<div class="line"><a id="l01456" name="l01456"></a><span class="lineno"> 1456</span>                    <span class="keyword">const</span> Array &amp;talus_layer,</div>
+<div class="line"><a id="l01457" name="l01457"></a><span class="lineno"> 1457</span>                    <span class="keyword">const</span> Array &amp;talus_upper_limit,</div>
+<div class="line"><a id="l01458" name="l01458"></a><span class="lineno"> 1458</span>                    <span class="keywordtype">int</span>          iterations,</div>
+<div class="line"><a id="l01459" name="l01459"></a><span class="lineno"> 1459</span>                    <span class="keywordtype">bool</span>         apply_post_filter = <span class="keyword">true</span>,</div>
+<div class="line"><a id="l01460" name="l01460"></a><span class="lineno"> 1460</span>                    Array       *p_deposition_map = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l01461" name="l01461"></a><span class="lineno"> 1461</span> </div>
+<div class="line"><a id="l01519" name="l01519"></a><span class="lineno"> 1519</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#afb140daa72128c65f1af72ed17dae9a5">strata</a>(Array           &amp;z,</div>
+<div class="line"><a id="l01520" name="l01520"></a><span class="lineno"> 1520</span>            <span class="keywordtype">float</span>            <a class="code hl_function" href="namespacehmap.html#aac71bb6c14edc17967957f7918acdbdd">angle</a>,</div>
+<div class="line"><a id="l01521" name="l01521"></a><span class="lineno"> 1521</span>            <span class="keywordtype">float</span>            <a class="code hl_function" href="namespacehmap.html#a79ad6fb857a38f8de9915d01992e5161">slope</a>,</div>
+<div class="line"><a id="l01522" name="l01522"></a><span class="lineno"> 1522</span>            <span class="keywordtype">float</span>            gamma, <span class="comment">// e.g 0.5f or 1.5f</span></div>
+<div class="line"><a id="l01523" name="l01523"></a><span class="lineno"> 1523</span>            <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>             seed,</div>
+<div class="line"><a id="l01524" name="l01524"></a><span class="lineno"> 1524</span>            <span class="keywordtype">bool</span>             linear_gamma = <span class="keyword">true</span>,</div>
+<div class="line"><a id="l01525" name="l01525"></a><span class="lineno"> 1525</span>            <span class="keywordtype">float</span>            kz = 1.f,</div>
+<div class="line"><a id="l01526" name="l01526"></a><span class="lineno"> 1526</span>            <span class="keywordtype">int</span>              octaves = 4,</div>
+<div class="line"><a id="l01527" name="l01527"></a><span class="lineno"> 1527</span>            <span class="keywordtype">float</span>            lacunarity = 2.f,</div>
+<div class="line"><a id="l01528" name="l01528"></a><span class="lineno"> 1528</span>            <span class="keywordtype">float</span>            gamma_noise_ratio = 0.5f,</div>
+<div class="line"><a id="l01529" name="l01529"></a><span class="lineno"> 1529</span>            <span class="keywordtype">float</span>            noise_amp = 0.4f,</div>
+<div class="line"><a id="l01530" name="l01530"></a><span class="lineno"> 1530</span>            <span class="keyword">const</span> glm::vec2 &amp;noise_kw = {4.f, 4.f},</div>
+<div class="line"><a id="l01531" name="l01531"></a><span class="lineno"> 1531</span>            <span class="keyword">const</span> glm::vec2 &amp;ridge_noise_kw = {4.f, 1.2f},</div>
+<div class="line"><a id="l01532" name="l01532"></a><span class="lineno"> 1532</span>            <span class="keywordtype">float</span>            ridge_angle_shift = 45.f,</div>
+<div class="line"><a id="l01533" name="l01533"></a><span class="lineno"> 1533</span>            <span class="keywordtype">float</span>            ridge_noise_amp = 0.5f,</div>
+<div class="line"><a id="l01534" name="l01534"></a><span class="lineno"> 1534</span>            <span class="keywordtype">float</span>            ridge_clamp_vmin = 0.f,</div>
+<div class="line"><a id="l01535" name="l01535"></a><span class="lineno"> 1535</span>            <span class="keywordtype">float</span>            ridge_remap_vmin = 0.f,</div>
+<div class="line"><a id="l01536" name="l01536"></a><span class="lineno"> 1536</span>            <span class="keywordtype">bool</span>             apply_elevation_mask = <span class="keyword">true</span>,</div>
+<div class="line"><a id="l01537" name="l01537"></a><span class="lineno"> 1537</span>            <span class="keywordtype">bool</span>             apply_ridge_mask = <span class="keyword">true</span>,</div>
+<div class="line"><a id="l01538" name="l01538"></a><span class="lineno"> 1538</span>            <span class="keywordtype">float</span>            mask_gamma = 0.4f,</div>
+<div class="line"><a id="l01539" name="l01539"></a><span class="lineno"> 1539</span>            <span class="keyword">const</span> Array     *p_mask = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01540" name="l01540"></a><span class="lineno"> 1540</span>            <span class="keyword">const</span> glm::vec4 &amp;bbox = {0.f, 1.f, 0.f, 1.f});</div>
+<div class="line"><a id="l01541" name="l01541"></a><span class="lineno"> 1541</span> </div>
+<div class="line"><a id="l01542" name="l01542"></a><span class="lineno"> 1542</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#a663d541671a7a9afbd694ccb11351ec5">strata_cells</a>(Array       &amp;z,</div>
+<div class="line"><a id="l01543" name="l01543"></a><span class="lineno"> 1543</span>                  glm::vec2    kw,</div>
+<div class="line"><a id="l01544" name="l01544"></a><span class="lineno"> 1544</span>                  <span class="keywordtype">float</span>        amp,</div>
+<div class="line"><a id="l01545" name="l01545"></a><span class="lineno"> 1545</span>                  <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>         seed,</div>
+<div class="line"><a id="l01546" name="l01546"></a><span class="lineno"> 1546</span>                  <span class="keywordtype">float</span>        gamma = 0.5f,</div>
+<div class="line"><a id="l01547" name="l01547"></a><span class="lineno"> 1547</span>                  <span class="keywordtype">float</span>        gamma_lateral = 0.4f,</div>
+<div class="line"><a id="l01548" name="l01548"></a><span class="lineno"> 1548</span>                  <span class="keywordtype">float</span>        <a class="code hl_function" href="namespacehmap.html#aac71bb6c14edc17967957f7918acdbdd">angle</a> = 0.f,</div>
+<div class="line"><a id="l01549" name="l01549"></a><span class="lineno"> 1549</span>                  <span class="keywordtype">float</span>        noise_amp = 0.5f,</div>
+<div class="line"><a id="l01550" name="l01550"></a><span class="lineno"> 1550</span>                  <span class="keywordtype">bool</span>         absolute_displacement = <span class="keyword">true</span>,</div>
+<div class="line"><a id="l01551" name="l01551"></a><span class="lineno"> 1551</span>                  <span class="keywordtype">float</span>        occurence_probability = 0.5f,</div>
+<div class="line"><a id="l01552" name="l01552"></a><span class="lineno"> 1552</span>                  <span class="keyword">const</span> Array *p_noise_x = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01553" name="l01553"></a><span class="lineno"> 1553</span>                  <span class="keyword">const</span> Array *p_noise_y = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01554" name="l01554"></a><span class="lineno"> 1554</span>                  glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});</div>
+<div class="line"><a id="l01555" name="l01555"></a><span class="lineno"> 1555</span> </div>
+<div class="line"><a id="l01556" name="l01556"></a><span class="lineno"> 1556</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#a663d541671a7a9afbd694ccb11351ec5">strata_cells</a>(Array       &amp;z,</div>
+<div class="line"><a id="l01557" name="l01557"></a><span class="lineno"> 1557</span>                  glm::vec2    kw,</div>
+<div class="line"><a id="l01558" name="l01558"></a><span class="lineno"> 1558</span>                  <span class="keywordtype">float</span>        amp,</div>
+<div class="line"><a id="l01559" name="l01559"></a><span class="lineno"> 1559</span>                  <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>         seed,</div>
+<div class="line"><a id="l01560" name="l01560"></a><span class="lineno"> 1560</span>                  <span class="keyword">const</span> Array *p_mask,</div>
+<div class="line"><a id="l01561" name="l01561"></a><span class="lineno"> 1561</span>                  <span class="keywordtype">float</span>        gamma = 0.5f,</div>
+<div class="line"><a id="l01562" name="l01562"></a><span class="lineno"> 1562</span>                  <span class="keywordtype">float</span>        gamma_lateral = 0.4f,</div>
+<div class="line"><a id="l01563" name="l01563"></a><span class="lineno"> 1563</span>                  <span class="keywordtype">float</span>        <a class="code hl_function" href="namespacehmap.html#aac71bb6c14edc17967957f7918acdbdd">angle</a> = 0.f,</div>
+<div class="line"><a id="l01564" name="l01564"></a><span class="lineno"> 1564</span>                  <span class="keywordtype">float</span>        noise_amp = 0.5f,</div>
+<div class="line"><a id="l01565" name="l01565"></a><span class="lineno"> 1565</span>                  <span class="keywordtype">bool</span>         absolute_displacement = <span class="keyword">true</span>,</div>
+<div class="line"><a id="l01566" name="l01566"></a><span class="lineno"> 1566</span>                  <span class="keywordtype">float</span>        occurence_probability = 0.5f,</div>
+<div class="line"><a id="l01567" name="l01567"></a><span class="lineno"> 1567</span>                  <span class="keyword">const</span> Array *p_noise_x = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01568" name="l01568"></a><span class="lineno"> 1568</span>                  <span class="keyword">const</span> Array *p_noise_y = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01569" name="l01569"></a><span class="lineno"> 1569</span>                  glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});</div>
+<div class="line"><a id="l01570" name="l01570"></a><span class="lineno"> 1570</span> </div>
+<div class="line"><a id="l01571" name="l01571"></a><span class="lineno"> 1571</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#a182b5cbe63e2d42368c19f66dd9febb3">strata_cells_fbm</a>(Array       &amp;z,</div>
+<div class="line"><a id="l01572" name="l01572"></a><span class="lineno"> 1572</span>                      glm::vec2    kw,</div>
+<div class="line"><a id="l01573" name="l01573"></a><span class="lineno"> 1573</span>                      <span class="keywordtype">float</span>        amp,</div>
+<div class="line"><a id="l01574" name="l01574"></a><span class="lineno"> 1574</span>                      <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>         seed,</div>
+<div class="line"><a id="l01575" name="l01575"></a><span class="lineno"> 1575</span>                      <span class="keywordtype">float</span>        gamma = 0.5f,</div>
+<div class="line"><a id="l01576" name="l01576"></a><span class="lineno"> 1576</span>                      <span class="keywordtype">float</span>        gamma_lateral = 0.4f,</div>
+<div class="line"><a id="l01577" name="l01577"></a><span class="lineno"> 1577</span>                      <span class="keywordtype">float</span>        <a class="code hl_function" href="namespacehmap.html#aac71bb6c14edc17967957f7918acdbdd">angle</a> = 0.f,</div>
+<div class="line"><a id="l01578" name="l01578"></a><span class="lineno"> 1578</span>                      <span class="keywordtype">bool</span>         enable_default_noise = <span class="keyword">true</span>,</div>
+<div class="line"><a id="l01579" name="l01579"></a><span class="lineno"> 1579</span>                      <span class="keywordtype">float</span>        default_noise_amp = 0.05f,</div>
+<div class="line"><a id="l01580" name="l01580"></a><span class="lineno"> 1580</span>                      <span class="keywordtype">bool</span>         absolute_displacement = <span class="keyword">true</span>,</div>
+<div class="line"><a id="l01581" name="l01581"></a><span class="lineno"> 1581</span>                      <span class="keywordtype">float</span>        occurence_probability = 0.5f,</div>
+<div class="line"><a id="l01582" name="l01582"></a><span class="lineno"> 1582</span>                      <span class="keywordtype">int</span>          octaves = 8,</div>
+<div class="line"><a id="l01583" name="l01583"></a><span class="lineno"> 1583</span>                      <span class="keywordtype">float</span>        persistence = 0.4f,</div>
+<div class="line"><a id="l01584" name="l01584"></a><span class="lineno"> 1584</span>                      <span class="keywordtype">float</span>        lacunarity = 2.2f,</div>
+<div class="line"><a id="l01585" name="l01585"></a><span class="lineno"> 1585</span>                      <span class="keyword">const</span> Array *p_noise_x = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01586" name="l01586"></a><span class="lineno"> 1586</span>                      <span class="keyword">const</span> Array *p_noise_y = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01587" name="l01587"></a><span class="lineno"> 1587</span>                      glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});</div>
+<div class="line"><a id="l01588" name="l01588"></a><span class="lineno"> 1588</span> </div>
+<div class="line"><a id="l01589" name="l01589"></a><span class="lineno"> 1589</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#a182b5cbe63e2d42368c19f66dd9febb3">strata_cells_fbm</a>(Array       &amp;z,</div>
+<div class="line"><a id="l01590" name="l01590"></a><span class="lineno"> 1590</span>                      glm::vec2    kw,</div>
+<div class="line"><a id="l01591" name="l01591"></a><span class="lineno"> 1591</span>                      <span class="keywordtype">float</span>        amp,</div>
+<div class="line"><a id="l01592" name="l01592"></a><span class="lineno"> 1592</span>                      <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>         seed,</div>
+<div class="line"><a id="l01593" name="l01593"></a><span class="lineno"> 1593</span>                      <span class="keyword">const</span> Array *p_mask,</div>
+<div class="line"><a id="l01594" name="l01594"></a><span class="lineno"> 1594</span>                      <span class="keywordtype">float</span>        gamma = 0.5f,</div>
+<div class="line"><a id="l01595" name="l01595"></a><span class="lineno"> 1595</span>                      <span class="keywordtype">float</span>        gamma_lateral = 0.4f,</div>
+<div class="line"><a id="l01596" name="l01596"></a><span class="lineno"> 1596</span>                      <span class="keywordtype">float</span>        <a class="code hl_function" href="namespacehmap.html#aac71bb6c14edc17967957f7918acdbdd">angle</a> = 0.f,</div>
+<div class="line"><a id="l01597" name="l01597"></a><span class="lineno"> 1597</span>                      <span class="keywordtype">bool</span>         enable_default_noise = <span class="keyword">true</span>,</div>
+<div class="line"><a id="l01598" name="l01598"></a><span class="lineno"> 1598</span>                      <span class="keywordtype">float</span>        default_noise_amp = 0.05f,</div>
+<div class="line"><a id="l01599" name="l01599"></a><span class="lineno"> 1599</span>                      <span class="keywordtype">bool</span>         absolute_displacement = <span class="keyword">true</span>,</div>
+<div class="line"><a id="l01600" name="l01600"></a><span class="lineno"> 1600</span>                      <span class="keywordtype">float</span>        occurence_probability = 0.5f,</div>
+<div class="line"><a id="l01601" name="l01601"></a><span class="lineno"> 1601</span>                      <span class="keywordtype">int</span>          octaves = 8,</div>
+<div class="line"><a id="l01602" name="l01602"></a><span class="lineno"> 1602</span>                      <span class="keywordtype">float</span>        persistence = 0.4f,</div>
+<div class="line"><a id="l01603" name="l01603"></a><span class="lineno"> 1603</span>                      <span class="keywordtype">float</span>        lacunarity = 2.2f,</div>
+<div class="line"><a id="l01604" name="l01604"></a><span class="lineno"> 1604</span>                      <span class="keyword">const</span> Array *p_noise_x = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01605" name="l01605"></a><span class="lineno"> 1605</span>                      <span class="keyword">const</span> Array *p_noise_y = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01606" name="l01606"></a><span class="lineno"> 1606</span>                      glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});</div>
+<div class="line"><a id="l01607" name="l01607"></a><span class="lineno"> 1607</span> </div>
+<div class="line"><a id="l01609" name="l01609"></a><span class="lineno"> 1609</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#a2eb4bdf2d7dc4441e56865027764425e">thermal</a>(Array       &amp;z,</div>
+<div class="line"><a id="l01610" name="l01610"></a><span class="lineno"> 1610</span>             <span class="keyword">const</span> Array &amp;talus,</div>
+<div class="line"><a id="l01611" name="l01611"></a><span class="lineno"> 1611</span>             <span class="keywordtype">int</span>          iterations = 10,</div>
+<div class="line"><a id="l01612" name="l01612"></a><span class="lineno"> 1612</span>             Array       *p_bedrock = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01613" name="l01613"></a><span class="lineno"> 1613</span>             Array       *p_deposition_map = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l01614" name="l01614"></a><span class="lineno"> 1614</span> </div>
+<div class="line"><a id="l01616" name="l01616"></a><span class="lineno"> 1616</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#a2eb4bdf2d7dc4441e56865027764425e">thermal</a>(Array       &amp;z,</div>
+<div class="line"><a id="l01617" name="l01617"></a><span class="lineno"> 1617</span>             Array       *p_mask,</div>
+<div class="line"><a id="l01618" name="l01618"></a><span class="lineno"> 1618</span>             <span class="keyword">const</span> Array &amp;talus,</div>
+<div class="line"><a id="l01619" name="l01619"></a><span class="lineno"> 1619</span>             <span class="keywordtype">int</span>          iterations = 10,</div>
+<div class="line"><a id="l01620" name="l01620"></a><span class="lineno"> 1620</span>             Array       *p_bedrock = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01621" name="l01621"></a><span class="lineno"> 1621</span>             Array       *p_deposition_map = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l01622" name="l01622"></a><span class="lineno"> 1622</span> </div>
+<div class="line"><a id="l01624" name="l01624"></a><span class="lineno"> 1624</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#a2eb4bdf2d7dc4441e56865027764425e">thermal</a>(Array &amp;z,</div>
+<div class="line"><a id="l01625" name="l01625"></a><span class="lineno"> 1625</span>             <span class="keywordtype">float</span>  talus,</div>
+<div class="line"><a id="l01626" name="l01626"></a><span class="lineno"> 1626</span>             <span class="keywordtype">int</span>    iterations = 10,</div>
+<div class="line"><a id="l01627" name="l01627"></a><span class="lineno"> 1627</span>             Array *p_bedrock = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01628" name="l01628"></a><span class="lineno"> 1628</span>             Array *p_deposition_map = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l01629" name="l01629"></a><span class="lineno"> 1629</span> </div>
+<div class="line"><a id="l01631" name="l01631"></a><span class="lineno"> 1631</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#a36a2eba6d158e44d0ef917d9582987fe">thermal_auto_bedrock</a>(Array       &amp;z,</div>
+<div class="line"><a id="l01632" name="l01632"></a><span class="lineno"> 1632</span>                          <span class="keyword">const</span> Array &amp;talus,</div>
+<div class="line"><a id="l01633" name="l01633"></a><span class="lineno"> 1633</span>                          <span class="keywordtype">int</span>          iterations = 10,</div>
+<div class="line"><a id="l01634" name="l01634"></a><span class="lineno"> 1634</span>                          Array       *p_deposition_map = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l01635" name="l01635"></a><span class="lineno"> 1635</span> </div>
+<div class="line"><a id="l01637" name="l01637"></a><span class="lineno"> 1637</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#a36a2eba6d158e44d0ef917d9582987fe">thermal_auto_bedrock</a>(Array       &amp;z,</div>
+<div class="line"><a id="l01638" name="l01638"></a><span class="lineno"> 1638</span>                          Array       *p_mask,</div>
+<div class="line"><a id="l01639" name="l01639"></a><span class="lineno"> 1639</span>                          <span class="keyword">const</span> Array &amp;talus,</div>
+<div class="line"><a id="l01640" name="l01640"></a><span class="lineno"> 1640</span>                          <span class="keywordtype">int</span>          iterations = 10,</div>
+<div class="line"><a id="l01641" name="l01641"></a><span class="lineno"> 1641</span>                          Array       *p_deposition_map = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l01642" name="l01642"></a><span class="lineno"> 1642</span> </div>
+<div class="line"><a id="l01644" name="l01644"></a><span class="lineno"> 1644</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#a36a2eba6d158e44d0ef917d9582987fe">thermal_auto_bedrock</a>(Array &amp;z,</div>
+<div class="line"><a id="l01645" name="l01645"></a><span class="lineno"> 1645</span>                          <span class="keywordtype">float</span>,</div>
+<div class="line"><a id="l01646" name="l01646"></a><span class="lineno"> 1646</span>                          <span class="keywordtype">int</span>    iterations = 10,</div>
+<div class="line"><a id="l01647" name="l01647"></a><span class="lineno"> 1647</span>                          Array *p_deposition_map = <span class="keyword">nullptr</span>);</div>
 <div class="line"><a id="l01648" name="l01648"></a><span class="lineno"> 1648</span> </div>
-<div class="line"><a id="l01666" name="l01666"></a><span class="lineno"> 1666</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#ae57a1e9bd94f218d4be17c9d8be012c3">thermal_inflate</a>(Array &amp;z, <span class="keyword">const</span> Array &amp;talus, <span class="keywordtype">int</span> iterations = 10);</div>
-<div class="line"><a id="l01667" name="l01667"></a><span class="lineno"> 1667</span> </div>
-<div class="line"><a id="l01668" name="l01668"></a><span class="lineno"> 1668</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#ae57a1e9bd94f218d4be17c9d8be012c3">thermal_inflate</a>(Array       &amp;z,</div>
-<div class="line"><a id="l01669" name="l01669"></a><span class="lineno"> 1669</span>                     <span class="keyword">const</span> Array *p_mask,</div>
-<div class="line"><a id="l01670" name="l01670"></a><span class="lineno"> 1670</span>                     <span class="keyword">const</span> Array &amp;talus,</div>
-<div class="line"><a id="l01671" name="l01671"></a><span class="lineno"> 1671</span>                     <span class="keywordtype">int</span>          iterations = 10); </div>
-<div class="line"><a id="l01672" name="l01672"></a><span class="lineno"> 1672</span> </div>
-<div class="line"><a id="l01674" name="l01674"></a><span class="lineno"> 1674</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#afabf7cb3077839af03388c0d1236d912">thermal_rib</a>(Array &amp;z, <span class="keywordtype">int</span> iterations, Array *p_bedrock = <span class="keyword">nullptr</span>);</div>
-<div class="line"><a id="l01675" name="l01675"></a><span class="lineno"> 1675</span> </div>
-<div class="line"><a id="l01695" name="l01695"></a><span class="lineno"> 1695</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#a1489150d5e1af976a9f814b9911b3ea0">thermal_ridge</a>(Array       &amp;z,</div>
-<div class="line"><a id="l01696" name="l01696"></a><span class="lineno"> 1696</span>                   <span class="keyword">const</span> Array &amp;talus,</div>
-<div class="line"><a id="l01697" name="l01697"></a><span class="lineno"> 1697</span>                   <span class="keywordtype">int</span>          iterations = 10,</div>
-<div class="line"><a id="l01698" name="l01698"></a><span class="lineno"> 1698</span>                   Array       *p_deposition_map = <span class="keyword">nullptr</span>);</div>
-<div class="line"><a id="l01699" name="l01699"></a><span class="lineno"> 1699</span> </div>
-<div class="line"><a id="l01700" name="l01700"></a><span class="lineno"> 1700</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#a1489150d5e1af976a9f814b9911b3ea0">thermal_ridge</a>(Array       &amp;z,</div>
-<div class="line"><a id="l01701" name="l01701"></a><span class="lineno"> 1701</span>                   <span class="keyword">const</span> Array *p_mask,</div>
-<div class="line"><a id="l01702" name="l01702"></a><span class="lineno"> 1702</span>                   <span class="keyword">const</span> Array &amp;talus,</div>
-<div class="line"><a id="l01703" name="l01703"></a><span class="lineno"> 1703</span>                   <span class="keywordtype">int</span>          iterations = 10,</div>
-<div class="line"><a id="l01704" name="l01704"></a><span class="lineno"> 1704</span>                   Array       *p_deposition_map = <span class="keyword">nullptr</span>); </div>
-<div class="line"><a id="l01705" name="l01705"></a><span class="lineno"> 1705</span> </div>
-<div class="line"><a id="l01725" name="l01725"></a><span class="lineno"> 1725</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#ab753c4abd819aa6945c1cfc5e25ccec4">thermal_scree</a>(Array       &amp;z,</div>
-<div class="line"><a id="l01726" name="l01726"></a><span class="lineno"> 1726</span>                   <span class="keyword">const</span> Array &amp;talus,</div>
-<div class="line"><a id="l01727" name="l01727"></a><span class="lineno"> 1727</span>                   <span class="keyword">const</span> Array &amp;zmax,</div>
-<div class="line"><a id="l01728" name="l01728"></a><span class="lineno"> 1728</span>                   <span class="keywordtype">int</span>          iterations = 10,</div>
-<div class="line"><a id="l01729" name="l01729"></a><span class="lineno"> 1729</span>                   Array       *p_deposition_map = <span class="keyword">nullptr</span>);</div>
-<div class="line"><a id="l01730" name="l01730"></a><span class="lineno"> 1730</span> </div>
-<div class="line"><a id="l01731" name="l01731"></a><span class="lineno"> 1731</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#ab753c4abd819aa6945c1cfc5e25ccec4">thermal_scree</a>(Array       &amp;z,</div>
-<div class="line"><a id="l01732" name="l01732"></a><span class="lineno"> 1732</span>                   <span class="keyword">const</span> Array *p_mask,</div>
-<div class="line"><a id="l01733" name="l01733"></a><span class="lineno"> 1733</span>                   <span class="keyword">const</span> Array &amp;talus,</div>
-<div class="line"><a id="l01734" name="l01734"></a><span class="lineno"> 1734</span>                   <span class="keyword">const</span> Array &amp;zmax,</div>
-<div class="line"><a id="l01735" name="l01735"></a><span class="lineno"> 1735</span>                   <span class="keywordtype">int</span>          iterations = 10,</div>
-<div class="line"><a id="l01736" name="l01736"></a><span class="lineno"> 1736</span>                   Array       *p_deposition_map = <span class="keyword">nullptr</span>); </div>
-<div class="line"><a id="l01737" name="l01737"></a><span class="lineno"> 1737</span> </div>
-<div class="line"><a id="l01758" name="l01758"></a><span class="lineno"> 1758</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#ae8a8da3d95deb978d813ce782a1492bb">valley_fill</a>(Array       &amp;z,</div>
-<div class="line"><a id="l01759" name="l01759"></a><span class="lineno"> 1759</span>                 <span class="keyword">const</span> Array &amp;talus,</div>
-<div class="line"><a id="l01760" name="l01760"></a><span class="lineno"> 1760</span>                 <span class="keywordtype">int</span>          iterations = 100,</div>
-<div class="line"><a id="l01761" name="l01761"></a><span class="lineno"> 1761</span>                 <span class="keywordtype">float</span>        gamma = 2.f,</div>
-<div class="line"><a id="l01762" name="l01762"></a><span class="lineno"> 1762</span>                 <span class="keywordtype">float</span>        ratio = 0.8f,</div>
-<div class="line"><a id="l01763" name="l01763"></a><span class="lineno"> 1763</span>                 <span class="keywordtype">float</span>        zmin = 0.f,</div>
-<div class="line"><a id="l01764" name="l01764"></a><span class="lineno"> 1764</span>                 <span class="keywordtype">float</span>        zmax = 0.f,</div>
-<div class="line"><a id="l01765" name="l01765"></a><span class="lineno"> 1765</span>                 <span class="keywordtype">float</span>        elevation_max_ratio = 1.f,</div>
-<div class="line"><a id="l01766" name="l01766"></a><span class="lineno"> 1766</span>                 <span class="keywordtype">bool</span>         preserve_elevation_range = <span class="keyword">true</span>,</div>
-<div class="line"><a id="l01767" name="l01767"></a><span class="lineno"> 1767</span>                 <span class="keyword">const</span> Array *p_noise = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01768" name="l01768"></a><span class="lineno"> 1768</span>                 Array       *p_deposition_map = <span class="keyword">nullptr</span>);</div>
-<div class="line"><a id="l01769" name="l01769"></a><span class="lineno"> 1769</span> </div>
-<div class="line"><a id="l01770" name="l01770"></a><span class="lineno"> 1770</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#ae8a8da3d95deb978d813ce782a1492bb">valley_fill</a>(Array       &amp;z,</div>
-<div class="line"><a id="l01771" name="l01771"></a><span class="lineno"> 1771</span>                 <span class="keyword">const</span> Array *p_mask,</div>
-<div class="line"><a id="l01772" name="l01772"></a><span class="lineno"> 1772</span>                 <span class="keyword">const</span> Array &amp;talus,</div>
-<div class="line"><a id="l01773" name="l01773"></a><span class="lineno"> 1773</span>                 <span class="keywordtype">int</span>          iterations = 100,</div>
-<div class="line"><a id="l01774" name="l01774"></a><span class="lineno"> 1774</span>                 <span class="keywordtype">float</span>        gamma = 2.f,</div>
-<div class="line"><a id="l01775" name="l01775"></a><span class="lineno"> 1775</span>                 <span class="keywordtype">float</span>        ratio = 0.8f,</div>
-<div class="line"><a id="l01776" name="l01776"></a><span class="lineno"> 1776</span>                 <span class="keywordtype">float</span>        zmin = 0.f,</div>
-<div class="line"><a id="l01777" name="l01777"></a><span class="lineno"> 1777</span>                 <span class="keywordtype">float</span>        zmax = 0.f,</div>
-<div class="line"><a id="l01778" name="l01778"></a><span class="lineno"> 1778</span>                 <span class="keywordtype">float</span>        elevation_max_ratio = 1.f,</div>
-<div class="line"><a id="l01779" name="l01779"></a><span class="lineno"> 1779</span>                 <span class="keywordtype">bool</span>         preserve_elevation_range = <span class="keyword">true</span>,</div>
-<div class="line"><a id="l01780" name="l01780"></a><span class="lineno"> 1780</span>                 <span class="keyword">const</span> Array *p_noise = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01781" name="l01781"></a><span class="lineno"> 1781</span>                 Array       *p_deposition_map = <span class="keyword">nullptr</span>);</div>
-<div class="line"><a id="l01782" name="l01782"></a><span class="lineno"> 1782</span> </div>
-<div class="line"><a id="l01804" name="l01804"></a><span class="lineno"> 1804</span>Array <a class="code hl_function" href="namespacehmap_1_1gpu.html#a52a653b3b3be84e8ff2330f30a6b5bf3">watershed_ridge</a>(</div>
-<div class="line"><a id="l01805" name="l01805"></a><span class="lineno"> 1805</span>    <span class="keyword">const</span> Array        &amp;z,</div>
-<div class="line"><a id="l01806" name="l01806"></a><span class="lineno"> 1806</span>    <span class="keywordtype">float</span>               amplitude = 0.2f,</div>
-<div class="line"><a id="l01807" name="l01807"></a><span class="lineno"> 1807</span>    <span class="keywordtype">float</span>               width = 32.f, <span class="comment">// pixels</span></div>
-<div class="line"><a id="l01808" name="l01808"></a><span class="lineno"> 1808</span>    <span class="keywordtype">float</span>               edt_exponent = 0.5f,</div>
-<div class="line"><a id="l01809" name="l01809"></a><span class="lineno"> 1809</span>    <span class="keywordtype">int</span>                 prefilter_ir = 0,</div>
-<div class="line"><a id="l01810" name="l01810"></a><span class="lineno"> 1810</span>    <a class="code hl_enumeration" href="namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2f">FlowDirectionMethod</a> fd_method = <a class="code hl_enumvalue" href="namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894">FlowDirectionMethod::FDM_D8</a>,</div>
-<div class="line"><a id="l01811" name="l01811"></a><span class="lineno"> 1811</span>    <span class="keyword">const</span> Array        *p_noise_x = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01812" name="l01812"></a><span class="lineno"> 1812</span>    <span class="keyword">const</span> Array        *p_noise_y = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01813" name="l01813"></a><span class="lineno"> 1813</span>    <span class="keyword">const</span> Array        *p_scaling = <span class="keyword">nullptr</span>);</div>
-<div class="line"><a id="l01814" name="l01814"></a><span class="lineno"> 1814</span> </div>
-<div class="line"><a id="l01815" name="l01815"></a><span class="lineno"> 1815</span>Array <a class="code hl_function" href="namespacehmap_1_1gpu.html#a52a653b3b3be84e8ff2330f30a6b5bf3">watershed_ridge</a>(</div>
-<div class="line"><a id="l01816" name="l01816"></a><span class="lineno"> 1816</span>    <span class="keyword">const</span> Array        &amp;z,</div>
-<div class="line"><a id="l01817" name="l01817"></a><span class="lineno"> 1817</span>    <span class="keyword">const</span> Array        *p_mask,</div>
-<div class="line"><a id="l01818" name="l01818"></a><span class="lineno"> 1818</span>    <span class="keywordtype">float</span>               amplitude = 0.2f,</div>
-<div class="line"><a id="l01819" name="l01819"></a><span class="lineno"> 1819</span>    <span class="keywordtype">float</span>               width = 32.f,</div>
-<div class="line"><a id="l01820" name="l01820"></a><span class="lineno"> 1820</span>    <span class="keywordtype">float</span>               edt_exponent = 0.5f,</div>
-<div class="line"><a id="l01821" name="l01821"></a><span class="lineno"> 1821</span>    <span class="keywordtype">int</span>                 prefilter_ir = 0,</div>
-<div class="line"><a id="l01822" name="l01822"></a><span class="lineno"> 1822</span>    <a class="code hl_enumeration" href="namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2f">FlowDirectionMethod</a> fd_method = <a class="code hl_enumvalue" href="namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894">FlowDirectionMethod::FDM_D8</a>,</div>
-<div class="line"><a id="l01823" name="l01823"></a><span class="lineno"> 1823</span>    <span class="keyword">const</span> Array        *p_noise_x = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01824" name="l01824"></a><span class="lineno"> 1824</span>    <span class="keyword">const</span> Array        *p_noise_y = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01825" name="l01825"></a><span class="lineno"> 1825</span>    <span class="keyword">const</span> Array        *p_scaling = <span class="keyword">nullptr</span>);</div>
-<div class="line"><a id="l01826" name="l01826"></a><span class="lineno"> 1826</span> </div>
-<div class="line"><a id="l01827" name="l01827"></a><span class="lineno"> 1827</span>} <span class="comment">// namespace hmap::gpu</span></div>
+<div class="line"><a id="l01650" name="l01650"></a><span class="lineno"> 1650</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#a00b54f4e60a8fbd6ed5213600d598869">thermal_olsen</a>(Array &amp;z, <span class="keyword">const</span> Array &amp;talus, <span class="keywordtype">int</span> iterations);</div>
+<div class="line"><a id="l01651" name="l01651"></a><span class="lineno"> 1651</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#a00b54f4e60a8fbd6ed5213600d598869">thermal_olsen</a>(Array &amp;z, Array *p_mask, <span class="keyword">const</span> Array &amp;talus, <span class="keywordtype">int</span> iterations);</div>
+<div class="line"><a id="l01652" name="l01652"></a><span class="lineno"> 1652</span> </div>
+<div class="line"><a id="l01670" name="l01670"></a><span class="lineno"> 1670</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#ae57a1e9bd94f218d4be17c9d8be012c3">thermal_inflate</a>(Array &amp;z, <span class="keyword">const</span> Array &amp;talus, <span class="keywordtype">int</span> iterations = 10);</div>
+<div class="line"><a id="l01671" name="l01671"></a><span class="lineno"> 1671</span> </div>
+<div class="line"><a id="l01672" name="l01672"></a><span class="lineno"> 1672</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#ae57a1e9bd94f218d4be17c9d8be012c3">thermal_inflate</a>(Array       &amp;z,</div>
+<div class="line"><a id="l01673" name="l01673"></a><span class="lineno"> 1673</span>                     <span class="keyword">const</span> Array *p_mask,</div>
+<div class="line"><a id="l01674" name="l01674"></a><span class="lineno"> 1674</span>                     <span class="keyword">const</span> Array &amp;talus,</div>
+<div class="line"><a id="l01675" name="l01675"></a><span class="lineno"> 1675</span>                     <span class="keywordtype">int</span>          iterations = 10); </div>
+<div class="line"><a id="l01676" name="l01676"></a><span class="lineno"> 1676</span> </div>
+<div class="line"><a id="l01678" name="l01678"></a><span class="lineno"> 1678</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#afabf7cb3077839af03388c0d1236d912">thermal_rib</a>(Array &amp;z, <span class="keywordtype">int</span> iterations, Array *p_bedrock = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l01679" name="l01679"></a><span class="lineno"> 1679</span> </div>
+<div class="line"><a id="l01699" name="l01699"></a><span class="lineno"> 1699</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#a1489150d5e1af976a9f814b9911b3ea0">thermal_ridge</a>(Array       &amp;z,</div>
+<div class="line"><a id="l01700" name="l01700"></a><span class="lineno"> 1700</span>                   <span class="keyword">const</span> Array &amp;talus,</div>
+<div class="line"><a id="l01701" name="l01701"></a><span class="lineno"> 1701</span>                   <span class="keywordtype">int</span>          iterations = 10,</div>
+<div class="line"><a id="l01702" name="l01702"></a><span class="lineno"> 1702</span>                   Array       *p_deposition_map = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l01703" name="l01703"></a><span class="lineno"> 1703</span> </div>
+<div class="line"><a id="l01704" name="l01704"></a><span class="lineno"> 1704</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#a1489150d5e1af976a9f814b9911b3ea0">thermal_ridge</a>(Array       &amp;z,</div>
+<div class="line"><a id="l01705" name="l01705"></a><span class="lineno"> 1705</span>                   <span class="keyword">const</span> Array *p_mask,</div>
+<div class="line"><a id="l01706" name="l01706"></a><span class="lineno"> 1706</span>                   <span class="keyword">const</span> Array &amp;talus,</div>
+<div class="line"><a id="l01707" name="l01707"></a><span class="lineno"> 1707</span>                   <span class="keywordtype">int</span>          iterations = 10,</div>
+<div class="line"><a id="l01708" name="l01708"></a><span class="lineno"> 1708</span>                   Array       *p_deposition_map = <span class="keyword">nullptr</span>); </div>
+<div class="line"><a id="l01709" name="l01709"></a><span class="lineno"> 1709</span> </div>
+<div class="line"><a id="l01729" name="l01729"></a><span class="lineno"> 1729</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#ab753c4abd819aa6945c1cfc5e25ccec4">thermal_scree</a>(Array       &amp;z,</div>
+<div class="line"><a id="l01730" name="l01730"></a><span class="lineno"> 1730</span>                   <span class="keyword">const</span> Array &amp;talus,</div>
+<div class="line"><a id="l01731" name="l01731"></a><span class="lineno"> 1731</span>                   <span class="keyword">const</span> Array &amp;zmax,</div>
+<div class="line"><a id="l01732" name="l01732"></a><span class="lineno"> 1732</span>                   <span class="keywordtype">int</span>          iterations = 10,</div>
+<div class="line"><a id="l01733" name="l01733"></a><span class="lineno"> 1733</span>                   Array       *p_deposition_map = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l01734" name="l01734"></a><span class="lineno"> 1734</span> </div>
+<div class="line"><a id="l01735" name="l01735"></a><span class="lineno"> 1735</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#ab753c4abd819aa6945c1cfc5e25ccec4">thermal_scree</a>(Array       &amp;z,</div>
+<div class="line"><a id="l01736" name="l01736"></a><span class="lineno"> 1736</span>                   <span class="keyword">const</span> Array *p_mask,</div>
+<div class="line"><a id="l01737" name="l01737"></a><span class="lineno"> 1737</span>                   <span class="keyword">const</span> Array &amp;talus,</div>
+<div class="line"><a id="l01738" name="l01738"></a><span class="lineno"> 1738</span>                   <span class="keyword">const</span> Array &amp;zmax,</div>
+<div class="line"><a id="l01739" name="l01739"></a><span class="lineno"> 1739</span>                   <span class="keywordtype">int</span>          iterations = 10,</div>
+<div class="line"><a id="l01740" name="l01740"></a><span class="lineno"> 1740</span>                   Array       *p_deposition_map = <span class="keyword">nullptr</span>); </div>
+<div class="line"><a id="l01741" name="l01741"></a><span class="lineno"> 1741</span> </div>
+<div class="line"><a id="l01762" name="l01762"></a><span class="lineno"> 1762</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#ae8a8da3d95deb978d813ce782a1492bb">valley_fill</a>(Array       &amp;z,</div>
+<div class="line"><a id="l01763" name="l01763"></a><span class="lineno"> 1763</span>                 <span class="keyword">const</span> Array &amp;talus,</div>
+<div class="line"><a id="l01764" name="l01764"></a><span class="lineno"> 1764</span>                 <span class="keywordtype">int</span>          iterations = 100,</div>
+<div class="line"><a id="l01765" name="l01765"></a><span class="lineno"> 1765</span>                 <span class="keywordtype">float</span>        gamma = 2.f,</div>
+<div class="line"><a id="l01766" name="l01766"></a><span class="lineno"> 1766</span>                 <span class="keywordtype">float</span>        ratio = 0.8f,</div>
+<div class="line"><a id="l01767" name="l01767"></a><span class="lineno"> 1767</span>                 <span class="keywordtype">float</span>        zmin = 0.f,</div>
+<div class="line"><a id="l01768" name="l01768"></a><span class="lineno"> 1768</span>                 <span class="keywordtype">float</span>        zmax = 0.f,</div>
+<div class="line"><a id="l01769" name="l01769"></a><span class="lineno"> 1769</span>                 <span class="keywordtype">float</span>        elevation_max_ratio = 1.f,</div>
+<div class="line"><a id="l01770" name="l01770"></a><span class="lineno"> 1770</span>                 <span class="keywordtype">bool</span>         preserve_elevation_range = <span class="keyword">true</span>,</div>
+<div class="line"><a id="l01771" name="l01771"></a><span class="lineno"> 1771</span>                 <span class="keyword">const</span> Array *p_noise = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01772" name="l01772"></a><span class="lineno"> 1772</span>                 Array       *p_deposition_map = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l01773" name="l01773"></a><span class="lineno"> 1773</span> </div>
+<div class="line"><a id="l01774" name="l01774"></a><span class="lineno"> 1774</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#ae8a8da3d95deb978d813ce782a1492bb">valley_fill</a>(Array       &amp;z,</div>
+<div class="line"><a id="l01775" name="l01775"></a><span class="lineno"> 1775</span>                 <span class="keyword">const</span> Array *p_mask,</div>
+<div class="line"><a id="l01776" name="l01776"></a><span class="lineno"> 1776</span>                 <span class="keyword">const</span> Array &amp;talus,</div>
+<div class="line"><a id="l01777" name="l01777"></a><span class="lineno"> 1777</span>                 <span class="keywordtype">int</span>          iterations = 100,</div>
+<div class="line"><a id="l01778" name="l01778"></a><span class="lineno"> 1778</span>                 <span class="keywordtype">float</span>        gamma = 2.f,</div>
+<div class="line"><a id="l01779" name="l01779"></a><span class="lineno"> 1779</span>                 <span class="keywordtype">float</span>        ratio = 0.8f,</div>
+<div class="line"><a id="l01780" name="l01780"></a><span class="lineno"> 1780</span>                 <span class="keywordtype">float</span>        zmin = 0.f,</div>
+<div class="line"><a id="l01781" name="l01781"></a><span class="lineno"> 1781</span>                 <span class="keywordtype">float</span>        zmax = 0.f,</div>
+<div class="line"><a id="l01782" name="l01782"></a><span class="lineno"> 1782</span>                 <span class="keywordtype">float</span>        elevation_max_ratio = 1.f,</div>
+<div class="line"><a id="l01783" name="l01783"></a><span class="lineno"> 1783</span>                 <span class="keywordtype">bool</span>         preserve_elevation_range = <span class="keyword">true</span>,</div>
+<div class="line"><a id="l01784" name="l01784"></a><span class="lineno"> 1784</span>                 <span class="keyword">const</span> Array *p_noise = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01785" name="l01785"></a><span class="lineno"> 1785</span>                 Array       *p_deposition_map = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l01786" name="l01786"></a><span class="lineno"> 1786</span> </div>
+<div class="line"><a id="l01808" name="l01808"></a><span class="lineno"> 1808</span>Array <a class="code hl_function" href="namespacehmap_1_1gpu.html#a52a653b3b3be84e8ff2330f30a6b5bf3">watershed_ridge</a>(</div>
+<div class="line"><a id="l01809" name="l01809"></a><span class="lineno"> 1809</span>    <span class="keyword">const</span> Array        &amp;z,</div>
+<div class="line"><a id="l01810" name="l01810"></a><span class="lineno"> 1810</span>    <span class="keywordtype">float</span>               amplitude = 0.2f,</div>
+<div class="line"><a id="l01811" name="l01811"></a><span class="lineno"> 1811</span>    <span class="keywordtype">float</span>               width = 32.f, <span class="comment">// pixels</span></div>
+<div class="line"><a id="l01812" name="l01812"></a><span class="lineno"> 1812</span>    <span class="keywordtype">float</span>               edt_exponent = 0.5f,</div>
+<div class="line"><a id="l01813" name="l01813"></a><span class="lineno"> 1813</span>    <span class="keywordtype">int</span>                 prefilter_ir = 0,</div>
+<div class="line"><a id="l01814" name="l01814"></a><span class="lineno"> 1814</span>    <a class="code hl_enumeration" href="namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2f">FlowDirectionMethod</a> fd_method = <a class="code hl_enumvalue" href="namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894">FlowDirectionMethod::FDM_D8</a>,</div>
+<div class="line"><a id="l01815" name="l01815"></a><span class="lineno"> 1815</span>    <span class="keyword">const</span> Array        *p_noise_x = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01816" name="l01816"></a><span class="lineno"> 1816</span>    <span class="keyword">const</span> Array        *p_noise_y = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01817" name="l01817"></a><span class="lineno"> 1817</span>    <span class="keyword">const</span> Array        *p_scaling = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l01818" name="l01818"></a><span class="lineno"> 1818</span> </div>
+<div class="line"><a id="l01819" name="l01819"></a><span class="lineno"> 1819</span>Array <a class="code hl_function" href="namespacehmap_1_1gpu.html#a52a653b3b3be84e8ff2330f30a6b5bf3">watershed_ridge</a>(</div>
+<div class="line"><a id="l01820" name="l01820"></a><span class="lineno"> 1820</span>    <span class="keyword">const</span> Array        &amp;z,</div>
+<div class="line"><a id="l01821" name="l01821"></a><span class="lineno"> 1821</span>    <span class="keyword">const</span> Array        *p_mask,</div>
+<div class="line"><a id="l01822" name="l01822"></a><span class="lineno"> 1822</span>    <span class="keywordtype">float</span>               amplitude = 0.2f,</div>
+<div class="line"><a id="l01823" name="l01823"></a><span class="lineno"> 1823</span>    <span class="keywordtype">float</span>               width = 32.f,</div>
+<div class="line"><a id="l01824" name="l01824"></a><span class="lineno"> 1824</span>    <span class="keywordtype">float</span>               edt_exponent = 0.5f,</div>
+<div class="line"><a id="l01825" name="l01825"></a><span class="lineno"> 1825</span>    <span class="keywordtype">int</span>                 prefilter_ir = 0,</div>
+<div class="line"><a id="l01826" name="l01826"></a><span class="lineno"> 1826</span>    <a class="code hl_enumeration" href="namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2f">FlowDirectionMethod</a> fd_method = <a class="code hl_enumvalue" href="namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894">FlowDirectionMethod::FDM_D8</a>,</div>
+<div class="line"><a id="l01827" name="l01827"></a><span class="lineno"> 1827</span>    <span class="keyword">const</span> Array        *p_noise_x = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01828" name="l01828"></a><span class="lineno"> 1828</span>    <span class="keyword">const</span> Array        *p_noise_y = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01829" name="l01829"></a><span class="lineno"> 1829</span>    <span class="keyword">const</span> Array        *p_scaling = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l01830" name="l01830"></a><span class="lineno"> 1830</span> </div>
+<div class="line"><a id="l01831" name="l01831"></a><span class="lineno"> 1831</span>} <span class="comment">// namespace hmap::gpu</span></div>
 <div class="ttc" id="aarray_8hpp_html"><div class="ttname"><a href="array_8hpp.html">array.hpp</a></div><div class="ttdoc">Declaration of the Array class for 2D floating-point arrays with various mathematical operations and ...</div></div>
 <div class="ttc" id="aarray_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition</b> array.hpp:14</div></div>
+<div class="ttc" id="aclasshmap_1_1Array_html"><div class="ttname"><a href="classhmap_1_1Array.html">hmap::Array</a></div><div class="ttdoc">Array class, helper to manipulate 2D float array with &quot;(i, j)&quot; indexing.</div><div class="ttdef"><b>Definition</b> array.hpp:32</div></div>
 <div class="ttc" id="ahydrology_8hpp_html"><div class="ttname"><a href="hydrology_8hpp.html">hydrology.hpp</a></div><div class="ttdoc">Header file for hydrological modeling functions and utilities.</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html"><div class="ttname"><a href="namespacehmap_1_1gpu.html">hmap::gpu</a></div><div class="ttdef"><b>Definition</b> blending.hpp:186</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_a00b54f4e60a8fbd6ed5213600d598869"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a00b54f4e60a8fbd6ed5213600d598869">hmap::gpu::thermal_olsen</a></div><div class="ttdeci">void thermal_olsen(Array &amp;z, const Array &amp;talus, int iterations)</div><div class="ttdoc">See hmap::thermal_olsen.</div><div class="ttdef"><b>Definition</b> thermal_gpu.cpp:190</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_a1489150d5e1af976a9f814b9911b3ea0"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a1489150d5e1af976a9f814b9911b3ea0">hmap::gpu::thermal_ridge</a></div><div class="ttdeci">void thermal_ridge(Array &amp;z, const Array &amp;talus, int iterations=10, Array *p_deposition_map=nullptr)</div><div class="ttdoc">Apply thermal weathering erosion to give a ridge like effect.</div><div class="ttdef"><b>Definition</b> thermal_gpu.cpp:241</div></div>
+<div class="ttc" id="anamespacehmap_1_1gpu_html_a182b5cbe63e2d42368c19f66dd9febb3"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a182b5cbe63e2d42368c19f66dd9febb3">hmap::gpu::strata_cells_fbm</a></div><div class="ttdeci">void strata_cells_fbm(Array &amp;z, glm::vec2 kw, float amp, uint seed, float gamma=0.5f, float gamma_lateral=0.4f, float angle=0.f, bool enable_default_noise=true, float default_noise_amp=0.05f, bool absolute_displacement=true, float occurence_probability=0.5f, int octaves=8, float persistence=0.4f, float lacunarity=2.2f, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdef"><b>Definition</b> strata_gpu.cpp:171</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_a1c2651f7a65e696e8b444364abf0b3cc"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a1c2651f7a65e696e8b444364abf0b3cc">hmap::gpu::sediment_deposition</a></div><div class="ttdeci">void sediment_deposition(Array &amp;z, Array *p_mask, const Array &amp;talus, Array *p_deposition_map=nullptr, float max_deposition=0.01, int iterations=5, int thermal_subiterations=10)</div><div class="ttdoc">Perform sediment deposition combined with thermal erosion.</div><div class="ttdef"><b>Definition</b> deposition.cpp:47</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_a2eb4bdf2d7dc4441e56865027764425e"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a2eb4bdf2d7dc4441e56865027764425e">hmap::gpu::thermal</a></div><div class="ttdeci">void thermal(Array &amp;z, const Array &amp;talus, int iterations=10, Array *p_bedrock=nullptr, Array *p_deposition_map=nullptr)</div><div class="ttdoc">See hmap::thermal.</div><div class="ttdef"><b>Definition</b> thermal_gpu.cpp:14</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_a36a2eba6d158e44d0ef917d9582987fe"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a36a2eba6d158e44d0ef917d9582987fe">hmap::gpu::thermal_auto_bedrock</a></div><div class="ttdeci">void thermal_auto_bedrock(Array &amp;z, const Array &amp;talus, int iterations=10, Array *p_deposition_map=nullptr)</div><div class="ttdoc">See hmap::thermal_auto_bedrock.</div><div class="ttdef"><b>Definition</b> thermal_gpu.cpp:98</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_a52a653b3b3be84e8ff2330f30a6b5bf3"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a52a653b3b3be84e8ff2330f30a6b5bf3">hmap::gpu::watershed_ridge</a></div><div class="ttdeci">Array watershed_ridge(const Array &amp;z, float amplitude=0.2f, float width=32.f, float edt_exponent=0.5f, int prefilter_ir=0, FlowDirectionMethod fd_method=FlowDirectionMethod::FDM_D8, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_scaling=nullptr)</div><div class="ttdoc">Carves watershed ridges using basin-wise distance transforms.</div><div class="ttdef"><b>Definition</b> watershed_ridge.cpp:19</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_a548895d6665a5466b8541122338b59a9"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a548895d6665a5466b8541122338b59a9">hmap::gpu::hydraulic_vpipes</a></div><div class="ttdeci">void hydraulic_vpipes(Array &amp;z, float water_height=1e-2f, bool maintain_water_volume=true, float evap_rate=0.1f, int iterations=50, float dt=0.5f, float k_capacity=0.5f, float k_erode=0.001f, float k_depose=0.01f, float k_discharge_exp=1.f, float downcutting_max_depth_ratio=10.f, bool flux_diffusion=true, float flux_diffusion_strength=0.01f, Array *p_rain_map=nullptr, Array *p_water_depth=nullptr, Array *p_sediment=nullptr, Array *p_vel_u=nullptr, Array *p_vel_v=nullptr)</div><div class="ttdoc">See hmap::hydraulic_vpipes.</div><div class="ttdef"><b>Definition</b> hydraulic_vpipes_gpu.cpp:17</div></div>
-<div class="ttc" id="anamespacehmap_1_1gpu_html_a60dfa226fed1ab1e12c626a0a05d5eba"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a60dfa226fed1ab1e12c626a0a05d5eba">hmap::gpu::hydraulic_particle</a></div><div class="ttdeci">void hydraulic_particle(Array &amp;z, int nparticles, int seed, const Array *p_bedrock=nullptr, const Array *p_moisture_map=nullptr, Array *p_erosion_map=nullptr, Array *p_deposition_map=nullptr, float c_capacity=10.f, float c_erosion=0.05f, float c_deposition=0.05f, float c_inertia=0.3f, float c_gravity=1.f, int radius=2, float drag_rate=0.001f, float evap_rate=0.001f, bool post_filtering=false)</div><div class="ttdoc">See hmap::hydraulic_particle.</div><div class="ttdef"><b>Definition</b> erosion_gpu.cpp:13</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_a60f3eb887b87ec545d68977b8811cadc"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a60f3eb887b87ec545d68977b8811cadc">hmap::gpu::hydraulic_procedural_fbm</a></div><div class="ttdeci">void hydraulic_procedural_fbm(Array &amp;z, float kp_global, float c_erosion, uint seed, ErosionProfile erosion_profile=ErosionProfile::EP_TRIANGLE_GRENIER, int octaves=3, float persistence=0.5f, float lacunarity=2.f, float erosion_profile_parameter=0.01f, float angle_shift=0.f, float phase_smoothing=0.1f, float talus_ref=0.001f, float gradient_scaling_ratio=1.f, float gradient_power=0.8f, bool exclude_ridges=true, bool apply_deposition=false, float deposition_strength=1.f, bool enable_default_noise=true, float noise_amp=0.01f, const Array *p_kp_multiplier=nullptr, const Array *p_angle_shift=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, Array *p_ridge_mask=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Multi-octave (fBm) variant of hydraulic_procedural().</div><div class="ttdef"><b>Definition</b> hydraulic_procedural.cpp:196</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_a663d541671a7a9afbd694ccb11351ec5"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a663d541671a7a9afbd694ccb11351ec5">hmap::gpu::strata_cells</a></div><div class="ttdeci">void strata_cells(Array &amp;z, glm::vec2 kw, float amp, uint seed, float gamma=0.5f, float gamma_lateral=0.4f, float angle=0.f, float noise_amp=0.5f, bool absolute_displacement=true, float occurence_probability=0.5f, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdef"><b>Definition</b> strata_gpu.cpp:72</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_a7814928e0f3b995421d298677934d11d"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a7814928e0f3b995421d298677934d11d">hmap::gpu::hydraulic_stream_log</a></div><div class="ttdeci">void hydraulic_stream_log(Array &amp;z, float c_erosion, float talus_ref, int deposition_ir=32, float deposition_scale_ratio=1.f, float gradient_power=0.8f, float gradient_scaling_ratio=1.f, int gradient_prefilter_ir=16, float saturation_ratio=1.f, Array *p_bedrock=nullptr, Array *p_moisture_map=nullptr, Array *p_erosion_map=nullptr, Array *p_deposition_map=nullptr, Array *p_flow_map=nullptr)</div><div class="ttdoc">See hmap::hydraulic_stream_log.</div><div class="ttdef"><b>Definition</b> hydraulic_stream_gpu.cpp:17</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_a9749d24b9dd9bed8ee333910951db395"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a9749d24b9dd9bed8ee333910951db395">hmap::gpu::hydraulic_schott</a></div><div class="ttdeci">void hydraulic_schott(Array &amp;z, int iterations, const Array &amp;talus, float c_erosion=1.f, float c_thermal=0.1f, float c_deposition=0.2f, float flow_acc_exponent=0.8f, float flow_acc_exponent_depo=0.8f, float flow_routing_exponent=1.3f, float thermal_weight=1.5f, float deposition_weight=2.5f, Array *p_flow=nullptr)</div><div class="ttdoc">Simulates hydraulic erosion and deposition on a heightmap using the Schott method.</div><div class="ttdef"><b>Definition</b> hydraulic_schott_gpu.cpp:10</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_aa3c0fc5295f81856967feed8cf87f711"><div class="ttname"><a href="namespacehmap_1_1gpu.html#aa3c0fc5295f81856967feed8cf87f711">hmap::gpu::hydraulic_schott_erosion</a></div><div class="ttdeci">void hydraulic_schott_erosion(Array &amp;z, int iterations, float c_erosion=1.f, float flow_acc_exponent=0.8f, float flow_routing_exponent=1.3f, const Array *p_moisture_map=nullptr, Array *p_flow=nullptr)</div><div class="ttdoc">See hmap::hydraulic_schott.</div><div class="ttdef"><b>Definition</b> hydraulic_schott_gpu.cpp:125</div></div>
-<div class="ttc" id="anamespacehmap_1_1gpu_html_ab052dd46c9182768c9ebd0e6046d31cf"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ab052dd46c9182768c9ebd0e6046d31cf">hmap::gpu::strata_cells_fbm</a></div><div class="ttdeci">void strata_cells_fbm(Array &amp;z, glm::vec2 kw, float amp, uint seed, float gamma=0.5f, float gamma_lateral=0.4f, float angle=0.f, float noise_amp=0.5f, bool absolute_displacement=true, float occurence_probability=0.5f, int octaves=8, float persistence=0.4f, float lacunarity=2.2f, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdef"><b>Definition</b> strata_gpu.cpp:171</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_ab753c4abd819aa6945c1cfc5e25ccec4"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ab753c4abd819aa6945c1cfc5e25ccec4">hmap::gpu::thermal_scree</a></div><div class="ttdeci">void thermal_scree(Array &amp;z, const Array &amp;talus, const Array &amp;zmax, int iterations=10, Array *p_deposition_map=nullptr)</div><div class="ttdoc">Performs thermal scree erosion on a heightmap.</div><div class="ttdef"><b>Definition</b> thermal_gpu.cpp:283</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_adca53669496f6a636042e11a859d1a16"><div class="ttname"><a href="namespacehmap_1_1gpu.html#adca53669496f6a636042e11a859d1a16">hmap::gpu::rifts</a></div><div class="ttdeci">void rifts(Array &amp;z, const glm::vec2 &amp;kw, float angle, float amplitude, uint seed, float elevation_noise_shift=0.f, float k_smooth_bottom=0.05f, float k_smooth_top=0.05f, float radial_spread_amp=0.2f, float elevation_noise_amp=0.1f, float clamp_vmin=0.f, float remap_vmin=0.f, bool apply_mask=true, bool reverse_mask=false, float mask_gamma=1.f, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_mask=nullptr, const glm::vec2 &amp;center={0.5f, 0.5f}, const glm::vec4 &amp;bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Applies a &quot;rift&quot; deformation effect to a heightmap array.</div><div class="ttdef"><b>Definition</b> rifts_gpu.cpp:12</div></div>
+<div class="ttc" id="anamespacehmap_1_1gpu_html_ae084938139cca4f7c15866ceabe18ab7"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ae084938139cca4f7c15866ceabe18ab7">hmap::gpu::hydraulic_particle</a></div><div class="ttdeci">void hydraulic_particle(Array &amp;z, int nparticles, uint seed, const Array *p_bedrock=nullptr, const Array *p_moisture_map=nullptr, const Array *p_elevation_shift=nullptr, Array *p_erosion_map=nullptr, Array *p_deposition_map=nullptr, float c_capacity=10.f, float c_erosion=0.05f, float c_deposition=0.05f, float c_inertia=0.1f, float c_gravity=1.f, float drag_rate=0.001f, float evap_rate=0.001f, bool enable_directional_bias=false, float angle_bias=30.f)</div><div class="ttdoc">See hmap::hydraulic_particle.</div><div class="ttdef"><b>Definition</b> erosion_gpu.cpp:15</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_ae57a1e9bd94f218d4be17c9d8be012c3"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ae57a1e9bd94f218d4be17c9d8be012c3">hmap::gpu::thermal_inflate</a></div><div class="ttdeci">void thermal_inflate(Array &amp;z, const Array &amp;talus, int iterations=10)</div><div class="ttdoc">Apply thermal weathering erosion to give a scree like effect.</div><div class="ttdef"><b>Definition</b> thermal_gpu.cpp:157</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_ae8a8da3d95deb978d813ce782a1492bb"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ae8a8da3d95deb978d813ce782a1492bb">hmap::gpu::valley_fill</a></div><div class="ttdeci">void valley_fill(Array &amp;z, const Array &amp;talus, int iterations=100, float gamma=2.f, float ratio=0.8f, float zmin=0.f, float zmax=0.f, float elevation_max_ratio=1.f, bool preserve_elevation_range=true, const Array *p_noise=nullptr, Array *p_deposition_map=nullptr)</div><div class="ttdoc">Fill valleys using thermal scree deposition and height-based blending.</div><div class="ttdef"><b>Definition</b> valley_fill.cpp:12</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_aec782e6aba3f4cfbbd97aafa46cc700b"><div class="ttname"><a href="namespacehmap_1_1gpu.html#aec782e6aba3f4cfbbd97aafa46cc700b">hmap::gpu::sediment_layer</a></div><div class="ttdeci">void sediment_layer(Array &amp;z, const Array &amp;talus_layer, const Array &amp;talus_upper_limit, int iterations, bool apply_post_filter=true, Array *p_deposition_map=nullptr)</div><div class="ttdoc">Applies a talus-based sediment deposition layer.</div><div class="ttdef"><b>Definition</b> deposition.cpp:75</div></div>
