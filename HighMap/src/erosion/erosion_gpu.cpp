@@ -7,8 +7,6 @@
 #include "highmap/opencl/gpu_opencl.hpp"
 #include "highmap/range.hpp"
 
-#include "highmap/primitives.hpp"
-
 namespace hmap::gpu
 {
 

@@ -218,6 +218,36 @@ void erosion_maps(Array &z_before,
                   float  tolerance = 0.f);
 
 /**
+ * @brief Generates a modified bedrock heightmap from an input elevation array.
+ *
+ * This function adjusts elevations based on overall height and local slope:
+ * - Reduces values relative to the elevation range using `elevation_strength`.
+ * - Reduces values in steep areas using `slope_strength` and `slope_limit`.
+ *
+ * @param  z                  Input elevation array.
+ * @param  elevation_strength Strength of elevation-based adjustment.
+ * @param  slope_strength     Strength of slope-based adjustment.
+ * @param  slope_limit        Slope threshold for slope-based adjustment.
+ * @param  zmin               Minimum elevation to consider (computed from z if
+ *                            zmin > zmax).
+ * @param  zmax               Maximum elevation to consider (computed from z if
+ *                            zmin > zmax).
+ * @return                    Array Modified bedrock heightmap.
+ *
+ *  **Example**
+ * @include ex_hydraulic_particle.cpp
+ *
+ * **Result**
+ * @image html ex_hydraulic_particle.png
+ */
+Array generate_bedrock(const Array &z,
+                       float        elevation_strength,
+                       float        slope_strength,
+                       float        slope_limit,
+                       float        zmin = 0.f,
+                       float        zmax = -1.f);
+
+/**
  * @brief Apply an algerbic formula based on the local gradient to perform
  * erosion/deposition.
  *
@@ -983,7 +1013,38 @@ void thermal_schott(Array      &z,
 namespace hmap::gpu
 {
 
-/*! @brief See hmap::hydraulic_particle */
+/**
+ * @brief Simulates hydraulic erosion on a heightmap using particle-based flow.
+ *
+ * Particles traverse the heightmap `z`, eroding and depositing material
+ * according to local slope, capacity, inertia, and optional directional bias.
+ *
+ * @param z                       Heightmap array to modify.
+ * @param nparticles              Number of erosion particles to simulate.
+ * @param seed                    Random seed for particle initialization.
+ * @param p_bedrock               Optional bedrock array to limit erosion.
+ * @param p_moisture_map          Optional moisture map affecting
+ *                                erosion/deposition.
+ * @param p_elevation_shift       Optional elevation shift map.
+ * @param p_erosion_map           Optional output array recording total erosion.
+ * @param p_deposition_map        Optional output array recording deposition.
+ * @param c_capacity              Sediment capacity of each particle.
+ * @param c_erosion               Erosion rate coefficient.
+ * @param c_deposition            Deposition rate coefficient.
+ * @param c_inertia               Particle inertia factor.
+ * @param c_gravity               Gravity effect on particle movement.
+ * @param drag_rate               Particle velocity damping.
+ * @param evap_rate               Sediment evaporation rate.
+ * @param enable_directional_bias Enable bias along a preferred slope direction.
+ * @param angle_bias              Bias angle in degrees (if directional bias
+ *                                enabled).
+ *
+ *  **Example**
+ * @include ex_hydraulic_particle.cpp
+ *
+ * **Result**
+ * @image html ex_hydraulic_particle.png
+ */
 void hydraulic_particle(Array       &z,
                         int          nparticles,
                         uint         seed,
