@@ -60,6 +60,15 @@ bool is_inside(const int i, const int j, const int nx, const int ny)
   return i >= 0 && i < nx && j >= 0 && j < ny;
 }
 
+bool is_inside_gap(const int i,
+                   const int j,
+                   const int nx,
+                   const int ny,
+                   const int gap)
+{
+  return i >= gap && i < nx - gap && j >= gap && j < ny - gap;
+}
+
 int linear_index(const int i, const int j, const int nx)
 {
   return j * nx + i;

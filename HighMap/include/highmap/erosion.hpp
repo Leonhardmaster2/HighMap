@@ -986,39 +986,41 @@ namespace hmap::gpu
 /*! @brief See hmap::hydraulic_particle */
 void hydraulic_particle(Array       &z,
                         int          nparticles,
-                        int          seed,
+                        uint         seed,
                         const Array *p_bedrock = nullptr,
                         const Array *p_moisture_map = nullptr,
+                        const Array *p_elevation_shift = nullptr,
                         Array       *p_erosion_map = nullptr,
                         Array       *p_deposition_map = nullptr,
                         float        c_capacity = 10.f,
                         float        c_erosion = 0.05f,
                         float        c_deposition = 0.05f,
-                        float        c_inertia = 0.3f,
+                        float        c_inertia = 0.1f,
                         float        c_gravity = 1.f,
-                        int          radius = 2,
                         float        drag_rate = 0.001f,
                         float        evap_rate = 0.001f,
-                        bool         post_filtering = false);
+                        bool         enable_directional_bias = false,
+                        float        angle_bias = 30.f);
 
 /*! @brief See hmap::hydraulic_particle */
 void hydraulic_particle(Array       &z,
                         const Array *p_mask,
                         int          nparticles,
-                        int          seed,
+                        uint         seed,
                         const Array *p_bedrock = nullptr,
                         const Array *p_moisture_map = nullptr,
+                        const Array *p_elevation_shift = nullptr,
                         Array       *p_erosion_map = nullptr,
                         Array       *p_deposition_map = nullptr,
                         float        c_capacity = 10.f,
                         float        c_erosion = 0.05f,
                         float        c_deposition = 0.05f,
-                        float        c_inertia = 0.3f,
+                        float        c_inertia = 0.1f,
                         float        c_gravity = 1.f,
-                        int          radius = 2,
                         float        drag_rate = 0.001f,
                         float        evap_rate = 0.001f,
-                        bool         post_filtering = false);
+                        bool         enable_directional_bias = false,
+                        float        angle_bias = 30.f);
 
 /**
  * @brief Apply phase-guided hydraulic procedural erosion to a heightmap.

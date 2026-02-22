@@ -56,6 +56,13 @@ float2 grad22f(float2 p, float fseed)
   return (float2)(cos(angle), sin(angle));
 }
 
+uint pcg_hash(uint v)
+{
+  v = v * 747796405u + 2891336453u;
+  uint word = ((v >> ((v >> 28u) + 4u)) ^ v) * 277803737u;
+  return (word >> 22u) ^ word;
+}
+
 uint wang_hash(uint seed)
 {
   seed = (seed ^ 61) ^ (seed >> 16);

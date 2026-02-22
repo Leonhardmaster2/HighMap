@@ -40,9 +40,9 @@ int main(void)
   float persistence = 0.4f;
   float lacunarity = 2.2f;
 
-  auto z2 = z0;
+  auto  z2 = z0;
   float default_noise_amp = 0.02f;
-  
+
   hmap::gpu::strata_cells_fbm(z2,
                               kc,
                               amp,
