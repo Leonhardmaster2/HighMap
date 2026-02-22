@@ -842,6 +842,9 @@ Functions</h2></td></tr>
 <tr class="separator:acd726fbea3f38f8052289866302cbeec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af91e2b8638aab2c4357ce37812b8a99c" id="r_af91e2b8638aab2c4357ce37812b8a99c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#af91e2b8638aab2c4357ce37812b8a99c">erosion_maps</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z_before, <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z_after, <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;erosion_map, <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;deposition_map, float tolerance=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
 <tr class="separator:af91e2b8638aab2c4357ce37812b8a99c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae80026143790cc7a8f0dd1f4c7bc8e24" id="r_ae80026143790cc7a8f0dd1f4c7bc8e24"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#ae80026143790cc7a8f0dd1f4c7bc8e24">generate_bedrock</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, float elevation_strength, float slope_strength, float slope_limit, float zmin=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float zmax=-1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
+<tr class="memdesc:ae80026143790cc7a8f0dd1f4c7bc8e24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a modified bedrock heightmap from an input elevation array.  <br /></td></tr>
+<tr class="separator:ae80026143790cc7a8f0dd1f4c7bc8e24"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac4f3c8b3d5f766b15c0ac64359fdc219" id="r_ac4f3c8b3d5f766b15c0ac64359fdc219"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#ac4f3c8b3d5f766b15c0ac64359fdc219">hydraulic_algebric</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_mask, float talus_ref, int ir, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_bedrock=nullptr, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_erosion_map=nullptr, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_deposition_map=nullptr, float c_erosion=0.05<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float c_deposition=0.05<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, int iterations=1)</td></tr>
 <tr class="memdesc:ac4f3c8b3d5f766b15c0ac64359fdc219"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply an algerbic formula based on the local gradient to perform erosion/deposition.  <br /></td></tr>
 <tr class="separator:ac4f3c8b3d5f766b15c0ac64359fdc219"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -9349,6 +9352,135 @@ additional_depth)</code>.</li>
 </div>
  <div class="image">
 <img src="ex_erosions_maps1.png" alt=""/>
+</div>
+ 
+</div>
+</div>
+<a id="ae80026143790cc7a8f0dd1f4c7bc8e24" name="ae80026143790cc7a8f0dd1f4c7bc8e24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae80026143790cc7a8f0dd1f4c7bc8e24">&#9670;&#160;</a></span>generate_bedrock()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classhmap_1_1Array.html">Array</a> hmap::generate_bedrock </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>z</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>elevation_strength</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>slope_strength</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>slope_limit</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>zmin</em> = <code>0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>zmax</em> = <code>-1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Generates a modified bedrock heightmap from an input elevation array. </p>
+<p>This function adjusts elevations based on overall height and local slope:</p><ul>
+<li>Reduces values relative to the elevation range using <code>elevation_strength</code>.</li>
+<li>Reduces values in steep areas using <code>slope_strength</code> and <code>slope_limit</code>.</li>
+</ul>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">z</td><td>Input elevation array. </td></tr>
+    <tr><td class="paramname">elevation_strength</td><td>Strength of elevation-based adjustment. </td></tr>
+    <tr><td class="paramname">slope_strength</td><td>Strength of slope-based adjustment. </td></tr>
+    <tr><td class="paramname">slope_limit</td><td>Slope threshold for slope-based adjustment. </td></tr>
+    <tr><td class="paramname">zmin</td><td>Minimum elevation to consider (computed from z if zmin &gt; zmax). </td></tr>
+    <tr><td class="paramname">zmax</td><td>Maximum elevation to consider (computed from z if zmin &gt; zmax). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classhmap_1_1Array.html" title="Array class, helper to manipulate 2D float array with &quot;(i, j)&quot; indexing.">Array</a> Modified bedrock heightmap.</dd></dl>
+<p><b>Example</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="highmap_8hpp.html">highmap.hpp</a>&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
+<div class="line">{</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap_1_1gpu.html#adb8336ed4d83c15500872185dee45d50">hmap::gpu::init_opencl</a>();</div>
+<div class="line"> </div>
+<div class="line">  glm::ivec2 shape = {256, 256};</div>
+<div class="line">  shape = {1024, 1024};</div>
+<div class="line">  glm::vec2 kw = {4.f, 4.f};</div>
+<div class="line">  <span class="keywordtype">int</span>       seed = 0;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z0 = <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>,</div>
+<div class="line">                                   shape,</div>
+<div class="line">                                   kw,</div>
+<div class="line">                                   seed,</div>
+<div class="line">                                   8,</div>
+<div class="line">                                   0.f);</div>
+<div class="line">  z0 = <a class="code hl_function" href="namespacehmap.html#ae3ecf5f88476c5d49978a130f8cab2f3">hmap::bulkify</a>(z0, <a class="code hl_enumvalue" href="namespacehmap.html#a55542a66f890ef9ecf5f82af2c23a0cfa71a3d57896b6c2d066433962e74e8961">hmap::PrimitiveType::PRIM_CONE_SMOOTH</a>, 1.f);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z0);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordtype">int</span> nparticles = int(0.5f * shape.x * shape.y);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">auto</span> z1 = z0;</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap_1_1gpu.html#ae084938139cca4f7c15866ceabe18ab7">hmap::gpu::hydraulic_particle</a>(z1, nparticles, seed);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">auto</span> z2 = z0;</div>
+<div class="line">  <span class="keyword">auto</span> zb2 = <a class="code hl_function" href="namespacehmap.html#ae80026143790cc7a8f0dd1f4c7bc8e24">hmap::generate_bedrock</a>(z2,</div>
+<div class="line">                                    <span class="comment">/* elevation_strength */</span> 0.05f,</div>
+<div class="line">                                    <span class="comment">/* slope_strength */</span> 0.f,</div>
+<div class="line">                                    <span class="comment">/* slope_limit */</span> 0.f);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap_1_1gpu.html#ae084938139cca4f7c15866ceabe18ab7">hmap::gpu::hydraulic_particle</a>(z2, nparticles, seed, &amp;zb2);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">auto</span> z3 = z0;</div>
+<div class="line">  <span class="keyword">auto</span> zb3 = <a class="code hl_function" href="namespacehmap.html#ae80026143790cc7a8f0dd1f4c7bc8e24">hmap::generate_bedrock</a>(z3,</div>
+<div class="line">                                    <span class="comment">/* elevation_strength */</span> 0.f,</div>
+<div class="line">                                    <span class="comment">/* slope_strength */</span> 0.1f,</div>
+<div class="line">                                    <span class="comment">/* slope_limit */</span> 2.f / shape.x);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap_1_1gpu.html#ae084938139cca4f7c15866ceabe18ab7">hmap::gpu::hydraulic_particle</a>(z3, nparticles, seed, &amp;zb3);</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// --- output</span></div>
+<div class="line"> </div>
+<div class="line">  z0.<a class="code hl_function" href="classhmap_1_1Array.html#a00b8f7462c1e22b1da8a67ec62d4c8c8">dump</a>(<span class="stringliteral">&quot;out0.png&quot;</span>);</div>
+<div class="line">  z1.dump(<span class="stringliteral">&quot;out1.png&quot;</span>);</div>
+<div class="line">  z2.dump(<span class="stringliteral">&quot;out2.png&quot;</span>);</div>
+<div class="line">  z3.dump(<span class="stringliteral">&quot;out3.png&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_hydraulic_particle.png&quot;</span>,</div>
+<div class="line">                          {z0, z1, z2, z3},</div>
+<div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>,</div>
+<div class="line">                          <span class="keyword">true</span>);</div>
+<div class="line">}</div>
+<div class="ttc" id="aclasshmap_1_1Array_html_a00b8f7462c1e22b1da8a67ec62d4c8c8"><div class="ttname"><a href="classhmap_1_1Array.html#a00b8f7462c1e22b1da8a67ec62d4c8c8">hmap::Array::dump</a></div><div class="ttdeci">void dump(const std::string &amp;fname=&quot;out.png&quot;) const</div><div class="ttdoc">Debug tool, dump some infos and generate an output file (16bits grayscale)</div><div class="ttdef"><b>Definition</b> methods.cpp:116</div></div>
+<div class="ttc" id="anamespacehmap_1_1gpu_html_ae084938139cca4f7c15866ceabe18ab7"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ae084938139cca4f7c15866ceabe18ab7">hmap::gpu::hydraulic_particle</a></div><div class="ttdeci">void hydraulic_particle(Array &amp;z, int nparticles, uint seed, const Array *p_bedrock=nullptr, const Array *p_moisture_map=nullptr, const Array *p_elevation_shift=nullptr, Array *p_erosion_map=nullptr, Array *p_deposition_map=nullptr, float c_capacity=10.f, float c_erosion=0.05f, float c_deposition=0.05f, float c_inertia=0.1f, float c_gravity=1.f, float drag_rate=0.001f, float evap_rate=0.001f, bool enable_directional_bias=false, float angle_bias=30.f)</div><div class="ttdoc">Simulates hydraulic erosion on a heightmap using particle-based flow.</div><div class="ttdef"><b>Definition</b> erosion_gpu.cpp:13</div></div>
+<div class="ttc" id="anamespacehmap_html_a55542a66f890ef9ecf5f82af2c23a0cfa71a3d57896b6c2d066433962e74e8961"><div class="ttname"><a href="namespacehmap.html#a55542a66f890ef9ecf5f82af2c23a0cfa71a3d57896b6c2d066433962e74e8961">hmap::PRIM_CONE_SMOOTH</a></div><div class="ttdeci">@ PRIM_CONE_SMOOTH</div><div class="ttdef"><b>Definition</b> primitives.hpp:57</div></div>
+<div class="ttc" id="anamespacehmap_html_ae3ecf5f88476c5d49978a130f8cab2f3"><div class="ttname"><a href="namespacehmap.html#ae3ecf5f88476c5d49978a130f8cab2f3">hmap::bulkify</a></div><div class="ttdeci">Array bulkify(const Array &amp;z, const PrimitiveType &amp;primitive_type, float amp=1.f, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, glm::vec2 center={0.5f, 0.5f}, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdef"><b>Definition</b> bulkify.cpp:11</div></div>
+<div class="ttc" id="anamespacehmap_html_ae80026143790cc7a8f0dd1f4c7bc8e24"><div class="ttname"><a href="namespacehmap.html#ae80026143790cc7a8f0dd1f4c7bc8e24">hmap::generate_bedrock</a></div><div class="ttdeci">Array generate_bedrock(const Array &amp;z, float elevation_strength, float slope_strength, float slope_limit, float zmin=0.f, float zmax=-1.f)</div><div class="ttdoc">Generates a modified bedrock heightmap from an input elevation array.</div><div class="ttdef"><b>Definition</b> generate_bedrock.cpp:10</div></div>
+</div><!-- fragment --><p><b>Result</b> </p><div class="image">
+<img src="ex_hydraulic_particle.png" alt=""/>
 </div>
  
 </div>
@@ -27615,7 +27747,6 @@ h}{\partial y}
 <div class="ttc" id="anamespacehmap_html_a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894"><div class="ttname"><a href="namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894">hmap::FDM_D8</a></div><div class="ttdeci">@ FDM_D8</div><div class="ttdef"><b>Definition</b> hydrology.hpp:35</div></div>
 <div class="ttc" id="anamespacehmap_html_a55542a66f890ef9ecf5f82af2c23a0cfae2c78e075109f330e3109c52e9bf90ff"><div class="ttname"><a href="namespacehmap.html#a55542a66f890ef9ecf5f82af2c23a0cfae2c78e075109f330e3109c52e9bf90ff">hmap::PRIM_CONE</a></div><div class="ttdeci">@ PRIM_CONE</div><div class="ttdef"><b>Definition</b> primitives.hpp:56</div></div>
 <div class="ttc" id="anamespacehmap_html_a8284b00f1f460f1d5a406ee45587dcd9"><div class="ttname"><a href="namespacehmap.html#a8284b00f1f460f1d5a406ee45587dcd9">hmap::basin_id</a></div><div class="ttdeci">Array basin_id(const Array &amp;z, FlowDirectionMethod fd_method=FlowDirectionMethod::FDM_D8, bool remove_lakes=true)</div><div class="ttdoc">Label drainage basins using a priority-flood algorithm.</div><div class="ttdef"><b>Definition</b> basin_id.cpp:14</div></div>
-<div class="ttc" id="anamespacehmap_html_ae3ecf5f88476c5d49978a130f8cab2f3"><div class="ttname"><a href="namespacehmap.html#ae3ecf5f88476c5d49978a130f8cab2f3">hmap::bulkify</a></div><div class="ttdeci">Array bulkify(const Array &amp;z, const PrimitiveType &amp;primitive_type, float amp=1.f, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, glm::vec2 center={0.5f, 0.5f}, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdef"><b>Definition</b> bulkify.cpp:11</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_basin_id.png" alt=""/>
 </div>
@@ -29208,7 +29339,6 @@ h}{\partial y}
 <div class="line">                          {z, z + snow_depth0, melt_map, z + snow_depth1},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclasshmap_1_1Array_html_a00b8f7462c1e22b1da8a67ec62d4c8c8"><div class="ttname"><a href="classhmap_1_1Array.html#a00b8f7462c1e22b1da8a67ec62d4c8c8">hmap::Array::dump</a></div><div class="ttdeci">void dump(const std::string &amp;fname=&quot;out.png&quot;) const</div><div class="ttdoc">Debug tool, dump some infos and generate an output file (16bits grayscale)</div><div class="ttdef"><b>Definition</b> methods.cpp:116</div></div>
 <div class="ttc" id="anamespacehmap_html_a55542a66f890ef9ecf5f82af2c23a0cfae1780174f7412d5a5593b324ea0db7cb"><div class="ttname"><a href="namespacehmap.html#a55542a66f890ef9ecf5f82af2c23a0cfae1780174f7412d5a5593b324ea0db7cb">hmap::PRIM_CUBIC_PULSE</a></div><div class="ttdeci">@ PRIM_CUBIC_PULSE</div><div class="ttdef"><b>Definition</b> primitives.hpp:58</div></div>
 <div class="ttc" id="anamespacehmap_html_a78419f7981186b40c4a2d04456e4e63f"><div class="ttname"><a href="namespacehmap.html#a78419f7981186b40c4a2d04456e4e63f">hmap::snow_melting_map</a></div><div class="ttdeci">Array snow_melting_map(const Array &amp;z, float melt_start_elevation=0.f, float melt_end_elevation=0.5f, float elevation_strength=1.f, float elevation_exp=1.f, float sun_azimuth=0.f, float sun_zenith=60.f, float aspect_strength=0.f, float slope_exp=1.f, float slope_strength=0.f)</div><div class="ttdoc">Generate a spatial snow melting map from terrain features.</div><div class="ttdef"><b>Definition</b> snow_simulation.cpp:15</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">

@@ -21,6 +21,7 @@ var erosion_8hpp =
     [ "depression_filling", "erosion_8hpp.html#aa64448e4b5640d90570e53249907c98a", null ],
     [ "depression_filling_priority_flood", "erosion_8hpp.html#acd726fbea3f38f8052289866302cbeec", null ],
     [ "erosion_maps", "erosion_8hpp.html#af91e2b8638aab2c4357ce37812b8a99c", null ],
+    [ "generate_bedrock", "erosion_8hpp.html#ae80026143790cc7a8f0dd1f4c7bc8e24", null ],
     [ "hydraulic_algebric", "erosion_8hpp.html#ac4f3c8b3d5f766b15c0ac64359fdc219", null ],
     [ "hydraulic_algebric", "erosion_8hpp.html#aa9fd3c429dfa135cb80376aabcf66c2a", null ],
     [ "hydraulic_benes", "erosion_8hpp.html#ae791758f736d5ed3e164262f3b1c5d20", null ],
