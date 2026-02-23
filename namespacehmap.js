@@ -30,7 +30,7 @@ var namespacehmap =
       [ "sediment_deposition", "namespacehmap_1_1gpu.html#a1c2651f7a65e696e8b444364abf0b3cc", null ],
       [ "sediment_deposition", "namespacehmap_1_1gpu.html#a26ed284f1df761074c2a49a2fbbd582e", null ],
       [ "sediment_layer", "namespacehmap_1_1gpu.html#aec782e6aba3f4cfbbd97aafa46cc700b", null ],
-      [ "strata", "namespacehmap_1_1gpu.html#afb140daa72128c65f1af72ed17dae9a5", null ],
+      [ "strata", "namespacehmap_1_1gpu.html#abb80ba73ad4baeb50723d73b1e597824", null ],
       [ "strata_cells", "namespacehmap_1_1gpu.html#a663d541671a7a9afbd694ccb11351ec5", null ],
       [ "strata_cells", "namespacehmap_1_1gpu.html#aea0ca081d8da637b22e20799b2d8e914", null ],
       [ "strata_cells_fbm", "namespacehmap_1_1gpu.html#a182b5cbe63e2d42368c19f66dd9febb3", null ],

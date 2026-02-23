@@ -75,7 +75,7 @@ var erosion_8hpp =
     [ "sediment_deposition", "erosion_8hpp.html#a1c2651f7a65e696e8b444364abf0b3cc", null ],
     [ "sediment_deposition", "erosion_8hpp.html#a26ed284f1df761074c2a49a2fbbd582e", null ],
     [ "sediment_layer", "erosion_8hpp.html#aec782e6aba3f4cfbbd97aafa46cc700b", null ],
-    [ "strata", "erosion_8hpp.html#afb140daa72128c65f1af72ed17dae9a5", null ],
+    [ "strata", "erosion_8hpp.html#abb80ba73ad4baeb50723d73b1e597824", null ],
     [ "strata_cells", "erosion_8hpp.html#a663d541671a7a9afbd694ccb11351ec5", null ],
     [ "strata_cells", "erosion_8hpp.html#aea0ca081d8da637b22e20799b2d8e914", null ],
     [ "strata_cells_fbm", "erosion_8hpp.html#a182b5cbe63e2d42368c19f66dd9febb3", null ],
