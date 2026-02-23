@@ -55,6 +55,7 @@ void kernel strata(global float *output,
                    const float   gamma_noise_ratio,
                    const float   noise_amp,
                    const float2  noise_kw,
+                   const int     enable_ridge_noise,
                    const float2  ridge_noise_kw,
                    const float   ridge_angle_shift,
                    const float   ridge_noise_amp,
@@ -121,6 +122,7 @@ void kernel strata(global float *output,
   }
 
   // elevation and ridge masks
+  if (enable_ridge_noise)
   {
     float t = 1.f;
 
