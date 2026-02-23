@@ -180,7 +180,6 @@ var namespacehmap =
       [ "advection_warp", "namespacehmap_1_1gpu.html#a0c43413a89b330fc5f4051112d6a2a85", null ],
       [ "rotate", "namespacehmap_1_1gpu.html#aab128e15988875b5d350d6f156612aa5", null ],
       [ "warp", "namespacehmap_1_1gpu.html#a99659d06f84b0e92e6731f28ca28937c", null ],
-      [ "hydraulic_particle", "namespacehmap_1_1gpu.html#a1ede7a4b781f71264712372c91232fe9", null ],
       [ "helper_vflow_compute_adaptive_dt", "namespacehmap_1_1gpu.html#a88838a8a701facc69ddace7b1e98f837", null ],
       [ "helper_transform_bbox", "namespacehmap_1_1gpu.html#a757286c938a310c4e6046c5df9bb6302", null ],
       [ "helper_radial_profile", "namespacehmap_1_1gpu.html#a8583f0ee018a30b63c9cacb4580cd3e9", null ],

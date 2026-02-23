@@ -526,15 +526,15 @@ $(document).ready(function(){initNavTree('erosion_8hpp_source.html',''); initRes
 <div class="line"><a id="l01063" name="l01063"></a><span class="lineno"> 1063</span>                        <span class="keywordtype">bool</span>         enable_directional_bias = <span class="keyword">false</span>,</div>
 <div class="line"><a id="l01064" name="l01064"></a><span class="lineno"> 1064</span>                        <span class="keywordtype">float</span>        angle_bias = 30.f);</div>
 <div class="line"><a id="l01065" name="l01065"></a><span class="lineno"> 1065</span> </div>
-<div class="line"><a id="l01067" name="l01067"></a><span class="lineno"><a class="line" href="namespacehmap_1_1gpu.html#a24498e2366d9797fe9e585f494bff98f"> 1067</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#ae084938139cca4f7c15866ceabe18ab7">hydraulic_particle</a>(<a class="code hl_class" href="classhmap_1_1Array.html">Array</a>       &amp;z,</div>
-<div class="line"><a id="l01068" name="l01068"></a><span class="lineno"> 1068</span>                        <span class="keyword">const</span> <a class="code hl_class" href="classhmap_1_1Array.html">Array</a> *p_mask,</div>
+<div class="line"><a id="l01067" name="l01067"></a><span class="lineno"> 1067</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#ae084938139cca4f7c15866ceabe18ab7">hydraulic_particle</a>(Array       &amp;z,</div>
+<div class="line"><a id="l01068" name="l01068"></a><span class="lineno"> 1068</span>                        <span class="keyword">const</span> Array *p_mask,</div>
 <div class="line"><a id="l01069" name="l01069"></a><span class="lineno"> 1069</span>                        <span class="keywordtype">int</span>          nparticles,</div>
 <div class="line"><a id="l01070" name="l01070"></a><span class="lineno"> 1070</span>                        <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>         seed,</div>
-<div class="line"><a id="l01071" name="l01071"></a><span class="lineno"> 1071</span>                        <span class="keyword">const</span> <a class="code hl_class" href="classhmap_1_1Array.html">Array</a> *p_bedrock = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01072" name="l01072"></a><span class="lineno"> 1072</span>                        <span class="keyword">const</span> <a class="code hl_class" href="classhmap_1_1Array.html">Array</a> *p_moisture_map = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01073" name="l01073"></a><span class="lineno"> 1073</span>                        <span class="keyword">const</span> <a class="code hl_class" href="classhmap_1_1Array.html">Array</a> *p_elevation_shift = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01074" name="l01074"></a><span class="lineno"> 1074</span>                        <a class="code hl_class" href="classhmap_1_1Array.html">Array</a>       *p_erosion_map = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01075" name="l01075"></a><span class="lineno"> 1075</span>                        <a class="code hl_class" href="classhmap_1_1Array.html">Array</a>       *p_deposition_map = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01071" name="l01071"></a><span class="lineno"> 1071</span>                        <span class="keyword">const</span> Array *p_bedrock = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01072" name="l01072"></a><span class="lineno"> 1072</span>                        <span class="keyword">const</span> Array *p_moisture_map = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01073" name="l01073"></a><span class="lineno"> 1073</span>                        <span class="keyword">const</span> Array *p_elevation_shift = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01074" name="l01074"></a><span class="lineno"> 1074</span>                        Array       *p_erosion_map = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01075" name="l01075"></a><span class="lineno"> 1075</span>                        Array       *p_deposition_map = <span class="keyword">nullptr</span>,</div>
 <div class="line"><a id="l01076" name="l01076"></a><span class="lineno"> 1076</span>                        <span class="keywordtype">float</span>        c_capacity = 10.f,</div>
 <div class="line"><a id="l01077" name="l01077"></a><span class="lineno"> 1077</span>                        <span class="keywordtype">float</span>        c_erosion = 0.05f,</div>
 <div class="line"><a id="l01078" name="l01078"></a><span class="lineno"> 1078</span>                        <span class="keywordtype">float</span>        c_deposition = 0.05f,</div>
@@ -546,7 +546,7 @@ $(document).ready(function(){initNavTree('erosion_8hpp_source.html',''); initRes
 <div class="line"><a id="l01084" name="l01084"></a><span class="lineno"> 1084</span>                        <span class="keywordtype">float</span>        angle_bias = 30.f);</div>
 <div class="line"><a id="l01085" name="l01085"></a><span class="lineno"> 1085</span> </div>
 <div class="line"><a id="l01134" name="l01134"></a><span class="lineno"> 1134</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#afbecd3a8ce025fb08ca3296ce81f695d">hydraulic_procedural</a>(</div>
-<div class="line"><a id="l01135" name="l01135"></a><span class="lineno"> 1135</span>    <a class="code hl_class" href="classhmap_1_1Array.html">Array</a>         &amp;z,</div>
+<div class="line"><a id="l01135" name="l01135"></a><span class="lineno"> 1135</span>    Array         &amp;z,</div>
 <div class="line"><a id="l01136" name="l01136"></a><span class="lineno"> 1136</span>    <span class="keywordtype">float</span>          kp_global,</div>
 <div class="line"><a id="l01137" name="l01137"></a><span class="lineno"> 1137</span>    <span class="keywordtype">float</span>          c_erosion,</div>
 <div class="line"><a id="l01138" name="l01138"></a><span class="lineno"> 1138</span>    <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>           seed,</div>
@@ -562,15 +562,15 @@ $(document).ready(function(){initNavTree('erosion_8hpp_source.html',''); initRes
 <div class="line"><a id="l01148" name="l01148"></a><span class="lineno"> 1148</span>    <span class="keywordtype">float</span>          deposition_strength = 1.f,</div>
 <div class="line"><a id="l01149" name="l01149"></a><span class="lineno"> 1149</span>    <span class="keywordtype">bool</span>           enable_default_noise = <span class="keyword">true</span>,</div>
 <div class="line"><a id="l01150" name="l01150"></a><span class="lineno"> 1150</span>    <span class="keywordtype">float</span>          noise_amp = 0.01f,</div>
-<div class="line"><a id="l01151" name="l01151"></a><span class="lineno"> 1151</span>    <span class="keyword">const</span> <a class="code hl_class" href="classhmap_1_1Array.html">Array</a>   *p_kp_multiplier = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01152" name="l01152"></a><span class="lineno"> 1152</span>    <span class="keyword">const</span> <a class="code hl_class" href="classhmap_1_1Array.html">Array</a>   *p_angle_shift = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01153" name="l01153"></a><span class="lineno"> 1153</span>    <span class="keyword">const</span> <a class="code hl_class" href="classhmap_1_1Array.html">Array</a>   *p_noise_x = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01154" name="l01154"></a><span class="lineno"> 1154</span>    <span class="keyword">const</span> <a class="code hl_class" href="classhmap_1_1Array.html">Array</a>   *p_noise_y = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01155" name="l01155"></a><span class="lineno"> 1155</span>    <a class="code hl_class" href="classhmap_1_1Array.html">Array</a>         *p_ridge_mask = <span class="keyword">nullptr</span>, <span class="comment">// ouptput</span></div>
+<div class="line"><a id="l01151" name="l01151"></a><span class="lineno"> 1151</span>    <span class="keyword">const</span> Array   *p_kp_multiplier = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01152" name="l01152"></a><span class="lineno"> 1152</span>    <span class="keyword">const</span> Array   *p_angle_shift = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01153" name="l01153"></a><span class="lineno"> 1153</span>    <span class="keyword">const</span> Array   *p_noise_x = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01154" name="l01154"></a><span class="lineno"> 1154</span>    <span class="keyword">const</span> Array   *p_noise_y = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01155" name="l01155"></a><span class="lineno"> 1155</span>    Array         *p_ridge_mask = <span class="keyword">nullptr</span>, <span class="comment">// ouptput</span></div>
 <div class="line"><a id="l01156" name="l01156"></a><span class="lineno"> 1156</span>    glm::vec4      bbox = {0.f, 1.f, 0.f, 1.f});</div>
 <div class="line"><a id="l01157" name="l01157"></a><span class="lineno"> 1157</span> </div>
 <div class="line"><a id="l01196" name="l01196"></a><span class="lineno"> 1196</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#a60f3eb887b87ec545d68977b8811cadc">hydraulic_procedural_fbm</a>(</div>
-<div class="line"><a id="l01197" name="l01197"></a><span class="lineno"> 1197</span>    <a class="code hl_class" href="classhmap_1_1Array.html">Array</a>         &amp;z,</div>
+<div class="line"><a id="l01197" name="l01197"></a><span class="lineno"> 1197</span>    Array         &amp;z,</div>
 <div class="line"><a id="l01198" name="l01198"></a><span class="lineno"> 1198</span>    <span class="keywordtype">float</span>          kp_global,</div>
 <div class="line"><a id="l01199" name="l01199"></a><span class="lineno"> 1199</span>    <span class="keywordtype">float</span>          c_erosion,</div>
 <div class="line"><a id="l01200" name="l01200"></a><span class="lineno"> 1200</span>    <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>           seed,</div>
@@ -589,11 +589,11 @@ $(document).ready(function(){initNavTree('erosion_8hpp_source.html',''); initRes
 <div class="line"><a id="l01213" name="l01213"></a><span class="lineno"> 1213</span>    <span class="keywordtype">float</span>          deposition_strength = 1.f,</div>
 <div class="line"><a id="l01214" name="l01214"></a><span class="lineno"> 1214</span>    <span class="keywordtype">bool</span>           enable_default_noise = <span class="keyword">true</span>,</div>
 <div class="line"><a id="l01215" name="l01215"></a><span class="lineno"> 1215</span>    <span class="keywordtype">float</span>          noise_amp = 0.01f,</div>
-<div class="line"><a id="l01216" name="l01216"></a><span class="lineno"> 1216</span>    <span class="keyword">const</span> <a class="code hl_class" href="classhmap_1_1Array.html">Array</a>   *p_kp_multiplier = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01217" name="l01217"></a><span class="lineno"> 1217</span>    <span class="keyword">const</span> <a class="code hl_class" href="classhmap_1_1Array.html">Array</a>   *p_angle_shift = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01218" name="l01218"></a><span class="lineno"> 1218</span>    <span class="keyword">const</span> <a class="code hl_class" href="classhmap_1_1Array.html">Array</a>   *p_noise_x = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01219" name="l01219"></a><span class="lineno"> 1219</span>    <span class="keyword">const</span> <a class="code hl_class" href="classhmap_1_1Array.html">Array</a>   *p_noise_y = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l01220" name="l01220"></a><span class="lineno"> 1220</span>    <a class="code hl_class" href="classhmap_1_1Array.html">Array</a>         *p_ridge_mask = <span class="keyword">nullptr</span>, <span class="comment">// ouptput</span></div>
+<div class="line"><a id="l01216" name="l01216"></a><span class="lineno"> 1216</span>    <span class="keyword">const</span> Array   *p_kp_multiplier = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01217" name="l01217"></a><span class="lineno"> 1217</span>    <span class="keyword">const</span> Array   *p_angle_shift = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01218" name="l01218"></a><span class="lineno"> 1218</span>    <span class="keyword">const</span> Array   *p_noise_x = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01219" name="l01219"></a><span class="lineno"> 1219</span>    <span class="keyword">const</span> Array   *p_noise_y = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l01220" name="l01220"></a><span class="lineno"> 1220</span>    Array         *p_ridge_mask = <span class="keyword">nullptr</span>, <span class="comment">// ouptput</span></div>
 <div class="line"><a id="l01221" name="l01221"></a><span class="lineno"> 1221</span>    glm::vec4      bbox = {0.f, 1.f, 0.f, 1.f});</div>
 <div class="line"><a id="l01222" name="l01222"></a><span class="lineno"> 1222</span> </div>
 <div class="line"><a id="l01223" name="l01223"></a><span class="lineno"> 1223</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#a60f3eb887b87ec545d68977b8811cadc">hydraulic_procedural_fbm</a>(</div>
@@ -964,7 +964,6 @@ $(document).ready(function(){initNavTree('erosion_8hpp_source.html',''); initRes
 <div class="line"><a id="l02007" name="l02007"></a><span class="lineno"> 2007</span>} <span class="comment">// namespace hmap::gpu</span></div>
 <div class="ttc" id="aarray_8hpp_html"><div class="ttname"><a href="array_8hpp.html">array.hpp</a></div><div class="ttdoc">Declaration of the Array class for 2D floating-point arrays with various mathematical operations and ...</div></div>
 <div class="ttc" id="aarray_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition</b> array.hpp:14</div></div>
-<div class="ttc" id="aclasshmap_1_1Array_html"><div class="ttname"><a href="classhmap_1_1Array.html">hmap::Array</a></div><div class="ttdoc">Array class, helper to manipulate 2D float array with &quot;(i, j)&quot; indexing.</div><div class="ttdef"><b>Definition</b> array.hpp:32</div></div>
 <div class="ttc" id="ahydrology_8hpp_html"><div class="ttname"><a href="hydrology_8hpp.html">hydrology.hpp</a></div><div class="ttdoc">Header file for hydrological modeling functions and utilities.</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html"><div class="ttname"><a href="namespacehmap_1_1gpu.html">hmap::gpu</a></div><div class="ttdef"><b>Definition</b> blending.hpp:186</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_a00b54f4e60a8fbd6ed5213600d598869"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a00b54f4e60a8fbd6ed5213600d598869">hmap::gpu::thermal_olsen</a></div><div class="ttdeci">void thermal_olsen(Array &amp;z, const Array &amp;talus, int iterations)</div><div class="ttdoc">See hmap::thermal_olsen.</div><div class="ttdef"><b>Definition</b> thermal_gpu.cpp:190</div></div>
