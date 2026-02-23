@@ -328,6 +328,10 @@ Tensor normal_map(const Array &array);
  */
 Array normal_map_to_heightmap(const Tensor &nmap);
 
+Array normal_map_to_heightmap_poisson(const Tensor &nmap,
+                                      int           iterations = 500,
+                                      float         omega = 1.5f);
+
 /**
  * @brief Solve the Poisson equation ∇²h = rhs using Gauss–Seidel iteration.
  *
