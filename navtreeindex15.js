@@ -1,5 +1,6 @@
 var NAVTREEINDEX15 =
 {
+"namespacemembers_func_f.html":[3,1,1,5],
 "namespacemembers_func_g.html":[3,1,1,6],
 "namespacemembers_func_h.html":[3,1,1,7],
 "namespacemembers_func_i.html":[3,1,1,8],
@@ -54,7 +55,7 @@ var NAVTREEINDEX15 =
 "non__parameteric__sampling_8cpp.html#aa7538088dbfe576e77ccbe14e9a6c9d7":[5,0,1,1,32,0,1],
 "normal__map_8cpp.html":[5,0,1,1,16,2],
 "normal__map_8cpp.html#a26a0e82cf03ec259e3efae1ea84286db":[5,0,1,1,16,2,1],
-"normal__map_8cpp.html#a4ed1b65c7d7fe8ec5b874ff5e6762228":[5,0,1,1,16,2,2],
+"normal__map_8cpp.html#a58b2e7cdca93719d3e1fca73fd68421c":[5,0,1,1,16,2,2],
 "normal__map_8cpp.html#aef53e65fc9b8bc74c342367b0034cfa7":[5,0,1,1,16,2,0],
 "opencv__wrapper_8cpp.html":[5,0,1,1,0,3],
 "opencv__wrapper_8cpp.html#a4fca3ce1ffb84dbc8a627b3313b1d1fb":[5,0,1,1,0,3,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX15 =
 "primitives_8hpp.html#a78b0b574724e2036ad5da6148e21acd8":[5,0,1,0,0,31,11],
 "primitives_8hpp.html#a79ad6fb857a38f8de9915d01992e5161":[5,0,1,0,0,31,35],
 "primitives_8hpp.html#a7a433480a8cd89be48bc9ce8cbb25ce8":[5,0,1,0,0,31,38],
-"primitives_8hpp.html#a808ede1d218fd226001c8f804bb85b97":[5,0,1,0,0,31,34],
-"primitives_8hpp.html#a80b6038177b2ab3984cb18bd90f568fa":[5,0,1,0,0,31,37]
+"primitives_8hpp.html#a808ede1d218fd226001c8f804bb85b97":[5,0,1,0,0,31,34]
 };

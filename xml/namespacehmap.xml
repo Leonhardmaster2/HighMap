@@ -28630,7 +28630,7 @@ h}{\partial y}
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z2<sp/>=<sp/><ref refid="namespacehmap_1a26a0e82cf03ec259e3efae1ea84286db" kindref="member">hmap::normal_map_to_heightmap</ref>(nmap);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Poisson<sp/>solver</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z3<sp/>=<sp/><ref refid="namespacehmap_1a4ed1b65c7d7fe8ec5b874ff5e6762228" kindref="member">hmap::normal_map_to_heightmap_poisson</ref>(nmap);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z3<sp/>=<sp/><ref refid="namespacehmap_1a58b2e7cdca93719d3e1fca73fd68421c" kindref="member">hmap::normal_map_to_heightmap_poisson</ref>(nmap);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(z1);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(z2);</highlight></codeline>
@@ -28650,6 +28650,34 @@ h}{\partial y}
         <inbodydescription>
         </inbodydescription>
         <location file="HighMap/src/gradient/normal_map.cpp" line="32" column="7" bodyfile="HighMap/src/gradient/normal_map.cpp" bodystart="32" bodyend="63" declfile="HighMap/include/highmap/gradient.hpp" declline="329" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehmap_1a58b2e7cdca93719d3e1fca73fd68421c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
+        <definition>Array hmap::normal_map_to_heightmap_poisson</definition>
+        <argsstring>(const Tensor &amp;nmap, int iterations=500, float omega=1.5f)</argsstring>
+        <name>normal_map_to_heightmap_poisson</name>
+        <qualifiedname>hmap::normal_map_to_heightmap_poisson</qualifiedname>
+        <param>
+          <type>const <ref refid="classhmap_1_1Tensor" kindref="compound">Tensor</ref> &amp;</type>
+          <declname>nmap</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>iterations</declname>
+          <defval>500</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>omega</declname>
+          <defval>1.5<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/gradient/normal_map.cpp" line="65" column="7" bodyfile="HighMap/src/gradient/normal_map.cpp" bodystart="65" bodyend="89" declfile="HighMap/include/highmap/gradient.hpp" declline="331" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a0bcc84aa462aee73e1a3a52729f21ea6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -28724,7 +28752,7 @@ h}{\partial y}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/gradient/solve_poisson_gauss_seidel.cpp" line="9" column="6" bodyfile="HighMap/src/gradient/solve_poisson_gauss_seidel.cpp" bodystart="9" bodyend="26" declfile="HighMap/include/highmap/gradient.hpp" declline="350" declcolumn="6"/>
+        <location file="HighMap/src/gradient/solve_poisson_gauss_seidel.cpp" line="9" column="6" bodyfile="HighMap/src/gradient/solve_poisson_gauss_seidel.cpp" bodystart="9" bodyend="26" declfile="HighMap/include/highmap/gradient.hpp" declline="354" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a3f8dc201377b61428eba8daa4a03a65f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -28786,7 +28814,7 @@ h}{\partial y}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/gradient/unwrap_phase.cpp" line="14" column="7" bodyfile="HighMap/src/gradient/unwrap_phase.cpp" bodystart="14" bodyend="68" declfile="HighMap/include/highmap/gradient.hpp" declline="371" declcolumn="7"/>
+        <location file="HighMap/src/gradient/unwrap_phase.cpp" line="14" column="7" bodyfile="HighMap/src/gradient/unwrap_phase.cpp" bodystart="14" bodyend="68" declfile="HighMap/include/highmap/gradient.hpp" declline="375" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a184b9eed77a8732a8631f8dd73d75a44" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -28812,7 +28840,7 @@ h}{\partial y}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/gradient/gradient.cpp" line="256" column="7" bodyfile="HighMap/src/gradient/gradient.cpp" bodystart="256" bodyend="261" declfile="HighMap/include/highmap/gradient.hpp" declline="373" declcolumn="7"/>
+        <location file="HighMap/src/gradient/gradient.cpp" line="256" column="7" bodyfile="HighMap/src/gradient/gradient.cpp" bodystart="256" bodyend="261" declfile="HighMap/include/highmap/gradient.hpp" declline="377" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a8284b00f1f460f1d5a406ee45587dcd9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -52938,32 +52966,6 @@ off&quot; values that fall below the threshold, which can be useful for filterin
         <inbodydescription>
         </inbodydescription>
         <location file="HighMap/src/gradient/gradient.cpp" line="43" column="7" bodyfile="HighMap/src/gradient/gradient.cpp" bodystart="43" bodyend="57"/>
-      </memberdef>
-      <memberdef kind="function" id="namespacehmap_1a4ed1b65c7d7fe8ec5b874ff5e6762228" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
-        <definition>Array hmap::normal_map_to_heightmap_poisson</definition>
-        <argsstring>(const Tensor &amp;nmap, int iterations, float omega)</argsstring>
-        <name>normal_map_to_heightmap_poisson</name>
-        <qualifiedname>hmap::normal_map_to_heightmap_poisson</qualifiedname>
-        <param>
-          <type>const <ref refid="classhmap_1_1Tensor" kindref="compound">Tensor</ref> &amp;</type>
-          <declname>nmap</declname>
-        </param>
-        <param>
-          <type>int</type>
-          <declname>iterations</declname>
-        </param>
-        <param>
-          <type>float</type>
-          <declname>omega</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="HighMap/src/gradient/normal_map.cpp" line="65" column="7" bodyfile="HighMap/src/gradient/normal_map.cpp" bodystart="65" bodyend="89"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a5acae3ca582cc9a70ad321ef484c05f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>

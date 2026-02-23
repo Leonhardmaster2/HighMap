@@ -1078,6 +1078,8 @@ void \mbox{\hyperlink{namespacehmap_a6032811e40d11b8957dc48d98711acf9}{gradient\
 \begin{DoxyCompactList}\small\item\em Generates a normal map from a given 2D array. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a26a0e82cf03ec259e3efae1ea84286db}{normal\+\_\+map\+\_\+to\+\_\+heightmap}} (const \mbox{\hyperlink{classhmap_1_1Tensor}{Tensor}} \&nmap)
 \begin{DoxyCompactList}\small\item\em Converts a normal map to a heightmap using direct summation of gradients. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a58b2e7cdca93719d3e1fca73fd68421c}{normal\+\_\+map\+\_\+to\+\_\+heightmap\+\_\+poisson}} (const \mbox{\hyperlink{classhmap_1_1Tensor}{Tensor}} \&nmap, int iterations=500, float omega=1.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
+\item 
 void \mbox{\hyperlink{namespacehmap_a0bcc84aa462aee73e1a3a52729f21ea6}{solve\+\_\+poisson\+\_\+gauss\+\_\+seidel}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&rhs, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&h, int iterations=500, float omega=1.\+0f)
 \begin{DoxyCompactList}\small\item\em Solve the Poisson equation ∇²h = rhs using Gauss–\+Seidel iteration. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a3f8dc201377b61428eba8daa4a03a65f}{unwrap\+\_\+phase}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&alpha)
@@ -1727,8 +1729,6 @@ bool \mbox{\hyperlink{namespacehmap_ac070e7f9253f57fe6b44ad1f6c9fd753}{cmp\+\_\+
 void \mbox{\hyperlink{namespacehmap_ad97b6a0082efd4063f7839c95a51b294}{compute\+\_\+gradient}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&dx, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&dy, float x\+\_\+coeff\mbox{[}3\mbox{]}, float y\+\_\+coeff\mbox{[}3\mbox{]}, float normalize\+\_\+factor)
 \item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_aa2c4a82ac72b15cac34f868be9743471}{compute\+\_\+gradient\+\_\+norm}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float x\+\_\+coeff\mbox{[}3\mbox{]}, float y\+\_\+coeff\mbox{[}3\mbox{]}, float normalize\+\_\+factor, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+dx=nullptr, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+dy=nullptr)
-\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a4ed1b65c7d7fe8ec5b874ff5e6762228}{normal\+\_\+map\+\_\+to\+\_\+heightmap\+\_\+poisson}} (const \mbox{\hyperlink{classhmap_1_1Tensor}{Tensor}} \&nmap, int iterations, float omega)
 \item 
 void \mbox{\hyperlink{namespacehmap_a5acae3ca582cc9a70ad321ef484c05f2}{helper\+\_\+find\+\_\+up\+\_\+downslope}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, const glm\+::ivec2 \&ij, glm\+::ivec2 \&ij\+\_\+dw, glm\+::ivec2 \&ij\+\_\+up)
 \item 
@@ -17000,7 +17000,7 @@ An {\ttfamily \doxylink{classhmap_1_1Array}{Array}} object representing the comp
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z2\ =\ \mbox{\hyperlink{namespacehmap_a26a0e82cf03ec259e3efae1ea84286db}{hmap::normal\_map\_to\_heightmap}}(nmap);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ Poisson\ solver}}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z3\ =\ \mbox{\hyperlink{namespacehmap_a4ed1b65c7d7fe8ec5b874ff5e6762228}{hmap::normal\_map\_to\_heightmap\_poisson}}(nmap);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z3\ =\ \mbox{\hyperlink{namespacehmap_a58b2e7cdca93719d3e1fca73fd68421c}{hmap::normal\_map\_to\_heightmap\_poisson}}(nmap);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(z1);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(z2);}
@@ -17015,7 +17015,13 @@ An {\ttfamily \doxylink{classhmap_1_1Array}{Array}} object representing the comp
 
 \end{DoxyItemize}
 \end{DoxyNote}
-{\bfseries{Result}}  \Hypertarget{namespacehmap_a0bcc84aa462aee73e1a3a52729f21ea6}\label{namespacehmap_a0bcc84aa462aee73e1a3a52729f21ea6} 
+{\bfseries{Result}}  \Hypertarget{namespacehmap_a58b2e7cdca93719d3e1fca73fd68421c}\label{namespacehmap_a58b2e7cdca93719d3e1fca73fd68421c} 
+\index{hmap@{hmap}!normal\_map\_to\_heightmap\_poisson@{normal\_map\_to\_heightmap\_poisson}}
+\index{normal\_map\_to\_heightmap\_poisson@{normal\_map\_to\_heightmap\_poisson}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{normal\_map\_to\_heightmap\_poisson()}{normal\_map\_to\_heightmap\_poisson()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::normal\+\_\+map\+\_\+to\+\_\+heightmap\+\_\+poisson (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Tensor}{Tensor}} \&}]{nmap,  }\item[{int}]{iterations = {\ttfamily 500},  }\item[{float}]{omega = {\ttfamily 1.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacehmap_a0bcc84aa462aee73e1a3a52729f21ea6}\label{namespacehmap_a0bcc84aa462aee73e1a3a52729f21ea6} 
 \index{hmap@{hmap}!solve\_poisson\_gauss\_seidel@{solve\_poisson\_gauss\_seidel}}
 \index{solve\_poisson\_gauss\_seidel@{solve\_poisson\_gauss\_seidel}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{solve\_poisson\_gauss\_seidel()}{solve\_poisson\_gauss\_seidel()}}
@@ -28838,12 +28844,6 @@ void hmap\+::convert\+\_\+mat\+\_\+to\+\_\+array (\begin{DoxyParamCaption}\item[
 \index{compute\_gradient\_norm@{compute\_gradient\_norm}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{compute\_gradient\_norm()}{compute\_gradient\_norm()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::compute\+\_\+gradient\+\_\+norm (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{float}]{x\+\_\+coeff\mbox{[}3\mbox{]},  }\item[{float}]{y\+\_\+coeff\mbox{[}3\mbox{]},  }\item[{float}]{normalize\+\_\+factor,  }\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+dx = {\ttfamily nullptr},  }\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+dy = {\ttfamily nullptr} }\end{DoxyParamCaption})}
-
-\Hypertarget{namespacehmap_a4ed1b65c7d7fe8ec5b874ff5e6762228}\label{namespacehmap_a4ed1b65c7d7fe8ec5b874ff5e6762228} 
-\index{hmap@{hmap}!normal\_map\_to\_heightmap\_poisson@{normal\_map\_to\_heightmap\_poisson}}
-\index{normal\_map\_to\_heightmap\_poisson@{normal\_map\_to\_heightmap\_poisson}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{normal\_map\_to\_heightmap\_poisson()}{normal\_map\_to\_heightmap\_poisson()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::normal\+\_\+map\+\_\+to\+\_\+heightmap\+\_\+poisson (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Tensor}{Tensor}} \&}]{nmap,  }\item[{int}]{iterations,  }\item[{float}]{omega }\end{DoxyParamCaption})}
 
 \Hypertarget{namespacehmap_a5acae3ca582cc9a70ad321ef484c05f2}\label{namespacehmap_a5acae3ca582cc9a70ad321ef484c05f2} 
 \index{hmap@{hmap}!helper\_find\_up\_downslope@{helper\_find\_up\_downslope}}

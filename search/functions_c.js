@@ -13,7 +13,7 @@ var searchData=
   ['normal_5fdisplacement_10',['normal_displacement',['../namespacehmap.html#aafd7a642dabfbcf2ab2981b229a30e15',1,'hmap::normal_displacement(Array &amp;array, float amount=0.1f, int ir=0, bool reverse=false)'],['../namespacehmap.html#a8994656d85a1b9dd0f2c99a3fd45ceb1',1,'hmap::normal_displacement(Array &amp;array, const Array *p_mask, float amount=0.1f, int ir=0, bool reverse=false)'],['../namespacehmap_1_1gpu.html#a9aa4af458740db48fdcd55cc90238ce2',1,'hmap::gpu::normal_displacement(Array &amp;array, float amount=0.1f, int ir=0, bool reverse=false)'],['../namespacehmap_1_1gpu.html#a638d2358ff4ea4cb6a4f24106aa3c94d',1,'hmap::gpu::normal_displacement(Array &amp;array, const Array *p_mask, float amount=0.1f, int ir=0, bool reverse=false)']]],
   ['normal_5fmap_11',['normal_map',['../namespacehmap.html#aef53e65fc9b8bc74c342367b0034cfa7',1,'hmap']]],
   ['normal_5fmap_5fto_5fheightmap_12',['normal_map_to_heightmap',['../namespacehmap.html#a26a0e82cf03ec259e3efae1ea84286db',1,'hmap']]],
-  ['normal_5fmap_5fto_5fheightmap_5fpoisson_13',['normal_map_to_heightmap_poisson',['../namespacehmap.html#a4ed1b65c7d7fe8ec5b874ff5e6762228',1,'hmap']]],
+  ['normal_5fmap_5fto_5fheightmap_5fpoisson_13',['normal_map_to_heightmap_poisson',['../namespacehmap.html#a58b2e7cdca93719d3e1fca73fd68421c',1,'hmap']]],
   ['normalization_5fcoeff_14',['normalization_coeff',['../classhmap_1_1Array.html#ac368e46495976f11a552ce2a50d5cc6e',1,'hmap::Array']]],
   ['normalize_15',['normalize',['../classhmap_1_1Array.html#ab55ee6021288a467f7d782b09e888f25',1,'hmap::Array']]],
   ['normalized_5fdistance_5fto_5fedges_16',['normalized_distance_to_edges',['../classhmap_1_1CoordFrame.html#af1f76997d4d33cc1cc1e63ffb1ca3ebd',1,'hmap::CoordFrame']]],
