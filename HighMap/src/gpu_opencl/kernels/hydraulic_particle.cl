@@ -6,6 +6,7 @@ R""(
 #define VELOCITY_MIN 0.01f
 #define VOLUME_MIN 0.001f
 #define SLOPE_MIN 0.0001f
+#define MAX_IT 5000
 
 // --- HELPERS
 
@@ -113,9 +114,12 @@ void kernel hydraulic_particle(global float *z_in,
 
   float s = 0.f;
   float evap_factor = 1.f - evap_rate;
-
-  while (volume > 1e-3f)
+  int count = 0;
+  
+  while (volume > 1e-3f && count < MAX_IT)
   {
+    count++; // for pathological cases...
+    
     update_interp_param(pos, &i, &j, &u, &v);
 
     // stop if the particle reaches the domain limits
