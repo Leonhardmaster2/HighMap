@@ -52,11 +52,11 @@ enum DistanceFunction : int
  */
 enum PhasorProfile : int
 {
-  COSINE_BULKY,
-  COSINE_PEAKY,
-  COSINE_SQUARE,
-  COSINE_STD,
-  TRIANGLE,
+  PP_COSINE_BULKY,
+  PP_COSINE_PEAKY,
+  PP_COSINE_SQUARE,
+  PP_COSINE_STD,
+  PP_TRIANGLE,
 };
 
 /**

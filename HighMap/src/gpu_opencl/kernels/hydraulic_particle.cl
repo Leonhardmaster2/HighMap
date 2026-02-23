@@ -114,12 +114,12 @@ void kernel hydraulic_particle(global float *z_in,
 
   float s = 0.f;
   float evap_factor = 1.f - evap_rate;
-  int count = 0;
-  
+  int   count = 0;
+
   while (volume > 1e-3f && count < MAX_IT)
   {
     count++; // for pathological cases...
-    
+
     update_interp_param(pos, &i, &j, &u, &v);
 
     // stop if the particle reaches the domain limits

@@ -2501,6 +2501,100 @@ Array noise_fbm(NoiseType    noise_type,
                 glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
+ * @brief Generates a procedural phasor-based pattern.
+ *
+ * Produces a directional, phase-driven field using a selected profile,
+ * optional angle control, and spatial distortion noise.
+ *
+ * @param phasor_profile Phasor shaping profile.
+ * @param shape Output array dimensions.
+ * @param kp_global Global frequency factor.
+ * @param seed Random seed.
+ * @param angle_shift Global phase angle offset (degrees).
+ * @param n_kernel_samples Number of kernel samples.
+ * @param jitter Sampling jitter (x,y).
+ * @param angle_filter_ir Angular filtering radius.
+ * @param delta Finite difference step.
+ * @param phase_smoothing Phase smoothing factor.
+ * @param p_angle Optional external angle field.
+ * @param p_noise_x Optional X distortion field.
+ * @param p_noise_y Optional Y distortion field.
+ * @param bbox Domain bounding box.
+ * @return Array Generated phasor field.
+ *
+ * **Example**
+ * @include ex_phasor.cpp
+ *
+ * **Result**
+ * @image html ex_phasor.png
+ */
+Array phasor(PhasorProfile   phasor_profile,
+             glm::ivec2      shape,
+             float           kp_global,
+             uint            seed,
+             float           angle_shift = 0.f,
+             int             n_kernel_samples = 8,
+             const glm::vec2 jitter = {1.f, 1.f},
+             int             angle_filter_ir = 8,
+             float           delta = 0.01f,
+             float           phase_smoothing = 10.f,
+             const Array    *p_angle = nullptr,
+             const Array    *p_noise_x = nullptr,
+             const Array    *p_noise_y = nullptr,
+             glm::vec4       bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
+ * @brief Generates a multi-octave (fBm) phasor-based pattern.
+ *
+ * Accumulates several scaled `phasor` layers using persistence and lacunarity
+ * for richer multi-scale structure.
+ *
+ * @param phasor_profile Phasor shaping profile.
+ * @param shape Output array dimensions.
+ * @param kp_global Base frequency factor.
+ * @param seed Random seed.
+ * @param angle_shift Global phase angle offset (degrees).
+ * @param octaves Number of fBm layers.
+ * @param weight Initial octave weight.
+ * @param persistence Amplitude multiplier per octave.
+ * @param lacunarity Frequency multiplier per octave.
+ * @param n_kernel_samples Number of kernel samples.
+ * @param jitter Sampling jitter (x,y).
+ * @param angle_filter_ir Angular filtering radius.
+ * @param delta Finite difference step.
+ * @param phase_smoothing Phase smoothing factor.
+ * @param p_angle Optional external angle field.
+ * @param p_noise_x Optional X distortion field.
+ * @param p_noise_y Optional Y distortion field.
+ * @param bbox Domain bounding box.
+ * @return Array Generated multi-scale phasor field.
+ *
+ * **Example**
+ * @include ex_phasor.cpp
+ *
+ * **Result**
+ * @image html ex_phasor.png
+ */
+Array phasor_fbm(PhasorProfile   phasor_profile,
+                 glm::ivec2      shape,
+                 float           kp_global,
+                 uint            seed,
+                 float           angle_shift = 0.f,
+                 int             octaves = 8,
+                 float           weight = 0.7f,
+                 float           persistence = 0.5f,
+                 float           lacunarity = 2.f,
+                 int             n_kernel_samples = 8,
+                 const glm::vec2 jitter = {1.f, 1.f},
+                 int             angle_filter_ir = 8,
+                 float           delta = 0.01f,
+                 float           phase_smoothing = 10.f,
+                 const Array    *p_angle = nullptr,
+                 const Array    *p_noise_x = nullptr,
+                 const Array    *p_noise_y = nullptr,
+                 glm::vec4       bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
  * @brief Generate a tectonic plate–like heightfield using Voronoi FBM and
  * directional talus projection.
  *

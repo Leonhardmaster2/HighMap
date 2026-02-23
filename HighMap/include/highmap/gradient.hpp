@@ -329,81 +329,6 @@ Tensor normal_map(const Array &array);
 Array normal_map_to_heightmap(const Tensor &nmap);
 
 /**
- * @brief Reconstruct a height/displacement map from a normal map by solving a
- * Poisson equation with Gauss–Seidel iteration.
- *
- * The reconstruction is unique up to an additive constant. After solving, you
- * may subtract the mean or normalize to a desired range.
- *
- * @param  nmap       Input normal map as a 2D tensor.
- *     - Channel 0 = \(N_x\), channel 1 = \(N_y\), channel 2 = \(N_z\).
- *     - Values are expected in [0,1] or [-1,1]; if stored in [0,1], they will
- * be remapped internally to [-1,1].
- * @param  iterations Number of Gauss–Seidel iterations to perform (default =
- *                    500). Higher values improve accuracy but increase runtime.
- * @param  omega      Relaxation factor (1.0 = pure Gauss–Seidel; 1.0–2.0 =
- *                    over-relaxation). Recommended: 1.2–1.5 for faster
- * convergence.
- *
- * @return            *     A 2D Array containing the reconstructed height map.
- *                    Values are not normalized; apply scaling or centering if
- *                    needed. Example**
- * @include ex_normal_map_to_heightmap.cpp
- *
- * **Result**
- * @image html ex_normal_map_to_heightmap.png
- */
-Array normal_map_to_heightmap_poisson(const Tensor &nmap,
-                                      int           iterations = 500,
-                                      float         omega = 1.5f);
-
-/**
- * @brief Computes a phase field using spatially varying Gabor noise based on
- * the input heightmap.
- *
- * This function generates a 2D phase field by combining gradient angles from
- * the input array and Gabor noise, which is spatially distributed with varying
- * parameters. The resulting phase field can be used for procedural terrain
- * generation or other simulations.
- *
- * @param[in]  array          The input 2D heightmap array.
- * @param[in]  kw             Wave number for the Gabor kernel, determining the
- *                            frequency of the noise.
- * @param[in]  width          Width of the Gabor kernel.
- * @param[in]  seed           Random seed for reproducible Gabor noise
- *                            generation.
- * @param[in]  noise_amp      Noise amplitude added to the phase field.
- * @param[in]  prefilter_ir   Kernel radius for pre-smoothing the input array.
- *                            If negative, a default value is computed.
- * @param[in]  density_factor Factor controlling the density of the noise
- *                            points.
- * @param[in]  rotate90       Boolean flag to rotate the gradient angles by 90
- *                            degrees.
- * @param[out] p_gnoise_x     Optional pointer to store the generated Gabor
- *                            noise in the X direction.
- * @param[out] p_gnoise_y     Optional pointer to store the generated Gabor
- *                            noise in the Y direction.
- *
- * @return                    A 2D array representing the computed phase field.
- *
- * * **Example**
- * @include ex_phase_field.cpp
- *
- * **Result**
- * @image html ex_phase_field.png
- */
-Array phase_field(const Array &array,
-                  float        kw,
-                  int          width,
-                  uint         seed,
-                  float        noise_amp = 0.f,
-                  int          prefilter_ir = -1,
-                  float        density_factor = 1.f,
-                  bool         rotate90 = false,
-                  Array       *p_gnoise_x = nullptr,
-                  Array       *p_gnoise_y = nullptr);
-
-/**
  * @brief Solve the Poisson equation ∇²h = rhs using Gauss–Seidel iteration.
  *
  * This function assumes Dirichlet boundary conditions (height = 0 at the
@@ -536,6 +461,20 @@ Array phase_field(const Array     &array,
                   Array           *p_modulus = nullptr,
                   Array           *p_angle_jump_mask = nullptr,
                   glm::vec4        bbox = {0.f, 1.f, 0.f, 1.f});
+
+Array phase_field_angle(const Array     &angle, // rads
+                        const glm::vec2 &kw,
+                        uint             seed,
+                        float            kp,
+                        int              n_kernel_samples = 8,
+                        const glm::vec2 &jitter = {0.5f, 0.5f},
+                        int              angle_filter_ir = 8,
+                        const Array     *p_ctrl_param = nullptr,
+                        const Array     *p_noise_x = nullptr,
+                        const Array     *p_noise_y = nullptr,
+                        Array           *p_modulus = nullptr,
+                        Array           *p_angle_jump_mask = nullptr,
+                        glm::vec4        bbox = {0.f, 1.f, 0.f, 1.f});
 
 /*! @brief See hmap::gradient_angle_circular_smoothing */
 Array gradient_angle_circular_smoothing(const Array &array,

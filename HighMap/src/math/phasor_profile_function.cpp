@@ -22,7 +22,7 @@ std::function<float(float)> get_phasor_profile_function(
   switch (phasor_profile)
   {
 
-  case PhasorProfile::COSINE_BULKY:
+  case PhasorProfile::PP_COSINE_BULKY:
     fct = [](float phi)
     {
       float t = phi / M_PI;
@@ -32,7 +32,7 @@ std::function<float(float)> get_phasor_profile_function(
     };
     break;
 
-  case PhasorProfile::COSINE_PEAKY:
+  case PhasorProfile::PP_COSINE_PEAKY:
     fct = [](float phi)
     {
       float t = phi / M_PI;
@@ -43,7 +43,7 @@ std::function<float(float)> get_phasor_profile_function(
     };
     break;
 
-  case PhasorProfile::COSINE_SQUARE:
+  case PhasorProfile::PP_COSINE_SQUARE:
     fct = [delta](float phi)
     {
       float t = phi / M_PI;
@@ -57,11 +57,11 @@ std::function<float(float)> get_phasor_profile_function(
     };
     break;
 
-  case PhasorProfile::COSINE_STD:
+  case PhasorProfile::PP_COSINE_STD:
     fct = [](float phi) { return std::cos(phi); };
     break;
 
-  case PhasorProfile::TRIANGLE:
+  case PhasorProfile::PP_TRIANGLE:
     fct = [](float phi)
     {
       float t = phi / M_PI;
