@@ -1601,6 +1601,32 @@ void strata(Array           &z,
             const Array     *p_mask = nullptr,
             const glm::vec4 &bbox = {0.f, 1.f, 0.f, 1.f});
 
+/**
+ * @brief Applies procedural stratified cell displacement to a heightmap.
+ *
+ * Generates layered cell-like structures with optional directional distortion
+ * and noise-based perturbation.
+ *
+ * @param z                     Heightmap array to modify.
+ * @param kw                    Cell frequency (x,y).
+ * @param amp                   Displacement amplitude.
+ * @param seed                  Random seed.
+ * @param gamma                 Vertical shaping exponent.
+ * @param gamma_lateral         Lateral shaping exponent.
+ * @param angle                 Layer orientation angle (degrees).
+ * @param noise_amp             Amplitude of input distortion noise.
+ * @param absolute_displacement Use absolute instead of relative displacement.
+ * @param occurence_probability Probability of cell activation.
+ * @param p_noise_x             Optional X distortion field.
+ * @param p_noise_y             Optional Y distortion field.
+ * @param bbox                  Domain bounding box.
+ *
+ * **Example**
+ * @include ex_strata_cells.cpp
+ *
+ * **Result**
+ * @image html ex_strata_cells.png
+ */
 void strata_cells(Array       &z,
                   glm::vec2    kw,
                   float        amp,
@@ -1615,6 +1641,33 @@ void strata_cells(Array       &z,
                   const Array *p_noise_y = nullptr,
                   glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
 
+/**
+ * @brief Applies stratified cell displacement with optional masking.
+ *
+ * If `p_mask` is provided, the effect is blended with the original heightmap
+ * using the mask as interpolation weight.
+ *
+ * @param z                     Heightmap array to modify.
+ * @param kw                    Cell frequency (x,y).
+ * @param amp                   Displacement amplitude.
+ * @param seed                  Random seed.
+ * @param p_mask                Optional mask controlling spatial blending.
+ * @param gamma                 Vertical shaping exponent.
+ * @param gamma_lateral         Lateral shaping exponent.
+ * @param angle                 Layer orientation angle (degrees).
+ * @param noise_amp             Amplitude of input distortion noise.
+ * @param absolute_displacement Use absolute instead of relative displacement.
+ * @param occurence_probability Probability of cell activation.
+ * @param p_noise_x             Optional X distortion field.
+ * @param p_noise_y             Optional Y distortion field.
+ * @param bbox                  Domain bounding box.
+ *
+ * **Example**
+ * @include ex_strata_cells.cpp
+ *
+ * **Result**
+ * @image html ex_strata_cells.png
+ */
 void strata_cells(Array       &z,
                   glm::vec2    kw,
                   float        amp,
@@ -1630,6 +1683,36 @@ void strata_cells(Array       &z,
                   const Array *p_noise_y = nullptr,
                   glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
 
+/**
+ * @brief Applies multi-octave (fBm) stratified cell displacement.
+ *
+ * Accumulates several scaled `strata_cells` layers using persistence and
+ * lacunarity. Can optionally generate internal distortion noise.
+ *
+ * @param z                     Heightmap array to modify.
+ * @param kw                    Base cell frequency (x,y).
+ * @param amp                   Base displacement amplitude.
+ * @param seed                  Random seed.
+ * @param gamma                 Vertical shaping exponent.
+ * @param gamma_lateral         Lateral shaping exponent.
+ * @param angle                 Layer orientation angle (degrees).
+ * @param enable_default_noise  Generate internal distortion noise.
+ * @param default_noise_amp     Amplitude of generated noise.
+ * @param absolute_displacement Use absolute instead of relative displacement.
+ * @param occurence_probability Probability of cell activation.
+ * @param octaves               Number of fBm layers.
+ * @param persistence           Amplitude multiplier per octave.
+ * @param lacunarity            Frequency multiplier per octave.
+ * @param p_noise_x             Optional X distortion field.
+ * @param p_noise_y             Optional Y distortion field.
+ * @param bbox                  Domain bounding box.
+ *
+ * **Example**
+ * @include ex_strata_cells.cpp
+ *
+ * **Result**
+ * @image html ex_strata_cells.png
+ */
 void strata_cells_fbm(Array       &z,
                       glm::vec2    kw,
                       float        amp,
@@ -1648,6 +1731,37 @@ void strata_cells_fbm(Array       &z,
                       const Array *p_noise_y = nullptr,
                       glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
 
+/**
+ * @brief Applies masked multi-octave stratified cell displacement.
+ *
+ * Works like `strata_cells_fbm` but blends the result with the original
+ * heightmap using `p_mask`.
+ *
+ * @param z                     Heightmap array to modify.
+ * @param kw                    Base cell frequency (x,y).
+ * @param amp                   Base displacement amplitude.
+ * @param seed                  Random seed.
+ * @param p_mask                Optional mask controlling spatial blending.
+ * @param gamma                 Vertical shaping exponent.
+ * @param gamma_lateral         Lateral shaping exponent.
+ * @param angle                 Layer orientation angle (degrees).
+ * @param enable_default_noise  Generate internal distortion noise.
+ * @param default_noise_amp     Amplitude of generated noise.
+ * @param absolute_displacement Use absolute instead of relative displacement.
+ * @param occurence_probability Probability of cell activation.
+ * @param octaves               Number of fBm layers.
+ * @param persistence           Amplitude multiplier per octave.
+ * @param lacunarity            Frequency multiplier per octave.
+ * @param p_noise_x             Optional X distortion field.
+ * @param p_noise_y             Optional Y distortion field.
+ * @param bbox                  Domain bounding box.
+ *
+ * **Example**
+ * @include ex_strata_cells.cpp
+ *
+ * **Result**
+ * @image html ex_strata_cells.png
+ */
 void strata_cells_fbm(Array       &z,
                       glm::vec2    kw,
                       float        amp,
