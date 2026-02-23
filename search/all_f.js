@@ -33,7 +33,7 @@ var searchData=
   ['normal_5fmap_30',['normal_map',['../namespacehmap.html#aef53e65fc9b8bc74c342367b0034cfa7',1,'hmap']]],
   ['normal_5fmap_2ecpp_31',['normal_map.cpp',['../normal__map_8cpp.html',1,'']]],
   ['normal_5fmap_5fto_5fheightmap_32',['normal_map_to_heightmap',['../namespacehmap.html#a26a0e82cf03ec259e3efae1ea84286db',1,'hmap']]],
-  ['normal_5fmap_5fto_5fheightmap_5fpoisson_33',['normal_map_to_heightmap_poisson',['../namespacehmap.html#a58b2e7cdca93719d3e1fca73fd68421c',1,'hmap']]],
+  ['normal_5fmap_5fto_5fheightmap_5fpoisson_33',['normal_map_to_heightmap_poisson',['../namespacehmap.html#a4ed1b65c7d7fe8ec5b874ff5e6762228',1,'hmap']]],
   ['normalization_5fcoeff_34',['normalization_coeff',['../classhmap_1_1Array.html#ac368e46495976f11a552ce2a50d5cc6e',1,'hmap::Array']]],
   ['normalize_35',['normalize',['../classhmap_1_1Array.html#ab55ee6021288a467f7d782b09e888f25',1,'hmap::Array']]],
   ['normalized_5fdistance_5fto_5fedges_36',['normalized_distance_to_edges',['../classhmap_1_1CoordFrame.html#af1f76997d4d33cc1cc1e63ffb1ca3ebd',1,'hmap::CoordFrame']]],

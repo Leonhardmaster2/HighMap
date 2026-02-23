@@ -349,12 +349,12 @@ enum \mbox{\hyperlink{namespacehmap_a670f50d6c08ecd639d42db9c75a5273a}{Distance\
  \}
 \begin{DoxyCompactList}\small\item\em Distance function type. \end{DoxyCompactList}\item 
 enum \mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241a}{Phasor\+Profile}} \+: int \{ \newline
-\mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241aad8f217eb3ab016f46b02f118cfaeadab}{COSINE\+\_\+\+BULKY}}
-, \mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241aa2bfa021bd5f24ce3410477d209f3e588}{COSINE\+\_\+\+PEAKY}}
-, \mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241aa096fe4956a67b70c9db140472af0b6b0}{COSINE\+\_\+\+SQUARE}}
-, \mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241aa29de9f23976831ac056abef76c1f8d2e}{COSINE\+\_\+\+STD}}
+\mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241aa7ad40d540d30fb8f26a09ab9bd1e3ae7}{PP\+\_\+\+COSINE\+\_\+\+BULKY}}
+, \mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241aa0cd4624d7ec212818cf2ef09f8540bf1}{PP\+\_\+\+COSINE\+\_\+\+PEAKY}}
+, \mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241aaee313a4258bc2b011fc404112db201fc}{PP\+\_\+\+COSINE\+\_\+\+SQUARE}}
+, \mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241aafeda57dc66f5efb1d5f0fcc48ddb5319}{PP\+\_\+\+COSINE\+\_\+\+STD}}
 , \newline
-\mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241aa1ee22d304b9b93cd76da1fbc9d32a75a}{TRIANGLE}}
+\mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241aae01a073e65c99b00aa16b2023f4dcbe2}{PP\+\_\+\+TRIANGLE}}
  \}
 \begin{DoxyCompactList}\small\item\em Phasor angular profile type. \end{DoxyCompactList}\item 
 enum \mbox{\hyperlink{namespacehmap_a2affc745bc33b7555352665745741f90}{Radial\+Profile}} \+: int \{ \newline
@@ -1078,10 +1078,6 @@ void \mbox{\hyperlink{namespacehmap_a6032811e40d11b8957dc48d98711acf9}{gradient\
 \begin{DoxyCompactList}\small\item\em Generates a normal map from a given 2D array. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a26a0e82cf03ec259e3efae1ea84286db}{normal\+\_\+map\+\_\+to\+\_\+heightmap}} (const \mbox{\hyperlink{classhmap_1_1Tensor}{Tensor}} \&nmap)
 \begin{DoxyCompactList}\small\item\em Converts a normal map to a heightmap using direct summation of gradients. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a58b2e7cdca93719d3e1fca73fd68421c}{normal\+\_\+map\+\_\+to\+\_\+heightmap\+\_\+poisson}} (const \mbox{\hyperlink{classhmap_1_1Tensor}{Tensor}} \&nmap, int iterations=500, float omega=1.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
-\begin{DoxyCompactList}\small\item\em Reconstruct a height/displacement map from a normal map by solving a Poisson equation with Gauss–\+Seidel iteration. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a6e66245d2cf9c7944ed35a1010c54f77}{phase\+\_\+field}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float kw, int width, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, float noise\+\_\+amp=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, int prefilter\+\_\+ir=-\/1, float density\+\_\+factor=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, bool rotate90=false, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+gnoise\+\_\+x=nullptr, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+gnoise\+\_\+y=nullptr)
-\begin{DoxyCompactList}\small\item\em Computes a phase field using spatially varying Gabor noise based on the input heightmap. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a0bcc84aa462aee73e1a3a52729f21ea6}{solve\+\_\+poisson\+\_\+gauss\+\_\+seidel}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&rhs, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&h, int iterations=500, float omega=1.\+0f)
 \begin{DoxyCompactList}\small\item\em Solve the Poisson equation ∇²h = rhs using Gauss–\+Seidel iteration. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a3f8dc201377b61428eba8daa4a03a65f}{unwrap\+\_\+phase}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&alpha)
@@ -1484,10 +1480,6 @@ void \mbox{\hyperlink{namespacehmap_a81ae845564fe0e6f2f641451c063bc65}{swap}} (\
 \begin{DoxyCompactList}\small\item\em Return a paraboloid. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a77ce3e2ce7f345c48daf6a7dc123fc7f}{peak}} (glm\+::ivec2 shape, float radius, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise, float noise\+\_\+r\+\_\+amp, float noise\+\_\+z\+\_\+ratio, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
 \begin{DoxyCompactList}\small\item\em Return a peak-\/shaped heightmap. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a5cbe10d6852cd789580e57a22049e29d}{phasor}} (\mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241a}{Phasor\+Profile}} phasor\+\_\+profile, glm\+::ivec2 shape, float kw, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&\mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}}, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, float profile\+\_\+delta=0.\+1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float density\+\_\+factor=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float kernel\+\_\+width\+\_\+ratio=2.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float phase\+\_\+smoothing=2.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
-\begin{DoxyCompactList}\small\item\em Generates a phasor noise field based on a Gabor noise model and phase profile. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a8a24c5ba59504664638793a4af54f92b}{phasor\+\_\+fbm}} (\mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241a}{Phasor\+Profile}} phasor\+\_\+profile, glm\+::ivec2 shape, float kw, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&\mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}}, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, float profile\+\_\+delta=0.\+1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float density\+\_\+factor=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float kernel\+\_\+width\+\_\+ratio=2.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float phase\+\_\+smoothing=2.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, int octaves=8, float weight=0.\+7\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float persistence=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float lacunarity=2.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
-\begin{DoxyCompactList}\small\item\em Generates a fractal Brownian motion (f\+Bm) noise field using layered phasor profiles. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_adafc477ac182ce40ebf2cee1c84cb936}{rectangle}} (glm\+::ivec2 shape, float rx, float ry, float \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}}, float \mbox{\hyperlink{namespacehmap_a79ad6fb857a38f8de9915d01992e5161}{slope}}=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+ctrl\+\_\+param=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+stretching=nullptr, glm\+::vec2 center=\{0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
 \begin{DoxyCompactList}\small\item\em Generates a rectangle-\/shaped heightmap with optional modifications. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a808ede1d218fd226001c8f804bb85b97}{rift}} (glm\+::ivec2 shape, float \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}}, float \mbox{\hyperlink{namespacehmap_a79ad6fb857a38f8de9915d01992e5161}{slope}}, float width, bool sharp\+\_\+bottom=false, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+ctrl\+\_\+param=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+stretching=nullptr, glm\+::vec2 center=\{0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
@@ -1735,6 +1727,8 @@ bool \mbox{\hyperlink{namespacehmap_ac070e7f9253f57fe6b44ad1f6c9fd753}{cmp\+\_\+
 void \mbox{\hyperlink{namespacehmap_ad97b6a0082efd4063f7839c95a51b294}{compute\+\_\+gradient}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&dx, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&dy, float x\+\_\+coeff\mbox{[}3\mbox{]}, float y\+\_\+coeff\mbox{[}3\mbox{]}, float normalize\+\_\+factor)
 \item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_aa2c4a82ac72b15cac34f868be9743471}{compute\+\_\+gradient\+\_\+norm}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float x\+\_\+coeff\mbox{[}3\mbox{]}, float y\+\_\+coeff\mbox{[}3\mbox{]}, float normalize\+\_\+factor, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+dx=nullptr, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+dy=nullptr)
+\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a4ed1b65c7d7fe8ec5b874ff5e6762228}{normal\+\_\+map\+\_\+to\+\_\+heightmap\+\_\+poisson}} (const \mbox{\hyperlink{classhmap_1_1Tensor}{Tensor}} \&nmap, int iterations, float omega)
 \item 
 void \mbox{\hyperlink{namespacehmap_a5acae3ca582cc9a70ad321ef484c05f2}{helper\+\_\+find\+\_\+up\+\_\+downslope}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, const glm\+::ivec2 \&ij, glm\+::ivec2 \&ij\+\_\+dw, glm\+::ivec2 \&ij\+\_\+up)
 \item 
@@ -2435,24 +2429,24 @@ MANHATTAN&Manhattan. \\
 Phasor angular profile type. 
 
 \begin{DoxyEnumFields}{Enumerator}
-\raisebox{\heightof{T}}[0pt][0pt]{\index{COSINE\_BULKY@{COSINE\_BULKY}!hmap@{hmap}}\index{hmap@{hmap}!COSINE\_BULKY@{COSINE\_BULKY}}}\Hypertarget{namespacehmap_a67d6620c147710ebb09b64f0f738241aad8f217eb3ab016f46b02f118cfaeadab}\label{namespacehmap_a67d6620c147710ebb09b64f0f738241aad8f217eb3ab016f46b02f118cfaeadab} 
-COSINE\+\_\+\+BULKY&\\
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PP\_COSINE\_BULKY@{PP\_COSINE\_BULKY}!hmap@{hmap}}\index{hmap@{hmap}!PP\_COSINE\_BULKY@{PP\_COSINE\_BULKY}}}\Hypertarget{namespacehmap_a67d6620c147710ebb09b64f0f738241aa7ad40d540d30fb8f26a09ab9bd1e3ae7}\label{namespacehmap_a67d6620c147710ebb09b64f0f738241aa7ad40d540d30fb8f26a09ab9bd1e3ae7} 
+PP\+\_\+\+COSINE\+\_\+\+BULKY&\\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{COSINE\_PEAKY@{COSINE\_PEAKY}!hmap@{hmap}}\index{hmap@{hmap}!COSINE\_PEAKY@{COSINE\_PEAKY}}}\Hypertarget{namespacehmap_a67d6620c147710ebb09b64f0f738241aa2bfa021bd5f24ce3410477d209f3e588}\label{namespacehmap_a67d6620c147710ebb09b64f0f738241aa2bfa021bd5f24ce3410477d209f3e588} 
-COSINE\+\_\+\+PEAKY&\\
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PP\_COSINE\_PEAKY@{PP\_COSINE\_PEAKY}!hmap@{hmap}}\index{hmap@{hmap}!PP\_COSINE\_PEAKY@{PP\_COSINE\_PEAKY}}}\Hypertarget{namespacehmap_a67d6620c147710ebb09b64f0f738241aa0cd4624d7ec212818cf2ef09f8540bf1}\label{namespacehmap_a67d6620c147710ebb09b64f0f738241aa0cd4624d7ec212818cf2ef09f8540bf1} 
+PP\+\_\+\+COSINE\+\_\+\+PEAKY&\\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{COSINE\_SQUARE@{COSINE\_SQUARE}!hmap@{hmap}}\index{hmap@{hmap}!COSINE\_SQUARE@{COSINE\_SQUARE}}}\Hypertarget{namespacehmap_a67d6620c147710ebb09b64f0f738241aa096fe4956a67b70c9db140472af0b6b0}\label{namespacehmap_a67d6620c147710ebb09b64f0f738241aa096fe4956a67b70c9db140472af0b6b0} 
-COSINE\+\_\+\+SQUARE&\\
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PP\_COSINE\_SQUARE@{PP\_COSINE\_SQUARE}!hmap@{hmap}}\index{hmap@{hmap}!PP\_COSINE\_SQUARE@{PP\_COSINE\_SQUARE}}}\Hypertarget{namespacehmap_a67d6620c147710ebb09b64f0f738241aaee313a4258bc2b011fc404112db201fc}\label{namespacehmap_a67d6620c147710ebb09b64f0f738241aaee313a4258bc2b011fc404112db201fc} 
+PP\+\_\+\+COSINE\+\_\+\+SQUARE&\\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{COSINE\_STD@{COSINE\_STD}!hmap@{hmap}}\index{hmap@{hmap}!COSINE\_STD@{COSINE\_STD}}}\Hypertarget{namespacehmap_a67d6620c147710ebb09b64f0f738241aa29de9f23976831ac056abef76c1f8d2e}\label{namespacehmap_a67d6620c147710ebb09b64f0f738241aa29de9f23976831ac056abef76c1f8d2e} 
-COSINE\+\_\+\+STD&\\
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PP\_COSINE\_STD@{PP\_COSINE\_STD}!hmap@{hmap}}\index{hmap@{hmap}!PP\_COSINE\_STD@{PP\_COSINE\_STD}}}\Hypertarget{namespacehmap_a67d6620c147710ebb09b64f0f738241aafeda57dc66f5efb1d5f0fcc48ddb5319}\label{namespacehmap_a67d6620c147710ebb09b64f0f738241aafeda57dc66f5efb1d5f0fcc48ddb5319} 
+PP\+\_\+\+COSINE\+\_\+\+STD&\\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{TRIANGLE@{TRIANGLE}!hmap@{hmap}}\index{hmap@{hmap}!TRIANGLE@{TRIANGLE}}}\Hypertarget{namespacehmap_a67d6620c147710ebb09b64f0f738241aa1ee22d304b9b93cd76da1fbc9d32a75a}\label{namespacehmap_a67d6620c147710ebb09b64f0f738241aa1ee22d304b9b93cd76da1fbc9d32a75a} 
-TRIANGLE&\\
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PP\_TRIANGLE@{PP\_TRIANGLE}!hmap@{hmap}}\index{hmap@{hmap}!PP\_TRIANGLE@{PP\_TRIANGLE}}}\Hypertarget{namespacehmap_a67d6620c147710ebb09b64f0f738241aae01a073e65c99b00aa16b2023f4dcbe2}\label{namespacehmap_a67d6620c147710ebb09b64f0f738241aae01a073e65c99b00aa16b2023f4dcbe2} 
+PP\+\_\+\+TRIANGLE&\\
 \hline
 
 \end{DoxyEnumFields}
@@ -17006,7 +17000,7 @@ An {\ttfamily \doxylink{classhmap_1_1Array}{Array}} object representing the comp
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z2\ =\ \mbox{\hyperlink{namespacehmap_a26a0e82cf03ec259e3efae1ea84286db}{hmap::normal\_map\_to\_heightmap}}(nmap);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ Poisson\ solver}}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z3\ =\ \mbox{\hyperlink{namespacehmap_a58b2e7cdca93719d3e1fca73fd68421c}{hmap::normal\_map\_to\_heightmap\_poisson}}(nmap);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z3\ =\ \mbox{\hyperlink{namespacehmap_a4ed1b65c7d7fe8ec5b874ff5e6762228}{hmap::normal\_map\_to\_heightmap\_poisson}}(nmap);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(z1);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(z2);}
@@ -17021,150 +17015,6 @@ An {\ttfamily \doxylink{classhmap_1_1Array}{Array}} object representing the comp
 
 \end{DoxyItemize}
 \end{DoxyNote}
-{\bfseries{Result}}  \Hypertarget{namespacehmap_a58b2e7cdca93719d3e1fca73fd68421c}\label{namespacehmap_a58b2e7cdca93719d3e1fca73fd68421c} 
-\index{hmap@{hmap}!normal\_map\_to\_heightmap\_poisson@{normal\_map\_to\_heightmap\_poisson}}
-\index{normal\_map\_to\_heightmap\_poisson@{normal\_map\_to\_heightmap\_poisson}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{normal\_map\_to\_heightmap\_poisson()}{normal\_map\_to\_heightmap\_poisson()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::normal\+\_\+map\+\_\+to\+\_\+heightmap\+\_\+poisson (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Tensor}{Tensor}} \&}]{nmap,  }\item[{int}]{iterations = {\ttfamily 500},  }\item[{float}]{omega = {\ttfamily 1.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
-
-
-
-Reconstruct a height/displacement map from a normal map by solving a Poisson equation with Gauss–\+Seidel iteration. 
-
-The reconstruction is unique up to an additive constant. After solving, you may subtract the mean or normalize to a desired range.
-
-
-\begin{DoxyParams}{Parameters}
-{\em nmap} & Input normal map as a 2D tensor.
-\begin{DoxyItemize}
-\item Channel 0 = (N\+\_\+x), channel 1 = (N\+\_\+y), channel 2 = (N\+\_\+z).
-\item Values are expected in \mbox{[}0,1\mbox{]} or \mbox{[}-\/1,1\mbox{]}; if stored in \mbox{[}0,1\mbox{]}, they will be remapped internally to \mbox{[}-\/1,1\mbox{]}. 
-\end{DoxyItemize}\\
-\hline
-{\em iterations} & Number of Gauss–\+Seidel iterations to perform (default = 500). Higher values improve accuracy but increase runtime. \\
-\hline
-{\em omega} & Relaxation factor (1.\+0 = pure Gauss–\+Seidel; 1.\+0–2.0 = over-\/relaxation). Recommended\+: 1.\+2–1.5 for faster convergence.\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-\texorpdfstring{$\ast$}{*} A 2D \doxylink{classhmap_1_1Array}{Array} containing the reconstructed height map. Values are not normalized; apply scaling or centering if needed. Example\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} 
-\begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
-\DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
-\DoxyCodeLine{\{}
-\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
-\DoxyCodeLine{\ \ glm::vec2\ \ res\ =\ \{4.f,\ 4.f\};}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 1;}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z1\ =\ \mbox{\hyperlink{namespacehmap_acb13e7346085793fda4c94c47b75d9a9}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ res,\ seed);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Tensor}{hmap::Tensor}}\ nmap\ =\ \mbox{\hyperlink{namespacehmap_aef53e65fc9b8bc74c342367b0034cfa7}{hmap::normal\_map}}(z1);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ rebuild\ input\ elevation\ field\ from\ normal\ map}}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z2\ =\ \mbox{\hyperlink{namespacehmap_a26a0e82cf03ec259e3efae1ea84286db}{hmap::normal\_map\_to\_heightmap}}(nmap);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ Poisson\ solver}}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z3\ =\ \mbox{\hyperlink{namespacehmap_a58b2e7cdca93719d3e1fca73fd68421c}{hmap::normal\_map\_to\_heightmap\_poisson}}(nmap);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(z1);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(z2);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(z3);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_normal\_map\_to\_heightmap.png"{}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z1,\ z2,\ z3\},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}});}
-\DoxyCodeLine{\}}
-
-\end{DoxyCodeInclude}
-
-\end{DoxyReturn}
-{\bfseries{Result}}  \Hypertarget{namespacehmap_a6e66245d2cf9c7944ed35a1010c54f77}\label{namespacehmap_a6e66245d2cf9c7944ed35a1010c54f77} 
-\index{hmap@{hmap}!phase\_field@{phase\_field}}
-\index{phase\_field@{phase\_field}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{phase\_field()}{phase\_field()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::phase\+\_\+field (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{float}]{kw,  }\item[{int}]{width,  }\item[{\mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{seed,  }\item[{float}]{noise\+\_\+amp = {\ttfamily 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{int}]{prefilter\+\_\+ir = {\ttfamily -\/1},  }\item[{float}]{density\+\_\+factor = {\ttfamily 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{bool}]{rotate90 = {\ttfamily false},  }\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+gnoise\+\_\+x = {\ttfamily nullptr},  }\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+gnoise\+\_\+y = {\ttfamily nullptr} }\end{DoxyParamCaption})}
-
-
-
-Computes a phase field using spatially varying Gabor noise based on the input heightmap. 
-
-This function generates a 2D phase field by combining gradient angles from the input array and Gabor noise, which is spatially distributed with varying parameters. The resulting phase field can be used for procedural terrain generation or other simulations.
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em array} & The input 2D heightmap array. \\
-\hline
-\mbox{\texttt{ in}}  & {\em kw} & Wave number for the Gabor kernel, determining the frequency of the noise. \\
-\hline
-\mbox{\texttt{ in}}  & {\em width} & Width of the Gabor kernel. \\
-\hline
-\mbox{\texttt{ in}}  & {\em seed} & Random seed for reproducible Gabor noise generation. \\
-\hline
-\mbox{\texttt{ in}}  & {\em noise\+\_\+amp} & Noise amplitude added to the phase field. \\
-\hline
-\mbox{\texttt{ in}}  & {\em prefilter\+\_\+ir} & Kernel radius for pre-\/smoothing the input array. If negative, a default value is computed. \\
-\hline
-\mbox{\texttt{ in}}  & {\em density\+\_\+factor} & Factor controlling the density of the noise points. \\
-\hline
-\mbox{\texttt{ in}}  & {\em rotate90} & Boolean flag to rotate the gradient angles by 90 degrees. \\
-\hline
-\mbox{\texttt{ out}}  & {\em p\+\_\+gnoise\+\_\+x} & Optional pointer to store the generated Gabor noise in the X direction. \\
-\hline
-\mbox{\texttt{ out}}  & {\em p\+\_\+gnoise\+\_\+y} & Optional pointer to store the generated Gabor noise in the Y direction.\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-A 2D array representing the computed phase field.
-\end{DoxyReturn}
-
-\begin{DoxyItemize}
-\item {\bfseries{Example}} 
-\begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
-\DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
-\DoxyCodeLine{\{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_1_1gpu_adb8336ed4d83c15500872185dee45d50}{hmap::gpu::init\_opencl}}();}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
-\DoxyCodeLine{\ \ glm::vec2\ \ kw\ =\ \{2.f,\ 2.f\};}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 0;}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_acb13e7346085793fda4c94c47b75d9a9}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195ac5113a637d69eb3c549e6d561da167ed}{hmap::NoiseType::SIMPLEX2}},\ shape,\ kw,\ seed);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(z);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ CPU\ phase\ field}}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ kp\ =\ 8.f;}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ width\ =\ 64;}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ density\ =\ 32.f;}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ phi0\ =\ \mbox{\hyperlink{namespacehmap_a6e66245d2cf9c7944ed35a1010c54f77}{hmap::phase\_field}}(z,\ kp,\ width,\ ++seed,\ -\/1,\ density);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ rotate90\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ phi1\ =}
-\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a6e66245d2cf9c7944ed35a1010c54f77}{hmap::phase\_field}}(z,\ kp,\ width,\ ++seed,\ -\/1,\ density,\ rotate90);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(phi0);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(phi1);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ GPU\ phase\ field}}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ kp\_global\ =\ 64.f;}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ phi2\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_a0eab8e0319f11623e88016ce6cd44d72}{hmap::gpu::phase\_field}}(z,\ seed,\ kp\_global);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(phi2);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_phase\_field.png"{}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ phi0,\ phi1,\ phi2\},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}});}
-\DoxyCodeLine{\}}
-
-\end{DoxyCodeInclude}
-
-\end{DoxyItemize}
-
 {\bfseries{Result}}  \Hypertarget{namespacehmap_a0bcc84aa462aee73e1a3a52729f21ea6}\label{namespacehmap_a0bcc84aa462aee73e1a3a52729f21ea6} 
 \index{hmap@{hmap}!solve\_poisson\_gauss\_seidel@{solve\_poisson\_gauss\_seidel}}
 \index{solve\_poisson\_gauss\_seidel@{solve\_poisson\_gauss\_seidel}!hmap@{hmap}}
@@ -24571,194 +24421,6 @@ Return a peak-\/shaped heightmap.
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}  \Hypertarget{namespacehmap_a5cbe10d6852cd789580e57a22049e29d}\label{namespacehmap_a5cbe10d6852cd789580e57a22049e29d} 
-\index{hmap@{hmap}!phasor@{phasor}}
-\index{phasor@{phasor}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{phasor()}{phasor()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::phasor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241a}{Phasor\+Profile}}}]{phasor\+\_\+profile,  }\item[{glm\+::ivec2}]{shape,  }\item[{float}]{kw,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{angle,  }\item[{\mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{seed,  }\item[{float}]{profile\+\_\+delta = {\ttfamily 0.1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{density\+\_\+factor = {\ttfamily 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{kernel\+\_\+width\+\_\+ratio = {\ttfamily 2.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{phase\+\_\+smoothing = {\ttfamily 2.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
-
-
-
-Generates a phasor noise field based on a Gabor noise model and phase profile. 
-
-This function creates a phasor noise array using a Gabor kernel approach, applying a specified phase profile, smoothing, and density settings. The output is influenced by the shape, frequency, and various noise characteristics, allowing fine control over the generated noise field.
-
-
-\begin{DoxyParams}{Parameters}
-{\em phasor\+\_\+profile} & The phase profile to apply. Determines the type of phasor function used (e.\+g., bulky cosine, peaky cosine). \\
-\hline
-{\em shape} & The dimensions of the output array as a 2D vector (width x height). \\
-\hline
-{\em kw} & The wave number (frequency) of the Gabor kernel. \\
-\hline
-{\em angle} & An array specifying the angle field for the Gabor kernel orientation. \\
-\hline
-{\em seed} & A seed value for the random number generator used to create jittered spawn points for Gabor kernels. \\
-\hline
-{\em profile\+\_\+delta} & A parameter for adjusting the delta in the phase profile function. \\
-\hline
-{\em density\+\_\+factor} & A scaling factor for the density of Gabor kernel spawn points. \\
-\hline
-{\em kernel\+\_\+width\+\_\+ratio} & The ratio of the kernel width to the phase field resolution. \\
-\hline
-{\em phase\+\_\+smoothing} & A factor for controlling the blending of the phase profile. Larger values result in smoother transitions. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-An {\ttfamily \doxylink{classhmap_1_1Array}{Array}} containing the generated phasor noise field.
-\end{DoxyReturn}
-
-\begin{DoxyExceptions}{Exceptions}
-{\em std\+::invalid\+\_\+argument\+Ifaninvalid\`{}phasor\+\_\+profile\`{}isprovided.} & \\
-\hline
-\end{DoxyExceptions}
-\begin{DoxyNote}{Note}
-If the kernel width is too small (less than 4), the function returns a zeroed array.
-\end{DoxyNote}
-The function performs the following steps\+:
-\begin{DoxyItemize}
-\item Generates Gabor kernel spawn points using jittered random sampling.
-\item Constructs Gabor kernels based on the input angle field and applies them to noise arrays.
-\item Computes a phase field from the Gabor noise using {\ttfamily atan2}.
-\item Applies the specified phase profile using the {\ttfamily get\+\_\+phasor\+\_\+profile\+\_\+function}.
-\item Smooths the phase field if {\ttfamily phase\+\_\+smoothing} is greater than zero.
-\end{DoxyItemize}
-
-{\bfseries{Example}} 
-\begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
-\DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
-\DoxyCodeLine{\{}
-\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ kw\ =\ 2.f;}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ seed\ =\ 0;}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}}(shape,\ 0.f);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ std::vector<hmap::PhasorProfile>\ profiles\ =\ \{}
-\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241aad8f217eb3ab016f46b02f118cfaeadab}{hmap::PhasorProfile::COSINE\_BULKY}},}
-\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241aa2bfa021bd5f24ce3410477d209f3e588}{hmap::PhasorProfile::COSINE\_PEAKY}},}
-\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241aa29de9f23976831ac056abef76c1f8d2e}{hmap::PhasorProfile::COSINE\_STD}},}
-\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241aa096fe4956a67b70c9db140472af0b6b0}{hmap::PhasorProfile::COSINE\_SQUARE}},}
-\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241aa1ee22d304b9b93cd76da1fbc9d32a75a}{hmap::PhasorProfile::TRIANGLE}},}
-\DoxyCodeLine{\ \ \};}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ std::vector<hmap::Array>\ arrays;}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ p\ :\ profiles)}
-\DoxyCodeLine{\ \ \{}
-\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_a5cbe10d6852cd789580e57a22049e29d}{hmap::phasor}}(p,\ shape,\ kw,\ \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}},\ seed);}
-\DoxyCodeLine{\ \ \ \ arrays.push\_back(z);}
-\DoxyCodeLine{\ \ \}}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ fbm\ phasor}}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_a8a24c5ba59504664638793a4af54f92b}{hmap::phasor\_fbm}}(\mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241aad8f217eb3ab016f46b02f118cfaeadab}{hmap::PhasorProfile::COSINE\_BULKY}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ shape,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ kw,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed);}
-\DoxyCodeLine{\ \ arrays.push\_back(z);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ z.\mbox{\hyperlink{classhmap_1_1Array_ab2c7afe05160d85b0997d733cbb7d286}{to\_png\_grayscale}}(\textcolor{stringliteral}{"{}out.png"{}},\ CV\_16U);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_phasor.png"{}},\ arrays,\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9}{hmap::Cmap::TERRAIN}});}
-\DoxyCodeLine{\}}
-
-\end{DoxyCodeInclude}
-
-
-{\bfseries{Result}}  \Hypertarget{namespacehmap_a8a24c5ba59504664638793a4af54f92b}\label{namespacehmap_a8a24c5ba59504664638793a4af54f92b} 
-\index{hmap@{hmap}!phasor\_fbm@{phasor\_fbm}}
-\index{phasor\_fbm@{phasor\_fbm}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{phasor\_fbm()}{phasor\_fbm()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::phasor\+\_\+fbm (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241a}{Phasor\+Profile}}}]{phasor\+\_\+profile,  }\item[{glm\+::ivec2}]{shape,  }\item[{float}]{kw,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{angle,  }\item[{\mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{seed,  }\item[{float}]{profile\+\_\+delta = {\ttfamily 0.1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{density\+\_\+factor = {\ttfamily 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{kernel\+\_\+width\+\_\+ratio = {\ttfamily 2.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{phase\+\_\+smoothing = {\ttfamily 2.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{int}]{octaves = {\ttfamily 8},  }\item[{float}]{weight = {\ttfamily 0.7\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{persistence = {\ttfamily 0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{lacunarity = {\ttfamily 2.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
-
-
-
-Generates a fractal Brownian motion (f\+Bm) noise field using layered phasor profiles. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em phasor\+\_\+profile} & The phase profile to apply for each noise layer (e.\+g., bulky cosine, peaky cosine). \\
-\hline
-{\em shape} & The dimensions of the output array as a 2D vector (width x height). \\
-\hline
-{\em kw} & The base wave number (frequency) for the first noise layer. \\
-\hline
-{\em angle} & An array specifying the angle field for the Gabor kernel orientation in each layer. \\
-\hline
-{\em seed} & A seed value for the random number generator used in all noise layers. \\
-\hline
-{\em profile\+\_\+delta} & A parameter for adjusting the delta in the phase profile function. \\
-\hline
-{\em density\+\_\+factor} & A scaling factor for the density of Gabor kernel spawn points in each layer. \\
-\hline
-{\em kernel\+\_\+width\+\_\+ratio} & The ratio of the kernel width to the phase field resolution. \\
-\hline
-{\em phase\+\_\+smoothing} & A factor for controlling the blending of the phase profile. Larger values result in smoother transitions. \\
-\hline
-{\em octaves} & The number of noise layers (octaves) to generate. \\
-\hline
-{\em weight} & A factor for controlling amplitude adjustments based on the previous layer\textquotesingle{}s values. \\
-\hline
-{\em persistence} & A factor controlling how amplitude decreases across successive octaves. Values \texorpdfstring{$<$}{<}1 cause rapid decay. \\
-\hline
-{\em lacunarity} & A factor controlling how frequency increases across successive octaves. Values \texorpdfstring{$>$}{>}1 cause rapid growth. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-An {\ttfamily \doxylink{classhmap_1_1Array}{Array}} containing the generated f\+Bm noise field.
-\end{DoxyReturn}
-
-\begin{DoxyExceptions}{Exceptions}
-{\em std\+::invalid\+\_\+argument\+Ifaninvalid\`{}phasor\+\_\+profile\`{}isprovidedtothe} & underlying {\ttfamily phasor} function.\\
-\hline
-\end{DoxyExceptions}
-{\bfseries{Example}} 
-\begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
-\DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
-\DoxyCodeLine{\{}
-\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ kw\ =\ 2.f;}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ seed\ =\ 0;}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}}(shape,\ 0.f);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ std::vector<hmap::PhasorProfile>\ profiles\ =\ \{}
-\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241aad8f217eb3ab016f46b02f118cfaeadab}{hmap::PhasorProfile::COSINE\_BULKY}},}
-\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241aa2bfa021bd5f24ce3410477d209f3e588}{hmap::PhasorProfile::COSINE\_PEAKY}},}
-\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241aa29de9f23976831ac056abef76c1f8d2e}{hmap::PhasorProfile::COSINE\_STD}},}
-\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241aa096fe4956a67b70c9db140472af0b6b0}{hmap::PhasorProfile::COSINE\_SQUARE}},}
-\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241aa1ee22d304b9b93cd76da1fbc9d32a75a}{hmap::PhasorProfile::TRIANGLE}},}
-\DoxyCodeLine{\ \ \};}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ std::vector<hmap::Array>\ arrays;}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ p\ :\ profiles)}
-\DoxyCodeLine{\ \ \{}
-\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_a5cbe10d6852cd789580e57a22049e29d}{hmap::phasor}}(p,\ shape,\ kw,\ \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}},\ seed);}
-\DoxyCodeLine{\ \ \ \ arrays.push\_back(z);}
-\DoxyCodeLine{\ \ \}}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ fbm\ phasor}}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_a8a24c5ba59504664638793a4af54f92b}{hmap::phasor\_fbm}}(\mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241aad8f217eb3ab016f46b02f118cfaeadab}{hmap::PhasorProfile::COSINE\_BULKY}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ shape,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ kw,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed);}
-\DoxyCodeLine{\ \ arrays.push\_back(z);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ z.\mbox{\hyperlink{classhmap_1_1Array_ab2c7afe05160d85b0997d733cbb7d286}{to\_png\_grayscale}}(\textcolor{stringliteral}{"{}out.png"{}},\ CV\_16U);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_phasor.png"{}},\ arrays,\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9}{hmap::Cmap::TERRAIN}});}
-\DoxyCodeLine{\}}
-
-\end{DoxyCodeInclude}
-
-
 {\bfseries{Result}}  \Hypertarget{namespacehmap_adafc477ac182ce40ebf2cee1c84cb936}\label{namespacehmap_adafc477ac182ce40ebf2cee1c84cb936} 
 \index{hmap@{hmap}!rectangle@{rectangle}}
 \index{rectangle@{rectangle}!hmap@{hmap}}
@@ -29176,6 +28838,12 @@ void hmap\+::convert\+\_\+mat\+\_\+to\+\_\+array (\begin{DoxyParamCaption}\item[
 \index{compute\_gradient\_norm@{compute\_gradient\_norm}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{compute\_gradient\_norm()}{compute\_gradient\_norm()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::compute\+\_\+gradient\+\_\+norm (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{float}]{x\+\_\+coeff\mbox{[}3\mbox{]},  }\item[{float}]{y\+\_\+coeff\mbox{[}3\mbox{]},  }\item[{float}]{normalize\+\_\+factor,  }\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+dx = {\ttfamily nullptr},  }\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+dy = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacehmap_a4ed1b65c7d7fe8ec5b874ff5e6762228}\label{namespacehmap_a4ed1b65c7d7fe8ec5b874ff5e6762228} 
+\index{hmap@{hmap}!normal\_map\_to\_heightmap\_poisson@{normal\_map\_to\_heightmap\_poisson}}
+\index{normal\_map\_to\_heightmap\_poisson@{normal\_map\_to\_heightmap\_poisson}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{normal\_map\_to\_heightmap\_poisson()}{normal\_map\_to\_heightmap\_poisson()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::normal\+\_\+map\+\_\+to\+\_\+heightmap\+\_\+poisson (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Tensor}{Tensor}} \&}]{nmap,  }\item[{int}]{iterations,  }\item[{float}]{omega }\end{DoxyParamCaption})}
 
 \Hypertarget{namespacehmap_a5acae3ca582cc9a70ad321ef484c05f2}\label{namespacehmap_a5acae3ca582cc9a70ad321ef484c05f2} 
 \index{hmap@{hmap}!helper\_find\_up\_downslope@{helper\_find\_up\_downslope}}

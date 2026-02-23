@@ -17,14 +17,13 @@ var gradient_8hpp =
     [ "laplacian", "gradient_8hpp.html#a893bb80f635c4711c075e078cde18cf5", null ],
     [ "normal_map", "gradient_8hpp.html#aef53e65fc9b8bc74c342367b0034cfa7", null ],
     [ "normal_map_to_heightmap", "gradient_8hpp.html#a26a0e82cf03ec259e3efae1ea84286db", null ],
-    [ "normal_map_to_heightmap_poisson", "gradient_8hpp.html#a58b2e7cdca93719d3e1fca73fd68421c", null ],
-    [ "phase_field", "gradient_8hpp.html#a6e66245d2cf9c7944ed35a1010c54f77", null ],
     [ "solve_poisson_gauss_seidel", "gradient_8hpp.html#a0bcc84aa462aee73e1a3a52729f21ea6", null ],
     [ "unwrap_phase", "gradient_8hpp.html#a3f8dc201377b61428eba8daa4a03a65f", null ],
     [ "talus_jump_mask", "gradient_8hpp.html#a184b9eed77a8732a8631f8dd73d75a44", null ],
     [ "phase_averaging", "gradient_8hpp.html#a8a89eb3b3dcbdd39e57abc1770420bf1", null ],
     [ "phase_field", "gradient_8hpp.html#a0eab8e0319f11623e88016ce6cd44d72", null ],
     [ "phase_field", "gradient_8hpp.html#a8bacd8632631365c7efdcf842e3b49d0", null ],
+    [ "phase_field_angle", "gradient_8hpp.html#aba356da2f66b4fc2886bd27edc3a15ec", null ],
     [ "gradient_angle_circular_smoothing", "gradient_8hpp.html#ab4b68e1b48d16193615105656680ced8", null ],
     [ "gradient_norm", "gradient_8hpp.html#a1c5e49734e49973fe1b275b6988dba12", null ]
 ];

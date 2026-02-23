@@ -12,10 +12,15 @@ var searchData=
   ['points_5flerp_9',['POINTS_LERP',['../namespacehmap.html#aa78bf111867e13c63d8bd2ec005ad6c8a90555eaf70e5d0c043f8bc5bf16338df',1,'hmap']]],
   ['polynomial_10',['POLYNOMIAL',['../namespacehmap.html#a46291bb4766800deacc1ce9b45a9ea6ba2c387e5d1f5342e28fa6a3132e9b461d',1,'hmap']]],
   ['positive_5fonly_11',['POSITIVE_ONLY',['../namespacehmap.html#ad4876bd26d1f3b33a1492645bfe50fbea7ee5673a01d4215ae4ba9ba95268ed59',1,'hmap']]],
-  ['prim_5fbiquad_5fpulse_12',['PRIM_BIQUAD_PULSE',['../namespacehmap.html#a55542a66f890ef9ecf5f82af2c23a0cfa4807402e27d4ee7cb042237cbeb26a69',1,'hmap']]],
-  ['prim_5fbump_13',['PRIM_BUMP',['../namespacehmap.html#a55542a66f890ef9ecf5f82af2c23a0cfa938e2b9cd9d4c9249f6d45285457891b',1,'hmap']]],
-  ['prim_5fcone_14',['PRIM_CONE',['../namespacehmap.html#a55542a66f890ef9ecf5f82af2c23a0cfae2c78e075109f330e3109c52e9bf90ff',1,'hmap']]],
-  ['prim_5fcone_5fsmooth_15',['PRIM_CONE_SMOOTH',['../namespacehmap.html#a55542a66f890ef9ecf5f82af2c23a0cfa71a3d57896b6c2d066433962e74e8961',1,'hmap']]],
-  ['prim_5fcubic_5fpulse_16',['PRIM_CUBIC_PULSE',['../namespacehmap.html#a55542a66f890ef9ecf5f82af2c23a0cfae1780174f7412d5a5593b324ea0db7cb',1,'hmap']]],
-  ['prim_5fsmooth_5fcosine_17',['PRIM_SMOOTH_COSINE',['../namespacehmap.html#a55542a66f890ef9ecf5f82af2c23a0cfad8c75d88dbfd854dbcedfaf3a4b9c65c',1,'hmap']]]
+  ['pp_5fcosine_5fbulky_12',['PP_COSINE_BULKY',['../namespacehmap.html#a67d6620c147710ebb09b64f0f738241aa7ad40d540d30fb8f26a09ab9bd1e3ae7',1,'hmap']]],
+  ['pp_5fcosine_5fpeaky_13',['PP_COSINE_PEAKY',['../namespacehmap.html#a67d6620c147710ebb09b64f0f738241aa0cd4624d7ec212818cf2ef09f8540bf1',1,'hmap']]],
+  ['pp_5fcosine_5fsquare_14',['PP_COSINE_SQUARE',['../namespacehmap.html#a67d6620c147710ebb09b64f0f738241aaee313a4258bc2b011fc404112db201fc',1,'hmap']]],
+  ['pp_5fcosine_5fstd_15',['PP_COSINE_STD',['../namespacehmap.html#a67d6620c147710ebb09b64f0f738241aafeda57dc66f5efb1d5f0fcc48ddb5319',1,'hmap']]],
+  ['pp_5ftriangle_16',['PP_TRIANGLE',['../namespacehmap.html#a67d6620c147710ebb09b64f0f738241aae01a073e65c99b00aa16b2023f4dcbe2',1,'hmap']]],
+  ['prim_5fbiquad_5fpulse_17',['PRIM_BIQUAD_PULSE',['../namespacehmap.html#a55542a66f890ef9ecf5f82af2c23a0cfa4807402e27d4ee7cb042237cbeb26a69',1,'hmap']]],
+  ['prim_5fbump_18',['PRIM_BUMP',['../namespacehmap.html#a55542a66f890ef9ecf5f82af2c23a0cfa938e2b9cd9d4c9249f6d45285457891b',1,'hmap']]],
+  ['prim_5fcone_19',['PRIM_CONE',['../namespacehmap.html#a55542a66f890ef9ecf5f82af2c23a0cfae2c78e075109f330e3109c52e9bf90ff',1,'hmap']]],
+  ['prim_5fcone_5fsmooth_20',['PRIM_CONE_SMOOTH',['../namespacehmap.html#a55542a66f890ef9ecf5f82af2c23a0cfa71a3d57896b6c2d066433962e74e8961',1,'hmap']]],
+  ['prim_5fcubic_5fpulse_21',['PRIM_CUBIC_PULSE',['../namespacehmap.html#a55542a66f890ef9ecf5f82af2c23a0cfae1780174f7412d5a5593b324ea0db7cb',1,'hmap']]],
+  ['prim_5fsmooth_5fcosine_22',['PRIM_SMOOTH_COSINE',['../namespacehmap.html#a55542a66f890ef9ecf5f82af2c23a0cfad8c75d88dbfd854dbcedfaf3a4b9c65c',1,'hmap']]]
 ];

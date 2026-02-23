@@ -7,11 +7,11 @@ var math_8hpp =
       [ "MANHATTAN", "math_8hpp.html#a670f50d6c08ecd639d42db9c75a5273aad250b63dea876f47d2b0dab1edf01b63", null ]
     ] ],
     [ "PhasorProfile", "math_8hpp.html#a67d6620c147710ebb09b64f0f738241a", [
-      [ "COSINE_BULKY", "math_8hpp.html#a67d6620c147710ebb09b64f0f738241aad8f217eb3ab016f46b02f118cfaeadab", null ],
-      [ "COSINE_PEAKY", "math_8hpp.html#a67d6620c147710ebb09b64f0f738241aa2bfa021bd5f24ce3410477d209f3e588", null ],
-      [ "COSINE_SQUARE", "math_8hpp.html#a67d6620c147710ebb09b64f0f738241aa096fe4956a67b70c9db140472af0b6b0", null ],
-      [ "COSINE_STD", "math_8hpp.html#a67d6620c147710ebb09b64f0f738241aa29de9f23976831ac056abef76c1f8d2e", null ],
-      [ "TRIANGLE", "math_8hpp.html#a67d6620c147710ebb09b64f0f738241aa1ee22d304b9b93cd76da1fbc9d32a75a", null ]
+      [ "PP_COSINE_BULKY", "math_8hpp.html#a67d6620c147710ebb09b64f0f738241aa7ad40d540d30fb8f26a09ab9bd1e3ae7", null ],
+      [ "PP_COSINE_PEAKY", "math_8hpp.html#a67d6620c147710ebb09b64f0f738241aa0cd4624d7ec212818cf2ef09f8540bf1", null ],
+      [ "PP_COSINE_SQUARE", "math_8hpp.html#a67d6620c147710ebb09b64f0f738241aaee313a4258bc2b011fc404112db201fc", null ],
+      [ "PP_COSINE_STD", "math_8hpp.html#a67d6620c147710ebb09b64f0f738241aafeda57dc66f5efb1d5f0fcc48ddb5319", null ],
+      [ "PP_TRIANGLE", "math_8hpp.html#a67d6620c147710ebb09b64f0f738241aae01a073e65c99b00aa16b2023f4dcbe2", null ]
     ] ],
     [ "RadialProfile", "math_8hpp.html#a2affc745bc33b7555352665745741f90", [
       [ "RP_GAIN", "math_8hpp.html#a2affc745bc33b7555352665745741f90ac0cd381f8918df73dd4bc6df1190d7ba", null ],

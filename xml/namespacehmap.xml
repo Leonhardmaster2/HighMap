@@ -1202,36 +1202,36 @@
         <type>int</type>
         <name>PhasorProfile</name>
         <qualifiedname>hmap::PhasorProfile</qualifiedname>
-        <enumvalue id="namespacehmap_1a67d6620c147710ebb09b64f0f738241aad8f217eb3ab016f46b02f118cfaeadab" prot="public">
-          <name>COSINE_BULKY</name>
+        <enumvalue id="namespacehmap_1a67d6620c147710ebb09b64f0f738241aa7ad40d540d30fb8f26a09ab9bd1e3ae7" prot="public">
+          <name>PP_COSINE_BULKY</name>
           <briefdescription>
           </briefdescription>
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
-        <enumvalue id="namespacehmap_1a67d6620c147710ebb09b64f0f738241aa2bfa021bd5f24ce3410477d209f3e588" prot="public">
-          <name>COSINE_PEAKY</name>
+        <enumvalue id="namespacehmap_1a67d6620c147710ebb09b64f0f738241aa0cd4624d7ec212818cf2ef09f8540bf1" prot="public">
+          <name>PP_COSINE_PEAKY</name>
           <briefdescription>
           </briefdescription>
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
-        <enumvalue id="namespacehmap_1a67d6620c147710ebb09b64f0f738241aa096fe4956a67b70c9db140472af0b6b0" prot="public">
-          <name>COSINE_SQUARE</name>
+        <enumvalue id="namespacehmap_1a67d6620c147710ebb09b64f0f738241aaee313a4258bc2b011fc404112db201fc" prot="public">
+          <name>PP_COSINE_SQUARE</name>
           <briefdescription>
           </briefdescription>
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
-        <enumvalue id="namespacehmap_1a67d6620c147710ebb09b64f0f738241aa29de9f23976831ac056abef76c1f8d2e" prot="public">
-          <name>COSINE_STD</name>
+        <enumvalue id="namespacehmap_1a67d6620c147710ebb09b64f0f738241aafeda57dc66f5efb1d5f0fcc48ddb5319" prot="public">
+          <name>PP_COSINE_STD</name>
           <briefdescription>
           </briefdescription>
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
-        <enumvalue id="namespacehmap_1a67d6620c147710ebb09b64f0f738241aa1ee22d304b9b93cd76da1fbc9d32a75a" prot="public">
-          <name>TRIANGLE</name>
+        <enumvalue id="namespacehmap_1a67d6620c147710ebb09b64f0f738241aae01a073e65c99b00aa16b2023f4dcbe2" prot="public">
+          <name>PP_TRIANGLE</name>
           <briefdescription>
           </briefdescription>
           <detaileddescription>
@@ -28630,7 +28630,7 @@ h}{\partial y}
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z2<sp/>=<sp/><ref refid="namespacehmap_1a26a0e82cf03ec259e3efae1ea84286db" kindref="member">hmap::normal_map_to_heightmap</ref>(nmap);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Poisson<sp/>solver</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z3<sp/>=<sp/><ref refid="namespacehmap_1a58b2e7cdca93719d3e1fca73fd68421c" kindref="member">hmap::normal_map_to_heightmap_poisson</ref>(nmap);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z3<sp/>=<sp/><ref refid="namespacehmap_1a4ed1b65c7d7fe8ec5b874ff5e6762228" kindref="member">hmap::normal_map_to_heightmap_poisson</ref>(nmap);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(z1);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(z2);</highlight></codeline>
@@ -28650,285 +28650,6 @@ h}{\partial y}
         <inbodydescription>
         </inbodydescription>
         <location file="HighMap/src/gradient/normal_map.cpp" line="32" column="7" bodyfile="HighMap/src/gradient/normal_map.cpp" bodystart="32" bodyend="63" declfile="HighMap/include/highmap/gradient.hpp" declline="329" declcolumn="7"/>
-      </memberdef>
-      <memberdef kind="function" id="namespacehmap_1a58b2e7cdca93719d3e1fca73fd68421c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
-        <definition>Array hmap::normal_map_to_heightmap_poisson</definition>
-        <argsstring>(const Tensor &amp;nmap, int iterations=500, float omega=1.5f)</argsstring>
-        <name>normal_map_to_heightmap_poisson</name>
-        <qualifiedname>hmap::normal_map_to_heightmap_poisson</qualifiedname>
-        <param>
-          <type>const <ref refid="classhmap_1_1Tensor" kindref="compound">Tensor</ref> &amp;</type>
-          <declname>nmap</declname>
-        </param>
-        <param>
-          <type>int</type>
-          <declname>iterations</declname>
-          <defval>500</defval>
-        </param>
-        <param>
-          <type>float</type>
-          <declname>omega</declname>
-          <defval>1.5<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
-        </param>
-        <briefdescription>
-<para>Reconstruct a height/displacement map from a normal map by solving a Poisson equation with Gauss–Seidel iteration. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>The reconstruction is unique up to an additive constant. After solving, you may subtract the mean or normalize to a desired range.</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>nmap</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Input normal map as a 2D tensor.<itemizedlist>
-<listitem><para>Channel 0 = (N_x), channel 1 = (N_y), channel 2 = (N_z).</para>
-</listitem><listitem><para>Values are expected in [0,1] or [-1,1]; if stored in [0,1], they will be remapped internally to [-1,1]. </para>
-</listitem></itemizedlist>
-</para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>iterations</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Number of Gauss–Seidel iterations to perform (default = 500). Higher values improve accuracy but increase runtime. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>omega</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Relaxation factor (1.0 = pure Gauss–Seidel; 1.0–2.0 = over-relaxation). Recommended: 1.2–1.5 for faster convergence.</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>* A 2D <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> containing the reconstructed height map. Values are not normalized; apply scaling or centering if needed. Example** <programlisting filename="ex_normal_map_to_heightmap.cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
-<codeline><highlight class="normal">{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>glm::ivec2<sp/>shape<sp/>=<sp/>{256,<sp/>256};</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>glm::vec2<sp/><sp/>res<sp/>=<sp/>{4.f,<sp/>4.f};</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed<sp/>=<sp/>1;</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z1<sp/>=<sp/><ref refid="namespacehmap_1acb13e7346085793fda4c94c47b75d9a9" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,<sp/>shape,<sp/>res,<sp/>seed);</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Tensor" kindref="compound">hmap::Tensor</ref><sp/>nmap<sp/>=<sp/><ref refid="namespacehmap_1aef53e65fc9b8bc74c342367b0034cfa7" kindref="member">hmap::normal_map</ref>(z1);</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>rebuild<sp/>input<sp/>elevation<sp/>field<sp/>from<sp/>normal<sp/>map</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z2<sp/>=<sp/><ref refid="namespacehmap_1a26a0e82cf03ec259e3efae1ea84286db" kindref="member">hmap::normal_map_to_heightmap</ref>(nmap);</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Poisson<sp/>solver</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z3<sp/>=<sp/><ref refid="namespacehmap_1a58b2e7cdca93719d3e1fca73fd68421c" kindref="member">hmap::normal_map_to_heightmap_poisson</ref>(nmap);</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(z1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(z2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(z3);</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_normal_map_to_heightmap.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z1,<sp/>z2,<sp/>z3},</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced" kindref="member">hmap::Cmap::JET</ref>);</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting></para>
-</simplesect>
-<bold>Result</bold> <image type="html" name="ex_normal_map_to_heightmap.png"></image>
- </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="HighMap/src/gradient/normal_map.cpp" line="65" column="7" bodyfile="HighMap/src/gradient/normal_map.cpp" bodystart="65" bodyend="89" declfile="HighMap/include/highmap/gradient.hpp" declline="356" declcolumn="7"/>
-      </memberdef>
-      <memberdef kind="function" id="namespacehmap_1a6e66245d2cf9c7944ed35a1010c54f77" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
-        <definition>Array hmap::phase_field</definition>
-        <argsstring>(const Array &amp;array, float kw, int width, uint seed, float noise_amp=0.f, int prefilter_ir=-1, float density_factor=1.f, bool rotate90=false, Array *p_gnoise_x=nullptr, Array *p_gnoise_y=nullptr)</argsstring>
-        <name>phase_field</name>
-        <qualifiedname>hmap::phase_field</qualifiedname>
-        <param>
-          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
-          <declname>array</declname>
-        </param>
-        <param>
-          <type>float</type>
-          <declname>kw</declname>
-        </param>
-        <param>
-          <type>int</type>
-          <declname>width</declname>
-        </param>
-        <param>
-          <type><ref refid="array_8hpp_1a91ad9478d81a7aaf2593e8d9c3d06a14" kindref="member">uint</ref></type>
-          <declname>seed</declname>
-        </param>
-        <param>
-          <type>float</type>
-          <declname>noise_amp</declname>
-          <defval>0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
-        </param>
-        <param>
-          <type>int</type>
-          <declname>prefilter_ir</declname>
-          <defval>-1</defval>
-        </param>
-        <param>
-          <type>float</type>
-          <declname>density_factor</declname>
-          <defval>1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
-        </param>
-        <param>
-          <type>bool</type>
-          <declname>rotate90</declname>
-          <defval>false</defval>
-        </param>
-        <param>
-          <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
-          <declname>p_gnoise_x</declname>
-          <defval>nullptr</defval>
-        </param>
-        <param>
-          <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
-          <declname>p_gnoise_y</declname>
-          <defval>nullptr</defval>
-        </param>
-        <briefdescription>
-<para>Computes a phase field using spatially varying Gabor noise based on the input heightmap. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function generates a 2D phase field by combining gradient angles from the input array and Gabor noise, which is spatially distributed with varying parameters. The resulting phase field can be used for procedural terrain generation or other simulations.</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername direction="in">array</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The input 2D heightmap array. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername direction="in">kw</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Wave number for the Gabor kernel, determining the frequency of the noise. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername direction="in">width</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Width of the Gabor kernel. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername direction="in">seed</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Random seed for reproducible Gabor noise generation. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername direction="in">noise_amp</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Noise amplitude added to the phase field. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername direction="in">prefilter_ir</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Kernel radius for pre-smoothing the input array. If negative, a default value is computed. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername direction="in">density_factor</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Factor controlling the density of the noise points. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername direction="in">rotate90</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Boolean flag to rotate the gradient angles by 90 degrees. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername direction="out">p_gnoise_x</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Optional pointer to store the generated Gabor noise in the X direction. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername direction="out">p_gnoise_y</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Optional pointer to store the generated Gabor noise in the Y direction.</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>A 2D array representing the computed phase field.</para>
-</simplesect>
-<itemizedlist>
-<listitem><para><bold>Example</bold> <programlisting filename="ex_phase_field.cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
-<codeline><highlight class="normal">{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1adb8336ed4d83c15500872185dee45d50" kindref="member">hmap::gpu::init_opencl</ref>();</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>glm::ivec2<sp/>shape<sp/>=<sp/>{256,<sp/>256};</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>glm::vec2<sp/><sp/>kw<sp/>=<sp/>{2.f,<sp/>2.f};</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed<sp/>=<sp/>0;</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1acb13e7346085793fda4c94c47b75d9a9" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195ac5113a637d69eb3c549e6d561da167ed" kindref="member">hmap::NoiseType::SIMPLEX2</ref>,<sp/>shape,<sp/>kw,<sp/>seed);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(z);</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>---<sp/>CPU<sp/>phase<sp/>field</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>kp<sp/>=<sp/>8.f;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/>width<sp/>=<sp/>64;</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>density<sp/>=<sp/>32.f;</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>phi0<sp/>=<sp/><ref refid="namespacehmap_1a6e66245d2cf9c7944ed35a1010c54f77" kindref="member">hmap::phase_field</ref>(z,<sp/>kp,<sp/>width,<sp/>++seed,<sp/>-1,<sp/>density);</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rotate90<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>phi1<sp/>=</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a6e66245d2cf9c7944ed35a1010c54f77" kindref="member">hmap::phase_field</ref>(z,<sp/>kp,<sp/>width,<sp/>++seed,<sp/>-1,<sp/>density,<sp/>rotate90);</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(phi0);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(phi1);</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>---<sp/>GPU<sp/>phase<sp/>field</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kp_global<sp/>=<sp/>64.f;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>phi2<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1a0eab8e0319f11623e88016ce6cd44d72" kindref="member">hmap::gpu::phase_field</ref>(z,<sp/>seed,<sp/>kp_global);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(phi2);</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_phase_field.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,<sp/>phi0,<sp/>phi1,<sp/>phi2},</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced" kindref="member">hmap::Cmap::JET</ref>);</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting></para>
-</listitem></itemizedlist>
-</para>
-<para><bold>Result</bold> <image type="html" name="ex_phase_field.png"></image>
- </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="HighMap/src/gradient/phase_field.cpp" line="17" column="7" bodyfile="HighMap/src/gradient/phase_field.cpp" bodystart="17" bodyend="89" declfile="HighMap/include/highmap/gradient.hpp" declline="395" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a0bcc84aa462aee73e1a3a52729f21ea6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -29003,7 +28724,7 @@ h}{\partial y}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/gradient/solve_poisson_gauss_seidel.cpp" line="9" column="6" bodyfile="HighMap/src/gradient/solve_poisson_gauss_seidel.cpp" bodystart="9" bodyend="26" declfile="HighMap/include/highmap/gradient.hpp" declline="425" declcolumn="6"/>
+        <location file="HighMap/src/gradient/solve_poisson_gauss_seidel.cpp" line="9" column="6" bodyfile="HighMap/src/gradient/solve_poisson_gauss_seidel.cpp" bodystart="9" bodyend="26" declfile="HighMap/include/highmap/gradient.hpp" declline="350" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a3f8dc201377b61428eba8daa4a03a65f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -29065,7 +28786,7 @@ h}{\partial y}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/gradient/unwrap_phase.cpp" line="14" column="7" bodyfile="HighMap/src/gradient/unwrap_phase.cpp" bodystart="14" bodyend="68" declfile="HighMap/include/highmap/gradient.hpp" declline="446" declcolumn="7"/>
+        <location file="HighMap/src/gradient/unwrap_phase.cpp" line="14" column="7" bodyfile="HighMap/src/gradient/unwrap_phase.cpp" bodystart="14" bodyend="68" declfile="HighMap/include/highmap/gradient.hpp" declline="371" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a184b9eed77a8732a8631f8dd73d75a44" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -29091,7 +28812,7 @@ h}{\partial y}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/gradient/gradient.cpp" line="256" column="7" bodyfile="HighMap/src/gradient/gradient.cpp" bodystart="256" bodyend="261" declfile="HighMap/include/highmap/gradient.hpp" declline="448" declcolumn="7"/>
+        <location file="HighMap/src/gradient/gradient.cpp" line="256" column="7" bodyfile="HighMap/src/gradient/gradient.cpp" bodystart="256" bodyend="261" declfile="HighMap/include/highmap/gradient.hpp" declline="373" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a8284b00f1f460f1d5a406ee45587dcd9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -44086,428 +43807,6 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         </inbodydescription>
         <location file="HighMap/src/primitives/geo/geo.cpp" line="122" column="7" bodyfile="HighMap/src/primitives/geo/geo.cpp" bodystart="122" bodyend="161" declfile="HighMap/include/highmap/primitives.hpp" declline="1168" declcolumn="7"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1a5cbe10d6852cd789580e57a22049e29d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
-        <definition>Array hmap::phasor</definition>
-        <argsstring>(PhasorProfile phasor_profile, glm::ivec2 shape, float kw, const Array &amp;angle, uint seed, float profile_delta=0.1f, float density_factor=1.f, float kernel_width_ratio=2.f, float phase_smoothing=2.f)</argsstring>
-        <name>phasor</name>
-        <qualifiedname>hmap::phasor</qualifiedname>
-        <param>
-          <type><ref refid="namespacehmap_1a67d6620c147710ebb09b64f0f738241a" kindref="member">PhasorProfile</ref></type>
-          <declname>phasor_profile</declname>
-        </param>
-        <param>
-          <type>glm::ivec2</type>
-          <declname>shape</declname>
-        </param>
-        <param>
-          <type>float</type>
-          <declname>kw</declname>
-        </param>
-        <param>
-          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
-          <declname>angle</declname>
-        </param>
-        <param>
-          <type><ref refid="array_8hpp_1a91ad9478d81a7aaf2593e8d9c3d06a14" kindref="member">uint</ref></type>
-          <declname>seed</declname>
-        </param>
-        <param>
-          <type>float</type>
-          <declname>profile_delta</declname>
-          <defval>0.1<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
-        </param>
-        <param>
-          <type>float</type>
-          <declname>density_factor</declname>
-          <defval>1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
-        </param>
-        <param>
-          <type>float</type>
-          <declname>kernel_width_ratio</declname>
-          <defval>2.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
-        </param>
-        <param>
-          <type>float</type>
-          <declname>phase_smoothing</declname>
-          <defval>2.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
-        </param>
-        <briefdescription>
-<para>Generates a phasor noise field based on a Gabor noise model and phase profile. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function creates a phasor noise array using a Gabor kernel approach, applying a specified phase profile, smoothing, and density settings. The output is influenced by the shape, frequency, and various noise characteristics, allowing fine control over the generated noise field.</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>phasor_profile</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The phase profile to apply. Determines the type of phasor function used (e.g., bulky cosine, peaky cosine). </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>shape</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The dimensions of the output array as a 2D vector (width x height). </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>kw</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The wave number (frequency) of the Gabor kernel. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>angle</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>An array specifying the angle field for the Gabor kernel orientation. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>seed</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>A seed value for the random number generator used to create jittered spawn points for Gabor kernels. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>profile_delta</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>A parameter for adjusting the delta in the phase profile function. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>density_factor</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>A scaling factor for the density of Gabor kernel spawn points. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>kernel_width_ratio</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The ratio of the kernel width to the phase field resolution. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>phase_smoothing</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>A factor for controlling the blending of the phase profile. Larger values result in smoother transitions. </para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>An <computeroutput><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></computeroutput> containing the generated phasor noise field.</para>
-</simplesect>
-<parameterlist kind="exception"><parameteritem>
-<parameternamelist>
-<parametername>std::invalid_argumentIfaninvalid`phasor_profile`isprovided.</parametername>
-</parameternamelist>
-<parameterdescription>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="note"><para>If the kernel width is too small (less than 4), the function returns a zeroed array.</para>
-</simplesect>
-The function performs the following steps:<itemizedlist>
-<listitem><para>Generates Gabor kernel spawn points using jittered random sampling.</para>
-</listitem><listitem><para>Constructs Gabor kernels based on the input angle field and applies them to noise arrays.</para>
-</listitem><listitem><para>Computes a phase field from the Gabor noise using <computeroutput>atan2</computeroutput>.</para>
-</listitem><listitem><para>Applies the specified phase profile using the <computeroutput>get_phasor_profile_function</computeroutput>.</para>
-</listitem><listitem><para>Smooths the phase field if <computeroutput>phase_smoothing</computeroutput> is greater than zero.</para>
-</listitem></itemizedlist>
-</para>
-<para><bold>Example</bold> <programlisting filename="ex_phasor.cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
-<codeline><highlight class="normal">{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>glm::ivec2<sp/>shape<sp/>=<sp/>{256,<sp/>256};</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>kw<sp/>=<sp/>2.f;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="array_8hpp_1a91ad9478d81a7aaf2593e8d9c3d06a14" kindref="member">uint</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed<sp/>=<sp/>0;</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/><ref refid="namespacehmap_1aac71bb6c14edc17967957f7918acdbdd" kindref="member">angle</ref>(shape,<sp/>0.f);</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>std::vector&lt;hmap::PhasorProfile&gt;<sp/>profiles<sp/>=<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a67d6620c147710ebb09b64f0f738241aad8f217eb3ab016f46b02f118cfaeadab" kindref="member">hmap::PhasorProfile::COSINE_BULKY</ref>,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a67d6620c147710ebb09b64f0f738241aa2bfa021bd5f24ce3410477d209f3e588" kindref="member">hmap::PhasorProfile::COSINE_PEAKY</ref>,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a67d6620c147710ebb09b64f0f738241aa29de9f23976831ac056abef76c1f8d2e" kindref="member">hmap::PhasorProfile::COSINE_STD</ref>,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a67d6620c147710ebb09b64f0f738241aa096fe4956a67b70c9db140472af0b6b0" kindref="member">hmap::PhasorProfile::COSINE_SQUARE</ref>,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a67d6620c147710ebb09b64f0f738241aa1ee22d304b9b93cd76da1fbc9d32a75a" kindref="member">hmap::PhasorProfile::TRIANGLE</ref>,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>};</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>std::vector&lt;hmap::Array&gt;<sp/>arrays;</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>p<sp/>:<sp/>profiles)</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1a5cbe10d6852cd789580e57a22049e29d" kindref="member">hmap::phasor</ref>(p,<sp/>shape,<sp/>kw,<sp/><ref refid="namespacehmap_1aac71bb6c14edc17967957f7918acdbdd" kindref="member">angle</ref>,<sp/>seed);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>arrays.push_back(z);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>fbm<sp/>phasor</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1a8a24c5ba59504664638793a4af54f92b" kindref="member">hmap::phasor_fbm</ref>(<ref refid="namespacehmap_1a67d6620c147710ebb09b64f0f738241aad8f217eb3ab016f46b02f118cfaeadab" kindref="member">hmap::PhasorProfile::COSINE_BULKY</ref>,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>shape,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kw,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1aac71bb6c14edc17967957f7918acdbdd" kindref="member">angle</ref>,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>arrays.push_back(z);</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>z.<ref refid="classhmap_1_1Array_1ab2c7afe05160d85b0997d733cbb7d286" kindref="member">to_png_grayscale</ref>(</highlight><highlight class="stringliteral">&quot;out.png&quot;</highlight><highlight class="normal">,<sp/>CV_16U);</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_phasor.png&quot;</highlight><highlight class="normal">,<sp/>arrays,<sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9" kindref="member">hmap::Cmap::TERRAIN</ref>);</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting></para>
-<para><bold>Result</bold> <image type="html" name="ex_phasor.png"></image>
- </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="HighMap/src/primitives/phasor.cpp" line="16" column="7" bodyfile="HighMap/src/primitives/phasor.cpp" bodystart="16" bodyend="109" declfile="HighMap/include/highmap/primitives.hpp" declline="1226" declcolumn="7"/>
-      </memberdef>
-      <memberdef kind="function" id="namespacehmap_1a8a24c5ba59504664638793a4af54f92b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
-        <definition>Array hmap::phasor_fbm</definition>
-        <argsstring>(PhasorProfile phasor_profile, glm::ivec2 shape, float kw, const Array &amp;angle, uint seed, float profile_delta=0.1f, float density_factor=1.f, float kernel_width_ratio=2.f, float phase_smoothing=2.f, int octaves=8, float weight=0.7f, float persistence=0.5f, float lacunarity=2.f)</argsstring>
-        <name>phasor_fbm</name>
-        <qualifiedname>hmap::phasor_fbm</qualifiedname>
-        <param>
-          <type><ref refid="namespacehmap_1a67d6620c147710ebb09b64f0f738241a" kindref="member">PhasorProfile</ref></type>
-          <declname>phasor_profile</declname>
-        </param>
-        <param>
-          <type>glm::ivec2</type>
-          <declname>shape</declname>
-        </param>
-        <param>
-          <type>float</type>
-          <declname>kw</declname>
-        </param>
-        <param>
-          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
-          <declname>angle</declname>
-        </param>
-        <param>
-          <type><ref refid="array_8hpp_1a91ad9478d81a7aaf2593e8d9c3d06a14" kindref="member">uint</ref></type>
-          <declname>seed</declname>
-        </param>
-        <param>
-          <type>float</type>
-          <declname>profile_delta</declname>
-          <defval>0.1<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
-        </param>
-        <param>
-          <type>float</type>
-          <declname>density_factor</declname>
-          <defval>1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
-        </param>
-        <param>
-          <type>float</type>
-          <declname>kernel_width_ratio</declname>
-          <defval>2.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
-        </param>
-        <param>
-          <type>float</type>
-          <declname>phase_smoothing</declname>
-          <defval>2.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
-        </param>
-        <param>
-          <type>int</type>
-          <declname>octaves</declname>
-          <defval>8</defval>
-        </param>
-        <param>
-          <type>float</type>
-          <declname>weight</declname>
-          <defval>0.7<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
-        </param>
-        <param>
-          <type>float</type>
-          <declname>persistence</declname>
-          <defval>0.5<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
-        </param>
-        <param>
-          <type>float</type>
-          <declname>lacunarity</declname>
-          <defval>2.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
-        </param>
-        <briefdescription>
-<para>Generates a fractal Brownian motion (fBm) noise field using layered phasor profiles. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>phasor_profile</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The phase profile to apply for each noise layer (e.g., bulky cosine, peaky cosine). </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>shape</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The dimensions of the output array as a 2D vector (width x height). </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>kw</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The base wave number (frequency) for the first noise layer. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>angle</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>An array specifying the angle field for the Gabor kernel orientation in each layer. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>seed</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>A seed value for the random number generator used in all noise layers. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>profile_delta</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>A parameter for adjusting the delta in the phase profile function. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>density_factor</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>A scaling factor for the density of Gabor kernel spawn points in each layer. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>kernel_width_ratio</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The ratio of the kernel width to the phase field resolution. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>phase_smoothing</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>A factor for controlling the blending of the phase profile. Larger values result in smoother transitions. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>octaves</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The number of noise layers (octaves) to generate. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>weight</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>A factor for controlling amplitude adjustments based on the previous layer&apos;s values. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>persistence</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>A factor controlling how amplitude decreases across successive octaves. Values &lt;1 cause rapid decay. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>lacunarity</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>A factor controlling how frequency increases across successive octaves. Values &gt;1 cause rapid growth. </para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>An <computeroutput><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></computeroutput> containing the generated fBm noise field.</para>
-</simplesect>
-<parameterlist kind="exception"><parameteritem>
-<parameternamelist>
-<parametername>std::invalid_argumentIfaninvalid`phasor_profile`isprovidedtothe</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>underlying <computeroutput>phasor</computeroutput> function.</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<bold>Example</bold> <programlisting filename="ex_phasor.cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
-<codeline><highlight class="normal">{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>glm::ivec2<sp/>shape<sp/>=<sp/>{256,<sp/>256};</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>kw<sp/>=<sp/>2.f;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="array_8hpp_1a91ad9478d81a7aaf2593e8d9c3d06a14" kindref="member">uint</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed<sp/>=<sp/>0;</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/><ref refid="namespacehmap_1aac71bb6c14edc17967957f7918acdbdd" kindref="member">angle</ref>(shape,<sp/>0.f);</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>std::vector&lt;hmap::PhasorProfile&gt;<sp/>profiles<sp/>=<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a67d6620c147710ebb09b64f0f738241aad8f217eb3ab016f46b02f118cfaeadab" kindref="member">hmap::PhasorProfile::COSINE_BULKY</ref>,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a67d6620c147710ebb09b64f0f738241aa2bfa021bd5f24ce3410477d209f3e588" kindref="member">hmap::PhasorProfile::COSINE_PEAKY</ref>,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a67d6620c147710ebb09b64f0f738241aa29de9f23976831ac056abef76c1f8d2e" kindref="member">hmap::PhasorProfile::COSINE_STD</ref>,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a67d6620c147710ebb09b64f0f738241aa096fe4956a67b70c9db140472af0b6b0" kindref="member">hmap::PhasorProfile::COSINE_SQUARE</ref>,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a67d6620c147710ebb09b64f0f738241aa1ee22d304b9b93cd76da1fbc9d32a75a" kindref="member">hmap::PhasorProfile::TRIANGLE</ref>,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>};</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>std::vector&lt;hmap::Array&gt;<sp/>arrays;</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>p<sp/>:<sp/>profiles)</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1a5cbe10d6852cd789580e57a22049e29d" kindref="member">hmap::phasor</ref>(p,<sp/>shape,<sp/>kw,<sp/><ref refid="namespacehmap_1aac71bb6c14edc17967957f7918acdbdd" kindref="member">angle</ref>,<sp/>seed);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>arrays.push_back(z);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>fbm<sp/>phasor</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1a8a24c5ba59504664638793a4af54f92b" kindref="member">hmap::phasor_fbm</ref>(<ref refid="namespacehmap_1a67d6620c147710ebb09b64f0f738241aad8f217eb3ab016f46b02f118cfaeadab" kindref="member">hmap::PhasorProfile::COSINE_BULKY</ref>,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>shape,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kw,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1aac71bb6c14edc17967957f7918acdbdd" kindref="member">angle</ref>,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>arrays.push_back(z);</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>z.<ref refid="classhmap_1_1Array_1ab2c7afe05160d85b0997d733cbb7d286" kindref="member">to_png_grayscale</ref>(</highlight><highlight class="stringliteral">&quot;out.png&quot;</highlight><highlight class="normal">,<sp/>CV_16U);</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_phasor.png&quot;</highlight><highlight class="normal">,<sp/>arrays,<sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9" kindref="member">hmap::Cmap::TERRAIN</ref>);</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting></para>
-<para><bold>Result</bold> <image type="html" name="ex_phasor.png"></image>
- </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="HighMap/src/primitives/phasor.cpp" line="111" column="7" bodyfile="HighMap/src/primitives/phasor.cpp" bodystart="111" bodyend="159" declfile="HighMap/include/highmap/primitives.hpp" declline="1280" declcolumn="7"/>
-      </memberdef>
       <memberdef kind="function" id="namespacehmap_1adafc477ac182ce40ebf2cee1c84cb936" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
         <definition>Array hmap::rectangle</definition>
@@ -44699,7 +43998,7 @@ The function performs the following steps:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives.cpp" line="225" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="225" bodyend="248" declfile="HighMap/include/highmap/primitives.hpp" declline="1332" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives.cpp" line="225" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="225" bodyend="248" declfile="HighMap/include/highmap/primitives.hpp" declline="1213" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a808ede1d218fd226001c8f804bb85b97" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -44892,7 +44191,7 @@ The function performs the following steps:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives.cpp" line="250" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="250" bodyend="277" declfile="HighMap/include/highmap/primitives.hpp" declline="1367" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives.cpp" line="250" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="250" bodyend="277" declfile="HighMap/include/highmap/primitives.hpp" declline="1248" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a79ad6fb857a38f8de9915d01992e5161" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -45053,7 +44352,7 @@ The function performs the following steps:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives.cpp" line="279" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="279" bodyend="300" declfile="HighMap/include/highmap/primitives.hpp" declline="1399" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives.cpp" line="279" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="279" bodyend="300" declfile="HighMap/include/highmap/primitives.hpp" declline="1280" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a41239b5831a88a5b2528f24e8c95a92a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -45090,7 +44389,7 @@ The function performs the following steps:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives.cpp" line="302" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="302" bodyend="330" declfile="HighMap/include/highmap/primitives.hpp" declline="1412" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives.cpp" line="302" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="302" bodyend="330" declfile="HighMap/include/highmap/primitives.hpp" declline="1293" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a80b6038177b2ab3984cb18bd90f568fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -45249,7 +44548,7 @@ The function performs the following steps:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives.cpp" line="332" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="332" bodyend="353" declfile="HighMap/include/highmap/primitives.hpp" declline="1439" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives.cpp" line="332" column="7" bodyfile="HighMap/src/primitives/primitives.cpp" bodystart="332" bodyend="353" declfile="HighMap/include/highmap/primitives.hpp" declline="1320" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a7a433480a8cd89be48bc9ce8cbb25ce8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -45380,7 +44679,7 @@ The function performs the following steps:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/swirl.cpp" line="16" column="6" bodyfile="HighMap/src/primitives/swirl.cpp" bodystart="16" bodyend="59" declfile="HighMap/include/highmap/primitives.hpp" declline="1466" declcolumn="6"/>
+        <location file="HighMap/src/primitives/swirl.cpp" line="16" column="6" bodyfile="HighMap/src/primitives/swirl.cpp" bodystart="16" bodyend="59" declfile="HighMap/include/highmap/primitives.hpp" declline="1347" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a6f66325f4146ebb7e9e20cf4a4882fc3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -45517,7 +44816,7 @@ The function performs the following steps:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/wave.cpp" line="15" column="7" bodyfile="HighMap/src/primitives/wave.cpp" bodystart="15" bodyend="41" declfile="HighMap/include/highmap/primitives.hpp" declline="1489" declcolumn="7"/>
+        <location file="HighMap/src/primitives/wave.cpp" line="15" column="7" bodyfile="HighMap/src/primitives/wave.cpp" bodystart="15" bodyend="41" declfile="HighMap/include/highmap/primitives.hpp" declline="1370" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1af19f27b4e6de391ec8873af6143034ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -45667,7 +44966,7 @@ The function performs the following steps:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/wave.cpp" line="43" column="7" bodyfile="HighMap/src/primitives/wave.cpp" bodystart="43" bodyend="65" declfile="HighMap/include/highmap/primitives.hpp" declline="1519" declcolumn="7"/>
+        <location file="HighMap/src/primitives/wave.cpp" line="43" column="7" bodyfile="HighMap/src/primitives/wave.cpp" bodystart="43" bodyend="65" declfile="HighMap/include/highmap/primitives.hpp" declline="1400" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ae762ec389b313e1ae038583b2aa6ba46" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -45817,7 +45116,7 @@ The function performs the following steps:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/wave.cpp" line="67" column="7" bodyfile="HighMap/src/primitives/wave.cpp" bodystart="67" bodyend="89" declfile="HighMap/include/highmap/primitives.hpp" declline="1547" declcolumn="7"/>
+        <location file="HighMap/src/primitives/wave.cpp" line="67" column="7" bodyfile="HighMap/src/primitives/wave.cpp" bodystart="67" bodyend="89" declfile="HighMap/include/highmap/primitives.hpp" declline="1428" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ae692921d08ee6f12bf9fdf099b6bb8a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -45979,7 +45278,7 @@ The function performs the following steps:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/wave.cpp" line="91" column="7" bodyfile="HighMap/src/primitives/wave.cpp" bodystart="91" bodyend="115" declfile="HighMap/include/highmap/primitives.hpp" declline="1577" declcolumn="7"/>
+        <location file="HighMap/src/primitives/wave.cpp" line="91" column="7" bodyfile="HighMap/src/primitives/wave.cpp" bodystart="91" bodyend="115" declfile="HighMap/include/highmap/primitives.hpp" declline="1458" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a022aef816b0eee9fd5ccc0db2f781e5c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -46061,7 +45360,7 @@ The function performs the following steps:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/white.cpp" line="12" column="7" bodyfile="HighMap/src/primitives/white.cpp" bodystart="12" bodyend="22" declfile="HighMap/include/highmap/primitives.hpp" declline="1604" declcolumn="7"/>
+        <location file="HighMap/src/primitives/white.cpp" line="12" column="7" bodyfile="HighMap/src/primitives/white.cpp" bodystart="12" bodyend="22" declfile="HighMap/include/highmap/primitives.hpp" declline="1485" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a657a1f43301605e4e3768cd3888e8b4b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -46125,7 +45424,7 @@ The function performs the following steps:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/white.cpp" line="24" column="7" bodyfile="HighMap/src/primitives/white.cpp" bodystart="24" bodyend="37" declfile="HighMap/include/highmap/primitives.hpp" declline="1619" declcolumn="7"/>
+        <location file="HighMap/src/primitives/white.cpp" line="24" column="7" bodyfile="HighMap/src/primitives/white.cpp" bodystart="24" bodyend="37" declfile="HighMap/include/highmap/primitives.hpp" declline="1500" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ad5e4bfcd7693e9b1a8beb2a10dcf8418" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -46220,7 +45519,7 @@ The function performs the following steps:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/white.cpp" line="39" column="7" bodyfile="HighMap/src/primitives/white.cpp" bodystart="39" bodyend="51" declfile="HighMap/include/highmap/primitives.hpp" declline="1640" declcolumn="7"/>
+        <location file="HighMap/src/primitives/white.cpp" line="39" column="7" bodyfile="HighMap/src/primitives/white.cpp" bodystart="39" bodyend="51" declfile="HighMap/include/highmap/primitives.hpp" declline="1521" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ad6dd8fdacd554d5dccd1f23e9dfd015f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -46275,7 +45574,7 @@ The function performs the following steps:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/white.cpp" line="53" column="7" bodyfile="HighMap/src/primitives/white.cpp" bodystart="53" bodyend="65" declfile="HighMap/include/highmap/primitives.hpp" declline="1655" declcolumn="7"/>
+        <location file="HighMap/src/primitives/white.cpp" line="53" column="7" bodyfile="HighMap/src/primitives/white.cpp" bodystart="53" bodyend="65" declfile="HighMap/include/highmap/primitives.hpp" declline="1536" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a494a16a2183fc9e360d5390ce55ecef0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -46438,7 +45737,7 @@ The function performs the following steps:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/worley.cpp" line="15" column="7" bodyfile="HighMap/src/primitives/worley.cpp" bodystart="15" bodyend="37" declfile="HighMap/include/highmap/primitives.hpp" declline="1680" declcolumn="7"/>
+        <location file="HighMap/src/primitives/worley.cpp" line="15" column="7" bodyfile="HighMap/src/primitives/worley.cpp" bodystart="15" bodyend="37" declfile="HighMap/include/highmap/primitives.hpp" declline="1561" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1abc5d54d0d76a86f083db977837c28d69" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -53639,6 +52938,32 @@ off&quot; values that fall below the threshold, which can be useful for filterin
         <inbodydescription>
         </inbodydescription>
         <location file="HighMap/src/gradient/gradient.cpp" line="43" column="7" bodyfile="HighMap/src/gradient/gradient.cpp" bodystart="43" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehmap_1a4ed1b65c7d7fe8ec5b874ff5e6762228" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
+        <definition>Array hmap::normal_map_to_heightmap_poisson</definition>
+        <argsstring>(const Tensor &amp;nmap, int iterations, float omega)</argsstring>
+        <name>normal_map_to_heightmap_poisson</name>
+        <qualifiedname>hmap::normal_map_to_heightmap_poisson</qualifiedname>
+        <param>
+          <type>const <ref refid="classhmap_1_1Tensor" kindref="compound">Tensor</ref> &amp;</type>
+          <declname>nmap</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>iterations</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>omega</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/gradient/normal_map.cpp" line="65" column="7" bodyfile="HighMap/src/gradient/normal_map.cpp" bodystart="65" bodyend="89"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a5acae3ca582cc9a70ad321ef484c05f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
