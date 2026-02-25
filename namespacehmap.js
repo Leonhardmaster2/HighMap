@@ -35,6 +35,8 @@ var namespacehmap =
       [ "strata_cells", "namespacehmap_1_1gpu.html#aea0ca081d8da637b22e20799b2d8e914", null ],
       [ "strata_cells_fbm", "namespacehmap_1_1gpu.html#a182b5cbe63e2d42368c19f66dd9febb3", null ],
       [ "strata_cells_fbm", "namespacehmap_1_1gpu.html#abf47ed6cea5c36afa47bf5463310db52", null ],
+      [ "strata_terrace", "namespacehmap_1_1gpu.html#a9ed6ad946ac7bcb852974a38eca78ac8", null ],
+      [ "strata_terrace", "namespacehmap_1_1gpu.html#aa75d564b4578a7b56c64cdd8bf740f3e", null ],
       [ "thermal", "namespacehmap_1_1gpu.html#a2eb4bdf2d7dc4441e56865027764425e", null ],
       [ "thermal", "namespacehmap_1_1gpu.html#a1be1d9c97f7da805703dadab064fb793", null ],
       [ "thermal", "namespacehmap_1_1gpu.html#aac5f0e0045cf767611fb8d2def2c4cb5", null ],
