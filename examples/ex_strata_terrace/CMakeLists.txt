@@ -1,0 +1,2 @@
+add_executable(ex_strata_terrace ex_strata_terrace.cpp)
+target_link_libraries(ex_strata_terrace highmap)

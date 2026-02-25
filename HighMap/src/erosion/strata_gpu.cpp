@@ -318,4 +318,52 @@ void strata_cells_fbm(Array       &z,
   }
 }
 
+void strata_terrace(Array       &z,
+                    float        gamma,
+                    uint         seed,
+                    float        kz,
+                    bool         linear_gamma,
+                    float        gamma_noise_ratio,
+                    const Array *p_noise)
+{
+  auto run = clwrapper::Run("strata_terrace");
+
+  run.bind_buffer<float>("z", z.vector);
+  helper_bind_optional_buffer(run, "noise", p_noise);
+
+  run.bind_arguments(z.shape.x,
+                     z.shape.y,
+                     gamma,
+                     seed,
+                     linear_gamma ? 1 : 0,
+                     kz,
+                     gamma_noise_ratio,
+                     p_noise ? 1 : 0);
+
+  run.write_buffer("z");
+  run.execute({z.shape.x, z.shape.y});
+  run.read_buffer("z");
+}
+
+void strata_terrace(Array       &z,
+                    float        gamma,
+                    uint         seed,
+                    const Array *p_mask,
+                    float        kz,
+                    bool         linear_gamma,
+                    float        gamma_noise_ratio,
+                    const Array *p_noise)
+{
+  if (!p_mask)
+  {
+    strata_terrace(z, gamma, seed, kz, linear_gamma, gamma_noise_ratio);
+  }
+  else
+  {
+    Array z_f = z;
+    strata_terrace(z_f, gamma, seed, kz, linear_gamma, gamma_noise_ratio);
+    z = lerp(z, z_f, *(p_mask));
+  }
+}
+
 } // namespace hmap::gpu

@@ -1781,6 +1781,23 @@ void strata_cells_fbm(Array       &z,
                       const Array *p_noise_y = nullptr,
                       glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
 
+void strata_terrace(Array       &z,
+                    float        gamma, // e.g 0.5f or 1.5f
+                    uint         seed,
+                    float        kz = 4.f, // 4-layers
+                    bool         linear_gamma = true,
+                    float        gamma_noise_ratio = 0.5f,
+                    const Array *p_noise = nullptr);
+
+void strata_terrace(Array       &z,
+                    float        gamma, // e.g 0.5f or 1.5f
+                    uint         seed,
+                    const Array *p_mask,
+                    float        kz = 4.f, // 4-layers
+                    bool         linear_gamma = true,
+                    float        gamma_noise_ratio = 0.5f,
+                    const Array *p_noise = nullptr);
+
 /*! @brief See hmap::thermal */
 void thermal(Array       &z,
              const Array &talus,
