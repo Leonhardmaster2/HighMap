@@ -100,9 +100,6 @@ Array gabor_wave_fbm(glm::ivec2   shape,
 
   auto run = clwrapper::Run("gabor_wave_fbm");
 
-  LOG_DEBUG("%d %d", shape.x, shape.y);
-  if (p_noise_x) LOG_DEBUG("NOT NULLPTR");
-
   run.bind_buffer<float>("array", array.vector);
   run.bind_buffer<float>("angle", angle.vector);
 
@@ -505,7 +502,6 @@ Array noise(NoiseType    noise_type,
   Array array(shape);
 
   int noise_id = static_cast<int>(noise_type);
-  // LOG_DEBUG("noise_id: %d", noise_id);
 
   auto run = clwrapper::Run("noise");
 
@@ -547,7 +543,6 @@ Array noise_fbm(NoiseType    noise_type,
   Array array(shape);
 
   int noise_id = static_cast<int>(noise_type);
-  // LOG_DEBUG("noise_id: %d", noise_id);
 
   auto run = clwrapper::Run("noise_fbm");
 
