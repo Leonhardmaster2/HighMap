@@ -46,7 +46,8 @@ enum InterpolationMethod2D : int
  */
 static std::map<InterpolationMethod2D, std::string>
     interpolation_method_2d_as_string = {{DELAUNAY, "Delaunay linear"},
-                                         {NEAREST, "nearest neighbor"}};
+                                         {NEAREST, "nearest neighbor"},
+                                         {IDW, "inverse distance weighting"}};
 
 /**
  * @brief Compute the bilinear interpolated value from four input values.
@@ -186,6 +187,9 @@ Array interpolate2d_delaunay(glm::ivec2                shape,
                              const Array              *p_stretching = nullptr,
                              glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f});
 
+/**
+ * @brief 2D interpolation using the IDW method.
+ */
 Array interpolate2d_idw(glm::ivec2                shape,
                         const std::vector<float> &x,
                         const std::vector<float> &y,
