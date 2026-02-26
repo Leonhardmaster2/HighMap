@@ -19,9 +19,9 @@ void kernel advection_particle(global float *field,
                                const int     has_advection_mask)
 {
   int id = get_global_id(0); // particle id
-  if (id > nparticles) return;
+  if (id >= nparticles) return;
 
-  uint rng_state = wang_hash(seed + id);
+  uint rng_state = pcg_hash(seed + id * 2u);
 
   const float drx = 1.f;
   const float dry = 1.f;
@@ -38,7 +38,7 @@ void kernel advection_particle(global float *field,
   {
     // find a source point outside the advection zone
     int tries_count = 0;
-    while (tries_count < 1000)
+    while (tries_count < 100)
     {
       tries_count++;
       pos = (float2)((nx - 1) * rand(&rng_state), (ny - 1) * rand(&rng_state));
@@ -49,21 +49,23 @@ void kernel advection_particle(global float *field,
   }
 
   int2   g = (int2)((int)pos.x, (int)pos.y);
-  float  val = field[linear_index_g(g, nx)];
-  float2 dir;
-  float2 dir_prev;
-
+  int    idx = linear_index_g(g, nx);
+  float  val = field[idx];
+  float2 dir = (float2)(0.f, 0.f);
+  float2 dir_prev = (float2)(0.f, 0.f);
+ 
   while (dist < dist_max)
   {
     // particle direction
-    float2 vel = (float2)(dx[linear_index_g(g, nx)], dy[linear_index_g(g, nx)]);
+    float2 vel = (float2)(dx[idx], dy[idx]);
 
-    float len = hypot(vel.x, vel.y);
+    float len = length(vel);
     if (len > eps)
     {
       // (NB - if too flat, keep the direction of the previous step)
       dir = vel / len;
       dir = inertia * dir_prev + (1.f - inertia) * dir;
+      dir = normalize(dir);
       dir_prev = dir;
     }
 
@@ -75,30 +77,31 @@ void kernel advection_particle(global float *field,
     pos.x += advection_sign * dir.x * drx;
     pos.y += advection_sign * dir.y * dry;
 
-    if (pos.x == pos_prev.x && pos.y == pos_prev.y) continue;
+    if (fabs(pos.x - pos_prev.x) < eps && fabs(pos.y - pos_prev.y) < eps)
+      continue;
 
     g = (int2)((int)pos.x, (int)pos.y);
+    idx = linear_index_g(g, nx);
 
     // stop if the particle reaches the domain limits
     if (g.x < 0 || g.x > nx - 1 || g.y < 0 || g.y > ny - 1) break;
 
     // stop if outside the advection mask
     if (has_advection_mask > 0)
-      if (advection_mask[linear_index_g(g, nx)] == 0) break;
+      if (advection_mask[idx] == 0) break;
 
     if (true)
     {
-      int idx = linear_index_g(g, nx);
       val = lerp(field[idx], val, value_persistence);
       out[idx] += val;
       count[idx] += 1.f;
     }
     else
     {
-      int ir = 3;
+      int ir = 2;
       if (g.x < ir || g.x > nx - 1 - ir || g.y < ir || g.y > ny - 1 - ir) break;
 
-      val = lerp(field[linear_index_g(g, nx)], val, value_persistence);
+      val = lerp(field[idx], val, value_persistence);
 
       float sum = 0.f;
       for (int p = -ir; p < ir; ++p)
