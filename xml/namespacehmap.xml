@@ -987,6 +987,14 @@
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
+        <enumvalue id="namespacehmap_1a5bfab5d68e822294ff90fde21b85f581a842ff1d615a7d0e1e9a94cdbe8635291" prot="public">
+          <name>IDW</name>
+          <briefdescription>
+<para>Inverse Distance Weighting. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
         <briefdescription>
 <para>Enumeration of 2D interpolation methods. </para>
         </briefdescription>
@@ -995,7 +1003,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/interpolate2d.hpp" line="33" column="1" bodyfile="HighMap/include/highmap/interpolate2d.hpp" bodystart="34" bodyend="37"/>
+        <location file="HighMap/include/highmap/interpolate2d.hpp" line="33" column="1" bodyfile="HighMap/include/highmap/interpolate2d.hpp" bodystart="34" bodyend="38"/>
       </memberdef>
       <memberdef kind="enum" id="namespacehmap_1aa78bf111867e13c63d8bd2ec005ad6c8" prot="public" static="no" strong="no">
         <type>int</type>
@@ -1794,7 +1802,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/interpolate2d.hpp" line="47" column="5" bodyfile="HighMap/include/highmap/interpolate2d.hpp" bodystart="47" bodyend="48"/>
+        <location file="HighMap/include/highmap/interpolate2d.hpp" line="48" column="5" bodyfile="HighMap/include/highmap/interpolate2d.hpp" bodystart="48" bodyend="49"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehmap_1a2828152429273d081863dfafb293b0b6" prot="public" static="yes" mutable="no">
         <type>std::map&lt; std::string, int &gt;</type>
@@ -31498,7 +31506,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/interpolate2d.hpp" line="66" column="14" bodyfile="HighMap/include/highmap/interpolate2d.hpp" bodystart="66" bodyend="77"/>
+        <location file="HighMap/include/highmap/interpolate2d.hpp" line="67" column="14" bodyfile="HighMap/include/highmap/interpolate2d.hpp" bodystart="67" bodyend="78"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aee026d8b23196038c2b16c370b743889" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>float</type>
@@ -31521,7 +31529,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/interpolate2d.hpp" line="79" column="14" bodyfile="HighMap/include/highmap/interpolate2d.hpp" bodystart="79" bodyend="85"/>
+        <location file="HighMap/include/highmap/interpolate2d.hpp" line="80" column="14" bodyfile="HighMap/include/highmap/interpolate2d.hpp" bodystart="80" bodyend="86"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a6cfd7b1fc064e5aaef1550041f1bbc06" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -31611,7 +31619,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/interpolate/harmonic_interpolation.cpp" line="11" column="7" bodyfile="HighMap/src/interpolate/harmonic_interpolation.cpp" bodystart="11" bodyend="42" declfile="HighMap/include/highmap/interpolate2d.hpp" declline="120" declcolumn="7"/>
+        <location file="HighMap/src/interpolate/harmonic_interpolation.cpp" line="11" column="7" bodyfile="HighMap/src/interpolate/harmonic_interpolation.cpp" bodystart="11" bodyend="42" declfile="HighMap/include/highmap/interpolate2d.hpp" declline="121" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a9204361c5b04a66019fa4c24ca2ac904" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -31743,127 +31751,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/interpolate/interpolate2d.cpp" line="16" column="7" bodyfile="HighMap/src/interpolate/interpolate2d.cpp" bodystart="16" bodyend="49" declfile="HighMap/include/highmap/interpolate2d.hpp" declline="149" declcolumn="7"/>
-      </memberdef>
-      <memberdef kind="function" id="namespacehmap_1a3c6b2fa133e70ba9f4cf44cb7ab97f3b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
-        <definition>Array hmap::interpolate2d_nearest</definition>
-        <argsstring>(glm::ivec2 shape, const std::vector&lt; float &gt; &amp;x, const std::vector&lt; float &gt; &amp;y, const std::vector&lt; float &gt; &amp;values, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</argsstring>
-        <name>interpolate2d_nearest</name>
-        <qualifiedname>hmap::interpolate2d_nearest</qualifiedname>
-        <param>
-          <type>glm::ivec2</type>
-          <declname>shape</declname>
-        </param>
-        <param>
-          <type>const std::vector&lt; float &gt; &amp;</type>
-          <declname>x</declname>
-        </param>
-        <param>
-          <type>const std::vector&lt; float &gt; &amp;</type>
-          <declname>y</declname>
-        </param>
-        <param>
-          <type>const std::vector&lt; float &gt; &amp;</type>
-          <declname>values</declname>
-        </param>
-        <param>
-          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
-          <declname>p_noise_x</declname>
-          <defval>nullptr</defval>
-        </param>
-        <param>
-          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
-          <declname>p_noise_y</declname>
-          <defval>nullptr</defval>
-        </param>
-        <param>
-          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
-          <declname>p_stretching</declname>
-          <defval>nullptr</defval>
-        </param>
-        <param>
-          <type>glm::vec4</type>
-          <declname>bbox</declname>
-          <defval>{0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>}</defval>
-        </param>
-        <briefdescription>
-<para>2D interpolation using the nearest neighbor method. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function performs 2D interpolation by assigning the value of the nearest point to each point in the output grid.</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>shape</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Output array shape. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>x</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>x coordinates of the input values. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>y</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>y coordinates of the input values. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>values</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Input values at (x, y). </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>p_noise_x</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Pointer to the input noise array in the x direction (optional). </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>p_noise_y</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Pointer to the input noise array in the y direction (optional). </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>p_stretching</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Pointer to the local wavenumber multiplier array (optional). </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>bbox</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Domain bounding box (default: {0.f, 1.f, 0.f, 1.f}). </para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para><ref refid="classhmap_1_1Array" kindref="compound">Array</ref> Output array with interpolated values. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="HighMap/src/interpolate/interpolate2d.cpp" line="51" column="7" bodyfile="HighMap/src/interpolate/interpolate2d.cpp" bodystart="51" bodyend="88" declfile="HighMap/include/highmap/interpolate2d.hpp" declline="178" declcolumn="7"/>
+        <location file="HighMap/src/interpolate/interpolate2d.cpp" line="16" column="7" bodyfile="HighMap/src/interpolate/interpolate2d.cpp" bodystart="16" bodyend="60" declfile="HighMap/include/highmap/interpolate2d.hpp" declline="150" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ad2581ee8be7619fed2e118310ad469f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -31983,7 +31871,182 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/interpolate/interpolate2d.cpp" line="90" column="7" bodyfile="HighMap/src/interpolate/interpolate2d.cpp" bodystart="90" bodyend="164" declfile="HighMap/include/highmap/interpolate2d.hpp" declline="207" declcolumn="7"/>
+        <location file="HighMap/src/interpolate/interpolate2d.cpp" line="62" column="7" bodyfile="HighMap/src/interpolate/interpolate2d.cpp" bodystart="62" bodyend="136" declfile="HighMap/include/highmap/interpolate2d.hpp" declline="180" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehmap_1a1c0db957f339fe45f7d2bde330b4c8ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
+        <definition>Array hmap::interpolate2d_idw</definition>
+        <argsstring>(glm::ivec2 shape, const std::vector&lt; float &gt; &amp;x, const std::vector&lt; float &gt; &amp;y, const std::vector&lt; float &gt; &amp;values, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f}, float distance_exp=2.f)</argsstring>
+        <name>interpolate2d_idw</name>
+        <qualifiedname>hmap::interpolate2d_idw</qualifiedname>
+        <param>
+          <type>glm::ivec2</type>
+          <declname>shape</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; float &gt; &amp;</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; float &gt; &amp;</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; float &gt; &amp;</type>
+          <declname>values</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
+          <declname>p_noise_x</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
+          <declname>p_noise_y</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
+          <declname>p_stretching</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>glm::vec4</type>
+          <declname>bbox</declname>
+          <defval>{0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>}</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>distance_exp</declname>
+          <defval>2.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/interpolate/interpolate2d.cpp" line="138" column="7" bodyfile="HighMap/src/interpolate/interpolate2d.cpp" bodystart="138" bodyend="184" declfile="HighMap/include/highmap/interpolate2d.hpp" declline="189" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehmap_1a3c6b2fa133e70ba9f4cf44cb7ab97f3b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
+        <definition>Array hmap::interpolate2d_nearest</definition>
+        <argsstring>(glm::ivec2 shape, const std::vector&lt; float &gt; &amp;x, const std::vector&lt; float &gt; &amp;y, const std::vector&lt; float &gt; &amp;values, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</argsstring>
+        <name>interpolate2d_nearest</name>
+        <qualifiedname>hmap::interpolate2d_nearest</qualifiedname>
+        <param>
+          <type>glm::ivec2</type>
+          <declname>shape</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; float &gt; &amp;</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; float &gt; &amp;</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; float &gt; &amp;</type>
+          <declname>values</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
+          <declname>p_noise_x</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
+          <declname>p_noise_y</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
+          <declname>p_stretching</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>glm::vec4</type>
+          <declname>bbox</declname>
+          <defval>{0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>}</defval>
+        </param>
+        <briefdescription>
+<para>2D interpolation using the nearest neighbor method. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function performs 2D interpolation by assigning the value of the nearest point to each point in the output grid.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>shape</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Output array shape. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>x coordinates of the input values. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>y coordinates of the input values. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>values</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input values at (x, y). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>p_noise_x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the input noise array in the x direction (optional). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>p_noise_y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the input noise array in the y direction (optional). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>p_stretching</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the local wavenumber multiplier array (optional). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>bbox</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Domain bounding box (default: {0.f, 1.f, 0.f, 1.f}). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classhmap_1_1Array" kindref="compound">Array</ref> Output array with interpolated values. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/interpolate/interpolate2d.cpp" line="186" column="7" bodyfile="HighMap/src/interpolate/interpolate2d.cpp" bodystart="186" bodyend="223" declfile="HighMap/include/highmap/interpolate2d.hpp" declline="218" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a9e8b724d238450ef72e9bd083acb9b8a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>

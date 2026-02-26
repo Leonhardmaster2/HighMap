@@ -70,7 +70,7 @@ var searchData=
   ['compute_5fgradient_5fnorm_67',['compute_gradient_norm',['../namespacehmap.html#aa2c4a82ac72b15cac34f868be9743471',1,'hmap']]],
   ['compute_5fsplatmap_68',['compute_splatmap',['../namespacehmap.html#a82490d2d9081a59290630bd0d76b965c',1,'hmap']]],
   ['computemode_69',['ComputeMode',['../structhmap_1_1ComputeMode.html',1,'hmap']]],
-  ['cone_70',['cone',['../namespacehmap.html#a4b6f135c6e81d313ca54ae1efac5f2c9af76c60e345bf176e74af026ed87eb030',1,'hmap::CONE'],['../namespacehmap.html#afa7a527eb0a2a57c0eac7e0c5723a982',1,'hmap::cone(glm::ivec2 shape, float slope, float apex_elevation=1.f, bool smooth_profile=false, glm::vec2 center={0.5f, 0.5f}, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})'],['../namespacehmap.html#afb6b1a073428729f0dc9afc0ba42f8b2',1,'hmap::cone(glm::ivec2 shape)']]],
+  ['cone_70',['cone',['../namespacehmap.html#afb6b1a073428729f0dc9afc0ba42f8b2',1,'hmap::cone(glm::ivec2 shape)'],['../namespacehmap.html#a4b6f135c6e81d313ca54ae1efac5f2c9af76c60e345bf176e74af026ed87eb030',1,'hmap::CONE'],['../namespacehmap.html#afa7a527eb0a2a57c0eac7e0c5723a982',1,'hmap::cone(glm::ivec2 shape, float slope, float apex_elevation=1.f, bool smooth_profile=false, glm::vec2 center={0.5f, 0.5f}, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})']]],
   ['cone_2ecpp_71',['cone.cpp',['../cone_8cpp.html',1,'']]],
   ['cone_5fcomplex_72',['cone_complex',['../namespacehmap.html#ace61bbd6a24c696dc24901dbe39be203',1,'hmap']]],
   ['cone_5fsigmoid_73',['cone_sigmoid',['../namespacehmap.html#a78b0b574724e2036ad5da6148e21acd8',1,'hmap']]],
