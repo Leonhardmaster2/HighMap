@@ -53,7 +53,7 @@ void kernel advection_particle(global float *field,
   float  val = field[idx];
   float2 dir = (float2)(0.f, 0.f);
   float2 dir_prev = (float2)(0.f, 0.f);
- 
+
   while (dist < dist_max)
   {
     // particle direction

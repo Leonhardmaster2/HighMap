@@ -25,7 +25,7 @@ Array interpolate2d(glm::ivec2                shape,
 {
   switch (interpolation_method)
   {
-  case (InterpolationMethod2D::DELAUNAY):
+  case InterpolationMethod2D::DELAUNAY:
     return interpolate2d_delaunay(shape,
                                   x,
                                   y,
@@ -35,7 +35,7 @@ Array interpolate2d(glm::ivec2                shape,
                                   p_stretching,
                                   bbox);
 
-  case (InterpolationMethod2D::NEAREST):
+  case InterpolationMethod2D::NEAREST:
     return interpolate2d_nearest(shape,
                                  x,
                                  y,
@@ -44,47 +44,19 @@ Array interpolate2d(glm::ivec2                shape,
                                  p_noise_y,
                                  p_stretching,
                                  bbox);
+
+  case InterpolationMethod2D::IDW:
+    return interpolate2d_idw(shape,
+                             x,
+                             y,
+                             values,
+                             p_noise_x,
+                             p_noise_y,
+                             p_stretching,
+                             bbox);
+
   default: throw std::runtime_error("unknown 2D interpolation method");
   }
-}
-
-Array interpolate2d_nearest(glm::ivec2                shape,
-                            const std::vector<float> &x,
-                            const std::vector<float> &y,
-                            const std::vector<float> &values,
-                            const Array              *p_noise_x,
-                            const Array              *p_noise_y,
-                            const Array              *p_stretching,
-                            glm::vec4                 bbox)
-{
-  auto itp_fct = [&x, &y, &values](float x_, float y_, float)
-  {
-    float dmax = std::numeric_limits<float>::max();
-    float value_;
-    for (size_t k = 0; k < x.size(); k++)
-    {
-      float d = std::hypot(x_ - x[k], y_ - y[k]);
-      if (d < dmax)
-      {
-        dmax = d;
-        value_ = values[k];
-      }
-    }
-
-    return value_;
-  };
-
-  Array array_out = Array(shape);
-
-  fill_array_using_xy_function(array_out,
-                               bbox,
-                               nullptr,
-                               p_noise_x,
-                               p_noise_y,
-                               p_stretching,
-                               itp_fct);
-
-  return array_out;
 }
 
 Array interpolate2d_delaunay(glm::ivec2                shape,
@@ -148,6 +120,93 @@ Array interpolate2d_delaunay(glm::ivec2                shape,
     }
 
     return 0.f;
+  };
+
+  Array array_out = Array(shape);
+
+  fill_array_using_xy_function(array_out,
+                               bbox,
+                               nullptr,
+                               p_noise_x,
+                               p_noise_y,
+                               p_stretching,
+                               itp_fct);
+
+  return array_out;
+}
+
+Array interpolate2d_idw(glm::ivec2                shape,
+                        const std::vector<float> &x,
+                        const std::vector<float> &y,
+                        const std::vector<float> &values,
+                        const Array              *p_noise_x,
+                        const Array              *p_noise_y,
+                        const Array              *p_stretching,
+                        glm::vec4                 bbox,
+                        float                     distance_exp)
+{
+  constexpr float epsilon = 1e-10f;
+
+  auto itp_fct = [&x, &y, &values, distance_exp](float x_, float y_, float)
+  {
+    float weighted_sum = 0.f;
+    float weight_sum = 0.f;
+
+    for (size_t k = 0; k < x.size(); ++k)
+    {
+      float dx = x_ - x[k];
+      float dy = y_ - y[k];
+      float d2 = dx * dx + dy * dy;
+
+      // exact sample match
+      if (d2 < epsilon) return values[k];
+
+      float w = 1.f / std::pow(d2, 0.5f * distance_exp);
+
+      weighted_sum += w * values[k];
+      weight_sum += w;
+    }
+
+    return (weight_sum > 0.f) ? (weighted_sum / weight_sum) : 0.f;
+  };
+
+  Array array_out = Array(shape);
+
+  fill_array_using_xy_function(array_out,
+                               bbox,
+                               nullptr,
+                               p_noise_x,
+                               p_noise_y,
+                               p_stretching,
+                               itp_fct);
+
+  return array_out;
+}
+
+Array interpolate2d_nearest(glm::ivec2                shape,
+                            const std::vector<float> &x,
+                            const std::vector<float> &y,
+                            const std::vector<float> &values,
+                            const Array              *p_noise_x,
+                            const Array              *p_noise_y,
+                            const Array              *p_stretching,
+                            glm::vec4                 bbox)
+{
+  auto itp_fct = [&x, &y, &values](float x_, float y_, float)
+  {
+    float dmax = std::numeric_limits<float>::max();
+    float value_;
+    for (size_t k = 0; k < x.size(); k++)
+    {
+      float d = std::hypot(x_ - x[k], y_ - y[k]);
+      if (d < dmax)
+      {
+        dmax = d;
+        value_ = values[k];
+      }
+    }
+
+    return value_;
   };
 
   Array array_out = Array(shape);

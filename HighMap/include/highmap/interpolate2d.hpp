@@ -34,6 +34,7 @@ enum InterpolationMethod2D : int
 {
   DELAUNAY, ///< Delaunay triangulation method for 2D interpolation.
   NEAREST,  ///< Nearest point method for 2D interpolation.
+  IDW,      ///< Inverse Distance Weighting.
 };
 
 /**
@@ -157,34 +158,6 @@ Array interpolate2d(glm::ivec2                shape,
                     glm::vec4                 bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
- * @brief 2D interpolation using the nearest neighbor method.
- *
- * This function performs 2D interpolation by assigning the value of the nearest
- * point to each point in the output grid.
- *
- * @param  shape        Output array shape.
- * @param  x            x coordinates of the input values.
- * @param  y            y coordinates of the input values.
- * @param  values       Input values at (x, y).
- * @param  p_noise_x    Pointer to the input noise array in the x direction
- *                      (optional).
- * @param  p_noise_y    Pointer to the input noise array in the y direction
- *                      (optional).
- * @param  p_stretching Pointer to the local wavenumber multiplier array
- *                      (optional).
- * @param  bbox         Domain bounding box (default: {0.f, 1.f, 0.f, 1.f}).
- * @return              Array Output array with interpolated values.
- */
-Array interpolate2d_nearest(glm::ivec2                shape,
-                            const std::vector<float> &x,
-                            const std::vector<float> &y,
-                            const std::vector<float> &values,
-                            const Array              *p_noise_x = nullptr,
-                            const Array              *p_noise_y = nullptr,
-                            const Array              *p_stretching = nullptr,
-                            glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f});
-
-/**
  * @brief 2D interpolation using the Delaunay triangulation method.
  *
  * This function performs 2D interpolation by generating a Delaunay
@@ -212,6 +185,44 @@ Array interpolate2d_delaunay(glm::ivec2                shape,
                              const Array              *p_noise_y = nullptr,
                              const Array              *p_stretching = nullptr,
                              glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f});
+
+Array interpolate2d_idw(glm::ivec2                shape,
+                        const std::vector<float> &x,
+                        const std::vector<float> &y,
+                        const std::vector<float> &values,
+                        const Array              *p_noise_x = nullptr,
+                        const Array              *p_noise_y = nullptr,
+                        const Array              *p_stretching = nullptr,
+                        glm::vec4                 bbox = {0.f, 1.f, 0.f, 1.f},
+                        float                     distance_exp = 2.f);
+
+/**
+ * @brief 2D interpolation using the nearest neighbor method.
+ *
+ * This function performs 2D interpolation by assigning the value of the nearest
+ * point to each point in the output grid.
+ *
+ * @param  shape        Output array shape.
+ * @param  x            x coordinates of the input values.
+ * @param  y            y coordinates of the input values.
+ * @param  values       Input values at (x, y).
+ * @param  p_noise_x    Pointer to the input noise array in the x direction
+ *                      (optional).
+ * @param  p_noise_y    Pointer to the input noise array in the y direction
+ *                      (optional).
+ * @param  p_stretching Pointer to the local wavenumber multiplier array
+ *                      (optional).
+ * @param  bbox         Domain bounding box (default: {0.f, 1.f, 0.f, 1.f}).
+ * @return              Array Output array with interpolated values.
+ */
+Array interpolate2d_nearest(glm::ivec2                shape,
+                            const std::vector<float> &x,
+                            const std::vector<float> &y,
+                            const std::vector<float> &values,
+                            const Array              *p_noise_x = nullptr,
+                            const Array              *p_noise_y = nullptr,
+                            const Array              *p_stretching = nullptr,
+                            glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f});
 
 } // namespace hmap
 
