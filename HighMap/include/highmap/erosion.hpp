@@ -1384,6 +1384,42 @@ void hydraulic_vpipes(Array &z,
                       Array *p_vel_v = nullptr);
 
 /**
+ * @brief Simulate a mudslide (landslide-driven material redistribution) on a
+ * height field.
+ *
+ * Applies an iterative viscous flow process to the height array @p z,
+ * constrained by @p landslide_mask and limited by the specified @p depth. The
+ * flow behavior is controlled by a depth exponent and a viscosity power law.
+ * Optionally outputs the transported depth map.
+ *
+ * @param[in,out] z                   Input/output height field modified in
+ *                                    place.
+ * @param[in]     landslide_mask      Mask defining affected areas (non-zero =
+ *                                    active).
+ * @param[in]     depth               Maximum erosion/deposition depth.
+ * @param[in]     iterations          Number of simulation iterations.
+ * @param[in]     depth_map_exponent  Exponent applied to depth influence
+ *                                    (default 0.5f).
+ * @param[in]     viscosity_law_power Power exponent controlling viscosity
+ *                                    response (default 1.5f).
+ * @param[out]    p_depth             Optional pointer to store resulting depth
+ *                                    map (nullable).
+ *
+ * **Example**
+ * @include ex_mudslide.cpp
+ *
+ * **Result**
+ * @image html ex_mudslide.png
+ */
+void mudslide(Array       &z,
+              const Array &landslide_mask,
+              float        depth,
+              int          iterations,
+              float        depth_map_exponent = 0.5f,
+              float        viscosity_law_power = 1.5f,
+              Array       *p_depth = nullptr);
+
+/**
  * @brief Applies a "rift" deformation effect to a heightmap array.
  *
  * This function modifies the given heightmap by introducing linear or radial
