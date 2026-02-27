@@ -356,12 +356,24 @@ void strata_terrace(Array       &z,
 {
   if (!p_mask)
   {
-    strata_terrace(z, gamma, seed, kz, linear_gamma, gamma_noise_ratio);
+    strata_terrace(z,
+                   gamma,
+                   seed,
+                   kz,
+                   linear_gamma,
+                   gamma_noise_ratio,
+                   p_noise);
   }
   else
   {
     Array z_f = z;
-    strata_terrace(z_f, gamma, seed, kz, linear_gamma, gamma_noise_ratio);
+    strata_terrace(z_f,
+                   gamma,
+                   seed,
+                   kz,
+                   linear_gamma,
+                   gamma_noise_ratio,
+                   p_noise);
     z = lerp(z, z_f, *(p_mask));
   }
 }
