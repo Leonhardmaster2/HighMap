@@ -205,8 +205,10 @@ Functions</h2></td></tr>
 <tr class="memdesc:abf47ed6cea5c36afa47bf5463310db52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies masked multi-octave stratified cell displacement.  <br /></td></tr>
 <tr class="separator:abf47ed6cea5c36afa47bf5463310db52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ed6ad946ac7bcb852974a38eca78ac8" id="r_a9ed6ad946ac7bcb852974a38eca78ac8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a9ed6ad946ac7bcb852974a38eca78ac8">strata_terrace</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, float gamma, <a class="el" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> seed, float kz=4.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, bool linear_gamma=true, float gamma_noise_ratio=0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise=nullptr)</td></tr>
+<tr class="memdesc:a9ed6ad946ac7bcb852974a38eca78ac8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies a terrace (stratification) filter to a heightmap.  <br /></td></tr>
 <tr class="separator:a9ed6ad946ac7bcb852974a38eca78ac8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa75d564b4578a7b56c64cdd8bf740f3e" id="r_aa75d564b4578a7b56c64cdd8bf740f3e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#aa75d564b4578a7b56c64cdd8bf740f3e">strata_terrace</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, float gamma, <a class="el" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> seed, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_mask, float kz=4.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, bool linear_gamma=true, float gamma_noise_ratio=0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise=nullptr)</td></tr>
+<tr class="memdesc:aa75d564b4578a7b56c64cdd8bf740f3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies a masked terrace (stratification) filter to a heightmap.  <br /></td></tr>
 <tr class="separator:aa75d564b4578a7b56c64cdd8bf740f3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2eb4bdf2d7dc4441e56865027764425e" id="r_a2eb4bdf2d7dc4441e56865027764425e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a2eb4bdf2d7dc4441e56865027764425e">thermal</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;talus, int iterations=10, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_bedrock=nullptr, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_deposition_map=nullptr)</td></tr>
 <tr class="memdesc:a2eb4bdf2d7dc4441e56865027764425e"><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="namespacehmap.html#ab6221592aa07d117715b474afab7db1c" title="Apply thermal weathering erosion.">hmap::thermal</a>.  <br /></td></tr>
@@ -4331,6 +4333,71 @@ Only available if OpenCL is enabled.</dd></dl>
       </table>
 </div><div class="memdoc">
 
+<p>Applies a terrace (stratification) filter to a heightmap. </p>
+<p>Quantizes elevation into kz strata levels and shapes terrace transitions using a gamma profile. Optional noise can modulate the profile.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">z</td><td>Heightmap modified in place. </td></tr>
+    <tr><td class="paramname">gamma</td><td>Terrace profile exponent (e.g. 0.5 = sharper, 1.5 = smoother). </td></tr>
+    <tr><td class="paramname">seed</td><td>Random seed used for profile variation. </td></tr>
+    <tr><td class="paramname">kz</td><td>Number of strata levels. </td></tr>
+    <tr><td class="paramname">linear_gamma</td><td>If true, uses linear terrace transitions. </td></tr>
+    <tr><td class="paramname">gamma_noise_ratio</td><td>Influence of noise on the terrace profile. </td></tr>
+    <tr><td class="paramname">p_noise</td><td>Optional noise map for profile modulation.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p><b>Example</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="highmap_8hpp.html">highmap.hpp</a>&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
+<div class="line">{</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap_1_1gpu.html#adb8336ed4d83c15500872185dee45d50">hmap::gpu::init_opencl</a>();</div>
+<div class="line"> </div>
+<div class="line">  glm::ivec2 shape = {256, 256};</div>
+<div class="line">  glm::vec2  kw = {2.f, 2.f};</div>
+<div class="line">  <span class="keywordtype">int</span>        seed = 0;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z1 = <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, kw, seed);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z1);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordtype">float</span> gamma = 0.5f;</div>
+<div class="line">  <span class="keywordtype">float</span> kz = 8.f; <span class="comment">// 8-layers</span></div>
+<div class="line">  <span class="keywordtype">bool</span>  linear_gamma = <span class="keyword">false</span>;</div>
+<div class="line">  <span class="keywordtype">float</span> gamma_noise_ratio = 0.1f;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z2 = z1;</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap_1_1gpu.html#a9ed6ad946ac7bcb852974a38eca78ac8">hmap::gpu::strata_terrace</a>(z2,</div>
+<div class="line">                            gamma,</div>
+<div class="line">                            seed,</div>
+<div class="line">                            kz,</div>
+<div class="line">                            linear_gamma,</div>
+<div class="line">                            gamma_noise_ratio);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z3 = z1;</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> <a class="code hl_function" href="namespacehmap_1_1gpu.html#ab5aba8cd3981de6f363f6ae287d7be5f">noise</a> = 0.1f * <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>,</div>
+<div class="line">                                             shape,</div>
+<div class="line">                                             {16.f, 16.f},</div>
+<div class="line">                                             seed + 1);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap_1_1gpu.html#a9ed6ad946ac7bcb852974a38eca78ac8">hmap::gpu::strata_terrace</a>(z3,</div>
+<div class="line">                            gamma,</div>
+<div class="line">                            seed,</div>
+<div class="line">                            kz,</div>
+<div class="line">                            linear_gamma,</div>
+<div class="line">                            gamma_noise_ratio,</div>
+<div class="line">                            &amp;<a class="code hl_function" href="namespacehmap_1_1gpu.html#ab5aba8cd3981de6f363f6ae287d7be5f">noise</a>);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_strata_terrace.png&quot;</span>,</div>
+<div class="line">                          {z1, z2, z3},</div>
+<div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>,</div>
+<div class="line">                          <span class="keyword">true</span>);</div>
+<div class="line">}</div>
+<div class="ttc" id="anamespacehmap_1_1gpu_html_a9ed6ad946ac7bcb852974a38eca78ac8"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a9ed6ad946ac7bcb852974a38eca78ac8">hmap::gpu::strata_terrace</a></div><div class="ttdeci">void strata_terrace(Array &amp;z, float gamma, uint seed, float kz=4.f, bool linear_gamma=true, float gamma_noise_ratio=0.5f, const Array *p_noise=nullptr)</div><div class="ttdoc">Applies a terrace (stratification) filter to a heightmap.</div><div class="ttdef"><b>Definition</b> strata_gpu.cpp:321</div></div>
+<div class="ttc" id="anamespacehmap_1_1gpu_html_ab5aba8cd3981de6f363f6ae287d7be5f"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ab5aba8cd3981de6f363f6ae287d7be5f">hmap::gpu::noise</a></div><div class="ttdeci">Array noise(NoiseType noise_type, glm::ivec2 shape, glm::vec2 kw, uint seed, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">See hmap::noise.</div><div class="ttdef"><b>Definition</b> primitives_gpu.cpp:493</div></div>
+</div><!-- fragment --><p><b>Result</b> </p><div class="image">
+<img src="ex_strata_terrace.png" alt=""/>
+</div>
+ 
 </div>
 </div>
 <a id="aa75d564b4578a7b56c64cdd8bf740f3e" name="aa75d564b4578a7b56c64cdd8bf740f3e"></a>
@@ -4395,6 +4462,70 @@ Only available if OpenCL is enabled.</dd></dl>
       </table>
 </div><div class="memdoc">
 
+<p>Applies a masked terrace (stratification) filter to a heightmap. </p>
+<p>Same as <a class="el" href="namespacehmap_1_1gpu.html#a9ed6ad946ac7bcb852974a38eca78ac8" title="Applies a terrace (stratification) filter to a heightmap.">strata_terrace()</a>, but only affects regions defined by p_mask.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">z</td><td>Heightmap modified in place. </td></tr>
+    <tr><td class="paramname">gamma</td><td>Terrace profile exponent. </td></tr>
+    <tr><td class="paramname">seed</td><td>Random seed used for profile variation. </td></tr>
+    <tr><td class="paramname">p_mask</td><td>Optional mask controlling where terraces are applied. </td></tr>
+    <tr><td class="paramname">kz</td><td>Number of strata levels. </td></tr>
+    <tr><td class="paramname">linear_gamma</td><td>If true, uses linear terrace transitions. </td></tr>
+    <tr><td class="paramname">gamma_noise_ratio</td><td>Influence of noise on the terrace profile. </td></tr>
+    <tr><td class="paramname">p_noise</td><td>Optional noise map for profile modulation.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p><b>Example</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="highmap_8hpp.html">highmap.hpp</a>&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
+<div class="line">{</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap_1_1gpu.html#adb8336ed4d83c15500872185dee45d50">hmap::gpu::init_opencl</a>();</div>
+<div class="line"> </div>
+<div class="line">  glm::ivec2 shape = {256, 256};</div>
+<div class="line">  glm::vec2  kw = {2.f, 2.f};</div>
+<div class="line">  <span class="keywordtype">int</span>        seed = 0;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z1 = <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, kw, seed);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z1);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordtype">float</span> gamma = 0.5f;</div>
+<div class="line">  <span class="keywordtype">float</span> kz = 8.f; <span class="comment">// 8-layers</span></div>
+<div class="line">  <span class="keywordtype">bool</span>  linear_gamma = <span class="keyword">false</span>;</div>
+<div class="line">  <span class="keywordtype">float</span> gamma_noise_ratio = 0.1f;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z2 = z1;</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap_1_1gpu.html#a9ed6ad946ac7bcb852974a38eca78ac8">hmap::gpu::strata_terrace</a>(z2,</div>
+<div class="line">                            gamma,</div>
+<div class="line">                            seed,</div>
+<div class="line">                            kz,</div>
+<div class="line">                            linear_gamma,</div>
+<div class="line">                            gamma_noise_ratio);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z3 = z1;</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> <a class="code hl_function" href="namespacehmap_1_1gpu.html#ab5aba8cd3981de6f363f6ae287d7be5f">noise</a> = 0.1f * <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>,</div>
+<div class="line">                                             shape,</div>
+<div class="line">                                             {16.f, 16.f},</div>
+<div class="line">                                             seed + 1);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap_1_1gpu.html#a9ed6ad946ac7bcb852974a38eca78ac8">hmap::gpu::strata_terrace</a>(z3,</div>
+<div class="line">                            gamma,</div>
+<div class="line">                            seed,</div>
+<div class="line">                            kz,</div>
+<div class="line">                            linear_gamma,</div>
+<div class="line">                            gamma_noise_ratio,</div>
+<div class="line">                            &amp;<a class="code hl_function" href="namespacehmap_1_1gpu.html#ab5aba8cd3981de6f363f6ae287d7be5f">noise</a>);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_strata_terrace.png&quot;</span>,</div>
+<div class="line">                          {z1, z2, z3},</div>
+<div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>,</div>
+<div class="line">                          <span class="keyword">true</span>);</div>
+<div class="line">}</div>
+</div><!-- fragment --><p><b>Result</b> </p><div class="image">
+<img src="ex_strata_terrace.png" alt=""/>
+</div>
+ 
 </div>
 </div>
 <a id="a2eb4bdf2d7dc4441e56865027764425e" name="a2eb4bdf2d7dc4441e56865027764425e"></a>
@@ -10385,7 +10516,6 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>,</div>
 <div class="line">                          <span class="keyword">true</span>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_1_1gpu_html_ab5aba8cd3981de6f363f6ae287d7be5f"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ab5aba8cd3981de6f363f6ae287d7be5f">hmap::gpu::noise</a></div><div class="ttdeci">Array noise(NoiseType noise_type, glm::ivec2 shape, glm::vec2 kw, uint seed, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">See hmap::noise.</div><div class="ttdef"><b>Definition</b> primitives_gpu.cpp:493</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_ae20d5b7f78d4c3eb5064490a3a407533"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ae20d5b7f78d4c3eb5064490a3a407533">hmap::gpu::island</a></div><div class="ttdeci">Array island(const Array &amp;land_mask, const Array *p_noise_r=nullptr, float apex_elevation=1.f, bool filter_distance=true, int filter_ir=32, float slope_min=0.1f, float slope_max=8.f, float slope_start=0.5f, float slope_end=1.f, float slope_noise_intensity=0.5f, float k_smooth=0.05f, float radial_noise_intensity=0.3f, float radial_profile_gain=2.f, float water_decay=0.05f, float water_depth=0.3f, float lee_angle=30.f, float lee_amp=0.f, float uplift_amp=0.f, Array *p_water_depth=nullptr, Array *p_inland_mask=nullptr)</div><div class="ttdoc">Generates an island heightmap from a land mask using radial profiles, slope shaping,...</div><div class="ttdef"><b>Definition</b> island.cpp:108</div></div>
 <div class="ttc" id="anamespacehmap_html_a4799d3f029d45240a5b40b4853583a58"><div class="ttname"><a href="namespacehmap.html#a4799d3f029d45240a5b40b4853583a58">hmap::make_binary</a></div><div class="ttdeci">void make_binary(Array &amp;array, float threshold=0.f)</div><div class="ttdoc">Convert array values to binary using a threshold.</div><div class="ttdef"><b>Definition</b> filters.cpp:456</div></div>
 <div class="ttc" id="anamespacehmap_html_a8591567b50b8d48394fcc8fb046188b7"><div class="ttname"><a href="namespacehmap.html#a8591567b50b8d48394fcc8fb046188b7">hmap::island_land_mask</a></div><div class="ttdeci">Array island_land_mask(glm::ivec2 shape, float radius, uint seed, float displacement=0.2f, NoiseType noise_type=NoiseType::SIMPLEX2S, float kw=4.f, int octaves=8, float weight=0.f, float persistence=0.5f, float lacunarity=2.f, const glm::vec2 &amp;center={0.5f, 0.5f}, const glm::vec4 &amp;bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Generates a 2D island mask by perturbing a radial boundary with noise.</div><div class="ttdef"><b>Definition</b> island.cpp:16</div></div>
