@@ -1781,6 +1781,27 @@ void strata_cells_fbm(Array       &z,
                       const Array *p_noise_y = nullptr,
                       glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
 
+/**
+ * @brief Applies a terrace (stratification) filter to a heightmap.
+ *
+ * Quantizes elevation into kz strata levels and shapes terrace transitions
+ * using a gamma profile. Optional noise can modulate the profile.
+ *
+ * @param z                 Heightmap modified in place.
+ * @param gamma             Terrace profile exponent (e.g. 0.5 = sharper, 1.5 =
+ *                          smoother).
+ * @param seed              Random seed used for profile variation.
+ * @param kz                Number of strata levels.
+ * @param linear_gamma      If true, uses linear terrace transitions.
+ * @param gamma_noise_ratio Influence of noise on the terrace profile.
+ * @param p_noise           Optional noise map for profile modulation.
+ *
+ * **Example**
+ * @include ex_strata_terrace.cpp
+ *
+ * **Result**
+ * @image html ex_strata_terrace.png
+ */
 void strata_terrace(Array       &z,
                     float        gamma, // e.g 0.5f or 1.5f
                     uint         seed,
@@ -1789,6 +1810,27 @@ void strata_terrace(Array       &z,
                     float        gamma_noise_ratio = 0.5f,
                     const Array *p_noise = nullptr);
 
+/**
+ * @brief Applies a masked terrace (stratification) filter to a heightmap.
+ *
+ * Same as strata_terrace(), but only affects regions defined by p_mask.
+ *
+ * @param z                 Heightmap modified in place.
+ * @param gamma             Terrace profile exponent.
+ * @param seed              Random seed used for profile variation.
+ * @param p_mask            Optional mask controlling where terraces are
+ *                          applied.
+ * @param kz                Number of strata levels.
+ * @param linear_gamma      If true, uses linear terrace transitions.
+ * @param gamma_noise_ratio Influence of noise on the terrace profile.
+ * @param p_noise           Optional noise map for profile modulation.
+ *
+ * **Example**
+ * @include ex_strata_terrace.cpp
+ *
+ * **Result**
+ * @image html ex_strata_terrace.png
+ */
 void strata_terrace(Array       &z,
                     float        gamma, // e.g 0.5f or 1.5f
                     uint         seed,

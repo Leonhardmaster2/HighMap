@@ -2503,24 +2503,24 @@ Array noise_fbm(NoiseType    noise_type,
 /**
  * @brief Generates a procedural phasor-based pattern.
  *
- * Produces a directional, phase-driven field using a selected profile,
- * optional angle control, and spatial distortion noise.
+ * Produces a directional, phase-driven field using a selected profile, optional
+ * angle control, and spatial distortion noise.
  *
- * @param phasor_profile Phasor shaping profile.
- * @param shape Output array dimensions.
- * @param kp_global Global frequency factor.
- * @param seed Random seed.
- * @param angle_shift Global phase angle offset (degrees).
- * @param n_kernel_samples Number of kernel samples.
- * @param jitter Sampling jitter (x,y).
- * @param angle_filter_ir Angular filtering radius.
- * @param delta Finite difference step.
- * @param phase_smoothing Phase smoothing factor.
- * @param p_angle Optional external angle field.
- * @param p_noise_x Optional X distortion field.
- * @param p_noise_y Optional Y distortion field.
- * @param bbox Domain bounding box.
- * @return Array Generated phasor field.
+ * @param  phasor_profile   Phasor shaping profile.
+ * @param  shape            Output array dimensions.
+ * @param  kp_global        Global frequency factor.
+ * @param  seed             Random seed.
+ * @param  angle_shift      Global phase angle offset (degrees).
+ * @param  n_kernel_samples Number of kernel samples.
+ * @param  jitter           Sampling jitter (x,y).
+ * @param  angle_filter_ir  Angular filtering radius.
+ * @param  delta            Finite difference step.
+ * @param  phase_smoothing  Phase smoothing factor.
+ * @param  p_angle          Optional external angle field.
+ * @param  p_noise_x        Optional X distortion field.
+ * @param  p_noise_y        Optional Y distortion field.
+ * @param  bbox             Domain bounding box.
+ * @return                  Array Generated phasor field.
  *
  * **Example**
  * @include ex_phasor.cpp
@@ -2549,25 +2549,25 @@ Array phasor(PhasorProfile   phasor_profile,
  * Accumulates several scaled `phasor` layers using persistence and lacunarity
  * for richer multi-scale structure.
  *
- * @param phasor_profile Phasor shaping profile.
- * @param shape Output array dimensions.
- * @param kp_global Base frequency factor.
- * @param seed Random seed.
- * @param angle_shift Global phase angle offset (degrees).
- * @param octaves Number of fBm layers.
- * @param weight Initial octave weight.
- * @param persistence Amplitude multiplier per octave.
- * @param lacunarity Frequency multiplier per octave.
- * @param n_kernel_samples Number of kernel samples.
- * @param jitter Sampling jitter (x,y).
- * @param angle_filter_ir Angular filtering radius.
- * @param delta Finite difference step.
- * @param phase_smoothing Phase smoothing factor.
- * @param p_angle Optional external angle field.
- * @param p_noise_x Optional X distortion field.
- * @param p_noise_y Optional Y distortion field.
- * @param bbox Domain bounding box.
- * @return Array Generated multi-scale phasor field.
+ * @param  phasor_profile   Phasor shaping profile.
+ * @param  shape            Output array dimensions.
+ * @param  kp_global        Base frequency factor.
+ * @param  seed             Random seed.
+ * @param  angle_shift      Global phase angle offset (degrees).
+ * @param  octaves          Number of fBm layers.
+ * @param  weight           Initial octave weight.
+ * @param  persistence      Amplitude multiplier per octave.
+ * @param  lacunarity       Frequency multiplier per octave.
+ * @param  n_kernel_samples Number of kernel samples.
+ * @param  jitter           Sampling jitter (x,y).
+ * @param  angle_filter_ir  Angular filtering radius.
+ * @param  delta            Finite difference step.
+ * @param  phase_smoothing  Phase smoothing factor.
+ * @param  p_angle          Optional external angle field.
+ * @param  p_noise_x        Optional X distortion field.
+ * @param  p_noise_y        Optional Y distortion field.
+ * @param  bbox             Domain bounding box.
+ * @return                  Array Generated multi-scale phasor field.
  *
  * **Example**
  * @include ex_phasor.cpp
