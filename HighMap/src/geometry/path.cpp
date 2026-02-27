@@ -293,6 +293,26 @@ void Path::divide()
   this->points = std::move(new_points);
 }
 
+void Path::enforce_monotonic_values(bool decreasing)
+{
+  if (decreasing)
+  {
+    for (size_t k = 0; k < this->get_npoints() - 1; k++)
+    {
+      if (this->points[k + 1].v > this->points[k].v)
+        this->points[k + 1].v = this->points[k].v;
+    }
+  }
+  else
+  {
+    for (size_t k = 0; k < this->get_npoints() - 1; k++)
+    {
+      if (this->points[k + 1].v < this->points[k].v)
+        this->points[k + 1].v = this->points[k].v;
+    }
+  }
+}
+
 void Path::fractalize(int       iterations,
                       uint      seed,
                       float     sigma,
@@ -418,26 +438,6 @@ std::vector<float> Path::get_y() const
 
   if (this->closed && this->get_npoints() > 0) y.push_back(this->points[0].y);
   return y;
-}
-
-void Path::enforce_monotonic_values(bool decreasing)
-{
-  if (decreasing)
-  {
-    for (size_t k = 0; k < this->get_npoints() - 1; k++)
-    {
-      if (this->points[k + 1].v > this->points[k].v)
-        this->points[k + 1].v = this->points[k].v;
-    }
-  }
-  else
-  {
-    for (size_t k = 0; k < this->get_npoints() - 1; k++)
-    {
-      if (this->points[k + 1].v < this->points[k].v)
-        this->points[k + 1].v = this->points[k].v;
-    }
-  }
 }
 
 void Path::meanderize(float ratio,
