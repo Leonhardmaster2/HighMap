@@ -21,14 +21,20 @@ void mudslide(Array       &z,
               int          iterations,
               float        depth_map_exponent,
               float        viscosity_law_power,
-              Array       *p_depth)
+              Array       *p_depth_end,
+              Array       *p_depth_init)
 {
   Array depth_map = distance_transform(is_zero(landslide_mask));
   hmap::laplace(depth_map);
   remap(depth_map);
   depth_map = pow(depth_map, depth_map_exponent);
 
-  z -= depth * depth_map;
+  {
+    Array scaled_depth = depth * depth_map;
+    z -= scaled_depth;
+
+    if (p_depth_init) *p_depth_init = std::move(scaled_depth);
+  }
 
   Array new_depth = flow_simulation_viscous(z,
                                             depth,
@@ -41,7 +47,7 @@ void mudslide(Array       &z,
 
   z += new_depth;
 
-  if (p_depth) *p_depth = std::move(new_depth);
+  if (p_depth_end) *p_depth_end = std::move(new_depth);
 }
 
 void mudslide(Array &z,
@@ -50,7 +56,8 @@ void mudslide(Array &z,
               int    iterations,
               float  depth_map_exponent,
               float  viscosity_law_power,
-              Array *p_depth)
+              Array *p_depth_end,
+              Array *p_depth_init)
 {
   Array mask = hmap::gradient_norm(z);
   make_binary(mask, talus_limit);
@@ -61,7 +68,8 @@ void mudslide(Array &z,
            iterations,
            depth_map_exponent,
            viscosity_law_power,
-           p_depth);
+           p_depth_end,
+           p_depth_init);
 }
 
 } // namespace hmap::gpu
