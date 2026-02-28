@@ -5,6 +5,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/filters.hpp"
+#include "highmap/gradient.hpp"
 #include "highmap/hydrology.hpp"
 #include "highmap/math.hpp"
 #include "highmap/morphology.hpp"
@@ -41,6 +42,26 @@ void mudslide(Array       &z,
   z += new_depth;
 
   if (p_depth) *p_depth = std::move(new_depth);
+}
+
+void mudslide(Array &z,
+              float  talus_limit,
+              float  depth,
+              int    iterations,
+              float  depth_map_exponent,
+              float  viscosity_law_power,
+              Array *p_depth)
+{
+  Array mask = hmap::gradient_norm(z);
+  make_binary(mask, talus_limit);
+
+  mudslide(z,
+           mask,
+           depth,
+           iterations,
+           depth_map_exponent,
+           viscosity_law_power,
+           p_depth);
 }
 
 } // namespace hmap::gpu

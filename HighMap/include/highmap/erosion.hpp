@@ -1419,6 +1419,15 @@ void mudslide(Array       &z,
               float        viscosity_law_power = 1.5f,
               Array       *p_depth = nullptr);
 
+/*! @brief See hmap::mudslide */
+void mudslide(Array &z,
+              float  talus_limit,
+              float  depth,
+              int    iterations,
+              float  depth_map_exponent = 0.5f,
+              float  viscosity_law_power = 1.5f,
+              Array *p_depth = nullptr);
+
 /**
  * @brief Applies a "rift" deformation effect to a heightmap array.
  *

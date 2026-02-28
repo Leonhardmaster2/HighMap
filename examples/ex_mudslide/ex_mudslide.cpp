@@ -17,13 +17,16 @@ int main(void)
   float depth = 0.2f;
   int   iterations = 2500;
 
-  hmap::Array mask = hmap::gradient_norm(z1);
-  make_binary(mask, 1.f / shape.x);
+  hmap::gpu::mudslide(z1, 1.f / shape.x, depth, iterations);
 
-  hmap::gpu::mudslide(z1, mask, depth, iterations);
+  auto mask = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, kw, seed + 1);
+  make_binary(mask, 0.f);
+
+  auto z2 = z0;
+  hmap::gpu::mudslide(z2, mask, depth, iterations);
 
   hmap::export_banner_png("ex_mudslide.png",
-                          {z0, mask, z1},
+                          {z0, z1, mask, z2},
                           hmap::Cmap::TERRAIN,
                           true);
 }
