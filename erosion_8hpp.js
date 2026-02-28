@@ -72,6 +72,7 @@ var erosion_8hpp =
     [ "hydraulic_stream_log", "erosion_8hpp.html#ac83dbe1bc607d991c237eaf5b20acd69", null ],
     [ "hydraulic_vpipes", "erosion_8hpp.html#a548895d6665a5466b8541122338b59a9", null ],
     [ "mudslide", "erosion_8hpp.html#a91094c171f1fc78cd91e7ddacda889ba", null ],
+    [ "mudslide", "erosion_8hpp.html#af776afb60393dd811f2c5cadde50e29e", null ],
     [ "rifts", "erosion_8hpp.html#adca53669496f6a636042e11a859d1a16", null ],
     [ "sediment_deposition", "erosion_8hpp.html#a1c2651f7a65e696e8b444364abf0b3cc", null ],
     [ "sediment_deposition", "erosion_8hpp.html#a26ed284f1df761074c2a49a2fbbd582e", null ],

@@ -1,5 +1,6 @@
 var NAVTREEINDEX10 =
 {
+"lru__tile__storage_8cpp.html":[5,0,1,1,36,3],
 "math_8cpp.html":[5,0,1,1,20,1],
 "math_8cpp.html#a03359e722d96524598aa525022317c95":[5,0,1,1,20,1,29],
 "math_8cpp.html#a0aa2c50266e16cf5af077e4e3f77bd8f":[5,0,1,1,20,1,28],
@@ -200,6 +201,7 @@ var NAVTREEINDEX10 =
 "mountain__tibesti_8cpp.html#ab0c3573265940002d1b9940964477d47":[5,0,1,1,25,1,7,0],
 "mudslide_8cpp.html":[5,0,1,1,10,21],
 "mudslide_8cpp.html#a91094c171f1fc78cd91e7ddacda889ba":[5,0,1,1,10,21,0],
+"mudslide_8cpp.html#af776afb60393dd811f2c5cadde50e29e":[5,0,1,1,10,21,1],
 "multisteps_8cpp.html":[5,0,1,1,25,7],
 "multisteps_8cpp.html#aaa93c5f0c20e23dfb4d0f67b99489178":[5,0,1,1,25,7,1],
 "multisteps_8cpp.html#aeeb8f48ea78cb59de79c16ab28d1d855":[5,0,1,1,25,7,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX10 =
 "namespacehmap.html#a117f2da22e9a721e84002c801e95c2d5":[3,0,0,374],
 "namespacehmap.html#a11c1600c2d67387c1b037fadcca9a069":[3,0,0,431],
 "namespacehmap.html#a11d438a3f643427c957d160b7c1a04de":[3,0,0,430],
-"namespacehmap.html#a11ddd5ab1aa625db9419d9b65c0eaa64":[3,0,0,588],
-"namespacehmap.html#a11f846a0bacba3463862df220ddf5131":[3,0,0,238],
-"namespacehmap.html#a120b7a6f8941d783c52acf799d3cb7b2":[3,0,0,280]
+"namespacehmap.html#a11ddd5ab1aa625db9419d9b65c0eaa64":[3,0,0,588]
 };
