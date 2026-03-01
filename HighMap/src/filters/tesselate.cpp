@@ -53,7 +53,7 @@ Array tessellate(Array       &array,
                                   x,
                                   y,
                                   cloud.get_values(),
-                                  InterpolationMethod2D::DELAUNAY,
+                                  InterpolationMethod2D::ITP2D_DELAUNAY,
                                   nullptr, // noise
                                   nullptr, // noise
                                   nullptr,

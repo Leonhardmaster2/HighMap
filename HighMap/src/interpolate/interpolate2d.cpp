@@ -25,7 +25,7 @@ Array interpolate2d(glm::ivec2                shape,
 {
   switch (interpolation_method)
   {
-  case InterpolationMethod2D::DELAUNAY:
+  case InterpolationMethod2D::ITP2D_DELAUNAY:
     return interpolate2d_delaunay(shape,
                                   x,
                                   y,
@@ -35,7 +35,7 @@ Array interpolate2d(glm::ivec2                shape,
                                   p_stretching,
                                   bbox);
 
-  case InterpolationMethod2D::NEAREST:
+  case InterpolationMethod2D::ITP2D_NEAREST:
     return interpolate2d_nearest(shape,
                                  x,
                                  y,
@@ -45,7 +45,7 @@ Array interpolate2d(glm::ivec2                shape,
                                  p_stretching,
                                  bbox);
 
-  case InterpolationMethod2D::IDW:
+  case InterpolationMethod2D::ITP2D_IDW:
     return interpolate2d_idw(shape,
                              x,
                              y,
@@ -54,6 +54,25 @@ Array interpolate2d(glm::ivec2                shape,
                              p_noise_y,
                              p_stretching,
                              bbox);
+
+  case InterpolationMethod2D::ITP2D_GAUSSIAN:
+  {
+    // adjust exponential half-width based on surface ratio
+    float lx = bbox.y - bbox.x;
+    float ly = bbox.w - bbox.z;
+    float lm = 0.5f * (lx + ly);
+    float sigma = float(lm / std::sqrt(6.28f * x.size()));
+
+    return interpolate2d_gaussian(shape,
+                                  x,
+                                  y,
+                                  values,
+                                  p_noise_x,
+                                  p_noise_y,
+                                  p_stretching,
+                                  bbox,
+                                  sigma);
+  }
 
   default: throw std::runtime_error("unknown 2D interpolation method");
   }
@@ -120,6 +139,54 @@ Array interpolate2d_delaunay(glm::ivec2                shape,
     }
 
     return 0.f;
+  };
+
+  Array array_out = Array(shape);
+
+  fill_array_using_xy_function(array_out,
+                               bbox,
+                               nullptr,
+                               p_noise_x,
+                               p_noise_y,
+                               p_stretching,
+                               itp_fct);
+
+  return array_out;
+}
+
+Array interpolate2d_gaussian(glm::ivec2                shape,
+                             const std::vector<float> &x,
+                             const std::vector<float> &y,
+                             const std::vector<float> &values,
+                             const Array              *p_noise_x,
+                             const Array              *p_noise_y,
+                             const Array              *p_stretching,
+                             glm::vec4                 bbox,
+                             float                     sigma)
+{
+  constexpr float epsilon = 1e-10f;
+
+  auto itp_fct = [&x, &y, &values, sigma](float x_, float y_, float)
+  {
+    float weighted_sum = 0.f;
+    float weight_sum = 0.f;
+
+    for (size_t k = 0; k < x.size(); ++k)
+    {
+      float dx = x_ - x[k];
+      float dy = y_ - y[k];
+      float d2 = dx * dx + dy * dy;
+
+      // exact sample match
+      if (d2 < epsilon) return values[k];
+
+      float w = std::exp(-d2 / (2.f * sigma * sigma));
+
+      weighted_sum += w * values[k];
+      weight_sum += w;
+    }
+
+    return (weight_sum > 0.f) ? (weighted_sum / weight_sum) : 0.f;
   };
 
   Array array_out = Array(shape);

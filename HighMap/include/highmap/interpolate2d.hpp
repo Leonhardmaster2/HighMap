@@ -32,22 +32,11 @@ namespace hmap
  */
 enum InterpolationMethod2D : int
 {
-  DELAUNAY, ///< Delaunay triangulation method for 2D interpolation.
-  NEAREST,  ///< Nearest point method for 2D interpolation.
-  IDW,      ///< Inverse Distance Weighting.
+  ITP2D_DELAUNAY, ///< Delaunay triangulation method for 2D interpolation.
+  ITP2D_NEAREST,  ///< Nearest point method for 2D interpolation.
+  ITP2D_IDW,      ///< Inverse Distance Weighting.
+  ITP2D_GAUSSIAN, ///< Gaussian Distance Weighting.
 };
-
-/**
- * @brief A map associating 2D interpolation methods with their string
- * representations.
- *
- * This static map provides a human-readable string for each interpolation
- * method defined in the @ref InterpolationMethod2D enum.
- */
-static std::map<InterpolationMethod2D, std::string>
-    interpolation_method_2d_as_string = {{DELAUNAY, "Delaunay linear"},
-                                         {NEAREST, "nearest neighbor"},
-                                         {IDW, "inverse distance weighting"}};
 
 /**
  * @brief Compute the bilinear interpolated value from four input values.
@@ -186,6 +175,19 @@ Array interpolate2d_delaunay(glm::ivec2                shape,
                              const Array              *p_noise_y = nullptr,
                              const Array              *p_stretching = nullptr,
                              glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
+ * @brief 2D interpolation using the Gaussian kernel method.
+ */
+Array interpolate2d_gaussian(glm::ivec2                shape,
+                             const std::vector<float> &x,
+                             const std::vector<float> &y,
+                             const std::vector<float> &values,
+                             const Array              *p_noise_x = nullptr,
+                             const Array              *p_noise_y = nullptr,
+                             const Array              *p_stretching = nullptr,
+                             glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f},
+                             float     sigma = 0.1f);
 
 /**
  * @brief 2D interpolation using the IDW method.

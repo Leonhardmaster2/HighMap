@@ -541,7 +541,7 @@ public:
   void to_array_interp(Array                &array,
                        glm::vec4             bbox = {0.f, 1.f, 0.f, 1.f},
                        InterpolationMethod2D interpolation_method =
-                           InterpolationMethod2D::DELAUNAY,
+                           InterpolationMethod2D::ITP2D_DELAUNAY,
                        Array    *p_noise_x = nullptr,
                        Array    *p_noise_y = nullptr,
                        glm::vec4 bbox_array = {0.f, 1.f, 0.f, 1.f}) const;
