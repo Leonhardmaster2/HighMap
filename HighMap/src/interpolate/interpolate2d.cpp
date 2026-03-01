@@ -57,12 +57,6 @@ Array interpolate2d(glm::ivec2                shape,
 
   case InterpolationMethod2D::ITP2D_GAUSSIAN:
   {
-    // adjust exponential half-width based on surface ratio
-    float lx = bbox.y - bbox.x;
-    float ly = bbox.w - bbox.z;
-    float lm = 0.5f * (lx + ly);
-    float sigma = float(lm / std::sqrt(6.28f * x.size()));
-
     return interpolate2d_gaussian(shape,
                                   x,
                                   y,
@@ -70,8 +64,7 @@ Array interpolate2d(glm::ivec2                shape,
                                   p_noise_x,
                                   p_noise_y,
                                   p_stretching,
-                                  bbox,
-                                  sigma);
+                                  bbox);
   }
 
   default: throw std::runtime_error("unknown 2D interpolation method");
@@ -165,8 +158,9 @@ Array interpolate2d_gaussian(glm::ivec2                shape,
                              float                     sigma)
 {
   constexpr float epsilon = 1e-10f;
+  float           invs2 = 0.5f / (sigma * sigma);
 
-  auto itp_fct = [&x, &y, &values, sigma](float x_, float y_, float)
+  auto itp_fct = [&x, &y, &values, invs2](float x_, float y_, float)
   {
     float weighted_sum = 0.f;
     float weight_sum = 0.f;
@@ -180,7 +174,7 @@ Array interpolate2d_gaussian(glm::ivec2                shape,
       // exact sample match
       if (d2 < epsilon) return values[k];
 
-      float w = std::exp(-d2 / (2.f * sigma * sigma));
+      float w = std::exp(-d2 * invs2);
 
       weighted_sum += w * values[k];
       weight_sum += w;
