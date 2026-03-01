@@ -164,7 +164,7 @@
     <member refid="classhmap_1_1Cloud_1af8d4e873ff4ed29eb7f140db227e03a2" kind="function"><name>shuffle</name></member>
     <member refid="classhmap_1_1Cloud_1a36e47d4857108c56193755e32374184d" kind="function"><name>to_array</name></member>
     <member refid="classhmap_1_1Cloud_1a82725745baf9ae1982c352dcb3656424" kind="function"><name>to_array_sdf</name></member>
-    <member refid="classhmap_1_1Cloud_1a934026c1be19c7dbd051fc3d7808859d" kind="function"><name>to_array_interp</name></member>
+    <member refid="classhmap_1_1Cloud_1acd6b504637e3c0791049b1f426ad4553" kind="function"><name>to_array_interp</name></member>
     <member refid="classhmap_1_1Cloud_1aea876ffcd05ba762a9a12d2fc4a5d27c" kind="function"><name>to_csv</name></member>
     <member refid="classhmap_1_1Cloud_1add728a8b00dadb4a1d043ce50876c569" kind="function"><name>to_graph_delaunay</name></member>
     <member refid="classhmap_1_1Cloud_1ad9dd8073b3ce4224c3e6435b24bea561" kind="function"><name>to_png</name></member>
@@ -1027,9 +1027,10 @@
     <member refid="namespacehmap_1a46291bb4766800deacc1ce9b45a9ea6ba2c387e5d1f5342e28fa6a3132e9b461d" kind="enumvalue"><name>POLYNOMIAL</name></member>
     <member refid="namespacehmap_1a46291bb4766800deacc1ce9b45a9ea6ba9c7fc85c23ace48f52c365aae11b6e0b" kind="enumvalue"><name>STEFFEN</name></member>
     <member refid="namespacehmap_1a5bfab5d68e822294ff90fde21b85f581" kind="enum"><name>InterpolationMethod2D</name></member>
-    <member refid="namespacehmap_1a5bfab5d68e822294ff90fde21b85f581a69ac444964e6a94c448c395c8f82b135" kind="enumvalue"><name>DELAUNAY</name></member>
-    <member refid="namespacehmap_1a5bfab5d68e822294ff90fde21b85f581a7ab263bff6c11b7d35a8c1f1caac8cc2" kind="enumvalue"><name>NEAREST</name></member>
-    <member refid="namespacehmap_1a5bfab5d68e822294ff90fde21b85f581a842ff1d615a7d0e1e9a94cdbe8635291" kind="enumvalue"><name>IDW</name></member>
+    <member refid="namespacehmap_1a5bfab5d68e822294ff90fde21b85f581a5fc536ff63a05f254ff7583cccac8a12" kind="enumvalue"><name>ITP2D_DELAUNAY</name></member>
+    <member refid="namespacehmap_1a5bfab5d68e822294ff90fde21b85f581af445f527425b2d746556541adf5d3d29" kind="enumvalue"><name>ITP2D_NEAREST</name></member>
+    <member refid="namespacehmap_1a5bfab5d68e822294ff90fde21b85f581a4beec3d16f7dc0a1873bb04d85ea6eec" kind="enumvalue"><name>ITP2D_IDW</name></member>
+    <member refid="namespacehmap_1a5bfab5d68e822294ff90fde21b85f581ac183d7ac1fa5e71a2563ed3fe93bafea" kind="enumvalue"><name>ITP2D_GAUSSIAN</name></member>
     <member refid="namespacehmap_1aa78bf111867e13c63d8bd2ec005ad6c8" kind="enum"><name>InterpolationMethodCurve</name></member>
     <member refid="namespacehmap_1aa78bf111867e13c63d8bd2ec005ad6c8ac56fe3b521e08a04c926e75d7fba28f8" kind="enumvalue"><name>BEZIER</name></member>
     <member refid="namespacehmap_1aa78bf111867e13c63d8bd2ec005ad6c8a60f62532461a103e7680bba841871635" kind="enumvalue"><name>BSPLINE</name></member>
@@ -1110,7 +1111,6 @@
     <member refid="namespacehmap_1abba6b48f25191652ca4a9d643bb6542b" kind="variable"><name>mesh_type_as_string</name></member>
     <member refid="namespacehmap_1a53ee5c5907cfb58acb8f30d94f536b21" kind="variable"><name>asset_export_format_as_string</name></member>
     <member refid="namespacehmap_1a10e5f27f8bd4a9e5feecc7016f754ebb" kind="variable"><name>point_sampling_method_as_string</name></member>
-    <member refid="namespacehmap_1af6d8f4ad58c37bccc50d1f8227c6999d" kind="variable"><name>interpolation_method_2d_as_string</name></member>
     <member refid="namespacehmap_1a2828152429273d081863dfafb293b0b6" kind="variable"><name>for_each_mode_as_string</name></member>
     <member refid="namespacehmap_1adc5300323fa35e021fd83b8b048ef3b1" kind="function"><name>adjust</name></member>
     <member refid="namespacehmap_1a518f05118e1b9704160a7c3276a2f483" kind="function"><name>cv_mat_to_array</name></member>
@@ -1486,6 +1486,7 @@
     <member refid="namespacehmap_1a6cfd7b1fc064e5aaef1550041f1bbc06" kind="function"><name>harmonic_interpolation</name></member>
     <member refid="namespacehmap_1a9204361c5b04a66019fa4c24ca2ac904" kind="function"><name>interpolate2d</name></member>
     <member refid="namespacehmap_1ad2581ee8be7619fed2e118310ad469f3" kind="function"><name>interpolate2d_delaunay</name></member>
+    <member refid="namespacehmap_1a9eae4d6bef1311227a901abad4993c89" kind="function"><name>interpolate2d_gaussian</name></member>
     <member refid="namespacehmap_1a1c0db957f339fe45f7d2bde330b4c8ef" kind="function"><name>interpolate2d_idw</name></member>
     <member refid="namespacehmap_1a3c6b2fa133e70ba9f4cf44cb7ab97f3b" kind="function"><name>interpolate2d_nearest</name></member>
     <member refid="namespacehmap_1a9e8b724d238450ef72e9bd083acb9b8a" kind="function"><name>interpolate_array_bicubic</name></member>

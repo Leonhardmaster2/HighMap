@@ -1218,10 +1218,10 @@ P(\text{keep } p) = \rho(x,y) \in [0,1]
         </inbodydescription>
         <location file="HighMap/include/highmap/geometry/cloud.hpp" line="508" column="9" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="478" bodyend="512"/>
       </memberdef>
-      <memberdef kind="function" id="classhmap_1_1Cloud_1a934026c1be19c7dbd051fc3d7808859d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classhmap_1_1Cloud_1acd6b504637e3c0791049b1f426ad4553" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void hmap::Cloud::to_array_interp</definition>
-        <argsstring>(Array &amp;array, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f}, InterpolationMethod2D interpolation_method=InterpolationMethod2D::DELAUNAY, Array *p_noise_x=nullptr, Array *p_noise_y=nullptr, glm::vec4 bbox_array={0.f, 1.f, 0.f, 1.f}) const</argsstring>
+        <argsstring>(Array &amp;array, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f}, InterpolationMethod2D interpolation_method=InterpolationMethod2D::ITP2D_DELAUNAY, Array *p_noise_x=nullptr, Array *p_noise_y=nullptr, glm::vec4 bbox_array={0.f, 1.f, 0.f, 1.f}) const</argsstring>
         <name>to_array_interp</name>
         <qualifiedname>hmap::Cloud::to_array_interp</qualifiedname>
         <param>
@@ -1236,7 +1236,7 @@ P(\text{keep } p) = \rho(x,y) \in [0,1]
         <param>
           <type><ref refid="namespacehmap_1a5bfab5d68e822294ff90fde21b85f581" kindref="member">InterpolationMethod2D</ref></type>
           <declname>interpolation_method</declname>
-          <defval><ref refid="namespacehmap_1a5bfab5d68e822294ff90fde21b85f581a69ac444964e6a94c448c395c8f82b135" kindref="member">InterpolationMethod2D::DELAUNAY</ref></defval>
+          <defval><ref refid="namespacehmap_1a5bfab5d68e822294ff90fde21b85f581a5fc536ff63a05f254ff7583cccac8a12" kindref="member">InterpolationMethod2D::ITP2D_DELAUNAY</ref></defval>
         </param>
         <param>
           <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
@@ -1322,9 +1322,9 @@ P(\text{keep } p) = \rho(x,y) \in [0,1]
 <codeline><highlight class="normal"><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1a36e47d4857108c56193755e32374184d" kindref="member">to_array</ref>(z0,<sp/>bbox);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z1<sp/>=<sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref>(shape);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1a934026c1be19c7dbd051fc3d7808859d" kindref="member">to_array_interp</ref>(z1,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1acd6b504637e3c0791049b1f426ad4553" kindref="member">to_array_interp</ref>(z1,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bbox,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a5bfab5d68e822294ff90fde21b85f581a7ab263bff6c11b7d35a8c1f1caac8cc2" kindref="member">hmap::InterpolationMethod2D::NEAREST</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hmap::InterpolationMethod2D::NEAREST,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bbox);</highlight></codeline>
@@ -1341,15 +1341,15 @@ P(\text{keep } p) = \rho(x,y) \in [0,1]
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z2<sp/>=<sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref>(shape);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z3<sp/>=<sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref>(shape);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1a934026c1be19c7dbd051fc3d7808859d" kindref="member">to_array_interp</ref>(z2,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1acd6b504637e3c0791049b1f426ad4553" kindref="member">to_array_interp</ref>(z2,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bbox,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a5bfab5d68e822294ff90fde21b85f581a7ab263bff6c11b7d35a8c1f1caac8cc2" kindref="member">hmap::InterpolationMethod2D::NEAREST</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hmap::InterpolationMethod2D::NEAREST,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;nx,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;ny,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bbox);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1a934026c1be19c7dbd051fc3d7808859d" kindref="member">to_array_interp</ref>(z3,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1acd6b504637e3c0791049b1f426ad4553" kindref="member">to_array_interp</ref>(z3,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bbox,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a5bfab5d68e822294ff90fde21b85f581a69ac444964e6a94c448c395c8f82b135" kindref="member">hmap::InterpolationMethod2D::DELAUNAY</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hmap::InterpolationMethod2D::DELAUNAY,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;nx,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;ny,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bbox);</highlight></codeline>
@@ -1576,7 +1576,7 @@ P(\text{keep } p) = \rho(x,y) \in [0,1]
       <member refid="classhmap_1_1Cloud_1ad8b2d626436107c4b0e2c9877747375f" prot="public" virt="non-virtual"><scope>hmap::Cloud</scope><name>set_values_from_min_distance</name></member>
       <member refid="classhmap_1_1Cloud_1af8d4e873ff4ed29eb7f140db227e03a2" prot="public" virt="non-virtual"><scope>hmap::Cloud</scope><name>shuffle</name></member>
       <member refid="classhmap_1_1Cloud_1a36e47d4857108c56193755e32374184d" prot="public" virt="non-virtual"><scope>hmap::Cloud</scope><name>to_array</name></member>
-      <member refid="classhmap_1_1Cloud_1a934026c1be19c7dbd051fc3d7808859d" prot="public" virt="non-virtual"><scope>hmap::Cloud</scope><name>to_array_interp</name></member>
+      <member refid="classhmap_1_1Cloud_1acd6b504637e3c0791049b1f426ad4553" prot="public" virt="non-virtual"><scope>hmap::Cloud</scope><name>to_array_interp</name></member>
       <member refid="classhmap_1_1Cloud_1a82725745baf9ae1982c352dcb3656424" prot="public" virt="non-virtual"><scope>hmap::Cloud</scope><name>to_array_sdf</name></member>
       <member refid="classhmap_1_1Cloud_1aea876ffcd05ba762a9a12d2fc4a5d27c" prot="public" virt="non-virtual"><scope>hmap::Cloud</scope><name>to_csv</name></member>
       <member refid="classhmap_1_1Cloud_1add728a8b00dadb4a1d043ce50876c569" prot="public" virt="non-virtual"><scope>hmap::Cloud</scope><name>to_graph_delaunay</name></member>
