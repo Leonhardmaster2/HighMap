@@ -1,5 +1,6 @@
 var dir_f63c6611b1023abbeb7e0b5a0bccaf92 =
 [
+    [ "algebra", "dir_b24d7152b88e4fbbd4bf82e02a8f62ac.html", "dir_b24d7152b88e4fbbd4bf82e02a8f62ac" ],
     [ "array", "dir_18260ae10bc273e257b5f9967f2734e8.html", "dir_18260ae10bc273e257b5f9967f2734e8" ],
     [ "authoring", "dir_4e28b1ee7c8e4cbc3d56522a84eb43a0.html", "dir_4e28b1ee7c8e4cbc3d56522a84eb43a0" ],
     [ "blending", "dir_ab5b0424e212a0effa6f8cb06c155fa6.html", "dir_ab5b0424e212a0effa6f8cb06c155fa6" ],

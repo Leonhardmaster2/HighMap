@@ -109,7 +109,6 @@ var namespacehmap =
       [ "phase_field_angle", "namespacehmap_1_1gpu.html#aba356da2f66b4fc2886bd27edc3a15ec", null ],
       [ "gradient_angle_circular_smoothing", "namespacehmap_1_1gpu.html#ab4b68e1b48d16193615105656680ced8", null ],
       [ "gradient_norm", "namespacehmap_1_1gpu.html#a1c5e49734e49973fe1b275b6988dba12", null ],
-      [ "harmonic_interpolation", "namespacehmap_1_1gpu.html#a864cdb10c297b4a59dc761f32dbbc11a", null ],
       [ "interpolate_array_bicubic", "namespacehmap_1_1gpu.html#a7fca2b47602e86cf0c65908230bdee55", null ],
       [ "interpolate_array_bicubic", "namespacehmap_1_1gpu.html#a8b7cdbe45c09fc626e1a67d22fb46245", null ],
       [ "interpolate_array_bilinear", "namespacehmap_1_1gpu.html#a9c6bf942ee590b7a1b1fa7e5d87d890a", null ],
@@ -208,7 +207,8 @@ var namespacehmap =
     [ "DiskFunction", "classhmap_1_1DiskFunction.html", "classhmap_1_1DiskFunction" ],
     [ "DiskLruTileStorage", "classhmap_1_1DiskLruTileStorage.html", "classhmap_1_1DiskLruTileStorage" ],
     [ "DiskSequentialTileStorage", "classhmap_1_1DiskSequentialTileStorage.html", "classhmap_1_1DiskSequentialTileStorage" ],
-    [ "DrainageBasins", "classhmap_1_1DrainageBasins.html", "classhmap_1_1DrainageBasins" ],
+    [ "DrainageBasin", "classhmap_1_1DrainageBasin.html", "classhmap_1_1DrainageBasin" ],
+    [ "DrainageBasinCellBased", "classhmap_1_1DrainageBasinCellBased.html", "classhmap_1_1DrainageBasinCellBased" ],
     [ "Edge", "classhmap_1_1Edge.html", "classhmap_1_1Edge" ],
     [ "FbmFunction", "classhmap_1_1FbmFunction.html", "classhmap_1_1FbmFunction" ],
     [ "FbmIqFunction", "classhmap_1_1FbmIqFunction.html", "classhmap_1_1FbmIqFunction" ],
@@ -228,6 +228,7 @@ var namespacehmap =
     [ "LruTileEntry", "structhmap_1_1LruTileEntry.html", "structhmap_1_1LruTileEntry" ],
     [ "LruTileStorage", "classhmap_1_1LruTileStorage.html", "classhmap_1_1LruTileStorage" ],
     [ "Mat", "structhmap_1_1Mat.html", "structhmap_1_1Mat" ],
+    [ "NaturalNeighborInterpolator", "classhmap_1_1NaturalNeighborInterpolator.html", "classhmap_1_1NaturalNeighborInterpolator" ],
     [ "NoiseFunction", "classhmap_1_1NoiseFunction.html", "classhmap_1_1NoiseFunction" ],
     [ "ParberryFunction", "classhmap_1_1ParberryFunction.html", "classhmap_1_1ParberryFunction" ],
     [ "Particle", "structhmap_1_1Particle.html", "structhmap_1_1Particle" ],
@@ -382,8 +383,16 @@ var namespacehmap =
       [ "RND_LHS", "namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77a8943dd2a2e3993c1e0cff37be3f65957", null ]
     ] ],
     [ "FlowDirectionMethod", "namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2f", [
-      [ "FDM_D8", "namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894", null ],
-      [ "FDM_PRIORITY_FLOOD", "namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2faaf8f41c39c71902022e1aec12f10d372", null ]
+      [ "FDM_D8", "namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0", null ],
+      [ "FDM_PRIORITY_FLOOD", "namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359", null ],
+      [ "FDM_D8", "namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0", null ],
+      [ "FDM_PRIORITY_FLOOD", "namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359", null ]
+    ] ],
+    [ "FlowDirectionMethod", "namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2f", [
+      [ "FDM_D8", "namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0", null ],
+      [ "FDM_PRIORITY_FLOOD", "namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359", null ],
+      [ "FDM_D8", "namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0", null ],
+      [ "FDM_PRIORITY_FLOOD", "namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359", null ]
     ] ],
     [ "InterpolationMethod1D", "namespacehmap.html#a46291bb4766800deacc1ce9b45a9ea6b", [
       [ "AKIMA", "namespacehmap.html#a46291bb4766800deacc1ce9b45a9ea6ba55d2df97f3e8f051fb84453093374c96", null ],
@@ -398,7 +407,8 @@ var namespacehmap =
       [ "ITP2D_DELAUNAY", "namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581a5fc536ff63a05f254ff7583cccac8a12", null ],
       [ "ITP2D_NEAREST", "namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581af445f527425b2d746556541adf5d3d29", null ],
       [ "ITP2D_IDW", "namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581a4beec3d16f7dc0a1873bb04d85ea6eec", null ],
-      [ "ITP2D_GAUSSIAN", "namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581ac183d7ac1fa5e71a2563ed3fe93bafea", null ]
+      [ "ITP2D_GAUSSIAN", "namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581ac183d7ac1fa5e71a2563ed3fe93bafea", null ],
+      [ "ITP2D_NNI", "namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581a95b33e28ebad4905884242b69db8de0d", null ]
     ] ],
     [ "InterpolationMethodCurve", "namespacehmap.html#aa78bf111867e13c63d8bd2ec005ad6c8", [
       [ "BEZIER", "namespacehmap.html#aa78bf111867e13c63d8bd2ec005ad6c8ac56fe3b521e08a04c926e75d7fba28f8", null ],
@@ -487,6 +497,7 @@ var namespacehmap =
       [ "VA_SINGLE_ARRAY", "namespacehmap.html#ae383414b46ae8992e621c407f09ce7c5afd32b1bf1363b0e44143bda30f00cffa", null ],
       [ "VA_SINGLE_ARRAY_DOWNSCALED", "namespacehmap.html#ae383414b46ae8992e621c407f09ce7c5a3c2aed0c2a4eb46f0bd37dc7741b17c8", null ]
     ] ],
+    [ "to_csv", "namespacehmap.html#af3cb67926262ec806d4d64c2755b1ddd", null ],
     [ "adjust", "namespacehmap.html#adc5300323fa35e021fd83b8b048ef3b1", null ],
     [ "cv_mat_to_array", "namespacehmap.html#a518f05118e1b9704160a7c3276a2f483", null ],
     [ "for_each_cell", "namespacehmap.html#a05ee0ea53f1a06ac43741f11e25ec2cc", null ],
@@ -846,6 +857,10 @@ var namespacehmap =
     [ "water_depth_increase", "namespacehmap.html#a136f042ce2ad8c14033f4d839f56265d", null ],
     [ "water_mask", "namespacehmap.html#ad39c72e2b4c07d3013f7b0143c31137c", null ],
     [ "water_mask", "namespacehmap.html#abc5928f49e530927c8fb61a9afea3274", null ],
+    [ "find_border_minima", "namespacehmap.html#a330255b50cec60fc2ba713fb945e2fdd", null ],
+    [ "heightmap_retopology", "namespacehmap.html#a23ab6bc3fdc7d5c498f0b3c8bebdd4f9", null ],
+    [ "invert_receiver_map", "namespacehmap.html#a40daf45c4bfaee46d924bf597fa0dbfc", null ],
+    [ "sample_border_points", "namespacehmap.html#abbc07969594bdb8632f96c9ec893872e", null ],
     [ "add_filename_suffix", "namespacehmap.html#a67eae4546cbed6a804eaddcde9350e1c", null ],
     [ "make_unique_temp_dir", "namespacehmap.html#a0a506d871b395e49e6175499dfa1e903", null ],
     [ "zfill", "namespacehmap.html#a3f38b7faedc76835a0a902eb48e3d94b", null ],
@@ -859,11 +874,12 @@ var namespacehmap =
     [ "bilinear_interp", "namespacehmap.html#ae91029283452ab6d8276e3745a476b48", null ],
     [ "cubic_interpolate", "namespacehmap.html#aee026d8b23196038c2b16c370b743889", null ],
     [ "harmonic_interpolation", "namespacehmap.html#a6cfd7b1fc064e5aaef1550041f1bbc06", null ],
-    [ "interpolate2d", "namespacehmap.html#a9204361c5b04a66019fa4c24ca2ac904", null ],
-    [ "interpolate2d_delaunay", "namespacehmap.html#ad2581ee8be7619fed2e118310ad469f3", null ],
-    [ "interpolate2d_gaussian", "namespacehmap.html#a9eae4d6bef1311227a901abad4993c89", null ],
-    [ "interpolate2d_idw", "namespacehmap.html#a1c0db957f339fe45f7d2bde330b4c8ef", null ],
-    [ "interpolate2d_nearest", "namespacehmap.html#a3c6b2fa133e70ba9f4cf44cb7ab97f3b", null ],
+    [ "interpolate2d", "namespacehmap.html#aeddca5280bfeacef3cdf4bee68a2195f", null ],
+    [ "interpolate2d_delaunay", "namespacehmap.html#a023e1bbf161eaa8f7db2a12d20cd18c5", null ],
+    [ "interpolate2d_gaussian", "namespacehmap.html#a41d8c84dc7d1ede75b8651443dccb693", null ],
+    [ "interpolate2d_idw", "namespacehmap.html#a482ec7ca5a77557a9fbfeb82f2bc58f2", null ],
+    [ "interpolate2d_nearest", "namespacehmap.html#a4cb51937d8283468bc540129d491222b", null ],
+    [ "interpolate2d_nni", "namespacehmap.html#a7f56b267f543e34806bfd334272f7392", null ],
     [ "interpolate_array_bicubic", "namespacehmap.html#a9e8b724d238450ef72e9bd083acb9b8a", null ],
     [ "interpolate_array_bicubic", "namespacehmap.html#aa3322e388ba870c9d6881082da2fd800", null ],
     [ "interpolate_array_bilinear", "namespacehmap.html#a28a6744fc26597330ca8eb9bbc4cd68e", null ],

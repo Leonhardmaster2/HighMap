@@ -32,6 +32,7 @@ var classhmap_1_1Cloud =
     [ "set_values_from_border_distance", "classhmap_1_1Cloud.html#a4349b98daebf829b1dd2d54d02e61231", null ],
     [ "set_values_from_chull_distance", "classhmap_1_1Cloud.html#adf0b7a7c0c7d414e5d01e19be624aa3c", null ],
     [ "set_values_from_min_distance", "classhmap_1_1Cloud.html#ad8b2d626436107c4b0e2c9877747375f", null ],
+    [ "snap_points_to_bounding_box", "classhmap_1_1Cloud.html#a7b26dc92e0d2217b8438f1ce9376ea0d", null ],
     [ "shuffle", "classhmap_1_1Cloud.html#af8d4e873ff4ed29eb7f140db227e03a2", null ],
     [ "to_array", "classhmap_1_1Cloud.html#a36e47d4857108c56193755e32374184d", null ],
     [ "to_array_sdf", "classhmap_1_1Cloud.html#a82725745baf9ae1982c352dcb3656424", null ],
@@ -39,5 +40,6 @@ var classhmap_1_1Cloud =
     [ "to_csv", "classhmap_1_1Cloud.html#aea876ffcd05ba762a9a12d2fc4a5d27c", null ],
     [ "to_graph_delaunay", "classhmap_1_1Cloud.html#add728a8b00dadb4a1d043ce50876c569", null ],
     [ "to_png", "classhmap_1_1Cloud.html#ad9dd8073b3ce4224c3e6435b24bea561", null ],
+    [ "to_vec3", "classhmap_1_1Cloud.html#a653188a0cf3bd86403a12d225b2eb1fa", null ],
     [ "points", "classhmap_1_1Cloud.html#aad75fb7bcfa7a2c3f139d2e3d3d6cc54", null ]
 ];

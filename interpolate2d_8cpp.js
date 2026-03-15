@@ -1,8 +1,9 @@
 var interpolate2d_8cpp =
 [
-    [ "interpolate2d", "interpolate2d_8cpp.html#a9204361c5b04a66019fa4c24ca2ac904", null ],
-    [ "interpolate2d_delaunay", "interpolate2d_8cpp.html#ad2581ee8be7619fed2e118310ad469f3", null ],
-    [ "interpolate2d_gaussian", "interpolate2d_8cpp.html#a9eae4d6bef1311227a901abad4993c89", null ],
-    [ "interpolate2d_idw", "interpolate2d_8cpp.html#a1c0db957f339fe45f7d2bde330b4c8ef", null ],
-    [ "interpolate2d_nearest", "interpolate2d_8cpp.html#a3c6b2fa133e70ba9f4cf44cb7ab97f3b", null ]
+    [ "interpolate2d", "interpolate2d_8cpp.html#aeddca5280bfeacef3cdf4bee68a2195f", null ],
+    [ "interpolate2d_delaunay", "interpolate2d_8cpp.html#a023e1bbf161eaa8f7db2a12d20cd18c5", null ],
+    [ "interpolate2d_gaussian", "interpolate2d_8cpp.html#a41d8c84dc7d1ede75b8651443dccb693", null ],
+    [ "interpolate2d_idw", "interpolate2d_8cpp.html#a482ec7ca5a77557a9fbfeb82f2bc58f2", null ],
+    [ "interpolate2d_nearest", "interpolate2d_8cpp.html#a4cb51937d8283468bc540129d491222b", null ],
+    [ "interpolate2d_nni", "interpolate2d_8cpp.html#a7f56b267f543e34806bfd334272f7392", null ]
 ];

@@ -147,7 +147,9 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1DiskSequentialTileStorage.html">DiskSequentialTileStorage</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1DrainageBasins.html">DrainageBasins</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1DrainageBasin.html">DrainageBasin</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1DrainageBasinCellBased.html">DrainageBasinCellBased</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1Edge.html">Edge</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a line segment in 2D space.  <a href="classhmap_1_1Edge.html#details">More...</a><br /></td></tr>
@@ -201,6 +203,8 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhmap_1_1Mat.html">Mat</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structhmap_1_1Mat.html" title="Mat class for basic manipulation of 2D matrices.">Mat</a> class for basic manipulation of 2D matrices.  <a href="structhmap_1_1Mat.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1NaturalNeighborInterpolator.html">NaturalNeighborInterpolator</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1NoiseFunction.html">NoiseFunction</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A class for generating noise functions.  <a href="classhmap_1_1NoiseFunction.html#details">More...</a><br /></td></tr>
@@ -470,8 +474,16 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:aba758c4143b6e499ec6f4385467a6d77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumeration of point sampling methods.  <a href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77">More...</a><br /></td></tr>
 <tr class="separator:aba758c4143b6e499ec6f4385467a6d77"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0c714c7fa78e9384806de52a5d039f2f" id="r_a0c714c7fa78e9384806de52a5d039f2f"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2f">FlowDirectionMethod</a> : int { <a class="el" href="namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894">FDM_D8</a>
-, <a class="el" href="namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2faaf8f41c39c71902022e1aec12f10d372">FDM_PRIORITY_FLOOD</a>
+<tr class="memitem:a0c714c7fa78e9384806de52a5d039f2f" id="r_a0c714c7fa78e9384806de52a5d039f2f"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2f">FlowDirectionMethod</a> : int { <a class="el" href="namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0">FDM_D8</a>
+, <a class="el" href="namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359">FDM_PRIORITY_FLOOD</a>
+, <a class="el" href="namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0">FDM_D8</a>
+, <a class="el" href="namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359">FDM_PRIORITY_FLOOD</a>
+ }</td></tr>
+<tr class="separator:a0c714c7fa78e9384806de52a5d039f2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c714c7fa78e9384806de52a5d039f2f" id="r_a0c714c7fa78e9384806de52a5d039f2f"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2f">FlowDirectionMethod</a> : int { <a class="el" href="namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0">FDM_D8</a>
+, <a class="el" href="namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359">FDM_PRIORITY_FLOOD</a>
+, <a class="el" href="namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0">FDM_D8</a>
+, <a class="el" href="namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359">FDM_PRIORITY_FLOOD</a>
  }</td></tr>
 <tr class="separator:a0c714c7fa78e9384806de52a5d039f2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a46291bb4766800deacc1ce9b45a9ea6b" id="r_a46291bb4766800deacc1ce9b45a9ea6b"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a46291bb4766800deacc1ce9b45a9ea6b">InterpolationMethod1D</a> : int { <br />
@@ -487,10 +499,14 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:a46291bb4766800deacc1ce9b45a9ea6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumeration of the available 1D interpolation methods.  <a href="namespacehmap.html#a46291bb4766800deacc1ce9b45a9ea6b">More...</a><br /></td></tr>
 <tr class="separator:a46291bb4766800deacc1ce9b45a9ea6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5bfab5d68e822294ff90fde21b85f581" id="r_a5bfab5d68e822294ff90fde21b85f581"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581">InterpolationMethod2D</a> : int { <a class="el" href="namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581a5fc536ff63a05f254ff7583cccac8a12">ITP2D_DELAUNAY</a>
+<tr class="memitem:a5bfab5d68e822294ff90fde21b85f581" id="r_a5bfab5d68e822294ff90fde21b85f581"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581">InterpolationMethod2D</a> : int { <br />
+&#160;&#160;<a class="el" href="namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581a5fc536ff63a05f254ff7583cccac8a12">ITP2D_DELAUNAY</a>
 , <a class="el" href="namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581af445f527425b2d746556541adf5d3d29">ITP2D_NEAREST</a>
 , <a class="el" href="namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581a4beec3d16f7dc0a1873bb04d85ea6eec">ITP2D_IDW</a>
 , <a class="el" href="namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581ac183d7ac1fa5e71a2563ed3fe93bafea">ITP2D_GAUSSIAN</a>
+, <br />
+&#160;&#160;<a class="el" href="namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581a95b33e28ebad4905884242b69db8de0d">ITP2D_NNI</a>
+<br />
  }</td></tr>
 <tr class="memdesc:a5bfab5d68e822294ff90fde21b85f581"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumeration of 2D interpolation methods.  <a href="namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581">More...</a><br /></td></tr>
 <tr class="separator:a5bfab5d68e822294ff90fde21b85f581"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -613,6 +629,8 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:af3cb67926262ec806d4d64c2755b1ddd" id="r_af3cb67926262ec806d4d64c2755b1ddd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#af3cb67926262ec806d4d64c2755b1ddd">to_csv</a> (const std::vector&lt; glm::vec3 &gt; &amp;xyz, const std::string &amp;fname)</td></tr>
+<tr class="separator:af3cb67926262ec806d4d64c2755b1ddd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc5300323fa35e021fd83b8b048ef3b1" id="r_adc5300323fa35e021fd83b8b048ef3b1"><td class="memItemLeft" align="right" valign="top">glm::vec4&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#adc5300323fa35e021fd83b8b048ef3b1">adjust</a> (const glm::vec4 &amp;v, float dx, float dy, float dz, float dw)</td></tr>
 <tr class="separator:adc5300323fa35e021fd83b8b048ef3b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a518f05118e1b9704160a7c3276a2f483" id="r_a518f05118e1b9704160a7c3276a2f483"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a518f05118e1b9704160a7c3276a2f483">cv_mat_to_array</a> (const cv::Mat &amp;mat, bool remap_values=true, bool flip_j=false)</td></tr>
@@ -1059,12 +1077,13 @@ Functions</h2></td></tr>
 <tr class="memdesc:affdf6ff9564f31cb988131c2b2c4c280"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply expansion, or "inflation", to emphasize the bulk of the terrain, using a directional kernel.  <br /></td></tr>
 <tr class="separator:affdf6ff9564f31cb988131c2b2c4c280"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a00144f277af41ed44d760f6eeb73ce99" id="r_a00144f277af41ed44d760f6eeb73ce99"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a00144f277af41ed44d760f6eeb73ce99">expand_talus</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;mask, float talus, <a class="el" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> seed, int ir=1, float noise_ratio=0.2<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
+<tr class="memdesc:a00144f277af41ed44d760f6eeb73ce99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Expand heights outward from a masked region with a talus slope limit.  <br /></td></tr>
 <tr class="separator:a00144f277af41ed44d760f6eeb73ce99"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad066ff6ef56dbf9827ff6cca9a22e58a" id="r_ad066ff6ef56dbf9827ff6cca9a22e58a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#ad066ff6ef56dbf9827ff6cca9a22e58a">faceted</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, int <a class="el" href="namespacehmap.html#a9d00db2263b4b7b05245531c41c1b592">neighborhood</a>=0, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_x=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_y=nullptr)</td></tr>
 <tr class="memdesc:ad066ff6ef56dbf9827ff6cca9a22e58a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a faceted heightmap that retains the main features of the input heightmap.  <br /></td></tr>
 <tr class="separator:ad066ff6ef56dbf9827ff6cca9a22e58a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a507d3be9d2b879ce7c67f83fddfa43c8" id="r_a507d3be9d2b879ce7c67f83fddfa43c8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a507d3be9d2b879ce7c67f83fddfa43c8">fill_talus</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, float talus, <a class="el" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> seed, int ir=1, float noise_ratio=0.2<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_seed_mask=nullptr)</td></tr>
-<tr class="memdesc:a507d3be9d2b879ce7c67f83fddfa43c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifies a terrain array by filling it with talus slopes.  <br /></td></tr>
+<tr class="memdesc:a507d3be9d2b879ce7c67f83fddfa43c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enforce a talus slope constraint on a height field.  <br /></td></tr>
 <tr class="separator:a507d3be9d2b879ce7c67f83fddfa43c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aabb53a942968efe0a364f9f78079b3af" id="r_aabb53a942968efe0a364f9f78079b3af"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#aabb53a942968efe0a364f9f78079b3af">fill_talus</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;talus, <a class="el" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> seed, int ir=1, float noise_ratio=0.2<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_seed_mask=nullptr)</td></tr>
 <tr class="separator:aabb53a942968efe0a364f9f78079b3af"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1584,7 +1603,7 @@ Functions</h2></td></tr>
 <tr class="separator:a3f8dc201377b61428eba8daa4a03a65f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a184b9eed77a8732a8631f8dd73d75a44" id="r_a184b9eed77a8732a8631f8dd73d75a44"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a184b9eed77a8732a8631f8dd73d75a44">talus_jump_mask</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, float threshold, float sigma)</td></tr>
 <tr class="separator:a184b9eed77a8732a8631f8dd73d75a44"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8284b00f1f460f1d5a406ee45587dcd9" id="r_a8284b00f1f460f1d5a406ee45587dcd9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a8284b00f1f460f1d5a406ee45587dcd9">basin_id</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, <a class="el" href="namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2f">FlowDirectionMethod</a> fd_method=<a class="el" href="namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894">FlowDirectionMethod::FDM_D8</a>, bool remove_lakes=true)</td></tr>
+<tr class="memitem:a8284b00f1f460f1d5a406ee45587dcd9" id="r_a8284b00f1f460f1d5a406ee45587dcd9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a8284b00f1f460f1d5a406ee45587dcd9">basin_id</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, <a class="el" href="namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2f">FlowDirectionMethod</a> fd_method=FlowDirectionMethod::FDM_D8, bool remove_lakes=true)</td></tr>
 <tr class="memdesc:a8284b00f1f460f1d5a406ee45587dcd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Label drainage basins using a priority-flood algorithm.  <br /></td></tr>
 <tr class="separator:a8284b00f1f460f1d5a406ee45587dcd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e0533063a77bfc047472d1d85f3f63c" id="r_a2e0533063a77bfc047472d1d85f3f63c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a2e0533063a77bfc047472d1d85f3f63c">d8_compute_ndip</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;d8)</td></tr>
@@ -1662,6 +1681,14 @@ Functions</h2></td></tr>
 <tr class="memitem:abc5928f49e530927c8fb61a9afea3274" id="r_abc5928f49e530927c8fb61a9afea3274"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#abc5928f49e530927c8fb61a9afea3274">water_mask</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;water_depth, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, float additional_depth)</td></tr>
 <tr class="memdesc:abc5928f49e530927c8fb61a9afea3274"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes a gradient-based water mask using an extended water depth model.  <br /></td></tr>
 <tr class="separator:abc5928f49e530927c8fb61a9afea3274"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a330255b50cec60fc2ba713fb945e2fdd" id="r_a330255b50cec60fc2ba713fb945e2fdd"><td class="memItemLeft" align="right" valign="top">std::vector&lt; size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a330255b50cec60fc2ba713fb945e2fdd">find_border_minima</a> (const std::vector&lt; glm::vec3 &gt; &amp;xyz, float eps=1e-6<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
+<tr class="separator:a330255b50cec60fc2ba713fb945e2fdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23ab6bc3fdc7d5c498f0b3c8bebdd4f9" id="r_a23ab6bc3fdc7d5c498f0b3c8bebdd4f9"><td class="memItemLeft" align="right" valign="top">std::vector&lt; glm::vec3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a23ab6bc3fdc7d5c498f0b3c8bebdd4f9">heightmap_retopology</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, float max_error, int max_triangles=0, int max_points=0)</td></tr>
+<tr class="separator:a23ab6bc3fdc7d5c498f0b3c8bebdd4f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40daf45c4bfaee46d924bf597fa0dbfc" id="r_a40daf45c4bfaee46d924bf597fa0dbfc"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; size_t &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a40daf45c4bfaee46d924bf597fa0dbfc">invert_receiver_map</a> (const std::vector&lt; size_t &gt; &amp;receivers)</td></tr>
+<tr class="separator:a40daf45c4bfaee46d924bf597fa0dbfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abbc07969594bdb8632f96c9ec893872e" id="r_abbc07969594bdb8632f96c9ec893872e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#abbc07969594bdb8632f96c9ec893872e">sample_border_points</a> (const std::vector&lt; glm::vec3 &gt; &amp;xyz, size_t nb)</td></tr>
+<tr class="separator:abbc07969594bdb8632f96c9ec893872e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a67eae4546cbed6a804eaddcde9350e1c" id="r_a67eae4546cbed6a804eaddcde9350e1c"><td class="memItemLeft" align="right" valign="top">std::filesystem::path&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a67eae4546cbed6a804eaddcde9350e1c">add_filename_suffix</a> (const std::filesystem::path &amp;file_path, const std::string &amp;suffix)</td></tr>
 <tr class="separator:a67eae4546cbed6a804eaddcde9350e1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a506d871b395e49e6175499dfa1e903" id="r_a0a506d871b395e49e6175499dfa1e903"><td class="memItemLeft" align="right" valign="top">std::filesystem::path&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a0a506d871b395e49e6175499dfa1e903">make_unique_temp_dir</a> (const std::string &amp;prefix)</td></tr>
@@ -1694,21 +1721,24 @@ Functions</h2></td></tr>
 <tr class="memitem:a6cfd7b1fc064e5aaef1550041f1bbc06" id="r_a6cfd7b1fc064e5aaef1550041f1bbc06"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a6cfd7b1fc064e5aaef1550041f1bbc06">harmonic_interpolation</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;mask_fixed_values, int iterations_max=500, float tolerance=1e-5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float omega=1.8<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
 <tr class="memdesc:a6cfd7b1fc064e5aaef1550041f1bbc06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform harmonic interpolation on a 2D array using the Successive Over-Relaxation (SOR) method.  <br /></td></tr>
 <tr class="separator:a6cfd7b1fc064e5aaef1550041f1bbc06"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9204361c5b04a66019fa4c24ca2ac904" id="r_a9204361c5b04a66019fa4c24ca2ac904"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a9204361c5b04a66019fa4c24ca2ac904">interpolate2d</a> (glm::ivec2 shape, const std::vector&lt; float &gt; &amp;x, const std::vector&lt; float &gt; &amp;y, const std::vector&lt; float &gt; &amp;values, <a class="el" href="namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581">InterpolationMethod2D</a> interpolation_method, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_x=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_y=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_stretching=nullptr, glm::vec4 bbox={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>})</td></tr>
-<tr class="memdesc:a9204361c5b04a66019fa4c24ca2ac904"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generic 2D interpolation function.  <br /></td></tr>
-<tr class="separator:a9204361c5b04a66019fa4c24ca2ac904"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad2581ee8be7619fed2e118310ad469f3" id="r_ad2581ee8be7619fed2e118310ad469f3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#ad2581ee8be7619fed2e118310ad469f3">interpolate2d_delaunay</a> (glm::ivec2 shape, const std::vector&lt; float &gt; &amp;x, const std::vector&lt; float &gt; &amp;y, const std::vector&lt; float &gt; &amp;values, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_x=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_y=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_stretching=nullptr, glm::vec4 bbox={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>})</td></tr>
-<tr class="memdesc:ad2581ee8be7619fed2e118310ad469f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">2D interpolation using the Delaunay triangulation method.  <br /></td></tr>
-<tr class="separator:ad2581ee8be7619fed2e118310ad469f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9eae4d6bef1311227a901abad4993c89" id="r_a9eae4d6bef1311227a901abad4993c89"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a9eae4d6bef1311227a901abad4993c89">interpolate2d_gaussian</a> (glm::ivec2 shape, const std::vector&lt; float &gt; &amp;x, const std::vector&lt; float &gt; &amp;y, const std::vector&lt; float &gt; &amp;values, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_x=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_y=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_stretching=nullptr, glm::vec4 bbox={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>}, float sigma=0.1<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
-<tr class="memdesc:a9eae4d6bef1311227a901abad4993c89"><td class="mdescLeft">&#160;</td><td class="mdescRight">2D interpolation using the Gaussian kernel method.  <br /></td></tr>
-<tr class="separator:a9eae4d6bef1311227a901abad4993c89"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c0db957f339fe45f7d2bde330b4c8ef" id="r_a1c0db957f339fe45f7d2bde330b4c8ef"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a1c0db957f339fe45f7d2bde330b4c8ef">interpolate2d_idw</a> (glm::ivec2 shape, const std::vector&lt; float &gt; &amp;x, const std::vector&lt; float &gt; &amp;y, const std::vector&lt; float &gt; &amp;values, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_x=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_y=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_stretching=nullptr, glm::vec4 bbox={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>}, float distance_exp=2.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
-<tr class="memdesc:a1c0db957f339fe45f7d2bde330b4c8ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">2D interpolation using the IDW method.  <br /></td></tr>
-<tr class="separator:a1c0db957f339fe45f7d2bde330b4c8ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3c6b2fa133e70ba9f4cf44cb7ab97f3b" id="r_a3c6b2fa133e70ba9f4cf44cb7ab97f3b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a3c6b2fa133e70ba9f4cf44cb7ab97f3b">interpolate2d_nearest</a> (glm::ivec2 shape, const std::vector&lt; float &gt; &amp;x, const std::vector&lt; float &gt; &amp;y, const std::vector&lt; float &gt; &amp;values, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_x=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_y=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_stretching=nullptr, glm::vec4 bbox={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>})</td></tr>
-<tr class="memdesc:a3c6b2fa133e70ba9f4cf44cb7ab97f3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">2D interpolation using the nearest neighbor method.  <br /></td></tr>
-<tr class="separator:a3c6b2fa133e70ba9f4cf44cb7ab97f3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeddca5280bfeacef3cdf4bee68a2195f" id="r_aeddca5280bfeacef3cdf4bee68a2195f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#aeddca5280bfeacef3cdf4bee68a2195f">interpolate2d</a> (glm::ivec2 shape, const std::vector&lt; float &gt; &amp;x, const std::vector&lt; float &gt; &amp;y, const std::vector&lt; float &gt; &amp;values, <a class="el" href="namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581">InterpolationMethod2D</a> interpolation_method, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_x=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_y=nullptr, glm::vec4 bbox={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>})</td></tr>
+<tr class="memdesc:aeddca5280bfeacef3cdf4bee68a2195f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generic 2D interpolation function.  <br /></td></tr>
+<tr class="separator:aeddca5280bfeacef3cdf4bee68a2195f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a023e1bbf161eaa8f7db2a12d20cd18c5" id="r_a023e1bbf161eaa8f7db2a12d20cd18c5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a023e1bbf161eaa8f7db2a12d20cd18c5">interpolate2d_delaunay</a> (glm::ivec2 shape, const std::vector&lt; float &gt; &amp;x, const std::vector&lt; float &gt; &amp;y, const std::vector&lt; float &gt; &amp;values, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_x=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_y=nullptr, glm::vec4 bbox={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>})</td></tr>
+<tr class="memdesc:a023e1bbf161eaa8f7db2a12d20cd18c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">2D interpolation using the Delaunay triangulation method.  <br /></td></tr>
+<tr class="separator:a023e1bbf161eaa8f7db2a12d20cd18c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41d8c84dc7d1ede75b8651443dccb693" id="r_a41d8c84dc7d1ede75b8651443dccb693"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a41d8c84dc7d1ede75b8651443dccb693">interpolate2d_gaussian</a> (glm::ivec2 shape, const std::vector&lt; float &gt; &amp;x, const std::vector&lt; float &gt; &amp;y, const std::vector&lt; float &gt; &amp;values, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_x=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_y=nullptr, glm::vec4 bbox={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>}, float sigma=0.1<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
+<tr class="memdesc:a41d8c84dc7d1ede75b8651443dccb693"><td class="mdescLeft">&#160;</td><td class="mdescRight">2D interpolation using the Gaussian kernel method.  <br /></td></tr>
+<tr class="separator:a41d8c84dc7d1ede75b8651443dccb693"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a482ec7ca5a77557a9fbfeb82f2bc58f2" id="r_a482ec7ca5a77557a9fbfeb82f2bc58f2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a482ec7ca5a77557a9fbfeb82f2bc58f2">interpolate2d_idw</a> (glm::ivec2 shape, const std::vector&lt; float &gt; &amp;x, const std::vector&lt; float &gt; &amp;y, const std::vector&lt; float &gt; &amp;values, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_x=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_y=nullptr, glm::vec4 bbox={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>}, float distance_exp=2.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
+<tr class="memdesc:a482ec7ca5a77557a9fbfeb82f2bc58f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">2D interpolation using the IDW method.  <br /></td></tr>
+<tr class="separator:a482ec7ca5a77557a9fbfeb82f2bc58f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4cb51937d8283468bc540129d491222b" id="r_a4cb51937d8283468bc540129d491222b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a4cb51937d8283468bc540129d491222b">interpolate2d_nearest</a> (glm::ivec2 shape, const std::vector&lt; float &gt; &amp;x, const std::vector&lt; float &gt; &amp;y, const std::vector&lt; float &gt; &amp;values, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_x=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_y=nullptr, glm::vec4 bbox={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>})</td></tr>
+<tr class="memdesc:a4cb51937d8283468bc540129d491222b"><td class="mdescLeft">&#160;</td><td class="mdescRight">2D interpolation using the nearest neighbor method.  <br /></td></tr>
+<tr class="separator:a4cb51937d8283468bc540129d491222b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f56b267f543e34806bfd334272f7392" id="r_a7f56b267f543e34806bfd334272f7392"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a7f56b267f543e34806bfd334272f7392">interpolate2d_nni</a> (glm::ivec2 shape, const std::vector&lt; float &gt; &amp;x, const std::vector&lt; float &gt; &amp;y, const std::vector&lt; float &gt; &amp;values, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_x=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_y=nullptr, glm::vec4 bbox={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>})</td></tr>
+<tr class="memdesc:a7f56b267f543e34806bfd334272f7392"><td class="mdescLeft">&#160;</td><td class="mdescRight">2D interpolation using the Natural Neighbor Interpolation method.  <br /></td></tr>
+<tr class="separator:a7f56b267f543e34806bfd334272f7392"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e8b724d238450ef72e9bd083acb9b8a" id="r_a9e8b724d238450ef72e9bd083acb9b8a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a9e8b724d238450ef72e9bd083acb9b8a">interpolate_array_bicubic</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;source, <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;target, bool endpoint=false, bool pixel_centered=true)</td></tr>
 <tr class="separator:a9e8b724d238450ef72e9bd083acb9b8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa3322e388ba870c9d6881082da2fd800" id="r_aa3322e388ba870c9d6881082da2fd800"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#aa3322e388ba870c9d6881082da2fd800">interpolate_array_bicubic</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;source, <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;target, const glm::vec4 &amp;bbox_source, const glm::vec4 &amp;bbox_target, bool endpoint=false, bool pixel_centered=true)</td></tr>
@@ -2868,7 +2898,7 @@ Functions</h2></td></tr>
 </div>
 </div>
 <a id="a0c714c7fa78e9384806de52a5d039f2f" name="a0c714c7fa78e9384806de52a5d039f2f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0c714c7fa78e9384806de52a5d039f2f">&#9670;&#160;</a></span>FlowDirectionMethod</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c714c7fa78e9384806de52a5d039f2f">&#9670;&#160;</a></span>FlowDirectionMethod <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2879,8 +2909,30 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894" name="a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894"></a>FDM_D8&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a0c714c7fa78e9384806de52a5d039f2faaf8f41c39c71902022e1aec12f10d372" name="a0c714c7fa78e9384806de52a5d039f2faaf8f41c39c71902022e1aec12f10d372"></a>FDM_PRIORITY_FLOOD&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0" name="a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0"></a>FDM_D8&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359" name="a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359"></a>FDM_PRIORITY_FLOOD&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0" name="a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0"></a>FDM_D8&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359" name="a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359"></a>FDM_PRIORITY_FLOOD&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="a0c714c7fa78e9384806de52a5d039f2f" name="a0c714c7fa78e9384806de52a5d039f2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c714c7fa78e9384806de52a5d039f2f">&#9670;&#160;</a></span>FlowDirectionMethod <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2f">hmap::FlowDirectionMethod</a> : int</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0" name="a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0"></a>FDM_D8&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359" name="a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359"></a>FDM_PRIORITY_FLOOD&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0" name="a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0"></a>FDM_D8&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359" name="a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359"></a>FDM_PRIORITY_FLOOD&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>
@@ -2940,6 +2992,8 @@ Functions</h2></td></tr>
 <tr><td class="fieldname"><a id="a5bfab5d68e822294ff90fde21b85f581a4beec3d16f7dc0a1873bb04d85ea6eec" name="a5bfab5d68e822294ff90fde21b85f581a4beec3d16f7dc0a1873bb04d85ea6eec"></a>ITP2D_IDW&#160;</td><td class="fielddoc"><p>Inverse Distance Weighting. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="a5bfab5d68e822294ff90fde21b85f581ac183d7ac1fa5e71a2563ed3fe93bafea" name="a5bfab5d68e822294ff90fde21b85f581ac183d7ac1fa5e71a2563ed3fe93bafea"></a>ITP2D_GAUSSIAN&#160;</td><td class="fielddoc"><p>Gaussian Distance Weighting. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a5bfab5d68e822294ff90fde21b85f581a95b33e28ebad4905884242b69db8de0d" name="a5bfab5d68e822294ff90fde21b85f581a95b33e28ebad4905884242b69db8de0d"></a>ITP2D_NNI&#160;</td><td class="fielddoc"><p>Natural Neighbor Interpolation. </p>
 </td></tr>
 </table>
 
@@ -3264,6 +3318,34 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="af3cb67926262ec806d4d64c2755b1ddd" name="af3cb67926262ec806d4d64c2755b1ddd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3cb67926262ec806d4d64c2755b1ddd">&#9670;&#160;</a></span>to_csv()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hmap::to_csv </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; glm::vec3 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>xyz</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>fname</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="adc5300323fa35e021fd83b8b048ef3b1" name="adc5300323fa35e021fd83b8b048ef3b1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adc5300323fa35e021fd83b8b048ef3b1">&#9670;&#160;</a></span>adjust()</h2>
 
@@ -4661,13 +4743,13 @@ template&lt;typename T , typename Fn , typename Reduce &gt; </div>
 <div class="line">  kernel.<a class="code hl_function" href="classhmap_1_1Array.html#a9ff7b2c0be8f2b5dd9fc33085cd647d1">to_png</a>(<span class="stringliteral">&quot;ex_stamping1.png&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">  z.<a class="code hl_function" href="classhmap_1_1Array.html#a9ff7b2c0be8f2b5dd9fc33085cd647d1">to_png</a>(<span class="stringliteral">&quot;ex_stamping2.png&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclasshmap_1_1Cloud_html_a36e47d4857108c56193755e32374184d"><div class="ttname"><a href="classhmap_1_1Cloud.html#a36e47d4857108c56193755e32374184d">hmap::Cloud::to_array</a></div><div class="ttdeci">void to_array(Array &amp;array, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f}) const</div><div class="ttdoc">Project the cloud points onto an array.</div><div class="ttdef"><b>Definition</b> cloud.cpp:430</div></div>
+<div class="ttc" id="aclasshmap_1_1Cloud_html_a36e47d4857108c56193755e32374184d"><div class="ttname"><a href="classhmap_1_1Cloud.html#a36e47d4857108c56193755e32374184d">hmap::Cloud::to_array</a></div><div class="ttdeci">void to_array(Array &amp;array, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f}) const</div><div class="ttdoc">Project the cloud points onto an array.</div><div class="ttdef"><b>Definition</b> cloud.cpp:496</div></div>
 <div class="ttc" id="aclasshmap_1_1Cloud_html_a53cb47401f1e9d027a638f3680c3004d"><div class="ttname"><a href="classhmap_1_1Cloud.html#a53cb47401f1e9d027a638f3680c3004d">hmap::Cloud::get_values</a></div><div class="ttdeci">std::vector&lt; float &gt; get_values() const</div><div class="ttdoc">Get the values assigned to the points in the cloud.</div><div class="ttdef"><b>Definition</b> cloud.cpp:175</div></div>
 <div class="ttc" id="aclasshmap_1_1Cloud_html_aab450c9376e44def1d4e4465f0b1b691"><div class="ttname"><a href="classhmap_1_1Cloud.html#aab450c9376e44def1d4e4465f0b1b691">hmap::Cloud::get_x</a></div><div class="ttdeci">virtual std::vector&lt; float &gt; get_x() const</div><div class="ttdoc">Get the x coordinates of the points in the cloud.</div><div class="ttdef"><b>Definition</b> cloud.cpp:200</div></div>
 <div class="ttc" id="aclasshmap_1_1Cloud_html_abf5f933e3506395b5369cb090119002e"><div class="ttname"><a href="classhmap_1_1Cloud.html#abf5f933e3506395b5369cb090119002e">hmap::Cloud::get_y</a></div><div class="ttdeci">virtual std::vector&lt; float &gt; get_y() const</div><div class="ttdoc">Get the y coordinates of the points in the cloud.</div><div class="ttdef"><b>Definition</b> cloud.cpp:221</div></div>
 <div class="ttc" id="anamespacehmap_html_a4fb4163cdefab63b52484ea8091a11ed"><div class="ttname"><a href="namespacehmap.html#a4fb4163cdefab63b52484ea8091a11ed">hmap::stamping</a></div><div class="ttdeci">Array stamping(glm::ivec2 shape, const std::vector&lt; float &gt; &amp;xr, const std::vector&lt; float &gt; &amp;yr, const std::vector&lt; float &gt; &amp;zr, Array kernel, int kernel_ir, bool kernel_scale_radius, bool kernel_scale_amplitude, StampingBlendMethod blend_method, uint seed, float k_smoothing=0.1f, bool kernel_flip=true, bool kernel_rotate=false, glm::vec4 bbox_array={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Generate a heightmap by stamping a kernel at predefined locations.</div><div class="ttdef"><b>Definition</b> stamping.cpp:17</div></div>
 <div class="ttc" id="anamespacehmap_html_a5101273ec456f5267dddc3e22dae223babafe4f4d1051eb7afe0eab09badd28ad"><div class="ttname"><a href="namespacehmap.html#a5101273ec456f5267dddc3e22dae223babafe4f4d1051eb7afe0eab09badd28ad">hmap::MAXIMUM</a></div><div class="ttdeci">@ MAXIMUM</div><div class="ttdoc">maximum</div><div class="ttdef"><b>Definition</b> authoring.hpp:19</div></div>
-<div class="ttc" id="anamespacehmap_html_a85e1a2365d97c95955eaf0648a1f9073"><div class="ttname"><a href="namespacehmap.html#a85e1a2365d97c95955eaf0648a1f9073">hmap::random_cloud</a></div><div class="ttdeci">Cloud random_cloud(size_t count, uint seed, const PointSamplingMethod &amp;method=PointSamplingMethod::RND_LHS, const glm::vec4 &amp;bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Generates a random cloud of points within a bounding box.</div><div class="ttdef"><b>Definition</b> cloud.cpp:603</div></div>
+<div class="ttc" id="anamespacehmap_html_a85e1a2365d97c95955eaf0648a1f9073"><div class="ttname"><a href="namespacehmap.html#a85e1a2365d97c95955eaf0648a1f9073">hmap::random_cloud</a></div><div class="ttdeci">Cloud random_cloud(size_t count, uint seed, const PointSamplingMethod &amp;method=PointSamplingMethod::RND_LHS, const glm::vec4 &amp;bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Generates a random cloud of points within a bounding box.</div><div class="ttdef"><b>Definition</b> cloud.cpp:679</div></div>
 <div class="ttc" id="anamespacehmap_html_ae1374e51e008a4c88b6e9fe53360e150"><div class="ttname"><a href="namespacehmap.html#ae1374e51e008a4c88b6e9fe53360e150">hmap::gabor</a></div><div class="ttdeci">Array gabor(glm::ivec2 shape, float kw, float angle, bool quad_phase_shift=false)</div><div class="ttdoc">Generates a Gabor kernel of the specified shape.</div><div class="ttdef"><b>Definition</b> kernels.cpp:270</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_stamping0.png" alt=""/>
@@ -7501,7 +7583,7 @@ template&lt;typename T , typename Fn , typename Reduce &gt; </div>
 <div class="line">                          {z, zs, zc},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492">hmap::Cmap::VIRIDIS</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclasshmap_1_1Array_html_ab55ee6021288a467f7d782b09e888f25"><div class="ttname"><a href="classhmap_1_1Array.html#ab55ee6021288a467f7d782b09e888f25">hmap::Array::normalize</a></div><div class="ttdeci">void normalize()</div><div class="ttdoc">Normalize array values so that the sum of all elements is equal to 1.</div><div class="ttdef"><b>Definition</b> methods.cpp:295</div></div>
+<div class="ttc" id="aclasshmap_1_1Array_html_ab55ee6021288a467f7d782b09e888f25"><div class="ttname"><a href="classhmap_1_1Array.html#ab55ee6021288a467f7d782b09e888f25">hmap::Array::normalize</a></div><div class="ttdeci">void normalize()</div><div class="ttdoc">Normalize array values so that the sum of all elements is equal to 1.</div><div class="ttdef"><b>Definition</b> methods.cpp:294</div></div>
 <div class="ttc" id="anamespacehmap_html_a15951dcd1ef3999591c757944f894e15"><div class="ttname"><a href="namespacehmap.html#a15951dcd1ef3999591c757944f894e15">hmap::convolve2d_svd</a></div><div class="ttdeci">Array convolve2d_svd(const Array &amp;z, const Array &amp;kernel, int rank=3)</div><div class="ttdoc">Return the approximate convolution product of the array with a Singular Value Decomposition (SVD) of ...</div><div class="ttdef"><b>Definition</b> convolve2d_svd.cpp:19</div></div>
 <div class="ttc" id="anamespacehmap_html_ab9b4237b1eef6255e59cc20255757dcf"><div class="ttname"><a href="namespacehmap.html#ab9b4237b1eef6255e59cc20255757dcf">hmap::disk</a></div><div class="ttdeci">Array disk(glm::ivec2 shape)</div><div class="ttdoc">Generates a disk-shaped kernel footprint.</div><div class="ttdef"><b>Definition</b> kernels.cpp:225</div></div>
 <div class="ttc" id="anamespacehmap_html_acf8376b5e40b4373986c9a6b41c02429"><div class="ttname"><a href="namespacehmap.html#acf8376b5e40b4373986c9a6b41c02429">hmap::convolve2d</a></div><div class="ttdeci">Array convolve2d(const Array &amp;array, const Array &amp;kernel)</div><div class="ttdoc">Return the convolution product of the array with a given 2D kernel.</div><div class="ttdef"><b>Definition</b> convolve.cpp:81</div></div>
@@ -7784,7 +7866,7 @@ template&lt;typename T , typename Fn , typename Reduce &gt; </div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_curvature.png&quot;</span>, alist, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html"><div class="ttname"><a href="namespacehmap.html">hmap</a></div><div class="ttdef"><b>Definition</b> algebra.hpp:22</div></div>
+<div class="ttc" id="anamespacehmap_html"><div class="ttname"><a href="namespacehmap.html">hmap</a></div><div class="ttdef"><b>Definition</b> algebra.hpp:23</div></div>
 <div class="ttc" id="anamespacehmap_html_a0f5685e5bb02e29d1d35720d3aaedca0"><div class="ttname"><a href="namespacehmap.html#a0f5685e5bb02e29d1d35720d3aaedca0">hmap::curvature_mean</a></div><div class="ttdeci">Array curvature_mean(const Array &amp;z)</div><div class="ttdoc">Computes the mean curvature of a heightmap, indicating the average curvature at each point on the sur...</div><div class="ttdef"><b>Definition</b> curvature.cpp:89</div></div>
 <div class="ttc" id="anamespacehmap_html_a1bf0dae54c5b8bd4e0aeb738c26644fc"><div class="ttname"><a href="namespacehmap.html#a1bf0dae54c5b8bd4e0aeb738c26644fc">hmap::curvature_horizontal_plan</a></div><div class="ttdeci">Array curvature_horizontal_plan(const Array &amp;z, int ir)</div><div class="ttdoc">TODO.</div><div class="ttdef"><b>Definition</b> curvature.cpp:57</div></div>
 <div class="ttc" id="anamespacehmap_html_a4bc3d501e53aebe8e15428798656a3e4"><div class="ttname"><a href="namespacehmap.html#a4bc3d501e53aebe8e15428798656a3e4">hmap::accumulation_curvature</a></div><div class="ttdeci">Array accumulation_curvature(const Array &amp;z, int ir)</div><div class="ttdoc">Computes the accumulation curvature of a heightmap. Acumulation curvature is a measure of the extent ...</div><div class="ttdef"><b>Definition</b> curvature.cpp:13</div></div>
@@ -8993,7 +9075,7 @@ additional_depth)</code>.</li>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>,</div>
 <div class="line">                          <span class="keyword">true</span>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a2318944325d02f3969aa7fa58b500278"><div class="ttname"><a href="namespacehmap.html#a2318944325d02f3969aa7fa58b500278">hmap::flooding_uniform_level</a></div><div class="ttdeci">Array flooding_uniform_level(const Array &amp;z, float zref)</div><div class="ttdoc">Compute water depth for a uniform flooding level.</div><div class="ttdef"><b>Definition</b> flooding.cpp:19</div></div>
+<div class="ttc" id="anamespacehmap_html_a2318944325d02f3969aa7fa58b500278"><div class="ttname"><a href="namespacehmap.html#a2318944325d02f3969aa7fa58b500278">hmap::flooding_uniform_level</a></div><div class="ttdeci">Array flooding_uniform_level(const Array &amp;z, float zref)</div><div class="ttdoc">Compute water depth for a uniform flooding level.</div><div class="ttdef"><b>Definition</b> flooding.cpp:18</div></div>
 <div class="ttc" id="anamespacehmap_html_a54724c8701b75260e97924451731e41f"><div class="ttname"><a href="namespacehmap.html#a54724c8701b75260e97924451731e41f">hmap::coastal_erosion_diffusion</a></div><div class="ttdeci">void coastal_erosion_diffusion(Array &amp;z, Array &amp;water_depth, float additional_depth, int iterations=10, Array *p_water_mask=nullptr)</div><div class="ttdoc">Simulates terrain diffusion due to coastal erosion.</div><div class="ttdef"><b>Definition</b> coastal_erosion.cpp:13</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_coastal_erosion_diffusion.png" alt=""/>
@@ -9476,7 +9558,7 @@ additional_depth)</code>.</li>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>,</div>
 <div class="line">                          <span class="keyword">true</span>);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclasshmap_1_1Array_html_a00b8f7462c1e22b1da8a67ec62d4c8c8"><div class="ttname"><a href="classhmap_1_1Array.html#a00b8f7462c1e22b1da8a67ec62d4c8c8">hmap::Array::dump</a></div><div class="ttdeci">void dump(const std::string &amp;fname=&quot;out.png&quot;) const</div><div class="ttdoc">Debug tool, dump some infos and generate an output file (16bits grayscale)</div><div class="ttdef"><b>Definition</b> methods.cpp:116</div></div>
+<div class="ttc" id="aclasshmap_1_1Array_html_a00b8f7462c1e22b1da8a67ec62d4c8c8"><div class="ttname"><a href="classhmap_1_1Array.html#a00b8f7462c1e22b1da8a67ec62d4c8c8">hmap::Array::dump</a></div><div class="ttdeci">void dump(const std::string &amp;fname=&quot;out.png&quot;) const</div><div class="ttdoc">Debug tool, dump some infos and generate an output file (16bits grayscale)</div><div class="ttdef"><b>Definition</b> methods.cpp:115</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_ae084938139cca4f7c15866ceabe18ab7"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ae084938139cca4f7c15866ceabe18ab7">hmap::gpu::hydraulic_particle</a></div><div class="ttdeci">void hydraulic_particle(Array &amp;z, int nparticles, uint seed, const Array *p_bedrock=nullptr, const Array *p_moisture_map=nullptr, const Array *p_elevation_shift=nullptr, Array *p_erosion_map=nullptr, Array *p_deposition_map=nullptr, float c_capacity=10.f, float c_erosion=0.05f, float c_deposition=0.05f, float c_inertia=0.1f, float c_gravity=1.f, float drag_rate=0.001f, float evap_rate=0.001f, bool enable_directional_bias=false, float angle_bias=30.f)</div><div class="ttdoc">Simulates hydraulic erosion on a heightmap using particle-based flow.</div><div class="ttdef"><b>Definition</b> erosion_gpu.cpp:13</div></div>
 <div class="ttc" id="anamespacehmap_html_a55542a66f890ef9ecf5f82af2c23a0cfa71a3d57896b6c2d066433962e74e8961"><div class="ttname"><a href="namespacehmap.html#a55542a66f890ef9ecf5f82af2c23a0cfa71a3d57896b6c2d066433962e74e8961">hmap::PRIM_CONE_SMOOTH</a></div><div class="ttdeci">@ PRIM_CONE_SMOOTH</div><div class="ttdef"><b>Definition</b> primitives.hpp:57</div></div>
 <div class="ttc" id="anamespacehmap_html_ae3ecf5f88476c5d49978a130f8cab2f3"><div class="ttname"><a href="namespacehmap.html#ae3ecf5f88476c5d49978a130f8cab2f3">hmap::bulkify</a></div><div class="ttdeci">Array bulkify(const Array &amp;z, const PrimitiveType &amp;primitive_type, float amp=1.f, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, glm::vec2 center={0.5f, 0.5f}, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdef"><b>Definition</b> bulkify.cpp:11</div></div>
@@ -15279,6 +15361,21 @@ An <a class="el" href="classhmap_1_1Array.html" title="Array class, helper to ma
       </table>
 </div><div class="memdoc">
 
+<p>Expand heights outward from a masked region with a talus slope limit. </p>
+<p>Starting from the non-zero cells of <code>mask</code>, heights are propagated outward using a min-heap so lower cells are processed first. Neighbor heights are computed from the source height plus <code>dist * talus</code>, optionally perturbed with noise.</p>
+<p>Intuition: grows terrain outward from seed cells, filling empty space while respecting a maximum slope.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">z</td><td>Height array modified in-place. </td></tr>
+    <tr><td class="paramname">mask</td><td>Initial region to expand from. </td></tr>
+    <tr><td class="paramname">talus</td><td>Maximum slope per unit distance. </td></tr>
+    <tr><td class="paramname">seed</td><td>RNG seed for noise. </td></tr>
+    <tr><td class="paramname">ir</td><td>Neighborhood radius. </td></tr>
+    <tr><td class="paramname">noise_ratio</td><td>Amplitude of slope noise. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="ad066ff6ef56dbf9827ff6cca9a22e58a" name="ad066ff6ef56dbf9827ff6cca9a22e58a"></a>
@@ -15403,8 +15500,9 @@ An <a class="el" href="classhmap_1_1Array.html" title="Array class, helper to ma
       </table>
 </div><div class="memdoc">
 
-<p>Modifies a terrain array by filling it with talus slopes. </p>
-<p>This function applies a talus formation algorithm to an existing terrain array, adjusting the heights to create natural-looking slopes. The process involves random perturbations influenced by noise to simulate erosion or sediment transport.</p>
+<p>Enforce a talus slope constraint on a height field. </p>
+<p>Cells are processed from highest to lowest using a max-heap. Each cell may raise neighboring cells so that the slope relative to the current cell does not exceed the local talus value.</p>
+<p>Intuition: stabilizes an existing terrain by redistributing height so slopes do not exceed the talus limit (similar to talus erosion / relaxation but by adding material).</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">z</td><td>A reference to the 2D array representing the terrain heights. The function modifies this array in place to introduce talus slopes. </td></tr>
@@ -15450,7 +15548,7 @@ An <a class="el" href="classhmap_1_1Array.html" title="Array class, helper to ma
 <div class="line">}</div>
 <div class="ttc" id="anamespacehmap_html_a285e9fee37c8dc0d1dc5ba86e1625480"><div class="ttname"><a href="namespacehmap.html#a285e9fee37c8dc0d1dc5ba86e1625480">hmap::fill_talus_fast</a></div><div class="ttdeci">void fill_talus_fast(Array &amp;z, glm::ivec2 shape_coarse, float talus, uint seed, int ir=1, float noise_ratio=0.2f)</div><div class="ttdoc">Fill terrain values with a given downslope talus, optimized using a coarse mesh for faster computatio...</div><div class="ttdef"><b>Definition</b> fill_talus.cpp:107</div></div>
 <div class="ttc" id="anamespacehmap_html_a2e4283dd5da8add89788c5023c73042c"><div class="ttname"><a href="namespacehmap.html#a2e4283dd5da8add89788c5023c73042c">hmap::saturate</a></div><div class="ttdeci">void saturate(Array &amp;array, float vmin, float vmax, float from_min, float from_max, float k=0.f)</div><div class="ttdoc">Saturate the array values based on the input interval [vmin, vmax] (the output amplitude is not modif...</div><div class="ttdef"><b>Definition</b> recurve.cpp:178</div></div>
-<div class="ttc" id="anamespacehmap_html_a507d3be9d2b879ce7c67f83fddfa43c8"><div class="ttname"><a href="namespacehmap.html#a507d3be9d2b879ce7c67f83fddfa43c8">hmap::fill_talus</a></div><div class="ttdeci">void fill_talus(Array &amp;z, float talus, uint seed, int ir=1, float noise_ratio=0.2f, const Array *p_seed_mask=nullptr)</div><div class="ttdoc">Modifies a terrain array by filling it with talus slopes.</div><div class="ttdef"><b>Definition</b> fill_talus.cpp:97</div></div>
+<div class="ttc" id="anamespacehmap_html_a507d3be9d2b879ce7c67f83fddfa43c8"><div class="ttname"><a href="namespacehmap.html#a507d3be9d2b879ce7c67f83fddfa43c8">hmap::fill_talus</a></div><div class="ttdeci">void fill_talus(Array &amp;z, float talus, uint seed, int ir=1, float noise_ratio=0.2f, const Array *p_seed_mask=nullptr)</div><div class="ttdoc">Enforce a talus slope constraint on a height field.</div><div class="ttdef"><b>Definition</b> fill_talus.cpp:97</div></div>
 <div class="ttc" id="anamespacehmap_html_ac72cb684be1045c7f2a5c8941f905772"><div class="ttname"><a href="namespacehmap.html#ac72cb684be1045c7f2a5c8941f905772">hmap::select_valley</a></div><div class="ttdeci">Array select_valley(const Array &amp;z, int ir, bool ridge_select=false)</div><div class="ttdef"><b>Definition</b> selector.cpp:389</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_fill_talus.png" alt=""/>
@@ -22729,11 +22827,11 @@ A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
 <div class="ttc" id="aclasshmap_1_1Cloud_html_a4d6feb0c127bcea6566b600444cf103c"><div class="ttname"><a href="classhmap_1_1Cloud.html#a4d6feb0c127bcea6566b600444cf103c">hmap::Cloud::get_npoints</a></div><div class="ttdeci">size_t get_npoints() const</div><div class="ttdoc">Get the number of points in the cloud.</div><div class="ttdef"><b>Definition</b> cloud.cpp:170</div></div>
 <div class="ttc" id="aclasshmap_1_1Cloud_html_a89fbc7c4e7e27bd520e93735e55eddff"><div class="ttname"><a href="classhmap_1_1Cloud.html#a89fbc7c4e7e27bd520e93735e55eddff">hmap::Cloud::rejection_filter_density</a></div><div class="ttdeci">void rejection_filter_density(const Array &amp;density_mask, uint seed, const glm::vec4 &amp;bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Filter a point cloud using rejection sampling based on a density mask.</div><div class="ttdef"><b>Definition</b> cloud.cpp:305</div></div>
 <div class="ttc" id="aclasshmap_1_1Cloud_html_ad8b2d626436107c4b0e2c9877747375f"><div class="ttname"><a href="classhmap_1_1Cloud.html#ad8b2d626436107c4b0e2c9877747375f">hmap::Cloud::set_values_from_min_distance</a></div><div class="ttdeci">void set_values_from_min_distance()</div><div class="ttdoc">Sets point values based on the distance to their nearest neighbor.</div><div class="ttdef"><b>Definition</b> cloud.cpp:405</div></div>
-<div class="ttc" id="anamespacehmap_html_a117f2da22e9a721e84002c801e95c2d5"><div class="ttname"><a href="namespacehmap.html#a117f2da22e9a721e84002c801e95c2d5">hmap::random_cloud_distance</a></div><div class="ttdeci">Cloud random_cloud_distance(float min_dist, uint seed, const glm::vec4 &amp;bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Generates a random cloud of points separated by at least a given minimum distance.</div><div class="ttdef"><b>Definition</b> cloud.cpp:623</div></div>
-<div class="ttc" id="anamespacehmap_html_a16821244f50cfacf91b3fb638e2b49f8"><div class="ttname"><a href="namespacehmap.html#a16821244f50cfacf91b3fb638e2b49f8">hmap::random_cloud_density</a></div><div class="ttdeci">Cloud random_cloud_density(size_t count, const Array &amp;density, uint seed, const glm::vec4 &amp;bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Generates a random cloud of points based on a spatial density map.</div><div class="ttdef"><b>Definition</b> cloud.cpp:613</div></div>
-<div class="ttc" id="anamespacehmap_html_a2b567f4e49f112b51a29c0915b039bc1"><div class="ttname"><a href="namespacehmap.html#a2b567f4e49f112b51a29c0915b039bc1">hmap::random_cloud_jittered</a></div><div class="ttdeci">Cloud random_cloud_jittered(size_t count, const glm::vec2 &amp;jitter_amount, const glm::vec2 &amp;stagger_ratio, uint seed, const glm::vec4 &amp;bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Generates a jittered grid cloud of points.</div><div class="ttdef"><b>Definition</b> cloud.cpp:667</div></div>
-<div class="ttc" id="anamespacehmap_html_a35817f8492f47d9d36042649cd9e5844"><div class="ttname"><a href="namespacehmap.html#a35817f8492f47d9d36042649cd9e5844">hmap::random_cloud_distance_power_law</a></div><div class="ttdeci">Cloud random_cloud_distance_power_law(float dist_min, float dist_max, float alpha, uint seed, const glm::vec4 &amp;bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Generates a random cloud of points with distances drawn from a power-law distribution.</div><div class="ttdef"><b>Definition</b> cloud.cpp:641</div></div>
-<div class="ttc" id="anamespacehmap_html_ab839262913bfd936d24cf6b96a9a3da1"><div class="ttname"><a href="namespacehmap.html#ab839262913bfd936d24cf6b96a9a3da1">hmap::random_cloud_distance_weibull</a></div><div class="ttdeci">Cloud random_cloud_distance_weibull(float dist_min, float lambda, float k, uint seed, const glm::vec4 &amp;bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Generates a random cloud of points with distances drawn from a Weibull distribution.</div><div class="ttdef"><b>Definition</b> cloud.cpp:656</div></div>
+<div class="ttc" id="anamespacehmap_html_a117f2da22e9a721e84002c801e95c2d5"><div class="ttname"><a href="namespacehmap.html#a117f2da22e9a721e84002c801e95c2d5">hmap::random_cloud_distance</a></div><div class="ttdeci">Cloud random_cloud_distance(float min_dist, uint seed, const glm::vec4 &amp;bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Generates a random cloud of points separated by at least a given minimum distance.</div><div class="ttdef"><b>Definition</b> cloud.cpp:699</div></div>
+<div class="ttc" id="anamespacehmap_html_a16821244f50cfacf91b3fb638e2b49f8"><div class="ttname"><a href="namespacehmap.html#a16821244f50cfacf91b3fb638e2b49f8">hmap::random_cloud_density</a></div><div class="ttdeci">Cloud random_cloud_density(size_t count, const Array &amp;density, uint seed, const glm::vec4 &amp;bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Generates a random cloud of points based on a spatial density map.</div><div class="ttdef"><b>Definition</b> cloud.cpp:689</div></div>
+<div class="ttc" id="anamespacehmap_html_a2b567f4e49f112b51a29c0915b039bc1"><div class="ttname"><a href="namespacehmap.html#a2b567f4e49f112b51a29c0915b039bc1">hmap::random_cloud_jittered</a></div><div class="ttdeci">Cloud random_cloud_jittered(size_t count, const glm::vec2 &amp;jitter_amount, const glm::vec2 &amp;stagger_ratio, uint seed, const glm::vec4 &amp;bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Generates a jittered grid cloud of points.</div><div class="ttdef"><b>Definition</b> cloud.cpp:743</div></div>
+<div class="ttc" id="anamespacehmap_html_a35817f8492f47d9d36042649cd9e5844"><div class="ttname"><a href="namespacehmap.html#a35817f8492f47d9d36042649cd9e5844">hmap::random_cloud_distance_power_law</a></div><div class="ttdeci">Cloud random_cloud_distance_power_law(float dist_min, float dist_max, float alpha, uint seed, const glm::vec4 &amp;bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Generates a random cloud of points with distances drawn from a power-law distribution.</div><div class="ttdef"><b>Definition</b> cloud.cpp:717</div></div>
+<div class="ttc" id="anamespacehmap_html_ab839262913bfd936d24cf6b96a9a3da1"><div class="ttname"><a href="namespacehmap.html#ab839262913bfd936d24cf6b96a9a3da1">hmap::random_cloud_distance_weibull</a></div><div class="ttdeci">Cloud random_cloud_distance_weibull(float dist_min, float lambda, float k, uint seed, const glm::vec4 &amp;bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Generates a random cloud of points with distances drawn from a Weibull distribution.</div><div class="ttdef"><b>Definition</b> cloud.cpp:732</div></div>
 <div class="ttc" id="anamespacehmap_html_aba758c4143b6e499ec6f4385467a6d77a8943dd2a2e3993c1e0cff37be3f65957"><div class="ttname"><a href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77a8943dd2a2e3993c1e0cff37be3f65957">hmap::RND_LHS</a></div><div class="ttdeci">@ RND_LHS</div><div class="ttdoc">Latin Hypercube Sampling.</div><div class="ttdef"><b>Definition</b> point_sampling.hpp:35</div></div>
 <div class="ttc" id="anamespacehmap_html_aba758c4143b6e499ec6f4385467a6d77a99ca15104343ff0356c6fc0ffe4f837d"><div class="ttname"><a href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77a99ca15104343ff0356c6fc0ffe4f837d">hmap::RND_HALTON</a></div><div class="ttdeci">@ RND_HALTON</div><div class="ttdoc">Low-discrepancy Halton sequence sampling.</div><div class="ttdef"><b>Definition</b> point_sampling.hpp:33</div></div>
 <div class="ttc" id="anamespacehmap_html_aba758c4143b6e499ec6f4385467a6d77aea0acc8d27d5a8a13e107f49120c084e"><div class="ttname"><a href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77aea0acc8d27d5a8a13e107f49120c084e">hmap::RND_RANDOM</a></div><div class="ttdeci">@ RND_RANDOM</div><div class="ttdoc">Purely random uniform sampling.</div><div class="ttdef"><b>Definition</b> point_sampling.hpp:32</div></div>
@@ -27452,7 +27550,7 @@ h}{\partial y}
 <div class="line">                          {alpha0, alpha, alpha_uw},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclasshmap_1_1Array_html_a56c77f78e4864f5c6f2cbd6de8100556"><div class="ttname"><a href="classhmap_1_1Array.html#a56c77f78e4864f5c6f2cbd6de8100556">hmap::Array::min</a></div><div class="ttdeci">float min() const</div><div class="ttdoc">Return the value of the smallest element in the array.</div><div class="ttdef"><b>Definition</b> methods.cpp:290</div></div>
+<div class="ttc" id="aclasshmap_1_1Array_html_a56c77f78e4864f5c6f2cbd6de8100556"><div class="ttname"><a href="classhmap_1_1Array.html#a56c77f78e4864f5c6f2cbd6de8100556">hmap::Array::min</a></div><div class="ttdeci">float min() const</div><div class="ttdoc">Return the value of the smallest element in the array.</div><div class="ttdef"><b>Definition</b> methods.cpp:289</div></div>
 <div class="ttc" id="anamespacehmap_html_a3f8dc201377b61428eba8daa4a03a65f"><div class="ttname"><a href="namespacehmap.html#a3f8dc201377b61428eba8daa4a03a65f">hmap::unwrap_phase</a></div><div class="ttdeci">Array unwrap_phase(const Array &amp;alpha)</div><div class="ttdoc">Unwraps a 2D phase array to correct discontinuities in phase data.</div><div class="ttdef"><b>Definition</b> unwrap_phase.cpp:14</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_unwrap_phase.png" alt=""/>
@@ -27510,7 +27608,7 @@ h}{\partial y}
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2f">FlowDirectionMethod</a>&#160;</td>
-          <td class="paramname"><em>fd_method</em> = <code><a class="el" href="namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894">FlowDirectionMethod::FDM_D8</a></code>, </td>
+          <td class="paramname"><em>fd_method</em> = <code>FlowDirectionMethod::FDM_D8</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -27549,16 +27647,14 @@ h}{\partial y}
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> id1 = <a class="code hl_function" href="namespacehmap.html#a8284b00f1f460f1d5a406ee45587dcd9">hmap::basin_id</a>(</div>
 <div class="line">      z,</div>
-<div class="line">      <a class="code hl_enumvalue" href="namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2faaf8f41c39c71902022e1aec12f10d372">hmap::FlowDirectionMethod::FDM_PRIORITY_FLOOD</a>);</div>
+<div class="line">      hmap::FlowDirectionMethod::FDM_PRIORITY_FLOOD);</div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(id1);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> id2 = <a class="code hl_function" href="namespacehmap.html#a8284b00f1f460f1d5a406ee45587dcd9">hmap::basin_id</a>(z, <a class="code hl_enumvalue" href="namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894">hmap::FlowDirectionMethod::FDM_D8</a>);</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> id2 = <a class="code hl_function" href="namespacehmap.html#a8284b00f1f460f1d5a406ee45587dcd9">hmap::basin_id</a>(z, hmap::FlowDirectionMethod::FDM_D8);</div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(id2);</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_basin_id.png&quot;</span>, {z, id1, id2}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a0c714c7fa78e9384806de52a5d039f2faaf8f41c39c71902022e1aec12f10d372"><div class="ttname"><a href="namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2faaf8f41c39c71902022e1aec12f10d372">hmap::FDM_PRIORITY_FLOOD</a></div><div class="ttdeci">@ FDM_PRIORITY_FLOOD</div><div class="ttdef"><b>Definition</b> hydrology.hpp:36</div></div>
-<div class="ttc" id="anamespacehmap_html_a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894"><div class="ttname"><a href="namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894">hmap::FDM_D8</a></div><div class="ttdeci">@ FDM_D8</div><div class="ttdef"><b>Definition</b> hydrology.hpp:35</div></div>
 <div class="ttc" id="anamespacehmap_html_a55542a66f890ef9ecf5f82af2c23a0cfae2c78e075109f330e3109c52e9bf90ff"><div class="ttname"><a href="namespacehmap.html#a55542a66f890ef9ecf5f82af2c23a0cfae2c78e075109f330e3109c52e9bf90ff">hmap::PRIM_CONE</a></div><div class="ttdeci">@ PRIM_CONE</div><div class="ttdef"><b>Definition</b> primitives.hpp:56</div></div>
 <div class="ttc" id="anamespacehmap_html_a8284b00f1f460f1d5a406ee45587dcd9"><div class="ttname"><a href="namespacehmap.html#a8284b00f1f460f1d5a406ee45587dcd9">hmap::basin_id</a></div><div class="ttdeci">Array basin_id(const Array &amp;z, FlowDirectionMethod fd_method=FlowDirectionMethod::FDM_D8, bool remove_lakes=true)</div><div class="ttdoc">Label drainage basins using a priority-flood algorithm.</div><div class="ttdef"><b>Definition</b> basin_id.cpp:14</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
@@ -27802,8 +27898,8 @@ h}{\partial y}
 <div class="line">                           z + water_depth5},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a2b57b45ea7a8a48b43443aa4d1dddbe8"><div class="ttname"><a href="namespacehmap.html#a2b57b45ea7a8a48b43443aa4d1dddbe8">hmap::flooding_from_boundaries</a></div><div class="ttdeci">Array flooding_from_boundaries(const Array &amp;z, float zref, bool from_east=true, bool from_west=true, bool from_north=true, bool from_south=true)</div><div class="ttdoc">Compute flooding starting from the lowest boundary points.</div><div class="ttdef"><b>Definition</b> flooding.cpp:29</div></div>
-<div class="ttc" id="anamespacehmap_html_add3e6744c96ed203d611ceecf65d343e"><div class="ttname"><a href="namespacehmap.html#add3e6744c96ed203d611ceecf65d343e">hmap::flooding_from_point</a></div><div class="ttdeci">Array flooding_from_point(const Array &amp;z, int i, int j, float depth_min=std::numeric_limits&lt; float &gt;::max())</div><div class="ttdoc">Flood terrain starting from a single seed point.</div><div class="ttdef"><b>Definition</b> flooding.cpp:111</div></div>
+<div class="ttc" id="anamespacehmap_html_a2b57b45ea7a8a48b43443aa4d1dddbe8"><div class="ttname"><a href="namespacehmap.html#a2b57b45ea7a8a48b43443aa4d1dddbe8">hmap::flooding_from_boundaries</a></div><div class="ttdeci">Array flooding_from_boundaries(const Array &amp;z, float zref, bool from_east=true, bool from_west=true, bool from_north=true, bool from_south=true)</div><div class="ttdoc">Compute flooding starting from the lowest boundary points.</div><div class="ttdef"><b>Definition</b> flooding.cpp:28</div></div>
+<div class="ttc" id="anamespacehmap_html_add3e6744c96ed203d611ceecf65d343e"><div class="ttname"><a href="namespacehmap.html#add3e6744c96ed203d611ceecf65d343e">hmap::flooding_from_point</a></div><div class="ttdeci">Array flooding_from_point(const Array &amp;z, int i, int j, float depth_min=std::numeric_limits&lt; float &gt;::max())</div><div class="ttdoc">Flood terrain starting from a single seed point.</div><div class="ttdef"><b>Definition</b> flooding.cpp:110</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_flooding_from_point.png" alt=""/>
 </div>
@@ -28175,7 +28271,7 @@ h}{\partial y}
 <div class="line">                          {z, z + water_depth},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a3624c1660e60d16a87c90222606f7050"><div class="ttname"><a href="namespacehmap.html#a3624c1660e60d16a87c90222606f7050">hmap::flooding_lake_system</a></div><div class="ttdeci">Array flooding_lake_system(const Array &amp;z, float surface_threshold=0)</div><div class="ttdoc">Estimate lake water depths on a terrain by filling depressions.</div><div class="ttdef"><b>Definition</b> flooding.cpp:165</div></div>
+<div class="ttc" id="anamespacehmap_html_a3624c1660e60d16a87c90222606f7050"><div class="ttname"><a href="namespacehmap.html#a3624c1660e60d16a87c90222606f7050">hmap::flooding_lake_system</a></div><div class="ttdeci">Array flooding_lake_system(const Array &amp;z, float surface_threshold=0)</div><div class="ttdoc">Estimate lake water depths on a terrain by filling depressions.</div><div class="ttdef"><b>Definition</b> flooding.cpp:164</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_flooding_lake_system.png" alt=""/>
 </div>
@@ -28305,7 +28401,7 @@ h}{\partial y}
 <div class="line">  facc.to_png(<span class="stringliteral">&quot;ex_flow_accumulation_dinf1.png&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a320107cf3138d908a78d3c6d97705717">hmap::Cmap::HOT</a>);</div>
 <div class="line">  facc_p.to_png(<span class="stringliteral">&quot;ex_flow_accumulation_dinf2.png&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a320107cf3138d908a78d3c6d97705717">hmap::Cmap::HOT</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclasshmap_1_1Array_html_a68aac609ccba8f581da1cdf5cee671b9"><div class="ttname"><a href="classhmap_1_1Array.html#a68aac609ccba8f581da1cdf5cee671b9">hmap::Array::max</a></div><div class="ttdeci">float max() const</div><div class="ttdoc">Return the value of the greatest element in the array.</div><div class="ttdef"><b>Definition</b> methods.cpp:280</div></div>
+<div class="ttc" id="aclasshmap_1_1Array_html_a68aac609ccba8f581da1cdf5cee671b9"><div class="ttname"><a href="classhmap_1_1Array.html#a68aac609ccba8f581da1cdf5cee671b9">hmap::Array::max</a></div><div class="ttdeci">float max() const</div><div class="ttdoc">Return the value of the greatest element in the array.</div><div class="ttdef"><b>Definition</b> methods.cpp:279</div></div>
 <div class="ttc" id="anamespacehmap_html_a38c0a582a98d48f73f49f12ebf1b78f9"><div class="ttname"><a href="namespacehmap.html#a38c0a582a98d48f73f49f12ebf1b78f9">hmap::cubic_pulse</a></div><div class="ttdeci">Array cubic_pulse(glm::ivec2 shape)</div><div class="ttdoc">Generates a cubic pulse kernel array.</div><div class="ttdef"><b>Definition</b> kernels.cpp:97</div></div>
 <div class="ttc" id="anamespacehmap_html_a58ba4910af868f70849f343e0c73adf3"><div class="ttname"><a href="namespacehmap.html#a58ba4910af868f70849f343e0c73adf3">hmap::flow_accumulation_dinf</a></div><div class="ttdeci">Array flow_accumulation_dinf(const Array &amp;z, float talus_ref)</div><div class="ttdoc">Computes the flow accumulation for each cell using the Multiple Flow Direction (MFD) model.</div><div class="ttdef"><b>Definition</b> flow_accumulation_dinf.cpp:35</div></div>
 <div class="ttc" id="anamespacehmap_html_a65291377b8b0a24636f60c36fd1e4044"><div class="ttname"><a href="namespacehmap.html#a65291377b8b0a24636f60c36fd1e4044">hmap::flow_accumulation_dinf_perturbed</a></div><div class="ttdeci">Array flow_accumulation_dinf_perturbed(const Array &amp;z, float talus_ref, int nsamples, glm::vec2 kw, uint seed, float amp, const Array *p_perturb_scaling=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Computes averaged D-infinity flow accumulation with terrain perturbations.</div><div class="ttdef"><b>Definition</b> flow_accumulation_dinf.cpp:110</div></div>
@@ -28962,7 +29058,7 @@ h}{\partial y}
 <div class="ttc" id="aclasshmap_1_1Cloud_html_a5ac84550aceffbb9053c3b58490e7126"><div class="ttname"><a href="classhmap_1_1Cloud.html#a5ac84550aceffbb9053c3b58490e7126">hmap::Cloud::set_values_from_array</a></div><div class="ttdeci">void set_values_from_array(const Array &amp;array, const glm::vec4 &amp;bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Set the values of the cloud points using values from an underlying array.</div><div class="ttdef"><b>Definition</b> cloud.cpp:369</div></div>
 <div class="ttc" id="aclasshmap_1_1Path_html_ae338a7d28b40b0c7d0f9537ee770fcc4"><div class="ttname"><a href="classhmap_1_1Path.html#ae338a7d28b40b0c7d0f9537ee770fcc4">hmap::Path::fractalize</a></div><div class="ttdeci">void fractalize(int iterations, uint seed, float sigma=0.3f, int orientation=0, float persistence=1.f, Array *p_control_field=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Applies fractalization to the path by adding points and randomly displacing their positions.</div><div class="ttdef"><b>Definition</b> path.cpp:316</div></div>
 <div class="ttc" id="anamespacehmap_html_a30d55fae5c75a1c45a005a3f9a9467eb"><div class="ttname"><a href="namespacehmap.html#a30d55fae5c75a1c45a005a3f9a9467eb">hmap::generate_riverbed</a></div><div class="ttdeci">Array generate_riverbed(const Path &amp;path, glm::ivec2 shape, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f}, bool bezier_smoothing=false, float depth_start=0.01f, float depth_end=1.f, float slope_start=64.f, float slope_end=32.f, float shape_exponent_start=1.f, float shape_exponent_end=10.f, float k_smoothing=0.5f, int post_filter_ir=0, Array *p_noise_x=nullptr, Array *p_noise_y=nullptr, Array *p_noise_r=nullptr)</div><div class="ttdoc">Generates a 2D array representing a riverbed based on a specified path.</div><div class="ttdef"><b>Definition</b> generate_riverbed.cpp:16</div></div>
-<div class="ttc" id="anamespacehmap_html_adc5300323fa35e021fd83b8b048ef3b1"><div class="ttname"><a href="namespacehmap.html#adc5300323fa35e021fd83b8b048ef3b1">hmap::adjust</a></div><div class="ttdeci">glm::vec4 adjust(const glm::vec4 &amp;v, float dx, float dy, float dz, float dw)</div><div class="ttdef"><b>Definition</b> algebra.hpp:136</div></div>
+<div class="ttc" id="anamespacehmap_html_adc5300323fa35e021fd83b8b048ef3b1"><div class="ttname"><a href="namespacehmap.html#adc5300323fa35e021fd83b8b048ef3b1">hmap::adjust</a></div><div class="ttdeci">glm::vec4 adjust(const glm::vec4 &amp;v, float dx, float dy, float dz, float dw)</div><div class="ttdef"><b>Definition</b> algebra.hpp:139</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_generate_riverbed.png" alt=""/>
 </div>
@@ -29512,6 +29608,120 @@ h}{\partial y}
  
 </div>
 </div>
+<a id="a330255b50cec60fc2ba713fb945e2fdd" name="a330255b50cec60fc2ba713fb945e2fdd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a330255b50cec60fc2ba713fb945e2fdd">&#9670;&#160;</a></span>find_border_minima()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; size_t &gt; hmap::find_border_minima </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; glm::vec3 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>xyz</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>eps</em> = <code>1e-6<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a23ab6bc3fdc7d5c498f0b3c8bebdd4f9" name="a23ab6bc3fdc7d5c498f0b3c8bebdd4f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23ab6bc3fdc7d5c498f0b3c8bebdd4f9">&#9670;&#160;</a></span>heightmap_retopology()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; glm::vec3 &gt; hmap::heightmap_retopology </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>z</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>max_error</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>max_triangles</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>max_points</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a40daf45c4bfaee46d924bf597fa0dbfc" name="a40daf45c4bfaee46d924bf597fa0dbfc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40daf45c4bfaee46d924bf597fa0dbfc">&#9670;&#160;</a></span>invert_receiver_map()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::vector&lt; size_t &gt; &gt; hmap::invert_receiver_map </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; size_t &gt; &amp;&#160;</td>
+          <td class="paramname"><em>receivers</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abbc07969594bdb8632f96c9ec893872e" name="abbc07969594bdb8632f96c9ec893872e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abbc07969594bdb8632f96c9ec893872e">&#9670;&#160;</a></span>sample_border_points()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; size_t &gt; hmap::sample_border_points </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; glm::vec3 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>xyz</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>nb</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a67eae4546cbed6a804eaddcde9350e1c" name="a67eae4546cbed6a804eaddcde9350e1c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a67eae4546cbed6a804eaddcde9350e1c">&#9670;&#160;</a></span>add_filename_suffix()</h2>
 
@@ -29968,8 +30178,8 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a id="a9204361c5b04a66019fa4c24ca2ac904" name="a9204361c5b04a66019fa4c24ca2ac904"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9204361c5b04a66019fa4c24ca2ac904">&#9670;&#160;</a></span>interpolate2d()</h2>
+<a id="aeddca5280bfeacef3cdf4bee68a2195f" name="aeddca5280bfeacef3cdf4bee68a2195f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeddca5280bfeacef3cdf4bee68a2195f">&#9670;&#160;</a></span>interpolate2d()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -30019,12 +30229,6 @@ template&lt;typename T &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
-          <td class="paramname"><em>p_stretching</em> = <code>nullptr</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">glm::vec4&#160;</td>
           <td class="paramname"><em>bbox</em> = <code>{0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>}</code>&#160;</td>
         </tr>
@@ -30047,7 +30251,6 @@ template&lt;typename T &gt; </div>
     <tr><td class="paramname">interpolation_method</td><td>Interpolation method (see <a class="el" href="namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581">InterpolationMethod2D</a>). </td></tr>
     <tr><td class="paramname">p_noise_x</td><td>Pointer to the input noise array in the x direction (optional). </td></tr>
     <tr><td class="paramname">p_noise_y</td><td>Pointer to the input noise array in the y direction (optional). </td></tr>
-    <tr><td class="paramname">p_stretching</td><td>Pointer to the local wavenumber multiplier array (optional). </td></tr>
     <tr><td class="paramname">bbox</td><td>Domain bounding box (default: {0.f, 1.f, 0.f, 1.f}). </td></tr>
   </table>
   </dd>
@@ -30056,8 +30259,8 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a id="ad2581ee8be7619fed2e118310ad469f3" name="ad2581ee8be7619fed2e118310ad469f3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad2581ee8be7619fed2e118310ad469f3">&#9670;&#160;</a></span>interpolate2d_delaunay()</h2>
+<a id="a023e1bbf161eaa8f7db2a12d20cd18c5" name="a023e1bbf161eaa8f7db2a12d20cd18c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a023e1bbf161eaa8f7db2a12d20cd18c5">&#9670;&#160;</a></span>interpolate2d_delaunay()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -30101,12 +30304,6 @@ template&lt;typename T &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
-          <td class="paramname"><em>p_stretching</em> = <code>nullptr</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">glm::vec4&#160;</td>
           <td class="paramname"><em>bbox</em> = <code>{0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>}</code>&#160;</td>
         </tr>
@@ -30128,7 +30325,6 @@ template&lt;typename T &gt; </div>
     <tr><td class="paramname">values</td><td>Input values at (x, y). </td></tr>
     <tr><td class="paramname">p_noise_x</td><td>Pointer to the input noise array in the x direction (optional). </td></tr>
     <tr><td class="paramname">p_noise_y</td><td>Pointer to the input noise array in the y direction (optional). </td></tr>
-    <tr><td class="paramname">p_stretching</td><td>Pointer to the local wavenumber multiplier array (optional). </td></tr>
     <tr><td class="paramname">bbox</td><td>Domain bounding box (default: {0.f, 1.f, 0.f, 1.f}). </td></tr>
   </table>
   </dd>
@@ -30137,8 +30333,8 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a id="a9eae4d6bef1311227a901abad4993c89" name="a9eae4d6bef1311227a901abad4993c89"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9eae4d6bef1311227a901abad4993c89">&#9670;&#160;</a></span>interpolate2d_gaussian()</h2>
+<a id="a41d8c84dc7d1ede75b8651443dccb693" name="a41d8c84dc7d1ede75b8651443dccb693"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41d8c84dc7d1ede75b8651443dccb693">&#9670;&#160;</a></span>interpolate2d_gaussian()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -30182,12 +30378,6 @@ template&lt;typename T &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
-          <td class="paramname"><em>p_stretching</em> = <code>nullptr</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">glm::vec4&#160;</td>
           <td class="paramname"><em>bbox</em> = <code>{0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>}</code>, </td>
         </tr>
@@ -30209,8 +30399,8 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a id="a1c0db957f339fe45f7d2bde330b4c8ef" name="a1c0db957f339fe45f7d2bde330b4c8ef"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1c0db957f339fe45f7d2bde330b4c8ef">&#9670;&#160;</a></span>interpolate2d_idw()</h2>
+<a id="a482ec7ca5a77557a9fbfeb82f2bc58f2" name="a482ec7ca5a77557a9fbfeb82f2bc58f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a482ec7ca5a77557a9fbfeb82f2bc58f2">&#9670;&#160;</a></span>interpolate2d_idw()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -30254,12 +30444,6 @@ template&lt;typename T &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
-          <td class="paramname"><em>p_stretching</em> = <code>nullptr</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">glm::vec4&#160;</td>
           <td class="paramname"><em>bbox</em> = <code>{0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>}</code>, </td>
         </tr>
@@ -30281,8 +30465,8 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a id="a3c6b2fa133e70ba9f4cf44cb7ab97f3b" name="a3c6b2fa133e70ba9f4cf44cb7ab97f3b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3c6b2fa133e70ba9f4cf44cb7ab97f3b">&#9670;&#160;</a></span>interpolate2d_nearest()</h2>
+<a id="a4cb51937d8283468bc540129d491222b" name="a4cb51937d8283468bc540129d491222b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4cb51937d8283468bc540129d491222b">&#9670;&#160;</a></span>interpolate2d_nearest()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -30326,12 +30510,6 @@ template&lt;typename T &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
-          <td class="paramname"><em>p_stretching</em> = <code>nullptr</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">glm::vec4&#160;</td>
           <td class="paramname"><em>bbox</em> = <code>{0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>}</code>&#160;</td>
         </tr>
@@ -30353,12 +30531,71 @@ template&lt;typename T &gt; </div>
     <tr><td class="paramname">values</td><td>Input values at (x, y). </td></tr>
     <tr><td class="paramname">p_noise_x</td><td>Pointer to the input noise array in the x direction (optional). </td></tr>
     <tr><td class="paramname">p_noise_y</td><td>Pointer to the input noise array in the y direction (optional). </td></tr>
-    <tr><td class="paramname">p_stretching</td><td>Pointer to the local wavenumber multiplier array (optional). </td></tr>
     <tr><td class="paramname">bbox</td><td>Domain bounding box (default: {0.f, 1.f, 0.f, 1.f}). </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="classhmap_1_1Array.html" title="Array class, helper to manipulate 2D float array with &quot;(i, j)&quot; indexing.">Array</a> Output array with interpolated values. </dd></dl>
+
+</div>
+</div>
+<a id="a7f56b267f543e34806bfd334272f7392" name="a7f56b267f543e34806bfd334272f7392"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f56b267f543e34806bfd334272f7392">&#9670;&#160;</a></span>interpolate2d_nni()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classhmap_1_1Array.html">Array</a> hmap::interpolate2d_nni </td>
+          <td>(</td>
+          <td class="paramtype">glm::ivec2&#160;</td>
+          <td class="paramname"><em>shape</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; float &gt; &amp;&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; float &gt; &amp;&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; float &gt; &amp;&#160;</td>
+          <td class="paramname"><em>values</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
+          <td class="paramname"><em>p_noise_x</em> = <code>nullptr</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
+          <td class="paramname"><em>p_noise_y</em> = <code>nullptr</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">glm::vec4&#160;</td>
+          <td class="paramname"><em>bbox</em> = <code>{0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>}</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>2D interpolation using the Natural Neighbor Interpolation method. </p>
 
 </div>
 </div>
@@ -34992,7 +35229,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>,</div>
 <div class="line">                          <span class="keyword">true</span>);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclasshmap_1_1Array_html_a065a69e1a3477f6dd9f8ab88c1af554d"><div class="ttname"><a href="classhmap_1_1Array.html#a065a69e1a3477f6dd9f8ab88c1af554d">hmap::Array::resample_to_shape</a></div><div class="ttdeci">Array resample_to_shape(glm::ivec2 new_shape) const</div><div class="ttdoc">Return a resampled array of shape new_shape using bilinear interpolation.</div><div class="ttdef"><b>Definition</b> methods.cpp:317</div></div>
+<div class="ttc" id="aclasshmap_1_1Array_html_a065a69e1a3477f6dd9f8ab88c1af554d"><div class="ttname"><a href="classhmap_1_1Array.html#a065a69e1a3477f6dd9f8ab88c1af554d">hmap::Array::resample_to_shape</a></div><div class="ttdeci">Array resample_to_shape(glm::ivec2 new_shape) const</div><div class="ttdoc">Return a resampled array of shape new_shape using bilinear interpolation.</div><div class="ttdef"><b>Definition</b> methods.cpp:316</div></div>
 <div class="ttc" id="anamespacehmap_html_a1fb8077215c98a741e0de5366c2f7ca3"><div class="ttname"><a href="namespacehmap.html#a1fb8077215c98a741e0de5366c2f7ca3">hmap::downscale_transform</a></div><div class="ttdeci">void downscale_transform(Array &amp;array, float kc, std::function&lt; void(Array &amp;x)&gt; unary_op, bool apply_prefiltering=false)</div><div class="ttdoc">Applies a downscaling transformation to a 2D array using Fourier-based filtering.</div><div class="ttdef"><b>Definition</b> downscale_transform.cpp:15</div></div>
 </div><!-- fragment --></li>
 </ul>
@@ -37541,7 +37778,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 <div class="line">                          {control_hmap, z1, z2},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492">hmap::Cmap::VIRIDIS</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a2a437cb8e2d1cd5e7046b02d196d4ee7"><div class="ttname"><a href="namespacehmap.html#a2a437cb8e2d1cd5e7046b02d196d4ee7">hmap::dendry</a></div><div class="ttdeci">Array dendry(glm::ivec2 shape, glm::vec2 kw, uint seed, Array &amp;control_function, float eps=0.05, int resolution=1, float displacement=0.075, int primitives_resolution_steps=3, float slope_power=2.f, float noise_amplitude_proportion=0.01, bool add_control_function=true, float control_function_overlap=0.5f, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f}, int subsampling=1)</div><div class="ttdoc">Dendry is a locally computable procedural function that generates branching patterns at various scale...</div><div class="ttdef"><b>Definition</b> dendry.cpp:19</div></div>
+<div class="ttc" id="anamespacehmap_html_a2a437cb8e2d1cd5e7046b02d196d4ee7"><div class="ttname"><a href="namespacehmap.html#a2a437cb8e2d1cd5e7046b02d196d4ee7">hmap::dendry</a></div><div class="ttdeci">Array dendry(glm::ivec2 shape, glm::vec2 kw, uint seed, Array &amp;control_function, float eps=0.05, int resolution=1, float displacement=0.075, int primitives_resolution_steps=3, float slope_power=2.f, float noise_amplitude_proportion=0.01, bool add_control_function=true, float control_function_overlap=0.5f, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f}, int subsampling=1)</div><div class="ttdoc">Dendry is a locally computable procedural function that generates branching patterns at various scale...</div><div class="ttdef"><b>Definition</b> dendry.cpp:26</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_dendry.png" alt=""/>
 </div>

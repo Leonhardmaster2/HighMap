@@ -18,5 +18,8 @@ var searchData=
   ['distance_5ftransform_5fjfa_2ecpp_15',['distance_transform_jfa.cpp',['../distance__transform__jfa_8cpp.html',1,'']]],
   ['downscale_5ftransform_2ecpp_16',['downscale_transform.cpp',['../downscale__transform_8cpp.html',1,'']]],
   ['downscaling_2ehpp_17',['downscaling.hpp',['../downscaling_8hpp.html',1,'']]],
-  ['drainage_5fbasins_2ecpp_18',['drainage_basins.cpp',['../drainage__basins_8cpp.html',1,'']]]
+  ['drainage_5fbasin_2ecpp_18',['drainage_basin.cpp',['../drainage__basin_8cpp.html',1,'']]],
+  ['drainage_5fbasin_2ehpp_19',['drainage_basin.hpp',['../drainage__basin_8hpp.html',1,'']]],
+  ['drainage_5fbasin_5fcell_5fbased_2ecpp_20',['drainage_basin_cell_based.cpp',['../drainage__basin__cell__based_8cpp.html',1,'']]],
+  ['drainage_5fbasin_5fcell_5fbased_2ehpp_21',['drainage_basin_cell_based.hpp',['../drainage__basin__cell__based_8hpp.html',1,'']]]
 ];

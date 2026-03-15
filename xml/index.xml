@@ -161,6 +161,7 @@
     <member refid="classhmap_1_1Cloud_1a4349b98daebf829b1dd2d54d02e61231" kind="function"><name>set_values_from_border_distance</name></member>
     <member refid="classhmap_1_1Cloud_1adf0b7a7c0c7d414e5d01e19be624aa3c" kind="function"><name>set_values_from_chull_distance</name></member>
     <member refid="classhmap_1_1Cloud_1ad8b2d626436107c4b0e2c9877747375f" kind="function"><name>set_values_from_min_distance</name></member>
+    <member refid="classhmap_1_1Cloud_1a7b26dc92e0d2217b8438f1ce9376ea0d" kind="function"><name>snap_points_to_bounding_box</name></member>
     <member refid="classhmap_1_1Cloud_1af8d4e873ff4ed29eb7f140db227e03a2" kind="function"><name>shuffle</name></member>
     <member refid="classhmap_1_1Cloud_1a36e47d4857108c56193755e32374184d" kind="function"><name>to_array</name></member>
     <member refid="classhmap_1_1Cloud_1a82725745baf9ae1982c352dcb3656424" kind="function"><name>to_array_sdf</name></member>
@@ -168,6 +169,7 @@
     <member refid="classhmap_1_1Cloud_1aea876ffcd05ba762a9a12d2fc4a5d27c" kind="function"><name>to_csv</name></member>
     <member refid="classhmap_1_1Cloud_1add728a8b00dadb4a1d043ce50876c569" kind="function"><name>to_graph_delaunay</name></member>
     <member refid="classhmap_1_1Cloud_1ad9dd8073b3ce4224c3e6435b24bea561" kind="function"><name>to_png</name></member>
+    <member refid="classhmap_1_1Cloud_1a653188a0cf3bd86403a12d225b2eb1fa" kind="function"><name>to_vec3</name></member>
   </compound>
   <compound refid="structhmap_1_1ColorAdjust" kind="struct"><name>hmap::ColorAdjust</name>
     <member refid="structhmap_1_1ColorAdjust_1a093e91b19d2c4fbb10bdae6afd27aa0f" kind="variable"><name>in_min</name></member>
@@ -252,25 +254,77 @@
     <member refid="classhmap_1_1DiskSequentialTileStorage_1a6429de2f88adc934f8f57036bb1cc4d7" kind="function"><name>save_tile</name></member>
     <member refid="classhmap_1_1DiskSequentialTileStorage_1a3e7fe6dbd624d89395930affca42a8cd" kind="function"><name>tile_path</name></member>
   </compound>
-  <compound refid="classhmap_1_1DrainageBasins" kind="class"><name>hmap::DrainageBasins</name>
-    <member refid="classhmap_1_1DrainageBasins_1a54a7fd67bac75665ea412d5a681da642" kind="variable"><name>upstream_traversal</name></member>
-    <member refid="classhmap_1_1DrainageBasins_1a4371513e33b1423c83dec87c9f3fb5c2" kind="variable"><name>next</name></member>
-    <member refid="classhmap_1_1DrainageBasins_1a61a2b0ba9d6e199d96335ca69d8f9dc8" kind="variable"><name>null_cell</name></member>
-    <member refid="classhmap_1_1DrainageBasins_1ae292b57e8f33791dc912ccce8913f963" kind="function"><name>get_basins_number</name></member>
-    <member refid="classhmap_1_1DrainageBasins_1ac9ffbdd02b8b7de061c107c9253e0bb1" kind="function"><name>get_main_channels</name></member>
-    <member refid="classhmap_1_1DrainageBasins_1ab5cf855fdc65c382fc368ea05b97cc92" kind="function"><name>get_outlets</name></member>
-    <member refid="classhmap_1_1DrainageBasins_1a0433bf82de104e8b34d4cba50cb4c629" kind="function"><name>get_ridges</name></member>
-    <member refid="classhmap_1_1DrainageBasins_1a2bd77eda88780b2988dcbb17e8569b62" kind="function"><name>get_ridges_neighbors</name></member>
-    <member refid="classhmap_1_1DrainageBasins_1a8cb38f0477862b5a18f0575746a12bcb" kind="function"><name>generate_traversal</name></member>
-    <member refid="classhmap_1_1DrainageBasins_1afc2cb354bac4934e29fbdfc3d3ca1338" kind="function"><name>generate_traversal_d8</name></member>
-    <member refid="classhmap_1_1DrainageBasins_1a03be994cbe67f317cc23503368300f0b" kind="function"><name>generate_traversal_priority_flood</name></member>
-    <member refid="classhmap_1_1DrainageBasins_1ad9db9a53eefd7ff729790e53ea0acfc0" kind="function"><name>accumulate</name></member>
-    <member refid="classhmap_1_1DrainageBasins_1ab8aa80c75123d2dab5353ff603e1b862" kind="function"><name>traverse_downstream</name></member>
-    <member refid="classhmap_1_1DrainageBasins_1afe4c1a0f9ebbba05a6f19c6c1b065976" kind="function"><name>traverse_downstream</name></member>
-    <member refid="classhmap_1_1DrainageBasins_1a8f16f5fb5a6e340a9ca10dc2046ba11d" kind="function"><name>traverse_upstream</name></member>
-    <member refid="classhmap_1_1DrainageBasins_1afa727d5dc6f6ebede65fe8983ca1490a" kind="function"><name>traverse_upstream</name></member>
-    <member refid="classhmap_1_1DrainageBasins_1af58434e1988641daaebf8ef025a9fe07" kind="function"><name>remove_lakes_d8</name></member>
-    <member refid="classhmap_1_1DrainageBasins_1a5c9005d65bb03b848f4ea4ee3b5ad9c9" kind="function"><name>update_traversal</name></member>
+  <compound refid="classhmap_1_1DrainageBasin" kind="class"><name>hmap::DrainageBasin</name>
+    <member refid="classhmap_1_1DrainageBasin_1a26b6162b72b39245b66ef6b1318b6090" kind="variable"><name>xyz</name></member>
+    <member refid="classhmap_1_1DrainageBasin_1a03f1bc4c6591d4f8e7571d5ff2b36da1" kind="variable"><name>convex_hull</name></member>
+    <member refid="classhmap_1_1DrainageBasin_1a825418ef99b0764a3e6462feb7732064" kind="variable"><name>triangles</name></member>
+    <member refid="classhmap_1_1DrainageBasin_1a0a47bdf05d67de28a873f8937ffca3c5" kind="variable"><name>nbrs_indices</name></member>
+    <member refid="classhmap_1_1DrainageBasin_1a2472176ca4609b31e4fc6fad6ec12296" kind="variable"><name>nbrs_distances</name></member>
+    <member refid="classhmap_1_1DrainageBasin_1ac75050565e682c81b7c1ffc3c0f8ee70" kind="variable"><name>reference_length</name></member>
+    <member refid="classhmap_1_1DrainageBasin_1a0a2121a71772cd5af2c00d68103996db" kind="variable"><name>receivers</name></member>
+    <member refid="classhmap_1_1DrainageBasin_1a0a0b32808e4501269b0940c3b1763df8" kind="variable"><name>roots</name></member>
+    <member refid="classhmap_1_1DrainageBasin_1ac6d7d74fbdfa6edcdd65fbe6584e1dfc" kind="variable"><name>children</name></member>
+    <member refid="classhmap_1_1DrainageBasin_1ac2cfe7ced2af388ed84aea368adedef0" kind="variable"><name>outlets_mask</name></member>
+    <member refid="classhmap_1_1DrainageBasin_1ae174a31740006db490b0343c430d9008" kind="variable"><name>traversals</name></member>
+    <member refid="classhmap_1_1DrainageBasin_1a110b234503b6f7f6fb33049975401011" kind="variable"><name>invalid_index</name></member>
+    <member refid="classhmap_1_1DrainageBasin_1ac28ba57c1b2b1bd25353aeb7dc9ac54c" kind="function"><name>DrainageBasin</name></member>
+    <member refid="classhmap_1_1DrainageBasin_1a62573f79f7df537b2ec3d15e664a9539" kind="function"><name>get_xyz</name></member>
+    <member refid="classhmap_1_1DrainageBasin_1a743c7cef10ea485b4d4147d0fbec8f89" kind="function"><name>get_xyz</name></member>
+    <member refid="classhmap_1_1DrainageBasin_1adda7eed6e20a483af05ce4272dce8cd6" kind="function"><name>size</name></member>
+    <member refid="classhmap_1_1DrainageBasin_1a11a22b638c875e9832ea8387098d2001" kind="function"><name>to_csv</name></member>
+    <member refid="classhmap_1_1DrainageBasin_1a8edaab84381857910e6cc099464a4d88" kind="function"><name>compute_vertex_areas</name></member>
+    <member refid="classhmap_1_1DrainageBasin_1a754fcec95d5a3b1b5291d4de95dff2d0" kind="function"><name>remap</name></member>
+    <member refid="classhmap_1_1DrainageBasin_1a845e028a8f7339cfe4a2d9bc8d0ee04e" kind="function"><name>smooth_mesh</name></member>
+    <member refid="classhmap_1_1DrainageBasin_1ae34cf0fbe278b8cb15acf599cc86862c" kind="function"><name>smooth_mesh_taubin</name></member>
+    <member refid="classhmap_1_1DrainageBasin_1a41ce9c5a0cb26704823a38d3796df74d" kind="function"><name>compute_receivers</name></member>
+    <member refid="classhmap_1_1DrainageBasin_1ab5608cb8b6accfb29e5fb42976824553" kind="function"><name>update_stream_tree</name></member>
+    <member refid="classhmap_1_1DrainageBasin_1aac712678f6584ecdcd8e4805e3c50047" kind="function"><name>update_traversals</name></member>
+    <member refid="classhmap_1_1DrainageBasin_1a432506f1ff66a65987fb11979344a70a" kind="function"><name>get_outlets</name></member>
+    <member refid="classhmap_1_1DrainageBasin_1ab11584d1b69b0a836ea1ef1f5ba20274" kind="function"><name>set_outlets</name></member>
+    <member refid="classhmap_1_1DrainageBasin_1a3c870f93d22d0d5846a042af97165fb2" kind="function"><name>get_receivers</name></member>
+    <member refid="classhmap_1_1DrainageBasin_1ad24e268cb15bbe0a47207f7f97a66c2a" kind="function"><name>compute_strahler_order</name></member>
+    <member refid="classhmap_1_1DrainageBasin_1a1e1e17194e7b129d89bb4f339d8b8a7d" kind="function"><name>find_subroots</name></member>
+    <member refid="classhmap_1_1DrainageBasin_1a81376d87a5f35274d6a541c9c9832bda" kind="function"><name>remove_lakes</name></member>
+    <member refid="classhmap_1_1DrainageBasin_1a97ae87db86facdff8c4955454553766a" kind="function"><name>compute_response_times</name></member>
+    <member refid="classhmap_1_1DrainageBasin_1a61c39bccd602d2c04dfed14e653d01a6" kind="function"><name>update_elevations</name></member>
+    <member refid="classhmap_1_1DrainageBasin_1a6864378e3110c92b84c033b3579d58d3" kind="function"><name>accumulate_area_by_outlet</name></member>
+    <member refid="classhmap_1_1DrainageBasin_1a7b01ca0613368f0fd3dde8812e326ff1" kind="function"><name>for_each_upstream</name></member>
+    <member refid="classhmap_1_1DrainageBasin_1a4160d425b942c7b7dc3238f8e948403d" kind="function"><name>for_each_downstream</name></member>
+  </compound>
+  <compound refid="classhmap_1_1DrainageBasinCellBased" kind="class"><name>hmap::DrainageBasinCellBased</name>
+    <member refid="classhmap_1_1DrainageBasinCellBased_1a70dbdd14709a9127f63d199f7713370c" kind="variable"><name>upstream_traversal</name></member>
+    <member refid="classhmap_1_1DrainageBasinCellBased_1ad0bd6fbe612170ae441055151adfc4d1" kind="variable"><name>next</name></member>
+    <member refid="classhmap_1_1DrainageBasinCellBased_1a83abb1fc25f414637c0a861381cdd6f3" kind="variable"><name>null_cell</name></member>
+    <member refid="classhmap_1_1DrainageBasinCellBased_1ab000e59908d99d7a276d9dc29a970f3b" kind="function"><name>get_basins_number</name></member>
+    <member refid="classhmap_1_1DrainageBasinCellBased_1a81c6ffada144f73abde804047c010eac" kind="function"><name>get_main_channels</name></member>
+    <member refid="classhmap_1_1DrainageBasinCellBased_1a517f9509d3e56b99362ba1daf1416c52" kind="function"><name>get_outlets</name></member>
+    <member refid="classhmap_1_1DrainageBasinCellBased_1accaabfdd1917e09314683628a8d68b2b" kind="function"><name>get_ridges</name></member>
+    <member refid="classhmap_1_1DrainageBasinCellBased_1a41ea245fa063017e28764fa06e9a30e4" kind="function"><name>get_ridges_neighbors</name></member>
+    <member refid="classhmap_1_1DrainageBasinCellBased_1a5d7048e4c07090f1e3a9ccd7f2dc575b" kind="function"><name>generate_traversal</name></member>
+    <member refid="classhmap_1_1DrainageBasinCellBased_1a593f3759c7fbc9f85d99a22733b96a9b" kind="function"><name>generate_traversal_d8</name></member>
+    <member refid="classhmap_1_1DrainageBasinCellBased_1a69feeba4bf259cffdcd487e20d1e02dd" kind="function"><name>generate_traversal_priority_flood</name></member>
+    <member refid="classhmap_1_1DrainageBasinCellBased_1a23176095d69e432db3f18aa1ab6e0cc7" kind="function"><name>accumulate</name></member>
+    <member refid="classhmap_1_1DrainageBasinCellBased_1aa0b54e1a2012f225463b6ac44de324b0" kind="function"><name>traverse_downstream</name></member>
+    <member refid="classhmap_1_1DrainageBasinCellBased_1a5763456daaa183d95a57f3b19f19c57f" kind="function"><name>traverse_downstream</name></member>
+    <member refid="classhmap_1_1DrainageBasinCellBased_1a508c5af55c0eb64a1a4e94f59be2c772" kind="function"><name>traverse_upstream</name></member>
+    <member refid="classhmap_1_1DrainageBasinCellBased_1a9ccca597d1eb5ac91bc316e0b485cb4e" kind="function"><name>traverse_upstream</name></member>
+    <member refid="classhmap_1_1DrainageBasinCellBased_1ab000e59908d99d7a276d9dc29a970f3b" kind="function"><name>get_basins_number</name></member>
+    <member refid="classhmap_1_1DrainageBasinCellBased_1a81c6ffada144f73abde804047c010eac" kind="function"><name>get_main_channels</name></member>
+    <member refid="classhmap_1_1DrainageBasinCellBased_1a517f9509d3e56b99362ba1daf1416c52" kind="function"><name>get_outlets</name></member>
+    <member refid="classhmap_1_1DrainageBasinCellBased_1accaabfdd1917e09314683628a8d68b2b" kind="function"><name>get_ridges</name></member>
+    <member refid="classhmap_1_1DrainageBasinCellBased_1a41ea245fa063017e28764fa06e9a30e4" kind="function"><name>get_ridges_neighbors</name></member>
+    <member refid="classhmap_1_1DrainageBasinCellBased_1a5d7048e4c07090f1e3a9ccd7f2dc575b" kind="function"><name>generate_traversal</name></member>
+    <member refid="classhmap_1_1DrainageBasinCellBased_1a593f3759c7fbc9f85d99a22733b96a9b" kind="function"><name>generate_traversal_d8</name></member>
+    <member refid="classhmap_1_1DrainageBasinCellBased_1a69feeba4bf259cffdcd487e20d1e02dd" kind="function"><name>generate_traversal_priority_flood</name></member>
+    <member refid="classhmap_1_1DrainageBasinCellBased_1a23176095d69e432db3f18aa1ab6e0cc7" kind="function"><name>accumulate</name></member>
+    <member refid="classhmap_1_1DrainageBasinCellBased_1aa0b54e1a2012f225463b6ac44de324b0" kind="function"><name>traverse_downstream</name></member>
+    <member refid="classhmap_1_1DrainageBasinCellBased_1a5763456daaa183d95a57f3b19f19c57f" kind="function"><name>traverse_downstream</name></member>
+    <member refid="classhmap_1_1DrainageBasinCellBased_1a508c5af55c0eb64a1a4e94f59be2c772" kind="function"><name>traverse_upstream</name></member>
+    <member refid="classhmap_1_1DrainageBasinCellBased_1a9ccca597d1eb5ac91bc316e0b485cb4e" kind="function"><name>traverse_upstream</name></member>
+    <member refid="classhmap_1_1DrainageBasinCellBased_1a7dcc597a2553c81b53714a8f8217d815" kind="function"><name>remove_lakes_d8</name></member>
+    <member refid="classhmap_1_1DrainageBasinCellBased_1ac77d21dd9c10b6a92d2167c2cc7387a4" kind="function"><name>update_traversal</name></member>
+    <member refid="classhmap_1_1DrainageBasinCellBased_1a7dcc597a2553c81b53714a8f8217d815" kind="function"><name>remove_lakes_d8</name></member>
+    <member refid="classhmap_1_1DrainageBasinCellBased_1ac77d21dd9c10b6a92d2167c2cc7387a4" kind="function"><name>update_traversal</name></member>
   </compound>
   <compound refid="classhmap_1_1Edge" kind="class"><name>hmap::Edge</name>
     <member refid="classhmap_1_1Edge_1aaafc727142dadc4d1e5a5e040aade087" kind="variable"><name>p1</name></member>
@@ -445,6 +499,18 @@
     <member refid="structhmap_1_1Mat_1a4f148a4aa0f08e0bd0c4959b8fcc9aa5" kind="function"><name>operator()</name></member>
     <member refid="structhmap_1_1Mat_1a64286cac9e847ae6f76dd8f696108b8a" kind="function"><name>operator()</name></member>
     <member refid="structhmap_1_1Mat_1a7f02ddd8303ad668585dbed93df95b7c" kind="function"><name>operator()</name></member>
+  </compound>
+  <compound refid="classhmap_1_1NaturalNeighborInterpolator" kind="class"><name>hmap::NaturalNeighborInterpolator</name>
+    <member refid="classhmap_1_1NaturalNeighborInterpolator_1a2d4cd5c2cef48e5fd4b505cb33535f82" kind="variable"><name>handle</name></member>
+    <member refid="classhmap_1_1NaturalNeighborInterpolator_1ae4982acc2cc3229dbfd188bd5965894a" kind="variable"><name>d</name></member>
+    <member refid="classhmap_1_1NaturalNeighborInterpolator_1a740ec1ea89ab13b9df0a38070f1c08d9" kind="variable"><name>xout</name></member>
+    <member refid="classhmap_1_1NaturalNeighborInterpolator_1a175c3be4fb728ba90dafc211ec506336" kind="variable"><name>yout</name></member>
+    <member refid="classhmap_1_1NaturalNeighborInterpolator_1a5a587186b4d27719baf3721b78c31e25" kind="variable"><name>nout</name></member>
+    <member refid="classhmap_1_1NaturalNeighborInterpolator_1a59124917367a90b12592085c3d364349" kind="function"><name>NaturalNeighborInterpolator</name></member>
+    <member refid="classhmap_1_1NaturalNeighborInterpolator_1abcbea4128062e6f71712f32af3201e34" kind="function"><name>~NaturalNeighborInterpolator</name></member>
+    <member refid="classhmap_1_1NaturalNeighborInterpolator_1a9404f1043455692be64d35116a00742c" kind="function"><name>build</name></member>
+    <member refid="classhmap_1_1NaturalNeighborInterpolator_1ac998a366cfcbb0cac24b00f499a1aa8e" kind="function"><name>setup_output_points</name></member>
+    <member refid="classhmap_1_1NaturalNeighborInterpolator_1ab6a2daa3a898389853ec90a904536a78" kind="function"><name>interpolate</name></member>
   </compound>
   <compound refid="classhmap_1_1NoiseFunction" kind="class"><name>hmap::NoiseFunction</name>
     <member refid="classhmap_1_1NoiseFunction_1a332703b9642cf219cb6d6e91488648cf" kind="variable"><name>kw</name></member>
@@ -1016,8 +1082,15 @@
     <member refid="namespacehmap_1aba758c4143b6e499ec6f4385467a6d77aeebf5714b383e3b3be100ceba46d8fe5" kind="enumvalue"><name>RND_HAMMERSLEY</name></member>
     <member refid="namespacehmap_1aba758c4143b6e499ec6f4385467a6d77a8943dd2a2e3993c1e0cff37be3f65957" kind="enumvalue"><name>RND_LHS</name></member>
     <member refid="namespacehmap_1a0c714c7fa78e9384806de52a5d039f2f" kind="enum"><name>FlowDirectionMethod</name></member>
-    <member refid="namespacehmap_1a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894" kind="enumvalue"><name>FDM_D8</name></member>
-    <member refid="namespacehmap_1a0c714c7fa78e9384806de52a5d039f2faaf8f41c39c71902022e1aec12f10d372" kind="enumvalue"><name>FDM_PRIORITY_FLOOD</name></member>
+    <member refid="namespacehmap_1a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0" kind="enumvalue"><name>FDM_D8</name></member>
+    <member refid="namespacehmap_1a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359" kind="enumvalue"><name>FDM_PRIORITY_FLOOD</name></member>
+    <member refid="namespacehmap_1a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0" kind="enumvalue"><name>FDM_D8</name></member>
+    <member refid="namespacehmap_1a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359" kind="enumvalue"><name>FDM_PRIORITY_FLOOD</name></member>
+    <member refid="namespacehmap_1a0c714c7fa78e9384806de52a5d039f2f" kind="enum"><name>FlowDirectionMethod</name></member>
+    <member refid="namespacehmap_1a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0" kind="enumvalue"><name>FDM_D8</name></member>
+    <member refid="namespacehmap_1a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359" kind="enumvalue"><name>FDM_PRIORITY_FLOOD</name></member>
+    <member refid="namespacehmap_1a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0" kind="enumvalue"><name>FDM_D8</name></member>
+    <member refid="namespacehmap_1a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359" kind="enumvalue"><name>FDM_PRIORITY_FLOOD</name></member>
     <member refid="namespacehmap_1a46291bb4766800deacc1ce9b45a9ea6b" kind="enum"><name>InterpolationMethod1D</name></member>
     <member refid="namespacehmap_1a46291bb4766800deacc1ce9b45a9ea6ba55d2df97f3e8f051fb84453093374c96" kind="enumvalue"><name>AKIMA</name></member>
     <member refid="namespacehmap_1a46291bb4766800deacc1ce9b45a9ea6bac3c354b92a241b06cbe768faa834b85e" kind="enumvalue"><name>AKIMA_PERIODIC</name></member>
@@ -1031,6 +1104,7 @@
     <member refid="namespacehmap_1a5bfab5d68e822294ff90fde21b85f581af445f527425b2d746556541adf5d3d29" kind="enumvalue"><name>ITP2D_NEAREST</name></member>
     <member refid="namespacehmap_1a5bfab5d68e822294ff90fde21b85f581a4beec3d16f7dc0a1873bb04d85ea6eec" kind="enumvalue"><name>ITP2D_IDW</name></member>
     <member refid="namespacehmap_1a5bfab5d68e822294ff90fde21b85f581ac183d7ac1fa5e71a2563ed3fe93bafea" kind="enumvalue"><name>ITP2D_GAUSSIAN</name></member>
+    <member refid="namespacehmap_1a5bfab5d68e822294ff90fde21b85f581a95b33e28ebad4905884242b69db8de0d" kind="enumvalue"><name>ITP2D_NNI</name></member>
     <member refid="namespacehmap_1aa78bf111867e13c63d8bd2ec005ad6c8" kind="enum"><name>InterpolationMethodCurve</name></member>
     <member refid="namespacehmap_1aa78bf111867e13c63d8bd2ec005ad6c8ac56fe3b521e08a04c926e75d7fba28f8" kind="enumvalue"><name>BEZIER</name></member>
     <member refid="namespacehmap_1aa78bf111867e13c63d8bd2ec005ad6c8a60f62532461a103e7680bba841871635" kind="enumvalue"><name>BSPLINE</name></member>
@@ -1112,6 +1186,7 @@
     <member refid="namespacehmap_1a53ee5c5907cfb58acb8f30d94f536b21" kind="variable"><name>asset_export_format_as_string</name></member>
     <member refid="namespacehmap_1a10e5f27f8bd4a9e5feecc7016f754ebb" kind="variable"><name>point_sampling_method_as_string</name></member>
     <member refid="namespacehmap_1a2828152429273d081863dfafb293b0b6" kind="variable"><name>for_each_mode_as_string</name></member>
+    <member refid="namespacehmap_1af3cb67926262ec806d4d64c2755b1ddd" kind="function"><name>to_csv</name></member>
     <member refid="namespacehmap_1adc5300323fa35e021fd83b8b048ef3b1" kind="function"><name>adjust</name></member>
     <member refid="namespacehmap_1a518f05118e1b9704160a7c3276a2f483" kind="function"><name>cv_mat_to_array</name></member>
     <member refid="namespacehmap_1a05ee0ea53f1a06ac43741f11e25ec2cc" kind="function"><name>for_each_cell</name></member>
@@ -1471,6 +1546,10 @@
     <member refid="namespacehmap_1a136f042ce2ad8c14033f4d839f56265d" kind="function"><name>water_depth_increase</name></member>
     <member refid="namespacehmap_1ad39c72e2b4c07d3013f7b0143c31137c" kind="function"><name>water_mask</name></member>
     <member refid="namespacehmap_1abc5928f49e530927c8fb61a9afea3274" kind="function"><name>water_mask</name></member>
+    <member refid="namespacehmap_1a330255b50cec60fc2ba713fb945e2fdd" kind="function"><name>find_border_minima</name></member>
+    <member refid="namespacehmap_1a23ab6bc3fdc7d5c498f0b3c8bebdd4f9" kind="function"><name>heightmap_retopology</name></member>
+    <member refid="namespacehmap_1a40daf45c4bfaee46d924bf597fa0dbfc" kind="function"><name>invert_receiver_map</name></member>
+    <member refid="namespacehmap_1abbc07969594bdb8632f96c9ec893872e" kind="function"><name>sample_border_points</name></member>
     <member refid="namespacehmap_1a67eae4546cbed6a804eaddcde9350e1c" kind="function"><name>add_filename_suffix</name></member>
     <member refid="namespacehmap_1a0a506d871b395e49e6175499dfa1e903" kind="function"><name>make_unique_temp_dir</name></member>
     <member refid="namespacehmap_1a3f38b7faedc76835a0a902eb48e3d94b" kind="function"><name>zfill</name></member>
@@ -1484,11 +1563,12 @@
     <member refid="namespacehmap_1ae91029283452ab6d8276e3745a476b48" kind="function"><name>bilinear_interp</name></member>
     <member refid="namespacehmap_1aee026d8b23196038c2b16c370b743889" kind="function"><name>cubic_interpolate</name></member>
     <member refid="namespacehmap_1a6cfd7b1fc064e5aaef1550041f1bbc06" kind="function"><name>harmonic_interpolation</name></member>
-    <member refid="namespacehmap_1a9204361c5b04a66019fa4c24ca2ac904" kind="function"><name>interpolate2d</name></member>
-    <member refid="namespacehmap_1ad2581ee8be7619fed2e118310ad469f3" kind="function"><name>interpolate2d_delaunay</name></member>
-    <member refid="namespacehmap_1a9eae4d6bef1311227a901abad4993c89" kind="function"><name>interpolate2d_gaussian</name></member>
-    <member refid="namespacehmap_1a1c0db957f339fe45f7d2bde330b4c8ef" kind="function"><name>interpolate2d_idw</name></member>
-    <member refid="namespacehmap_1a3c6b2fa133e70ba9f4cf44cb7ab97f3b" kind="function"><name>interpolate2d_nearest</name></member>
+    <member refid="namespacehmap_1aeddca5280bfeacef3cdf4bee68a2195f" kind="function"><name>interpolate2d</name></member>
+    <member refid="namespacehmap_1a023e1bbf161eaa8f7db2a12d20cd18c5" kind="function"><name>interpolate2d_delaunay</name></member>
+    <member refid="namespacehmap_1a41d8c84dc7d1ede75b8651443dccb693" kind="function"><name>interpolate2d_gaussian</name></member>
+    <member refid="namespacehmap_1a482ec7ca5a77557a9fbfeb82f2bc58f2" kind="function"><name>interpolate2d_idw</name></member>
+    <member refid="namespacehmap_1a4cb51937d8283468bc540129d491222b" kind="function"><name>interpolate2d_nearest</name></member>
+    <member refid="namespacehmap_1a7f56b267f543e34806bfd334272f7392" kind="function"><name>interpolate2d_nni</name></member>
     <member refid="namespacehmap_1a9e8b724d238450ef72e9bd083acb9b8a" kind="function"><name>interpolate_array_bicubic</name></member>
     <member refid="namespacehmap_1aa3322e388ba870c9d6881082da2fd800" kind="function"><name>interpolate_array_bicubic</name></member>
     <member refid="namespacehmap_1a28a6744fc26597330ca8eb9bbc4cd68e" kind="function"><name>interpolate_array_bilinear</name></member>
@@ -2039,7 +2119,13 @@
   </compound>
   <compound refid="gradient_8hpp" kind="file"><name>gradient.hpp</name>
   </compound>
+  <compound refid="drainage__basin_8hpp" kind="file"><name>drainage_basin.hpp</name>
+  </compound>
+  <compound refid="drainage__basin__cell__based_8hpp" kind="file"><name>drainage_basin_cell_based.hpp</name>
+  </compound>
   <compound refid="hydrology_8hpp" kind="file"><name>hydrology.hpp</name>
+  </compound>
+  <compound refid="hydrology_2hydrology_8hpp" kind="file"><name>hydrology.hpp</name>
   </compound>
   <compound refid="dendry__array__control__function_8hpp" kind="file"><name>dendry_array_control_function.hpp</name>
   </compound>
@@ -2119,6 +2205,8 @@
     <member refid="virtual__texture_8inl_1a4d40066bfc89c4a99adf4b09355ec709" kind="function"><name>for_each_pixel</name></member>
   </compound>
   <compound refid="virtual__texture__storage_8hpp" kind="file"><name>virtual_texture_storage.hpp</name>
+  </compound>
+  <compound refid="algebra_8cpp" kind="file"><name>algebra.cpp</name>
   </compound>
   <compound refid="array_8cpp" kind="file"><name>array.cpp</name>
   </compound>
@@ -2318,7 +2406,9 @@
   </compound>
   <compound refid="basin__id_8cpp" kind="file"><name>basin_id.cpp</name>
   </compound>
-  <compound refid="drainage__basins_8cpp" kind="file"><name>drainage_basins.cpp</name>
+  <compound refid="drainage__basin_8cpp" kind="file"><name>drainage_basin.cpp</name>
+  </compound>
+  <compound refid="drainage__basin__cell__based_8cpp" kind="file"><name>drainage_basin_cell_based.cpp</name>
   </compound>
   <compound refid="find__flow__sinks_8cpp" kind="file"><name>find_flow_sinks.cpp</name>
   </compound>
@@ -2361,6 +2451,8 @@
   <compound refid="interpolate__curve_8cpp" kind="file"><name>interpolate_curve.cpp</name>
   </compound>
   <compound refid="interpolate__heightmap__virtual__array_8cpp" kind="file"><name>interpolate_heightmap_virtual_array.cpp</name>
+  </compound>
+  <compound refid="natural__neighbor__interpolator_8cpp" kind="file"><name>natural_neighbor_interpolator.cpp</name>
   </compound>
   <compound refid="kernels_8cpp" kind="file"><name>kernels.cpp</name>
   </compound>
@@ -2538,6 +2630,8 @@
   </compound>
   <compound refid="citelist" kind="page"><name>citelist</name>
   </compound>
+  <compound refid="dir_b24d7152b88e4fbbd4bf82e02a8f62ac" kind="dir"><name>HighMap/src/algebra</name>
+  </compound>
   <compound refid="dir_18260ae10bc273e257b5f9967f2734e8" kind="dir"><name>HighMap/src/array</name>
   </compound>
   <compound refid="dir_4e28b1ee7c8e4cbc3d56522a84eb43a0" kind="dir"><name>HighMap/src/authoring</name>
@@ -2585,6 +2679,8 @@
   <compound refid="dir_d1628ce034b494ec45a6557150a1be1b" kind="dir"><name>HighMap</name>
   </compound>
   <compound refid="dir_06646b66eb831be9a0698496dc1137c9" kind="dir"><name>HighMap/include/highmap</name>
+  </compound>
+  <compound refid="dir_0c2217d67f0f45456a10a49c14bfb708" kind="dir"><name>HighMap/include/highmap/hydrology</name>
   </compound>
   <compound refid="dir_ce6c722236ab9f2244a54aefafe425a2" kind="dir"><name>HighMap/src/hydrology</name>
   </compound>

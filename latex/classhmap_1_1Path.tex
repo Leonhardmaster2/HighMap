@@ -171,6 +171,8 @@ void \mbox{\hyperlink{classhmap_1_1Cloud_adf0b7a7c0c7d414e5d01e19be624aa3c}{set\
 \begin{DoxyCompactList}\small\item\em Set the values of the cloud points based on the distance to the convex hull of the cloud. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classhmap_1_1Cloud_ad8b2d626436107c4b0e2c9877747375f}{set\+\_\+values\+\_\+from\+\_\+min\+\_\+distance}} ()
 \begin{DoxyCompactList}\small\item\em Sets point values based on the distance to their nearest neighbor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classhmap_1_1Cloud_a7b26dc92e0d2217b8438f1ce9376ea0d}{snap\+\_\+points\+\_\+to\+\_\+bounding\+\_\+box}} (const glm\+::vec4 \&bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, float tolerance\+\_\+ratio=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
+\begin{DoxyCompactList}\small\item\em Snap points to the bounding box edges and corners. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classhmap_1_1Cloud_af8d4e873ff4ed29eb7f140db227e03a2}{shuffle}} (float dx, float dy, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, float dv=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Randomly perturbs the positions and values of all points in the cloud. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classhmap_1_1Cloud_a36e47d4857108c56193755e32374184d}{to\+\_\+array}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}) const
@@ -184,7 +186,9 @@ void \mbox{\hyperlink{classhmap_1_1Cloud_aea876ffcd05ba762a9a12d2fc4a5d27c}{to\+
 \mbox{\hyperlink{classhmap_1_1Graph}{Graph}} \mbox{\hyperlink{classhmap_1_1Cloud_add728a8b00dadb4a1d043ce50876c569}{to\+\_\+graph\+\_\+delaunay}} ()
 \begin{DoxyCompactList}\small\item\em Convert the cloud to a graph using Delaunay triangulation. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classhmap_1_1Cloud_ad9dd8073b3ce4224c3e6435b24bea561}{to\+\_\+png}} (const std\+::string \&fname, int cmap, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, int depth=CV\+\_\+8U, glm\+::ivec2 shape=\{512, 512\})
-\begin{DoxyCompactList}\small\item\em Saves the current data as a PNG image file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Saves the current data as a PNG image file. \end{DoxyCompactList}\item 
+std\+::vector$<$ glm\+::vec3 $>$ \mbox{\hyperlink{classhmap_1_1Cloud_a653188a0cf3bd86403a12d225b2eb1fa}{to\+\_\+vec3}} () const
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 

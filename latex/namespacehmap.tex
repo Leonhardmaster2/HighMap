@@ -36,7 +36,9 @@ class \mbox{\hyperlink{classhmap_1_1DiskLruTileStorage}{Disk\+Lru\+Tile\+Storage
 \item 
 class \mbox{\hyperlink{classhmap_1_1DiskSequentialTileStorage}{Disk\+Sequential\+Tile\+Storage}}
 \item 
-class \mbox{\hyperlink{classhmap_1_1DrainageBasins}{Drainage\+Basins}}
+class \mbox{\hyperlink{classhmap_1_1DrainageBasin}{Drainage\+Basin}}
+\item 
+class \mbox{\hyperlink{classhmap_1_1DrainageBasinCellBased}{Drainage\+Basin\+Cell\+Based}}
 \item 
 class \mbox{\hyperlink{classhmap_1_1Edge}{Edge}}
 \begin{DoxyCompactList}\small\item\em Represents a line segment in 2D space. \end{DoxyCompactList}\item 
@@ -76,6 +78,8 @@ class \mbox{\hyperlink{classhmap_1_1LruTileStorage}{Lru\+Tile\+Storage}}
 \item 
 struct \mbox{\hyperlink{structhmap_1_1Mat}{Mat}}
 \begin{DoxyCompactList}\small\item\em \doxylink{structhmap_1_1Mat}{Mat} class for basic manipulation of 2D matrices. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classhmap_1_1NaturalNeighborInterpolator}{Natural\+Neighbor\+Interpolator}}
+\item 
 class \mbox{\hyperlink{classhmap_1_1NoiseFunction}{Noise\+Function}}
 \begin{DoxyCompactList}\small\item\em A class for generating noise functions. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classhmap_1_1ParberryFunction}{Parberry\+Function}}
@@ -299,8 +303,16 @@ enum \mbox{\hyperlink{namespacehmap_aba758c4143b6e499ec6f4385467a6d77}{Point\+Sa
 , \mbox{\hyperlink{namespacehmap_aba758c4143b6e499ec6f4385467a6d77a8943dd2a2e3993c1e0cff37be3f65957}{RND\+\_\+\+LHS}}
  \}
 \begin{DoxyCompactList}\small\item\em Enumeration of point sampling methods. \end{DoxyCompactList}\item 
-enum \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}{Flow\+Direction\+Method}} \+: int \{ \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894}{FDM\+\_\+\+D8}}
-, \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2faaf8f41c39c71902022e1aec12f10d372}{FDM\+\_\+\+PRIORITY\+\_\+\+FLOOD}}
+enum \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}{Flow\+Direction\+Method}} \+: int \{ \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0}{FDM\+\_\+\+D8}}
+, \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359}{FDM\+\_\+\+PRIORITY\+\_\+\+FLOOD}}
+, \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0}{FDM\+\_\+\+D8}}
+, \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359}{FDM\+\_\+\+PRIORITY\+\_\+\+FLOOD}}
+ \}
+\item 
+enum \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}{Flow\+Direction\+Method}} \+: int \{ \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0}{FDM\+\_\+\+D8}}
+, \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359}{FDM\+\_\+\+PRIORITY\+\_\+\+FLOOD}}
+, \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0}{FDM\+\_\+\+D8}}
+, \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359}{FDM\+\_\+\+PRIORITY\+\_\+\+FLOOD}}
  \}
 \item 
 enum \mbox{\hyperlink{namespacehmap_a46291bb4766800deacc1ce9b45a9ea6b}{Interpolation\+Method1D}} \+: int \{ \newline
@@ -314,10 +326,13 @@ enum \mbox{\hyperlink{namespacehmap_a46291bb4766800deacc1ce9b45a9ea6b}{Interpola
 , \mbox{\hyperlink{namespacehmap_a46291bb4766800deacc1ce9b45a9ea6ba9c7fc85c23ace48f52c365aae11b6e0b}{STEFFEN}}
  \}
 \begin{DoxyCompactList}\small\item\em Enumeration of the available 1D interpolation methods. \end{DoxyCompactList}\item 
-enum \mbox{\hyperlink{namespacehmap_a5bfab5d68e822294ff90fde21b85f581}{Interpolation\+Method2D}} \+: int \{ \mbox{\hyperlink{namespacehmap_a5bfab5d68e822294ff90fde21b85f581a5fc536ff63a05f254ff7583cccac8a12}{ITP2\+D\+\_\+\+DELAUNAY}}
+enum \mbox{\hyperlink{namespacehmap_a5bfab5d68e822294ff90fde21b85f581}{Interpolation\+Method2D}} \+: int \{ \newline
+\mbox{\hyperlink{namespacehmap_a5bfab5d68e822294ff90fde21b85f581a5fc536ff63a05f254ff7583cccac8a12}{ITP2\+D\+\_\+\+DELAUNAY}}
 , \mbox{\hyperlink{namespacehmap_a5bfab5d68e822294ff90fde21b85f581af445f527425b2d746556541adf5d3d29}{ITP2\+D\+\_\+\+NEAREST}}
 , \mbox{\hyperlink{namespacehmap_a5bfab5d68e822294ff90fde21b85f581a4beec3d16f7dc0a1873bb04d85ea6eec}{ITP2\+D\+\_\+\+IDW}}
 , \mbox{\hyperlink{namespacehmap_a5bfab5d68e822294ff90fde21b85f581ac183d7ac1fa5e71a2563ed3fe93bafea}{ITP2\+D\+\_\+\+GAUSSIAN}}
+, \newline
+\mbox{\hyperlink{namespacehmap_a5bfab5d68e822294ff90fde21b85f581a95b33e28ebad4905884242b69db8de0d}{ITP2\+D\+\_\+\+NNI}}
  \}
 \begin{DoxyCompactList}\small\item\em Enumeration of 2D interpolation methods. \end{DoxyCompactList}\item 
 enum \mbox{\hyperlink{namespacehmap_aa78bf111867e13c63d8bd2ec005ad6c8}{Interpolation\+Method\+Curve}} \+: int \{ \newline
@@ -423,6 +438,8 @@ enum \mbox{\hyperlink{namespacehmap_ae383414b46ae8992e621c407f09ce7c5}{For\+Each
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespacehmap_af3cb67926262ec806d4d64c2755b1ddd}{to\+\_\+csv}} (const std\+::vector$<$ glm\+::vec3 $>$ \&xyz, const std\+::string \&fname)
 \item 
 glm\+::vec4 \mbox{\hyperlink{namespacehmap_adc5300323fa35e021fd83b8b048ef3b1}{adjust}} (const glm\+::vec4 \&v, float dx, float dy, float dz, float dw)
 \item 
@@ -731,11 +748,11 @@ void \mbox{\hyperlink{namespacehmap_afddb3c456ba0f74b521d10c4022925a6}{expand}} 
 void \mbox{\hyperlink{namespacehmap_affdf6ff9564f31cb988131c2b2c4c280}{expand\+\_\+directional}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir, float \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}}, float aspect\+\_\+ratio, float anisotropy=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+mask=nullptr)
 \begin{DoxyCompactList}\small\item\em Apply expansion, or "{}inflation"{}, to emphasize the bulk of the terrain, using a directional kernel. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a00144f277af41ed44d760f6eeb73ce99}{expand\+\_\+talus}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&mask, float talus, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, int ir=1, float noise\+\_\+ratio=0.\+2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
-\item 
+\begin{DoxyCompactList}\small\item\em Expand heights outward from a masked region with a talus slope limit. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_ad066ff6ef56dbf9827ff6cca9a22e58a}{faceted}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int \mbox{\hyperlink{namespacehmap_a9d00db2263b4b7b05245531c41c1b592}{neighborhood}}=0, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr)
 \begin{DoxyCompactList}\small\item\em Generate a faceted heightmap that retains the main features of the input heightmap. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a507d3be9d2b879ce7c67f83fddfa43c8}{fill\+\_\+talus}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, float talus, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, int ir=1, float noise\+\_\+ratio=0.\+2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+seed\+\_\+mask=nullptr)
-\begin{DoxyCompactList}\small\item\em Modifies a terrain array by filling it with talus slopes. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Enforce a talus slope constraint on a height field. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_aabb53a942968efe0a364f9f78079b3af}{fill\+\_\+talus}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&talus, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, int ir=1, float noise\+\_\+ratio=0.\+2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+seed\+\_\+mask=nullptr)
 \item 
 void \mbox{\hyperlink{namespacehmap_a285e9fee37c8dc0d1dc5ba86e1625480}{fill\+\_\+talus\+\_\+fast}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, glm\+::ivec2 shape\+\_\+coarse, float talus, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, int ir=1, float noise\+\_\+ratio=0.\+2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
@@ -1088,7 +1105,7 @@ void \mbox{\hyperlink{namespacehmap_a0bcc84aa462aee73e1a3a52729f21ea6}{solve\+\_
 \begin{DoxyCompactList}\small\item\em Unwraps a 2D phase array to correct discontinuities in phase data. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a184b9eed77a8732a8631f8dd73d75a44}{talus\+\_\+jump\+\_\+mask}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, float threshold, float sigma)
 \item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a8284b00f1f460f1d5a406ee45587dcd9}{basin\+\_\+id}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}{Flow\+Direction\+Method}} fd\+\_\+method=\mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894}{Flow\+Direction\+Method\+::\+FDM\+\_\+\+D8}}, bool remove\+\_\+lakes=true)
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a8284b00f1f460f1d5a406ee45587dcd9}{basin\+\_\+id}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}{Flow\+Direction\+Method}} fd\+\_\+method=Flow\+Direction\+Method\+::\+FDM\+\_\+\+D8, bool remove\+\_\+lakes=true)
 \begin{DoxyCompactList}\small\item\em Label drainage basins using a priority-\/flood algorithm. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a2e0533063a77bfc047472d1d85f3f63c}{d8\+\_\+compute\+\_\+ndip}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&d8)
 \begin{DoxyCompactList}\small\item\em Computes the number of drainage paths for each cell based on the D8 flow direction model. \end{DoxyCompactList}\item 
@@ -1142,6 +1159,14 @@ void \mbox{\hyperlink{namespacehmap_a3aebd62906b90ccfde11140e13b0853f}{water\+\_
 \begin{DoxyCompactList}\small\item\em Generates a binary mask representing water presence. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_abc5928f49e530927c8fb61a9afea3274}{water\+\_\+mask}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&water\+\_\+depth, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, float additional\+\_\+depth)
 \begin{DoxyCompactList}\small\item\em Computes a gradient-\/based water mask using an extended water depth model. \end{DoxyCompactList}\item 
+std\+::vector$<$ size\+\_\+t $>$ \mbox{\hyperlink{namespacehmap_a330255b50cec60fc2ba713fb945e2fdd}{find\+\_\+border\+\_\+minima}} (const std\+::vector$<$ glm\+::vec3 $>$ \&xyz, float eps=1e-\/6\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
+\item 
+std\+::vector$<$ glm\+::vec3 $>$ \mbox{\hyperlink{namespacehmap_a23ab6bc3fdc7d5c498f0b3c8bebdd4f9}{heightmap\+\_\+retopology}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, float max\+\_\+error, int max\+\_\+triangles=0, int max\+\_\+points=0)
+\item 
+std\+::vector$<$ std\+::vector$<$ size\+\_\+t $>$ $>$ \mbox{\hyperlink{namespacehmap_a40daf45c4bfaee46d924bf597fa0dbfc}{invert\+\_\+receiver\+\_\+map}} (const std\+::vector$<$ size\+\_\+t $>$ \&receivers)
+\item 
+std\+::vector$<$ size\+\_\+t $>$ \mbox{\hyperlink{namespacehmap_abbc07969594bdb8632f96c9ec893872e}{sample\+\_\+border\+\_\+points}} (const std\+::vector$<$ glm\+::vec3 $>$ \&xyz, size\+\_\+t nb)
+\item 
 std\+::filesystem\+::path \mbox{\hyperlink{namespacehmap_a67eae4546cbed6a804eaddcde9350e1c}{add\+\_\+filename\+\_\+suffix}} (const std\+::filesystem\+::path \&file\+\_\+path, const std\+::string \&suffix)
 \item 
 std\+::filesystem\+::path \mbox{\hyperlink{namespacehmap_a0a506d871b395e49e6175499dfa1e903}{make\+\_\+unique\+\_\+temp\+\_\+dir}} (const std\+::string \&prefix)
@@ -1168,16 +1193,18 @@ float \mbox{\hyperlink{namespacehmap_aee026d8b23196038c2b16c370b743889}{cubic\+\
 \item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a6cfd7b1fc064e5aaef1550041f1bbc06}{harmonic\+\_\+interpolation}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&mask\+\_\+fixed\+\_\+values, int iterations\+\_\+max=500, float tolerance=1e-\/5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float omega=1.\+8\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Perform harmonic interpolation on a 2D array using the Successive Over-\/\+Relaxation (SOR) method. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a9204361c5b04a66019fa4c24ca2ac904}{interpolate2d}} (glm\+::ivec2 shape, const std\+::vector$<$ float $>$ \&x, const std\+::vector$<$ float $>$ \&y, const std\+::vector$<$ float $>$ \&values, \mbox{\hyperlink{namespacehmap_a5bfab5d68e822294ff90fde21b85f581}{Interpolation\+Method2D}} interpolation\+\_\+method, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+stretching=nullptr, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_aeddca5280bfeacef3cdf4bee68a2195f}{interpolate2d}} (glm\+::ivec2 shape, const std\+::vector$<$ float $>$ \&x, const std\+::vector$<$ float $>$ \&y, const std\+::vector$<$ float $>$ \&values, \mbox{\hyperlink{namespacehmap_a5bfab5d68e822294ff90fde21b85f581}{Interpolation\+Method2D}} interpolation\+\_\+method, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
 \begin{DoxyCompactList}\small\item\em Generic 2D interpolation function. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_ad2581ee8be7619fed2e118310ad469f3}{interpolate2d\+\_\+delaunay}} (glm\+::ivec2 shape, const std\+::vector$<$ float $>$ \&x, const std\+::vector$<$ float $>$ \&y, const std\+::vector$<$ float $>$ \&values, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+stretching=nullptr, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a023e1bbf161eaa8f7db2a12d20cd18c5}{interpolate2d\+\_\+delaunay}} (glm\+::ivec2 shape, const std\+::vector$<$ float $>$ \&x, const std\+::vector$<$ float $>$ \&y, const std\+::vector$<$ float $>$ \&values, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
 \begin{DoxyCompactList}\small\item\em 2D interpolation using the Delaunay triangulation method. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a9eae4d6bef1311227a901abad4993c89}{interpolate2d\+\_\+gaussian}} (glm\+::ivec2 shape, const std\+::vector$<$ float $>$ \&x, const std\+::vector$<$ float $>$ \&y, const std\+::vector$<$ float $>$ \&values, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+stretching=nullptr, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, float sigma=0.\+1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a41d8c84dc7d1ede75b8651443dccb693}{interpolate2d\+\_\+gaussian}} (glm\+::ivec2 shape, const std\+::vector$<$ float $>$ \&x, const std\+::vector$<$ float $>$ \&y, const std\+::vector$<$ float $>$ \&values, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, float sigma=0.\+1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em 2D interpolation using the Gaussian kernel method. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a1c0db957f339fe45f7d2bde330b4c8ef}{interpolate2d\+\_\+idw}} (glm\+::ivec2 shape, const std\+::vector$<$ float $>$ \&x, const std\+::vector$<$ float $>$ \&y, const std\+::vector$<$ float $>$ \&values, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+stretching=nullptr, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, float distance\+\_\+exp=2.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a482ec7ca5a77557a9fbfeb82f2bc58f2}{interpolate2d\+\_\+idw}} (glm\+::ivec2 shape, const std\+::vector$<$ float $>$ \&x, const std\+::vector$<$ float $>$ \&y, const std\+::vector$<$ float $>$ \&values, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, float distance\+\_\+exp=2.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em 2D interpolation using the IDW method. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a3c6b2fa133e70ba9f4cf44cb7ab97f3b}{interpolate2d\+\_\+nearest}} (glm\+::ivec2 shape, const std\+::vector$<$ float $>$ \&x, const std\+::vector$<$ float $>$ \&y, const std\+::vector$<$ float $>$ \&values, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+stretching=nullptr, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a4cb51937d8283468bc540129d491222b}{interpolate2d\+\_\+nearest}} (glm\+::ivec2 shape, const std\+::vector$<$ float $>$ \&x, const std\+::vector$<$ float $>$ \&y, const std\+::vector$<$ float $>$ \&values, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
 \begin{DoxyCompactList}\small\item\em 2D interpolation using the nearest neighbor method. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a7f56b267f543e34806bfd334272f7392}{interpolate2d\+\_\+nni}} (glm\+::ivec2 shape, const std\+::vector$<$ float $>$ \&x, const std\+::vector$<$ float $>$ \&y, const std\+::vector$<$ float $>$ \&values, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
+\begin{DoxyCompactList}\small\item\em 2D interpolation using the Natural Neighbor Interpolation method. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a9e8b724d238450ef72e9bd083acb9b8a}{interpolate\+\_\+array\+\_\+bicubic}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&source, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&target, bool endpoint=false, bool pixel\+\_\+centered=true)
 \item 
 void \mbox{\hyperlink{namespacehmap_aa3322e388ba870c9d6881082da2fd800}{interpolate\+\_\+array\+\_\+bicubic}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&source, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&target, const glm\+::vec4 \&bbox\+\_\+source, const glm\+::vec4 \&bbox\+\_\+target, bool endpoint=false, bool pixel\+\_\+centered=true)
@@ -2230,15 +2257,47 @@ RND\+\_\+\+LHS&Latin Hypercube Sampling. \\
 \Hypertarget{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}\label{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f} 
 \index{hmap@{hmap}!FlowDirectionMethod@{FlowDirectionMethod}}
 \index{FlowDirectionMethod@{FlowDirectionMethod}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{FlowDirectionMethod}{FlowDirectionMethod}}
+\doxysubsubsection{\texorpdfstring{FlowDirectionMethod}{FlowDirectionMethod}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily enum \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}{hmap\+::\+Flow\+Direction\+Method}} \+: int}
 
 \begin{DoxyEnumFields}{Enumerator}
-\raisebox{\heightof{T}}[0pt][0pt]{\index{FDM\_D8@{FDM\_D8}!hmap@{hmap}}\index{hmap@{hmap}!FDM\_D8@{FDM\_D8}}}\Hypertarget{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894}\label{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894} 
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FDM\_D8@{FDM\_D8}!hmap@{hmap}}\index{hmap@{hmap}!FDM\_D8@{FDM\_D8}}}\Hypertarget{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0}\label{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0} 
 FDM\+\_\+\+D8&\\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{FDM\_PRIORITY\_FLOOD@{FDM\_PRIORITY\_FLOOD}!hmap@{hmap}}\index{hmap@{hmap}!FDM\_PRIORITY\_FLOOD@{FDM\_PRIORITY\_FLOOD}}}\Hypertarget{namespacehmap_a0c714c7fa78e9384806de52a5d039f2faaf8f41c39c71902022e1aec12f10d372}\label{namespacehmap_a0c714c7fa78e9384806de52a5d039f2faaf8f41c39c71902022e1aec12f10d372} 
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FDM\_PRIORITY\_FLOOD@{FDM\_PRIORITY\_FLOOD}!hmap@{hmap}}\index{hmap@{hmap}!FDM\_PRIORITY\_FLOOD@{FDM\_PRIORITY\_FLOOD}}}\Hypertarget{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359}\label{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359} 
+FDM\+\_\+\+PRIORITY\+\_\+\+FLOOD&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FDM\_D8@{FDM\_D8}!hmap@{hmap}}\index{hmap@{hmap}!FDM\_D8@{FDM\_D8}}}\Hypertarget{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0}\label{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0} 
+FDM\+\_\+\+D8&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FDM\_PRIORITY\_FLOOD@{FDM\_PRIORITY\_FLOOD}!hmap@{hmap}}\index{hmap@{hmap}!FDM\_PRIORITY\_FLOOD@{FDM\_PRIORITY\_FLOOD}}}\Hypertarget{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359}\label{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359} 
+FDM\+\_\+\+PRIORITY\+\_\+\+FLOOD&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}\label{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f} 
+\index{hmap@{hmap}!FlowDirectionMethod@{FlowDirectionMethod}}
+\index{FlowDirectionMethod@{FlowDirectionMethod}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{FlowDirectionMethod}{FlowDirectionMethod}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}{hmap\+::\+Flow\+Direction\+Method}} \+: int}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FDM\_D8@{FDM\_D8}!hmap@{hmap}}\index{hmap@{hmap}!FDM\_D8@{FDM\_D8}}}\Hypertarget{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0}\label{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0} 
+FDM\+\_\+\+D8&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FDM\_PRIORITY\_FLOOD@{FDM\_PRIORITY\_FLOOD}!hmap@{hmap}}\index{hmap@{hmap}!FDM\_PRIORITY\_FLOOD@{FDM\_PRIORITY\_FLOOD}}}\Hypertarget{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359}\label{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359} 
+FDM\+\_\+\+PRIORITY\+\_\+\+FLOOD&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FDM\_D8@{FDM\_D8}!hmap@{hmap}}\index{hmap@{hmap}!FDM\_D8@{FDM\_D8}}}\Hypertarget{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0}\label{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0} 
+FDM\+\_\+\+D8&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FDM\_PRIORITY\_FLOOD@{FDM\_PRIORITY\_FLOOD}!hmap@{hmap}}\index{hmap@{hmap}!FDM\_PRIORITY\_FLOOD@{FDM\_PRIORITY\_FLOOD}}}\Hypertarget{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359}\label{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359} 
 FDM\+\_\+\+PRIORITY\+\_\+\+FLOOD&\\
 \hline
 
@@ -2308,6 +2367,10 @@ ITP2\+D\+\_\+\+IDW&Inverse Distance Weighting. \\
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{ITP2D\_GAUSSIAN@{ITP2D\_GAUSSIAN}!hmap@{hmap}}\index{hmap@{hmap}!ITP2D\_GAUSSIAN@{ITP2D\_GAUSSIAN}}}\Hypertarget{namespacehmap_a5bfab5d68e822294ff90fde21b85f581ac183d7ac1fa5e71a2563ed3fe93bafea}\label{namespacehmap_a5bfab5d68e822294ff90fde21b85f581ac183d7ac1fa5e71a2563ed3fe93bafea} 
 ITP2\+D\+\_\+\+GAUSSIAN&Gaussian Distance Weighting. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ITP2D\_NNI@{ITP2D\_NNI}!hmap@{hmap}}\index{hmap@{hmap}!ITP2D\_NNI@{ITP2D\_NNI}}}\Hypertarget{namespacehmap_a5bfab5d68e822294ff90fde21b85f581a95b33e28ebad4905884242b69db8de0d}\label{namespacehmap_a5bfab5d68e822294ff90fde21b85f581a95b33e28ebad4905884242b69db8de0d} 
+ITP2\+D\+\_\+\+NNI&Natural Neighbor Interpolation. \\
 \hline
 
 \end{DoxyEnumFields}
@@ -2707,6 +2770,12 @@ VA\+\_\+\+SINGLE\+\_\+\+ARRAY\+\_\+\+DOWNSCALED&\\
 
 
 \doxysubsection{Function Documentation}
+\Hypertarget{namespacehmap_af3cb67926262ec806d4d64c2755b1ddd}\label{namespacehmap_af3cb67926262ec806d4d64c2755b1ddd} 
+\index{hmap@{hmap}!to\_csv@{to\_csv}}
+\index{to\_csv@{to\_csv}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{to\_csv()}{to\_csv()}}
+{\footnotesize\ttfamily void hmap\+::to\+\_\+csv (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ glm\+::vec3 $>$ \&}]{xyz,  }\item[{const std\+::string \&}]{fname }\end{DoxyParamCaption})}
+
 \Hypertarget{namespacehmap_adc5300323fa35e021fd83b8b048ef3b1}\label{namespacehmap_adc5300323fa35e021fd83b8b048ef3b1} 
 \index{hmap@{hmap}!adjust@{adjust}}
 \index{adjust@{adjust}!hmap@{hmap}}
@@ -9630,6 +9699,29 @@ This function expands features of the terrain represented by the input array, wi
 \doxysubsubsection{\texorpdfstring{expand\_talus()}{expand\_talus()}}
 {\footnotesize\ttfamily void hmap\+::expand\+\_\+talus (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{mask,  }\item[{float}]{talus,  }\item[{\mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{seed,  }\item[{int}]{ir = {\ttfamily 1},  }\item[{float}]{noise\+\_\+ratio = {\ttfamily 0.2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
 
+
+
+Expand heights outward from a masked region with a talus slope limit. 
+
+Starting from the non-\/zero cells of {\ttfamily mask}, heights are propagated outward using a min-\/heap so lower cells are processed first. Neighbor heights are computed from the source height plus {\ttfamily dist \texorpdfstring{$\ast$}{*} talus}, optionally perturbed with noise.
+
+Intuition\+: grows terrain outward from seed cells, filling empty space while respecting a maximum slope.
+
+
+\begin{DoxyParams}{Parameters}
+{\em z} & Height array modified in-\/place. \\
+\hline
+{\em mask} & Initial region to expand from. \\
+\hline
+{\em talus} & Maximum slope per unit distance. \\
+\hline
+{\em seed} & RNG seed for noise. \\
+\hline
+{\em ir} & Neighborhood radius. \\
+\hline
+{\em noise\+\_\+ratio} & Amplitude of slope noise. \\
+\hline
+\end{DoxyParams}
 \Hypertarget{namespacehmap_ad066ff6ef56dbf9827ff6cca9a22e58a}\label{namespacehmap_ad066ff6ef56dbf9827ff6cca9a22e58a} 
 \index{hmap@{hmap}!faceted@{faceted}}
 \index{faceted@{faceted}!hmap@{hmap}}
@@ -9684,9 +9776,11 @@ This function processes the input heightmap to produce a new heightmap with a \t
 
 
 
-Modifies a terrain array by filling it with talus slopes. 
+Enforce a talus slope constraint on a height field. 
 
-This function applies a talus formation algorithm to an existing terrain array, adjusting the heights to create natural-\/looking slopes. The process involves random perturbations influenced by noise to simulate erosion or sediment transport.
+Cells are processed from highest to lowest using a max-\/heap. Each cell may raise neighboring cells so that the slope relative to the current cell does not exceed the local talus value.
+
+Intuition\+: stabilizes an existing terrain by redistributing height so slopes do not exceed the talus limit (similar to talus erosion / relaxation but by adding material).
 
 
 \begin{DoxyParams}{Parameters}
@@ -17129,7 +17223,7 @@ A 2D array of unwrapped phase values.
 \index{hmap@{hmap}!basin\_id@{basin\_id}}
 \index{basin\_id@{basin\_id}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{basin\_id()}{basin\_id()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::basin\+\_\+id (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{\mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}{Flow\+Direction\+Method}}}]{fd\+\_\+method = {\ttfamily \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894}{Flow\+Direction\+Method\+::\+FDM\+\_\+\+D8}}},  }\item[{bool}]{remove\+\_\+lakes = {\ttfamily true} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::basin\+\_\+id (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{\mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}{Flow\+Direction\+Method}}}]{fd\+\_\+method = {\ttfamily FlowDirectionMethod\+:\+:FDM\+\_\+D8},  }\item[{bool}]{remove\+\_\+lakes = {\ttfamily true} }\end{DoxyParamCaption})}
 
 
 
@@ -17162,10 +17256,10 @@ Connectivity is 8-\/neighbor. Spill elevations between basins are detected but n
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ id1\ =\ \mbox{\hyperlink{namespacehmap_a8284b00f1f460f1d5a406ee45587dcd9}{hmap::basin\_id}}(}
 \DoxyCodeLine{\ \ \ \ \ \ z,}
-\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2faaf8f41c39c71902022e1aec12f10d372}{hmap::FlowDirectionMethod::FDM\_PRIORITY\_FLOOD}});}
+\DoxyCodeLine{\ \ \ \ \ \ hmap::FlowDirectionMethod::FDM\_PRIORITY\_FLOOD);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(id1);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ id2\ =\ \mbox{\hyperlink{namespacehmap_a8284b00f1f460f1d5a406ee45587dcd9}{hmap::basin\_id}}(z,\ \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894}{hmap::FlowDirectionMethod::FDM\_D8}});}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ id2\ =\ \mbox{\hyperlink{namespacehmap_a8284b00f1f460f1d5a406ee45587dcd9}{hmap::basin\_id}}(z,\ hmap::FlowDirectionMethod::FDM\_D8);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(id2);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_basin\_id.png"{}},\ \{z,\ id1,\ id2\},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}});}
@@ -18427,7 +18521,31 @@ An \doxylink{classhmap_1_1Array}{Array} representing the normalized water extens
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}  \Hypertarget{namespacehmap_a67eae4546cbed6a804eaddcde9350e1c}\label{namespacehmap_a67eae4546cbed6a804eaddcde9350e1c} 
+{\bfseries{Result}}  \Hypertarget{namespacehmap_a330255b50cec60fc2ba713fb945e2fdd}\label{namespacehmap_a330255b50cec60fc2ba713fb945e2fdd} 
+\index{hmap@{hmap}!find\_border\_minima@{find\_border\_minima}}
+\index{find\_border\_minima@{find\_border\_minima}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{find\_border\_minima()}{find\_border\_minima()}}
+{\footnotesize\ttfamily std\+::vector$<$ size\+\_\+t $>$ hmap\+::find\+\_\+border\+\_\+minima (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ glm\+::vec3 $>$ \&}]{xyz,  }\item[{float}]{eps = {\ttfamily 1e-\/6\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacehmap_a23ab6bc3fdc7d5c498f0b3c8bebdd4f9}\label{namespacehmap_a23ab6bc3fdc7d5c498f0b3c8bebdd4f9} 
+\index{hmap@{hmap}!heightmap\_retopology@{heightmap\_retopology}}
+\index{heightmap\_retopology@{heightmap\_retopology}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{heightmap\_retopology()}{heightmap\_retopology()}}
+{\footnotesize\ttfamily std\+::vector$<$ glm\+::vec3 $>$ hmap\+::heightmap\+\_\+retopology (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{float}]{max\+\_\+error,  }\item[{int}]{max\+\_\+triangles = {\ttfamily 0},  }\item[{int}]{max\+\_\+points = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacehmap_a40daf45c4bfaee46d924bf597fa0dbfc}\label{namespacehmap_a40daf45c4bfaee46d924bf597fa0dbfc} 
+\index{hmap@{hmap}!invert\_receiver\_map@{invert\_receiver\_map}}
+\index{invert\_receiver\_map@{invert\_receiver\_map}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{invert\_receiver\_map()}{invert\_receiver\_map()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ size\+\_\+t $>$ $>$ hmap\+::invert\+\_\+receiver\+\_\+map (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ size\+\_\+t $>$ \&}]{receivers }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacehmap_abbc07969594bdb8632f96c9ec893872e}\label{namespacehmap_abbc07969594bdb8632f96c9ec893872e} 
+\index{hmap@{hmap}!sample\_border\_points@{sample\_border\_points}}
+\index{sample\_border\_points@{sample\_border\_points}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{sample\_border\_points()}{sample\_border\_points()}}
+{\footnotesize\ttfamily std\+::vector$<$ size\+\_\+t $>$ hmap\+::sample\+\_\+border\+\_\+points (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ glm\+::vec3 $>$ \&}]{xyz,  }\item[{size\+\_\+t}]{nb }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacehmap_a67eae4546cbed6a804eaddcde9350e1c}\label{namespacehmap_a67eae4546cbed6a804eaddcde9350e1c} 
 \index{hmap@{hmap}!add\_filename\_suffix@{add\_filename\_suffix}}
 \index{add\_filename\_suffix@{add\_filename\_suffix}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{add\_filename\_suffix()}{add\_filename\_suffix()}}
@@ -18588,11 +18706,11 @@ A new 2D array containing the interpolated solution.
 \item A relaxation factor of 1 corresponds to the standard Jacobi/\+Gauss-\/\+Seidel update. 
 \end{DoxyItemize}
 \end{DoxyNote}
-\Hypertarget{namespacehmap_a9204361c5b04a66019fa4c24ca2ac904}\label{namespacehmap_a9204361c5b04a66019fa4c24ca2ac904} 
+\Hypertarget{namespacehmap_aeddca5280bfeacef3cdf4bee68a2195f}\label{namespacehmap_aeddca5280bfeacef3cdf4bee68a2195f} 
 \index{hmap@{hmap}!interpolate2d@{interpolate2d}}
 \index{interpolate2d@{interpolate2d}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{interpolate2d()}{interpolate2d()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::interpolate2d (\begin{DoxyParamCaption}\item[{glm\+::ivec2}]{shape,  }\item[{const std\+::vector$<$ float $>$ \&}]{x,  }\item[{const std\+::vector$<$ float $>$ \&}]{y,  }\item[{const std\+::vector$<$ float $>$ \&}]{values,  }\item[{\mbox{\hyperlink{namespacehmap_a5bfab5d68e822294ff90fde21b85f581}{Interpolation\+Method2D}}}]{interpolation\+\_\+method,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+x = {\ttfamily nullptr},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+y = {\ttfamily nullptr},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+stretching = {\ttfamily nullptr},  }\item[{glm\+::vec4}]{bbox = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::interpolate2d (\begin{DoxyParamCaption}\item[{glm\+::ivec2}]{shape,  }\item[{const std\+::vector$<$ float $>$ \&}]{x,  }\item[{const std\+::vector$<$ float $>$ \&}]{y,  }\item[{const std\+::vector$<$ float $>$ \&}]{values,  }\item[{\mbox{\hyperlink{namespacehmap_a5bfab5d68e822294ff90fde21b85f581}{Interpolation\+Method2D}}}]{interpolation\+\_\+method,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+x = {\ttfamily nullptr},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+y = {\ttfamily nullptr},  }\item[{glm\+::vec4}]{bbox = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}} }\end{DoxyParamCaption})}
 
 
 
@@ -18616,19 +18734,17 @@ This function performs interpolation on a 2D grid using the specified interpolat
 \hline
 {\em p\+\_\+noise\+\_\+y} & Pointer to the input noise array in the y direction (optional). \\
 \hline
-{\em p\+\_\+stretching} & Pointer to the local wavenumber multiplier array (optional). \\
-\hline
 {\em bbox} & Domain bounding box (default\+: \{0.\+f, 1.\+f, 0.\+f, 1.\+f\}). \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 \doxylink{classhmap_1_1Array}{Array} Output array with interpolated values. 
 \end{DoxyReturn}
-\Hypertarget{namespacehmap_ad2581ee8be7619fed2e118310ad469f3}\label{namespacehmap_ad2581ee8be7619fed2e118310ad469f3} 
+\Hypertarget{namespacehmap_a023e1bbf161eaa8f7db2a12d20cd18c5}\label{namespacehmap_a023e1bbf161eaa8f7db2a12d20cd18c5} 
 \index{hmap@{hmap}!interpolate2d\_delaunay@{interpolate2d\_delaunay}}
 \index{interpolate2d\_delaunay@{interpolate2d\_delaunay}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{interpolate2d\_delaunay()}{interpolate2d\_delaunay()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::interpolate2d\+\_\+delaunay (\begin{DoxyParamCaption}\item[{glm\+::ivec2}]{shape,  }\item[{const std\+::vector$<$ float $>$ \&}]{x,  }\item[{const std\+::vector$<$ float $>$ \&}]{y,  }\item[{const std\+::vector$<$ float $>$ \&}]{values,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+x = {\ttfamily nullptr},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+y = {\ttfamily nullptr},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+stretching = {\ttfamily nullptr},  }\item[{glm\+::vec4}]{bbox = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::interpolate2d\+\_\+delaunay (\begin{DoxyParamCaption}\item[{glm\+::ivec2}]{shape,  }\item[{const std\+::vector$<$ float $>$ \&}]{x,  }\item[{const std\+::vector$<$ float $>$ \&}]{y,  }\item[{const std\+::vector$<$ float $>$ \&}]{values,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+x = {\ttfamily nullptr},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+y = {\ttfamily nullptr},  }\item[{glm\+::vec4}]{bbox = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}} }\end{DoxyParamCaption})}
 
 
 
@@ -18650,39 +18766,37 @@ This function performs 2D interpolation by generating a Delaunay triangulation o
 \hline
 {\em p\+\_\+noise\+\_\+y} & Pointer to the input noise array in the y direction (optional). \\
 \hline
-{\em p\+\_\+stretching} & Pointer to the local wavenumber multiplier array (optional). \\
-\hline
 {\em bbox} & Domain bounding box (default\+: \{0.\+f, 1.\+f, 0.\+f, 1.\+f\}). \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 \doxylink{classhmap_1_1Array}{Array} Output array with interpolated values. 
 \end{DoxyReturn}
-\Hypertarget{namespacehmap_a9eae4d6bef1311227a901abad4993c89}\label{namespacehmap_a9eae4d6bef1311227a901abad4993c89} 
+\Hypertarget{namespacehmap_a41d8c84dc7d1ede75b8651443dccb693}\label{namespacehmap_a41d8c84dc7d1ede75b8651443dccb693} 
 \index{hmap@{hmap}!interpolate2d\_gaussian@{interpolate2d\_gaussian}}
 \index{interpolate2d\_gaussian@{interpolate2d\_gaussian}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{interpolate2d\_gaussian()}{interpolate2d\_gaussian()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::interpolate2d\+\_\+gaussian (\begin{DoxyParamCaption}\item[{glm\+::ivec2}]{shape,  }\item[{const std\+::vector$<$ float $>$ \&}]{x,  }\item[{const std\+::vector$<$ float $>$ \&}]{y,  }\item[{const std\+::vector$<$ float $>$ \&}]{values,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+x = {\ttfamily nullptr},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+y = {\ttfamily nullptr},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+stretching = {\ttfamily nullptr},  }\item[{glm\+::vec4}]{bbox = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}},  }\item[{float}]{sigma = {\ttfamily 0.1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::interpolate2d\+\_\+gaussian (\begin{DoxyParamCaption}\item[{glm\+::ivec2}]{shape,  }\item[{const std\+::vector$<$ float $>$ \&}]{x,  }\item[{const std\+::vector$<$ float $>$ \&}]{y,  }\item[{const std\+::vector$<$ float $>$ \&}]{values,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+x = {\ttfamily nullptr},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+y = {\ttfamily nullptr},  }\item[{glm\+::vec4}]{bbox = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}},  }\item[{float}]{sigma = {\ttfamily 0.1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
 
 
 
 2D interpolation using the Gaussian kernel method. 
 
-\Hypertarget{namespacehmap_a1c0db957f339fe45f7d2bde330b4c8ef}\label{namespacehmap_a1c0db957f339fe45f7d2bde330b4c8ef} 
+\Hypertarget{namespacehmap_a482ec7ca5a77557a9fbfeb82f2bc58f2}\label{namespacehmap_a482ec7ca5a77557a9fbfeb82f2bc58f2} 
 \index{hmap@{hmap}!interpolate2d\_idw@{interpolate2d\_idw}}
 \index{interpolate2d\_idw@{interpolate2d\_idw}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{interpolate2d\_idw()}{interpolate2d\_idw()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::interpolate2d\+\_\+idw (\begin{DoxyParamCaption}\item[{glm\+::ivec2}]{shape,  }\item[{const std\+::vector$<$ float $>$ \&}]{x,  }\item[{const std\+::vector$<$ float $>$ \&}]{y,  }\item[{const std\+::vector$<$ float $>$ \&}]{values,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+x = {\ttfamily nullptr},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+y = {\ttfamily nullptr},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+stretching = {\ttfamily nullptr},  }\item[{glm\+::vec4}]{bbox = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}},  }\item[{float}]{distance\+\_\+exp = {\ttfamily 2.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::interpolate2d\+\_\+idw (\begin{DoxyParamCaption}\item[{glm\+::ivec2}]{shape,  }\item[{const std\+::vector$<$ float $>$ \&}]{x,  }\item[{const std\+::vector$<$ float $>$ \&}]{y,  }\item[{const std\+::vector$<$ float $>$ \&}]{values,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+x = {\ttfamily nullptr},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+y = {\ttfamily nullptr},  }\item[{glm\+::vec4}]{bbox = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}},  }\item[{float}]{distance\+\_\+exp = {\ttfamily 2.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
 
 
 
 2D interpolation using the IDW method. 
 
-\Hypertarget{namespacehmap_a3c6b2fa133e70ba9f4cf44cb7ab97f3b}\label{namespacehmap_a3c6b2fa133e70ba9f4cf44cb7ab97f3b} 
+\Hypertarget{namespacehmap_a4cb51937d8283468bc540129d491222b}\label{namespacehmap_a4cb51937d8283468bc540129d491222b} 
 \index{hmap@{hmap}!interpolate2d\_nearest@{interpolate2d\_nearest}}
 \index{interpolate2d\_nearest@{interpolate2d\_nearest}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{interpolate2d\_nearest()}{interpolate2d\_nearest()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::interpolate2d\+\_\+nearest (\begin{DoxyParamCaption}\item[{glm\+::ivec2}]{shape,  }\item[{const std\+::vector$<$ float $>$ \&}]{x,  }\item[{const std\+::vector$<$ float $>$ \&}]{y,  }\item[{const std\+::vector$<$ float $>$ \&}]{values,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+x = {\ttfamily nullptr},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+y = {\ttfamily nullptr},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+stretching = {\ttfamily nullptr},  }\item[{glm\+::vec4}]{bbox = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::interpolate2d\+\_\+nearest (\begin{DoxyParamCaption}\item[{glm\+::ivec2}]{shape,  }\item[{const std\+::vector$<$ float $>$ \&}]{x,  }\item[{const std\+::vector$<$ float $>$ \&}]{y,  }\item[{const std\+::vector$<$ float $>$ \&}]{values,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+x = {\ttfamily nullptr},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+y = {\ttfamily nullptr},  }\item[{glm\+::vec4}]{bbox = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}} }\end{DoxyParamCaption})}
 
 
 
@@ -18704,14 +18818,22 @@ This function performs 2D interpolation by assigning the value of the nearest po
 \hline
 {\em p\+\_\+noise\+\_\+y} & Pointer to the input noise array in the y direction (optional). \\
 \hline
-{\em p\+\_\+stretching} & Pointer to the local wavenumber multiplier array (optional). \\
-\hline
 {\em bbox} & Domain bounding box (default\+: \{0.\+f, 1.\+f, 0.\+f, 1.\+f\}). \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 \doxylink{classhmap_1_1Array}{Array} Output array with interpolated values. 
 \end{DoxyReturn}
+\Hypertarget{namespacehmap_a7f56b267f543e34806bfd334272f7392}\label{namespacehmap_a7f56b267f543e34806bfd334272f7392} 
+\index{hmap@{hmap}!interpolate2d\_nni@{interpolate2d\_nni}}
+\index{interpolate2d\_nni@{interpolate2d\_nni}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{interpolate2d\_nni()}{interpolate2d\_nni()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::interpolate2d\+\_\+nni (\begin{DoxyParamCaption}\item[{glm\+::ivec2}]{shape,  }\item[{const std\+::vector$<$ float $>$ \&}]{x,  }\item[{const std\+::vector$<$ float $>$ \&}]{y,  }\item[{const std\+::vector$<$ float $>$ \&}]{values,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+x = {\ttfamily nullptr},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+y = {\ttfamily nullptr},  }\item[{glm\+::vec4}]{bbox = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}} }\end{DoxyParamCaption})}
+
+
+
+2D interpolation using the Natural Neighbor Interpolation method. 
+
 \Hypertarget{namespacehmap_a9e8b724d238450ef72e9bd083acb9b8a}\label{namespacehmap_a9e8b724d238450ef72e9bd083acb9b8a} 
 \index{hmap@{hmap}!interpolate\_array\_bicubic@{interpolate\_array\_bicubic}}
 \index{interpolate\_array\_bicubic@{interpolate\_array\_bicubic}!hmap@{hmap}}

@@ -1,0 +1,267 @@
+\doxysection{hmap\+::Drainage\+Basin\+Cell\+Based Class Reference}
+\hypertarget{classhmap_1_1DrainageBasinCellBased}{}\label{classhmap_1_1DrainageBasinCellBased}\index{hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}}
+
+
+{\ttfamily \#include $<$hydrology.\+hpp$>$}
+
+
+
+Collaboration diagram for hmap\+::Drainage\+Basin\+Cell\+Based\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhmap_1_1DrainageBasinCellBased__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+size\+\_\+t \mbox{\hyperlink{classhmap_1_1DrainageBasinCellBased_ab000e59908d99d7a276d9dc29a970f3b}{get\+\_\+basins\+\_\+number}} () const
+\item 
+std\+::vector$<$ std\+::vector$<$ glm\+::ivec2 $>$ $>$ \mbox{\hyperlink{classhmap_1_1DrainageBasinCellBased_a81c6ffada144f73abde804047c010eac}{get\+\_\+main\+\_\+channels}} ()
+\item 
+std\+::vector$<$ glm\+::ivec2 $>$ \mbox{\hyperlink{classhmap_1_1DrainageBasinCellBased_a517f9509d3e56b99362ba1daf1416c52}{get\+\_\+outlets}} () const
+\item 
+std\+::vector$<$ glm\+::ivec2 $>$ \mbox{\hyperlink{classhmap_1_1DrainageBasinCellBased_accaabfdd1917e09314683628a8d68b2b}{get\+\_\+ridges}} ()
+\item 
+std\+::vector$<$ std\+::vector$<$ glm\+::ivec2 $>$ $>$ \mbox{\hyperlink{classhmap_1_1DrainageBasinCellBased_a41ea245fa063017e28764fa06e9a30e4}{get\+\_\+ridges\+\_\+neighbors}} ()
+\item 
+void \mbox{\hyperlink{classhmap_1_1DrainageBasinCellBased_a5d7048e4c07090f1e3a9ccd7f2dc575b}{generate\+\_\+traversal}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}{Flow\+Direction\+Method}} fd\+\_\+method=Flow\+Direction\+Method\+::\+FDM\+\_\+\+D8, bool remove\+\_\+lakes=true, const std\+::vector$<$ glm\+::ivec2 $>$ \&outlets=\{\})
+\item 
+void \mbox{\hyperlink{classhmap_1_1DrainageBasinCellBased_a593f3759c7fbc9f85d99a22733b96a9b}{generate\+\_\+traversal\+\_\+d8}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, bool remove\+\_\+lakes=true, const std\+::vector$<$ glm\+::ivec2 $>$ \&outlets=\{\})
+\item 
+void \mbox{\hyperlink{classhmap_1_1DrainageBasinCellBased_a69feeba4bf259cffdcd487e20d1e02dd}{generate\+\_\+traversal\+\_\+priority\+\_\+flood}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, const std\+::vector$<$ glm\+::ivec2 $>$ \&outlets=\{\})
+\item 
+void \mbox{\hyperlink{classhmap_1_1DrainageBasinCellBased_a23176095d69e432db3f18aa1ab6e0cc7}{accumulate}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&acc) const
+\item 
+void \mbox{\hyperlink{classhmap_1_1DrainageBasinCellBased_aa0b54e1a2012f225463b6ac44de324b0}{traverse\+\_\+downstream}} (std\+::function$<$ void(int, int, int, int, int)$>$ op)
+\item 
+void \mbox{\hyperlink{classhmap_1_1DrainageBasinCellBased_a5763456daaa183d95a57f3b19f19c57f}{traverse\+\_\+downstream}} (std\+::function$<$ void(int, int, int)$>$ op)
+\item 
+void \mbox{\hyperlink{classhmap_1_1DrainageBasinCellBased_a508c5af55c0eb64a1a4e94f59be2c772}{traverse\+\_\+upstream}} (std\+::function$<$ void(int, int, int, int, int)$>$ op)
+\item 
+void \mbox{\hyperlink{classhmap_1_1DrainageBasinCellBased_a9ccca597d1eb5ac91bc316e0b485cb4e}{traverse\+\_\+upstream}} (std\+::function$<$ void(int, int, int)$>$ op)
+\item 
+size\+\_\+t \mbox{\hyperlink{classhmap_1_1DrainageBasinCellBased_ab000e59908d99d7a276d9dc29a970f3b}{get\+\_\+basins\+\_\+number}} () const
+\item 
+std\+::vector$<$ std\+::vector$<$ glm\+::ivec2 $>$ $>$ \mbox{\hyperlink{classhmap_1_1DrainageBasinCellBased_a81c6ffada144f73abde804047c010eac}{get\+\_\+main\+\_\+channels}} ()
+\item 
+std\+::vector$<$ glm\+::ivec2 $>$ \mbox{\hyperlink{classhmap_1_1DrainageBasinCellBased_a517f9509d3e56b99362ba1daf1416c52}{get\+\_\+outlets}} () const
+\item 
+std\+::vector$<$ glm\+::ivec2 $>$ \mbox{\hyperlink{classhmap_1_1DrainageBasinCellBased_accaabfdd1917e09314683628a8d68b2b}{get\+\_\+ridges}} ()
+\item 
+std\+::vector$<$ std\+::vector$<$ glm\+::ivec2 $>$ $>$ \mbox{\hyperlink{classhmap_1_1DrainageBasinCellBased_a41ea245fa063017e28764fa06e9a30e4}{get\+\_\+ridges\+\_\+neighbors}} ()
+\item 
+void \mbox{\hyperlink{classhmap_1_1DrainageBasinCellBased_a5d7048e4c07090f1e3a9ccd7f2dc575b}{generate\+\_\+traversal}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}{Flow\+Direction\+Method}} fd\+\_\+method=Flow\+Direction\+Method\+::\+FDM\+\_\+\+D8, bool remove\+\_\+lakes=true, const std\+::vector$<$ glm\+::ivec2 $>$ \&outlets=\{\})
+\item 
+void \mbox{\hyperlink{classhmap_1_1DrainageBasinCellBased_a593f3759c7fbc9f85d99a22733b96a9b}{generate\+\_\+traversal\+\_\+d8}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, bool remove\+\_\+lakes=true, const std\+::vector$<$ glm\+::ivec2 $>$ \&outlets=\{\})
+\item 
+void \mbox{\hyperlink{classhmap_1_1DrainageBasinCellBased_a69feeba4bf259cffdcd487e20d1e02dd}{generate\+\_\+traversal\+\_\+priority\+\_\+flood}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, const std\+::vector$<$ glm\+::ivec2 $>$ \&outlets=\{\})
+\item 
+void \mbox{\hyperlink{classhmap_1_1DrainageBasinCellBased_a23176095d69e432db3f18aa1ab6e0cc7}{accumulate}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&acc) const
+\item 
+void \mbox{\hyperlink{classhmap_1_1DrainageBasinCellBased_aa0b54e1a2012f225463b6ac44de324b0}{traverse\+\_\+downstream}} (std\+::function$<$ void(int, int, int, int, int)$>$ op)
+\item 
+void \mbox{\hyperlink{classhmap_1_1DrainageBasinCellBased_a5763456daaa183d95a57f3b19f19c57f}{traverse\+\_\+downstream}} (std\+::function$<$ void(int, int, int)$>$ op)
+\item 
+void \mbox{\hyperlink{classhmap_1_1DrainageBasinCellBased_a508c5af55c0eb64a1a4e94f59be2c772}{traverse\+\_\+upstream}} (std\+::function$<$ void(int, int, int, int, int)$>$ op)
+\item 
+void \mbox{\hyperlink{classhmap_1_1DrainageBasinCellBased_a9ccca597d1eb5ac91bc316e0b485cb4e}{traverse\+\_\+upstream}} (std\+::function$<$ void(int, int, int)$>$ op)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::vector$<$ glm\+::ivec2 $>$ $>$ \mbox{\hyperlink{classhmap_1_1DrainageBasinCellBased_a70dbdd14709a9127f63d199f7713370c}{upstream\+\_\+traversal}}
+\item 
+\mbox{\hyperlink{structhmap_1_1Mat}{Mat}}$<$ glm\+::ivec2 $>$ \mbox{\hyperlink{classhmap_1_1DrainageBasinCellBased_ad0bd6fbe612170ae441055151adfc4d1}{next}} = \mbox{\hyperlink{structhmap_1_1Mat}{Mat}}$<$glm\+::ivec2$>$(\{0, 0\})
+\item 
+glm\+::ivec2 \mbox{\hyperlink{classhmap_1_1DrainageBasinCellBased_a83abb1fc25f414637c0a861381cdd6f3}{null\+\_\+cell}} = glm\+::ivec2(-\/1, -\/1)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classhmap_1_1DrainageBasinCellBased_ab000e59908d99d7a276d9dc29a970f3b}\label{classhmap_1_1DrainageBasinCellBased_ab000e59908d99d7a276d9dc29a970f3b} 
+\index{hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}!get\_basins\_number@{get\_basins\_number}}
+\index{get\_basins\_number@{get\_basins\_number}!hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}}
+\doxysubsubsection{\texorpdfstring{get\_basins\_number()}{get\_basins\_number()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily size\+\_\+t hmap\+::\+Drainage\+Basin\+Cell\+Based\+::get\+\_\+basins\+\_\+number (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\Hypertarget{classhmap_1_1DrainageBasinCellBased_a81c6ffada144f73abde804047c010eac}\label{classhmap_1_1DrainageBasinCellBased_a81c6ffada144f73abde804047c010eac} 
+\index{hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}!get\_main\_channels@{get\_main\_channels}}
+\index{get\_main\_channels@{get\_main\_channels}!hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}}
+\doxysubsubsection{\texorpdfstring{get\_main\_channels()}{get\_main\_channels()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ glm\+::ivec2 $>$ $>$ hmap\+::\+Drainage\+Basin\+Cell\+Based\+::get\+\_\+main\+\_\+channels (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classhmap_1_1DrainageBasinCellBased_a517f9509d3e56b99362ba1daf1416c52}\label{classhmap_1_1DrainageBasinCellBased_a517f9509d3e56b99362ba1daf1416c52} 
+\index{hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}!get\_outlets@{get\_outlets}}
+\index{get\_outlets@{get\_outlets}!hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}}
+\doxysubsubsection{\texorpdfstring{get\_outlets()}{get\_outlets()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ glm\+::ivec2 $>$ hmap\+::\+Drainage\+Basin\+Cell\+Based\+::get\+\_\+outlets (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\Hypertarget{classhmap_1_1DrainageBasinCellBased_accaabfdd1917e09314683628a8d68b2b}\label{classhmap_1_1DrainageBasinCellBased_accaabfdd1917e09314683628a8d68b2b} 
+\index{hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}!get\_ridges@{get\_ridges}}
+\index{get\_ridges@{get\_ridges}!hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}}
+\doxysubsubsection{\texorpdfstring{get\_ridges()}{get\_ridges()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ glm\+::ivec2 $>$ hmap\+::\+Drainage\+Basin\+Cell\+Based\+::get\+\_\+ridges (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classhmap_1_1DrainageBasinCellBased_a41ea245fa063017e28764fa06e9a30e4}\label{classhmap_1_1DrainageBasinCellBased_a41ea245fa063017e28764fa06e9a30e4} 
+\index{hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}!get\_ridges\_neighbors@{get\_ridges\_neighbors}}
+\index{get\_ridges\_neighbors@{get\_ridges\_neighbors}!hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}}
+\doxysubsubsection{\texorpdfstring{get\_ridges\_neighbors()}{get\_ridges\_neighbors()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ glm\+::ivec2 $>$ $>$ hmap\+::\+Drainage\+Basin\+Cell\+Based\+::get\+\_\+ridges\+\_\+neighbors (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classhmap_1_1DrainageBasinCellBased_a5d7048e4c07090f1e3a9ccd7f2dc575b}\label{classhmap_1_1DrainageBasinCellBased_a5d7048e4c07090f1e3a9ccd7f2dc575b} 
+\index{hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}!generate\_traversal@{generate\_traversal}}
+\index{generate\_traversal@{generate\_traversal}!hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}}
+\doxysubsubsection{\texorpdfstring{generate\_traversal()}{generate\_traversal()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void hmap\+::\+Drainage\+Basin\+Cell\+Based\+::generate\+\_\+traversal (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{\mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}{Flow\+Direction\+Method}}}]{fd\+\_\+method = {\ttfamily FlowDirectionMethod\+:\+:FDM\+\_\+D8},  }\item[{bool}]{remove\+\_\+lakes = {\ttfamily true},  }\item[{const std\+::vector$<$ glm\+::ivec2 $>$ \&}]{outlets = {\ttfamily \{\}} }\end{DoxyParamCaption})}
+
+\Hypertarget{classhmap_1_1DrainageBasinCellBased_a593f3759c7fbc9f85d99a22733b96a9b}\label{classhmap_1_1DrainageBasinCellBased_a593f3759c7fbc9f85d99a22733b96a9b} 
+\index{hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}!generate\_traversal\_d8@{generate\_traversal\_d8}}
+\index{generate\_traversal\_d8@{generate\_traversal\_d8}!hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}}
+\doxysubsubsection{\texorpdfstring{generate\_traversal\_d8()}{generate\_traversal\_d8()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void hmap\+::\+Drainage\+Basin\+Cell\+Based\+::generate\+\_\+traversal\+\_\+d8 (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{bool}]{remove\+\_\+lakes = {\ttfamily true},  }\item[{const std\+::vector$<$ glm\+::ivec2 $>$ \&}]{outlets = {\ttfamily \{\}} }\end{DoxyParamCaption})}
+
+\Hypertarget{classhmap_1_1DrainageBasinCellBased_a69feeba4bf259cffdcd487e20d1e02dd}\label{classhmap_1_1DrainageBasinCellBased_a69feeba4bf259cffdcd487e20d1e02dd} 
+\index{hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}!generate\_traversal\_priority\_flood@{generate\_traversal\_priority\_flood}}
+\index{generate\_traversal\_priority\_flood@{generate\_traversal\_priority\_flood}!hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}}
+\doxysubsubsection{\texorpdfstring{generate\_traversal\_priority\_flood()}{generate\_traversal\_priority\_flood()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void hmap\+::\+Drainage\+Basin\+Cell\+Based\+::generate\+\_\+traversal\+\_\+priority\+\_\+flood (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{const std\+::vector$<$ glm\+::ivec2 $>$ \&}]{outlets = {\ttfamily \{\}} }\end{DoxyParamCaption})}
+
+\Hypertarget{classhmap_1_1DrainageBasinCellBased_a23176095d69e432db3f18aa1ab6e0cc7}\label{classhmap_1_1DrainageBasinCellBased_a23176095d69e432db3f18aa1ab6e0cc7} 
+\index{hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}!accumulate@{accumulate}}
+\index{accumulate@{accumulate}!hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}}
+\doxysubsubsection{\texorpdfstring{accumulate()}{accumulate()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void hmap\+::\+Drainage\+Basin\+Cell\+Based\+::accumulate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{acc }\end{DoxyParamCaption}) const}
+
+\Hypertarget{classhmap_1_1DrainageBasinCellBased_aa0b54e1a2012f225463b6ac44de324b0}\label{classhmap_1_1DrainageBasinCellBased_aa0b54e1a2012f225463b6ac44de324b0} 
+\index{hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}!traverse\_downstream@{traverse\_downstream}}
+\index{traverse\_downstream@{traverse\_downstream}!hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}}
+\doxysubsubsection{\texorpdfstring{traverse\_downstream()}{traverse\_downstream()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily void hmap\+::\+Drainage\+Basin\+Cell\+Based\+::traverse\+\_\+downstream (\begin{DoxyParamCaption}\item[{std\+::function$<$ void(int, int, int, int, int)$>$}]{op }\end{DoxyParamCaption})}
+
+\Hypertarget{classhmap_1_1DrainageBasinCellBased_a5763456daaa183d95a57f3b19f19c57f}\label{classhmap_1_1DrainageBasinCellBased_a5763456daaa183d95a57f3b19f19c57f} 
+\index{hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}!traverse\_downstream@{traverse\_downstream}}
+\index{traverse\_downstream@{traverse\_downstream}!hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}}
+\doxysubsubsection{\texorpdfstring{traverse\_downstream()}{traverse\_downstream()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily void hmap\+::\+Drainage\+Basin\+Cell\+Based\+::traverse\+\_\+downstream (\begin{DoxyParamCaption}\item[{std\+::function$<$ void(int, int, int)$>$}]{op }\end{DoxyParamCaption})}
+
+\Hypertarget{classhmap_1_1DrainageBasinCellBased_a508c5af55c0eb64a1a4e94f59be2c772}\label{classhmap_1_1DrainageBasinCellBased_a508c5af55c0eb64a1a4e94f59be2c772} 
+\index{hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}!traverse\_upstream@{traverse\_upstream}}
+\index{traverse\_upstream@{traverse\_upstream}!hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}}
+\doxysubsubsection{\texorpdfstring{traverse\_upstream()}{traverse\_upstream()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily void hmap\+::\+Drainage\+Basin\+Cell\+Based\+::traverse\+\_\+upstream (\begin{DoxyParamCaption}\item[{std\+::function$<$ void(int, int, int, int, int)$>$}]{op }\end{DoxyParamCaption})}
+
+\Hypertarget{classhmap_1_1DrainageBasinCellBased_a9ccca597d1eb5ac91bc316e0b485cb4e}\label{classhmap_1_1DrainageBasinCellBased_a9ccca597d1eb5ac91bc316e0b485cb4e} 
+\index{hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}!traverse\_upstream@{traverse\_upstream}}
+\index{traverse\_upstream@{traverse\_upstream}!hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}}
+\doxysubsubsection{\texorpdfstring{traverse\_upstream()}{traverse\_upstream()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily void hmap\+::\+Drainage\+Basin\+Cell\+Based\+::traverse\+\_\+upstream (\begin{DoxyParamCaption}\item[{std\+::function$<$ void(int, int, int)$>$}]{op }\end{DoxyParamCaption})}
+
+\Hypertarget{classhmap_1_1DrainageBasinCellBased_ab000e59908d99d7a276d9dc29a970f3b}\label{classhmap_1_1DrainageBasinCellBased_ab000e59908d99d7a276d9dc29a970f3b} 
+\index{hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}!get\_basins\_number@{get\_basins\_number}}
+\index{get\_basins\_number@{get\_basins\_number}!hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}}
+\doxysubsubsection{\texorpdfstring{get\_basins\_number()}{get\_basins\_number()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily size\+\_\+t hmap\+::\+Drainage\+Basin\+Cell\+Based\+::get\+\_\+basins\+\_\+number (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\Hypertarget{classhmap_1_1DrainageBasinCellBased_a81c6ffada144f73abde804047c010eac}\label{classhmap_1_1DrainageBasinCellBased_a81c6ffada144f73abde804047c010eac} 
+\index{hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}!get\_main\_channels@{get\_main\_channels}}
+\index{get\_main\_channels@{get\_main\_channels}!hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}}
+\doxysubsubsection{\texorpdfstring{get\_main\_channels()}{get\_main\_channels()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ glm\+::ivec2 $>$ $>$ hmap\+::\+Drainage\+Basin\+Cell\+Based\+::get\+\_\+main\+\_\+channels (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classhmap_1_1DrainageBasinCellBased_a517f9509d3e56b99362ba1daf1416c52}\label{classhmap_1_1DrainageBasinCellBased_a517f9509d3e56b99362ba1daf1416c52} 
+\index{hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}!get\_outlets@{get\_outlets}}
+\index{get\_outlets@{get\_outlets}!hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}}
+\doxysubsubsection{\texorpdfstring{get\_outlets()}{get\_outlets()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ glm\+::ivec2 $>$ hmap\+::\+Drainage\+Basin\+Cell\+Based\+::get\+\_\+outlets (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\Hypertarget{classhmap_1_1DrainageBasinCellBased_accaabfdd1917e09314683628a8d68b2b}\label{classhmap_1_1DrainageBasinCellBased_accaabfdd1917e09314683628a8d68b2b} 
+\index{hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}!get\_ridges@{get\_ridges}}
+\index{get\_ridges@{get\_ridges}!hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}}
+\doxysubsubsection{\texorpdfstring{get\_ridges()}{get\_ridges()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ glm\+::ivec2 $>$ hmap\+::\+Drainage\+Basin\+Cell\+Based\+::get\+\_\+ridges (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classhmap_1_1DrainageBasinCellBased_a41ea245fa063017e28764fa06e9a30e4}\label{classhmap_1_1DrainageBasinCellBased_a41ea245fa063017e28764fa06e9a30e4} 
+\index{hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}!get\_ridges\_neighbors@{get\_ridges\_neighbors}}
+\index{get\_ridges\_neighbors@{get\_ridges\_neighbors}!hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}}
+\doxysubsubsection{\texorpdfstring{get\_ridges\_neighbors()}{get\_ridges\_neighbors()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ glm\+::ivec2 $>$ $>$ hmap\+::\+Drainage\+Basin\+Cell\+Based\+::get\+\_\+ridges\+\_\+neighbors (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classhmap_1_1DrainageBasinCellBased_a5d7048e4c07090f1e3a9ccd7f2dc575b}\label{classhmap_1_1DrainageBasinCellBased_a5d7048e4c07090f1e3a9ccd7f2dc575b} 
+\index{hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}!generate\_traversal@{generate\_traversal}}
+\index{generate\_traversal@{generate\_traversal}!hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}}
+\doxysubsubsection{\texorpdfstring{generate\_traversal()}{generate\_traversal()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void hmap\+::\+Drainage\+Basin\+Cell\+Based\+::generate\+\_\+traversal (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{\mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}{Flow\+Direction\+Method}}}]{fd\+\_\+method = {\ttfamily FlowDirectionMethod\+:\+:FDM\+\_\+D8},  }\item[{bool}]{remove\+\_\+lakes = {\ttfamily true},  }\item[{const std\+::vector$<$ glm\+::ivec2 $>$ \&}]{outlets = {\ttfamily \{\}} }\end{DoxyParamCaption})}
+
+\Hypertarget{classhmap_1_1DrainageBasinCellBased_a593f3759c7fbc9f85d99a22733b96a9b}\label{classhmap_1_1DrainageBasinCellBased_a593f3759c7fbc9f85d99a22733b96a9b} 
+\index{hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}!generate\_traversal\_d8@{generate\_traversal\_d8}}
+\index{generate\_traversal\_d8@{generate\_traversal\_d8}!hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}}
+\doxysubsubsection{\texorpdfstring{generate\_traversal\_d8()}{generate\_traversal\_d8()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void hmap\+::\+Drainage\+Basin\+Cell\+Based\+::generate\+\_\+traversal\+\_\+d8 (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{bool}]{remove\+\_\+lakes = {\ttfamily true},  }\item[{const std\+::vector$<$ glm\+::ivec2 $>$ \&}]{outlets = {\ttfamily \{\}} }\end{DoxyParamCaption})}
+
+\Hypertarget{classhmap_1_1DrainageBasinCellBased_a69feeba4bf259cffdcd487e20d1e02dd}\label{classhmap_1_1DrainageBasinCellBased_a69feeba4bf259cffdcd487e20d1e02dd} 
+\index{hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}!generate\_traversal\_priority\_flood@{generate\_traversal\_priority\_flood}}
+\index{generate\_traversal\_priority\_flood@{generate\_traversal\_priority\_flood}!hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}}
+\doxysubsubsection{\texorpdfstring{generate\_traversal\_priority\_flood()}{generate\_traversal\_priority\_flood()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void hmap\+::\+Drainage\+Basin\+Cell\+Based\+::generate\+\_\+traversal\+\_\+priority\+\_\+flood (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{const std\+::vector$<$ glm\+::ivec2 $>$ \&}]{outlets = {\ttfamily \{\}} }\end{DoxyParamCaption})}
+
+\Hypertarget{classhmap_1_1DrainageBasinCellBased_a23176095d69e432db3f18aa1ab6e0cc7}\label{classhmap_1_1DrainageBasinCellBased_a23176095d69e432db3f18aa1ab6e0cc7} 
+\index{hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}!accumulate@{accumulate}}
+\index{accumulate@{accumulate}!hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}}
+\doxysubsubsection{\texorpdfstring{accumulate()}{accumulate()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void hmap\+::\+Drainage\+Basin\+Cell\+Based\+::accumulate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{acc }\end{DoxyParamCaption}) const}
+
+\Hypertarget{classhmap_1_1DrainageBasinCellBased_aa0b54e1a2012f225463b6ac44de324b0}\label{classhmap_1_1DrainageBasinCellBased_aa0b54e1a2012f225463b6ac44de324b0} 
+\index{hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}!traverse\_downstream@{traverse\_downstream}}
+\index{traverse\_downstream@{traverse\_downstream}!hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}}
+\doxysubsubsection{\texorpdfstring{traverse\_downstream()}{traverse\_downstream()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily void hmap\+::\+Drainage\+Basin\+Cell\+Based\+::traverse\+\_\+downstream (\begin{DoxyParamCaption}\item[{std\+::function$<$ void(int, int, int, int, int)$>$}]{op }\end{DoxyParamCaption})}
+
+\Hypertarget{classhmap_1_1DrainageBasinCellBased_a5763456daaa183d95a57f3b19f19c57f}\label{classhmap_1_1DrainageBasinCellBased_a5763456daaa183d95a57f3b19f19c57f} 
+\index{hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}!traverse\_downstream@{traverse\_downstream}}
+\index{traverse\_downstream@{traverse\_downstream}!hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}}
+\doxysubsubsection{\texorpdfstring{traverse\_downstream()}{traverse\_downstream()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily void hmap\+::\+Drainage\+Basin\+Cell\+Based\+::traverse\+\_\+downstream (\begin{DoxyParamCaption}\item[{std\+::function$<$ void(int, int, int)$>$}]{op }\end{DoxyParamCaption})}
+
+\Hypertarget{classhmap_1_1DrainageBasinCellBased_a508c5af55c0eb64a1a4e94f59be2c772}\label{classhmap_1_1DrainageBasinCellBased_a508c5af55c0eb64a1a4e94f59be2c772} 
+\index{hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}!traverse\_upstream@{traverse\_upstream}}
+\index{traverse\_upstream@{traverse\_upstream}!hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}}
+\doxysubsubsection{\texorpdfstring{traverse\_upstream()}{traverse\_upstream()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily void hmap\+::\+Drainage\+Basin\+Cell\+Based\+::traverse\+\_\+upstream (\begin{DoxyParamCaption}\item[{std\+::function$<$ void(int, int, int, int, int)$>$}]{op }\end{DoxyParamCaption})}
+
+\Hypertarget{classhmap_1_1DrainageBasinCellBased_a9ccca597d1eb5ac91bc316e0b485cb4e}\label{classhmap_1_1DrainageBasinCellBased_a9ccca597d1eb5ac91bc316e0b485cb4e} 
+\index{hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}!traverse\_upstream@{traverse\_upstream}}
+\index{traverse\_upstream@{traverse\_upstream}!hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}}
+\doxysubsubsection{\texorpdfstring{traverse\_upstream()}{traverse\_upstream()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily void hmap\+::\+Drainage\+Basin\+Cell\+Based\+::traverse\+\_\+upstream (\begin{DoxyParamCaption}\item[{std\+::function$<$ void(int, int, int)$>$}]{op }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classhmap_1_1DrainageBasinCellBased_a70dbdd14709a9127f63d199f7713370c}\label{classhmap_1_1DrainageBasinCellBased_a70dbdd14709a9127f63d199f7713370c} 
+\index{hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}!upstream\_traversal@{upstream\_traversal}}
+\index{upstream\_traversal@{upstream\_traversal}!hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}}
+\doxysubsubsection{\texorpdfstring{upstream\_traversal}{upstream\_traversal}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ glm\+::ivec2 $>$ $>$ hmap\+::\+Drainage\+Basin\+Cell\+Based\+::upstream\+\_\+traversal}
+
+\Hypertarget{classhmap_1_1DrainageBasinCellBased_ad0bd6fbe612170ae441055151adfc4d1}\label{classhmap_1_1DrainageBasinCellBased_ad0bd6fbe612170ae441055151adfc4d1} 
+\index{hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}!next@{next}}
+\index{next@{next}!hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}}
+\doxysubsubsection{\texorpdfstring{next}{next}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structhmap_1_1Mat}{Mat}}$<$ glm\+::ivec2 $>$ hmap\+::\+Drainage\+Basin\+Cell\+Based\+::next = \mbox{\hyperlink{structhmap_1_1Mat}{Mat}}$<$glm\+::ivec2$>$(\{0, 0\})}
+
+\Hypertarget{classhmap_1_1DrainageBasinCellBased_a83abb1fc25f414637c0a861381cdd6f3}\label{classhmap_1_1DrainageBasinCellBased_a83abb1fc25f414637c0a861381cdd6f3} 
+\index{hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}!null\_cell@{null\_cell}}
+\index{null\_cell@{null\_cell}!hmap::DrainageBasinCellBased@{hmap::DrainageBasinCellBased}}
+\doxysubsubsection{\texorpdfstring{null\_cell}{null\_cell}}
+{\footnotesize\ttfamily glm\+::ivec2 hmap\+::\+Drainage\+Basin\+Cell\+Based\+::null\+\_\+cell = glm\+::ivec2(-\/1, -\/1)}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+High\+Map/include/highmap/\mbox{\hyperlink{hydrology_8hpp}{hydrology.\+hpp}}\item 
+High\+Map/include/highmap/hydrology/\mbox{\hyperlink{drainage__basin__cell__based_8hpp}{drainage\+\_\+basin\+\_\+cell\+\_\+based.\+hpp}}\item 
+High\+Map/src/hydrology/\mbox{\hyperlink{drainage__basin__cell__based_8cpp}{drainage\+\_\+basin\+\_\+cell\+\_\+based.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,205 @@
+\doxysection{hmap\+::Drainage\+Basin Class Reference}
+\hypertarget{classhmap_1_1DrainageBasin}{}\label{classhmap_1_1DrainageBasin}\index{hmap::DrainageBasin@{hmap::DrainageBasin}}
+
+
+{\ttfamily \#include $<$drainage\+\_\+basin.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classhmap_1_1DrainageBasin_ac28ba57c1b2b1bd25353aeb7dc9ac54c}{Drainage\+Basin}} (std\+::vector$<$ glm\+::vec3 $>$ xyz\+\_\+)
+\item 
+const std\+::vector$<$ glm\+::vec3 $>$ \& \mbox{\hyperlink{classhmap_1_1DrainageBasin_a62573f79f7df537b2ec3d15e664a9539}{get\+\_\+xyz}} () const
+\item 
+std\+::vector$<$ glm\+::vec3 $>$ \& \mbox{\hyperlink{classhmap_1_1DrainageBasin_a743c7cef10ea485b4d4147d0fbec8f89}{get\+\_\+xyz}} ()
+\item 
+size\+\_\+t \mbox{\hyperlink{classhmap_1_1DrainageBasin_adda7eed6e20a483af05ce4272dce8cd6}{size}} () const
+\item 
+void \mbox{\hyperlink{classhmap_1_1DrainageBasin_a11a22b638c875e9832ea8387098d2001}{to\+\_\+csv}} (const std\+::string \&filename) const
+\item 
+std\+::vector$<$ float $>$ \mbox{\hyperlink{classhmap_1_1DrainageBasin_a8edaab84381857910e6cc099464a4d88}{compute\+\_\+vertex\+\_\+areas}} () const
+\item 
+void \mbox{\hyperlink{classhmap_1_1DrainageBasin_a754fcec95d5a3b1b5291d4de95dff2d0}{remap}} (float zmin=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float zmax=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
+\item 
+void \mbox{\hyperlink{classhmap_1_1DrainageBasin_a845e028a8f7339cfe4a2d9bc8d0ee04e}{smooth\+\_\+mesh}} (float lambda, int iterations=1)
+\item 
+void \mbox{\hyperlink{classhmap_1_1DrainageBasin_ae34cf0fbe278b8cb15acf599cc86862c}{smooth\+\_\+mesh\+\_\+taubin}} (float lambda, float mu, int iterations=1)
+\item 
+void \mbox{\hyperlink{classhmap_1_1DrainageBasin_a41ce9c5a0cb26704823a38d3796df74d}{compute\+\_\+receivers}} ()
+\item 
+void \mbox{\hyperlink{classhmap_1_1DrainageBasin_ab5608cb8b6accfb29e5fb42976824553}{update\+\_\+stream\+\_\+tree}} ()
+\item 
+void \mbox{\hyperlink{classhmap_1_1DrainageBasin_aac712678f6584ecdcd8e4805e3c50047}{update\+\_\+traversals}} ()
+\item 
+std\+::vector$<$ size\+\_\+t $>$ \mbox{\hyperlink{classhmap_1_1DrainageBasin_a432506f1ff66a65987fb11979344a70a}{get\+\_\+outlets}} () const
+\item 
+void \mbox{\hyperlink{classhmap_1_1DrainageBasin_ab11584d1b69b0a836ea1ef1f5ba20274}{set\+\_\+outlets}} (const std\+::vector$<$ size\+\_\+t $>$ \&outlet\+\_\+indices)
+\item 
+const std\+::vector$<$ size\+\_\+t $>$ \& \mbox{\hyperlink{classhmap_1_1DrainageBasin_a3c870f93d22d0d5846a042af97165fb2}{get\+\_\+receivers}} () const
+\item 
+std\+::vector$<$ size\+\_\+t $>$ \mbox{\hyperlink{classhmap_1_1DrainageBasin_ad24e268cb15bbe0a47207f7f97a66c2a}{compute\+\_\+strahler\+\_\+order}} () const
+\item 
+std\+::pair$<$ std\+::vector$<$ size\+\_\+t $>$, bool $>$ \mbox{\hyperlink{classhmap_1_1DrainageBasin_a1e1e17194e7b129d89bb4f339d8b8a7d}{find\+\_\+subroots}} ()
+\item 
+void \mbox{\hyperlink{classhmap_1_1DrainageBasin_a81376d87a5f35274d6a541c9c9832bda}{remove\+\_\+lakes}} (const std\+::vector$<$ size\+\_\+t $>$ \&subroot)
+\item 
+std\+::vector$<$ float $>$ \mbox{\hyperlink{classhmap_1_1DrainageBasin_a97ae87db86facdff8c4955454553766a}{compute\+\_\+response\+\_\+times}} (const std\+::vector$<$ float $>$ \&area\+\_\+acc, const std\+::vector$<$ float $>$ \&erodibility, float m\+\_\+exp) const
+\item 
+float \mbox{\hyperlink{classhmap_1_1DrainageBasin_a61c39bccd602d2c04dfed14e653d01a6}{update\+\_\+elevations}} (const std\+::vector$<$ float $>$ \&response\+\_\+times, float uplift\+\_\+rate, const std\+::vector$<$ float $>$ \&max\+\_\+slope)
+\item 
+void \mbox{\hyperlink{classhmap_1_1DrainageBasin_a6864378e3110c92b84c033b3579d58d3}{accumulate\+\_\+area\+\_\+by\+\_\+outlet}} (const std\+::vector$<$ float $>$ \&area, std\+::vector$<$ float $>$ \&acc) const
+\item 
+const std\+::vector$<$ size\+\_\+t $>$ \& \mbox{\hyperlink{classhmap_1_1DrainageBasin_a7b01ca0613368f0fd3dde8812e326ff1}{for\+\_\+each\+\_\+upstream}} (size\+\_\+t outlet) const
+\item 
+auto \mbox{\hyperlink{classhmap_1_1DrainageBasin_a4160d425b942c7b7dc3238f8e948403d}{for\+\_\+each\+\_\+downstream}} (size\+\_\+t outlet) const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classhmap_1_1DrainageBasin_ac28ba57c1b2b1bd25353aeb7dc9ac54c}\label{classhmap_1_1DrainageBasin_ac28ba57c1b2b1bd25353aeb7dc9ac54c} 
+\index{hmap::DrainageBasin@{hmap::DrainageBasin}!DrainageBasin@{DrainageBasin}}
+\index{DrainageBasin@{DrainageBasin}!hmap::DrainageBasin@{hmap::DrainageBasin}}
+\doxysubsubsection{\texorpdfstring{DrainageBasin()}{DrainageBasin()}}
+{\footnotesize\ttfamily hmap\+::\+Drainage\+Basin\+::\+Drainage\+Basin (\begin{DoxyParamCaption}\item[{std\+::vector$<$ glm\+::vec3 $>$}]{xyz\+\_\+ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classhmap_1_1DrainageBasin_a62573f79f7df537b2ec3d15e664a9539}\label{classhmap_1_1DrainageBasin_a62573f79f7df537b2ec3d15e664a9539} 
+\index{hmap::DrainageBasin@{hmap::DrainageBasin}!get\_xyz@{get\_xyz}}
+\index{get\_xyz@{get\_xyz}!hmap::DrainageBasin@{hmap::DrainageBasin}}
+\doxysubsubsection{\texorpdfstring{get\_xyz()}{get\_xyz()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily const std\+::vector$<$ glm\+::vec3 $>$ \& hmap\+::\+Drainage\+Basin\+::get\+\_\+xyz (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\Hypertarget{classhmap_1_1DrainageBasin_a743c7cef10ea485b4d4147d0fbec8f89}\label{classhmap_1_1DrainageBasin_a743c7cef10ea485b4d4147d0fbec8f89} 
+\index{hmap::DrainageBasin@{hmap::DrainageBasin}!get\_xyz@{get\_xyz}}
+\index{get\_xyz@{get\_xyz}!hmap::DrainageBasin@{hmap::DrainageBasin}}
+\doxysubsubsection{\texorpdfstring{get\_xyz()}{get\_xyz()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ glm\+::vec3 $>$ \& hmap\+::\+Drainage\+Basin\+::get\+\_\+xyz (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classhmap_1_1DrainageBasin_adda7eed6e20a483af05ce4272dce8cd6}\label{classhmap_1_1DrainageBasin_adda7eed6e20a483af05ce4272dce8cd6} 
+\index{hmap::DrainageBasin@{hmap::DrainageBasin}!size@{size}}
+\index{size@{size}!hmap::DrainageBasin@{hmap::DrainageBasin}}
+\doxysubsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily size\+\_\+t hmap\+::\+Drainage\+Basin\+::size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\Hypertarget{classhmap_1_1DrainageBasin_a11a22b638c875e9832ea8387098d2001}\label{classhmap_1_1DrainageBasin_a11a22b638c875e9832ea8387098d2001} 
+\index{hmap::DrainageBasin@{hmap::DrainageBasin}!to\_csv@{to\_csv}}
+\index{to\_csv@{to\_csv}!hmap::DrainageBasin@{hmap::DrainageBasin}}
+\doxysubsubsection{\texorpdfstring{to\_csv()}{to\_csv()}}
+{\footnotesize\ttfamily void hmap\+::\+Drainage\+Basin\+::to\+\_\+csv (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption}) const}
+
+\Hypertarget{classhmap_1_1DrainageBasin_a8edaab84381857910e6cc099464a4d88}\label{classhmap_1_1DrainageBasin_a8edaab84381857910e6cc099464a4d88} 
+\index{hmap::DrainageBasin@{hmap::DrainageBasin}!compute\_vertex\_areas@{compute\_vertex\_areas}}
+\index{compute\_vertex\_areas@{compute\_vertex\_areas}!hmap::DrainageBasin@{hmap::DrainageBasin}}
+\doxysubsubsection{\texorpdfstring{compute\_vertex\_areas()}{compute\_vertex\_areas()}}
+{\footnotesize\ttfamily std\+::vector$<$ float $>$ hmap\+::\+Drainage\+Basin\+::compute\+\_\+vertex\+\_\+areas (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\Hypertarget{classhmap_1_1DrainageBasin_a754fcec95d5a3b1b5291d4de95dff2d0}\label{classhmap_1_1DrainageBasin_a754fcec95d5a3b1b5291d4de95dff2d0} 
+\index{hmap::DrainageBasin@{hmap::DrainageBasin}!remap@{remap}}
+\index{remap@{remap}!hmap::DrainageBasin@{hmap::DrainageBasin}}
+\doxysubsubsection{\texorpdfstring{remap()}{remap()}}
+{\footnotesize\ttfamily void hmap\+::\+Drainage\+Basin\+::remap (\begin{DoxyParamCaption}\item[{float}]{zmin = {\ttfamily 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{zmax = {\ttfamily 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
+
+\Hypertarget{classhmap_1_1DrainageBasin_a845e028a8f7339cfe4a2d9bc8d0ee04e}\label{classhmap_1_1DrainageBasin_a845e028a8f7339cfe4a2d9bc8d0ee04e} 
+\index{hmap::DrainageBasin@{hmap::DrainageBasin}!smooth\_mesh@{smooth\_mesh}}
+\index{smooth\_mesh@{smooth\_mesh}!hmap::DrainageBasin@{hmap::DrainageBasin}}
+\doxysubsubsection{\texorpdfstring{smooth\_mesh()}{smooth\_mesh()}}
+{\footnotesize\ttfamily void hmap\+::\+Drainage\+Basin\+::smooth\+\_\+mesh (\begin{DoxyParamCaption}\item[{float}]{lambda,  }\item[{int}]{iterations = {\ttfamily 1} }\end{DoxyParamCaption})}
+
+\Hypertarget{classhmap_1_1DrainageBasin_ae34cf0fbe278b8cb15acf599cc86862c}\label{classhmap_1_1DrainageBasin_ae34cf0fbe278b8cb15acf599cc86862c} 
+\index{hmap::DrainageBasin@{hmap::DrainageBasin}!smooth\_mesh\_taubin@{smooth\_mesh\_taubin}}
+\index{smooth\_mesh\_taubin@{smooth\_mesh\_taubin}!hmap::DrainageBasin@{hmap::DrainageBasin}}
+\doxysubsubsection{\texorpdfstring{smooth\_mesh\_taubin()}{smooth\_mesh\_taubin()}}
+{\footnotesize\ttfamily void hmap\+::\+Drainage\+Basin\+::smooth\+\_\+mesh\+\_\+taubin (\begin{DoxyParamCaption}\item[{float}]{lambda,  }\item[{float}]{mu,  }\item[{int}]{iterations = {\ttfamily 1} }\end{DoxyParamCaption})}
+
+\Hypertarget{classhmap_1_1DrainageBasin_a41ce9c5a0cb26704823a38d3796df74d}\label{classhmap_1_1DrainageBasin_a41ce9c5a0cb26704823a38d3796df74d} 
+\index{hmap::DrainageBasin@{hmap::DrainageBasin}!compute\_receivers@{compute\_receivers}}
+\index{compute\_receivers@{compute\_receivers}!hmap::DrainageBasin@{hmap::DrainageBasin}}
+\doxysubsubsection{\texorpdfstring{compute\_receivers()}{compute\_receivers()}}
+{\footnotesize\ttfamily void hmap\+::\+Drainage\+Basin\+::compute\+\_\+receivers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classhmap_1_1DrainageBasin_ab5608cb8b6accfb29e5fb42976824553}\label{classhmap_1_1DrainageBasin_ab5608cb8b6accfb29e5fb42976824553} 
+\index{hmap::DrainageBasin@{hmap::DrainageBasin}!update\_stream\_tree@{update\_stream\_tree}}
+\index{update\_stream\_tree@{update\_stream\_tree}!hmap::DrainageBasin@{hmap::DrainageBasin}}
+\doxysubsubsection{\texorpdfstring{update\_stream\_tree()}{update\_stream\_tree()}}
+{\footnotesize\ttfamily void hmap\+::\+Drainage\+Basin\+::update\+\_\+stream\+\_\+tree (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classhmap_1_1DrainageBasin_aac712678f6584ecdcd8e4805e3c50047}\label{classhmap_1_1DrainageBasin_aac712678f6584ecdcd8e4805e3c50047} 
+\index{hmap::DrainageBasin@{hmap::DrainageBasin}!update\_traversals@{update\_traversals}}
+\index{update\_traversals@{update\_traversals}!hmap::DrainageBasin@{hmap::DrainageBasin}}
+\doxysubsubsection{\texorpdfstring{update\_traversals()}{update\_traversals()}}
+{\footnotesize\ttfamily void hmap\+::\+Drainage\+Basin\+::update\+\_\+traversals (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classhmap_1_1DrainageBasin_a432506f1ff66a65987fb11979344a70a}\label{classhmap_1_1DrainageBasin_a432506f1ff66a65987fb11979344a70a} 
+\index{hmap::DrainageBasin@{hmap::DrainageBasin}!get\_outlets@{get\_outlets}}
+\index{get\_outlets@{get\_outlets}!hmap::DrainageBasin@{hmap::DrainageBasin}}
+\doxysubsubsection{\texorpdfstring{get\_outlets()}{get\_outlets()}}
+{\footnotesize\ttfamily std\+::vector$<$ size\+\_\+t $>$ hmap\+::\+Drainage\+Basin\+::get\+\_\+outlets (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\Hypertarget{classhmap_1_1DrainageBasin_ab11584d1b69b0a836ea1ef1f5ba20274}\label{classhmap_1_1DrainageBasin_ab11584d1b69b0a836ea1ef1f5ba20274} 
+\index{hmap::DrainageBasin@{hmap::DrainageBasin}!set\_outlets@{set\_outlets}}
+\index{set\_outlets@{set\_outlets}!hmap::DrainageBasin@{hmap::DrainageBasin}}
+\doxysubsubsection{\texorpdfstring{set\_outlets()}{set\_outlets()}}
+{\footnotesize\ttfamily void hmap\+::\+Drainage\+Basin\+::set\+\_\+outlets (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ size\+\_\+t $>$ \&}]{outlet\+\_\+indices }\end{DoxyParamCaption})}
+
+\Hypertarget{classhmap_1_1DrainageBasin_a3c870f93d22d0d5846a042af97165fb2}\label{classhmap_1_1DrainageBasin_a3c870f93d22d0d5846a042af97165fb2} 
+\index{hmap::DrainageBasin@{hmap::DrainageBasin}!get\_receivers@{get\_receivers}}
+\index{get\_receivers@{get\_receivers}!hmap::DrainageBasin@{hmap::DrainageBasin}}
+\doxysubsubsection{\texorpdfstring{get\_receivers()}{get\_receivers()}}
+{\footnotesize\ttfamily const std\+::vector$<$ size\+\_\+t $>$ \& hmap\+::\+Drainage\+Basin\+::get\+\_\+receivers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\Hypertarget{classhmap_1_1DrainageBasin_ad24e268cb15bbe0a47207f7f97a66c2a}\label{classhmap_1_1DrainageBasin_ad24e268cb15bbe0a47207f7f97a66c2a} 
+\index{hmap::DrainageBasin@{hmap::DrainageBasin}!compute\_strahler\_order@{compute\_strahler\_order}}
+\index{compute\_strahler\_order@{compute\_strahler\_order}!hmap::DrainageBasin@{hmap::DrainageBasin}}
+\doxysubsubsection{\texorpdfstring{compute\_strahler\_order()}{compute\_strahler\_order()}}
+{\footnotesize\ttfamily std\+::vector$<$ size\+\_\+t $>$ hmap\+::\+Drainage\+Basin\+::compute\+\_\+strahler\+\_\+order (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\Hypertarget{classhmap_1_1DrainageBasin_a1e1e17194e7b129d89bb4f339d8b8a7d}\label{classhmap_1_1DrainageBasin_a1e1e17194e7b129d89bb4f339d8b8a7d} 
+\index{hmap::DrainageBasin@{hmap::DrainageBasin}!find\_subroots@{find\_subroots}}
+\index{find\_subroots@{find\_subroots}!hmap::DrainageBasin@{hmap::DrainageBasin}}
+\doxysubsubsection{\texorpdfstring{find\_subroots()}{find\_subroots()}}
+{\footnotesize\ttfamily std\+::pair$<$ std\+::vector$<$ size\+\_\+t $>$, bool $>$ hmap\+::\+Drainage\+Basin\+::find\+\_\+subroots (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classhmap_1_1DrainageBasin_a81376d87a5f35274d6a541c9c9832bda}\label{classhmap_1_1DrainageBasin_a81376d87a5f35274d6a541c9c9832bda} 
+\index{hmap::DrainageBasin@{hmap::DrainageBasin}!remove\_lakes@{remove\_lakes}}
+\index{remove\_lakes@{remove\_lakes}!hmap::DrainageBasin@{hmap::DrainageBasin}}
+\doxysubsubsection{\texorpdfstring{remove\_lakes()}{remove\_lakes()}}
+{\footnotesize\ttfamily void hmap\+::\+Drainage\+Basin\+::remove\+\_\+lakes (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ size\+\_\+t $>$ \&}]{subroot }\end{DoxyParamCaption})}
+
+\Hypertarget{classhmap_1_1DrainageBasin_a97ae87db86facdff8c4955454553766a}\label{classhmap_1_1DrainageBasin_a97ae87db86facdff8c4955454553766a} 
+\index{hmap::DrainageBasin@{hmap::DrainageBasin}!compute\_response\_times@{compute\_response\_times}}
+\index{compute\_response\_times@{compute\_response\_times}!hmap::DrainageBasin@{hmap::DrainageBasin}}
+\doxysubsubsection{\texorpdfstring{compute\_response\_times()}{compute\_response\_times()}}
+{\footnotesize\ttfamily std\+::vector$<$ float $>$ hmap\+::\+Drainage\+Basin\+::compute\+\_\+response\+\_\+times (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ float $>$ \&}]{area\+\_\+acc,  }\item[{const std\+::vector$<$ float $>$ \&}]{erodibility,  }\item[{float}]{m\+\_\+exp }\end{DoxyParamCaption}) const}
+
+\Hypertarget{classhmap_1_1DrainageBasin_a61c39bccd602d2c04dfed14e653d01a6}\label{classhmap_1_1DrainageBasin_a61c39bccd602d2c04dfed14e653d01a6} 
+\index{hmap::DrainageBasin@{hmap::DrainageBasin}!update\_elevations@{update\_elevations}}
+\index{update\_elevations@{update\_elevations}!hmap::DrainageBasin@{hmap::DrainageBasin}}
+\doxysubsubsection{\texorpdfstring{update\_elevations()}{update\_elevations()}}
+{\footnotesize\ttfamily float hmap\+::\+Drainage\+Basin\+::update\+\_\+elevations (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ float $>$ \&}]{response\+\_\+times,  }\item[{float}]{uplift\+\_\+rate,  }\item[{const std\+::vector$<$ float $>$ \&}]{max\+\_\+slope }\end{DoxyParamCaption})}
+
+\Hypertarget{classhmap_1_1DrainageBasin_a6864378e3110c92b84c033b3579d58d3}\label{classhmap_1_1DrainageBasin_a6864378e3110c92b84c033b3579d58d3} 
+\index{hmap::DrainageBasin@{hmap::DrainageBasin}!accumulate\_area\_by\_outlet@{accumulate\_area\_by\_outlet}}
+\index{accumulate\_area\_by\_outlet@{accumulate\_area\_by\_outlet}!hmap::DrainageBasin@{hmap::DrainageBasin}}
+\doxysubsubsection{\texorpdfstring{accumulate\_area\_by\_outlet()}{accumulate\_area\_by\_outlet()}}
+{\footnotesize\ttfamily void hmap\+::\+Drainage\+Basin\+::accumulate\+\_\+area\+\_\+by\+\_\+outlet (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ float $>$ \&}]{area,  }\item[{std\+::vector$<$ float $>$ \&}]{acc }\end{DoxyParamCaption}) const}
+
+\Hypertarget{classhmap_1_1DrainageBasin_a7b01ca0613368f0fd3dde8812e326ff1}\label{classhmap_1_1DrainageBasin_a7b01ca0613368f0fd3dde8812e326ff1} 
+\index{hmap::DrainageBasin@{hmap::DrainageBasin}!for\_each\_upstream@{for\_each\_upstream}}
+\index{for\_each\_upstream@{for\_each\_upstream}!hmap::DrainageBasin@{hmap::DrainageBasin}}
+\doxysubsubsection{\texorpdfstring{for\_each\_upstream()}{for\_each\_upstream()}}
+{\footnotesize\ttfamily const std\+::vector$<$ size\+\_\+t $>$ \& hmap\+::\+Drainage\+Basin\+::for\+\_\+each\+\_\+upstream (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{outlet }\end{DoxyParamCaption}) const}
+
+\Hypertarget{classhmap_1_1DrainageBasin_a4160d425b942c7b7dc3238f8e948403d}\label{classhmap_1_1DrainageBasin_a4160d425b942c7b7dc3238f8e948403d} 
+\index{hmap::DrainageBasin@{hmap::DrainageBasin}!for\_each\_downstream@{for\_each\_downstream}}
+\index{for\_each\_downstream@{for\_each\_downstream}!hmap::DrainageBasin@{hmap::DrainageBasin}}
+\doxysubsubsection{\texorpdfstring{for\_each\_downstream()}{for\_each\_downstream()}}
+{\footnotesize\ttfamily auto hmap\+::\+Drainage\+Basin\+::for\+\_\+each\+\_\+downstream (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{outlet }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+High\+Map/include/highmap/hydrology/\mbox{\hyperlink{drainage__basin_8hpp}{drainage\+\_\+basin.\+hpp}}\item 
+High\+Map/src/hydrology/\mbox{\hyperlink{drainage__basin_8cpp}{drainage\+\_\+basin.\+cpp}}\end{DoxyCompactItemize}

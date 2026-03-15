@@ -7,7 +7,10 @@ var searchData=
   ['update_5fadjacency_5fmatrix_4',['update_adjacency_matrix',['../classhmap_1_1Graph.html#a6accdaeaf48a49a3a751f4a83e59df47',1,'hmap::Graph']]],
   ['update_5famp0_5',['update_amp0',['../classhmap_1_1GenericFractalFunction.html#ae14db6b39dcdae409ad1561d471e7d5d',1,'hmap::GenericFractalFunction']]],
   ['update_5fconnectivity_6',['update_connectivity',['../classhmap_1_1Graph.html#ad37ed278a791b43779733f7f22187f15',1,'hmap::Graph']]],
-  ['update_5finterpolation_5ffunction_7',['update_interpolation_function',['../classhmap_1_1ValueDelaunayNoiseFunction.html#a26d8c8dbaa5817fb72cf93ec3a4bfac3',1,'hmap::ValueDelaunayNoiseFunction::update_interpolation_function()'],['../classhmap_1_1ValueLinearNoiseFunction.html#a811511a1a6517d78a71ba050250c4ef0',1,'hmap::ValueLinearNoiseFunction::update_interpolation_function()']]],
-  ['upperbound_5fright_8',['upperbound_right',['../namespacehmap.html#a0b7db6f8ce57fcdeca7ca1e3b7d1e686',1,'hmap']]],
-  ['upscale_5famplification_9',['upscale_amplification',['../namespacehmap.html#a868ae7c781d7e72af7b1416898a2f891',1,'hmap']]]
+  ['update_5felevations_7',['update_elevations',['../classhmap_1_1DrainageBasin.html#a61c39bccd602d2c04dfed14e653d01a6',1,'hmap::DrainageBasin']]],
+  ['update_5finterpolation_5ffunction_8',['update_interpolation_function',['../classhmap_1_1ValueDelaunayNoiseFunction.html#a26d8c8dbaa5817fb72cf93ec3a4bfac3',1,'hmap::ValueDelaunayNoiseFunction::update_interpolation_function()'],['../classhmap_1_1ValueLinearNoiseFunction.html#a811511a1a6517d78a71ba050250c4ef0',1,'hmap::ValueLinearNoiseFunction::update_interpolation_function()']]],
+  ['update_5fstream_5ftree_9',['update_stream_tree',['../classhmap_1_1DrainageBasin.html#ab5608cb8b6accfb29e5fb42976824553',1,'hmap::DrainageBasin']]],
+  ['update_5ftraversals_10',['update_traversals',['../classhmap_1_1DrainageBasin.html#aac712678f6584ecdcd8e4805e3c50047',1,'hmap::DrainageBasin']]],
+  ['upperbound_5fright_11',['upperbound_right',['../namespacehmap.html#a0b7db6f8ce57fcdeca7ca1e3b7d1e686',1,'hmap']]],
+  ['upscale_5famplification_12',['upscale_amplification',['../namespacehmap.html#a868ae7c781d7e72af7b1416898a2f891',1,'hmap']]]
 ];

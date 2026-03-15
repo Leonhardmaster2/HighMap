@@ -8,7 +8,7 @@ Header file for hydrological modeling functions and utilities.
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-class \mbox{\hyperlink{classhmap_1_1DrainageBasins}{hmap\+::\+Drainage\+Basins}}
+class \mbox{\hyperlink{classhmap_1_1DrainageBasinCellBased}{hmap\+::\+Drainage\+Basin\+Cell\+Based}}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Namespaces}
 \begin{DoxyCompactItemize}
@@ -20,14 +20,16 @@ namespace \mbox{\hyperlink{namespacehmap_1_1gpu}{hmap\+::gpu}}
 \doxysubsubsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
-enum \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}{hmap\+::\+Flow\+Direction\+Method}} \+: int \{ \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894}{hmap\+::\+FDM\+\_\+\+D8}}
-, \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2faaf8f41c39c71902022e1aec12f10d372}{hmap\+::\+FDM\+\_\+\+PRIORITY\+\_\+\+FLOOD}}
+enum \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}{hmap\+::\+Flow\+Direction\+Method}} \+: int \{ \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0}{hmap\+::\+FDM\+\_\+\+D8}}
+, \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359}{hmap\+::\+FDM\+\_\+\+PRIORITY\+\_\+\+FLOOD}}
+, \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0}{hmap\+::\+FDM\+\_\+\+D8}}
+, \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359}{hmap\+::\+FDM\+\_\+\+PRIORITY\+\_\+\+FLOOD}}
  \}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a8284b00f1f460f1d5a406ee45587dcd9}{hmap\+::basin\+\_\+id}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}{Flow\+Direction\+Method}} fd\+\_\+method=\mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894}{Flow\+Direction\+Method\+::\+FDM\+\_\+\+D8}}, bool remove\+\_\+lakes=true)
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a8284b00f1f460f1d5a406ee45587dcd9}{hmap\+::basin\+\_\+id}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}{Flow\+Direction\+Method}} fd\+\_\+method=Flow\+Direction\+Method\+::\+FDM\+\_\+\+D8, bool remove\+\_\+lakes=true)
 \begin{DoxyCompactList}\small\item\em Label drainage basins using a priority-\/flood algorithm. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a2e0533063a77bfc047472d1d85f3f63c}{hmap\+::d8\+\_\+compute\+\_\+ndip}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&d8)
 \begin{DoxyCompactList}\small\item\em Computes the number of drainage paths for each cell based on the D8 flow direction model. \end{DoxyCompactList}\item 

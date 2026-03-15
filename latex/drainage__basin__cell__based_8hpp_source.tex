@@ -1,0 +1,64 @@
+\doxysection{drainage\+\_\+basin\+\_\+cell\+\_\+based.\+hpp}
+\hypertarget{drainage__basin__cell__based_8hpp_source}{}\label{drainage__basin__cell__based_8hpp_source}\index{HighMap/include/highmap/hydrology/drainage\_basin\_cell\_based.hpp@{HighMap/include/highmap/hydrology/drainage\_basin\_cell\_based.hpp}}
+\mbox{\hyperlink{drainage__basin__cell__based_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ Copyright\ (c)\ 2026\ Otto\ Link.\ Distributed\ under\ the\ terms\ of\ the\ GNU\ General}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ \ Public\ License.\ The\ full\ license\ is\ in\ the\ file\ LICENSE,\ distributed\ with}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ \ \ this\ software.\ */}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <limits>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{array_8hpp}{highmap/array.hpp}}"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacehmap}{hmap}}}
+\DoxyCodeLine{00011\ \{}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}{FlowDirectionMethod}}\ :\ \textcolor{keywordtype}{int}}
+\DoxyCodeLine{00014\ \{}
+\DoxyCodeLine{00015\ \ \ \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0}{FDM\_D8}},}
+\DoxyCodeLine{00016\ \ \ \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359}{FDM\_PRIORITY\_FLOOD}}}
+\DoxyCodeLine{00017\ \};}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }DrainageBasinCellBased}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ std::vector<std::vector<glm::ivec2>>\ \mbox{\hyperlink{classhmap_1_1DrainageBasinCellBased_a70dbdd14709a9127f63d199f7713370c}{upstream\_traversal}};}
+\DoxyCodeLine{00023\ \ \ Mat<glm::ivec2>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1DrainageBasinCellBased_ad0bd6fbe612170ae441055151adfc4d1}{next}}\ =\ Mat<glm::ivec2>(\{0,\ 0\});}
+\DoxyCodeLine{00024\ \ \ glm::ivec2\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1DrainageBasinCellBased_a83abb1fc25f414637c0a861381cdd6f3}{null\_cell}}\ =\ glm::ivec2(-\/1,\ -\/1);}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \textcolor{keywordtype}{size\_t}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1DrainageBasinCellBased_ab000e59908d99d7a276d9dc29a970f3b}{get\_basins\_number}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00027\ \ \ std::vector<std::vector<glm::ivec2>>\ \mbox{\hyperlink{classhmap_1_1DrainageBasinCellBased_a81c6ffada144f73abde804047c010eac}{get\_main\_channels}}();}
+\DoxyCodeLine{00028\ \ \ std::vector<glm::ivec2>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1DrainageBasinCellBased_a517f9509d3e56b99362ba1daf1416c52}{get\_outlets}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00029\ \ \ std::vector<glm::ivec2>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1DrainageBasinCellBased_accaabfdd1917e09314683628a8d68b2b}{get\_ridges}}();}
+\DoxyCodeLine{00030\ \ \ std::vector<std::vector<glm::ivec2>>\ \mbox{\hyperlink{classhmap_1_1DrainageBasinCellBased_a41ea245fa063017e28764fa06e9a30e4}{get\_ridges\_neighbors}}();}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classhmap_1_1DrainageBasinCellBased_a5d7048e4c07090f1e3a9ccd7f2dc575b}{generate\_traversal}}(}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&z,}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}{FlowDirectionMethod}}\ \ \ \ \ \ \ \ \ \ \ \ fd\_method\ =\ FlowDirectionMethod::FDM\_D8,}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ remove\_lakes\ =\ \textcolor{keyword}{true},}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<glm::ivec2>\ \&outlets\ =\ \{\});}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classhmap_1_1DrainageBasinCellBased_a593f3759c7fbc9f85d99a22733b96a9b}{generate\_traversal\_d8}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&z,}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ remove\_lakes\ =\ \textcolor{keyword}{true},}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<glm::ivec2>\ \&outlets\ =\ \{\});}
+\DoxyCodeLine{00041\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classhmap_1_1DrainageBasinCellBased_a69feeba4bf259cffdcd487e20d1e02dd}{generate\_traversal\_priority\_flood}}(}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&z,}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<glm::ivec2>\ \&outlets\ =\ \{\});}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classhmap_1_1DrainageBasinCellBased_a23176095d69e432db3f18aa1ab6e0cc7}{accumulate}}(\mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&acc)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00046\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classhmap_1_1DrainageBasinCellBased_aa0b54e1a2012f225463b6ac44de324b0}{traverse\_downstream}}(std::function<\textcolor{keywordtype}{void}(\textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int})>\ op);}
+\DoxyCodeLine{00047\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classhmap_1_1DrainageBasinCellBased_a5763456daaa183d95a57f3b19f19c57f}{traverse\_downstream}}(std::function<\textcolor{keywordtype}{void}(\textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int})>\ op);}
+\DoxyCodeLine{00048\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classhmap_1_1DrainageBasinCellBased_a508c5af55c0eb64a1a4e94f59be2c772}{traverse\_upstream}}(std::function<\textcolor{keywordtype}{void}(\textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int})>\ op);}
+\DoxyCodeLine{00049\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classhmap_1_1DrainageBasinCellBased_a9ccca597d1eb5ac91bc316e0b485cb4e}{traverse\_upstream}}(std::function<\textcolor{keywordtype}{void}(\textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int})>\ op);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00052\ \ \ \textcolor{keywordtype}{void}\ remove\_lakes\_d8(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&z,}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ dz\_weight\ =\ 1.f,}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ dz\_downstream\_cost\_ratio\ =\ 0.f);}
+\DoxyCodeLine{00055\ \ \ \textcolor{keywordtype}{void}\ update\_traversal();}
+\DoxyCodeLine{00056\ \};}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \}\ \textcolor{comment}{//\ namespace\ hmap}}
+
+\end{DoxyCode}
