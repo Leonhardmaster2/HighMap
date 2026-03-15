@@ -414,6 +414,72 @@ void Cloud::set_values_from_min_distance()
   this->set_values(dist);
 }
 
+void Cloud::snap_points_to_bounding_box(const glm::vec4 &bbox,
+                                        float            tolerance_ratio)
+{
+  if (!this->get_npoints()) return;
+
+  // reference distance based on point density
+  float lx = bbox.y - bbox.x;
+  float ly = bbox.w - bbox.z;
+  float dref = tolerance_ratio *
+               std::sqrt(lx * ly / float(this->get_npoints()));
+
+  // snap points to border if close enough
+  for (auto &p : this->points)
+  {
+    float dl = std::abs(p.x - bbox.x);
+    float dr = std::abs(p.x - bbox.y);
+    float db = std::abs(p.y - bbox.z);
+    float dt = std::abs(p.y - bbox.w);
+
+    float dmin = std::min(std::min(dl, dr), std::min(db, dt));
+
+    if (dmin > dref) continue;
+
+    if (dmin == dl)
+      p.x = bbox.x;
+    else if (dmin == dr)
+      p.x = bbox.y;
+    else if (dmin == db)
+      p.y = bbox.z;
+    else
+      p.y = bbox.w;
+  }
+
+  // corners
+  glm::vec2 corners[4] = {{bbox.x, bbox.z},
+                          {bbox.y, bbox.z},
+                          {bbox.y, bbox.w},
+                          {bbox.x, bbox.w}};
+
+  // snap closest point to each corner
+  for (int c = 0; c < 4; ++c)
+  {
+    float best_d2 = std::numeric_limits<float>::max();
+    int   best_i = -1;
+
+    for (size_t i = 0; i < this->points.size(); ++i)
+    {
+      glm::vec2 d = glm::vec2(this->points[i].x, this->points[i].y) -
+                    corners[c];
+      float d2 = glm::dot(d, d);
+
+      if (d2 < best_d2)
+      {
+        best_d2 = d2;
+        best_i = int(i);
+      }
+    }
+
+    if (best_i >= 0)
+    {
+      this->points[best_i].x = corners[c].x;
+      this->points[best_i].y = corners[c].y;
+    }
+  }
+}
+
 void Cloud::shuffle(float dx, float dy, uint seed, float dv)
 {
   std::mt19937                          gen(seed);
@@ -471,7 +537,6 @@ void Cloud::to_array_interp(Array                &array,
                         interpolation_method,
                         p_noise_x,
                         p_noise_y,
-                        nullptr,
                         bbox_array);
 }
 
@@ -552,6 +617,17 @@ void Cloud::to_png(const std::string &fname,
   Array array = Array(shape);
   this->to_array(array, bbox);
   array.to_png(fname, cmap, depth);
+}
+
+std::vector<glm::vec3> Cloud::to_vec3() const
+{
+  std::vector<glm::vec3> vec;
+  vec.reserve(this->get_npoints());
+
+  for (const auto &p : this->points)
+    vec.push_back({p.x, p.y, p.v});
+
+  return vec;
 }
 
 Cloud merge_cloud(const Cloud &cloud1, const Cloud &cloud2)

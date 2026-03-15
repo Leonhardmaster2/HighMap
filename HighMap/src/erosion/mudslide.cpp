@@ -3,11 +3,8 @@
  * this software. */
 #include "macrologger.h"
 
-#include "highmap/array.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/gradient.hpp"
-#include "highmap/hydrology.hpp"
-#include "highmap/math.hpp"
 #include "highmap/morphology.hpp"
 #include "highmap/opencl/gpu_opencl.hpp"
 #include "highmap/range.hpp"

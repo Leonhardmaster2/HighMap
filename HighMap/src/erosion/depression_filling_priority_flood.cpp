@@ -6,14 +6,14 @@
 #include "macrologger.h"
 
 #include "highmap/array.hpp"
-#include "highmap/hydrology.hpp"
+#include "highmap/hydrology/hydrology.hpp"
 
 namespace hmap
 {
 
 void depression_filling_priority_flood(Array &z)
 {
-  auto basins = DrainageBasins();
+  auto basins = DrainageBasinCellBased();
   basins.generate_traversal_priority_flood(z);
 
   auto lambda = [&z](int i, int j, int i_next, int j_next, int /* basin_id */)

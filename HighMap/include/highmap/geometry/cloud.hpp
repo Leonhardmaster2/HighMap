@@ -447,6 +447,20 @@ public:
   void set_values_from_min_distance();
 
   /**
+   * @brief Snap points to the bounding box edges and corners.
+   *
+   * Points within a tolerance distance from the bounding box edges are
+   * projected onto the closest edge. Afterwards, the closest point to each
+   * corner is snapped exactly to that corner.
+   *
+   * @param bbox            Bounding box defined as (xmin, xmax, ymin, ymax).
+   * @param tolerance_ratio Ratio used to compute the snapping distance relative
+   *                        to the average point spacing.
+   */
+  void snap_points_to_bounding_box(const glm::vec4 &bbox = {0.f, 1.f, 0.f, 1.f},
+                                   float            tolerance_ratio = 1.f);
+
+  /**
    * @brief Randomly perturbs the positions and values of all points in the
    * cloud.
    *
@@ -594,6 +608,8 @@ public:
               glm::vec4          bbox = {0.f, 1.f, 0.f, 1.f},
               int                depth = CV_8U,
               glm::ivec2         shape = {512, 512});
+
+  std::vector<glm::vec3> to_vec3() const;
 };
 
 /**

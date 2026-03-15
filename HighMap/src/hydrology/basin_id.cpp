@@ -6,7 +6,7 @@
 
 #include "macrologger.h"
 
-#include "highmap/hydrology.hpp"
+#include "highmap/hydrology/hydrology.hpp"
 
 namespace hmap
 {
@@ -15,7 +15,7 @@ Array basin_id(const Array &z, FlowDirectionMethod fd_method, bool remove_lakes)
 {
   Array ids(z.shape);
 
-  auto basins = DrainageBasins();
+  auto basins = DrainageBasinCellBased();
   basins.generate_traversal(z, fd_method, remove_lakes);
 
   auto lambda = [&ids](int i, int j, int basin_id) { ids(i, j) = basin_id; };

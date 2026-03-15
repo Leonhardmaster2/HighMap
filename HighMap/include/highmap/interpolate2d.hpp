@@ -18,6 +18,17 @@
 #pragma once
 #include <map>
 
+extern "C" // order matters
+{
+#include "config.h"
+//
+#include "nn.h"
+//
+#include "nncommon.h"
+//
+#include "delaunay.h"
+}
+
 #include "highmap/array.hpp"
 
 namespace hmap
@@ -36,6 +47,29 @@ enum InterpolationMethod2D : int
   ITP2D_NEAREST,  ///< Nearest point method for 2D interpolation.
   ITP2D_IDW,      ///< Inverse Distance Weighting.
   ITP2D_GAUSSIAN, ///< Gaussian Distance Weighting.
+  ITP2D_NNI,      ///< Natural Neighbor Interpolation.
+};
+
+class NaturalNeighborInterpolator
+{
+public:
+  NaturalNeighborInterpolator() = default;
+  ~NaturalNeighborInterpolator();
+
+  void build(const std::vector<float> &xin, const std::vector<float> &yin);
+
+  void setup_output_points(const std::vector<float> &x,
+                           const std::vector<float> &y);
+
+  void interpolate(const std::vector<float> &values_in,
+                   std::vector<float>       &values_out) const;
+
+private:
+  nnai               *handle = nullptr;
+  delaunay           *d = nullptr;
+  std::vector<double> xout;
+  std::vector<double> yout;
+  size_t              nout = 0;
 };
 
 /**
@@ -131,8 +165,6 @@ Array harmonic_interpolation(const Array &array,
  *                              direction (optional).
  * @param  p_noise_y            Pointer to the input noise array in the y
  *                              direction (optional).
- * @param  p_stretching         Pointer to the local wavenumber multiplier array
- *                              (optional).
  * @param  bbox                 Domain bounding box (default: {0.f, 1.f, 0.f,
  *                              1.f}).
  * @return                      Array Output array with interpolated values.
@@ -144,7 +176,6 @@ Array interpolate2d(glm::ivec2                shape,
                     InterpolationMethod2D     interpolation_method,
                     const Array              *p_noise_x = nullptr,
                     const Array              *p_noise_y = nullptr,
-                    const Array              *p_stretching = nullptr,
                     glm::vec4                 bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
@@ -162,8 +193,6 @@ Array interpolate2d(glm::ivec2                shape,
  *                      (optional).
  * @param  p_noise_y    Pointer to the input noise array in the y direction
  *                      (optional).
- * @param  p_stretching Pointer to the local wavenumber multiplier array
- *                      (optional).
  * @param  bbox         Domain bounding box (default: {0.f, 1.f, 0.f, 1.f}).
  * @return              Array Output array with interpolated values.
  */
@@ -173,7 +202,6 @@ Array interpolate2d_delaunay(glm::ivec2                shape,
                              const std::vector<float> &values,
                              const Array              *p_noise_x = nullptr,
                              const Array              *p_noise_y = nullptr,
-                             const Array              *p_stretching = nullptr,
                              glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
@@ -185,7 +213,6 @@ Array interpolate2d_gaussian(glm::ivec2                shape,
                              const std::vector<float> &values,
                              const Array              *p_noise_x = nullptr,
                              const Array              *p_noise_y = nullptr,
-                             const Array              *p_stretching = nullptr,
                              glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f},
                              float     sigma = 0.1f);
 
@@ -198,7 +225,6 @@ Array interpolate2d_idw(glm::ivec2                shape,
                         const std::vector<float> &values,
                         const Array              *p_noise_x = nullptr,
                         const Array              *p_noise_y = nullptr,
-                        const Array              *p_stretching = nullptr,
                         glm::vec4                 bbox = {0.f, 1.f, 0.f, 1.f},
                         float                     distance_exp = 2.f);
 
@@ -216,8 +242,6 @@ Array interpolate2d_idw(glm::ivec2                shape,
  *                      (optional).
  * @param  p_noise_y    Pointer to the input noise array in the y direction
  *                      (optional).
- * @param  p_stretching Pointer to the local wavenumber multiplier array
- *                      (optional).
  * @param  bbox         Domain bounding box (default: {0.f, 1.f, 0.f, 1.f}).
  * @return              Array Output array with interpolated values.
  */
@@ -227,8 +251,18 @@ Array interpolate2d_nearest(glm::ivec2                shape,
                             const std::vector<float> &values,
                             const Array              *p_noise_x = nullptr,
                             const Array              *p_noise_y = nullptr,
-                            const Array              *p_stretching = nullptr,
                             glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
+ * @brief 2D interpolation using the Natural Neighbor Interpolation method.
+ */
+Array interpolate2d_nni(glm::ivec2                shape,
+                        const std::vector<float> &x,
+                        const std::vector<float> &y,
+                        const std::vector<float> &values,
+                        const Array              *p_noise_x = nullptr,
+                        const Array              *p_noise_y = nullptr,
+                        glm::vec4                 bbox = {0.f, 1.f, 0.f, 1.f});
 
 } // namespace hmap
 

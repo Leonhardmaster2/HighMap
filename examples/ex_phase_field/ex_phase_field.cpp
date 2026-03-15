@@ -11,29 +11,11 @@ int main(void)
   hmap::Array z = hmap::noise_fbm(hmap::NoiseType::SIMPLEX2, shape, kw, seed);
   hmap::remap(z);
 
-  // --- CPU phase field
-
-  float kp = 8.f;
-  int   width = 64;
-
-  float density = 32.f;
-
-  hmap::Array phi0 = hmap::phase_field(z, kp, width, ++seed, -1, density);
-
-  bool        rotate90 = true;
-  hmap::Array phi1 =
-      hmap::phase_field(z, kp, width, ++seed, -1, density, rotate90);
-
-  hmap::remap(phi0);
-  hmap::remap(phi1);
-
   // --- GPU phase field
 
   float       kp_global = 64.f;
   hmap::Array phi2 = hmap::gpu::phase_field(z, seed, kp_global);
   hmap::remap(phi2);
 
-  hmap::export_banner_png("ex_phase_field.png",
-                          {z, phi0, phi1, phi2},
-                          hmap::Cmap::JET);
+  hmap::export_banner_png("ex_phase_field.png", {z, phi2}, hmap::Cmap::JET);
 }

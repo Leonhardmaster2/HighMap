@@ -6,7 +6,7 @@
 #include "highmap/array.hpp"
 #include "highmap/erosion.hpp"
 #include "highmap/filters.hpp"
-#include "highmap/hydrology.hpp"
+#include "highmap/hydrology/hydrology.hpp"
 #include "highmap/internal/vector_utils.hpp"
 #include "highmap/math.hpp"
 #include "highmap/morphology.hpp"
@@ -26,9 +26,9 @@ Array watershed_ridge(const Array        &z,
                       const Array        *p_noise_y,
                       const Array        *p_scaling)
 {
-  DrainageBasins   basins;
-  bool             remove_lakes = true;
-  const glm::ivec2 shape = z.shape;
+  DrainageBasinCellBased basins;
+  bool                   remove_lakes = true;
+  const glm::ivec2       shape = z.shape;
 
   // --- distance transform to main channel
 

@@ -7,7 +7,6 @@
 #include "macrologger.h"
 
 #include "highmap/internal/vector_utils.hpp"
-#include "highmap/interpolate2d.hpp"
 #include "highmap/math.hpp"
 #include "highmap/virtual_array/virtual_array.hpp"
 

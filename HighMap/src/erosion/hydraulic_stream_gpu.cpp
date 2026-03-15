@@ -5,7 +5,7 @@
 #include "highmap/boundary.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/gradient.hpp"
-#include "highmap/hydrology.hpp"
+#include "highmap/hydrology/hydrology.hpp"
 #include "highmap/kernels.hpp"
 #include "highmap/math.hpp"
 #include "highmap/opencl/gpu_opencl.hpp"

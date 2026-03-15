@@ -10,7 +10,7 @@
 #include "highmap/curvature.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/gradient.hpp"
-#include "highmap/hydrology.hpp"
+#include "highmap/hydrology/hydrology.hpp"
 #include "highmap/math.hpp"
 #include "highmap/morphology.hpp"
 #include "highmap/primitives.hpp"

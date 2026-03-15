@@ -12,7 +12,6 @@
 
 #include "highmap/algebra.hpp"
 #include "highmap/array.hpp"
-#include "highmap/interpolate2d.hpp"
 #include "highmap/interpolate_array.hpp"
 #include "highmap/operator.hpp"
 #include "highmap/range.hpp"

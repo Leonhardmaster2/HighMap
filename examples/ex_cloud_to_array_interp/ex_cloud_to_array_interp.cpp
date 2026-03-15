@@ -15,7 +15,7 @@ int main(void)
   hmap::Array z1 = hmap::Array(shape);
   cloud.to_array_interp(z1,
                         bbox,
-                        hmap::InterpolationMethod2D::NEAREST,
+                        hmap::InterpolationMethod2D::ITP2D_NEAREST,
                         nullptr,
                         nullptr,
                         bbox);
@@ -34,13 +34,13 @@ int main(void)
 
   cloud.to_array_interp(z2,
                         bbox,
-                        hmap::InterpolationMethod2D::NEAREST,
+                        hmap::InterpolationMethod2D::ITP2D_NEAREST,
                         &nx,
                         &ny,
                         bbox);
   cloud.to_array_interp(z3,
                         bbox,
-                        hmap::InterpolationMethod2D::DELAUNAY,
+                        hmap::InterpolationMethod2D::ITP2D_DELAUNAY,
                         &nx,
                         &ny,
                         bbox);

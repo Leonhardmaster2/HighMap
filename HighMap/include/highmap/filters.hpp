@@ -292,6 +292,24 @@ void expand_directional(Array       &array,
                         float        anisotropy = 1.f,
                         const Array *p_mask = nullptr);
 
+/**
+ * @brief Expand heights outward from a masked region with a talus slope limit.
+ *
+ * Starting from the non-zero cells of `mask`, heights are propagated outward
+ * using a min-heap so lower cells are processed first. Neighbor heights are
+ * computed from the source height plus `dist * talus`, optionally perturbed
+ * with noise.
+ *
+ * Intuition: grows terrain outward from seed cells, filling empty space while
+ * respecting a maximum slope.
+ *
+ * @param z Height array modified in-place.
+ * @param mask Initial region to expand from.
+ * @param talus Maximum slope per unit distance.
+ * @param seed RNG seed for noise.
+ * @param ir Neighborhood radius.
+ * @param noise_ratio Amplitude of slope noise.
+ */
 void expand_talus(Array       &z,
                   const Array &mask,
                   float        talus,
@@ -331,12 +349,15 @@ Array faceted(const Array &array,
               const Array *p_noise_y = nullptr);
 
 /**
- * @brief Modifies a terrain array by filling it with talus slopes.
+ * @brief Enforce a talus slope constraint on a height field.
  *
- * This function applies a talus formation algorithm to an existing terrain
- * array, adjusting the heights to create natural-looking slopes. The process
- * involves random perturbations influenced by noise to simulate erosion or
- * sediment transport.
+ * Cells are processed from highest to lowest using a max-heap. Each cell may
+ * raise neighboring cells so that the slope relative to the current cell does
+ * not exceed the local talus value.
+ *
+ * Intuition: stabilizes an existing terrain by redistributing height so slopes
+ * do not exceed the talus limit (similar to talus erosion / relaxation but by
+ * adding material).
  *
  * @param z           A reference to the 2D array representing the terrain
  *                    heights. The function modifies this array in place to

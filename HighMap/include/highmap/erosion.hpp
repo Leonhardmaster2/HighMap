@@ -17,7 +17,7 @@
 #include <cmath>
 
 #include "highmap/array.hpp"
-#include "highmap/hydrology.hpp"
+#include "highmap/hydrology/hydrology.hpp"
 
 // neighbor pattern search based on Moore pattern and define diagonal
 // weight coefficients ('c' corresponds to a weight coefficient

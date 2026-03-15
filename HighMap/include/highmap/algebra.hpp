@@ -14,12 +14,15 @@
 #pragma once
 #include <cmath>
 #include <stdexcept>
+#include <string>
 #include <vector>
 
 #include <glm/glm.hpp>
 
 namespace hmap
 {
+
+void to_csv(const std::vector<glm::vec3> &xyz, const std::string &fname);
 
 // --- Backward compatiblity with former custom classes (deprecated)
 

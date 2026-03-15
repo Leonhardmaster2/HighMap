@@ -35,6 +35,7 @@ target_link_libraries(
   hmm::hmm
   libnpy::libnpy
   macro-logger::macro-logger
+  nn-c::nn-c
   NoiseLib
   OpenMP::OpenMP_CXX
   ${OpenCV_LIBS}

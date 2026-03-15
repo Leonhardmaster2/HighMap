@@ -9,7 +9,7 @@
 #include "highmap/erosion.hpp"
 #include "highmap/features.hpp"
 #include "highmap/filters.hpp"
-#include "highmap/hydrology.hpp"
+#include "highmap/hydrology/hydrology.hpp"
 #include "highmap/interpolate2d.hpp"
 #include "highmap/kernels.hpp"
 #include "highmap/opencl/gpu_opencl.hpp"

@@ -5,12 +5,12 @@
 
 #include "macrologger.h"
 
-#include "highmap/hydrology.hpp"
+#include "highmap/hydrology/hydrology.hpp"
 
 namespace hmap
 {
 
-void DrainageBasins::accumulate(Array &acc) const
+void DrainageBasinCellBased::accumulate(Array &acc) const
 {
   for (const auto &basin : this->upstream_traversal)
   {
@@ -27,10 +27,11 @@ void DrainageBasins::accumulate(Array &acc) const
   }
 }
 
-void DrainageBasins::generate_traversal(const Array        &z,
-                                        FlowDirectionMethod fd_method,
-                                        bool                remove_lakes,
-                                        const std::vector<glm::ivec2> &outlets)
+void DrainageBasinCellBased::generate_traversal(
+    const Array                   &z,
+    FlowDirectionMethod            fd_method,
+    bool                           remove_lakes,
+    const std::vector<glm::ivec2> &outlets)
 {
   switch (fd_method)
   {
@@ -41,7 +42,7 @@ void DrainageBasins::generate_traversal(const Array        &z,
   }
 }
 
-void DrainageBasins::generate_traversal_d8(
+void DrainageBasinCellBased::generate_traversal_d8(
     const Array                   &z,
     bool                           remove_lakes,
     const std::vector<glm::ivec2> &outlets)
@@ -96,7 +97,7 @@ void DrainageBasins::generate_traversal_d8(
   this->update_traversal();
 }
 
-void DrainageBasins::generate_traversal_priority_flood(
+void DrainageBasinCellBased::generate_traversal_priority_flood(
     const Array                   &z,
     const std::vector<glm::ivec2> &outlets)
 {
@@ -188,12 +189,12 @@ void DrainageBasins::generate_traversal_priority_flood(
   }
 }
 
-size_t DrainageBasins::get_basins_number() const
+size_t DrainageBasinCellBased::get_basins_number() const
 {
   return this->upstream_traversal.size();
 }
 
-std::vector<std::vector<glm::ivec2>> DrainageBasins::get_main_channels()
+std::vector<std::vector<glm::ivec2>> DrainageBasinCellBased::get_main_channels()
 {
   const glm::ivec2 shape = this->next.shape;
 
@@ -234,7 +235,7 @@ std::vector<std::vector<glm::ivec2>> DrainageBasins::get_main_channels()
   return channels;
 }
 
-std::vector<glm::ivec2> DrainageBasins::get_outlets() const
+std::vector<glm::ivec2> DrainageBasinCellBased::get_outlets() const
 {
   const glm::ivec2        shape = this->next.shape;
   std::vector<glm::ivec2> outlets = {};
@@ -248,7 +249,7 @@ std::vector<glm::ivec2> DrainageBasins::get_outlets() const
   return outlets;
 }
 
-std::vector<glm::ivec2> DrainageBasins::get_ridges()
+std::vector<glm::ivec2> DrainageBasinCellBased::get_ridges()
 {
   const glm::ivec2        shape = this->next.shape;
   std::vector<glm::ivec2> ridges;
@@ -289,7 +290,8 @@ std::vector<glm::ivec2> DrainageBasins::get_ridges()
   return ridges;
 }
 
-std::vector<std::vector<glm::ivec2>> DrainageBasins::get_ridges_neighbors()
+std::vector<std::vector<glm::ivec2>> DrainageBasinCellBased::
+    get_ridges_neighbors()
 {
   const glm::ivec2                     shape = this->next.shape;
   std::vector<std::vector<glm::ivec2>> ridges;
@@ -333,9 +335,9 @@ std::vector<std::vector<glm::ivec2>> DrainageBasins::get_ridges_neighbors()
   return ridges;
 }
 
-void DrainageBasins::remove_lakes_d8(const Array &z,
-                                     float        dz_weight,
-                                     float        dz_downstream_cost_ratio)
+void DrainageBasinCellBased::remove_lakes_d8(const Array &z,
+                                             float        dz_weight,
+                                             float dz_downstream_cost_ratio)
 {
   // scale by array shape to get a cumulative amplitude consistent
   // with distance cost (based on unit cell)
@@ -473,7 +475,7 @@ void DrainageBasins::remove_lakes_d8(const Array &z,
   }
 }
 
-void DrainageBasins::traverse_upstream(
+void DrainageBasinCellBased::traverse_upstream(
     std::function<void(int i, int j, int i_next, int j_next, int basin_id)> op)
 {
   for (size_t basin_id = 0; basin_id < this->upstream_traversal.size();
@@ -493,7 +495,7 @@ void DrainageBasins::traverse_upstream(
   }
 }
 
-void DrainageBasins::traverse_upstream(
+void DrainageBasinCellBased::traverse_upstream(
     std::function<void(int i, int j, int basin_id)> op)
 {
   for (size_t basin_id = 0; basin_id < this->upstream_traversal.size();
@@ -510,7 +512,7 @@ void DrainageBasins::traverse_upstream(
   }
 }
 
-void DrainageBasins::traverse_downstream(
+void DrainageBasinCellBased::traverse_downstream(
     std::function<void(int i, int j, int i_next, int j_next, int basin_id)> op)
 {
   for (size_t basin_id = 0; basin_id < this->upstream_traversal.size();
@@ -532,7 +534,7 @@ void DrainageBasins::traverse_downstream(
   }
 }
 
-void DrainageBasins::traverse_downstream(
+void DrainageBasinCellBased::traverse_downstream(
     std::function<void(int i, int j, int basin_id)> op)
 {
   for (size_t basin_id = 0; basin_id < this->upstream_traversal.size();
@@ -551,7 +553,7 @@ void DrainageBasins::traverse_downstream(
   }
 }
 
-void DrainageBasins::update_traversal()
+void DrainageBasinCellBased::update_traversal()
 {
   const glm::ivec2 shape = this->next.shape;
   Mat<int>         basin_id(shape, -1);
@@ -607,7 +609,7 @@ void DrainageBasins::update_traversal()
     ctot += vec.size();
 
   if (int(ctot) != shape.x * shape.y)
-    LOG_ERROR("DrainageBasins::update_traversal: wrong count: %ld, %d",
+    LOG_ERROR("DrainageBasinCellBased::update_traversal: wrong count: %ld, %d",
               ctot,
               shape.x * shape.y);
 }

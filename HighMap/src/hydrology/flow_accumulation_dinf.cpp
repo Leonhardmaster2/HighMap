@@ -8,7 +8,7 @@
 #include "highmap/boundary.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/gradient.hpp"
-#include "highmap/hydrology.hpp"
+#include "highmap/hydrology/hydrology.hpp"
 #include "highmap/primitives.hpp"
 #include "highmap/range.hpp"
 

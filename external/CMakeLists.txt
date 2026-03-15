@@ -4,6 +4,7 @@ include(FastNoiseLite.cmake)
 include(hmm.cmake)
 include(libnpy.cmake)
 include(macro-logger.cmake)
+include(nn-c.cmake)
 
 add_subdirectory(CLWrapper)
 add_subdirectory(PointSampler)

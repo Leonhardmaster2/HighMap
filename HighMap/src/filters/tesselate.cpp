@@ -56,7 +56,6 @@ Array tessellate(Array       &array,
                                   InterpolationMethod2D::ITP2D_DELAUNAY,
                                   nullptr, // noise
                                   nullptr, // noise
-                                  nullptr,
                                   bbox);
 
   return array_out;

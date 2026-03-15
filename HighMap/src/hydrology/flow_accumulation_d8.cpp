@@ -6,7 +6,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/boundary.hpp"
-#include "highmap/hydrology.hpp"
+#include "highmap/hydrology/hydrology.hpp"
 #include "highmap/primitives.hpp"
 
 // neighbor pattern search based on D8 flow direction neighborhood

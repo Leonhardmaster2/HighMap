@@ -3,7 +3,7 @@
  * this software. */
 #include "highmap/array.hpp"
 #include "highmap/filters.hpp"
-#include "highmap/hydrology.hpp"
+#include "highmap/hydrology/hydrology.hpp"
 #include "highmap/morphology.hpp"
 #include "highmap/range.hpp"
 

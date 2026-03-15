@@ -4,7 +4,14 @@
 #include <algorithm>
 #include <memory>
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-parameter"
+#pragma GCC diagnostic ignored "-Wsign-compare"
+
 #include "NoiseLib/include/noise.h"
+
+#pragma GCC diagnostic pop
+
 #include "macrologger.h"
 
 #include "highmap/array.hpp"

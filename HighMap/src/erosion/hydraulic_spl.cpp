@@ -6,7 +6,7 @@
 #include "highmap/array.hpp"
 #include "highmap/erosion.hpp"
 #include "highmap/filters.hpp"
-#include "highmap/hydrology.hpp"
+#include "highmap/hydrology/hydrology.hpp"
 #include "highmap/range.hpp"
 
 namespace hmap
@@ -37,7 +37,7 @@ void hydraulic_spl(Array &z)
   // --- initialization
 
   const glm::ivec2        shape = z.shape;
-  auto                    basins = DrainageBasins();
+  auto                    basins = DrainageBasinCellBased();
   const float             zmin = z.min();
   const float             zmax = z.max();
   std::vector<glm::ivec2> outlets;
