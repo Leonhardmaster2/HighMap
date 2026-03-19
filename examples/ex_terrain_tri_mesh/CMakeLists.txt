@@ -1,0 +1,2 @@
+add_executable(ex_terrain_tri_mesh ex_terrain_tri_mesh.cpp)
+target_link_libraries(ex_terrain_tri_mesh highmap)

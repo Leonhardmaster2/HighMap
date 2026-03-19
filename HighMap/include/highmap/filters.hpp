@@ -303,11 +303,11 @@ void expand_directional(Array       &array,
  * Intuition: grows terrain outward from seed cells, filling empty space while
  * respecting a maximum slope.
  *
- * @param z Height array modified in-place.
- * @param mask Initial region to expand from.
- * @param talus Maximum slope per unit distance.
- * @param seed RNG seed for noise.
- * @param ir Neighborhood radius.
+ * @param z           Height array modified in-place.
+ * @param mask        Initial region to expand from.
+ * @param talus       Maximum slope per unit distance.
+ * @param seed        RNG seed for noise.
+ * @param ir          Neighborhood radius.
  * @param noise_ratio Amplitude of slope noise.
  */
 void expand_talus(Array       &z,

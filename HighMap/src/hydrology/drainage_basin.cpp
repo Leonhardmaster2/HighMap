@@ -3,6 +3,7 @@
  * this software. */
 #include <cstdio>
 #include <fstream>
+#include <limits>
 #include <queue>
 
 #include "hmm/src/heightmap.h"
@@ -12,97 +13,20 @@
 
 #include "macrologger.h"
 
-#include "highmap/dbg/timer.hpp"
 #include "highmap/hydrology/drainage_basin.hpp"
 #include "highmap/math.hpp"
 
 namespace hmap
 {
 
-DrainageBasin::DrainageBasin(std::vector<glm::vec3> xyz_) : xyz(xyz_)
+DrainageBasin::DrainageBasin(std::vector<glm::vec3> xyz)
 {
-  // --- generate Delaunay triangulation
+  this->mesh = TerrainTriMesh(xyz);
 
-  std::vector<float> xy;
-  xy.reserve(2 * this->xyz.size());
+  // outlets == convex hull by default
+  this->outlets_mask.resize(this->mesh.size());
 
-  for (const auto &p : this->xyz)
-  {
-    xy.push_back(p.x);
-    xy.push_back(p.y);
-  }
-
-  delaunator::Delaunator d(xy);
-
-  // --- store triangles and convex hull indices
-
-  // chull
-  {
-    this->convex_hull.clear();
-    size_t start = d.hull_start;
-    size_t i = start;
-
-    do
-    {
-      this->convex_hull.push_back(i);
-      i = d.hull_next[i];
-    } while (i != start);
-  }
-
-  // triangles
-  {
-    const std::vector<size_t> &tri = d.triangles;
-    this->triangles.clear();
-    this->triangles.reserve(tri.size() / 3);
-
-    for (std::size_t k = 0; k < tri.size(); k += 3)
-      this->triangles.push_back({tri[k], tri[k + 1], tri[k + 2]});
-  }
-
-  // --- neighbor list for each vertex and corresponding distances
-
-  this->nbrs_indices.assign(xyz.size(), {});
-  this->nbrs_distances.assign(xyz.size(), {});
-
-  auto add_edge = [&](size_t a, size_t b)
-  {
-    // prevent duplicates
-    auto exists = [&](size_t u, size_t v)
-    {
-      return std::find(nbrs_indices[u].begin(), nbrs_indices[u].end(), v) !=
-             nbrs_indices[u].end();
-    };
-
-    if (exists(a, b) || exists(b, a)) return;
-
-    float dist = std::hypot(xyz[a].x - xyz[b].x, xyz[a].y - xyz[b].y);
-
-    this->nbrs_indices[a].push_back(b);
-    this->nbrs_indices[b].push_back(a);
-
-    this->nbrs_distances[a].push_back(dist);
-    this->nbrs_distances[b].push_back(dist);
-  };
-
-  for (const auto &t : this->triangles)
-  {
-    add_edge(t.x, t.y);
-    add_edge(t.y, t.z);
-    add_edge(t.z, t.x);
-  }
-
-  // --- reference length between points for scaling
-
-  this->reference_length = 0.f;
-
-  for (std::size_t k = 0; k < this->size(); ++k)
-    for (float d : nbrs_distances[k])
-      reference_length = std::max(this->reference_length, d);
-
-  // --- outlets == convex hull by default
-
-  this->outlets_mask.resize(this->xyz.size());
-  for (const auto &idx : this->convex_hull)
+  for (const auto &idx : this->mesh.get_convex_hull())
     this->outlets_mask[idx] = true;
 }
 
@@ -127,9 +51,11 @@ void DrainageBasin::accumulate_area_by_outlet(const std::vector<float> &area,
 void DrainageBasin::compute_receivers()
 {
   this->receivers.clear();
-  this->receivers.resize(this->xyz.size());
+  this->receivers.resize(this->mesh.size());
 
-  for (size_t k = 0; k < this->xyz.size(); ++k)
+  const TerrainTriMesh::NeighborData &nbrs_data = this->mesh.get_neighbors();
+
+  for (size_t k = 0; k < this->mesh.size(); ++k)
   {
     if (this->outlets_mask[k])
     {
@@ -140,14 +66,15 @@ void DrainageBasin::compute_receivers()
     float  best_slope = 0.f;
     size_t best_k = k;
 
-    for (size_t j = 0; j < nbrs_indices[k].size(); ++j)
+    for (const auto &nb : nbrs_data.adjacency[k])
     {
-      size_t n = nbrs_indices[k][j];
-      float  dist = nbrs_distances[k][j];
+      size_t n = nb.index;
+      float  dist = nb.distance2d;
+      float  dz = this->mesh.get_points()[k].z - this->mesh.get_points()[n].z;
 
-      if (this->xyz[k].z > this->xyz[n].z)
+      if (dz > 0.f)
       {
-        float slope = (this->xyz[k].z - this->xyz[n].z) / dist;
+        float slope = dz / dist;
         if (slope > best_slope)
         {
           best_slope = slope;
@@ -196,7 +123,8 @@ std::vector<float> DrainageBasin::compute_response_times(
 {
   const size_t       n = this->receivers.size();
   std::vector<float> response_times(n, 0.f);
-  float              area_scale = reference_length * reference_length;
+
+  glm::vec3 dref = this->mesh.get_reference_lengths();
 
   for (const auto &[outlet, traversal] : traversals)
   {
@@ -208,12 +136,14 @@ std::vector<float> DrainageBasin::compute_response_times(
 
       if (j != i)
       {
-        float distance = glm::length(this->xyz[i] - this->xyz[j]);
-        distance /= this->reference_length;
+        const auto &pi = this->mesh.get_points()[i];
+        const auto &pj = this->mesh.get_points()[j];
+        float       vx = (pi.x - pj.x) / dref.x;
+        float       vy = (pi.y - pj.y) / dref.y;
+        float       distance = glm::length(glm::vec2(vx, vy));
 
         float celerity = erodibility[i] *
-                         std::pow(std::max(area_acc[i] / area_scale, 1e-8f),
-                                  m_exp);
+                         std::pow(std::max(area_acc[i], 1e-8f), m_exp);
 
         response_times[i] = response_times[j] + distance / celerity;
       }
@@ -229,14 +159,14 @@ std::vector<float> DrainageBasin::compute_response_times(
 
 std::vector<float> DrainageBasin::compute_vertex_areas() const
 {
-  std::vector<float> areas(this->xyz.size());
+  std::vector<float> areas(this->mesh.size());
 
   // accumulate 1/3 area of the triangles to each vertex
-  for (const auto &idx : this->triangles)
+  for (const auto &idx : this->mesh.get_triangles())
   {
-    const auto &p0 = this->xyz[idx.x];
-    const auto &p1 = this->xyz[idx.y];
-    const auto &p2 = this->xyz[idx.z];
+    const auto &p0 = this->mesh.get_points()[idx.a];
+    const auto &p1 = this->mesh.get_points()[idx.b];
+    const auto &p2 = this->mesh.get_points()[idx.c];
 
     // edge vectors
     auto e0 = p1 - p0;
@@ -246,9 +176,9 @@ std::vector<float> DrainageBasin::compute_vertex_areas() const
     float triangle_area = 0.5f * glm::length(glm::cross(e0, e1));
     float vertex_contribution = triangle_area / 3.f;
 
-    areas[idx.x] += vertex_contribution;
-    areas[idx.y] += vertex_contribution;
-    areas[idx.z] += vertex_contribution;
+    areas[idx.a] += vertex_contribution;
+    areas[idx.b] += vertex_contribution;
+    areas[idx.c] += vertex_contribution;
   }
 
   return areas;
@@ -307,11 +237,21 @@ const std::vector<size_t> &DrainageBasin::for_each_upstream(size_t outlet) const
   return traversals.at(outlet);
 }
 
+const TerrainTriMesh &DrainageBasin::get_mesh() const
+{
+  return this->mesh;
+}
+
+TerrainTriMesh &DrainageBasin::get_mesh()
+{
+  return this->mesh;
+}
+
 std::vector<size_t> DrainageBasin::get_outlets() const
 {
   std::vector<size_t> outlet_indices;
 
-  for (size_t k = 0; k < this->xyz.size(); ++k)
+  for (size_t k = 0; k < this->mesh.size(); ++k)
     if (this->outlets_mask[k]) outlet_indices.push_back(k);
 
   return outlet_indices;
@@ -324,22 +264,17 @@ const std::vector<size_t> &DrainageBasin::get_receivers() const
 
 const std::vector<glm::vec3> &DrainageBasin::get_xyz() const
 {
-  return this->xyz;
-}
-
-std::vector<glm::vec3> &DrainageBasin::get_xyz()
-{
-  return this->xyz;
+  return this->mesh.get_points();
 }
 
 void DrainageBasin::remap(float vmin, float vmax)
 {
-  if (this->xyz.empty()) return;
+  if (this->mesh.get_points().empty()) return;
 
-  float zmin = this->xyz[0].z;
-  float zmax = this->xyz[0].z;
+  float zmin = this->mesh.get_points()[0].z;
+  float zmax = this->mesh.get_points()[0].z;
 
-  for (const auto &p : this->xyz)
+  for (const auto &p : this->mesh.get_points())
   {
     zmin = std::min(zmin, p.z);
     zmax = std::max(zmax, p.z);
@@ -350,14 +285,14 @@ void DrainageBasin::remap(float vmin, float vmax)
   if (dz == 0.f)
   {
     float mid = 0.5f * (vmin + vmax);
-    for (auto &p : this->xyz)
+    for (auto &p : this->mesh.get_points())
       p.z = mid;
     return;
   }
 
   float scale = (vmax - vmin) / dz;
 
-  for (auto &p : this->xyz)
+  for (auto &p : this->mesh.get_points())
     p.z = vmin + (p.z - zmin) * scale;
 }
 
@@ -407,7 +342,8 @@ void DrainageBasin::remove_lakes(const std::vector<size_t> &subroot)
     }
   }
 
-  const size_t *subroot_ptr = subroot.data();
+  const size_t                *subroot_ptr = subroot.data();
+  TerrainTriMesh::NeighborData nbrs_data = this->mesh.get_neighbors();
 
   while (!heap.empty())
   {
@@ -419,12 +355,11 @@ void DrainageBasin::remove_lakes(const std::vector<size_t> &subroot)
 
     visited[i] = 1;
 
-    auto &nbrs = nbrs_indices[i];
-    auto &dists = nbrs_distances[i];
+    auto &nbrs = nbrs_data.adjacency[i];
 
-    for (size_t k = 0, sz = nbrs.size(); k < sz; ++k)
+    for (const auto &nb : nbrs)
     {
-      size_t j = nbrs[k];
+      size_t j = nb.index;
       if (visited[j]) continue;
 
       size_t sr = subroot_ptr[j];
@@ -449,7 +384,8 @@ void DrainageBasin::remove_lakes(const std::vector<size_t> &subroot)
         if (--remaining_lakes == 0) return;
       }
 
-      float new_dist = top.dist + dists[k];
+      float distance = glm::length(mesh.get_points()[i] - mesh.get_points()[j]);
+      float new_dist = top.dist + distance;
 
       if (new_dist < dist[j])
       {
@@ -473,62 +409,8 @@ void DrainageBasin::set_outlets(const std::vector<size_t> &outlet_indices)
 
 size_t DrainageBasin::size() const
 {
-  return this->xyz.size();
+  return this->mesh.get_points().size();
 };
-
-void DrainageBasin::smooth_mesh(float lambda, int iterations)
-{
-  std::vector<glm::vec3> buffer(this->size());
-
-  for (int it = 0; it < iterations; ++it)
-  {
-    for (size_t i = 0; i < this->size(); ++i)
-    {
-      const auto &nbrs = this->nbrs_indices[i];
-
-      if (nbrs.empty())
-      {
-        buffer[i] = xyz[i];
-        continue;
-      }
-
-      glm::vec3 sum = glm::vec3(0.f);
-      float     sum_w = 0.f;
-
-      for (size_t j : nbrs)
-      {
-        float dist = glm::length(xyz[i] - xyz[j]);
-        if (dist > 1e-30f)
-        {
-          float w = 1.f / dist;
-          sum += w * xyz[j];
-          sum_w += w;
-        }
-      }
-
-      glm::vec3 avg = sum / sum_w;
-
-      buffer[i] = glm::mix(xyz[i], avg, lambda);
-    }
-
-    // preserve convex hull
-    for (const auto &i : this->convex_hull)
-      buffer[i] = xyz[i];
-
-    for (size_t i = 0; i < this->size(); ++i)
-      xyz[i] = buffer[i];
-  }
-}
-
-void DrainageBasin::smooth_mesh_taubin(float lambda, float mu, int iterations)
-{
-  for (int it = 0; it < iterations; ++it)
-  {
-    int sub_iterations = 1;
-    this->smooth_mesh(lambda, sub_iterations);
-    this->smooth_mesh(mu, sub_iterations);
-  }
-}
 
 void DrainageBasin::to_csv(const std::string &filename) const
 {
@@ -548,14 +430,15 @@ void DrainageBasin::to_csv(const std::string &filename) const
        "vertex_id,x,y,z,is_outlet,receiver,root,order,area,area_acc,flow_"
        "acc\n";
 
-  for (size_t i = 0; i < static_cast<size_t>(xyz.size()); ++i)
+  for (size_t i = 0; i < static_cast<size_t>(mesh.get_points().size()); ++i)
   {
     size_t r = (i < receivers.size()) ? receivers[i] : -1;
     size_t rt = (i < roots.size()) ? roots[i] : -1;
 
-    f << i << "," << xyz[i].x << "," << xyz[i].y << "," << xyz[i].z << ","
-      << (outlets_mask[i] ? 1 : 0) << "," << r << "," << rt << "," << order[i]
-      << "," << area[i] << "," << acc[i] << "," << flow[i] << "\n";
+    f << i << "," << mesh.get_points()[i].x << "," << mesh.get_points()[i].y
+      << "," << mesh.get_points()[i].z << "," << (outlets_mask[i] ? 1 : 0)
+      << "," << r << "," << rt << "," << order[i] << "," << area[i] << ","
+      << acc[i] << "," << flow[i] << "\n";
   }
 
   f.close();
@@ -577,7 +460,13 @@ float DrainageBasin::update_elevations(const std::vector<float> &response_times,
       outlet_of[i] = outlet;
   }
 
+  // get z range to scale slope limiters
+  glm::vec2 zr = this->mesh.get_range_z();
+  float     zptp = zr.y - zr.x;
+
   // iterate upstream (outlet first)
+  std::vector<glm::vec3> &points = this->mesh.get_points();
+
   for (const auto &[outlet, traversal] : traversals)
   {
     for (size_t i : traversal)
@@ -586,31 +475,29 @@ float DrainageBasin::update_elevations(const std::vector<float> &response_times,
 
       if (j == i) continue; // skip outlet
 
-      float new_elevation = this->xyz[outlet].z +
-                            uplift_rate * std::max(response_times[i] -
-                                                       response_times[outlet],
-                                                   0.f);
+      float dt = std::max(response_times[i] - response_times[outlet], 0.f);
+      float new_elevation = points[outlet].z + uplift_rate * dt;
 
       // slope limiting
       {
         // xy-plane distance only for splope
-        float distance = std::hypot(this->xyz[i].x - this->xyz[j].x,
-                                    this->xyz[i].y - this->xyz[j].y);
+        float distance = std::hypot(points[i].x - points[j].x,
+                                    points[i].y - points[j].y);
 
-        float slope = (new_elevation - this->xyz[j].z) / distance;
+        float slope = (new_elevation - points[j].z) / distance;
+        float max_slope_n = max_slope[i] * zptp;
 
-        if (slope > max_slope[i])
-          new_elevation = this->xyz[j].z + max_slope[i] * distance;
+        if (slope > max_slope_n)
+          new_elevation = points[j].z + max_slope_n * distance;
 
-        float min_slope = 0.f;
-        if (slope < min_slope)
-          new_elevation = this->xyz[j].z + min_slope * distance;
+        // if (slope < 0.f)
+        //   new_elevation = points[j].z;
       }
 
-      float delta = std::abs(new_elevation - this->xyz[i].z);
+      float delta = std::abs(new_elevation - points[i].z);
       delta_sum += delta;
 
-      this->xyz[i].z = new_elevation;
+      points[i].z = new_elevation;
     }
   }
 
@@ -621,25 +508,13 @@ float DrainageBasin::update_elevations(const std::vector<float> &response_times,
 
 void DrainageBasin::update_stream_tree()
 {
-  hmap::Timer::Start("update_stream_tree/A");
   this->compute_receivers();
-  hmap::Timer::Stop("update_stream_tree/A");
 
-  hmap::Timer::Start("update_stream_tree/B");
   auto [subroots, has_lake] = this->find_subroots();
-  hmap::Timer::Stop("update_stream_tree/B");
-
-  hmap::Timer::Start("update_stream_tree/C");
   if (has_lake) this->remove_lakes(subroots);
-  hmap::Timer::Stop("update_stream_tree/C");
 
-  hmap::Timer::Start("update_stream_tree/D");
   this->children = invert_receiver_map(this->receivers);
-  hmap::Timer::Stop("update_stream_tree/D");
-
-  hmap::Timer::Start("update_stream_tree/E");
   this->update_traversals();
-  hmap::Timer::Stop("update_stream_tree/E");
 }
 
 void DrainageBasin::update_traversals()
@@ -649,7 +524,7 @@ void DrainageBasin::update_traversals()
   for (const auto &o : this->get_outlets())
   {
     std::vector<size_t> traversal;
-    traversal.reserve(this->xyz.size());
+    traversal.reserve(this->mesh.get_points().size());
 
     traversal.push_back(o);
 
@@ -729,6 +604,52 @@ std::vector<size_t> find_border_minima(const std::vector<glm::vec3> &xyz,
   }
 
   return {xmin, xmax, ymin, ymax};
+}
+
+std::vector<size_t> find_border_sinks(TerrainTriMesh &mesh, float eps)
+{
+  const auto &pts = mesh.get_points();
+  const auto &nbrs_data = mesh.get_neighbors();
+  const auto &bbox = mesh.get_bbox();
+
+  std::vector<size_t> sinks;
+
+  for (size_t i = 0; i < pts.size(); ++i)
+  {
+    const auto &p = pts[i];
+
+    // border test
+    bool is_border = (std::abs(p.x - bbox.min.x) < eps) ||
+                     (std::abs(p.x - bbox.max.x) < eps) ||
+                     (std::abs(p.y - bbox.min.y) < eps) ||
+                     (std::abs(p.y - bbox.max.y) < eps);
+
+    if (!is_border) continue;
+
+    const auto &nbrs = nbrs_data.adjacency[i];
+
+    if (nbrs.empty()) continue;
+
+    bool is_sink = true;
+
+    for (const auto &nb : nbrs)
+    {
+      size_t j = nb.index;
+
+      if (j >= pts.size()) continue;
+
+      // --- strictly lower neighbor → NOT a sink ---
+      if (pts[j].z < p.z - eps)
+      {
+        is_sink = false;
+        break;
+      }
+    }
+
+    if (is_sink) sinks.push_back(i);
+  }
+
+  return sinks;
 }
 
 std::vector<size_t> sample_border_points(const std::vector<glm::vec3> &xyz,

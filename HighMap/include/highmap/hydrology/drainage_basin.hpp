@@ -9,6 +9,7 @@
 #include <glm/glm.hpp>
 
 #include "highmap/array.hpp"
+#include "highmap/terrain_tri_mesh.hpp"
 
 namespace hmap
 {
@@ -16,23 +17,23 @@ namespace hmap
 class DrainageBasin
 {
 public:
-  // --- Construction
+  // --- Construction ---
 
   DrainageBasin(std::vector<glm::vec3> xyz_);
 
   const std::vector<glm::vec3> &get_xyz() const;
-  std::vector<glm::vec3>       &get_xyz();
   size_t                        size() const;
   void                          to_csv(const std::string &filename) const;
 
-  // --- Geometry / Mesh
+  // --- Geometry / Mesh ---
+
+  const TerrainTriMesh &get_mesh() const;
+  TerrainTriMesh       &get_mesh();
 
   std::vector<float> compute_vertex_areas() const;
   void               remap(float zmin = 0.f, float zmax = 1.f);
-  void               smooth_mesh(float lambda, int iterations = 1);
-  void smooth_mesh_taubin(float lambda, float mu, int iterations = 1);
 
-  // --- Flow graph construction
+  // --- Flow graph construction ---
 
   void compute_receivers();
   void update_stream_tree();
@@ -42,13 +43,13 @@ public:
   void                set_outlets(const std::vector<size_t> &outlet_indices);
   const std::vector<size_t> &get_receivers() const;
 
-  // --- Basin topology utilities
+  // --- Basin topology utilities ---
 
   std::vector<size_t>                  compute_strahler_order() const;
   std::pair<std::vector<size_t>, bool> find_subroots();
   void remove_lakes(const std::vector<size_t> &subroot);
 
-  // --- Hydrology computations
+  // --- Hydrology computations ---
 
   std::vector<float> compute_response_times(
       const std::vector<float> &area_acc,
@@ -62,7 +63,7 @@ public:
   void accumulate_area_by_outlet(const std::vector<float> &area,
                                  std::vector<float>       &acc) const;
 
-  // --- Traversal helpers
+  // --- Traversal helpers ---
 
   const std::vector<size_t> &for_each_upstream(size_t outlet) const;
 
@@ -73,27 +74,22 @@ public:
   }
 
 private:
-  // --- Geometry
+  // --- Geometry ---
 
-  std::vector<glm::vec3>           xyz;
-  std::vector<size_t>              convex_hull;
-  std::vector<glm::ivec3>          triangles;
-  std::vector<std::vector<size_t>> nbrs_indices;
-  std::vector<std::vector<float>>  nbrs_distances;
-  float                            reference_length;
+  TerrainTriMesh mesh;
 
-  // --- Flow graph
+  // --- Flow graph ---
 
   std::vector<size_t>              receivers;
   std::vector<size_t>              roots;
   std::vector<std::vector<size_t>> children;
   std::vector<bool>                outlets_mask;
 
-  // --- Traversal cache
+  // --- Traversal cache ---
 
   std::unordered_map<size_t, std::vector<size_t>> traversals;
 
-  // --- Constants
+  // --- Constants ---
 
   const size_t invalid_index = size_t(-1);
 };
@@ -102,6 +98,8 @@ private:
 
 std::vector<size_t> find_border_minima(const std::vector<glm::vec3> &xyz,
                                        float eps = 1e-6f);
+
+std::vector<size_t> find_border_sinks(TerrainTriMesh &mesh, float eps = 1e-6f);
 
 std::vector<glm::vec3> heightmap_retopology(const Array &z,
                                             float        max_error,

@@ -1,0 +1,2 @@
+add_executable(ex_hydraulic_saleve ex_hydraulic_saleve.cpp)
+target_link_libraries(ex_hydraulic_saleve highmap)

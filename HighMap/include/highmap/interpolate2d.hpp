@@ -185,16 +185,16 @@ Array interpolate2d(glm::ivec2                shape,
  * triangulation of the input points and interpolating the values within each
  * triangle.
  *
- * @param  shape        Output array shape.
- * @param  x            x coordinates of the input values.
- * @param  y            y coordinates of the input values.
- * @param  values       Input values at (x, y).
- * @param  p_noise_x    Pointer to the input noise array in the x direction
- *                      (optional).
- * @param  p_noise_y    Pointer to the input noise array in the y direction
- *                      (optional).
- * @param  bbox         Domain bounding box (default: {0.f, 1.f, 0.f, 1.f}).
- * @return              Array Output array with interpolated values.
+ * @param  shape     Output array shape.
+ * @param  x         x coordinates of the input values.
+ * @param  y         y coordinates of the input values.
+ * @param  values    Input values at (x, y).
+ * @param  p_noise_x Pointer to the input noise array in the x direction
+ *                   (optional).
+ * @param  p_noise_y Pointer to the input noise array in the y direction
+ *                   (optional).
+ * @param  bbox      Domain bounding box (default: {0.f, 1.f, 0.f, 1.f}).
+ * @return           Array Output array with interpolated values.
  */
 Array interpolate2d_delaunay(glm::ivec2                shape,
                              const std::vector<float> &x,
@@ -234,16 +234,16 @@ Array interpolate2d_idw(glm::ivec2                shape,
  * This function performs 2D interpolation by assigning the value of the nearest
  * point to each point in the output grid.
  *
- * @param  shape        Output array shape.
- * @param  x            x coordinates of the input values.
- * @param  y            y coordinates of the input values.
- * @param  values       Input values at (x, y).
- * @param  p_noise_x    Pointer to the input noise array in the x direction
- *                      (optional).
- * @param  p_noise_y    Pointer to the input noise array in the y direction
- *                      (optional).
- * @param  bbox         Domain bounding box (default: {0.f, 1.f, 0.f, 1.f}).
- * @return              Array Output array with interpolated values.
+ * @param  shape     Output array shape.
+ * @param  x         x coordinates of the input values.
+ * @param  y         y coordinates of the input values.
+ * @param  values    Input values at (x, y).
+ * @param  p_noise_x Pointer to the input noise array in the x direction
+ *                   (optional).
+ * @param  p_noise_y Pointer to the input noise array in the y direction
+ *                   (optional).
+ * @param  bbox      Domain bounding box (default: {0.f, 1.f, 0.f, 1.f}).
+ * @return           Array Output array with interpolated values.
  */
 Array interpolate2d_nearest(glm::ivec2                shape,
                             const std::vector<float> &x,

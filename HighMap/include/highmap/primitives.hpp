@@ -104,6 +104,9 @@ Array biquad_pulse(glm::ivec2   shape,
                    glm::vec2    center = {0.5f, 0.5f},
                    glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
 
+Array biquad_pulse_x(glm::ivec2 shape, glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f});
+Array biquad_pulse_y(glm::ivec2 shape, glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f});
+
 /**
  * @brief Return a bump.
  *

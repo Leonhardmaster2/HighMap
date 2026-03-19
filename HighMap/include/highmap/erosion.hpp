@@ -1,23 +1,12 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
    Public License. The full license is in the file LICENSE, distributed with
    this software. */
-
-/**
- * @file erosion.hpp
- * @author Otto Link (otto.link.bv@gmail.com)
- * @brief Implements hydraulic and thermal erosion algorithms for terrain
- * modeling, including particle-based flow, sediment transport (Musgrave, Benes,
- * Olsen), slope-driven diffusion, and procedural ridge formation. Supports
- * GPU-accelerated methods and generates erosion/deposition maps for geomorphic
- * analysis.
- *
- * @copyright Copyright (c) 2023 Otto Link.
- */
 #pragma once
 #include <cmath>
 
 #include "highmap/array.hpp"
 #include "highmap/hydrology/hydrology.hpp"
+#include "highmap/terrain_tri_mesh.hpp"
 
 // neighbor pattern search based on Moore pattern and define diagonal
 // weight coefficients ('c' corresponds to a weight coefficient
@@ -428,7 +417,78 @@ void hydraulic_musgrave(Array &z,
                         float  water_level = 0.01f,
                         float  evap_rate = 0.01f); ///< @overload
 
-void hydraulic_spl(Array &z);
+/**
+ * @brief Perform hydraulic erosion on a triangulated terrain mesh.
+ *
+ * Iteratively updates elevations using a drainage model with uplift, slope
+ * constraints, and spatially varying erodibility.
+ *
+ * @param mesh           Input/output terrain mesh.
+ * @param erodibility    Per-vertex erodibility coefficients.
+ * @param max_slope      Per-vertex maximum slope constraint.
+ * @param m_exp          Exponent controlling flow response.
+ * @param uplift_rate    Constant uplift applied each iteration.
+ * @param tolerance      Convergence threshold on elevation updates.
+ * @param max_iterations Maximum number of erosion iterations.
+ *
+ * **Example**
+ * @include ex_hydraulic_saleve.cpp
+ *
+ * **Result**
+ * @image html ex_hydraulic_saleve.png
+ */
+void hydraulic_saleve(TerrainTriMesh           &mesh,
+                      const std::vector<float> &erodibility,
+                      const std::vector<float> &max_slope,
+                      float                     m_exp = 0.8f,
+                      float                     uplift_rate = 1.f,
+                      float                     tolerance = 1e-3f,
+                      int                       max_iterations = 200);
+
+/**
+ * @brief Apply hydraulic erosion to a heightmap using an adaptive mesh.
+ *
+ * Converts the input heightmap to a triangulated mesh, performs erosion, and
+ * interpolates the result back to a grid.
+ *
+ * @param  z                        Input heightmap.
+ * @param  seed                     Random seed for point sampling.
+ * @param  control_points_count     Number of mesh control points.
+ * @param  m_exp                    Flow response exponent.
+ * @param  uplift_rate              Constant uplift per iteration.
+ * @param  tolerance                Convergence threshold.
+ * @param  max_iterations           Maximum number of iterations.
+ * @param  smin                     Minimum slope constraint.
+ * @param  smax                     Maximum slope constraint.
+ * @param  strength                 Blending factor between original and eroded
+ *                                  terrain.
+ * @param  scale_erodibility_with_z Modulate erodibility with elevation.
+ * @param  erodibility_distrib_exp  Exponent for erodibility distribution.
+ * @param  p_noise_x                Optional X displacement field.
+ * @param  p_noise_y                Optional Y displacement field.
+ *
+ * @return                          Eroded heightmap.
+ *
+ * **Example**
+ * @include ex_hydraulic_saleve.cpp
+ *
+ * **Result**
+ * @image html ex_hydraulic_saleve.png
+ */
+Array hydraulic_saleve(const Array &z,
+                       uint         seed,
+                       size_t       control_points_count = 10000,
+                       float        m_exp = 0.8f,
+                       float        uplift_rate = 1.f,
+                       float        tolerance = 1e-3f,
+                       int          max_iterations = 200,
+                       float        smin = 0.f,
+                       float        smax = 6.f,
+                       float        strength = 0.5f,
+                       bool         scale_erodibility_with_z = true,
+                       float        erodibility_distrib_exp = 1.f,
+                       const Array *p_noise_x = nullptr,
+                       const Array *p_noise_y = nullptr);
 
 /**
  * @brief Apply hydraulic erosion based on a flow accumulation map.
@@ -1012,6 +1072,22 @@ void thermal_schott(Array      &z,
 
 namespace hmap::gpu
 {
+
+/**
+ * @brief Fill holes using Gaussian-based deposition.
+ *
+ * Applies a smoothing/deposition pass that fills local depressions while
+ * preserving overall terrain shape through gradient-aware blending.
+ *
+ * @param z                   Heightmap to modify (in-place).
+ * @param deposition_ir       Influence radius of the Gaussian filter.
+ * @param deposition_strength Blending factor controlling deposition intensity.
+ * @param iterations          Number of successive deposition passes.
+ */
+void deposition_fill_holes(Array &z,
+                           int    deposition_ir,
+                           float  deposition_strength,
+                           int    iterations = 1);
 
 /**
  * @brief Simulates hydraulic erosion on a heightmap using particle-based flow.

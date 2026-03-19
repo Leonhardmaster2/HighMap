@@ -38,6 +38,46 @@ Array biquad_pulse(glm::ivec2   shape,
   return array;
 }
 
+Array biquad_pulse_x(glm::ivec2 shape, glm::vec4 bbox)
+{
+  Array array = Array(shape);
+
+  auto fct = [](float x, float, float)
+  {
+    x = 16.f * x * (1.f - x);
+    return std::clamp(x, 0.f, 1.f);
+  };
+
+  fill_array_using_xy_function(array,
+                               bbox,
+                               nullptr,
+                               nullptr,
+                               nullptr,
+                               nullptr,
+                               fct);
+  return array;
+}
+
+Array biquad_pulse_y(glm::ivec2 shape, glm::vec4 bbox)
+{
+  Array array = Array(shape);
+
+  auto fct = [](float, float y, float)
+  {
+    y = 16.f * y * (1.f - y);
+    return std::clamp(y, 0.f, 1.f);
+  };
+
+  fill_array_using_xy_function(array,
+                               bbox,
+                               nullptr,
+                               nullptr,
+                               nullptr,
+                               nullptr,
+                               fct);
+  return array;
+}
+
 Array bump(glm::ivec2   shape,
            float        gain,
            const Array *p_ctrl_param,
