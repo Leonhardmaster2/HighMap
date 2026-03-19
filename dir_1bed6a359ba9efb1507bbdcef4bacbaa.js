@@ -2,6 +2,7 @@ var dir_1bed6a359ba9efb1507bbdcef4bacbaa =
 [
     [ "coastal_erosion.cpp", "coastal__erosion_8cpp.html", "coastal__erosion_8cpp" ],
     [ "deposition.cpp", "deposition_8cpp.html", "deposition_8cpp" ],
+    [ "deposition_fill_holes.cpp", "deposition__fill__holes_8cpp.html", "deposition__fill__holes_8cpp" ],
     [ "depression_filling.cpp", "depression__filling_8cpp.html", "depression__filling_8cpp" ],
     [ "depression_filling_priority_flood.cpp", "depression__filling__priority__flood_8cpp.html", "depression__filling__priority__flood_8cpp" ],
     [ "erosion_gpu.cpp", "erosion__gpu_8cpp.html", "erosion__gpu_8cpp" ],
@@ -14,8 +15,8 @@ var dir_1bed6a359ba9efb1507bbdcef4bacbaa =
     [ "hydraulic_diffusion.cpp", "hydraulic__diffusion_8cpp.html", "hydraulic__diffusion_8cpp" ],
     [ "hydraulic_musgrave.cpp", "hydraulic__musgrave_8cpp.html", "hydraulic__musgrave_8cpp" ],
     [ "hydraulic_procedural.cpp", "hydraulic__procedural_8cpp.html", "hydraulic__procedural_8cpp" ],
+    [ "hydraulic_saleve.cpp", "hydraulic__saleve_8cpp.html", "hydraulic__saleve_8cpp" ],
     [ "hydraulic_schott_gpu.cpp", "hydraulic__schott__gpu_8cpp.html", "hydraulic__schott__gpu_8cpp" ],
-    [ "hydraulic_spl.cpp", "hydraulic__spl_8cpp.html", "hydraulic__spl_8cpp" ],
     [ "hydraulic_stream.cpp", "hydraulic__stream_8cpp.html", "hydraulic__stream_8cpp" ],
     [ "hydraulic_stream_gpu.cpp", "hydraulic__stream__gpu_8cpp.html", "hydraulic__stream__gpu_8cpp" ],
     [ "hydraulic_stream_upscale_amplification.cpp", "hydraulic__stream__upscale__amplification_8cpp.html", "hydraulic__stream__upscale__amplification_8cpp" ],

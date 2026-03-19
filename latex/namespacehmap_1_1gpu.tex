@@ -31,6 +31,8 @@
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a4e9ebf2cab88b81e28538a5432abf68c}{hmap\+::shape\+\_\+index}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a112db22b157fcb69d867e1e5ee3a1afd}{unsphericity}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int ir)
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a5dc8b3117305f025eb4d0da50bf3c674}{hmap\+::unsphericity}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacehmap_1_1gpu_a8497e2fce595293ea07e68eac1e5bce2}{deposition\+\_\+fill\+\_\+holes}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int deposition\+\_\+ir, float deposition\+\_\+strength, int iterations=1)
+\begin{DoxyCompactList}\small\item\em Fill holes using Gaussian-\/based deposition. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_1_1gpu_ae084938139cca4f7c15866ceabe18ab7}{hydraulic\+\_\+particle}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int nparticles, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+bedrock=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+moisture\+\_\+map=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+elevation\+\_\+shift=nullptr, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+erosion\+\_\+map=nullptr, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+deposition\+\_\+map=nullptr, float c\+\_\+capacity=10.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float c\+\_\+erosion=0.\+05\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float c\+\_\+deposition=0.\+05\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float c\+\_\+inertia=0.\+1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float c\+\_\+gravity=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float drag\+\_\+rate=0.\+001\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float evap\+\_\+rate=0.\+001\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, bool enable\+\_\+directional\+\_\+bias=false, float angle\+\_\+bias=30.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Simulates hydraulic erosion on a heightmap using particle-\/based flow. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_1_1gpu_a24498e2366d9797fe9e585f494bff98f}{hydraulic\+\_\+particle}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+mask, int nparticles, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+bedrock=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+moisture\+\_\+map=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+elevation\+\_\+shift=nullptr, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+erosion\+\_\+map=nullptr, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+deposition\+\_\+map=nullptr, float c\+\_\+capacity=10.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float c\+\_\+erosion=0.\+05\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float c\+\_\+deposition=0.\+05\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float c\+\_\+inertia=0.\+1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float c\+\_\+gravity=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float drag\+\_\+rate=0.\+001\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float evap\+\_\+rate=0.\+001\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, bool enable\+\_\+directional\+\_\+bias=false, float angle\+\_\+bias=30.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
@@ -577,6 +579,29 @@ See \doxylink{namespacehmap_a4e9ebf2cab88b81e28538a5432abf68c}{hmap\+::shape\+\_
 
 See \doxylink{namespacehmap_a5dc8b3117305f025eb4d0da50bf3c674}{hmap\+::unsphericity}. 
 
+\Hypertarget{namespacehmap_1_1gpu_a8497e2fce595293ea07e68eac1e5bce2}\label{namespacehmap_1_1gpu_a8497e2fce595293ea07e68eac1e5bce2} 
+\index{hmap::gpu@{hmap::gpu}!deposition\_fill\_holes@{deposition\_fill\_holes}}
+\index{deposition\_fill\_holes@{deposition\_fill\_holes}!hmap::gpu@{hmap::gpu}}
+\doxysubsubsection{\texorpdfstring{deposition\_fill\_holes()}{deposition\_fill\_holes()}}
+{\footnotesize\ttfamily void hmap\+::gpu\+::deposition\+\_\+fill\+\_\+holes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{int}]{deposition\+\_\+ir,  }\item[{float}]{deposition\+\_\+strength,  }\item[{int}]{iterations = {\ttfamily 1} }\end{DoxyParamCaption})}
+
+
+
+Fill holes using Gaussian-\/based deposition. 
+
+Applies a smoothing/deposition pass that fills local depressions while preserving overall terrain shape through gradient-\/aware blending.
+
+
+\begin{DoxyParams}{Parameters}
+{\em z} & Heightmap to modify (in-\/place). \\
+\hline
+{\em deposition\+\_\+ir} & Influence radius of the Gaussian filter. \\
+\hline
+{\em deposition\+\_\+strength} & Blending factor controlling deposition intensity. \\
+\hline
+{\em iterations} & Number of successive deposition passes. \\
+\hline
+\end{DoxyParams}
 \Hypertarget{namespacehmap_1_1gpu_ae084938139cca4f7c15866ceabe18ab7}\label{namespacehmap_1_1gpu_ae084938139cca4f7c15866ceabe18ab7} 
 \index{hmap::gpu@{hmap::gpu}!hydraulic\_particle@{hydraulic\_particle}}
 \index{hydraulic\_particle@{hydraulic\_particle}!hmap::gpu@{hmap::gpu}}

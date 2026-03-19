@@ -18,9 +18,10 @@ var searchData=
   ['export_5fasset_15',['export_asset',['../namespacehmap.html#a7b8945745feaeaa365d965ce66b32f58',1,'hmap']]],
   ['export_5fbanner_5fpng_16',['export_banner_png',['../namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a',1,'hmap']]],
   ['export_5fnormal_5fmap_5fpng_17',['export_normal_map_png',['../namespacehmap.html#a9648a23e61a84a702d89159d516dd4ec',1,'hmap']]],
-  ['export_5fpoints_5fto_5fply_18',['export_points_to_ply',['../namespacehmap.html#ae01b5471d28a8f4a9104e2ffea4484a9',1,'hmap']]],
-  ['export_5fsplatmap_5fpng_19',['export_splatmap_png',['../namespacehmap.html#a32464922c39713910ebeab632e0e8fd1',1,'hmap']]],
-  ['export_5ftiled_20',['export_tiled',['../namespacehmap.html#a91708f107a53c4b8ef68bb1d0291c73f',1,'hmap']]],
-  ['extract_5fslice_21',['extract_slice',['../classhmap_1_1Array.html#a2cb7491733f41de0f72f132c0ecff188',1,'hmap::Array::extract_slice(glm::ivec4 idx) const'],['../classhmap_1_1Array.html#a7d552a649bcc47445b11d2e42d193492',1,'hmap::Array::extract_slice(int i1, int i2, int j1, int j2) const']]],
-  ['extrapolate_5fborders_22',['extrapolate_borders',['../namespacehmap.html#a8802e95ba76a252d2098bdb3fb5cfc28',1,'hmap']]]
+  ['export_5fobj_18',['export_obj',['../classhmap_1_1TerrainTriMesh.html#aff20c6cfb3730b3c55d6d1c803057bd3',1,'hmap::TerrainTriMesh']]],
+  ['export_5fpoints_5fto_5fply_19',['export_points_to_ply',['../namespacehmap.html#ae01b5471d28a8f4a9104e2ffea4484a9',1,'hmap']]],
+  ['export_5fsplatmap_5fpng_20',['export_splatmap_png',['../namespacehmap.html#a32464922c39713910ebeab632e0e8fd1',1,'hmap']]],
+  ['export_5ftiled_21',['export_tiled',['../namespacehmap.html#a91708f107a53c4b8ef68bb1d0291c73f',1,'hmap']]],
+  ['extract_5fslice_22',['extract_slice',['../classhmap_1_1Array.html#a2cb7491733f41de0f72f132c0ecff188',1,'hmap::Array::extract_slice(glm::ivec4 idx) const'],['../classhmap_1_1Array.html#a7d552a649bcc47445b11d2e42d193492',1,'hmap::Array::extract_slice(int i1, int i2, int j1, int j2) const']]],
+  ['extrapolate_5fborders_23',['extrapolate_borders',['../namespacehmap.html#a8802e95ba76a252d2098bdb3fb5cfc28',1,'hmap']]]
 ];

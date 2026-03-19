@@ -146,6 +146,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a112db22b157fcb69d867e1e5ee3a1afd" id="r_a112db22b157fcb69d867e1e5ee3a1afd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a112db22b157fcb69d867e1e5ee3a1afd">unsphericity</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, int ir)</td></tr>
 <tr class="memdesc:a112db22b157fcb69d867e1e5ee3a1afd"><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="namespacehmap.html#a5dc8b3117305f025eb4d0da50bf3c674" title="Calculates the unsphericity of a surface, indicating how much the terrain deviates from a perfect sph...">hmap::unsphericity</a>.  <br /></td></tr>
 <tr class="separator:a112db22b157fcb69d867e1e5ee3a1afd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8497e2fce595293ea07e68eac1e5bce2" id="r_a8497e2fce595293ea07e68eac1e5bce2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a8497e2fce595293ea07e68eac1e5bce2">deposition_fill_holes</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, int deposition_ir, float deposition_strength, int iterations=1)</td></tr>
+<tr class="memdesc:a8497e2fce595293ea07e68eac1e5bce2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fill holes using Gaussian-based deposition.  <br /></td></tr>
+<tr class="separator:a8497e2fce595293ea07e68eac1e5bce2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae084938139cca4f7c15866ceabe18ab7" id="r_ae084938139cca4f7c15866ceabe18ab7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#ae084938139cca4f7c15866ceabe18ab7">hydraulic_particle</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, int nparticles, <a class="el" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> seed, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_bedrock=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_moisture_map=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_elevation_shift=nullptr, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_erosion_map=nullptr, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_deposition_map=nullptr, float c_capacity=10.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float c_erosion=0.05<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float c_deposition=0.05<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float c_inertia=0.1<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float c_gravity=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float drag_rate=0.001<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float evap_rate=0.001<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, bool enable_directional_bias=false, float angle_bias=30.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
 <tr class="memdesc:ae084938139cca4f7c15866ceabe18ab7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simulates hydraulic erosion on a heightmap using particle-based flow.  <br /></td></tr>
 <tr class="separator:ae084938139cca4f7c15866ceabe18ab7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1154,6 +1157,58 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a8497e2fce595293ea07e68eac1e5bce2" name="a8497e2fce595293ea07e68eac1e5bce2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8497e2fce595293ea07e68eac1e5bce2">&#9670;&#160;</a></span>deposition_fill_holes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hmap::gpu::deposition_fill_holes </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>z</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>deposition_ir</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>deposition_strength</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iterations</em> = <code>1</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fill holes using Gaussian-based deposition. </p>
+<p>Applies a smoothing/deposition pass that fills local depressions while preserving overall terrain shape through gradient-aware blending.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">z</td><td>Heightmap to modify (in-place). </td></tr>
+    <tr><td class="paramname">deposition_ir</td><td>Influence radius of the Gaussian filter. </td></tr>
+    <tr><td class="paramname">deposition_strength</td><td>Blending factor controlling deposition intensity. </td></tr>
+    <tr><td class="paramname">iterations</td><td>Number of successive deposition passes. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="ae084938139cca4f7c15866ceabe18ab7" name="ae084938139cca4f7c15866ceabe18ab7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae084938139cca4f7c15866ceabe18ab7">&#9670;&#160;</a></span>hydraulic_particle() <span class="overload">[1/2]</span></h2>
 
@@ -1715,7 +1770,7 @@ Functions</h2></td></tr>
 <div class="line">}</div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_a60f3eb887b87ec545d68977b8811cadc"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a60f3eb887b87ec545d68977b8811cadc">hmap::gpu::hydraulic_procedural_fbm</a></div><div class="ttdeci">void hydraulic_procedural_fbm(Array &amp;z, float kp_global, float c_erosion, uint seed, ErosionProfile erosion_profile=ErosionProfile::EP_TRIANGLE_GRENIER, int octaves=3, float persistence=0.5f, float lacunarity=2.f, float erosion_profile_parameter=0.01f, float angle_shift=0.f, float phase_smoothing=0.1f, float talus_ref=0.001f, float gradient_scaling_ratio=1.f, float gradient_power=0.8f, bool exclude_ridges=true, bool apply_deposition=false, float deposition_strength=1.f, bool enable_default_noise=true, float noise_amp=0.01f, const Array *p_kp_multiplier=nullptr, const Array *p_angle_shift=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, Array *p_ridge_mask=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Multi-octave (fBm) variant of hydraulic_procedural().</div><div class="ttdef"><b>Definition</b> hydraulic_procedural.cpp:196</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_afbecd3a8ce025fb08ca3296ce81f695d"><div class="ttname"><a href="namespacehmap_1_1gpu.html#afbecd3a8ce025fb08ca3296ce81f695d">hmap::gpu::hydraulic_procedural</a></div><div class="ttdeci">void hydraulic_procedural(Array &amp;z, float kp_global, float c_erosion, uint seed, ErosionProfile erosion_profile=ErosionProfile::EP_TRIANGLE_GRENIER, float erosion_profile_parameter=0.01f, float angle_shift=0.f, float phase_smoothing=0.1f, float talus_ref=0.001f, float gradient_scaling_ratio=1.f, float gradient_power=0.8f, bool exclude_ridges=true, bool apply_deposition=false, float deposition_strength=1.f, bool enable_default_noise=true, float noise_amp=0.01f, const Array *p_kp_multiplier=nullptr, const Array *p_angle_shift=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, Array *p_ridge_mask=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Apply phase-guided hydraulic procedural erosion to a heightmap.</div><div class="ttdef"><b>Definition</b> hydraulic_procedural.cpp:24</div></div>
-<div class="ttc" id="anamespacehmap_html_a25a4e4775f3c0918ed75f0503f5ed0a6a61a4a71c0e8d1a97da9657b03d51680f"><div class="ttname"><a href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a61a4a71c0e8d1a97da9657b03d51680f">hmap::EP_TRIANGLE_GRENIER</a></div><div class="ttdeci">@ EP_TRIANGLE_GRENIER</div><div class="ttdef"><b>Definition</b> erosion.hpp:53</div></div>
+<div class="ttc" id="anamespacehmap_html_a25a4e4775f3c0918ed75f0503f5ed0a6a61a4a71c0e8d1a97da9657b03d51680f"><div class="ttname"><a href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a61a4a71c0e8d1a97da9657b03d51680f">hmap::EP_TRIANGLE_GRENIER</a></div><div class="ttdeci">@ EP_TRIANGLE_GRENIER</div><div class="ttdef"><b>Definition</b> erosion.hpp:42</div></div>
 <div class="ttc" id="anamespacehmap_html_ab8197c4c7a85dacb616fee7a7d0df195ac5113a637d69eb3c549e6d561da167ed"><div class="ttname"><a href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195ac5113a637d69eb3c549e6d561da167ed">hmap::SIMPLEX2</a></div><div class="ttdeci">@ SIMPLEX2</div><div class="ttdoc">OpenSimplex2.</div><div class="ttdef"><b>Definition</b> functions.hpp:67</div></div>
 <div class="ttc" id="anamespacehmap_html_ac718f038155dde59fb50eb22684ed255"><div class="ttname"><a href="namespacehmap.html#ac718f038155dde59fb50eb22684ed255">hmap::check_erosion_profile_function</a></div><div class="ttdeci">std::vector&lt; hmap::ErosionProfile &gt; check_erosion_profile_function(float delta=0.01f)</div><div class="ttdef"><b>Definition</b> get_erosion_profile_function.cpp:17</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
@@ -2899,7 +2954,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">}</div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_a3faa3e769849fbcc7784d130c05f99a2"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a3faa3e769849fbcc7784d130c05f99a2">hmap::gpu::mudslide</a></div><div class="ttdeci">void mudslide(Array &amp;z, const Array &amp;landslide_mask, float depth, int iterations, float depth_map_exponent=0.5f, float viscosity_law_power=1.5f, Array *p_depth_end=nullptr, Array *p_depth_init=nullptr)</div><div class="ttdoc">Simulate a mudslide (landslide-driven material redistribution) on a height field.</div><div class="ttdef"><b>Definition</b> mudslide.cpp:15</div></div>
 <div class="ttc" id="anamespacehmap_html_a4799d3f029d45240a5b40b4853583a58"><div class="ttname"><a href="namespacehmap.html#a4799d3f029d45240a5b40b4853583a58">hmap::make_binary</a></div><div class="ttdeci">void make_binary(Array &amp;array, float threshold=0.f)</div><div class="ttdoc">Convert array values to binary using a threshold.</div><div class="ttdef"><b>Definition</b> filters.cpp:456</div></div>
-<div class="ttc" id="anamespacehmap_html_a80b6038177b2ab3984cb18bd90f568fa"><div class="ttname"><a href="namespacehmap.html#a80b6038177b2ab3984cb18bd90f568fa">hmap::step</a></div><div class="ttdeci">Array step(glm::ivec2 shape, float angle, float slope, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, glm::vec2 center={0.5f, 0.5f}, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Return a step function (Heaviside with an optional talus slope at the transition).</div><div class="ttdef"><b>Definition</b> primitives.cpp:332</div></div>
+<div class="ttc" id="anamespacehmap_html_a80b6038177b2ab3984cb18bd90f568fa"><div class="ttname"><a href="namespacehmap.html#a80b6038177b2ab3984cb18bd90f568fa">hmap::step</a></div><div class="ttdeci">Array step(glm::ivec2 shape, float angle, float slope, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, glm::vec2 center={0.5f, 0.5f}, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Return a step function (Heaviside with an optional talus slope at the transition).</div><div class="ttdef"><b>Definition</b> primitives.cpp:372</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_mudslide.png" alt=""/>
 </div>

@@ -2,6 +2,7 @@ var hierarchy =
 [
     [ "hmap::Array", "classhmap_1_1Array.html", null ],
     [ "hmap::AssertResults", "structhmap_1_1AssertResults.html", null ],
+    [ "hmap::TerrainTriMesh::BoundingBox", "structhmap_1_1TerrainTriMesh_1_1BoundingBox.html", null ],
     [ "hmap::Cloud", "classhmap_1_1Cloud.html", [
       [ "hmap::Graph", "classhmap_1_1Graph.html", null ],
       [ "hmap::Path", "classhmap_1_1Path.html", null ]
@@ -73,12 +74,15 @@ var hierarchy =
     [ "hmap::Mat< T >", "structhmap_1_1Mat.html", null ],
     [ "hmap::Mat< glm::ivec2 >", "structhmap_1_1Mat.html", null ],
     [ "hmap::NaturalNeighborInterpolator", "classhmap_1_1NaturalNeighborInterpolator.html", null ],
+    [ "hmap::TerrainTriMesh::Neighbor", "structhmap_1_1TerrainTriMesh_1_1Neighbor.html", null ],
+    [ "hmap::TerrainTriMesh::NeighborData", "structhmap_1_1TerrainTriMesh_1_1NeighborData.html", null ],
     [ "hmap::Particle", "structhmap_1_1Particle.html", null ],
     [ "hmap::Point", "classhmap_1_1Point.html", null ],
     [ "hmap::Pos", "structhmap_1_1Pos.html", null ],
     [ "hmap::PyramidDecomposition", "classhmap_1_1PyramidDecomposition.html", null ],
     [ "hmap::Recorder", "structhmap_1_1Recorder.html", null ],
     [ "hmap::Tensor", "classhmap_1_1Tensor.html", null ],
+    [ "hmap::TerrainTriMesh", "classhmap_1_1TerrainTriMesh.html", null ],
     [ "TileAccess", "structTileAccess.html", null ],
     [ "hmap::TileKey", "structhmap_1_1TileKey.html", null ],
     [ "hmap::TileKeyHash", "structhmap_1_1TileKeyHash.html", null ],
@@ -91,6 +95,7 @@ var hierarchy =
       [ "hmap::RamTileStorage", "classhmap_1_1RamTileStorage.html", null ]
     ] ],
     [ "hmap::Timer", "classhmap_1_1Timer.html", null ],
+    [ "hmap::TerrainTriMesh::Triangle", "structhmap_1_1TerrainTriMesh_1_1Triangle.html", null ],
     [ "glm::vec2", null, [
       [ "hmap::Vec2< float >", "structhmap_1_1Vec2_3_01float_01_4.html", null ]
     ] ],

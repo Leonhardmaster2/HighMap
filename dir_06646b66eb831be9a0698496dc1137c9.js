@@ -41,5 +41,6 @@ var dir_06646b66eb831be9a0698496dc1137c9 =
     [ "shortest_path.hpp", "shortest__path_8hpp.html", "shortest__path_8hpp" ],
     [ "synthesis.hpp", "synthesis_8hpp.html", "synthesis_8hpp" ],
     [ "tensor.hpp", "tensor_8hpp.html", "tensor_8hpp" ],
+    [ "terrain_tri_mesh.hpp", "terrain__tri__mesh_8hpp.html", "terrain__tri__mesh_8hpp" ],
     [ "transform.hpp", "transform_8hpp.html", "transform_8hpp" ]
 ];

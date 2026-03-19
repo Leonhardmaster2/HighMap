@@ -57,6 +57,7 @@ var annotated_dup =
       [ "SlopeFunction", "classhmap_1_1SlopeFunction.html", "classhmap_1_1SlopeFunction" ],
       [ "StepFunction", "classhmap_1_1StepFunction.html", "classhmap_1_1StepFunction" ],
       [ "Tensor", "classhmap_1_1Tensor.html", "classhmap_1_1Tensor" ],
+      [ "TerrainTriMesh", "classhmap_1_1TerrainTriMesh.html", "classhmap_1_1TerrainTriMesh" ],
       [ "TileKey", "structhmap_1_1TileKey.html", "structhmap_1_1TileKey" ],
       [ "TileKeyHash", "structhmap_1_1TileKeyHash.html", "structhmap_1_1TileKeyHash" ],
       [ "TileRegion", "structhmap_1_1TileRegion.html", "structhmap_1_1TileRegion" ],

@@ -6,6 +6,7 @@ var searchData=
   ['damp_5fscale_3',['damp_scale',['../classhmap_1_1FbmJordanFunction.html#a6d47676cc66bda619a526f361ace79bc',1,'hmap::FbmJordanFunction']]],
   ['depth_4',['depth',['../classhmap_1_1CraterFunction.html#a22cd542ac531801292f1616de8ac4c4a',1,'hmap::CraterFunction']]],
   ['diff_5',['diff',['../structhmap_1_1AssertResults.html#a826a44abf2d5591d84715126be8f354b',1,'hmap::AssertResults']]],
-  ['dither_5famp_6',['dither_amp',['../structhmap_1_1ColorAdjust.html#a0d6901dbb470d8b91a91bbd741c95481',1,'hmap::ColorAdjust']]],
-  ['drag_5frate_7',['drag_rate',['../structhmap_1_1Particle.html#a9fe6d66398ff6cc1d74b308339d23cc8',1,'hmap::Particle']]]
+  ['distance2d_6',['distance2d',['../structhmap_1_1TerrainTriMesh_1_1Neighbor.html#a1d8844b86573fc6e3e0037a6f9d4632c',1,'hmap::TerrainTriMesh::Neighbor']]],
+  ['dither_5famp_7',['dither_amp',['../structhmap_1_1ColorAdjust.html#a0d6901dbb470d8b91a91bbd741c95481',1,'hmap::ColorAdjust']]],
+  ['drag_5frate_8',['drag_rate',['../structhmap_1_1Particle.html#a9fe6d66398ff6cc1d74b308339d23cc8',1,'hmap::Particle']]]
 ];

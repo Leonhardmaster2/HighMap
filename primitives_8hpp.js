@@ -21,6 +21,8 @@ var primitives_8hpp =
     ] ],
     [ "get_primitive_base", "primitives_8hpp.html#aac2bd27e550ca991c67d8df2df6f0999", null ],
     [ "biquad_pulse", "primitives_8hpp.html#a2b69f27ab2ce6c9bdd87cdc630a0a1d5", null ],
+    [ "biquad_pulse_x", "primitives_8hpp.html#a05f15dbf656e6f7ae36542c48a7d2980", null ],
+    [ "biquad_pulse_y", "primitives_8hpp.html#aeffedc90714bfcfed6a5f18d780b1094", null ],
     [ "bump", "primitives_8hpp.html#a205eb3757eb00bd7c92504c01b9d3638", null ],
     [ "bump_lorentzian", "primitives_8hpp.html#a4af0bde798f0266db4dfe24e1134a506", null ],
     [ "caldera", "primitives_8hpp.html#a9ee91a0c5ac4f49f1e40aa54ab69cb2f", null ],

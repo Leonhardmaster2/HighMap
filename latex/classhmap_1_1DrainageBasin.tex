@@ -11,19 +11,17 @@
 \item 
 const std\+::vector$<$ glm\+::vec3 $>$ \& \mbox{\hyperlink{classhmap_1_1DrainageBasin_a62573f79f7df537b2ec3d15e664a9539}{get\+\_\+xyz}} () const
 \item 
-std\+::vector$<$ glm\+::vec3 $>$ \& \mbox{\hyperlink{classhmap_1_1DrainageBasin_a743c7cef10ea485b4d4147d0fbec8f89}{get\+\_\+xyz}} ()
-\item 
 size\+\_\+t \mbox{\hyperlink{classhmap_1_1DrainageBasin_adda7eed6e20a483af05ce4272dce8cd6}{size}} () const
 \item 
 void \mbox{\hyperlink{classhmap_1_1DrainageBasin_a11a22b638c875e9832ea8387098d2001}{to\+\_\+csv}} (const std\+::string \&filename) const
 \item 
+const \mbox{\hyperlink{classhmap_1_1TerrainTriMesh}{Terrain\+Tri\+Mesh}} \& \mbox{\hyperlink{classhmap_1_1DrainageBasin_a8ca74e8acd3298c6d254d84707222c24}{get\+\_\+mesh}} () const
+\item 
+\mbox{\hyperlink{classhmap_1_1TerrainTriMesh}{Terrain\+Tri\+Mesh}} \& \mbox{\hyperlink{classhmap_1_1DrainageBasin_acb1dcce2b145cb8dc3d129b337dce53f}{get\+\_\+mesh}} ()
+\item 
 std\+::vector$<$ float $>$ \mbox{\hyperlink{classhmap_1_1DrainageBasin_a8edaab84381857910e6cc099464a4d88}{compute\+\_\+vertex\+\_\+areas}} () const
 \item 
 void \mbox{\hyperlink{classhmap_1_1DrainageBasin_a754fcec95d5a3b1b5291d4de95dff2d0}{remap}} (float zmin=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float zmax=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
-\item 
-void \mbox{\hyperlink{classhmap_1_1DrainageBasin_a845e028a8f7339cfe4a2d9bc8d0ee04e}{smooth\+\_\+mesh}} (float lambda, int iterations=1)
-\item 
-void \mbox{\hyperlink{classhmap_1_1DrainageBasin_ae34cf0fbe278b8cb15acf599cc86862c}{smooth\+\_\+mesh\+\_\+taubin}} (float lambda, float mu, int iterations=1)
 \item 
 void \mbox{\hyperlink{classhmap_1_1DrainageBasin_a41ce9c5a0cb26704823a38d3796df74d}{compute\+\_\+receivers}} ()
 \item 
@@ -68,14 +66,8 @@ auto \mbox{\hyperlink{classhmap_1_1DrainageBasin_a4160d425b942c7b7dc3238f8e94840
 \Hypertarget{classhmap_1_1DrainageBasin_a62573f79f7df537b2ec3d15e664a9539}\label{classhmap_1_1DrainageBasin_a62573f79f7df537b2ec3d15e664a9539} 
 \index{hmap::DrainageBasin@{hmap::DrainageBasin}!get\_xyz@{get\_xyz}}
 \index{get\_xyz@{get\_xyz}!hmap::DrainageBasin@{hmap::DrainageBasin}}
-\doxysubsubsection{\texorpdfstring{get\_xyz()}{get\_xyz()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{get\_xyz()}{get\_xyz()}}
 {\footnotesize\ttfamily const std\+::vector$<$ glm\+::vec3 $>$ \& hmap\+::\+Drainage\+Basin\+::get\+\_\+xyz (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
-
-\Hypertarget{classhmap_1_1DrainageBasin_a743c7cef10ea485b4d4147d0fbec8f89}\label{classhmap_1_1DrainageBasin_a743c7cef10ea485b4d4147d0fbec8f89} 
-\index{hmap::DrainageBasin@{hmap::DrainageBasin}!get\_xyz@{get\_xyz}}
-\index{get\_xyz@{get\_xyz}!hmap::DrainageBasin@{hmap::DrainageBasin}}
-\doxysubsubsection{\texorpdfstring{get\_xyz()}{get\_xyz()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily std\+::vector$<$ glm\+::vec3 $>$ \& hmap\+::\+Drainage\+Basin\+::get\+\_\+xyz (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \Hypertarget{classhmap_1_1DrainageBasin_adda7eed6e20a483af05ce4272dce8cd6}\label{classhmap_1_1DrainageBasin_adda7eed6e20a483af05ce4272dce8cd6} 
 \index{hmap::DrainageBasin@{hmap::DrainageBasin}!size@{size}}
@@ -89,6 +81,18 @@ auto \mbox{\hyperlink{classhmap_1_1DrainageBasin_a4160d425b942c7b7dc3238f8e94840
 \doxysubsubsection{\texorpdfstring{to\_csv()}{to\_csv()}}
 {\footnotesize\ttfamily void hmap\+::\+Drainage\+Basin\+::to\+\_\+csv (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption}) const}
 
+\Hypertarget{classhmap_1_1DrainageBasin_a8ca74e8acd3298c6d254d84707222c24}\label{classhmap_1_1DrainageBasin_a8ca74e8acd3298c6d254d84707222c24} 
+\index{hmap::DrainageBasin@{hmap::DrainageBasin}!get\_mesh@{get\_mesh}}
+\index{get\_mesh@{get\_mesh}!hmap::DrainageBasin@{hmap::DrainageBasin}}
+\doxysubsubsection{\texorpdfstring{get\_mesh()}{get\_mesh()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classhmap_1_1TerrainTriMesh}{Terrain\+Tri\+Mesh}} \& hmap\+::\+Drainage\+Basin\+::get\+\_\+mesh (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\Hypertarget{classhmap_1_1DrainageBasin_acb1dcce2b145cb8dc3d129b337dce53f}\label{classhmap_1_1DrainageBasin_acb1dcce2b145cb8dc3d129b337dce53f} 
+\index{hmap::DrainageBasin@{hmap::DrainageBasin}!get\_mesh@{get\_mesh}}
+\index{get\_mesh@{get\_mesh}!hmap::DrainageBasin@{hmap::DrainageBasin}}
+\doxysubsubsection{\texorpdfstring{get\_mesh()}{get\_mesh()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1TerrainTriMesh}{Terrain\+Tri\+Mesh}} \& hmap\+::\+Drainage\+Basin\+::get\+\_\+mesh (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
 \Hypertarget{classhmap_1_1DrainageBasin_a8edaab84381857910e6cc099464a4d88}\label{classhmap_1_1DrainageBasin_a8edaab84381857910e6cc099464a4d88} 
 \index{hmap::DrainageBasin@{hmap::DrainageBasin}!compute\_vertex\_areas@{compute\_vertex\_areas}}
 \index{compute\_vertex\_areas@{compute\_vertex\_areas}!hmap::DrainageBasin@{hmap::DrainageBasin}}
@@ -100,18 +104,6 @@ auto \mbox{\hyperlink{classhmap_1_1DrainageBasin_a4160d425b942c7b7dc3238f8e94840
 \index{remap@{remap}!hmap::DrainageBasin@{hmap::DrainageBasin}}
 \doxysubsubsection{\texorpdfstring{remap()}{remap()}}
 {\footnotesize\ttfamily void hmap\+::\+Drainage\+Basin\+::remap (\begin{DoxyParamCaption}\item[{float}]{zmin = {\ttfamily 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{zmax = {\ttfamily 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
-
-\Hypertarget{classhmap_1_1DrainageBasin_a845e028a8f7339cfe4a2d9bc8d0ee04e}\label{classhmap_1_1DrainageBasin_a845e028a8f7339cfe4a2d9bc8d0ee04e} 
-\index{hmap::DrainageBasin@{hmap::DrainageBasin}!smooth\_mesh@{smooth\_mesh}}
-\index{smooth\_mesh@{smooth\_mesh}!hmap::DrainageBasin@{hmap::DrainageBasin}}
-\doxysubsubsection{\texorpdfstring{smooth\_mesh()}{smooth\_mesh()}}
-{\footnotesize\ttfamily void hmap\+::\+Drainage\+Basin\+::smooth\+\_\+mesh (\begin{DoxyParamCaption}\item[{float}]{lambda,  }\item[{int}]{iterations = {\ttfamily 1} }\end{DoxyParamCaption})}
-
-\Hypertarget{classhmap_1_1DrainageBasin_ae34cf0fbe278b8cb15acf599cc86862c}\label{classhmap_1_1DrainageBasin_ae34cf0fbe278b8cb15acf599cc86862c} 
-\index{hmap::DrainageBasin@{hmap::DrainageBasin}!smooth\_mesh\_taubin@{smooth\_mesh\_taubin}}
-\index{smooth\_mesh\_taubin@{smooth\_mesh\_taubin}!hmap::DrainageBasin@{hmap::DrainageBasin}}
-\doxysubsubsection{\texorpdfstring{smooth\_mesh\_taubin()}{smooth\_mesh\_taubin()}}
-{\footnotesize\ttfamily void hmap\+::\+Drainage\+Basin\+::smooth\+\_\+mesh\+\_\+taubin (\begin{DoxyParamCaption}\item[{float}]{lambda,  }\item[{float}]{mu,  }\item[{int}]{iterations = {\ttfamily 1} }\end{DoxyParamCaption})}
 
 \Hypertarget{classhmap_1_1DrainageBasin_a41ce9c5a0cb26704823a38d3796df74d}\label{classhmap_1_1DrainageBasin_a41ce9c5a0cb26704823a38d3796df74d} 
 \index{hmap::DrainageBasin@{hmap::DrainageBasin}!compute\_receivers@{compute\_receivers}}

@@ -263,6 +263,8 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1Tensor.html">Tensor</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A class to represent a multi-dimensional tensor.  <a href="classhmap_1_1Tensor.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1TerrainTriMesh.html">TerrainTriMesh</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhmap_1_1TileKey.html">TileKey</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhmap_1_1TileKeyHash.html">TileKeyHash</a></td></tr>
@@ -889,8 +891,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a8c20cd6c2b1cd1ec20ffb2ce86ed0ecb" id="r_a8c20cd6c2b1cd1ec20ffb2ce86ed0ecb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a8c20cd6c2b1cd1ec20ffb2ce86ed0ecb">hydraulic_musgrave</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, int iterations=100, float c_capacity=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float c_erosion=0.1<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float c_deposition=0.1<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float water_level=0.01<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float evap_rate=0.01<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
 <tr class="memdesc:a8c20cd6c2b1cd1ec20ffb2ce86ed0ecb"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.  <br /></td></tr>
 <tr class="separator:a8c20cd6c2b1cd1ec20ffb2ce86ed0ecb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac926368d8d3f621a876039cad384e3b2" id="r_ac926368d8d3f621a876039cad384e3b2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#ac926368d8d3f621a876039cad384e3b2">hydraulic_spl</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z)</td></tr>
-<tr class="separator:ac926368d8d3f621a876039cad384e3b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae935b20608a946a11ba5c23ba9d72783" id="r_ae935b20608a946a11ba5c23ba9d72783"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#ae935b20608a946a11ba5c23ba9d72783">hydraulic_saleve</a> (<a class="el" href="classhmap_1_1TerrainTriMesh.html">TerrainTriMesh</a> &amp;mesh, const std::vector&lt; float &gt; &amp;erodibility, const std::vector&lt; float &gt; &amp;max_slope, float m_exp=0.8<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float uplift_rate=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float tolerance=1e-3<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, int max_iterations=200)</td></tr>
+<tr class="memdesc:ae935b20608a946a11ba5c23ba9d72783"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform hydraulic erosion on a triangulated terrain mesh.  <br /></td></tr>
+<tr class="separator:ae935b20608a946a11ba5c23ba9d72783"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83813ca67df9257cf835cf05d140699c" id="r_a83813ca67df9257cf835cf05d140699c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a83813ca67df9257cf835cf05d140699c">hydraulic_saleve</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, <a class="el" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> seed, size_t control_points_count=10000, float m_exp=0.8<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float uplift_rate=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float tolerance=1e-3<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, int max_iterations=200, float smin=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float smax=6.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float strength=0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, bool scale_erodibility_with_z=true, float erodibility_distrib_exp=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_x=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_y=nullptr)</td></tr>
+<tr class="memdesc:a83813ca67df9257cf835cf05d140699c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply hydraulic erosion to a heightmap using an adaptive mesh.  <br /></td></tr>
+<tr class="separator:a83813ca67df9257cf835cf05d140699c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acbf32c30d68183eb5522888af2ede316" id="r_acbf32c30d68183eb5522888af2ede316"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#acbf32c30d68183eb5522888af2ede316">hydraulic_stream</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, float c_erosion, float talus_ref, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_bedrock=nullptr, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_moisture_map=nullptr, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_erosion_map=nullptr, int ir=1, float clipping_ratio=10.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
 <tr class="memdesc:acbf32c30d68183eb5522888af2ede316"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply hydraulic erosion based on a flow accumulation map.  <br /></td></tr>
 <tr class="separator:acbf32c30d68183eb5522888af2ede316"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1683,6 +1689,8 @@ Functions</h2></td></tr>
 <tr class="separator:abc5928f49e530927c8fb61a9afea3274"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a330255b50cec60fc2ba713fb945e2fdd" id="r_a330255b50cec60fc2ba713fb945e2fdd"><td class="memItemLeft" align="right" valign="top">std::vector&lt; size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a330255b50cec60fc2ba713fb945e2fdd">find_border_minima</a> (const std::vector&lt; glm::vec3 &gt; &amp;xyz, float eps=1e-6<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
 <tr class="separator:a330255b50cec60fc2ba713fb945e2fdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c49b9b92f0badad7ace856e897de1f0" id="r_a7c49b9b92f0badad7ace856e897de1f0"><td class="memItemLeft" align="right" valign="top">std::vector&lt; size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a7c49b9b92f0badad7ace856e897de1f0">find_border_sinks</a> (<a class="el" href="classhmap_1_1TerrainTriMesh.html">TerrainTriMesh</a> &amp;mesh, float eps=1e-6<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
+<tr class="separator:a7c49b9b92f0badad7ace856e897de1f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a23ab6bc3fdc7d5c498f0b3c8bebdd4f9" id="r_a23ab6bc3fdc7d5c498f0b3c8bebdd4f9"><td class="memItemLeft" align="right" valign="top">std::vector&lt; glm::vec3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a23ab6bc3fdc7d5c498f0b3c8bebdd4f9">heightmap_retopology</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, float max_error, int max_triangles=0, int max_points=0)</td></tr>
 <tr class="separator:a23ab6bc3fdc7d5c498f0b3c8bebdd4f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a40daf45c4bfaee46d924bf597fa0dbfc" id="r_a40daf45c4bfaee46d924bf597fa0dbfc"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; size_t &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a40daf45c4bfaee46d924bf597fa0dbfc">invert_receiver_map</a> (const std::vector&lt; size_t &gt; &amp;receivers)</td></tr>
@@ -2103,6 +2111,10 @@ Functions</h2></td></tr>
 <tr class="memitem:a2b69f27ab2ce6c9bdd87cdc630a0a1d5" id="r_a2b69f27ab2ce6c9bdd87cdc630a0a1d5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a2b69f27ab2ce6c9bdd87cdc630a0a1d5">biquad_pulse</a> (glm::ivec2 shape, float <a class="el" href="namespacehmap.html#ab1e1b26c0c1eb51d0b256db94d6ca22e">gain</a>=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_ctrl_param=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_x=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_y=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_stretching=nullptr, glm::vec2 center={0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>}, glm::vec4 bbox={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>})</td></tr>
 <tr class="memdesc:a2b69f27ab2ce6c9bdd87cdc630a0a1d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a 'biquadratic pulse'.  <br /></td></tr>
 <tr class="separator:a2b69f27ab2ce6c9bdd87cdc630a0a1d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05f15dbf656e6f7ae36542c48a7d2980" id="r_a05f15dbf656e6f7ae36542c48a7d2980"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a05f15dbf656e6f7ae36542c48a7d2980">biquad_pulse_x</a> (glm::ivec2 shape, glm::vec4 bbox={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>})</td></tr>
+<tr class="separator:a05f15dbf656e6f7ae36542c48a7d2980"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeffedc90714bfcfed6a5f18d780b1094" id="r_aeffedc90714bfcfed6a5f18d780b1094"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#aeffedc90714bfcfed6a5f18d780b1094">biquad_pulse_y</a> (glm::ivec2 shape, glm::vec4 bbox={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>})</td></tr>
+<tr class="separator:aeffedc90714bfcfed6a5f18d780b1094"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a205eb3757eb00bd7c92504c01b9d3638" id="r_a205eb3757eb00bd7c92504c01b9d3638"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a205eb3757eb00bd7c92504c01b9d3638">bump</a> (glm::ivec2 shape, float <a class="el" href="namespacehmap.html#ab1e1b26c0c1eb51d0b256db94d6ca22e">gain</a>=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_ctrl_param=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_x=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_y=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_stretching=nullptr, glm::vec2 center={0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>}, glm::vec4 bbox={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>})</td></tr>
 <tr class="memdesc:a205eb3757eb00bd7c92504c01b9d3638"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a bump.  <br /></td></tr>
 <tr class="separator:a205eb3757eb00bd7c92504c01b9d3638"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -2423,6 +2435,10 @@ Functions</h2></td></tr>
 <tr class="memitem:a565bdd51f2277d5847c183cceaecb260" id="r_a565bdd51f2277d5847c183cceaecb260"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a565bdd51f2277d5847c183cceaecb260">quilting_shuffle</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, glm::ivec2 patch_base_shape, float overlap, <a class="el" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> seed, std::vector&lt; <a class="el" href="classhmap_1_1Array.html">Array</a> * &gt; secondary_arrays={}, bool patch_flip=true, bool patch_rotate=true, bool patch_transpose=true, float filter_width_ratio=0.25<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
 <tr class="memdesc:a565bdd51f2277d5847c183cceaecb260"><td class="mdescLeft">&#160;</td><td class="mdescRight">Synthesize a new heightmap by reshuffling patches of the input heightmap.  <br /></td></tr>
 <tr class="separator:a565bdd51f2277d5847c183cceaecb260"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad6a39e70bf2ff70f8367e663d3027cf" id="r_aad6a39e70bf2ff70f8367e663d3027cf"><td class="memItemLeft" align="right" valign="top">std::vector&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#aad6a39e70bf2ff70f8367e663d3027cf">cubic_pulse</a> (const <a class="el" href="classhmap_1_1TerrainTriMesh.html">TerrainTriMesh</a> &amp;mesh)</td></tr>
+<tr class="separator:aad6a39e70bf2ff70f8367e663d3027cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9fdabd692817be603ff5c44e68ea619" id="r_af9fdabd692817be603ff5c44e68ea619"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1TerrainTriMesh.html">TerrainTriMesh</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#af9fdabd692817be603ff5c44e68ea619">generate_terrain_tri_mesh_from_heightmap</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, float max_error, int max_triangles=0, int max_points=0)</td></tr>
+<tr class="separator:af9fdabd692817be603ff5c44e68ea619"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a19dec938e688ef4b73cf27ff3934043b" id="r_a19dec938e688ef4b73cf27ff3934043b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a19dec938e688ef4b73cf27ff3934043b">flip_lr</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array)</td></tr>
 <tr class="memdesc:a19dec938e688ef4b73cf27ff3934043b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flip the array horizontally (left/right).  <br /></td></tr>
 <tr class="separator:a19dec938e688ef4b73cf27ff3934043b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -4430,7 +4446,7 @@ template&lt;typename T , typename Fn , typename Reduce &gt; </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_ridgelines.png&quot;</span>, {z1, z2}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
 <div class="ttc" id="anamespacehmap_html_a74f6ef0464e0ec67df5179f49e14e35a"><div class="ttname"><a href="namespacehmap.html#a74f6ef0464e0ec67df5179f49e14e35a">hmap::ridgelines</a></div><div class="ttdeci">Array ridgelines(glm::ivec2 shape, const std::vector&lt; float &gt; &amp;xr, const std::vector&lt; float &gt; &amp;yr, const std::vector&lt; float &gt; &amp;zr, float slope, float k_smoothing=1.f, float width=0.1f, float vmin=0.f, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f}, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, glm::vec4 bbox_array={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Generate a heightmap based on a set of ridgelines and a specified slope.</div><div class="ttdef"><b>Definition</b> ridgelines.cpp:16</div></div>
-<div class="ttc" id="anamespacehmap_html_a79ad6fb857a38f8de9915d01992e5161"><div class="ttname"><a href="namespacehmap.html#a79ad6fb857a38f8de9915d01992e5161">hmap::slope</a></div><div class="ttdeci">Array slope(glm::ivec2 shape, float angle, float slope, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, glm::vec2 center={0.5f, 0.5f}, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Return an array corresponding to a slope with a given overall.</div><div class="ttdef"><b>Definition</b> primitives.cpp:279</div></div>
+<div class="ttc" id="anamespacehmap_html_a79ad6fb857a38f8de9915d01992e5161"><div class="ttname"><a href="namespacehmap.html#a79ad6fb857a38f8de9915d01992e5161">hmap::slope</a></div><div class="ttdeci">Array slope(glm::ivec2 shape, float angle, float slope, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, glm::vec2 center={0.5f, 0.5f}, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Return an array corresponding to a slope with a given overall.</div><div class="ttdef"><b>Definition</b> primitives.cpp:319</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_ridgelines.png" alt=""/>
 </div>
@@ -10321,22 +10337,376 @@ additional_depth)</code>.</li>
 
 </div>
 </div>
-<a id="ac926368d8d3f621a876039cad384e3b2" name="ac926368d8d3f621a876039cad384e3b2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac926368d8d3f621a876039cad384e3b2">&#9670;&#160;</a></span>hydraulic_spl()</h2>
+<a id="ae935b20608a946a11ba5c23ba9d72783" name="ae935b20608a946a11ba5c23ba9d72783"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae935b20608a946a11ba5c23ba9d72783">&#9670;&#160;</a></span>hydraulic_saleve() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void hmap::hydraulic_spl </td>
+          <td class="memname">void hmap::hydraulic_saleve </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
-          <td class="paramname"><em>z</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classhmap_1_1TerrainTriMesh.html">TerrainTriMesh</a> &amp;&#160;</td>
+          <td class="paramname"><em>mesh</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const std::vector&lt; float &gt; &amp;&#160;</td>
+          <td class="paramname"><em>erodibility</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; float &gt; &amp;&#160;</td>
+          <td class="paramname"><em>max_slope</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>m_exp</em> = <code>0.8<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>uplift_rate</em> = <code>1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>tolerance</em> = <code>1e-3<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>max_iterations</em> = <code>200</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
+<p>Perform hydraulic erosion on a triangulated terrain mesh. </p>
+<p>Iteratively updates elevations using a drainage model with uplift, slope constraints, and spatially varying erodibility.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mesh</td><td>Input/output terrain mesh. </td></tr>
+    <tr><td class="paramname">erodibility</td><td>Per-vertex erodibility coefficients. </td></tr>
+    <tr><td class="paramname">max_slope</td><td>Per-vertex maximum slope constraint. </td></tr>
+    <tr><td class="paramname">m_exp</td><td>Exponent controlling flow response. </td></tr>
+    <tr><td class="paramname">uplift_rate</td><td>Constant uplift applied each iteration. </td></tr>
+    <tr><td class="paramname">tolerance</td><td>Convergence threshold on elevation updates. </td></tr>
+    <tr><td class="paramname">max_iterations</td><td>Maximum number of erosion iterations.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p><b>Example</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="highmap_8hpp.html">highmap.hpp</a>&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &quot;<a class="code" href="timer_8hpp.html">highmap/dbg/timer.hpp</a>&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;macrologger.h&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
+<div class="line">{</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap_1_1gpu.html#adb8336ed4d83c15500872185dee45d50">hmap::gpu::init_opencl</a>();</div>
+<div class="line"> </div>
+<div class="line">  glm::ivec2 shape = {256, 256};</div>
+<div class="line">  glm::vec2  kw = {4.f, 4.f};</div>
+<div class="line">  <span class="keywordtype">int</span>        seed = 0;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// --- erosion of an heightmap</span></div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z0 = <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>,</div>
+<div class="line">                                   shape,</div>
+<div class="line">                                   kw,</div>
+<div class="line">                                   seed,</div>
+<div class="line">                                   8,</div>
+<div class="line">                                   0.7f);</div>
+<div class="line">  z0 = <a class="code hl_function" href="namespacehmap.html#ae3ecf5f88476c5d49978a130f8cab2f3">hmap::bulkify</a>(z0, <a class="code hl_enumvalue" href="namespacehmap.html#a55542a66f890ef9ecf5f82af2c23a0cfa71a3d57896b6c2d066433962e74e8961">hmap::PrimitiveType::PRIM_CONE_SMOOTH</a>, 1.f);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordtype">size_t</span> control_points_count = 10000;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordtype">float</span> strength = 0.5f;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordtype">float</span> m_exp = 0.8f;</div>
+<div class="line">  <span class="keywordtype">float</span> uplift_rate = 1.f;</div>
+<div class="line">  <span class="keywordtype">float</span> tolerance = 1e-3f;</div>
+<div class="line">  <span class="keywordtype">int</span>   max_iterations = 500;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordtype">float</span> smin = 0.f;</div>
+<div class="line">  <span class="keywordtype">float</span> smax = 6.f;</div>
+<div class="line">  <span class="keywordtype">bool</span>  scale_erodibility_with_z = <span class="keyword">true</span>;</div>
+<div class="line">  <span class="keywordtype">float</span> erodibility_distrib_exp = 1.f;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> dx = 0.05f * <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195ac5113a637d69eb3c549e6d561da167ed">hmap::NoiseType::SIMPLEX2</a>,</div>
+<div class="line">                                           shape,</div>
+<div class="line">                                           kw,</div>
+<div class="line">                                           ++seed,</div>
+<div class="line">                                           8,</div>
+<div class="line">                                           0.f);</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> dy = 0.05f * <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195ac5113a637d69eb3c549e6d561da167ed">hmap::NoiseType::SIMPLEX2</a>,</div>
+<div class="line">                                           shape,</div>
+<div class="line">                                           kw,</div>
+<div class="line">                                           ++seed,</div>
+<div class="line">                                           8,</div>
+<div class="line">                                           0.f);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z1 = <a class="code hl_function" href="namespacehmap.html#ae935b20608a946a11ba5c23ba9d72783">hmap::hydraulic_saleve</a>(z0,</div>
+<div class="line">                                          ++seed,</div>
+<div class="line">                                          control_points_count,</div>
+<div class="line">                                          m_exp,</div>
+<div class="line">                                          uplift_rate,</div>
+<div class="line">                                          tolerance,</div>
+<div class="line">                                          max_iterations,</div>
+<div class="line">                                          smin,</div>
+<div class="line">                                          smax,</div>
+<div class="line">                                          strength,</div>
+<div class="line">                                          scale_erodibility_with_z,</div>
+<div class="line">                                          erodibility_distrib_exp,</div>
+<div class="line">                                          &amp;dx,</div>
+<div class="line">                                          &amp;dy);</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// mimic deposition</span></div>
+<div class="line">  <span class="keywordtype">int</span>   deposition_ir = int(0.1f * shape.x);</div>
+<div class="line">  <span class="keywordtype">float</span> deposition_strength = 1.f;</div>
+<div class="line">  <span class="keywordtype">int</span>   iterations = 2;</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap_1_1gpu.html#a8497e2fce595293ea07e68eac1e5bce2">hmap::gpu::deposition_fill_holes</a>(z1,</div>
+<div class="line">                                   deposition_ir,</div>
+<div class="line">                                   deposition_strength,</div>
+<div class="line">                                   iterations);</div>
+<div class="line"> </div>
+<div class="line">  z1.<a class="code hl_function" href="classhmap_1_1Array.html#a00b8f7462c1e22b1da8a67ec62d4c8c8">dump</a>();</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// --- export</span></div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_hydraulic_saleve.png&quot;</span>,</div>
+<div class="line">                          {z0, z1},</div>
+<div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>,</div>
+<div class="line">                          <span class="keyword">true</span>);</div>
+<div class="line">}</div>
+<div class="ttc" id="anamespacehmap_1_1gpu_html_a8497e2fce595293ea07e68eac1e5bce2"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a8497e2fce595293ea07e68eac1e5bce2">hmap::gpu::deposition_fill_holes</a></div><div class="ttdeci">void deposition_fill_holes(Array &amp;z, int deposition_ir, float deposition_strength, int iterations=1)</div><div class="ttdoc">Fill holes using Gaussian-based deposition.</div><div class="ttdef"><b>Definition</b> deposition_fill_holes.cpp:12</div></div>
+<div class="ttc" id="anamespacehmap_html_ab8197c4c7a85dacb616fee7a7d0df195ac5113a637d69eb3c549e6d561da167ed"><div class="ttname"><a href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195ac5113a637d69eb3c549e6d561da167ed">hmap::SIMPLEX2</a></div><div class="ttdeci">@ SIMPLEX2</div><div class="ttdoc">OpenSimplex2.</div><div class="ttdef"><b>Definition</b> functions.hpp:67</div></div>
+<div class="ttc" id="anamespacehmap_html_ae935b20608a946a11ba5c23ba9d72783"><div class="ttname"><a href="namespacehmap.html#ae935b20608a946a11ba5c23ba9d72783">hmap::hydraulic_saleve</a></div><div class="ttdeci">void hydraulic_saleve(TerrainTriMesh &amp;mesh, const std::vector&lt; float &gt; &amp;erodibility, const std::vector&lt; float &gt; &amp;max_slope, float m_exp=0.8f, float uplift_rate=1.f, float tolerance=1e-3f, int max_iterations=200)</div><div class="ttdoc">Perform hydraulic erosion on a triangulated terrain mesh.</div><div class="ttdef"><b>Definition</b> hydraulic_saleve.cpp:15</div></div>
+<div class="ttc" id="atimer_8hpp_html"><div class="ttname"><a href="timer_8hpp.html">timer.hpp</a></div></div>
+</div><!-- fragment --><p><b>Result</b> </p><div class="image">
+<img src="ex_hydraulic_saleve.png" alt=""/>
+</div>
+ 
+</div>
+</div>
+<a id="a83813ca67df9257cf835cf05d140699c" name="a83813ca67df9257cf835cf05d140699c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83813ca67df9257cf835cf05d140699c">&#9670;&#160;</a></span>hydraulic_saleve() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classhmap_1_1Array.html">Array</a> hmap::hydraulic_saleve </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>z</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramname"><em>seed</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>control_points_count</em> = <code>10000</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>m_exp</em> = <code>0.8<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>uplift_rate</em> = <code>1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>tolerance</em> = <code>1e-3<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>max_iterations</em> = <code>200</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>smin</em> = <code>0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>smax</em> = <code>6.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>strength</em> = <code>0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>scale_erodibility_with_z</em> = <code>true</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>erodibility_distrib_exp</em> = <code>1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
+          <td class="paramname"><em>p_noise_x</em> = <code>nullptr</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
+          <td class="paramname"><em>p_noise_y</em> = <code>nullptr</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Apply hydraulic erosion to a heightmap using an adaptive mesh. </p>
+<p>Converts the input heightmap to a triangulated mesh, performs erosion, and interpolates the result back to a grid.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">z</td><td>Input heightmap. </td></tr>
+    <tr><td class="paramname">seed</td><td>Random seed for point sampling. </td></tr>
+    <tr><td class="paramname">control_points_count</td><td>Number of mesh control points. </td></tr>
+    <tr><td class="paramname">m_exp</td><td>Flow response exponent. </td></tr>
+    <tr><td class="paramname">uplift_rate</td><td>Constant uplift per iteration. </td></tr>
+    <tr><td class="paramname">tolerance</td><td>Convergence threshold. </td></tr>
+    <tr><td class="paramname">max_iterations</td><td>Maximum number of iterations. </td></tr>
+    <tr><td class="paramname">smin</td><td>Minimum slope constraint. </td></tr>
+    <tr><td class="paramname">smax</td><td>Maximum slope constraint. </td></tr>
+    <tr><td class="paramname">strength</td><td>Blending factor between original and eroded terrain. </td></tr>
+    <tr><td class="paramname">scale_erodibility_with_z</td><td>Modulate erodibility with elevation. </td></tr>
+    <tr><td class="paramname">erodibility_distrib_exp</td><td>Exponent for erodibility distribution. </td></tr>
+    <tr><td class="paramname">p_noise_x</td><td>Optional X displacement field. </td></tr>
+    <tr><td class="paramname">p_noise_y</td><td>Optional Y displacement field.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Eroded heightmap.</dd></dl>
+<p><b>Example</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="highmap_8hpp.html">highmap.hpp</a>&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &quot;<a class="code" href="timer_8hpp.html">highmap/dbg/timer.hpp</a>&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;macrologger.h&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
+<div class="line">{</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap_1_1gpu.html#adb8336ed4d83c15500872185dee45d50">hmap::gpu::init_opencl</a>();</div>
+<div class="line"> </div>
+<div class="line">  glm::ivec2 shape = {256, 256};</div>
+<div class="line">  glm::vec2  kw = {4.f, 4.f};</div>
+<div class="line">  <span class="keywordtype">int</span>        seed = 0;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// --- erosion of an heightmap</span></div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z0 = <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>,</div>
+<div class="line">                                   shape,</div>
+<div class="line">                                   kw,</div>
+<div class="line">                                   seed,</div>
+<div class="line">                                   8,</div>
+<div class="line">                                   0.7f);</div>
+<div class="line">  z0 = <a class="code hl_function" href="namespacehmap.html#ae3ecf5f88476c5d49978a130f8cab2f3">hmap::bulkify</a>(z0, <a class="code hl_enumvalue" href="namespacehmap.html#a55542a66f890ef9ecf5f82af2c23a0cfa71a3d57896b6c2d066433962e74e8961">hmap::PrimitiveType::PRIM_CONE_SMOOTH</a>, 1.f);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordtype">size_t</span> control_points_count = 10000;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordtype">float</span> strength = 0.5f;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordtype">float</span> m_exp = 0.8f;</div>
+<div class="line">  <span class="keywordtype">float</span> uplift_rate = 1.f;</div>
+<div class="line">  <span class="keywordtype">float</span> tolerance = 1e-3f;</div>
+<div class="line">  <span class="keywordtype">int</span>   max_iterations = 500;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordtype">float</span> smin = 0.f;</div>
+<div class="line">  <span class="keywordtype">float</span> smax = 6.f;</div>
+<div class="line">  <span class="keywordtype">bool</span>  scale_erodibility_with_z = <span class="keyword">true</span>;</div>
+<div class="line">  <span class="keywordtype">float</span> erodibility_distrib_exp = 1.f;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> dx = 0.05f * <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195ac5113a637d69eb3c549e6d561da167ed">hmap::NoiseType::SIMPLEX2</a>,</div>
+<div class="line">                                           shape,</div>
+<div class="line">                                           kw,</div>
+<div class="line">                                           ++seed,</div>
+<div class="line">                                           8,</div>
+<div class="line">                                           0.f);</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> dy = 0.05f * <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195ac5113a637d69eb3c549e6d561da167ed">hmap::NoiseType::SIMPLEX2</a>,</div>
+<div class="line">                                           shape,</div>
+<div class="line">                                           kw,</div>
+<div class="line">                                           ++seed,</div>
+<div class="line">                                           8,</div>
+<div class="line">                                           0.f);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z1 = <a class="code hl_function" href="namespacehmap.html#ae935b20608a946a11ba5c23ba9d72783">hmap::hydraulic_saleve</a>(z0,</div>
+<div class="line">                                          ++seed,</div>
+<div class="line">                                          control_points_count,</div>
+<div class="line">                                          m_exp,</div>
+<div class="line">                                          uplift_rate,</div>
+<div class="line">                                          tolerance,</div>
+<div class="line">                                          max_iterations,</div>
+<div class="line">                                          smin,</div>
+<div class="line">                                          smax,</div>
+<div class="line">                                          strength,</div>
+<div class="line">                                          scale_erodibility_with_z,</div>
+<div class="line">                                          erodibility_distrib_exp,</div>
+<div class="line">                                          &amp;dx,</div>
+<div class="line">                                          &amp;dy);</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// mimic deposition</span></div>
+<div class="line">  <span class="keywordtype">int</span>   deposition_ir = int(0.1f * shape.x);</div>
+<div class="line">  <span class="keywordtype">float</span> deposition_strength = 1.f;</div>
+<div class="line">  <span class="keywordtype">int</span>   iterations = 2;</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap_1_1gpu.html#a8497e2fce595293ea07e68eac1e5bce2">hmap::gpu::deposition_fill_holes</a>(z1,</div>
+<div class="line">                                   deposition_ir,</div>
+<div class="line">                                   deposition_strength,</div>
+<div class="line">                                   iterations);</div>
+<div class="line"> </div>
+<div class="line">  z1.<a class="code hl_function" href="classhmap_1_1Array.html#a00b8f7462c1e22b1da8a67ec62d4c8c8">dump</a>();</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// --- export</span></div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_hydraulic_saleve.png&quot;</span>,</div>
+<div class="line">                          {z0, z1},</div>
+<div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>,</div>
+<div class="line">                          <span class="keyword">true</span>);</div>
+<div class="line">}</div>
+</div><!-- fragment --><p><b>Result</b> </p><div class="image">
+<img src="ex_hydraulic_saleve.png" alt=""/>
+</div>
+ 
 </div>
 </div>
 <a id="acbf32c30d68183eb5522888af2ede316" name="acbf32c30d68183eb5522888af2ede316"></a>
@@ -27796,7 +28166,6 @@ h}{\partial y}
 <div class="line">  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> k = 0; k &lt; is.size(); k++)</div>
 <div class="line">    std::cout &lt;&lt; is[k] &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; js[k] &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_ab8197c4c7a85dacb616fee7a7d0df195ac5113a637d69eb3c549e6d561da167ed"><div class="ttname"><a href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195ac5113a637d69eb3c549e6d561da167ed">hmap::SIMPLEX2</a></div><div class="ttdeci">@ SIMPLEX2</div><div class="ttdoc">OpenSimplex2.</div><div class="ttdef"><b>Definition</b> functions.hpp:67</div></div>
 <div class="ttc" id="anamespacehmap_html_ae42a874864d2d8f1a7b580f428395c01"><div class="ttname"><a href="namespacehmap.html#ae42a874864d2d8f1a7b580f428395c01">hmap::find_flow_sinks</a></div><div class="ttdeci">void find_flow_sinks(const Array &amp;z, std::vector&lt; int &gt; &amp;is, std::vector&lt; int &gt; &amp;js)</div><div class="ttdoc">Identifies the indices of flow sinks within the heightmap.</div><div class="ttdef"><b>Definition</b> find_flow_sinks.cpp:32</div></div>
 </div><!-- fragment --> 
 </div>
@@ -29636,6 +30005,34 @@ h}{\partial y}
 
 </div>
 </div>
+<a id="a7c49b9b92f0badad7ace856e897de1f0" name="a7c49b9b92f0badad7ace856e897de1f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c49b9b92f0badad7ace856e897de1f0">&#9670;&#160;</a></span>find_border_sinks()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; size_t &gt; hmap::find_border_sinks </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classhmap_1_1TerrainTriMesh.html">TerrainTriMesh</a> &amp;&#160;</td>
+          <td class="paramname"><em>mesh</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>eps</em> = <code>1e-6<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a23ab6bc3fdc7d5c498f0b3c8bebdd4f9" name="a23ab6bc3fdc7d5c498f0b3c8bebdd4f9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a23ab6bc3fdc7d5c498f0b3c8bebdd4f9">&#9670;&#160;</a></span>heightmap_retopology()</h2>
 
@@ -31193,7 +31590,7 @@ template&lt;typename T &gt; </div>
 </div>
 </div>
 <a id="a38c0a582a98d48f73f49f12ebf1b78f9" name="a38c0a582a98d48f73f49f12ebf1b78f9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a38c0a582a98d48f73f49f12ebf1b78f9">&#9670;&#160;</a></span>cubic_pulse() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a38c0a582a98d48f73f49f12ebf1b78f9">&#9670;&#160;</a></span>cubic_pulse() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -34166,7 +34563,6 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 <div class="ttc" id="anamespacehmap_html_a23fdcd258e0bab2a5fcad31d6459c3fa"><div class="ttname"><a href="namespacehmap.html#a23fdcd258e0bab2a5fcad31d6459c3fa">hmap::distance_transform_approx</a></div><div class="ttdeci">Array distance_transform_approx(const Array &amp;array, bool return_squared_distance=false)</div><div class="ttdoc">Calculates an approximate distance transform of the input array.</div><div class="ttdef"><b>Definition</b> distance_transform_approx.cpp:12</div></div>
 <div class="ttc" id="anamespacehmap_html_a3bad25b24d9ae0e07e692c546bc3480d"><div class="ttname"><a href="namespacehmap.html#a3bad25b24d9ae0e07e692c546bc3480d">hmap::distance_transform</a></div><div class="ttdeci">Array distance_transform(const Array &amp;array, bool return_squared_distance=false)</div><div class="ttdoc">Return the Euclidean distance transform.</div><div class="ttdef"><b>Definition</b> distance_transform.cpp:23</div></div>
 <div class="ttc" id="anamespacehmap_html_add641a7fc26ae08b1f679cbb7dd43177"><div class="ttname"><a href="namespacehmap.html#add641a7fc26ae08b1f679cbb7dd43177">hmap::distance_transform_manhattan</a></div><div class="ttdeci">Array distance_transform_manhattan(const Array &amp;array, bool return_squared_distance=false)</div><div class="ttdoc">Calculates the Manhattan distance transform of an array.</div><div class="ttdef"><b>Definition</b> distance_transform_approx.cpp:54</div></div>
-<div class="ttc" id="atimer_8hpp_html"><div class="ttname"><a href="timer_8hpp.html">timer.hpp</a></div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_distance_transform0.png" alt=""/>
 </div>
@@ -34561,7 +34957,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_flood_fill.png&quot;</span>, {z, z1, z2}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d">hmap::Cmap::GRAY</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a7628beb3c72d94109fa4de260bd22453"><div class="ttname"><a href="namespacehmap.html#a7628beb3c72d94109fa4de260bd22453">hmap::gaussian_pulse</a></div><div class="ttdeci">Array gaussian_pulse(glm::ivec2 shape, float sigma, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, glm::vec2 center={0.5f, 0.5f}, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Return a gaussian_decay pulse kernel.</div><div class="ttdef"><b>Definition</b> primitives.cpp:163</div></div>
+<div class="ttc" id="anamespacehmap_html_a7628beb3c72d94109fa4de260bd22453"><div class="ttname"><a href="namespacehmap.html#a7628beb3c72d94109fa4de260bd22453">hmap::gaussian_pulse</a></div><div class="ttdeci">Array gaussian_pulse(glm::ivec2 shape, float sigma, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, glm::vec2 center={0.5f, 0.5f}, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Return a gaussian_decay pulse kernel.</div><div class="ttdef"><b>Definition</b> primitives.cpp:203</div></div>
 <div class="ttc" id="anamespacehmap_html_a849d37221d492c5d96d945dc64b02754"><div class="ttname"><a href="namespacehmap.html#a849d37221d492c5d96d945dc64b02754">hmap::select_interval</a></div><div class="ttdeci">Array select_interval(const Array &amp;array, float value1, float value2)</div><div class="ttdoc">Return an array with elements equal to 1 where input elements are within the bounds provided.</div><div class="ttdef"><b>Definition</b> selector.cpp:152</div></div>
 <div class="ttc" id="anamespacehmap_html_adff494af7c8bf4db7f3e6fddd3261793"><div class="ttname"><a href="namespacehmap.html#adff494af7c8bf4db7f3e6fddd3261793">hmap::flood_fill</a></div><div class="ttdeci">void flood_fill(Array &amp;array, int i, int j, float fill_value=1.f, float background_value=0.f)</div><div class="ttdoc">Apply a flood fill algorithm to the input array.</div><div class="ttdef"><b>Definition</b> morphology.cpp:79</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
@@ -36522,6 +36918,62 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
  
 </div>
 </div>
+<a id="a05f15dbf656e6f7ae36542c48a7d2980" name="a05f15dbf656e6f7ae36542c48a7d2980"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05f15dbf656e6f7ae36542c48a7d2980">&#9670;&#160;</a></span>biquad_pulse_x()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classhmap_1_1Array.html">Array</a> hmap::biquad_pulse_x </td>
+          <td>(</td>
+          <td class="paramtype">glm::ivec2&#160;</td>
+          <td class="paramname"><em>shape</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">glm::vec4&#160;</td>
+          <td class="paramname"><em>bbox</em> = <code>{0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>}</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aeffedc90714bfcfed6a5f18d780b1094" name="aeffedc90714bfcfed6a5f18d780b1094"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeffedc90714bfcfed6a5f18d780b1094">&#9670;&#160;</a></span>biquad_pulse_y()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classhmap_1_1Array.html">Array</a> hmap::biquad_pulse_y </td>
+          <td>(</td>
+          <td class="paramtype">glm::ivec2&#160;</td>
+          <td class="paramname"><em>shape</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">glm::vec4&#160;</td>
+          <td class="paramname"><em>bbox</em> = <code>{0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>}</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a205eb3757eb00bd7c92504c01b9d3638" name="a205eb3757eb00bd7c92504c01b9d3638"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a205eb3757eb00bd7c92504c01b9d3638">&#9670;&#160;</a></span>bump()</h2>
 
@@ -36626,8 +37078,8 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>,</div>
 <div class="line">                          <span class="keyword">false</span>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a205eb3757eb00bd7c92504c01b9d3638"><div class="ttname"><a href="namespacehmap.html#a205eb3757eb00bd7c92504c01b9d3638">hmap::bump</a></div><div class="ttdeci">Array bump(glm::ivec2 shape, float gain=1.f, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, glm::vec2 center={0.5f, 0.5f}, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Return a bump.</div><div class="ttdef"><b>Definition</b> primitives.cpp:41</div></div>
-<div class="ttc" id="anamespacehmap_html_a4af0bde798f0266db4dfe24e1134a506"><div class="ttname"><a href="namespacehmap.html#a4af0bde798f0266db4dfe24e1134a506">hmap::bump_lorentzian</a></div><div class="ttdeci">Array bump_lorentzian(glm::ivec2 shape, float shape_factor=0.5f, float radius=0.5f, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, glm::vec2 center={0.5f, 0.5f}, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Generates a 2D Lorentzian bump pattern.</div><div class="ttdef"><b>Definition</b> primitives.cpp:63</div></div>
+<div class="ttc" id="anamespacehmap_html_a205eb3757eb00bd7c92504c01b9d3638"><div class="ttname"><a href="namespacehmap.html#a205eb3757eb00bd7c92504c01b9d3638">hmap::bump</a></div><div class="ttdeci">Array bump(glm::ivec2 shape, float gain=1.f, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, glm::vec2 center={0.5f, 0.5f}, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Return a bump.</div><div class="ttdef"><b>Definition</b> primitives.cpp:81</div></div>
+<div class="ttc" id="anamespacehmap_html_a4af0bde798f0266db4dfe24e1134a506"><div class="ttname"><a href="namespacehmap.html#a4af0bde798f0266db4dfe24e1134a506">hmap::bump_lorentzian</a></div><div class="ttdeci">Array bump_lorentzian(glm::ivec2 shape, float shape_factor=0.5f, float radius=0.5f, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, glm::vec2 center={0.5f, 0.5f}, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Generates a 2D Lorentzian bump pattern.</div><div class="ttdef"><b>Definition</b> primitives.cpp:103</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_bump.png" alt=""/>
 </div>
@@ -37566,7 +38018,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 </div>
 </div>
 <a id="a8fc658165f2be0a1ef89bf24f828a762" name="a8fc658165f2be0a1ef89bf24f828a762"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8fc658165f2be0a1ef89bf24f828a762">&#9670;&#160;</a></span>cubic_pulse() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a8fc658165f2be0a1ef89bf24f828a762">&#9670;&#160;</a></span>cubic_pulse() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -40643,7 +41095,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 <div class="line"> </div>
 <div class="line">  z.to_png(<span class="stringliteral">&quot;ex_paraboloid.png&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a9bab88cc60ec72c09eec98f0fb9f452f"><div class="ttname"><a href="namespacehmap.html#a9bab88cc60ec72c09eec98f0fb9f452f">hmap::paraboloid</a></div><div class="ttdeci">Array paraboloid(glm::ivec2 shape, float angle, float a, float b, float v0=0.f, bool reverse_x=false, bool reverse_y=false, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, glm::vec2 center={0.5f, 0.5f}, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Return a paraboloid.</div><div class="ttdef"><b>Definition</b> primitives.cpp:185</div></div>
+<div class="ttc" id="anamespacehmap_html_a9bab88cc60ec72c09eec98f0fb9f452f"><div class="ttname"><a href="namespacehmap.html#a9bab88cc60ec72c09eec98f0fb9f452f">hmap::paraboloid</a></div><div class="ttdeci">Array paraboloid(glm::ivec2 shape, float angle, float a, float b, float v0=0.f, bool reverse_x=false, bool reverse_y=false, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, glm::vec2 center={0.5f, 0.5f}, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Return a paraboloid.</div><div class="ttdef"><b>Definition</b> primitives.cpp:225</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_paraboloid.png" alt=""/>
 </div>
@@ -40872,7 +41324,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>,</div>
 <div class="line">                          <span class="keyword">false</span>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_adafc477ac182ce40ebf2cee1c84cb936"><div class="ttname"><a href="namespacehmap.html#adafc477ac182ce40ebf2cee1c84cb936">hmap::rectangle</a></div><div class="ttdeci">Array rectangle(glm::ivec2 shape, float rx, float ry, float angle, float slope=1.f, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, glm::vec2 center={0.5f, 0.5f}, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Generates a rectangle-shaped heightmap with optional modifications.</div><div class="ttdef"><b>Definition</b> primitives.cpp:225</div></div>
+<div class="ttc" id="anamespacehmap_html_adafc477ac182ce40ebf2cee1c84cb936"><div class="ttname"><a href="namespacehmap.html#adafc477ac182ce40ebf2cee1c84cb936">hmap::rectangle</a></div><div class="ttdeci">Array rectangle(glm::ivec2 shape, float rx, float ry, float angle, float slope=1.f, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, glm::vec2 center={0.5f, 0.5f}, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Generates a rectangle-shaped heightmap with optional modifications.</div><div class="ttdef"><b>Definition</b> primitives.cpp:265</div></div>
 </div><!-- fragment --></li>
 </ul>
 </dd></dl>
@@ -41019,7 +41471,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_rift.png&quot;</span>, {z1, z2, z3}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a808ede1d218fd226001c8f804bb85b97"><div class="ttname"><a href="namespacehmap.html#a808ede1d218fd226001c8f804bb85b97">hmap::rift</a></div><div class="ttdeci">Array rift(glm::ivec2 shape, float angle, float slope, float width, bool sharp_bottom=false, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, glm::vec2 center={0.5f, 0.5f}, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Return a rift function (Heaviside with an optional talus slope at the transition).</div><div class="ttdef"><b>Definition</b> primitives.cpp:250</div></div>
+<div class="ttc" id="anamespacehmap_html_a808ede1d218fd226001c8f804bb85b97"><div class="ttname"><a href="namespacehmap.html#a808ede1d218fd226001c8f804bb85b97">hmap::rift</a></div><div class="ttdeci">Array rift(glm::ivec2 shape, float angle, float slope, float width, bool sharp_bottom=false, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, glm::vec2 center={0.5f, 0.5f}, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Return a rift function (Heaviside with an optional talus slope at the transition).</div><div class="ttdef"><b>Definition</b> primitives.cpp:290</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_rift.png" alt=""/>
 </div>
@@ -41311,7 +41763,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_step.png&quot;</span>, {z1, z2, z3}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a80b6038177b2ab3984cb18bd90f568fa"><div class="ttname"><a href="namespacehmap.html#a80b6038177b2ab3984cb18bd90f568fa">hmap::step</a></div><div class="ttdeci">Array step(glm::ivec2 shape, float angle, float slope, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, glm::vec2 center={0.5f, 0.5f}, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Return a step function (Heaviside with an optional talus slope at the transition).</div><div class="ttdef"><b>Definition</b> primitives.cpp:332</div></div>
+<div class="ttc" id="anamespacehmap_html_a80b6038177b2ab3984cb18bd90f568fa"><div class="ttname"><a href="namespacehmap.html#a80b6038177b2ab3984cb18bd90f568fa">hmap::step</a></div><div class="ttdeci">Array step(glm::ivec2 shape, float angle, float slope, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, glm::vec2 center={0.5f, 0.5f}, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Return a step function (Heaviside with an optional talus slope at the transition).</div><div class="ttdef"><b>Definition</b> primitives.cpp:372</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_step.png" alt=""/>
 </div>
@@ -46830,6 +47282,64 @@ off" values that fall below the threshold, which can be useful for filtering out
 <img src="ex_quilting4.png" alt=""/>
 </div>
  
+</div>
+</div>
+<a id="aad6a39e70bf2ff70f8367e663d3027cf" name="aad6a39e70bf2ff70f8367e663d3027cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad6a39e70bf2ff70f8367e663d3027cf">&#9670;&#160;</a></span>cubic_pulse() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; float &gt; hmap::cubic_pulse </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1TerrainTriMesh.html">TerrainTriMesh</a> &amp;&#160;</td>
+          <td class="paramname"><em>mesh</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af9fdabd692817be603ff5c44e68ea619" name="af9fdabd692817be603ff5c44e68ea619"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9fdabd692817be603ff5c44e68ea619">&#9670;&#160;</a></span>generate_terrain_tri_mesh_from_heightmap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classhmap_1_1TerrainTriMesh.html">TerrainTriMesh</a> hmap::generate_terrain_tri_mesh_from_heightmap </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>z</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>max_error</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>max_triangles</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>max_points</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
 </div>
 </div>
 <a id="a19dec938e688ef4b73cf27ff3934043b" name="a19dec938e688ef4b73cf27ff3934043b"></a>

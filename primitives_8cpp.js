@@ -1,6 +1,8 @@
 var primitives_8cpp =
 [
     [ "biquad_pulse", "primitives_8cpp.html#a2b69f27ab2ce6c9bdd87cdc630a0a1d5", null ],
+    [ "biquad_pulse_x", "primitives_8cpp.html#a05f15dbf656e6f7ae36542c48a7d2980", null ],
+    [ "biquad_pulse_y", "primitives_8cpp.html#aeffedc90714bfcfed6a5f18d780b1094", null ],
     [ "bump", "primitives_8cpp.html#a205eb3757eb00bd7c92504c01b9d3638", null ],
     [ "bump_lorentzian", "primitives_8cpp.html#a4af0bde798f0266db4dfe24e1134a506", null ],
     [ "constant", "primitives_8cpp.html#a2b25a71f7da0b8324df986e01e5b08dc", null ],
