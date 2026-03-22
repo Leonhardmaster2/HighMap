@@ -146,8 +146,8 @@ Array hydraulic_saleve(const Array &z,
                            yc,
                            zc,
                            InterpolationMethod2D::ITP2D_NNI,
-                           &dx,
-                           &dy);
+                           p_noise_x,
+                           p_noise_y);
   remap(ze, zmin, zmax);
 
   return lerp(z, ze, strength);
