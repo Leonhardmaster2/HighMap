@@ -591,6 +591,7 @@ var namespacehmap =
     [ "hydraulic_musgrave", "namespacehmap.html#a8c20cd6c2b1cd1ec20ffb2ce86ed0ecb", null ],
     [ "hydraulic_saleve", "namespacehmap.html#a2254c2315fe61a91b5bf6ea6582cce56", null ],
     [ "hydraulic_saleve", "namespacehmap.html#a50dad147482c7ef7cc5636c847c32dc7", null ],
+    [ "hydraulic_saleve", "namespacehmap.html#a1424038fa719dcd36edd28fcf806a5d0", null ],
     [ "hydraulic_stream", "namespacehmap.html#acbf32c30d68183eb5522888af2ede316", null ],
     [ "hydraulic_stream", "namespacehmap.html#ae3bc02b89f4e7d0bdb221e13b66ad91e", null ],
     [ "hydraulic_stream_log", "namespacehmap.html#a37caab05db1b9791bf8a8ca10852c0da", null ],
