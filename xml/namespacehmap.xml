@@ -9743,10 +9743,10 @@ additional_depth)</computeroutput>.</para>
         </inbodydescription>
         <location file="HighMap/src/erosion/hydraulic_musgrave.cpp" line="110" column="6" bodyfile="HighMap/src/erosion/hydraulic_musgrave.cpp" bodystart="110" bodyend="127" declfile="HighMap/include/highmap/erosion.hpp" declline="412" declcolumn="6"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1ae935b20608a946a11ba5c23ba9d72783" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacehmap_1a2254c2315fe61a91b5bf6ea6582cce56" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void hmap::hydraulic_saleve</definition>
-        <argsstring>(TerrainTriMesh &amp;mesh, const std::vector&lt; float &gt; &amp;erodibility, const std::vector&lt; float &gt; &amp;max_slope, float m_exp=0.8f, float uplift_rate=1.f, float tolerance=1e-3f, int max_iterations=200)</argsstring>
+        <argsstring>(TerrainTriMesh &amp;mesh, const std::vector&lt; float &gt; &amp;erodibility, const std::vector&lt; float &gt; &amp;max_slope, float m_exp=0.8f, float uplift_rate=1.f, float tolerance=1e-3f, int max_iterations=200, float noise_strength=0.f, uint seed=0)</argsstring>
         <name>hydraulic_saleve</name>
         <qualifiedname>hmap::hydraulic_saleve</qualifiedname>
         <param>
@@ -9780,6 +9780,16 @@ additional_depth)</computeroutput>.</para>
           <type>int</type>
           <declname>max_iterations</declname>
           <defval>200</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>noise_strength</declname>
+          <defval>0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type><ref refid="array_8hpp_1a91ad9478d81a7aaf2593e8d9c3d06a14" kindref="member">uint</ref></type>
+          <declname>seed</declname>
+          <defval>0</defval>
         </param>
         <briefdescription>
 <para>Perform hydraulic erosion on a triangulated terrain mesh. </para>
@@ -9873,27 +9883,28 @@ additional_depth)</computeroutput>.</para>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>m_exp<sp/>=<sp/>0.8f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>uplift_rate<sp/>=<sp/>1.f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>tolerance<sp/>=<sp/>1e-3f;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/>max_iterations<sp/>=<sp/>500;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/>max_iterations<sp/>=<sp/>1000;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>smin<sp/>=<sp/>0.f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>smax<sp/>=<sp/>6.f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/>scale_erodibility_with_z<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>erodibility_distrib_exp<sp/>=<sp/>1.f;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>noise_strength<sp/>=<sp/>0.25f;<sp/></highlight><highlight class="comment">//<sp/>stream<sp/>tree<sp/>structural<sp/>noise</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>dx<sp/>=<sp/>0.05f<sp/>*<sp/><ref refid="namespacehmap_1acb13e7346085793fda4c94c47b75d9a9" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195ac5113a637d69eb3c549e6d561da167ed" kindref="member">hmap::NoiseType::SIMPLEX2</ref>,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>shape,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kw,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++seed,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>8,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0.f);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>dy<sp/>=<sp/>0.05f<sp/>*<sp/><ref refid="namespacehmap_1acb13e7346085793fda4c94c47b75d9a9" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195ac5113a637d69eb3c549e6d561da167ed" kindref="member">hmap::NoiseType::SIMPLEX2</ref>,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>shape,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kw,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++seed,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>8,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0.f);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>dx<sp/>=<sp/>0.0f<sp/>*<sp/><ref refid="namespacehmap_1acb13e7346085793fda4c94c47b75d9a9" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195ac5113a637d69eb3c549e6d561da167ed" kindref="member">hmap::NoiseType::SIMPLEX2</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>shape,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kw,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++seed,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>8,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0.f);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>dy<sp/>=<sp/>0.0f<sp/>*<sp/><ref refid="namespacehmap_1acb13e7346085793fda4c94c47b75d9a9" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195ac5113a637d69eb3c549e6d561da167ed" kindref="member">hmap::NoiseType::SIMPLEX2</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>shape,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kw,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++seed,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>8,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0.f);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z1<sp/>=<sp/><ref refid="namespacehmap_1ae935b20608a946a11ba5c23ba9d72783" kindref="member">hmap::hydraulic_saleve</ref>(z0,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z1<sp/>=<sp/><ref refid="namespacehmap_1a2254c2315fe61a91b5bf6ea6582cce56" kindref="member">hmap::hydraulic_saleve</ref>(z0,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++seed,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>control_points_count,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_exp,</highlight></codeline>
@@ -9905,6 +9916,7 @@ additional_depth)</computeroutput>.</para>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>strength,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>scale_erodibility_with_z,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>erodibility_distrib_exp,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>noise_strength,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;dx,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;dy);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
@@ -9932,12 +9944,12 @@ additional_depth)</computeroutput>.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/hydraulic_saleve.cpp" line="15" column="6" bodyfile="HighMap/src/erosion/hydraulic_saleve.cpp" bodystart="15" bodyend="43" declfile="HighMap/include/highmap/erosion.hpp" declline="440" declcolumn="6"/>
+        <location file="HighMap/src/erosion/hydraulic_saleve.cpp" line="15" column="6" bodyfile="HighMap/src/erosion/hydraulic_saleve.cpp" bodystart="15" bodyend="45" declfile="HighMap/include/highmap/erosion.hpp" declline="440" declcolumn="6"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1a83813ca67df9257cf835cf05d140699c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacehmap_1a50dad147482c7ef7cc5636c847c32dc7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
         <definition>Array hmap::hydraulic_saleve</definition>
-        <argsstring>(const Array &amp;z, uint seed, size_t control_points_count=10000, float m_exp=0.8f, float uplift_rate=1.f, float tolerance=1e-3f, int max_iterations=200, float smin=0.f, float smax=6.f, float strength=0.5f, bool scale_erodibility_with_z=true, float erodibility_distrib_exp=1.f, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr)</argsstring>
+        <argsstring>(const Array &amp;z, uint seed, size_t control_points_count=10000, float m_exp=0.8f, float uplift_rate=1.f, float tolerance=1e-3f, int max_iterations=200, float smin=0.f, float smax=6.f, float strength=0.5f, bool scale_erodibility_with_z=true, float erodibility_distrib_exp=1.f, float noise_strength=0.f, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr)</argsstring>
         <name>hydraulic_saleve</name>
         <qualifiedname>hmap::hydraulic_saleve</qualifiedname>
         <param>
@@ -9997,6 +10009,11 @@ additional_depth)</computeroutput>.</para>
           <type>float</type>
           <declname>erodibility_distrib_exp</declname>
           <defval>1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>noise_strength</declname>
+          <defval>0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
         </param>
         <param>
           <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
@@ -10158,27 +10175,28 @@ additional_depth)</computeroutput>.</para>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>m_exp<sp/>=<sp/>0.8f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>uplift_rate<sp/>=<sp/>1.f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>tolerance<sp/>=<sp/>1e-3f;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/>max_iterations<sp/>=<sp/>500;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/>max_iterations<sp/>=<sp/>1000;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>smin<sp/>=<sp/>0.f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>smax<sp/>=<sp/>6.f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/>scale_erodibility_with_z<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>erodibility_distrib_exp<sp/>=<sp/>1.f;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>noise_strength<sp/>=<sp/>0.25f;<sp/></highlight><highlight class="comment">//<sp/>stream<sp/>tree<sp/>structural<sp/>noise</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>dx<sp/>=<sp/>0.05f<sp/>*<sp/><ref refid="namespacehmap_1acb13e7346085793fda4c94c47b75d9a9" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195ac5113a637d69eb3c549e6d561da167ed" kindref="member">hmap::NoiseType::SIMPLEX2</ref>,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>shape,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kw,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++seed,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>8,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0.f);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>dy<sp/>=<sp/>0.05f<sp/>*<sp/><ref refid="namespacehmap_1acb13e7346085793fda4c94c47b75d9a9" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195ac5113a637d69eb3c549e6d561da167ed" kindref="member">hmap::NoiseType::SIMPLEX2</ref>,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>shape,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kw,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++seed,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>8,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0.f);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>dx<sp/>=<sp/>0.0f<sp/>*<sp/><ref refid="namespacehmap_1acb13e7346085793fda4c94c47b75d9a9" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195ac5113a637d69eb3c549e6d561da167ed" kindref="member">hmap::NoiseType::SIMPLEX2</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>shape,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kw,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++seed,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>8,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0.f);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>dy<sp/>=<sp/>0.0f<sp/>*<sp/><ref refid="namespacehmap_1acb13e7346085793fda4c94c47b75d9a9" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195ac5113a637d69eb3c549e6d561da167ed" kindref="member">hmap::NoiseType::SIMPLEX2</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>shape,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kw,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++seed,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>8,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0.f);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z1<sp/>=<sp/><ref refid="namespacehmap_1ae935b20608a946a11ba5c23ba9d72783" kindref="member">hmap::hydraulic_saleve</ref>(z0,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z1<sp/>=<sp/><ref refid="namespacehmap_1a2254c2315fe61a91b5bf6ea6582cce56" kindref="member">hmap::hydraulic_saleve</ref>(z0,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++seed,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>control_points_count,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_exp,</highlight></codeline>
@@ -10190,6 +10208,7 @@ additional_depth)</computeroutput>.</para>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>strength,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>scale_erodibility_with_z,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>erodibility_distrib_exp,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>noise_strength,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;dx,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;dy);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
@@ -10217,7 +10236,7 @@ additional_depth)</computeroutput>.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/hydraulic_saleve.cpp" line="45" column="7" bodyfile="HighMap/src/erosion/hydraulic_saleve.cpp" bodystart="45" bodyend="154" declfile="HighMap/include/highmap/erosion.hpp" declline="478" declcolumn="7"/>
+        <location file="HighMap/src/erosion/hydraulic_saleve.cpp" line="47" column="7" bodyfile="HighMap/src/erosion/hydraulic_saleve.cpp" bodystart="47" bodyend="159" declfile="HighMap/include/highmap/erosion.hpp" declline="480" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1acbf32c30d68183eb5522888af2ede316" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -10398,7 +10417,7 @@ additional_depth)</computeroutput>.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/hydraulic_stream.cpp" line="20" column="6" bodyfile="HighMap/src/erosion/hydraulic_stream.cpp" bodystart="20" bodyend="64" declfile="HighMap/include/highmap/erosion.hpp" declline="520" declcolumn="6"/>
+        <location file="HighMap/src/erosion/hydraulic_stream.cpp" line="20" column="6" bodyfile="HighMap/src/erosion/hydraulic_stream.cpp" bodystart="20" bodyend="64" declfile="HighMap/include/highmap/erosion.hpp" declline="523" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ae3bc02b89f4e7d0bdb221e13b66ad91e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -10454,7 +10473,7 @@ additional_depth)</computeroutput>.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/hydraulic_stream.cpp" line="66" column="6" bodyfile="HighMap/src/erosion/hydraulic_stream.cpp" bodystart="66" bodyend="98" declfile="HighMap/include/highmap/erosion.hpp" declline="529" declcolumn="6"/>
+        <location file="HighMap/src/erosion/hydraulic_stream.cpp" line="66" column="6" bodyfile="HighMap/src/erosion/hydraulic_stream.cpp" bodystart="66" bodyend="98" declfile="HighMap/include/highmap/erosion.hpp" declline="532" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a37caab05db1b9791bf8a8ca10852c0da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -10705,7 +10724,7 @@ additional_depth)</computeroutput>.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/hydraulic_stream.cpp" line="100" column="6" bodyfile="HighMap/src/erosion/hydraulic_stream.cpp" bodystart="100" bodyend="168" declfile="HighMap/include/highmap/erosion.hpp" declline="577" declcolumn="6"/>
+        <location file="HighMap/src/erosion/hydraulic_stream.cpp" line="100" column="6" bodyfile="HighMap/src/erosion/hydraulic_stream.cpp" bodystart="100" bodyend="168" declfile="HighMap/include/highmap/erosion.hpp" declline="580" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a98290631d4a1247b31b11ee1f42cd6e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -10791,7 +10810,7 @@ additional_depth)</computeroutput>.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/hydraulic_stream.cpp" line="170" column="6" bodyfile="HighMap/src/erosion/hydraulic_stream.cpp" bodystart="170" bodyend="220" declfile="HighMap/include/highmap/erosion.hpp" declline="592" declcolumn="6"/>
+        <location file="HighMap/src/erosion/hydraulic_stream.cpp" line="170" column="6" bodyfile="HighMap/src/erosion/hydraulic_stream.cpp" bodystart="170" bodyend="220" declfile="HighMap/include/highmap/erosion.hpp" declline="595" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a66355f091aa60d97d5a7c7eeb08c51cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -10940,7 +10959,7 @@ additional_depth)</computeroutput>.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/hydraulic_stream_upscale_amplification.cpp" line="17" column="6" bodyfile="HighMap/src/erosion/hydraulic_stream_upscale_amplification.cpp" bodystart="17" bodyend="40" declfile="HighMap/include/highmap/erosion.hpp" declline="640" declcolumn="6"/>
+        <location file="HighMap/src/erosion/hydraulic_stream_upscale_amplification.cpp" line="17" column="6" bodyfile="HighMap/src/erosion/hydraulic_stream_upscale_amplification.cpp" bodystart="17" bodyend="40" declfile="HighMap/include/highmap/erosion.hpp" declline="643" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1af975837e0f5b169dcb6d3f5f58c95fe9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -11101,7 +11120,7 @@ additional_depth)</computeroutput>.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/hydraulic_stream_upscale_amplification.cpp" line="42" column="6" bodyfile="HighMap/src/erosion/hydraulic_stream_upscale_amplification.cpp" bodystart="42" bodyend="71" declfile="HighMap/include/highmap/erosion.hpp" declline="681" declcolumn="6"/>
+        <location file="HighMap/src/erosion/hydraulic_stream_upscale_amplification.cpp" line="42" column="6" bodyfile="HighMap/src/erosion/hydraulic_stream_upscale_amplification.cpp" bodystart="42" bodyend="71" declfile="HighMap/include/highmap/erosion.hpp" declline="684" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aa6efdb6d9fbf995b00f889ca290819cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -11307,7 +11326,7 @@ additional_depth)</computeroutput>.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/hydraulic_vpipes.cpp" line="288" column="6" bodyfile="HighMap/src/erosion/hydraulic_vpipes.cpp" bodystart="288" bodyend="332" declfile="HighMap/include/highmap/erosion.hpp" declline="719" declcolumn="6"/>
+        <location file="HighMap/src/erosion/hydraulic_vpipes.cpp" line="288" column="6" bodyfile="HighMap/src/erosion/hydraulic_vpipes.cpp" bodystart="288" bodyend="332" declfile="HighMap/include/highmap/erosion.hpp" declline="722" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ac30a1d413b62e80d0d2fd3073cc975d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -11380,7 +11399,7 @@ additional_depth)</computeroutput>.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/hydraulic_vpipes.cpp" line="25" column="6" bodyfile="HighMap/src/erosion/hydraulic_vpipes.cpp" bodystart="25" bodyend="286" declfile="HighMap/include/highmap/erosion.hpp" declline="733" declcolumn="6"/>
+        <location file="HighMap/src/erosion/hydraulic_vpipes.cpp" line="25" column="6" bodyfile="HighMap/src/erosion/hydraulic_vpipes.cpp" bodystart="25" bodyend="286" declfile="HighMap/include/highmap/erosion.hpp" declline="736" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1abc0ddcae8cec8a556b8a343eaafe1dc4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -11508,7 +11527,7 @@ additional_depth)</computeroutput>.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/stratify.cpp" line="46" column="6" bodyfile="HighMap/src/erosion/stratify.cpp" bodystart="46" bodyend="60" declfile="HighMap/include/highmap/erosion.hpp" declline="765" declcolumn="6"/>
+        <location file="HighMap/src/erosion/stratify.cpp" line="46" column="6" bodyfile="HighMap/src/erosion/stratify.cpp" bodystart="46" bodyend="60" declfile="HighMap/include/highmap/erosion.hpp" declline="768" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ad117ced78d758baa0bb5e1e7655bd0b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -11540,7 +11559,7 @@ additional_depth)</computeroutput>.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/stratify.cpp" line="17" column="6" bodyfile="HighMap/src/erosion/stratify.cpp" bodystart="17" bodyend="44" declfile="HighMap/include/highmap/erosion.hpp" declline="771" declcolumn="6"/>
+        <location file="HighMap/src/erosion/stratify.cpp" line="17" column="6" bodyfile="HighMap/src/erosion/stratify.cpp" bodystart="17" bodyend="44" declfile="HighMap/include/highmap/erosion.hpp" declline="774" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1abca93ca8447abd2fc06c9892a4dc248c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -11573,7 +11592,7 @@ additional_depth)</computeroutput>.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/stratify.cpp" line="131" column="6" bodyfile="HighMap/src/erosion/stratify.cpp" bodystart="131" bodyend="139" declfile="HighMap/include/highmap/erosion.hpp" declline="776" declcolumn="6"/>
+        <location file="HighMap/src/erosion/stratify.cpp" line="131" column="6" bodyfile="HighMap/src/erosion/stratify.cpp" bodystart="131" bodyend="139" declfile="HighMap/include/highmap/erosion.hpp" declline="779" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a9b3fc59af5c418c494eec160399839bb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -11640,7 +11659,7 @@ additional_depth)</computeroutput>.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/stratify.cpp" line="141" column="6" bodyfile="HighMap/src/erosion/stratify.cpp" bodystart="141" bodyend="188" declfile="HighMap/include/highmap/erosion.hpp" declline="781" declcolumn="6"/>
+        <location file="HighMap/src/erosion/stratify.cpp" line="141" column="6" bodyfile="HighMap/src/erosion/stratify.cpp" bodystart="141" bodyend="188" declfile="HighMap/include/highmap/erosion.hpp" declline="784" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a815d3c721091a5525f872527a994ec1f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -11812,7 +11831,7 @@ additional_depth)</computeroutput>.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/stratify.cpp" line="62" column="6" bodyfile="HighMap/src/erosion/stratify.cpp" bodystart="62" bodyend="129" declfile="HighMap/include/highmap/erosion.hpp" declline="817" declcolumn="6"/>
+        <location file="HighMap/src/erosion/stratify.cpp" line="62" column="6" bodyfile="HighMap/src/erosion/stratify.cpp" bodystart="62" bodyend="129" declfile="HighMap/include/highmap/erosion.hpp" declline="820" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a06a4f7bbf99b83632ceb8a9ba5989823" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -11970,7 +11989,7 @@ additional_depth)</computeroutput>.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/stratify.cpp" line="241" column="6" bodyfile="HighMap/src/erosion/stratify.cpp" bodystart="241" bodyend="257" declfile="HighMap/include/highmap/erosion.hpp" declline="848" declcolumn="6"/>
+        <location file="HighMap/src/erosion/stratify.cpp" line="241" column="6" bodyfile="HighMap/src/erosion/stratify.cpp" bodystart="241" bodyend="257" declfile="HighMap/include/highmap/erosion.hpp" declline="851" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a1d3b4f4dbe769a1f71f8fcc44cfcaf8c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -12010,7 +12029,7 @@ additional_depth)</computeroutput>.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/stratify.cpp" line="190" column="6" bodyfile="HighMap/src/erosion/stratify.cpp" bodystart="190" bodyend="239" declfile="HighMap/include/highmap/erosion.hpp" declline="856" declcolumn="6"/>
+        <location file="HighMap/src/erosion/stratify.cpp" line="190" column="6" bodyfile="HighMap/src/erosion/stratify.cpp" bodystart="190" bodyend="239" declfile="HighMap/include/highmap/erosion.hpp" declline="859" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ab6221592aa07d117715b474afab7db1c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -12122,7 +12141,7 @@ additional_depth)</computeroutput>.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal.cpp" line="174" column="6" bodyfile="HighMap/src/erosion/thermal.cpp" bodystart="174" bodyend="189" declfile="HighMap/include/highmap/erosion.hpp" declline="882" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal.cpp" line="174" column="6" bodyfile="HighMap/src/erosion/thermal.cpp" bodystart="174" bodyend="189" declfile="HighMap/include/highmap/erosion.hpp" declline="885" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aeb883524caa1b5ce67ee3b60376b4abb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -12159,7 +12178,7 @@ additional_depth)</computeroutput>.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal.cpp" line="45" column="6" bodyfile="HighMap/src/erosion/thermal.cpp" bodystart="45" bodyend="168" declfile="HighMap/include/highmap/erosion.hpp" declline="889" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal.cpp" line="45" column="6" bodyfile="HighMap/src/erosion/thermal.cpp" bodystart="45" bodyend="168" declfile="HighMap/include/highmap/erosion.hpp" declline="892" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a515af2d938d55488bbb549c708597886" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -12197,7 +12216,7 @@ additional_depth)</computeroutput>.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal.cpp" line="192" column="6" bodyfile="HighMap/src/erosion/thermal.cpp" bodystart="192" bodyend="200" declfile="HighMap/include/highmap/erosion.hpp" declline="895" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal.cpp" line="192" column="6" bodyfile="HighMap/src/erosion/thermal.cpp" bodystart="192" bodyend="200" declfile="HighMap/include/highmap/erosion.hpp" declline="898" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1acbd2a3c82ec3ce4eaf77dbc92d580321" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -12289,7 +12308,7 @@ additional_depth)</computeroutput>.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal.cpp" line="206" column="6" bodyfile="HighMap/src/erosion/thermal.cpp" bodystart="206" bodyend="242" declfile="HighMap/include/highmap/erosion.hpp" declline="922" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal.cpp" line="206" column="6" bodyfile="HighMap/src/erosion/thermal.cpp" bodystart="206" bodyend="242" declfile="HighMap/include/highmap/erosion.hpp" declline="925" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a2e350857ce33125722d9c8ff6663f1c8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -12322,7 +12341,7 @@ additional_depth)</computeroutput>.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal.cpp" line="244" column="6" bodyfile="HighMap/src/erosion/thermal.cpp" bodystart="244" bodyend="251" declfile="HighMap/include/highmap/erosion.hpp" declline="927" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal.cpp" line="244" column="6" bodyfile="HighMap/src/erosion/thermal.cpp" bodystart="244" bodyend="251" declfile="HighMap/include/highmap/erosion.hpp" declline="930" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1af6a1650f303f70801a19aba318090664" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -12359,7 +12378,7 @@ additional_depth)</computeroutput>.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal.cpp" line="253" column="6" bodyfile="HighMap/src/erosion/thermal.cpp" bodystart="253" bodyend="267" declfile="HighMap/include/highmap/erosion.hpp" declline="932" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal.cpp" line="253" column="6" bodyfile="HighMap/src/erosion/thermal.cpp" bodystart="253" bodyend="267" declfile="HighMap/include/highmap/erosion.hpp" declline="935" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a600b794acf99e4b8d41ee7526e5c21ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -12445,7 +12464,7 @@ levelled out&quot;.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_flatten.cpp" line="22" column="6" bodyfile="HighMap/src/erosion/thermal_flatten.cpp" bodystart="22" bodyend="81" declfile="HighMap/include/highmap/erosion.hpp" declline="955" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_flatten.cpp" line="22" column="6" bodyfile="HighMap/src/erosion/thermal_flatten.cpp" bodystart="22" bodyend="81" declfile="HighMap/include/highmap/erosion.hpp" declline="958" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aad5d723c32c1cd431ad4ab6638fb523d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -12478,7 +12497,7 @@ levelled out&quot;.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_flatten.cpp" line="87" column="6" bodyfile="HighMap/src/erosion/thermal_flatten.cpp" bodystart="87" bodyend="92" declfile="HighMap/include/highmap/erosion.hpp" declline="961" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_flatten.cpp" line="87" column="6" bodyfile="HighMap/src/erosion/thermal_flatten.cpp" bodystart="87" bodyend="92" declfile="HighMap/include/highmap/erosion.hpp" declline="964" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a1ebb59674f1b317db20cc87385bc41a5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -12568,7 +12587,7 @@ levelled out&quot;.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_olsen.cpp" line="23" column="6" bodyfile="HighMap/src/erosion/thermal_olsen.cpp" bodystart="23" bodyend="177" declfile="HighMap/include/highmap/erosion.hpp" declline="985" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_olsen.cpp" line="23" column="6" bodyfile="HighMap/src/erosion/thermal_olsen.cpp" bodystart="23" bodyend="177" declfile="HighMap/include/highmap/erosion.hpp" declline="988" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a4ca4c918ef88ea4fc16e25c7017e15c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -12642,7 +12661,7 @@ levelled out&quot;.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_rib.cpp" line="17" column="6" bodyfile="HighMap/src/erosion/thermal_rib.cpp" bodystart="17" bodyend="45" declfile="HighMap/include/highmap/erosion.hpp" declline="1003" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_rib.cpp" line="17" column="6" bodyfile="HighMap/src/erosion/thermal_rib.cpp" bodystart="17" bodyend="45" declfile="HighMap/include/highmap/erosion.hpp" declline="1006" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ab38af66da103b9be4e5aaeed7213b9c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -12743,7 +12762,7 @@ levelled out&quot;.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_schott.cpp" line="24" column="6" bodyfile="HighMap/src/erosion/thermal_schott.cpp" bodystart="24" bodyend="66" declfile="HighMap/include/highmap/erosion.hpp" declline="1028" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_schott.cpp" line="24" column="6" bodyfile="HighMap/src/erosion/thermal_schott.cpp" bodystart="24" bodyend="66" declfile="HighMap/include/highmap/erosion.hpp" declline="1031" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a934a4f6e9ae0f315a2296d488b9333b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -12780,7 +12799,7 @@ levelled out&quot;.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_schott.cpp" line="68" column="6" bodyfile="HighMap/src/erosion/thermal_schott.cpp" bodystart="68" bodyend="82" declfile="HighMap/include/highmap/erosion.hpp" declline="1033" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_schott.cpp" line="68" column="6" bodyfile="HighMap/src/erosion/thermal_schott.cpp" bodystart="68" bodyend="82" declfile="HighMap/include/highmap/erosion.hpp" declline="1036" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aa328e3342e845d021f300dcb6cb42fbc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -12881,7 +12900,7 @@ levelled out&quot;.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_schott.cpp" line="84" column="6" bodyfile="HighMap/src/erosion/thermal_schott.cpp" bodystart="84" bodyend="91" declfile="HighMap/include/highmap/erosion.hpp" declline="1060" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_schott.cpp" line="84" column="6" bodyfile="HighMap/src/erosion/thermal_schott.cpp" bodystart="84" bodyend="91" declfile="HighMap/include/highmap/erosion.hpp" declline="1063" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1afe2e4c1e06205f5051ce6e86ea647a77" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -12918,7 +12937,7 @@ levelled out&quot;.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_schott.cpp" line="93" column="6" bodyfile="HighMap/src/erosion/thermal_schott.cpp" bodystart="93" bodyend="107" declfile="HighMap/include/highmap/erosion.hpp" declline="1065" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_schott.cpp" line="93" column="6" bodyfile="HighMap/src/erosion/thermal_schott.cpp" bodystart="93" bodyend="107" declfile="HighMap/include/highmap/erosion.hpp" declline="1068" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a7b8945745feaeaa365d965ce66b32f58" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -31783,7 +31802,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/drainage_basin.cpp" line="550" column="13" bodyfile="HighMap/src/hydrology/drainage_basin.cpp" bodystart="550" bodyend="607" declfile="HighMap/include/highmap/hydrology/drainage_basin.hpp" declline="99" declcolumn="13"/>
+        <location file="HighMap/src/hydrology/drainage_basin.cpp" line="676" column="13" bodyfile="HighMap/src/hydrology/drainage_basin.cpp" bodystart="676" bodyend="733" declfile="HighMap/include/highmap/hydrology/drainage_basin.hpp" declline="101" declcolumn="13"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a7c49b9b92f0badad7ace856e897de1f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; size_t &gt;</type>
@@ -31806,7 +31825,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/drainage_basin.cpp" line="609" column="13" bodyfile="HighMap/src/hydrology/drainage_basin.cpp" bodystart="609" bodyend="653" declfile="HighMap/include/highmap/hydrology/drainage_basin.hpp" declline="102" declcolumn="13"/>
+        <location file="HighMap/src/hydrology/drainage_basin.cpp" line="735" column="13" bodyfile="HighMap/src/hydrology/drainage_basin.cpp" bodystart="735" bodyend="779" declfile="HighMap/include/highmap/hydrology/drainage_basin.hpp" declline="104" declcolumn="13"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a23ab6bc3fdc7d5c498f0b3c8bebdd4f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; glm::vec3 &gt;</type>
@@ -31838,7 +31857,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/drainage_basin.cpp" line="715" column="13" bodyfile="HighMap/src/hydrology/drainage_basin.cpp" bodystart="715" bodyend="741" declfile="HighMap/include/highmap/hydrology/drainage_basin.hpp" declline="104" declcolumn="13"/>
+        <location file="HighMap/src/hydrology/drainage_basin.cpp" line="841" column="13" bodyfile="HighMap/src/hydrology/drainage_basin.cpp" bodystart="841" bodyend="867" declfile="HighMap/include/highmap/hydrology/drainage_basin.hpp" declline="106" declcolumn="13"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a40daf45c4bfaee46d924bf597fa0dbfc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; std::vector&lt; size_t &gt; &gt;</type>
@@ -31856,7 +31875,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/drainage_basin.cpp" line="743" column="13" bodyfile="HighMap/src/hydrology/drainage_basin.cpp" bodystart="743" bodyend="757" declfile="HighMap/include/highmap/hydrology/drainage_basin.hpp" declline="109" declcolumn="13"/>
+        <location file="HighMap/src/hydrology/drainage_basin.cpp" line="869" column="13" bodyfile="HighMap/src/hydrology/drainage_basin.cpp" bodystart="869" bodyend="883" declfile="HighMap/include/highmap/hydrology/drainage_basin.hpp" declline="111" declcolumn="13"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1abbc07969594bdb8632f96c9ec893872e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; size_t &gt;</type>
@@ -31878,7 +31897,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/drainage_basin.cpp" line="655" column="13" bodyfile="HighMap/src/hydrology/drainage_basin.cpp" bodystart="655" bodyend="713" declfile="HighMap/include/highmap/hydrology/drainage_basin.hpp" declline="112" declcolumn="13"/>
+        <location file="HighMap/src/hydrology/drainage_basin.cpp" line="781" column="13" bodyfile="HighMap/src/hydrology/drainage_basin.cpp" bodystart="781" bodyend="839" declfile="HighMap/include/highmap/hydrology/drainage_basin.hpp" declline="114" declcolumn="13"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a67eae4546cbed6a804eaddcde9350e1c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::filesystem::path</type>
@@ -46636,6 +46655,28 @@ The kernel is truncated to ensure it fits within the bounds of the array. After 
         <inbodydescription>
         </inbodydescription>
         <location file="HighMap/src/primitives/worley.cpp" line="15" column="7" bodyfile="HighMap/src/primitives/worley.cpp" bodystart="15" bodyend="37" declfile="HighMap/include/highmap/primitives.hpp" declline="1564" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehmap_1adbf9d5560582ab7f6bde2e08054c0bf1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float hmap::hash_to_unit_float</definition>
+        <argsstring>(unsigned int seed, size_t k)</argsstring>
+        <name>hash_to_unit_float</name>
+        <qualifiedname>hmap::hash_to_unit_float</qualifiedname>
+        <param>
+          <type>unsigned int</type>
+          <declname>seed</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>k</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/random/hash.cpp" line="10" column="7" bodyfile="HighMap/src/random/hash.cpp" bodystart="10" bodyend="25" declfile="HighMap/include/highmap/random.hpp" declline="11" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1abc5d54d0d76a86f083db977837c28d69" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>

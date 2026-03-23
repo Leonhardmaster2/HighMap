@@ -33,6 +33,7 @@ var dir_06646b66eb831be9a0698496dc1137c9 =
     [ "morphology.hpp", "morphology_8hpp.html", "morphology_8hpp" ],
     [ "operator.hpp", "operator_8hpp.html", "operator_8hpp" ],
     [ "primitives.hpp", "primitives_8hpp.html", "primitives_8hpp" ],
+    [ "random.hpp", "random_8hpp.html", "random_8hpp" ],
     [ "range.hpp", "range_8hpp.html", "range_8hpp" ],
     [ "roads.hpp", "roads_8hpp.html", "roads_8hpp" ],
     [ "sdf.hpp", "sdf_8hpp.html", "sdf_8hpp" ],

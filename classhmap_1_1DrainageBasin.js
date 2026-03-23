@@ -9,6 +9,8 @@ var classhmap_1_1DrainageBasin =
     [ "compute_vertex_areas", "classhmap_1_1DrainageBasin.html#a8edaab84381857910e6cc099464a4d88", null ],
     [ "remap", "classhmap_1_1DrainageBasin.html#a754fcec95d5a3b1b5291d4de95dff2d0", null ],
     [ "compute_receivers", "classhmap_1_1DrainageBasin.html#a41ce9c5a0cb26704823a38d3796df74d", null ],
+    [ "compute_receivers", "classhmap_1_1DrainageBasin.html#ae63213d69cf7bc3b56fd61cfdf301592", null ],
+    [ "update_stream_tree", "classhmap_1_1DrainageBasin.html#ae2d06a498fbe2fc7ba8d4872bafd407b", null ],
     [ "update_stream_tree", "classhmap_1_1DrainageBasin.html#ab5608cb8b6accfb29e5fb42976824553", null ],
     [ "update_traversals", "classhmap_1_1DrainageBasin.html#aac712678f6584ecdcd8e4805e3c50047", null ],
     [ "get_outlets", "classhmap_1_1DrainageBasin.html#a432506f1ff66a65987fb11979344a70a", null ],
