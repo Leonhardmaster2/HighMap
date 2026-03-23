@@ -16,6 +16,7 @@ var classhmap_1_1DrainageBasin =
     [ "get_outlets", "classhmap_1_1DrainageBasin.html#a432506f1ff66a65987fb11979344a70a", null ],
     [ "set_outlets", "classhmap_1_1DrainageBasin.html#ab11584d1b69b0a836ea1ef1f5ba20274", null ],
     [ "get_receivers", "classhmap_1_1DrainageBasin.html#a3c870f93d22d0d5846a042af97165fb2", null ],
+    [ "compute_is_ridge_node", "classhmap_1_1DrainageBasin.html#a33de723bf66791f3eeb6858307a9c72d", null ],
     [ "compute_strahler_order", "classhmap_1_1DrainageBasin.html#ad24e268cb15bbe0a47207f7f97a66c2a", null ],
     [ "find_subroots", "classhmap_1_1DrainageBasin.html#a1e1e17194e7b129d89bb4f339d8b8a7d", null ],
     [ "remove_lakes", "classhmap_1_1DrainageBasin.html#a81376d87a5f35274d6a541c9c9832bda", null ],

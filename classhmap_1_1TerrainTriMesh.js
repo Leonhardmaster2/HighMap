@@ -23,7 +23,7 @@ var classhmap_1_1TerrainTriMesh =
     [ "get_points", "classhmap_1_1TerrainTriMesh.html#aae715400b4086c69d625a00a9bd4fd17", null ],
     [ "get_triangles", "classhmap_1_1TerrainTriMesh.html#af3fc2aebc71077496e7d794005032887", null ],
     [ "get_convex_hull", "classhmap_1_1TerrainTriMesh.html#a023c617be776b6643ceccf8dd2ca22ec", null ],
-    [ "get_neighbors", "classhmap_1_1TerrainTriMesh.html#a59a226735cd4c4ef9b081178f7db887b", null ],
+    [ "get_neighbors", "classhmap_1_1TerrainTriMesh.html#adab683cb7235023ccd24630f401f6755", null ],
     [ "export_obj", "classhmap_1_1TerrainTriMesh.html#aff20c6cfb3730b3c55d6d1c803057bd3", null ],
     [ "info_string", "classhmap_1_1TerrainTriMesh.html#a20fa4640aa9133749e4089022836215a", null ],
     [ "print_info", "classhmap_1_1TerrainTriMesh.html#a5af9d302226d00078fba8f9e40183935", null ],
