@@ -128,80 +128,8 @@ void DrainageBasin::compute_receivers(unsigned int seed, float noise_strength)
       }
     }
 
-    // float  best_slope = 0.f;
-    // size_t best_k = k;
-
-    // for (const auto &nb : nbrs_data.adjacency[k])
-    // {
-    //   size_t n = nb.index;
-    //   float  dist = nb.distance2d;
-    //   float  dz = this->mesh.get_points()[k].z -
-    //   this->mesh.get_points()[n].z;
-
-    //   if (dz > 0.f)
-    //   {
-    //     float slope = dz / dist;
-    //     if (slope > best_slope)
-    //     {
-    //       best_slope = slope;
-    //       best_k = n;
-    //     }
-    //   }
-
     this->receivers[k] = best_k;
   }
-
-  // for (size_t k = 0; k < this->mesh.size(); ++k)
-  // {
-  //   if (this->outlets_mask[k])
-  //   {
-  //     this->receivers[k] = k;
-  //     continue;
-  //   }
-
-  //   float total_weight = 0.f;
-
-  //   // first pass - compute total weight
-  //   for (const auto &nb : nbrs_data.adjacency[k])
-  //   {
-  //     float dz = points[k].z - points[nb.index].z;
-  //     if (dz > 0.f) total_weight += dz / nb.distance2d;
-  //   }
-
-  //   if (total_weight <= 0.f)
-  //   {
-  //     this->receivers[k] = k;
-  //     continue;
-  //   }
-
-  //   // second pass - pick the best (with a random bias)
-
-  //   // deterministic random in [0, total_weight]
-  //   float  r = hash_to_unit_float(seed, k);
-  //   r = 1.f * total_weight;
-
-  //   float  cumulative = 0.f;
-  //   size_t chosen = k;
-
-  //   for (const auto &nb : nbrs_data.adjacency[k])
-  //   {
-  //     float dz = points[k].z - points[nb.index].z;
-
-  //     if (dz > 0.f)
-  //     {
-  //       float weight = dz / nb.distance2d;
-  //       cumulative += weight;
-
-  //       if (r >= cumulative)
-  //       {
-  //         chosen = nb.index;
-  //         break;
-  //       }
-  //     }
-  //   }
-
-  //   this->receivers[k] = chosen;
-  // }
 }
 
 std::vector<size_t> DrainageBasin::compute_strahler_order() const
