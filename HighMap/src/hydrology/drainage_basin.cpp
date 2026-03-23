@@ -15,6 +15,7 @@
 
 #include "highmap/hydrology/drainage_basin.hpp"
 #include "highmap/math.hpp"
+#include "highmap/random.hpp"
 
 namespace hmap
 {
@@ -85,6 +86,122 @@ void DrainageBasin::compute_receivers()
 
     this->receivers[k] = best_k;
   }
+}
+
+void DrainageBasin::compute_receivers(unsigned int seed, float noise_strength)
+{
+  this->receivers.clear();
+  this->receivers.resize(this->mesh.size());
+
+  const TerrainTriMesh::NeighborData &nbrs_data = this->mesh.get_neighbors();
+  const auto                         &points = this->mesh.get_points();
+
+  for (size_t k = 0; k < this->mesh.size(); ++k)
+  {
+    if (this->outlets_mask[k])
+    {
+      this->receivers[k] = k; // mark as self-receiver
+      continue;
+    }
+
+    float  best_score = -std::numeric_limits<float>::infinity();
+    size_t best_k = k;
+
+    for (const auto &nb : nbrs_data.adjacency[k])
+    {
+      float dz = points[k].z - points[nb.index].z;
+
+      if (dz > 0.f)
+      {
+        float slope = dz / nb.distance2d;
+
+        // use deterministic noise in [-1, 1) to bias slope with noise
+        // perturbation
+        float noise = 2.f * hash_to_unit_float(seed, k ^ nb.index) - 1.f;
+        float score = slope * (1.f + noise_strength * noise);
+
+        if (score > best_score)
+        {
+          best_score = score;
+          best_k = nb.index;
+        }
+      }
+    }
+
+    // float  best_slope = 0.f;
+    // size_t best_k = k;
+
+    // for (const auto &nb : nbrs_data.adjacency[k])
+    // {
+    //   size_t n = nb.index;
+    //   float  dist = nb.distance2d;
+    //   float  dz = this->mesh.get_points()[k].z -
+    //   this->mesh.get_points()[n].z;
+
+    //   if (dz > 0.f)
+    //   {
+    //     float slope = dz / dist;
+    //     if (slope > best_slope)
+    //     {
+    //       best_slope = slope;
+    //       best_k = n;
+    //     }
+    //   }
+
+    this->receivers[k] = best_k;
+  }
+
+  // for (size_t k = 0; k < this->mesh.size(); ++k)
+  // {
+  //   if (this->outlets_mask[k])
+  //   {
+  //     this->receivers[k] = k;
+  //     continue;
+  //   }
+
+  //   float total_weight = 0.f;
+
+  //   // first pass - compute total weight
+  //   for (const auto &nb : nbrs_data.adjacency[k])
+  //   {
+  //     float dz = points[k].z - points[nb.index].z;
+  //     if (dz > 0.f) total_weight += dz / nb.distance2d;
+  //   }
+
+  //   if (total_weight <= 0.f)
+  //   {
+  //     this->receivers[k] = k;
+  //     continue;
+  //   }
+
+  //   // second pass - pick the best (with a random bias)
+
+  //   // deterministic random in [0, total_weight]
+  //   float  r = hash_to_unit_float(seed, k);
+  //   r = 1.f * total_weight;
+
+  //   float  cumulative = 0.f;
+  //   size_t chosen = k;
+
+  //   for (const auto &nb : nbrs_data.adjacency[k])
+  //   {
+  //     float dz = points[k].z - points[nb.index].z;
+
+  //     if (dz > 0.f)
+  //     {
+  //       float weight = dz / nb.distance2d;
+  //       cumulative += weight;
+
+  //       if (r >= cumulative)
+  //       {
+  //         chosen = nb.index;
+  //         break;
+  //       }
+  //     }
+  //   }
+
+  //   this->receivers[k] = chosen;
+  // }
 }
 
 std::vector<size_t> DrainageBasin::compute_strahler_order() const
@@ -506,15 +623,24 @@ float DrainageBasin::update_elevations(const std::vector<float> &response_times,
   return delta_sum;
 }
 
-void DrainageBasin::update_stream_tree()
+void DrainageBasin::update_stream_tree(unsigned int seed, float noise_strength)
 {
-  this->compute_receivers();
+  this->compute_receivers(seed, noise_strength);
 
   auto [subroots, has_lake] = this->find_subroots();
   if (has_lake) this->remove_lakes(subroots);
 
   this->children = invert_receiver_map(this->receivers);
   this->update_traversals();
+}
+
+void DrainageBasin::update_stream_tree()
+{
+  // deactivate noise for receivers
+  float noise_strength = 0.f;
+  uint  seed = 0; // dummy value
+
+  this->update_stream_tree(seed, noise_strength);
 }
 
 void DrainageBasin::update_traversals()

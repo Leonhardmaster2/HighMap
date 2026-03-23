@@ -48,6 +48,7 @@
 #include "highmap/opencl/gpu_opencl.hpp"
 #include "highmap/operator.hpp"
 #include "highmap/primitives.hpp"
+#include "highmap/random.hpp"
 #include "highmap/range.hpp"
 #include "highmap/roads.hpp"
 #include "highmap/sdf.hpp"

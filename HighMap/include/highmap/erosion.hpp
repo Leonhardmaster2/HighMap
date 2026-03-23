@@ -443,7 +443,9 @@ void hydraulic_saleve(TerrainTriMesh           &mesh,
                       float                     m_exp = 0.8f,
                       float                     uplift_rate = 1.f,
                       float                     tolerance = 1e-3f,
-                      int                       max_iterations = 200);
+                      int                       max_iterations = 200,
+                      float                     noise_strength = 0.f,
+                      uint                      seed = 0);
 
 /**
  * @brief Apply hydraulic erosion to a heightmap using an adaptive mesh.
@@ -487,6 +489,7 @@ Array hydraulic_saleve(const Array &z,
                        float        strength = 0.5f,
                        bool         scale_erodibility_with_z = true,
                        float        erodibility_distrib_exp = 1.f,
+                       float        noise_strength = 0.f,
                        const Array *p_noise_x = nullptr,
                        const Array *p_noise_y = nullptr);
 

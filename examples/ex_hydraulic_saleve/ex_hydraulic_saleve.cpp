@@ -28,25 +28,26 @@ int main(void)
   float m_exp = 0.8f;
   float uplift_rate = 1.f;
   float tolerance = 1e-3f;
-  int   max_iterations = 500;
+  int   max_iterations = 1000;
 
   float smin = 0.f;
   float smax = 6.f;
   bool  scale_erodibility_with_z = true;
   float erodibility_distrib_exp = 1.f;
+  float noise_strength = 0.25f; // stream tree structural noise
 
-  hmap::Array dx = 0.05f * hmap::noise_fbm(hmap::NoiseType::SIMPLEX2,
-                                           shape,
-                                           kw,
-                                           ++seed,
-                                           8,
-                                           0.f);
-  hmap::Array dy = 0.05f * hmap::noise_fbm(hmap::NoiseType::SIMPLEX2,
-                                           shape,
-                                           kw,
-                                           ++seed,
-                                           8,
-                                           0.f);
+  hmap::Array dx = 0.0f * hmap::noise_fbm(hmap::NoiseType::SIMPLEX2,
+                                          shape,
+                                          kw,
+                                          ++seed,
+                                          8,
+                                          0.f);
+  hmap::Array dy = 0.0f * hmap::noise_fbm(hmap::NoiseType::SIMPLEX2,
+                                          shape,
+                                          kw,
+                                          ++seed,
+                                          8,
+                                          0.f);
 
   hmap::Array z1 = hmap::hydraulic_saleve(z0,
                                           ++seed,
@@ -60,6 +61,7 @@ int main(void)
                                           strength,
                                           scale_erodibility_with_z,
                                           erodibility_distrib_exp,
+                                          noise_strength,
                                           &dx,
                                           &dy);
 

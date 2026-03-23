@@ -36,6 +36,8 @@ public:
   // --- Flow graph construction ---
 
   void compute_receivers();
+  void compute_receivers(unsigned int seed, float noise_strength = 0.25f);
+  void update_stream_tree(unsigned int seed, float noise_strength);
   void update_stream_tree();
   void update_traversals();
 

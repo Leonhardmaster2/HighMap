@@ -18,7 +18,9 @@ void hydraulic_saleve(TerrainTriMesh           &mesh,
                       float                     m_exp,
                       float                     uplift_rate,
                       float                     tolerance,
-                      int                       max_iterations)
+                      int                       max_iterations,
+                      float                     noise_strength,
+                      uint                      seed)
 {
   auto db = DrainageBasin(mesh.get_points());
   db.set_outlets(find_border_sinks(db.get_mesh()));
@@ -27,7 +29,7 @@ void hydraulic_saleve(TerrainTriMesh           &mesh,
   {
     std::vector acc(db.size(), 0.f);
 
-    db.update_stream_tree();
+    db.update_stream_tree(seed, noise_strength);
 
     auto area = db.get_mesh().get_vertex_areas(true);
     db.accumulate_area_by_outlet(area, acc);
@@ -54,6 +56,7 @@ Array hydraulic_saleve(const Array &z,
                        float        strength,
                        bool         scale_erodibility_with_z,
                        float        erodibility_distrib_exp,
+                       float        noise_strength,
                        const Array *p_noise_x,
                        const Array *p_noise_y)
 {
@@ -110,7 +113,9 @@ Array hydraulic_saleve(const Array &z,
                    m_exp,
                    uplift_rate,
                    tolerance,
-                   max_iterations);
+                   max_iterations,
+                   noise_strength,
+                   seed);
 
   // --- interpolate back to an heightmap
 
