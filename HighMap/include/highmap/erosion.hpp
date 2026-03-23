@@ -493,6 +493,23 @@ Array hydraulic_saleve(const Array &z,
                        const Array *p_noise_x = nullptr,
                        const Array *p_noise_y = nullptr);
 
+Array hydraulic_saleve(const Array &z,
+                       const Array *p_mask,
+                       uint         seed,
+                       size_t       control_points_count = 10000,
+                       float        m_exp = 0.8f,
+                       float        uplift_rate = 1.f,
+                       float        tolerance = 1e-3f,
+                       int          max_iterations = 200,
+                       float        smin = 0.f,
+                       float        smax = 6.f,
+                       float        strength = 0.5f,
+                       bool         scale_erodibility_with_z = true,
+                       float        erodibility_distrib_exp = 1.f,
+                       float        noise_strength = 0.f,
+                       const Array *p_noise_x = nullptr,
+                       const Array *p_noise_y = nullptr);
+
 /**
  * @brief Apply hydraulic erosion based on a flow accumulation map.
  *

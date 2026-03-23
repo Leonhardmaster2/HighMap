@@ -158,4 +158,43 @@ Array hydraulic_saleve(const Array &z,
   return lerp(z, ze, strength);
 }
 
+Array hydraulic_saleve(const Array &z,
+                       const Array *p_mask,
+                       uint         seed,
+                       size_t       control_points_count,
+                       float        m_exp,
+                       float        uplift_rate,
+                       float        tolerance,
+                       int          max_iterations,
+                       float        smin,
+                       float        smax,
+                       float        strength,
+                       bool         scale_erodibility_with_z,
+                       float        erodibility_distrib_exp,
+                       float        noise_strength,
+                       const Array *p_noise_x,
+                       const Array *p_noise_y)
+{
+  Array ze = hydraulic_saleve(z,
+                              seed,
+                              control_points_count,
+                              m_exp,
+                              uplift_rate,
+                              tolerance,
+                              max_iterations,
+                              smin,
+                              smax,
+                              strength,
+                              scale_erodibility_with_z,
+                              erodibility_distrib_exp,
+                              noise_strength,
+                              p_noise_x,
+                              p_noise_y);
+
+  if (!p_mask)
+    return ze;
+  else
+    return lerp(z, ze, *(p_mask));
+}
+
 } // namespace hmap
