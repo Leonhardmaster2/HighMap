@@ -604,11 +604,9 @@ float DrainageBasin::update_elevations(const std::vector<float> &response_times,
         float slope = (new_elevation - points[j].z) / distance;
         float max_slope_n = max_slope[i] * zptp;
 
+        // thermal erosion
         if (slope > max_slope_n)
           new_elevation = points[j].z + max_slope_n * distance;
-
-        // if (slope < 0.f)
-        //   new_elevation = points[j].z;
       }
 
       float delta = std::abs(new_elevation - points[i].z);

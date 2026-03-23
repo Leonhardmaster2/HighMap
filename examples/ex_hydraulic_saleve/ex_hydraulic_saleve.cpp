@@ -36,18 +36,18 @@ int main(void)
   float erodibility_distrib_exp = 1.f;
   float noise_strength = 0.25f; // stream tree structural noise
 
-  hmap::Array dx = 0.0f * hmap::noise_fbm(hmap::NoiseType::SIMPLEX2,
-                                          shape,
-                                          kw,
-                                          ++seed,
-                                          8,
-                                          0.f);
-  hmap::Array dy = 0.0f * hmap::noise_fbm(hmap::NoiseType::SIMPLEX2,
-                                          shape,
-                                          kw,
-                                          ++seed,
-                                          8,
-                                          0.f);
+  hmap::Array dx = 0.03f * hmap::noise_fbm(hmap::NoiseType::SIMPLEX2,
+                                           shape,
+                                           kw,
+                                           ++seed,
+                                           8,
+                                           0.f);
+  hmap::Array dy = 0.03f * hmap::noise_fbm(hmap::NoiseType::SIMPLEX2,
+                                           shape,
+                                           kw,
+                                           ++seed,
+                                           8,
+                                           0.f);
 
   hmap::Array z1 = hmap::hydraulic_saleve(z0,
                                           ++seed,
@@ -67,7 +67,7 @@ int main(void)
 
   // mimic deposition
   int   deposition_ir = int(0.1f * shape.x);
-  float deposition_strength = 1.f;
+  float deposition_strength = 0.5f;
   int   iterations = 2;
   hmap::gpu::deposition_fill_holes(z1,
                                    deposition_ir,
