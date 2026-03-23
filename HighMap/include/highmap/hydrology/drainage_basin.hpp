@@ -47,6 +47,7 @@ public:
 
   // --- Basin topology utilities ---
 
+  std::vector<bool>                    compute_is_ridge_node() const;
   std::vector<size_t>                  compute_strahler_order() const;
   std::pair<std::vector<size_t>, bool> find_subroots();
   void remove_lakes(const std::vector<size_t> &subroot);
@@ -83,7 +84,7 @@ private:
   // --- Flow graph ---
 
   std::vector<size_t>              receivers;
-  std::vector<size_t>              roots;
+  std::vector<size_t>              roots; // basin ID
   std::vector<std::vector<size_t>> children;
   std::vector<bool>                outlets_mask;
 

@@ -7,6 +7,7 @@
 #include <iostream>
 #include <limits>
 #include <sstream>
+#include <stdexcept>
 
 #include <glm/geometric.hpp>
 
@@ -125,9 +126,14 @@ const std::vector<size_t> &TerrainTriMesh::get_convex_hull() const
   return this->convex_hull;
 }
 
-const TerrainTriMesh::NeighborData &TerrainTriMesh::get_neighbors()
+const TerrainTriMesh::NeighborData &TerrainTriMesh::get_neighbors() const
 {
-  if (this->neighbors.adjacency.empty()) this->compute_neighbors();
+  if (this->neighbors.adjacency.empty())
+    throw std::runtime_error(
+        "TerrainTriMesh::NeighborData: neighbors data has not been "
+        "initialized, make sure TerrainTriMesh::compute_neighbors has been "
+        "called before-hand.");
+
   return this->neighbors;
 }
 

@@ -49,6 +49,28 @@ void DrainageBasin::accumulate_area_by_outlet(const std::vector<float> &area,
   }
 }
 
+std::vector<bool> DrainageBasin::compute_is_ridge_node() const
+{
+  std::vector<bool>                   is_ridge(this->mesh.size(), false);
+  const TerrainTriMesh::NeighborData &nbrs_data = this->mesh.get_neighbors();
+
+  for (size_t k = 0; k < mesh.size(); ++k)
+  {
+    for (const auto &nb : nbrs_data.adjacency[k])
+    {
+      size_t n = nb.index;
+
+      if (this->roots[k] != this->roots[n])
+      {
+        is_ridge[k] = true;
+        // Edge (k, n) is a ridge segment
+      }
+    }
+  }
+
+  return is_ridge;
+}
+
 void DrainageBasin::compute_receivers()
 {
   this->receivers.clear();
@@ -464,6 +486,7 @@ void DrainageBasin::to_csv(const std::string &filename) const
 
   auto order = this->compute_strahler_order();
   auto area = this->compute_vertex_areas();
+  auto is_ridge = this->compute_is_ridge_node();
 
   std::vector<float> acc(this->size(), 0.f);
   std::vector<float> flow(this->size(), 1.f);
@@ -483,7 +506,7 @@ void DrainageBasin::to_csv(const std::string &filename) const
     f << i << "," << mesh.get_points()[i].x << "," << mesh.get_points()[i].y
       << "," << mesh.get_points()[i].z << "," << (outlets_mask[i] ? 1 : 0)
       << "," << r << "," << rt << "," << order[i] << "," << area[i] << ","
-      << acc[i] << "," << flow[i] << "\n";
+      << acc[i] << "," << flow[i] << "," << (is_ridge[i] ? 1 : 0) << "\n";
   }
 
   f.close();

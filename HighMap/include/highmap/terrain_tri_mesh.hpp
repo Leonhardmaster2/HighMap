@@ -96,7 +96,7 @@ public:
   std::vector<glm::vec3>       &get_points();
   const std::vector<Triangle>  &get_triangles() const;
   const std::vector<size_t>    &get_convex_hull() const;
-  const NeighborData           &get_neighbors();
+  const NeighborData           &get_neighbors() const;
 
   // --- IO ---
 
