@@ -10459,18 +10459,18 @@ additional_depth)</code>.</li>
 <div class="line">  <span class="keywordtype">float</span> erodibility_distrib_exp = 1.f;</div>
 <div class="line">  <span class="keywordtype">float</span> noise_strength = 0.25f; <span class="comment">// stream tree structural noise</span></div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> dx = 0.0f * <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195ac5113a637d69eb3c549e6d561da167ed">hmap::NoiseType::SIMPLEX2</a>,</div>
-<div class="line">                                          shape,</div>
-<div class="line">                                          kw,</div>
-<div class="line">                                          ++seed,</div>
-<div class="line">                                          8,</div>
-<div class="line">                                          0.f);</div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> dy = 0.0f * <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195ac5113a637d69eb3c549e6d561da167ed">hmap::NoiseType::SIMPLEX2</a>,</div>
-<div class="line">                                          shape,</div>
-<div class="line">                                          kw,</div>
-<div class="line">                                          ++seed,</div>
-<div class="line">                                          8,</div>
-<div class="line">                                          0.f);</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> dx = 0.03f * <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195ac5113a637d69eb3c549e6d561da167ed">hmap::NoiseType::SIMPLEX2</a>,</div>
+<div class="line">                                           shape,</div>
+<div class="line">                                           kw,</div>
+<div class="line">                                           ++seed,</div>
+<div class="line">                                           8,</div>
+<div class="line">                                           0.f);</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> dy = 0.03f * <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195ac5113a637d69eb3c549e6d561da167ed">hmap::NoiseType::SIMPLEX2</a>,</div>
+<div class="line">                                           shape,</div>
+<div class="line">                                           kw,</div>
+<div class="line">                                           ++seed,</div>
+<div class="line">                                           8,</div>
+<div class="line">                                           0.f);</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z1 = <a class="code hl_function" href="namespacehmap.html#a2254c2315fe61a91b5bf6ea6582cce56">hmap::hydraulic_saleve</a>(z0,</div>
 <div class="line">                                          ++seed,</div>
@@ -10490,7 +10490,7 @@ additional_depth)</code>.</li>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// mimic deposition</span></div>
 <div class="line">  <span class="keywordtype">int</span>   deposition_ir = int(0.1f * shape.x);</div>
-<div class="line">  <span class="keywordtype">float</span> deposition_strength = 1.f;</div>
+<div class="line">  <span class="keywordtype">float</span> deposition_strength = 0.5f;</div>
 <div class="line">  <span class="keywordtype">int</span>   iterations = 2;</div>
 <div class="line">  <a class="code hl_function" href="namespacehmap_1_1gpu.html#a8497e2fce595293ea07e68eac1e5bce2">hmap::gpu::deposition_fill_holes</a>(z1,</div>
 <div class="line">                                   deposition_ir,</div>
@@ -10680,18 +10680,18 @@ additional_depth)</code>.</li>
 <div class="line">  <span class="keywordtype">float</span> erodibility_distrib_exp = 1.f;</div>
 <div class="line">  <span class="keywordtype">float</span> noise_strength = 0.25f; <span class="comment">// stream tree structural noise</span></div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> dx = 0.0f * <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195ac5113a637d69eb3c549e6d561da167ed">hmap::NoiseType::SIMPLEX2</a>,</div>
-<div class="line">                                          shape,</div>
-<div class="line">                                          kw,</div>
-<div class="line">                                          ++seed,</div>
-<div class="line">                                          8,</div>
-<div class="line">                                          0.f);</div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> dy = 0.0f * <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195ac5113a637d69eb3c549e6d561da167ed">hmap::NoiseType::SIMPLEX2</a>,</div>
-<div class="line">                                          shape,</div>
-<div class="line">                                          kw,</div>
-<div class="line">                                          ++seed,</div>
-<div class="line">                                          8,</div>
-<div class="line">                                          0.f);</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> dx = 0.03f * <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195ac5113a637d69eb3c549e6d561da167ed">hmap::NoiseType::SIMPLEX2</a>,</div>
+<div class="line">                                           shape,</div>
+<div class="line">                                           kw,</div>
+<div class="line">                                           ++seed,</div>
+<div class="line">                                           8,</div>
+<div class="line">                                           0.f);</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> dy = 0.03f * <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195ac5113a637d69eb3c549e6d561da167ed">hmap::NoiseType::SIMPLEX2</a>,</div>
+<div class="line">                                           shape,</div>
+<div class="line">                                           kw,</div>
+<div class="line">                                           ++seed,</div>
+<div class="line">                                           8,</div>
+<div class="line">                                           0.f);</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z1 = <a class="code hl_function" href="namespacehmap.html#a2254c2315fe61a91b5bf6ea6582cce56">hmap::hydraulic_saleve</a>(z0,</div>
 <div class="line">                                          ++seed,</div>
@@ -10711,7 +10711,7 @@ additional_depth)</code>.</li>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// mimic deposition</span></div>
 <div class="line">  <span class="keywordtype">int</span>   deposition_ir = int(0.1f * shape.x);</div>
-<div class="line">  <span class="keywordtype">float</span> deposition_strength = 1.f;</div>
+<div class="line">  <span class="keywordtype">float</span> deposition_strength = 0.5f;</div>
 <div class="line">  <span class="keywordtype">int</span>   iterations = 2;</div>
 <div class="line">  <a class="code hl_function" href="namespacehmap_1_1gpu.html#a8497e2fce595293ea07e68eac1e5bce2">hmap::gpu::deposition_fill_holes</a>(z1,</div>
 <div class="line">                                   deposition_ir,</div>
