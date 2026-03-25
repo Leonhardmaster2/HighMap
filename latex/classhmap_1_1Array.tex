@@ -146,6 +146,8 @@ float \mbox{\hyperlink{classhmap_1_1Array_ac33557899eb50bcf964b2e5a2ad8ddcb}{ptp
 \begin{DoxyCompactList}\small\item\em Return the peak-\/to-\/peak amplitude (i.\+e., the difference between the maximum and minimum values) of the array values. \end{DoxyCompactList}\item 
 glm\+::vec2 \mbox{\hyperlink{classhmap_1_1Array_af74af7737221d6a23fbea9c43d5d8b07}{range}} () const
 \begin{DoxyCompactList}\small\item\em Computes the minimum and maximum values of the array. \end{DoxyCompactList}\item 
+glm\+::vec2 \mbox{\hyperlink{classhmap_1_1Array_abef6971c016bf7dda37715878ffe4802}{range\+\_\+percentile}} (float p\+\_\+low, float p\+\_\+high, size\+\_\+t bins=1024) const
+\begin{DoxyCompactList}\small\item\em Computes an approximate percentile range using a histogram. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{classhmap_1_1Array_a8a7e7b8607a67f80828d3718e68ea126}{remapped}} () const
 \begin{DoxyCompactList}\small\item\em Return an array remapped to \mbox{[}0, 1\mbox{]}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{classhmap_1_1Array_a065a69e1a3477f6dd9f8ab88c1af554d}{resample\+\_\+to\+\_\+shape}} (glm\+::ivec2 new\+\_\+shape) const
@@ -237,14 +239,22 @@ Constructs a new \doxylink{classhmap_1_1Array}{Array} object.
 \DoxyCodeLine{}
 \DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
 \DoxyCodeLine{\{}
-\DoxyCodeLine{\ \ glm::ivec2\ \ \mbox{\hyperlink{classhmap_1_1Array_a9ee3e85888021b80660357e73f35a5ea}{shape}}\ =\ \{6,\ 4\};}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ a\ =\ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}(\mbox{\hyperlink{classhmap_1_1Array_a9ee3e85888021b80660357e73f35a5ea}{shape}});}
+\DoxyCodeLine{\ \ glm::ivec2\ \mbox{\hyperlink{classhmap_1_1Array_a9ee3e85888021b80660357e73f35a5ea}{shape}}\ =\ \{256,\ 256\};}
+\DoxyCodeLine{\ \ glm::vec2\ \ res\ =\ \{4.f,\ 4.f\};}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 1;}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ a\ =\ 1.f;}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_acb13e7346085793fda4c94c47b75d9a9}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ \mbox{\hyperlink{classhmap_1_1Array_a9ee3e85888021b80660357e73f35a5ea}{shape}},\ res,\ seed);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ a.\mbox{\hyperlink{classhmap_1_1Array_a9ee3e85888021b80660357e73f35a5ea}{shape}}.x;\ i++)}
-\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ a.\mbox{\hyperlink{classhmap_1_1Array_a9ee3e85888021b80660357e73f35a5ea}{shape}}.y;\ j++)}
-\DoxyCodeLine{\ \ \ \ \ \ std::cout\ <<\ i\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ j\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ a(i,\ j)\ <<\ std::endl;}
+\DoxyCodeLine{\ \ std::cout\ <<\ \textcolor{stringliteral}{"{}min:\ "{}}\ <<\ z.\mbox{\hyperlink{classhmap_1_1Array_a56c77f78e4864f5c6f2cbd6de8100556}{min}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\ \ std::cout\ <<\ \textcolor{stringliteral}{"{}max:\ "{}}\ <<\ z.\mbox{\hyperlink{classhmap_1_1Array_a68aac609ccba8f581da1cdf5cee671b9}{max}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ glm::vec2\ \mbox{\hyperlink{classhmap_1_1Array_af74af7737221d6a23fbea9c43d5d8b07}{range}}\ =\ z.\mbox{\hyperlink{classhmap_1_1Array_af74af7737221d6a23fbea9c43d5d8b07}{range}}();}
+\DoxyCodeLine{\ \ std::cout\ <<\ \textcolor{stringliteral}{"{}range.x:\ "{}}\ <<\ \mbox{\hyperlink{classhmap_1_1Array_af74af7737221d6a23fbea9c43d5d8b07}{range}}.x\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\ \ std::cout\ <<\ \textcolor{stringliteral}{"{}range.y:\ "{}}\ <<\ \mbox{\hyperlink{classhmap_1_1Array_af74af7737221d6a23fbea9c43d5d8b07}{range}}.y\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ glm::vec2\ range\_pc\ =\ z.\mbox{\hyperlink{classhmap_1_1Array_abef6971c016bf7dda37715878ffe4802}{range\_percentile}}(0.05f,\ 0.95f);}
+\DoxyCodeLine{\ \ std::cout\ <<\ \textcolor{stringliteral}{"{}range\_pc.x:\ "{}}\ <<\ range\_pc.x\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\ \ std::cout\ <<\ \textcolor{stringliteral}{"{}range\_pc.y:\ "{}}\ <<\ range\_pc.y\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
 \DoxyCodeLine{\}}
 
 \end{DoxyCodeInclude}
@@ -1359,6 +1369,30 @@ Computes the minimum and maximum values of the array.
 
 \begin{DoxyReturn}{Returns}
 glm\+::vec2 A vector where x contains the minimum value and y contains the maximum value. 
+\end{DoxyReturn}
+\Hypertarget{classhmap_1_1Array_abef6971c016bf7dda37715878ffe4802}\label{classhmap_1_1Array_abef6971c016bf7dda37715878ffe4802} 
+\index{hmap::Array@{hmap::Array}!range\_percentile@{range\_percentile}}
+\index{range\_percentile@{range\_percentile}!hmap::Array@{hmap::Array}}
+\doxysubsubsection{\texorpdfstring{range\_percentile()}{range\_percentile()}}
+{\footnotesize\ttfamily glm\+::vec2 hmap\+::\+Array\+::range\+\_\+percentile (\begin{DoxyParamCaption}\item[{float}]{p\+\_\+low,  }\item[{float}]{p\+\_\+high,  }\item[{size\+\_\+t}]{bins = {\ttfamily 1024} }\end{DoxyParamCaption}) const}
+
+
+
+Computes an approximate percentile range using a histogram. 
+
+This function estimates the values corresponding to the given lower and upper percentiles by building a histogram over the data range and accumulating counts. The result is an approximation whose precision depends on the number of bins.
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+low} & Lower percentile in \mbox{[}0, 1\mbox{]} \\
+\hline
+{\em p\+\_\+high} & Upper percentile in \mbox{[}0, 1\mbox{]} \\
+\hline
+{\em bins} & Number of bins used for the histogram (higher = more precise)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+glm\+::vec2 A vector where x contains the approximated lower percentile value and y contains the approximated upper percentile value 
 \end{DoxyReturn}
 \Hypertarget{classhmap_1_1Array_a8a7e7b8607a67f80828d3718e68ea126}\label{classhmap_1_1Array_a8a7e7b8607a67f80828d3718e68ea126} 
 \index{hmap::Array@{hmap::Array}!remapped@{remapped}}

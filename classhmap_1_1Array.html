@@ -305,6 +305,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af74af7737221d6a23fbea9c43d5d8b07" id="r_af74af7737221d6a23fbea9c43d5d8b07"><td class="memItemLeft" align="right" valign="top">glm::vec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1Array.html#af74af7737221d6a23fbea9c43d5d8b07">range</a> () const</td></tr>
 <tr class="memdesc:af74af7737221d6a23fbea9c43d5d8b07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the minimum and maximum values of the array.  <br /></td></tr>
 <tr class="separator:af74af7737221d6a23fbea9c43d5d8b07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abef6971c016bf7dda37715878ffe4802" id="r_abef6971c016bf7dda37715878ffe4802"><td class="memItemLeft" align="right" valign="top">glm::vec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1Array.html#abef6971c016bf7dda37715878ffe4802">range_percentile</a> (float p_low, float p_high, size_t bins=1024) const</td></tr>
+<tr class="memdesc:abef6971c016bf7dda37715878ffe4802"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes an approximate percentile range using a histogram.  <br /></td></tr>
+<tr class="separator:abef6971c016bf7dda37715878ffe4802"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a7e7b8607a67f80828d3718e68ea126" id="r_a8a7e7b8607a67f80828d3718e68ea126"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1Array.html#a8a7e7b8607a67f80828d3718e68ea126">remapped</a> () const</td></tr>
 <tr class="memdesc:a8a7e7b8607a67f80828d3718e68ea126"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return an array remapped to [0, 1].  <br /></td></tr>
 <tr class="separator:a8a7e7b8607a67f80828d3718e68ea126"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -424,18 +427,32 @@ Friends</h2></td></tr>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
 <div class="line">{</div>
-<div class="line">  glm::ivec2  <a class="code hl_variable" href="classhmap_1_1Array.html#a9ee3e85888021b80660357e73f35a5ea">shape</a> = {6, 4};</div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> a = <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a>(<a class="code hl_variable" href="classhmap_1_1Array.html#a9ee3e85888021b80660357e73f35a5ea">shape</a>);</div>
+<div class="line">  glm::ivec2 <a class="code hl_variable" href="classhmap_1_1Array.html#a9ee3e85888021b80660357e73f35a5ea">shape</a> = {256, 256};</div>
+<div class="line">  glm::vec2  res = {4.f, 4.f};</div>
+<div class="line">  <span class="keywordtype">int</span>        seed = 1;</div>
 <div class="line"> </div>
-<div class="line">  a = 1.f;</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z = <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, <a class="code hl_variable" href="classhmap_1_1Array.html#a9ee3e85888021b80660357e73f35a5ea">shape</a>, res, seed);</div>
 <div class="line"> </div>
-<div class="line">  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; a.<a class="code hl_variable" href="classhmap_1_1Array.html#a9ee3e85888021b80660357e73f35a5ea">shape</a>.x; i++)</div>
-<div class="line">    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; a.<a class="code hl_variable" href="classhmap_1_1Array.html#a9ee3e85888021b80660357e73f35a5ea">shape</a>.y; j++)</div>
-<div class="line">      std::cout &lt;&lt; i &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; j &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; a(i, j) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;min: &quot;</span> &lt;&lt; z.<a class="code hl_function" href="classhmap_1_1Array.html#a56c77f78e4864f5c6f2cbd6de8100556">min</a>() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;max: &quot;</span> &lt;&lt; z.<a class="code hl_function" href="classhmap_1_1Array.html#a68aac609ccba8f581da1cdf5cee671b9">max</a>() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"> </div>
+<div class="line">  glm::vec2 <a class="code hl_function" href="classhmap_1_1Array.html#af74af7737221d6a23fbea9c43d5d8b07">range</a> = z.<a class="code hl_function" href="classhmap_1_1Array.html#af74af7737221d6a23fbea9c43d5d8b07">range</a>();</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;range.x: &quot;</span> &lt;&lt; <a class="code hl_function" href="classhmap_1_1Array.html#af74af7737221d6a23fbea9c43d5d8b07">range</a>.x &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;range.y: &quot;</span> &lt;&lt; <a class="code hl_function" href="classhmap_1_1Array.html#af74af7737221d6a23fbea9c43d5d8b07">range</a>.y &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"> </div>
+<div class="line">  glm::vec2 range_pc = z.<a class="code hl_function" href="classhmap_1_1Array.html#abef6971c016bf7dda37715878ffe4802">range_percentile</a>(0.05f, 0.95f);</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;range_pc.x: &quot;</span> &lt;&lt; range_pc.x &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;range_pc.y: &quot;</span> &lt;&lt; range_pc.y &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
 <div class="line">}</div>
 <div class="ttc" id="aclasshmap_1_1Array_html"><div class="ttname"><a href="classhmap_1_1Array.html">hmap::Array</a></div><div class="ttdoc">Array class, helper to manipulate 2D float array with &quot;(i, j)&quot; indexing.</div><div class="ttdef"><b>Definition</b> array.hpp:32</div></div>
+<div class="ttc" id="aclasshmap_1_1Array_html_a56c77f78e4864f5c6f2cbd6de8100556"><div class="ttname"><a href="classhmap_1_1Array.html#a56c77f78e4864f5c6f2cbd6de8100556">hmap::Array::min</a></div><div class="ttdeci">float min() const</div><div class="ttdoc">Return the value of the smallest element in the array.</div><div class="ttdef"><b>Definition</b> methods.cpp:289</div></div>
+<div class="ttc" id="aclasshmap_1_1Array_html_a68aac609ccba8f581da1cdf5cee671b9"><div class="ttname"><a href="classhmap_1_1Array.html#a68aac609ccba8f581da1cdf5cee671b9">hmap::Array::max</a></div><div class="ttdeci">float max() const</div><div class="ttdoc">Return the value of the greatest element in the array.</div><div class="ttdef"><b>Definition</b> methods.cpp:279</div></div>
 <div class="ttc" id="aclasshmap_1_1Array_html_a9ee3e85888021b80660357e73f35a5ea"><div class="ttname"><a href="classhmap_1_1Array.html#a9ee3e85888021b80660357e73f35a5ea">hmap::Array::shape</a></div><div class="ttdeci">glm::ivec2 shape</div><div class="ttdoc">The shape of the array {ni, nj}.</div><div class="ttdef"><b>Definition</b> array.hpp:38</div></div>
+<div class="ttc" id="aclasshmap_1_1Array_html_abef6971c016bf7dda37715878ffe4802"><div class="ttname"><a href="classhmap_1_1Array.html#abef6971c016bf7dda37715878ffe4802">hmap::Array::range_percentile</a></div><div class="ttdeci">glm::vec2 range_percentile(float p_low, float p_high, size_t bins=1024) const</div><div class="ttdoc">Computes an approximate percentile range using a histogram.</div><div class="ttdef"><b>Definition</b> methods.cpp:316</div></div>
+<div class="ttc" id="aclasshmap_1_1Array_html_af74af7737221d6a23fbea9c43d5d8b07"><div class="ttname"><a href="classhmap_1_1Array.html#af74af7737221d6a23fbea9c43d5d8b07">hmap::Array::range</a></div><div class="ttdeci">glm::vec2 range() const</div><div class="ttdoc">Computes the minimum and maximum values of the array.</div><div class="ttdef"><b>Definition</b> methods.cpp:309</div></div>
 <div class="ttc" id="ahighmap_8hpp_html"><div class="ttname"><a href="highmap_8hpp.html">highmap.hpp</a></div></div>
+<div class="ttc" id="anamespacehmap_html_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581"><div class="ttname"><a href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::PERLIN</a></div><div class="ttdeci">@ PERLIN</div><div class="ttdoc">Perlin.</div><div class="ttdef"><b>Definition</b> functions.hpp:64</div></div>
+<div class="ttc" id="anamespacehmap_html_acb13e7346085793fda4c94c47b75d9a9"><div class="ttname"><a href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a></div><div class="ttdeci">Array noise_fbm(NoiseType noise_type, glm::ivec2 shape, glm::vec2 kw, uint seed, int octaves=8, float weight=0.7f, float persistence=0.5f, float lacunarity=2.f, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Return an array filled with coherence fbm noise.</div><div class="ttdef"><b>Definition</b> noise.cpp:41</div></div>
 </div><!-- fragment --><p><b>Example #2</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="highmap_8hpp.html">highmap.hpp</a>&quot;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
@@ -468,11 +485,9 @@ Friends</h2></td></tr>
 <div class="ttc" id="aclasshmap_1_1Array_html_ab2c7afe05160d85b0997d733cbb7d286"><div class="ttname"><a href="classhmap_1_1Array.html#ab2c7afe05160d85b0997d733cbb7d286">hmap::Array::to_png_grayscale</a></div><div class="ttdeci">void to_png_grayscale(const std::string &amp;fname, int depth=CV_8U, float vmin=0.f, float vmax=0.f) const</div><div class="ttdoc">Export the array as a grayscale PNG image file with specified bit depth.</div><div class="ttdef"><b>Definition</b> io.cpp:139</div></div>
 <div class="ttc" id="aclasshmap_1_1Array_html_abc72128c4c460e993d877cab54e17454"><div class="ttname"><a href="classhmap_1_1Array.html#abc72128c4c460e993d877cab54e17454">hmap::Array::to_raw_16bit</a></div><div class="ttdeci">void to_raw_16bit(const std::string &amp;fname) const</div><div class="ttdoc">Export the array as a 16-bit raw file for Unity terrain import.</div><div class="ttdef"><b>Definition</b> io.cpp:158</div></div>
 <div class="ttc" id="anamespacehmap_html_a262e6495cb2d02598f36a2b46114b2b4"><div class="ttname"><a href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a></div><div class="ttdeci">void remap(Array &amp;array, float vmin, float vmax, float from_min, float from_max)</div><div class="ttdoc">Remap array elements from a starting range to a target range.</div><div class="ttdef"><b>Definition</b> range.cpp:438</div></div>
-<div class="ttc" id="anamespacehmap_html_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581"><div class="ttname"><a href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::PERLIN</a></div><div class="ttdeci">@ PERLIN</div><div class="ttdoc">Perlin.</div><div class="ttdef"><b>Definition</b> functions.hpp:64</div></div>
 <div class="ttc" id="anamespacehmap_html_ac2452e568959bc21c9b7b09202e5977a"><div class="ttname"><a href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a></div><div class="ttdeci">void export_banner_png(const std::string &amp;fname, const std::vector&lt; Array &gt; &amp;arrays, int cmap, bool hillshading=false, bool normalize_arrays=false)</div><div class="ttdoc">Exports a set of arrays as a banner PNG image file.</div><div class="ttdef"><b>Definition</b> export_banner_png.cpp:11</div></div>
 <div class="ttc" id="anamespacehmap_html_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced"><div class="ttname"><a href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::JET</a></div><div class="ttdeci">@ JET</div><div class="ttdef"><b>Definition</b> colormaps.hpp:88</div></div>
 <div class="ttc" id="anamespacehmap_html_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143"><div class="ttname"><a href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::INFERNO</a></div><div class="ttdeci">@ INFERNO</div><div class="ttdef"><b>Definition</b> colormaps.hpp:87</div></div>
-<div class="ttc" id="anamespacehmap_html_acb13e7346085793fda4c94c47b75d9a9"><div class="ttname"><a href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a></div><div class="ttdeci">Array noise_fbm(NoiseType noise_type, glm::ivec2 shape, glm::vec2 kw, uint seed, int octaves=8, float weight=0.7f, float persistence=0.5f, float lacunarity=2.f, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Return an array filled with coherence fbm noise.</div><div class="ttdef"><b>Definition</b> noise.cpp:41</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -2396,6 +2411,52 @@ Friends</h2></td></tr>
 
 </div>
 </div>
+<a id="abef6971c016bf7dda37715878ffe4802" name="abef6971c016bf7dda37715878ffe4802"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abef6971c016bf7dda37715878ffe4802">&#9670;&#160;</a></span>range_percentile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec2 hmap::Array::range_percentile </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>p_low</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>p_high</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>bins</em> = <code>1024</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes an approximate percentile range using a histogram. </p>
+<p>This function estimates the values corresponding to the given lower and upper percentiles by building a histogram over the data range and accumulating counts. The result is an approximation whose precision depends on the number of bins.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p_low</td><td>Lower percentile in [0, 1] </td></tr>
+    <tr><td class="paramname">p_high</td><td>Upper percentile in [0, 1] </td></tr>
+    <tr><td class="paramname">bins</td><td>Number of bins used for the histogram (higher = more precise)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>glm::vec2 A vector where x contains the approximated lower percentile value and y contains the approximated upper percentile value </dd></dl>
+
+</div>
+</div>
 <a id="a8a7e7b8607a67f80828d3718e68ea126" name="a8a7e7b8607a67f80828d3718e68ea126"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8a7e7b8607a67f80828d3718e68ea126">&#9670;&#160;</a></span>remapped()</h2>
 
@@ -2455,7 +2516,7 @@ Friends</h2></td></tr>
 <div class="line"> </div>
 <div class="line">  zr.<a class="code hl_function" href="classhmap_1_1Array.html#a9ff7b2c0be8f2b5dd9fc33085cd647d1">to_png</a>(<span class="stringliteral">&quot;ex_resample_to_shape.png&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492">hmap::Cmap::VIRIDIS</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclasshmap_1_1Array_html_a065a69e1a3477f6dd9f8ab88c1af554d"><div class="ttname"><a href="classhmap_1_1Array.html#a065a69e1a3477f6dd9f8ab88c1af554d">hmap::Array::resample_to_shape</a></div><div class="ttdeci">Array resample_to_shape(glm::ivec2 new_shape) const</div><div class="ttdoc">Return a resampled array of shape new_shape using bilinear interpolation.</div><div class="ttdef"><b>Definition</b> methods.cpp:323</div></div>
+<div class="ttc" id="aclasshmap_1_1Array_html_a065a69e1a3477f6dd9f8ab88c1af554d"><div class="ttname"><a href="classhmap_1_1Array.html#a065a69e1a3477f6dd9f8ab88c1af554d">hmap::Array::resample_to_shape</a></div><div class="ttdeci">Array resample_to_shape(glm::ivec2 new_shape) const</div><div class="ttdoc">Return a resampled array of shape new_shape using bilinear interpolation.</div><div class="ttdef"><b>Definition</b> methods.cpp:368</div></div>
 <div class="ttc" id="anamespacehmap_html_a63a7fc5faca6c5018e98b8af700f4b80"><div class="ttname"><a href="namespacehmap.html#a63a7fc5faca6c5018e98b8af700f4b80">hmap::noise</a></div><div class="ttdeci">Array noise(NoiseType noise_type, glm::ivec2 shape, glm::vec2 kw, uint seed, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Return an array filled with coherence noise.</div><div class="ttdef"><b>Definition</b> noise.cpp:16</div></div>
 <div class="ttc" id="anamespacehmap_html_ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492"><div class="ttname"><a href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492">hmap::VIRIDIS</a></div><div class="ttdeci">@ VIRIDIS</div><div class="ttdef"><b>Definition</b> colormaps.hpp:94</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
@@ -2513,7 +2574,7 @@ Friends</h2></td></tr>
 <div class="line">                          {z0, z1, z2},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a744ead0b170889e33126895264f1af2c">hmap::Cmap::MAGMA</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclasshmap_1_1Array_html_adbd79d599e39db1836e720048c33452f"><div class="ttname"><a href="classhmap_1_1Array.html#adbd79d599e39db1836e720048c33452f">hmap::Array::resample_to_shape_bicubic</a></div><div class="ttdeci">Array resample_to_shape_bicubic(glm::ivec2 new_shape) const</div><div class="ttdoc">Return a resampled array of shape new_shape using bicubic interpolation.</div><div class="ttdef"><b>Definition</b> methods.cpp:328</div></div>
+<div class="ttc" id="aclasshmap_1_1Array_html_adbd79d599e39db1836e720048c33452f"><div class="ttname"><a href="classhmap_1_1Array.html#adbd79d599e39db1836e720048c33452f">hmap::Array::resample_to_shape_bicubic</a></div><div class="ttdeci">Array resample_to_shape_bicubic(glm::ivec2 new_shape) const</div><div class="ttdoc">Return a resampled array of shape new_shape using bicubic interpolation.</div><div class="ttdef"><b>Definition</b> methods.cpp:373</div></div>
 <div class="ttc" id="anamespacehmap_html_ac70fe3cbb32e0340d5dd3e15cdcf9369a744ead0b170889e33126895264f1af2c"><div class="ttname"><a href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a744ead0b170889e33126895264f1af2c">hmap::MAGMA</a></div><div class="ttdeci">@ MAGMA</div><div class="ttdef"><b>Definition</b> colormaps.hpp:89</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_array_interp.png" alt=""/>
