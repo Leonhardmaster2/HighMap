@@ -43,8 +43,8 @@
 <codeline lineno="33"><highlight class="normal"><sp/><sp/>d<sp/>=<sp/>delaunay_build(npoints,<sp/>pin.data(),<sp/>0,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>0,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="34"><highlight class="normal"></highlight></codeline>
 <codeline lineno="35"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>create<sp/>nnai<sp/>interpolator</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="36"><highlight class="normal"><sp/><sp/>handle<sp/>=<sp/>nnai_build(d,<sp/>this-&gt;nout,<sp/>this-&gt;xout.data(),<sp/>this-&gt;yout.data());</highlight></codeline>
-<codeline lineno="37"><highlight class="normal"><sp/><sp/>nnai_setwmin(handle,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">(0.0));</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/>handle<sp/>=<sp/>nnai_build(d,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">(this-&gt;nout),<sp/>this-&gt;xout.data(),<sp/>this-&gt;yout.data());</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/>nnai_setwmin(handle,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">(-1e30));</highlight></codeline>
 <codeline lineno="38"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="39"><highlight class="normal"></highlight></codeline>
 <codeline lineno="40"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classhmap_1_1NaturalNeighborInterpolator_1ab6a2daa3a898389853ec90a904536a78" kindref="member">NaturalNeighborInterpolator::interpolate</ref>(</highlight></codeline>
