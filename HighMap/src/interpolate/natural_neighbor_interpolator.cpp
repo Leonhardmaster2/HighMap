@@ -33,8 +33,8 @@ void NaturalNeighborInterpolator::build(const std::vector<float> &xin,
   d = delaunay_build(npoints, pin.data(), 0, nullptr, 0, nullptr);
 
   // create nnai interpolator
-  handle = nnai_build(d, this->nout, this->xout.data(), this->yout.data());
-  nnai_setwmin(handle, double(0.0));
+  handle = nnai_build(d, int(this->nout), this->xout.data(), this->yout.data());
+  nnai_setwmin(handle, double(-1e30));
 }
 
 void NaturalNeighborInterpolator::interpolate(
