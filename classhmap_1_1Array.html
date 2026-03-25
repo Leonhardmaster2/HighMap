@@ -302,6 +302,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac33557899eb50bcf964b2e5a2ad8ddcb" id="r_ac33557899eb50bcf964b2e5a2ad8ddcb"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1Array.html#ac33557899eb50bcf964b2e5a2ad8ddcb">ptp</a> () const</td></tr>
 <tr class="memdesc:ac33557899eb50bcf964b2e5a2ad8ddcb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the peak-to-peak amplitude (i.e., the difference between the maximum and minimum values) of the array values.  <br /></td></tr>
 <tr class="separator:ac33557899eb50bcf964b2e5a2ad8ddcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af74af7737221d6a23fbea9c43d5d8b07" id="r_af74af7737221d6a23fbea9c43d5d8b07"><td class="memItemLeft" align="right" valign="top">glm::vec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1Array.html#af74af7737221d6a23fbea9c43d5d8b07">range</a> () const</td></tr>
+<tr class="memdesc:af74af7737221d6a23fbea9c43d5d8b07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the minimum and maximum values of the array.  <br /></td></tr>
+<tr class="separator:af74af7737221d6a23fbea9c43d5d8b07"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a7e7b8607a67f80828d3718e68ea126" id="r_a8a7e7b8607a67f80828d3718e68ea126"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1Array.html#a8a7e7b8607a67f80828d3718e68ea126">remapped</a> () const</td></tr>
 <tr class="memdesc:a8a7e7b8607a67f80828d3718e68ea126"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return an array remapped to [0, 1].  <br /></td></tr>
 <tr class="separator:a8a7e7b8607a67f80828d3718e68ea126"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -2373,6 +2376,26 @@ Friends</h2></td></tr>
 
 </div>
 </div>
+<a id="af74af7737221d6a23fbea9c43d5d8b07" name="af74af7737221d6a23fbea9c43d5d8b07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af74af7737221d6a23fbea9c43d5d8b07">&#9670;&#160;</a></span>range()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec2 hmap::Array::range </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes the minimum and maximum values of the array. </p>
+<dl class="section return"><dt>Returns</dt><dd>glm::vec2 A vector where x contains the minimum value and y contains the maximum value. </dd></dl>
+
+</div>
+</div>
 <a id="a8a7e7b8607a67f80828d3718e68ea126" name="a8a7e7b8607a67f80828d3718e68ea126"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8a7e7b8607a67f80828d3718e68ea126">&#9670;&#160;</a></span>remapped()</h2>
 
@@ -2432,7 +2455,7 @@ Friends</h2></td></tr>
 <div class="line"> </div>
 <div class="line">  zr.<a class="code hl_function" href="classhmap_1_1Array.html#a9ff7b2c0be8f2b5dd9fc33085cd647d1">to_png</a>(<span class="stringliteral">&quot;ex_resample_to_shape.png&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492">hmap::Cmap::VIRIDIS</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclasshmap_1_1Array_html_a065a69e1a3477f6dd9f8ab88c1af554d"><div class="ttname"><a href="classhmap_1_1Array.html#a065a69e1a3477f6dd9f8ab88c1af554d">hmap::Array::resample_to_shape</a></div><div class="ttdeci">Array resample_to_shape(glm::ivec2 new_shape) const</div><div class="ttdoc">Return a resampled array of shape new_shape using bilinear interpolation.</div><div class="ttdef"><b>Definition</b> methods.cpp:316</div></div>
+<div class="ttc" id="aclasshmap_1_1Array_html_a065a69e1a3477f6dd9f8ab88c1af554d"><div class="ttname"><a href="classhmap_1_1Array.html#a065a69e1a3477f6dd9f8ab88c1af554d">hmap::Array::resample_to_shape</a></div><div class="ttdeci">Array resample_to_shape(glm::ivec2 new_shape) const</div><div class="ttdoc">Return a resampled array of shape new_shape using bilinear interpolation.</div><div class="ttdef"><b>Definition</b> methods.cpp:323</div></div>
 <div class="ttc" id="anamespacehmap_html_a63a7fc5faca6c5018e98b8af700f4b80"><div class="ttname"><a href="namespacehmap.html#a63a7fc5faca6c5018e98b8af700f4b80">hmap::noise</a></div><div class="ttdeci">Array noise(NoiseType noise_type, glm::ivec2 shape, glm::vec2 kw, uint seed, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Return an array filled with coherence noise.</div><div class="ttdef"><b>Definition</b> noise.cpp:16</div></div>
 <div class="ttc" id="anamespacehmap_html_ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492"><div class="ttname"><a href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492">hmap::VIRIDIS</a></div><div class="ttdeci">@ VIRIDIS</div><div class="ttdef"><b>Definition</b> colormaps.hpp:94</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
@@ -2490,7 +2513,7 @@ Friends</h2></td></tr>
 <div class="line">                          {z0, z1, z2},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a744ead0b170889e33126895264f1af2c">hmap::Cmap::MAGMA</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclasshmap_1_1Array_html_adbd79d599e39db1836e720048c33452f"><div class="ttname"><a href="classhmap_1_1Array.html#adbd79d599e39db1836e720048c33452f">hmap::Array::resample_to_shape_bicubic</a></div><div class="ttdeci">Array resample_to_shape_bicubic(glm::ivec2 new_shape) const</div><div class="ttdoc">Return a resampled array of shape new_shape using bicubic interpolation.</div><div class="ttdef"><b>Definition</b> methods.cpp:321</div></div>
+<div class="ttc" id="aclasshmap_1_1Array_html_adbd79d599e39db1836e720048c33452f"><div class="ttname"><a href="classhmap_1_1Array.html#adbd79d599e39db1836e720048c33452f">hmap::Array::resample_to_shape_bicubic</a></div><div class="ttdeci">Array resample_to_shape_bicubic(glm::ivec2 new_shape) const</div><div class="ttdoc">Return a resampled array of shape new_shape using bicubic interpolation.</div><div class="ttdef"><b>Definition</b> methods.cpp:328</div></div>
 <div class="ttc" id="anamespacehmap_html_ac70fe3cbb32e0340d5dd3e15cdcf9369a744ead0b170889e33126895264f1af2c"><div class="ttname"><a href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a744ead0b170889e33126895264f1af2c">hmap::MAGMA</a></div><div class="ttdeci">@ MAGMA</div><div class="ttdef"><b>Definition</b> colormaps.hpp:89</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_array_interp.png" alt=""/>

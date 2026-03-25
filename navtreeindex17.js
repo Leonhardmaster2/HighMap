@@ -1,5 +1,7 @@
 var NAVTREEINDEX17 =
 {
+"primitives_8hpp.html#a657a1f43301605e4e3768cd3888e8b4b":[5,0,1,0,0,32,46],
+"primitives_8hpp.html#a6845a9d8b8c1638e88f1a84feaf86231":[5,0,1,0,0,32,59],
 "primitives_8hpp.html#a6f12f5873de12bca27a99b9c9d2cf0a0":[5,0,1,0,0,32,62],
 "primitives_8hpp.html#a6f66325f4146ebb7e9e20cf4a4882fc3":[5,0,1,0,0,32,41],
 "primitives_8hpp.html#a705eb500528864806b3a3afe4e7174af":[5,0,1,0,0,32,65],
@@ -247,7 +249,5 @@ var NAVTREEINDEX17 =
 "select__soil__rocks_8cpp.html":[5,0,1,1,31,2],
 "select__soil__rocks_8cpp.html#a735421f1b5f42ade55224b932603c58e":[5,0,1,1,31,2,0],
 "select__soil__weathered_8cpp.html":[5,0,1,1,31,3],
-"select__soil__weathered_8cpp.html#a07420c28501484b219710bac89da8f60":[5,0,1,1,31,3,1],
-"select__soil__weathered_8cpp.html#ae394dd88c39510d2ada01cf120922719":[5,0,1,1,31,3,0],
-"selector_8cpp.html":[5,0,1,1,31,4]
+"select__soil__weathered_8cpp.html#a07420c28501484b219710bac89da8f60":[5,0,1,1,31,3,1]
 };
