@@ -698,6 +698,14 @@ public:
   float ptp() const;
 
   /**
+   * @brief Computes the minimum and maximum values of the array.
+   *
+   * @return glm::vec2 A vector where x contains the minimum value and y
+   * contains the maximum value.
+   */
+  glm::vec2 range() const;
+
+  /**
    * @brief Return an array remapped to [0, 1].
    */
   Array remapped() const;

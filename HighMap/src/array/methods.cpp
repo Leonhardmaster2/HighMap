@@ -306,6 +306,13 @@ float Array::ptp() const
   return this->max() - this->min();
 }
 
+glm::vec2 Array::range() const
+{
+  auto [min_it, max_it] = std::minmax_element(this->vector.begin(),
+                                              this->vector.end());
+  return glm::vec2(*min_it, *max_it);
+}
+
 Array Array::remapped() const
 {
   Array out = *this;
