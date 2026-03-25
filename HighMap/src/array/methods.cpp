@@ -313,6 +313,51 @@ glm::vec2 Array::range() const
   return glm::vec2(*min_it, *max_it);
 }
 
+glm::vec2 Array::range_percentile(float p_low, float p_high, size_t bins) const
+{
+  const std::vector<float> &data = this->vector;
+
+  const glm::vec2 range = this->range();
+  float           min_val = range.x;
+  float           max_val = range.y;
+
+  std::vector<size_t> hist(bins, 0);
+
+  // fill histogram
+  for (float v : data)
+  {
+    size_t idx = std::min<size_t>(
+        bins - 1,
+        size_t((v - min_val) / (max_val - min_val) * bins));
+    hist[idx]++;
+  }
+
+  // accumulate
+  size_t total = data.size();
+  size_t low_target = size_t(p_low * total);
+  size_t high_target = size_t(p_high * total);
+
+  size_t acc = 0;
+  float  low = min_val;
+  float  high = max_val;
+
+  for (size_t i = 0; i < bins; ++i)
+  {
+    acc += hist[i];
+
+    if (acc >= low_target && low == min_val)
+      low = min_val + (max_val - min_val) * (float(i) / bins);
+
+    if (acc >= high_target)
+    {
+      high = min_val + (max_val - min_val) * (float(i) / bins);
+      break;
+    }
+  }
+
+  return {low, high};
+}
+
 Array Array::remapped() const
 {
   Array out = *this;

@@ -706,6 +706,27 @@ public:
   glm::vec2 range() const;
 
   /**
+   * @brief Computes an approximate percentile range using a histogram.
+   *
+   * This function estimates the values corresponding to the given lower and
+   * upper percentiles by building a histogram over the data range and
+   * accumulating counts. The result is an approximation whose precision depends
+   * on the number of bins.
+   *
+   * @param  p_low  Lower percentile in [0, 1]
+   * @param  p_high Upper percentile in [0, 1]
+   * @param  bins   Number of bins used for the histogram (higher = more
+   * precise)
+   *
+   * @return        glm::vec2 A vector where x contains the approximated lower
+   *                percentile value and y contains the approximated upper
+   *                percentile value
+   */
+  glm::vec2 range_percentile(float  p_low,
+                             float  p_high,
+                             size_t bins = 1024) const;
+
+  /**
    * @brief Return an array remapped to [0, 1].
    */
   Array remapped() const;
