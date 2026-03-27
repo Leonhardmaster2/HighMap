@@ -2,8 +2,8 @@ project(nn-c)
 
 set(NNC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/nn-c/nn)
 
-# Configure config.h
-configure_file(${NNC_DIR}/config.h.in ${CMAKE_BINARY_DIR}/nn-c/config.h @ONLY)
+# Configure config.h (actually generate a dummy one)
+file(WRITE ${CMAKE_BINARY_DIR}/nn-c/config.h "")
 
 file(GLOB_RECURSE NNC_SRC ${NNC_DIR}/*.c)
 
@@ -14,6 +14,7 @@ add_library(${PROJECT_NAME}::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE TRILIBRARY=1)
 target_compile_definitions(${PROJECT_NAME} PRIVATE SINGLE=0)
+target_compile_definitions(${PROJECT_NAME} PRIVATE NO_TIMER=0)
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${NNC_INCLUDE_DIR}
                                                   ${CMAKE_BINARY_DIR}/nn-c)
