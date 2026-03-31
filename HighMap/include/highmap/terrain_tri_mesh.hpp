@@ -3,6 +3,7 @@
    this software. */
 #pragma once
 #include <optional>
+#include <unordered_map>
 #include <vector>
 
 #include <glm/vec2.hpp>
@@ -24,6 +25,26 @@ public:
 
     bool      contains(const glm::vec2 &p) const;
     glm::vec2 clamp(const glm::vec2 &p) const;
+  };
+
+  struct Edge
+  {
+    size_t v0, v1;
+    Edge(size_t a, size_t b) : v0(std::min(a, b)), v1(std::max(a, b))
+    {
+    }
+    bool operator==(const Edge &other) const
+    {
+      return v0 == other.v0 && v1 == other.v1;
+    }
+  };
+
+  struct EdgeHash
+  {
+    std::size_t operator()(const Edge &e) const
+    {
+      return std::hash<size_t>()(e.v0) ^ (std::hash<size_t>()(e.v1) << 1);
+    }
   };
 
   struct Triangle
@@ -77,6 +98,8 @@ public:
                         bool  preserve_chull = true);
 
   void remap_z(float vmin = 0.f, float vmax = 1.f);
+
+  void subdivise();
 
   // --- Metrics ---
 

@@ -484,6 +484,45 @@ size_t TerrainTriMesh::size() const
   return this->points.size();
 }
 
+void TerrainTriMesh::subdivise()
+{
+  std::unordered_map<Edge, size_t, EdgeHash> midpoint_map;
+  std::vector<Triangle>                      new_triangles;
+  size_t original_point_count = points.size();
+
+  for (const auto &tri : triangles)
+  {
+    size_t a = tri.a;
+    size_t b = tri.b;
+    size_t c = tri.c;
+
+    auto get_midpoint = [&](size_t i0, size_t i1) -> size_t
+    {
+      Edge e(i0, i1);
+      auto it = midpoint_map.find(e);
+      if (it != midpoint_map.end()) return it->second;
+
+      glm::vec3 mid = 0.5f * (points[i0] + points[i1]);
+      size_t    idx = points.size();
+      points.push_back(mid);
+      midpoint_map[e] = idx;
+      return idx;
+    };
+
+    size_t ab = get_midpoint(a, b);
+    size_t bc = get_midpoint(b, c);
+    size_t ca = get_midpoint(c, a);
+
+    // Create 4 new triangles
+    new_triangles.push_back({a, ab, ca});
+    new_triangles.push_back({b, bc, ab});
+    new_triangles.push_back({c, ca, bc});
+    new_triangles.push_back({ab, bc, ca});
+  }
+
+  triangles = std::move(new_triangles);
+}
+
 Array TerrainTriMesh::to_array(const glm::ivec2         &shape,
                                const std::vector<float> &values,
                                const glm::vec4          &bbox) const

@@ -46,4 +46,14 @@ int main(void)
     mesh.print_info();
     mesh.export_obj("mesh_opt.obj");
   }
+
+  // --- subdivise
+
+  {
+    auto mesh = hmap::TerrainTriMesh(points);
+    mesh.print_info();
+    mesh.subdivise();
+    mesh.print_info();
+    mesh.to_array(shape).to_png("mesh_subdivise.png", hmap::Cmap::JET);
+  }
 }
