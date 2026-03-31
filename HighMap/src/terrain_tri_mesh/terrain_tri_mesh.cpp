@@ -488,7 +488,6 @@ void TerrainTriMesh::subdivise()
 {
   std::unordered_map<Edge, size_t, EdgeHash> midpoint_map;
   std::vector<Triangle>                      new_triangles;
-  size_t original_point_count = points.size();
 
   for (const auto &tri : triangles)
   {
