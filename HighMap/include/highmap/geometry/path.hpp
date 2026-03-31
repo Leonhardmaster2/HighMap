@@ -113,6 +113,22 @@ public:
       : Cloud(x, y, v), closed(closed){};
 
   /**
+   * @brief Construct a point cloud from grid indices mapped to a bounding box.
+   *
+   * Each index is normalized by the grid shape and remapped to the given
+   * bounding box. The resulting points are stored as 3D positions (z = 1).
+   *
+   * @param indices  Input grid indices.
+   * @param shape    Grid dimensions.
+   * @param bbox     Bounding box (xmin, xmax, ymin, ymax).
+   */
+  Path(const std::vector<glm::ivec2> &indices,
+       const glm::ivec2              &shape,
+       const glm::vec4               &bbox = {0.f, 1.f, 0.f, 1.f},
+       bool                           closed = false)
+      : Cloud(indices, shape, bbox), closed(closed){};
+
+  /**
    * @brief Smooth the path using Bezier curves.
    *
    * This method applies Bezier curve smoothing to the path. The

@@ -56,6 +56,24 @@ Cloud::Cloud(const std::vector<float> &x,
     this->points.emplace_back(x[k], y[k], v[k]);
 }
 
+Cloud::Cloud(const std::vector<glm::ivec2> &indices,
+             const glm::ivec2              &shape,
+             const glm::vec4               &bbox)
+{
+  this->points.reserve(indices.size());
+
+  for (const auto &ij : indices)
+  {
+    float x = float(ij.x) / float(shape.x - 1);
+    float y = float(ij.y) / float(shape.y - 1);
+
+    x = lerp(bbox.x, bbox.y, x);
+    y = lerp(bbox.z, bbox.w, y);
+
+    this->points.emplace_back(x, y, 1.f);
+  }
+}
+
 void Cloud::add_point(const Point &p)
 {
   this->points.push_back(p);

@@ -1,0 +1,2 @@
+add_executable(ex_find_path_midpoint ex_find_path_midpoint.cpp)
+target_link_libraries(ex_find_path_midpoint highmap)
