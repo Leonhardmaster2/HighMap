@@ -42,6 +42,8 @@ Collaboration diagram for hmap\+::Path\+:
 \begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classhmap_1_1Path}{Path} object based on {\ttfamily x} and {\ttfamily y} coordinates. Initializes a path with the specified {\ttfamily x} and {\ttfamily y} coordinates and an option to be open or closed. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Path_a08f8cf82bbd93789633bb50d193f86a0}{Path}} (std\+::vector$<$ float $>$ x, std\+::vector$<$ float $>$ y, std\+::vector$<$ float $>$ v, bool \mbox{\hyperlink{classhmap_1_1Path_a2ea3482a302d8ef30084fd39e57715de}{closed}}=false)
 \begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classhmap_1_1Path}{Path} object based on {\ttfamily x}, {\ttfamily y} coordinates, and values. Initializes a path with the specified {\ttfamily x} and {\ttfamily y} coordinates, associated values, and an option to be open or closed. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Path_a8f2b65b2b958767c5b8930c3a0fa8b16}{Path}} (const std\+::vector$<$ glm\+::ivec2 $>$ \&indices, const glm\+::ivec2 \&shape, const glm\+::vec4 \&bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, bool \mbox{\hyperlink{classhmap_1_1Path_a2ea3482a302d8ef30084fd39e57715de}{closed}}=false)
+\begin{DoxyCompactList}\small\item\em Construct a point cloud from grid indices mapped to a bounding box. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classhmap_1_1Path_a56cc1e52401d748b540f9bc72a49000b}{bezier}} (float curvature\+\_\+ratio=0.\+3\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, int edge\+\_\+divisions=10)
 \begin{DoxyCompactList}\small\item\em Smooth the path using Bezier curves. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classhmap_1_1Path_a9c0c833a2c386bd43fa131520ff6a5f6}{bezier\+\_\+round}} (float curvature\+\_\+ratio=0.\+3\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, int edge\+\_\+divisions=10)
@@ -125,6 +127,8 @@ virtual \mbox{\hyperlink{classhmap_1_1Cloud_a37e6f8229904ba2b013fbdf25751c6d4}{\
 \begin{DoxyCompactList}\small\item\em Constructs a new \doxylink{classhmap_1_1Cloud}{Cloud} object from lists of {\ttfamily x} and {\ttfamily y} coordinates. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Cloud_a189ddb2d4389ab85c28ad586fbbc4c30}{Cloud}} (const std\+::vector$<$ float $>$ \&x, const std\+::vector$<$ float $>$ \&y, const std\+::vector$<$ float $>$ \&v)
 \begin{DoxyCompactList}\small\item\em Constructs a new \doxylink{classhmap_1_1Cloud}{Cloud} object from lists of {\ttfamily x} and {\ttfamily y} coordinates with assigned values. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Cloud_aaa3aebf8afba3cddb605df797a3e8ff1}{Cloud}} (const std\+::vector$<$ glm\+::ivec2 $>$ \&indices, const glm\+::ivec2 \&shape, const glm\+::vec4 \&bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
+\begin{DoxyCompactList}\small\item\em Construct a point cloud from grid indices mapped to a bounding box. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classhmap_1_1Cloud_ab1149531131111567d9f8760162d90ff}{add\+\_\+point}} (const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p)
 \begin{DoxyCompactList}\small\item\em Add a new point to the cloud. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classhmap_1_1Cloud_a247e64e1c0e5cb85570c0ec3aed3d774}{clear}} ()
@@ -258,7 +262,7 @@ The {\ttfamily \doxylink{classhmap_1_1Path}{Path}} class extends the {\ttfamily 
 \Hypertarget{classhmap_1_1Path_a9695b8d68fc506c403f47dde1b74620c}\label{classhmap_1_1Path_a9695b8d68fc506c403f47dde1b74620c} 
 \index{hmap::Path@{hmap::Path}!Path@{Path}}
 \index{Path@{Path}!hmap::Path@{hmap::Path}}
-\doxysubsubsection{\texorpdfstring{Path()}{Path()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
+\doxysubsubsection{\texorpdfstring{Path()}{Path()}\hspace{0.1cm}{\footnotesize\ttfamily [1/6]}}
 {\footnotesize\ttfamily hmap\+::\+Path\+::\+Path (\begin{DoxyParamCaption}\item[{bool}]{closed = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
@@ -273,7 +277,7 @@ Construct a new \doxylink{classhmap_1_1Path}{Path} object with default propertie
 \Hypertarget{classhmap_1_1Path_afd490f9a56c54c770851302e11512a81}\label{classhmap_1_1Path_afd490f9a56c54c770851302e11512a81} 
 \index{hmap::Path@{hmap::Path}!Path@{Path}}
 \index{Path@{Path}!hmap::Path@{hmap::Path}}
-\doxysubsubsection{\texorpdfstring{Path()}{Path()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+\doxysubsubsection{\texorpdfstring{Path()}{Path()}\hspace{0.1cm}{\footnotesize\ttfamily [2/6]}}
 {\footnotesize\ttfamily hmap\+::\+Path\+::\+Path (\begin{DoxyParamCaption}\item[{int}]{npoints,  }\item[{\mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{seed,  }\item[{glm\+::vec4}]{bbox = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}},  }\item[{bool}]{closed = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
@@ -294,7 +298,7 @@ Construct a new \doxylink{classhmap_1_1Path}{Path} object with random positions 
 \Hypertarget{classhmap_1_1Path_a38e4087d0fb04225dbf2646547efe9bf}\label{classhmap_1_1Path_a38e4087d0fb04225dbf2646547efe9bf} 
 \index{hmap::Path@{hmap::Path}!Path@{Path}}
 \index{Path@{Path}!hmap::Path@{hmap::Path}}
-\doxysubsubsection{\texorpdfstring{Path()}{Path()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
+\doxysubsubsection{\texorpdfstring{Path()}{Path()}\hspace{0.1cm}{\footnotesize\ttfamily [3/6]}}
 {\footnotesize\ttfamily hmap\+::\+Path\+::\+Path (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{classhmap_1_1Point}{Point}} $>$}]{points,  }\item[{bool}]{closed = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
@@ -311,7 +315,7 @@ Construct a new \doxylink{classhmap_1_1Path}{Path} object based on a list of poi
 \Hypertarget{classhmap_1_1Path_af1810c14bef63e7b9caa3b7c0578987e}\label{classhmap_1_1Path_af1810c14bef63e7b9caa3b7c0578987e} 
 \index{hmap::Path@{hmap::Path}!Path@{Path}}
 \index{Path@{Path}!hmap::Path@{hmap::Path}}
-\doxysubsubsection{\texorpdfstring{Path()}{Path()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+\doxysubsubsection{\texorpdfstring{Path()}{Path()}\hspace{0.1cm}{\footnotesize\ttfamily [4/6]}}
 {\footnotesize\ttfamily hmap\+::\+Path\+::\+Path (\begin{DoxyParamCaption}\item[{std\+::vector$<$ float $>$}]{x,  }\item[{std\+::vector$<$ float $>$}]{y,  }\item[{bool}]{closed = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
@@ -330,7 +334,7 @@ Construct a new \doxylink{classhmap_1_1Path}{Path} object based on {\ttfamily x}
 \Hypertarget{classhmap_1_1Path_a08f8cf82bbd93789633bb50d193f86a0}\label{classhmap_1_1Path_a08f8cf82bbd93789633bb50d193f86a0} 
 \index{hmap::Path@{hmap::Path}!Path@{Path}}
 \index{Path@{Path}!hmap::Path@{hmap::Path}}
-\doxysubsubsection{\texorpdfstring{Path()}{Path()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+\doxysubsubsection{\texorpdfstring{Path()}{Path()}\hspace{0.1cm}{\footnotesize\ttfamily [5/6]}}
 {\footnotesize\ttfamily hmap\+::\+Path\+::\+Path (\begin{DoxyParamCaption}\item[{std\+::vector$<$ float $>$}]{x,  }\item[{std\+::vector$<$ float $>$}]{y,  }\item[{std\+::vector$<$ float $>$}]{v,  }\item[{bool}]{closed = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
@@ -346,6 +350,27 @@ Construct a new \doxylink{classhmap_1_1Path}{Path} object based on {\ttfamily x}
 {\em v} & List of values associated with the points. \\
 \hline
 {\em closed} & Open/close path flag. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classhmap_1_1Path_a8f2b65b2b958767c5b8930c3a0fa8b16}\label{classhmap_1_1Path_a8f2b65b2b958767c5b8930c3a0fa8b16} 
+\index{hmap::Path@{hmap::Path}!Path@{Path}}
+\index{Path@{Path}!hmap::Path@{hmap::Path}}
+\doxysubsubsection{\texorpdfstring{Path()}{Path()}\hspace{0.1cm}{\footnotesize\ttfamily [6/6]}}
+{\footnotesize\ttfamily hmap\+::\+Path\+::\+Path (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ glm\+::ivec2 $>$ \&}]{indices,  }\item[{const glm\+::ivec2 \&}]{shape,  }\item[{const glm\+::vec4 \&}]{bbox = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}},  }\item[{bool}]{closed = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a point cloud from grid indices mapped to a bounding box. 
+
+Each index is normalized by the grid shape and remapped to the given bounding box. The resulting points are stored as 3D positions (z = 1).
+
+
+\begin{DoxyParams}{Parameters}
+{\em indices} & Input grid indices. \\
+\hline
+{\em shape} & Grid dimensions. \\
+\hline
+{\em bbox} & Bounding box (xmin, xmax, ymin, ymax). \\
 \hline
 \end{DoxyParams}
 

@@ -5,6 +5,7 @@ var classhmap_1_1Path =
     [ "Path", "classhmap_1_1Path.html#a38e4087d0fb04225dbf2646547efe9bf", null ],
     [ "Path", "classhmap_1_1Path.html#af1810c14bef63e7b9caa3b7c0578987e", null ],
     [ "Path", "classhmap_1_1Path.html#a08f8cf82bbd93789633bb50d193f86a0", null ],
+    [ "Path", "classhmap_1_1Path.html#a8f2b65b2b958767c5b8930c3a0fa8b16", null ],
     [ "bezier", "classhmap_1_1Path.html#a56cc1e52401d748b540f9bc72a49000b", null ],
     [ "bezier_round", "classhmap_1_1Path.html#a9c0c833a2c386bd43fa131520ff6a5f6", null ],
     [ "bspline", "classhmap_1_1Path.html#a166a6f87dff196efa75abb1b731d3528", null ],

@@ -1117,6 +1117,7 @@ var namespacehmap =
     [ "topographic_shading", "namespacehmap.html#a03570be180e333d82101d31482e78829", null ],
     [ "find_path_dijkstra", "namespacehmap.html#af5e2b95dd35c64ba4ff24ca2697d87f9", null ],
     [ "find_path_dijkstra", "namespacehmap.html#a96d3c2fa385b510ee723e9074dfaa194", null ],
+    [ "find_path_midpoint", "namespacehmap.html#acfb2652ac666e36a3a47c1673d4e486b", null ],
     [ "non_parametric_sampling", "namespacehmap.html#a7064111b8b50fd4e29928e6d3f5e10f0", null ],
     [ "quilting", "namespacehmap.html#a9f1bfc155429e75866df0a713a4e68a0", null ],
     [ "quilting_blend", "namespacehmap.html#a9dd4243c70bb72e9fce8cadc8e6c5c0f", null ],
@@ -1179,6 +1180,7 @@ var namespacehmap =
     [ "helper_flip_rot_transpose", "namespacehmap.html#a36f7eca67d2fdc5dd03a63f8b1d7255e", null ],
     [ "reindex_vector", "namespacehmap.html#ac1fdc0ac0b6e1024faeaddcd30ebe2fe", null ],
     [ "reindex_vector", "namespacehmap.html#a5cca080874e8af74fa03a3f0f0d2f307", null ],
+    [ "helper_pick_lowest", "namespacehmap.html#aed9491c87a175e07ff614dfa3ad8b4f4", null ],
     [ "count_neighbors_to_fill", "namespacehmap.html#a0a359831aea68622813f65f4a989a75a", null ],
     [ "cmp_queue", "namespacehmap.html#aa7538088dbfe576e77ccbe14e9a6c9d7", null ]
 ];

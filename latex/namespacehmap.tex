@@ -1677,6 +1677,8 @@ void \mbox{\hyperlink{namespacehmap_af5e2b95dd35c64ba4ff24ca2697d87f9}{find\+\_\
 \begin{DoxyCompactList}\small\item\em Finds the path with the lowest elevation and elevation difference between two points in a 2D array using Dijkstra\textquotesingle{}s algorithm. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a96d3c2fa385b510ee723e9074dfaa194}{find\+\_\+path\+\_\+dijkstra}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, glm\+::ivec2 ij\+\_\+start, std\+::vector$<$ glm\+::ivec2 $>$ ij\+\_\+end\+\_\+list, std\+::vector$<$ std\+::vector$<$ int $>$ $>$ \&i\+\_\+path\+\_\+list, std\+::vector$<$ std\+::vector$<$ int $>$ $>$ \&j\+\_\+path\+\_\+list, float elevation\+\_\+ratio=0.\+1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float distance\+\_\+exponent=2.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float upward\+\_\+penalization=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+mask\+\_\+nogo=nullptr)
 \item 
+std\+::vector$<$ glm\+::ivec2 $>$ \mbox{\hyperlink{namespacehmap_acfb2652ac666e36a3a47c1673d4e486b}{find\+\_\+path\+\_\+midpoint}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, glm\+::ivec2 ij\+\_\+start, glm\+::ivec2 ij\+\_\+end, float offset\+\_\+ratio=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, int max\+\_\+it=0, int steps=16)
+\begin{DoxyCompactList}\small\item\em Compute a path between two points using iterative midpoint refinement. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a7064111b8b50fd4e29928e6d3f5e10f0}{non\+\_\+parametric\+\_\+sampling}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, glm\+::ivec2 patch\+\_\+shape, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, float error\+\_\+threshold=0.\+1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Synthesize a new heightmap based on an input array using a non-\/parametric sampling method. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a9f1bfc155429e75866df0a713a4e68a0}{quilting}} (const std\+::vector$<$ const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*} $>$ \&p\+\_\+arrays, glm\+::ivec2 patch\+\_\+base\+\_\+shape, glm\+::ivec2 tiling, float overlap, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, std\+::vector$<$ \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*} $>$ secondary\+\_\+arrays=\{\}, bool patch\+\_\+flip=true, bool patch\+\_\+rotate=true, bool patch\+\_\+transpose=true, float filter\+\_\+width\+\_\+ratio=0.\+25\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
@@ -1800,6 +1802,8 @@ void \mbox{\hyperlink{namespacehmap_a36f7eca67d2fdc5dd03a63f8b1d7255e}{helper\+\
 void \mbox{\hyperlink{namespacehmap_ac1fdc0ac0b6e1024faeaddcd30ebe2fe}{reindex\+\_\+vector}} (std\+::vector$<$ int $>$ \&v, std\+::vector$<$ size\+\_\+t $>$ \&idx)
 \item 
 void \mbox{\hyperlink{namespacehmap_a5cca080874e8af74fa03a3f0f0d2f307}{reindex\+\_\+vector}} (std\+::vector$<$ float $>$ \&v, std\+::vector$<$ size\+\_\+t $>$ \&idx)
+\item 
+\mbox{\hyperlink{classhmap_1_1Point}{Point}} \mbox{\hyperlink{namespacehmap_aed9491c87a175e07ff614dfa3ad8b4f4}{helper\+\_\+pick\+\_\+lowest}} (const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&pa, const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&pb, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, float max\+\_\+offset, int steps)
 \item 
 int \mbox{\hyperlink{namespacehmap_a0a359831aea68622813f65f4a989a75a}{count\+\_\+neighbors\+\_\+to\+\_\+fill}} (int i, int j, \mbox{\hyperlink{structhmap_1_1Mat}{Mat}}$<$ int $>$ \&is\+\_\+cell\+\_\+done)
 \item 
@@ -27836,7 +27840,95 @@ The {\ttfamily elevation\+\_\+ratio} parameter must be less than 1 for the algor
 \doxysubsubsection{\texorpdfstring{find\_path\_dijkstra()}{find\_path\_dijkstra()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily void hmap\+::find\+\_\+path\+\_\+dijkstra (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{glm\+::ivec2}]{ij\+\_\+start,  }\item[{std\+::vector$<$ glm\+::ivec2 $>$}]{ij\+\_\+end\+\_\+list,  }\item[{std\+::vector$<$ std\+::vector$<$ int $>$ $>$ \&}]{i\+\_\+path\+\_\+list,  }\item[{std\+::vector$<$ std\+::vector$<$ int $>$ $>$ \&}]{j\+\_\+path\+\_\+list,  }\item[{float}]{elevation\+\_\+ratio = {\ttfamily 0.1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{distance\+\_\+exponent = {\ttfamily 2.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{upward\+\_\+penalization = {\ttfamily 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+mask\+\_\+nogo = {\ttfamily nullptr} }\end{DoxyParamCaption})}
 
-\Hypertarget{namespacehmap_a7064111b8b50fd4e29928e6d3f5e10f0}\label{namespacehmap_a7064111b8b50fd4e29928e6d3f5e10f0} 
+\Hypertarget{namespacehmap_acfb2652ac666e36a3a47c1673d4e486b}\label{namespacehmap_acfb2652ac666e36a3a47c1673d4e486b} 
+\index{hmap@{hmap}!find\_path\_midpoint@{find\_path\_midpoint}}
+\index{find\_path\_midpoint@{find\_path\_midpoint}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{find\_path\_midpoint()}{find\_path\_midpoint()}}
+{\footnotesize\ttfamily std\+::vector$<$ glm\+::ivec2 $>$ hmap\+::find\+\_\+path\+\_\+midpoint (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{glm\+::ivec2}]{ij\+\_\+start,  }\item[{glm\+::ivec2}]{ij\+\_\+end,  }\item[{float}]{offset\+\_\+ratio = {\ttfamily 0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{int}]{max\+\_\+it = {\ttfamily 0},  }\item[{int}]{steps = {\ttfamily 16} }\end{DoxyParamCaption})}
+
+
+
+Compute a path between two points using iterative midpoint refinement. 
+
+The algorithm subdivides segments and shifts midpoints along the perpendicular direction to locally minimize the scalar field {\ttfamily z}. This is a fast heuristic alternative to graph-\/based methods (not guaranteed optimal).
+
+
+\begin{DoxyParams}{Parameters}
+{\em z} & 2D scalar field (weights). \\
+\hline
+{\em ij\+\_\+start} & Start index. \\
+\hline
+{\em ij\+\_\+end} & End index. \\
+\hline
+{\em offset\+\_\+ratio} & Relative transverse displacement (per segment length). \\
+\hline
+{\em max\+\_\+it} & Max iterations (0 = automatic based on distance). \\
+\hline
+{\em steps} & Number of samples for transverse search.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector of grid indices forming the path.
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
+\DoxyCodeLine{\ \ glm::vec2\ \ res\ =\ \{2.f,\ 2.f\};}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 1;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_acb13e7346085793fda4c94c47b75d9a9}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ res,\ seed);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(z);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ glm::ivec2\ ij\_start\ =\ \{40,\ 40\};}
+\DoxyCodeLine{\ \ glm::ivec2\ ij\_end\ =\ \{230,\ 230\};}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ offset\_ratio\ =\ 0.3f;\ \textcolor{comment}{//\ in\ [0,\ 1]}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ smallest\ resolution}}
+\DoxyCodeLine{\ \ std::vector<glm::ivec2>\ ij1\ =\ \mbox{\hyperlink{namespacehmap_acfb2652ac666e36a3a47c1673d4e486b}{hmap::find\_path\_midpoint}}(z,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ij\_start,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ij\_end,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ offset\_ratio);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ limit\ iterations}}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ max\_it\ =\ 4;}
+\DoxyCodeLine{\ \ std::vector<glm::ivec2>\ ij2\ =\ \mbox{\hyperlink{namespacehmap_acfb2652ac666e36a3a47c1673d4e486b}{hmap::find\_path\_midpoint}}(z,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ij\_start,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ij\_end,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ offset\_ratio,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ max\_it);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ convert\ to\ a\ path\ for\ Spline\ interp}}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Path}{hmap::Path}}\ path(ij2,\ shape);}
+\DoxyCodeLine{\ \ path.bspline();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ export\ path\ to\ a\ png\ file}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ w1\ =\ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}(shape);}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&p\ :\ ij1)}
+\DoxyCodeLine{\ \ \ \ w1(p)\ =\ 1.f;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ w2\ =\ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}(shape);}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&p\ :\ ij2)}
+\DoxyCodeLine{\ \ \ \ w2(p)\ =\ 1.f;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ w3\ =\ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}(shape);}
+\DoxyCodeLine{\ \ path.to\_array(w3);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_find\_path\_midpoint.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ w1,\ w2,\ w3\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}}  \Hypertarget{namespacehmap_a7064111b8b50fd4e29928e6d3f5e10f0}\label{namespacehmap_a7064111b8b50fd4e29928e6d3f5e10f0} 
 \index{hmap@{hmap}!non\_parametric\_sampling@{non\_parametric\_sampling}}
 \index{non\_parametric\_sampling@{non\_parametric\_sampling}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{non\_parametric\_sampling()}{non\_parametric\_sampling()}}
@@ -29371,6 +29463,12 @@ void hmap\+::convert\+\_\+mat\+\_\+to\+\_\+array (\begin{DoxyParamCaption}\item[
 \index{reindex\_vector@{reindex\_vector}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{reindex\_vector()}{reindex\_vector()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
 {\footnotesize\ttfamily void hmap\+::reindex\+\_\+vector (\begin{DoxyParamCaption}\item[{std\+::vector$<$ float $>$ \&}]{v,  }\item[{std\+::vector$<$ size\+\_\+t $>$ \&}]{idx }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacehmap_aed9491c87a175e07ff614dfa3ad8b4f4}\label{namespacehmap_aed9491c87a175e07ff614dfa3ad8b4f4} 
+\index{hmap@{hmap}!helper\_pick\_lowest@{helper\_pick\_lowest}}
+\index{helper\_pick\_lowest@{helper\_pick\_lowest}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{helper\_pick\_lowest()}{helper\_pick\_lowest()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Point}{Point}} hmap\+::helper\+\_\+pick\+\_\+lowest (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&}]{pa,  }\item[{const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&}]{pb,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{float}]{max\+\_\+offset,  }\item[{int}]{steps }\end{DoxyParamCaption})}
 
 \Hypertarget{namespacehmap_a0a359831aea68622813f65f4a989a75a}\label{namespacehmap_a0a359831aea68622813f65f4a989a75a} 
 \index{hmap@{hmap}!count\_neighbors\_to\_fill@{count\_neighbors\_to\_fill}}
