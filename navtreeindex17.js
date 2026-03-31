@@ -1,5 +1,7 @@
 var NAVTREEINDEX17 =
 {
+"primitives_8hpp.html#a4e087a8e6a1ecbeb3bffe199a946c8ae":[5,0,1,0,0,32,81],
+"primitives_8hpp.html#a4f43bf6bd355a50b42a9d079193f4582":[5,0,1,0,0,32,10],
 "primitives_8hpp.html#a5401f2bf9d2eacda951f012e04c6571f":[5,0,1,0,0,32,15],
 "primitives_8hpp.html#a55542a66f890ef9ecf5f82af2c23a0cf":[5,0,1,0,0,32,1],
 "primitives_8hpp.html#a55542a66f890ef9ecf5f82af2c23a0cfa4807402e27d4ee7cb042237cbeb26a69":[5,0,1,0,0,32,1,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX17 =
 "sdf_8hpp.html#a1d8f173e55e19eceb089fd44538f2fc6":[5,0,1,0,0,36,3],
 "sdf_8hpp.html#a6ce804c0a3c7bdfe98464278da568a57":[5,0,1,0,0,36,2],
 "sdf_8hpp.html#a765ffa5ee98f47eba4b9d4ebe7680190":[5,0,1,0,0,36,0],
-"sdf_8hpp.html#a93d9f75a0af0e7e76e77851efd36c804":[5,0,1,0,0,36,1],
-"sdf_8hpp_source.html":[5,0,1,0,0,36],
-"sdf__2d__polyline_8cpp.html":[5,0,1,1,30,0]
+"sdf_8hpp.html#a93d9f75a0af0e7e76e77851efd36c804":[5,0,1,0,0,36,1]
 };

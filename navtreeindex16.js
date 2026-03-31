@@ -1,5 +1,7 @@
 var NAVTREEINDEX16 =
 {
+"namespacehmap_1_1gpu.html#afbecd3a8ce025fb08ca3296ce81f695d":[3,0,0,0,17],
+"namespacehmap_1_1gpu.html#afd24580b2b5fe7107bbff0ae2d3a1473":[3,0,0,0,4],
 "namespacehmap_1_1gpu.html#afed4e84e60dd0cdc453e7da72940ed27":[3,0,0,0,59],
 "namespacehmap_1_1gpu.html#afffb85b7bc6b9884cd00254c122da8e6":[3,0,0,0,127],
 "namespacemembers.html":[3,1,0,0],
@@ -12,8 +14,8 @@ var NAVTREEINDEX16 =
 "namespacemembers_enum.html":[3,1,2],
 "namespacemembers_eval.html":[3,1,3],
 "namespacemembers_f.html":[3,1,0,6],
-"namespacemembers_func.html":[3,1,1],
 "namespacemembers_func.html":[3,1,1,0],
+"namespacemembers_func.html":[3,1,1],
 "namespacemembers_func_b.html":[3,1,1,1],
 "namespacemembers_func_c.html":[3,1,1,2],
 "namespacemembers_func_d.html":[3,1,1,3],
@@ -247,7 +249,5 @@ var NAVTREEINDEX16 =
 "primitives_8hpp.html#a41239b5831a88a5b2528f24e8c95a92a":[5,0,1,0,0,32,38],
 "primitives_8hpp.html#a494a16a2183fc9e360d5390ce55ecef0":[5,0,1,0,0,32,49],
 "primitives_8hpp.html#a4af0bde798f0266db4dfe24e1134a506":[5,0,1,0,0,32,7],
-"primitives_8hpp.html#a4bf1e669410e1a5dac4c5261d8ef9bfd":[5,0,1,0,0,32,19],
-"primitives_8hpp.html#a4e087a8e6a1ecbeb3bffe199a946c8ae":[5,0,1,0,0,32,81],
-"primitives_8hpp.html#a4f43bf6bd355a50b42a9d079193f4582":[5,0,1,0,0,32,10]
+"primitives_8hpp.html#a4bf1e669410e1a5dac4c5261d8ef9bfd":[5,0,1,0,0,32,19]
 };
