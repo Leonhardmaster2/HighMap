@@ -228,8 +228,6 @@ Array interpolate2d_delaunay(glm::ivec2                shape,
       }
     }
 
-    out.dump();
-
     return out;
   }
 }
