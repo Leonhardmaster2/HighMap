@@ -67,8 +67,6 @@ int main(void)
                                        nullptr,
                                        bbox);
 
-  z5.dump();
-
   hmap::export_banner_png("ex_interpolate2d.png",
                           {z0, z1, z2, z3, z4, z5},
                           hmap::Cmap::INFERNO);

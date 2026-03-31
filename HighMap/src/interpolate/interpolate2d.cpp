@@ -27,6 +27,7 @@ Array interpolate2d(glm::ivec2                shape,
   switch (interpolation_method)
   {
   case InterpolationMethod2D::ITP2D_DELAUNAY:
+  {
     return interpolate2d_delaunay(shape,
                                   x,
                                   y,
@@ -34,8 +35,10 @@ Array interpolate2d(glm::ivec2                shape,
                                   p_noise_x,
                                   p_noise_y,
                                   bbox);
+  }
 
   case InterpolationMethod2D::ITP2D_NEAREST:
+  {
     return interpolate2d_nearest(shape,
                                  x,
                                  y,
@@ -43,9 +46,12 @@ Array interpolate2d(glm::ivec2                shape,
                                  p_noise_x,
                                  p_noise_y,
                                  bbox);
+  }
 
   case InterpolationMethod2D::ITP2D_IDW:
+  {
     return interpolate2d_idw(shape, x, y, values, p_noise_x, p_noise_y, bbox);
+  }
 
   case InterpolationMethod2D::ITP2D_GAUSSIAN:
   {
@@ -124,8 +130,13 @@ Array interpolate2d_delaunay(glm::ivec2                shape,
                              (y[p0] - y[p1]) * x_ + (x[p1] - x[p0]) * y_);
 
         if (s >= 0.f && t >= 0.f && s + t <= 1.f)
+        {
+          s = smoothstep5(s);
+          t = smoothstep5(t);
+
           return values[p0] + s * (values[p1] - values[p0]) +
                  t * (values[p2] - values[p0]);
+        }
       }
 
       return 0.f;
@@ -216,6 +227,8 @@ Array interpolate2d_delaunay(glm::ivec2                shape,
         }
       }
     }
+
+    out.dump();
 
     return out;
   }
