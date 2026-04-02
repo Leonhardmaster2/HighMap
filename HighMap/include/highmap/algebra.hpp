@@ -114,6 +114,15 @@ struct [[deprecated("Replaced by glm::ivec4")]] Vec4<int> : public glm::ivec4
 
 // --- For unordered_map
 
+// for glm::ivec2 map
+struct IVec2Hash
+{
+  size_t operator()(const glm::ivec2 &v) const noexcept
+  {
+    return std::hash<int>()(v.x) ^ (std::hash<int>()(v.y) << 1);
+  }
+};
+
 // for glm::ivec4 map
 struct IVec4Hash
 {
@@ -160,6 +169,8 @@ template <typename T> struct Mat
                             row-major order. */
   glm::ivec2 shape;      /**< @brief Dimensions of the matrix (rows x columns).
                           */
+
+  Mat() = default;
 
   /**
    * @brief Constructor to initialize a matrix with a given shape.

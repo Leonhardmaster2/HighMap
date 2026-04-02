@@ -19,40 +19,68 @@ enum FlowDirectionMethod : int
 class DrainageBasinCellBased
 {
 public:
-  std::vector<std::vector<glm::ivec2>> upstream_traversal;
-  Mat<glm::ivec2>                      next = Mat<glm::ivec2>({0, 0});
-  glm::ivec2                           null_cell = glm::ivec2(-1, -1);
+  // --- Construction ---
 
-  size_t                               get_basins_number() const;
-  std::vector<std::vector<glm::ivec2>> get_main_channels();
-  std::vector<glm::ivec2>              get_outlets() const;
-  std::vector<glm::ivec2>              get_ridges();
-  std::vector<std::vector<glm::ivec2>> get_ridges_neighbors();
+  DrainageBasinCellBased() = default;
+  DrainageBasinCellBased(const Array &z_);
 
-  void generate_traversal(
-      const Array                   &z,
-      FlowDirectionMethod            fd_method = FlowDirectionMethod::FDM_D8,
-      bool                           remove_lakes = true,
-      const std::vector<glm::ivec2> &outlets = {});
+  // --- Geometry / Mesh ---
 
-  void generate_traversal_d8(const Array                   &z,
-                             bool                           remove_lakes = true,
-                             const std::vector<glm::ivec2> &outlets = {});
-  void generate_traversal_priority_flood(
-      const Array                   &z,
-      const std::vector<glm::ivec2> &outlets = {});
+  const Array &get_z() const;
 
-  void accumulate(Array &acc) const;
-  void traverse_downstream(std::function<void(int, int, int, int, int)> op);
-  void traverse_downstream(std::function<void(int, int, int)> op);
-  void traverse_upstream(std::function<void(int, int, int, int, int)> op);
-  void traverse_upstream(std::function<void(int, int, int)> op);
+  // --- Flow graph construction ---
+
+  void compute_receivers(unsigned int seed = 0, float noise_strength = 0.f);
+  void compute_receivers_priority_flood();
+  void update_stream_tree(unsigned int seed, float noise_strength);
+  void update_traversals();
+
+  std::vector<glm::ivec2> get_outlets() const;
+  void set_outlets(const std::vector<glm::ivec2> &outlet_indices);
+
+  std::vector<std::vector<glm::ivec2>> compute_upstream_traversals();
+
+  // --- Basin topology utilities ---
+
+  std::pair<Mat<glm::ivec2>, bool> find_subroots();
+  void                             remove_lakes(const Mat<glm::ivec2> &subroot);
+
+  std::vector<std::vector<glm::ivec2>> get_main_channels() const;
+
+  // --- Hydrology computations ---
+
+  Array compute_response_times(const Array &area_acc,
+                               const Array &erodibility,
+                               float        m_exp) const;
+
+  float update_elevations(const Array &response_times,
+                          float        uplift_rate,
+                          const Array &max_slope);
+
+  void accumulate_area_by_outlet(Array &acc) const;
+
+  // --- Members ---
+
+  Array z;
+
+  Mat<int>                     outlets_mask;
+  Mat<glm::ivec2>              receivers;
+  Mat<std::vector<glm::ivec2>> children;
+  Mat<glm::ivec2>              roots;
+
+  std::unordered_map<glm::ivec2, std::vector<glm::ivec2>, IVec2Hash> traversals;
+
+  const glm::ivec2 null_cell = glm::ivec2(-1, -1);
 
 private:
-  void remove_lakes_d8(const Array &z,
-                       float        dz_weight = 1.f,
-                       float        dz_downstream_cost_ratio = 0.f);
-  void update_traversal();
+  // constants
+  const int   di[8] = {1, 1, 0, -1, -1, -1, 0, 1};
+  const int   dj[8] = {0, -1, -1, -1, 0, 1, 1, 1};
+  const float cd[8] =
+      {1.f, M_SQRT1_2, 1.f, M_SQRT1_2, 1.f, M_SQRT1_2, 1.f, M_SQRT1_2};
 };
+
+Mat<std::vector<glm::ivec2>> invert_receiver_map(
+    const Mat<glm::ivec2> &receivers);
 
 } // namespace hmap

@@ -104,6 +104,8 @@ void find_flow_sinks(const Array      &z,
 
 std::vector<glm::ivec2> find_flow_sinks(const Array &z);
 
+std::vector<glm::ivec2> find_flow_sinks_border(const Array &z);
+
 /**
  * @brief Compute water depth for a uniform flooding level.
  *

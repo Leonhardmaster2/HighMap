@@ -86,4 +86,46 @@ std::vector<glm::ivec2> find_flow_sinks(const Array &z)
   return indices;
 }
 
+std::vector<glm::ivec2> find_flow_sinks_border(const Array &z)
+{
+  std::vector<glm::ivec2> indices;
+
+  const int rows = z.shape.x;
+  const int cols = z.shape.y;
+
+  const int di[8] = {-1, -1, 0, 1, 1, 1, 0, -1};
+  const int dj[8] = {0, 1, 1, 1, 0, -1, -1, -1};
+
+  auto is_inside = [&](int i, int j)
+  { return i >= 0 && j >= 0 && i < rows && j < cols; };
+
+  for (int j = 0; j < cols; ++j)
+    for (int i = 0; i < rows; ++i)
+    {
+      // only border cells
+      if (!(i == 0 || j == 0 || i == rows - 1 || j == cols - 1)) continue;
+
+      int valid_neighbors = 0;
+      int higher_neighbors = 0;
+
+      for (int k = 0; k < 8; ++k)
+      {
+        int ni = i + di[k];
+        int nj = j + dj[k];
+
+        if (!is_inside(ni, nj)) continue;
+
+        valid_neighbors++;
+
+        if (z(i, j) < z(ni, nj)) higher_neighbors++;
+      }
+
+      // sink: all valid neighbors are higher
+      if (valid_neighbors > 0 && higher_neighbors == valid_neighbors)
+        indices.push_back(glm::ivec2(i, j));
+    }
+
+  return indices;
+}
+
 } // namespace hmap

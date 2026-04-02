@@ -15,11 +15,35 @@ Array basin_id(const Array &z, FlowDirectionMethod fd_method, bool remove_lakes)
 {
   Array ids(z.shape);
 
-  auto basins = DrainageBasinCellBased();
-  basins.generate_traversal(z, fd_method, remove_lakes);
+  // --- stream structure
 
-  auto lambda = [&ids](int i, int j, int basin_id) { ids(i, j) = basin_id; };
-  basins.traverse_upstream(lambda);
+  auto db = DrainageBasinCellBased(z);
+
+  if (fd_method == FlowDirectionMethod::FDM_D8)
+  {
+    db.compute_receivers();
+    auto [subroots, has_lake] = db.find_subroots();
+    if (has_lake) db.remove_lakes(subroots);
+  }
+  else
+    db.compute_receivers_priority_flood();
+
+  db.update_traversals();
+
+  // --- basin Ids
+
+  auto upstream_traversals = db.compute_upstream_traversals();
+  int  id_count = 0;
+
+  for (const auto &indices : upstream_traversals)
+  {
+    for (size_t k = 0; k < indices.size(); ++k)
+    {
+      const auto &i = indices[k];
+      ids(i) = id_count;
+    }
+    id_count++;
+  }
 
   return ids;
 }

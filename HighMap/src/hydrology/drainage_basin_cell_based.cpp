@@ -6,108 +6,104 @@
 #include "macrologger.h"
 
 #include "highmap/hydrology/hydrology.hpp"
+#include "highmap/random.hpp"
 
 namespace hmap
 {
 
-void DrainageBasinCellBased::accumulate(Array &acc) const
+DrainageBasinCellBased::DrainageBasinCellBased(const Array &z_) : z(z_)
 {
-  for (const auto &basin : this->upstream_traversal)
-  {
-    // basin order is downstream → upstream
-    // so we iterate backwards
-    for (int k = int(basin.size()) - 1; k >= 0; --k)
-    {
-      glm::ivec2 c = basin[k];
-      glm::ivec2 p = this->next(c);
+  const glm::ivec2 &shape = z.shape;
 
-      // propagate downstream
-      if (p != this->null_cell) acc(p) += acc(c);
+  // outlets == convex hull by default
+  this->outlets_mask = Mat<int>(shape, 0);
+
+  for (int j = 0; j < shape.y; ++j)
+    for (int i = 0; i < shape.x; ++i)
+      if (i == 0 || i == shape.x - 1 || j == 0 || j == shape.y - 1)
+        this->outlets_mask(i, j) = 1;
+}
+
+void DrainageBasinCellBased::accumulate_area_by_outlet(Array &acc) const
+{
+  for (const glm::ivec2 &o : this->get_outlets())
+  {
+    const auto &traversal = this->traversals.at(o);
+
+    // downstream => upstream
+    for (auto it = traversal.begin(); it != traversal.end(); ++it)
+    {
+      const glm::ivec2 &v = *it;
+
+      acc(v) = 1.f;
+
+      for (const glm::ivec2 &child : this->children(v))
+        acc(v) += acc(child);
     }
   }
 }
 
-void DrainageBasinCellBased::generate_traversal(
-    const Array                   &z,
-    FlowDirectionMethod            fd_method,
-    bool                           remove_lakes,
-    const std::vector<glm::ivec2> &outlets)
+void DrainageBasinCellBased::compute_receivers(unsigned int seed,
+                                               float        noise_strength)
 {
-  switch (fd_method)
-  {
-  case FDM_D8: this->generate_traversal_d8(z, remove_lakes, outlets); break;
-  case FDM_PRIORITY_FLOOD:
-    this->generate_traversal_priority_flood(z, outlets);
-    break;
-  }
-}
+  const glm::ivec2 &shape = z.shape;
+  const int         rows = shape.x;
+  const int         cols = shape.y;
 
-void DrainageBasinCellBased::generate_traversal_d8(
-    const Array                   &z,
-    bool                           remove_lakes,
-    const std::vector<glm::ivec2> &outlets)
-{
-  this->upstream_traversal.clear();
+  this->receivers = Mat<glm::ivec2>(shape);
 
-  const glm::ivec2 shape = z.shape;
-  this->next = Mat<glm::ivec2>(shape, this->null_cell);
-
-  const int   di[8] = {1, 1, 0, -1, -1, -1, 0, 1};
-  const int   dj[8] = {0, -1, -1, -1, 0, 1, 1, 1};
-  const float cd[8] =
-      {1.f, M_SQRT1_2, 1.f, M_SQRT1_2, 1.f, M_SQRT1_2, 1.f, M_SQRT1_2};
-
-  // --- compute best downslope neighbor (D8)
-
-  for (int j = 0; j < shape.y; ++j)
-    for (int i = 0; i < shape.x; ++i)
+  for (int j = 0; j < cols; ++j)
+    for (int i = 0; i < rows; ++i)
     {
-      float z0 = z(i, j);
-      float best_slope = 0.0f;
-      int   bi = -1;
-      int   bj = -1;
+      if (this->outlets_mask(i, j))
+      {
+        this->receivers(i, j) = glm::ivec2(i, j); // self-receiver
+        continue;
+      }
+
+      float      best_score = 0.f;
+      glm::ivec2 best_ij(i, j);
 
       for (int k = 0; k < 8; ++k)
       {
         int ni = i + di[k];
         int nj = j + dj[k];
 
-        if (ni < 0 || nj < 0 || ni >= shape.x || nj >= shape.y) continue;
+        if (ni < 0 || ni >= rows || nj < 0 || nj >= cols) continue;
 
-        float dz = (z0 - z(ni, nj)) * cd[k];
-        if (dz > best_slope)
+        float dz = z(i, j) - z(ni, nj);
+        if (dz <= 0.f) continue;
+
+        float slope = dz * cd[k];
+
+        // deterministic noise in [-1, 1)
+        float noise = 2.f * hash_to_unit_float(seed,
+                                               (i * cols + j) ^
+                                                   (ni * cols + nj)) -
+                      1.f;
+        float score = slope * (1.f + noise_strength * noise);
+
+        if (score > best_score)
         {
-          best_slope = dz;
-          bi = ni;
-          bj = nj;
+          best_score = score;
+          best_ij = glm::ivec2(ni, nj);
         }
       }
 
-      this->next(i, j) = {bi, bj};
+      this->receivers(i, j) = best_ij;
     }
-
-  // prescribe some outlets
-  if (!outlets.empty())
-  {
-    for (const auto &p : outlets)
-      this->next(p) = this->null_cell;
-  }
-
-  if (remove_lakes) this->remove_lakes_d8(z);
-  this->update_traversal();
 }
 
-void DrainageBasinCellBased::generate_traversal_priority_flood(
-    const Array                   &z,
-    const std::vector<glm::ivec2> &outlets)
+void DrainageBasinCellBased::compute_receivers_priority_flood()
 {
-  this->upstream_traversal.clear();
+  const glm::ivec2 shape = z.shape;
 
-  // local node type
+  this->receivers = Mat<glm::ivec2>(shape, this->null_cell);
+  Mat<int> basin_id(shape, -1);
+
   struct Node
   {
-    int   i;
-    int   j;
+    int   i, j;
     float z;
   };
 
@@ -119,38 +115,22 @@ void DrainageBasinCellBased::generate_traversal_priority_flood(
     }
   };
 
-  // algo
-  const glm::ivec2 shape = z.shape;
-  this->next = Mat<glm::ivec2>(shape, this->null_cell);
-  Array basin_id(shape, -1);
-
   std::priority_queue<Node, std::vector<Node>, NodeCmp> pq;
-  int                                                   basin_counter = 0;
 
-  // --- initialize boundary
+  int basin_counter = 0;
 
-  // outlet elevation storage
-  for (int j = 0; j < shape.y; ++j)
-    for (int i = 0; i < shape.x; ++i)
-    {
-      bool boundary = (i == 0 || j == 0 || i == shape.x - 1 ||
-                       j == shape.y - 1);
+  // --- initialize with outlets
 
-      if (boundary)
-      {
-        basin_id(i, j) = basin_counter++;
-        pq.push({i, j, z(i, j)});
-      }
-    }
+  for (const auto &o : this->get_outlets())
+  {
+    basin_id(o) = basin_counter++;
+    pq.push({o.x, o.y, z(o)});
+
+    // boundary drains to itself
+    this->receivers(o) = o;
+  }
 
   // --- flood inward
-
-  this->upstream_traversal.resize(2 * shape.x + 2 * (shape.y - 2));
-
-  const int di[8] = {1, 1, 0, -1, -1, -1, 0, 1};
-  const int dj[8] = {0, -1, -1, -1, 0, 1, 1, 1};
-
-  Array zm = z;
 
   while (!pq.empty())
   {
@@ -158,78 +138,184 @@ void DrainageBasinCellBased::generate_traversal_priority_flood(
     pq.pop();
 
     int bc = basin_id(c.i, c.j);
-    this->upstream_traversal[bc].push_back(glm::ivec2(c.i, c.j));
 
     for (int k = 0; k < 8; ++k)
     {
-      int i = c.i + di[k];
-      int j = c.j + dj[k];
+      int ni = c.i + di[k];
+      int nj = c.j + dj[k];
 
-      if (i < 0 || j < 0 || i >= shape.x || j >= shape.y) continue;
+      if (ni < 0 || nj < 0 || ni >= shape.x || nj >= shape.y) continue;
 
-      if (basin_id(i, j) == -1)
+      if (basin_id(ni, nj) == -1)
       {
-        basin_id(i, j) = bc;
-        pq.push({i, j, std::max(z(i, j), c.z)});
+        basin_id(ni, nj) = bc;
 
-        this->next(i, j) = {c.i, c.j};
+        float zn = z(ni, nj);
+        float zf = std::max(zn, c.z); // flood level
+
+        pq.push({ni, nj, zf});
+
+        // FLOW: neighbor drains to current cell
+        this->receivers(ni, nj) = glm::ivec2(c.i, c.j);
+      }
+    }
+  }
+}
+
+Array DrainageBasinCellBased::compute_response_times(const Array &area_acc,
+                                                     const Array &erodibility,
+                                                     float        m_exp) const
+{
+  const glm::ivec2 &shape = z.shape;
+  Array             response_times(shape, 0.f);
+
+  for (const auto &[outlet, traversal] : traversals)
+  {
+    // downstream => upstream
+    for (auto it = traversal.rbegin(); it != traversal.rend(); ++it)
+    {
+      const glm::ivec2 &i = *it;
+      const glm::ivec2 &j = receivers(i);
+
+      if (j != i)
+      {
+        int   dx = i.x - j.x;
+        int   dy = i.y - j.y;
+        float distance = (dx != 0 && dy != 0) ? M_SQRT2 : 1.f;
+
+        float celerity = erodibility(i) *
+                         std::pow(std::max(area_acc(i), 1e-8f), m_exp);
+
+        response_times(i) = response_times(j) + distance / celerity;
+      }
+      else
+      {
+        response_times(i) = 0.f; // outlet
       }
     }
   }
 
-  // NB - upstream traversal already updated above and no need to
-  // remove lakes since the priority flood already ensures there is no
-  // lakes, unless outlets habe changed
-
-  // prescribe some outlets
-  if (!outlets.empty())
-  {
-    for (const auto &p : outlets)
-      this->next(p) = this->null_cell;
-  }
+  return response_times;
 }
 
-size_t DrainageBasinCellBased::get_basins_number() const
+std::vector<std::vector<glm::ivec2>> DrainageBasinCellBased::
+    compute_upstream_traversals()
 {
-  return this->upstream_traversal.size();
+  const glm::ivec2 &shape = z.shape;
+  const int         rows = shape.x;
+  const int         cols = shape.y;
+
+  std::vector<std::vector<glm::ivec2>> traversals;
+
+  for (const glm::ivec2 &outlet : this->get_outlets())
+  {
+    std::vector<glm::ivec2> traversal;
+    traversal.reserve(rows * cols); // upper bound
+
+    // BFS from this outlet
+    traversal.push_back(outlet);
+
+    size_t i = 0;
+    while (i < traversal.size())
+    {
+      const glm::ivec2 &node = traversal[i];
+
+      for (const glm::ivec2 &child : this->children(node.x, node.y))
+        traversal.push_back(child);
+
+      ++i;
+    }
+
+    traversals.push_back(std::move(traversal));
+  }
+
+  return traversals;
+}
+
+std::pair<Mat<glm::ivec2>, bool> DrainageBasinCellBased::find_subroots()
+{
+  const glm::ivec2 &shape = z.shape;
+  const int         rows = shape.x;
+  const int         cols = shape.y;
+
+  Mat<glm::ivec2> subroot(shape, this->null_cell);
+  bool            has_lake = false;
+
+  for (int j = 0; j < cols; ++j)
+    for (int i = 0; i < rows; ++i)
+    {
+      if (subroot(i, j) != this->null_cell) continue;
+
+      std::vector<glm::ivec2> path;
+      glm::ivec2              p(i, j);
+
+      while (subroot(p) == this->null_cell && receivers(p) != p)
+      {
+        path.push_back(p);
+        p = receivers(p);
+      }
+
+      glm::ivec2 root;
+
+      if (subroot(p) != this->null_cell)
+      {
+        // already assigned
+        root = subroot(p);
+      }
+      else if (outlets_mask(p))
+      {
+        // outlet
+        root = p;
+      }
+      else
+      {
+        // true lake
+        has_lake = true;
+        root = p;
+      }
+
+      for (const auto &v : path)
+        subroot(v) = root;
+
+      subroot(p) = root;
+    }
+
+  return {subroot, has_lake};
 }
 
 std::vector<std::vector<glm::ivec2>> DrainageBasinCellBased::get_main_channels()
+    const
 {
-  const glm::ivec2 shape = this->next.shape;
+  std::vector<std::vector<glm::ivec2>> channels;
+  channels.reserve(traversals.size());
 
-  // compute flow accumulation
-  Array area_acc(shape, 1.f);
-  this->accumulate(area_acc);
-
-  const int di[8] = {1, 1, 0, -1, -1, -1, 0, 1};
-  const int dj[8] = {0, -1, -1, -1, 0, 1, 1, 1};
-
-  // for each basin, follow downstream the flow acc maximum to get the
-  // basin main channel
-  size_t                               nbasins = this->get_basins_number();
-  std::vector<std::vector<glm::ivec2>> channels(nbasins);
-
-  for (size_t basin_id = 0; basin_id < nbasins; ++basin_id)
+  for (const auto &[outlet, traversal] : traversals)
   {
-    // starting cell (most upstream)
-    glm::ivec2 p = this->upstream_traversal[basin_id].back();
-    channels[basin_id].push_back(p);
-
-    while (p.x > 0 && p.y > 0 && p.x < shape.x - 1 && p.y < shape.y - 1)
+    if (traversal.empty())
     {
-      for (int k = 0; k < 8; ++k)
-      {
-        int ni = p.x + di[k];
-        int nj = p.y + dj[k];
-
-        if (ni < 0 || nj < 0 || ni >= shape.x || nj >= shape.y) continue;
-
-        if (area_acc(ni, nj) > area_acc(p)) p = {ni, nj};
-      }
-
-      channels[basin_id].push_back(p);
+      channels.emplace_back();
+      continue;
     }
+
+    std::vector<glm::ivec2> channel;
+    channel.reserve(traversal.size());
+
+    // traversal is upstream -> downstream
+    glm::ivec2 p = traversal.front();
+    channel.push_back(p);
+
+    // follow receivers downstream to outlet
+    while (true)
+    {
+      const glm::ivec2 &r = receivers(p.x, p.y);
+
+      if (r == p) break; // reached outlet
+
+      p = r;
+      channel.push_back(p);
+    }
+
+    channels.push_back(std::move(channel));
   }
 
   return channels;
@@ -237,381 +323,238 @@ std::vector<std::vector<glm::ivec2>> DrainageBasinCellBased::get_main_channels()
 
 std::vector<glm::ivec2> DrainageBasinCellBased::get_outlets() const
 {
-  const glm::ivec2        shape = this->next.shape;
-  std::vector<glm::ivec2> outlets = {};
+  const glm::ivec2 &shape = z.shape;
+
+  std::vector<glm::ivec2> outlet_indices;
+  outlet_indices.reserve(shape.x * shape.y); // overkill
 
   for (int j = 0; j < shape.y; ++j)
     for (int i = 0; i < shape.x; ++i)
-    {
-      if (this->next(i, j) == this->null_cell) outlets.push_back({i, j});
-    }
+      if (this->outlets_mask(i, j)) outlet_indices.push_back({i, j});
 
-  return outlets;
+  return outlet_indices;
 }
 
-std::vector<glm::ivec2> DrainageBasinCellBased::get_ridges()
+const Array &DrainageBasinCellBased::get_z() const
 {
-  const glm::ivec2        shape = this->next.shape;
-  std::vector<glm::ivec2> ridges;
-
-  // --- get basin ids
-
-  Mat<int> ids(shape);
-  auto lambda = [&ids](int i, int j, int basin_id) { ids(i, j) = basin_id; };
-  this->traverse_upstream(lambda);
-
-  // --- tag ridges
-
-  const int di[8] = {1, 1, 0, -1, -1, -1, 0, 1};
-  const int dj[8] = {0, -1, -1, -1, 0, 1, 1, 1};
-
-  auto is_inside = [&shape](int i, int j)
-  { return i >= 0 && i < shape.x && j >= 0 && j < shape.y; };
-
-  for (int j = 0; j < shape.y; ++j)
-    for (int i = 0; i < shape.x; ++i)
-    {
-      int                     current_id = ids(i, j);
-      std::vector<glm::ivec2> ridge_neighbors = {};
-
-      for (int k = 0; k < 8; ++k)
-      {
-        int ni = i + di[k];
-        int nj = j + dj[k];
-
-        if (ids(ni, nj) != current_id && is_inside(ni, nj))
-        {
-          ridges.push_back({i, j});
-          break;
-        }
-      }
-    }
-
-  return ridges;
+  return this->z;
 }
 
-std::vector<std::vector<glm::ivec2>> DrainageBasinCellBased::
-    get_ridges_neighbors()
+void DrainageBasinCellBased::remove_lakes(const Mat<glm::ivec2> &subroot)
 {
-  const glm::ivec2                     shape = this->next.shape;
-  std::vector<std::vector<glm::ivec2>> ridges;
+  const glm::ivec2 &shape = z.shape;
+  const int         rows = shape.x;
+  const int         cols = shape.y;
 
-  // --- get basin ids
+  Mat<uint8_t> visited(shape, 0);
+  Mat<float>   dist(shape, std::numeric_limits<float>::max());
+  this->roots = Mat<glm::ivec2>(shape, this->null_cell);
 
-  Mat<int> ids(shape);
-  auto lambda = [&ids](int i, int j, int basin_id) { ids(i, j) = basin_id; };
-  this->traverse_upstream(lambda);
-
-  // --- tag ridges
-
-  const int di[8] = {1, 1, 0, -1, -1, -1, 0, 1};
-  const int dj[8] = {0, -1, -1, -1, 0, 1, 1, 1};
-
-  auto is_inside = [&shape](int i, int j)
-  { return i >= 0 && i < shape.x && j >= 0 && j < shape.y; };
-
-  for (int j = 0; j < shape.y; ++j)
-    for (int i = 0; i < shape.x; ++i)
-    {
-      int                     current_id = ids(i, j);
-      std::vector<glm::ivec2> ridge_neighbors = {};
-
-      for (int k = 0; k < 8; ++k)
-      {
-        int ni = i + di[k];
-        int nj = j + dj[k];
-
-        if (ids(ni, nj) != current_id && is_inside(ni, nj))
-          ridge_neighbors.push_back({ni, nj});
-      }
-
-      if (!ridge_neighbors.empty())
-      {
-        ridge_neighbors.push_back({i, j}); // ref pt at the end
-        ridges.push_back(ridge_neighbors);
-      }
-    }
-
-  return ridges;
-}
-
-void DrainageBasinCellBased::remove_lakes_d8(const Array &z,
-                                             float        dz_weight,
-                                             float dz_downstream_cost_ratio)
-{
-  // scale by array shape to get a cumulative amplitude consistent
-  // with distance cost (based on unit cell)
-  dz_weight *= z.shape.x;
-
-  struct PQItem
+  struct HeapNode
   {
-    float cost;
-    int   i, j;
+    float      dist;
+    glm::ivec2 cell;
 
-    bool operator>(const PQItem &o) const
+    bool operator>(const HeapNode &o) const noexcept
     {
-      return cost > o.cost;
+      return dist > o.dist;
     }
   };
 
-  const glm::ivec2 shape = z.shape;
+  std::vector<HeapNode> heap_storage;
+  heap_storage.reserve(rows * cols * 2);
 
-  const int   di[8] = {1, 1, 0, -1, -1, -1, 0, 1};
-  const int   dj[8] = {0, -1, -1, -1, 0, 1, 1, 1};
-  const float dlen[8] = {1.f,
-                         std::sqrt(2.f),
-                         1.f,
-                         std::sqrt(2.f),
-                         1.f,
-                         std::sqrt(2.f),
-                         1.f,
-                         std::sqrt(2.f)};
+  std::priority_queue<HeapNode, std::vector<HeapNode>, std::greater<HeapNode>>
+      heap(std::greater<HeapNode>(), std::move(heap_storage));
 
-  // --- find subroots (includes inner domain sinks)
+  size_t remaining_lakes = 0;
+  for (int j = 0; j < cols; ++j)
+    for (int i = 0; i < rows; ++i)
+      if (subroot(i, j) != this->null_cell) remaining_lakes++;
 
-  Mat<glm::ivec2> subroot(shape, null_cell);
-
-  for (int j = 0; j < shape.y; ++j)
-    for (int i = 0; i < shape.x; ++i)
+  // initialize outlets
+  for (int j = 0; j < cols; ++j)
+    for (int i = 0; i < rows; ++i)
     {
-      if (subroot(i, j) != null_cell) continue;
-
-      std::vector<glm::ivec2> path;
-      glm::ivec2              p = {i, j};
-
-      while ((subroot(p) == null_cell) && (this->next(p) != this->null_cell))
+      if (outlets_mask(i, j))
       {
-        path.push_back(p);
-        p = this->next(p);
+        roots(i, j) = glm::ivec2(i, j);
+        dist(i, j) = 0.f;
+        heap.push({0.f, glm::ivec2(i, j)});
       }
-
-      // p is now either:
-      // - an outlet
-      // - or a lake (self-loop but not outlet)
-      // - or already assigned
-      glm::ivec2 root = p;
-
-      if (subroot(p) != null_cell) root = subroot(p);
-
-      for (const auto &v : path)
-        subroot(v) = root;
-      subroot(p) = root;
     }
 
-  // --- remove lakes
-
-  std::priority_queue<PQItem, std::vector<PQItem>, std::greater<PQItem>> pq;
-  Mat<int>        visited(shape, 0);
-  Mat<glm::ivec2> root(shape, null_cell);
-
-  // initialize heap queue
-  for (int j = 0; j < shape.y; ++j)
-    for (int i = 0; i < shape.x; ++i)
-    {
-      if (i == 0 || j == 0 || i == shape.x - 1 || j == shape.y - 1)
-        if (this->next(i, j) == this->null_cell)
-        {
-          root(i, j) = {i, j};
-          pq.push({0.f, i, j});
-        }
-    }
-
-  // helper - lambda
-  auto is_inside = [&shape](int i, int j)
-  { return i >= 0 && i < shape.x && j >= 0 && j < shape.y; };
-
-  // helper - lambda
-  auto reverse_path_to_outlet = [&](glm::ivec2 start, glm::ivec2 outlet)
+  while (!heap.empty())
   {
-    glm::ivec2 current = start;
-    glm::ivec2 prev = outlet;
+    HeapNode top = heap.top();
+    heap.pop();
 
-    while (next(current) != this->null_cell)
-    {
-      glm::ivec2 next = this->next(current);
-      this->next(current) = prev;
-      prev = current;
-      current = next;
-    }
+    glm::ivec2 p = top.cell;
+    if (visited(p)) continue;
 
-    this->next(current) = prev;
-  };
-
-  // heap queue
-  while (!pq.empty())
-  {
-    auto c = pq.top();
-    pq.pop();
-
-    if (visited(c.i, c.j)) continue;
+    visited(p) = 1;
 
     for (int k = 0; k < 8; ++k)
     {
-      int ni = c.i + di[k];
-      int nj = c.j + dj[k];
+      int ni = p.x + di[k];
+      int nj = p.y + dj[k];
 
-      if (!is_inside(ni, nj) || visited(ni, nj)) continue;
+      if (ni < 0 || ni >= rows || nj < 0 || nj >= cols) continue;
+      if (visited(ni, nj)) continue;
 
-      // connect basin if needed
-      auto lake_root = subroot(ni, nj);
-      auto outlet_root = subroot(c.i, c.j);
+      glm::ivec2 sr = subroot(ni, nj);
 
-      if (root(lake_root) == null_cell)
+      if (sr != this->null_cell && roots(sr) == this->null_cell)
       {
-        reverse_path_to_outlet({ni, nj}, {c.i, c.j});
-        root(lake_root) = root(outlet_root);
+        // redirect lake receivers to outlet along the path
+        glm::ivec2 k_cell(ni, nj);
+        glm::ivec2 nk = p;
+
+        while (receivers(k_cell) != k_cell)
+        {
+          glm::ivec2 tmp = receivers(k_cell);
+          receivers(k_cell) = nk;
+          nk = k_cell;
+          k_cell = tmp;
+        }
+        receivers(k_cell) = nk;
+
+        roots(sr) = roots(subroot(p));
+
+        if (--remaining_lakes == 0) return;
       }
 
-      // cumulative distance
-      float dz = z(ni, nj) - z(c.i, c.j);
-      float dz_cost = dz_weight *
-                      (dz < 0.f ? -dz_downstream_cost_ratio * dz : dz);
-      float new_cost = c.cost + dlen[k] + dz_cost;
-      pq.push({new_cost, ni, nj});
-    }
-
-    root(c.i, c.j) = root(subroot(c.i, c.j));
-    visited(c.i, c.j) = true;
-  }
-}
-
-void DrainageBasinCellBased::traverse_upstream(
-    std::function<void(int i, int j, int i_next, int j_next, int basin_id)> op)
-{
-  for (size_t basin_id = 0; basin_id < this->upstream_traversal.size();
-       ++basin_id)
-  {
-    const auto &path = this->upstream_traversal[basin_id];
-
-    for (size_t k = 0; k < path.size(); ++k)
-    {
-      int i = path[k].x;
-      int j = path[k].y;
-      int ni = this->next(i, j).x;
-      int nj = this->next(i, j).y;
-
-      if (ni >= 0) op(i, j, ni, nj, basin_id);
-    }
-  }
-}
-
-void DrainageBasinCellBased::traverse_upstream(
-    std::function<void(int i, int j, int basin_id)> op)
-{
-  for (size_t basin_id = 0; basin_id < this->upstream_traversal.size();
-       ++basin_id)
-  {
-    const auto &path = this->upstream_traversal[basin_id];
-
-    for (size_t k = 0; k < path.size(); ++k)
-    {
-      int i = path[k].x;
-      int j = path[k].y;
-      op(i, j, int(basin_id));
-    }
-  }
-}
-
-void DrainageBasinCellBased::traverse_downstream(
-    std::function<void(int i, int j, int i_next, int j_next, int basin_id)> op)
-{
-  for (size_t basin_id = 0; basin_id < this->upstream_traversal.size();
-       ++basin_id)
-  {
-    const auto &basin = this->upstream_traversal[basin_id];
-
-    // basin order is downstream → upstream
-    // so we iterate backwards
-    for (int k = int(basin.size()) - 1; k >= 0; --k)
-    {
-      int i = basin[k].x;
-      int j = basin[k].y;
-      int ni = this->next(i, j).x;
-      int nj = this->next(i, j).y;
-
-      if (ni >= 0) op(i, j, ni, nj, basin_id);
-    }
-  }
-}
-
-void DrainageBasinCellBased::traverse_downstream(
-    std::function<void(int i, int j, int basin_id)> op)
-{
-  for (size_t basin_id = 0; basin_id < this->upstream_traversal.size();
-       ++basin_id)
-  {
-    const auto &basin = this->upstream_traversal[basin_id];
-
-    // basin order is downstream → upstream
-    // so we iterate backwards
-    for (int k = int(basin.size()) - 1; k >= 0; --k)
-    {
-      int i = basin[k].x;
-      int j = basin[k].y;
-      op(i, j, basin_id);
-    }
-  }
-}
-
-void DrainageBasinCellBased::update_traversal()
-{
-  const glm::ivec2 shape = this->next.shape;
-  Mat<int>         basin_id(shape, -1);
-
-  this->upstream_traversal.clear();
-
-  // --- identify outlets (no downslope neighbor)
-
-  int basin_counter = 0;
-  for (int j = 0; j < shape.y; ++j)
-    for (int i = 0; i < shape.x; ++i)
-    {
-      if (this->next(i, j) == this->null_cell)
+      // Euclidean distance in grid units
+      float new_dist = top.dist + cd[k] + std::abs(z(ni, nj) - z(p)) * cd[k];
+      if (new_dist < dist(ni, nj))
       {
-        basin_id(i, j) = basin_counter++;
-
-        if (int(this->upstream_traversal.size()) <= basin_id(i, j))
-          this->upstream_traversal.resize(basin_id(i, j) + 1);
-        this->upstream_traversal[basin_id(i, j)].push_back({i, j});
+        dist(ni, nj) = new_dist;
+        heap.push({new_dist, glm::ivec2(ni, nj)});
       }
     }
 
-  // --- propagate upstream
+    glm::ivec2 sri = subroot(p);
+    if (sri != this->null_cell) roots(p) = roots(sri);
+  }
+}
 
-  const int di[8] = {1, 1, 0, -1, -1, -1, 0, 1};
-  const int dj[8] = {0, -1, -1, -1, 0, 1, 1, 1};
+void DrainageBasinCellBased::set_outlets(
+    const std::vector<glm::ivec2> &outlet_indices)
+{
+  const glm::ivec2 &shape = z.shape;
+  this->outlets_mask = Mat<int>(shape, 0);
 
-  for (size_t bid = 0; bid < this->upstream_traversal.size(); ++bid)
+  for (const auto &o : outlet_indices)
+    this->outlets_mask(o) = 1;
+}
+
+float DrainageBasinCellBased::update_elevations(const Array &response_times,
+                                                float        uplift_rate,
+                                                const Array &max_slope)
+{
+  const glm::ivec2 &shape = z.shape;
+
+  float delta_sum = 0.f;
+
+  // compute z range
+  glm::vec2 zr = this->z.range();
+  float     zmin = zr.x;
+  float     zmax = zr.y;
+  float     zptp = zmax - zmin;
+
+  // iterate upstream (outlet first)
+  for (const auto &[outlet, traversal] : traversals)
   {
-    size_t count = 0;
-
-    while (count < this->upstream_traversal[bid].size())
+    for (const glm::ivec2 &i : traversal)
     {
-      glm::ivec2 p = this->upstream_traversal[bid][count];
-      for (int k = 0; k < 8; ++k)
-      {
-        // add upstream nodes whose receiver points to 'p'
-        int i = p.x + di[k];
-        int j = p.y + dj[k];
+      const glm::ivec2 &j = receivers(i);
 
-        if (i < 0 || j < 0 || i >= shape.x || j >= shape.y) continue;
+      if (j == i) continue; // outlet
 
-        if (this->next(i, j) == p)
-          this->upstream_traversal[bid].push_back({i, j});
-      }
-      count++;
+      float dt = std::max(response_times(i) - response_times(outlet), 0.f);
+      float new_elevation = z(outlet) + uplift_rate * dt;
+
+      // slope limiting
+      int   dx = i.x - j.x;
+      int   dy = i.y - j.y;
+      float distance = (dx != 0 && dy != 0) ? M_SQRT2 : 1.f;
+
+      float slope = (new_elevation - z(j)) / distance;
+      float max_slope_n = max_slope(i) * zptp;
+
+      if (slope > max_slope_n) new_elevation = z(j) + max_slope_n * distance;
+
+      float delta = std::abs(new_elevation - z(i));
+      delta_sum += delta;
+
+      z(i) = new_elevation;
     }
   }
 
-  // fail check
-  size_t ctot = 0;
-  for (auto vec : this->upstream_traversal)
-    ctot += vec.size();
+  delta_sum /= float(shape.x * shape.y);
 
-  if (int(ctot) != shape.x * shape.y)
-    LOG_ERROR("DrainageBasinCellBased::update_traversal: wrong count: %ld, %d",
-              ctot,
-              shape.x * shape.y);
+  return delta_sum;
+}
+
+void DrainageBasinCellBased::update_stream_tree(unsigned int seed,
+                                                float        noise_strength)
+{
+  this->compute_receivers(seed, noise_strength);
+  auto [subroots, has_lake] = this->find_subroots();
+
+  if (has_lake) this->remove_lakes(subroots);
+
+  this->update_traversals();
+}
+
+void DrainageBasinCellBased::update_traversals()
+{
+  this->traversals.clear();
+  this->children = invert_receiver_map(this->receivers);
+
+  for (const glm::ivec2 &o : this->get_outlets())
+  {
+    std::vector<glm::ivec2> traversal;
+    traversal.reserve(z.shape.x * z.shape.y);
+    traversal.push_back(o);
+
+    size_t i = 0;
+    while (i < traversal.size())
+    {
+      const glm::ivec2 &node = traversal[i];
+
+      // add upstream nodes
+      for (const glm::ivec2 &child : this->children(node.x, node.y))
+        traversal.push_back(child);
+
+      ++i;
+    }
+
+    std::reverse(traversal.begin(), traversal.end());
+    this->traversals[o] = std::move(traversal);
+  }
+}
+
+// --- FUNCTIONS
+
+Mat<std::vector<glm::ivec2>> invert_receiver_map(
+    const Mat<glm::ivec2> &receivers)
+{
+  const glm::ivec2 &shape = receivers.shape;
+  const int         rows = shape.x;
+  const int         cols = shape.y;
+
+  Mat<std::vector<glm::ivec2>> children(shape);
+
+  for (int j = 0; j < cols; ++j)
+    for (int i = 0; i < rows; ++i)
+    {
+      const glm::ivec2 &r = receivers(i, j);
+
+      if (r != glm::ivec2(i, j)) children(r.x, r.y).push_back(glm::ivec2(i, j));
+    }
+
+  return children;
 }
 
 } // namespace hmap

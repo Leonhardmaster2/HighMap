@@ -26,9 +26,7 @@ Array watershed_ridge(const Array        &z,
                       const Array        *p_noise_y,
                       const Array        *p_scaling)
 {
-  DrainageBasinCellBased basins;
-  bool                   remove_lakes = true;
-  const glm::ivec2       shape = z.shape;
+  const glm::ivec2 shape = z.shape;
 
   // --- distance transform to main channel
 
@@ -36,8 +34,22 @@ Array watershed_ridge(const Array        &z,
   Array zf = z;
   if (prefilter_ir > 0) gpu::smooth_cpulse(zf, prefilter_ir);
 
-  basins.generate_traversal(zf, fd_method, remove_lakes);
-  auto mcs = basins.get_main_channels();
+  // --- stream structure
+
+  auto db = DrainageBasinCellBased(z);
+  db.set_outlets(find_flow_sinks_border(z));
+
+  if (fd_method == FlowDirectionMethod::FDM_D8)
+  {
+    db.compute_receivers();
+    auto [subroots, has_lake] = db.find_subroots();
+    if (has_lake) db.remove_lakes(subroots);
+  }
+  else
+    db.compute_receivers_priority_flood();
+
+  db.update_traversals();
+  auto mcs = db.get_main_channels();
 
   // distance transform to generate valley shape
   Array edt(shape);

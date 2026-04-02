@@ -22,7 +22,7 @@ int main(void)
   hmap::Array scaling = 1.f - hmap::cubic_pulse(shape);
 
   float amplitude = 0.2f;
-  float width = 12.f;
+  float width = 24.f;
   float exponent = 0.5f;
   int   prefilter_ir = 4;
 

@@ -519,15 +519,6 @@ float DrainageBasin::update_elevations(const std::vector<float> &response_times,
   const size_t n = this->receivers.size();
   float        delta_sum = 0.f;
 
-  // precompute outlet_of
-  std::vector<size_t> outlet_of(n);
-
-  for (const auto &[outlet, traversal] : traversals)
-  {
-    for (size_t i : traversal)
-      outlet_of[i] = outlet;
-  }
-
   // get z range to scale slope limiters
   glm::vec2 zr = this->mesh.get_range_z();
   float     zptp = zr.y - zr.x;

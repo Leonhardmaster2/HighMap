@@ -17,8 +17,6 @@ namespace hmap
 class DrainageBasin
 {
 public:
-  // --- Construction ---
-
   DrainageBasin(std::vector<glm::vec3> xyz_);
 
   const std::vector<glm::vec3> &get_xyz() const;

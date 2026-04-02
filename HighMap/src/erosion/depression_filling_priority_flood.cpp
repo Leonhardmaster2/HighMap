@@ -13,16 +13,22 @@ namespace hmap
 
 void depression_filling_priority_flood(Array &z)
 {
-  auto basins = DrainageBasinCellBased();
-  basins.generate_traversal_priority_flood(z);
+  auto db = DrainageBasinCellBased(z);
 
-  auto lambda = [&z](int i, int j, int i_next, int j_next, int /* basin_id */)
-  {
-    float new_z = std::max(z(i_next, j_next), z(i, j));
-    z(i, j) = new_z;
-  };
+  db.compute_receivers_priority_flood();
+  db.update_traversals();
 
-  basins.traverse_upstream(lambda);
+  auto upstream_traversals = db.compute_upstream_traversals();
+
+  for (const auto &indices : upstream_traversals)
+    for (size_t k = 0; k < indices.size(); ++k)
+    {
+      const auto &i = indices[k];
+      const auto &r = db.receivers(i);
+
+      float new_z = std::max(z(i), z(r));
+      z(i) = new_z;
+    }
 }
 
 } // namespace hmap

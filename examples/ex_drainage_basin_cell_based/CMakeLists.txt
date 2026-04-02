@@ -1,0 +1,2 @@
+add_executable(ex_drainage_basin_cell_based ex_drainage_basin_cell_based.cpp)
+target_link_libraries(ex_drainage_basin_cell_based highmap)
