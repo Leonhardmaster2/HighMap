@@ -1,15 +1,10 @@
-\doxysection{High\+Map/include/highmap/hydrology.hpp File Reference}
-\hypertarget{hydrology_8hpp}{}\label{hydrology_8hpp}\index{HighMap/include/highmap/hydrology.hpp@{HighMap/include/highmap/hydrology.hpp}}
+\doxysection{High\+Map/include/highmap/hydrology/hydrology.hpp File Reference}
+\hypertarget{hydrology_8hpp}{}\label{hydrology_8hpp}\index{HighMap/include/highmap/hydrology/hydrology.hpp@{HighMap/include/highmap/hydrology/hydrology.hpp}}
 
 
 Header file for hydrological modeling functions and utilities.  
 
 
-\doxysubsubsection*{Classes}
-\begin{DoxyCompactItemize}
-\item 
-class \mbox{\hyperlink{classhmap_1_1DrainageBasinCellBased}{hmap\+::\+Drainage\+Basin\+Cell\+Based}}
-\end{DoxyCompactItemize}
 \doxysubsubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
@@ -17,19 +12,10 @@ namespace \mbox{\hyperlink{namespacehmap}{hmap}}
 \item 
 namespace \mbox{\hyperlink{namespacehmap_1_1gpu}{hmap\+::gpu}}
 \end{DoxyCompactItemize}
-\doxysubsubsection*{Enumerations}
-\begin{DoxyCompactItemize}
-\item 
-enum \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}{hmap\+::\+Flow\+Direction\+Method}} \+: int \{ \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0}{hmap\+::\+FDM\+\_\+\+D8}}
-, \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359}{hmap\+::\+FDM\+\_\+\+PRIORITY\+\_\+\+FLOOD}}
-, \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0}{hmap\+::\+FDM\+\_\+\+D8}}
-, \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359}{hmap\+::\+FDM\+\_\+\+PRIORITY\+\_\+\+FLOOD}}
- \}
-\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a8284b00f1f460f1d5a406ee45587dcd9}{hmap\+::basin\+\_\+id}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}{Flow\+Direction\+Method}} fd\+\_\+method=Flow\+Direction\+Method\+::\+FDM\+\_\+\+D8, bool remove\+\_\+lakes=true)
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a8284b00f1f460f1d5a406ee45587dcd9}{hmap\+::basin\+\_\+id}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}{Flow\+Direction\+Method}} fd\+\_\+method=\mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894}{Flow\+Direction\+Method\+::\+FDM\+\_\+\+D8}}, bool remove\+\_\+lakes=true)
 \begin{DoxyCompactList}\small\item\em Label drainage basins using a priority-\/flood algorithm. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a2e0533063a77bfc047472d1d85f3f63c}{hmap\+::d8\+\_\+compute\+\_\+ndip}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&d8)
 \begin{DoxyCompactList}\small\item\em Computes the number of drainage paths for each cell based on the D8 flow direction model. \end{DoxyCompactList}\item 
@@ -38,7 +24,9 @@ void \mbox{\hyperlink{namespacehmap_a05b9777b63947937181d7b7406e4b50d}{hmap\+::f
 void \mbox{\hyperlink{namespacehmap_ae42a874864d2d8f1a7b580f428395c01}{hmap\+::find\+\_\+flow\+\_\+sinks}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, std\+::vector$<$ int $>$ \&is, std\+::vector$<$ int $>$ \&js)
 \begin{DoxyCompactList}\small\item\em Identifies the indices of flow sinks within the heightmap. \end{DoxyCompactList}\item 
 std\+::vector$<$ glm\+::ivec2 $>$ \mbox{\hyperlink{namespacehmap_add95813f31b18511fc6eeb672c3a056c}{hmap\+::find\+\_\+flow\+\_\+sinks}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z)
-\item 
+\begin{DoxyCompactList}\small\item\em Find interior flow sinks in a height field. \end{DoxyCompactList}\item 
+std\+::vector$<$ glm\+::ivec2 $>$ \mbox{\hyperlink{namespacehmap_a823804201f4a5d9d2f2ada14120a6c8c}{hmap\+::find\+\_\+flow\+\_\+sinks\+\_\+border}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z)
+\begin{DoxyCompactList}\small\item\em Find flow sinks located on the domain border. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a2318944325d02f3969aa7fa58b500278}{hmap\+::flooding\+\_\+uniform\+\_\+level}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, float zref)
 \begin{DoxyCompactList}\small\item\em Compute water depth for a uniform flooding level. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a2b57b45ea7a8a48b43443aa4d1dddbe8}{hmap\+::flooding\+\_\+from\+\_\+boundaries}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, float zref, bool from\+\_\+east=true, bool from\+\_\+west=true, bool from\+\_\+north=true, bool from\+\_\+south=true)
@@ -82,7 +70,21 @@ void \mbox{\hyperlink{namespacehmap_a3aebd62906b90ccfde11140e13b0853f}{hmap\+::w
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_ad39c72e2b4c07d3013f7b0143c31137c}{hmap\+::water\+\_\+mask}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&water\+\_\+depth)
 \begin{DoxyCompactList}\small\item\em Generates a binary mask representing water presence. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_abc5928f49e530927c8fb61a9afea3274}{hmap\+::water\+\_\+mask}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&water\+\_\+depth, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, float additional\+\_\+depth)
-\begin{DoxyCompactList}\small\item\em Computes a gradient-\/based water mask using an extended water depth model. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Computes a gradient-\/based water mask using an extended water depth model. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a1ac328bd9a69f8737550a131d3f9c516}{hmap\+::gpu\+::flow\+\_\+accumulation\+\_\+from\+\_\+velocity\+\_\+field}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&u, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&v, int iterations)
+\begin{DoxyCompactList}\small\item\em Approximates flow accumulation from a 2D velocity field. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_af794a4c54c3766ca86b7e4a06346ab91}{hmap\+::gpu\+::flow\+\_\+direction\+\_\+d8}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z)
+\begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_af8f580c9d50a07585257569bd1160891}{hmap\+::flow\+\_\+direction\+\_\+d8}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_ab2ccca5e12b451191af1edc97cb86fbf}{hmap\+::gpu\+::flow\+\_\+simulation}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, float water\+\_\+depth, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&depth\+\_\+map, int iterations, float dt=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, bool flux\+\_\+diffusion=true, float flux\+\_\+diffusion\+\_\+strength=0.\+01\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float dry\+\_\+out\+\_\+ratio=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
+\begin{DoxyCompactList}\small\item\em GPU hydraulic flow simulation using a virtual-\/pipes model; simulates shallow-\/water transport over a height field using iterative flux computation and water transport passes, with optional flux diffusion and post-\/simulation depth clamping to remove thin residual water layers. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_aeebe29334cfef012f311a2369ed3286c}{hmap\+::gpu\+::flow\+\_\+simulation\+\_\+viscous}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, float water\+\_\+depth, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&depth\+\_\+map, int iterations, float dt=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float dry\+\_\+out\+\_\+ratio=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float viscosity=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float power=2.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
+\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a129b54789c706428d04afd91d5eb8ae6}{hmap\+::gpu\+::generate\+\_\+riverbed}} (const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&path, glm\+::ivec2 shape, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, bool bezier\+\_\+smoothing=false, float depth\+\_\+start=0.\+01\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float depth\+\_\+end=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float slope\+\_\+start=64.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float slope\+\_\+end=32.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float shape\+\_\+exponent\+\_\+start=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float shape\+\_\+exponent\+\_\+end=10.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float k\+\_\+smoothing=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, int post\+\_\+filter\+\_\+ir=0, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+r=nullptr)
+\begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a30d55fae5c75a1c45a005a3f9a9467eb}{hmap\+::generate\+\_\+riverbed}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a7bed0a401445a2b13d8d37e7a34ea598}{hmap\+::gpu\+::snow\+\_\+simulation}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, float snow\+\_\+depth, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&fall\+\_\+map, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&melting\+\_\+map, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&talus, int iterations, float dt=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float fall\+\_\+iterations\+\_\+ratio=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float k\+\_\+snow=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float k\+\_\+visc=0.\+1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float k\+\_\+melt\+\_\+factor=0.\+8\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float k\+\_\+depth\+\_\+ratio=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float k\+\_\+depth\+\_\+slope\+\_\+ratio=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, bool post\+\_\+filter=true, float thermal\+\_\+talus\+\_\+ratio=0.\+2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
+\begin{DoxyCompactList}\small\item\em Simulate snow accumulation and redistribution over a terrain. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacehmap_1_1gpu_a809224818643782fce94ea97109df3f7}{hmap\+::gpu\+::water\+\_\+depth\+\_\+filter}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&depth, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int ir)
+\begin{DoxyCompactList}\small\item\em Filters water depth values using elevation data and a given radius. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}

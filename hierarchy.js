@@ -64,6 +64,7 @@ var hierarchy =
     [ "glm::ivec2", null, [
       [ "hmap::Vec2< int >", "structhmap_1_1Vec2_3_01int_01_4.html", null ]
     ] ],
+    [ "hmap::IVec2Hash", "structhmap_1_1IVec2Hash.html", null ],
     [ "glm::ivec3", null, [
       [ "hmap::Vec3< int >", "structhmap_1_1Vec3_3_01int_01_4.html", null ]
     ] ],
@@ -75,6 +76,8 @@ var hierarchy =
     [ "hmap::LruTileEntry", "structhmap_1_1LruTileEntry.html", null ],
     [ "hmap::Mat< T >", "structhmap_1_1Mat.html", null ],
     [ "hmap::Mat< glm::ivec2 >", "structhmap_1_1Mat.html", null ],
+    [ "hmap::Mat< int >", "structhmap_1_1Mat.html", null ],
+    [ "hmap::Mat< std::vector< glm::ivec2 > >", "structhmap_1_1Mat.html", null ],
     [ "hmap::NaturalNeighborInterpolator", "classhmap_1_1NaturalNeighborInterpolator.html", null ],
     [ "hmap::TerrainTriMesh::Neighbor", "structhmap_1_1TerrainTriMesh_1_1Neighbor.html", null ],
     [ "hmap::TerrainTriMesh::NeighborData", "structhmap_1_1TerrainTriMesh_1_1NeighborData.html", null ],

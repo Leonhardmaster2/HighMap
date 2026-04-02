@@ -68,6 +68,8 @@ class \mbox{\hyperlink{classhmap_1_1Interpolator1D}{Interpolator1D}}
 \begin{DoxyCompactList}\small\item\em A class for performing 1D interpolation using the GSL library. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classhmap_1_1InterpolatorCurve}{Interpolator\+Curve}}
 \begin{DoxyCompactList}\small\item\em Class for performing curve interpolation on a set of points. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structhmap_1_1IVec2Hash}{IVec2\+Hash}}
+\item 
 struct \mbox{\hyperlink{structhmap_1_1IVec4Eq}{IVec4\+Eq}}
 \item 
 struct \mbox{\hyperlink{structhmap_1_1IVec4Hash}{IVec4\+Hash}}
@@ -305,16 +307,8 @@ enum \mbox{\hyperlink{namespacehmap_aba758c4143b6e499ec6f4385467a6d77}{Point\+Sa
 , \mbox{\hyperlink{namespacehmap_aba758c4143b6e499ec6f4385467a6d77a8943dd2a2e3993c1e0cff37be3f65957}{RND\+\_\+\+LHS}}
  \}
 \begin{DoxyCompactList}\small\item\em Enumeration of point sampling methods. \end{DoxyCompactList}\item 
-enum \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}{Flow\+Direction\+Method}} \+: int \{ \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0}{FDM\+\_\+\+D8}}
-, \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359}{FDM\+\_\+\+PRIORITY\+\_\+\+FLOOD}}
-, \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0}{FDM\+\_\+\+D8}}
-, \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359}{FDM\+\_\+\+PRIORITY\+\_\+\+FLOOD}}
- \}
-\item 
-enum \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}{Flow\+Direction\+Method}} \+: int \{ \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0}{FDM\+\_\+\+D8}}
-, \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359}{FDM\+\_\+\+PRIORITY\+\_\+\+FLOOD}}
-, \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0}{FDM\+\_\+\+D8}}
-, \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359}{FDM\+\_\+\+PRIORITY\+\_\+\+FLOOD}}
+enum \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}{Flow\+Direction\+Method}} \+: int \{ \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894}{FDM\+\_\+\+D8}}
+, \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2faaf8f41c39c71902022e1aec12f10d372}{FDM\+\_\+\+PRIORITY\+\_\+\+FLOOD}}
  \}
 \item 
 enum \mbox{\hyperlink{namespacehmap_a46291bb4766800deacc1ce9b45a9ea6b}{Interpolation\+Method1D}} \+: int \{ \newline
@@ -1111,7 +1105,19 @@ void \mbox{\hyperlink{namespacehmap_a0bcc84aa462aee73e1a3a52729f21ea6}{solve\+\_
 \begin{DoxyCompactList}\small\item\em Unwraps a 2D phase array to correct discontinuities in phase data. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a184b9eed77a8732a8631f8dd73d75a44}{talus\+\_\+jump\+\_\+mask}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, float threshold, float sigma)
 \item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a8284b00f1f460f1d5a406ee45587dcd9}{basin\+\_\+id}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}{Flow\+Direction\+Method}} fd\+\_\+method=Flow\+Direction\+Method\+::\+FDM\+\_\+\+D8, bool remove\+\_\+lakes=true)
+std\+::vector$<$ size\+\_\+t $>$ \mbox{\hyperlink{namespacehmap_a330255b50cec60fc2ba713fb945e2fdd}{find\+\_\+border\+\_\+minima}} (const std\+::vector$<$ glm\+::vec3 $>$ \&xyz, float eps=1e-\/6\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
+\item 
+std\+::vector$<$ size\+\_\+t $>$ \mbox{\hyperlink{namespacehmap_a7c49b9b92f0badad7ace856e897de1f0}{find\+\_\+border\+\_\+sinks}} (\mbox{\hyperlink{classhmap_1_1TerrainTriMesh}{Terrain\+Tri\+Mesh}} \&mesh, float eps=1e-\/6\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
+\item 
+std\+::vector$<$ glm\+::vec3 $>$ \mbox{\hyperlink{namespacehmap_a23ab6bc3fdc7d5c498f0b3c8bebdd4f9}{heightmap\+\_\+retopology}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, float max\+\_\+error, int max\+\_\+triangles=0, int max\+\_\+points=0)
+\item 
+std\+::vector$<$ std\+::vector$<$ size\+\_\+t $>$ $>$ \mbox{\hyperlink{namespacehmap_a40daf45c4bfaee46d924bf597fa0dbfc}{invert\+\_\+receiver\+\_\+map}} (const std\+::vector$<$ size\+\_\+t $>$ \&receivers)
+\item 
+std\+::vector$<$ size\+\_\+t $>$ \mbox{\hyperlink{namespacehmap_abbc07969594bdb8632f96c9ec893872e}{sample\+\_\+border\+\_\+points}} (const std\+::vector$<$ glm\+::vec3 $>$ \&xyz, size\+\_\+t nb)
+\item 
+\mbox{\hyperlink{structhmap_1_1Mat}{Mat}}$<$ std\+::vector$<$ glm\+::ivec2 $>$ $>$ \mbox{\hyperlink{namespacehmap_a6d5ae7cdae4d3db7507517699fb44ed7}{invert\+\_\+receiver\+\_\+map}} (const \mbox{\hyperlink{structhmap_1_1Mat}{Mat}}$<$ glm\+::ivec2 $>$ \&receivers)
+\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a8284b00f1f460f1d5a406ee45587dcd9}{basin\+\_\+id}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}{Flow\+Direction\+Method}} fd\+\_\+method=\mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894}{Flow\+Direction\+Method\+::\+FDM\+\_\+\+D8}}, bool remove\+\_\+lakes=true)
 \begin{DoxyCompactList}\small\item\em Label drainage basins using a priority-\/flood algorithm. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a2e0533063a77bfc047472d1d85f3f63c}{d8\+\_\+compute\+\_\+ndip}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&d8)
 \begin{DoxyCompactList}\small\item\em Computes the number of drainage paths for each cell based on the D8 flow direction model. \end{DoxyCompactList}\item 
@@ -1120,7 +1126,9 @@ void \mbox{\hyperlink{namespacehmap_a05b9777b63947937181d7b7406e4b50d}{find\+\_\
 void \mbox{\hyperlink{namespacehmap_ae42a874864d2d8f1a7b580f428395c01}{find\+\_\+flow\+\_\+sinks}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, std\+::vector$<$ int $>$ \&is, std\+::vector$<$ int $>$ \&js)
 \begin{DoxyCompactList}\small\item\em Identifies the indices of flow sinks within the heightmap. \end{DoxyCompactList}\item 
 std\+::vector$<$ glm\+::ivec2 $>$ \mbox{\hyperlink{namespacehmap_add95813f31b18511fc6eeb672c3a056c}{find\+\_\+flow\+\_\+sinks}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z)
-\item 
+\begin{DoxyCompactList}\small\item\em Find interior flow sinks in a height field. \end{DoxyCompactList}\item 
+std\+::vector$<$ glm\+::ivec2 $>$ \mbox{\hyperlink{namespacehmap_a823804201f4a5d9d2f2ada14120a6c8c}{find\+\_\+flow\+\_\+sinks\+\_\+border}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z)
+\begin{DoxyCompactList}\small\item\em Find flow sinks located on the domain border. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a2318944325d02f3969aa7fa58b500278}{flooding\+\_\+uniform\+\_\+level}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, float zref)
 \begin{DoxyCompactList}\small\item\em Compute water depth for a uniform flooding level. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a2b57b45ea7a8a48b43443aa4d1dddbe8}{flooding\+\_\+from\+\_\+boundaries}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, float zref, bool from\+\_\+east=true, bool from\+\_\+west=true, bool from\+\_\+north=true, bool from\+\_\+south=true)
@@ -1165,16 +1173,6 @@ void \mbox{\hyperlink{namespacehmap_a3aebd62906b90ccfde11140e13b0853f}{water\+\_
 \begin{DoxyCompactList}\small\item\em Generates a binary mask representing water presence. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_abc5928f49e530927c8fb61a9afea3274}{water\+\_\+mask}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&water\+\_\+depth, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, float additional\+\_\+depth)
 \begin{DoxyCompactList}\small\item\em Computes a gradient-\/based water mask using an extended water depth model. \end{DoxyCompactList}\item 
-std\+::vector$<$ size\+\_\+t $>$ \mbox{\hyperlink{namespacehmap_a330255b50cec60fc2ba713fb945e2fdd}{find\+\_\+border\+\_\+minima}} (const std\+::vector$<$ glm\+::vec3 $>$ \&xyz, float eps=1e-\/6\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
-\item 
-std\+::vector$<$ size\+\_\+t $>$ \mbox{\hyperlink{namespacehmap_a7c49b9b92f0badad7ace856e897de1f0}{find\+\_\+border\+\_\+sinks}} (\mbox{\hyperlink{classhmap_1_1TerrainTriMesh}{Terrain\+Tri\+Mesh}} \&mesh, float eps=1e-\/6\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
-\item 
-std\+::vector$<$ glm\+::vec3 $>$ \mbox{\hyperlink{namespacehmap_a23ab6bc3fdc7d5c498f0b3c8bebdd4f9}{heightmap\+\_\+retopology}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, float max\+\_\+error, int max\+\_\+triangles=0, int max\+\_\+points=0)
-\item 
-std\+::vector$<$ std\+::vector$<$ size\+\_\+t $>$ $>$ \mbox{\hyperlink{namespacehmap_a40daf45c4bfaee46d924bf597fa0dbfc}{invert\+\_\+receiver\+\_\+map}} (const std\+::vector$<$ size\+\_\+t $>$ \&receivers)
-\item 
-std\+::vector$<$ size\+\_\+t $>$ \mbox{\hyperlink{namespacehmap_abbc07969594bdb8632f96c9ec893872e}{sample\+\_\+border\+\_\+points}} (const std\+::vector$<$ glm\+::vec3 $>$ \&xyz, size\+\_\+t nb)
-\item 
 std\+::filesystem\+::path \mbox{\hyperlink{namespacehmap_a67eae4546cbed6a804eaddcde9350e1c}{add\+\_\+filename\+\_\+suffix}} (const std\+::filesystem\+::path \&file\+\_\+path, const std\+::string \&suffix)
 \item 
 std\+::filesystem\+::path \mbox{\hyperlink{namespacehmap_a0a506d871b395e49e6175499dfa1e903}{make\+\_\+unique\+\_\+temp\+\_\+dir}} (const std\+::string \&prefix)
@@ -2279,47 +2277,15 @@ RND\+\_\+\+LHS&Latin Hypercube Sampling. \\
 \Hypertarget{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}\label{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f} 
 \index{hmap@{hmap}!FlowDirectionMethod@{FlowDirectionMethod}}
 \index{FlowDirectionMethod@{FlowDirectionMethod}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{FlowDirectionMethod}{FlowDirectionMethod}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{FlowDirectionMethod}{FlowDirectionMethod}}
 {\footnotesize\ttfamily enum \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}{hmap\+::\+Flow\+Direction\+Method}} \+: int}
 
 \begin{DoxyEnumFields}{Enumerator}
-\raisebox{\heightof{T}}[0pt][0pt]{\index{FDM\_D8@{FDM\_D8}!hmap@{hmap}}\index{hmap@{hmap}!FDM\_D8@{FDM\_D8}}}\Hypertarget{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0}\label{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0} 
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FDM\_D8@{FDM\_D8}!hmap@{hmap}}\index{hmap@{hmap}!FDM\_D8@{FDM\_D8}}}\Hypertarget{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894}\label{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894} 
 FDM\+\_\+\+D8&\\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{FDM\_PRIORITY\_FLOOD@{FDM\_PRIORITY\_FLOOD}!hmap@{hmap}}\index{hmap@{hmap}!FDM\_PRIORITY\_FLOOD@{FDM\_PRIORITY\_FLOOD}}}\Hypertarget{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359}\label{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359} 
-FDM\+\_\+\+PRIORITY\+\_\+\+FLOOD&\\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{FDM\_D8@{FDM\_D8}!hmap@{hmap}}\index{hmap@{hmap}!FDM\_D8@{FDM\_D8}}}\Hypertarget{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0}\label{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0} 
-FDM\+\_\+\+D8&\\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{FDM\_PRIORITY\_FLOOD@{FDM\_PRIORITY\_FLOOD}!hmap@{hmap}}\index{hmap@{hmap}!FDM\_PRIORITY\_FLOOD@{FDM\_PRIORITY\_FLOOD}}}\Hypertarget{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359}\label{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359} 
-FDM\+\_\+\+PRIORITY\+\_\+\+FLOOD&\\
-\hline
-
-\end{DoxyEnumFields}
-\Hypertarget{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}\label{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f} 
-\index{hmap@{hmap}!FlowDirectionMethod@{FlowDirectionMethod}}
-\index{FlowDirectionMethod@{FlowDirectionMethod}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{FlowDirectionMethod}{FlowDirectionMethod}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily enum \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}{hmap\+::\+Flow\+Direction\+Method}} \+: int}
-
-\begin{DoxyEnumFields}{Enumerator}
-\raisebox{\heightof{T}}[0pt][0pt]{\index{FDM\_D8@{FDM\_D8}!hmap@{hmap}}\index{hmap@{hmap}!FDM\_D8@{FDM\_D8}}}\Hypertarget{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0}\label{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0} 
-FDM\+\_\+\+D8&\\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{FDM\_PRIORITY\_FLOOD@{FDM\_PRIORITY\_FLOOD}!hmap@{hmap}}\index{hmap@{hmap}!FDM\_PRIORITY\_FLOOD@{FDM\_PRIORITY\_FLOOD}}}\Hypertarget{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359}\label{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359} 
-FDM\+\_\+\+PRIORITY\+\_\+\+FLOOD&\\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{FDM\_D8@{FDM\_D8}!hmap@{hmap}}\index{hmap@{hmap}!FDM\_D8@{FDM\_D8}}}\Hypertarget{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0}\label{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0} 
-FDM\+\_\+\+D8&\\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{FDM\_PRIORITY\_FLOOD@{FDM\_PRIORITY\_FLOOD}!hmap@{hmap}}\index{hmap@{hmap}!FDM\_PRIORITY\_FLOOD@{FDM\_PRIORITY\_FLOOD}}}\Hypertarget{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359}\label{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359} 
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FDM\_PRIORITY\_FLOOD@{FDM\_PRIORITY\_FLOOD}!hmap@{hmap}}\index{hmap@{hmap}!FDM\_PRIORITY\_FLOOD@{FDM\_PRIORITY\_FLOOD}}}\Hypertarget{namespacehmap_a0c714c7fa78e9384806de52a5d039f2faaf8f41c39c71902022e1aec12f10d372}\label{namespacehmap_a0c714c7fa78e9384806de52a5d039f2faaf8f41c39c71902022e1aec12f10d372} 
 FDM\+\_\+\+PRIORITY\+\_\+\+FLOOD&\\
 \hline
 
@@ -17498,11 +17464,47 @@ A 2D array of unwrapped phase values.
 \doxysubsubsection{\texorpdfstring{talus\_jump\_mask()}{talus\_jump\_mask()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::talus\+\_\+jump\+\_\+mask (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{float}]{threshold,  }\item[{float}]{sigma }\end{DoxyParamCaption})}
 
+\Hypertarget{namespacehmap_a330255b50cec60fc2ba713fb945e2fdd}\label{namespacehmap_a330255b50cec60fc2ba713fb945e2fdd} 
+\index{hmap@{hmap}!find\_border\_minima@{find\_border\_minima}}
+\index{find\_border\_minima@{find\_border\_minima}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{find\_border\_minima()}{find\_border\_minima()}}
+{\footnotesize\ttfamily std\+::vector$<$ size\+\_\+t $>$ hmap\+::find\+\_\+border\+\_\+minima (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ glm\+::vec3 $>$ \&}]{xyz,  }\item[{float}]{eps = {\ttfamily 1e-\/6\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacehmap_a7c49b9b92f0badad7ace856e897de1f0}\label{namespacehmap_a7c49b9b92f0badad7ace856e897de1f0} 
+\index{hmap@{hmap}!find\_border\_sinks@{find\_border\_sinks}}
+\index{find\_border\_sinks@{find\_border\_sinks}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{find\_border\_sinks()}{find\_border\_sinks()}}
+{\footnotesize\ttfamily std\+::vector$<$ size\+\_\+t $>$ hmap\+::find\+\_\+border\+\_\+sinks (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1TerrainTriMesh}{Terrain\+Tri\+Mesh}} \&}]{mesh,  }\item[{float}]{eps = {\ttfamily 1e-\/6\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacehmap_a23ab6bc3fdc7d5c498f0b3c8bebdd4f9}\label{namespacehmap_a23ab6bc3fdc7d5c498f0b3c8bebdd4f9} 
+\index{hmap@{hmap}!heightmap\_retopology@{heightmap\_retopology}}
+\index{heightmap\_retopology@{heightmap\_retopology}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{heightmap\_retopology()}{heightmap\_retopology()}}
+{\footnotesize\ttfamily std\+::vector$<$ glm\+::vec3 $>$ hmap\+::heightmap\+\_\+retopology (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{float}]{max\+\_\+error,  }\item[{int}]{max\+\_\+triangles = {\ttfamily 0},  }\item[{int}]{max\+\_\+points = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacehmap_a40daf45c4bfaee46d924bf597fa0dbfc}\label{namespacehmap_a40daf45c4bfaee46d924bf597fa0dbfc} 
+\index{hmap@{hmap}!invert\_receiver\_map@{invert\_receiver\_map}}
+\index{invert\_receiver\_map@{invert\_receiver\_map}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{invert\_receiver\_map()}{invert\_receiver\_map()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ size\+\_\+t $>$ $>$ hmap\+::invert\+\_\+receiver\+\_\+map (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ size\+\_\+t $>$ \&}]{receivers }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacehmap_abbc07969594bdb8632f96c9ec893872e}\label{namespacehmap_abbc07969594bdb8632f96c9ec893872e} 
+\index{hmap@{hmap}!sample\_border\_points@{sample\_border\_points}}
+\index{sample\_border\_points@{sample\_border\_points}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{sample\_border\_points()}{sample\_border\_points()}}
+{\footnotesize\ttfamily std\+::vector$<$ size\+\_\+t $>$ hmap\+::sample\+\_\+border\+\_\+points (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ glm\+::vec3 $>$ \&}]{xyz,  }\item[{size\+\_\+t}]{nb }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacehmap_a6d5ae7cdae4d3db7507517699fb44ed7}\label{namespacehmap_a6d5ae7cdae4d3db7507517699fb44ed7} 
+\index{hmap@{hmap}!invert\_receiver\_map@{invert\_receiver\_map}}
+\index{invert\_receiver\_map@{invert\_receiver\_map}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{invert\_receiver\_map()}{invert\_receiver\_map()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structhmap_1_1Mat}{Mat}}$<$ std\+::vector$<$ glm\+::ivec2 $>$ $>$ hmap\+::invert\+\_\+receiver\+\_\+map (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structhmap_1_1Mat}{Mat}}$<$ glm\+::ivec2 $>$ \&}]{receivers }\end{DoxyParamCaption})}
+
 \Hypertarget{namespacehmap_a8284b00f1f460f1d5a406ee45587dcd9}\label{namespacehmap_a8284b00f1f460f1d5a406ee45587dcd9} 
 \index{hmap@{hmap}!basin\_id@{basin\_id}}
 \index{basin\_id@{basin\_id}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{basin\_id()}{basin\_id()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::basin\+\_\+id (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{\mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}{Flow\+Direction\+Method}}}]{fd\+\_\+method = {\ttfamily FlowDirectionMethod\+:\+:FDM\+\_\+D8},  }\item[{bool}]{remove\+\_\+lakes = {\ttfamily true} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::basin\+\_\+id (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{\mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}{Flow\+Direction\+Method}}}]{fd\+\_\+method = {\ttfamily \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894}{Flow\+Direction\+Method\+::\+FDM\+\_\+\+D8}}},  }\item[{bool}]{remove\+\_\+lakes = {\ttfamily true} }\end{DoxyParamCaption})}
 
 
 
@@ -17535,10 +17537,10 @@ Connectivity is 8-\/neighbor. Spill elevations between basins are detected but n
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ id1\ =\ \mbox{\hyperlink{namespacehmap_a8284b00f1f460f1d5a406ee45587dcd9}{hmap::basin\_id}}(}
 \DoxyCodeLine{\ \ \ \ \ \ z,}
-\DoxyCodeLine{\ \ \ \ \ \ hmap::FlowDirectionMethod::FDM\_PRIORITY\_FLOOD);}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2faaf8f41c39c71902022e1aec12f10d372}{hmap::FlowDirectionMethod::FDM\_PRIORITY\_FLOOD}});}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(id1);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ id2\ =\ \mbox{\hyperlink{namespacehmap_a8284b00f1f460f1d5a406ee45587dcd9}{hmap::basin\_id}}(z,\ hmap::FlowDirectionMethod::FDM\_D8);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ id2\ =\ \mbox{\hyperlink{namespacehmap_a8284b00f1f460f1d5a406ee45587dcd9}{hmap::basin\_id}}(z,\ \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894}{hmap::FlowDirectionMethod::FDM\_D8}});}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(id2);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_basin\_id.png"{}},\ \{z,\ id1,\ id2\},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}});}
@@ -17637,6 +17639,40 @@ This function locates the cells in the heightmap that are flow sinks (cells with
 \doxysubsubsection{\texorpdfstring{find\_flow\_sinks()}{find\_flow\_sinks()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily std\+::vector$<$ glm\+::ivec2 $>$ hmap\+::find\+\_\+flow\+\_\+sinks (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z }\end{DoxyParamCaption})}
 
+
+
+Find interior flow sinks in a height field. 
+
+A sink is a cell whose 8 neighbors all have strictly higher elevation. Border cells are excluded.
+
+
+\begin{DoxyParams}{Parameters}
+{\em z} & Input elevation grid. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+List of sink cell coordinates (i, j). 
+\end{DoxyReturn}
+\Hypertarget{namespacehmap_a823804201f4a5d9d2f2ada14120a6c8c}\label{namespacehmap_a823804201f4a5d9d2f2ada14120a6c8c} 
+\index{hmap@{hmap}!find\_flow\_sinks\_border@{find\_flow\_sinks\_border}}
+\index{find\_flow\_sinks\_border@{find\_flow\_sinks\_border}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{find\_flow\_sinks\_border()}{find\_flow\_sinks\_border()}}
+{\footnotesize\ttfamily std\+::vector$<$ glm\+::ivec2 $>$ hmap\+::find\+\_\+flow\+\_\+sinks\+\_\+border (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z }\end{DoxyParamCaption})}
+
+
+
+Find flow sinks located on the domain border. 
+
+A border cell is considered a sink if all its valid neighbors (within bounds) have strictly higher elevation.
+
+
+\begin{DoxyParams}{Parameters}
+{\em z} & Input elevation grid. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+List of border sink cell coordinates (i, j). 
+\end{DoxyReturn}
 \Hypertarget{namespacehmap_a2318944325d02f3969aa7fa58b500278}\label{namespacehmap_a2318944325d02f3969aa7fa58b500278} 
 \index{hmap@{hmap}!flooding\_uniform\_level@{flooding\_uniform\_level}}
 \index{flooding\_uniform\_level@{flooding\_uniform\_level}!hmap@{hmap}}
@@ -18525,7 +18561,7 @@ Melting map with values in \mbox{[}0,1\mbox{]}, where higher values indicate str
 \DoxyCodeLine{\ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ talus(shape,\ talus\_repose);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ no-\/melting}}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ snow\_depth0\ =\ hmap::gpu::snow\_simulation(}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ snow\_depth0\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_a7bed0a401445a2b13d8d37e7a34ea598}{hmap::gpu::snow\_simulation}}(}
 \DoxyCodeLine{\ \ \ \ \ \ z,}
 \DoxyCodeLine{\ \ \ \ \ \ amount,}
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}(shape,\ 1.f),\ \textcolor{comment}{//\ fall\_map}}
@@ -18536,7 +18572,7 @@ Melting map with values in \mbox{[}0,1\mbox{]}, where higher values indicate str
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ with\ melting}}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ melt\_map\ =\ \mbox{\hyperlink{namespacehmap_a78419f7981186b40c4a2d04456e4e63f}{hmap::snow\_melting\_map}}(z);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ snow\_depth1\ =\ hmap::gpu::snow\_simulation(}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ snow\_depth1\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_a7bed0a401445a2b13d8d37e7a34ea598}{hmap::gpu::snow\_simulation}}(}
 \DoxyCodeLine{\ \ \ \ \ \ z,}
 \DoxyCodeLine{\ \ \ \ \ \ amount,}
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}(shape,\ 1.f),\ \textcolor{comment}{//\ fall\_map}}
@@ -18800,37 +18836,7 @@ An \doxylink{classhmap_1_1Array}{Array} representing the normalized water extens
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}  \Hypertarget{namespacehmap_a330255b50cec60fc2ba713fb945e2fdd}\label{namespacehmap_a330255b50cec60fc2ba713fb945e2fdd} 
-\index{hmap@{hmap}!find\_border\_minima@{find\_border\_minima}}
-\index{find\_border\_minima@{find\_border\_minima}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{find\_border\_minima()}{find\_border\_minima()}}
-{\footnotesize\ttfamily std\+::vector$<$ size\+\_\+t $>$ hmap\+::find\+\_\+border\+\_\+minima (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ glm\+::vec3 $>$ \&}]{xyz,  }\item[{float}]{eps = {\ttfamily 1e-\/6\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
-
-\Hypertarget{namespacehmap_a7c49b9b92f0badad7ace856e897de1f0}\label{namespacehmap_a7c49b9b92f0badad7ace856e897de1f0} 
-\index{hmap@{hmap}!find\_border\_sinks@{find\_border\_sinks}}
-\index{find\_border\_sinks@{find\_border\_sinks}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{find\_border\_sinks()}{find\_border\_sinks()}}
-{\footnotesize\ttfamily std\+::vector$<$ size\+\_\+t $>$ hmap\+::find\+\_\+border\+\_\+sinks (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1TerrainTriMesh}{Terrain\+Tri\+Mesh}} \&}]{mesh,  }\item[{float}]{eps = {\ttfamily 1e-\/6\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
-
-\Hypertarget{namespacehmap_a23ab6bc3fdc7d5c498f0b3c8bebdd4f9}\label{namespacehmap_a23ab6bc3fdc7d5c498f0b3c8bebdd4f9} 
-\index{hmap@{hmap}!heightmap\_retopology@{heightmap\_retopology}}
-\index{heightmap\_retopology@{heightmap\_retopology}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{heightmap\_retopology()}{heightmap\_retopology()}}
-{\footnotesize\ttfamily std\+::vector$<$ glm\+::vec3 $>$ hmap\+::heightmap\+\_\+retopology (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{float}]{max\+\_\+error,  }\item[{int}]{max\+\_\+triangles = {\ttfamily 0},  }\item[{int}]{max\+\_\+points = {\ttfamily 0} }\end{DoxyParamCaption})}
-
-\Hypertarget{namespacehmap_a40daf45c4bfaee46d924bf597fa0dbfc}\label{namespacehmap_a40daf45c4bfaee46d924bf597fa0dbfc} 
-\index{hmap@{hmap}!invert\_receiver\_map@{invert\_receiver\_map}}
-\index{invert\_receiver\_map@{invert\_receiver\_map}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{invert\_receiver\_map()}{invert\_receiver\_map()}}
-{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ size\+\_\+t $>$ $>$ hmap\+::invert\+\_\+receiver\+\_\+map (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ size\+\_\+t $>$ \&}]{receivers }\end{DoxyParamCaption})}
-
-\Hypertarget{namespacehmap_abbc07969594bdb8632f96c9ec893872e}\label{namespacehmap_abbc07969594bdb8632f96c9ec893872e} 
-\index{hmap@{hmap}!sample\_border\_points@{sample\_border\_points}}
-\index{sample\_border\_points@{sample\_border\_points}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{sample\_border\_points()}{sample\_border\_points()}}
-{\footnotesize\ttfamily std\+::vector$<$ size\+\_\+t $>$ hmap\+::sample\+\_\+border\+\_\+points (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ glm\+::vec3 $>$ \&}]{xyz,  }\item[{size\+\_\+t}]{nb }\end{DoxyParamCaption})}
-
-\Hypertarget{namespacehmap_a67eae4546cbed6a804eaddcde9350e1c}\label{namespacehmap_a67eae4546cbed6a804eaddcde9350e1c} 
+{\bfseries{Result}}  \Hypertarget{namespacehmap_a67eae4546cbed6a804eaddcde9350e1c}\label{namespacehmap_a67eae4546cbed6a804eaddcde9350e1c} 
 \index{hmap@{hmap}!add\_filename\_suffix@{add\_filename\_suffix}}
 \index{add\_filename\_suffix@{add\_filename\_suffix}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{add\_filename\_suffix()}{add\_filename\_suffix()}}

@@ -27,7 +27,7 @@ var searchData=
   ['interpolatorcurve_24',['InterpolatorCurve',['../classhmap_1_1InterpolatorCurve.html#a8c8b2ad64ffe45f673420f80d5118b32',1,'hmap::InterpolatorCurve']]],
   ['intersect_5fbounding_5fboxes_25',['intersect_bounding_boxes',['../namespacehmap.html#a62068967763814bfbf05a505993c544a',1,'hmap']]],
   ['inverse_26',['inverse',['../structhmap_1_1VirtualArray.html#a277b4009dc26ec99a6f82157b899d8cd',1,'hmap::VirtualArray']]],
-  ['invert_5freceiver_5fmap_27',['invert_receiver_map',['../namespacehmap.html#a40daf45c4bfaee46d924bf597fa0dbfc',1,'hmap']]],
+  ['invert_5freceiver_5fmap_27',['invert_receiver_map',['../namespacehmap.html#a40daf45c4bfaee46d924bf597fa0dbfc',1,'hmap::invert_receiver_map(const std::vector&lt; size_t &gt; &amp;receivers)'],['../namespacehmap.html#a6d5ae7cdae4d3db7507517699fb44ed7',1,'hmap::invert_receiver_map(const Mat&lt; glm::ivec2 &gt; &amp;receivers)']]],
   ['is_5fequal_28',['is_equal',['../namespacehmap.html#abf083eedad3497bd58486775bcf3e80d',1,'hmap']]],
   ['is_5fmonotonic_29',['is_monotonic',['../namespacehmap.html#a567abeb8b68a281411d811987a84ee42',1,'hmap']]],
   ['is_5fnon_5fzero_30',['is_non_zero',['../namespacehmap.html#a339d883dc34fc818dd25077c5daab953',1,'hmap']]],

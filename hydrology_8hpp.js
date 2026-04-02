@@ -1,17 +1,11 @@
 var hydrology_8hpp =
 [
-    [ "hmap::DrainageBasinCellBased", "classhmap_1_1DrainageBasinCellBased.html", "classhmap_1_1DrainageBasinCellBased" ],
-    [ "FlowDirectionMethod", "hydrology_8hpp.html#a0c714c7fa78e9384806de52a5d039f2f", [
-      [ "FDM_D8", "hydrology_8hpp.html#a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0", null ],
-      [ "FDM_PRIORITY_FLOOD", "hydrology_8hpp.html#a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359", null ],
-      [ "FDM_D8", "hydrology_8hpp.html#a0c714c7fa78e9384806de52a5d039f2fa1502a9676df101f699f247957e34f4d0", null ],
-      [ "FDM_PRIORITY_FLOOD", "hydrology_8hpp.html#a0c714c7fa78e9384806de52a5d039f2fa52cae2687a0f5db677493eed384aa359", null ]
-    ] ],
     [ "basin_id", "hydrology_8hpp.html#a8284b00f1f460f1d5a406ee45587dcd9", null ],
     [ "d8_compute_ndip", "hydrology_8hpp.html#a2e0533063a77bfc047472d1d85f3f63c", null ],
     [ "find_flow_apex", "hydrology_8hpp.html#a05b9777b63947937181d7b7406e4b50d", null ],
     [ "find_flow_sinks", "hydrology_8hpp.html#ae42a874864d2d8f1a7b580f428395c01", null ],
     [ "find_flow_sinks", "hydrology_8hpp.html#add95813f31b18511fc6eeb672c3a056c", null ],
+    [ "find_flow_sinks_border", "hydrology_8hpp.html#a823804201f4a5d9d2f2ada14120a6c8c", null ],
     [ "flooding_uniform_level", "hydrology_8hpp.html#a2318944325d02f3969aa7fa58b500278", null ],
     [ "flooding_from_boundaries", "hydrology_8hpp.html#a2b57b45ea7a8a48b43443aa4d1dddbe8", null ],
     [ "flooding_from_point", "hydrology_8hpp.html#add3e6744c96ed203d611ceecf65d343e", null ],
@@ -33,5 +27,12 @@ var hydrology_8hpp =
     [ "water_depth_dry_out", "hydrology_8hpp.html#a3aebd62906b90ccfde11140e13b0853f", null ],
     [ "water_depth_increase", "hydrology_8hpp.html#a136f042ce2ad8c14033f4d839f56265d", null ],
     [ "water_mask", "hydrology_8hpp.html#ad39c72e2b4c07d3013f7b0143c31137c", null ],
-    [ "water_mask", "hydrology_8hpp.html#abc5928f49e530927c8fb61a9afea3274", null ]
+    [ "water_mask", "hydrology_8hpp.html#abc5928f49e530927c8fb61a9afea3274", null ],
+    [ "flow_accumulation_from_velocity_field", "hydrology_8hpp.html#a1ac328bd9a69f8737550a131d3f9c516", null ],
+    [ "flow_direction_d8", "hydrology_8hpp.html#af794a4c54c3766ca86b7e4a06346ab91", null ],
+    [ "flow_simulation", "hydrology_8hpp.html#ab2ccca5e12b451191af1edc97cb86fbf", null ],
+    [ "flow_simulation_viscous", "hydrology_8hpp.html#aeebe29334cfef012f311a2369ed3286c", null ],
+    [ "generate_riverbed", "hydrology_8hpp.html#a129b54789c706428d04afd91d5eb8ae6", null ],
+    [ "snow_simulation", "hydrology_8hpp.html#a7bed0a401445a2b13d8d37e7a34ea598", null ],
+    [ "water_depth_filter", "hydrology_8hpp.html#a809224818643782fce94ea97109df3f7", null ]
 ];

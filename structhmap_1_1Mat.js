@@ -1,5 +1,6 @@
 var structhmap_1_1Mat =
 [
+    [ "Mat", "structhmap_1_1Mat.html#aa469721a9114946e5346e95029a5f5dd", null ],
     [ "Mat", "structhmap_1_1Mat.html#a6a0451aafcbc5205d7f6bbe534092a9a", null ],
     [ "Mat", "structhmap_1_1Mat.html#a83bf076cc0c3e6dd8911e05a2b95592e", null ],
     [ "operator()", "structhmap_1_1Mat.html#a429366c8daa4495b65f288f3527f2022", null ],

@@ -2,40 +2,95 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classhmap_1_1DrainageBasinCellBased" kind="class" language="C++" prot="public">
     <compoundname>hmap::DrainageBasinCellBased</compoundname>
-    <includes refid="hydrology_8hpp" local="no">hydrology.hpp</includes>
+    <includes refid="drainage__basin__cell__based_8hpp" local="no">drainage_basin_cell_based.hpp</includes>
     <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="classhmap_1_1DrainageBasinCellBased_1a70dbdd14709a9127f63d199f7713370c" prot="public" static="no" mutable="no">
-        <type>std::vector&lt; std::vector&lt; glm::ivec2 &gt; &gt;</type>
-        <definition>std::vector&lt; std::vector&lt; glm::ivec2 &gt; &gt; hmap::DrainageBasinCellBased::upstream_traversal</definition>
+      <memberdef kind="variable" id="classhmap_1_1DrainageBasinCellBased_1a89f0fe7b521edf3d390096710fa60291" prot="public" static="no" mutable="no">
+        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
+        <definition>Array hmap::DrainageBasinCellBased::z</definition>
         <argsstring></argsstring>
-        <name>upstream_traversal</name>
-        <qualifiedname>hmap::DrainageBasinCellBased::upstream_traversal</qualifiedname>
+        <name>z</name>
+        <qualifiedname>hmap::DrainageBasinCellBased::z</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/hydrology.hpp" line="42" column="15" bodyfile="HighMap/include/highmap/hydrology.hpp" bodystart="42" bodyend="-1"/>
+        <location file="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" line="64" column="9" bodyfile="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" bodystart="64" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classhmap_1_1DrainageBasinCellBased_1ad0bd6fbe612170ae441055151adfc4d1" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="classhmap_1_1DrainageBasinCellBased_1ac10b3c435244b5560587cf2785a05c7e" prot="public" static="no" mutable="no">
+        <type><ref refid="structhmap_1_1Mat" kindref="compound">Mat</ref>&lt; int &gt;</type>
+        <definition>Mat&lt;int&gt; hmap::DrainageBasinCellBased::outlets_mask</definition>
+        <argsstring></argsstring>
+        <name>outlets_mask</name>
+        <qualifiedname>hmap::DrainageBasinCellBased::outlets_mask</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" line="66" column="27" bodyfile="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classhmap_1_1DrainageBasinCellBased_1a6ec9232c7f0ea270f48d9659dacbf055" prot="public" static="no" mutable="no">
         <type><ref refid="structhmap_1_1Mat" kindref="compound">Mat</ref>&lt; glm::ivec2 &gt;</type>
-        <definition>Mat&lt; glm::ivec2 &gt; hmap::DrainageBasinCellBased::next</definition>
+        <definition>Mat&lt;glm::ivec2&gt; hmap::DrainageBasinCellBased::receivers</definition>
         <argsstring></argsstring>
-        <name>next</name>
-        <qualifiedname>hmap::DrainageBasinCellBased::next</qualifiedname>
-        <initializer>= <ref refid="structhmap_1_1Mat" kindref="compound">Mat</ref>&lt;glm::ivec2&gt;({0, 0})</initializer>
+        <name>receivers</name>
+        <qualifiedname>hmap::DrainageBasinCellBased::receivers</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/hydrology.hpp" line="43" column="28" bodyfile="HighMap/include/highmap/hydrology.hpp" bodystart="43" bodyend="-1"/>
+        <location file="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" line="67" column="20" bodyfile="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" bodystart="67" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classhmap_1_1DrainageBasinCellBased_1a83abb1fc25f414637c0a861381cdd6f3" prot="public" static="no" mutable="no">
-        <type>glm::ivec2</type>
-        <definition>glm::ivec2 hmap::DrainageBasinCellBased::null_cell</definition>
+      <memberdef kind="variable" id="classhmap_1_1DrainageBasinCellBased_1ab881041e84158253cc375d9661162472" prot="public" static="no" mutable="no">
+        <type><ref refid="structhmap_1_1Mat" kindref="compound">Mat</ref>&lt; std::vector&lt; glm::ivec2 &gt; &gt;</type>
+        <definition>Mat&lt;std::vector&lt;glm::ivec2&gt; &gt; hmap::DrainageBasinCellBased::children</definition>
+        <argsstring></argsstring>
+        <name>children</name>
+        <qualifiedname>hmap::DrainageBasinCellBased::children</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" line="68" column="7" bodyfile="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classhmap_1_1DrainageBasinCellBased_1af086db7261ccb7e0f08cffb7b1e9a1a5" prot="public" static="no" mutable="no">
+        <type><ref refid="structhmap_1_1Mat" kindref="compound">Mat</ref>&lt; glm::ivec2 &gt;</type>
+        <definition>Mat&lt;glm::ivec2&gt; hmap::DrainageBasinCellBased::roots</definition>
+        <argsstring></argsstring>
+        <name>roots</name>
+        <qualifiedname>hmap::DrainageBasinCellBased::roots</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" line="69" column="20" bodyfile="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classhmap_1_1DrainageBasinCellBased_1a468cf312e08a4057cab4d69440dc5521" prot="public" static="no" mutable="no">
+        <type>std::unordered_map&lt; glm::ivec2, std::vector&lt; glm::ivec2 &gt;, <ref refid="structhmap_1_1IVec2Hash" kindref="compound">IVec2Hash</ref> &gt;</type>
+        <definition>std::unordered_map&lt;glm::ivec2, std::vector&lt;glm::ivec2&gt;, IVec2Hash&gt; hmap::DrainageBasinCellBased::traversals</definition>
+        <argsstring></argsstring>
+        <name>traversals</name>
+        <qualifiedname>hmap::DrainageBasinCellBased::traversals</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" line="71" column="22" bodyfile="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classhmap_1_1DrainageBasinCellBased_1ad576fdd4931b25ab57bec6eeca32204b" prot="public" static="no" mutable="no">
+        <type>const glm::ivec2</type>
+        <definition>const glm::ivec2 hmap::DrainageBasinCellBased::null_cell</definition>
         <argsstring></argsstring>
         <name>null_cell</name>
         <qualifiedname>hmap::DrainageBasinCellBased::null_cell</qualifiedname>
@@ -46,37 +101,177 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/hydrology.hpp" line="44" column="40" bodyfile="HighMap/include/highmap/hydrology.hpp" bodystart="44" bodyend="-1"/>
+        <location file="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" line="73" column="20" bodyfile="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" bodystart="73" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classhmap_1_1DrainageBasinCellBased_1a0b8df91bb9090ab6dc2b3b9fd27e9cf7" prot="private" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int hmap::DrainageBasinCellBased::di[8]</definition>
+        <argsstring>[8]</argsstring>
+        <name>di</name>
+        <qualifiedname>hmap::DrainageBasinCellBased::di</qualifiedname>
+        <initializer>= {1, 1, 0, -1, -1, -1, 0, 1}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" line="77" column="15" bodyfile="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" bodystart="77" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="variable" id="classhmap_1_1DrainageBasinCellBased_1a3631000ed13a9db5407e24ae1968c821" prot="private" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int hmap::DrainageBasinCellBased::dj[8]</definition>
+        <argsstring>[8]</argsstring>
+        <name>dj</name>
+        <qualifiedname>hmap::DrainageBasinCellBased::dj</qualifiedname>
+        <initializer>= {0, -1, -1, -1, 0, 1, 1, 1}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" line="78" column="15" bodyfile="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" bodystart="78" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="variable" id="classhmap_1_1DrainageBasinCellBased_1a3b7dd3100912949c19eb113199595785" prot="private" static="no" mutable="no">
+        <type>const float</type>
+        <definition>const float hmap::DrainageBasinCellBased::cd[8]</definition>
+        <argsstring>[8]</argsstring>
+        <name>cd</name>
+        <qualifiedname>hmap::DrainageBasinCellBased::cd</qualifiedname>
+        <initializer>=
+      {1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, M_SQRT1_2, 1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, M_SQRT1_2, 1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, M_SQRT1_2, 1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, M_SQRT1_2}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" line="79" column="15" bodyfile="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" bodystart="79" bodyend="80"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
-      <memberdef kind="function" id="classhmap_1_1DrainageBasinCellBased_1ab000e59908d99d7a276d9dc29a970f3b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>size_t</type>
-        <definition>size_t hmap::DrainageBasinCellBased::get_basins_number</definition>
-        <argsstring>() const</argsstring>
-        <name>get_basins_number</name>
-        <qualifiedname>hmap::DrainageBasinCellBased::get_basins_number</qualifiedname>
+      <memberdef kind="function" id="classhmap_1_1DrainageBasinCellBased_1aeb36d7eba63e150534906f2e924e7be8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>hmap::DrainageBasinCellBased::DrainageBasinCellBased</definition>
+        <argsstring>()=default</argsstring>
+        <name>DrainageBasinCellBased</name>
+        <qualifiedname>hmap::DrainageBasinCellBased::DrainageBasinCellBased</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/hydrology.hpp" line="46" column="40" bodyfile="HighMap/src/hydrology/drainage_basin_cell_based.cpp" bodystart="192" bodyend="195"/>
+        <location file="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" line="24" column="3"/>
       </memberdef>
-      <memberdef kind="function" id="classhmap_1_1DrainageBasinCellBased_1a81c6ffada144f73abde804047c010eac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; std::vector&lt; glm::ivec2 &gt; &gt;</type>
-        <definition>std::vector&lt; std::vector&lt; glm::ivec2 &gt; &gt; hmap::DrainageBasinCellBased::get_main_channels</definition>
-        <argsstring>()</argsstring>
-        <name>get_main_channels</name>
-        <qualifiedname>hmap::DrainageBasinCellBased::get_main_channels</qualifiedname>
+      <memberdef kind="function" id="classhmap_1_1DrainageBasinCellBased_1ad1d5250d216d7353f421056326daa86e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>hmap::DrainageBasinCellBased::DrainageBasinCellBased</definition>
+        <argsstring>(const Array &amp;z_)</argsstring>
+        <name>DrainageBasinCellBased</name>
+        <qualifiedname>hmap::DrainageBasinCellBased::DrainageBasinCellBased</qualifiedname>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>z_</declname>
+        </param>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/hydrology.hpp" line="47" column="15" bodyfile="HighMap/src/hydrology/drainage_basin_cell_based.cpp" bodystart="197" bodyend="236"/>
+        <location file="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" line="25" column="3" bodyfile="HighMap/src/hydrology/drainage_basin_cell_based.cpp" bodystart="14" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classhmap_1_1DrainageBasinCellBased_1ad0043f7fb33846400b0d4cf3b6040864" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+        <definition>const Array &amp; hmap::DrainageBasinCellBased::get_z</definition>
+        <argsstring>() const</argsstring>
+        <name>get_z</name>
+        <qualifiedname>hmap::DrainageBasinCellBased::get_z</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" line="29" column="15" bodyfile="HighMap/src/hydrology/drainage_basin_cell_based.cpp" bodystart="338" bodyend="341"/>
+      </memberdef>
+      <memberdef kind="function" id="classhmap_1_1DrainageBasinCellBased_1a1e9f6c5c336799e2072e60737e200c06" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hmap::DrainageBasinCellBased::compute_receivers</definition>
+        <argsstring>(unsigned int seed=0, float noise_strength=0.f)</argsstring>
+        <name>compute_receivers</name>
+        <qualifiedname>hmap::DrainageBasinCellBased::compute_receivers</qualifiedname>
+        <param>
+          <type>unsigned int</type>
+          <declname>seed</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>noise_strength</declname>
+          <defval>0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" line="33" column="8" bodyfile="HighMap/src/hydrology/drainage_basin_cell_based.cpp" bodystart="46" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="classhmap_1_1DrainageBasinCellBased_1a803b4ddeebc535ae0d84153dbd173077" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hmap::DrainageBasinCellBased::compute_receivers_priority_flood</definition>
+        <argsstring>()</argsstring>
+        <name>compute_receivers_priority_flood</name>
+        <qualifiedname>hmap::DrainageBasinCellBased::compute_receivers_priority_flood</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" line="34" column="8" bodyfile="HighMap/src/hydrology/drainage_basin_cell_based.cpp" bodystart="97" bodyend="163"/>
+      </memberdef>
+      <memberdef kind="function" id="classhmap_1_1DrainageBasinCellBased_1a016b44f32bfa7b4efba7b0e2972559d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hmap::DrainageBasinCellBased::update_stream_tree</definition>
+        <argsstring>(unsigned int seed, float noise_strength)</argsstring>
+        <name>update_stream_tree</name>
+        <qualifiedname>hmap::DrainageBasinCellBased::update_stream_tree</qualifiedname>
+        <param>
+          <type>unsigned int</type>
+          <declname>seed</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>noise_strength</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" line="35" column="8" bodyfile="HighMap/src/hydrology/drainage_basin_cell_based.cpp" bodystart="499" bodyend="508"/>
+      </memberdef>
+      <memberdef kind="function" id="classhmap_1_1DrainageBasinCellBased_1ad06fd0817a6e10df178faabc42114f82" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hmap::DrainageBasinCellBased::update_traversals</definition>
+        <argsstring>()</argsstring>
+        <name>update_traversals</name>
+        <qualifiedname>hmap::DrainageBasinCellBased::update_traversals</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" line="36" column="8" bodyfile="HighMap/src/hydrology/drainage_basin_cell_based.cpp" bodystart="510" bodyend="536"/>
       </memberdef>
       <memberdef kind="function" id="classhmap_1_1DrainageBasinCellBased_1a517f9509d3e56b99362ba1daf1416c52" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; glm::ivec2 &gt;</type>
@@ -90,60 +285,63 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/hydrology.hpp" line="48" column="28" bodyfile="HighMap/src/hydrology/drainage_basin_cell_based.cpp" bodystart="238" bodyend="250"/>
+        <location file="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" line="38" column="15" bodyfile="HighMap/src/hydrology/drainage_basin_cell_based.cpp" bodystart="324" bodyend="336"/>
       </memberdef>
-      <memberdef kind="function" id="classhmap_1_1DrainageBasinCellBased_1accaabfdd1917e09314683628a8d68b2b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; glm::ivec2 &gt;</type>
-        <definition>std::vector&lt; glm::ivec2 &gt; hmap::DrainageBasinCellBased::get_ridges</definition>
-        <argsstring>()</argsstring>
-        <name>get_ridges</name>
-        <qualifiedname>hmap::DrainageBasinCellBased::get_ridges</qualifiedname>
+      <memberdef kind="function" id="classhmap_1_1DrainageBasinCellBased_1ace4e6f0f22a79f022cea7a3aa55c14da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hmap::DrainageBasinCellBased::set_outlets</definition>
+        <argsstring>(const std::vector&lt; glm::ivec2 &gt; &amp;outlet_indices)</argsstring>
+        <name>set_outlets</name>
+        <qualifiedname>hmap::DrainageBasinCellBased::set_outlets</qualifiedname>
+        <param>
+          <type>const std::vector&lt; glm::ivec2 &gt; &amp;</type>
+          <declname>outlet_indices</declname>
+        </param>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/hydrology.hpp" line="49" column="28" bodyfile="HighMap/src/hydrology/drainage_basin_cell_based.cpp" bodystart="252" bodyend="291"/>
+        <location file="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" line="39" column="8" bodyfile="HighMap/src/hydrology/drainage_basin_cell_based.cpp" bodystart="441" bodyend="449"/>
       </memberdef>
-      <memberdef kind="function" id="classhmap_1_1DrainageBasinCellBased_1a41ea245fa063017e28764fa06e9a30e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classhmap_1_1DrainageBasinCellBased_1a7a5c0a12851f2172d30f98f7deca7dff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; std::vector&lt; glm::ivec2 &gt; &gt;</type>
-        <definition>std::vector&lt; std::vector&lt; glm::ivec2 &gt; &gt; hmap::DrainageBasinCellBased::get_ridges_neighbors</definition>
+        <definition>std::vector&lt; std::vector&lt; glm::ivec2 &gt; &gt; hmap::DrainageBasinCellBased::compute_upstream_traversals</definition>
         <argsstring>()</argsstring>
-        <name>get_ridges_neighbors</name>
-        <qualifiedname>hmap::DrainageBasinCellBased::get_ridges_neighbors</qualifiedname>
+        <name>compute_upstream_traversals</name>
+        <qualifiedname>hmap::DrainageBasinCellBased::compute_upstream_traversals</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/hydrology.hpp" line="50" column="15" bodyfile="HighMap/src/hydrology/drainage_basin_cell_based.cpp" bodystart="294" bodyend="336"/>
+        <location file="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" line="41" column="15" bodyfile="HighMap/src/hydrology/drainage_basin_cell_based.cpp" bodystart="202" bodyend="233"/>
       </memberdef>
-      <memberdef kind="function" id="classhmap_1_1DrainageBasinCellBased_1a5d7048e4c07090f1e3a9ccd7f2dc575b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classhmap_1_1DrainageBasinCellBased_1afa5c311e6fa51fdcf97fe43565f4baf7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::pair&lt; <ref refid="structhmap_1_1Mat" kindref="compound">Mat</ref>&lt; glm::ivec2 &gt;, bool &gt;</type>
+        <definition>std::pair&lt; Mat&lt; glm::ivec2 &gt;, bool &gt; hmap::DrainageBasinCellBased::find_subroots</definition>
+        <argsstring>()</argsstring>
+        <name>find_subroots</name>
+        <qualifiedname>hmap::DrainageBasinCellBased::find_subroots</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" line="45" column="13" bodyfile="HighMap/src/hydrology/drainage_basin_cell_based.cpp" bodystart="235" bodyend="284"/>
+      </memberdef>
+      <memberdef kind="function" id="classhmap_1_1DrainageBasinCellBased_1abea71a506ab514fd66095492fffbc38c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
-        <definition>void hmap::DrainageBasinCellBased::generate_traversal</definition>
-        <argsstring>(const Array &amp;z, FlowDirectionMethod fd_method=FlowDirectionMethod::FDM_D8, bool remove_lakes=true, const std::vector&lt; glm::ivec2 &gt; &amp;outlets={})</argsstring>
-        <name>generate_traversal</name>
-        <qualifiedname>hmap::DrainageBasinCellBased::generate_traversal</qualifiedname>
+        <definition>void hmap::DrainageBasinCellBased::remove_lakes</definition>
+        <argsstring>(const Mat&lt; glm::ivec2 &gt; &amp;subroot)</argsstring>
+        <name>remove_lakes</name>
+        <qualifiedname>hmap::DrainageBasinCellBased::remove_lakes</qualifiedname>
         <param>
-          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
-          <declname>z</declname>
-        </param>
-        <param>
-          <type><ref refid="namespacehmap_1a0c714c7fa78e9384806de52a5d039f2f" kindref="member">FlowDirectionMethod</ref></type>
-          <declname>fd_method</declname>
-          <defval>FlowDirectionMethod::FDM_D8</defval>
-        </param>
-        <param>
-          <type>bool</type>
-          <declname>remove_lakes</declname>
-          <defval>true</defval>
-        </param>
-        <param>
-          <type>const std::vector&lt; glm::ivec2 &gt; &amp;</type>
-          <declname>outlets</declname>
-          <defval>{}</defval>
+          <type>const <ref refid="structhmap_1_1Mat" kindref="compound">Mat</ref>&lt; glm::ivec2 &gt; &amp;</type>
+          <declname>subroot</declname>
         </param>
         <briefdescription>
         </briefdescription>
@@ -151,167 +349,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/hydrology.hpp" line="52" column="8" bodyfile="HighMap/src/hydrology/drainage_basin_cell_based.cpp" bodystart="30" bodyend="43"/>
+        <location file="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" line="46" column="36" bodyfile="HighMap/src/hydrology/drainage_basin_cell_based.cpp" bodystart="343" bodyend="439"/>
       </memberdef>
-      <memberdef kind="function" id="classhmap_1_1DrainageBasinCellBased_1a593f3759c7fbc9f85d99a22733b96a9b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void hmap::DrainageBasinCellBased::generate_traversal_d8</definition>
-        <argsstring>(const Array &amp;z, bool remove_lakes=true, const std::vector&lt; glm::ivec2 &gt; &amp;outlets={})</argsstring>
-        <name>generate_traversal_d8</name>
-        <qualifiedname>hmap::DrainageBasinCellBased::generate_traversal_d8</qualifiedname>
-        <param>
-          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
-          <declname>z</declname>
-        </param>
-        <param>
-          <type>bool</type>
-          <declname>remove_lakes</declname>
-          <defval>true</defval>
-        </param>
-        <param>
-          <type>const std::vector&lt; glm::ivec2 &gt; &amp;</type>
-          <declname>outlets</declname>
-          <defval>{}</defval>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="HighMap/include/highmap/hydrology.hpp" line="58" column="8" bodyfile="HighMap/src/hydrology/drainage_basin_cell_based.cpp" bodystart="45" bodyend="98"/>
-      </memberdef>
-      <memberdef kind="function" id="classhmap_1_1DrainageBasinCellBased_1a69feeba4bf259cffdcd487e20d1e02dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void hmap::DrainageBasinCellBased::generate_traversal_priority_flood</definition>
-        <argsstring>(const Array &amp;z, const std::vector&lt; glm::ivec2 &gt; &amp;outlets={})</argsstring>
-        <name>generate_traversal_priority_flood</name>
-        <qualifiedname>hmap::DrainageBasinCellBased::generate_traversal_priority_flood</qualifiedname>
-        <param>
-          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
-          <declname>z</declname>
-        </param>
-        <param>
-          <type>const std::vector&lt; glm::ivec2 &gt; &amp;</type>
-          <declname>outlets</declname>
-          <defval>{}</defval>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="HighMap/include/highmap/hydrology.hpp" line="61" column="8" bodyfile="HighMap/src/hydrology/drainage_basin_cell_based.cpp" bodystart="100" bodyend="190"/>
-      </memberdef>
-      <memberdef kind="function" id="classhmap_1_1DrainageBasinCellBased_1a23176095d69e432db3f18aa1ab6e0cc7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void hmap::DrainageBasinCellBased::accumulate</definition>
-        <argsstring>(Array &amp;acc) const</argsstring>
-        <name>accumulate</name>
-        <qualifiedname>hmap::DrainageBasinCellBased::accumulate</qualifiedname>
-        <param>
-          <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
-          <declname>acc</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="HighMap/include/highmap/hydrology.hpp" line="65" column="8" bodyfile="HighMap/src/hydrology/drainage_basin_cell_based.cpp" bodystart="13" bodyend="28"/>
-      </memberdef>
-      <memberdef kind="function" id="classhmap_1_1DrainageBasinCellBased_1aa0b54e1a2012f225463b6ac44de324b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void hmap::DrainageBasinCellBased::traverse_downstream</definition>
-        <argsstring>(std::function&lt; void(int, int, int, int, int)&gt; op)</argsstring>
-        <name>traverse_downstream</name>
-        <qualifiedname>hmap::DrainageBasinCellBased::traverse_downstream</qualifiedname>
-        <param>
-          <type>std::function&lt; void(int, int, int, int, int)&gt;</type>
-          <declname>op</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="HighMap/include/highmap/hydrology.hpp" line="66" column="8"/>
-      </memberdef>
-      <memberdef kind="function" id="classhmap_1_1DrainageBasinCellBased_1a5763456daaa183d95a57f3b19f19c57f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void hmap::DrainageBasinCellBased::traverse_downstream</definition>
-        <argsstring>(std::function&lt; void(int, int, int)&gt; op)</argsstring>
-        <name>traverse_downstream</name>
-        <qualifiedname>hmap::DrainageBasinCellBased::traverse_downstream</qualifiedname>
-        <param>
-          <type>std::function&lt; void(int, int, int)&gt;</type>
-          <declname>op</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="HighMap/include/highmap/hydrology.hpp" line="67" column="8"/>
-      </memberdef>
-      <memberdef kind="function" id="classhmap_1_1DrainageBasinCellBased_1a508c5af55c0eb64a1a4e94f59be2c772" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void hmap::DrainageBasinCellBased::traverse_upstream</definition>
-        <argsstring>(std::function&lt; void(int, int, int, int, int)&gt; op)</argsstring>
-        <name>traverse_upstream</name>
-        <qualifiedname>hmap::DrainageBasinCellBased::traverse_upstream</qualifiedname>
-        <param>
-          <type>std::function&lt; void(int, int, int, int, int)&gt;</type>
-          <declname>op</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="HighMap/include/highmap/hydrology.hpp" line="68" column="8"/>
-      </memberdef>
-      <memberdef kind="function" id="classhmap_1_1DrainageBasinCellBased_1a9ccca597d1eb5ac91bc316e0b485cb4e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void hmap::DrainageBasinCellBased::traverse_upstream</definition>
-        <argsstring>(std::function&lt; void(int, int, int)&gt; op)</argsstring>
-        <name>traverse_upstream</name>
-        <qualifiedname>hmap::DrainageBasinCellBased::traverse_upstream</qualifiedname>
-        <param>
-          <type>std::function&lt; void(int, int, int)&gt;</type>
-          <declname>op</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="HighMap/include/highmap/hydrology.hpp" line="69" column="8"/>
-      </memberdef>
-      <memberdef kind="function" id="classhmap_1_1DrainageBasinCellBased_1ab000e59908d99d7a276d9dc29a970f3b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>size_t</type>
-        <definition>size_t hmap::DrainageBasinCellBased::get_basins_number</definition>
-        <argsstring>() const</argsstring>
-        <name>get_basins_number</name>
-        <qualifiedname>hmap::DrainageBasinCellBased::get_basins_number</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" line="26" column="40"/>
-      </memberdef>
-      <memberdef kind="function" id="classhmap_1_1DrainageBasinCellBased_1a81c6ffada144f73abde804047c010eac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classhmap_1_1DrainageBasinCellBased_1a2f17611d6bebf2bafb7e4cf7b55a2326" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; std::vector&lt; glm::ivec2 &gt; &gt;</type>
         <definition>std::vector&lt; std::vector&lt; glm::ivec2 &gt; &gt; hmap::DrainageBasinCellBased::get_main_channels</definition>
-        <argsstring>()</argsstring>
+        <argsstring>() const</argsstring>
         <name>get_main_channels</name>
         <qualifiedname>hmap::DrainageBasinCellBased::get_main_channels</qualifiedname>
         <briefdescription>
@@ -320,102 +363,25 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" line="27" column="15"/>
+        <location file="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" line="48" column="15" bodyfile="HighMap/src/hydrology/drainage_basin_cell_based.cpp" bodystart="286" bodyend="322"/>
       </memberdef>
-      <memberdef kind="function" id="classhmap_1_1DrainageBasinCellBased_1a517f9509d3e56b99362ba1daf1416c52" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; glm::ivec2 &gt;</type>
-        <definition>std::vector&lt; glm::ivec2 &gt; hmap::DrainageBasinCellBased::get_outlets</definition>
-        <argsstring>() const</argsstring>
-        <name>get_outlets</name>
-        <qualifiedname>hmap::DrainageBasinCellBased::get_outlets</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" line="28" column="28"/>
-      </memberdef>
-      <memberdef kind="function" id="classhmap_1_1DrainageBasinCellBased_1accaabfdd1917e09314683628a8d68b2b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; glm::ivec2 &gt;</type>
-        <definition>std::vector&lt; glm::ivec2 &gt; hmap::DrainageBasinCellBased::get_ridges</definition>
-        <argsstring>()</argsstring>
-        <name>get_ridges</name>
-        <qualifiedname>hmap::DrainageBasinCellBased::get_ridges</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" line="29" column="28"/>
-      </memberdef>
-      <memberdef kind="function" id="classhmap_1_1DrainageBasinCellBased_1a41ea245fa063017e28764fa06e9a30e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; std::vector&lt; glm::ivec2 &gt; &gt;</type>
-        <definition>std::vector&lt; std::vector&lt; glm::ivec2 &gt; &gt; hmap::DrainageBasinCellBased::get_ridges_neighbors</definition>
-        <argsstring>()</argsstring>
-        <name>get_ridges_neighbors</name>
-        <qualifiedname>hmap::DrainageBasinCellBased::get_ridges_neighbors</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" line="30" column="15"/>
-      </memberdef>
-      <memberdef kind="function" id="classhmap_1_1DrainageBasinCellBased_1a5d7048e4c07090f1e3a9ccd7f2dc575b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void hmap::DrainageBasinCellBased::generate_traversal</definition>
-        <argsstring>(const Array &amp;z, FlowDirectionMethod fd_method=FlowDirectionMethod::FDM_D8, bool remove_lakes=true, const std::vector&lt; glm::ivec2 &gt; &amp;outlets={})</argsstring>
-        <name>generate_traversal</name>
-        <qualifiedname>hmap::DrainageBasinCellBased::generate_traversal</qualifiedname>
+      <memberdef kind="function" id="classhmap_1_1DrainageBasinCellBased_1a8c2fd86212124f8c3c02c6824706e39b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
+        <definition>Array hmap::DrainageBasinCellBased::compute_response_times</definition>
+        <argsstring>(const Array &amp;area_acc, const Array &amp;erodibility, float m_exp) const</argsstring>
+        <name>compute_response_times</name>
+        <qualifiedname>hmap::DrainageBasinCellBased::compute_response_times</qualifiedname>
         <param>
           <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
-          <declname>z</declname>
+          <declname>area_acc</declname>
         </param>
-        <param>
-          <type><ref refid="namespacehmap_1a0c714c7fa78e9384806de52a5d039f2f" kindref="member">FlowDirectionMethod</ref></type>
-          <declname>fd_method</declname>
-          <defval>FlowDirectionMethod::FDM_D8</defval>
-        </param>
-        <param>
-          <type>bool</type>
-          <declname>remove_lakes</declname>
-          <defval>true</defval>
-        </param>
-        <param>
-          <type>const std::vector&lt; glm::ivec2 &gt; &amp;</type>
-          <declname>outlets</declname>
-          <defval>{}</defval>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" line="32" column="8"/>
-      </memberdef>
-      <memberdef kind="function" id="classhmap_1_1DrainageBasinCellBased_1a593f3759c7fbc9f85d99a22733b96a9b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void hmap::DrainageBasinCellBased::generate_traversal_d8</definition>
-        <argsstring>(const Array &amp;z, bool remove_lakes=true, const std::vector&lt; glm::ivec2 &gt; &amp;outlets={})</argsstring>
-        <name>generate_traversal_d8</name>
-        <qualifiedname>hmap::DrainageBasinCellBased::generate_traversal_d8</qualifiedname>
         <param>
           <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
-          <declname>z</declname>
+          <declname>erodibility</declname>
         </param>
         <param>
-          <type>bool</type>
-          <declname>remove_lakes</declname>
-          <defval>true</defval>
-        </param>
-        <param>
-          <type>const std::vector&lt; glm::ivec2 &gt; &amp;</type>
-          <declname>outlets</declname>
-          <defval>{}</defval>
+          <type>float</type>
+          <declname>m_exp</declname>
         </param>
         <briefdescription>
         </briefdescription>
@@ -423,22 +389,25 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" line="38" column="8"/>
+        <location file="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" line="52" column="9" bodyfile="HighMap/src/hydrology/drainage_basin_cell_based.cpp" bodystart="165" bodyend="199"/>
       </memberdef>
-      <memberdef kind="function" id="classhmap_1_1DrainageBasinCellBased_1a69feeba4bf259cffdcd487e20d1e02dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void hmap::DrainageBasinCellBased::generate_traversal_priority_flood</definition>
-        <argsstring>(const Array &amp;z, const std::vector&lt; glm::ivec2 &gt; &amp;outlets={})</argsstring>
-        <name>generate_traversal_priority_flood</name>
-        <qualifiedname>hmap::DrainageBasinCellBased::generate_traversal_priority_flood</qualifiedname>
+      <memberdef kind="function" id="classhmap_1_1DrainageBasinCellBased_1ad007ada3b51c9f0f98e2509c8b7afec8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float hmap::DrainageBasinCellBased::update_elevations</definition>
+        <argsstring>(const Array &amp;response_times, float uplift_rate, const Array &amp;max_slope)</argsstring>
+        <name>update_elevations</name>
+        <qualifiedname>hmap::DrainageBasinCellBased::update_elevations</qualifiedname>
         <param>
           <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
-          <declname>z</declname>
+          <declname>response_times</declname>
         </param>
         <param>
-          <type>const std::vector&lt; glm::ivec2 &gt; &amp;</type>
-          <declname>outlets</declname>
-          <defval>{}</defval>
+          <type>float</type>
+          <declname>uplift_rate</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>max_slope</declname>
         </param>
         <briefdescription>
         </briefdescription>
@@ -446,14 +415,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" line="41" column="8"/>
+        <location file="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" line="56" column="9" bodyfile="HighMap/src/hydrology/drainage_basin_cell_based.cpp" bodystart="451" bodyend="497"/>
       </memberdef>
-      <memberdef kind="function" id="classhmap_1_1DrainageBasinCellBased_1a23176095d69e432db3f18aa1ab6e0cc7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classhmap_1_1DrainageBasinCellBased_1a9e828a65ed3c3995aa235ee269eb6e7f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
-        <definition>void hmap::DrainageBasinCellBased::accumulate</definition>
+        <definition>void hmap::DrainageBasinCellBased::accumulate_area_by_outlet</definition>
         <argsstring>(Array &amp;acc) const</argsstring>
-        <name>accumulate</name>
-        <qualifiedname>hmap::DrainageBasinCellBased::accumulate</qualifiedname>
+        <name>accumulate_area_by_outlet</name>
+        <qualifiedname>hmap::DrainageBasinCellBased::accumulate_area_by_outlet</qualifiedname>
         <param>
           <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
           <declname>acc</declname>
@@ -464,165 +433,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" line="45" column="8"/>
-      </memberdef>
-      <memberdef kind="function" id="classhmap_1_1DrainageBasinCellBased_1aa0b54e1a2012f225463b6ac44de324b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void hmap::DrainageBasinCellBased::traverse_downstream</definition>
-        <argsstring>(std::function&lt; void(int, int, int, int, int)&gt; op)</argsstring>
-        <name>traverse_downstream</name>
-        <qualifiedname>hmap::DrainageBasinCellBased::traverse_downstream</qualifiedname>
-        <param>
-          <type>std::function&lt; void(int, int, int, int, int)&gt;</type>
-          <declname>op</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" line="46" column="8"/>
-      </memberdef>
-      <memberdef kind="function" id="classhmap_1_1DrainageBasinCellBased_1a5763456daaa183d95a57f3b19f19c57f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void hmap::DrainageBasinCellBased::traverse_downstream</definition>
-        <argsstring>(std::function&lt; void(int, int, int)&gt; op)</argsstring>
-        <name>traverse_downstream</name>
-        <qualifiedname>hmap::DrainageBasinCellBased::traverse_downstream</qualifiedname>
-        <param>
-          <type>std::function&lt; void(int, int, int)&gt;</type>
-          <declname>op</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" line="47" column="8"/>
-      </memberdef>
-      <memberdef kind="function" id="classhmap_1_1DrainageBasinCellBased_1a508c5af55c0eb64a1a4e94f59be2c772" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void hmap::DrainageBasinCellBased::traverse_upstream</definition>
-        <argsstring>(std::function&lt; void(int, int, int, int, int)&gt; op)</argsstring>
-        <name>traverse_upstream</name>
-        <qualifiedname>hmap::DrainageBasinCellBased::traverse_upstream</qualifiedname>
-        <param>
-          <type>std::function&lt; void(int, int, int, int, int)&gt;</type>
-          <declname>op</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" line="48" column="8"/>
-      </memberdef>
-      <memberdef kind="function" id="classhmap_1_1DrainageBasinCellBased_1a9ccca597d1eb5ac91bc316e0b485cb4e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void hmap::DrainageBasinCellBased::traverse_upstream</definition>
-        <argsstring>(std::function&lt; void(int, int, int)&gt; op)</argsstring>
-        <name>traverse_upstream</name>
-        <qualifiedname>hmap::DrainageBasinCellBased::traverse_upstream</qualifiedname>
-        <param>
-          <type>std::function&lt; void(int, int, int)&gt;</type>
-          <declname>op</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" line="49" column="8"/>
-      </memberdef>
-    </sectiondef>
-    <sectiondef kind="private-func">
-      <memberdef kind="function" id="classhmap_1_1DrainageBasinCellBased_1a7dcc597a2553c81b53714a8f8217d815" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void hmap::DrainageBasinCellBased::remove_lakes_d8</definition>
-        <argsstring>(const Array &amp;z, float dz_weight=1.f, float dz_downstream_cost_ratio=0.f)</argsstring>
-        <name>remove_lakes_d8</name>
-        <qualifiedname>hmap::DrainageBasinCellBased::remove_lakes_d8</qualifiedname>
-        <param>
-          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
-          <declname>z</declname>
-        </param>
-        <param>
-          <type>float</type>
-          <declname>dz_weight</declname>
-          <defval>1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
-        </param>
-        <param>
-          <type>float</type>
-          <declname>dz_downstream_cost_ratio</declname>
-          <defval>0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="HighMap/include/highmap/hydrology.hpp" line="72" column="8" bodyfile="HighMap/src/hydrology/drainage_basin_cell_based.cpp" bodystart="338" bodyend="476"/>
-      </memberdef>
-      <memberdef kind="function" id="classhmap_1_1DrainageBasinCellBased_1ac77d21dd9c10b6a92d2167c2cc7387a4" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void hmap::DrainageBasinCellBased::update_traversal</definition>
-        <argsstring>()</argsstring>
-        <name>update_traversal</name>
-        <qualifiedname>hmap::DrainageBasinCellBased::update_traversal</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="HighMap/include/highmap/hydrology.hpp" line="75" column="8" bodyfile="HighMap/src/hydrology/drainage_basin_cell_based.cpp" bodystart="556" bodyend="615"/>
-      </memberdef>
-      <memberdef kind="function" id="classhmap_1_1DrainageBasinCellBased_1a7dcc597a2553c81b53714a8f8217d815" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void hmap::DrainageBasinCellBased::remove_lakes_d8</definition>
-        <argsstring>(const Array &amp;z, float dz_weight=1.f, float dz_downstream_cost_ratio=0.f)</argsstring>
-        <name>remove_lakes_d8</name>
-        <qualifiedname>hmap::DrainageBasinCellBased::remove_lakes_d8</qualifiedname>
-        <param>
-          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
-          <declname>z</declname>
-        </param>
-        <param>
-          <type>float</type>
-          <declname>dz_weight</declname>
-          <defval>1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
-        </param>
-        <param>
-          <type>float</type>
-          <declname>dz_downstream_cost_ratio</declname>
-          <defval>0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" line="52" column="8"/>
-      </memberdef>
-      <memberdef kind="function" id="classhmap_1_1DrainageBasinCellBased_1ac77d21dd9c10b6a92d2167c2cc7387a4" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void hmap::DrainageBasinCellBased::update_traversal</definition>
-        <argsstring>()</argsstring>
-        <name>update_traversal</name>
-        <qualifiedname>hmap::DrainageBasinCellBased::update_traversal</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" line="55" column="8"/>
+        <location file="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" line="60" column="8" bodyfile="HighMap/src/hydrology/drainage_basin_cell_based.cpp" bodystart="27" bodyend="44"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -630,10 +441,31 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="3">
+      <node id="6">
         <label>hmap::Mat&lt; glm::ivec2 &gt;</label>
         <link refid="structhmap_1_1Mat"/>
-        <childnode refid="4" relation="usage">
+        <childnode refid="7" relation="usage">
+          <edgelabel>vector</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>hmap::Mat&lt; int &gt;</label>
+        <link refid="structhmap_1_1Mat"/>
+        <childnode refid="5" relation="usage">
+          <edgelabel>vector</edgelabel>
+        </childnode>
+      </node>
+      <node id="8">
+        <label>hmap::Mat&lt; std::vector&lt; glm::ivec2 &gt; &gt;</label>
+        <link refid="structhmap_1_1Mat"/>
+        <childnode refid="9" relation="usage">
+          <edgelabel>vector</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>hmap::Array</label>
+        <link refid="classhmap_1_1Array"/>
+        <childnode refid="3" relation="usage">
           <edgelabel>vector</edgelabel>
         </childnode>
       </node>
@@ -641,54 +473,72 @@
         <label>hmap::DrainageBasinCellBased</label>
         <link refid="classhmap_1_1DrainageBasinCellBased"/>
         <childnode refid="2" relation="usage">
-          <edgelabel>upstream_traversal</edgelabel>
+          <edgelabel>z</edgelabel>
         </childnode>
-        <childnode refid="3" relation="usage">
-          <edgelabel>next</edgelabel>
+        <childnode refid="4" relation="usage">
+          <edgelabel>outlets_mask</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>receivers</edgelabel>
+          <edgelabel>roots</edgelabel>
+        </childnode>
+        <childnode refid="8" relation="usage">
+          <edgelabel>children</edgelabel>
+        </childnode>
+        <childnode refid="10" relation="usage">
+          <edgelabel>traversals</edgelabel>
         </childnode>
       </node>
-      <node id="4">
+      <node id="10">
+        <label>std::unordered_map&lt; glm::ivec2, std::vector&lt; glm::ivec2 &gt;, hmap::IVec2Hash &gt;</label>
+        <childnode refid="7" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>std::vector&lt; float &gt;</label>
+      </node>
+      <node id="7">
         <label>std::vector&lt; glm::ivec2 &gt;</label>
       </node>
-      <node id="2">
+      <node id="5">
+        <label>std::vector&lt; int &gt;</label>
+      </node>
+      <node id="9">
         <label>std::vector&lt; std::vector&lt; glm::ivec2 &gt; &gt;</label>
+        <childnode refid="7" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
       </node>
     </collaborationgraph>
-    <location file="HighMap/include/highmap/hydrology.hpp" line="39" column="1" bodyfile="HighMap/include/highmap/hydrology.hpp" bodystart="40" bodyend="76"/>
+    <location file="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" line="19" column="1" bodyfile="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" bodystart="20" bodyend="81"/>
     <listofallmembers>
-      <member refid="classhmap_1_1DrainageBasinCellBased_1a23176095d69e432db3f18aa1ab6e0cc7" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>accumulate</name></member>
-      <member refid="classhmap_1_1DrainageBasinCellBased_1a23176095d69e432db3f18aa1ab6e0cc7" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>accumulate</name></member>
-      <member refid="classhmap_1_1DrainageBasinCellBased_1a5d7048e4c07090f1e3a9ccd7f2dc575b" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>generate_traversal</name></member>
-      <member refid="classhmap_1_1DrainageBasinCellBased_1a5d7048e4c07090f1e3a9ccd7f2dc575b" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>generate_traversal</name></member>
-      <member refid="classhmap_1_1DrainageBasinCellBased_1a593f3759c7fbc9f85d99a22733b96a9b" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>generate_traversal_d8</name></member>
-      <member refid="classhmap_1_1DrainageBasinCellBased_1a593f3759c7fbc9f85d99a22733b96a9b" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>generate_traversal_d8</name></member>
-      <member refid="classhmap_1_1DrainageBasinCellBased_1a69feeba4bf259cffdcd487e20d1e02dd" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>generate_traversal_priority_flood</name></member>
-      <member refid="classhmap_1_1DrainageBasinCellBased_1a69feeba4bf259cffdcd487e20d1e02dd" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>generate_traversal_priority_flood</name></member>
-      <member refid="classhmap_1_1DrainageBasinCellBased_1ab000e59908d99d7a276d9dc29a970f3b" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>get_basins_number</name></member>
-      <member refid="classhmap_1_1DrainageBasinCellBased_1ab000e59908d99d7a276d9dc29a970f3b" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>get_basins_number</name></member>
-      <member refid="classhmap_1_1DrainageBasinCellBased_1a81c6ffada144f73abde804047c010eac" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>get_main_channels</name></member>
-      <member refid="classhmap_1_1DrainageBasinCellBased_1a81c6ffada144f73abde804047c010eac" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>get_main_channels</name></member>
+      <member refid="classhmap_1_1DrainageBasinCellBased_1a9e828a65ed3c3995aa235ee269eb6e7f" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>accumulate_area_by_outlet</name></member>
+      <member refid="classhmap_1_1DrainageBasinCellBased_1a3b7dd3100912949c19eb113199595785" prot="private" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>cd</name></member>
+      <member refid="classhmap_1_1DrainageBasinCellBased_1ab881041e84158253cc375d9661162472" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>children</name></member>
+      <member refid="classhmap_1_1DrainageBasinCellBased_1a1e9f6c5c336799e2072e60737e200c06" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>compute_receivers</name></member>
+      <member refid="classhmap_1_1DrainageBasinCellBased_1a803b4ddeebc535ae0d84153dbd173077" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>compute_receivers_priority_flood</name></member>
+      <member refid="classhmap_1_1DrainageBasinCellBased_1a8c2fd86212124f8c3c02c6824706e39b" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>compute_response_times</name></member>
+      <member refid="classhmap_1_1DrainageBasinCellBased_1a7a5c0a12851f2172d30f98f7deca7dff" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>compute_upstream_traversals</name></member>
+      <member refid="classhmap_1_1DrainageBasinCellBased_1a0b8df91bb9090ab6dc2b3b9fd27e9cf7" prot="private" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>di</name></member>
+      <member refid="classhmap_1_1DrainageBasinCellBased_1a3631000ed13a9db5407e24ae1968c821" prot="private" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>dj</name></member>
+      <member refid="classhmap_1_1DrainageBasinCellBased_1aeb36d7eba63e150534906f2e924e7be8" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>DrainageBasinCellBased</name></member>
+      <member refid="classhmap_1_1DrainageBasinCellBased_1ad1d5250d216d7353f421056326daa86e" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>DrainageBasinCellBased</name></member>
+      <member refid="classhmap_1_1DrainageBasinCellBased_1afa5c311e6fa51fdcf97fe43565f4baf7" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>find_subroots</name></member>
+      <member refid="classhmap_1_1DrainageBasinCellBased_1a2f17611d6bebf2bafb7e4cf7b55a2326" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>get_main_channels</name></member>
       <member refid="classhmap_1_1DrainageBasinCellBased_1a517f9509d3e56b99362ba1daf1416c52" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>get_outlets</name></member>
-      <member refid="classhmap_1_1DrainageBasinCellBased_1a517f9509d3e56b99362ba1daf1416c52" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>get_outlets</name></member>
-      <member refid="classhmap_1_1DrainageBasinCellBased_1accaabfdd1917e09314683628a8d68b2b" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>get_ridges</name></member>
-      <member refid="classhmap_1_1DrainageBasinCellBased_1accaabfdd1917e09314683628a8d68b2b" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>get_ridges</name></member>
-      <member refid="classhmap_1_1DrainageBasinCellBased_1a41ea245fa063017e28764fa06e9a30e4" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>get_ridges_neighbors</name></member>
-      <member refid="classhmap_1_1DrainageBasinCellBased_1a41ea245fa063017e28764fa06e9a30e4" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>get_ridges_neighbors</name></member>
-      <member refid="classhmap_1_1DrainageBasinCellBased_1ad0bd6fbe612170ae441055151adfc4d1" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>next</name></member>
-      <member refid="classhmap_1_1DrainageBasinCellBased_1a83abb1fc25f414637c0a861381cdd6f3" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>null_cell</name></member>
-      <member refid="classhmap_1_1DrainageBasinCellBased_1a7dcc597a2553c81b53714a8f8217d815" prot="private" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>remove_lakes_d8</name></member>
-      <member refid="classhmap_1_1DrainageBasinCellBased_1a7dcc597a2553c81b53714a8f8217d815" prot="private" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>remove_lakes_d8</name></member>
-      <member refid="classhmap_1_1DrainageBasinCellBased_1aa0b54e1a2012f225463b6ac44de324b0" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>traverse_downstream</name></member>
-      <member refid="classhmap_1_1DrainageBasinCellBased_1a5763456daaa183d95a57f3b19f19c57f" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>traverse_downstream</name></member>
-      <member refid="classhmap_1_1DrainageBasinCellBased_1aa0b54e1a2012f225463b6ac44de324b0" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>traverse_downstream</name></member>
-      <member refid="classhmap_1_1DrainageBasinCellBased_1a5763456daaa183d95a57f3b19f19c57f" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>traverse_downstream</name></member>
-      <member refid="classhmap_1_1DrainageBasinCellBased_1a508c5af55c0eb64a1a4e94f59be2c772" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>traverse_upstream</name></member>
-      <member refid="classhmap_1_1DrainageBasinCellBased_1a9ccca597d1eb5ac91bc316e0b485cb4e" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>traverse_upstream</name></member>
-      <member refid="classhmap_1_1DrainageBasinCellBased_1a508c5af55c0eb64a1a4e94f59be2c772" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>traverse_upstream</name></member>
-      <member refid="classhmap_1_1DrainageBasinCellBased_1a9ccca597d1eb5ac91bc316e0b485cb4e" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>traverse_upstream</name></member>
-      <member refid="classhmap_1_1DrainageBasinCellBased_1ac77d21dd9c10b6a92d2167c2cc7387a4" prot="private" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>update_traversal</name></member>
-      <member refid="classhmap_1_1DrainageBasinCellBased_1ac77d21dd9c10b6a92d2167c2cc7387a4" prot="private" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>update_traversal</name></member>
-      <member refid="classhmap_1_1DrainageBasinCellBased_1a70dbdd14709a9127f63d199f7713370c" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>upstream_traversal</name></member>
+      <member refid="classhmap_1_1DrainageBasinCellBased_1ad0043f7fb33846400b0d4cf3b6040864" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>get_z</name></member>
+      <member refid="classhmap_1_1DrainageBasinCellBased_1ad576fdd4931b25ab57bec6eeca32204b" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>null_cell</name></member>
+      <member refid="classhmap_1_1DrainageBasinCellBased_1ac10b3c435244b5560587cf2785a05c7e" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>outlets_mask</name></member>
+      <member refid="classhmap_1_1DrainageBasinCellBased_1a6ec9232c7f0ea270f48d9659dacbf055" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>receivers</name></member>
+      <member refid="classhmap_1_1DrainageBasinCellBased_1abea71a506ab514fd66095492fffbc38c" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>remove_lakes</name></member>
+      <member refid="classhmap_1_1DrainageBasinCellBased_1af086db7261ccb7e0f08cffb7b1e9a1a5" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>roots</name></member>
+      <member refid="classhmap_1_1DrainageBasinCellBased_1ace4e6f0f22a79f022cea7a3aa55c14da" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>set_outlets</name></member>
+      <member refid="classhmap_1_1DrainageBasinCellBased_1a468cf312e08a4057cab4d69440dc5521" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>traversals</name></member>
+      <member refid="classhmap_1_1DrainageBasinCellBased_1ad007ada3b51c9f0f98e2509c8b7afec8" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>update_elevations</name></member>
+      <member refid="classhmap_1_1DrainageBasinCellBased_1a016b44f32bfa7b4efba7b0e2972559d5" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>update_stream_tree</name></member>
+      <member refid="classhmap_1_1DrainageBasinCellBased_1ad06fd0817a6e10df178faabc42114f82" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>update_traversals</name></member>
+      <member refid="classhmap_1_1DrainageBasinCellBased_1a89f0fe7b521edf3d390096710fa60291" prot="public" virt="non-virtual"><scope>hmap::DrainageBasinCellBased</scope><name>z</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>
