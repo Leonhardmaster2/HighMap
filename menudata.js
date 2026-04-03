@@ -79,6 +79,7 @@ var menudata={children:[
 {text:"v",url:"namespacemembers_func_v.html#index_v"},
 {text:"w",url:"namespacemembers_func_w.html#index_w"},
 {text:"z",url:"namespacemembers_func_z.html#index_z"}]},
+{text:"Typedefs",url:"namespacemembers_type.html"},
 {text:"Enumerations",url:"namespacemembers_enum.html"},
 {text:"Enumerator",url:"namespacemembers_eval.html",children:[
 {text:"_",url:"namespacemembers_eval.html#index__5F"},

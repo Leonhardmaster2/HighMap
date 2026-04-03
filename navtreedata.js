@@ -53,6 +53,7 @@ var NAVTREE =
       [ "Namespace Members", "namespacemembers.html", [
         [ "All", "namespacemembers.html", "namespacemembers_dup" ],
         [ "Functions", "namespacemembers_func.html", "namespacemembers_func" ],
+        [ "Typedefs", "namespacemembers_type.html", null ],
         [ "Enumerations", "namespacemembers_enum.html", null ],
         [ "Enumerator", "namespacemembers_eval.html", null ]
       ] ]
@@ -93,16 +94,16 @@ var NAVTREEINDEX =
 "filters_8cpp.html#aa2de65aa233324cf294faf2421ccec2a",
 "flow__accumulation__dinf_8cpp.html#a819fc20190d598c4664d442ee824fc96",
 "hydrology_8hpp.html#a65291377b8b0a24636f60c36fd1e4044",
-"math_8hpp.html#a0db2ecdc6ca69af1e6eb3402b1147cb6",
-"namespacehmap.html#a2470328dcc792f6563c5844a2cc163ee",
-"namespacehmap.html#a670f50d6c08ecd639d42db9c75a5273aa2a9fc119d00df5ec5de1c13a006921f2",
-"namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195acb1550fb6b10f55ed2d30b10e7ab65bb",
-"namespacehmap.html#af80bcff234bf1482cf26896b9d21d270",
-"namespacemembers_func_q.html",
-"primitives_8hpp.html#a8e3756915e28aa80cec2190043cc8c2f",
-"selector_8cpp.html#aa387b6418bf9dac2b4f05b41a2a106d5",
-"structhmap_1_1Recorder.html#ac5bd6628a256636229047bbc12ced680",
-"terrain__tri__mesh_8hpp.html#aad6a39e70bf2ff70f8367e663d3027cf"
+"math_8cpp.html#ae7d9d43c2cd453af7a6395cbcb2ac3b2",
+"namespacehmap.html#a211108a73f7ebadb6ac87621c4e47301",
+"namespacehmap.html#a65291377b8b0a24636f60c36fd1e4044",
+"namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a035bda7c8c2179b47b9a766531c2e89e",
+"namespacehmap.html#af4ec8b5be149e6749fdf09759daf1e9e",
+"namespacemembers_func_f.html",
+"primitives_8hpp.html#a77ce3e2ce7f345c48daf6a7dc123fc7f",
+"selector_8cpp.html#a1f35e2238ee222ab2aa87304f6692ce6",
+"structhmap_1_1Particle.html#a379355e9825ebca1ee30e7f96552838c",
+"structhmap_1_1VirtualArray.html#ae4adbabb465da57c4056050375886848"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

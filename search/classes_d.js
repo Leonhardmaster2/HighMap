@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['simplex2function_0',['Simplex2Function',['../classhmap_1_1Simplex2Function.html',1,'hmap']]],
-  ['simplex2sfunction_1',['Simplex2SFunction',['../classhmap_1_1Simplex2SFunction.html',1,'hmap']]],
-  ['slopefunction_2',['SlopeFunction',['../classhmap_1_1SlopeFunction.html',1,'hmap']]],
-  ['stepfunction_3',['StepFunction',['../classhmap_1_1StepFunction.html',1,'hmap']]]
+  ['ramtilestorage_0',['RamTileStorage',['../classhmap_1_1RamTileStorage.html',1,'hmap']]],
+  ['recorder_1',['Recorder',['../structhmap_1_1Recorder.html',1,'hmap']]],
+  ['rectanglefunction_2',['RectangleFunction',['../classhmap_1_1RectangleFunction.html',1,'hmap']]],
+  ['riftfunction_3',['RiftFunction',['../classhmap_1_1RiftFunction.html',1,'hmap']]]
 ];

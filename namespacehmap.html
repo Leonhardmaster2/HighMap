@@ -99,6 +99,7 @@ $(document).ready(function(){initNavTree('namespacehmap.html',''); initResizable
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#nested-classes">Classes</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">hmap Namespace Reference</div></div>
@@ -199,12 +200,18 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhmap_1_1IVec4Hash.html">IVec4Hash</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhmap_1_1KDTreeContext.html">KDTreeContext</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Context wrapper for KD-tree operations.  <a href="structhmap_1_1KDTreeContext.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhmap_1_1LruTileEntry.html">LruTileEntry</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1LruTileStorage.html">LruTileStorage</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhmap_1_1Mat.html">Mat</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structhmap_1_1Mat.html" title="Mat class for basic manipulation of 2D matrices.">Mat</a> class for basic manipulation of 2D matrices.  <a href="structhmap_1_1Mat.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhmap_1_1NanoflannPointCloudAdaptor.html">NanoflannPointCloudAdaptor</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adaptor exposing a 2D point cloud to nanoflann.  <a href="structhmap_1_1NanoflannPointCloudAdaptor.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1NaturalNeighborInterpolator.html">NaturalNeighborInterpolator</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -335,6 +342,12 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1XyControlFunction.html">XyControlFunction</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:ae4a8f5c1d747f5eccbe078ab94598707" id="r_ae4a8f5c1d747f5eccbe078ab94598707"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#ae4a8f5c1d747f5eccbe078ab94598707">KDTree</a> = nanoflann::KDTreeSingleIndexAdaptor&lt; nanoflann::L2_Simple_Adaptor&lt; float, <a class="el" href="structhmap_1_1NanoflannPointCloudAdaptor.html">NanoflannPointCloudAdaptor</a> &gt;, <a class="el" href="structhmap_1_1NanoflannPointCloudAdaptor.html">NanoflannPointCloudAdaptor</a>, 2 &gt;</td></tr>
+<tr class="memdesc:ae4a8f5c1d747f5eccbe078ab94598707"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alias for a 2D KD-tree using L2 (Euclidean) distance.  <br /></td></tr>
+<tr class="separator:ae4a8f5c1d747f5eccbe078ab94598707"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -1737,12 +1750,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a023e1bbf161eaa8f7db2a12d20cd18c5" id="r_a023e1bbf161eaa8f7db2a12d20cd18c5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a023e1bbf161eaa8f7db2a12d20cd18c5">interpolate2d_delaunay</a> (glm::ivec2 shape, const std::vector&lt; float &gt; &amp;x, const std::vector&lt; float &gt; &amp;y, const std::vector&lt; float &gt; &amp;values, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_x=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_y=nullptr, glm::vec4 bbox={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>})</td></tr>
 <tr class="memdesc:a023e1bbf161eaa8f7db2a12d20cd18c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">2D interpolation using the Delaunay triangulation method.  <br /></td></tr>
 <tr class="separator:a023e1bbf161eaa8f7db2a12d20cd18c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a41d8c84dc7d1ede75b8651443dccb693" id="r_a41d8c84dc7d1ede75b8651443dccb693"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a41d8c84dc7d1ede75b8651443dccb693">interpolate2d_gaussian</a> (glm::ivec2 shape, const std::vector&lt; float &gt; &amp;x, const std::vector&lt; float &gt; &amp;y, const std::vector&lt; float &gt; &amp;values, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_x=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_y=nullptr, glm::vec4 bbox={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>}, float sigma=0.1<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
-<tr class="memdesc:a41d8c84dc7d1ede75b8651443dccb693"><td class="mdescLeft">&#160;</td><td class="mdescRight">2D interpolation using the Gaussian kernel method.  <br /></td></tr>
-<tr class="separator:a41d8c84dc7d1ede75b8651443dccb693"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a482ec7ca5a77557a9fbfeb82f2bc58f2" id="r_a482ec7ca5a77557a9fbfeb82f2bc58f2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a482ec7ca5a77557a9fbfeb82f2bc58f2">interpolate2d_idw</a> (glm::ivec2 shape, const std::vector&lt; float &gt; &amp;x, const std::vector&lt; float &gt; &amp;y, const std::vector&lt; float &gt; &amp;values, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_x=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_y=nullptr, glm::vec4 bbox={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>}, float distance_exp=2.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
-<tr class="memdesc:a482ec7ca5a77557a9fbfeb82f2bc58f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">2D interpolation using the IDW method.  <br /></td></tr>
-<tr class="separator:a482ec7ca5a77557a9fbfeb82f2bc58f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a14f8ea250312a1c2392dd26d34805f" id="r_a0a14f8ea250312a1c2392dd26d34805f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a0a14f8ea250312a1c2392dd26d34805f">interpolate2d_gaussian</a> (glm::ivec2 shape, const std::vector&lt; float &gt; &amp;x, const std::vector&lt; float &gt; &amp;y, const std::vector&lt; float &gt; &amp;values, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_x=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_y=nullptr, glm::vec4 bbox={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>}, float sigma=0.05<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float radius=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
+<tr class="memdesc:a0a14f8ea250312a1c2392dd26d34805f"><td class="mdescLeft">&#160;</td><td class="mdescRight">2D interpolation using the Gaussian kernel method.  <br /></td></tr>
+<tr class="separator:a0a14f8ea250312a1c2392dd26d34805f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a304d2b2e755c4a1fea14ac8dc6d44082" id="r_a304d2b2e755c4a1fea14ac8dc6d44082"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a304d2b2e755c4a1fea14ac8dc6d44082">interpolate2d_idw</a> (glm::ivec2 shape, const std::vector&lt; float &gt; &amp;x, const std::vector&lt; float &gt; &amp;y, const std::vector&lt; float &gt; &amp;values, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_x=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_y=nullptr, glm::vec4 bbox={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>}, float distance_exp=2.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float radius=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
+<tr class="memdesc:a304d2b2e755c4a1fea14ac8dc6d44082"><td class="mdescLeft">&#160;</td><td class="mdescRight">2D interpolation using the IDW method.  <br /></td></tr>
+<tr class="separator:a304d2b2e755c4a1fea14ac8dc6d44082"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4cb51937d8283468bc540129d491222b" id="r_a4cb51937d8283468bc540129d491222b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a4cb51937d8283468bc540129d491222b">interpolate2d_nearest</a> (glm::ivec2 shape, const std::vector&lt; float &gt; &amp;x, const std::vector&lt; float &gt; &amp;y, const std::vector&lt; float &gt; &amp;values, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_x=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_y=nullptr, glm::vec4 bbox={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>})</td></tr>
 <tr class="memdesc:a4cb51937d8283468bc540129d491222b"><td class="mdescLeft">&#160;</td><td class="mdescRight">2D interpolation using the nearest neighbor method.  <br /></td></tr>
 <tr class="separator:a4cb51937d8283468bc540129d491222b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -2580,6 +2593,23 @@ Functions</h2></td></tr>
 <tr class="memitem:aa7538088dbfe576e77ccbe14e9a6c9d7" id="r_aa7538088dbfe576e77ccbe14e9a6c9d7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#aa7538088dbfe576e77ccbe14e9a6c9d7">cmp_queue</a> (std::pair&lt; int, std::pair&lt; int, int &gt; &gt; &amp;a, std::pair&lt; int, std::pair&lt; int, int &gt; &gt; &amp;b)</td></tr>
 <tr class="separator:aa7538088dbfe576e77ccbe14e9a6c9d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Typedef Documentation</h2>
+<a id="ae4a8f5c1d747f5eccbe078ab94598707" name="ae4a8f5c1d747f5eccbe078ab94598707"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4a8f5c1d747f5eccbe078ab94598707">&#9670;&#160;</a></span>KDTree</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="namespacehmap.html#ae4a8f5c1d747f5eccbe078ab94598707">hmap::KDTree</a> = typedef nanoflann::KDTreeSingleIndexAdaptor&lt; nanoflann::L2_Simple_Adaptor&lt;float, <a class="el" href="structhmap_1_1NanoflannPointCloudAdaptor.html">NanoflannPointCloudAdaptor</a>&gt;, <a class="el" href="structhmap_1_1NanoflannPointCloudAdaptor.html">NanoflannPointCloudAdaptor</a>, 2&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Alias for a 2D KD-tree using L2 (Euclidean) distance. </p>
+
+</div>
+</div>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
 <a id="a5101273ec456f5267dddc3e22dae223b" name="a5101273ec456f5267dddc3e22dae223b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5101273ec456f5267dddc3e22dae223b">&#9670;&#160;</a></span>StampingBlendMethod</h2>
@@ -30910,8 +30940,8 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a id="a41d8c84dc7d1ede75b8651443dccb693" name="a41d8c84dc7d1ede75b8651443dccb693"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a41d8c84dc7d1ede75b8651443dccb693">&#9670;&#160;</a></span>interpolate2d_gaussian()</h2>
+<a id="a0a14f8ea250312a1c2392dd26d34805f" name="a0a14f8ea250312a1c2392dd26d34805f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a14f8ea250312a1c2392dd26d34805f">&#9670;&#160;</a></span>interpolate2d_gaussian()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -30962,7 +30992,13 @@ template&lt;typename T &gt; </div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>sigma</em> = <code>0.1<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>&#160;</td>
+          <td class="paramname"><em>sigma</em> = <code>0.05<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>radius</em> = <code>0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -30976,8 +31012,8 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a id="a482ec7ca5a77557a9fbfeb82f2bc58f2" name="a482ec7ca5a77557a9fbfeb82f2bc58f2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a482ec7ca5a77557a9fbfeb82f2bc58f2">&#9670;&#160;</a></span>interpolate2d_idw()</h2>
+<a id="a304d2b2e755c4a1fea14ac8dc6d44082" name="a304d2b2e755c4a1fea14ac8dc6d44082"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a304d2b2e755c4a1fea14ac8dc6d44082">&#9670;&#160;</a></span>interpolate2d_idw()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -31028,7 +31064,13 @@ template&lt;typename T &gt; </div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>distance_exp</em> = <code>2.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>&#160;</td>
+          <td class="paramname"><em>distance_exp</em> = <code>2.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>radius</em> = <code>0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>&#160;</td>
         </tr>
         <tr>
           <td></td>

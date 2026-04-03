@@ -483,6 +483,16 @@
   <compound refid="structhmap_1_1IVec4Hash" kind="struct"><name>hmap::IVec4Hash</name>
     <member refid="structhmap_1_1IVec4Hash_1a48cda465432cc7181e29227b4502e030" kind="function"><name>operator()</name></member>
   </compound>
+  <compound refid="structhmap_1_1KDTreeContext" kind="struct"><name>hmap::KDTreeContext</name>
+    <member refid="structhmap_1_1KDTreeContext_1ab19ea2c588a51dc72f549de76a1a820a" kind="variable"><name>x</name></member>
+    <member refid="structhmap_1_1KDTreeContext_1abe73aabad1f0036504cb49602da2324a" kind="variable"><name>y</name></member>
+    <member refid="structhmap_1_1KDTreeContext_1a4088f3e0e081971c2a10d39502bca147" kind="variable"><name>adaptor</name></member>
+    <member refid="structhmap_1_1KDTreeContext_1aa7d99c52bea43261bf5323627ac47e73" kind="variable"><name>index</name></member>
+    <member refid="structhmap_1_1KDTreeContext_1a41664dfaada64f8177cc16c54851d10e" kind="function"><name>KDTreeContext</name></member>
+    <member refid="structhmap_1_1KDTreeContext_1a934dff6853d2ca61d130ff58a781fd7d" kind="function"><name>compte_neighbor_distance_range</name></member>
+    <member refid="structhmap_1_1KDTreeContext_1aad3d441a791d3aa190d4ea05a04d8e72" kind="function"><name>neighbor_search</name></member>
+    <member refid="structhmap_1_1KDTreeContext_1af70cc71d3592fb9bd4a87454ecc2d844" kind="function"><name>radius_search</name></member>
+  </compound>
   <compound refid="structhmap_1_1LruTileEntry" kind="struct"><name>hmap::LruTileEntry</name>
     <member refid="structhmap_1_1LruTileEntry_1a64f43e9e8cd9c2a013deacda2409e26f" kind="variable"><name>value</name></member>
     <member refid="structhmap_1_1LruTileEntry_1a4b419114b2a041fe2e303cf6dbea4c39" kind="variable"><name>lru_it</name></member>
@@ -511,6 +521,14 @@
     <member refid="structhmap_1_1Mat_1a4f148a4aa0f08e0bd0c4959b8fcc9aa5" kind="function"><name>operator()</name></member>
     <member refid="structhmap_1_1Mat_1a64286cac9e847ae6f76dd8f696108b8a" kind="function"><name>operator()</name></member>
     <member refid="structhmap_1_1Mat_1a7f02ddd8303ad668585dbed93df95b7c" kind="function"><name>operator()</name></member>
+  </compound>
+  <compound refid="structhmap_1_1NanoflannPointCloudAdaptor" kind="struct"><name>hmap::NanoflannPointCloudAdaptor</name>
+    <member refid="structhmap_1_1NanoflannPointCloudAdaptor_1aa2d01563f9bf6152bcd2a2d36b8b064c" kind="variable"><name>x</name></member>
+    <member refid="structhmap_1_1NanoflannPointCloudAdaptor_1a8bb43ead6f533358545e9d1724b25a60" kind="variable"><name>y</name></member>
+    <member refid="structhmap_1_1NanoflannPointCloudAdaptor_1a7c24b8b7c69bbfe87e60a9d1a9243bea" kind="function"><name>NanoflannPointCloudAdaptor</name></member>
+    <member refid="structhmap_1_1NanoflannPointCloudAdaptor_1a800b0aa18bbb7bb3c8bb42dc28c95b5e" kind="function"><name>kdtree_get_point_count</name></member>
+    <member refid="structhmap_1_1NanoflannPointCloudAdaptor_1a073bf9163309e6ffacc0b2acedc0328c" kind="function"><name>kdtree_get_pt</name></member>
+    <member refid="structhmap_1_1NanoflannPointCloudAdaptor_1ac441396f32a0bd13953aed786f300dc2" kind="function"><name>kdtree_get_bbox</name></member>
   </compound>
   <compound refid="classhmap_1_1NaturalNeighborInterpolator" kind="class"><name>hmap::NaturalNeighborInterpolator</name>
     <member refid="classhmap_1_1NaturalNeighborInterpolator_1a2d4cd5c2cef48e5fd4b505cb33535f82" kind="variable"><name>handle</name></member>
@@ -1232,6 +1250,7 @@
     <member refid="namespacehmap_1ae383414b46ae8992e621c407f09ce7c5a5356cbfe824240ce4bd458109890b9d5" kind="enumvalue"><name>VA_DISTRIBUTED</name></member>
     <member refid="namespacehmap_1ae383414b46ae8992e621c407f09ce7c5afd32b1bf1363b0e44143bda30f00cffa" kind="enumvalue"><name>VA_SINGLE_ARRAY</name></member>
     <member refid="namespacehmap_1ae383414b46ae8992e621c407f09ce7c5a3c2aed0c2a4eb46f0bd37dc7741b17c8" kind="enumvalue"><name>VA_SINGLE_ARRAY_DOWNSCALED</name></member>
+    <member refid="namespacehmap_1ae4a8f5c1d747f5eccbe078ab94598707" kind="typedef"><name>KDTree</name></member>
     <member refid="namespacehmap_1aed9d644531f4c1132298258bfb9dbf36" kind="variable"><name>normal_map_blending_method_as_string</name></member>
     <member refid="namespacehmap_1a88ca6ccdcae8eba404dc38abac40991d" kind="variable"><name>cmap_as_string</name></member>
     <member refid="namespacehmap_1abba6b48f25191652ca4a9d643bb6542b" kind="variable"><name>mesh_type_as_string</name></member>
@@ -1622,8 +1641,8 @@
     <member refid="namespacehmap_1a6cfd7b1fc064e5aaef1550041f1bbc06" kind="function"><name>harmonic_interpolation</name></member>
     <member refid="namespacehmap_1aeddca5280bfeacef3cdf4bee68a2195f" kind="function"><name>interpolate2d</name></member>
     <member refid="namespacehmap_1a023e1bbf161eaa8f7db2a12d20cd18c5" kind="function"><name>interpolate2d_delaunay</name></member>
-    <member refid="namespacehmap_1a41d8c84dc7d1ede75b8651443dccb693" kind="function"><name>interpolate2d_gaussian</name></member>
-    <member refid="namespacehmap_1a482ec7ca5a77557a9fbfeb82f2bc58f2" kind="function"><name>interpolate2d_idw</name></member>
+    <member refid="namespacehmap_1a0a14f8ea250312a1c2392dd26d34805f" kind="function"><name>interpolate2d_gaussian</name></member>
+    <member refid="namespacehmap_1a304d2b2e755c4a1fea14ac8dc6d44082" kind="function"><name>interpolate2d_idw</name></member>
     <member refid="namespacehmap_1a4cb51937d8283468bc540129d491222b" kind="function"><name>interpolate2d_nearest</name></member>
     <member refid="namespacehmap_1a7f56b267f543e34806bfd334272f7392" kind="function"><name>interpolate2d_nni</name></member>
     <member refid="namespacehmap_1a9e8b724d238450ef72e9bd083acb9b8a" kind="function"><name>interpolate_array_bicubic</name></member>
@@ -2176,6 +2195,8 @@
   </compound>
   <compound refid="grids_8hpp" kind="file"><name>grids.hpp</name>
   </compound>
+  <compound refid="kd__tree_8hpp" kind="file"><name>kd_tree.hpp</name>
+  </compound>
   <compound refid="path_8hpp" kind="file"><name>path.hpp</name>
   </compound>
   <compound refid="point_8hpp" kind="file"><name>point.hpp</name>
@@ -2453,6 +2474,8 @@
   </compound>
   <compound refid="grid_8cpp" kind="file"><name>grid.cpp</name>
   </compound>
+  <compound refid="kd__tree_8cpp" kind="file"><name>kd_tree.cpp</name>
+  </compound>
   <compound refid="path_8cpp" kind="file"><name>path.cpp</name>
   </compound>
   <compound refid="point__sampling_8cpp" kind="file"><name>point_sampling.cpp</name>
@@ -2512,6 +2535,16 @@
   <compound refid="interpolate1d_8cpp" kind="file"><name>interpolate1d.cpp</name>
   </compound>
   <compound refid="interpolate2d_8cpp" kind="file"><name>interpolate2d.cpp</name>
+  </compound>
+  <compound refid="interpolate2d__delaunay_8cpp" kind="file"><name>interpolate2d_delaunay.cpp</name>
+  </compound>
+  <compound refid="interpolate2d__gaussian_8cpp" kind="file"><name>interpolate2d_gaussian.cpp</name>
+  </compound>
+  <compound refid="interpolate2d__idw_8cpp" kind="file"><name>interpolate2d_idw.cpp</name>
+  </compound>
+  <compound refid="interpolate2d__nearest_8cpp" kind="file"><name>interpolate2d_nearest.cpp</name>
+  </compound>
+  <compound refid="interpolate2d__nni_8cpp" kind="file"><name>interpolate2d_nni.cpp</name>
   </compound>
   <compound refid="interpolate__array_8cpp" kind="file"><name>interpolate_array.cpp</name>
   </compound>

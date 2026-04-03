@@ -35,9 +35,11 @@
     <innerclass refid="structhmap_1_1IVec2Hash" prot="public">hmap::IVec2Hash</innerclass>
     <innerclass refid="structhmap_1_1IVec4Eq" prot="public">hmap::IVec4Eq</innerclass>
     <innerclass refid="structhmap_1_1IVec4Hash" prot="public">hmap::IVec4Hash</innerclass>
+    <innerclass refid="structhmap_1_1KDTreeContext" prot="public">hmap::KDTreeContext</innerclass>
     <innerclass refid="structhmap_1_1LruTileEntry" prot="public">hmap::LruTileEntry</innerclass>
     <innerclass refid="classhmap_1_1LruTileStorage" prot="public">hmap::LruTileStorage</innerclass>
     <innerclass refid="structhmap_1_1Mat" prot="public">hmap::Mat</innerclass>
+    <innerclass refid="structhmap_1_1NanoflannPointCloudAdaptor" prot="public">hmap::NanoflannPointCloudAdaptor</innerclass>
     <innerclass refid="classhmap_1_1NaturalNeighborInterpolator" prot="public">hmap::NaturalNeighborInterpolator</innerclass>
     <innerclass refid="classhmap_1_1NoiseFunction" prot="public">hmap::NoiseFunction</innerclass>
     <innerclass refid="classhmap_1_1ParberryFunction" prot="public">hmap::ParberryFunction</innerclass>
@@ -1664,6 +1666,23 @@
         <inbodydescription>
         </inbodydescription>
         <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="29" column="1" bodyfile="HighMap/include/highmap/virtual_array/virtual_array.hpp" bodystart="30" bodyend="35"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespacehmap_1ae4a8f5c1d747f5eccbe078ab94598707" prot="public" static="no">
+        <type>nanoflann::KDTreeSingleIndexAdaptor&lt; nanoflann::L2_Simple_Adaptor&lt; float, <ref refid="structhmap_1_1NanoflannPointCloudAdaptor" kindref="compound">NanoflannPointCloudAdaptor</ref> &gt;, <ref refid="structhmap_1_1NanoflannPointCloudAdaptor" kindref="compound">NanoflannPointCloudAdaptor</ref>, 2 &gt;</type>
+        <definition>using hmap::KDTree = typedef nanoflann::KDTreeSingleIndexAdaptor&lt; nanoflann::L2_Simple_Adaptor&lt;float, NanoflannPointCloudAdaptor&gt;, NanoflannPointCloudAdaptor, 2&gt;</definition>
+        <argsstring></argsstring>
+        <name>KDTree</name>
+        <qualifiedname>hmap::KDTree</qualifiedname>
+        <briefdescription>
+<para>Alias for a 2D KD-tree using L2 (Euclidean) distance. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/geometry/kd_tree.hpp" line="70" column="1" bodyfile="HighMap/include/highmap/geometry/kd_tree.hpp" bodystart="73" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="var">
@@ -32566,7 +32585,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/interpolate/interpolate2d.cpp" line="18" column="7" bodyfile="HighMap/src/interpolate/interpolate2d.cpp" bodystart="18" bodyend="74" declfile="HighMap/include/highmap/interpolate2d.hpp" declline="172" declcolumn="7"/>
+        <location file="HighMap/src/interpolate/interpolate2d.cpp" line="15" column="7" bodyfile="HighMap/src/interpolate/interpolate2d.cpp" bodystart="15" bodyend="71" declfile="HighMap/include/highmap/interpolate2d.hpp" declline="172" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a023e1bbf161eaa8f7db2a12d20cd18c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -32673,12 +32692,12 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/interpolate/interpolate2d.cpp" line="76" column="7" bodyfile="HighMap/src/interpolate/interpolate2d.cpp" bodystart="76" bodyend="233" declfile="HighMap/include/highmap/interpolate2d.hpp" declline="199" declcolumn="7"/>
+        <location file="HighMap/src/interpolate/interpolate2d_delaunay.cpp" line="15" column="7" bodyfile="HighMap/src/interpolate/interpolate2d_delaunay.cpp" bodystart="15" bodyend="194" declfile="HighMap/include/highmap/interpolate2d.hpp" declline="199" declcolumn="7"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1a41d8c84dc7d1ede75b8651443dccb693" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacehmap_1a0a14f8ea250312a1c2392dd26d34805f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
         <definition>Array hmap::interpolate2d_gaussian</definition>
-        <argsstring>(glm::ivec2 shape, const std::vector&lt; float &gt; &amp;x, const std::vector&lt; float &gt; &amp;y, const std::vector&lt; float &gt; &amp;values, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f}, float sigma=0.1f)</argsstring>
+        <argsstring>(glm::ivec2 shape, const std::vector&lt; float &gt; &amp;x, const std::vector&lt; float &gt; &amp;y, const std::vector&lt; float &gt; &amp;values, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f}, float sigma=0.05f, float radius=0.f)</argsstring>
         <name>interpolate2d_gaussian</name>
         <qualifiedname>hmap::interpolate2d_gaussian</qualifiedname>
         <param>
@@ -32715,7 +32734,12 @@ The output path consists of:<itemizedlist>
         <param>
           <type>float</type>
           <declname>sigma</declname>
-          <defval>0.1<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+          <defval>0.05<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>radius</declname>
+          <defval>0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
         </param>
         <briefdescription>
 <para>2D interpolation using the Gaussian kernel method. </para>
@@ -32724,12 +32748,12 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/interpolate/interpolate2d.cpp" line="235" column="7" bodyfile="HighMap/src/interpolate/interpolate2d.cpp" bodystart="235" bodyend="281" declfile="HighMap/include/highmap/interpolate2d.hpp" declline="210" declcolumn="7"/>
+        <location file="HighMap/src/interpolate/interpolate2d_gaussian.cpp" line="11" column="7" bodyfile="HighMap/src/interpolate/interpolate2d_gaussian.cpp" bodystart="11" bodyend="86" declfile="HighMap/include/highmap/interpolate2d.hpp" declline="210" declcolumn="7"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1a482ec7ca5a77557a9fbfeb82f2bc58f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacehmap_1a304d2b2e755c4a1fea14ac8dc6d44082" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
         <definition>Array hmap::interpolate2d_idw</definition>
-        <argsstring>(glm::ivec2 shape, const std::vector&lt; float &gt; &amp;x, const std::vector&lt; float &gt; &amp;y, const std::vector&lt; float &gt; &amp;values, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f}, float distance_exp=2.f)</argsstring>
+        <argsstring>(glm::ivec2 shape, const std::vector&lt; float &gt; &amp;x, const std::vector&lt; float &gt; &amp;y, const std::vector&lt; float &gt; &amp;values, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f}, float distance_exp=2.f, float radius=0.f)</argsstring>
         <name>interpolate2d_idw</name>
         <qualifiedname>hmap::interpolate2d_idw</qualifiedname>
         <param>
@@ -32768,6 +32792,11 @@ The output path consists of:<itemizedlist>
           <declname>distance_exp</declname>
           <defval>2.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
         </param>
+        <param>
+          <type>float</type>
+          <declname>radius</declname>
+          <defval>0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
         <briefdescription>
 <para>2D interpolation using the IDW method. </para>
         </briefdescription>
@@ -32775,7 +32804,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/interpolate/interpolate2d.cpp" line="283" column="7" bodyfile="HighMap/src/interpolate/interpolate2d.cpp" bodystart="283" bodyend="328" declfile="HighMap/include/highmap/interpolate2d.hpp" declline="222" declcolumn="7"/>
+        <location file="HighMap/src/interpolate/interpolate2d_idw.cpp" line="13" column="7" bodyfile="HighMap/src/interpolate/interpolate2d_idw.cpp" bodystart="13" bodyend="93" declfile="HighMap/include/highmap/interpolate2d.hpp" declline="223" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a4cb51937d8283468bc540129d491222b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -32882,7 +32911,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/interpolate/interpolate2d.cpp" line="330" column="7" bodyfile="HighMap/src/interpolate/interpolate2d.cpp" bodystart="330" bodyend="366" declfile="HighMap/include/highmap/interpolate2d.hpp" declline="248" declcolumn="7"/>
+        <location file="HighMap/src/interpolate/interpolate2d_nearest.cpp" line="11" column="7" bodyfile="HighMap/src/interpolate/interpolate2d_nearest.cpp" bodystart="11" bodyend="53" declfile="HighMap/include/highmap/interpolate2d.hpp" declline="250" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a7f56b267f543e34806bfd334272f7392" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -32928,7 +32957,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/interpolate/interpolate2d.cpp" line="368" column="7" bodyfile="HighMap/src/interpolate/interpolate2d.cpp" bodystart="368" bodyend="425" declfile="HighMap/include/highmap/interpolate2d.hpp" declline="259" declcolumn="7"/>
+        <location file="HighMap/src/interpolate/interpolate2d_nni.cpp" line="11" column="7" bodyfile="HighMap/src/interpolate/interpolate2d_nni.cpp" bodystart="11" bodyend="68" declfile="HighMap/include/highmap/interpolate2d.hpp" declline="261" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a9e8b724d238450ef72e9bd083acb9b8a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>

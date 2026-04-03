@@ -74,12 +74,16 @@ struct \mbox{\hyperlink{structhmap_1_1IVec4Eq}{IVec4\+Eq}}
 \item 
 struct \mbox{\hyperlink{structhmap_1_1IVec4Hash}{IVec4\+Hash}}
 \item 
+struct \mbox{\hyperlink{structhmap_1_1KDTreeContext}{KDTree\+Context}}
+\begin{DoxyCompactList}\small\item\em Context wrapper for KD-\/tree operations. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structhmap_1_1LruTileEntry}{Lru\+Tile\+Entry}}
 \item 
 class \mbox{\hyperlink{classhmap_1_1LruTileStorage}{Lru\+Tile\+Storage}}
 \item 
 struct \mbox{\hyperlink{structhmap_1_1Mat}{Mat}}
 \begin{DoxyCompactList}\small\item\em \doxylink{structhmap_1_1Mat}{Mat} class for basic manipulation of 2D matrices. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structhmap_1_1NanoflannPointCloudAdaptor}{Nanoflann\+Point\+Cloud\+Adaptor}}
+\begin{DoxyCompactList}\small\item\em Adaptor exposing a 2D point cloud to nanoflann. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classhmap_1_1NaturalNeighborInterpolator}{Natural\+Neighbor\+Interpolator}}
 \item 
 class \mbox{\hyperlink{classhmap_1_1NoiseFunction}{Noise\+Function}}
@@ -180,6 +184,11 @@ class \mbox{\hyperlink{classhmap_1_1WorleyFunction}{Worley\+Function}}
 \begin{DoxyCompactList}\small\item\em Worley (x, y) function class. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classhmap_1_1XyControlFunction}{Xy\+Control\+Function}}
 \end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{namespacehmap_ae4a8f5c1d747f5eccbe078ab94598707}{KDTree}} = nanoflann\+::\+KDTree\+Single\+Index\+Adaptor$<$ nanoflann\+::\+L2\+\_\+\+Simple\+\_\+\+Adaptor$<$ float, \mbox{\hyperlink{structhmap_1_1NanoflannPointCloudAdaptor}{Nanoflann\+Point\+Cloud\+Adaptor}} $>$, \mbox{\hyperlink{structhmap_1_1NanoflannPointCloudAdaptor}{Nanoflann\+Point\+Cloud\+Adaptor}}, 2 $>$
+\begin{DoxyCompactList}\small\item\em Alias for a 2D KD-\/tree using L2 (Euclidean) distance. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
@@ -1203,9 +1212,9 @@ float \mbox{\hyperlink{namespacehmap_aee026d8b23196038c2b16c370b743889}{cubic\+\
 \begin{DoxyCompactList}\small\item\em Generic 2D interpolation function. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a023e1bbf161eaa8f7db2a12d20cd18c5}{interpolate2d\+\_\+delaunay}} (glm\+::ivec2 shape, const std\+::vector$<$ float $>$ \&x, const std\+::vector$<$ float $>$ \&y, const std\+::vector$<$ float $>$ \&values, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
 \begin{DoxyCompactList}\small\item\em 2D interpolation using the Delaunay triangulation method. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a41d8c84dc7d1ede75b8651443dccb693}{interpolate2d\+\_\+gaussian}} (glm\+::ivec2 shape, const std\+::vector$<$ float $>$ \&x, const std\+::vector$<$ float $>$ \&y, const std\+::vector$<$ float $>$ \&values, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, float sigma=0.\+1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a0a14f8ea250312a1c2392dd26d34805f}{interpolate2d\+\_\+gaussian}} (glm\+::ivec2 shape, const std\+::vector$<$ float $>$ \&x, const std\+::vector$<$ float $>$ \&y, const std\+::vector$<$ float $>$ \&values, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, float sigma=0.\+05\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float radius=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em 2D interpolation using the Gaussian kernel method. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a482ec7ca5a77557a9fbfeb82f2bc58f2}{interpolate2d\+\_\+idw}} (glm\+::ivec2 shape, const std\+::vector$<$ float $>$ \&x, const std\+::vector$<$ float $>$ \&y, const std\+::vector$<$ float $>$ \&values, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, float distance\+\_\+exp=2.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a304d2b2e755c4a1fea14ac8dc6d44082}{interpolate2d\+\_\+idw}} (glm\+::ivec2 shape, const std\+::vector$<$ float $>$ \&x, const std\+::vector$<$ float $>$ \&y, const std\+::vector$<$ float $>$ \&values, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, float distance\+\_\+exp=2.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float radius=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em 2D interpolation using the IDW method. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a4cb51937d8283468bc540129d491222b}{interpolate2d\+\_\+nearest}} (glm\+::ivec2 shape, const std\+::vector$<$ float $>$ \&x, const std\+::vector$<$ float $>$ \&y, const std\+::vector$<$ float $>$ \&values, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
 \begin{DoxyCompactList}\small\item\em 2D interpolation using the nearest neighbor method. \end{DoxyCompactList}\item 
@@ -1807,6 +1816,19 @@ int \mbox{\hyperlink{namespacehmap_a0a359831aea68622813f65f4a989a75a}{count\+\_\
 \item 
 bool \mbox{\hyperlink{namespacehmap_aa7538088dbfe576e77ccbe14e9a6c9d7}{cmp\+\_\+queue}} (std\+::pair$<$ int, std\+::pair$<$ int, int $>$ $>$ \&a, std\+::pair$<$ int, std\+::pair$<$ int, int $>$ $>$ \&b)
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{namespacehmap_ae4a8f5c1d747f5eccbe078ab94598707}\label{namespacehmap_ae4a8f5c1d747f5eccbe078ab94598707} 
+\index{hmap@{hmap}!KDTree@{KDTree}}
+\index{KDTree@{KDTree}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{KDTree}{KDTree}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{namespacehmap_ae4a8f5c1d747f5eccbe078ab94598707}{hmap\+::\+KDTree}} = typedef nanoflann\+::\+KDTree\+Single\+Index\+Adaptor$<$ nanoflann\+::\+L2\+\_\+\+Simple\+\_\+\+Adaptor$<$float, \mbox{\hyperlink{structhmap_1_1NanoflannPointCloudAdaptor}{Nanoflann\+Point\+Cloud\+Adaptor}}$>$, \mbox{\hyperlink{structhmap_1_1NanoflannPointCloudAdaptor}{Nanoflann\+Point\+Cloud\+Adaptor}}, 2$>$}
+
+
+
+Alias for a 2D KD-\/tree using L2 (Euclidean) distance. 
+
 
 
 \doxysubsection{Enumeration Type Documentation}
@@ -19063,21 +19085,21 @@ This function performs 2D interpolation by generating a Delaunay triangulation o
 \begin{DoxyReturn}{Returns}
 \doxylink{classhmap_1_1Array}{Array} Output array with interpolated values. 
 \end{DoxyReturn}
-\Hypertarget{namespacehmap_a41d8c84dc7d1ede75b8651443dccb693}\label{namespacehmap_a41d8c84dc7d1ede75b8651443dccb693} 
+\Hypertarget{namespacehmap_a0a14f8ea250312a1c2392dd26d34805f}\label{namespacehmap_a0a14f8ea250312a1c2392dd26d34805f} 
 \index{hmap@{hmap}!interpolate2d\_gaussian@{interpolate2d\_gaussian}}
 \index{interpolate2d\_gaussian@{interpolate2d\_gaussian}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{interpolate2d\_gaussian()}{interpolate2d\_gaussian()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::interpolate2d\+\_\+gaussian (\begin{DoxyParamCaption}\item[{glm\+::ivec2}]{shape,  }\item[{const std\+::vector$<$ float $>$ \&}]{x,  }\item[{const std\+::vector$<$ float $>$ \&}]{y,  }\item[{const std\+::vector$<$ float $>$ \&}]{values,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+x = {\ttfamily nullptr},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+y = {\ttfamily nullptr},  }\item[{glm\+::vec4}]{bbox = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}},  }\item[{float}]{sigma = {\ttfamily 0.1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::interpolate2d\+\_\+gaussian (\begin{DoxyParamCaption}\item[{glm\+::ivec2}]{shape,  }\item[{const std\+::vector$<$ float $>$ \&}]{x,  }\item[{const std\+::vector$<$ float $>$ \&}]{y,  }\item[{const std\+::vector$<$ float $>$ \&}]{values,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+x = {\ttfamily nullptr},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+y = {\ttfamily nullptr},  }\item[{glm\+::vec4}]{bbox = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}},  }\item[{float}]{sigma = {\ttfamily 0.05\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{radius = {\ttfamily 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
 
 
 
 2D interpolation using the Gaussian kernel method. 
 
-\Hypertarget{namespacehmap_a482ec7ca5a77557a9fbfeb82f2bc58f2}\label{namespacehmap_a482ec7ca5a77557a9fbfeb82f2bc58f2} 
+\Hypertarget{namespacehmap_a304d2b2e755c4a1fea14ac8dc6d44082}\label{namespacehmap_a304d2b2e755c4a1fea14ac8dc6d44082} 
 \index{hmap@{hmap}!interpolate2d\_idw@{interpolate2d\_idw}}
 \index{interpolate2d\_idw@{interpolate2d\_idw}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{interpolate2d\_idw()}{interpolate2d\_idw()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::interpolate2d\+\_\+idw (\begin{DoxyParamCaption}\item[{glm\+::ivec2}]{shape,  }\item[{const std\+::vector$<$ float $>$ \&}]{x,  }\item[{const std\+::vector$<$ float $>$ \&}]{y,  }\item[{const std\+::vector$<$ float $>$ \&}]{values,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+x = {\ttfamily nullptr},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+y = {\ttfamily nullptr},  }\item[{glm\+::vec4}]{bbox = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}},  }\item[{float}]{distance\+\_\+exp = {\ttfamily 2.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::interpolate2d\+\_\+idw (\begin{DoxyParamCaption}\item[{glm\+::ivec2}]{shape,  }\item[{const std\+::vector$<$ float $>$ \&}]{x,  }\item[{const std\+::vector$<$ float $>$ \&}]{y,  }\item[{const std\+::vector$<$ float $>$ \&}]{values,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+x = {\ttfamily nullptr},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+y = {\ttfamily nullptr},  }\item[{glm\+::vec4}]{bbox = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}},  }\item[{float}]{distance\+\_\+exp = {\ttfamily 2.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{radius = {\ttfamily 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
 
 
 
