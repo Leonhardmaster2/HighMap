@@ -1,9 +1,11 @@
 #include "highmap.hpp"
+#include "highmap/dbg/timer.hpp"
 
 int main(void)
 {
   glm::ivec2 shape = {256, 256};
-  int        seed = 0;
+  // shape = {1024, 1024};
+  int seed = 0;
 
   glm::vec4 bbox = {-1.f, 0.f, 0.5f, 1.5f};
 
@@ -18,46 +20,63 @@ int main(void)
   hmap::Array z0 = hmap::Array(shape);
   cloud.to_array(z0, bbox);
 
+  // noise
+  hmap::Array dx = 0.05f * hmap::noise_fbm(hmap::NoiseType::PERLIN,
+                                           shape,
+                                           {4.f, 4.f},
+                                           seed,
+                                           8,
+                                           0.f);
+
   // nearest
+  hmap::Timer::Start("ITP2D_NEAREST");
   hmap::Array z1 = hmap::interpolate2d(
       shape,
       x,
       y,
       values,
       hmap::InterpolationMethod2D::ITP2D_NEAREST,
-      nullptr,
-      nullptr,
+      &dx,
+      &dx,
       bbox);
+  hmap::Timer::Stop("ITP2D_NEAREST");
 
+  hmap::Timer::Start("ITP2D_DELAUNAY");
   hmap::Array z2 = hmap::interpolate2d(
       shape,
       x,
       y,
       values,
       hmap::InterpolationMethod2D::ITP2D_DELAUNAY,
-      nullptr,
-      nullptr,
+      &dx,
+      &dx,
       bbox);
+  hmap::Timer::Stop("ITP2D_DELAUNAY");
 
+  hmap::Timer::Start("ITP2D_IDW");
   hmap::Array z3 = hmap::interpolate2d(shape,
                                        x,
                                        y,
                                        values,
                                        hmap::InterpolationMethod2D::ITP2D_IDW,
-                                       nullptr,
-                                       nullptr,
+                                       &dx,
+                                       &dx,
                                        bbox);
+  hmap::Timer::Stop("ITP2D_IDW");
 
+  hmap::Timer::Start("ITP2D_GAUSSIAN");
   hmap::Array z4 = hmap::interpolate2d(
       shape,
       x,
       y,
       values,
       hmap::InterpolationMethod2D::ITP2D_GAUSSIAN,
-      nullptr,
-      nullptr,
+      &dx,
+      &dx,
       bbox);
+  hmap::Timer::Stop("ITP2D_GAUSSIAN");
 
+  hmap::Timer::Start("ITP2D_NNI");
   hmap::Array z5 = hmap::interpolate2d(shape,
                                        x,
                                        y,
@@ -66,6 +85,7 @@ int main(void)
                                        nullptr,
                                        nullptr,
                                        bbox);
+  hmap::Timer::Stop("ITP2D_NNI");
 
   hmap::export_banner_png("ex_interpolate2d.png",
                           {z0, z1, z2, z3, z4, z5},

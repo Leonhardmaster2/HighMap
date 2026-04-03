@@ -214,7 +214,8 @@ Array interpolate2d_gaussian(glm::ivec2                shape,
                              const Array              *p_noise_x = nullptr,
                              const Array              *p_noise_y = nullptr,
                              glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f},
-                             float     sigma = 0.1f);
+                             float     sigma = 0.05f,
+                             float     radius = 0.f);
 
 /**
  * @brief 2D interpolation using the IDW method.
@@ -226,7 +227,8 @@ Array interpolate2d_idw(glm::ivec2                shape,
                         const Array              *p_noise_x = nullptr,
                         const Array              *p_noise_y = nullptr,
                         glm::vec4                 bbox = {0.f, 1.f, 0.f, 1.f},
-                        float                     distance_exp = 2.f);
+                        float                     distance_exp = 2.f,
+                        float                     radius = 0.f);
 
 /**
  * @brief 2D interpolation using the nearest neighbor method.

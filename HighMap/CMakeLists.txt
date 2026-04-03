@@ -23,6 +23,8 @@ target_compile_definitions(
   ${PROJECT_NAME} INTERFACE GLM_FORCE_SWIZZLE GLM_FORCE_INLINE
                             GLM_ENABLE_EXPERIMENTAL)
 
+find_package(nanoflann QUIET) # should be provided by PointSampler
+
 target_link_libraries(
   ${PROJECT_NAME}
   assimp::assimp
@@ -35,6 +37,7 @@ target_link_libraries(
   hmm::hmm
   libnpy::libnpy
   macro-logger::macro-logger
+  nanoflann::nanoflann
   nn-c::nn-c
   NoiseLib
   OpenMP::OpenMP_CXX
