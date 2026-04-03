@@ -9,12 +9,12 @@
 #include "highmap/dbg/assert.hpp"
 #include "highmap/dbg/timer.hpp"
 
-// const hmap::Vec2<int>   shape = {2048, 2048};
-// const hmap::Vec2<int> shape = {1024, 1024};
-const hmap::Vec2<int>   shape = {256, 512};
-const hmap::Vec2<float> kw = {2.f, 4.f};
-const int               seed = 1;
-std::fstream            f;
+// const glm::ivec2   shape = {2048, 2048};
+// const glm::ivec2 shape = {1024, 1024};
+const glm::ivec2 shape = {256, 512};
+const glm::vec2  kw = {2.f, 4.f};
+const int        seed = 1;
+std::fstream     f;
 
 template <typename F1, typename F2>
 void compare(F1 fct1, F2 fct2, float tolerance, const std::string &name)
@@ -179,16 +179,6 @@ int main(void)
           1e-3f,
           "gradient_norm");
 
-  {
-    int nparticles = 50000;
-    compare([&nparticles](hmap::Array &z)
-            { hmap::hydraulic_particle(z, nparticles, 0); },
-            [&nparticles](hmap::Array &z)
-            { hmap::gpu::hydraulic_particle(z, &z, nparticles, 0); },
-            1e-3f,
-            "hydraulic_particle");
-  }
-
   compare([ir](hmap::Array &z)
           { hmap::hydraulic_stream_log(z, 0.1f, 5.f / 512.f, 64); },
           [ir](hmap::Array &z)
@@ -302,7 +292,7 @@ int main(void)
         // hmap::NoiseType::WORLEY_VALUE
     };
 
-    hmap::Vec2<float> kw = {32.f, 32.f};
+    glm::vec2 kw = {32.f, 32.f};
 
     for (auto type : types)
     {
@@ -409,8 +399,10 @@ int main(void)
           "shrink");
 
   {
-    hmap::Vec4<float> bbox = {1.f, 2.f, -0.5f, 0.5f};
-    hmap::Path path = hmap::Path(200, 0, bbox.adjust(0.2f, -0.2f, 0.2f, -0.2f));
+    glm::vec4  bbox = {1.f, 2.f, -0.5f, 0.5f};
+    hmap::Path path = hmap::Path(200,
+                                 0,
+                                 hmap::adjust(bbox, 0.2f, -0.2f, 0.2f, -0.2f));
     path.reorder_nns();
 
     compare([bbox, path](hmap::Array &z)
@@ -422,8 +414,10 @@ int main(void)
   }
 
   {
-    hmap::Vec4<float> bbox = {1.f, 2.f, -0.5f, 0.5f};
-    hmap::Path path = hmap::Path(200, 0, bbox.adjust(0.2f, -0.2f, 0.2f, -0.2f));
+    glm::vec4  bbox = {1.f, 2.f, -0.5f, 0.5f};
+    hmap::Path path = hmap::Path(200,
+                                 0,
+                                 hmap::adjust(bbox, 0.2f, -0.2f, 0.2f, -0.2f));
     path.reorder_nns();
 
     compare([bbox, path](hmap::Array &z)

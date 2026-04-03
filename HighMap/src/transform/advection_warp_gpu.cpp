@@ -2,7 +2,7 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 #include "highmap/gradient.hpp"
-#include "highmap/hydrology.hpp"
+#include "highmap/hydrology/hydrology.hpp"
 #include "highmap/math.hpp"
 #include "highmap/opencl/gpu_opencl.hpp"
 
@@ -19,9 +19,9 @@ Array advection_warp(const Array &z,
 {
   auto run = clwrapper::Run("advection_warp");
 
-  Vec2<int> shape = z.shape;
-  Array     out = Array(shape);
-  Array     mask;
+  glm::ivec2 shape = z.shape;
+  Array      out = Array(shape);
+  Array      mask;
 
   run.bind_imagef("z", z.vector, shape.x, shape.y);
   run.bind_imagef("field", advected_field.vector, shape.x, shape.y);

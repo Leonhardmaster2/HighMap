@@ -10,8 +10,8 @@
 namespace hmap::gpu
 {
 
-Array badlands(Vec2<int>    shape,
-               Vec2<float>  kw,
+Array badlands(glm::ivec2   shape,
+               glm::vec2    kw,
                uint         seed,
                int          octaves,
                float        rugosity,
@@ -20,7 +20,7 @@ Array badlands(Vec2<int>    shape,
                float        base_noise_amp,
                const Array *p_noise_x,
                const Array *p_noise_y,
-               Vec4<float>  bbox)
+               glm::vec4    bbox)
 {
   const float persistence = 0.5f;
   const float lacunarity = 2.3f;
@@ -45,7 +45,7 @@ Array badlands(Vec2<int>    shape,
   Array dy = noise * std::sin(alpha);
 
   // base primitive
-  Vec2<float>       jitter(1.f, 1.f);
+  glm::vec2         jitter(1.f, 1.f);
   VoronoiReturnType return_type = VoronoiReturnType::CONSTANT_F2MF1_SQUARED;
 
   Array voronoi = voronoi_fbm(shape,

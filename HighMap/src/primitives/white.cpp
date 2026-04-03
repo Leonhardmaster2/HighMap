@@ -9,7 +9,7 @@
 namespace hmap
 {
 
-Array white(Vec2<int> shape, float a, float b, uint seed)
+Array white(glm::ivec2 shape, float a, float b, uint seed)
 {
   Array                                 array = Array(shape);
   std::mt19937                          gen(seed);
@@ -36,7 +36,7 @@ Array white_density_map(const Array &density_map, uint seed)
   return array;
 }
 
-Array white_sparse(Vec2<int> shape, float a, float b, float density, uint seed)
+Array white_sparse(glm::ivec2 shape, float a, float b, float density, uint seed)
 {
   Array                                 array = Array(shape);
   std::mt19937                          gen(seed);
@@ -50,7 +50,7 @@ Array white_sparse(Vec2<int> shape, float a, float b, float density, uint seed)
   return array;
 }
 
-Array white_sparse_binary(Vec2<int> shape, float density, uint seed)
+Array white_sparse_binary(glm::ivec2 shape, float density, uint seed)
 {
   Array                                 array = Array(shape);
   std::mt19937                          gen(seed);

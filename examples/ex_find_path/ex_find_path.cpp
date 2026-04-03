@@ -12,15 +12,15 @@ void helper_ij_to_array(hmap::Array                         &w,
 
 int main(void)
 {
-  hmap::Vec2<int>   shape = {256, 256};
-  hmap::Vec2<float> res = {2.f, 2.f};
-  int               seed = 1;
+  glm::ivec2 shape = {256, 256};
+  glm::vec2  res = {2.f, 2.f};
+  int        seed = 1;
 
   hmap::Array z = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, res, seed);
   hmap::remap(z);
 
-  hmap::Vec2<int>              ij_start = {40, 40};
-  std::vector<hmap::Vec2<int>> ij_end_list = {{230, 230}, {0, 128}};
+  glm::ivec2              ij_start = {40, 40};
+  std::vector<glm::ivec2> ij_end_list = {{230, 230}, {0, 128}};
 
   // --- Dijkstra
 

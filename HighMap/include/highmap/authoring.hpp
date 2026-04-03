@@ -1,24 +1,9 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
    Public License. The full license is in the file LICENSE, distributed with
    this software. */
-
-/**
- * @file authoring.hpp
- * @author Otto Link (otto.link.bv@gmail.com)
- * @brief Header file containing functions for generating and manipulating
- * heightmaps through various techniques.
- *
- * This header file provides functions for creating and modifying heightmaps
- * using techniques such as stamping kernels, defining ridgelines, applying the
- * reverse midpoint displacement algorithm, and more. These functions offer a
- * range of capabilities for terrain generation, elevation modifications, and
- * heightmap processing.
- *
- * @copyright Copyright (c) 2023 Otto Link
- */
-
 #pragma once
 #include "highmap/array.hpp"
+#include "highmap/geometry/path.hpp"
 
 namespace hmap
 {
@@ -84,8 +69,8 @@ void alter_elevation(Array       &array,
                      const Cloud &cloud,
                      int          ir,
                      float        footprint_ratio = 1.f,
-                     Vec2<float>  shift = {0.f, 0.f},
-                     Vec2<float>  scale = {1.f, 1.f});
+                     glm::vec2    shift = {0.f, 0.f},
+                     glm::vec2    scale = {1.f, 1.f});
 
 /**
  * @brief Generate a heightmap from a coarse grid of control points with defined
@@ -131,13 +116,97 @@ void alter_elevation(Array       &array,
  * **Result**
  * @image html ex_base_elevation.png
  */
-Array base_elevation(Vec2<int>                              shape,
+Array base_elevation(glm::ivec2                             shape,
                      const std::vector<std::vector<float>> &values,
                      float                                  width_factor = 1.f,
                      const Array                           *p_noise_x = nullptr,
                      const Array                           *p_noise_y = nullptr,
                      const Array *p_stretching = nullptr,
-                     Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
+                     glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
+ * @brief Carves a flatbed shape along a path.
+ *
+ * Generates a height array by carving a flat-bottomed bed around a path, with a
+ * radial profile for the bed shape and an optional outer falloff.
+ *
+ * @param  shape                    Output array resolution.
+ * @param  path                     Path defining the bed centerline.
+ * @param  bottom_extent            Radius of the flatbed region.
+ * @param  vmin                     Base height value.
+ * @param  depth                    Bed depth.
+ * @param  falloff_distance         Falloff width outside the bed.
+ * @param  outer_slope              Linear slope beyond the bed.
+ * @param  preserve_bedshape        Preserve relative bed shape under radial
+ *                                  noise.
+ * @param  radial_profile           Radial profile type.
+ * @param  radial_profile_parameter Shape parameter for the profile.
+ * @param  p_falloff_mask           Optional output falloff mask.
+ * @param  p_noise_r                Optional radial noise.
+ * @param  bbox                     World-space bounding box.
+ *
+ * @return                          Generated flatbed height array.
+ *
+ * **Example**
+ * @include ex_flatbed_carve.cpp
+ *
+ * **Result**
+ * @image html ex_flatbed_carve.png
+ */
+Array flatbed_carve(glm::ivec2    shape,
+                    const Path   &path,
+                    float         bottom_extent = 32.f, // pixels
+                    float         vmin = 0.1f,
+                    float         depth = 0.05f,
+                    float         falloff_distance = 128.f,
+                    float         outer_slope = 0.1f,
+                    bool          preserve_bedshape = true,
+                    RadialProfile radial_profile = RadialProfile::RP_GAIN,
+                    float         radial_profile_parameter = 2.f,
+                    Array        *p_falloff_mask = nullptr,
+                    const Array  *p_noise_r = nullptr,
+                    glm::vec4     bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
+ * @brief Blends a flatbed carve into an existing heightmap.
+ *
+ * Carves and blends a flatbed shape along a path into the provided array, using
+ * a smooth falloff mask.
+ *
+ * @param z                        Heightmap to modify in place.
+ * @param path                     Path defining the bed centerline.
+ * @param bottom_extent            Radius of the flatbed region.
+ * @param vmin                     Base height value.
+ * @param depth                    Bed depth.
+ * @param falloff_distance         Falloff width outside the bed.
+ * @param outer_slope              Linear slope beyond the bed.
+ * @param preserve_bedshape        Preserve relative bed shape under radial
+ *                                 noise.
+ * @param radial_profile           Radial profile type.
+ * @param radial_profile_parameter Shape parameter for the profile.
+ * @param p_falloff_mask           Optional output falloff mask.
+ * @param p_noise_r                Optional radial noise.
+ * @param bbox                     World-space bounding box.
+ *
+ * **Example**
+ * @include ex_flatbed_carve.cpp
+ *
+ * **Result**
+ * @image html ex_flatbed_carve.png
+ */
+void flatbed_carve(Array        &z,
+                   const Path   &path,
+                   float         bottom_extent = 32.f, // pixels
+                   float         vmin = 0.1f,
+                   float         depth = 0.05f,
+                   float         falloff_distance = 128.f,
+                   float         outer_slope = 0.1f,
+                   bool          preserve_bedshape = true,
+                   RadialProfile radial_profile = RadialProfile::RP_GAIN,
+                   float         radial_profile_parameter = 2.f,
+                   Array        *p_falloff_mask = nullptr,
+                   const Array  *p_noise_r = nullptr,
+                   glm::vec4     bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief Apply the reverse midpoint displacement algorithm to the input array.
@@ -218,7 +287,7 @@ Array reverse_midpoint(const Array &array,
  * **Result**
  * @image html ex_ridgelines.png
  */
-Array ridgelines(Vec2<int>                 shape,
+Array ridgelines(glm::ivec2                shape,
                  const std::vector<float> &xr,
                  const std::vector<float> &yr,
                  const std::vector<float> &zr,
@@ -226,11 +295,11 @@ Array ridgelines(Vec2<int>                 shape,
                  float                     k_smoothing = 1.f,
                  float                     width = 0.1f,
                  float                     vmin = 0.f,
-                 Vec4<float>               bbox = {0.f, 1.f, 0.f, 1.f},
+                 glm::vec4                 bbox = {0.f, 1.f, 0.f, 1.f},
                  const Array              *p_noise_x = nullptr,
                  const Array              *p_noise_y = nullptr,
                  const Array              *p_stretching = nullptr,
-                 Vec4<float>               bbox_array = {0.f, 1.f, 0.f, 1.f});
+                 glm::vec4                 bbox_array = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief Generate a heightmap based on a set of ridgelines with quadratic
@@ -282,7 +351,7 @@ Array ridgelines(Vec2<int>                 shape,
  * **Result**
  * @image html ex_ridgelines_bezier.png
  */
-Array ridgelines_bezier(Vec2<int>                 shape,
+Array ridgelines_bezier(glm::ivec2                shape,
                         const std::vector<float> &xr,
                         const std::vector<float> &yr,
                         const std::vector<float> &zr,
@@ -290,11 +359,11 @@ Array ridgelines_bezier(Vec2<int>                 shape,
                         float                     k_smoothing = 1.f,
                         float                     width = 0.1f,
                         float                     vmin = 0.f,
-                        Vec4<float>               bbox = {0.f, 1.f, 0.f, 1.f},
+                        glm::vec4                 bbox = {0.f, 1.f, 0.f, 1.f},
                         const Array              *p_noise_x = nullptr,
                         const Array              *p_noise_y = nullptr,
                         const Array              *p_stretching = nullptr,
-                        Vec4<float> bbox_array = {0.f, 1.f, 0.f, 1.f});
+                        glm::vec4 bbox_array = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief Generate a heightmap by stamping a kernel at predefined locations.
@@ -349,7 +418,7 @@ Array ridgelines_bezier(Vec2<int>                 shape,
  *
  * @see                           {@link other_related_functions}
  */
-Array stamping(Vec2<int>                 shape,
+Array stamping(glm::ivec2                shape,
                const std::vector<float> &xr,
                const std::vector<float> &yr,
                const std::vector<float> &zr,
@@ -362,6 +431,6 @@ Array stamping(Vec2<int>                 shape,
                float                     k_smoothing = 0.1f,
                bool                      kernel_flip = true,
                bool                      kernel_rotate = false,
-               Vec4<float>               bbox_array = {0.f, 1.f, 0.f, 1.f});
+               glm::vec4                 bbox_array = {0.f, 1.f, 0.f, 1.f});
 
 } // namespace hmap

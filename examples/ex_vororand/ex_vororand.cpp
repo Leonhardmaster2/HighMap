@@ -4,12 +4,12 @@ int main(void)
 {
   hmap::gpu::init_opencl();
 
-  hmap::Vec2<int> shape = {256, 256};
-  float           density = 8.f;
-  float           variability = 4.f;
-  int             seed = 1;
-  float           k_smoothing = 0.05f;
-  float           exp_sigma = 0.01f;
+  glm::ivec2 shape = {256, 256};
+  float      density = 8.f;
+  float      variability = 4.f;
+  int        seed = 1;
+  float      k_smoothing = 0.05f;
+  float      exp_sigma = 0.01f;
 
   std::vector<hmap::VoronoiReturnType> types = {
       hmap::VoronoiReturnType::F1_SQUARED,

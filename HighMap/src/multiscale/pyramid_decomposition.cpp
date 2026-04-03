@@ -51,8 +51,8 @@ void PyramidDecomposition::decompose()
   this->components.clear();
 
   // working array
-  Vec2<int> level_shape = this->p_array->shape;
-  Array     array_low = *this->p_array;
+  glm::ivec2 level_shape = this->p_array->shape;
+  Array      array_low = *this->p_array;
 
   for (int n = 0; n < this->nlevels; n++)
   {
@@ -82,7 +82,7 @@ Array PyramidDecomposition::reconstruct()
 {
   Array array_out = this->residual;
 
-  Vec2<int> shape = array_out.shape;
+  glm::ivec2 shape = array_out.shape;
 
   for (int n = this->nlevels; n-- > 0;)
   {
@@ -90,7 +90,7 @@ Array PyramidDecomposition::reconstruct()
 
     if (n > 0)
     {
-      shape = Vec2<int>(shape.x * 2, shape.y * 2);
+      shape = glm::ivec2(shape.x * 2, shape.y * 2);
       array_out = array_out.resample_to_shape_bicubic(shape);
     }
   }
@@ -103,10 +103,10 @@ void PyramidDecomposition::to_png(std::string fname, int cmap, bool hillshading)
   // highpass and lowpass storage
   std::vector<Array> banner_arrays = {};
 
-  Vec2<int> shape_ref = this->p_array->shape;
+  glm::ivec2 shape_ref = this->p_array->shape;
 
-  Array     array_out = this->residual;
-  Vec2<int> shape = array_out.shape;
+  Array      array_out = this->residual;
+  glm::ivec2 shape = array_out.shape;
 
   for (int n = this->nlevels; n-- > 0;)
   {
@@ -140,8 +140,8 @@ Array PyramidDecomposition::transform(
     std::fill(level_weights.begin(), level_weights.end(), 1);
   }
 
-  Array     array_out = this->residual;
-  Vec2<int> shape = array_out.shape;
+  Array      array_out = this->residual;
+  glm::ivec2 shape = array_out.shape;
 
   for (int n = this->nlevels; n-- > finest_level;)
   {

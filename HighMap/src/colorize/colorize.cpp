@@ -98,23 +98,23 @@ Tensor colorize(const Array &array,
   if (reverse) std::swap(vmin, vmax);
 
   // initialize color tensor and normalization factors
-  const int   nc = static_cast<int>(colormap_colors.size());
-  Vec2<float> normalization_factors = array.normalization_coeff(vmin, vmax);
+  const int nc = static_cast<int>(colormap_colors.size());
+  glm::vec2 normalization_factors = array.normalization_coeff(vmin, vmax);
   normalization_factors.x *= (nc - 1);
   normalization_factors.y *= (nc - 1);
 
   Tensor color3(array.shape, 3);
 
   // lambda function to apply colormap
-  auto apply_colormap = [&](float value) -> Vec3<float>
+  auto apply_colormap = [&](float value) -> glm::vec3
   {
     int   q = static_cast<int>(value);
     float t = value - q;
+
     if (q < nc - 1)
-      return (1.f - t) * Vec3<float>(colormap_colors[q]) +
-             t * Vec3<float>(colormap_colors[q + 1]);
+      return (1.f - t) * colormap_colors[q] + t * colormap_colors[q + 1];
     else
-      return Vec3<float>(colormap_colors[q]);
+      return colormap_colors[q];
   };
 
   // process each pixel
@@ -130,7 +130,7 @@ Tensor colorize(const Array &array,
                                           0.f,
                                           static_cast<float>(nc - 1));
 
-      Vec3<float> color = apply_colormap(normalized_value);
+      glm::vec3 color = apply_colormap(normalized_value);
 
       // assign color values to the tensor
       color3(i, j, 0) = color.x;

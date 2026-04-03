@@ -47,8 +47,8 @@ namespace hmap
  *               2D position.
  */
 std::function<float(float, float)> make_xy_function_from_array(
-    const Array       &array,
-    const Vec4<float> &bbox = {0.f, 1.f, 0.f, 1.f});
+    const Array     &array,
+    const glm::vec4 &bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @enum NoiseType
@@ -153,7 +153,7 @@ public:
    *                 to a unit domain.
    * @param periodic Whether the domain is periodic or not.
    */
-  ArrayFunction(Array array, Vec2<float> kw, bool periodic = true);
+  ArrayFunction(Array array, glm::vec2 kw, bool periodic = true);
 
   /**
    * @brief Set the array object.
@@ -166,8 +166,8 @@ public:
   }
 
 protected:
-  Vec2<float> kw; ///< Frequency scaling vector.
-  bool periodic;  ///< Flag indicating whether the domain is periodic or not.
+  glm::vec2 kw;  ///< Frequency scaling vector.
+  bool periodic; ///< Flag indicating whether the domain is periodic or not.
 
 private:
   Array array; ///< Data array representing the 2D field.
@@ -189,11 +189,11 @@ public:
    * @param gain   Gain that controls the steepness of the bump.
    * @param center Primitive reference center.
    */
-  BiquadFunction(float gain, Vec2<float> center);
+  BiquadFunction(float gain, glm::vec2 center);
 
 protected:
-  float       gain;   ///< Gain value that controls the steepness of the bump.
-  Vec2<float> center; ///< Primitive reference center.
+  float     gain;   ///< Gain value that controls the steepness of the bump.
+  glm::vec2 center; ///< Primitive reference center.
 };
 
 /**
@@ -212,11 +212,11 @@ public:
    * @param gain   Gain that controls the steepness of the bump.
    * @param center Primitive reference center.
    */
-  BumpFunction(float gain, Vec2<float> center);
+  BumpFunction(float gain, glm::vec2 center);
 
 protected:
-  float       gain;   ///< Gain value that controls the steepness of the bump.
-  Vec2<float> center; ///< Primitive reference center.
+  float     gain;   ///< Gain value that controls the steepness of the bump.
+  glm::vec2 center; ///< Primitive reference center.
 };
 
 /**
@@ -241,18 +241,18 @@ public:
    * @param lip_height_ratio Height ratio of the crater's lip.
    * @param center           Primitive reference center.
    */
-  CraterFunction(float       radius,
-                 float       depth,
-                 float       lip_decay,
-                 float       lip_height_ratio,
-                 Vec2<float> center);
+  CraterFunction(float     radius,
+                 float     depth,
+                 float     lip_decay,
+                 float     lip_height_ratio,
+                 glm::vec2 center);
 
 protected:
-  float       radius;           ///< Radius of the crater.
-  float       depth;            ///< Depth of the crater.
-  float       lip_decay;        ///< Decay rate of the crater's lip.
-  float       lip_height_ratio; ///< Height ratio of the crater's lip.
-  Vec2<float> center;           ///< Primitive reference center.
+  float     radius;           ///< Radius of the crater.
+  float     depth;            ///< Depth of the crater.
+  float     lip_decay;        ///< Decay rate of the crater's lip.
+  float     lip_height_ratio; ///< Height ratio of the crater's lip.
+  glm::vec2 center;           ///< Primitive reference center.
 };
 
 /**
@@ -269,12 +269,12 @@ public:
    * @param slope  Side slope (with respect to a unit domain).
    * @param center Primitive reference center.
    */
-  DiskFunction(float radius, float slope, Vec2<float> center);
+  DiskFunction(float radius, float slope, glm::vec2 center);
 
 protected:
-  float       radius; ///< Radius of the disk.
-  float       slope;  ///< Slope of the disk.
-  Vec2<float> center; ///< Primitive reference center.
+  float     radius; ///< Radius of the disk.
+  float     slope;  ///< Slope of the disk.
+  glm::vec2 center; ///< Primitive reference center.
 };
 
 /**
@@ -293,7 +293,7 @@ public:
    * @param sigma  Pulse half-width (with respect to a unit domain).
    * @param center Primitive reference center.
    */
-  GaussianPulseFunction(float sigma, Vec2<float> center);
+  GaussianPulseFunction(float sigma, glm::vec2 center);
 
   /**
    * @brief Set the half-width.
@@ -307,8 +307,8 @@ public:
   }
 
 protected:
-  float       sigma;  ///< Pulse half-width.
-  Vec2<float> center; ///< Primitive reference center.
+  float     sigma;  ///< Pulse half-width.
+  glm::vec2 center; ///< Primitive reference center.
 
 private:
   float inv_sigma2; ///< Cached squared inverse of the half-width.
@@ -330,11 +330,11 @@ public:
    * @param slope  Side slope (with respect to a unit domain).
    * @param center Primitive reference center.
    */
-  RectangleFunction(float       rx,
-                    float       ry,
-                    float       angle,
-                    float       slope,
-                    Vec2<float> center);
+  RectangleFunction(float     rx,
+                    float     ry,
+                    float     angle,
+                    float     slope,
+                    glm::vec2 center);
 
   /**
    * @brief Set the angle.
@@ -349,10 +349,10 @@ public:
   }
 
 protected:
-  float       rx, ry; ///< Radius of the rectangle.
-  float       angle;  ///< Angle of the rectangle.
-  float       slope;  ///< Slope of the rectangle.
-  Vec2<float> center; ///< Primitive reference center.
+  float     rx, ry; ///< Radius of the rectangle.
+  float     angle;  ///< Angle of the rectangle.
+  float     slope;  ///< Slope of the rectangle.
+  glm::vec2 center; ///< Primitive reference center.
 
 private:
   float ca; ///< Cached cosine of the angle.
@@ -378,11 +378,11 @@ public:
    * @param sharp_bottom Decide whether the rift bottom is sharp or not.
    * @param center       Primitive reference center.
    */
-  RiftFunction(float       angle,
-               float       slope,
-               float       width,
-               bool        sharp_bottom,
-               Vec2<float> center);
+  RiftFunction(float     angle,
+               float     slope,
+               float     width,
+               bool      sharp_bottom,
+               glm::vec2 center);
 
   /**
    * @brief Set the angle.
@@ -397,11 +397,11 @@ public:
   }
 
 protected:
-  float       angle;        ///< Overall rotation angle (in degrees).
-  float       slope;        ///< Rift slope.
-  float       width;        ///< Rift width.
-  bool        sharp_bottom; ///< Rift bottom sharpness.
-  Vec2<float> center;       ///< Primitive reference center.
+  float     angle;        ///< Overall rotation angle (in degrees).
+  float     slope;        ///< Rift slope.
+  float     width;        ///< Rift width.
+  bool      sharp_bottom; ///< Rift bottom sharpness.
+  glm::vec2 center;       ///< Primitive reference center.
 
 private:
   float ca; ///< Cached cosine of the angle.
@@ -425,7 +425,7 @@ public:
    * @param slope  Step slope.
    * @param center Primitive reference center.
    */
-  SlopeFunction(float angle, float slope, Vec2<float> center);
+  SlopeFunction(float angle, float slope, glm::vec2 center);
 
   /**
    * @brief Set the angle.
@@ -440,9 +440,9 @@ public:
   }
 
 protected:
-  float       angle;  ///< Overall rotation angle (in degrees).
-  float       slope;  ///< Step slope.
-  Vec2<float> center; ///< Primitive reference center.
+  float     angle;  ///< Overall rotation angle (in degrees).
+  float     slope;  ///< Step slope.
+  glm::vec2 center; ///< Primitive reference center.
 
 private:
   float ca; ///< Cached cosine of the angle.
@@ -466,7 +466,7 @@ public:
    * @param slope  Step slope.
    * @param center Primitive reference center.
    */
-  StepFunction(float angle, float slope, Vec2<float> center);
+  StepFunction(float angle, float slope, glm::vec2 center);
 
   /**
    * @brief Set the angle.
@@ -481,9 +481,9 @@ public:
   }
 
 protected:
-  float       angle;  ///< Overall rotation angle (in degrees).
-  float       slope;  ///< Step slope.
-  Vec2<float> center; ///< Primitive reference center.
+  float     angle;  ///< Overall rotation angle (in degrees).
+  float     slope;  ///< Step slope.
+  glm::vec2 center; ///< Primitive reference center.
 
 private:
   float ca; ///< Cached cosine of the angle.
@@ -513,11 +513,11 @@ public:
    * [0, 1]).
    * @param phase_shift Phase shift (in radians).
    */
-  WaveDuneFunction(Vec2<float> kw,
-                   float       angle,
-                   float       xtop,
-                   float       xbottom,
-                   float       phase_shift);
+  WaveDuneFunction(glm::vec2 kw,
+                   float     angle,
+                   float     xtop,
+                   float     xbottom,
+                   float     phase_shift);
 
   /**
    * @brief Set the angle.
@@ -532,8 +532,8 @@ public:
   }
 
 protected:
-  Vec2<float> kw;    ///< Frequency scaling vector.
-  float       angle; ///< Overall rotation angle (in degrees).
+  glm::vec2 kw;    ///< Frequency scaling vector.
+  float     angle; ///< Overall rotation angle (in degrees).
   float xtop; ///< Relative location of the top of the dune profile (in [0, 1]).
   float xbottom; ///< Relative location of the foot of the dune profile (in [0,
   ///< 1]).
@@ -562,7 +562,7 @@ public:
    * @param angle       Overall rotation angle (in degrees).
    * @param phase_shift Phase shift (in radians).
    */
-  WaveSineFunction(Vec2<float> kw, float angle, float phase_shift);
+  WaveSineFunction(glm::vec2 kw, float angle, float phase_shift);
 
   /**
    * @brief Set the angle.
@@ -577,9 +577,9 @@ public:
   }
 
 protected:
-  Vec2<float> kw;          ///< Frequency scaling vector.
-  float       angle;       ///< Overall rotation angle (in degrees).
-  float       phase_shift; ///< Phase shift (in radians).
+  glm::vec2 kw;          ///< Frequency scaling vector.
+  float     angle;       ///< Overall rotation angle (in degrees).
+  float     phase_shift; ///< Phase shift (in radians).
 
 private:
   float ca; ///< Cached cosine of the angle.
@@ -604,7 +604,7 @@ public:
    * @param angle       Overall rotation angle (in degrees).
    * @param phase_shift Phase shift (in radians).
    */
-  WaveSquareFunction(Vec2<float> kw, float angle, float phase_shift);
+  WaveSquareFunction(glm::vec2 kw, float angle, float phase_shift);
 
   /**
    * @brief Set the angle.
@@ -619,9 +619,9 @@ public:
   }
 
 protected:
-  Vec2<float> kw;          ///< Frequency scaling vector.
-  float       angle;       ///< Overall rotation angle (in degrees).
-  float       phase_shift; ///< Phase shift (in radians).
+  glm::vec2 kw;          ///< Frequency scaling vector.
+  float     angle;       ///< Overall rotation angle (in degrees).
+  float     phase_shift; ///< Phase shift (in radians).
 
 private:
   float ca; ///< Cached cosine of the angle.
@@ -648,10 +648,10 @@ public:
    * @param slant_ratio Relative location of the triangle apex, in [0, 1].
    * @param phase_shift Phase shift (in radians).
    */
-  WaveTriangularFunction(Vec2<float> kw,
-                         float       angle,
-                         float       slant_ratio,
-                         float       phase_shift);
+  WaveTriangularFunction(glm::vec2 kw,
+                         float     angle,
+                         float     slant_ratio,
+                         float     phase_shift);
 
   /**
    * @brief Set the angle.
@@ -666,10 +666,10 @@ public:
   }
 
 protected:
-  Vec2<float> kw;    ///< Frequency scaling vector.
-  float       angle; ///< Overall rotation angle (in degrees).
-  float slant_ratio; ///< Relative location of the triangle apex, in [0, 1].
-  float phase_shift; ///< Phase shift (in radians).
+  glm::vec2 kw;          ///< Frequency scaling vector.
+  float     angle;       ///< Overall rotation angle (in degrees).
+  float     slant_ratio; ///< Relative location of the triangle apex, in [0, 1].
+  float     phase_shift; ///< Phase shift (in radians).
 
 private:
   float ca; ///< Cached cosine of the angle.
@@ -696,7 +696,7 @@ public:
    * @brief Default constructor. Initializes with default frequency scaling and
    * seed.
    */
-  NoiseFunction() : Function(), kw(Vec2<float>(0.f, 0.f)), seed(0)
+  NoiseFunction() : Function(), kw(glm::vec2(0.f, 0.f)), seed(0)
   {
   }
 
@@ -704,7 +704,7 @@ public:
    * @brief Constructor to initialize with specific frequency scaling.
    * @param kw Frequency scaling vector.
    */
-  NoiseFunction(Vec2<float> kw) : Function(), kw(kw), seed(0)
+  NoiseFunction(glm::vec2 kw) : Function(), kw(kw), seed(0)
   {
   }
 
@@ -713,7 +713,7 @@ public:
    * @param kw   Frequency scaling vector.
    * @param seed Random seed for noise generation.
    */
-  NoiseFunction(Vec2<float> kw, uint seed) : Function(), kw(kw), seed(seed)
+  NoiseFunction(glm::vec2 kw, uint seed) : Function(), kw(kw), seed(seed)
   {
   }
 
@@ -721,7 +721,7 @@ public:
    * @brief Get the frequency scaling vector.
    * @return The current frequency scaling vector.
    */
-  Vec2<float> get_kw() const
+  glm::vec2 get_kw() const
   {
     return this->kw;
   }
@@ -748,14 +748,14 @@ public:
    * @brief Set a new frequency scaling vector.
    * @param new_kw The new frequency scaling vector.
    */
-  virtual void set_kw(Vec2<float> new_kw)
+  virtual void set_kw(glm::vec2 new_kw)
   {
     this->kw = new_kw;
   }
 
 protected:
-  Vec2<float> kw;   ///< Frequency scaling vector.
-  uint        seed; ///< Random seed for noise generation.
+  glm::vec2 kw;   ///< Frequency scaling vector.
+  uint      seed; ///< Random seed for noise generation.
 };
 
 //----------------------------------------
@@ -781,7 +781,7 @@ public:
    * @param seed Random seed number.
    * @param mu   Gradient magnitude exponent.
    */
-  ParberryFunction(Vec2<float> kw, uint seed, float mu);
+  ParberryFunction(glm::vec2 kw, uint seed, float mu);
 
   /**
    * @brief Initialize generator.
@@ -843,7 +843,7 @@ public:
    * a unit domain.
    * @param seed Random seed number.
    */
-  PerlinFunction(Vec2<float> kw, uint seed);
+  PerlinFunction(glm::vec2 kw, uint seed);
 
   /**
    * @brief Set the seed attribute.
@@ -876,7 +876,7 @@ public:
    * a unit domain.
    * @param seed Random seed number.
    */
-  PerlinBillowFunction(Vec2<float> kw, uint seed);
+  PerlinBillowFunction(glm::vec2 kw, uint seed);
 
   /**
    * @brief Set the seed attribute.
@@ -912,7 +912,7 @@ public:
    * @param seed Random seed number.
    * @param k    Smoothing factor.
    */
-  PerlinHalfFunction(Vec2<float> kw, uint seed, float k);
+  PerlinHalfFunction(glm::vec2 kw, uint seed, float k);
 
   /**
    * @brief Set the seed attribute.
@@ -945,7 +945,7 @@ public:
    * a unit domain.
    * @param seed Random seed number.
    */
-  PerlinMixFunction(Vec2<float> kw, uint seed);
+  PerlinMixFunction(glm::vec2 kw, uint seed);
 
   /**
    * @brief Set the seed attribute.
@@ -978,7 +978,7 @@ public:
    * a unit domain.
    * @param seed Random seed number.
    */
-  Simplex2Function(Vec2<float> kw, uint seed);
+  Simplex2Function(glm::vec2 kw, uint seed);
 
   /**
    * @brief Set the seed attribute.
@@ -1011,7 +1011,7 @@ public:
    * a unit domain.
    * @param seed Random seed number.
    */
-  Simplex2SFunction(Vec2<float> kw, uint seed);
+  Simplex2SFunction(glm::vec2 kw, uint seed);
 
   /**
    * @brief Set the seed attribute.
@@ -1044,7 +1044,7 @@ public:
    * a unit domain.
    * @param seed Random seed number.
    */
-  ValueNoiseFunction(Vec2<float> kw, uint seed);
+  ValueNoiseFunction(glm::vec2 kw, uint seed);
 
   /**
    * @brief Set the seed attribute.
@@ -1077,7 +1077,7 @@ public:
    * a unit domain.
    * @param seed Random seed number.
    */
-  ValueCubicNoiseFunction(Vec2<float> kw, uint seed);
+  ValueCubicNoiseFunction(glm::vec2 kw, uint seed);
 
   /**
    * @brief Set the seed attribute.
@@ -1109,14 +1109,14 @@ public:
    * @param kw   Noise wavenumber, with respect to a unit domain.
    * @param seed Random seed number.
    */
-  ValueDelaunayNoiseFunction(Vec2<float> kw, uint seed);
+  ValueDelaunayNoiseFunction(glm::vec2 kw, uint seed);
 
   /**
    * @brief Set the wavenumber attribute.
    *
    * @param new_kw New kw.
    */
-  void set_kw(Vec2<float> new_kw)
+  void set_kw(glm::vec2 new_kw)
   {
     NoiseFunction::set_kw(new_kw);
     this->update_interpolation_function();
@@ -1151,14 +1151,14 @@ public:
    * @param kw   Noise wavenumber, with respect to a unit domain.
    * @param seed Random seed number.
    */
-  ValueLinearNoiseFunction(Vec2<float> kw, uint seed);
+  ValueLinearNoiseFunction(glm::vec2 kw, uint seed);
 
   /**
    * @brief Set the wavenumber attribute.
    *
    * @param new_kw New kw.
    */
-  void set_kw(Vec2<float> new_kw)
+  void set_kw(glm::vec2 new_kw)
   {
     NoiseFunction::set_kw(new_kw);
     this->update_interpolation_function();
@@ -1194,7 +1194,7 @@ public:
    * a unit domain.
    * @param seed Random seed number.
    */
-  WorleyFunction(Vec2<float> kw, uint seed, bool return_cell_value = false);
+  WorleyFunction(glm::vec2 kw, uint seed, bool return_cell_value = false);
 
   /**
    * @brief Set the seed attribute.
@@ -1239,7 +1239,7 @@ public:
    * @param ratio Amplitude ratio between each Worley noise.
    * @param k     Transition smoothing parameter.
    */
-  WorleyDoubleFunction(Vec2<float> kw, uint seed, float ratio, float k);
+  WorleyDoubleFunction(glm::vec2 kw, uint seed, float ratio, float k);
 
   /**
    * @brief Set the seed attribute.
@@ -1296,7 +1296,7 @@ public:
    *
    * @param new_kw The new frequency scaling vector.
    */
-  void set_kw(Vec2<float> new_kw) override
+  void set_kw(glm::vec2 new_kw) override
   {
     NoiseFunction::set_kw(new_kw);
     this->p_base->set_kw(new_kw);
@@ -1765,8 +1765,8 @@ private:
  * @return            A `std::unique_ptr` to the created noise function.
  */
 std::unique_ptr<hmap::NoiseFunction> create_noise_function_from_type(
-    NoiseType   noise_type,
-    Vec2<float> kw,
-    uint        seed);
+    NoiseType noise_type,
+    glm::vec2 kw,
+    uint      seed);
 
 } // namespace hmap

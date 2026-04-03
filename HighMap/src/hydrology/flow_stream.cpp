@@ -11,10 +11,10 @@
 namespace hmap
 {
 
-void helper_find_up_downslope(const Array     &z,
-                              const Vec2<int> &ij,
-                              Vec2<int>       &ij_dw,
-                              Vec2<int>       &ij_up)
+void helper_find_up_downslope(const Array      &z,
+                              const glm::ivec2 &ij,
+                              glm::ivec2       &ij_dw,
+                              glm::ivec2       &ij_up)
 {
   ij_dw = ij;
   ij_up = ij;
@@ -32,40 +32,40 @@ void helper_find_up_downslope(const Array     &z,
       if (dz > slope_max_dw)
       {
         slope_max_dw = dz;
-        ij_dw = Vec2<int>(ij.x + r, ij.y + s);
+        ij_dw = glm::ivec2(ij.x + r, ij.y + s);
       }
 
       if (-dz > slope_max_up)
       {
         slope_max_up = -dz;
-        ij_up = Vec2<int>(ij.x + r, ij.y + s);
+        ij_up = glm::ivec2(ij.x + r, ij.y + s);
       }
     }
 }
 
-Path flow_stream(const Array    &z,
-                 const Vec2<int> ij_start,
-                 const float     elevation_ratio = 0.5f,
-                 const float     distance_exponent = 2.f,
-                 const float     upward_penalization = 100.f)
+Path flow_stream(const Array     &z,
+                 const glm::ivec2 ij_start,
+                 const float      elevation_ratio,
+                 const float      distance_exponent,
+                 const float      upward_penalization)
 {
 
   // --
 
-  Vec2<int> shape = z.shape;
+  glm::ivec2 shape = z.shape;
 
   // find exit points on the boundaries
-  std::vector<Vec2<int>> ij_exits = {};
+  std::vector<glm::ivec2> ij_exits = {};
 
   for (int i = 1; i < shape.x - 1; ++i)
     for (int j : {0, shape.y - 1})
       if (z(i - 1, j) > z(i, j) && z(i + 1, j) > z(i, j))
-        ij_exits.push_back(Vec2<int>(i, j));
+        ij_exits.push_back(glm::ivec2(i, j));
 
   for (int j = 1; j < shape.y - 1; ++j)
     for (int i : {0, shape.x - 1})
       if (z(i, j - 1) > z(i, j) && z(i, j + 1) > z(i, j))
-        ij_exits.push_back(Vec2<int>(i, j));
+        ij_exits.push_back(glm::ivec2(i, j));
 
   std::vector<std::vector<int>> i_path_list;
   std::vector<std::vector<int>> j_path_list;

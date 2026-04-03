@@ -48,9 +48,9 @@ void thermal(Array       &z,
              Array       *p_bedrock,
              Array       *p_deposition_map)
 {
-  std::vector<int>   di = DI;
-  std::vector<int>   dj = DJ;
-  std::vector<float> c = CD;
+  std::vector<int>   di = HMAP_DI;
+  std::vector<int>   dj = HMAP_DJ;
+  std::vector<float> c = HMAP_CD;
   const uint         nb = di.size();
 
   // keep a backup of the input if the erosion / deposition maps need

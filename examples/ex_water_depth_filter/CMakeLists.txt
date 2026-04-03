@@ -1,0 +1,2 @@
+add_executable(ex_water_depth_filter ex_water_depth_filter.cpp)
+target_link_libraries(ex_water_depth_filter highmap)

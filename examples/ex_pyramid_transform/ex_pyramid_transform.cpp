@@ -4,10 +4,10 @@
 
 int main(void)
 {
-  hmap::Vec2<int> shape = {256, 256};
+  glm::ivec2 shape = {256, 256};
   shape = {512, 512};
-  hmap::Vec2<float> res = {4.f, 4.f};
-  int               seed = 1;
+  glm::vec2 res = {4.f, 4.f};
+  int       seed = 1;
 
   hmap::Array z = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, res, seed);
   hmap::remap(z);
@@ -25,9 +25,7 @@ int main(void)
 
     // apply hydraulic erosion to each component
     hmap::Array output = input;
-    float       particle_density = 0.4f;
-    int         nparticles = (int)(particle_density * input.size());
-    hydraulic_particle(output, nparticles, ++seed);
+    hydraulic_stream_log(output, 0.1f, 0.001f);
 
     return output;
   };

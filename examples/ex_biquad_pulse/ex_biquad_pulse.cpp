@@ -2,14 +2,14 @@
 
 int main(void)
 {
-  hmap::Vec2<int> shape = {256, 256};
+  glm::ivec2 shape = {256, 256};
 
   hmap::Array z1 = hmap::biquad_pulse(shape);
 
   // with control array
-  hmap::Vec2<float> kw = {4.f, 4.f};
-  int               seed = 1;
-  hmap::Array       ctrl_array = hmap::noise(hmap::NoiseType::PERLIN,
+  glm::vec2   kw = {4.f, 4.f};
+  int         seed = 1;
+  hmap::Array ctrl_array = hmap::noise(hmap::NoiseType::PERLIN,
                                        shape,
                                        kw,
                                        seed);

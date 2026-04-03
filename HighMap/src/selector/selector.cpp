@@ -10,7 +10,7 @@
 #include "highmap/curvature.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/gradient.hpp"
-#include "highmap/hydrology.hpp"
+#include "highmap/hydrology/hydrology.hpp"
 #include "highmap/math.hpp"
 #include "highmap/morphology.hpp"
 #include "highmap/primitives.hpp"
@@ -164,13 +164,13 @@ Array select_interval(const Array &array, float value1, float value2)
 }
 
 Array select_inward_outward_slope(const Array &array,
-                                  Vec2<float>  center,
-                                  Vec4<float>  bbox)
+                                  glm::vec2    center,
+                                  glm::vec4    bbox)
 {
   Array c = Array(array.shape);
 
-  Vec2<float> shift = {bbox.a, bbox.c};
-  Vec2<float> scale = {bbox.b - bbox.a, bbox.d - bbox.c};
+  glm::vec2 shift = {bbox.x, bbox.z};
+  glm::vec2 scale = {bbox.y - bbox.x, bbox.w - bbox.z};
 
   int ic = (int)((center.x - shift.x) / scale.x * array.shape.x);
   int jc = (int)((center.y - shift.y) / scale.y * array.shape.y);
@@ -217,8 +217,12 @@ Array select_midrange(const Array &array, float gain, float vmin, float vmax)
     for (int i = 0; i < array.shape.x; i++)
     {
       float v = c(i, j) * c(i, j);
-      c(i, j) = std::pow(norm_coeff * std::exp(-1.f / (1.f - v)), 1.f / gain);
+      if (v != 1.f)
+        c(i, j) = std::pow(norm_coeff * std::exp(-1.f / (1.f - v)), 1.f / gain);
+      else
+        c(i, j) = 0.f;
     }
+
   return c;
 }
 
@@ -313,8 +317,12 @@ Array select_rivers(const Array &array, float talus_ref, float clipping_ratio)
   // see erosion/hydraulic_stream
   Array facc = flow_accumulation_dinf(array, talus_ref);
   float vmax = clipping_ratio * std::pow(facc.sum() / (float)facc.size(), 0.5f);
+
+  if (vmax == 0.f) // failsafe
+    return Array(array.shape);
+
   clamp(facc, 0.f, vmax);
-  return facc;
+  return facc / vmax;
 }
 
 Array select_transitions(const Array &array1,
@@ -378,21 +386,12 @@ Array select_transitions(const Array &array1,
   return mask;
 }
 
-Array select_valley(const Array &z,
-                    int          ir,
-                    bool         zero_at_borders,
-                    bool         ridge_select)
+Array select_valley(const Array &z, int ir, bool ridge_select)
 {
-  Array w = z;
-  smooth_cpulse(w, std::max(1, ir));
-
-  if (not(ridge_select)) w *= -1.f;
-
-  w = curvature_mean(w);
-  make_binary(w);
-  w = relative_distance_from_skeleton(w, ir, zero_at_borders);
-
-  return w;
+  if (ridge_select)
+    return morphological_top_hat(z, ir);
+  else
+    return morphological_black_hat(z, ir);
 }
 
 } // namespace hmap

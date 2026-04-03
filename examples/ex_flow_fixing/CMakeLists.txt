@@ -1,0 +1,2 @@
+add_executable(ex_flow_fixing ex_flow_fixing.cpp)
+target_link_libraries(ex_flow_fixing highmap)

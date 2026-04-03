@@ -35,7 +35,7 @@ public:
    * @brief The shape of the array {ni, nj}.
    *
    */
-  Vec2<int> shape;
+  glm::ivec2 shape;
 
   /**
    * @brief The underlying data storage, a vector of size shape.x * shape.y.
@@ -57,12 +57,9 @@ public:
    *
    */
   Array();
-
-  Array(Vec2<int> shape); ///< @overload
-
-  Array(Vec2<int> shape, float value); ///< @overload
-
-  Array(const std::string &filename); ///< @overload
+  Array(glm::ivec2 shape);                                 ///< @overload
+  Array(glm::ivec2 shape, float value);                    ///< @overload
+  Array(const std::string &filename, bool flip_j = false); ///< @overload
 
   //----------------------------------------
   // overload
@@ -84,7 +81,6 @@ public:
    * @return       Array& Reference to the current Array object.
    */
   Array &operator*=(const float value);
-
   Array &operator*=(const Array &array); ///< @overload
 
   /**
@@ -94,7 +90,6 @@ public:
    * @return       Array& Reference to the current Array object.
    */
   Array &operator/=(const float value);
-
   Array &operator/=(const Array &array); ///< @overload
 
   /**
@@ -115,7 +110,6 @@ public:
    * @return       Array& Reference to the current Array object.
    */
   Array &operator-=(const float value);
-
   Array &operator-=(const Array &array); ///< @overload
 
   /**
@@ -255,9 +249,52 @@ public:
     return this->vector[j * this->shape.x + i];
   }
 
+  float &operator()(glm::ivec2 ij)
+  {
+    return this->vector[ij.y * this->shape.x + ij.x];
+  }
+
+  const float &operator()(glm::ivec2 ij) const
+  {
+    return this->vector[ij.y * this->shape.x + ij.x];
+  }
+
+  /**
+   * @brief Overloads the function call operator to access the array value at
+   * the linear index 'index' (const version).
+   *
+   * @param  index Linear index.
+   * @return       const float& Reference to the array value.
+   */
+  const float &operator()(int index) const ///< @overload
+  {
+    return this->vector[index];
+  }
+
+  /**
+   * @brief Overloads the function call operator to access the array value at
+   * the linear index 'index'.
+   *
+   * @param  index Linear index.
+   * @return       float& Reference to the array value.
+   */
+  float &operator()(int index)
+  {
+    return this->vector[index];
+  }
+
   //----------------------------------------
   // methods
   //----------------------------------------
+
+  /**
+   * @brief Finds the maximum value in the array and its coordinates.
+   *
+   * @param[out] max The maximum value found.
+   * @param[out] im  The x-index of the maximum value.
+   * @param[out] jm  The y-index of the maximum value.
+   */
+  void argmax(float &vmax, int &i, int &j) const;
 
   /**
    * @brief Extracts a column 'j' as a std::vector.
@@ -313,15 +350,20 @@ public:
   void dump(const std::string &fname = "out.png") const;
 
   /**
+   * @brief Debug tool, dump array content as an ASCII histogram to the consol.
+   */
+  void dump_histogram(const std::string &msg = "") const;
+
+  /**
    * @brief Extracts a subarray defined by the slice indices {i1, i2, j1, j2}
    *        from the original array, creating a new array. Note that i2 and j2
    * are excluded from the slice.
    *
-   * @param  idx A Vec4<int> containing the slice extent indices {i1, i2, j1,
-   * j2}.
+   * @param  idx A glm::ivec4 containing the slice extent indices {i1, i2, j1,
+   *             j2}.
    * @return     Array The extracted subarray.
    */
-  Array extract_slice(Vec4<int> idx) const;
+  Array extract_slice(glm::ivec4 idx) const;
   Array extract_slice(int i1, int i2, int j1, int j2) const; ///< @overload
 
   /**
@@ -447,16 +489,16 @@ public:
    *
    * @param  i Index along the x-direction.
    * @param  j Index along the y-direction.
-   * @return   Vec3<float> The normal vector at the specified index (i, j).
+   * @return   glm::vec3 The normal vector at the specified index (i, j).
    */
-  Vec3<float> get_normal_at(int i, int j) const;
+  glm::vec3 get_normal_at(int i, int j) const;
 
   /**
    * @brief Retrieves the shape of the array.
    *
-   * @return Vec2<int> The shape {ni, nj}.
+   * @return glm::ivec2 The shape {ni, nj}.
    */
-  Vec2<int> get_shape();
+  glm::ivec2 get_shape();
 
   /**
    * @brief Retrieves the number of bytes occupied by the array data.
@@ -531,7 +573,7 @@ public:
    * to be in the form of {xmin, xmax, ymin, ymax}.
    * @return      float The nearest value at the clamped location (x, y).
    */
-  float get_value_nearest(float x, float y, Vec4<float> bbox);
+  float get_value_nearest(float x, float y, glm::vec4 bbox);
 
   /**
    * @brief Retrieves the underlying data vector.
@@ -549,7 +591,7 @@ public:
    *
    * @param msg Optional message to include in the output.
    */
-  void infos(std::string msg = "") const;
+  void infos(const std::string &msg = "") const;
 
   /**
    * @brief Return the linear index corresponding to the (i, j) cell in a 2D
@@ -573,10 +615,10 @@ public:
    * and 2D representations of the array.
    *
    * @param  k The linear index.
-   * @return   Vec2<int> The (i, j) coordinates corresponding to the linear
+   * @return   glm::ivec2 The (i, j) coordinates corresponding to the linear
    * index `k`.
    */
-  Vec2<int> linear_index_reverse(int k) const;
+  glm::ivec2 linear_index_reverse(int k) const;
 
   /**
    * @brief Return the value of the greatest element in the array.
@@ -629,10 +671,10 @@ public:
    *
    * @param  vmin Lower bound of the desired range.
    * @param  vmax Upper bound of the desired range.
-   * @return      Vec2<float> Normalization coefficients (a, b) where `a` scales
-   *              the values and `b` shifts them.
+   * @return      glm::vec2 Normalization coefficients (a, b) where `a` scales
+   * the values and `b` shifts them.
    */
-  Vec2<float> normalization_coeff(float vmin = 0.f, float vmax = 1.f) const;
+  glm::vec2 normalization_coeff(float vmin = 0.f, float vmax = 1.f) const;
 
   /**
    * @brief Print the array values to the standard output (stdout).
@@ -656,6 +698,35 @@ public:
   float ptp() const;
 
   /**
+   * @brief Computes the minimum and maximum values of the array.
+   *
+   * @return glm::vec2 A vector where x contains the minimum value and y
+   * contains the maximum value.
+   */
+  glm::vec2 range() const;
+
+  /**
+   * @brief Computes an approximate percentile range using a histogram.
+   *
+   * This function estimates the values corresponding to the given lower and
+   * upper percentiles by building a histogram over the data range and
+   * accumulating counts. The result is an approximation whose precision depends
+   * on the number of bins.
+   *
+   * @param  p_low  Lower percentile in [0, 1]
+   * @param  p_high Upper percentile in [0, 1]
+   * @param  bins   Number of bins used for the histogram (higher = more
+   * precise)
+   *
+   * @return        glm::vec2 A vector where x contains the approximated lower
+   *                percentile value and y contains the approximated upper
+   *                percentile value
+   */
+  glm::vec2 range_percentile(float  p_low,
+                             float  p_high,
+                             size_t bins = 1024) const;
+
+  /**
    * @brief Return an array remapped to [0, 1].
    */
   Array remapped() const;
@@ -677,7 +748,7 @@ public:
    * **Result**
    * @image html ex_resample_to_shape.png
    */
-  Array resample_to_shape(Vec2<int> new_shape) const;
+  Array resample_to_shape(glm::ivec2 new_shape) const;
 
   /**
    * @brief Return a resampled array of shape `new_shape` using bicubic
@@ -697,9 +768,8 @@ public:
    * **Result**
    * @image html ex_array_interp.png
    */
-  Array resample_to_shape_bicubic(Vec2<int> new_shape) const;
-
-  Array resample_to_shape_bilinear(Vec2<int> new_shape) const;
+  Array resample_to_shape_bicubic(glm::ivec2 new_shape) const;
+  Array resample_to_shape_bilinear(glm::ivec2 new_shape) const;
 
   /**
    * @brief Return a resampled array of shape `new_shape` using nearest neighbor
@@ -713,7 +783,7 @@ public:
    * @param  new_shape The target shape for the resampled array.
    * @return           Array The resampled array with the specified `new_shape`.
    */
-  Array resample_to_shape_nearest(Vec2<int> new_shape) const;
+  Array resample_to_shape_nearest(glm::ivec2 new_shape) const;
 
   /**
    * @brief Return a row `i` as a `std::vector<float>`.
@@ -732,7 +802,7 @@ public:
    *
    * @param new_shape The new shape of the array.
    */
-  void set_shape(Vec2<int> new_shape);
+  void set_shape(glm::ivec2 new_shape);
 
   /**
    * @brief Set the value of a slice defined by indices {i1, i2, j1, j2} to a
@@ -746,9 +816,8 @@ public:
    * @param idx   Slice extent indices: {i1, i2, j1, j2}.
    * @param value The new value to set for the specified slice.
    */
-  void set_slice(Vec4<int> idx, float value);
-
-  void set_slice(Vec4<int> idx, const Array &array); ///< @overload
+  void set_slice(glm::ivec4 idx, float value);
+  void set_slice(glm::ivec4 idx, const Array &array); ///< @overload
 
   /**
    * @brief Return the total number of elements in the array.
@@ -876,7 +945,10 @@ public:
    * **Example**
    * @include ex_to_png.cpp
    */
-  void to_png_grayscale(const std::string &fname, int depth = CV_8U) const;
+  void to_png_grayscale(const std::string &fname,
+                        int                depth = CV_8U,
+                        float              vmin = 0.f,
+                        float              vmax = 0.f) const;
 
   /**
    * @brief Export the array as a TIFF image file.
@@ -915,7 +987,7 @@ public:
    *
    * @return std::vector<float> A vector of unique values found in the array.
    */
-  std::vector<float> unique_values();
+  std::vector<float> unique_values() const;
 };
 
 /**
@@ -942,6 +1014,57 @@ public:
  * **Example**
  * @include ex_cv_mat_to_array.cpp
  */
-Array cv_mat_to_array(const cv::Mat &mat, bool remap_values = true);
+Array cv_mat_to_array(const cv::Mat &mat,
+                      bool           remap_values = true,
+                      bool           flip_j = false);
+
+//-----------------------------------
+// per cell operations wrapper(s)
+//-----------------------------------
+
+/// Apply a function to every cell (mutable).
+template <typename Fn> inline void for_each_cell(Array &a, Fn &&fn)
+{
+  const int w = a.shape.x;
+  const int h = a.shape.y;
+
+  for (int j = 0; j < h; ++j)
+    for (int i = 0; i < w; ++i)
+      fn(i, j, a(i, j));
+}
+
+/// Apply a function to every cell (read-only).
+template <typename Fn> inline void for_each_cell(const Array &a, Fn &&fn)
+{
+  const int w = a.shape.x;
+  const int h = a.shape.y;
+
+  for (int j = 0; j < h; ++j)
+    for (int i = 0; i < w; ++i)
+      fn(i, j, a(i, j));
+}
+
+/// Reduce all cells to a single value.
+template <typename T, typename Fn, typename Reduce>
+inline T reduce_cells(const Array &a, T init, Fn &&fn, Reduce &&reduce)
+{
+  T acc = init;
+
+  for_each_cell(a,
+                [&](int i, int j, float v) { acc = reduce(acc, fn(i, j, v)); });
+
+  return acc;
+}
+
+/// Reduce all cells to a single value.
+template <typename T, typename Fn, typename Reduce>
+inline T reduce_cells(const Array &a, T init, Reduce &&reduce)
+{
+  T acc = init;
+
+  for_each_cell(a, [&](int i, int j, float v) { acc = reduce(acc, a(i, j)); });
+
+  return acc;
+}
 
 } // namespace hmap

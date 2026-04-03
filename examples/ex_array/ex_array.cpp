@@ -4,12 +4,20 @@
 
 int main(void)
 {
-  hmap::Vec2<int> shape = {6, 4};
-  hmap::Array     a = hmap::Array(shape);
+  glm::ivec2 shape = {256, 256};
+  glm::vec2  res = {4.f, 4.f};
+  int        seed = 1;
 
-  a = 1.f;
+  hmap::Array z = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, res, seed);
 
-  for (int i = 0; i < a.shape.x; i++)
-    for (int j = 0; j < a.shape.y; j++)
-      std::cout << i << " " << j << " " << a(i, j) << std::endl;
+  std::cout << "min: " << z.min() << "\n";
+  std::cout << "max: " << z.max() << "\n";
+
+  glm::vec2 range = z.range();
+  std::cout << "range.x: " << range.x << "\n";
+  std::cout << "range.y: " << range.y << "\n";
+
+  glm::vec2 range_pc = z.range_percentile(0.05f, 0.95f);
+  std::cout << "range_pc.x: " << range_pc.x << "\n";
+  std::cout << "range_pc.y: " << range_pc.y << "\n";
 }

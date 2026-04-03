@@ -2,9 +2,9 @@
 
 int main(void)
 {
-  hmap::Vec2<int>   shape = {256, 256};
-  hmap::Vec2<float> kw = {4.f, 4.f};
-  int               seed = 1;
+  glm::ivec2 shape = {256, 256};
+  glm::vec2  kw = {4.f, 4.f};
+  int        seed = 1;
 
   float ratio = 0.5f;
   float k = 0.1f;

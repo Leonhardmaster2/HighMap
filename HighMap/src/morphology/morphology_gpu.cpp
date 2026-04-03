@@ -9,24 +9,31 @@
 namespace hmap::gpu
 {
 
-Array border(const Array &array, int ir)
+Array border(const Array &array, int ir, bool use_disk_kernel)
 {
-  return array - gpu::erosion(array, ir);
+  return array - gpu::erosion(array, ir, use_disk_kernel);
 }
 
-Array closing(const Array &array, int ir)
+Array closing(const Array &array, int ir, bool use_disk_kernel)
 {
-  return gpu::erosion(gpu::dilation(array, ir), ir);
+  return gpu::erosion(gpu::dilation(array, ir, use_disk_kernel),
+                      ir,
+                      use_disk_kernel);
 }
 
-Array dilation(const Array &array, int ir)
+Array dilation(const Array &array, int ir, bool use_disk_kernel)
 {
-  return gpu::maximum_local(array, ir);
+  if (use_disk_kernel)
+    return gpu::maximum_local_disk(array, ir);
+  else
+    return gpu::maximum_local(array, ir);
 }
 
-Array dilation_expand_border_only(const Array &array, int ir)
+Array dilation_expand_border_only(const Array &array,
+                                  int          ir,
+                                  bool         use_disk_kernel)
 {
-  Array out = gpu::maximum_local(array, ir);
+  Array out = gpu::dilation(array, ir, use_disk_kernel);
 
   // only keep result in the "background" to leave initial vlaues
   // untouched
@@ -39,37 +46,44 @@ Array dilation_expand_border_only(const Array &array, int ir)
   return out;
 }
 
-Array erosion(const Array &array, int ir)
+Array erosion(const Array &array, int ir, bool use_disk_kernel)
 {
-  return gpu::minimum_local(array, ir);
+  if (use_disk_kernel)
+    return gpu::minimum_local_disk(array, ir);
+  else
+    return gpu::minimum_local(array, ir);
 }
 
-Array morphological_black_hat(const Array &array, int ir)
+Array morphological_black_hat(const Array &array, int ir, bool use_disk_kernel)
 {
-  return gpu::closing(array, ir) - array;
+  return gpu::closing(array, ir, use_disk_kernel) - array;
 }
 
-Array morphological_gradient(const Array &array, int ir)
+Array morphological_gradient(const Array &array, int ir, bool use_disk_kernel)
 {
-  return gpu::dilation(array, ir) - gpu::erosion(array, ir);
+  return gpu::dilation(array - array.min(), ir, use_disk_kernel) -
+         gpu::erosion(array - array.min(), ir, use_disk_kernel);
 }
 
-Array morphological_top_hat(const Array &array, int ir)
+Array morphological_top_hat(const Array &array, int ir, bool use_disk_kernel)
 {
-  return array - gpu::opening(array, ir);
+  return array - gpu::opening(array, ir, use_disk_kernel);
 }
 
-Array opening(const Array &array, int ir)
+Array opening(const Array &array, int ir, bool use_disk_kernel)
 {
-  return gpu::dilation(gpu::erosion(array, ir), ir);
+  return gpu::dilation(gpu::erosion(array, ir, use_disk_kernel),
+                       ir,
+                       use_disk_kernel);
 }
 
 Array relative_distance_from_skeleton(const Array &array,
                                       int          ir_search,
                                       bool         zero_at_borders,
-                                      int          ir_erosion)
+                                      int          ir_erosion,
+                                      bool         use_disk_kernel)
 {
-  Array border = array - gpu::erosion(array, ir_erosion);
+  Array border = array - gpu::erosion(array, ir_erosion, use_disk_kernel);
   Array sk = gpu::skeleton(array, zero_at_borders);
   Array rdist(array.shape);
 

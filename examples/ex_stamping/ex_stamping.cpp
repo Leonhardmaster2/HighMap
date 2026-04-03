@@ -2,12 +2,12 @@
 
 int main(void)
 {
-  hmap::Vec2<int> shape = {256, 256};
-  int             seed = 1;
+  glm::ivec2 shape = {256, 256};
+  int        seed = 1;
 
   // kernel to be stamped
-  hmap::Vec2<int> shape_kernel = {64, 64};
-  hmap::Array     kernel = hmap::gabor(shape_kernel, 8.f, 15.f);
+  glm::ivec2  shape_kernel = {64, 64};
+  hmap::Array kernel = hmap::gabor(shape_kernel, 8.f, 15.f);
 
   // generate stamping locations
   size_t      n = 50;

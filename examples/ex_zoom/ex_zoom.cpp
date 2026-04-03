@@ -2,14 +2,14 @@
 
 int main(void)
 {
-  hmap::Vec2<int>   shape = {256, 256};
-  hmap::Vec2<float> res = {4.f, 4.f};
-  int               seed = 1;
+  glm::ivec2 shape = {256, 256};
+  glm::vec2  res = {4.f, 4.f};
+  int        seed = 1;
 
   hmap::Array z = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, res, seed);
 
-  float             zoom = 2.f;
-  hmap::Vec2<float> center = {0.25f, 0.f};
+  float     zoom = 2.f;
+  glm::vec2 center = {0.25f, 0.f};
 
   auto z1 = hmap::zoom(z, zoom);
   auto z2 = hmap::zoom(z, zoom, false, center); // false for not periodic

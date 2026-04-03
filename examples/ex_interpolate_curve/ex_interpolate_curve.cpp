@@ -5,10 +5,10 @@
 int main(void)
 {
   // generate points
-  int               npoints = 7;
-  int               seed = 1;
-  hmap::Vec4<float> bbox = {-1.f, 0.f, 0.5f, 1.5f};
-  hmap::Path        path = hmap::Path(npoints, seed, bbox);
+  int        npoints = 7;
+  int        seed = 1;
+  glm::vec4  bbox = {-1.f, 0.f, 0.5f, 1.5f};
+  hmap::Path path = hmap::Path(npoints, seed, bbox);
   path.reorder_nns();
 
   // interpolate
@@ -32,7 +32,7 @@ int main(void)
   std::vector<float> t = hmap::linspace(0.f, 1.f, npts);
 
   // plots
-  hmap::Array z = hmap::Array(hmap::Vec2<int>(512, 512));
+  hmap::Array z = hmap::Array(glm::ivec2(512, 512));
 
   path.to_array(z, bbox);
   hmap::Path(fb(t)).to_array(z, bbox);

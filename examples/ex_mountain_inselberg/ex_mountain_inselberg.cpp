@@ -4,8 +4,8 @@ int main(void)
 {
   hmap::gpu::init_opencl();
 
-  hmap::Vec2<int> shape = {256, 256};
-  uint            seed = 10;
+  glm::ivec2 shape = {256, 256};
+  uint       seed = 10;
 
   hmap::Array z1 = hmap::gpu::mountain_inselberg(shape, seed);
 

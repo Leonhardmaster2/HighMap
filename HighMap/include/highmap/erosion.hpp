@@ -1,35 +1,26 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
    Public License. The full license is in the file LICENSE, distributed with
    this software. */
-
-/**
- * @file erosion.hpp
- * @author Otto Link (otto.link.bv@gmail.com)
- * @brief Implements hydraulic and thermal erosion algorithms for terrain
- * modeling, including particle-based flow, sediment transport (Musgrave, Benes,
- * Olsen), slope-driven diffusion, and procedural ridge formation. Supports
- * GPU-accelerated methods and generates erosion/deposition maps for geomorphic
- * analysis.
- *
- * @copyright Copyright (c) 2023 Otto Link.
- */
 #pragma once
 #include <cmath>
 
 #include "highmap/array.hpp"
+#include "highmap/hydrology/hydrology.hpp"
+#include "highmap/terrain_tri_mesh.hpp"
 
 // neighbor pattern search based on Moore pattern and define diagonal
 // weight coefficients ('c' corresponds to a weight coefficient
 // applied to take into account the longer distance for diagonal
 // comparison between cells)
 
+// clang-format off
 // 6 2 8
 // 1 . 4
 // 5 3 7
-// clang-format off
-#define DI {-1, 0, 0, 1, -1, -1, 1, 1}
-#define DJ {0, 1, -1, 0, -1, 1, -1, 1}
-#define CD  {1.f, 1.f, 1.f, 1.f, M_SQRT2, M_SQRT2, M_SQRT2, M_SQRT2}
+#define HMAP_DI {-1, 0, 0, 1, -1, -1, 1, 1}
+#define HMAP_DJ {0, 1, -1, 0, -1, 1, -1, 1}
+#define HMAP_CD  {1.f, 1.f, 1.f, 1.f, M_SQRT2, M_SQRT2, M_SQRT2, M_SQRT2}
+#define HMAP_CD_INV  {1.f, 1.f, 1.f, 1.f, M_SQRT2, M_SQRT2, M_SQRT2, M_SQRT2}
 // clang-format on
 
 namespace hmap
@@ -40,15 +31,26 @@ namespace hmap
  */
 enum ErosionProfile : int
 {
-  COSINE,
-  SAW_SHARP,
-  SAW_SMOOTH,
-  SHARP_VALLEYS,
-  SQUARE_SMOOTH,
-  TRIANGLE_GRENIER,
-  TRIANGLE_SHARP,
-  TRIANGLE_SMOOTH,
+  EP_COSINE,
+  EP_COSINE_BULK,
+  EP_COSINE_PEAK,
+  EP_PARABOL,
+  EP_SAW_SHARP,
+  EP_SAW_SMOOTH,
+  EP_SHARP_VALLEYS,
+  EP_SQRT,
+  EP_TRIANGLE_GRENIER,
+  EP_TRIANGLE_SHARP,
+  EP_TRIANGLE_SMOOTH,
 };
+
+std::function<float(float)> get_erosion_profile_function(
+    const ErosionProfile &erosion_profile,
+    float                 delta,
+    float                &profile_avg);
+
+std::vector<hmap::ErosionProfile> check_erosion_profile_function(
+    float delta = 0.01f);
 
 /**
  * @brief Simulates terrain diffusion due to coastal erosion.
@@ -94,6 +96,74 @@ void coastal_erosion_diffusion(Array &z,
                                Array *p_water_mask = nullptr);
 
 /**
+ * @brief Applies a coastal erosion profile to a terrain elevation field.
+ *
+ * This function modifies the elevation array @p z by carving a coastal profile
+ * at the interface between ground and water. It uses distance transforms both
+ * from ground regions and from water regions to determine how far each point is
+ * from the shoreline. According to this distance, the function applies:
+ *
+ * - A ground-side shore slope with an optional scarp transition.
+ * - A water-side underwater slope ensuring continuity with the ground slope.
+ * - An optional post-filtering step (Laplace smoothing) restricted to the
+ * shoreline region.
+ *
+ * Water depth is adjusted after filtering to preserve the original water
+ * surface height.
+ *
+ * Optionally, a shoreline mask can be returned describing the region influenced
+ * by the coastal transformation.
+ *
+ * @param z                   Array of terrain elevations. Modified in-place.
+ * @param water_depth         Array of water depths. Modified to preserve water
+ *                            surface height after terrain changes.
+ * @param shore_ground_extent Horizontal extent (in grid units) over which the
+ *                            ground-side shore profile is applied.
+ * @param shore_water_extent  Horizontal extent (in grid units) over which the
+ *                            underwater profile is applied.
+ * @param slope_shore         Ground-side slope magnitude of the coastal
+ *                            profile. Expressed in elevation units per domain
+ *                            width.
+ * @param slope_shore_water   Water-side slope magnitude of the underwater
+ *                            profile. Expressed similarly to @p slope_shore.
+ * @param scarp_extent_ratio  Ratio defining the relative extent of the scarp
+ *                            region. A value in [0,1]:
+ *                             - 0 → no scarp, only slope
+ *                             - 1 → all scarp
+ * @param apply_post_filter   If true, applies Laplacian smoothing to @p z
+ *                            restricted to shoreline areas.
+ * @param p_shore_mask        Optional output pointer. If non-null, receives the
+ *                            shoreline mask (values in [0,1]) indicating where
+ *                            the coastal transformation was applied.
+ *
+ * **Example**
+ * @include ex_coastal_erosion_profile.cpp
+ *
+ * **Result**
+ * @image html ex_coastal_erosion_profile.png
+ */
+void coastal_erosion_profile(Array &z,
+                             Array &water_depth,
+                             float  shore_ground_extent, // pixels
+                             float  shore_water_extent,
+                             float  slope_shore = 0.5f,
+                             float  slope_shore_water = 0.5f,
+                             float  scarp_extent_ratio = 0.5f, // in [0, 1]
+                             bool   apply_post_filter = true,
+                             Array *p_shore_mask = nullptr);
+
+void coastal_erosion_profile(Array       &z,
+                             const Array *p_mask,
+                             Array       &water_depth,
+                             float        shore_ground_extent, // pixels
+                             float        shore_water_extent,
+                             float        slope_shore = 0.5f,
+                             float        slope_shore_water = 0.5f,
+                             float  scarp_extent_ratio = 0.5f, // in [0, 1]
+                             bool   apply_post_filter = true,
+                             Array *p_shore_mask = nullptr);
+
+/**
  * @brief Fill the depressions of the heightmap using the Planchon-Darboux
  * algorithm.
  *
@@ -111,6 +181,8 @@ void coastal_erosion_diffusion(Array &z,
  * @image html ex_depression_filling.png
  */
 void depression_filling(Array &z, int iterations = 1000, float epsilon = 1e-4f);
+
+void depression_filling_priority_flood(Array &z);
 
 /**
  * @brief
@@ -133,6 +205,36 @@ void erosion_maps(Array &z_before,
                   Array &erosion_map,
                   Array &deposition_map,
                   float  tolerance = 0.f);
+
+/**
+ * @brief Generates a modified bedrock heightmap from an input elevation array.
+ *
+ * This function adjusts elevations based on overall height and local slope:
+ * - Reduces values relative to the elevation range using `elevation_strength`.
+ * - Reduces values in steep areas using `slope_strength` and `slope_limit`.
+ *
+ * @param  z                  Input elevation array.
+ * @param  elevation_strength Strength of elevation-based adjustment.
+ * @param  slope_strength     Strength of slope-based adjustment.
+ * @param  slope_limit        Slope threshold for slope-based adjustment.
+ * @param  zmin               Minimum elevation to consider (computed from z if
+ *                            zmin > zmax).
+ * @param  zmax               Maximum elevation to consider (computed from z if
+ *                            zmin > zmax).
+ * @return                    Array Modified bedrock heightmap.
+ *
+ *  **Example**
+ * @include ex_hydraulic_particle.cpp
+ *
+ * **Result**
+ * @image html ex_hydraulic_particle.png
+ */
+Array generate_bedrock(const Array &z,
+                       float        elevation_strength,
+                       float        slope_strength,
+                       float        slope_limit,
+                       float        zmin = 0.f,
+                       float        zmax = -1.f);
 
 /**
  * @brief Apply an algerbic formula based on the local gradient to perform
@@ -316,183 +418,97 @@ void hydraulic_musgrave(Array &z,
                         float  evap_rate = 0.01f); ///< @overload
 
 /**
- * @brief Apply hydraulic erosion using a particle based procedure.
+ * @brief Perform hydraulic erosion on a triangulated terrain mesh.
  *
- * Adapted from @cite Beyer2015 and @cite Hjulstroem1935.
+ * Iteratively updates elevations using a drainage model with uplift, slope
+ * constraints, and spatially varying erodibility.
  *
- * @param z                  Input array.
- * @param p_mask             Intensity mask, expected in [0, 1] (applied as a
- *                           post-processing).
- * @param nparticles         Number of particles.
- * @param seed               Random seed number.
- * @param p_bedrock          Reference to the bedrock heightmap.
- * @param p_moisture_map     Reference to the moisture map (quantity of rain),
- *                           expected to be in [0, 1].
- * @param p_erosion_map[out] Reference to the erosion map, provided as an output
- *                           field.
- * @param p_deposition_map   [out] Reference to the deposition map, provided as
- *                           an output field.
- * @param c_capacity         Sediment capacity.
- * @param c_deposition       Deposition coefficient.
- * @param c_erosion          Erosion coefficient.
- * @param drag_rate          Drag rate.
- * @param evap_rate          Particle evaporation rate.
+ * @param mesh           Input/output terrain mesh.
+ * @param erodibility    Per-vertex erodibility coefficients.
+ * @param max_slope      Per-vertex maximum slope constraint.
+ * @param m_exp          Exponent controlling flow response.
+ * @param uplift_rate    Constant uplift applied each iteration.
+ * @param tolerance      Convergence threshold on elevation updates.
+ * @param max_iterations Maximum number of erosion iterations.
  *
  * **Example**
- * @include ex_hydraulic_particle.cpp
+ * @include ex_hydraulic_saleve.cpp
  *
  * **Result**
- * @image html ex_hydraulic_particle0.png
- * @image html ex_hydraulic_particle1.png
+ * @image html ex_hydraulic_saleve.png
  */
-void hydraulic_particle(Array &z,
-                        Array *p_mask,
-                        int    nparticles,
-                        int    seed,
-                        Array *p_bedrock = nullptr,
-                        Array *p_moisture_map = nullptr,
-                        Array *p_erosion_map = nullptr,    // -> out
-                        Array *p_deposition_map = nullptr, // -> out
-                        float  c_capacity = 10.f,
-                        float  c_erosion = 0.05f,
-                        float  c_deposition = 0.05f,
-                        float  c_inertia = 0.3f,
-                        float  drag_rate = 0.001f,
-                        float  evap_rate = 0.001f,
-                        bool   post_filtering = false);
-
-void hydraulic_particle(Array &z,
-                        int    nparticles,
-                        int    seed,
-                        Array *p_bedrock = nullptr,
-                        Array *p_moisture_map = nullptr,
-                        Array *p_erosion_map = nullptr,    // -> out
-                        Array *p_deposition_map = nullptr, // -> out
-                        float  c_capacity = 10.f,
-                        float  c_erosion = 0.05f,
-                        float  c_deposition = 0.05f,
-                        float  c_inertia = 0.3f,
-                        float  drag_rate = 0.001f,
-                        float  evap_rate = 0.001f,
-                        bool   post_filtering = false); ///< @overload
+void hydraulic_saleve(TerrainTriMesh           &mesh,
+                      const std::vector<float> &erodibility,
+                      const std::vector<float> &max_slope,
+                      float                     m_exp = 0.8f,
+                      float                     uplift_rate = 1.f,
+                      float                     tolerance = 1e-3f,
+                      int                       max_iterations = 200,
+                      float                     noise_strength = 0.f,
+                      uint                      seed = 0);
 
 /**
- * @brief Apply hydraulic erosion using a particle based procedure, using a
- * pyramid decomposition to allow a multiscale approach.
- * @param z                    Input array.
- * @param particle_density     Particles density (with respect to the number of
- *                             cells of the input array).
- * @param seed                 Random seed number.
- * @param p_bedrock            Reference to the bedrock heightmap.
- * @param p_moisture_map       Reference to the moisture map (quantity of rain),
- *                             expected to be in [0, 1].
- * @param p_erosion_map[out]   Reference to the erosion map, provided as an
- *                             output field.
- * @param p_deposition_map     [out] Reference to the deposition map, provided
- *                             as an output field.
- * @param c_capacity           Sediment capacity.
- * @param c_deposition         Deposition coefficient.
- * @param c_erosion            Erosion coefficient.
- * @param drag_rate            Drag rate.
- * @param evap_rate            Particle evaporation rate.
- * @param pyramid_finest_level First level at which the erosion is applied
- *                             (default is 0, meaning it is applied to the
- *                             current resolution, the 0th pyramid level, and
- *                             then to the coarser pyramid levels, if set to 1
- *                             it starts with the first pyramid level and so
- *                             on).
+ * @brief Apply hydraulic erosion to a heightmap using an adaptive mesh.
+ *
+ * Converts the input heightmap to a triangulated mesh, performs erosion, and
+ * interpolates the result back to a grid.
+ *
+ * @param  z                        Input heightmap.
+ * @param  seed                     Random seed for point sampling.
+ * @param  control_points_count     Number of mesh control points.
+ * @param  m_exp                    Flow response exponent.
+ * @param  uplift_rate              Constant uplift per iteration.
+ * @param  tolerance                Convergence threshold.
+ * @param  max_iterations           Maximum number of iterations.
+ * @param  smin                     Minimum slope constraint.
+ * @param  smax                     Maximum slope constraint.
+ * @param  strength                 Blending factor between original and eroded
+ *                                  terrain.
+ * @param  scale_erodibility_with_z Modulate erodibility with elevation.
+ * @param  erodibility_distrib_exp  Exponent for erodibility distribution.
+ * @param  p_noise_x                Optional X displacement field.
+ * @param  p_noise_y                Optional Y displacement field.
+ *
+ * @return                          Eroded heightmap.
  *
  * **Example**
- * @include ex_hydraulic_particle_multiscale.cpp
+ * @include ex_hydraulic_saleve.cpp
  *
  * **Result**
- * @image html ex_hydraulic_particle_multiscale0.png
- * @image html ex_hydraulic_particle_multiscale1.png
+ * @image html ex_hydraulic_saleve.png
  */
-void hydraulic_particle_multiscale(Array &z,
-                                   float  particle_density,
-                                   int    seed,
-                                   Array *p_bedrock = nullptr,
-                                   Array *p_moisture_map = nullptr,
-                                   Array *p_erosion_map = nullptr,    // -> out
-                                   Array *p_deposition_map = nullptr, // -> out
-                                   float  c_capacity = 10.f,
-                                   float  c_erosion = 0.05f,
-                                   float  c_deposition = 0.01f,
-                                   float  c_inertia = 0.3f,
-                                   float  drag_rate = 0.01f,
-                                   float  evap_rate = 0.001f,
-                                   int    pyramid_finest_level = 0);
+Array hydraulic_saleve(const Array &z,
+                       uint         seed,
+                       size_t       control_points_count = 10000,
+                       float        m_exp = 0.8f,
+                       float        uplift_rate = 1.f,
+                       float        tolerance = 1e-3f,
+                       int          max_iterations = 200,
+                       float        smin = 0.f,
+                       float        smax = 6.f,
+                       float        strength = 0.5f,
+                       bool         scale_erodibility_with_z = true,
+                       float        erodibility_distrib_exp = 1.f,
+                       float        noise_strength = 0.f,
+                       const Array *p_noise_x = nullptr,
+                       const Array *p_noise_y = nullptr);
 
-/**
- * @brief Generates a procedurally eroded terrain using hydraulic erosion and
- * ridge generation techniques.
- *
- * This function applies a combination of hydraulic erosion and ridge formation
- * to modify a heightmap, leveraging parameters such as erosion profiles, ridge
- * scaling, and noise characteristics. It also supports custom or default masks
- * to influence the erosion process.
- *
- * @param[out] z                  The heightmap to be modified, represented as a
- *                                2D array.
- * @param[in]  seed               Random seed for procedural generation.
- * @param[in]  ridge_wavelength   Wavelength of the ridge structures in the
- *                                heightmap.
- * @param[in]  ridge_scaling      Scaling factor for the ridge height.
- * @param[in]  erosion_profile    The profile that defines the erosion curve
- *                                behavior.
- * @param[in]  delta              Parameter controlling the erosion intensity.
- * @param[in]  noise_ratio        Ratio of noise added to the ridge crest lines.
- * @param[in]  prefilter_ir       Kernel radius for pre-smoothing the heightmap.
- *                                If negative, a default value is computed.
- * @param[in]  density_factor     Factor influencing the density of the ridges.
- * @param[in]  kernel_width_ratio Ratio defining the width of the ridge
- *                                generation kernel.
- * @param[in]  phase_smoothing    Smoothing factor for the phase field used in
- *                                ridge generation.
- * @param[in]  use_default_mask   Whether to use a default mask for erosion if
- *                                no mask is provided.
- * @param[in]  talus_mask         Threshold for default mask slope to identify
- *                                regions prone to erosion.
- * @param[in]  p_mask             Optional pointer to a custom mask array to
- *                                influence the erosion process.
- * @param[out] p_ridge_mask       Optional pointer to store the ridge mask
- *                                resulting from the operation.
- * @param[in]  vmin               Minimum elevation value. If set to a sentinel
- *                                value (vmax <
- * vmin), it is calculated from the heightmap.
- * @param[in]  vmax               Maximum elevation value. If set to a sentinel
- *                                value (vmax <
- * vmin), it is calculated from the heightmap.
- *
- * **Example**
- * @include ex_hydraulic_procedural.cpp
- *
- * **Result**
- * @image html ex_hydraulic_procedural0.png
- * @image html ex_hydraulic_procedural1.png
- */
-void hydraulic_procedural(
-    Array         &z,
-    uint           seed,
-    float          ridge_wavelength,
-    float          ridge_scaling = 0.1f,
-    ErosionProfile erosion_profile = ErosionProfile::TRIANGLE_SMOOTH,
-    float          delta = 0.02f,
-    float          noise_ratio = 0.2f,
-    int            prefilter_ir = -1,
-    float          density_factor = 1.f,
-    float          kernel_width_ratio = 2.f,
-    float          phase_smoothing = 2.f,
-    float          phase_noise_amp = M_PI,
-    bool           reverse_phase = false,
-    bool           rotate90 = false,
-    bool           use_default_mask = true,
-    float          talus_mask = 0.f,
-    Array         *p_mask = nullptr,
-    Array         *p_ridge_mask = nullptr,
-    float          vmin = 0.f,
-    float          vmax = -1.f);
+Array hydraulic_saleve(const Array &z,
+                       const Array *p_mask,
+                       uint         seed,
+                       size_t       control_points_count = 10000,
+                       float        m_exp = 0.8f,
+                       float        uplift_rate = 1.f,
+                       float        tolerance = 1e-3f,
+                       int          max_iterations = 200,
+                       float        smin = 0.f,
+                       float        smax = 6.f,
+                       float        strength = 0.5f,
+                       bool         scale_erodibility_with_z = true,
+                       float        erodibility_distrib_exp = 1.f,
+                       float        noise_strength = 0.f,
+                       const Array *p_noise_x = nullptr,
+                       const Array *p_noise_y = nullptr);
 
 /**
  * @brief Apply hydraulic erosion based on a flow accumulation map.
@@ -539,6 +555,75 @@ void hydraulic_stream(Array &z,
                       Array *p_erosion_map = nullptr, // -> out
                       int    ir = 1,
                       float  clipping_ratio = 10.f); ///< @overload
+
+/**
+ * @brief Apply hydraulic erosion based on a flow accumulation map, alternative
+ * formulation.
+ *
+ * @param z                      Input array representing the terrain elevation.
+ * @param c_erosion              Erosion coefficient controlling the intensity
+ *                               of erosion.
+ * @param talus_ref              Reference talus used to locally define the
+ *                               flow-partition exponent. Small values lead to
+ *                               thinner flow streams (see
+ * {@link flow_accumulation_dinf}).
+ * @param deposition_ir          Kernel radius for sediment deposition. If
+ *                               greater than 1, a smoothing effect is applied.
+ * @param deposition_scale_ratio Scaling factor for sediment deposition.
+ * @param gradient_power         Exponent applied to the terrain gradient to
+ *                               control erosion intensity.
+ * @param gradient_scaling_ratio Scaling factor for gradient-based erosion.
+ * @param gradient_prefilter_ir  Kernel radius for pre-filtering the terrain
+ *                               gradient.
+ * @param saturation_ratio       Ratio controlling the water saturation
+ *                               threshold for erosion processes.
+ * @param p_bedrock              Pointer to an optional lower elevation limit.
+ * @param p_moisture_map         Pointer to the moisture map (rainfall
+ *                               quantity), expected to be in [0, 1].
+ * @param p_erosion_map[out]     Pointer to the erosion map, provided as an
+ *                               output field.
+ * @param p_flow_map[out]        Pointer to the flow accumulation map, provided
+ *                               as an output field.
+ * @param ir                     Kernel radius. If `ir > 1`, a cone kernel is
+ *                               used to carve channel flow erosion.
+ *
+ * **Example**
+ * @include ex_hydraulic_stream.cpp
+ *
+ * **Result**
+ * @image html ex_hydraulic_stream0.png
+ * @image html ex_hydraulic_stream1.png
+ */
+void hydraulic_stream_log(Array &z,
+                          float  c_erosion,
+                          float  talus_ref,
+                          int    deposition_ir = 32,
+                          float  deposition_scale_ratio = 1.f,
+                          float  gradient_power = 0.8f,
+                          float  gradient_scaling_ratio = 1.f,
+                          int    gradient_prefilter_ir = 16,
+                          float  saturation_ratio = 1.f,
+                          Array *p_bedrock = nullptr,
+                          Array *p_moisture_map = nullptr,
+                          Array *p_erosion_map = nullptr,
+                          Array *p_deposition_map = nullptr,
+                          Array *p_flow_map = nullptr);
+
+void hydraulic_stream_log(Array       &z,
+                          float        c_erosion,
+                          float        talus_ref,
+                          const Array *p_mask,
+                          int          deposition_ir = 32,
+                          float        deposition_scale_ratio = 1.f,
+                          float        gradient_power = 0.8f,
+                          float        gradient_scaling_ratio = 1.f,
+                          int          gradient_prefilter_ir = 16,
+                          float        saturation_ratio = 1.f,
+                          Array       *p_bedrock = nullptr,
+                          Array       *p_moisture_map = nullptr,
+                          Array       *p_erosion_map = nullptr,
+                          Array       *p_deposition_map = nullptr,
+                          Array       *p_flow_map = nullptr); ///< @overload
 
 /**
  * @brief Applies hydraulic erosion with upscaling amplification.
@@ -624,75 +709,6 @@ void hydraulic_stream_upscale_amplification(
     float  clipping_ratio = 10.f); ///< @overload
 
 /**
- * @brief Apply hydraulic erosion based on a flow accumulation map, alternative
- * formulation.
- *
- * @param z                      Input array representing the terrain elevation.
- * @param c_erosion              Erosion coefficient controlling the intensity
- *                               of erosion.
- * @param talus_ref              Reference talus used to locally define the
- *                               flow-partition exponent. Small values lead to
- *                               thinner flow streams (see
- * {@link flow_accumulation_dinf}).
- * @param deposition_ir          Kernel radius for sediment deposition. If
- *                               greater than 1, a smoothing effect is applied.
- * @param deposition_scale_ratio Scaling factor for sediment deposition.
- * @param gradient_power         Exponent applied to the terrain gradient to
- *                               control erosion intensity.
- * @param gradient_scaling_ratio Scaling factor for gradient-based erosion.
- * @param gradient_prefilter_ir  Kernel radius for pre-filtering the terrain
- *                               gradient.
- * @param saturation_ratio       Ratio controlling the water saturation
- *                               threshold for erosion processes.
- * @param p_bedrock              Pointer to an optional lower elevation limit.
- * @param p_moisture_map         Pointer to the moisture map (rainfall
- *                               quantity), expected to be in [0, 1].
- * @param p_erosion_map[out]     Pointer to the erosion map, provided as an
- *                               output field.
- * @param p_flow_map[out]        Pointer to the flow accumulation map, provided
- *                               as an output field.
- * @param ir                     Kernel radius. If `ir > 1`, a cone kernel is
- *                               used to carve channel flow erosion.
- *
- * **Example**
- * @include ex_hydraulic_stream.cpp
- *
- * **Result**
- * @image html ex_hydraulic_stream0.png
- * @image html ex_hydraulic_stream1.png
- */
-void hydraulic_stream_log(Array &z,
-                          float  c_erosion,
-                          float  talus_ref,
-                          int    deposition_ir = 32,
-                          float  deposition_scale_ratio = 1.f,
-                          float  gradient_power = 0.8f,
-                          float  gradient_scaling_ratio = 1.f,
-                          int    gradient_prefilter_ir = 16,
-                          float  saturation_ratio = 1.f,
-                          Array *p_bedrock = nullptr,
-                          Array *p_moisture_map = nullptr,
-                          Array *p_erosion_map = nullptr,
-                          Array *p_deposition_map = nullptr,
-                          Array *p_flow_map = nullptr);
-
-void hydraulic_stream_log(Array &z,
-                          float  c_erosion,
-                          float  talus_ref,
-                          Array *p_mask,
-                          int    deposition_ir = 32,
-                          float  deposition_scale_ratio = 1.f,
-                          float  gradient_power = 0.8f,
-                          float  gradient_scaling_ratio = 1.f,
-                          int    gradient_prefilter_ir = 16,
-                          float  saturation_ratio = 1.f,
-                          Array *p_bedrock = nullptr,
-                          Array *p_moisture_map = nullptr,
-                          Array *p_erosion_map = nullptr,
-                          Array *p_deposition_map = nullptr,
-                          Array *p_flow_map = nullptr); ///< @overload
-
-/**
  * @brief Apply hydraulic erosion using the 'virtual pipes' algorithm.
  *
  * See @cite Chiba1998, @cite Isheden2022, @cite Mei2007 and @cite Stava2008.
@@ -746,94 +762,6 @@ void hydraulic_vpipes(Array &z,
                       float  c_deposition = 0.05f,
                       float  rain_rate = 0.f,
                       float  evap_rate = 0.01f); ///< @overload
-
-/**
- * @brief Perform sediment deposition combined with thermal erosion.
- *
- * @todo deposition map
- *
- * @param z                             Input array.
- * @param p_mask                        Intensity mask, expected in [0, 1]
- *                                      (applied as a post-processing).
- * @param talus                         Talus limit.
- * @param p_deposition_map              [out] Reference to the deposition map,
- *                                      provided as an output field.
- * @param max_deposition                Maximum height of sediment deposition.
- * @param iterations                    Number of iterations.
- * @param thermal_erosion_subiterations Number of thermal erosion iterations for
- *                                      each pass.
- *
- * **Example**
- * @include ex_sediment_deposition.cpp
- *
- * **Result**
- * @image html ex_sediment_deposition.png
- */
-void sediment_deposition(Array       &z,
-                         Array       *p_mask,
-                         const Array &talus,
-                         Array       *p_deposition_map = nullptr,
-                         float        max_deposition = 0.01,
-                         int          iterations = 5,
-                         int          thermal_subiterations = 10);
-
-void sediment_deposition(Array       &z,
-                         const Array &talus,
-                         Array       *p_deposition_map = nullptr,
-                         float        max_deposition = 0.01,
-                         int          iterations = 5,
-                         int          thermal_subiterations = 10);
-
-/**
- * @brief
- *
- * @param z                         Input array.
- * @param p_mask                    Intensity mask, expected in [0, 1] (applied
- *                                  as a post-processing).
- * @param nparticles                Number of particles.
- * @param ir                        Particle deposition radius.
- * @param seed                      Random seed number.
- * @param p_spawning_map            Reference to the particle spawning density
- *                                  map.
- * @param p_deposition_map          Reference to the deposition map (output).
- * @param particle_initial_sediment Initial sediment amount carried out by the
- *                                  particles.
- * @param deposition_velocity_limit Deposition at which the deposition occurs.
- * @param drag_rate                 Particle drag rate.
- *
- * **Example**
- * @include ex_sediment_deposition_particle.cpp
- *
- * **Result**
- * @image html ex_sediment_deposition_particle.png
- */
-void sediment_deposition_particle(Array &z,
-                                  Array *p_mask,
-                                  int    nparticles,
-                                  int    ir,
-                                  int    seed = 1,
-                                  Array *p_spawning_map = nullptr,
-                                  Array *p_deposition_map = nullptr,
-                                  float  particle_initial_sediment = 0.1f,
-                                  float  deposition_velocity_limit = 0.01f,
-                                  float  drag_rate = 0.001f);
-
-void sediment_deposition_particle(Array &z,
-                                  int    nparticles,
-                                  int    ir,
-                                  int    seed = 1,
-                                  Array *p_spawning_map = nullptr,
-                                  Array *p_deposition_map = nullptr,
-                                  float  particle_initial_sediment = 0.1f,
-                                  float  deposition_velocity_limit = 0.01f,
-                                  float  drag_rate = 0.001f);
-
-void sediment_layer(Array       &z,
-                    const Array &talus_layer,
-                    const Array &talus_upper_limit,
-                    int          iterations,
-                    bool         apply_post_filter = true,
-                    Array       *p_deposition_map = nullptr);
 
 /**
  * @brief Stratify the heightmap by creating a series of layers with elevations
@@ -1165,38 +1093,256 @@ void thermal_schott(Array      &z,
 namespace hmap::gpu
 {
 
-/*! @brief See hmap::hydraulic_particle */
-void hydraulic_particle(Array &z,
-                        int    nparticles,
-                        int    seed,
-                        Array *p_bedrock = nullptr,
-                        Array *p_moisture_map = nullptr,
-                        Array *p_erosion_map = nullptr,
-                        Array *p_deposition_map = nullptr,
-                        float  c_capacity = 10.f,
-                        float  c_erosion = 0.05f,
-                        float  c_deposition = 0.05f,
-                        float  c_inertia = 0.3f,
-                        float  drag_rate = 0.001f,
-                        float  evap_rate = 0.001f,
-                        bool   post_filtering = false);
+/**
+ * @brief Fill holes using Gaussian-based deposition.
+ *
+ * Applies a smoothing/deposition pass that fills local depressions while
+ * preserving overall terrain shape through gradient-aware blending.
+ *
+ * @param z                   Heightmap to modify (in-place).
+ * @param deposition_ir       Influence radius of the Gaussian filter.
+ * @param deposition_strength Blending factor controlling deposition intensity.
+ * @param iterations          Number of successive deposition passes.
+ */
+void deposition_fill_holes(Array &z,
+                           int    deposition_ir,
+                           float  deposition_strength,
+                           int    iterations = 1);
+
+/**
+ * @brief Simulates hydraulic erosion on a heightmap using particle-based flow.
+ *
+ * Particles traverse the heightmap `z`, eroding and depositing material
+ * according to local slope, capacity, inertia, and optional directional bias.
+ *
+ * @param z                       Heightmap array to modify.
+ * @param nparticles              Number of erosion particles to simulate.
+ * @param seed                    Random seed for particle initialization.
+ * @param p_bedrock               Optional bedrock array to limit erosion.
+ * @param p_moisture_map          Optional moisture map affecting
+ *                                erosion/deposition.
+ * @param p_elevation_shift       Optional elevation shift map.
+ * @param p_erosion_map           Optional output array recording total erosion.
+ * @param p_deposition_map        Optional output array recording deposition.
+ * @param c_capacity              Sediment capacity of each particle.
+ * @param c_erosion               Erosion rate coefficient.
+ * @param c_deposition            Deposition rate coefficient.
+ * @param c_inertia               Particle inertia factor.
+ * @param c_gravity               Gravity effect on particle movement.
+ * @param drag_rate               Particle velocity damping.
+ * @param evap_rate               Sediment evaporation rate.
+ * @param enable_directional_bias Enable bias along a preferred slope direction.
+ * @param angle_bias              Bias angle in degrees (if directional bias
+ *                                enabled).
+ *
+ *  **Example**
+ * @include ex_hydraulic_particle.cpp
+ *
+ * **Result**
+ * @image html ex_hydraulic_particle.png
+ */
+void hydraulic_particle(Array       &z,
+                        int          nparticles,
+                        uint         seed,
+                        const Array *p_bedrock = nullptr,
+                        const Array *p_moisture_map = nullptr,
+                        const Array *p_elevation_shift = nullptr,
+                        Array       *p_erosion_map = nullptr,
+                        Array       *p_deposition_map = nullptr,
+                        float        c_capacity = 10.f,
+                        float        c_erosion = 0.05f,
+                        float        c_deposition = 0.05f,
+                        float        c_inertia = 0.1f,
+                        float        c_gravity = 1.f,
+                        float        drag_rate = 0.001f,
+                        float        evap_rate = 0.001f,
+                        bool         enable_directional_bias = false,
+                        float        angle_bias = 30.f);
 
 /*! @brief See hmap::hydraulic_particle */
-void hydraulic_particle(Array &z,
-                        Array *p_mask,
-                        int    nparticles,
-                        int    seed,
-                        Array *p_bedrock = nullptr,
-                        Array *p_moisture_map = nullptr,
-                        Array *p_erosion_map = nullptr,
-                        Array *p_deposition_map = nullptr,
-                        float  c_capacity = 10.f,
-                        float  c_erosion = 0.05f,
-                        float  c_deposition = 0.05f,
-                        float  c_inertia = 0.3f,
-                        float  drag_rate = 0.001f,
-                        float  evap_rate = 0.001f,
-                        bool   post_filtering = false);
+void hydraulic_particle(Array       &z,
+                        const Array *p_mask,
+                        int          nparticles,
+                        uint         seed,
+                        const Array *p_bedrock = nullptr,
+                        const Array *p_moisture_map = nullptr,
+                        const Array *p_elevation_shift = nullptr,
+                        Array       *p_erosion_map = nullptr,
+                        Array       *p_deposition_map = nullptr,
+                        float        c_capacity = 10.f,
+                        float        c_erosion = 0.05f,
+                        float        c_deposition = 0.05f,
+                        float        c_inertia = 0.1f,
+                        float        c_gravity = 1.f,
+                        float        drag_rate = 0.001f,
+                        float        evap_rate = 0.001f,
+                        bool         enable_directional_bias = false,
+                        float        angle_bias = 30.f);
+
+/**
+ * @brief Apply phase-guided hydraulic procedural erosion to a heightmap.
+ *
+ * Computes a phase field from the input terrain and generates ridge-aligned
+ * erosion patterns modulated by flow accumulation and local gradient.
+ * Optionally applies procedural noise, deposition, and outputs a ridge mask.
+ *
+ * @param[in,out] z                         Heightmap to erode (modified in
+ *                                          place).
+ * @param         kp_global                 Global kernel size controlling
+ *                                          feature scale.
+ * @param         c_erosion                 Global erosion intensity.
+ * @param         seed                      Random seed for phase/noise
+ *                                          generation.
+ * @param         erosion_profile           Ridge shaping profile type.
+ * @param         erosion_profile_parameter Parameter controlling the profile
+ *                                          shape.
+ * @param         angle_shift               Global phase angle offset (degrees).
+ * @param         phase_smoothing           Controls smoothing between phase
+ *                                          transitions.
+ * @param         talus_ref                 Reference talus angle for flow
+ *                                          accumulation.
+ * @param         gradient_scaling_ratio    Blend factor for gradient-based
+ *                                          modulation.
+ * @param         gradient_power            Exponent applied to normalized
+ *                                          gradient.
+ * @param         apply_deposition          If true, applies post-erosion
+ *                                          deposition pass.
+ * @param         enable_default_noise      If true, generates internal FBM
+ *                                          noise fields.
+ * @param         noise_amp                 Amplitude of procedural noise.
+ * @param         p_kp_multiplier           Optional spatial modulation of
+ *                                          kernel size.
+ * @param         p_angle_shift             Optional spatial phase shift.
+ * @param         p_noise_x                 Optional external noise field (x
+ *                                          component).
+ * @param         p_noise_y                 Optional external noise field (y
+ *                                          component).
+ * @param         p_ridge_mask              Optional output ridge mask (cosine
+ *                                          of phase).
+ * @param         bbox                      World-space bounding box.
+ *
+ * **Example**
+ * @include ex_hydraulic_procedural.cpp
+ *
+ * **Result**
+ * @image html ex_hydraulic_procedural.png
+ */
+void hydraulic_procedural(
+    Array         &z,
+    float          kp_global,
+    float          c_erosion,
+    uint           seed,
+    ErosionProfile erosion_profile = ErosionProfile::EP_TRIANGLE_GRENIER,
+    float          erosion_profile_parameter = 0.01f,
+    float          angle_shift = 0.f, // degs
+    float          phase_smoothing = 0.1f,
+    float          talus_ref = 0.001f,
+    float          gradient_scaling_ratio = 1.f,
+    float          gradient_power = 0.8f,
+    bool           exclude_ridges = true,
+    bool           apply_deposition = false,
+    float          deposition_strength = 1.f,
+    bool           enable_default_noise = true,
+    float          noise_amp = 0.01f,
+    const Array   *p_kp_multiplier = nullptr,
+    const Array   *p_angle_shift = nullptr,
+    const Array   *p_noise_x = nullptr,
+    const Array   *p_noise_y = nullptr,
+    Array         *p_ridge_mask = nullptr, // ouptput
+    glm::vec4      bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
+ * @brief Multi-octave (fBm) variant of hydraulic_procedural().
+ *
+ * Applies the erosion operator across multiple octaves with
+ * lacunarity/persistence scaling, accumulating a normalized ridge mask.
+ *
+ * @param[in,out] z                         Heightmap to erode (modified in
+ *                                          place).
+ * @param         kp_global                 Base kernel size.
+ * @param         c_erosion                 Base erosion intensity.
+ * @param         seed                      Random seed.
+ * @param         erosion_profile           Ridge shaping profile.
+ * @param         octaves                   Number of fBm octaves.
+ * @param         persistence               Amplitude decay per octave.
+ * @param         lacunarity                Frequency growth per octave.
+ * @param         erosion_profile_parameter Profile parameter.
+ * @param         angle_shift               Global phase shift (degrees).
+ * @param         phase_smoothing           Phase smoothing factor.
+ * @param         talus_ref                 Reference talus angle.
+ * @param         gradient_scaling_ratio    Gradient modulation ratio.
+ * @param         gradient_power            Gradient exponent.
+ * @param         apply_deposition          Enable deposition pass.
+ * @param         enable_default_noise      Enable internal noise generation.
+ * @param         noise_amp                 Noise amplitude.
+ * @param         p_kp_multiplier           Optional spatial kernel modulation.
+ * @param         p_angle_shift             Optional spatial phase shift.
+ * @param         p_noise_x                 Optional external noise (x).
+ * @param         p_noise_y                 Optional external noise (y).
+ * @param         p_ridge_mask              Optional accumulated ridge mask
+ *                                          output.
+ * @param         bbox                      World-space bounding box.
+ *
+ * **Example**
+ * @include ex_hydraulic_procedural.cpp
+ *
+ * **Result**
+ * @image html ex_hydraulic_procedural.png
+ */
+void hydraulic_procedural_fbm(
+    Array         &z,
+    float          kp_global,
+    float          c_erosion,
+    uint           seed,
+    ErosionProfile erosion_profile = ErosionProfile::EP_TRIANGLE_GRENIER,
+    int            octaves = 3,
+    float          persistence = 0.5f,
+    float          lacunarity = 2.f,
+    float          erosion_profile_parameter = 0.01f,
+    float          angle_shift = 0.f, // degs
+    float          phase_smoothing = 0.1f,
+    float          talus_ref = 0.001f,
+    float          gradient_scaling_ratio = 1.f,
+    float          gradient_power = 0.8f,
+    bool           exclude_ridges = true,
+    bool           apply_deposition = false,
+    float          deposition_strength = 1.f,
+    bool           enable_default_noise = true,
+    float          noise_amp = 0.01f,
+    const Array   *p_kp_multiplier = nullptr,
+    const Array   *p_angle_shift = nullptr,
+    const Array   *p_noise_x = nullptr,
+    const Array   *p_noise_y = nullptr,
+    Array         *p_ridge_mask = nullptr, // ouptput
+    glm::vec4      bbox = {0.f, 1.f, 0.f, 1.f});
+
+void hydraulic_procedural_fbm(
+    Array         &z,
+    float          kp_global,
+    float          c_erosion,
+    uint           seed,
+    const Array   *p_mask,
+    ErosionProfile erosion_profile = ErosionProfile::EP_TRIANGLE_GRENIER,
+    int            octaves = 3,
+    float          persistence = 0.5f,
+    float          lacunarity = 2.f,
+    float          erosion_profile_parameter = 0.01f,
+    float          angle_shift = 0.f, // degs
+    float          phase_smoothing = 0.1f,
+    float          talus_ref = 0.001f,
+    float          gradient_scaling_ratio = 1.f,
+    float          gradient_power = 0.8f,
+    bool           exclude_ridges = true,
+    bool           apply_deposition = false,
+    float          deposition_strength = 1.f,
+    bool           enable_default_noise = true,
+    float          noise_amp = 0.01f,
+    const Array   *p_kp_multiplier = nullptr,
+    const Array   *p_angle_shift = nullptr,
+    const Array   *p_noise_x = nullptr,
+    const Array   *p_noise_y = nullptr,
+    Array         *p_ridge_mask = nullptr, // ouptput
+    glm::vec4      bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief Simulates hydraulic erosion and deposition on a heightmap using the
@@ -1216,7 +1362,8 @@ void hydraulic_particle(Array &z,
  * @param[in]     c_erosion              Erosion coefficient (default: 1.0f).
  * @param[in]     c_thermal              Thermal erosion coefficient (default:
  *                                       0.1f).
- * @param[in]     c_deposition           Deposition coefficient (default: 0.2f).
+ * @param[in]     c_deposition           Deposition coefficient (default:
+ * 0.2f).
  * @param[in]     flow_acc_exponent      Exponent controlling the influence of
  *                                       flow accumulation on erosion (default:
  *                                       0.8f).
@@ -1271,6 +1418,15 @@ void hydraulic_schott(Array       &z,
                       float        deposition_weight = 2.5f,
                       Array       *p_flow = nullptr); ///< @overload
 
+/*! @brief See hmap::hydraulic_schott */
+void hydraulic_schott_erosion(Array       &z,
+                              int          iterations,
+                              float        c_erosion = 1.f,
+                              float        flow_acc_exponent = 0.8f,
+                              float        flow_routing_exponent = 1.3f,
+                              const Array *p_moisture_map = nullptr,
+                              Array       *p_flow = nullptr);
+
 /*! @brief See hmap::hydraulic_stream_log */
 void hydraulic_stream_log(Array &z,
                           float  c_erosion,
@@ -1287,21 +1443,88 @@ void hydraulic_stream_log(Array &z,
                           Array *p_deposition_map = nullptr,
                           Array *p_flow_map = nullptr);
 
-void hydraulic_stream_log(Array &z,
-                          float  c_erosion,
-                          float  talus_ref,
-                          Array *p_mask,
-                          int    deposition_ir = 32,
-                          float  deposition_scale_ratio = 1.f,
-                          float  gradient_power = 0.8f,
-                          float  gradient_scaling_ratio = 1.f,
-                          int    gradient_prefilter_ir = 16,
-                          float  saturation_ratio = 1.f,
-                          Array *p_bedrock = nullptr,
-                          Array *p_moisture_map = nullptr,
-                          Array *p_erosion_map = nullptr,
-                          Array *p_deposition_map = nullptr,
-                          Array *p_flow_map = nullptr); ///< @overload
+void hydraulic_stream_log(Array       &z,
+                          float        c_erosion,
+                          float        talus_ref,
+                          const Array *p_mask,
+                          int          deposition_ir = 32,
+                          float        deposition_scale_ratio = 1.f,
+                          float        gradient_power = 0.8f,
+                          float        gradient_scaling_ratio = 1.f,
+                          int          gradient_prefilter_ir = 16,
+                          float        saturation_ratio = 1.f,
+                          Array       *p_bedrock = nullptr,
+                          Array       *p_moisture_map = nullptr,
+                          Array       *p_erosion_map = nullptr,
+                          Array       *p_deposition_map = nullptr,
+                          Array       *p_flow_map = nullptr); ///< @overload
+
+/*! @brief See hmap::hydraulic_vpipes */
+void hydraulic_vpipes(Array &z,
+                      float  water_height = 1e-2f,
+                      bool   maintain_water_volume = true,
+                      float  evap_rate = 0.1f,
+                      int    iterations = 50,
+                      float  dt = 0.5f,
+                      float  k_capacity = 0.5f,
+                      float  k_erode = 0.001f,
+                      float  k_depose = 0.01f,
+                      float  k_discharge_exp = 1.f,
+                      float  downcutting_max_depth_ratio = 10.f,
+                      bool   flux_diffusion = true,
+                      float  flux_diffusion_strength = 0.01f,
+                      Array *p_rain_map = nullptr,
+                      Array *p_water_depth = nullptr,
+                      Array *p_sediment = nullptr,
+                      Array *p_vel_u = nullptr,
+                      Array *p_vel_v = nullptr);
+
+/**
+ * @brief Simulate a mudslide (landslide-driven material redistribution) on a
+ * height field.
+ *
+ * Applies an iterative viscous flow process to the height array @p z,
+ * constrained by @p landslide_mask and limited by the specified @p depth. The
+ * flow behavior is controlled by a depth exponent and a viscosity power law.
+ * Optionally outputs the transported depth map.
+ *
+ * @param[in,out] z                   Input/output height field modified in
+ *                                    place.
+ * @param[in]     landslide_mask      Mask defining affected areas (non-zero =
+ *                                    active).
+ * @param[in]     depth               Maximum erosion/deposition depth.
+ * @param[in]     iterations          Number of simulation iterations.
+ * @param[in]     depth_map_exponent  Exponent applied to depth influence
+ *                                    (default 0.5f).
+ * @param[in]     viscosity_law_power Power exponent controlling viscosity
+ *                                    response (default 1.5f).
+ * @param[out]    p_depth             Optional pointer to store resulting depth
+ *                                    map (nullable).
+ *
+ * **Example**
+ * @include ex_mudslide.cpp
+ *
+ * **Result**
+ * @image html ex_mudslide.png
+ */
+void mudslide(Array       &z,
+              const Array &landslide_mask,
+              float        depth,
+              int          iterations,
+              float        depth_map_exponent = 0.5f,
+              float        viscosity_law_power = 1.5f,
+              Array       *p_depth_end = nullptr,
+              Array       *p_depth_init = nullptr);
+
+/*! @brief See hmap::mudslide */
+void mudslide(Array &z,
+              float  talus_limit,
+              float  depth,
+              int    iterations,
+              float  depth_map_exponent = 0.5f,
+              float  viscosity_law_power = 1.5f,
+              Array *p_depth_end = nullptr,
+              Array *p_depth_init = nullptr);
 
 /**
  * @brief Applies a "rift" deformation effect to a heightmap array.
@@ -1354,26 +1577,91 @@ void hydraulic_stream_log(Array &z,
  * **Result**
  * @image html ex_rifts.png
  */
-void rifts(Array             &z,
-           const Vec2<float> &kw,    //  = {4.f, 1.2f},
-           float              angle, // degs
-           float              amplitude,
-           uint               seed,
-           float              elevation_noise_shift = 0.f,
-           float              k_smooth_bottom = 0.05f,
-           float              k_smooth_top = 0.05f,
-           float              radial_spread_amp = 0.2f,
-           float              elevation_noise_amp = 0.1f,
-           float              clamp_vmin = 0.f,
-           float              remap_vmin = 0.f,
-           bool               apply_mask = true,
-           bool               reverse_mask = false,
-           float              mask_gamma = 1.f,
-           const Array       *p_noise_x = nullptr,
-           const Array       *p_noise_y = nullptr,
-           const Array       *p_mask = nullptr,
-           const Vec2<float> &center = {0.5f, 0.5f},
-           const Vec4<float> &bbox = {0.f, 1.f, 0.f, 1.f});
+void rifts(Array           &z,
+           const glm::vec2 &kw,    //  = {4.f, 1.2f},
+           float            angle, // degs
+           float            amplitude,
+           uint             seed,
+           float            elevation_noise_shift = 0.f,
+           float            k_smooth_bottom = 0.05f,
+           float            k_smooth_top = 0.05f,
+           float            radial_spread_amp = 0.2f,
+           float            elevation_noise_amp = 0.1f,
+           float            clamp_vmin = 0.f,
+           float            remap_vmin = 0.f,
+           bool             apply_mask = true,
+           bool             reverse_mask = false,
+           float            mask_gamma = 1.f,
+           const Array     *p_noise_x = nullptr,
+           const Array     *p_noise_y = nullptr,
+           const Array     *p_mask = nullptr,
+           const glm::vec2 &center = {0.5f, 0.5f},
+           const glm::vec4 &bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
+ * @brief Perform sediment deposition combined with thermal erosion.
+ *
+ * @todo deposition map
+ *
+ * @param z                             Input array.
+ * @param p_mask                        Intensity mask, expected in [0, 1]
+ *                                      (applied as a post-processing).
+ * @param talus                         Talus limit.
+ * @param p_deposition_map              [out] Reference to the deposition map,
+ *                                      provided as an output field.
+ * @param max_deposition                Maximum height of sediment deposition.
+ * @param iterations                    Number of iterations.
+ * @param thermal_erosion_subiterations Number of thermal erosion iterations for
+ *                                      each pass.
+ *
+ * **Example**
+ * @include ex_sediment_deposition.cpp
+ *
+ * **Result**
+ * @image html ex_sediment_deposition.png
+ */
+void sediment_deposition(Array       &z,
+                         Array       *p_mask,
+                         const Array &talus,
+                         Array       *p_deposition_map = nullptr,
+                         float        max_deposition = 0.01,
+                         int          iterations = 5,
+                         int          thermal_subiterations = 10);
+
+void sediment_deposition(Array       &z,
+                         const Array &talus,
+                         Array       *p_deposition_map = nullptr,
+                         float        max_deposition = 0.01,
+                         int          iterations = 5,
+                         int          thermal_subiterations = 10);
+
+/**
+ * @brief Applies a talus-based sediment deposition layer.
+ *
+ * Computes a sediment (deposition) map using thermal erosion constrained by
+ * per-cell talus limits. Optionally smooths the result and blends it back into
+ * the heightmap.
+ *
+ * @param[in,out] z                 Heightmap to modify.
+ * @param[in]     talus_layer       Base talus values for erosion.
+ * @param[in]     talus_upper_limit Upper talus threshold used for masking.
+ * @param[in]     iterations        Number of erosion iterations.
+ * @param[in]     apply_post_filter Enable post smoothing and blending.
+ * @param[out]    p_deposition_map  Optional output deposition map (may be
+ *                                  null).
+ *
+ * **Example**
+ * @include ex_sediment_layer.cpp
+ *
+ * **Result**
+ * @image html ex_sediment_layer.png
+ */
+void sediment_layer(Array       &z,
+                    const Array &talus_layer,
+                    const Array &talus_upper_limit,
+                    int          iterations,
+                    bool         apply_post_filter = true,
+                    Array       *p_deposition_map = nullptr);
 
 /**
  * @brief Applies stratification to a heightfield using directional noise and
@@ -1432,28 +1720,268 @@ void rifts(Array             &z,
  * **Result**
  * @image html ex_strata.png
  */
-void strata(Array             &z,
-            float              angle,
-            float              slope,
-            float              gamma, // e.g 0.5f or 1.5f
-            uint               seed,
-            bool               linear_gamma = true,
-            float              kz = 1.f,
-            int                octaves = 4,
-            float              lacunarity = 2.f,
-            float              gamma_noise_ratio = 0.5f,
-            float              noise_amp = 0.4f,
-            const Vec2<float> &noise_kw = {4.f, 4.f},
-            const Vec2<float> &ridge_noise_kw = {4.f, 1.2f},
-            float              ridge_angle_shift = 45.f,
-            float              ridge_noise_amp = 0.5f,
-            float              ridge_clamp_vmin = 0.f,
-            float              ridge_remap_vmin = 0.f,
-            bool               apply_elevation_mask = true,
-            bool               apply_ridge_mask = true,
-            float              mask_gamma = 0.4f,
-            const Array       *p_mask = nullptr,
-            const Vec4<float> &bbox = {0.f, 1.f, 0.f, 1.f});
+void strata(Array           &z,
+            float            angle,
+            float            slope,
+            float            gamma, // e.g 0.5f or 1.5f
+            uint             seed,
+            bool             linear_gamma = true,
+            float            kz = 1.f,
+            int              octaves = 4,
+            float            lacunarity = 2.f,
+            float            gamma_noise_ratio = 0.5f,
+            float            noise_amp = 0.4f,
+            const glm::vec2 &noise_kw = {4.f, 4.f},
+            bool             enable_ridge_noise = true,
+            const glm::vec2 &ridge_noise_kw = {4.f, 1.2f},
+            float            ridge_angle_shift = 45.f,
+            float            ridge_noise_amp = 0.5f,
+            float            ridge_clamp_vmin = 0.f,
+            float            ridge_remap_vmin = 0.f,
+            bool             apply_elevation_mask = true,
+            bool             apply_ridge_mask = true,
+            float            mask_gamma = 0.4f,
+            const Array     *p_mask = nullptr,
+            const glm::vec4 &bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
+ * @brief Applies procedural stratified cell displacement to a heightmap.
+ *
+ * Generates layered cell-like structures with optional directional distortion
+ * and noise-based perturbation.
+ *
+ * @param z                     Heightmap array to modify.
+ * @param kw                    Cell frequency (x,y).
+ * @param amp                   Displacement amplitude.
+ * @param seed                  Random seed.
+ * @param gamma                 Vertical shaping exponent.
+ * @param gamma_lateral         Lateral shaping exponent.
+ * @param angle                 Layer orientation angle (degrees).
+ * @param noise_amp             Amplitude of input distortion noise.
+ * @param absolute_displacement Use absolute instead of relative displacement.
+ * @param occurence_probability Probability of cell activation.
+ * @param p_noise_x             Optional X distortion field.
+ * @param p_noise_y             Optional Y distortion field.
+ * @param bbox                  Domain bounding box.
+ *
+ * **Example**
+ * @include ex_strata_cells.cpp
+ *
+ * **Result**
+ * @image html ex_strata_cells.png
+ */
+void strata_cells(Array       &z,
+                  glm::vec2    kw,
+                  float        amp,
+                  uint         seed,
+                  float        gamma = 0.5f,
+                  float        gamma_lateral = 0.4f,
+                  float        angle = 0.f,
+                  float        noise_amp = 0.5f,
+                  bool         absolute_displacement = true,
+                  float        occurence_probability = 0.5f,
+                  const Array *p_noise_x = nullptr,
+                  const Array *p_noise_y = nullptr,
+                  glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
+ * @brief Applies stratified cell displacement with optional masking.
+ *
+ * If `p_mask` is provided, the effect is blended with the original heightmap
+ * using the mask as interpolation weight.
+ *
+ * @param z                     Heightmap array to modify.
+ * @param kw                    Cell frequency (x,y).
+ * @param amp                   Displacement amplitude.
+ * @param seed                  Random seed.
+ * @param p_mask                Optional mask controlling spatial blending.
+ * @param gamma                 Vertical shaping exponent.
+ * @param gamma_lateral         Lateral shaping exponent.
+ * @param angle                 Layer orientation angle (degrees).
+ * @param noise_amp             Amplitude of input distortion noise.
+ * @param absolute_displacement Use absolute instead of relative displacement.
+ * @param occurence_probability Probability of cell activation.
+ * @param p_noise_x             Optional X distortion field.
+ * @param p_noise_y             Optional Y distortion field.
+ * @param bbox                  Domain bounding box.
+ *
+ * **Example**
+ * @include ex_strata_cells.cpp
+ *
+ * **Result**
+ * @image html ex_strata_cells.png
+ */
+void strata_cells(Array       &z,
+                  glm::vec2    kw,
+                  float        amp,
+                  uint         seed,
+                  const Array *p_mask,
+                  float        gamma = 0.5f,
+                  float        gamma_lateral = 0.4f,
+                  float        angle = 0.f,
+                  float        noise_amp = 0.5f,
+                  bool         absolute_displacement = true,
+                  float        occurence_probability = 0.5f,
+                  const Array *p_noise_x = nullptr,
+                  const Array *p_noise_y = nullptr,
+                  glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
+ * @brief Applies multi-octave (fBm) stratified cell displacement.
+ *
+ * Accumulates several scaled `strata_cells` layers using persistence and
+ * lacunarity. Can optionally generate internal distortion noise.
+ *
+ * @param z                     Heightmap array to modify.
+ * @param kw                    Base cell frequency (x,y).
+ * @param amp                   Base displacement amplitude.
+ * @param seed                  Random seed.
+ * @param gamma                 Vertical shaping exponent.
+ * @param gamma_lateral         Lateral shaping exponent.
+ * @param angle                 Layer orientation angle (degrees).
+ * @param enable_default_noise  Generate internal distortion noise.
+ * @param default_noise_amp     Amplitude of generated noise.
+ * @param absolute_displacement Use absolute instead of relative displacement.
+ * @param occurence_probability Probability of cell activation.
+ * @param octaves               Number of fBm layers.
+ * @param persistence           Amplitude multiplier per octave.
+ * @param lacunarity            Frequency multiplier per octave.
+ * @param p_noise_x             Optional X distortion field.
+ * @param p_noise_y             Optional Y distortion field.
+ * @param bbox                  Domain bounding box.
+ *
+ * **Example**
+ * @include ex_strata_cells.cpp
+ *
+ * **Result**
+ * @image html ex_strata_cells.png
+ */
+void strata_cells_fbm(Array       &z,
+                      glm::vec2    kw,
+                      float        amp,
+                      uint         seed,
+                      float        gamma = 0.5f,
+                      float        gamma_lateral = 0.4f,
+                      float        angle = 0.f,
+                      bool         enable_default_noise = true,
+                      float        default_noise_amp = 0.05f,
+                      bool         absolute_displacement = true,
+                      float        occurence_probability = 0.5f,
+                      int          octaves = 8,
+                      float        persistence = 0.4f,
+                      float        lacunarity = 2.2f,
+                      const Array *p_noise_x = nullptr,
+                      const Array *p_noise_y = nullptr,
+                      glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
+ * @brief Applies masked multi-octave stratified cell displacement.
+ *
+ * Works like `strata_cells_fbm` but blends the result with the original
+ * heightmap using `p_mask`.
+ *
+ * @param z                     Heightmap array to modify.
+ * @param kw                    Base cell frequency (x,y).
+ * @param amp                   Base displacement amplitude.
+ * @param seed                  Random seed.
+ * @param p_mask                Optional mask controlling spatial blending.
+ * @param gamma                 Vertical shaping exponent.
+ * @param gamma_lateral         Lateral shaping exponent.
+ * @param angle                 Layer orientation angle (degrees).
+ * @param enable_default_noise  Generate internal distortion noise.
+ * @param default_noise_amp     Amplitude of generated noise.
+ * @param absolute_displacement Use absolute instead of relative displacement.
+ * @param occurence_probability Probability of cell activation.
+ * @param octaves               Number of fBm layers.
+ * @param persistence           Amplitude multiplier per octave.
+ * @param lacunarity            Frequency multiplier per octave.
+ * @param p_noise_x             Optional X distortion field.
+ * @param p_noise_y             Optional Y distortion field.
+ * @param bbox                  Domain bounding box.
+ *
+ * **Example**
+ * @include ex_strata_cells.cpp
+ *
+ * **Result**
+ * @image html ex_strata_cells.png
+ */
+void strata_cells_fbm(Array       &z,
+                      glm::vec2    kw,
+                      float        amp,
+                      uint         seed,
+                      const Array *p_mask,
+                      float        gamma = 0.5f,
+                      float        gamma_lateral = 0.4f,
+                      float        angle = 0.f,
+                      bool         enable_default_noise = true,
+                      float        default_noise_amp = 0.05f,
+                      bool         absolute_displacement = true,
+                      float        occurence_probability = 0.5f,
+                      int          octaves = 8,
+                      float        persistence = 0.4f,
+                      float        lacunarity = 2.2f,
+                      const Array *p_noise_x = nullptr,
+                      const Array *p_noise_y = nullptr,
+                      glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
+ * @brief Applies a terrace (stratification) filter to a heightmap.
+ *
+ * Quantizes elevation into kz strata levels and shapes terrace transitions
+ * using a gamma profile. Optional noise can modulate the profile.
+ *
+ * @param z                 Heightmap modified in place.
+ * @param gamma             Terrace profile exponent (e.g. 0.5 = sharper, 1.5 =
+ *                          smoother).
+ * @param seed              Random seed used for profile variation.
+ * @param kz                Number of strata levels.
+ * @param linear_gamma      If true, uses linear terrace transitions.
+ * @param gamma_noise_ratio Influence of noise on the terrace profile.
+ * @param p_noise           Optional noise map for profile modulation.
+ *
+ * **Example**
+ * @include ex_strata_terrace.cpp
+ *
+ * **Result**
+ * @image html ex_strata_terrace.png
+ */
+void strata_terrace(Array       &z,
+                    float        gamma, // e.g 0.5f or 1.5f
+                    uint         seed,
+                    float        kz = 4.f, // 4-layers
+                    bool         linear_gamma = true,
+                    float        gamma_noise_ratio = 0.5f,
+                    const Array *p_noise = nullptr);
+
+/**
+ * @brief Applies a masked terrace (stratification) filter to a heightmap.
+ *
+ * Same as strata_terrace(), but only affects regions defined by p_mask.
+ *
+ * @param z                 Heightmap modified in place.
+ * @param gamma             Terrace profile exponent.
+ * @param seed              Random seed used for profile variation.
+ * @param p_mask            Optional mask controlling where terraces are
+ *                          applied.
+ * @param kz                Number of strata levels.
+ * @param linear_gamma      If true, uses linear terrace transitions.
+ * @param gamma_noise_ratio Influence of noise on the terrace profile.
+ * @param p_noise           Optional noise map for profile modulation.
+ *
+ * **Example**
+ * @include ex_strata_terrace.cpp
+ *
+ * **Result**
+ * @image html ex_strata_terrace.png
+ */
+void strata_terrace(Array       &z,
+                    float        gamma, // e.g 0.5f or 1.5f
+                    uint         seed,
+                    const Array *p_mask,
+                    float        kz = 4.f, // 4-layers
+                    bool         linear_gamma = true,
+                    float        gamma_noise_ratio = 0.5f,
+                    const Array *p_noise = nullptr);
 
 /*! @brief See hmap::thermal */
 void thermal(Array       &z,
@@ -1495,6 +2023,10 @@ void thermal_auto_bedrock(Array &z,
                           float,
                           int    iterations = 10,
                           Array *p_deposition_map = nullptr);
+
+/*! @brief See hmap::thermal_olsen */
+void thermal_olsen(Array &z, const Array &talus, int iterations);
+void thermal_olsen(Array &z, Array *p_mask, const Array &talus, int iterations);
 
 /**
  * @brief Apply thermal weathering erosion to give a scree like effect.
@@ -1569,8 +2101,6 @@ void thermal_ridge(Array       &z,
  * @param[in]  iterations       The number of erosion iterations to apply
  *                              (default:
  * 10).
- * @param[in]  talus_constraint Whether to enforce a constraint on the talus
- *                              slope (default: true).
  * @param[out] p_deposition_map Optional pointer to an array that stores the
  *                              deposited material per cell.
  */
@@ -1578,7 +2108,6 @@ void thermal_scree(Array       &z,
                    const Array &talus,
                    const Array &zmax,
                    int          iterations = 10,
-                   bool         talus_constraint = true,
                    Array       *p_deposition_map = nullptr);
 
 void thermal_scree(Array       &z,
@@ -1586,7 +2115,95 @@ void thermal_scree(Array       &z,
                    const Array &talus,
                    const Array &zmax,
                    int          iterations = 10,
-                   bool         talus_constraint = true,
                    Array       *p_deposition_map = nullptr); ///< @overload
+
+/**
+ * @brief Fill valleys using thermal scree deposition and height-based blending.
+ *
+ * Applies an erosion-based fill to valleys, then blends the result with the
+ * original heightmap using a gamma-shaped mask derived from elevation.
+ *
+ * @param z          Heightmap to modify in place.
+ * @param talus      Talus angle map controlling scree deposition.
+ * @param iterations Number of erosion iterations.
+ * @param gamma      Gamma applied to the height-based mixing mask.
+ * @param ratio      Blend ratio controlling valley influence.
+ * @param zmin       Minimum height for normalization (auto if zmax <= zmin).
+ * @param zmax       Maximum height for normalization (auto if zmax <= zmin).
+ *
+ *  **Example**
+ * @include ex_valley_fill.cpp
+ *
+ * **Result**
+ * @image html ex_valley_fill.png
+ */
+void valley_fill(Array       &z,
+                 const Array &talus,
+                 int          iterations = 100,
+                 float        gamma = 2.f,
+                 float        ratio = 0.8f,
+                 float        zmin = 0.f,
+                 float        zmax = 0.f,
+                 float        elevation_max_ratio = 1.f,
+                 bool         preserve_elevation_range = true,
+                 const Array *p_noise = nullptr,
+                 Array       *p_deposition_map = nullptr);
+
+void valley_fill(Array       &z,
+                 const Array *p_mask,
+                 const Array &talus,
+                 int          iterations = 100,
+                 float        gamma = 2.f,
+                 float        ratio = 0.8f,
+                 float        zmin = 0.f,
+                 float        zmax = 0.f,
+                 float        elevation_max_ratio = 1.f,
+                 bool         preserve_elevation_range = true,
+                 const Array *p_noise = nullptr,
+                 Array       *p_deposition_map = nullptr);
+
+/**
+ * @brief Carves watershed ridges using basin-wise distance transforms.
+ *
+ * Drainage basins are computed using D8 flow routing. For each basin, a
+ * distance transform to the basin boundary is evaluated and used to lower
+ * elevations near watershed divides, forming ridge lines.
+ *
+ * @param  z            Input elevation field.
+ * @param  amplitude    Ridge carving strength.
+ * @param  ir           Smoothing.
+ * @param  edt_exponent Exponent applied to the distance field to control ridge
+ *                      sharpness.
+ *
+ * @return              Elevation field with watershed ridges emphasized.
+ *
+ * **Example**
+ * @include ex_watershed_ridge.cpp
+ *
+ * **Result**
+ * @image html ex_watershed_ridge.png
+ */
+Array watershed_ridge(
+    const Array        &z,
+    float               amplitude = 0.2f,
+    float               width = 32.f, // pixels
+    float               edt_exponent = 0.5f,
+    int                 prefilter_ir = 0,
+    FlowDirectionMethod fd_method = FlowDirectionMethod::FDM_D8,
+    const Array        *p_noise_x = nullptr,
+    const Array        *p_noise_y = nullptr,
+    const Array        *p_scaling = nullptr);
+
+Array watershed_ridge(
+    const Array        &z,
+    const Array        *p_mask,
+    float               amplitude = 0.2f,
+    float               width = 32.f,
+    float               edt_exponent = 0.5f,
+    int                 prefilter_ir = 0,
+    FlowDirectionMethod fd_method = FlowDirectionMethod::FDM_D8,
+    const Array        *p_noise_x = nullptr,
+    const Array        *p_noise_y = nullptr,
+    const Array        *p_scaling = nullptr);
 
 } // namespace hmap::gpu

@@ -16,6 +16,7 @@
 #pragma once
 
 #include "highmap/array.hpp"
+#include "highmap/primitives.hpp"
 
 namespace hmap
 {
@@ -28,15 +29,24 @@ namespace hmap
  * used in a lattice-based system. These neighborhoods determine how cells or
  * nodes are connected to their immediate surroundings.
  */
+// clang-format off
 enum neighborhood : int
 {
-  MOORE,       ///< Moore neighborhood: includes all eight surrounding cells.
-  VON_NEUMANN, ///< Von Neumann neighborhood: includes only the four
-  // orthogonal
-  ///< neighbors (N, S, E, W).
-  CROSS ///< Cross-shaped neighborhood: includes only the diagonal
-        // neighbors.
+	MOORE, ///< Moore neighborhood: includes all eight surrounding cells.
+	VON_NEUMANN, ///< Von Neumann neighborhood: includes only the four
+	// orthogonal neighbors (N, S, E, W).
+	CROSS  ///< Cross-shaped neighborhood: includes only the diagonal
+	// neighbors.
 };
+// clang-format on
+
+Array bulkify(const Array         &z,
+              const PrimitiveType &primitive_type,
+              float                amp = 1.f,
+              const Array         *p_noise_x = nullptr,
+              const Array         *p_noise_y = nullptr,
+              glm::vec2            center = {0.5f, 0.5f},
+              glm::vec4            bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief Applies diffusion retargeting by detecting local maxima and adjusting
@@ -69,6 +79,11 @@ enum neighborhood : int
 Array diffusion_retargeting(const Array &array_before,
                             const Array &array_after,
                             int          ir);
+
+Array diffusion_retargeting(const Array &array_before,
+                            const Array &array_after,
+                            const Array &mask,
+                            int          iterations);
 
 /**
  * @brief Applies a directional blur to a 2D array based on a spatially varying
@@ -277,10 +292,29 @@ void expand_directional(Array       &array,
                         float        anisotropy = 1.f,
                         const Array *p_mask = nullptr);
 
+/**
+ * @brief Expand heights outward from a masked region with a talus slope limit.
+ *
+ * Starting from the non-zero cells of `mask`, heights are propagated outward
+ * using a min-heap so lower cells are processed first. Neighbor heights are
+ * computed from the source height plus `dist * talus`, optionally perturbed
+ * with noise.
+ *
+ * Intuition: grows terrain outward from seed cells, filling empty space while
+ * respecting a maximum slope.
+ *
+ * @param z           Height array modified in-place.
+ * @param mask        Initial region to expand from.
+ * @param talus       Maximum slope per unit distance.
+ * @param seed        RNG seed for noise.
+ * @param ir          Neighborhood radius.
+ * @param noise_ratio Amplitude of slope noise.
+ */
 void expand_talus(Array       &z,
                   const Array &mask,
                   float        talus,
                   uint         seed,
+                  int          ir = 1,
                   float        noise_ratio = 0.2f);
 
 /**
@@ -315,12 +349,15 @@ Array faceted(const Array &array,
               const Array *p_noise_y = nullptr);
 
 /**
- * @brief Modifies a terrain array by filling it with talus slopes.
+ * @brief Enforce a talus slope constraint on a height field.
  *
- * This function applies a talus formation algorithm to an existing terrain
- * array, adjusting the heights to create natural-looking slopes. The process
- * involves random perturbations influenced by noise to simulate erosion or
- * sediment transport.
+ * Cells are processed from highest to lowest using a max-heap. Each cell may
+ * raise neighboring cells so that the slope relative to the current cell does
+ * not exceed the local talus value.
+ *
+ * Intuition: stabilizes an existing terrain by redistributing height so slopes
+ * do not exceed the talus limit (similar to talus erosion / relaxation but by
+ * adding material).
  *
  * @param z           A reference to the 2D array representing the terrain
  *                    heights. The function modifies this array in place to
@@ -345,7 +382,19 @@ Array faceted(const Array &array,
  *
  * @see               {@link thermal_scree}, {@link thermal_scree_fast}
  */
-void fill_talus(Array &z, float talus, uint seed, float noise_ratio = 0.2f);
+void fill_talus(Array       &z,
+                float        talus,
+                uint         seed,
+                int          ir = 1,
+                float        noise_ratio = 0.2f,
+                const Array *p_seed_mask = nullptr);
+
+void fill_talus(Array       &z,
+                const Array &talus,
+                uint         seed,
+                int          ir = 1,
+                float        noise_ratio = 0.2f,
+                const Array *p_seed_mask = nullptr);
 
 /**
  * @brief Fill terrain values with a given downslope talus, optimized using a
@@ -384,11 +433,12 @@ void fill_talus(Array &z, float talus, uint seed, float noise_ratio = 0.2f);
  *
  * @see                {@link thermal_scree}, {@link thermal_scree_fast}
  */
-void fill_talus_fast(Array    &z,
-                     Vec2<int> shape_coarse,
-                     float     talus,
-                     uint      seed,
-                     float     noise_ratio = 0.2f);
+void fill_talus_fast(Array     &z,
+                     glm::ivec2 shape_coarse,
+                     float      talus,
+                     uint       seed,
+                     int        ir = 1,
+                     float      noise_ratio = 0.2f);
 
 /**
  * @brief Apply a "folding" filter (successive absolute values) to the array
@@ -1449,19 +1499,18 @@ void recast_rocky_slopes(Array       &array,
                          float        kw,
                          float        gamma = 0.5f,
                          const Array *p_noise = nullptr,
-                         Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
+                         glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
 
-void recast_rocky_slopes(
-    Array       &array,
-    float        talus,
-    int          ir,
-    float        amplitude,
-    uint         seed,
-    float        kw,
-    const Array *p_mask,
-    float        gamma = 0.5f,
-    const Array *p_noise = nullptr,
-    Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f}); ///< @overload
+void recast_rocky_slopes(Array       &array,
+                         float        talus,
+                         int          ir,
+                         float        amplitude,
+                         uint         seed,
+                         float        kw,
+                         const Array *p_mask,
+                         float        gamma = 0.5f,
+                         const Array *p_noise = nullptr,
+                         glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f}); ///< @overload
 
 /**
  * @brief Transform heightmap to give a "cliff" like appearance.
@@ -2394,23 +2443,78 @@ void wrinkle(Array       &array,
              uint         seed = 1,
              int          octaves = 8,
              float        weight = 0.7f,
-             Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
+             glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
 
-void wrinkle(Array      &array,
-             float       wrinkle_amplitude,
-             float       wrinkle_angle = 0.f,
-             float       displacement_amplitude = 1.f,
-             int         ir = 0,
-             float       kw = 2.f,
-             uint        seed = 1,
-             int         octaves = 8,
-             float       weight = 0.7f,
-             Vec4<float> bbox = {0.f, 1.f, 0.f, 1.f}); ///< @overload
+void wrinkle(Array    &array,
+             float     wrinkle_amplitude,
+             float     wrinkle_angle = 0.f,
+             float     displacement_amplitude = 1.f,
+             int       ir = 0,
+             float     kw = 2.f,
+             uint      seed = 1,
+             int       octaves = 8,
+             float     weight = 0.7f,
+             glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f}); ///< @overload
 
 } // namespace hmap
 
 namespace hmap::gpu
 {
+
+/**
+ * @brief Apply a bilateral filter to an array.
+ *
+ * This function performs edge-preserving smoothing by combining a spatial
+ * kernel (2D) and a value-domain kernel (1D). The spatial kernel controls the
+ * influence of neighboring samples based on their position, while the value
+ * kernel weights samples according to their value difference.
+ *
+ * @param  array                  Input array to be filtered.
+ * @param  kernel2d               2D spatial kernel defining neighborhood
+ *                                weights.
+ * @param  kernel1d               1D kernel applied in the value domain.
+ * @param  kernel1d_value_scaling Scaling factor applied to value differences
+ *                                before sampling the 1D kernel.
+ *
+ * @return                        A new array containing the filtered result.
+ *
+ * **Example**
+ * @include ex_bilateral_filter.png
+ *
+ * **Result**
+ * @image html ex_bilateral_filter.png
+ */
+Array bilateral_filter(const Array &array,
+                       const Array &kernel2d,
+                       const Array &kernel1d,
+                       float        kernel1d_value_scaling);
+
+/**
+ * @brief Apply a bilateral filter to an array using a radius-based Gaussian
+ * kernel.
+ *
+ * This overload builds the spatial kernel implicitly from the given radius. The
+ * value-domain kernel behavior is controlled by the same scaling factor as the
+ * main overload.
+ *
+ * @param  array                  Input array to be filtered.
+ * @param  ir                     Radius of the spatial neighborhood.
+ * @param  kernel1d_value_scaling Scaling factor applied to value differences
+ *                                before computing value-domain weights.
+ *
+ * @return                        A new array containing the filtered result.
+ *
+ * @overload
+ *
+ * **Example**
+ * @include ex_bilateral_filter.png
+ *
+ * **Result**
+ * @image html ex_bilateral_filter.png
+ */
+Array bilateral_filter(const Array &array,
+                       int          ir,
+                       float        kernel1d_value_scaling); ///< @overload
 
 /*! @brief See hmap::expand */
 void expand(Array &array, int ir, int iterations = 1);
@@ -2488,6 +2592,37 @@ void normal_displacement(Array       &array,
 /*! @brief See hmap::plateau */
 void plateau(Array &array, const Array *p_mask, int ir, float factor);
 void plateau(Array &array, int ir, float factor); ///< @overload
+
+/**
+ * @brief Projects array values along a given direction using talus attenuation.
+ *
+ * Applies a directional propagation (D8 convention) where values decay with
+ * distance according to a talus coefficient. The computation is performed on
+ * the GPU using an OpenCL kernel.
+ *
+ * @param  array     Input 2D array.
+ * @param  talus     Talus coefficient controlling distance-based attenuation.
+ * @param  direction Propagation direction (D8 convention, range [0–7]).
+ *
+ * @return           A new Array containing the projected values.
+ *
+ * @note The array is temporarily shifted to non-negative values to ensure
+ * correctness of OpenCL atomic operations on floats.
+ *
+ * **Example**
+ * @include ex_project_talus_along_direction.png
+ *
+ * **Result**
+ * @image html ex_project_talus_along_direction.png
+ */
+Array project_talus_along_direction(const Array &array,
+                                    float        talus,
+                                    int          direction = 0);
+
+Array project_talus_along_direction(const Array &array,
+                                    float        talus,
+                                    const Array *p_mask,
+                                    int          direction = 0);
 
 /*! @brief See hmap::shrink */
 void shrink(Array &array, int ir, int iterations = 1);

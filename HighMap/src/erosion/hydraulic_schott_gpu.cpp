@@ -31,7 +31,7 @@ void hydraulic_schott(Array       &z,
 
   auto run = clwrapper::Run("hydraulic_schott");
 
-  Vec2<int> shape = z.shape;
+  glm::ivec2 shape = z.shape;
 
   run.bind_imagef("z", z.vector, shape.x, shape.y);
   run.bind_imagef("flow", flow.vector, shape.x, shape.y);
@@ -120,6 +120,50 @@ void hydraulic_schott(Array       &z,
                      p_flow);
     z = lerp(z, z_f, *(p_mask));
   }
+}
+
+void hydraulic_schott_erosion(Array       &z,
+                              int          iterations,
+                              float        c_erosion,
+                              float        flow_acc_exponent,
+                              float        flow_routing_exponent,
+                              const Array *p_moisture_map,
+                              Array       *p_flow)
+{
+  Array flow = p_flow ? *p_flow : Array(z.shape, 1.f);
+  Array moisture_map = p_moisture_map ? *p_moisture_map : Array(z.shape, 1.f);
+
+  auto run = clwrapper::Run("hydraulic_schott_erosion");
+
+  glm::ivec2 shape = z.shape;
+
+  run.bind_imagef("z", z.vector, shape.x, shape.y);
+  run.bind_imagef("flow", flow.vector, shape.x, shape.y);
+  run.bind_imagef("moisture_map", moisture_map.vector, shape.x, shape.y);
+
+  run.bind_imagef("z_new", z.vector, shape.x, shape.y, true);
+  run.bind_imagef("flow_new", flow.vector, shape.x, shape.y, true);
+
+  run.bind_arguments(shape.x,
+                     shape.y,
+                     c_erosion,
+                     flow_acc_exponent,
+                     flow_routing_exponent);
+
+  for (int it = 0; it < iterations; it++)
+  {
+    run.execute({shape.x, shape.y});
+
+    // z <- z_new
+    run.read_imagef("z_new");
+    run.read_imagef("flow_new");
+
+    // to device
+    run.write_imagef("z");
+    run.write_imagef("flow");
+  }
+
+  if (p_flow) *p_flow = flow;
 }
 
 } // namespace hmap::gpu

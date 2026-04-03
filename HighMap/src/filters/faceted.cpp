@@ -102,10 +102,9 @@ Array faceted(const Array &array,
                                   x,
                                   y,
                                   value,
-                                  InterpolationMethod2D::DELAUNAY,
+                                  InterpolationMethod2D::ITP2D_DELAUNAY,
                                   p_noise_x,
                                   p_noise_y,
-                                  nullptr,
                                   {0.f, 1.f, 0.f, 1.f});
 
   return array_out;

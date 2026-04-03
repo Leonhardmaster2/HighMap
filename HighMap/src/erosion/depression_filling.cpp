@@ -5,26 +5,17 @@
 
 #include "highmap/array.hpp"
 #include "highmap/boundary.hpp"
+#include "highmap/erosion.hpp"
 #include "highmap/math.hpp"
-
-// neighbor pattern search
-// 6 2 8
-// 1 . 4
-// 5 3 7
-// clang-format off
-#define DI {-1, 0, 0, 1, -1, -1, 1, 1}
-#define DJ {0, 1, -1, 0, -1, 1, -1, 1}
-#define C  {1.f, 1.f, 1.f, 1.f, M_SQRT2, M_SQRT2, M_SQRT2, M_SQRT2}
-// clang-format on
 
 namespace hmap
 {
 
 void depression_filling(Array &z, int iterations, float epsilon)
 {
-  std::vector<int>   di = DI;
-  std::vector<int>   dj = DJ;
-  std::vector<float> c = C;
+  std::vector<int>   di = HMAP_DI;
+  std::vector<int>   dj = HMAP_DJ;
+  std::vector<float> c = HMAP_CD;
   const uint         nb = di.size();
 
   Array z_new = z;

@@ -10,7 +10,7 @@
 namespace hmap::gpu
 {
 
-Array mountain_tibesti(Vec2<int>    shape,
+Array mountain_tibesti(glm::ivec2   shape,
                        uint         seed,
                        float        scale,
                        int          octaves,
@@ -22,18 +22,18 @@ Array mountain_tibesti(Vec2<int>    shape,
                        bool         add_deposition,
                        float        bulk_amp,
                        float        base_noise_amp,
-                       Vec2<float>  center,
+                       glm::vec2    center,
                        const Array *p_noise_x,
                        const Array *p_noise_y,
-                       Vec4<float>  bbox)
+                       glm::vec4    bbox)
 {
-  const float       persistence = 0.5f;
-  const float       lacunarity = 2.f;
-  const float       alpha = angle / 180.f * M_PI;
-  const float       half_width = 0.3f;
-  const Vec2<float> kw_base = Vec2<float>(peak_kw / scale, peak_kw / scale);
-  const Vec2<float> kw_noise4 = Vec2<float>(4.f / scale, 4.f / scale);
-  const Vec2<float> kw_noise2 = Vec2<float>(2.f / scale, 2.f / scale);
+  const float     persistence = 0.5f;
+  const float     lacunarity = 2.f;
+  const float     alpha = angle / 180.f * M_PI;
+  const float     half_width = 0.3f;
+  const glm::vec2 kw_base = glm::vec2(peak_kw / scale, peak_kw / scale);
+  const glm::vec2 kw_noise4 = glm::vec2(4.f / scale, 4.f / scale);
+  const glm::vec2 kw_noise2 = glm::vec2(2.f / scale, 2.f / scale);
 
   // prepare base noise used for displacements
   Array noise4 = gpu::noise_fbm(NoiseType::SIMPLEX2,

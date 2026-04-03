@@ -2,11 +2,11 @@
 
 int main(void)
 {
-  hmap::Vec2<int> shape = {256, 256};
-  int             seed = 1;
+  glm::ivec2 shape = {256, 256};
+  int        seed = 1;
 
-  hmap::Vec4<float> bbox = {0.2f, 0.8f, 0.2f, 0.8f};
-  hmap::Vec4<float> bbox_array = {0.f, 1.f, 0.f, 1.f};
+  glm::vec4 bbox = {0.2f, 0.8f, 0.2f, 0.8f};
+  glm::vec4 bbox_array = {0.f, 1.f, 0.f, 1.f};
 
   // create a cloud of points and convert it to a graph using Delaunay
   // triangulation

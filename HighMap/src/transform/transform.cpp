@@ -60,7 +60,7 @@ void rotate(Array &array, float angle, bool zoom_in, bool zero_padding)
 
   Array array_bf = generate_buffered_array(
       array,
-      Vec4<int>(nbuffer, nbuffer, nbuffer, nbuffer),
+      glm::ivec4(nbuffer, nbuffer, nbuffer, nbuffer),
       zero_padding);
 
   float xc = 0.5f * array.shape.x;
@@ -95,10 +95,10 @@ Array translate(const Array &array,
                 bool         periodic,
                 const Array *p_noise_x,
                 const Array *p_noise_y,
-                Vec4<float>  bbox)
+                glm::vec4    bbox)
 {
   hmap::ArrayFunction f = hmap::ArrayFunction(array,
-                                              Vec2<float>(1.f, 1.f),
+                                              glm::vec2(1.f, 1.f),
                                               periodic);
 
   Array dx_array = constant(array.shape, -dx);
@@ -123,7 +123,7 @@ Array translate(const Array &array,
 
 Array transpose(const Array &array)
 {
-  Array array_out = Array(Vec2<int>(array.shape.y, array.shape.x));
+  Array array_out = Array(glm::ivec2(array.shape.y, array.shape.x));
 
   for (int j = 0; j < array.shape.y; j++)
     for (int i = 0; i < array.shape.x; i++)
@@ -135,23 +135,23 @@ Array transpose(const Array &array)
 Array zoom(const Array &array,
            float        zoom_factor,
            bool         periodic,
-           Vec2<float>  center,
+           glm::vec2    center,
            const Array *p_noise_x,
            const Array *p_noise_y,
-           Vec4<float>  bbox)
+           glm::vec4    bbox)
 {
 
   hmap::ArrayFunction f = hmap::ArrayFunction(
       array,
-      Vec2<float>(1.f / zoom_factor, 1.f / zoom_factor),
+      glm::vec2(1.f / zoom_factor, 1.f / zoom_factor),
       periodic);
 
   Array array_out = Array(array.shape);
 
-  Vec4<float> bbox2 = {bbox.a + center.x,
-                       bbox.b + center.x,
-                       bbox.c + center.y,
-                       bbox.d + center.y};
+  glm::vec4 bbox2 = {bbox.x + center.x,
+                     bbox.y + center.x,
+                     bbox.z + center.y,
+                     bbox.w + center.y};
 
   fill_array_using_xy_function(array_out,
                                bbox2,

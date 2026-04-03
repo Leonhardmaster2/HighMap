@@ -2,9 +2,9 @@
 
 int main(void)
 {
-  hmap::Vec2<int>   shape = {256, 256};
-  hmap::Vec2<float> kw = {4.f, 4.f};
-  int               seed = 1;
+  glm::ivec2 shape = {256, 256};
+  glm::vec2  kw = {4.f, 4.f};
+  int        seed = 1;
 
   hmap::Array noise = hmap::noise_fbm(hmap::NoiseType::PERLIN,
                                       shape,
@@ -15,8 +15,10 @@ int main(void)
   hmap::remap(noise);
 
   // base path
-  hmap::Vec4<float> bbox = {1.f, 2.f, -0.5f, 0.5f};
-  hmap::Path path = hmap::Path(4, seed, bbox.adjust(0.2f, -0.2f, 0.2f, -0.2f));
+  glm::vec4  bbox = {1.f, 2.f, -0.5f, 0.5f};
+  hmap::Path path = hmap::Path(4,
+                               seed,
+                               hmap::adjust(bbox, 0.2f, -0.2f, 0.2f, -0.2f));
   path.reorder_nns();
   path.fractalize(8, seed);
   path.set_values_from_array(noise, bbox);

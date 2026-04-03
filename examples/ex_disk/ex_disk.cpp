@@ -2,18 +2,18 @@
 
 int main(void)
 {
-  hmap::Vec2<int> shape = {256, 256};
-  float           radius = 0.2f;
-  float           slope = 6.f;
+  glm::ivec2 shape = {256, 256};
+  float      radius = 0.2f;
+  float      slope = 6.f;
 
   hmap::Array z1 = hmap::disk(shape, radius, slope);
 
   z1.infos();
 
   // with control array
-  hmap::Vec2<float> kw = {4.f, 4.f};
-  int               seed = 1;
-  hmap::Array       ctrl_array = hmap::noise_fbm(hmap::NoiseType::PERLIN,
+  glm::vec2   kw = {4.f, 4.f};
+  int         seed = 1;
+  hmap::Array ctrl_array = hmap::noise_fbm(hmap::NoiseType::PERLIN,
                                            shape,
                                            kw,
                                            seed);

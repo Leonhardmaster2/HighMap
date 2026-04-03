@@ -2,38 +2,50 @@
 
 int main(void)
 {
-  hmap::Vec2<int>   shape = {256, 256};
-  hmap::Vec2<float> res = {4.f, 4.f};
-  int               nparticles = 50000;
-  int               seed = 1;
+  hmap::gpu::init_opencl();
 
-  hmap::Array z = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, res, seed);
-  hmap::remap(z);
+  glm::ivec2 shape = {256, 256};
+  shape = {1024, 1024};
+  glm::vec2 kw = {4.f, 4.f};
+  int       seed = 0;
 
-  auto z1 = z;
-  hmap::hydraulic_particle(z1, nparticles, seed);
+  hmap::Array z0 = hmap::noise_fbm(hmap::NoiseType::PERLIN,
+                                   shape,
+                                   kw,
+                                   seed,
+                                   8,
+                                   0.f);
+  z0 = hmap::bulkify(z0, hmap::PrimitiveType::PRIM_CONE_SMOOTH, 1.f);
+  hmap::remap(z0);
 
-  auto moisture_map = z * z;
-  auto z2 = z;
-  hmap::hydraulic_particle(z2, nparticles, seed, nullptr, &moisture_map);
+  int nparticles = int(0.5f * shape.x * shape.y);
 
-  auto        z3 = z;
-  hmap::Array erosion_map;
-  hmap::Array deposition_map;
-  hmap::hydraulic_particle(z3,
-                           nparticles,
-                           seed,
-                           nullptr,
-                           &moisture_map,
-                           &erosion_map,
-                           &deposition_map);
+  auto z1 = z0;
+  hmap::gpu::hydraulic_particle(z1, nparticles, seed);
 
-  hmap::export_banner_png("ex_hydraulic_particle0.png",
-                          {z, z1, z2},
+  auto z2 = z0;
+  auto zb2 = hmap::generate_bedrock(z2,
+                                    /* elevation_strength */ 0.05f,
+                                    /* slope_strength */ 0.f,
+                                    /* slope_limit */ 0.f);
+  hmap::gpu::hydraulic_particle(z2, nparticles, seed, &zb2);
+
+  auto z3 = z0;
+  auto zb3 = hmap::generate_bedrock(z3,
+                                    /* elevation_strength */ 0.f,
+                                    /* slope_strength */ 0.1f,
+                                    /* slope_limit */ 2.f / shape.x);
+  hmap::gpu::hydraulic_particle(z3, nparticles, seed, &zb3);
+
+  // --- output
+
+  z0.dump("out0.png");
+  z1.dump("out1.png");
+  z2.dump("out2.png");
+  z3.dump("out3.png");
+
+  hmap::export_banner_png("ex_hydraulic_particle.png",
+                          {z0, z1, z2, z3},
                           hmap::Cmap::TERRAIN,
                           true);
-
-  hmap::export_banner_png("ex_hydraulic_particle1.png",
-                          {erosion_map, deposition_map},
-                          hmap::Cmap::INFERNO);
 }

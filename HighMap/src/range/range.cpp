@@ -182,6 +182,44 @@ float clamp_min_smooth(float x, float vmin, float k)
   return std::max(x, vmin) + std::pow(h, 3) * k / 6.f;
 }
 
+void clamp_oblique_plane(Array    &array,
+                         float     vmax,
+                         float     angle,
+                         float     slope_value,
+                         bool      use_max_operator,
+                         float     k,
+                         glm::vec2 center,
+                         glm::vec4 bbox)
+{
+  // create plane
+  Array plane = slope(array.shape,
+                      angle,
+                      slope_value,
+                      /* p_ctrl_param  */ nullptr,
+                      /* p_noise_x  */ nullptr,
+                      /* p_noise_y  */ nullptr,
+                      /* p_stretching  */ nullptr,
+                      center,
+                      bbox);
+  plane += vmax;
+
+  // clamp operation
+  if (k == 0.f)
+  {
+    if (use_max_operator)
+      clamp_max(array, plane);
+    else
+      clamp_min(array, plane);
+  }
+  else
+  {
+    if (use_max_operator)
+      clamp_max_smooth(array, plane, k);
+    else
+      clamp_min_smooth(array, plane, k);
+  }
+}
+
 void clamp_smooth(Array &array, float vmin, float vmax, float k)
 {
   auto lambda = [&k, &vmin, &vmax](float x)

@@ -4,9 +4,9 @@ int main(void)
 {
   hmap::gpu::init_opencl();
 
-  hmap::Vec2<int>   shape = {256, 256};
-  hmap::Vec2<float> res = {2.f, 2.f};
-  int               seed = 1;
+  glm::ivec2 shape = {256, 256};
+  glm::vec2  res = {2.f, 2.f};
+  int        seed = 1;
 
   int nparticles = 10000;
 

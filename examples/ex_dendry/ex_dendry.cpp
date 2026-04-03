@@ -2,16 +2,16 @@
 
 int main(void)
 {
-  hmap::Vec2<int>   shape = {256, 256};
-  hmap::Vec2<float> kw = {2.f, 2.f};
-  int               seed = 1;
+  glm::ivec2 shape = {256, 256};
+  glm::vec2  kw = {2.f, 2.f};
+  int        seed = 1;
 
   // control function based on an array
   auto control_hmap = hmap::noise(hmap::NoiseType::PERLIN, shape, kw, seed);
   hmap::remap(control_hmap, 0.5f, 1.f);
 
-  hmap::Vec2<float> kd = {8.f, 8.f};
-  auto              z1 = hmap::dendry(shape, kd, seed, control_hmap);
+  glm::vec2 kd = {8.f, 8.f};
+  auto      z1 = hmap::dendry(shape, kd, seed, control_hmap);
   hmap::remap(z1);
 
   // array-based noise function can also be used

@@ -2,9 +2,9 @@
 
 int main(void)
 {
-  hmap::Vec2<int>   shape = {256, 256};
-  hmap::Vec2<float> res = {4.f, 4.f};
-  int               seed = 1;
+  glm::ivec2 shape = {256, 256};
+  glm::vec2  res = {4.f, 4.f};
+  int        seed = 1;
 
   hmap::Array z = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, res, seed);
 
@@ -19,8 +19,7 @@ int main(void)
   hmap::shrink(z2, ir);
 
   hmap::Array z3 = z;
-  hmap::Array kernel = hmap::lorentzian(
-      hmap::Vec2<int>(2 * ir + 1, 2 * ir + 1));
+  hmap::Array kernel = hmap::lorentzian(glm::ivec2(2 * ir + 1, 2 * ir + 1));
   hmap::shrink(z3, kernel);
 
   hmap::remap(z);

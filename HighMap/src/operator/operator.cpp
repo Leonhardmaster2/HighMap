@@ -69,7 +69,7 @@ void add_kernel_maximum_smooth(Array       &array,
 Array hstack(const Array &array1, const Array &array2) // friend function
 {
   Array array_out = Array(
-      Vec2<int>(array1.shape.x + array2.shape.x, array1.shape.y));
+      glm::ivec2(array1.shape.x + array2.shape.x, array1.shape.y));
 
   for (int j = 0; j < array1.shape.y; j++)
     for (int i = 0; i < array1.shape.x; i++)
@@ -82,10 +82,17 @@ Array hstack(const Array &array1, const Array &array2) // friend function
   return array_out;
 }
 
+void swap(Array &a, Array &b)
+{
+  for (int j = 0; j < a.shape.y; j++)
+    for (int i = 0; i < a.shape.x; i++)
+      std::swap(a(i, j), b(i, j));
+}
+
 Array vstack(const Array &array1, const Array &array2) // friend function
 {
   Array array_out = Array(
-      Vec2<int>(array1.shape.x, array1.shape.y + array2.shape.y));
+      glm::ivec2(array1.shape.x, array1.shape.y + array2.shape.y));
 
   for (int i = 0; i < array1.shape.x; i++)
   {

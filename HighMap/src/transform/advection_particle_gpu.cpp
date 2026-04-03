@@ -3,7 +3,7 @@
  * this software. */
 #include "highmap/filters.hpp"
 #include "highmap/gradient.hpp"
-#include "highmap/hydrology.hpp"
+#include "highmap/hydrology/hydrology.hpp"
 #include "highmap/math.hpp"
 #include "highmap/opencl/gpu_opencl.hpp"
 #include "highmap/range.hpp"
@@ -92,7 +92,7 @@ Array advection_particle(const Array &dx,
 {
   auto run = clwrapper::Run("advection_particle");
 
-  Vec2<int> shape = dx.shape;
+  glm::ivec2 shape = dx.shape;
 
   Array out(shape);
   Array count(shape);
@@ -130,6 +130,7 @@ Array advection_particle(const Array &dx,
       {
         out(i, j) += advected_field(i, j);
         out(i, j) /= (count(i, j) + 1.f);
+        out(i, j) = std::clamp(out(i, j), 0.f, 1.f);
       }
       else
       {

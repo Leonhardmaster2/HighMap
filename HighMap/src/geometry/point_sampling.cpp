@@ -7,28 +7,28 @@
 namespace hmap
 {
 
-size_t helper_estimate_count(const Vec4<float> &bbox, float distance)
+size_t helper_estimate_count(const glm::vec4 &bbox, float distance)
 {
-  size_t count = static_cast<size_t>(2.f * (bbox.b - bbox.a) / distance *
-                                     (bbox.d - bbox.c) / distance);
+  size_t count = static_cast<size_t>(2.f * (bbox.y - bbox.x) / distance *
+                                     (bbox.w - bbox.z) / distance);
   return count;
 }
 
-std::array<std::pair<float, float>, 2> bbox_to_ranges2d(const Vec4<float> &bbox)
+std::array<std::pair<float, float>, 2> bbox_to_ranges2d(const glm::vec4 &bbox)
 {
   std::array<std::pair<float, float>, 2> ranges = {
-      std::make_pair(bbox.a, bbox.b),
-      std::make_pair(bbox.c, bbox.d)};
+      std::make_pair(bbox.x, bbox.y),
+      std::make_pair(bbox.z, bbox.w)};
   return ranges;
 }
 
 std::function<float(const ps::Point<float, 2> &)>
-make_pointwise_function_from_array(const Array &array, const Vec4<float> &bbox)
+make_pointwise_function_from_array(const Array &array, const glm::vec4 &bbox)
 {
   return [&array, &bbox](const ps::Point<float, 2> &p) -> float
   {
-    float x = (p[0] - bbox.a) / (bbox.b - bbox.a);
-    float y = (p[1] - bbox.c) / (bbox.d - bbox.c);
+    float x = (p[0] - bbox.x) / (bbox.y - bbox.x);
+    float y = (p[1] - bbox.z) / (bbox.w - bbox.z);
 
     x = std::clamp(x, 0.f, 1.f);
     y = std::clamp(y, 0.f, 1.f);
@@ -49,7 +49,7 @@ std::array<std::vector<float>, 2> random_points(
     size_t                     count,
     uint                       seed,
     const PointSamplingMethod &method,
-    const Vec4<float>         &bbox)
+    const glm::vec4           &bbox)
 {
   std::vector<ps::Point<float, 2>> points;
   auto                             ranges = bbox_to_ranges2d(bbox);
@@ -88,7 +88,7 @@ std::array<std::vector<float>, 2> random_points(
 std::array<std::vector<float>, 2> random_points_density(size_t       count,
                                                         const Array &density,
                                                         uint         seed,
-                                                        const Vec4<float> &bbox)
+                                                        const glm::vec4 &bbox)
 {
   auto ranges = bbox_to_ranges2d(bbox);
   auto density_fct = make_pointwise_function_from_array(density, bbox);
@@ -100,10 +100,9 @@ std::array<std::vector<float>, 2> random_points_density(size_t       count,
   return ps::split_by_dimension(points);
 }
 
-std::array<std::vector<float>, 2> random_points_distance(
-    float              min_dist,
-    uint               seed,
-    const Vec4<float> &bbox)
+std::array<std::vector<float>, 2> random_points_distance(float min_dist,
+                                                         uint  seed,
+                                                         const glm::vec4 &bbox)
 {
   auto   ranges = bbox_to_ranges2d(bbox);
   size_t count = helper_estimate_count(bbox, min_dist);
@@ -115,12 +114,11 @@ std::array<std::vector<float>, 2> random_points_distance(
   return ps::split_by_dimension(points);
 }
 
-std::array<std::vector<float>, 2> random_points_distance(
-    float              min_dist,
-    float              max_dist,
-    const Array       &density,
-    uint               seed,
-    const Vec4<float> &bbox)
+std::array<std::vector<float>, 2> random_points_distance(float        min_dist,
+                                                         float        max_dist,
+                                                         const Array &density,
+                                                         uint         seed,
+                                                         const glm::vec4 &bbox)
 {
   auto ranges = bbox_to_ranges2d(bbox);
 
@@ -141,11 +139,11 @@ std::array<std::vector<float>, 2> random_points_distance(
 }
 
 std::array<std::vector<float>, 2> random_points_distance_power_law(
-    float              dist_min,
-    float              dist_max,
-    float              alpha,
-    uint               seed,
-    const Vec4<float> &bbox)
+    float            dist_min,
+    float            dist_max,
+    float            alpha,
+    uint             seed,
+    const glm::vec4 &bbox)
 {
   auto   ranges = bbox_to_ranges2d(bbox);
   size_t count = helper_estimate_count(bbox, dist_min);
@@ -160,11 +158,11 @@ std::array<std::vector<float>, 2> random_points_distance_power_law(
 }
 
 std::array<std::vector<float>, 2> random_points_distance_weibull(
-    float              dist_min,
-    float              lambda,
-    float              k,
-    uint               seed,
-    const Vec4<float> &bbox)
+    float            dist_min,
+    float            lambda,
+    float            k,
+    uint             seed,
+    const glm::vec4 &bbox)
 {
   auto   ranges = bbox_to_ranges2d(bbox);
   size_t count = helper_estimate_count(bbox, dist_min);
@@ -179,11 +177,11 @@ std::array<std::vector<float>, 2> random_points_distance_weibull(
 }
 
 std::array<std::vector<float>, 2> random_points_jittered(
-    size_t                   count,
-    const hmap::Vec2<float> &jitter_amount,
-    const hmap::Vec2<float> &stagger_ratio,
-    uint                     seed,
-    const Vec4<float>       &bbox)
+    size_t           count,
+    const glm::vec2 &jitter_amount,
+    const glm::vec2 &stagger_ratio,
+    uint             seed,
+    const glm::vec4 &bbox)
 {
   auto                 ranges = bbox_to_ranges2d(bbox);
   std::array<float, 2> jt = {jitter_amount.x, jitter_amount.y};

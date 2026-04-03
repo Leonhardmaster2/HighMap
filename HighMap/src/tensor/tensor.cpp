@@ -11,42 +11,45 @@
 namespace hmap
 {
 
-Tensor::Tensor(Vec3<int> shape) : shape(shape)
+Tensor::Tensor(glm::ivec3 shape) : shape(shape)
 {
   this->vector.clear();
   this->vector.resize(shape.x * shape.y * shape.z);
 }
 
-Tensor::Tensor(Vec2<int> shape_xy, int shape_z)
+Tensor::Tensor(glm::ivec2 shape_xy, int shape_z)
 {
   this->shape = {shape_xy.x, shape_xy.y, shape_z};
   this->vector.clear();
   this->vector.resize(shape.x * shape.y * shape.z);
 }
 
-Tensor::Tensor(const std::string &fname)
+Tensor::Tensor(const std::string &fname, bool flip_j)
 {
   cv::Mat mat = cv::imread(fname, cv::IMREAD_COLOR);
   cv::cvtColor(mat, mat, cv::COLOR_BGR2RGB);
   mat.convertTo(mat, CV_32FC3, 1.f / 255.f);
 
   // RGBA image
-  *this = Tensor(Vec2<int>(mat.cols, mat.rows), 4);
+  *this = Tensor(glm::ivec2(mat.cols, mat.rows), 4);
 
   // fill tensor
   for (int j = 0; j < shape.y; j++)
+  {
+    int jj = flip_j ? (shape.y - 1 - j) : j;
     for (int i = 0; i < shape.x; i++)
     {
       cv::Vec3f pixel = mat.at<cv::Vec3f>(j, i);
 
       // assign RGB values to the tensor
-      (*this)(i, j, 0) = pixel[0]; // red
-      (*this)(i, j, 1) = pixel[1]; // green
-      (*this)(i, j, 2) = pixel[2]; // blue
+      (*this)(i, jj, 0) = pixel[0]; // red
+      (*this)(i, jj, 1) = pixel[1]; // green
+      (*this)(i, jj, 2) = pixel[2]; // blue
 
       // set alpha channel to 1.0
-      (*this)(i, j, 3) = 1.f;
+      (*this)(i, jj, 3) = 1.f;
     }
+  }
 }
 
 float &Tensor::operator()(int i, int j, int k)
@@ -61,7 +64,7 @@ const float &Tensor::operator()(int i, int j, int k) const ///< @overload
 
 Array Tensor::get_slice(int k) const
 {
-  Array out = Array(Vec2<int>(this->shape.x, this->shape.y));
+  Array out = Array(glm::ivec2(this->shape.x, this->shape.y));
 
   for (int j = 0; j < this->shape.y; j++)
     for (int i = 0; i < this->shape.x; i++)
@@ -93,7 +96,7 @@ void Tensor::remap(float vmin, float vmax)
       v = vmin;
 }
 
-Tensor Tensor::resample_to_shape_xy(Vec2<int> new_shape_xy)
+Tensor Tensor::resample_to_shape_xy(glm::ivec2 new_shape_xy)
 {
   Tensor out = Tensor(new_shape_xy, this->shape.z);
 
@@ -145,15 +148,25 @@ void Tensor::to_png(const std::string &fname, int depth)
   cv::imwrite(fname, mat);
 }
 
-std::vector<uint8_t> Tensor::to_img_8bit()
+std::vector<uint8_t> Tensor::to_img_8bit(bool flip_y)
 {
   std::vector<uint8_t> vec;
   vec.reserve(this->vector.size());
 
-  for (int j = this->shape.y - 1; j >= 0; j--)
-    for (int i = 0; i < this->shape.x; i++)
-      for (int k = 0; k < this->shape.z; k++)
-        vec.push_back(static_cast<uint8_t>(255.f * (*this)(i, j, k)));
+  if (flip_y)
+  {
+    for (int j = this->shape.y - 1; j >= 0; j--)
+      for (int i = 0; i < this->shape.x; i++)
+        for (int k = 0; k < this->shape.z; k++)
+          vec.push_back(static_cast<uint8_t>(255.f * (*this)(i, j, k)));
+  }
+  else
+  {
+    for (int j = 0; j < this->shape.y; ++j)
+      for (int i = 0; i < this->shape.x; i++)
+        for (int k = 0; k < this->shape.z; k++)
+          vec.push_back(static_cast<uint8_t>(255.f * (*this)(i, j, k)));
+  }
 
   return vec;
 }

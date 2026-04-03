@@ -11,13 +11,13 @@
 namespace hmap
 {
 
-Array diffusion_limited_aggregation(Vec2<int> shape,
-                                    float     scale,
-                                    uint      seed,
-                                    float     seeding_radius,
-                                    float     seeding_outer_radius_ratio,
-                                    float     slope,
-                                    float     noise_ratio)
+Array diffusion_limited_aggregation(glm::ivec2 shape,
+                                    float      scale,
+                                    uint       seed,
+                                    float      seeding_radius,
+                                    float      seeding_outer_radius_ratio,
+                                    float      slope,
+                                    float      noise_ratio)
 {
   std::mt19937                          gen(seed);
   std::uniform_real_distribution<float> dis(0.f, 1.f);
@@ -29,8 +29,8 @@ Array diffusion_limited_aggregation(Vec2<int> shape,
   // --- work on a grid with a resolution defined by the 'scale'
   int ncells = std::max(1, (int)(1.f / scale));
 
-  hmap::Vec2<int> shape_wrk = {ncells, ncells};
-  Array           wrk = Array(shape_wrk);
+  glm::ivec2 shape_wrk = {ncells, ncells};
+  Array      wrk = Array(shape_wrk);
 
   int   nwalkers = ncells * ncells;
   float ratio = std::pow(0.01f, 1.f / ncells);

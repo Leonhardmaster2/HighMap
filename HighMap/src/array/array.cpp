@@ -16,23 +16,23 @@ Array::Array()
 {
 }
 
-Array::Array(Vec2<int> shape) : shape(shape)
+Array::Array(glm::ivec2 shape) : shape(shape)
 {
   this->vector.resize(this->shape.x * this->shape.y);
 }
 
-Array::Array(Vec2<int> shape, float value) : shape(shape)
+Array::Array(glm::ivec2 shape, float value) : shape(shape)
 {
   this->vector.resize(this->shape.x * this->shape.y);
   std::fill(this->vector.begin(), this->vector.end(), value);
 }
 
-Array::Array(const std::string &filename)
+Array::Array(const std::string &filename, bool flip_j)
 {
-  *this = read_to_array(filename);
+  *this = read_to_array(filename, flip_j);
 }
 
-Vec2<int> Array::get_shape()
+glm::ivec2 Array::get_shape()
 {
   return shape;
 }
@@ -42,7 +42,7 @@ std::vector<float> Array::get_vector() const
   return this->vector;
 }
 
-void Array::set_shape(Vec2<int> new_shape)
+void Array::set_shape(glm::ivec2 new_shape)
 {
   this->shape = new_shape;
   this->vector.resize(this->shape.x * this->shape.y);

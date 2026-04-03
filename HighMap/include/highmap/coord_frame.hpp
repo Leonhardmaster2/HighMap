@@ -15,7 +15,7 @@
 #include <vector>
 
 #include "highmap/algebra.hpp"
-#include "highmap/heightmap.hpp"
+#include "highmap/virtual_array/virtual_array.hpp"
 
 namespace hmap
 {
@@ -25,15 +25,15 @@ class CoordFrame
 public:
   CoordFrame();
 
-  CoordFrame(Vec2<float> origin, Vec2<float> size, float rotation_angle);
+  CoordFrame(glm::vec2 origin, glm::vec2 size, float rotation_angle);
 
   // Getters
-  Vec2<float> get_origin() const
+  glm::vec2 get_origin() const
   {
     return this->origin;
   }
 
-  Vec2<float> get_size() const
+  glm::vec2 get_size() const
   {
     return this->size;
   }
@@ -41,12 +41,12 @@ public:
   float get_rotation_angle() const;
 
   // Setters
-  void set_origin(Vec2<float> new_origin)
+  void set_origin(glm::vec2 new_origin)
   {
     this->origin = new_origin;
   }
 
-  void set_size(Vec2<float> new_size)
+  void set_size(glm::vec2 new_size)
   {
     this->size = new_size;
   }
@@ -55,33 +55,28 @@ public:
 
   // Methods
 
-  Vec4<float> compute_bounding_box() const;
+  glm::vec4 compute_bounding_box() const;
 
-  float get_heightmap_value_bilinear(const Heightmap &h,
-                                     float            gx,
-                                     float            gy,
-                                     float            fill_value = 0.f) const;
-
-  float get_heightmap_value_nearest(const Heightmap &h,
-                                    float            gx,
-                                    float            gy,
-                                    float            fill_value = 0.f) const;
+  float get_heightmap_value_bilinear(const VirtualArray &h,
+                                     float               gx,
+                                     float               gy,
+                                     float fill_value = 0.f) const;
 
   bool is_point_within(float gx, float gy) const;
 
-  Vec2<float> map_to_global_coords(float rx, float ry) const;
+  glm::vec2 map_to_global_coords(float rx, float ry) const;
 
   // relative coords always in [0, 1] x [0, 1] (unit square)
-  Vec2<float> map_to_relative_coords(float gx, float gy) const;
+  glm::vec2 map_to_relative_coords(float gx, float gy) const;
 
   float normalized_distance_to_edges(float gx, float gy) const;
 
   float normalized_shape_factor(float gx, float gy) const;
 
 private:
-  Vec2<float> origin;
-  Vec2<float> size;
-  float       rotation_angle;
+  glm::vec2 origin;
+  glm::vec2 size;
+  float     rotation_angle;
 
   float cos_angle;
   float sin_angle;

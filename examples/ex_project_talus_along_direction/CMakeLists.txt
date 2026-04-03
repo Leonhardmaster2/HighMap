@@ -1,0 +1,2 @@
+add_executable(ex_project_talus_along_direction ex_project_talus_along_direction.cpp)
+target_link_libraries(ex_project_talus_along_direction highmap)

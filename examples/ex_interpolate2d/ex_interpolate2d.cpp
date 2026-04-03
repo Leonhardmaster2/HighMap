@@ -1,13 +1,16 @@
 #include "highmap.hpp"
+#include "highmap/dbg/timer.hpp"
 
 int main(void)
 {
-  hmap::Vec2<int> shape = {256, 256};
-  int             seed = 1;
+  glm::ivec2 shape = {256, 256};
+  // shape = {1024, 1024};
+  int seed = 0;
 
-  hmap::Vec4<float> bbox = {-1.f, 0.f, 0.5f, 1.5f};
+  glm::vec4 bbox = {-1.f, 0.f, 0.5f, 1.5f};
 
-  hmap::Cloud cloud = hmap::Cloud(10, seed, bbox);
+  hmap::Cloud cloud = hmap::Cloud(40, seed, bbox);
+  cloud.snap_points_to_bounding_box(bbox);
 
   std::vector<float> x = cloud.get_x();
   std::vector<float> y = cloud.get_y();
@@ -17,45 +20,74 @@ int main(void)
   hmap::Array z0 = hmap::Array(shape);
   cloud.to_array(z0, bbox);
 
+  // noise
+  hmap::Array dx = 0.05f * hmap::noise_fbm(hmap::NoiseType::PERLIN,
+                                           shape,
+                                           {4.f, 4.f},
+                                           seed,
+                                           8,
+                                           0.f);
+
   // nearest
-  hmap::Array z1 = hmap::interpolate2d(shape,
+  hmap::Timer::Start("ITP2D_NEAREST");
+  hmap::Array z1 = hmap::interpolate2d(
+      shape,
+      x,
+      y,
+      values,
+      hmap::InterpolationMethod2D::ITP2D_NEAREST,
+      &dx,
+      &dx,
+      bbox);
+  hmap::Timer::Stop("ITP2D_NEAREST");
+
+  hmap::Timer::Start("ITP2D_DELAUNAY");
+  hmap::Array z2 = hmap::interpolate2d(
+      shape,
+      x,
+      y,
+      values,
+      hmap::InterpolationMethod2D::ITP2D_DELAUNAY,
+      &dx,
+      &dx,
+      bbox);
+  hmap::Timer::Stop("ITP2D_DELAUNAY");
+
+  hmap::Timer::Start("ITP2D_IDW");
+  hmap::Array z3 = hmap::interpolate2d(shape,
                                        x,
                                        y,
                                        values,
-                                       hmap::InterpolationMethod2D::NEAREST,
-                                       nullptr,
-                                       nullptr,
-                                       nullptr,
+                                       hmap::InterpolationMethod2D::ITP2D_IDW,
+                                       &dx,
+                                       &dx,
                                        bbox);
+  hmap::Timer::Stop("ITP2D_IDW");
 
-  hmap::Array z2 = hmap::interpolate2d(shape,
+  hmap::Timer::Start("ITP2D_GAUSSIAN");
+  hmap::Array z4 = hmap::interpolate2d(
+      shape,
+      x,
+      y,
+      values,
+      hmap::InterpolationMethod2D::ITP2D_GAUSSIAN,
+      &dx,
+      &dx,
+      bbox);
+  hmap::Timer::Stop("ITP2D_GAUSSIAN");
+
+  hmap::Timer::Start("ITP2D_NNI");
+  hmap::Array z5 = hmap::interpolate2d(shape,
                                        x,
                                        y,
                                        values,
-                                       hmap::InterpolationMethod2D::DELAUNAY,
-                                       nullptr,
+                                       hmap::InterpolationMethod2D::ITP2D_NNI,
                                        nullptr,
                                        nullptr,
                                        bbox);
-
-  z1.infos();
-
-  // hmap::Array z0 = hmap::Array(shape);
-  // cloud.to_array(z0, bbox);
-
-  // hmap::Array z1 = hmap::Array(shape);
-  // cloud.to_array_interp(z1, bbox);
-
-  hmap::Array nx = 0.5f * hmap::noise_fbm(hmap::NoiseType::PERLIN,
-                                          shape,
-                                          {2.f, 2.f},
-                                          seed++);
-  hmap::Array ny = 0.5f * hmap::noise_fbm(hmap::NoiseType::PERLIN,
-                                          shape,
-                                          {2.f, 2.f},
-                                          seed++);
+  hmap::Timer::Stop("ITP2D_NNI");
 
   hmap::export_banner_png("ex_interpolate2d.png",
-                          {z0, z1, z2},
+                          {z0, z1, z2, z3, z4, z5},
                           hmap::Cmap::INFERNO);
 }

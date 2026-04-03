@@ -68,14 +68,19 @@ float abs_smooth(float a, float k)
   return std::sqrt(a * a + k2);
 }
 
-Array almost_unit_identity(const Array &array)
-{
-  return (2.f - array) * array * array;
-}
-
 float almost_unit_identity(float x)
 {
   return (2.f - x) * x * x;
+}
+
+Array almost_unit_identity(const Array &array)
+{
+  Array array_out = Array(array.shape);
+  std::transform(array.vector.begin(),
+                 array.vector.end(),
+                 array_out.vector.begin(),
+                 [](float v) { return almost_unit_identity(v); });
+  return array_out;
 }
 
 float almost_unit_identity_c2(float x)
@@ -83,6 +88,16 @@ float almost_unit_identity_c2(float x)
   // second-order derivative equals 0 at x = 1 also to avoid
   // discontinuities in some cases
   return x * x * (x * x - 3.f * x + 3.f);
+}
+
+Array almost_unit_identity_c2(const Array &array)
+{
+  Array array_out = Array(array.shape);
+  std::transform(array.vector.begin(),
+                 array.vector.end(),
+                 array_out.vector.begin(),
+                 [](float v) { return almost_unit_identity_c2(v); });
+  return array_out;
 }
 
 Array atan(const Array &array)
@@ -105,6 +120,11 @@ Array atan2(const Array &y, const Array &x)
                  array_out.vector.begin(),
                  [](float y_, float x_) { return std::atan2(y_, x_); });
   return array_out;
+}
+
+int ceil_div(int a, int b)
+{
+  return (a + b - 1) / b;
 }
 
 Array cos(const Array &array)
@@ -155,6 +175,36 @@ Array hypot(const Array &array1, const Array &array2)
   return array_out;
 }
 
+Array is_equal(const Array &array, float value)
+{
+  Array array_out = Array(array.shape);
+  std::transform(array.vector.begin(),
+                 array.vector.end(),
+                 array_out.vector.begin(),
+                 [value](float v) { return v == value ? 1.f : 0.f; });
+  return array_out;
+}
+
+Array is_non_zero(const Array &array)
+{
+  Array array_out = Array(array.shape);
+  std::transform(array.vector.begin(),
+                 array.vector.end(),
+                 array_out.vector.begin(),
+                 [](float v) { return v != 0.f ? 1.f : 0.f; });
+  return array_out;
+}
+
+Array is_zero(const Array &array)
+{
+  Array array_out = Array(array.shape);
+  std::transform(array.vector.begin(),
+                 array.vector.end(),
+                 array_out.vector.begin(),
+                 [](float v) { return v == 0.f ? 1.f : 0.f; });
+  return array_out;
+}
+
 Array lerp(const Array &array1, const Array &array2, const Array &t)
 {
   Array array_out = array1 * (1.f - t) + array2 * t;
@@ -196,10 +246,10 @@ void radial_displacement_to_xy(const Array &dr,
                                Array       &dx,
                                Array       &dy,
                                float        smoothing,
-                               Vec2<float>  center,
-                               Vec4<float>  bbox)
+                               glm::vec2    center,
+                               glm::vec4    bbox)
 {
-  Vec2<int> shape = dr.shape;
+  glm::ivec2 shape = dr.shape;
   dx = Array(shape);
   dy = Array(shape);
 
@@ -294,6 +344,20 @@ Array smoothstep3_lower(const Array &x)
                  array_out.vector.begin(),
                  [](float v) { return smoothstep3_lower(v); });
   return array_out;
+}
+
+float smoothstep3_remap(float x, float vmin, float vmax)
+{
+  if (x < vmin)
+    return 0.f;
+  else if (x > vmax)
+    return 1.f;
+  else
+  {
+    float xn = (x - vmin) / (vmax - vmin);
+    // xn = xn * xn * (3.f - 2.f * xn);
+    return xn;
+  }
 }
 
 float smoothstep3_upper(float x)
@@ -429,5 +493,15 @@ Array sqrt_safe(const Array &array)
                  array_out.vector.begin(),
                  [](float v) { return v > 0.f ? std::sqrt(v) : 0.f; });
   return array_out;
+}
+
+float triangle(float x, float vmin, float vmax)
+{
+  if (x <= vmin || x >= vmax) return 0.f;
+
+  float mid = 0.5f * (vmin + vmax);
+  float half_width = 0.5f * (vmax - vmin);
+
+  return 1.f - std::abs((x - mid) / half_width);
 }
 } // namespace hmap

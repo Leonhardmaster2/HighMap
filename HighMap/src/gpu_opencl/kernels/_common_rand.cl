@@ -16,6 +16,15 @@ float hash12f(float2 p, float fseed)
                &pi);
 }
 
+uint hash21u(uint x, uint y)
+{
+  uint h = x * 0x8da6b343u ^ y * 0xd8163841u;
+  h ^= h >> 13;
+  h *= 0x85ebca6bu;
+  h ^= h >> 16;
+  return h;
+}
+
 float2 hash22f(float2 p, float fseed)
 {
   p = (float2)(dot(p, (float2)(127.1f, 311.7f)),
@@ -45,6 +54,13 @@ float2 grad22f(float2 p, float fseed)
 {
   float angle = 6.2831853f * hash12f(p, fseed); // 2 * PI
   return (float2)(cos(angle), sin(angle));
+}
+
+uint pcg_hash(uint v)
+{
+  v = v * 747796405u + 2891336453u;
+  uint word = ((v >> ((v >> 28u) + 4u)) ^ v) * 277803737u;
+  return (word >> 22u) ^ word;
 }
 
 uint wang_hash(uint seed)

@@ -19,6 +19,39 @@ namespace hmap
 {
 
 /**
+ * @brief Perturb the contour of a binary mask using a displacement field, while
+ * trying to preserve a single connected component without holes.
+ *
+ * This function takes a binary mask and a noise map of the same size, computes
+ * the boundary of the mask, estimates a local outward normal for each boundary
+ * pixel, and displaces that pixel by an amount proportional to the noise value.
+ * The displacement is clamped to remain inside the image domain.
+ *
+ * @param  mask             Input binary mask as an Array (0 = background, >0 =
+ *                          foreground). Must be at least 3×3 in size.
+ * @param  noise            Noise field providing signed displacement factors,
+ *                          typically in [-1, 1]. Must have the same dimensions
+ *                          as @p mask.
+ * @param  max_displacement Maximum displacement magnitude in pixels applied
+ *                          along the estimated boundary normal for each pixel.
+ *
+ * @return                  A new Array representing the perturbed binary mask,
+ *                          with values 0 (background) and 1 (foreground),
+ *                          guaranteed to be a single connectedcomponent without
+ *                          holes.
+ *
+ * **Example**
+ * @include ex_perturb_mask_contour.cpp
+ *
+ * **Result**
+ * @image html ex_perturb_mask_contour.png
+ */
+Array perturb_mask_contour(const Array &mask,
+                           const Array &noise,
+                           float        max_displacement,
+                           int          ir = 1);
+
+/**
  * @brief Mask adjustement using a 'scanning' method.
  *
  * See https://www.shadertoy.com/view/stjSRR
@@ -229,8 +262,8 @@ Array select_interval(const Array &array, float value1, float value2);
  * @image html ex_select_inward_outward_slope.png
  */
 Array select_inward_outward_slope(const Array &array,
-                                  Vec2<float>  center = {0.5f, 0.5f},
-                                  Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
+                                  glm::vec2    center = {0.5f, 0.5f},
+                                  glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief Return an array with elements equal to 1 where input elements are
@@ -418,15 +451,87 @@ Array select_transitions(const Array &array1,
                          const Array &array2,
                          const Array &array_blend);
 
-Array select_valley(const Array &z,
-                    int          ir,
-                    bool         zero_at_borders = true,
-                    bool         ridge_select = false);
+Array select_valley(const Array &z, int ir, bool ridge_select = false);
 
 } // namespace hmap
 
 namespace hmap::gpu
 {
+
+/*! @brief See hmap::select_cavities */
+Array select_cavities(const Array &array, int ir, bool concave = true);
+
+/**
+ * @brief Computes a soil–flow selection map based on terrain gradient, river
+ * mask, and smoothing parameters.
+ *
+ * @param  z                       Input heightmap.
+ * @param  ir_gradient             Radius used for the morphological gradient.
+ * @param  gradient_weight         Weight applied to the gradient magnitude.
+ * @param  gradient_scaling_factor Scaling factor applied to the gradient;
+ *                                 defaults to z.shape.x if <= 0.
+ * @param  talus_ref               Reference talus value for river extraction;
+ *                                 defaults to 1.f / z.shape.x if <= 0.
+ * @param  clipping_ratio          Clipping ratio used in the river selection
+ *                                 step.
+ * @param  flow_gamma              Gamma correction exponent applied to the
+ *                                 river mask; 1.0 disables correction.
+ * @param  k_smooth                Smoothing parameter for the maximum blending.
+ *
+ * @return                         A 2D Array representing the final soil-flow
+ *                                 selection mask.
+ *
+ * **Example**
+ * @include ex_select_soil_weathered.cpp
+ *
+ * **Result**
+ * @image html ex_select_soil_weathered.png
+ */
+Array select_soil_flow(const Array &z,
+                       int          ir_gradient = 1,
+                       float        gradient_weight = 1.f,
+                       float        gradient_scaling_factor = 0.f,
+                       float        flow_weight = 0.05f,
+                       float        talus_ref = 0.f,
+                       float        clipping_ratio = 50.f,
+                       float        flow_gamma = 1.f,
+                       float        k_smooth = 0.01f);
+
+/**
+ * @brief Computes a multi-scale soil/rock selector using curvature analysis.
+ *
+ * Applies progressively increasing smoothing radii in logarithmic steps
+ * (handling ir_min = 0), computes the mean curvature at each scale, clamps it,
+ * and accumulates the maximum response across all scales.
+ *
+ * @param  z                     Input heightmap or scalar field.
+ * @param  ir_max                Maximum smoothing radius (log-scale upper
+ *                               bound).
+ * @param  ir_min                Minimum smoothing radius (0 allowed; replaced
+ *                               by 1 for log scale).
+ * @param  steps                 Number of logarithmic scales to evaluate.
+ * @param  smaller_scales_weight Weight factor applied when descending scales.
+ * @param  curvature_clamp_mode  Mode used to clamp curvature values.
+ * @param  curvature_clamping    Curvature clamp threshold.
+ *
+ * @return                       An Array representing soil/rock selection
+ *                               values across scales.
+ *
+ * **Example**
+ * @include ex_select_soil_rocks.cpp
+ *
+ * **Result**
+ * @image html ex_select_soil_rocks.png
+ */
+
+Array select_soil_rocks(
+    const Array &z,
+    int          ir_max = 64,
+    int          ir_min = 0,
+    int          steps = 4,
+    float        smaller_scales_weight = 1.f,
+    ClampMode    curvature_clamp_mode = ClampMode::POSITIVE_ONLY,
+    float        curvature_clamping = 1.f);
 
 /**
  * @brief Computes a soil weathering selection map based on curvature and
@@ -482,9 +587,6 @@ Array select_soil_weathered(const Array &z,
                             float gradient_scaling_factor); // for curvature
 
 /*! @brief See hmap::select_valley */
-Array select_valley(const Array &z,
-                    int          ir,
-                    bool         zero_at_borders = true,
-                    bool         ridge_select = false);
+Array select_valley(const Array &z, int ir, bool ridge_select = false);
 
 } // namespace hmap::gpu

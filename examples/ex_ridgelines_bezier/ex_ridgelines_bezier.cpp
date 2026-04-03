@@ -2,7 +2,7 @@
 
 int main(void)
 {
-  hmap::Vec2<int> shape = {256, 256};
+  glm::ivec2 shape = {256, 256};
 
   // "segments", coordinates are given by groups of three points in
   // order to define a quadratic bezier curve, start point, control

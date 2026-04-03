@@ -15,11 +15,11 @@ Array kmeans_clustering2(const Array        &array1,
                          int                 nclusters,
                          std::vector<Array> *p_scoring,
                          Array              *p_aggregate_scoring,
-                         Vec2<float>         weights,
+                         glm::vec2           weights,
                          uint                seed)
 {
-  Vec2<int> shape = array1.shape;
-  Array     kmeans = Array(shape); // output
+  glm::ivec2 shape = array1.shape;
+  Array      kmeans = Array(shape); // output
 
   // recast data
   std::vector<std::array<float, 2>> data = {};
@@ -136,11 +136,11 @@ Array kmeans_clustering3(const Array        &array1,
                          int                 nclusters,
                          std::vector<Array> *p_scoring,
                          Array              *p_aggregate_scoring,
-                         Vec3<float>         weights,
+                         glm::vec3           weights,
                          uint                seed)
 {
-  Vec2<int> shape = array1.shape;
-  Array     kmeans = Array(shape); // output
+  glm::ivec2 shape = array1.shape;
+  Array      kmeans = Array(shape); // output
 
   // recast data
   std::vector<std::array<float, 3>> data = {};

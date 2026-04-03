@@ -16,14 +16,14 @@
 namespace hmap
 {
 
-Array biquad_pulse(Vec2<int>    shape,
+Array biquad_pulse(glm::ivec2   shape,
                    float        gain,
                    const Array *p_ctrl_param,
                    const Array *p_noise_x,
                    const Array *p_noise_y,
                    const Array *p_stretching,
-                   Vec2<float>  center,
-                   Vec4<float>  bbox)
+                   glm::vec2    center,
+                   glm::vec4    bbox)
 {
   Array          array = Array(shape);
   BiquadFunction f = BiquadFunction(gain, center);
@@ -38,14 +38,54 @@ Array biquad_pulse(Vec2<int>    shape,
   return array;
 }
 
-Array bump(Vec2<int>    shape,
+Array biquad_pulse_x(glm::ivec2 shape, glm::vec4 bbox)
+{
+  Array array = Array(shape);
+
+  auto fct = [](float x, float, float)
+  {
+    x = 16.f * x * (1.f - x);
+    return std::clamp(x, 0.f, 1.f);
+  };
+
+  fill_array_using_xy_function(array,
+                               bbox,
+                               nullptr,
+                               nullptr,
+                               nullptr,
+                               nullptr,
+                               fct);
+  return array;
+}
+
+Array biquad_pulse_y(glm::ivec2 shape, glm::vec4 bbox)
+{
+  Array array = Array(shape);
+
+  auto fct = [](float, float y, float)
+  {
+    y = 16.f * y * (1.f - y);
+    return std::clamp(y, 0.f, 1.f);
+  };
+
+  fill_array_using_xy_function(array,
+                               bbox,
+                               nullptr,
+                               nullptr,
+                               nullptr,
+                               nullptr,
+                               fct);
+  return array;
+}
+
+Array bump(glm::ivec2   shape,
            float        gain,
            const Array *p_ctrl_param,
            const Array *p_noise_x,
            const Array *p_noise_y,
            const Array *p_stretching,
-           Vec2<float>  center,
-           Vec4<float>  bbox)
+           glm::vec2    center,
+           glm::vec4    bbox)
 {
   Array        array = Array(shape);
   BumpFunction f = BumpFunction(gain, center);
@@ -60,14 +100,14 @@ Array bump(Vec2<int>    shape,
   return array;
 }
 
-Array bump_lorentzian(Vec2<int>    shape,
+Array bump_lorentzian(glm::ivec2   shape,
                       float        width_factor,
                       float        radius,
                       const Array *p_ctrl_param,
                       const Array *p_noise_x,
                       const Array *p_noise_y,
-                      Vec2<float>  center,
-                      Vec4<float>  bbox)
+                      glm::vec2    center,
+                      glm::vec4    bbox)
 {
   Array array = Array(shape);
 
@@ -99,76 +139,32 @@ Array bump_lorentzian(Vec2<int>    shape,
   return array;
 }
 
-Array cone(Vec2<int>    shape,
-           float        slope,
-           float        apex_elevation,
-           bool         smooth_profile,
-           Vec2<float>  center,
-           const Array *p_noise_x,
-           const Array *p_noise_y,
-           Vec4<float>  bbox)
+Array constant(glm::ivec2 shape, float value)
 {
   Array array = Array(shape);
-
-  auto lambda = [slope, apex_elevation, center](float x, float y, float)
-  {
-    float dx = x - center.x;
-    float dy = y - center.y;
-    float r = std::hypot(dx, dy);
-    float v = std::max(0.f, apex_elevation - slope * r);
-    return v;
-  };
-
-  auto lambda_s = [slope, apex_elevation, center](float x, float y, float)
-  {
-    float dx = x - center.x;
-    float dy = y - center.y;
-    float r = std::hypot(dx, dy);
-    float v = std::max(0.f, apex_elevation - slope * r);
-    return almost_unit_identity(v);
-  };
-
-  if (smooth_profile)
-  {
-    fill_array_using_xy_function(array,
-                                 bbox,
-                                 nullptr,
-                                 p_noise_x,
-                                 p_noise_y,
-                                 nullptr,
-                                 lambda_s);
-  }
-  else
-  {
-    fill_array_using_xy_function(array,
-                                 bbox,
-                                 nullptr,
-                                 p_noise_x,
-                                 p_noise_y,
-                                 nullptr,
-                                 lambda);
-  }
-
+  for (auto &v : array.vector)
+    v = value;
   return array;
 }
 
-Array cone_sigmoid(Vec2<int>    shape,
-                   float        alpha,
-                   float        radius,
-                   Vec2<float>  center,
-                   const Array *p_noise_x,
-                   const Array *p_noise_y,
-                   Vec4<float>  bbox)
+Array cubic_pulse(glm::ivec2   shape,
+                  const Array *p_noise_x,
+                  const Array *p_noise_y,
+                  glm::vec2    center,
+                  glm::vec4    bbox)
 {
   Array array = Array(shape);
 
-  auto lambda = [alpha, radius, center](float x, float y, float)
+  auto lambda = [center](float x, float y, float)
   {
     float dx = x - center.x;
     float dy = y - center.y;
-    float r = std::hypot(dx, dy) / radius;
-    float v = (1.f - std::pow(r, alpha)) / (1.f + std::pow(r, alpha));
-    return std::max(0.f, v);
+    float r = std::hypot(dx, dy) / 0.5f;
+
+    if (r < 1.f)
+      return 1.f - r * r * (3.f - 2.f * r);
+    else
+      return 0.f;
   };
 
   fill_array_using_xy_function(array,
@@ -178,27 +174,18 @@ Array cone_sigmoid(Vec2<int>    shape,
                                p_noise_y,
                                nullptr,
                                lambda);
-
   return array;
 }
 
-Array constant(Vec2<int> shape, float value)
-{
-  Array array = Array(shape);
-  for (auto &v : array.vector)
-    v = value;
-  return array;
-}
-
-Array disk(Vec2<int>    shape,
+Array disk(glm::ivec2   shape,
            float        radius,
            float        slope,
            const Array *p_ctrl_param,
            const Array *p_noise_x,
            const Array *p_noise_y,
            const Array *p_stretching,
-           Vec2<float>  center,
-           Vec4<float>  bbox)
+           glm::vec2    center,
+           glm::vec4    bbox)
 {
   Array        array = Array(shape);
   DiskFunction f = DiskFunction(radius, slope, center);
@@ -213,14 +200,14 @@ Array disk(Vec2<int>    shape,
   return array;
 }
 
-Array gaussian_pulse(Vec2<int>    shape,
+Array gaussian_pulse(glm::ivec2   shape,
                      float        sigma,
                      const Array *p_ctrl_param,
                      const Array *p_noise_x,
                      const Array *p_noise_y,
                      const Array *p_stretching,
-                     Vec2<float>  center,
-                     Vec4<float>  bbox)
+                     glm::vec2    center,
+                     glm::vec4    bbox)
 {
   Array                 array = Array(shape);
   GaussianPulseFunction f = GaussianPulseFunction(sigma, center);
@@ -235,7 +222,7 @@ Array gaussian_pulse(Vec2<int>    shape,
   return array;
 }
 
-Array paraboloid(Vec2<int>    shape,
+Array paraboloid(glm::ivec2   shape,
                  float        angle,
                  float        a,
                  float        b,
@@ -245,8 +232,8 @@ Array paraboloid(Vec2<int>    shape,
                  const Array *p_noise_x,
                  const Array *p_noise_y,
                  const Array *p_stretching,
-                 Vec2<float>  center,
-                 Vec4<float>  bbox)
+                 glm::vec2    center,
+                 glm::vec4    bbox)
 {
   Array array = Array(shape);
 
@@ -275,7 +262,7 @@ Array paraboloid(Vec2<int>    shape,
   return array;
 }
 
-Array rectangle(Vec2<int>    shape,
+Array rectangle(glm::ivec2   shape,
                 float        rx,
                 float        ry,
                 float        angle,
@@ -284,8 +271,8 @@ Array rectangle(Vec2<int>    shape,
                 const Array *p_noise_x,
                 const Array *p_noise_y,
                 const Array *p_stretching,
-                Vec2<float>  center,
-                Vec4<float>  bbox)
+                glm::vec2    center,
+                glm::vec4    bbox)
 {
   Array             array = Array(shape);
   RectangleFunction f = RectangleFunction(rx, ry, angle, slope, center);
@@ -300,17 +287,17 @@ Array rectangle(Vec2<int>    shape,
   return array;
 }
 
-Array rift(Vec2<int>         shape,
-           float             angle,
-           float             slope,
-           float             width,
-           bool              sharp_bottom,
-           const Array      *p_ctrl_param,
-           const Array      *p_noise_x,
-           const Array      *p_noise_y,
-           const Array      *p_stretching,
-           Vec2<float>       center,
-           hmap::Vec4<float> bbox)
+Array rift(glm::ivec2   shape,
+           float        angle,
+           float        slope,
+           float        width,
+           bool         sharp_bottom,
+           const Array *p_ctrl_param,
+           const Array *p_noise_x,
+           const Array *p_noise_y,
+           const Array *p_stretching,
+           glm::vec2    center,
+           glm::vec4    bbox)
 {
   Array              array = Array(shape);
   hmap::RiftFunction f = hmap::RiftFunction(angle,
@@ -329,15 +316,15 @@ Array rift(Vec2<int>         shape,
   return array;
 }
 
-Array slope(Vec2<int>    shape,
+Array slope(glm::ivec2   shape,
             float        angle,
             float        slope,
             const Array *p_ctrl_param,
             const Array *p_noise_x,
             const Array *p_noise_y,
             const Array *p_stretching,
-            Vec2<float>  center,
-            Vec4<float>  bbox)
+            glm::vec2    center,
+            glm::vec4    bbox)
 {
   Array               array = Array(shape);
   hmap::SlopeFunction f = hmap::SlopeFunction(angle, slope, center);
@@ -352,15 +339,45 @@ Array slope(Vec2<int>    shape,
   return array;
 }
 
-Array step(Vec2<int>         shape,
-           float             angle,
-           float             slope,
-           const Array      *p_ctrl_param,
-           const Array      *p_noise_x,
-           const Array      *p_noise_y,
-           const Array      *p_stretching,
-           Vec2<float>       center,
-           hmap::Vec4<float> bbox)
+Array smooth_cosine(glm::ivec2   shape,
+                    const Array *p_noise_x,
+                    const Array *p_noise_y,
+                    glm::vec2    center,
+                    glm::vec4    bbox)
+{
+  Array array = Array(shape);
+
+  auto lambda = [center](float x, float y, float)
+  {
+    float dx = x - center.x;
+    float dy = y - center.y;
+    float r = 2.f * M_PI * std::hypot(dx, dy);
+
+    if (r < M_PI)
+      return 0.5f + 0.5f * std::cos(r);
+    else
+      return 0.f;
+  };
+
+  fill_array_using_xy_function(array,
+                               bbox,
+                               nullptr,
+                               p_noise_x,
+                               p_noise_y,
+                               nullptr,
+                               lambda);
+  return array;
+}
+
+Array step(glm::ivec2   shape,
+           float        angle,
+           float        slope,
+           const Array *p_ctrl_param,
+           const Array *p_noise_x,
+           const Array *p_noise_y,
+           const Array *p_stretching,
+           glm::vec2    center,
+           glm::vec4    bbox)
 {
   Array              array = Array(shape);
   hmap::StepFunction f = hmap::StepFunction(angle, slope, center);
@@ -373,6 +390,53 @@ Array step(Vec2<int>         shape,
                                p_stretching,
                                f.get_delegate());
   return array;
+}
+
+// --- Wrapper
+
+Array get_primitive_base(const PrimitiveType &primitive_type,
+                         const glm::ivec2    &shape,
+                         const Array         *p_noise_x,
+                         const Array         *p_noise_y,
+                         glm::vec2            center,
+                         glm::vec4            bbox)
+{
+  switch (primitive_type)
+  {
+  case PrimitiveType::PRIM_BIQUAD_PULSE:
+    return biquad_pulse(shape,
+                        1.f,
+                        nullptr,
+                        p_noise_x,
+                        p_noise_y,
+                        nullptr,
+                        center,
+                        bbox);
+    //
+  case PrimitiveType::PRIM_BUMP:
+    return bump(shape,
+                1.f,
+                nullptr,
+                p_noise_x,
+                p_noise_y,
+                nullptr,
+                center,
+                bbox);
+    //
+  case PrimitiveType::PRIM_CONE:
+    return cone(shape, 2.f, 1.f, false, center, p_noise_x, p_noise_y, bbox);
+    //
+  case PrimitiveType::PRIM_CONE_SMOOTH:
+    return cone(shape, 2.f, 1.f, true, center, p_noise_x, p_noise_y, bbox);
+  //
+  case PrimitiveType::PRIM_CUBIC_PULSE:
+    return cubic_pulse(shape, p_noise_x, p_noise_y, center, bbox);
+    //
+  case PrimitiveType::PRIM_SMOOTH_COSINE:
+    return smooth_cosine(shape, p_noise_x, p_noise_y, center, bbox);
+    //
+  default: return Array(shape);
+  }
 }
 
 } // namespace hmap

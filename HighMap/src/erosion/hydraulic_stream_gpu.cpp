@@ -5,7 +5,7 @@
 #include "highmap/boundary.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/gradient.hpp"
-#include "highmap/hydrology.hpp"
+#include "highmap/hydrology/hydrology.hpp"
 #include "highmap/kernels.hpp"
 #include "highmap/math.hpp"
 #include "highmap/opencl/gpu_opencl.hpp"
@@ -43,7 +43,7 @@ void hydraulic_stream_log(Array &z,
     saturate(facc, 0.f, saturation_ratio, 0.1f * saturation_ratio);
 
   // scale erosion with local gradient
-  Array gn = gpu::gradient_norm(z);
+  Array gn = hmap::gradient_norm(z);
 
   // TODO next operations in one local pass
   {
@@ -84,54 +84,54 @@ void hydraulic_stream_log(Array &z,
   if (p_flow_map) *p_flow_map = facc;
 }
 
-void hydraulic_stream_log(Array &z,
-                          float  c_erosion,
-                          float  talus_ref,
-                          Array *p_mask,
-                          int    deposition_ir,
-                          float  deposition_scale_ratio,
-                          float  gradient_power,
-                          float  gradient_scaling_ratio,
-                          int    gradient_prefilter_ir,
-                          float  saturation_ratio,
-                          Array *p_moisture_map,
-                          Array *p_bedrock,
-                          Array *p_erosion_map,
-                          Array *p_deposition_map,
-                          Array *p_flow_map)
+void hydraulic_stream_log(Array       &z,
+                          float        c_erosion,
+                          float        talus_ref,
+                          const Array *p_mask,
+                          int          deposition_ir,
+                          float        deposition_scale_ratio,
+                          float        gradient_power,
+                          float        gradient_scaling_ratio,
+                          int          gradient_prefilter_ir,
+                          float        saturation_ratio,
+                          Array       *p_moisture_map,
+                          Array       *p_bedrock,
+                          Array       *p_erosion_map,
+                          Array       *p_deposition_map,
+                          Array       *p_flow_map)
 {
   if (!p_mask)
-    hydraulic_stream_log(z,
-                         c_erosion,
-                         talus_ref,
-                         deposition_ir,
-                         deposition_scale_ratio,
-                         gradient_power,
-                         gradient_scaling_ratio,
-                         gradient_prefilter_ir,
-                         saturation_ratio,
-                         p_bedrock,
-                         p_moisture_map,
-                         p_erosion_map,
-                         p_deposition_map,
-                         p_flow_map);
+    gpu::hydraulic_stream_log(z,
+                              c_erosion,
+                              talus_ref,
+                              deposition_ir,
+                              deposition_scale_ratio,
+                              gradient_power,
+                              gradient_scaling_ratio,
+                              gradient_prefilter_ir,
+                              saturation_ratio,
+                              p_bedrock,
+                              p_moisture_map,
+                              p_erosion_map,
+                              p_deposition_map,
+                              p_flow_map);
   else
   {
     Array z_f = z;
-    hydraulic_stream_log(z_f,
-                         c_erosion,
-                         talus_ref,
-                         deposition_ir,
-                         deposition_scale_ratio,
-                         gradient_power,
-                         gradient_scaling_ratio,
-                         gradient_prefilter_ir,
-                         saturation_ratio,
-                         p_bedrock,
-                         p_moisture_map,
-                         p_erosion_map,
-                         p_deposition_map,
-                         p_flow_map);
+    gpu::hydraulic_stream_log(z_f,
+                              c_erosion,
+                              talus_ref,
+                              deposition_ir,
+                              deposition_scale_ratio,
+                              gradient_power,
+                              gradient_scaling_ratio,
+                              gradient_prefilter_ir,
+                              saturation_ratio,
+                              p_bedrock,
+                              p_moisture_map,
+                              p_erosion_map,
+                              p_deposition_map,
+                              p_flow_map);
     z = lerp(z, z_f, *(p_mask));
   }
 }

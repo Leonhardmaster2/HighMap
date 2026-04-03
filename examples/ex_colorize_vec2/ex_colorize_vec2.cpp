@@ -2,7 +2,7 @@
 
 int main(void)
 {
-  hmap::Vec2<int> shape = {256, 256};
+  glm::ivec2 shape = {256, 256};
 
   hmap::Array x = hmap::slope(shape, 0.f, 1.f);
   hmap::Array y = hmap::slope(shape, 90.f, 1.f);

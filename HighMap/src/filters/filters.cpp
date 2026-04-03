@@ -1,7 +1,6 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-
 #include <cmath>
 #include <random>
 
@@ -11,6 +10,7 @@
 #include "highmap/boundary.hpp"
 #include "highmap/convolve.hpp"
 #include "highmap/curvature.hpp"
+#include "highmap/erosion.hpp"
 #include "highmap/features.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/gradient.hpp"
@@ -23,19 +23,6 @@
 #include "highmap/internal/vector_utils.hpp"
 
 #define NSIGMA 2
-
-#define DI                                                                     \
-  {                                                                            \
-    -1, 0, 0, 1, -1, -1, 1, 1                                                  \
-  }
-#define DJ                                                                     \
-  {                                                                            \
-    0, 1, -1, 0, -1, 1, -1, 1                                                  \
-  }
-#define CD                                                                     \
-  {                                                                            \
-    1.f, 1.f, 1.f, 1.f, M_SQRT2, M_SQRT2, M_SQRT2, M_SQRT2                     \
-  }
 
 namespace hmap
 {
@@ -157,156 +144,11 @@ void expand_directional(Array       &array,
                         float        anisotropy,
                         const Array *p_mask)
 {
-  Array kernel = cubic_pulse_directional(Vec2<int>(2 * ir + 1, 2 * ir + 1),
+  Array kernel = cubic_pulse_directional(glm::ivec2(2 * ir + 1, 2 * ir + 1),
                                          angle,
                                          aspect_ratio,
                                          anisotropy);
   expand(array, kernel, p_mask);
-}
-
-void expand_talus(Array       &z,
-                  const Array &mask,
-                  float        talus,
-                  uint         seed,
-                  float        noise_ratio)
-{
-  std::mt19937                          gen(seed);
-  std::uniform_real_distribution<float> dis(1.f - noise_ratio,
-                                            1.f + noise_ratio);
-
-  std::vector<int>   di = DI;
-  std::vector<int>   dj = DJ;
-  std::vector<float> c = CD;
-  const uint         nb = di.size();
-
-  Array mask_copy = mask;
-
-  // initialize heap queue: algo starts from the cells defined by the mask
-  std::vector<std::pair<float, std::pair<int, int>>> queue;
-
-  for (int i = 2; i < z.shape.x - 2; i++)
-    for (int j = 2; j < z.shape.y - 2; j++)
-      if (mask_copy(i, j)) queue.push_back(std::pair(z(i, j), std::pair(i, j)));
-
-  std::make_heap(queue.begin(), queue.end());
-
-  // fill
-  while (queue.size() > 0)
-  {
-    std::pair<int, std::pair<int, int>> current = queue.back();
-    queue.pop_back();
-
-    int i = current.second.first;
-    int j = current.second.second;
-
-    for (uint k = 0; k < nb; k++)
-    {
-      int p = i + di[k];
-      int q = j + dj[k];
-
-      if (p >= 0 && p < z.shape.x && q >= 0 && q < z.shape.y)
-      {
-        float h = z(i, j) + c[k] * talus;
-
-        if (z(p, q) > h)
-        {
-          float rd = dis(gen);
-          z(p, q) = z(i, j) + c[k] * talus * rd;
-        }
-
-        if (mask_copy(p, q) == 0.f)
-        {
-          queue.push_back(std::pair(z(p, q), std::pair(p, q)));
-          std::push_heap(queue.begin(), queue.end());
-          mask_copy(p, q) = 1.f;
-        }
-      }
-    }
-  }
-
-  // clean-up boundaries
-  extrapolate_borders(z, 2);
-}
-
-void fill_talus(Array &z, float talus, uint seed, float noise_ratio)
-{
-  std::mt19937                          gen(seed);
-  std::uniform_real_distribution<float> dis(1.f - noise_ratio,
-                                            1.f + noise_ratio);
-
-  std::vector<int>   di = DI;
-  std::vector<int>   dj = DJ;
-  std::vector<float> c = CD;
-  const uint         nb = di.size();
-
-  // trick to exclude border cells, to avoid checking out of bounds
-  // indices
-  set_borders(z, 10.f * z.max(), 2);
-
-  // build queue (elevation, index (i, j))
-  std::vector<std::pair<float, std::pair<int, int>>> queue;
-
-  for (int i = 2; i < z.shape.x - 2; i++)
-    for (int j = 2; j < z.shape.y - 2; j++)
-      queue.push_back(std::pair(z(i, j), std::pair(i, j)));
-
-  std::make_heap(queue.begin(), queue.end());
-
-  // fill
-  while (queue.size() > 0)
-  {
-    std::pair<int, std::pair<int, int>> current = queue.back();
-    queue.pop_back();
-
-    int i = current.second.first;
-    int j = current.second.second;
-
-    for (uint k = 0; k < nb; k++) // loop over neighbors
-    {
-      int   p = i + di[k];
-      int   q = j + dj[k];
-      float rd = dis(gen);
-      float h = z(i, j) - c[k] * talus * rd;
-
-      if (h > z(p, q))
-      {
-        z(p, q) = h;
-        queue.push_back(std::pair(z(p, q), std::pair(p, q)));
-        std::push_heap(queue.begin(), queue.end());
-      }
-    }
-  }
-
-  // clean-up boundaries
-  extrapolate_borders(z, 2);
-}
-
-void fill_talus_fast(Array    &z,
-                     Vec2<int> shape_coarse,
-                     float     talus,
-                     uint      seed,
-                     float     noise_ratio)
-{
-  // apply the algorithm on the coarser mesh (and ajust the talus
-  // value)
-  int   step = std::max(z.shape.x / shape_coarse.x, z.shape.y / shape_coarse.y);
-  float talus_coarse = talus * step;
-
-  // add maximum filter to avoid loosing data (for instance those
-  // defined at only one cell)
-  Array z_coarse = Array(shape_coarse);
-  {
-    Array z_filtered = maximum_local(z, (int)std::ceil(0.5f * step));
-    z_coarse = z_filtered.resample_to_shape(shape_coarse);
-  }
-
-  fill_talus(z_coarse, talus_coarse, seed, noise_ratio);
-
-  // revert back to the original resolution but keep initial
-  // smallscale details
-  z_coarse = z_coarse.resample_to_shape(z.shape);
-
-  clamp_min(z, z_coarse);
 }
 
 void fold(Array &array, int iterations, float k)
@@ -431,7 +273,7 @@ void kuwahara(Array &array, int ir, float mix_ratio)
 {
 
   Array array_buffered = generate_buffered_array(array,
-                                                 Vec4<int>(ir, ir, ir, ir));
+                                                 glm::ivec4(ir, ir, ir, ir));
   Array array_out(array_buffered.shape);
 
   for (int j = ir; j < array_buffered.shape.y - ir; j++)
@@ -439,13 +281,13 @@ void kuwahara(Array &array, int ir, float mix_ratio)
     {
       // build quadrants
       Array q1 = array_buffered.extract_slice(
-          Vec4<int>(i - ir, i + 1, j - ir, j + 1));
+          glm::ivec4(i - ir, i + 1, j - ir, j + 1));
       Array q2 = array_buffered.extract_slice(
-          Vec4<int>(i - ir, i + 1, j + 1, j + ir));
+          glm::ivec4(i - ir, i + 1, j + 1, j + ir));
       Array q3 = array_buffered.extract_slice(
-          Vec4<int>(i + 1, i + ir, j - ir, j + 1));
+          glm::ivec4(i + 1, i + ir, j - ir, j + 1));
       Array q4 = array_buffered.extract_slice(
-          Vec4<int>(i + 1, i + ir, j + 1, j + ir));
+          glm::ivec4(i + 1, i + ir, j + 1, j + ir));
 
       std::vector<float> means = {q1.mean(), q2.mean(), q3.mean(), q4.mean()};
       std::vector<float> stds = {q1.std(), q2.std(), q3.std(), q4.std()};
@@ -456,19 +298,19 @@ void kuwahara(Array &array, int ir, float mix_ratio)
 
   if (mix_ratio == 1.f)
   {
-    array = array_out.extract_slice(Vec4<int>(ir,
-                                              array_buffered.shape.x - ir,
-                                              ir,
-                                              array_buffered.shape.y - ir));
+    array = array_out.extract_slice(glm::ivec4(ir,
+                                               array_buffered.shape.x - ir,
+                                               ir,
+                                               array_buffered.shape.y - ir));
   }
   else
   {
     array = lerp(
         array,
-        array_out.extract_slice(Vec4<int>(ir,
-                                          array_buffered.shape.x - ir,
-                                          ir,
-                                          array_buffered.shape.y - ir)),
+        array_out.extract_slice(glm::ivec4(ir,
+                                           array_buffered.shape.x - ir,
+                                           ir,
+                                           array_buffered.shape.y - ir)),
         mix_ratio);
   }
 }
@@ -488,7 +330,7 @@ void kuwahara(Array &array, int ir, const Array *p_mask, float mix_ratio)
 
 void laplace(Array &array, float sigma, int iterations)
 {
-  Vec2<int> shape = array.shape;
+  glm::ivec2 shape = array.shape;
 
   for (int it = 0; it < iterations; it++)
   {
@@ -636,9 +478,9 @@ Array mean_shift(const Array &array,
                  int          iterations,
                  bool         talus_weighted)
 {
-  const Vec2<int> shape = array.shape;
-  Array           array_next = Array(shape);
-  Array           array_prev = array;
+  const glm::ivec2 shape = array.shape;
+  Array            array_next = Array(shape);
+  Array            array_prev = array;
 
   for (int it = 0; it < iterations; it++)
   {
@@ -776,7 +618,7 @@ void normal_displacement(Array &array, float amount, int ir, bool reverse)
   for (int j = 1; j < array.shape.y - 1; j++)
     for (int i = 1; i < array.shape.x - 1; i++)
     {
-      Vec3<float> n = array_f.get_normal_at(i, j);
+      glm::vec3 n = array_f.get_normal_at(i, j);
 
       float x = (float)i - amount * array.shape.x * n.x * factor(i, j);
       float y = (float)j - amount * array.shape.y * n.y * factor(i, j);
@@ -1003,7 +845,7 @@ void shrink_directional(Array       &array,
                         float        anisotropy,
                         const Array *p_mask)
 {
-  Array kernel = cubic_pulse_directional(Vec2<int>(2 * ir + 1, 2 * ir + 1),
+  Array kernel = cubic_pulse_directional(glm::ivec2(2 * ir + 1, 2 * ir + 1),
                                          angle,
                                          aspect_ratio,
                                          anisotropy);
@@ -1428,16 +1270,16 @@ void terrace(Array       &array,
   }
 }
 
-void wrinkle(Array      &array,
-             float       wrinkle_amplitude,
-             float       wrinkle_angle,
-             float       displacement_amplitude,
-             int         ir,
-             float       kw,
-             uint        seed,
-             int         octaves,
-             float       weight,
-             Vec4<float> bbox)
+void wrinkle(Array    &array,
+             float     wrinkle_amplitude,
+             float     wrinkle_angle,
+             float     displacement_amplitude,
+             int       ir,
+             float     kw,
+             uint      seed,
+             int       octaves,
+             float     weight,
+             glm::vec4 bbox)
 {
   Array dx = displacement_amplitude * array;
 
@@ -1448,7 +1290,7 @@ void wrinkle(Array      &array,
 
   Array w = noise_fbm(NoiseType::PERLIN,
                       array.shape,
-                      Vec2<float>(kw, kw),
+                      glm::vec2(kw, kw),
                       seed,
                       octaves,
                       weight,
@@ -1473,7 +1315,7 @@ void wrinkle(Array       &array,
              uint         seed,
              int          octaves,
              float        weight,
-             Vec4<float>  bbox)
+             glm::vec4    bbox)
 {
   if (!p_mask)
     wrinkle(array,

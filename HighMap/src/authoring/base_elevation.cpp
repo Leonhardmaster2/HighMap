@@ -9,13 +9,13 @@
 namespace hmap
 {
 
-Array base_elevation(Vec2<int>                              shape,
+Array base_elevation(glm::ivec2                             shape,
                      const std::vector<std::vector<float>> &values,
                      float                                  width_factor,
                      const Array                           *p_noise_x,
                      const Array                           *p_noise_y,
                      const Array                           *p_stretching,
-                     Vec4<float>                            bbox)
+                     glm::vec4                              bbox)
 {
   Array array = Array(shape);
 

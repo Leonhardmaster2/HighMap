@@ -4,7 +4,14 @@
 #include <algorithm>
 #include <memory>
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-parameter"
+#pragma GCC diagnostic ignored "-Wsign-compare"
+
 #include "NoiseLib/include/noise.h"
+
+#pragma GCC diagnostic pop
+
 #include "macrologger.h"
 
 #include "highmap/array.hpp"
@@ -16,8 +23,8 @@
 namespace hmap
 {
 
-Array dendry(Vec2<int>    shape,
-             Vec2<float>  kw,
+Array dendry(glm::ivec2   shape,
+             glm::vec2    kw,
              uint         seed,
              Array       &control_array,
              float        eps,
@@ -31,15 +38,15 @@ Array dendry(Vec2<int>    shape,
              const Array *p_noise_x,
              const Array *p_noise_y,
              const Array *p_stretching,
-             Vec4<float>  bbox,
+             glm::vec4    bbox,
              int          subsampling)
 {
   Array array = Array(shape);
 
   int nbuffer = (int)(control_function_overlap * control_array.shape.x);
 
-  Vec4<int> buffers = {nbuffer, nbuffer, nbuffer, nbuffer};
-  Array     control_array_buffered = generate_buffered_array(control_array,
+  glm::ivec4 buffers = {nbuffer, nbuffer, nbuffer, nbuffer};
+  Array      control_array_buffered = generate_buffered_array(control_array,
                                                          buffers);
 
   std::unique_ptr<ArrayControlFunction> control_function(
@@ -86,8 +93,8 @@ Array dendry(Vec2<int>    shape,
   return array;
 }
 
-Array dendry(Vec2<int>      shape,
-             Vec2<float>    kw,
+Array dendry(glm::ivec2     shape,
+             glm::vec2      kw,
              uint           seed,
              NoiseFunction &noise_function,
              float          noise_function_offset,
@@ -103,7 +110,7 @@ Array dendry(Vec2<int>      shape,
              const Array   *p_noise_x,
              const Array   *p_noise_y,
              const Array   *p_stretching,
-             Vec4<float>    bbox)
+             glm::vec4      bbox)
 {
   Array array = Array(shape);
 

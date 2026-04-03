@@ -41,7 +41,7 @@ Array inpainting_diffusion(const Array &array,
   {
     for (size_t k = 0; k < idx.size(); k++)
     {
-      Vec2<int> ij = array.linear_index_reverse(idx[k]);
+      glm::ivec2 ij = array.linear_index_reverse(idx[k]);
 
       out(ij.x, ij.y) = a * (out(ij.x - 1, ij.y - 1) + out(ij.x + 1, ij.y - 1) +
                              out(ij.x - 1, ij.y + 1) +

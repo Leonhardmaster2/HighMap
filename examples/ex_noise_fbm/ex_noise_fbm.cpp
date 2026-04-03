@@ -2,9 +2,9 @@
 
 int main(void)
 {
-  hmap::Vec2<int>   shape = {256, 256};
-  hmap::Vec2<float> kw = {4.f, 4.f};
-  int               seed = 1;
+  glm::ivec2 shape = {256, 256};
+  glm::vec2  kw = {4.f, 4.f};
+  int        seed = 1;
 
   std::vector<hmap::NoiseType> noise_list = {
       hmap::NoiseType::PERLIN,
@@ -27,7 +27,7 @@ int main(void)
 
   // fbm
   {
-    hmap::Array z = hmap::Array(hmap::Vec2<int>(0, shape.y));
+    hmap::Array z = hmap::Array(glm::ivec2(0, shape.y));
     for (auto &noise_type : noise_list)
     {
       auto n = hmap::noise_fbm(noise_type,
@@ -47,7 +47,7 @@ int main(void)
 
   // iq
   {
-    hmap::Array z = hmap::Array(hmap::Vec2<int>(0, shape.y));
+    hmap::Array z = hmap::Array(glm::ivec2(0, shape.y));
     for (auto &noise_type : noise_list)
     {
       auto n = hmap::noise_iq(noise_type, shape, kw, seed);
@@ -59,7 +59,7 @@ int main(void)
 
   // jordan
   {
-    hmap::Array z = hmap::Array(hmap::Vec2<int>(0, shape.y));
+    hmap::Array z = hmap::Array(glm::ivec2(0, shape.y));
     for (auto &noise_type : noise_list)
     {
       auto n = hmap::noise_jordan(noise_type, shape, kw, seed);
@@ -71,7 +71,7 @@ int main(void)
 
   // pingpong
   {
-    hmap::Array z = hmap::Array(hmap::Vec2<int>(0, shape.y));
+    hmap::Array z = hmap::Array(glm::ivec2(0, shape.y));
     for (auto &noise_type : noise_list)
     {
       auto n = hmap::noise_pingpong(noise_type, shape, kw, seed);
@@ -83,7 +83,7 @@ int main(void)
 
   // ridged
   {
-    hmap::Array z = hmap::Array(hmap::Vec2<int>(0, shape.y));
+    hmap::Array z = hmap::Array(glm::ivec2(0, shape.y));
     for (auto &noise_type : noise_list)
     {
       auto n = hmap::noise_ridged(noise_type, shape, kw, seed);
@@ -95,7 +95,7 @@ int main(void)
 
   // swiss
   {
-    hmap::Array z = hmap::Array(hmap::Vec2<int>(0, shape.y));
+    hmap::Array z = hmap::Array(glm::ivec2(0, shape.y));
     for (auto &noise_type : noise_list)
     {
       auto n = hmap::noise_swiss(noise_type, shape, kw, seed);

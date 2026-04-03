@@ -11,6 +11,7 @@
  * @copyright Copyright (c) 2023 Otto Link
  */
 #pragma once
+#include <array>
 
 #include "highmap/array.hpp"
 
@@ -79,9 +80,12 @@ namespace hmap
  * @image html ex_connected_components0.png
  * @image html ex_connected_components1.png
  */
-Array connected_components(const Array &array,
-                           float        surface_threshold = 0.f,
-                           float        background_value = 0.f);
+Array connected_components(
+    const Array                       &array,
+    float                              surface_threshold = 0.f,
+    float                              background_value = 0.f,
+    std::vector<float>                *p_surfaces = nullptr,
+    std::vector<std::array<float, 2>> *p_centroids = nullptr);
 
 /**
  * @brief Classifies terrain into geomorphological features based on the
@@ -171,7 +175,7 @@ Array kmeans_clustering2(const Array        &array1,
                          int                 nclusters,
                          std::vector<Array> *p_scoring = nullptr,
                          Array              *p_aggregate_scoring = nullptr,
-                         Vec2<float>         weights = {1.f, 1.f},
+                         glm::vec2           weights = {1.f, 1.f},
                          uint                seed = 1);
 
 /**
@@ -223,7 +227,7 @@ Array kmeans_clustering3(const Array        &array1,
                          int                 nclusters,
                          std::vector<Array> *p_scoring = nullptr,
                          Array              *p_aggregate_scoring = nullptr,
-                         Vec3<float>         weights = {1.f, 1.f, 1.f},
+                         glm::vec3           weights = {1.f, 1.f, 1.f},
                          uint                seed = 1);
 
 /**

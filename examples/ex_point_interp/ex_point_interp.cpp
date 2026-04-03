@@ -6,8 +6,8 @@ int main(void)
   std::vector<float> y = {0.2f, 0.1f, 0.5f, 0.6f};
 
   // generate 4 points
-  hmap::Vec4<float> bbox = {-1.f, 0.f, 0.5f, 1.5f};
-  hmap::Path        path = hmap::Path(4, 2, bbox);
+  glm::vec4  bbox = {-1.f, 0.f, 0.5f, 1.5f};
+  hmap::Path path = hmap::Path(4, 2, bbox);
   path.reorder_nns();
 
   path.print();
@@ -33,7 +33,7 @@ int main(void)
   }
 
   // plots
-  hmap::Array z = hmap::Array(hmap::Vec2<int>(512, 512));
+  hmap::Array z = hmap::Array(glm::ivec2(512, 512));
   path.to_array(z, bbox);
   hmap::Path(points_bezier).to_array(z, bbox);
   hmap::Path(points_bspline).to_array(z, bbox);

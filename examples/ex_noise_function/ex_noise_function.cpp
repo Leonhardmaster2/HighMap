@@ -2,13 +2,13 @@
 
 int main(void)
 {
-  hmap::Vec2<int> shape = {256, 256};
+  glm::ivec2 shape = {256, 256};
   shape = {1024, 1024};
-  hmap::Vec2<float> kw = {2.f, 2.f};
-  uint              seed = 1;
+  glm::vec2 kw = {2.f, 2.f};
+  uint      seed = 1;
 
-  hmap::Array       z = hmap::Array(shape);
-  hmap::Vec4<float> bbox = hmap::unit_square_bbox();
+  hmap::Array z = hmap::Array(shape);
+  glm::vec4   bbox = hmap::unit_square_bbox();
 
   float mu = 1.02f;
 

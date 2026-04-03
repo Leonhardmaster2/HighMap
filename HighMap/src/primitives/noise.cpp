@@ -14,13 +14,13 @@ namespace hmap
 {
 
 Array noise(NoiseType    noise_type,
-            Vec2<int>    shape,
-            Vec2<float>  kw,
+            glm::ivec2   shape,
+            glm::vec2    kw,
             uint         seed,
             const Array *p_noise_x,
             const Array *p_noise_y,
             const Array *p_stretching,
-            Vec4<float>  bbox)
+            glm::vec4    bbox)
 {
   Array array = Array(shape);
 
@@ -39,8 +39,8 @@ Array noise(NoiseType    noise_type,
 }
 
 Array noise_fbm(NoiseType    noise_type,
-                Vec2<int>    shape,
-                Vec2<float>  kw,
+                glm::ivec2   shape,
+                glm::vec2    kw,
                 uint         seed,
                 int          octaves,
                 float        weight,
@@ -50,7 +50,7 @@ Array noise_fbm(NoiseType    noise_type,
                 const Array *p_noise_x,
                 const Array *p_noise_y,
                 const Array *p_stretching,
-                Vec4<float>  bbox)
+                glm::vec4    bbox)
 {
   Array array = Array(shape);
 
@@ -75,8 +75,8 @@ Array noise_fbm(NoiseType    noise_type,
 }
 
 Array noise_iq(NoiseType    noise_type,
-               Vec2<int>    shape,
-               Vec2<float>  kw,
+               glm::ivec2   shape,
+               glm::vec2    kw,
                uint         seed,
                int          octaves,
                float        weight,
@@ -87,7 +87,7 @@ Array noise_iq(NoiseType    noise_type,
                const Array *p_noise_x,
                const Array *p_noise_y,
                const Array *p_stretching,
-               Vec4<float>  bbox)
+               glm::vec4    bbox)
 {
   Array array = Array(shape);
 
@@ -113,8 +113,8 @@ Array noise_iq(NoiseType    noise_type,
 }
 
 Array noise_jordan(NoiseType    noise_type,
-                   Vec2<int>    shape,
-                   Vec2<float>  kw,
+                   glm::ivec2   shape,
+                   glm::vec2    kw,
                    uint         seed,
                    int          octaves,
                    float        weight,
@@ -128,7 +128,7 @@ Array noise_jordan(NoiseType    noise_type,
                    const Array *p_noise_x,
                    const Array *p_noise_y,
                    const Array *p_stretching,
-                   Vec4<float>  bbox)
+                   glm::vec4    bbox)
 {
   Array array = Array(shape);
 
@@ -156,8 +156,8 @@ Array noise_jordan(NoiseType    noise_type,
   return array;
 }
 
-Array noise_parberry(Vec2<int>    shape,
-                     Vec2<float>  kw,
+Array noise_parberry(glm::ivec2   shape,
+                     glm::vec2    kw,
                      uint         seed,
                      int          octaves,
                      float        weight,
@@ -168,7 +168,7 @@ Array noise_parberry(Vec2<int>    shape,
                      const Array *p_noise_x,
                      const Array *p_noise_y,
                      const Array *p_stretching,
-                     Vec4<float>  bbox)
+                     glm::vec4    bbox)
 {
   Array array = Array(shape);
 
@@ -192,8 +192,8 @@ Array noise_parberry(Vec2<int>    shape,
 }
 
 Array noise_pingpong(NoiseType    noise_type,
-                     Vec2<int>    shape,
-                     Vec2<float>  kw,
+                     glm::ivec2   shape,
+                     glm::vec2    kw,
                      uint         seed,
                      int          octaves,
                      float        weight,
@@ -203,7 +203,7 @@ Array noise_pingpong(NoiseType    noise_type,
                      const Array *p_noise_x,
                      const Array *p_noise_y,
                      const Array *p_stretching,
-                     Vec4<float>  bbox)
+                     glm::vec4    bbox)
 {
   Array array = Array(shape);
 
@@ -228,8 +228,8 @@ Array noise_pingpong(NoiseType    noise_type,
 }
 
 Array noise_ridged(NoiseType    noise_type,
-                   Vec2<int>    shape,
-                   Vec2<float>  kw,
+                   glm::ivec2   shape,
+                   glm::vec2    kw,
                    uint         seed,
                    int          octaves,
                    float        weight,
@@ -240,7 +240,7 @@ Array noise_ridged(NoiseType    noise_type,
                    const Array *p_noise_x,
                    const Array *p_noise_y,
                    const Array *p_stretching,
-                   Vec4<float>  bbox)
+                   glm::vec4    bbox)
 {
   Array array = Array(shape);
 
@@ -266,8 +266,8 @@ Array noise_ridged(NoiseType    noise_type,
 }
 
 Array noise_swiss(NoiseType    noise_type,
-                  Vec2<int>    shape,
-                  Vec2<float>  kw,
+                  glm::ivec2   shape,
+                  glm::vec2    kw,
                   uint         seed,
                   int          octaves,
                   float        weight,
@@ -278,7 +278,7 @@ Array noise_swiss(NoiseType    noise_type,
                   const Array *p_noise_x,
                   const Array *p_noise_y,
                   const Array *p_stretching,
-                  Vec4<float>  bbox)
+                  glm::vec4    bbox)
 {
   Array array = Array(shape);
 

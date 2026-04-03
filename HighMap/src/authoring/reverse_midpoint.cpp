@@ -237,7 +237,7 @@ Array reverse_midpoint(const Array &array,
   std::uniform_real_distribution<float> dis(-1.f, 1.f);
 
   // work on a 2^n + 1 cells array to simplify things
-  Array    array_w = Array(Vec2<int>(array.shape.x + 1, array.shape.y + 1));
+  Array    array_w = Array(glm::ivec2(array.shape.x + 1, array.shape.y + 1));
   Mat<int> is_done = Mat<int>(array_w.shape);
 
   for (int i = 0; i < array.shape.x; i++)
@@ -256,7 +256,7 @@ Array reverse_midpoint(const Array &array,
 
   // fall back to original array size
   Array array_out = array_w.extract_slice(
-      Vec4<int>(0, array.shape.x, 0, array.shape.y));
+      glm::ivec4(0, array.shape.x, 0, array.shape.y));
 
   return array_out;
 }

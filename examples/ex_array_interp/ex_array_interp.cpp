@@ -2,13 +2,13 @@
 
 int main(void)
 {
-  hmap::Vec2<int>   shape = {256, 256};
-  hmap::Vec2<float> res = {4.f, 4.f};
-  int               seed = 1;
+  glm::ivec2 shape = {256, 256};
+  glm::vec2  res = {4.f, 4.f};
+  int        seed = 1;
 
   hmap::Array z0 = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, res, seed);
 
-  hmap::Vec2<int> new_shape = {1024, 1024};
+  glm::ivec2 new_shape = {1024, 1024};
 
   hmap::Array z1 = z0.resample_to_shape(new_shape);
   z1 = z1.resample_to_shape(shape);

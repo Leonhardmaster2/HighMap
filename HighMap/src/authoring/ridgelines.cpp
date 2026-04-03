@@ -13,7 +13,7 @@
 namespace hmap
 {
 
-Array ridgelines(Vec2<int>                 shape,
+Array ridgelines(glm::ivec2                shape,
                  const std::vector<float> &xr,
                  const std::vector<float> &yr,
                  const std::vector<float> &zr,
@@ -21,11 +21,11 @@ Array ridgelines(Vec2<int>                 shape,
                  float                     k_smoothing,
                  float                     width,
                  float                     vmin,
-                 Vec4<float>               bbox,
+                 glm::vec4                 bbox,
                  const Array              *p_noise_x,
                  const Array              *p_noise_y,
                  const Array              *p_stretching,
-                 Vec4<float>               bbox_array)
+                 glm::vec4                 bbox_array)
 {
   // normalized node coordinates
   std::vector<float> xrs = xr;
@@ -43,13 +43,13 @@ Array ridgelines(Vec2<int>                 shape,
       float d = -std::numeric_limits<float>::max();
       for (size_t i = 0; i < xrs.size() - 1; i += 2)
       {
-        int         j = i + 1;
-        Vec2<float> e = {xrs[j] - xrs[i], yrs[j] - yrs[i]};
-        Vec2<float> w = {x_ - xrs[i], y_ - yrs[i]};
-        float       coeff = std::clamp(dot(w, e) / dot(e, e), 0.f, 1.f);
-        Vec2<float> b = {w.x - coeff * e.x, w.y - coeff * e.y};
+        int       j = i + 1;
+        glm::vec2 e = {xrs[j] - xrs[i], yrs[j] - yrs[i]};
+        glm::vec2 w = {x_ - xrs[i], y_ - yrs[i]};
+        float     coeff = std::clamp(glm::dot(w, e) / glm::dot(e, e), 0.f, 1.f);
+        glm::vec2 b = {w.x - coeff * e.x, w.y - coeff * e.y};
 
-        float dist = std::sqrt(dot(b, b));
+        float dist = std::sqrt(glm::dot(b, b));
         if (dist <= width) dist = width * almost_unit_identity_c2(dist / width);
 
         float t = smoothstep3(coeff);
@@ -67,11 +67,11 @@ Array ridgelines(Vec2<int>                 shape,
       float d = std::numeric_limits<float>::max();
       for (size_t i = 0; i < xrs.size() - 1; i += 2)
       {
-        int         j = i + 1;
-        Vec2<float> e = {xrs[j] - xrs[i], yrs[j] - yrs[i]};
-        Vec2<float> w = {x_ - xrs[i], y_ - yrs[i]};
-        float       coeff = std::clamp(dot(w, e) / dot(e, e), 0.f, 1.f);
-        Vec2<float> b = {w.x - coeff * e.x, w.y - coeff * e.y};
+        int       j = i + 1;
+        glm::vec2 e = {xrs[j] - xrs[i], yrs[j] - yrs[i]};
+        glm::vec2 w = {x_ - xrs[i], y_ - yrs[i]};
+        float     coeff = std::clamp(dot(w, e) / dot(e, e), 0.f, 1.f);
+        glm::vec2 b = {w.x - coeff * e.x, w.y - coeff * e.y};
 
         float dist = std::sqrt(dot(b, b));
         if (dist <= width) dist = width * almost_unit_identity_c2(dist / width);
@@ -97,7 +97,7 @@ Array ridgelines(Vec2<int>                 shape,
   return array;
 }
 
-Array ridgelines_bezier(Vec2<int>                 shape,
+Array ridgelines_bezier(glm::ivec2                shape,
                         const std::vector<float> &xr,
                         const std::vector<float> &yr,
                         const std::vector<float> &zr,
@@ -105,11 +105,11 @@ Array ridgelines_bezier(Vec2<int>                 shape,
                         float                     k_smoothing,
                         float                     width,
                         float                     vmin,
-                        Vec4<float>               bbox,
+                        glm::vec4                 bbox,
                         const Array              *p_noise_x,
                         const Array              *p_noise_y,
                         const Array              *p_stretching,
-                        Vec4<float>               bbox_array)
+                        glm::vec4                 bbox_array)
 {
   // normalized node coordinates
   std::vector<float> xrs = xr;
@@ -135,11 +135,11 @@ Array ridgelines_bezier(Vec2<int>                 shape,
 
         // https://iquilezles.org/articles/distfunctions2d/
 
-        Vec2<float> a = {xrs[j] - xrs[i], yrs[j] - yrs[i]};
-        Vec2<float> b = {xrs[i] - 2.f * xrs[j] + xrs[k],
-                         yrs[i] - 2.f * yrs[j] + yrs[k]};
-        Vec2<float> c = {2.f * a.x, 2.f * a.y};
-        Vec2<float> d = {
+        glm::vec2 a = {xrs[j] - xrs[i], yrs[j] - yrs[i]};
+        glm::vec2 b = {xrs[i] - 2.f * xrs[j] + xrs[k],
+                       yrs[i] - 2.f * yrs[j] + yrs[k]};
+        glm::vec2 c = {2.f * a.x, 2.f * a.y};
+        glm::vec2 d = {
             xrs[i] - x_,
             yrs[i] - y_,
         };
@@ -155,14 +155,13 @@ Array ridgelines_bezier(Vec2<int>                 shape,
         if (h >= 0.f)
         {
           h = std::sqrt(h);
-          Vec2<float> xx = {0.5f * (h - q), 0.5f * (-h - q)};
-          Vec2<float> uv = {
+          glm::vec2 xx = {0.5f * (h - q), 0.5f * (-h - q)};
+          glm::vec2 uv = {
               std::copysign(1.f, xx.x) * std::pow(std::abs(xx.x), 1.f / 3.f),
               std::copysign(1.f, xx.y) * std::pow(std::abs(xx.y), 1.f / 3.f)};
           float t = std::clamp(uv.x + uv.y - kx, 0.f, 1.f);
 
-          Vec2<float> dd = {d.x + (c.x + b.x * t) * t,
-                            d.y + (c.y + b.y * t) * t};
+          glm::vec2 dd = {d.x + (c.x + b.x * t) * t, d.y + (c.y + b.y * t) * t};
 
           float dist = std::sqrt(dot(dd, dd));
           if (dist <= width)
@@ -173,18 +172,18 @@ Array ridgelines_bezier(Vec2<int>                 shape,
         }
         else
         {
-          float       zz = std::sqrt(-p);
-          float       v = std::acos(q / (p * zz * 2.f)) / 3.f;
-          float       m = std::cos(v);
-          float       n = std::sin(v) * 1.732050808f;
-          Vec3<float> tt = {std::clamp((m + m) * zz - kx, 0.f, 1.f),
-                            std::clamp((-n - m) * zz - kx, 0.f, 1.f),
-                            std::clamp((n - m) * zz - kx, 0.f, 1.f)};
+          float     zz = std::sqrt(-p);
+          float     v = std::acos(q / (p * zz * 2.f)) / 3.f;
+          float     m = std::cos(v);
+          float     n = std::sin(v) * 1.732050808f;
+          glm::vec3 tt = {std::clamp((m + m) * zz - kx, 0.f, 1.f),
+                          std::clamp((-n - m) * zz - kx, 0.f, 1.f),
+                          std::clamp((n - m) * zz - kx, 0.f, 1.f)};
 
-          Vec2<float> dd1 = {d.x + (c.x + b.x * tt.x) * tt.x,
-                             d.y + (c.y + b.y * tt.x) * tt.x};
-          Vec2<float> dd2 = {d.x + (c.x + b.x * tt.y) * tt.y,
-                             d.y + (c.y + b.y * tt.y) * tt.y};
+          glm::vec2 dd1 = {d.x + (c.x + b.x * tt.x) * tt.x,
+                           d.y + (c.y + b.y * tt.x) * tt.x};
+          glm::vec2 dd2 = {d.x + (c.x + b.x * tt.y) * tt.y,
+                           d.y + (c.y + b.y * tt.y) * tt.y};
 
           float dist1 = std::sqrt(dot(dd1, dd1));
           float dist2 = std::sqrt(dot(dd2, dd2));
@@ -222,11 +221,11 @@ Array ridgelines_bezier(Vec2<int>                 shape,
         int j = i + 1;
         int k = i + 2;
 
-        Vec2<float> a = {xrs[j] - xrs[i], yrs[j] - yrs[i]};
-        Vec2<float> b = {xrs[i] - 2.f * xrs[j] + xrs[k],
-                         yrs[i] - 2.f * yrs[j] + yrs[k]};
-        Vec2<float> c = {2.f * a.x, 2.f * a.y};
-        Vec2<float> d = {
+        glm::vec2 a = {xrs[j] - xrs[i], yrs[j] - yrs[i]};
+        glm::vec2 b = {xrs[i] - 2.f * xrs[j] + xrs[k],
+                       yrs[i] - 2.f * yrs[j] + yrs[k]};
+        glm::vec2 c = {2.f * a.x, 2.f * a.y};
+        glm::vec2 d = {
             xrs[i] - x_,
             yrs[i] - y_,
         };
@@ -242,14 +241,13 @@ Array ridgelines_bezier(Vec2<int>                 shape,
         if (h >= 0.f)
         {
           h = std::sqrt(h);
-          Vec2<float> xx = {0.5f * (h - q), 0.5f * (-h - q)};
-          Vec2<float> uv = {
+          glm::vec2 xx = {0.5f * (h - q), 0.5f * (-h - q)};
+          glm::vec2 uv = {
               std::copysign(1.f, xx.x) * std::pow(std::abs(xx.x), 1.f / 3.f),
               std::copysign(1.f, xx.y) * std::pow(std::abs(xx.y), 1.f / 3.f)};
           float t = std::clamp(uv.x + uv.y - kx, 0.f, 1.f);
 
-          Vec2<float> dd = {d.x + (c.x + b.x * t) * t,
-                            d.y + (c.y + b.y * t) * t};
+          glm::vec2 dd = {d.x + (c.x + b.x * t) * t, d.y + (c.y + b.y * t) * t};
 
           float dist = std::sqrt(dot(dd, dd));
           if (dist <= width)
@@ -260,18 +258,18 @@ Array ridgelines_bezier(Vec2<int>                 shape,
         }
         else
         {
-          float       zz = std::sqrt(-p);
-          float       v = std::acos(q / (p * zz * 2.f)) / 3.f;
-          float       m = std::cos(v);
-          float       n = std::sin(v) * 1.732050808f;
-          Vec3<float> tt = {std::clamp((m + m) * zz - kx, 0.f, 1.f),
-                            std::clamp((-n - m) * zz - kx, 0.f, 1.f),
-                            std::clamp((n - m) * zz - kx, 0.f, 1.f)};
+          float     zz = std::sqrt(-p);
+          float     v = std::acos(q / (p * zz * 2.f)) / 3.f;
+          float     m = std::cos(v);
+          float     n = std::sin(v) * 1.732050808f;
+          glm::vec3 tt = {std::clamp((m + m) * zz - kx, 0.f, 1.f),
+                          std::clamp((-n - m) * zz - kx, 0.f, 1.f),
+                          std::clamp((n - m) * zz - kx, 0.f, 1.f)};
 
-          Vec2<float> dd1 = {d.x + (c.x + b.x * tt.x) * tt.x,
-                             d.y + (c.y + b.y * tt.x) * tt.x};
-          Vec2<float> dd2 = {d.x + (c.x + b.x * tt.y) * tt.y,
-                             d.y + (c.y + b.y * tt.y) * tt.y};
+          glm::vec2 dd1 = {d.x + (c.x + b.x * tt.x) * tt.x,
+                           d.y + (c.y + b.y * tt.x) * tt.x};
+          glm::vec2 dd2 = {d.x + (c.x + b.x * tt.y) * tt.y,
+                           d.y + (c.y + b.y * tt.y) * tt.y};
 
           float dist1 = std::sqrt(dot(dd1, dd1));
           float dist2 = std::sqrt(dot(dd2, dd2));

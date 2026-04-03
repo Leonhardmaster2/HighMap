@@ -52,11 +52,23 @@ enum DistanceFunction : int
  */
 enum PhasorProfile : int
 {
-  COSINE_BULKY,
-  COSINE_PEAKY,
-  COSINE_SQUARE,
-  COSINE_STD,
-  TRIANGLE,
+  PP_COSINE_BULKY,
+  PP_COSINE_PEAKY,
+  PP_COSINE_SQUARE,
+  PP_COSINE_STD,
+  PP_TRIANGLE,
+};
+
+/**
+ * @brief Radial profile type.
+ */
+enum RadialProfile : int
+{
+  RP_GAIN,
+  RP_LINEAR,
+  RP_POW,
+  RP_SMOOTHSTEP,
+  RP_SMOOTHSTEP_UPPER,
 };
 
 /**
@@ -108,6 +120,7 @@ float almost_unit_identity(float x); ///< @overload
  * @return   float Output.
  */
 float almost_unit_identity_c2(float x);
+float almost_unit_identity_c2(const Array &array);
 
 /**
  * @brief Return the approximate hypothenuse of two numbers.
@@ -165,6 +178,14 @@ Array atan(const Array &array);
  *           j))`.
  */
 Array atan2(const Array &y, const Array &x);
+
+/**
+ * @brief Integer ceiling division.
+ * @param  a Numerator (>= 0)
+ * @param  b Denominator (> 0)
+ * @return   ceil(a / b)
+ */
+int ceil_div(int a, int b);
 
 /**
  * @brief Return the cosine of the array elements.
@@ -231,9 +252,27 @@ std::function<float(float, float)> get_distance_function(
  * sample points within [-π, π].
  */
 std::function<float(float)> get_phasor_profile_function(
-    const PhasorProfile &phasor_profile,
-    float                delta,
-    float               *p_profile_avg = nullptr);
+    PhasorProfile phasor_profile,
+    float         delta,
+    float        *p_profile_avg = nullptr);
+
+/**
+ * @brief Returns a normalized radial profile function.
+ *
+ * The returned function maps x ∈ [0,1] to a value in [0,1], with f(0) = 0 and
+ * f(1) = 1. It is typically used for radial or distance-based falloff in
+ * procedural heightmaps.
+ *
+ * @param  radial_profile Radial profile type.
+ * @param  delta          Shape parameter used by some profiles.
+ *
+ * @return                Radial profile evaluation function.
+ *
+ * @throws std::invalid_argumentIftheprofileisinvalid.
+ */
+std::function<float(float)> get_radial_profile_function(
+    RadialProfile radial_profile,
+    float         delta);
 
 /**
  * @brief Computes the highest power of 2 less than or equal to the given
@@ -256,6 +295,37 @@ int highest_power_of_2(int n);
  * @return        Array Hypothenuse.
  */
 Array hypot(const Array &array1, const Array &array2);
+
+/**
+ * @brief Returns a binary mask of elements equal to value.
+ *
+ * @param  array Input array to test for non-zero values.
+ * @param  value Value.
+ * @return       Array Binary mask array.
+ */
+Array is_equal(const Array &array, float value);
+
+/**
+ * @brief Returns a binary mask of non-zero elements.
+ *
+ * Creates an array of the same shape where each element is 1.0f if the
+ * corresponding input value is non-zero, otherwise 0.0f.
+ *
+ * @param  array Input array to test for non-zero values.
+ * @return       Array Binary mask array.
+ */
+Array is_non_zero(const Array &array);
+
+/**
+ * @brief Returns a binary mask of zero elements.
+ *
+ * Creates an array of the same shape where each element is 1.0f if the
+ * corresponding input value is non-zero, otherwise 0.0f.
+ *
+ * @param  array Input array to test for non-zero values.
+ * @return       Array Binary mask array.
+ */
+Array is_zero(const Array &array);
 
 /**
  * @brief Return the linear interpolation between two arrays by a parameter t.
@@ -305,8 +375,8 @@ void radial_displacement_to_xy(const Array &dr,
                                Array       &dx,
                                Array       &dy,
                                float        smoothing = 1.f,
-                               Vec2<float>  center = {0.5f, 0.5f},
-                               Vec4<float>  bbox = {0.f, 1.f, 0.f, 1.f});
+                               glm::vec2    center = {0.5f, 0.5f},
+                               glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief Rotates a scalar displacement field into directional X and Y
@@ -502,5 +572,18 @@ Array smoothstep7(const Array &x); ///< @overload
 Array sqrt(const Array &array);
 
 Array sqrt_safe(const Array &array);
+
+/**
+ * @brief Triangle function between two bounds.
+ *
+ * Returns 0 if x <= vmin or x >= vmax. Between vmin and vmax, returns a linear
+ * triangle reaching 1 at the midpoint and 0 at the bounds.
+ *
+ * @param  x    Input value.
+ * @param  vmin Lower bound.
+ * @param  vmax Upper bound.
+ * @return      Triangle-shaped value in [0,1].
+ */
+float triangle(float x, float vmin, float vmax);
 
 } // namespace hmap

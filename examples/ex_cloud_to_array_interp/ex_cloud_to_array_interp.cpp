@@ -2,10 +2,10 @@
 
 int main(void)
 {
-  hmap::Vec2<int> shape = {256, 256};
-  int             seed = 1;
+  glm::ivec2 shape = {256, 256};
+  int        seed = 1;
 
-  hmap::Vec4<float> bbox = {-1.f, 0.f, 0.5f, 1.5f};
+  glm::vec4 bbox = {-1.f, 0.f, 0.5f, 1.5f};
 
   hmap::Cloud cloud = hmap::Cloud(10, seed, bbox);
 
@@ -15,7 +15,7 @@ int main(void)
   hmap::Array z1 = hmap::Array(shape);
   cloud.to_array_interp(z1,
                         bbox,
-                        hmap::InterpolationMethod2D::NEAREST,
+                        hmap::InterpolationMethod2D::ITP2D_NEAREST,
                         nullptr,
                         nullptr,
                         bbox);
@@ -34,13 +34,13 @@ int main(void)
 
   cloud.to_array_interp(z2,
                         bbox,
-                        hmap::InterpolationMethod2D::NEAREST,
+                        hmap::InterpolationMethod2D::ITP2D_NEAREST,
                         &nx,
                         &ny,
                         bbox);
   cloud.to_array_interp(z3,
                         bbox,
-                        hmap::InterpolationMethod2D::DELAUNAY,
+                        hmap::InterpolationMethod2D::ITP2D_DELAUNAY,
                         &nx,
                         &ny,
                         bbox);

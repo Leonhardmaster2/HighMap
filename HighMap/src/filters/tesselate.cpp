@@ -33,7 +33,7 @@ Array tessellate(Array       &array,
 
   std::vector<float> x(nnodes);
   std::vector<float> y(nnodes);
-  Vec4<float>        bbox = unit_square_bbox();
+  glm::vec4          bbox = unit_square_bbox();
 
   auto xy = random_points_density(nnodes, *p_weight, seed, bbox);
   x = xy[0];
@@ -53,10 +53,9 @@ Array tessellate(Array       &array,
                                   x,
                                   y,
                                   cloud.get_values(),
-                                  InterpolationMethod2D::DELAUNAY,
+                                  InterpolationMethod2D::ITP2D_DELAUNAY,
                                   nullptr, // noise
                                   nullptr, // noise
-                                  nullptr,
                                   bbox);
 
   return array_out;

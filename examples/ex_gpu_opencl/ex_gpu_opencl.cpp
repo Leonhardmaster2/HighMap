@@ -8,13 +8,13 @@
 template <typename F1, typename F2>
 void compare(F1 fct1, F2 fct2, float tolerance, const std::string &fname)
 {
-  hmap::Vec2<int> shape = {256, 512};
+  glm::ivec2 shape = {256, 512};
   shape = {512, 512};
   // shape = {1024, 1024};
   // shape = {2048, 2048};
   // shape = {4096 * 2, 4096 * 2};
-  hmap::Vec2<float> kw = {2.f, 2.f};
-  int               seed = 1;
+  glm::vec2 kw = {2.f, 2.f};
+  int       seed = 1;
 
   hmap::Array z = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, kw, seed);
   hmap::remap(z);
@@ -73,7 +73,7 @@ int main(void)
   //         "hydraulic_stream_log.png");
 
   // {
-  //   hmap::Vec4<float> bbox = {1.f, 2.f, -0.5f, 0.5f};
+  //   glm::vec4 bbox = {1.f, 2.f, -0.5f, 0.5f};
   //   hmap::Path path = hmap::Path(200, 0, bbox.adjust(0.2f, -0.2f, 0.2f,
   //   -0.2f)); path.reorder_nns();
 
@@ -102,7 +102,7 @@ int main(void)
   //       // hmap::NoiseType::WORLEY_VALUE
   //   };
 
-  //   hmap::Vec2<float> kw = {32.f, 32.f};
+  //   glm::vec2 kw = {32.f, 32.f};
 
   //   for (auto type : types)
   //   {

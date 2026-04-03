@@ -14,13 +14,13 @@ void upscale_amplification(
     float                                                persistence,
     std::function<void(Array &x, float current_scaling)> unary_op)
 {
-  Vec2<int> initial_shape = array.shape;
+  glm::ivec2 initial_shape = array.shape;
 
   // upscale amplification (NB, k = 0 corresponds to initial resolution)
   for (int k = 0; k < upscaling_levels + 1; k++)
   {
-    Vec2<int> upscaled_shape = std::pow(2, k) * initial_shape;
-    float     current_scaling = std::pow(persistence, k);
+    glm::ivec2 upscaled_shape = int(std::pow(2, k)) * initial_shape;
+    float      current_scaling = std::pow(persistence, k);
 
     array = array.resample_to_shape_bicubic(upscaled_shape);
     unary_op(array, current_scaling);

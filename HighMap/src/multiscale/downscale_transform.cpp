@@ -17,9 +17,9 @@ void downscale_transform(Array                        &array,
                          std::function<void(Array &x)> unary_op,
                          bool                          apply_prefiltering)
 {
-  int       nc_x = std::min(array.shape.x, std::max(4, (int)(2.f * kc)));
-  int       nc_y = std::min(array.shape.y, std::max(4, (int)(2.f * kc)));
-  Vec2<int> shape_coarse(nc_x, nc_y);
+  int        nc_x = std::min(array.shape.x, std::max(4, (int)(2.f * kc)));
+  int        nc_y = std::min(array.shape.y, std::max(4, (int)(2.f * kc)));
+  glm::ivec2 shape_coarse(nc_x, nc_y);
 
   Array array_filtered;
 
@@ -30,7 +30,7 @@ void downscale_transform(Array                        &array,
     int   nk = std::max(
         1,
         static_cast<int>(wavelengths_per_kernel * array.shape.x / kc));
-    Vec2<int> kernel_shape(nk, nk);
+    glm::ivec2 kernel_shape(nk, nk);
 
     Array kernel = sinc_separable(kernel_shape, wavelengths_per_kernel);
     kernel *= blackman(kernel_shape);

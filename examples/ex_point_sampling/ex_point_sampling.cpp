@@ -5,13 +5,13 @@
 int main(void)
 {
   // for render only
-  hmap::Vec2<int>          shape = {256, 256};
+  glm::ivec2               shape = {256, 256};
   hmap::Array              raster(shape);
   std::vector<hmap::Array> zs = {};
   uint                     seed = 0;
 
   // density field
-  hmap::Vec2<float> kw = {2.f, 2.f};
+  glm::vec2   kw = {2.f, 2.f};
   hmap::Array density = hmap::noise(hmap::NoiseType::PERLIN, shape, kw, seed);
   hmap::remap(density);   // /!\ NEEDS TO BE IN [0, 1]
   hmap::gain(density, 2); // sharper transition
@@ -124,8 +124,8 @@ int main(void)
   {
     zs.clear();
 
-    hmap::Vec2<float> jitter_amount = {0.3f, 0.3f};
-    hmap::Vec2<float> stagger_ratio = {0.5f, 0.f};
+    glm::vec2 jitter_amount = {0.3f, 0.3f};
+    glm::vec2 stagger_ratio = {0.5f, 0.f};
 
     // auto        xy = hmap::random_points_jittered(count,
     //                                        jitter_amount,

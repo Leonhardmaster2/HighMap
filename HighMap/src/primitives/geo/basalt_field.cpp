@@ -10,8 +10,8 @@
 namespace hmap::gpu
 {
 
-Array basalt_field(Vec2<int>    shape,
-                   Vec2<float>  kw,
+Array basalt_field(glm::ivec2   shape,
+                   glm::vec2    kw,
                    uint         seed,
                    float        warp_kw,
                    float        large_scale_warp_amp,
@@ -31,7 +31,7 @@ Array basalt_field(Vec2<int>    shape,
                    float        flatten_amp,
                    const Array *p_noise_x,
                    const Array *p_noise_y,
-                   Vec4<float>  bbox)
+                   glm::vec4    bbox)
 {
   // --- large scales
 
@@ -45,7 +45,7 @@ Array basalt_field(Vec2<int>    shape,
 
     Array dx = gpu::noise_fbm(NoiseType::SIMPLEX2,
                               shape,
-                              Vec2<float>(warp_kw, warp_kw),
+                              glm::vec2(warp_kw, warp_kw),
                               seed++,
                               octaves,
                               weight,
@@ -59,7 +59,7 @@ Array basalt_field(Vec2<int>    shape,
     remap(dx, 0.f, large_scale_warp_amp, -1.f, 1.f);
 
     // base
-    Vec2<float>       jitter(1.f, 1.f);
+    glm::vec2         jitter(1.f, 1.f);
     float             k_smoothing = 0.9f;
     VoronoiReturnType return_type = VoronoiReturnType::EDGE_DISTANCE_SQUARED;
 
@@ -98,7 +98,7 @@ Array basalt_field(Vec2<int>    shape,
   Array z_medium;
 
   {
-    Vec2<float>       jitter(1.f, 1.f);
+    glm::vec2         jitter(1.f, 1.f);
     float             k_smoothing = 0.f;
     VoronoiReturnType return_type = VoronoiReturnType::EDGE_DISTANCE_SQUARED;
     int               octaves = 4;
@@ -107,7 +107,7 @@ Array basalt_field(Vec2<int>    shape,
     float             lacunarity = 2.3f;
 
     Array dx = gpu::voronoi_fbm(shape,
-                                0.5f * Vec2<float>(warp_kw, warp_kw),
+                                0.5f * glm::vec2(warp_kw, warp_kw),
                                 seed++,
                                 jitter,
                                 k_smoothing,
@@ -160,7 +160,7 @@ Array basalt_field(Vec2<int>    shape,
   {
     // some parameters are the same as medium scales
 
-    Vec2<float>       jitter(1.f, 1.f);
+    glm::vec2         jitter(1.f, 1.f);
     float             k_smoothing = 0.f;
     VoronoiReturnType return_type = VoronoiReturnType::EDGE_DISTANCE_SQUARED;
     int               octaves = 4;
@@ -169,7 +169,7 @@ Array basalt_field(Vec2<int>    shape,
     float             lacunarity = 2.f;
 
     Array dx = gpu::voronoi_fbm(shape,
-                                2.f * Vec2<float>(warp_kw, warp_kw),
+                                2.f * glm::vec2(warp_kw, warp_kw),
                                 seed++,
                                 jitter,
                                 k_smoothing,

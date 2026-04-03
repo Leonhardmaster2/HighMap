@@ -22,6 +22,33 @@ namespace hmap
 {
 
 /**
+ * @enum PeriodicityType
+ * @brief Describes the periodicity mode applied along map axes.
+ */
+// clang-format off
+enum PeriodicityType : int
+{
+	PERIODICITY_X, ///< Periodic only along the X axis.
+	PERIODICITY_Y, ///< Periodic only along the Y axis.
+	PERIODICITY_XY ///< Periodic along both the X and Y axes.
+};
+// clang-format on
+
+/**
+ * @enum DomainBoundary
+ * @brief Describes which domain boundary.
+ */
+// clang-format off
+enum DomainBoundary : int
+{
+	BOUNDARY_LEFT, ///< i = 0
+	BOUNDARY_RIGHT, ///< i = nx - 1
+	BOUNDARY_TOP, ///< j = 0
+	BOUNDARY_BOTTOM ///< j = ny - 1
+};
+// clang-format on
+
+/**
  * @brief Performs linear extrapolation of values at the borders of an array
  * (e.g., `i = 0`, `j = 0`, etc.) based on the inner values of the array.
  *
@@ -74,7 +101,7 @@ void falloff(Array           &array,
              float            strength = 1.f,
              DistanceFunction dist_fct = DistanceFunction::EUCLIDIAN,
              const Array     *p_noise = nullptr,
-             Vec4<float>      bbox = {0.f, 1.f, 0.f, 1.f});
+             glm::vec4        bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief Fills the border values of an array (e.g., `i = 0`, `j = 0`, etc.)
@@ -113,7 +140,7 @@ void fill_borders(Array &array, int nbuffer); ///< @overload
  * @return              Array A new array with buffers added at the boundaries.
  */
 Array generate_buffered_array(const Array &array,
-                              Vec4<int>    buffers,
+                              glm::ivec4   buffers,
                               bool         zero_padding = false);
 
 /**
@@ -135,7 +162,10 @@ Array generate_buffered_array(const Array &array,
  * @image html ex_make_periodic0.png
  * @image html ex_make_periodic1.png
  */
-void make_periodic(Array &array, int nbuffer);
+void make_periodic(
+    Array                 &array,
+    int                    nbuffer,
+    const PeriodicityType &periodicity_type = PeriodicityType::PERIODICITY_XY);
 
 /**
  * @brief Creates a periodic array in both directions using a stitching
@@ -188,7 +218,9 @@ Array make_periodic_stitching(const Array &array, float overlap);
  * **Result**
  * @image html make_periodic_tiling.png
  */
-Array make_periodic_tiling(const Array &array, float overlap, Vec2<int> tiling);
+Array make_periodic_tiling(const Array &array,
+                           float        overlap,
+                           glm::ivec2   tiling);
 
 /**
  * @brief Enforces specific values at the boundaries of the array.
@@ -211,9 +243,9 @@ Array make_periodic_tiling(const Array &array, float overlap, Vec2<int> tiling);
  * **Result**
  * @image html ex_set_borders.png
  */
-void set_borders(Array      &array,
-                 Vec4<float> border_values,
-                 Vec4<int>   buffer_sizes);
+void set_borders(Array     &array,
+                 glm::vec4  border_values,
+                 glm::ivec4 buffer_sizes);
 
 /**
  * @brief Enforces a uniform value at all boundaries of the array.
@@ -243,7 +275,7 @@ void set_borders(Array &array, float border_values, int buffer_sizes);
  * @param buffer_sizes A vector specifying the buffer sizes at the east, west,
  *                     south, and north borders.
  */
-void sym_borders(Array &array, Vec4<int> buffer_sizes);
+void sym_borders(Array &array, glm::ivec4 buffer_sizes);
 
 /**
  * @brief Fills the border values (e.g., `i = 0`, `j = 0`, etc.) of the array
@@ -289,6 +321,6 @@ void zeroed_edges(Array           &array,
                   float            sigma = 1.f,
                   DistanceFunction dist_fct = DistanceFunction::EUCLIDIAN,
                   const Array     *p_noise = nullptr,
-                  Vec4<float>      bbox = {0.f, 1.f, 0.f, 1.f});
+                  glm::vec4        bbox = {0.f, 1.f, 0.f, 1.f});
 
 } // namespace hmap

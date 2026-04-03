@@ -39,12 +39,12 @@ void helper_bind_optional_buffers(clwrapper::Run &run,
 
 // --- functions
 
-Array gabor_wave(Vec2<int>    shape,
-                 Vec2<float>  kw,
+Array gabor_wave(glm::ivec2   shape,
+                 glm::vec2    kw,
                  uint         seed,
                  const Array &angle,
                  float        angle_spread_ratio,
-                 Vec4<float>  bbox)
+                 glm::vec4    bbox)
 {
   Array array(shape);
 
@@ -67,12 +67,12 @@ Array gabor_wave(Vec2<int>    shape,
   return array;
 }
 
-Array gabor_wave(Vec2<int>   shape,
-                 Vec2<float> kw,
-                 uint        seed,
-                 float       angle,
-                 float       angle_spread_ratio,
-                 Vec4<float> bbox)
+Array gabor_wave(glm::ivec2 shape,
+                 glm::vec2  kw,
+                 uint       seed,
+                 float      angle,
+                 float      angle_spread_ratio,
+                 glm::vec4  bbox)
 {
   Array array(shape);
   Array array_angle(shape, angle);
@@ -82,8 +82,8 @@ Array gabor_wave(Vec2<int>   shape,
   return array;
 }
 
-Array gabor_wave_fbm(Vec2<int>    shape,
-                     Vec2<float>  kw,
+Array gabor_wave_fbm(glm::ivec2   shape,
+                     glm::vec2    kw,
                      uint         seed,
                      const Array &angle,
                      float        angle_spread_ratio,
@@ -94,7 +94,7 @@ Array gabor_wave_fbm(Vec2<int>    shape,
                      const Array *p_ctrl_param,
                      const Array *p_noise_x,
                      const Array *p_noise_y,
-                     Vec4<float>  bbox)
+                     glm::vec4    bbox)
 {
   Array array(shape);
 
@@ -129,8 +129,8 @@ Array gabor_wave_fbm(Vec2<int>    shape,
   return array;
 }
 
-Array gabor_wave_fbm(Vec2<int>    shape,
-                     Vec2<float>  kw,
+Array gabor_wave_fbm(glm::ivec2   shape,
+                     glm::vec2    kw,
                      uint         seed,
                      float        angle,
                      float        angle_spread_ratio,
@@ -141,7 +141,7 @@ Array gabor_wave_fbm(Vec2<int>    shape,
                      const Array *p_ctrl_param,
                      const Array *p_noise_x,
                      const Array *p_noise_y,
-                     Vec4<float>  bbox)
+                     glm::vec4    bbox)
 {
   Array array(shape);
   Array array_angle(shape, angle);
@@ -163,13 +163,13 @@ Array gabor_wave_fbm(Vec2<int>    shape,
   return array;
 }
 
-Array gavoronoise(Vec2<int>    shape,
-                  Vec2<float>  kw,
+Array gavoronoise(glm::ivec2   shape,
+                  glm::vec2    kw,
                   uint         seed,
                   const Array &angle,
                   float        amplitude,
                   float        angle_spread_ratio,
-                  Vec2<float>  kw_multiplier,
+                  glm::vec2    kw_multiplier,
                   float        slope_strength,
                   float        branch_strength,
                   float        z_cut_min,
@@ -180,7 +180,7 @@ Array gavoronoise(Vec2<int>    shape,
                   const Array *p_ctrl_param,
                   const Array *p_noise_x,
                   const Array *p_noise_y,
-                  Vec4<float>  bbox)
+                  glm::vec4    bbox)
 {
   Array array(shape);
 
@@ -221,13 +221,13 @@ Array gavoronoise(Vec2<int>    shape,
   return array;
 }
 
-Array gavoronoise(Vec2<int>    shape,
-                  Vec2<float>  kw,
+Array gavoronoise(glm::ivec2   shape,
+                  glm::vec2    kw,
                   uint         seed,
                   float        angle,
                   float        amplitude,
                   float        angle_spread_ratio,
-                  Vec2<float>  kw_multiplier,
+                  glm::vec2    kw_multiplier,
                   float        slope_strength,
                   float        branch_strength,
                   float        z_cut_min,
@@ -238,7 +238,7 @@ Array gavoronoise(Vec2<int>    shape,
                   const Array *p_ctrl_param,
                   const Array *p_noise_x,
                   const Array *p_noise_y,
-                  Vec4<float>  bbox)
+                  glm::vec4    bbox)
 {
   Array array(shape);
   Array array_angle(shape, angle);
@@ -266,10 +266,10 @@ Array gavoronoise(Vec2<int>    shape,
 }
 
 Array gavoronoise(const Array &base,
-                  Vec2<float>  kw,
+                  glm::vec2    kw,
                   uint         seed,
                   float        amplitude,
-                  Vec2<float>  kw_multiplier,
+                  glm::vec2    kw_multiplier,
                   float        slope_strength,
                   float        branch_strength,
                   float        z_cut_min,
@@ -280,7 +280,7 @@ Array gavoronoise(const Array &base,
                   const Array *p_ctrl_param,
                   const Array *p_noise_x,
                   const Array *p_noise_y,
-                  Vec4<float>  bbox)
+                  glm::vec4    bbox)
 {
   Array array(base.shape);
 
@@ -321,21 +321,21 @@ Array gavoronoise(const Array &base,
   return array;
 }
 
-Array hemisphere_field(Vec2<int>         shape,
-                       Vec2<float>       kw,
-                       uint              seed,
-                       float             rmin,
-                       float             rmax,
-                       float             amplitude_random_ratio,
-                       float             density,
-                       hmap::Vec2<float> jitter,
-                       float             shift,
-                       const Array      *p_noise_x,
-                       const Array      *p_noise_y,
-                       const Array      *p_noise_distance,
-                       const Array      *p_density_multiplier,
-                       const Array      *p_size_multiplier,
-                       Vec4<float>       bbox)
+Array hemisphere_field(glm::ivec2   shape,
+                       glm::vec2    kw,
+                       uint         seed,
+                       float        rmin,
+                       float        rmax,
+                       float        amplitude_random_ratio,
+                       float        density,
+                       glm::vec2    jitter,
+                       float        shift,
+                       const Array *p_noise_x,
+                       const Array *p_noise_y,
+                       const Array *p_noise_distance,
+                       const Array *p_density_multiplier,
+                       const Array *p_size_multiplier,
+                       glm::vec4    bbox)
 {
   Array array(shape);
 
@@ -375,24 +375,24 @@ Array hemisphere_field(Vec2<int>         shape,
   return array;
 }
 
-Array hemisphere_field_fbm(Vec2<int>         shape,
-                           Vec2<float>       kw,
-                           uint              seed,
-                           float             rmin,
-                           float             rmax,
-                           float             amplitude_random_ratio,
-                           float             density,
-                           hmap::Vec2<float> jitter,
-                           float             shift,
-                           int               octaves,
-                           float             persistence,
-                           float             lacunarity,
-                           const Array      *p_noise_x,
-                           const Array      *p_noise_y,
-                           const Array      *p_noise_distance,
-                           const Array      *p_density_multiplier,
-                           const Array      *p_size_multiplier,
-                           Vec4<float>       bbox)
+Array hemisphere_field_fbm(glm::ivec2   shape,
+                           glm::vec2    kw,
+                           uint         seed,
+                           float        rmin,
+                           float        rmax,
+                           float        amplitude_random_ratio,
+                           float        density,
+                           glm::vec2    jitter,
+                           float        shift,
+                           int          octaves,
+                           float        persistence,
+                           float        lacunarity,
+                           const Array *p_noise_x,
+                           const Array *p_noise_y,
+                           const Array *p_noise_distance,
+                           const Array *p_density_multiplier,
+                           const Array *p_size_multiplier,
+                           glm::vec4    bbox)
 {
   Array array(shape);
 
@@ -435,13 +435,13 @@ Array hemisphere_field_fbm(Vec2<int>         shape,
   return array;
 }
 
-Array mountain_range_radial(Vec2<int>    shape,
-                            Vec2<float>  kw,
+Array mountain_range_radial(glm::ivec2   shape,
+                            glm::vec2    kw,
                             uint         seed,
                             float        half_width,
                             float        angle_spread_ratio,
                             float        core_size_ratio,
-                            Vec2<float>  center,
+                            glm::vec2    center,
                             int          octaves,
                             float        weight,
                             float        persistence,
@@ -450,7 +450,7 @@ Array mountain_range_radial(Vec2<int>    shape,
                             const Array *p_noise_x,
                             const Array *p_noise_y,
                             const Array *p_angle,
-                            Vec4<float>  bbox)
+                            glm::vec4    bbox)
 {
   Array array(shape);
 
@@ -491,18 +491,17 @@ Array mountain_range_radial(Vec2<int>    shape,
 }
 
 Array noise(NoiseType    noise_type,
-            Vec2<int>    shape,
-            Vec2<float>  kw,
+            glm::ivec2   shape,
+            glm::vec2    kw,
             uint         seed,
             const Array *p_noise_x,
             const Array *p_noise_y,
             const Array *p_stretching,
-            Vec4<float>  bbox)
+            glm::vec4    bbox)
 {
   Array array(shape);
 
   int noise_id = static_cast<int>(noise_type);
-  // LOG_DEBUG("noise_id: %d", noise_id);
 
   auto run = clwrapper::Run("noise");
 
@@ -528,8 +527,8 @@ Array noise(NoiseType    noise_type,
 }
 
 Array noise_fbm(NoiseType    noise_type,
-                Vec2<int>    shape,
-                Vec2<float>  kw,
+                glm::ivec2   shape,
+                glm::vec2    kw,
                 uint         seed,
                 int          octaves,
                 float        weight,
@@ -539,12 +538,11 @@ Array noise_fbm(NoiseType    noise_type,
                 const Array *p_noise_x,
                 const Array *p_noise_y,
                 const Array *p_stretching,
-                Vec4<float>  bbox)
+                glm::vec4    bbox)
 {
   Array array(shape);
 
   int noise_id = static_cast<int>(noise_type);
-  // LOG_DEBUG("noise_id: %d", noise_id);
 
   auto run = clwrapper::Run("noise_fbm");
 
@@ -575,24 +573,24 @@ Array noise_fbm(NoiseType    noise_type,
   return array;
 }
 
-Array polygon_field(Vec2<int>         shape,
-                    Vec2<float>       kw,
-                    uint              seed,
-                    float             rmin,
-                    float             rmax,
-                    float             clamping_dist,
-                    float             clamping_k,
-                    int               n_vertices_min,
-                    int               n_vertices_max,
-                    float             density,
-                    hmap::Vec2<float> jitter,
-                    float             shift,
-                    const Array      *p_noise_x,
-                    const Array      *p_noise_y,
-                    const Array      *p_noise_distance,
-                    const Array      *p_density_multiplier,
-                    const Array      *p_size_multiplier,
-                    Vec4<float>       bbox)
+Array polygon_field(glm::ivec2   shape,
+                    glm::vec2    kw,
+                    uint         seed,
+                    float        rmin,
+                    float        rmax,
+                    float        clamping_dist,
+                    float        clamping_k,
+                    int          n_vertices_min,
+                    int          n_vertices_max,
+                    float        density,
+                    glm::vec2    jitter,
+                    float        shift,
+                    const Array *p_noise_x,
+                    const Array *p_noise_y,
+                    const Array *p_noise_distance,
+                    const Array *p_density_multiplier,
+                    const Array *p_size_multiplier,
+                    glm::vec4    bbox)
 {
   Array array(shape);
 
@@ -635,27 +633,27 @@ Array polygon_field(Vec2<int>         shape,
   return array;
 }
 
-Array polygon_field_fbm(Vec2<int>         shape,
-                        Vec2<float>       kw,
-                        uint              seed,
-                        float             rmin,
-                        float             rmax,
-                        float             clamping_dist,
-                        float             clamping_k,
-                        int               n_vertices_min,
-                        int               n_vertices_max,
-                        float             density,
-                        hmap::Vec2<float> jitter,
-                        float             shift,
-                        int               octaves,
-                        float             persistence,
-                        float             lacunarity,
-                        const Array      *p_noise_x,
-                        const Array      *p_noise_y,
-                        const Array      *p_noise_distance,
-                        const Array      *p_density_multiplier,
-                        const Array      *p_size_multiplier,
-                        Vec4<float>       bbox)
+Array polygon_field_fbm(glm::ivec2   shape,
+                        glm::vec2    kw,
+                        uint         seed,
+                        float        rmin,
+                        float        rmax,
+                        float        clamping_dist,
+                        float        clamping_k,
+                        int          n_vertices_min,
+                        int          n_vertices_max,
+                        float        density,
+                        glm::vec2    jitter,
+                        float        shift,
+                        int          octaves,
+                        float        persistence,
+                        float        lacunarity,
+                        const Array *p_noise_x,
+                        const Array *p_noise_y,
+                        const Array *p_noise_distance,
+                        const Array *p_density_multiplier,
+                        const Array *p_size_multiplier,
+                        glm::vec4    bbox)
 {
   Array array(shape);
 
@@ -701,7 +699,7 @@ Array polygon_field_fbm(Vec2<int>         shape,
   return array;
 }
 
-Array vorolines(Vec2<int>         shape,
+Array vorolines(glm::ivec2        shape,
                 float             density,
                 uint              seed,
                 float             k_smoothing,
@@ -711,14 +709,14 @@ Array vorolines(Vec2<int>         shape,
                 VoronoiReturnType return_type,
                 const Array      *p_noise_x,
                 const Array      *p_noise_y,
-                Vec4<float>       bbox,
-                Vec4<float>       bbox_points)
+                glm::vec4         bbox,
+                glm::vec4         bbox_points)
 {
   // --- generate random set of points
 
   // density is the number of pts per unit surface
-  int npoints = static_cast<int>(density * (bbox_points.b - bbox_points.a) *
-                                 (bbox_points.d - bbox_points.c));
+  int npoints = static_cast<int>(density * (bbox_points.y - bbox_points.x) *
+                                 (bbox_points.w - bbox_points.z));
   npoints = std::max(1, npoints);
   Cloud cloud = Cloud(npoints, seed, bbox_points);
 
@@ -780,7 +778,7 @@ Array vorolines(Vec2<int>         shape,
   return array;
 }
 
-Array vorolines_fbm(Vec2<int>         shape,
+Array vorolines_fbm(glm::ivec2        shape,
                     float             density,
                     uint              seed,
                     float             k_smoothing,
@@ -794,8 +792,8 @@ Array vorolines_fbm(Vec2<int>         shape,
                     float             lacunarity,
                     const Array      *p_noise_x,
                     const Array      *p_noise_y,
-                    Vec4<float>       bbox,
-                    Vec4<float>       bbox_points)
+                    glm::vec4         bbox,
+                    glm::vec4         bbox_points)
 {
   Array n = Array(shape);
   Array na = Array(shape, 0.6f);
@@ -825,17 +823,17 @@ Array vorolines_fbm(Vec2<int>         shape,
   return n;
 }
 
-Array voronoi(Vec2<int>         shape,
-              Vec2<float>       kw,
+Array voronoi(glm::ivec2        shape,
+              glm::vec2         kw,
               uint              seed,
-              Vec2<float>       jitter,
+              glm::vec2         jitter,
               float             k_smoothing,
               float             exp_sigma,
               VoronoiReturnType return_type,
               const Array      *p_ctrl_param,
               const Array      *p_noise_x,
               const Array      *p_noise_y,
-              Vec4<float>       bbox)
+              glm::vec4         bbox)
 {
   Array array(shape);
 
@@ -867,10 +865,10 @@ Array voronoi(Vec2<int>         shape,
   return array;
 }
 
-Array voronoi_fbm(Vec2<int>         shape,
-                  Vec2<float>       kw,
+Array voronoi_fbm(glm::ivec2        shape,
+                  glm::vec2         kw,
                   uint              seed,
-                  Vec2<float>       jitter,
+                  glm::vec2         jitter,
                   float             k_smoothing,
                   float             exp_sigma,
                   VoronoiReturnType return_type,
@@ -881,7 +879,7 @@ Array voronoi_fbm(Vec2<int>         shape,
                   const Array      *p_ctrl_param,
                   const Array      *p_noise_x,
                   const Array      *p_noise_y,
-                  Vec4<float>       bbox)
+                  glm::vec4         bbox)
 {
   Array array(shape);
 
@@ -917,14 +915,14 @@ Array voronoi_fbm(Vec2<int>         shape,
   return array;
 }
 
-Array voronoise(Vec2<int>    shape,
-                Vec2<float>  kw,
+Array voronoise(glm::ivec2   shape,
+                glm::vec2    kw,
                 float        u_param,
                 float        v_param,
                 uint         seed,
                 const Array *p_noise_x,
                 const Array *p_noise_y,
-                Vec4<float>  bbox)
+                glm::vec4    bbox)
 {
   Array array(shape);
 
@@ -952,8 +950,8 @@ Array voronoise(Vec2<int>    shape,
   return array;
 }
 
-Array voronoise_fbm(Vec2<int>    shape,
-                    Vec2<float>  kw,
+Array voronoise_fbm(glm::ivec2   shape,
+                    glm::vec2    kw,
                     float        u_param,
                     float        v_param,
                     uint         seed,
@@ -964,7 +962,7 @@ Array voronoise_fbm(Vec2<int>    shape,
                     const Array *p_ctrl_param,
                     const Array *p_noise_x,
                     const Array *p_noise_y,
-                    Vec4<float>  bbox)
+                    glm::vec4    bbox)
 {
   Array array(shape);
 
@@ -998,14 +996,14 @@ Array voronoise_fbm(Vec2<int>    shape,
   return array;
 }
 
-Array voronoi_edge_distance(Vec2<int>    shape,
-                            Vec2<float>  kw,
+Array voronoi_edge_distance(glm::ivec2   shape,
+                            glm::vec2    kw,
                             uint         seed,
-                            Vec2<float>  jitter,
+                            glm::vec2    jitter,
                             const Array *p_ctrl_param,
                             const Array *p_noise_x,
                             const Array *p_noise_y,
-                            Vec4<float>  bbox)
+                            glm::vec4    bbox)
 {
   Array array(shape);
 
@@ -1034,7 +1032,7 @@ Array voronoi_edge_distance(Vec2<int>    shape,
   return array;
 }
 
-Array vororand(Vec2<int>         shape,
+Array vororand(glm::ivec2        shape,
                float             density,
                float             variability,
                uint              seed,
@@ -1043,22 +1041,22 @@ Array vororand(Vec2<int>         shape,
                VoronoiReturnType return_type,
                const Array      *p_noise_x,
                const Array      *p_noise_y,
-               Vec4<float>       bbox,
-               Vec4<float>       bbox_points)
+               glm::vec4         bbox,
+               glm::vec4         bbox_points)
 {
   // --- generate random set of points
 
   // TODO adjust extension with respect to the density?
 
   // take a bounding box a bit larger to reduce border effects
-  float       lx = variability * (bbox_points.b - bbox_points.a);
-  float       ly = variability * (bbox_points.d - bbox_points.c);
-  Vec4<float> bbox_points_mod = bbox_points.adjust(-lx, lx, -ly, ly);
+  float     lx = variability * (bbox_points.y - bbox_points.x);
+  float     ly = variability * (bbox_points.w - bbox_points.z);
+  glm::vec4 bbox_points_mod = adjust(bbox_points, -lx, lx, -ly, ly);
 
   // density is the number of pts per unit surface
   int npoints = static_cast<int>(density *
-                                 (bbox_points_mod.b - bbox_points_mod.a) *
-                                 (bbox_points_mod.d - bbox_points_mod.c));
+                                 (bbox_points_mod.y - bbox_points_mod.x) *
+                                 (bbox_points_mod.w - bbox_points_mod.z));
   npoints = std::max(1, npoints);
   Cloud cloud = Cloud(npoints, seed, bbox_points_mod);
 
@@ -1080,7 +1078,7 @@ Array vororand(Vec2<int>         shape,
   return array;
 }
 
-Array vororand(Vec2<int>                 shape,
+Array vororand(glm::ivec2                shape,
                const std::vector<float> &xp,
                const std::vector<float> &yp,
                float                     k_smoothing,
@@ -1088,7 +1086,7 @@ Array vororand(Vec2<int>                 shape,
                VoronoiReturnType         return_type,
                const Array              *p_noise_x,
                const Array              *p_noise_y,
-               Vec4<float>               bbox)
+               glm::vec4                 bbox)
 {
   // do some checking first
   if (xp.empty() || yp.empty() || xp.size() != yp.size())
@@ -1116,6 +1114,53 @@ Array vororand(Vec2<int>                 shape,
                      k_smoothing,
                      exp_sigma,
                      (int)return_type,
+                     p_noise_x ? 1 : 0,
+                     p_noise_y ? 1 : 0,
+                     bbox);
+
+  run.execute({array.shape.x, array.shape.y});
+  run.read_buffer("array");
+
+  return array;
+}
+
+Array wavelet_noise(glm::ivec2   shape,
+                    glm::vec2    kw,
+                    uint         seed,
+                    float        kw_multiplier,
+                    float        vorticity,
+                    float        density,
+                    int          octaves,
+                    float        weight,
+                    float        persistence,
+                    float        lacunarity,
+                    const Array *p_ctrl_param,
+                    const Array *p_noise_x,
+                    const Array *p_noise_y,
+                    glm::vec4    bbox)
+{
+  Array array(shape);
+
+  auto run = clwrapper::Run("wavelet_noise");
+
+  run.bind_buffer<float>("array", array.vector);
+  helper_bind_optional_buffer(run, "ctrl_param", p_ctrl_param);
+  helper_bind_optional_buffer(run, "noise_x", p_noise_x);
+  helper_bind_optional_buffer(run, "noise_y", p_noise_y);
+
+  run.bind_arguments(array.shape.x,
+                     array.shape.y,
+                     kw.x,
+                     kw.y,
+                     seed,
+                     kw_multiplier,
+                     vorticity,
+                     density,
+                     octaves,
+                     weight,
+                     persistence,
+                     lacunarity,
+                     p_ctrl_param ? 1 : 0,
                      p_noise_x ? 1 : 0,
                      p_noise_y ? 1 : 0,
                      bbox);

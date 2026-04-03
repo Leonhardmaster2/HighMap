@@ -12,8 +12,8 @@
 namespace hmap
 {
 
-Array worley_double(Vec2<int>    shape,
-                    Vec2<float>  kw,
+Array worley_double(glm::ivec2   shape,
+                    glm::vec2    kw,
                     uint         seed,
                     float        ratio,
                     float        k,
@@ -21,7 +21,7 @@ Array worley_double(Vec2<int>    shape,
                     const Array *p_noise_x,
                     const Array *p_noise_y,
                     const Array *p_stretching,
-                    Vec4<float>  bbox)
+                    glm::vec4    bbox)
 {
   hmap::Array                array = hmap::Array(shape);
   hmap::WorleyDoubleFunction f = hmap::WorleyDoubleFunction(kw, seed, ratio, k);

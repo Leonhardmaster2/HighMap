@@ -3,7 +3,9 @@
  * this software. */
 #include "highmap/array.hpp"
 #include "highmap/filters.hpp"
-#include "highmap/hydrology.hpp"
+#include "highmap/hydrology/hydrology.hpp"
+#include "highmap/morphology.hpp"
+#include "highmap/range.hpp"
 
 namespace hmap
 {
@@ -36,6 +38,140 @@ void coastal_erosion_diffusion(Array &z,
   }
 
   if (p_water_mask) *p_water_mask = mask;
+}
+
+void coastal_erosion_profile(Array &z,
+                             Array &water_depth,
+                             float  shore_ground_extent,
+                             float  shore_water_extent,
+                             float  slope_shore,
+                             float  slope_shore_water,
+                             float  scarp_extent_ratio,
+                             bool   apply_post_filter,
+                             Array *p_shore_mask)
+{
+  Array           z_bckp = z;
+  Array           shore_mask(z.shape); // includes ground & water
+  Mat<glm::ivec2> closest_g(z.shape);  // ground
+  Mat<glm::ivec2> closest_w(z.shape);  // water
+
+  Array r_ground = distance_transform_with_closest(water_depth, closest_g);
+  Array r_water = distance_transform_with_closest(is_zero(water_depth),
+                                                  closest_w);
+
+  float slope_shore_n = slope_shore / float(z.shape.x);
+  float slope_shore_water_n = slope_shore_water / float(z.shape.x);
+
+  for (int j = 0; j < z.shape.y; ++j)
+    for (int i = 0; i < z.shape.x; ++i)
+    {
+      if (r_ground(i, j) > 0.f)
+      {
+        // --- ground
+
+        // transition factor
+        float t = r_ground(i, j) / shore_ground_extent;
+
+        if (t <= 1.f)
+        {
+          shore_mask(i, j) = 1.f - t;
+
+          float t_scarp = 1.f - scarp_extent_ratio;
+          float zref = z(closest_g(i, j));
+          float h = zref + slope_shore_n * r_ground(i, j);
+
+          float new_z = 0.f;
+
+          if (t < t_scarp)
+          {
+            // shore
+            new_z = h;
+          }
+          else
+          {
+            // scarp
+            float ts = (t - t_scarp) / (1.f - t_scarp); // in [0, 1]
+            ts = smoothstep3(ts);
+
+            new_z = lerp(h, z(i, j), ts);
+          }
+
+          z(i, j) = new_z;
+        }
+      }
+      else
+      {
+        // --- underwater
+
+        // transition factor
+        float t = r_water(i, j) / shore_water_extent;
+
+        if (t <= 1.f)
+        {
+          shore_mask(i, j) = 1.f - t;
+
+          // ensure slope continuity at water level
+          float slope = lerp(slope_shore_n, slope_shore_water_n, t);
+
+          float zref = z(closest_w(i, j));
+          float h = zref - slope * r_water(i, j);
+          float new_z = lerp(h, z(i, j), smoothstep3(t));
+
+          z(i, j) = new_z;
+        }
+      }
+    }
+
+  if (apply_post_filter) laplace(z, &shore_mask);
+
+  // adjust water depth so that water height is the same as before
+  // filtering
+  for (int j = 0; j < z.shape.y; j++)
+    for (int i = 0; i < z.shape.x; i++)
+    {
+      if (water_depth(i, j) > 0.f)
+        water_depth(i, j) = z_bckp(i, j) + water_depth(i, j) - z(i, j);
+    }
+
+  // other optional outputs
+  if (p_shore_mask) *p_shore_mask = shore_mask;
+}
+
+void coastal_erosion_profile(Array       &z,
+                             const Array *p_mask,
+                             Array       &water_depth,
+                             float        shore_ground_extent,
+                             float        shore_water_extent,
+                             float        slope_shore,
+                             float        slope_shore_water,
+                             float        scarp_extent_ratio,
+                             bool         apply_post_filter,
+                             Array       *p_shore_mask)
+{
+  if (!p_mask)
+    coastal_erosion_profile(z,
+                            water_depth,
+                            shore_ground_extent,
+                            shore_water_extent,
+                            slope_shore,
+                            slope_shore_water,
+                            scarp_extent_ratio,
+                            apply_post_filter,
+                            p_shore_mask);
+  else
+  {
+    Array z_f = z;
+    coastal_erosion_profile(z_f,
+                            water_depth,
+                            shore_ground_extent,
+                            shore_water_extent,
+                            slope_shore,
+                            slope_shore_water,
+                            scarp_extent_ratio,
+                            apply_post_filter,
+                            p_shore_mask);
+    z = lerp(z, z_f, *(p_mask));
+  }
 }
 
 } // namespace hmap

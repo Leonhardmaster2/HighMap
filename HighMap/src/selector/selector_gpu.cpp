@@ -5,25 +5,29 @@
 #include "highmap/filters.hpp"
 #include "highmap/morphology.hpp"
 #include "highmap/opencl/gpu_opencl.hpp"
+#include "highmap/range.hpp"
 
 namespace hmap::gpu
 {
 
-Array select_valley(const Array &z,
-                    int          ir,
-                    bool         zero_at_borders,
-                    bool         ridge_select)
+Array select_cavities(const Array &array, int ir, bool concave)
 {
-  Array w = z;
-  gpu::smooth_cpulse(w, std::max(1, ir));
+  Array array_smooth = array;
+  gpu::smooth_cpulse(array_smooth, ir);
+  Array c = curvature_mean(array_smooth);
 
-  if (not(ridge_select)) w *= -1.f;
+  if (!concave) c *= -1.f;
 
-  w = curvature_mean(w);
-  make_binary(w);
-  w = gpu::relative_distance_from_skeleton(w, ir, zero_at_borders);
+  clamp_min(c, 0.f);
+  return c;
+}
 
-  return w;
+Array select_valley(const Array &z, int ir, bool ridge_select)
+{
+  if (ridge_select)
+    return gpu::morphological_top_hat(z, ir);
+  else
+    return gpu::morphological_black_hat(z, ir);
 }
 
 } // namespace hmap::gpu

@@ -12,7 +12,7 @@ namespace hmap
 
 // methods
 
-ParberryFunction::ParberryFunction(Vec2<float> kw, uint seed, float mu)
+ParberryFunction::ParberryFunction(glm::vec2 kw, uint seed, float mu)
     : NoiseFunction(kw, seed), mu(mu)
 {
   this->p.resize(this->perlin_b);

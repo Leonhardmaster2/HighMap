@@ -1,2 +1,0 @@
-add_executable(ex_heightmap_rgb ex_heightmap_rgb.cpp)
-target_link_libraries(ex_heightmap_rgb highmap)

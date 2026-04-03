@@ -2,17 +2,17 @@
 
 int main(void)
 {
-  hmap::Vec2<int>   shape = {256, 256};
-  hmap::Vec2<float> kw = {4.f, 4.f};
-  int               seed = 1;
+  glm::ivec2 shape = {256, 256};
+  glm::vec2  kw = {4.f, 4.f};
+  int        seed = 1;
 
   hmap::Array z = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, kw, seed);
   hmap::remap(z);
 
-  hmap::Vec2<int> ij_start(100, 128);
-  hmap::Path      path = hmap::flow_stream(z, ij_start);
+  glm::ivec2 ij_start(100, 128);
+  hmap::Path path = hmap::flow_stream(z, ij_start);
 
-  hmap::Vec4<float> bbox(0.f, 1.f, 0.f, 1.f);
+  glm::vec4 bbox(0.f, 1.f, 0.f, 1.f);
 
   hmap::Array zv(shape);
   path.to_array(zv, bbox);
@@ -39,8 +39,8 @@ int main(void)
                   &mask);
 
   // multiple streams
-  hmap::Vec2<int> ij_start2(128, 180);
-  hmap::Path      path2 = hmap::flow_stream(z, ij_start2);
+  glm::ivec2 ij_start2(128, 180);
+  hmap::Path path2 = hmap::flow_stream(z, ij_start2);
 
   hmap::Array zd2 = z;
   hmap::dig_river(zd2,

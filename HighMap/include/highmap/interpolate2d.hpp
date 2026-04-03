@@ -18,6 +18,17 @@
 #pragma once
 #include <map>
 
+extern "C" // order matters
+{
+#include "config.h"
+//
+#include "nn.h"
+//
+#include "nncommon.h"
+//
+#include "delaunay.h"
+}
+
 #include "highmap/array.hpp"
 
 namespace hmap
@@ -32,20 +43,34 @@ namespace hmap
  */
 enum InterpolationMethod2D : int
 {
-  DELAUNAY, ///< Delaunay triangulation method for 2D interpolation.
-  NEAREST,  ///< Nearest point method for 2D interpolation.
+  ITP2D_DELAUNAY, ///< Delaunay triangulation method for 2D interpolation.
+  ITP2D_NEAREST,  ///< Nearest point method for 2D interpolation.
+  ITP2D_IDW,      ///< Inverse Distance Weighting.
+  ITP2D_GAUSSIAN, ///< Gaussian Distance Weighting.
+  ITP2D_NNI,      ///< Natural Neighbor Interpolation.
 };
 
-/**
- * @brief A map associating 2D interpolation methods with their string
- * representations.
- *
- * This static map provides a human-readable string for each interpolation
- * method defined in the @ref InterpolationMethod2D enum.
- */
-static std::map<InterpolationMethod2D, std::string>
-    interpolation_method_2d_as_string = {{DELAUNAY, "Delaunay linear"},
-                                         {NEAREST, "nearest neighbor"}};
+class NaturalNeighborInterpolator
+{
+public:
+  NaturalNeighborInterpolator() = default;
+  ~NaturalNeighborInterpolator();
+
+  void build(const std::vector<float> &xin, const std::vector<float> &yin);
+
+  void setup_output_points(const std::vector<float> &x,
+                           const std::vector<float> &y);
+
+  void interpolate(const std::vector<float> &values_in,
+                   std::vector<float>       &values_out) const;
+
+private:
+  nnai               *handle = nullptr;
+  delaunay           *d = nullptr;
+  std::vector<double> xout;
+  std::vector<double> yout;
+  size_t              nout = 0;
+};
 
 /**
  * @brief Compute the bilinear interpolated value from four input values.
@@ -119,8 +144,8 @@ inline float cubic_interpolate(float p[4], float x)
  */
 Array harmonic_interpolation(const Array &array,
                              const Array &mask_fixed_values,
-                             int          iterations_max = 10000,
-                             float        tolerance = 1e-3f,
+                             int          iterations_max = 500,
+                             float        tolerance = 1e-5f,
                              float        omega = 1.8f);
 
 /**
@@ -140,49 +165,18 @@ Array harmonic_interpolation(const Array &array,
  *                              direction (optional).
  * @param  p_noise_y            Pointer to the input noise array in the y
  *                              direction (optional).
- * @param  p_stretching         Pointer to the local wavenumber multiplier array
- *                              (optional).
  * @param  bbox                 Domain bounding box (default: {0.f, 1.f, 0.f,
  *                              1.f}).
  * @return                      Array Output array with interpolated values.
  */
-Array interpolate2d(Vec2<int>                 shape,
+Array interpolate2d(glm::ivec2                shape,
                     const std::vector<float> &x,
                     const std::vector<float> &y,
                     const std::vector<float> &values,
                     InterpolationMethod2D     interpolation_method,
                     const Array              *p_noise_x = nullptr,
                     const Array              *p_noise_y = nullptr,
-                    const Array              *p_stretching = nullptr,
-                    Vec4<float>               bbox = {0.f, 1.f, 0.f, 1.f});
-
-/**
- * @brief 2D interpolation using the nearest neighbor method.
- *
- * This function performs 2D interpolation by assigning the value of the nearest
- * point to each point in the output grid.
- *
- * @param  shape        Output array shape.
- * @param  x            x coordinates of the input values.
- * @param  y            y coordinates of the input values.
- * @param  values       Input values at (x, y).
- * @param  p_noise_x    Pointer to the input noise array in the x direction
- *                      (optional).
- * @param  p_noise_y    Pointer to the input noise array in the y direction
- *                      (optional).
- * @param  p_stretching Pointer to the local wavenumber multiplier array
- *                      (optional).
- * @param  bbox         Domain bounding box (default: {0.f, 1.f, 0.f, 1.f}).
- * @return              Array Output array with interpolated values.
- */
-Array interpolate2d_nearest(Vec2<int>                 shape,
-                            const std::vector<float> &x,
-                            const std::vector<float> &y,
-                            const std::vector<float> &values,
-                            const Array              *p_noise_x = nullptr,
-                            const Array              *p_noise_y = nullptr,
-                            const Array              *p_stretching = nullptr,
-                            Vec4<float> bbox = {0.f, 1.f, 0.f, 1.f});
+                    glm::vec4                 bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief 2D interpolation using the Delaunay triangulation method.
@@ -191,26 +185,95 @@ Array interpolate2d_nearest(Vec2<int>                 shape,
  * triangulation of the input points and interpolating the values within each
  * triangle.
  *
- * @param  shape        Output array shape.
- * @param  x            x coordinates of the input values.
- * @param  y            y coordinates of the input values.
- * @param  values       Input values at (x, y).
- * @param  p_noise_x    Pointer to the input noise array in the x direction
- *                      (optional).
- * @param  p_noise_y    Pointer to the input noise array in the y direction
- *                      (optional).
- * @param  p_stretching Pointer to the local wavenumber multiplier array
- *                      (optional).
- * @param  bbox         Domain bounding box (default: {0.f, 1.f, 0.f, 1.f}).
- * @return              Array Output array with interpolated values.
+ * @param  shape     Output array shape.
+ * @param  x         x coordinates of the input values.
+ * @param  y         y coordinates of the input values.
+ * @param  values    Input values at (x, y).
+ * @param  p_noise_x Pointer to the input noise array in the x direction
+ *                   (optional).
+ * @param  p_noise_y Pointer to the input noise array in the y direction
+ *                   (optional).
+ * @param  bbox      Domain bounding box (default: {0.f, 1.f, 0.f, 1.f}).
+ * @return           Array Output array with interpolated values.
  */
-Array interpolate2d_delaunay(Vec2<int>                 shape,
+Array interpolate2d_delaunay(glm::ivec2                shape,
                              const std::vector<float> &x,
                              const std::vector<float> &y,
                              const std::vector<float> &values,
                              const Array              *p_noise_x = nullptr,
                              const Array              *p_noise_y = nullptr,
-                             const Array              *p_stretching = nullptr,
-                             Vec4<float> bbox = {0.f, 1.f, 0.f, 1.f});
+                             glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
+ * @brief 2D interpolation using the Gaussian kernel method.
+ */
+Array interpolate2d_gaussian(glm::ivec2                shape,
+                             const std::vector<float> &x,
+                             const std::vector<float> &y,
+                             const std::vector<float> &values,
+                             const Array              *p_noise_x = nullptr,
+                             const Array              *p_noise_y = nullptr,
+                             glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f},
+                             float     sigma = 0.05f,
+                             float     radius = 0.f);
+
+/**
+ * @brief 2D interpolation using the IDW method.
+ */
+Array interpolate2d_idw(glm::ivec2                shape,
+                        const std::vector<float> &x,
+                        const std::vector<float> &y,
+                        const std::vector<float> &values,
+                        const Array              *p_noise_x = nullptr,
+                        const Array              *p_noise_y = nullptr,
+                        glm::vec4                 bbox = {0.f, 1.f, 0.f, 1.f},
+                        float                     distance_exp = 2.f,
+                        float                     radius = 0.f);
+
+/**
+ * @brief 2D interpolation using the nearest neighbor method.
+ *
+ * This function performs 2D interpolation by assigning the value of the nearest
+ * point to each point in the output grid.
+ *
+ * @param  shape     Output array shape.
+ * @param  x         x coordinates of the input values.
+ * @param  y         y coordinates of the input values.
+ * @param  values    Input values at (x, y).
+ * @param  p_noise_x Pointer to the input noise array in the x direction
+ *                   (optional).
+ * @param  p_noise_y Pointer to the input noise array in the y direction
+ *                   (optional).
+ * @param  bbox      Domain bounding box (default: {0.f, 1.f, 0.f, 1.f}).
+ * @return           Array Output array with interpolated values.
+ */
+Array interpolate2d_nearest(glm::ivec2                shape,
+                            const std::vector<float> &x,
+                            const std::vector<float> &y,
+                            const std::vector<float> &values,
+                            const Array              *p_noise_x = nullptr,
+                            const Array              *p_noise_y = nullptr,
+                            glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
+ * @brief 2D interpolation using the Natural Neighbor Interpolation method.
+ */
+Array interpolate2d_nni(glm::ivec2                shape,
+                        const std::vector<float> &x,
+                        const std::vector<float> &y,
+                        const std::vector<float> &values,
+                        const Array              *p_noise_x = nullptr,
+                        const Array              *p_noise_y = nullptr,
+                        glm::vec4                 bbox = {0.f, 1.f, 0.f, 1.f});
 
 } // namespace hmap
+
+namespace hmap::gpu
+{
+
+/*! @brief See hmap::harmonic_interpolation */
+Array harmonic_interpolation(const Array &array,
+                             const Array &mask_fixed_values,
+                             int          iterations_max = 500);
+
+} // namespace hmap::gpu

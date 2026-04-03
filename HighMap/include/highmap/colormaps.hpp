@@ -13,6 +13,8 @@
  * @copyright Copyright (c) 2023
  */
 #pragma once
+#include <glm/vec3.hpp>
+
 #include <map>
 #include <string>
 #include <vector>
@@ -258,6 +260,6 @@ static std::map<Cmap, std::string> cmap_as_string = {
     {1.000f, 1.000f, 1.000f}, {1.000f, 1.000f, 1.000f},                        \
   }
 
-std::vector<std::vector<float>> get_colormap_data(int cmap);
+std::vector<glm::vec3> get_colormap_data(int cmap);
 
 } // namespace hmap

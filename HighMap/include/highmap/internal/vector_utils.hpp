@@ -13,7 +13,9 @@
  *
  */
 #pragma once
-
+#include <algorithm>
+#include <random>
+#include <string>
 #include <vector>
 
 typedef unsigned int uint;
@@ -36,6 +38,25 @@ void reindex_vector(std::vector<T> &v, std::vector<size_t> &idx)
   v = v_new;
 }
 
+template <typename T>
+void shuffle_vector(std::vector<T> &values, std::uint32_t seed)
+{
+  std::mt19937 rng(seed);
+  std::shuffle(values.begin(), values.end(), rng);
+}
+
+template <typename T>
+std::vector<T> shuffled_vector(const std::vector<T> &values, std::uint32_t seed)
+{
+  std::vector<T> result = values;
+  shuffle_vector(result, seed);
+  return result;
+}
+
 void vector_unique_values(std::vector<float> &v);
+
+std::string make_histogram(const std::vector<float> &values,
+                           int                       bin_count,
+                           int                       hist_height);
 
 } // namespace hmap

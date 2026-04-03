@@ -2,8 +2,8 @@
 
 int main(void)
 {
-  hmap::Vec2<float> kw = {2.f, 2.f};
-  int               seed = 2;
+  glm::vec2 kw = {2.f, 2.f};
+  int       seed = 2;
 
   hmap::Array z512 = hmap::noise_fbm(hmap::NoiseType::PERLIN,
                                      {512, 512},
@@ -19,11 +19,7 @@ int main(void)
   // std::vector<float> kc_list = {256.f, 96.f, 64.f};
 
   auto lambda = [](hmap::Array &x, const int current_index)
-  {
-    int  nparticles = 5000;
-    uint seed = 0;
-    hmap::hydraulic_particle(x, nparticles, seed);
-  };
+  { hmap::hydraulic_stream_log(x, 0.1f, 0.001f); };
 
   // apply the erosion to each array with different resolutions
   // (results should be the same)

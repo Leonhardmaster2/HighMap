@@ -3,9 +3,9 @@
 int main(void)
 {
 
-  const hmap::Vec2<int>   shape = {512, 512};
-  const hmap::Vec2<float> res = {1.f, 4.f};
-  int                     seed = 0;
+  const glm::ivec2 shape = {512, 512};
+  const glm::vec2  res = {1.f, 4.f};
+  int              seed = 0;
 
   hmap::Array z1 = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, res, seed);
   hmap::remap(z1);

@@ -9,26 +9,26 @@
 namespace hmap::gpu
 {
 
-void rifts(Array             &z,
-           const Vec2<float> &kw,
-           float              angle,
-           float              amplitude,
-           uint               seed,
-           float              elevation_noise_shift,
-           float              k_smooth_bottom,
-           float              k_smooth_top,
-           float              radial_spread_amp,
-           float              elevation_noise_amp,
-           float              clamp_vmin,
-           float              remap_vmin,
-           bool               apply_mask,
-           bool               reverse_mask,
-           float              mask_gamma,
-           const Array       *p_noise_x,
-           const Array       *p_noise_y,
-           const Array       *p_mask,
-           const Vec2<float> &center,
-           const Vec4<float> &bbox)
+void rifts(Array           &z,
+           const glm::vec2 &kw,
+           float            angle,
+           float            amplitude,
+           uint             seed,
+           float            elevation_noise_shift,
+           float            k_smooth_bottom,
+           float            k_smooth_top,
+           float            radial_spread_amp,
+           float            elevation_noise_amp,
+           float            clamp_vmin,
+           float            remap_vmin,
+           bool             apply_mask,
+           bool             reverse_mask,
+           float            mask_gamma,
+           const Array     *p_noise_x,
+           const Array     *p_noise_y,
+           const Array     *p_mask,
+           const glm::vec2 &center,
+           const glm::vec4 &bbox)
 {
   auto run = clwrapper::Run("rifts");
 

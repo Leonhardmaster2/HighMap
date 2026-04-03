@@ -2,11 +2,11 @@
 
 int main(void)
 {
-  hmap::Vec2<int> shape = {256, 256};
+  glm::ivec2 shape = {256, 256};
   shape = {1024, 1024};
-  uint              seed = 0;
-  hmap::Vec4<float> bbox = hmap::unit_square_bbox();
-  hmap::Vec2<float> center = {0.f, 0.f};
+  uint      seed = 0;
+  glm::vec4 bbox = hmap::unit_square_bbox();
+  glm::vec2 center = {0.f, 0.f};
 
   // std::unique_ptr<hmap::Function> p = std::unique_ptr<hmap::Function>(
   //     new hmap::BumpFunction(gain, center));
@@ -32,12 +32,12 @@ int main(void)
 
   hmap::Array z = hmap::Array(shape);
 
-  hmap::Vec2<float> kw = {4.f, 4.f};
-  auto n = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, kw, seed);
+  glm::vec2 kw = {4.f, 4.f};
+  auto      n = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, kw, seed);
   hmap::remap(n);
 
   fill_array_using_xy_function(z,
-                               hmap::Vec4<float>(0.f, 1.f, 0.f, 1.f),
+                               glm::vec4(0.f, 1.f, 0.f, 1.f),
                                &n,
                                nullptr,
                                nullptr,

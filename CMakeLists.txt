@@ -10,7 +10,8 @@ set(CMAKE_CXX_STANDARD 20)
 
 if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
   # MSVC compiler options
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4 /Od")
+  set(CMAKE_CXX_FLAGS
+      "${CMAKE_CXX_FLAGS} /W4 /Od /D M_PI=3.14159265358979323846")
 
   message(STATUS "MSVC compiler...")
   add_definitions("-DHMAP_MSVC")
@@ -27,7 +28,8 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
 
 find_package(GSL REQUIRED COMPONENTS gsl gslcblas)
 find_package(assimp REQUIRED)
-find_package(glm REQUIRED) # by hmm
+find_package(glm REQUIRED)
+find_package(nanoflann QUIET) # should be provided by PointSampler
 find_package(OpenMP REQUIRED)
 find_package(OpenCV REQUIRED)
 find_package(OpenCL REQUIRED)

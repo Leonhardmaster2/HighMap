@@ -1,0 +1,2 @@
+add_executable(ex_depression_filling ex_depression_filling.cpp)
+target_link_libraries(ex_depression_filling highmap)

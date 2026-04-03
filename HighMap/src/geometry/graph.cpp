@@ -260,7 +260,7 @@ Graph Graph::remove_orphan_points()
   return graph_out;
 }
 
-void Graph::to_array(Array &array, Vec4<float> bbox, bool color_by_edge_weight)
+void Graph::to_array(Array &array, glm::vec4 bbox, bool color_by_edge_weight)
 {
   if (color_by_edge_weight)
     for (std::size_t k = 0; k < this->get_nedges(); k++)
@@ -282,13 +282,13 @@ void Graph::to_array(Array &array, Vec4<float> bbox, bool color_by_edge_weight)
     }
 }
 
-void Graph::to_array_fractalize(Array      &array,
-                                Vec4<float> bbox,
-                                int         iterations,
-                                uint        seed,
-                                float       sigma,
-                                int         orientation,
-                                float       persistence)
+void Graph::to_array_fractalize(Array    &array,
+                                glm::vec4 bbox,
+                                int       iterations,
+                                uint      seed,
+                                float     sigma,
+                                int       orientation,
+                                float     persistence)
 {
   // find smallest edge length
   float dmin = std::numeric_limits<float>::max();
@@ -312,11 +312,11 @@ void Graph::to_array_fractalize(Array      &array,
   }
 }
 
-Array Graph::to_array_sdf(Vec2<int>   shape,
-                          Vec4<float> bbox,
-                          Array      *p_noise_x,
-                          Array      *p_noise_y,
-                          Vec4<float> bbox_array)
+Array Graph::to_array_sdf(glm::ivec2 shape,
+                          glm::vec4  bbox,
+                          Array     *p_noise_x,
+                          Array     *p_noise_y,
+                          glm::vec4  bbox_array)
 {
   // nodes
   std::vector<float> xp = this->get_edge_x_pairs();
@@ -324,8 +324,8 @@ Array Graph::to_array_sdf(Vec2<int>   shape,
 
   for (size_t k = 0; k < xp.size(); k++)
   {
-    xp[k] = (xp[k] - bbox.a) / (bbox.b - bbox.a);
-    yp[k] = (yp[k] - bbox.c) / (bbox.d - bbox.c);
+    xp[k] = (xp[k] - bbox.x) / (bbox.y - bbox.x);
+    yp[k] = (yp[k] - bbox.z) / (bbox.w - bbox.z);
   }
 
   // fill heightmap
@@ -335,11 +335,11 @@ Array Graph::to_array_sdf(Vec2<int>   shape,
 
     for (size_t i = 0; i < xp.size() - 1; i += 2)
     {
-      size_t      j = i + 1;
-      Vec2<float> e = {xp[j] - xp[i], yp[j] - yp[i]};
-      Vec2<float> w = {x - xp[i], y - yp[i]};
-      float       coeff = std::clamp(dot(w, e) / dot(e, e), 0.f, 1.f);
-      Vec2<float> b = {w.x - e.x * coeff, w.y - e.y * coeff};
+      size_t    j = i + 1;
+      glm::vec2 e = {xp[j] - xp[i], yp[j] - yp[i]};
+      glm::vec2 w = {x - xp[i], y - yp[i]};
+      float     coeff = std::clamp(dot(w, e) / dot(e, e), 0.f, 1.f);
+      glm::vec2 b = {w.x - e.x * coeff, w.y - e.y * coeff};
       d = std::min(d, dot(b, b));
     }
     return std::sqrt(d);
@@ -383,7 +383,7 @@ void Graph::to_csv(std::string fname_xy, std::string fname_adjacency)
   f.close();
 }
 
-void Graph::to_png(std::string fname, Vec2<int> shape)
+void Graph::to_png(std::string fname, glm::ivec2 shape)
 {
   Array array = Array(shape);
   this->to_array(array, this->get_bbox());

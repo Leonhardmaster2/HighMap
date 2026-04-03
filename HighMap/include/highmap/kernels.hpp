@@ -42,8 +42,25 @@ enum KernelType : int
   LORENTZIAN,    ///< Lorentzian (Cauchy) kernel function
   SMOOTH_COSINE, ///< Smooth cosine kernel function
   SQUARE,        ///< Square kernel function
-  TRICUBE        ///< Tricube kernel function
+  TRICUBE,       ///< Tricube kernel function
+  CUPOLA         ///< Cupola (reverse) kernel function
 };
+
+/**
+ * @brief Generate a kernel of the specified type.
+ *
+ * This function creates a kernel based on the given shape and kernel type. It
+ * supports various types of kernels including biweight, cubic pulse, cone, and
+ * more. The resulting kernel is returned as an array.
+ *
+ * @param  shape       The dimensions of the kernel to be generated.
+ * @param  kernel_type The type of kernel to generate (e.g., BIWEIGHT,
+ *                     CUBIC_PULSE, etc.).
+ * @return             Array The generated kernel array.
+ */
+Array get_kernel(glm::ivec2 shape, KernelType kernel_type);
+
+// --- KERNELS
 
 /**
  * @brief Generates a biweight kernel array.
@@ -57,7 +74,7 @@ enum KernelType : int
  * @param  shape Array shape specifying the dimensions of the kernel.
  * @return       Array A new array containing the biweight kernel.
  */
-Array biweight(Vec2<int> shape);
+Array biweight(glm::ivec2 shape);
 
 /**
  * @brief Generates a Blackman window array with the specified shape.
@@ -71,7 +88,7 @@ Array biweight(Vec2<int> shape);
  * @return       An `Array` object containing the Blackman window values of the
  *               specified shape.
  */
-Array blackman(Vec2<int> shape);
+Array blackman(glm::ivec2 shape);
 
 /**
  * @brief Generates a cone-shaped kernel array.
@@ -83,7 +100,7 @@ Array blackman(Vec2<int> shape);
  * @param  shape Array shape specifying the dimensions of the kernel.
  * @return       Array A new array containing the cone-shaped kernel.
  */
-Array cone(Vec2<int> shape);
+Array cone(glm::ivec2 shape);
 
 /**
  * @brief Generates a cone-shaped kernel with specified height and talus.
@@ -111,7 +128,7 @@ Array cone_talus(float height, float talus);
  * @param  shape Array shape specifying the dimensions of the kernel.
  * @return       Array A new array containing the smooth cone-shaped kernel.
  */
-Array cone_smooth(Vec2<int> shape);
+Array cone_smooth(glm::ivec2 shape);
 
 /**
  * @brief Generates a cubic pulse kernel array.
@@ -122,7 +139,7 @@ Array cone_smooth(Vec2<int> shape);
  * @param  shape Array shape specifying the dimensions of the kernel.
  * @return       Array A new array containing the cubic pulse kernel.
  */
-Array cubic_pulse(Vec2<int> shape);
+Array cubic_pulse(glm::ivec2 shape);
 
 /**
  * @brief Generates a 1D cubic pulse kernel.
@@ -152,10 +169,10 @@ std::vector<float> cubic_pulse_1d(int nk);
  * @return              Array A new array containing the directional cubic pulse
  *                      kernel.
  */
-Array cubic_pulse_directional(Vec2<int> shape,
-                              float     angle,
-                              float     aspect_ratio,
-                              float     anisotropy);
+Array cubic_pulse_directional(glm::ivec2 shape,
+                              float      angle,
+                              float      aspect_ratio,
+                              float      anisotropy);
 
 /**
  * @brief Generates a truncated cubic pulse kernel.
@@ -179,7 +196,19 @@ Array cubic_pulse_directional(Vec2<int> shape,
  * **Result**
  * @image html ex_cubic_pulse_truncated.png
  */
-Array cubic_pulse_truncated(Vec2<int> shape, float slant_ratio, float angle);
+Array cubic_pulse_truncated(glm::ivec2 shape, float slant_ratio, float angle);
+
+/**
+ * @brief Generate a 2D radial cupola kernel.
+ *
+ * Values are computed from the normalized radial distance to the center:
+ * constant 1 inside radius @p rc, then smoothly decreasing to 0 at radius 1.
+ *
+ * @param  shape Size of the output array (width, height).
+ * @param  rc    Radius of the inner flat region (normalized, < 1).
+ * @return       Generated cupola-shaped Array.
+ */
+Array cupola(glm::ivec2 shape, float rc = 0.5f);
 
 /**
  * @brief Generates a disk-shaped kernel footprint.
@@ -190,7 +219,7 @@ Array cubic_pulse_truncated(Vec2<int> shape, float slant_ratio, float angle);
  * @param  shape Array shape specifying the dimensions of the kernel.
  * @return       Array A new array containing the disk-shaped kernel.
  */
-Array disk(Vec2<int> shape);
+Array disk(glm::ivec2 shape);
 
 /**
  * @brief Generates a smooth, disk-shaped kernel footprint with soft edges.
@@ -217,7 +246,7 @@ Array disk(Vec2<int> shape);
  *
  * @see             disk()
  */
-Array disk_smooth(Vec2<int> shape, float r_cutoff = 0.9f);
+Array disk_smooth(glm::ivec2 shape, float r_cutoff = 0.9f);
 
 /**
  * @brief Generates a Gabor kernel of the specified shape.
@@ -240,10 +269,10 @@ Array disk_smooth(Vec2<int> shape, float r_cutoff = 0.9f);
  * **Result**
  * @image html ex_gabor.png
  */
-Array gabor(Vec2<int> shape,
-            float     kw,
-            float     angle,
-            bool      quad_phase_shift = false);
+Array gabor(glm::ivec2 shape,
+            float      kw,
+            float      angle,
+            bool       quad_phase_shift = false);
 
 /**
  * @brief Generates a modified dune-like Gabor kernel.
@@ -271,25 +300,11 @@ Array gabor(Vec2<int> shape,
  * **Result**
  * @image html ex_gabor_dune.png
  */
-Array gabor_dune(Vec2<int> shape,
-                 float     kw,
-                 float     angle,
-                 float     xtop,
-                 float     xbottom);
-
-/**
- * @brief Generate a kernel of the specified type.
- *
- * This function creates a kernel based on the given shape and kernel type. It
- * supports various types of kernels including biweight, cubic pulse, cone, and
- * more. The resulting kernel is returned as an array.
- *
- * @param  shape       The dimensions of the kernel to be generated.
- * @param  kernel_type The type of kernel to generate (e.g., BIWEIGHT,
- *                     CUBIC_PULSE, etc.).
- * @return             Array The generated kernel array.
- */
-Array get_kernel(Vec2<int> shape, KernelType kernel_type);
+Array gabor_dune(glm::ivec2 shape,
+                 float      kw,
+                 float      angle,
+                 float      xtop,
+                 float      xbottom);
 
 /**
  * @brief Generates a Hann window array with the specified shape.
@@ -303,7 +318,7 @@ Array get_kernel(Vec2<int> shape, KernelType kernel_type);
  * @return       An `Array` object containing the Hann window values of the
  *               specified shape.
  */
-Array hann(Vec2<int> shape);
+Array hann(glm::ivec2 shape);
 
 /**
  * @brief Generate a Lorentzian kernel.
@@ -317,7 +332,7 @@ Array hann(Vec2<int> shape);
  *                             Default is 0.1.
  * @return                     Array The Lorentzian kernel array.
  */
-Array lorentzian(Vec2<int> shape, float footprint_threshold = 0.1f);
+Array lorentzian(glm::ivec2 shape, float footprint_threshold = 0.1f);
 
 /**
  * @brief Generate a modified Lorentzian kernel with compact support.
@@ -329,7 +344,7 @@ Array lorentzian(Vec2<int> shape, float footprint_threshold = 0.1f);
  * @param  shape The dimensions of the kernel.
  * @return       Array The modified Lorentzian kernel with compact support.
  */
-Array lorentzian_compact(Vec2<int> shape);
+Array lorentzian_compact(glm::ivec2 shape);
 
 /**
  * @brief Generates a radial sinc function array with the specified shape and
@@ -346,7 +361,7 @@ Array lorentzian_compact(Vec2<int> shape);
  * @return       An `Array` object containing the radial sinc function values of
  *               the specified shape.
  */
-Array sinc_radial(Vec2<int> shape, float kw);
+Array sinc_radial(glm::ivec2 shape, float kw);
 
 /**
  * @brief Generates a separable sinc function array with the specified shape and
@@ -363,7 +378,7 @@ Array sinc_radial(Vec2<int> shape, float kw);
  * @return       An `Array` object containing the separable sinc function values
  *               of the specified shape.
  */
-Array sinc_separable(Vec2<int> shape, float kw);
+Array sinc_separable(glm::ivec2 shape, float kw);
 
 /**
  * @brief Generate a smooth cosine kernel.
@@ -374,7 +389,7 @@ Array sinc_separable(Vec2<int> shape, float kw);
  * @param  shape The dimensions of the kernel.
  * @return       Array The smooth cosine kernel array.
  */
-Array smooth_cosine(Vec2<int> shape);
+Array smooth_cosine(glm::ivec2 shape);
 
 /**
  * @brief Generate a square-shaped kernel.
@@ -385,7 +400,7 @@ Array smooth_cosine(Vec2<int> shape);
  * @param  shape The dimensions of the kernel.
  * @return       Array The square-shaped kernel array.
  */
-Array square(Vec2<int> shape);
+Array square(glm::ivec2 shape);
 
 /**
  * @brief Generate a tricube kernel.
@@ -401,6 +416,6 @@ Array square(Vec2<int> shape);
  * See https://en.wikipedia.org/wiki/Kernel_%28statistics%29 for details on the
  * tricube kernel.
  */
-Array tricube(Vec2<int> shape);
+Array tricube(glm::ivec2 shape);
 
 } // namespace hmap

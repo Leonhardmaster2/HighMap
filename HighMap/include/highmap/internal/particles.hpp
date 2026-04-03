@@ -47,11 +47,11 @@ struct Particle
   float volume = 0.f; // water
 
   // dynamic
-  Pos         pos;
-  Vec2<float> vel;
-  float       vnorm;
-  bool        vlim = 1.f;
-  bool        is_active = true;
+  Pos       pos;
+  glm::vec2 vel;
+  float     vnorm;
+  bool      vlim = 1.f;
+  bool      is_active = true;
 
   // constructor
   Particle(float c_capacity,

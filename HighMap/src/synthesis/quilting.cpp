@@ -12,8 +12,8 @@ namespace hmap
 {
 
 Array quilting(const std::vector<const Array *> &p_arrays,
-               hmap::Vec2<int>                   patch_base_shape,
-               hmap::Vec2<int>                   tiling,
+               glm::ivec2                        patch_base_shape,
+               glm::ivec2                        tiling,
                float                             overlap,
                uint                              seed,
                std::vector<Array *>              secondary_arrays,
@@ -26,14 +26,18 @@ Array quilting(const std::vector<const Array *> &p_arrays,
 
   std::uniform_int_distribution<int> dis_a(0, (int)p_arrays.size() - 1);
 
-  hmap::Vec2<int> patch_shape = {(int)(patch_base_shape.x * (1.f + overlap)),
-                                 (int)(patch_base_shape.y * (1.f + overlap))};
+  glm::ivec2 patch_shape = {(int)(patch_base_shape.x * (1.f + overlap)),
+                            (int)(patch_base_shape.y * (1.f + overlap))};
 
-  hmap::Vec2<int> noverlap = {patch_shape.x - patch_base_shape.x,
-                              patch_shape.y - patch_base_shape.y};
+  // keep size under control
+  patch_shape.x = std::min(patch_shape.x, p_arrays.front()->shape.x);
+  patch_shape.y = std::min(patch_shape.y, p_arrays.front()->shape.y);
 
-  hmap::Vec2<int> shape_output = {tiling.x * patch_base_shape.x + noverlap.x,
-                                  tiling.y * patch_base_shape.y + noverlap.y};
+  glm::ivec2 noverlap = {patch_shape.x - patch_base_shape.x,
+                         patch_shape.y - patch_base_shape.y};
+
+  glm::ivec2 shape_output = {tiling.x * patch_base_shape.x + noverlap.x,
+                             tiling.y * patch_base_shape.y + noverlap.y};
 
   Array array_out = Array(shape_output);
 
@@ -48,7 +52,7 @@ Array quilting(const std::vector<const Array *> &p_arrays,
   for (int jt = 0; jt < tiling.y; jt++)
   {
     int   j1 = jt * patch_base_shape.y; // tile start
-    Array array_strip = Array(Vec2<int>(array_out.shape.x, patch_shape.y));
+    Array array_strip = Array(glm::ivec2(array_out.shape.x, patch_shape.y));
 
     std::vector<Array> secondary_arrays_strips(secondary_arrays_output.size(),
                                                array_strip);
@@ -74,7 +78,7 @@ Array quilting(const std::vector<const Array *> &p_arrays,
 
       if (it > 0)
       {
-        Array error = Array(Vec2<int>(noverlap.x, patch_shape.y));
+        Array error = Array(glm::ivec2(noverlap.x, patch_shape.y));
         for (int j = 0; j < patch_shape.y; j++)
           for (int i = 0; i < noverlap.x; i++)
             error(i, j) = std::abs(array_strip(i1 + i, j) - patch(i, j));
@@ -120,7 +124,7 @@ Array quilting(const std::vector<const Array *> &p_arrays,
     // patch the horizontal stripes
     if (jt > 0)
     {
-      Array error = Array(Vec2<int>(shape_output.x, noverlap.y));
+      Array error = Array(glm::ivec2(shape_output.x, noverlap.y));
 
       for (int j = 0; j < noverlap.y; j++)
         for (int i = 0; i < shape_output.x; i++)
@@ -192,7 +196,7 @@ Array quilting(const std::vector<const Array *> &p_arrays,
 }
 
 Array quilting_blend(const std::vector<const Array *> &p_arrays,
-                     hmap::Vec2<int>                   patch_base_shape,
+                     glm::ivec2                        patch_base_shape,
                      float                             overlap,
                      uint                              seed,
                      bool                              patch_flip,
@@ -200,10 +204,11 @@ Array quilting_blend(const std::vector<const Array *> &p_arrays,
                      bool                              patch_transpose,
                      float                             filter_width_ratio)
 {
-  Vec2<int> shape = p_arrays.back()->shape;
+  glm::ivec2 shape = p_arrays.back()->shape;
 
-  Vec2<int> tiling = Vec2<int>((int)(std::ceil(shape.x / patch_base_shape.x)),
-                               (int)(std::ceil(shape.y / patch_base_shape.y)));
+  glm::ivec2 tiling = glm::ivec2(
+      (int)(std::ceil(shape.x / patch_base_shape.x)),
+      (int)(std::ceil(shape.y / patch_base_shape.y)));
 
   Array array_out = quilting(p_arrays,
                              patch_base_shape,
@@ -217,12 +222,12 @@ Array quilting_blend(const std::vector<const Array *> &p_arrays,
                              filter_width_ratio);
 
   // return an array with the same shape as the input
-  return array_out.extract_slice(Vec4<int>(0, shape.x, 0, shape.y));
+  return array_out.extract_slice(glm::ivec4(0, shape.x, 0, shape.y));
 }
 
 Array quilting_expand(const Array         &array,
                       float                expansion_ratio,
-                      hmap::Vec2<int>      patch_base_shape,
+                      glm::ivec2           patch_base_shape,
                       float                overlap,
                       uint                 seed,
                       std::vector<Array *> secondary_arrays,
@@ -237,8 +242,8 @@ Array quilting_expand(const Array         &array,
   if (keep_input_shape)
   {
     // output shape is the same as the output
-    Vec2<int> work_shape = Vec2<int>((int)(array.shape.x / expansion_ratio),
-                                     (int)(array.shape.y / expansion_ratio));
+    glm::ivec2 work_shape = glm::ivec2((int)(array.shape.x / expansion_ratio),
+                                       (int)(array.shape.y / expansion_ratio));
 
     Array array_work = array.resample_to_shape(work_shape);
 
@@ -253,11 +258,11 @@ Array quilting_expand(const Array         &array,
       secondary_arrays_work.push_back(&v);
 
     // apply
-    Vec2<int> patch_base_shape_work = Vec2<int>(
+    glm::ivec2 patch_base_shape_work = glm::ivec2(
         (int)(patch_base_shape.x / expansion_ratio),
         (int)(patch_base_shape.y / expansion_ratio));
 
-    Vec2<int> tiling = Vec2<int>(
+    glm::ivec2 tiling = glm::ivec2(
         (int)(std::ceil(array.shape.x / patch_base_shape_work.x)),
         (int)(std::ceil(array.shape.y / patch_base_shape_work.y)));
 
@@ -275,20 +280,20 @@ Array quilting_expand(const Array         &array,
     // override p_secondary_arrays content with output
     for (size_t k = 0; k < secondary_arrays.size(); k++)
       *secondary_arrays[k] = secondary_arrays_work[k]->extract_slice(
-          Vec4<int>(0, array.shape.x, 0, array.shape.y));
+          glm::ivec4(0, array.shape.x, 0, array.shape.y));
 
     // return an array with the same shape as the input
     return array_out.extract_slice(
-        Vec4<int>(0, array.shape.x, 0, array.shape.y));
+        glm::ivec4(0, array.shape.x, 0, array.shape.y));
   }
   else
   {
     // output shape is also expanded according to expansion factor
-    Vec2<int> expanded_shape = Vec2<int>(
+    glm::ivec2 expanded_shape = glm::ivec2(
         (int)(array.shape.x * expansion_ratio),
         (int)(array.shape.y * expansion_ratio));
 
-    Vec2<int> tiling = Vec2<int>(
+    glm::ivec2 tiling = glm::ivec2(
         (int)(std::ceil(expanded_shape.x / patch_base_shape.x)),
         (int)(std::ceil(expanded_shape.y / patch_base_shape.y)));
 
@@ -308,16 +313,16 @@ Array quilting_expand(const Array         &array,
     // override p_secondary_arrays content with output
     for (auto v : secondary_arrays)
       *v = v->extract_slice(
-          Vec4<int>(0, expanded_shape.x, 0, expanded_shape.y));
+          glm::ivec4(0, expanded_shape.x, 0, expanded_shape.y));
 
     // return an array with the expanded shape
     return array_out.extract_slice(
-        Vec4<int>(0, expanded_shape.x, 0, expanded_shape.y));
+        glm::ivec4(0, expanded_shape.x, 0, expanded_shape.y));
   }
 }
 
 Array quilting_shuffle(const Array         &array,
-                       hmap::Vec2<int>      patch_base_shape,
+                       glm::ivec2           patch_base_shape,
                        float                overlap,
                        uint                 seed,
                        std::vector<Array *> secondary_arrays,
@@ -326,7 +331,7 @@ Array quilting_shuffle(const Array         &array,
                        bool                 patch_transpose,
                        float                filter_width_ratio)
 {
-  Vec2<int> tiling = Vec2<int>(
+  glm::ivec2 tiling = glm::ivec2(
       (int)(std::ceil(array.shape.x / patch_base_shape.x)),
       (int)(std::ceil(array.shape.y / patch_base_shape.y)));
 
@@ -345,10 +350,11 @@ Array quilting_shuffle(const Array         &array,
 
   // override p_secondary_arrays content with output
   for (auto v : secondary_arrays)
-    *v = v->extract_slice(Vec4<int>(0, array.shape.x, 0, array.shape.y));
+    *v = v->extract_slice(glm::ivec4(0, array.shape.x, 0, array.shape.y));
 
   // return an array with the same shape as the input
-  return array_out.extract_slice(Vec4<int>(0, array.shape.x, 0, array.shape.y));
+  return array_out.extract_slice(
+      glm::ivec4(0, array.shape.x, 0, array.shape.y));
 }
 
 } // namespace hmap

@@ -1,0 +1,2 @@
+add_executable(ex_expand_talus ex_expand_talus.cpp)
+target_link_libraries(ex_expand_talus highmap)

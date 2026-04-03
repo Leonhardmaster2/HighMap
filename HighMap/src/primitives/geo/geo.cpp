@@ -13,7 +13,7 @@
 namespace hmap
 {
 
-Array caldera(Vec2<int>    shape,
+Array caldera(glm::ivec2   shape,
               float        radius,
               float        sigma_inner,
               float        sigma_outer,
@@ -21,13 +21,13 @@ Array caldera(Vec2<int>    shape,
               const Array *p_noise,
               float        noise_r_amp,
               float        noise_z_ratio,
-              Vec2<float>  center,
-              Vec4<float>  bbox)
+              glm::vec2    center,
+              glm::vec4    bbox)
 {
   Array z = Array(shape);
 
-  Vec2<float> shift = {bbox.a, bbox.c};
-  Vec2<float> scale = {bbox.b - bbox.a, bbox.d - bbox.c};
+  glm::vec2 shift = {bbox.x, bbox.z};
+  glm::vec2 scale = {bbox.y - bbox.x, bbox.w - bbox.z};
 
   int ic = (int)((center.x - shift.x) / scale.x * z.shape.x);
   int jc = (int)((center.y - shift.y) / scale.y * z.shape.y);
@@ -69,13 +69,13 @@ Array caldera(Vec2<int>    shape,
   return z;
 }
 
-Array caldera(Vec2<int>   shape,
-              float       radius,
-              float       sigma_inner,
-              float       sigma_outer,
-              float       z_bottom,
-              Vec2<float> center,
-              Vec4<float> bbox)
+Array caldera(glm::ivec2 shape,
+              float      radius,
+              float      sigma_inner,
+              float      sigma_outer,
+              float      z_bottom,
+              glm::vec2  center,
+              glm::vec4  bbox)
 {
   Array noise = constant(shape, 0.f);
   Array z = caldera(shape,
@@ -91,7 +91,7 @@ Array caldera(Vec2<int>   shape,
   return z;
 }
 
-Array crater(Vec2<int>    shape,
+Array crater(glm::ivec2   shape,
              float        radius,
              float        depth,
              float        lip_decay,
@@ -99,8 +99,8 @@ Array crater(Vec2<int>    shape,
              const Array *p_ctrl_param,
              const Array *p_noise_x,
              const Array *p_noise_y,
-             Vec2<float>  center,
-             Vec4<float>  bbox)
+             glm::vec2    center,
+             glm::vec4    bbox)
 {
   Array          array = Array(shape);
   CraterFunction f = CraterFunction(radius,
@@ -119,15 +119,15 @@ Array crater(Vec2<int>    shape,
   return array;
 }
 
-Array peak(Vec2<int>    shape,
+Array peak(glm::ivec2   shape,
            float        radius,
            const Array *p_noise,
            float        noise_r_amp,
            float        noise_z_ratio,
-           Vec4<float>  bbox)
+           glm::vec4    bbox)
 {
-  Vec2<float> shift = {bbox.a, bbox.c};
-  Vec2<float> scale = {bbox.b - bbox.a, bbox.d - bbox.c};
+  glm::vec2 shift = {bbox.x, bbox.z};
+  glm::vec2 scale = {bbox.y - bbox.x, bbox.w - bbox.z};
 
   Array z = Array(shape);
   int   ic = (int)((0.5f - shift.x) / scale.x * z.shape.x);

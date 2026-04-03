@@ -1,0 +1,2 @@
+add_executable(ex_strata_cells ex_strata_cells.cpp)
+target_link_libraries(ex_strata_cells highmap)

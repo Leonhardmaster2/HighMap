@@ -186,7 +186,7 @@ bool export_asset(const std::string &fname,
  * output.
  */
 std::string export_as_ascii(const Array      &array,
-                            const Vec2<int>  &export_shape = {64, 64},
+                            const glm::ivec2 &export_shape = {64, 64},
                             const std::string chars_map = " .:-=+*#%@");
 
 /**
@@ -314,6 +314,31 @@ void export_splatmap_png(const std::string &fname,
                          int                depth = CV_8U);
 
 /**
+ * @brief Exports 3D points with optional custom fields to an ASCII PLY file.
+ *
+ * This function writes vertex data (x, y, z) and optional additional per-point
+ * attributes to a PLY file in ASCII format. Each key in @p custom_fields
+ * defines a new property in the PLY header, and its associated vector provides
+ * per-point values for that property.
+ *
+ * @param fname         The output file name.
+ * @param x             Vector of x coordinates.
+ * @param y             Vector of y coordinates.
+ * @param z             Vector of z coordinates.
+ * @param custom_fields A map of custom field names to their per-point float
+ *                      values.
+ *
+ * **Example**
+ * @include ex_export_points_to_ply.cpp
+ */
+void export_points_to_ply(
+    const std::string                               &fname,
+    const std::vector<float>                        &x,
+    const std::vector<float>                        &y,
+    const std::vector<float>                        &z,
+    const std::map<std::string, std::vector<float>> &custom_fields = {});
+
+/**
  * @brief Exports a 2D array as a set of grayscale PNG image tiles.
  *
  * This function divides a given 2D array into smaller rectangular tiles and
@@ -348,7 +373,7 @@ void export_splatmap_png(const std::string &fname,
 void export_tiled(const std::string &fname_radical,
                   const std::string &fname_extension,
                   const Array       &array,
-                  const Vec2<int>   &tiling,
+                  const glm::ivec2  &tiling,
                   int                leading_zeros = 0,
                   int                depth = CV_8U,
                   bool               overlapping_edges = false,
@@ -368,7 +393,7 @@ void export_tiled(const std::string &fname_radical,
  * @return       Array A 2D array containing the pixel values of the grayscale
  *               image.
  */
-Array read_to_array(const std::string &fname);
+Array read_to_array(const std::string &fname, bool flip_j = false);
 
 /**
  * @brief Exports an array to a 16-bit 'raw' file format, commonly used for
@@ -383,31 +408,5 @@ Array read_to_array(const std::string &fname);
  * @param array The input array containing the data to be exported.
  */
 void write_raw_16bit(const std::string &fname, const Array &array);
-
-// --- helpers
-
-/**
- * @brief Adds a suffix to the filename of a given file path.
- *
- * This function appends a given suffix to the stem (base name without
- * extension) of a file while preserving the original directory and file
- * extension.
- *
- * @param  file_path The original file path.
- * @param  suffix    The suffix to append to the filename.
- * @return           A new std::filesystem::path with the modified filename.
- *
- * @note If the input file has no extension, the suffix is added directly to the
- * filename.
- *
- * @example
- * @code std::filesystem::path path = "example.txt";
- * std::filesystem::path new_path = add_filename_suffix(path, "_backup");
- * std::cout << new_path; // Outputs "example_backup.txt"
- * @endcode
- */
-std::filesystem::path add_filename_suffix(
-    const std::filesystem::path &file_path,
-    const std::string           &suffix);
 
 } // namespace hmap

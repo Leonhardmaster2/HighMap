@@ -2,7 +2,7 @@
 
 int main(void)
 {
-  hmap::Vec2<int> shape = {256, 256};
+  glm::ivec2 shape = {256, 256};
 
   // 2x3 grid (column ordering, Fortran style)
   std::vector<std::vector<float>> values = {{0.f, 0.5f, 0.f}, {1.f, 1.5f, 2.f}};

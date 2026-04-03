@@ -41,6 +41,36 @@ Array dilation_expand_border_only(const Array &array, int ir)
   return out;
 }
 
+Array dilation_expand_min_value_border_only(const Array &array)
+{
+  Array out(array.shape);
+
+  // only keep result in the "background" to leave initial vlaues
+  // untouched
+  for (int j = 0; j < array.shape.y; ++j)
+    for (int i = 0; i < array.shape.x; ++i)
+    {
+      float vmin = std::numeric_limits<float>::max();
+      float vmin_non_zero = std::numeric_limits<float>::max();
+
+      for (int r = -1; r <= 1; ++r)
+        for (int s = -1; s <= 1; ++s)
+        {
+          vmin = std::min(vmin, array(i, j));
+
+          if (array(i, j) != 0.f)
+            vmin_non_zero = std::min(vmin_non_zero, array(i, j));
+        }
+
+      if (vmin == 0.f && vmin_non_zero != std::numeric_limits<float>::max())
+        out(i, j) = vmin;
+      else
+        out(i, j) = array(i, j);
+    }
+
+  return out;
+}
+
 Array erosion(const Array &array, int ir)
 {
   return minimum_local(array, ir);

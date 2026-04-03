@@ -30,6 +30,7 @@ enum DistanceTransformType : int
   DT_EXACT,     ///< Exact distance transform.
   DT_APPROX,    ///< Approximate distance transform.
   DT_MANHATTAN, ///< Manhattan distance transform.
+  DT_JFA,       ///< Approximate (JFA) distance transform.
 };
 
 /**
@@ -98,6 +99,8 @@ Array dilation(const Array &array, int ir);
  */
 Array dilation_expand_border_only(const Array &array, int ir);
 
+Array dilation_expand_min_value_border_only(const Array &array);
+
 /**
  * @brief Return the Euclidean distance transform.
  *
@@ -117,6 +120,8 @@ Array dilation_expand_border_only(const Array &array, int ir);
  * @image html ex_distance_transform0.png
  * @image html ex_distance_transform1.png
  * @image html ex_distance_transform2.png
+ * @image html ex_distance_transform3.png
+ * @image html ex_distance_transform4.png
  */
 Array distance_transform(const Array &array,
                          bool         return_squared_distance = false);
@@ -138,6 +143,8 @@ Array distance_transform(const Array &array,
  * @image html ex_distance_transform0.png
  * @image html ex_distance_transform1.png
  * @image html ex_distance_transform2.png
+ * @image html ex_distance_transform3.png
+ * @image html ex_distance_transform4.png
  */
 Array distance_transform_approx(const Array &array,
                                 bool         return_squared_distance = false);
@@ -158,9 +165,27 @@ Array distance_transform_approx(const Array &array,
  * @image html ex_distance_transform0.png
  * @image html ex_distance_transform1.png
  * @image html ex_distance_transform2.png
+ * @image html ex_distance_transform3.png
+ * @image html ex_distance_transform4.png
  */
 Array distance_transform_manhattan(const Array &array,
                                    bool return_squared_distance = false);
+
+/**
+ * @brief Return the Euclidean distance transform.
+ *
+ * Exact transform based on Meijster et al. algorithm @cite Meijster2000.
+ *
+ * @param  array                   Input array to be transformed, will be
+ *                                 converted into binary: 1 wherever input is
+ *                                 greater than 0, 0 elsewhere.
+ * @param  return_squared_distance Whether the distance returned is squared or
+ *                                 not.
+ * @return                         Array Reference to the output array.
+ */
+Array distance_transform_with_closest(const Array     &array,
+                                      Mat<glm::ivec2> &closest,
+                                      bool return_squared_distance = false);
 
 /**
  * @brief Apply an erosion algorithm to the input array using a square
@@ -291,15 +316,54 @@ Array opening(const Array &array, int ir);
  * algorithm.
  *
  * **Example**
- * @include ex_skeleton.cpp
+ * @include ex_signed_curvature_from_distance.cpp
  *
  * **Result**
- * @image html ex_skeleton.png
+ * @image html ex_signed_curvature_from_distance0.png
+ * @image html ex_signed_curvature_from_distance1.png
+ * @image html ex_signed_curvature_from_distance2.png
+ * @image html ex_signed_curvature_from_distance3.png
  */
 Array relative_distance_from_skeleton(const Array &array,
                                       int          ir_search,
                                       bool         zero_at_borders = true,
                                       int          ir_erosion = 1);
+
+/**
+ * @brief Computes the signed curvature of the distance transform.
+ *
+ * Computes the Euclidean distance transform of a binary array, optionally
+ * smooths it, then returns the divergence of the normalized gradient: κ = div(
+ * ∇d / ||∇d|| ). Positive values indicate convex regions, negative values
+ * concave regions.
+ *
+ * @param  array        Binary input (non-zero = foreground).
+ * @param  prefilter_ir Optional smoothing radius (0 = no smoothing).
+ * @return              Curvature field of the distance transform.
+ *
+ * **Example**
+ * @include ex_signed_curvature_from_distance.cpp
+ *
+ * **Result**
+ * @image html ex_signed_curvature_from_distance0.png
+ * @image html ex_signed_curvature_from_distance1.png
+ * @image html ex_signed_curvature_from_distance2.png
+ * @image html ex_signed_curvature_from_distance3.png
+ */
+Array signed_curvature_from_distance(const Array &array, int prefilter_ir = 0);
+
+/**
+ * @brief Computes a signed distance transform using curvature sign.
+ *
+ * First computes the unsigned Euclidean distance transform, then assigns its
+ * sign from the curvature of the smoothed distance field: sign = sign( div( ∇d
+ * / ||∇d|| ) ).
+ *
+ * @param  array        Binary input (non-zero = foreground).
+ * @param  prefilter_ir Optional smoothing radius for curvature evaluation.
+ * @return              Signed distance transform.
+ */
+Array signed_distance_transform(const Array &array, int prefilter_ir = 0);
 
 /**
  * @brief Computes the skeleton of a binary image using the Zhang-Suen
@@ -332,37 +396,77 @@ namespace hmap::gpu
 {
 
 /*! @brief See hmap::border */
-Array border(const Array &array, int ir);
+Array border(const Array &array, int ir, bool use_disk_kernel = true);
 
 /*! @brief See hmap::closing */
-Array closing(const Array &array, int ir);
+Array closing(const Array &array, int ir, bool use_disk_kernel = true);
 
 /*! @brief See hmap::dilation */
-Array dilation(const Array &array, int ir);
+Array dilation(const Array &array, int ir, bool use_disk_kernel = true);
 
 /*! @brief See hmap::dilation_expand_border_only */
-Array dilation_expand_border_only(const Array &array, int ir);
+Array dilation_expand_border_only(const Array &array,
+                                  int          ir,
+                                  bool         use_disk_kernel = true);
+
+/**
+ * @brief Return the Euclidean distance transform.
+ *
+ * (Almost) exact transform based on the jump flooding algorithm.
+ *
+ * @param  array                   Input array to be transformed, will be
+ *                                 converted into binary: 1 wherever input is
+ *                                 greater than 0, 0 elsewhere.
+ * @param  return_squared_distance Whether the distance returned is squared or
+ *                                 not.
+ * @return                         Array Reference to the output array.
+ *
+ * **Example**
+ * @include ex_distance_transform.cpp
+ *
+ * **Result**
+ * @image html ex_distance_transform0.png
+ * @image html ex_distance_transform1.png
+ * @image html ex_distance_transform2.png
+ * @image html ex_distance_transform3.png
+ * @image html ex_distance_transform4.png
+ */
+Array distance_transform_jfa(const Array &array,
+                             bool         return_squared_distance = false);
 
 /*! @brief See hmap::erosion */
-Array erosion(const Array &array, int ir);
+Array erosion(const Array &array, int ir, bool use_disk_kernel = true);
 
 /*! @brief See hmap::morphological_black_hat */
-Array morphological_black_hat(const Array &array, int ir);
+Array morphological_black_hat(const Array &array,
+                              int          ir,
+                              bool         use_disk_kernel = true);
 
 /*! @brief See hmap::morphological_gradient */
-Array morphological_gradient(const Array &array, int ir);
+Array morphological_gradient(const Array &array,
+                             int          ir,
+                             bool         use_disk_kernel = true);
 
 /*! @brief See hmap::morphological_top_hat */
-Array morphological_top_hat(const Array &array, int ir);
+Array morphological_top_hat(const Array &array,
+                            int          ir,
+                            bool         use_disk_kernel = true);
 
 /*! @brief See hmap::opening */
-Array opening(const Array &array, int ir);
+Array opening(const Array &array, int ir, bool use_disk_kernel = true);
 
 /*! @brief See hmap::relative_distance_from_skeleton */
 Array relative_distance_from_skeleton(const Array &array,
                                       int          ir_search,
                                       bool         zero_at_borders = true,
-                                      int          ir_erosion = 1);
+                                      int          ir_erosion = 1,
+                                      bool         use_disk_kernel = true);
+
+/*! @brief See hmap::signed_curvature_from_distance */
+Array signed_curvature_from_distance(const Array &array, int prefilter_ir = 0);
+
+/*! @brief See hmap::signed_distance_transform */
+Array signed_distance_transform(const Array &array, int prefilter_ir = 0);
 
 /*! @brief See hmap::skeleton */
 Array skeleton(const Array &array, bool zero_at_borders = true);

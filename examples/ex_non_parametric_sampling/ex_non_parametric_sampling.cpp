@@ -2,14 +2,14 @@
 
 int main(void)
 {
-  hmap::Vec2<int>   shape = {64, 64};
-  hmap::Vec2<float> kw = {2.f, 2.f};
-  int               seed = 1;
+  glm::ivec2 shape = {64, 64};
+  glm::vec2  kw = {2.f, 2.f};
+  int        seed = 1;
 
   auto z = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, kw, seed);
   hmap::remap(z);
 
-  hmap::Vec2<int> patch_shape = {5, 5};
+  glm::ivec2 patch_shape = {5, 5};
 
   // base function
   hmap::Array zq1 = hmap::non_parametric_sampling(z, patch_shape, ++seed, 0.5f);

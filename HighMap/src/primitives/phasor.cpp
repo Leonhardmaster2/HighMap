@@ -1,161 +1,118 @@
-/* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
+/* Copyright (c) 2026 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "macrologger.h"
-
-#include "highmap/array.hpp"
-#include "highmap/geometry/point_sampling.hpp"
-#include "highmap/kernels.hpp"
+#include "highmap/gradient.hpp"
 #include "highmap/math.hpp"
-#include "highmap/operator.hpp"
-#include "highmap/range.hpp"
+#include "highmap/opencl/gpu_opencl.hpp"
 
-namespace hmap
+namespace hmap::gpu
 {
 
-Array phasor(PhasorProfile phasor_profile,
-             Vec2<int>     shape,
-             float         kw,
-             const Array  &angle,
-             uint          seed,
-             float         profile_delta,
-             float         density_factor,
-             float         kernel_width_ratio,
-             float         phase_smoothing)
+Array phasor(PhasorProfile   phasor_profile,
+             glm::ivec2      shape,
+             float           kp_global,
+             uint            seed,
+             float           angle_shift,
+             int             n_kernel_samples,
+             const glm::vec2 jitter,
+             int             angle_filter_ir,
+             float           delta,
+             float           phase_smoothing,
+             const Array    *p_angle,
+             const Array    *p_noise_x,
+             const Array    *p_noise_y,
+             glm::vec4       bbox)
 {
-  //
 
-  std::mt19937                          gen(seed);
-  std::uniform_real_distribution<float> dis(0.f, 1.f);
+  // wavenumbers
+  float           kp = std::sqrt(kp_global);
+  const glm::vec2 kw = {kp, kp};
 
-  // define Gabor kernel base parameters
-  int   phase_ir = std::max(1, (int)(shape.x / kw));
-  int   width = (int)(kernel_width_ratio * phase_ir);
-  float kw_kernel = kernel_width_ratio;
+  // angle field
+  Array angle(shape, angle_shift);
+  if (p_angle) angle += *p_angle;
 
-  // if the kernel support is too small, return an zeroed array
-  if (width < 4) return Array(shape);
+  // compute phase
+  Array modulus(shape);
+  Array phase = phase_field_angle(angle,
+                                  kw,
+                                  seed,
+                                  kp,
+                                  n_kernel_samples,
+                                  jitter,
+                                  angle_filter_ir,
+                                  /* p_ctrl_param */ nullptr,
+                                  p_noise_x,
+                                  p_noise_y,
+                                  &modulus,
+                                  /* p_angle_jump_mask */ nullptr,
+                                  bbox);
 
-  // Gabor noise
-  float density = density_factor * 20.f / (float)(width * width);
-  int   npoints = (int)(density * shape.x * shape.y);
-  Array gnoise_x(shape);
-  Array gnoise_y(shape);
+  // apply phase function
+  float profile_avg = 0.f;
+  auto  fct = get_phasor_profile_function(phasor_profile, delta, &profile_avg);
 
-  // generate Gabor kernel "spawn" points
-  std::vector<float> x(npoints), y(npoints);
-  Vec4<float>        bbox(0.f, (float)shape.x - 1.f, 0.f, (float)shape.y - 1.f);
+  for (int j = 0; j < shape.y; j++)
+    for (int i = 0; i < shape.x; i++)
+    {
+      float value = fct(phase(i, j));
 
-  const Vec2<float> jitter_amount = {0.5f, 0.5f};
-  const Vec2<float> stagger_ratio = {0.f, 0.f};
+      // modulus-based smoothing to avoid kinky transitions between
+      // phases
+      float t = 2.f / M_PI * std::atan(phase_smoothing * modulus(i, j));
 
-  auto xy = random_points_jittered(npoints,
-                                   jitter_amount,
-                                   stagger_ratio,
-                                   seed,
-                                   bbox);
-  x = xy[0];
-  y = xy[1];
+      phase(i, j) = lerp(profile_avg, value, t);
+    }
 
-  for (int k = 0; k < npoints; k++)
-  {
-    int i = x[k];
-    int j = y[k];
-
-    Array kernel;
-
-    Vec2<int> kernel_shape(width, width);
-
-    kernel = gabor(kernel_shape, kw_kernel, angle(i, j));
-    add_kernel(gnoise_x, kernel, i, j);
-
-    kernel = gabor(kernel_shape, kw_kernel, angle(i, j), true);
-    add_kernel(gnoise_y, kernel, i, j);
-  }
-
-  // phase field
-  Array phase = atan2(gnoise_y, gnoise_x);
-
-  // apply phase profile
-  float profile_avg;
-  auto  lambda_p = get_phasor_profile_function(phasor_profile,
-                                              profile_delta,
-                                              &profile_avg);
-
-  Array phasor_noise(shape);
-
-  if (phase_smoothing > 0.f)
-  {
-    for (int j = 0; j < shape.y; j++)
-      for (int i = 0; i < shape.x; i++)
-      {
-        float rho = 2.f / M_PI *
-                    std::atan(phase_smoothing *
-                              std::hypot(gnoise_x(i, j), gnoise_y(i, j)));
-
-        phasor_noise(i, j) = rho * lambda_p(phase(i, j)) +
-                             (1.f - rho) * profile_avg;
-      }
-  }
-  else
-  {
-    for (int j = 0; j < shape.y; j++)
-      for (int i = 0; i < shape.x; i++)
-        phasor_noise(i, j) = lambda_p(phase(i, j));
-  }
-
-  // return phase;
-  return phasor_noise;
+  return phase;
 }
 
-Array phasor_fbm(PhasorProfile phasor_profile,
-                 Vec2<int>     shape,
-                 float         kw,
-                 const Array  &angle,
-                 uint          seed,
-                 float         profile_delta,
-                 float         density_factor,
-                 float         kernel_width_ratio,
-                 float         phase_smoothing,
-                 int           octaves,
-                 float         weight,
-                 float         persistence,
-                 float         lacunarity)
+Array phasor_fbm(PhasorProfile   phasor_profile,
+                 glm::ivec2      shape,
+                 float           kp_global,
+                 uint            seed,
+                 float           angle_shift,
+                 int             octaves,
+                 float           weight,
+                 float           persistence,
+                 float           lacunarity,
+                 int             n_kernel_samples,
+                 const glm::vec2 jitter,
+                 int             angle_filter_ir,
+                 float           delta,
+                 float           phase_smoothing,
+                 const Array    *p_angle,
+                 const Array    *p_noise_x,
+                 const Array    *p_noise_y,
+                 glm::vec4       bbox)
 {
-  // initial amplitude
-  float amp = persistence;
-  float amp_fractal = 1.f;
-  for (int i = 1; i < octaves; i++)
-  {
-    amp_fractal += amp;
-    amp *= persistence;
-  }
-  float amp0 = 1.f / amp_fractal;
-
-  // fbm layering
-  Array famp(shape, amp0);
-  Array sum(shape);
-  float kw_factor = 1.f;
+  Array sum(shape, 0.f);
+  Array amp(shape, 1.f);
 
   for (int k = 0; k < octaves; k++)
   {
     Array value = phasor(phasor_profile,
                          shape,
-                         kw_factor * kw,
-                         angle,
-                         seed++,
-                         profile_delta,
-                         density_factor,
-                         kernel_width_ratio,
-                         phase_smoothing);
+                         kp_global,
+                         seed,
+                         angle_shift,
+                         n_kernel_samples,
+                         jitter,
+                         angle_filter_ir,
+                         delta,
+                         phase_smoothing,
+                         p_angle,
+                         p_noise_x,
+                         p_noise_y,
+                         bbox);
 
-    sum += value * famp;
-    famp *= (1.f - weight) + weight * 0.5f * minimum(value + 1.f, 2.f);
-    famp *= persistence;
-    kw_factor *= lacunarity;
+    sum += value * amp;
+    kp_global *= lacunarity;
+    amp *= persistence;
+    seed++;
   }
 
   return sum;
 }
 
-} // namespace hmap
+} // namespace hmap::gpu

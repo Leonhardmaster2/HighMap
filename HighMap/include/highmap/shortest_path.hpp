@@ -59,8 +59,8 @@ namespace hmap
  * @image html ex_find_path_dijkstra2.png
  */
 void find_path_dijkstra(const Array      &z,
-                        Vec2<int>         ij_start,
-                        Vec2<int>         ij_end,
+                        glm::ivec2        ij_start,
+                        glm::ivec2        ij_end,
                         std::vector<int> &i_path,
                         std::vector<int> &j_path,
                         float             elevation_ratio = 0.1f,
@@ -69,13 +69,42 @@ void find_path_dijkstra(const Array      &z,
                         const Array      *p_mask_nogo = nullptr);
 
 void find_path_dijkstra(const Array                   &z,
-                        Vec2<int>                      ij_start,
-                        std::vector<Vec2<int>>         ij_end_list,
+                        glm::ivec2                     ij_start,
+                        std::vector<glm::ivec2>        ij_end_list,
                         std::vector<std::vector<int>> &i_path_list,
                         std::vector<std::vector<int>> &j_path_list,
                         float                          elevation_ratio = 0.1f,
                         float                          distance_exponent = 2.f,
                         float        upward_penalization = 1.f,
                         const Array *p_mask_nogo = nullptr);
+
+/**
+ * @brief Compute a path between two points using iterative midpoint refinement.
+ *
+ * The algorithm subdivides segments and shifts midpoints along the
+ * perpendicular direction to locally minimize the scalar field `z`. This is a
+ * fast heuristic alternative to graph-based methods (not guaranteed optimal).
+ *
+ * @param z              2D scalar field (weights).
+ * @param ij_start       Start index.
+ * @param ij_end         End index.
+ * @param offset_ratio   Relative transverse displacement (per segment length).
+ * @param max_it         Max iterations (0 = automatic based on distance).
+ * @param steps          Number of samples for transverse search.
+ *
+ * @return Vector of grid indices forming the path.
+ *
+ * **Example**
+ * @include ex_find_path_midpoint.cpp
+ *
+ * **Result**
+ * @image html ex_find_path_midpoint.png
+ */
+std::vector<glm::ivec2> find_path_midpoint(const Array &z,
+                                           glm::ivec2   ij_start,
+                                           glm::ivec2   ij_end,
+                                           float        offset_ratio = 0.5f,
+                                           int          max_it = 0,
+                                           int          steps = 16);
 
 } // namespace hmap

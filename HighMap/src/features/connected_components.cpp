@@ -11,9 +11,11 @@
 namespace hmap
 {
 
-Array connected_components(const Array &array,
-                           float        surface_threshold,
-                           float        background_value)
+Array connected_components(const Array                       &array,
+                           float                              surface_threshold,
+                           float                              background_value,
+                           std::vector<float>                *p_surfaces,
+                           std::vector<std::array<float, 2>> *p_centroids)
 {
   // neighbor search pattern
   const std::vector<int> di = {0, -1, -1, -1};
@@ -24,7 +26,7 @@ Array connected_components(const Array &array,
   const int npi = array.shape.x + 2;
   const int npj = array.shape.y + 2;
 
-  Array labels = Array(Vec2<int>(npi, npj));
+  Array labels = Array(glm::ivec2(npi, npj));
   Array array_pad = generate_buffered_array(array, {1, 1, 1, 1});
   set_borders(array_pad, background_value + 1.f, 1);
 
@@ -33,8 +35,9 @@ Array connected_components(const Array &array,
   int                                 current_label = 0;
   std::map<float, std::vector<float>> labels_mapping = {};
 
-  for (int j = 0; j < npj; j++)
-    for (int i = 0; i < npi; i++)
+  // /!\ i, j LOOP ORDER MATERS
+  for (int i = 0; i < npi; i++)
+    for (int j = 0; j < npj; j++)
       if (array_pad(i, j) != background_value)
       {
         // scan neighbors and count those that are "background"
@@ -93,25 +96,60 @@ Array connected_components(const Array &array,
     it->second = label_root;
   }
 
-  std::map<float, float> labels_surface = {};
-
   for (int j = 0; j < npj; j++)
     for (int i = 0; i < npi; i++)
     {
       if ((labels(i, j) > 0) & (labels_mapping_reverse.contains(labels(i, j))))
         labels(i, j) = labels_mapping_reverse[labels(i, j)];
-      labels_surface[labels(i, j)] += 1.f;
+    }
+
+  // --- clean-up, remove single-cell labels and filter by surface
+
+  std::map<float, float> labels_surface = {};
+
+  for (int j = 0; j < npj; j++)
+    for (int i = 0; i < npi; i++)
+    {
+      if (labels(i, j) > 0.f) labels_surface[labels(i, j)] += 1.f;
+    }
+
+  // filter
+  float smin = std::max(1.f, surface_threshold);
+
+  for (int j = 0; j < labels.shape.y; j++)
+    for (int i = 0; i < labels.shape.x; i++)
+    {
+      if (labels_surface[labels(i, j)] <= smin) labels(i, j) = background_value;
+    }
+
+  // update surface and centroids
+  labels_surface.clear();
+  std::map<float, std::array<float, 2>> labels_centroids = {};
+
+  for (int j = 0; j < npj; j++)
+    for (int i = 0; i < npi; i++)
+    {
+      if (labels(i, j) > 0)
+      {
+        labels_surface[labels(i, j)] += 1.f;
+        labels_centroids[labels(i, j)][0] += float(i);
+        labels_centroids[labels(i, j)][1] += float(j);
+      }
     }
 
   // removing padding before returning the result
   labels = labels.extract_slice({1, npi - 1, 1, npj - 1});
 
-  // --- remove component with a "small" surface
-  if (surface_threshold > 0.f)
-    for (int j = 0; j < labels.shape.y; j++)
-      for (int i = 0; i < labels.shape.x; i++)
-        if (labels_surface[labels(i, j)] < surface_threshold)
-          labels(i, j) = background_value;
+  // --- outputs
+
+  for (auto &[k, v] : labels_surface)
+  {
+    if (p_surfaces) p_surfaces->push_back(v);
+
+    if (p_centroids)
+      p_centroids->push_back(
+          {labels_centroids[k][0] / v, labels_centroids[k][1] / v});
+  }
 
   return labels;
 }

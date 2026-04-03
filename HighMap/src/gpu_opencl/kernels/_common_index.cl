@@ -2,6 +2,8 @@ R""(
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
+#define TGET(tex, i, j) read_imagef(tex, sampler, (int2)((i), (j))).x
+#define TSET(tex, i, j, v) write_imagef(tex, (int2)((i), (j)), (v))
 
 float2 g_to_xy(const int2   g,
                const int    nx,
@@ -58,6 +60,15 @@ bool is_inside(const int i, const int j, const int nx, const int ny)
   return i >= 0 && i < nx && j >= 0 && j < ny;
 }
 
+bool is_inside_gap(const int i,
+                   const int j,
+                   const int nx,
+                   const int ny,
+                   const int gap)
+{
+  return i >= gap && i < nx - gap && j >= gap && j < ny - gap;
+}
+
 int linear_index(const int i, const int j, const int nx)
 {
   return j * nx + i;
@@ -74,5 +85,54 @@ void update_interp_param(float2 pos, int *i, int *j, float *u, float *v)
   *j = (int)pos.y;
   *u = pos.x - *i;
   *v = pos.y - *j;
+}
+
+inline int apply_boundaries(global float *z, int gx, int gy, int nx, int ny)
+{
+  int index = linear_index(gx, gy, nx);
+
+  if (gx == 0)
+  {
+    z[index] = z[linear_index(1, gy, nx)];
+    return 1;
+  }
+  if (gx == nx - 1)
+  {
+    z[index] = z[linear_index(nx - 2, gy, nx)];
+    return 1;
+  }
+  if (gy == 0)
+  {
+    z[index] = z[linear_index(gx, 1, nx)];
+    return 1;
+  }
+  if (gy == ny - 1)
+  {
+    z[index] = z[linear_index(gx, ny - 2, nx)];
+    return 1;
+  }
+
+  return 0; // not a boundary
+}
+
+inline int apply_boundaries_buffer(global float *z,
+                                   int           gx,
+                                   int           gy,
+                                   int           nx,
+                                   int           ny,
+                                   int           b)
+{
+  // inside valid interior → nothing to do
+  if (gx >= b && gx < nx - b && gy >= b && gy < ny - b) return 0;
+
+  // clamp to nearest interior cell
+  int cx = clamp(gx, b, nx - b - 1);
+  int cy = clamp(gy, b, ny - b - 1);
+
+  int idx = linear_index(gx, gy, nx);
+  int idxc = linear_index(cx, cy, nx);
+
+  z[idx] = z[idxc];
+  return 1;
 }
 )""

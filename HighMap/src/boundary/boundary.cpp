@@ -6,6 +6,7 @@
 #include "macrologger.h"
 
 #include "highmap/array.hpp"
+#include "highmap/boundary.hpp"
 #include "highmap/math.hpp"
 #include "highmap/operator.hpp"
 #include "highmap/transform.hpp"
@@ -78,10 +79,10 @@ void falloff(Array           &array,
              float            strength,
              DistanceFunction dist_fct,
              const Array     *p_noise,
-             Vec4<float>      bbox)
+             glm::vec4        bbox)
 {
-  hmap::Vec2<float> shift = {bbox.a, bbox.c};
-  hmap::Vec2<float> scale = {bbox.b - bbox.a, bbox.d - bbox.c};
+  glm::vec2 shift = {bbox.x, bbox.z};
+  glm::vec2 scale = {bbox.y - bbox.x, bbox.w - bbox.z};
 
   std::vector<float> x = linspace(shift.x - 0.5f,
                                   shift.x - 0.5f + scale.x,
@@ -152,22 +153,22 @@ void fill_borders(Array &array, int nbuffer)
 }
 
 Array generate_buffered_array(const Array &array,
-                              Vec4<int>    buffers,
+                              glm::ivec4   buffers,
                               bool         zero_padding)
 {
-  Array array_out = Array(Vec2<int>(array.shape.x + buffers.a + buffers.b,
-                                    array.shape.y + buffers.c + buffers.d));
+  Array array_out = Array(glm::ivec2(array.shape.x + buffers.x + buffers.y,
+                                     array.shape.y + buffers.z + buffers.w));
 
   for (int j = 0; j < array.shape.y; j++)
     for (int i = 0; i < array.shape.x; i++)
-      array_out(i + buffers.a, j + buffers.c) = array(i, j);
+      array_out(i + buffers.x, j + buffers.z) = array(i, j);
 
   if (!zero_padding)
   {
-    int i1 = buffers.a;
-    int i2 = buffers.b;
-    int j1 = buffers.c;
-    int j2 = buffers.d;
+    int i1 = buffers.x;
+    int i2 = buffers.y;
+    int j1 = buffers.z;
+    int j2 = buffers.w;
 
     for (int j = j1; j < array_out.shape.y - j2; j++)
       for (int i = 0; i < i1; i++)
@@ -189,51 +190,87 @@ Array generate_buffered_array(const Array &array,
   return array_out;
 }
 
-void make_periodic(Array &array, int nbuffer)
+void make_periodic(Array                 &array,
+                   int                    nbuffer,
+                   const PeriodicityType &periodicity_type)
 {
-  int ni = array.shape.x;
-  int nj = array.shape.y;
+  const int ni = array.shape.x;
+  const int nj = array.shape.y;
 
-  Array a1 = array;
-  for (int i = 0; i < nbuffer; i++)
+  if (nbuffer <= 0) return;
+  if (nbuffer > ni / 2 || nbuffer > nj / 2) nbuffer = std::min(ni, nj) / 2;
+
+  auto compute_weight = [&](int k) -> float
   {
-    float r = 0.5f * (float)i / ((float)nbuffer - 1.f);
-    r = 0.5f * smoothstep3(2.f * r);
-    for (int j = 0; j < nj; j++)
+    // k in [0, nbuffer-1]
+    if (nbuffer <= 1) return 0.0f;
+
+    float t = 0.5f * (float)k / (float)(nbuffer - 1);
+    return 0.5f * smoothstep3(2.f * t);
+  };
+
+  // blends a pair of values symmetrically:
+  //    out0 = (0.5 + r)*a0 + (0.5 - r)*a1
+  //    out1 = (0.5 + r)*a1 + (0.5 - r)*a0
+  auto blend_pair = [&](float &v0, float &v1, float r)
+  {
+    const float w0 = 0.5f + r;
+    const float w1 = 0.5f - r;
+    const float a0 = v0;
+    const float a1 = v1;
+    v0 = w0 * a0 + w1 * a1;
+    v1 = w0 * a1 + w1 * a0;
+  };
+
+  Array tmp = array; // X pass writes to tmp, Y pass reads from tmp
+
+  // --- X periodicity
+
+  if (periodicity_type == PeriodicityType::PERIODICITY_X ||
+      periodicity_type == PeriodicityType::PERIODICITY_XY)
+  {
+    for (int i = 0; i < nbuffer; ++i)
     {
-      a1(i, j) = (0.5f + r) * array(i, j) + (0.5f - r) * array(ni - 1 - i, j);
-      a1(ni - 1 - i, j) = (0.5f + r) * array(ni - 1 - i, j) +
-                          (0.5f - r) * array(i, j);
+      float r = compute_weight(i);
+      int   ir = ni - 1 - i;
+
+      for (int j = 0; j < nj; ++j)
+        blend_pair(tmp(i, j), tmp(ir, j), r);
     }
   }
 
-  Array a2 = a1;
-  for (int j = 0; j < nbuffer; j++)
+  Array result = tmp;
+
+  // --- Y periodicity
+
+  if (periodicity_type == PeriodicityType::PERIODICITY_Y ||
+      periodicity_type == PeriodicityType::PERIODICITY_XY)
   {
-    float r = 0.5f * (float)j / ((float)nbuffer - 1);
-    r = 0.5f * smoothstep3(2.f * r);
-    for (int i = 0; i < ni; i++)
+    for (int j = 0; j < nbuffer; ++j)
     {
-      a2(i, j) = (0.5 + r) * a1(i, j) + (0.5 - r) * a1(i, nj - 1 - j);
-      a2(i, nj - 1 - j) = (0.5 + r) * a1(i, nj - 1 - j) + (0.5 - r) * a1(i, j);
+      float r = compute_weight(j);
+      int   jr = nj - 1 - j;
+
+      for (int i = 0; i < ni; ++i)
+        blend_pair(result(i, j), result(i, jr), r);
     }
   }
 
-  array = a2;
+  array = result;
 }
 
 Array make_periodic_stitching(const Array &array, float overlap)
 {
-  Array     array_p = array;
-  Vec2<int> shape = array.shape;
+  Array      array_p = array;
+  glm::ivec2 shape = array.shape;
 
-  Vec2<int> noverlap = {(int)(0.5f * overlap * shape.x),
-                        (int)(0.5f * overlap * shape.y)};
-  int       ir = (int)noverlap.x / 2.f;
+  glm::ivec2 noverlap = {(int)(0.5f * overlap * shape.x),
+                         (int)(0.5f * overlap * shape.y)};
+  int        ir = (int)noverlap.x / 2.f;
 
   // east frontier
   {
-    Array error = Array(Vec2<int>(noverlap.x, shape.y));
+    Array error = Array(glm::ivec2(noverlap.x, shape.y));
     for (int j = 0; j < shape.y; j++)
       for (int i = 0; i < noverlap.x; i++)
         error(i, j) = std::abs(array(i, j) -
@@ -255,7 +292,7 @@ Array make_periodic_stitching(const Array &array, float overlap)
 
   // south frontier
   {
-    Array error = Array(Vec2<int>(shape.x, noverlap.y));
+    Array error = Array(glm::ivec2(shape.x, noverlap.y));
     for (int j = 0; j < noverlap.y; j++)
       for (int i = 0; i < shape.x; i++)
         error(i, j) = std::abs(array_p(i, j) -
@@ -280,23 +317,23 @@ Array make_periodic_stitching(const Array &array, float overlap)
   int nx = (int)(0.5f * noverlap.x);
   int ny = (int)(0.5f * noverlap.y);
 
-  array_p = array_p.extract_slice(Vec4<int>(nx,
-                                            array.shape.x - noverlap.x + nx,
-                                            ny,
-                                            array.shape.y - noverlap.y + ny));
+  array_p = array_p.extract_slice(glm::ivec4(nx,
+                                             array.shape.x - noverlap.x + nx,
+                                             ny,
+                                             array.shape.y - noverlap.y + ny));
 
   array_p = array_p.resample_to_shape(shape);
 
   return array_p;
 }
 
-Array make_periodic_tiling(const Array &array, float overlap, Vec2<int> tiling)
+Array make_periodic_tiling(const Array &array, float overlap, glm::ivec2 tiling)
 {
   //
 
   Array array_periodic = make_periodic_stitching(array, overlap);
 
-  Vec2<int> shape_tile = {array.shape.x / tiling.x, array.shape.y / tiling.y};
+  glm::ivec2 shape_tile = {array.shape.x / tiling.x, array.shape.y / tiling.y};
   array_periodic = array_periodic.resample_to_shape(shape_tile);
 
   Array array_out = array_periodic;
@@ -315,68 +352,66 @@ Array make_periodic_tiling(const Array &array, float overlap, Vec2<int> tiling)
   return array_out;
 }
 
-void set_borders(Array      &array,
-                 Vec4<float> border_values,
-                 Vec4<int>   buffer_sizes)
+void set_borders(Array &array, glm::vec4 border_values, glm::ivec4 buffer_sizes)
 {
   // west
   for (int j = 0; j < array.shape.y; j++)
-    for (int i = 0; i < buffer_sizes.a; i++)
+    for (int i = 0; i < buffer_sizes.x; i++)
     {
-      float r = (float)i / (float)buffer_sizes.a;
+      float r = (float)i / (float)buffer_sizes.x;
       r = r * r * (3.f - 2.f * r);
-      array(i, j) = (1.f - r) * border_values.a + r * array(i, j);
+      array(i, j) = (1.f - r) * border_values.x + r * array(i, j);
     }
 
   // east
   for (int j = 0; j < array.shape.y; j++)
-    for (int i = array.shape.x - buffer_sizes.b; i < array.shape.x; i++)
+    for (int i = array.shape.x - buffer_sizes.y; i < array.shape.x; i++)
     {
-      float r = 1.f - (float)(i - array.shape.x + buffer_sizes.b) /
-                          (float)buffer_sizes.b;
+      float r = 1.f - (float)(i - array.shape.x + buffer_sizes.y) /
+                          (float)buffer_sizes.y;
       r = r * r * (3.f - 2.f * r);
-      array(i, j) = (1.f - r) * border_values.b + r * array(i, j);
+      array(i, j) = (1.f - r) * border_values.y + r * array(i, j);
     }
 
   // south
-  for (int j = 0; j < buffer_sizes.c; j++)
+  for (int j = 0; j < buffer_sizes.z; j++)
     for (int i = 0; i < array.shape.x; i++)
     {
-      float r = (float)j / (float)buffer_sizes.c;
+      float r = (float)j / (float)buffer_sizes.z;
       r = r * r * (3.f - 2.f * r);
-      array(i, j) = (1.f - r) * border_values.c + r * array(i, j);
+      array(i, j) = (1.f - r) * border_values.z + r * array(i, j);
     }
 
   // north
-  for (int j = array.shape.y - buffer_sizes.d; j < array.shape.y; j++)
+  for (int j = array.shape.y - buffer_sizes.w; j < array.shape.y; j++)
     for (int i = 0; i < array.shape.x; i++)
     {
-      float r = 1.f - (float)(j - array.shape.y + buffer_sizes.d) /
-                          (float)buffer_sizes.d;
+      float r = 1.f - (float)(j - array.shape.y + buffer_sizes.w) /
+                          (float)buffer_sizes.w;
       r = r * r * (3.f - 2.f * r);
-      array(i, j) = (1.f - r) * border_values.d + r * array(i, j);
+      array(i, j) = (1.f - r) * border_values.w + r * array(i, j);
     }
 }
 
 void set_borders(Array &array, float border_values, int buffer_sizes)
 {
-  Vec4<float> bv = Vec4<float>(border_values,
-                               border_values,
-                               border_values,
-                               border_values);
-  Vec4<int>   bs = Vec4<int>(buffer_sizes,
-                           buffer_sizes,
-                           buffer_sizes,
-                           buffer_sizes);
+  glm::vec4  bv = glm::vec4(border_values,
+                           border_values,
+                           border_values,
+                           border_values);
+  glm::ivec4 bs = glm::ivec4(buffer_sizes,
+                             buffer_sizes,
+                             buffer_sizes,
+                             buffer_sizes);
   set_borders(array, bv, bs);
 }
 
-void sym_borders(Array &array, Vec4<int> buffer_sizes)
+void sym_borders(Array &array, glm::ivec4 buffer_sizes)
 {
-  const int i1 = buffer_sizes.a;
-  const int i2 = buffer_sizes.b;
-  const int j1 = buffer_sizes.c;
-  const int j2 = buffer_sizes.d;
+  const int i1 = buffer_sizes.x;
+  const int i2 = buffer_sizes.y;
+  const int j1 = buffer_sizes.z;
+  const int j2 = buffer_sizes.w;
 
   // fill-in the blanks...
   for (int j = j1; j < array.shape.y - j2; j++)
@@ -418,10 +453,10 @@ void zeroed_edges(Array           &array,
                   float            sigma,
                   DistanceFunction dist_fct,
                   const Array     *p_noise,
-                  Vec4<float>      bbox)
+                  glm::vec4        bbox)
 {
-  hmap::Vec2<float> shift = {bbox.a, bbox.c};
-  hmap::Vec2<float> scale = {bbox.b - bbox.a, bbox.d - bbox.c};
+  glm::vec2 shift = {bbox.x, bbox.z};
+  glm::vec2 scale = {bbox.y - bbox.x, bbox.w - bbox.z};
 
   std::vector<float> x = linspace(shift.x - 0.5f,
                                   shift.x - 0.5f + scale.x,

@@ -23,8 +23,8 @@ Array harmonic_interpolation(const Array &array,
     float max_diff = 0.f;
 
     // sweep over interior
-    for (int i = 1; i < nx - 1; ++i)
-      for (int j = 1; j < ny - 1; ++j)
+    for (int j = 1; j < ny - 1; ++j)
+      for (int i = 1; i < nx - 1; ++i)
       {
         if (mask_fixed_values(i, j) > 0.f) continue;
 

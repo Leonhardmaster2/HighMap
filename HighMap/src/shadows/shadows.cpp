@@ -76,13 +76,13 @@ Array shadow_heightmap(const Array &z,
   float vx = distance * std::cos(azimuth_rad) * (float)(z.shape.x - 1);
   float vy = distance * std::sin(azimuth_rad) * (float)(z.shape.y - 1);
 
-  Vec3<float> light_vector = Vec3<float>(vx, vy, std::sin(zenith_rad));
+  glm::vec3 light_vector = glm::vec3(vx, vy, std::sin(zenith_rad));
 
   for (int j = 1; j < z.shape.y - 1; j++)
     for (int i = 1; i < z.shape.x - 1; i++)
     {
-      Vec3<float> normal = z.get_normal_at(i, j);
-      Vec3<float> pos;
+      glm::vec3 normal = z.get_normal_at(i, j);
+      glm::vec3 pos;
 
       float ndl = -normal.x * light_vector.x - normal.y * light_vector.y +
                   normal.z * light_vector.z;

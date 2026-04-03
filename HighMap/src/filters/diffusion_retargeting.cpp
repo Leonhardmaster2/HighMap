@@ -7,6 +7,7 @@
 #include "highmap/boundary.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/geometry/cloud.hpp"
+#include "highmap/gradient.hpp"
 #include "highmap/operator.hpp"
 #include "highmap/range.hpp"
 
@@ -17,7 +18,7 @@ Array diffusion_retargeting(const Array &array_before,
                             const Array &array_after,
                             int          ir)
 {
-  Vec2<int> shape = array_before.shape;
+  glm::ivec2 shape = array_before.shape;
 
   // select points of interest
   Array delta(shape);
@@ -47,6 +48,23 @@ Array diffusion_retargeting(const Array &array_before,
   remap(delta, vmin, vmax);
 
   return delta + array_after;
+}
+
+Array diffusion_retargeting(const Array &array_before,
+                            const Array &array_after,
+                            const Array &mask,
+                            int          iterations)
+{
+  Array error = mask * (array_before - array_after);
+  Array error0 = error;
+
+  for (int it = 0; it < iterations; ++it)
+  {
+    laplace(error, 0.125f, 1);
+    error = (1.f - mask) * error0 + mask * error;
+  }
+
+  return array_after + error;
 }
 
 } // namespace hmap

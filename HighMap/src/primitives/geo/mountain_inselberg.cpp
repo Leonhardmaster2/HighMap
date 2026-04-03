@@ -10,7 +10,7 @@
 namespace hmap::gpu
 {
 
-Array mountain_inselberg(Vec2<int>    shape,
+Array mountain_inselberg(glm::ivec2   shape,
                          uint         seed,
                          float        scale,
                          int          octaves,
@@ -22,14 +22,14 @@ Array mountain_inselberg(Vec2<int>    shape,
                          float        bulk_amp,
                          float        base_noise_amp,
                          float        k_smoothing,
-                         Vec2<float>  center,
+                         glm::vec2    center,
                          const Array *p_noise_x,
                          const Array *p_noise_y,
-                         Vec4<float>  bbox)
+                         glm::vec4    bbox)
 {
   // apply global scaling to reference values
-  const float       half_width = 0.2f * scale;
-  const Vec2<float> kw = Vec2<float>(2.6f / scale, 2.6f / scale);
+  const float     half_width = 0.2f * scale;
+  const glm::vec2 kw = glm::vec2(2.6f / scale, 2.6f / scale);
 
   const float persistence = 0.5f;
   const float lacunarity = 2.f;
@@ -68,7 +68,7 @@ Array mountain_inselberg(Vec2<int>    shape,
                                bbox);
 
   // base primitives
-  Vec2<float>       jitter(1.f, 1.f);
+  glm::vec2         jitter(1.f, 1.f);
   VoronoiReturnType return_type = VoronoiReturnType::CONSTANT_F2MF1_SQUARED;
 
   Array voronoi = 0.72f + voronoi_fbm(shape,

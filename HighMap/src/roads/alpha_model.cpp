@@ -16,7 +16,7 @@ namespace hmap
 Graph generate_network_alpha_model(const std::vector<float> &xc,
                                    const std::vector<float> &yc,
                                    const std::vector<float> &size,
-                                   Vec4<float>               bbox,
+                                   glm::vec4                 bbox,
                                    const Array              &z,
                                    uint                      seed,
                                    float                     alpha,
@@ -31,8 +31,8 @@ Graph generate_network_alpha_model(const std::vector<float> &xc,
 
   Graph graph = Graph();
   {
-    const Vec2<float> jitter_amount = {0.5f, 0.5f};
-    const Vec2<float> stagger_ratio = {0.f, 0.f};
+    const glm::vec2 jitter_amount = {0.5f, 0.5f};
+    const glm::vec2 stagger_ratio = {0.f, 0.f};
 
     Cloud cloud = random_cloud_jittered(n_dummy_nodes,
                                         jitter_amount,
@@ -55,7 +55,7 @@ Graph generate_network_alpha_model(const std::vector<float> &xc,
   //--- road weights
 
   Array is_road = Array(
-      Vec2<int>((int)graph.get_npoints(), (int)graph.get_npoints()));
+      glm::ivec2((int)graph.get_npoints(), (int)graph.get_npoints()));
 
   // define number of trips between each cities
   std::vector<float> ntrips = {};

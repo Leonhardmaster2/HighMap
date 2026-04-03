@@ -5,39 +5,14 @@ R""(
 void kernel thermal_scree(global float       *z,
                           const global float *talus,
                           const global float *zmax,
-                          const global float *gradient_init,
                           const int           nx,
-                          const int           ny,
-                          const int           talus_constraint)
+                          const int           ny)
 {
   int2 g = {get_global_id(0), get_global_id(1)};
+  int  index = linear_index(g.x, g.y, nx);
 
   if (g.x >= nx || g.y >= ny) return;
-
-  // --- boundaries
-
-  int index = linear_index(g.x, g.y, nx);
-
-  if (g.x == 0)
-  {
-    z[index] = z[linear_index(1, g.y, nx)];
-    return;
-  }
-  if (g.x == nx - 1)
-  {
-    z[index] = z[linear_index(nx - 2, g.y, nx)];
-    return;
-  }
-  if (g.y == 0)
-  {
-    z[index] = z[linear_index(g.x, 1, nx)];
-    return;
-  }
-  if (g.y == ny - 1)
-  {
-    z[index] = z[linear_index(g.x, ny - 2, nx)];
-    return;
-  }
+  if (apply_boundaries(z, g.x, g.y, nx, ny)) return;
 
   // --- thermal erosion
 
@@ -63,8 +38,6 @@ void kernel thermal_scree(global float       *z,
   amp = smoothstep3(amp);
 
   amp *= almost_unit_identity(clamp(1.f - val / zmax[index], 0.f, 1.f));
-
-  if (talus_constraint == 1 && gradient_init[index] >= talus[index]) amp = 0.f;
 
   z[index] += 0.25f * (t - 0.5f * sum) * amp;
 }

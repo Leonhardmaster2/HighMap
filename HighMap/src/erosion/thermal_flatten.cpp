@@ -25,9 +25,9 @@ void thermal_flatten(Array       &z,
                      int          iterations,
                      int          post_filter_ir)
 {
-  std::vector<int>   di = DI;
-  std::vector<int>   dj = DJ;
-  std::vector<float> c = CD;
+  std::vector<int>   di = HMAP_DI;
+  std::vector<int>   dj = HMAP_DJ;
+  std::vector<float> c = HMAP_CD;
   const uint         nb = di.size();
 
   Array z_bckp = z;

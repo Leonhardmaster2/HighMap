@@ -1,0 +1,2 @@
+add_executable(ex_harmonic_interpolation ex_harmonic_interpolation.cpp)
+target_link_libraries(ex_harmonic_interpolation highmap)

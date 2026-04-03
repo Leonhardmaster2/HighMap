@@ -7,285 +7,348 @@
 #include "macrologger.h"
 
 #include "highmap/array.hpp"
+#include "highmap/blending.hpp"
 #include "highmap/erosion.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/gradient.hpp"
+#include "highmap/morphology.hpp"
+#include "highmap/opencl/gpu_opencl.hpp"
 #include "highmap/operator.hpp"
 #include "highmap/primitives.hpp"
 #include "highmap/range.hpp"
+#include "highmap/selector.hpp"
 
-namespace hmap
+namespace hmap::gpu
 {
-
-//----------------------------------------------------------------------
-// Helper
-//----------------------------------------------------------------------
-
-std::function<float(float)> helper_get_profile_function(
-    const ErosionProfile &erosion_profile,
-    float                 delta,
-    float                &profile_avg)
-{
-  std::function<float(float)> lambda_p;
-
-  switch (erosion_profile)
-  {
-  case ErosionProfile::COSINE:
-    lambda_p = [](float phi) { return 0.5f - 0.5f * std::cos(phi); };
-    break;
-  //
-  case ErosionProfile::SAW_SHARP:
-  {
-    lambda_p = [](float phi)
-    {
-      float t = phi / M_PI;
-      t = std::fmod(t + 2.f, 2.f) - 1.f;
-      return t - int(t);
-    };
-  }
-  break;
-  //
-  case ErosionProfile::SAW_SMOOTH:
-  {
-    float n = 1.f + 0.02f / delta;
-    float dn = 2.f * n + 1.f;
-    float coeff = std::pow(1.f / dn, 1.f / 2.f / n) * 2.f * n / dn;
-    coeff = 1.f / coeff;
-
-    lambda_p = [n, coeff](float phi)
-    {
-      float t = phi / M_PI;
-      t = std::fmod(t + 2.f, 2.f) - 1.f;
-      t = coeff * t * (1.f - std::pow(t, 2.f * n));
-      t = 0.5f * (1.f + t);
-      return t;
-    };
-  }
-  break;
-  //
-  case ErosionProfile::SHARP_VALLEYS:
-  {
-    lambda_p = [delta](float phi)
-    {
-      float t = phi / M_PI;
-      t = std::fmod(t + 2.f, 2.f) - 1.f;
-      float v = (1.f - t * t) / (1.f + t * t / delta);
-      return v;
-    };
-  }
-  break;
-  //
-  case ErosionProfile::SQUARE_SMOOTH:
-  {
-    // https://mathematica.stackexchange.com/questions/38293
-    lambda_p = [delta](float phi)
-    {
-      float v = 2.f * std::atan(std::sin(phi) / 25.f / delta) / M_PI;
-      return v;
-    };
-  }
-  break;
-  //
-  case ErosionProfile::TRIANGLE_GRENIER:
-  {
-    // https://onlinelibrary.wiley.com/doi/epdf/10.1111/cgf.14992
-    lambda_p = [delta](float phi)
-    {
-      float t = phi / M_PI;
-      t = std::fmod(t + 2.f, 2.f) - 1.f;
-
-      float value = std::sqrt((1.f + 2.f * std::sqrt(delta)) * t * t + delta) -
-                    std::sqrt(delta);
-      return value;
-    };
-  }
-  break;
-  //
-  case ErosionProfile::TRIANGLE_SHARP:
-  {
-    lambda_p = [](float phi)
-    {
-      float t = phi / M_PI;
-      t = std::fmod(t + 2.f, 2.f) - 1.f;
-      return 1.f + std::abs(t);
-    };
-  }
-  break;
-  //
-  case ErosionProfile::TRIANGLE_SMOOTH:
-  {
-    // https://mathematica.stackexchange.com/questions/38293
-    float coeff = 0.5f / (std::acos(delta - 1.f) / M_PI - 0.5f);
-
-    lambda_p = [delta, coeff](float phi)
-    {
-      float v = 0.5f +
-                coeff *
-                    (std::acos((1.f - delta) * std::sin(phi)) / M_PI - 0.5f);
-      return v;
-    };
-  }
-  break;
-  }
-
-  // average value
-  profile_avg = 0.f;
-  {
-    int                nd = 50;
-    std::vector<float> phi = linspace(-M_PI, M_PI, nd);
-    for (auto &v : phi)
-      profile_avg += lambda_p(v);
-    profile_avg /= (float)nd;
-  }
-
-  return lambda_p;
-}
-
-//----------------------------------------------------------------------
-// Main operator
-//----------------------------------------------------------------------
 
 void hydraulic_procedural(Array         &z,
+                          float          kp_global,
+                          float          c_erosion,
                           uint           seed,
-                          float          ridge_wavelength,
-                          float          ridge_scaling,
                           ErosionProfile erosion_profile,
-                          float          delta,
-                          float          noise_ratio,
-                          int            prefilter_ir,
-                          float          density_factor,
-                          float          kernel_width_ratio,
+                          float          erosion_profile_parameter,
+                          float          angle_shift,
                           float          phase_smoothing,
-                          float          phase_noise_amp,
-                          bool           reverse_phase,
-                          bool           rotate90,
-                          bool           use_default_mask,
-                          float          talus_mask,
-                          Array         *p_mask,
+                          float          talus_ref,
+                          float          gradient_scaling_ratio,
+                          float          gradient_power,
+                          bool           exclude_ridges,
+                          bool           apply_deposition,
+                          float          deposition_strength,
+                          bool           enable_default_noise,
+                          float          noise_amp,
+                          const Array   *p_kp_multiplier,
+                          const Array   *p_angle_shift,
+                          const Array   *p_noise_x,
+                          const Array   *p_noise_y,
                           Array         *p_ridge_mask,
-                          float          vmin,
-                          float          vmax)
+                          glm::vec4      bbox)
 {
-  Vec2<int> shape = z.shape;
 
-  // --- setup input parameters
+  // ---Resolve derived parameters
 
-  // define Gabor kernel base parameters
-  int   ridge_ir = std::max(1, (int)(ridge_wavelength * shape.x));
-  int   width = (int)(kernel_width_ratio * ridge_ir);
-  float kw = kernel_width_ratio;
+  const glm::ivec2 shape = z.shape;
+  const int        kp_ir = int(shape.x / kp_global);
+  const int        angle_filter_ir = kp_ir;
+  const bool       rotate90 = false;
+  const int        n_kernel_samples = 16;
+  const glm::vec2  jitter = {1.f, 1.f};
+  const int        gradient_prefilter_ir = kp_ir;
 
-  // rule of thumb scaling of the prefilter... if not provided by the
-  // user
-  if (prefilter_ir < 0) prefilter_ir = std::max(1, (int)(0.25f * width));
+  // --- Default noise
 
-  // redefine min/max if sentinels values are detected
-  if (vmax < vmin)
+  Array dx, dy;
+
+  if (enable_default_noise)
   {
-    vmin = z.min();
-    vmax = z.max();
+    const glm::vec2 kw_noise = {kp_global, kp_global};
+
+    dx = noise_amp * gpu::noise_fbm(hmap::NoiseType::SIMPLEX2,
+                                    z.shape,
+                                    kw_noise,
+                                    ++seed,
+                                    /* octaves */ 8,
+                                    /* weight*/ 0.7f,
+                                    /* persistence */ 0.5f,
+                                    /* lacunarity */ 2.f,
+                                    nullptr,
+                                    nullptr,
+                                    nullptr,
+                                    nullptr,
+                                    bbox);
+
+    dy = noise_amp * gpu::noise_fbm(hmap::NoiseType::SIMPLEX2,
+                                    z.shape,
+                                    kw_noise,
+                                    ++seed,
+                                    /* octaves */ 8,
+                                    /* weight*/ 0.7f,
+                                    /* persistence */ 0.5f,
+                                    /* lacunarity */ 2.f,
+                                    nullptr,
+                                    nullptr,
+                                    nullptr,
+                                    nullptr,
+                                    bbox);
+
+    p_noise_x = &dx;
+    p_noise_y = &dy;
   }
 
-  Array zf = z;
-  if (prefilter_ir > 0) smooth_cpulse(zf, prefilter_ir);
+  // --- Compute phase field
 
-  // --- compute phase field
+  Array modulus(shape);
 
-  Array gnoise_x;
-  Array gnoise_y;
+  Array phase = gpu::phase_field(z,
+                                 seed,
+                                 kp_global,
+                                 rotate90,
+                                 n_kernel_samples,
+                                 jitter,
+                                 angle_filter_ir,
+                                 // nullptr,
+                                 p_kp_multiplier,
+                                 p_noise_x,
+                                 p_noise_y,
+                                 &modulus,
+                                 /* p_angle_jump_mask */ nullptr,
+                                 bbox);
 
-  Array phase = phase_field(z,
-                            kw,
-                            width,
-                            seed,
-                            phase_noise_amp,
-                            prefilter_ir,
-                            density_factor,
-                            rotate90,
-                            &gnoise_x,
-                            &gnoise_y);
+  // add optional local or global angle shifts
+  if (angle_shift != 0.) phase += angle_shift / 180.f * M_PI;
 
-  if (reverse_phase) phase *= -1.f;
+  if (p_angle_shift) phase += *p_angle_shift;
 
-  // --- apply profile
+  // --- Ridge profile
 
-  float                       profile_avg = 0.f;
-  std::function<float(float)> lambda_p = helper_get_profile_function(
-      erosion_profile,
-      delta,
-      profile_avg);
+  float profile_avg = 0.f;
+  auto  pfct = get_erosion_profile_function(erosion_profile,
+                                           erosion_profile_parameter,
+                                           profile_avg);
 
-  Array ridges(shape);
-  Array rho(shape);
+  Array ridge(shape);
 
   for (int j = 0; j < shape.y; j++)
     for (int i = 0; i < shape.x; i++)
     {
-      rho(i, j) = 2.f / M_PI *
-                  std::atan(phase_smoothing *
-                            std::hypot(gnoise_x(i, j), gnoise_y(i, j)));
+      float value = pfct(phase(i, j));
 
-      ridges(i, j) = rho(i, j) * lambda_p(phase(i, j)) +
-                     (1.f - rho(i, j)) * profile_avg;
+      // modulus-based smoothing to avoid kinky transitions between
+      // phases
+      float t = 2.f / M_PI * std::atan(phase_smoothing * modulus(i, j));
+
+      ridge(i, j) = lerp(profile_avg, value, t);
     }
 
-  // --- add noise on the ridge crest lines
+  // --- Erosion amplitude
 
-  Array noise(shape);
+  Array zb = z;
+  // zb = hmap::bulkify(zb, hmap::PrimitiveType::PRIM_SMOOTH_COSINE, 1.f);
 
-  if (noise_ratio > 0.f)
+  Array amp = flow_accumulation_dinf(zb, talus_ref);
+  amp = log10(amp);
+
+  // scale erosion with local gradient
+  Array gn = hmap::gradient_norm(zb);
+
   {
-    Vec2<float> kw_noise = {4.f / ridge_wavelength, 4.f / ridge_wavelength};
-    noise = noise_fbm(hmap::NoiseType::PERLIN, shape, kw_noise, ++seed);
-    remap(noise, 0.f, noise_ratio);
+    gpu::smooth_cpulse(gn, gradient_prefilter_ir);
+    remap(gn);
+    gn = pow(gn, gradient_power);
+    gn = smoothstep5_lower(gn);
+    amp *= (1.f - gradient_scaling_ratio) + gradient_scaling_ratio * gn;
   }
 
-  Array ridge_mask(shape);
+  gpu::smooth_cpulse(amp, kp_ir);
+  remap(amp);
 
-  for (int j = 0; j < shape.y; j++)
-    for (int i = 0; i < shape.x; i++)
-    {
-      ridge_mask(i, j) = ridges(i, j);
-      ridges(i, j) += ridge_mask(i, j) * noise(i, j);
-    }
+  ridge *= amp;
 
-  // shift amplitude to "dig" instead of adding elevation
-  ridges -= 1.f;
+  // --- remove line ridges and sinks to avoid artifacts
 
-  // --- mask
-
-  Array mask(shape, 1.f);
-
-  if (p_mask)
+  if (exclude_ridges)
   {
-    mask = *p_mask;
-  }
-  else if (use_default_mask)
-  {
-    // default mask is a combination of gradient and mid-range
-    // elevation selection
-    mask = gradient_norm(zf);
-
-    if (talus_mask == 0.f) talus_mask = 2.f / shape.x;
-
-    for (int j = 0; j < shape.y; j++)
-      for (int i = 0; i < shape.x; i++)
-      {
-        if (mask(i, j) > talus_mask) mask(i, j) = talus_mask;
-        mask(i, j) = mask(i, j) / talus_mask;
-        mask(i, j) = smoothstep3(mask(i, j));
-      }
-
-    Array zn = (z - vmin) / (vmax - vmin);
-    mask *= 4.f * zn * (1.f - zn);
+    Array mr = 1.f - gpu::morphological_top_hat(z, kp_ir); // ridges
+    remap(mr);
+    ridge *= mr;
   }
 
-  // backup ridge mask as an output field if requested
-  if (p_ridge_mask) *p_ridge_mask = ridge_mask * mask;
+  // --- erode
 
-  // --- eventually apply erosion
+  z -= c_erosion * ridge;
 
-  z = lerp(z, z + ridge_scaling * ridges, mask);
+  // --- mimic deposition
+
+  if (apply_deposition)
+  {
+    int   deposition_ir = kp_ir;
+    Array zd = z;
+    gpu::smooth_fill_holes(zd, deposition_ir);
+    zd = gpu::blend_gradients(zd, z, deposition_ir);
+    z = lerp(z, zd, deposition_strength);
+  }
+
+  // --- optional output
+
+  if (p_ridge_mask) *p_ridge_mask = cos(phase);
 }
 
-} // namespace hmap
+void hydraulic_procedural_fbm(Array         &z,
+                              float          kp_global,
+                              float          c_erosion,
+                              uint           seed,
+                              ErosionProfile erosion_profile,
+                              int            octaves,
+                              float          persistence,
+                              float          lacunarity,
+                              float          erosion_profile_parameter,
+                              float          angle_shift,
+                              float          phase_smoothing,
+                              float          talus_ref,
+                              float          gradient_scaling_ratio,
+                              float          gradient_power,
+                              bool           exclude_ridges,
+                              bool           apply_deposition,
+                              float          deposition_strength,
+                              bool           enable_default_noise,
+                              float          noise_amp,
+                              const Array   *p_kp_multiplier,
+                              const Array   *p_angle_shift,
+                              const Array   *p_noise_x,
+                              const Array   *p_noise_y,
+                              Array         *p_ridge_mask,
+                              glm::vec4      bbox)
+{
+  float a = 1.f;
+  float m = 1.f;
+
+  Array ridge_mask = Array(z.shape);
+  float a_sum = 0.f;
+
+  for (int k = 0; k < octaves; ++k)
+  {
+    Array ridge_mask_current(z.shape);
+
+    if (k > 0) apply_deposition = false;
+
+    hmap::gpu::hydraulic_procedural(z,
+                                    m * kp_global,
+                                    a * c_erosion,
+                                    seed,
+                                    erosion_profile,
+                                    erosion_profile_parameter,
+                                    angle_shift,
+                                    phase_smoothing,
+                                    talus_ref,
+                                    gradient_scaling_ratio,
+                                    gradient_power,
+                                    exclude_ridges,
+                                    apply_deposition,
+                                    deposition_strength,
+                                    enable_default_noise,
+                                    noise_amp,
+                                    p_kp_multiplier,
+                                    p_angle_shift,
+                                    p_noise_x,
+                                    p_noise_y,
+                                    &ridge_mask_current,
+                                    bbox);
+
+    ridge_mask += a * ridge_mask_current;
+    a_sum += a;
+
+    a *= persistence;
+    m *= lacunarity;
+  }
+
+  if (p_ridge_mask) *p_ridge_mask = 0.5f * (ridge_mask / a_sum) + 0.5f;
+}
+
+void hydraulic_procedural_fbm(Array         &z,
+                              float          kp_global,
+                              float          c_erosion,
+                              uint           seed,
+                              const Array   *p_mask,
+                              ErosionProfile erosion_profile,
+                              int            octaves,
+                              float          persistence,
+                              float          lacunarity,
+                              float          erosion_profile_parameter,
+                              float          angle_shift,
+                              float          phase_smoothing,
+                              float          talus_ref,
+                              float          gradient_scaling_ratio,
+                              float          gradient_power,
+                              bool           exclude_ridges,
+                              bool           apply_deposition,
+                              float          deposition_strength,
+                              bool           enable_default_noise,
+                              float          noise_amp,
+                              const Array   *p_kp_multiplier,
+                              const Array   *p_angle_shift,
+                              const Array   *p_noise_x,
+                              const Array   *p_noise_y,
+                              Array         *p_ridge_mask,
+                              glm::vec4      bbox)
+{
+  if (!p_mask)
+  {
+    hydraulic_procedural_fbm(z,
+                             kp_global,
+                             c_erosion,
+                             seed,
+                             erosion_profile,
+                             octaves,
+                             persistence,
+                             lacunarity,
+                             erosion_profile_parameter,
+                             angle_shift,
+                             phase_smoothing,
+                             talus_ref,
+                             gradient_scaling_ratio,
+                             gradient_power,
+                             exclude_ridges,
+                             apply_deposition,
+                             deposition_strength,
+                             enable_default_noise,
+                             noise_amp,
+                             p_kp_multiplier,
+                             p_angle_shift,
+                             p_noise_x,
+                             p_noise_y,
+                             p_ridge_mask,
+                             bbox);
+  }
+  else
+  {
+    Array z_f = z;
+    hydraulic_procedural_fbm(z_f,
+                             kp_global,
+                             c_erosion,
+                             seed,
+                             erosion_profile,
+                             octaves,
+                             persistence,
+                             lacunarity,
+                             erosion_profile_parameter,
+                             angle_shift,
+                             phase_smoothing,
+                             talus_ref,
+                             gradient_scaling_ratio,
+                             gradient_power,
+                             exclude_ridges,
+                             apply_deposition,
+                             deposition_strength,
+                             enable_default_noise,
+                             noise_amp,
+                             p_kp_multiplier,
+                             p_angle_shift,
+                             p_noise_x,
+                             p_noise_y,
+                             p_ridge_mask,
+                             bbox);
+    z = lerp(z, z_f, *(p_mask));
+  }
+}
+
+} // namespace hmap::gpu

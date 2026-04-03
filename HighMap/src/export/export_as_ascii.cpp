@@ -10,7 +10,7 @@ namespace hmap
 {
 
 std::string export_as_ascii(const Array      &array,
-                            const Vec2<int>  &export_shape,
+                            const glm::ivec2 &export_shape,
                             const std::string chars_map)
 {
   std::string out = "";

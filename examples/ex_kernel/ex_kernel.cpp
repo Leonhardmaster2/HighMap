@@ -2,10 +2,11 @@
 
 int main(void)
 {
-  hmap::Vec2<int>          shape = {256, 256};
+  glm::ivec2               shape = {256, 256};
   std::vector<hmap::Array> kernels = {};
 
   kernels.push_back(hmap::cone_smooth(shape));
+  kernels.push_back(hmap::cupola(shape, 0.7f));
   kernels.push_back(hmap::disk(shape));
   kernels.push_back(hmap::lorentzian(shape));
   kernels.push_back(hmap::lorentzian_compact(shape));

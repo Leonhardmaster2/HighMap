@@ -2,6 +2,30 @@ R""(
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
+inline void atomic_max_float(volatile __global float *source, const float value)
+{
+  // https://stackoverflow.com/questions/18950732
+  union
+  {
+    unsigned int int_val;
+    float        float_val;
+  } new_val;
+
+  union
+  {
+    unsigned int int_val;
+    float        float_val;
+  } prev_val;
+
+  do
+  {
+    prev_val.float_val = *source;
+    new_val.float_val = max(prev_val.float_val, value);
+  } while (atomic_cmpxchg((volatile __global unsigned int *)source,
+                          prev_val.int_val,
+                          new_val.int_val) != prev_val.int_val);
+}
+
 float pow_float(float base, float x)
 {
   return exp(x * log(base));
@@ -83,6 +107,13 @@ float remap_from(float x,
                  float from_max)
 {
   return (x - from_min) / (from_max - from_min) * (vmax - vmin) + vmin;
+}
+
+float2 rotate2d(float2 v, float a)
+{
+  float c = cos(a);
+  float s = sin(a);
+  return (float2)(v.x * c - v.y * s, v.x * s + v.y * c);
 }
 
 float smax(const float a, const float b, const float k)

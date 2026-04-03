@@ -14,7 +14,7 @@
 namespace hmap
 {
 
-Array biweight(Vec2<int> shape)
+Array biweight(glm::ivec2 shape)
 {
   Array array = Array(shape);
   int   ri = (int)(0.5f * ((float)shape.x - 1.f));
@@ -32,7 +32,7 @@ Array biweight(Vec2<int> shape)
   return array;
 }
 
-Array blackman(Vec2<int> shape)
+Array blackman(glm::ivec2 shape)
 {
   Array              array = Array(shape);
   std::vector<float> x = linspace(0.f, 2.f * M_PI, shape.x);
@@ -53,7 +53,7 @@ Array blackman(Vec2<int> shape)
   return array;
 }
 
-Array cone(Vec2<int> shape)
+Array cone(glm::ivec2 shape)
 {
   Array array = Array(shape);
   int   ri = (int)(0.5f * ((float)shape.x - 1.f));
@@ -71,7 +71,7 @@ Array cone(Vec2<int> shape)
   return array;
 }
 
-Array cone_smooth(Vec2<int> shape)
+Array cone_smooth(glm::ivec2 shape)
 {
   Array array = cone(shape);
   array = almost_unit_identity(array);
@@ -84,7 +84,7 @@ Array cone_talus(float height, float talus)
   // zero is indeed reached with provided slope (talus) over the
   // half-width of the domain (since we build a cone)
   int   n = std::max(1, (int)(2.f * height / talus));
-  Array array = Array(Vec2<int>(n, n));
+  Array array = Array(glm::ivec2(n, n));
 
   if (n > 0)
     array = height * cone({n, n});
@@ -94,7 +94,7 @@ Array cone_talus(float height, float talus)
   return array;
 }
 
-Array cubic_pulse(Vec2<int> shape)
+Array cubic_pulse(glm::ivec2 shape)
 {
   Array array = Array(shape);
   int   ri = (int)(0.5f * ((float)shape.x - 1.f));
@@ -135,10 +135,10 @@ std::vector<float> cubic_pulse_1d(int nk)
   return kernel_1d;
 }
 
-Array cubic_pulse_directional(Vec2<int> shape,
-                              float     angle,
-                              float     aspect_ratio,
-                              float     anisotropy)
+Array cubic_pulse_directional(glm::ivec2 shape,
+                              float      angle,
+                              float      aspect_ratio,
+                              float      anisotropy)
 {
   Array array = Array(shape);
 
@@ -170,7 +170,7 @@ Array cubic_pulse_directional(Vec2<int> shape,
   return array;
 }
 
-Array cubic_pulse_truncated(Vec2<int> shape, float slant_ratio, float angle)
+Array cubic_pulse_truncated(glm::ivec2 shape, float slant_ratio, float angle)
 {
   Array array = Array(shape);
   int   ri = (int)(0.5f * ((float)shape.x - 1.f));
@@ -197,7 +197,32 @@ Array cubic_pulse_truncated(Vec2<int> shape, float slant_ratio, float angle)
   return array;
 }
 
-Array disk(Vec2<int> shape)
+Array cupola(glm::ivec2 shape, float rc)
+{
+  Array array = Array(shape);
+
+  for (int j = 0; j < array.shape.y; j++)
+    for (int i = 0; i < array.shape.x; i++)
+    {
+      float x = 2.f * float(i) / float(array.shape.x - 1) - 1.f;
+      float y = 2.f * float(j) / float(array.shape.y - 1) - 1.f;
+      float r = std::hypot(x, y);
+
+      if (r < rc)
+      {
+        array(i, j) = 1.f;
+      }
+      else if (r < 1.f)
+      {
+        array(i, j) = 1.f / (1.f - rc) *
+                      std::sqrt((1.f - rc) * (1.f - rc) - (r - rc) * (r - rc));
+      }
+    }
+
+  return array;
+}
+
+Array disk(glm::ivec2 shape)
 {
   Array array = Array(shape);
   int   ri = (int)(0.5f * ((float)shape.x - 1.f));
@@ -213,12 +238,12 @@ Array disk(Vec2<int> shape)
   return array;
 }
 
-Array disk_smooth(Vec2<int> shape, float r_cutoff)
+Array disk_smooth(glm::ivec2 shape, float r_cutoff)
 {
   Array array = Array(shape);
 
-  Vec2<float> rs = Vec2<float>(0.5f * ((float)shape.x - 1.f),
-                               0.5f * ((float)shape.y - 1.f));
+  glm::vec2 rs = glm::vec2(0.5f * ((float)shape.x - 1.f),
+                           0.5f * ((float)shape.y - 1.f));
 
   for (int j = 0; j < array.shape.y; j++)
     for (int i = 0; i < array.shape.x; i++)
@@ -242,7 +267,7 @@ Array disk_smooth(Vec2<int> shape, float r_cutoff)
   return array;
 }
 
-Array gabor(Vec2<int> shape, float kw, float angle, bool quad_phase_shift)
+Array gabor(glm::ivec2 shape, float kw, float angle, bool quad_phase_shift)
 {
   Array array = Array(shape);
 
@@ -275,11 +300,11 @@ Array gabor(Vec2<int> shape, float kw, float angle, bool quad_phase_shift)
   return array;
 }
 
-Array gabor_dune(Vec2<int> shape,
-                 float     kw,
-                 float     angle,
-                 float     xtop,
-                 float     xbottom)
+Array gabor_dune(glm::ivec2 shape,
+                 float      kw,
+                 float      angle,
+                 float      xtop,
+                 float      xbottom)
 {
   Array array = Array(shape);
 
@@ -316,7 +341,7 @@ Array gabor_dune(Vec2<int> shape,
   return array;
 }
 
-Array lorentzian(Vec2<int> shape, float footprint_threshold)
+Array lorentzian(glm::ivec2 shape, float footprint_threshold)
 {
   Array array = Array(shape);
   float cross_width = std::sqrt(1.f / (1.f / footprint_threshold - 1.f));
@@ -334,7 +359,7 @@ Array lorentzian(Vec2<int> shape, float footprint_threshold)
   return array;
 }
 
-Array hann(Vec2<int> shape)
+Array hann(glm::ivec2 shape)
 {
   Array              array = Array(shape);
   std::vector<float> x = linspace(0.f, 2.f * M_PI, shape.x);
@@ -350,7 +375,7 @@ Array hann(Vec2<int> shape)
   return array;
 }
 
-Array lorentzian_compact(Vec2<int> shape)
+Array lorentzian_compact(glm::ivec2 shape)
 {
   Array array = Array(shape);
 
@@ -366,7 +391,7 @@ Array lorentzian_compact(Vec2<int> shape)
   return array;
 }
 
-Array sinc_radial(Vec2<int> shape, float kw)
+Array sinc_radial(glm::ivec2 shape, float kw)
 {
   Array              array = Array(shape);
   std::vector<float> x = linspace(-kw * M_PI, kw * M_PI, shape.x);
@@ -382,7 +407,7 @@ Array sinc_radial(Vec2<int> shape, float kw)
   return array;
 }
 
-Array sinc_separable(Vec2<int> shape, float kw)
+Array sinc_separable(glm::ivec2 shape, float kw)
 {
   Array              array = Array(shape);
   std::vector<float> x = linspace(-kw * M_PI, kw * M_PI, shape.x);
@@ -403,7 +428,7 @@ Array sinc_separable(Vec2<int> shape, float kw)
   return array;
 }
 
-Array smooth_cosine(Vec2<int> shape)
+Array smooth_cosine(glm::ivec2 shape)
 {
   Array array = Array(shape);
   int   ri = (int)(0.5f * ((float)shape.x - 1.f));
@@ -421,12 +446,12 @@ Array smooth_cosine(Vec2<int> shape)
   return array;
 }
 
-Array square(Vec2<int> shape)
+Array square(glm::ivec2 shape)
 {
   return constant(shape, 1.f);
 }
 
-Array tricube(Vec2<int> shape)
+Array tricube(glm::ivec2 shape)
 {
   Array array = Array(shape);
   int   ri = (int)(0.5f * ((float)shape.x - 1.f));
@@ -446,7 +471,7 @@ Array tricube(Vec2<int> shape)
 
 // generic function
 
-Array get_kernel(Vec2<int> shape, KernelType kernel_type)
+Array get_kernel(glm::ivec2 shape, KernelType kernel_type)
 {
   switch (kernel_type)
   {
@@ -454,6 +479,7 @@ Array get_kernel(Vec2<int> shape, KernelType kernel_type)
   case KernelType::CUBIC_PULSE: return cubic_pulse(shape);
   case KernelType::CONE: return cone(shape);
   case KernelType::CONE_SMOOTH: return cone_smooth(shape);
+  case KernelType::CUPOLA: return cupola(shape);
   case KernelType::DISK: return disk(shape);
   case KernelType::LORENTZIAN: return lorentzian(shape);
   case KernelType::SMOOTH_COSINE: return smooth_cosine(shape);

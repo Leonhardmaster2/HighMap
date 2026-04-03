@@ -11,15 +11,6 @@
 namespace hmap
 {
 
-// neighbor pattern search
-// 5 6 7
-// 4 . 0
-// 3 2 1
-// clang-format off
-#define DI {-1, 0, 0, 1, -1, -1, 1, 1}
-#define DJ {0, 1, -1, 0, -1, 1, -1, 1}
-#define C  {1.f, 1.f, 1.f, 1.f, M_SQRT1_2, M_SQRT1_2, M_SQRT1_2, M_SQRT1_2}
-// clang-format on
 #define LAPLACE_PERIOD 10
 #define LAPLACE_SIGMA 0.05f
 #define LAPLACE_ITERATIONS 1
@@ -40,9 +31,9 @@ void hydraulic_musgrave(Array &z,
   Array s = constant(z.shape);          // sediment level
   Array w = water_level * moisture_map; // backup initial moisture map
 
-  std::vector<int>   di = DI;
-  std::vector<int>   dj = DJ;
-  std::vector<float> c = C;
+  std::vector<int>   di = HMAP_DI;
+  std::vector<int>   dj = HMAP_DJ;
+  std::vector<float> c = HMAP_CD_INV;
   const uint         nb = di.size();
 
   for (int it = 0; it < iterations; it++)

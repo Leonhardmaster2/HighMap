@@ -2,9 +2,9 @@
 
 int main(void)
 {
-  hmap::Vec2<int>   shape = {256, 256};
-  hmap::Vec2<float> kw = {4.f, 4.f};
-  int               seed = 1;
+  glm::ivec2 shape = {256, 256};
+  glm::vec2  kw = {4.f, 4.f};
+  int        seed = 1;
 
   std::vector<hmap::NoiseType> noise_list = {hmap::NoiseType::PERLIN,
                                              hmap::NoiseType::PERLIN_BILLOW,
@@ -19,7 +19,7 @@ int main(void)
                                              hmap::NoiseType::WORLEY_DOUBLE,
                                              hmap::NoiseType::WORLEY_VALUE};
 
-  hmap::Array z = hmap::Array(hmap::Vec2<int>(0, shape.y));
+  hmap::Array z = hmap::Array(glm::ivec2(0, shape.y));
   for (auto &noise_type : noise_list)
   {
     auto n = hmap::noise(noise_type, shape, kw, seed);

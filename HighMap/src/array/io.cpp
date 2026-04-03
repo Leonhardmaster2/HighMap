@@ -10,6 +10,7 @@
 #include "highmap/array.hpp"
 #include "highmap/colorize.hpp"
 #include "highmap/export.hpp"
+#include "highmap/internal/vector_utils.hpp"
 #include "highmap/range.hpp"
 
 namespace hmap
@@ -31,7 +32,7 @@ void Array::from_numpy(const std::string &fname)
   npy::npy_data d = npy::read_npy<float>(fname);
 
   // update array shape
-  Vec2<int> new_shape = {(int)d.shape[0], (int)d.shape[1]};
+  glm::ivec2 new_shape = {(int)d.shape[0], (int)d.shape[1]};
   this->set_shape(new_shape);
 
   // copy the data
@@ -55,18 +56,20 @@ void Array::from_numpy(const std::string &fname)
   }
 }
 
-void Array::infos(std::string msg) const
+void Array::infos(const std::string &msg) const
 {
-  float vmin = this->min();
-  float vmax = this->max();
+  const float vmin = min();
+  const float vmax = max();
 
-  std::cout << "Array: " << msg << "\n";
-  std::cout << " - address: " << this << "\n";
-  std::cout << " - shape: {" << this->shape.x << ", " << this->shape.y << "}"
-            << "\n";
-  std::cout << " - min: " << vmin << "\n";
-  std::cout << " - max: " << vmax << "\n";
-  std::cout << " - ptp: " << vmax - vmin << "\n";
+  std::cout << "Array infos\n"
+            << "--------------------------------\n"
+            << " message : " << msg << '\n'
+            << " address : " << this << '\n'
+            << " shape   : {" << shape.x << ", " << shape.y << "}\n"
+            << " min     : " << vmin << '\n'
+            << " max     : " << vmax << '\n'
+            << " ptp     : " << (vmax - vmin) << '\n'
+            << "--------------------------------\n";
 }
 
 void Array::print() const
@@ -133,10 +136,17 @@ void Array::to_png(const std::string &fname,
   color3.to_png(fname, depth);
 }
 
-void Array::to_png_grayscale(const std::string &fname, int depth) const
+void Array::to_png_grayscale(const std::string &fname,
+                             int                depth,
+                             float              vmin,
+                             float              vmax) const
 {
   Array array_copy = *this;
-  remap(array_copy);
+
+  if (vmin >= vmax)
+    remap(array_copy);
+  else
+    remap(array_copy, 0.f, 1.f, vmin, vmax);
 
   cv::Mat mat = array_copy.to_cv_mat();
   int     scale_factor = (depth == CV_8U) ? 255 : 65535;

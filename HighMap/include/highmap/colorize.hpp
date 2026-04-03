@@ -18,9 +18,42 @@
 #pragma once
 #include "highmap/array.hpp"
 #include "highmap/tensor.hpp"
+#include "highmap/virtual_array/virtual_texture.hpp"
 
 namespace hmap
 {
+
+enum NormalMapBlendingMethod : int
+{
+  NMAP_LINEAR,
+  NMAP_DERIVATIVE,
+  NMAP_UDN,
+  NMAP_UNITY,
+  NMAP_WHITEOUT
+};
+
+static std::map<std::string, int> normal_map_blending_method_as_string = {
+    {"Linear", NMAP_LINEAR},
+    {"Partial derivative", NMAP_DERIVATIVE},
+    {"Unreal Developer Network", NMAP_UDN},
+    {"Unity", NMAP_UNITY},
+    {"Whiteout", NMAP_WHITEOUT},
+};
+
+struct ColorAdjust
+{
+  float in_min = 0.0f;
+  float in_max = 1.0f;
+  float exposure = 0.0f;
+  float contrast = 1.0f;
+  float saturation = 1.0f;
+  float temperature = 0.0f;
+  float gamma = 1.f;
+  float dither_amp = 0.f;
+  bool  filmic_tonemap = false;
+  bool  aces_tonemap = false;
+  bool  agx_tonemap = false;
+};
 
 /**
  * @enum Cmap
@@ -78,6 +111,10 @@ void apply_hillshade(std::vector<uint8_t> &img,
                      float                 exponent = 1.f,
                      bool                  is_img_rgba = false);
 
+void color_adjust(VirtualTexture    &tex,
+                  ColorAdjust        param,
+                  const ComputeMode &cm);
+
 /**
  * @brief Apply colorization to an array.
  *
@@ -101,6 +138,64 @@ Tensor colorize(const Array &array,
                 bool         hillshading,
                 bool         reverse = false,
                 const Array *p_noise = nullptr);
+
+/**
+ * @brief Colorize a scalar field into a texture using a predefined colormap.
+ * @param out     Output texture.
+ * @param level   Input scalar values.
+ * @param cm      Compute mode (CPU/GPU).
+ * @param vmin    Lower bound for normalization.
+ * @param vmax    Upper bound for normalization.
+ * @param cmap    Colormap identifier.
+ * @param p_alpha Optional alpha channel.
+ * @param reverse Reverse colormap mapping.
+ * @param p_noise Optional noise for dithering.
+ *
+ * **Example**
+ * @include ex_virtual_texture.cpp
+ *
+ * **Result**
+ * @image html ex_virtual_texture.png
+ */
+void colorize(VirtualTexture    &out,
+              VirtualArray      &level,
+              const ComputeMode &cm,
+              float              vmin,
+              float              vmax,
+              int                cmap,
+              VirtualArray      *p_alpha = nullptr,
+              bool               reverse = false,
+              VirtualArray      *p_noise = nullptr);
+
+/**
+ * @brief Colorize a scalar field into a texture using a custom colormap.
+ * @param out             Output texture.
+ * @param level           Input scalar values.
+ * @param cm              Compute mode (CPU/GPU).
+ * @param vmin            Lower bound for normalization.
+ * @param vmax            Upper bound for normalization.
+ * @param positions       Normalized color positions.
+ * @param colormap_colors RGB(A) colors per position.
+ * @param p_alpha         Optional alpha channel.
+ * @param reverse         Reverse colormap mapping.
+ * @param p_noise         Optional noise for dithering.
+ *
+ * **Example**
+ * @include ex_virtual_texture.cpp
+ *
+ * **Result**
+ * @image html ex_virtual_texture.png
+ */
+void colorize(VirtualTexture               &out,
+              VirtualArray                 &level,
+              const ComputeMode            &cm,
+              float                         vmin,
+              float                         vmax,
+              const std::vector<float>     &positions,
+              const std::vector<glm::vec3> &colormap_colors,
+              VirtualArray                 *p_alpha = nullptr,
+              bool                          reverse = false,
+              VirtualArray                 *p_noise = nullptr);
 
 /**
  * @brief Convert an array to a grayscale image.
@@ -182,5 +277,62 @@ Tensor colorize_slope_height_heatmap(const Array &array, int cmap);
  * @image html ex_colorize_vec2.png
  */
 Tensor colorize_vec2(const Array &array1, const Array &array2);
+
+/**
+ * @brief Compute luminance from a texture.
+ *
+ * Computes a grayscale luminance array from the RGB channels of a virtual
+ * texture and stores the result in @p out.
+ *
+ * @param out Output luminance array.
+ * @param tex Input virtual texture (expects at least 3 channels).
+ * @param cm  Compute mode (execution and storage behavior).
+ */
+void luminance(VirtualArray &out, VirtualTexture &tex, const ComputeMode &cm);
+
+/**
+ * @brief Mix two textures into an output texture.
+ * @param out          Output texture.
+ * @param tex1         First input texture.
+ * @param tex2         Second input texture.
+ * @param cm           Compute mode (CPU/GPU).
+ * @param use_sqrt_avg Use square-root averaging.
+ *
+ * **Example**
+ * @include ex_virtual_texture.cpp
+ *
+ * **Result**
+ * @image html ex_virtual_texture.png
+ */
+void mix(VirtualTexture    &out,
+         VirtualTexture    &tex1,
+         VirtualTexture    &tex2,
+         const ComputeMode &cm,
+         bool               use_sqrt_avg = true);
+
+void mix(VirtualTexture                &out,
+         std::vector<VirtualTexture *> &texs,
+         const ComputeMode             &cm,
+         bool                           use_sqrt_avg = true);
+
+/**
+ * @brief Blend two normal maps into a single output normal map.
+ *
+ * Combines a base normal map with a detail normal map using the specified
+ * blending method and scaling factor.
+ *
+ * @param out             Output normal map texture.
+ * @param nmap_base       Base normal map texture.
+ * @param nmap_detail     Detail normal map texture.
+ * @param cm              Compute mode (execution and storage behavior).
+ * @param detail_scaling  Strength of the detail normal map.
+ * @param blending_method Normal map blending method.
+ */
+void mix_normal_map(VirtualTexture         &out,
+                    VirtualTexture         &nmap_base,
+                    VirtualTexture         &nmap_detail,
+                    const ComputeMode      &cm,
+                    float                   detail_scaling,
+                    NormalMapBlendingMethod blending_method);
 
 } // namespace hmap

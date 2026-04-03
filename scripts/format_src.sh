@@ -20,7 +20,7 @@ done
 
 # format C++
 for D in ${DIRS}; do
-    for F in `find ${D}/. -type f \( -iname \*.hpp -o -iname \*.cpp \)`; do
+    for F in `find ${D}/. -type f \( -iname \*.hpp -o -iname \*.inl -o -iname \*.cpp \)`; do
 	echo ${F}
 	${FORMAT_CMD} ${F}
     done
