@@ -9,3 +9,7 @@ include(nn-c.cmake)
 add_subdirectory(CLWrapper)
 add_subdirectory(PointSampler)
 add_subdirectory(Noise/NoiseLib) # dendry
+
+if(NOT nanoflann_FOUND)
+  add_subdirectory(nanoflann)
+endif()

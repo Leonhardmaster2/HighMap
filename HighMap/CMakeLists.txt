@@ -23,8 +23,6 @@ target_compile_definitions(
   ${PROJECT_NAME} INTERFACE GLM_FORCE_SWIZZLE GLM_FORCE_INLINE
                             GLM_ENABLE_EXPERIMENTAL)
 
-find_package(nanoflann QUIET) # should be provided by PointSampler
-
 target_link_libraries(
   ${PROJECT_NAME}
   assimp::assimp
