@@ -13,9 +13,70 @@
 #pragma once
 
 #include "highmap/array.hpp"
+#include "highmap/boundary.hpp"
 
 namespace hmap
 {
+
+/**
+ * @brief Find a Dijkstra-based cut path between two domain boundaries.
+ *
+ * Selects the lowest point on the @p start and @p end boundaries of heightmap
+ * @p z, then computes a path between them using a weighted Dijkstra search. The
+ * path cost combines elevation, distance, and uphill penalization. The result
+ * is returned as normalized (x, y) coordinates and elevation samples.
+ *
+ * @param  z                        Heightmap array.
+ * @param  start                    Boundary where the path begins.
+ * @param  end                      Boundary where the path ends.
+ * @param  dijk_elevation_ratio     Weight of elevation in the cost.
+ * @param  dijk_distance_exponent   Exponent applied to distance cost.
+ * @param  dijk_upward_penalization Extra penalty for uphill moves.
+ *
+ * @return                          Path containing normalized (x, y) points and
+ *                                  elevations.
+ *
+ * **Example**
+ * @include ex_find_cut_path.cpp
+ *
+ * **Result**
+ * @image html ex_find_cut_path.png
+ */
+Path find_cut_path_dijkstra(const Array   &z,
+                            DomainBoundary start,
+                            DomainBoundary end,
+                            float          dijk_elevation_ratio = 0.9f,
+                            float          dijk_distance_exponent = 2.f,
+                            float          dijk_upward_penalization = 100.f);
+
+/**
+ * @brief Generate a stochastic cut path using midpoint displacement.
+ *
+ * Creates a path between the @p start and @p end boundaries of heightmap @p z
+ * by recursively subdividing and perturbing a segment. The result is a natural,
+ * irregular path defined by normalized (x, y) coordinates and elevations.
+ *
+ * @param  z                Heightmap array.
+ * @param  start            Start boundary.
+ * @param  end              End boundary.
+ * @param  seed             Random seed.
+ * @param  midp_iterations  Number of subdivision steps.
+ * @param  midp_sigma       Displacement amplitude.
+ *
+ * @return                  Path with normalized coordinates and elevations.
+ *
+ * **Example**
+ * @include ex_find_cut_path.cpp
+ *
+ * **Result**
+ * @image html ex_find_cut_path.png
+ */
+Path find_cut_path_midpoint(const Array   &z,
+                            DomainBoundary start,
+                            DomainBoundary end,
+                            uint           seed,
+                            int            midp_iterations = 4,
+                            float          midp_sigma = 0.2f);
 
 /**
  * @brief Finds the path with the lowest elevation and elevation difference

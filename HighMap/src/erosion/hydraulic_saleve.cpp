@@ -52,11 +52,7 @@ void hydraulic_saleve(TerrainTriMesh           &mesh,
     db.get_mesh().slope_limiter(post_slope_limit * zptp, 100);
   }
 
-  if (enable_post_smoothing)
-  {
-    db.get_mesh().subdivise();
-    db.get_mesh().relax_xyz();
-  }
+  if (enable_post_smoothing) db.get_mesh().relax_xyz(0.2f, 5);
 
   // override input with eroded field
   mesh = TerrainTriMesh(db.get_mesh());
@@ -144,7 +140,7 @@ Array hydraulic_saleve(const Array          &z,
 
   // --- interpolate back to an heightmap
 
-  // make sure the input noise displacement do not modifiy the convex
+  // make sure the input noise displacement do not modify the convex
   // hull limits to avoid issues with the nautral neighbor
   // interpolation
   Array dx;

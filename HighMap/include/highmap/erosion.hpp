@@ -449,7 +449,7 @@ void hydraulic_saleve(TerrainTriMesh           &mesh,
                       uint                      seed = 0,
                       bool  enable_post_slope_limiter = false,
                       float post_slope_limit = 0.f,
-                      bool  enable_post_smoothing = true);
+                      bool  enable_post_smoothing = false);
 
 /**
  * @brief Apply hydraulic erosion to a heightmap using an adaptive mesh.
@@ -496,7 +496,7 @@ Array hydraulic_saleve(const Array          &z,
                        float                 noise_strength = 0.f,
                        bool                  enable_post_slope_limiter = false,
                        float                 post_slope_limit = 0.f,
-                       bool                  enable_post_smoothing = true,
+                       bool                  enable_post_smoothing = false,
                        InterpolationMethod2D interpolation_method =
                            InterpolationMethod2D::ITP2D_DELAUNAY,
                        const Array *p_noise_x = nullptr,
@@ -518,7 +518,7 @@ Array hydraulic_saleve(const Array          &z,
                        float                 noise_strength = 0.f,
                        bool                  enable_post_slope_limiter = false,
                        float                 post_slope_limit = 0.f,
-                       bool                  enable_post_smoothing = true,
+                       bool                  enable_post_smoothing = false,
                        InterpolationMethod2D interpolation_method =
                            InterpolationMethod2D::ITP2D_DELAUNAY,
                        const Array *p_noise_x = nullptr,
