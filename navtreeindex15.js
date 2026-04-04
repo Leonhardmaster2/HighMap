@@ -1,5 +1,7 @@
 var NAVTREEINDEX15 =
 {
+"namespacehmap.html#af24e0b99ff6c2046ba5dfc4ccc9da7cf":[3,0,0,682],
+"namespacehmap.html#af2851ea650ce411e47bac5ba4327c652":[3,0,0,288],
 "namespacehmap.html#af30ba2c296c8937bb78279c03e0388bd":[3,0,0,317],
 "namespacehmap.html#af37d772a8b2ab47144d459fd35aaf7dc":[3,0,0,585],
 "namespacehmap.html#af3cb67926262ec806d4d64c2755b1ddd":[3,0,0,116],
@@ -238,8 +240,8 @@ var NAVTREEINDEX15 =
 "namespacehmap_1_1gpu.html#afd24580b2b5fe7107bbff0ae2d3a1473":[3,0,0,0,4],
 "namespacehmap_1_1gpu.html#afed4e84e60dd0cdc453e7da72940ed27":[3,0,0,0,59],
 "namespacehmap_1_1gpu.html#afffb85b7bc6b9884cd00254c122da8e6":[3,0,0,0,134],
-"namespacemembers.html":[3,1,0],
 "namespacemembers.html":[3,1,0,0],
+"namespacemembers.html":[3,1,0],
 "namespacemembers_a.html":[3,1,0,1],
 "namespacemembers_b.html":[3,1,0,2],
 "namespacemembers_c.html":[3,1,0,3],
@@ -247,7 +249,5 @@ var NAVTREEINDEX15 =
 "namespacemembers_e.html":[3,1,0,5],
 "namespacemembers_enum.html":[3,1,3],
 "namespacemembers_eval.html":[3,1,4],
-"namespacemembers_f.html":[3,1,0,6],
-"namespacemembers_func.html":[3,1,1,0],
-"namespacemembers_func.html":[3,1,1]
+"namespacemembers_f.html":[3,1,0,6]
 };
