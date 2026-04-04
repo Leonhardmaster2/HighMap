@@ -6,7 +6,9 @@
 namespace hmap
 {
 
-// --- NanoflannPointCloudAdaptor ---
+// ------------------------------------------------------------
+// NanoflannPointCloudAdaptor
+// ------------------------------------------------------------
 
 NanoflannPointCloudAdaptor::NanoflannPointCloudAdaptor(
     const std::vector<float> &x_,
@@ -28,6 +30,10 @@ float NanoflannPointCloudAdaptor::kdtree_get_pt(const size_t idx, int dim) const
     return y[idx];
 }
 
+// ------------------------------------------------------------
+// KDTreeContext
+// ------------------------------------------------------------
+
 KDTreeContext::KDTreeContext(const std::vector<float> &x_,
                              const std::vector<float> &y_)
     : x(x_),
@@ -37,8 +43,6 @@ KDTreeContext::KDTreeContext(const std::vector<float> &x_,
 {
   index.buildIndex();
 }
-
-// --- KDTreeContext ---
 
 glm::vec2 KDTreeContext::compte_neighbor_distance_range(
     size_t k_neighbors) const
