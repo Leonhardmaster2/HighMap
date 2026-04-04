@@ -567,6 +567,8 @@ void TerrainTriMesh::subdivise()
   }
 
   triangles = std::move(new_triangles);
+
+  this->compute_neighbors();
 }
 
 Array TerrainTriMesh::to_array(const glm::ivec2         &shape,

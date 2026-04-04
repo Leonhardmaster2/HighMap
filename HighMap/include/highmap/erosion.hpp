@@ -6,6 +6,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/hydrology/hydrology.hpp"
+#include "highmap/interpolate2d.hpp"
 #include "highmap/terrain_tri_mesh.hpp"
 
 // neighbor pattern search based on Moore pattern and define diagonal
@@ -445,7 +446,10 @@ void hydraulic_saleve(TerrainTriMesh           &mesh,
                       float                     tolerance = 1e-3f,
                       int                       max_iterations = 200,
                       float                     noise_strength = 0.f,
-                      uint                      seed = 0);
+                      uint                      seed = 0,
+                      bool  enable_post_slope_limiter = false,
+                      float post_slope_limit = 0.f,
+                      bool  enable_post_smoothing = true);
 
 /**
  * @brief Apply hydraulic erosion to a heightmap using an adaptive mesh.
@@ -477,36 +481,46 @@ void hydraulic_saleve(TerrainTriMesh           &mesh,
  * **Result**
  * @image html ex_hydraulic_saleve.png
  */
-Array hydraulic_saleve(const Array &z,
-                       uint         seed,
-                       size_t       control_points_count = 10000,
-                       float        m_exp = 0.8f,
-                       float        uplift_rate = 1.f,
-                       float        tolerance = 1e-3f,
-                       int          max_iterations = 200,
-                       float        smin = 0.f,
-                       float        smax = 6.f,
-                       float        strength = 0.5f,
-                       bool         scale_erodibility_with_z = true,
-                       float        erodibility_distrib_exp = 1.f,
-                       float        noise_strength = 0.f,
+Array hydraulic_saleve(const Array          &z,
+                       uint                  seed,
+                       size_t                control_points_count = 10000,
+                       float                 m_exp = 0.8f,
+                       float                 uplift_rate = 1.f,
+                       float                 tolerance = 1e-3f,
+                       int                   max_iterations = 200,
+                       float                 smin = 0.f,
+                       float                 smax = 6.f,
+                       float                 strength = 0.5f,
+                       bool                  scale_erodibility_with_z = true,
+                       float                 erodibility_distrib_exp = 1.f,
+                       float                 noise_strength = 0.f,
+                       bool                  enable_post_slope_limiter = false,
+                       float                 post_slope_limit = 0.f,
+                       bool                  enable_post_smoothing = true,
+                       InterpolationMethod2D interpolation_method =
+                           InterpolationMethod2D::ITP2D_DELAUNAY,
                        const Array *p_noise_x = nullptr,
                        const Array *p_noise_y = nullptr);
 
-Array hydraulic_saleve(const Array &z,
-                       const Array *p_mask,
-                       uint         seed,
-                       size_t       control_points_count = 10000,
-                       float        m_exp = 0.8f,
-                       float        uplift_rate = 1.f,
-                       float        tolerance = 1e-3f,
-                       int          max_iterations = 200,
-                       float        smin = 0.f,
-                       float        smax = 6.f,
-                       float        strength = 0.5f,
-                       bool         scale_erodibility_with_z = true,
-                       float        erodibility_distrib_exp = 1.f,
-                       float        noise_strength = 0.f,
+Array hydraulic_saleve(const Array          &z,
+                       const Array          *p_mask,
+                       uint                  seed,
+                       size_t                control_points_count = 10000,
+                       float                 m_exp = 0.8f,
+                       float                 uplift_rate = 1.f,
+                       float                 tolerance = 1e-3f,
+                       int                   max_iterations = 200,
+                       float                 smin = 0.f,
+                       float                 smax = 6.f,
+                       float                 strength = 0.5f,
+                       bool                  scale_erodibility_with_z = true,
+                       float                 erodibility_distrib_exp = 1.f,
+                       float                 noise_strength = 0.f,
+                       bool                  enable_post_slope_limiter = false,
+                       float                 post_slope_limit = 0.f,
+                       bool                  enable_post_smoothing = true,
+                       InterpolationMethod2D interpolation_method =
+                           InterpolationMethod2D::ITP2D_DELAUNAY,
                        const Array *p_noise_x = nullptr,
                        const Array *p_noise_y = nullptr);
 

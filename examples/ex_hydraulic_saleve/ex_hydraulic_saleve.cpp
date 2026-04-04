@@ -8,8 +8,9 @@ int main(void)
   hmap::gpu::init_opencl();
 
   glm::ivec2 shape = {256, 256};
-  glm::vec2  kw = {4.f, 4.f};
-  int        seed = 0;
+  // shape = {1024, 1024};
+  glm::vec2 kw = {4.f, 4.f};
+  int       seed = 0;
 
   // --- erosion of an heightmap
 
@@ -49,21 +50,26 @@ int main(void)
                                            8,
                                            0.f);
 
-  hmap::Array z1 = hmap::hydraulic_saleve(z0,
-                                          ++seed,
-                                          control_points_count,
-                                          m_exp,
-                                          uplift_rate,
-                                          tolerance,
-                                          max_iterations,
-                                          smin,
-                                          smax,
-                                          strength,
-                                          scale_erodibility_with_z,
-                                          erodibility_distrib_exp,
-                                          noise_strength,
-                                          &dx,
-                                          &dy);
+  hmap::Array z1 = hmap::hydraulic_saleve(
+      z0,
+      ++seed,
+      control_points_count,
+      m_exp,
+      uplift_rate,
+      tolerance,
+      max_iterations,
+      smin,
+      smax,
+      strength,
+      scale_erodibility_with_z,
+      erodibility_distrib_exp,
+      noise_strength,
+      /* enable_post_slope_limiter */ false,
+      /* post_slope_limit */ 0.f,
+      /* enable_post_smoothing */ true,
+      hmap::InterpolationMethod2D::ITP2D_DELAUNAY,
+      &dx,
+      &dy);
 
   // mimic deposition
   int   deposition_ir = int(0.1f * shape.x);

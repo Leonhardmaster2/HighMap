@@ -79,11 +79,13 @@ Array interpolate2d_delaunay(glm::ivec2                shape,
 
   // --- helper: triangle walk
 
+  const int max_iter = int(x.size());
+
   auto find_triangle = [&](float px, float py, int start_tri) -> int
   {
     int tri = start_tri;
 
-    for (int iter = 0; iter < 128; ++iter)
+    for (int iter = 0; iter < max_iter; ++iter)
     {
       int t = tri * 3;
 
