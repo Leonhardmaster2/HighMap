@@ -3,6 +3,7 @@
  * this software. */
 #include "highmap/blending.hpp"
 #include "highmap/boundary.hpp"
+#include "highmap/features.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/gradient.hpp"
 #include "highmap/hydrology/hydrology.hpp"
@@ -52,6 +53,13 @@ void hydraulic_stream_log(Array &z,
     gn = pow(gn, gradient_power);
     gn = smoothstep5_lower(gn);
     facc *= (1.f - gradient_scaling_ratio) + gradient_scaling_ratio * gn;
+  }
+
+  // preserve local peaks
+  {
+    Array re = gpu::relative_elevation(z, gradient_prefilter_ir);
+    re = smoothstep3(1.f - re);
+    facc *= re;
   }
 
   if (p_moisture_map)
