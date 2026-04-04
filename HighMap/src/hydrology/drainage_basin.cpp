@@ -304,6 +304,43 @@ const std::vector<size_t> &DrainageBasin::for_each_upstream(size_t outlet) const
   return traversals.at(outlet);
 }
 
+std::vector<std::vector<size_t>> DrainageBasin::get_main_channels() const
+{
+  std::vector<std::vector<size_t>> channels;
+  channels.reserve(this->traversals.size());
+
+  for (const auto &[outlet, traversal] : this->traversals)
+  {
+    if (traversal.empty())
+    {
+      channels.emplace_back();
+      continue;
+    }
+
+    std::vector<size_t> channel;
+    channel.reserve(traversal.size());
+
+    // traversal is upstream -> downstream
+    size_t p = traversal.front();
+    channel.push_back(p);
+
+    // follow receivers downstream to outlet
+    while (true)
+    {
+      const size_t &r = this->receivers[p];
+
+      if (r == p) break; // reached outlet
+
+      p = r;
+      channel.push_back(p);
+    }
+
+    channels.push_back(std::move(channel));
+  }
+
+  return channels;
+}
+
 const TerrainTriMesh &DrainageBasin::get_mesh() const
 {
   return this->mesh;
@@ -516,8 +553,7 @@ float DrainageBasin::update_elevations(const std::vector<float> &response_times,
                                        float                     uplift_rate,
                                        const std::vector<float> &max_slope)
 {
-  const size_t n = this->receivers.size();
-  float        delta_sum = 0.f;
+  float delta_sum = 0.f;
 
   // get z range to scale slope limiters
   glm::vec2 zr = this->mesh.get_range_z();

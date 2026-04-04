@@ -38,6 +38,17 @@ int main(void)
   db.update_stream_tree();
   db.to_csv("db.csv");
 
+  // --- main channels
+
+  auto mc = db.get_main_channels();
+
+  if (false)
+  {
+    for (const auto &channel : mc)
+      for (const auto &i : channel)
+        db.get_mesh().get_points()[i].z = 0.f;
+  }
+
   // --- export
 
   std::vector<float> area = db.compute_vertex_areas();

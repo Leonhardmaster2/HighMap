@@ -48,6 +48,7 @@ public:
   std::vector<bool>                    compute_is_ridge_node() const;
   std::vector<size_t>                  compute_strahler_order() const;
   std::pair<std::vector<size_t>, bool> find_subroots();
+  std::vector<std::vector<size_t>>     get_main_channels() const;
   void remove_lakes(const std::vector<size_t> &subroot);
 
   // --- Hydrology computations ---
