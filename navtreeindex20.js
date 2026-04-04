@@ -1,5 +1,7 @@
 var NAVTREEINDEX20 =
 {
+"structhmap_1_1VirtualArray.html#ad4d8d3407778b4db8fd3dd4a98ef28a5":[3,0,0,79,2],
+"structhmap_1_1VirtualArray.html#ae4adbabb465da57c4056050375886848":[3,0,0,79,7],
 "structhmap_1_1VirtualArray.html#ae4adbabb465da57c4056050375886848":[4,0,0,78,7],
 "structhmap_1_1VirtualArray.html#aee46789ef67622a8f65fb9fbeacd41b5":[4,0,0,78,3],
 "structhmap_1_1VirtualArray.html#aee46789ef67622a8f65fb9fbeacd41b5":[3,0,0,79,3],
