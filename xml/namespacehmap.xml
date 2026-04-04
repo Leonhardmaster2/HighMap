@@ -9709,10 +9709,10 @@ additional_depth)</computeroutput>.</para>
         </inbodydescription>
         <location file="HighMap/src/erosion/hydraulic_musgrave.cpp" line="110" column="6" bodyfile="HighMap/src/erosion/hydraulic_musgrave.cpp" bodystart="110" bodyend="127" declfile="HighMap/include/highmap/erosion.hpp" declline="413" declcolumn="6"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1a8adc1e50536cf94da6d11a142d2c9027" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacehmap_1a8dbd4d6c53cc12b4bb149629026b5fcd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void hmap::hydraulic_saleve</definition>
-        <argsstring>(TerrainTriMesh &amp;mesh, const std::vector&lt; float &gt; &amp;erodibility, const std::vector&lt; float &gt; &amp;max_slope, float m_exp=0.8f, float uplift_rate=1.f, float tolerance=1e-3f, int max_iterations=200, float noise_strength=0.f, uint seed=0, bool enable_post_slope_limiter=false, float post_slope_limit=0.f, bool enable_post_smoothing=true)</argsstring>
+        <argsstring>(TerrainTriMesh &amp;mesh, const std::vector&lt; float &gt; &amp;erodibility, const std::vector&lt; float &gt; &amp;max_slope, float m_exp=0.8f, float uplift_rate=1.f, float tolerance=1e-3f, int max_iterations=200, float noise_strength=0.f, uint seed=0, bool enable_post_slope_limiter=false, float post_slope_limit=0.f, bool enable_post_smoothing=false)</argsstring>
         <name>hydraulic_saleve</name>
         <qualifiedname>hmap::hydraulic_saleve</qualifiedname>
         <param>
@@ -9770,7 +9770,7 @@ additional_depth)</computeroutput>.</para>
         <param>
           <type>bool</type>
           <declname>enable_post_smoothing</declname>
-          <defval>true</defval>
+          <defval>false</defval>
         </param>
         <briefdescription>
 <para>Perform hydraulic erosion on a triangulated terrain mesh. </para>
@@ -9886,7 +9886,7 @@ additional_depth)</computeroutput>.</para>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>8,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0.f);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z1<sp/>=<sp/><ref refid="namespacehmap_1a8adc1e50536cf94da6d11a142d2c9027" kindref="member">hmap::hydraulic_saleve</ref>(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z1<sp/>=<sp/><ref refid="namespacehmap_1a8dbd4d6c53cc12b4bb149629026b5fcd" kindref="member">hmap::hydraulic_saleve</ref>(</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>z0,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>++seed,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>control_points_count,</highlight></codeline>
@@ -9931,12 +9931,12 @@ additional_depth)</computeroutput>.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/hydraulic_saleve.cpp" line="16" column="6" bodyfile="HighMap/src/erosion/hydraulic_saleve.cpp" bodystart="16" bodyend="63" declfile="HighMap/include/highmap/erosion.hpp" declline="441" declcolumn="6"/>
+        <location file="HighMap/src/erosion/hydraulic_saleve.cpp" line="16" column="6" bodyfile="HighMap/src/erosion/hydraulic_saleve.cpp" bodystart="16" bodyend="59" declfile="HighMap/include/highmap/erosion.hpp" declline="441" declcolumn="6"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1a82f173d2726a4b76b6b3aa21eba4398b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacehmap_1aafe90971adf84a95dd2db719e3ba3a72" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
         <definition>Array hmap::hydraulic_saleve</definition>
-        <argsstring>(const Array &amp;z, uint seed, size_t control_points_count=10000, float m_exp=0.8f, float uplift_rate=1.f, float tolerance=1e-3f, int max_iterations=200, float smin=0.f, float smax=6.f, float strength=0.5f, bool scale_erodibility_with_z=true, float erodibility_distrib_exp=1.f, float noise_strength=0.f, bool enable_post_slope_limiter=false, float post_slope_limit=0.f, bool enable_post_smoothing=true, InterpolationMethod2D interpolation_method=InterpolationMethod2D::ITP2D_DELAUNAY, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr)</argsstring>
+        <argsstring>(const Array &amp;z, uint seed, size_t control_points_count=10000, float m_exp=0.8f, float uplift_rate=1.f, float tolerance=1e-3f, int max_iterations=200, float smin=0.f, float smax=6.f, float strength=0.5f, bool scale_erodibility_with_z=true, float erodibility_distrib_exp=1.f, float noise_strength=0.f, bool enable_post_slope_limiter=false, float post_slope_limit=0.f, bool enable_post_smoothing=false, InterpolationMethod2D interpolation_method=InterpolationMethod2D::ITP2D_DELAUNAY, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr)</argsstring>
         <name>hydraulic_saleve</name>
         <qualifiedname>hmap::hydraulic_saleve</qualifiedname>
         <param>
@@ -10015,7 +10015,7 @@ additional_depth)</computeroutput>.</para>
         <param>
           <type>bool</type>
           <declname>enable_post_smoothing</declname>
-          <defval>true</defval>
+          <defval>false</defval>
         </param>
         <param>
           <type><ref refid="namespacehmap_1a5bfab5d68e822294ff90fde21b85f581" kindref="member">InterpolationMethod2D</ref></type>
@@ -10204,7 +10204,7 @@ additional_depth)</computeroutput>.</para>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>8,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0.f);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z1<sp/>=<sp/><ref refid="namespacehmap_1a8adc1e50536cf94da6d11a142d2c9027" kindref="member">hmap::hydraulic_saleve</ref>(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z1<sp/>=<sp/><ref refid="namespacehmap_1a8dbd4d6c53cc12b4bb149629026b5fcd" kindref="member">hmap::hydraulic_saleve</ref>(</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>z0,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>++seed,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>control_points_count,</highlight></codeline>
@@ -10249,12 +10249,12 @@ additional_depth)</computeroutput>.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/hydraulic_saleve.cpp" line="65" column="7" bodyfile="HighMap/src/erosion/hydraulic_saleve.cpp" bodystart="65" bodyend="185" declfile="HighMap/include/highmap/erosion.hpp" declline="484" declcolumn="7"/>
+        <location file="HighMap/src/erosion/hydraulic_saleve.cpp" line="61" column="7" bodyfile="HighMap/src/erosion/hydraulic_saleve.cpp" bodystart="61" bodyend="181" declfile="HighMap/include/highmap/erosion.hpp" declline="484" declcolumn="7"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1ae903261f086d5831aef6124cff8d22df" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacehmap_1af8a5df295124155a9a362d57b5e96ed7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
         <definition>Array hmap::hydraulic_saleve</definition>
-        <argsstring>(const Array &amp;z, const Array *p_mask, uint seed, size_t control_points_count=10000, float m_exp=0.8f, float uplift_rate=1.f, float tolerance=1e-3f, int max_iterations=200, float smin=0.f, float smax=6.f, float strength=0.5f, bool scale_erodibility_with_z=true, float erodibility_distrib_exp=1.f, float noise_strength=0.f, bool enable_post_slope_limiter=false, float post_slope_limit=0.f, bool enable_post_smoothing=true, InterpolationMethod2D interpolation_method=InterpolationMethod2D::ITP2D_DELAUNAY, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr)</argsstring>
+        <argsstring>(const Array &amp;z, const Array *p_mask, uint seed, size_t control_points_count=10000, float m_exp=0.8f, float uplift_rate=1.f, float tolerance=1e-3f, int max_iterations=200, float smin=0.f, float smax=6.f, float strength=0.5f, bool scale_erodibility_with_z=true, float erodibility_distrib_exp=1.f, float noise_strength=0.f, bool enable_post_slope_limiter=false, float post_slope_limit=0.f, bool enable_post_smoothing=false, InterpolationMethod2D interpolation_method=InterpolationMethod2D::ITP2D_DELAUNAY, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr)</argsstring>
         <name>hydraulic_saleve</name>
         <qualifiedname>hmap::hydraulic_saleve</qualifiedname>
         <param>
@@ -10337,7 +10337,7 @@ additional_depth)</computeroutput>.</para>
         <param>
           <type>bool</type>
           <declname>enable_post_smoothing</declname>
-          <defval>true</defval>
+          <defval>false</defval>
         </param>
         <param>
           <type><ref refid="namespacehmap_1a5bfab5d68e822294ff90fde21b85f581" kindref="member">InterpolationMethod2D</ref></type>
@@ -10360,7 +10360,7 @@ additional_depth)</computeroutput>.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/hydraulic_saleve.cpp" line="187" column="7" bodyfile="HighMap/src/erosion/hydraulic_saleve.cpp" bodystart="187" bodyend="232" declfile="HighMap/include/highmap/erosion.hpp" declline="505" declcolumn="7"/>
+        <location file="HighMap/src/erosion/hydraulic_saleve.cpp" line="183" column="7" bodyfile="HighMap/src/erosion/hydraulic_saleve.cpp" bodystart="183" bodyend="228" declfile="HighMap/include/highmap/erosion.hpp" declline="505" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1acbf32c30d68183eb5522888af2ede316" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -26132,177 +26132,6 @@ This function:<itemizedlist>
         </inbodydescription>
         <location file="HighMap/src/geometry/path.cpp" line="1021" column="6" bodyfile="HighMap/src/geometry/path.cpp" bodystart="1021" bodyend="1044" declfile="HighMap/include/highmap/geometry/path.hpp" declline="912" declcolumn="6"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1a176288a6fd3bb7b78437e9f114f0d6b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classhmap_1_1Path" kindref="compound">Path</ref></type>
-        <definition>Path hmap::find_cut_path_dijkstra</definition>
-        <argsstring>(const Array &amp;z, DomainBoundary start, DomainBoundary end, float dijk_elevation_ratio=0.9f, float dijk_distance_exponent=2.f, float dijk_upward_penalization=100.f)</argsstring>
-        <name>find_cut_path_dijkstra</name>
-        <qualifiedname>hmap::find_cut_path_dijkstra</qualifiedname>
-        <param>
-          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
-          <declname>z</declname>
-        </param>
-        <param>
-          <type><ref refid="namespacehmap_1a1ba9d4ce7afe3309f8ae8e617f7154ee" kindref="member">DomainBoundary</ref></type>
-          <declname>start</declname>
-        </param>
-        <param>
-          <type><ref refid="namespacehmap_1a1ba9d4ce7afe3309f8ae8e617f7154ee" kindref="member">DomainBoundary</ref></type>
-          <declname>end</declname>
-        </param>
-        <param>
-          <type>float</type>
-          <declname>dijk_elevation_ratio</declname>
-          <defval>0.9<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
-        </param>
-        <param>
-          <type>float</type>
-          <declname>dijk_distance_exponent</declname>
-          <defval>2.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
-        </param>
-        <param>
-          <type>float</type>
-          <declname>dijk_upward_penalization</declname>
-          <defval>100.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
-        </param>
-        <briefdescription>
-<para>Find a Dijkstra-based cut path between two domain boundaries. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>Selects the lowest point on the <computeroutput>start</computeroutput> and <computeroutput>end</computeroutput> boundaries of heightmap <computeroutput>z</computeroutput>, then computes a path between them using a weighted Dijkstra search. The path cost combines elevation, distance, and uphill penalization. The result is returned as normalized (x, y) coordinates and elevation samples.</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>z</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Heightmap array. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>start</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Boundary where the path begins. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>end</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Boundary where the path ends. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>dijk_elevation_ratio</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Weight of elevation in the cost. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>dijk_distance_exponent</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Exponent applied to distance cost. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>dijk_upward_penalization</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Extra penalty for uphill moves.</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para><ref refid="classhmap_1_1Path" kindref="compound">Path</ref> containing normalized (x, y) points and elevations.</para>
-</simplesect>
-<bold>Example</bold> <programlisting filename="ex_find_cut_path.cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
-<codeline><highlight class="normal">{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>glm::ivec2<sp/>shape<sp/>=<sp/>{256,<sp/>256};</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>glm::vec2<sp/><sp/>kw<sp/>=<sp/>{2.f,<sp/>2.f};</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed<sp/>=<sp/>0;</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1acb13e7346085793fda4c94c47b75d9a9" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,<sp/>shape,<sp/>kw,<sp/>seed);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(z);</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Dijkstra</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Path" kindref="compound">hmap::Path</ref><sp/>path<sp/>=<sp/><ref refid="namespacehmap_1a176288a6fd3bb7b78437e9f114f0d6b1" kindref="member">hmap::find_cut_path_dijkstra</ref>(</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>z,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a1ba9d4ce7afe3309f8ae8e617f7154eea760545322569136cd3be89e004ab10d4" kindref="member">hmap::DomainBoundary::BOUNDARY_LEFT</ref>,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a1ba9d4ce7afe3309f8ae8e617f7154eeadb9a04ab3508704543b5dd43ae495fe7" kindref="member">hmap::DomainBoundary::BOUNDARY_RIGHT</ref>);</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zp<sp/>=<sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref>(shape);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>path.<ref refid="classhmap_1_1Path_1a4d1e1e63fea24bf8f23bc3343f8b746e" kindref="member">to_array</ref>(zp);</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>procedural</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Path" kindref="compound">hmap::Path</ref><sp/>path2<sp/>=<sp/><ref refid="namespacehmap_1ae4132d5be84f747a499cbabcbc524cd8" kindref="member">hmap::find_cut_path_midpoint</ref>(</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>z,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a1ba9d4ce7afe3309f8ae8e617f7154eea760545322569136cd3be89e004ab10d4" kindref="member">hmap::DomainBoundary::BOUNDARY_LEFT</ref>,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a1ba9d4ce7afe3309f8ae8e617f7154eeadb9a04ab3508704543b5dd43ae495fe7" kindref="member">hmap::DomainBoundary::BOUNDARY_RIGHT</ref>,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>seed);</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zp2<sp/>=<sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref>(shape);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>path2.<ref refid="classhmap_1_1Path_1a4d1e1e63fea24bf8f23bc3343f8b746e" kindref="member">to_array</ref>(zp2);</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_find_cut_path.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,<sp/>zp,<sp/>zp2},</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143" kindref="member">hmap::Cmap::INFERNO</ref>);</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting></para>
-<para><bold>Result</bold> <image type="html" name="ex_find_cut_path.png"></image>
- </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="HighMap/src/geometry/find_cut_path.cpp" line="11" column="6" bodyfile="HighMap/src/geometry/find_cut_path.cpp" bodystart="11" bodyend="118" declfile="HighMap/include/highmap/geometry/path.hpp" declline="947" declcolumn="6"/>
-      </memberdef>
-      <memberdef kind="function" id="namespacehmap_1ae4132d5be84f747a499cbabcbc524cd8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classhmap_1_1Path" kindref="compound">Path</ref></type>
-        <definition>Path hmap::find_cut_path_midpoint</definition>
-        <argsstring>(const Array &amp;z, DomainBoundary start, DomainBoundary end, uint seed, int midp_iterations=4, float midp_sigma=0.2f)</argsstring>
-        <name>find_cut_path_midpoint</name>
-        <qualifiedname>hmap::find_cut_path_midpoint</qualifiedname>
-        <param>
-          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
-          <declname>z</declname>
-        </param>
-        <param>
-          <type><ref refid="namespacehmap_1a1ba9d4ce7afe3309f8ae8e617f7154ee" kindref="member">DomainBoundary</ref></type>
-          <declname>start</declname>
-        </param>
-        <param>
-          <type><ref refid="namespacehmap_1a1ba9d4ce7afe3309f8ae8e617f7154ee" kindref="member">DomainBoundary</ref></type>
-          <declname>end</declname>
-        </param>
-        <param>
-          <type><ref refid="array_8hpp_1a91ad9478d81a7aaf2593e8d9c3d06a14" kindref="member">uint</ref></type>
-          <declname>seed</declname>
-        </param>
-        <param>
-          <type>int</type>
-          <declname>midp_iterations</declname>
-          <defval>4</defval>
-        </param>
-        <param>
-          <type>float</type>
-          <declname>midp_sigma</declname>
-          <defval>0.2<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="HighMap/src/geometry/find_cut_path.cpp" line="120" column="6" bodyfile="HighMap/src/geometry/find_cut_path.cpp" bodystart="120" bodyend="229" declfile="HighMap/include/highmap/geometry/path.hpp" declline="954" declcolumn="6"/>
-      </memberdef>
       <memberdef kind="function" id="namespacehmap_1a650c6eaf8bd10356a77c7c1f9ef9af3c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Path" kindref="compound">Path</ref></type>
         <definition>Path hmap::remove_geometric_loops</definition>
@@ -26335,7 +26164,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/path.cpp" line="1046" column="6" bodyfile="HighMap/src/geometry/path.cpp" bodystart="1046" bodyend="1081" declfile="HighMap/include/highmap/geometry/path.hpp" declline="977" declcolumn="6"/>
+        <location file="HighMap/src/geometry/path.cpp" line="1046" column="6" bodyfile="HighMap/src/geometry/path.cpp" bodystart="1046" bodyend="1081" declfile="HighMap/include/highmap/geometry/path.hpp" declline="939" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aac71bb6c14edc17967957f7918acdbdd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>float</type>
@@ -50737,6 +50566,267 @@ off&quot; values that fall below the threshold, which can be useful for filterin
         </inbodydescription>
         <location file="HighMap/src/shadows/shadows.cpp" line="33" column="7" bodyfile="HighMap/src/shadows/shadows.cpp" bodystart="33" bodyend="48" declfile="HighMap/include/highmap/shadows.hpp" declline="112" declcolumn="7"/>
       </memberdef>
+      <memberdef kind="function" id="namespacehmap_1a176288a6fd3bb7b78437e9f114f0d6b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classhmap_1_1Path" kindref="compound">Path</ref></type>
+        <definition>Path hmap::find_cut_path_dijkstra</definition>
+        <argsstring>(const Array &amp;z, DomainBoundary start, DomainBoundary end, float dijk_elevation_ratio=0.9f, float dijk_distance_exponent=2.f, float dijk_upward_penalization=100.f)</argsstring>
+        <name>find_cut_path_dijkstra</name>
+        <qualifiedname>hmap::find_cut_path_dijkstra</qualifiedname>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>z</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacehmap_1a1ba9d4ce7afe3309f8ae8e617f7154ee" kindref="member">DomainBoundary</ref></type>
+          <declname>start</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacehmap_1a1ba9d4ce7afe3309f8ae8e617f7154ee" kindref="member">DomainBoundary</ref></type>
+          <declname>end</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>dijk_elevation_ratio</declname>
+          <defval>0.9<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>dijk_distance_exponent</declname>
+          <defval>2.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>dijk_upward_penalization</declname>
+          <defval>100.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <briefdescription>
+<para>Find a Dijkstra-based cut path between two domain boundaries. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Selects the lowest point on the <computeroutput>start</computeroutput> and <computeroutput>end</computeroutput> boundaries of heightmap <computeroutput>z</computeroutput>, then computes a path between them using a weighted Dijkstra search. The path cost combines elevation, distance, and uphill penalization. The result is returned as normalized (x, y) coordinates and elevation samples.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Heightmap array. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>start</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Boundary where the path begins. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>end</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Boundary where the path ends. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dijk_elevation_ratio</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Weight of elevation in the cost. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dijk_distance_exponent</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Exponent applied to distance cost. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dijk_upward_penalization</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Extra penalty for uphill moves.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classhmap_1_1Path" kindref="compound">Path</ref> containing normalized (x, y) points and elevations.</para>
+</simplesect>
+<bold>Example</bold> <programlisting filename="ex_find_cut_path.cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>glm::ivec2<sp/>shape<sp/>=<sp/>{256,<sp/>256};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>glm::vec2<sp/><sp/>kw<sp/>=<sp/>{2.f,<sp/>2.f};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1acb13e7346085793fda4c94c47b75d9a9" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,<sp/>shape,<sp/>kw,<sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(z);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Dijkstra</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Path" kindref="compound">hmap::Path</ref><sp/>path<sp/>=<sp/><ref refid="namespacehmap_1a176288a6fd3bb7b78437e9f114f0d6b1" kindref="member">hmap::find_cut_path_dijkstra</ref>(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>z,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a1ba9d4ce7afe3309f8ae8e617f7154eea760545322569136cd3be89e004ab10d4" kindref="member">hmap::DomainBoundary::BOUNDARY_LEFT</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a1ba9d4ce7afe3309f8ae8e617f7154eeadb9a04ab3508704543b5dd43ae495fe7" kindref="member">hmap::DomainBoundary::BOUNDARY_RIGHT</ref>);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zp<sp/>=<sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref>(shape);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>path.<ref refid="classhmap_1_1Path_1a4d1e1e63fea24bf8f23bc3343f8b746e" kindref="member">to_array</ref>(zp);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>procedural</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Path" kindref="compound">hmap::Path</ref><sp/>path2<sp/>=<sp/><ref refid="namespacehmap_1ae4132d5be84f747a499cbabcbc524cd8" kindref="member">hmap::find_cut_path_midpoint</ref>(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>z,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a1ba9d4ce7afe3309f8ae8e617f7154eea760545322569136cd3be89e004ab10d4" kindref="member">hmap::DomainBoundary::BOUNDARY_LEFT</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a1ba9d4ce7afe3309f8ae8e617f7154eeadb9a04ab3508704543b5dd43ae495fe7" kindref="member">hmap::DomainBoundary::BOUNDARY_RIGHT</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zp2<sp/>=<sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref>(shape);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>path2.<ref refid="classhmap_1_1Path_1a4d1e1e63fea24bf8f23bc3343f8b746e" kindref="member">to_array</ref>(zp2);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_find_cut_path.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,<sp/>zp,<sp/>zp2},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143" kindref="member">hmap::Cmap::INFERNO</ref>);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<para><bold>Result</bold> <image type="html" name="ex_find_cut_path.png"></image>
+ </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/shortest_path/find_cut_path.cpp" line="11" column="6" bodyfile="HighMap/src/shortest_path/find_cut_path.cpp" bodystart="11" bodyend="118" declfile="HighMap/include/highmap/shortest_path.hpp" declline="45" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehmap_1ae4132d5be84f747a499cbabcbc524cd8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classhmap_1_1Path" kindref="compound">Path</ref></type>
+        <definition>Path hmap::find_cut_path_midpoint</definition>
+        <argsstring>(const Array &amp;z, DomainBoundary start, DomainBoundary end, uint seed, int midp_iterations=4, float midp_sigma=0.2f)</argsstring>
+        <name>find_cut_path_midpoint</name>
+        <qualifiedname>hmap::find_cut_path_midpoint</qualifiedname>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>z</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacehmap_1a1ba9d4ce7afe3309f8ae8e617f7154ee" kindref="member">DomainBoundary</ref></type>
+          <declname>start</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacehmap_1a1ba9d4ce7afe3309f8ae8e617f7154ee" kindref="member">DomainBoundary</ref></type>
+          <declname>end</declname>
+        </param>
+        <param>
+          <type><ref refid="array_8hpp_1a91ad9478d81a7aaf2593e8d9c3d06a14" kindref="member">uint</ref></type>
+          <declname>seed</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>midp_iterations</declname>
+          <defval>4</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>midp_sigma</declname>
+          <defval>0.2<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <briefdescription>
+<para>Generate a stochastic cut path using midpoint displacement. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Creates a path between the <computeroutput>start</computeroutput> and <computeroutput>end</computeroutput> boundaries of heightmap <computeroutput>z</computeroutput> by recursively subdividing and perturbing a segment. The result is a natural, irregular path defined by normalized (x, y) coordinates and elevations.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Heightmap array. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>start</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Start boundary. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>end</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>End boundary. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>seed</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Random seed. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>midp_iterations</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of subdivision steps. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>midp_sigma</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Displacement amplitude.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classhmap_1_1Path" kindref="compound">Path</ref> with normalized coordinates and elevations.</para>
+</simplesect>
+<bold>Example</bold> <programlisting filename="ex_find_cut_path.cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>glm::ivec2<sp/>shape<sp/>=<sp/>{256,<sp/>256};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>glm::vec2<sp/><sp/>kw<sp/>=<sp/>{2.f,<sp/>2.f};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1acb13e7346085793fda4c94c47b75d9a9" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,<sp/>shape,<sp/>kw,<sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(z);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Dijkstra</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Path" kindref="compound">hmap::Path</ref><sp/>path<sp/>=<sp/><ref refid="namespacehmap_1a176288a6fd3bb7b78437e9f114f0d6b1" kindref="member">hmap::find_cut_path_dijkstra</ref>(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>z,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a1ba9d4ce7afe3309f8ae8e617f7154eea760545322569136cd3be89e004ab10d4" kindref="member">hmap::DomainBoundary::BOUNDARY_LEFT</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a1ba9d4ce7afe3309f8ae8e617f7154eeadb9a04ab3508704543b5dd43ae495fe7" kindref="member">hmap::DomainBoundary::BOUNDARY_RIGHT</ref>);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zp<sp/>=<sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref>(shape);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>path.<ref refid="classhmap_1_1Path_1a4d1e1e63fea24bf8f23bc3343f8b746e" kindref="member">to_array</ref>(zp);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>procedural</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Path" kindref="compound">hmap::Path</ref><sp/>path2<sp/>=<sp/><ref refid="namespacehmap_1ae4132d5be84f747a499cbabcbc524cd8" kindref="member">hmap::find_cut_path_midpoint</ref>(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>z,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a1ba9d4ce7afe3309f8ae8e617f7154eea760545322569136cd3be89e004ab10d4" kindref="member">hmap::DomainBoundary::BOUNDARY_LEFT</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a1ba9d4ce7afe3309f8ae8e617f7154eeadb9a04ab3508704543b5dd43ae495fe7" kindref="member">hmap::DomainBoundary::BOUNDARY_RIGHT</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zp2<sp/>=<sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref>(shape);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>path2.<ref refid="classhmap_1_1Path_1a4d1e1e63fea24bf8f23bc3343f8b746e" kindref="member">to_array</ref>(zp2);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_find_cut_path.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,<sp/>zp,<sp/>zp2},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143" kindref="member">hmap::Cmap::INFERNO</ref>);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<para><bold>Result</bold> <image type="html" name="ex_find_cut_path.png"></image>
+ </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/shortest_path/find_cut_path.cpp" line="120" column="6" bodyfile="HighMap/src/shortest_path/find_cut_path.cpp" bodystart="120" bodyend="229" declfile="HighMap/include/highmap/shortest_path.hpp" declline="74" declcolumn="6"/>
+      </memberdef>
       <memberdef kind="function" id="namespacehmap_1af5e2b95dd35c64ba4ff24ca2697d87f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void hmap::find_path_dijkstra</definition>
@@ -50903,7 +50993,7 @@ off&quot; values that fall below the threshold, which can be useful for filterin
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/shortest_path/dijsktra.cpp" line="141" column="6" bodyfile="HighMap/src/shortest_path/dijsktra.cpp" bodystart="141" bodyend="166" declfile="HighMap/include/highmap/shortest_path.hpp" declline="61" declcolumn="6"/>
+        <location file="HighMap/src/shortest_path/dijsktra.cpp" line="141" column="6" bodyfile="HighMap/src/shortest_path/dijsktra.cpp" bodystart="141" bodyend="166" declfile="HighMap/include/highmap/shortest_path.hpp" declline="122" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a96d3c2fa385b510ee723e9074dfaa194" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -50957,7 +51047,7 @@ off&quot; values that fall below the threshold, which can be useful for filterin
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/shortest_path/dijsktra.cpp" line="12" column="6" bodyfile="HighMap/src/shortest_path/dijsktra.cpp" bodystart="12" bodyend="139" declfile="HighMap/include/highmap/shortest_path.hpp" declline="71" declcolumn="6"/>
+        <location file="HighMap/src/shortest_path/dijsktra.cpp" line="12" column="6" bodyfile="HighMap/src/shortest_path/dijsktra.cpp" bodystart="12" bodyend="139" declfile="HighMap/include/highmap/shortest_path.hpp" declline="132" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1acfb2652ac666e36a3a47c1673d4e486b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; glm::ivec2 &gt;</type>
@@ -51106,7 +51196,7 @@ off&quot; values that fall below the threshold, which can be useful for filterin
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/shortest_path/find_path_midpoint.cpp" line="73" column="13" bodyfile="HighMap/src/shortest_path/find_path_midpoint.cpp" bodystart="73" bodyend="137" declfile="HighMap/include/highmap/shortest_path.hpp" declline="103" declcolumn="13"/>
+        <location file="HighMap/src/shortest_path/find_path_midpoint.cpp" line="73" column="13" bodyfile="HighMap/src/shortest_path/find_path_midpoint.cpp" bodystart="73" bodyend="137" declfile="HighMap/include/highmap/shortest_path.hpp" declline="164" declcolumn="13"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a7064111b8b50fd4e29928e6d3f5e10f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
