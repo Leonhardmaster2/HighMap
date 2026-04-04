@@ -618,6 +618,24 @@ Array TerrainTriMesh::to_array(const glm::ivec2         &shape,
   return out;
 }
 
+void TerrainTriMesh::to_csv(const std::string &fname) const
+{
+  std::ofstream f(fname, std::ios::out);
+  if (!f.is_open()) return;
+
+  f << "# vertices\n";
+  f << "# "
+       "vertex_id,x,y,z\n";
+
+  for (size_t i = 0; i < static_cast<size_t>(this->get_points().size()); ++i)
+  {
+    f << i << "," << this->get_points()[i].x << "," << this->get_points()[i].y
+      << "," << this->get_points()[i].z << "\n";
+  }
+
+  f.close();
+}
+
 glm::vec2 TerrainTriMesh::to_xy(const glm::vec3 &p) const
 {
   return {p.x, p.y};

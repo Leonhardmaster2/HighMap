@@ -134,6 +134,7 @@ public:
   Array       to_array(const glm::ivec2         &shape,
                        const std::vector<float> &values = {},
                        const glm::vec4          &bbox = {0.f, 1.f, 0.f, 1.f}) const;
+  void        to_csv(const std::string &fname) const;
 
 private:
   std::vector<glm::vec3> points;
