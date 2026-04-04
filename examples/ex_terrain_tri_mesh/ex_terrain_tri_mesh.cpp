@@ -62,7 +62,7 @@ int main(void)
   {
     float max_slope = 0.5f;
     int   iterations = 10;
-    float sigma = 0.1f;
+    float sigma = 0.2f;
 
     auto mesh = hmap::TerrainTriMesh(points);
     mesh.slope_limiter(max_slope, iterations, sigma);

@@ -484,7 +484,9 @@ size_t TerrainTriMesh::size() const
   return this->points.size();
 }
 
-void TerrainTriMesh::slope_limiter(float max_slope, int iterations, float sigma)
+void TerrainTriMesh::slope_limiter(const std::vector<float> &max_slope,
+                                   int                       iterations,
+                                   float                     sigma)
 {
   if (this->neighbors.adjacency.empty()) this->compute_neighbors();
 
@@ -498,6 +500,7 @@ void TerrainTriMesh::slope_limiter(float max_slope, int iterations, float sigma)
       const glm::vec3 &pi = this->points[i];
 
       buffer[i] = pi;
+      float slope_limit = max_slope[i];
 
       if (nbrs.empty()) continue;
 
@@ -510,12 +513,22 @@ void TerrainTriMesh::slope_limiter(float max_slope, int iterations, float sigma)
         float dz = pi.z - pj.z;
         float slope = std::abs(dz) / dist;
 
-        if (slope > max_slope) buffer[i].z -= sigma * dz;
+        if (slope > slope_limit)
+        {
+          float diff = slope_limit * dist;
+          buffer[i].z -= sigma * std::copysignf(1.f, dz) * diff;
+        }
       }
     }
 
     this->points = std::move(buffer);
   }
+}
+
+void TerrainTriMesh::slope_limiter(float max_slope, int iterations, float sigma)
+{
+  std::vector<float> slope_vec(this->size(), max_slope);
+  this->slope_limiter(slope_vec, iterations, sigma);
 }
 
 void TerrainTriMesh::subdivise()
