@@ -484,6 +484,40 @@ size_t TerrainTriMesh::size() const
   return this->points.size();
 }
 
+void TerrainTriMesh::slope_limiter(float max_slope, int iterations, float sigma)
+{
+  if (this->neighbors.adjacency.empty()) this->compute_neighbors();
+
+  for (int it = 0; it < iterations; ++it)
+  {
+    std::vector<glm::vec3> buffer(this->points.size());
+
+    for (size_t i = 0; i < this->points.size(); ++i)
+    {
+      const auto      &nbrs = this->neighbors.adjacency[i];
+      const glm::vec3 &pi = this->points[i];
+
+      buffer[i] = pi;
+
+      if (nbrs.empty()) continue;
+
+      for (const auto &nb : nbrs)
+      {
+        size_t           j = nb.index;
+        const glm::vec3 &pj = this->points[j];
+
+        float dist = glm::length(glm::vec2(pi.x - pj.x, pi.y - pj.y));
+        float dz = pi.z - pj.z;
+        float slope = std::abs(dz) / dist;
+
+        if (slope > max_slope) buffer[i].z -= sigma * dz;
+      }
+    }
+
+    this->points = std::move(buffer);
+  }
+}
+
 void TerrainTriMesh::subdivise()
 {
   std::unordered_map<Edge, size_t, EdgeHash> midpoint_map;

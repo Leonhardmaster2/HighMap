@@ -8,7 +8,7 @@ int main(void)
   glm::vec2  kw = {4.f, 4.f};
   int        seed = 0;
   glm::vec4  bbox = {0.f, 1.f, 0.f, 1.f};
-  size_t     count = 10000;
+  size_t     count = 1000;
 
   // --- generate sample points
 
@@ -55,5 +55,18 @@ int main(void)
     mesh.subdivise();
     mesh.print_info();
     mesh.to_array(shape).to_png("mesh_subdivise.png", hmap::Cmap::JET);
+  }
+
+  // --- slope limiter
+
+  {
+    float max_slope = 0.5f;
+    int   iterations = 10;
+    float sigma = 0.1f;
+
+    auto mesh = hmap::TerrainTriMesh(points);
+    mesh.slope_limiter(max_slope, iterations, sigma);
+    mesh.to_array(shape).to_png("mesh_slope_limiter.png", hmap::Cmap::JET);
+    mesh.export_obj("mesh_slope_limiter.obj");
   }
 }

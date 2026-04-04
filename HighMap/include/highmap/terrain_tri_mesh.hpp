@@ -99,6 +99,8 @@ public:
 
   void remap_z(float vmin = 0.f, float vmax = 1.f);
 
+  void slope_limiter(float max_slope, int iterations, float sigma = 0.1f);
+
   void subdivise();
 
   // --- Metrics ---
