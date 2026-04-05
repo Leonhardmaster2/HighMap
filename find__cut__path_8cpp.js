@@ -1,5 +1,5 @@
 var find__cut__path_8cpp =
 [
-    [ "find_cut_path_dijkstra", "find__cut__path_8cpp.html#a176288a6fd3bb7b78437e9f114f0d6b1", null ],
-    [ "find_cut_path_midpoint", "find__cut__path_8cpp.html#ae4132d5be84f747a499cbabcbc524cd8", null ]
+    [ "find_cut_path_dijkstra", "find__cut__path_8cpp.html#a21a3078ba07fad81a888ca00cd6c3b33", null ],
+    [ "find_cut_path_midpoint", "find__cut__path_8cpp.html#ab30632ac2e2c4eba798e8718c2ac1dee", null ]
 ];

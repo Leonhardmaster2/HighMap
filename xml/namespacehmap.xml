@@ -2552,7 +2552,7 @@
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>---<sp/>generate<sp/>path</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Path" kindref="compound">hmap::Path</ref><sp/>path<sp/>=<sp/><ref refid="namespacehmap_1a176288a6fd3bb7b78437e9f114f0d6b1" kindref="member">hmap::find_cut_path_dijkstra</ref>(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Path" kindref="compound">hmap::Path</ref><sp/>path<sp/>=<sp/><ref refid="namespacehmap_1a21a3078ba07fad81a888ca00cd6c3b33" kindref="member">hmap::find_cut_path_dijkstra</ref>(</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>z,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a1ba9d4ce7afe3309f8ae8e617f7154eea760545322569136cd3be89e004ab10d4" kindref="member">hmap::DomainBoundary::BOUNDARY_LEFT</ref>,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a1ba9d4ce7afe3309f8ae8e617f7154eeadb9a04ab3508704543b5dd43ae495fe7" kindref="member">hmap::DomainBoundary::BOUNDARY_RIGHT</ref>);</highlight></codeline>
@@ -2802,7 +2802,7 @@
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>---<sp/>generate<sp/>path</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Path" kindref="compound">hmap::Path</ref><sp/>path<sp/>=<sp/><ref refid="namespacehmap_1a176288a6fd3bb7b78437e9f114f0d6b1" kindref="member">hmap::find_cut_path_dijkstra</ref>(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Path" kindref="compound">hmap::Path</ref><sp/>path<sp/>=<sp/><ref refid="namespacehmap_1a21a3078ba07fad81a888ca00cd6c3b33" kindref="member">hmap::find_cut_path_dijkstra</ref>(</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>z,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a1ba9d4ce7afe3309f8ae8e617f7154eea760545322569136cd3be89e004ab10d4" kindref="member">hmap::DomainBoundary::BOUNDARY_LEFT</ref>,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a1ba9d4ce7afe3309f8ae8e617f7154eeadb9a04ab3508704543b5dd43ae495fe7" kindref="member">hmap::DomainBoundary::BOUNDARY_RIGHT</ref>);</highlight></codeline>
@@ -50722,10 +50722,10 @@ off&quot; values that fall below the threshold, which can be useful for filterin
         </inbodydescription>
         <location file="HighMap/src/shadows/shadows.cpp" line="33" column="7" bodyfile="HighMap/src/shadows/shadows.cpp" bodystart="33" bodyend="48" declfile="HighMap/include/highmap/shadows.hpp" declline="112" declcolumn="7"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1a176288a6fd3bb7b78437e9f114f0d6b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacehmap_1a21a3078ba07fad81a888ca00cd6c3b33" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Path" kindref="compound">Path</ref></type>
         <definition>Path hmap::find_cut_path_dijkstra</definition>
-        <argsstring>(const Array &amp;z, DomainBoundary start, DomainBoundary end, float dijk_elevation_ratio=0.9f, float dijk_distance_exponent=2.f, float dijk_upward_penalization=100.f)</argsstring>
+        <argsstring>(const Array &amp;z, DomainBoundary start, DomainBoundary end, float dijk_elevation_ratio=0.9f, float dijk_distance_exponent=2.f, float dijk_upward_penalization=100.f, uint seed=0, bool favor_boundary_center=true, bool favor_lower_elevation=true, bool favor_sinks=true)</argsstring>
         <name>find_cut_path_dijkstra</name>
         <qualifiedname>hmap::find_cut_path_dijkstra</qualifiedname>
         <param>
@@ -50754,6 +50754,26 @@ off&quot; values that fall below the threshold, which can be useful for filterin
           <type>float</type>
           <declname>dijk_upward_penalization</declname>
           <defval>100.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type><ref refid="array_8hpp_1a91ad9478d81a7aaf2593e8d9c3d06a14" kindref="member">uint</ref></type>
+          <declname>seed</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>favor_boundary_center</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>favor_lower_elevation</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>favor_sinks</declname>
+          <defval>true</defval>
         </param>
         <briefdescription>
 <para>Find a Dijkstra-based cut path between two domain boundaries. </para>
@@ -50823,7 +50843,7 @@ off&quot; values that fall below the threshold, which can be useful for filterin
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(z);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Dijkstra</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Path" kindref="compound">hmap::Path</ref><sp/>path<sp/>=<sp/><ref refid="namespacehmap_1a176288a6fd3bb7b78437e9f114f0d6b1" kindref="member">hmap::find_cut_path_dijkstra</ref>(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Path" kindref="compound">hmap::Path</ref><sp/>path<sp/>=<sp/><ref refid="namespacehmap_1a21a3078ba07fad81a888ca00cd6c3b33" kindref="member">hmap::find_cut_path_dijkstra</ref>(</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>z,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a1ba9d4ce7afe3309f8ae8e617f7154eea760545322569136cd3be89e004ab10d4" kindref="member">hmap::DomainBoundary::BOUNDARY_LEFT</ref>,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a1ba9d4ce7afe3309f8ae8e617f7154eeadb9a04ab3508704543b5dd43ae495fe7" kindref="member">hmap::DomainBoundary::BOUNDARY_RIGHT</ref>);</highlight></codeline>
@@ -50832,7 +50852,7 @@ off&quot; values that fall below the threshold, which can be useful for filterin
 <codeline><highlight class="normal"><sp/><sp/>path.<ref refid="classhmap_1_1Path_1a4d1e1e63fea24bf8f23bc3343f8b746e" kindref="member">to_array</ref>(zp);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>procedural</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Path" kindref="compound">hmap::Path</ref><sp/>path2<sp/>=<sp/><ref refid="namespacehmap_1ae4132d5be84f747a499cbabcbc524cd8" kindref="member">hmap::find_cut_path_midpoint</ref>(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Path" kindref="compound">hmap::Path</ref><sp/>path2<sp/>=<sp/><ref refid="namespacehmap_1ab30632ac2e2c4eba798e8718c2ac1dee" kindref="member">hmap::find_cut_path_midpoint</ref>(</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>z,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a1ba9d4ce7afe3309f8ae8e617f7154eea760545322569136cd3be89e004ab10d4" kindref="member">hmap::DomainBoundary::BOUNDARY_LEFT</ref>,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a1ba9d4ce7afe3309f8ae8e617f7154eeadb9a04ab3508704543b5dd43ae495fe7" kindref="member">hmap::DomainBoundary::BOUNDARY_RIGHT</ref>,</highlight></codeline>
@@ -50851,12 +50871,12 @@ off&quot; values that fall below the threshold, which can be useful for filterin
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/shortest_path/find_cut_path.cpp" line="11" column="6" bodyfile="HighMap/src/shortest_path/find_cut_path.cpp" bodystart="11" bodyend="118" declfile="HighMap/include/highmap/shortest_path.hpp" declline="46" declcolumn="6"/>
+        <location file="HighMap/src/shortest_path/find_cut_path.cpp" line="11" column="6" bodyfile="HighMap/src/shortest_path/find_cut_path.cpp" bodystart="11" bodyend="68" declfile="HighMap/include/highmap/shortest_path.hpp" declline="46" declcolumn="6"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1ae4132d5be84f747a499cbabcbc524cd8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacehmap_1ab30632ac2e2c4eba798e8718c2ac1dee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Path" kindref="compound">Path</ref></type>
         <definition>Path hmap::find_cut_path_midpoint</definition>
-        <argsstring>(const Array &amp;z, DomainBoundary start, DomainBoundary end, uint seed, int midp_iterations=4, float midp_sigma=0.2f)</argsstring>
+        <argsstring>(const Array &amp;z, DomainBoundary start, DomainBoundary end, uint seed, int midp_iterations=4, float midp_sigma=0.2f, bool favor_boundary_center=true, bool favor_lower_elevation=true, bool favor_sinks=true)</argsstring>
         <name>find_cut_path_midpoint</name>
         <qualifiedname>hmap::find_cut_path_midpoint</qualifiedname>
         <param>
@@ -50884,6 +50904,21 @@ off&quot; values that fall below the threshold, which can be useful for filterin
           <type>float</type>
           <declname>midp_sigma</declname>
           <defval>0.2<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>favor_boundary_center</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>favor_lower_elevation</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>favor_sinks</declname>
+          <defval>true</defval>
         </param>
         <briefdescription>
 <para>Generate a stochastic cut path using midpoint displacement. </para>
@@ -50953,7 +50988,7 @@ off&quot; values that fall below the threshold, which can be useful for filterin
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(z);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Dijkstra</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Path" kindref="compound">hmap::Path</ref><sp/>path<sp/>=<sp/><ref refid="namespacehmap_1a176288a6fd3bb7b78437e9f114f0d6b1" kindref="member">hmap::find_cut_path_dijkstra</ref>(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Path" kindref="compound">hmap::Path</ref><sp/>path<sp/>=<sp/><ref refid="namespacehmap_1a21a3078ba07fad81a888ca00cd6c3b33" kindref="member">hmap::find_cut_path_dijkstra</ref>(</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>z,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a1ba9d4ce7afe3309f8ae8e617f7154eea760545322569136cd3be89e004ab10d4" kindref="member">hmap::DomainBoundary::BOUNDARY_LEFT</ref>,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a1ba9d4ce7afe3309f8ae8e617f7154eeadb9a04ab3508704543b5dd43ae495fe7" kindref="member">hmap::DomainBoundary::BOUNDARY_RIGHT</ref>);</highlight></codeline>
@@ -50962,7 +50997,7 @@ off&quot; values that fall below the threshold, which can be useful for filterin
 <codeline><highlight class="normal"><sp/><sp/>path.<ref refid="classhmap_1_1Path_1a4d1e1e63fea24bf8f23bc3343f8b746e" kindref="member">to_array</ref>(zp);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>procedural</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Path" kindref="compound">hmap::Path</ref><sp/>path2<sp/>=<sp/><ref refid="namespacehmap_1ae4132d5be84f747a499cbabcbc524cd8" kindref="member">hmap::find_cut_path_midpoint</ref>(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Path" kindref="compound">hmap::Path</ref><sp/>path2<sp/>=<sp/><ref refid="namespacehmap_1ab30632ac2e2c4eba798e8718c2ac1dee" kindref="member">hmap::find_cut_path_midpoint</ref>(</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>z,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a1ba9d4ce7afe3309f8ae8e617f7154eea760545322569136cd3be89e004ab10d4" kindref="member">hmap::DomainBoundary::BOUNDARY_LEFT</ref>,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a1ba9d4ce7afe3309f8ae8e617f7154eeadb9a04ab3508704543b5dd43ae495fe7" kindref="member">hmap::DomainBoundary::BOUNDARY_RIGHT</ref>,</highlight></codeline>
@@ -50981,7 +51016,7 @@ off&quot; values that fall below the threshold, which can be useful for filterin
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/shortest_path/find_cut_path.cpp" line="120" column="6" bodyfile="HighMap/src/shortest_path/find_cut_path.cpp" bodystart="120" bodyend="229" declfile="HighMap/include/highmap/shortest_path.hpp" declline="75" declcolumn="6"/>
+        <location file="HighMap/src/shortest_path/find_cut_path.cpp" line="70" column="6" bodyfile="HighMap/src/shortest_path/find_cut_path.cpp" bodystart="70" bodyend="123" declfile="HighMap/include/highmap/shortest_path.hpp" declline="79" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1af5e2b95dd35c64ba4ff24ca2697d87f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -51149,7 +51184,7 @@ off&quot; values that fall below the threshold, which can be useful for filterin
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/shortest_path/dijsktra.cpp" line="141" column="6" bodyfile="HighMap/src/shortest_path/dijsktra.cpp" bodystart="141" bodyend="166" declfile="HighMap/include/highmap/shortest_path.hpp" declline="123" declcolumn="6"/>
+        <location file="HighMap/src/shortest_path/dijsktra.cpp" line="141" column="6" bodyfile="HighMap/src/shortest_path/dijsktra.cpp" bodystart="141" bodyend="166" declfile="HighMap/include/highmap/shortest_path.hpp" declline="130" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a96d3c2fa385b510ee723e9074dfaa194" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -51203,7 +51238,7 @@ off&quot; values that fall below the threshold, which can be useful for filterin
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/shortest_path/dijsktra.cpp" line="12" column="6" bodyfile="HighMap/src/shortest_path/dijsktra.cpp" bodystart="12" bodyend="139" declfile="HighMap/include/highmap/shortest_path.hpp" declline="133" declcolumn="6"/>
+        <location file="HighMap/src/shortest_path/dijsktra.cpp" line="12" column="6" bodyfile="HighMap/src/shortest_path/dijsktra.cpp" bodystart="12" bodyend="139" declfile="HighMap/include/highmap/shortest_path.hpp" declline="140" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1acfb2652ac666e36a3a47c1673d4e486b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; glm::ivec2 &gt;</type>
@@ -51352,7 +51387,7 @@ off&quot; values that fall below the threshold, which can be useful for filterin
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/shortest_path/find_path_midpoint.cpp" line="73" column="13" bodyfile="HighMap/src/shortest_path/find_path_midpoint.cpp" bodystart="73" bodyend="137" declfile="HighMap/include/highmap/shortest_path.hpp" declline="165" declcolumn="13"/>
+        <location file="HighMap/src/shortest_path/find_path_midpoint.cpp" line="73" column="13" bodyfile="HighMap/src/shortest_path/find_path_midpoint.cpp" bodystart="73" bodyend="137" declfile="HighMap/include/highmap/shortest_path.hpp" declline="172" declcolumn="13"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a7064111b8b50fd4e29928e6d3f5e10f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
