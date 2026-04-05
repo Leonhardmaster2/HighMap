@@ -13,87 +13,37 @@ Path find_cut_path_dijkstra(const Array   &z,
                             DomainBoundary end,
                             float          dijk_elevation_ratio,
                             float          dijk_distance_exponent,
-                            float          dijk_upward_penalization)
+                            float          dijk_upward_penalization,
+                            uint           seed,
+                            bool           favor_boundary_center,
+                            bool           favor_lower_elevation,
+                            bool           favor_sinks)
 {
-  // --- find lowest point on each boundary
+  const int nx = z.shape.x;
+  const int ny = z.shape.y;
 
-  auto nx = z.shape.x;
-  auto ny = z.shape.y;
+  // --- pick start and end cells
 
-  auto find_lowest_on_boundary = [&](DomainBoundary b) -> std::pair<int, int>
-  {
-    int   best_i = -1;
-    int   best_j = -1;
-    float best_z = std::numeric_limits<float>::infinity();
-
-    switch (b)
-    {
-    case BOUNDARY_LEFT: // i = 0
-      for (int j = 0; j < ny; ++j)
-      {
-        float v = z(0, j);
-        if (v < best_z)
-        {
-          best_z = v;
-          best_i = 0;
-          best_j = j;
-        }
-      }
-      break;
-
-    case BOUNDARY_RIGHT: // i = nx - 1
-      for (int j = 0; j < ny; ++j)
-      {
-        float v = z(nx - 1, j);
-        if (v < best_z)
-        {
-          best_z = v;
-          best_i = nx - 1;
-          best_j = j;
-        }
-      }
-      break;
-
-    case BOUNDARY_BOTTOM: // j = 0
-      for (int i = 0; i < nx; ++i)
-      {
-        float v = z(i, 0);
-        if (v < best_z)
-        {
-          best_z = v;
-          best_i = i;
-          best_j = 0;
-        }
-      }
-      break;
-
-    case BOUNDARY_TOP: // j = ny - 1
-      for (int i = 0; i < nx; ++i)
-      {
-        float v = z(i, ny - 1);
-        if (v < best_z)
-        {
-          best_z = v;
-          best_i = i;
-          best_j = ny - 1;
-        }
-      }
-      break;
-    }
-
-    return {best_i, best_j};
-  };
-
-  auto start_pt = find_lowest_on_boundary(start);
-  auto end_pt = find_lowest_on_boundary(end);
+  glm::ivec2 start_pt = pick_boundary_cell(z,
+                                           start,
+                                           seed,
+                                           favor_boundary_center,
+                                           favor_lower_elevation,
+                                           favor_sinks);
+  glm::ivec2 end_pt = pick_boundary_cell(z,
+                                         end,
+                                         seed,
+                                         favor_boundary_center,
+                                         favor_lower_elevation,
+                                         favor_sinks);
 
   // --- find cut path
 
   std::vector<int> i_path, j_path;
 
   find_path_dijkstra(z,
-                     glm::ivec2(start_pt.first, start_pt.second),
-                     glm::ivec2(end_pt.first, end_pt.second),
+                     glm::ivec2(start_pt.x, start_pt.y),
+                     glm::ivec2(end_pt.x, end_pt.y),
                      i_path,
                      j_path,
                      dijk_elevation_ratio,
@@ -122,89 +72,34 @@ Path find_cut_path_midpoint(const Array   &z,
                             DomainBoundary end,
                             uint           seed,
                             int            midp_iterations,
-                            float          midp_sigma)
+                            float          midp_sigma,
+                            bool           favor_boundary_center,
+                            bool           favor_lower_elevation,
+                            bool           favor_sinks)
 {
-  // --- find lowest point on each boundary
+  const int nx = z.shape.x;
+  const int ny = z.shape.y;
 
-  auto nx = z.shape.x;
-  auto ny = z.shape.y;
+  // --- pick start and end cells
 
-  auto find_lowest_on_boundary = [&](DomainBoundary b) -> std::pair<int, int>
-  {
-    int   best_i = -1;
-    int   best_j = -1;
-    float best_z = std::numeric_limits<float>::infinity();
-
-    switch (b)
-    {
-    case BOUNDARY_LEFT: // i = 0
-      for (int j = 0; j < ny; ++j)
-      {
-        float v = z(0, j);
-        if (v < best_z)
-        {
-          best_z = v;
-          best_i = 0;
-          best_j = j;
-        }
-      }
-      break;
-
-    case BOUNDARY_RIGHT: // i = nx - 1
-      for (int j = 0; j < ny; ++j)
-      {
-        float v = z(nx - 1, j);
-        if (v < best_z)
-        {
-          best_z = v;
-          best_i = nx - 1;
-          best_j = j;
-        }
-      }
-      break;
-
-    case BOUNDARY_BOTTOM: // j = 0
-      for (int i = 0; i < nx; ++i)
-      {
-        float v = z(i, 0);
-        if (v < best_z)
-        {
-          best_z = v;
-          best_i = i;
-          best_j = 0;
-        }
-      }
-      break;
-
-    case BOUNDARY_TOP: // j = ny - 1
-      for (int i = 0; i < nx; ++i)
-      {
-        float v = z(i, ny - 1);
-        if (v < best_z)
-        {
-          best_z = v;
-          best_i = i;
-          best_j = ny - 1;
-        }
-      }
-      break;
-    }
-
-    return {best_i, best_j};
-  };
-
-  auto start_pt = find_lowest_on_boundary(start);
-  auto end_pt = find_lowest_on_boundary(end);
+  glm::ivec2 start_pt = pick_boundary_cell(z,
+                                           start,
+                                           seed,
+                                           favor_boundary_center,
+                                           favor_lower_elevation,
+                                           favor_sinks);
+  glm::ivec2 end_pt = pick_boundary_cell(z,
+                                         end,
+                                         seed,
+                                         favor_boundary_center,
+                                         favor_lower_elevation,
+                                         favor_sinks);
 
   // --- find cut path
 
   std::vector<int> i_path, j_path;
-  i_path = {start_pt.first,
-            int(0.5f * (start_pt.first + end_pt.first)),
-            end_pt.first};
-  j_path = {start_pt.second,
-            int(0.5f * (start_pt.second + end_pt.second)),
-            end_pt.second};
+  i_path = {start_pt.x, int(0.5f * (start_pt.x + end_pt.x)), end_pt.x};
+  j_path = {start_pt.y, int(0.5f * (start_pt.y + end_pt.y)), end_pt.y};
 
   std::vector<float> x, y, v;
 
@@ -222,7 +117,6 @@ Path find_cut_path_midpoint(const Array   &z,
   auto path = Path(x, y, v);
 
   path.fractalize(midp_iterations, seed, midp_sigma);
-
   path.bspline();
 
   return path;

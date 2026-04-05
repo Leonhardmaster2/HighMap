@@ -48,7 +48,11 @@ Path find_cut_path_dijkstra(const Array   &z,
                             DomainBoundary end,
                             float          dijk_elevation_ratio = 0.9f,
                             float          dijk_distance_exponent = 2.f,
-                            float          dijk_upward_penalization = 100.f);
+                            float          dijk_upward_penalization = 100.f,
+                            uint           seed = 0,
+                            bool           favor_boundary_center = true,
+                            bool           favor_lower_elevation = true,
+                            bool           favor_sinks = true);
 
 /**
  * @brief Generate a stochastic cut path using midpoint displacement.
@@ -77,7 +81,10 @@ Path find_cut_path_midpoint(const Array   &z,
                             DomainBoundary end,
                             uint           seed,
                             int            midp_iterations = 4,
-                            float          midp_sigma = 0.2f);
+                            float          midp_sigma = 0.2f,
+                            bool           favor_boundary_center = true,
+                            bool           favor_lower_elevation = true,
+                            bool           favor_sinks = true);
 
 /**
  * @brief Finds the path with the lowest elevation and elevation difference
