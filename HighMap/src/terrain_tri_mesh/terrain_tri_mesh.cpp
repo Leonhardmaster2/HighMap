@@ -711,40 +711,38 @@ void TerrainTriMesh::slope_limiter(float max_slope, int iterations, float sigma)
 void TerrainTriMesh::subdivise()
 {
   std::unordered_map<Edge, size_t, EdgeHash> midpoint_map;
-  std::vector<Triangle>                      new_triangles;
 
+  // Reserve a bit to avoid reallocations (optional but nice)
+  this->points.reserve(this->points.size() * 2);
+
+  // Lambda to create or reuse midpoint
+  auto get_midpoint = [&](size_t i0, size_t i1) -> size_t
+  {
+    Edge e(i0, i1);
+    auto it = midpoint_map.find(e);
+    if (it != midpoint_map.end()) return it->second;
+
+    glm::vec3 mid = 0.5f * (points[i0] + points[i1]);
+    size_t    idx = points.size();
+    points.push_back(mid);
+
+    midpoint_map[e] = idx;
+    return idx;
+  };
+
+  // Only generate points — no triangles
   for (const auto &tri : triangles)
   {
-    size_t a = tri.a;
-    size_t b = tri.b;
-    size_t c = tri.c;
-
-    auto get_midpoint = [&](size_t i0, size_t i1) -> size_t
-    {
-      Edge e(i0, i1);
-      auto it = midpoint_map.find(e);
-      if (it != midpoint_map.end()) return it->second;
-
-      glm::vec3 mid = 0.5f * (points[i0] + points[i1]);
-      size_t    idx = points.size();
-      points.push_back(mid);
-      midpoint_map[e] = idx;
-      return idx;
-    };
-
-    size_t ab = get_midpoint(a, b);
-    size_t bc = get_midpoint(b, c);
-    size_t ca = get_midpoint(c, a);
-
-    // Create 4 new triangles
-    new_triangles.push_back({a, ab, ca});
-    new_triangles.push_back({b, bc, ab});
-    new_triangles.push_back({c, ca, bc});
-    new_triangles.push_back({ab, bc, ca});
+    get_midpoint(tri.a, tri.b);
+    get_midpoint(tri.b, tri.c);
+    get_midpoint(tri.c, tri.a);
   }
 
-  triangles = std::move(new_triangles);
+  // discard old topology
+  this->triangles.clear();
 
+  // rebuild triangulation from scratch and recompute adjacency
+  this->triangulate_delaunay();
   this->compute_neighbors();
 }
 
