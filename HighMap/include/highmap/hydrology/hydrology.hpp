@@ -105,22 +105,22 @@ void find_flow_sinks(const Array      &z,
 /**
  * @brief Find interior flow sinks in a height field.
  *
- * A sink is a cell whose 8 neighbors all have strictly higher elevation.
- * Border cells are excluded.
+ * A sink is a cell whose 8 neighbors all have strictly higher elevation. Border
+ * cells are excluded.
  *
- * @param z Input elevation grid.
- * @return List of sink cell coordinates (i, j).
+ * @param  z Input elevation grid.
+ * @return   List of sink cell coordinates (i, j).
  */
 std::vector<glm::ivec2> find_flow_sinks(const Array &z);
 
 /**
  * @brief Find flow sinks located on the domain border.
  *
- * A border cell is considered a sink if all its valid neighbors
- * (within bounds) have strictly higher elevation.
+ * A border cell is considered a sink if all its valid neighbors (within bounds)
+ * have strictly higher elevation.
  *
- * @param z Input elevation grid.
- * @return List of border sink cell coordinates (i, j).
+ * @param  z Input elevation grid.
+ * @return   List of border sink cell coordinates (i, j).
  */
 std::vector<glm::ivec2> find_flow_sinks_border(const Array &z);
 

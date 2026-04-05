@@ -57,14 +57,14 @@ Path find_cut_path_dijkstra(const Array   &z,
  * by recursively subdividing and perturbing a segment. The result is a natural,
  * irregular path defined by normalized (x, y) coordinates and elevations.
  *
- * @param  z                Heightmap array.
- * @param  start            Start boundary.
- * @param  end              End boundary.
- * @param  seed             Random seed.
- * @param  midp_iterations  Number of subdivision steps.
- * @param  midp_sigma       Displacement amplitude.
+ * @param  z               Heightmap array.
+ * @param  start           Start boundary.
+ * @param  end             End boundary.
+ * @param  seed            Random seed.
+ * @param  midp_iterations Number of subdivision steps.
+ * @param  midp_sigma      Displacement amplitude.
  *
- * @return                  Path with normalized coordinates and elevations.
+ * @return                 Path with normalized coordinates and elevations.
  *
  * **Example**
  * @include ex_find_cut_path.cpp
@@ -147,14 +147,14 @@ void find_path_dijkstra(const Array                   &z,
  * perpendicular direction to locally minimize the scalar field `z`. This is a
  * fast heuristic alternative to graph-based methods (not guaranteed optimal).
  *
- * @param z              2D scalar field (weights).
- * @param ij_start       Start index.
- * @param ij_end         End index.
- * @param offset_ratio   Relative transverse displacement (per segment length).
- * @param max_it         Max iterations (0 = automatic based on distance).
- * @param steps          Number of samples for transverse search.
+ * @param  z            2D scalar field (weights).
+ * @param  ij_start     Start index.
+ * @param  ij_end       End index.
+ * @param  offset_ratio Relative transverse displacement (per segment length).
+ * @param  max_it       Max iterations (0 = automatic based on distance).
+ * @param  steps        Number of samples for transverse search.
  *
- * @return Vector of grid indices forming the path.
+ * @return              Vector of grid indices forming the path.
  *
  * **Example**
  * @include ex_find_path_midpoint.cpp

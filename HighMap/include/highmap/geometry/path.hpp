@@ -118,9 +118,9 @@ public:
    * Each index is normalized by the grid shape and remapped to the given
    * bounding box. The resulting points are stored as 3D positions (z = 1).
    *
-   * @param indices  Input grid indices.
-   * @param shape    Grid dimensions.
-   * @param bbox     Bounding box (xmin, xmax, ymin, ymax).
+   * @param indices Input grid indices.
+   * @param shape   Grid dimensions.
+   * @param bbox    Bounding box (xmin, xmax, ymin, ymax).
    */
   Path(const std::vector<glm::ivec2> &indices,
        const glm::ivec2              &shape,
