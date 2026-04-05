@@ -76,6 +76,9 @@ public:
 public:
   TerrainTriMesh() = default;
   TerrainTriMesh(const std::vector<glm::vec3> &ref_points);
+  TerrainTriMesh(const std::vector<float> &x,
+                 const std::vector<float> &y,
+                 const std::vector<float> &z);
 
   // --- Core processing ---
 
@@ -105,6 +108,29 @@ public:
                      float                     sigma = 0.1f);
 
   void subdivise();
+
+  // --- Triangle walk and interp ---
+
+  bool barycentric(const glm::vec2 &p,
+                   size_t           i0,
+                   size_t           i1,
+                   size_t           i2,
+                   float           &w0,
+                   float           &w1,
+                   float           &w2) const;
+
+  int find_triangle(const glm::vec2 &p,
+                    int              start_tri = 0,
+                    bool             linear_search = false) const;
+  int neighbor_triangle(int tri_index, int edge_index) const;
+
+  float interpolate_z_linear(const glm::vec2 &p,
+                             int             &last_tri,
+                             float            fill_value = 0.f) const;
+  float interpolate_z_nearest(const glm::vec2 &p) const;
+  float interpolate_z_nearest_approx(const glm::vec2 &p,
+                                     int             &last_tri,
+                                     float            fill_value = 0.f) const;
 
   // --- Metrics ---
 
@@ -139,6 +165,7 @@ public:
 private:
   std::vector<glm::vec3> points;
   std::vector<Triangle>  triangles;
+  std::vector<size_t>    halfedges;
   std::vector<size_t>    convex_hull;
   NeighborData           neighbors;
 

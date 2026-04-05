@@ -51,6 +51,49 @@ TerrainTriMesh::TerrainTriMesh(const std::vector<glm::vec3> &ref_points)
   this->compute_neighbors();
 }
 
+TerrainTriMesh::TerrainTriMesh(const std::vector<float> &x,
+                               const std::vector<float> &y,
+                               const std::vector<float> &z)
+{
+  this->points.reserve(x.size());
+
+  for (size_t k = 0; k < x.size(); ++k)
+    this->points.push_back(glm::vec3(x[k], y[k], z[k]));
+
+  this->triangulate_delaunay();
+  this->compute_neighbors();
+}
+
+bool TerrainTriMesh::barycentric(const glm::vec2 &p,
+                                 size_t           i0,
+                                 size_t           i1,
+                                 size_t           i2,
+                                 float           &w0,
+                                 float           &w1,
+                                 float           &w2) const
+{
+  float x0 = this->points[i0].x, y0 = this->points[i0].y;
+  float x1 = this->points[i1].x, y1 = this->points[i1].y;
+  float x2 = this->points[i2].x, y2 = this->points[i2].y;
+
+  float det = (x1 - x0) * (y2 - y0) - (y1 - y0) * (x2 - x0);
+  if (std::abs(det) < 1e-8f) return false;
+
+  w0 = (p.x - x1) * (y2 - y1) - (p.y - y1) * (x2 - x1);
+  w1 = (p.x - x2) * (y0 - y2) - (p.y - y2) * (x0 - x2);
+  w2 = (p.x - x0) * (y1 - y0) - (p.y - y0) * (x1 - x0);
+
+  const float eps = -1e-6f;
+  if (w0 < eps || w1 < eps || w2 < eps) return false;
+
+  float inv = -1.f / det;
+  w0 *= inv;
+  w1 *= inv;
+  w2 *= inv;
+
+  return true;
+}
+
 void TerrainTriMesh::compute_neighbors()
 {
   this->neighbors.clear();
@@ -101,6 +144,51 @@ bool TerrainTriMesh::export_obj(const std::string &filepath) const
   }
 
   return true;
+}
+
+int TerrainTriMesh::find_triangle(const glm::vec2 &p,
+                                  int              start_tri,
+                                  bool             linear_search) const
+{
+  int       tri = std::max(0, start_tri);
+  const int max_iter = int(points.size());
+
+  if (linear_search)
+  {
+    // fallback for debugging purposes: linear search
+    for (size_t k = 0; k < triangles.size(); ++k)
+    {
+      float       w0, w1, w2;
+      const auto &t = triangles[k];
+      if (barycentric(p, t.a, t.b, t.c, w0, w1, w2))
+      {
+        if (w0 >= 0 && w1 >= 0 && w2 >= 0) return int(k);
+      }
+    }
+  }
+  else
+  {
+    for (int iter = 0; iter < max_iter; ++iter)
+    {
+      const auto &t = triangles[tri];
+      float       w0, w1, w2;
+      this->barycentric(p, t.a, t.b, t.c, w0, w1, w2);
+
+      if (w0 >= 0 && w1 >= 0 && w2 >= 0) return tri;
+
+      // walk to neighbor across the negative weight
+      if (w0 < 0.f)
+        tri = this->neighbor_triangle(tri, 1);
+      else if (w1 < 0.f)
+        tri = this->neighbor_triangle(tri, 2);
+      else
+        tri = this->neighbor_triangle(tri, 0);
+
+      if (tri < 0) return -1;
+    }
+  }
+
+  return -1;
 }
 
 TerrainTriMesh::BoundingBox TerrainTriMesh::get_bbox() const
@@ -324,6 +412,95 @@ std::string TerrainTriMesh::info_string() const
   oss << "-----------------------------\n";
 
   return oss.str();
+}
+
+float TerrainTriMesh::interpolate_z_linear(const glm::vec2 &p,
+                                           int             &last_tri,
+                                           float            fill_value) const
+{
+  int tri = this->find_triangle(p, last_tri);
+
+  if (tri >= 0)
+  {
+    last_tri = tri;
+    const auto &t = this->triangles[tri];
+
+    float w0, w1, w2;
+    if (this->barycentric(p, t.a, t.b, t.c, w0, w1, w2))
+    {
+      // interpolate z using barycentric weights
+      return w0 * this->points[t.a].z + w1 * this->points[t.b].z +
+             w2 * this->points[t.c].z;
+    }
+  }
+
+  // outside mesh or degenerate triangle
+  return fill_value;
+}
+
+float TerrainTriMesh::interpolate_z_nearest(const glm::vec2 &p) const
+{
+  // "true" nearest as opposed to "nearest_approx" method
+  float best_d2 = std::numeric_limits<float>::max();
+  float best_z = 0.f;
+
+  for (const auto &pt : points)
+  {
+    glm::vec2 delta = p - to_xy(pt);
+    float     d2 = glm::dot(delta, delta);
+
+    if (d2 < best_d2)
+    {
+      best_d2 = d2;
+      best_z = pt.z;
+    }
+  }
+
+  return best_z;
+}
+
+float TerrainTriMesh::interpolate_z_nearest_approx(const glm::vec2 &p,
+                                                   int             &last_tri,
+                                                   float fill_value) const
+{
+  // not true global nearest neighbor, pick only the nearest among the
+  // 3 vertices of the containing triangle. Usually this is fine (and
+  // fast), but: near triangle edges, the actual nearest vertex might
+  // belong to a neighboring triangle and fials outside mesh
+  int tri = this->find_triangle(p, last_tri);
+
+  if (tri >= 0)
+  {
+    last_tri = tri;
+    const auto &t = this->triangles[tri];
+
+    const glm::vec2 p0 = to_xy(this->points[t.a]);
+    const glm::vec2 p1 = to_xy(this->points[t.b]);
+    const glm::vec2 p2 = to_xy(this->points[t.c]);
+
+    glm::vec2 diff0 = p - p0;
+    glm::vec2 diff1 = p - p1;
+    glm::vec2 diff2 = p - p2;
+
+    float d0 = glm::dot(diff0, diff0);
+    float d1 = glm::dot(diff1, diff1);
+    float d2 = glm::dot(diff2, diff2);
+
+    if (d0 <= d1 && d0 <= d2)
+      return this->points[t.a].z;
+    else if (d1 <= d2)
+      return this->points[t.b].z;
+    else
+      return this->points[t.c].z;
+  }
+
+  return fill_value;
+}
+
+int TerrainTriMesh::neighbor_triangle(int tri_index, int edge_index) const
+{
+  int opp = this->halfedges[3 * tri_index + edge_index];
+  return (opp < 0) ? -1 : (opp / 3);
 }
 
 void TerrainTriMesh::print_info() const
@@ -657,11 +834,21 @@ void TerrainTriMesh::triangulate_delaunay()
   // triangles
   {
     const std::vector<size_t> &tri = d.triangles;
+
     this->triangles.clear();
     this->triangles.reserve(tri.size() / 3);
 
+    this->halfedges.clear();
+    this->halfedges.reserve(tri.size());
+
     for (std::size_t k = 0; k < tri.size(); k += 3)
+    {
       this->triangles.push_back({tri[k], tri[k + 1], tri[k + 2]});
+
+      this->halfedges.push_back(d.halfedges[k]);
+      this->halfedges.push_back(d.halfedges[k + 1]);
+      this->halfedges.push_back(d.halfedges[k + 2]);
+    }
   }
 
   // chull
