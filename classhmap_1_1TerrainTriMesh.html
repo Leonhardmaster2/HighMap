@@ -127,6 +127,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aae004ef70561e4d1e601f214ff109a1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a37612085ed993e68df599c7917cdae80" id="r_a37612085ed993e68df599c7917cdae80"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1TerrainTriMesh.html#a37612085ed993e68df599c7917cdae80">TerrainTriMesh</a> (const std::vector&lt; glm::vec3 &gt; &amp;ref_points)</td></tr>
 <tr class="separator:a37612085ed993e68df599c7917cdae80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af20e8dd9d33a54d67734a892dbd0dcb9" id="r_af20e8dd9d33a54d67734a892dbd0dcb9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1TerrainTriMesh.html#af20e8dd9d33a54d67734a892dbd0dcb9">TerrainTriMesh</a> (const std::vector&lt; float &gt; &amp;x, const std::vector&lt; float &gt; &amp;y, const std::vector&lt; float &gt; &amp;z)</td></tr>
+<tr class="separator:af20e8dd9d33a54d67734a892dbd0dcb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2b764615c2ac8424ffe60469d7b68970" id="r_a2b764615c2ac8424ffe60469d7b68970"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1TerrainTriMesh.html#a2b764615c2ac8424ffe60469d7b68970">triangulate_delaunay</a> ()</td></tr>
 <tr class="separator:a2b764615c2ac8424ffe60469d7b68970"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e62681c4e433aa980191f176ced7423" id="r_a9e62681c4e433aa980191f176ced7423"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1TerrainTriMesh.html#a9e62681c4e433aa980191f176ced7423">compute_neighbors</a> ()</td></tr>
@@ -145,6 +147,18 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a4a9987cc3413e52602717c0b6d2d5ab5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8fa381ce42de945e2aff8944e2061def" id="r_a8fa381ce42de945e2aff8944e2061def"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1TerrainTriMesh.html#a8fa381ce42de945e2aff8944e2061def">subdivise</a> ()</td></tr>
 <tr class="separator:a8fa381ce42de945e2aff8944e2061def"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3da697b9cfb9dc0c8b6ff8f5759021c4" id="r_a3da697b9cfb9dc0c8b6ff8f5759021c4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1TerrainTriMesh.html#a3da697b9cfb9dc0c8b6ff8f5759021c4">barycentric</a> (const glm::vec2 &amp;p, size_t i0, size_t i1, size_t i2, float &amp;w0, float &amp;w1, float &amp;w2) const</td></tr>
+<tr class="separator:a3da697b9cfb9dc0c8b6ff8f5759021c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5d88ed0cc61c8606bed76faabb77e11" id="r_ae5d88ed0cc61c8606bed76faabb77e11"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1TerrainTriMesh.html#ae5d88ed0cc61c8606bed76faabb77e11">find_triangle</a> (const glm::vec2 &amp;p, int start_tri=0, bool linear_search=false) const</td></tr>
+<tr class="separator:ae5d88ed0cc61c8606bed76faabb77e11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a402e4d126734c83cc388c35736a35a6a" id="r_a402e4d126734c83cc388c35736a35a6a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1TerrainTriMesh.html#a402e4d126734c83cc388c35736a35a6a">neighbor_triangle</a> (int tri_index, int edge_index) const</td></tr>
+<tr class="separator:a402e4d126734c83cc388c35736a35a6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5e0b4845eb75accda1f0348cbdfaf36" id="r_ad5e0b4845eb75accda1f0348cbdfaf36"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1TerrainTriMesh.html#ad5e0b4845eb75accda1f0348cbdfaf36">interpolate_z_linear</a> (const glm::vec2 &amp;p, int &amp;last_tri, float fill_value=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>) const</td></tr>
+<tr class="separator:ad5e0b4845eb75accda1f0348cbdfaf36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a0a37653662a43fbe6ed9465ab39a82" id="r_a4a0a37653662a43fbe6ed9465ab39a82"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1TerrainTriMesh.html#a4a0a37653662a43fbe6ed9465ab39a82">interpolate_z_nearest</a> (const glm::vec2 &amp;p) const</td></tr>
+<tr class="separator:a4a0a37653662a43fbe6ed9465ab39a82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5966bc7d2b1181b936b34715940b3d8" id="r_ad5966bc7d2b1181b936b34715940b3d8"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1TerrainTriMesh.html#ad5966bc7d2b1181b936b34715940b3d8">interpolate_z_nearest_approx</a> (const glm::vec2 &amp;p, int &amp;last_tri, float fill_value=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>) const</td></tr>
+<tr class="separator:ad5966bc7d2b1181b936b34715940b3d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abe70758d6b941cbca110db0ac66f167c" id="r_abe70758d6b941cbca110db0ac66f167c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structhmap_1_1TerrainTriMesh_1_1BoundingBox.html">TerrainTriMesh::BoundingBox</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1TerrainTriMesh.html#abe70758d6b941cbca110db0ac66f167c">get_bbox</a> () const</td></tr>
 <tr class="separator:abe70758d6b941cbca110db0ac66f167c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afccd515255b6a315d9e519ce611f3be8" id="r_afccd515255b6a315d9e519ce611f3be8"><td class="memItemLeft" align="right" valign="top">glm::vec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1TerrainTriMesh.html#afccd515255b6a315d9e519ce611f3be8">get_range_z</a> () const</td></tr>
@@ -182,7 +196,7 @@ Public Member Functions</h2></td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aae004ef70561e4d1e601f214ff109a1f" name="aae004ef70561e4d1e601f214ff109a1f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aae004ef70561e4d1e601f214ff109a1f">&#9670;&#160;</a></span>TerrainTriMesh() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aae004ef70561e4d1e601f214ff109a1f">&#9670;&#160;</a></span>TerrainTriMesh() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -207,7 +221,7 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <a id="a37612085ed993e68df599c7917cdae80" name="a37612085ed993e68df599c7917cdae80"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a37612085ed993e68df599c7917cdae80">&#9670;&#160;</a></span>TerrainTriMesh() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a37612085ed993e68df599c7917cdae80">&#9670;&#160;</a></span>TerrainTriMesh() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -218,6 +232,40 @@ Public Member Functions</h2></td></tr>
           <td class="paramtype">const std::vector&lt; glm::vec3 &gt; &amp;&#160;</td>
           <td class="paramname"><em>ref_points</em></td><td>)</td>
           <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af20e8dd9d33a54d67734a892dbd0dcb9" name="af20e8dd9d33a54d67734a892dbd0dcb9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af20e8dd9d33a54d67734a892dbd0dcb9">&#9670;&#160;</a></span>TerrainTriMesh() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">hmap::TerrainTriMesh::TerrainTriMesh </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; float &gt; &amp;&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; float &gt; &amp;&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; float &gt; &amp;&#160;</td>
+          <td class="paramname"><em>z</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -474,6 +522,212 @@ Public Member Functions</h2></td></tr>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3da697b9cfb9dc0c8b6ff8f5759021c4" name="a3da697b9cfb9dc0c8b6ff8f5759021c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3da697b9cfb9dc0c8b6ff8f5759021c4">&#9670;&#160;</a></span>barycentric()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool hmap::TerrainTriMesh::barycentric </td>
+          <td>(</td>
+          <td class="paramtype">const glm::vec2 &amp;&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>i0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>i1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>i2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float &amp;&#160;</td>
+          <td class="paramname"><em>w0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float &amp;&#160;</td>
+          <td class="paramname"><em>w1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float &amp;&#160;</td>
+          <td class="paramname"><em>w2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae5d88ed0cc61c8606bed76faabb77e11" name="ae5d88ed0cc61c8606bed76faabb77e11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5d88ed0cc61c8606bed76faabb77e11">&#9670;&#160;</a></span>find_triangle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int hmap::TerrainTriMesh::find_triangle </td>
+          <td>(</td>
+          <td class="paramtype">const glm::vec2 &amp;&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>start_tri</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>linear_search</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a402e4d126734c83cc388c35736a35a6a" name="a402e4d126734c83cc388c35736a35a6a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a402e4d126734c83cc388c35736a35a6a">&#9670;&#160;</a></span>neighbor_triangle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int hmap::TerrainTriMesh::neighbor_triangle </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>tri_index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>edge_index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad5e0b4845eb75accda1f0348cbdfaf36" name="ad5e0b4845eb75accda1f0348cbdfaf36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5e0b4845eb75accda1f0348cbdfaf36">&#9670;&#160;</a></span>interpolate_z_linear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float hmap::TerrainTriMesh::interpolate_z_linear </td>
+          <td>(</td>
+          <td class="paramtype">const glm::vec2 &amp;&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>last_tri</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>fill_value</em> = <code>0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4a0a37653662a43fbe6ed9465ab39a82" name="a4a0a37653662a43fbe6ed9465ab39a82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a0a37653662a43fbe6ed9465ab39a82">&#9670;&#160;</a></span>interpolate_z_nearest()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float hmap::TerrainTriMesh::interpolate_z_nearest </td>
+          <td>(</td>
+          <td class="paramtype">const glm::vec2 &amp;&#160;</td>
+          <td class="paramname"><em>p</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad5966bc7d2b1181b936b34715940b3d8" name="ad5966bc7d2b1181b936b34715940b3d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5966bc7d2b1181b936b34715940b3d8">&#9670;&#160;</a></span>interpolate_z_nearest_approx()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float hmap::TerrainTriMesh::interpolate_z_nearest_approx </td>
+          <td>(</td>
+          <td class="paramtype">const glm::vec2 &amp;&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>last_tri</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>fill_value</em> = <code>0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">

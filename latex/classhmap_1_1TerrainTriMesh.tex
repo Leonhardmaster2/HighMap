@@ -26,6 +26,8 @@ struct \mbox{\hyperlink{structhmap_1_1TerrainTriMesh_1_1Triangle}{Triangle}}
 \item 
 \mbox{\hyperlink{classhmap_1_1TerrainTriMesh_a37612085ed993e68df599c7917cdae80}{Terrain\+Tri\+Mesh}} (const std\+::vector$<$ glm\+::vec3 $>$ \&ref\+\_\+points)
 \item 
+\mbox{\hyperlink{classhmap_1_1TerrainTriMesh_af20e8dd9d33a54d67734a892dbd0dcb9}{Terrain\+Tri\+Mesh}} (const std\+::vector$<$ float $>$ \&x, const std\+::vector$<$ float $>$ \&y, const std\+::vector$<$ float $>$ \&z)
+\item 
 void \mbox{\hyperlink{classhmap_1_1TerrainTriMesh_a2b764615c2ac8424ffe60469d7b68970}{triangulate\+\_\+delaunay}} ()
 \item 
 void \mbox{\hyperlink{classhmap_1_1TerrainTriMesh_a9e62681c4e433aa980191f176ced7423}{compute\+\_\+neighbors}} ()
@@ -43,6 +45,18 @@ void \mbox{\hyperlink{classhmap_1_1TerrainTriMesh_a294e7c2d93fad24a25300028fe393
 void \mbox{\hyperlink{classhmap_1_1TerrainTriMesh_a4a9987cc3413e52602717c0b6d2d5ab5}{slope\+\_\+limiter}} (const std\+::vector$<$ float $>$ \&max\+\_\+slope, int iterations=10, float sigma=0.\+1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \item 
 void \mbox{\hyperlink{classhmap_1_1TerrainTriMesh_a8fa381ce42de945e2aff8944e2061def}{subdivise}} ()
+\item 
+bool \mbox{\hyperlink{classhmap_1_1TerrainTriMesh_a3da697b9cfb9dc0c8b6ff8f5759021c4}{barycentric}} (const glm\+::vec2 \&p, size\+\_\+t i0, size\+\_\+t i1, size\+\_\+t i2, float \&w0, float \&w1, float \&w2) const
+\item 
+int \mbox{\hyperlink{classhmap_1_1TerrainTriMesh_ae5d88ed0cc61c8606bed76faabb77e11}{find\+\_\+triangle}} (const glm\+::vec2 \&p, int start\+\_\+tri=0, bool linear\+\_\+search=false) const
+\item 
+int \mbox{\hyperlink{classhmap_1_1TerrainTriMesh_a402e4d126734c83cc388c35736a35a6a}{neighbor\+\_\+triangle}} (int tri\+\_\+index, int edge\+\_\+index) const
+\item 
+float \mbox{\hyperlink{classhmap_1_1TerrainTriMesh_ad5e0b4845eb75accda1f0348cbdfaf36}{interpolate\+\_\+z\+\_\+linear}} (const glm\+::vec2 \&p, int \&last\+\_\+tri, float fill\+\_\+value=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}) const
+\item 
+float \mbox{\hyperlink{classhmap_1_1TerrainTriMesh_a4a0a37653662a43fbe6ed9465ab39a82}{interpolate\+\_\+z\+\_\+nearest}} (const glm\+::vec2 \&p) const
+\item 
+float \mbox{\hyperlink{classhmap_1_1TerrainTriMesh_ad5966bc7d2b1181b936b34715940b3d8}{interpolate\+\_\+z\+\_\+nearest\+\_\+approx}} (const glm\+::vec2 \&p, int \&last\+\_\+tri, float fill\+\_\+value=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}) const
 \item 
 \mbox{\hyperlink{structhmap_1_1TerrainTriMesh_1_1BoundingBox}{Terrain\+Tri\+Mesh\+::\+Bounding\+Box}} \mbox{\hyperlink{classhmap_1_1TerrainTriMesh_abe70758d6b941cbca110db0ac66f167c}{get\+\_\+bbox}} () const
 \item 
@@ -84,14 +98,20 @@ void \mbox{\hyperlink{classhmap_1_1TerrainTriMesh_a634da24b2586bfade4d89f53de177
 \Hypertarget{classhmap_1_1TerrainTriMesh_aae004ef70561e4d1e601f214ff109a1f}\label{classhmap_1_1TerrainTriMesh_aae004ef70561e4d1e601f214ff109a1f} 
 \index{hmap::TerrainTriMesh@{hmap::TerrainTriMesh}!TerrainTriMesh@{TerrainTriMesh}}
 \index{TerrainTriMesh@{TerrainTriMesh}!hmap::TerrainTriMesh@{hmap::TerrainTriMesh}}
-\doxysubsubsection{\texorpdfstring{TerrainTriMesh()}{TerrainTriMesh()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{TerrainTriMesh()}{TerrainTriMesh()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
 {\footnotesize\ttfamily hmap\+::\+Terrain\+Tri\+Mesh\+::\+Terrain\+Tri\+Mesh (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
 
 \Hypertarget{classhmap_1_1TerrainTriMesh_a37612085ed993e68df599c7917cdae80}\label{classhmap_1_1TerrainTriMesh_a37612085ed993e68df599c7917cdae80} 
 \index{hmap::TerrainTriMesh@{hmap::TerrainTriMesh}!TerrainTriMesh@{TerrainTriMesh}}
 \index{TerrainTriMesh@{TerrainTriMesh}!hmap::TerrainTriMesh@{hmap::TerrainTriMesh}}
-\doxysubsubsection{\texorpdfstring{TerrainTriMesh()}{TerrainTriMesh()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+\doxysubsubsection{\texorpdfstring{TerrainTriMesh()}{TerrainTriMesh()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
 {\footnotesize\ttfamily hmap\+::\+Terrain\+Tri\+Mesh\+::\+Terrain\+Tri\+Mesh (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ glm\+::vec3 $>$ \&}]{ref\+\_\+points }\end{DoxyParamCaption})}
+
+\Hypertarget{classhmap_1_1TerrainTriMesh_af20e8dd9d33a54d67734a892dbd0dcb9}\label{classhmap_1_1TerrainTriMesh_af20e8dd9d33a54d67734a892dbd0dcb9} 
+\index{hmap::TerrainTriMesh@{hmap::TerrainTriMesh}!TerrainTriMesh@{TerrainTriMesh}}
+\index{TerrainTriMesh@{TerrainTriMesh}!hmap::TerrainTriMesh@{hmap::TerrainTriMesh}}
+\doxysubsubsection{\texorpdfstring{TerrainTriMesh()}{TerrainTriMesh()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily hmap\+::\+Terrain\+Tri\+Mesh\+::\+Terrain\+Tri\+Mesh (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ float $>$ \&}]{x,  }\item[{const std\+::vector$<$ float $>$ \&}]{y,  }\item[{const std\+::vector$<$ float $>$ \&}]{z }\end{DoxyParamCaption})}
 
 
 
@@ -149,6 +169,42 @@ void \mbox{\hyperlink{classhmap_1_1TerrainTriMesh_a634da24b2586bfade4d89f53de177
 \index{subdivise@{subdivise}!hmap::TerrainTriMesh@{hmap::TerrainTriMesh}}
 \doxysubsubsection{\texorpdfstring{subdivise()}{subdivise()}}
 {\footnotesize\ttfamily void hmap\+::\+Terrain\+Tri\+Mesh\+::subdivise (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classhmap_1_1TerrainTriMesh_a3da697b9cfb9dc0c8b6ff8f5759021c4}\label{classhmap_1_1TerrainTriMesh_a3da697b9cfb9dc0c8b6ff8f5759021c4} 
+\index{hmap::TerrainTriMesh@{hmap::TerrainTriMesh}!barycentric@{barycentric}}
+\index{barycentric@{barycentric}!hmap::TerrainTriMesh@{hmap::TerrainTriMesh}}
+\doxysubsubsection{\texorpdfstring{barycentric()}{barycentric()}}
+{\footnotesize\ttfamily bool hmap\+::\+Terrain\+Tri\+Mesh\+::barycentric (\begin{DoxyParamCaption}\item[{const glm\+::vec2 \&}]{p,  }\item[{size\+\_\+t}]{i0,  }\item[{size\+\_\+t}]{i1,  }\item[{size\+\_\+t}]{i2,  }\item[{float \&}]{w0,  }\item[{float \&}]{w1,  }\item[{float \&}]{w2 }\end{DoxyParamCaption}) const}
+
+\Hypertarget{classhmap_1_1TerrainTriMesh_ae5d88ed0cc61c8606bed76faabb77e11}\label{classhmap_1_1TerrainTriMesh_ae5d88ed0cc61c8606bed76faabb77e11} 
+\index{hmap::TerrainTriMesh@{hmap::TerrainTriMesh}!find\_triangle@{find\_triangle}}
+\index{find\_triangle@{find\_triangle}!hmap::TerrainTriMesh@{hmap::TerrainTriMesh}}
+\doxysubsubsection{\texorpdfstring{find\_triangle()}{find\_triangle()}}
+{\footnotesize\ttfamily int hmap\+::\+Terrain\+Tri\+Mesh\+::find\+\_\+triangle (\begin{DoxyParamCaption}\item[{const glm\+::vec2 \&}]{p,  }\item[{int}]{start\+\_\+tri = {\ttfamily 0},  }\item[{bool}]{linear\+\_\+search = {\ttfamily false} }\end{DoxyParamCaption}) const}
+
+\Hypertarget{classhmap_1_1TerrainTriMesh_a402e4d126734c83cc388c35736a35a6a}\label{classhmap_1_1TerrainTriMesh_a402e4d126734c83cc388c35736a35a6a} 
+\index{hmap::TerrainTriMesh@{hmap::TerrainTriMesh}!neighbor\_triangle@{neighbor\_triangle}}
+\index{neighbor\_triangle@{neighbor\_triangle}!hmap::TerrainTriMesh@{hmap::TerrainTriMesh}}
+\doxysubsubsection{\texorpdfstring{neighbor\_triangle()}{neighbor\_triangle()}}
+{\footnotesize\ttfamily int hmap\+::\+Terrain\+Tri\+Mesh\+::neighbor\+\_\+triangle (\begin{DoxyParamCaption}\item[{int}]{tri\+\_\+index,  }\item[{int}]{edge\+\_\+index }\end{DoxyParamCaption}) const}
+
+\Hypertarget{classhmap_1_1TerrainTriMesh_ad5e0b4845eb75accda1f0348cbdfaf36}\label{classhmap_1_1TerrainTriMesh_ad5e0b4845eb75accda1f0348cbdfaf36} 
+\index{hmap::TerrainTriMesh@{hmap::TerrainTriMesh}!interpolate\_z\_linear@{interpolate\_z\_linear}}
+\index{interpolate\_z\_linear@{interpolate\_z\_linear}!hmap::TerrainTriMesh@{hmap::TerrainTriMesh}}
+\doxysubsubsection{\texorpdfstring{interpolate\_z\_linear()}{interpolate\_z\_linear()}}
+{\footnotesize\ttfamily float hmap\+::\+Terrain\+Tri\+Mesh\+::interpolate\+\_\+z\+\_\+linear (\begin{DoxyParamCaption}\item[{const glm\+::vec2 \&}]{p,  }\item[{int \&}]{last\+\_\+tri,  }\item[{float}]{fill\+\_\+value = {\ttfamily 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption}) const}
+
+\Hypertarget{classhmap_1_1TerrainTriMesh_a4a0a37653662a43fbe6ed9465ab39a82}\label{classhmap_1_1TerrainTriMesh_a4a0a37653662a43fbe6ed9465ab39a82} 
+\index{hmap::TerrainTriMesh@{hmap::TerrainTriMesh}!interpolate\_z\_nearest@{interpolate\_z\_nearest}}
+\index{interpolate\_z\_nearest@{interpolate\_z\_nearest}!hmap::TerrainTriMesh@{hmap::TerrainTriMesh}}
+\doxysubsubsection{\texorpdfstring{interpolate\_z\_nearest()}{interpolate\_z\_nearest()}}
+{\footnotesize\ttfamily float hmap\+::\+Terrain\+Tri\+Mesh\+::interpolate\+\_\+z\+\_\+nearest (\begin{DoxyParamCaption}\item[{const glm\+::vec2 \&}]{p }\end{DoxyParamCaption}) const}
+
+\Hypertarget{classhmap_1_1TerrainTriMesh_ad5966bc7d2b1181b936b34715940b3d8}\label{classhmap_1_1TerrainTriMesh_ad5966bc7d2b1181b936b34715940b3d8} 
+\index{hmap::TerrainTriMesh@{hmap::TerrainTriMesh}!interpolate\_z\_nearest\_approx@{interpolate\_z\_nearest\_approx}}
+\index{interpolate\_z\_nearest\_approx@{interpolate\_z\_nearest\_approx}!hmap::TerrainTriMesh@{hmap::TerrainTriMesh}}
+\doxysubsubsection{\texorpdfstring{interpolate\_z\_nearest\_approx()}{interpolate\_z\_nearest\_approx()}}
+{\footnotesize\ttfamily float hmap\+::\+Terrain\+Tri\+Mesh\+::interpolate\+\_\+z\+\_\+nearest\+\_\+approx (\begin{DoxyParamCaption}\item[{const glm\+::vec2 \&}]{p,  }\item[{int \&}]{last\+\_\+tri,  }\item[{float}]{fill\+\_\+value = {\ttfamily 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption}) const}
 
 \Hypertarget{classhmap_1_1TerrainTriMesh_abe70758d6b941cbca110db0ac66f167c}\label{classhmap_1_1TerrainTriMesh_abe70758d6b941cbca110db0ac66f167c} 
 \index{hmap::TerrainTriMesh@{hmap::TerrainTriMesh}!get\_bbox@{get\_bbox}}
