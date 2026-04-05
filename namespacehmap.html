@@ -730,6 +730,9 @@ Functions</h2></td></tr>
 <tr class="memitem:abef85b092005d7c5b1d2962c3ed27ef0" id="r_abef85b092005d7c5b1d2962c3ed27ef0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#abef85b092005d7c5b1d2962c3ed27ef0">make_periodic_tiling</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, float overlap, glm::ivec2 tiling)</td></tr>
 <tr class="memdesc:abef85b092005d7c5b1d2962c3ed27ef0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a tiled, periodic array by applying a transition with overlap in both directions.  <br /></td></tr>
 <tr class="separator:abef85b092005d7c5b1d2962c3ed27ef0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab207cc7cdd3fe0e04ea1ca4825e7b5de" id="r_ab207cc7cdd3fe0e04ea1ca4825e7b5de"><td class="memItemLeft" align="right" valign="top">glm::ivec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#ab207cc7cdd3fe0e04ea1ca4825e7b5de">pick_boundary_cell</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, <a class="el" href="namespacehmap.html#a1ba9d4ce7afe3309f8ae8e617f7154ee">DomainBoundary</a> boundary, <a class="el" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> seed, bool favor_boundary_center=true, bool favor_lower_elevation=true, bool favor_sinks=true)</td></tr>
+<tr class="memdesc:ab207cc7cdd3fe0e04ea1ca4825e7b5de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Picks a boundary cell using weighted random selection.  <br /></td></tr>
+<tr class="separator:ab207cc7cdd3fe0e04ea1ca4825e7b5de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af3d5a6d239d30fe1698a524dfedcd63f" id="r_af3d5a6d239d30fe1698a524dfedcd63f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#af3d5a6d239d30fe1698a524dfedcd63f">set_borders</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, glm::vec4 border_values, glm::ivec4 buffer_sizes)</td></tr>
 <tr class="memdesc:af3d5a6d239d30fe1698a524dfedcd63f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enforces specific values at the boundaries of the array.  <br /></td></tr>
 <tr class="separator:af3d5a6d239d30fe1698a524dfedcd63f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -5695,8 +5698,142 @@ template&lt;typename T , typename Fn , typename Reduce &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="classhmap_1_1Array.html" title="Array class, helper to manipulate 2D float array with &quot;(i, j)&quot; indexing.">Array</a> A new tiled array that is periodic in both directions.</dd></dl>
-<p><b>Example</b> </p><div class="fragment"></div><!-- fragment --><p><b>Result</b> </p><div class="image">
-<img src="make_periodic_tiling.png" alt=""/>
+<p><b>Example</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="highmap_8hpp.html">highmap.hpp</a>&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
+<div class="line">{</div>
+<div class="line">  glm::ivec2 shape = {256, 256};</div>
+<div class="line">  glm::vec2  kw = {2.f, 2.f};</div>
+<div class="line">  <span class="keywordtype">int</span>        seed = 1;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z = <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, kw, seed);</div>
+<div class="line">  <span class="keywordtype">float</span>       overlap = 0.5f;</div>
+<div class="line"> </div>
+<div class="line">  glm::ivec2 tiling = {4, 3};</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">auto</span> zp = <a class="code hl_function" href="namespacehmap.html#abef85b092005d7c5b1d2962c3ed27ef0">hmap::make_periodic_tiling</a>(z, overlap, tiling);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_make_periodic_tiling.png&quot;</span>,</div>
+<div class="line">                          {z, zp},</div>
+<div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>);</div>
+<div class="line">}</div>
+<div class="ttc" id="anamespacehmap_html_abef85b092005d7c5b1d2962c3ed27ef0"><div class="ttname"><a href="namespacehmap.html#abef85b092005d7c5b1d2962c3ed27ef0">hmap::make_periodic_tiling</a></div><div class="ttdeci">Array make_periodic_tiling(const Array &amp;array, float overlap, glm::ivec2 tiling)</div><div class="ttdoc">Creates a tiled, periodic array by applying a transition with overlap in both directions.</div><div class="ttdef"><b>Definition</b> boundary.cpp:330</div></div>
+<div class="ttc" id="anamespacehmap_html_ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9"><div class="ttname"><a href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::TERRAIN</a></div><div class="ttdeci">@ TERRAIN</div><div class="ttdef"><b>Definition</b> colormaps.hpp:92</div></div>
+</div><!-- fragment --><p><b>Result</b> </p><div class="image">
+<img src="ex_make_periodic_tiling.png" alt=""/>
+</div>
+ 
+</div>
+</div>
+<a id="ab207cc7cdd3fe0e04ea1ca4825e7b5de" name="ab207cc7cdd3fe0e04ea1ca4825e7b5de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab207cc7cdd3fe0e04ea1ca4825e7b5de">&#9670;&#160;</a></span>pick_boundary_cell()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::ivec2 hmap::pick_boundary_cell </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>z</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacehmap.html#a1ba9d4ce7afe3309f8ae8e617f7154ee">DomainBoundary</a>&#160;</td>
+          <td class="paramname"><em>boundary</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramname"><em>seed</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>favor_boundary_center</em> = <code>true</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>favor_lower_elevation</em> = <code>true</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>favor_sinks</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Picks a boundary cell using weighted random selection. </p>
+<p>Selects a cell on the specified boundary, where each candidate is assigned a weight. Higher weights increase the probability of selection.</p>
+<p>Optional weighting factors:</p><ul>
+<li>favor_boundary_center: favors cells near the boundary center.</li>
+<li>favor_lower_elevation: favors lower values in <code>z</code> (normalized).</li>
+<li>favor_sinks: favors local minima (cells &lt;= neighbors).</li>
+</ul>
+<p>Weights are combined multiplicatively. Selection is deterministic given <code>seed</code>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">z</td><td>Input 2D scalar field. </td></tr>
+    <tr><td class="paramname">boundary</td><td>Boundary to sample from. </td></tr>
+    <tr><td class="paramname">seed</td><td>Random seed. </td></tr>
+    <tr><td class="paramname">favor_boundary_center</td><td>Enable center bias. </td></tr>
+    <tr><td class="paramname">favor_lower_elevation</td><td>Enable low-value bias. </td></tr>
+    <tr><td class="paramname">favor_sinks</td><td>Enable sink bias.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Selected boundary cell coordinates.</dd></dl>
+<p><b>Example</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="highmap_8hpp.html">highmap.hpp</a>&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
+<div class="line">{</div>
+<div class="line">  glm::ivec2 shape = {256, 256};</div>
+<div class="line">  glm::vec2  res = {4.f, 4.f};</div>
+<div class="line">  <span class="keywordtype">int</span>        seed = 0;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z = <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, res, seed);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> count(shape);</div>
+<div class="line">  <span class="keywordtype">int</span>         nsamples = 1000;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> it = 0; it &lt; nsamples; ++it)</div>
+<div class="line">  {</div>
+<div class="line">    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;b : {<a class="code hl_enumvalue" href="namespacehmap.html#a1ba9d4ce7afe3309f8ae8e617f7154eea760545322569136cd3be89e004ab10d4">hmap::DomainBoundary::BOUNDARY_LEFT</a>,</div>
+<div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#a1ba9d4ce7afe3309f8ae8e617f7154eeadb9a04ab3508704543b5dd43ae495fe7">hmap::DomainBoundary::BOUNDARY_RIGHT</a>,</div>
+<div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#a1ba9d4ce7afe3309f8ae8e617f7154eea1bda4002f204a3b745ea70dab2b6b6d8">hmap::DomainBoundary::BOUNDARY_TOP</a>,</div>
+<div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#a1ba9d4ce7afe3309f8ae8e617f7154eeac7495a13a71417dd76751518cd185309">hmap::DomainBoundary::BOUNDARY_BOTTOM</a>})</div>
+<div class="line">    {</div>
+<div class="line">      glm::ivec2 p = <a class="code hl_function" href="namespacehmap.html#ab207cc7cdd3fe0e04ea1ca4825e7b5de">hmap::pick_boundary_cell</a>(z, b, ++seed);</div>
+<div class="line">      count(p) += 1;</div>
+<div class="line">    }</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  count = <a class="code hl_function" href="namespacehmap.html#ac91a2dacd050d8588b4135f02dd8f2a5">hmap::dilation</a>(count, 8); <span class="comment">// to be able to see something</span></div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(count);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_pick_boundary_cell.png&quot;</span>,</div>
+<div class="line">                          {z, count},</div>
+<div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
+<div class="line">}</div>
+<div class="ttc" id="anamespacehmap_html_a1ba9d4ce7afe3309f8ae8e617f7154eea1bda4002f204a3b745ea70dab2b6b6d8"><div class="ttname"><a href="namespacehmap.html#a1ba9d4ce7afe3309f8ae8e617f7154eea1bda4002f204a3b745ea70dab2b6b6d8">hmap::BOUNDARY_TOP</a></div><div class="ttdeci">@ BOUNDARY_TOP</div><div class="ttdoc">j = 0</div><div class="ttdef"><b>Definition</b> boundary.hpp:46</div></div>
+<div class="ttc" id="anamespacehmap_html_a1ba9d4ce7afe3309f8ae8e617f7154eeac7495a13a71417dd76751518cd185309"><div class="ttname"><a href="namespacehmap.html#a1ba9d4ce7afe3309f8ae8e617f7154eeac7495a13a71417dd76751518cd185309">hmap::BOUNDARY_BOTTOM</a></div><div class="ttdeci">@ BOUNDARY_BOTTOM</div><div class="ttdoc">j = ny - 1</div><div class="ttdef"><b>Definition</b> boundary.hpp:47</div></div>
+<div class="ttc" id="anamespacehmap_html_ab207cc7cdd3fe0e04ea1ca4825e7b5de"><div class="ttname"><a href="namespacehmap.html#ab207cc7cdd3fe0e04ea1ca4825e7b5de">hmap::pick_boundary_cell</a></div><div class="ttdeci">glm::ivec2 pick_boundary_cell(const Array &amp;z, DomainBoundary boundary, uint seed, bool favor_boundary_center=true, bool favor_lower_elevation=true, bool favor_sinks=true)</div><div class="ttdoc">Picks a boundary cell using weighted random selection.</div><div class="ttdef"><b>Definition</b> pick_boundary_cell.cpp:10</div></div>
+<div class="ttc" id="anamespacehmap_html_ac91a2dacd050d8588b4135f02dd8f2a5"><div class="ttname"><a href="namespacehmap.html#ac91a2dacd050d8588b4135f02dd8f2a5">hmap::dilation</a></div><div class="ttdeci">Array dilation(const Array &amp;array, int ir)</div><div class="ttdoc">Apply a dilation algorithm to the input array using a square structure.</div><div class="ttdef"><b>Definition</b> morphology.cpp:24</div></div>
+</div><!-- fragment --><p><b>Result</b> </p><div class="image">
+<img src="ex_pick_boundary_cell.png" alt=""/>
 </div>
  
 </div>
@@ -5758,7 +5895,6 @@ template&lt;typename T , typename Fn , typename Reduce &gt; </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#af3d5a6d239d30fe1698a524dfedcd63f">hmap::set_borders</a>(z, value, nbuffer);</div>
 <div class="line">  z.<a class="code hl_function" href="classhmap_1_1Array.html#a9ff7b2c0be8f2b5dd9fc33085cd647d1">to_png</a>(<span class="stringliteral">&quot;ex_set_borders.png&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>, <span class="keyword">true</span>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9"><div class="ttname"><a href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::TERRAIN</a></div><div class="ttdeci">@ TERRAIN</div><div class="ttdef"><b>Definition</b> colormaps.hpp:92</div></div>
 <div class="ttc" id="anamespacehmap_html_af3d5a6d239d30fe1698a524dfedcd63f"><div class="ttname"><a href="namespacehmap.html#af3d5a6d239d30fe1698a524dfedcd63f">hmap::set_borders</a></div><div class="ttdeci">void set_borders(Array &amp;array, glm::vec4 border_values, glm::ivec4 buffer_sizes)</div><div class="ttdoc">Enforces specific values at the boundaries of the array.</div><div class="ttdef"><b>Definition</b> boundary.cpp:355</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_set_borders.png" alt=""/>
@@ -34420,7 +34556,6 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 <div class="ttc" id="anamespacehmap_html_a889405ce11be91e33cc80ca4dbd192b0"><div class="ttname"><a href="namespacehmap.html#a889405ce11be91e33cc80ca4dbd192b0">hmap::closing</a></div><div class="ttdeci">Array closing(const Array &amp;array, int ir)</div><div class="ttdoc">Apply a closing algorithm to the input array using a square structure.</div><div class="ttdef"><b>Definition</b> morphology.cpp:19</div></div>
 <div class="ttc" id="anamespacehmap_html_a9cf7773f6141162bf60708a93acdfcee"><div class="ttname"><a href="namespacehmap.html#a9cf7773f6141162bf60708a93acdfcee">hmap::erosion</a></div><div class="ttdeci">Array erosion(const Array &amp;array, int ir)</div><div class="ttdoc">Apply an erosion algorithm to the input array using a square structure.</div><div class="ttdef"><b>Definition</b> morphology.cpp:74</div></div>
 <div class="ttc" id="anamespacehmap_html_abd3024b8233a70596ff2924607221637"><div class="ttname"><a href="namespacehmap.html#abd3024b8233a70596ff2924607221637">hmap::opening</a></div><div class="ttdeci">Array opening(const Array &amp;array, int ir)</div><div class="ttdoc">Apply an opening algorithm to the input array using a square structure.</div><div class="ttdef"><b>Definition</b> morphology.cpp:141</div></div>
-<div class="ttc" id="anamespacehmap_html_ac91a2dacd050d8588b4135f02dd8f2a5"><div class="ttname"><a href="namespacehmap.html#ac91a2dacd050d8588b4135f02dd8f2a5">hmap::dilation</a></div><div class="ttdeci">Array dilation(const Array &amp;array, int ir)</div><div class="ttdoc">Apply a dilation algorithm to the input array using a square structure.</div><div class="ttdef"><b>Definition</b> morphology.cpp:24</div></div>
 <div class="ttc" id="anamespacehmap_html_af80bcff234bf1482cf26896b9d21d270"><div class="ttname"><a href="namespacehmap.html#af80bcff234bf1482cf26896b9d21d270">hmap::border</a></div><div class="ttdeci">Array border(const Array &amp;array, int ir)</div><div class="ttdoc">Apply a border algorithm to the input array using a square structure.</div><div class="ttdef"><b>Definition</b> morphology.cpp:14</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_morphology_base.png" alt=""/>

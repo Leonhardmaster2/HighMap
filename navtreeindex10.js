@@ -1,5 +1,6 @@
 var NAVTREEINDEX10 =
 {
+"hydraulic__stream__upscale__amplification_8cpp.html#a66355f091aa60d97d5a7c7eeb08c51cc":[5,0,1,1,11,19,0],
 "hydraulic__stream__upscale__amplification_8cpp.html#af975837e0f5b169dcb6d3f5f58c95fe9":[5,0,1,1,11,19,1],
 "hydraulic__vpipes_8cpp.html":[5,0,1,1,11,20],
 "hydraulic__vpipes_8cpp.html#aa6efdb6d9fbf995b00f889ca290819cd":[5,0,1,1,11,20,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX10 =
 "math_8cpp.html#a6b608e2826c1f9ba54a0e8922d5faa6b":[5,0,1,1,21,1,46],
 "math_8cpp.html#a6d85b2b635d15a4361344451619253f7":[5,0,1,1,21,1,21],
 "math_8cpp.html#a75475b6109023ce0ad64f6f9f7c4c525":[5,0,1,1,21,1,23],
-"math_8cpp.html#a826591db096cb2ca4d836d4c5eeaac02":[5,0,1,1,21,1,39],
-"math_8cpp.html#a8ca69cf3fef2d995719ff4284f6c50b8":[5,0,1,1,21,1,43]
+"math_8cpp.html#a826591db096cb2ca4d836d4c5eeaac02":[5,0,1,1,21,1,39]
 };

@@ -59,22 +59,29 @@
 \DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ overlap,}
 \DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm::ivec2\ \ \ tiling);}
 \DoxyCodeLine{00224\ }
-\DoxyCodeLine{00246\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_af3d5a6d239d30fe1698a524dfedcd63f}{set\_borders}}(Array\ \ \ \ \ \&array,}
-\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec4\ \ border\_values,}
-\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm::ivec4\ buffer\_sizes);}
-\DoxyCodeLine{00249\ }
-\DoxyCodeLine{00263\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_af3d5a6d239d30fe1698a524dfedcd63f}{set\_borders}}(Array\ \&array,\ \textcolor{keywordtype}{float}\ border\_values,\ \textcolor{keywordtype}{int}\ buffer\_sizes);}
-\DoxyCodeLine{00264\ }
-\DoxyCodeLine{00278\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a2e43da799378e294ea448a498aa1d386}{sym\_borders}}(Array\ \&array,\ glm::ivec4\ buffer\_sizes);}
-\DoxyCodeLine{00279\ }
-\DoxyCodeLine{00292\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_ae8bdfc965780305d1d26ff8b84e1dced}{zeroed\_borders}}(Array\ \&array);}
-\DoxyCodeLine{00293\ }
-\DoxyCodeLine{00320\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a968a55eecfa4489a79a27cfa0e1d3ae4}{zeroed\_edges}}(Array\ \ \ \ \ \ \ \ \ \ \ \&array,}
-\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ sigma\ =\ 1.f,}
-\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a670f50d6c08ecd639d42db9c75a5273a}{DistanceFunction}}\ dist\_fct\ =\ \mbox{\hyperlink{namespacehmap_a670f50d6c08ecd639d42db9c75a5273aab5937b3ae1efaa098f517fe7c761b781}{DistanceFunction::EUCLIDIAN}},}
-\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ \ \ *p\_noise\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec4\ \ \ \ \ \ \ \ bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\});}
-\DoxyCodeLine{00325\ }
-\DoxyCodeLine{00326\ \}\ \textcolor{comment}{//\ namespace\ hmap}}
+\DoxyCodeLine{00254\ glm::ivec2\ \mbox{\hyperlink{namespacehmap_ab207cc7cdd3fe0e04ea1ca4825e7b5de}{pick\_boundary\_cell}}(\textcolor{keyword}{const}\ Array\ \ \ \&z,}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a1ba9d4ce7afe3309f8ae8e617f7154ee}{DomainBoundary}}\ boundary,}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ \ \ seed,}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ favor\_boundary\_center\ =\ \textcolor{keyword}{true},}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ favor\_lower\_elevation\ =\ \textcolor{keyword}{true},}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ favor\_sinks\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00260\ }
+\DoxyCodeLine{00282\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_af3d5a6d239d30fe1698a524dfedcd63f}{set\_borders}}(Array\ \ \ \ \ \&array,}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec4\ \ border\_values,}
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm::ivec4\ buffer\_sizes);}
+\DoxyCodeLine{00285\ }
+\DoxyCodeLine{00299\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_af3d5a6d239d30fe1698a524dfedcd63f}{set\_borders}}(Array\ \&array,\ \textcolor{keywordtype}{float}\ border\_values,\ \textcolor{keywordtype}{int}\ buffer\_sizes);}
+\DoxyCodeLine{00300\ }
+\DoxyCodeLine{00314\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a2e43da799378e294ea448a498aa1d386}{sym\_borders}}(Array\ \&array,\ glm::ivec4\ buffer\_sizes);}
+\DoxyCodeLine{00315\ }
+\DoxyCodeLine{00328\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_ae8bdfc965780305d1d26ff8b84e1dced}{zeroed\_borders}}(Array\ \&array);}
+\DoxyCodeLine{00329\ }
+\DoxyCodeLine{00356\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a968a55eecfa4489a79a27cfa0e1d3ae4}{zeroed\_edges}}(Array\ \ \ \ \ \ \ \ \ \ \ \&array,}
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ sigma\ =\ 1.f,}
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a670f50d6c08ecd639d42db9c75a5273a}{DistanceFunction}}\ dist\_fct\ =\ \mbox{\hyperlink{namespacehmap_a670f50d6c08ecd639d42db9c75a5273aab5937b3ae1efaa098f517fe7c761b781}{DistanceFunction::EUCLIDIAN}},}
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ \ \ *p\_noise\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec4\ \ \ \ \ \ \ \ bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\});}
+\DoxyCodeLine{00361\ }
+\DoxyCodeLine{00362\ \}\ \textcolor{comment}{//\ namespace\ hmap}}
 
 \end{DoxyCode}

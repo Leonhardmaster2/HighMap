@@ -1,5 +1,6 @@
 var NAVTREEINDEX6 =
 {
+"colorize_8hpp.html#a221887dae102efd3756a1a8559eadeee":[5,0,1,0,0,12,7],
 "colorize_8hpp.html#a33a635351aa13228557a585470ba4563":[5,0,1,0,0,12,5],
 "colorize_8hpp.html#a4960846742ad118ec9eadaba40ca39ac":[5,0,1,0,0,12,2],
 "colorize_8hpp.html#a663df316bd09bb4072cbfe655e389668":[5,0,1,0,0,12,14],
@@ -248,6 +249,5 @@ var NAVTREEINDEX6 =
 "drainage__basin__cell__based_8hpp.html#a0c714c7fa78e9384806de52a5d039f2faaf8f41c39c71902022e1aec12f10d372":[5,0,1,0,0,2,1,1,1],
 "drainage__basin__cell__based_8hpp.html#a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894":[5,0,1,0,0,2,1,1,0],
 "drainage__basin__cell__based_8hpp.html#a6d5ae7cdae4d3db7507517699fb44ed7":[5,0,1,0,0,2,1,2],
-"drainage__basin__cell__based_8hpp_source.html":[5,0,1,0,0,2,1],
-"edge_8hpp.html":[5,0,1,0,0,1,1]
+"drainage__basin__cell__based_8hpp_source.html":[5,0,1,0,0,2,1]
 };
