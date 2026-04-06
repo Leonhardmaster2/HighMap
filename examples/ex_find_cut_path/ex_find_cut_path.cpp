@@ -18,7 +18,7 @@ int main(void)
   hmap::Array zp = hmap::Array(shape);
   path.to_array(zp);
 
-  // procedural
+  // greedy procedural
   hmap::Path path2 = hmap::find_cut_path_midpoint(
       z,
       hmap::DomainBoundary::BOUNDARY_LEFT,

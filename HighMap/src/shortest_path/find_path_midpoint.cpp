@@ -85,7 +85,7 @@ std::vector<glm::ivec2> find_path_midpoint(const Array &z,
 
   if (max_it == 0) max_it = int(std::ceil(std::log2(std::max(dist, 1.f))));
 
-  int iterations = std::clamp(max_it, 2, 16);
+  int iterations = std::clamp(max_it, 2, 14);
 
   // --- midpoint
 

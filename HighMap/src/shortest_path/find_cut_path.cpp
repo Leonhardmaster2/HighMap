@@ -71,8 +71,8 @@ Path find_cut_path_midpoint(const Array   &z,
                             DomainBoundary start,
                             DomainBoundary end,
                             uint           seed,
-                            int            midp_iterations,
-                            float          midp_sigma,
+                            float          offset_ratio,
+                            int            steps,
                             bool           favor_boundary_center,
                             bool           favor_lower_elevation,
                             bool           favor_sinks)
@@ -97,28 +97,30 @@ Path find_cut_path_midpoint(const Array   &z,
 
   // --- find cut path
 
-  std::vector<int> i_path, j_path;
-  i_path = {start_pt.x, int(0.5f * (start_pt.x + end_pt.x)), end_pt.x};
-  j_path = {start_pt.y, int(0.5f * (start_pt.y + end_pt.y)), end_pt.y};
+  int max_it = 0; // => autoset by algo
 
+  std::vector<glm::ivec2> indices = find_path_midpoint(z,
+                                                       start_pt,
+                                                       end_pt,
+                                                       offset_ratio,
+                                                       max_it,
+                                                       steps);
+
+  const size_t       npts = indices.size();
   std::vector<float> x, y, v;
 
-  x.reserve(i_path.size());
-  y.reserve(i_path.size());
-  v.reserve(i_path.size());
+  x.reserve(npts);
+  y.reserve(npts);
+  v.reserve(npts);
 
-  for (size_t k = 0; k < i_path.size(); ++k)
+  for (const auto &p : indices)
   {
-    x.push_back(float(i_path[k]) / float(nx - 1));
-    y.push_back(float(j_path[k]) / float(ny - 1));
-    v.push_back(z(i_path[k], j_path[k]));
+    x.push_back(float(p.x) / float(nx - 1));
+    y.push_back(float(p.y) / float(ny - 1));
+    v.push_back(z(p));
   }
 
   auto path = Path(x, y, v);
-
-  path.fractalize(midp_iterations, seed, midp_sigma);
-  path.bspline();
-
   return path;
 }
 
