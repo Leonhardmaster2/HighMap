@@ -5,6 +5,7 @@ var dir_935215972bef69986a81fe4c59c9ece4 =
     [ "interpolate1d.cpp", "interpolate1d_8cpp.html", "interpolate1d_8cpp" ],
     [ "interpolate2d.cpp", "interpolate2d_8cpp.html", "interpolate2d_8cpp" ],
     [ "interpolate2d_delaunay.cpp", "interpolate2d__delaunay_8cpp.html", "interpolate2d__delaunay_8cpp" ],
+    [ "interpolate2d_delaunay_gradient.cpp", "interpolate2d__delaunay__gradient_8cpp.html", "interpolate2d__delaunay__gradient_8cpp" ],
     [ "interpolate2d_gaussian.cpp", "interpolate2d__gaussian_8cpp.html", "interpolate2d__gaussian_8cpp" ],
     [ "interpolate2d_idw.cpp", "interpolate2d__idw_8cpp.html", "interpolate2d__idw_8cpp" ],
     [ "interpolate2d_nearest.cpp", "interpolate2d__nearest_8cpp.html", "interpolate2d__nearest_8cpp" ],

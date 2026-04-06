@@ -32,6 +32,8 @@ void \mbox{\hyperlink{classhmap_1_1TerrainTriMesh_a2b764615c2ac8424ffe60469d7b68
 \item 
 void \mbox{\hyperlink{classhmap_1_1TerrainTriMesh_a9e62681c4e433aa980191f176ced7423}{compute\+\_\+neighbors}} ()
 \item 
+void \mbox{\hyperlink{classhmap_1_1TerrainTriMesh_aed32b7cd40a0e0bba5dd777a67fe692f}{compute\+\_\+gradients}} ()
+\item 
 void \mbox{\hyperlink{classhmap_1_1TerrainTriMesh_a6974ff34df6b5184f513a17641591dd3}{relax\+\_\+xy}} (float lambda=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, int iterations=1, bool preserve\+\_\+chull=true)
 \item 
 void \mbox{\hyperlink{classhmap_1_1TerrainTriMesh_ac5aa5f772fdcbb71c7a393b92c828b4d}{relax\+\_\+xyz}} (float lambda=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, int iterations=1, bool preserve\+\_\+chull=true)
@@ -53,6 +55,8 @@ int \mbox{\hyperlink{classhmap_1_1TerrainTriMesh_ae5d88ed0cc61c8606bed76faabb77e
 int \mbox{\hyperlink{classhmap_1_1TerrainTriMesh_a402e4d126734c83cc388c35736a35a6a}{neighbor\+\_\+triangle}} (int tri\+\_\+index, int edge\+\_\+index) const
 \item 
 float \mbox{\hyperlink{classhmap_1_1TerrainTriMesh_ad5e0b4845eb75accda1f0348cbdfaf36}{interpolate\+\_\+z\+\_\+linear}} (const glm\+::vec2 \&p, int \&last\+\_\+tri, float fill\+\_\+value=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}) const
+\item 
+float \mbox{\hyperlink{classhmap_1_1TerrainTriMesh_a33b6043ea3e799f78bbc3417ae6b854e}{interpolate\+\_\+z\+\_\+linear\+\_\+gradient}} (const glm\+::vec2 \&p, int \&last\+\_\+tri, float fill\+\_\+value=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float gradient\+\_\+scaling=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}) const
 \item 
 float \mbox{\hyperlink{classhmap_1_1TerrainTriMesh_a4a0a37653662a43fbe6ed9465ab39a82}{interpolate\+\_\+z\+\_\+nearest}} (const glm\+::vec2 \&p) const
 \item 
@@ -128,6 +132,12 @@ void \mbox{\hyperlink{classhmap_1_1TerrainTriMesh_a634da24b2586bfade4d89f53de177
 \doxysubsubsection{\texorpdfstring{compute\_neighbors()}{compute\_neighbors()}}
 {\footnotesize\ttfamily void hmap\+::\+Terrain\+Tri\+Mesh\+::compute\+\_\+neighbors (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+\Hypertarget{classhmap_1_1TerrainTriMesh_aed32b7cd40a0e0bba5dd777a67fe692f}\label{classhmap_1_1TerrainTriMesh_aed32b7cd40a0e0bba5dd777a67fe692f} 
+\index{hmap::TerrainTriMesh@{hmap::TerrainTriMesh}!compute\_gradients@{compute\_gradients}}
+\index{compute\_gradients@{compute\_gradients}!hmap::TerrainTriMesh@{hmap::TerrainTriMesh}}
+\doxysubsubsection{\texorpdfstring{compute\_gradients()}{compute\_gradients()}}
+{\footnotesize\ttfamily void hmap\+::\+Terrain\+Tri\+Mesh\+::compute\+\_\+gradients (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
 \Hypertarget{classhmap_1_1TerrainTriMesh_a6974ff34df6b5184f513a17641591dd3}\label{classhmap_1_1TerrainTriMesh_a6974ff34df6b5184f513a17641591dd3} 
 \index{hmap::TerrainTriMesh@{hmap::TerrainTriMesh}!relax\_xy@{relax\_xy}}
 \index{relax\_xy@{relax\_xy}!hmap::TerrainTriMesh@{hmap::TerrainTriMesh}}
@@ -193,6 +203,12 @@ void \mbox{\hyperlink{classhmap_1_1TerrainTriMesh_a634da24b2586bfade4d89f53de177
 \index{interpolate\_z\_linear@{interpolate\_z\_linear}!hmap::TerrainTriMesh@{hmap::TerrainTriMesh}}
 \doxysubsubsection{\texorpdfstring{interpolate\_z\_linear()}{interpolate\_z\_linear()}}
 {\footnotesize\ttfamily float hmap\+::\+Terrain\+Tri\+Mesh\+::interpolate\+\_\+z\+\_\+linear (\begin{DoxyParamCaption}\item[{const glm\+::vec2 \&}]{p,  }\item[{int \&}]{last\+\_\+tri,  }\item[{float}]{fill\+\_\+value = {\ttfamily 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption}) const}
+
+\Hypertarget{classhmap_1_1TerrainTriMesh_a33b6043ea3e799f78bbc3417ae6b854e}\label{classhmap_1_1TerrainTriMesh_a33b6043ea3e799f78bbc3417ae6b854e} 
+\index{hmap::TerrainTriMesh@{hmap::TerrainTriMesh}!interpolate\_z\_linear\_gradient@{interpolate\_z\_linear\_gradient}}
+\index{interpolate\_z\_linear\_gradient@{interpolate\_z\_linear\_gradient}!hmap::TerrainTriMesh@{hmap::TerrainTriMesh}}
+\doxysubsubsection{\texorpdfstring{interpolate\_z\_linear\_gradient()}{interpolate\_z\_linear\_gradient()}}
+{\footnotesize\ttfamily float hmap\+::\+Terrain\+Tri\+Mesh\+::interpolate\+\_\+z\+\_\+linear\+\_\+gradient (\begin{DoxyParamCaption}\item[{const glm\+::vec2 \&}]{p,  }\item[{int \&}]{last\+\_\+tri,  }\item[{float}]{fill\+\_\+value = {\ttfamily 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{gradient\+\_\+scaling = {\ttfamily 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption}) const}
 
 \Hypertarget{classhmap_1_1TerrainTriMesh_a4a0a37653662a43fbe6ed9465ab39a82}\label{classhmap_1_1TerrainTriMesh_a4a0a37653662a43fbe6ed9465ab39a82} 
 \index{hmap::TerrainTriMesh@{hmap::TerrainTriMesh}!interpolate\_z\_nearest@{interpolate\_z\_nearest}}

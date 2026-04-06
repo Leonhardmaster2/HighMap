@@ -413,7 +413,8 @@ var namespacehmap =
       [ "ITP2D_NEAREST", "namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581af445f527425b2d746556541adf5d3d29", null ],
       [ "ITP2D_IDW", "namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581a4beec3d16f7dc0a1873bb04d85ea6eec", null ],
       [ "ITP2D_GAUSSIAN", "namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581ac183d7ac1fa5e71a2563ed3fe93bafea", null ],
-      [ "ITP2D_NNI", "namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581a95b33e28ebad4905884242b69db8de0d", null ]
+      [ "ITP2D_NNI", "namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581a95b33e28ebad4905884242b69db8de0d", null ],
+      [ "ITP2D_DELAUNAY_GRADIENT", "namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581abcf07b4df09d3208a73f833da6b7a278", null ]
     ] ],
     [ "InterpolationMethodCurve", "namespacehmap.html#aa78bf111867e13c63d8bd2ec005ad6c8", [
       [ "BEZIER", "namespacehmap.html#aa78bf111867e13c63d8bd2ec005ad6c8ac56fe3b521e08a04c926e75d7fba28f8", null ],
@@ -594,8 +595,8 @@ var namespacehmap =
     [ "hydraulic_musgrave", "namespacehmap.html#a5aceac22b926cbff676c323e1aca4db0", null ],
     [ "hydraulic_musgrave", "namespacehmap.html#a8c20cd6c2b1cd1ec20ffb2ce86ed0ecb", null ],
     [ "hydraulic_saleve", "namespacehmap.html#a8dbd4d6c53cc12b4bb149629026b5fcd", null ],
-    [ "hydraulic_saleve", "namespacehmap.html#aafe90971adf84a95dd2db719e3ba3a72", null ],
-    [ "hydraulic_saleve", "namespacehmap.html#af8a5df295124155a9a362d57b5e96ed7", null ],
+    [ "hydraulic_saleve", "namespacehmap.html#ab97f6c550cb8720bce40bb2770cf66f6", null ],
+    [ "hydraulic_saleve", "namespacehmap.html#a21abd1ca557655ed48117a53653c0c12", null ],
     [ "hydraulic_stream", "namespacehmap.html#acbf32c30d68183eb5522888af2ede316", null ],
     [ "hydraulic_stream", "namespacehmap.html#ae3bc02b89f4e7d0bdb221e13b66ad91e", null ],
     [ "hydraulic_stream_log", "namespacehmap.html#a37caab05db1b9791bf8a8ca10852c0da", null ],
@@ -884,7 +885,8 @@ var namespacehmap =
     [ "cubic_interpolate", "namespacehmap.html#aee026d8b23196038c2b16c370b743889", null ],
     [ "harmonic_interpolation", "namespacehmap.html#a6cfd7b1fc064e5aaef1550041f1bbc06", null ],
     [ "interpolate2d", "namespacehmap.html#aeddca5280bfeacef3cdf4bee68a2195f", null ],
-    [ "interpolate2d_delaunay", "namespacehmap.html#a023e1bbf161eaa8f7db2a12d20cd18c5", null ],
+    [ "interpolate2d_delaunay", "namespacehmap.html#acf40e21f779a67c8cfb0569fb728d797", null ],
+    [ "interpolate2d_delaunay_gradient", "namespacehmap.html#a6dc3a429456ae7d9910ddcbbb32ce041", null ],
     [ "interpolate2d_gaussian", "namespacehmap.html#a0a14f8ea250312a1c2392dd26d34805f", null ],
     [ "interpolate2d_idw", "namespacehmap.html#a304d2b2e755c4a1fea14ac8dc6d44082", null ],
     [ "interpolate2d_nearest", "namespacehmap.html#a4cb51937d8283468bc540129d491222b", null ],

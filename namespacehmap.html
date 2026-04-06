@@ -515,6 +515,7 @@ Enumerations</h2></td></tr>
 , <a class="el" href="namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581ac183d7ac1fa5e71a2563ed3fe93bafea">ITP2D_GAUSSIAN</a>
 , <br />
 &#160;&#160;<a class="el" href="namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581a95b33e28ebad4905884242b69db8de0d">ITP2D_NNI</a>
+, <a class="el" href="namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581abcf07b4df09d3208a73f833da6b7a278">ITP2D_DELAUNAY_GRADIENT</a>
 <br />
  }</td></tr>
 <tr class="memdesc:a5bfab5d68e822294ff90fde21b85f581"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumeration of 2D interpolation methods.  <a href="namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581">More...</a><br /></td></tr>
@@ -904,11 +905,11 @@ Functions</h2></td></tr>
 <tr class="memitem:a8dbd4d6c53cc12b4bb149629026b5fcd" id="r_a8dbd4d6c53cc12b4bb149629026b5fcd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a8dbd4d6c53cc12b4bb149629026b5fcd">hydraulic_saleve</a> (<a class="el" href="classhmap_1_1TerrainTriMesh.html">TerrainTriMesh</a> &amp;mesh, const std::vector&lt; float &gt; &amp;erodibility, const std::vector&lt; float &gt; &amp;max_slope, float m_exp=0.8<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float uplift_rate=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float tolerance=1e-3<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, int max_iterations=200, float noise_strength=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, <a class="el" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> seed=0, bool enable_post_slope_limiter=false, float post_slope_limit=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, bool enable_post_smoothing=false)</td></tr>
 <tr class="memdesc:a8dbd4d6c53cc12b4bb149629026b5fcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform hydraulic erosion on a triangulated terrain mesh.  <br /></td></tr>
 <tr class="separator:a8dbd4d6c53cc12b4bb149629026b5fcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aafe90971adf84a95dd2db719e3ba3a72" id="r_aafe90971adf84a95dd2db719e3ba3a72"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#aafe90971adf84a95dd2db719e3ba3a72">hydraulic_saleve</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, <a class="el" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> seed, size_t control_points_count=10000, float m_exp=0.8<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float uplift_rate=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float tolerance=1e-3<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, int max_iterations=200, float smin=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float smax=6.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float strength=0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, bool scale_erodibility_with_z=true, float erodibility_distrib_exp=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float noise_strength=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, bool enable_post_slope_limiter=false, float post_slope_limit=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, bool enable_post_smoothing=false, <a class="el" href="namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581">InterpolationMethod2D</a> interpolation_method=<a class="el" href="namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581a5fc536ff63a05f254ff7583cccac8a12">InterpolationMethod2D::ITP2D_DELAUNAY</a>, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_x=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_y=nullptr)</td></tr>
-<tr class="memdesc:aafe90971adf84a95dd2db719e3ba3a72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply hydraulic erosion to a heightmap using an adaptive mesh.  <br /></td></tr>
-<tr class="separator:aafe90971adf84a95dd2db719e3ba3a72"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8a5df295124155a9a362d57b5e96ed7" id="r_af8a5df295124155a9a362d57b5e96ed7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#af8a5df295124155a9a362d57b5e96ed7">hydraulic_saleve</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_mask, <a class="el" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> seed, size_t control_points_count=10000, float m_exp=0.8<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float uplift_rate=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float tolerance=1e-3<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, int max_iterations=200, float smin=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float smax=6.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float strength=0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, bool scale_erodibility_with_z=true, float erodibility_distrib_exp=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float noise_strength=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, bool enable_post_slope_limiter=false, float post_slope_limit=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, bool enable_post_smoothing=false, <a class="el" href="namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581">InterpolationMethod2D</a> interpolation_method=<a class="el" href="namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581a5fc536ff63a05f254ff7583cccac8a12">InterpolationMethod2D::ITP2D_DELAUNAY</a>, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_x=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_y=nullptr)</td></tr>
-<tr class="separator:af8a5df295124155a9a362d57b5e96ed7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab97f6c550cb8720bce40bb2770cf66f6" id="r_ab97f6c550cb8720bce40bb2770cf66f6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#ab97f6c550cb8720bce40bb2770cf66f6">hydraulic_saleve</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, <a class="el" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> seed, size_t control_points_count=10000, float m_exp=0.8<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float uplift_rate=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float tolerance=1e-3<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, int max_iterations=200, float smin=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float smax=6.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float strength=0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, bool scale_erodibility_with_z=true, float erodibility_distrib_exp=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float noise_strength=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, bool enable_post_slope_limiter=false, float post_slope_limit=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, bool enable_post_smoothing=false, <a class="el" href="namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581">InterpolationMethod2D</a> interpolation_method=<a class="el" href="namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581abcf07b4df09d3208a73f833da6b7a278">InterpolationMethod2D::ITP2D_DELAUNAY_GRADIENT</a>, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_x=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_y=nullptr)</td></tr>
+<tr class="memdesc:ab97f6c550cb8720bce40bb2770cf66f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply hydraulic erosion to a heightmap using an adaptive mesh.  <br /></td></tr>
+<tr class="separator:ab97f6c550cb8720bce40bb2770cf66f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21abd1ca557655ed48117a53653c0c12" id="r_a21abd1ca557655ed48117a53653c0c12"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a21abd1ca557655ed48117a53653c0c12">hydraulic_saleve</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_mask, <a class="el" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> seed, size_t control_points_count=10000, float m_exp=0.8<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float uplift_rate=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float tolerance=1e-3<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, int max_iterations=200, float smin=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float smax=6.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float strength=0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, bool scale_erodibility_with_z=true, float erodibility_distrib_exp=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float noise_strength=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, bool enable_post_slope_limiter=false, float post_slope_limit=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, bool enable_post_smoothing=false, <a class="el" href="namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581">InterpolationMethod2D</a> interpolation_method=<a class="el" href="namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581abcf07b4df09d3208a73f833da6b7a278">InterpolationMethod2D::ITP2D_DELAUNAY_GRADIENT</a>, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_x=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_y=nullptr)</td></tr>
+<tr class="separator:a21abd1ca557655ed48117a53653c0c12"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acbf32c30d68183eb5522888af2ede316" id="r_acbf32c30d68183eb5522888af2ede316"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#acbf32c30d68183eb5522888af2ede316">hydraulic_stream</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, float c_erosion, float talus_ref, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_bedrock=nullptr, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_moisture_map=nullptr, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_erosion_map=nullptr, int ir=1, float clipping_ratio=10.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
 <tr class="memdesc:acbf32c30d68183eb5522888af2ede316"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply hydraulic erosion based on a flow accumulation map.  <br /></td></tr>
 <tr class="separator:acbf32c30d68183eb5522888af2ede316"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1745,9 +1746,12 @@ Functions</h2></td></tr>
 <tr class="memitem:aeddca5280bfeacef3cdf4bee68a2195f" id="r_aeddca5280bfeacef3cdf4bee68a2195f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#aeddca5280bfeacef3cdf4bee68a2195f">interpolate2d</a> (glm::ivec2 shape, const std::vector&lt; float &gt; &amp;x, const std::vector&lt; float &gt; &amp;y, const std::vector&lt; float &gt; &amp;values, <a class="el" href="namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581">InterpolationMethod2D</a> interpolation_method, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_x=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_y=nullptr, glm::vec4 bbox={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>})</td></tr>
 <tr class="memdesc:aeddca5280bfeacef3cdf4bee68a2195f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generic 2D interpolation function.  <br /></td></tr>
 <tr class="separator:aeddca5280bfeacef3cdf4bee68a2195f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a023e1bbf161eaa8f7db2a12d20cd18c5" id="r_a023e1bbf161eaa8f7db2a12d20cd18c5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a023e1bbf161eaa8f7db2a12d20cd18c5">interpolate2d_delaunay</a> (glm::ivec2 shape, const std::vector&lt; float &gt; &amp;x, const std::vector&lt; float &gt; &amp;y, const std::vector&lt; float &gt; &amp;values, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_x=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_y=nullptr, glm::vec4 bbox={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>})</td></tr>
-<tr class="memdesc:a023e1bbf161eaa8f7db2a12d20cd18c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">2D interpolation using the Delaunay triangulation method.  <br /></td></tr>
-<tr class="separator:a023e1bbf161eaa8f7db2a12d20cd18c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf40e21f779a67c8cfb0569fb728d797" id="r_acf40e21f779a67c8cfb0569fb728d797"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#acf40e21f779a67c8cfb0569fb728d797">interpolate2d_delaunay</a> (glm::ivec2 shape, const std::vector&lt; float &gt; &amp;x, const std::vector&lt; float &gt; &amp;y, const std::vector&lt; float &gt; &amp;values, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_x=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_y=nullptr, glm::vec4 bbox={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>}, float fill_value=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
+<tr class="memdesc:acf40e21f779a67c8cfb0569fb728d797"><td class="mdescLeft">&#160;</td><td class="mdescRight">2D interpolation using the Delaunay triangulation method.  <br /></td></tr>
+<tr class="separator:acf40e21f779a67c8cfb0569fb728d797"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6dc3a429456ae7d9910ddcbbb32ce041" id="r_a6dc3a429456ae7d9910ddcbbb32ce041"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a6dc3a429456ae7d9910ddcbbb32ce041">interpolate2d_delaunay_gradient</a> (glm::ivec2 shape, const std::vector&lt; float &gt; &amp;x, const std::vector&lt; float &gt; &amp;y, const std::vector&lt; float &gt; &amp;values, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_x=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_y=nullptr, glm::vec4 bbox={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>}, float fill_value=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float gradient_scaling=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
+<tr class="memdesc:a6dc3a429456ae7d9910ddcbbb32ce041"><td class="mdescLeft">&#160;</td><td class="mdescRight">2D interpolation using a smoother version of the Delaunay triangulation method.  <br /></td></tr>
+<tr class="separator:a6dc3a429456ae7d9910ddcbbb32ce041"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a14f8ea250312a1c2392dd26d34805f" id="r_a0a14f8ea250312a1c2392dd26d34805f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a0a14f8ea250312a1c2392dd26d34805f">interpolate2d_gaussian</a> (glm::ivec2 shape, const std::vector&lt; float &gt; &amp;x, const std::vector&lt; float &gt; &amp;y, const std::vector&lt; float &gt; &amp;values, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_x=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_y=nullptr, glm::vec4 bbox={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>}, float sigma=0.05<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float radius=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
 <tr class="memdesc:a0a14f8ea250312a1c2392dd26d34805f"><td class="mdescLeft">&#160;</td><td class="mdescRight">2D interpolation using the Gaussian kernel method.  <br /></td></tr>
 <tr class="separator:a0a14f8ea250312a1c2392dd26d34805f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -3031,6 +3035,8 @@ Functions</h2></td></tr>
 <tr><td class="fieldname"><a id="a5bfab5d68e822294ff90fde21b85f581ac183d7ac1fa5e71a2563ed3fe93bafea" name="a5bfab5d68e822294ff90fde21b85f581ac183d7ac1fa5e71a2563ed3fe93bafea"></a>ITP2D_GAUSSIAN&#160;</td><td class="fielddoc"><p>Gaussian Distance Weighting. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="a5bfab5d68e822294ff90fde21b85f581a95b33e28ebad4905884242b69db8de0d" name="a5bfab5d68e822294ff90fde21b85f581a95b33e28ebad4905884242b69db8de0d"></a>ITP2D_NNI&#160;</td><td class="fielddoc"><p>Natural Neighbor Interpolation. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a5bfab5d68e822294ff90fde21b85f581abcf07b4df09d3208a73f833da6b7a278" name="a5bfab5d68e822294ff90fde21b85f581abcf07b4df09d3208a73f833da6b7a278"></a>ITP2D_DELAUNAY_GRADIENT&#160;</td><td class="fielddoc"><p>Delaunay triangulation + linear gradient. </p>
 </td></tr>
 </table>
 
@@ -10659,8 +10665,8 @@ additional_depth)</code>.</li>
 <div class="line">      noise_strength,</div>
 <div class="line">      <span class="comment">/* enable_post_slope_limiter */</span> <span class="keyword">false</span>,</div>
 <div class="line">      <span class="comment">/* post_slope_limit */</span> 0.f,</div>
-<div class="line">      <span class="comment">/* enable_post_smoothing */</span> <span class="keyword">true</span>,</div>
-<div class="line">      <a class="code hl_enumvalue" href="namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581a5fc536ff63a05f254ff7583cccac8a12">hmap::InterpolationMethod2D::ITP2D_DELAUNAY</a>,</div>
+<div class="line">      <span class="comment">/* enable_post_smoothing */</span> <span class="keyword">false</span>,</div>
+<div class="line">      <a class="code hl_enumvalue" href="namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581abcf07b4df09d3208a73f833da6b7a278">hmap::InterpolationMethod2D::ITP2D_DELAUNAY_GRADIENT</a>,</div>
 <div class="line">      &amp;dx,</div>
 <div class="line">      &amp;dy);</div>
 <div class="line"> </div>
@@ -10683,7 +10689,7 @@ additional_depth)</code>.</li>
 <div class="line">                          <span class="keyword">true</span>);</div>
 <div class="line">}</div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_a8497e2fce595293ea07e68eac1e5bce2"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a8497e2fce595293ea07e68eac1e5bce2">hmap::gpu::deposition_fill_holes</a></div><div class="ttdeci">void deposition_fill_holes(Array &amp;z, int deposition_ir, float deposition_strength, int iterations=1)</div><div class="ttdoc">Fill holes using Gaussian-based deposition.</div><div class="ttdef"><b>Definition</b> deposition_fill_holes.cpp:12</div></div>
-<div class="ttc" id="anamespacehmap_html_a5bfab5d68e822294ff90fde21b85f581a5fc536ff63a05f254ff7583cccac8a12"><div class="ttname"><a href="namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581a5fc536ff63a05f254ff7583cccac8a12">hmap::ITP2D_DELAUNAY</a></div><div class="ttdeci">@ ITP2D_DELAUNAY</div><div class="ttdoc">Delaunay triangulation method for 2D interpolation.</div><div class="ttdef"><b>Definition</b> interpolate2d.hpp:46</div></div>
+<div class="ttc" id="anamespacehmap_html_a5bfab5d68e822294ff90fde21b85f581abcf07b4df09d3208a73f833da6b7a278"><div class="ttname"><a href="namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581abcf07b4df09d3208a73f833da6b7a278">hmap::ITP2D_DELAUNAY_GRADIENT</a></div><div class="ttdeci">@ ITP2D_DELAUNAY_GRADIENT</div><div class="ttdoc">Delaunay triangulation + linear gradient.</div><div class="ttdef"><b>Definition</b> interpolate2d.hpp:51</div></div>
 <div class="ttc" id="anamespacehmap_html_a8dbd4d6c53cc12b4bb149629026b5fcd"><div class="ttname"><a href="namespacehmap.html#a8dbd4d6c53cc12b4bb149629026b5fcd">hmap::hydraulic_saleve</a></div><div class="ttdeci">void hydraulic_saleve(TerrainTriMesh &amp;mesh, const std::vector&lt; float &gt; &amp;erodibility, const std::vector&lt; float &gt; &amp;max_slope, float m_exp=0.8f, float uplift_rate=1.f, float tolerance=1e-3f, int max_iterations=200, float noise_strength=0.f, uint seed=0, bool enable_post_slope_limiter=false, float post_slope_limit=0.f, bool enable_post_smoothing=false)</div><div class="ttdoc">Perform hydraulic erosion on a triangulated terrain mesh.</div><div class="ttdef"><b>Definition</b> hydraulic_saleve.cpp:16</div></div>
 <div class="ttc" id="anamespacehmap_html_ab8197c4c7a85dacb616fee7a7d0df195ac5113a637d69eb3c549e6d561da167ed"><div class="ttname"><a href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195ac5113a637d69eb3c549e6d561da167ed">hmap::SIMPLEX2</a></div><div class="ttdeci">@ SIMPLEX2</div><div class="ttdoc">OpenSimplex2.</div><div class="ttdef"><b>Definition</b> functions.hpp:67</div></div>
 <div class="ttc" id="atimer_8hpp_html"><div class="ttname"><a href="timer_8hpp.html">timer.hpp</a></div></div>
@@ -10693,8 +10699,8 @@ additional_depth)</code>.</li>
  
 </div>
 </div>
-<a id="aafe90971adf84a95dd2db719e3ba3a72" name="aafe90971adf84a95dd2db719e3ba3a72"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aafe90971adf84a95dd2db719e3ba3a72">&#9670;&#160;</a></span>hydraulic_saleve() <span class="overload">[2/3]</span></h2>
+<a id="ab97f6c550cb8720bce40bb2770cf66f6" name="ab97f6c550cb8720bce40bb2770cf66f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab97f6c550cb8720bce40bb2770cf66f6">&#9670;&#160;</a></span>hydraulic_saleve() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -10799,7 +10805,7 @@ additional_depth)</code>.</li>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581">InterpolationMethod2D</a>&#160;</td>
-          <td class="paramname"><em>interpolation_method</em> = <code><a class="el" href="namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581a5fc536ff63a05f254ff7583cccac8a12">InterpolationMethod2D::ITP2D_DELAUNAY</a></code>, </td>
+          <td class="paramname"><em>interpolation_method</em> = <code><a class="el" href="namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581abcf07b4df09d3208a73f833da6b7a278">InterpolationMethod2D::ITP2D_DELAUNAY_GRADIENT</a></code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -10911,8 +10917,8 @@ additional_depth)</code>.</li>
 <div class="line">      noise_strength,</div>
 <div class="line">      <span class="comment">/* enable_post_slope_limiter */</span> <span class="keyword">false</span>,</div>
 <div class="line">      <span class="comment">/* post_slope_limit */</span> 0.f,</div>
-<div class="line">      <span class="comment">/* enable_post_smoothing */</span> <span class="keyword">true</span>,</div>
-<div class="line">      <a class="code hl_enumvalue" href="namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581a5fc536ff63a05f254ff7583cccac8a12">hmap::InterpolationMethod2D::ITP2D_DELAUNAY</a>,</div>
+<div class="line">      <span class="comment">/* enable_post_smoothing */</span> <span class="keyword">false</span>,</div>
+<div class="line">      <a class="code hl_enumvalue" href="namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581abcf07b4df09d3208a73f833da6b7a278">hmap::InterpolationMethod2D::ITP2D_DELAUNAY_GRADIENT</a>,</div>
 <div class="line">      &amp;dx,</div>
 <div class="line">      &amp;dy);</div>
 <div class="line"> </div>
@@ -10940,8 +10946,8 @@ additional_depth)</code>.</li>
  
 </div>
 </div>
-<a id="af8a5df295124155a9a362d57b5e96ed7" name="af8a5df295124155a9a362d57b5e96ed7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af8a5df295124155a9a362d57b5e96ed7">&#9670;&#160;</a></span>hydraulic_saleve() <span class="overload">[3/3]</span></h2>
+<a id="a21abd1ca557655ed48117a53653c0c12" name="a21abd1ca557655ed48117a53653c0c12"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21abd1ca557655ed48117a53653c0c12">&#9670;&#160;</a></span>hydraulic_saleve() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -11052,7 +11058,7 @@ additional_depth)</code>.</li>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581">InterpolationMethod2D</a>&#160;</td>
-          <td class="paramname"><em>interpolation_method</em> = <code><a class="el" href="namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581a5fc536ff63a05f254ff7583cccac8a12">InterpolationMethod2D::ITP2D_DELAUNAY</a></code>, </td>
+          <td class="paramname"><em>interpolation_method</em> = <code><a class="el" href="namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581abcf07b4df09d3208a73f833da6b7a278">InterpolationMethod2D::ITP2D_DELAUNAY_GRADIENT</a></code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -30921,12 +30927,130 @@ template&lt;typename T &gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classhmap_1_1Array.html" title="Array class, helper to manipulate 2D float array with &quot;(i, j)&quot; indexing.">Array</a> Output array with interpolated values. </dd></dl>
-
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classhmap_1_1Array.html" title="Array class, helper to manipulate 2D float array with &quot;(i, j)&quot; indexing.">Array</a> Output array with interpolated values.</dd></dl>
+<p><b>Example</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="highmap_8hpp.html">highmap.hpp</a>&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;<a class="code" href="timer_8hpp.html">highmap/dbg/timer.hpp</a>&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
+<div class="line">{</div>
+<div class="line">  glm::ivec2 shape = {256, 256};</div>
+<div class="line">  <span class="comment">// shape = {1024, 1024};</span></div>
+<div class="line">  <span class="keywordtype">int</span> seed = 0;</div>
+<div class="line"> </div>
+<div class="line">  glm::vec4 bbox = {-1.f, 0.f, 0.5f, 1.5f};</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Cloud.html">hmap::Cloud</a> cloud = <a class="code hl_class" href="classhmap_1_1Cloud.html">hmap::Cloud</a>(10, seed, bbox);</div>
+<div class="line">  cloud.<a class="code hl_function" href="classhmap_1_1Cloud.html#a7b26dc92e0d2217b8438f1ce9376ea0d">snap_points_to_bounding_box</a>(bbox);</div>
+<div class="line"> </div>
+<div class="line">  std::vector&lt;float&gt; x = cloud.<a class="code hl_function" href="classhmap_1_1Cloud.html#aab450c9376e44def1d4e4465f0b1b691">get_x</a>();</div>
+<div class="line">  std::vector&lt;float&gt; y = cloud.<a class="code hl_function" href="classhmap_1_1Cloud.html#abf5f933e3506395b5369cb090119002e">get_y</a>();</div>
+<div class="line">  std::vector&lt;float&gt; values = cloud.<a class="code hl_function" href="classhmap_1_1Cloud.html#a53cb47401f1e9d027a638f3680c3004d">get_values</a>();</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// reference, pointwise values</span></div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z0 = <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a>(shape);</div>
+<div class="line">  cloud.<a class="code hl_function" href="classhmap_1_1Cloud.html#a36e47d4857108c56193755e32374184d">to_array</a>(z0, bbox);</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// noise</span></div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> dx = 0.0f * <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>,</div>
+<div class="line">                                          shape,</div>
+<div class="line">                                          {4.f, 4.f},</div>
+<div class="line">                                          seed,</div>
+<div class="line">                                          8,</div>
+<div class="line">                                          0.f);</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// nearest</span></div>
+<div class="line">  <a class="code hl_function" href="classhmap_1_1Timer.html#ae9248cf01bfd4d8f680a6c7d5b80f45b">hmap::Timer::Start</a>(<span class="stringliteral">&quot;ITP2D_NEAREST&quot;</span>);</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z1 = <a class="code hl_function" href="namespacehmap.html#aeddca5280bfeacef3cdf4bee68a2195f">hmap::interpolate2d</a>(</div>
+<div class="line">      shape,</div>
+<div class="line">      x,</div>
+<div class="line">      y,</div>
+<div class="line">      values,</div>
+<div class="line">      <a class="code hl_enumvalue" href="namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581af445f527425b2d746556541adf5d3d29">hmap::InterpolationMethod2D::ITP2D_NEAREST</a>,</div>
+<div class="line">      &amp;dx,</div>
+<div class="line">      &amp;dx,</div>
+<div class="line">      bbox);</div>
+<div class="line">  <a class="code hl_function" href="classhmap_1_1Timer.html#a6054c197a10338a1bd48299be29593b5">hmap::Timer::Stop</a>(<span class="stringliteral">&quot;ITP2D_NEAREST&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="classhmap_1_1Timer.html#ae9248cf01bfd4d8f680a6c7d5b80f45b">hmap::Timer::Start</a>(<span class="stringliteral">&quot;ITP2D_DELAUNAY&quot;</span>);</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z2 = <a class="code hl_function" href="namespacehmap.html#aeddca5280bfeacef3cdf4bee68a2195f">hmap::interpolate2d</a>(</div>
+<div class="line">      shape,</div>
+<div class="line">      x,</div>
+<div class="line">      y,</div>
+<div class="line">      values,</div>
+<div class="line">      <a class="code hl_enumvalue" href="namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581a5fc536ff63a05f254ff7583cccac8a12">hmap::InterpolationMethod2D::ITP2D_DELAUNAY</a>,</div>
+<div class="line">      &amp;dx,</div>
+<div class="line">      &amp;dx,</div>
+<div class="line">      bbox);</div>
+<div class="line">  <a class="code hl_function" href="classhmap_1_1Timer.html#a6054c197a10338a1bd48299be29593b5">hmap::Timer::Stop</a>(<span class="stringliteral">&quot;ITP2D_DELAUNAY&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="classhmap_1_1Timer.html#ae9248cf01bfd4d8f680a6c7d5b80f45b">hmap::Timer::Start</a>(<span class="stringliteral">&quot;ITP2D_IDW&quot;</span>);</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z3 = <a class="code hl_function" href="namespacehmap.html#aeddca5280bfeacef3cdf4bee68a2195f">hmap::interpolate2d</a>(shape,</div>
+<div class="line">                                       x,</div>
+<div class="line">                                       y,</div>
+<div class="line">                                       values,</div>
+<div class="line">                                       <a class="code hl_enumvalue" href="namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581a4beec3d16f7dc0a1873bb04d85ea6eec">hmap::InterpolationMethod2D::ITP2D_IDW</a>,</div>
+<div class="line">                                       &amp;dx,</div>
+<div class="line">                                       &amp;dx,</div>
+<div class="line">                                       bbox);</div>
+<div class="line">  <a class="code hl_function" href="classhmap_1_1Timer.html#a6054c197a10338a1bd48299be29593b5">hmap::Timer::Stop</a>(<span class="stringliteral">&quot;ITP2D_IDW&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="classhmap_1_1Timer.html#ae9248cf01bfd4d8f680a6c7d5b80f45b">hmap::Timer::Start</a>(<span class="stringliteral">&quot;ITP2D_GAUSSIAN&quot;</span>);</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z4 = <a class="code hl_function" href="namespacehmap.html#aeddca5280bfeacef3cdf4bee68a2195f">hmap::interpolate2d</a>(</div>
+<div class="line">      shape,</div>
+<div class="line">      x,</div>
+<div class="line">      y,</div>
+<div class="line">      values,</div>
+<div class="line">      <a class="code hl_enumvalue" href="namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581ac183d7ac1fa5e71a2563ed3fe93bafea">hmap::InterpolationMethod2D::ITP2D_GAUSSIAN</a>,</div>
+<div class="line">      &amp;dx,</div>
+<div class="line">      &amp;dx,</div>
+<div class="line">      bbox);</div>
+<div class="line">  <a class="code hl_function" href="classhmap_1_1Timer.html#a6054c197a10338a1bd48299be29593b5">hmap::Timer::Stop</a>(<span class="stringliteral">&quot;ITP2D_GAUSSIAN&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="classhmap_1_1Timer.html#ae9248cf01bfd4d8f680a6c7d5b80f45b">hmap::Timer::Start</a>(<span class="stringliteral">&quot;ITP2D_NNI&quot;</span>);</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z5 = <a class="code hl_function" href="namespacehmap.html#aeddca5280bfeacef3cdf4bee68a2195f">hmap::interpolate2d</a>(shape,</div>
+<div class="line">                                       x,</div>
+<div class="line">                                       y,</div>
+<div class="line">                                       values,</div>
+<div class="line">                                       <a class="code hl_enumvalue" href="namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581a95b33e28ebad4905884242b69db8de0d">hmap::InterpolationMethod2D::ITP2D_NNI</a>,</div>
+<div class="line">                                       &amp;dx,</div>
+<div class="line">                                       &amp;dx,</div>
+<div class="line">                                       bbox);</div>
+<div class="line">  <a class="code hl_function" href="classhmap_1_1Timer.html#a6054c197a10338a1bd48299be29593b5">hmap::Timer::Stop</a>(<span class="stringliteral">&quot;ITP2D_NNI&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="classhmap_1_1Timer.html#ae9248cf01bfd4d8f680a6c7d5b80f45b">hmap::Timer::Start</a>(<span class="stringliteral">&quot;ITP2D_CT&quot;</span>);</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z6 = <a class="code hl_function" href="namespacehmap.html#a6dc3a429456ae7d9910ddcbbb32ce041">hmap::interpolate2d_delaunay_gradient</a>(</div>
+<div class="line">      shape,</div>
+<div class="line">      x,</div>
+<div class="line">      y,</div>
+<div class="line">      values,</div>
+<div class="line">      <span class="comment">// hmap::InterpolationMethod2D::ITP2D_NNI,</span></div>
+<div class="line">      <span class="keyword">nullptr</span>,</div>
+<div class="line">      <span class="keyword">nullptr</span>,</div>
+<div class="line">      bbox);</div>
+<div class="line">  <a class="code hl_function" href="classhmap_1_1Timer.html#a6054c197a10338a1bd48299be29593b5">hmap::Timer::Stop</a>(<span class="stringliteral">&quot;ITP2D_CT&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_interpolate2d.png&quot;</span>,</div>
+<div class="line">                          {z0, z1, z2, z3, z4, z5, z6},</div>
+<div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
+<div class="line">}</div>
+<div class="ttc" id="aclasshmap_1_1Cloud_html_a7b26dc92e0d2217b8438f1ce9376ea0d"><div class="ttname"><a href="classhmap_1_1Cloud.html#a7b26dc92e0d2217b8438f1ce9376ea0d">hmap::Cloud::snap_points_to_bounding_box</a></div><div class="ttdeci">void snap_points_to_bounding_box(const glm::vec4 &amp;bbox={0.f, 1.f, 0.f, 1.f}, float tolerance_ratio=1.f)</div><div class="ttdoc">Snap points to the bounding box edges and corners.</div><div class="ttdef"><b>Definition</b> cloud.cpp:435</div></div>
+<div class="ttc" id="aclasshmap_1_1Timer_html_a6054c197a10338a1bd48299be29593b5"><div class="ttname"><a href="classhmap_1_1Timer.html#a6054c197a10338a1bd48299be29593b5">hmap::Timer::Stop</a></div><div class="ttdeci">static void Stop(const std::string &amp;name)</div><div class="ttdoc">Stops the timer for the specified event name.</div><div class="ttdef"><b>Definition</b> timer.cpp:51</div></div>
+<div class="ttc" id="aclasshmap_1_1Timer_html_ae9248cf01bfd4d8f680a6c7d5b80f45b"><div class="ttname"><a href="classhmap_1_1Timer.html#ae9248cf01bfd4d8f680a6c7d5b80f45b">hmap::Timer::Start</a></div><div class="ttdeci">static void Start(const std::string &amp;name)</div><div class="ttdoc">Starts a timer for the specified event name.</div><div class="ttdef"><b>Definition</b> timer.cpp:46</div></div>
+<div class="ttc" id="anamespacehmap_html_a5bfab5d68e822294ff90fde21b85f581a4beec3d16f7dc0a1873bb04d85ea6eec"><div class="ttname"><a href="namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581a4beec3d16f7dc0a1873bb04d85ea6eec">hmap::ITP2D_IDW</a></div><div class="ttdeci">@ ITP2D_IDW</div><div class="ttdoc">Inverse Distance Weighting.</div><div class="ttdef"><b>Definition</b> interpolate2d.hpp:48</div></div>
+<div class="ttc" id="anamespacehmap_html_a5bfab5d68e822294ff90fde21b85f581a5fc536ff63a05f254ff7583cccac8a12"><div class="ttname"><a href="namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581a5fc536ff63a05f254ff7583cccac8a12">hmap::ITP2D_DELAUNAY</a></div><div class="ttdeci">@ ITP2D_DELAUNAY</div><div class="ttdoc">Delaunay triangulation method for 2D interpolation.</div><div class="ttdef"><b>Definition</b> interpolate2d.hpp:46</div></div>
+<div class="ttc" id="anamespacehmap_html_a5bfab5d68e822294ff90fde21b85f581a95b33e28ebad4905884242b69db8de0d"><div class="ttname"><a href="namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581a95b33e28ebad4905884242b69db8de0d">hmap::ITP2D_NNI</a></div><div class="ttdeci">@ ITP2D_NNI</div><div class="ttdoc">Natural Neighbor Interpolation.</div><div class="ttdef"><b>Definition</b> interpolate2d.hpp:50</div></div>
+<div class="ttc" id="anamespacehmap_html_a5bfab5d68e822294ff90fde21b85f581ac183d7ac1fa5e71a2563ed3fe93bafea"><div class="ttname"><a href="namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581ac183d7ac1fa5e71a2563ed3fe93bafea">hmap::ITP2D_GAUSSIAN</a></div><div class="ttdeci">@ ITP2D_GAUSSIAN</div><div class="ttdoc">Gaussian Distance Weighting.</div><div class="ttdef"><b>Definition</b> interpolate2d.hpp:49</div></div>
+<div class="ttc" id="anamespacehmap_html_a5bfab5d68e822294ff90fde21b85f581af445f527425b2d746556541adf5d3d29"><div class="ttname"><a href="namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581af445f527425b2d746556541adf5d3d29">hmap::ITP2D_NEAREST</a></div><div class="ttdeci">@ ITP2D_NEAREST</div><div class="ttdoc">Nearest point method for 2D interpolation.</div><div class="ttdef"><b>Definition</b> interpolate2d.hpp:47</div></div>
+<div class="ttc" id="anamespacehmap_html_a6dc3a429456ae7d9910ddcbbb32ce041"><div class="ttname"><a href="namespacehmap.html#a6dc3a429456ae7d9910ddcbbb32ce041">hmap::interpolate2d_delaunay_gradient</a></div><div class="ttdeci">Array interpolate2d_delaunay_gradient(glm::ivec2 shape, const std::vector&lt; float &gt; &amp;x, const std::vector&lt; float &gt; &amp;y, const std::vector&lt; float &gt; &amp;values, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f}, float fill_value=0.f, float gradient_scaling=1.f)</div><div class="ttdoc">2D interpolation using a smoother version of the Delaunay triangulation method.</div><div class="ttdef"><b>Definition</b> interpolate2d_delaunay_gradient.cpp:15</div></div>
+<div class="ttc" id="anamespacehmap_html_aeddca5280bfeacef3cdf4bee68a2195f"><div class="ttname"><a href="namespacehmap.html#aeddca5280bfeacef3cdf4bee68a2195f">hmap::interpolate2d</a></div><div class="ttdeci">Array interpolate2d(glm::ivec2 shape, const std::vector&lt; float &gt; &amp;x, const std::vector&lt; float &gt; &amp;y, const std::vector&lt; float &gt; &amp;values, InterpolationMethod2D interpolation_method, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Generic 2D interpolation function.</div><div class="ttdef"><b>Definition</b> interpolate2d.cpp:15</div></div>
+</div><!-- fragment --><p><b>Result</b> </p><div class="image">
+<img src="ex_interpolate2d.png" alt=""/>
+</div>
+ 
 </div>
 </div>
-<a id="a023e1bbf161eaa8f7db2a12d20cd18c5" name="a023e1bbf161eaa8f7db2a12d20cd18c5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a023e1bbf161eaa8f7db2a12d20cd18c5">&#9670;&#160;</a></span>interpolate2d_delaunay()</h2>
+<a id="acf40e21f779a67c8cfb0569fb728d797" name="acf40e21f779a67c8cfb0569fb728d797"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf40e21f779a67c8cfb0569fb728d797">&#9670;&#160;</a></span>interpolate2d_delaunay()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -30971,7 +31095,13 @@ template&lt;typename T &gt; </div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">glm::vec4&#160;</td>
-          <td class="paramname"><em>bbox</em> = <code>{0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>}</code>&#160;</td>
+          <td class="paramname"><em>bbox</em> = <code>{0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>}</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>fill_value</em> = <code>0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -30996,6 +31126,78 @@ template&lt;typename T &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="classhmap_1_1Array.html" title="Array class, helper to manipulate 2D float array with &quot;(i, j)&quot; indexing.">Array</a> Output array with interpolated values. </dd></dl>
+
+</div>
+</div>
+<a id="a6dc3a429456ae7d9910ddcbbb32ce041" name="a6dc3a429456ae7d9910ddcbbb32ce041"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6dc3a429456ae7d9910ddcbbb32ce041">&#9670;&#160;</a></span>interpolate2d_delaunay_gradient()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classhmap_1_1Array.html">Array</a> hmap::interpolate2d_delaunay_gradient </td>
+          <td>(</td>
+          <td class="paramtype">glm::ivec2&#160;</td>
+          <td class="paramname"><em>shape</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; float &gt; &amp;&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; float &gt; &amp;&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; float &gt; &amp;&#160;</td>
+          <td class="paramname"><em>values</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
+          <td class="paramname"><em>p_noise_x</em> = <code>nullptr</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
+          <td class="paramname"><em>p_noise_y</em> = <code>nullptr</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">glm::vec4&#160;</td>
+          <td class="paramname"><em>bbox</em> = <code>{0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>}</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>fill_value</em> = <code>0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>gradient_scaling</em> = <code>1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>2D interpolation using a smoother version of the Delaunay triangulation method. </p>
 
 </div>
 </div>
@@ -34837,8 +35039,6 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 <div class="line">  d2.to_png(<span class="stringliteral">&quot;ex_distance_transform3.png&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492">hmap::Cmap::VIRIDIS</a>);</div>
 <div class="line">  d3.to_png(<span class="stringliteral">&quot;ex_distance_transform4.png&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492">hmap::Cmap::VIRIDIS</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclasshmap_1_1Timer_html_a6054c197a10338a1bd48299be29593b5"><div class="ttname"><a href="classhmap_1_1Timer.html#a6054c197a10338a1bd48299be29593b5">hmap::Timer::Stop</a></div><div class="ttdeci">static void Stop(const std::string &amp;name)</div><div class="ttdoc">Stops the timer for the specified event name.</div><div class="ttdef"><b>Definition</b> timer.cpp:51</div></div>
-<div class="ttc" id="aclasshmap_1_1Timer_html_ae9248cf01bfd4d8f680a6c7d5b80f45b"><div class="ttname"><a href="classhmap_1_1Timer.html#ae9248cf01bfd4d8f680a6c7d5b80f45b">hmap::Timer::Start</a></div><div class="ttdeci">static void Start(const std::string &amp;name)</div><div class="ttdoc">Starts a timer for the specified event name.</div><div class="ttdef"><b>Definition</b> timer.cpp:46</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_a1dbc83521075f7c0179c7157f292b2b2"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a1dbc83521075f7c0179c7157f292b2b2">hmap::gpu::distance_transform_jfa</a></div><div class="ttdeci">Array distance_transform_jfa(const Array &amp;array, bool return_squared_distance=false)</div><div class="ttdoc">Return the Euclidean distance transform.</div><div class="ttdef"><b>Definition</b> distance_transform_jfa.cpp:13</div></div>
 <div class="ttc" id="anamespacehmap_html_a23fdcd258e0bab2a5fcad31d6459c3fa"><div class="ttname"><a href="namespacehmap.html#a23fdcd258e0bab2a5fcad31d6459c3fa">hmap::distance_transform_approx</a></div><div class="ttdeci">Array distance_transform_approx(const Array &amp;array, bool return_squared_distance=false)</div><div class="ttdoc">Calculates an approximate distance transform of the input array.</div><div class="ttdef"><b>Definition</b> distance_transform_approx.cpp:12</div></div>
 <div class="ttc" id="anamespacehmap_html_a3bad25b24d9ae0e07e692c546bc3480d"><div class="ttname"><a href="namespacehmap.html#a3bad25b24d9ae0e07e692c546bc3480d">hmap::distance_transform</a></div><div class="ttdeci">Array distance_transform(const Array &amp;array, bool return_squared_distance=false)</div><div class="ttdoc">Return the Euclidean distance transform.</div><div class="ttdef"><b>Definition</b> distance_transform.cpp:23</div></div>

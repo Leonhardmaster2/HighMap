@@ -133,6 +133,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a2b764615c2ac8424ffe60469d7b68970"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e62681c4e433aa980191f176ced7423" id="r_a9e62681c4e433aa980191f176ced7423"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1TerrainTriMesh.html#a9e62681c4e433aa980191f176ced7423">compute_neighbors</a> ()</td></tr>
 <tr class="separator:a9e62681c4e433aa980191f176ced7423"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed32b7cd40a0e0bba5dd777a67fe692f" id="r_aed32b7cd40a0e0bba5dd777a67fe692f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1TerrainTriMesh.html#aed32b7cd40a0e0bba5dd777a67fe692f">compute_gradients</a> ()</td></tr>
+<tr class="separator:aed32b7cd40a0e0bba5dd777a67fe692f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6974ff34df6b5184f513a17641591dd3" id="r_a6974ff34df6b5184f513a17641591dd3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1TerrainTriMesh.html#a6974ff34df6b5184f513a17641591dd3">relax_xy</a> (float lambda=0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, int iterations=1, bool preserve_chull=true)</td></tr>
 <tr class="separator:a6974ff34df6b5184f513a17641591dd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac5aa5f772fdcbb71c7a393b92c828b4d" id="r_ac5aa5f772fdcbb71c7a393b92c828b4d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1TerrainTriMesh.html#ac5aa5f772fdcbb71c7a393b92c828b4d">relax_xyz</a> (float lambda=0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, int iterations=1, bool preserve_chull=true)</td></tr>
@@ -155,6 +157,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a402e4d126734c83cc388c35736a35a6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad5e0b4845eb75accda1f0348cbdfaf36" id="r_ad5e0b4845eb75accda1f0348cbdfaf36"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1TerrainTriMesh.html#ad5e0b4845eb75accda1f0348cbdfaf36">interpolate_z_linear</a> (const glm::vec2 &amp;p, int &amp;last_tri, float fill_value=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>) const</td></tr>
 <tr class="separator:ad5e0b4845eb75accda1f0348cbdfaf36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33b6043ea3e799f78bbc3417ae6b854e" id="r_a33b6043ea3e799f78bbc3417ae6b854e"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1TerrainTriMesh.html#a33b6043ea3e799f78bbc3417ae6b854e">interpolate_z_linear_gradient</a> (const glm::vec2 &amp;p, int &amp;last_tri, float fill_value=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float gradient_scaling=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>) const</td></tr>
+<tr class="separator:a33b6043ea3e799f78bbc3417ae6b854e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a0a37653662a43fbe6ed9465ab39a82" id="r_a4a0a37653662a43fbe6ed9465ab39a82"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1TerrainTriMesh.html#a4a0a37653662a43fbe6ed9465ab39a82">interpolate_z_nearest</a> (const glm::vec2 &amp;p) const</td></tr>
 <tr class="separator:a4a0a37653662a43fbe6ed9465ab39a82"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad5966bc7d2b1181b936b34715940b3d8" id="r_ad5966bc7d2b1181b936b34715940b3d8"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1TerrainTriMesh.html#ad5966bc7d2b1181b936b34715940b3d8">interpolate_z_nearest_approx</a> (const glm::vec2 &amp;p, int &amp;last_tri, float fill_value=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>) const</td></tr>
@@ -298,6 +302,23 @@ Public Member Functions</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">void hmap::TerrainTriMesh::compute_neighbors </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aed32b7cd40a0e0bba5dd777a67fe692f" name="aed32b7cd40a0e0bba5dd777a67fe692f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed32b7cd40a0e0bba5dd777a67fe692f">&#9670;&#160;</a></span>compute_gradients()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hmap::TerrainTriMesh::compute_gradients </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -671,6 +692,46 @@ Public Member Functions</h2></td></tr>
           <td></td>
           <td class="paramtype">float&#160;</td>
           <td class="paramname"><em>fill_value</em> = <code>0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a33b6043ea3e799f78bbc3417ae6b854e" name="a33b6043ea3e799f78bbc3417ae6b854e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33b6043ea3e799f78bbc3417ae6b854e">&#9670;&#160;</a></span>interpolate_z_linear_gradient()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float hmap::TerrainTriMesh::interpolate_z_linear_gradient </td>
+          <td>(</td>
+          <td class="paramtype">const glm::vec2 &amp;&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>last_tri</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>fill_value</em> = <code>0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>gradient_scaling</em> = <code>1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>&#160;</td>
         </tr>
         <tr>
           <td></td>

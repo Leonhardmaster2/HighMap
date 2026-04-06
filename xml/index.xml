@@ -784,11 +784,13 @@
     <member refid="classhmap_1_1TerrainTriMesh_1abb5a6501cf453f42bf85fd4da26daf01" kind="variable"><name>halfedges</name></member>
     <member refid="classhmap_1_1TerrainTriMesh_1ad3839fa27b374fee7a95c1d3e63ccc27" kind="variable"><name>convex_hull</name></member>
     <member refid="classhmap_1_1TerrainTriMesh_1a82a483ad5eb711dee94f7db1a17389ae" kind="variable"><name>neighbors</name></member>
+    <member refid="classhmap_1_1TerrainTriMesh_1aeb34b72a1c8e3b1b009435f04ebca8b5" kind="variable"><name>gradients</name></member>
     <member refid="classhmap_1_1TerrainTriMesh_1aae004ef70561e4d1e601f214ff109a1f" kind="function"><name>TerrainTriMesh</name></member>
     <member refid="classhmap_1_1TerrainTriMesh_1a37612085ed993e68df599c7917cdae80" kind="function"><name>TerrainTriMesh</name></member>
     <member refid="classhmap_1_1TerrainTriMesh_1af20e8dd9d33a54d67734a892dbd0dcb9" kind="function"><name>TerrainTriMesh</name></member>
     <member refid="classhmap_1_1TerrainTriMesh_1a2b764615c2ac8424ffe60469d7b68970" kind="function"><name>triangulate_delaunay</name></member>
     <member refid="classhmap_1_1TerrainTriMesh_1a9e62681c4e433aa980191f176ced7423" kind="function"><name>compute_neighbors</name></member>
+    <member refid="classhmap_1_1TerrainTriMesh_1aed32b7cd40a0e0bba5dd777a67fe692f" kind="function"><name>compute_gradients</name></member>
     <member refid="classhmap_1_1TerrainTriMesh_1a6974ff34df6b5184f513a17641591dd3" kind="function"><name>relax_xy</name></member>
     <member refid="classhmap_1_1TerrainTriMesh_1ac5aa5f772fdcbb71c7a393b92c828b4d" kind="function"><name>relax_xyz</name></member>
     <member refid="classhmap_1_1TerrainTriMesh_1aa3788669edfb1f96c24b6ec24096b570" kind="function"><name>relax_xyz_taubin</name></member>
@@ -800,6 +802,7 @@
     <member refid="classhmap_1_1TerrainTriMesh_1ae5d88ed0cc61c8606bed76faabb77e11" kind="function"><name>find_triangle</name></member>
     <member refid="classhmap_1_1TerrainTriMesh_1a402e4d126734c83cc388c35736a35a6a" kind="function"><name>neighbor_triangle</name></member>
     <member refid="classhmap_1_1TerrainTriMesh_1ad5e0b4845eb75accda1f0348cbdfaf36" kind="function"><name>interpolate_z_linear</name></member>
+    <member refid="classhmap_1_1TerrainTriMesh_1a33b6043ea3e799f78bbc3417ae6b854e" kind="function"><name>interpolate_z_linear_gradient</name></member>
     <member refid="classhmap_1_1TerrainTriMesh_1a4a0a37653662a43fbe6ed9465ab39a82" kind="function"><name>interpolate_z_nearest</name></member>
     <member refid="classhmap_1_1TerrainTriMesh_1ad5966bc7d2b1181b936b34715940b3d8" kind="function"><name>interpolate_z_nearest_approx</name></member>
     <member refid="classhmap_1_1TerrainTriMesh_1abe70758d6b941cbca110db0ac66f167c" kind="function"><name>get_bbox</name></member>
@@ -1187,6 +1190,7 @@
     <member refid="namespacehmap_1a5bfab5d68e822294ff90fde21b85f581a4beec3d16f7dc0a1873bb04d85ea6eec" kind="enumvalue"><name>ITP2D_IDW</name></member>
     <member refid="namespacehmap_1a5bfab5d68e822294ff90fde21b85f581ac183d7ac1fa5e71a2563ed3fe93bafea" kind="enumvalue"><name>ITP2D_GAUSSIAN</name></member>
     <member refid="namespacehmap_1a5bfab5d68e822294ff90fde21b85f581a95b33e28ebad4905884242b69db8de0d" kind="enumvalue"><name>ITP2D_NNI</name></member>
+    <member refid="namespacehmap_1a5bfab5d68e822294ff90fde21b85f581abcf07b4df09d3208a73f833da6b7a278" kind="enumvalue"><name>ITP2D_DELAUNAY_GRADIENT</name></member>
     <member refid="namespacehmap_1aa78bf111867e13c63d8bd2ec005ad6c8" kind="enum"><name>InterpolationMethodCurve</name></member>
     <member refid="namespacehmap_1aa78bf111867e13c63d8bd2ec005ad6c8ac56fe3b521e08a04c926e75d7fba28f8" kind="enumvalue"><name>BEZIER</name></member>
     <member refid="namespacehmap_1aa78bf111867e13c63d8bd2ec005ad6c8a60f62532461a103e7680bba841871635" kind="enumvalue"><name>BSPLINE</name></member>
@@ -1361,8 +1365,8 @@
     <member refid="namespacehmap_1a5aceac22b926cbff676c323e1aca4db0" kind="function"><name>hydraulic_musgrave</name></member>
     <member refid="namespacehmap_1a8c20cd6c2b1cd1ec20ffb2ce86ed0ecb" kind="function"><name>hydraulic_musgrave</name></member>
     <member refid="namespacehmap_1a8dbd4d6c53cc12b4bb149629026b5fcd" kind="function"><name>hydraulic_saleve</name></member>
-    <member refid="namespacehmap_1aafe90971adf84a95dd2db719e3ba3a72" kind="function"><name>hydraulic_saleve</name></member>
-    <member refid="namespacehmap_1af8a5df295124155a9a362d57b5e96ed7" kind="function"><name>hydraulic_saleve</name></member>
+    <member refid="namespacehmap_1ab97f6c550cb8720bce40bb2770cf66f6" kind="function"><name>hydraulic_saleve</name></member>
+    <member refid="namespacehmap_1a21abd1ca557655ed48117a53653c0c12" kind="function"><name>hydraulic_saleve</name></member>
     <member refid="namespacehmap_1acbf32c30d68183eb5522888af2ede316" kind="function"><name>hydraulic_stream</name></member>
     <member refid="namespacehmap_1ae3bc02b89f4e7d0bdb221e13b66ad91e" kind="function"><name>hydraulic_stream</name></member>
     <member refid="namespacehmap_1a37caab05db1b9791bf8a8ca10852c0da" kind="function"><name>hydraulic_stream_log</name></member>
@@ -1651,7 +1655,8 @@
     <member refid="namespacehmap_1aee026d8b23196038c2b16c370b743889" kind="function"><name>cubic_interpolate</name></member>
     <member refid="namespacehmap_1a6cfd7b1fc064e5aaef1550041f1bbc06" kind="function"><name>harmonic_interpolation</name></member>
     <member refid="namespacehmap_1aeddca5280bfeacef3cdf4bee68a2195f" kind="function"><name>interpolate2d</name></member>
-    <member refid="namespacehmap_1a023e1bbf161eaa8f7db2a12d20cd18c5" kind="function"><name>interpolate2d_delaunay</name></member>
+    <member refid="namespacehmap_1acf40e21f779a67c8cfb0569fb728d797" kind="function"><name>interpolate2d_delaunay</name></member>
+    <member refid="namespacehmap_1a6dc3a429456ae7d9910ddcbbb32ce041" kind="function"><name>interpolate2d_delaunay_gradient</name></member>
     <member refid="namespacehmap_1a0a14f8ea250312a1c2392dd26d34805f" kind="function"><name>interpolate2d_gaussian</name></member>
     <member refid="namespacehmap_1a304d2b2e755c4a1fea14ac8dc6d44082" kind="function"><name>interpolate2d_idw</name></member>
     <member refid="namespacehmap_1a4cb51937d8283468bc540129d491222b" kind="function"><name>interpolate2d_nearest</name></member>
@@ -2550,6 +2555,8 @@
   <compound refid="interpolate2d_8cpp" kind="file"><name>interpolate2d.cpp</name>
   </compound>
   <compound refid="interpolate2d__delaunay_8cpp" kind="file"><name>interpolate2d_delaunay.cpp</name>
+  </compound>
+  <compound refid="interpolate2d__delaunay__gradient_8cpp" kind="file"><name>interpolate2d_delaunay_gradient.cpp</name>
   </compound>
   <compound refid="interpolate2d__gaussian_8cpp" kind="file"><name>interpolate2d_gaussian.cpp</name>
   </compound>
