@@ -1122,7 +1122,7 @@ var namespacehmap =
     [ "shadow_heightmap", "namespacehmap.html#ac28f43b4f0b1b481dc8eb528f1be0f3d", null ],
     [ "topographic_shading", "namespacehmap.html#a03570be180e333d82101d31482e78829", null ],
     [ "find_cut_path_dijkstra", "namespacehmap.html#a21a3078ba07fad81a888ca00cd6c3b33", null ],
-    [ "find_cut_path_midpoint", "namespacehmap.html#ab30632ac2e2c4eba798e8718c2ac1dee", null ],
+    [ "find_cut_path_midpoint", "namespacehmap.html#a31b9aa8b20d3bcca50f16222f10b0862", null ],
     [ "find_path_dijkstra", "namespacehmap.html#af5e2b95dd35c64ba4ff24ca2697d87f9", null ],
     [ "find_path_dijkstra", "namespacehmap.html#a96d3c2fa385b510ee723e9074dfaa194", null ],
     [ "find_path_midpoint", "namespacehmap.html#acfb2652ac666e36a3a47c1673d4e486b", null ],
