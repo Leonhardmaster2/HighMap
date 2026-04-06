@@ -12,6 +12,7 @@ var dir_06646b66eb831be9a0698496dc1137c9 =
     [ "authoring.hpp", "authoring_8hpp.html", "authoring_8hpp" ],
     [ "blending.hpp", "blending_8hpp.html", "blending_8hpp" ],
     [ "boundary.hpp", "boundary_8hpp.html", "boundary_8hpp" ],
+    [ "carving.hpp", "carving_8hpp.html", "carving_8hpp" ],
     [ "colorize.hpp", "colorize_8hpp.html", "colorize_8hpp" ],
     [ "colormaps.hpp", "colormaps_8hpp.html", "colormaps_8hpp" ],
     [ "convolve.hpp", "convolve_8hpp.html", "convolve_8hpp" ],

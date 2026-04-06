@@ -5,6 +5,7 @@ var dir_f63c6611b1023abbeb7e0b5a0bccaf92 =
     [ "authoring", "dir_4e28b1ee7c8e4cbc3d56522a84eb43a0.html", "dir_4e28b1ee7c8e4cbc3d56522a84eb43a0" ],
     [ "blending", "dir_ab5b0424e212a0effa6f8cb06c155fa6.html", "dir_ab5b0424e212a0effa6f8cb06c155fa6" ],
     [ "boundary", "dir_5eb738532fe3deb7c865076500576c96.html", "dir_5eb738532fe3deb7c865076500576c96" ],
+    [ "carving", "dir_f8eb721606e4259556b93247b998bbbb.html", "dir_f8eb721606e4259556b93247b998bbbb" ],
     [ "colorize", "dir_a61ac4948126335af1d30869953ede0b.html", "dir_a61ac4948126335af1d30869953ede0b" ],
     [ "colormaps", "dir_716c466597bbd6fb04d72c2db497087e.html", "dir_716c466597bbd6fb04d72c2db497087e" ],
     [ "convolve", "dir_a3b6977f82fd9ece9b90f544f9c42189.html", "dir_a3b6977f82fd9ece9b90f544f9c42189" ],

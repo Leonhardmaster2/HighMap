@@ -1283,7 +1283,6 @@
     <member refid="namespacehmap_1a6123c18788ae302332416d5d7585fd9f" kind="function"><name>alter_elevation</name></member>
     <member refid="namespacehmap_1ad0679d167a3129dc403e3ca7082579f8" kind="function"><name>base_elevation</name></member>
     <member refid="namespacehmap_1aae12be5c22515d12229d65dc4ecd0db0" kind="function"><name>flatbed_carve</name></member>
-    <member refid="namespacehmap_1a5f979c31af1c9ee6ad499882335ca6fb" kind="function"><name>flatbed_carve</name></member>
     <member refid="namespacehmap_1a19bb0a5d0609ac671ca054d18959c7f1" kind="function"><name>reverse_midpoint</name></member>
     <member refid="namespacehmap_1a74f6ef0464e0ec67df5179f49e14e35a" kind="function"><name>ridgelines</name></member>
     <member refid="namespacehmap_1a4e7db58b8b58def3b862476f18b6005e" kind="function"><name>ridgelines_bezier</name></member>
@@ -1309,6 +1308,10 @@
     <member refid="namespacehmap_1a2e43da799378e294ea448a498aa1d386" kind="function"><name>sym_borders</name></member>
     <member refid="namespacehmap_1ae8bdfc965780305d1d26ff8b84e1dced" kind="function"><name>zeroed_borders</name></member>
     <member refid="namespacehmap_1a968a55eecfa4489a79a27cfa0e1d3ae4" kind="function"><name>zeroed_edges</name></member>
+    <member refid="namespacehmap_1a3a29e127d53bc5b547af422da36da1cc" kind="function"><name>dig_path</name></member>
+    <member refid="namespacehmap_1a6d536f0d67ade56c6a60927d8c8e9720" kind="function"><name>dig_river</name></member>
+    <member refid="namespacehmap_1a31b3cde3ce1fa52f1856b962f4443d49" kind="function"><name>dig_river</name></member>
+    <member refid="namespacehmap_1a5f979c31af1c9ee6ad499882335ca6fb" kind="function"><name>flatbed_carve</name></member>
     <member refid="namespacehmap_1a4960846742ad118ec9eadaba40ca39ac" kind="function"><name>apply_hillshade</name></member>
     <member refid="namespacehmap_1aefc8cbe645337bb5b663436c0324f9e2" kind="function"><name>apply_hillshade</name></member>
     <member refid="namespacehmap_1a1175ee497ff12b2f3c6cdb7cc805949f" kind="function"><name>color_adjust</name></member>
@@ -1549,9 +1552,6 @@
     <member refid="namespacehmap_1a2b567f4e49f112b51a29c0915b039bc1" kind="function"><name>random_cloud_jittered</name></member>
     <member refid="namespacehmap_1ab085d07bc0e897729ca16c0dd2035fe1" kind="function"><name>convert_length_to_pixel</name></member>
     <member refid="namespacehmap_1abae56b1864390cd2f2f03acc442b423a" kind="function"><name>grid_xy_vector</name></member>
-    <member refid="namespacehmap_1a3a29e127d53bc5b547af422da36da1cc" kind="function"><name>dig_path</name></member>
-    <member refid="namespacehmap_1a6d536f0d67ade56c6a60927d8c8e9720" kind="function"><name>dig_river</name></member>
-    <member refid="namespacehmap_1a31b3cde3ce1fa52f1856b962f4443d49" kind="function"><name>dig_river</name></member>
     <member refid="namespacehmap_1a650c6eaf8bd10356a77c7c1f9ef9af3c" kind="function"><name>remove_geometric_loops</name></member>
     <member refid="namespacehmap_1aac71bb6c14edc17967957f7918acdbdd" kind="function"><name>angle</name></member>
     <member refid="namespacehmap_1a1f02679c93973b91046f26960bf266d4" kind="function"><name>angle</name></member>
@@ -2181,6 +2181,8 @@
   </compound>
   <compound refid="boundary_8hpp" kind="file"><name>boundary.hpp</name>
   </compound>
+  <compound refid="carving_8hpp" kind="file"><name>carving.hpp</name>
+  </compound>
   <compound refid="colorize_8hpp" kind="file"><name>colorize.hpp</name>
   </compound>
   <compound refid="colormaps_8hpp" kind="file"><name>colormaps.hpp</name>
@@ -2326,8 +2328,6 @@
   </compound>
   <compound refid="base__elevation_8cpp" kind="file"><name>base_elevation.cpp</name>
   </compound>
-  <compound refid="flatbed__carve_8cpp" kind="file"><name>flatbed_carve.cpp</name>
-  </compound>
   <compound refid="reverse__midpoint_8cpp" kind="file"><name>reverse_midpoint.cpp</name>
   </compound>
   <compound refid="ridgelines_8cpp" kind="file"><name>ridgelines.cpp</name>
@@ -2341,6 +2341,12 @@
   <compound refid="boundary_8cpp" kind="file"><name>boundary.cpp</name>
   </compound>
   <compound refid="pick__boundary__cell_8cpp" kind="file"><name>pick_boundary_cell.cpp</name>
+  </compound>
+  <compound refid="dig__path_8cpp" kind="file"><name>dig_path.cpp</name>
+  </compound>
+  <compound refid="dig__river_8cpp" kind="file"><name>dig_river.cpp</name>
+  </compound>
+  <compound refid="flatbed__carve_8cpp" kind="file"><name>flatbed_carve.cpp</name>
   </compound>
   <compound refid="color__adjust_8cpp" kind="file"><name>color_adjust.cpp</name>
   </compound>
@@ -2769,6 +2775,8 @@
   <compound refid="dir_ab5b0424e212a0effa6f8cb06c155fa6" kind="dir"><name>HighMap/src/blending</name>
   </compound>
   <compound refid="dir_5eb738532fe3deb7c865076500576c96" kind="dir"><name>HighMap/src/boundary</name>
+  </compound>
+  <compound refid="dir_f8eb721606e4259556b93247b998bbbb" kind="dir"><name>HighMap/src/carving</name>
   </compound>
   <compound refid="dir_a61ac4948126335af1d30869953ede0b" kind="dir"><name>HighMap/src/colorize</name>
   </compound>
