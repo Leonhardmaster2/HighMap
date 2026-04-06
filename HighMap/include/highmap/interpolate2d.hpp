@@ -48,6 +48,7 @@ enum InterpolationMethod2D : int
   ITP2D_IDW,      ///< Inverse Distance Weighting.
   ITP2D_GAUSSIAN, ///< Gaussian Distance Weighting.
   ITP2D_NNI,      ///< Natural Neighbor Interpolation.
+  ITP2D_DELAUNAY_GRADIENT, ///< Delaunay triangulation + linear gradient.
 };
 
 class NaturalNeighborInterpolator
@@ -168,6 +169,12 @@ Array harmonic_interpolation(const Array &array,
  * @param  bbox                 Domain bounding box (default: {0.f, 1.f, 0.f,
  *                              1.f}).
  * @return                      Array Output array with interpolated values.
+ *
+ * **Example**
+ * @include ex_interpolate2d.cpp
+ *
+ * **Result**
+ * @image html ex_interpolate2d.png
  */
 Array interpolate2d(glm::ivec2                shape,
                     const std::vector<float> &x,
@@ -202,7 +209,22 @@ Array interpolate2d_delaunay(glm::ivec2                shape,
                              const std::vector<float> &values,
                              const Array              *p_noise_x = nullptr,
                              const Array              *p_noise_y = nullptr,
-                             glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f});
+                             glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f},
+                             float     fill_value = 0.f);
+
+/**
+ * @brief 2D interpolation using a smoother version of the Delaunay
+ * triangulation method.
+ */
+Array interpolate2d_delaunay_gradient(glm::ivec2                shape,
+                                      const std::vector<float> &x,
+                                      const std::vector<float> &y,
+                                      const std::vector<float> &values,
+                                      const Array *p_noise_x = nullptr,
+                                      const Array *p_noise_y = nullptr,
+                                      glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f},
+                                      float        fill_value = 0.f,
+                                      float        gradient_scaling = 1.f);
 
 /**
  * @brief 2D interpolation using the Gaussian kernel method.

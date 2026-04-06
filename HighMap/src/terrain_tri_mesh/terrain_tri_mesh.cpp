@@ -19,6 +19,7 @@
 #include "macrologger.h"
 
 #include "highmap/interpolate2d.hpp"
+#include "highmap/math.hpp"
 #include "highmap/terrain_tri_mesh.hpp"
 
 namespace hmap
@@ -92,6 +93,75 @@ bool TerrainTriMesh::barycentric(const glm::vec2 &p,
   w2 *= inv;
 
   return true;
+}
+
+void TerrainTriMesh::compute_gradients()
+{
+  this->gradients.clear();
+  this->gradients.resize(points.size(), {0.f, 0.f});
+  std::vector<float> weight_sum(points.size(), 0.f);
+
+  auto angle_at =
+      [](const glm::vec2 &a, const glm::vec2 &b, const glm::vec2 &c) -> float
+  {
+    glm::vec2 u = glm::normalize(b - a);
+    glm::vec2 v = glm::normalize(c - a);
+
+    float dot = glm::clamp(glm::dot(u, v), -1.0f, 1.0f);
+    return std::acos(dot);
+  };
+
+  for (const auto &tri : triangles)
+  {
+    const auto &p0 = points[tri.a];
+    const auto &p1 = points[tri.b];
+    const auto &p2 = points[tri.c];
+
+    glm::vec2 a(p0.x, p0.y);
+    glm::vec2 b(p1.x, p1.y);
+    glm::vec2 c(p2.x, p2.y);
+
+    float dx1 = p1.x - p0.x;
+    float dy1 = p1.y - p0.y;
+    float dz1 = p1.z - p0.z;
+
+    float dx2 = p2.x - p0.x;
+    float dy2 = p2.y - p0.y;
+    float dz2 = p2.z - p0.z;
+
+    float det = dx1 * dy2 - dx2 * dy1;
+    if (std::abs(det) < 1e-12f) continue;
+
+    // Triangle gradient (constant over triangle)
+    float gx = (dz1 * dy2 - dz2 * dy1) / det;
+    float gy = (dx1 * dz2 - dx2 * dz1) / det;
+
+    // Compute angles at each vertex
+    float angle0 = angle_at(a, b, c);
+    float angle1 = angle_at(b, c, a);
+    float angle2 = angle_at(c, a, b);
+
+    auto accumulate = [&](size_t i, float w)
+    {
+      this->gradients[i].x += w * gx;
+      this->gradients[i].y += w * gy;
+      weight_sum[i] += w;
+    };
+
+    accumulate(tri.a, angle0);
+    accumulate(tri.b, angle1);
+    accumulate(tri.c, angle2);
+  }
+
+  // Normalize
+  for (size_t i = 0; i < points.size(); ++i)
+  {
+    if (weight_sum[i] > 1e-12f)
+    {
+      this->gradients[i].x /= weight_sum[i];
+      this->gradients[i].y /= weight_sum[i];
+    }
+  }
 }
 
 void TerrainTriMesh::compute_neighbors()
@@ -432,6 +502,48 @@ float TerrainTriMesh::interpolate_z_linear(const glm::vec2 &p,
       return w0 * this->points[t.a].z + w1 * this->points[t.b].z +
              w2 * this->points[t.c].z;
     }
+  }
+
+  // outside mesh or degenerate triangle
+  return fill_value;
+}
+
+float TerrainTriMesh::interpolate_z_linear_gradient(
+    const glm::vec2 &p,
+    int             &last_tri,
+    float            fill_value,
+    float            gradient_scaling) const
+{
+  int tri = this->find_triangle(p, last_tri);
+
+  if (tri >= 0)
+  {
+    last_tri = tri;
+    const auto &t = this->triangles[tri];
+
+    float w0, w1, w2;
+    bool  ret = this->barycentric(p, t.a, t.b, t.c, w0, w1, w2);
+
+    if (!ret) return fill_value;
+
+    auto eval = [&](int idx, const glm::vec3 &vertex, float w)
+    {
+      glm::vec2 grad = gradient_scaling * this->gradients[idx];
+      glm::vec2 d = p - glm::vec2(vertex);
+      return w * (vertex.z + glm::dot(grad, d));
+    };
+
+    const auto &pa = this->points[t.a];
+    const auto &pb = this->points[t.b];
+    const auto &pc = this->points[t.c];
+
+    float value = 0.0f;
+
+    value += eval(t.a, pa, w0);
+    value += eval(t.b, pb, w1);
+    value += eval(t.c, pc, w2);
+
+    return value;
   }
 
   // outside mesh or degenerate triangle

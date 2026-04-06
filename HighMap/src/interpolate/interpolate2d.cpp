@@ -66,6 +66,17 @@ Array interpolate2d(glm::ivec2                shape,
     return interpolate2d_nni(shape, x, y, values, p_noise_x, p_noise_y, bbox);
   }
 
+  case InterpolationMethod2D::ITP2D_DELAUNAY_GRADIENT:
+  {
+    return interpolate2d_delaunay_gradient(shape,
+                                           x,
+                                           y,
+                                           values,
+                                           p_noise_x,
+                                           p_noise_y,
+                                           bbox);
+  }
+
   default: throw std::runtime_error("unknown 2D interpolation method");
   }
 }

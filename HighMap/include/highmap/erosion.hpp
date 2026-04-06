@@ -498,7 +498,7 @@ Array hydraulic_saleve(const Array          &z,
                        float                 post_slope_limit = 0.f,
                        bool                  enable_post_smoothing = false,
                        InterpolationMethod2D interpolation_method =
-                           InterpolationMethod2D::ITP2D_DELAUNAY,
+                           InterpolationMethod2D::ITP2D_DELAUNAY_GRADIENT,
                        const Array *p_noise_x = nullptr,
                        const Array *p_noise_y = nullptr);
 
@@ -520,7 +520,7 @@ Array hydraulic_saleve(const Array          &z,
                        float                 post_slope_limit = 0.f,
                        bool                  enable_post_smoothing = false,
                        InterpolationMethod2D interpolation_method =
-                           InterpolationMethod2D::ITP2D_DELAUNAY,
+                           InterpolationMethod2D::ITP2D_DELAUNAY_GRADIENT,
                        const Array *p_noise_x = nullptr,
                        const Array *p_noise_y = nullptr);
 

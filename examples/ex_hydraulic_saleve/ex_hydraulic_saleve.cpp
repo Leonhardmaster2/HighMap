@@ -66,8 +66,8 @@ int main(void)
       noise_strength,
       /* enable_post_slope_limiter */ false,
       /* post_slope_limit */ 0.f,
-      /* enable_post_smoothing */ true,
-      hmap::InterpolationMethod2D::ITP2D_DELAUNAY,
+      /* enable_post_smoothing */ false,
+      hmap::InterpolationMethod2D::ITP2D_DELAUNAY_GRADIENT,
       &dx,
       &dy);
 

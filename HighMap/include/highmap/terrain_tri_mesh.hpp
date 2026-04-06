@@ -82,8 +82,10 @@ public:
 
   // --- Core processing ---
 
+  // in this order...
   void triangulate_delaunay();
   void compute_neighbors();
+  void compute_gradients();
 
   // --- Geometry ops ---
 
@@ -127,6 +129,10 @@ public:
   float interpolate_z_linear(const glm::vec2 &p,
                              int             &last_tri,
                              float            fill_value = 0.f) const;
+  float interpolate_z_linear_gradient(const glm::vec2 &p,
+                                      int             &last_tri,
+                                      float            fill_value = 0.f,
+                                      float gradient_scaling = 1.f) const;
   float interpolate_z_nearest(const glm::vec2 &p) const;
   float interpolate_z_nearest_approx(const glm::vec2 &p,
                                      int             &last_tri,
@@ -168,6 +174,7 @@ private:
   std::vector<size_t>    halfedges;
   std::vector<size_t>    convex_hull;
   NeighborData           neighbors;
+  std::vector<glm::vec2> gradients;
 
 private:
   glm::vec2 to_xy(const glm::vec3 &p) const;

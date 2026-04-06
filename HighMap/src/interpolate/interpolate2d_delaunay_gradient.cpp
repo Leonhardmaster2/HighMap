@@ -12,14 +12,15 @@
 namespace hmap
 {
 
-Array interpolate2d_delaunay(glm::ivec2                shape,
-                             const std::vector<float> &x,
-                             const std::vector<float> &y,
-                             const std::vector<float> &values,
-                             const Array              *p_noise_x,
-                             const Array              *p_noise_y,
-                             glm::vec4                 bbox,
-                             float                     fill_value)
+Array interpolate2d_delaunay_gradient(glm::ivec2                shape,
+                                      const std::vector<float> &x,
+                                      const std::vector<float> &y,
+                                      const std::vector<float> &values,
+                                      const Array              *p_noise_x,
+                                      const Array              *p_noise_y,
+                                      glm::vec4                 bbox,
+                                      float                     fill_value,
+                                      float gradient_scaling)
 {
   // failsafe
   if (x.size() < 3 || x.size() != y.size() || x.size() != values.size())
@@ -27,6 +28,7 @@ Array interpolate2d_delaunay(glm::ivec2                shape,
 
   // triangulate data
   TerrainTriMesh mesh(x, y, values);
+  mesh.compute_gradients();
 
   // grid interpolation
   std::vector<float> xg, yg;
@@ -45,7 +47,10 @@ Array interpolate2d_delaunay(glm::ivec2                shape,
       float px = xg[i] + dx;
       float py = yg[j] + dy;
 
-      out(i, j) = mesh.interpolate_z_linear({px, py}, last_tri, fill_value);
+      out(i, j) = mesh.interpolate_z_linear_gradient({px, py},
+                                                     last_tri,
+                                                     fill_value,
+                                                     gradient_scaling);
     }
 
   return out;
