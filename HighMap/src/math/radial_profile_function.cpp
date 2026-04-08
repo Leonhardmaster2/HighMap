@@ -41,6 +41,20 @@ std::function<float(float)> get_radial_profile_function(
     fct = [](float x) { return smoothstep3_upper(x); };
     break;
 
+  case RadialProfile::RP_FLAT_BOTTOM:
+    fct = [delta](float x)
+    {
+      if (x < 1.f - 1.f / delta)
+        return 0.f;
+      else
+        return smoothstep3(delta * (x - 1.f) + 1.f);
+    };
+    break;
+
+  case RadialProfile::RP_SQRT:
+    fct = [](float x) { return std::sqrt(x); };
+    break;
+
   default:
     throw std::invalid_argument(
         "Invalid radial profile request in hmap::get_radial_profile_function");

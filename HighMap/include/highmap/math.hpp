@@ -69,6 +69,8 @@ enum RadialProfile : int
   RP_POW,
   RP_SMOOTHSTEP,
   RP_SMOOTHSTEP_UPPER,
+  RP_FLAT_BOTTOM,
+  RP_SQRT
 };
 
 /**

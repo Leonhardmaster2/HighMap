@@ -9,6 +9,16 @@
 namespace hmap
 {
 
+// clang-format off
+enum ElevationLongitudinalProfile : int
+{
+	ELP_UNCHANGED,
+	ELP_FLAT, ///<
+	ELP_DECREASING, ///<
+	ELP_INCREASING, ///<
+};
+// clang-format on
+
 /**
  * @brief Dig a path on a heightmap.
  *
@@ -148,5 +158,75 @@ void flatbed_carve(Array        &z,
                    Array        *p_falloff_mask = nullptr,
                    const Array  *p_noise_r = nullptr,
                    glm::vec4     bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
+ * @brief Carves a trench along a given path into a heightmap.
+ *
+ * This function modifies the input heightmap by carving a trench defined by a
+ * polyline path. The trench shape is controlled both longitudinally (along the
+ * path) and radially (across the path). Optional noise and scaling can be
+ * applied to introduce variations in width and depth.
+ *
+ * @param[in,out] z                          Heightmap to modify (2D array of
+ *                                           elevations).
+ * @param[in]     path                       Polyline defining the trench
+ *                                           centerline.
+ * @param[in]     width                      Base width of the trench.
+ * @param[in]     enable_width_depth_scaling If true, modulates trench width
+ *                                           based on local elevation
+ *                                           difference.
+ * @param[in]     radial_profile             Type of radial profile used to
+ *                                           shape the trench cross-section.
+ * @param[in]     radial_profile_parameter   Parameter controlling the radial
+ *                                           profile shape.
+ * @param[in]     longitudinal_profile       Controls how elevation evolves
+ *                                           along the path (e.g., flat,
+ *                                           increasing, decreasing).
+ * @param[in]     elevation_shift            Global elevation offset applied
+ *                                           along the path.
+ * @param[in]     shift_ramp_start_ratio     Ratio of the path length used to
+ *                                           smoothly ramp the elevation shift
+ *                                           at the beginning.
+ * @param[in]     shift_ramp_end_ratio       Ratio of the path length used to
+ *                                           smoothly ramp the elevation shift
+ *                                           at the end.
+ * @param[in]     min_slope                  Minimum slope enforced between
+ *                                           consecutive path points when
+ *                                           monotonicity is required.
+ * @param[in]     k_neighbors                Number of nearest neighbors used
+ *                                           for interpolation.
+ * @param[in]     p_noise_r                  Optional pointer to a noise array
+ *                                           used to locally perturb trench
+ *                                           width (can be nullptr).
+ * @param[out]    p_bending_mask             Optional output mask representing
+ *                                           blending weights (can be nullptr).
+ * @param[in]     bbox                       Bounding box of the domain as
+ *                                           (xmin, xmax, ymin, ymax).
+ *
+ * @warning The function assumes that @p elevation_shift is non-zero when
+ * width-depth scaling is enabled, to avoid division by zero.
+ *
+ * **Example**
+ * @include ex_trench.cpp
+ *
+ * **Result**
+ * @image html ex_trench.png
+ */
+void trench(Array        &z,
+            const Path   &path,
+            float         width = 0.05f,
+            bool          enable_width_depth_scaling = true,
+            RadialProfile radial_profile = RadialProfile::RP_SMOOTHSTEP_UPPER,
+            float         radial_profile_parameter = 2.f,
+            ElevationLongitudinalProfile longitudinal_profile =
+                ElevationLongitudinalProfile::ELP_DECREASING,
+            float        elevation_shift = -0.05f,
+            float        shift_ramp_start_ratio = 0.f,
+            float        shift_ramp_end_ratio = 0.f,
+            float        min_slope = 0.01f,
+            size_t       k_neighbors = 8,
+            const Array *p_noise_r = nullptr,
+            Array       *p_bending_mask = nullptr,
+            glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
 
 } // namespace hmap

@@ -852,6 +852,13 @@ void Path::to_array(Array &array, glm::vec4 bbox, bool filled) const
   }
 }
 
+void Path::to_array_mask(Array &array, glm::vec4 bbox, bool filled) const
+{
+  Path path_copy = *this;
+  path_copy.set_values(1.f);
+  path_copy.to_array(array, bbox, filled);
+}
+
 Array Path::to_array_sdf(glm::ivec2 shape,
                          glm::vec4  bbox,
                          Array     *p_noise_x,

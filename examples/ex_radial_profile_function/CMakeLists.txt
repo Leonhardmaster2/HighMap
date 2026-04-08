@@ -1,0 +1,2 @@
+add_executable(ex_radial_profile_function ex_radial_profile_function.cpp)
+target_link_libraries(ex_radial_profile_function highmap)

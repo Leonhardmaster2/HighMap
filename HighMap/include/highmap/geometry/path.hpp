@@ -769,6 +769,10 @@ public:
                 glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f},
                 bool      filled = false) const;
 
+  void to_array_mask(Array    &array,
+                     glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f},
+                     bool      filled = false) const;
+
   /**
    * @brief Return an array filled with the signed distance function to the
    * path.
