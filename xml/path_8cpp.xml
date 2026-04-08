@@ -862,92 +862,99 @@
 <codeline lineno="852"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="853"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="854"><highlight class="normal"></highlight></codeline>
-<codeline lineno="855"><highlight class="normal">Array<sp/><ref refid="classhmap_1_1Path_1a7e2720d4f455f84d99ec7bef1b597729" kindref="member">Path::to_array_sdf</ref>(glm::ivec2<sp/>shape,</highlight></codeline>
-<codeline lineno="856"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glm::vec4<sp/><sp/>bbox,</highlight></codeline>
-<codeline lineno="857"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Array<sp/><sp/><sp/><sp/><sp/>*p_noise_x,</highlight></codeline>
-<codeline lineno="858"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Array<sp/><sp/><sp/><sp/><sp/>*p_noise_y,</highlight></codeline>
-<codeline lineno="859"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glm::vec4<sp/><sp/>bbox_array)</highlight></codeline>
-<codeline lineno="860"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="861"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Path<sp/>nodes</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="862"><highlight class="normal"><sp/><sp/>std::vector&lt;float&gt;<sp/>xp<sp/>=<sp/>this-&gt;<ref refid="classhmap_1_1Path_1ac01edb126b845a027883d9abd88e826b" kindref="member">get_x</ref>();</highlight></codeline>
-<codeline lineno="863"><highlight class="normal"><sp/><sp/>std::vector&lt;float&gt;<sp/>yp<sp/>=<sp/>this-&gt;<ref refid="classhmap_1_1Path_1ab9ff9f7a0ea9c090c34810536458da8d" kindref="member">get_y</ref>();</highlight></codeline>
-<codeline lineno="864"><highlight class="normal"></highlight></codeline>
-<codeline lineno="865"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>k<sp/>=<sp/>0;<sp/>k<sp/>&lt;<sp/>xp.size();<sp/>k++)</highlight></codeline>
-<codeline lineno="866"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
-<codeline lineno="867"><highlight class="normal"><sp/><sp/><sp/><sp/>xp[k]<sp/>=<sp/>(xp[k]<sp/>-<sp/>bbox.x)<sp/>/<sp/>(bbox.y<sp/>-<sp/>bbox.x);</highlight></codeline>
-<codeline lineno="868"><highlight class="normal"><sp/><sp/><sp/><sp/>yp[k]<sp/>=<sp/>(yp[k]<sp/>-<sp/>bbox.z)<sp/>/<sp/>(bbox.w<sp/>-<sp/>bbox.z);</highlight></codeline>
-<codeline lineno="869"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="870"><highlight class="normal"></highlight></codeline>
-<codeline lineno="871"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>fill<sp/>heightmap</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="872"><highlight class="normal"><sp/><sp/>std::function&lt;float(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)&gt;<sp/>distance_fct;</highlight></codeline>
-<codeline lineno="873"><highlight class="normal"></highlight></codeline>
-<codeline lineno="874"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classhmap_1_1Path_1a2ea3482a302d8ef30084fd39e57715de" kindref="member">closed</ref>)</highlight></codeline>
-<codeline lineno="875"><highlight class="normal"><sp/><sp/><sp/><sp/>distance_fct<sp/>=<sp/>[</highlight><highlight class="keyword">this</highlight><highlight class="normal">](</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>y,<sp/>float)</highlight></codeline>
-<codeline lineno="876"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classhmap_1_1Path_1aca3af97c0e4df80290c4b28640fb6a70" kindref="member">sdf_closed</ref>(x,<sp/>y);<sp/>};</highlight></codeline>
-<codeline lineno="877"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="878"><highlight class="normal"><sp/><sp/><sp/><sp/>distance_fct<sp/>=<sp/>[</highlight><highlight class="keyword">this</highlight><highlight class="normal">](</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>y,<sp/>float)</highlight></codeline>
-<codeline lineno="879"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classhmap_1_1Path_1ad4afe09089c84b5452ff0801b7161baf" kindref="member">sdf_open</ref>(x,<sp/>y);<sp/>};</highlight></codeline>
+<codeline lineno="855"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classhmap_1_1Path_1a2292e74883cb6da795ce35a46ef8e735" kindref="member">Path::to_array_mask</ref>(Array<sp/>&amp;array,<sp/>glm::vec4<sp/>bbox,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>filled)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="856"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="857"><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Path_1a9695b8d68fc506c403f47dde1b74620c" kindref="member">Path</ref><sp/>path_copy<sp/>=<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="858"><highlight class="normal"><sp/><sp/>path_copy.set_values(1.f);</highlight></codeline>
+<codeline lineno="859"><highlight class="normal"><sp/><sp/>path_copy.to_array(array,<sp/>bbox,<sp/>filled);</highlight></codeline>
+<codeline lineno="860"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="861"><highlight class="normal"></highlight></codeline>
+<codeline lineno="862"><highlight class="normal">Array<sp/><ref refid="classhmap_1_1Path_1a7e2720d4f455f84d99ec7bef1b597729" kindref="member">Path::to_array_sdf</ref>(glm::ivec2<sp/>shape,</highlight></codeline>
+<codeline lineno="863"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glm::vec4<sp/><sp/>bbox,</highlight></codeline>
+<codeline lineno="864"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Array<sp/><sp/><sp/><sp/><sp/>*p_noise_x,</highlight></codeline>
+<codeline lineno="865"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Array<sp/><sp/><sp/><sp/><sp/>*p_noise_y,</highlight></codeline>
+<codeline lineno="866"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glm::vec4<sp/><sp/>bbox_array)</highlight></codeline>
+<codeline lineno="867"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="868"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Path<sp/>nodes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="869"><highlight class="normal"><sp/><sp/>std::vector&lt;float&gt;<sp/>xp<sp/>=<sp/>this-&gt;<ref refid="classhmap_1_1Path_1ac01edb126b845a027883d9abd88e826b" kindref="member">get_x</ref>();</highlight></codeline>
+<codeline lineno="870"><highlight class="normal"><sp/><sp/>std::vector&lt;float&gt;<sp/>yp<sp/>=<sp/>this-&gt;<ref refid="classhmap_1_1Path_1ab9ff9f7a0ea9c090c34810536458da8d" kindref="member">get_y</ref>();</highlight></codeline>
+<codeline lineno="871"><highlight class="normal"></highlight></codeline>
+<codeline lineno="872"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>k<sp/>=<sp/>0;<sp/>k<sp/>&lt;<sp/>xp.size();<sp/>k++)</highlight></codeline>
+<codeline lineno="873"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="874"><highlight class="normal"><sp/><sp/><sp/><sp/>xp[k]<sp/>=<sp/>(xp[k]<sp/>-<sp/>bbox.x)<sp/>/<sp/>(bbox.y<sp/>-<sp/>bbox.x);</highlight></codeline>
+<codeline lineno="875"><highlight class="normal"><sp/><sp/><sp/><sp/>yp[k]<sp/>=<sp/>(yp[k]<sp/>-<sp/>bbox.z)<sp/>/<sp/>(bbox.w<sp/>-<sp/>bbox.z);</highlight></codeline>
+<codeline lineno="876"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="877"><highlight class="normal"></highlight></codeline>
+<codeline lineno="878"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>fill<sp/>heightmap</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="879"><highlight class="normal"><sp/><sp/>std::function&lt;float(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)&gt;<sp/>distance_fct;</highlight></codeline>
 <codeline lineno="880"><highlight class="normal"></highlight></codeline>
-<codeline lineno="881"><highlight class="normal"><sp/><sp/>Array<sp/>z<sp/>=<sp/>Array(shape);</highlight></codeline>
-<codeline lineno="882"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a54f6b9fef96254284b27ea73543abe55" kindref="member">fill_array_using_xy_function</ref>(z,</highlight></codeline>
-<codeline lineno="883"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bbox_array,</highlight></codeline>
-<codeline lineno="884"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,</highlight></codeline>
-<codeline lineno="885"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p_noise_x,</highlight></codeline>
-<codeline lineno="886"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p_noise_y,</highlight></codeline>
-<codeline lineno="887"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,</highlight></codeline>
-<codeline lineno="888"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>distance_fct);</highlight></codeline>
-<codeline lineno="889"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>z;</highlight></codeline>
-<codeline lineno="890"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="891"><highlight class="normal"></highlight></codeline>
-<codeline lineno="892"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classhmap_1_1Path_1aaf9111fdcae15cc51cfcd5faffb38f23" kindref="member">Path::to_png</ref>(std::string<sp/>fname,<sp/>glm::ivec2<sp/>shape)</highlight></codeline>
-<codeline lineno="893"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="894"><highlight class="normal"><sp/><sp/>Array<sp/>array<sp/>=<sp/>Array(shape);</highlight></codeline>
-<codeline lineno="895"><highlight class="normal"><sp/><sp/>this-&gt;<ref refid="classhmap_1_1Path_1a4d1e1e63fea24bf8f23bc3343f8b746e" kindref="member">to_array</ref>(array,<sp/>this-&gt;<ref refid="classhmap_1_1Cloud_1ae5ba6ffbe371603545c312e51601615f" kindref="member">get_bbox</ref>());</highlight></codeline>
-<codeline lineno="896"><highlight class="normal"><sp/><sp/>array.to_png(fname,<sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143" kindref="member">Cmap::INFERNO</ref>,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="881"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classhmap_1_1Path_1a2ea3482a302d8ef30084fd39e57715de" kindref="member">closed</ref>)</highlight></codeline>
+<codeline lineno="882"><highlight class="normal"><sp/><sp/><sp/><sp/>distance_fct<sp/>=<sp/>[</highlight><highlight class="keyword">this</highlight><highlight class="normal">](</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>y,<sp/>float)</highlight></codeline>
+<codeline lineno="883"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classhmap_1_1Path_1aca3af97c0e4df80290c4b28640fb6a70" kindref="member">sdf_closed</ref>(x,<sp/>y);<sp/>};</highlight></codeline>
+<codeline lineno="884"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="885"><highlight class="normal"><sp/><sp/><sp/><sp/>distance_fct<sp/>=<sp/>[</highlight><highlight class="keyword">this</highlight><highlight class="normal">](</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>y,<sp/>float)</highlight></codeline>
+<codeline lineno="886"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classhmap_1_1Path_1ad4afe09089c84b5452ff0801b7161baf" kindref="member">sdf_open</ref>(x,<sp/>y);<sp/>};</highlight></codeline>
+<codeline lineno="887"><highlight class="normal"></highlight></codeline>
+<codeline lineno="888"><highlight class="normal"><sp/><sp/>Array<sp/>z<sp/>=<sp/>Array(shape);</highlight></codeline>
+<codeline lineno="889"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a54f6b9fef96254284b27ea73543abe55" kindref="member">fill_array_using_xy_function</ref>(z,</highlight></codeline>
+<codeline lineno="890"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bbox_array,</highlight></codeline>
+<codeline lineno="891"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="892"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p_noise_x,</highlight></codeline>
+<codeline lineno="893"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p_noise_y,</highlight></codeline>
+<codeline lineno="894"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="895"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>distance_fct);</highlight></codeline>
+<codeline lineno="896"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>z;</highlight></codeline>
 <codeline lineno="897"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="898"><highlight class="normal"></highlight></codeline>
-<codeline lineno="899"><highlight class="normal"></highlight><highlight class="comment">//----------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="900"><highlight class="normal"></highlight><highlight class="comment">//<sp/>functions</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="901"><highlight class="normal"></highlight><highlight class="comment">//----------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="902"><highlight class="normal"></highlight></codeline>
-<codeline lineno="903"><highlight class="normal">Path<sp/><ref refid="namespacehmap_1a650c6eaf8bd10356a77c7c1f9ef9af3c" kindref="member">remove_geometric_loops</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Path<sp/>&amp;path)</highlight></codeline>
-<codeline lineno="904"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="905"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(path.get_npoints()<sp/>&lt;<sp/>4)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>path;<sp/></highlight><highlight class="comment">//<sp/>no<sp/>loops<sp/>possible</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="906"><highlight class="normal"></highlight></codeline>
-<codeline lineno="907"><highlight class="normal"><sp/><sp/>Path<sp/>result<sp/>=<sp/>path;</highlight></codeline>
-<codeline lineno="908"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>changed;</highlight></codeline>
+<codeline lineno="899"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classhmap_1_1Path_1aaf9111fdcae15cc51cfcd5faffb38f23" kindref="member">Path::to_png</ref>(std::string<sp/>fname,<sp/>glm::ivec2<sp/>shape)</highlight></codeline>
+<codeline lineno="900"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="901"><highlight class="normal"><sp/><sp/>Array<sp/>array<sp/>=<sp/>Array(shape);</highlight></codeline>
+<codeline lineno="902"><highlight class="normal"><sp/><sp/>this-&gt;<ref refid="classhmap_1_1Path_1a4d1e1e63fea24bf8f23bc3343f8b746e" kindref="member">to_array</ref>(array,<sp/>this-&gt;<ref refid="classhmap_1_1Cloud_1ae5ba6ffbe371603545c312e51601615f" kindref="member">get_bbox</ref>());</highlight></codeline>
+<codeline lineno="903"><highlight class="normal"><sp/><sp/>array.to_png(fname,<sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143" kindref="member">Cmap::INFERNO</ref>,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="904"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="905"><highlight class="normal"></highlight></codeline>
+<codeline lineno="906"><highlight class="normal"></highlight><highlight class="comment">//----------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="907"><highlight class="normal"></highlight><highlight class="comment">//<sp/>functions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="908"><highlight class="normal"></highlight><highlight class="comment">//----------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="909"><highlight class="normal"></highlight></codeline>
-<codeline lineno="910"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">do</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="911"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
-<codeline lineno="912"><highlight class="normal"><sp/><sp/><sp/><sp/>changed<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="913"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>+<sp/>1<sp/>&lt;<sp/>result.get_npoints();<sp/>++i)</highlight></codeline>
-<codeline lineno="914"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="915"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>i<sp/>+<sp/>2;<sp/>j<sp/>+<sp/>1<sp/>&lt;<sp/>result.get_npoints();<sp/>++j)</highlight></codeline>
-<codeline lineno="916"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="917"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>inter<sp/>=<sp/><ref refid="namespacehmap_1ae6135d0c9d4716e3edbd06bb67f26fb2" kindref="member">segment_intersection</ref>(result.points[i],</highlight></codeline>
-<codeline lineno="918"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.points[i<sp/>+<sp/>1],</highlight></codeline>
-<codeline lineno="919"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.points[j],</highlight></codeline>
-<codeline lineno="920"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.points[j<sp/>+<sp/>1]);</highlight></codeline>
-<codeline lineno="921"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(inter)</highlight></codeline>
-<codeline lineno="922"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="923"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>remove<sp/>points<sp/>between<sp/>segments<sp/>i+1<sp/>and<sp/>j</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="924"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.points.erase(result.points.begin()<sp/>+<sp/>i<sp/>+<sp/>1,</highlight></codeline>
-<codeline lineno="925"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.points.begin()<sp/>+<sp/>j<sp/>+<sp/>1);</highlight></codeline>
-<codeline lineno="926"><highlight class="normal"></highlight></codeline>
-<codeline lineno="927"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>insert<sp/>intersection<sp/>point</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="928"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.points.insert(result.points.begin()<sp/>+<sp/>i<sp/>+<sp/>1,<sp/>*inter);</highlight></codeline>
-<codeline lineno="929"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>changed<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="930"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="931"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="932"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="933"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(changed)<sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="934"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="935"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(changed);</highlight></codeline>
-<codeline lineno="936"><highlight class="normal"></highlight></codeline>
-<codeline lineno="937"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
-<codeline lineno="938"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="939"><highlight class="normal"></highlight></codeline>
-<codeline lineno="940"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>hmap</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="910"><highlight class="normal">Path<sp/><ref refid="namespacehmap_1a650c6eaf8bd10356a77c7c1f9ef9af3c" kindref="member">remove_geometric_loops</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Path<sp/>&amp;path)</highlight></codeline>
+<codeline lineno="911"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="912"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(path.get_npoints()<sp/>&lt;<sp/>4)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>path;<sp/></highlight><highlight class="comment">//<sp/>no<sp/>loops<sp/>possible</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="913"><highlight class="normal"></highlight></codeline>
+<codeline lineno="914"><highlight class="normal"><sp/><sp/>Path<sp/>result<sp/>=<sp/>path;</highlight></codeline>
+<codeline lineno="915"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>changed;</highlight></codeline>
+<codeline lineno="916"><highlight class="normal"></highlight></codeline>
+<codeline lineno="917"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">do</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="918"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="919"><highlight class="normal"><sp/><sp/><sp/><sp/>changed<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="920"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>+<sp/>1<sp/>&lt;<sp/>result.get_npoints();<sp/>++i)</highlight></codeline>
+<codeline lineno="921"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="922"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>i<sp/>+<sp/>2;<sp/>j<sp/>+<sp/>1<sp/>&lt;<sp/>result.get_npoints();<sp/>++j)</highlight></codeline>
+<codeline lineno="923"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="924"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>inter<sp/>=<sp/><ref refid="namespacehmap_1ae6135d0c9d4716e3edbd06bb67f26fb2" kindref="member">segment_intersection</ref>(result.points[i],</highlight></codeline>
+<codeline lineno="925"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.points[i<sp/>+<sp/>1],</highlight></codeline>
+<codeline lineno="926"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.points[j],</highlight></codeline>
+<codeline lineno="927"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.points[j<sp/>+<sp/>1]);</highlight></codeline>
+<codeline lineno="928"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(inter)</highlight></codeline>
+<codeline lineno="929"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="930"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>remove<sp/>points<sp/>between<sp/>segments<sp/>i+1<sp/>and<sp/>j</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="931"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.points.erase(result.points.begin()<sp/>+<sp/>i<sp/>+<sp/>1,</highlight></codeline>
+<codeline lineno="932"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.points.begin()<sp/>+<sp/>j<sp/>+<sp/>1);</highlight></codeline>
+<codeline lineno="933"><highlight class="normal"></highlight></codeline>
+<codeline lineno="934"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>insert<sp/>intersection<sp/>point</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="935"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.points.insert(result.points.begin()<sp/>+<sp/>i<sp/>+<sp/>1,<sp/>*inter);</highlight></codeline>
+<codeline lineno="936"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>changed<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="937"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="938"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="939"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="940"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(changed)<sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="941"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="942"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(changed);</highlight></codeline>
+<codeline lineno="943"><highlight class="normal"></highlight></codeline>
+<codeline lineno="944"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="945"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="946"><highlight class="normal"></highlight></codeline>
+<codeline lineno="947"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>hmap</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="HighMap/src/geometry/path.cpp"/>
   </compounddef>

@@ -145,18 +145,22 @@ This software is distributed under the terms of the GNU General Public License. 
 <codeline lineno="769"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glm::vec4<sp/>bbox<sp/>=<sp/>{0.f,<sp/>1.f,<sp/>0.f,<sp/>1.f},</highlight></codeline>
 <codeline lineno="770"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>filled<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="771"><highlight class="normal"></highlight></codeline>
-<codeline lineno="802"><highlight class="normal"><sp/><sp/>Array<sp/><ref refid="classhmap_1_1Path_1a7e2720d4f455f84d99ec7bef1b597729" kindref="member">to_array_sdf</ref>(glm::ivec2<sp/>shape,</highlight></codeline>
-<codeline lineno="803"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glm::vec4<sp/><sp/>bbox,</highlight></codeline>
-<codeline lineno="804"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Array<sp/><sp/><sp/><sp/><sp/>*p_noise_x<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,</highlight></codeline>
-<codeline lineno="805"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Array<sp/><sp/><sp/><sp/><sp/>*p_noise_y<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,</highlight></codeline>
-<codeline lineno="806"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glm::vec4<sp/><sp/>bbox_array<sp/>=<sp/>{0.f,<sp/>1.f,<sp/>0.f,<sp/>1.f});</highlight></codeline>
-<codeline lineno="807"><highlight class="normal"></highlight></codeline>
-<codeline lineno="821"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classhmap_1_1Path_1aaf9111fdcae15cc51cfcd5faffb38f23" kindref="member">to_png</ref>(std::string<sp/>fname,<sp/>glm::ivec2<sp/>shape<sp/>=<sp/>{512,<sp/>512});</highlight></codeline>
-<codeline lineno="822"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="823"><highlight class="normal"></highlight></codeline>
-<codeline lineno="840"><highlight class="normal">Path<sp/><ref refid="namespacehmap_1a650c6eaf8bd10356a77c7c1f9ef9af3c" kindref="member">remove_geometric_loops</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Path<sp/>&amp;path);</highlight></codeline>
-<codeline lineno="841"><highlight class="normal"></highlight></codeline>
-<codeline lineno="842"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>hmap</highlight></codeline>
+<codeline lineno="772"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classhmap_1_1Path_1a2292e74883cb6da795ce35a46ef8e735" kindref="member">to_array_mask</ref>(Array<sp/><sp/><sp/><sp/>&amp;array,</highlight></codeline>
+<codeline lineno="773"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glm::vec4<sp/>bbox<sp/>=<sp/>{0.f,<sp/>1.f,<sp/>0.f,<sp/>1.f},</highlight></codeline>
+<codeline lineno="774"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>filled<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="775"><highlight class="normal"></highlight></codeline>
+<codeline lineno="806"><highlight class="normal"><sp/><sp/>Array<sp/><ref refid="classhmap_1_1Path_1a7e2720d4f455f84d99ec7bef1b597729" kindref="member">to_array_sdf</ref>(glm::ivec2<sp/>shape,</highlight></codeline>
+<codeline lineno="807"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glm::vec4<sp/><sp/>bbox,</highlight></codeline>
+<codeline lineno="808"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Array<sp/><sp/><sp/><sp/><sp/>*p_noise_x<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="809"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Array<sp/><sp/><sp/><sp/><sp/>*p_noise_y<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="810"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glm::vec4<sp/><sp/>bbox_array<sp/>=<sp/>{0.f,<sp/>1.f,<sp/>0.f,<sp/>1.f});</highlight></codeline>
+<codeline lineno="811"><highlight class="normal"></highlight></codeline>
+<codeline lineno="825"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classhmap_1_1Path_1aaf9111fdcae15cc51cfcd5faffb38f23" kindref="member">to_png</ref>(std::string<sp/>fname,<sp/>glm::ivec2<sp/>shape<sp/>=<sp/>{512,<sp/>512});</highlight></codeline>
+<codeline lineno="826"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="827"><highlight class="normal"></highlight></codeline>
+<codeline lineno="844"><highlight class="normal">Path<sp/><ref refid="namespacehmap_1a650c6eaf8bd10356a77c7c1f9ef9af3c" kindref="member">remove_geometric_loops</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Path<sp/>&amp;path);</highlight></codeline>
+<codeline lineno="845"><highlight class="normal"></highlight></codeline>
+<codeline lineno="846"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>hmap</highlight></codeline>
     </programlisting>
     <location file="HighMap/include/highmap/geometry/path.hpp"/>
   </compounddef>

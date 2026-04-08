@@ -18,7 +18,9 @@ var math_8hpp =
       [ "RP_LINEAR", "math_8hpp.html#a2affc745bc33b7555352665745741f90a8374fb3e0d0799f69d5a50e6e26f56b0", null ],
       [ "RP_POW", "math_8hpp.html#a2affc745bc33b7555352665745741f90a67c1906a040e7234b7a636eaf7ef7901", null ],
       [ "RP_SMOOTHSTEP", "math_8hpp.html#a2affc745bc33b7555352665745741f90ad18fad6ec8edf55050af29b51e14fffd", null ],
-      [ "RP_SMOOTHSTEP_UPPER", "math_8hpp.html#a2affc745bc33b7555352665745741f90acedc11502bd1441e893fdc5a699b6d59", null ]
+      [ "RP_SMOOTHSTEP_UPPER", "math_8hpp.html#a2affc745bc33b7555352665745741f90acedc11502bd1441e893fdc5a699b6d59", null ],
+      [ "RP_FLAT_BOTTOM", "math_8hpp.html#a2affc745bc33b7555352665745741f90a42aff3426715647722fc7945ca24ec4c", null ],
+      [ "RP_SQRT", "math_8hpp.html#a2affc745bc33b7555352665745741f90ada6f8c1c08707c0497225cca34975ca5", null ]
     ] ],
     [ "abs", "math_8hpp.html#a527cfdcf7f7e2ca0e270875526c9b1ee", null ],
     [ "abs_smooth", "math_8hpp.html#aa99a114cc6073cf7368c927afd9b4f87", null ],

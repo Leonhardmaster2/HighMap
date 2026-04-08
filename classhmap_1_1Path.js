@@ -38,6 +38,7 @@ var classhmap_1_1Path =
     [ "smooth", "classhmap_1_1Path.html#abdb4fffc12c3cfee268f8afad9ec3893", null ],
     [ "subsample", "classhmap_1_1Path.html#a9816b231362dd1ca5208a839626f1f68", null ],
     [ "to_array", "classhmap_1_1Path.html#a4d1e1e63fea24bf8f23bc3343f8b746e", null ],
+    [ "to_array_mask", "classhmap_1_1Path.html#a2292e74883cb6da795ce35a46ef8e735", null ],
     [ "to_array_sdf", "classhmap_1_1Path.html#a7e2720d4f455f84d99ec7bef1b597729", null ],
     [ "to_png", "classhmap_1_1Path.html#aaf9111fdcae15cc51cfcd5faffb38f23", null ],
     [ "closed", "classhmap_1_1Path.html#a2ea3482a302d8ef30084fd39e57715de", null ]

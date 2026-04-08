@@ -632,6 +632,7 @@
     <member refid="classhmap_1_1Path_1abdb4fffc12c3cfee268f8afad9ec3893" kind="function"><name>smooth</name></member>
     <member refid="classhmap_1_1Path_1a9816b231362dd1ca5208a839626f1f68" kind="function"><name>subsample</name></member>
     <member refid="classhmap_1_1Path_1a4d1e1e63fea24bf8f23bc3343f8b746e" kind="function"><name>to_array</name></member>
+    <member refid="classhmap_1_1Path_1a2292e74883cb6da795ce35a46ef8e735" kind="function"><name>to_array_mask</name></member>
     <member refid="classhmap_1_1Path_1a7e2720d4f455f84d99ec7bef1b597729" kind="function"><name>to_array_sdf</name></member>
     <member refid="classhmap_1_1Path_1aaf9111fdcae15cc51cfcd5faffb38f23" kind="function"><name>to_png</name></member>
   </compound>
@@ -1096,6 +1097,11 @@
     <member refid="namespacehmap_1a1ba9d4ce7afe3309f8ae8e617f7154eeadb9a04ab3508704543b5dd43ae495fe7" kind="enumvalue"><name>BOUNDARY_RIGHT</name></member>
     <member refid="namespacehmap_1a1ba9d4ce7afe3309f8ae8e617f7154eea1bda4002f204a3b745ea70dab2b6b6d8" kind="enumvalue"><name>BOUNDARY_TOP</name></member>
     <member refid="namespacehmap_1a1ba9d4ce7afe3309f8ae8e617f7154eeac7495a13a71417dd76751518cd185309" kind="enumvalue"><name>BOUNDARY_BOTTOM</name></member>
+    <member refid="namespacehmap_1a22e54d4ecd4b37d658c1d9ac9531377d" kind="enum"><name>ElevationLongitudinalProfile</name></member>
+    <member refid="namespacehmap_1a22e54d4ecd4b37d658c1d9ac9531377daabf84cadf529b762c633c095e327a04f" kind="enumvalue"><name>ELP_UNCHANGED</name></member>
+    <member refid="namespacehmap_1a22e54d4ecd4b37d658c1d9ac9531377dafd4730784e44686f7abf9a80e9d4b78f" kind="enumvalue"><name>ELP_FLAT</name></member>
+    <member refid="namespacehmap_1a22e54d4ecd4b37d658c1d9ac9531377daf9b3bb1e76572464d8a6a413d9f12cef" kind="enumvalue"><name>ELP_DECREASING</name></member>
+    <member refid="namespacehmap_1a22e54d4ecd4b37d658c1d9ac9531377dab5d3567f29e73ff4a65b0ac46f55d1a3" kind="enumvalue"><name>ELP_INCREASING</name></member>
     <member refid="namespacehmap_1abc952321c99ec11d60b4037e3d27db9b" kind="enum"><name>NormalMapBlendingMethod</name></member>
     <member refid="namespacehmap_1abc952321c99ec11d60b4037e3d27db9bac248af7dd230247485e3c09a663cedd0" kind="enumvalue"><name>NMAP_LINEAR</name></member>
     <member refid="namespacehmap_1abc952321c99ec11d60b4037e3d27db9ba97d5a1740991179c436482de8c1c1f34" kind="enumvalue"><name>NMAP_DERIVATIVE</name></member>
@@ -1225,6 +1231,8 @@
     <member refid="namespacehmap_1a2affc745bc33b7555352665745741f90a67c1906a040e7234b7a636eaf7ef7901" kind="enumvalue"><name>RP_POW</name></member>
     <member refid="namespacehmap_1a2affc745bc33b7555352665745741f90ad18fad6ec8edf55050af29b51e14fffd" kind="enumvalue"><name>RP_SMOOTHSTEP</name></member>
     <member refid="namespacehmap_1a2affc745bc33b7555352665745741f90acedc11502bd1441e893fdc5a699b6d59" kind="enumvalue"><name>RP_SMOOTHSTEP_UPPER</name></member>
+    <member refid="namespacehmap_1a2affc745bc33b7555352665745741f90a42aff3426715647722fc7945ca24ec4c" kind="enumvalue"><name>RP_FLAT_BOTTOM</name></member>
+    <member refid="namespacehmap_1a2affc745bc33b7555352665745741f90ada6f8c1c08707c0497225cca34975ca5" kind="enumvalue"><name>RP_SQRT</name></member>
     <member refid="namespacehmap_1a9e2493cec1a67b3140691e617ddc925a" kind="enum"><name>DistanceTransformType</name></member>
     <member refid="namespacehmap_1a9e2493cec1a67b3140691e617ddc925aa109b04de7ca555c0e4d17629e55e7ee3" kind="enumvalue"><name>DT_EXACT</name></member>
     <member refid="namespacehmap_1a9e2493cec1a67b3140691e617ddc925aa3b8bce8feaa179b9a546bbbe28c1d44a" kind="enumvalue"><name>DT_APPROX</name></member>
@@ -1312,6 +1320,7 @@
     <member refid="namespacehmap_1a6d536f0d67ade56c6a60927d8c8e9720" kind="function"><name>dig_river</name></member>
     <member refid="namespacehmap_1a31b3cde3ce1fa52f1856b962f4443d49" kind="function"><name>dig_river</name></member>
     <member refid="namespacehmap_1a5f979c31af1c9ee6ad499882335ca6fb" kind="function"><name>flatbed_carve</name></member>
+    <member refid="namespacehmap_1a3611ca86e749a7217ba3bfd8548f15ce" kind="function"><name>trench</name></member>
     <member refid="namespacehmap_1a4960846742ad118ec9eadaba40ca39ac" kind="function"><name>apply_hillshade</name></member>
     <member refid="namespacehmap_1aefc8cbe645337bb5b663436c0324f9e2" kind="function"><name>apply_hillshade</name></member>
     <member refid="namespacehmap_1a1175ee497ff12b2f3c6cdb7cc805949f" kind="function"><name>color_adjust</name></member>
@@ -2347,6 +2356,8 @@
   <compound refid="dig__river_8cpp" kind="file"><name>dig_river.cpp</name>
   </compound>
   <compound refid="flatbed__carve_8cpp" kind="file"><name>flatbed_carve.cpp</name>
+  </compound>
+  <compound refid="trench_8cpp" kind="file"><name>trench.cpp</name>
   </compound>
   <compound refid="color__adjust_8cpp" kind="file"><name>color_adjust.cpp</name>
   </compound>

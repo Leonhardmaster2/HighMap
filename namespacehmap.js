@@ -310,6 +310,12 @@ var namespacehmap =
       [ "BOUNDARY_TOP", "namespacehmap.html#a1ba9d4ce7afe3309f8ae8e617f7154eea1bda4002f204a3b745ea70dab2b6b6d8", null ],
       [ "BOUNDARY_BOTTOM", "namespacehmap.html#a1ba9d4ce7afe3309f8ae8e617f7154eeac7495a13a71417dd76751518cd185309", null ]
     ] ],
+    [ "ElevationLongitudinalProfile", "namespacehmap.html#a22e54d4ecd4b37d658c1d9ac9531377d", [
+      [ "ELP_UNCHANGED", "namespacehmap.html#a22e54d4ecd4b37d658c1d9ac9531377daabf84cadf529b762c633c095e327a04f", null ],
+      [ "ELP_FLAT", "namespacehmap.html#a22e54d4ecd4b37d658c1d9ac9531377dafd4730784e44686f7abf9a80e9d4b78f", null ],
+      [ "ELP_DECREASING", "namespacehmap.html#a22e54d4ecd4b37d658c1d9ac9531377daf9b3bb1e76572464d8a6a413d9f12cef", null ],
+      [ "ELP_INCREASING", "namespacehmap.html#a22e54d4ecd4b37d658c1d9ac9531377dab5d3567f29e73ff4a65b0ac46f55d1a3", null ]
+    ] ],
     [ "NormalMapBlendingMethod", "namespacehmap.html#abc952321c99ec11d60b4037e3d27db9b", [
       [ "NMAP_LINEAR", "namespacehmap.html#abc952321c99ec11d60b4037e3d27db9bac248af7dd230247485e3c09a663cedd0", null ],
       [ "NMAP_DERIVATIVE", "namespacehmap.html#abc952321c99ec11d60b4037e3d27db9ba97d5a1740991179c436482de8c1c1f34", null ],
@@ -453,7 +459,9 @@ var namespacehmap =
       [ "RP_LINEAR", "namespacehmap.html#a2affc745bc33b7555352665745741f90a8374fb3e0d0799f69d5a50e6e26f56b0", null ],
       [ "RP_POW", "namespacehmap.html#a2affc745bc33b7555352665745741f90a67c1906a040e7234b7a636eaf7ef7901", null ],
       [ "RP_SMOOTHSTEP", "namespacehmap.html#a2affc745bc33b7555352665745741f90ad18fad6ec8edf55050af29b51e14fffd", null ],
-      [ "RP_SMOOTHSTEP_UPPER", "namespacehmap.html#a2affc745bc33b7555352665745741f90acedc11502bd1441e893fdc5a699b6d59", null ]
+      [ "RP_SMOOTHSTEP_UPPER", "namespacehmap.html#a2affc745bc33b7555352665745741f90acedc11502bd1441e893fdc5a699b6d59", null ],
+      [ "RP_FLAT_BOTTOM", "namespacehmap.html#a2affc745bc33b7555352665745741f90a42aff3426715647722fc7945ca24ec4c", null ],
+      [ "RP_SQRT", "namespacehmap.html#a2affc745bc33b7555352665745741f90ada6f8c1c08707c0497225cca34975ca5", null ]
     ] ],
     [ "DistanceTransformType", "namespacehmap.html#a9e2493cec1a67b3140691e617ddc925a", [
       [ "DT_EXACT", "namespacehmap.html#a9e2493cec1a67b3140691e617ddc925aa109b04de7ca555c0e4d17629e55e7ee3", null ],
@@ -542,6 +550,7 @@ var namespacehmap =
     [ "dig_river", "namespacehmap.html#a6d536f0d67ade56c6a60927d8c8e9720", null ],
     [ "dig_river", "namespacehmap.html#a31b3cde3ce1fa52f1856b962f4443d49", null ],
     [ "flatbed_carve", "namespacehmap.html#a5f979c31af1c9ee6ad499882335ca6fb", null ],
+    [ "trench", "namespacehmap.html#a3611ca86e749a7217ba3bfd8548f15ce", null ],
     [ "apply_hillshade", "namespacehmap.html#a4960846742ad118ec9eadaba40ca39ac", null ],
     [ "apply_hillshade", "namespacehmap.html#aefc8cbe645337bb5b663436c0324f9e2", null ],
     [ "color_adjust", "namespacehmap.html#a1175ee497ff12b2f3c6cdb7cc805949f", null ],
