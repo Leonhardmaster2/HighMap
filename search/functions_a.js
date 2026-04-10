@@ -12,11 +12,12 @@ var searchData=
   ['linspace_9',['linspace',['../namespacehmap.html#a3957ac4ae673f8ad402b5dd71e99b015',1,'hmap']]],
   ['linspace_5fjitted_10',['linspace_jitted',['../namespacehmap.html#a068e4d5be8c16ab9e708dca9678dc8de',1,'hmap']]],
   ['local_5findices_11',['local_indices',['../structhmap_1_1VirtualArray.html#a12c769efc1f74252ff39f2b617f55f33',1,'hmap::VirtualArray']]],
-  ['local_5fmedian_5fdeviation_12',['local_median_deviation',['../namespacehmap.html#a9b6a1d2ca8ef58a4a0605d04bcbff038',1,'hmap::local_median_deviation()'],['../namespacehmap_1_1gpu.html#a022f5800d7e28f79f9e2d3abf687f490',1,'hmap::gpu::local_median_deviation()']]],
-  ['log10_13',['log10',['../namespacehmap.html#a75475b6109023ce0ad64f6f9f7c4c525',1,'hmap']]],
-  ['lorentzian_14',['lorentzian',['../namespacehmap.html#a921bc84c2e2cf76a022da0ffaaf60802',1,'hmap']]],
-  ['lorentzian_5fcompact_15',['lorentzian_compact',['../namespacehmap.html#a0cfa024afb9246aaa89ec6b2e69501c3',1,'hmap']]],
-  ['low_5fpass_5fhigh_5forder_16',['low_pass_high_order',['../namespacehmap.html#a81842482472ceecc660913388219bb77',1,'hmap']]],
-  ['lrutilestorage_17',['LruTileStorage',['../classhmap_1_1LruTileStorage.html#a18948b97db31797b0fe45c58d2da883b',1,'hmap::LruTileStorage']]],
-  ['luminance_18',['luminance',['../namespacehmap.html#a051c3f6f1ceda0feaf3c36c97bd7fef9',1,'hmap']]]
+  ['local_5fmedian_5fdeviation_12',['local_median_deviation',['../namespacehmap.html#a9b6a1d2ca8ef58a4a0605d04bcbff038',1,'hmap::local_median_deviation()'],['../namespacehmap_1_1gpu.html#a022f5800d7e28f79f9e2d3abf687f490',1,'hmap::gpu::local_median_deviation(const Array &amp;array, int ir)']]],
+  ['local_5frelief_13',['local_relief',['../namespacehmap_1_1gpu.html#a5e3ebf317043142adc19dd211ba07230',1,'hmap::gpu']]],
+  ['log10_14',['log10',['../namespacehmap.html#a75475b6109023ce0ad64f6f9f7c4c525',1,'hmap']]],
+  ['lorentzian_15',['lorentzian',['../namespacehmap.html#a921bc84c2e2cf76a022da0ffaaf60802',1,'hmap']]],
+  ['lorentzian_5fcompact_16',['lorentzian_compact',['../namespacehmap.html#a0cfa024afb9246aaa89ec6b2e69501c3',1,'hmap']]],
+  ['low_5fpass_5fhigh_5forder_17',['low_pass_high_order',['../namespacehmap.html#a81842482472ceecc660913388219bb77',1,'hmap']]],
+  ['lrutilestorage_18',['LruTileStorage',['../classhmap_1_1LruTileStorage.html#a18948b97db31797b0fe45c58d2da883b',1,'hmap::LruTileStorage']]],
+  ['luminance_19',['luminance',['../namespacehmap.html#a051c3f6f1ceda0feaf3c36c97bd7fef9',1,'hmap']]]
 ];
