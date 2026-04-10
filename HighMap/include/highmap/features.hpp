@@ -431,6 +431,30 @@ namespace hmap::gpu
 /*! @brief See hmap::local_median_deviation */
 Array local_median_deviation(const Array &array, int ir);
 
+/**
+ * @brief Compute the local relief of an array.
+ *
+ * The local relief is defined as the difference between the maximum and minimum
+ * values within a neighborhood of radius @p ir around each element. This
+ * provides a measure of local variation in the array (e.g., terrain
+ * ruggedness).
+ *
+ * @param  array Input array representing scalar values (e.g., elevation map).
+ * @param  ir    Radius of the neighborhood (in pixels) used to compute local
+ *               extrema.
+ *
+ * @return       Array An array of the same size as @p array, where each element
+ *               contains the difference between the local maximum and minimum
+ *               within the specified neighborhood.
+ *
+ * **Example**
+ * @include ex_local_relief.cpp
+ *
+ * **Result**
+ * @image html ex_local_relief.png
+ */
+Array local_relief(const Array &array, int ir);
+
 /*! @brief See hmap::mean_local */
 Array mean_local(const Array &array, int ir);
 

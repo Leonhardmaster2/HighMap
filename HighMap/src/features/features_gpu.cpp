@@ -16,6 +16,15 @@ Array local_median_deviation(const Array &array, int ir)
   return abs(mean - med);
 }
 
+Array local_relief(const Array &array, int ir)
+{ // Compute the local relief, the difference between maximum and minimum
+  // elevation in a neighborhood.
+  Array amin = gpu::minimum_local(array, ir);
+  Array amax = gpu::maximum_local(array, ir);
+
+  return amax - amin;
+}
+
 Array mean_local(const Array &array, int ir)
 {
   Array array_out = array;
