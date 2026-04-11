@@ -171,22 +171,43 @@
 <codeline lineno="160"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std;</highlight></codeline>
 <codeline lineno="161"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="162"><highlight class="normal"></highlight></codeline>
-<codeline lineno="163"><highlight class="normal">Array<sp/><ref refid="namespacehmap_1_1gpu_1a802ae2cfde5f1a4124ebd0bd2f2dc6c4" kindref="member">z_score</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array<sp/>&amp;array,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ir)</highlight></codeline>
+<codeline lineno="163"><highlight class="normal">Array<sp/><ref refid="namespacehmap_1_1gpu_1a74594cae7628bcfb1c038ac6930fe97d" kindref="member">topographic_position_index</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array<sp/>&amp;array,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ir)</highlight></codeline>
 <codeline lineno="164"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="165"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>NB<sp/>-<sp/>use<sp/>Gaussian<sp/>windowing<sp/>instead<sp/>of<sp/>a<sp/>real<sp/>arithmetic<sp/>averaging</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="166"><highlight class="normal"><sp/><sp/>Array<sp/>mean<sp/>=<sp/>array;</highlight></codeline>
-<codeline lineno="167"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1a7d2aae253f1f67bbdbc718859f83ef0a" kindref="member">gpu::smooth_cpulse</ref>(mean,<sp/>ir);</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/>Array<sp/>out(array.shape);</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>run<sp/>=<sp/>clwrapper::Run(</highlight><highlight class="stringliteral">&quot;topographic_position_index&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="168"><highlight class="normal"></highlight></codeline>
-<codeline lineno="169"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>use<sp/>mean<sp/>to<sp/>store<sp/>(array<sp/>-<sp/>mean)^2</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="170"><highlight class="normal"><sp/><sp/>mean<sp/>-=<sp/>array;</highlight></codeline>
-<codeline lineno="171"><highlight class="normal"><sp/><sp/>mean<sp/>*=<sp/>mean;</highlight></codeline>
-<codeline lineno="172"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1a7d2aae253f1f67bbdbc718859f83ef0a" kindref="member">gpu::smooth_cpulse</ref>(mean,<sp/>ir);</highlight></codeline>
-<codeline lineno="173"><highlight class="normal"><sp/><sp/>Array<sp/>std<sp/>=<sp/><ref refid="namespacehmap_1a6b608e2826c1f9ba54a0e8922d5faa6b" kindref="member">sqrt</ref>(mean);</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/>run.bind_imagef(</highlight><highlight class="stringliteral">&quot;array&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const_cast&lt;</highlight><highlight class="normal">std::vector&lt;float&gt;<sp/>&amp;</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(array.vector),</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>array.shape.x,</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>array.shape.y);</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/>run.bind_imagef(</highlight><highlight class="stringliteral">&quot;out&quot;</highlight><highlight class="normal">,<sp/>out.vector,<sp/>array.shape.x,<sp/>array.shape.y,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="174"><highlight class="normal"></highlight></codeline>
-<codeline lineno="175"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(array<sp/>-<sp/>mean)<sp/>/<sp/>std;</highlight></codeline>
-<codeline lineno="176"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="177"><highlight class="normal"></highlight></codeline>
-<codeline lineno="178"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>hmap::gpu</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/>run.bind_arguments(array.shape.x,<sp/>array.shape.y,<sp/>ir);</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/>run.execute({array.shape.x,<sp/>array.shape.y});</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/>run.read_imagef(</highlight><highlight class="stringliteral">&quot;out&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>out;</highlight></codeline>
+<codeline lineno="182"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal">Array<sp/><ref refid="namespacehmap_1_1gpu_1a802ae2cfde5f1a4124ebd0bd2f2dc6c4" kindref="member">z_score</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array<sp/>&amp;array,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ir)</highlight></codeline>
+<codeline lineno="185"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>NB<sp/>-<sp/>use<sp/>Gaussian<sp/>windowing<sp/>instead<sp/>of<sp/>a<sp/>real<sp/>arithmetic<sp/>averaging</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/>Array<sp/>mean<sp/>=<sp/>array;</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1a7d2aae253f1f67bbdbc718859f83ef0a" kindref="member">gpu::smooth_cpulse</ref>(mean,<sp/>ir);</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>use<sp/>mean<sp/>to<sp/>store<sp/>(array<sp/>-<sp/>mean)^2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/>mean<sp/>-=<sp/>array;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/>mean<sp/>*=<sp/>mean;</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1a7d2aae253f1f67bbdbc718859f83ef0a" kindref="member">gpu::smooth_cpulse</ref>(mean,<sp/>ir);</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/>Array<sp/>std<sp/>=<sp/><ref refid="namespacehmap_1a6b608e2826c1f9ba54a0e8922d5faa6b" kindref="member">sqrt</ref>(mean);</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(array<sp/>-<sp/>mean)<sp/>/<sp/>std;</highlight></codeline>
+<codeline lineno="197"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>hmap::gpu</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="HighMap/src/features/features_gpu.cpp"/>
   </compounddef>
