@@ -94,17 +94,17 @@ var NAVTREEINDEX =
 "filters_8cpp.html#a6a2f30cadb25b5e8b20d73c5447e4c56",
 "flatbed__carve_8cpp.html",
 "hydraulic__vpipes__gpu_8cpp.html",
-"local__metrics__gpu_8cpp.html#a022f5800d7e28f79f9e2d3abf687f490",
-"namespacehmap.html#a0cfa024afb9246aaa89ec6b2e69501c3",
-"namespacehmap.html#a549a837963a123060e2d7622d313fb57",
-"namespacehmap.html#aa60fa2d3f02d1e064b520fa1623200d0",
-"namespacehmap.html#addd566daeeba4b807513b59951de0003",
-"namespacehmap_1_1gpu.html#ac3ce919cb2abf0860493113a90892b79",
-"points_8cpp.html#ac7a93fe9501041332e1ff7a128742c6f",
-"recast_8cpp.html#aa8ca09c4db0795d0d7a4a8341e7f1159",
-"structhmap_1_1KDTreeContext.html#aa7d99c52bea43261bf5323627ac47e73",
-"structhmap_1_1VirtualArray.html#a157b5a589d01cb7da7fd9b9b759f94c6",
-"virtual__array_8inl.html#a22b2c2c836594a23051ee27f190ea4f1"
+"local__metrics_8hpp_source.html",
+"namespacehmap.html#a0bcc84aa462aee73e1a3a52729f21ea6",
+"namespacehmap.html#a538bb0deab3446abc04bbe26a4dd5da1",
+"namespacehmap.html#aa4468d1e57ee67ba0be8fb1ab931045a",
+"namespacehmap.html#add3e6744c96ed203d611ceecf65d343e",
+"namespacehmap_1_1gpu.html#aba356da2f66b4fc2886bd27edc3a15ec",
+"points_8cpp.html#a9249226d73f4396157c1c6415ebf3a7c",
+"recast_8cpp.html#a33b2549e5317a7172338381005ba6532",
+"structhmap_1_1KDTreeContext.html#a4088f3e0e081971c2a10d39502bca147",
+"structhmap_1_1VirtualArray.html",
+"virtual__array_8hpp.html#ae383414b46ae8992e621c407f09ce7c5ad610a3b158cd10452fc144bda389aa19"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

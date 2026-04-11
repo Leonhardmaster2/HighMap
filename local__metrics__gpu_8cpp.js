@@ -1,6 +1,8 @@
 var local__metrics__gpu_8cpp =
 [
+    [ "local_max", "local__metrics__gpu_8cpp.html#a36cacf53f15459d0e32a0b089ce2db2f", null ],
     [ "local_mean", "local__metrics__gpu_8cpp.html#a72341578d241e21b4c31d7497287cfc3", null ],
+    [ "local_min", "local__metrics__gpu_8cpp.html#a5c576fca64db583bf500d667173c128a", null ],
     [ "local_median_deviation", "local__metrics__gpu_8cpp.html#a022f5800d7e28f79f9e2d3abf687f490", null ],
     [ "local_relief", "local__metrics__gpu_8cpp.html#a5e3ebf317043142adc19dd211ba07230", null ],
     [ "local_variance", "local__metrics__gpu_8cpp.html#aeca9d8454f50273ca4a4f3db0c25a1b1", null ],
