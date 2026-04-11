@@ -48,7 +48,7 @@ void dig_path(Array    &z,
     path_copy.set_values(1.f);
 
     path_copy.to_array(mask, bbox);
-    zf = mean_local(z, flattening_radius);
+    zf = local_mean(z, flattening_radius);
   }
 
   mask = maximum_local(mask, width);

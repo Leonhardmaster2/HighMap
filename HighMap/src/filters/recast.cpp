@@ -107,7 +107,7 @@ void recast_cliff(Array &array,
   clamp_min(dn, 0.f);
   smooth_cpulse(dn, ir);
 
-  Array vmin = mean_local(array, ir);
+  Array vmin = local_mean(array, ir);
   Array vmax = vmin + amplitude * dn;
 
   // apply gain filter
@@ -167,7 +167,7 @@ void recast_cliff_directional(Array &array,
   clamp_min(da, 0.f);
   smooth_cpulse(da, ir);
 
-  Array vmin = mean_local(array, ir);
+  Array vmin = local_mean(array, ir);
   Array vmax = vmin + amplitude * dn * da;
 
   // apply gain filter

@@ -13,14 +13,7 @@
 namespace hmap
 {
 
-Array local_median_deviation(const Array &array, int ir)
-{
-  Array mean = mean_local(array, ir);
-  Array med = median_pseudo(array, ir); // TODO exact
-  return abs(mean - med);
-}
-
-Array mean_local(const Array &array, int ir)
+Array local_mean(const Array &array, int ir)
 {
   Array array_out = Array(array.shape);
 
@@ -32,6 +25,13 @@ Array mean_local(const Array &array, int ir)
   array_out = convolve1d_j(array_out, k1d);
 
   return array_out;
+}
+
+Array local_median_deviation(const Array &array, int ir)
+{
+  Array mean = local_mean(array, ir);
+  Array med = median_pseudo(array, ir); // TODO exact
+  return abs(mean - med);
 }
 
 Array relative_elevation(const Array &array, int ir)

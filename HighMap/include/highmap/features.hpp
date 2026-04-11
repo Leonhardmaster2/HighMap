@@ -255,7 +255,7 @@ Array kmeans_clustering3(const Array        &array1,
  * **Result**
  * @image html ex_local_median_deviation.png
  *
- * @see          mean_local(), median_pseudo()
+ * @see          local_mean(), median_pseudo()
  */
 Array local_median_deviation(const Array &array, int ir);
 
@@ -274,15 +274,15 @@ Array local_median_deviation(const Array &array, int ir);
  * @return       Array Resulting array containing the local means.
  *
  * **Example**
- * @include ex_mean_local.cpp
+ * @include ex_local_mean.cpp
  *
  * **Result**
- * @image html ex_mean_local0.png
- * @image html ex_mean_local1.png
+ * @image html ex_local_mean0.png
+ * @image html ex_local_mean1.png
  *
  * @see          {@link maximum_local}, {@link minimum_local}
  */
-Array mean_local(const Array &array, int ir);
+Array local_mean(const Array &array, int ir);
 
 /**
  * @brief Calculates the relative elevation within a specified radius, helping
@@ -449,8 +449,8 @@ Array local_relief(const Array &array, int ir);
  */
 Array local_variance(const Array &array, int ir);
 
-/*! @brief See hmap::mean_local */
-Array mean_local(const Array &array, int ir);
+/*! @brief See hmap::local_mean */
+Array local_mean(const Array &array, int ir);
 
 /**
  * @brief Compute the Topographic Position Index (TPI).

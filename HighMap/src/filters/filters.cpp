@@ -599,7 +599,7 @@ void median_3x3(Array &array, const Array *p_mask)
 Array median_pseudo(const Array &array, int ir)
 {
   return (minimum_local(array, ir) + maximum_local(array, ir) +
-          mean_local(array, ir)) /
+          local_mean(array, ir)) /
          3.f;
 }
 

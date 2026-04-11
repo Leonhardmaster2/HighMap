@@ -218,10 +218,10 @@ int main(void)
             "maximum_smooth");
   }
 
-  compare([ir](hmap::Array &z) { z = hmap::mean_local(z, ir); },
-          [ir](hmap::Array &z) { z = hmap::gpu::mean_local(z, ir); },
+  compare([ir](hmap::Array &z) { z = hmap::local_mean(z, ir); },
+          [ir](hmap::Array &z) { z = hmap::gpu::local_mean(z, ir); },
           1e-3f,
-          "mean_local");
+          "local_mean");
 
   compare([ir](hmap::Array &z)
           { z = hmap::mean_shift(z, ir, 16.f / z.shape.x, 4); },

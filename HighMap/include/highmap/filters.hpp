@@ -1038,7 +1038,7 @@ void median_3x3(Array &array);
  * **Result**
  * @image html ex_median_pseudo.png
  *
- * @see          minimum_local, maximum_local, mean_local
+ * @see          minimum_local, maximum_local, local_mean
  */
 Array median_pseudo(const Array &array, int ir);
 

@@ -2,7 +2,7 @@ R""(
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-void kernel mean_local(read_only image2d_t  in,
+void kernel local_mean(read_only image2d_t  in,
                        write_only image2d_t out,
                        const int            nx,
                        const int            ny,
