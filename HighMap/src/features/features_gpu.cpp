@@ -17,12 +17,24 @@ Array local_median_deviation(const Array &array, int ir)
 }
 
 Array local_relief(const Array &array, int ir)
-{ // Compute the local relief, the difference between maximum and minimum
-  // elevation in a neighborhood.
-  Array amin = gpu::minimum_local(array, ir);
-  Array amax = gpu::maximum_local(array, ir);
+{
+  Array out(array.shape);
 
-  return amax - amin;
+  auto run = clwrapper::Run("local_relief");
+
+  run.bind_imagef("array",
+                  const_cast<std::vector<float> &>(array.vector),
+                  array.shape.x,
+                  array.shape.y);
+  run.bind_imagef("out", out.vector, array.shape.x, array.shape.y, true);
+
+  run.bind_arguments(array.shape.x, array.shape.y, ir);
+
+  run.execute({array.shape.x, array.shape.y});
+
+  run.read_imagef("out");
+
+  return out;
 }
 
 Array mean_local(const Array &array, int ir)

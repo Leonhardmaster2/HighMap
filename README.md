@@ -66,3 +66,8 @@ To integrate HighMap into your CMake-based project, follow these steps:
 ### Usage examples
 
 See the `examples` folder.
+
+## Third Party Code
+
+This project includes code from external open-source projects.
+See [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md).
