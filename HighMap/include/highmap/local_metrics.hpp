@@ -342,3 +342,31 @@ Array ruggedness(const Array &array, int ir);
 Array rugosity(const Array &z, int ir, bool convex = true);
 
 } // namespace hmap::gpu
+
+// --- WRAPPER
+
+namespace hmap::gpu
+{
+
+// clang-format off
+enum LocalMetrics : int
+{
+   LM_LOCAL_ASPECT_VARIANCE,
+   LM_LOCAL_MAX,
+   LM_LOCAL_MEDIAN_DEVIATION,
+   LM_LOCAL_MIN,
+   LM_LOCAL_RELIEF,
+   LM_LOCAL_VARIANCE,
+   LM_LOCAL_MEAN,
+   LM_LOCAL_Z_SCORE,
+   LM_TOPOGRAPHIC_POSITION_INDEX,
+   LM_RELATIVE_ELEVATION,
+   LM_RUGGEDNESS,
+   LM_RUGOSITY_CONCAVE,
+   LM_RUGOSITY_CONVEX,
+};
+// clang-format on
+
+Array local_metrics(const Array &array, int ir, LocalMetrics metric);
+
+} // namespace hmap::gpu
