@@ -79,7 +79,10 @@ bool is_within_radius_and_inside(const int i,
 {
   if (!is_inside(i, j, nx, ny)) return false;
 
-  return (i * i + j * j <= ic * ic);
+  int id = i - ic;
+  int jd = j - jc;
+
+  return (id * id + jd * jd <= ir * ir);
 }
 
 int linear_index(const int i, const int j, const int nx)

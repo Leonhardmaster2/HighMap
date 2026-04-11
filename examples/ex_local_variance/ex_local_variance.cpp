@@ -13,8 +13,8 @@ int main(void)
 
   // gpu version
   hmap::gpu::init_opencl();
-  hmap::Array z1 = hmap::gpu::local_relief(z, ir);
+  hmap::Array z1 = hmap::gpu::local_variance(z, ir);
   hmap::remap(z1);
 
-  hmap::export_banner_png("ex_local_relief.png", {z, z1}, hmap::Cmap::JET);
+  hmap::export_banner_png("ex_local_variance.png", {z, z1}, hmap::Cmap::JET);
 }

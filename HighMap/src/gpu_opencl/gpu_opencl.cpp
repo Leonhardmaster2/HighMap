@@ -52,6 +52,7 @@ bool init_opencl()
 #include "kernels/jump_flooding.cl"
 #include "kernels/laplace.cl"
 #include "kernels/local_relief.cl"
+#include "kernels/local_variance.cl"
 #include "kernels/maximum_local.cl"
 #include "kernels/maximum_smooth.cl"
 #include "kernels/mean_local.cl"

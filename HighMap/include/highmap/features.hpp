@@ -455,6 +455,25 @@ Array local_median_deviation(const Array &array, int ir);
  */
 Array local_relief(const Array &array, int ir);
 
+/**
+ * @brief Compute the average local variance of an array.
+ *
+ * Local variance is defined as the standard deviation within a window of radius
+ * @p ir centered on each cell. The function computes this value for every cell,
+ * then returns the average over the entire domain.
+ *
+ * @param  array Input array.
+ * @param  ir    Radius of the local window.
+ * @return       Array containing the averaged local variance.
+ *
+ * **Example**
+ * @include ex_local_variance.cpp
+ *
+ * **Result**
+ * @image html ex_local_variance.png
+ */
+Array local_variance(const Array &array, int ir);
+
 /*! @brief See hmap::mean_local */
 Array mean_local(const Array &array, int ir);
 
