@@ -7,9 +7,9 @@
 #include <random>
 
 #include "highmap/array.hpp"
-#include "highmap/local_metrics.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/gradient.hpp"
+#include "highmap/local_metrics.hpp"
 #include "highmap/math.hpp"
 #include "highmap/primitives.hpp"
 #include "highmap/range.hpp"

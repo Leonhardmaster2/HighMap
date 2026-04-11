@@ -3,11 +3,11 @@
  * this software. */
 #include "highmap/blending.hpp"
 #include "highmap/boundary.hpp"
-#include "highmap/local_metrics.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/gradient.hpp"
 #include "highmap/hydrology/hydrology.hpp"
 #include "highmap/kernels.hpp"
+#include "highmap/local_metrics.hpp"
 #include "highmap/math.hpp"
 #include "highmap/opencl/gpu_opencl.hpp"
 #include "highmap/range.hpp"

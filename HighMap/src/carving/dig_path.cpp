@@ -2,9 +2,9 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 #include "highmap/array.hpp"
-#include "highmap/local_metrics.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/geometry/path.hpp"
+#include "highmap/local_metrics.hpp"
 #include "highmap/morphology.hpp"
 
 namespace hmap

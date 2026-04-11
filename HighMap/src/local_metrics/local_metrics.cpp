@@ -2,8 +2,8 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 #include "highmap/array.hpp"
-#include "highmap/curvature.hpp"
 #include "highmap/convolve.hpp"
+#include "highmap/curvature.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/math.hpp"
 #include "highmap/morphology.hpp"

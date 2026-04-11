@@ -192,8 +192,12 @@ Array rugosity(const Array &z, int ir, bool convex = true);
 namespace hmap::gpu
 {
 
+Array local_max(const Array &array, int ir);
+
 /*! @brief See hmap::local_median_deviation */
 Array local_median_deviation(const Array &array, int ir);
+
+Array local_min(const Array &array, int ir);
 
 /**
  * @brief Compute the local relief of an array.

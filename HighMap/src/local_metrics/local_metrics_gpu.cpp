@@ -9,6 +9,27 @@
 namespace hmap::gpu
 {
 
+Array local_max(const Array &array, int ir)
+{
+  Array out(array.shape);
+
+  auto run = clwrapper::Run("local_max");
+
+  run.bind_imagef("array",
+                  const_cast<std::vector<float> &>(array.vector),
+                  array.shape.x,
+                  array.shape.y);
+  run.bind_imagef("out", out.vector, array.shape.x, array.shape.y, true);
+
+  run.bind_arguments(array.shape.x, array.shape.y, ir);
+
+  run.execute({array.shape.x, array.shape.y});
+
+  run.read_imagef("out");
+
+  return out;
+}
+
 Array local_mean(const Array &array, int ir)
 {
   Array array_out = array;
@@ -29,6 +50,27 @@ Array local_mean(const Array &array, int ir)
   run.read_imagef("out");
 
   return array_out;
+}
+
+Array local_min(const Array &array, int ir)
+{
+  Array out(array.shape);
+
+  auto run = clwrapper::Run("local_min");
+
+  run.bind_imagef("array",
+                  const_cast<std::vector<float> &>(array.vector),
+                  array.shape.x,
+                  array.shape.y);
+  run.bind_imagef("out", out.vector, array.shape.x, array.shape.y, true);
+
+  run.bind_arguments(array.shape.x, array.shape.y, ir);
+
+  run.execute({array.shape.x, array.shape.y});
+
+  run.read_imagef("out");
+
+  return out;
 }
 
 Array local_median_deviation(const Array &array, int ir)
