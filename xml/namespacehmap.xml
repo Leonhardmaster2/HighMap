@@ -15517,20 +15517,20 @@ Each tile is extracted using slicing, adjusted for overlap if specified, and the
 </programlisting></para>
 <para><bold>Result</bold> <image type="html" name="ex_local_median_deviation.png"></image>
 </para>
-<para><simplesect kind="see"><para><ref refid="namespacehmap_1a39d52250df1825ecea1e63309d94d1fb" kindref="member">mean_local()</ref>, <ref refid="namespacehmap_1a14eb6b7d304484c8cbb231b672851491" kindref="member">median_pseudo()</ref> </para>
+<para><simplesect kind="see"><para><ref refid="namespacehmap_1ac297b8711e186ee1e5cdc7d1fc6a7972" kindref="member">local_mean()</ref>, <ref refid="namespacehmap_1a14eb6b7d304484c8cbb231b672851491" kindref="member">median_pseudo()</ref> </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/features/features.cpp" line="16" column="7" bodyfile="HighMap/src/features/features.cpp" bodystart="16" bodyend="21" declfile="HighMap/include/highmap/features.hpp" declline="260" declcolumn="7"/>
+        <location file="HighMap/src/features/features.cpp" line="30" column="7" bodyfile="HighMap/src/features/features.cpp" bodystart="30" bodyend="35" declfile="HighMap/include/highmap/features.hpp" declline="260" declcolumn="7"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1a39d52250df1825ecea1e63309d94d1fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacehmap_1ac297b8711e186ee1e5cdc7d1fc6a7972" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
-        <definition>Array hmap::mean_local</definition>
+        <definition>Array hmap::local_mean</definition>
         <argsstring>(const Array &amp;array, int ir)</argsstring>
-        <name>mean_local</name>
-        <qualifiedname>hmap::mean_local</qualifiedname>
+        <name>local_mean</name>
+        <qualifiedname>hmap::local_mean</qualifiedname>
         <param>
           <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
           <declname>array</declname>
@@ -15563,7 +15563,7 @@ Each tile is extracted using slicing, adjusted for overlap if specified, and the
 </parameterlist>
 <simplesect kind="return"><para><ref refid="classhmap_1_1Array" kindref="compound">Array</ref> Resulting array containing the local means.</para>
 </simplesect>
-<bold>Example</bold> <programlisting filename="ex_mean_local.cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<bold>Example</bold> <programlisting filename="ex_local_mean.cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
 <codeline><highlight class="normal">{</highlight></codeline>
@@ -15573,14 +15573,14 @@ Each tile is extracted using slicing, adjusted for overlap if specified, and the
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>radius<sp/>=<sp/>10;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1acb13e7346085793fda4c94c47b75d9a9" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,<sp/>shape,<sp/>res,<sp/>seed);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zm<sp/>=<sp/><ref refid="namespacehmap_1a39d52250df1825ecea1e63309d94d1fb" kindref="member">hmap::mean_local</ref>(z,<sp/>radius);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zm<sp/>=<sp/><ref refid="namespacehmap_1ac297b8711e186ee1e5cdc7d1fc6a7972" kindref="member">hmap::local_mean</ref>(z,<sp/>radius);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>z.<ref refid="classhmap_1_1Array_1a9ff7b2c0be8f2b5dd9fc33085cd647d1" kindref="member">to_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_mean_local0.png&quot;</highlight><highlight class="normal">,<sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492" kindref="member">hmap::Cmap::VIRIDIS</ref>);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>zm.<ref refid="classhmap_1_1Array_1a9ff7b2c0be8f2b5dd9fc33085cd647d1" kindref="member">to_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_mean_local1.png&quot;</highlight><highlight class="normal">,<sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492" kindref="member">hmap::Cmap::VIRIDIS</ref>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>z.<ref refid="classhmap_1_1Array_1a9ff7b2c0be8f2b5dd9fc33085cd647d1" kindref="member">to_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_local_mean0.png&quot;</highlight><highlight class="normal">,<sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492" kindref="member">hmap::Cmap::VIRIDIS</ref>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>zm.<ref refid="classhmap_1_1Array_1a9ff7b2c0be8f2b5dd9fc33085cd647d1" kindref="member">to_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_local_mean1.png&quot;</highlight><highlight class="normal">,<sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492" kindref="member">hmap::Cmap::VIRIDIS</ref>);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting></para>
-<para><bold>Result</bold> <image type="html" name="ex_mean_local0.png"></image>
- <image type="html" name="ex_mean_local1.png"></image>
+<para><bold>Result</bold> <image type="html" name="ex_local_mean0.png"></image>
+ <image type="html" name="ex_local_mean1.png"></image>
 </para>
 <para><simplesect kind="see"><para><computeroutput><ref refid="namespacehmap_1a5437c715b7a187bc794b1bf66891bddf" kindref="member">maximum_local</ref></computeroutput>, <computeroutput><ref refid="namespacehmap_1adf68a2f031297654f88252b7ce027b3d" kindref="member">minimum_local</ref></computeroutput> </para>
 </simplesect>
@@ -15588,7 +15588,7 @@ Each tile is extracted using slicing, adjusted for overlap if specified, and the
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/features/features.cpp" line="23" column="7" bodyfile="HighMap/src/features/features.cpp" bodystart="23" bodyend="35" declfile="HighMap/include/highmap/features.hpp" declline="285" declcolumn="7"/>
+        <location file="HighMap/src/features/features.cpp" line="16" column="7" bodyfile="HighMap/src/features/features.cpp" bodystart="16" bodyend="28" declfile="HighMap/include/highmap/features.hpp" declline="285" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a941d446cad19c166f4f6c4df857dba65" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -18978,7 +18978,7 @@ This is an overloaded member function, provided for convenience. It differs from
 </programlisting></para>
 <para><bold>Result</bold> <image type="html" name="ex_median_pseudo.png"></image>
 </para>
-<para><simplesect kind="see"><para><ref refid="namespacehmap_1adf68a2f031297654f88252b7ce027b3d" kindref="member">minimum_local</ref>, <ref refid="namespacehmap_1a5437c715b7a187bc794b1bf66891bddf" kindref="member">maximum_local</ref>, <ref refid="namespacehmap_1a39d52250df1825ecea1e63309d94d1fb" kindref="member">mean_local</ref> </para>
+<para><simplesect kind="see"><para><ref refid="namespacehmap_1adf68a2f031297654f88252b7ce027b3d" kindref="member">minimum_local</ref>, <ref refid="namespacehmap_1a5437c715b7a187bc794b1bf66891bddf" kindref="member">maximum_local</ref>, <ref refid="namespacehmap_1ac297b8711e186ee1e5cdc7d1fc6a7972" kindref="member">local_mean</ref> </para>
 </simplesect>
 </para>
         </detaileddescription>

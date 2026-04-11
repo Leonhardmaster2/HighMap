@@ -737,7 +737,7 @@ void \mbox{\hyperlink{namespacehmap_a466d4275bb86ca9ca603c9d4192f931a}{write\+\_
 \begin{DoxyCompactList}\small\item\em Performs k-\/means clustering on three input arrays, providing more detailed cluster analysis by considering an additional dimension. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a9b6a1d2ca8ef58a4a0605d04bcbff038}{local\+\_\+median\+\_\+deviation}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
 \begin{DoxyCompactList}\small\item\em Computes the local median deviation of a 2D array. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a39d52250df1825ecea1e63309d94d1fb}{mean\+\_\+local}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_ac297b8711e186ee1e5cdc7d1fc6a7972}{local\+\_\+mean}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
 \begin{DoxyCompactList}\small\item\em Return the local mean based on a mean filter with a square kernel. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a941d446cad19c166f4f6c4df857dba65}{relative\+\_\+elevation}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
 \begin{DoxyCompactList}\small\item\em Calculates the relative elevation within a specified radius, helping to identify local highs and lows. \end{DoxyCompactList}\item 
@@ -9650,13 +9650,13 @@ The function uses a pseudo-\/median approximation. For exact median computation,
 {\bfseries{Result}} 
 
 \begin{DoxySeeAlso}{See also}
-\doxylink{namespacehmap_a39d52250df1825ecea1e63309d94d1fb}{mean\+\_\+local()}, \doxylink{namespacehmap_a14eb6b7d304484c8cbb231b672851491}{median\+\_\+pseudo()} 
+\doxylink{namespacehmap_ac297b8711e186ee1e5cdc7d1fc6a7972}{local\+\_\+mean()}, \doxylink{namespacehmap_a14eb6b7d304484c8cbb231b672851491}{median\+\_\+pseudo()} 
 \end{DoxySeeAlso}
-\Hypertarget{namespacehmap_a39d52250df1825ecea1e63309d94d1fb}\label{namespacehmap_a39d52250df1825ecea1e63309d94d1fb} 
-\index{hmap@{hmap}!mean\_local@{mean\_local}}
-\index{mean\_local@{mean\_local}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{mean\_local()}{mean\_local()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::mean\+\_\+local (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{int}]{ir }\end{DoxyParamCaption})}
+\Hypertarget{namespacehmap_ac297b8711e186ee1e5cdc7d1fc6a7972}\label{namespacehmap_ac297b8711e186ee1e5cdc7d1fc6a7972} 
+\index{hmap@{hmap}!local\_mean@{local\_mean}}
+\index{local\_mean@{local\_mean}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{local\_mean()}{local\_mean()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::local\+\_\+mean (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{int}]{ir }\end{DoxyParamCaption})}
 
 
 
@@ -9686,10 +9686,10 @@ This function calculates the local mean of the input array using a mean filter w
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ radius\ =\ 10;}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_acb13e7346085793fda4c94c47b75d9a9}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ res,\ seed);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zm\ =\ \mbox{\hyperlink{namespacehmap_a39d52250df1825ecea1e63309d94d1fb}{hmap::mean\_local}}(z,\ radius);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zm\ =\ \mbox{\hyperlink{namespacehmap_ac297b8711e186ee1e5cdc7d1fc6a7972}{hmap::local\_mean}}(z,\ radius);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ z.\mbox{\hyperlink{classhmap_1_1Array_a9ff7b2c0be8f2b5dd9fc33085cd647d1}{to\_png}}(\textcolor{stringliteral}{"{}ex\_mean\_local0.png"{}},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492}{hmap::Cmap::VIRIDIS}});}
-\DoxyCodeLine{\ \ zm.\mbox{\hyperlink{classhmap_1_1Array_a9ff7b2c0be8f2b5dd9fc33085cd647d1}{to\_png}}(\textcolor{stringliteral}{"{}ex\_mean\_local1.png"{}},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492}{hmap::Cmap::VIRIDIS}});}
+\DoxyCodeLine{\ \ z.\mbox{\hyperlink{classhmap_1_1Array_a9ff7b2c0be8f2b5dd9fc33085cd647d1}{to\_png}}(\textcolor{stringliteral}{"{}ex\_local\_mean0.png"{}},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492}{hmap::Cmap::VIRIDIS}});}
+\DoxyCodeLine{\ \ zm.\mbox{\hyperlink{classhmap_1_1Array_a9ff7b2c0be8f2b5dd9fc33085cd647d1}{to\_png}}(\textcolor{stringliteral}{"{}ex\_local\_mean1.png"{}},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492}{hmap::Cmap::VIRIDIS}});}
 \DoxyCodeLine{\}}
 
 \end{DoxyCodeInclude}
@@ -11526,7 +11526,7 @@ This method works best on images with impulsive noise (e.\+g., salt-\/and-\/pepp
 {\bfseries{Result}} 
 
 \begin{DoxySeeAlso}{See also}
-\doxylink{namespacehmap_adf68a2f031297654f88252b7ce027b3d}{minimum\+\_\+local}, \doxylink{namespacehmap_a5437c715b7a187bc794b1bf66891bddf}{maximum\+\_\+local}, \doxylink{namespacehmap_a39d52250df1825ecea1e63309d94d1fb}{mean\+\_\+local} 
+\doxylink{namespacehmap_adf68a2f031297654f88252b7ce027b3d}{minimum\+\_\+local}, \doxylink{namespacehmap_a5437c715b7a187bc794b1bf66891bddf}{maximum\+\_\+local}, \doxylink{namespacehmap_ac297b8711e186ee1e5cdc7d1fc6a7972}{local\+\_\+mean} 
 \end{DoxySeeAlso}
 \Hypertarget{namespacehmap_adf68a2f031297654f88252b7ce027b3d}\label{namespacehmap_adf68a2f031297654f88252b7ce027b3d} 
 \index{hmap@{hmap}!minimum\_local@{minimum\_local}}

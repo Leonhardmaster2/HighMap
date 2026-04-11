@@ -282,9 +282,9 @@ Functions</h2></td></tr>
 <tr class="memitem:aeca9d8454f50273ca4a4f3db0c25a1b1" id="r_aeca9d8454f50273ca4a4f3db0c25a1b1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#aeca9d8454f50273ca4a4f3db0c25a1b1">local_variance</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, int ir)</td></tr>
 <tr class="memdesc:aeca9d8454f50273ca4a4f3db0c25a1b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the average local variance of an array.  <br /></td></tr>
 <tr class="separator:aeca9d8454f50273ca4a4f3db0c25a1b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afed4e84e60dd0cdc453e7da72940ed27" id="r_afed4e84e60dd0cdc453e7da72940ed27"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#afed4e84e60dd0cdc453e7da72940ed27">mean_local</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, int ir)</td></tr>
-<tr class="memdesc:afed4e84e60dd0cdc453e7da72940ed27"><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="namespacehmap.html#a39d52250df1825ecea1e63309d94d1fb" title="Return the local mean based on a mean filter with a square kernel.">hmap::mean_local</a>.  <br /></td></tr>
-<tr class="separator:afed4e84e60dd0cdc453e7da72940ed27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72341578d241e21b4c31d7497287cfc3" id="r_a72341578d241e21b4c31d7497287cfc3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a72341578d241e21b4c31d7497287cfc3">local_mean</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, int ir)</td></tr>
+<tr class="memdesc:a72341578d241e21b4c31d7497287cfc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="namespacehmap.html#ac297b8711e186ee1e5cdc7d1fc6a7972" title="Return the local mean based on a mean filter with a square kernel.">hmap::local_mean</a>.  <br /></td></tr>
+<tr class="separator:a72341578d241e21b4c31d7497287cfc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a74594cae7628bcfb1c038ac6930fe97d" id="r_a74594cae7628bcfb1c038ac6930fe97d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a74594cae7628bcfb1c038ac6930fe97d">topographic_position_index</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, int ir)</td></tr>
 <tr class="memdesc:a74594cae7628bcfb1c038ac6930fe97d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the Topographic Position Index (TPI).  <br /></td></tr>
 <tr class="separator:a74594cae7628bcfb1c038ac6930fe97d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -6074,7 +6074,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_local_relief.png&quot;</span>, {z, z1}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_1_1gpu_html_a5e3ebf317043142adc19dd211ba07230"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a5e3ebf317043142adc19dd211ba07230">hmap::gpu::local_relief</a></div><div class="ttdeci">Array local_relief(const Array &amp;array, int ir)</div><div class="ttdoc">Compute the local relief of an array.</div><div class="ttdef"><b>Definition</b> features_gpu.cpp:19</div></div>
+<div class="ttc" id="anamespacehmap_1_1gpu_html_a5e3ebf317043142adc19dd211ba07230"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a5e3ebf317043142adc19dd211ba07230">hmap::gpu::local_relief</a></div><div class="ttdeci">Array local_relief(const Array &amp;array, int ir)</div><div class="ttdoc">Compute the local relief of an array.</div><div class="ttdef"><b>Definition</b> features_gpu.cpp:41</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_local_relief.png" alt=""/>
 </div>
@@ -6139,21 +6139,21 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">                          {z, z1, z2},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_1_1gpu_html_aeca9d8454f50273ca4a4f3db0c25a1b1"><div class="ttname"><a href="namespacehmap_1_1gpu.html#aeca9d8454f50273ca4a4f3db0c25a1b1">hmap::gpu::local_variance</a></div><div class="ttdeci">Array local_variance(const Array &amp;array, int ir)</div><div class="ttdoc">Compute the average local variance of an array.</div><div class="ttdef"><b>Definition</b> features_gpu.cpp:40</div></div>
+<div class="ttc" id="anamespacehmap_1_1gpu_html_aeca9d8454f50273ca4a4f3db0c25a1b1"><div class="ttname"><a href="namespacehmap_1_1gpu.html#aeca9d8454f50273ca4a4f3db0c25a1b1">hmap::gpu::local_variance</a></div><div class="ttdeci">Array local_variance(const Array &amp;array, int ir)</div><div class="ttdoc">Compute the average local variance of an array.</div><div class="ttdef"><b>Definition</b> features_gpu.cpp:62</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_local_variance.png" alt=""/>
 </div>
  
 </div>
 </div>
-<a id="afed4e84e60dd0cdc453e7da72940ed27" name="afed4e84e60dd0cdc453e7da72940ed27"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afed4e84e60dd0cdc453e7da72940ed27">&#9670;&#160;</a></span>mean_local()</h2>
+<a id="a72341578d241e21b4c31d7497287cfc3" name="a72341578d241e21b4c31d7497287cfc3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72341578d241e21b4c31d7497287cfc3">&#9670;&#160;</a></span>local_mean()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classhmap_1_1Array.html">Array</a> hmap::gpu::mean_local </td>
+          <td class="memname"><a class="el" href="classhmap_1_1Array.html">Array</a> hmap::gpu::local_mean </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
           <td class="paramname"><em>array</em>, </td>
@@ -6172,7 +6172,7 @@ Only available if OpenCL is enabled.</dd></dl>
       </table>
 </div><div class="memdoc">
 
-<p>See <a class="el" href="namespacehmap.html#a39d52250df1825ecea1e63309d94d1fb" title="Return the local mean based on a mean filter with a square kernel.">hmap::mean_local</a>. </p>
+<p>See <a class="el" href="namespacehmap.html#ac297b8711e186ee1e5cdc7d1fc6a7972" title="Return the local mean based on a mean filter with a square kernel.">hmap::local_mean</a>. </p>
 
 </div>
 </div>

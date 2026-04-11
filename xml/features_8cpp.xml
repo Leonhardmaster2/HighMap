@@ -23,25 +23,25 @@
 <codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacehmap" kindref="compound">hmap</ref></highlight></codeline>
 <codeline lineno="14"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="15"><highlight class="normal"></highlight></codeline>
-<codeline lineno="16"><highlight class="normal">Array<sp/><ref refid="namespacehmap_1a9b6a1d2ca8ef58a4a0605d04bcbff038" kindref="member">local_median_deviation</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array<sp/>&amp;array,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ir)</highlight></codeline>
+<codeline lineno="16"><highlight class="normal">Array<sp/><ref refid="namespacehmap_1ac297b8711e186ee1e5cdc7d1fc6a7972" kindref="member">local_mean</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array<sp/>&amp;array,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ir)</highlight></codeline>
 <codeline lineno="17"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="18"><highlight class="normal"><sp/><sp/>Array<sp/>mean<sp/>=<sp/><ref refid="namespacehmap_1a39d52250df1825ecea1e63309d94d1fb" kindref="member">mean_local</ref>(array,<sp/>ir);</highlight></codeline>
-<codeline lineno="19"><highlight class="normal"><sp/><sp/>Array<sp/>med<sp/>=<sp/><ref refid="namespacehmap_1a14eb6b7d304484c8cbb231b672851491" kindref="member">median_pseudo</ref>(array,<sp/>ir);<sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>exact</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="20"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacehmap_1a527cfdcf7f7e2ca0e270875526c9b1ee" kindref="member">abs</ref>(mean<sp/>-<sp/>med);</highlight></codeline>
-<codeline lineno="21"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="22"><highlight class="normal"></highlight></codeline>
-<codeline lineno="23"><highlight class="normal">Array<sp/><ref refid="namespacehmap_1a39d52250df1825ecea1e63309d94d1fb" kindref="member">mean_local</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array<sp/>&amp;array,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ir)</highlight></codeline>
-<codeline lineno="24"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="25"><highlight class="normal"><sp/><sp/>Array<sp/>array_out<sp/>=<sp/>Array(array.shape);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/>Array<sp/>array_out<sp/>=<sp/>Array(array.shape);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/>std::vector&lt;float&gt;<sp/>k1d(2<sp/>*<sp/>ir<sp/>+<sp/>1);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;v<sp/>:<sp/>k1d)</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>v<sp/>=<sp/>1.f<sp/>/<sp/>(float)(2<sp/>*<sp/>ir<sp/>+<sp/>1);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/>array_out<sp/>=<sp/><ref refid="namespacehmap_1a9411ccef8a74e06ef51efd1f5041c7b4" kindref="member">convolve1d_i</ref>(array,<sp/>k1d);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/>array_out<sp/>=<sp/><ref refid="namespacehmap_1a2f3f79308ada9782de6c4866b567b167" kindref="member">convolve1d_j</ref>(array_out,<sp/>k1d);</highlight></codeline>
 <codeline lineno="26"><highlight class="normal"></highlight></codeline>
-<codeline lineno="27"><highlight class="normal"><sp/><sp/>std::vector&lt;float&gt;<sp/>k1d(2<sp/>*<sp/>ir<sp/>+<sp/>1);</highlight></codeline>
-<codeline lineno="28"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;v<sp/>:<sp/>k1d)</highlight></codeline>
-<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>v<sp/>=<sp/>1.f<sp/>/<sp/>(float)(2<sp/>*<sp/>ir<sp/>+<sp/>1);</highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"><sp/><sp/>array_out<sp/>=<sp/><ref refid="namespacehmap_1a9411ccef8a74e06ef51efd1f5041c7b4" kindref="member">convolve1d_i</ref>(array,<sp/>k1d);</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><sp/><sp/>array_out<sp/>=<sp/><ref refid="namespacehmap_1a2f3f79308ada9782de6c4866b567b167" kindref="member">convolve1d_j</ref>(array_out,<sp/>k1d);</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"></highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>array_out;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>array_out;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal">Array<sp/><ref refid="namespacehmap_1a9b6a1d2ca8ef58a4a0605d04bcbff038" kindref="member">local_median_deviation</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array<sp/>&amp;array,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ir)</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/>Array<sp/>mean<sp/>=<sp/><ref refid="namespacehmap_1ac297b8711e186ee1e5cdc7d1fc6a7972" kindref="member">local_mean</ref>(array,<sp/>ir);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/>Array<sp/>med<sp/>=<sp/><ref refid="namespacehmap_1a14eb6b7d304484c8cbb231b672851491" kindref="member">median_pseudo</ref>(array,<sp/>ir);<sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>exact</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacehmap_1a527cfdcf7f7e2ca0e270875526c9b1ee" kindref="member">abs</ref>(mean<sp/>-<sp/>med);</highlight></codeline>
 <codeline lineno="35"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="36"><highlight class="normal"></highlight></codeline>
 <codeline lineno="37"><highlight class="normal">Array<sp/><ref refid="namespacehmap_1a941d446cad19c166f4f6c4df857dba65" kindref="member">relative_elevation</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array<sp/>&amp;array,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ir)</highlight></codeline>
