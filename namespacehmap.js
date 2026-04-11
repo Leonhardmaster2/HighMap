@@ -61,6 +61,7 @@ var namespacehmap =
       [ "watershed_ridge", "namespacehmap_1_1gpu.html#a04047f16ece68b32c1c8e68b4780f0df", null ],
       [ "local_median_deviation", "namespacehmap_1_1gpu.html#a022f5800d7e28f79f9e2d3abf687f490", null ],
       [ "local_relief", "namespacehmap_1_1gpu.html#a5e3ebf317043142adc19dd211ba07230", null ],
+      [ "local_variance", "namespacehmap_1_1gpu.html#aeca9d8454f50273ca4a4f3db0c25a1b1", null ],
       [ "mean_local", "namespacehmap_1_1gpu.html#afed4e84e60dd0cdc453e7da72940ed27", null ],
       [ "relative_elevation", "namespacehmap_1_1gpu.html#a2dcbc7dac085b61f3c47e17256741a9a", null ],
       [ "ruggedness", "namespacehmap_1_1gpu.html#a62292cc4bf9f6eb5c7b63b1e26f8cc88", null ],

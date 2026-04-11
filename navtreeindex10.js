@@ -1,5 +1,7 @@
 var NAVTREEINDEX10 =
 {
+"hydraulic__blur_8cpp.html#a2074cabb598086fe29f52247bfadceb9":[5,0,1,1,12,11,0],
+"hydraulic__diffusion_8cpp.html":[5,0,1,1,12,12],
 "hydraulic__diffusion_8cpp.html#a7b2c04c0b2cd0da363d2382f5a753a81":[5,0,1,1,12,12,0],
 "hydraulic__musgrave_8cpp.html":[5,0,1,1,12,13],
 "hydraulic__musgrave_8cpp.html#a5aceac22b926cbff676c323e1aca4db0":[5,0,1,1,12,13,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX10 =
 "kernels_8hpp.html#abc4df5971637a4247f385355e5bee73e":[5,0,1,0,0,28,11],
 "kernels_8hpp.html#abc5852a4cae426341235d60a04964fc1":[5,0,1,0,0,28,3],
 "kernels_8hpp.html#ac94c2199aca4c2c41da051de40ce3842":[5,0,1,0,0,28,19],
-"kernels_8hpp.html#ace7038aa10105fd2f3d1aa9eb3dd83f1":[5,0,1,0,0,28,21],
-"kernels_8hpp.html#ae1374e51e008a4c88b6e9fe53360e150":[5,0,1,0,0,28,14],
-"kernels_8hpp.html#ae4d60feebbef618bd7a6fb4dcf9431a1":[5,0,1,0,0,28,22]
+"kernels_8hpp.html#ace7038aa10105fd2f3d1aa9eb3dd83f1":[5,0,1,0,0,28,21]
 };

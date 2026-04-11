@@ -14,6 +14,7 @@ var features_8hpp =
     [ "z_score", "features_8hpp.html#a732a83c92c4a2d232fc9f421f98c0c6b", null ],
     [ "local_median_deviation", "features_8hpp.html#a022f5800d7e28f79f9e2d3abf687f490", null ],
     [ "local_relief", "features_8hpp.html#a5e3ebf317043142adc19dd211ba07230", null ],
+    [ "local_variance", "features_8hpp.html#aeca9d8454f50273ca4a4f3db0c25a1b1", null ],
     [ "mean_local", "features_8hpp.html#afed4e84e60dd0cdc453e7da72940ed27", null ],
     [ "relative_elevation", "features_8hpp.html#a2dcbc7dac085b61f3c47e17256741a9a", null ],
     [ "ruggedness", "features_8hpp.html#a62292cc4bf9f6eb5c7b63b1e26f8cc88", null ],
