@@ -11,7 +11,7 @@
 #include "highmap/convolve.hpp"
 #include "highmap/curvature.hpp"
 #include "highmap/erosion.hpp"
-#include "highmap/features.hpp"
+#include "highmap/local_metrics.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/gradient.hpp"
 #include "highmap/kernels.hpp"
