@@ -1,13 +1,20 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "highmap/features.hpp"
 #include "highmap/filters.hpp"
+#include "highmap/gradient.hpp"
+#include "highmap/local_metrics.hpp"
 #include "highmap/math.hpp"
 #include "highmap/opencl/gpu_opencl.hpp"
 
 namespace hmap::gpu
 {
+
+Array local_aspect_variance(const Array &array, int ir)
+{
+  Array alpha = gradient_angle(array);
+  return local_variance(alpha, ir);
+}
 
 Array local_max(const Array &array, int ir)
 {

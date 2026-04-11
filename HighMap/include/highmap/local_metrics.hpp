@@ -241,6 +241,21 @@ namespace hmap::gpu
 {
 
 /**
+ * @brief Compute the average local aspect variance of an array.
+ *
+ * @param  array Input array.
+ * @param  ir    Radius of the local window.
+ * @return       Array containing the averaged local variance.
+ *
+ * **Example**
+ * @include ex_local_metrics.cpp
+ *
+ * **Result**
+ * @image html ex_local_metrics.png
+ */
+Array local_aspect_variance(const Array &array, int ir);
+
+/**
  * @brief Compute the local maximum using a disk kernel.
  *
  * For each cell, returns the maximum value within a neighborhood of radius @p

@@ -9,13 +9,17 @@ int main(void)
   hmap::Array z = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, res, seed);
   hmap::remap(z);
 
-  int ir = 16;
+  int ir = 8;
 
-  // gpu version
   hmap::gpu::init_opencl();
 
   hmap::Array z1 = hmap::gpu::local_min(z, ir);
   hmap::Array z2 = hmap::gpu::local_max(z, ir);
+  hmap::Array z3 = hmap::gpu::local_aspect_variance(z, ir);
 
-  hmap::export_banner_png("ex_local_metrics.png", {z, z1, z2}, hmap::Cmap::JET);
+  hmap::export_banner_png("ex_local_metrics.png",
+                          {z, z1, z2, z3},
+                          hmap::Cmap::JET,
+                          false,
+                          true);
 }
