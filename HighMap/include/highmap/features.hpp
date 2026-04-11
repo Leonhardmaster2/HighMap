@@ -396,8 +396,6 @@ Array rugosity(const Array &z, int ir, bool convex = true);
  */
 Array valley_width(const Array &z, int ir = 0, bool ridge_select = false);
 
-Array z_score(const Array &array, int ir);
-
 } // namespace hmap
 
 namespace hmap::gpu
@@ -453,6 +451,24 @@ Array local_variance(const Array &array, int ir);
 Array local_mean(const Array &array, int ir);
 
 /**
+ * @brief Compute the local z-score of an array.
+ *
+ * For each cell, computes the normalized difference between its value
+ * and the mean of a neighborhood of radius @p ir.
+ *
+ * @param array Input array.
+ * @param ir Radius of the local window.
+ * @return Array of local z-score values.
+ *
+ * **Example**
+ * @include ex_local_z_score.cpp
+ *
+ * **Result**
+ * @image html ex_local_z_score.png
+ */
+Array local_z_score(const Array &array, int ir);
+
+/**
  * @brief Compute the Topographic Position Index (TPI).
  *
  * TPI measures the elevation difference between each cell and the mean
@@ -478,8 +494,5 @@ Array ruggedness(const Array &array, int ir);
 
 /*! @brief See hmap::rugosity */
 Array rugosity(const Array &z, int ir, bool convex = true);
-
-/*! @brief See hmap::z_score */
-Array z_score(const Array &array, int ir);
 
 } // namespace hmap::gpu

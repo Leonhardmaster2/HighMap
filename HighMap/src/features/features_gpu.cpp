@@ -80,6 +80,27 @@ Array local_variance(const Array &array, int ir)
   return out;
 }
 
+Array local_z_score(const Array &array, int ir)
+{
+  Array out(array.shape);
+
+  auto run = clwrapper::Run("local_z_score");
+
+  run.bind_imagef("array",
+                  const_cast<std::vector<float> &>(array.vector),
+                  array.shape.x,
+                  array.shape.y);
+  run.bind_imagef("out", out.vector, array.shape.x, array.shape.y, true);
+
+  run.bind_arguments(array.shape.x, array.shape.y, ir);
+
+  run.execute({array.shape.x, array.shape.y});
+
+  run.read_imagef("out");
+
+  return out;
+}
+
 Array relative_elevation(const Array &array, int ir)
 {
   Array amin = gpu::minimum_local(array, ir);
@@ -164,21 +185,6 @@ Array topographic_position_index(const Array &array, int ir)
   run.read_imagef("out");
 
   return out;
-}
-
-Array z_score(const Array &array, int ir)
-{
-  // NB - use Gaussian windowing instead of a real arithmetic averaging
-  Array mean = array;
-  gpu::smooth_cpulse(mean, ir);
-
-  // use mean to store (array - mean)^2
-  mean -= array;
-  mean *= mean;
-  gpu::smooth_cpulse(mean, ir);
-  Array std = sqrt(mean);
-
-  return (array - mean) / std;
 }
 
 } // namespace hmap::gpu

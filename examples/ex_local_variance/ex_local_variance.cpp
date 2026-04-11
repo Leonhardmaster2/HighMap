@@ -16,7 +16,5 @@ int main(void)
   hmap::Array z1 = hmap::gpu::local_variance(z, ir);
   hmap::remap(z1);
 
-  hmap::export_banner_png("ex_local_variance.png",
-                          {z, z1, z2},
-                          hmap::Cmap::JET);
+  hmap::export_banner_png("ex_local_variance.png", {z, z1}, hmap::Cmap::JET);
 }
