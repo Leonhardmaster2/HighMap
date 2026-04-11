@@ -8630,6 +8630,76 @@ This is an overloaded member function, provided for convenience. It differs from
         </inbodydescription>
         <location file="HighMap/src/interpolate/interpolate_array_gpu.cpp" line="175" column="6" bodyfile="HighMap/src/interpolate/interpolate_array_gpu.cpp" bodystart="175" bodyend="197" declfile="HighMap/include/highmap/interpolate_array.hpp" declline="97" declcolumn="6"/>
       </memberdef>
+      <memberdef kind="function" id="namespacehmap_1_1gpu_1a22adb2fd39544ac3e1c2494a8e6c184d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
+        <definition>Array hmap::gpu::local_aspect_variance</definition>
+        <argsstring>(const Array &amp;array, int ir)</argsstring>
+        <name>local_aspect_variance</name>
+        <qualifiedname>hmap::gpu::local_aspect_variance</qualifiedname>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>array</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>ir</declname>
+        </param>
+        <briefdescription>
+<para>Compute the average local aspect variance of an array. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>array</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input array. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ir</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Radius of the local window. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classhmap_1_1Array" kindref="compound">Array</ref> containing the averaged local variance.</para>
+</simplesect>
+<bold>Example</bold> <programlisting filename="ex_local_metrics.cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>glm::ivec2<sp/>shape<sp/>=<sp/>{256,<sp/>256};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>glm::vec2<sp/><sp/>res<sp/>=<sp/>{4.f,<sp/>4.f};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed<sp/>=<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1acb13e7346085793fda4c94c47b75d9a9" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,<sp/>shape,<sp/>res,<sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(z);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ir<sp/>=<sp/>8;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1adb8336ed4d83c15500872185dee45d50" kindref="member">hmap::gpu::init_opencl</ref>();</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z1<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1a5c576fca64db583bf500d667173c128a" kindref="member">hmap::gpu::local_min</ref>(z,<sp/>ir);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z2<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1a36cacf53f15459d0e32a0b089ce2db2f" kindref="member">hmap::gpu::local_max</ref>(z,<sp/>ir);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z3<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1a22adb2fd39544ac3e1c2494a8e6c184d" kindref="member">hmap::gpu::local_aspect_variance</ref>(z,<sp/>ir);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_local_metrics.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,<sp/>z1,<sp/>z2,<sp/>z3},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced" kindref="member">hmap::Cmap::JET</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<para><bold>Result</bold> <image type="html" name="ex_local_metrics.png"></image>
+ </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/local_metrics/local_metrics_gpu.cpp" line="13" column="7" bodyfile="HighMap/src/local_metrics/local_metrics_gpu.cpp" bodystart="13" bodyend="17" declfile="HighMap/include/highmap/local_metrics.hpp" declline="256" declcolumn="7"/>
+      </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a36cacf53f15459d0e32a0b089ce2db2f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
         <definition>Array hmap::gpu::local_max</definition>
@@ -8679,15 +8749,19 @@ This is an overloaded member function, provided for convenience. It differs from
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1acb13e7346085793fda4c94c47b75d9a9" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,<sp/>shape,<sp/>res,<sp/>seed);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(z);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ir<sp/>=<sp/>16;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ir<sp/>=<sp/>8;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>gpu<sp/>version</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1adb8336ed4d83c15500872185dee45d50" kindref="member">hmap::gpu::init_opencl</ref>();</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z1<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1a5c576fca64db583bf500d667173c128a" kindref="member">hmap::gpu::local_min</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z2<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1a36cacf53f15459d0e32a0b089ce2db2f" kindref="member">hmap::gpu::local_max</ref>(z,<sp/>ir);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z3<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1a22adb2fd39544ac3e1c2494a8e6c184d" kindref="member">hmap::gpu::local_aspect_variance</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_local_metrics.png&quot;</highlight><highlight class="normal">,<sp/>{z,<sp/>z1,<sp/>z2},<sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced" kindref="member">hmap::Cmap::JET</ref>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_local_metrics.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,<sp/>z1,<sp/>z2,<sp/>z3},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced" kindref="member">hmap::Cmap::JET</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting></para>
 <para><bold>Result</bold> <image type="html" name="ex_local_metrics.png"></image>
@@ -8695,7 +8769,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/local_metrics/local_metrics_gpu.cpp" line="12" column="7" bodyfile="HighMap/src/local_metrics/local_metrics_gpu.cpp" bodystart="12" bodyend="31" declfile="HighMap/include/highmap/local_metrics.hpp" declline="259" declcolumn="7"/>
+        <location file="HighMap/src/local_metrics/local_metrics_gpu.cpp" line="19" column="7" bodyfile="HighMap/src/local_metrics/local_metrics_gpu.cpp" bodystart="19" bodyend="38" declfile="HighMap/include/highmap/local_metrics.hpp" declline="274" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a022f5800d7e28f79f9e2d3abf687f490" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -8718,7 +8792,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/local_metrics/local_metrics_gpu.cpp" line="76" column="7" bodyfile="HighMap/src/local_metrics/local_metrics_gpu.cpp" bodystart="76" bodyend="81" declfile="HighMap/include/highmap/local_metrics.hpp" declline="262" declcolumn="7"/>
+        <location file="HighMap/src/local_metrics/local_metrics_gpu.cpp" line="83" column="7" bodyfile="HighMap/src/local_metrics/local_metrics_gpu.cpp" bodystart="83" bodyend="88" declfile="HighMap/include/highmap/local_metrics.hpp" declline="277" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a5c576fca64db583bf500d667173c128a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -8769,15 +8843,19 @@ This is an overloaded member function, provided for convenience. It differs from
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1acb13e7346085793fda4c94c47b75d9a9" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,<sp/>shape,<sp/>res,<sp/>seed);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(z);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ir<sp/>=<sp/>16;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ir<sp/>=<sp/>8;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>gpu<sp/>version</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1adb8336ed4d83c15500872185dee45d50" kindref="member">hmap::gpu::init_opencl</ref>();</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z1<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1a5c576fca64db583bf500d667173c128a" kindref="member">hmap::gpu::local_min</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z2<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1a36cacf53f15459d0e32a0b089ce2db2f" kindref="member">hmap::gpu::local_max</ref>(z,<sp/>ir);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z3<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1a22adb2fd39544ac3e1c2494a8e6c184d" kindref="member">hmap::gpu::local_aspect_variance</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_local_metrics.png&quot;</highlight><highlight class="normal">,<sp/>{z,<sp/>z1,<sp/>z2},<sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced" kindref="member">hmap::Cmap::JET</ref>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_local_metrics.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,<sp/>z1,<sp/>z2,<sp/>z3},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced" kindref="member">hmap::Cmap::JET</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting></para>
 <para><bold>Result</bold> <image type="html" name="ex_local_metrics.png"></image>
@@ -8785,7 +8863,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/local_metrics/local_metrics_gpu.cpp" line="55" column="7" bodyfile="HighMap/src/local_metrics/local_metrics_gpu.cpp" bodystart="55" bodyend="74" declfile="HighMap/include/highmap/local_metrics.hpp" declline="280" declcolumn="7"/>
+        <location file="HighMap/src/local_metrics/local_metrics_gpu.cpp" line="62" column="7" bodyfile="HighMap/src/local_metrics/local_metrics_gpu.cpp" bodystart="62" bodyend="81" declfile="HighMap/include/highmap/local_metrics.hpp" declline="295" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a5e3ebf317043142adc19dd211ba07230" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -8851,7 +8929,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/local_metrics/local_metrics_gpu.cpp" line="83" column="7" bodyfile="HighMap/src/local_metrics/local_metrics_gpu.cpp" bodystart="83" bodyend="102" declfile="HighMap/include/highmap/local_metrics.hpp" declline="304" declcolumn="7"/>
+        <location file="HighMap/src/local_metrics/local_metrics_gpu.cpp" line="90" column="7" bodyfile="HighMap/src/local_metrics/local_metrics_gpu.cpp" bodystart="90" bodyend="109" declfile="HighMap/include/highmap/local_metrics.hpp" declline="319" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1aeca9d8454f50273ca4a4f3db0c25a1b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -8917,7 +8995,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/local_metrics/local_metrics_gpu.cpp" line="104" column="7" bodyfile="HighMap/src/local_metrics/local_metrics_gpu.cpp" bodystart="104" bodyend="123" declfile="HighMap/include/highmap/local_metrics.hpp" declline="323" declcolumn="7"/>
+        <location file="HighMap/src/local_metrics/local_metrics_gpu.cpp" line="111" column="7" bodyfile="HighMap/src/local_metrics/local_metrics_gpu.cpp" bodystart="111" bodyend="130" declfile="HighMap/include/highmap/local_metrics.hpp" declline="338" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a72341578d241e21b4c31d7497287cfc3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -8940,7 +9018,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/local_metrics/local_metrics_gpu.cpp" line="33" column="7" bodyfile="HighMap/src/local_metrics/local_metrics_gpu.cpp" bodystart="33" bodyend="53" declfile="HighMap/include/highmap/local_metrics.hpp" declline="326" declcolumn="7"/>
+        <location file="HighMap/src/local_metrics/local_metrics_gpu.cpp" line="40" column="7" bodyfile="HighMap/src/local_metrics/local_metrics_gpu.cpp" bodystart="40" bodyend="60" declfile="HighMap/include/highmap/local_metrics.hpp" declline="341" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1ad6ef648576e9339058037a28ce17d225" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -9006,7 +9084,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/local_metrics/local_metrics_gpu.cpp" line="125" column="7" bodyfile="HighMap/src/local_metrics/local_metrics_gpu.cpp" bodystart="125" bodyend="144" declfile="HighMap/include/highmap/local_metrics.hpp" declline="344" declcolumn="7"/>
+        <location file="HighMap/src/local_metrics/local_metrics_gpu.cpp" line="132" column="7" bodyfile="HighMap/src/local_metrics/local_metrics_gpu.cpp" bodystart="132" bodyend="151" declfile="HighMap/include/highmap/local_metrics.hpp" declline="359" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a74594cae7628bcfb1c038ac6930fe97d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -9074,7 +9152,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/local_metrics/local_metrics_gpu.cpp" line="211" column="7" bodyfile="HighMap/src/local_metrics/local_metrics_gpu.cpp" bodystart="211" bodyend="230" declfile="HighMap/include/highmap/local_metrics.hpp" declline="362" declcolumn="7"/>
+        <location file="HighMap/src/local_metrics/local_metrics_gpu.cpp" line="218" column="7" bodyfile="HighMap/src/local_metrics/local_metrics_gpu.cpp" bodystart="218" bodyend="237" declfile="HighMap/include/highmap/local_metrics.hpp" declline="377" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a2dcbc7dac085b61f3c47e17256741a9a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -9097,7 +9175,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/local_metrics/local_metrics_gpu.cpp" line="146" column="7" bodyfile="HighMap/src/local_metrics/local_metrics_gpu.cpp" bodystart="146" bodyend="155" declfile="HighMap/include/highmap/local_metrics.hpp" declline="365" declcolumn="7"/>
+        <location file="HighMap/src/local_metrics/local_metrics_gpu.cpp" line="153" column="7" bodyfile="HighMap/src/local_metrics/local_metrics_gpu.cpp" bodystart="153" bodyend="162" declfile="HighMap/include/highmap/local_metrics.hpp" declline="380" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a62292cc4bf9f6eb5c7b63b1e26f8cc88" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -9120,7 +9198,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/local_metrics/local_metrics_gpu.cpp" line="157" column="7" bodyfile="HighMap/src/local_metrics/local_metrics_gpu.cpp" bodystart="157" bodyend="175" declfile="HighMap/include/highmap/local_metrics.hpp" declline="368" declcolumn="7"/>
+        <location file="HighMap/src/local_metrics/local_metrics_gpu.cpp" line="164" column="7" bodyfile="HighMap/src/local_metrics/local_metrics_gpu.cpp" bodystart="164" bodyend="182" declfile="HighMap/include/highmap/local_metrics.hpp" declline="383" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1aa5a3e087822525c41f057a51255e2bad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -9148,7 +9226,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/local_metrics/local_metrics_gpu.cpp" line="177" column="7" bodyfile="HighMap/src/local_metrics/local_metrics_gpu.cpp" bodystart="177" bodyend="209" declfile="HighMap/include/highmap/local_metrics.hpp" declline="371" declcolumn="7"/>
+        <location file="HighMap/src/local_metrics/local_metrics_gpu.cpp" line="184" column="7" bodyfile="HighMap/src/local_metrics/local_metrics_gpu.cpp" bodystart="184" bodyend="216" declfile="HighMap/include/highmap/local_metrics.hpp" declline="386" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a335e4629532ba64049e0721bdcb5f3ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>

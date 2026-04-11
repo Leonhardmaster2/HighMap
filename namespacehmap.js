@@ -113,6 +113,7 @@ var namespacehmap =
       [ "interpolate_array_lagrange", "namespacehmap_1_1gpu.html#ac2dbdcbbe157f0a820f8eb07d4544471", null ],
       [ "interpolate_array_nearest", "namespacehmap_1_1gpu.html#aa345d48e3c7b1f25ae8823a58a17beef", null ],
       [ "interpolate_array_nearest", "namespacehmap_1_1gpu.html#ad44fefa43fdf773f241dcf4c46795e80", null ],
+      [ "local_aspect_variance", "namespacehmap_1_1gpu.html#a22adb2fd39544ac3e1c2494a8e6c184d", null ],
       [ "local_max", "namespacehmap_1_1gpu.html#a36cacf53f15459d0e32a0b089ce2db2f", null ],
       [ "local_median_deviation", "namespacehmap_1_1gpu.html#a022f5800d7e28f79f9e2d3abf687f490", null ],
       [ "local_min", "namespacehmap_1_1gpu.html#a5c576fca64db583bf500d667173c128a", null ],
