@@ -477,6 +477,24 @@ Array local_variance(const Array &array, int ir);
 /*! @brief See hmap::mean_local */
 Array mean_local(const Array &array, int ir);
 
+/**
+ * @brief Compute the Topographic Position Index (TPI).
+ *
+ * TPI measures the elevation difference between each cell and the mean
+ * elevation within a neighborhood of radius @p ir.
+ *
+ * @param array Input elevation array.
+ * @param ir Radius of the neighborhood.
+ * @return Array of TPI values.
+ *
+ * **Example**
+ * @include ex_topographic_position_index.cpp
+ *
+ * **Result**
+ * @image html ex_topographic_position_index.png
+ */
+Array topographic_position_index(const Array &array, int ir);
+
 /*! @brief See hmap::relative_elevation */
 Array relative_elevation(const Array &array, int ir);
 

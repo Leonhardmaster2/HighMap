@@ -81,6 +81,7 @@ bool init_opencl()
 #include "kernels/thermal_rib.cl"
 #include "kernels/thermal_ridge.cl"
 #include "kernels/thermal_scree.cl"
+#include "kernels/topographic_position_index.cl"
 #include "kernels/vorolines.cl"
 #include "kernels/voronoi_base.cl"
 #include "kernels/voronoi_edge_distance.cl"

@@ -1,0 +1,2 @@
+add_executable(ex_topographic_position_index ex_topographic_position_index.cpp)
+target_link_libraries(ex_topographic_position_index highmap)

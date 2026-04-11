@@ -160,6 +160,27 @@ Array std_local(const Array &array, int ir)
   return std;
 }
 
+Array topographic_position_index(const Array &array, int ir)
+{
+  Array out(array.shape);
+
+  auto run = clwrapper::Run("topographic_position_index");
+
+  run.bind_imagef("array",
+                  const_cast<std::vector<float> &>(array.vector),
+                  array.shape.x,
+                  array.shape.y);
+  run.bind_imagef("out", out.vector, array.shape.x, array.shape.y, true);
+
+  run.bind_arguments(array.shape.x, array.shape.y, ir);
+
+  run.execute({array.shape.x, array.shape.y});
+
+  run.read_imagef("out");
+
+  return out;
+}
+
 Array z_score(const Array &array, int ir)
 {
   // NB - use Gaussian windowing instead of a real arithmetic averaging
