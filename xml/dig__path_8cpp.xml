@@ -43,7 +43,7 @@
 <codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>path_copy.points[k].v<sp/>=<sp/>path_copy.points[k<sp/>-<sp/>1].v;</highlight></codeline>
 <codeline lineno="34"><highlight class="normal"></highlight></codeline>
 <codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>path_copy.to_array(mask,<sp/>bbox);</highlight></codeline>
-<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>zf<sp/>=<sp/><ref refid="namespacehmap_1a5437c715b7a187bc794b1bf66891bddf" kindref="member">maximum_local</ref>(mask,<sp/>3<sp/>*<sp/>(width<sp/>+<sp/>decay));</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>zf<sp/>=<sp/><ref refid="namespacehmap_1adac2e2b20d0c2720e2dc068641bcd922" kindref="member">local_max</ref>(mask,<sp/>3<sp/>*<sp/>(width<sp/>+<sp/>decay));</highlight></codeline>
 <codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a95c0f4c53278620f0812381ccaa7459e" kindref="member">smooth_cpulse</ref>(zf,<sp/>width<sp/>+<sp/>decay);</highlight></codeline>
 <codeline lineno="38"><highlight class="normal"></highlight></codeline>
 <codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>regenerate<sp/>the<sp/>mask</highlight><highlight class="normal"></highlight></codeline>
@@ -61,7 +61,7 @@
 <codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>zf<sp/>=<sp/><ref refid="namespacehmap_1ac297b8711e186ee1e5cdc7d1fc6a7972" kindref="member">local_mean</ref>(z,<sp/>flattening_radius);</highlight></codeline>
 <codeline lineno="52"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="53"><highlight class="normal"></highlight></codeline>
-<codeline lineno="54"><highlight class="normal"><sp/><sp/>mask<sp/>=<sp/><ref refid="namespacehmap_1a5437c715b7a187bc794b1bf66891bddf" kindref="member">maximum_local</ref>(mask,<sp/>width);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/>mask<sp/>=<sp/><ref refid="namespacehmap_1adac2e2b20d0c2720e2dc068641bcd922" kindref="member">local_max</ref>(mask,<sp/>width);</highlight></codeline>
 <codeline lineno="55"><highlight class="normal"><sp/><sp/>mask<sp/>=<sp/><ref refid="namespacehmap_1a23fdcd258e0bab2a5fcad31d6459c3fa" kindref="member">distance_transform_approx</ref>(mask);</highlight></codeline>
 <codeline lineno="56"><highlight class="normal"><sp/><sp/>mask<sp/>=<sp/><ref refid="namespacehmap_1aad00066161ccf5ba4d6f93ab48c10876" kindref="member">exp</ref>(-mask<sp/>*<sp/>mask<sp/>*<sp/>0.5f<sp/>/<sp/>((</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)(decay<sp/>*<sp/>decay)));</highlight></codeline>
 <codeline lineno="57"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a95c0f4c53278620f0812381ccaa7459e" kindref="member">smooth_cpulse</ref>(mask,<sp/>decay);</highlight></codeline>

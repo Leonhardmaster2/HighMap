@@ -805,10 +805,6 @@ void \mbox{\hyperlink{namespacehmap_a81842482472ceecc660913388219bb77}{low\+\_\+
 \begin{DoxyCompactList}\small\item\em Apply a low-\/pass high-\/order filter to the input array. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a4799d3f029d45240a5b40b4853583a58}{make\+\_\+binary}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float threshold=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Convert array values to binary using a threshold. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a5437c715b7a187bc794b1bf66891bddf}{maximum\+\_\+local}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
-\begin{DoxyCompactList}\small\item\em Return the local maxima based on a maximum filter with a square kernel. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a2470328dcc792f6563c5844a2cc163ee}{maximum\+\_\+local\+\_\+disk}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
-\begin{DoxyCompactList}\small\item\em Return the local maxima based on a maximum filter using a disk kernel. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a8afd3d81a238c8a5d10059b3a029554e}{match\+\_\+histogram}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array\+\_\+reference)
 \begin{DoxyCompactList}\small\item\em Transform the input array elevation to match the histogram of a reference array. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a8ac4638525bb243024d50793d97bc9ee}{mean\+\_\+shift}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir, float talus, int iterations=1, bool talus\+\_\+weighted=true)
@@ -821,10 +817,6 @@ void \mbox{\hyperlink{namespacehmap_ad99aff62bcc6c5c7a610d315e255b6d5}{median\+\
 \begin{DoxyCompactList}\small\item\em Apply a 3x3 median filter to the input array without a mask. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a14eb6b7d304484c8cbb231b672851491}{median\+\_\+pseudo}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
 \begin{DoxyCompactList}\small\item\em Computes a fast pseudo-\/median approximation of a local neighborhood in an array. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_adf68a2f031297654f88252b7ce027b3d}{minimum\+\_\+local}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
-\begin{DoxyCompactList}\small\item\em Return the local minima based on a maximum filter with a square kernel. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a2b174148b8c1f2e44b5ecff756e9a0f9}{minimum\+\_\+local\+\_\+disk}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
-\begin{DoxyCompactList}\small\item\em Return the local minima based on a maximum filter using a disk kernel. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_aafd7a642dabfbcf2ab2981b229a30e15}{normal\+\_\+displacement}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float amount=0.\+1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, int ir=0, bool reverse=false)
 \begin{DoxyCompactList}\small\item\em Apply a displacement to the terrain along the normal direction. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a8994656d85a1b9dd0f2c99a3fd45ceb1}{normal\+\_\+displacement}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+mask, float amount=0.\+1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, int ir=0, bool reverse=false)
@@ -1281,8 +1273,12 @@ std\+::vector$<$ float $>$ \mbox{\hyperlink{namespacehmap_a0b3237f9cc015299bf3e4
 \begin{DoxyCompactList}\small\item\em Generate a square-\/shaped kernel. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_af79b0d6faf3275a80f3948dfff6adaf5}{tricube}} (glm\+::ivec2 shape)
 \begin{DoxyCompactList}\small\item\em Generate a tricube kernel. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_adac2e2b20d0c2720e2dc068641bcd922}{local\+\_\+max}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
+\begin{DoxyCompactList}\small\item\em Return the local maxima based on a maximum filter with a square kernel. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a9b6a1d2ca8ef58a4a0605d04bcbff038}{local\+\_\+median\+\_\+deviation}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
 \begin{DoxyCompactList}\small\item\em Computes the local median deviation of a 2D array. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_aa7ab501bae56bac2236a74ade5cd34a4}{local\+\_\+min}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
+\begin{DoxyCompactList}\small\item\em Return the local minima based on a maximum filter with a square kernel. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_ac297b8711e186ee1e5cdc7d1fc6a7972}{local\+\_\+mean}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
 \begin{DoxyCompactList}\small\item\em Return the local mean based on a mean filter with a square kernel. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a941d446cad19c166f4f6c4df857dba65}{relative\+\_\+elevation}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
@@ -7774,7 +7770,7 @@ Apply hydraulic erosion based on a flow accumulation map.
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ c\_erosion\ =\ 0.1f;}
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ talus\_ref\ =\ 5.f\ /\ (float)shape.x;}
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ iradius\ =\ 64;}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\_bedrock\ =\ \mbox{\hyperlink{namespacehmap_adf68a2f031297654f88252b7ce027b3d}{hmap::minimum\_local}}(z,\ iradius);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\_bedrock\ =\ \mbox{\hyperlink{namespacehmap_aa7ab501bae56bac2236a74ade5cd34a4}{hmap::local\_min}}(z,\ iradius);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ z1\ =\ z;}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_acbf32c30d68183eb5522888af2ede316}{hmap::hydraulic\_stream}}(z1,\ c\_erosion,\ talus\_ref);}
@@ -7883,7 +7879,7 @@ Apply hydraulic erosion based on a flow accumulation map, alternative formulatio
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ c\_erosion\ =\ 0.1f;}
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ talus\_ref\ =\ 5.f\ /\ (float)shape.x;}
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ iradius\ =\ 64;}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\_bedrock\ =\ \mbox{\hyperlink{namespacehmap_adf68a2f031297654f88252b7ce027b3d}{hmap::minimum\_local}}(z,\ iradius);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\_bedrock\ =\ \mbox{\hyperlink{namespacehmap_aa7ab501bae56bac2236a74ade5cd34a4}{hmap::local\_min}}(z,\ iradius);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ z1\ =\ z;}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_acbf32c30d68183eb5522888af2ede316}{hmap::hydraulic\_stream}}(z1,\ c\_erosion,\ talus\_ref);}
@@ -10935,108 +10931,6 @@ This function applies a binary filter to the input array, converting all values 
 {\em threshold} & Threshold value. Any array value greater than this threshold is set to 1, while values less than or equal to the threshold are set to 0. The default threshold is 0.\+0. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{namespacehmap_a5437c715b7a187bc794b1bf66891bddf}\label{namespacehmap_a5437c715b7a187bc794b1bf66891bddf} 
-\index{hmap@{hmap}!maximum\_local@{maximum\_local}}
-\index{maximum\_local@{maximum\_local}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{maximum\_local()}{maximum\_local()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::maximum\+\_\+local (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{int}]{ir }\end{DoxyParamCaption})}
-
-
-
-Return the local maxima based on a maximum filter with a square kernel. 
-
-This function identifies the local maxima in the input array using a maximum filter with a square kernel. The local maxima are determined based on the footprint radius specified by {\ttfamily ir}. The result is an array where each value represents the local maximum within the defined kernel size.
-
-
-\begin{DoxyParams}{Parameters}
-{\em array} & Input array from which local maxima are to be extracted. \\
-\hline
-{\em ir} & Square kernel footprint radius. The size of the kernel used to determine the local maxima. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-\doxylink{classhmap_1_1Array}{Array} Resulting array containing the local maxima.
-\end{DoxyReturn}
-{\bfseries{Example}} 
-\begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
-\DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
-\DoxyCodeLine{\{}
-\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
-\DoxyCodeLine{\ \ glm::vec2\ \ res\ =\ \{4.f,\ 4.f\};}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 1;}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ radius\ =\ 5;}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_acb13e7346085793fda4c94c47b75d9a9}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ res,\ seed);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zmin\ =\ \mbox{\hyperlink{namespacehmap_adf68a2f031297654f88252b7ce027b3d}{hmap::minimum\_local}}(z,\ radius);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zmax\ =\ \mbox{\hyperlink{namespacehmap_a5437c715b7a187bc794b1bf66891bddf}{hmap::maximum\_local}}(z,\ radius);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zdisk\ =\ \mbox{\hyperlink{namespacehmap_a2470328dcc792f6563c5844a2cc163ee}{hmap::maximum\_local\_disk}}(z,\ radius);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_maximum\_local.png"{}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ zmin,\ zmax,\ zdisk\},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492}{hmap::Cmap::VIRIDIS}});}
-\DoxyCodeLine{\}}
-
-\end{DoxyCodeInclude}
-
-
-{\bfseries{Result}} 
-
-\begin{DoxySeeAlso}{See also}
-{\ttfamily \doxylink{namespacehmap_a2470328dcc792f6563c5844a2cc163ee}{maximum\+\_\+local\+\_\+disk}}, {\ttfamily \doxylink{namespacehmap_adf68a2f031297654f88252b7ce027b3d}{minimum\+\_\+local}} 
-\end{DoxySeeAlso}
-\Hypertarget{namespacehmap_a2470328dcc792f6563c5844a2cc163ee}\label{namespacehmap_a2470328dcc792f6563c5844a2cc163ee} 
-\index{hmap@{hmap}!maximum\_local\_disk@{maximum\_local\_disk}}
-\index{maximum\_local\_disk@{maximum\_local\_disk}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{maximum\_local\_disk()}{maximum\_local\_disk()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::maximum\+\_\+local\+\_\+disk (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{int}]{ir }\end{DoxyParamCaption})}
-
-
-
-Return the local maxima based on a maximum filter using a disk kernel. 
-
-This function identifies the local maxima in the input array using a maximum filter with a disk-\/shaped kernel. The local maxima are determined based on the footprint radius specified by {\ttfamily ir}. The result is an array where each value represents the local maximum within the disk-\/shaped kernel.
-
-
-\begin{DoxyParams}{Parameters}
-{\em array} & Input array from which local maxima are to be extracted. \\
-\hline
-{\em ir} & Disk kernel footprint radius. The size of the disk-\/shaped kernel used to determine the local maxima. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-\doxylink{classhmap_1_1Array}{Array} Resulting array containing the local maxima.
-\end{DoxyReturn}
-{\bfseries{Example}} 
-\begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
-\DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
-\DoxyCodeLine{\{}
-\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
-\DoxyCodeLine{\ \ glm::vec2\ \ res\ =\ \{4.f,\ 4.f\};}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 1;}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ radius\ =\ 5;}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_acb13e7346085793fda4c94c47b75d9a9}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ res,\ seed);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zmin\ =\ \mbox{\hyperlink{namespacehmap_adf68a2f031297654f88252b7ce027b3d}{hmap::minimum\_local}}(z,\ radius);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zmax\ =\ \mbox{\hyperlink{namespacehmap_a5437c715b7a187bc794b1bf66891bddf}{hmap::maximum\_local}}(z,\ radius);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zdisk\ =\ \mbox{\hyperlink{namespacehmap_a2470328dcc792f6563c5844a2cc163ee}{hmap::maximum\_local\_disk}}(z,\ radius);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_maximum\_local.png"{}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ zmin,\ zmax,\ zdisk\},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492}{hmap::Cmap::VIRIDIS}});}
-\DoxyCodeLine{\}}
-
-\end{DoxyCodeInclude}
-
-
-{\bfseries{Result}} 
-
-\begin{DoxySeeAlso}{See also}
-{\ttfamily \doxylink{namespacehmap_a5437c715b7a187bc794b1bf66891bddf}{maximum\+\_\+local}}, {\ttfamily \doxylink{namespacehmap_a2b174148b8c1f2e44b5ecff756e9a0f9}{minimum\+\_\+local\+\_\+disk}}, {\ttfamily \doxylink{namespacehmap_adf68a2f031297654f88252b7ce027b3d}{minimum\+\_\+local}} 
-\end{DoxySeeAlso}
 \Hypertarget{namespacehmap_a8afd3d81a238c8a5d10059b3a029554e}\label{namespacehmap_a8afd3d81a238c8a5d10059b3a029554e} 
 \index{hmap@{hmap}!match\_histogram@{match\_histogram}}
 \index{match\_histogram@{match\_histogram}!hmap@{hmap}}
@@ -11266,109 +11160,7 @@ This method works best on images with impulsive noise (e.\+g., salt-\/and-\/pepp
 {\bfseries{Result}} 
 
 \begin{DoxySeeAlso}{See also}
-\doxylink{namespacehmap_adf68a2f031297654f88252b7ce027b3d}{minimum\+\_\+local}, \doxylink{namespacehmap_a5437c715b7a187bc794b1bf66891bddf}{maximum\+\_\+local}, \doxylink{namespacehmap_ac297b8711e186ee1e5cdc7d1fc6a7972}{local\+\_\+mean} 
-\end{DoxySeeAlso}
-\Hypertarget{namespacehmap_adf68a2f031297654f88252b7ce027b3d}\label{namespacehmap_adf68a2f031297654f88252b7ce027b3d} 
-\index{hmap@{hmap}!minimum\_local@{minimum\_local}}
-\index{minimum\_local@{minimum\_local}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{minimum\_local()}{minimum\_local()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::minimum\+\_\+local (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{int}]{ir }\end{DoxyParamCaption})}
-
-
-
-Return the local minima based on a maximum filter with a square kernel. 
-
-This function identifies the local minima in the input array using a maximum filter with a square kernel. The local minima are determined based on the footprint radius specified by {\ttfamily ir}. The result is an array where each value represents the local minimum within the defined kernel size.
-
-
-\begin{DoxyParams}{Parameters}
-{\em array} & Input array from which local minima are to be extracted. \\
-\hline
-{\em ir} & Square kernel footprint radius. The size of the kernel used to determine the local minima. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-\doxylink{classhmap_1_1Array}{Array} Resulting array containing the local minima.
-\end{DoxyReturn}
-{\bfseries{Example}} 
-\begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
-\DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
-\DoxyCodeLine{\{}
-\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
-\DoxyCodeLine{\ \ glm::vec2\ \ res\ =\ \{4.f,\ 4.f\};}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 1;}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ radius\ =\ 5;}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_acb13e7346085793fda4c94c47b75d9a9}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ res,\ seed);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zmin\ =\ \mbox{\hyperlink{namespacehmap_adf68a2f031297654f88252b7ce027b3d}{hmap::minimum\_local}}(z,\ radius);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zmax\ =\ \mbox{\hyperlink{namespacehmap_a5437c715b7a187bc794b1bf66891bddf}{hmap::maximum\_local}}(z,\ radius);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zdisk\ =\ \mbox{\hyperlink{namespacehmap_a2470328dcc792f6563c5844a2cc163ee}{hmap::maximum\_local\_disk}}(z,\ radius);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_maximum\_local.png"{}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ zmin,\ zmax,\ zdisk\},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492}{hmap::Cmap::VIRIDIS}});}
-\DoxyCodeLine{\}}
-
-\end{DoxyCodeInclude}
-
-
-{\bfseries{Result}} 
-
-\begin{DoxySeeAlso}{See also}
-{\ttfamily \doxylink{namespacehmap_adf68a2f031297654f88252b7ce027b3d}{minimum\+\_\+local}} 
-\end{DoxySeeAlso}
-\Hypertarget{namespacehmap_a2b174148b8c1f2e44b5ecff756e9a0f9}\label{namespacehmap_a2b174148b8c1f2e44b5ecff756e9a0f9} 
-\index{hmap@{hmap}!minimum\_local\_disk@{minimum\_local\_disk}}
-\index{minimum\_local\_disk@{minimum\_local\_disk}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{minimum\_local\_disk()}{minimum\_local\_disk()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::minimum\+\_\+local\+\_\+disk (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{int}]{ir }\end{DoxyParamCaption})}
-
-
-
-Return the local minima based on a maximum filter using a disk kernel. 
-
-This function calculates the local minima in the input array using a maximum filter with a disk-\/shaped kernel. The local minima are determined based on the footprint radius specified by {\ttfamily ir}. The result is an array where each value represents the local minimum within the disk-\/shaped kernel.
-
-
-\begin{DoxyParams}{Parameters}
-{\em array} & Input array from which local minima are to be extracted. \\
-\hline
-{\em ir} & Disk kernel footprint radius. The size of the disk-\/shaped kernel used to determine the local minima. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-\doxylink{classhmap_1_1Array}{Array} Resulting array containing the local minima.
-\end{DoxyReturn}
-{\bfseries{Example}} 
-\begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
-\DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
-\DoxyCodeLine{\{}
-\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
-\DoxyCodeLine{\ \ glm::vec2\ \ res\ =\ \{4.f,\ 4.f\};}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 1;}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ radius\ =\ 5;}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_acb13e7346085793fda4c94c47b75d9a9}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ res,\ seed);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zmin\ =\ \mbox{\hyperlink{namespacehmap_adf68a2f031297654f88252b7ce027b3d}{hmap::minimum\_local}}(z,\ radius);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zmax\ =\ \mbox{\hyperlink{namespacehmap_a5437c715b7a187bc794b1bf66891bddf}{hmap::maximum\_local}}(z,\ radius);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zdisk\ =\ \mbox{\hyperlink{namespacehmap_a2470328dcc792f6563c5844a2cc163ee}{hmap::maximum\_local\_disk}}(z,\ radius);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_maximum\_local.png"{}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ zmin,\ zmax,\ zdisk\},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492}{hmap::Cmap::VIRIDIS}});}
-\DoxyCodeLine{\}}
-
-\end{DoxyCodeInclude}
-
-
-{\bfseries{Result}} 
-
-\begin{DoxySeeAlso}{See also}
-{\ttfamily \doxylink{namespacehmap_a5437c715b7a187bc794b1bf66891bddf}{maximum\+\_\+local}}, {\ttfamily \doxylink{namespacehmap_a2470328dcc792f6563c5844a2cc163ee}{maximum\+\_\+local\+\_\+disk}}, {\ttfamily \doxylink{namespacehmap_adf68a2f031297654f88252b7ce027b3d}{minimum\+\_\+local}} 
+\doxylink{namespacehmap_aa7ab501bae56bac2236a74ade5cd34a4}{local\+\_\+min}, \doxylink{namespacehmap_adac2e2b20d0c2720e2dc068641bcd922}{local\+\_\+max}, \doxylink{namespacehmap_ac297b8711e186ee1e5cdc7d1fc6a7972}{local\+\_\+mean} 
 \end{DoxySeeAlso}
 \Hypertarget{namespacehmap_aafd7a642dabfbcf2ab2981b229a30e15}\label{namespacehmap_aafd7a642dabfbcf2ab2981b229a30e15} 
 \index{hmap@{hmap}!normal\_displacement@{normal\_displacement}}
@@ -19737,7 +19529,40 @@ The tricube kernel is a type of kernel function that is often used in statistica
 \begin{DoxyReturn}{Returns}
 \doxylink{classhmap_1_1Array}{Array} The tricube kernel array.
 \end{DoxyReturn}
-{\bfseries{Reference}} See \href{https://en.wikipedia.org/wiki/Kernel_\%28statistics\%29}{\texttt{ https\+://en.\+wikipedia.\+org/wiki/\+Kernel\+\_\+\%28statistics\%29}} for details on the tricube kernel. \Hypertarget{namespacehmap_a9b6a1d2ca8ef58a4a0605d04bcbff038}\label{namespacehmap_a9b6a1d2ca8ef58a4a0605d04bcbff038} 
+{\bfseries{Reference}} See \href{https://en.wikipedia.org/wiki/Kernel_\%28statistics\%29}{\texttt{ https\+://en.\+wikipedia.\+org/wiki/\+Kernel\+\_\+\%28statistics\%29}} for details on the tricube kernel. \Hypertarget{namespacehmap_adac2e2b20d0c2720e2dc068641bcd922}\label{namespacehmap_adac2e2b20d0c2720e2dc068641bcd922} 
+\index{hmap@{hmap}!local\_max@{local\_max}}
+\index{local\_max@{local\_max}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{local\_max()}{local\_max()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::local\+\_\+max (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{int}]{ir }\end{DoxyParamCaption})}
+
+
+
+Return the local maxima based on a maximum filter with a square kernel. 
+
+This function identifies the local maxima in the input array using a maximum filter with a square kernel. The local maxima are determined based on the footprint radius specified by {\ttfamily ir}. The result is an array where each value represents the local maximum within the defined kernel size.
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & Input array from which local maxima are to be extracted. \\
+\hline
+{\em ir} & Square kernel footprint radius. The size of the kernel used to determine the local maxima. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classhmap_1_1Array}{Array} Resulting array containing the local maxima.
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}} 
+
+\begin{DoxySeeAlso}{See also}
+{\ttfamily \doxylink{}{local\+\_\+max\+\_\+disk}}, {\ttfamily \doxylink{namespacehmap_aa7ab501bae56bac2236a74ade5cd34a4}{local\+\_\+min}} 
+\end{DoxySeeAlso}
+\Hypertarget{namespacehmap_a9b6a1d2ca8ef58a4a0605d04bcbff038}\label{namespacehmap_a9b6a1d2ca8ef58a4a0605d04bcbff038} 
 \index{hmap@{hmap}!local\_median\_deviation@{local\_median\_deviation}}
 \index{local\_median\_deviation@{local\_median\_deviation}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{local\_median\_deviation()}{local\_median\_deviation()}}
@@ -19798,6 +19623,39 @@ The function uses a pseudo-\/median approximation. For exact median computation,
 \begin{DoxySeeAlso}{See also}
 \doxylink{namespacehmap_ac297b8711e186ee1e5cdc7d1fc6a7972}{local\+\_\+mean()}, \doxylink{namespacehmap_a14eb6b7d304484c8cbb231b672851491}{median\+\_\+pseudo()} 
 \end{DoxySeeAlso}
+\Hypertarget{namespacehmap_aa7ab501bae56bac2236a74ade5cd34a4}\label{namespacehmap_aa7ab501bae56bac2236a74ade5cd34a4} 
+\index{hmap@{hmap}!local\_min@{local\_min}}
+\index{local\_min@{local\_min}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{local\_min()}{local\_min()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::local\+\_\+min (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{int}]{ir }\end{DoxyParamCaption})}
+
+
+
+Return the local minima based on a maximum filter with a square kernel. 
+
+This function identifies the local minima in the input array using a maximum filter with a square kernel. The local minima are determined based on the footprint radius specified by {\ttfamily ir}. The result is an array where each value represents the local minimum within the defined kernel size.
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & Input array from which local minima are to be extracted. \\
+\hline
+{\em ir} & Square kernel footprint radius. The size of the kernel used to determine the local minima. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classhmap_1_1Array}{Array} Resulting array containing the local minima.
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}} 
+
+\begin{DoxySeeAlso}{See also}
+{\ttfamily \doxylink{namespacehmap_aa7ab501bae56bac2236a74ade5cd34a4}{local\+\_\+min}} 
+\end{DoxySeeAlso}
 \Hypertarget{namespacehmap_ac297b8711e186ee1e5cdc7d1fc6a7972}\label{namespacehmap_ac297b8711e186ee1e5cdc7d1fc6a7972} 
 \index{hmap@{hmap}!local\_mean@{local\_mean}}
 \index{local\_mean@{local\_mean}!hmap@{hmap}}
@@ -19844,7 +19702,7 @@ This function calculates the local mean of the input array using a mean filter w
 {\bfseries{Result}}  
 
 \begin{DoxySeeAlso}{See also}
-{\ttfamily \doxylink{namespacehmap_a5437c715b7a187bc794b1bf66891bddf}{maximum\+\_\+local}}, {\ttfamily \doxylink{namespacehmap_adf68a2f031297654f88252b7ce027b3d}{minimum\+\_\+local}} 
+{\ttfamily \doxylink{namespacehmap_adac2e2b20d0c2720e2dc068641bcd922}{local\+\_\+max}}, {\ttfamily \doxylink{namespacehmap_aa7ab501bae56bac2236a74ade5cd34a4}{local\+\_\+min}} 
 \end{DoxySeeAlso}
 \Hypertarget{namespacehmap_a941d446cad19c166f4f6c4df857dba65}\label{namespacehmap_a941d446cad19c166f4f6c4df857dba65} 
 \index{hmap@{hmap}!relative\_elevation@{relative\_elevation}}

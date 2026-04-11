@@ -25,7 +25,7 @@ var searchData=
   ['ep_5ftriangle_5fsharp_22',['EP_TRIANGLE_SHARP',['../namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6abd62370bad5912fe7918895b6ddb0176',1,'hmap']]],
   ['ep_5ftriangle_5fsmooth_23',['EP_TRIANGLE_SMOOTH',['../namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a4ac60b8049aacabb3b5546b20cc87e9e',1,'hmap']]],
   ['equalize_24',['equalize',['../namespacehmap.html#a1470c4d74892293e4974a319c6b17267',1,'hmap::equalize(Array &amp;array, const Array *p_mask)'],['../namespacehmap.html#a1b08d9a5d25e6bcd9d080accd077cc98',1,'hmap::equalize(Array &amp;array)']]],
-  ['erosion_25',['erosion',['../namespacehmap_1_1gpu.html#a56d60a8b1139c78c27b53f85afedce7d',1,'hmap::gpu::erosion()'],['../namespacehmap.html#a9cf7773f6141162bf60708a93acdfcee',1,'hmap::erosion()']]],
+  ['erosion_25',['erosion',['../namespacehmap_1_1gpu.html#aed5416971461ddb7fb6427bdeb5cae86',1,'hmap::gpu::erosion()'],['../namespacehmap.html#a9cf7773f6141162bf60708a93acdfcee',1,'hmap::erosion()']]],
   ['erosion_2ehpp_26',['erosion.hpp',['../erosion_8hpp.html',1,'']]],
   ['erosion_5fgpu_2ecpp_27',['erosion_gpu.cpp',['../erosion__gpu_8cpp.html',1,'']]],
   ['erosion_5fmaps_28',['erosion_maps',['../namespacehmap.html#af91e2b8638aab2c4357ce37812b8a99c',1,'hmap']]],

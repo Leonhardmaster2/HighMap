@@ -35,7 +35,7 @@
 <codeline lineno="24"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(talus_ref<sp/>&lt;=<sp/>0.f)<sp/>talus_ref<sp/>=<sp/>1.f<sp/>/<sp/>z.shape.x;</highlight></codeline>
 <codeline lineno="25"><highlight class="normal"></highlight></codeline>
 <codeline lineno="26"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>gradient<sp/>(scaling<sp/>is<sp/>empirical)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="27"><highlight class="normal"><sp/><sp/>Array<sp/>dn<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1a163ab224a45decc3ccecf090f0704bc7" kindref="member">gpu::morphological_gradient</ref>(z,<sp/>ir_gradient)<sp/>*</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/>Array<sp/>dn<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1afd60fc3552953dcdbda7baeef6b2ccce" kindref="member">gpu::morphological_gradient</ref>(z,<sp/>ir_gradient)<sp/>*</highlight></codeline>
 <codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gradient_scaling_factor<sp/>/<sp/>32.f<sp/>/<sp/>ir_gradient;</highlight></codeline>
 <codeline lineno="29"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a936453b67a394c5da8b48473540c9459" kindref="member">clamp_max_smooth</ref>(dn,<sp/>1.f,<sp/>0.01f);</highlight></codeline>
 <codeline lineno="30"><highlight class="normal"></highlight></codeline>

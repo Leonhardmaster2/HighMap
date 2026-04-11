@@ -22,7 +22,7 @@ var searchData=
   ['blend_5foverlay_19',['blend_overlay',['../namespacehmap.html#a3d311d682d431e21c6d7063539a0db8e',1,'hmap']]],
   ['blend_5fpoisson_5fbf_20',['blend_poisson_bf',['../namespacehmap_1_1gpu.html#a65a176508b404f80e5f5abd31456712e',1,'hmap::gpu']]],
   ['blend_5fsoft_21',['blend_soft',['../namespacehmap.html#a91e52ae1178d54931a1729a2368a31f7',1,'hmap']]],
-  ['border_22',['border',['../namespacehmap_1_1gpu.html#ac3ce919cb2abf0860493113a90892b79',1,'hmap::gpu::border()'],['../namespacehmap.html#af80bcff234bf1482cf26896b9d21d270',1,'hmap::border()']]],
+  ['border_22',['border',['../namespacehmap_1_1gpu.html#a335e4629532ba64049e0721bdcb5f3ba',1,'hmap::gpu::border()'],['../namespacehmap.html#af80bcff234bf1482cf26896b9d21d270',1,'hmap::border()']]],
   ['bspline_23',['bspline',['../classhmap_1_1Path.html#a166a6f87dff196efa75abb1b731d3528',1,'hmap::Path']]],
   ['build_24',['build',['../classhmap_1_1NaturalNeighborInterpolator.html#a9404f1043455692be64d35116a00742c',1,'hmap::NaturalNeighborInterpolator']]],
   ['bulkify_25',['bulkify',['../namespacehmap.html#ae3ecf5f88476c5d49978a130f8cab2f3',1,'hmap']]],

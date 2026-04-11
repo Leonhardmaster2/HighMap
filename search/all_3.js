@@ -38,7 +38,7 @@ var searchData=
   ['blending_2ehpp_35',['blending.hpp',['../blending_8hpp.html',1,'']]],
   ['blending_5fgpu_2ecpp_36',['blending_gpu.cpp',['../blending__gpu_8cpp.html',1,'']]],
   ['bone_37',['BONE',['../namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a4eb53d94f58e93c3bdb554d8cca7f306',1,'hmap']]],
-  ['border_38',['border',['../namespacehmap.html#af80bcff234bf1482cf26896b9d21d270',1,'hmap::border()'],['../namespacehmap_1_1gpu.html#ac3ce919cb2abf0860493113a90892b79',1,'hmap::gpu::border()']]],
+  ['border_38',['border',['../namespacehmap.html#af80bcff234bf1482cf26896b9d21d270',1,'hmap::border()'],['../namespacehmap_1_1gpu.html#a335e4629532ba64049e0721bdcb5f3ba',1,'hmap::gpu::border()']]],
   ['both_39',['BOTH',['../namespacehmap.html#ad4876bd26d1f3b33a1492645bfe50fbead7d8162264f038302952e47ad5e7a2ed',1,'hmap']]],
   ['boundary_2ecpp_40',['boundary.cpp',['../boundary_8cpp.html',1,'']]],
   ['boundary_2ehpp_41',['boundary.hpp',['../boundary_8hpp.html',1,'']]],

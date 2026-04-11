@@ -3,7 +3,7 @@ var searchData=
   ['edge_0',['edge',['../classhmap_1_1Edge.html#a418b34ac512506a53da3b7c105fe9619',1,'hmap::Edge::Edge(Point p1, Point p2)'],['../classhmap_1_1Edge.html#a1807bf5546717f8355354926a5b49634',1,'hmap::Edge::Edge(Point p1, Point p2, float w)'],['../structhmap_1_1TerrainTriMesh_1_1Edge.html#a6a47d9f0ff2b4ae570e1d110d920b48f',1,'hmap::TerrainTriMesh::Edge::Edge()']]],
   ['enforce_5fmonotonic_5fvalues_1',['enforce_monotonic_values',['../classhmap_1_1Path.html#a4934980f265ae283c847fc091fe45c75',1,'hmap::Path']]],
   ['equalize_2',['equalize',['../namespacehmap.html#a1b08d9a5d25e6bcd9d080accd077cc98',1,'hmap::equalize(Array &amp;array)'],['../namespacehmap.html#a1470c4d74892293e4974a319c6b17267',1,'hmap::equalize(Array &amp;array, const Array *p_mask)']]],
-  ['erosion_3',['erosion',['../namespacehmap.html#a9cf7773f6141162bf60708a93acdfcee',1,'hmap::erosion()'],['../namespacehmap_1_1gpu.html#a56d60a8b1139c78c27b53f85afedce7d',1,'hmap::gpu::erosion()']]],
+  ['erosion_3',['erosion',['../namespacehmap.html#a9cf7773f6141162bf60708a93acdfcee',1,'hmap::erosion()'],['../namespacehmap_1_1gpu.html#aed5416971461ddb7fb6427bdeb5cae86',1,'hmap::gpu::erosion()']]],
   ['erosion_5fmaps_4',['erosion_maps',['../namespacehmap.html#af91e2b8638aab2c4357ce37812b8a99c',1,'hmap']]],
   ['evaluateimpl_5',['evaluateimpl',['../classhmap_1_1ArrayControlFunction.html#a9932a402b24b0e66df33e8033746016b',1,'hmap::ArrayControlFunction::EvaluateImpl()'],['../classhmap_1_1XyControlFunction.html#a142161db636fa6eb92dc64a1dd5c98f9',1,'hmap::XyControlFunction::EvaluateImpl()']]],
   ['exp_6',['exp',['../namespacehmap.html#aad00066161ccf5ba4d6f93ab48c10876',1,'hmap']]],
