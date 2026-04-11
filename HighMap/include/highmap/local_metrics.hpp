@@ -296,6 +296,8 @@ Array local_variance(const Array &array, int ir);
 /*! @brief See hmap::local_mean */
 Array local_mean(const Array &array, int ir);
 
+Array local_skewness(const Array &array, int ir);
+
 /**
  * @brief Compute the local z-score of an array.
  *
@@ -358,6 +360,7 @@ enum LocalMetrics : int
    LM_LOCAL_RELIEF,
    LM_LOCAL_VARIANCE,
    LM_LOCAL_MEAN,
+   LM_LOCAL_SKEWNESS,
    LM_LOCAL_Z_SCORE,
    LM_TOPOGRAPHIC_POSITION_INDEX,
    LM_RELATIVE_ELEVATION,

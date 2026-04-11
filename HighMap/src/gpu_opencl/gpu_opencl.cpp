@@ -55,6 +55,7 @@ bool init_opencl()
 #include "kernels/local_mean.cl"
 #include "kernels/local_min.cl"
 #include "kernels/local_relief.cl"
+#include "kernels/local_skewness.cl"
 #include "kernels/local_variance.cl"
 #include "kernels/local_z_score.cl"
 #include "kernels/maximum_smooth.cl"

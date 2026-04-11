@@ -21,6 +21,7 @@ Array local_metrics(const Array &array, int ir, LocalMetrics metric)
   case LocalMetrics::LM_LOCAL_RELIEF: return gpu::local_relief(array, ir);
   case LocalMetrics::LM_LOCAL_VARIANCE: return gpu::local_variance(array, ir);
   case LocalMetrics::LM_LOCAL_MEAN: return gpu::local_mean(array, ir);
+  case LocalMetrics::LM_LOCAL_SKEWNESS: return gpu::local_skewness(array, ir);
   case LocalMetrics::LM_LOCAL_Z_SCORE: return gpu::local_z_score(array, ir);
   case LocalMetrics::LM_TOPOGRAPHIC_POSITION_INDEX:
     return gpu::topographic_position_index(array, ir);
