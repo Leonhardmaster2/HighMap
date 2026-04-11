@@ -1,6 +1,19 @@
 var searchData=
 [
   ['linear_0',['LINEAR',['../namespacehmap.html#a46291bb4766800deacc1ce9b45a9ea6ba26ec6481025765e03b9c750137bd9d84',1,'hmap']]],
-  ['lorentzian_1',['LORENTZIAN',['../namespacehmap.html#a4b6f135c6e81d313ca54ae1efac5f2c9adca1c57725ab84b424723316de5ba3dc',1,'hmap']]],
-  ['lowpass_5fonly_2',['LOWPASS_ONLY',['../namespacehmap.html#ae84abe9052dcb9c88f3c50716addfe44ab02b262c560a970e4f082d4edee376fb',1,'hmap']]]
+  ['lm_5flocal_5faspect_5fvariance_1',['LM_LOCAL_ASPECT_VARIANCE',['../namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa6302a2239490ba9a2f3cd152d55e50d7',1,'hmap::gpu']]],
+  ['lm_5flocal_5fmax_2',['LM_LOCAL_MAX',['../namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa919b512837145887c412526966767a9f',1,'hmap::gpu']]],
+  ['lm_5flocal_5fmean_3',['LM_LOCAL_MEAN',['../namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fad5818c578f7164c55a879326e4a88b53',1,'hmap::gpu']]],
+  ['lm_5flocal_5fmedian_5fdeviation_4',['LM_LOCAL_MEDIAN_DEVIATION',['../namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fad839ce8cff6bd20c67432d651776b569',1,'hmap::gpu']]],
+  ['lm_5flocal_5fmin_5',['LM_LOCAL_MIN',['../namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa3fb8064f9087e5af79c85dce2c655112',1,'hmap::gpu']]],
+  ['lm_5flocal_5frelief_6',['LM_LOCAL_RELIEF',['../namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa5a6dccee984676ced1eb1ac2a546761e',1,'hmap::gpu']]],
+  ['lm_5flocal_5fvariance_7',['LM_LOCAL_VARIANCE',['../namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa9633368152d1a5c7cabbd67607305162',1,'hmap::gpu']]],
+  ['lm_5flocal_5fz_5fscore_8',['LM_LOCAL_Z_SCORE',['../namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa64d519d05dec2198a42425ce0c402bff',1,'hmap::gpu']]],
+  ['lm_5frelative_5felevation_9',['LM_RELATIVE_ELEVATION',['../namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa46f15a0ffd71deff0ddbc5599acfff87',1,'hmap::gpu']]],
+  ['lm_5fruggedness_10',['LM_RUGGEDNESS',['../namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa568c1c82b138902b43e26249e63d8618',1,'hmap::gpu']]],
+  ['lm_5frugosity_5fconcave_11',['LM_RUGOSITY_CONCAVE',['../namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa892abed7945357817b7504339fdcee14',1,'hmap::gpu']]],
+  ['lm_5frugosity_5fconvex_12',['LM_RUGOSITY_CONVEX',['../namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fac1321c034ba09831f5b5a040058f9477',1,'hmap::gpu']]],
+  ['lm_5ftopographic_5fposition_5findex_13',['LM_TOPOGRAPHIC_POSITION_INDEX',['../namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa8f5a70d0a562337ca689b0ce7ee3fff6',1,'hmap::gpu']]],
+  ['lorentzian_14',['LORENTZIAN',['../namespacehmap.html#a4b6f135c6e81d313ca54ae1efac5f2c9adca1c57725ab84b424723316de5ba3dc',1,'hmap']]],
+  ['lowpass_5fonly_15',['LOWPASS_ONLY',['../namespacehmap.html#ae84abe9052dcb9c88f3c50716addfe44ab02b262c560a970e4f082d4edee376fb',1,'hmap']]]
 ];

@@ -1,5 +1,27 @@
 \doxysection{hmap\+::gpu Namespace Reference}
 \hypertarget{namespacehmap_1_1gpu}{}\label{namespacehmap_1_1gpu}\index{hmap::gpu@{hmap::gpu}}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895f}{Local\+Metrics}} \+: int \{ \newline
+\mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa6302a2239490ba9a2f3cd152d55e50d7}{LM\+\_\+\+LOCAL\+\_\+\+ASPECT\+\_\+\+VARIANCE}}
+, \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa919b512837145887c412526966767a9f}{LM\+\_\+\+LOCAL\+\_\+\+MAX}}
+, \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fad839ce8cff6bd20c67432d651776b569}{LM\+\_\+\+LOCAL\+\_\+\+MEDIAN\+\_\+\+DEVIATION}}
+, \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa3fb8064f9087e5af79c85dce2c655112}{LM\+\_\+\+LOCAL\+\_\+\+MIN}}
+, \newline
+\mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa5a6dccee984676ced1eb1ac2a546761e}{LM\+\_\+\+LOCAL\+\_\+\+RELIEF}}
+, \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa9633368152d1a5c7cabbd67607305162}{LM\+\_\+\+LOCAL\+\_\+\+VARIANCE}}
+, \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fad5818c578f7164c55a879326e4a88b53}{LM\+\_\+\+LOCAL\+\_\+\+MEAN}}
+, \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa64d519d05dec2198a42425ce0c402bff}{LM\+\_\+\+LOCAL\+\_\+\+Z\+\_\+\+SCORE}}
+, \newline
+\mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa8f5a70d0a562337ca689b0ce7ee3fff6}{LM\+\_\+\+TOPOGRAPHIC\+\_\+\+POSITION\+\_\+\+INDEX}}
+, \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa46f15a0ffd71deff0ddbc5599acfff87}{LM\+\_\+\+RELATIVE\+\_\+\+ELEVATION}}
+, \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa568c1c82b138902b43e26249e63d8618}{LM\+\_\+\+RUGGEDNESS}}
+, \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa892abed7945357817b7504339fdcee14}{LM\+\_\+\+RUGOSITY\+\_\+\+CONCAVE}}
+, \newline
+\mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fac1321c034ba09831f5b5a040058f9477}{LM\+\_\+\+RUGOSITY\+\_\+\+CONVEX}}
+ \}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -251,6 +273,8 @@ void \mbox{\hyperlink{namespacehmap_1_1gpu_ad44fefa43fdf773f241dcf4c46795e80}{in
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_af4ec8b5be149e6749fdf09759daf1e9e}{hmap\+::ruggedness}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_aa5a3e087822525c41f057a51255e2bad}{rugosity}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int ir, bool convex=true)
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a85e411c67e97deb8459f25d4440546c3}{hmap\+::rugosity}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a13719c4aafe9ffaabd767afe5a8bd44d}{local\+\_\+metrics}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir, \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895f}{Local\+Metrics}} metric)
+\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a335e4629532ba64049e0721bdcb5f3ba}{border}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_af80bcff234bf1482cf26896b9d21d270}{hmap\+::border}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a741099c8c3da0841caea9af72e731c78}{closing}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
@@ -403,6 +427,69 @@ float \mbox{\hyperlink{namespacehmap_1_1gpu_a7aac37734b22ffed4807f274511861be}{h
 \item 
 void \mbox{\hyperlink{namespacehmap_1_1gpu_a27b70c333fc5550bcca1b96dcb0116fb}{helper\+\_\+bind\+\_\+optional\+\_\+buffers}} (clwrapper\+::\+Run \&run, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y)
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895f}\label{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895f} 
+\index{hmap::gpu@{hmap::gpu}!LocalMetrics@{LocalMetrics}}
+\index{LocalMetrics@{LocalMetrics}!hmap::gpu@{hmap::gpu}}
+\doxysubsubsection{\texorpdfstring{LocalMetrics}{LocalMetrics}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895f}{hmap\+::gpu\+::\+Local\+Metrics}} \+: int}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LM\_LOCAL\_ASPECT\_VARIANCE@{LM\_LOCAL\_ASPECT\_VARIANCE}!hmap::gpu@{hmap::gpu}}\index{hmap::gpu@{hmap::gpu}!LM\_LOCAL\_ASPECT\_VARIANCE@{LM\_LOCAL\_ASPECT\_VARIANCE}}}\Hypertarget{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa6302a2239490ba9a2f3cd152d55e50d7}\label{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa6302a2239490ba9a2f3cd152d55e50d7} 
+LM\+\_\+\+LOCAL\+\_\+\+ASPECT\+\_\+\+VARIANCE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LM\_LOCAL\_MAX@{LM\_LOCAL\_MAX}!hmap::gpu@{hmap::gpu}}\index{hmap::gpu@{hmap::gpu}!LM\_LOCAL\_MAX@{LM\_LOCAL\_MAX}}}\Hypertarget{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa919b512837145887c412526966767a9f}\label{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa919b512837145887c412526966767a9f} 
+LM\+\_\+\+LOCAL\+\_\+\+MAX&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LM\_LOCAL\_MEDIAN\_DEVIATION@{LM\_LOCAL\_MEDIAN\_DEVIATION}!hmap::gpu@{hmap::gpu}}\index{hmap::gpu@{hmap::gpu}!LM\_LOCAL\_MEDIAN\_DEVIATION@{LM\_LOCAL\_MEDIAN\_DEVIATION}}}\Hypertarget{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fad839ce8cff6bd20c67432d651776b569}\label{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fad839ce8cff6bd20c67432d651776b569} 
+LM\+\_\+\+LOCAL\+\_\+\+MEDIAN\+\_\+\+DEVIATION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LM\_LOCAL\_MIN@{LM\_LOCAL\_MIN}!hmap::gpu@{hmap::gpu}}\index{hmap::gpu@{hmap::gpu}!LM\_LOCAL\_MIN@{LM\_LOCAL\_MIN}}}\Hypertarget{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa3fb8064f9087e5af79c85dce2c655112}\label{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa3fb8064f9087e5af79c85dce2c655112} 
+LM\+\_\+\+LOCAL\+\_\+\+MIN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LM\_LOCAL\_RELIEF@{LM\_LOCAL\_RELIEF}!hmap::gpu@{hmap::gpu}}\index{hmap::gpu@{hmap::gpu}!LM\_LOCAL\_RELIEF@{LM\_LOCAL\_RELIEF}}}\Hypertarget{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa5a6dccee984676ced1eb1ac2a546761e}\label{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa5a6dccee984676ced1eb1ac2a546761e} 
+LM\+\_\+\+LOCAL\+\_\+\+RELIEF&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LM\_LOCAL\_VARIANCE@{LM\_LOCAL\_VARIANCE}!hmap::gpu@{hmap::gpu}}\index{hmap::gpu@{hmap::gpu}!LM\_LOCAL\_VARIANCE@{LM\_LOCAL\_VARIANCE}}}\Hypertarget{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa9633368152d1a5c7cabbd67607305162}\label{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa9633368152d1a5c7cabbd67607305162} 
+LM\+\_\+\+LOCAL\+\_\+\+VARIANCE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LM\_LOCAL\_MEAN@{LM\_LOCAL\_MEAN}!hmap::gpu@{hmap::gpu}}\index{hmap::gpu@{hmap::gpu}!LM\_LOCAL\_MEAN@{LM\_LOCAL\_MEAN}}}\Hypertarget{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fad5818c578f7164c55a879326e4a88b53}\label{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fad5818c578f7164c55a879326e4a88b53} 
+LM\+\_\+\+LOCAL\+\_\+\+MEAN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LM\_LOCAL\_Z\_SCORE@{LM\_LOCAL\_Z\_SCORE}!hmap::gpu@{hmap::gpu}}\index{hmap::gpu@{hmap::gpu}!LM\_LOCAL\_Z\_SCORE@{LM\_LOCAL\_Z\_SCORE}}}\Hypertarget{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa64d519d05dec2198a42425ce0c402bff}\label{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa64d519d05dec2198a42425ce0c402bff} 
+LM\+\_\+\+LOCAL\+\_\+\+Z\+\_\+\+SCORE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LM\_TOPOGRAPHIC\_POSITION\_INDEX@{LM\_TOPOGRAPHIC\_POSITION\_INDEX}!hmap::gpu@{hmap::gpu}}\index{hmap::gpu@{hmap::gpu}!LM\_TOPOGRAPHIC\_POSITION\_INDEX@{LM\_TOPOGRAPHIC\_POSITION\_INDEX}}}\Hypertarget{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa8f5a70d0a562337ca689b0ce7ee3fff6}\label{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa8f5a70d0a562337ca689b0ce7ee3fff6} 
+LM\+\_\+\+TOPOGRAPHIC\+\_\+\+POSITION\+\_\+\+INDEX&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LM\_RELATIVE\_ELEVATION@{LM\_RELATIVE\_ELEVATION}!hmap::gpu@{hmap::gpu}}\index{hmap::gpu@{hmap::gpu}!LM\_RELATIVE\_ELEVATION@{LM\_RELATIVE\_ELEVATION}}}\Hypertarget{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa46f15a0ffd71deff0ddbc5599acfff87}\label{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa46f15a0ffd71deff0ddbc5599acfff87} 
+LM\+\_\+\+RELATIVE\+\_\+\+ELEVATION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LM\_RUGGEDNESS@{LM\_RUGGEDNESS}!hmap::gpu@{hmap::gpu}}\index{hmap::gpu@{hmap::gpu}!LM\_RUGGEDNESS@{LM\_RUGGEDNESS}}}\Hypertarget{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa568c1c82b138902b43e26249e63d8618}\label{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa568c1c82b138902b43e26249e63d8618} 
+LM\+\_\+\+RUGGEDNESS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LM\_RUGOSITY\_CONCAVE@{LM\_RUGOSITY\_CONCAVE}!hmap::gpu@{hmap::gpu}}\index{hmap::gpu@{hmap::gpu}!LM\_RUGOSITY\_CONCAVE@{LM\_RUGOSITY\_CONCAVE}}}\Hypertarget{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa892abed7945357817b7504339fdcee14}\label{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa892abed7945357817b7504339fdcee14} 
+LM\+\_\+\+RUGOSITY\+\_\+\+CONCAVE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LM\_RUGOSITY\_CONVEX@{LM\_RUGOSITY\_CONVEX}!hmap::gpu@{hmap::gpu}}\index{hmap::gpu@{hmap::gpu}!LM\_RUGOSITY\_CONVEX@{LM\_RUGOSITY\_CONVEX}}}\Hypertarget{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fac1321c034ba09831f5b5a040058f9477}\label{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fac1321c034ba09831f5b5a040058f9477} 
+LM\+\_\+\+RUGOSITY\+\_\+\+CONVEX&\\
+\hline
+
+\end{DoxyEnumFields}
 
 
 \doxysubsection{Function Documentation}
@@ -3458,12 +3545,32 @@ Compute the average local aspect variance of an array.
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_1_1gpu_adb8336ed4d83c15500872185dee45d50}{hmap::gpu::init\_opencl}}();}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z1\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_a5c576fca64db583bf500d667173c128a}{hmap::gpu::local\_min}}(z,\ ir);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z2\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_a36cacf53f15459d0e32a0b089ce2db2f}{hmap::gpu::local\_max}}(z,\ ir);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z3\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_a22adb2fd39544ac3e1c2494a8e6c184d}{hmap::gpu::local\_aspect\_variance}}(z,\ ir);}
+\DoxyCodeLine{\ \ std::vector<hmap::Array>\ arrays\ =\ \{z\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ std::vector<hmap::gpu::LocalMetrics>\ metrics\ =\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa6302a2239490ba9a2f3cd152d55e50d7}{hmap::gpu::LocalMetrics::LM\_LOCAL\_ASPECT\_VARIANCE}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa919b512837145887c412526966767a9f}{hmap::gpu::LocalMetrics::LM\_LOCAL\_MAX}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fad839ce8cff6bd20c67432d651776b569}{hmap::gpu::LocalMetrics::LM\_LOCAL\_MEDIAN\_DEVIATION}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa3fb8064f9087e5af79c85dce2c655112}{hmap::gpu::LocalMetrics::LM\_LOCAL\_MIN}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa5a6dccee984676ced1eb1ac2a546761e}{hmap::gpu::LocalMetrics::LM\_LOCAL\_RELIEF}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa9633368152d1a5c7cabbd67607305162}{hmap::gpu::LocalMetrics::LM\_LOCAL\_VARIANCE}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fad5818c578f7164c55a879326e4a88b53}{hmap::gpu::LocalMetrics::LM\_LOCAL\_MEAN}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa64d519d05dec2198a42425ce0c402bff}{hmap::gpu::LocalMetrics::LM\_LOCAL\_Z\_SCORE}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa8f5a70d0a562337ca689b0ce7ee3fff6}{hmap::gpu::LocalMetrics::LM\_TOPOGRAPHIC\_POSITION\_INDEX}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa46f15a0ffd71deff0ddbc5599acfff87}{hmap::gpu::LocalMetrics::LM\_RELATIVE\_ELEVATION}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa568c1c82b138902b43e26249e63d8618}{hmap::gpu::LocalMetrics::LM\_RUGGEDNESS}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa892abed7945357817b7504339fdcee14}{hmap::gpu::LocalMetrics::LM\_RUGOSITY\_CONCAVE}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fac1321c034ba09831f5b5a040058f9477}{hmap::gpu::LocalMetrics::LM\_RUGOSITY\_CONVEX}},}
+\DoxyCodeLine{\ \ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ metric\ :\ metrics)}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ out\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_a13719c4aafe9ffaabd767afe5a8bd44d}{hmap::gpu::local\_metrics}}(z,\ ir,\ metric);}
+\DoxyCodeLine{\ \ \ \ arrays.push\_back(out);}
+\DoxyCodeLine{\ \ \}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_local\_metrics.png"{}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ z1,\ z2,\ z3\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ arrays,}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{false},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
@@ -3511,12 +3618,32 @@ For each cell, returns the maximum value within a neighborhood of radius {\ttfam
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_1_1gpu_adb8336ed4d83c15500872185dee45d50}{hmap::gpu::init\_opencl}}();}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z1\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_a5c576fca64db583bf500d667173c128a}{hmap::gpu::local\_min}}(z,\ ir);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z2\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_a36cacf53f15459d0e32a0b089ce2db2f}{hmap::gpu::local\_max}}(z,\ ir);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z3\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_a22adb2fd39544ac3e1c2494a8e6c184d}{hmap::gpu::local\_aspect\_variance}}(z,\ ir);}
+\DoxyCodeLine{\ \ std::vector<hmap::Array>\ arrays\ =\ \{z\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ std::vector<hmap::gpu::LocalMetrics>\ metrics\ =\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa6302a2239490ba9a2f3cd152d55e50d7}{hmap::gpu::LocalMetrics::LM\_LOCAL\_ASPECT\_VARIANCE}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa919b512837145887c412526966767a9f}{hmap::gpu::LocalMetrics::LM\_LOCAL\_MAX}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fad839ce8cff6bd20c67432d651776b569}{hmap::gpu::LocalMetrics::LM\_LOCAL\_MEDIAN\_DEVIATION}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa3fb8064f9087e5af79c85dce2c655112}{hmap::gpu::LocalMetrics::LM\_LOCAL\_MIN}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa5a6dccee984676ced1eb1ac2a546761e}{hmap::gpu::LocalMetrics::LM\_LOCAL\_RELIEF}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa9633368152d1a5c7cabbd67607305162}{hmap::gpu::LocalMetrics::LM\_LOCAL\_VARIANCE}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fad5818c578f7164c55a879326e4a88b53}{hmap::gpu::LocalMetrics::LM\_LOCAL\_MEAN}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa64d519d05dec2198a42425ce0c402bff}{hmap::gpu::LocalMetrics::LM\_LOCAL\_Z\_SCORE}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa8f5a70d0a562337ca689b0ce7ee3fff6}{hmap::gpu::LocalMetrics::LM\_TOPOGRAPHIC\_POSITION\_INDEX}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa46f15a0ffd71deff0ddbc5599acfff87}{hmap::gpu::LocalMetrics::LM\_RELATIVE\_ELEVATION}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa568c1c82b138902b43e26249e63d8618}{hmap::gpu::LocalMetrics::LM\_RUGGEDNESS}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa892abed7945357817b7504339fdcee14}{hmap::gpu::LocalMetrics::LM\_RUGOSITY\_CONCAVE}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fac1321c034ba09831f5b5a040058f9477}{hmap::gpu::LocalMetrics::LM\_RUGOSITY\_CONVEX}},}
+\DoxyCodeLine{\ \ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ metric\ :\ metrics)}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ out\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_a13719c4aafe9ffaabd767afe5a8bd44d}{hmap::gpu::local\_metrics}}(z,\ ir,\ metric);}
+\DoxyCodeLine{\ \ \ \ arrays.push\_back(out);}
+\DoxyCodeLine{\ \ \}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_local\_metrics.png"{}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ z1,\ z2,\ z3\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ arrays,}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{false},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
@@ -3574,12 +3701,32 @@ For each cell, returns the minimum value within a neighborhood of radius {\ttfam
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_1_1gpu_adb8336ed4d83c15500872185dee45d50}{hmap::gpu::init\_opencl}}();}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z1\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_a5c576fca64db583bf500d667173c128a}{hmap::gpu::local\_min}}(z,\ ir);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z2\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_a36cacf53f15459d0e32a0b089ce2db2f}{hmap::gpu::local\_max}}(z,\ ir);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z3\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_a22adb2fd39544ac3e1c2494a8e6c184d}{hmap::gpu::local\_aspect\_variance}}(z,\ ir);}
+\DoxyCodeLine{\ \ std::vector<hmap::Array>\ arrays\ =\ \{z\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ std::vector<hmap::gpu::LocalMetrics>\ metrics\ =\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa6302a2239490ba9a2f3cd152d55e50d7}{hmap::gpu::LocalMetrics::LM\_LOCAL\_ASPECT\_VARIANCE}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa919b512837145887c412526966767a9f}{hmap::gpu::LocalMetrics::LM\_LOCAL\_MAX}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fad839ce8cff6bd20c67432d651776b569}{hmap::gpu::LocalMetrics::LM\_LOCAL\_MEDIAN\_DEVIATION}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa3fb8064f9087e5af79c85dce2c655112}{hmap::gpu::LocalMetrics::LM\_LOCAL\_MIN}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa5a6dccee984676ced1eb1ac2a546761e}{hmap::gpu::LocalMetrics::LM\_LOCAL\_RELIEF}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa9633368152d1a5c7cabbd67607305162}{hmap::gpu::LocalMetrics::LM\_LOCAL\_VARIANCE}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fad5818c578f7164c55a879326e4a88b53}{hmap::gpu::LocalMetrics::LM\_LOCAL\_MEAN}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa64d519d05dec2198a42425ce0c402bff}{hmap::gpu::LocalMetrics::LM\_LOCAL\_Z\_SCORE}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa8f5a70d0a562337ca689b0ce7ee3fff6}{hmap::gpu::LocalMetrics::LM\_TOPOGRAPHIC\_POSITION\_INDEX}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa46f15a0ffd71deff0ddbc5599acfff87}{hmap::gpu::LocalMetrics::LM\_RELATIVE\_ELEVATION}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa568c1c82b138902b43e26249e63d8618}{hmap::gpu::LocalMetrics::LM\_RUGGEDNESS}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa892abed7945357817b7504339fdcee14}{hmap::gpu::LocalMetrics::LM\_RUGOSITY\_CONCAVE}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fac1321c034ba09831f5b5a040058f9477}{hmap::gpu::LocalMetrics::LM\_RUGOSITY\_CONVEX}},}
+\DoxyCodeLine{\ \ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ metric\ :\ metrics)}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ out\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_a13719c4aafe9ffaabd767afe5a8bd44d}{hmap::gpu::local\_metrics}}(z,\ ir,\ metric);}
+\DoxyCodeLine{\ \ \ \ arrays.push\_back(out);}
+\DoxyCodeLine{\ \ \}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_local\_metrics.png"{}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ z1,\ z2,\ z3\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ arrays,}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{false},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
@@ -3821,6 +3968,12 @@ See \doxylink{namespacehmap_af4ec8b5be149e6749fdf09759daf1e9e}{hmap\+::ruggednes
 
 
 See \doxylink{namespacehmap_a85e411c67e97deb8459f25d4440546c3}{hmap\+::rugosity}. 
+
+\Hypertarget{namespacehmap_1_1gpu_a13719c4aafe9ffaabd767afe5a8bd44d}\label{namespacehmap_1_1gpu_a13719c4aafe9ffaabd767afe5a8bd44d} 
+\index{hmap::gpu@{hmap::gpu}!local\_metrics@{local\_metrics}}
+\index{local\_metrics@{local\_metrics}!hmap::gpu@{hmap::gpu}}
+\doxysubsubsection{\texorpdfstring{local\_metrics()}{local\_metrics()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::gpu\+::local\+\_\+metrics (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{int}]{ir,  }\item[{\mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895f}{Local\+Metrics}}}]{metric }\end{DoxyParamCaption})}
 
 \Hypertarget{namespacehmap_1_1gpu_a335e4629532ba64049e0721bdcb5f3ba}\label{namespacehmap_1_1gpu_a335e4629532ba64049e0721bdcb5f3ba} 
 \index{hmap::gpu@{hmap::gpu}!border@{border}}

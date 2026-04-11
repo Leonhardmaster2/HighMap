@@ -1,6 +1,21 @@
 var namespacehmap =
 [
     [ "gpu", "namespacehmap_1_1gpu.html", [
+      [ "LocalMetrics", "namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895f", [
+        [ "LM_LOCAL_ASPECT_VARIANCE", "namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa6302a2239490ba9a2f3cd152d55e50d7", null ],
+        [ "LM_LOCAL_MAX", "namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa919b512837145887c412526966767a9f", null ],
+        [ "LM_LOCAL_MEDIAN_DEVIATION", "namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fad839ce8cff6bd20c67432d651776b569", null ],
+        [ "LM_LOCAL_MIN", "namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa3fb8064f9087e5af79c85dce2c655112", null ],
+        [ "LM_LOCAL_RELIEF", "namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa5a6dccee984676ced1eb1ac2a546761e", null ],
+        [ "LM_LOCAL_VARIANCE", "namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa9633368152d1a5c7cabbd67607305162", null ],
+        [ "LM_LOCAL_MEAN", "namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fad5818c578f7164c55a879326e4a88b53", null ],
+        [ "LM_LOCAL_Z_SCORE", "namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa64d519d05dec2198a42425ce0c402bff", null ],
+        [ "LM_TOPOGRAPHIC_POSITION_INDEX", "namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa8f5a70d0a562337ca689b0ce7ee3fff6", null ],
+        [ "LM_RELATIVE_ELEVATION", "namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa46f15a0ffd71deff0ddbc5599acfff87", null ],
+        [ "LM_RUGGEDNESS", "namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa568c1c82b138902b43e26249e63d8618", null ],
+        [ "LM_RUGOSITY_CONCAVE", "namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa892abed7945357817b7504339fdcee14", null ],
+        [ "LM_RUGOSITY_CONVEX", "namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fac1321c034ba09831f5b5a040058f9477", null ]
+      ] ],
       [ "blend_gradients", "namespacehmap_1_1gpu.html#a3a43696b1d6b8f0d966f9f05e5085edf", null ],
       [ "blend_poisson_bf", "namespacehmap_1_1gpu.html#a65a176508b404f80e5f5abd31456712e", null ],
       [ "transfer", "namespacehmap_1_1gpu.html#acff6d6d559781cdeba565ed795bb81d8", null ],
@@ -125,6 +140,7 @@ var namespacehmap =
       [ "relative_elevation", "namespacehmap_1_1gpu.html#a2dcbc7dac085b61f3c47e17256741a9a", null ],
       [ "ruggedness", "namespacehmap_1_1gpu.html#a62292cc4bf9f6eb5c7b63b1e26f8cc88", null ],
       [ "rugosity", "namespacehmap_1_1gpu.html#aa5a3e087822525c41f057a51255e2bad", null ],
+      [ "local_metrics", "namespacehmap_1_1gpu.html#a13719c4aafe9ffaabd767afe5a8bd44d", null ],
       [ "border", "namespacehmap_1_1gpu.html#a335e4629532ba64049e0721bdcb5f3ba", null ],
       [ "closing", "namespacehmap_1_1gpu.html#a741099c8c3da0841caea9af72e731c78", null ],
       [ "dilation", "namespacehmap_1_1gpu.html#aed49f777e8ad095bafc5dc014e548e6e", null ],

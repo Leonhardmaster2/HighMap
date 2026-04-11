@@ -1,5 +1,20 @@
 var local__metrics_8hpp =
 [
+    [ "LocalMetrics", "local__metrics_8hpp.html#ab0737b29664736928a86f0755493895f", [
+      [ "LM_LOCAL_ASPECT_VARIANCE", "local__metrics_8hpp.html#ab0737b29664736928a86f0755493895fa6302a2239490ba9a2f3cd152d55e50d7", null ],
+      [ "LM_LOCAL_MAX", "local__metrics_8hpp.html#ab0737b29664736928a86f0755493895fa919b512837145887c412526966767a9f", null ],
+      [ "LM_LOCAL_MEDIAN_DEVIATION", "local__metrics_8hpp.html#ab0737b29664736928a86f0755493895fad839ce8cff6bd20c67432d651776b569", null ],
+      [ "LM_LOCAL_MIN", "local__metrics_8hpp.html#ab0737b29664736928a86f0755493895fa3fb8064f9087e5af79c85dce2c655112", null ],
+      [ "LM_LOCAL_RELIEF", "local__metrics_8hpp.html#ab0737b29664736928a86f0755493895fa5a6dccee984676ced1eb1ac2a546761e", null ],
+      [ "LM_LOCAL_VARIANCE", "local__metrics_8hpp.html#ab0737b29664736928a86f0755493895fa9633368152d1a5c7cabbd67607305162", null ],
+      [ "LM_LOCAL_MEAN", "local__metrics_8hpp.html#ab0737b29664736928a86f0755493895fad5818c578f7164c55a879326e4a88b53", null ],
+      [ "LM_LOCAL_Z_SCORE", "local__metrics_8hpp.html#ab0737b29664736928a86f0755493895fa64d519d05dec2198a42425ce0c402bff", null ],
+      [ "LM_TOPOGRAPHIC_POSITION_INDEX", "local__metrics_8hpp.html#ab0737b29664736928a86f0755493895fa8f5a70d0a562337ca689b0ce7ee3fff6", null ],
+      [ "LM_RELATIVE_ELEVATION", "local__metrics_8hpp.html#ab0737b29664736928a86f0755493895fa46f15a0ffd71deff0ddbc5599acfff87", null ],
+      [ "LM_RUGGEDNESS", "local__metrics_8hpp.html#ab0737b29664736928a86f0755493895fa568c1c82b138902b43e26249e63d8618", null ],
+      [ "LM_RUGOSITY_CONCAVE", "local__metrics_8hpp.html#ab0737b29664736928a86f0755493895fa892abed7945357817b7504339fdcee14", null ],
+      [ "LM_RUGOSITY_CONVEX", "local__metrics_8hpp.html#ab0737b29664736928a86f0755493895fac1321c034ba09831f5b5a040058f9477", null ]
+    ] ],
     [ "local_max", "local__metrics_8hpp.html#adac2e2b20d0c2720e2dc068641bcd922", null ],
     [ "local_median_deviation", "local__metrics_8hpp.html#a9b6a1d2ca8ef58a4a0605d04bcbff038", null ],
     [ "local_min", "local__metrics_8hpp.html#aa7ab501bae56bac2236a74ade5cd34a4", null ],
@@ -18,5 +33,6 @@ var local__metrics_8hpp =
     [ "topographic_position_index", "local__metrics_8hpp.html#a74594cae7628bcfb1c038ac6930fe97d", null ],
     [ "relative_elevation", "local__metrics_8hpp.html#a2dcbc7dac085b61f3c47e17256741a9a", null ],
     [ "ruggedness", "local__metrics_8hpp.html#a62292cc4bf9f6eb5c7b63b1e26f8cc88", null ],
-    [ "rugosity", "local__metrics_8hpp.html#aa5a3e087822525c41f057a51255e2bad", null ]
+    [ "rugosity", "local__metrics_8hpp.html#aa5a3e087822525c41f057a51255e2bad", null ],
+    [ "local_metrics", "local__metrics_8hpp.html#a13719c4aafe9ffaabd767afe5a8bd44d", null ]
 ];

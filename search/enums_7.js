@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['meshtype_0',['MeshType',['../namespacehmap.html#ac81a92060b89699c4eb9826495d87250',1,'hmap']]]
+  ['localmetrics_0',['LocalMetrics',['../namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895f',1,'hmap::gpu']]]
 ];

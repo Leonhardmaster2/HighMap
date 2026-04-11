@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['voronoireturntype_0',['VoronoiReturnType',['../namespacehmap.html#a8e3756915e28aa80cec2190043cc8c2f',1,'hmap']]]
+  ['stampingblendmethod_0',['StampingBlendMethod',['../namespacehmap.html#a5101273ec456f5267dddc3e22dae223b',1,'hmap']]],
+  ['storagemode_1',['StorageMode',['../namespacehmap.html#ad21b93a34c88a47d6b54f3a4d5b65e6e',1,'hmap']]]
 ];
