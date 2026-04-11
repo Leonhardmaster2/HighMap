@@ -135,8 +135,6 @@ void \mbox{\hyperlink{namespacehmap_1_1gpu_aa7ce5c44914d54ec7fa0162c5ccbab86}{va
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_af4ec8b5be149e6749fdf09759daf1e9e}{hmap\+::ruggedness}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_aa5a3e087822525c41f057a51255e2bad}{rugosity}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int ir, bool convex=true)
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a85e411c67e97deb8459f25d4440546c3}{hmap\+::rugosity}. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_aa5f9b68baa2c17c23c8f21708e8fac9e}{std\+\_\+local}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
-\begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a0157f72a2a70dae28d0767a13739f4b5}{hmap\+::std\+\_\+local}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a802ae2cfde5f1a4124ebd0bd2f2dc6c4}{z\+\_\+score}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a732a83c92c4a2d232fc9f421f98c0c6b}{hmap\+::z\+\_\+score}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_ad6240ccabf3a0f858698dc0b77ab619e}{bilateral\+\_\+filter}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&kernel2d, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&kernel1d, float kernel1d\+\_\+value\+\_\+scaling)
@@ -2665,7 +2663,9 @@ Local variance is defined as the standard deviation within a window of radius {\
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z1\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_aeca9d8454f50273ca4a4f3db0c25a1b1}{hmap::gpu::local\_variance}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(z1);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_local\_variance.png"{}},\ \{z,\ z1\},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}});}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_local\_variance.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ z1,\ z2\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}});}
 \DoxyCodeLine{\}}
 
 \end{DoxyCodeInclude}
@@ -2760,16 +2760,6 @@ See \doxylink{namespacehmap_af4ec8b5be149e6749fdf09759daf1e9e}{hmap\+::ruggednes
 
 
 See \doxylink{namespacehmap_a85e411c67e97deb8459f25d4440546c3}{hmap\+::rugosity}. 
-
-\Hypertarget{namespacehmap_1_1gpu_aa5f9b68baa2c17c23c8f21708e8fac9e}\label{namespacehmap_1_1gpu_aa5f9b68baa2c17c23c8f21708e8fac9e} 
-\index{hmap::gpu@{hmap::gpu}!std\_local@{std\_local}}
-\index{std\_local@{std\_local}!hmap::gpu@{hmap::gpu}}
-\doxysubsubsection{\texorpdfstring{std\_local()}{std\_local()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::gpu\+::std\+\_\+local (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{int}]{ir }\end{DoxyParamCaption})}
-
-
-
-See \doxylink{namespacehmap_a0157f72a2a70dae28d0767a13739f4b5}{hmap\+::std\+\_\+local}. 
 
 \Hypertarget{namespacehmap_1_1gpu_a802ae2cfde5f1a4124ebd0bd2f2dc6c4}\label{namespacehmap_1_1gpu_a802ae2cfde5f1a4124ebd0bd2f2dc6c4} 
 \index{hmap::gpu@{hmap::gpu}!z\_score@{z\_score}}

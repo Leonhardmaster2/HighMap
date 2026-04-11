@@ -15798,78 +15798,6 @@ Each tile is extracted using slicing, adjusted for overlap if specified, and the
         </inbodydescription>
         <location file="HighMap/src/features/features.cpp" line="75" column="7" bodyfile="HighMap/src/features/features.cpp" bodystart="75" bodyend="116" declfile="HighMap/include/highmap/features.hpp" declline="361" declcolumn="7"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1a0157f72a2a70dae28d0767a13739f4b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
-        <definition>Array hmap::std_local</definition>
-        <argsstring>(const Array &amp;array, int ir)</argsstring>
-        <name>std_local</name>
-        <qualifiedname>hmap::std_local</qualifiedname>
-        <param>
-          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
-          <declname>array</declname>
-        </param>
-        <param>
-          <type>int</type>
-          <declname>ir</declname>
-        </param>
-        <briefdescription>
-<para>Computes the local standard deviation of a 2D array. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function calculates the standard deviation within a square neighborhood around each element in the input array.</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>array</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The input 2D array of values (e.g., a heightmap or intensity map). </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>ir</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The radius of the square neighborhood window used for computing local statistics. The window size is (2*ir + 1) x (2*ir + 1).</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>A new array of the same size as <computeroutput>array</computeroutput>, where each element contains the standard deviation of values within its local neighborhood.</para>
-</simplesect>
-<bold>Example</bold> <programlisting filename="ex_std_local.cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
-<codeline><highlight class="normal">{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>glm::ivec2<sp/>shape<sp/>=<sp/>{256,<sp/>256};</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>glm::vec2<sp/><sp/>res<sp/>=<sp/>{4.f,<sp/>4.f};</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed<sp/>=<sp/>1;</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1acb13e7346085793fda4c94c47b75d9a9" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,<sp/>shape,<sp/>res,<sp/>seed);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(z);</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ir<sp/>=<sp/>16;</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z1<sp/>=<sp/><ref refid="namespacehmap_1a0157f72a2a70dae28d0767a13739f4b5" kindref="member">hmap::std_local</ref>(z,<sp/>ir);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(z1);</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>gpu<sp/>version</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1adb8336ed4d83c15500872185dee45d50" kindref="member">hmap::gpu::init_opencl</ref>();</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z2<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1aa5f9b68baa2c17c23c8f21708e8fac9e" kindref="member">hmap::gpu::std_local</ref>(z,<sp/>ir);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(z2);</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_std_local.png&quot;</highlight><highlight class="normal">,<sp/>{z,<sp/>z1,<sp/>z2},<sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143" kindref="member">hmap::Cmap::INFERNO</ref>);</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting></para>
-<para><bold>Result</bold> <image type="html" name="ex_std_local.png"></image>
-</para>
-<para><simplesect kind="see"><para><ref refid="namespacehmap_1a39d52250df1825ecea1e63309d94d1fb" kindref="member">mean_local()</ref> </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="HighMap/src/features/features.cpp" line="118" column="7" bodyfile="HighMap/src/features/features.cpp" bodystart="118" bodyend="131" declfile="HighMap/include/highmap/features.hpp" declline="386" declcolumn="7"/>
-      </memberdef>
       <memberdef kind="function" id="namespacehmap_1ab4d8048b79080012b8e60c270de8137f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
         <definition>Array hmap::valley_width</definition>
@@ -15955,7 +15883,7 @@ Each tile is extracted using slicing, adjusted for overlap if specified, and the
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/features/features.cpp" line="133" column="7" bodyfile="HighMap/src/features/features.cpp" bodystart="133" bodyend="144" declfile="HighMap/include/highmap/features.hpp" declline="422" declcolumn="7"/>
+        <location file="HighMap/src/features/features.cpp" line="118" column="7" bodyfile="HighMap/src/features/features.cpp" bodystart="118" bodyend="129" declfile="HighMap/include/highmap/features.hpp" declline="397" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a732a83c92c4a2d232fc9f421f98c0c6b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -15977,7 +15905,7 @@ Each tile is extracted using slicing, adjusted for overlap if specified, and the
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/features/features.cpp" line="146" column="7" bodyfile="HighMap/src/features/features.cpp" bodystart="146" bodyend="159" declfile="HighMap/include/highmap/features.hpp" declline="424" declcolumn="7"/>
+        <location file="HighMap/src/features/features.cpp" line="131" column="7" bodyfile="HighMap/src/features/features.cpp" bodystart="131" bodyend="144" declfile="HighMap/include/highmap/features.hpp" declline="399" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ae3ecf5f88476c5d49978a130f8cab2f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>

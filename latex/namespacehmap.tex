@@ -745,8 +745,6 @@ void \mbox{\hyperlink{namespacehmap_a466d4275bb86ca9ca603c9d4192f931a}{write\+\_
 \begin{DoxyCompactList}\small\item\em Computes the ruggedness of each element in the input array. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a85e411c67e97deb8459f25d4440546c3}{rugosity}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int ir, bool convex=true)
 \begin{DoxyCompactList}\small\item\em Estimates the rugosity of a surface by analyzing the skewness of the elevation data, which reflects surface roughness. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a0157f72a2a70dae28d0767a13739f4b5}{std\+\_\+local}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
-\begin{DoxyCompactList}\small\item\em Computes the local standard deviation of a 2D array. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_ab4d8048b79080012b8e60c270de8137f}{valley\+\_\+width}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int ir=0, bool ridge\+\_\+select=false)
 \begin{DoxyCompactList}\small\item\em Measures the valley width by calculating the distance from each point in a concave region to the frontier of that region. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a732a83c92c4a2d232fc9f421f98c0c6b}{z\+\_\+score}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
@@ -9845,63 +9843,7 @@ Rugosity is a measure of terrain roughness, often used in ecological studies and
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}   \Hypertarget{namespacehmap_a0157f72a2a70dae28d0767a13739f4b5}\label{namespacehmap_a0157f72a2a70dae28d0767a13739f4b5} 
-\index{hmap@{hmap}!std\_local@{std\_local}}
-\index{std\_local@{std\_local}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{std\_local()}{std\_local()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::std\+\_\+local (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{int}]{ir }\end{DoxyParamCaption})}
-
-
-
-Computes the local standard deviation of a 2D array. 
-
-This function calculates the standard deviation within a square neighborhood around each element in the input array.
-
-
-\begin{DoxyParams}{Parameters}
-{\em array} & The input 2D array of values (e.\+g., a heightmap or intensity map). \\
-\hline
-{\em ir} & The radius of the square neighborhood window used for computing local statistics. The window size is (2\texorpdfstring{$\ast$}{*}ir + 1) x (2\texorpdfstring{$\ast$}{*}ir + 1).\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-A new array of the same size as {\ttfamily array}, where each element contains the standard deviation of values within its local neighborhood.
-\end{DoxyReturn}
-{\bfseries{Example}} 
-\begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
-\DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
-\DoxyCodeLine{\{}
-\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
-\DoxyCodeLine{\ \ glm::vec2\ \ res\ =\ \{4.f,\ 4.f\};}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 1;}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_acb13e7346085793fda4c94c47b75d9a9}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ res,\ seed);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(z);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ ir\ =\ 16;}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z1\ =\ \mbox{\hyperlink{namespacehmap_a0157f72a2a70dae28d0767a13739f4b5}{hmap::std\_local}}(z,\ ir);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(z1);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ gpu\ version}}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_1_1gpu_adb8336ed4d83c15500872185dee45d50}{hmap::gpu::init\_opencl}}();}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z2\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_aa5f9b68baa2c17c23c8f21708e8fac9e}{hmap::gpu::std\_local}}(z,\ ir);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(z2);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_std\_local.png"{}},\ \{z,\ z1,\ z2\},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}});}
-\DoxyCodeLine{\}}
-
-\end{DoxyCodeInclude}
-
-
-{\bfseries{Result}} 
-
-\begin{DoxySeeAlso}{See also}
-\doxylink{namespacehmap_a39d52250df1825ecea1e63309d94d1fb}{mean\+\_\+local()} 
-\end{DoxySeeAlso}
-\Hypertarget{namespacehmap_ab4d8048b79080012b8e60c270de8137f}\label{namespacehmap_ab4d8048b79080012b8e60c270de8137f} 
+{\bfseries{Result}}   \Hypertarget{namespacehmap_ab4d8048b79080012b8e60c270de8137f}\label{namespacehmap_ab4d8048b79080012b8e60c270de8137f} 
 \index{hmap@{hmap}!valley\_width@{valley\_width}}
 \index{valley\_width@{valley\_width}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{valley\_width()}{valley\_width()}}

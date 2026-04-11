@@ -9,7 +9,6 @@ var features_8hpp =
     [ "relative_elevation", "features_8hpp.html#a941d446cad19c166f4f6c4df857dba65", null ],
     [ "ruggedness", "features_8hpp.html#af4ec8b5be149e6749fdf09759daf1e9e", null ],
     [ "rugosity", "features_8hpp.html#a85e411c67e97deb8459f25d4440546c3", null ],
-    [ "std_local", "features_8hpp.html#a0157f72a2a70dae28d0767a13739f4b5", null ],
     [ "valley_width", "features_8hpp.html#ab4d8048b79080012b8e60c270de8137f", null ],
     [ "z_score", "features_8hpp.html#a732a83c92c4a2d232fc9f421f98c0c6b", null ],
     [ "local_median_deviation", "features_8hpp.html#a022f5800d7e28f79f9e2d3abf687f490", null ],
@@ -20,6 +19,5 @@ var features_8hpp =
     [ "relative_elevation", "features_8hpp.html#a2dcbc7dac085b61f3c47e17256741a9a", null ],
     [ "ruggedness", "features_8hpp.html#a62292cc4bf9f6eb5c7b63b1e26f8cc88", null ],
     [ "rugosity", "features_8hpp.html#aa5a3e087822525c41f057a51255e2bad", null ],
-    [ "std_local", "features_8hpp.html#aa5f9b68baa2c17c23c8f21708e8fac9e", null ],
     [ "z_score", "features_8hpp.html#a802ae2cfde5f1a4124ebd0bd2f2dc6c4", null ]
 ];

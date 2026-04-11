@@ -25,7 +25,7 @@ var searchData=
   ['local_5frelief_22',['local_relief',['../namespacehmap_1_1gpu.html#a5e3ebf317043142adc19dd211ba07230',1,'hmap::gpu']]],
   ['local_5fvariance_23',['local_variance',['../namespacehmap_1_1gpu.html#aeca9d8454f50273ca4a4f3db0c25a1b1',1,'hmap::gpu']]],
   ['log10_24',['log10',['../namespacehmap.html#a75475b6109023ce0ad64f6f9f7c4c525',1,'hmap']]],
-  ['lorentzian_25',['lorentzian',['../namespacehmap.html#a921bc84c2e2cf76a022da0ffaaf60802',1,'hmap::lorentzian(glm::ivec2 shape, float footprint_threshold=0.1f)'],['../namespacehmap.html#a4b6f135c6e81d313ca54ae1efac5f2c9adca1c57725ab84b424723316de5ba3dc',1,'hmap::LORENTZIAN']]],
+  ['lorentzian_25',['lorentzian',['../namespacehmap.html#a4b6f135c6e81d313ca54ae1efac5f2c9adca1c57725ab84b424723316de5ba3dc',1,'hmap::LORENTZIAN'],['../namespacehmap.html#a921bc84c2e2cf76a022da0ffaaf60802',1,'hmap::lorentzian(glm::ivec2 shape, float footprint_threshold=0.1f)']]],
   ['lorentzian_5fcompact_26',['lorentzian_compact',['../namespacehmap.html#a0cfa024afb9246aaa89ec6b2e69501c3',1,'hmap']]],
   ['low_5fpass_5ffilter_5ffunction_27',['low_pass_filter_function',['../classhmap_1_1PyramidDecomposition.html#ab7684296d0993168de59ca6938d30cd2',1,'hmap::PyramidDecomposition']]],
   ['low_5fpass_5fhigh_5forder_28',['low_pass_high_order',['../namespacehmap.html#a81842482472ceecc660913388219bb77',1,'hmap']]],

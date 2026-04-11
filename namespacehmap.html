@@ -1072,9 +1072,6 @@ Functions</h2></td></tr>
 <tr class="memitem:a85e411c67e97deb8459f25d4440546c3" id="r_a85e411c67e97deb8459f25d4440546c3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a85e411c67e97deb8459f25d4440546c3">rugosity</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, int ir, bool convex=true)</td></tr>
 <tr class="memdesc:a85e411c67e97deb8459f25d4440546c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Estimates the rugosity of a surface by analyzing the skewness of the elevation data, which reflects surface roughness.  <br /></td></tr>
 <tr class="separator:a85e411c67e97deb8459f25d4440546c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0157f72a2a70dae28d0767a13739f4b5" id="r_a0157f72a2a70dae28d0767a13739f4b5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a0157f72a2a70dae28d0767a13739f4b5">std_local</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, int ir)</td></tr>
-<tr class="memdesc:a0157f72a2a70dae28d0767a13739f4b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the local standard deviation of a 2D array.  <br /></td></tr>
-<tr class="separator:a0157f72a2a70dae28d0767a13739f4b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab4d8048b79080012b8e60c270de8137f" id="r_ab4d8048b79080012b8e60c270de8137f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#ab4d8048b79080012b8e60c270de8137f">valley_width</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, int ir=0, bool ridge_select=false)</td></tr>
 <tr class="memdesc:ab4d8048b79080012b8e60c270de8137f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Measures the valley width by calculating the distance from each point in a concave region to the frontier of that region.  <br /></td></tr>
 <tr class="separator:ab4d8048b79080012b8e60c270de8137f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -15663,74 +15660,6 @@ An <a class="el" href="classhmap_1_1Array.html" title="Array class, helper to ma
  
 </div>
 </div>
-<a id="a0157f72a2a70dae28d0767a13739f4b5" name="a0157f72a2a70dae28d0767a13739f4b5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0157f72a2a70dae28d0767a13739f4b5">&#9670;&#160;</a></span>std_local()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classhmap_1_1Array.html">Array</a> hmap::std_local </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
-          <td class="paramname"><em>array</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>ir</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Computes the local standard deviation of a 2D array. </p>
-<p>This function calculates the standard deviation within a square neighborhood around each element in the input array.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">array</td><td>The input 2D array of values (e.g., a heightmap or intensity map). </td></tr>
-    <tr><td class="paramname">ir</td><td>The radius of the square neighborhood window used for computing local statistics. The window size is (2*ir + 1) x (2*ir + 1).</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A new array of the same size as <code>array</code>, where each element contains the standard deviation of values within its local neighborhood.</dd></dl>
-<p><b>Example</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="highmap_8hpp.html">highmap.hpp</a>&quot;</span></div>
-<div class="line"> </div>
-<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
-<div class="line">{</div>
-<div class="line">  glm::ivec2 shape = {256, 256};</div>
-<div class="line">  glm::vec2  res = {4.f, 4.f};</div>
-<div class="line">  <span class="keywordtype">int</span>        seed = 1;</div>
-<div class="line"> </div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z = <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, res, seed);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z);</div>
-<div class="line"> </div>
-<div class="line">  <span class="keywordtype">int</span> ir = 16;</div>
-<div class="line"> </div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z1 = <a class="code hl_function" href="namespacehmap.html#a0157f72a2a70dae28d0767a13739f4b5">hmap::std_local</a>(z, ir);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z1);</div>
-<div class="line"> </div>
-<div class="line">  <span class="comment">// gpu version</span></div>
-<div class="line">  <a class="code hl_function" href="namespacehmap_1_1gpu.html#adb8336ed4d83c15500872185dee45d50">hmap::gpu::init_opencl</a>();</div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z2 = <a class="code hl_function" href="namespacehmap_1_1gpu.html#aa5f9b68baa2c17c23c8f21708e8fac9e">hmap::gpu::std_local</a>(z, ir);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z2);</div>
-<div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_std_local.png&quot;</span>, {z, z1, z2}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
-<div class="line">}</div>
-<div class="ttc" id="anamespacehmap_1_1gpu_html_aa5f9b68baa2c17c23c8f21708e8fac9e"><div class="ttname"><a href="namespacehmap_1_1gpu.html#aa5f9b68baa2c17c23c8f21708e8fac9e">hmap::gpu::std_local</a></div><div class="ttdeci">Array std_local(const Array &amp;array, int ir)</div><div class="ttdoc">See hmap::std_local.</div><div class="ttdef"><b>Definition</b> features_gpu.cpp:148</div></div>
-<div class="ttc" id="anamespacehmap_html_a0157f72a2a70dae28d0767a13739f4b5"><div class="ttname"><a href="namespacehmap.html#a0157f72a2a70dae28d0767a13739f4b5">hmap::std_local</a></div><div class="ttdeci">Array std_local(const Array &amp;array, int ir)</div><div class="ttdoc">Computes the local standard deviation of a 2D array.</div><div class="ttdef"><b>Definition</b> features.cpp:118</div></div>
-</div><!-- fragment --><p><b>Result</b> </p><div class="image">
-<img src="ex_std_local.png" alt=""/>
-</div>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="namespacehmap.html#a39d52250df1825ecea1e63309d94d1fb" title="Return the local mean based on a mean filter with a square kernel.">mean_local()</a> </dd></dl>
-
-</div>
-</div>
 <a id="ab4d8048b79080012b8e60c270de8137f" name="ab4d8048b79080012b8e60c270de8137f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab4d8048b79080012b8e60c270de8137f">&#9670;&#160;</a></span>valley_width()</h2>
 
@@ -15798,7 +15727,7 @@ An <a class="el" href="classhmap_1_1Array.html" title="Array class, helper to ma
 <div class="line">  w1.<a class="code hl_function" href="classhmap_1_1Array.html#a9ff7b2c0be8f2b5dd9fc33085cd647d1">to_png</a>(<span class="stringliteral">&quot;ex_valley_width1.png&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">  w2.<a class="code hl_function" href="classhmap_1_1Array.html#a9ff7b2c0be8f2b5dd9fc33085cd647d1">to_png</a>(<span class="stringliteral">&quot;ex_valley_width2.png&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_ab4d8048b79080012b8e60c270de8137f"><div class="ttname"><a href="namespacehmap.html#ab4d8048b79080012b8e60c270de8137f">hmap::valley_width</a></div><div class="ttdeci">Array valley_width(const Array &amp;z, int ir=0, bool ridge_select=false)</div><div class="ttdoc">Measures the valley width by calculating the distance from each point in a concave region to the fron...</div><div class="ttdef"><b>Definition</b> features.cpp:133</div></div>
+<div class="ttc" id="anamespacehmap_html_ab4d8048b79080012b8e60c270de8137f"><div class="ttname"><a href="namespacehmap.html#ab4d8048b79080012b8e60c270de8137f">hmap::valley_width</a></div><div class="ttdeci">Array valley_width(const Array &amp;z, int ir=0, bool ridge_select=false)</div><div class="ttdoc">Measures the valley width by calculating the distance from each point in a concave region to the fron...</div><div class="ttdef"><b>Definition</b> features.cpp:118</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_valley_width0.png" alt=""/>
 </div>
