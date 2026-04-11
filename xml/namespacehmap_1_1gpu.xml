@@ -6065,7 +6065,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/features/features_gpu.cpp" line="34" column="7" bodyfile="HighMap/src/features/features_gpu.cpp" bodystart="34" bodyend="39" declfile="HighMap/include/highmap/features.hpp" declline="407" declcolumn="7"/>
+        <location file="HighMap/src/features/features_gpu.cpp" line="34" column="7" bodyfile="HighMap/src/features/features_gpu.cpp" bodystart="34" bodyend="39" declfile="HighMap/include/highmap/features.hpp" declline="405" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a5e3ebf317043142adc19dd211ba07230" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -6131,7 +6131,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/features/features_gpu.cpp" line="41" column="7" bodyfile="HighMap/src/features/features_gpu.cpp" bodystart="41" bodyend="60" declfile="HighMap/include/highmap/features.hpp" declline="431" declcolumn="7"/>
+        <location file="HighMap/src/features/features_gpu.cpp" line="41" column="7" bodyfile="HighMap/src/features/features_gpu.cpp" bodystart="41" bodyend="60" declfile="HighMap/include/highmap/features.hpp" declline="429" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1aeca9d8454f50273ca4a4f3db0c25a1b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -6189,9 +6189,7 @@
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z1<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1aeca9d8454f50273ca4a4f3db0c25a1b1" kindref="member">hmap::gpu::local_variance</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(z1);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_local_variance.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,<sp/>z1,<sp/>z2},</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced" kindref="member">hmap::Cmap::JET</ref>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_local_variance.png&quot;</highlight><highlight class="normal">,<sp/>{z,<sp/>z1},<sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced" kindref="member">hmap::Cmap::JET</ref>);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting></para>
 <para><bold>Result</bold> <image type="html" name="ex_local_variance.png"></image>
@@ -6199,7 +6197,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/features/features_gpu.cpp" line="62" column="7" bodyfile="HighMap/src/features/features_gpu.cpp" bodystart="62" bodyend="81" declfile="HighMap/include/highmap/features.hpp" declline="450" declcolumn="7"/>
+        <location file="HighMap/src/features/features_gpu.cpp" line="62" column="7" bodyfile="HighMap/src/features/features_gpu.cpp" bodystart="62" bodyend="81" declfile="HighMap/include/highmap/features.hpp" declline="448" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a72341578d241e21b4c31d7497287cfc3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -6222,7 +6220,73 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/features/features_gpu.cpp" line="12" column="7" bodyfile="HighMap/src/features/features_gpu.cpp" bodystart="12" bodyend="32" declfile="HighMap/include/highmap/features.hpp" declline="453" declcolumn="7"/>
+        <location file="HighMap/src/features/features_gpu.cpp" line="12" column="7" bodyfile="HighMap/src/features/features_gpu.cpp" bodystart="12" bodyend="32" declfile="HighMap/include/highmap/features.hpp" declline="451" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehmap_1_1gpu_1ad6ef648576e9339058037a28ce17d225" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
+        <definition>Array hmap::gpu::local_z_score</definition>
+        <argsstring>(const Array &amp;array, int ir)</argsstring>
+        <name>local_z_score</name>
+        <qualifiedname>hmap::gpu::local_z_score</qualifiedname>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>array</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>ir</declname>
+        </param>
+        <briefdescription>
+<para>Compute the local z-score of an array. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>For each cell, computes the normalized difference between its value and the mean of a neighborhood of radius <computeroutput>ir</computeroutput>.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>array</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input array. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ir</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Radius of the local window. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classhmap_1_1Array" kindref="compound">Array</ref> of local z-score values.</para>
+</simplesect>
+<bold>Example</bold> <programlisting filename="ex_local_z_score.cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>glm::ivec2<sp/>shape<sp/>=<sp/>{256,<sp/>256};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>glm::vec2<sp/><sp/>res<sp/>=<sp/>{4.f,<sp/>4.f};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed<sp/>=<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1acb13e7346085793fda4c94c47b75d9a9" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,<sp/>shape,<sp/>res,<sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(z);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ir<sp/>=<sp/>16;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>gpu<sp/>version</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1adb8336ed4d83c15500872185dee45d50" kindref="member">hmap::gpu::init_opencl</ref>();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z1<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1ad6ef648576e9339058037a28ce17d225" kindref="member">hmap::gpu::local_z_score</ref>(z,<sp/>ir);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(z1);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_local_z_score.png&quot;</highlight><highlight class="normal">,<sp/>{z,<sp/>z1},<sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced" kindref="member">hmap::Cmap::JET</ref>);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<para><bold>Result</bold> <image type="html" name="ex_local_z_score.png"></image>
+ </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/features/features_gpu.cpp" line="83" column="7" bodyfile="HighMap/src/features/features_gpu.cpp" bodystart="83" bodyend="102" declfile="HighMap/include/highmap/features.hpp" declline="469" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a74594cae7628bcfb1c038ac6930fe97d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -6290,7 +6354,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/features/features_gpu.cpp" line="148" column="7" bodyfile="HighMap/src/features/features_gpu.cpp" bodystart="148" bodyend="167" declfile="HighMap/include/highmap/features.hpp" declline="471" declcolumn="7"/>
+        <location file="HighMap/src/features/features_gpu.cpp" line="169" column="7" bodyfile="HighMap/src/features/features_gpu.cpp" bodystart="169" bodyend="188" declfile="HighMap/include/highmap/features.hpp" declline="487" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a2dcbc7dac085b61f3c47e17256741a9a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -6313,7 +6377,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/features/features_gpu.cpp" line="83" column="7" bodyfile="HighMap/src/features/features_gpu.cpp" bodystart="83" bodyend="92" declfile="HighMap/include/highmap/features.hpp" declline="474" declcolumn="7"/>
+        <location file="HighMap/src/features/features_gpu.cpp" line="104" column="7" bodyfile="HighMap/src/features/features_gpu.cpp" bodystart="104" bodyend="113" declfile="HighMap/include/highmap/features.hpp" declline="490" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a62292cc4bf9f6eb5c7b63b1e26f8cc88" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -6336,7 +6400,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/features/features_gpu.cpp" line="94" column="7" bodyfile="HighMap/src/features/features_gpu.cpp" bodystart="94" bodyend="112" declfile="HighMap/include/highmap/features.hpp" declline="477" declcolumn="7"/>
+        <location file="HighMap/src/features/features_gpu.cpp" line="115" column="7" bodyfile="HighMap/src/features/features_gpu.cpp" bodystart="115" bodyend="133" declfile="HighMap/include/highmap/features.hpp" declline="493" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1aa5a3e087822525c41f057a51255e2bad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -6364,30 +6428,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/features/features_gpu.cpp" line="114" column="7" bodyfile="HighMap/src/features/features_gpu.cpp" bodystart="114" bodyend="146" declfile="HighMap/include/highmap/features.hpp" declline="480" declcolumn="7"/>
-      </memberdef>
-      <memberdef kind="function" id="namespacehmap_1_1gpu_1a802ae2cfde5f1a4124ebd0bd2f2dc6c4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
-        <definition>Array hmap::gpu::z_score</definition>
-        <argsstring>(const Array &amp;array, int ir)</argsstring>
-        <name>z_score</name>
-        <qualifiedname>hmap::gpu::z_score</qualifiedname>
-        <param>
-          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
-          <declname>array</declname>
-        </param>
-        <param>
-          <type>int</type>
-          <declname>ir</declname>
-        </param>
-        <briefdescription>
-<para>See <ref refid="namespacehmap_1a732a83c92c4a2d232fc9f421f98c0c6b" kindref="member">hmap::z_score</ref>. </para>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="HighMap/src/features/features_gpu.cpp" line="169" column="7" bodyfile="HighMap/src/features/features_gpu.cpp" bodystart="169" bodyend="182" declfile="HighMap/include/highmap/features.hpp" declline="483" declcolumn="7"/>
+        <location file="HighMap/src/features/features_gpu.cpp" line="135" column="7" bodyfile="HighMap/src/features/features_gpu.cpp" bodystart="135" bodyend="167" declfile="HighMap/include/highmap/features.hpp" declline="496" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1ad6240ccabf3a0f858698dc0b77ab619e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -9557,7 +9598,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/gpu_opencl/gpu_opencl.cpp" line="24" column="6" bodyfile="HighMap/src/gpu_opencl/gpu_opencl.cpp" bodystart="24" bodyend="113" declfile="HighMap/include/highmap/opencl/gpu_opencl.hpp" declline="27" declcolumn="6"/>
+        <location file="HighMap/src/gpu_opencl/gpu_opencl.cpp" line="24" column="6" bodyfile="HighMap/src/gpu_opencl/gpu_opencl.cpp" bodystart="24" bodyend="114" declfile="HighMap/include/highmap/opencl/gpu_opencl.hpp" declline="27" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a9c1f1f4997a6bc734517c77ace10aa73" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>

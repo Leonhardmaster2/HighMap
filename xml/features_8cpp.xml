@@ -138,22 +138,7 @@
 <codeline lineno="128"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>vw;</highlight></codeline>
 <codeline lineno="129"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="130"><highlight class="normal"></highlight></codeline>
-<codeline lineno="131"><highlight class="normal">Array<sp/><ref refid="namespacehmap_1a732a83c92c4a2d232fc9f421f98c0c6b" kindref="member">z_score</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array<sp/>&amp;array,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ir)</highlight></codeline>
-<codeline lineno="132"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="133"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>NB<sp/>-<sp/>use<sp/>Gaussian<sp/>windowing<sp/>instead<sp/>of<sp/>a<sp/>real<sp/>arithmetic<sp/>averaging</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="134"><highlight class="normal"><sp/><sp/>Array<sp/>mean<sp/>=<sp/>array;</highlight></codeline>
-<codeline lineno="135"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a95c0f4c53278620f0812381ccaa7459e" kindref="member">smooth_cpulse</ref>(mean,<sp/>ir);</highlight></codeline>
-<codeline lineno="136"><highlight class="normal"></highlight></codeline>
-<codeline lineno="137"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>use<sp/>mean<sp/>to<sp/>store<sp/>(array<sp/>-<sp/>mean)^2</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="138"><highlight class="normal"><sp/><sp/>mean<sp/>-=<sp/>array;</highlight></codeline>
-<codeline lineno="139"><highlight class="normal"><sp/><sp/>mean<sp/>*=<sp/>mean;</highlight></codeline>
-<codeline lineno="140"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a95c0f4c53278620f0812381ccaa7459e" kindref="member">smooth_cpulse</ref>(mean,<sp/>ir);</highlight></codeline>
-<codeline lineno="141"><highlight class="normal"><sp/><sp/>Array<sp/>std<sp/>=<sp/><ref refid="namespacehmap_1a6b608e2826c1f9ba54a0e8922d5faa6b" kindref="member">sqrt</ref>(mean);</highlight></codeline>
-<codeline lineno="142"><highlight class="normal"></highlight></codeline>
-<codeline lineno="143"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(array<sp/>-<sp/>mean)<sp/>/<sp/>std;</highlight></codeline>
-<codeline lineno="144"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="145"><highlight class="normal"></highlight></codeline>
-<codeline lineno="146"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>hmap</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>hmap</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="HighMap/src/features/features.cpp"/>
   </compounddef>

@@ -10,14 +10,13 @@ var features_8hpp =
     [ "ruggedness", "features_8hpp.html#af4ec8b5be149e6749fdf09759daf1e9e", null ],
     [ "rugosity", "features_8hpp.html#a85e411c67e97deb8459f25d4440546c3", null ],
     [ "valley_width", "features_8hpp.html#ab4d8048b79080012b8e60c270de8137f", null ],
-    [ "z_score", "features_8hpp.html#a732a83c92c4a2d232fc9f421f98c0c6b", null ],
     [ "local_median_deviation", "features_8hpp.html#a022f5800d7e28f79f9e2d3abf687f490", null ],
     [ "local_relief", "features_8hpp.html#a5e3ebf317043142adc19dd211ba07230", null ],
     [ "local_variance", "features_8hpp.html#aeca9d8454f50273ca4a4f3db0c25a1b1", null ],
     [ "local_mean", "features_8hpp.html#a72341578d241e21b4c31d7497287cfc3", null ],
+    [ "local_z_score", "features_8hpp.html#ad6ef648576e9339058037a28ce17d225", null ],
     [ "topographic_position_index", "features_8hpp.html#a74594cae7628bcfb1c038ac6930fe97d", null ],
     [ "relative_elevation", "features_8hpp.html#a2dcbc7dac085b61f3c47e17256741a9a", null ],
     [ "ruggedness", "features_8hpp.html#a62292cc4bf9f6eb5c7b63b1e26f8cc88", null ],
-    [ "rugosity", "features_8hpp.html#aa5a3e087822525c41f057a51255e2bad", null ],
-    [ "z_score", "features_8hpp.html#a802ae2cfde5f1a4124ebd0bd2f2dc6c4", null ]
+    [ "rugosity", "features_8hpp.html#aa5a3e087822525c41f057a51255e2bad", null ]
 ];
