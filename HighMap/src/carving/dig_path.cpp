@@ -33,7 +33,7 @@ void dig_path(Array    &z,
         path_copy.points[k].v = path_copy.points[k - 1].v;
 
     path_copy.to_array(mask, bbox);
-    zf = maximum_local(mask, 3 * (width + decay));
+    zf = local_max(mask, 3 * (width + decay));
     smooth_cpulse(zf, width + decay);
 
     // regenerate the mask
@@ -51,7 +51,7 @@ void dig_path(Array    &z,
     zf = local_mean(z, flattening_radius);
   }
 
-  mask = maximum_local(mask, width);
+  mask = local_max(mask, width);
   mask = distance_transform_approx(mask);
   mask = exp(-mask * mask * 0.5f / ((float)(decay * decay)));
   smooth_cpulse(mask, decay);

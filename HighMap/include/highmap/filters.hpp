@@ -863,54 +863,6 @@ void low_pass_high_order(Array &array, int order = 9, float sigma = 1.f);
 void make_binary(Array &array, float threshold = 0.f);
 
 /**
- * @brief Return the local maxima based on a maximum filter with a square
- * kernel.
- *
- * This function identifies the local maxima in the input array using a maximum
- * filter with a square kernel. The local maxima are determined based on the
- * footprint radius specified by `ir`. The result is an array where each value
- * represents the local maximum within the defined kernel size.
- *
- * @param  array Input array from which local maxima are to be extracted.
- * @param  ir    Square kernel footprint radius. The size of the kernel used to
- *               determine the local maxima.
- * @return       Array Resulting array containing the local maxima.
- *
- * **Example**
- * @include ex_maximum_local.cpp
- *
- * **Result**
- * @image html ex_maximum_local.png
- *
- * @see          {@link maximum_local_disk}, {@link minimum_local}
- */
-Array maximum_local(const Array &array, int ir);
-
-/**
- * @brief Return the local maxima based on a maximum filter using a disk kernel.
- *
- * This function identifies the local maxima in the input array using a maximum
- * filter with a disk-shaped kernel. The local maxima are determined based on
- * the footprint radius specified by `ir`. The result is an array where each
- * value represents the local maximum within the disk-shaped kernel.
- *
- * @param  array Input array from which local maxima are to be extracted.
- * @param  ir    Disk kernel footprint radius. The size of the disk-shaped
- *               kernel used to determine the local maxima.
- * @return       Array Resulting array containing the local maxima.
- *
- * **Example**
- * @include ex_maximum_local.cpp
- *
- * **Result**
- * @image html ex_maximum_local.png
- *
- * @see          {@link maximum_local}, {@link minimum_local_disk}, {@link
- *               minimum_local}
- */
-Array maximum_local_disk(const Array &array, int ir);
-
-/**
  * @brief Transform the input array elevation to match the histogram of a
  * reference array.
  *
@@ -1038,57 +990,9 @@ void median_3x3(Array &array);
  * **Result**
  * @image html ex_median_pseudo.png
  *
- * @see          minimum_local, maximum_local, local_mean
+ * @see          local_min, local_max, local_mean
  */
 Array median_pseudo(const Array &array, int ir);
-
-/**
- * @brief Return the local minima based on a maximum filter with a square
- * kernel.
- *
- * This function identifies the local minima in the input array using a maximum
- * filter with a square kernel. The local minima are determined based on the
- * footprint radius specified by `ir`. The result is an array where each value
- * represents the local minimum within the defined kernel size.
- *
- * @param  array Input array from which local minima are to be extracted.
- * @param  ir    Square kernel footprint radius. The size of the kernel used to
- *               determine the local minima.
- * @return       Array Resulting array containing the local minima.
- *
- * **Example**
- * @include ex_maximum_local.cpp
- *
- * **Result**
- * @image html ex_maximum_local.png
- *
- * @see          {@link minimum_local}
- */
-Array minimum_local(const Array &array, int ir);
-
-/**
- * @brief Return the local minima based on a maximum filter using a disk kernel.
- *
- * This function calculates the local minima in the input array using a maximum
- * filter with a disk-shaped kernel. The local minima are determined based on
- * the footprint radius specified by `ir`. The result is an array where each
- * value represents the local minimum within the disk-shaped kernel.
- *
- * @param  array Input array from which local minima are to be extracted.
- * @param  ir    Disk kernel footprint radius. The size of the disk-shaped
- *               kernel used to determine the local minima.
- * @return       Array Resulting array containing the local minima.
- *
- * **Example**
- * @include ex_maximum_local.cpp
- *
- * **Result**
- * @image html ex_maximum_local.png
- *
- * @see          {@link maximum_local}, {@link maximum_local_disk}, {@link
- *               minimum_local}
- */
-Array minimum_local_disk(const Array &array, int ir);
 
 /**
  * @brief Apply a displacement to the terrain along the normal direction.
@@ -2545,12 +2449,6 @@ void laplace(Array       &array,
              float        sigma = 0.2f,
              int          iterations = 3); ///< @overload
 
-/*! @brief See hmap::maximum_local */
-Array maximum_local(const Array &array, int ir);
-
-/*! @brief See hmap::maximum_local_disk */
-Array maximum_local_disk(const Array &array, int ir);
-
 /*! @brief See hmap::mean_shift */
 Array mean_shift(const Array &array,
                  int          ir,
@@ -2571,12 +2469,6 @@ void median_3x3(Array &array, const Array *p_mask); ///< @overload
 
 /*! @brief See hmap::median_pseudo */
 Array median_pseudo(const Array &array, int ir);
-
-/*! @brief See hmap::minimum_local */
-Array minimum_local(const Array &array, int ir);
-
-/*! @brief See hmap::minimum_local_disk */
-Array minimum_local_disk(const Array &array, int ir);
 
 /*! @brief See hmap::normal_displacement */
 void normal_displacement(Array &array,

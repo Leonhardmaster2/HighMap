@@ -6,6 +6,7 @@
 #include "highmap/array.hpp"
 #include "highmap/boundary.hpp"
 #include "highmap/filters.hpp"
+#include "highmap/local_metrics.hpp"
 #include "highmap/morphology.hpp"
 
 namespace hmap
@@ -23,12 +24,12 @@ Array closing(const Array &array, int ir)
 
 Array dilation(const Array &array, int ir)
 {
-  return maximum_local(array, ir);
+  return local_max(array, ir);
 }
 
 Array dilation_expand_border_only(const Array &array, int ir)
 {
-  Array out = maximum_local(array, ir);
+  Array out = local_max(array, ir);
 
   // only keep result in the "background" to leave initial vlaues
   // untouched
@@ -73,7 +74,7 @@ Array dilation_expand_min_value_border_only(const Array &array)
 
 Array erosion(const Array &array, int ir)
 {
-  return minimum_local(array, ir);
+  return local_min(array, ir);
 }
 
 void flood_fill(Array &array,

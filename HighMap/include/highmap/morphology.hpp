@@ -396,18 +396,16 @@ namespace hmap::gpu
 {
 
 /*! @brief See hmap::border */
-Array border(const Array &array, int ir, bool use_disk_kernel = true);
+Array border(const Array &array, int ir);
 
 /*! @brief See hmap::closing */
-Array closing(const Array &array, int ir, bool use_disk_kernel = true);
+Array closing(const Array &array, int ir);
 
 /*! @brief See hmap::dilation */
-Array dilation(const Array &array, int ir, bool use_disk_kernel = true);
+Array dilation(const Array &array, int ir);
 
 /*! @brief See hmap::dilation_expand_border_only */
-Array dilation_expand_border_only(const Array &array,
-                                  int          ir,
-                                  bool         use_disk_kernel = true);
+Array dilation_expand_border_only(const Array &array, int ir);
 
 /**
  * @brief Return the Euclidean distance transform.
@@ -435,32 +433,25 @@ Array distance_transform_jfa(const Array &array,
                              bool         return_squared_distance = false);
 
 /*! @brief See hmap::erosion */
-Array erosion(const Array &array, int ir, bool use_disk_kernel = true);
+Array erosion(const Array &array, int ir);
 
 /*! @brief See hmap::morphological_black_hat */
-Array morphological_black_hat(const Array &array,
-                              int          ir,
-                              bool         use_disk_kernel = true);
+Array morphological_black_hat(const Array &array, int ir);
 
 /*! @brief See hmap::morphological_gradient */
-Array morphological_gradient(const Array &array,
-                             int          ir,
-                             bool         use_disk_kernel = true);
+Array morphological_gradient(const Array &array, int ir);
 
 /*! @brief See hmap::morphological_top_hat */
-Array morphological_top_hat(const Array &array,
-                            int          ir,
-                            bool         use_disk_kernel = true);
+Array morphological_top_hat(const Array &array, int ir);
 
 /*! @brief See hmap::opening */
-Array opening(const Array &array, int ir, bool use_disk_kernel = true);
+Array opening(const Array &array, int ir);
 
 /*! @brief See hmap::relative_distance_from_skeleton */
 Array relative_distance_from_skeleton(const Array &array,
                                       int          ir_search,
                                       bool         zero_at_borders = true,
-                                      int          ir_erosion = 1,
-                                      bool         use_disk_kernel = true);
+                                      int          ir_erosion = 1);
 
 /*! @brief See hmap::signed_curvature_from_distance */
 Array signed_curvature_from_distance(const Array &array, int prefilter_ir = 0);

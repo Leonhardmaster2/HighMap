@@ -261,72 +261,6 @@ Array maximum(const Array &array1, const float value)
   return array_out;
 }
 
-Array maximum_local(const Array &array, int ir)
-{
-  Array array_out = Array(array.shape);
-  Array array_tmp = Array(array.shape);
-
-  // row
-  for (int i = 0; i < array.shape.x; i++)
-  {
-    int i1 = std::max(0, i - ir);
-    int i2 = std::min(array.shape.x, i + ir + 1);
-
-    for (int j = 0; j < array.shape.y; j++)
-    {
-      float max = array(i, j);
-      for (int u = i1; u < i2; u++)
-        if (array(u, j) > max) max = array(u, j);
-      array_tmp(i, j) = max;
-    }
-  }
-
-  // column
-  for (int j = 0; j < array.shape.y; j++)
-  {
-    int j1 = std::max(0, j - ir);
-    int j2 = std::min(array.shape.y, j + ir + 1);
-    for (int i = 0; i < array.shape.x; i++)
-    {
-      float max = array_tmp(i, j);
-      for (int v = j1; v < j2; v++)
-        if (array_tmp(i, v) > max) max = array_tmp(i, v);
-      array_out(i, j) = max;
-    }
-  }
-
-  return array_out;
-}
-
-Array maximum_local_disk(const Array &array, int ir)
-{
-  Array array_out = array;
-
-  int ni = array.shape.x;
-  int nj = array.shape.y;
-
-  for (int j = 0; j < nj; j++)
-  {
-    int q1 = std::max(0, j - ir) - j;
-    int q2 = std::min(nj, j + ir + 1) - j;
-    for (int i = 0; i < ni; i++)
-    {
-      int p1 = std::max(0, i - ir) - i;
-      int p2 = std::min(ni, i + ir + 1) - i;
-
-      for (int q = q1; q < q2; q++)
-        for (int p = p1; p < p2; p++)
-        {
-          float r2 = (float)(p * p + q * q) / (float)ir;
-          if (r2 <= 1.f)
-            array_out(i, j) = std::max(array_out(i, j), array(i + p, j + q));
-        }
-    }
-  }
-
-  return array_out;
-}
-
 Array maximum_smooth(const Array &array1, const Array &array2, float k)
 {
   if (k > 0.f)
@@ -375,16 +309,6 @@ Array minimum(const Array &array1, const float value)
                  array_out.vector.begin(),
                  [&value](float a) { return std::min(a, value); });
   return array_out;
-}
-
-Array minimum_local(const Array &array, int ir)
-{
-  return -maximum_local(-array, ir);
-}
-
-Array minimum_local_disk(const Array &array, int ir)
-{
-  return -maximum_local_disk(-array, ir);
 }
 
 Array minimum_smooth(const Array &array1, const Array &array2, float k)

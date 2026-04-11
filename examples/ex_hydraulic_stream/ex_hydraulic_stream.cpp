@@ -14,7 +14,7 @@ int main(void)
   float       c_erosion = 0.1f;
   float       talus_ref = 5.f / (float)shape.x;
   int         iradius = 64;
-  hmap::Array z_bedrock = hmap::minimum_local(z, iradius);
+  hmap::Array z_bedrock = hmap::local_min(z, iradius);
 
   auto z1 = z;
   hmap::hydraulic_stream(z1, c_erosion, talus_ref);

@@ -58,6 +58,30 @@ namespace hmap
 {
 
 /**
+ * @brief Return the local maxima based on a maximum filter with a square
+ * kernel.
+ *
+ * This function identifies the local maxima in the input array using a maximum
+ * filter with a square kernel. The local maxima are determined based on the
+ * footprint radius specified by `ir`. The result is an array where each value
+ * represents the local maximum within the defined kernel size.
+ *
+ * @param  array Input array from which local maxima are to be extracted.
+ * @param  ir    Square kernel footprint radius. The size of the kernel used to
+ *               determine the local maxima.
+ * @return       Array Resulting array containing the local maxima.
+ *
+ * **Example**
+ * @include ex_local_max.cpp
+ *
+ * **Result**
+ * @image html ex_local_max.png
+ *
+ * @see          {@link local_max_disk}, {@link local_min}
+ */
+Array local_max(const Array &array, int ir);
+
+/**
  * @brief Computes the local median deviation of a 2D array.
  *
  * This function calculates the absolute difference between the local mean and a
@@ -87,6 +111,30 @@ namespace hmap
 Array local_median_deviation(const Array &array, int ir);
 
 /**
+ * @brief Return the local minima based on a maximum filter with a square
+ * kernel.
+ *
+ * This function identifies the local minima in the input array using a maximum
+ * filter with a square kernel. The local minima are determined based on the
+ * footprint radius specified by `ir`. The result is an array where each value
+ * represents the local minimum within the defined kernel size.
+ *
+ * @param  array Input array from which local minima are to be extracted.
+ * @param  ir    Square kernel footprint radius. The size of the kernel used to
+ *               determine the local minima.
+ * @return       Array Resulting array containing the local minima.
+ *
+ * **Example**
+ * @include ex_local_max.cpp
+ *
+ * **Result**
+ * @image html ex_local_max.png
+ *
+ * @see          {@link local_min}
+ */
+Array local_min(const Array &array, int ir);
+
+/**
  * @brief Return the local mean based on a mean filter with a square kernel.
  *
  * This function calculates the local mean of the input array using a mean
@@ -107,7 +155,7 @@ Array local_median_deviation(const Array &array, int ir);
  * @image html ex_local_mean0.png
  * @image html ex_local_mean1.png
  *
- * @see          {@link maximum_local}, {@link minimum_local}
+ * @see          {@link local_max}, {@link local_min}
  */
 Array local_mean(const Array &array, int ir);
 
@@ -192,11 +240,43 @@ Array rugosity(const Array &z, int ir, bool convex = true);
 namespace hmap::gpu
 {
 
+/**
+ * @brief Compute the local maximum using a disk kernel.
+ *
+ * For each cell, returns the maximum value within a neighborhood of radius @p
+ * ir defined by a disk-shaped kernel.
+ *
+ * @param  array Input array.
+ * @param  ir    Radius of the disk kernel.
+ * @return       Array of local maximum values.
+ *
+ *  **Example**
+ * @include ex_local_metrics.cpp
+ *
+ * **Result**
+ * @image html ex_local_metrics.png
+ */
 Array local_max(const Array &array, int ir);
 
 /*! @brief See hmap::local_median_deviation */
 Array local_median_deviation(const Array &array, int ir);
 
+/**
+ * @brief Compute the local minimum using a disk kernel.
+ *
+ * For each cell, returns the minimum value within a neighborhood of radius @p
+ * ir defined by a disk-shaped kernel.
+ *
+ * @param  array Input array.
+ * @param  ir    Radius of the disk kernel.
+ * @return       Array of local minimum values.
+ *
+ *  **Example**
+ * @include ex_local_metrics.cpp
+ *
+ * **Result**
+ * @image html ex_local_metrics.png
+ */
 Array local_min(const Array &array, int ir);
 
 /**
@@ -248,12 +328,12 @@ Array local_mean(const Array &array, int ir);
 /**
  * @brief Compute the local z-score of an array.
  *
- * For each cell, computes the normalized difference between its value
- * and the mean of a neighborhood of radius @p ir.
+ * For each cell, computes the normalized difference between its value and the
+ * mean of a neighborhood of radius @p ir.
  *
- * @param array Input array.
- * @param ir Radius of the local window.
- * @return Array of local z-score values.
+ * @param  array Input array.
+ * @param  ir    Radius of the local window.
+ * @return       Array of local z-score values.
  *
  * **Example**
  * @include ex_local_z_score.cpp
@@ -269,9 +349,9 @@ Array local_z_score(const Array &array, int ir);
  * TPI measures the elevation difference between each cell and the mean
  * elevation within a neighborhood of radius @p ir.
  *
- * @param array Input elevation array.
- * @param ir Radius of the neighborhood.
- * @return Array of TPI values.
+ * @param  array Input elevation array.
+ * @param  ir    Radius of the neighborhood.
+ * @return       Array of TPI values.
  *
  * **Example**
  * @include ex_topographic_position_index.cpp

@@ -94,8 +94,8 @@ void expand(Array       &array,
 
 void gamma_correction_local(Array &array, float gamma, int ir, float k)
 {
-  Array amin = gpu::minimum_local(array, ir);
-  Array amax = gpu::maximum_local(array, ir);
+  Array amin = gpu::local_min(array, ir);
+  Array amax = gpu::local_max(array, ir);
 
   gpu::smooth_cpulse(amin, ir);
   gpu::smooth_cpulse(amax, ir);
@@ -180,37 +180,6 @@ void laplace(Array &array, const Array *p_mask, float sigma, int iterations)
   }
 }
 
-Array maximum_local(const Array &array, int ir)
-{
-  auto run = clwrapper::Run("maximum_local");
-
-  Array array_out = array;
-
-  run.bind_imagef("in", array_out.vector, array.shape.x, array.shape.y);
-  run.bind_imagef("out", array_out.vector, array.shape.x, array.shape.y, true);
-  run.bind_arguments(array.shape.x, array.shape.y, ir, 0);
-
-  // row pass
-  run.execute({array.shape.x, array.shape.y});
-  run.read_imagef("out");
-
-  // col pass
-  run.write_imagef("in");
-  run.set_argument(5, 1); // pass_number
-  run.execute({array.shape.x, array.shape.y});
-  run.read_imagef("out");
-
-  return array_out;
-}
-
-Array maximum_local_disk(const Array &array, int ir)
-{
-  Array kernel = disk({2 * ir + 1, 2 * ir + 1});
-  Array array_out = array;
-  gpu::expand(array_out, kernel);
-  return array_out;
-}
-
 Array mean_shift(const Array &array,
                  int          ir,
                  float        talus,
@@ -288,22 +257,9 @@ void median_3x3(Array &array, const Array *p_mask)
 
 Array median_pseudo(const Array &array, int ir)
 {
-  return (gpu::minimum_local(array, ir) + gpu::maximum_local(array, ir) +
+  return (gpu::local_min(array, ir) + gpu::local_max(array, ir) +
           gpu::local_mean(array, ir)) /
          3.f;
-}
-
-Array minimum_local(const Array &array, int ir)
-{
-  return -gpu::maximum_local(-array, ir);
-}
-
-Array minimum_local_disk(const Array &array, int ir)
-{
-  Array kernel = disk({2 * ir + 1, 2 * ir + 1});
-  Array array_out = array;
-  gpu::shrink(array_out, kernel);
-  return array_out;
 }
 
 void normal_displacement(Array &array, float amount, int ir, bool reverse)
@@ -358,8 +314,8 @@ void normal_displacement(Array       &array,
 
 void plateau(Array &array, const Array *p_mask, int ir, float factor)
 {
-  Array amin = gpu::minimum_local(array, ir);
-  Array amax = gpu::maximum_local(array, ir);
+  Array amin = gpu::local_min(array, ir);
+  Array amax = gpu::local_max(array, ir);
 
   gpu::smooth_cpulse(amin, ir);
   gpu::smooth_cpulse(amax, ir);

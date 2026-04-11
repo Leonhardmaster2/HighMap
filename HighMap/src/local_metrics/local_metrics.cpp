@@ -12,6 +12,43 @@
 namespace hmap
 {
 
+Array local_max(const Array &array, int ir)
+{
+  Array array_out = Array(array.shape);
+  Array array_tmp = Array(array.shape);
+
+  // row
+  for (int i = 0; i < array.shape.x; i++)
+  {
+    int i1 = std::max(0, i - ir);
+    int i2 = std::min(array.shape.x, i + ir + 1);
+
+    for (int j = 0; j < array.shape.y; j++)
+    {
+      float max = array(i, j);
+      for (int u = i1; u < i2; u++)
+        if (array(u, j) > max) max = array(u, j);
+      array_tmp(i, j) = max;
+    }
+  }
+
+  // column
+  for (int j = 0; j < array.shape.y; j++)
+  {
+    int j1 = std::max(0, j - ir);
+    int j2 = std::min(array.shape.y, j + ir + 1);
+    for (int i = 0; i < array.shape.x; i++)
+    {
+      float max = array_tmp(i, j);
+      for (int v = j1; v < j2; v++)
+        if (array_tmp(i, v) > max) max = array_tmp(i, v);
+      array_out(i, j) = max;
+    }
+  }
+
+  return array_out;
+}
+
 Array local_mean(const Array &array, int ir)
 {
   Array array_out = Array(array.shape);
@@ -26,6 +63,11 @@ Array local_mean(const Array &array, int ir)
   return array_out;
 }
 
+Array local_min(const Array &array, int ir)
+{
+  return -local_max(-array, ir);
+}
+
 Array local_median_deviation(const Array &array, int ir)
 {
   Array mean = local_mean(array, ir);
@@ -35,8 +77,8 @@ Array local_median_deviation(const Array &array, int ir)
 
 Array relative_elevation(const Array &array, int ir)
 {
-  Array amin = minimum_local(array, ir);
-  Array amax = maximum_local(array, ir);
+  Array amin = local_min(array, ir);
+  Array amax = local_max(array, ir);
 
   smooth_cpulse(amin, ir);
   smooth_cpulse(amax, ir);

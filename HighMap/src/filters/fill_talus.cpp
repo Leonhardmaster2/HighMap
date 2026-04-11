@@ -9,6 +9,7 @@
 #include "highmap/boundary.hpp"
 #include "highmap/erosion.hpp"
 #include "highmap/filters.hpp"
+#include "highmap/local_metrics.hpp"
 #include "highmap/math.hpp"
 #include "highmap/range.hpp"
 
@@ -120,7 +121,7 @@ void fill_talus_fast(Array     &z,
   // defined at only one cell)
   Array z_coarse = Array(shape_coarse);
   {
-    Array z_filtered = maximum_local(z, (int)std::ceil(0.5f * step));
+    Array z_filtered = local_max(z, (int)std::ceil(0.5f * step));
     z_coarse = z_filtered.resample_to_shape(shape_coarse);
   }
 

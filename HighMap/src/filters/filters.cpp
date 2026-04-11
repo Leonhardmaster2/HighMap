@@ -222,8 +222,8 @@ void gamma_correction(Array &array, float gamma, const Array *p_mask)
 
 void gamma_correction_local(Array &array, float gamma, int ir, float k)
 {
-  Array amin = minimum_local(array, ir);
-  Array amax = maximum_local(array, ir);
+  Array amin = local_min(array, ir);
+  Array amax = local_max(array, ir);
 
   smooth_cpulse(amin, ir);
   smooth_cpulse(amax, ir);
@@ -598,8 +598,7 @@ void median_3x3(Array &array, const Array *p_mask)
 
 Array median_pseudo(const Array &array, int ir)
 {
-  return (minimum_local(array, ir) + maximum_local(array, ir) +
-          local_mean(array, ir)) /
+  return (local_min(array, ir) + local_max(array, ir) + local_mean(array, ir)) /
          3.f;
 }
 
@@ -655,8 +654,8 @@ void normal_displacement(Array       &array,
 
 void plateau(Array &array, int ir, float factor)
 {
-  Array amin = minimum_local(array, ir);
-  Array amax = maximum_local(array, ir);
+  Array amin = local_min(array, ir);
+  Array amax = local_max(array, ir);
 
   smooth_cpulse(amin, ir);
   smooth_cpulse(amax, ir);
@@ -1085,8 +1084,8 @@ void smooth_fill_smear_peaks(Array &array, int ir, const Array *p_mask)
 
 void smoothstep_local(Array &array, int ir)
 {
-  Array amin = minimum_local(array, ir);
-  Array amax = maximum_local(array, ir);
+  Array amin = local_min(array, ir);
+  Array amax = local_max(array, ir);
 
   smooth_cpulse(amin, ir);
   smooth_cpulse(amax, ir);

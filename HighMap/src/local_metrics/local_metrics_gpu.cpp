@@ -145,8 +145,8 @@ Array local_z_score(const Array &array, int ir)
 
 Array relative_elevation(const Array &array, int ir)
 {
-  Array amin = gpu::minimum_local(array, ir);
-  Array amax = gpu::maximum_local(array, ir);
+  Array amin = gpu::local_min(array, ir);
+  Array amax = gpu::local_max(array, ir);
 
   gpu::smooth_cpulse(amin, ir);
   gpu::smooth_cpulse(amax, ir);
