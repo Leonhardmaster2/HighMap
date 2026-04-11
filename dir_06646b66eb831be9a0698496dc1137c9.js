@@ -29,6 +29,7 @@ var dir_06646b66eb831be9a0698496dc1137c9 =
     [ "interpolate_array.hpp", "interpolate__array_8hpp.html", "interpolate__array_8hpp" ],
     [ "interpolate_curve.hpp", "interpolate__curve_8hpp.html", "interpolate__curve_8hpp" ],
     [ "kernels.hpp", "kernels_8hpp.html", "kernels_8hpp" ],
+    [ "local_metrics.hpp", "local__metrics_8hpp.html", "local__metrics_8hpp" ],
     [ "math.hpp", "math_8hpp.html", "math_8hpp" ],
     [ "morphology.hpp", "morphology_8hpp.html", "morphology_8hpp" ],
     [ "operator.hpp", "operator_8hpp.html", "operator_8hpp" ],

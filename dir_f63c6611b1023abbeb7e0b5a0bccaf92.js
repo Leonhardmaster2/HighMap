@@ -22,6 +22,7 @@ var dir_f63c6611b1023abbeb7e0b5a0bccaf92 =
     [ "hydrology", "dir_ce6c722236ab9f2244a54aefafe425a2.html", "dir_ce6c722236ab9f2244a54aefafe425a2" ],
     [ "interpolate", "dir_935215972bef69986a81fe4c59c9ece4.html", "dir_935215972bef69986a81fe4c59c9ece4" ],
     [ "kernels", "dir_d28e56f0bcd00353ff35f2c577e0eb78.html", "dir_d28e56f0bcd00353ff35f2c577e0eb78" ],
+    [ "local_metrics", "dir_3e1df0ea8e89544400c11ff37b916f18.html", "dir_3e1df0ea8e89544400c11ff37b916f18" ],
     [ "math", "dir_3fff8e57683f346a5b9ac4f0c61c9931.html", "dir_3fff8e57683f346a5b9ac4f0c61c9931" ],
     [ "morphology", "dir_6e375fef8169f9dfb42b397d57678e79.html", "dir_6e375fef8169f9dfb42b397d57678e79" ],
     [ "multiscale", "dir_8ec6da466271af6faf10594ea35abcfe.html", "dir_8ec6da466271af6faf10594ea35abcfe" ],
