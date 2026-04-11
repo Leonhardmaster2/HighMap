@@ -114,14 +114,15 @@ Enumerations</h2></td></tr>
 &#160;&#160;<a class="el" href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa5a6dccee984676ced1eb1ac2a546761e">LM_LOCAL_RELIEF</a>
 , <a class="el" href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa9633368152d1a5c7cabbd67607305162">LM_LOCAL_VARIANCE</a>
 , <a class="el" href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fad5818c578f7164c55a879326e4a88b53">LM_LOCAL_MEAN</a>
-, <a class="el" href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa64d519d05dec2198a42425ce0c402bff">LM_LOCAL_Z_SCORE</a>
+, <a class="el" href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fafad6a20433412feb877a9e8ebb76633c">LM_LOCAL_SKEWNESS</a>
 , <br />
-&#160;&#160;<a class="el" href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa8f5a70d0a562337ca689b0ce7ee3fff6">LM_TOPOGRAPHIC_POSITION_INDEX</a>
+&#160;&#160;<a class="el" href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa64d519d05dec2198a42425ce0c402bff">LM_LOCAL_Z_SCORE</a>
+, <a class="el" href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa8f5a70d0a562337ca689b0ce7ee3fff6">LM_TOPOGRAPHIC_POSITION_INDEX</a>
 , <a class="el" href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa46f15a0ffd71deff0ddbc5599acfff87">LM_RELATIVE_ELEVATION</a>
 , <a class="el" href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa568c1c82b138902b43e26249e63d8618">LM_RUGGEDNESS</a>
-, <a class="el" href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa892abed7945357817b7504339fdcee14">LM_RUGOSITY_CONCAVE</a>
 , <br />
-&#160;&#160;<a class="el" href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fac1321c034ba09831f5b5a040058f9477">LM_RUGOSITY_CONVEX</a>
+&#160;&#160;<a class="el" href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa892abed7945357817b7504339fdcee14">LM_RUGOSITY_CONCAVE</a>
+, <a class="el" href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fac1321c034ba09831f5b5a040058f9477">LM_RUGOSITY_CONVEX</a>
 <br />
  }</td></tr>
 <tr class="separator:ab0737b29664736928a86f0755493895f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -469,6 +470,8 @@ Functions</h2></td></tr>
 <tr class="memitem:a72341578d241e21b4c31d7497287cfc3" id="r_a72341578d241e21b4c31d7497287cfc3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a72341578d241e21b4c31d7497287cfc3">local_mean</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, int ir)</td></tr>
 <tr class="memdesc:a72341578d241e21b4c31d7497287cfc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="namespacehmap.html#ac297b8711e186ee1e5cdc7d1fc6a7972" title="Return the local mean based on a mean filter with a square kernel.">hmap::local_mean</a>.  <br /></td></tr>
 <tr class="separator:a72341578d241e21b4c31d7497287cfc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa40b626be86c63829e7e118fa389d260" id="r_aa40b626be86c63829e7e118fa389d260"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#aa40b626be86c63829e7e118fa389d260">local_skewness</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, int ir)</td></tr>
+<tr class="separator:aa40b626be86c63829e7e118fa389d260"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad6ef648576e9339058037a28ce17d225" id="r_ad6ef648576e9339058037a28ce17d225"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#ad6ef648576e9339058037a28ce17d225">local_z_score</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, int ir)</td></tr>
 <tr class="memdesc:ad6ef648576e9339058037a28ce17d225"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the local z-score of an array.  <br /></td></tr>
 <tr class="separator:ad6ef648576e9339058037a28ce17d225"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -718,6 +721,7 @@ Functions</h2></td></tr>
 <tr><td class="fieldname"><a id="ab0737b29664736928a86f0755493895fa5a6dccee984676ced1eb1ac2a546761e" name="ab0737b29664736928a86f0755493895fa5a6dccee984676ced1eb1ac2a546761e"></a>LM_LOCAL_RELIEF&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ab0737b29664736928a86f0755493895fa9633368152d1a5c7cabbd67607305162" name="ab0737b29664736928a86f0755493895fa9633368152d1a5c7cabbd67607305162"></a>LM_LOCAL_VARIANCE&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ab0737b29664736928a86f0755493895fad5818c578f7164c55a879326e4a88b53" name="ab0737b29664736928a86f0755493895fad5818c578f7164c55a879326e4a88b53"></a>LM_LOCAL_MEAN&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ab0737b29664736928a86f0755493895fafad6a20433412feb877a9e8ebb76633c" name="ab0737b29664736928a86f0755493895fafad6a20433412feb877a9e8ebb76633c"></a>LM_LOCAL_SKEWNESS&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ab0737b29664736928a86f0755493895fa64d519d05dec2198a42425ce0c402bff" name="ab0737b29664736928a86f0755493895fa64d519d05dec2198a42425ce0c402bff"></a>LM_LOCAL_Z_SCORE&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ab0737b29664736928a86f0755493895fa8f5a70d0a562337ca689b0ce7ee3fff6" name="ab0737b29664736928a86f0755493895fa8f5a70d0a562337ca689b0ce7ee3fff6"></a>LM_TOPOGRAPHIC_POSITION_INDEX&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ab0737b29664736928a86f0755493895fa46f15a0ffd71deff0ddbc5599acfff87" name="ab0737b29664736928a86f0755493895fa46f15a0ffd71deff0ddbc5599acfff87"></a>LM_RELATIVE_ELEVATION&#160;</td><td class="fielddoc"></td></tr>
@@ -8752,6 +8756,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">      <a class="code hl_enumvalue" href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa5a6dccee984676ced1eb1ac2a546761e">hmap::gpu::LocalMetrics::LM_LOCAL_RELIEF</a>,</div>
 <div class="line">      <a class="code hl_enumvalue" href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa9633368152d1a5c7cabbd67607305162">hmap::gpu::LocalMetrics::LM_LOCAL_VARIANCE</a>,</div>
 <div class="line">      <a class="code hl_enumvalue" href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fad5818c578f7164c55a879326e4a88b53">hmap::gpu::LocalMetrics::LM_LOCAL_MEAN</a>,</div>
+<div class="line">      <a class="code hl_enumvalue" href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fafad6a20433412feb877a9e8ebb76633c">hmap::gpu::LocalMetrics::LM_LOCAL_SKEWNESS</a>,</div>
 <div class="line">      <a class="code hl_enumvalue" href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa64d519d05dec2198a42425ce0c402bff">hmap::gpu::LocalMetrics::LM_LOCAL_Z_SCORE</a>,</div>
 <div class="line">      <a class="code hl_enumvalue" href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa8f5a70d0a562337ca689b0ce7ee3fff6">hmap::gpu::LocalMetrics::LM_TOPOGRAPHIC_POSITION_INDEX</a>,</div>
 <div class="line">      <a class="code hl_enumvalue" href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa46f15a0ffd71deff0ddbc5599acfff87">hmap::gpu::LocalMetrics::LM_RELATIVE_ELEVATION</a>,</div>
@@ -8773,19 +8778,20 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">                          <span class="keyword">true</span>);</div>
 <div class="line">}</div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_a13719c4aafe9ffaabd767afe5a8bd44d"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a13719c4aafe9ffaabd767afe5a8bd44d">hmap::gpu::local_metrics</a></div><div class="ttdeci">Array local_metrics(const Array &amp;array, int ir, LocalMetrics metric)</div><div class="ttdef"><b>Definition</b> local_metrics_wrapper.cpp:11</div></div>
-<div class="ttc" id="anamespacehmap_1_1gpu_html_ab0737b29664736928a86f0755493895fa3fb8064f9087e5af79c85dce2c655112"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa3fb8064f9087e5af79c85dce2c655112">hmap::gpu::LM_LOCAL_MIN</a></div><div class="ttdeci">@ LM_LOCAL_MIN</div><div class="ttdef"><b>Definition</b> local_metrics.hpp:357</div></div>
-<div class="ttc" id="anamespacehmap_1_1gpu_html_ab0737b29664736928a86f0755493895fa46f15a0ffd71deff0ddbc5599acfff87"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa46f15a0ffd71deff0ddbc5599acfff87">hmap::gpu::LM_RELATIVE_ELEVATION</a></div><div class="ttdeci">@ LM_RELATIVE_ELEVATION</div><div class="ttdef"><b>Definition</b> local_metrics.hpp:363</div></div>
-<div class="ttc" id="anamespacehmap_1_1gpu_html_ab0737b29664736928a86f0755493895fa568c1c82b138902b43e26249e63d8618"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa568c1c82b138902b43e26249e63d8618">hmap::gpu::LM_RUGGEDNESS</a></div><div class="ttdeci">@ LM_RUGGEDNESS</div><div class="ttdef"><b>Definition</b> local_metrics.hpp:364</div></div>
-<div class="ttc" id="anamespacehmap_1_1gpu_html_ab0737b29664736928a86f0755493895fa5a6dccee984676ced1eb1ac2a546761e"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa5a6dccee984676ced1eb1ac2a546761e">hmap::gpu::LM_LOCAL_RELIEF</a></div><div class="ttdeci">@ LM_LOCAL_RELIEF</div><div class="ttdef"><b>Definition</b> local_metrics.hpp:358</div></div>
-<div class="ttc" id="anamespacehmap_1_1gpu_html_ab0737b29664736928a86f0755493895fa6302a2239490ba9a2f3cd152d55e50d7"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa6302a2239490ba9a2f3cd152d55e50d7">hmap::gpu::LM_LOCAL_ASPECT_VARIANCE</a></div><div class="ttdeci">@ LM_LOCAL_ASPECT_VARIANCE</div><div class="ttdef"><b>Definition</b> local_metrics.hpp:354</div></div>
-<div class="ttc" id="anamespacehmap_1_1gpu_html_ab0737b29664736928a86f0755493895fa64d519d05dec2198a42425ce0c402bff"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa64d519d05dec2198a42425ce0c402bff">hmap::gpu::LM_LOCAL_Z_SCORE</a></div><div class="ttdeci">@ LM_LOCAL_Z_SCORE</div><div class="ttdef"><b>Definition</b> local_metrics.hpp:361</div></div>
-<div class="ttc" id="anamespacehmap_1_1gpu_html_ab0737b29664736928a86f0755493895fa892abed7945357817b7504339fdcee14"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa892abed7945357817b7504339fdcee14">hmap::gpu::LM_RUGOSITY_CONCAVE</a></div><div class="ttdeci">@ LM_RUGOSITY_CONCAVE</div><div class="ttdef"><b>Definition</b> local_metrics.hpp:365</div></div>
-<div class="ttc" id="anamespacehmap_1_1gpu_html_ab0737b29664736928a86f0755493895fa8f5a70d0a562337ca689b0ce7ee3fff6"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa8f5a70d0a562337ca689b0ce7ee3fff6">hmap::gpu::LM_TOPOGRAPHIC_POSITION_INDEX</a></div><div class="ttdeci">@ LM_TOPOGRAPHIC_POSITION_INDEX</div><div class="ttdef"><b>Definition</b> local_metrics.hpp:362</div></div>
-<div class="ttc" id="anamespacehmap_1_1gpu_html_ab0737b29664736928a86f0755493895fa919b512837145887c412526966767a9f"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa919b512837145887c412526966767a9f">hmap::gpu::LM_LOCAL_MAX</a></div><div class="ttdeci">@ LM_LOCAL_MAX</div><div class="ttdef"><b>Definition</b> local_metrics.hpp:355</div></div>
-<div class="ttc" id="anamespacehmap_1_1gpu_html_ab0737b29664736928a86f0755493895fa9633368152d1a5c7cabbd67607305162"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa9633368152d1a5c7cabbd67607305162">hmap::gpu::LM_LOCAL_VARIANCE</a></div><div class="ttdeci">@ LM_LOCAL_VARIANCE</div><div class="ttdef"><b>Definition</b> local_metrics.hpp:359</div></div>
-<div class="ttc" id="anamespacehmap_1_1gpu_html_ab0737b29664736928a86f0755493895fac1321c034ba09831f5b5a040058f9477"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fac1321c034ba09831f5b5a040058f9477">hmap::gpu::LM_RUGOSITY_CONVEX</a></div><div class="ttdeci">@ LM_RUGOSITY_CONVEX</div><div class="ttdef"><b>Definition</b> local_metrics.hpp:366</div></div>
-<div class="ttc" id="anamespacehmap_1_1gpu_html_ab0737b29664736928a86f0755493895fad5818c578f7164c55a879326e4a88b53"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fad5818c578f7164c55a879326e4a88b53">hmap::gpu::LM_LOCAL_MEAN</a></div><div class="ttdeci">@ LM_LOCAL_MEAN</div><div class="ttdef"><b>Definition</b> local_metrics.hpp:360</div></div>
-<div class="ttc" id="anamespacehmap_1_1gpu_html_ab0737b29664736928a86f0755493895fad839ce8cff6bd20c67432d651776b569"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fad839ce8cff6bd20c67432d651776b569">hmap::gpu::LM_LOCAL_MEDIAN_DEVIATION</a></div><div class="ttdeci">@ LM_LOCAL_MEDIAN_DEVIATION</div><div class="ttdef"><b>Definition</b> local_metrics.hpp:356</div></div>
+<div class="ttc" id="anamespacehmap_1_1gpu_html_ab0737b29664736928a86f0755493895fa3fb8064f9087e5af79c85dce2c655112"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa3fb8064f9087e5af79c85dce2c655112">hmap::gpu::LM_LOCAL_MIN</a></div><div class="ttdeci">@ LM_LOCAL_MIN</div><div class="ttdef"><b>Definition</b> local_metrics.hpp:359</div></div>
+<div class="ttc" id="anamespacehmap_1_1gpu_html_ab0737b29664736928a86f0755493895fa46f15a0ffd71deff0ddbc5599acfff87"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa46f15a0ffd71deff0ddbc5599acfff87">hmap::gpu::LM_RELATIVE_ELEVATION</a></div><div class="ttdeci">@ LM_RELATIVE_ELEVATION</div><div class="ttdef"><b>Definition</b> local_metrics.hpp:366</div></div>
+<div class="ttc" id="anamespacehmap_1_1gpu_html_ab0737b29664736928a86f0755493895fa568c1c82b138902b43e26249e63d8618"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa568c1c82b138902b43e26249e63d8618">hmap::gpu::LM_RUGGEDNESS</a></div><div class="ttdeci">@ LM_RUGGEDNESS</div><div class="ttdef"><b>Definition</b> local_metrics.hpp:367</div></div>
+<div class="ttc" id="anamespacehmap_1_1gpu_html_ab0737b29664736928a86f0755493895fa5a6dccee984676ced1eb1ac2a546761e"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa5a6dccee984676ced1eb1ac2a546761e">hmap::gpu::LM_LOCAL_RELIEF</a></div><div class="ttdeci">@ LM_LOCAL_RELIEF</div><div class="ttdef"><b>Definition</b> local_metrics.hpp:360</div></div>
+<div class="ttc" id="anamespacehmap_1_1gpu_html_ab0737b29664736928a86f0755493895fa6302a2239490ba9a2f3cd152d55e50d7"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa6302a2239490ba9a2f3cd152d55e50d7">hmap::gpu::LM_LOCAL_ASPECT_VARIANCE</a></div><div class="ttdeci">@ LM_LOCAL_ASPECT_VARIANCE</div><div class="ttdef"><b>Definition</b> local_metrics.hpp:356</div></div>
+<div class="ttc" id="anamespacehmap_1_1gpu_html_ab0737b29664736928a86f0755493895fa64d519d05dec2198a42425ce0c402bff"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa64d519d05dec2198a42425ce0c402bff">hmap::gpu::LM_LOCAL_Z_SCORE</a></div><div class="ttdeci">@ LM_LOCAL_Z_SCORE</div><div class="ttdef"><b>Definition</b> local_metrics.hpp:364</div></div>
+<div class="ttc" id="anamespacehmap_1_1gpu_html_ab0737b29664736928a86f0755493895fa892abed7945357817b7504339fdcee14"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa892abed7945357817b7504339fdcee14">hmap::gpu::LM_RUGOSITY_CONCAVE</a></div><div class="ttdeci">@ LM_RUGOSITY_CONCAVE</div><div class="ttdef"><b>Definition</b> local_metrics.hpp:368</div></div>
+<div class="ttc" id="anamespacehmap_1_1gpu_html_ab0737b29664736928a86f0755493895fa8f5a70d0a562337ca689b0ce7ee3fff6"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa8f5a70d0a562337ca689b0ce7ee3fff6">hmap::gpu::LM_TOPOGRAPHIC_POSITION_INDEX</a></div><div class="ttdeci">@ LM_TOPOGRAPHIC_POSITION_INDEX</div><div class="ttdef"><b>Definition</b> local_metrics.hpp:365</div></div>
+<div class="ttc" id="anamespacehmap_1_1gpu_html_ab0737b29664736928a86f0755493895fa919b512837145887c412526966767a9f"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa919b512837145887c412526966767a9f">hmap::gpu::LM_LOCAL_MAX</a></div><div class="ttdeci">@ LM_LOCAL_MAX</div><div class="ttdef"><b>Definition</b> local_metrics.hpp:357</div></div>
+<div class="ttc" id="anamespacehmap_1_1gpu_html_ab0737b29664736928a86f0755493895fa9633368152d1a5c7cabbd67607305162"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa9633368152d1a5c7cabbd67607305162">hmap::gpu::LM_LOCAL_VARIANCE</a></div><div class="ttdeci">@ LM_LOCAL_VARIANCE</div><div class="ttdef"><b>Definition</b> local_metrics.hpp:361</div></div>
+<div class="ttc" id="anamespacehmap_1_1gpu_html_ab0737b29664736928a86f0755493895fac1321c034ba09831f5b5a040058f9477"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fac1321c034ba09831f5b5a040058f9477">hmap::gpu::LM_RUGOSITY_CONVEX</a></div><div class="ttdeci">@ LM_RUGOSITY_CONVEX</div><div class="ttdef"><b>Definition</b> local_metrics.hpp:369</div></div>
+<div class="ttc" id="anamespacehmap_1_1gpu_html_ab0737b29664736928a86f0755493895fad5818c578f7164c55a879326e4a88b53"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fad5818c578f7164c55a879326e4a88b53">hmap::gpu::LM_LOCAL_MEAN</a></div><div class="ttdeci">@ LM_LOCAL_MEAN</div><div class="ttdef"><b>Definition</b> local_metrics.hpp:362</div></div>
+<div class="ttc" id="anamespacehmap_1_1gpu_html_ab0737b29664736928a86f0755493895fad839ce8cff6bd20c67432d651776b569"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fad839ce8cff6bd20c67432d651776b569">hmap::gpu::LM_LOCAL_MEDIAN_DEVIATION</a></div><div class="ttdeci">@ LM_LOCAL_MEDIAN_DEVIATION</div><div class="ttdef"><b>Definition</b> local_metrics.hpp:358</div></div>
+<div class="ttc" id="anamespacehmap_1_1gpu_html_ab0737b29664736928a86f0755493895fafad6a20433412feb877a9e8ebb76633c"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fafad6a20433412feb877a9e8ebb76633c">hmap::gpu::LM_LOCAL_SKEWNESS</a></div><div class="ttdeci">@ LM_LOCAL_SKEWNESS</div><div class="ttdef"><b>Definition</b> local_metrics.hpp:363</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_local_metrics.png" alt=""/>
 </div>
@@ -8853,6 +8859,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">      <a class="code hl_enumvalue" href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa5a6dccee984676ced1eb1ac2a546761e">hmap::gpu::LocalMetrics::LM_LOCAL_RELIEF</a>,</div>
 <div class="line">      <a class="code hl_enumvalue" href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa9633368152d1a5c7cabbd67607305162">hmap::gpu::LocalMetrics::LM_LOCAL_VARIANCE</a>,</div>
 <div class="line">      <a class="code hl_enumvalue" href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fad5818c578f7164c55a879326e4a88b53">hmap::gpu::LocalMetrics::LM_LOCAL_MEAN</a>,</div>
+<div class="line">      <a class="code hl_enumvalue" href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fafad6a20433412feb877a9e8ebb76633c">hmap::gpu::LocalMetrics::LM_LOCAL_SKEWNESS</a>,</div>
 <div class="line">      <a class="code hl_enumvalue" href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa64d519d05dec2198a42425ce0c402bff">hmap::gpu::LocalMetrics::LM_LOCAL_Z_SCORE</a>,</div>
 <div class="line">      <a class="code hl_enumvalue" href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa8f5a70d0a562337ca689b0ce7ee3fff6">hmap::gpu::LocalMetrics::LM_TOPOGRAPHIC_POSITION_INDEX</a>,</div>
 <div class="line">      <a class="code hl_enumvalue" href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa46f15a0ffd71deff0ddbc5599acfff87">hmap::gpu::LocalMetrics::LM_RELATIVE_ELEVATION</a>,</div>
@@ -8970,6 +8977,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">      <a class="code hl_enumvalue" href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa5a6dccee984676ced1eb1ac2a546761e">hmap::gpu::LocalMetrics::LM_LOCAL_RELIEF</a>,</div>
 <div class="line">      <a class="code hl_enumvalue" href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa9633368152d1a5c7cabbd67607305162">hmap::gpu::LocalMetrics::LM_LOCAL_VARIANCE</a>,</div>
 <div class="line">      <a class="code hl_enumvalue" href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fad5818c578f7164c55a879326e4a88b53">hmap::gpu::LocalMetrics::LM_LOCAL_MEAN</a>,</div>
+<div class="line">      <a class="code hl_enumvalue" href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fafad6a20433412feb877a9e8ebb76633c">hmap::gpu::LocalMetrics::LM_LOCAL_SKEWNESS</a>,</div>
 <div class="line">      <a class="code hl_enumvalue" href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa64d519d05dec2198a42425ce0c402bff">hmap::gpu::LocalMetrics::LM_LOCAL_Z_SCORE</a>,</div>
 <div class="line">      <a class="code hl_enumvalue" href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa8f5a70d0a562337ca689b0ce7ee3fff6">hmap::gpu::LocalMetrics::LM_TOPOGRAPHIC_POSITION_INDEX</a>,</div>
 <div class="line">      <a class="code hl_enumvalue" href="namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa46f15a0ffd71deff0ddbc5599acfff87">hmap::gpu::LocalMetrics::LM_RELATIVE_ELEVATION</a>,</div>
@@ -9115,7 +9123,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_local_variance.png&quot;</span>, {z, z1}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_1_1gpu_html_aeca9d8454f50273ca4a4f3db0c25a1b1"><div class="ttname"><a href="namespacehmap_1_1gpu.html#aeca9d8454f50273ca4a4f3db0c25a1b1">hmap::gpu::local_variance</a></div><div class="ttdeci">Array local_variance(const Array &amp;array, int ir)</div><div class="ttdoc">Compute the average local variance of an array.</div><div class="ttdef"><b>Definition</b> local_metrics_gpu.cpp:111</div></div>
+<div class="ttc" id="anamespacehmap_1_1gpu_html_aeca9d8454f50273ca4a4f3db0c25a1b1"><div class="ttname"><a href="namespacehmap_1_1gpu.html#aeca9d8454f50273ca4a4f3db0c25a1b1">hmap::gpu::local_variance</a></div><div class="ttdeci">Array local_variance(const Array &amp;array, int ir)</div><div class="ttdoc">Compute the average local variance of an array.</div><div class="ttdef"><b>Definition</b> local_metrics_gpu.cpp:132</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_local_variance.png" alt=""/>
 </div>
@@ -9149,6 +9157,34 @@ Only available if OpenCL is enabled.</dd></dl>
 </div><div class="memdoc">
 
 <p>See <a class="el" href="namespacehmap.html#ac297b8711e186ee1e5cdc7d1fc6a7972" title="Return the local mean based on a mean filter with a square kernel.">hmap::local_mean</a>. </p>
+
+</div>
+</div>
+<a id="aa40b626be86c63829e7e118fa389d260" name="aa40b626be86c63829e7e118fa389d260"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa40b626be86c63829e7e118fa389d260">&#9670;&#160;</a></span>local_skewness()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classhmap_1_1Array.html">Array</a> hmap::gpu::local_skewness </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>array</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ir</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -9208,7 +9244,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_local_z_score.png&quot;</span>, {z, z1}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_1_1gpu_html_ad6ef648576e9339058037a28ce17d225"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ad6ef648576e9339058037a28ce17d225">hmap::gpu::local_z_score</a></div><div class="ttdeci">Array local_z_score(const Array &amp;array, int ir)</div><div class="ttdoc">Compute the local z-score of an array.</div><div class="ttdef"><b>Definition</b> local_metrics_gpu.cpp:132</div></div>
+<div class="ttc" id="anamespacehmap_1_1gpu_html_ad6ef648576e9339058037a28ce17d225"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ad6ef648576e9339058037a28ce17d225">hmap::gpu::local_z_score</a></div><div class="ttdeci">Array local_z_score(const Array &amp;array, int ir)</div><div class="ttdoc">Compute the local z-score of an array.</div><div class="ttdef"><b>Definition</b> local_metrics_gpu.cpp:153</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_local_z_score.png" alt=""/>
 </div>
@@ -9273,7 +9309,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">                          {z, z1},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_1_1gpu_html_a74594cae7628bcfb1c038ac6930fe97d"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a74594cae7628bcfb1c038ac6930fe97d">hmap::gpu::topographic_position_index</a></div><div class="ttdeci">Array topographic_position_index(const Array &amp;array, int ir)</div><div class="ttdoc">Compute the Topographic Position Index (TPI).</div><div class="ttdef"><b>Definition</b> local_metrics_gpu.cpp:218</div></div>
+<div class="ttc" id="anamespacehmap_1_1gpu_html_a74594cae7628bcfb1c038ac6930fe97d"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a74594cae7628bcfb1c038ac6930fe97d">hmap::gpu::topographic_position_index</a></div><div class="ttdeci">Array topographic_position_index(const Array &amp;array, int ir)</div><div class="ttdoc">Compute the Topographic Position Index (TPI).</div><div class="ttdef"><b>Definition</b> local_metrics_gpu.cpp:239</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_topographic_position_index.png" alt=""/>
 </div>

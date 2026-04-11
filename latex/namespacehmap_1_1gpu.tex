@@ -12,14 +12,15 @@ enum \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895f}{Lo
 \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa5a6dccee984676ced1eb1ac2a546761e}{LM\+\_\+\+LOCAL\+\_\+\+RELIEF}}
 , \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa9633368152d1a5c7cabbd67607305162}{LM\+\_\+\+LOCAL\+\_\+\+VARIANCE}}
 , \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fad5818c578f7164c55a879326e4a88b53}{LM\+\_\+\+LOCAL\+\_\+\+MEAN}}
-, \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa64d519d05dec2198a42425ce0c402bff}{LM\+\_\+\+LOCAL\+\_\+\+Z\+\_\+\+SCORE}}
+, \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fafad6a20433412feb877a9e8ebb76633c}{LM\+\_\+\+LOCAL\+\_\+\+SKEWNESS}}
 , \newline
-\mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa8f5a70d0a562337ca689b0ce7ee3fff6}{LM\+\_\+\+TOPOGRAPHIC\+\_\+\+POSITION\+\_\+\+INDEX}}
+\mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa64d519d05dec2198a42425ce0c402bff}{LM\+\_\+\+LOCAL\+\_\+\+Z\+\_\+\+SCORE}}
+, \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa8f5a70d0a562337ca689b0ce7ee3fff6}{LM\+\_\+\+TOPOGRAPHIC\+\_\+\+POSITION\+\_\+\+INDEX}}
 , \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa46f15a0ffd71deff0ddbc5599acfff87}{LM\+\_\+\+RELATIVE\+\_\+\+ELEVATION}}
 , \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa568c1c82b138902b43e26249e63d8618}{LM\+\_\+\+RUGGEDNESS}}
-, \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa892abed7945357817b7504339fdcee14}{LM\+\_\+\+RUGOSITY\+\_\+\+CONCAVE}}
 , \newline
-\mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fac1321c034ba09831f5b5a040058f9477}{LM\+\_\+\+RUGOSITY\+\_\+\+CONVEX}}
+\mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa892abed7945357817b7504339fdcee14}{LM\+\_\+\+RUGOSITY\+\_\+\+CONCAVE}}
+, \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fac1321c034ba09831f5b5a040058f9477}{LM\+\_\+\+RUGOSITY\+\_\+\+CONVEX}}
  \}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
@@ -263,6 +264,8 @@ void \mbox{\hyperlink{namespacehmap_1_1gpu_ad44fefa43fdf773f241dcf4c46795e80}{in
 \begin{DoxyCompactList}\small\item\em Compute the average local variance of an array. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a72341578d241e21b4c31d7497287cfc3}{local\+\_\+mean}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_ac297b8711e186ee1e5cdc7d1fc6a7972}{hmap\+::local\+\_\+mean}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_aa40b626be86c63829e7e118fa389d260}{local\+\_\+skewness}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
+\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_ad6ef648576e9339058037a28ce17d225}{local\+\_\+z\+\_\+score}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
 \begin{DoxyCompactList}\small\item\em Compute the local z-\/score of an array. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a74594cae7628bcfb1c038ac6930fe97d}{topographic\+\_\+position\+\_\+index}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
@@ -463,6 +466,10 @@ LM\+\_\+\+LOCAL\+\_\+\+VARIANCE&\\
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{LM\_LOCAL\_MEAN@{LM\_LOCAL\_MEAN}!hmap::gpu@{hmap::gpu}}\index{hmap::gpu@{hmap::gpu}!LM\_LOCAL\_MEAN@{LM\_LOCAL\_MEAN}}}\Hypertarget{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fad5818c578f7164c55a879326e4a88b53}\label{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fad5818c578f7164c55a879326e4a88b53} 
 LM\+\_\+\+LOCAL\+\_\+\+MEAN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LM\_LOCAL\_SKEWNESS@{LM\_LOCAL\_SKEWNESS}!hmap::gpu@{hmap::gpu}}\index{hmap::gpu@{hmap::gpu}!LM\_LOCAL\_SKEWNESS@{LM\_LOCAL\_SKEWNESS}}}\Hypertarget{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fafad6a20433412feb877a9e8ebb76633c}\label{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fafad6a20433412feb877a9e8ebb76633c} 
+LM\+\_\+\+LOCAL\+\_\+\+SKEWNESS&\\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{LM\_LOCAL\_Z\_SCORE@{LM\_LOCAL\_Z\_SCORE}!hmap::gpu@{hmap::gpu}}\index{hmap::gpu@{hmap::gpu}!LM\_LOCAL\_Z\_SCORE@{LM\_LOCAL\_Z\_SCORE}}}\Hypertarget{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa64d519d05dec2198a42425ce0c402bff}\label{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa64d519d05dec2198a42425ce0c402bff} 
@@ -3555,6 +3562,7 @@ Compute the average local aspect variance of an array.
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa5a6dccee984676ced1eb1ac2a546761e}{hmap::gpu::LocalMetrics::LM\_LOCAL\_RELIEF}},}
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa9633368152d1a5c7cabbd67607305162}{hmap::gpu::LocalMetrics::LM\_LOCAL\_VARIANCE}},}
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fad5818c578f7164c55a879326e4a88b53}{hmap::gpu::LocalMetrics::LM\_LOCAL\_MEAN}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fafad6a20433412feb877a9e8ebb76633c}{hmap::gpu::LocalMetrics::LM\_LOCAL\_SKEWNESS}},}
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa64d519d05dec2198a42425ce0c402bff}{hmap::gpu::LocalMetrics::LM\_LOCAL\_Z\_SCORE}},}
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa8f5a70d0a562337ca689b0ce7ee3fff6}{hmap::gpu::LocalMetrics::LM\_TOPOGRAPHIC\_POSITION\_INDEX}},}
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa46f15a0ffd71deff0ddbc5599acfff87}{hmap::gpu::LocalMetrics::LM\_RELATIVE\_ELEVATION}},}
@@ -3628,6 +3636,7 @@ For each cell, returns the maximum value within a neighborhood of radius {\ttfam
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa5a6dccee984676ced1eb1ac2a546761e}{hmap::gpu::LocalMetrics::LM\_LOCAL\_RELIEF}},}
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa9633368152d1a5c7cabbd67607305162}{hmap::gpu::LocalMetrics::LM\_LOCAL\_VARIANCE}},}
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fad5818c578f7164c55a879326e4a88b53}{hmap::gpu::LocalMetrics::LM\_LOCAL\_MEAN}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fafad6a20433412feb877a9e8ebb76633c}{hmap::gpu::LocalMetrics::LM\_LOCAL\_SKEWNESS}},}
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa64d519d05dec2198a42425ce0c402bff}{hmap::gpu::LocalMetrics::LM\_LOCAL\_Z\_SCORE}},}
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa8f5a70d0a562337ca689b0ce7ee3fff6}{hmap::gpu::LocalMetrics::LM\_TOPOGRAPHIC\_POSITION\_INDEX}},}
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa46f15a0ffd71deff0ddbc5599acfff87}{hmap::gpu::LocalMetrics::LM\_RELATIVE\_ELEVATION}},}
@@ -3711,6 +3720,7 @@ For each cell, returns the minimum value within a neighborhood of radius {\ttfam
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa5a6dccee984676ced1eb1ac2a546761e}{hmap::gpu::LocalMetrics::LM\_LOCAL\_RELIEF}},}
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa9633368152d1a5c7cabbd67607305162}{hmap::gpu::LocalMetrics::LM\_LOCAL\_VARIANCE}},}
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fad5818c578f7164c55a879326e4a88b53}{hmap::gpu::LocalMetrics::LM\_LOCAL\_MEAN}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fafad6a20433412feb877a9e8ebb76633c}{hmap::gpu::LocalMetrics::LM\_LOCAL\_SKEWNESS}},}
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa64d519d05dec2198a42425ce0c402bff}{hmap::gpu::LocalMetrics::LM\_LOCAL\_Z\_SCORE}},}
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa8f5a70d0a562337ca689b0ce7ee3fff6}{hmap::gpu::LocalMetrics::LM\_TOPOGRAPHIC\_POSITION\_INDEX}},}
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa46f15a0ffd71deff0ddbc5599acfff87}{hmap::gpu::LocalMetrics::LM\_RELATIVE\_ELEVATION}},}
@@ -3840,6 +3850,12 @@ Local variance is defined as the standard deviation within a window of radius {\
 
 
 See \doxylink{namespacehmap_ac297b8711e186ee1e5cdc7d1fc6a7972}{hmap\+::local\+\_\+mean}. 
+
+\Hypertarget{namespacehmap_1_1gpu_aa40b626be86c63829e7e118fa389d260}\label{namespacehmap_1_1gpu_aa40b626be86c63829e7e118fa389d260} 
+\index{hmap::gpu@{hmap::gpu}!local\_skewness@{local\_skewness}}
+\index{local\_skewness@{local\_skewness}!hmap::gpu@{hmap::gpu}}
+\doxysubsubsection{\texorpdfstring{local\_skewness()}{local\_skewness()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::gpu\+::local\+\_\+skewness (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{int}]{ir }\end{DoxyParamCaption})}
 
 \Hypertarget{namespacehmap_1_1gpu_ad6ef648576e9339058037a28ce17d225}\label{namespacehmap_1_1gpu_ad6ef648576e9339058037a28ce17d225} 
 \index{hmap::gpu@{hmap::gpu}!local\_z\_score@{local\_z\_score}}
