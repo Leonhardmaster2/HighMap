@@ -24,6 +24,8 @@ var structhmap_1_1VirtualArray =
     [ "mean", "structhmap_1_1VirtualArray.html#ac67dd8407b579ec8e8dced6cf45faa7e", null ],
     [ "min", "structhmap_1_1VirtualArray.html#a86a3950c3cb912d82c694a752bb20f4c", null ],
     [ "sum", "structhmap_1_1VirtualArray.html#af98faefefaaeb9ffc84bcc5997fbae8e", null ],
+    [ "range", "structhmap_1_1VirtualArray.html#a465cc3d634b2d9ffc492705213a18327", null ],
+    [ "range_percentile", "structhmap_1_1VirtualArray.html#a9dfca3fde2a46f13ce166089f869ed94", null ],
     [ "inverse", "structhmap_1_1VirtualArray.html#a277b4009dc26ec99a6f82157b899d8cd", null ],
     [ "remap", "structhmap_1_1VirtualArray.html#ab040e57e20ecafbe4dbb0a3076560314", null ],
     [ "remap", "structhmap_1_1VirtualArray.html#a98bfd2a46fdaebd580d44ea766c5829f", null ],

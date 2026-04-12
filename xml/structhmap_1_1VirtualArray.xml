@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="149" column="32" bodyfile="HighMap/include/highmap/virtual_array/virtual_array.hpp" bodystart="149" bodyend="-1"/>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="155" column="32" bodyfile="HighMap/include/highmap/virtual_array/virtual_array.hpp" bodystart="155" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhmap_1_1VirtualArray_1a7a4e86a56ad72960bc20dfa97cadb8e3" prot="public" static="no" mutable="no">
         <type>glm::vec4</type>
@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="150" column="32" bodyfile="HighMap/include/highmap/virtual_array/virtual_array.hpp" bodystart="150" bodyend="-1"/>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="156" column="32" bodyfile="HighMap/include/highmap/virtual_array/virtual_array.hpp" bodystart="156" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhmap_1_1VirtualArray_1a2d3721a573d9e21e941148f2e359434b" prot="public" static="no" mutable="no">
         <type>glm::ivec2</type>
@@ -44,7 +44,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="151" column="32" bodyfile="HighMap/include/highmap/virtual_array/virtual_array.hpp" bodystart="151" bodyend="-1"/>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="157" column="32" bodyfile="HighMap/include/highmap/virtual_array/virtual_array.hpp" bodystart="157" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhmap_1_1VirtualArray_1a2b173300623c38c8083654ad095217f2" prot="public" static="no" mutable="no">
         <type>int</type>
@@ -58,7 +58,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="152" column="32" bodyfile="HighMap/include/highmap/virtual_array/virtual_array.hpp" bodystart="152" bodyend="-1"/>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="158" column="32" bodyfile="HighMap/include/highmap/virtual_array/virtual_array.hpp" bodystart="158" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhmap_1_1VirtualArray_1ac46202fbde3f529ab290f38e73b529d6" prot="public" static="no" mutable="no">
         <type>std::unique_ptr&lt; <ref refid="classhmap_1_1TileStorage" kindref="compound">TileStorage</ref> &gt;</type>
@@ -72,7 +72,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="153" column="19" bodyfile="HighMap/include/highmap/virtual_array/virtual_array.hpp" bodystart="153" bodyend="-1"/>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="159" column="19" bodyfile="HighMap/include/highmap/virtual_array/virtual_array.hpp" bodystart="159" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -595,7 +595,56 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="122" column="9" bodyfile="HighMap/src/virtual_array/virtual_array_processing.cpp" bodystart="97" bodyend="126"/>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="122" column="9" bodyfile="HighMap/src/virtual_array/virtual_array_processing.cpp" bodystart="199" bodyend="228"/>
+      </memberdef>
+      <memberdef kind="function" id="structhmap_1_1VirtualArray_1a465cc3d634b2d9ffc492705213a18327" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>glm::vec2</type>
+        <definition>glm::vec2 hmap::VirtualArray::range</definition>
+        <argsstring>(const ComputeMode &amp;cm) const</argsstring>
+        <name>range</name>
+        <qualifiedname>hmap::VirtualArray::range</qualifiedname>
+        <param>
+          <type>const <ref refid="structhmap_1_1ComputeMode" kindref="compound">ComputeMode</ref> &amp;</type>
+          <declname>cm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="124" column="13" bodyfile="HighMap/src/virtual_array/virtual_array_processing.cpp" bodystart="76" bodyend="99"/>
+      </memberdef>
+      <memberdef kind="function" id="structhmap_1_1VirtualArray_1a9dfca3fde2a46f13ce166089f869ed94" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>glm::vec2</type>
+        <definition>glm::vec2 hmap::VirtualArray::range_percentile</definition>
+        <argsstring>(float p_low, float p_high, const ComputeMode &amp;cm, size_t bins=1024) const</argsstring>
+        <name>range_percentile</name>
+        <qualifiedname>hmap::VirtualArray::range_percentile</qualifiedname>
+        <param>
+          <type>float</type>
+          <declname>p_low</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>p_high</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structhmap_1_1ComputeMode" kindref="compound">ComputeMode</ref> &amp;</type>
+          <declname>cm</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>bins</declname>
+          <defval>1024</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="125" column="13" bodyfile="HighMap/src/virtual_array/virtual_array_processing.cpp" bodystart="101" bodyend="176"/>
       </memberdef>
       <memberdef kind="function" id="structhmap_1_1VirtualArray_1a277b4009dc26ec99a6f82157b899d8cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -613,7 +662,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="124" column="8" bodyfile="HighMap/src/virtual_array/virtual_array_processing.cpp" bodystart="17" bodyend="30"/>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="130" column="8" bodyfile="HighMap/src/virtual_array/virtual_array_processing.cpp" bodystart="17" bodyend="30"/>
       </memberdef>
       <memberdef kind="function" id="structhmap_1_1VirtualArray_1ab040e57e20ecafbe4dbb0a3076560314" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -639,7 +688,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="125" column="8" bodyfile="HighMap/src/virtual_array/virtual_array_processing.cpp" bodystart="76" bodyend="82"/>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="131" column="8" bodyfile="HighMap/src/virtual_array/virtual_array_processing.cpp" bodystart="178" bodyend="184"/>
       </memberdef>
       <memberdef kind="function" id="structhmap_1_1VirtualArray_1a98bfd2a46fdaebd580d44ea766c5829f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -673,7 +722,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="126" column="8" bodyfile="HighMap/src/virtual_array/virtual_array_processing.cpp" bodystart="84" bodyend="95"/>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="132" column="8" bodyfile="HighMap/src/virtual_array/virtual_array_processing.cpp" bodystart="186" bodyend="197"/>
       </memberdef>
       <memberdef kind="function" id="structhmap_1_1VirtualArray_1a8d74c7c6a84b8c54985a5fdeb4e805f0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; float &gt;</type>
@@ -691,7 +740,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="132" column="15" bodyfile="HighMap/src/virtual_array/virtual_array_processing.cpp" bodystart="128" bodyend="153"/>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="138" column="15" bodyfile="HighMap/src/virtual_array/virtual_array_processing.cpp" bodystart="230" bodyend="255"/>
       </memberdef>
       <memberdef kind="function" id="structhmap_1_1VirtualArray_1a7112a736d8497a4b65d5056209f04077" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -705,7 +754,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="134" column="8" bodyfile="HighMap/src/virtual_array/virtual_array.cpp" bodystart="328" bodyend="395"/>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="140" column="8" bodyfile="HighMap/src/virtual_array/virtual_array.cpp" bodystart="328" bodyend="395"/>
       </memberdef>
       <memberdef kind="function" id="structhmap_1_1VirtualArray_1ace64d9290dd6116a38ac034f6b72dc91" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>glm::vec2</type>
@@ -723,7 +772,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="137" column="14" bodyfile="HighMap/src/virtual_array/virtual_array.cpp" bodystart="448" bodyend="456"/>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="143" column="14" bodyfile="HighMap/src/virtual_array/virtual_array.cpp" bodystart="448" bodyend="456"/>
       </memberdef>
       <memberdef kind="function" id="structhmap_1_1VirtualArray_1afd55182a2230d4e68cd542f2bef2ad9e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>glm::ivec2</type>
@@ -741,7 +790,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="138" column="14" bodyfile="HighMap/src/virtual_array/virtual_array.cpp" bodystart="458" bodyend="464"/>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="144" column="14" bodyfile="HighMap/src/virtual_array/virtual_array.cpp" bodystart="458" bodyend="464"/>
       </memberdef>
       <memberdef kind="function" id="structhmap_1_1VirtualArray_1a307123a81d2ea77c85ae28612a1c06c2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structhmap_1_1TileRegion" kindref="compound">TileRegion</ref></type>
@@ -763,7 +812,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="139" column="14" bodyfile="HighMap/src/virtual_array/virtual_array.cpp" bodystart="397" bodyend="405"/>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="145" column="14" bodyfile="HighMap/src/virtual_array/virtual_array.cpp" bodystart="397" bodyend="405"/>
       </memberdef>
       <memberdef kind="function" id="structhmap_1_1VirtualArray_1a157b5a589d01cb7da7fd9b9b759f94c6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structhmap_1_1TileRegion" kindref="compound">TileRegion</ref></type>
@@ -785,7 +834,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="140" column="14" bodyfile="HighMap/src/virtual_array/virtual_array.cpp" bodystart="407" bodyend="446"/>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="146" column="14" bodyfile="HighMap/src/virtual_array/virtual_array.cpp" bodystart="407" bodyend="446"/>
       </memberdef>
       <memberdef kind="function" id="structhmap_1_1VirtualArray_1a12c769efc1f74252ff39f2b617f55f33" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>glm::ivec2</type>
@@ -811,7 +860,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="141" column="14" bodyfile="HighMap/src/virtual_array/virtual_array.cpp" bodystart="302" bodyend="317"/>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="147" column="14" bodyfile="HighMap/src/virtual_array/virtual_array.cpp" bodystart="302" bodyend="317"/>
       </memberdef>
       <memberdef kind="function" id="structhmap_1_1VirtualArray_1a9a319d40a7059ab7f41447b0960b772c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -825,7 +874,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="145" column="8" bodyfile="HighMap/src/virtual_array/virtual_array.cpp" bodystart="519" bodyend="522"/>
+        <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="151" column="8" bodyfile="HighMap/src/virtual_array/virtual_array.cpp" bodystart="519" bodyend="522"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -851,7 +900,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="68" column="1" bodyfile="HighMap/include/highmap/virtual_array/virtual_array.hpp" bodystart="69" bodyend="154"/>
+    <location file="HighMap/include/highmap/virtual_array/virtual_array.hpp" line="68" column="1" bodyfile="HighMap/include/highmap/virtual_array/virtual_array.hpp" bodystart="69" bodyend="160"/>
     <listofallmembers>
       <member refid="structhmap_1_1VirtualArray_1a7a4e86a56ad72960bc20dfa97cadb8e3" prot="public" virt="non-virtual"><scope>hmap::VirtualArray</scope><name>bbox</name></member>
       <member refid="structhmap_1_1VirtualArray_1ab62c06317c15b733a4274a11eba5c8e7" prot="public" virt="non-virtual"><scope>hmap::VirtualArray</scope><name>clone</name></member>
@@ -872,6 +921,8 @@
       <member refid="structhmap_1_1VirtualArray_1a95ef87e8953451eb40d8b8e43e09f051" prot="public" virt="non-virtual"><scope>hmap::VirtualArray</scope><name>max</name></member>
       <member refid="structhmap_1_1VirtualArray_1ac67dd8407b579ec8e8dced6cf45faa7e" prot="public" virt="non-virtual"><scope>hmap::VirtualArray</scope><name>mean</name></member>
       <member refid="structhmap_1_1VirtualArray_1a86a3950c3cb912d82c694a752bb20f4c" prot="public" virt="non-virtual"><scope>hmap::VirtualArray</scope><name>min</name></member>
+      <member refid="structhmap_1_1VirtualArray_1a465cc3d634b2d9ffc492705213a18327" prot="public" virt="non-virtual"><scope>hmap::VirtualArray</scope><name>range</name></member>
+      <member refid="structhmap_1_1VirtualArray_1a9dfca3fde2a46f13ce166089f869ed94" prot="public" virt="non-virtual"><scope>hmap::VirtualArray</scope><name>range_percentile</name></member>
       <member refid="structhmap_1_1VirtualArray_1ab040e57e20ecafbe4dbb0a3076560314" prot="public" virt="non-virtual"><scope>hmap::VirtualArray</scope><name>remap</name></member>
       <member refid="structhmap_1_1VirtualArray_1a98bfd2a46fdaebd580d44ea766c5829f" prot="public" virt="non-virtual"><scope>hmap::VirtualArray</scope><name>remap</name></member>
       <member refid="structhmap_1_1VirtualArray_1ab46eee27ffe32137d1c6076e82cc5195" prot="public" virt="non-virtual"><scope>hmap::VirtualArray</scope><name>set</name></member>
