@@ -7270,6 +7270,138 @@ This is an overloaded member function, provided for convenience. It differs from
         </inbodydescription>
         <location file="HighMap/src/filters/filters_gpu.cpp" line="653" column="6" bodyfile="HighMap/src/filters/filters_gpu.cpp" bodystart="653" bodyend="663" declfile="HighMap/include/highmap/filters.hpp" declline="2564" declcolumn="6"/>
       </memberdef>
+      <memberdef kind="function" id="namespacehmap_1_1gpu_1ab4b68e1b48d16193615105656680ced8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
+        <definition>Array hmap::gpu::gradient_angle_circular_smoothing</definition>
+        <argsstring>(const Array &amp;array, int ir, bool downward=false)</argsstring>
+        <name>gradient_angle_circular_smoothing</name>
+        <qualifiedname>hmap::gpu::gradient_angle_circular_smoothing</qualifiedname>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>array</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>ir</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>downward</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>See <ref refid="namespacehmap_1a5d7bb7244ff862834560b9145866e1b2" kindref="member">hmap::gradient_angle_circular_smoothing</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/gradient/gradient_gpu.cpp" line="13" column="7" bodyfile="HighMap/src/gradient/gradient_gpu.cpp" bodystart="13" bodyend="44" declfile="HighMap/include/highmap/gradient.hpp" declline="391" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehmap_1_1gpu_1a1c5e49734e49973fe1b275b6988dba12" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
+        <definition>Array hmap::gpu::gradient_norm</definition>
+        <argsstring>(const Array &amp;array)</argsstring>
+        <name>gradient_norm</name>
+        <qualifiedname>hmap::gpu::gradient_norm</qualifiedname>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>array</declname>
+        </param>
+        <briefdescription>
+<para>See <ref refid="namespacehmap_1a5f58c4149344b401d82f0be3c3807156" kindref="member">hmap::gradient_norm</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/gradient/gradient_gpu.cpp" line="46" column="7" bodyfile="HighMap/src/gradient/gradient_gpu.cpp" bodystart="46" bodyend="64" declfile="HighMap/include/highmap/gradient.hpp" declline="396" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehmap_1_1gpu_1a64d64a2cdc264ab75ace5be6f4bc8972" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
+        <definition>Array hmap::gpu::laplacian_fract</definition>
+        <argsstring>(const Array &amp;array, float s, int ir)</argsstring>
+        <name>laplacian_fract</name>
+        <qualifiedname>hmap::gpu::laplacian_fract</qualifiedname>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>array</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>ir</declname>
+        </param>
+        <briefdescription>
+<para>Compute the fractional Laplacian of an array. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Approximates a non-local Laplacian of order <computeroutput>s</computeroutput> using a neighborhood of radius <computeroutput>ir</computeroutput>. The result is unnormalized.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>array</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input scalar field. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>s</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Fractional order (&gt; 0 and 1 is the standard Laplacian). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ir</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Neighborhood radius.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classhmap_1_1Array" kindref="compound">Array</ref> Fractional Laplacian of <computeroutput>array</computeroutput>.</para>
+</simplesect>
+<bold>Example</bold> <programlisting filename="ex_laplacian.cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1adb8336ed4d83c15500872185dee45d50" kindref="member">hmap::gpu::init_opencl</ref>();</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>glm::ivec2<sp/>shape<sp/>=<sp/>{256,<sp/>256};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>glm::vec2<sp/><sp/>res<sp/>=<sp/>{4.f,<sp/>4.f};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed<sp/>=<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1acb13e7346085793fda4c94c47b75d9a9" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,<sp/>shape,<sp/>res,<sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>d<sp/>=<sp/><ref refid="namespacehmap_1a893bb80f635c4711c075e078cde18cf5" kindref="member">hmap::laplacian</ref>(z);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>same<sp/>as<sp/>standard<sp/>laplacian</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>df0<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1a64d64a2cdc264ab75ace5be6f4bc8972" kindref="member">hmap::gpu::laplacian_fract</ref>(z,<sp/></highlight><highlight class="comment">/*<sp/>s<sp/>*/</highlight><highlight class="normal"><sp/>1.f,<sp/></highlight><highlight class="comment">/*<sp/>ir<sp/>*/</highlight><highlight class="normal"><sp/>1);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/>ir<sp/>=<sp/>8;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>s<sp/>=<sp/>0.2f;<sp/></highlight><highlight class="comment">//<sp/>fractional<sp/>exponent</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>df1<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1a64d64a2cdc264ab75ace5be6f4bc8972" kindref="member">hmap::gpu::laplacian_fract</ref>(z,<sp/>s,<sp/>ir);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_laplacian.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,<sp/>d,<sp/>df0,<sp/>df1},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced" kindref="member">hmap::Cmap::JET</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<para><bold>Result</bold> <image type="html" name="ex_laplacian.png"></image>
+ </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/gradient/gradient_gpu.cpp" line="66" column="7" bodyfile="HighMap/src/gradient/gradient_gpu.cpp" bodystart="66" bodyend="85" declfile="HighMap/include/highmap/gradient.hpp" declline="416" declcolumn="7"/>
+      </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a8a89eb3b3dcbdd39e57abc1770420bf1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void hmap::gpu::phase_averaging</definition>
@@ -7321,7 +7453,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/gradient/phase_field.cpp" line="17" column="6" bodyfile="HighMap/src/gradient/phase_field.cpp" bodystart="17" bodyend="38" declfile="HighMap/include/highmap/gradient.hpp" declline="390" declcolumn="6"/>
+        <location file="HighMap/src/gradient/phase_field.cpp" line="17" column="6" bodyfile="HighMap/src/gradient/phase_field.cpp" bodystart="17" bodyend="38" declfile="HighMap/include/highmap/gradient.hpp" declline="424" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a0eab8e0319f11623e88016ce6cd44d72" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -7536,7 +7668,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/gradient/phase_field.cpp" line="40" column="7" bodyfile="HighMap/src/gradient/phase_field.cpp" bodystart="40" bodyend="105" declfile="HighMap/include/highmap/gradient.hpp" declline="417" declcolumn="7"/>
+        <location file="HighMap/src/gradient/phase_field.cpp" line="40" column="7" bodyfile="HighMap/src/gradient/phase_field.cpp" bodystart="40" bodyend="105" declfile="HighMap/include/highmap/gradient.hpp" declline="451" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a8bacd8632631365c7efdcf842e3b49d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -7739,7 +7871,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/gradient/phase_field.cpp" line="107" column="7" bodyfile="HighMap/src/gradient/phase_field.cpp" bodystart="107" bodyend="138" declfile="HighMap/include/highmap/gradient.hpp" declline="455" declcolumn="7"/>
+        <location file="HighMap/src/gradient/phase_field.cpp" line="107" column="7" bodyfile="HighMap/src/gradient/phase_field.cpp" bodystart="107" bodyend="138" declfile="HighMap/include/highmap/gradient.hpp" declline="489" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1aba356da2f66b4fc2886bd27edc3a15ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -7814,54 +7946,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/gradient/phase_field.cpp" line="140" column="7" bodyfile="HighMap/src/gradient/phase_field.cpp" bodystart="140" bodyend="196" declfile="HighMap/include/highmap/gradient.hpp" declline="469" declcolumn="7"/>
-      </memberdef>
-      <memberdef kind="function" id="namespacehmap_1_1gpu_1ab4b68e1b48d16193615105656680ced8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
-        <definition>Array hmap::gpu::gradient_angle_circular_smoothing</definition>
-        <argsstring>(const Array &amp;array, int ir, bool downward=false)</argsstring>
-        <name>gradient_angle_circular_smoothing</name>
-        <qualifiedname>hmap::gpu::gradient_angle_circular_smoothing</qualifiedname>
-        <param>
-          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
-          <declname>array</declname>
-        </param>
-        <param>
-          <type>int</type>
-          <declname>ir</declname>
-        </param>
-        <param>
-          <type>bool</type>
-          <declname>downward</declname>
-          <defval>false</defval>
-        </param>
-        <briefdescription>
-<para>See <ref refid="namespacehmap_1a5d7bb7244ff862834560b9145866e1b2" kindref="member">hmap::gradient_angle_circular_smoothing</ref>. </para>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="HighMap/src/gradient/gradient_gpu.cpp" line="13" column="7" bodyfile="HighMap/src/gradient/gradient_gpu.cpp" bodystart="13" bodyend="44" declfile="HighMap/include/highmap/gradient.hpp" declline="484" declcolumn="7"/>
-      </memberdef>
-      <memberdef kind="function" id="namespacehmap_1_1gpu_1a1c5e49734e49973fe1b275b6988dba12" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
-        <definition>Array hmap::gpu::gradient_norm</definition>
-        <argsstring>(const Array &amp;array)</argsstring>
-        <name>gradient_norm</name>
-        <qualifiedname>hmap::gpu::gradient_norm</qualifiedname>
-        <param>
-          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
-          <declname>array</declname>
-        </param>
-        <briefdescription>
-<para>See <ref refid="namespacehmap_1a5f58c4149344b401d82f0be3c3807156" kindref="member">hmap::gradient_norm</ref>. </para>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="HighMap/src/gradient/gradient_gpu.cpp" line="46" column="7" bodyfile="HighMap/src/gradient/gradient_gpu.cpp" bodystart="46" bodyend="64" declfile="HighMap/include/highmap/gradient.hpp" declline="489" declcolumn="7"/>
+        <location file="HighMap/src/gradient/phase_field.cpp" line="140" column="7" bodyfile="HighMap/src/gradient/phase_field.cpp" bodystart="140" bodyend="196" declfile="HighMap/include/highmap/gradient.hpp" declline="503" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a1ac328bd9a69f8737550a131d3f9c516" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -9891,7 +9976,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/gpu_opencl/gpu_opencl.cpp" line="24" column="6" bodyfile="HighMap/src/gpu_opencl/gpu_opencl.cpp" bodystart="24" bodyend="116" declfile="HighMap/include/highmap/opencl/gpu_opencl.hpp" declline="27" declcolumn="6"/>
+        <location file="HighMap/src/gpu_opencl/gpu_opencl.cpp" line="24" column="6" bodyfile="HighMap/src/gpu_opencl/gpu_opencl.cpp" bodystart="24" bodyend="117" declfile="HighMap/include/highmap/opencl/gpu_opencl.hpp" declline="27" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a9c1f1f4997a6bc734517c77ace10aa73" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>

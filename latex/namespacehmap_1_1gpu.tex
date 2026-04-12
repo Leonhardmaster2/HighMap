@@ -210,6 +210,12 @@ void \mbox{\hyperlink{namespacehmap_1_1gpu_a37f556d4d43005e2d618f0aa6c3527bb}{sm
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_afa6f07541841c674663141d84ec4d000}{hmap\+::smooth\+\_\+fill\+\_\+smear\+\_\+peaks}. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_1_1gpu_acb80d6cda31177534d6e63c97675d46d}{smooth\+\_\+fill\+\_\+smear\+\_\+peaks}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+mask)
 \begin{DoxyCompactList}\small\item\em This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_ab4b68e1b48d16193615105656680ced8}{gradient\+\_\+angle\+\_\+circular\+\_\+smoothing}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir, bool downward=false)
+\begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a5d7bb7244ff862834560b9145866e1b2}{hmap\+::gradient\+\_\+angle\+\_\+circular\+\_\+smoothing}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a1c5e49734e49973fe1b275b6988dba12}{gradient\+\_\+norm}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array)
+\begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a5f58c4149344b401d82f0be3c3807156}{hmap\+::gradient\+\_\+norm}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a64d64a2cdc264ab75ace5be6f4bc8972}{laplacian\+\_\+fract}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float s, int ir)
+\begin{DoxyCompactList}\small\item\em Compute the fractional Laplacian of an array. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_1_1gpu_a8a89eb3b3dcbdd39e57abc1770420bf1}{phase\+\_\+averaging}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&field\+\_\+real, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&field\+\_\+imag, int ir)
 \begin{DoxyCompactList}\small\item\em Apply phase averaging on real and imaginary fields using a GPU kernel. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a0eab8e0319f11623e88016ce6cd44d72}{phase\+\_\+field}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, const glm\+::vec2 \&kw, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, float kp, bool rotate90=false, int n\+\_\+kernel\+\_\+samples=8, const glm\+::vec2 \&jitter=\{0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, int angle\+\_\+filter\+\_\+ir=8, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+ctrl\+\_\+param=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+modulus=nullptr, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+angle\+\_\+jump\+\_\+mask=nullptr, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
@@ -218,10 +224,6 @@ void \mbox{\hyperlink{namespacehmap_1_1gpu_a8a89eb3b3dcbdd39e57abc1770420bf1}{ph
 \begin{DoxyCompactList}\small\item\em Compute a phase field using a global isotropic kp value. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_aba356da2f66b4fc2886bd27edc3a15ec}{phase\+\_\+field\+\_\+angle}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&\mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}}, const glm\+::vec2 \&kw, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, float kp, int n\+\_\+kernel\+\_\+samples=8, const glm\+::vec2 \&jitter=\{0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, int angle\+\_\+filter\+\_\+ir=8, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+ctrl\+\_\+param=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+modulus=nullptr, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+angle\+\_\+jump\+\_\+mask=nullptr, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
 \item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_ab4b68e1b48d16193615105656680ced8}{gradient\+\_\+angle\+\_\+circular\+\_\+smoothing}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir, bool downward=false)
-\begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a5d7bb7244ff862834560b9145866e1b2}{hmap\+::gradient\+\_\+angle\+\_\+circular\+\_\+smoothing}. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a1c5e49734e49973fe1b275b6988dba12}{gradient\+\_\+norm}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array)
-\begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a5f58c4149344b401d82f0be3c3807156}{hmap\+::gradient\+\_\+norm}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a1ac328bd9a69f8737550a131d3f9c516}{flow\+\_\+accumulation\+\_\+from\+\_\+velocity\+\_\+field}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&u, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&v, int iterations)
 \begin{DoxyCompactList}\small\item\em Approximates flow accumulation from a 2D velocity field. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_af794a4c54c3766ca86b7e4a06346ab91}{flow\+\_\+direction\+\_\+d8}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z)
@@ -3054,7 +3056,84 @@ See \doxylink{namespacehmap_afa6f07541841c674663141d84ec4d000}{hmap\+::smooth\+\
 
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. 
 
-\Hypertarget{namespacehmap_1_1gpu_a8a89eb3b3dcbdd39e57abc1770420bf1}\label{namespacehmap_1_1gpu_a8a89eb3b3dcbdd39e57abc1770420bf1} 
+\Hypertarget{namespacehmap_1_1gpu_ab4b68e1b48d16193615105656680ced8}\label{namespacehmap_1_1gpu_ab4b68e1b48d16193615105656680ced8} 
+\index{hmap::gpu@{hmap::gpu}!gradient\_angle\_circular\_smoothing@{gradient\_angle\_circular\_smoothing}}
+\index{gradient\_angle\_circular\_smoothing@{gradient\_angle\_circular\_smoothing}!hmap::gpu@{hmap::gpu}}
+\doxysubsubsection{\texorpdfstring{gradient\_angle\_circular\_smoothing()}{gradient\_angle\_circular\_smoothing()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::gpu\+::gradient\+\_\+angle\+\_\+circular\+\_\+smoothing (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{int}]{ir,  }\item[{bool}]{downward = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+See \doxylink{namespacehmap_a5d7bb7244ff862834560b9145866e1b2}{hmap\+::gradient\+\_\+angle\+\_\+circular\+\_\+smoothing}. 
+
+\Hypertarget{namespacehmap_1_1gpu_a1c5e49734e49973fe1b275b6988dba12}\label{namespacehmap_1_1gpu_a1c5e49734e49973fe1b275b6988dba12} 
+\index{hmap::gpu@{hmap::gpu}!gradient\_norm@{gradient\_norm}}
+\index{gradient\_norm@{gradient\_norm}!hmap::gpu@{hmap::gpu}}
+\doxysubsubsection{\texorpdfstring{gradient\_norm()}{gradient\_norm()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::gpu\+::gradient\+\_\+norm (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array }\end{DoxyParamCaption})}
+
+
+
+See \doxylink{namespacehmap_a5f58c4149344b401d82f0be3c3807156}{hmap\+::gradient\+\_\+norm}. 
+
+\Hypertarget{namespacehmap_1_1gpu_a64d64a2cdc264ab75ace5be6f4bc8972}\label{namespacehmap_1_1gpu_a64d64a2cdc264ab75ace5be6f4bc8972} 
+\index{hmap::gpu@{hmap::gpu}!laplacian\_fract@{laplacian\_fract}}
+\index{laplacian\_fract@{laplacian\_fract}!hmap::gpu@{hmap::gpu}}
+\doxysubsubsection{\texorpdfstring{laplacian\_fract()}{laplacian\_fract()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::gpu\+::laplacian\+\_\+fract (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{float}]{s,  }\item[{int}]{ir }\end{DoxyParamCaption})}
+
+
+
+Compute the fractional Laplacian of an array. 
+
+Approximates a non-\/local Laplacian of order {\ttfamily s} using a neighborhood of radius {\ttfamily ir}. The result is unnormalized.
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & Input scalar field. \\
+\hline
+{\em s} & Fractional order (\texorpdfstring{$>$}{>} 0 and 1 is the standard Laplacian). \\
+\hline
+{\em ir} & Neighborhood radius.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classhmap_1_1Array}{Array} Fractional Laplacian of {\ttfamily array}.
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_1_1gpu_adb8336ed4d83c15500872185dee45d50}{hmap::gpu::init\_opencl}}();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
+\DoxyCodeLine{\ \ glm::vec2\ \ res\ =\ \{4.f,\ 4.f\};}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 1;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_acb13e7346085793fda4c94c47b75d9a9}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ res,\ seed);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ d\ =\ \mbox{\hyperlink{namespacehmap_a893bb80f635c4711c075e078cde18cf5}{hmap::laplacian}}(z);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ same\ as\ standard\ laplacian}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ df0\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_a64d64a2cdc264ab75ace5be6f4bc8972}{hmap::gpu::laplacian\_fract}}(z,\ \textcolor{comment}{/*\ s\ */}\ 1.f,\ \textcolor{comment}{/*\ ir\ */}\ 1);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ ir\ =\ 8;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ s\ =\ 0.2f;\ \textcolor{comment}{//\ fractional\ exponent}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ df1\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_a64d64a2cdc264ab75ace5be6f4bc8972}{hmap::gpu::laplacian\_fract}}(z,\ s,\ ir);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_laplacian.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ d,\ df0,\ df1\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}}  \Hypertarget{namespacehmap_1_1gpu_a8a89eb3b3dcbdd39e57abc1770420bf1}\label{namespacehmap_1_1gpu_a8a89eb3b3dcbdd39e57abc1770420bf1} 
 \index{hmap::gpu@{hmap::gpu}!phase\_averaging@{phase\_averaging}}
 \index{phase\_averaging@{phase\_averaging}!hmap::gpu@{hmap::gpu}}
 \doxysubsubsection{\texorpdfstring{phase\_averaging()}{phase\_averaging()}}
@@ -3220,26 +3299,6 @@ Computed phase field.
 \index{phase\_field\_angle@{phase\_field\_angle}!hmap::gpu@{hmap::gpu}}
 \doxysubsubsection{\texorpdfstring{phase\_field\_angle()}{phase\_field\_angle()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::gpu\+::phase\+\_\+field\+\_\+angle (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{angle,  }\item[{const glm\+::vec2 \&}]{kw,  }\item[{\mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{seed,  }\item[{float}]{kp,  }\item[{int}]{n\+\_\+kernel\+\_\+samples = {\ttfamily 8},  }\item[{const glm\+::vec2 \&}]{jitter = {\ttfamily \{0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}},  }\item[{int}]{angle\+\_\+filter\+\_\+ir = {\ttfamily 8},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+ctrl\+\_\+param = {\ttfamily nullptr},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+x = {\ttfamily nullptr},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+y = {\ttfamily nullptr},  }\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+modulus = {\ttfamily nullptr},  }\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+angle\+\_\+jump\+\_\+mask = {\ttfamily nullptr},  }\item[{glm\+::vec4}]{bbox = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}} }\end{DoxyParamCaption})}
-
-\Hypertarget{namespacehmap_1_1gpu_ab4b68e1b48d16193615105656680ced8}\label{namespacehmap_1_1gpu_ab4b68e1b48d16193615105656680ced8} 
-\index{hmap::gpu@{hmap::gpu}!gradient\_angle\_circular\_smoothing@{gradient\_angle\_circular\_smoothing}}
-\index{gradient\_angle\_circular\_smoothing@{gradient\_angle\_circular\_smoothing}!hmap::gpu@{hmap::gpu}}
-\doxysubsubsection{\texorpdfstring{gradient\_angle\_circular\_smoothing()}{gradient\_angle\_circular\_smoothing()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::gpu\+::gradient\+\_\+angle\+\_\+circular\+\_\+smoothing (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{int}]{ir,  }\item[{bool}]{downward = {\ttfamily false} }\end{DoxyParamCaption})}
-
-
-
-See \doxylink{namespacehmap_a5d7bb7244ff862834560b9145866e1b2}{hmap\+::gradient\+\_\+angle\+\_\+circular\+\_\+smoothing}. 
-
-\Hypertarget{namespacehmap_1_1gpu_a1c5e49734e49973fe1b275b6988dba12}\label{namespacehmap_1_1gpu_a1c5e49734e49973fe1b275b6988dba12} 
-\index{hmap::gpu@{hmap::gpu}!gradient\_norm@{gradient\_norm}}
-\index{gradient\_norm@{gradient\_norm}!hmap::gpu@{hmap::gpu}}
-\doxysubsubsection{\texorpdfstring{gradient\_norm()}{gradient\_norm()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::gpu\+::gradient\+\_\+norm (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array }\end{DoxyParamCaption})}
-
-
-
-See \doxylink{namespacehmap_a5f58c4149344b401d82f0be3c3807156}{hmap\+::gradient\+\_\+norm}. 
 
 \Hypertarget{namespacehmap_1_1gpu_a1ac328bd9a69f8737550a131d3f9c516}\label{namespacehmap_1_1gpu_a1ac328bd9a69f8737550a131d3f9c516} 
 \index{hmap::gpu@{hmap::gpu}!flow\_accumulation\_from\_velocity\_field@{flow\_accumulation\_from\_velocity\_field}}

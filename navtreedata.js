@@ -93,18 +93,18 @@ var NAVTREEINDEX =
 "downscaling_8hpp.html#a1fb8077215c98a741e0de5366c2f7ca3",
 "filters_8cpp.html#a6a2f30cadb25b5e8b20d73c5447e4c56",
 "flow__accumulation__d8_8cpp.html#af8f580c9d50a07585257569bd1160891",
-"hydrology_8hpp.html#a2e6b6c9b6294508953b6bce5f7daef12",
-"local__metrics_8hpp.html#ab0737b29664736928a86f0755493895fa9633368152d1a5c7cabbd67607305162",
-"namespacehmap.html#a0583ee2dca09a21193cb1e1830ce90bf",
-"namespacehmap.html#a5101273ec456f5267dddc3e22dae223ba8451872c36bde3f6418795fec1ed7228",
-"namespacehmap.html#aa0033ed394620c8749d0f8c48c2c4120",
-"namespacehmap.html#ad6fc7fb24960fa6a45bc657ae2d89f80",
-"namespacehmap_1_1gpu.html#aae30761d88314a8d7198baa199b55f98",
-"point__sampling_8hpp.html#a8fab81f39c6c39958e02bc41deee16ed",
-"range_8hpp.html#acd070bc49683535711ab36b5ec65c434",
-"structhmap_1_1ComputeMode.html#a5a23331035fb8f7e50e22a6e8663ba25",
-"structhmap_1_1Vec4_3_01float_01_4.html#aae8b68d836394b46fecae84c6c4cf325",
-"vector_8cpp.html#ab0755dccfcae2b02a211c091e33f79a9"
+"hydrology_8hpp.html#a2b57b45ea7a8a48b43443aa4d1dddbe8",
+"local__metrics_8hpp.html#ab0737b29664736928a86f0755493895fa8f5a70d0a562337ca689b0ce7ee3fff6",
+"namespacehmap.html#a0520c7ad885d5776f6e06ec12e7f1729",
+"namespacehmap.html#a5101273ec456f5267dddc3e22dae223ba2c10f19f935a5c6dd7fb0ac7bbb2c4ed",
+"namespacehmap.html#a9f49d016a05aa8636bb0ff3c3d30aaf7",
+"namespacehmap.html#ad5e4bfcd7693e9b1a8beb2a10dcf8418",
+"namespacehmap_1_1gpu.html#aaa93c5f0c20e23dfb4d0f67b99489178",
+"point__sampling_8hpp.html#a549a837963a123060e2d7622d313fb57",
+"range_8hpp.html#abc5d54d0d76a86f083db977837c28d69",
+"structhmap_1_1ColorAdjust.html#ae5f67f58235a3892f9d6eb6fba75e40c",
+"structhmap_1_1Vec4_3_01float_01_4.html#a7c8d3b9636e42e627240ddee38bd9019",
+"vector_8cpp.html#a3957ac4ae673f8ad402b5dd71e99b015"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

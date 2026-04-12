@@ -154,87 +154,90 @@ $(document).ready(function(){initNavTree('gradient_8hpp_source.html',''); initRe
 <div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span> </div>
 <div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap.html#a8dbef7ccc1936646831eb5a24db58d81">gradient_y</a>(<span class="keyword">const</span> Array &amp;array, Array &amp;dy); </div>
 <div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span> </div>
-<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>Array <a class="code hl_function" href="namespacehmap.html#a893bb80f635c4711c075e078cde18cf5">laplacian</a>(<span class="keyword">const</span> Array &amp;array);</div>
-<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span> </div>
-<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>Tensor <a class="code hl_function" href="namespacehmap.html#aef53e65fc9b8bc74c342367b0034cfa7">normal_map</a>(<span class="keyword">const</span> Array &amp;array);</div>
-<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span> </div>
-<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>Array <a class="code hl_function" href="namespacehmap.html#a26a0e82cf03ec259e3efae1ea84286db">normal_map_to_heightmap</a>(<span class="keyword">const</span> Tensor &amp;nmap);</div>
-<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span> </div>
-<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span>Array <a class="code hl_function" href="namespacehmap.html#a58b2e7cdca93719d3e1fca73fd68421c">normal_map_to_heightmap_poisson</a>(<span class="keyword">const</span> Tensor &amp;nmap,</div>
-<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>                                      <span class="keywordtype">int</span>           iterations = 500,</div>
-<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>                                      <span class="keywordtype">float</span>         omega = 1.5f);</div>
-<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span> </div>
-<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap.html#a0bcc84aa462aee73e1a3a52729f21ea6">solve_poisson_gauss_seidel</a>(<span class="keyword">const</span> Array &amp;rhs,</div>
-<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>                                Array       &amp;h,</div>
-<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span>                                <span class="keywordtype">int</span>          iterations = 500,</div>
-<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>                                <span class="keywordtype">float</span>        omega = 1.0f);</div>
-<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span> </div>
-<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span>Array <a class="code hl_function" href="namespacehmap.html#a3f8dc201377b61428eba8daa4a03a65f">unwrap_phase</a>(<span class="keyword">const</span> Array &amp;alpha);</div>
-<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span> </div>
-<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span>Array <a class="code hl_function" href="namespacehmap.html#a184b9eed77a8732a8631f8dd73d75a44">talus_jump_mask</a>(<span class="keyword">const</span> Array &amp;z, <span class="keywordtype">float</span> threshold, <span class="keywordtype">float</span> sigma);</div>
-<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span> </div>
-<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span>} <span class="comment">// namespace hmap</span></div>
-<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span> </div>
-<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacehmap_1_1gpu.html">hmap::gpu</a></div>
-<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span>{</div>
-<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span> </div>
-<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#a8a89eb3b3dcbdd39e57abc1770420bf1">phase_averaging</a>(Array &amp;field_real, Array &amp;field_imag, <span class="keywordtype">int</span> ir);</div>
-<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span> </div>
-<div class="line"><a id="l00417" name="l00417"></a><span class="lineno">  417</span>Array <a class="code hl_function" href="namespacehmap_1_1gpu.html#a0eab8e0319f11623e88016ce6cd44d72">phase_field</a>(<span class="keyword">const</span> Array     &amp;array,</div>
-<div class="line"><a id="l00418" name="l00418"></a><span class="lineno">  418</span>                  <span class="keyword">const</span> glm::vec2 &amp;kw,</div>
-<div class="line"><a id="l00419" name="l00419"></a><span class="lineno">  419</span>                  <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>             seed,</div>
-<div class="line"><a id="l00420" name="l00420"></a><span class="lineno">  420</span>                  <span class="keywordtype">float</span>            kp,</div>
-<div class="line"><a id="l00421" name="l00421"></a><span class="lineno">  421</span>                  <span class="keywordtype">bool</span>             rotate90 = <span class="keyword">false</span>,</div>
-<div class="line"><a id="l00422" name="l00422"></a><span class="lineno">  422</span>                  <span class="keywordtype">int</span>              n_kernel_samples = 8,</div>
-<div class="line"><a id="l00423" name="l00423"></a><span class="lineno">  423</span>                  <span class="keyword">const</span> glm::vec2 &amp;jitter = {0.5f, 0.5f},</div>
-<div class="line"><a id="l00424" name="l00424"></a><span class="lineno">  424</span>                  <span class="keywordtype">int</span>              angle_filter_ir = 8,</div>
-<div class="line"><a id="l00425" name="l00425"></a><span class="lineno">  425</span>                  <span class="keyword">const</span> Array     *p_ctrl_param = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l00426" name="l00426"></a><span class="lineno">  426</span>                  <span class="keyword">const</span> Array     *p_noise_x = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l00427" name="l00427"></a><span class="lineno">  427</span>                  <span class="keyword">const</span> Array     *p_noise_y = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l00428" name="l00428"></a><span class="lineno">  428</span>                  Array           *p_modulus = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l00429" name="l00429"></a><span class="lineno">  429</span>                  Array           *p_angle_jump_mask = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l00430" name="l00430"></a><span class="lineno">  430</span>                  glm::vec4        bbox = {0.f, 1.f, 0.f, 1.f});</div>
-<div class="line"><a id="l00431" name="l00431"></a><span class="lineno">  431</span> </div>
-<div class="line"><a id="l00455" name="l00455"></a><span class="lineno">  455</span>Array <a class="code hl_function" href="namespacehmap_1_1gpu.html#a0eab8e0319f11623e88016ce6cd44d72">phase_field</a>(<span class="keyword">const</span> Array     &amp;array,</div>
-<div class="line"><a id="l00456" name="l00456"></a><span class="lineno">  456</span>                  <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>             seed,</div>
-<div class="line"><a id="l00457" name="l00457"></a><span class="lineno">  457</span>                  <span class="keywordtype">float</span>            kp_global,</div>
-<div class="line"><a id="l00458" name="l00458"></a><span class="lineno">  458</span>                  <span class="keywordtype">bool</span>             rotate90 = <span class="keyword">false</span>,</div>
-<div class="line"><a id="l00459" name="l00459"></a><span class="lineno">  459</span>                  <span class="keywordtype">int</span>              n_kernel_samples = 8,</div>
-<div class="line"><a id="l00460" name="l00460"></a><span class="lineno">  460</span>                  <span class="keyword">const</span> glm::vec2 &amp;jitter = {0.5f, 0.5f},</div>
-<div class="line"><a id="l00461" name="l00461"></a><span class="lineno">  461</span>                  <span class="keywordtype">int</span>              angle_filter_ir = 8,</div>
-<div class="line"><a id="l00462" name="l00462"></a><span class="lineno">  462</span>                  <span class="keyword">const</span> Array     *p_ctrl_param = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l00463" name="l00463"></a><span class="lineno">  463</span>                  <span class="keyword">const</span> Array     *p_noise_x = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l00464" name="l00464"></a><span class="lineno">  464</span>                  <span class="keyword">const</span> Array     *p_noise_y = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l00465" name="l00465"></a><span class="lineno">  465</span>                  Array           *p_modulus = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l00466" name="l00466"></a><span class="lineno">  466</span>                  Array           *p_angle_jump_mask = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l00467" name="l00467"></a><span class="lineno">  467</span>                  glm::vec4        bbox = {0.f, 1.f, 0.f, 1.f});</div>
-<div class="line"><a id="l00468" name="l00468"></a><span class="lineno">  468</span> </div>
-<div class="line"><a id="l00469" name="l00469"></a><span class="lineno">  469</span>Array <a class="code hl_function" href="namespacehmap_1_1gpu.html#aba356da2f66b4fc2886bd27edc3a15ec">phase_field_angle</a>(<span class="keyword">const</span> Array     &amp;<a class="code hl_function" href="namespacehmap.html#aac71bb6c14edc17967957f7918acdbdd">angle</a>, <span class="comment">// rads</span></div>
-<div class="line"><a id="l00470" name="l00470"></a><span class="lineno">  470</span>                        <span class="keyword">const</span> glm::vec2 &amp;kw,</div>
-<div class="line"><a id="l00471" name="l00471"></a><span class="lineno">  471</span>                        <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>             seed,</div>
-<div class="line"><a id="l00472" name="l00472"></a><span class="lineno">  472</span>                        <span class="keywordtype">float</span>            kp,</div>
-<div class="line"><a id="l00473" name="l00473"></a><span class="lineno">  473</span>                        <span class="keywordtype">int</span>              n_kernel_samples = 8,</div>
-<div class="line"><a id="l00474" name="l00474"></a><span class="lineno">  474</span>                        <span class="keyword">const</span> glm::vec2 &amp;jitter = {0.5f, 0.5f},</div>
-<div class="line"><a id="l00475" name="l00475"></a><span class="lineno">  475</span>                        <span class="keywordtype">int</span>              angle_filter_ir = 8,</div>
-<div class="line"><a id="l00476" name="l00476"></a><span class="lineno">  476</span>                        <span class="keyword">const</span> Array     *p_ctrl_param = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l00477" name="l00477"></a><span class="lineno">  477</span>                        <span class="keyword">const</span> Array     *p_noise_x = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l00478" name="l00478"></a><span class="lineno">  478</span>                        <span class="keyword">const</span> Array     *p_noise_y = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l00479" name="l00479"></a><span class="lineno">  479</span>                        Array           *p_modulus = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l00480" name="l00480"></a><span class="lineno">  480</span>                        Array           *p_angle_jump_mask = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l00481" name="l00481"></a><span class="lineno">  481</span>                        glm::vec4        bbox = {0.f, 1.f, 0.f, 1.f});</div>
-<div class="line"><a id="l00482" name="l00482"></a><span class="lineno">  482</span> </div>
-<div class="line"><a id="l00484" name="l00484"></a><span class="lineno">  484</span>Array <a class="code hl_function" href="namespacehmap_1_1gpu.html#ab4b68e1b48d16193615105656680ced8">gradient_angle_circular_smoothing</a>(<span class="keyword">const</span> Array &amp;array,</div>
-<div class="line"><a id="l00485" name="l00485"></a><span class="lineno">  485</span>                                        <span class="keywordtype">int</span>          ir,</div>
-<div class="line"><a id="l00486" name="l00486"></a><span class="lineno">  486</span>                                        <span class="keywordtype">bool</span>         downward = <span class="keyword">false</span>);</div>
-<div class="line"><a id="l00487" name="l00487"></a><span class="lineno">  487</span> </div>
-<div class="line"><a id="l00489" name="l00489"></a><span class="lineno">  489</span>Array <a class="code hl_function" href="namespacehmap_1_1gpu.html#a1c5e49734e49973fe1b275b6988dba12">gradient_norm</a>(<span class="keyword">const</span> Array &amp;array);</div>
-<div class="line"><a id="l00490" name="l00490"></a><span class="lineno">  490</span> </div>
-<div class="line"><a id="l00491" name="l00491"></a><span class="lineno">  491</span>} <span class="comment">// namespace hmap::gpu</span></div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>Array <a class="code hl_function" href="namespacehmap.html#a893bb80f635c4711c075e078cde18cf5">laplacian</a>(<span class="keyword">const</span> Array &amp;array);</div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span> </div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>Tensor <a class="code hl_function" href="namespacehmap.html#aef53e65fc9b8bc74c342367b0034cfa7">normal_map</a>(<span class="keyword">const</span> Array &amp;array);</div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span> </div>
+<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>Array <a class="code hl_function" href="namespacehmap.html#a26a0e82cf03ec259e3efae1ea84286db">normal_map_to_heightmap</a>(<span class="keyword">const</span> Tensor &amp;nmap);</div>
+<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span> </div>
+<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>Array <a class="code hl_function" href="namespacehmap.html#a58b2e7cdca93719d3e1fca73fd68421c">normal_map_to_heightmap_poisson</a>(<span class="keyword">const</span> Tensor &amp;nmap,</div>
+<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span>                                      <span class="keywordtype">int</span>           iterations = 500,</div>
+<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span>                                      <span class="keywordtype">float</span>         omega = 1.5f);</div>
+<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span> </div>
+<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap.html#a0bcc84aa462aee73e1a3a52729f21ea6">solve_poisson_gauss_seidel</a>(<span class="keyword">const</span> Array &amp;rhs,</div>
+<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>                                Array       &amp;h,</div>
+<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span>                                <span class="keywordtype">int</span>          iterations = 500,</div>
+<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>                                <span class="keywordtype">float</span>        omega = 1.0f);</div>
+<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span> </div>
+<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span>Array <a class="code hl_function" href="namespacehmap.html#a3f8dc201377b61428eba8daa4a03a65f">unwrap_phase</a>(<span class="keyword">const</span> Array &amp;alpha);</div>
+<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span> </div>
+<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span>Array <a class="code hl_function" href="namespacehmap.html#a184b9eed77a8732a8631f8dd73d75a44">talus_jump_mask</a>(<span class="keyword">const</span> Array &amp;z, <span class="keywordtype">float</span> threshold, <span class="keywordtype">float</span> sigma);</div>
+<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span> </div>
+<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>} <span class="comment">// namespace hmap</span></div>
+<div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span> </div>
+<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacehmap_1_1gpu.html">hmap::gpu</a></div>
+<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span>{</div>
+<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span> </div>
+<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span>Array <a class="code hl_function" href="namespacehmap_1_1gpu.html#ab4b68e1b48d16193615105656680ced8">gradient_angle_circular_smoothing</a>(<span class="keyword">const</span> Array &amp;array,</div>
+<div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span>                                        <span class="keywordtype">int</span>          ir,</div>
+<div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span>                                        <span class="keywordtype">bool</span>         downward = <span class="keyword">false</span>);</div>
+<div class="line"><a id="l00394" name="l00394"></a><span class="lineno">  394</span> </div>
+<div class="line"><a id="l00396" name="l00396"></a><span class="lineno">  396</span>Array <a class="code hl_function" href="namespacehmap_1_1gpu.html#a1c5e49734e49973fe1b275b6988dba12">gradient_norm</a>(<span class="keyword">const</span> Array &amp;array);</div>
+<div class="line"><a id="l00397" name="l00397"></a><span class="lineno">  397</span> </div>
+<div class="line"><a id="l00416" name="l00416"></a><span class="lineno">  416</span>Array <a class="code hl_function" href="namespacehmap_1_1gpu.html#a64d64a2cdc264ab75ace5be6f4bc8972">laplacian_fract</a>(<span class="keyword">const</span> Array &amp;array, <span class="keywordtype">float</span> s, <span class="keywordtype">int</span> ir);</div>
+<div class="line"><a id="l00417" name="l00417"></a><span class="lineno">  417</span> </div>
+<div class="line"><a id="l00424" name="l00424"></a><span class="lineno">  424</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap_1_1gpu.html#a8a89eb3b3dcbdd39e57abc1770420bf1">phase_averaging</a>(Array &amp;field_real, Array &amp;field_imag, <span class="keywordtype">int</span> ir);</div>
+<div class="line"><a id="l00425" name="l00425"></a><span class="lineno">  425</span> </div>
+<div class="line"><a id="l00451" name="l00451"></a><span class="lineno">  451</span>Array <a class="code hl_function" href="namespacehmap_1_1gpu.html#a0eab8e0319f11623e88016ce6cd44d72">phase_field</a>(<span class="keyword">const</span> Array     &amp;array,</div>
+<div class="line"><a id="l00452" name="l00452"></a><span class="lineno">  452</span>                  <span class="keyword">const</span> glm::vec2 &amp;kw,</div>
+<div class="line"><a id="l00453" name="l00453"></a><span class="lineno">  453</span>                  <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>             seed,</div>
+<div class="line"><a id="l00454" name="l00454"></a><span class="lineno">  454</span>                  <span class="keywordtype">float</span>            kp,</div>
+<div class="line"><a id="l00455" name="l00455"></a><span class="lineno">  455</span>                  <span class="keywordtype">bool</span>             rotate90 = <span class="keyword">false</span>,</div>
+<div class="line"><a id="l00456" name="l00456"></a><span class="lineno">  456</span>                  <span class="keywordtype">int</span>              n_kernel_samples = 8,</div>
+<div class="line"><a id="l00457" name="l00457"></a><span class="lineno">  457</span>                  <span class="keyword">const</span> glm::vec2 &amp;jitter = {0.5f, 0.5f},</div>
+<div class="line"><a id="l00458" name="l00458"></a><span class="lineno">  458</span>                  <span class="keywordtype">int</span>              angle_filter_ir = 8,</div>
+<div class="line"><a id="l00459" name="l00459"></a><span class="lineno">  459</span>                  <span class="keyword">const</span> Array     *p_ctrl_param = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l00460" name="l00460"></a><span class="lineno">  460</span>                  <span class="keyword">const</span> Array     *p_noise_x = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l00461" name="l00461"></a><span class="lineno">  461</span>                  <span class="keyword">const</span> Array     *p_noise_y = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l00462" name="l00462"></a><span class="lineno">  462</span>                  Array           *p_modulus = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l00463" name="l00463"></a><span class="lineno">  463</span>                  Array           *p_angle_jump_mask = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l00464" name="l00464"></a><span class="lineno">  464</span>                  glm::vec4        bbox = {0.f, 1.f, 0.f, 1.f});</div>
+<div class="line"><a id="l00465" name="l00465"></a><span class="lineno">  465</span> </div>
+<div class="line"><a id="l00489" name="l00489"></a><span class="lineno">  489</span>Array <a class="code hl_function" href="namespacehmap_1_1gpu.html#a0eab8e0319f11623e88016ce6cd44d72">phase_field</a>(<span class="keyword">const</span> Array     &amp;array,</div>
+<div class="line"><a id="l00490" name="l00490"></a><span class="lineno">  490</span>                  <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>             seed,</div>
+<div class="line"><a id="l00491" name="l00491"></a><span class="lineno">  491</span>                  <span class="keywordtype">float</span>            kp_global,</div>
+<div class="line"><a id="l00492" name="l00492"></a><span class="lineno">  492</span>                  <span class="keywordtype">bool</span>             rotate90 = <span class="keyword">false</span>,</div>
+<div class="line"><a id="l00493" name="l00493"></a><span class="lineno">  493</span>                  <span class="keywordtype">int</span>              n_kernel_samples = 8,</div>
+<div class="line"><a id="l00494" name="l00494"></a><span class="lineno">  494</span>                  <span class="keyword">const</span> glm::vec2 &amp;jitter = {0.5f, 0.5f},</div>
+<div class="line"><a id="l00495" name="l00495"></a><span class="lineno">  495</span>                  <span class="keywordtype">int</span>              angle_filter_ir = 8,</div>
+<div class="line"><a id="l00496" name="l00496"></a><span class="lineno">  496</span>                  <span class="keyword">const</span> Array     *p_ctrl_param = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l00497" name="l00497"></a><span class="lineno">  497</span>                  <span class="keyword">const</span> Array     *p_noise_x = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l00498" name="l00498"></a><span class="lineno">  498</span>                  <span class="keyword">const</span> Array     *p_noise_y = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l00499" name="l00499"></a><span class="lineno">  499</span>                  Array           *p_modulus = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l00500" name="l00500"></a><span class="lineno">  500</span>                  Array           *p_angle_jump_mask = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l00501" name="l00501"></a><span class="lineno">  501</span>                  glm::vec4        bbox = {0.f, 1.f, 0.f, 1.f});</div>
+<div class="line"><a id="l00502" name="l00502"></a><span class="lineno">  502</span> </div>
+<div class="line"><a id="l00503" name="l00503"></a><span class="lineno">  503</span>Array <a class="code hl_function" href="namespacehmap_1_1gpu.html#aba356da2f66b4fc2886bd27edc3a15ec">phase_field_angle</a>(<span class="keyword">const</span> Array     &amp;<a class="code hl_function" href="namespacehmap.html#aac71bb6c14edc17967957f7918acdbdd">angle</a>, <span class="comment">// rads</span></div>
+<div class="line"><a id="l00504" name="l00504"></a><span class="lineno">  504</span>                        <span class="keyword">const</span> glm::vec2 &amp;kw,</div>
+<div class="line"><a id="l00505" name="l00505"></a><span class="lineno">  505</span>                        <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>             seed,</div>
+<div class="line"><a id="l00506" name="l00506"></a><span class="lineno">  506</span>                        <span class="keywordtype">float</span>            kp,</div>
+<div class="line"><a id="l00507" name="l00507"></a><span class="lineno">  507</span>                        <span class="keywordtype">int</span>              n_kernel_samples = 8,</div>
+<div class="line"><a id="l00508" name="l00508"></a><span class="lineno">  508</span>                        <span class="keyword">const</span> glm::vec2 &amp;jitter = {0.5f, 0.5f},</div>
+<div class="line"><a id="l00509" name="l00509"></a><span class="lineno">  509</span>                        <span class="keywordtype">int</span>              angle_filter_ir = 8,</div>
+<div class="line"><a id="l00510" name="l00510"></a><span class="lineno">  510</span>                        <span class="keyword">const</span> Array     *p_ctrl_param = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l00511" name="l00511"></a><span class="lineno">  511</span>                        <span class="keyword">const</span> Array     *p_noise_x = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l00512" name="l00512"></a><span class="lineno">  512</span>                        <span class="keyword">const</span> Array     *p_noise_y = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l00513" name="l00513"></a><span class="lineno">  513</span>                        Array           *p_modulus = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l00514" name="l00514"></a><span class="lineno">  514</span>                        Array           *p_angle_jump_mask = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l00515" name="l00515"></a><span class="lineno">  515</span>                        glm::vec4        bbox = {0.f, 1.f, 0.f, 1.f});</div>
+<div class="line"><a id="l00516" name="l00516"></a><span class="lineno">  516</span> </div>
+<div class="line"><a id="l00517" name="l00517"></a><span class="lineno">  517</span>} <span class="comment">// namespace hmap::gpu</span></div>
 <div class="ttc" id="aarray_8hpp_html"><div class="ttname"><a href="array_8hpp.html">array.hpp</a></div><div class="ttdoc">Declaration of the Array class for 2D floating-point arrays with various mathematical operations and ...</div></div>
 <div class="ttc" id="aarray_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition</b> array.hpp:14</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html"><div class="ttname"><a href="namespacehmap_1_1gpu.html">hmap::gpu</a></div><div class="ttdef"><b>Definition</b> blending.hpp:186</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_a0eab8e0319f11623e88016ce6cd44d72"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a0eab8e0319f11623e88016ce6cd44d72">hmap::gpu::phase_field</a></div><div class="ttdeci">Array phase_field(const Array &amp;array, const glm::vec2 &amp;kw, uint seed, float kp, bool rotate90=false, int n_kernel_samples=8, const glm::vec2 &amp;jitter={0.5f, 0.5f}, int angle_filter_ir=8, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, Array *p_modulus=nullptr, Array *p_angle_jump_mask=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Compute a phase field from an input array using local orientation and noise.</div><div class="ttdef"><b>Definition</b> phase_field.cpp:40</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_a1c5e49734e49973fe1b275b6988dba12"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a1c5e49734e49973fe1b275b6988dba12">hmap::gpu::gradient_norm</a></div><div class="ttdeci">Array gradient_norm(const Array &amp;array)</div><div class="ttdoc">See hmap::gradient_norm.</div><div class="ttdef"><b>Definition</b> gradient_gpu.cpp:46</div></div>
+<div class="ttc" id="anamespacehmap_1_1gpu_html_a64d64a2cdc264ab75ace5be6f4bc8972"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a64d64a2cdc264ab75ace5be6f4bc8972">hmap::gpu::laplacian_fract</a></div><div class="ttdeci">Array laplacian_fract(const Array &amp;array, float s, int ir)</div><div class="ttdoc">Compute the fractional Laplacian of an array.</div><div class="ttdef"><b>Definition</b> gradient_gpu.cpp:66</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_a8a89eb3b3dcbdd39e57abc1770420bf1"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a8a89eb3b3dcbdd39e57abc1770420bf1">hmap::gpu::phase_averaging</a></div><div class="ttdeci">void phase_averaging(Array &amp;field_real, Array &amp;field_imag, int ir)</div><div class="ttdoc">Apply phase averaging on real and imaginary fields using a GPU kernel.</div><div class="ttdef"><b>Definition</b> phase_field.cpp:17</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_ab4b68e1b48d16193615105656680ced8"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ab4b68e1b48d16193615105656680ced8">hmap::gpu::gradient_angle_circular_smoothing</a></div><div class="ttdeci">Array gradient_angle_circular_smoothing(const Array &amp;array, int ir, bool downward=false)</div><div class="ttdoc">See hmap::gradient_angle_circular_smoothing.</div><div class="ttdef"><b>Definition</b> gradient_gpu.cpp:13</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_aba356da2f66b4fc2886bd27edc3a15ec"><div class="ttname"><a href="namespacehmap_1_1gpu.html#aba356da2f66b4fc2886bd27edc3a15ec">hmap::gpu::phase_field_angle</a></div><div class="ttdeci">Array phase_field_angle(const Array &amp;angle, const glm::vec2 &amp;kw, uint seed, float kp, int n_kernel_samples=8, const glm::vec2 &amp;jitter={0.5f, 0.5f}, int angle_filter_ir=8, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, Array *p_modulus=nullptr, Array *p_angle_jump_mask=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdef"><b>Definition</b> phase_field.cpp:140</div></div>

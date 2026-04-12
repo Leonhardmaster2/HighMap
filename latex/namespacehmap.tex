@@ -16960,9 +16960,42 @@ The Laplacian is a measure of the second-\/order spatial derivative of the input
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-\doxylink{classhmap_1_1Array}{Array} Laplacian of the input array. 
+\doxylink{classhmap_1_1Array}{Array} Laplacian of the input array.
 \end{DoxyReturn}
-\Hypertarget{namespacehmap_aef53e65fc9b8bc74c342367b0034cfa7}\label{namespacehmap_aef53e65fc9b8bc74c342367b0034cfa7} 
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_1_1gpu_adb8336ed4d83c15500872185dee45d50}{hmap::gpu::init\_opencl}}();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
+\DoxyCodeLine{\ \ glm::vec2\ \ res\ =\ \{4.f,\ 4.f\};}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 1;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_acb13e7346085793fda4c94c47b75d9a9}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ res,\ seed);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ d\ =\ \mbox{\hyperlink{namespacehmap_a893bb80f635c4711c075e078cde18cf5}{hmap::laplacian}}(z);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ same\ as\ standard\ laplacian}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ df0\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_a64d64a2cdc264ab75ace5be6f4bc8972}{hmap::gpu::laplacian\_fract}}(z,\ \textcolor{comment}{/*\ s\ */}\ 1.f,\ \textcolor{comment}{/*\ ir\ */}\ 1);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ ir\ =\ 8;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ s\ =\ 0.2f;\ \textcolor{comment}{//\ fractional\ exponent}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ df1\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_a64d64a2cdc264ab75ace5be6f4bc8972}{hmap::gpu::laplacian\_fract}}(z,\ s,\ ir);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_laplacian.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ d,\ df0,\ df1\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}}  \Hypertarget{namespacehmap_aef53e65fc9b8bc74c342367b0034cfa7}\label{namespacehmap_aef53e65fc9b8bc74c342367b0034cfa7} 
 \index{hmap@{hmap}!normal\_map@{normal\_map}}
 \index{normal\_map@{normal\_map}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{normal\_map()}{normal\_map()}}
