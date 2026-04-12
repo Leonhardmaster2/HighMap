@@ -73,6 +73,108 @@ float VirtualArray::min(const ComputeMode &cm) const
   return *std::min_element(min_per_tile.begin(), min_per_tile.end());
 }
 
+glm::vec2 VirtualArray::range(const ComputeMode &cm) const
+{
+  glm::ivec2 nt = this->get_max_tiles();
+
+  if (nt.x * nt.y == 0) return glm::vec2(0.f, 0.f);
+
+  std::vector<float> max_per_tile(nt.x * nt.y);
+  std::vector<float> min_per_tile(nt.x * nt.y);
+
+  auto lambda = [&max_per_tile, &min_per_tile, nt](const Array      &tile,
+                                                   const TileRegion &region)
+  {
+    int tile_idx = region.key.ty * nt.x + region.key.tx;
+    max_per_tile[tile_idx] = tile.max();
+    min_per_tile[tile_idx] = tile.min();
+  };
+
+  for_each_tile(*this, lambda, cm);
+
+  float gmin = *std::min_element(min_per_tile.begin(), min_per_tile.end());
+  float gmax = *std::max_element(max_per_tile.begin(), max_per_tile.end());
+
+  return glm::vec2(gmin, gmax);
+}
+
+glm::vec2 VirtualArray::range_percentile(float              p_low,
+                                         float              p_high,
+                                         const ComputeMode &cm,
+                                         size_t             bins) const
+{
+  glm::ivec2 nt = this->get_max_tiles();
+
+  if (nt.x * nt.y == 0) return glm::vec2(0.f, 0.f);
+
+  // global range
+  glm::vec2 range = this->range(cm);
+
+  if (range.x == range.y) return range;
+
+  // global and per-tile histograms
+  std::vector<size_t>              global_hist(bins, 0);
+  std::vector<std::vector<size_t>> hist_per_tile(nt.x * nt.y,
+                                                 std::vector<size_t>(bins, 0));
+
+  auto lambda = [&](const Array &tile, const TileRegion &region)
+  {
+    int   tile_idx = region.key.ty * nt.x + region.key.tx;
+    auto &hist = hist_per_tile[tile_idx];
+
+    // sum over the inner cells only to avoid double count
+    const glm::ivec4 &h = region.halo;
+
+    for (int j = h.z; j < region.shape.y - h.w; ++j)
+      for (int i = h.x; i < region.shape.x - h.y; ++i)
+      {
+        float v = tile(i, j);
+
+        size_t idx = std::min<size_t>(
+            bins - 1,
+            size_t((v - range.x) / (range.y - range.x) * bins));
+        hist[idx]++;
+      }
+  };
+
+  for_each_tile(*this, lambda, cm);
+
+  // reduce
+  for (const auto &hist : hist_per_tile)
+  {
+    for (size_t i = 0; i < bins; ++i)
+      global_hist[i] += hist[i];
+  }
+
+  // percentile extraction
+  size_t total = 0;
+  for (size_t v : global_hist)
+    total += v;
+
+  size_t low_target = size_t(p_low * total);
+  size_t high_target = size_t(p_high * total);
+
+  size_t acc = 0;
+  float  low = range.x;
+  float  high = range.y;
+
+  for (size_t i = 0; i < bins; ++i)
+  {
+    acc += global_hist[i];
+
+    if (acc >= low_target && low == range.x)
+      low = range.x + (range.y - range.x) * (float(i) / bins);
+
+    if (acc >= high_target)
+    {
+      high = range.x + (range.y - range.x) * (float(i) / bins);
+      break;
+    }
+  }
+
+  return {low, high};
+}
+
 void VirtualArray::remap(float vmin, float vmax, const ComputeMode &cm)
 {
   float global_min = this->min(cm);

@@ -33,14 +33,14 @@ int main()
   // const auto storage_mode = hmap::StorageMode::VA_DISK_LRU_MIN;
   // const auto storage_mode = hmap::StorageMode::VA_DISK_SEQUENTIAL;
 
-  // const auto foreach_mode = hmap::ForEachMode::VA_DISTRIBUTED;
+  const auto foreach_mode = hmap::ForEachMode::VA_DISTRIBUTED;
   // const auto foreach_mode = hmap::ForEachMode::VA_SEQUENTIAL;
-  const auto foreach_mode = hmap::ForEachMode::VA_SINGLE_ARRAY;
+  // const auto foreach_mode = hmap::ForEachMode::VA_SINGLE_ARRAY;
   // const auto foreach_mode = hmap::ForEachMode::VA_SINGLE_ARRAY_DOWNSCALED;
 
-  const hmap::ComputeMode compute_mode{.mode = foreach_mode,
-                                       .trim_storage = true,
-                                       .stride = 1};
+  const hmap::ComputeMode cm{.mode = foreach_mode,
+                             .trim_storage = true,
+                             .stride = 1};
 
   // ===========================================================================
   // Virtual arrays
@@ -77,9 +77,9 @@ int main()
   const auto smooth = [](hmap::Array &tile, const hmap::TileRegion &)
   { hmap::smooth_cpulse(tile, 64); };
 
-  hmap::for_each_tile(varray, generate_noise, compute_mode);
-  hmap::for_each_tile(varray, apply_gamma, compute_mode);
-  // hmap::for_each_tile(varray, smooth, compute_mode);
+  hmap::for_each_tile(varray, generate_noise, cm);
+  hmap::for_each_tile(varray, apply_gamma, cm);
+  // hmap::for_each_tile(varray, smooth, cm);
 
   // specific
   {
@@ -115,7 +115,7 @@ int main()
 
   varray.trim_storage();
 
-  hmap::for_each_tile({&varray, &varray_binary}, binarize_copy, compute_mode);
+  hmap::for_each_tile({&varray, &varray_binary}, binarize_copy, cm);
 
   varray_binary.to_array(cm_local).to_png("out_binary.png", hmap::Cmap::JET);
 
@@ -124,7 +124,7 @@ int main()
   // ===========================================================================
 
   varray.smooth_overlap_buffers();
-  varray.remap(0.f, 1.f, compute_mode);
+  varray.remap(0.f, 1.f, cm);
 
   // ===========================================================================
   // Tests
@@ -133,8 +133,8 @@ int main()
   // --- Determinism
 
   {
-    auto a0 = varray.to_array(compute_mode);
-    auto a1 = varray.to_array(compute_mode);
+    auto a0 = varray.to_array(cm);
+    auto a1 = varray.to_array(cm);
 
     float max_diff = 0.f;
     for (int j = 0; j < a0.shape.y; ++j)
@@ -147,17 +147,34 @@ int main()
   // --- Range invariant
 
   {
-    float min_v = varray.min(compute_mode);
-    float max_v = varray.max(compute_mode);
+    float min_v = varray.min(cm);
+    float max_v = varray.max(cm);
 
     EXPECT(min_v >= 0.f, "min >= 0 after remap");
     EXPECT(max_v <= 1.f, "max <= 1 after remap");
+
+    glm::vec2 range = varray.range(cm);
+
+    EXPECT(min_v == range.x, "min_v == range.x");
+    EXPECT(max_v == range.y, "max_v == range.y");
+  }
+
+  {
+    float low_p = 0.05f;
+    float high_p = 0.95f;
+
+    glm::vec2 range_p = varray.range_percentile(low_p, high_p, cm);
+    glm::vec2 range_p_ref = varray.to_array_dbg().range_percentile(low_p,
+                                                                   high_p);
+
+    EXPECT(range_p.x == range_p_ref.x, "range_p.x == range_p_ref.x");
+    EXPECT(range_p.y == range_p_ref.y, "range_p.y == range_p_ref.y");
   }
 
   // --- Binary validity
 
   {
-    auto values = varray_binary.unique_values(compute_mode);
+    auto values = varray_binary.unique_values(cm);
 
     bool ok = true;
     for (float v : values)
@@ -169,7 +186,7 @@ int main()
   // --- Reduction consistency
 
   {
-    auto arr = varray.to_array(compute_mode);
+    auto arr = varray.to_array(cm);
 
     double sum = 0.0;
     for (int j = 0; j < arr.shape.y; ++j)
@@ -177,7 +194,7 @@ int main()
         sum += arr(i, j);
 
     double mean_ref = sum / (arr.shape.x * arr.shape.y);
-    double mean_va = varray.mean(compute_mode);
+    double mean_va = varray.mean(cm);
 
     EXPECT(std::abs(mean_ref - mean_va) < 1e-6f, "mean == sum / N");
   }
@@ -191,9 +208,9 @@ int main()
                                       0);
 
     hmap::VirtualArray v(shape, bbox, tile_shape, halo, storage_mode);
-    v.from_array(src, compute_mode);
+    v.from_array(src, cm);
 
-    auto dst = v.to_array(compute_mode);
+    auto dst = v.to_array(cm);
 
     float max_diff = 0.f;
     for (int j = 0; j < shape.y; ++j)
@@ -223,17 +240,17 @@ int main()
 
     hmap::VirtualArray v_small(shape, bbox, small_tile, big_halo, storage_mode);
 
-    hmap::for_each_tile(v_small, generate_noise, compute_mode);
+    hmap::for_each_tile(v_small, generate_noise, cm);
     v_small.smooth_overlap_buffers();
-    v_small.remap(0.f, 1.f, compute_mode);
+    v_small.remap(0.f, 1.f, cm);
 
-    float min_v = v_small.min(compute_mode);
-    float max_v = v_small.max(compute_mode);
+    float min_v = v_small.min(cm);
+    float max_v = v_small.max(cm);
 
     EXPECT(min_v >= 0.f, "small tile min >= 0");
     EXPECT(max_v <= 1.f, "small tile max <= 1");
 
-    auto arr = v_small.to_array(compute_mode);
+    auto arr = v_small.to_array(cm);
     EXPECT(arr.shape == shape, "small tile shape preserved");
   }
 
