@@ -63,4 +63,25 @@ Array gradient_norm(const Array &array)
   return dm;
 }
 
+Array laplacian_fract(const Array &array, float s, int ir)
+{
+  Array out(array.shape);
+
+  auto run = clwrapper::Run("laplacian_fract");
+
+  run.bind_imagef("array",
+                  const_cast<std::vector<float> &>(array.vector),
+                  array.shape.x,
+                  array.shape.y);
+  run.bind_imagef("out", out.vector, array.shape.x, array.shape.y, true);
+
+  run.bind_arguments(array.shape.x, array.shape.y, ir, s);
+
+  run.execute({array.shape.x, array.shape.y});
+
+  run.read_imagef("out");
+
+  return out;
+}
+
 } // namespace hmap::gpu

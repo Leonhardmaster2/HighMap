@@ -51,6 +51,7 @@ bool init_opencl()
 #include "kernels/interpolate_array.cl"
 #include "kernels/jump_flooding.cl"
 #include "kernels/laplace.cl"
+#include "kernels/laplacian_fract.cl"
 #include "kernels/local_max.cl"
 #include "kernels/local_mean.cl"
 #include "kernels/local_min.cl"

@@ -1,0 +1,2 @@
+add_executable(ex_laplacian ex_laplacian.cpp)
+target_link_libraries(ex_laplacian highmap)

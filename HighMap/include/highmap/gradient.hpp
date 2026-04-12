@@ -281,6 +281,12 @@ void gradient_y(const Array &array, Array &dy); ///< @overload
  *
  * @param  array Input 2D array.
  * @return       Array Laplacian of the input array.
+ *
+ *  **Example**
+ * @include ex_laplacian.cpp
+ *
+ * **Result**
+ * @image html ex_laplacian.png
  */
 Array laplacian(const Array &array);
 
@@ -381,6 +387,34 @@ Array talus_jump_mask(const Array &z, float threshold, float sigma);
 namespace hmap::gpu
 {
 
+/*! @brief See hmap::gradient_angle_circular_smoothing */
+Array gradient_angle_circular_smoothing(const Array &array,
+                                        int          ir,
+                                        bool         downward = false);
+
+/*! @brief See hmap::gradient_norm */
+Array gradient_norm(const Array &array);
+
+/**
+ * @brief Compute the fractional Laplacian of an array.
+ *
+ * Approximates a non-local Laplacian of order @p s using a neighborhood of
+ * radius @p ir. The result is unnormalized.
+ *
+ * @param  array Input scalar field.
+ * @param  s     Fractional order (> 0 and 1 is the standard Laplacian).
+ * @param  ir    Neighborhood radius.
+ *
+ * @return       Array Fractional Laplacian of @p array.
+ *
+ *  **Example**
+ * @include ex_laplacian.cpp
+ *
+ * **Result**
+ * @image html ex_laplacian.png
+ */
+Array laplacian_fract(const Array &array, float s, int ir);
+
 /**
  * @brief Apply phase averaging on real and imaginary fields using a GPU kernel.
  * @param field_real Real component (input/output).
@@ -479,13 +513,5 @@ Array phase_field_angle(const Array     &angle, // rads
                         Array           *p_modulus = nullptr,
                         Array           *p_angle_jump_mask = nullptr,
                         glm::vec4        bbox = {0.f, 1.f, 0.f, 1.f});
-
-/*! @brief See hmap::gradient_angle_circular_smoothing */
-Array gradient_angle_circular_smoothing(const Array &array,
-                                        int          ir,
-                                        bool         downward = false);
-
-/*! @brief See hmap::gradient_norm */
-Array gradient_norm(const Array &array);
 
 } // namespace hmap::gpu
