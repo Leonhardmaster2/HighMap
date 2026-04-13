@@ -61,7 +61,7 @@
 <codeline lineno="50"><highlight class="normal"></highlight></codeline>
 <codeline lineno="51"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ir_curvature)<sp/><ref refid="namespacehmap_1_1gpu_1a7d2aae253f1f67bbdbc718859f83ef0a" kindref="member">gpu::smooth_cpulse</ref>(cm,<sp/>ir_curvature);</highlight></codeline>
 <codeline lineno="52"><highlight class="normal"></highlight></codeline>
-<codeline lineno="53"><highlight class="normal"><sp/><sp/>cm<sp/>=<sp/>gradient_scaling_factor<sp/>*<sp/><ref refid="namespacehmap_1a0f5685e5bb02e29d1d35720d3aaedca0" kindref="member">curvature_mean</ref>(cm);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/>cm<sp/>=<sp/>-gradient_scaling_factor<sp/>*<sp/><ref refid="namespacehmap_1a0f5685e5bb02e29d1d35720d3aaedca0" kindref="member">curvature_mean</ref>(cm);</highlight></codeline>
 <codeline lineno="54"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ae6dfd87b0368629657c3138dbf24cbc4" kindref="member">clamp</ref>(cm,<sp/>curvature_clamping,<sp/>curvature_clamp_mode);</highlight></codeline>
 <codeline lineno="55"><highlight class="normal"></highlight></codeline>
 <codeline lineno="56"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>curvature_weight<sp/>*<sp/>cm<sp/>+<sp/>gradient_weight<sp/>*<sp/><ref refid="namespacehmap_1_1gpu_1a1c5e49734e49973fe1b275b6988dba12" kindref="member">gradient_norm</ref>;</highlight></codeline>

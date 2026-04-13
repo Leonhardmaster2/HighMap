@@ -3,6 +3,23 @@
 \doxysubsubsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
+enum \mbox{\hyperlink{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58a}{Curvature\+Type}} \+: int \{ \newline
+\mbox{\hyperlink{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58aa68f8a79ccb8ee9000eae0ea700458d71}{CT\+\_\+\+MIN}}
+, \mbox{\hyperlink{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58aa642862e76969eea0e48a01fd9b36eeb1}{CT\+\_\+\+MAX}}
+, \mbox{\hyperlink{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58aa1a0ccd36ceadb253d9533f43607fb51e}{CT\+\_\+\+MEAN}}
+, \mbox{\hyperlink{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58aa6ae4a644325f12269bb472f7c6bd5565}{CT\+\_\+\+GAUSSIAN}}
+, \newline
+\mbox{\hyperlink{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58aa42a289bf38ef91fd76ccc51a163b1121}{CT\+\_\+\+PROFILE}}
+, \mbox{\hyperlink{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58aa441ba7373615df9edc84cbd350e27b7a}{CT\+\_\+\+CONTOUR}}
+, \mbox{\hyperlink{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58aa148187350841c04891fe0ce0ede1fa72}{CT\+\_\+\+TANGENTIAL}}
+, \mbox{\hyperlink{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58aae306289963bccdb35e7574aa8526f30c}{CT\+\_\+\+ACCUMULATION}}
+, \newline
+\mbox{\hyperlink{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58aa5b8b792f9e687e79291be57d3eb1b743}{CT\+\_\+\+SHAPE\+\_\+\+INDEX}}
+, \mbox{\hyperlink{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58aa371106902d705df544716caf4bcd5aac}{CT\+\_\+\+UNSPHERICITY}}
+, \mbox{\hyperlink{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58aa0109d44c6788566539fc98d6171c539f}{CT\+\_\+\+RING}}
+, \mbox{\hyperlink{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58aa446181c68f323dfdec2f9690d99f19cf}{CT\+\_\+\+ROTOR}}
+ \}
+\begin{DoxyCompactList}\small\item\em Types of curvature measures. \end{DoxyCompactList}\item 
 enum \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895f}{Local\+Metrics}} \+: int \{ \newline
 \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa6302a2239490ba9a2f3cd152d55e50d7}{LM\+\_\+\+LOCAL\+\_\+\+ASPECT\+\_\+\+VARIANCE}}
 , \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa919b512837145887c412526966767a9f}{LM\+\_\+\+LOCAL\+\_\+\+MAX}}
@@ -32,28 +49,10 @@ enum \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895f}{Lo
 \begin{DoxyCompactList}\small\item\em Blends two arrays using Poisson blending with a brute-\/force solver. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_acff6d6d559781cdeba565ed795bb81d8}{transfer}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&source, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&target, int ir, float amplitude, bool target\+\_\+prefiltering=false)
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a6786fe2ccf9bd2ceb294927c88bd898d}{hmap\+::transfer}. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_ad73cfd73fcd2e2744e8eb912eaf6f3bf}{accumulation\+\_\+curvature}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int ir)
-\begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a4bc3d501e53aebe8e15428798656a3e4}{hmap\+::accumulation\+\_\+curvature}. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_afd24580b2b5fe7107bbff0ae2d3a1473}{curvature\+\_\+horizontal\+\_\+cross\+\_\+sectional}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int ir)
-\begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_adfe8eddd79327602ea551c79524e0a21}{hmap\+::curvature\+\_\+horizontal\+\_\+cross\+\_\+sectional}. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a60a4aaece2c081b0a76e50404022934f}{curvature\+\_\+horizontal\+\_\+plan}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int ir)
-\begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a1bf0dae54c5b8bd4e0aeb738c26644fc}{hmap\+::curvature\+\_\+horizontal\+\_\+plan}. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a73a9ccd515e8907c142e001da179856b}{curvature\+\_\+horizontal\+\_\+tangential}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int ir)
-\begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a6c28c3adca1bc50a9e769e3bacaf777b}{hmap\+::curvature\+\_\+horizontal\+\_\+tangential}. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a8cc1e9e21a72aab7e29c563817df89b6}{curvature\+\_\+ring}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int ir)
-\begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_ac60627713d4f7ff0c406182ac9941483}{hmap\+::curvature\+\_\+ring}. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a664f80c07e3609c285c98ed5f8bb2be3}{curvature\+\_\+rotor}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int ir)
-\begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_ab983266e7db85af59452a75364a6bad8}{hmap\+::curvature\+\_\+rotor}. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_aec95543aaf6a305eb2f7b85cd3dd54d3}{curvature\+\_\+vertical\+\_\+longitudinal}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int ir)
-\begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_ab2de0fa5e51719f4139d0fc0309a9f7f}{hmap\+::curvature\+\_\+vertical\+\_\+longitudinal}. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_ad1529cdd1f7e79e385e138f1005c7e74}{curvature\+\_\+vertical\+\_\+profile}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int ir)
-\begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_ac56ceece101a652bd52592149e031a41}{hmap\+::curvature\+\_\+vertical\+\_\+profile}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a014adf3ca419eb53ec5ddc6ce6d4f621}{curvature\+\_\+quadric}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int ir, \mbox{\hyperlink{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58a}{Curvature\+Type}} curvature\+\_\+type)
+\begin{DoxyCompactList}\small\item\em Compute curvature measures on a scalar field. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a125118b55d309727ff0b46d686fd3829}{level\+\_\+set\+\_\+curvature}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int prefilter\+\_\+ir)
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_aa1f2e119a09d246fe0cf27e859ddb2e6}{hmap\+::level\+\_\+set\+\_\+curvature}. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a5bec8dfa40b4c176d348698d9074a7e7}{shape\+\_\+index}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int ir)
-\begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a4e9ebf2cab88b81e28538a5432abf68c}{hmap\+::shape\+\_\+index}. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a112db22b157fcb69d867e1e5ee3a1afd}{unsphericity}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int ir)
-\begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a5dc8b3117305f025eb4d0da50bf3c674}{hmap\+::unsphericity}. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_1_1gpu_a8497e2fce595293ea07e68eac1e5bce2}{deposition\+\_\+fill\+\_\+holes}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int deposition\+\_\+ir, float deposition\+\_\+strength, int iterations=1)
 \begin{DoxyCompactList}\small\item\em Fill holes using Gaussian-\/based deposition. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_1_1gpu_ae084938139cca4f7c15866ceabe18ab7}{hydraulic\+\_\+particle}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int nparticles, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+bedrock=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+moisture\+\_\+map=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+elevation\+\_\+shift=nullptr, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+erosion\+\_\+map=nullptr, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+deposition\+\_\+map=nullptr, float c\+\_\+capacity=10.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float c\+\_\+erosion=0.\+05\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float c\+\_\+deposition=0.\+05\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float c\+\_\+inertia=0.\+1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float c\+\_\+gravity=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float drag\+\_\+rate=0.\+001\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float evap\+\_\+rate=0.\+001\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, bool enable\+\_\+directional\+\_\+bias=false, float angle\+\_\+bias=30.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
@@ -435,6 +434,66 @@ void \mbox{\hyperlink{namespacehmap_1_1gpu_a27b70c333fc5550bcca1b96dcb0116fb}{he
 
 
 \doxysubsection{Enumeration Type Documentation}
+\Hypertarget{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58a}\label{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58a} 
+\index{hmap::gpu@{hmap::gpu}!CurvatureType@{CurvatureType}}
+\index{CurvatureType@{CurvatureType}!hmap::gpu@{hmap::gpu}}
+\doxysubsubsection{\texorpdfstring{CurvatureType}{CurvatureType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58a}{hmap\+::gpu\+::\+Curvature\+Type}} \+: int}
+
+
+
+Types of curvature measures. 
+
+Defines the different curvature descriptors that can be computed on a scalar field (e.\+g. heightmap). They include classical differential curvatures as well as terrain-\/analysis specific measures. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CT\_MIN@{CT\_MIN}!hmap::gpu@{hmap::gpu}}\index{hmap::gpu@{hmap::gpu}!CT\_MIN@{CT\_MIN}}}\Hypertarget{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58aa68f8a79ccb8ee9000eae0ea700458d71}\label{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58aa68f8a79ccb8ee9000eae0ea700458d71} 
+CT\+\_\+\+MIN&Minimum curvature (principal) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CT\_MAX@{CT\_MAX}!hmap::gpu@{hmap::gpu}}\index{hmap::gpu@{hmap::gpu}!CT\_MAX@{CT\_MAX}}}\Hypertarget{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58aa642862e76969eea0e48a01fd9b36eeb1}\label{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58aa642862e76969eea0e48a01fd9b36eeb1} 
+CT\+\_\+\+MAX&Maximum curvature (principal) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CT\_MEAN@{CT\_MEAN}!hmap::gpu@{hmap::gpu}}\index{hmap::gpu@{hmap::gpu}!CT\_MEAN@{CT\_MEAN}}}\Hypertarget{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58aa1a0ccd36ceadb253d9533f43607fb51e}\label{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58aa1a0ccd36ceadb253d9533f43607fb51e} 
+CT\+\_\+\+MEAN&Mean curvature. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CT\_GAUSSIAN@{CT\_GAUSSIAN}!hmap::gpu@{hmap::gpu}}\index{hmap::gpu@{hmap::gpu}!CT\_GAUSSIAN@{CT\_GAUSSIAN}}}\Hypertarget{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58aa6ae4a644325f12269bb472f7c6bd5565}\label{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58aa6ae4a644325f12269bb472f7c6bd5565} 
+CT\+\_\+\+GAUSSIAN&Gaussian curvature. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CT\_PROFILE@{CT\_PROFILE}!hmap::gpu@{hmap::gpu}}\index{hmap::gpu@{hmap::gpu}!CT\_PROFILE@{CT\_PROFILE}}}\Hypertarget{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58aa42a289bf38ef91fd76ccc51a163b1121}\label{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58aa42a289bf38ef91fd76ccc51a163b1121} 
+CT\+\_\+\+PROFILE&Profile curvature (along slope direction) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CT\_CONTOUR@{CT\_CONTOUR}!hmap::gpu@{hmap::gpu}}\index{hmap::gpu@{hmap::gpu}!CT\_CONTOUR@{CT\_CONTOUR}}}\Hypertarget{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58aa441ba7373615df9edc84cbd350e27b7a}\label{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58aa441ba7373615df9edc84cbd350e27b7a} 
+CT\+\_\+\+CONTOUR&Contour curvature (across slope) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CT\_TANGENTIAL@{CT\_TANGENTIAL}!hmap::gpu@{hmap::gpu}}\index{hmap::gpu@{hmap::gpu}!CT\_TANGENTIAL@{CT\_TANGENTIAL}}}\Hypertarget{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58aa148187350841c04891fe0ce0ede1fa72}\label{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58aa148187350841c04891fe0ce0ede1fa72} 
+CT\+\_\+\+TANGENTIAL&Tangential curvature. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CT\_ACCUMULATION@{CT\_ACCUMULATION}!hmap::gpu@{hmap::gpu}}\index{hmap::gpu@{hmap::gpu}!CT\_ACCUMULATION@{CT\_ACCUMULATION}}}\Hypertarget{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58aae306289963bccdb35e7574aa8526f30c}\label{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58aae306289963bccdb35e7574aa8526f30c} 
+CT\+\_\+\+ACCUMULATION&Accumulation curvature (H² − K²) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CT\_SHAPE\_INDEX@{CT\_SHAPE\_INDEX}!hmap::gpu@{hmap::gpu}}\index{hmap::gpu@{hmap::gpu}!CT\_SHAPE\_INDEX@{CT\_SHAPE\_INDEX}}}\Hypertarget{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58aa5b8b792f9e687e79291be57d3eb1b743}\label{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58aa5b8b792f9e687e79291be57d3eb1b743} 
+CT\+\_\+\+SHAPE\+\_\+\+INDEX&Shape index (normalized curvature classification) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CT\_UNSPHERICITY@{CT\_UNSPHERICITY}!hmap::gpu@{hmap::gpu}}\index{hmap::gpu@{hmap::gpu}!CT\_UNSPHERICITY@{CT\_UNSPHERICITY}}}\Hypertarget{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58aa371106902d705df544716caf4bcd5aac}\label{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58aa371106902d705df544716caf4bcd5aac} 
+CT\+\_\+\+UNSPHERICITY&Unsphericity (√(H² − K)) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CT\_RING@{CT\_RING}!hmap::gpu@{hmap::gpu}}\index{hmap::gpu@{hmap::gpu}!CT\_RING@{CT\_RING}}}\Hypertarget{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58aa0109d44c6788566539fc98d6171c539f}\label{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58aa0109d44c6788566539fc98d6171c539f} 
+CT\+\_\+\+RING&Ring curvature (planform torsion-\/like measure) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CT\_ROTOR@{CT\_ROTOR}!hmap::gpu@{hmap::gpu}}\index{hmap::gpu@{hmap::gpu}!CT\_ROTOR@{CT\_ROTOR}}}\Hypertarget{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58aa446181c68f323dfdec2f9690d99f19cf}\label{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58aa446181c68f323dfdec2f9690d99f19cf} 
+CT\+\_\+\+ROTOR&Rotor curvature (rotational component) \\
+\hline
+
+\end{DoxyEnumFields}
 \Hypertarget{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895f}\label{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895f} 
 \index{hmap::gpu@{hmap::gpu}!LocalMetrics@{LocalMetrics}}
 \index{LocalMetrics@{LocalMetrics}!hmap::gpu@{hmap::gpu}}
@@ -581,87 +640,80 @@ The blended array resulting from the Poisson blending operation.
 
 See \doxylink{namespacehmap_a6786fe2ccf9bd2ceb294927c88bd898d}{hmap\+::transfer}. 
 
-\Hypertarget{namespacehmap_1_1gpu_ad73cfd73fcd2e2744e8eb912eaf6f3bf}\label{namespacehmap_1_1gpu_ad73cfd73fcd2e2744e8eb912eaf6f3bf} 
-\index{hmap::gpu@{hmap::gpu}!accumulation\_curvature@{accumulation\_curvature}}
-\index{accumulation\_curvature@{accumulation\_curvature}!hmap::gpu@{hmap::gpu}}
-\doxysubsubsection{\texorpdfstring{accumulation\_curvature()}{accumulation\_curvature()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::gpu\+::accumulation\+\_\+curvature (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{int}]{ir }\end{DoxyParamCaption})}
+\Hypertarget{namespacehmap_1_1gpu_a014adf3ca419eb53ec5ddc6ce6d4f621}\label{namespacehmap_1_1gpu_a014adf3ca419eb53ec5ddc6ce6d4f621} 
+\index{hmap::gpu@{hmap::gpu}!curvature\_quadric@{curvature\_quadric}}
+\index{curvature\_quadric@{curvature\_quadric}!hmap::gpu@{hmap::gpu}}
+\doxysubsubsection{\texorpdfstring{curvature\_quadric()}{curvature\_quadric()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::gpu\+::curvature\+\_\+quadric (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{int}]{ir,  }\item[{\mbox{\hyperlink{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58a}{Curvature\+Type}}}]{curvature\+\_\+type }\end{DoxyParamCaption})}
 
 
 
-See \doxylink{namespacehmap_a4bc3d501e53aebe8e15428798656a3e4}{hmap\+::accumulation\+\_\+curvature}. 
+Compute curvature measures on a scalar field. 
 
-\Hypertarget{namespacehmap_1_1gpu_afd24580b2b5fe7107bbff0ae2d3a1473}\label{namespacehmap_1_1gpu_afd24580b2b5fe7107bbff0ae2d3a1473} 
-\index{hmap::gpu@{hmap::gpu}!curvature\_horizontal\_cross\_sectional@{curvature\_horizontal\_cross\_sectional}}
-\index{curvature\_horizontal\_cross\_sectional@{curvature\_horizontal\_cross\_sectional}!hmap::gpu@{hmap::gpu}}
-\doxysubsubsection{\texorpdfstring{curvature\_horizontal\_cross\_sectional()}{curvature\_horizontal\_cross\_sectional()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::gpu\+::curvature\+\_\+horizontal\+\_\+cross\+\_\+sectional (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{int}]{ir }\end{DoxyParamCaption})}
+Computes various curvature descriptors from the input array {\ttfamily z}. If {\ttfamily ir} == 0, local derivatives (3×3 stencil) are used. Otherwise, a quadric surface is fitted over a (2·ir+1) window.
 
 
+\begin{DoxyParams}{Parameters}
+{\em z} & Input scalar field (e.\+g. heightmap) \\
+\hline
+{\em ir} & Neighborhood radius (0 for local, \texorpdfstring{$>$}{>}0 for quadric fit) \\
+\hline
+{\em curvature\+\_\+type} & Type of curvature to compute.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classhmap_1_1Array}{Array} of same size containing the selected curvature
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_1_1gpu_adb8336ed4d83c15500872185dee45d50}{hmap::gpu::init\_opencl}}();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
+\DoxyCodeLine{\ \ glm::vec2\ \ res\ =\ \{4.f,\ 4.f\};}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 1;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_acb13e7346085793fda4c94c47b75d9a9}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ res,\ seed);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ ir\ =\ 16;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ std::vector<hmap::Array>\ arrays\ =\ \{z\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ std::vector<hmap::gpu::CurvatureType>\ types\ =\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58aa68f8a79ccb8ee9000eae0ea700458d71}{hmap::gpu::CurvatureType::CT\_MIN}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58aa642862e76969eea0e48a01fd9b36eeb1}{hmap::gpu::CurvatureType::CT\_MAX}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58aa1a0ccd36ceadb253d9533f43607fb51e}{hmap::gpu::CurvatureType::CT\_MEAN}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58aa6ae4a644325f12269bb472f7c6bd5565}{hmap::gpu::CurvatureType::CT\_GAUSSIAN}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58aa42a289bf38ef91fd76ccc51a163b1121}{hmap::gpu::CurvatureType::CT\_PROFILE}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58aa441ba7373615df9edc84cbd350e27b7a}{hmap::gpu::CurvatureType::CT\_CONTOUR}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58aa148187350841c04891fe0ce0ede1fa72}{hmap::gpu::CurvatureType::CT\_TANGENTIAL}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58aae306289963bccdb35e7574aa8526f30c}{hmap::gpu::CurvatureType::CT\_ACCUMULATION}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58aa5b8b792f9e687e79291be57d3eb1b743}{hmap::gpu::CurvatureType::CT\_SHAPE\_INDEX}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58aa371106902d705df544716caf4bcd5aac}{hmap::gpu::CurvatureType::CT\_UNSPHERICITY}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58aa0109d44c6788566539fc98d6171c539f}{hmap::gpu::CurvatureType::CT\_RING}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ad1578ae400b339233a85d2dab1f1b58aa446181c68f323dfdec2f9690d99f19cf}{hmap::gpu::CurvatureType::CT\_ROTOR}},}
+\DoxyCodeLine{\ \ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ type\ :\ types)}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ out\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_a014adf3ca419eb53ec5ddc6ce6d4f621}{hmap::gpu::curvature\_quadric}}(z,\ ir,\ type);}
+\DoxyCodeLine{\ \ \ \ arrays.push\_back(out);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_curvature\_quadric.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ arrays,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{false},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
+\DoxyCodeLine{\}}
 
-See \doxylink{namespacehmap_adfe8eddd79327602ea551c79524e0a21}{hmap\+::curvature\+\_\+horizontal\+\_\+cross\+\_\+sectional}. 
-
-\Hypertarget{namespacehmap_1_1gpu_a60a4aaece2c081b0a76e50404022934f}\label{namespacehmap_1_1gpu_a60a4aaece2c081b0a76e50404022934f} 
-\index{hmap::gpu@{hmap::gpu}!curvature\_horizontal\_plan@{curvature\_horizontal\_plan}}
-\index{curvature\_horizontal\_plan@{curvature\_horizontal\_plan}!hmap::gpu@{hmap::gpu}}
-\doxysubsubsection{\texorpdfstring{curvature\_horizontal\_plan()}{curvature\_horizontal\_plan()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::gpu\+::curvature\+\_\+horizontal\+\_\+plan (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{int}]{ir }\end{DoxyParamCaption})}
+\end{DoxyCodeInclude}
 
 
-
-See \doxylink{namespacehmap_a1bf0dae54c5b8bd4e0aeb738c26644fc}{hmap\+::curvature\+\_\+horizontal\+\_\+plan}. 
-
-\Hypertarget{namespacehmap_1_1gpu_a73a9ccd515e8907c142e001da179856b}\label{namespacehmap_1_1gpu_a73a9ccd515e8907c142e001da179856b} 
-\index{hmap::gpu@{hmap::gpu}!curvature\_horizontal\_tangential@{curvature\_horizontal\_tangential}}
-\index{curvature\_horizontal\_tangential@{curvature\_horizontal\_tangential}!hmap::gpu@{hmap::gpu}}
-\doxysubsubsection{\texorpdfstring{curvature\_horizontal\_tangential()}{curvature\_horizontal\_tangential()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::gpu\+::curvature\+\_\+horizontal\+\_\+tangential (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{int}]{ir }\end{DoxyParamCaption})}
-
-
-
-See \doxylink{namespacehmap_a6c28c3adca1bc50a9e769e3bacaf777b}{hmap\+::curvature\+\_\+horizontal\+\_\+tangential}. 
-
-\Hypertarget{namespacehmap_1_1gpu_a8cc1e9e21a72aab7e29c563817df89b6}\label{namespacehmap_1_1gpu_a8cc1e9e21a72aab7e29c563817df89b6} 
-\index{hmap::gpu@{hmap::gpu}!curvature\_ring@{curvature\_ring}}
-\index{curvature\_ring@{curvature\_ring}!hmap::gpu@{hmap::gpu}}
-\doxysubsubsection{\texorpdfstring{curvature\_ring()}{curvature\_ring()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::gpu\+::curvature\+\_\+ring (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{int}]{ir }\end{DoxyParamCaption})}
-
-
-
-See \doxylink{namespacehmap_ac60627713d4f7ff0c406182ac9941483}{hmap\+::curvature\+\_\+ring}. 
-
-\Hypertarget{namespacehmap_1_1gpu_a664f80c07e3609c285c98ed5f8bb2be3}\label{namespacehmap_1_1gpu_a664f80c07e3609c285c98ed5f8bb2be3} 
-\index{hmap::gpu@{hmap::gpu}!curvature\_rotor@{curvature\_rotor}}
-\index{curvature\_rotor@{curvature\_rotor}!hmap::gpu@{hmap::gpu}}
-\doxysubsubsection{\texorpdfstring{curvature\_rotor()}{curvature\_rotor()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::gpu\+::curvature\+\_\+rotor (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{int}]{ir }\end{DoxyParamCaption})}
-
-
-
-See \doxylink{namespacehmap_ab983266e7db85af59452a75364a6bad8}{hmap\+::curvature\+\_\+rotor}. 
-
-\Hypertarget{namespacehmap_1_1gpu_aec95543aaf6a305eb2f7b85cd3dd54d3}\label{namespacehmap_1_1gpu_aec95543aaf6a305eb2f7b85cd3dd54d3} 
-\index{hmap::gpu@{hmap::gpu}!curvature\_vertical\_longitudinal@{curvature\_vertical\_longitudinal}}
-\index{curvature\_vertical\_longitudinal@{curvature\_vertical\_longitudinal}!hmap::gpu@{hmap::gpu}}
-\doxysubsubsection{\texorpdfstring{curvature\_vertical\_longitudinal()}{curvature\_vertical\_longitudinal()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::gpu\+::curvature\+\_\+vertical\+\_\+longitudinal (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{int}]{ir }\end{DoxyParamCaption})}
-
-
-
-See \doxylink{namespacehmap_ab2de0fa5e51719f4139d0fc0309a9f7f}{hmap\+::curvature\+\_\+vertical\+\_\+longitudinal}. 
-
-\Hypertarget{namespacehmap_1_1gpu_ad1529cdd1f7e79e385e138f1005c7e74}\label{namespacehmap_1_1gpu_ad1529cdd1f7e79e385e138f1005c7e74} 
-\index{hmap::gpu@{hmap::gpu}!curvature\_vertical\_profile@{curvature\_vertical\_profile}}
-\index{curvature\_vertical\_profile@{curvature\_vertical\_profile}!hmap::gpu@{hmap::gpu}}
-\doxysubsubsection{\texorpdfstring{curvature\_vertical\_profile()}{curvature\_vertical\_profile()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::gpu\+::curvature\+\_\+vertical\+\_\+profile (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{int}]{ir }\end{DoxyParamCaption})}
-
-
-
-See \doxylink{namespacehmap_ac56ceece101a652bd52592149e031a41}{hmap\+::curvature\+\_\+vertical\+\_\+profile}. 
-
-\Hypertarget{namespacehmap_1_1gpu_a125118b55d309727ff0b46d686fd3829}\label{namespacehmap_1_1gpu_a125118b55d309727ff0b46d686fd3829} 
+{\bfseries{Result}}  \Hypertarget{namespacehmap_1_1gpu_a125118b55d309727ff0b46d686fd3829}\label{namespacehmap_1_1gpu_a125118b55d309727ff0b46d686fd3829} 
 \index{hmap::gpu@{hmap::gpu}!level\_set\_curvature@{level\_set\_curvature}}
 \index{level\_set\_curvature@{level\_set\_curvature}!hmap::gpu@{hmap::gpu}}
 \doxysubsubsection{\texorpdfstring{level\_set\_curvature()}{level\_set\_curvature()}}
@@ -670,26 +722,6 @@ See \doxylink{namespacehmap_ac56ceece101a652bd52592149e031a41}{hmap\+::curvature
 
 
 See \doxylink{namespacehmap_aa1f2e119a09d246fe0cf27e859ddb2e6}{hmap\+::level\+\_\+set\+\_\+curvature}. 
-
-\Hypertarget{namespacehmap_1_1gpu_a5bec8dfa40b4c176d348698d9074a7e7}\label{namespacehmap_1_1gpu_a5bec8dfa40b4c176d348698d9074a7e7} 
-\index{hmap::gpu@{hmap::gpu}!shape\_index@{shape\_index}}
-\index{shape\_index@{shape\_index}!hmap::gpu@{hmap::gpu}}
-\doxysubsubsection{\texorpdfstring{shape\_index()}{shape\_index()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::gpu\+::shape\+\_\+index (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{int}]{ir }\end{DoxyParamCaption})}
-
-
-
-See \doxylink{namespacehmap_a4e9ebf2cab88b81e28538a5432abf68c}{hmap\+::shape\+\_\+index}. 
-
-\Hypertarget{namespacehmap_1_1gpu_a112db22b157fcb69d867e1e5ee3a1afd}\label{namespacehmap_1_1gpu_a112db22b157fcb69d867e1e5ee3a1afd} 
-\index{hmap::gpu@{hmap::gpu}!unsphericity@{unsphericity}}
-\index{unsphericity@{unsphericity}!hmap::gpu@{hmap::gpu}}
-\doxysubsubsection{\texorpdfstring{unsphericity()}{unsphericity()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::gpu\+::unsphericity (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{int}]{ir }\end{DoxyParamCaption})}
-
-
-
-See \doxylink{namespacehmap_a5dc8b3117305f025eb4d0da50bf3c674}{hmap\+::unsphericity}. 
 
 \Hypertarget{namespacehmap_1_1gpu_a8497e2fce595293ea07e68eac1e5bce2}\label{namespacehmap_1_1gpu_a8497e2fce595293ea07e68eac1e5bce2} 
 \index{hmap::gpu@{hmap::gpu}!deposition\_fill\_holes@{deposition\_fill\_holes}}

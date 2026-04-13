@@ -1344,19 +1344,8 @@
     <member refid="namespacehmap_1a6108df0909730083cb6dd7cf4a217c1b" kind="function"><name>convolve2d_truncated</name></member>
     <member refid="namespacehmap_1a15951dcd1ef3999591c757944f894e15" kind="function"><name>convolve2d_svd</name></member>
     <member refid="namespacehmap_1addbc812a7b7523f4e0f185fb27016469" kind="function"><name>convolve2d_svd_rotated_kernel</name></member>
-    <member refid="namespacehmap_1a4bc3d501e53aebe8e15428798656a3e4" kind="function"><name>accumulation_curvature</name></member>
-    <member refid="namespacehmap_1acad6026e6aab9d084238c6c12cb2c565" kind="function"><name>curvature_gaussian</name></member>
-    <member refid="namespacehmap_1adfe8eddd79327602ea551c79524e0a21" kind="function"><name>curvature_horizontal_cross_sectional</name></member>
-    <member refid="namespacehmap_1a1bf0dae54c5b8bd4e0aeb738c26644fc" kind="function"><name>curvature_horizontal_plan</name></member>
-    <member refid="namespacehmap_1a6c28c3adca1bc50a9e769e3bacaf777b" kind="function"><name>curvature_horizontal_tangential</name></member>
     <member refid="namespacehmap_1a0f5685e5bb02e29d1d35720d3aaedca0" kind="function"><name>curvature_mean</name></member>
-    <member refid="namespacehmap_1ac60627713d4f7ff0c406182ac9941483" kind="function"><name>curvature_ring</name></member>
-    <member refid="namespacehmap_1ab983266e7db85af59452a75364a6bad8" kind="function"><name>curvature_rotor</name></member>
-    <member refid="namespacehmap_1ab2de0fa5e51719f4139d0fc0309a9f7f" kind="function"><name>curvature_vertical_longitudinal</name></member>
-    <member refid="namespacehmap_1ac56ceece101a652bd52592149e031a41" kind="function"><name>curvature_vertical_profile</name></member>
-    <member refid="namespacehmap_1a4e9ebf2cab88b81e28538a5432abf68c" kind="function"><name>shape_index</name></member>
     <member refid="namespacehmap_1aa1f2e119a09d246fe0cf27e859ddb2e6" kind="function"><name>level_set_curvature</name></member>
-    <member refid="namespacehmap_1a5dc8b3117305f025eb4d0da50bf3c674" kind="function"><name>unsphericity</name></member>
     <member refid="namespacehmap_1ad8bed5d4ec0f54adc017527fa134f455" kind="function"><name>compute_curvature_gradients</name></member>
     <member refid="namespacehmap_1a4a1660bb65728209b9d07f6ce4486584" kind="function"><name>compute_curvature_h</name></member>
     <member refid="namespacehmap_1af54b122203d5eee61b9b6d6c7979ddfe" kind="function"><name>compute_curvature_k</name></member>
@@ -1970,6 +1959,19 @@
     <member refid="namespacehmap_1aa7538088dbfe576e77ccbe14e9a6c9d7" kind="function"><name>cmp_queue</name></member>
   </compound>
   <compound refid="namespacehmap_1_1gpu" kind="namespace"><name>hmap::gpu</name>
+    <member refid="namespacehmap_1_1gpu_1ad1578ae400b339233a85d2dab1f1b58a" kind="enum"><name>CurvatureType</name></member>
+    <member refid="namespacehmap_1_1gpu_1ad1578ae400b339233a85d2dab1f1b58aa68f8a79ccb8ee9000eae0ea700458d71" kind="enumvalue"><name>CT_MIN</name></member>
+    <member refid="namespacehmap_1_1gpu_1ad1578ae400b339233a85d2dab1f1b58aa642862e76969eea0e48a01fd9b36eeb1" kind="enumvalue"><name>CT_MAX</name></member>
+    <member refid="namespacehmap_1_1gpu_1ad1578ae400b339233a85d2dab1f1b58aa1a0ccd36ceadb253d9533f43607fb51e" kind="enumvalue"><name>CT_MEAN</name></member>
+    <member refid="namespacehmap_1_1gpu_1ad1578ae400b339233a85d2dab1f1b58aa6ae4a644325f12269bb472f7c6bd5565" kind="enumvalue"><name>CT_GAUSSIAN</name></member>
+    <member refid="namespacehmap_1_1gpu_1ad1578ae400b339233a85d2dab1f1b58aa42a289bf38ef91fd76ccc51a163b1121" kind="enumvalue"><name>CT_PROFILE</name></member>
+    <member refid="namespacehmap_1_1gpu_1ad1578ae400b339233a85d2dab1f1b58aa441ba7373615df9edc84cbd350e27b7a" kind="enumvalue"><name>CT_CONTOUR</name></member>
+    <member refid="namespacehmap_1_1gpu_1ad1578ae400b339233a85d2dab1f1b58aa148187350841c04891fe0ce0ede1fa72" kind="enumvalue"><name>CT_TANGENTIAL</name></member>
+    <member refid="namespacehmap_1_1gpu_1ad1578ae400b339233a85d2dab1f1b58aae306289963bccdb35e7574aa8526f30c" kind="enumvalue"><name>CT_ACCUMULATION</name></member>
+    <member refid="namespacehmap_1_1gpu_1ad1578ae400b339233a85d2dab1f1b58aa5b8b792f9e687e79291be57d3eb1b743" kind="enumvalue"><name>CT_SHAPE_INDEX</name></member>
+    <member refid="namespacehmap_1_1gpu_1ad1578ae400b339233a85d2dab1f1b58aa371106902d705df544716caf4bcd5aac" kind="enumvalue"><name>CT_UNSPHERICITY</name></member>
+    <member refid="namespacehmap_1_1gpu_1ad1578ae400b339233a85d2dab1f1b58aa0109d44c6788566539fc98d6171c539f" kind="enumvalue"><name>CT_RING</name></member>
+    <member refid="namespacehmap_1_1gpu_1ad1578ae400b339233a85d2dab1f1b58aa446181c68f323dfdec2f9690d99f19cf" kind="enumvalue"><name>CT_ROTOR</name></member>
     <member refid="namespacehmap_1_1gpu_1ab0737b29664736928a86f0755493895f" kind="enum"><name>LocalMetrics</name></member>
     <member refid="namespacehmap_1_1gpu_1ab0737b29664736928a86f0755493895fa6302a2239490ba9a2f3cd152d55e50d7" kind="enumvalue"><name>LM_LOCAL_ASPECT_VARIANCE</name></member>
     <member refid="namespacehmap_1_1gpu_1ab0737b29664736928a86f0755493895fa919b512837145887c412526966767a9f" kind="enumvalue"><name>LM_LOCAL_MAX</name></member>
@@ -1988,17 +1990,8 @@
     <member refid="namespacehmap_1_1gpu_1a3a43696b1d6b8f0d966f9f05e5085edf" kind="function"><name>blend_gradients</name></member>
     <member refid="namespacehmap_1_1gpu_1a65a176508b404f80e5f5abd31456712e" kind="function"><name>blend_poisson_bf</name></member>
     <member refid="namespacehmap_1_1gpu_1acff6d6d559781cdeba565ed795bb81d8" kind="function"><name>transfer</name></member>
-    <member refid="namespacehmap_1_1gpu_1ad73cfd73fcd2e2744e8eb912eaf6f3bf" kind="function"><name>accumulation_curvature</name></member>
-    <member refid="namespacehmap_1_1gpu_1afd24580b2b5fe7107bbff0ae2d3a1473" kind="function"><name>curvature_horizontal_cross_sectional</name></member>
-    <member refid="namespacehmap_1_1gpu_1a60a4aaece2c081b0a76e50404022934f" kind="function"><name>curvature_horizontal_plan</name></member>
-    <member refid="namespacehmap_1_1gpu_1a73a9ccd515e8907c142e001da179856b" kind="function"><name>curvature_horizontal_tangential</name></member>
-    <member refid="namespacehmap_1_1gpu_1a8cc1e9e21a72aab7e29c563817df89b6" kind="function"><name>curvature_ring</name></member>
-    <member refid="namespacehmap_1_1gpu_1a664f80c07e3609c285c98ed5f8bb2be3" kind="function"><name>curvature_rotor</name></member>
-    <member refid="namespacehmap_1_1gpu_1aec95543aaf6a305eb2f7b85cd3dd54d3" kind="function"><name>curvature_vertical_longitudinal</name></member>
-    <member refid="namespacehmap_1_1gpu_1ad1529cdd1f7e79e385e138f1005c7e74" kind="function"><name>curvature_vertical_profile</name></member>
+    <member refid="namespacehmap_1_1gpu_1a014adf3ca419eb53ec5ddc6ce6d4f621" kind="function"><name>curvature_quadric</name></member>
     <member refid="namespacehmap_1_1gpu_1a125118b55d309727ff0b46d686fd3829" kind="function"><name>level_set_curvature</name></member>
-    <member refid="namespacehmap_1_1gpu_1a5bec8dfa40b4c176d348698d9074a7e7" kind="function"><name>shape_index</name></member>
-    <member refid="namespacehmap_1_1gpu_1a112db22b157fcb69d867e1e5ee3a1afd" kind="function"><name>unsphericity</name></member>
     <member refid="namespacehmap_1_1gpu_1a8497e2fce595293ea07e68eac1e5bce2" kind="function"><name>deposition_fill_holes</name></member>
     <member refid="namespacehmap_1_1gpu_1ae084938139cca4f7c15866ceabe18ab7" kind="function"><name>hydraulic_particle</name></member>
     <member refid="namespacehmap_1_1gpu_1a24498e2366d9797fe9e585f494bff98f" kind="function"><name>hydraulic_particle</name></member>
@@ -2395,6 +2388,8 @@
   <compound refid="curvature_8cpp" kind="file"><name>curvature.cpp</name>
   </compound>
   <compound refid="curvature__gpu_8cpp" kind="file"><name>curvature_gpu.cpp</name>
+  </compound>
+  <compound refid="curvature__quadric_8cpp" kind="file"><name>curvature_quadric.cpp</name>
   </compound>
   <compound refid="assert_8cpp" kind="file"><name>assert.cpp</name>
   </compound>

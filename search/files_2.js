@@ -20,5 +20,6 @@ var searchData=
   ['coord_5fframe_2ehpp_17',['coord_frame.hpp',['../coord__frame_8hpp.html',1,'']]],
   ['curvature_2ecpp_18',['curvature.cpp',['../curvature_8cpp.html',1,'']]],
   ['curvature_2ehpp_19',['curvature.hpp',['../curvature_8hpp.html',1,'']]],
-  ['curvature_5fgpu_2ecpp_20',['curvature_gpu.cpp',['../curvature__gpu_8cpp.html',1,'']]]
+  ['curvature_5fgpu_2ecpp_20',['curvature_gpu.cpp',['../curvature__gpu_8cpp.html',1,'']]],
+  ['curvature_5fquadric_2ecpp_21',['curvature_quadric.cpp',['../curvature__quadric_8cpp.html',1,'']]]
 ];
