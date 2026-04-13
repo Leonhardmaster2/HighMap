@@ -14,8 +14,9 @@ float wavelet_noise_base(const float2 p,
                          const float  lacunarity,
                          const float  fseed)
 {
-  // based on https://www.shadertoy.com/view/wsBfzK
-  // MIT License - Copyright © 2020 Martijn Steinrucken
+  // Adapted from https://www.shadertoy.com/view/wsBfzK
+  // Original author:  Martijn Steinrucken
+  // License: MIT (see THIRD_PARTY_LICENSES.md)
 
   float n = 0.f;
   float nf = 1.f;
