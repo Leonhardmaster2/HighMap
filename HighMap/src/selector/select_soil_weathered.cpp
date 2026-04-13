@@ -50,7 +50,7 @@ Array select_soil_weathered(const Array &z,
 
   if (ir_curvature) gpu::smooth_cpulse(cm, ir_curvature);
 
-  cm = gradient_scaling_factor * curvature_mean(cm);
+  cm = -gradient_scaling_factor * curvature_mean(cm);
   clamp(cm, curvature_clamping, curvature_clamp_mode);
 
   return curvature_weight * cm + gradient_weight * gradient_norm;

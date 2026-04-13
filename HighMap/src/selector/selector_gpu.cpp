@@ -14,7 +14,7 @@ Array select_cavities(const Array &array, int ir, bool concave)
 {
   Array array_smooth = array;
   gpu::smooth_cpulse(array_smooth, ir);
-  Array c = curvature_mean(array_smooth);
+  Array c = -curvature_mean(array_smooth);
 
   if (!concave) c *= -1.f;
 

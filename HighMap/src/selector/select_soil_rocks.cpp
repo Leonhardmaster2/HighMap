@@ -38,7 +38,7 @@ Array select_soil_rocks(const Array &z,
     // mean curvature on filtered field
     Array zf = z;
     gpu::smooth_cpulse(zf, ir);
-    Array cm = scale * curvature_mean(zf) * ir;
+    Array cm = -scale * curvature_mean(zf) * ir;
 
     clamp(cm, curvature_clamping, curvature_clamp_mode);
 

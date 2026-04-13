@@ -1,0 +1,2 @@
+add_executable(ex_curvature_quadric ex_curvature_quadric.cpp)
+target_link_libraries(ex_curvature_quadric highmap)

@@ -20,7 +20,7 @@ Array valley_width(const Array &z, int ir, bool ridge_select)
 
   if (ridge_select) vw *= -1.f;
 
-  vw = curvature_mean(vw);
+  vw = -curvature_mean(vw);
   vw = distance_transform_approx(vw);
 
   return vw;

@@ -1032,7 +1032,7 @@ void smooth_fill_holes(Array &array, int ir)
   smooth_cpulse(array_smooth, ir);
 
   // mask based on concave regions
-  Array mask = -curvature_mean(array_smooth);
+  Array mask = curvature_mean(array_smooth);
   clamp_min(mask, 0.f);
   make_binary(mask);
 
@@ -1060,7 +1060,7 @@ void smooth_fill_smear_peaks(Array &array, int ir)
   smooth_cpulse(array_smooth, ir);
 
   // mask based on concave regions
-  Array mask = curvature_mean(array_smooth);
+  Array mask = -curvature_mean(array_smooth);
   clamp_min(mask, 0.f);
   make_binary(mask);
 
