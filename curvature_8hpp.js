@@ -14,12 +14,8 @@ var curvature_8hpp =
       [ "CT_RING", "curvature_8hpp.html#ad4d5e191ca7dd12e389c842188bde88aac4f3d851c4c1680752dea7ea24fe02ed", null ],
       [ "CT_ROTOR", "curvature_8hpp.html#ad4d5e191ca7dd12e389c842188bde88aae43a8928c7c1f96f56419e4d4197ec12", null ]
     ] ],
-    [ "curvature_mean", "curvature_8hpp.html#a0f5685e5bb02e29d1d35720d3aaedca0", null ],
-    [ "level_set_curvature", "curvature_8hpp.html#aa1f2e119a09d246fe0cf27e859ddb2e6", null ],
-    [ "compute_curvature_gradients", "curvature_8hpp.html#ad8bed5d4ec0f54adc017527fa134f455", null ],
-    [ "compute_curvature_h", "curvature_8hpp.html#a4a1660bb65728209b9d07f6ce4486584", null ],
-    [ "compute_curvature_k", "curvature_8hpp.html#af54b122203d5eee61b9b6d6c7979ddfe", null ],
     [ "curvature_quadric", "curvature_8hpp.html#a4e2b7df70a18f94ad7f4d7cd934ec767", null ],
+    [ "level_set_curvature", "curvature_8hpp.html#aa1f2e119a09d246fe0cf27e859ddb2e6", null ],
     [ "curvature_quadric", "curvature_8hpp.html#a014adf3ca419eb53ec5ddc6ce6d4f621", null ],
     [ "level_set_curvature", "curvature_8hpp.html#a125118b55d309727ff0b46d686fd3829", null ]
 ];

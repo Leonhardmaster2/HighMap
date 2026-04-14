@@ -297,94 +297,13 @@
           <declname>curvature_type</declname>
         </param>
         <briefdescription>
-<para>Compute curvature measures on a scalar field. </para>
+<para>See <ref refid="namespacehmap_1a4e2b7df70a18f94ad7f4d7cd934ec767" kindref="member">hmap::curvature_quadric</ref>. </para>
         </briefdescription>
         <detaileddescription>
-<para>Computes various curvature descriptors from the input array <computeroutput>z</computeroutput>. If <computeroutput>ir</computeroutput> == 0, local derivatives (3×3 stencil) are used. Otherwise, a quadric surface is fitted over a (2·ir+1) window.</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>z</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Input scalar field (e.g. heightmap) </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>ir</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Neighborhood radius (0 for local, &gt;0 for quadric fit) </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>curvature_type</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Type of curvature to compute.</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para><ref refid="classhmap_1_1Array" kindref="compound">Array</ref> of same size containing the selected curvature</para>
-</simplesect>
-<bold>Example</bold> <programlisting filename="ex_curvature_quadric.cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
-<codeline><highlight class="normal">{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1adb8336ed4d83c15500872185dee45d50" kindref="member">hmap::gpu::init_opencl</ref>();</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>glm::ivec2<sp/>shape<sp/>=<sp/>{256,<sp/>256};</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>glm::vec2<sp/><sp/>res<sp/>=<sp/>{4.f,<sp/>4.f};</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed<sp/>=<sp/>1;</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1acb13e7346085793fda4c94c47b75d9a9" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,<sp/>shape,<sp/>res,<sp/>seed);</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ir<sp/>=<sp/>16;</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>std::vector&lt;hmap::Array&gt;<sp/>arrays<sp/>=<sp/>{z};</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>std::vector&lt;hmap::CurvatureType&gt;<sp/>types<sp/>=<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ad4d5e191ca7dd12e389c842188bde88aa752f876495cb13f674242c57af4971a3" kindref="member">hmap::CurvatureType::CT_MIN</ref>,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ad4d5e191ca7dd12e389c842188bde88aa4ac84d52a2bf036597c360a7746bf616" kindref="member">hmap::CurvatureType::CT_MAX</ref>,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ad4d5e191ca7dd12e389c842188bde88aad171888e3143edfa1d5916611c9a9f7f" kindref="member">hmap::CurvatureType::CT_MEAN</ref>,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ad4d5e191ca7dd12e389c842188bde88aa2b743d6bfac1f341fb938a3275f0af4c" kindref="member">hmap::CurvatureType::CT_GAUSSIAN</ref>,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ad4d5e191ca7dd12e389c842188bde88aa28581c500d241fc6c4e45fd9a33fbf7d" kindref="member">hmap::CurvatureType::CT_PROFILE</ref>,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ad4d5e191ca7dd12e389c842188bde88aaa1e3514e0f7ddefc5d2c1a9bbf792b6c" kindref="member">hmap::CurvatureType::CT_CONTOUR</ref>,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ad4d5e191ca7dd12e389c842188bde88aa1663860c94cc4b563a284f43f714ebe4" kindref="member">hmap::CurvatureType::CT_TANGENTIAL</ref>,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ad4d5e191ca7dd12e389c842188bde88aa531c05fc85f57e97ee0d472af813a47e" kindref="member">hmap::CurvatureType::CT_ACCUMULATION</ref>,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ad4d5e191ca7dd12e389c842188bde88aa15bb60412f066bb4cca1dda7d60ac1b3" kindref="member">hmap::CurvatureType::CT_SHAPE_INDEX</ref>,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ad4d5e191ca7dd12e389c842188bde88aafbccd8dd0feaaab8de0cf747cd5f837b" kindref="member">hmap::CurvatureType::CT_UNSPHERICITY</ref>,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ad4d5e191ca7dd12e389c842188bde88aac4f3d851c4c1680752dea7ea24fe02ed" kindref="member">hmap::CurvatureType::CT_RING</ref>,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ad4d5e191ca7dd12e389c842188bde88aae43a8928c7c1f96f56419e4d4197ec12" kindref="member">hmap::CurvatureType::CT_ROTOR</ref>,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>};</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>type<sp/>:<sp/>types)</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>out<sp/>=<sp/><ref refid="namespacehmap_1a4e2b7df70a18f94ad7f4d7cd934ec767" kindref="member">hmap::curvature_quadric</ref>(z,<sp/>ir,<sp/>type);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>arrays.push_back(out);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>out<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1a014adf3ca419eb53ec5ddc6ce6d4f621" kindref="member">hmap::gpu::curvature_quadric</ref>(z,<sp/>ir,<sp/>type);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>arrays.push_back(out);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_curvature_quadric.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>arrays,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced" kindref="member">hmap::Cmap::JET</ref>,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting></para>
-<para><bold>Result</bold> <image type="html" name="ex_curvature_quadric.png"></image>
- </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/curvature/curvature_quadric.cpp" line="92" column="7" bodyfile="HighMap/src/curvature/curvature_quadric.cpp" bodystart="92" bodyend="116" declfile="HighMap/include/highmap/curvature.hpp" declline="121" declcolumn="7"/>
+        <location file="HighMap/src/curvature/curvature_quadric.cpp" line="92" column="7" bodyfile="HighMap/src/curvature/curvature_quadric.cpp" bodystart="92" bodyend="116" declfile="HighMap/include/highmap/curvature.hpp" declline="80" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a125118b55d309727ff0b46d686fd3829" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -407,7 +326,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/curvature/curvature_gpu.cpp" line="13" column="7" bodyfile="HighMap/src/curvature/curvature_gpu.cpp" bodystart="13" bodyend="29" declfile="HighMap/include/highmap/curvature.hpp" declline="124" declcolumn="7"/>
+        <location file="HighMap/src/curvature/curvature_gpu.cpp" line="13" column="7" bodyfile="HighMap/src/curvature/curvature_gpu.cpp" bodystart="13" bodyend="29" declfile="HighMap/include/highmap/curvature.hpp" declline="83" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a8497e2fce595293ea07e68eac1e5bce2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -6033,6 +5952,35 @@
         <inbodydescription>
         </inbodydescription>
         <location file="HighMap/src/erosion/watershed_ridge.cpp" line="82" column="7" bodyfile="HighMap/src/erosion/watershed_ridge.cpp" bodystart="82" bodyend="116" declfile="HighMap/include/highmap/erosion.hpp" declline="2211" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehmap_1_1gpu_1a3816b73c0f933147dc86ee9f8d2dd701" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
+        <definition>Array hmap::gpu::valley_width</definition>
+        <argsstring>(const Array &amp;z, int ir=0, bool ridge_select=false)</argsstring>
+        <name>valley_width</name>
+        <qualifiedname>hmap::gpu::valley_width</qualifiedname>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>z</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>ir</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>ridge_select</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>See <ref refid="namespacehmap_1ab4d8048b79080012b8e60c270de8137f" kindref="member">hmap::valley_width</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/features/features.cpp" line="33" column="7" bodyfile="HighMap/src/features/features.cpp" bodystart="33" bodyend="43" declfile="HighMap/include/highmap/features.hpp" declline="275" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1ad6240ccabf3a0f858698dc0b77ab619e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -17485,7 +17433,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/selector/selector_gpu.cpp" line="13" column="7" bodyfile="HighMap/src/selector/selector_gpu.cpp" bodystart="13" bodyend="23" declfile="HighMap/include/highmap/selector.hpp" declline="462" declcolumn="7"/>
+        <location file="HighMap/src/selector/selector_gpu.cpp" line="13" column="7" bodyfile="HighMap/src/selector/selector_gpu.cpp" bodystart="13" bodyend="21" declfile="HighMap/include/highmap/selector.hpp" declline="462" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1afb62cf56466c5bdfb9b6a26458a52d12" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -17786,7 +17734,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/selector/select_soil_rocks.cpp" line="16" column="7" bodyfile="HighMap/src/selector/select_soil_rocks.cpp" bodystart="16" bodyend="53" declfile="HighMap/include/highmap/selector.hpp" declline="527" declcolumn="7"/>
+        <location file="HighMap/src/selector/select_soil_rocks.cpp" line="16" column="7" bodyfile="HighMap/src/selector/select_soil_rocks.cpp" bodystart="16" bodyend="48" declfile="HighMap/include/highmap/selector.hpp" declline="527" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1ae394dd88c39510d2ada01cf120922719" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -17997,7 +17945,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/selector/select_soil_weathered.cpp" line="39" column="7" bodyfile="HighMap/src/selector/select_soil_weathered.cpp" bodystart="39" bodyend="57" declfile="HighMap/include/highmap/selector.hpp" declline="580" declcolumn="7"/>
+        <location file="HighMap/src/selector/select_soil_weathered.cpp" line="39" column="7" bodyfile="HighMap/src/selector/select_soil_weathered.cpp" bodystart="39" bodyend="56" declfile="HighMap/include/highmap/selector.hpp" declline="580" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a13f97a9cf5f7f219e5ed9a32fefbfa1a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -18025,7 +17973,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/selector/selector_gpu.cpp" line="25" column="7" bodyfile="HighMap/src/selector/selector_gpu.cpp" bodystart="25" bodyend="31" declfile="HighMap/include/highmap/selector.hpp" declline="590" declcolumn="7"/>
+        <location file="HighMap/src/selector/selector_gpu.cpp" line="23" column="7" bodyfile="HighMap/src/selector/selector_gpu.cpp" bodystart="23" bodyend="29" declfile="HighMap/include/highmap/selector.hpp" declline="590" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a12757ceaaf11f04640c3a18520886cc8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>

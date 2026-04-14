@@ -1,13 +1,5 @@
 var NAVTREEINDEX7 =
 {
-"edge_8hpp.html":[5,0,1,0,0,1,1],
-"edge_8hpp_source.html":[5,0,1,0,0,1,1],
-"erosion_8hpp.html":[5,0,1,0,0,18],
-"erosion_8hpp.html#a00b54f4e60a8fbd6ed5213600d598869":[5,0,1,0,0,18,81],
-"erosion_8hpp.html#a02f191e398bfc3c0e87999d8576d7c3d":[5,0,1,0,0,18,1],
-"erosion_8hpp.html#a04047f16ece68b32c1c8e68b4780f0df":[5,0,1,0,0,18,93],
-"erosion_8hpp.html#a06a4f7bbf99b83632ceb8a9ba5989823":[5,0,1,0,0,18,34],
-"erosion_8hpp.html#a1489150d5e1af976a9f814b9911b3ea0":[5,0,1,0,0,18,86],
 "erosion_8hpp.html#a182b5cbe63e2d42368c19f66dd9febb3":[5,0,1,0,0,18,71],
 "erosion_8hpp.html#a1be1d9c97f7da805703dadab064fb793":[5,0,1,0,0,18,76],
 "erosion_8hpp.html#a1c2651f7a65e696e8b444364abf0b3cc":[5,0,1,0,0,18,65],
@@ -178,9 +170,11 @@ var NAVTREEINDEX7 =
 "faceted_8cpp.html#ad066ff6ef56dbf9827ff6cca9a22e58a":[5,0,1,1,15,5,0],
 "fbm__functions_8cpp.html":[5,0,1,1,28,0,0],
 "features_8cpp.html":[5,0,1,1,14,1],
+"features_8cpp.html#a3816b73c0f933147dc86ee9f8d2dd701":[5,0,1,1,14,1,1],
 "features_8cpp.html#ab4d8048b79080012b8e60c270de8137f":[5,0,1,1,14,1,0],
 "features_8hpp.html":[5,0,1,0,0,20],
 "features_8hpp.html#a11f846a0bacba3463862df220ddf5131":[5,0,1,0,0,20,0],
+"features_8hpp.html#a3816b73c0f933147dc86ee9f8d2dd701":[5,0,1,0,0,20,5],
 "features_8hpp.html#aa60fa2d3f02d1e064b520fa1623200d0":[5,0,1,0,0,20,1],
 "features_8hpp.html#ab4d8048b79080012b8e60c270de8137f":[5,0,1,0,0,20,4],
 "features_8hpp.html#ad55573a0def0bdf66d3637128cbf08c7":[5,0,1,0,0,20,3],
@@ -249,5 +243,11 @@ var NAVTREEINDEX7 =
 "filters_8cpp.html#aae4699340c68bc39efae13b0e81eea3d":[5,0,1,1,15,7,38],
 "filters_8cpp.html#aae53d6bf5f363d9a108b55004e8fb68f":[5,0,1,1,15,7,44],
 "filters_8cpp.html#aafd7a642dabfbcf2ab2981b229a30e15":[5,0,1,1,15,7,29],
-"filters_8cpp.html#ab1e1b26c0c1eb51d0b256db94d6ca22e":[5,0,1,1,15,7,10]
+"filters_8cpp.html#ab1e1b26c0c1eb51d0b256db94d6ca22e":[5,0,1,1,15,7,10],
+"filters_8cpp.html#ab46e625ea919327a4e2899dd53fff18d":[5,0,1,1,15,7,65],
+"filters_8cpp.html#ab79b21593238cc836f4dd32fecf63a58":[5,0,1,1,15,7,33],
+"filters_8cpp.html#aba3674787d520af15267ee7d1e46d220":[5,0,1,1,15,7,12],
+"filters_8cpp.html#abeab23d26e0e9cb4563b221193ca6041":[5,0,1,1,15,7,46],
+"filters_8cpp.html#ac4ed13c5d45906009461972781263b06":[5,0,1,1,15,7,61],
+"filters_8cpp.html#acde2b4e7bac6ebfe2c2dcfe3f0a369f1":[5,0,1,1,15,7,41]
 };
