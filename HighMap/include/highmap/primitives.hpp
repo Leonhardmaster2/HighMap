@@ -576,6 +576,19 @@ Array diffusion_limited_aggregation(glm::ivec2 shape,
                                     float slope = 8.f,
                                     float noise_ratio = 0.2f);
 
+Array diffusion_limited_aggregation_trimesh(
+    glm::ivec2            shape,
+    uint                  seed,
+    size_t                control_points_count = 5000,
+    glm::vec2             seed_position = {0.5f, 0.5f},
+    float                 ratio = 0.98f,
+    float                 stop_proba = 1.f,
+    float                 slope = 16.f,
+    InterpolationMethod2D interpolation_method =
+        InterpolationMethod2D::ITP2D_DELAUNAY_GRADIENT,
+    const Array *p_noise_x = nullptr,
+    const Array *p_noise_y = nullptr);
+
 /**
  * @brief Generates a disk-shaped heightmap with optional modifications.
  *

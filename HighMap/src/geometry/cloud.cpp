@@ -285,6 +285,26 @@ std::vector<float> Cloud::interpolate_values_from_array(const Array &array,
   return values;
 }
 
+size_t Cloud::nearest_point(const glm::vec2 &xy) const
+{
+  size_t kn = 0;
+  float  d2max = std::numeric_limits<float>::max();
+
+  for (size_t k = 0; k < this->get_npoints(); k++)
+  {
+    glm::vec2 diff = xy - glm::vec2(this->points[k].x, this->points[k].y);
+    float     d2 = glm::dot(diff, diff);
+
+    if (d2 < d2max)
+    {
+      d2max = d2;
+      kn = k;
+    }
+  }
+
+  return kn;
+}
+
 void Cloud::print()
 {
   std::cout << "Cloud" << std::endl;

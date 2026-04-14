@@ -309,6 +309,17 @@ public:
                                                    glm::vec4    bbox);
 
   /**
+   * \brief Find the index of the nearest point in the cloud.
+   *
+   * Computes the point whose (x,y) position is closest to \p xy
+   * using squared Euclidean distance.
+   *
+   * \param xy Query position
+   * \return Index of the nearest point
+   */
+  size_t nearest_point(const glm::vec2 &xy) const;
+
+  /**
    * @brief Print information about the cloud's points.
    *
    * This method prints data related to the cloud's points, including their
