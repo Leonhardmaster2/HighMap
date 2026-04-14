@@ -14,25 +14,32 @@ int main(void)
 
   std::vector<hmap::Array> arrays = {z};
 
-  std::vector<hmap::gpu::CurvatureType> types = {
-      hmap::gpu::CurvatureType::CT_MIN,
-      hmap::gpu::CurvatureType::CT_MAX,
-      hmap::gpu::CurvatureType::CT_MEAN,
-      hmap::gpu::CurvatureType::CT_GAUSSIAN,
-      hmap::gpu::CurvatureType::CT_PROFILE,
-      hmap::gpu::CurvatureType::CT_CONTOUR,
-      hmap::gpu::CurvatureType::CT_TANGENTIAL,
-      hmap::gpu::CurvatureType::CT_ACCUMULATION,
-      hmap::gpu::CurvatureType::CT_SHAPE_INDEX,
-      hmap::gpu::CurvatureType::CT_UNSPHERICITY,
-      hmap::gpu::CurvatureType::CT_RING,
-      hmap::gpu::CurvatureType::CT_ROTOR,
+  std::vector<hmap::CurvatureType> types = {
+      hmap::CurvatureType::CT_MIN,
+      hmap::CurvatureType::CT_MAX,
+      hmap::CurvatureType::CT_MEAN,
+      hmap::CurvatureType::CT_GAUSSIAN,
+      hmap::CurvatureType::CT_PROFILE,
+      hmap::CurvatureType::CT_CONTOUR,
+      hmap::CurvatureType::CT_TANGENTIAL,
+      hmap::CurvatureType::CT_ACCUMULATION,
+      hmap::CurvatureType::CT_SHAPE_INDEX,
+      hmap::CurvatureType::CT_UNSPHERICITY,
+      hmap::CurvatureType::CT_RING,
+      hmap::CurvatureType::CT_ROTOR,
   };
 
   for (const auto type : types)
   {
-    hmap::Array out = hmap::gpu::curvature_quadric(z, ir, type);
-    arrays.push_back(out);
+    {
+      hmap::Array out = hmap::curvature_quadric(z, ir, type);
+      arrays.push_back(out);
+    }
+
+    {
+      hmap::Array out = hmap::gpu::curvature_quadric(z, ir, type);
+      arrays.push_back(out);
+    }
   }
 
   hmap::export_banner_png("ex_curvature_quadric.png",

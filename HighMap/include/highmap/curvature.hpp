@@ -17,6 +17,31 @@ namespace hmap
 {
 
 /**
+ * \brief Types of curvature measures.
+ *
+ * Defines the different curvature descriptors that can be computed on a scalar
+ * field (e.g. heightmap). They include classical differential curvatures as
+ * well as terrain-analysis specific measures.
+ */
+// clang-format off
+enum CurvatureType : int
+{
+	CT_MIN,          //!< Minimum curvature (principal)
+	CT_MAX,          //!< Maximum curvature (principal)
+	CT_MEAN,         //!< Mean curvature
+	CT_GAUSSIAN,     //!< Gaussian curvature
+	CT_PROFILE,      //!< Profile curvature (along slope direction)
+	CT_CONTOUR,      //!< Contour curvature (across slope)
+	CT_TANGENTIAL,   //!< Tangential curvature
+	CT_ACCUMULATION, //!< Accumulation curvature (H² − K²)
+	CT_SHAPE_INDEX,  //!< Shape index (normalized curvature classification)
+	CT_UNSPHERICITY, //!< Unsphericity (√(H² − K))
+	CT_RING,         //!< Ring curvature (planform torsion-like measure)
+	CT_ROTOR,        //!< Rotor curvature (rotational component)
+};
+// clang-format on
+
+/**
  * @brief Computes the mean curvature of a heightmap, indicating the average
  * curvature at each point on the surface. Mean curvature is another critical
  * metric in geomorphology, representing the average bending of the surface.
@@ -67,35 +92,12 @@ Array compute_curvature_k(const Array &p,
                           const Array &s,
                           const Array &t);
 
+Array curvature_quadric(const Array &z, int ir, CurvatureType curvature_type);
+
 } // namespace hmap
 
 namespace hmap::gpu
 {
-
-/**
- * \brief Types of curvature measures.
- *
- * Defines the different curvature descriptors that can be computed on a scalar
- * field (e.g. heightmap). They include classical differential curvatures as
- * well as terrain-analysis specific measures.
- */
-// clang-format off
-enum CurvatureType : int
-{
-	CT_MIN,          //!< Minimum curvature (principal)
-	CT_MAX,          //!< Maximum curvature (principal)
-	CT_MEAN,         //!< Mean curvature
-	CT_GAUSSIAN,     //!< Gaussian curvature
-	CT_PROFILE,      //!< Profile curvature (along slope direction)
-	CT_CONTOUR,      //!< Contour curvature (across slope)
-	CT_TANGENTIAL,   //!< Tangential curvature
-	CT_ACCUMULATION, //!< Accumulation curvature (H² − K²)
-	CT_SHAPE_INDEX,  //!< Shape index (normalized curvature classification)
-	CT_UNSPHERICITY, //!< Unsphericity (√(H² − K))
-	CT_RING,         //!< Ring curvature (planform torsion-like measure)
-	CT_ROTOR,        //!< Rotor curvature (rotational component)
-};
-// clang-format on
 
 /**
  * \brief Compute curvature measures on a scalar field.

@@ -1,9 +1,90 @@
 /* Copyright (c) 2026 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
+#include "appMetrics/heightfield.h" // external/terrain-descriptors
+
+#include "macrologger.h"
+
 #include "highmap/boundary.hpp"
 #include "highmap/curvature.hpp"
 #include "highmap/opencl/gpu_opencl.hpp"
+
+namespace hmap
+{
+
+Array curvature_quadric(const Array &z, int ir, CurvatureType curvature_type)
+{
+  const glm::ivec2 &shape = z.shape;
+  const int         w = 2 * ir + 1; // window size
+
+  // --- Adaptor to terrain-descriptors classes
+
+  std::vector<double> storage;
+  storage.reserve(shape.x * shape.y);
+
+  for (const auto &v : z.vector)
+    storage.push_back(double(v));
+
+  ScalarField2 field = ScalarField2(
+      Box2(double(shape.x - 1), double(shape.y - 1)),
+      shape.x,
+      shape.y,
+      storage);
+  HeightField  h(field);
+  ScalarField2 out;
+
+  // --- Compute curvatures
+
+  switch (curvature_type)
+  {
+  case hmap::CurvatureType::CT_MIN:
+    out = h.Curvature(HeightField::CurvatureType::MIN, w);
+    break;
+    //
+  case hmap::CurvatureType::CT_MAX:
+    out = h.Curvature(HeightField::CurvatureType::MAX, w);
+    break;
+    //
+  case hmap::CurvatureType::CT_MEAN:
+    out = h.Curvature(HeightField::CurvatureType::MEAN, w);
+    break;
+    //
+  case hmap::CurvatureType::CT_GAUSSIAN:
+    out = h.Curvature(HeightField::CurvatureType::GAUSSIAN, w);
+    break;
+    //
+  case hmap::CurvatureType::CT_PROFILE:
+    out = h.Curvature(HeightField::CurvatureType::PROFILE, w);
+    break;
+    //
+  case hmap::CurvatureType::CT_CONTOUR:
+    out = h.Curvature(HeightField::CurvatureType::CONTOUR, w);
+    break;
+    //
+  case hmap::CurvatureType::CT_TANGENTIAL:
+    out = h.Curvature(HeightField::CurvatureType::TANGENTIAL, w);
+    break;
+    //
+    break;
+  default:
+  {
+    LOG_DEBUG("hmap::curvature_quadric: unknown CurvatureType");
+    return Array(shape);
+  }
+  }
+
+  // --- Output
+
+  Array                      c(shape);
+  const std::vector<double> &values = out.values();
+
+  for (size_t k = 0; k < values.size(); ++k)
+    c.vector[k] = float(values[k]);
+
+  return c;
+}
+
+} // namespace hmap
 
 namespace hmap::gpu
 {
