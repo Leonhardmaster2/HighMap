@@ -37,6 +37,7 @@ var primitives_8hpp =
     [ "dendry", "primitives_8hpp.html#a2a437cb8e2d1cd5e7046b02d196d4ee7", null ],
     [ "dendry", "primitives_8hpp.html#a94e1606f6902ab37f41c476f8a5ff83b", null ],
     [ "diffusion_limited_aggregation", "primitives_8hpp.html#a4bf1e669410e1a5dac4c5261d8ef9bfd", null ],
+    [ "diffusion_limited_aggregation_trimesh", "primitives_8hpp.html#a2612499c23723b7e9627c40fa62c8b12", null ],
     [ "disk", "primitives_8hpp.html#a3faedeb1505b5224b1f7e82e840beb73", null ],
     [ "gabor_noise", "primitives_8hpp.html#afafa542446ebbf67beb00748488894cd", null ],
     [ "gaussian_pulse", "primitives_8hpp.html#a7628beb3c72d94109fa4de260bd22453", null ],

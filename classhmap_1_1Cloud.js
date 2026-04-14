@@ -21,6 +21,7 @@ var classhmap_1_1Cloud =
     [ "get_xy", "classhmap_1_1Cloud.html#ab0c1fe00f5465c5b0b04e3e397bae5d5", null ],
     [ "get_y", "classhmap_1_1Cloud.html#abf5f933e3506395b5369cb090119002e", null ],
     [ "interpolate_values_from_array", "classhmap_1_1Cloud.html#a205f8cccbbe0421f210c6abbda5354b1", null ],
+    [ "nearest_point", "classhmap_1_1Cloud.html#ad75a6d3223008397f8f93bbda4470706", null ],
     [ "print", "classhmap_1_1Cloud.html#aefea3d749a554df8a23ec38af5acb415", null ],
     [ "randomize", "classhmap_1_1Cloud.html#a5346876f8726c1604ac7decf3a69be5a", null ],
     [ "rejection_filter_density", "classhmap_1_1Cloud.html#a89fbc7c4e7e27bd520e93735e55eddff", null ],
