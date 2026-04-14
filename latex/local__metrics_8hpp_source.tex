@@ -54,39 +54,41 @@
 \DoxyCodeLine{00336\ }
 \DoxyCodeLine{00338\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_a2dcbc7dac085b61f3c47e17256741a9a}{relative\_elevation}}(\textcolor{keyword}{const}\ Array\ \&array,\ \textcolor{keywordtype}{int}\ ir);}
 \DoxyCodeLine{00339\ }
-\DoxyCodeLine{00341\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_a62292cc4bf9f6eb5c7b63b1e26f8cc88}{ruggedness}}(\textcolor{keyword}{const}\ Array\ \&array,\ \textcolor{keywordtype}{int}\ ir);}
+\DoxyCodeLine{00341\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_aebca5a0fef9c05a0e2378aef452707ed}{relative\_elevation\_square\_kernel}}(\textcolor{keyword}{const}\ Array\ \&array,\ \textcolor{keywordtype}{int}\ ir);}
 \DoxyCodeLine{00342\ }
-\DoxyCodeLine{00344\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_aa5a3e087822525c41f057a51255e2bad}{rugosity}}(\textcolor{keyword}{const}\ Array\ \&z,\ \textcolor{keywordtype}{int}\ ir,\ \textcolor{keywordtype}{bool}\ convex\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00344\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_a62292cc4bf9f6eb5c7b63b1e26f8cc88}{ruggedness}}(\textcolor{keyword}{const}\ Array\ \&array,\ \textcolor{keywordtype}{int}\ ir);}
 \DoxyCodeLine{00345\ }
-\DoxyCodeLine{00346\ \}\ \textcolor{comment}{//\ namespace\ hmap::gpu}}
-\DoxyCodeLine{00347\ }
-\DoxyCodeLine{00348\ \textcolor{comment}{//\ -\/-\/-\/\ WRAPPER}}
-\DoxyCodeLine{00349\ }
-\DoxyCodeLine{00350\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacehmap_1_1gpu}{hmap::gpu}}}
-\DoxyCodeLine{00351\ \{}
+\DoxyCodeLine{00347\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_aa5a3e087822525c41f057a51255e2bad}{rugosity}}(\textcolor{keyword}{const}\ Array\ \&z,\ \textcolor{keywordtype}{int}\ ir,\ \textcolor{keywordtype}{bool}\ convex\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00348\ }
+\DoxyCodeLine{00349\ \}\ \textcolor{comment}{//\ namespace\ hmap::gpu}}
+\DoxyCodeLine{00350\ }
+\DoxyCodeLine{00351\ \textcolor{comment}{//\ -\/-\/-\/\ WRAPPER}}
 \DoxyCodeLine{00352\ }
-\DoxyCodeLine{00353\ \textcolor{comment}{//\ clang-\/format\ off}}
-\DoxyCodeLine{00354\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895f}{LocalMetrics}}\ :\ \textcolor{keywordtype}{int}}
-\DoxyCodeLine{00355\ \{}
-\DoxyCodeLine{00356\ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa6302a2239490ba9a2f3cd152d55e50d7}{LM\_LOCAL\_ASPECT\_VARIANCE}},}
-\DoxyCodeLine{00357\ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa919b512837145887c412526966767a9f}{LM\_LOCAL\_MAX}},}
-\DoxyCodeLine{00358\ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fad839ce8cff6bd20c67432d651776b569}{LM\_LOCAL\_MEDIAN\_DEVIATION}},}
-\DoxyCodeLine{00359\ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa3fb8064f9087e5af79c85dce2c655112}{LM\_LOCAL\_MIN}},}
-\DoxyCodeLine{00360\ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa5a6dccee984676ced1eb1ac2a546761e}{LM\_LOCAL\_RELIEF}},}
-\DoxyCodeLine{00361\ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa9633368152d1a5c7cabbd67607305162}{LM\_LOCAL\_VARIANCE}},}
-\DoxyCodeLine{00362\ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fad5818c578f7164c55a879326e4a88b53}{LM\_LOCAL\_MEAN}},}
-\DoxyCodeLine{00363\ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fafad6a20433412feb877a9e8ebb76633c}{LM\_LOCAL\_SKEWNESS}},}
-\DoxyCodeLine{00364\ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa64d519d05dec2198a42425ce0c402bff}{LM\_LOCAL\_Z\_SCORE}},}
-\DoxyCodeLine{00365\ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa8f5a70d0a562337ca689b0ce7ee3fff6}{LM\_TOPOGRAPHIC\_POSITION\_INDEX}},}
-\DoxyCodeLine{00366\ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa46f15a0ffd71deff0ddbc5599acfff87}{LM\_RELATIVE\_ELEVATION}},}
-\DoxyCodeLine{00367\ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa568c1c82b138902b43e26249e63d8618}{LM\_RUGGEDNESS}},}
-\DoxyCodeLine{00368\ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa892abed7945357817b7504339fdcee14}{LM\_RUGOSITY\_CONCAVE}},}
-\DoxyCodeLine{00369\ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fac1321c034ba09831f5b5a040058f9477}{LM\_RUGOSITY\_CONVEX}},}
-\DoxyCodeLine{00370\ \};}
-\DoxyCodeLine{00371\ \textcolor{comment}{//\ clang-\/format\ on}}
-\DoxyCodeLine{00372\ }
-\DoxyCodeLine{00373\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a13719c4aafe9ffaabd767afe5a8bd44d}{local\_metrics}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&array,\ \textcolor{keywordtype}{int}\ ir,\ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895f}{LocalMetrics}}\ metric);}
-\DoxyCodeLine{00374\ }
-\DoxyCodeLine{00375\ \}\ \textcolor{comment}{//\ namespace\ hmap::gpu}}
+\DoxyCodeLine{00353\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacehmap_1_1gpu}{hmap::gpu}}}
+\DoxyCodeLine{00354\ \{}
+\DoxyCodeLine{00355\ }
+\DoxyCodeLine{00356\ \textcolor{comment}{//\ clang-\/format\ off}}
+\DoxyCodeLine{00357\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895f}{LocalMetrics}}\ :\ \textcolor{keywordtype}{int}}
+\DoxyCodeLine{00358\ \{}
+\DoxyCodeLine{00359\ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa6302a2239490ba9a2f3cd152d55e50d7}{LM\_LOCAL\_ASPECT\_VARIANCE}},}
+\DoxyCodeLine{00360\ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa919b512837145887c412526966767a9f}{LM\_LOCAL\_MAX}},}
+\DoxyCodeLine{00361\ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fad839ce8cff6bd20c67432d651776b569}{LM\_LOCAL\_MEDIAN\_DEVIATION}},}
+\DoxyCodeLine{00362\ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa3fb8064f9087e5af79c85dce2c655112}{LM\_LOCAL\_MIN}},}
+\DoxyCodeLine{00363\ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa5a6dccee984676ced1eb1ac2a546761e}{LM\_LOCAL\_RELIEF}},}
+\DoxyCodeLine{00364\ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa9633368152d1a5c7cabbd67607305162}{LM\_LOCAL\_VARIANCE}},}
+\DoxyCodeLine{00365\ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fad5818c578f7164c55a879326e4a88b53}{LM\_LOCAL\_MEAN}},}
+\DoxyCodeLine{00366\ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fafad6a20433412feb877a9e8ebb76633c}{LM\_LOCAL\_SKEWNESS}},}
+\DoxyCodeLine{00367\ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa64d519d05dec2198a42425ce0c402bff}{LM\_LOCAL\_Z\_SCORE}},}
+\DoxyCodeLine{00368\ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa8f5a70d0a562337ca689b0ce7ee3fff6}{LM\_TOPOGRAPHIC\_POSITION\_INDEX}},}
+\DoxyCodeLine{00369\ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa46f15a0ffd71deff0ddbc5599acfff87}{LM\_RELATIVE\_ELEVATION}},}
+\DoxyCodeLine{00370\ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa568c1c82b138902b43e26249e63d8618}{LM\_RUGGEDNESS}},}
+\DoxyCodeLine{00371\ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fa892abed7945357817b7504339fdcee14}{LM\_RUGOSITY\_CONCAVE}},}
+\DoxyCodeLine{00372\ \ \ \ \ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895fac1321c034ba09831f5b5a040058f9477}{LM\_RUGOSITY\_CONVEX}},}
+\DoxyCodeLine{00373\ \};}
+\DoxyCodeLine{00374\ \textcolor{comment}{//\ clang-\/format\ on}}
+\DoxyCodeLine{00375\ }
+\DoxyCodeLine{00376\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a13719c4aafe9ffaabd767afe5a8bd44d}{local\_metrics}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&array,\ \textcolor{keywordtype}{int}\ ir,\ \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895f}{LocalMetrics}}\ metric);}
+\DoxyCodeLine{00377\ }
+\DoxyCodeLine{00378\ \}\ \textcolor{comment}{//\ namespace\ hmap::gpu}}
 
 \end{DoxyCode}

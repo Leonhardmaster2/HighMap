@@ -34,6 +34,7 @@ var local__metrics_8hpp =
     [ "local_z_score", "local__metrics_8hpp.html#ad6ef648576e9339058037a28ce17d225", null ],
     [ "topographic_position_index", "local__metrics_8hpp.html#a74594cae7628bcfb1c038ac6930fe97d", null ],
     [ "relative_elevation", "local__metrics_8hpp.html#a2dcbc7dac085b61f3c47e17256741a9a", null ],
+    [ "relative_elevation_square_kernel", "local__metrics_8hpp.html#aebca5a0fef9c05a0e2378aef452707ed", null ],
     [ "ruggedness", "local__metrics_8hpp.html#a62292cc4bf9f6eb5c7b63b1e26f8cc88", null ],
     [ "rugosity", "local__metrics_8hpp.html#aa5a3e087822525c41f057a51255e2bad", null ],
     [ "local_metrics", "local__metrics_8hpp.html#a13719c4aafe9ffaabd767afe5a8bd44d", null ]

@@ -59,14 +59,16 @@
 <codeline lineno="48"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>curvature</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="49"><highlight class="normal"><sp/><sp/>Array<sp/>cm<sp/>=<sp/>z;</highlight></codeline>
 <codeline lineno="50"><highlight class="normal"></highlight></codeline>
-<codeline lineno="51"><highlight class="normal"><sp/><sp/>cm<sp/>=<sp/>-gradient_scaling_factor<sp/>*</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1_1gpu_1a014adf3ca419eb53ec5ddc6ce6d4f621" kindref="member">gpu::curvature_quadric</ref>(cm,<sp/>ir_curvature,<sp/><ref refid="namespacehmap_1ad4d5e191ca7dd12e389c842188bde88aad171888e3143edfa1d5916611c9a9f7f" kindref="member">CurvatureType::CT_MEAN</ref>);</highlight></codeline>
-<codeline lineno="53"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ae6dfd87b0368629657c3138dbf24cbc4" kindref="member">clamp</ref>(cm,<sp/>curvature_clamping,<sp/>curvature_clamp_mode);</highlight></codeline>
-<codeline lineno="54"><highlight class="normal"></highlight></codeline>
-<codeline lineno="55"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>curvature_weight<sp/>*<sp/>cm<sp/>+<sp/>gradient_weight<sp/>*<sp/><ref refid="namespacehmap_1_1gpu_1a1c5e49734e49973fe1b275b6988dba12" kindref="member">gradient_norm</ref>;</highlight></codeline>
-<codeline lineno="56"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="57"><highlight class="normal"></highlight></codeline>
-<codeline lineno="58"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>hmap::gpu</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ir_curvature)<sp/><ref refid="namespacehmap_1_1gpu_1a7d2aae253f1f67bbdbc718859f83ef0a" kindref="member">gpu::smooth_cpulse</ref>(cm,<sp/>ir_curvature);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/>cm<sp/>=<sp/>-gradient_scaling_factor<sp/>*</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1_1gpu_1a014adf3ca419eb53ec5ddc6ce6d4f621" kindref="member">gpu::curvature_quadric</ref>(cm,<sp/>0,<sp/><ref refid="namespacehmap_1ad4d5e191ca7dd12e389c842188bde88aad171888e3143edfa1d5916611c9a9f7f" kindref="member">CurvatureType::CT_MEAN</ref>);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ae6dfd87b0368629657c3138dbf24cbc4" kindref="member">clamp</ref>(cm,<sp/>curvature_clamping,<sp/>curvature_clamp_mode);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>curvature_weight<sp/>*<sp/>cm<sp/>+<sp/>gradient_weight<sp/>*<sp/><ref refid="namespacehmap_1_1gpu_1a1c5e49734e49973fe1b275b6988dba12" kindref="member">gradient_norm</ref>;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>hmap::gpu</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="HighMap/src/selector/select_soil_weathered.cpp"/>
   </compounddef>

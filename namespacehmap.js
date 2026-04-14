@@ -133,6 +133,7 @@ var namespacehmap =
       [ "local_z_score", "namespacehmap_1_1gpu.html#ad6ef648576e9339058037a28ce17d225", null ],
       [ "topographic_position_index", "namespacehmap_1_1gpu.html#a74594cae7628bcfb1c038ac6930fe97d", null ],
       [ "relative_elevation", "namespacehmap_1_1gpu.html#a2dcbc7dac085b61f3c47e17256741a9a", null ],
+      [ "relative_elevation_square_kernel", "namespacehmap_1_1gpu.html#aebca5a0fef9c05a0e2378aef452707ed", null ],
       [ "ruggedness", "namespacehmap_1_1gpu.html#a62292cc4bf9f6eb5c7b63b1e26f8cc88", null ],
       [ "rugosity", "namespacehmap_1_1gpu.html#aa5a3e087822525c41f057a51255e2bad", null ],
       [ "local_metrics", "namespacehmap_1_1gpu.html#a13719c4aafe9ffaabd767afe5a8bd44d", null ],
