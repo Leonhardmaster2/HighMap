@@ -19,6 +19,7 @@ void trench(Array                       &z,
             const Path                  &path,
             float                        width,
             bool                         enable_width_depth_scaling,
+            bool                         enable_width_distance_scaling,
             RadialProfile                radial_profile,
             float                        radial_profile_parameter,
             ElevationLongitudinalProfile longitudinal_profile,
@@ -115,6 +116,9 @@ void trench(Array                       &z,
   std::vector<float> xg, yg;
   grid_xy_vector(xg, yg, shape, bbox, /* endpoint */ false);
 
+  // for width with distance scaling
+  std::vector<float> arc_length = path_copy.get_arc_length();
+
   // radial profile
   auto profile_fct = get_radial_profile_function(radial_profile,
                                                  radial_profile_parameter);
@@ -135,11 +139,15 @@ void trench(Array                       &z,
       float dr = p_noise_r ? (*p_noise_r)(i, j) : 0.f;
       float effective_width = std::max(0.f, width * (1.f + dr));
 
+      // use only 1st neighbor for various width scalings
+      size_t k0 = indices[0];
+
+      if (enable_width_distance_scaling)
+        effective_width *= smoothstep3(arc_length[k0]);
+
       if (enable_width_depth_scaling)
       {
-        // simplify... use only 1st neighbor for various width scalings
-        size_t k0 = indices[0];
-        float  dz = std::abs((z(i, j) - points[k0].v) / elevation_shift);
+        float dz = std::abs((z(i, j) - points[k0].v) / elevation_shift);
         effective_width *= std::clamp(dz, 0.f, 1.f);
       }
 

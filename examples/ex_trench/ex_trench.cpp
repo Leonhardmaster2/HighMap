@@ -32,7 +32,8 @@ int main(void)
                                          8,
                                          0.f);
 
-  hmap::trench(z3, path);
+  float width = 0.1f;
+  hmap::trench(z3, path, width);
 
   hmap::export_banner_png("ex_trench.png", {z1, z2, z3}, hmap::Cmap::JET, true);
 }
