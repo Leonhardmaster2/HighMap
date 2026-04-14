@@ -45,7 +45,7 @@ var searchData=
   ['transform_42',['transform',['../classhmap_1_1PyramidDecomposition.html#aa23f39a63086657fffda6cb5ca1842a5',1,'hmap::PyramidDecomposition']]],
   ['translate_43',['translate',['../namespacehmap.html#a6e52fd8e2580523aae968d76461c30b8',1,'hmap']]],
   ['transpose_44',['transpose',['../namespacehmap.html#a9b059a298d27843519baa3b6bfe291cd',1,'hmap']]],
-  ['trench_45',['trench',['../namespacehmap.html#a3611ca86e749a7217ba3bfd8548f15ce',1,'hmap']]],
+  ['trench_45',['trench',['../namespacehmap.html#a29a086802e7fa2c5ec739f97f7335c43',1,'hmap']]],
   ['triangle_46',['triangle',['../namespacehmap.html#adce0295b768dd046d1ddcd117cb1b8b4',1,'hmap']]],
   ['triangle_5farea_47',['triangle_area',['../namespacehmap.html#a9249226d73f4396157c1c6415ebf3a7c',1,'hmap']]],
   ['triangulate_5fdelaunay_48',['triangulate_delaunay',['../classhmap_1_1TerrainTriMesh.html#a2b764615c2ac8424ffe60469d7b68970',1,'hmap::TerrainTriMesh']]],

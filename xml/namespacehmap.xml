@@ -5647,10 +5647,10 @@
         </inbodydescription>
         <location file="HighMap/src/carving/flatbed_carve.cpp" line="110" column="6" bodyfile="HighMap/src/carving/flatbed_carve.cpp" bodystart="110" bodyend="143" declfile="HighMap/include/highmap/carving.hpp" declline="148" declcolumn="6"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1a3611ca86e749a7217ba3bfd8548f15ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacehmap_1a29a086802e7fa2c5ec739f97f7335c43" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void hmap::trench</definition>
-        <argsstring>(Array &amp;z, const Path &amp;path, float width=0.05f, bool enable_width_depth_scaling=true, RadialProfile radial_profile=RadialProfile::RP_SMOOTHSTEP_UPPER, float radial_profile_parameter=2.f, ElevationLongitudinalProfile longitudinal_profile=ElevationLongitudinalProfile::ELP_DECREASING, float elevation_shift=-0.05f, float shift_ramp_start_ratio=0.f, float shift_ramp_end_ratio=0.f, float min_slope=0.01f, size_t k_neighbors=8, const Array *p_noise_r=nullptr, Array *p_bending_mask=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</argsstring>
+        <argsstring>(Array &amp;z, const Path &amp;path, float width, bool enable_width_depth_scaling=true, bool enable_width_distance_scaling=true, RadialProfile radial_profile=RadialProfile::RP_SMOOTHSTEP_UPPER, float radial_profile_parameter=2.f, ElevationLongitudinalProfile longitudinal_profile=ElevationLongitudinalProfile::ELP_DECREASING, float elevation_shift=-0.05f, float shift_ramp_start_ratio=0.f, float shift_ramp_end_ratio=0.f, float min_slope=0.001f, size_t k_neighbors=8, const Array *p_noise_r=nullptr, Array *p_bending_mask=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</argsstring>
         <name>trench</name>
         <qualifiedname>hmap::trench</qualifiedname>
         <param>
@@ -5664,11 +5664,15 @@
         <param>
           <type>float</type>
           <declname>width</declname>
-          <defval>0.05<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
         </param>
         <param>
           <type>bool</type>
           <declname>enable_width_depth_scaling</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>enable_width_distance_scaling</declname>
           <defval>true</defval>
         </param>
         <param>
@@ -5704,7 +5708,7 @@
         <param>
           <type>float</type>
           <declname>min_slope</declname>
-          <defval>0.01<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+          <defval>0.001<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
         </param>
         <param>
           <type>size_t</type>
@@ -5888,7 +5892,8 @@
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>8,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0.f);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a3611ca86e749a7217ba3bfd8548f15ce" kindref="member">hmap::trench</ref>(z3,<sp/>path);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>width<sp/>=<sp/>0.1f;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a29a086802e7fa2c5ec739f97f7335c43" kindref="member">hmap::trench</ref>(z3,<sp/>path,<sp/>width);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_trench.png&quot;</highlight><highlight class="normal">,<sp/>{z1,<sp/>z2,<sp/>z3},<sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced" kindref="member">hmap::Cmap::JET</ref>,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -5898,7 +5903,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/carving/trench.cpp" line="18" column="6" bodyfile="HighMap/src/carving/trench.cpp" bodystart="18" bodyend="172" declfile="HighMap/include/highmap/carving.hpp" declline="215" declcolumn="6"/>
+        <location file="HighMap/src/carving/trench.cpp" line="18" column="6" bodyfile="HighMap/src/carving/trench.cpp" bodystart="18" bodyend="180" declfile="HighMap/include/highmap/carving.hpp" declline="215" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a4960846742ad118ec9eadaba40ca39ac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>

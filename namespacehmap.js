@@ -576,7 +576,7 @@ var namespacehmap =
     [ "dig_river", "namespacehmap.html#a6d536f0d67ade56c6a60927d8c8e9720", null ],
     [ "dig_river", "namespacehmap.html#a31b3cde3ce1fa52f1856b962f4443d49", null ],
     [ "flatbed_carve", "namespacehmap.html#a5f979c31af1c9ee6ad499882335ca6fb", null ],
-    [ "trench", "namespacehmap.html#a3611ca86e749a7217ba3bfd8548f15ce", null ],
+    [ "trench", "namespacehmap.html#a29a086802e7fa2c5ec739f97f7335c43", null ],
     [ "apply_hillshade", "namespacehmap.html#a4960846742ad118ec9eadaba40ca39ac", null ],
     [ "apply_hillshade", "namespacehmap.html#aefc8cbe645337bb5b663436c0324f9e2", null ],
     [ "color_adjust", "namespacehmap.html#a1175ee497ff12b2f3c6cdb7cc805949f", null ],
