@@ -35,16 +35,11 @@ Array select_soil_rocks(const Array &z,
 
     if (ir_min == 0 && k == 0) ir = 0;
 
-    // mean curvature on filtered field
-    Array zf = z;
-    gpu::smooth_cpulse(zf, ir);
-    Array cm = -scale * curvature_mean(zf) * ir;
-
+    float amp = scale * float(ir);
+    Array cm = -amp * gpu::curvature_quadric(z, ir, CurvatureType::CT_MEAN);
     clamp(cm, curvature_clamping, curvature_clamp_mode);
 
     sr = maximum(sr, cm);
-
-    // sr += cm;
 
     scale /= smaller_scales_weight;
   }

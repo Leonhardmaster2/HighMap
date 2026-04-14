@@ -42,64 +42,6 @@ enum CurvatureType : int
 // clang-format on
 
 /**
- * @brief Computes the mean curvature of a heightmap, indicating the average
- * curvature at each point on the surface. Mean curvature is another critical
- * metric in geomorphology, representing the average bending of the surface.
- * This measure is useful in understanding terrain smoothness and can help
- * identify areas of potential erosion or deposition. Usage: Apply this function
- * to detect areas prone to erosion or sediment deposition. Useful in landscape
- * evolution models and in analyzing the stability of slopes.
- *
- * @param  z The input array representing the heightmap data (elevation values).
- * @return   Array An output array containing the mean curvature values, where
- *           positive values indicate convex regions and negative values
- *           indicate concave regions.
- *
- * **Example**
- * @include ex_curvature.cpp
- *
- * **Result**
- * @image html ex_curvature.png
- */
-Array curvature_mean(const Array &z);
-
-/**
- * @brief Computes a signed level-set curvature.
- *
- * @param  array        Input array.
- * @param  prefilter_ir Optional smoothing radius for curvature evaluation.
- * @return              Signed curvature.
- */
-Array level_set_curvature(const Array &array, int prefilter_ir);
-
-// helpers
-
-// Notation taken from Florinsky, I. (2016). Digital terrain analysis in soil
-// science and geology. Academic Press. p = dz/dx, q = dz/dy, r = d2z/dx2, s =
-// d2z/dxdy, t = d2z/dy2.
-void compute_curvature_gradients(const Array &z,
-                                 Array       &p,
-                                 Array       &q,
-                                 Array       &r,
-                                 Array       &s,
-                                 Array       &t);
-
-Array compute_curvature_h(const Array &r, const Array &t);
-
-Array compute_curvature_k(const Array &p,
-                          const Array &q,
-                          const Array &r,
-                          const Array &s,
-                          const Array &t);
-
-Array curvature_quadric(const Array &z, int ir, CurvatureType curvature_type);
-
-} // namespace hmap
-
-namespace hmap::gpu
-{
-
-/**
  * \brief Compute curvature measures on a scalar field.
  *
  * Computes various curvature descriptors from the input array \p z. If \p ir ==
@@ -118,6 +60,23 @@ namespace hmap::gpu
  * **Result**
  * @image html ex_curvature_quadric.png
  */
+Array curvature_quadric(const Array &z, int ir, CurvatureType curvature_type);
+
+/**
+ * @brief Computes a signed level-set curvature.
+ *
+ * @param  array        Input array.
+ * @param  prefilter_ir Optional smoothing radius for curvature evaluation.
+ * @return              Signed curvature.
+ */
+Array level_set_curvature(const Array &array, int prefilter_ir);
+
+} // namespace hmap
+
+namespace hmap::gpu
+{
+
+/*! @brief See hmap::curvature_quadric */
 Array curvature_quadric(const Array &z, int ir, CurvatureType curvature_type);
 
 /*! @brief See hmap::level_set_curvature */

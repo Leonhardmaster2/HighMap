@@ -267,3 +267,11 @@ Array kmeans_clustering3(const Array        &array1,
 Array valley_width(const Array &z, int ir = 0, bool ridge_select = false);
 
 } // namespace hmap
+
+namespace hmap::gpu
+{
+
+/*! @brief See hmap::valley_width */
+Array valley_width(const Array &z, int ir = 0, bool ridge_select = false);
+
+} // namespace hmap::gpu

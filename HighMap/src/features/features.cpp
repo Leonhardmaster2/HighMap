@@ -16,14 +16,30 @@ namespace hmap
 Array valley_width(const Array &z, int ir, bool ridge_select)
 {
   Array vw = z;
-  if (ir > 0) smooth_cpulse(vw, ir);
 
   if (ridge_select) vw *= -1.f;
 
-  vw = -curvature_mean(vw);
+  vw = -curvature_quadric(vw, ir, CurvatureType::CT_MEAN);
   vw = distance_transform_approx(vw);
 
   return vw;
 }
 
 } // namespace hmap
+
+namespace hmap::gpu
+{
+
+Array valley_width(const Array &z, int ir, bool ridge_select)
+{
+  Array vw = z;
+
+  if (ridge_select) vw *= -1.f;
+
+  vw = -gpu::curvature_quadric(vw, ir, CurvatureType::CT_MEAN);
+  vw = distance_transform_approx(vw);
+
+  return vw;
+}
+
+} // namespace hmap::gpu
