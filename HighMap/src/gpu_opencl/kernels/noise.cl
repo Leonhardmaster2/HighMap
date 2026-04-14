@@ -155,7 +155,7 @@ float base_worley(const float2 p, const float fseed)
     for (int dy = -1; dy <= 1; dy++)
     {
       float2 dr = (float2)(dx, dy);
-      float2 feature_point = dr + jitter * hash22f(i + dr, fseed);
+      float2 feature_point = dr + hash22f(i + dr, fseed);
       float2 diff = f - feature_point;
       float  dist = dot(diff, diff);
 
