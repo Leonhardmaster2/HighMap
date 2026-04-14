@@ -84,6 +84,6 @@ var searchData=
   ['cubic_5fpulse_5ftruncated_81',['cubic_pulse_truncated',['../namespacehmap.html#a2d1ef54ca8c981d95eb5a990c5d6fa23',1,'hmap']]],
   ['cupola_82',['cupola',['../namespacehmap.html#abc4df5971637a4247f385355e5bee73e',1,'hmap']]],
   ['curvature_83',['curvature',['../namespacehmap.html#a30122e874f6a99af65954458cc9e4de9',1,'hmap']]],
-  ['curvature_5fquadric_84',['curvature_quadric',['../namespacehmap.html#a4e2b7df70a18f94ad7f4d7cd934ec767',1,'hmap::curvature_quadric()'],['../namespacehmap_1_1gpu.html#a014adf3ca419eb53ec5ddc6ce6d4f621',1,'hmap::gpu::curvature_quadric()']]],
+  ['curvature_5fquadric_84',['curvature_quadric',['../namespacehmap.html#a4e2b7df70a18f94ad7f4d7cd934ec767',1,'hmap::curvature_quadric()'],['../namespacehmap_1_1gpu.html#a7bfb7fecab3f34a73a57d7907c3ace7d',1,'hmap::gpu::curvature_quadric()']]],
   ['cv_5fmat_5fto_5farray_85',['cv_mat_to_array',['../namespacehmap.html#a518f05118e1b9704160a7c3276a2f483',1,'hmap']]]
 ];

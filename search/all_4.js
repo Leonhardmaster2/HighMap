@@ -145,7 +145,7 @@ var searchData=
   ['curvature_2ecpp_142',['curvature.cpp',['../curvature_8cpp.html',1,'']]],
   ['curvature_2ehpp_143',['curvature.hpp',['../curvature_8hpp.html',1,'']]],
   ['curvature_5fgpu_2ecpp_144',['curvature_gpu.cpp',['../curvature__gpu_8cpp.html',1,'']]],
-  ['curvature_5fquadric_145',['curvature_quadric',['../namespacehmap.html#a4e2b7df70a18f94ad7f4d7cd934ec767',1,'hmap::curvature_quadric()'],['../namespacehmap_1_1gpu.html#a014adf3ca419eb53ec5ddc6ce6d4f621',1,'hmap::gpu::curvature_quadric()']]],
+  ['curvature_5fquadric_145',['curvature_quadric',['../namespacehmap.html#a4e2b7df70a18f94ad7f4d7cd934ec767',1,'hmap::curvature_quadric()'],['../namespacehmap_1_1gpu.html#a7bfb7fecab3f34a73a57d7907c3ace7d',1,'hmap::gpu::curvature_quadric()']]],
   ['curvature_5fquadric_2ecpp_146',['curvature_quadric.cpp',['../curvature__quadric_8cpp.html',1,'']]],
   ['curvaturetype_147',['CurvatureType',['../namespacehmap.html#ad4d5e191ca7dd12e389c842188bde88a',1,'hmap']]],
   ['cv_5fmat_5fto_5farray_148',['cv_mat_to_array',['../namespacehmap.html#a518f05118e1b9704160a7c3276a2f483',1,'hmap']]]

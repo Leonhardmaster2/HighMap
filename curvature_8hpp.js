@@ -16,6 +16,6 @@ var curvature_8hpp =
     ] ],
     [ "curvature_quadric", "curvature_8hpp.html#a4e2b7df70a18f94ad7f4d7cd934ec767", null ],
     [ "level_set_curvature", "curvature_8hpp.html#aa1f2e119a09d246fe0cf27e859ddb2e6", null ],
-    [ "curvature_quadric", "curvature_8hpp.html#a014adf3ca419eb53ec5ddc6ce6d4f621", null ],
+    [ "curvature_quadric", "curvature_8hpp.html#a7bfb7fecab3f34a73a57d7907c3ace7d", null ],
     [ "level_set_curvature", "curvature_8hpp.html#a125118b55d309727ff0b46d686fd3829", null ]
 ];
