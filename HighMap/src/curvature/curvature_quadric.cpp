@@ -7,6 +7,7 @@
 
 #include "highmap/boundary.hpp"
 #include "highmap/curvature.hpp"
+#include "highmap/filters.hpp"
 #include "highmap/opencl/gpu_opencl.hpp"
 
 namespace hmap
@@ -89,7 +90,10 @@ Array curvature_quadric(const Array &z, int ir, CurvatureType curvature_type)
 namespace hmap::gpu
 {
 
-Array curvature_quadric(const Array &z, int ir, CurvatureType curvature_type)
+Array curvature_quadric(const Array  &z,
+                        int           ir,
+                        CurvatureType curvature_type,
+                        bool          approx_algo)
 {
   const glm::ivec2 shape = z.shape;
   int              type_id = static_cast<int>(curvature_type);
@@ -98,10 +102,20 @@ Array curvature_quadric(const Array &z, int ir, CurvatureType curvature_type)
 
   auto run = clwrapper::Run("curvature_quadric");
 
-  run.bind_imagef("z",
-                  const_cast<std::vector<float> &>(z.vector),
-                  shape.x,
-                  shape.y);
+  Array zf;
+
+  if (approx_algo)
+  {
+    zf = z;
+    gpu::smooth_cpulse(zf, ir);
+    ir = 0;
+    run.bind_imagef("z", zf.vector, shape.x, shape.y);
+  }
+  else
+  {
+    run.bind_imagef("z", z.vector, shape.x, shape.y);
+  }
+
   run.bind_imagef("out", out.vector, shape.x, shape.y, true);
 
   run.bind_arguments(shape.x, shape.y, ir, type_id);

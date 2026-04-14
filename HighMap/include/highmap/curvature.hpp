@@ -77,7 +77,10 @@ namespace hmap::gpu
 {
 
 /*! @brief See hmap::curvature_quadric */
-Array curvature_quadric(const Array &z, int ir, CurvatureType curvature_type);
+Array curvature_quadric(const Array  &z,
+                        int           ir,
+                        CurvatureType curvature_type,
+                        bool          approx_algo = false);
 
 /*! @brief See hmap::level_set_curvature */
 Array level_set_curvature(const Array &array, int prefilter_ir);
