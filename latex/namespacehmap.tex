@@ -246,6 +246,23 @@ enum \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369}{Cmap}} \+
 , \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a3cd98c63d7e70c2bcc14d9c9911bdc55}{WHITE\+\_\+\+UNIFORM}}
  \}
 \begin{DoxyCompactList}\small\item\em Enumeration for different colormap types. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{namespacehmap_ad4d5e191ca7dd12e389c842188bde88a}{Curvature\+Type}} \+: int \{ \newline
+\mbox{\hyperlink{namespacehmap_ad4d5e191ca7dd12e389c842188bde88aa752f876495cb13f674242c57af4971a3}{CT\+\_\+\+MIN}}
+, \mbox{\hyperlink{namespacehmap_ad4d5e191ca7dd12e389c842188bde88aa4ac84d52a2bf036597c360a7746bf616}{CT\+\_\+\+MAX}}
+, \mbox{\hyperlink{namespacehmap_ad4d5e191ca7dd12e389c842188bde88aad171888e3143edfa1d5916611c9a9f7f}{CT\+\_\+\+MEAN}}
+, \mbox{\hyperlink{namespacehmap_ad4d5e191ca7dd12e389c842188bde88aa2b743d6bfac1f341fb938a3275f0af4c}{CT\+\_\+\+GAUSSIAN}}
+, \newline
+\mbox{\hyperlink{namespacehmap_ad4d5e191ca7dd12e389c842188bde88aa28581c500d241fc6c4e45fd9a33fbf7d}{CT\+\_\+\+PROFILE}}
+, \mbox{\hyperlink{namespacehmap_ad4d5e191ca7dd12e389c842188bde88aaa1e3514e0f7ddefc5d2c1a9bbf792b6c}{CT\+\_\+\+CONTOUR}}
+, \mbox{\hyperlink{namespacehmap_ad4d5e191ca7dd12e389c842188bde88aa1663860c94cc4b563a284f43f714ebe4}{CT\+\_\+\+TANGENTIAL}}
+, \mbox{\hyperlink{namespacehmap_ad4d5e191ca7dd12e389c842188bde88aa531c05fc85f57e97ee0d472af813a47e}{CT\+\_\+\+ACCUMULATION}}
+, \newline
+\mbox{\hyperlink{namespacehmap_ad4d5e191ca7dd12e389c842188bde88aa15bb60412f066bb4cca1dda7d60ac1b3}{CT\+\_\+\+SHAPE\+\_\+\+INDEX}}
+, \mbox{\hyperlink{namespacehmap_ad4d5e191ca7dd12e389c842188bde88aafbccd8dd0feaaab8de0cf747cd5f837b}{CT\+\_\+\+UNSPHERICITY}}
+, \mbox{\hyperlink{namespacehmap_ad4d5e191ca7dd12e389c842188bde88aac4f3d851c4c1680752dea7ea24fe02ed}{CT\+\_\+\+RING}}
+, \mbox{\hyperlink{namespacehmap_ad4d5e191ca7dd12e389c842188bde88aae43a8928c7c1f96f56419e4d4197ec12}{CT\+\_\+\+ROTOR}}
+ \}
+\begin{DoxyCompactList}\small\item\em Types of curvature measures. \end{DoxyCompactList}\item 
 enum \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6}{Erosion\+Profile}} \+: int \{ \newline
 \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a0f02f3dc5c8d286f8586965cf4633cd1}{EP\+\_\+\+COSINE}}
 , \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a856508f652cc10eede30d7080659bc02}{EP\+\_\+\+COSINE\+\_\+\+BULK}}
@@ -584,6 +601,8 @@ void \mbox{\hyperlink{namespacehmap_ad8bed5d4ec0f54adc017527fa134f455}{compute\+
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a4a1660bb65728209b9d07f6ce4486584}{compute\+\_\+curvature\+\_\+h}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&r, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&t)
 \item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_af54b122203d5eee61b9b6d6c7979ddfe}{compute\+\_\+curvature\+\_\+k}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&p, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&q, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&r, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&s, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&t)
+\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a4e2b7df70a18f94ad7f4d7cd934ec767}{curvature\+\_\+quadric}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int ir, \mbox{\hyperlink{namespacehmap_ad4d5e191ca7dd12e389c842188bde88a}{Curvature\+Type}} curvature\+\_\+type)
 \item 
 bool \mbox{\hyperlink{namespacehmap_a2c154806321deecb3240ac71eb7ccf29}{assert\+\_\+almost\+\_\+equal}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&a, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&b, float tolerance, const std\+::string \&fname="{}"{}, \mbox{\hyperlink{structhmap_1_1AssertResults}{Assert\+Results}} \texorpdfstring{$\ast$}{*}p\+\_\+results=nullptr)
 \item 
@@ -2022,6 +2041,66 @@ VIRIDIS&\\
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{WHITE\_UNIFORM@{WHITE\_UNIFORM}!hmap@{hmap}}\index{hmap@{hmap}!WHITE\_UNIFORM@{WHITE\_UNIFORM}}}\Hypertarget{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a3cd98c63d7e70c2bcc14d9c9911bdc55}\label{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a3cd98c63d7e70c2bcc14d9c9911bdc55} 
 WHITE\+\_\+\+UNIFORM&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{namespacehmap_ad4d5e191ca7dd12e389c842188bde88a}\label{namespacehmap_ad4d5e191ca7dd12e389c842188bde88a} 
+\index{hmap@{hmap}!CurvatureType@{CurvatureType}}
+\index{CurvatureType@{CurvatureType}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{CurvatureType}{CurvatureType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespacehmap_ad4d5e191ca7dd12e389c842188bde88a}{hmap\+::\+Curvature\+Type}} \+: int}
+
+
+
+Types of curvature measures. 
+
+Defines the different curvature descriptors that can be computed on a scalar field (e.\+g. heightmap). They include classical differential curvatures as well as terrain-\/analysis specific measures. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CT\_MIN@{CT\_MIN}!hmap@{hmap}}\index{hmap@{hmap}!CT\_MIN@{CT\_MIN}}}\Hypertarget{namespacehmap_ad4d5e191ca7dd12e389c842188bde88aa752f876495cb13f674242c57af4971a3}\label{namespacehmap_ad4d5e191ca7dd12e389c842188bde88aa752f876495cb13f674242c57af4971a3} 
+CT\+\_\+\+MIN&Minimum curvature (principal) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CT\_MAX@{CT\_MAX}!hmap@{hmap}}\index{hmap@{hmap}!CT\_MAX@{CT\_MAX}}}\Hypertarget{namespacehmap_ad4d5e191ca7dd12e389c842188bde88aa4ac84d52a2bf036597c360a7746bf616}\label{namespacehmap_ad4d5e191ca7dd12e389c842188bde88aa4ac84d52a2bf036597c360a7746bf616} 
+CT\+\_\+\+MAX&Maximum curvature (principal) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CT\_MEAN@{CT\_MEAN}!hmap@{hmap}}\index{hmap@{hmap}!CT\_MEAN@{CT\_MEAN}}}\Hypertarget{namespacehmap_ad4d5e191ca7dd12e389c842188bde88aad171888e3143edfa1d5916611c9a9f7f}\label{namespacehmap_ad4d5e191ca7dd12e389c842188bde88aad171888e3143edfa1d5916611c9a9f7f} 
+CT\+\_\+\+MEAN&Mean curvature. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CT\_GAUSSIAN@{CT\_GAUSSIAN}!hmap@{hmap}}\index{hmap@{hmap}!CT\_GAUSSIAN@{CT\_GAUSSIAN}}}\Hypertarget{namespacehmap_ad4d5e191ca7dd12e389c842188bde88aa2b743d6bfac1f341fb938a3275f0af4c}\label{namespacehmap_ad4d5e191ca7dd12e389c842188bde88aa2b743d6bfac1f341fb938a3275f0af4c} 
+CT\+\_\+\+GAUSSIAN&Gaussian curvature. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CT\_PROFILE@{CT\_PROFILE}!hmap@{hmap}}\index{hmap@{hmap}!CT\_PROFILE@{CT\_PROFILE}}}\Hypertarget{namespacehmap_ad4d5e191ca7dd12e389c842188bde88aa28581c500d241fc6c4e45fd9a33fbf7d}\label{namespacehmap_ad4d5e191ca7dd12e389c842188bde88aa28581c500d241fc6c4e45fd9a33fbf7d} 
+CT\+\_\+\+PROFILE&Profile curvature (along slope direction) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CT\_CONTOUR@{CT\_CONTOUR}!hmap@{hmap}}\index{hmap@{hmap}!CT\_CONTOUR@{CT\_CONTOUR}}}\Hypertarget{namespacehmap_ad4d5e191ca7dd12e389c842188bde88aaa1e3514e0f7ddefc5d2c1a9bbf792b6c}\label{namespacehmap_ad4d5e191ca7dd12e389c842188bde88aaa1e3514e0f7ddefc5d2c1a9bbf792b6c} 
+CT\+\_\+\+CONTOUR&Contour curvature (across slope) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CT\_TANGENTIAL@{CT\_TANGENTIAL}!hmap@{hmap}}\index{hmap@{hmap}!CT\_TANGENTIAL@{CT\_TANGENTIAL}}}\Hypertarget{namespacehmap_ad4d5e191ca7dd12e389c842188bde88aa1663860c94cc4b563a284f43f714ebe4}\label{namespacehmap_ad4d5e191ca7dd12e389c842188bde88aa1663860c94cc4b563a284f43f714ebe4} 
+CT\+\_\+\+TANGENTIAL&Tangential curvature. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CT\_ACCUMULATION@{CT\_ACCUMULATION}!hmap@{hmap}}\index{hmap@{hmap}!CT\_ACCUMULATION@{CT\_ACCUMULATION}}}\Hypertarget{namespacehmap_ad4d5e191ca7dd12e389c842188bde88aa531c05fc85f57e97ee0d472af813a47e}\label{namespacehmap_ad4d5e191ca7dd12e389c842188bde88aa531c05fc85f57e97ee0d472af813a47e} 
+CT\+\_\+\+ACCUMULATION&Accumulation curvature (H² − K²) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CT\_SHAPE\_INDEX@{CT\_SHAPE\_INDEX}!hmap@{hmap}}\index{hmap@{hmap}!CT\_SHAPE\_INDEX@{CT\_SHAPE\_INDEX}}}\Hypertarget{namespacehmap_ad4d5e191ca7dd12e389c842188bde88aa15bb60412f066bb4cca1dda7d60ac1b3}\label{namespacehmap_ad4d5e191ca7dd12e389c842188bde88aa15bb60412f066bb4cca1dda7d60ac1b3} 
+CT\+\_\+\+SHAPE\+\_\+\+INDEX&Shape index (normalized curvature classification) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CT\_UNSPHERICITY@{CT\_UNSPHERICITY}!hmap@{hmap}}\index{hmap@{hmap}!CT\_UNSPHERICITY@{CT\_UNSPHERICITY}}}\Hypertarget{namespacehmap_ad4d5e191ca7dd12e389c842188bde88aafbccd8dd0feaaab8de0cf747cd5f837b}\label{namespacehmap_ad4d5e191ca7dd12e389c842188bde88aafbccd8dd0feaaab8de0cf747cd5f837b} 
+CT\+\_\+\+UNSPHERICITY&Unsphericity (√(H² − K)) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CT\_RING@{CT\_RING}!hmap@{hmap}}\index{hmap@{hmap}!CT\_RING@{CT\_RING}}}\Hypertarget{namespacehmap_ad4d5e191ca7dd12e389c842188bde88aac4f3d851c4c1680752dea7ea24fe02ed}\label{namespacehmap_ad4d5e191ca7dd12e389c842188bde88aac4f3d851c4c1680752dea7ea24fe02ed} 
+CT\+\_\+\+RING&Ring curvature (planform torsion-\/like measure) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CT\_ROTOR@{CT\_ROTOR}!hmap@{hmap}}\index{hmap@{hmap}!CT\_ROTOR@{CT\_ROTOR}}}\Hypertarget{namespacehmap_ad4d5e191ca7dd12e389c842188bde88aae43a8928c7c1f96f56419e4d4197ec12}\label{namespacehmap_ad4d5e191ca7dd12e389c842188bde88aae43a8928c7c1f96f56419e4d4197ec12} 
+CT\+\_\+\+ROTOR&Rotor curvature (rotational component) \\
 \hline
 
 \end{DoxyEnumFields}
@@ -6032,6 +6111,12 @@ Signed curvature.
 \index{compute\_curvature\_k@{compute\_curvature\_k}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{compute\_curvature\_k()}{compute\_curvature\_k()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::compute\+\_\+curvature\+\_\+k (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{p,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{q,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{r,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{s,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{t }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacehmap_a4e2b7df70a18f94ad7f4d7cd934ec767}\label{namespacehmap_a4e2b7df70a18f94ad7f4d7cd934ec767} 
+\index{hmap@{hmap}!curvature\_quadric@{curvature\_quadric}}
+\index{curvature\_quadric@{curvature\_quadric}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{curvature\_quadric()}{curvature\_quadric()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::curvature\+\_\+quadric (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{int}]{ir,  }\item[{\mbox{\hyperlink{namespacehmap_ad4d5e191ca7dd12e389c842188bde88a}{Curvature\+Type}}}]{curvature\+\_\+type }\end{DoxyParamCaption})}
 
 \Hypertarget{namespacehmap_a2c154806321deecb3240ac71eb7ccf29}\label{namespacehmap_a2c154806321deecb3240ac71eb7ccf29} 
 \index{hmap@{hmap}!assert\_almost\_equal@{assert\_almost\_equal}}

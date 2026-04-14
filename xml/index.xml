@@ -1123,6 +1123,19 @@
     <member refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a555dbf2f8e5b83b9117850a8938e65f9" kind="enumvalue"><name>TURBO</name></member>
     <member refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492" kind="enumvalue"><name>VIRIDIS</name></member>
     <member refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a3cd98c63d7e70c2bcc14d9c9911bdc55" kind="enumvalue"><name>WHITE_UNIFORM</name></member>
+    <member refid="namespacehmap_1ad4d5e191ca7dd12e389c842188bde88a" kind="enum"><name>CurvatureType</name></member>
+    <member refid="namespacehmap_1ad4d5e191ca7dd12e389c842188bde88aa752f876495cb13f674242c57af4971a3" kind="enumvalue"><name>CT_MIN</name></member>
+    <member refid="namespacehmap_1ad4d5e191ca7dd12e389c842188bde88aa4ac84d52a2bf036597c360a7746bf616" kind="enumvalue"><name>CT_MAX</name></member>
+    <member refid="namespacehmap_1ad4d5e191ca7dd12e389c842188bde88aad171888e3143edfa1d5916611c9a9f7f" kind="enumvalue"><name>CT_MEAN</name></member>
+    <member refid="namespacehmap_1ad4d5e191ca7dd12e389c842188bde88aa2b743d6bfac1f341fb938a3275f0af4c" kind="enumvalue"><name>CT_GAUSSIAN</name></member>
+    <member refid="namespacehmap_1ad4d5e191ca7dd12e389c842188bde88aa28581c500d241fc6c4e45fd9a33fbf7d" kind="enumvalue"><name>CT_PROFILE</name></member>
+    <member refid="namespacehmap_1ad4d5e191ca7dd12e389c842188bde88aaa1e3514e0f7ddefc5d2c1a9bbf792b6c" kind="enumvalue"><name>CT_CONTOUR</name></member>
+    <member refid="namespacehmap_1ad4d5e191ca7dd12e389c842188bde88aa1663860c94cc4b563a284f43f714ebe4" kind="enumvalue"><name>CT_TANGENTIAL</name></member>
+    <member refid="namespacehmap_1ad4d5e191ca7dd12e389c842188bde88aa531c05fc85f57e97ee0d472af813a47e" kind="enumvalue"><name>CT_ACCUMULATION</name></member>
+    <member refid="namespacehmap_1ad4d5e191ca7dd12e389c842188bde88aa15bb60412f066bb4cca1dda7d60ac1b3" kind="enumvalue"><name>CT_SHAPE_INDEX</name></member>
+    <member refid="namespacehmap_1ad4d5e191ca7dd12e389c842188bde88aafbccd8dd0feaaab8de0cf747cd5f837b" kind="enumvalue"><name>CT_UNSPHERICITY</name></member>
+    <member refid="namespacehmap_1ad4d5e191ca7dd12e389c842188bde88aac4f3d851c4c1680752dea7ea24fe02ed" kind="enumvalue"><name>CT_RING</name></member>
+    <member refid="namespacehmap_1ad4d5e191ca7dd12e389c842188bde88aae43a8928c7c1f96f56419e4d4197ec12" kind="enumvalue"><name>CT_ROTOR</name></member>
     <member refid="namespacehmap_1a25a4e4775f3c0918ed75f0503f5ed0a6" kind="enum"><name>ErosionProfile</name></member>
     <member refid="namespacehmap_1a25a4e4775f3c0918ed75f0503f5ed0a6a0f02f3dc5c8d286f8586965cf4633cd1" kind="enumvalue"><name>EP_COSINE</name></member>
     <member refid="namespacehmap_1a25a4e4775f3c0918ed75f0503f5ed0a6a856508f652cc10eede30d7080659bc02" kind="enumvalue"><name>EP_COSINE_BULK</name></member>
@@ -1349,6 +1362,7 @@
     <member refid="namespacehmap_1ad8bed5d4ec0f54adc017527fa134f455" kind="function"><name>compute_curvature_gradients</name></member>
     <member refid="namespacehmap_1a4a1660bb65728209b9d07f6ce4486584" kind="function"><name>compute_curvature_h</name></member>
     <member refid="namespacehmap_1af54b122203d5eee61b9b6d6c7979ddfe" kind="function"><name>compute_curvature_k</name></member>
+    <member refid="namespacehmap_1a4e2b7df70a18f94ad7f4d7cd934ec767" kind="function"><name>curvature_quadric</name></member>
     <member refid="namespacehmap_1a2c154806321deecb3240ac71eb7ccf29" kind="function"><name>assert_almost_equal</name></member>
     <member refid="namespacehmap_1a02f191e398bfc3c0e87999d8576d7c3d" kind="function"><name>get_erosion_profile_function</name></member>
     <member refid="namespacehmap_1ac718f038155dde59fb50eb22684ed255" kind="function"><name>check_erosion_profile_function</name></member>
@@ -1959,19 +1973,6 @@
     <member refid="namespacehmap_1aa7538088dbfe576e77ccbe14e9a6c9d7" kind="function"><name>cmp_queue</name></member>
   </compound>
   <compound refid="namespacehmap_1_1gpu" kind="namespace"><name>hmap::gpu</name>
-    <member refid="namespacehmap_1_1gpu_1ad1578ae400b339233a85d2dab1f1b58a" kind="enum"><name>CurvatureType</name></member>
-    <member refid="namespacehmap_1_1gpu_1ad1578ae400b339233a85d2dab1f1b58aa68f8a79ccb8ee9000eae0ea700458d71" kind="enumvalue"><name>CT_MIN</name></member>
-    <member refid="namespacehmap_1_1gpu_1ad1578ae400b339233a85d2dab1f1b58aa642862e76969eea0e48a01fd9b36eeb1" kind="enumvalue"><name>CT_MAX</name></member>
-    <member refid="namespacehmap_1_1gpu_1ad1578ae400b339233a85d2dab1f1b58aa1a0ccd36ceadb253d9533f43607fb51e" kind="enumvalue"><name>CT_MEAN</name></member>
-    <member refid="namespacehmap_1_1gpu_1ad1578ae400b339233a85d2dab1f1b58aa6ae4a644325f12269bb472f7c6bd5565" kind="enumvalue"><name>CT_GAUSSIAN</name></member>
-    <member refid="namespacehmap_1_1gpu_1ad1578ae400b339233a85d2dab1f1b58aa42a289bf38ef91fd76ccc51a163b1121" kind="enumvalue"><name>CT_PROFILE</name></member>
-    <member refid="namespacehmap_1_1gpu_1ad1578ae400b339233a85d2dab1f1b58aa441ba7373615df9edc84cbd350e27b7a" kind="enumvalue"><name>CT_CONTOUR</name></member>
-    <member refid="namespacehmap_1_1gpu_1ad1578ae400b339233a85d2dab1f1b58aa148187350841c04891fe0ce0ede1fa72" kind="enumvalue"><name>CT_TANGENTIAL</name></member>
-    <member refid="namespacehmap_1_1gpu_1ad1578ae400b339233a85d2dab1f1b58aae306289963bccdb35e7574aa8526f30c" kind="enumvalue"><name>CT_ACCUMULATION</name></member>
-    <member refid="namespacehmap_1_1gpu_1ad1578ae400b339233a85d2dab1f1b58aa5b8b792f9e687e79291be57d3eb1b743" kind="enumvalue"><name>CT_SHAPE_INDEX</name></member>
-    <member refid="namespacehmap_1_1gpu_1ad1578ae400b339233a85d2dab1f1b58aa371106902d705df544716caf4bcd5aac" kind="enumvalue"><name>CT_UNSPHERICITY</name></member>
-    <member refid="namespacehmap_1_1gpu_1ad1578ae400b339233a85d2dab1f1b58aa0109d44c6788566539fc98d6171c539f" kind="enumvalue"><name>CT_RING</name></member>
-    <member refid="namespacehmap_1_1gpu_1ad1578ae400b339233a85d2dab1f1b58aa446181c68f323dfdec2f9690d99f19cf" kind="enumvalue"><name>CT_ROTOR</name></member>
     <member refid="namespacehmap_1_1gpu_1ab0737b29664736928a86f0755493895f" kind="enum"><name>LocalMetrics</name></member>
     <member refid="namespacehmap_1_1gpu_1ab0737b29664736928a86f0755493895fa6302a2239490ba9a2f3cd152d55e50d7" kind="enumvalue"><name>LM_LOCAL_ASPECT_VARIANCE</name></member>
     <member refid="namespacehmap_1_1gpu_1ab0737b29664736928a86f0755493895fa919b512837145887c412526966767a9f" kind="enumvalue"><name>LM_LOCAL_MAX</name></member>

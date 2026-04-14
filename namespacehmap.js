@@ -1,20 +1,6 @@
 var namespacehmap =
 [
     [ "gpu", "namespacehmap_1_1gpu.html", [
-      [ "CurvatureType", "namespacehmap_1_1gpu.html#ad1578ae400b339233a85d2dab1f1b58a", [
-        [ "CT_MIN", "namespacehmap_1_1gpu.html#ad1578ae400b339233a85d2dab1f1b58aa68f8a79ccb8ee9000eae0ea700458d71", null ],
-        [ "CT_MAX", "namespacehmap_1_1gpu.html#ad1578ae400b339233a85d2dab1f1b58aa642862e76969eea0e48a01fd9b36eeb1", null ],
-        [ "CT_MEAN", "namespacehmap_1_1gpu.html#ad1578ae400b339233a85d2dab1f1b58aa1a0ccd36ceadb253d9533f43607fb51e", null ],
-        [ "CT_GAUSSIAN", "namespacehmap_1_1gpu.html#ad1578ae400b339233a85d2dab1f1b58aa6ae4a644325f12269bb472f7c6bd5565", null ],
-        [ "CT_PROFILE", "namespacehmap_1_1gpu.html#ad1578ae400b339233a85d2dab1f1b58aa42a289bf38ef91fd76ccc51a163b1121", null ],
-        [ "CT_CONTOUR", "namespacehmap_1_1gpu.html#ad1578ae400b339233a85d2dab1f1b58aa441ba7373615df9edc84cbd350e27b7a", null ],
-        [ "CT_TANGENTIAL", "namespacehmap_1_1gpu.html#ad1578ae400b339233a85d2dab1f1b58aa148187350841c04891fe0ce0ede1fa72", null ],
-        [ "CT_ACCUMULATION", "namespacehmap_1_1gpu.html#ad1578ae400b339233a85d2dab1f1b58aae306289963bccdb35e7574aa8526f30c", null ],
-        [ "CT_SHAPE_INDEX", "namespacehmap_1_1gpu.html#ad1578ae400b339233a85d2dab1f1b58aa5b8b792f9e687e79291be57d3eb1b743", null ],
-        [ "CT_UNSPHERICITY", "namespacehmap_1_1gpu.html#ad1578ae400b339233a85d2dab1f1b58aa371106902d705df544716caf4bcd5aac", null ],
-        [ "CT_RING", "namespacehmap_1_1gpu.html#ad1578ae400b339233a85d2dab1f1b58aa0109d44c6788566539fc98d6171c539f", null ],
-        [ "CT_ROTOR", "namespacehmap_1_1gpu.html#ad1578ae400b339233a85d2dab1f1b58aa446181c68f323dfdec2f9690d99f19cf", null ]
-      ] ],
       [ "LocalMetrics", "namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895f", [
         [ "LM_LOCAL_ASPECT_VARIANCE", "namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa6302a2239490ba9a2f3cd152d55e50d7", null ],
         [ "LM_LOCAL_MAX", "namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fa919b512837145887c412526966767a9f", null ],
@@ -362,6 +348,20 @@ var namespacehmap =
       [ "VIRIDIS", "namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492", null ],
       [ "WHITE_UNIFORM", "namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a3cd98c63d7e70c2bcc14d9c9911bdc55", null ]
     ] ],
+    [ "CurvatureType", "namespacehmap.html#ad4d5e191ca7dd12e389c842188bde88a", [
+      [ "CT_MIN", "namespacehmap.html#ad4d5e191ca7dd12e389c842188bde88aa752f876495cb13f674242c57af4971a3", null ],
+      [ "CT_MAX", "namespacehmap.html#ad4d5e191ca7dd12e389c842188bde88aa4ac84d52a2bf036597c360a7746bf616", null ],
+      [ "CT_MEAN", "namespacehmap.html#ad4d5e191ca7dd12e389c842188bde88aad171888e3143edfa1d5916611c9a9f7f", null ],
+      [ "CT_GAUSSIAN", "namespacehmap.html#ad4d5e191ca7dd12e389c842188bde88aa2b743d6bfac1f341fb938a3275f0af4c", null ],
+      [ "CT_PROFILE", "namespacehmap.html#ad4d5e191ca7dd12e389c842188bde88aa28581c500d241fc6c4e45fd9a33fbf7d", null ],
+      [ "CT_CONTOUR", "namespacehmap.html#ad4d5e191ca7dd12e389c842188bde88aaa1e3514e0f7ddefc5d2c1a9bbf792b6c", null ],
+      [ "CT_TANGENTIAL", "namespacehmap.html#ad4d5e191ca7dd12e389c842188bde88aa1663860c94cc4b563a284f43f714ebe4", null ],
+      [ "CT_ACCUMULATION", "namespacehmap.html#ad4d5e191ca7dd12e389c842188bde88aa531c05fc85f57e97ee0d472af813a47e", null ],
+      [ "CT_SHAPE_INDEX", "namespacehmap.html#ad4d5e191ca7dd12e389c842188bde88aa15bb60412f066bb4cca1dda7d60ac1b3", null ],
+      [ "CT_UNSPHERICITY", "namespacehmap.html#ad4d5e191ca7dd12e389c842188bde88aafbccd8dd0feaaab8de0cf747cd5f837b", null ],
+      [ "CT_RING", "namespacehmap.html#ad4d5e191ca7dd12e389c842188bde88aac4f3d851c4c1680752dea7ea24fe02ed", null ],
+      [ "CT_ROTOR", "namespacehmap.html#ad4d5e191ca7dd12e389c842188bde88aae43a8928c7c1f96f56419e4d4197ec12", null ]
+    ] ],
     [ "ErosionProfile", "namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6", [
       [ "EP_COSINE", "namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a0f02f3dc5c8d286f8586965cf4633cd1", null ],
       [ "EP_COSINE_BULK", "namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a856508f652cc10eede30d7080659bc02", null ],
@@ -602,6 +602,7 @@ var namespacehmap =
     [ "compute_curvature_gradients", "namespacehmap.html#ad8bed5d4ec0f54adc017527fa134f455", null ],
     [ "compute_curvature_h", "namespacehmap.html#a4a1660bb65728209b9d07f6ce4486584", null ],
     [ "compute_curvature_k", "namespacehmap.html#af54b122203d5eee61b9b6d6c7979ddfe", null ],
+    [ "curvature_quadric", "namespacehmap.html#a4e2b7df70a18f94ad7f4d7cd934ec767", null ],
     [ "assert_almost_equal", "namespacehmap.html#a2c154806321deecb3240ac71eb7ccf29", null ],
     [ "get_erosion_profile_function", "namespacehmap.html#a02f191e398bfc3c0e87999d8576d7c3d", null ],
     [ "check_erosion_profile_function", "namespacehmap.html#ac718f038155dde59fb50eb22684ed255", null ],
