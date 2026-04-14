@@ -57,7 +57,7 @@ void hydraulic_stream_log(Array &z,
 
   // preserve local peaks
   {
-    Array re = gpu::relative_elevation(z, gradient_prefilter_ir);
+    Array re = gpu::relative_elevation_square_kernel(z, gradient_prefilter_ir);
     re = smoothstep3(1.f - re);
     facc *= re;
   }

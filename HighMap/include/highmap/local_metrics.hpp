@@ -337,6 +337,9 @@ Array topographic_position_index(const Array &array, int ir);
 /*! @brief See hmap::relative_elevation */
 Array relative_elevation(const Array &array, int ir);
 
+/*! @brief See hmap::relative_elevation */
+Array relative_elevation_square_kernel(const Array &array, int ir);
+
 /*! @brief See hmap::ruggedness */
 Array ruggedness(const Array &array, int ir);
 

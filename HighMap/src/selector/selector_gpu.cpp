@@ -12,7 +12,9 @@ namespace hmap::gpu
 
 Array select_cavities(const Array &array, int ir, bool concave)
 {
-  Array c = -gpu::curvature_quadric(array, ir, CurvatureType::CT_MEAN);
+  Array array_smooth = array;
+  gpu::smooth_cpulse(array_smooth, ir);
+  Array c = -gpu::curvature_quadric(array_smooth, 0, CurvatureType::CT_MEAN);
 
   if (!concave) c *= -1.f;
 

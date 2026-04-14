@@ -66,7 +66,9 @@ Array select_blob_log(const Array &array, int ir)
 
 Array select_cavities(const Array &array, int ir, bool concave)
 {
-  Array c = -curvature_quadric(array, ir, CurvatureType::CT_MEAN);
+  Array array_smooth = array;
+  smooth_cpulse(array_smooth, ir);
+  Array c = -curvature_quadric(array_smooth, 0, CurvatureType::CT_MEAN);
 
   if (!concave) c *= -1.f;
 
