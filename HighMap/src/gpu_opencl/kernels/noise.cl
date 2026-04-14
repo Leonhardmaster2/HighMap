@@ -160,15 +160,6 @@ float base_worley(const float2 p, const float fseed)
       float  dist = dot(diff, diff);
 
       min_dist = min(min_dist, dist);
-      /* float2 neighbor = i + (float2)(dx, dy); */
-      /* float2 feature_point = neighbor + */
-      /*                        (float2)(hash12f(neighbor, fseed), */
-      /*                                 hash12f(neighbor + (float2)(0.1f, 0.1f), */
-      /*                                         fseed)); */
-
-      /* float2 diff = p - feature_point; */
-      /* float  dist = dot(diff, diff); */
-      /* min_dist = min(min_dist, dist); */
     }
 
   // NB - squared distance
