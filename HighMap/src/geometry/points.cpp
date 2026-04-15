@@ -87,10 +87,20 @@ float cross_product(const Point &p1, const Point &p2)
 
 float curvature(const Point &p1, const Point &p2, const Point &p3)
 {
-  float d = distance(p1, p2) * distance(p1, p3) * distance(p1, p3);
+  float d = distance(p1, p2) * distance(p2, p3) * distance(p1, p3);
 
   if (d > 0.f)
-    return 2.f * triangle_area(p1, p2, p3) / d;
+    return 4.f * triangle_area(p1, p2, p3) / d;
+  else
+    return 0.f;
+}
+
+float curvature_signed(const Point &p1, const Point &p2, const Point &p3)
+{
+  float d = distance(p1, p2) * distance(p2, p3) * distance(p1, p3);
+
+  if (d > 0.f)
+    return 4.f * triangle_area_signed(p1, p2, p3) / d;
   else
     return 0.f;
 }
@@ -256,8 +266,14 @@ void sort_points(std::vector<Point> &points)
 
 float triangle_area(const Point &p1, const Point &p2, const Point &p3)
 {
-  return 0.5f * std::abs(p1.x * (p2.y - p3.y) + p2.x * (p3.y - p1.y) +
-                         p3.x * (p1.y - p2.y));
+  return std::abs(triangle_area_signed(p1, p2, p3));
+}
+
+float triangle_area_signed(const Point &p1, const Point &p2, const Point &p3)
+{
+  return 0.5f *
+         (p1.x * (p2.y - p3.y) + p2.x * (p3.y - p1.y) + p3.x * (p1.y - p2.y));
+  // positive = CCW, negative = CW
 }
 
 glm::vec4 unit_square_bbox()

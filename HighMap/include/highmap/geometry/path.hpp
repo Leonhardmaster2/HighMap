@@ -408,7 +408,7 @@ public:
    *         corresponds to a point on the path and represents the normalized
    *         distance from the start of the path to that point.
    */
-  std::vector<float> get_arc_length();
+  std::vector<float> get_arc_length() const;
 
   /**
    * @brief Get the cumulative distance of the path.
@@ -421,7 +421,13 @@ public:
    *         entry represents the distance from the start of the path to the
    *         respective point.
    */
-  std::vector<float> get_cumulative_distance();
+  std::vector<float> get_cumulative_distance() const;
+
+  std::vector<float> get_curvature(bool normalized = true) const;
+
+  std::vector<glm::vec2> get_normals() const;
+
+  std::vector<glm::vec2> get_tangents() const;
 
   /**
    * @brief Get the values assigned to the points on the path.

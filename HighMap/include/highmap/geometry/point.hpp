@@ -239,6 +239,9 @@ float cross_product(const Point &p1, const Point &p2);
  */
 float curvature(const Point &p1, const Point &p2, const Point &p3);
 
+/* see hmap::curvature */
+float curvature_signed(const Point &p1, const Point &p2, const Point &p3);
+
 /**
  * @brief Calculates the distance between two points.
  *
@@ -499,6 +502,9 @@ void sort_points(std::vector<Point> &points);
  *            the points are collinear.
  */
 float triangle_area(const Point &p1, const Point &p2, const Point &p3);
+
+/* see hmap::triangle_area */
+float triangle_area_signed(const Point &p1, const Point &p2, const Point &p3);
 
 /**
  * @brief Constructs a 4D bounding box for a unit square.

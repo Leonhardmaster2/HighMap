@@ -369,7 +369,7 @@ void Path::fractalize(int       iterations,
   }
 }
 
-std::vector<float> Path::get_arc_length()
+std::vector<float> Path::get_arc_length() const
 {
   std::vector<float> s = this->get_cumulative_distance();
   // normalize in [0, 1]
@@ -378,7 +378,7 @@ std::vector<float> Path::get_arc_length()
   return s;
 }
 
-std::vector<float> Path::get_cumulative_distance()
+std::vector<float> Path::get_cumulative_distance() const
 {
   size_t             ke = this->closed ? 1 : 0;
   std::vector<float> dacc(this->get_npoints() + ke);
@@ -391,6 +391,60 @@ std::vector<float> Path::get_cumulative_distance()
   }
 
   return dacc;
+}
+
+std::vector<float> Path::get_curvature(bool normalized) const
+{
+  size_t             ke = this->closed ? 1 : 0;
+  std::vector<float> cv(this->get_npoints() + ke);
+  float              cmax = -std::numeric_limits<float>::max();
+
+  for (size_t k = 1; k < this->get_npoints() - 1 + ke; k++)
+  {
+    size_t km = (k - 1) % this->get_npoints();
+    size_t kp = (k + 1) % this->get_npoints();
+    cv[k] = curvature_signed(this->points[km],
+                             this->points[k],
+                             this->points[kp]);
+
+    cmax = std::max(cmax, cv[k]);
+  }
+
+  if (normalized)
+  {
+    for (auto &v : cv)
+      v /= cmax;
+  }
+
+  return cv;
+}
+
+std::vector<glm::vec2> Path::get_normals() const
+{
+  size_t                 ke = this->closed ? 1 : 0;
+  std::vector<glm::vec2> normals(this->get_npoints() + ke);
+
+  for (size_t k = 1; k < this->get_npoints() - 1 + ke; k++)
+  {
+    size_t    km = (k - 1) % this->get_npoints();
+    size_t    kp = (k + 1) % this->get_npoints();
+    glm::vec2 delta = {this->points[kp].x - this->points[km].x,
+                       this->points[kp].y - this->points[km].y};
+
+    normals[k] = glm::normalize(glm::vec2(-delta.y, delta.x));
+  }
+
+  return normals;
+}
+
+std::vector<glm::vec2> Path::get_tangents() const
+{
+  std::vector<glm::vec2> tangents = this->get_normals();
+
+  for (auto &t : tangents)
+    t = {-t.y, t.x};
+
+  return tangents;
 }
 
 std::vector<float> Path::get_values() const

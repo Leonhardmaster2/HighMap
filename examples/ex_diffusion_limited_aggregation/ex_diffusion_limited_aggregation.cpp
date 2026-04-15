@@ -14,5 +14,8 @@ int main(void)
                                                                seed,
                                                                50000);
 
-  hmap::export_banner_png("ex_diffusion_limited_aggregation.png", {z, zt}, hmap::Cmap::JET, true);
+  hmap::export_banner_png("ex_diffusion_limited_aggregation.png",
+                          {z, zt},
+                          hmap::Cmap::JET,
+                          true);
 }
