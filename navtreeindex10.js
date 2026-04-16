@@ -1,7 +1,5 @@
 var NAVTREEINDEX10 =
 {
-"hydrology_8hpp.html#add95813f31b18511fc6eeb672c3a056c":[5,0,1,0,0,2,2,4],
-"hydrology_8hpp.html#ae42a874864d2d8f1a7b580f428395c01":[5,0,1,0,0,2,2,3],
 "hydrology_8hpp.html#aeebe29334cfef012f311a2369ed3286c":[5,0,1,0,0,2,2,31],
 "hydrology_8hpp.html#af794a4c54c3766ca86b7e4a06346ab91":[5,0,1,0,0,2,2,29],
 "hydrology_8hpp.html#af8f580c9d50a07585257569bd1160891":[5,0,1,0,0,2,2,14],
@@ -249,5 +247,7 @@ var NAVTREEINDEX10 =
 "local__metrics__gpu_8cpp.html#a5c576fca64db583bf500d667173c128a":[5,0,1,1,22,1,3],
 "local__metrics__gpu_8cpp.html#a5e3ebf317043142adc19dd211ba07230":[5,0,1,1,22,1,5],
 "local__metrics__gpu_8cpp.html#a62292cc4bf9f6eb5c7b63b1e26f8cc88":[5,0,1,1,22,1,11],
-"local__metrics__gpu_8cpp.html#a72341578d241e21b4c31d7497287cfc3":[5,0,1,1,22,1,2]
+"local__metrics__gpu_8cpp.html#a72341578d241e21b4c31d7497287cfc3":[5,0,1,1,22,1,2],
+"local__metrics__gpu_8cpp.html#a74594cae7628bcfb1c038ac6930fe97d":[5,0,1,1,22,1,13],
+"local__metrics__gpu_8cpp.html#aa40b626be86c63829e7e118fa389d260":[5,0,1,1,22,1,6]
 };

@@ -12,7 +12,6 @@ var classhmap_1_1Path =
     [ "catmullrom", "classhmap_1_1Path.html#a474a7bb81e024ffbda7b328a6257eb72", null ],
     [ "clear", "classhmap_1_1Path.html#ad85aa61692aadbfa1f3f08096cb0594c", null ],
     [ "decasteljau", "classhmap_1_1Path.html#a8afb2afae1396fdf7cf8fd3a52e6a227", null ],
-    [ "decimate_cfit", "classhmap_1_1Path.html#a4cc695288a4c28a0ad2cccb6d73f506c", null ],
     [ "decimate_vw", "classhmap_1_1Path.html#ad2be7924d78ea51a68158bf68b12d6ed", null ],
     [ "dijkstra", "classhmap_1_1Path.html#a5bb9bb29af2ea6411b6837ef4c2ee6c0", null ],
     [ "divide", "classhmap_1_1Path.html#a8650db137a1b4ecccf05cfd0fd7d320b", null ],

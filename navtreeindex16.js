@@ -1,7 +1,5 @@
 var NAVTREEINDEX16 =
 {
-"namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fad5818c578f7164c55a879326e4a88b53":[3,0,0,0,0,6],
-"namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fad839ce8cff6bd20c67432d651776b569":[3,0,0,0,0,2],
 "namespacehmap_1_1gpu.html#ab0737b29664736928a86f0755493895fafad6a20433412feb877a9e8ebb76633c":[3,0,0,0,0,7],
 "namespacehmap_1_1gpu.html#ab0c3573265940002d1b9940964477d47":[3,0,0,0,154],
 "namespacehmap_1_1gpu.html#ab10a6dc3d92519c7bd3244571bcd6429":[3,0,0,0,79],
@@ -75,8 +73,8 @@ var NAVTREEINDEX16 =
 "namespacemembers_enum.html":[3,1,3],
 "namespacemembers_eval.html":[3,1,4],
 "namespacemembers_f.html":[3,1,0,6],
-"namespacemembers_func.html":[3,1,1],
 "namespacemembers_func.html":[3,1,1,0],
+"namespacemembers_func.html":[3,1,1],
 "namespacemembers_func_b.html":[3,1,1,1],
 "namespacemembers_func_c.html":[3,1,1,2],
 "namespacemembers_func_d.html":[3,1,1,3],
@@ -249,5 +247,7 @@ var NAVTREEINDEX16 =
 "point__sampling_8hpp.html#af6bffa549fbb1beb816c1c0acc7afb3f":[5,0,1,0,0,1,7,12],
 "point__sampling_8hpp_source.html":[5,0,1,0,0,1,7],
 "points_8cpp.html":[5,0,1,1,16,6],
-"points_8cpp.html#a088f13a41a6ec41ad6fbc7f235da0dbc":[5,0,1,1,16,6,4]
+"points_8cpp.html#a088f13a41a6ec41ad6fbc7f235da0dbc":[5,0,1,1,16,6,4],
+"points_8cpp.html#a1f02679c93973b91046f26960bf266d4":[5,0,1,1,16,6,1],
+"points_8cpp.html#a2064345ed067ff51624e17f118b48870":[5,0,1,1,16,6,19]
 };

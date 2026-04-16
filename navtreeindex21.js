@@ -1,7 +1,5 @@
 var NAVTREEINDEX21 =
 {
-"virtual__texture__storage_8hpp.html":[5,0,1,0,0,6,6],
-"virtual__texture__storage_8hpp_source.html":[5,0,1,0,0,6,6],
 "warp_8cpp.html":[5,0,1,1,38,4],
 "warp_8cpp.html#a19148ad2a95f7ad5b05161e9a0f0f732":[5,0,1,1,38,4,0],
 "warp_8cpp.html#a2dba417aca5a0dcd02509617939d741b":[5,0,1,1,38,4,4],
