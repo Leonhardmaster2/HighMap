@@ -66,10 +66,16 @@ void \mbox{\hyperlink{classhmap_1_1Path_a8650db137a1b4ecccf05cfd0fd7d320b}{divid
 \begin{DoxyCompactList}\small\item\em Divide the path by adding a point between each pair of consecutive points. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classhmap_1_1Path_ae338a7d28b40b0c7d0f9537ee770fcc4}{fractalize}} (int iterations, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, float sigma=0.\+3\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, int orientation=0, float persistence=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+control\+\_\+field=nullptr, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
 \begin{DoxyCompactList}\small\item\em Applies fractalization to the path by adding points and randomly displacing their positions. \end{DoxyCompactList}\item 
-std\+::vector$<$ float $>$ \mbox{\hyperlink{classhmap_1_1Path_a417b1c7f9e1228e8d88f8d022bfb4efa}{get\+\_\+arc\+\_\+length}} ()
+std\+::vector$<$ float $>$ \mbox{\hyperlink{classhmap_1_1Path_a0ef4a309bc181ea182c0b7a75c8fdae7}{get\+\_\+arc\+\_\+length}} () const
 \begin{DoxyCompactList}\small\item\em Get the arc length of the path. \end{DoxyCompactList}\item 
-std\+::vector$<$ float $>$ \mbox{\hyperlink{classhmap_1_1Path_af379ec4946bde23277f2bd8112cc086c}{get\+\_\+cumulative\+\_\+distance}} ()
+std\+::vector$<$ float $>$ \mbox{\hyperlink{classhmap_1_1Path_a9ea0ffcf40358b7e33ff8cffc33f918a}{get\+\_\+cumulative\+\_\+distance}} () const
 \begin{DoxyCompactList}\small\item\em Get the cumulative distance of the path. \end{DoxyCompactList}\item 
+std\+::vector$<$ float $>$ \mbox{\hyperlink{classhmap_1_1Path_ab083b81103f72c7c9b9fa81451599357}{get\+\_\+curvature}} (bool normalized=false) const
+\begin{DoxyCompactList}\small\item\em Computes the signed curvature at each point of the path. \end{DoxyCompactList}\item 
+std\+::vector$<$ glm\+::vec2 $>$ \mbox{\hyperlink{classhmap_1_1Path_acfd768645d095235067a01cb7f069155}{get\+\_\+normals}} () const
+\begin{DoxyCompactList}\small\item\em Computes unit normals at each point of the path. \end{DoxyCompactList}\item 
+std\+::vector$<$ glm\+::vec2 $>$ \mbox{\hyperlink{classhmap_1_1Path_adb21bc9bdaea145a168b8ecdf43edf80}{get\+\_\+tangents}} () const
+\begin{DoxyCompactList}\small\item\em Computes unit tangents at each point of the path. \end{DoxyCompactList}\item 
 std\+::vector$<$ float $>$ \mbox{\hyperlink{classhmap_1_1Path_a5e321e91e212ccfcb33088be73543494}{get\+\_\+values}} () const
 \begin{DoxyCompactList}\small\item\em Get the values assigned to the points on the path. \end{DoxyCompactList}\item 
 std\+::vector$<$ float $>$ \mbox{\hyperlink{classhmap_1_1Path_ac01edb126b845a027883d9abd88e826b}{get\+\_\+x}} () const
@@ -785,7 +791,7 @@ This method uses the elevation map to subdivide the path by adding intermediate 
 \DoxyCodeLine{\ \ glm::vec2\ \ \ res\ =\ \{4.f,\ 4.f\};}
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ seed\ =\ 2;}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_acb13e7346085793fda4c94c47b75d9a9}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ res,\ seed);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(z);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ab80da2376c6212eb9cb2899c0a5114ad}{hmap::remap}}(z);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ glm::vec4\ \ bbox\ =\ \{1.f,\ 2.f,\ -\/0.5f,\ 0.5f\};}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Path}{hmap::Path}}\ path\ =\ \mbox{\hyperlink{classhmap_1_1Path}{hmap::Path}}(3,\ seed,\ \{1.1f,\ 1.9f,\ -\/0.4,\ 0.4f\});}
@@ -889,7 +895,7 @@ This method enhances the complexity of a path by iteratively adding new points b
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ control\ function\ (supposed\ to\ be\ in\ [0,\ 1])}}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\_control\ =\ \mbox{\hyperlink{namespacehmap_a79ad6fb857a38f8de9915d01992e5161}{hmap::slope}}(shape,\ 0.f,\ -\/1.f);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a262e6495cb2d02598f36a2b46114b2b4}{hmap::remap}}(z\_control);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ab80da2376c6212eb9cb2899c0a5114ad}{hmap::remap}}(z\_control);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ iterations\ =\ 6;}
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ sigma\ =\ 0.3f;}
@@ -948,11 +954,11 @@ This method enhances the complexity of a path by iteratively adding new points b
 {\em bbox} & Bounding box that defines the valid area for the control field\textquotesingle{}s influence. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{classhmap_1_1Path_a417b1c7f9e1228e8d88f8d022bfb4efa}\label{classhmap_1_1Path_a417b1c7f9e1228e8d88f8d022bfb4efa} 
+\Hypertarget{classhmap_1_1Path_a0ef4a309bc181ea182c0b7a75c8fdae7}\label{classhmap_1_1Path_a0ef4a309bc181ea182c0b7a75c8fdae7} 
 \index{hmap::Path@{hmap::Path}!get\_arc\_length@{get\_arc\_length}}
 \index{get\_arc\_length@{get\_arc\_length}!hmap::Path@{hmap::Path}}
 \doxysubsubsection{\texorpdfstring{get\_arc\_length()}{get\_arc\_length()}}
-{\footnotesize\ttfamily std\+::vector$<$ float $>$ hmap\+::\+Path\+::get\+\_\+arc\+\_\+length (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily std\+::vector$<$ float $>$ hmap\+::\+Path\+::get\+\_\+arc\+\_\+length (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
 
@@ -963,11 +969,11 @@ The arc length is the cumulative distance along the path, normalized to the rang
 \begin{DoxyReturn}{Returns}
 std\+::vector$<$float$>$ Vector of arc length values, where each entry corresponds to a point on the path and represents the normalized distance from the start of the path to that point. 
 \end{DoxyReturn}
-\Hypertarget{classhmap_1_1Path_af379ec4946bde23277f2bd8112cc086c}\label{classhmap_1_1Path_af379ec4946bde23277f2bd8112cc086c} 
+\Hypertarget{classhmap_1_1Path_a9ea0ffcf40358b7e33ff8cffc33f918a}\label{classhmap_1_1Path_a9ea0ffcf40358b7e33ff8cffc33f918a} 
 \index{hmap::Path@{hmap::Path}!get\_cumulative\_distance@{get\_cumulative\_distance}}
 \index{get\_cumulative\_distance@{get\_cumulative\_distance}!hmap::Path@{hmap::Path}}
 \doxysubsubsection{\texorpdfstring{get\_cumulative\_distance()}{get\_cumulative\_distance()}}
-{\footnotesize\ttfamily std\+::vector$<$ float $>$ hmap\+::\+Path\+::get\+\_\+cumulative\+\_\+distance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily std\+::vector$<$ float $>$ hmap\+::\+Path\+::get\+\_\+cumulative\+\_\+distance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
 
@@ -977,6 +983,50 @@ This method computes the cumulative distance along the path, which is the total 
 
 \begin{DoxyReturn}{Returns}
 std\+::vector$<$float$>$ Vector of cumulative distance values, where each entry represents the distance from the start of the path to the respective point. 
+\end{DoxyReturn}
+\Hypertarget{classhmap_1_1Path_ab083b81103f72c7c9b9fa81451599357}\label{classhmap_1_1Path_ab083b81103f72c7c9b9fa81451599357} 
+\index{hmap::Path@{hmap::Path}!get\_curvature@{get\_curvature}}
+\index{get\_curvature@{get\_curvature}!hmap::Path@{hmap::Path}}
+\doxysubsubsection{\texorpdfstring{get\_curvature()}{get\_curvature()}}
+{\footnotesize\ttfamily std\+::vector$<$ float $>$ hmap\+::\+Path\+::get\+\_\+curvature (\begin{DoxyParamCaption}\item[{bool}]{normalized = {\ttfamily false} }\end{DoxyParamCaption}) const}
+
+
+
+Computes the signed curvature at each point of the path. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em normalized} & If true, scales values to \mbox{[}-\/1, 1\mbox{]} using the maximum absolute curvature. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector of curvature values. 
+\end{DoxyReturn}
+\Hypertarget{classhmap_1_1Path_acfd768645d095235067a01cb7f069155}\label{classhmap_1_1Path_acfd768645d095235067a01cb7f069155} 
+\index{hmap::Path@{hmap::Path}!get\_normals@{get\_normals}}
+\index{get\_normals@{get\_normals}!hmap::Path@{hmap::Path}}
+\doxysubsubsection{\texorpdfstring{get\_normals()}{get\_normals()}}
+{\footnotesize\ttfamily std\+::vector$<$ glm\+::vec2 $>$ hmap\+::\+Path\+::get\+\_\+normals (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Computes unit normals at each point of the path. 
+
+\begin{DoxyReturn}{Returns}
+Vector of normal vectors. 
+\end{DoxyReturn}
+\Hypertarget{classhmap_1_1Path_adb21bc9bdaea145a168b8ecdf43edf80}\label{classhmap_1_1Path_adb21bc9bdaea145a168b8ecdf43edf80} 
+\index{hmap::Path@{hmap::Path}!get\_tangents@{get\_tangents}}
+\index{get\_tangents@{get\_tangents}!hmap::Path@{hmap::Path}}
+\doxysubsubsection{\texorpdfstring{get\_tangents()}{get\_tangents()}}
+{\footnotesize\ttfamily std\+::vector$<$ glm\+::vec2 $>$ hmap\+::\+Path\+::get\+\_\+tangents (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Computes unit tangents at each point of the path. 
+
+\begin{DoxyReturn}{Returns}
+Vector of tangent vectors. 
 \end{DoxyReturn}
 \Hypertarget{classhmap_1_1Path_a5e321e91e212ccfcb33088be73543494}\label{classhmap_1_1Path_a5e321e91e212ccfcb33088be73543494} 
 \index{hmap::Path@{hmap::Path}!get\_values@{get\_values}}

@@ -820,9 +820,9 @@ Functions</h2></td></tr>
 <div class="line">  <span class="keywordtype">int</span>         iterations = 5000;</div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z3 = <a class="code hl_function" href="namespacehmap_1_1gpu.html#a65a176508b404f80e5f5abd31456712e">hmap::gpu::blend_poisson_bf</a>(z1, z2, iterations);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z1);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z2);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z3);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z1);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z2);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z3);</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_blend_poisson_bf.png&quot;</span>,</div>
 <div class="line">                          {z1, z2, z3},</div>
@@ -832,7 +832,7 @@ Functions</h2></td></tr>
 <div class="ttc" id="ahighmap_8hpp_html"><div class="ttname"><a href="highmap_8hpp.html">highmap.hpp</a></div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_a65a176508b404f80e5f5abd31456712e"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a65a176508b404f80e5f5abd31456712e">hmap::gpu::blend_poisson_bf</a></div><div class="ttdeci">Array blend_poisson_bf(const Array &amp;array1, const Array &amp;array2, const int iterations=500, const Array *p_mask=nullptr)</div><div class="ttdoc">Blends two arrays using Poisson blending with a brute-force solver.</div><div class="ttdef"><b>Definition</b> blending_gpu.cpp:30</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_adb8336ed4d83c15500872185dee45d50"><div class="ttname"><a href="namespacehmap_1_1gpu.html#adb8336ed4d83c15500872185dee45d50">hmap::gpu::init_opencl</a></div><div class="ttdeci">bool init_opencl()</div><div class="ttdef"><b>Definition</b> gpu_opencl.cpp:24</div></div>
-<div class="ttc" id="anamespacehmap_html_a262e6495cb2d02598f36a2b46114b2b4"><div class="ttname"><a href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a></div><div class="ttdeci">void remap(Array &amp;array, float vmin, float vmax, float from_min, float from_max)</div><div class="ttdoc">Remap array elements from a starting range to a target range.</div><div class="ttdef"><b>Definition</b> range.cpp:362</div></div>
+<div class="ttc" id="anamespacehmap_html_ab80da2376c6212eb9cb2899c0a5114ad"><div class="ttname"><a href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a></div><div class="ttdeci">std::vector&lt; float &gt; remap(const std::vector&lt; float &gt; &amp;data, float new_min=0.f, float new_max=1.f)</div><div class="ttdoc">Remaps values of a vector to a given range [new_min, new_max].</div><div class="ttdef"><b>Definition</b> vector_utils.cpp:166</div></div>
 <div class="ttc" id="anamespacehmap_html_ab8197c4c7a85dacb616fee7a7d0df195a035bda7c8c2179b47b9a766531c2e89e"><div class="ttname"><a href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a035bda7c8c2179b47b9a766531c2e89e">hmap::WORLEY</a></div><div class="ttdeci">@ WORLEY</div><div class="ttdoc">Worley.</div><div class="ttdef"><b>Definition</b> functions.hpp:73</div></div>
 <div class="ttc" id="anamespacehmap_html_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581"><div class="ttname"><a href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::PERLIN</a></div><div class="ttdeci">@ PERLIN</div><div class="ttdoc">Perlin.</div><div class="ttdef"><b>Definition</b> functions.hpp:64</div></div>
 <div class="ttc" id="anamespacehmap_html_ac2452e568959bc21c9b7b09202e5977a"><div class="ttname"><a href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a></div><div class="ttdeci">void export_banner_png(const std::string &amp;fname, const std::vector&lt; Array &gt; &amp;arrays, int cmap, bool hillshading=false, bool normalize_arrays=false)</div><div class="ttdoc">Exports a set of arrays as a banner PNG image file.</div><div class="ttdef"><b>Definition</b> export_banner_png.cpp:11</div></div>
@@ -1174,7 +1174,7 @@ Functions</h2></td></tr>
 <div class="line">                                   8,</div>
 <div class="line">                                   0.f);</div>
 <div class="line">  z0 = <a class="code hl_function" href="namespacehmap.html#ae3ecf5f88476c5d49978a130f8cab2f3">hmap::bulkify</a>(z0, <a class="code hl_enumvalue" href="namespacehmap.html#a55542a66f890ef9ecf5f82af2c23a0cfa71a3d57896b6c2d066433962e74e8961">hmap::PrimitiveType::PRIM_CONE_SMOOTH</a>, 1.f);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z0);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z0);</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordtype">int</span> nparticles = int(0.5f * shape.x * shape.y);</div>
 <div class="line"> </div>
@@ -1531,7 +1531,7 @@ Functions</h2></td></tr>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z0 = <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195ac5113a637d69eb3c549e6d561da167ed">hmap::NoiseType::SIMPLEX2</a>, shape, kw, seed);</div>
 <div class="line">  <span class="comment">// z0 = hmap::bulkify(z0, hmap::PrimitiveType::PRIM_CONE_SMOOTH, 1.f);</span></div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z0);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z0);</div>
 <div class="line"> </div>
 <div class="line">  <span class="keyword">auto</span>  z1 = z0;</div>
 <div class="line">  <span class="keywordtype">float</span> kp_global = 24.f;</div>
@@ -1793,7 +1793,7 @@ Functions</h2></td></tr>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z0 = <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195ac5113a637d69eb3c549e6d561da167ed">hmap::NoiseType::SIMPLEX2</a>, shape, kw, seed);</div>
 <div class="line">  <span class="comment">// z0 = hmap::bulkify(z0, hmap::PrimitiveType::PRIM_CONE_SMOOTH, 1.f);</span></div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z0);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z0);</div>
 <div class="line"> </div>
 <div class="line">  <span class="keyword">auto</span>  z1 = z0;</div>
 <div class="line">  <span class="keywordtype">float</span> kp_global = 24.f;</div>
@@ -2134,7 +2134,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">  <span class="keywordtype">int</span>        seed = 2;</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z0 = <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, kw, seed);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z0);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z0);</div>
 <div class="line">  <span class="keyword">auto</span> z1 = z0;</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordtype">int</span>         iterations = 400;</div>
@@ -3006,7 +3006,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z1 = 1.f +</div>
 <div class="line">                   <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, kw, seed);</div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#a968a55eecfa4489a79a27cfa0e1d3ae4">hmap::zeroed_edges</a>(z1);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z1);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z1);</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z2 = z1;</div>
 <div class="line"> </div>
@@ -3015,7 +3015,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">  <span class="keywordtype">float</span>     intensity = 0.1f;</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap_1_1gpu.html#adca53669496f6a636042e11a859d1a16">hmap::gpu::rifts</a>(z2, kw_r, <a class="code hl_function" href="namespacehmap.html#aac71bb6c14edc17967957f7918acdbdd">angle</a>, intensity, ++seed);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z2);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z2);</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_rifts.png&quot;</span>, {z1, z2}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>, <span class="keyword">true</span>);</div>
 <div class="line">}</div>
@@ -3483,11 +3483,11 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z1 = 1.f +</div>
 <div class="line">                   <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, kw, seed);</div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#a968a55eecfa4489a79a27cfa0e1d3ae4">hmap::zeroed_edges</a>(z1);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z1);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z1);</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z2 = z1;</div>
 <div class="line">  <a class="code hl_function" href="namespacehmap_1_1gpu.html#abb80ba73ad4baeb50723d73b1e597824">hmap::gpu::strata</a>(z2, 30.f, 2.f, 0.7f, ++seed);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z2);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z2);</div>
 <div class="line"> </div>
 <div class="line">  z1.<a class="code hl_function" href="classhmap_1_1Array.html#a00b8f7462c1e22b1da8a67ec62d4c8c8">dump</a>(<span class="stringliteral">&quot;out0.png&quot;</span>);</div>
 <div class="line">  z2.<a class="code hl_function" href="classhmap_1_1Array.html#a00b8f7462c1e22b1da8a67ec62d4c8c8">dump</a>();</div>
@@ -3625,7 +3625,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z0 = <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, kw, seed);</div>
 <div class="line">  z0 = <a class="code hl_function" href="namespacehmap.html#ae3ecf5f88476c5d49978a130f8cab2f3">hmap::bulkify</a>(z0, <a class="code hl_enumvalue" href="namespacehmap.html#a55542a66f890ef9ecf5f82af2c23a0cfa71a3d57896b6c2d066433962e74e8961">hmap::PrimitiveType::PRIM_CONE_SMOOTH</a>, 1.f);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z0);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z0);</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z1 = z0;</div>
 <div class="line"> </div>
@@ -3649,7 +3649,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">                          noise_amp,</div>
 <div class="line">                          absolute_displacement,</div>
 <div class="line">                          occurence_probability);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z1);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z1);</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordtype">int</span>   octaves = 6;</div>
 <div class="line">  <span class="keywordtype">float</span> persistence = 0.4f;</div>
@@ -3672,7 +3672,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">                              octaves,</div>
 <div class="line">                              persistence,</div>
 <div class="line">                              lacunarity);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z2);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z2);</div>
 <div class="line"> </div>
 <div class="line">  z0.<a class="code hl_function" href="classhmap_1_1Array.html#a00b8f7462c1e22b1da8a67ec62d4c8c8">dump</a>(<span class="stringliteral">&quot;out0.png&quot;</span>);</div>
 <div class="line">  z1.<a class="code hl_function" href="classhmap_1_1Array.html#a00b8f7462c1e22b1da8a67ec62d4c8c8">dump</a>(<span class="stringliteral">&quot;out1.png&quot;</span>);</div>
@@ -3822,7 +3822,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z0 = <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, kw, seed);</div>
 <div class="line">  z0 = <a class="code hl_function" href="namespacehmap.html#ae3ecf5f88476c5d49978a130f8cab2f3">hmap::bulkify</a>(z0, <a class="code hl_enumvalue" href="namespacehmap.html#a55542a66f890ef9ecf5f82af2c23a0cfa71a3d57896b6c2d066433962e74e8961">hmap::PrimitiveType::PRIM_CONE_SMOOTH</a>, 1.f);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z0);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z0);</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z1 = z0;</div>
 <div class="line"> </div>
@@ -3846,7 +3846,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">                          noise_amp,</div>
 <div class="line">                          absolute_displacement,</div>
 <div class="line">                          occurence_probability);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z1);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z1);</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordtype">int</span>   octaves = 6;</div>
 <div class="line">  <span class="keywordtype">float</span> persistence = 0.4f;</div>
@@ -3869,7 +3869,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">                              octaves,</div>
 <div class="line">                              persistence,</div>
 <div class="line">                              lacunarity);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z2);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z2);</div>
 <div class="line"> </div>
 <div class="line">  z0.<a class="code hl_function" href="classhmap_1_1Array.html#a00b8f7462c1e22b1da8a67ec62d4c8c8">dump</a>(<span class="stringliteral">&quot;out0.png&quot;</span>);</div>
 <div class="line">  z1.<a class="code hl_function" href="classhmap_1_1Array.html#a00b8f7462c1e22b1da8a67ec62d4c8c8">dump</a>(<span class="stringliteral">&quot;out1.png&quot;</span>);</div>
@@ -4038,7 +4038,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z0 = <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, kw, seed);</div>
 <div class="line">  z0 = <a class="code hl_function" href="namespacehmap.html#ae3ecf5f88476c5d49978a130f8cab2f3">hmap::bulkify</a>(z0, <a class="code hl_enumvalue" href="namespacehmap.html#a55542a66f890ef9ecf5f82af2c23a0cfa71a3d57896b6c2d066433962e74e8961">hmap::PrimitiveType::PRIM_CONE_SMOOTH</a>, 1.f);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z0);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z0);</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z1 = z0;</div>
 <div class="line"> </div>
@@ -4062,7 +4062,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">                          noise_amp,</div>
 <div class="line">                          absolute_displacement,</div>
 <div class="line">                          occurence_probability);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z1);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z1);</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordtype">int</span>   octaves = 6;</div>
 <div class="line">  <span class="keywordtype">float</span> persistence = 0.4f;</div>
@@ -4085,7 +4085,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">                              octaves,</div>
 <div class="line">                              persistence,</div>
 <div class="line">                              lacunarity);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z2);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z2);</div>
 <div class="line"> </div>
 <div class="line">  z0.<a class="code hl_function" href="classhmap_1_1Array.html#a00b8f7462c1e22b1da8a67ec62d4c8c8">dump</a>(<span class="stringliteral">&quot;out0.png&quot;</span>);</div>
 <div class="line">  z1.<a class="code hl_function" href="classhmap_1_1Array.html#a00b8f7462c1e22b1da8a67ec62d4c8c8">dump</a>(<span class="stringliteral">&quot;out1.png&quot;</span>);</div>
@@ -4261,7 +4261,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z0 = <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, kw, seed);</div>
 <div class="line">  z0 = <a class="code hl_function" href="namespacehmap.html#ae3ecf5f88476c5d49978a130f8cab2f3">hmap::bulkify</a>(z0, <a class="code hl_enumvalue" href="namespacehmap.html#a55542a66f890ef9ecf5f82af2c23a0cfa71a3d57896b6c2d066433962e74e8961">hmap::PrimitiveType::PRIM_CONE_SMOOTH</a>, 1.f);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z0);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z0);</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z1 = z0;</div>
 <div class="line"> </div>
@@ -4285,7 +4285,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">                          noise_amp,</div>
 <div class="line">                          absolute_displacement,</div>
 <div class="line">                          occurence_probability);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z1);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z1);</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordtype">int</span>   octaves = 6;</div>
 <div class="line">  <span class="keywordtype">float</span> persistence = 0.4f;</div>
@@ -4308,7 +4308,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">                              octaves,</div>
 <div class="line">                              persistence,</div>
 <div class="line">                              lacunarity);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z2);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z2);</div>
 <div class="line"> </div>
 <div class="line">  z0.<a class="code hl_function" href="classhmap_1_1Array.html#a00b8f7462c1e22b1da8a67ec62d4c8c8">dump</a>(<span class="stringliteral">&quot;out0.png&quot;</span>);</div>
 <div class="line">  z1.<a class="code hl_function" href="classhmap_1_1Array.html#a00b8f7462c1e22b1da8a67ec62d4c8c8">dump</a>(<span class="stringliteral">&quot;out1.png&quot;</span>);</div>
@@ -4406,7 +4406,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">  <span class="keywordtype">int</span>        seed = 0;</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z1 = <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, kw, seed);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z1);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z1);</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordtype">float</span> gamma = 0.5f;</div>
 <div class="line">  <span class="keywordtype">float</span> kz = 8.f; <span class="comment">// 8-layers</span></div>
@@ -4536,7 +4536,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">  <span class="keywordtype">int</span>        seed = 0;</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z1 = <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, kw, seed);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z1);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z1);</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordtype">float</span> gamma = 0.5f;</div>
 <div class="line">  <span class="keywordtype">float</span> kz = 8.f; <span class="comment">// 8-layers</span></div>
@@ -4989,7 +4989,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">  <span class="keywordtype">int</span>       seed = 1;</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z = <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, kw, seed);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z);</div>
 <div class="line">  <span class="keyword">auto</span> z1 = z;</div>
 <div class="line">  <span class="keyword">auto</span> z2 = z;</div>
 <div class="line">  <span class="keyword">auto</span> z3 = z;</div>
@@ -5160,7 +5160,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">  <span class="keywordtype">int</span>       seed = 1;</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z = <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, kw, seed);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z);</div>
 <div class="line">  <span class="keyword">auto</span> z1 = z;</div>
 <div class="line">  <span class="keyword">auto</span> z2 = z;</div>
 <div class="line">  <span class="keyword">auto</span> z3 = z;</div>
@@ -5651,7 +5651,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z0 = <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, kw, seed++);</div>
 <div class="line">  z0 = <a class="code hl_function" href="namespacehmap.html#ae3ecf5f88476c5d49978a130f8cab2f3">hmap::bulkify</a>(z0, <a class="code hl_enumvalue" href="namespacehmap.html#a55542a66f890ef9ecf5f82af2c23a0cfa71a3d57896b6c2d066433962e74e8961">hmap::PrimitiveType::PRIM_CONE_SMOOTH</a>, 2.f);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z0);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z0);</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordtype">float</span>       noise_amp = 0.03f;</div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> dx = noise_amp * <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195ac5113a637d69eb3c549e6d561da167ed">hmap::NoiseType::SIMPLEX2</a>,</div>
@@ -7468,13 +7468,13 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">  <span class="keywordtype">int</span>        seed = 0;</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z = <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195ac5113a637d69eb3c549e6d561da167ed">hmap::NoiseType::SIMPLEX2</a>, shape, kw, seed);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z);</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// --- GPU phase field</span></div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordtype">float</span>       kp_global = 64.f;</div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> phi2 = <a class="code hl_function" href="namespacehmap_1_1gpu.html#a0eab8e0319f11623e88016ce6cd44d72">hmap::gpu::phase_field</a>(z, seed, kp_global);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(phi2);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(phi2);</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_phase_field.png&quot;</span>, {z, phi2}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>
@@ -7610,13 +7610,13 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">  <span class="keywordtype">int</span>        seed = 0;</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z = <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195ac5113a637d69eb3c549e6d561da167ed">hmap::NoiseType::SIMPLEX2</a>, shape, kw, seed);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z);</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// --- GPU phase field</span></div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordtype">float</span>       kp_global = 64.f;</div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> phi2 = <a class="code hl_function" href="namespacehmap_1_1gpu.html#a0eab8e0319f11623e88016ce6cd44d72">hmap::gpu::phase_field</a>(z, seed, kp_global);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(phi2);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(phi2);</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_phase_field.png&quot;</span>, {z, phi2}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>
@@ -8179,7 +8179,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z = <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, kw, seed);</div>
 <div class="line">  z = <a class="code hl_function" href="namespacehmap.html#ae3ecf5f88476c5d49978a130f8cab2f3">hmap::bulkify</a>(z, <a class="code hl_enumvalue" href="namespacehmap.html#a55542a66f890ef9ecf5f82af2c23a0cfae1780174f7412d5a5593b324ea0db7cb">hmap::PrimitiveType::PRIM_CUBIC_PULSE</a>, 1.f);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z);</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// parameters</span></div>
 <div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span>       talus_repose = 2.5f / shape.x;</div>
@@ -8275,7 +8275,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">  <span class="keywordtype">int</span>        seed = 1;</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z = <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, kw, seed);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z);</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> water_depth0 = <a class="code hl_function" href="namespacehmap.html#a3624c1660e60d16a87c90222606f7050">hmap::flooding_lake_system</a>(z);</div>
 <div class="line">  <span class="keyword">auto</span>        water_depth1 = water_depth0;</div>
@@ -8578,7 +8578,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">  <span class="keywordtype">int</span>        seed = 1;</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z = <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, res, seed);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z);</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordtype">int</span> ir = 8;</div>
 <div class="line"> </div>
@@ -8681,7 +8681,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">  <span class="keywordtype">int</span>        seed = 1;</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z = <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, res, seed);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z);</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordtype">int</span> ir = 8;</div>
 <div class="line"> </div>
@@ -8799,7 +8799,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">  <span class="keywordtype">int</span>        seed = 1;</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z = <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, res, seed);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z);</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordtype">int</span> ir = 8;</div>
 <div class="line"> </div>
@@ -8887,14 +8887,14 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">  <span class="keywordtype">int</span>        seed = 1;</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z = <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, res, seed);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z);</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordtype">int</span> ir = 16;</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// gpu version</span></div>
 <div class="line">  <a class="code hl_function" href="namespacehmap_1_1gpu.html#adb8336ed4d83c15500872185dee45d50">hmap::gpu::init_opencl</a>();</div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z1 = <a class="code hl_function" href="namespacehmap_1_1gpu.html#a5e3ebf317043142adc19dd211ba07230">hmap::gpu::local_relief</a>(z, ir);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z1);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z1);</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_local_relief.png&quot;</span>, {z, z1}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>
@@ -8950,14 +8950,14 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">  <span class="keywordtype">int</span>        seed = 1;</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z = <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, res, seed);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z);</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordtype">int</span> ir = 16;</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// gpu version</span></div>
 <div class="line">  <a class="code hl_function" href="namespacehmap_1_1gpu.html#adb8336ed4d83c15500872185dee45d50">hmap::gpu::init_opencl</a>();</div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z1 = <a class="code hl_function" href="namespacehmap_1_1gpu.html#aeca9d8454f50273ca4a4f3db0c25a1b1">hmap::gpu::local_variance</a>(z, ir);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z1);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z1);</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_local_variance.png&quot;</span>, {z, z1}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>
@@ -9071,14 +9071,14 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">  <span class="keywordtype">int</span>        seed = 1;</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z = <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, res, seed);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z);</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordtype">int</span> ir = 16;</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// gpu version</span></div>
 <div class="line">  <a class="code hl_function" href="namespacehmap_1_1gpu.html#adb8336ed4d83c15500872185dee45d50">hmap::gpu::init_opencl</a>();</div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z1 = <a class="code hl_function" href="namespacehmap_1_1gpu.html#ad6ef648576e9339058037a28ce17d225">hmap::gpu::local_z_score</a>(z, ir);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z1);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z1);</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_local_z_score.png&quot;</span>, {z, z1}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>
@@ -9134,14 +9134,14 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">  <span class="keywordtype">int</span>        seed = 1;</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z = <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, res, seed);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z);</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordtype">int</span> ir = 16;</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// gpu version</span></div>
 <div class="line">  <a class="code hl_function" href="namespacehmap_1_1gpu.html#adb8336ed4d83c15500872185dee45d50">hmap::gpu::init_opencl</a>();</div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z1 = <a class="code hl_function" href="namespacehmap_1_1gpu.html#a74594cae7628bcfb1c038ac6930fe97d">hmap::gpu::topographic_position_index</a>(z, ir);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z1);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z1);</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_topographic_position_index.png&quot;</span>,</div>
 <div class="line">                          {z, z1},</div>
@@ -10838,7 +10838,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">                                     octaves);</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// base amplitude amplitude expected to be in [-1, 1] (approx.)</span></div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(base, -1.f, 1.f);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(base, -1.f, 1.f);</div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z3 = <a class="code hl_function" href="namespacehmap_1_1gpu.html#a970d42d8f9305065f89dc019be7ae1cf">hmap::gpu::gavoronoise</a>(base, kw, seed, amp);</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// --- local angle</span></div>
@@ -11535,7 +11535,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">                                      8,</div>
 <div class="line">                                      0.f);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(<a class="code hl_function" href="namespacehmap_1_1gpu.html#ab5aba8cd3981de6f363f6ae287d7be5f">noise</a>);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(<a class="code hl_function" href="namespacehmap_1_1gpu.html#ab5aba8cd3981de6f363f6ae287d7be5f">noise</a>);</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// use dedicated mask generator</span></div>
 <div class="line">  <span class="keywordtype">float</span>           radius = 0.3f;</div>
@@ -11794,7 +11794,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">                                      8,</div>
 <div class="line">                                      0.f);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(<a class="code hl_function" href="namespacehmap_1_1gpu.html#ab5aba8cd3981de6f363f6ae287d7be5f">noise</a>);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(<a class="code hl_function" href="namespacehmap_1_1gpu.html#ab5aba8cd3981de6f363f6ae287d7be5f">noise</a>);</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// use dedicated mask generator</span></div>
 <div class="line">  <span class="keywordtype">float</span>           radius = 0.3f;</div>
@@ -14069,7 +14069,7 @@ The OpenCL kernel "vorolines" must be defined and compiled beforehand.</dd></dl>
 <div class="line">                                         alpha,</div>
 <div class="line">                                         alpha_span,</div>
 <div class="line">                                         type);</div>
-<div class="line">    <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z);</div>
+<div class="line">    <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z);</div>
 <div class="line">    z = <a class="code hl_function" href="namespacehmap.html#a6b608e2826c1f9ba54a0e8922d5faa6b">sqrt</a>(z);</div>
 <div class="line">    zs.push_back(z);</div>
 <div class="line">  }</div>
@@ -14089,7 +14089,7 @@ The OpenCL kernel "vorolines" must be defined and compiled beforehand.</dd></dl>
 <div class="line">                                             alpha,</div>
 <div class="line">                                             alpha_span,</div>
 <div class="line">                                             type);</div>
-<div class="line">    <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z);</div>
+<div class="line">    <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z);</div>
 <div class="line">    z = <a class="code hl_function" href="namespacehmap.html#a6b608e2826c1f9ba54a0e8922d5faa6b">sqrt</a>(z);</div>
 <div class="line">    zs.push_back(z);</div>
 <div class="line">  }</div>
@@ -14291,7 +14291,7 @@ This function requires an OpenCL kernel named "vorolines_fbm" to be compiled and
 <div class="line">                                         alpha,</div>
 <div class="line">                                         alpha_span,</div>
 <div class="line">                                         type);</div>
-<div class="line">    <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z);</div>
+<div class="line">    <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z);</div>
 <div class="line">    z = <a class="code hl_function" href="namespacehmap.html#a6b608e2826c1f9ba54a0e8922d5faa6b">sqrt</a>(z);</div>
 <div class="line">    zs.push_back(z);</div>
 <div class="line">  }</div>
@@ -14311,7 +14311,7 @@ This function requires an OpenCL kernel named "vorolines_fbm" to be compiled and
 <div class="line">                                             alpha,</div>
 <div class="line">                                             alpha_span,</div>
 <div class="line">                                             type);</div>
-<div class="line">    <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z);</div>
+<div class="line">    <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z);</div>
 <div class="line">    z = <a class="code hl_function" href="namespacehmap.html#a6b608e2826c1f9ba54a0e8922d5faa6b">sqrt</a>(z);</div>
 <div class="line">    zs.push_back(z);</div>
 <div class="line">  }</div>
@@ -14460,7 +14460,7 @@ This function requires an OpenCL kernel named "vorolines_fbm" to be compiled and
 <div class="line">                                       k_smoothing,</div>
 <div class="line">                                       exp_sigma,</div>
 <div class="line">                                       type);</div>
-<div class="line">    <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z);</div>
+<div class="line">    <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z);</div>
 <div class="line">    zs.push_back(z);</div>
 <div class="line">  }</div>
 <div class="line"> </div>
@@ -14473,7 +14473,7 @@ This function requires an OpenCL kernel named "vorolines_fbm" to be compiled and
 <div class="line">                                           k_smoothing,</div>
 <div class="line">                                           exp_sigma,</div>
 <div class="line">                                           type);</div>
-<div class="line">    <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z);</div>
+<div class="line">    <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z);</div>
 <div class="line">    zs.push_back(z);</div>
 <div class="line">  }</div>
 <div class="line"> </div>
@@ -14648,7 +14648,7 @@ This function requires an OpenCL kernel named "vorolines_fbm" to be compiled and
 <div class="line">                                       k_smoothing,</div>
 <div class="line">                                       exp_sigma,</div>
 <div class="line">                                       type);</div>
-<div class="line">    <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z);</div>
+<div class="line">    <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z);</div>
 <div class="line">    zs.push_back(z);</div>
 <div class="line">  }</div>
 <div class="line"> </div>
@@ -14661,7 +14661,7 @@ This function requires an OpenCL kernel named "vorolines_fbm" to be compiled and
 <div class="line">                                           k_smoothing,</div>
 <div class="line">                                           exp_sigma,</div>
 <div class="line">                                           type);</div>
-<div class="line">    <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z);</div>
+<div class="line">    <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z);</div>
 <div class="line">    zs.push_back(z);</div>
 <div class="line">  }</div>
 <div class="line"> </div>
@@ -15150,7 +15150,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">                                        k_smoothing,</div>
 <div class="line">                                        exp_sigma,</div>
 <div class="line">                                        type);</div>
-<div class="line">    <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z);</div>
+<div class="line">    <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z);</div>
 <div class="line">    zs.push_back(z);</div>
 <div class="line">  }</div>
 <div class="line"> </div>
@@ -15671,7 +15671,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">  <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>       seed = 0;</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z = <a class="code hl_function" href="namespacehmap_1_1gpu.html#abbdd364965f18e629307200a4dbfa5a8">hmap::gpu::shattered_peak</a>(shape, seed);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z);</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// weathered</span></div>
 <div class="line">  <span class="keywordtype">int</span>         ir_curvature = 0;</div>
@@ -15688,9 +15688,9 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">  <span class="comment">// flow</span></div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> sflow = <a class="code hl_function" href="namespacehmap_1_1gpu.html#afb62cf56466c5bdfb9b6a26458a52d12">hmap::gpu::select_soil_flow</a>(z);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(sw);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(sflow);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(sw);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(sflow);</div>
 <div class="line"> </div>
 <div class="line">  z.<a class="code hl_function" href="classhmap_1_1Array.html#a00b8f7462c1e22b1da8a67ec62d4c8c8">dump</a>(<span class="stringliteral">&quot;out0.png&quot;</span>);</div>
 <div class="line">  sflow.<a class="code hl_function" href="classhmap_1_1Array.html#a00b8f7462c1e22b1da8a67ec62d4c8c8">dump</a>(<span class="stringliteral">&quot;out1.png&quot;</span>);</div>
@@ -15789,10 +15789,10 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">  <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>       seed = 0;</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z = <a class="code hl_function" href="namespacehmap_1_1gpu.html#abbdd364965f18e629307200a4dbfa5a8">hmap::gpu::shattered_peak</a>(shape, seed);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z);</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> srocks = <a class="code hl_function" href="namespacehmap_1_1gpu.html#a735421f1b5f42ade55224b932603c58e">hmap::gpu::select_soil_rocks</a>(z);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(srocks);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(srocks);</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// optional -- consider increasing contrast of srocks with hmap::saturate</span></div>
 <div class="line">  <span class="keywordflow">if</span> (<span class="keyword">true</span>) <a class="code hl_function" href="namespacehmap.html#a2e4283dd5da8add89788c5023c73042c">hmap::saturate</a>(srocks, 0.f, 0.3f);</div>
@@ -15899,7 +15899,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">  <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>       seed = 0;</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z = <a class="code hl_function" href="namespacehmap_1_1gpu.html#abbdd364965f18e629307200a4dbfa5a8">hmap::gpu::shattered_peak</a>(shape, seed);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z);</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// weathered</span></div>
 <div class="line">  <span class="keywordtype">int</span>         ir_curvature = 0;</div>
@@ -15916,9 +15916,9 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">  <span class="comment">// flow</span></div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> sflow = <a class="code hl_function" href="namespacehmap_1_1gpu.html#afb62cf56466c5bdfb9b6a26458a52d12">hmap::gpu::select_soil_flow</a>(z);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(sw);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(sflow);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(sw);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(sflow);</div>
 <div class="line"> </div>
 <div class="line">  z.<a class="code hl_function" href="classhmap_1_1Array.html#a00b8f7462c1e22b1da8a67ec62d4c8c8">dump</a>(<span class="stringliteral">&quot;out0.png&quot;</span>);</div>
 <div class="line">  sflow.<a class="code hl_function" href="classhmap_1_1Array.html#a00b8f7462c1e22b1da8a67ec62d4c8c8">dump</a>(<span class="stringliteral">&quot;out1.png&quot;</span>);</div>
@@ -16158,7 +16158,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">  <span class="keywordtype">int</span> nparticles = 10000;</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z = <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, res, seed);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z);</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> za = z;</div>
 <div class="line">  za = <a class="code hl_function" href="namespacehmap_1_1gpu.html#a12757ceaaf11f04640c3a18520886cc8">hmap::gpu::advection_particle</a>(z, za, nparticles, seed);</div>
@@ -16436,7 +16436,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">  <span class="keywordtype">int</span>        seed = 1;</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z = <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, res, seed);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z);</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordtype">float</span> advection_length = 0.05f;</div>
 <div class="line">  <span class="keywordtype">float</span> value_persistence = 0.96f;</div>

@@ -2,9 +2,11 @@ var points_8cpp =
 [
     [ "angle", "points_8cpp.html#aac71bb6c14edc17967957f7918acdbdd", null ],
     [ "angle", "points_8cpp.html#a1f02679c93973b91046f26960bf266d4", null ],
+    [ "classify_point", "points_8cpp.html#a62b55fdc2fbc76c4938a6b49a10cfd65", null ],
     [ "cross_product", "points_8cpp.html#a81ad5d7feec9716598307f4de02d47de", null ],
     [ "cross_product", "points_8cpp.html#a088f13a41a6ec41ad6fbc7f235da0dbc", null ],
     [ "curvature", "points_8cpp.html#a30122e874f6a99af65954458cc9e4de9", null ],
+    [ "curvature_signed", "points_8cpp.html#abc7eb3ca1df902fff8e54584547cf841", null ],
     [ "distance", "points_8cpp.html#a567410971127d39a9e3c2d7b75364def", null ],
     [ "interp_bezier", "points_8cpp.html#ac5cbdd19410027f3d4e26fd68fd9bdb7", null ],
     [ "interp_bspline", "points_8cpp.html#af148c924b422baa2e359e0788b7392d0", null ],
@@ -17,7 +19,9 @@ var points_8cpp =
     [ "midpoint", "points_8cpp.html#a520a1e42c4e492e81b334914807abc22", null ],
     [ "segment_intersection", "points_8cpp.html#ae6135d0c9d4716e3edbd06bb67f26fb2", null ],
     [ "cmp_inf", "points_8cpp.html#ac070e7f9253f57fe6b44ad1f6c9fd753", null ],
+    [ "side", "points_8cpp.html#a2064345ed067ff51624e17f118b48870", null ],
     [ "sort_points", "points_8cpp.html#a69877ef43645c767daa0735fde59821c", null ],
     [ "triangle_area", "points_8cpp.html#a9249226d73f4396157c1c6415ebf3a7c", null ],
+    [ "triangle_area_signed", "points_8cpp.html#a5dc01b8ec213bc19fc4800e1286b0975", null ],
     [ "unit_square_bbox", "points_8cpp.html#aef71b544e3f4e5321cb3d41a7366e0f3", null ]
 ];

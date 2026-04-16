@@ -104,74 +104,96 @@ $(document).ready(function(){initNavTree('vector__utils_8hpp_source.html',''); i
   <div class="headertitle"><div class="title">vector_utils.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="vector__utils_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">   Public License. The full license is in the file LICENSE, distributed with</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">   this software. */</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;algorithm&gt;</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &lt;random&gt;</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="vector__utils_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">   21</a></span><span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_typedef" href="vector__utils_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>;</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacehmap.html">hmap</a></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>{</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment">// TODO clean up</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keywordtype">size_t</span> <a class="code hl_function" href="namespacehmap.html#a0b7db6f8ce57fcdeca7ca1e3b7d1e686">upperbound_right</a>(<span class="keyword">const</span> std::vector&lt;float&gt; &amp;v, <span class="keywordtype">float</span> value);</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<a href="vector__utils_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;random&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="vector__utils_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">   13</a></span><span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_typedef" href="vector__utils_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>;</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacehmap.html">hmap</a></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>{</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">// ============================================================</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">// Indexing / Sorting</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment">// ============================================================</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>std::vector&lt;size_t&gt; <a class="code hl_function" href="namespacehmap.html#a8be122241fa42b0f6a7ef67106391780">argsort</a>(<span class="keyword">const</span> std::vector&lt;float&gt; &amp;v);</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="foldopen" id="foldopen00033" data-start="{" data-end="}">
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="namespacehmap.html#ad122242a8f8cf308215faee96c9471ee">   33</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap.html#ad122242a8f8cf308215faee96c9471ee">reindex_vector</a>(std::vector&lt;T&gt; &amp;v, std::vector&lt;size_t&gt; &amp;idx)</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>{</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>  std::vector&lt;T&gt; v_new(v.size());</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>  <span class="keywordflow">for</span> (<a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> k = 0; k &lt; v.size(); k++)</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    v_new[k] = v[idx[k]];</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>  v = v_new;</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>}</div>
-</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="foldopen" id="foldopen00042" data-start="{" data-end="}">
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="namespacehmap.html#ad465af1e2c3cc465b53657b457bf68a5">   42</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap.html#ad465af1e2c3cc465b53657b457bf68a5">shuffle_vector</a>(std::vector&lt;T&gt; &amp;values, std::uint32_t seed)</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="namespacehmap.html#ad122242a8f8cf308215faee96c9471ee">   42</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap.html#ad122242a8f8cf308215faee96c9471ee">reindex_vector</a>(std::vector&lt;T&gt; &amp;v, std::vector&lt;size_t&gt; &amp;idx)</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>{</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>  std::mt19937 rng(seed);</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>  std::shuffle(values.begin(), values.end(), rng);</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>}</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>  std::vector&lt;T&gt; v_new(v.size());</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>  <span class="keywordflow">for</span> (<a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> k = 0; k &lt; v.size(); k++)</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    v_new[k] = v[idx[k]];</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>  v = v_new;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>}</div>
 </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="foldopen" id="foldopen00049" data-start="{" data-end="}">
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="namespacehmap.html#a0520c7ad885d5776f6e06ec12e7f1729">   49</a></span>std::vector&lt;T&gt; <a class="code hl_function" href="namespacehmap.html#a0520c7ad885d5776f6e06ec12e7f1729">shuffled_vector</a>(<span class="keyword">const</span> std::vector&lt;T&gt; &amp;values, std::uint32_t seed)</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>{</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>  std::vector&lt;T&gt; result = values;</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>  <a class="code hl_function" href="namespacehmap.html#ad465af1e2c3cc465b53657b457bf68a5">shuffle_vector</a>(result, seed);</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>  <span class="keywordflow">return</span> result;</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>}</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="keywordtype">size_t</span> <a class="code hl_function" href="namespacehmap.html#a0b7db6f8ce57fcdeca7ca1e3b7d1e686">upperbound_right</a>(<span class="keyword">const</span> std::vector&lt;float&gt; &amp;v, <span class="keywordtype">float</span> value);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="comment">// ============================================================</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment">// Random / Shuffling</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="comment">// ============================================================</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00073" data-start="{" data-end="}">
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="namespacehmap.html#ad465af1e2c3cc465b53657b457bf68a5">   73</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap.html#ad465af1e2c3cc465b53657b457bf68a5">shuffle_vector</a>(std::vector&lt;T&gt; &amp;values, std::uint32_t seed)</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>{</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>  std::mt19937 rng(seed);</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>  std::shuffle(values.begin(), values.end(), rng);</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>}</div>
 </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap.html#ac95d63662a6878f27011c0b4c7c70078">vector_unique_values</a>(std::vector&lt;float&gt; &amp;v);</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>std::string <a class="code hl_function" href="namespacehmap.html#a47f7c4ead587ead4a75c9c7f4fc4b079">make_histogram</a>(<span class="keyword">const</span> std::vector&lt;float&gt; &amp;values,</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>                           <span class="keywordtype">int</span>                       bin_count,</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                           <span class="keywordtype">int</span>                       hist_height);</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>} <span class="comment">// namespace hmap</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00088" data-start="{" data-end="}">
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="namespacehmap.html#a0520c7ad885d5776f6e06ec12e7f1729">   88</a></span>std::vector&lt;T&gt; <a class="code hl_function" href="namespacehmap.html#a0520c7ad885d5776f6e06ec12e7f1729">shuffled_vector</a>(<span class="keyword">const</span> std::vector&lt;T&gt; &amp;values, std::uint32_t seed)</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>{</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>  std::vector&lt;T&gt; result = values;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>  <a class="code hl_function" href="namespacehmap.html#ad465af1e2c3cc465b53657b457bf68a5">shuffle_vector</a>(result, seed);</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>  <span class="keywordflow">return</span> result;</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>}</div>
+</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="comment">// ============================================================</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="comment">// Value Processing</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="comment">// ============================================================</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>std::vector&lt;size_t&gt; <a class="code hl_function" href="namespacehmap.html#a03345527b3df79e1825d2f91d776ba35">find_sign_changes</a>(<span class="keyword">const</span> std::vector&lt;float&gt; &amp;data);</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>std::vector&lt;float&gt; <a class="code hl_function" href="namespacehmap.html#a31a4797a24a40eff0c53d17040327abe">moving_average</a>(<span class="keyword">const</span> std::vector&lt;float&gt; &amp;input, <span class="keywordtype">int</span> radius);</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap.html#ac95d63662a6878f27011c0b4c7c70078">vector_unique_values</a>(std::vector&lt;float&gt; &amp;v);</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>std::vector&lt;float&gt; <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">remap</a>(<span class="keyword">const</span> std::vector&lt;float&gt; &amp;data,</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>                         <span class="keywordtype">float</span>                     new_min = 0.f,</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>                         <span class="keywordtype">float</span>                     new_max = 1.f);</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span> </div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span><span class="comment">// ============================================================</span></div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span><span class="comment">// Analysis / Visualization</span></div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span><span class="comment">// ============================================================</span></div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span> </div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>std::string <a class="code hl_function" href="namespacehmap.html#a47f7c4ead587ead4a75c9c7f4fc4b079">make_histogram</a>(<span class="keyword">const</span> std::vector&lt;float&gt; &amp;values,</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>                           <span class="keywordtype">int</span>                       bin_count,</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>                           <span class="keywordtype">int</span>                       hist_height);</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span> </div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>} <span class="comment">// namespace hmap</span></div>
 <div class="ttc" id="aarray_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition</b> array.hpp:14</div></div>
 <div class="ttc" id="anamespacehmap_html"><div class="ttname"><a href="namespacehmap.html">hmap</a></div><div class="ttdef"><b>Definition</b> algebra.hpp:23</div></div>
-<div class="ttc" id="anamespacehmap_html_a0520c7ad885d5776f6e06ec12e7f1729"><div class="ttname"><a href="namespacehmap.html#a0520c7ad885d5776f6e06ec12e7f1729">hmap::shuffled_vector</a></div><div class="ttdeci">std::vector&lt; T &gt; shuffled_vector(const std::vector&lt; T &gt; &amp;values, std::uint32_t seed)</div><div class="ttdef"><b>Definition</b> vector_utils.hpp:49</div></div>
-<div class="ttc" id="anamespacehmap_html_a0b7db6f8ce57fcdeca7ca1e3b7d1e686"><div class="ttname"><a href="namespacehmap.html#a0b7db6f8ce57fcdeca7ca1e3b7d1e686">hmap::upperbound_right</a></div><div class="ttdeci">size_t upperbound_right(const std::vector&lt; float &gt; &amp;v, float value)</div><div class="ttdef"><b>Definition</b> vector_utils.cpp:95</div></div>
-<div class="ttc" id="anamespacehmap_html_a47f7c4ead587ead4a75c9c7f4fc4b079"><div class="ttname"><a href="namespacehmap.html#a47f7c4ead587ead4a75c9c7f4fc4b079">hmap::make_histogram</a></div><div class="ttdeci">std::string make_histogram(const std::vector&lt; float &gt; &amp;values, int bin_count, int hist_height)</div><div class="ttdef"><b>Definition</b> vector_utils.cpp:29</div></div>
-<div class="ttc" id="anamespacehmap_html_a8be122241fa42b0f6a7ef67106391780"><div class="ttname"><a href="namespacehmap.html#a8be122241fa42b0f6a7ef67106391780">hmap::argsort</a></div><div class="ttdeci">std::vector&lt; size_t &gt; argsort(const std::vector&lt; float &gt; &amp;v)</div><div class="ttdef"><b>Definition</b> vector_utils.cpp:18</div></div>
-<div class="ttc" id="anamespacehmap_html_ac95d63662a6878f27011c0b4c7c70078"><div class="ttname"><a href="namespacehmap.html#ac95d63662a6878f27011c0b4c7c70078">hmap::vector_unique_values</a></div><div class="ttdeci">void vector_unique_values(std::vector&lt; float &gt; &amp;v)</div><div class="ttdef"><b>Definition</b> vector_utils.cpp:110</div></div>
-<div class="ttc" id="anamespacehmap_html_ad122242a8f8cf308215faee96c9471ee"><div class="ttname"><a href="namespacehmap.html#ad122242a8f8cf308215faee96c9471ee">hmap::reindex_vector</a></div><div class="ttdeci">void reindex_vector(std::vector&lt; T &gt; &amp;v, std::vector&lt; size_t &gt; &amp;idx)</div><div class="ttdef"><b>Definition</b> vector_utils.hpp:33</div></div>
-<div class="ttc" id="anamespacehmap_html_ad465af1e2c3cc465b53657b457bf68a5"><div class="ttname"><a href="namespacehmap.html#ad465af1e2c3cc465b53657b457bf68a5">hmap::shuffle_vector</a></div><div class="ttdeci">void shuffle_vector(std::vector&lt; T &gt; &amp;values, std::uint32_t seed)</div><div class="ttdef"><b>Definition</b> vector_utils.hpp:42</div></div>
-<div class="ttc" id="avector__utils_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="vector__utils_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition</b> vector_utils.hpp:21</div></div>
+<div class="ttc" id="anamespacehmap_html_a03345527b3df79e1825d2f91d776ba35"><div class="ttname"><a href="namespacehmap.html#a03345527b3df79e1825d2f91d776ba35">hmap::find_sign_changes</a></div><div class="ttdeci">std::vector&lt; size_t &gt; find_sign_changes(const std::vector&lt; float &gt; &amp;data)</div><div class="ttdoc">Returns indices where a sign change occurs in the input vector.</div><div class="ttdef"><b>Definition</b> vector_utils.cpp:30</div></div>
+<div class="ttc" id="anamespacehmap_html_a0520c7ad885d5776f6e06ec12e7f1729"><div class="ttname"><a href="namespacehmap.html#a0520c7ad885d5776f6e06ec12e7f1729">hmap::shuffled_vector</a></div><div class="ttdeci">std::vector&lt; T &gt; shuffled_vector(const std::vector&lt; T &gt; &amp;values, std::uint32_t seed)</div><div class="ttdoc">Returns a shuffled copy of a vector.</div><div class="ttdef"><b>Definition</b> vector_utils.hpp:88</div></div>
+<div class="ttc" id="anamespacehmap_html_a0b7db6f8ce57fcdeca7ca1e3b7d1e686"><div class="ttname"><a href="namespacehmap.html#a0b7db6f8ce57fcdeca7ca1e3b7d1e686">hmap::upperbound_right</a></div><div class="ttdeci">size_t upperbound_right(const std::vector&lt; float &gt; &amp;v, float value)</div><div class="ttdoc">Returns the index of the first element greater than a given value.</div><div class="ttdef"><b>Definition</b> vector_utils.cpp:151</div></div>
+<div class="ttc" id="anamespacehmap_html_a31a4797a24a40eff0c53d17040327abe"><div class="ttname"><a href="namespacehmap.html#a31a4797a24a40eff0c53d17040327abe">hmap::moving_average</a></div><div class="ttdeci">std::vector&lt; float &gt; moving_average(const std::vector&lt; float &gt; &amp;input, int radius)</div><div class="ttdoc">Smooths a vector using a centered moving average.</div><div class="ttdef"><b>Definition</b> vector_utils.cpp:125</div></div>
+<div class="ttc" id="anamespacehmap_html_a47f7c4ead587ead4a75c9c7f4fc4b079"><div class="ttname"><a href="namespacehmap.html#a47f7c4ead587ead4a75c9c7f4fc4b079">hmap::make_histogram</a></div><div class="ttdeci">std::string make_histogram(const std::vector&lt; float &gt; &amp;values, int bin_count, int hist_height)</div><div class="ttdoc">Generates an ASCII histogram representation of values.</div><div class="ttdef"><b>Definition</b> vector_utils.cpp:59</div></div>
+<div class="ttc" id="anamespacehmap_html_a8be122241fa42b0f6a7ef67106391780"><div class="ttname"><a href="namespacehmap.html#a8be122241fa42b0f6a7ef67106391780">hmap::argsort</a></div><div class="ttdeci">std::vector&lt; size_t &gt; argsort(const std::vector&lt; float &gt; &amp;v)</div><div class="ttdoc">Returns the indices that would sort the vector.</div><div class="ttdef"><b>Definition</b> vector_utils.cpp:19</div></div>
+<div class="ttc" id="anamespacehmap_html_ab80da2376c6212eb9cb2899c0a5114ad"><div class="ttname"><a href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a></div><div class="ttdeci">std::vector&lt; float &gt; remap(const std::vector&lt; float &gt; &amp;data, float new_min=0.f, float new_max=1.f)</div><div class="ttdoc">Remaps values of a vector to a given range [new_min, new_max].</div><div class="ttdef"><b>Definition</b> vector_utils.cpp:166</div></div>
+<div class="ttc" id="anamespacehmap_html_ac95d63662a6878f27011c0b4c7c70078"><div class="ttname"><a href="namespacehmap.html#ac95d63662a6878f27011c0b4c7c70078">hmap::vector_unique_values</a></div><div class="ttdeci">void vector_unique_values(std::vector&lt; float &gt; &amp;v)</div><div class="ttdoc">Removes duplicate values from a vector.</div><div class="ttdef"><b>Definition</b> vector_utils.cpp:195</div></div>
+<div class="ttc" id="anamespacehmap_html_ad122242a8f8cf308215faee96c9471ee"><div class="ttname"><a href="namespacehmap.html#ad122242a8f8cf308215faee96c9471ee">hmap::reindex_vector</a></div><div class="ttdeci">void reindex_vector(std::vector&lt; T &gt; &amp;v, std::vector&lt; size_t &gt; &amp;idx)</div><div class="ttdoc">Reorders a vector using a given index mapping.</div><div class="ttdef"><b>Definition</b> vector_utils.hpp:42</div></div>
+<div class="ttc" id="anamespacehmap_html_ad465af1e2c3cc465b53657b457bf68a5"><div class="ttname"><a href="namespacehmap.html#ad465af1e2c3cc465b53657b457bf68a5">hmap::shuffle_vector</a></div><div class="ttdeci">void shuffle_vector(std::vector&lt; T &gt; &amp;values, std::uint32_t seed)</div><div class="ttdoc">Shuffles a vector in-place using a deterministic seed.</div><div class="ttdef"><b>Definition</b> vector_utils.hpp:73</div></div>
+<div class="ttc" id="avector__utils_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="vector__utils_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition</b> vector_utils.hpp:13</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
