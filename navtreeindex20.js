@@ -1,5 +1,7 @@
 var NAVTREEINDEX20 =
 {
+"structhmap_1_1VirtualArray.html#a7112a736d8497a4b65d5056209f04077":[3,0,0,77,30],
+"structhmap_1_1VirtualArray.html#a72a1341b322d90e51275dc8336944c16":[3,0,0,77,18],
 "structhmap_1_1VirtualArray.html#a72a1341b322d90e51275dc8336944c16":[4,0,0,76,18],
 "structhmap_1_1VirtualArray.html#a7753aef78b80e55ac2114ec8970ba765":[4,0,0,76,16],
 "structhmap_1_1VirtualArray.html#a7753aef78b80e55ac2114ec8970ba765":[3,0,0,77,16],
@@ -247,7 +249,5 @@ var NAVTREEINDEX20 =
 "virtual__array_8inl.html#ae478874f7642c88ddd72ff98cd6db121":[5,0,1,0,0,6,3,2],
 "virtual__array_8inl.html#afb0e81819ec38d3f973035c263fa13df":[5,0,1,0,0,6,3,7],
 "virtual__array__processing_8cpp.html":[5,0,1,1,40,8],
-"virtual__texture_8cpp.html":[5,0,1,1,40,9],
-"virtual__texture_8hpp.html":[5,0,1,0,0,6,4],
-"virtual__texture_8hpp.html#a1025088e008bb5709c8f88bc025ab1cb":[5,0,1,0,0,6,4,2]
+"virtual__texture_8cpp.html":[5,0,1,1,40,9]
 };

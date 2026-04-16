@@ -14,6 +14,7 @@ var classhmap_1_1Path =
     [ "bezier_round", "classhmap_1_1Path.html#a63ce9b401fbdaa45541c317045c0cec0", null ],
     [ "bspline", "classhmap_1_1Path.html#a4ca03435fee5e9111edd93e2393d1533", null ],
     [ "catmullrom", "classhmap_1_1Path.html#a0b0f06e06a62374a23fffd59cf52c7c2", null ],
+    [ "cubic_interp", "classhmap_1_1Path.html#a3a560f332285e965a8f9fa8cd67c1446", null ],
     [ "clear", "classhmap_1_1Path.html#ad85aa61692aadbfa1f3f08096cb0594c", null ],
     [ "decasteljau", "classhmap_1_1Path.html#a53d689856724f951147b5698c9b76563", null ],
     [ "decimate_vw", "classhmap_1_1Path.html#ad2be7924d78ea51a68158bf68b12d6ed", null ],

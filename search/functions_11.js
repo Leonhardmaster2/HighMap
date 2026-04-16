@@ -130,7 +130,7 @@ var searchData=
   ['square_5ffill_5fmd_127',['square_fill_md',['../namespacehmap.html#a3d953aa5fcf59193b3b8b98db3f5a872',1,'hmap']]],
   ['square_5fmd_128',['square_md',['../namespacehmap.html#af5440364a346b297246885e95793ef45',1,'hmap']]],
   ['stamping_129',['stamping',['../namespacehmap.html#a4fb4163cdefab63b52484ea8091a11ed',1,'hmap']]],
-  ['start_130',['start',['../structhmap_1_1Recorder.html#ad758a2382f097ff1fb636744e902aa49',1,'hmap::Recorder::start()'],['../classhmap_1_1Timer.html#ae9248cf01bfd4d8f680a6c7d5b80f45b',1,'hmap::Timer::Start()']]],
+  ['start_130',['start',['../classhmap_1_1Timer.html#ae9248cf01bfd4d8f680a6c7d5b80f45b',1,'hmap::Timer::Start()'],['../structhmap_1_1Recorder.html#ad758a2382f097ff1fb636744e902aa49',1,'hmap::Recorder::start()']]],
   ['std_131',['std',['../classhmap_1_1Array.html#aa913be411b57b6a46b45dd3d5ddefcfd',1,'hmap::Array']]],
   ['steepen_132',['steepen',['../namespacehmap.html#a38fb422e7a9cd383d40c9a25a06767d5',1,'hmap::steepen(Array &amp;array, float scale, int ir=8)'],['../namespacehmap.html#a3dac1291a901a399f36a17476859353a',1,'hmap::steepen(Array &amp;array, float scale, const Array *p_mask, int ir=8)']]],
   ['steepen_5fconvective_133',['steepen_convective',['../namespacehmap.html#a8a7a083e583afe812239d1fe6aa479cd',1,'hmap::steepen_convective(Array &amp;array, float angle, int iterations=1, int ir=0, float dt=0.1f)'],['../namespacehmap.html#ab46e625ea919327a4e2899dd53fff18d',1,'hmap::steepen_convective(Array &amp;array, float angle, const Array *p_mask, int iterations=1, int ir=0, float dt=0.1f)']]],
