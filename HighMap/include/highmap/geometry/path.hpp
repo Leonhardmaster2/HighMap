@@ -49,6 +49,12 @@ namespace hmap
 class Path : public Cloud
 {
 public:
+  enum class EdgeDivisionMode : int
+  {
+    EDM_PER_EDGE,
+    EDM_FULL_ARC,
+  };
+
   /**
    * @brief Defines whether the path is closed or open. If `true`, the path is
    * closed, forming a loop. If `false`, the path is open.
@@ -148,7 +154,9 @@ public:
    * @param edge_divisions  Number of subdivisions per edge to achieve smooth
    *                        curves.
    */
-  void bezier(float curvature_ratio = 0.3f, int edge_divisions = 10);
+  void bezier(float            curvature_ratio = 0.3f,
+              int              edge_divisions = 10,
+              EdgeDivisionMode edm = EdgeDivisionMode::EDM_PER_EDGE);
 
   /**
    * @brief Smooth the path using Bezier curves (alternative method).
@@ -168,7 +176,9 @@ public:
    *                        positive values for increased curvature.
    * @param edge_divisions  Number of edge subdivisions for smoothness.
    */
-  void bezier_round(float curvature_ratio = 0.3f, int edge_divisions = 10);
+  void bezier_round(float            curvature_ratio = 0.3f,
+                    int              edge_divisions = 10,
+                    EdgeDivisionMode edm = EdgeDivisionMode::EDM_PER_EDGE);
 
   /**
    * @brief Smooth the path using B-Spline curves.
@@ -193,7 +203,8 @@ public:
    *
    * @warning This function does not correctly handle closed polylines.
    */
-  void bspline(int edge_divisions = 10);
+  void bspline(int              edge_divisions = 10,
+               EdgeDivisionMode edm = EdgeDivisionMode::EDM_PER_EDGE);
 
   /**
    * @brief Smooth the path using Catmull-Rom curves.
@@ -218,7 +229,8 @@ public:
    *
    * @warning This function does not correctly handle closed polylines.
    */
-  void catmullrom(int edge_divisions = 10);
+  void catmullrom(int              edge_divisions = 10,
+                  EdgeDivisionMode edm = EdgeDivisionMode::EDM_PER_EDGE);
 
   /**
    * @brief Clear the path data.
@@ -252,7 +264,8 @@ public:
    * **Result**
    * @image html ex_path_decasteljau.png
    */
-  void decasteljau(int edge_divisions = 10);
+  void decasteljau(int              edge_divisions = 10,
+                   EdgeDivisionMode edm = EdgeDivisionMode::EDM_PER_EDGE);
 
   /**
    * @brief Simplifies the current path using the Visvalingam-Whyatt algorithm.
@@ -512,11 +525,12 @@ public:
    * is 1.
    * @param edge_divisions Number of sub-divisions of each edge. Default is 10.
    */
-  void meanderize(float ratio,
-                  float noise_ratio = 0.1f,
-                  uint  seed = 1,
-                  int   iterations = 1,
-                  int   edge_divisions = 10);
+  void meanderize(float            ratio,
+                  float            noise_ratio = 0.1f,
+                  uint             seed = 1,
+                  int              iterations = 1,
+                  int              edge_divisions = 10,
+                  EdgeDivisionMode edm = EdgeDivisionMode::EDM_PER_EDGE);
 
   /**
    * @brief Reorder points using a nearest neighbor search.

@@ -22,7 +22,29 @@
 namespace hmap
 {
 
-void Path::bezier(float curvature_ratio, int edge_divisions)
+// --- HELPERS
+
+Path helper_build_path(const std::vector<Point> &points,
+                       InterpolationMethodCurve  method,
+                       Path::EdgeDivisionMode    edm,
+                       int                       edge_divisions,
+                       int                       point_count)
+{
+  InterpolatorCurve fitp(points, method);
+
+  int npts = edge_divisions;
+  if (edm == Path::EdgeDivisionMode::EDM_PER_EDGE) npts *= point_count;
+
+  std::vector<float> t = hmap::linspace(0.f, 1.f, npts);
+
+  return Path(fitp(t));
+}
+
+// --- METHODS
+
+void Path::bezier(float            curvature_ratio,
+                  int              edge_divisions,
+                  EdgeDivisionMode edm)
 {
   // --- generate a new set of points by adding control points
   // --- inbetween path points
@@ -53,16 +75,18 @@ void Path::bezier(float curvature_ratio, int edge_divisions)
 
   // --- interpolate
 
-  InterpolatorCurve  fitp = InterpolatorCurve(new_points,
-                                             InterpolationMethodCurve::BEZIER);
-  int                npts = edge_divisions * (int)this->get_npoints();
-  std::vector<float> t = hmap::linspace(0.f, 1.f, npts);
+  Path new_path = helper_build_path(new_points,
+                                    InterpolationMethodCurve::BEZIER,
+                                    edm,
+                                    edge_divisions,
+                                    this->get_npoints());
 
-  Path new_path = Path(fitp(t));
   *this = std::move(new_path);
 }
 
-void Path::bezier_round(float curvature_ratio, int edge_divisions)
+void Path::bezier_round(float            curvature_ratio,
+                        int              edge_divisions,
+                        EdgeDivisionMode edm)
 {
   // --- generate a new set of points by adding control points
   // --- inbetween path points
@@ -95,36 +119,33 @@ void Path::bezier_round(float curvature_ratio, int edge_divisions)
 
   // --- interpolate
 
-  InterpolatorCurve  fitp = InterpolatorCurve(new_points,
-                                             InterpolationMethodCurve::BEZIER);
-  int                npts = edge_divisions * (int)this->get_npoints();
-  std::vector<float> t = hmap::linspace(0.f, 1.f, npts);
-
-  Path new_path = Path(fitp(t));
-  *this = std::move(new_path);
-}
-
-void Path::bspline(int edge_divisions)
-{
-  InterpolatorCurve  fitp = InterpolatorCurve(this->points,
-                                             InterpolationMethodCurve::BSPLINE);
-  int                npts = edge_divisions * (int)this->get_npoints();
-  std::vector<float> t = hmap::linspace(0.f, 1.f, npts);
-
-  Path new_path = Path(fitp(t));
+  Path new_path = helper_build_path(new_points,
+                                    InterpolationMethodCurve::BEZIER,
+                                    edm,
+                                    edge_divisions,
+                                    this->get_npoints());
 
   *this = std::move(new_path);
 }
 
-void Path::catmullrom(int edge_divisions)
+void Path::bspline(int edge_divisions, EdgeDivisionMode edm)
 {
-  InterpolatorCurve fitp = InterpolatorCurve(
-      this->points,
-      InterpolationMethodCurve::CATMULLROM);
-  int                npts = edge_divisions * (int)this->get_npoints();
-  std::vector<float> t = hmap::linspace(0.f, 1.f, npts);
+  Path new_path = helper_build_path(this->points,
+                                    InterpolationMethodCurve::BSPLINE,
+                                    edm,
+                                    edge_divisions,
+                                    this->get_npoints());
 
-  Path new_path = Path(fitp(t));
+  *this = std::move(new_path);
+}
+
+void Path::catmullrom(int edge_divisions, EdgeDivisionMode edm)
+{
+  Path new_path = helper_build_path(this->points,
+                                    InterpolationMethodCurve::CATMULLROM,
+                                    edm,
+                                    edge_divisions,
+                                    this->get_npoints());
 
   *this = std::move(new_path);
 }
@@ -135,19 +156,17 @@ void Path::clear()
   this->closed = false;
 }
 
-void Path::decasteljau(int edge_divisions)
+void Path::decasteljau(int edge_divisions, EdgeDivisionMode edm)
 {
   std::vector<Point> new_points = this->points;
 
   if (this->closed) new_points.push_back(this->points.front());
 
-  InterpolatorCurve fitp = InterpolatorCurve(
-      new_points,
-      InterpolationMethodCurve::DECASTELJAU);
-  int                npts = edge_divisions * (int)new_points.size();
-  std::vector<float> t = hmap::linspace(0.f, 1.f, npts);
-
-  Path new_path = Path(fitp(t));
+  Path new_path = helper_build_path(new_points,
+                                    InterpolationMethodCurve::DECASTELJAU,
+                                    edm,
+                                    edge_divisions,
+                                    this->get_npoints());
 
   *this = std::move(new_path);
 }
@@ -466,11 +485,12 @@ std::vector<float> Path::get_y() const
   return y;
 }
 
-void Path::meanderize(float ratio,
-                      float noise_ratio,
-                      uint  seed,
-                      int   iterations,
-                      int   edge_divisions)
+void Path::meanderize(float            ratio,
+                      float            noise_ratio,
+                      uint             seed,
+                      int              iterations,
+                      int              edge_divisions,
+                      EdgeDivisionMode edm)
 {
   std::mt19937                    gen(seed);
   std::normal_distribution<float> dis(-noise_ratio, noise_ratio);
@@ -526,7 +546,7 @@ void Path::meanderize(float ratio,
     *this = new_path;
   }
 
-  this->bspline(edge_divisions);
+  this->bspline(edge_divisions, edm);
 }
 
 void Path::reorder_nns(int start_index)

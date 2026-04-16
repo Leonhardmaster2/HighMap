@@ -46,15 +46,15 @@ TEST(PathDecimateVw, PreservesStraightLine)
 
 TEST(PathDecimateVw, PreservesCircle)
 {
-    hmap::Path path;
-    path.points = generate_circle(100, 1.f);
-    path.decimate_vw(20);
+  hmap::Path path;
+  path.points = generate_circle(100, 1.f);
+  path.decimate_vw(20);
 
-    float avg_radius = 1.f;
+  float avg_radius = 1.f;
 
-    for (auto& p : path.points)
-    {
-      float r = std::hypot(p.x, p.y);
-      EXPECT_NEAR(r, avg_radius, 0.05f);
-    }
+  for (auto &p : path.points)
+  {
+    float r = std::hypot(p.x, p.y);
+    EXPECT_NEAR(r, avg_radius, 0.05f);
+  }
 }
