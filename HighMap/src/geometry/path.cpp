@@ -152,34 +152,6 @@ void Path::decasteljau(int edge_divisions)
   *this = std::move(new_path);
 }
 
-void Path::decimate_cfit(int n_points_target)
-{
-  size_t n = this->get_npoints();
-  if (n < 3 || n <= (size_t)n_points_target) return;
-
-  std::vector<Point> pts = this->points;
-
-  while (pts.size() > (size_t)n_points_target)
-  {
-    size_t remove_idx = 1;
-    float  min_kappa = std::numeric_limits<float>::max();
-
-    for (size_t i = 1; i + 1 < pts.size(); ++i)
-    {
-      float k = curvature(pts[i - 1], pts[i], pts[i + 1]);
-      if (k < min_kappa)
-      {
-        min_kappa = k;
-        remove_idx = i;
-      }
-    }
-
-    pts.erase(pts.begin() + remove_idx);
-  }
-
-  this->points = std::move(pts);
-}
-
 void Path::decimate_vw(int n_points_target)
 {
   size_t n = this->get_npoints();

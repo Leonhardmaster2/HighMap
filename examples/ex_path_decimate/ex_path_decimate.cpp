@@ -6,7 +6,7 @@ int main(void)
   int        seed = 3;
 
   glm::vec4  bbox = {1.f, 2.f, -0.5f, 0.5f};
-  hmap::Path path = hmap::Path(20, seed, {1.2f, 1.8f, -0.3, 0.3f});
+  hmap::Path path = hmap::Path(30, seed, {1.2f, 1.8f, -0.3, 0.3f});
   path.reorder_nns();
   path.fractalize(1, seed);
   // path.closed = true;
@@ -22,13 +22,7 @@ int main(void)
   path2.decimate_vw(ntarget);
   path2.to_array(z2, bbox);
 
-  // similar but curvature-based
-  auto z3 = hmap::Array(shape);
-  path2 = path;
-  path2.decimate_cfit(ntarget);
-  path2.to_array(z3, bbox);
-
   hmap::export_banner_png("ex_path_decimate.png",
-                          {z1, z2, z3},
+                          {z1, z2},
                           hmap::Cmap::INFERNO);
 }

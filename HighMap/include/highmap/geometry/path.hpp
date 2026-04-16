@@ -255,25 +255,6 @@ public:
   void decasteljau(int edge_divisions = 10);
 
   /**
-   * @brief Simplifies the current path using a curvature preserving algorithm.
-   *
-   * @param n_points_target The desired number of points to retain in the path.
-   * If the current number of points is less than `n_points_target` or the path
-   * contains fewer than 3 points, the method returns without modifying the
-   * path.
-   *
-   * @note Does not well behave when n_points_target is significantly lower than
-   * the initial number of points.
-   *
-   * **Example**
-   * @include ex_path_decimate.cpp
-   *
-   * **Result**
-   * @image html ex_path_decimate.png
-   */
-  void decimate_cfit(int n_points_target = 3);
-
-  /**
    * @brief Simplifies the current path using the Visvalingam-Whyatt algorithm.
    *
    * This method reduces the number of points in the path to the specified
