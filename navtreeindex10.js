@@ -1,7 +1,5 @@
 var NAVTREEINDEX10 =
 {
-"hydrology_8hpp.html#ad39c72e2b4c07d3013f7b0143c31137c":[5,0,1,0,0,2,2,26],
-"hydrology_8hpp.html#add3e6744c96ed203d611ceecf65d343e":[5,0,1,0,0,2,2,8],
 "hydrology_8hpp.html#add95813f31b18511fc6eeb672c3a056c":[5,0,1,0,0,2,2,4],
 "hydrology_8hpp.html#ae42a874864d2d8f1a7b580f428395c01":[5,0,1,0,0,2,2,3],
 "hydrology_8hpp.html#aeebe29334cfef012f311a2369ed3286c":[5,0,1,0,0,2,2,31],
@@ -122,13 +120,13 @@ var NAVTREEINDEX10 =
 "interpolate__heightmap__virtual__array_8cpp.html#aab05ca060b3dd80724ff669864c0f4d2":[5,0,1,1,20,13,2],
 "interpolate__heightmap__virtual__array_8cpp.html#ace2076a7808458f99aeaeec2bc404d6b":[5,0,1,1,20,13,0],
 "io_8cpp.html":[5,0,1,1,1,1],
-"island_8cpp.html":[5,0,1,1,28,1,3],
-"island_8cpp.html#a04ae8a1ec2b8156be692aa690d32e1ff":[5,0,1,1,28,1,3,2],
-"island_8cpp.html#a6f12f5873de12bca27a99b9c9d2cf0a0":[5,0,1,1,28,1,3,5],
-"island_8cpp.html#a7aac37734b22ffed4807f274511861be":[5,0,1,1,28,1,3,3],
-"island_8cpp.html#a8583f0ee018a30b63c9cacb4580cd3e9":[5,0,1,1,28,1,3,1],
-"island_8cpp.html#a8591567b50b8d48394fcc8fb046188b7":[5,0,1,1,28,1,3,0],
-"island_8cpp.html#ae20d5b7f78d4c3eb5064490a3a407533":[5,0,1,1,28,1,3,4],
+"island_8cpp.html":[5,0,1,1,27,1,3],
+"island_8cpp.html#a04ae8a1ec2b8156be692aa690d32e1ff":[5,0,1,1,27,1,3,2],
+"island_8cpp.html#a6f12f5873de12bca27a99b9c9d2cf0a0":[5,0,1,1,27,1,3,5],
+"island_8cpp.html#a7aac37734b22ffed4807f274511861be":[5,0,1,1,27,1,3,3],
+"island_8cpp.html#a8583f0ee018a30b63c9cacb4580cd3e9":[5,0,1,1,27,1,3,1],
+"island_8cpp.html#a8591567b50b8d48394fcc8fb046188b7":[5,0,1,1,27,1,3,0],
+"island_8cpp.html#ae20d5b7f78d4c3eb5064490a3a407533":[5,0,1,1,27,1,3,4],
 "kd__tree_8cpp.html":[5,0,1,1,16,3],
 "kd__tree_8hpp.html":[5,0,1,0,0,1,4],
 "kd__tree_8hpp.html#ae4a8f5c1d747f5eccbe078ab94598707":[5,0,1,0,0,1,4,2],
@@ -249,5 +247,7 @@ var NAVTREEINDEX10 =
 "local__metrics__gpu_8cpp.html#a2dcbc7dac085b61f3c47e17256741a9a":[5,0,1,1,22,1,9],
 "local__metrics__gpu_8cpp.html#a36cacf53f15459d0e32a0b089ce2db2f":[5,0,1,1,22,1,1],
 "local__metrics__gpu_8cpp.html#a5c576fca64db583bf500d667173c128a":[5,0,1,1,22,1,3],
-"local__metrics__gpu_8cpp.html#a5e3ebf317043142adc19dd211ba07230":[5,0,1,1,22,1,5]
+"local__metrics__gpu_8cpp.html#a5e3ebf317043142adc19dd211ba07230":[5,0,1,1,22,1,5],
+"local__metrics__gpu_8cpp.html#a62292cc4bf9f6eb5c7b63b1e26f8cc88":[5,0,1,1,22,1,11],
+"local__metrics__gpu_8cpp.html#a72341578d241e21b4c31d7497287cfc3":[5,0,1,1,22,1,2]
 };

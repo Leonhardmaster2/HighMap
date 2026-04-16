@@ -27,7 +27,6 @@ var dir_f63c6611b1023abbeb7e0b5a0bccaf92 =
     [ "morphology", "dir_6e375fef8169f9dfb42b397d57678e79.html", "dir_6e375fef8169f9dfb42b397d57678e79" ],
     [ "multiscale", "dir_8ec6da466271af6faf10594ea35abcfe.html", "dir_8ec6da466271af6faf10594ea35abcfe" ],
     [ "operator", "dir_9a51bbdebcf80687f6531d96614427fc.html", "dir_9a51bbdebcf80687f6531d96614427fc" ],
-    [ "particles", "dir_3961423d922fc63bab3aec0bc4c44789.html", "dir_3961423d922fc63bab3aec0bc4c44789" ],
     [ "primitives", "dir_450955ebc5f60794d6a0b9c68a0325b6.html", "dir_450955ebc5f60794d6a0b9c68a0325b6" ],
     [ "random", "dir_211501a338c3c7d58f3c9708c2a7240f.html", "dir_211501a338c3c7d58f3c9708c2a7240f" ],
     [ "range", "dir_658a2ba9d13e675eced23227c6986469.html", "dir_658a2ba9d13e675eced23227c6986469" ],
