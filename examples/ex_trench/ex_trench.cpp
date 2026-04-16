@@ -18,10 +18,18 @@ int main(void)
       hmap::DomainBoundary::BOUNDARY_RIGHT,
       seed);
 
+  path.decimate_vw(30);
+  path.bspline(50);
+
   hmap::Array z2 = hmap::Array(shape);
   path.to_array(z2);
 
-  // --- trench
+  // path.smooth(10);
+
+  // hmap::Array z2 = hmap::Array(shape);
+  path.to_array(z2);
+
+  // --- trenchs
 
   auto z3 = z1;
 
@@ -32,8 +40,10 @@ int main(void)
                                          8,
                                          0.f);
 
-  float width = 0.1f;
-  hmap::trench(z3, path, width);
+  float width = 0.05f;
+  hmap::trench(z3, path, width, true, false);
+
+  z3.dump();
 
   hmap::export_banner_png("ex_trench.png", {z1, z2, z3}, hmap::Cmap::JET, true);
 }

@@ -1,26 +1,8 @@
-/* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
-   Public License. The full license is in the file LICENSE, distributed with
-   this software. */
-
 /**
  * @file point.hpp
- * @author  Otto Link (otto.link.bv@gmail.com)
- * @brief Defines a class for representing and manipulating 3D points.
- *
- * This file contains the definition of the `Point3` class, which represents a
- * point in 2D space with `x`, `y`, carrying a vlue `v`. The class includes
- * basic vector operations such as addition, subtraction, and scalar
- * multiplication. It also provides functionality for linear interpolation
- * between two points.
- *
- * @version 0.1
- * @date 2023-06-18
- *
- * @copyright Copyright (c) 2023
- *
- * This software is distributed under the terms of the GNU General Public
- * License. The full license is in the file LICENSE, distributed with this
- * software.
+ * @copyright Copyright (c) 2023 Otto Link. Distributed under the terms of the
+ * GNU General Public License. The full license is in the file LICENSE,
+ * distributed with this software.
  */
 #pragma once
 #include <cmath>
@@ -208,6 +190,11 @@ float angle(const Point &p1, const Point &p2);
  * range \([-π, π]\).
  */
 float angle(const Point &p0, const Point &p1, const Point &p2);
+
+float classify_point(const Point &p_prev,
+                     const Point &p,
+                     const Point &p_next,
+                     const Point &pq);
 
 /**
  * @brief Computes the 2D cross product of vectors formed by three points.
@@ -474,6 +461,26 @@ std::optional<Point> segment_intersection(const Point &p1,
                                           const Point &p2,
                                           const Point &q1,
                                           const Point &q2);
+
+/**
+ * @brief Determines the relative side of a query point with respect to a curve
+ * segment at a given point.
+ *
+ * @param  p1 A point preceding @p p2 on the curve.
+ * @param  p2 The reference point on the curve where the tangent is evaluated.
+ * @param  p3 A point following @p p2 on the curve.
+ * @param  pq The query point to test.
+ *
+ * @return    float
+ * - +1.0f if the query point lies to the left of the curve (counter-clockwise
+ * side),
+ * - -1.0f if the query point lies to the right of the curve (clockwise side),
+ * -  0.0f if the query point lies exactly on the tangent line at @p p2.
+ */
+float side(const Point &p1,
+           const Point &p2,
+           const Point &p3,
+           const Point &p_query);
 
 /**
  * @brief Sorts a vector of points in ascending order based on their

@@ -423,10 +423,24 @@ public:
    */
   std::vector<float> get_cumulative_distance() const;
 
-  std::vector<float> get_curvature(bool normalized = true) const;
+  /**
+   * @brief Computes the signed curvature at each point of the path.
+   * @param  normalized If true, scales values to [-1, 1] using the maximum
+   *                    absolute curvature.
+   * @return            Vector of curvature values.
+   */
+  std::vector<float> get_curvature(bool normalized = false) const;
 
+  /**
+   * @brief Computes unit normals at each point of the path.
+   * @return Vector of normal vectors.
+   */
   std::vector<glm::vec2> get_normals() const;
 
+  /**
+   * @brief Computes unit tangents at each point of the path.
+   * @return Vector of tangent vectors.
+   */
   std::vector<glm::vec2> get_tangents() const;
 
   /**

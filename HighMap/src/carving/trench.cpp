@@ -9,6 +9,7 @@
 #include "highmap/geometry/grids.hpp"
 #include "highmap/geometry/kd_tree.hpp"
 #include "highmap/geometry/path.hpp"
+#include "highmap/internal/vector_utils.hpp"
 #include "highmap/morphology.hpp"
 #include "highmap/range.hpp"
 
@@ -20,6 +21,10 @@ void trench(Array                       &z,
             float                        width,
             bool                         enable_width_depth_scaling,
             bool                         enable_width_distance_scaling,
+            bool                         enable_width_curvature_scaling,
+            float                        curvature_radius_min,
+            float                        curv_width_ratio_min,
+            float                        curv_width_ratio_max,
             RadialProfile                radial_profile,
             float                        radial_profile_parameter,
             ElevationLongitudinalProfile longitudinal_profile,
@@ -43,12 +48,15 @@ void trench(Array                       &z,
 
   // --- Force path resolution
 
-  {
-    float lx = bbox.y - bbox.x;
-    float ly = bbox.w - bbox.z;
-    float dmin = std::min(lx / shape.x, ly / shape.y);
-    path_copy.resample(dmin);
-  }
+  // {
+  //   float lx = bbox.y - bbox.x;
+  //   float ly = bbox.w - bbox.z;
+  //   float dmin = std::min(lx / shape.x, ly / shape.y);
+  //   path_copy.resample(dmin);
+  // }
+
+  // for width with distance scaling
+  const std::vector<float> arc_length = path_copy.get_arc_length();
 
   // --- Adjust longitudinal elevation
 
@@ -56,7 +64,7 @@ void trench(Array                       &z,
   for (size_t k = 0; k < npts; ++k)
   {
     // shape factor
-    float t = float(k) / float(npts - 1); // in [0, 1]
+    float t = arc_length[k];
 
     // start and end ramps
     if (t < shift_ramp_start_ratio)
@@ -116,8 +124,97 @@ void trench(Array                       &z,
   std::vector<float> xg, yg;
   grid_xy_vector(xg, yg, shape, bbox, /* endpoint */ false);
 
-  // for width with distance scaling
-  std::vector<float> arc_length = path_copy.get_arc_length();
+  // for curvature scaling
+  Path path_curv = path_copy;
+  // path_curv.decimate_vw(40);
+  // path_curv.bspline(50);
+
+  std::vector<float> curvature = path_curv.get_curvature();
+  std::vector<float> curv_radius;
+  std::vector<float> curv_shape_factor;
+  curv_radius.reserve(npts);
+  curv_shape_factor.reserve(npts);
+
+  if (!curvature.empty())
+  {
+    float curvature_max = 1.f / curvature_radius_min;
+    float cmin = *std::min_element(curvature.begin(), curvature.end());
+    float cmax = *std::max_element(curvature.begin(), curvature.end());
+    float cscale = std::min(std::max(std::abs(cmax), std::abs(cmin)),
+                            curvature_max);
+
+    for (auto &v : curvature)
+    {
+      // clamp then normalize and smooth transition
+      v = std::clamp(v, -curvature_max, curvature_max);
+      v = std::copysign(1.f, v) * smoothstep3(std::abs(v / cscale));
+
+      if (v != 0.f)
+      {
+        float r = 1.f / v;
+        r = std::copysign(1.f, r) * std::min(1.f, std::abs(r));
+        curv_radius.push_back(r);
+      }
+      else
+      {
+        curv_radius.push_back(0.f);
+      }
+    }
+
+    remap(curv_radius, -1.f, 1.f);
+
+    // longitudinal scaling => zero the scaling at the sign change to
+    // avoid numerical artefacts
+    std::vector<size_t> sign_changes = find_sign_changes(curvature);
+
+    if (!sign_changes.empty())
+    {
+      std::vector<float> arc_gap(npts);
+      float              arc_gap_max = 0.f;
+
+      size_t sign_count = 0;
+      size_t k0 = 0;
+      size_t k1 = sign_changes[0];
+
+      for (size_t k = 0; k < npts; ++k)
+      {
+        // move to next interval
+        while (k >= k1 && sign_count < sign_changes.size())
+        {
+          k0 = k1;
+
+          sign_count++;
+
+          if (sign_count < sign_changes.size())
+            k1 = sign_changes[sign_count];
+          else
+            k1 = npts; // end (not npts - 1)
+        }
+
+        // arc length for this section
+        arc_gap[k] = arc_length[k1] - arc_length[k0];
+        arc_gap_max = std::max(arc_gap_max, arc_gap[k]);
+
+        // safe interval length
+        float t = 0.f;
+        if (k1 > k0)
+          t = float(k - k0) / float(k1 - k0);
+        else
+          t = 1.f;
+
+        // triangle shape and smoothing
+        t = 1.f - std::abs(2.f * t - 1.f);
+        t = smoothstep3(t);
+
+        curv_shape_factor.push_back(t);
+      }
+
+      for (size_t k = 0; k < npts; ++k)
+        curv_shape_factor[k] *= arc_gap[k] / arc_gap_max;
+
+      curv_shape_factor = moving_average(curv_shape_factor, 1);
+    }
+  }
 
   // radial profile
   auto profile_fct = get_radial_profile_function(radial_profile,
@@ -149,6 +246,31 @@ void trench(Array                       &z,
       {
         float dz = std::abs((z(i, j) - points[k0].v) / elevation_shift);
         effective_width *= std::clamp(dz, 0.f, 1.f);
+      }
+
+      if (enable_width_curvature_scaling)
+      {
+        // determine on which side of the path the cell is
+        size_t km = std::max(k0 - 1, size_t(0));
+        size_t kp = std::min(k0 + 1, npts);
+
+        float s = -classify_point(points[km],
+                                  points[k0],
+                                  points[kp],
+                                  Point(xi, yi));
+
+        // longitudinal scaling
+        float t = arc_length[k0];
+        t = t * (1.f - t) * 4.f;
+
+        // float camp = std::abs(curvature[k0]) * t;
+        float camp = std::abs(curv_radius[k0]) * t;
+
+        effective_width *= lerp(
+            1.f,
+            std::max(curv_width_ratio_min,
+                     1.f + (curv_width_ratio_max - 1.f) * s * camp),
+            curv_shape_factor[k0]);
       }
 
       for (size_t k = 0; k < k_neighbors; ++k)

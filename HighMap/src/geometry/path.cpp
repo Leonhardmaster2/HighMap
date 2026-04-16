@@ -397,7 +397,7 @@ std::vector<float> Path::get_curvature(bool normalized) const
 {
   size_t             ke = this->closed ? 1 : 0;
   std::vector<float> cv(this->get_npoints() + ke);
-  float              cmax = -std::numeric_limits<float>::max();
+  float              cmax = 0.f;
 
   for (size_t k = 1; k < this->get_npoints() - 1 + ke; k++)
   {
@@ -407,7 +407,7 @@ std::vector<float> Path::get_curvature(bool normalized) const
                              this->points[k],
                              this->points[kp]);
 
-    cmax = std::max(cmax, cv[k]);
+    cmax = std::max(cmax, std::abs(cv[k]));
   }
 
   if (normalized)
@@ -421,8 +421,18 @@ std::vector<float> Path::get_curvature(bool normalized) const
 
 std::vector<glm::vec2> Path::get_normals() const
 {
+  std::vector<glm::vec2> normals = this->get_tangents();
+
+  for (auto &n : normals)
+    n = glm::vec2(-n.y, n.x);
+
+  return normals;
+}
+
+std::vector<glm::vec2> Path::get_tangents() const
+{
   size_t                 ke = this->closed ? 1 : 0;
-  std::vector<glm::vec2> normals(this->get_npoints() + ke);
+  std::vector<glm::vec2> tangents(this->get_npoints() + ke);
 
   for (size_t k = 1; k < this->get_npoints() - 1 + ke; k++)
   {
@@ -431,18 +441,8 @@ std::vector<glm::vec2> Path::get_normals() const
     glm::vec2 delta = {this->points[kp].x - this->points[km].x,
                        this->points[kp].y - this->points[km].y};
 
-    normals[k] = glm::normalize(glm::vec2(-delta.y, delta.x));
+    tangents[k] = glm::normalize(delta);
   }
-
-  return normals;
-}
-
-std::vector<glm::vec2> Path::get_tangents() const
-{
-  std::vector<glm::vec2> tangents = this->get_normals();
-
-  for (auto &t : tangents)
-    t = {-t.y, t.x};
 
   return tangents;
 }

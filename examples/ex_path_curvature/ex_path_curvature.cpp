@@ -3,8 +3,8 @@
 int main(void)
 {
   glm::ivec2 shape = {256, 256};
-  int seed = 6;
-  int npoints = 5;
+  int        seed = 6;
+  int        npoints = 5;
 
   glm::vec4  bbox = {1.f, 2.f, -0.5f, 0.5f};
   hmap::Path path = hmap::Path(npoints, seed, {1.3f, 1.7f, -0.2, 0.2f});
@@ -20,7 +20,7 @@ int main(void)
   path_cpy.bspline();
 
   auto c = path_cpy.get_curvature(false);
-  
+
   std::vector<glm::vec2> normals = path_cpy.get_normals();
 
   float dr = 0.001f;

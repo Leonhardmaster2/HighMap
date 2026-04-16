@@ -311,8 +311,8 @@ public:
   /**
    * \brief Find the index of the nearest point in the cloud.
    *
-   * Computes the point whose (x,y) position is closest to \p xy
-   * using squared Euclidean distance.
+   * Computes the point whose (x,y) position is closest to \p xy using squared
+   * Euclidean distance.
    *
    * \param xy Query position
    * \return Index of the nearest point

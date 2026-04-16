@@ -3,6 +3,7 @@
  * this software. */
 #include <algorithm>
 #include <iomanip>
+#include <limits>
 #include <list>
 #include <numeric>
 #include <random>
@@ -24,6 +25,35 @@ std::vector<size_t> argsort(const std::vector<float> &v)
                    idx.end(),
                    [&v](size_t i1, size_t i2) { return v[i1] < v[i2]; });
   return idx;
+}
+
+std::vector<size_t> find_sign_changes(const std::vector<float> &data)
+{
+  std::vector<size_t> indices;
+
+  if (data.size() < 2) return indices;
+
+  auto sign = [](float v) -> int
+  {
+    if (v > 0.f) return 1;
+    if (v < 0.f) return -1;
+    return 0;
+  };
+
+  int prev_sign = 0;
+
+  for (size_t i = 0; i < data.size(); ++i)
+  {
+    int s = sign(data[i]);
+
+    if (s == 0) continue; // skip zeros
+
+    if (prev_sign != 0 && s != prev_sign) indices.push_back(i);
+
+    prev_sign = s;
+  }
+
+  return indices;
 }
 
 std::string make_histogram(const std::vector<float> &values,
@@ -92,6 +122,32 @@ std::string make_histogram(const std::vector<float> &values,
   return out.str();
 }
 
+std::vector<float> moving_average(const std::vector<float> &input, int radius)
+{
+  if (input.empty() || radius <= 0) return input;
+
+  std::vector<float> output(input.size(), 0.0f);
+
+  for (size_t i = 0; i < input.size(); ++i)
+  {
+    int start = std::max<int>(0, i - radius);
+    int end = std::min<int>(input.size() - 1, i + radius);
+
+    float sum = 0.0f;
+    int   count = 0;
+
+    for (int j = start; j <= end; ++j)
+    {
+      sum += input[j];
+      count++;
+    }
+
+    output[i] = sum / static_cast<float>(count);
+  }
+
+  return output;
+}
+
 size_t upperbound_right(const std::vector<float> &v, float value)
 {
   size_t idx = 0;
@@ -106,6 +162,35 @@ size_t upperbound_right(const std::vector<float> &v, float value)
 
 void reindex_vector(std::vector<int> &v, std::vector<size_t> &idx);
 void reindex_vector(std::vector<float> &v, std::vector<size_t> &idx);
+
+std::vector<float> remap(const std::vector<float> &data,
+                         float                     new_min,
+                         float                     new_max)
+{
+  if (data.empty()) return {};
+
+  auto [min_it, max_it] = std::minmax_element(data.begin(), data.end());
+  float old_min = *min_it;
+  float old_max = *max_it;
+
+  std::vector<float> result(data.size());
+
+  // Avoid division by zero
+  if (old_max == old_min)
+  {
+    std::fill(result.begin(), result.end(), new_min);
+    return result;
+  }
+
+  float scale = (new_max - new_min) / (old_max - old_min);
+
+  for (size_t i = 0; i < data.size(); ++i)
+  {
+    result[i] = new_min + (data[i] - old_min) * scale;
+  }
+
+  return result;
+}
 
 void vector_unique_values(std::vector<float> &v)
 {
