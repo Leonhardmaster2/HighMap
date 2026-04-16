@@ -1,0 +1,23 @@
+#include "highmap.hpp"
+
+int main(void)
+{
+  glm::ivec2 shape = {256, 256};
+  int        seed = 3;
+
+  glm::vec4  bbox = {1.f, 2.f, -0.5f, 0.5f};
+  hmap::Path path = hmap::Path(10, seed, {1.2f, 1.8f, -0.3, 0.3f});
+  path.reorder_nns();
+  path.closed = true;
+
+  auto z1 = hmap::Array(shape);
+  path.to_array(z1, bbox);
+
+  auto z2 = hmap::Array(shape);
+  path.cubic_interp(10);
+  path.to_array(z2, bbox);
+
+  hmap::export_banner_png("ex_path_cubic_interp.png",
+                          {z1, z2},
+                          hmap::Cmap::INFERNO);
+}

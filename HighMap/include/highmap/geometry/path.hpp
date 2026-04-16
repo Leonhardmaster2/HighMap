@@ -233,6 +233,26 @@ public:
                   EdgeDivisionMode edm = EdgeDivisionMode::EDM_PER_EDGE);
 
   /**
+   * @brief Resamples the path using cubic interpolation along arc length.
+   *
+   * The path is reparameterized by arc length and interpolated using cubic
+   * splines for x, y, and value components.
+   *
+   * @param edge_divisions Number of divisions per segment or total samples
+   * depending on mode.
+   * @param edm Division mode controlling whether sampling is per-edge or
+   * global.
+   *
+   * **Example**
+   * @include ex_path_cubic_interp.cpp
+   *
+   * **Result**
+   * @image html ex_path_cubic_interp.png
+   */
+  void cubic_interp(int              edge_divisions = 10,
+                    EdgeDivisionMode edm = EdgeDivisionMode::EDM_PER_EDGE);
+
+  /**
    * @brief Clear the path data.
    *
    * This method removes all points and associated data from the path,

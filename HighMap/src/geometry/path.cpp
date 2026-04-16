@@ -13,6 +13,7 @@
 #include "highmap/filters.hpp"
 #include "highmap/geometry/path.hpp"
 #include "highmap/internal/vector_utils.hpp"
+#include "highmap/interpolate1d.hpp"
 #include "highmap/interpolate_curve.hpp"
 #include "highmap/morphology.hpp"
 #include "highmap/operator.hpp"
@@ -148,6 +149,38 @@ void Path::catmullrom(int edge_divisions, EdgeDivisionMode edm)
                                     this->get_npoints());
 
   *this = std::move(new_path);
+}
+
+void Path::cubic_interp(int edge_divisions, EdgeDivisionMode edm)
+{
+  // interpolation positions
+  int npts = edge_divisions;
+  if (edm == Path::EdgeDivisionMode::EDM_PER_EDGE) npts *= this->get_npoints();
+  std::vector<float> t = hmap::linspace(0.f, 1.f, npts);
+
+  // interpolation functions
+  std::vector<float> arc = this->get_arc_length();
+  std::vector<float> x = this->get_x();
+  std::vector<float> y = this->get_y();
+  std::vector<float> v = this->get_values();
+
+  auto meth = hmap::InterpolationMethod1D::CUBIC;
+
+  Interpolator1D itp_x = hmap::Interpolator1D(arc, x, meth);
+  Interpolator1D itp_y = hmap::Interpolator1D(arc, y, meth);
+  Interpolator1D itp_v = hmap::Interpolator1D(arc, v, meth);
+
+  // interpolate
+  std::vector<Point> new_points(npts);
+
+  for (size_t k = 0; k < size_t(npts); ++k)
+  {
+    float ti = t[k];
+    Point p(itp_x(ti), itp_y(ti), itp_v(ti));
+    new_points[k] = p;
+  }
+
+  *this = Path(new_points);
 }
 
 void Path::clear()
