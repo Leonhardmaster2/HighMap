@@ -2569,6 +2569,8 @@ Functions</h2></td></tr>
 <tr class="separator:ad1ea450b3a5185e8066a5da48718489c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa9061db538c0b776f46d7088bbcdc289" id="r_aa9061db538c0b776f46d7088bbcdc289"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#aa9061db538c0b776f46d7088bbcdc289">rescale_grid_from_unit_square_to_bbox</a> (std::vector&lt; float &gt; &amp;x, std::vector&lt; float &gt; &amp;y, glm::vec4 bbox)</td></tr>
 <tr class="separator:aa9061db538c0b776f46d7088bbcdc289"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb8406087111cf178e5721b45b995db4" id="r_acb8406087111cf178e5721b45b995db4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Path.html">Path</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#acb8406087111cf178e5721b45b995db4">helper_build_path</a> (const std::vector&lt; <a class="el" href="classhmap_1_1Point.html">Point</a> &gt; &amp;points, <a class="el" href="namespacehmap.html#aa78bf111867e13c63d8bd2ec005ad6c8">InterpolationMethodCurve</a> method, <a class="el" href="classhmap_1_1Path.html#a52c62bad1cdef88e8793d9c022357787">Path::EdgeDivisionMode</a> edm, int edge_divisions, int point_count)</td></tr>
+<tr class="separator:acb8406087111cf178e5721b45b995db4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a680e3eafe72e649e15f076c59c86ab01" id="r_a680e3eafe72e649e15f076c59c86ab01"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a680e3eafe72e649e15f076c59c86ab01">helper_estimate_count</a> (const glm::vec4 &amp;bbox, float <a class="el" href="namespacehmap.html#a567410971127d39a9e3c2d7b75364def">distance</a>)</td></tr>
 <tr class="separator:a680e3eafe72e649e15f076c59c86ab01"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac070e7f9253f57fe6b44ad1f6c9fd753" id="r_ac070e7f9253f57fe6b44ad1f6c9fd753"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#ac070e7f9253f57fe6b44ad1f6c9fd753">cmp_inf</a> (<a class="el" href="classhmap_1_1Point.html">Point</a> &amp;a, <a class="el" href="classhmap_1_1Point.html">Point</a> &amp;b)</td></tr>
@@ -4089,7 +4091,7 @@ template&lt;typename T , typename Fn , typename Reduce &gt; </div>
 <div class="line">      <a class="code hl_enumvalue" href="namespacehmap.html#a1ba9d4ce7afe3309f8ae8e617f7154eeadb9a04ab3508704543b5dd43ae495fe7">hmap::DomainBoundary::BOUNDARY_RIGHT</a>);</div>
 <div class="line"> </div>
 <div class="line">  path.<a class="code hl_function" href="classhmap_1_1Path.html#ad2be7924d78ea51a68158bf68b12d6ed">decimate_vw</a>(20);</div>
-<div class="line">  path.<a class="code hl_function" href="classhmap_1_1Path.html#a166a6f87dff196efa75abb1b731d3528">bspline</a>();</div>
+<div class="line">  path.<a class="code hl_function" href="classhmap_1_1Path.html#a4ca03435fee5e9111edd93e2393d1533">bspline</a>();</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> zp = <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a>(shape);</div>
 <div class="line">  path.<a class="code hl_function" href="classhmap_1_1Path.html#a4d1e1e63fea24bf8f23bc3343f8b746e">to_array</a>(zp);</div>
@@ -4126,9 +4128,9 @@ template&lt;typename T , typename Fn , typename Reduce &gt; </div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
 <div class="ttc" id="aclasshmap_1_1Path_html"><div class="ttname"><a href="classhmap_1_1Path.html">hmap::Path</a></div><div class="ttdoc">Represents an ordered set of points in 2D, forming a polyline (open or closed).</div><div class="ttdef"><b>Definition</b> path.hpp:50</div></div>
-<div class="ttc" id="aclasshmap_1_1Path_html_a166a6f87dff196efa75abb1b731d3528"><div class="ttname"><a href="classhmap_1_1Path.html#a166a6f87dff196efa75abb1b731d3528">hmap::Path::bspline</a></div><div class="ttdeci">void bspline(int edge_divisions=10)</div><div class="ttdoc">Smooth the path using B-Spline curves.</div><div class="ttdef"><b>Definition</b> path.cpp:107</div></div>
-<div class="ttc" id="aclasshmap_1_1Path_html_a4d1e1e63fea24bf8f23bc3343f8b746e"><div class="ttname"><a href="classhmap_1_1Path.html#a4d1e1e63fea24bf8f23bc3343f8b746e">hmap::Path::to_array</a></div><div class="ttdeci">void to_array(Array &amp;array, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f}, bool filled=false) const</div><div class="ttdoc">Project path points to an array.</div><div class="ttdef"><b>Definition</b> path.cpp:833</div></div>
-<div class="ttc" id="aclasshmap_1_1Path_html_ad2be7924d78ea51a68158bf68b12d6ed"><div class="ttname"><a href="classhmap_1_1Path.html#ad2be7924d78ea51a68158bf68b12d6ed">hmap::Path::decimate_vw</a></div><div class="ttdeci">void decimate_vw(int n_points_target=3)</div><div class="ttdoc">Simplifies the current path using the Visvalingam-Whyatt algorithm.</div><div class="ttdef"><b>Definition</b> path.cpp:155</div></div>
+<div class="ttc" id="aclasshmap_1_1Path_html_a4ca03435fee5e9111edd93e2393d1533"><div class="ttname"><a href="classhmap_1_1Path.html#a4ca03435fee5e9111edd93e2393d1533">hmap::Path::bspline</a></div><div class="ttdeci">void bspline(int edge_divisions=10, EdgeDivisionMode edm=EdgeDivisionMode::EDM_PER_EDGE)</div><div class="ttdoc">Smooth the path using B-Spline curves.</div><div class="ttdef"><b>Definition</b> path.cpp:131</div></div>
+<div class="ttc" id="aclasshmap_1_1Path_html_a4d1e1e63fea24bf8f23bc3343f8b746e"><div class="ttname"><a href="classhmap_1_1Path.html#a4d1e1e63fea24bf8f23bc3343f8b746e">hmap::Path::to_array</a></div><div class="ttdeci">void to_array(Array &amp;array, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f}, bool filled=false) const</div><div class="ttdoc">Project path points to an array.</div><div class="ttdef"><b>Definition</b> path.cpp:853</div></div>
+<div class="ttc" id="aclasshmap_1_1Path_html_ad2be7924d78ea51a68158bf68b12d6ed"><div class="ttname"><a href="classhmap_1_1Path.html#ad2be7924d78ea51a68158bf68b12d6ed">hmap::Path::decimate_vw</a></div><div class="ttdeci">void decimate_vw(int n_points_target=3)</div><div class="ttdoc">Simplifies the current path using the Visvalingam-Whyatt algorithm.</div><div class="ttdef"><b>Definition</b> path.cpp:174</div></div>
 <div class="ttc" id="anamespacehmap_html_a1ba9d4ce7afe3309f8ae8e617f7154eea760545322569136cd3be89e004ab10d4"><div class="ttname"><a href="namespacehmap.html#a1ba9d4ce7afe3309f8ae8e617f7154eea760545322569136cd3be89e004ab10d4">hmap::BOUNDARY_LEFT</a></div><div class="ttdeci">@ BOUNDARY_LEFT</div><div class="ttdoc">i = 0</div><div class="ttdef"><b>Definition</b> boundary.hpp:44</div></div>
 <div class="ttc" id="anamespacehmap_html_a1ba9d4ce7afe3309f8ae8e617f7154eeadb9a04ab3508704543b5dd43ae495fe7"><div class="ttname"><a href="namespacehmap.html#a1ba9d4ce7afe3309f8ae8e617f7154eeadb9a04ab3508704543b5dd43ae495fe7">hmap::BOUNDARY_RIGHT</a></div><div class="ttdeci">@ BOUNDARY_RIGHT</div><div class="ttdoc">i = nx - 1</div><div class="ttdef"><b>Definition</b> boundary.hpp:45</div></div>
 <div class="ttc" id="anamespacehmap_html_a21a3078ba07fad81a888ca00cd6c3b33"><div class="ttname"><a href="namespacehmap.html#a21a3078ba07fad81a888ca00cd6c3b33">hmap::find_cut_path_dijkstra</a></div><div class="ttdeci">Path find_cut_path_dijkstra(const Array &amp;z, DomainBoundary start, DomainBoundary end, float dijk_elevation_ratio=0.9f, float dijk_distance_exponent=2.f, float dijk_upward_penalization=100.f, uint seed=0, bool favor_boundary_center=true, bool favor_lower_elevation=true, bool favor_sinks=true)</div><div class="ttdoc">Find a Dijkstra-based cut path between two domain boundaries.</div><div class="ttdef"><b>Definition</b> find_cut_path.cpp:11</div></div>
@@ -4201,7 +4203,7 @@ template&lt;typename T , typename Fn , typename Reduce &gt; </div>
 <div class="line">  glm::vec4  bbox = <a class="code hl_function" href="namespacehmap.html#aef71b544e3f4e5321cb3d41a7366e0f3">hmap::unit_square_bbox</a>();</div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Path.html">hmap::Path</a> path = <a class="code hl_class" href="classhmap_1_1Path.html">hmap::Path</a>(4, seed, bbox);</div>
 <div class="line">  path.<a class="code hl_function" href="classhmap_1_1Path.html#ad68abaa80879402c3758e24626acfb53">reorder_nns</a>();</div>
-<div class="line">  path.<a class="code hl_function" href="classhmap_1_1Path.html#a56cc1e52401d748b540f9bc72a49000b">bezier</a>();</div>
+<div class="line">  path.<a class="code hl_function" href="classhmap_1_1Path.html#a36ec9d625edd2710999c263fa790af19">bezier</a>();</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// input array, scattered non-zero values</span></div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z0 = <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a>(shape);</div>
@@ -4212,8 +4214,8 @@ template&lt;typename T , typename Fn , typename Reduce &gt; </div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_reverse_midpoint.png&quot;</span>, {z0, z1}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclasshmap_1_1Path_html_a56cc1e52401d748b540f9bc72a49000b"><div class="ttname"><a href="classhmap_1_1Path.html#a56cc1e52401d748b540f9bc72a49000b">hmap::Path::bezier</a></div><div class="ttdeci">void bezier(float curvature_ratio=0.3f, int edge_divisions=10)</div><div class="ttdoc">Smooth the path using Bezier curves.</div><div class="ttdef"><b>Definition</b> path.cpp:25</div></div>
-<div class="ttc" id="aclasshmap_1_1Path_html_ad68abaa80879402c3758e24626acfb53"><div class="ttname"><a href="classhmap_1_1Path.html#ad68abaa80879402c3758e24626acfb53">hmap::Path::reorder_nns</a></div><div class="ttdeci">void reorder_nns(int start_index=0)</div><div class="ttdoc">Reorder points using a nearest neighbor search.</div><div class="ttdef"><b>Definition</b> path.cpp:532</div></div>
+<div class="ttc" id="aclasshmap_1_1Path_html_a36ec9d625edd2710999c263fa790af19"><div class="ttname"><a href="classhmap_1_1Path.html#a36ec9d625edd2710999c263fa790af19">hmap::Path::bezier</a></div><div class="ttdeci">void bezier(float curvature_ratio=0.3f, int edge_divisions=10, EdgeDivisionMode edm=EdgeDivisionMode::EDM_PER_EDGE)</div><div class="ttdoc">Smooth the path using Bezier curves.</div><div class="ttdef"><b>Definition</b> path.cpp:45</div></div>
+<div class="ttc" id="aclasshmap_1_1Path_html_ad68abaa80879402c3758e24626acfb53"><div class="ttname"><a href="classhmap_1_1Path.html#ad68abaa80879402c3758e24626acfb53">hmap::Path::reorder_nns</a></div><div class="ttdeci">void reorder_nns(int start_index=0)</div><div class="ttdoc">Reorder points using a nearest neighbor search.</div><div class="ttdef"><b>Definition</b> path.cpp:552</div></div>
 <div class="ttc" id="anamespacehmap_html_a19bb0a5d0609ac671ca054d18959c7f1"><div class="ttname"><a href="namespacehmap.html#a19bb0a5d0609ac671ca054d18959c7f1">hmap::reverse_midpoint</a></div><div class="ttdeci">Array reverse_midpoint(const Array &amp;array, uint seed, float noise_scale=1.f, float threshold=0.f)</div><div class="ttdoc">Apply the reverse midpoint displacement algorithm to the input array.</div><div class="ttdef"><b>Definition</b> reverse_midpoint.cpp:231</div></div>
 <div class="ttc" id="anamespacehmap_html_a8c9d91481a5908494b9f06c90c705b3a"><div class="ttname"><a href="namespacehmap.html#a8c9d91481a5908494b9f06c90c705b3a">hmap::median_3x3</a></div><div class="ttdeci">void median_3x3(Array &amp;array, const Array *p_mask)</div><div class="ttdoc">Apply a 3x3 median filter to the input array.</div><div class="ttdef"><b>Definition</b> filters.cpp:587</div></div>
 <div class="ttc" id="anamespacehmap_html_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced"><div class="ttname"><a href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::JET</a></div><div class="ttdeci">@ JET</div><div class="ttdef"><b>Definition</b> colormaps.hpp:88</div></div>
@@ -6109,8 +6111,8 @@ template&lt;typename T , typename Fn , typename Reduce &gt; </div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>,</div>
 <div class="line">                          <span class="keyword">true</span>);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclasshmap_1_1Path_html_a2ea3482a302d8ef30084fd39e57715de"><div class="ttname"><a href="classhmap_1_1Path.html#a2ea3482a302d8ef30084fd39e57715de">hmap::Path::closed</a></div><div class="ttdeci">bool closed</div><div class="ttdoc">Defines whether the path is closed or open. If true, the path is closed, forming a loop....</div><div class="ttdef"><b>Definition</b> path.hpp:56</div></div>
-<div class="ttc" id="aclasshmap_1_1Path_html_a5bb9bb29af2ea6411b6837ef4c2ee6c0"><div class="ttname"><a href="classhmap_1_1Path.html#a5bb9bb29af2ea6411b6837ef4c2ee6c0">hmap::Path::dijkstra</a></div><div class="ttdeci">void dijkstra(Array &amp;array, glm::vec4 bbox, float elevation_ratio=0.f, float distance_exponent=0.5f, float upward_penalization=1.f, Array *p_mask_nogo=nullptr)</div><div class="ttdoc">Divide the path by adding points based on the lowest elevation difference between each pair of edge e...</div><div class="ttdef"><b>Definition</b> path.cpp:184</div></div>
+<div class="ttc" id="aclasshmap_1_1Path_html_a2ea3482a302d8ef30084fd39e57715de"><div class="ttname"><a href="classhmap_1_1Path.html#a2ea3482a302d8ef30084fd39e57715de">hmap::Path::closed</a></div><div class="ttdeci">bool closed</div><div class="ttdoc">Defines whether the path is closed or open. If true, the path is closed, forming a loop....</div><div class="ttdef"><b>Definition</b> path.hpp:62</div></div>
+<div class="ttc" id="aclasshmap_1_1Path_html_a5bb9bb29af2ea6411b6837ef4c2ee6c0"><div class="ttname"><a href="classhmap_1_1Path.html#a5bb9bb29af2ea6411b6837ef4c2ee6c0">hmap::Path::dijkstra</a></div><div class="ttdeci">void dijkstra(Array &amp;array, glm::vec4 bbox, float elevation_ratio=0.f, float distance_exponent=0.5f, float upward_penalization=1.f, Array *p_mask_nogo=nullptr)</div><div class="ttdoc">Divide the path by adding points based on the lowest elevation difference between each pair of edge e...</div><div class="ttdef"><b>Definition</b> path.cpp:203</div></div>
 <div class="ttc" id="anamespacehmap_html_a3a29e127d53bc5b547af422da36da1cc"><div class="ttname"><a href="namespacehmap.html#a3a29e127d53bc5b547af422da36da1cc">hmap::dig_path</a></div><div class="ttdeci">void dig_path(Array &amp;z, Path &amp;path, int width=1, int decay=2, int flattening_radius=16, bool force_downhill=false, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f}, float depth=0.f)</div><div class="ttdoc">Dig a path on a heightmap.</div><div class="ttdef"><b>Definition</b> dig_path.cpp:13</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_dig_path.png" alt=""/>
@@ -6506,7 +6508,7 @@ template&lt;typename T , typename Fn , typename Reduce &gt; </div>
 <div class="line">      <a class="code hl_enumvalue" href="namespacehmap.html#a1ba9d4ce7afe3309f8ae8e617f7154eeadb9a04ab3508704543b5dd43ae495fe7">hmap::DomainBoundary::BOUNDARY_RIGHT</a>);</div>
 <div class="line"> </div>
 <div class="line">  path.<a class="code hl_function" href="classhmap_1_1Path.html#ad2be7924d78ea51a68158bf68b12d6ed">decimate_vw</a>(20);</div>
-<div class="line">  path.<a class="code hl_function" href="classhmap_1_1Path.html#a166a6f87dff196efa75abb1b731d3528">bspline</a>();</div>
+<div class="line">  path.<a class="code hl_function" href="classhmap_1_1Path.html#a4ca03435fee5e9111edd93e2393d1533">bspline</a>();</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> zp = <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a>(shape);</div>
 <div class="line">  path.<a class="code hl_function" href="classhmap_1_1Path.html#a4d1e1e63fea24bf8f23bc3343f8b746e">to_array</a>(zp);</div>
@@ -6726,7 +6728,7 @@ template&lt;typename T , typename Fn , typename Reduce &gt; </div>
 <div class="line">      seed);</div>
 <div class="line"> </div>
 <div class="line">  path.<a class="code hl_function" href="classhmap_1_1Path.html#ad2be7924d78ea51a68158bf68b12d6ed">decimate_vw</a>(30);</div>
-<div class="line">  path.<a class="code hl_function" href="classhmap_1_1Path.html#a166a6f87dff196efa75abb1b731d3528">bspline</a>(50);</div>
+<div class="line">  path.<a class="code hl_function" href="classhmap_1_1Path.html#a4ca03435fee5e9111edd93e2393d1533">bspline</a>(50);</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z2 = <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a>(shape);</div>
 <div class="line">  path.<a class="code hl_function" href="classhmap_1_1Path.html#a4d1e1e63fea24bf8f23bc3343f8b746e">to_array</a>(z2);</div>
@@ -28704,7 +28706,7 @@ h}{\partial y}
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
 <div class="ttc" id="aclasshmap_1_1Cloud_html_a5ac84550aceffbb9053c3b58490e7126"><div class="ttname"><a href="classhmap_1_1Cloud.html#a5ac84550aceffbb9053c3b58490e7126">hmap::Cloud::set_values_from_array</a></div><div class="ttdeci">void set_values_from_array(const Array &amp;array, const glm::vec4 &amp;bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Set the values of the cloud points using values from an underlying array.</div><div class="ttdef"><b>Definition</b> cloud.cpp:407</div></div>
-<div class="ttc" id="aclasshmap_1_1Path_html_ae338a7d28b40b0c7d0f9537ee770fcc4"><div class="ttname"><a href="classhmap_1_1Path.html#ae338a7d28b40b0c7d0f9537ee770fcc4">hmap::Path::fractalize</a></div><div class="ttdeci">void fractalize(int iterations, uint seed, float sigma=0.3f, int orientation=0, float persistence=1.f, Array *p_control_field=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Applies fractalization to the path by adding points and randomly displacing their positions.</div><div class="ttdef"><b>Definition</b> path.cpp:288</div></div>
+<div class="ttc" id="aclasshmap_1_1Path_html_ae338a7d28b40b0c7d0f9537ee770fcc4"><div class="ttname"><a href="classhmap_1_1Path.html#ae338a7d28b40b0c7d0f9537ee770fcc4">hmap::Path::fractalize</a></div><div class="ttdeci">void fractalize(int iterations, uint seed, float sigma=0.3f, int orientation=0, float persistence=1.f, Array *p_control_field=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Applies fractalization to the path by adding points and randomly displacing their positions.</div><div class="ttdef"><b>Definition</b> path.cpp:307</div></div>
 <div class="ttc" id="anamespacehmap_html_a30d55fae5c75a1c45a005a3f9a9467eb"><div class="ttname"><a href="namespacehmap.html#a30d55fae5c75a1c45a005a3f9a9467eb">hmap::generate_riverbed</a></div><div class="ttdeci">Array generate_riverbed(const Path &amp;path, glm::ivec2 shape, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f}, bool bezier_smoothing=false, float depth_start=0.01f, float depth_end=1.f, float slope_start=64.f, float slope_end=32.f, float shape_exponent_start=1.f, float shape_exponent_end=10.f, float k_smoothing=0.5f, int post_filter_ir=0, Array *p_noise_x=nullptr, Array *p_noise_y=nullptr, Array *p_noise_r=nullptr)</div><div class="ttdoc">Generates a 2D array representing a riverbed based on a specified path.</div><div class="ttdef"><b>Definition</b> generate_riverbed.cpp:16</div></div>
 <div class="ttc" id="anamespacehmap_html_adc5300323fa35e021fd83b8b048ef3b1"><div class="ttname"><a href="namespacehmap.html#adc5300323fa35e021fd83b8b048ef3b1">hmap::adjust</a></div><div class="ttdeci">glm::vec4 adjust(const glm::vec4 &amp;v, float dx, float dy, float dz, float dw)</div><div class="ttdef"><b>Definition</b> algebra.hpp:148</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
@@ -49689,6 +49691,52 @@ template&lt;typename T &gt; </div>
           <td></td>
           <td class="paramtype">glm::vec4&#160;</td>
           <td class="paramname"><em>bbox</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acb8406087111cf178e5721b45b995db4" name="acb8406087111cf178e5721b45b995db4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb8406087111cf178e5721b45b995db4">&#9670;&#160;</a></span>helper_build_path()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classhmap_1_1Path.html">Path</a> hmap::helper_build_path </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="classhmap_1_1Point.html">Point</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>points</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacehmap.html#aa78bf111867e13c63d8bd2ec005ad6c8">InterpolationMethodCurve</a>&#160;</td>
+          <td class="paramname"><em>method</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classhmap_1_1Path.html#a52c62bad1cdef88e8793d9c022357787">Path::EdgeDivisionMode</a>&#160;</td>
+          <td class="paramname"><em>edm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>edge_divisions</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>point_count</em>&#160;</td>
         </tr>
         <tr>
           <td></td>

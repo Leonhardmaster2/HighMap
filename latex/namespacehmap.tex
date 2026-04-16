@@ -1790,6 +1790,8 @@ void \mbox{\hyperlink{namespacehmap_ad1ea450b3a5185e8066a5da48718489c}{recurve\+
 \item 
 void \mbox{\hyperlink{namespacehmap_aa9061db538c0b776f46d7088bbcdc289}{rescale\+\_\+grid\+\_\+from\+\_\+unit\+\_\+square\+\_\+to\+\_\+bbox}} (std\+::vector$<$ float $>$ \&x, std\+::vector$<$ float $>$ \&y, glm\+::vec4 bbox)
 \item 
+\mbox{\hyperlink{classhmap_1_1Path}{Path}} \mbox{\hyperlink{namespacehmap_acb8406087111cf178e5721b45b995db4}{helper\+\_\+build\+\_\+path}} (const std\+::vector$<$ \mbox{\hyperlink{classhmap_1_1Point}{Point}} $>$ \&points, \mbox{\hyperlink{namespacehmap_aa78bf111867e13c63d8bd2ec005ad6c8}{Interpolation\+Method\+Curve}} method, \mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787}{Path\+::\+Edge\+Division\+Mode}} edm, int edge\+\_\+divisions, int point\+\_\+count)
+\item 
 size\+\_\+t \mbox{\hyperlink{namespacehmap_a680e3eafe72e649e15f076c59c86ab01}{helper\+\_\+estimate\+\_\+count}} (const glm\+::vec4 \&bbox, float \mbox{\hyperlink{namespacehmap_a567410971127d39a9e3c2d7b75364def}{distance}})
 \item 
 bool \mbox{\hyperlink{namespacehmap_ac070e7f9253f57fe6b44ad1f6c9fd753}{cmp\+\_\+inf}} (\mbox{\hyperlink{classhmap_1_1Point}{Point}} \&a, \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&b)
@@ -3168,7 +3170,7 @@ Generated flatbed height array.
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a1ba9d4ce7afe3309f8ae8e617f7154eeadb9a04ab3508704543b5dd43ae495fe7}{hmap::DomainBoundary::BOUNDARY\_RIGHT}});}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_ad2be7924d78ea51a68158bf68b12d6ed}{decimate\_vw}}(20);}
-\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_a166a6f87dff196efa75abb1b731d3528}{bspline}}();}
+\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_a4ca03435fee5e9111edd93e2393d1533}{bspline}}();}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zp\ =\ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}(shape);}
 \DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_a4d1e1e63fea24bf8f23bc3343f8b746e}{to\_array}}(zp);}
@@ -3246,7 +3248,7 @@ This function implements the reverse midpoint displacement algorithm as describe
 \DoxyCodeLine{\ \ glm::vec4\ \ bbox\ =\ \mbox{\hyperlink{namespacehmap_aef71b544e3f4e5321cb3d41a7366e0f3}{hmap::unit\_square\_bbox}}();}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Path}{hmap::Path}}\ path\ =\ \mbox{\hyperlink{classhmap_1_1Path}{hmap::Path}}(4,\ seed,\ bbox);}
 \DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_ad68abaa80879402c3758e24626acfb53}{reorder\_nns}}();}
-\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_a56cc1e52401d748b540f9bc72a49000b}{bezier}}();}
+\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_a36ec9d625edd2710999c263fa790af19}{bezier}}();}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ input\ array,\ scattered\ non-\/zero\ values}}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z0\ =\ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}(shape);}
@@ -4611,7 +4613,7 @@ Carves and blends a flatbed shape along a path into the provided array, using a 
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a1ba9d4ce7afe3309f8ae8e617f7154eeadb9a04ab3508704543b5dd43ae495fe7}{hmap::DomainBoundary::BOUNDARY\_RIGHT}});}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_ad2be7924d78ea51a68158bf68b12d6ed}{decimate\_vw}}(20);}
-\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_a166a6f87dff196efa75abb1b731d3528}{bspline}}();}
+\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_a4ca03435fee5e9111edd93e2393d1533}{bspline}}();}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zp\ =\ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}(shape);}
 \DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_a4d1e1e63fea24bf8f23bc3343f8b746e}{to\_array}}(zp);}
@@ -4722,7 +4724,7 @@ The function assumes that {\ttfamily elevation\+\_\+shift} is non-\/zero when wi
 \DoxyCodeLine{\ \ \ \ \ \ seed);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_ad2be7924d78ea51a68158bf68b12d6ed}{decimate\_vw}}(30);}
-\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_a166a6f87dff196efa75abb1b731d3528}{bspline}}(50);}
+\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_a4ca03435fee5e9111edd93e2393d1533}{bspline}}(50);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z2\ =\ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}(shape);}
 \DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_a4d1e1e63fea24bf8f23bc3343f8b746e}{to\_array}}(z2);}
@@ -29299,6 +29301,12 @@ void hmap\+::convert\+\_\+mat\+\_\+to\+\_\+array (\begin{DoxyParamCaption}\item[
 \index{rescale\_grid\_from\_unit\_square\_to\_bbox@{rescale\_grid\_from\_unit\_square\_to\_bbox}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{rescale\_grid\_from\_unit\_square\_to\_bbox()}{rescale\_grid\_from\_unit\_square\_to\_bbox()}}
 {\footnotesize\ttfamily void hmap\+::rescale\+\_\+grid\+\_\+from\+\_\+unit\+\_\+square\+\_\+to\+\_\+bbox (\begin{DoxyParamCaption}\item[{std\+::vector$<$ float $>$ \&}]{x,  }\item[{std\+::vector$<$ float $>$ \&}]{y,  }\item[{glm\+::vec4}]{bbox }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacehmap_acb8406087111cf178e5721b45b995db4}\label{namespacehmap_acb8406087111cf178e5721b45b995db4} 
+\index{hmap@{hmap}!helper\_build\_path@{helper\_build\_path}}
+\index{helper\_build\_path@{helper\_build\_path}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{helper\_build\_path()}{helper\_build\_path()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Path}{Path}} hmap\+::helper\+\_\+build\+\_\+path (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{classhmap_1_1Point}{Point}} $>$ \&}]{points,  }\item[{\mbox{\hyperlink{namespacehmap_aa78bf111867e13c63d8bd2ec005ad6c8}{Interpolation\+Method\+Curve}}}]{method,  }\item[{\mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787}{Path\+::\+Edge\+Division\+Mode}}}]{edm,  }\item[{int}]{edge\+\_\+divisions,  }\item[{int}]{point\+\_\+count }\end{DoxyParamCaption})}
 
 \Hypertarget{namespacehmap_a680e3eafe72e649e15f076c59c86ab01}\label{namespacehmap_a680e3eafe72e649e15f076c59c86ab01} 
 \index{hmap@{hmap}!helper\_estimate\_count@{helper\_estimate\_count}}

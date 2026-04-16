@@ -1,5 +1,12 @@
 var NAVTREEINDEX11 =
 {
+"local__metrics__gpu_8cpp.html#a36cacf53f15459d0e32a0b089ce2db2f":[5,0,1,1,22,1,1],
+"local__metrics__gpu_8cpp.html#a5c576fca64db583bf500d667173c128a":[5,0,1,1,22,1,3],
+"local__metrics__gpu_8cpp.html#a5e3ebf317043142adc19dd211ba07230":[5,0,1,1,22,1,5],
+"local__metrics__gpu_8cpp.html#a62292cc4bf9f6eb5c7b63b1e26f8cc88":[5,0,1,1,22,1,11],
+"local__metrics__gpu_8cpp.html#a72341578d241e21b4c31d7497287cfc3":[5,0,1,1,22,1,2],
+"local__metrics__gpu_8cpp.html#a74594cae7628bcfb1c038ac6930fe97d":[5,0,1,1,22,1,13],
+"local__metrics__gpu_8cpp.html#aa40b626be86c63829e7e118fa389d260":[5,0,1,1,22,1,6],
 "local__metrics__gpu_8cpp.html#aa5a3e087822525c41f057a51255e2bad":[5,0,1,1,22,1,12],
 "local__metrics__gpu_8cpp.html#ad6ef648576e9339058037a28ce17d225":[5,0,1,1,22,1,8],
 "local__metrics__gpu_8cpp.html#aebca5a0fef9c05a0e2378aef452707ed":[5,0,1,1,22,1,10],
@@ -239,15 +246,8 @@ var NAVTREEINDEX11 =
 "namespacehmap.html#a072f0c93c6e3e5e0f8f88c760850dce8":[3,0,0,139],
 "namespacehmap.html#a088f13a41a6ec41ad6fbc7f235da0dbc":[3,0,0,376],
 "namespacehmap.html#a0a14f8ea250312a1c2392dd26d34805f":[3,0,0,483],
-"namespacehmap.html#a0a359831aea68622813f65f4a989a75a":[3,0,0,793],
+"namespacehmap.html#a0a359831aea68622813f65f4a989a75a":[3,0,0,794],
 "namespacehmap.html#a0a506d871b395e49e6175499dfa1e903":[3,0,0,465],
 "namespacehmap.html#a0aa2c50266e16cf5af077e4e3f77bd8f":[3,0,0,559],
-"namespacehmap.html#a0b3237f9cc015299bf3e436be71d3587":[3,0,0,503],
-"namespacehmap.html#a0b7db6f8ce57fcdeca7ca1e3b7d1e686":[3,0,0,469],
-"namespacehmap.html#a0bcc84aa462aee73e1a3a52729f21ea6":[3,0,0,427],
-"namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2f":[3,0,0,101],
-"namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2faaf8f41c39c71902022e1aec12f10d372":[3,0,0,101,1],
-"namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894":[3,0,0,101,0],
-"namespacehmap.html#a0cfa024afb9246aaa89ec6b2e69501c3":[3,0,0,513],
-"namespacehmap.html#a0cfa879188da80b9e5bf16e8c325c9ba":[3,0,0,143]
+"namespacehmap.html#a0b3237f9cc015299bf3e436be71d3587":[3,0,0,503]
 };

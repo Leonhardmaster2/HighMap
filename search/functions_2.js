@@ -1,7 +1,7 @@
 var searchData=
 [
   ['caldera_0',['caldera',['../namespacehmap.html#a9ee91a0c5ac4f49f1e40aa54ab69cb2f',1,'hmap::caldera(glm::ivec2 shape, float radius, float sigma_inner, float sigma_outer, float z_bottom, const Array *p_noise, float noise_amp_r, float noise_ratio_z, glm::vec2 center={0.5f, 0.5f}, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})'],['../namespacehmap.html#aaa2b720ef7b261b4eb2f1e89838a538e',1,'hmap::caldera(glm::ivec2 shape, float radius, float sigma_inner, float sigma_outer, float z_bottom, glm::vec2 center={0.5f, 0.5f}, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})']]],
-  ['catmullrom_1',['catmullrom',['../classhmap_1_1Path.html#a474a7bb81e024ffbda7b328a6257eb72',1,'hmap::Path']]],
+  ['catmullrom_1',['catmullrom',['../classhmap_1_1Path.html#a0b0f06e06a62374a23fffd59cf52c7c2',1,'hmap::Path']]],
   ['ceil_5fdiv_2',['ceil_div',['../namespacehmap.html#a6294951db2b05d8b1081e4d865c11244',1,'hmap']]],
   ['cell_5fcenter_3',['cell_center',['../structhmap_1_1TileRegion.html#a2160f3e52bb07aebad44bf689d5fe690',1,'hmap::TileRegion']]],
   ['cell_5fcorner_4',['cell_corner',['../structhmap_1_1TileRegion.html#a773fcee90fae6c3950a9fa5617de2f62',1,'hmap::TileRegion']]],

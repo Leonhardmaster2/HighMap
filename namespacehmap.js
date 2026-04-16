@@ -1198,6 +1198,7 @@ var namespacehmap =
     [ "recurve_bexp", "namespacehmap.html#ad8482d5a5c0650c20ffe1dc86b5f8a61", null ],
     [ "recurve_exp", "namespacehmap.html#ad1ea450b3a5185e8066a5da48718489c", null ],
     [ "rescale_grid_from_unit_square_to_bbox", "namespacehmap.html#aa9061db538c0b776f46d7088bbcdc289", null ],
+    [ "helper_build_path", "namespacehmap.html#acb8406087111cf178e5721b45b995db4", null ],
     [ "helper_estimate_count", "namespacehmap.html#a680e3eafe72e649e15f076c59c86ab01", null ],
     [ "cmp_inf", "namespacehmap.html#ac070e7f9253f57fe6b44ad1f6c9fd753", null ],
     [ "compute_gradient", "namespacehmap.html#ad97b6a0082efd4063f7839c95a51b294", null ],

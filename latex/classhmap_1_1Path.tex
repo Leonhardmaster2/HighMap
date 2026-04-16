@@ -29,6 +29,13 @@ Collaboration diagram for hmap\+::Path\+:
 \includegraphics[width=193pt]{classhmap_1_1Path__coll__graph}
 \end{center}
 \end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787}{Edge\+Division\+Mode}} \+: int \{ \mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787a5192c60669f946857f5bed6f43c212ee}{EDM\+\_\+\+PER\+\_\+\+EDGE}}
+, \mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787a5809dc79c1bc0e85924a160c89a46338}{EDM\+\_\+\+FULL\+\_\+\+ARC}}
+ \}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -44,17 +51,17 @@ Collaboration diagram for hmap\+::Path\+:
 \begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classhmap_1_1Path}{Path} object based on {\ttfamily x}, {\ttfamily y} coordinates, and values. Initializes a path with the specified {\ttfamily x} and {\ttfamily y} coordinates, associated values, and an option to be open or closed. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Path_a8f2b65b2b958767c5b8930c3a0fa8b16}{Path}} (const std\+::vector$<$ glm\+::ivec2 $>$ \&indices, const glm\+::ivec2 \&shape, const glm\+::vec4 \&bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, bool \mbox{\hyperlink{classhmap_1_1Path_a2ea3482a302d8ef30084fd39e57715de}{closed}}=false)
 \begin{DoxyCompactList}\small\item\em Construct a point cloud from grid indices mapped to a bounding box. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classhmap_1_1Path_a56cc1e52401d748b540f9bc72a49000b}{bezier}} (float curvature\+\_\+ratio=0.\+3\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, int edge\+\_\+divisions=10)
+void \mbox{\hyperlink{classhmap_1_1Path_a36ec9d625edd2710999c263fa790af19}{bezier}} (float curvature\+\_\+ratio=0.\+3\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, int edge\+\_\+divisions=10, \mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787}{Edge\+Division\+Mode}} edm=\mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787a5192c60669f946857f5bed6f43c212ee}{Edge\+Division\+Mode\+::\+EDM\+\_\+\+PER\+\_\+\+EDGE}})
 \begin{DoxyCompactList}\small\item\em Smooth the path using Bezier curves. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classhmap_1_1Path_a9c0c833a2c386bd43fa131520ff6a5f6}{bezier\+\_\+round}} (float curvature\+\_\+ratio=0.\+3\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, int edge\+\_\+divisions=10)
+void \mbox{\hyperlink{classhmap_1_1Path_a63ce9b401fbdaa45541c317045c0cec0}{bezier\+\_\+round}} (float curvature\+\_\+ratio=0.\+3\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, int edge\+\_\+divisions=10, \mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787}{Edge\+Division\+Mode}} edm=\mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787a5192c60669f946857f5bed6f43c212ee}{Edge\+Division\+Mode\+::\+EDM\+\_\+\+PER\+\_\+\+EDGE}})
 \begin{DoxyCompactList}\small\item\em Smooth the path using Bezier curves (alternative method). \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classhmap_1_1Path_a166a6f87dff196efa75abb1b731d3528}{bspline}} (int edge\+\_\+divisions=10)
+void \mbox{\hyperlink{classhmap_1_1Path_a4ca03435fee5e9111edd93e2393d1533}{bspline}} (int edge\+\_\+divisions=10, \mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787}{Edge\+Division\+Mode}} edm=\mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787a5192c60669f946857f5bed6f43c212ee}{Edge\+Division\+Mode\+::\+EDM\+\_\+\+PER\+\_\+\+EDGE}})
 \begin{DoxyCompactList}\small\item\em Smooth the path using B-\/\+Spline curves. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classhmap_1_1Path_a474a7bb81e024ffbda7b328a6257eb72}{catmullrom}} (int edge\+\_\+divisions=10)
+void \mbox{\hyperlink{classhmap_1_1Path_a0b0f06e06a62374a23fffd59cf52c7c2}{catmullrom}} (int edge\+\_\+divisions=10, \mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787}{Edge\+Division\+Mode}} edm=\mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787a5192c60669f946857f5bed6f43c212ee}{Edge\+Division\+Mode\+::\+EDM\+\_\+\+PER\+\_\+\+EDGE}})
 \begin{DoxyCompactList}\small\item\em Smooth the path using Catmull-\/\+Rom curves. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classhmap_1_1Path_ad85aa61692aadbfa1f3f08096cb0594c}{clear}} ()
 \begin{DoxyCompactList}\small\item\em Clear the path data. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classhmap_1_1Path_a8afb2afae1396fdf7cf8fd3a52e6a227}{decasteljau}} (int edge\+\_\+divisions=10)
+void \mbox{\hyperlink{classhmap_1_1Path_a53d689856724f951147b5698c9b76563}{decasteljau}} (int edge\+\_\+divisions=10, \mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787}{Edge\+Division\+Mode}} edm=\mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787a5192c60669f946857f5bed6f43c212ee}{Edge\+Division\+Mode\+::\+EDM\+\_\+\+PER\+\_\+\+EDGE}})
 \begin{DoxyCompactList}\small\item\em Smooth the path using De Casteljau curves. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classhmap_1_1Path_ad2be7924d78ea51a68158bf68b12d6ed}{decimate\+\_\+vw}} (int n\+\_\+points\+\_\+target=3)
 \begin{DoxyCompactList}\small\item\em Simplifies the current path using the Visvalingam-\/\+Whyatt algorithm. \end{DoxyCompactList}\item 
@@ -84,7 +91,7 @@ std\+::vector$<$ float $>$ \mbox{\hyperlink{classhmap_1_1Path_ab9ff9f7a0ea9c090c
 \begin{DoxyCompactList}\small\item\em Get the {\ttfamily y} coordinates of the points on the path. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classhmap_1_1Path_a4934980f265ae283c847fc091fe45c75}{enforce\+\_\+monotonic\+\_\+values}} (bool decreasing=true)
 \begin{DoxyCompactList}\small\item\em Enforces monotonicity on the values of the points in the path. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classhmap_1_1Path_a19b0cfc3fd7359b66f0e4d4c2dcb8eb8}{meanderize}} (float ratio, float noise\+\_\+ratio=0.\+1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed=1, int iterations=1, int edge\+\_\+divisions=10)
+void \mbox{\hyperlink{classhmap_1_1Path_a499c796b9fcd9dede4c7a722dbd40ed3}{meanderize}} (float ratio, float noise\+\_\+ratio=0.\+1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed=1, int iterations=1, int edge\+\_\+divisions=10, \mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787}{Edge\+Division\+Mode}} edm=\mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787a5192c60669f946857f5bed6f43c212ee}{Edge\+Division\+Mode\+::\+EDM\+\_\+\+PER\+\_\+\+EDGE}})
 \begin{DoxyCompactList}\small\item\em Add "{}meanders"{} to the path. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classhmap_1_1Path_ad68abaa80879402c3758e24626acfb53}{reorder\+\_\+nns}} (int start\+\_\+index=0)
 \begin{DoxyCompactList}\small\item\em Reorder points using a nearest neighbor search. \end{DoxyCompactList}\item 
@@ -266,6 +273,25 @@ The {\ttfamily \doxylink{classhmap_1_1Path}{Path}} class extends the {\ttfamily 
 
 {\bfseries{Result}}  
 
+\doxysubsection{Member Enumeration Documentation}
+\Hypertarget{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787}\label{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787} 
+\index{hmap::Path@{hmap::Path}!EdgeDivisionMode@{EdgeDivisionMode}}
+\index{EdgeDivisionMode@{EdgeDivisionMode}!hmap::Path@{hmap::Path}}
+\doxysubsubsection{\texorpdfstring{EdgeDivisionMode}{EdgeDivisionMode}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787}{hmap\+::\+Path\+::\+Edge\+Division\+Mode}} \+: int\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EDM\_PER\_EDGE@{EDM\_PER\_EDGE}!hmap::Path@{hmap::Path}}\index{hmap::Path@{hmap::Path}!EDM\_PER\_EDGE@{EDM\_PER\_EDGE}}}\Hypertarget{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787a5192c60669f946857f5bed6f43c212ee}\label{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787a5192c60669f946857f5bed6f43c212ee} 
+EDM\+\_\+\+PER\+\_\+\+EDGE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EDM\_FULL\_ARC@{EDM\_FULL\_ARC}!hmap::Path@{hmap::Path}}\index{hmap::Path@{hmap::Path}!EDM\_FULL\_ARC@{EDM\_FULL\_ARC}}}\Hypertarget{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787a5809dc79c1bc0e85924a160c89a46338}\label{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787a5809dc79c1bc0e85924a160c89a46338} 
+EDM\+\_\+\+FULL\+\_\+\+ARC&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{classhmap_1_1Path_a9695b8d68fc506c403f47dde1b74620c}\label{classhmap_1_1Path_a9695b8d68fc506c403f47dde1b74620c} 
 \index{hmap::Path@{hmap::Path}!Path@{Path}}
@@ -384,11 +410,11 @@ Each index is normalized by the grid shape and remapped to the given bounding bo
 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classhmap_1_1Path_a56cc1e52401d748b540f9bc72a49000b}\label{classhmap_1_1Path_a56cc1e52401d748b540f9bc72a49000b} 
+\Hypertarget{classhmap_1_1Path_a36ec9d625edd2710999c263fa790af19}\label{classhmap_1_1Path_a36ec9d625edd2710999c263fa790af19} 
 \index{hmap::Path@{hmap::Path}!bezier@{bezier}}
 \index{bezier@{bezier}!hmap::Path@{hmap::Path}}
 \doxysubsubsection{\texorpdfstring{bezier()}{bezier()}}
-{\footnotesize\ttfamily void hmap\+::\+Path\+::bezier (\begin{DoxyParamCaption}\item[{float}]{curvature\+\_\+ratio = {\ttfamily 0.3\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{int}]{edge\+\_\+divisions = {\ttfamily 10} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void hmap\+::\+Path\+::bezier (\begin{DoxyParamCaption}\item[{float}]{curvature\+\_\+ratio = {\ttfamily 0.3\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{int}]{edge\+\_\+divisions = {\ttfamily 10},  }\item[{\mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787}{Edge\+Division\+Mode}}}]{edm = {\ttfamily \mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787a5192c60669f946857f5bed6f43c212ee}{Edge\+Division\+Mode\+::\+EDM\+\_\+\+PER\+\_\+\+EDGE}}} }\end{DoxyParamCaption})}
 
 
 
@@ -414,7 +440,7 @@ This method applies Bezier curve smoothing to the path. The {\ttfamily curvature
 \DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_a4d1e1e63fea24bf8f23bc3343f8b746e}{to\_array}}(z1,\ bbox);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ z2\ =\ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}(shape);}
-\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_a56cc1e52401d748b540f9bc72a49000b}{bezier}}(0.5f,\ 10);\ \textcolor{comment}{//\ curvature,\ point\ density}}
+\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_a36ec9d625edd2710999c263fa790af19}{bezier}}(0.5f,\ 10);\ \textcolor{comment}{//\ curvature,\ point\ density}}
 \DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_a4d1e1e63fea24bf8f23bc3343f8b746e}{to\_array}}(z2,\ bbox);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ z3\ =\ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}(shape);}
@@ -439,11 +465,11 @@ This method applies Bezier curve smoothing to the path. The {\ttfamily curvature
 {\em edge\+\_\+divisions} & Number of subdivisions per edge to achieve smooth curves. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{classhmap_1_1Path_a9c0c833a2c386bd43fa131520ff6a5f6}\label{classhmap_1_1Path_a9c0c833a2c386bd43fa131520ff6a5f6} 
+\Hypertarget{classhmap_1_1Path_a63ce9b401fbdaa45541c317045c0cec0}\label{classhmap_1_1Path_a63ce9b401fbdaa45541c317045c0cec0} 
 \index{hmap::Path@{hmap::Path}!bezier\_round@{bezier\_round}}
 \index{bezier\_round@{bezier\_round}!hmap::Path@{hmap::Path}}
 \doxysubsubsection{\texorpdfstring{bezier\_round()}{bezier\_round()}}
-{\footnotesize\ttfamily void hmap\+::\+Path\+::bezier\+\_\+round (\begin{DoxyParamCaption}\item[{float}]{curvature\+\_\+ratio = {\ttfamily 0.3\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{int}]{edge\+\_\+divisions = {\ttfamily 10} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void hmap\+::\+Path\+::bezier\+\_\+round (\begin{DoxyParamCaption}\item[{float}]{curvature\+\_\+ratio = {\ttfamily 0.3\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{int}]{edge\+\_\+divisions = {\ttfamily 10},  }\item[{\mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787}{Edge\+Division\+Mode}}}]{edm = {\ttfamily \mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787a5192c60669f946857f5bed6f43c212ee}{Edge\+Division\+Mode\+::\+EDM\+\_\+\+PER\+\_\+\+EDGE}}} }\end{DoxyParamCaption})}
 
 
 
@@ -468,7 +494,7 @@ This alternative method applies Bezier curve smoothing to the path. The {\ttfami
 \DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_a4d1e1e63fea24bf8f23bc3343f8b746e}{to\_array}}(z1,\ bbox);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ z2\ =\ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}(shape);}
-\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_a9c0c833a2c386bd43fa131520ff6a5f6}{bezier\_round}}(0.2f,\ 10);\ \textcolor{comment}{//\ curvature,\ point\ density}}
+\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_a63ce9b401fbdaa45541c317045c0cec0}{bezier\_round}}(0.2f,\ 10);\ \textcolor{comment}{//\ curvature,\ point\ density}}
 \DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_a4d1e1e63fea24bf8f23bc3343f8b746e}{to\_array}}(z2,\ bbox);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_path\_bezier\_round.png"{}},}
@@ -488,11 +514,11 @@ This alternative method applies Bezier curve smoothing to the path. The {\ttfami
 {\em edge\+\_\+divisions} & Number of edge subdivisions for smoothness. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{classhmap_1_1Path_a166a6f87dff196efa75abb1b731d3528}\label{classhmap_1_1Path_a166a6f87dff196efa75abb1b731d3528} 
+\Hypertarget{classhmap_1_1Path_a4ca03435fee5e9111edd93e2393d1533}\label{classhmap_1_1Path_a4ca03435fee5e9111edd93e2393d1533} 
 \index{hmap::Path@{hmap::Path}!bspline@{bspline}}
 \index{bspline@{bspline}!hmap::Path@{hmap::Path}}
 \doxysubsubsection{\texorpdfstring{bspline()}{bspline()}}
-{\footnotesize\ttfamily void hmap\+::\+Path\+::bspline (\begin{DoxyParamCaption}\item[{int}]{edge\+\_\+divisions = {\ttfamily 10} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void hmap\+::\+Path\+::bspline (\begin{DoxyParamCaption}\item[{int}]{edge\+\_\+divisions = {\ttfamily 10},  }\item[{\mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787}{Edge\+Division\+Mode}}}]{edm = {\ttfamily \mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787a5192c60669f946857f5bed6f43c212ee}{Edge\+Division\+Mode\+::\+EDM\+\_\+\+PER\+\_\+\+EDGE}}} }\end{DoxyParamCaption})}
 
 
 
@@ -519,7 +545,7 @@ This method smooths the path using B-\/\+Spline curves, which provide a smooth c
 \DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_a4d1e1e63fea24bf8f23bc3343f8b746e}{to\_array}}(z1,\ bbox);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ z2\ =\ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}(shape);}
-\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_a166a6f87dff196efa75abb1b731d3528}{bspline}}();}
+\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_a4ca03435fee5e9111edd93e2393d1533}{bspline}}();}
 \DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_a4d1e1e63fea24bf8f23bc3343f8b746e}{to\_array}}(z2,\ bbox);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_path\_bspline.png"{}},\ \{z1,\ z2\},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}});}
@@ -538,11 +564,11 @@ This method smooths the path using B-\/\+Spline curves, which provide a smooth c
 \begin{DoxyWarning}{Warning}
 This function does not correctly handle closed polylines. 
 \end{DoxyWarning}
-\Hypertarget{classhmap_1_1Path_a474a7bb81e024ffbda7b328a6257eb72}\label{classhmap_1_1Path_a474a7bb81e024ffbda7b328a6257eb72} 
+\Hypertarget{classhmap_1_1Path_a0b0f06e06a62374a23fffd59cf52c7c2}\label{classhmap_1_1Path_a0b0f06e06a62374a23fffd59cf52c7c2} 
 \index{hmap::Path@{hmap::Path}!catmullrom@{catmullrom}}
 \index{catmullrom@{catmullrom}!hmap::Path@{hmap::Path}}
 \doxysubsubsection{\texorpdfstring{catmullrom()}{catmullrom()}}
-{\footnotesize\ttfamily void hmap\+::\+Path\+::catmullrom (\begin{DoxyParamCaption}\item[{int}]{edge\+\_\+divisions = {\ttfamily 10} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void hmap\+::\+Path\+::catmullrom (\begin{DoxyParamCaption}\item[{int}]{edge\+\_\+divisions = {\ttfamily 10},  }\item[{\mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787}{Edge\+Division\+Mode}}}]{edm = {\ttfamily \mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787a5192c60669f946857f5bed6f43c212ee}{Edge\+Division\+Mode\+::\+EDM\+\_\+\+PER\+\_\+\+EDGE}}} }\end{DoxyParamCaption})}
 
 
 
@@ -569,7 +595,7 @@ This method applies Catmull-\/\+Rom curve smoothing to the path. Catmull-\/\+Rom
 \DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_a4d1e1e63fea24bf8f23bc3343f8b746e}{to\_array}}(z1,\ bbox);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ z2\ =\ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}(shape);}
-\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_a474a7bb81e024ffbda7b328a6257eb72}{catmullrom}}();}
+\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_a0b0f06e06a62374a23fffd59cf52c7c2}{catmullrom}}();}
 \DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_a4d1e1e63fea24bf8f23bc3343f8b746e}{to\_array}}(z2,\ bbox);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_path\_catmullrom.png"{}},}
@@ -600,11 +626,11 @@ This function does not correctly handle closed polylines.
 
 Clear the path data. 
 
-This method removes all points and associated data from the path, effectively resetting it to an empty state. \Hypertarget{classhmap_1_1Path_a8afb2afae1396fdf7cf8fd3a52e6a227}\label{classhmap_1_1Path_a8afb2afae1396fdf7cf8fd3a52e6a227} 
+This method removes all points and associated data from the path, effectively resetting it to an empty state. \Hypertarget{classhmap_1_1Path_a53d689856724f951147b5698c9b76563}\label{classhmap_1_1Path_a53d689856724f951147b5698c9b76563} 
 \index{hmap::Path@{hmap::Path}!decasteljau@{decasteljau}}
 \index{decasteljau@{decasteljau}!hmap::Path@{hmap::Path}}
 \doxysubsubsection{\texorpdfstring{decasteljau()}{decasteljau()}}
-{\footnotesize\ttfamily void hmap\+::\+Path\+::decasteljau (\begin{DoxyParamCaption}\item[{int}]{edge\+\_\+divisions = {\ttfamily 10} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void hmap\+::\+Path\+::decasteljau (\begin{DoxyParamCaption}\item[{int}]{edge\+\_\+divisions = {\ttfamily 10},  }\item[{\mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787}{Edge\+Division\+Mode}}}]{edm = {\ttfamily \mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787a5192c60669f946857f5bed6f43c212ee}{Edge\+Division\+Mode\+::\+EDM\+\_\+\+PER\+\_\+\+EDGE}}} }\end{DoxyParamCaption})}
 
 
 
@@ -638,7 +664,7 @@ The parameter {\ttfamily edge\+\_\+divisions} controls the number of divisions (
 \DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_a4d1e1e63fea24bf8f23bc3343f8b746e}{to\_array}}(z1,\ bbox);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ z2\ =\ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}(shape);}
-\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_a8afb2afae1396fdf7cf8fd3a52e6a227}{decasteljau}}();}
+\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_a53d689856724f951147b5698c9b76563}{decasteljau}}();}
 \DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_a4d1e1e63fea24bf8f23bc3343f8b746e}{to\_array}}(z2,\ bbox);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_path\_decasteljau.png"{}},}
@@ -1054,11 +1080,11 @@ This method adjusts the {\ttfamily v} values of the points in the path to ensure
 \begin{DoxyNote}{Note}
 This method modifies the path in place. 
 \end{DoxyNote}
-\Hypertarget{classhmap_1_1Path_a19b0cfc3fd7359b66f0e4d4c2dcb8eb8}\label{classhmap_1_1Path_a19b0cfc3fd7359b66f0e4d4c2dcb8eb8} 
+\Hypertarget{classhmap_1_1Path_a499c796b9fcd9dede4c7a722dbd40ed3}\label{classhmap_1_1Path_a499c796b9fcd9dede4c7a722dbd40ed3} 
 \index{hmap::Path@{hmap::Path}!meanderize@{meanderize}}
 \index{meanderize@{meanderize}!hmap::Path@{hmap::Path}}
 \doxysubsubsection{\texorpdfstring{meanderize()}{meanderize()}}
-{\footnotesize\ttfamily void hmap\+::\+Path\+::meanderize (\begin{DoxyParamCaption}\item[{float}]{ratio,  }\item[{float}]{noise\+\_\+ratio = {\ttfamily 0.1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{\mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{seed = {\ttfamily 1},  }\item[{int}]{iterations = {\ttfamily 1},  }\item[{int}]{edge\+\_\+divisions = {\ttfamily 10} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void hmap\+::\+Path\+::meanderize (\begin{DoxyParamCaption}\item[{float}]{ratio,  }\item[{float}]{noise\+\_\+ratio = {\ttfamily 0.1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{\mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{seed = {\ttfamily 1},  }\item[{int}]{iterations = {\ttfamily 1},  }\item[{int}]{edge\+\_\+divisions = {\ttfamily 10},  }\item[{\mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787}{Edge\+Division\+Mode}}}]{edm = {\ttfamily \mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787a5192c60669f946857f5bed6f43c212ee}{Edge\+Division\+Mode\+::\+EDM\+\_\+\+PER\+\_\+\+EDGE}}} }\end{DoxyParamCaption})}
 
 
 
@@ -1089,7 +1115,7 @@ This method introduces meandering effects to the path by adding random deviation
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{float}\ ratio\ =\ 0.2f;}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ path\_c.\mbox{\hyperlink{classhmap_1_1Path_a19b0cfc3fd7359b66f0e4d4c2dcb8eb8}{meanderize}}(ratio);}
+\DoxyCodeLine{\ \ \ \ path\_c.\mbox{\hyperlink{classhmap_1_1Path_a499c796b9fcd9dede4c7a722dbd40ed3}{meanderize}}(ratio);}
 \DoxyCodeLine{\ \ \ \ path\_c.\mbox{\hyperlink{classhmap_1_1Path_a4d1e1e63fea24bf8f23bc3343f8b746e}{to\_array}}(z2,\ bbox);}
 \DoxyCodeLine{\ \ \}}
 \DoxyCodeLine{}
@@ -1101,7 +1127,7 @@ This method introduces meandering effects to the path by adding random deviation
 \DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{float}\ noise\_ratio\ =\ 0.1f;}
 \DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{int}\ \ \ iterations\ =\ 2;}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ path\_c.\mbox{\hyperlink{classhmap_1_1Path_a19b0cfc3fd7359b66f0e4d4c2dcb8eb8}{meanderize}}(ratio,\ noise\_ratio,\ seed,\ iterations);}
+\DoxyCodeLine{\ \ \ \ path\_c.\mbox{\hyperlink{classhmap_1_1Path_a499c796b9fcd9dede4c7a722dbd40ed3}{meanderize}}(ratio,\ noise\_ratio,\ seed,\ iterations);}
 \DoxyCodeLine{\ \ \ \ path\_c.\mbox{\hyperlink{classhmap_1_1Path_a4d1e1e63fea24bf8f23bc3343f8b746e}{to\_array}}(z3,\ bbox);}
 \DoxyCodeLine{\ \ \}}
 \DoxyCodeLine{}
