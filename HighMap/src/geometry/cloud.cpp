@@ -185,15 +185,10 @@ std::vector<int> Cloud::get_convex_hull_point_indices() const
   return chull;
 }
 
-size_t Cloud::get_npoints() const
-{
-  return this->points.size();
-}
-
 std::vector<float> Cloud::get_values() const
 {
   std::vector<float> values;
-  values.reserve(this->get_npoints());
+  values.reserve(this->size());
   for (auto &p : this->points)
     values.push_back(p.v);
   return values;
@@ -201,7 +196,7 @@ std::vector<float> Cloud::get_values() const
 
 float Cloud::get_values_max() const
 {
-  if (this->get_npoints() == 0) return 0.f;
+  if (this->size() == 0) return 0.f;
 
   std::vector<float> values = this->get_values();
   return *std::max_element(values.begin(), values.end());
@@ -209,7 +204,7 @@ float Cloud::get_values_max() const
 
 float Cloud::get_values_min() const
 {
-  if (this->get_npoints() == 0) return 0.f;
+  if (this->size() == 0) return 0.f;
 
   std::vector<float> values = this->get_values();
   return *std::min_element(values.begin(), values.end());
@@ -218,7 +213,7 @@ float Cloud::get_values_min() const
 std::vector<float> Cloud::get_x() const
 {
   std::vector<float> x;
-  x.reserve(this->get_npoints());
+  x.reserve(this->size());
   for (auto &p : this->points)
     x.push_back(p.x);
   return x;
@@ -227,7 +222,7 @@ std::vector<float> Cloud::get_x() const
 std::vector<float> Cloud::get_xy() const
 {
   std::vector<float> xy;
-  xy.reserve(2 * this->get_npoints());
+  xy.reserve(2 * this->size());
   for (auto &p : this->points)
   {
     xy.push_back(p.x);
@@ -239,7 +234,7 @@ std::vector<float> Cloud::get_xy() const
 std::vector<float> Cloud::get_y() const
 {
   std::vector<float> y;
-  y.reserve(this->get_npoints());
+  y.reserve(this->size());
   for (auto &p : this->points)
     y.push_back(p.y);
   return y;
@@ -290,7 +285,7 @@ size_t Cloud::nearest_point(const glm::vec2 &xy) const
   size_t kn = 0;
   float  d2max = std::numeric_limits<float>::max();
 
-  for (size_t k = 0; k < this->get_npoints(); k++)
+  for (size_t k = 0; k < this->size(); k++)
   {
     glm::vec2 diff = xy - glm::vec2(this->points[k].x, this->points[k].y);
     float     d2 = glm::dot(diff, diff);
@@ -319,7 +314,7 @@ void Cloud::print()
             << std::endl;
 
   std::cout << "  - points:" << std::endl;
-  for (size_t k = 0; k < this->get_npoints(); k++)
+  for (size_t k = 0; k < this->size(); k++)
   {
     std::cout << std::setw(6) << k;
     std::cout << std::setw(12) << this->points[k].x;
@@ -331,12 +326,12 @@ void Cloud::print()
 
 void Cloud::randomize(uint seed, glm::vec4 bbox)
 {
-  Cloud cloud_rnd = random_cloud(this->get_npoints(),
+  Cloud cloud_rnd = random_cloud(this->size(),
                                  seed,
                                  PointSamplingMethod::RND_LHS,
                                  bbox);
 
-  for (size_t k = 0; k < this->get_npoints(); ++k)
+  for (size_t k = 0; k < this->size(); ++k)
     this->points[k] = cloud_rnd.points[k];
 }
 
@@ -425,7 +420,7 @@ void Cloud::set_values_from_chull_distance()
 {
   std::vector<int> chull = this->get_convex_hull_point_indices();
 
-  for (size_t i = 0; i < this->get_npoints(); i++)
+  for (size_t i = 0; i < this->size(); i++)
   {
     float dmax = std::numeric_limits<float>::max();
     for (size_t k = 0; k < chull.size(); k++)
@@ -452,16 +447,20 @@ void Cloud::set_values_from_min_distance()
   this->set_values(dist);
 }
 
+size_t Cloud::size() const
+{
+  return this->points.size();
+}
+
 void Cloud::snap_points_to_bounding_box(const glm::vec4 &bbox,
                                         float            tolerance_ratio)
 {
-  if (!this->get_npoints()) return;
+  if (!this->size()) return;
 
   // reference distance based on point density
   float lx = bbox.y - bbox.x;
   float ly = bbox.w - bbox.z;
-  float dref = tolerance_ratio *
-               std::sqrt(lx * ly / float(this->get_npoints()));
+  float dref = tolerance_ratio * std::sqrt(lx * ly / float(this->size()));
 
   // snap points to border if close enough
   for (auto &p : this->points)
@@ -660,7 +659,7 @@ void Cloud::to_png(const std::string &fname,
 std::vector<glm::vec3> Cloud::to_vec3() const
 {
   std::vector<glm::vec3> vec;
-  vec.reserve(this->get_npoints());
+  vec.reserve(this->size());
 
   for (const auto &p : this->points)
     vec.push_back({p.x, p.y, p.v});
@@ -694,7 +693,7 @@ Cloud merge_clouds(const std::vector<Cloud> &clouds)
   // reserve total size to avoid reallocations
   std::size_t total_size = 0;
   for (const auto &cloud : clouds)
-    total_size += cloud.get_npoints();
+    total_size += cloud.size();
 
   x.reserve(total_size);
   y.reserve(total_size);

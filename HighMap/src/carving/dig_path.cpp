@@ -28,7 +28,7 @@ void dig_path(Array    &z,
     // make sure the path is monotically decreasing
     path_copy.set_values_from_array(z, bbox);
 
-    for (size_t k = 1; k < path_copy.get_npoints(); k++)
+    for (size_t k = 1; k < path_copy.size(); k++)
       if (path_copy.points[k].v > path_copy.points[k - 1].v)
         path_copy.points[k].v = path_copy.points[k - 1].v;
 

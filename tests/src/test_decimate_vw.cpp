@@ -25,7 +25,7 @@ TEST(PathDecimateVw, ReducesPointCount)
 {
   hmap::Path path;
   path.points = generate_line(100);
-  path.decimate_vw(10);
+  path = hmap::decimate_vw(path, 10);
 
   EXPECT_EQ(path.points.size(), 10);
 }
@@ -34,7 +34,7 @@ TEST(PathDecimateVw, PreservesStraightLine)
 {
   hmap::Path path;
   path.points = generate_line(100);
-  path.decimate_vw(5);
+  path = hmap::decimate_vw(path, 5);
 
   // all points should remain colinear
   for (size_t i = 1; i + 1 < path.points.size(); ++i)
@@ -48,7 +48,7 @@ TEST(PathDecimateVw, PreservesCircle)
 {
   hmap::Path path;
   path.points = generate_circle(100, 1.f);
-  path.decimate_vw(20);
+  path = hmap::decimate_vw(path, 20);
 
   float avg_radius = 1.f;
 

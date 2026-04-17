@@ -1,2 +1,0 @@
-add_executable(ex_path_bspline ex_path_bspline.cpp)
-target_link_libraries(ex_path_bspline highmap)

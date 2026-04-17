@@ -14,7 +14,7 @@ int main(void)
 
   hmap::Array z_sdf_o = path.to_array_sdf(shape, bbox_array);
 
-  path.closed = true;
+  path.set_closed(true);
   hmap::Array z_sdf_c = path.to_array_sdf(shape, bbox_array);
 
   hmap::export_banner_png("ex_path_sdf.png",

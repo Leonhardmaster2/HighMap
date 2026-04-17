@@ -219,16 +219,6 @@ public:
   std::vector<int> get_convex_hull_point_indices() const;
 
   /**
-   * @brief Get the number of points in the cloud.
-   *
-   * This method returns the total number of points currently stored in the
-   * cloud.
-   *
-   * @return size_t The number of points in the cloud.
-   */
-  size_t get_npoints() const;
-
-  /**
    * @brief Get the values assigned to the points in the cloud.
    *
    * This method returns a vector containing the values associated with each
@@ -470,6 +460,16 @@ public:
    *   `ps::first_neighbor_distance_squared`.
    */
   void set_values_from_min_distance();
+
+  /**
+   * @brief Get the number of points in the cloud.
+   *
+   * This method returns the total number of points currently stored in the
+   * cloud.
+   *
+   * @return size_t The number of points in the cloud.
+   */
+  size_t size() const;
 
   /**
    * @brief Snap points to the bounding box edges and corners.

@@ -18,8 +18,8 @@ int main(void)
       hmap::DomainBoundary::BOUNDARY_RIGHT,
       seed);
 
-  path.decimate_vw(30);
-  path.bspline(50);
+  path = hmap::decimate_vw(path, 30);
+  path = hmap::bspline(path, 50);
 
   hmap::Array z2 = hmap::Array(shape);
   path.to_array(z2);

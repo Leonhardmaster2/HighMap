@@ -9,15 +9,14 @@ int main(void)
   glm::vec4  bbox = {1.f, 2.f, -0.5f, 0.5f};
   hmap::Path path = hmap::Path(npoints, seed, {1.3f, 1.7f, -0.2, 0.2f});
   path.reorder_nns();
-  path.fractalize(/* iterations */ 2, seed, /* sigma */ 0.2f);
-  // path.bspline();
+  path = hmap::fractalize(path, /* iterations */ 2, seed, /* sigma */ 0.2f);
 
   auto z1 = hmap::Array(shape);
   path.to_array(z1, bbox);
 
   // display curvature
   hmap::Path path_cpy = path;
-  path_cpy.bspline();
+  path_cpy = hmap::bspline(path_cpy);
 
   auto c = path_cpy.get_curvature(false);
 
@@ -25,7 +24,7 @@ int main(void)
 
   float dr = 0.001f;
 
-  for (size_t k = 0; k < path_cpy.get_npoints(); ++k)
+  for (size_t k = 0; k < path_cpy.size(); ++k)
   {
     float amp = std::clamp(dr * c[k], -0.1f, 0.1f);
     path_cpy.points[k].x -= amp * normals[k].x;

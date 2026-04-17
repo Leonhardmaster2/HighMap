@@ -7,7 +7,7 @@ int main(void)
 
   glm::vec4  bbox = {0.f, 1.f, 0.f, 1.f};
   hmap::Path path = hmap::Path(40, seed, bbox);
-  path.closed = false;
+  path.set_closed(false);
 
   auto z1 = hmap::Array(shape);
   path.to_array(z1, bbox);

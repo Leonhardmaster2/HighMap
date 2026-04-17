@@ -56,18 +56,15 @@ public:
     EDM_FULL_ARC,
   };
 
-  /**
-   * @brief Defines whether the path is closed or open. If `true`, the path is
-   * closed, forming a loop. If `false`, the path is open.
-   */
-  bool closed;
+  // ==========================================================================
+  //  Constructors
+  // ==========================================================================
 
   /**
    * @brief Construct a new Path object with default properties. Initializes an
    * empty path with the `closed` property set to `false`.
-   * @param closed Open/close path flag.
    */
-  Path(bool closed = false) : Cloud(), closed(closed){};
+  Path() = default;
 
   /**
    * @brief Construct a new Path object with random positions and values.
@@ -76,22 +73,16 @@ public:
    * @param npoints Number of points to generate.
    * @param seed    Random seed number for generating random values.
    * @param bbox    Bounding box for random point generation.
-   * @param closed  Open/close path flag.
    */
-  Path(int       npoints,
-       uint      seed,
-       glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f},
-       bool      closed = false)
-      : Cloud(npoints, seed, bbox), closed(closed){};
+  Path(int npoints, uint seed, glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f})
+      : Cloud(npoints, seed, bbox){};
 
   /**
    * @brief Construct a new Path object based on a list of points. Initializes a
    * path with the specified points and an option to be open or closed.
    * @param points List of points defining the path.
-   * @param closed Open/close path flag.
    */
-  Path(std::vector<Point> points, bool closed = false)
-      : Cloud(points), closed(closed){};
+  Path(std::vector<Point> points) : Cloud(points){};
 
   /**
    * @brief Construct a new Path object based on `x` and `y` coordinates.
@@ -99,10 +90,8 @@ public:
    * to be open or closed.
    * @param x      List of `x` coordinates for the points.
    * @param y      List of `y` coordinates for the points.
-   * @param closed Open/close path flag.
    */
-  Path(std::vector<float> x, std::vector<float> y, bool closed = false)
-      : Cloud(x, y), closed(closed){};
+  Path(std::vector<float> x, std::vector<float> y) : Cloud(x, y){};
 
   /**
    * @brief Construct a new Path object based on `x`, `y` coordinates, and
@@ -111,13 +100,9 @@ public:
    * @param x      List of `x` coordinates for the points.
    * @param y      List of `y` coordinates for the points.
    * @param v      List of values associated with the points.
-   * @param closed Open/close path flag.
    */
-  Path(std::vector<float> x,
-       std::vector<float> y,
-       std::vector<float> v,
-       bool               closed = false)
-      : Cloud(x, y, v), closed(closed){};
+  Path(std::vector<float> x, std::vector<float> y, std::vector<float> v)
+      : Cloud(x, y, v){};
 
   /**
    * @brief Construct a point cloud from grid indices mapped to a bounding box.
@@ -131,266 +116,12 @@ public:
    */
   Path(const std::vector<glm::ivec2> &indices,
        const glm::ivec2              &shape,
-       const glm::vec4               &bbox = {0.f, 1.f, 0.f, 1.f},
-       bool                           closed = false)
-      : Cloud(indices, shape, bbox), closed(closed){};
+       const glm::vec4               &bbox = {0.f, 1.f, 0.f, 1.f})
+      : Cloud(indices, shape, bbox){};
 
-  /**
-   * @brief Smooth the path using Bezier curves.
-   *
-   * This method applies Bezier curve smoothing to the path. The
-   * `curvature_ratio` controls the amount of curvature applied, with typical
-   * values in the range of [-1, 1], where positive values generally result in
-   * more pronounced curvature. The `edge_divisions` parameter determines the
-   * number of subdivisions per edge to create a smoother curve.
-   *
-   * **Example**
-   * @include ex_path_bezier.cpp
-   *
-   * **Result**
-   * @image html ex_path_bezier.png
-   *
-   * @param curvature_ratio Amount of curvature, usually in the range [-1, 1],
-   *                        with positive values resulting in more curvature.
-   * @param edge_divisions  Number of subdivisions per edge to achieve smooth
-   *                        curves.
-   */
-  void bezier(float            curvature_ratio = 0.3f,
-              int              edge_divisions = 10,
-              EdgeDivisionMode edm = EdgeDivisionMode::EDM_PER_EDGE);
-
-  /**
-   * @brief Smooth the path using Bezier curves (alternative method).
-   *
-   * This alternative method applies Bezier curve smoothing to the path. The
-   * `curvature_ratio` parameter affects the curvature amount, similar to the
-   * `bezier` method. The `edge_divisions` parameter specifies how finely each
-   * edge is divided to create a smoother curve.
-   *
-   * **Example**
-   * @include ex_path_bezier_round.cpp
-   *
-   * **Result**
-   * @image html ex_path_bezier_round.png
-   *
-   * @param curvature_ratio Amount of curvature, typically within [-1, 1], with
-   *                        positive values for increased curvature.
-   * @param edge_divisions  Number of edge subdivisions for smoothness.
-   */
-  void bezier_round(float            curvature_ratio = 0.3f,
-                    int              edge_divisions = 10,
-                    EdgeDivisionMode edm = EdgeDivisionMode::EDM_PER_EDGE);
-
-  /**
-   * @brief Smooth the path using B-Spline curves.
-   *
-   * This method smooths the path using B-Spline curves, which provide a smooth
-   * curve that passes through the control points. The `edge_divisions`
-   * parameter defines the number of subdivisions per edge for achieving smooth
-   * curves.
-   *
-   * **Important**: This function does not correctly handle closed polylines
-   * (circular contours). If the path is closed, the smoothing may not correctly
-   * close the loop, potentially leaving a gap between the start and end points.
-   *
-   * **Example**
-   * @include ex_path_bspline.cpp
-   *
-   * **Result**
-   * @image html ex_path_bspline.png
-   *
-   * @param edge_divisions Number of subdivisions per edge to achieve a smooth
-   *                       B-Spline curve.
-   *
-   * @warning This function does not correctly handle closed polylines.
-   */
-  void bspline(int              edge_divisions = 10,
-               EdgeDivisionMode edm = EdgeDivisionMode::EDM_PER_EDGE);
-
-  /**
-   * @brief Smooth the path using Catmull-Rom curves.
-   *
-   * This method applies Catmull-Rom curve smoothing to the path. Catmull-Rom
-   * splines are interpolating splines that pass through each control point. The
-   * `edge_divisions` parameter determines the number of subdivisions per edge
-   * for smoothing.
-   *
-   * **Important**: This function does not correctly handle closed polylines
-   * (circular contours). If the path is closed, the smoothing may not correctly
-   * close the loop, potentially leaving a gap between the start and end points.
-   *
-   * **Example**
-   * @include ex_path_catmullrom.cpp
-   *
-   * **Result**
-   * @image html ex_path_catmullrom.png
-   *
-   * @param edge_divisions Number of edge subdivisions to create a smooth
-   *                       Catmull-Rom curve.
-   *
-   * @warning This function does not correctly handle closed polylines.
-   */
-  void catmullrom(int              edge_divisions = 10,
-                  EdgeDivisionMode edm = EdgeDivisionMode::EDM_PER_EDGE);
-
-  /**
-   * @brief Clear the path data.
-   *
-   * This method removes all points and associated data from the path,
-   * effectively resetting it to an empty state.
-   */
-  void clear();
-
-  /**
-   * @brief Smooth the path using De Casteljau curves.
-   *
-   * This function smooths a path by applying De Casteljau's algorithm to
-   * generate intermediate points along the path, effectively creating a Bézier
-   * curve that approximates the original path. The path is divided into
-   * segments, and the De Casteljau algorithm is applied to each segment,
-   * resulting in a smooth curve.
-   *
-   * The parameter `edge_divisions` controls the number of divisions
-   * (sub-segments) created along each segment of the path. A higher number of
-   * divisions will result in a smoother curve, but will also increase the
-   * computational cost.
-   *
-   * @param edge_divisions The number of divisions for each edge of the path.
-   *                       Default is 10, which provides a balanced level of
-   *                       smoothing.
-   *
-   * **Example**
-   * @include ex_path_decasteljau.cpp
-   *
-   * **Result**
-   * @image html ex_path_decasteljau.png
-   */
-  void decasteljau(int              edge_divisions = 10,
-                   EdgeDivisionMode edm = EdgeDivisionMode::EDM_PER_EDGE);
-
-  /**
-   * @brief Simplifies the current path using the Visvalingam-Whyatt algorithm.
-   *
-   * This method reduces the number of points in the path to the specified
-   * target, `n_points_target`, while preserving the overall shape. It
-   * calculates the area of triangles formed by consecutive points and removes
-   * points corresponding to the smallest areas iteratively.
-   *
-   * @param n_points_target The desired number of points to retain in the path.
-   * If the current number of points is less than `n_points_target` or the path
-   * contains fewer than 3 points, the method returns without modifying the
-   * path.
-   *
-   * @note Does not well behave when n_points_target is significantly lower than
-   * the initial number of points.
-   *
-   * **Example**
-   * @include ex_path_decimate.cpp
-   *
-   * **Result**
-   * @image html ex_path_decimate.png
-   */
-  void decimate_vw(int n_points_target = 3);
-
-  /**
-   * @brief Divide the path by adding points based on the lowest elevation
-   * difference between each pair of edge endpoints.
-   *
-   * This method uses the elevation map to subdivide the path by adding
-   * intermediate points where the elevation difference between edges is
-   * minimal. The `elevation_ratio` parameter balances the influence of absolute
-   * elevation versus elevation difference in the cost function used for path
-   * finding. The `distance_exponent` affects the weight function used in
-   * Dijkstra's algorithm. Areas defined by the `p_mask_nogo` mask are avoided.
-   *
-   * **Example**
-   * @include ex_path_dijkstra.cpp
-   *
-   * **Result**
-   * @image html ex_path_dijkstra.png
-   *
-   * @param array             Elevation map used to determine elevation
-   *                          differences along the path.
-   * @param bbox              Bounding box of the domain, defining the area
-   * where elevation data is valid.
-   * @param edge_divisions    Number of subdivisions per edge; set to 0 for
-   *                          automatic division based on array shape.
-   * @param elevation_ratio   Ratio used to balance absolute elevation and
-   *                          elevation difference in the cost function.
-   * @param distance_exponent Exponent used in the Dijkstra weight function to
-   *                          adjust the influence of distance.
-   * @param p_mask_nogo       Optional mask array defining areas to avoid;
-   * points in these areas will not be considered.
-   *
-   * @see                     Array::find_path_dijkstra
-   */
-  void dijkstra(Array    &array,
-                glm::vec4 bbox,
-                float     elevation_ratio = 0.f,
-                float     distance_exponent = 0.5f,
-                float     upward_penalization = 1.f,
-                Array    *p_mask_nogo = nullptr);
-
-  /**
-   * @brief Divide the path by adding a point between each pair of consecutive
-   * points.
-   *
-   * This method adds new points in the middle of each segment of the path to
-   * create a denser set of points along the path. This is useful for increasing
-   * the resolution of the path.
-   */
-  void divide();
-
-  /**
-   * @brief Applies fractalization to the path by adding points and randomly
-   * displacing their positions.
-   *
-   * This method enhances the complexity of a path by iteratively adding new
-   * points between existing ones and displacing them using Gaussian noise. The
-   * process can simulate natural phenomena like terrain generation or random
-   * walk paths. The number of iterations determines the level of detail added
-   * to the path.
-   *
-   * - `sigma` controls the magnitude of the displacement, normalized by the
-   * distance between points.
-   * - `orientation` directs the displacement:
-   *    - `0` for random directions,
-   *    - `1` for inflation (outward displacement),
-   *    - `-1` for deflation (inward displacement).
-   * - `persistence` governs how the noise strength evolves over iterations,
-   * typically reducing it gradually.
-   * - An optional `control_field` array allows for local adjustments of
-   * displacement amplitude, guided by the `bbox` (bounding box), which defines
-   * the spatial extent within which the control field is applied.
-   *
-   * **Example**
-   * @include ex_path_fractalize.cpp
-   *
-   * **Result**
-   * @image html ex_path_fractalize.png
-   *
-   * @param iterations    Number of iterations to apply the fractalization
-   *                      process.
-   * @param seed          Seed value for random number generation, ensuring
-   *                      reproducibility.
-   * @param sigma         Standard deviation of the Gaussian displacement,
-   *                      relative to the distance between points.
-   * @param orientation   Determines the displacement direction: `0` for random,
-   * `1` for inflation, `-1` for deflation.
-   * @param persistence   Factor that adjusts the noise intensity across
-   *                      iterations.
-   * @param control_field Optional pointer to an array that locally modifies the
-   *                      displacement amplitude.
-   * @param bbox          Bounding box that defines the valid area for the
-   * control field's influence.
-   */
-  void fractalize(int       iterations,
-                  uint      seed,
-                  float     sigma = 0.3f,
-                  int       orientation = 0,
-                  float     persistence = 1.f,
-                  Array    *p_control_field = nullptr,
-                  glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f});
+  // ==========================================================================
+  //  Accessors
+  // ==========================================================================
 
   /**
    * @brief Get the arc length of the path.
@@ -486,6 +217,30 @@ public:
   std::vector<float> get_y() const;
 
   /**
+   * @brief Check whether the path is closed.
+   * @return True if the path is closed, false otherwise.
+   */
+  bool is_closed() const;
+
+  /**
+   * @brief Set whether the path is closed.
+   * @param new_value True to close the path, false to keep it open.
+   */
+  void set_closed(bool new_value);
+
+  // ==========================================================================
+  //  Basic Ops
+  // ==========================================================================
+
+  /**
+   * @brief Clear the path data.
+   *
+   * This method removes all points and associated data from the path,
+   * effectively resetting it to an empty state.
+   */
+  void clear();
+
+  /**
    * @brief Enforces monotonicity on the values of the points in the path.
    *
    * This method adjusts the `v` values of the points in the path to ensure that
@@ -501,39 +256,6 @@ public:
   void enforce_monotonic_values(bool decreasing = true);
 
   /**
-   * @brief Add "meanders" to the path.
-   *
-   * This method introduces meandering effects to the path by adding random
-   * deviations. The amplitude of the meanders is controlled by the `ratio`
-   * parameter, while the `noise_ratio` controls the amount of randomness. The
-   * `seed` parameter is used to initialize the random number generator,
-   * ensuring reproducibility. The `iterations` parameter defines how many times
-   * the meandering process is applied, and `edge_divisions` controls how finely
-   * each edge is subdivided during the meandering.
-   *
-   * **Example**
-   * @include ex_path_meanderize.cpp
-   *
-   * **Result**
-   * @image html ex_path_meanderize.png
-   *
-   * @param ratio          Amplitude ratio of the meanders. Typically a positive
-   *                       value.
-   * @param noise_ratio    Ratio of randomness introduced during meandering.
-   *                       Default is 0.1.
-   * @param seed           Seed for random number generation. Default is 1.
-   * @param iterations     Number of iterations to apply meandering. Default
-   * is 1.
-   * @param edge_divisions Number of sub-divisions of each edge. Default is 10.
-   */
-  void meanderize(float            ratio,
-                  float            noise_ratio = 0.1f,
-                  uint             seed = 1,
-                  int              iterations = 1,
-                  int              edge_divisions = 10,
-                  EdgeDivisionMode edm = EdgeDivisionMode::EDM_PER_EDGE);
-
-  /**
    * @brief Reorder points using a nearest neighbor search.
    *
    * This method reorders the points in the path to minimize the total distance
@@ -545,6 +267,29 @@ public:
    *                    search. Default is 0.
    */
   void reorder_nns(int start_index = 0);
+
+  /**
+   * @brief Reverse the order of points in the path.
+   *
+   * This method reverses the sequence of points in the path, which can be
+   * useful for various applications, such as changing the direction of the path
+   * traversal.
+   */
+  void reverse();
+
+  // ==========================================================================
+  //  Sampling
+  // ==========================================================================
+
+  /**
+   * @brief Divide the path by adding a point between each pair of consecutive
+   * points.
+   *
+   * This method adds new points in the middle of each segment of the path to
+   * create a denser set of points along the path. This is useful for increasing
+   * the resolution of the path.
+   */
+  void divide();
 
   /**
    * @brief Resample the path to achieve an approximately constant distance
@@ -590,14 +335,117 @@ public:
       InterpolationMethod1D itp_method = InterpolationMethod1D::LINEAR);
 
   /**
-   * @brief Reverse the order of points in the path.
+   * @brief Subsample the path by keeping only every n-th point.
    *
-   * This method reverses the sequence of points in the path, which can be
-   * useful for various applications, such as changing the direction of the path
-   * traversal.
+   * This method reduces the number of points in the path by retaining only
+   * every 'step'-th point, effectively subsampling the path. This can be useful
+   * for simplifying the path or reducing data size.
+   *
+   * @param step The interval of points to keep. For example, a step of 2 will
+   *             keep every second point.
    */
-  void reverse();
+  void subsample(int step);
 
+  // ==========================================================================
+  //  Conversion / IO
+  // ==========================================================================
+
+  /**
+   * @brief Project path points to an array.
+   *
+   * This method projects the points of the path onto a 2D array, filling the
+   * array based on the path's points. Optionally, the contour of the path can
+   * be filled using flood fill if the `filled` parameter is set to true.
+   *
+   * **Example**
+   * @include ex_path_to_array.cpp
+   *
+   * @param array  The array to which the path points will be projected.
+   * @param bbox   Bounding box defining the domain of the array.
+   * @param filled Boolean flag indicating whether to perform flood filling of
+   * the path's contour.
+   */
+  void to_array(Array    &array,
+                glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f},
+                bool      filled = false) const;
+
+  /*! @brief See hmap::to_array */
+  Array to_array(glm::ivec2 shape,
+                 glm::vec4  bbox = {0.f, 1.f, 0.f, 1.f},
+                 bool       filled = false) const;
+
+  void to_array_mask(Array    &array,
+                     glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f},
+                     bool      filled = false) const;
+
+  /**
+   * @brief Return an array filled with the signed distance function to the
+   * path.
+   *
+   * This method computes the signed distance function (SDF) from the path and
+   * fills an output array with the calculated values. The SDF represents the
+   * distance from each point in the array to the nearest point on the path,
+   * with positive values indicating distances outside the path and negative
+   * values indicating distances inside the path.
+   *
+   * **Example**
+   * @include ex_path_sdf.cpp
+   *
+   * **Result**
+   * @image html ex_path_sdf.png
+   *
+   * @param  shape      Shape of the output array, defining its dimensions.
+   * @param  bbox       Bounding box specifying the region to consider for the
+   * SDF calculation.
+   * @param  p_noise_x  Optional reference to an array of noise values in the
+   *                    x-direction used for domain warping. If not provided, no
+   *                    noise is applied.
+   * @param  p_noise_y  Optional reference to an array of noise values in the
+   *                    y-direction used for domain warping. If not provided, no
+   *                    noise is applied.
+   * @param  bbox_array Bounding box of the destination array, used to map the
+   *                    output array coordinates to the path coordinates.
+   * @return            Array The resulting array filled with the signed
+   * distance function values.
+   */
+  Array to_array_sdf(glm::ivec2 shape,
+                     glm::vec4  bbox,
+                     Array     *p_noise_x = nullptr,
+                     Array     *p_noise_y = nullptr,
+                     glm::vec4  bbox_array = {0.f, 1.f, 0.f, 1.f});
+
+  /**
+   * @brief Export path as PNG image file.
+   *
+   * This method generates a PNG image representing the path and saves it to the
+   * specified file. The resolution of the image can be adjusted using the
+   * `shape` parameter.
+   *
+   * **Example**
+   * @include ex_path_to_png.cpp
+   *
+   * @param fname The filename for the output PNG image.
+   * @param shape Resolution of the image, specified as width and height.
+   */
+  void to_png(std::string fname, glm::ivec2 shape = {512, 512});
+
+private:
+  enum class PathClosure : int
+  {
+    PT_OPEN,
+    PT_CLOSE,
+  } path_closure = PathClosure::PT_OPEN;
+
+  // ================================================
+  // ================================================
+  // ================================================
+  // ================================================
+  // ================================================
+  // ================================================
+  // ================================================
+  // ================================================
+
+public:
   /**
    * @brief Return the angle of the closest edge to the point (x, y), assuming a
    * closed path.
@@ -737,134 +585,255 @@ public:
    * @return   float Signed distance to the nearest edge of the open path.
    */
   float sdf_open(float x, float y);
-
-  /**
-   * @brief Applies a smoothing operation to the path points using a moving
-   * average filter.
-   *
-   * This method smooths the path points based on a specified number of
-   * neighboring points, an averaging intensity, and an inertia factor. The
-   * smoothing involves calculating the average of neighboring points within a
-   * range defined by `navg`, and then applying an intensity-based weighted
-   * average to blend the original and smoothed values. Additionally, an inertia
-   * effect can be applied to gradually adjust point positions based on previous
-   * points.
-   *
-   * @param navg                Number of neighboring points to consider on each
-   *                            side of the current point during the smoothing
-   *                            process. Higher values result in broader
-   *                            smoothing.
-   * @param averaging_intensity The weight given to the averaged points. A value
-   *                            of 1.0 applies full intensity, resulting in a
-   *                            complete averaging of the neighboring points.
-   *                            Lower values retain more of the original point's
-   *                            position.
-   * @param inertia             The factor by which each point is influenced by
-   *                            its previous point after the initial smoothing
-   *                            pass. A value of 0 has no inertia effect, while
-   * a higher value blends the current point's position with that of the
-   * preceding point, creating a trailing effect.
-   *
-   * **Example**
-   * @include ex_path_smooth.cpp
-   *
-   * **Result**
-   * @image html ex_path_smooth.png
-   */
-  void smooth(int   navg = 1,
-              float averaging_intensity = 1.f,
-              float inertia = 0.f);
-
-  /**
-   * @brief Subsample the path by keeping only every n-th point.
-   *
-   * This method reduces the number of points in the path by retaining only
-   * every 'step'-th point, effectively subsampling the path. This can be useful
-   * for simplifying the path or reducing data size.
-   *
-   * @param step The interval of points to keep. For example, a step of 2 will
-   *             keep every second point.
-   */
-  void subsample(int step);
-
-  /**
-   * @brief Project path points to an array.
-   *
-   * This method projects the points of the path onto a 2D array, filling the
-   * array based on the path's points. Optionally, the contour of the path can
-   * be filled using flood fill if the `filled` parameter is set to true.
-   *
-   * **Example**
-   * @include ex_path_to_array.cpp
-   *
-   * @param array  The array to which the path points will be projected.
-   * @param bbox   Bounding box defining the domain of the array.
-   * @param filled Boolean flag indicating whether to perform flood filling of
-   * the path's contour.
-   */
-  void to_array(Array    &array,
-                glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f},
-                bool      filled = false) const;
-
-  void to_array_mask(Array    &array,
-                     glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f},
-                     bool      filled = false) const;
-
-  Array to_array_new(glm::ivec2 shape,
-                     glm::vec4  bbox = {0.f, 1.f, 0.f, 1.f},
-                     bool       filled = false) const;
-
-  /**
-   * @brief Return an array filled with the signed distance function to the
-   * path.
-   *
-   * This method computes the signed distance function (SDF) from the path and
-   * fills an output array with the calculated values. The SDF represents the
-   * distance from each point in the array to the nearest point on the path,
-   * with positive values indicating distances outside the path and negative
-   * values indicating distances inside the path.
-   *
-   * **Example**
-   * @include ex_path_sdf.cpp
-   *
-   * **Result**
-   * @image html ex_path_sdf.png
-   *
-   * @param  shape      Shape of the output array, defining its dimensions.
-   * @param  bbox       Bounding box specifying the region to consider for the
-   * SDF calculation.
-   * @param  p_noise_x  Optional reference to an array of noise values in the
-   *                    x-direction used for domain warping. If not provided, no
-   *                    noise is applied.
-   * @param  p_noise_y  Optional reference to an array of noise values in the
-   *                    y-direction used for domain warping. If not provided, no
-   *                    noise is applied.
-   * @param  bbox_array Bounding box of the destination array, used to map the
-   *                    output array coordinates to the path coordinates.
-   * @return            Array The resulting array filled with the signed
-   * distance function values.
-   */
-  Array to_array_sdf(glm::ivec2 shape,
-                     glm::vec4  bbox,
-                     Array     *p_noise_x = nullptr,
-                     Array     *p_noise_y = nullptr,
-                     glm::vec4  bbox_array = {0.f, 1.f, 0.f, 1.f});
-
-  /**
-   * @brief Export path as PNG image file.
-   *
-   * This method generates a PNG image representing the path and saves it to the
-   * specified file. The resolution of the image can be adjusted using the
-   * `shape` parameter.
-   *
-   * **Example**
-   * @include ex_path_to_png.cpp
-   *
-   * @param fname The filename for the output PNG image.
-   * @param shape Resolution of the image, specified as width and height.
-   */
-  void to_png(std::string fname, glm::ivec2 shape = {512, 512});
 };
+
+// ==========================================================================
+//  Functions
+// ==========================================================================
+
+/**
+ * @brief Smooth the path using Bezier curves.
+ *
+ * This method applies Bezier curve smoothing to the path. The
+ * `curvature_ratio` controls the amount of curvature applied, with typical
+ * values in the range of [-1, 1], where positive values generally result in
+ * more pronounced curvature. The `edge_divisions` parameter determines the
+ * number of subdivisions per edge to create a smoother curve.
+ *
+ * **Example**
+ * @include ex_path_bezier.cpp
+ *
+ * **Result**
+ * @image html ex_path_bezier.png
+ *
+ * @param curvature_ratio Amount of curvature, usually in the range [-1, 1],
+ *                        with positive values resulting in more curvature.
+ * @param edge_divisions  Number of subdivisions per edge to achieve smooth
+ *                        curves.
+ */
+Path bezier(const Path            &path,
+            float                  curvature_ratio = 0.3f,
+            int                    edge_divisions = 10,
+            Path::EdgeDivisionMode edm = Path::EdgeDivisionMode::EDM_PER_EDGE);
+
+/**
+ * @brief Smooth the path using Bezier curves (alternative method).
+ *
+ * This alternative method applies Bezier curve smoothing to the path. The
+ * `curvature_ratio` parameter affects the curvature amount, similar to the
+ * `bezier` method. The `edge_divisions` parameter specifies how finely each
+ * edge is divided to create a smoother curve.
+ *
+ * **Example**
+ * @include ex_path_bezier_round.cpp
+ *
+ * **Result**
+ * @image html ex_path_bezier_round.png
+ *
+ * @param curvature_ratio Amount of curvature, typically within [-1, 1], with
+ *                        positive values for increased curvature.
+ * @param edge_divisions  Number of edge subdivisions for smoothness.
+ */
+Path bezier_round(
+    const Path            &path,
+    float                  curvature_ratio = 0.3f,
+    int                    edge_divisions = 10,
+    Path::EdgeDivisionMode edm = Path::EdgeDivisionMode::EDM_PER_EDGE);
+
+/**
+ * @brief Smooth the path using B-Spline curves.
+ *
+ * This method smooths the path using B-Spline curves, which provide a smooth
+ * curve that passes through the control points. The `edge_divisions`
+ * parameter defines the number of subdivisions per edge for achieving smooth
+ * curves.
+ *
+ * **Important**: This function does not correctly handle closed polylines
+ * (circular contours). If the path is closed, the smoothing may not correctly
+ * close the loop, potentially leaving a gap between the start and end points.
+ *
+ * **Example**
+ * @include ex_path_bspline.cpp
+ *
+ * **Result**
+ * @image html ex_path_bspline.png
+ *
+ * @param edge_divisions Number of subdivisions per edge to achieve a smooth
+ *                       B-Spline curve.
+ *
+ * @warning This function does not correctly handle closed polylines.
+ */
+Path bspline(const Path            &path,
+             int                    edge_divisions = 10,
+             Path::EdgeDivisionMode edm = Path::EdgeDivisionMode::EDM_PER_EDGE);
+
+/**
+ * @brief Smooth the path using Catmull-Rom curves.
+ *
+ * This method applies Catmull-Rom curve smoothing to the path. Catmull-Rom
+ * splines are interpolating splines that pass through each control point. The
+ * `edge_divisions` parameter determines the number of subdivisions per edge
+ * for smoothing.
+ *
+ * **Important**: This function does not correctly handle closed polylines
+ * (circular contours). If the path is closed, the smoothing may not correctly
+ * close the loop, potentially leaving a gap between the start and end points.
+ *
+ * **Example**
+ * @include ex_path_catmullrom.cpp
+ *
+ * **Result**
+ * @image html ex_path_catmullrom.png
+ *
+ * @param edge_divisions Number of edge subdivisions to create a smooth
+ *                       Catmull-Rom curve.
+ *
+ * @warning This function does not correctly handle closed polylines.
+ */
+Path catmullrom(
+    const Path            &path,
+    int                    edge_divisions = 10,
+    Path::EdgeDivisionMode edm = Path::EdgeDivisionMode::EDM_PER_EDGE);
+
+/**
+ * @brief Smooth the path using De Casteljau curves.
+ *
+ * This function smooths a path by applying De Casteljau's algorithm to
+ * generate intermediate points along the path, effectively creating a Bézier
+ * curve that approximates the original path. The path is divided into
+ * segments, and the De Casteljau algorithm is applied to each segment,
+ * resulting in a smooth curve.
+ *
+ * The parameter `edge_divisions` controls the number of divisions
+ * (sub-segments) created along each segment of the path. A higher number of
+ * divisions will result in a smoother curve, but will also increase the
+ * computational cost.
+ *
+ * @param edge_divisions The number of divisions for each edge of the path.
+ *                       Default is 10, which provides a balanced level of
+ *                       smoothing.
+ *
+ * **Example**
+ * @include ex_path_decasteljau.cpp
+ *
+ * **Result**
+ * @image html ex_path_decasteljau.png
+ */
+Path decasteljau(
+    const Path            &path,
+    int                    edge_divisions = 10,
+    Path::EdgeDivisionMode edm = Path::EdgeDivisionMode::EDM_PER_EDGE);
+
+/**
+ * @brief Simplifies the current path using the Visvalingam-Whyatt algorithm.
+ *
+ * This method reduces the number of points in the path to the specified
+ * target, `n_points_target`, while preserving the overall shape. It
+ * calculates the area of triangles formed by consecutive points and removes
+ * points corresponding to the smallest areas iteratively.
+ *
+ * @param n_points_target The desired number of points to retain in the path.
+ * If the current number of points is less than `n_points_target` or the path
+ * contains fewer than 3 points, the method returns without modifying the
+ * path.
+ *
+ * @note Does not well behave when n_points_target is significantly lower than
+ * the initial number of points.
+ *
+ * **Example**
+ * @include ex_path_decimate.cpp
+ *
+ * **Result**
+ * @image html ex_path_decimate.png
+ */
+Path decimate_vw(const Path &path, int n_points_target = 3);
+
+/**
+ * @brief Applies fractalization to the path by adding points and randomly
+ * displacing their positions.
+ *
+ * This method enhances the complexity of a path by iteratively adding new
+ * points between existing ones and displacing them using Gaussian noise. The
+ * process can simulate natural phenomena like terrain generation or random
+ * walk paths. The number of iterations determines the level of detail added
+ * to the path.
+ *
+ * - `sigma` controls the magnitude of the displacement, normalized by the
+ * distance between points.
+ * - `orientation` directs the displacement:
+ *    - `0` for random directions,
+ *    - `1` for inflation (outward displacement),
+ *    - `-1` for deflation (inward displacement).
+ * - `persistence` governs how the noise strength evolves over iterations,
+ * typically reducing it gradually.
+ * - An optional `control_field` array allows for local adjustments of
+ * displacement amplitude, guided by the `bbox` (bounding box), which defines
+ * the spatial extent within which the control field is applied.
+ *
+ * **Example**
+ * @include ex_path_fractalize.cpp
+ *
+ * **Result**
+ * @image html ex_path_fractalize.png
+ *
+ * @param iterations    Number of iterations to apply the fractalization
+ *                      process.
+ * @param seed          Seed value for random number generation, ensuring
+ *                      reproducibility.
+ * @param sigma         Standard deviation of the Gaussian displacement,
+ *                      relative to the distance between points.
+ * @param orientation   Determines the displacement direction: `0` for random,
+ * `1` for inflation, `-1` for deflation.
+ * @param persistence   Factor that adjusts the noise intensity across
+ *                      iterations.
+ * @param control_field Optional pointer to an array that locally modifies the
+ *                      displacement amplitude.
+ * @param bbox          Bounding box that defines the valid area for the
+ * control field's influence.
+ */
+Path fractalize(const Path &path,
+                int         iterations,
+                uint        seed,
+                float       sigma = 0.2f,
+                int         orientation = 0,
+                float       persistence = 1.f,
+                Array      *p_control_field = nullptr,
+                glm::vec4   bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
+ * @brief Add "meanders" to the path.
+ *
+ * This method introduces meandering effects to the path by adding random
+ * deviations. The amplitude of the meanders is controlled by the `ratio`
+ * parameter, while the `noise_ratio` controls the amount of randomness. The
+ * `seed` parameter is used to initialize the random number generator,
+ * ensuring reproducibility. The `iterations` parameter defines how many times
+ * the meandering process is applied, and `edge_divisions` controls how finely
+ * each edge is subdivided during the meandering.
+ *
+ * **Example**
+ * @include ex_path_meanderize.cpp
+ *
+ * **Result**
+ * @image html ex_path_meanderize.png
+ *
+ * @param ratio          Amplitude ratio of the meanders. Typically a positive
+ *                       value.
+ * @param noise_ratio    Ratio of randomness introduced during meandering.
+ *                       Default is 0.1.
+ * @param seed           Seed for random number generation. Default is 1.
+ * @param iterations     Number of iterations to apply meandering. Default
+ * is 1.
+ * @param edge_divisions Number of sub-divisions of each edge. Default is 10.
+ */
+Path meanderize(
+    const Path            &path,
+    float                  ratio,
+    float                  noise_ratio = 0.1f,
+    uint                   seed = 1,
+    int                    iterations = 1,
+    int                    edge_divisions = 10,
+    Path::EdgeDivisionMode edm = Path::EdgeDivisionMode::EDM_PER_EDGE);
 
 /**
  * @brief Removes geometric loops in a 2D path caused by self-intersections.
@@ -883,5 +852,52 @@ public:
  * @image html ex_path_remove_geometry_loops.png
  */
 Path remove_geometric_loops(const Path &path);
+
+/**
+ * @brief Applies a smoothing operation to the path points using a moving
+ * average filter.
+ *
+ * This method smooths the path points based on a specified number of
+ * neighboring points, an averaging intensity, and an inertia factor. The
+ * smoothing involves calculating the average of neighboring points within a
+ * range defined by `navg`, and then applying an intensity-based weighted
+ * average to blend the original and smoothed values. Additionally, an inertia
+ * effect can be applied to gradually adjust point positions based on previous
+ * points.
+ *
+ * @param navg                Number of neighboring points to consider on each
+ *                            side of the current point during the smoothing
+ *                            process. Higher values result in broader
+ *                            smoothing.
+ * @param averaging_intensity The weight given to the averaged points. A value
+ *                            of 1.0 applies full intensity, resulting in a
+ *                            complete averaging of the neighboring points.
+ *                            Lower values retain more of the original point's
+ *                            position.
+ * @param inertia             The factor by which each point is influenced by
+ *                            its previous point after the initial smoothing
+ *                            pass. A value of 0 has no inertia effect, while
+ * a higher value blends the current point's position with that of the
+ * preceding point, creating a trailing effect.
+ *
+ * **Example**
+ * @include ex_path_smooth.cpp
+ *
+ * **Result**
+ * @image html ex_path_smooth.png
+ */
+Path smooth(const Path &path,
+            int         navg = 1,
+            float       averaging_intensity = 1.f,
+            float       inertia = 0.f);
+
+// ==========================================================================
+//  Verification Functions
+// ==========================================================================
+
+bool assert_start_end_points(const Path &path1,
+                             const Path &path2,
+                             float       tol = 1e-6f,
+                             bool        verbose = true);
 
 } // namespace hmap

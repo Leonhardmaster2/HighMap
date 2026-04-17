@@ -31,7 +31,7 @@ int main(void)
 
   // convert to a path for Spline interp
   hmap::Path path(ij2, shape);
-  path.bspline();
+  path = hmap::bspline(path);
 
   // --- export path to a png file
 

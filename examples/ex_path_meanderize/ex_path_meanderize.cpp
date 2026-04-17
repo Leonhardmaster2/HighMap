@@ -6,34 +6,29 @@ int main(void)
   int        seed = 6;
   int        npoints = 10;
 
-  glm::vec4  bbox = {1.f, 2.f, -0.5f, 0.5f};
-  hmap::Path path = hmap::Path(npoints, seed, {1.3f, 1.7f, -0.2, 0.2f});
+  glm::vec4  bbox = {0.f, 1.f, 0.f, 1.f};
+  hmap::Path path = hmap::Path(npoints, seed, hmap::adjust(bbox, -0.1f));
   path.reorder_nns();
+  path.resample_uniform();
 
-  auto z1 = hmap::Array(shape);
-  path.to_array(z1, bbox);
+  auto z1 = path.to_array(shape, bbox);
 
-  auto z2 = hmap::Array(shape);
-  {
-    hmap::Path path_c = path;
+  hmap::Path path_c;
 
-    float ratio = 0.2f;
+  //
+  float ratio = 0.2f;
 
-    path_c.meanderize(ratio);
-    path_c.to_array(z2, bbox);
-  }
+  path_c = hmap::meanderize(path, ratio);
+  auto z2 = path_c.to_array(shape, bbox);
 
-  auto z3 = hmap::Array(shape);
-  {
-    hmap::Path path_c = path;
+  //
+  ratio = 0.3f;
+  float noise_ratio = 0.1f;
+  int   iterations = 3;
 
-    float ratio = 0.4f;
-    float noise_ratio = 0.1f;
-    int   iterations = 2;
-
-    path_c.meanderize(ratio, noise_ratio, seed, iterations);
-    path_c.to_array(z3, bbox);
-  }
+  path.set_closed(true);
+  path_c = hmap::meanderize(path, ratio, noise_ratio, seed, iterations);
+  auto z3 = path_c.to_array(shape, bbox);
 
   hmap::export_banner_png("ex_path_meanderize.png",
                           {z1, z2, z3},

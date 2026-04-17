@@ -23,247 +23,15 @@
 namespace hmap
 {
 
-// --- HELPERS
-
-Path helper_build_path(const std::vector<Point> &points,
-                       InterpolationMethodCurve  method,
-                       Path::EdgeDivisionMode    edm,
-                       int                       edge_divisions,
-                       int                       point_count)
-{
-  InterpolatorCurve fitp(points, method);
-
-  int npts = edge_divisions;
-  if (edm == Path::EdgeDivisionMode::EDM_PER_EDGE) npts *= point_count;
-
-  std::vector<float> t = hmap::linspace(0.f, 1.f, npts);
-
-  return Path(fitp(t));
-}
-
-// --- METHODS
-
-void Path::bezier(float            curvature_ratio,
-                  int              edge_divisions,
-                  EdgeDivisionMode edm)
-{
-  // --- generate a new set of points by adding control points
-  // --- inbetween path points
-
-  std::vector<Point> new_points = {};
-  new_points.reserve(this->get_npoints() + 2 * (this->get_npoints() - 1));
-
-  size_t npoints = this->get_npoints();
-  size_t end = this->closed ? npoints : npoints - 1;
-
-  for (size_t k = 0; k < end; k++)
-  {
-    size_t knext = (k + 1) % npoints;
-    size_t knext_after = (k + 2) % npoints;
-
-    Point pc1 = lerp(this->points[k], this->points[knext], curvature_ratio);
-    Point pc2 = lerp(this->points[knext],
-                     this->points[knext_after],
-                     -curvature_ratio);
-
-    new_points.push_back(this->points[k]);
-    new_points.push_back(pc1);
-    new_points.push_back(pc2);
-  }
-
-  // add **first** point to close the loop
-  if (this->closed) new_points.push_back(this->points.front());
-
-  // --- interpolate
-
-  Path new_path = helper_build_path(new_points,
-                                    InterpolationMethodCurve::BEZIER,
-                                    edm,
-                                    edge_divisions,
-                                    this->get_npoints());
-
-  *this = std::move(new_path);
-}
-
-void Path::bezier_round(float            curvature_ratio,
-                        int              edge_divisions,
-                        EdgeDivisionMode edm)
-{
-  // --- generate a new set of points by adding control points
-  // --- inbetween path points
-
-  std::vector<Point> new_points = {};
-  new_points.reserve(this->get_npoints() + 2 * (this->get_npoints() - 1));
-
-  size_t npoints = this->get_npoints();
-  size_t end = this->closed ? npoints : npoints - 1;
-
-  for (size_t k = 0; k < end; k++)
-  {
-    size_t kprev = (k - 1) % npoints;
-    size_t knext = (k + 1) % npoints;
-    size_t knext_after = (k + 2) % npoints;
-
-    Point delta_p1 = this->points[knext] - this->points[kprev];
-    Point delta_p2 = this->points[k] - this->points[knext_after];
-
-    Point pc1 = this->points[k] + curvature_ratio * delta_p1;
-    Point pc2 = this->points[knext] + curvature_ratio * delta_p2;
-
-    new_points.push_back(this->points[k]);
-    new_points.push_back(pc1);
-    new_points.push_back(pc2);
-  }
-
-  // add **first** point to close the loop
-  if (this->closed) new_points.push_back(this->points.front());
-
-  // --- interpolate
-
-  Path new_path = helper_build_path(new_points,
-                                    InterpolationMethodCurve::BEZIER,
-                                    edm,
-                                    edge_divisions,
-                                    this->get_npoints());
-
-  *this = std::move(new_path);
-}
-
-void Path::bspline(int edge_divisions, EdgeDivisionMode edm)
-{
-  Path new_path = helper_build_path(this->points,
-                                    InterpolationMethodCurve::BSPLINE,
-                                    edm,
-                                    edge_divisions,
-                                    this->get_npoints());
-
-  *this = std::move(new_path);
-}
-
-void Path::catmullrom(int edge_divisions, EdgeDivisionMode edm)
-{
-  Path new_path = helper_build_path(this->points,
-                                    InterpolationMethodCurve::CATMULLROM,
-                                    edm,
-                                    edge_divisions,
-                                    this->get_npoints());
-
-  *this = std::move(new_path);
-}
-
 void Path::clear()
 {
-  this->points.clear();
-  this->closed = false;
-}
-
-void Path::decasteljau(int edge_divisions, EdgeDivisionMode edm)
-{
-  std::vector<Point> new_points = this->points;
-
-  if (this->closed) new_points.push_back(this->points.front());
-
-  Path new_path = helper_build_path(new_points,
-                                    InterpolationMethodCurve::DECASTELJAU,
-                                    edm,
-                                    edge_divisions,
-                                    this->get_npoints());
-
-  *this = std::move(new_path);
-}
-
-void Path::decimate_vw(int n_points_target)
-{
-  size_t n = this->get_npoints();
-  if (n < 3 || n <= (size_t)n_points_target) return;
-
-  std::vector<Point> pts = this->points;
-
-  while (pts.size() > (size_t)n_points_target)
-  {
-    size_t remove_idx = 1;
-    float  min_area = std::numeric_limits<float>::max();
-
-    // find smallest effective triangle
-    for (size_t i = 1; i + 1 < pts.size(); ++i)
-    {
-      float area = triangle_area(pts[i - 1], pts[i], pts[i + 1]);
-      if (area < min_area)
-      {
-        min_area = area;
-        remove_idx = i;
-      }
-    }
-
-    pts.erase(pts.begin() + remove_idx);
-  }
-
-  this->points = std::move(pts);
-}
-
-void Path::dijkstra(Array    &array,
-                    glm::vec4 bbox,
-                    float     elevation_ratio,
-                    float     distance_exponent,
-                    float     upward_penalization,
-                    Array    *p_mask_nogo)
-{
-  size_t ks = this->closed ? 0 : 1; // trick to handle closed contours
-  for (size_t k = 0; k < this->get_npoints() - ks; k++)
-  {
-    size_t knext = (k + 1) % this->get_npoints();
-
-    glm::ivec2 ij_start = glm::ivec2(
-        (int)((this->points[k].x - bbox.x) / (bbox.y - bbox.x) *
-              (array.shape.x - 1)),
-        (int)((this->points[k].y - bbox.z) / (bbox.w - bbox.z) *
-              (array.shape.y - 1)));
-
-    glm::ivec2 ij_end = glm::ivec2(
-        (int)((this->points[knext].x - bbox.x) / (bbox.y - bbox.x) *
-              (array.shape.x - 1)),
-        (int)((this->points[knext].y - bbox.z) / (bbox.w - bbox.z) *
-              (array.shape.y - 1)));
-
-    std::vector<int> ip, jp;
-    find_path_dijkstra(array,
-                       ij_start,
-                       ij_end,
-                       ip,
-                       jp,
-                       elevation_ratio,
-                       distance_exponent,
-                       upward_penalization,
-                       p_mask_nogo);
-
-    // backup cuurrent edge informations before adding points to this edge
-    Point p1 = this->points[k];
-    Point p2 = this->points[knext];
-
-    for (size_t r = 1; r < ip.size() - 1; r++)
-    {
-      float x = (float)ip[r] / (float)(array.shape.x - 1) * (bbox.y - bbox.x) +
-                bbox.x;
-      float y = (float)jp[r] / (float)(array.shape.y - 1) * (bbox.w - bbox.z) +
-                bbox.z;
-
-      // use distance to start and end points to determine value at the added
-      // point (barycentric value)
-      float d1 = std::hypot(x - p1.x, y - p1.y);
-      float d2 = std::hypot(x - p2.x, y - p2.y);
-      float v = (d2 * p1.v + d1 * p2.v) / (d1 + d2);
-
-      Point p = Point(x, y, v);
-      this->points.insert(this->points.begin() + k + 1, p);
-      ++k;
-    }
-  }
+  *this = Path();
 }
 
 void Path::divide()
 {
-  size_t npoints = this->get_npoints();
-  size_t end = this->closed ? npoints : npoints - 1;
+  size_t npoints = this->size();
+  size_t end = this->is_closed() ? npoints : npoints - 1;
 
   std::vector<Point> new_points;
   new_points.reserve(2 * npoints); // reserve space for the new points
@@ -280,7 +48,7 @@ void Path::divide()
     new_points.push_back(midpoint);
   }
 
-  if (!this->closed) new_points.push_back(this->points.back());
+  if (!this->is_closed()) new_points.push_back(this->points.back());
 
   this->points = std::move(new_points);
 }
@@ -289,7 +57,7 @@ void Path::enforce_monotonic_values(bool decreasing)
 {
   if (decreasing)
   {
-    for (size_t k = 0; k < this->get_npoints() - 1; k++)
+    for (size_t k = 0; k < this->size() - 1; k++)
     {
       if (this->points[k + 1].v > this->points[k].v)
         this->points[k + 1].v = this->points[k].v;
@@ -297,67 +65,11 @@ void Path::enforce_monotonic_values(bool decreasing)
   }
   else
   {
-    for (size_t k = 0; k < this->get_npoints() - 1; k++)
+    for (size_t k = 0; k < this->size() - 1; k++)
     {
       if (this->points[k + 1].v < this->points[k].v)
         this->points[k + 1].v = this->points[k].v;
     }
-  }
-}
-
-void Path::fractalize(int       iterations,
-                      uint      seed,
-                      float     sigma,
-                      int       orientation,
-                      float     persistence,
-                      Array    *p_ctrl_array,
-                      glm::vec4 bbox)
-{
-  std::mt19937                    gen(seed);
-  std::normal_distribution<float> dis(0.f, 1.f);
-
-  for (int it = 0; it < iterations; it++)
-  {
-    std::vector<Point> new_points = {};
-
-    // determine the ending index based on whether the list is
-    // closed (circular)
-    size_t npoints = this->get_npoints();
-    size_t end = this->closed ? npoints : npoints - 1;
-
-    for (size_t k = 0; k < end; k++)
-    {
-      // determine the index of the next point, wrapping around if circular
-      size_t knext = (k + 1) % npoints;
-
-      // generate random displacement amplitude (as a ratio to the
-      // point distance)
-      float amp = sigma * dis(gen);
-
-      // if provided, modulate amplitude based on underlying field
-      if (p_ctrl_array)
-        amp *= p_ctrl_array->get_value_nearest(this->points[k].x,
-                                               this->points[k].y,
-                                               bbox);
-
-      // insert midpoint between current edge start and end
-      Point pnew = midpoint(this->points[k],
-                            this->points[knext],
-                            orientation,
-                            amp);
-
-      new_points.push_back(this->points[k]);
-      new_points.push_back(pnew);
-    }
-
-    // if the path is not closed, ensure the last original point is added
-    if (!this->closed) new_points.push_back(this->points.back());
-
-    // replace the original points with the resampled points
-    this->points = std::move(new_points);
-
-    // update sigma by multiplying with persistence factor
-    sigma *= persistence;
   }
 }
 
@@ -372,12 +84,12 @@ std::vector<float> Path::get_arc_length() const
 
 std::vector<float> Path::get_cumulative_distance() const
 {
-  size_t             ke = this->closed ? 1 : 0;
-  std::vector<float> dacc(this->get_npoints() + ke);
+  size_t             ke = this->is_closed() ? 1 : 0;
+  std::vector<float> dacc(this->size() + ke);
 
-  for (size_t k = 1; k < this->get_npoints() + ke; k++)
+  for (size_t k = 1; k < this->size() + ke; k++)
   {
-    size_t knext = (k + 1) % this->get_npoints();
+    size_t knext = (k + 1) % this->size();
     float  dist = distance(this->points[k - 1], this->points[knext]);
     dacc[k] = dacc[k - 1] + dist;
   }
@@ -387,14 +99,14 @@ std::vector<float> Path::get_cumulative_distance() const
 
 std::vector<float> Path::get_curvature(bool normalized) const
 {
-  size_t             ke = this->closed ? 1 : 0;
-  std::vector<float> cv(this->get_npoints() + ke);
+  size_t             ke = this->is_closed() ? 1 : 0;
+  std::vector<float> cv(this->size() + ke);
   float              cmax = 0.f;
 
-  for (size_t k = 1; k < this->get_npoints() - 1 + ke; k++)
+  for (size_t k = 1; k < this->size() - 1 + ke; k++)
   {
-    size_t km = (k - 1) % this->get_npoints();
-    size_t kp = (k + 1) % this->get_npoints();
+    size_t km = (k - 1) % this->size();
+    size_t kp = (k + 1) % this->size();
     cv[k] = curvature_signed(this->points[km],
                              this->points[k],
                              this->points[kp]);
@@ -423,13 +135,13 @@ std::vector<glm::vec2> Path::get_normals() const
 
 std::vector<glm::vec2> Path::get_tangents() const
 {
-  size_t                 ke = this->closed ? 1 : 0;
-  std::vector<glm::vec2> tangents(this->get_npoints() + ke);
+  size_t                 ke = this->is_closed() ? 1 : 0;
+  std::vector<glm::vec2> tangents(this->size() + ke);
 
-  for (size_t k = 1; k < this->get_npoints() - 1 + ke; k++)
+  for (size_t k = 1; k < this->size() - 1 + ke; k++)
   {
-    size_t    km = (k - 1) % this->get_npoints();
-    size_t    kp = (k + 1) % this->get_npoints();
+    size_t    km = (k - 1) % this->size();
+    size_t    kp = (k + 1) % this->size();
     glm::vec2 delta = {this->points[kp].x - this->points[km].x,
                        this->points[kp].y - this->points[km].y};
 
@@ -441,34 +153,34 @@ std::vector<glm::vec2> Path::get_tangents() const
 
 std::vector<float> Path::get_values() const
 {
-  std::vector<float> v(this->get_npoints());
-  for (size_t i = 0; i < this->get_npoints(); i++)
+  std::vector<float> v(this->size());
+  for (size_t i = 0; i < this->size(); i++)
     v[i] = this->points[i].v;
 
-  if (this->closed && this->get_npoints() > 0) v.push_back(this->points[0].v);
+  if (this->is_closed() && this->size() > 0) v.push_back(this->points[0].v);
   return v;
 }
 
 std::vector<float> Path::get_x() const
 {
-  std::vector<float> x(this->get_npoints());
-  for (size_t i = 0; i < this->get_npoints(); i++)
+  std::vector<float> x(this->size());
+  for (size_t i = 0; i < this->size(); i++)
     x[i] = this->points[i].x;
 
-  if (this->closed && this->get_npoints() > 0) x.push_back(this->points[0].x);
+  if (this->is_closed() && this->size() > 0) x.push_back(this->points[0].x);
   return x;
 }
 
 std::vector<float> Path::get_xy() const
 {
-  std::vector<float> xy(2 * this->get_npoints());
-  for (size_t i = 0; i < this->get_npoints(); i++)
+  std::vector<float> xy(2 * this->size());
+  for (size_t i = 0; i < this->size(); i++)
   {
     xy[2 * i] = this->points[i].x;
     xy[2 * i + 1] = this->points[i].y;
   }
 
-  if (this->closed && this->get_npoints() > 0)
+  if (this->is_closed() && this->size() > 0)
   {
     xy.push_back(this->points[0].x);
     xy.push_back(this->points[0].y);
@@ -478,91 +190,32 @@ std::vector<float> Path::get_xy() const
 
 std::vector<float> Path::get_y() const
 {
-  std::vector<float> y(this->get_npoints());
-  for (size_t i = 0; i < this->get_npoints(); i++)
+  std::vector<float> y(this->size());
+  for (size_t i = 0; i < this->size(); i++)
     y[i] = this->points[i].y;
 
-  if (this->closed && this->get_npoints() > 0) y.push_back(this->points[0].y);
+  if (this->is_closed() && this->size() > 0) y.push_back(this->points[0].y);
   return y;
 }
 
-void Path::meanderize(float            ratio,
-                      float            noise_ratio,
-                      uint             seed,
-                      int              iterations,
-                      int              edge_divisions,
-                      EdgeDivisionMode edm)
+bool Path::is_closed() const
 {
-  std::mt19937                    gen(seed);
-  std::normal_distribution<float> dis(-noise_ratio, noise_ratio);
-
-  for (int it = 0; it < iterations; it++)
-  {
-    Path new_path = Path();
-
-    float cross_product;
-
-    if (this->get_npoints() > 1)
-      cross_product = (this->points[2].y - this->points[0].y) *
-                          (this->points[1].x - this->points[0].x) -
-                      (this->points[2].x - this->points[0].x) *
-                          (this->points[1].y - this->points[0].y);
-    else
-      cross_product = 1.f;
-
-    float orientation = -std::copysign(1.f, cross_product);
-
-    size_t ks = this->closed ? 0 : 1;
-    for (size_t k = 0; k < this->get_npoints() - ks; k++)
-    {
-      size_t kp1 = (k + 1) % this->get_npoints();
-
-      new_path.add_point(
-          Point(this->points[k].x, this->points[k].y, this->points[k].v));
-
-      float alpha = angle(this->points[kp1], this->points[k]);
-      float dist = distance(this->points[kp1], this->points[k]);
-
-      Point p = lerp(this->points[k], this->points[kp1], 0.5f);
-
-      if (orientation >= 0.f)
-        alpha += M_PI_2;
-      else
-        alpha -= M_PI_2;
-
-      dist *= ratio * (1.f + dis(gen));
-
-      p.x += dist * std::cos(alpha);
-      p.y += dist * std::sin(alpha);
-
-      new_path.add_point(p);
-      orientation *= -1.f;
-    }
-
-    if (this->closed)
-      new_path.add_point(this->points[0]);
-    else
-      new_path.add_point(this->points.back());
-
-    *this = new_path;
-  }
-
-  this->bspline(edge_divisions, edm);
+  return this->path_closure == PathClosure::PT_CLOSE;
 }
 
 void Path::reorder_nns(int start_index)
 {
   // reserve space in idx vector upfront
   std::vector<int> idx;
-  idx.reserve(this->get_npoints());
+  idx.reserve(this->size());
   idx.push_back(start_index);
 
   // populate the search queue with all other indices
   std::list<int> queue_search;
-  for (int k = 0; k < static_cast<int>(this->get_npoints()); ++k)
+  for (int k = 0; k < static_cast<int>(this->size()); ++k)
     if (k != start_index) queue_search.push_back(k);
 
-  while (idx.size() < this->get_npoints())
+  while (idx.size() < this->size())
   {
     int   k = idx.back(); // current point
     int   knext = -1;     // next point to add to idx
@@ -588,7 +241,7 @@ void Path::reorder_nns(int start_index)
 
   // reorder the points based on the new indices
   std::vector<Point> reordered_points;
-  reordered_points.reserve(this->get_npoints());
+  reordered_points.reserve(this->size());
   for (const int &i : idx)
     reordered_points.push_back(this->points[i]);
 
@@ -598,7 +251,7 @@ void Path::reorder_nns(int start_index)
 
 void Path::resample_by_spacing(float delta, InterpolationMethod1D itp_method)
 {
-  if (this->get_npoints() < 2) return;
+  if (this->size() < 2) return;
 
   std::vector<float> cdist = this->get_cumulative_distance();
   int                npoints = std::max(2, int(cdist.back() / delta));
@@ -608,13 +261,13 @@ void Path::resample_by_spacing(float delta, InterpolationMethod1D itp_method)
 
 void Path::resample_interp(int npoints, InterpolationMethod1D itp_method)
 {
-  if (this->get_npoints() < 2) return;
+  if (this->size() < 2) return;
 
   // work on a copy to manage open/close paths
   Path path_wrk = *this;
 
   // duplicate 1st/last point for closed path
-  if (this->closed) path_wrk.points.push_back(path_wrk.points.front());
+  if (this->is_closed()) path_wrk.points.push_back(path_wrk.points.front());
 
   // interpolation points along arc
   std::vector<float> t = hmap::linspace(0.f, 1.f, npoints);
@@ -640,14 +293,14 @@ void Path::resample_interp(int npoints, InterpolationMethod1D itp_method)
   }
 
   // remove duplicate 1st/last point
-  if (this->closed) new_points.pop_back();
+  if (this->is_closed()) new_points.pop_back();
 
   this->points = std::move(new_points);
 }
 
 void Path::resample_uniform(InterpolationMethod1D itp_method)
 {
-  if (this->get_npoints() < 2) return;
+  if (this->size() < 2) return;
 
   // determine smallest distance between two consecutive points (and
   // store distances because there are used for the interpolation
@@ -655,8 +308,8 @@ void Path::resample_uniform(InterpolationMethod1D itp_method)
   float dmin = std::numeric_limits<float>::max();
   float dsum = 0.f;
 
-  size_t npoints = this->get_npoints();
-  size_t end = this->closed ? npoints : npoints - 1;
+  size_t npoints = this->size();
+  size_t end = this->is_closed() ? npoints : npoints - 1;
 
   for (size_t k = 0; k < end; k++)
   {
@@ -682,8 +335,7 @@ float Path::sdf_angle_closed(float x, float y)
   size_t k_closest = 0;
   size_t kp_closest = 0;
 
-  for (size_t i = 0, j = this->get_npoints() - 1; i < this->get_npoints();
-       j = i, i++)
+  for (size_t i = 0, j = this->size() - 1; i < this->size(); j = i, i++)
   {
     glm::vec2 e = {this->points[j].x - this->points[i].x,
                    this->points[j].y - this->points[i].y};
@@ -709,7 +361,7 @@ float Path::sdf_angle_open(float x, float y)
   float  d = std::numeric_limits<float>::max();
   size_t k_closest = 0;
 
-  for (size_t i = 0; i < this->get_npoints() - 1; i++)
+  for (size_t i = 0; i < this->size() - 1; i++)
   {
     size_t    j = i + 1;
     glm::vec2 e = {this->points[j].x - this->points[i].x,
@@ -731,8 +383,7 @@ float Path::sdf_closed(float x, float y)
 {
   float d = std::numeric_limits<float>::max();
   float s = 1.f;
-  for (size_t i = 0, j = this->get_npoints() - 1; i < this->get_npoints();
-       j = i, i++)
+  for (size_t i = 0, j = this->size() - 1; i < this->size(); j = i, i++)
   {
     glm::vec2 e = {this->points[j].x - this->points[i].x,
                    this->points[j].y - this->points[i].y};
@@ -754,8 +405,7 @@ float Path::sdf_elevation_closed(float x, float y, float slope)
 {
   float d = -std::numeric_limits<float>::max();
 
-  for (size_t i = 0, j = this->get_npoints() - 1; i < this->get_npoints();
-       j = i, i++)
+  for (size_t i = 0, j = this->size() - 1; i < this->size(); j = i, i++)
   {
     glm::vec2 e = {this->points[j].x - this->points[i].x,
                    this->points[j].y - this->points[i].y};
@@ -773,7 +423,7 @@ float Path::sdf_elevation_open(float x, float y, float slope)
 {
   float d = -std::numeric_limits<float>::max();
 
-  for (size_t i = 0; i < this->get_npoints() - 1; i++)
+  for (size_t i = 0; i < this->size() - 1; i++)
   {
     size_t    j = i + 1;
     glm::vec2 e = {this->points[j].x - this->points[i].x,
@@ -793,7 +443,7 @@ float Path::sdf_open(float x, float y)
   // distance
   float d = std::numeric_limits<float>::max();
 
-  for (size_t i = 0; i < this->get_npoints() - 1; i++)
+  for (size_t i = 0; i < this->size() - 1; i++)
   {
     size_t    j = i + 1;
     glm::vec2 e = {this->points[j].x - this->points[i].x,
@@ -806,47 +456,17 @@ float Path::sdf_open(float x, float y)
   return std::sqrt(d);
 }
 
-void Path::smooth(int navg, float averaging_intensity, float inertia)
+void Path::set_closed(bool new_value)
 {
-  // moving average (start and end points are not modified)
-  std::vector<Point> smooth_points = {};
-  smooth_points.reserve(this->get_npoints());
-
-  for (int i = 0; i < (int)this->get_npoints(); i++)
-  {
-    int i1 = (i >= navg) ? navg : i;
-    int i2 = (i <= (int)this->get_npoints() - 1 - navg)
-                 ? navg
-                 : (int)this->get_npoints() - 1 - i;
-    int is = std::min(i1, i2);
-
-    Point psum(0.f, 0.f);
-
-    for (int k = i - is; k < i + is + 1; k++)
-      psum = psum + this->points[k];
-
-    Point new_point = psum / (float)(2 * is + 1);
-    new_point = (1.f - averaging_intensity) * this->points[i] +
-                averaging_intensity * new_point;
-
-    smooth_points.push_back(new_point);
-  }
-
-  this->points = smooth_points;
-
-  // inertia (same, start and end points are not modified)
-  if (inertia > 0.f)
-    for (size_t i = 1; i < this->get_npoints() - 1; i++)
-      this->points[i] = (1.f - inertia) * this->points[i] +
-                        inertia * this->points[i - 1];
+  this->path_closure = new_value ? PathClosure::PT_CLOSE : PathClosure::PT_OPEN;
 }
 
 void Path::subsample(int step)
 {
   size_t k_global = 0;
-  size_t k_last = this->get_npoints() - 1; // to keep the end point
+  size_t k_last = this->size() - 1; // to keep the end point
 
-  for (size_t k = 0; k < this->get_npoints(); k++)
+  for (size_t k = 0; k < this->size(); k++)
   {
     if ((k_global % step != 0) and (k_global != k_last))
     {
@@ -868,10 +488,10 @@ void Path::to_array(Array &array, glm::vec4 bbox, bool filled) const
   Cloud cloud = Cloud(points);
 
   // project path itself
-  size_t ks = this->closed ? 0 : 1;
-  for (size_t k = 0; k < this->get_npoints() - ks; k++)
+  size_t ks = this->is_closed() ? 0 : 1;
+  for (size_t k = 0; k < this->size() - ks; k++)
   {
-    size_t knext = (k + 1) % this->get_npoints();
+    size_t knext = (k + 1) % this->size();
     int    npixels = (int)std::ceil(
                       distance(this->points[k], this->points[knext]) * ppu) +
                   1;
@@ -905,18 +525,18 @@ void Path::to_array(Array &array, glm::vec4 bbox, bool filled) const
   }
 }
 
+Array Path::to_array(glm::ivec2 shape, glm::vec4 bbox, bool filled) const
+{
+  Array array(shape);
+  this->to_array(array, bbox, filled);
+  return array;
+}
+
 void Path::to_array_mask(Array &array, glm::vec4 bbox, bool filled) const
 {
   Path path_copy = *this;
   path_copy.set_values(1.f);
   path_copy.to_array(array, bbox, filled);
-}
-
-Array Path::to_array_new(glm::ivec2 shape, glm::vec4 bbox, bool filled) const
-{
-  Array array(shape);
-  this->to_array(array, bbox, filled);
-  return array;
 }
 
 Array Path::to_array_sdf(glm::ivec2 shape,
@@ -938,7 +558,7 @@ Array Path::to_array_sdf(glm::ivec2 shape,
   // fill heightmap
   std::function<float(float, float, float)> distance_fct;
 
-  if (this->closed)
+  if (this->is_closed())
     distance_fct = [this](float x, float y, float)
     { return this->sdf_closed(x, y); };
   else
@@ -961,47 +581,6 @@ void Path::to_png(std::string fname, glm::ivec2 shape)
   Array array = Array(shape);
   this->to_array(array, this->get_bbox());
   array.to_png(fname, Cmap::INFERNO, false);
-}
-
-//----------------------------------------------------------------------
-// functions
-//----------------------------------------------------------------------
-
-Path remove_geometric_loops(const Path &path)
-{
-  if (path.get_npoints() < 4) return path; // no loops possible
-
-  Path result = path;
-  bool changed;
-
-  do
-  {
-    changed = false;
-    for (size_t i = 0; i + 1 < result.get_npoints(); ++i)
-    {
-      for (size_t j = i + 2; j + 1 < result.get_npoints(); ++j)
-      {
-        auto inter = segment_intersection(result.points[i],
-                                          result.points[i + 1],
-                                          result.points[j],
-                                          result.points[j + 1]);
-        if (inter)
-        {
-          // remove points between segments i+1 and j
-          result.points.erase(result.points.begin() + i + 1,
-                              result.points.begin() + j + 1);
-
-          // insert intersection point
-          result.points.insert(result.points.begin() + i + 1, *inter);
-          changed = true;
-          break;
-        }
-      }
-      if (changed) break;
-    }
-  } while (changed);
-
-  return result;
 }
 
 } // namespace hmap

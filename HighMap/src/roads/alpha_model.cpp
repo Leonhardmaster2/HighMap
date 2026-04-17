@@ -54,8 +54,7 @@ Graph generate_network_alpha_model(const std::vector<float> &xc,
 
   //--- road weights
 
-  Array is_road = Array(
-      glm::ivec2((int)graph.get_npoints(), (int)graph.get_npoints()));
+  Array is_road = Array(glm::ivec2((int)graph.size(), (int)graph.size()));
 
   // define number of trips between each cities
   std::vector<float> ntrips = {};
@@ -78,11 +77,11 @@ Graph generate_network_alpha_model(const std::vector<float> &xc,
   graph.update_adjacency_matrix();
 
   //
-  std::vector<float> local_weight(graph.get_npoints());
+  std::vector<float> local_weight(graph.size());
   if (p_weight != nullptr)
     local_weight = graph.interpolate_values_from_array(*p_weight, bbox);
 
-  for (size_t i = 0; i < graph.get_npoints(); i++)
+  for (size_t i = 0; i < graph.size(); i++)
     for (size_t r = 0; r < graph.connectivity[i].size(); r++)
     {
       int j = graph.connectivity[i][r];
@@ -100,8 +99,8 @@ Graph generate_network_alpha_model(const std::vector<float> &xc,
 
   for (size_t k = ntrips.size() - 1; k-- > 0;)
   {
-    int i0 = (int)graph.get_npoints() - nc + trips_istart[ksort[k]];
-    int j0 = (int)graph.get_npoints() - nc + trips_iend[ksort[k]];
+    int i0 = (int)graph.size() - nc + trips_istart[ksort[k]];
+    int j0 = (int)graph.size() - nc + trips_iend[ksort[k]];
 
     // shortest path between the two cities (i0 and j0)
     std::vector<int> path = graph.dijkstra(i0, j0);
@@ -116,7 +115,7 @@ Graph generate_network_alpha_model(const std::vector<float> &xc,
 
     // weight adjacency matrix using elevation difference and
     // road/non-road type of the edge
-    for (size_t i = 0; i < graph.get_npoints(); i++)
+    for (size_t i = 0; i < graph.size(); i++)
       // loop over neighbors
       for (size_t r = 0; r < graph.connectivity[i].size(); r++)
       {
@@ -132,7 +131,7 @@ Graph generate_network_alpha_model(const std::vector<float> &xc,
   //--- remove orphan edges and rebuild road network graph
   Graph network = Graph(graph.get_x(), graph.get_y());
 
-  for (size_t i = 0; i < graph.get_npoints(); i++)
+  for (size_t i = 0; i < graph.size(); i++)
     for (size_t r = 0; r < graph.connectivity[i].size(); r++)
     {
       int j = graph.connectivity[i][r];
@@ -142,11 +141,11 @@ Graph generate_network_alpha_model(const std::vector<float> &xc,
 
   // store city size in node value (equals to 0 if the node is not a
   // city)
-  for (size_t i = 0; i < network.get_npoints(); i++)
-    if (i < network.get_npoints() - nc)
+  for (size_t i = 0; i < network.size(); i++)
+    if (i < network.size() - nc)
       network.points[i].v = 0.f;
     else
-      network.points[i].v = size[i - network.get_npoints() + nc];
+      network.points[i].v = size[i - network.size() + nc];
 
   // final clean-up
   network = network.remove_orphan_points();

@@ -26,7 +26,7 @@ int main(void)
     v.push_back(cloud.points[k].v);
   }
   hmap::Path path_chull = hmap::Path(x, y, v);
-  path_chull.closed = true;
+  path_chull.set_closed(true);
 
   hmap::Array z1 = z0;
   path_chull.to_array(z1, bbox);

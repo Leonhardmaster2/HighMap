@@ -18,7 +18,7 @@ Array sdf_2d_polyline(const Path  &path,
                       const Array *p_noise_x,
                       const Array *p_noise_y)
 {
-  if (path.get_npoints() < 2)
+  if (path.size() < 2)
   {
     LOG_ERROR("at least 2 points needed in the Path to compute the SDF");
     return Array(shape);
@@ -62,7 +62,7 @@ Array sdf_2d_polyline_bezier(const Path  &path,
                              const Array *p_noise_x,
                              const Array *p_noise_y)
 {
-  if (path.get_npoints() < 3)
+  if (path.size() < 3)
   {
     LOG_ERROR("at least 3 points needed in the Path to compute the SDF");
     return Array(shape);

@@ -6,21 +6,25 @@ int main(void)
   int        seed = 6;
   int        npoints = 10;
 
-  glm::vec4  bbox = {1.f, 2.f, -0.5f, 0.5f};
-  hmap::Path path = hmap::Path(npoints, seed, {1.3f, 1.7f, -0.2, 0.2f});
+  glm::vec4  bbox = {0.f, 1.f, 0.f, 1.f};
+  hmap::Path path = hmap::Path(npoints, seed, hmap::adjust(bbox, -0.1f));
   path.reorder_nns();
+  path = hmap::fractalize(path, 4, seed, 0.2f);
+  path.resample_by_spacing(0.05f);
 
-  auto z1 = hmap::Array(shape);
-  path.to_array(z1, bbox);
+  auto z1 = path.to_array(shape, bbox);
 
-  auto z2 = hmap::Array(shape);
-  {
-    hmap::Path path_c = path;
+  int        navg = 12;
+  hmap::Path path_c = hmap::smooth(path, navg);
+  auto       z2 = path_c.to_array(shape, bbox);
 
-    path_c.resample_by_spacing(0.05f);
-    path_c.smooth();
-    path_c.to_array(z2, bbox);
-  }
+  hmap::assert_start_end_points(path, path_c);
 
-  hmap::export_banner_png("ex_path_smooth.png", {z1, z2}, hmap::Cmap::INFERNO);
+  path.set_closed(true);
+  path_c = hmap::smooth(path, navg);
+  auto z3 = path_c.to_array(shape, bbox);
+
+  hmap::export_banner_png("ex_path_smooth.png",
+                          {z1, z2, z3},
+                          hmap::Cmap::INFERNO);
 }

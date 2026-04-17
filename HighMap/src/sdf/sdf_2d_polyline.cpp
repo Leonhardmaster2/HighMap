@@ -17,7 +17,7 @@ Array sdf_2d_polyline(const Path  &path,
                       const Array *p_noise_x,
                       const Array *p_noise_y)
 {
-  if (path.get_npoints() < 2)
+  if (path.size() < 2)
   {
     LOG_ERROR("at least 2 points needed in the Path to compute the SDF");
     return Array(shape);
@@ -47,7 +47,7 @@ Array sdf_2d_polyline(const Path  &path,
       // distance
       float d = std::numeric_limits<float>::max();
 
-      for (size_t k = 0; k < path.get_npoints() - 1; k++)
+      for (size_t k = 0; k < path.size() - 1; k++)
       {
         size_t    p = k + 1;
         glm::vec2 e = {xp[p] - xp[k], yp[p] - yp[k]};
@@ -68,7 +68,7 @@ Array sdf_2d_polyline_bezier(const Path  &path,
                              const Array *p_noise_x,
                              const Array *p_noise_y)
 {
-  if (path.get_npoints() < 3)
+  if (path.size() < 3)
   {
     LOG_ERROR("at least 3 points needed in the Path to compute the SDF");
     return Array(shape);

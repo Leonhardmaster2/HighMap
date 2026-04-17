@@ -10,10 +10,10 @@ int main(void)
 
   glm::vec4  bbox = {1.f, 2.f, -0.5f, 0.5f};
   hmap::Path path = hmap::Path(5, seed, {1.1f, 1.9f, -0.4, 0.4f});
-  path.closed = false;
+  path.set_closed(false);
   path.reorder_nns();
 
-  path.dijkstra(z, bbox, 0, 0.9f, 1.f);
+  path = hmap::dijkstra(path, z, bbox, 0, 0.9f, 1.f);
 
   auto z1 = hmap::Array(shape);
   path.to_array(z1, bbox);

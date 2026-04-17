@@ -24,8 +24,8 @@ int main(void)
       hmap::DomainBoundary::BOUNDARY_LEFT,
       hmap::DomainBoundary::BOUNDARY_RIGHT);
 
-  path.decimate_vw(20);
-  path.bspline();
+  path = hmap::decimate_vw(path, 20);
+  path = hmap::bspline(path);
 
   hmap::Array zp = hmap::Array(shape);
   path.to_array(zp);

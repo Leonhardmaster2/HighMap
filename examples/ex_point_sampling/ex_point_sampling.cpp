@@ -88,7 +88,7 @@ int main(void)
 
     cloud = hmap::random_cloud_distance(min_dist, max_dist, density, seed);
 
-    std::cout << "count: " << cloud.get_npoints() << "\n";
+    std::cout << "count: " << cloud.size() << "\n";
 
     raster = 0.f;
     cloud.to_array(raster);
@@ -99,7 +99,7 @@ int main(void)
                                                   1.2f /* alpha */,
                                                   seed);
 
-    std::cout << "count: " << cloud.get_npoints() << "\n";
+    std::cout << "count: " << cloud.size() << "\n";
 
     raster = 0.f;
     cloud.to_array(raster);
@@ -110,7 +110,7 @@ int main(void)
                                                 1.f /* k */,
                                                 seed);
 
-    std::cout << "count: " << cloud.get_npoints() << "\n";
+    std::cout << "count: " << cloud.size() << "\n";
 
     raster = 0.f;
     cloud.to_array(raster);

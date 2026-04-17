@@ -25,11 +25,11 @@ int main(void)
 
   // --- Open path
 
-  path.closed = false;
+  path.set_closed(false);
 
   // original path
   arrays.clear();
-  arrays.push_back(path.to_array_new(shape, bbox));
+  arrays.push_back(path.to_array(shape, bbox));
 
   for (const auto method : methods)
   {
@@ -37,18 +37,18 @@ int main(void)
     path_copy.resample_interp(npoints, method);
 
     // plot to an array
-    arrays.push_back(path_copy.to_array_new(shape, bbox));
+    arrays.push_back(path_copy.to_array(shape, bbox));
   }
 
   hmap::export_banner_png("ex_path_resample0.png", arrays, hmap::Cmap::INFERNO);
 
   // --- Closed path
 
-  path.closed = true;
+  path.set_closed(true);
 
   // original path
   arrays.clear();
-  arrays.push_back(path.to_array_new(shape, bbox));
+  arrays.push_back(path.to_array(shape, bbox));
 
   for (const auto method : methods)
   {
@@ -56,28 +56,28 @@ int main(void)
     path_copy.resample_interp(npoints, method);
 
     // plot to an array
-    arrays.push_back(path_copy.to_array_new(shape, bbox));
+    arrays.push_back(path_copy.to_array(shape, bbox));
   }
 
   hmap::export_banner_png("ex_path_resample1.png", arrays, hmap::Cmap::INFERNO);
 
   // --- Wrappers
 
-  path.closed = false;
+  path.set_closed(false);
 
   arrays.clear();
-  arrays.push_back(path.to_array_new(shape, bbox));
+  arrays.push_back(path.to_array(shape, bbox));
 
   {
     hmap::Path path_copy = path;
     path_copy.resample_uniform();
-    arrays.push_back(path_copy.to_array_new(shape, bbox));
+    arrays.push_back(path_copy.to_array(shape, bbox));
   }
 
   {
     hmap::Path path_copy = path;
     path_copy.resample_by_spacing(0.01f);
-    arrays.push_back(path_copy.to_array_new(shape, bbox));
+    arrays.push_back(path_copy.to_array(shape, bbox));
   }
 
   hmap::export_banner_png("ex_path_resample2.png", arrays, hmap::Cmap::INFERNO);

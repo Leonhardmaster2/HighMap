@@ -41,7 +41,7 @@ void dig_river(Array                   &z,
     // add downstream slope
     if (riverbed_talus > 0.f)
     {
-      for (size_t k = 0; k < path_copy.get_npoints() - 1; k++)
+      for (size_t k = 0; k < path_copy.size() - 1; k++)
         path_copy.points[k + 1].v = std::min(path_copy.points[k + 1].v,
                                              path_copy.points[k].v -
                                                  riverbed_talus);

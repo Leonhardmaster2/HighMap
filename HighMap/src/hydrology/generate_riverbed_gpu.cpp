@@ -29,7 +29,7 @@ Array generate_riverbed(const Path &path,
                         Array      *p_noise_y,
                         Array      *p_noise_r)
 {
-  if (path.get_npoints() < 2)
+  if (path.size() < 2)
   {
     LOG_ERROR("at least 2 points needed");
     return Array(shape);
