@@ -23625,9 +23625,6 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1aba758c4143b6e499ec6f4385467a6d77aeebf5714b383e3b3be100ceba46d8fe5" kindref="member">hmap::PointSamplingMethod::RND_HAMMERSLEY</ref>,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1aba758c4143b6e499ec6f4385467a6d77a8943dd2a2e3993c1e0cff37be3f65957" kindref="member">hmap::PointSamplingMethod::RND_LHS</ref>})</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>auto<sp/>xy<sp/>=<sp/>hmap::random_points(count,<sp/>seed,<sp/>type);</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>hmap::Cloud<sp/>cloud(xy[0],<sp/>xy[1],<sp/>1.f<sp/>/*<sp/>value<sp/>*/);</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Cloud" kindref="compound">hmap::Cloud</ref><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a85e1a2365d97c95955eaf0648a1f9073" kindref="member">hmap::random_cloud</ref>(count,<sp/>seed,<sp/>type);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1a36e47d4857108c56193755e32374184d" kindref="member">to_array</ref>(raster);</highlight></codeline>
@@ -23673,17 +23670,11 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>min_dist<sp/>=<sp/>0.02f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>max_dist<sp/>=<sp/>0.08f;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>auto<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>xy<sp/>=<sp/>hmap::random_points_distance(min_dist,<sp/>seed);</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>hmap::Cloud<sp/>cloud(xy[0],<sp/>xy[1],<sp/>1.f<sp/>/*<sp/>value<sp/>*/);</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Cloud" kindref="compound">hmap::Cloud</ref><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a117f2da22e9a721e84002c801e95c2d5" kindref="member">hmap::random_cloud_distance</ref>(min_dist,<sp/>seed);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>raster<sp/>=<sp/>0.f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1a36e47d4857108c56193755e32374184d" kindref="member">to_array</ref>(raster);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>zs.push_back(raster);</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>auto<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>xy<sp/>=<sp/>hmap::random_points_distance(min_dist,<sp/>max_dist,</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>density,<sp/>seed);<sp/>cloud<sp/>=<sp/>hmap::Cloud(xy[0],<sp/>xy[1],<sp/>1.f<sp/>/*<sp/>value<sp/>*/);</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a117f2da22e9a721e84002c801e95c2d5" kindref="member">hmap::random_cloud_distance</ref>(min_dist,<sp/>max_dist,<sp/>density,<sp/>seed);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
@@ -23725,12 +23716,6 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>glm::vec2<sp/>jitter_amount<sp/>=<sp/>{0.3f,<sp/>0.3f};</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>glm::vec2<sp/>stagger_ratio<sp/>=<sp/>{0.5f,<sp/>0.f};</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>auto<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>xy<sp/>=<sp/>hmap::random_points_jittered(count,</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jitter_amount,</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>stagger_ratio,</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed);</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>hmap::Cloud<sp/>cloud(xy[0],<sp/>xy[1],<sp/>1.f<sp/>/*<sp/>value<sp/>*/);</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Cloud" kindref="compound">hmap::Cloud</ref><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a2b567f4e49f112b51a29c0915b039bc1" kindref="member">hmap::random_cloud_jittered</ref>(count,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jitter_amount,</highlight></codeline>
@@ -23847,9 +23832,6 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1aba758c4143b6e499ec6f4385467a6d77aeebf5714b383e3b3be100ceba46d8fe5" kindref="member">hmap::PointSamplingMethod::RND_HAMMERSLEY</ref>,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1aba758c4143b6e499ec6f4385467a6d77a8943dd2a2e3993c1e0cff37be3f65957" kindref="member">hmap::PointSamplingMethod::RND_LHS</ref>})</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>auto<sp/>xy<sp/>=<sp/>hmap::random_points(count,<sp/>seed,<sp/>type);</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>hmap::Cloud<sp/>cloud(xy[0],<sp/>xy[1],<sp/>1.f<sp/>/*<sp/>value<sp/>*/);</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Cloud" kindref="compound">hmap::Cloud</ref><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a85e1a2365d97c95955eaf0648a1f9073" kindref="member">hmap::random_cloud</ref>(count,<sp/>seed,<sp/>type);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1a36e47d4857108c56193755e32374184d" kindref="member">to_array</ref>(raster);</highlight></codeline>
@@ -23895,17 +23877,11 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>min_dist<sp/>=<sp/>0.02f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>max_dist<sp/>=<sp/>0.08f;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>auto<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>xy<sp/>=<sp/>hmap::random_points_distance(min_dist,<sp/>seed);</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>hmap::Cloud<sp/>cloud(xy[0],<sp/>xy[1],<sp/>1.f<sp/>/*<sp/>value<sp/>*/);</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Cloud" kindref="compound">hmap::Cloud</ref><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a117f2da22e9a721e84002c801e95c2d5" kindref="member">hmap::random_cloud_distance</ref>(min_dist,<sp/>seed);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>raster<sp/>=<sp/>0.f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1a36e47d4857108c56193755e32374184d" kindref="member">to_array</ref>(raster);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>zs.push_back(raster);</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>auto<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>xy<sp/>=<sp/>hmap::random_points_distance(min_dist,<sp/>max_dist,</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>density,<sp/>seed);<sp/>cloud<sp/>=<sp/>hmap::Cloud(xy[0],<sp/>xy[1],<sp/>1.f<sp/>/*<sp/>value<sp/>*/);</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a117f2da22e9a721e84002c801e95c2d5" kindref="member">hmap::random_cloud_distance</ref>(min_dist,<sp/>max_dist,<sp/>density,<sp/>seed);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
@@ -23947,12 +23923,6 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>glm::vec2<sp/>jitter_amount<sp/>=<sp/>{0.3f,<sp/>0.3f};</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>glm::vec2<sp/>stagger_ratio<sp/>=<sp/>{0.5f,<sp/>0.f};</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>auto<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>xy<sp/>=<sp/>hmap::random_points_jittered(count,</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jitter_amount,</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>stagger_ratio,</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed);</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>hmap::Cloud<sp/>cloud(xy[0],<sp/>xy[1],<sp/>1.f<sp/>/*<sp/>value<sp/>*/);</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Cloud" kindref="compound">hmap::Cloud</ref><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a2b567f4e49f112b51a29c0915b039bc1" kindref="member">hmap::random_cloud_jittered</ref>(count,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jitter_amount,</highlight></codeline>
@@ -24057,9 +24027,6 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1aba758c4143b6e499ec6f4385467a6d77aeebf5714b383e3b3be100ceba46d8fe5" kindref="member">hmap::PointSamplingMethod::RND_HAMMERSLEY</ref>,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1aba758c4143b6e499ec6f4385467a6d77a8943dd2a2e3993c1e0cff37be3f65957" kindref="member">hmap::PointSamplingMethod::RND_LHS</ref>})</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>auto<sp/>xy<sp/>=<sp/>hmap::random_points(count,<sp/>seed,<sp/>type);</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>hmap::Cloud<sp/>cloud(xy[0],<sp/>xy[1],<sp/>1.f<sp/>/*<sp/>value<sp/>*/);</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Cloud" kindref="compound">hmap::Cloud</ref><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a85e1a2365d97c95955eaf0648a1f9073" kindref="member">hmap::random_cloud</ref>(count,<sp/>seed,<sp/>type);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1a36e47d4857108c56193755e32374184d" kindref="member">to_array</ref>(raster);</highlight></codeline>
@@ -24105,17 +24072,11 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>min_dist<sp/>=<sp/>0.02f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>max_dist<sp/>=<sp/>0.08f;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>auto<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>xy<sp/>=<sp/>hmap::random_points_distance(min_dist,<sp/>seed);</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>hmap::Cloud<sp/>cloud(xy[0],<sp/>xy[1],<sp/>1.f<sp/>/*<sp/>value<sp/>*/);</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Cloud" kindref="compound">hmap::Cloud</ref><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a117f2da22e9a721e84002c801e95c2d5" kindref="member">hmap::random_cloud_distance</ref>(min_dist,<sp/>seed);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>raster<sp/>=<sp/>0.f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1a36e47d4857108c56193755e32374184d" kindref="member">to_array</ref>(raster);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>zs.push_back(raster);</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>auto<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>xy<sp/>=<sp/>hmap::random_points_distance(min_dist,<sp/>max_dist,</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>density,<sp/>seed);<sp/>cloud<sp/>=<sp/>hmap::Cloud(xy[0],<sp/>xy[1],<sp/>1.f<sp/>/*<sp/>value<sp/>*/);</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a117f2da22e9a721e84002c801e95c2d5" kindref="member">hmap::random_cloud_distance</ref>(min_dist,<sp/>max_dist,<sp/>density,<sp/>seed);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
@@ -24157,12 +24118,6 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>glm::vec2<sp/>jitter_amount<sp/>=<sp/>{0.3f,<sp/>0.3f};</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>glm::vec2<sp/>stagger_ratio<sp/>=<sp/>{0.5f,<sp/>0.f};</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>auto<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>xy<sp/>=<sp/>hmap::random_points_jittered(count,</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jitter_amount,</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>stagger_ratio,</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed);</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>hmap::Cloud<sp/>cloud(xy[0],<sp/>xy[1],<sp/>1.f<sp/>/*<sp/>value<sp/>*/);</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Cloud" kindref="compound">hmap::Cloud</ref><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a2b567f4e49f112b51a29c0915b039bc1" kindref="member">hmap::random_cloud_jittered</ref>(count,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jitter_amount,</highlight></codeline>
@@ -24291,9 +24246,6 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1aba758c4143b6e499ec6f4385467a6d77aeebf5714b383e3b3be100ceba46d8fe5" kindref="member">hmap::PointSamplingMethod::RND_HAMMERSLEY</ref>,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1aba758c4143b6e499ec6f4385467a6d77a8943dd2a2e3993c1e0cff37be3f65957" kindref="member">hmap::PointSamplingMethod::RND_LHS</ref>})</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>auto<sp/>xy<sp/>=<sp/>hmap::random_points(count,<sp/>seed,<sp/>type);</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>hmap::Cloud<sp/>cloud(xy[0],<sp/>xy[1],<sp/>1.f<sp/>/*<sp/>value<sp/>*/);</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Cloud" kindref="compound">hmap::Cloud</ref><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a85e1a2365d97c95955eaf0648a1f9073" kindref="member">hmap::random_cloud</ref>(count,<sp/>seed,<sp/>type);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1a36e47d4857108c56193755e32374184d" kindref="member">to_array</ref>(raster);</highlight></codeline>
@@ -24339,17 +24291,11 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>min_dist<sp/>=<sp/>0.02f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>max_dist<sp/>=<sp/>0.08f;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>auto<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>xy<sp/>=<sp/>hmap::random_points_distance(min_dist,<sp/>seed);</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>hmap::Cloud<sp/>cloud(xy[0],<sp/>xy[1],<sp/>1.f<sp/>/*<sp/>value<sp/>*/);</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Cloud" kindref="compound">hmap::Cloud</ref><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a117f2da22e9a721e84002c801e95c2d5" kindref="member">hmap::random_cloud_distance</ref>(min_dist,<sp/>seed);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>raster<sp/>=<sp/>0.f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1a36e47d4857108c56193755e32374184d" kindref="member">to_array</ref>(raster);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>zs.push_back(raster);</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>auto<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>xy<sp/>=<sp/>hmap::random_points_distance(min_dist,<sp/>max_dist,</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>density,<sp/>seed);<sp/>cloud<sp/>=<sp/>hmap::Cloud(xy[0],<sp/>xy[1],<sp/>1.f<sp/>/*<sp/>value<sp/>*/);</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a117f2da22e9a721e84002c801e95c2d5" kindref="member">hmap::random_cloud_distance</ref>(min_dist,<sp/>max_dist,<sp/>density,<sp/>seed);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
@@ -24391,12 +24337,6 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>glm::vec2<sp/>jitter_amount<sp/>=<sp/>{0.3f,<sp/>0.3f};</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>glm::vec2<sp/>stagger_ratio<sp/>=<sp/>{0.5f,<sp/>0.f};</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>auto<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>xy<sp/>=<sp/>hmap::random_points_jittered(count,</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jitter_amount,</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>stagger_ratio,</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed);</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>hmap::Cloud<sp/>cloud(xy[0],<sp/>xy[1],<sp/>1.f<sp/>/*<sp/>value<sp/>*/);</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Cloud" kindref="compound">hmap::Cloud</ref><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a2b567f4e49f112b51a29c0915b039bc1" kindref="member">hmap::random_cloud_jittered</ref>(count,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jitter_amount,</highlight></codeline>
@@ -24525,9 +24465,6 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1aba758c4143b6e499ec6f4385467a6d77aeebf5714b383e3b3be100ceba46d8fe5" kindref="member">hmap::PointSamplingMethod::RND_HAMMERSLEY</ref>,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1aba758c4143b6e499ec6f4385467a6d77a8943dd2a2e3993c1e0cff37be3f65957" kindref="member">hmap::PointSamplingMethod::RND_LHS</ref>})</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>auto<sp/>xy<sp/>=<sp/>hmap::random_points(count,<sp/>seed,<sp/>type);</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>hmap::Cloud<sp/>cloud(xy[0],<sp/>xy[1],<sp/>1.f<sp/>/*<sp/>value<sp/>*/);</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Cloud" kindref="compound">hmap::Cloud</ref><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a85e1a2365d97c95955eaf0648a1f9073" kindref="member">hmap::random_cloud</ref>(count,<sp/>seed,<sp/>type);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1a36e47d4857108c56193755e32374184d" kindref="member">to_array</ref>(raster);</highlight></codeline>
@@ -24573,17 +24510,11 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>min_dist<sp/>=<sp/>0.02f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>max_dist<sp/>=<sp/>0.08f;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>auto<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>xy<sp/>=<sp/>hmap::random_points_distance(min_dist,<sp/>seed);</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>hmap::Cloud<sp/>cloud(xy[0],<sp/>xy[1],<sp/>1.f<sp/>/*<sp/>value<sp/>*/);</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Cloud" kindref="compound">hmap::Cloud</ref><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a117f2da22e9a721e84002c801e95c2d5" kindref="member">hmap::random_cloud_distance</ref>(min_dist,<sp/>seed);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>raster<sp/>=<sp/>0.f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1a36e47d4857108c56193755e32374184d" kindref="member">to_array</ref>(raster);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>zs.push_back(raster);</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>auto<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>xy<sp/>=<sp/>hmap::random_points_distance(min_dist,<sp/>max_dist,</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>density,<sp/>seed);<sp/>cloud<sp/>=<sp/>hmap::Cloud(xy[0],<sp/>xy[1],<sp/>1.f<sp/>/*<sp/>value<sp/>*/);</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a117f2da22e9a721e84002c801e95c2d5" kindref="member">hmap::random_cloud_distance</ref>(min_dist,<sp/>max_dist,<sp/>density,<sp/>seed);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
@@ -24625,12 +24556,6 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>glm::vec2<sp/>jitter_amount<sp/>=<sp/>{0.3f,<sp/>0.3f};</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>glm::vec2<sp/>stagger_ratio<sp/>=<sp/>{0.5f,<sp/>0.f};</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>auto<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>xy<sp/>=<sp/>hmap::random_points_jittered(count,</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jitter_amount,</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>stagger_ratio,</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed);</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>hmap::Cloud<sp/>cloud(xy[0],<sp/>xy[1],<sp/>1.f<sp/>/*<sp/>value<sp/>*/);</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Cloud" kindref="compound">hmap::Cloud</ref><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a2b567f4e49f112b51a29c0915b039bc1" kindref="member">hmap::random_cloud_jittered</ref>(count,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jitter_amount,</highlight></codeline>
@@ -24759,9 +24684,6 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1aba758c4143b6e499ec6f4385467a6d77aeebf5714b383e3b3be100ceba46d8fe5" kindref="member">hmap::PointSamplingMethod::RND_HAMMERSLEY</ref>,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1aba758c4143b6e499ec6f4385467a6d77a8943dd2a2e3993c1e0cff37be3f65957" kindref="member">hmap::PointSamplingMethod::RND_LHS</ref>})</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>auto<sp/>xy<sp/>=<sp/>hmap::random_points(count,<sp/>seed,<sp/>type);</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>hmap::Cloud<sp/>cloud(xy[0],<sp/>xy[1],<sp/>1.f<sp/>/*<sp/>value<sp/>*/);</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Cloud" kindref="compound">hmap::Cloud</ref><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a85e1a2365d97c95955eaf0648a1f9073" kindref="member">hmap::random_cloud</ref>(count,<sp/>seed,<sp/>type);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1a36e47d4857108c56193755e32374184d" kindref="member">to_array</ref>(raster);</highlight></codeline>
@@ -24807,17 +24729,11 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>min_dist<sp/>=<sp/>0.02f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>max_dist<sp/>=<sp/>0.08f;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>auto<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>xy<sp/>=<sp/>hmap::random_points_distance(min_dist,<sp/>seed);</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>hmap::Cloud<sp/>cloud(xy[0],<sp/>xy[1],<sp/>1.f<sp/>/*<sp/>value<sp/>*/);</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Cloud" kindref="compound">hmap::Cloud</ref><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a117f2da22e9a721e84002c801e95c2d5" kindref="member">hmap::random_cloud_distance</ref>(min_dist,<sp/>seed);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>raster<sp/>=<sp/>0.f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1a36e47d4857108c56193755e32374184d" kindref="member">to_array</ref>(raster);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>zs.push_back(raster);</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>auto<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>xy<sp/>=<sp/>hmap::random_points_distance(min_dist,<sp/>max_dist,</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>density,<sp/>seed);<sp/>cloud<sp/>=<sp/>hmap::Cloud(xy[0],<sp/>xy[1],<sp/>1.f<sp/>/*<sp/>value<sp/>*/);</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a117f2da22e9a721e84002c801e95c2d5" kindref="member">hmap::random_cloud_distance</ref>(min_dist,<sp/>max_dist,<sp/>density,<sp/>seed);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
@@ -24859,12 +24775,6 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>glm::vec2<sp/>jitter_amount<sp/>=<sp/>{0.3f,<sp/>0.3f};</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>glm::vec2<sp/>stagger_ratio<sp/>=<sp/>{0.5f,<sp/>0.f};</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>auto<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>xy<sp/>=<sp/>hmap::random_points_jittered(count,</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jitter_amount,</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>stagger_ratio,</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed);</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>hmap::Cloud<sp/>cloud(xy[0],<sp/>xy[1],<sp/>1.f<sp/>/*<sp/>value<sp/>*/);</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Cloud" kindref="compound">hmap::Cloud</ref><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a2b567f4e49f112b51a29c0915b039bc1" kindref="member">hmap::random_cloud_jittered</ref>(count,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jitter_amount,</highlight></codeline>
@@ -24993,9 +24903,6 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1aba758c4143b6e499ec6f4385467a6d77aeebf5714b383e3b3be100ceba46d8fe5" kindref="member">hmap::PointSamplingMethod::RND_HAMMERSLEY</ref>,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1aba758c4143b6e499ec6f4385467a6d77a8943dd2a2e3993c1e0cff37be3f65957" kindref="member">hmap::PointSamplingMethod::RND_LHS</ref>})</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>auto<sp/>xy<sp/>=<sp/>hmap::random_points(count,<sp/>seed,<sp/>type);</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>hmap::Cloud<sp/>cloud(xy[0],<sp/>xy[1],<sp/>1.f<sp/>/*<sp/>value<sp/>*/);</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Cloud" kindref="compound">hmap::Cloud</ref><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a85e1a2365d97c95955eaf0648a1f9073" kindref="member">hmap::random_cloud</ref>(count,<sp/>seed,<sp/>type);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1a36e47d4857108c56193755e32374184d" kindref="member">to_array</ref>(raster);</highlight></codeline>
@@ -25041,17 +24948,11 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>min_dist<sp/>=<sp/>0.02f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>max_dist<sp/>=<sp/>0.08f;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>auto<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>xy<sp/>=<sp/>hmap::random_points_distance(min_dist,<sp/>seed);</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>hmap::Cloud<sp/>cloud(xy[0],<sp/>xy[1],<sp/>1.f<sp/>/*<sp/>value<sp/>*/);</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Cloud" kindref="compound">hmap::Cloud</ref><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a117f2da22e9a721e84002c801e95c2d5" kindref="member">hmap::random_cloud_distance</ref>(min_dist,<sp/>seed);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>raster<sp/>=<sp/>0.f;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1a36e47d4857108c56193755e32374184d" kindref="member">to_array</ref>(raster);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>zs.push_back(raster);</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>auto<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>xy<sp/>=<sp/>hmap::random_points_distance(min_dist,<sp/>max_dist,</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>density,<sp/>seed);<sp/>cloud<sp/>=<sp/>hmap::Cloud(xy[0],<sp/>xy[1],<sp/>1.f<sp/>/*<sp/>value<sp/>*/);</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a117f2da22e9a721e84002c801e95c2d5" kindref="member">hmap::random_cloud_distance</ref>(min_dist,<sp/>max_dist,<sp/>density,<sp/>seed);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
@@ -25093,12 +24994,6 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>glm::vec2<sp/>jitter_amount<sp/>=<sp/>{0.3f,<sp/>0.3f};</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>glm::vec2<sp/>stagger_ratio<sp/>=<sp/>{0.5f,<sp/>0.f};</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>auto<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>xy<sp/>=<sp/>hmap::random_points_jittered(count,</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jitter_amount,</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>stagger_ratio,</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed);</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>hmap::Cloud<sp/>cloud(xy[0],<sp/>xy[1],<sp/>1.f<sp/>/*<sp/>value<sp/>*/);</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Cloud" kindref="compound">hmap::Cloud</ref><sp/>cloud<sp/>=<sp/><ref refid="namespacehmap_1a2b567f4e49f112b51a29c0915b039bc1" kindref="member">hmap::random_cloud_jittered</ref>(count,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jitter_amount,</highlight></codeline>
