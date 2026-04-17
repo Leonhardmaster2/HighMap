@@ -173,9 +173,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a10f22c402c1e8e4043c01327bca0f9e8" id="r_a10f22c402c1e8e4043c01327bca0f9e8"><td class="memItemLeft" align="right" valign="top">std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1Cloud.html#a10f22c402c1e8e4043c01327bca0f9e8">get_convex_hull_point_indices</a> () const</td></tr>
 <tr class="memdesc:a10f22c402c1e8e4043c01327bca0f9e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the indices of the points that form the convex hull of a set of points.  <br /></td></tr>
 <tr class="separator:a10f22c402c1e8e4043c01327bca0f9e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d6feb0c127bcea6566b600444cf103c" id="r_a4d6feb0c127bcea6566b600444cf103c"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1Cloud.html#a4d6feb0c127bcea6566b600444cf103c">get_npoints</a> () const</td></tr>
-<tr class="memdesc:a4d6feb0c127bcea6566b600444cf103c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of points in the cloud.  <br /></td></tr>
-<tr class="separator:a4d6feb0c127bcea6566b600444cf103c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a53cb47401f1e9d027a638f3680c3004d" id="r_a53cb47401f1e9d027a638f3680c3004d"><td class="memItemLeft" align="right" valign="top">std::vector&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1Cloud.html#a53cb47401f1e9d027a638f3680c3004d">get_values</a> () const</td></tr>
 <tr class="memdesc:a53cb47401f1e9d027a638f3680c3004d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the values assigned to the points in the cloud.  <br /></td></tr>
 <tr class="separator:a53cb47401f1e9d027a638f3680c3004d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -236,6 +233,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad8b2d626436107c4b0e2c9877747375f" id="r_ad8b2d626436107c4b0e2c9877747375f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1Cloud.html#ad8b2d626436107c4b0e2c9877747375f">set_values_from_min_distance</a> ()</td></tr>
 <tr class="memdesc:ad8b2d626436107c4b0e2c9877747375f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets point values based on the distance to their nearest neighbor.  <br /></td></tr>
 <tr class="separator:ad8b2d626436107c4b0e2c9877747375f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc675e8b2769a94b4c23bf7e69348f84" id="r_adc675e8b2769a94b4c23bf7e69348f84"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1Cloud.html#adc675e8b2769a94b4c23bf7e69348f84">size</a> () const</td></tr>
+<tr class="memdesc:adc675e8b2769a94b4c23bf7e69348f84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of points in the cloud.  <br /></td></tr>
+<tr class="separator:adc675e8b2769a94b4c23bf7e69348f84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7b26dc92e0d2217b8438f1ce9376ea0d" id="r_a7b26dc92e0d2217b8438f1ce9376ea0d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1Cloud.html#a7b26dc92e0d2217b8438f1ce9376ea0d">snap_points_to_bounding_box</a> (const glm::vec4 &amp;bbox={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>}, float tolerance_ratio=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
 <tr class="memdesc:a7b26dc92e0d2217b8438f1ce9376ea0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Snap points to the bounding box edges and corners.  <br /></td></tr>
 <tr class="separator:a7b26dc92e0d2217b8438f1ce9376ea0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -707,7 +707,7 @@ Public Attributes</h2></td></tr>
 <div class="line">    v.push_back(cloud.<a class="code hl_variable" href="classhmap_1_1Cloud.html#aad75fb7bcfa7a2c3f139d2e3d3d6cc54">points</a>[k].v);</div>
 <div class="line">  }</div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Path.html">hmap::Path</a> path_chull = <a class="code hl_class" href="classhmap_1_1Path.html">hmap::Path</a>(x, y, v);</div>
-<div class="line">  path_chull.<a class="code hl_variable" href="classhmap_1_1Path.html#a2ea3482a302d8ef30084fd39e57715de">closed</a> = <span class="keyword">true</span>;</div>
+<div class="line">  path_chull.<a class="code hl_function" href="classhmap_1_1Path.html#aeb2890d2ffbbf4291baf255c621095de">set_closed</a>(<span class="keyword">true</span>);</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z1 = z0;</div>
 <div class="line">  path_chull.<a class="code hl_function" href="classhmap_1_1Path.html#a4d1e1e63fea24bf8f23bc3343f8b746e">to_array</a>(z1, bbox);</div>
@@ -719,12 +719,12 @@ Public Attributes</h2></td></tr>
 <div class="ttc" id="aclasshmap_1_1Array_html"><div class="ttname"><a href="classhmap_1_1Array.html">hmap::Array</a></div><div class="ttdoc">Array class, helper to manipulate 2D float array with &quot;(i, j)&quot; indexing.</div><div class="ttdef"><b>Definition</b> array.hpp:32</div></div>
 <div class="ttc" id="aclasshmap_1_1Cloud_html"><div class="ttname"><a href="classhmap_1_1Cloud.html">hmap::Cloud</a></div><div class="ttdoc">Represents a collection of unordered points in 2D space.</div><div class="ttdef"><b>Definition</b> cloud.hpp:55</div></div>
 <div class="ttc" id="aclasshmap_1_1Cloud_html_a10f22c402c1e8e4043c01327bca0f9e8"><div class="ttname"><a href="classhmap_1_1Cloud.html#a10f22c402c1e8e4043c01327bca0f9e8">hmap::Cloud::get_convex_hull_point_indices</a></div><div class="ttdeci">std::vector&lt; int &gt; get_convex_hull_point_indices() const</div><div class="ttdoc">Computes the indices of the points that form the convex hull of a set of points.</div><div class="ttdef"><b>Definition</b> cloud.cpp:172</div></div>
-<div class="ttc" id="aclasshmap_1_1Cloud_html_a36e47d4857108c56193755e32374184d"><div class="ttname"><a href="classhmap_1_1Cloud.html#a36e47d4857108c56193755e32374184d">hmap::Cloud::to_array</a></div><div class="ttdeci">void to_array(Array &amp;array, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f}) const</div><div class="ttdoc">Project the cloud points onto an array.</div><div class="ttdef"><b>Definition</b> cloud.cpp:534</div></div>
+<div class="ttc" id="aclasshmap_1_1Cloud_html_a36e47d4857108c56193755e32374184d"><div class="ttname"><a href="classhmap_1_1Cloud.html#a36e47d4857108c56193755e32374184d">hmap::Cloud::to_array</a></div><div class="ttdeci">void to_array(Array &amp;array, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f}) const</div><div class="ttdoc">Project the cloud points onto an array.</div><div class="ttdef"><b>Definition</b> cloud.cpp:533</div></div>
 <div class="ttc" id="aclasshmap_1_1Cloud_html_aad75fb7bcfa7a2c3f139d2e3d3d6cc54"><div class="ttname"><a href="classhmap_1_1Cloud.html#aad75fb7bcfa7a2c3f139d2e3d3d6cc54">hmap::Cloud::points</a></div><div class="ttdeci">std::vector&lt; Point &gt; points</div><div class="ttdoc">Points of the cloud.</div><div class="ttdef"><b>Definition</b> cloud.hpp:57</div></div>
-<div class="ttc" id="aclasshmap_1_1Cloud_html_aefea3d749a554df8a23ec38af5acb415"><div class="ttname"><a href="classhmap_1_1Cloud.html#aefea3d749a554df8a23ec38af5acb415">hmap::Cloud::print</a></div><div class="ttdeci">void print()</div><div class="ttdoc">Print information about the cloud's points.</div><div class="ttdef"><b>Definition</b> cloud.cpp:308</div></div>
-<div class="ttc" id="aclasshmap_1_1Path_html"><div class="ttname"><a href="classhmap_1_1Path.html">hmap::Path</a></div><div class="ttdoc">Represents an ordered set of points in 2D, forming a polyline (open or closed).</div><div class="ttdef"><b>Definition</b> path.hpp:50</div></div>
-<div class="ttc" id="aclasshmap_1_1Path_html_a2ea3482a302d8ef30084fd39e57715de"><div class="ttname"><a href="classhmap_1_1Path.html#a2ea3482a302d8ef30084fd39e57715de">hmap::Path::closed</a></div><div class="ttdeci">bool closed</div><div class="ttdoc">Defines whether the path is closed or open. If true, the path is closed, forming a loop....</div><div class="ttdef"><b>Definition</b> path.hpp:62</div></div>
-<div class="ttc" id="aclasshmap_1_1Path_html_a4d1e1e63fea24bf8f23bc3343f8b746e"><div class="ttname"><a href="classhmap_1_1Path.html#a4d1e1e63fea24bf8f23bc3343f8b746e">hmap::Path::to_array</a></div><div class="ttdeci">void to_array(Array &amp;array, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f}, bool filled=false) const</div><div class="ttdoc">Project path points to an array.</div><div class="ttdef"><b>Definition</b> path.cpp:886</div></div>
+<div class="ttc" id="aclasshmap_1_1Cloud_html_aefea3d749a554df8a23ec38af5acb415"><div class="ttname"><a href="classhmap_1_1Cloud.html#aefea3d749a554df8a23ec38af5acb415">hmap::Cloud::print</a></div><div class="ttdeci">void print()</div><div class="ttdoc">Print information about the cloud's points.</div><div class="ttdef"><b>Definition</b> cloud.cpp:303</div></div>
+<div class="ttc" id="aclasshmap_1_1Path_html"><div class="ttname"><a href="classhmap_1_1Path.html">hmap::Path</a></div><div class="ttdoc">Represents an ordered set of points in 2D, forming a polyline (open or closed).</div><div class="ttdef"><b>Definition</b> path.hpp:51</div></div>
+<div class="ttc" id="aclasshmap_1_1Path_html_a4d1e1e63fea24bf8f23bc3343f8b746e"><div class="ttname"><a href="classhmap_1_1Path.html#a4d1e1e63fea24bf8f23bc3343f8b746e">hmap::Path::to_array</a></div><div class="ttdeci">void to_array(Array &amp;array, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f}, bool filled=false) const</div><div class="ttdoc">Project path points to an array.</div><div class="ttdef"><b>Definition</b> path.cpp:480</div></div>
+<div class="ttc" id="aclasshmap_1_1Path_html_aeb2890d2ffbbf4291baf255c621095de"><div class="ttname"><a href="classhmap_1_1Path.html#aeb2890d2ffbbf4291baf255c621095de">hmap::Path::set_closed</a></div><div class="ttdeci">void set_closed(bool new_value)</div><div class="ttdoc">Set whether the path is closed.</div><div class="ttdef"><b>Definition</b> path.cpp:459</div></div>
 <div class="ttc" id="ahighmap_8hpp_html"><div class="ttname"><a href="highmap_8hpp.html">highmap.hpp</a></div></div>
 <div class="ttc" id="anamespacehmap_html_ac2452e568959bc21c9b7b09202e5977a"><div class="ttname"><a href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a></div><div class="ttdeci">void export_banner_png(const std::string &amp;fname, const std::vector&lt; Array &gt; &amp;arrays, int cmap, bool hillshading=false, bool normalize_arrays=false)</div><div class="ttdoc">Exports a set of arrays as a banner PNG image file.</div><div class="ttdef"><b>Definition</b> export_banner_png.cpp:11</div></div>
 <div class="ttc" id="anamespacehmap_html_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143"><div class="ttname"><a href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::INFERNO</a></div><div class="ttdeci">@ INFERNO</div><div class="ttdef"><b>Definition</b> colormaps.hpp:87</div></div>
@@ -732,27 +732,6 @@ Public Attributes</h2></td></tr>
 <img src="ex_cloud_get_convex_hull.png" alt=""/>
 </div>
  
-</div>
-</div>
-<a id="a4d6feb0c127bcea6566b600444cf103c" name="a4d6feb0c127bcea6566b600444cf103c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4d6feb0c127bcea6566b600444cf103c">&#9670;&#160;</a></span>get_npoints()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">size_t hmap::Cloud::get_npoints </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get the number of points in the cloud. </p>
-<p>This method returns the total number of points currently stored in the cloud.</p>
-<dl class="section return"><dt>Returns</dt><dd>size_t The number of points in the cloud. </dd></dl>
-
 </div>
 </div>
 <a id="a53cb47401f1e9d027a638f3680c3004d" name="a53cb47401f1e9d027a638f3680c3004d"></a>
@@ -1355,6 +1334,27 @@ P(\text{keep } p) = \rho(x,y) \in [0,1]
 
 </div>
 </div>
+<a id="adc675e8b2769a94b4c23bf7e69348f84" name="adc675e8b2769a94b4c23bf7e69348f84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc675e8b2769a94b4c23bf7e69348f84">&#9670;&#160;</a></span>size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t hmap::Cloud::size </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the number of points in the cloud. </p>
+<p>This method returns the total number of points currently stored in the cloud.</p>
+<dl class="section return"><dt>Returns</dt><dd>size_t The number of points in the cloud. </dd></dl>
+
+</div>
+</div>
 <a id="a7b26dc92e0d2217b8438f1ce9376ea0d" name="a7b26dc92e0d2217b8438f1ce9376ea0d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7b26dc92e0d2217b8438f1ce9376ea0d">&#9670;&#160;</a></span>snap_points_to_bounding_box()</h2>
 
@@ -1563,7 +1563,7 @@ P(\text{keep } p) = \rho(x,y) \in [0,1]
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>
 <div class="ttc" id="aarray_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition</b> array.hpp:14</div></div>
-<div class="ttc" id="aclasshmap_1_1Cloud_html_a82725745baf9ae1982c352dcb3656424"><div class="ttname"><a href="classhmap_1_1Cloud.html#a82725745baf9ae1982c352dcb3656424">hmap::Cloud::to_array_sdf</a></div><div class="ttdeci">Array to_array_sdf(glm::ivec2 shape, glm::vec4 bbox, Array *p_noise_x=nullptr, Array *p_noise_y=nullptr, glm::vec4 bbox_array={0.f, 1.f, 0.f, 1.f}) const</div><div class="ttdoc">Generate an array filled with the signed distance function (SDF) to the cloud points.</div><div class="ttdef"><b>Definition</b> cloud.cpp:581</div></div>
+<div class="ttc" id="aclasshmap_1_1Cloud_html_a82725745baf9ae1982c352dcb3656424"><div class="ttname"><a href="classhmap_1_1Cloud.html#a82725745baf9ae1982c352dcb3656424">hmap::Cloud::to_array_sdf</a></div><div class="ttdeci">Array to_array_sdf(glm::ivec2 shape, glm::vec4 bbox, Array *p_noise_x=nullptr, Array *p_noise_y=nullptr, glm::vec4 bbox_array={0.f, 1.f, 0.f, 1.f}) const</div><div class="ttdoc">Generate an array filled with the signed distance function (SDF) to the cloud points.</div><div class="ttdef"><b>Definition</b> cloud.cpp:580</div></div>
 <div class="ttc" id="anamespacehmap_html_a63a7fc5faca6c5018e98b8af700f4b80"><div class="ttname"><a href="namespacehmap.html#a63a7fc5faca6c5018e98b8af700f4b80">hmap::noise</a></div><div class="ttdeci">Array noise(NoiseType noise_type, glm::ivec2 shape, glm::vec2 kw, uint seed, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Return an array filled with coherence noise.</div><div class="ttdef"><b>Definition</b> noise.cpp:16</div></div>
 <div class="ttc" id="anamespacehmap_html_ab80da2376c6212eb9cb2899c0a5114ad"><div class="ttname"><a href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a></div><div class="ttdeci">std::vector&lt; float &gt; remap(const std::vector&lt; float &gt; &amp;data, float new_min=0.f, float new_max=1.f)</div><div class="ttdoc">Remaps values of a vector to a given range [new_min, new_max].</div><div class="ttdef"><b>Definition</b> vector_utils.cpp:166</div></div>
 <div class="ttc" id="anamespacehmap_html_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581"><div class="ttname"><a href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::PERLIN</a></div><div class="ttdeci">@ PERLIN</div><div class="ttdoc">Perlin.</div><div class="ttdef"><b>Definition</b> functions.hpp:64</div></div>
@@ -1689,7 +1689,7 @@ P(\text{keep } p) = \rho(x,y) \in [0,1]
 <div class="line">                          {z0, z1, z2, z3},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclasshmap_1_1Cloud_html_acd6b504637e3c0791049b1f426ad4553"><div class="ttname"><a href="classhmap_1_1Cloud.html#acd6b504637e3c0791049b1f426ad4553">hmap::Cloud::to_array_interp</a></div><div class="ttdeci">void to_array_interp(Array &amp;array, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f}, InterpolationMethod2D interpolation_method=InterpolationMethod2D::ITP2D_DELAUNAY, Array *p_noise_x=nullptr, Array *p_noise_y=nullptr, glm::vec4 bbox_array={0.f, 1.f, 0.f, 1.f}) const</div><div class="ttdoc">Interpolate the values of an array using the cloud points.</div><div class="ttdef"><b>Definition</b> cloud.cpp:552</div></div>
+<div class="ttc" id="aclasshmap_1_1Cloud_html_acd6b504637e3c0791049b1f426ad4553"><div class="ttname"><a href="classhmap_1_1Cloud.html#acd6b504637e3c0791049b1f426ad4553">hmap::Cloud::to_array_interp</a></div><div class="ttdeci">void to_array_interp(Array &amp;array, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f}, InterpolationMethod2D interpolation_method=InterpolationMethod2D::ITP2D_DELAUNAY, Array *p_noise_x=nullptr, Array *p_noise_y=nullptr, glm::vec4 bbox_array={0.f, 1.f, 0.f, 1.f}) const</div><div class="ttdoc">Interpolate the values of an array using the cloud points.</div><div class="ttdef"><b>Definition</b> cloud.cpp:551</div></div>
 <div class="ttc" id="anamespacehmap_html_a5bfab5d68e822294ff90fde21b85f581a5fc536ff63a05f254ff7583cccac8a12"><div class="ttname"><a href="namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581a5fc536ff63a05f254ff7583cccac8a12">hmap::ITP2D_DELAUNAY</a></div><div class="ttdeci">@ ITP2D_DELAUNAY</div><div class="ttdoc">Delaunay triangulation method for 2D interpolation.</div><div class="ttdef"><b>Definition</b> interpolate2d.hpp:46</div></div>
 <div class="ttc" id="anamespacehmap_html_a5bfab5d68e822294ff90fde21b85f581af445f527425b2d746556541adf5d3d29"><div class="ttname"><a href="namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581af445f527425b2d746556541adf5d3d29">hmap::ITP2D_NEAREST</a></div><div class="ttdeci">@ ITP2D_NEAREST</div><div class="ttdoc">Nearest point method for 2D interpolation.</div><div class="ttdef"><b>Definition</b> interpolate2d.hpp:47</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">

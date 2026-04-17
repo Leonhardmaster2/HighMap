@@ -1,5 +1,6 @@
 var shortest__path_8hpp =
 [
+    [ "dijkstra", "shortest__path_8hpp.html#a5c8cb3751b2b9a83d23b15e3369f8449", null ],
     [ "find_cut_path_dijkstra", "shortest__path_8hpp.html#a21a3078ba07fad81a888ca00cd6c3b33", null ],
     [ "find_cut_path_midpoint", "shortest__path_8hpp.html#a31b9aa8b20d3bcca50f16222f10b0862", null ],
     [ "find_path_dijkstra", "shortest__path_8hpp.html#af5e2b95dd35c64ba4ff24ca2697d87f9", null ],

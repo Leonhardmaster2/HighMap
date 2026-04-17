@@ -15,54 +15,62 @@
 \DoxyCodeLine{00019\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacehmap}{hmap}}}
 \DoxyCodeLine{00020\ \{}
 \DoxyCodeLine{00021\ }
-\DoxyCodeLine{00046\ Path\ \mbox{\hyperlink{namespacehmap_a21a3078ba07fad81a888ca00cd6c3b33}{find\_cut\_path\_dijkstra}}(\textcolor{keyword}{const}\ Array\ \ \ \&z,}
-\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a1ba9d4ce7afe3309f8ae8e617f7154ee}{DomainBoundary}}\ start,}
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a1ba9d4ce7afe3309f8ae8e617f7154ee}{DomainBoundary}}\ end,}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ dijk\_elevation\_ratio\ =\ 0.9f,}
-\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ dijk\_distance\_exponent\ =\ 2.f,}
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ dijk\_upward\_penalization\ =\ 100.f,}
-\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ \ \ seed\ =\ 0,}
-\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ favor\_boundary\_center\ =\ \textcolor{keyword}{true},}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ favor\_lower\_elevation\ =\ \textcolor{keyword}{true},}
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ favor\_sinks\ =\ \textcolor{keyword}{true});}
-\DoxyCodeLine{00056\ }
-\DoxyCodeLine{00079\ Path\ \mbox{\hyperlink{namespacehmap_a31b9aa8b20d3bcca50f16222f10b0862}{find\_cut\_path\_midpoint}}(\textcolor{keyword}{const}\ Array\ \ \ \&z,}
-\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a1ba9d4ce7afe3309f8ae8e617f7154ee}{DomainBoundary}}\ start,}
-\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a1ba9d4ce7afe3309f8ae8e617f7154ee}{DomainBoundary}}\ end,}
-\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ \ \ seed,}
-\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ offset\_ratio\ =\ 0.2f,}
-\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ steps\ =\ 16,}
-\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ favor\_boundary\_center\ =\ \textcolor{keyword}{true},}
-\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ favor\_lower\_elevation\ =\ \textcolor{keyword}{true},}
-\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ favor\_sinks\ =\ \textcolor{keyword}{true});}
-\DoxyCodeLine{00088\ }
-\DoxyCodeLine{00130\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_af5e2b95dd35c64ba4ff24ca2697d87f9}{find\_path\_dijkstra}}(\textcolor{keyword}{const}\ Array\ \ \ \ \ \ \&z,}
-\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm::ivec2\ \ \ \ \ \ \ \ ij\_start,}
-\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm::ivec2\ \ \ \ \ \ \ \ ij\_end,}
-\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<int>\ \&i\_path,}
-\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<int>\ \&j\_path,}
-\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ elevation\_ratio\ =\ 0.1f,}
-\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ distance\_exponent\ =\ 2.f,}
-\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ upward\_penalization\ =\ 1.f,}
-\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ \ \ \ *p\_mask\_nogo\ =\ \textcolor{keyword}{nullptr});}
-\DoxyCodeLine{00139\ }
-\DoxyCodeLine{00140\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_af5e2b95dd35c64ba4ff24ca2697d87f9}{find\_path\_dijkstra}}(\textcolor{keyword}{const}\ Array\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&z,}
-\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm::ivec2\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ij\_start,}
-\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<glm::ivec2>\ \ \ \ \ \ \ \ ij\_end\_list,}
-\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::vector<int>>\ \&i\_path\_list,}
-\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::vector<int>>\ \&j\_path\_list,}
-\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ elevation\_ratio\ =\ 0.1f,}
-\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ distance\_exponent\ =\ 2.f,}
-\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ upward\_penalization\ =\ 1.f,}
-\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_mask\_nogo\ =\ \textcolor{keyword}{nullptr});}
-\DoxyCodeLine{00149\ }
-\DoxyCodeLine{00172\ std::vector<glm::ivec2>\ \mbox{\hyperlink{namespacehmap_acfb2652ac666e36a3a47c1673d4e486b}{find\_path\_midpoint}}(\textcolor{keyword}{const}\ Array\ \&z,}
-\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm::ivec2\ \ \ ij\_start,}
-\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm::ivec2\ \ \ ij\_end,}
-\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ offset\_ratio\ =\ 0.5f,}
-\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ max\_it\ =\ 0,}
-\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ steps\ =\ 16);}
-\DoxyCodeLine{00178\ }
-\DoxyCodeLine{00179\ \}\ \textcolor{comment}{//\ namespace\ hmap}}
+\DoxyCodeLine{00054\ Path\ \mbox{\hyperlink{namespacehmap_a5c8cb3751b2b9a83d23b15e3369f8449}{dijkstra}}(\textcolor{keyword}{const}\ Path\ \ \&path,}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&array,}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec4\ \ \ \ bbox,}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ elevation\_ratio\ =\ 0.f,}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ distance\_exponent\ =\ 0.5f,}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ upward\_penalization\ =\ 1.f,}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_mask\_nogo\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00086\ Path\ \mbox{\hyperlink{namespacehmap_a21a3078ba07fad81a888ca00cd6c3b33}{find\_cut\_path\_dijkstra}}(\textcolor{keyword}{const}\ Array\ \ \ \&z,}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a1ba9d4ce7afe3309f8ae8e617f7154ee}{DomainBoundary}}\ start,}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a1ba9d4ce7afe3309f8ae8e617f7154ee}{DomainBoundary}}\ end,}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ dijk\_elevation\_ratio\ =\ 0.9f,}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ dijk\_distance\_exponent\ =\ 2.f,}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ dijk\_upward\_penalization\ =\ 100.f,}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ \ \ seed\ =\ 0,}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ favor\_boundary\_center\ =\ \textcolor{keyword}{true},}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ favor\_lower\_elevation\ =\ \textcolor{keyword}{true},}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ favor\_sinks\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00119\ Path\ \mbox{\hyperlink{namespacehmap_a31b9aa8b20d3bcca50f16222f10b0862}{find\_cut\_path\_midpoint}}(\textcolor{keyword}{const}\ Array\ \ \ \&z,}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a1ba9d4ce7afe3309f8ae8e617f7154ee}{DomainBoundary}}\ start,}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a1ba9d4ce7afe3309f8ae8e617f7154ee}{DomainBoundary}}\ end,}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ \ \ seed,}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ offset\_ratio\ =\ 0.2f,}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ steps\ =\ 16,}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ favor\_boundary\_center\ =\ \textcolor{keyword}{true},}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ favor\_lower\_elevation\ =\ \textcolor{keyword}{true},}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ favor\_sinks\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00170\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_af5e2b95dd35c64ba4ff24ca2697d87f9}{find\_path\_dijkstra}}(\textcolor{keyword}{const}\ Array\ \ \ \ \ \ \&z,}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm::ivec2\ \ \ \ \ \ \ \ ij\_start,}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm::ivec2\ \ \ \ \ \ \ \ ij\_end,}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<int>\ \&i\_path,}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<int>\ \&j\_path,}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ elevation\_ratio\ =\ 0.1f,}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ distance\_exponent\ =\ 2.f,}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ upward\_penalization\ =\ 1.f,}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ \ \ \ *p\_mask\_nogo\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00179\ }
+\DoxyCodeLine{00180\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_af5e2b95dd35c64ba4ff24ca2697d87f9}{find\_path\_dijkstra}}(\textcolor{keyword}{const}\ Array\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&z,}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm::ivec2\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ij\_start,}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<glm::ivec2>\ \ \ \ \ \ \ \ ij\_end\_list,}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::vector<int>>\ \&i\_path\_list,}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::vector<int>>\ \&j\_path\_list,}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ elevation\_ratio\ =\ 0.1f,}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ distance\_exponent\ =\ 2.f,}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ upward\_penalization\ =\ 1.f,}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_mask\_nogo\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00189\ }
+\DoxyCodeLine{00212\ std::vector<glm::ivec2>\ \mbox{\hyperlink{namespacehmap_acfb2652ac666e36a3a47c1673d4e486b}{find\_path\_midpoint}}(\textcolor{keyword}{const}\ Array\ \&z,}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm::ivec2\ \ \ ij\_start,}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm::ivec2\ \ \ ij\_end,}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ offset\_ratio\ =\ 0.5f,}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ max\_it\ =\ 0,}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ steps\ =\ 16);}
+\DoxyCodeLine{00218\ }
+\DoxyCodeLine{00219\ \}\ \textcolor{comment}{//\ namespace\ hmap}}
 
 \end{DoxyCode}

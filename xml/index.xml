@@ -150,7 +150,6 @@
     <member refid="classhmap_1_1Cloud_1ae5ba6ffbe371603545c312e51601615f" kind="function"><name>get_bbox</name></member>
     <member refid="classhmap_1_1Cloud_1a2f4679015ee69b12c50f60a607388965" kind="function"><name>get_center</name></member>
     <member refid="classhmap_1_1Cloud_1a10f22c402c1e8e4043c01327bca0f9e8" kind="function"><name>get_convex_hull_point_indices</name></member>
-    <member refid="classhmap_1_1Cloud_1a4d6feb0c127bcea6566b600444cf103c" kind="function"><name>get_npoints</name></member>
     <member refid="classhmap_1_1Cloud_1a53cb47401f1e9d027a638f3680c3004d" kind="function"><name>get_values</name></member>
     <member refid="classhmap_1_1Cloud_1abe70a230c2bfecad67112321b3040286" kind="function"><name>get_values_max</name></member>
     <member refid="classhmap_1_1Cloud_1a9194835457c70bfa13d0dfa66d964f01" kind="function"><name>get_values_min</name></member>
@@ -171,6 +170,7 @@
     <member refid="classhmap_1_1Cloud_1a4349b98daebf829b1dd2d54d02e61231" kind="function"><name>set_values_from_border_distance</name></member>
     <member refid="classhmap_1_1Cloud_1adf0b7a7c0c7d414e5d01e19be624aa3c" kind="function"><name>set_values_from_chull_distance</name></member>
     <member refid="classhmap_1_1Cloud_1ad8b2d626436107c4b0e2c9877747375f" kind="function"><name>set_values_from_min_distance</name></member>
+    <member refid="classhmap_1_1Cloud_1adc675e8b2769a94b4c23bf7e69348f84" kind="function"><name>size</name></member>
     <member refid="classhmap_1_1Cloud_1a7b26dc92e0d2217b8438f1ce9376ea0d" kind="function"><name>snap_points_to_bounding_box</name></member>
     <member refid="classhmap_1_1Cloud_1af8d4e873ff4ed29eb7f140db227e03a2" kind="function"><name>shuffle</name></member>
     <member refid="classhmap_1_1Cloud_1a36e47d4857108c56193755e32374184d" kind="function"><name>to_array</name></member>
@@ -580,24 +580,16 @@
     <member refid="classhmap_1_1Path_1a52c62bad1cdef88e8793d9c022357787" kind="enum"><name>EdgeDivisionMode</name></member>
     <member refid="classhmap_1_1Path_1a52c62bad1cdef88e8793d9c022357787a5192c60669f946857f5bed6f43c212ee" kind="enumvalue"><name>EDM_PER_EDGE</name></member>
     <member refid="classhmap_1_1Path_1a52c62bad1cdef88e8793d9c022357787a5809dc79c1bc0e85924a160c89a46338" kind="enumvalue"><name>EDM_FULL_ARC</name></member>
-    <member refid="classhmap_1_1Path_1a2ea3482a302d8ef30084fd39e57715de" kind="variable"><name>closed</name></member>
-    <member refid="classhmap_1_1Path_1a9695b8d68fc506c403f47dde1b74620c" kind="function"><name>Path</name></member>
-    <member refid="classhmap_1_1Path_1afd490f9a56c54c770851302e11512a81" kind="function"><name>Path</name></member>
-    <member refid="classhmap_1_1Path_1a38e4087d0fb04225dbf2646547efe9bf" kind="function"><name>Path</name></member>
-    <member refid="classhmap_1_1Path_1af1810c14bef63e7b9caa3b7c0578987e" kind="function"><name>Path</name></member>
-    <member refid="classhmap_1_1Path_1a08f8cf82bbd93789633bb50d193f86a0" kind="function"><name>Path</name></member>
-    <member refid="classhmap_1_1Path_1a8f2b65b2b958767c5b8930c3a0fa8b16" kind="function"><name>Path</name></member>
-    <member refid="classhmap_1_1Path_1a36ec9d625edd2710999c263fa790af19" kind="function"><name>bezier</name></member>
-    <member refid="classhmap_1_1Path_1a63ce9b401fbdaa45541c317045c0cec0" kind="function"><name>bezier_round</name></member>
-    <member refid="classhmap_1_1Path_1a4ca03435fee5e9111edd93e2393d1533" kind="function"><name>bspline</name></member>
-    <member refid="classhmap_1_1Path_1a0b0f06e06a62374a23fffd59cf52c7c2" kind="function"><name>catmullrom</name></member>
-    <member refid="classhmap_1_1Path_1a3a560f332285e965a8f9fa8cd67c1446" kind="function"><name>cubic_interp</name></member>
-    <member refid="classhmap_1_1Path_1ad85aa61692aadbfa1f3f08096cb0594c" kind="function"><name>clear</name></member>
-    <member refid="classhmap_1_1Path_1a53d689856724f951147b5698c9b76563" kind="function"><name>decasteljau</name></member>
-    <member refid="classhmap_1_1Path_1ad2be7924d78ea51a68158bf68b12d6ed" kind="function"><name>decimate_vw</name></member>
-    <member refid="classhmap_1_1Path_1a5bb9bb29af2ea6411b6837ef4c2ee6c0" kind="function"><name>dijkstra</name></member>
-    <member refid="classhmap_1_1Path_1a8650db137a1b4ecccf05cfd0fd7d320b" kind="function"><name>divide</name></member>
-    <member refid="classhmap_1_1Path_1ae338a7d28b40b0c7d0f9537ee770fcc4" kind="function"><name>fractalize</name></member>
+    <member refid="classhmap_1_1Path_1aa6294865286c76a1b661ab7a753c15ac" kind="enum"><name>PathClosure</name></member>
+    <member refid="classhmap_1_1Path_1aa6294865286c76a1b661ab7a753c15acae686caf8581b5a02b264316a6b58f354" kind="enumvalue"><name>PT_OPEN</name></member>
+    <member refid="classhmap_1_1Path_1aa6294865286c76a1b661ab7a753c15aca0ac8be8dcce8ab1eeecef41d20bb7559" kind="enumvalue"><name>PT_CLOSE</name></member>
+    <member refid="classhmap_1_1Path_1ac091d08d1a01131f3c4205d3621a4140" kind="variable"><name>path_closure</name></member>
+    <member refid="classhmap_1_1Path_1a2e6b68e1b725991715f052d04f902dac" kind="function"><name>Path</name></member>
+    <member refid="classhmap_1_1Path_1a329ebb2e41b9036d67e9e1afe3ea2404" kind="function"><name>Path</name></member>
+    <member refid="classhmap_1_1Path_1af9fcf16f7d3be2128593fe3f7a26b4f3" kind="function"><name>Path</name></member>
+    <member refid="classhmap_1_1Path_1a04657fd35a27be8e444710deee11a771" kind="function"><name>Path</name></member>
+    <member refid="classhmap_1_1Path_1a43c52e731eeee1a887c19abb6bcd4782" kind="function"><name>Path</name></member>
+    <member refid="classhmap_1_1Path_1a0121bc7300b5a436eea60d3915103458" kind="function"><name>Path</name></member>
     <member refid="classhmap_1_1Path_1a0ef4a309bc181ea182c0b7a75c8fdae7" kind="function"><name>get_arc_length</name></member>
     <member refid="classhmap_1_1Path_1a9ea0ffcf40358b7e33ff8cffc33f918a" kind="function"><name>get_cumulative_distance</name></member>
     <member refid="classhmap_1_1Path_1ab083b81103f72c7c9b9fa81451599357" kind="function"><name>get_curvature</name></member>
@@ -607,24 +599,28 @@
     <member refid="classhmap_1_1Path_1ac01edb126b845a027883d9abd88e826b" kind="function"><name>get_x</name></member>
     <member refid="classhmap_1_1Path_1a18048b5af9a33893fa946ce76eb75781" kind="function"><name>get_xy</name></member>
     <member refid="classhmap_1_1Path_1ab9ff9f7a0ea9c090c34810536458da8d" kind="function"><name>get_y</name></member>
+    <member refid="classhmap_1_1Path_1a39ef1335efd434f12c92527f12933d9e" kind="function"><name>is_closed</name></member>
+    <member refid="classhmap_1_1Path_1aeb2890d2ffbbf4291baf255c621095de" kind="function"><name>set_closed</name></member>
+    <member refid="classhmap_1_1Path_1ad85aa61692aadbfa1f3f08096cb0594c" kind="function"><name>clear</name></member>
     <member refid="classhmap_1_1Path_1a4934980f265ae283c847fc091fe45c75" kind="function"><name>enforce_monotonic_values</name></member>
-    <member refid="classhmap_1_1Path_1a499c796b9fcd9dede4c7a722dbd40ed3" kind="function"><name>meanderize</name></member>
     <member refid="classhmap_1_1Path_1ad68abaa80879402c3758e24626acfb53" kind="function"><name>reorder_nns</name></member>
-    <member refid="classhmap_1_1Path_1ac37f766642308ad4c909e5b8d59d361e" kind="function"><name>resample</name></member>
-    <member refid="classhmap_1_1Path_1ad3be8675473f2e28e10d5197d0c16923" kind="function"><name>resample_uniform</name></member>
     <member refid="classhmap_1_1Path_1ab6fd0674d8d1f9a2d0ba224ec4c4cd46" kind="function"><name>reverse</name></member>
+    <member refid="classhmap_1_1Path_1a8650db137a1b4ecccf05cfd0fd7d320b" kind="function"><name>divide</name></member>
+    <member refid="classhmap_1_1Path_1a649a385315a3230c058d032b2171424a" kind="function"><name>resample_by_spacing</name></member>
+    <member refid="classhmap_1_1Path_1afe00587a87fc52524487b197818404f0" kind="function"><name>resample_interp</name></member>
+    <member refid="classhmap_1_1Path_1a84e0832a3c3a4c9e1f9bcefdc6d32cd0" kind="function"><name>resample_uniform</name></member>
+    <member refid="classhmap_1_1Path_1a9816b231362dd1ca5208a839626f1f68" kind="function"><name>subsample</name></member>
+    <member refid="classhmap_1_1Path_1a4d1e1e63fea24bf8f23bc3343f8b746e" kind="function"><name>to_array</name></member>
+    <member refid="classhmap_1_1Path_1a1871d04cad63f27429f42ea27f7e7af4" kind="function"><name>to_array</name></member>
+    <member refid="classhmap_1_1Path_1a2292e74883cb6da795ce35a46ef8e735" kind="function"><name>to_array_mask</name></member>
+    <member refid="classhmap_1_1Path_1a7e2720d4f455f84d99ec7bef1b597729" kind="function"><name>to_array_sdf</name></member>
+    <member refid="classhmap_1_1Path_1aaf9111fdcae15cc51cfcd5faffb38f23" kind="function"><name>to_png</name></member>
     <member refid="classhmap_1_1Path_1af8f16e692a2eb9239b3c1eb42949d34b" kind="function"><name>sdf_angle_closed</name></member>
     <member refid="classhmap_1_1Path_1a6031109a9de5f7ea107248a01e5c5431" kind="function"><name>sdf_angle_open</name></member>
     <member refid="classhmap_1_1Path_1aca3af97c0e4df80290c4b28640fb6a70" kind="function"><name>sdf_closed</name></member>
     <member refid="classhmap_1_1Path_1af2ef2613381447be1563fd8cb4675473" kind="function"><name>sdf_elevation_closed</name></member>
     <member refid="classhmap_1_1Path_1a72f46635f6a7fadabae7b89b91c41e81" kind="function"><name>sdf_elevation_open</name></member>
     <member refid="classhmap_1_1Path_1ad4afe09089c84b5452ff0801b7161baf" kind="function"><name>sdf_open</name></member>
-    <member refid="classhmap_1_1Path_1abdb4fffc12c3cfee268f8afad9ec3893" kind="function"><name>smooth</name></member>
-    <member refid="classhmap_1_1Path_1a9816b231362dd1ca5208a839626f1f68" kind="function"><name>subsample</name></member>
-    <member refid="classhmap_1_1Path_1a4d1e1e63fea24bf8f23bc3343f8b746e" kind="function"><name>to_array</name></member>
-    <member refid="classhmap_1_1Path_1a2292e74883cb6da795ce35a46ef8e735" kind="function"><name>to_array_mask</name></member>
-    <member refid="classhmap_1_1Path_1a7e2720d4f455f84d99ec7bef1b597729" kind="function"><name>to_array_sdf</name></member>
-    <member refid="classhmap_1_1Path_1aaf9111fdcae15cc51cfcd5faffb38f23" kind="function"><name>to_png</name></member>
   </compound>
   <compound refid="classhmap_1_1PerlinBillowFunction" kind="class"><name>hmap::PerlinBillowFunction</name>
     <member refid="classhmap_1_1PerlinBillowFunction_1a23fba66ba054df8a839fc5cd71848b51" kind="variable"><name>noise</name></member>
@@ -1280,6 +1276,7 @@
     <member refid="namespacehmap_1a2828152429273d081863dfafb293b0b6" kind="variable"><name>for_each_mode_as_string</name></member>
     <member refid="namespacehmap_1af3cb67926262ec806d4d64c2755b1ddd" kind="function"><name>to_csv</name></member>
     <member refid="namespacehmap_1adc5300323fa35e021fd83b8b048ef3b1" kind="function"><name>adjust</name></member>
+    <member refid="namespacehmap_1a65974181387dcb86ae7660a4708b4c09" kind="function"><name>adjust</name></member>
     <member refid="namespacehmap_1a518f05118e1b9704160a7c3276a2f483" kind="function"><name>cv_mat_to_array</name></member>
     <member refid="namespacehmap_1a05ee0ea53f1a06ac43741f11e25ec2cc" kind="function"><name>for_each_cell</name></member>
     <member refid="namespacehmap_1a8a43091b3356d69271fa6d185f5bdcbe" kind="function"><name>for_each_cell</name></member>
@@ -1533,7 +1530,17 @@
     <member refid="namespacehmap_1a2b567f4e49f112b51a29c0915b039bc1" kind="function"><name>random_cloud_jittered</name></member>
     <member refid="namespacehmap_1ab085d07bc0e897729ca16c0dd2035fe1" kind="function"><name>convert_length_to_pixel</name></member>
     <member refid="namespacehmap_1abae56b1864390cd2f2f03acc442b423a" kind="function"><name>grid_xy_vector</name></member>
+    <member refid="namespacehmap_1ac39b5e32d90e0351f4124ea61334461d" kind="function"><name>bezier</name></member>
+    <member refid="namespacehmap_1a3beb0c80491a827b346e9e69cadf4228" kind="function"><name>bezier_round</name></member>
+    <member refid="namespacehmap_1a281c9db00eef9735e8eea7bbf50f3e34" kind="function"><name>bspline</name></member>
+    <member refid="namespacehmap_1a9b14eb25556ef745f1e606bbe8d41dcb" kind="function"><name>catmullrom</name></member>
+    <member refid="namespacehmap_1af9b55527f8d0f1c01d110b3144ee7d91" kind="function"><name>decasteljau</name></member>
+    <member refid="namespacehmap_1a862fef5e0387bea9358648fc7aa5680b" kind="function"><name>decimate_vw</name></member>
+    <member refid="namespacehmap_1a5d1634064e937326c7d91f509c3d67ab" kind="function"><name>fractalize</name></member>
+    <member refid="namespacehmap_1af00a9f03eed98b1993fd458beb120379" kind="function"><name>meanderize</name></member>
     <member refid="namespacehmap_1a650c6eaf8bd10356a77c7c1f9ef9af3c" kind="function"><name>remove_geometric_loops</name></member>
+    <member refid="namespacehmap_1ad81052648d6008d2b7b4a5a36a2d7830" kind="function"><name>smooth</name></member>
+    <member refid="namespacehmap_1a9cf9b5799effe7d05b0e3c8478eaca39" kind="function"><name>assert_start_end_points</name></member>
     <member refid="namespacehmap_1aac71bb6c14edc17967957f7918acdbdd" kind="function"><name>angle</name></member>
     <member refid="namespacehmap_1a1f02679c93973b91046f26960bf266d4" kind="function"><name>angle</name></member>
     <member refid="namespacehmap_1a62b55fdc2fbc76c4938a6b49a10cfd65" kind="function"><name>classify_point</name></member>
@@ -1887,6 +1894,7 @@
     <member refid="namespacehmap_1a12f76d80fee40f96dc5b6540bb83be80" kind="function"><name>shadow_grid</name></member>
     <member refid="namespacehmap_1ac28f43b4f0b1b481dc8eb528f1be0f3d" kind="function"><name>shadow_heightmap</name></member>
     <member refid="namespacehmap_1a03570be180e333d82101d31482e78829" kind="function"><name>topographic_shading</name></member>
+    <member refid="namespacehmap_1a5c8cb3751b2b9a83d23b15e3369f8449" kind="function"><name>dijkstra</name></member>
     <member refid="namespacehmap_1a21a3078ba07fad81a888ca00cd6c3b33" kind="function"><name>find_cut_path_dijkstra</name></member>
     <member refid="namespacehmap_1a31b9aa8b20d3bcca50f16222f10b0862" kind="function"><name>find_cut_path_midpoint</name></member>
     <member refid="namespacehmap_1af5e2b95dd35c64ba4ff24ca2697d87f9" kind="function"><name>find_path_dijkstra</name></member>
@@ -2513,6 +2521,10 @@
   </compound>
   <compound refid="path_8cpp" kind="file"><name>path.cpp</name>
   </compound>
+  <compound refid="path__functions_8cpp" kind="file"><name>path_functions.cpp</name>
+  </compound>
+  <compound refid="path__verification_8cpp" kind="file"><name>path_verification.cpp</name>
+  </compound>
   <compound refid="point__sampling_8cpp" kind="file"><name>point_sampling.cpp</name>
   </compound>
   <compound refid="points_8cpp" kind="file"><name>points.cpp</name>
@@ -2728,6 +2740,8 @@
   <compound refid="shadows_8cpp" kind="file"><name>shadows.cpp</name>
   </compound>
   <compound refid="dijsktra_8cpp" kind="file"><name>dijsktra.cpp</name>
+  </compound>
+  <compound refid="dijsktra__path_8cpp" kind="file"><name>dijsktra_path.cpp</name>
   </compound>
   <compound refid="find__cut__path_8cpp" kind="file"><name>find_cut_path.cpp</name>
   </compound>

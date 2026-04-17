@@ -470,6 +470,8 @@ void \mbox{\hyperlink{namespacehmap_af3cb67926262ec806d4d64c2755b1ddd}{to\+\_\+c
 \item 
 glm\+::vec4 \mbox{\hyperlink{namespacehmap_adc5300323fa35e021fd83b8b048ef3b1}{adjust}} (const glm\+::vec4 \&v, float dx, float dy, float dz, float dw)
 \item 
+glm\+::vec4 \mbox{\hyperlink{namespacehmap_a65974181387dcb86ae7660a4708b4c09}{adjust}} (const glm\+::vec4 \&v, float dr)
+\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a518f05118e1b9704160a7c3276a2f483}{cv\+\_\+mat\+\_\+to\+\_\+array}} (const cv\+::\+Mat \&mat, bool remap\+\_\+values=true, bool flip\+\_\+j=false)
 \begin{DoxyCompactList}\small\item\em Converts an Open\+CV {\ttfamily cv\+::\+Mat} to a 2D {\ttfamily \doxylink{classhmap_1_1Array}{Array}} with optional value scaling to \mbox{[}0, 1\mbox{]}. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename Fn $>$ }\\void \mbox{\hyperlink{namespacehmap_a05ee0ea53f1a06ac43741f11e25ec2cc}{for\+\_\+each\+\_\+cell}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&a, Fn \&\&fn)
@@ -976,8 +978,28 @@ int \mbox{\hyperlink{namespacehmap_ab085d07bc0e897729ca16c0dd2035fe1}{convert\+\
 \begin{DoxyCompactList}\small\item\em Converts a length value to a pixel index in a discretized space. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_abae56b1864390cd2f2f03acc442b423a}{grid\+\_\+xy\+\_\+vector}} (std\+::vector$<$ float $>$ \&x, std\+::vector$<$ float $>$ \&y, glm\+::ivec2 shape, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, bool endpoint=false)
 \begin{DoxyCompactList}\small\item\em Return x and y coordinates of a regular grid, as two 1D vectors. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Path}{Path}} \mbox{\hyperlink{namespacehmap_ac39b5e32d90e0351f4124ea61334461d}{bezier}} (const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&path, float curvature\+\_\+ratio=0.\+3\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, int edge\+\_\+divisions=10, \mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787}{Path\+::\+Edge\+Division\+Mode}} edm=\mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787a5192c60669f946857f5bed6f43c212ee}{Path\+::\+Edge\+Division\+Mode\+::\+EDM\+\_\+\+PER\+\_\+\+EDGE}})
+\begin{DoxyCompactList}\small\item\em Smooth the path using Bezier curves. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Path}{Path}} \mbox{\hyperlink{namespacehmap_a3beb0c80491a827b346e9e69cadf4228}{bezier\+\_\+round}} (const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&path, float curvature\+\_\+ratio=0.\+3\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, int edge\+\_\+divisions=10, \mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787}{Path\+::\+Edge\+Division\+Mode}} edm=\mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787a5192c60669f946857f5bed6f43c212ee}{Path\+::\+Edge\+Division\+Mode\+::\+EDM\+\_\+\+PER\+\_\+\+EDGE}})
+\begin{DoxyCompactList}\small\item\em Smooth the path using Bezier curves (alternative method). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Path}{Path}} \mbox{\hyperlink{namespacehmap_a281c9db00eef9735e8eea7bbf50f3e34}{bspline}} (const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&path, int edge\+\_\+divisions=10, \mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787}{Path\+::\+Edge\+Division\+Mode}} edm=\mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787a5192c60669f946857f5bed6f43c212ee}{Path\+::\+Edge\+Division\+Mode\+::\+EDM\+\_\+\+PER\+\_\+\+EDGE}})
+\begin{DoxyCompactList}\small\item\em Smooth the path using B-\/\+Spline curves. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Path}{Path}} \mbox{\hyperlink{namespacehmap_a9b14eb25556ef745f1e606bbe8d41dcb}{catmullrom}} (const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&path, int edge\+\_\+divisions=10, \mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787}{Path\+::\+Edge\+Division\+Mode}} edm=\mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787a5192c60669f946857f5bed6f43c212ee}{Path\+::\+Edge\+Division\+Mode\+::\+EDM\+\_\+\+PER\+\_\+\+EDGE}})
+\begin{DoxyCompactList}\small\item\em Smooth the path using Catmull-\/\+Rom curves. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Path}{Path}} \mbox{\hyperlink{namespacehmap_af9b55527f8d0f1c01d110b3144ee7d91}{decasteljau}} (const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&path, int edge\+\_\+divisions=10, \mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787}{Path\+::\+Edge\+Division\+Mode}} edm=\mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787a5192c60669f946857f5bed6f43c212ee}{Path\+::\+Edge\+Division\+Mode\+::\+EDM\+\_\+\+PER\+\_\+\+EDGE}})
+\begin{DoxyCompactList}\small\item\em Smooth the path using De Casteljau curves. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Path}{Path}} \mbox{\hyperlink{namespacehmap_a862fef5e0387bea9358648fc7aa5680b}{decimate\+\_\+vw}} (const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&path, int n\+\_\+points\+\_\+target=3)
+\begin{DoxyCompactList}\small\item\em Simplifies the current path using the Visvalingam-\/\+Whyatt algorithm. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Path}{Path}} \mbox{\hyperlink{namespacehmap_a5d1634064e937326c7d91f509c3d67ab}{fractalize}} (const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&path, int iterations, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, float sigma=0.\+2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, int orientation=0, float persistence=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+control\+\_\+field=nullptr, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
+\begin{DoxyCompactList}\small\item\em Applies fractalization to the path by adding points and randomly displacing their positions. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Path}{Path}} \mbox{\hyperlink{namespacehmap_af00a9f03eed98b1993fd458beb120379}{meanderize}} (const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&path, float ratio, float noise\+\_\+ratio=0.\+1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed=1, int iterations=1, int edge\+\_\+divisions=10, \mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787}{Path\+::\+Edge\+Division\+Mode}} edm=\mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787a5192c60669f946857f5bed6f43c212ee}{Path\+::\+Edge\+Division\+Mode\+::\+EDM\+\_\+\+PER\+\_\+\+EDGE}})
+\begin{DoxyCompactList}\small\item\em Add "{}meanders"{} to the path. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Path}{Path}} \mbox{\hyperlink{namespacehmap_a650c6eaf8bd10356a77c7c1f9ef9af3c}{remove\+\_\+geometric\+\_\+loops}} (const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&path)
 \begin{DoxyCompactList}\small\item\em Removes geometric loops in a 2D path caused by self-\/intersections. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Path}{Path}} \mbox{\hyperlink{namespacehmap_ad81052648d6008d2b7b4a5a36a2d7830}{smooth}} (const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&path, int navg=1, float averaging\+\_\+intensity=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float inertia=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
+\begin{DoxyCompactList}\small\item\em Applies a smoothing operation to the path points using a moving average filter. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacehmap_a9cf9b5799effe7d05b0e3c8478eaca39}{assert\+\_\+start\+\_\+end\+\_\+points}} (const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&path1, const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&path2, float tol=1e-\/6\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, bool verbose=true)
+\item 
 float \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}} (const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p1, const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p2)
 \begin{DoxyCompactList}\small\item\em Computes the angle between two points relative to the x-\/axis. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{namespacehmap_a1f02679c93973b91046f26960bf266d4}{angle}} (const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p0, const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p1, const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p2)
@@ -1684,6 +1706,8 @@ void \mbox{\hyperlink{namespacehmap_a3ce44e59b5eeb5c47a597f893f53eadb}{select\+\
 \begin{DoxyCompactList}\small\item\em Compute crude shadows from a heightmap. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a03570be180e333d82101d31482e78829}{topographic\+\_\+shading}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, float azimuth, float zenith, float talus\+\_\+ref=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Compute the topographic shadow intensity in the range \mbox{[}-\/1, 1\mbox{]}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Path}{Path}} \mbox{\hyperlink{namespacehmap_a5c8cb3751b2b9a83d23b15e3369f8449}{dijkstra}} (const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&path, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, glm\+::vec4 bbox, float elevation\+\_\+ratio=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float distance\+\_\+exponent=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float upward\+\_\+penalization=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+mask\+\_\+nogo=nullptr)
+\begin{DoxyCompactList}\small\item\em Divide the path by adding points based on the lowest elevation difference between each pair of edge endpoints. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Path}{Path}} \mbox{\hyperlink{namespacehmap_a21a3078ba07fad81a888ca00cd6c3b33}{find\+\_\+cut\+\_\+path\+\_\+dijkstra}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, \mbox{\hyperlink{namespacehmap_a1ba9d4ce7afe3309f8ae8e617f7154ee}{Domain\+Boundary}} start, \mbox{\hyperlink{namespacehmap_a1ba9d4ce7afe3309f8ae8e617f7154ee}{Domain\+Boundary}} end, float dijk\+\_\+elevation\+\_\+ratio=0.\+9\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float dijk\+\_\+distance\+\_\+exponent=2.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float dijk\+\_\+upward\+\_\+penalization=100.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed=0, bool favor\+\_\+boundary\+\_\+center=true, bool favor\+\_\+lower\+\_\+elevation=true, bool favor\+\_\+sinks=true)
 \begin{DoxyCompactList}\small\item\em Find a Dijkstra-\/based cut path between two domain boundaries. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Path}{Path}} \mbox{\hyperlink{namespacehmap_a31b9aa8b20d3bcca50f16222f10b0862}{find\+\_\+cut\+\_\+path\+\_\+midpoint}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, \mbox{\hyperlink{namespacehmap_a1ba9d4ce7afe3309f8ae8e617f7154ee}{Domain\+Boundary}} start, \mbox{\hyperlink{namespacehmap_a1ba9d4ce7afe3309f8ae8e617f7154ee}{Domain\+Boundary}} end, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, float offset\+\_\+ratio=0.\+2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, int steps=16, bool favor\+\_\+boundary\+\_\+center=true, bool favor\+\_\+lower\+\_\+elevation=true, bool favor\+\_\+sinks=true)
@@ -2895,8 +2919,14 @@ VA\+\_\+\+SINGLE\+\_\+\+ARRAY\+\_\+\+DOWNSCALED&\\
 \Hypertarget{namespacehmap_adc5300323fa35e021fd83b8b048ef3b1}\label{namespacehmap_adc5300323fa35e021fd83b8b048ef3b1} 
 \index{hmap@{hmap}!adjust@{adjust}}
 \index{adjust@{adjust}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{adjust()}{adjust()}}
+\doxysubsubsection{\texorpdfstring{adjust()}{adjust()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily glm\+::vec4 hmap\+::adjust (\begin{DoxyParamCaption}\item[{const glm\+::vec4 \&}]{v,  }\item[{float}]{dx,  }\item[{float}]{dy,  }\item[{float}]{dz,  }\item[{float}]{dw }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{namespacehmap_a65974181387dcb86ae7660a4708b4c09}\label{namespacehmap_a65974181387dcb86ae7660a4708b4c09} 
+\index{hmap@{hmap}!adjust@{adjust}}
+\index{adjust@{adjust}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{adjust()}{adjust()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily glm\+::vec4 hmap\+::adjust (\begin{DoxyParamCaption}\item[{const glm\+::vec4 \&}]{v,  }\item[{float}]{dr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 \Hypertarget{namespacehmap_a518f05118e1b9704160a7c3276a2f483}\label{namespacehmap_a518f05118e1b9704160a7c3276a2f483} 
 \index{hmap@{hmap}!cv\_mat\_to\_array@{cv\_mat\_to\_array}}
@@ -3169,8 +3199,8 @@ Generated flatbed height array.
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a1ba9d4ce7afe3309f8ae8e617f7154eea760545322569136cd3be89e004ab10d4}{hmap::DomainBoundary::BOUNDARY\_LEFT}},}
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a1ba9d4ce7afe3309f8ae8e617f7154eeadb9a04ab3508704543b5dd43ae495fe7}{hmap::DomainBoundary::BOUNDARY\_RIGHT}});}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_ad2be7924d78ea51a68158bf68b12d6ed}{decimate\_vw}}(20);}
-\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_a4ca03435fee5e9111edd93e2393d1533}{bspline}}();}
+\DoxyCodeLine{\ \ path\ =\ \mbox{\hyperlink{namespacehmap_a862fef5e0387bea9358648fc7aa5680b}{hmap::decimate\_vw}}(path,\ 20);}
+\DoxyCodeLine{\ \ path\ =\ \mbox{\hyperlink{namespacehmap_a281c9db00eef9735e8eea7bbf50f3e34}{hmap::bspline}}(path);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zp\ =\ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}(shape);}
 \DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_a4d1e1e63fea24bf8f23bc3343f8b746e}{to\_array}}(zp);}
@@ -3248,7 +3278,7 @@ This function implements the reverse midpoint displacement algorithm as describe
 \DoxyCodeLine{\ \ glm::vec4\ \ bbox\ =\ \mbox{\hyperlink{namespacehmap_aef71b544e3f4e5321cb3d41a7366e0f3}{hmap::unit\_square\_bbox}}();}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Path}{hmap::Path}}\ path\ =\ \mbox{\hyperlink{classhmap_1_1Path}{hmap::Path}}(4,\ seed,\ bbox);}
 \DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_ad68abaa80879402c3758e24626acfb53}{reorder\_nns}}();}
-\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_a36ec9d625edd2710999c263fa790af19}{bezier}}();}
+\DoxyCodeLine{\ \ path\ =\ \mbox{\hyperlink{namespacehmap_ac39b5e32d90e0351f4124ea61334461d}{hmap::bezier}}(path);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ input\ array,\ scattered\ non-\/zero\ values}}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z0\ =\ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}(shape);}
@@ -4376,10 +4406,10 @@ This function modifies a heightmap array by "{}digging"{} a path into it based o
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ glm::vec4\ \ bbox\ =\ \{1.f,\ 2.f,\ -\/0.5f,\ 0.5f\};}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Path}{hmap::Path}}\ path\ =\ \mbox{\hyperlink{classhmap_1_1Path}{hmap::Path}}(5,\ seed,\ \{1.1f,\ 1.9f,\ -\/0.4,\ 0.4f\});}
-\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_a2ea3482a302d8ef30084fd39e57715de}{closed}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_aeb2890d2ffbbf4291baf255c621095de}{set\_closed}}(\textcolor{keyword}{false});}
 \DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_ad68abaa80879402c3758e24626acfb53}{reorder\_nns}}();}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_a5bb9bb29af2ea6411b6837ef4c2ee6c0}{dijkstra}}(z,\ bbox,\ 0,\ 0.9f,\ 1.f);}
+\DoxyCodeLine{\ \ path\ =\ \mbox{\hyperlink{namespacehmap_a5c8cb3751b2b9a83d23b15e3369f8449}{hmap::dijkstra}}(path,\ z,\ bbox,\ 0,\ 0.9f,\ 1.f);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ z1\ =\ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}(shape);}
 \DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_a4d1e1e63fea24bf8f23bc3343f8b746e}{to\_array}}(z1,\ bbox);}
@@ -4612,8 +4642,8 @@ Carves and blends a flatbed shape along a path into the provided array, using a 
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a1ba9d4ce7afe3309f8ae8e617f7154eea760545322569136cd3be89e004ab10d4}{hmap::DomainBoundary::BOUNDARY\_LEFT}},}
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a1ba9d4ce7afe3309f8ae8e617f7154eeadb9a04ab3508704543b5dd43ae495fe7}{hmap::DomainBoundary::BOUNDARY\_RIGHT}});}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_ad2be7924d78ea51a68158bf68b12d6ed}{decimate\_vw}}(20);}
-\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_a4ca03435fee5e9111edd93e2393d1533}{bspline}}();}
+\DoxyCodeLine{\ \ path\ =\ \mbox{\hyperlink{namespacehmap_a862fef5e0387bea9358648fc7aa5680b}{hmap::decimate\_vw}}(path,\ 20);}
+\DoxyCodeLine{\ \ path\ =\ \mbox{\hyperlink{namespacehmap_a281c9db00eef9735e8eea7bbf50f3e34}{hmap::bspline}}(path);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zp\ =\ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}(shape);}
 \DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_a4d1e1e63fea24bf8f23bc3343f8b746e}{to\_array}}(zp);}
@@ -4723,8 +4753,8 @@ The function assumes that {\ttfamily elevation\+\_\+shift} is non-\/zero when wi
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a1ba9d4ce7afe3309f8ae8e617f7154eeadb9a04ab3508704543b5dd43ae495fe7}{hmap::DomainBoundary::BOUNDARY\_RIGHT}},}
 \DoxyCodeLine{\ \ \ \ \ \ seed);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_ad2be7924d78ea51a68158bf68b12d6ed}{decimate\_vw}}(30);}
-\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_a4ca03435fee5e9111edd93e2393d1533}{bspline}}(50);}
+\DoxyCodeLine{\ \ path\ =\ \mbox{\hyperlink{namespacehmap_a862fef5e0387bea9358648fc7aa5680b}{hmap::decimate\_vw}}(path,\ 30);}
+\DoxyCodeLine{\ \ path\ =\ \mbox{\hyperlink{namespacehmap_a281c9db00eef9735e8eea7bbf50f3e34}{hmap::bspline}}(path,\ 50);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z2\ =\ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}(shape);}
 \DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_a4d1e1e63fea24bf8f23bc3343f8b746e}{to\_array}}(z2);}
@@ -13659,7 +13689,7 @@ A \doxylink{classhmap_1_1Cloud}{Cloud} containing the generated points.
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ cloud\ =\ \mbox{\hyperlink{namespacehmap_a117f2da22e9a721e84002c801e95c2d5}{hmap::random\_cloud\_distance}}(min\_dist,\ max\_dist,\ density,\ seed);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}count:\ "{}}\ <<\ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a4d6feb0c127bcea6566b600444cf103c}{get\_npoints}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}count:\ "{}}\ <<\ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_adc675e8b2769a94b4c23bf7e69348f84}{size}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ raster\ =\ 0.f;}
 \DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a36e47d4857108c56193755e32374184d}{to\_array}}(raster);}
@@ -13670,7 +13700,7 @@ A \doxylink{classhmap_1_1Cloud}{Cloud} containing the generated points.
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 1.2f\ \textcolor{comment}{/*\ alpha\ */},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}count:\ "{}}\ <<\ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a4d6feb0c127bcea6566b600444cf103c}{get\_npoints}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}count:\ "{}}\ <<\ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_adc675e8b2769a94b4c23bf7e69348f84}{size}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ raster\ =\ 0.f;}
 \DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a36e47d4857108c56193755e32374184d}{to\_array}}(raster);}
@@ -13681,7 +13711,7 @@ A \doxylink{classhmap_1_1Cloud}{Cloud} containing the generated points.
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 1.f\ \textcolor{comment}{/*\ k\ */},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}count:\ "{}}\ <<\ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a4d6feb0c127bcea6566b600444cf103c}{get\_npoints}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}count:\ "{}}\ <<\ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_adc675e8b2769a94b4c23bf7e69348f84}{size}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ raster\ =\ 0.f;}
 \DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a36e47d4857108c56193755e32374184d}{to\_array}}(raster);}
@@ -13839,7 +13869,7 @@ A \doxylink{classhmap_1_1Cloud}{Cloud} containing the generated points.
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ cloud\ =\ \mbox{\hyperlink{namespacehmap_a117f2da22e9a721e84002c801e95c2d5}{hmap::random\_cloud\_distance}}(min\_dist,\ max\_dist,\ density,\ seed);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}count:\ "{}}\ <<\ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a4d6feb0c127bcea6566b600444cf103c}{get\_npoints}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}count:\ "{}}\ <<\ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_adc675e8b2769a94b4c23bf7e69348f84}{size}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ raster\ =\ 0.f;}
 \DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a36e47d4857108c56193755e32374184d}{to\_array}}(raster);}
@@ -13850,7 +13880,7 @@ A \doxylink{classhmap_1_1Cloud}{Cloud} containing the generated points.
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 1.2f\ \textcolor{comment}{/*\ alpha\ */},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}count:\ "{}}\ <<\ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a4d6feb0c127bcea6566b600444cf103c}{get\_npoints}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}count:\ "{}}\ <<\ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_adc675e8b2769a94b4c23bf7e69348f84}{size}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ raster\ =\ 0.f;}
 \DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a36e47d4857108c56193755e32374184d}{to\_array}}(raster);}
@@ -13861,7 +13891,7 @@ A \doxylink{classhmap_1_1Cloud}{Cloud} containing the generated points.
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 1.f\ \textcolor{comment}{/*\ k\ */},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}count:\ "{}}\ <<\ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a4d6feb0c127bcea6566b600444cf103c}{get\_npoints}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}count:\ "{}}\ <<\ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_adc675e8b2769a94b4c23bf7e69348f84}{size}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ raster\ =\ 0.f;}
 \DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a36e47d4857108c56193755e32374184d}{to\_array}}(raster);}
@@ -14017,7 +14047,7 @@ A \doxylink{classhmap_1_1Cloud}{Cloud} containing the generated points.
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ cloud\ =\ \mbox{\hyperlink{namespacehmap_a117f2da22e9a721e84002c801e95c2d5}{hmap::random\_cloud\_distance}}(min\_dist,\ max\_dist,\ density,\ seed);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}count:\ "{}}\ <<\ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a4d6feb0c127bcea6566b600444cf103c}{get\_npoints}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}count:\ "{}}\ <<\ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_adc675e8b2769a94b4c23bf7e69348f84}{size}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ raster\ =\ 0.f;}
 \DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a36e47d4857108c56193755e32374184d}{to\_array}}(raster);}
@@ -14028,7 +14058,7 @@ A \doxylink{classhmap_1_1Cloud}{Cloud} containing the generated points.
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 1.2f\ \textcolor{comment}{/*\ alpha\ */},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}count:\ "{}}\ <<\ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a4d6feb0c127bcea6566b600444cf103c}{get\_npoints}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}count:\ "{}}\ <<\ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_adc675e8b2769a94b4c23bf7e69348f84}{size}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ raster\ =\ 0.f;}
 \DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a36e47d4857108c56193755e32374184d}{to\_array}}(raster);}
@@ -14039,7 +14069,7 @@ A \doxylink{classhmap_1_1Cloud}{Cloud} containing the generated points.
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 1.f\ \textcolor{comment}{/*\ k\ */},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}count:\ "{}}\ <<\ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a4d6feb0c127bcea6566b600444cf103c}{get\_npoints}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}count:\ "{}}\ <<\ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_adc675e8b2769a94b4c23bf7e69348f84}{size}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ raster\ =\ 0.f;}
 \DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a36e47d4857108c56193755e32374184d}{to\_array}}(raster);}
@@ -14199,7 +14229,7 @@ A \doxylink{classhmap_1_1Cloud}{Cloud} containing the generated points.
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ cloud\ =\ \mbox{\hyperlink{namespacehmap_a117f2da22e9a721e84002c801e95c2d5}{hmap::random\_cloud\_distance}}(min\_dist,\ max\_dist,\ density,\ seed);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}count:\ "{}}\ <<\ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a4d6feb0c127bcea6566b600444cf103c}{get\_npoints}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}count:\ "{}}\ <<\ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_adc675e8b2769a94b4c23bf7e69348f84}{size}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ raster\ =\ 0.f;}
 \DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a36e47d4857108c56193755e32374184d}{to\_array}}(raster);}
@@ -14210,7 +14240,7 @@ A \doxylink{classhmap_1_1Cloud}{Cloud} containing the generated points.
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 1.2f\ \textcolor{comment}{/*\ alpha\ */},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}count:\ "{}}\ <<\ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a4d6feb0c127bcea6566b600444cf103c}{get\_npoints}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}count:\ "{}}\ <<\ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_adc675e8b2769a94b4c23bf7e69348f84}{size}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ raster\ =\ 0.f;}
 \DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a36e47d4857108c56193755e32374184d}{to\_array}}(raster);}
@@ -14221,7 +14251,7 @@ A \doxylink{classhmap_1_1Cloud}{Cloud} containing the generated points.
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 1.f\ \textcolor{comment}{/*\ k\ */},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}count:\ "{}}\ <<\ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a4d6feb0c127bcea6566b600444cf103c}{get\_npoints}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}count:\ "{}}\ <<\ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_adc675e8b2769a94b4c23bf7e69348f84}{size}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ raster\ =\ 0.f;}
 \DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a36e47d4857108c56193755e32374184d}{to\_array}}(raster);}
@@ -14381,7 +14411,7 @@ A \doxylink{classhmap_1_1Cloud}{Cloud} containing the generated points.
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ cloud\ =\ \mbox{\hyperlink{namespacehmap_a117f2da22e9a721e84002c801e95c2d5}{hmap::random\_cloud\_distance}}(min\_dist,\ max\_dist,\ density,\ seed);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}count:\ "{}}\ <<\ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a4d6feb0c127bcea6566b600444cf103c}{get\_npoints}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}count:\ "{}}\ <<\ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_adc675e8b2769a94b4c23bf7e69348f84}{size}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ raster\ =\ 0.f;}
 \DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a36e47d4857108c56193755e32374184d}{to\_array}}(raster);}
@@ -14392,7 +14422,7 @@ A \doxylink{classhmap_1_1Cloud}{Cloud} containing the generated points.
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 1.2f\ \textcolor{comment}{/*\ alpha\ */},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}count:\ "{}}\ <<\ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a4d6feb0c127bcea6566b600444cf103c}{get\_npoints}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}count:\ "{}}\ <<\ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_adc675e8b2769a94b4c23bf7e69348f84}{size}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ raster\ =\ 0.f;}
 \DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a36e47d4857108c56193755e32374184d}{to\_array}}(raster);}
@@ -14403,7 +14433,7 @@ A \doxylink{classhmap_1_1Cloud}{Cloud} containing the generated points.
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 1.f\ \textcolor{comment}{/*\ k\ */},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}count:\ "{}}\ <<\ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a4d6feb0c127bcea6566b600444cf103c}{get\_npoints}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}count:\ "{}}\ <<\ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_adc675e8b2769a94b4c23bf7e69348f84}{size}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ raster\ =\ 0.f;}
 \DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a36e47d4857108c56193755e32374184d}{to\_array}}(raster);}
@@ -14563,7 +14593,7 @@ A \doxylink{classhmap_1_1Cloud}{Cloud} containing the generated points.
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ cloud\ =\ \mbox{\hyperlink{namespacehmap_a117f2da22e9a721e84002c801e95c2d5}{hmap::random\_cloud\_distance}}(min\_dist,\ max\_dist,\ density,\ seed);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}count:\ "{}}\ <<\ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a4d6feb0c127bcea6566b600444cf103c}{get\_npoints}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}count:\ "{}}\ <<\ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_adc675e8b2769a94b4c23bf7e69348f84}{size}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ raster\ =\ 0.f;}
 \DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a36e47d4857108c56193755e32374184d}{to\_array}}(raster);}
@@ -14574,7 +14604,7 @@ A \doxylink{classhmap_1_1Cloud}{Cloud} containing the generated points.
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 1.2f\ \textcolor{comment}{/*\ alpha\ */},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}count:\ "{}}\ <<\ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a4d6feb0c127bcea6566b600444cf103c}{get\_npoints}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}count:\ "{}}\ <<\ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_adc675e8b2769a94b4c23bf7e69348f84}{size}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ raster\ =\ 0.f;}
 \DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a36e47d4857108c56193755e32374184d}{to\_array}}(raster);}
@@ -14585,7 +14615,7 @@ A \doxylink{classhmap_1_1Cloud}{Cloud} containing the generated points.
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 1.f\ \textcolor{comment}{/*\ k\ */},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}count:\ "{}}\ <<\ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a4d6feb0c127bcea6566b600444cf103c}{get\_npoints}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}count:\ "{}}\ <<\ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_adc675e8b2769a94b4c23bf7e69348f84}{size}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ raster\ =\ 0.f;}
 \DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a36e47d4857108c56193755e32374184d}{to\_array}}(raster);}
@@ -14745,7 +14775,7 @@ A \doxylink{classhmap_1_1Cloud}{Cloud} containing the generated points.
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ cloud\ =\ \mbox{\hyperlink{namespacehmap_a117f2da22e9a721e84002c801e95c2d5}{hmap::random\_cloud\_distance}}(min\_dist,\ max\_dist,\ density,\ seed);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}count:\ "{}}\ <<\ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a4d6feb0c127bcea6566b600444cf103c}{get\_npoints}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}count:\ "{}}\ <<\ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_adc675e8b2769a94b4c23bf7e69348f84}{size}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ raster\ =\ 0.f;}
 \DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a36e47d4857108c56193755e32374184d}{to\_array}}(raster);}
@@ -14756,7 +14786,7 @@ A \doxylink{classhmap_1_1Cloud}{Cloud} containing the generated points.
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 1.2f\ \textcolor{comment}{/*\ alpha\ */},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}count:\ "{}}\ <<\ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a4d6feb0c127bcea6566b600444cf103c}{get\_npoints}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}count:\ "{}}\ <<\ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_adc675e8b2769a94b4c23bf7e69348f84}{size}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ raster\ =\ 0.f;}
 \DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a36e47d4857108c56193755e32374184d}{to\_array}}(raster);}
@@ -14767,7 +14797,7 @@ A \doxylink{classhmap_1_1Cloud}{Cloud} containing the generated points.
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 1.f\ \textcolor{comment}{/*\ k\ */},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}count:\ "{}}\ <<\ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a4d6feb0c127bcea6566b600444cf103c}{get\_npoints}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}count:\ "{}}\ <<\ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_adc675e8b2769a94b4c23bf7e69348f84}{size}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ raster\ =\ 0.f;}
 \DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a36e47d4857108c56193755e32374184d}{to\_array}}(raster);}
@@ -14858,6 +14888,376 @@ Return x and y coordinates of a regular grid, as two 1D vectors.
 {\em endpoint} & Include or not the endpoint. \\
 \hline
 \end{DoxyParams}
+\Hypertarget{namespacehmap_ac39b5e32d90e0351f4124ea61334461d}\label{namespacehmap_ac39b5e32d90e0351f4124ea61334461d} 
+\index{hmap@{hmap}!bezier@{bezier}}
+\index{bezier@{bezier}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{bezier()}{bezier()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Path}{Path}} hmap\+::bezier (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&}]{path,  }\item[{float}]{curvature\+\_\+ratio = {\ttfamily 0.3\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{int}]{edge\+\_\+divisions = {\ttfamily 10},  }\item[{\mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787}{Path\+::\+Edge\+Division\+Mode}}}]{edm = {\ttfamily \mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787a5192c60669f946857f5bed6f43c212ee}{Path\+::\+Edge\+Division\+Mode\+::\+EDM\+\_\+\+PER\+\_\+\+EDGE}}} }\end{DoxyParamCaption})}
+
+
+
+Smooth the path using Bezier curves. 
+
+This method applies Bezier curve smoothing to the path. The {\ttfamily curvature\+\_\+ratio} controls the amount of curvature applied, with typical values in the range of \mbox{[}-\/1, 1\mbox{]}, where positive values generally result in more pronounced curvature. The {\ttfamily edge\+\_\+divisions} parameter determines the number of subdivisions per edge to create a smoother curve.
+
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em curvature\+\_\+ratio} & Amount of curvature, usually in the range \mbox{[}-\/1, 1\mbox{]}, with positive values resulting in more curvature. \\
+\hline
+{\em edge\+\_\+divisions} & Number of subdivisions per edge to achieve smooth curves. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{namespacehmap_a3beb0c80491a827b346e9e69cadf4228}\label{namespacehmap_a3beb0c80491a827b346e9e69cadf4228} 
+\index{hmap@{hmap}!bezier\_round@{bezier\_round}}
+\index{bezier\_round@{bezier\_round}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{bezier\_round()}{bezier\_round()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Path}{Path}} hmap\+::bezier\+\_\+round (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&}]{path,  }\item[{float}]{curvature\+\_\+ratio = {\ttfamily 0.3\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{int}]{edge\+\_\+divisions = {\ttfamily 10},  }\item[{\mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787}{Path\+::\+Edge\+Division\+Mode}}}]{edm = {\ttfamily \mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787a5192c60669f946857f5bed6f43c212ee}{Path\+::\+Edge\+Division\+Mode\+::\+EDM\+\_\+\+PER\+\_\+\+EDGE}}} }\end{DoxyParamCaption})}
+
+
+
+Smooth the path using Bezier curves (alternative method). 
+
+This alternative method applies Bezier curve smoothing to the path. The {\ttfamily curvature\+\_\+ratio} parameter affects the curvature amount, similar to the {\ttfamily bezier} method. The {\ttfamily edge\+\_\+divisions} parameter specifies how finely each edge is divided to create a smoother curve.
+
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em curvature\+\_\+ratio} & Amount of curvature, typically within \mbox{[}-\/1, 1\mbox{]}, with positive values for increased curvature. \\
+\hline
+{\em edge\+\_\+divisions} & Number of edge subdivisions for smoothness. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{namespacehmap_a281c9db00eef9735e8eea7bbf50f3e34}\label{namespacehmap_a281c9db00eef9735e8eea7bbf50f3e34} 
+\index{hmap@{hmap}!bspline@{bspline}}
+\index{bspline@{bspline}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{bspline()}{bspline()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Path}{Path}} hmap\+::bspline (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&}]{path,  }\item[{int}]{edge\+\_\+divisions = {\ttfamily 10},  }\item[{\mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787}{Path\+::\+Edge\+Division\+Mode}}}]{edm = {\ttfamily \mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787a5192c60669f946857f5bed6f43c212ee}{Path\+::\+Edge\+Division\+Mode\+::\+EDM\+\_\+\+PER\+\_\+\+EDGE}}} }\end{DoxyParamCaption})}
+
+
+
+Smooth the path using B-\/\+Spline curves. 
+
+This method smooths the path using B-\/\+Spline curves, which provide a smooth curve that passes through the control points. The {\ttfamily edge\+\_\+divisions} parameter defines the number of subdivisions per edge for achieving smooth curves.
+
+{\bfseries{Important}}\+: This function does not correctly handle closed polylines (circular contours). If the path is closed, the smoothing may not correctly close the loop, potentially leaving a gap between the start and end points.
+
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em edge\+\_\+divisions} & Number of subdivisions per edge to achieve a smooth B-\/\+Spline curve.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+This function does not correctly handle closed polylines. 
+\end{DoxyWarning}
+\Hypertarget{namespacehmap_a9b14eb25556ef745f1e606bbe8d41dcb}\label{namespacehmap_a9b14eb25556ef745f1e606bbe8d41dcb} 
+\index{hmap@{hmap}!catmullrom@{catmullrom}}
+\index{catmullrom@{catmullrom}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{catmullrom()}{catmullrom()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Path}{Path}} hmap\+::catmullrom (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&}]{path,  }\item[{int}]{edge\+\_\+divisions = {\ttfamily 10},  }\item[{\mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787}{Path\+::\+Edge\+Division\+Mode}}}]{edm = {\ttfamily \mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787a5192c60669f946857f5bed6f43c212ee}{Path\+::\+Edge\+Division\+Mode\+::\+EDM\+\_\+\+PER\+\_\+\+EDGE}}} }\end{DoxyParamCaption})}
+
+
+
+Smooth the path using Catmull-\/\+Rom curves. 
+
+This method applies Catmull-\/\+Rom curve smoothing to the path. Catmull-\/\+Rom splines are interpolating splines that pass through each control point. The {\ttfamily edge\+\_\+divisions} parameter determines the number of subdivisions per edge for smoothing.
+
+{\bfseries{Important}}\+: This function does not correctly handle closed polylines (circular contours). If the path is closed, the smoothing may not correctly close the loop, potentially leaving a gap between the start and end points.
+
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em edge\+\_\+divisions} & Number of edge subdivisions to create a smooth Catmull-\/\+Rom curve.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+This function does not correctly handle closed polylines. 
+\end{DoxyWarning}
+\Hypertarget{namespacehmap_af9b55527f8d0f1c01d110b3144ee7d91}\label{namespacehmap_af9b55527f8d0f1c01d110b3144ee7d91} 
+\index{hmap@{hmap}!decasteljau@{decasteljau}}
+\index{decasteljau@{decasteljau}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{decasteljau()}{decasteljau()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Path}{Path}} hmap\+::decasteljau (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&}]{path,  }\item[{int}]{edge\+\_\+divisions = {\ttfamily 10},  }\item[{\mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787}{Path\+::\+Edge\+Division\+Mode}}}]{edm = {\ttfamily \mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787a5192c60669f946857f5bed6f43c212ee}{Path\+::\+Edge\+Division\+Mode\+::\+EDM\+\_\+\+PER\+\_\+\+EDGE}}} }\end{DoxyParamCaption})}
+
+
+
+Smooth the path using De Casteljau curves. 
+
+This function smooths a path by applying De Casteljau\textquotesingle{}s algorithm to generate intermediate points along the path, effectively creating a Bézier curve that approximates the original path. The path is divided into segments, and the De Casteljau algorithm is applied to each segment, resulting in a smooth curve.
+
+The parameter {\ttfamily edge\+\_\+divisions} controls the number of divisions (sub-\/segments) created along each segment of the path. A higher number of divisions will result in a smoother curve, but will also increase the computational cost.
+
+
+\begin{DoxyParams}{Parameters}
+{\em edge\+\_\+divisions} & The number of divisions for each edge of the path. Default is 10, which provides a balanced level of smoothing.\\
+\hline
+\end{DoxyParams}
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}}  \Hypertarget{namespacehmap_a862fef5e0387bea9358648fc7aa5680b}\label{namespacehmap_a862fef5e0387bea9358648fc7aa5680b} 
+\index{hmap@{hmap}!decimate\_vw@{decimate\_vw}}
+\index{decimate\_vw@{decimate\_vw}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{decimate\_vw()}{decimate\_vw()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Path}{Path}} hmap\+::decimate\+\_\+vw (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&}]{path,  }\item[{int}]{n\+\_\+points\+\_\+target = {\ttfamily 3} }\end{DoxyParamCaption})}
+
+
+
+Simplifies the current path using the Visvalingam-\/\+Whyatt algorithm. 
+
+This method reduces the number of points in the path to the specified target, {\ttfamily n\+\_\+points\+\_\+target}, while preserving the overall shape. It calculates the area of triangles formed by consecutive points and removes points corresponding to the smallest areas iteratively.
+
+
+\begin{DoxyParams}{Parameters}
+{\em n\+\_\+points\+\_\+target} & The desired number of points to retain in the path. If the current number of points is less than {\ttfamily n\+\_\+points\+\_\+target} or the path contains fewer than 3 points, the method returns without modifying the path.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Does not well behave when n\+\_\+points\+\_\+target is significantly lower than the initial number of points.
+\end{DoxyNote}
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 3;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ npoints\ =\ 30;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ glm::vec4\ \ bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\};}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Path}{hmap::Path}}\ path\ =\ \mbox{\hyperlink{classhmap_1_1Path}{hmap::Path}}(npoints,\ seed,\ \mbox{\hyperlink{namespacehmap_adc5300323fa35e021fd83b8b048ef3b1}{hmap::adjust}}(bbox,\ -\/0.1f));}
+\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_ad68abaa80879402c3758e24626acfb53}{reorder\_nns}}();}
+\DoxyCodeLine{\ \ path\ =\ \mbox{\hyperlink{namespacehmap_a5d1634064e937326c7d91f509c3d67ab}{hmap::fractalize}}(path,\ 1,\ seed);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ ntarget\ =\ 15;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ z1\ =\ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}(shape);}
+\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_a4d1e1e63fea24bf8f23bc3343f8b746e}{to\_array}}(z1,\ bbox);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ Visvalingam-\/Whyatt\ algo}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ path2\ =\ \mbox{\hyperlink{namespacehmap_a862fef5e0387bea9358648fc7aa5680b}{hmap::decimate\_vw}}(path,\ ntarget);}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ z2\ =\ path2.to\_array(shape,\ bbox);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a9cf9b5799effe7d05b0e3c8478eaca39}{hmap::assert\_start\_end\_points}}(path,\ path2);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_aeb2890d2ffbbf4291baf255c621095de}{set\_closed}}(\textcolor{keyword}{true});}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ path3\ =\ \mbox{\hyperlink{namespacehmap_a862fef5e0387bea9358648fc7aa5680b}{hmap::decimate\_vw}}(path,\ ntarget);}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ z3\ =\ path3.to\_array(shape,\ bbox);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_path\_decimate.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z1,\ z2,\ z3\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}}  \Hypertarget{namespacehmap_a5d1634064e937326c7d91f509c3d67ab}\label{namespacehmap_a5d1634064e937326c7d91f509c3d67ab} 
+\index{hmap@{hmap}!fractalize@{fractalize}}
+\index{fractalize@{fractalize}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{fractalize()}{fractalize()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Path}{Path}} hmap\+::fractalize (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&}]{path,  }\item[{int}]{iterations,  }\item[{\mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{seed,  }\item[{float}]{sigma = {\ttfamily 0.2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{int}]{orientation = {\ttfamily 0},  }\item[{float}]{persistence = {\ttfamily 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+control\+\_\+field = {\ttfamily nullptr},  }\item[{glm\+::vec4}]{bbox = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}} }\end{DoxyParamCaption})}
+
+
+
+Applies fractalization to the path by adding points and randomly displacing their positions. 
+
+This method enhances the complexity of a path by iteratively adding new points between existing ones and displacing them using Gaussian noise. The process can simulate natural phenomena like terrain generation or random walk paths. The number of iterations determines the level of detail added to the path.
+
+
+\begin{DoxyItemize}
+\item {\ttfamily sigma} controls the magnitude of the displacement, normalized by the distance between points.
+\item {\ttfamily orientation} directs the displacement\+:
+\begin{DoxyItemize}
+\item {\ttfamily 0} for random directions,
+\item {\ttfamily 1} for inflation (outward displacement),
+\item {\ttfamily -\/1} for deflation (inward displacement).
+\end{DoxyItemize}
+\item {\ttfamily persistence} governs how the noise strength evolves over iterations, typically reducing it gradually.
+\item An optional {\ttfamily control\+\_\+field} array allows for local adjustments of displacement amplitude, guided by the {\ttfamily bbox} (bounding box), which defines the spatial extent within which the control field is applied.
+\end{DoxyItemize}
+
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 2;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ glm::vec4\ bbox\ =\ \{-\/1.f,\ 2.f,\ 0.f,\ 5.f\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ generate\ a\ path\ using\ a\ random\ set\ of\ points}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ npoints\ =\ 8;}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Path}{hmap::Path}}\ path\ =\ \mbox{\hyperlink{classhmap_1_1Path}{hmap::Path}}(npoints,\ seed,\ bbox);}
+\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_ad68abaa80879402c3758e24626acfb53}{reorder\_nns}}();\ \textcolor{comment}{//\ reorder\ points\ to\ get\ a\ better\ look}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z1\ =\ path.\mbox{\hyperlink{classhmap_1_1Path_a4d1e1e63fea24bf8f23bc3343f8b746e}{to\_array}}(shape,\ bbox);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ control\ function\ (supposed\ to\ be\ in\ [0,\ 1])}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\_control\ =\ \mbox{\hyperlink{namespacehmap_a79ad6fb857a38f8de9915d01992e5161}{hmap::slope}}(shape,\ 0.f,\ -\/1.f);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ab80da2376c6212eb9cb2899c0a5114ad}{hmap::remap}}(z\_control);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ iterations\ =\ 6;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ sigma\ =\ 0.3f;}
+\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_a84e0832a3c3a4c9e1f9bcefdc6d32cd0}{resample\_uniform}}();\ \textcolor{comment}{//\ to\ ensure\ a\ "{}uniform"{}\ output}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ fractalize,\ with\ and\ without\ control\ function}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Path}{hmap::Path}}\ pn\ =\ path;}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Path}{hmap::Path}}\ pc\ =\ path;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ pn\ =\ \mbox{\hyperlink{namespacehmap_a5d1634064e937326c7d91f509c3d67ab}{hmap::fractalize}}(pn,\ iterations,\ seed,\ sigma);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z3\ =\ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}(shape);}
+\DoxyCodeLine{\ \ pn.\mbox{\hyperlink{classhmap_1_1Path_a4d1e1e63fea24bf8f23bc3343f8b746e}{to\_array}}(z3,\ bbox);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ orientation\ =\ 0;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ persistence\ =\ 1.f;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ pc.\mbox{\hyperlink{classhmap_1_1Path_aeb2890d2ffbbf4291baf255c621095de}{set\_closed}}(\textcolor{keyword}{true});}
+\DoxyCodeLine{\ \ pc\ =\ \mbox{\hyperlink{namespacehmap_a5d1634064e937326c7d91f509c3d67ab}{hmap::fractalize}}(pc,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ iterations,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sigma,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ orientation,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ persistence,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&z\_control,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bbox);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z4\ =\ pc.\mbox{\hyperlink{classhmap_1_1Path_a4d1e1e63fea24bf8f23bc3343f8b746e}{to\_array}}(shape,\ bbox);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_path\_fractalize.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z1,\ z\_control,\ z3,\ z4\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em iterations} & Number of iterations to apply the fractalization process. \\
+\hline
+{\em seed} & Seed value for random number generation, ensuring reproducibility. \\
+\hline
+{\em sigma} & Standard deviation of the Gaussian displacement, relative to the distance between points. \\
+\hline
+{\em orientation} & Determines the displacement direction\+: {\ttfamily 0} for random, {\ttfamily 1} for inflation, {\ttfamily -\/1} for deflation. \\
+\hline
+{\em persistence} & Factor that adjusts the noise intensity across iterations. \\
+\hline
+{\em control\+\_\+field} & Optional pointer to an array that locally modifies the displacement amplitude. \\
+\hline
+{\em bbox} & Bounding box that defines the valid area for the control field\textquotesingle{}s influence. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{namespacehmap_af00a9f03eed98b1993fd458beb120379}\label{namespacehmap_af00a9f03eed98b1993fd458beb120379} 
+\index{hmap@{hmap}!meanderize@{meanderize}}
+\index{meanderize@{meanderize}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{meanderize()}{meanderize()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Path}{Path}} hmap\+::meanderize (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&}]{path,  }\item[{float}]{ratio,  }\item[{float}]{noise\+\_\+ratio = {\ttfamily 0.1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{\mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{seed = {\ttfamily 1},  }\item[{int}]{iterations = {\ttfamily 1},  }\item[{int}]{edge\+\_\+divisions = {\ttfamily 10},  }\item[{\mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787}{Path\+::\+Edge\+Division\+Mode}}}]{edm = {\ttfamily \mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787a5192c60669f946857f5bed6f43c212ee}{Path\+::\+Edge\+Division\+Mode\+::\+EDM\+\_\+\+PER\+\_\+\+EDGE}}} }\end{DoxyParamCaption})}
+
+
+
+Add "{}meanders"{} to the path. 
+
+This method introduces meandering effects to the path by adding random deviations. The amplitude of the meanders is controlled by the {\ttfamily ratio} parameter, while the {\ttfamily noise\+\_\+ratio} controls the amount of randomness. The {\ttfamily seed} parameter is used to initialize the random number generator, ensuring reproducibility. The {\ttfamily iterations} parameter defines how many times the meandering process is applied, and {\ttfamily edge\+\_\+divisions} controls how finely each edge is subdivided during the meandering.
+
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 6;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ npoints\ =\ 10;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ glm::vec4\ \ bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\};}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Path}{hmap::Path}}\ path\ =\ \mbox{\hyperlink{classhmap_1_1Path}{hmap::Path}}(npoints,\ seed,\ \mbox{\hyperlink{namespacehmap_adc5300323fa35e021fd83b8b048ef3b1}{hmap::adjust}}(bbox,\ -\/0.1f));}
+\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_ad68abaa80879402c3758e24626acfb53}{reorder\_nns}}();}
+\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_a84e0832a3c3a4c9e1f9bcefdc6d32cd0}{resample\_uniform}}();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ z1\ =\ path.\mbox{\hyperlink{classhmap_1_1Path_a4d1e1e63fea24bf8f23bc3343f8b746e}{to\_array}}(shape,\ bbox);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Path}{hmap::Path}}\ path\_c;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//}}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ ratio\ =\ 0.2f;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ path\_c\ =\ \mbox{\hyperlink{namespacehmap_af00a9f03eed98b1993fd458beb120379}{hmap::meanderize}}(path,\ ratio);}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ z2\ =\ path\_c.\mbox{\hyperlink{classhmap_1_1Path_a4d1e1e63fea24bf8f23bc3343f8b746e}{to\_array}}(shape,\ bbox);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//}}
+\DoxyCodeLine{\ \ ratio\ =\ 0.3f;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ noise\_ratio\ =\ 0.1f;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ iterations\ =\ 3;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_aeb2890d2ffbbf4291baf255c621095de}{set\_closed}}(\textcolor{keyword}{true});}
+\DoxyCodeLine{\ \ path\_c\ =\ \mbox{\hyperlink{namespacehmap_af00a9f03eed98b1993fd458beb120379}{hmap::meanderize}}(path,\ ratio,\ noise\_ratio,\ seed,\ iterations);}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ z3\ =\ path\_c.\mbox{\hyperlink{classhmap_1_1Path_a4d1e1e63fea24bf8f23bc3343f8b746e}{to\_array}}(shape,\ bbox);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_path\_meanderize.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z1,\ z2,\ z3\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ratio} & Amplitude ratio of the meanders. Typically a positive value. \\
+\hline
+{\em noise\+\_\+ratio} & Ratio of randomness introduced during meandering. Default is 0.\+1. \\
+\hline
+{\em seed} & Seed for random number generation. Default is 1. \\
+\hline
+{\em iterations} & Number of iterations to apply meandering. Default is 1. \\
+\hline
+{\em edge\+\_\+divisions} & Number of sub-\/divisions of each edge. Default is 10. \\
+\hline
+\end{DoxyParams}
 \Hypertarget{namespacehmap_a650c6eaf8bd10356a77c7c1f9ef9af3c}\label{namespacehmap_a650c6eaf8bd10356a77c7c1f9ef9af3c} 
 \index{hmap@{hmap}!remove\_geometric\_loops@{remove\_geometric\_loops}}
 \index{remove\_geometric\_loops@{remove\_geometric\_loops}!hmap@{hmap}}
@@ -14884,7 +15284,70 @@ This function iteratively detects self-\/intersections in the path and removes t
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}  \Hypertarget{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}\label{namespacehmap_aac71bb6c14edc17967957f7918acdbdd} 
+{\bfseries{Result}}  \Hypertarget{namespacehmap_ad81052648d6008d2b7b4a5a36a2d7830}\label{namespacehmap_ad81052648d6008d2b7b4a5a36a2d7830} 
+\index{hmap@{hmap}!smooth@{smooth}}
+\index{smooth@{smooth}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{smooth()}{smooth()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Path}{Path}} hmap\+::smooth (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&}]{path,  }\item[{int}]{navg = {\ttfamily 1},  }\item[{float}]{averaging\+\_\+intensity = {\ttfamily 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{inertia = {\ttfamily 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
+
+
+
+Applies a smoothing operation to the path points using a moving average filter. 
+
+This method smooths the path points based on a specified number of neighboring points, an averaging intensity, and an inertia factor. The smoothing involves calculating the average of neighboring points within a range defined by {\ttfamily navg}, and then applying an intensity-\/based weighted average to blend the original and smoothed values. Additionally, an inertia effect can be applied to gradually adjust point positions based on previous points.
+
+
+\begin{DoxyParams}{Parameters}
+{\em navg} & Number of neighboring points to consider on each side of the current point during the smoothing process. Higher values result in broader smoothing. \\
+\hline
+{\em averaging\+\_\+intensity} & The weight given to the averaged points. A value of 1.\+0 applies full intensity, resulting in a complete averaging of the neighboring points. Lower values retain more of the original point\textquotesingle{}s position. \\
+\hline
+{\em inertia} & The factor by which each point is influenced by its previous point after the initial smoothing pass. A value of 0 has no inertia effect, while a higher value blends the current point\textquotesingle{}s position with that of the preceding point, creating a trailing effect.\\
+\hline
+\end{DoxyParams}
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 6;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ npoints\ =\ 10;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ glm::vec4\ \ bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\};}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Path}{hmap::Path}}\ path\ =\ \mbox{\hyperlink{classhmap_1_1Path}{hmap::Path}}(npoints,\ seed,\ \mbox{\hyperlink{namespacehmap_adc5300323fa35e021fd83b8b048ef3b1}{hmap::adjust}}(bbox,\ -\/0.1f));}
+\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_ad68abaa80879402c3758e24626acfb53}{reorder\_nns}}();}
+\DoxyCodeLine{\ \ path\ =\ \mbox{\hyperlink{namespacehmap_a5d1634064e937326c7d91f509c3d67ab}{hmap::fractalize}}(path,\ 4,\ seed,\ 0.2f);}
+\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_a649a385315a3230c058d032b2171424a}{resample\_by\_spacing}}(0.05f);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ z1\ =\ path.\mbox{\hyperlink{classhmap_1_1Path_a4d1e1e63fea24bf8f23bc3343f8b746e}{to\_array}}(shape,\ bbox);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ navg\ =\ 12;}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Path}{hmap::Path}}\ path\_c\ =\ \mbox{\hyperlink{namespacehmap_ad81052648d6008d2b7b4a5a36a2d7830}{hmap::smooth}}(path,\ navg);}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ \ \ \ \ \ \ z2\ =\ path\_c.\mbox{\hyperlink{classhmap_1_1Path_a4d1e1e63fea24bf8f23bc3343f8b746e}{to\_array}}(shape,\ bbox);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a9cf9b5799effe7d05b0e3c8478eaca39}{hmap::assert\_start\_end\_points}}(path,\ path\_c);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_aeb2890d2ffbbf4291baf255c621095de}{set\_closed}}(\textcolor{keyword}{true});}
+\DoxyCodeLine{\ \ path\_c\ =\ \mbox{\hyperlink{namespacehmap_ad81052648d6008d2b7b4a5a36a2d7830}{hmap::smooth}}(path,\ navg);}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ z3\ =\ path\_c.\mbox{\hyperlink{classhmap_1_1Path_a4d1e1e63fea24bf8f23bc3343f8b746e}{to\_array}}(shape,\ bbox);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_path\_smooth.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z1,\ z2,\ z3\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}}  \Hypertarget{namespacehmap_a9cf9b5799effe7d05b0e3c8478eaca39}\label{namespacehmap_a9cf9b5799effe7d05b0e3c8478eaca39} 
+\index{hmap@{hmap}!assert\_start\_end\_points@{assert\_start\_end\_points}}
+\index{assert\_start\_end\_points@{assert\_start\_end\_points}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{assert\_start\_end\_points()}{assert\_start\_end\_points()}}
+{\footnotesize\ttfamily bool hmap\+::assert\+\_\+start\+\_\+end\+\_\+points (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&}]{path1,  }\item[{const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&}]{path2,  }\item[{float}]{tol = {\ttfamily 1e-\/6\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{bool}]{verbose = {\ttfamily true} }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}\label{namespacehmap_aac71bb6c14edc17967957f7918acdbdd} 
 \index{hmap@{hmap}!angle@{angle}}
 \index{angle@{angle}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{angle()}{angle()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
@@ -17596,7 +18059,7 @@ The function requires the path to have at least two points. If the path has fewe
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed,}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_adc5300323fa35e021fd83b8b048ef3b1}{hmap::adjust}}(bbox,\ 0.2f,\ -\/0.2f,\ 0.2f,\ -\/0.2f));}
 \DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_ad68abaa80879402c3758e24626acfb53}{reorder\_nns}}();}
-\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_ae338a7d28b40b0c7d0f9537ee770fcc4}{fractalize}}(8,\ seed);}
+\DoxyCodeLine{\ \ path\ =\ \mbox{\hyperlink{namespacehmap_a5d1634064e937326c7d91f509c3d67ab}{hmap::fractalize}}(path,\ 8,\ seed);}
 \DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Cloud_a5ac84550aceffbb9053c3b58490e7126}{set\_values\_from\_array}}(\mbox{\hyperlink{namespacehmap_a63a7fc5faca6c5018e98b8af700f4b80}{noise}},\ bbox);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ zp\ =\ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}(shape);}
@@ -27535,6 +27998,76 @@ This function calculates the topographic shadow intensity of the input array bas
 \begin{DoxySeeAlso}{See also}
 {\ttfamily \doxylink{namespacehmap_acbc412801dcbcce77b0e60b219dc946a}{hillshade}} 
 \end{DoxySeeAlso}
+\Hypertarget{namespacehmap_a5c8cb3751b2b9a83d23b15e3369f8449}\label{namespacehmap_a5c8cb3751b2b9a83d23b15e3369f8449} 
+\index{hmap@{hmap}!dijkstra@{dijkstra}}
+\index{dijkstra@{dijkstra}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{dijkstra()}{dijkstra()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Path}{Path}} hmap\+::dijkstra (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&}]{path,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{glm\+::vec4}]{bbox,  }\item[{float}]{elevation\+\_\+ratio = {\ttfamily 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{distance\+\_\+exponent = {\ttfamily 0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{upward\+\_\+penalization = {\ttfamily 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+mask\+\_\+nogo = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+
+
+Divide the path by adding points based on the lowest elevation difference between each pair of edge endpoints. 
+
+This method uses the elevation map to subdivide the path by adding intermediate points where the elevation difference between edges is minimal. The {\ttfamily elevation\+\_\+ratio} parameter balances the influence of absolute elevation versus elevation difference in the cost function used for path finding. The {\ttfamily distance\+\_\+exponent} affects the weight function used in Dijkstra\textquotesingle{}s algorithm. Areas defined by the {\ttfamily p\+\_\+mask\+\_\+nogo} mask are avoided.
+
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
+\DoxyCodeLine{\ \ glm::vec2\ \ res\ =\ \{4.f,\ 4.f\};}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 2;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ npoints\ =\ 10;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_acb13e7346085793fda4c94c47b75d9a9}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ res,\ seed);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ab80da2376c6212eb9cb2899c0a5114ad}{hmap::remap}}(z);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ glm::vec4\ \ bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\};}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Path}{hmap::Path}}\ path\ =\ \mbox{\hyperlink{classhmap_1_1Path}{hmap::Path}}(npoints,\ seed,\ \mbox{\hyperlink{namespacehmap_adc5300323fa35e021fd83b8b048ef3b1}{hmap::adjust}}(bbox,\ -\/0.1f));}
+\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_aeb2890d2ffbbf4291baf255c621095de}{set\_closed}}(\textcolor{keyword}{false});}
+\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_ad68abaa80879402c3758e24626acfb53}{reorder\_nns}}();}
+\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Cloud_a5ac84550aceffbb9053c3b58490e7126}{set\_values\_from\_array}}(z,\ bbox);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ before}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ z1\ =\ path.\mbox{\hyperlink{classhmap_1_1Path_a4d1e1e63fea24bf8f23bc3343f8b746e}{to\_array}}(shape,\ bbox);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ after}}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ edge\_divisions\ =\ 0;}
+\DoxyCodeLine{\ \ path\ =\ \mbox{\hyperlink{namespacehmap_a5c8cb3751b2b9a83d23b15e3369f8449}{hmap::dijkstra}}(path,\ z,\ bbox,\ edge\_divisions,\ 0.9f);}
+\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Cloud_a5ac84550aceffbb9053c3b58490e7126}{set\_values\_from\_array}}(z,\ bbox);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ z2\ =\ path.\mbox{\hyperlink{classhmap_1_1Path_a4d1e1e63fea24bf8f23bc3343f8b746e}{to\_array}}(shape,\ bbox);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_path\_dijkstra.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ z1,\ z2\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & Elevation map used to determine elevation differences along the path. \\
+\hline
+{\em bbox} & Bounding box of the domain, defining the area where elevation data is valid. \\
+\hline
+{\em edge\+\_\+divisions} & Number of subdivisions per edge; set to 0 for automatic division based on array shape. \\
+\hline
+{\em elevation\+\_\+ratio} & Ratio used to balance absolute elevation and elevation difference in the cost function. \\
+\hline
+{\em distance\+\_\+exponent} & Exponent used in the Dijkstra weight function to adjust the influence of distance. \\
+\hline
+{\em p\+\_\+mask\+\_\+nogo} & Optional mask array defining areas to avoid; points in these areas will not be considered.\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+Array\+::find\+\_\+path\+\_\+dijkstra 
+\end{DoxySeeAlso}
 \Hypertarget{namespacehmap_a21a3078ba07fad81a888ca00cd6c3b33}\label{namespacehmap_a21a3078ba07fad81a888ca00cd6c3b33} 
 \index{hmap@{hmap}!find\_cut\_path\_dijkstra@{find\_cut\_path\_dijkstra}}
 \index{find\_cut\_path\_dijkstra@{find\_cut\_path\_dijkstra}!hmap@{hmap}}
@@ -27827,7 +28360,7 @@ Vector of grid indices forming the path.
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ convert\ to\ a\ path\ for\ Spline\ interp}}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Path}{hmap::Path}}\ path(ij2,\ shape);}
-\DoxyCodeLine{\ \ path.bspline();}
+\DoxyCodeLine{\ \ path\ =\ \mbox{\hyperlink{namespacehmap_a281c9db00eef9735e8eea7bbf50f3e34}{hmap::bspline}}(path);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ export\ path\ to\ a\ png\ file}}
 \DoxyCodeLine{}

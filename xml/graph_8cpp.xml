@@ -30,13 +30,13 @@
 <codeline lineno="20"><highlight class="normal"></highlight></codeline>
 <codeline lineno="21"><highlight class="normal">std::vector&lt;int&gt;<sp/><ref refid="classhmap_1_1Graph_1a07e0c31ab59d4f51c51c3f90117ca71a" kindref="member">Graph::dijkstra</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>source_point_index,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>target_point_index)</highlight></codeline>
 <codeline lineno="22"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="23"><highlight class="normal"><sp/><sp/>std::vector&lt;float&gt;<sp/>dist(this-&gt;<ref refid="classhmap_1_1Cloud_1a4d6feb0c127bcea6566b600444cf103c" kindref="member">get_npoints</ref>());</highlight></codeline>
-<codeline lineno="24"><highlight class="normal"><sp/><sp/>std::vector&lt;int&gt;<sp/><sp/><sp/>prev(this-&gt;<ref refid="classhmap_1_1Cloud_1a4d6feb0c127bcea6566b600444cf103c" kindref="member">get_npoints</ref>());</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/>std::vector&lt;float&gt;<sp/>dist(this-&gt;<ref refid="classhmap_1_1Cloud_1adc675e8b2769a94b4c23bf7e69348f84" kindref="member">size</ref>());</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/>std::vector&lt;int&gt;<sp/><sp/><sp/>prev(this-&gt;<ref refid="classhmap_1_1Cloud_1adc675e8b2769a94b4c23bf7e69348f84" kindref="member">size</ref>());</highlight></codeline>
 <codeline lineno="25"><highlight class="normal"></highlight></codeline>
 <codeline lineno="26"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>---<sp/>Dijkstra&apos;s<sp/>algo</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="27"><highlight class="normal"><sp/><sp/>std::list&lt;int&gt;<sp/>queue<sp/>=<sp/>{};</highlight></codeline>
 <codeline lineno="28"><highlight class="normal"></highlight></codeline>
-<codeline lineno="29"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>this-&gt;<ref refid="classhmap_1_1Cloud_1a4d6feb0c127bcea6566b600444cf103c" kindref="member">get_npoints</ref>();<sp/>i++)</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>this-&gt;<ref refid="classhmap_1_1Cloud_1adc675e8b2769a94b4c23bf7e69348f84" kindref="member">size</ref>();<sp/>i++)</highlight></codeline>
 <codeline lineno="30"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
 <codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>dist[i]<sp/>=<sp/>std::numeric_limits&lt;float&gt;::max();</highlight></codeline>
 <codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>prev[i]<sp/>=<sp/>-1;</highlight></codeline>
@@ -153,11 +153,11 @@
 <codeline lineno="143"><highlight class="normal"></highlight></codeline>
 <codeline lineno="144"><highlight class="normal">Graph<sp/><ref refid="classhmap_1_1Graph_1ad3b05e01d0c31e189fa6bae4ac43de7c" kindref="member">Graph::minimum_spanning_tree_prim</ref>()</highlight></codeline>
 <codeline lineno="145"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="146"><highlight class="normal"><sp/><sp/>std::vector&lt;int&gt;<sp/><sp/><sp/>parent(this-&gt;<ref refid="classhmap_1_1Cloud_1a4d6feb0c127bcea6566b600444cf103c" kindref="member">get_npoints</ref>());</highlight></codeline>
-<codeline lineno="147"><highlight class="normal"><sp/><sp/>std::vector&lt;float&gt;<sp/>key(this-&gt;<ref refid="classhmap_1_1Cloud_1a4d6feb0c127bcea6566b600444cf103c" kindref="member">get_npoints</ref>());</highlight></codeline>
-<codeline lineno="148"><highlight class="normal"><sp/><sp/>std::vector&lt;bool&gt;<sp/><sp/>is_point_in_mst(this-&gt;<ref refid="classhmap_1_1Cloud_1a4d6feb0c127bcea6566b600444cf103c" kindref="member">get_npoints</ref>());</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/>std::vector&lt;int&gt;<sp/><sp/><sp/>parent(this-&gt;<ref refid="classhmap_1_1Cloud_1adc675e8b2769a94b4c23bf7e69348f84" kindref="member">size</ref>());</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/>std::vector&lt;float&gt;<sp/>key(this-&gt;<ref refid="classhmap_1_1Cloud_1adc675e8b2769a94b4c23bf7e69348f84" kindref="member">size</ref>());</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/>std::vector&lt;bool&gt;<sp/><sp/>is_point_in_mst(this-&gt;<ref refid="classhmap_1_1Cloud_1adc675e8b2769a94b4c23bf7e69348f84" kindref="member">size</ref>());</highlight></codeline>
 <codeline lineno="149"><highlight class="normal"></highlight></codeline>
-<codeline lineno="150"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>this-&gt;<ref refid="classhmap_1_1Cloud_1a4d6feb0c127bcea6566b600444cf103c" kindref="member">get_npoints</ref>();<sp/>i++)</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>this-&gt;<ref refid="classhmap_1_1Cloud_1adc675e8b2769a94b4c23bf7e69348f84" kindref="member">size</ref>();<sp/>i++)</highlight></codeline>
 <codeline lineno="151"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
 <codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/>key[i]<sp/>=<sp/>std::numeric_limits&lt;float&gt;::max();</highlight></codeline>
 <codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>is_point_in_mst[i]<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
@@ -167,7 +167,7 @@
 <codeline lineno="157"><highlight class="normal"><sp/><sp/>key[0]<sp/>=<sp/>0.f;</highlight></codeline>
 <codeline lineno="158"><highlight class="normal"><sp/><sp/>parent[0]<sp/>=<sp/>-1;</highlight></codeline>
 <codeline lineno="159"><highlight class="normal"></highlight></codeline>
-<codeline lineno="160"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>this-&gt;<ref refid="classhmap_1_1Cloud_1a4d6feb0c127bcea6566b600444cf103c" kindref="member">get_npoints</ref>()<sp/>-<sp/>1;<sp/>i++)</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>this-&gt;<ref refid="classhmap_1_1Cloud_1adc675e8b2769a94b4c23bf7e69348f84" kindref="member">size</ref>()<sp/>-<sp/>1;<sp/>i++)</highlight></codeline>
 <codeline lineno="161"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
 <codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>find<sp/>point<sp/>with<sp/>smallest<sp/>&apos;key&apos;<sp/>while<sp/>not<sp/>being<sp/>in<sp/>the<sp/>MS<sp/>tree</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/>k<sp/>=<sp/>0;</highlight></codeline>
@@ -181,7 +181,7 @@
 <codeline lineno="171"><highlight class="normal"></highlight></codeline>
 <codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/>is_point_in_mst[k]<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="173"><highlight class="normal"></highlight></codeline>
-<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>p<sp/>=<sp/>0;<sp/>p<sp/>&lt;<sp/>this-&gt;<ref refid="classhmap_1_1Cloud_1a4d6feb0c127bcea6566b600444cf103c" kindref="member">get_npoints</ref>();<sp/>p++)</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>p<sp/>=<sp/>0;<sp/>p<sp/>&lt;<sp/>this-&gt;<ref refid="classhmap_1_1Cloud_1adc675e8b2769a94b4c23bf7e69348f84" kindref="member">size</ref>();<sp/>p++)</highlight></codeline>
 <codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((this-&gt;<ref refid="classhmap_1_1Graph_1a93e452d7229b47e83f431502a18f68da" kindref="member">adjacency_matrix</ref>[{k,<sp/>p}]<sp/>&gt;<sp/>0.f)<sp/>and</highlight></codeline>
 <codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(is_point_in_mst[p]<sp/>==<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">)<sp/>and</highlight></codeline>
@@ -195,7 +195,7 @@
 <codeline lineno="185"><highlight class="normal"></highlight></codeline>
 <codeline lineno="186"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>build<sp/>output<sp/>graph</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="187"><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Graph_1a1209ddaafbb68fed3c43ec7766d8dc0a" kindref="member">Graph</ref><sp/>graph<sp/>=<sp/><ref refid="classhmap_1_1Graph_1a1209ddaafbb68fed3c43ec7766d8dc0a" kindref="member">Graph</ref>(this-&gt;<ref refid="classhmap_1_1Cloud_1aad75fb7bcfa7a2c3f139d2e3d3d6cc54" kindref="member">points</ref>);</highlight></codeline>
-<codeline lineno="188"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>1;<sp/>i<sp/>&lt;<sp/>this-&gt;<ref refid="classhmap_1_1Cloud_1a4d6feb0c127bcea6566b600444cf103c" kindref="member">get_npoints</ref>();<sp/>i++)</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>1;<sp/>i<sp/>&lt;<sp/>this-&gt;<ref refid="classhmap_1_1Cloud_1adc675e8b2769a94b4c23bf7e69348f84" kindref="member">size</ref>();<sp/>i++)</highlight></codeline>
 <codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/>graph.add_edge({(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)i,<sp/>parent[i]});</highlight></codeline>
 <codeline lineno="190"><highlight class="normal"></highlight></codeline>
 <codeline lineno="191"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>graph;</highlight></codeline>
@@ -204,7 +204,7 @@
 <codeline lineno="194"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Graph::print()</highlight></codeline>
 <codeline lineno="195"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="196"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Points:&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
-<codeline lineno="197"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>k<sp/>=<sp/>0;<sp/>k<sp/>&lt;<sp/>this-&gt;get_npoints();<sp/>k++)</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>k<sp/>=<sp/>0;<sp/>k<sp/>&lt;<sp/>this-&gt;size();<sp/>k++)</highlight></codeline>
 <codeline lineno="198"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
 <codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>std::setw(6)<sp/>&lt;&lt;<sp/>k;</highlight></codeline>
 <codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>std::setw(12)<sp/>&lt;&lt;<sp/>this-&gt;points[k].x;</highlight></codeline>
@@ -227,7 +227,7 @@
 <codeline lineno="217"><highlight class="normal">Graph<sp/>Graph::remove_orphan_points()</highlight></codeline>
 <codeline lineno="218"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="219"><highlight class="normal"><sp/><sp/>Graph<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>graph_out<sp/>=<sp/>Graph();</highlight></codeline>
-<codeline lineno="220"><highlight class="normal"><sp/><sp/>std::vector&lt;int&gt;<sp/>new_point_idx(this-&gt;get_npoints());</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/>std::vector&lt;int&gt;<sp/>new_point_idx(this-&gt;size());</highlight></codeline>
 <codeline lineno="221"><highlight class="normal"></highlight></codeline>
 <codeline lineno="222"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>fill<sp/>vector<sp/>with<sp/>&apos;-1&apos;<sp/>to<sp/>keep<sp/>track<sp/>of<sp/>which<sp/>points<sp/>have<sp/>already</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="223"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>been<sp/>added</highlight><highlight class="normal"></highlight></codeline>
@@ -235,7 +235,7 @@
 <codeline lineno="225"><highlight class="normal"></highlight></codeline>
 <codeline lineno="226"><highlight class="normal"><sp/><sp/>this-&gt;update_connectivity();</highlight></codeline>
 <codeline lineno="227"><highlight class="normal"></highlight></codeline>
-<codeline lineno="228"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>k<sp/>=<sp/>0;<sp/>k<sp/>&lt;<sp/>this-&gt;get_npoints();<sp/>k++)</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>k<sp/>=<sp/>0;<sp/>k<sp/>&lt;<sp/>this-&gt;size();<sp/>k++)</highlight></codeline>
 <codeline lineno="229"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
 <codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;connectivity[k].size()<sp/>&gt;<sp/>0)</highlight></codeline>
 <codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
@@ -244,7 +244,7 @@
 <codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(new_point_idx[k]<sp/>==<sp/>-1)</highlight></codeline>
 <codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>graph_out.add_point(this-&gt;points[k]);</highlight></codeline>
-<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>new_point_idx[k]<sp/>=<sp/>(int)graph_out.get_npoints()<sp/>-<sp/>1;</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>new_point_idx[k]<sp/>=<sp/>(int)graph_out.size()<sp/>-<sp/>1;</highlight></codeline>
 <codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="239"><highlight class="normal"></highlight></codeline>
 <codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>r<sp/>=<sp/>0;<sp/>r<sp/>&lt;<sp/>this-&gt;connectivity[k].size();<sp/>r++)</highlight></codeline>
@@ -253,7 +253,7 @@
 <codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((j<sp/>&gt;<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)k)<sp/>and<sp/>(new_point_idx[j]<sp/>==<sp/>-1))</highlight></codeline>
 <codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>graph_out.add_point(this-&gt;points[j]);</highlight></codeline>
-<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>new_point_idx[j]<sp/>=<sp/>(int)graph_out.get_npoints()<sp/>-<sp/>1;</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>new_point_idx[j]<sp/>=<sp/>(int)graph_out.size()<sp/>-<sp/>1;</highlight></codeline>
 <codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -316,8 +316,8 @@
 <codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/>Point<sp/>p2<sp/>=<sp/>this-&gt;points[this-&gt;edges[k][1]];</highlight></codeline>
 <codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/>Path<sp/><sp/>path<sp/>=<sp/>Path({p1,<sp/>p2});</highlight></codeline>
 <codeline lineno="308"><highlight class="normal"></highlight></codeline>
-<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/>path.resample(dmin);</highlight></codeline>
-<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/>path.fractalize(iterations,<sp/>seed,<sp/>sigma,<sp/>orientation,<sp/>persistence);</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/>path.resample_by_spacing(dmin);</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/>path<sp/>=<sp/><ref refid="namespacehmap_1a5d1634064e937326c7d91f509c3d67ab" kindref="member">fractalize</ref>(path,<sp/>iterations,<sp/>seed,<sp/>sigma,<sp/>orientation,<sp/>persistence);</highlight></codeline>
 <codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/>path.to_array(array,<sp/>bbox);</highlight></codeline>
 <codeline lineno="312"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="313"><highlight class="normal">}</highlight></codeline>
@@ -376,16 +376,16 @@
 <codeline lineno="366"><highlight class="normal"><sp/><sp/><ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>.close();</highlight></codeline>
 <codeline lineno="367"><highlight class="normal"></highlight></codeline>
 <codeline lineno="368"><highlight class="normal"><sp/><sp/><ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>.open(fname_adjacency,<sp/>std::ios::out);</highlight></codeline>
-<codeline lineno="369"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>(int)this-&gt;get_npoints();<sp/>i++)</highlight></codeline>
+<codeline lineno="369"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>(int)this-&gt;size();<sp/>i++)</highlight></codeline>
 <codeline lineno="370"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
-<codeline lineno="371"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/>(int)this-&gt;get_npoints();<sp/>j++)</highlight></codeline>
+<codeline lineno="371"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/>(int)this-&gt;size();<sp/>j++)</highlight></codeline>
 <codeline lineno="372"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>v<sp/>=<sp/>0.f;</highlight></codeline>
 <codeline lineno="374"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;adjacency_matrix.count({i,<sp/>j}))</highlight></codeline>
 <codeline lineno="375"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>v<sp/>=<sp/>this-&gt;adjacency_matrix[{i,<sp/>j}];</highlight></codeline>
 <codeline lineno="376"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref><sp/>&lt;&lt;<sp/>v;</highlight></codeline>
 <codeline lineno="377"><highlight class="normal"></highlight></codeline>
-<codeline lineno="378"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(j<sp/>&lt;<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)this-&gt;get_npoints()<sp/>-<sp/>1)<sp/><ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;,&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="378"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(j<sp/>&lt;<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)this-&gt;size()<sp/>-<sp/>1)<sp/><ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;,&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="379"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="380"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
 <codeline lineno="381"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
@@ -416,7 +416,7 @@
 <codeline lineno="406"><highlight class="normal"></highlight></codeline>
 <codeline lineno="407"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Graph::update_connectivity()</highlight></codeline>
 <codeline lineno="408"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="409"><highlight class="normal"><sp/><sp/>std::vector&lt;std::vector&lt;int&gt;&gt;<sp/>nbrs(this-&gt;get_npoints());</highlight></codeline>
+<codeline lineno="409"><highlight class="normal"><sp/><sp/>std::vector&lt;std::vector&lt;int&gt;&gt;<sp/>nbrs(this-&gt;size());</highlight></codeline>
 <codeline lineno="410"><highlight class="normal"></highlight></codeline>
 <codeline lineno="411"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(std::size_t<sp/>k<sp/>=<sp/>0;<sp/>k<sp/>&lt;<sp/>this-&gt;get_nedges();<sp/>k++)</highlight></codeline>
 <codeline lineno="412"><highlight class="normal"><sp/><sp/>{</highlight></codeline>

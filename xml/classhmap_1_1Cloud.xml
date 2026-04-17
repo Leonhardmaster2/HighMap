@@ -464,7 +464,7 @@
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>v.push_back(cloud.<ref refid="classhmap_1_1Cloud_1aad75fb7bcfa7a2c3f139d2e3d3d6cc54" kindref="member">points</ref>[k].v);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Path" kindref="compound">hmap::Path</ref><sp/>path_chull<sp/>=<sp/><ref refid="classhmap_1_1Path" kindref="compound">hmap::Path</ref>(x,<sp/>y,<sp/>v);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>path_chull.<ref refid="classhmap_1_1Path_1a2ea3482a302d8ef30084fd39e57715de" kindref="member">closed</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>path_chull.<ref refid="classhmap_1_1Path_1aeb2890d2ffbbf4291baf255c621095de" kindref="member">set_closed</ref>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z1<sp/>=<sp/>z0;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>path_chull.<ref refid="classhmap_1_1Path_1a4d1e1e63fea24bf8f23bc3343f8b746e" kindref="member">to_array</ref>(z1,<sp/>bbox);</highlight></codeline>
@@ -480,25 +480,6 @@
         <inbodydescription>
         </inbodydescription>
         <location file="HighMap/include/highmap/geometry/cloud.hpp" line="219" column="15" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="172" bodyend="186"/>
-      </memberdef>
-      <memberdef kind="function" id="classhmap_1_1Cloud_1a4d6feb0c127bcea6566b600444cf103c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>size_t</type>
-        <definition>size_t hmap::Cloud::get_npoints</definition>
-        <argsstring>() const</argsstring>
-        <name>get_npoints</name>
-        <qualifiedname>hmap::Cloud::get_npoints</qualifiedname>
-        <briefdescription>
-<para>Get the number of points in the cloud. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This method returns the total number of points currently stored in the cloud.</para>
-<para><simplesect kind="return"><para>size_t The number of points in the cloud. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="229" column="10" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="188" bodyend="191"/>
       </memberdef>
       <memberdef kind="function" id="classhmap_1_1Cloud_1a53cb47401f1e9d027a638f3680c3004d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; float &gt;</type>
@@ -517,7 +498,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="240" column="15" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="193" bodyend="200"/>
+        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="230" column="15" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="188" bodyend="195"/>
       </memberdef>
       <memberdef kind="function" id="classhmap_1_1Cloud_1abe70a230c2bfecad67112321b3040286" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>float</type>
@@ -536,7 +517,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="250" column="9" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="202" bodyend="208"/>
+        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="240" column="9" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="197" bodyend="203"/>
       </memberdef>
       <memberdef kind="function" id="classhmap_1_1Cloud_1a9194835457c70bfa13d0dfa66d964f01" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>float</type>
@@ -555,7 +536,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="260" column="9" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="210" bodyend="216"/>
+        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="250" column="9" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="205" bodyend="211"/>
       </memberdef>
       <memberdef kind="function" id="classhmap_1_1Cloud_1aab450c9376e44def1d4e4465f0b1b691" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::vector&lt; float &gt;</type>
@@ -575,7 +556,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="271" column="23" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="218" bodyend="225"/>
+        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="261" column="23" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="213" bodyend="220"/>
       </memberdef>
       <memberdef kind="function" id="classhmap_1_1Cloud_1ab0c1fe00f5465c5b0b04e3e397bae5d5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::vector&lt; float &gt;</type>
@@ -595,7 +576,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="283" column="23" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="227" bodyend="237"/>
+        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="273" column="23" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="222" bodyend="232"/>
       </memberdef>
       <memberdef kind="function" id="classhmap_1_1Cloud_1abf5f933e3506395b5369cb090119002e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::vector&lt; float &gt;</type>
@@ -615,7 +596,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="294" column="23" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="239" bodyend="246"/>
+        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="284" column="23" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="234" bodyend="241"/>
       </memberdef>
       <memberdef kind="function" id="classhmap_1_1Cloud_1a205f8cccbbe0421f210c6abbda5354b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; float &gt;</type>
@@ -659,7 +640,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="308" column="15" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="248" bodyend="286"/>
+        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="298" column="15" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="243" bodyend="281"/>
       </memberdef>
       <memberdef kind="function" id="classhmap_1_1Cloud_1ad75a6d3223008397f8f93bbda4470706" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>size_t</type>
@@ -691,7 +672,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="320" column="10" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="288" bodyend="306"/>
+        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="310" column="10" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="283" bodyend="301"/>
       </memberdef>
       <memberdef kind="function" id="classhmap_1_1Cloud_1aefea3d749a554df8a23ec38af5acb415" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -707,7 +688,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="328" column="8" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="308" bodyend="330"/>
+        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="318" column="8" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="303" bodyend="325"/>
       </memberdef>
       <memberdef kind="function" id="classhmap_1_1Cloud_1a5346876f8726c1604ac7decf3a69be5a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -750,7 +731,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="340" column="8" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="332" bodyend="341"/>
+        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="330" column="8" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="327" bodyend="336"/>
       </memberdef>
       <memberdef kind="function" id="classhmap_1_1Cloud_1a89fbc7c4e7e27bd520e93735e55eddff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -814,7 +795,7 @@ P(\text{keep } p) = \rho(x,y) \in [0,1]
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="371" column="8" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="343" bodyend="359"/>
+        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="361" column="8" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="338" bodyend="354"/>
       </memberdef>
       <memberdef kind="function" id="classhmap_1_1Cloud_1a35d0d2e48f4063bd7b582bd24a132294" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -856,7 +837,7 @@ P(\text{keep } p) = \rho(x,y) \in [0,1]
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="384" column="8" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="361" bodyend="373"/>
+        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="374" column="8" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="356" bodyend="368"/>
       </memberdef>
       <memberdef kind="function" id="classhmap_1_1Cloud_1afa8d7286a65d513bdc90c4c05bc42e0f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -886,7 +867,7 @@ P(\text{keep } p) = \rho(x,y) \in [0,1]
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="393" column="8" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="375" bodyend="378"/>
+        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="383" column="8" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="370" bodyend="373"/>
       </memberdef>
       <memberdef kind="function" id="classhmap_1_1Cloud_1a6e8c4efb301989f9ecf2175d62ef55f8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -909,7 +890,7 @@ P(\text{keep } p) = \rho(x,y) \in [0,1]
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="398" column="8" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="380" bodyend="390"/>
+        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="388" column="8" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="375" bodyend="385"/>
       </memberdef>
       <memberdef kind="function" id="classhmap_1_1Cloud_1a604e61fbcbd8cc469ed21501e65f5c7b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -939,7 +920,7 @@ P(\text{keep } p) = \rho(x,y) \in [0,1]
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="409" column="8" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="392" bodyend="399"/>
+        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="399" column="8" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="387" bodyend="394"/>
       </memberdef>
       <memberdef kind="function" id="classhmap_1_1Cloud_1a540b582307b8457f38c43d12d899f2bf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -969,7 +950,7 @@ P(\text{keep } p) = \rho(x,y) \in [0,1]
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="418" column="8" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="401" bodyend="405"/>
+        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="408" column="8" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="396" bodyend="400"/>
       </memberdef>
       <memberdef kind="function" id="classhmap_1_1Cloud_1a5ac84550aceffbb9053c3b58490e7126" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1012,7 +993,7 @@ P(\text{keep } p) = \rho(x,y) \in [0,1]
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="432" column="8" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="407" bodyend="411"/>
+        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="422" column="8" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="402" bodyend="406"/>
       </memberdef>
       <memberdef kind="function" id="classhmap_1_1Cloud_1a4349b98daebf829b1dd2d54d02e61231" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1049,7 +1030,7 @@ P(\text{keep } p) = \rho(x,y) \in [0,1]
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="449" column="8" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="413" bodyend="422"/>
+        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="439" column="8" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="408" bodyend="417"/>
       </memberdef>
       <memberdef kind="function" id="classhmap_1_1Cloud_1adf0b7a7c0c7d414e5d01e19be624aa3c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1065,7 +1046,7 @@ P(\text{keep } p) = \rho(x,y) \in [0,1]
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="461" column="8" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="424" bodyend="441"/>
+        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="451" column="8" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="419" bodyend="436"/>
       </memberdef>
       <memberdef kind="function" id="classhmap_1_1Cloud_1ad8b2d626436107c4b0e2c9877747375f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1086,7 +1067,26 @@ P(\text{keep } p) = \rho(x,y) \in [0,1]
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="472" column="8" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="443" bodyend="453"/>
+        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="462" column="8" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="438" bodyend="448"/>
+      </memberdef>
+      <memberdef kind="function" id="classhmap_1_1Cloud_1adc675e8b2769a94b4c23bf7e69348f84" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t hmap::Cloud::size</definition>
+        <argsstring>() const</argsstring>
+        <name>size</name>
+        <qualifiedname>hmap::Cloud::size</qualifiedname>
+        <briefdescription>
+<para>Get the number of points in the cloud. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This method returns the total number of points currently stored in the cloud.</para>
+<para><simplesect kind="return"><para>size_t The number of points in the cloud. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="472" column="10" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="450" bodyend="453"/>
       </memberdef>
       <memberdef kind="function" id="classhmap_1_1Cloud_1a7b26dc92e0d2217b8438f1ce9376ea0d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1130,7 +1130,7 @@ P(\text{keep } p) = \rho(x,y) \in [0,1]
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="485" column="8" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="455" bodyend="519"/>
+        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="485" column="8" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="455" bodyend="518"/>
       </memberdef>
       <memberdef kind="function" id="classhmap_1_1Cloud_1af8d4e873ff4ed29eb7f140db227e03a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1197,7 +1197,7 @@ P(\text{keep } p) = \rho(x,y) \in [0,1]
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="504" column="8" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="521" bodyend="532"/>
+        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="504" column="8" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="520" bodyend="531"/>
       </memberdef>
       <memberdef kind="function" id="classhmap_1_1Cloud_1a36e47d4857108c56193755e32374184d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1240,7 +1240,7 @@ P(\text{keep } p) = \rho(x,y) \in [0,1]
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="519" column="8" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="534" bodyend="550"/>
+        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="519" column="8" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="533" bodyend="549"/>
       </memberdef>
       <memberdef kind="function" id="classhmap_1_1Cloud_1a82725745baf9ae1982c352dcb3656424" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -1347,7 +1347,7 @@ P(\text{keep } p) = \rho(x,y) \in [0,1]
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="547" column="9" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="581" bodyend="615"/>
+        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="547" column="9" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="580" bodyend="614"/>
       </memberdef>
       <memberdef kind="function" id="classhmap_1_1Cloud_1acd6b504637e3c0791049b1f426ad4553" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1495,7 +1495,7 @@ P(\text{keep } p) = \rho(x,y) \in [0,1]
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="580" column="8" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="552" bodyend="579"/>
+        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="580" column="8" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="551" bodyend="578"/>
       </memberdef>
       <memberdef kind="function" id="classhmap_1_1Cloud_1aea876ffcd05ba762a9a12d2fc4a5d27c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1525,7 +1525,7 @@ P(\text{keep } p) = \rho(x,y) \in [0,1]
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="596" column="8" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="617" bodyend="629"/>
+        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="596" column="8" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="616" bodyend="628"/>
       </memberdef>
       <memberdef kind="function" id="classhmap_1_1Cloud_1add728a8b00dadb4a1d043ce50876c569" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Graph" kindref="compound">Graph</ref></type>
@@ -1544,7 +1544,7 @@ P(\text{keep } p) = \rho(x,y) \in [0,1]
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="607" column="9" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="631" bodyend="647"/>
+        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="607" column="9" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="630" bodyend="646"/>
       </memberdef>
       <memberdef kind="function" id="classhmap_1_1Cloud_1ad9dd8073b3ce4224c3e6435b24bea561" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1625,7 +1625,7 @@ P(\text{keep } p) = \rho(x,y) \in [0,1]
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="631" column="8" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="649" bodyend="658"/>
+        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="631" column="8" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="648" bodyend="657"/>
       </memberdef>
       <memberdef kind="function" id="classhmap_1_1Cloud_1a653188a0cf3bd86403a12d225b2eb1fa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; glm::vec3 &gt;</type>
@@ -1639,7 +1639,7 @@ P(\text{keep } p) = \rho(x,y) \in [0,1]
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="637" column="15" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="660" bodyend="669"/>
+        <location file="HighMap/include/highmap/geometry/cloud.hpp" line="637" column="15" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="659" bodyend="668"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -1699,7 +1699,6 @@ P(\text{keep } p) = \rho(x,y) \in [0,1]
       <member refid="classhmap_1_1Cloud_1ae5ba6ffbe371603545c312e51601615f" prot="public" virt="non-virtual"><scope>hmap::Cloud</scope><name>get_bbox</name></member>
       <member refid="classhmap_1_1Cloud_1a2f4679015ee69b12c50f60a607388965" prot="public" virt="non-virtual"><scope>hmap::Cloud</scope><name>get_center</name></member>
       <member refid="classhmap_1_1Cloud_1a10f22c402c1e8e4043c01327bca0f9e8" prot="public" virt="non-virtual"><scope>hmap::Cloud</scope><name>get_convex_hull_point_indices</name></member>
-      <member refid="classhmap_1_1Cloud_1a4d6feb0c127bcea6566b600444cf103c" prot="public" virt="non-virtual"><scope>hmap::Cloud</scope><name>get_npoints</name></member>
       <member refid="classhmap_1_1Cloud_1a53cb47401f1e9d027a638f3680c3004d" prot="public" virt="non-virtual"><scope>hmap::Cloud</scope><name>get_values</name></member>
       <member refid="classhmap_1_1Cloud_1abe70a230c2bfecad67112321b3040286" prot="public" virt="non-virtual"><scope>hmap::Cloud</scope><name>get_values_max</name></member>
       <member refid="classhmap_1_1Cloud_1a9194835457c70bfa13d0dfa66d964f01" prot="public" virt="non-virtual"><scope>hmap::Cloud</scope><name>get_values_min</name></member>
@@ -1722,6 +1721,7 @@ P(\text{keep } p) = \rho(x,y) \in [0,1]
       <member refid="classhmap_1_1Cloud_1adf0b7a7c0c7d414e5d01e19be624aa3c" prot="public" virt="non-virtual"><scope>hmap::Cloud</scope><name>set_values_from_chull_distance</name></member>
       <member refid="classhmap_1_1Cloud_1ad8b2d626436107c4b0e2c9877747375f" prot="public" virt="non-virtual"><scope>hmap::Cloud</scope><name>set_values_from_min_distance</name></member>
       <member refid="classhmap_1_1Cloud_1af8d4e873ff4ed29eb7f140db227e03a2" prot="public" virt="non-virtual"><scope>hmap::Cloud</scope><name>shuffle</name></member>
+      <member refid="classhmap_1_1Cloud_1adc675e8b2769a94b4c23bf7e69348f84" prot="public" virt="non-virtual"><scope>hmap::Cloud</scope><name>size</name></member>
       <member refid="classhmap_1_1Cloud_1a7b26dc92e0d2217b8438f1ce9376ea0d" prot="public" virt="non-virtual"><scope>hmap::Cloud</scope><name>snap_points_to_bounding_box</name></member>
       <member refid="classhmap_1_1Cloud_1a36e47d4857108c56193755e32374184d" prot="public" virt="non-virtual"><scope>hmap::Cloud</scope><name>to_array</name></member>
       <member refid="classhmap_1_1Cloud_1acd6b504637e3c0791049b1f426ad4553" prot="public" virt="non-virtual"><scope>hmap::Cloud</scope><name>to_array_interp</name></member>

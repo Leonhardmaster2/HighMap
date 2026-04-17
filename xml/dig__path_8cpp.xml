@@ -38,7 +38,7 @@
 <codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>make<sp/>sure<sp/>the<sp/>path<sp/>is<sp/>monotically<sp/>decreasing</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>path_copy.set_values_from_array(z,<sp/>bbox);</highlight></codeline>
 <codeline lineno="30"><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>k<sp/>=<sp/>1;<sp/>k<sp/>&lt;<sp/>path_copy.get_npoints();<sp/>k++)</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>k<sp/>=<sp/>1;<sp/>k<sp/>&lt;<sp/>path_copy.size();<sp/>k++)</highlight></codeline>
 <codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(path_copy.points[k].v<sp/>&gt;<sp/>path_copy.points[k<sp/>-<sp/>1].v)</highlight></codeline>
 <codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>path_copy.points[k].v<sp/>=<sp/>path_copy.points[k<sp/>-<sp/>1].v;</highlight></codeline>
 <codeline lineno="34"><highlight class="normal"></highlight></codeline>
