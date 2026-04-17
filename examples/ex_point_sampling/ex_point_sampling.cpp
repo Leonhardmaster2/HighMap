@@ -57,7 +57,7 @@ int main(void)
                                seed,
                                hmap::PointSamplingMethod::RND_HALTON);
 
-    cloud.rejection_filter_density(density, seed);
+    hmap::rejection_filter_density(cloud, density, seed);
 
     cloud.to_array(raster);
     zs.push_back(raster);

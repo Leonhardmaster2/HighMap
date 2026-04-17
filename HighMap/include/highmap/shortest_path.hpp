@@ -24,11 +24,11 @@ namespace hmap
  * difference between each pair of edge endpoints.
  *
  * This method uses the elevation map to subdivide the path by adding
- * intermediate points where the elevation difference between edges is
- * minimal. The `elevation_ratio` parameter balances the influence of absolute
- * elevation versus elevation difference in the cost function used for path
- * finding. The `distance_exponent` affects the weight function used in
- * Dijkstra's algorithm. Areas defined by the `p_mask_nogo` mask are avoided.
+ * intermediate points where the elevation difference between edges is minimal.
+ * The `elevation_ratio` parameter balances the influence of absolute elevation
+ * versus elevation difference in the cost function used for path finding. The
+ * `distance_exponent` affects the weight function used in Dijkstra's algorithm.
+ * Areas defined by the `p_mask_nogo` mask are avoided.
  *
  * **Example**
  * @include ex_path_dijkstra.cpp
@@ -38,8 +38,8 @@ namespace hmap
  *
  * @param array             Elevation map used to determine elevation
  *                          differences along the path.
- * @param bbox              Bounding box of the domain, defining the area
- * where elevation data is valid.
+ * @param bbox              Bounding box of the domain, defining the area where
+ *                          elevation data is valid.
  * @param edge_divisions    Number of subdivisions per edge; set to 0 for
  *                          automatic division based on array shape.
  * @param elevation_ratio   Ratio used to balance absolute elevation and

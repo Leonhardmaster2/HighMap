@@ -22,6 +22,7 @@ Array interpolate2d_nearest(glm::ivec2                shape,
 
   // KD-tree
   KDTreeContext tree(x, y);
+
   // interpolation base grid
   std::vector<float> xg, yg;
   grid_xy_vector(xg, yg, shape, bbox, /* endpoint */ false);

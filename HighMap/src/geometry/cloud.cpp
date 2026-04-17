@@ -169,7 +169,7 @@ Point Cloud::get_center() const
   return center / (float)this->points.size();
 }
 
-std::vector<int> Cloud::get_convex_hull_point_indices() const
+std::vector<int> Cloud::get_convex_hull() const
 {
   delaunator::Delaunator d(this->get_xy());
 
@@ -240,46 +240,6 @@ std::vector<float> Cloud::get_y() const
   return y;
 }
 
-std::vector<float> Cloud::interpolate_values_from_array(const Array &array,
-                                                        glm::vec4    bbox)
-{
-  const float      inv_width = 1.0f / (bbox.y - bbox.x);
-  const float      inv_height = 1.0f / (bbox.w - bbox.z);
-  const glm::ivec2 shape = {array.shape.x - 1, array.shape.y - 1};
-
-  std::vector<float> values;
-  values.reserve(points.size());
-
-  for (const auto &p : points)
-  {
-    const float xn = (p.x - bbox.x) * inv_width;
-    const float yn = (p.y - bbox.z) * inv_height;
-
-    if (xn < 0.0f || xn > 1.0f || yn < 0.0f || yn > 1.0f)
-    {
-      values.push_back(0.0f);
-      continue;
-    }
-
-    const float x_scaled = xn * shape.x;
-    const float y_scaled = yn * shape.y;
-    const int   i = static_cast<int>(x_scaled);
-    const int   j = static_cast<int>(y_scaled);
-
-    if (i >= 0 && i < array.shape.x && j >= 0 && j < array.shape.y)
-    {
-      const float uu = x_scaled - i;
-      const float vv = y_scaled - j;
-      values.push_back(array.get_value_bilinear_at(i, j, uu, vv));
-    }
-    else
-    {
-      values.push_back(0.0f);
-    }
-  }
-  return values;
-}
-
 size_t Cloud::nearest_point(const glm::vec2 &xy) const
 {
   size_t kn = 0;
@@ -333,24 +293,6 @@ void Cloud::randomize(uint seed, glm::vec4 bbox)
 
   for (size_t k = 0; k < this->size(); ++k)
     this->points[k] = cloud_rnd.points[k];
-}
-
-void Cloud::rejection_filter_density(const Array     &density_mask,
-                                     uint             seed,
-                                     const glm::vec4 &bbox)
-{
-  std::mt19937                          gen(seed);
-  std::uniform_real_distribution<float> dis(0.f, 1.f);
-
-  auto density_fct = make_xy_function_from_array(density_mask, bbox);
-
-  std::remove_if(this->points.begin(),
-                 this->points.end(),
-                 [&](Point p)
-                 {
-                   float rnd = dis(gen);
-                   return (rnd > density_fct(p.x, p.y));
-                 });
 }
 
 void Cloud::remap_values(float vmin, float vmax)
@@ -418,7 +360,7 @@ void Cloud::set_values_from_border_distance(const glm::vec4 &bbox)
 
 void Cloud::set_values_from_chull_distance()
 {
-  std::vector<int> chull = this->get_convex_hull_point_indices();
+  std::vector<int> chull = this->get_convex_hull();
 
   for (size_t i = 0; i < this->size(); i++)
   {
@@ -548,6 +490,13 @@ void Cloud::to_array(Array &array, glm::vec4 bbox) const
   }
 }
 
+Array Cloud::to_array(glm::ivec2 shape, glm::vec4 bbox) const
+{
+  Array array(shape);
+  this->to_array(array, bbox);
+  return array;
+}
+
 void Cloud::to_array_interp(Array                &array,
                             glm::vec4             bbox,
                             InterpolationMethod2D interpolation_method,
@@ -575,42 +524,6 @@ void Cloud::to_array_interp(Array                &array,
                         p_noise_x,
                         p_noise_y,
                         bbox_array);
-}
-
-Array Cloud::to_array_sdf(glm::ivec2 shape,
-                          glm::vec4  bbox,
-                          Array     *p_noise_x,
-                          Array     *p_noise_y,
-                          glm::vec4  bbox_array) const
-{
-  // nodes
-  std::vector<float> xp = this->get_x();
-  std::vector<float> yp = this->get_y();
-
-  for (size_t k = 0; k < xp.size(); k++)
-  {
-    xp[k] = (xp[k] - bbox.x) / (bbox.y - bbox.x);
-    yp[k] = (yp[k] - bbox.z) / (bbox.w - bbox.z);
-  }
-
-  // fill heightmap
-  auto distance_fct = [&xp, &yp](float x, float y, float)
-  {
-    float d = std::numeric_limits<float>::max();
-    for (size_t i = 0; i < xp.size(); i++)
-      d = std::min(d, std::hypot(x - xp[i], y - yp[i]));
-    return std::sqrt(d);
-  };
-
-  Array z = Array(shape);
-  fill_array_using_xy_function(z,
-                               bbox_array,
-                               nullptr,
-                               p_noise_x,
-                               p_noise_y,
-                               nullptr,
-                               distance_fct);
-  return z;
 }
 
 void Cloud::to_csv(const std::string &fname) const

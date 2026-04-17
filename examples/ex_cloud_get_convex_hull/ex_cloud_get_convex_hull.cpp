@@ -14,7 +14,7 @@ int main(void)
   hmap::Array z0 = hmap::Array(shape);
   cloud.to_array(z0, bbox);
 
-  std::vector<int> idx = cloud.get_convex_hull_point_indices();
+  std::vector<int> idx = cloud.get_convex_hull();
 
   // create a polyline to display the chull
   std::vector<float> x, y, v;

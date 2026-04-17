@@ -19,9 +19,6 @@
  * Additional functionalities include calculating Signed Distance Functions
  * (SDF) and projecting point clouds onto arrays.
  *
- * @version 0.1 Initial version.
- * @date 2023-06-18
- *
  * @copyright Copyright (c) 2023 Otto Link
  *
  * This software is distributed under the terms of the GNU General Public
@@ -55,6 +52,10 @@ class Cloud
 {
 public:
   std::vector<Point> points = {}; ///< Points of the cloud.
+
+  // ==========================================================================
+  //  Constructors
+  // ==========================================================================
 
   /**
    * @brief Default constructor for the Cloud class.
@@ -146,32 +147,17 @@ public:
   void add_point(const Point &p);
 
   /**
-   * @brief Clear all data from the cloud.
+   * @brief Remove a point from the cloud.
    *
-   * This method removes all points from the cloud, leaving it empty.
+   * This method removes a point from the cloud based on its index.
+   *
+   * @param point_idx Index of the point to be removed.
    */
-  void clear();
+  void remove_point(int point_idx);
 
-  /**
-   * @brief Loads point data from a CSV file into the Cloud object.
-   *
-   * This function reads a CSV file where each line contains either 2D (X, Y) or
-   * 3D (X, Y, Z) point data. The function automatically detects the
-   * dimensionality of the points based on the number of values per line. The
-   * loaded points are stored in the `points` member of the Cloud object.
-   *
-   * @param  fname The path to the CSV file to be read.
-   * @return       true if the file was successfully read and the points were
-   *               loaded, false otherwise.
-   *
-   * @note The CSV file must be well-formed, with each line containing either 2
-   * or 3 comma-separated values. Lines with an unexpected number of values will
-   * cause the function to return false.
-   *
-   * @warning If the file cannot be opened or contains invalid data (e.g.,
-   * non-numeric values), the function will log an error and return false.
-   */
-  bool from_csv(const std::string &fname);
+  // ==========================================================================
+  //  Accessors
+  // ==========================================================================
 
   /**
    * @brief Get the bounding box of the cloud.
@@ -216,7 +202,7 @@ public:
    * **Result**
    * @image html ex_cloud_get_convex_hull.png
    */
-  std::vector<int> get_convex_hull_point_indices() const;
+  std::vector<int> get_convex_hull() const;
 
   /**
    * @brief Get the values assigned to the points in the cloud.
@@ -258,7 +244,7 @@ public:
    * @return std::vector<float> A vector containing the `x` coordinates of the
    *         points.
    */
-  virtual std::vector<float> get_x() const;
+  std::vector<float> get_x() const;
 
   /**
    * @brief Get the concatenated `x` and `y` coordinates of the points in the
@@ -270,7 +256,7 @@ public:
    * @return std::vector<float> A vector containing the concatenated `x` and `y`
    * coordinates of the points.
    */
-  virtual std::vector<float> get_xy() const;
+  std::vector<float> get_xy() const;
 
   /**
    * @brief Get the `y` coordinates of the points in the cloud.
@@ -281,22 +267,7 @@ public:
    * @return std::vector<float> A vector containing the `y` coordinates of the
    *         points.
    */
-  virtual std::vector<float> get_y() const;
-
-  /**
-   * @brief Interpolate values from an array at the points' `(x, y)` locations.
-   *
-   * This method computes interpolated values for each point in the cloud based
-   * on its `(x, y)` coordinates and an underlying array, using bilinear
-   * interpolation within the specified bounding box.
-   *
-   * @param  array The input array from which to interpolate values.
-   * @param  bbox  The bounding box of the array.
-   * @return       std::vector<float> A vector containing the interpolated
-   * values for each point.
-   */
-  std::vector<float> interpolate_values_from_array(const Array &array,
-                                                   glm::vec4    bbox);
+  std::vector<float> get_y() const;
 
   /**
    * \brief Find the index of the nearest point in the cloud.
@@ -304,83 +275,14 @@ public:
    * Computes the point whose (x,y) position is closest to \p xy using squared
    * Euclidean distance.
    *
+   * \note This implementation is not optimized and is intended for occasional
+   * single queries. It performs a linear search and is not suitable for
+   * large-scale or repeated nearest-neighbor queries.
+   *
    * \param xy Query position
    * \return Index of the nearest point
    */
   size_t nearest_point(const glm::vec2 &xy) const;
-
-  /**
-   * @brief Print information about the cloud's points.
-   *
-   * This method prints data related to the cloud's points, including their
-   * coordinates and values.
-   */
-  void print();
-
-  /**
-   * @brief Randomize the positions and values of the cloud points.
-   *
-   * This method randomizes the positions and values of the points in the cloud
-   * using a given random seed. The new positions are generated within the
-   * specified bounding box.
-   *
-   * @param seed Random seed number for generating positions and values.
-   * @param bbox Bounding box within which the points will be randomized.
-   */
-  void randomize(uint seed, glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f});
-
-  /**
-   * @brief Filter a point cloud using rejection sampling based on a density
-   * mask.
-   *
-   * Each point in the input cloud is retained or discarded according to a
-   * spatially varying probability derived from the provided 2D density mask.
-   * The mask is mapped to the bounding box and evaluated as a continuous
-   * function over the domain.
-   *
-   * For a point \f$p=(x,y)\f$, the probability of acceptance is:
-   * \f[
-   * P(\text{keep } p) = \rho(x,y) \in [0,1]
-   * \f] where \f$\rho(x,y)\f$ is the normalized density mask value at the
-   * point's position.
-   *
-   * @param density_mask 2D array defining the spatial density field over the
-   *                     bounding box. Values should lie in \f$[0,1]\f$.
-   * @param seed         Random seed used for reproducible rejection sampling.
-   * @param bbox         Bounding box `(xmin, ymin, xmax, ymax)` defining the
-   *                     spatial extent of the density mask in world
-   * coordinates.
-   *
-   * @note
-   * - Points outside the bounding box are implicitly mapped to extrapolated
-   * density values.
-   * - The method preserves the *relative* density pattern defined by the mask,
-   * but reduces the overall number of points according to rejection
-   * probability.
-   */
-  void rejection_filter_density(const Array     &density_mask,
-                                uint             seed,
-                                const glm::vec4 &bbox = {0.f, 1.f, 0.f, 1.f});
-
-  /**
-   * @brief Remap the values of the cloud points to a target range.
-   *
-   * This method scales the values associated with the cloud points so that they
-   * fall within a specified range `[vmin, vmax]`.
-   *
-   * @param vmin The lower bound of the target range.
-   * @param vmax The upper bound of the target range.
-   */
-  void remap_values(float vmin, float vmax);
-
-  /**
-   * @brief Remove a point from the cloud.
-   *
-   * This method removes a point from the cloud based on its index.
-   *
-   * @param point_idx Index of the point to be removed.
-   */
-  void remove_point(int point_idx);
 
   /**
    * @brief Set points of the using x, y coordinates.
@@ -471,19 +373,47 @@ public:
    */
   size_t size() const;
 
+  // ==========================================================================
+  //  Basic Ops
+  // ==========================================================================
+
   /**
-   * @brief Snap points to the bounding box edges and corners.
+   * @brief Clear all data from the cloud.
    *
-   * Points within a tolerance distance from the bounding box edges are
-   * projected onto the closest edge. Afterwards, the closest point to each
-   * corner is snapped exactly to that corner.
-   *
-   * @param bbox            Bounding box defined as (xmin, xmax, ymin, ymax).
-   * @param tolerance_ratio Ratio used to compute the snapping distance relative
-   *                        to the average point spacing.
+   * This method removes all points from the cloud, leaving it empty.
    */
-  void snap_points_to_bounding_box(const glm::vec4 &bbox = {0.f, 1.f, 0.f, 1.f},
-                                   float            tolerance_ratio = 1.f);
+  void clear();
+
+  /**
+   * @brief Print information about the cloud's points.
+   *
+   * This method prints data related to the cloud's points, including their
+   * coordinates and values.
+   */
+  void print();
+
+  /**
+   * @brief Randomize the positions and values of the cloud points.
+   *
+   * This method randomizes the positions and values of the points in the cloud
+   * using a given random seed. The new positions are generated within the
+   * specified bounding box.
+   *
+   * @param seed Random seed number for generating positions and values.
+   * @param bbox Bounding box within which the points will be randomized.
+   */
+  void randomize(uint seed, glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f});
+
+  /**
+   * @brief Remap the values of the cloud points to a target range.
+   *
+   * This method scales the values associated with the cloud points so that they
+   * fall within a specified range `[vmin, vmax]`.
+   *
+   * @param vmin The lower bound of the target range.
+   * @param vmax The upper bound of the target range.
+   */
+  void remap_values(float vmin, float vmax);
 
   /**
    * @brief Randomly perturbs the positions and values of all points in the
@@ -504,6 +434,45 @@ public:
   void shuffle(float dx, float dy, uint seed, float dv = 0.f);
 
   /**
+   * @brief Snap points to the bounding box edges and corners.
+   *
+   * Points within a tolerance distance from the bounding box edges are
+   * projected onto the closest edge. Afterwards, the closest point to each
+   * corner is snapped exactly to that corner.
+   *
+   * @param bbox            Bounding box defined as (xmin, xmax, ymin, ymax).
+   * @param tolerance_ratio Ratio used to compute the snapping distance relative
+   *                        to the average point spacing.
+   */
+  void snap_points_to_bounding_box(const glm::vec4 &bbox = {0.f, 1.f, 0.f, 1.f},
+                                   float            tolerance_ratio = 1.f);
+
+  // ==========================================================================
+  //  Conversion / IO
+  // ==========================================================================
+
+  /**
+   * @brief Loads point data from a CSV file into the Cloud object.
+   *
+   * This function reads a CSV file where each line contains either 2D (X, Y) or
+   * 3D (X, Y, Z) point data. The function automatically detects the
+   * dimensionality of the points based on the number of values per line. The
+   * loaded points are stored in the `points` member of the Cloud object.
+   *
+   * @param  fname The path to the CSV file to be read.
+   * @return       true if the file was successfully read and the points were
+   *               loaded, false otherwise.
+   *
+   * @note The CSV file must be well-formed, with each line containing either 2
+   * or 3 comma-separated values. Lines with an unexpected number of values will
+   * cause the function to return false.
+   *
+   * @warning If the file cannot be opened or contains invalid data (e.g.,
+   * non-numeric values), the function will log an error and return false.
+   */
+  bool from_csv(const std::string &fname);
+
+  /**
    * @brief Project the cloud points onto an array.
    *
    * This method projects the cloud points' values onto a given array, mapping
@@ -518,37 +487,8 @@ public:
    */
   void to_array(Array &array, glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f}) const;
 
-  /**
-   * @brief Generate an array filled with the signed distance function (SDF) to
-   * the cloud points.
-   *
-   * This function returns an array where each value represents the signed
-   * distance to the nearest cloud point. The distance is positive outside the
-   * cloud and negative inside. The result can be domain-warped by applying
-   * optional noise arrays to the x and y coordinates.
-   *
-   * @param  shape      The shape of the output array (width and height).
-   * @param  bbox       The bounding box that defines the cloud's coordinate
-   *                    system.
-   * @param  p_noise_x  Optional reference to a noise array applied to the
-   *                    x-coordinates for domain warping (not in pixels).
-   * @param  p_noise_y  Optional reference to a noise array applied to the
-   *                    y-coordinates for domain warping (not in pixels).
-   * @param  bbox_array The bounding box of the destination array.
-   * @return            Array The resulting array filled with the signed
-   * distance function.
-   *
-   * **Example**
-   * @include ex_cloud_sdf.cpp
-   *
-   * **Result**
-   * @image html ex_cloud_sdf.png
-   */
-  Array to_array_sdf(glm::ivec2 shape,
-                     glm::vec4  bbox,
-                     Array     *p_noise_x = nullptr,
-                     Array     *p_noise_y = nullptr,
-                     glm::vec4  bbox_array = {0.f, 1.f, 0.f, 1.f}) const;
+  /*! @brief See hmap::to_array */
+  Array to_array(glm::ivec2 shape, glm::vec4 bbox) const;
 
   /**
    * @brief Interpolate the values of an array using the cloud points.
@@ -634,8 +574,51 @@ public:
               int                depth = CV_8U,
               glm::ivec2         shape = {512, 512});
 
+  /**
+   * @brief Convert path points to a vector of 3D positions.
+   * @return Vector of points as (x, y, v).
+   */
   std::vector<glm::vec3> to_vec3() const;
 };
+
+// ==========================================================================
+//  Functions
+// ==========================================================================
+
+/**
+ * @brief Compute a distance field from a point cloud.
+ *
+ * For each grid cell, computes the distance to the nearest point in the cloud,
+ * optionally applying domain warping using noise fields.
+ *
+ * @param  cloud      Input point cloud.
+ * @param  shape      Output array dimensions.
+ * @param  bbox_array Bounding box of the output domain.
+ * @param  p_noise_x  Optional x-direction noise (domain warp).
+ * @param  p_noise_y  Optional y-direction noise (domain warp).
+ * @return            Array of distances to the nearest point.
+ */
+Array cloud_sdf_to_array(const Cloud &cloud,
+                         glm::ivec2   shape,
+                         glm::vec4    bbox_array = {0.f, 1.f, 0.f, 1.f},
+                         const Array *p_noise_x = nullptr,
+                         const Array *p_noise_y = nullptr);
+
+/**
+ * @brief Interpolate values from an array at the points' `(x, y)` locations.
+ *
+ * This method computes interpolated values for each point in the cloud based on
+ * its `(x, y)` coordinates and an underlying array, using bilinear
+ * interpolation within the specified bounding box.
+ *
+ * @param  array The input array from which to interpolate values.
+ * @param  bbox  The bounding box of the array.
+ * @return       std::vector<float> A vector containing the interpolated values
+ *               for each point.
+ */
+std::vector<float> interpolate_values_from_array(const Cloud &cloud,
+                                                 const Array &array,
+                                                 glm::vec4    bbox);
 
 /**
  * @brief Merges two point clouds into one.
@@ -866,5 +849,36 @@ Cloud random_cloud_jittered(size_t           count,
                             const glm::vec2 &stagger_ratio,
                             uint             seed,
                             const glm::vec4 &bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
+ * @brief Filter a point cloud using rejection sampling based on a density mask.
+ *
+ * Each point in the input cloud is retained or discarded according to a
+ * spatially varying probability derived from the provided 2D density mask. The
+ * mask is mapped to the bounding box and evaluated as a continuous function
+ * over the domain.
+ *
+ * For a point \f$p=(x,y)\f$, the probability of acceptance is:
+ * \f[
+ * P(\text{keep } p) = \rho(x,y) \in [0,1]
+ * \f] where \f$\rho(x,y)\f$ is the normalized density mask value at the point's
+ * position.
+ *
+ * @param density_mask 2D array defining the spatial density field over the
+ *                     bounding box. Values should lie in \f$[0,1]\f$.
+ * @param seed         Random seed used for reproducible rejection sampling.
+ * @param bbox         Bounding box `(xmin, ymin, xmax, ymax)` defining the
+ *                     spatial extent of the density mask in world coordinates.
+ *
+ * @note
+ * - Points outside the bounding box are implicitly mapped to extrapolated
+ * density values.
+ * - The method preserves the *relative* density pattern defined by the mask,
+ * but reduces the overall number of points according to rejection probability.
+ */
+void rejection_filter_density(Cloud           &cloud,
+                              const Array     &density_mask,
+                              uint             seed,
+                              const glm::vec4 &bbox = {0.f, 1.f, 0.f, 1.f});
 
 } // namespace hmap

@@ -79,7 +79,7 @@ Graph generate_network_alpha_model(const std::vector<float> &xc,
   //
   std::vector<float> local_weight(graph.size());
   if (p_weight != nullptr)
-    local_weight = graph.interpolate_values_from_array(*p_weight, bbox);
+    local_weight = interpolate_values_from_array(graph, *p_weight, bbox);
 
   for (size_t i = 0; i < graph.size(); i++)
     for (size_t r = 0; r < graph.connectivity[i].size(); r++)

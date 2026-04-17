@@ -88,8 +88,8 @@ public:
    * @brief Construct a new Path object based on `x` and `y` coordinates.
    * Initializes a path with the specified `x` and `y` coordinates and an option
    * to be open or closed.
-   * @param x      List of `x` coordinates for the points.
-   * @param y      List of `y` coordinates for the points.
+   * @param x List of `x` coordinates for the points.
+   * @param y List of `y` coordinates for the points.
    */
   Path(std::vector<float> x, std::vector<float> y) : Cloud(x, y){};
 
@@ -97,9 +97,9 @@ public:
    * @brief Construct a new Path object based on `x`, `y` coordinates, and
    * values. Initializes a path with the specified `x` and `y` coordinates,
    * associated values, and an option to be open or closed.
-   * @param x      List of `x` coordinates for the points.
-   * @param y      List of `y` coordinates for the points.
-   * @param v      List of values associated with the points.
+   * @param x List of `x` coordinates for the points.
+   * @param y List of `y` coordinates for the points.
+   * @param v List of values associated with the points.
    */
   Path(std::vector<float> x, std::vector<float> y, std::vector<float> v)
       : Cloud(x, y, v){};
@@ -374,6 +374,7 @@ public:
                  glm::vec4  bbox = {0.f, 1.f, 0.f, 1.f},
                  bool       filled = false) const;
 
+  /*! @brief See hmap::to_array */
   void to_array_mask(Array    &array,
                      glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f},
                      bool      filled = false) const;
@@ -672,8 +673,8 @@ Path bspline(const Path            &path,
  *
  * This method applies Catmull-Rom curve smoothing to the path. Catmull-Rom
  * splines are interpolating splines that pass through each control point. The
- * `edge_divisions` parameter determines the number of subdivisions per edge
- * for smoothing.
+ * `edge_divisions` parameter determines the number of subdivisions per edge for
+ * smoothing.
  *
  * **Important**: This function does not correctly handle closed polylines
  * (circular contours). If the path is closed, the smoothing may not correctly
@@ -698,11 +699,10 @@ Path catmullrom(
 /**
  * @brief Smooth the path using De Casteljau curves.
  *
- * This function smooths a path by applying De Casteljau's algorithm to
- * generate intermediate points along the path, effectively creating a Bézier
- * curve that approximates the original path. The path is divided into
- * segments, and the De Casteljau algorithm is applied to each segment,
- * resulting in a smooth curve.
+ * This function smooths a path by applying De Casteljau's algorithm to generate
+ * intermediate points along the path, effectively creating a Bézier curve that
+ * approximates the original path. The path is divided into segments, and the De
+ * Casteljau algorithm is applied to each segment, resulting in a smooth curve.
  *
  * The parameter `edge_divisions` controls the number of divisions
  * (sub-segments) created along each segment of the path. A higher number of
@@ -727,15 +727,15 @@ Path decasteljau(
 /**
  * @brief Simplifies the current path using the Visvalingam-Whyatt algorithm.
  *
- * This method reduces the number of points in the path to the specified
- * target, `n_points_target`, while preserving the overall shape. It
- * calculates the area of triangles formed by consecutive points and removes
- * points corresponding to the smallest areas iteratively.
+ * This method reduces the number of points in the path to the specified target,
+ * `n_points_target`, while preserving the overall shape. It calculates the area
+ * of triangles formed by consecutive points and removes points corresponding to
+ * the smallest areas iteratively.
  *
- * @param n_points_target The desired number of points to retain in the path.
- * If the current number of points is less than `n_points_target` or the path
- * contains fewer than 3 points, the method returns without modifying the
- * path.
+ * @param n_points_target The desired number of points to retain in the path. If
+ *                        the current number of points is less than
+ *                        `n_points_target` or the path contains fewer than 3
+ * points, the method returns without modifying the path.
  *
  * @note Does not well behave when n_points_target is significantly lower than
  * the initial number of points.
@@ -754,9 +754,9 @@ Path decimate_vw(const Path &path, int n_points_target = 3);
  *
  * This method enhances the complexity of a path by iteratively adding new
  * points between existing ones and displacing them using Gaussian noise. The
- * process can simulate natural phenomena like terrain generation or random
- * walk paths. The number of iterations determines the level of detail added
- * to the path.
+ * process can simulate natural phenomena like terrain generation or random walk
+ * paths. The number of iterations determines the level of detail added to the
+ * path.
  *
  * - `sigma` controls the magnitude of the displacement, normalized by the
  * distance between points.
@@ -788,8 +788,8 @@ Path decimate_vw(const Path &path, int n_points_target = 3);
  *                      iterations.
  * @param control_field Optional pointer to an array that locally modifies the
  *                      displacement amplitude.
- * @param bbox          Bounding box that defines the valid area for the
- * control field's influence.
+ * @param bbox          Bounding box that defines the valid area for the control
+ *                      field's influence.
  */
 Path fractalize(const Path &path,
                 int         iterations,
@@ -806,10 +806,10 @@ Path fractalize(const Path &path,
  * This method introduces meandering effects to the path by adding random
  * deviations. The amplitude of the meanders is controlled by the `ratio`
  * parameter, while the `noise_ratio` controls the amount of randomness. The
- * `seed` parameter is used to initialize the random number generator,
- * ensuring reproducibility. The `iterations` parameter defines how many times
- * the meandering process is applied, and `edge_divisions` controls how finely
- * each edge is subdivided during the meandering.
+ * `seed` parameter is used to initialize the random number generator, ensuring
+ * reproducibility. The `iterations` parameter defines how many times the
+ * meandering process is applied, and `edge_divisions` controls how finely each
+ * edge is subdivided during the meandering.
  *
  * **Example**
  * @include ex_path_meanderize.cpp
@@ -822,8 +822,7 @@ Path fractalize(const Path &path,
  * @param noise_ratio    Ratio of randomness introduced during meandering.
  *                       Default is 0.1.
  * @param seed           Seed for random number generation. Default is 1.
- * @param iterations     Number of iterations to apply meandering. Default
- * is 1.
+ * @param iterations     Number of iterations to apply meandering. Default is 1.
  * @param edge_divisions Number of sub-divisions of each edge. Default is 10.
  */
 Path meanderize(
@@ -876,9 +875,10 @@ Path remove_geometric_loops(const Path &path);
  *                            position.
  * @param inertia             The factor by which each point is influenced by
  *                            its previous point after the initial smoothing
- *                            pass. A value of 0 has no inertia effect, while
- * a higher value blends the current point's position with that of the
- * preceding point, creating a trailing effect.
+ *                            pass. A value of 0 has no inertia effect, while a
+ *                            higher value blends the current point's position
+ *                            with that of the preceding point, creating a
+ *                            trailing effect.
  *
  * **Example**
  * @include ex_path_smooth.cpp
