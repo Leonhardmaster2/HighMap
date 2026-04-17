@@ -1,5 +1,8 @@
 var NAVTREEINDEX6 =
 {
+"coastal__erosion_8cpp.html#a30dd1027fd8da1839f584687aedfdaf5":[5,0,1,1,12,0,1],
+"coastal__erosion_8cpp.html#a54724c8701b75260e97924451731e41f":[5,0,1,1,12,0,0],
+"coastal__erosion_8cpp.html#a5d1d8b892ca5d088a4fb55b69c481187":[5,0,1,1,12,0,2],
 "color__adjust_8cpp.html":[5,0,1,1,6,0],
 "color__adjust_8cpp.html#a1175ee497ff12b2f3c6cdb7cc805949f":[5,0,1,1,6,0,2],
 "color__adjust_8cpp.html#a3694cff871813c283356c8edf1db3f55":[5,0,1,1,6,0,0],
@@ -246,8 +249,5 @@ var NAVTREEINDEX6 =
 "edge_8hpp.html":[5,0,1,0,0,1,1],
 "edge_8hpp_source.html":[5,0,1,0,0,1,1],
 "erosion_8hpp.html":[5,0,1,0,0,18],
-"erosion_8hpp.html#a00b54f4e60a8fbd6ed5213600d598869":[5,0,1,0,0,18,81],
-"erosion_8hpp.html#a02f191e398bfc3c0e87999d8576d7c3d":[5,0,1,0,0,18,1],
-"erosion_8hpp.html#a04047f16ece68b32c1c8e68b4780f0df":[5,0,1,0,0,18,93],
-"erosion_8hpp.html#a06a4f7bbf99b83632ceb8a9ba5989823":[5,0,1,0,0,18,34]
+"erosion_8hpp.html#a00b54f4e60a8fbd6ed5213600d598869":[5,0,1,0,0,18,81]
 };

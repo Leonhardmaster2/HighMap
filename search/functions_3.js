@@ -41,6 +41,6 @@ var searchData=
   ['downscale_5ftransform_5fmulti_38',['downscale_transform_multi',['../namespacehmap.html#a669a4f9586f3df4b018e321048c9bc7d',1,'hmap']]],
   ['drainagebasin_39',['DrainageBasin',['../classhmap_1_1DrainageBasin.html#ac28ba57c1b2b1bd25353aeb7dc9ac54c',1,'hmap::DrainageBasin']]],
   ['drainagebasincellbased_40',['drainagebasincellbased',['../classhmap_1_1DrainageBasinCellBased.html#aeb36d7eba63e150534906f2e924e7be8',1,'hmap::DrainageBasinCellBased::DrainageBasinCellBased()=default'],['../classhmap_1_1DrainageBasinCellBased.html#ad1d5250d216d7353f421056326daa86e',1,'hmap::DrainageBasinCellBased::DrainageBasinCellBased(const Array &amp;z_)']]],
-  ['dump_41',['dump',['../classhmap_1_1Timer.html#a5bc931885a549c561740f39cea91dd5f',1,'hmap::Timer::Dump()'],['../structhmap_1_1Recorder.html#ac5bd6628a256636229047bbc12ced680',1,'hmap::Recorder::dump()'],['../classhmap_1_1Array.html#a00b8f7462c1e22b1da8a67ec62d4c8c8',1,'hmap::Array::dump(const std::string &amp;fname=&quot;out.png&quot;) const']]],
+  ['dump_41',['dump',['../structhmap_1_1Recorder.html#ac5bd6628a256636229047bbc12ced680',1,'hmap::Recorder::dump()'],['../classhmap_1_1Array.html#a00b8f7462c1e22b1da8a67ec62d4c8c8',1,'hmap::Array::dump()'],['../classhmap_1_1Timer.html#a5bc931885a549c561740f39cea91dd5f',1,'hmap::Timer::Dump()']]],
   ['dump_5fhistogram_42',['dump_histogram',['../classhmap_1_1Array.html#a172a6d1a17ceae78548ff7e12d21d87c',1,'hmap::Array']]]
 ];

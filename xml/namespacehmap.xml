@@ -23340,6 +23340,137 @@ This function:<itemizedlist>
         </inbodydescription>
         <location file="HighMap/src/primitives/functions/noise_functions.cpp" line="331" column="17" bodyfile="HighMap/src/primitives/functions/noise_functions.cpp" bodystart="331" bodyend="374" declfile="HighMap/include/highmap/functions.hpp" declline="1767" declcolumn="17"/>
       </memberdef>
+      <memberdef kind="function" id="namespacehmap_1aad6694d36e91a15ded7373064d15b88c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
+        <definition>Array hmap::cloud_sdf_to_array</definition>
+        <argsstring>(const Cloud &amp;cloud, glm::ivec2 shape, glm::vec4 bbox_array={0.f, 1.f, 0.f, 1.f}, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr)</argsstring>
+        <name>cloud_sdf_to_array</name>
+        <qualifiedname>hmap::cloud_sdf_to_array</qualifiedname>
+        <param>
+          <type>const <ref refid="classhmap_1_1Cloud" kindref="compound">Cloud</ref> &amp;</type>
+          <declname>cloud</declname>
+        </param>
+        <param>
+          <type>glm::ivec2</type>
+          <declname>shape</declname>
+        </param>
+        <param>
+          <type>glm::vec4</type>
+          <declname>bbox_array</declname>
+          <defval>{0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>}</defval>
+        </param>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
+          <declname>p_noise_x</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
+          <declname>p_noise_y</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Compute a distance field from a point cloud. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>For each grid cell, computes the distance to the nearest point in the cloud, optionally applying domain warping using noise fields.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cloud</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input point cloud. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>shape</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Output array dimensions. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>bbox_array</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Bounding box of the output domain. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>p_noise_x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional x-direction noise (domain warp). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>p_noise_y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional y-direction noise (domain warp). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classhmap_1_1Array" kindref="compound">Array</ref> of distances to the nearest point. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/geometry/cloud_functions.cpp" line="14" column="7" bodyfile="HighMap/src/geometry/cloud_functions.cpp" bodystart="14" bodyend="57" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="601" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehmap_1ab62e174cd14e34aa08ec4c5f00c14df8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; float &gt;</type>
+        <definition>std::vector&lt; float &gt; hmap::interpolate_values_from_array</definition>
+        <argsstring>(const Cloud &amp;cloud, const Array &amp;array, glm::vec4 bbox)</argsstring>
+        <name>interpolate_values_from_array</name>
+        <qualifiedname>hmap::interpolate_values_from_array</qualifiedname>
+        <param>
+          <type>const <ref refid="classhmap_1_1Cloud" kindref="compound">Cloud</ref> &amp;</type>
+          <declname>cloud</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>array</declname>
+        </param>
+        <param>
+          <type>glm::vec4</type>
+          <declname>bbox</declname>
+        </param>
+        <briefdescription>
+<para>Interpolate values from an array at the points&apos; <computeroutput>(x, y)</computeroutput> locations. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This method computes interpolated values for each point in the cloud based on its <computeroutput>(x, y)</computeroutput> coordinates and an underlying array, using bilinear interpolation within the specified bounding box.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>array</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The input array from which to interpolate values. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>bbox</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The bounding box of the array. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>std::vector&lt;float&gt; A vector containing the interpolated values for each point. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/geometry/cloud_functions.cpp" line="59" column="13" bodyfile="HighMap/src/geometry/cloud_functions.cpp" bodystart="59" bodyend="98" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="619" declcolumn="13"/>
+      </memberdef>
       <memberdef kind="function" id="namespacehmap_1abd7c616c225d31eb2fd4e3ff023e3ed5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Cloud" kindref="compound">Cloud</ref></type>
         <definition>Cloud hmap::merge_cloud</definition>
@@ -23382,7 +23513,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/cloud.cpp" line="670" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="670" bodyend="685" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="657" declcolumn="7"/>
+        <location file="HighMap/src/geometry/cloud.cpp" line="583" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="583" bodyend="598" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="640" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1afc6e9a8850aaebd3cca94aefb3c54114" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Cloud" kindref="compound">Cloud</ref></type>
@@ -23400,7 +23531,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/cloud.cpp" line="687" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="687" bodyend="714" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="658" declcolumn="7"/>
+        <location file="HighMap/src/geometry/cloud.cpp" line="600" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="600" bodyend="627" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="641" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a85e1a2365d97c95955eaf0648a1f9073" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Cloud" kindref="compound">Cloud</ref></type>
@@ -23525,7 +23656,7 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1aba758c4143b6e499ec6f4385467a6d77a99ca15104343ff0356c6fc0ffe4f837d" kindref="member">hmap::PointSamplingMethod::RND_HALTON</ref>);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1a89fbc7c4e7e27bd520e93735e55eddff" kindref="member">rejection_filter_density</ref>(density,<sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1af11ae6e40d37dbc431cf358727f82f42" kindref="member">hmap::rejection_filter_density</ref>(cloud,<sp/>density,<sp/>seed);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1a36e47d4857108c56193755e32374184d" kindref="member">to_array</ref>(raster);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>zs.push_back(raster);</highlight></codeline>
@@ -23623,7 +23754,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/cloud.cpp" line="716" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="716" bodyend="724" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="684" declcolumn="7"/>
+        <location file="HighMap/src/geometry/cloud.cpp" line="629" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="629" bodyend="637" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="667" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a16821244f50cfacf91b3fb638e2b49f8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Cloud" kindref="compound">Cloud</ref></type>
@@ -23747,7 +23878,7 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1aba758c4143b6e499ec6f4385467a6d77a99ca15104343ff0356c6fc0ffe4f837d" kindref="member">hmap::PointSamplingMethod::RND_HALTON</ref>);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1a89fbc7c4e7e27bd520e93735e55eddff" kindref="member">rejection_filter_density</ref>(density,<sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1af11ae6e40d37dbc431cf358727f82f42" kindref="member">hmap::rejection_filter_density</ref>(cloud,<sp/>density,<sp/>seed);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1a36e47d4857108c56193755e32374184d" kindref="member">to_array</ref>(raster);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>zs.push_back(raster);</highlight></codeline>
@@ -23845,7 +23976,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/cloud.cpp" line="726" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="726" bodyend="734" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="713" declcolumn="7"/>
+        <location file="HighMap/src/geometry/cloud.cpp" line="639" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="639" bodyend="647" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="696" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a117f2da22e9a721e84002c801e95c2d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Cloud" kindref="compound">Cloud</ref></type>
@@ -23957,7 +24088,7 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1aba758c4143b6e499ec6f4385467a6d77a99ca15104343ff0356c6fc0ffe4f837d" kindref="member">hmap::PointSamplingMethod::RND_HALTON</ref>);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1a89fbc7c4e7e27bd520e93735e55eddff" kindref="member">rejection_filter_density</ref>(density,<sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1af11ae6e40d37dbc431cf358727f82f42" kindref="member">hmap::rejection_filter_density</ref>(cloud,<sp/>density,<sp/>seed);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1a36e47d4857108c56193755e32374184d" kindref="member">to_array</ref>(raster);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>zs.push_back(raster);</highlight></codeline>
@@ -24055,7 +24186,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/cloud.cpp" line="736" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="736" bodyend="741" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="741" declcolumn="7"/>
+        <location file="HighMap/src/geometry/cloud.cpp" line="649" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="649" bodyend="654" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="724" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a639d9ef63f30e2a430b9419c47303944" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Cloud" kindref="compound">Cloud</ref></type>
@@ -24191,7 +24322,7 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1aba758c4143b6e499ec6f4385467a6d77a99ca15104343ff0356c6fc0ffe4f837d" kindref="member">hmap::PointSamplingMethod::RND_HALTON</ref>);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1a89fbc7c4e7e27bd520e93735e55eddff" kindref="member">rejection_filter_density</ref>(density,<sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1af11ae6e40d37dbc431cf358727f82f42" kindref="member">hmap::rejection_filter_density</ref>(cloud,<sp/>density,<sp/>seed);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1a36e47d4857108c56193755e32374184d" kindref="member">to_array</ref>(raster);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>zs.push_back(raster);</highlight></codeline>
@@ -24289,7 +24420,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/cloud.cpp" line="743" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="743" bodyend="752" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="770" declcolumn="7"/>
+        <location file="HighMap/src/geometry/cloud.cpp" line="656" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="656" bodyend="665" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="753" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a35817f8492f47d9d36042649cd9e5844" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Cloud" kindref="compound">Cloud</ref></type>
@@ -24425,7 +24556,7 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1aba758c4143b6e499ec6f4385467a6d77a99ca15104343ff0356c6fc0ffe4f837d" kindref="member">hmap::PointSamplingMethod::RND_HALTON</ref>);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1a89fbc7c4e7e27bd520e93735e55eddff" kindref="member">rejection_filter_density</ref>(density,<sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1af11ae6e40d37dbc431cf358727f82f42" kindref="member">hmap::rejection_filter_density</ref>(cloud,<sp/>density,<sp/>seed);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1a36e47d4857108c56193755e32374184d" kindref="member">to_array</ref>(raster);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>zs.push_back(raster);</highlight></codeline>
@@ -24523,7 +24654,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/cloud.cpp" line="754" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="754" bodyend="767" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="801" declcolumn="7"/>
+        <location file="HighMap/src/geometry/cloud.cpp" line="667" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="667" bodyend="680" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="784" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ab839262913bfd936d24cf6b96a9a3da1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Cloud" kindref="compound">Cloud</ref></type>
@@ -24659,7 +24790,7 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1aba758c4143b6e499ec6f4385467a6d77a99ca15104343ff0356c6fc0ffe4f837d" kindref="member">hmap::PointSamplingMethod::RND_HALTON</ref>);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1a89fbc7c4e7e27bd520e93735e55eddff" kindref="member">rejection_filter_density</ref>(density,<sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1af11ae6e40d37dbc431cf358727f82f42" kindref="member">hmap::rejection_filter_density</ref>(cloud,<sp/>density,<sp/>seed);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1a36e47d4857108c56193755e32374184d" kindref="member">to_array</ref>(raster);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>zs.push_back(raster);</highlight></codeline>
@@ -24757,7 +24888,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/cloud.cpp" line="769" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="769" bodyend="778" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="833" declcolumn="7"/>
+        <location file="HighMap/src/geometry/cloud.cpp" line="682" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="682" bodyend="691" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="816" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a2b567f4e49f112b51a29c0915b039bc1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Cloud" kindref="compound">Cloud</ref></type>
@@ -24893,7 +25024,7 @@ This function:<itemizedlist>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1aba758c4143b6e499ec6f4385467a6d77a99ca15104343ff0356c6fc0ffe4f837d" kindref="member">hmap::PointSamplingMethod::RND_HALTON</ref>);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1a89fbc7c4e7e27bd520e93735e55eddff" kindref="member">rejection_filter_density</ref>(density,<sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1af11ae6e40d37dbc431cf358727f82f42" kindref="member">hmap::rejection_filter_density</ref>(cloud,<sp/>density,<sp/>seed);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cloud.<ref refid="classhmap_1_1Cloud_1a36e47d4857108c56193755e32374184d" kindref="member">to_array</ref>(raster);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>zs.push_back(raster);</highlight></codeline>
@@ -24991,7 +25122,75 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/cloud.cpp" line="780" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="780" bodyend="793" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="864" declcolumn="7"/>
+        <location file="HighMap/src/geometry/cloud.cpp" line="693" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="693" bodyend="706" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="847" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehmap_1af11ae6e40d37dbc431cf358727f82f42" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hmap::rejection_filter_density</definition>
+        <argsstring>(Cloud &amp;cloud, const Array &amp;density_mask, uint seed, const glm::vec4 &amp;bbox={0.f, 1.f, 0.f, 1.f})</argsstring>
+        <name>rejection_filter_density</name>
+        <qualifiedname>hmap::rejection_filter_density</qualifiedname>
+        <param>
+          <type><ref refid="classhmap_1_1Cloud" kindref="compound">Cloud</ref> &amp;</type>
+          <declname>cloud</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>density_mask</declname>
+        </param>
+        <param>
+          <type><ref refid="array_8hpp_1a91ad9478d81a7aaf2593e8d9c3d06a14" kindref="member">uint</ref></type>
+          <declname>seed</declname>
+        </param>
+        <param>
+          <type>const glm::vec4 &amp;</type>
+          <declname>bbox</declname>
+          <defval>{0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>}</defval>
+        </param>
+        <briefdescription>
+<para>Filter a point cloud using rejection sampling based on a density mask. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Each point in the input cloud is retained or discarded according to a spatially varying probability derived from the provided 2D density mask. The mask is mapped to the bounding box and evaluated as a continuous function over the domain.</para>
+<para>For a point <formula id="4">$p=(x,y)$</formula>, the probability of acceptance is:  <formula id="5">\[
+P(\text{keep } p) = \rho(x,y) \in [0,1]
+\]</formula> where <formula id="6">$\rho(x,y)$</formula> is the normalized density mask value at the point&apos;s position.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>density_mask</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>2D array defining the spatial density field over the bounding box. Values should lie in <formula id="7">$[0,1]$</formula>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>seed</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Random seed used for reproducible rejection sampling. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>bbox</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Bounding box <computeroutput>(xmin, ymin, xmax, ymax)</computeroutput> defining the spatial extent of the density mask in world coordinates.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para><itemizedlist>
+<listitem><para>Points outside the bounding box are implicitly mapped to extrapolated density values.</para>
+</listitem><listitem><para>The method preserves the <emphasis>relative</emphasis> density pattern defined by the mask, but reduces the overall number of points according to rejection probability. </para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/geometry/cloud_functions.cpp" line="100" column="6" bodyfile="HighMap/src/geometry/cloud_functions.cpp" bodystart="100" bodyend="117" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="879" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ab085d07bc0e897729ca16c0dd2035fe1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -25209,7 +25408,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/path_functions.cpp" line="31" column="6" bodyfile="HighMap/src/geometry/path_functions.cpp" bodystart="31" bodyend="72" declfile="HighMap/include/highmap/geometry/path.hpp" declline="614" declcolumn="6"/>
+        <location file="HighMap/src/geometry/path_functions.cpp" line="31" column="6" bodyfile="HighMap/src/geometry/path_functions.cpp" bodystart="31" bodyend="72" declfile="HighMap/include/highmap/geometry/path.hpp" declline="615" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a3beb0c80491a827b346e9e69cadf4228" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Path" kindref="compound">Path</ref></type>
@@ -25265,7 +25464,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/path_functions.cpp" line="74" column="6" bodyfile="HighMap/src/geometry/path_functions.cpp" bodystart="74" bodyend="117" declfile="HighMap/include/highmap/geometry/path.hpp" declline="637" declcolumn="6"/>
+        <location file="HighMap/src/geometry/path_functions.cpp" line="74" column="6" bodyfile="HighMap/src/geometry/path_functions.cpp" bodystart="74" bodyend="117" declfile="HighMap/include/highmap/geometry/path.hpp" declline="638" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a281c9db00eef9735e8eea7bbf50f3e34" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Path" kindref="compound">Path</ref></type>
@@ -25311,7 +25510,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/path_functions.cpp" line="119" column="6" bodyfile="HighMap/src/geometry/path_functions.cpp" bodystart="119" bodyend="128" declfile="HighMap/include/highmap/geometry/path.hpp" declline="666" declcolumn="6"/>
+        <location file="HighMap/src/geometry/path_functions.cpp" line="119" column="6" bodyfile="HighMap/src/geometry/path_functions.cpp" bodystart="119" bodyend="128" declfile="HighMap/include/highmap/geometry/path.hpp" declline="667" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a9b14eb25556ef745f1e606bbe8d41dcb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Path" kindref="compound">Path</ref></type>
@@ -25357,7 +25556,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/path_functions.cpp" line="130" column="6" bodyfile="HighMap/src/geometry/path_functions.cpp" bodystart="130" bodyend="141" declfile="HighMap/include/highmap/geometry/path.hpp" declline="693" declcolumn="6"/>
+        <location file="HighMap/src/geometry/path_functions.cpp" line="130" column="6" bodyfile="HighMap/src/geometry/path_functions.cpp" bodystart="130" bodyend="141" declfile="HighMap/include/highmap/geometry/path.hpp" declline="694" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1af9b55527f8d0f1c01d110b3144ee7d91" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Path" kindref="compound">Path</ref></type>
@@ -25781,7 +25980,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/path_functions.cpp" line="254" column="6" bodyfile="HighMap/src/geometry/path_functions.cpp" bodystart="254" bodyend="319" declfile="HighMap/include/highmap/geometry/path.hpp" declline="829" declcolumn="6"/>
+        <location file="HighMap/src/geometry/path_functions.cpp" line="254" column="6" bodyfile="HighMap/src/geometry/path_functions.cpp" bodystart="254" bodyend="319" declfile="HighMap/include/highmap/geometry/path.hpp" declline="828" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a650c6eaf8bd10356a77c7c1f9ef9af3c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Path" kindref="compound">Path</ref></type>
@@ -25815,7 +26014,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/path_functions.cpp" line="321" column="6" bodyfile="HighMap/src/geometry/path_functions.cpp" bodystart="321" bodyend="356" declfile="HighMap/include/highmap/geometry/path.hpp" declline="854" declcolumn="6"/>
+        <location file="HighMap/src/geometry/path_functions.cpp" line="321" column="6" bodyfile="HighMap/src/geometry/path_functions.cpp" bodystart="321" bodyend="356" declfile="HighMap/include/highmap/geometry/path.hpp" declline="853" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ad81052648d6008d2b7b4a5a36a2d7830" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Path" kindref="compound">Path</ref></type>
@@ -32229,7 +32428,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/operator/vector_utils.cpp" line="30" column="13" bodyfile="HighMap/src/operator/vector_utils.cpp" bodystart="30" bodyend="57" declfile="HighMap/include/highmap/internal/vector_utils.hpp" declline="107" declcolumn="13"/>
+        <location file="HighMap/src/operator/vector_utils.cpp" line="30" column="13" bodyfile="HighMap/src/operator/vector_utils.cpp" bodystart="30" bodyend="57" declfile="HighMap/include/highmap/internal/vector_utils.hpp" declline="108" declcolumn="13"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a31a4797a24a40eff0c53d17040327abe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; float &gt;</type>
@@ -32275,7 +32474,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/operator/vector_utils.cpp" line="125" column="13" bodyfile="HighMap/src/operator/vector_utils.cpp" bodystart="125" bodyend="149" declfile="HighMap/include/highmap/internal/vector_utils.hpp" declline="120" declcolumn="13"/>
+        <location file="HighMap/src/operator/vector_utils.cpp" line="125" column="13" bodyfile="HighMap/src/operator/vector_utils.cpp" bodystart="125" bodyend="149" declfile="HighMap/include/highmap/internal/vector_utils.hpp" declline="121" declcolumn="13"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ac95d63662a6878f27011c0b4c7c70078" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -32308,7 +32507,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/operator/vector_utils.cpp" line="195" column="6" bodyfile="HighMap/src/operator/vector_utils.cpp" bodystart="195" bodyend="202" declfile="HighMap/include/highmap/internal/vector_utils.hpp" declline="130" declcolumn="6"/>
+        <location file="HighMap/src/operator/vector_utils.cpp" line="195" column="6" bodyfile="HighMap/src/operator/vector_utils.cpp" bodystart="195" bodyend="202" declfile="HighMap/include/highmap/internal/vector_utils.hpp" declline="131" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ab80da2376c6212eb9cb2899c0a5114ad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; float &gt;</type>
@@ -32367,7 +32566,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/operator/vector_utils.cpp" line="166" column="13" bodyfile="HighMap/src/operator/vector_utils.cpp" bodystart="166" bodyend="193" declfile="HighMap/include/highmap/internal/vector_utils.hpp" declline="142" declcolumn="13"/>
+        <location file="HighMap/src/operator/vector_utils.cpp" line="166" column="13" bodyfile="HighMap/src/operator/vector_utils.cpp" bodystart="166" bodyend="193" declfile="HighMap/include/highmap/internal/vector_utils.hpp" declline="143" declcolumn="13"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a47f7c4ead587ead4a75c9c7f4fc4b079" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -32422,7 +32621,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/operator/vector_utils.cpp" line="59" column="13" bodyfile="HighMap/src/operator/vector_utils.cpp" bodystart="59" bodyend="123" declfile="HighMap/include/highmap/internal/vector_utils.hpp" declline="158" declcolumn="13"/>
+        <location file="HighMap/src/operator/vector_utils.cpp" line="59" column="13" bodyfile="HighMap/src/operator/vector_utils.cpp" bodystart="59" bodyend="123" declfile="HighMap/include/highmap/internal/vector_utils.hpp" declline="159" declcolumn="13"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ae91029283452ab6d8276e3745a476b48" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>float</type>
@@ -33240,7 +33439,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/interpolate/interpolate2d_nearest.cpp" line="11" column="7" bodyfile="HighMap/src/interpolate/interpolate2d_nearest.cpp" bodystart="11" bodyend="53" declfile="HighMap/include/highmap/interpolate2d.hpp" declline="272" declcolumn="7"/>
+        <location file="HighMap/src/interpolate/interpolate2d_nearest.cpp" line="11" column="7" bodyfile="HighMap/src/interpolate/interpolate2d_nearest.cpp" bodystart="11" bodyend="54" declfile="HighMap/include/highmap/interpolate2d.hpp" declline="272" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a7f56b267f543e34806bfd334272f7392" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>

@@ -1,0 +1,16 @@
+\doxysection{High\+Map/src/geometry/cloud\+\_\+functions.cpp File Reference}
+\hypertarget{cloud__functions_8cpp}{}\label{cloud__functions_8cpp}\index{HighMap/src/geometry/cloud\_functions.cpp@{HighMap/src/geometry/cloud\_functions.cpp}}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacehmap}{hmap}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_aad6694d36e91a15ded7373064d15b88c}{hmap\+::cloud\+\_\+sdf\+\_\+to\+\_\+array}} (const \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} \&cloud, glm\+::ivec2 shape, glm\+::vec4 bbox\+\_\+array=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr)
+\begin{DoxyCompactList}\small\item\em Compute a distance field from a point cloud. \end{DoxyCompactList}\item 
+std\+::vector$<$ float $>$ \mbox{\hyperlink{namespacehmap_ab62e174cd14e34aa08ec4c5f00c14df8}{hmap\+::interpolate\+\_\+values\+\_\+from\+\_\+array}} (const \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} \&cloud, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, glm\+::vec4 bbox)
+\begin{DoxyCompactList}\small\item\em Interpolate values from an array at the points\textquotesingle{} {\ttfamily (x, y)} locations. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacehmap_af11ae6e40d37dbc431cf358727f82f42}{hmap\+::rejection\+\_\+filter\+\_\+density}} (\mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} \&cloud, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&density\+\_\+mask, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, const glm\+::vec4 \&bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
+\begin{DoxyCompactList}\small\item\em Filter a point cloud using rejection sampling based on a density mask. \end{DoxyCompactList}\end{DoxyCompactItemize}

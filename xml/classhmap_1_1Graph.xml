@@ -767,17 +767,14 @@
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespacehmap_1a63a7fc5faca6c5018e98b8af700f4b80" kindref="member">noise</ref><sp/>=<sp/><ref refid="namespacehmap_1acb13e7346085793fda4c94c47b75d9a9" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,<sp/>shape,<sp/>{2,<sp/>2},<sp/>seed);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ab80da2376c6212eb9cb2899c0a5114ad" kindref="member">hmap::remap</ref>(<ref refid="namespacehmap_1a63a7fc5faca6c5018e98b8af700f4b80" kindref="member">noise</ref>,<sp/>0.f,<sp/>0.2f);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>glm::vec4<sp/><sp/><sp/>bbox<sp/>=<sp/>{0.2f,<sp/>0.8f,<sp/>0.2f,<sp/>0.8f};</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Cloud" kindref="compound">hmap::Cloud</ref><sp/>cloud<sp/>=<sp/><ref refid="classhmap_1_1Cloud" kindref="compound">hmap::Cloud</ref>(5,<sp/>seed,<sp/>bbox);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>glm::vec4<sp/><sp/><sp/>bbox<sp/>=<sp/>{0.f,<sp/>1.f,<sp/>0.f,<sp/>1.f};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Cloud" kindref="compound">hmap::Cloud</ref><sp/>cloud<sp/>=<sp/><ref refid="classhmap_1_1Cloud" kindref="compound">hmap::Cloud</ref>(5,<sp/>seed,<sp/><ref refid="namespacehmap_1adc5300323fa35e021fd83b8b048ef3b1" kindref="member">hmap::adjust</ref>(bbox,<sp/>-0.1f));</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>glm::vec4<sp/>bbox_array<sp/>=<sp/>{0.f,<sp/>1.f,<sp/>0.f,<sp/>1.f};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z0<sp/>=<sp/>cloud.<ref refid="classhmap_1_1Cloud_1a36e47d4857108c56193755e32374184d" kindref="member">to_array</ref>(shape,<sp/>bbox);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z1<sp/>=<sp/><ref refid="namespacehmap_1aad6694d36e91a15ded7373064d15b88c" kindref="member">hmap::cloud_sdf_to_array</ref>(cloud,<sp/>shape,<sp/>bbox);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z2<sp/>=<sp/><ref refid="namespacehmap_1aad6694d36e91a15ded7373064d15b88c" kindref="member">hmap::cloud_sdf_to_array</ref>(cloud,<sp/>shape,<sp/>bbox,<sp/>&amp;<ref refid="namespacehmap_1a63a7fc5faca6c5018e98b8af700f4b80" kindref="member">noise</ref>,<sp/>&amp;<ref refid="namespacehmap_1a63a7fc5faca6c5018e98b8af700f4b80" kindref="member">noise</ref>);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z_sdf1<sp/>=<sp/>cloud.<ref refid="classhmap_1_1Cloud_1a82725745baf9ae1982c352dcb3656424" kindref="member">to_array_sdf</ref>(shape,<sp/>bbox_array);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z_sdf2<sp/>=<sp/>cloud.<ref refid="classhmap_1_1Cloud_1a82725745baf9ae1982c352dcb3656424" kindref="member">to_array_sdf</ref>(shape,<sp/>bbox_array,<sp/>&amp;<ref refid="namespacehmap_1a63a7fc5faca6c5018e98b8af700f4b80" kindref="member">noise</ref>,<sp/>&amp;<ref refid="namespacehmap_1a63a7fc5faca6c5018e98b8af700f4b80" kindref="member">noise</ref>);</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_cloud_sdf.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z_sdf1,<sp/>z_sdf2},</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced" kindref="member">hmap::Cmap::JET</ref>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_cloud_sdf.png&quot;</highlight><highlight class="normal">,<sp/>{z0,<sp/>z1,<sp/>z2},<sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced" kindref="member">hmap::Cmap::JET</ref>);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> Result** <image type="html" name="ex_cloud_sdf.png"></image>
  </para>
@@ -1014,7 +1011,7 @@
       <member refid="classhmap_1_1Cloud_1a45c0878a8bcc06335e6afeb8c786a3e0" prot="public" virt="non-virtual"><scope>hmap::Graph</scope><name>from_csv</name></member>
       <member refid="classhmap_1_1Cloud_1ae5ba6ffbe371603545c312e51601615f" prot="public" virt="non-virtual"><scope>hmap::Graph</scope><name>get_bbox</name></member>
       <member refid="classhmap_1_1Cloud_1a2f4679015ee69b12c50f60a607388965" prot="public" virt="non-virtual"><scope>hmap::Graph</scope><name>get_center</name></member>
-      <member refid="classhmap_1_1Cloud_1a10f22c402c1e8e4043c01327bca0f9e8" prot="public" virt="non-virtual"><scope>hmap::Graph</scope><name>get_convex_hull_point_indices</name></member>
+      <member refid="classhmap_1_1Cloud_1afdfe23ec95137b1d5480c703b2cde009" prot="public" virt="non-virtual"><scope>hmap::Graph</scope><name>get_convex_hull</name></member>
       <member refid="classhmap_1_1Graph_1aa04970dd704339909bcc4770fa0481ab" prot="public" virt="non-virtual"><scope>hmap::Graph</scope><name>get_edge_length</name></member>
       <member refid="classhmap_1_1Graph_1ab9c3f02b3a4921f785eb7f80834ed9d7" prot="public" virt="non-virtual"><scope>hmap::Graph</scope><name>get_edge_x_pairs</name></member>
       <member refid="classhmap_1_1Graph_1a0088d1935cc3ee61ede820f51ccf117c" prot="public" virt="non-virtual"><scope>hmap::Graph</scope><name>get_edge_y_pairs</name></member>
@@ -1023,20 +1020,18 @@
       <member refid="classhmap_1_1Cloud_1a53cb47401f1e9d027a638f3680c3004d" prot="public" virt="non-virtual"><scope>hmap::Graph</scope><name>get_values</name></member>
       <member refid="classhmap_1_1Cloud_1abe70a230c2bfecad67112321b3040286" prot="public" virt="non-virtual"><scope>hmap::Graph</scope><name>get_values_max</name></member>
       <member refid="classhmap_1_1Cloud_1a9194835457c70bfa13d0dfa66d964f01" prot="public" virt="non-virtual"><scope>hmap::Graph</scope><name>get_values_min</name></member>
-      <member refid="classhmap_1_1Cloud_1aab450c9376e44def1d4e4465f0b1b691" prot="public" virt="virtual"><scope>hmap::Graph</scope><name>get_x</name></member>
-      <member refid="classhmap_1_1Cloud_1ab0c1fe00f5465c5b0b04e3e397bae5d5" prot="public" virt="virtual"><scope>hmap::Graph</scope><name>get_xy</name></member>
-      <member refid="classhmap_1_1Cloud_1abf5f933e3506395b5369cb090119002e" prot="public" virt="virtual"><scope>hmap::Graph</scope><name>get_y</name></member>
+      <member refid="classhmap_1_1Cloud_1aab450c9376e44def1d4e4465f0b1b691" prot="public" virt="non-virtual"><scope>hmap::Graph</scope><name>get_x</name></member>
+      <member refid="classhmap_1_1Cloud_1ab0c1fe00f5465c5b0b04e3e397bae5d5" prot="public" virt="non-virtual"><scope>hmap::Graph</scope><name>get_xy</name></member>
+      <member refid="classhmap_1_1Cloud_1abf5f933e3506395b5369cb090119002e" prot="public" virt="non-virtual"><scope>hmap::Graph</scope><name>get_y</name></member>
       <member refid="classhmap_1_1Graph_1a1209ddaafbb68fed3c43ec7766d8dc0a" prot="public" virt="non-virtual"><scope>hmap::Graph</scope><name>Graph</name></member>
       <member refid="classhmap_1_1Graph_1af7cd4377270d4e0dd90e7c8793351191" prot="public" virt="non-virtual"><scope>hmap::Graph</scope><name>Graph</name></member>
       <member refid="classhmap_1_1Graph_1a0ff744b8d48139b49e7dae7c7d4e7a18" prot="public" virt="non-virtual"><scope>hmap::Graph</scope><name>Graph</name></member>
       <member refid="classhmap_1_1Graph_1a6d56f1e42407c74f2cf097b7a9b05d7b" prot="public" virt="non-virtual"><scope>hmap::Graph</scope><name>Graph</name></member>
-      <member refid="classhmap_1_1Cloud_1a205f8cccbbe0421f210c6abbda5354b1" prot="public" virt="non-virtual"><scope>hmap::Graph</scope><name>interpolate_values_from_array</name></member>
       <member refid="classhmap_1_1Graph_1ad3b05e01d0c31e189fa6bae4ac43de7c" prot="public" virt="non-virtual"><scope>hmap::Graph</scope><name>minimum_spanning_tree_prim</name></member>
       <member refid="classhmap_1_1Cloud_1ad75a6d3223008397f8f93bbda4470706" prot="public" virt="non-virtual"><scope>hmap::Graph</scope><name>nearest_point</name></member>
       <member refid="classhmap_1_1Cloud_1aad75fb7bcfa7a2c3f139d2e3d3d6cc54" prot="public" virt="non-virtual"><scope>hmap::Graph</scope><name>points</name></member>
       <member refid="classhmap_1_1Graph_1a862b83b369721a4930917a78bd313421" prot="public" virt="non-virtual"><scope>hmap::Graph</scope><name>print</name></member>
       <member refid="classhmap_1_1Cloud_1a5346876f8726c1604ac7decf3a69be5a" prot="public" virt="non-virtual"><scope>hmap::Graph</scope><name>randomize</name></member>
-      <member refid="classhmap_1_1Cloud_1a89fbc7c4e7e27bd520e93735e55eddff" prot="public" virt="non-virtual"><scope>hmap::Graph</scope><name>rejection_filter_density</name></member>
       <member refid="classhmap_1_1Cloud_1a35d0d2e48f4063bd7b582bd24a132294" prot="public" virt="non-virtual"><scope>hmap::Graph</scope><name>remap_values</name></member>
       <member refid="classhmap_1_1Graph_1ad1aeb414389af66a30d891d8fc28bc46" prot="public" virt="non-virtual"><scope>hmap::Graph</scope><name>remove_orphan_points</name></member>
       <member refid="classhmap_1_1Cloud_1afa8d7286a65d513bdc90c4c05bc42e0f" prot="public" virt="non-virtual"><scope>hmap::Graph</scope><name>remove_point</name></member>
@@ -1052,10 +1047,10 @@
       <member refid="classhmap_1_1Cloud_1a7b26dc92e0d2217b8438f1ce9376ea0d" prot="public" virt="non-virtual"><scope>hmap::Graph</scope><name>snap_points_to_bounding_box</name></member>
       <member refid="classhmap_1_1Graph_1af6518d1fa6ddec305e4e114db6f66ab9" prot="public" virt="non-virtual"><scope>hmap::Graph</scope><name>to_array</name></member>
       <member refid="classhmap_1_1Cloud_1a36e47d4857108c56193755e32374184d" prot="public" virt="non-virtual" ambiguityscope="hmap::Cloud::"><scope>hmap::Graph</scope><name>to_array</name></member>
+      <member refid="classhmap_1_1Cloud_1a88e77df541a3241d166655ac7a5b3bf2" prot="public" virt="non-virtual" ambiguityscope="hmap::Cloud::"><scope>hmap::Graph</scope><name>to_array</name></member>
       <member refid="classhmap_1_1Graph_1ad4ea1d2674313998db686e668b7b5f1e" prot="public" virt="non-virtual"><scope>hmap::Graph</scope><name>to_array_fractalize</name></member>
       <member refid="classhmap_1_1Cloud_1acd6b504637e3c0791049b1f426ad4553" prot="public" virt="non-virtual"><scope>hmap::Graph</scope><name>to_array_interp</name></member>
       <member refid="classhmap_1_1Graph_1ad6942a03b44d0567ee597236083416ae" prot="public" virt="non-virtual"><scope>hmap::Graph</scope><name>to_array_sdf</name></member>
-      <member refid="classhmap_1_1Cloud_1a82725745baf9ae1982c352dcb3656424" prot="public" virt="non-virtual" ambiguityscope="hmap::Cloud::"><scope>hmap::Graph</scope><name>to_array_sdf</name></member>
       <member refid="classhmap_1_1Graph_1a47f4e4792141971443d9dbeb714ae612" prot="public" virt="non-virtual"><scope>hmap::Graph</scope><name>to_csv</name></member>
       <member refid="classhmap_1_1Cloud_1aea876ffcd05ba762a9a12d2fc4a5d27c" prot="public" virt="non-virtual" ambiguityscope="hmap::Cloud::"><scope>hmap::Graph</scope><name>to_csv</name></member>
       <member refid="classhmap_1_1Cloud_1add728a8b00dadb4a1d043ce50876c569" prot="public" virt="non-virtual"><scope>hmap::Graph</scope><name>to_graph_delaunay</name></member>

@@ -18,6 +18,10 @@ namespace \mbox{\hyperlink{namespacehmap}{hmap}}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_aad6694d36e91a15ded7373064d15b88c}{hmap\+::cloud\+\_\+sdf\+\_\+to\+\_\+array}} (const \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} \&cloud, glm\+::ivec2 shape, glm\+::vec4 bbox\+\_\+array=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr)
+\begin{DoxyCompactList}\small\item\em Compute a distance field from a point cloud. \end{DoxyCompactList}\item 
+std\+::vector$<$ float $>$ \mbox{\hyperlink{namespacehmap_ab62e174cd14e34aa08ec4c5f00c14df8}{hmap\+::interpolate\+\_\+values\+\_\+from\+\_\+array}} (const \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} \&cloud, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, glm\+::vec4 bbox)
+\begin{DoxyCompactList}\small\item\em Interpolate values from an array at the points\textquotesingle{} {\ttfamily (x, y)} locations. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} \mbox{\hyperlink{namespacehmap_abd7c616c225d31eb2fd4e3ff023e3ed5}{hmap\+::merge\+\_\+cloud}} (const \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} \&cloud1, const \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} \&cloud2)
 \begin{DoxyCompactList}\small\item\em Merges two point clouds into one. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} \mbox{\hyperlink{namespacehmap_afc6e9a8850aaebd3cca94aefb3c54114}{hmap\+::merge\+\_\+clouds}} (const std\+::vector$<$ \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} $>$ \&clouds)
@@ -35,7 +39,9 @@ namespace \mbox{\hyperlink{namespacehmap}{hmap}}
 \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} \mbox{\hyperlink{namespacehmap_ab839262913bfd936d24cf6b96a9a3da1}{hmap\+::random\+\_\+cloud\+\_\+distance\+\_\+weibull}} (float dist\+\_\+min, float lambda, float k, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, const glm\+::vec4 \&bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
 \begin{DoxyCompactList}\small\item\em Generates a random cloud of points with distances drawn from a Weibull distribution. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} \mbox{\hyperlink{namespacehmap_a2b567f4e49f112b51a29c0915b039bc1}{hmap\+::random\+\_\+cloud\+\_\+jittered}} (size\+\_\+t count, const glm\+::vec2 \&jitter\+\_\+amount, const glm\+::vec2 \&stagger\+\_\+ratio, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, const glm\+::vec4 \&bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
-\begin{DoxyCompactList}\small\item\em Generates a jittered grid cloud of points. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Generates a jittered grid cloud of points. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacehmap_af11ae6e40d37dbc431cf358727f82f42}{hmap\+::rejection\+\_\+filter\+\_\+density}} (\mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} \&cloud, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&density\+\_\+mask, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, const glm\+::vec4 \&bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
+\begin{DoxyCompactList}\small\item\em Filter a point cloud using rejection sampling based on a density mask. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -48,12 +54,6 @@ This file contains the definition of the {\ttfamily Cloud} class, which is used 
 
 The class includes methods for adding and removing points, randomizing positions and values, remapping values, and exporting data to CSV files. Additional functionalities include calculating Signed Distance Functions (SDF) and projecting point clouds onto arrays.
 
-\begin{DoxyVersion}{Version}
-0.\+1 Initial version. 
-\end{DoxyVersion}
-\begin{DoxyDate}{Date}
-2023-\/06-\/18
-\end{DoxyDate}
 \begin{DoxyCopyright}{Copyright}
 Copyright (c) 2023 Otto Link
 \end{DoxyCopyright}

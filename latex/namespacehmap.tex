@@ -956,6 +956,10 @@ std\+::function$<$ float(float, float)$>$ \mbox{\hyperlink{namespacehmap_a84ca1f
 \begin{DoxyCompactList}\small\item\em Create a continuous 2D function from a sampled array. \end{DoxyCompactList}\item 
 std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmap_1_1NoiseFunction}{hmap\+::\+Noise\+Function}} $>$ \mbox{\hyperlink{namespacehmap_af72b39fe64d11f55c59bcc8face3981b}{create\+\_\+noise\+\_\+function\+\_\+from\+\_\+type}} (\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195}{Noise\+Type}} noise\+\_\+type, glm\+::vec2 kw, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed)
 \begin{DoxyCompactList}\small\item\em Create a noise function based on the specified noise type. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_aad6694d36e91a15ded7373064d15b88c}{cloud\+\_\+sdf\+\_\+to\+\_\+array}} (const \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} \&cloud, glm\+::ivec2 shape, glm\+::vec4 bbox\+\_\+array=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr)
+\begin{DoxyCompactList}\small\item\em Compute a distance field from a point cloud. \end{DoxyCompactList}\item 
+std\+::vector$<$ float $>$ \mbox{\hyperlink{namespacehmap_ab62e174cd14e34aa08ec4c5f00c14df8}{interpolate\+\_\+values\+\_\+from\+\_\+array}} (const \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} \&cloud, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, glm\+::vec4 bbox)
+\begin{DoxyCompactList}\small\item\em Interpolate values from an array at the points\textquotesingle{} {\ttfamily (x, y)} locations. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} \mbox{\hyperlink{namespacehmap_abd7c616c225d31eb2fd4e3ff023e3ed5}{merge\+\_\+cloud}} (const \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} \&cloud1, const \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} \&cloud2)
 \begin{DoxyCompactList}\small\item\em Merges two point clouds into one. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} \mbox{\hyperlink{namespacehmap_afc6e9a8850aaebd3cca94aefb3c54114}{merge\+\_\+clouds}} (const std\+::vector$<$ \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} $>$ \&clouds)
@@ -974,6 +978,8 @@ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmap_1_1NoiseFunction}{hmap\+::\
 \begin{DoxyCompactList}\small\item\em Generates a random cloud of points with distances drawn from a Weibull distribution. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} \mbox{\hyperlink{namespacehmap_a2b567f4e49f112b51a29c0915b039bc1}{random\+\_\+cloud\+\_\+jittered}} (size\+\_\+t count, const glm\+::vec2 \&jitter\+\_\+amount, const glm\+::vec2 \&stagger\+\_\+ratio, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, const glm\+::vec4 \&bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
 \begin{DoxyCompactList}\small\item\em Generates a jittered grid cloud of points. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacehmap_af11ae6e40d37dbc431cf358727f82f42}{rejection\+\_\+filter\+\_\+density}} (\mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} \&cloud, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&density\+\_\+mask, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, const glm\+::vec4 \&bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
+\begin{DoxyCompactList}\small\item\em Filter a point cloud using rejection sampling based on a density mask. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{namespacehmap_ab085d07bc0e897729ca16c0dd2035fe1}{convert\+\_\+length\+\_\+to\+\_\+pixel}} (float x, int nx, bool lim\+\_\+inf=true, bool lim\+\_\+sup=false, float scale=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Converts a length value to a pixel index in a discretized space. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_abae56b1864390cd2f2f03acc442b423a}{grid\+\_\+xy\+\_\+vector}} (std\+::vector$<$ float $>$ \&x, std\+::vector$<$ float $>$ \&y, glm\+::ivec2 shape, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, bool endpoint=false)
@@ -13543,6 +13549,56 @@ This function creates an instance of a noise function corresponding to the speci
 \begin{DoxyReturn}{Returns}
 A {\ttfamily std\+::unique\+\_\+ptr} to the created noise function. 
 \end{DoxyReturn}
+\Hypertarget{namespacehmap_aad6694d36e91a15ded7373064d15b88c}\label{namespacehmap_aad6694d36e91a15ded7373064d15b88c} 
+\index{hmap@{hmap}!cloud\_sdf\_to\_array@{cloud\_sdf\_to\_array}}
+\index{cloud\_sdf\_to\_array@{cloud\_sdf\_to\_array}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{cloud\_sdf\_to\_array()}{cloud\_sdf\_to\_array()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::cloud\+\_\+sdf\+\_\+to\+\_\+array (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} \&}]{cloud,  }\item[{glm\+::ivec2}]{shape,  }\item[{glm\+::vec4}]{bbox\+\_\+array = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+x = {\ttfamily nullptr},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+y = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+
+
+Compute a distance field from a point cloud. 
+
+For each grid cell, computes the distance to the nearest point in the cloud, optionally applying domain warping using noise fields.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cloud} & Input point cloud. \\
+\hline
+{\em shape} & Output array dimensions. \\
+\hline
+{\em bbox\+\_\+array} & Bounding box of the output domain. \\
+\hline
+{\em p\+\_\+noise\+\_\+x} & Optional x-\/direction noise (domain warp). \\
+\hline
+{\em p\+\_\+noise\+\_\+y} & Optional y-\/direction noise (domain warp). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classhmap_1_1Array}{Array} of distances to the nearest point. 
+\end{DoxyReturn}
+\Hypertarget{namespacehmap_ab62e174cd14e34aa08ec4c5f00c14df8}\label{namespacehmap_ab62e174cd14e34aa08ec4c5f00c14df8} 
+\index{hmap@{hmap}!interpolate\_values\_from\_array@{interpolate\_values\_from\_array}}
+\index{interpolate\_values\_from\_array@{interpolate\_values\_from\_array}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{interpolate\_values\_from\_array()}{interpolate\_values\_from\_array()}}
+{\footnotesize\ttfamily std\+::vector$<$ float $>$ hmap\+::interpolate\+\_\+values\+\_\+from\+\_\+array (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} \&}]{cloud,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{glm\+::vec4}]{bbox }\end{DoxyParamCaption})}
+
+
+
+Interpolate values from an array at the points\textquotesingle{} {\ttfamily (x, y)} locations. 
+
+This method computes interpolated values for each point in the cloud based on its {\ttfamily (x, y)} coordinates and an underlying array, using bilinear interpolation within the specified bounding box.
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & The input array from which to interpolate values. \\
+\hline
+{\em bbox} & The bounding box of the array. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$float$>$ A vector containing the interpolated values for each point. 
+\end{DoxyReturn}
 \Hypertarget{namespacehmap_abd7c616c225d31eb2fd4e3ff023e3ed5}\label{namespacehmap_abd7c616c225d31eb2fd4e3ff023e3ed5} 
 \index{hmap@{hmap}!merge\_cloud@{merge\_cloud}}
 \index{merge\_cloud@{merge\_cloud}!hmap@{hmap}}
@@ -13658,7 +13714,7 @@ A \doxylink{classhmap_1_1Cloud}{Cloud} containing the generated points.
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed,}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_aba758c4143b6e499ec6f4385467a6d77a99ca15104343ff0356c6fc0ffe4f837d}{hmap::PointSamplingMethod::RND\_HALTON}});}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a89fbc7c4e7e27bd520e93735e55eddff}{rejection\_filter\_density}}(density,\ seed);}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{namespacehmap_af11ae6e40d37dbc431cf358727f82f42}{hmap::rejection\_filter\_density}}(cloud,\ density,\ seed);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a36e47d4857108c56193755e32374184d}{to\_array}}(raster);}
 \DoxyCodeLine{\ \ \ \ zs.push\_back(raster);}
@@ -13838,7 +13894,7 @@ A \doxylink{classhmap_1_1Cloud}{Cloud} containing the generated points.
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed,}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_aba758c4143b6e499ec6f4385467a6d77a99ca15104343ff0356c6fc0ffe4f837d}{hmap::PointSamplingMethod::RND\_HALTON}});}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a89fbc7c4e7e27bd520e93735e55eddff}{rejection\_filter\_density}}(density,\ seed);}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{namespacehmap_af11ae6e40d37dbc431cf358727f82f42}{hmap::rejection\_filter\_density}}(cloud,\ density,\ seed);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a36e47d4857108c56193755e32374184d}{to\_array}}(raster);}
 \DoxyCodeLine{\ \ \ \ zs.push\_back(raster);}
@@ -14016,7 +14072,7 @@ A \doxylink{classhmap_1_1Cloud}{Cloud} containing the generated points.
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed,}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_aba758c4143b6e499ec6f4385467a6d77a99ca15104343ff0356c6fc0ffe4f837d}{hmap::PointSamplingMethod::RND\_HALTON}});}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a89fbc7c4e7e27bd520e93735e55eddff}{rejection\_filter\_density}}(density,\ seed);}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{namespacehmap_af11ae6e40d37dbc431cf358727f82f42}{hmap::rejection\_filter\_density}}(cloud,\ density,\ seed);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a36e47d4857108c56193755e32374184d}{to\_array}}(raster);}
 \DoxyCodeLine{\ \ \ \ zs.push\_back(raster);}
@@ -14198,7 +14254,7 @@ A \doxylink{classhmap_1_1Cloud}{Cloud} containing the generated points.
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed,}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_aba758c4143b6e499ec6f4385467a6d77a99ca15104343ff0356c6fc0ffe4f837d}{hmap::PointSamplingMethod::RND\_HALTON}});}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a89fbc7c4e7e27bd520e93735e55eddff}{rejection\_filter\_density}}(density,\ seed);}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{namespacehmap_af11ae6e40d37dbc431cf358727f82f42}{hmap::rejection\_filter\_density}}(cloud,\ density,\ seed);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a36e47d4857108c56193755e32374184d}{to\_array}}(raster);}
 \DoxyCodeLine{\ \ \ \ zs.push\_back(raster);}
@@ -14380,7 +14436,7 @@ A \doxylink{classhmap_1_1Cloud}{Cloud} containing the generated points.
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed,}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_aba758c4143b6e499ec6f4385467a6d77a99ca15104343ff0356c6fc0ffe4f837d}{hmap::PointSamplingMethod::RND\_HALTON}});}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a89fbc7c4e7e27bd520e93735e55eddff}{rejection\_filter\_density}}(density,\ seed);}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{namespacehmap_af11ae6e40d37dbc431cf358727f82f42}{hmap::rejection\_filter\_density}}(cloud,\ density,\ seed);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a36e47d4857108c56193755e32374184d}{to\_array}}(raster);}
 \DoxyCodeLine{\ \ \ \ zs.push\_back(raster);}
@@ -14562,7 +14618,7 @@ A \doxylink{classhmap_1_1Cloud}{Cloud} containing the generated points.
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed,}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_aba758c4143b6e499ec6f4385467a6d77a99ca15104343ff0356c6fc0ffe4f837d}{hmap::PointSamplingMethod::RND\_HALTON}});}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a89fbc7c4e7e27bd520e93735e55eddff}{rejection\_filter\_density}}(density,\ seed);}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{namespacehmap_af11ae6e40d37dbc431cf358727f82f42}{hmap::rejection\_filter\_density}}(cloud,\ density,\ seed);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a36e47d4857108c56193755e32374184d}{to\_array}}(raster);}
 \DoxyCodeLine{\ \ \ \ zs.push\_back(raster);}
@@ -14744,7 +14800,7 @@ A \doxylink{classhmap_1_1Cloud}{Cloud} containing the generated points.
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed,}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_aba758c4143b6e499ec6f4385467a6d77a99ca15104343ff0356c6fc0ffe4f837d}{hmap::PointSamplingMethod::RND\_HALTON}});}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a89fbc7c4e7e27bd520e93735e55eddff}{rejection\_filter\_density}}(density,\ seed);}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{namespacehmap_af11ae6e40d37dbc431cf358727f82f42}{hmap::rejection\_filter\_density}}(cloud,\ density,\ seed);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a36e47d4857108c56193755e32374184d}{to\_array}}(raster);}
 \DoxyCodeLine{\ \ \ \ zs.push\_back(raster);}
@@ -14837,7 +14893,39 @@ A \doxylink{classhmap_1_1Cloud}{Cloud} containing the generated points.
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}     \Hypertarget{namespacehmap_ab085d07bc0e897729ca16c0dd2035fe1}\label{namespacehmap_ab085d07bc0e897729ca16c0dd2035fe1} 
+{\bfseries{Result}}     \Hypertarget{namespacehmap_af11ae6e40d37dbc431cf358727f82f42}\label{namespacehmap_af11ae6e40d37dbc431cf358727f82f42} 
+\index{hmap@{hmap}!rejection\_filter\_density@{rejection\_filter\_density}}
+\index{rejection\_filter\_density@{rejection\_filter\_density}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{rejection\_filter\_density()}{rejection\_filter\_density()}}
+{\footnotesize\ttfamily void hmap\+::rejection\+\_\+filter\+\_\+density (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} \&}]{cloud,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{density\+\_\+mask,  }\item[{\mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{seed,  }\item[{const glm\+::vec4 \&}]{bbox = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}} }\end{DoxyParamCaption})}
+
+
+
+Filter a point cloud using rejection sampling based on a density mask. 
+
+Each point in the input cloud is retained or discarded according to a spatially varying probability derived from the provided 2D density mask. The mask is mapped to the bounding box and evaluated as a continuous function over the domain.
+
+For a point $p=(x,y)$, the probability of acceptance is\+:  \[
+P(\text{keep } p) = \rho(x,y) \in [0,1]
+\] where $\rho(x,y)$ is the normalized density mask value at the point\textquotesingle{}s position.
+
+
+\begin{DoxyParams}{Parameters}
+{\em density\+\_\+mask} & 2D array defining the spatial density field over the bounding box. Values should lie in $[0,1]$. \\
+\hline
+{\em seed} & Random seed used for reproducible rejection sampling. \\
+\hline
+{\em bbox} & Bounding box {\ttfamily (xmin, ymin, xmax, ymax)} defining the spatial extent of the density mask in world coordinates.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item Points outside the bounding box are implicitly mapped to extrapolated density values.
+\item The method preserves the {\itshape relative} density pattern defined by the mask, but reduces the overall number of points according to rejection probability. 
+\end{DoxyItemize}
+\end{DoxyNote}
+\Hypertarget{namespacehmap_ab085d07bc0e897729ca16c0dd2035fe1}\label{namespacehmap_ab085d07bc0e897729ca16c0dd2035fe1} 
 \index{hmap@{hmap}!convert\_length\_to\_pixel@{convert\_length\_to\_pixel}}
 \index{convert\_length\_to\_pixel@{convert\_length\_to\_pixel}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{convert\_length\_to\_pixel()}{convert\_length\_to\_pixel()}}

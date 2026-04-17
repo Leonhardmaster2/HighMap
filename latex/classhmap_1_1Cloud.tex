@@ -48,15 +48,13 @@ virtual \mbox{\hyperlink{classhmap_1_1Cloud_a37e6f8229904ba2b013fbdf25751c6d4}{\
 \begin{DoxyCompactList}\small\item\em Construct a point cloud from grid indices mapped to a bounding box. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classhmap_1_1Cloud_ab1149531131111567d9f8760162d90ff}{add\+\_\+point}} (const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p)
 \begin{DoxyCompactList}\small\item\em Add a new point to the cloud. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classhmap_1_1Cloud_a247e64e1c0e5cb85570c0ec3aed3d774}{clear}} ()
-\begin{DoxyCompactList}\small\item\em Clear all data from the cloud. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{classhmap_1_1Cloud_a45c0878a8bcc06335e6afeb8c786a3e0}{from\+\_\+csv}} (const std\+::string \&fname)
-\begin{DoxyCompactList}\small\item\em Loads point data from a CSV file into the \doxylink{classhmap_1_1Cloud}{Cloud} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classhmap_1_1Cloud_afa8d7286a65d513bdc90c4c05bc42e0f}{remove\+\_\+point}} (int point\+\_\+idx)
+\begin{DoxyCompactList}\small\item\em Remove a point from the cloud. \end{DoxyCompactList}\item 
 glm\+::vec4 \mbox{\hyperlink{classhmap_1_1Cloud_ae5ba6ffbe371603545c312e51601615f}{get\+\_\+bbox}} () const
 \begin{DoxyCompactList}\small\item\em Get the bounding box of the cloud. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Point}{Point}} \mbox{\hyperlink{classhmap_1_1Cloud_a2f4679015ee69b12c50f60a607388965}{get\+\_\+center}} () const
 \begin{DoxyCompactList}\small\item\em Calculates the centroid of a set of points. \end{DoxyCompactList}\item 
-std\+::vector$<$ int $>$ \mbox{\hyperlink{classhmap_1_1Cloud_a10f22c402c1e8e4043c01327bca0f9e8}{get\+\_\+convex\+\_\+hull\+\_\+point\+\_\+indices}} () const
+std\+::vector$<$ int $>$ \mbox{\hyperlink{classhmap_1_1Cloud_afdfe23ec95137b1d5480c703b2cde009}{get\+\_\+convex\+\_\+hull}} () const
 \begin{DoxyCompactList}\small\item\em Computes the indices of the points that form the convex hull of a set of points. \end{DoxyCompactList}\item 
 std\+::vector$<$ float $>$ \mbox{\hyperlink{classhmap_1_1Cloud_a53cb47401f1e9d027a638f3680c3004d}{get\+\_\+values}} () const
 \begin{DoxyCompactList}\small\item\em Get the values assigned to the points in the cloud. \end{DoxyCompactList}\item 
@@ -64,26 +62,14 @@ float \mbox{\hyperlink{classhmap_1_1Cloud_abe70a230c2bfecad67112321b3040286}{get
 \begin{DoxyCompactList}\small\item\em Get the maximum value among the points in the cloud. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{classhmap_1_1Cloud_a9194835457c70bfa13d0dfa66d964f01}{get\+\_\+values\+\_\+min}} () const
 \begin{DoxyCompactList}\small\item\em Get the minimum value among the points in the cloud. \end{DoxyCompactList}\item 
-virtual std\+::vector$<$ float $>$ \mbox{\hyperlink{classhmap_1_1Cloud_aab450c9376e44def1d4e4465f0b1b691}{get\+\_\+x}} () const
+std\+::vector$<$ float $>$ \mbox{\hyperlink{classhmap_1_1Cloud_aab450c9376e44def1d4e4465f0b1b691}{get\+\_\+x}} () const
 \begin{DoxyCompactList}\small\item\em Get the {\ttfamily x} coordinates of the points in the cloud. \end{DoxyCompactList}\item 
-virtual std\+::vector$<$ float $>$ \mbox{\hyperlink{classhmap_1_1Cloud_ab0c1fe00f5465c5b0b04e3e397bae5d5}{get\+\_\+xy}} () const
+std\+::vector$<$ float $>$ \mbox{\hyperlink{classhmap_1_1Cloud_ab0c1fe00f5465c5b0b04e3e397bae5d5}{get\+\_\+xy}} () const
 \begin{DoxyCompactList}\small\item\em Get the concatenated {\ttfamily x} and {\ttfamily y} coordinates of the points in the cloud. \end{DoxyCompactList}\item 
-virtual std\+::vector$<$ float $>$ \mbox{\hyperlink{classhmap_1_1Cloud_abf5f933e3506395b5369cb090119002e}{get\+\_\+y}} () const
+std\+::vector$<$ float $>$ \mbox{\hyperlink{classhmap_1_1Cloud_abf5f933e3506395b5369cb090119002e}{get\+\_\+y}} () const
 \begin{DoxyCompactList}\small\item\em Get the {\ttfamily y} coordinates of the points in the cloud. \end{DoxyCompactList}\item 
-std\+::vector$<$ float $>$ \mbox{\hyperlink{classhmap_1_1Cloud_a205f8cccbbe0421f210c6abbda5354b1}{interpolate\+\_\+values\+\_\+from\+\_\+array}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, glm\+::vec4 bbox)
-\begin{DoxyCompactList}\small\item\em Interpolate values from an array at the points\textquotesingle{} {\ttfamily (x, y)} locations. \end{DoxyCompactList}\item 
 size\+\_\+t \mbox{\hyperlink{classhmap_1_1Cloud_ad75a6d3223008397f8f93bbda4470706}{nearest\+\_\+point}} (const glm\+::vec2 \&xy) const
 \begin{DoxyCompactList}\small\item\em Find the index of the nearest point in the cloud. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classhmap_1_1Cloud_aefea3d749a554df8a23ec38af5acb415}{print}} ()
-\begin{DoxyCompactList}\small\item\em Print information about the cloud\textquotesingle{}s points. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classhmap_1_1Cloud_a5346876f8726c1604ac7decf3a69be5a}{randomize}} (\mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
-\begin{DoxyCompactList}\small\item\em Randomize the positions and values of the cloud points. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classhmap_1_1Cloud_a89fbc7c4e7e27bd520e93735e55eddff}{rejection\+\_\+filter\+\_\+density}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&density\+\_\+mask, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, const glm\+::vec4 \&bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
-\begin{DoxyCompactList}\small\item\em Filter a point cloud using rejection sampling based on a density mask. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classhmap_1_1Cloud_a35d0d2e48f4063bd7b582bd24a132294}{remap\+\_\+values}} (float vmin, float vmax)
-\begin{DoxyCompactList}\small\item\em Remap the values of the cloud points to a target range. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classhmap_1_1Cloud_afa8d7286a65d513bdc90c4c05bc42e0f}{remove\+\_\+point}} (int point\+\_\+idx)
-\begin{DoxyCompactList}\small\item\em Remove a point from the cloud. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classhmap_1_1Cloud_a6e8c4efb301989f9ecf2175d62ef55f8}{set\+\_\+points}} (const std\+::vector$<$ float $>$ \&x, const std\+::vector$<$ float $>$ \&y)
 \begin{DoxyCompactList}\small\item\em Set points of the using x, y coordinates. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classhmap_1_1Cloud_a604e61fbcbd8cc469ed21501e65f5c7b}{set\+\_\+values}} (const std\+::vector$<$ float $>$ \&new\+\_\+values)
@@ -100,14 +86,24 @@ void \mbox{\hyperlink{classhmap_1_1Cloud_ad8b2d626436107c4b0e2c9877747375f}{set\
 \begin{DoxyCompactList}\small\item\em Sets point values based on the distance to their nearest neighbor. \end{DoxyCompactList}\item 
 size\+\_\+t \mbox{\hyperlink{classhmap_1_1Cloud_adc675e8b2769a94b4c23bf7e69348f84}{size}} () const
 \begin{DoxyCompactList}\small\item\em Get the number of points in the cloud. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classhmap_1_1Cloud_a7b26dc92e0d2217b8438f1ce9376ea0d}{snap\+\_\+points\+\_\+to\+\_\+bounding\+\_\+box}} (const glm\+::vec4 \&bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, float tolerance\+\_\+ratio=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
-\begin{DoxyCompactList}\small\item\em Snap points to the bounding box edges and corners. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classhmap_1_1Cloud_a247e64e1c0e5cb85570c0ec3aed3d774}{clear}} ()
+\begin{DoxyCompactList}\small\item\em Clear all data from the cloud. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classhmap_1_1Cloud_aefea3d749a554df8a23ec38af5acb415}{print}} ()
+\begin{DoxyCompactList}\small\item\em Print information about the cloud\textquotesingle{}s points. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classhmap_1_1Cloud_a5346876f8726c1604ac7decf3a69be5a}{randomize}} (\mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
+\begin{DoxyCompactList}\small\item\em Randomize the positions and values of the cloud points. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classhmap_1_1Cloud_a35d0d2e48f4063bd7b582bd24a132294}{remap\+\_\+values}} (float vmin, float vmax)
+\begin{DoxyCompactList}\small\item\em Remap the values of the cloud points to a target range. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classhmap_1_1Cloud_af8d4e873ff4ed29eb7f140db227e03a2}{shuffle}} (float dx, float dy, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, float dv=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Randomly perturbs the positions and values of all points in the cloud. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classhmap_1_1Cloud_a7b26dc92e0d2217b8438f1ce9376ea0d}{snap\+\_\+points\+\_\+to\+\_\+bounding\+\_\+box}} (const glm\+::vec4 \&bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, float tolerance\+\_\+ratio=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
+\begin{DoxyCompactList}\small\item\em Snap points to the bounding box edges and corners. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classhmap_1_1Cloud_a45c0878a8bcc06335e6afeb8c786a3e0}{from\+\_\+csv}} (const std\+::string \&fname)
+\begin{DoxyCompactList}\small\item\em Loads point data from a CSV file into the \doxylink{classhmap_1_1Cloud}{Cloud} object. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classhmap_1_1Cloud_a36e47d4857108c56193755e32374184d}{to\+\_\+array}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}) const
 \begin{DoxyCompactList}\small\item\em Project the cloud points onto an array. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{classhmap_1_1Cloud_a82725745baf9ae1982c352dcb3656424}{to\+\_\+array\+\_\+sdf}} (glm\+::ivec2 shape, glm\+::vec4 bbox, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, glm\+::vec4 bbox\+\_\+array=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}) const
-\begin{DoxyCompactList}\small\item\em Generate an array filled with the signed distance function (SDF) to the cloud points. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{classhmap_1_1Cloud_a88e77df541a3241d166655ac7a5b3bf2}{to\+\_\+array}} (glm\+::ivec2 shape, glm\+::vec4 bbox) const
+\begin{DoxyCompactList}\small\item\em See hmap\+::to\+\_\+array. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classhmap_1_1Cloud_acd6b504637e3c0791049b1f426ad4553}{to\+\_\+array\+\_\+interp}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, \mbox{\hyperlink{namespacehmap_a5bfab5d68e822294ff90fde21b85f581}{Interpolation\+Method2D}} interpolation\+\_\+method=\mbox{\hyperlink{namespacehmap_a5bfab5d68e822294ff90fde21b85f581a5fc536ff63a05f254ff7583cccac8a12}{Interpolation\+Method2\+D\+::\+ITP2\+D\+\_\+\+DELAUNAY}}, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, glm\+::vec4 bbox\+\_\+array=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}) const
 \begin{DoxyCompactList}\small\item\em Interpolate the values of an array using the cloud points. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classhmap_1_1Cloud_aea876ffcd05ba762a9a12d2fc4a5d27c}{to\+\_\+csv}} (const std\+::string \&fname) const
@@ -117,7 +113,7 @@ void \mbox{\hyperlink{classhmap_1_1Cloud_aea876ffcd05ba762a9a12d2fc4a5d27c}{to\+
 void \mbox{\hyperlink{classhmap_1_1Cloud_ad9dd8073b3ce4224c3e6435b24bea561}{to\+\_\+png}} (const std\+::string \&fname, int cmap, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, int depth=CV\+\_\+8U, glm\+::ivec2 shape=\{512, 512\})
 \begin{DoxyCompactList}\small\item\em Saves the current data as a PNG image file. \end{DoxyCompactList}\item 
 std\+::vector$<$ glm\+::vec3 $>$ \mbox{\hyperlink{classhmap_1_1Cloud_a653188a0cf3bd86403a12d225b2eb1fa}{to\+\_\+vec3}} () const
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Convert path points to a vector of 3D positions. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -268,42 +264,23 @@ This method appends a new point to the list of points in the cloud.
 {\em p} & The point to be added to the cloud. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{classhmap_1_1Cloud_a247e64e1c0e5cb85570c0ec3aed3d774}\label{classhmap_1_1Cloud_a247e64e1c0e5cb85570c0ec3aed3d774} 
-\index{hmap::Cloud@{hmap::Cloud}!clear@{clear}}
-\index{clear@{clear}!hmap::Cloud@{hmap::Cloud}}
-\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
-{\footnotesize\ttfamily void hmap\+::\+Cloud\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\Hypertarget{classhmap_1_1Cloud_afa8d7286a65d513bdc90c4c05bc42e0f}\label{classhmap_1_1Cloud_afa8d7286a65d513bdc90c4c05bc42e0f} 
+\index{hmap::Cloud@{hmap::Cloud}!remove\_point@{remove\_point}}
+\index{remove\_point@{remove\_point}!hmap::Cloud@{hmap::Cloud}}
+\doxysubsubsection{\texorpdfstring{remove\_point()}{remove\_point()}}
+{\footnotesize\ttfamily void hmap\+::\+Cloud\+::remove\+\_\+point (\begin{DoxyParamCaption}\item[{int}]{point\+\_\+idx }\end{DoxyParamCaption})}
 
 
 
-Clear all data from the cloud. 
+Remove a point from the cloud. 
 
-This method removes all points from the cloud, leaving it empty. \Hypertarget{classhmap_1_1Cloud_a45c0878a8bcc06335e6afeb8c786a3e0}\label{classhmap_1_1Cloud_a45c0878a8bcc06335e6afeb8c786a3e0} 
-\index{hmap::Cloud@{hmap::Cloud}!from\_csv@{from\_csv}}
-\index{from\_csv@{from\_csv}!hmap::Cloud@{hmap::Cloud}}
-\doxysubsubsection{\texorpdfstring{from\_csv()}{from\_csv()}}
-{\footnotesize\ttfamily bool hmap\+::\+Cloud\+::from\+\_\+csv (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{fname }\end{DoxyParamCaption})}
-
-
-
-Loads point data from a CSV file into the \doxylink{classhmap_1_1Cloud}{Cloud} object. 
-
-This function reads a CSV file where each line contains either 2D (X, Y) or 3D (X, Y, Z) point data. The function automatically detects the dimensionality of the points based on the number of values per line. The loaded points are stored in the {\ttfamily points} member of the \doxylink{classhmap_1_1Cloud}{Cloud} object.
+This method removes a point from the cloud based on its index.
 
 
 \begin{DoxyParams}{Parameters}
-{\em fname} & The path to the CSV file to be read. \\
+{\em point\+\_\+idx} & Index of the point to be removed. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-true if the file was successfully read and the points were loaded, false otherwise.
-\end{DoxyReturn}
-\begin{DoxyNote}{Note}
-The CSV file must be well-\/formed, with each line containing either 2 or 3 comma-\/separated values. Lines with an unexpected number of values will cause the function to return false.
-\end{DoxyNote}
-\begin{DoxyWarning}{Warning}
-If the file cannot be opened or contains invalid data (e.\+g., non-\/numeric values), the function will log an error and return false. 
-\end{DoxyWarning}
 \Hypertarget{classhmap_1_1Cloud_ae5ba6ffbe371603545c312e51601615f}\label{classhmap_1_1Cloud_ae5ba6ffbe371603545c312e51601615f} 
 \index{hmap::Cloud@{hmap::Cloud}!get\_bbox@{get\_bbox}}
 \index{get\_bbox@{get\_bbox}!hmap::Cloud@{hmap::Cloud}}
@@ -334,11 +311,11 @@ This function computes the center (or centroid) of a collection of points by ave
 \begin{DoxyReturn}{Returns}
 \doxylink{classhmap_1_1Point}{Point} The computed center, represented as a {\ttfamily \doxylink{classhmap_1_1Point}{Point}} object, which contains the average (x, y) coordinates of the points. 
 \end{DoxyReturn}
-\Hypertarget{classhmap_1_1Cloud_a10f22c402c1e8e4043c01327bca0f9e8}\label{classhmap_1_1Cloud_a10f22c402c1e8e4043c01327bca0f9e8} 
-\index{hmap::Cloud@{hmap::Cloud}!get\_convex\_hull\_point\_indices@{get\_convex\_hull\_point\_indices}}
-\index{get\_convex\_hull\_point\_indices@{get\_convex\_hull\_point\_indices}!hmap::Cloud@{hmap::Cloud}}
-\doxysubsubsection{\texorpdfstring{get\_convex\_hull\_point\_indices()}{get\_convex\_hull\_point\_indices()}}
-{\footnotesize\ttfamily std\+::vector$<$ int $>$ hmap\+::\+Cloud\+::get\+\_\+convex\+\_\+hull\+\_\+point\+\_\+indices (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+\Hypertarget{classhmap_1_1Cloud_afdfe23ec95137b1d5480c703b2cde009}\label{classhmap_1_1Cloud_afdfe23ec95137b1d5480c703b2cde009} 
+\index{hmap::Cloud@{hmap::Cloud}!get\_convex\_hull@{get\_convex\_hull}}
+\index{get\_convex\_hull@{get\_convex\_hull}!hmap::Cloud@{hmap::Cloud}}
+\doxysubsubsection{\texorpdfstring{get\_convex\_hull()}{get\_convex\_hull()}}
+{\footnotesize\ttfamily std\+::vector$<$ int $>$ hmap\+::\+Cloud\+::get\+\_\+convex\+\_\+hull (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
 
@@ -367,7 +344,7 @@ std\+::vector$<$int$>$ A vector containing the indices of the points that make u
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z0\ =\ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}(shape);}
 \DoxyCodeLine{\ \ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a36e47d4857108c56193755e32374184d}{to\_array}}(z0,\ bbox);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ std::vector<int>\ idx\ =\ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a10f22c402c1e8e4043c01327bca0f9e8}{get\_convex\_hull\_point\_indices}}();}
+\DoxyCodeLine{\ \ std::vector<int>\ idx\ =\ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_afdfe23ec95137b1d5480c703b2cde009}{get\_convex\_hull}}();}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ create\ a\ polyline\ to\ display\ the\ chull}}
 \DoxyCodeLine{\ \ std::vector<float>\ x,\ y,\ v;}
@@ -441,7 +418,7 @@ float The minimum value among the points.
 \index{hmap::Cloud@{hmap::Cloud}!get\_x@{get\_x}}
 \index{get\_x@{get\_x}!hmap::Cloud@{hmap::Cloud}}
 \doxysubsubsection{\texorpdfstring{get\_x()}{get\_x()}}
-{\footnotesize\ttfamily std\+::vector$<$ float $>$ hmap\+::\+Cloud\+::get\+\_\+x (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily std\+::vector$<$ float $>$ hmap\+::\+Cloud\+::get\+\_\+x (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
 
@@ -452,15 +429,11 @@ This method returns a vector containing the {\ttfamily x} coordinates of all poi
 \begin{DoxyReturn}{Returns}
 std\+::vector$<$float$>$ A vector containing the {\ttfamily x} coordinates of the points. 
 \end{DoxyReturn}
-
-
-Reimplemented in \mbox{\hyperlink{classhmap_1_1Path_ac01edb126b845a027883d9abd88e826b}{hmap\+::\+Path}}.
-
 \Hypertarget{classhmap_1_1Cloud_ab0c1fe00f5465c5b0b04e3e397bae5d5}\label{classhmap_1_1Cloud_ab0c1fe00f5465c5b0b04e3e397bae5d5} 
 \index{hmap::Cloud@{hmap::Cloud}!get\_xy@{get\_xy}}
 \index{get\_xy@{get\_xy}!hmap::Cloud@{hmap::Cloud}}
 \doxysubsubsection{\texorpdfstring{get\_xy()}{get\_xy()}}
-{\footnotesize\ttfamily std\+::vector$<$ float $>$ hmap\+::\+Cloud\+::get\+\_\+xy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily std\+::vector$<$ float $>$ hmap\+::\+Cloud\+::get\+\_\+xy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
 
@@ -471,15 +444,11 @@ This method returns a vector containing the {\ttfamily x} and {\ttfamily y} coor
 \begin{DoxyReturn}{Returns}
 std\+::vector$<$float$>$ A vector containing the concatenated {\ttfamily x} and {\ttfamily y} coordinates of the points. 
 \end{DoxyReturn}
-
-
-Reimplemented in \mbox{\hyperlink{classhmap_1_1Path_a18048b5af9a33893fa946ce76eb75781}{hmap\+::\+Path}}.
-
 \Hypertarget{classhmap_1_1Cloud_abf5f933e3506395b5369cb090119002e}\label{classhmap_1_1Cloud_abf5f933e3506395b5369cb090119002e} 
 \index{hmap::Cloud@{hmap::Cloud}!get\_y@{get\_y}}
 \index{get\_y@{get\_y}!hmap::Cloud@{hmap::Cloud}}
 \doxysubsubsection{\texorpdfstring{get\_y()}{get\_y()}}
-{\footnotesize\ttfamily std\+::vector$<$ float $>$ hmap\+::\+Cloud\+::get\+\_\+y (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily std\+::vector$<$ float $>$ hmap\+::\+Cloud\+::get\+\_\+y (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
 
@@ -489,32 +458,6 @@ This method returns a vector containing the {\ttfamily y} coordinates of all poi
 
 \begin{DoxyReturn}{Returns}
 std\+::vector$<$float$>$ A vector containing the {\ttfamily y} coordinates of the points. 
-\end{DoxyReturn}
-
-
-Reimplemented in \mbox{\hyperlink{classhmap_1_1Path_ab9ff9f7a0ea9c090c34810536458da8d}{hmap\+::\+Path}}.
-
-\Hypertarget{classhmap_1_1Cloud_a205f8cccbbe0421f210c6abbda5354b1}\label{classhmap_1_1Cloud_a205f8cccbbe0421f210c6abbda5354b1} 
-\index{hmap::Cloud@{hmap::Cloud}!interpolate\_values\_from\_array@{interpolate\_values\_from\_array}}
-\index{interpolate\_values\_from\_array@{interpolate\_values\_from\_array}!hmap::Cloud@{hmap::Cloud}}
-\doxysubsubsection{\texorpdfstring{interpolate\_values\_from\_array()}{interpolate\_values\_from\_array()}}
-{\footnotesize\ttfamily std\+::vector$<$ float $>$ hmap\+::\+Cloud\+::interpolate\+\_\+values\+\_\+from\+\_\+array (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{glm\+::vec4}]{bbox }\end{DoxyParamCaption})}
-
-
-
-Interpolate values from an array at the points\textquotesingle{} {\ttfamily (x, y)} locations. 
-
-This method computes interpolated values for each point in the cloud based on its {\ttfamily (x, y)} coordinates and an underlying array, using bilinear interpolation within the specified bounding box.
-
-
-\begin{DoxyParams}{Parameters}
-{\em array} & The input array from which to interpolate values. \\
-\hline
-{\em bbox} & The bounding box of the array. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-std\+::vector$<$float$>$ A vector containing the interpolated values for each point. 
 \end{DoxyReturn}
 \Hypertarget{classhmap_1_1Cloud_ad75a6d3223008397f8f93bbda4470706}\label{classhmap_1_1Cloud_ad75a6d3223008397f8f93bbda4470706} 
 \index{hmap::Cloud@{hmap::Cloud}!nearest\_point@{nearest\_point}}
@@ -528,6 +471,9 @@ Find the index of the nearest point in the cloud.
 
 Computes the point whose (x,y) position is closest to {\ttfamily xy} using squared Euclidean distance.
 
+\begin{DoxyNote}{Note}
+This implementation is not optimized and is intended for occasional single queries. It performs a linear search and is not suitable for large-\/scale or repeated nearest-\/neighbor queries.
+\end{DoxyNote}
 
 \begin{DoxyParams}{Parameters}
 {\em xy} & Query position \\
@@ -536,103 +482,6 @@ Computes the point whose (x,y) position is closest to {\ttfamily xy} using squar
 \begin{DoxyReturn}{Returns}
 Index of the nearest point 
 \end{DoxyReturn}
-\Hypertarget{classhmap_1_1Cloud_aefea3d749a554df8a23ec38af5acb415}\label{classhmap_1_1Cloud_aefea3d749a554df8a23ec38af5acb415} 
-\index{hmap::Cloud@{hmap::Cloud}!print@{print}}
-\index{print@{print}!hmap::Cloud@{hmap::Cloud}}
-\doxysubsubsection{\texorpdfstring{print()}{print()}}
-{\footnotesize\ttfamily void hmap\+::\+Cloud\+::print (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-Print information about the cloud\textquotesingle{}s points. 
-
-This method prints data related to the cloud\textquotesingle{}s points, including their coordinates and values. \Hypertarget{classhmap_1_1Cloud_a5346876f8726c1604ac7decf3a69be5a}\label{classhmap_1_1Cloud_a5346876f8726c1604ac7decf3a69be5a} 
-\index{hmap::Cloud@{hmap::Cloud}!randomize@{randomize}}
-\index{randomize@{randomize}!hmap::Cloud@{hmap::Cloud}}
-\doxysubsubsection{\texorpdfstring{randomize()}{randomize()}}
-{\footnotesize\ttfamily void hmap\+::\+Cloud\+::randomize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{seed,  }\item[{glm\+::vec4}]{bbox = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}} }\end{DoxyParamCaption})}
-
-
-
-Randomize the positions and values of the cloud points. 
-
-This method randomizes the positions and values of the points in the cloud using a given random seed. The new positions are generated within the specified bounding box.
-
-
-\begin{DoxyParams}{Parameters}
-{\em seed} & Random seed number for generating positions and values. \\
-\hline
-{\em bbox} & Bounding box within which the points will be randomized. \\
-\hline
-\end{DoxyParams}
-\Hypertarget{classhmap_1_1Cloud_a89fbc7c4e7e27bd520e93735e55eddff}\label{classhmap_1_1Cloud_a89fbc7c4e7e27bd520e93735e55eddff} 
-\index{hmap::Cloud@{hmap::Cloud}!rejection\_filter\_density@{rejection\_filter\_density}}
-\index{rejection\_filter\_density@{rejection\_filter\_density}!hmap::Cloud@{hmap::Cloud}}
-\doxysubsubsection{\texorpdfstring{rejection\_filter\_density()}{rejection\_filter\_density()}}
-{\footnotesize\ttfamily void hmap\+::\+Cloud\+::rejection\+\_\+filter\+\_\+density (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{density\+\_\+mask,  }\item[{\mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{seed,  }\item[{const glm\+::vec4 \&}]{bbox = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}} }\end{DoxyParamCaption})}
-
-
-
-Filter a point cloud using rejection sampling based on a density mask. 
-
-Each point in the input cloud is retained or discarded according to a spatially varying probability derived from the provided 2D density mask. The mask is mapped to the bounding box and evaluated as a continuous function over the domain.
-
-For a point $p=(x,y)$, the probability of acceptance is\+:  \[
-P(\text{keep } p) = \rho(x,y) \in [0,1]
-\] where $\rho(x,y)$ is the normalized density mask value at the point\textquotesingle{}s position.
-
-
-\begin{DoxyParams}{Parameters}
-{\em density\+\_\+mask} & 2D array defining the spatial density field over the bounding box. Values should lie in $[0,1]$. \\
-\hline
-{\em seed} & Random seed used for reproducible rejection sampling. \\
-\hline
-{\em bbox} & Bounding box {\ttfamily (xmin, ymin, xmax, ymax)} defining the spatial extent of the density mask in world coordinates.\\
-\hline
-\end{DoxyParams}
-\begin{DoxyNote}{Note}
-
-\begin{DoxyItemize}
-\item Points outside the bounding box are implicitly mapped to extrapolated density values.
-\item The method preserves the {\itshape relative} density pattern defined by the mask, but reduces the overall number of points according to rejection probability. 
-\end{DoxyItemize}
-\end{DoxyNote}
-\Hypertarget{classhmap_1_1Cloud_a35d0d2e48f4063bd7b582bd24a132294}\label{classhmap_1_1Cloud_a35d0d2e48f4063bd7b582bd24a132294} 
-\index{hmap::Cloud@{hmap::Cloud}!remap\_values@{remap\_values}}
-\index{remap\_values@{remap\_values}!hmap::Cloud@{hmap::Cloud}}
-\doxysubsubsection{\texorpdfstring{remap\_values()}{remap\_values()}}
-{\footnotesize\ttfamily void hmap\+::\+Cloud\+::remap\+\_\+values (\begin{DoxyParamCaption}\item[{float}]{vmin,  }\item[{float}]{vmax }\end{DoxyParamCaption})}
-
-
-
-Remap the values of the cloud points to a target range. 
-
-This method scales the values associated with the cloud points so that they fall within a specified range {\ttfamily \mbox{[}vmin, vmax\mbox{]}}.
-
-
-\begin{DoxyParams}{Parameters}
-{\em vmin} & The lower bound of the target range. \\
-\hline
-{\em vmax} & The upper bound of the target range. \\
-\hline
-\end{DoxyParams}
-\Hypertarget{classhmap_1_1Cloud_afa8d7286a65d513bdc90c4c05bc42e0f}\label{classhmap_1_1Cloud_afa8d7286a65d513bdc90c4c05bc42e0f} 
-\index{hmap::Cloud@{hmap::Cloud}!remove\_point@{remove\_point}}
-\index{remove\_point@{remove\_point}!hmap::Cloud@{hmap::Cloud}}
-\doxysubsubsection{\texorpdfstring{remove\_point()}{remove\_point()}}
-{\footnotesize\ttfamily void hmap\+::\+Cloud\+::remove\+\_\+point (\begin{DoxyParamCaption}\item[{int}]{point\+\_\+idx }\end{DoxyParamCaption})}
-
-
-
-Remove a point from the cloud. 
-
-This method removes a point from the cloud based on its index.
-
-
-\begin{DoxyParams}{Parameters}
-{\em point\+\_\+idx} & Index of the point to be removed. \\
-\hline
-\end{DoxyParams}
 \Hypertarget{classhmap_1_1Cloud_a6e8c4efb301989f9ecf2175d62ef55f8}\label{classhmap_1_1Cloud_a6e8c4efb301989f9ecf2175d62ef55f8} 
 \index{hmap::Cloud@{hmap::Cloud}!set\_points@{set\_points}}
 \index{set\_points@{set\_points}!hmap::Cloud@{hmap::Cloud}}
@@ -760,23 +609,62 @@ This method returns the total number of points currently stored in the cloud.
 \begin{DoxyReturn}{Returns}
 size\+\_\+t The number of points in the cloud. 
 \end{DoxyReturn}
-\Hypertarget{classhmap_1_1Cloud_a7b26dc92e0d2217b8438f1ce9376ea0d}\label{classhmap_1_1Cloud_a7b26dc92e0d2217b8438f1ce9376ea0d} 
-\index{hmap::Cloud@{hmap::Cloud}!snap\_points\_to\_bounding\_box@{snap\_points\_to\_bounding\_box}}
-\index{snap\_points\_to\_bounding\_box@{snap\_points\_to\_bounding\_box}!hmap::Cloud@{hmap::Cloud}}
-\doxysubsubsection{\texorpdfstring{snap\_points\_to\_bounding\_box()}{snap\_points\_to\_bounding\_box()}}
-{\footnotesize\ttfamily void hmap\+::\+Cloud\+::snap\+\_\+points\+\_\+to\+\_\+bounding\+\_\+box (\begin{DoxyParamCaption}\item[{const glm\+::vec4 \&}]{bbox = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}},  }\item[{float}]{tolerance\+\_\+ratio = {\ttfamily 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
+\Hypertarget{classhmap_1_1Cloud_a247e64e1c0e5cb85570c0ec3aed3d774}\label{classhmap_1_1Cloud_a247e64e1c0e5cb85570c0ec3aed3d774} 
+\index{hmap::Cloud@{hmap::Cloud}!clear@{clear}}
+\index{clear@{clear}!hmap::Cloud@{hmap::Cloud}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void hmap\+::\+Cloud\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
-Snap points to the bounding box edges and corners. 
+Clear all data from the cloud. 
 
-Points within a tolerance distance from the bounding box edges are projected onto the closest edge. Afterwards, the closest point to each corner is snapped exactly to that corner.
+This method removes all points from the cloud, leaving it empty. \Hypertarget{classhmap_1_1Cloud_aefea3d749a554df8a23ec38af5acb415}\label{classhmap_1_1Cloud_aefea3d749a554df8a23ec38af5acb415} 
+\index{hmap::Cloud@{hmap::Cloud}!print@{print}}
+\index{print@{print}!hmap::Cloud@{hmap::Cloud}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily void hmap\+::\+Cloud\+::print (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Print information about the cloud\textquotesingle{}s points. 
+
+This method prints data related to the cloud\textquotesingle{}s points, including their coordinates and values. \Hypertarget{classhmap_1_1Cloud_a5346876f8726c1604ac7decf3a69be5a}\label{classhmap_1_1Cloud_a5346876f8726c1604ac7decf3a69be5a} 
+\index{hmap::Cloud@{hmap::Cloud}!randomize@{randomize}}
+\index{randomize@{randomize}!hmap::Cloud@{hmap::Cloud}}
+\doxysubsubsection{\texorpdfstring{randomize()}{randomize()}}
+{\footnotesize\ttfamily void hmap\+::\+Cloud\+::randomize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{seed,  }\item[{glm\+::vec4}]{bbox = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}} }\end{DoxyParamCaption})}
+
+
+
+Randomize the positions and values of the cloud points. 
+
+This method randomizes the positions and values of the points in the cloud using a given random seed. The new positions are generated within the specified bounding box.
 
 
 \begin{DoxyParams}{Parameters}
-{\em bbox} & Bounding box defined as (xmin, xmax, ymin, ymax). \\
+{\em seed} & Random seed number for generating positions and values. \\
 \hline
-{\em tolerance\+\_\+ratio} & Ratio used to compute the snapping distance relative to the average point spacing. \\
+{\em bbox} & Bounding box within which the points will be randomized. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classhmap_1_1Cloud_a35d0d2e48f4063bd7b582bd24a132294}\label{classhmap_1_1Cloud_a35d0d2e48f4063bd7b582bd24a132294} 
+\index{hmap::Cloud@{hmap::Cloud}!remap\_values@{remap\_values}}
+\index{remap\_values@{remap\_values}!hmap::Cloud@{hmap::Cloud}}
+\doxysubsubsection{\texorpdfstring{remap\_values()}{remap\_values()}}
+{\footnotesize\ttfamily void hmap\+::\+Cloud\+::remap\+\_\+values (\begin{DoxyParamCaption}\item[{float}]{vmin,  }\item[{float}]{vmax }\end{DoxyParamCaption})}
+
+
+
+Remap the values of the cloud points to a target range. 
+
+This method scales the values associated with the cloud points so that they fall within a specified range {\ttfamily \mbox{[}vmin, vmax\mbox{]}}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em vmin} & The lower bound of the target range. \\
+\hline
+{\em vmax} & The upper bound of the target range. \\
 \hline
 \end{DoxyParams}
 \Hypertarget{classhmap_1_1Cloud_af8d4e873ff4ed29eb7f140db227e03a2}\label{classhmap_1_1Cloud_af8d4e873ff4ed29eb7f140db227e03a2} 
@@ -802,10 +690,55 @@ This function applies a random offset to the {\ttfamily x}, {\ttfamily y}, and {
 {\em dv} & Scale factor for the random displacement applied to the point\textquotesingle{}s value component {\ttfamily v}. \\
 \hline
 \end{DoxyParams}
+\Hypertarget{classhmap_1_1Cloud_a7b26dc92e0d2217b8438f1ce9376ea0d}\label{classhmap_1_1Cloud_a7b26dc92e0d2217b8438f1ce9376ea0d} 
+\index{hmap::Cloud@{hmap::Cloud}!snap\_points\_to\_bounding\_box@{snap\_points\_to\_bounding\_box}}
+\index{snap\_points\_to\_bounding\_box@{snap\_points\_to\_bounding\_box}!hmap::Cloud@{hmap::Cloud}}
+\doxysubsubsection{\texorpdfstring{snap\_points\_to\_bounding\_box()}{snap\_points\_to\_bounding\_box()}}
+{\footnotesize\ttfamily void hmap\+::\+Cloud\+::snap\+\_\+points\+\_\+to\+\_\+bounding\+\_\+box (\begin{DoxyParamCaption}\item[{const glm\+::vec4 \&}]{bbox = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}},  }\item[{float}]{tolerance\+\_\+ratio = {\ttfamily 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
+
+
+
+Snap points to the bounding box edges and corners. 
+
+Points within a tolerance distance from the bounding box edges are projected onto the closest edge. Afterwards, the closest point to each corner is snapped exactly to that corner.
+
+
+\begin{DoxyParams}{Parameters}
+{\em bbox} & Bounding box defined as (xmin, xmax, ymin, ymax). \\
+\hline
+{\em tolerance\+\_\+ratio} & Ratio used to compute the snapping distance relative to the average point spacing. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classhmap_1_1Cloud_a45c0878a8bcc06335e6afeb8c786a3e0}\label{classhmap_1_1Cloud_a45c0878a8bcc06335e6afeb8c786a3e0} 
+\index{hmap::Cloud@{hmap::Cloud}!from\_csv@{from\_csv}}
+\index{from\_csv@{from\_csv}!hmap::Cloud@{hmap::Cloud}}
+\doxysubsubsection{\texorpdfstring{from\_csv()}{from\_csv()}}
+{\footnotesize\ttfamily bool hmap\+::\+Cloud\+::from\+\_\+csv (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{fname }\end{DoxyParamCaption})}
+
+
+
+Loads point data from a CSV file into the \doxylink{classhmap_1_1Cloud}{Cloud} object. 
+
+This function reads a CSV file where each line contains either 2D (X, Y) or 3D (X, Y, Z) point data. The function automatically detects the dimensionality of the points based on the number of values per line. The loaded points are stored in the {\ttfamily points} member of the \doxylink{classhmap_1_1Cloud}{Cloud} object.
+
+
+\begin{DoxyParams}{Parameters}
+{\em fname} & The path to the CSV file to be read. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the file was successfully read and the points were loaded, false otherwise.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+The CSV file must be well-\/formed, with each line containing either 2 or 3 comma-\/separated values. Lines with an unexpected number of values will cause the function to return false.
+\end{DoxyNote}
+\begin{DoxyWarning}{Warning}
+If the file cannot be opened or contains invalid data (e.\+g., non-\/numeric values), the function will log an error and return false. 
+\end{DoxyWarning}
 \Hypertarget{classhmap_1_1Cloud_a36e47d4857108c56193755e32374184d}\label{classhmap_1_1Cloud_a36e47d4857108c56193755e32374184d} 
 \index{hmap::Cloud@{hmap::Cloud}!to\_array@{to\_array}}
 \index{to\_array@{to\_array}!hmap::Cloud@{hmap::Cloud}}
-\doxysubsubsection{\texorpdfstring{to\_array()}{to\_array()}}
+\doxysubsubsection{\texorpdfstring{to\_array()}{to\_array()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily void hmap\+::\+Cloud\+::to\+\_\+array (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{glm\+::vec4}]{bbox = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}} }\end{DoxyParamCaption}) const}
 
 
@@ -821,63 +754,17 @@ This method projects the cloud points\textquotesingle{} values onto a given arra
 {\em bbox} & The bounding box that defines the mapping from the cloud points\textquotesingle{} coordinates to the array\textquotesingle{}s coordinates. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{classhmap_1_1Cloud_a82725745baf9ae1982c352dcb3656424}\label{classhmap_1_1Cloud_a82725745baf9ae1982c352dcb3656424} 
-\index{hmap::Cloud@{hmap::Cloud}!to\_array\_sdf@{to\_array\_sdf}}
-\index{to\_array\_sdf@{to\_array\_sdf}!hmap::Cloud@{hmap::Cloud}}
-\doxysubsubsection{\texorpdfstring{to\_array\_sdf()}{to\_array\_sdf()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::\+Cloud\+::to\+\_\+array\+\_\+sdf (\begin{DoxyParamCaption}\item[{glm\+::ivec2}]{shape,  }\item[{glm\+::vec4}]{bbox,  }\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+x = {\ttfamily nullptr},  }\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+y = {\ttfamily nullptr},  }\item[{glm\+::vec4}]{bbox\+\_\+array = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}} }\end{DoxyParamCaption}) const}
+\Hypertarget{classhmap_1_1Cloud_a88e77df541a3241d166655ac7a5b3bf2}\label{classhmap_1_1Cloud_a88e77df541a3241d166655ac7a5b3bf2} 
+\index{hmap::Cloud@{hmap::Cloud}!to\_array@{to\_array}}
+\index{to\_array@{to\_array}!hmap::Cloud@{hmap::Cloud}}
+\doxysubsubsection{\texorpdfstring{to\_array()}{to\_array()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::\+Cloud\+::to\+\_\+array (\begin{DoxyParamCaption}\item[{glm\+::ivec2}]{shape,  }\item[{glm\+::vec4}]{bbox }\end{DoxyParamCaption}) const}
 
 
 
-Generate an array filled with the signed distance function (SDF) to the cloud points. 
+See hmap\+::to\+\_\+array. 
 
-This function returns an array where each value represents the signed distance to the nearest cloud point. The distance is positive outside the cloud and negative inside. The result can be domain-\/warped by applying optional noise arrays to the x and y coordinates.
-
-
-\begin{DoxyParams}{Parameters}
-{\em shape} & The shape of the output array (width and height). \\
-\hline
-{\em bbox} & The bounding box that defines the cloud\textquotesingle{}s coordinate system. \\
-\hline
-{\em p\+\_\+noise\+\_\+x} & Optional reference to a noise array applied to the x-\/coordinates for domain warping (not in pixels). \\
-\hline
-{\em p\+\_\+noise\+\_\+y} & Optional reference to a noise array applied to the y-\/coordinates for domain warping (not in pixels). \\
-\hline
-{\em bbox\+\_\+array} & The bounding box of the destination array. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-\doxylink{classhmap_1_1Array}{Array} The resulting array filled with the signed distance function.
-\end{DoxyReturn}
-{\bfseries{Example}} 
-\begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
-\DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
-\DoxyCodeLine{\{}
-\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ seed\ =\ 1;}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacehmap_a63a7fc5faca6c5018e98b8af700f4b80}{noise}}\ =\ \mbox{\hyperlink{namespacehmap_acb13e7346085793fda4c94c47b75d9a9}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ \{2,\ 2\},\ seed);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ab80da2376c6212eb9cb2899c0a5114ad}{hmap::remap}}(\mbox{\hyperlink{namespacehmap_a63a7fc5faca6c5018e98b8af700f4b80}{noise}},\ 0.f,\ 0.2f);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ glm::vec4\ \ \ bbox\ =\ \{0.2f,\ 0.8f,\ 0.2f,\ 0.8f\};}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Cloud}{hmap::Cloud}}\ cloud\ =\ \mbox{\hyperlink{classhmap_1_1Cloud}{hmap::Cloud}}(5,\ seed,\ bbox);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ glm::vec4\ bbox\_array\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\};}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\_sdf1\ =\ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a82725745baf9ae1982c352dcb3656424}{to\_array\_sdf}}(shape,\ bbox\_array);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\_sdf2\ =\ cloud.\mbox{\hyperlink{classhmap_1_1Cloud_a82725745baf9ae1982c352dcb3656424}{to\_array\_sdf}}(shape,\ bbox\_array,\ \&\mbox{\hyperlink{namespacehmap_a63a7fc5faca6c5018e98b8af700f4b80}{noise}},\ \&\mbox{\hyperlink{namespacehmap_a63a7fc5faca6c5018e98b8af700f4b80}{noise}});}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_cloud\_sdf.png"{}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z\_sdf1,\ z\_sdf2\},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}});}
-\DoxyCodeLine{\}}
-
-\end{DoxyCodeInclude}
-
-
-{\bfseries{Result}}  \Hypertarget{classhmap_1_1Cloud_acd6b504637e3c0791049b1f426ad4553}\label{classhmap_1_1Cloud_acd6b504637e3c0791049b1f426ad4553} 
+\Hypertarget{classhmap_1_1Cloud_acd6b504637e3c0791049b1f426ad4553}\label{classhmap_1_1Cloud_acd6b504637e3c0791049b1f426ad4553} 
 \index{hmap::Cloud@{hmap::Cloud}!to\_array\_interp@{to\_array\_interp}}
 \index{to\_array\_interp@{to\_array\_interp}!hmap::Cloud@{hmap::Cloud}}
 \doxysubsubsection{\texorpdfstring{to\_array\_interp()}{to\_array\_interp()}}
@@ -1024,6 +911,13 @@ This function exports the current data to a PNG file with specified parameters. 
 \doxysubsubsection{\texorpdfstring{to\_vec3()}{to\_vec3()}}
 {\footnotesize\ttfamily std\+::vector$<$ glm\+::vec3 $>$ hmap\+::\+Cloud\+::to\+\_\+vec3 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
+
+
+Convert path points to a vector of 3D positions. 
+
+\begin{DoxyReturn}{Returns}
+Vector of points as (x, y, v). 
+\end{DoxyReturn}
 
 
 \doxysubsection{Member Data Documentation}
