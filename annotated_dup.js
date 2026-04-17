@@ -17,7 +17,6 @@ var annotated_dup =
       [ "DiskSequentialTileStorage", "classhmap_1_1DiskSequentialTileStorage.html", "classhmap_1_1DiskSequentialTileStorage" ],
       [ "DrainageBasin", "classhmap_1_1DrainageBasin.html", "classhmap_1_1DrainageBasin" ],
       [ "DrainageBasinCellBased", "classhmap_1_1DrainageBasinCellBased.html", "classhmap_1_1DrainageBasinCellBased" ],
-      [ "Edge", "classhmap_1_1Edge.html", "classhmap_1_1Edge" ],
       [ "FbmFunction", "classhmap_1_1FbmFunction.html", "classhmap_1_1FbmFunction" ],
       [ "FbmIqFunction", "classhmap_1_1FbmIqFunction.html", "classhmap_1_1FbmIqFunction" ],
       [ "FbmJordanFunction", "classhmap_1_1FbmJordanFunction.html", "classhmap_1_1FbmJordanFunction" ],
