@@ -740,6 +740,6 @@ Path smooth(const Path &path,
 bool assert_start_end_points(const Path &path1,
                              const Path &path2,
                              float       tol = 1e-6f,
-                             bool        verbose = true);
+                             bool        verbose = false);
 
 } // namespace hmap

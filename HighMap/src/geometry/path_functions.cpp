@@ -58,8 +58,16 @@ Path bezier(const Path            &path,
     new_points.push_back(pc2);
   }
 
-  // add **first** point to close the loop
-  if (path.is_closed()) new_points.push_back(path.points.front());
+  // preserve endpoint for open paths
+  if (!path.is_closed())
+  {
+    new_points.push_back(path.points.back());
+  }
+  else
+  {
+    // keep loop continuity
+    new_points.push_back(path.points.front());
+  }
 
   // --- interpolate
 
@@ -103,8 +111,16 @@ Path bezier_round(const Path            &path,
     new_points.push_back(pc2);
   }
 
-  // add **first** point to close the loop
-  if (path.is_closed()) new_points.push_back(path.points.front());
+  // preserve endpoint for open paths
+  if (!path.is_closed())
+  {
+    new_points.push_back(path.points.back());
+  }
+  else
+  {
+    // keep loop continuity
+    new_points.push_back(path.points.front());
+  }
 
   // --- interpolate
 
