@@ -11,7 +11,7 @@ int main(void)
   path.closed = true;
 
   auto z1 = hmap::Array(shape);
-  path.resample(0.1f);
+  path.resample_by_spacing(0.1f);
   path.fractalize(8, seed);
   path.to_array(z1, bbox);
 

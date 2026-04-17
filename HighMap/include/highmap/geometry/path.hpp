@@ -25,6 +25,7 @@
 #pragma once
 #include "highmap/boundary.hpp"
 #include "highmap/geometry/cloud.hpp"
+#include "highmap/interpolate1d.hpp"
 
 namespace hmap
 {
@@ -231,26 +232,6 @@ public:
    */
   void catmullrom(int              edge_divisions = 10,
                   EdgeDivisionMode edm = EdgeDivisionMode::EDM_PER_EDGE);
-
-  /**
-   * @brief Resamples the path using cubic interpolation along arc length.
-   *
-   * The path is reparameterized by arc length and interpolated using cubic
-   * splines for x, y, and value components.
-   *
-   * @param edge_divisions Number of divisions per segment or total samples
-   * depending on mode.
-   * @param edm Division mode controlling whether sampling is per-edge or
-   * global.
-   *
-   * **Example**
-   * @include ex_path_cubic_interp.cpp
-   *
-   * **Result**
-   * @image html ex_path_cubic_interp.png
-   */
-  void cubic_interp(int              edge_divisions = 10,
-                    EdgeDivisionMode edm = EdgeDivisionMode::EDM_PER_EDGE);
 
   /**
    * @brief Clear the path data.
@@ -575,7 +556,27 @@ public:
    *
    * @param delta Target distance between consecutive points.
    */
-  void resample(float delta);
+  void resample_by_spacing(
+      float                 delta,
+      InterpolationMethod1D itp_method = InterpolationMethod1D::LINEAR);
+
+  /**
+   * @brief Resamples the path using cubic interpolation along arc length.
+   *
+   * The path is reparameterized by arc length and interpolated using cubic
+   * splines for x, y, and value components.
+   *
+   * @param edge_divisions Number of points.
+   *
+   * **Example**
+   * @include ex_path_resample.cpp
+   *
+   * **Result**
+   * @image html ex_path_resample.png
+   */
+  void resample_interp(
+      int                   npoints,
+      InterpolationMethod1D itp_method = InterpolationMethod1D::CUBIC);
 
   /**
    * @brief Resample the path to achieve fairly uniform distance between
@@ -585,7 +586,8 @@ public:
    * point is as uniform as possible. It redistributes the points to ensure more
    * even spacing along the path.
    */
-  void resample_uniform();
+  void resample_uniform(
+      InterpolationMethod1D itp_method = InterpolationMethod1D::LINEAR);
 
   /**
    * @brief Reverse the order of points in the path.
@@ -807,6 +809,10 @@ public:
   void to_array_mask(Array    &array,
                      glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f},
                      bool      filled = false) const;
+
+  Array to_array_new(glm::ivec2 shape,
+                     glm::vec4  bbox = {0.f, 1.f, 0.f, 1.f},
+                     bool       filled = false) const;
 
   /**
    * @brief Return an array filled with the signed distance function to the

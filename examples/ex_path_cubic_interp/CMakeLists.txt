@@ -1,2 +1,0 @@
-add_executable(ex_path_cubic_interp ex_path_cubic_interp.cpp)
-target_link_libraries(ex_path_cubic_interp highmap)

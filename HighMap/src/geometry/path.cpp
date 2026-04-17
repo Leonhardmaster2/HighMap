@@ -151,38 +151,6 @@ void Path::catmullrom(int edge_divisions, EdgeDivisionMode edm)
   *this = std::move(new_path);
 }
 
-void Path::cubic_interp(int edge_divisions, EdgeDivisionMode edm)
-{
-  // interpolation positions
-  int npts = edge_divisions;
-  if (edm == Path::EdgeDivisionMode::EDM_PER_EDGE) npts *= this->get_npoints();
-  std::vector<float> t = hmap::linspace(0.f, 1.f, npts);
-
-  // interpolation functions
-  std::vector<float> arc = this->get_arc_length();
-  std::vector<float> x = this->get_x();
-  std::vector<float> y = this->get_y();
-  std::vector<float> v = this->get_values();
-
-  auto meth = hmap::InterpolationMethod1D::CUBIC;
-
-  Interpolator1D itp_x = hmap::Interpolator1D(arc, x, meth);
-  Interpolator1D itp_y = hmap::Interpolator1D(arc, y, meth);
-  Interpolator1D itp_v = hmap::Interpolator1D(arc, v, meth);
-
-  // interpolate
-  std::vector<Point> new_points(npts);
-
-  for (size_t k = 0; k < size_t(npts); ++k)
-  {
-    float ti = t[k];
-    Point p(itp_x(ti), itp_y(ti), itp_v(ti));
-    new_points[k] = p;
-  }
-
-  *this = Path(new_points);
-}
-
 void Path::clear()
 {
   this->points.clear();
@@ -628,60 +596,64 @@ void Path::reorder_nns(int start_index)
   this->points = std::move(reordered_points);
 }
 
-void Path::resample(float delta)
+void Path::resample_by_spacing(float delta, InterpolationMethod1D itp_method)
 {
-  // determine the ending index based on whether the list is closed
-  // (circular)
-  size_t npoints = this->get_npoints();
-  size_t end = this->closed ? npoints : npoints - 1;
+  if (this->get_npoints() < 2) return;
 
-  // initialize a vector to store the new resampled points
-  std::vector<Point> new_points = {};
+  std::vector<float> cdist = this->get_cumulative_distance();
+  int                npoints = std::max(2, int(cdist.back() / delta));
 
-  // loop through each segment of the path
-  for (size_t k = 0; k < end; k++)
+  this->resample_interp(npoints, itp_method);
+}
+
+void Path::resample_interp(int npoints, InterpolationMethod1D itp_method)
+{
+  if (this->get_npoints() < 2) return;
+
+  // work on a copy to manage open/close paths
+  Path path_wrk = *this;
+
+  // duplicate 1st/last point for closed path
+  if (this->closed) path_wrk.points.push_back(path_wrk.points.front());
+
+  // interpolation points along arc
+  std::vector<float> t = hmap::linspace(0.f, 1.f, npoints);
+
+  // interpolation functions
+  std::vector<float> arc = path_wrk.get_arc_length();
+  std::vector<float> x = path_wrk.get_x();
+  std::vector<float> y = path_wrk.get_y();
+  std::vector<float> v = path_wrk.get_values();
+
+  Interpolator1D itp_x = hmap::Interpolator1D(arc, x, itp_method);
+  Interpolator1D itp_y = hmap::Interpolator1D(arc, y, itp_method);
+  Interpolator1D itp_v = hmap::Interpolator1D(arc, v, itp_method);
+
+  // interpolate
+  std::vector<Point> new_points(npoints);
+
+  for (size_t k = 0; k < size_t(npoints); ++k)
   {
-    // get the index of the next point, wrapping around if the path is closed
-    size_t knext = (k + 1) % npoints;
-
-    // calculate the number of divisions needed based on the distance
-    // and the desired delta
-    float dist = distance(this->points[k], this->points[knext]);
-
-    int   ndiv = static_cast<int>(dist / delta);
-    Point p1 = this->points[k];     // Current point
-    Point p2 = this->points[knext]; // Next point
-
-    // if more than one division is required, generate intermediate points
-    if (ndiv > 1)
-    {
-      // generate linearly spaced interpolation factors between 0 and 1,
-      // excluding the endpoint
-      std::vector<float> t = linspace(0.f, 1.f, ndiv, false);
-
-      for (auto &t_ : t)
-        new_points.push_back(lerp(p1, p2, t_));
-    }
-    else
-    {
-      // if the segment is shorter than delta, just add the current point
-      new_points.push_back(p1);
-    }
+    float ti = t[k];
+    Point p(itp_x(ti), itp_y(ti), itp_v(ti));
+    new_points[k] = p;
   }
 
-  // if the path is not closed, ensure the last original point is added
-  if (!this->closed) new_points.push_back(this->points.back());
+  // remove duplicate 1st/last point
+  if (this->closed) new_points.pop_back();
 
-  // replace the original points with the resampled points
   this->points = std::move(new_points);
 }
 
-void Path::resample_uniform()
+void Path::resample_uniform(InterpolationMethod1D itp_method)
 {
+  if (this->get_npoints() < 2) return;
+
   // determine smallest distance between two consecutive points (and
   // store distances because there are used for the interpolation
   // step)
   float dmin = std::numeric_limits<float>::max();
+  float dsum = 0.f;
 
   size_t npoints = this->get_npoints();
   size_t end = this->closed ? npoints : npoints - 1;
@@ -691,10 +663,12 @@ void Path::resample_uniform()
     size_t knext = (k + 1) % npoints;
     float  dist = distance(this->points[k], this->points[knext]);
     if (dist < dmin) dmin = dist;
+
+    dsum += dist;
   }
 
   // resample
-  this->resample(dmin);
+  this->resample_interp(dsum / dmin, itp_method);
 }
 
 void Path::reverse()
@@ -936,6 +910,13 @@ void Path::to_array_mask(Array &array, glm::vec4 bbox, bool filled) const
   Path path_copy = *this;
   path_copy.set_values(1.f);
   path_copy.to_array(array, bbox, filled);
+}
+
+Array Path::to_array_new(glm::ivec2 shape, glm::vec4 bbox, bool filled) const
+{
+  Array array(shape);
+  this->to_array(array, bbox, filled);
+  return array;
 }
 
 Array Path::to_array_sdf(glm::ivec2 shape,

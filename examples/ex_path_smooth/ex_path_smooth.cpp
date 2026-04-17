@@ -17,7 +17,7 @@ int main(void)
   {
     hmap::Path path_c = path;
 
-    path_c.resample(0.05f);
+    path_c.resample_by_spacing(0.05f);
     path_c.smooth();
     path_c.to_array(z2, bbox);
   }

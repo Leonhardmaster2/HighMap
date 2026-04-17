@@ -306,7 +306,7 @@ void Graph::to_array_fractalize(Array    &array,
     Point p2 = this->points[this->edges[k][1]];
     Path  path = Path({p1, p2});
 
-    path.resample(dmin);
+    path.resample_by_spacing(dmin);
     path.fractalize(iterations, seed, sigma, orientation, persistence);
     path.to_array(array, bbox);
   }
