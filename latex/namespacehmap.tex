@@ -1004,7 +1004,7 @@ void \mbox{\hyperlink{namespacehmap_abae56b1864390cd2f2f03acc442b423a}{grid\+\_\
 \begin{DoxyCompactList}\small\item\em Removes geometric loops in a 2D path caused by self-\/intersections. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Path}{Path}} \mbox{\hyperlink{namespacehmap_ad81052648d6008d2b7b4a5a36a2d7830}{smooth}} (const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&path, int navg=1, float averaging\+\_\+intensity=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float inertia=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Applies a smoothing operation to the path points using a moving average filter. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{namespacehmap_a9cf9b5799effe7d05b0e3c8478eaca39}{assert\+\_\+start\+\_\+end\+\_\+points}} (const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&path1, const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&path2, float tol=1e-\/6\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, bool verbose=true)
+bool \mbox{\hyperlink{namespacehmap_a5944fc905be512784a9caceb527703d4}{assert\+\_\+start\+\_\+end\+\_\+points}} (const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&path1, const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&path2, float tol=1e-\/6\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, bool verbose=false)
 \item 
 float \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}} (const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p1, const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&p2)
 \begin{DoxyCompactList}\small\item\em Computes the angle between two points relative to the x-\/axis. \end{DoxyCompactList}\item 
@@ -15054,7 +15054,7 @@ Does not well behave when n\+\_\+points\+\_\+target is significantly lower than 
 \DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ path2\ =\ \mbox{\hyperlink{namespacehmap_a862fef5e0387bea9358648fc7aa5680b}{hmap::decimate\_vw}}(path,\ ntarget);}
 \DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ z2\ =\ path2.to\_array(shape,\ bbox);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a9cf9b5799effe7d05b0e3c8478eaca39}{hmap::assert\_start\_end\_points}}(path,\ path2);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a5944fc905be512784a9caceb527703d4}{hmap::assert\_start\_end\_points}}(path,\ path2);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_aeb2890d2ffbbf4291baf255c621095de}{set\_closed}}(\textcolor{keyword}{true});}
 \DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ path3\ =\ \mbox{\hyperlink{namespacehmap_a862fef5e0387bea9358648fc7aa5680b}{hmap::decimate\_vw}}(path,\ ntarget);}
@@ -15338,7 +15338,7 @@ This method smooths the path points based on a specified number of neighboring p
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Path}{hmap::Path}}\ path\_c\ =\ \mbox{\hyperlink{namespacehmap_ad81052648d6008d2b7b4a5a36a2d7830}{hmap::smooth}}(path,\ navg);}
 \DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ \ \ \ \ \ \ z2\ =\ path\_c.\mbox{\hyperlink{classhmap_1_1Path_a4d1e1e63fea24bf8f23bc3343f8b746e}{to\_array}}(shape,\ bbox);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a9cf9b5799effe7d05b0e3c8478eaca39}{hmap::assert\_start\_end\_points}}(path,\ path\_c);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a5944fc905be512784a9caceb527703d4}{hmap::assert\_start\_end\_points}}(path,\ path\_c);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_aeb2890d2ffbbf4291baf255c621095de}{set\_closed}}(\textcolor{keyword}{true});}
 \DoxyCodeLine{\ \ path\_c\ =\ \mbox{\hyperlink{namespacehmap_ad81052648d6008d2b7b4a5a36a2d7830}{hmap::smooth}}(path,\ navg);}
@@ -15352,11 +15352,11 @@ This method smooths the path points based on a specified number of neighboring p
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}  \Hypertarget{namespacehmap_a9cf9b5799effe7d05b0e3c8478eaca39}\label{namespacehmap_a9cf9b5799effe7d05b0e3c8478eaca39} 
+{\bfseries{Result}}  \Hypertarget{namespacehmap_a5944fc905be512784a9caceb527703d4}\label{namespacehmap_a5944fc905be512784a9caceb527703d4} 
 \index{hmap@{hmap}!assert\_start\_end\_points@{assert\_start\_end\_points}}
 \index{assert\_start\_end\_points@{assert\_start\_end\_points}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{assert\_start\_end\_points()}{assert\_start\_end\_points()}}
-{\footnotesize\ttfamily bool hmap\+::assert\+\_\+start\+\_\+end\+\_\+points (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&}]{path1,  }\item[{const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&}]{path2,  }\item[{float}]{tol = {\ttfamily 1e-\/6\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{bool}]{verbose = {\ttfamily true} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily bool hmap\+::assert\+\_\+start\+\_\+end\+\_\+points (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&}]{path1,  }\item[{const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&}]{path2,  }\item[{float}]{tol = {\ttfamily 1e-\/6\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{bool}]{verbose = {\ttfamily false} }\end{DoxyParamCaption})}
 
 \Hypertarget{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}\label{namespacehmap_aac71bb6c14edc17967957f7918acdbdd} 
 \index{hmap@{hmap}!angle@{angle}}

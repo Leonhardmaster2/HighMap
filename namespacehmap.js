@@ -805,7 +805,7 @@ var namespacehmap =
     [ "path_sdf_to_array", "namespacehmap.html#a2e33d478424b6f4d2bd05ccaeabd0846", null ],
     [ "remove_geometric_loops", "namespacehmap.html#a650c6eaf8bd10356a77c7c1f9ef9af3c", null ],
     [ "smooth", "namespacehmap.html#ad81052648d6008d2b7b4a5a36a2d7830", null ],
-    [ "assert_start_end_points", "namespacehmap.html#a9cf9b5799effe7d05b0e3c8478eaca39", null ],
+    [ "assert_start_end_points", "namespacehmap.html#a5944fc905be512784a9caceb527703d4", null ],
     [ "angle", "namespacehmap.html#aac71bb6c14edc17967957f7918acdbdd", null ],
     [ "angle", "namespacehmap.html#a1f02679c93973b91046f26960bf266d4", null ],
     [ "classify_point", "namespacehmap.html#a62b55fdc2fbc76c4938a6b49a10cfd65", null ],
