@@ -8,6 +8,7 @@ int main(void)
   glm::vec4 bbox = {-1.f, 2.f, 0.f, 5.f};
 
   // --- open path with (x, y) and values defined as vectors
+
   hmap::Path path = hmap::Path({-0.5f, 1.5f, 0.5f}, // x
                                {1.f, 2.f, 4.f},     // y
                                {0.f, 1.f, 2.f}      // values

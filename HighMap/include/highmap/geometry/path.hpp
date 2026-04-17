@@ -158,6 +158,15 @@ public:
   std::vector<float> get_curvature(bool normalized = false) const;
 
   /**
+   * @brief Compute midpoints of path edges.
+   *
+   * Returns the midpoint of each segment between consecutive points.
+   *
+   * @return Vector of edge center points.
+   */
+  std::vector<Point> get_edge_centers() const;
+
+  /**
    * @brief Computes unit normals at each point of the path.
    * @return Vector of normal vectors.
    */
@@ -380,42 +389,6 @@ public:
                      bool      filled = false) const;
 
   /**
-   * @brief Return an array filled with the signed distance function to the
-   * path.
-   *
-   * This method computes the signed distance function (SDF) from the path and
-   * fills an output array with the calculated values. The SDF represents the
-   * distance from each point in the array to the nearest point on the path,
-   * with positive values indicating distances outside the path and negative
-   * values indicating distances inside the path.
-   *
-   * **Example**
-   * @include ex_path_sdf.cpp
-   *
-   * **Result**
-   * @image html ex_path_sdf.png
-   *
-   * @param  shape      Shape of the output array, defining its dimensions.
-   * @param  bbox       Bounding box specifying the region to consider for the
-   * SDF calculation.
-   * @param  p_noise_x  Optional reference to an array of noise values in the
-   *                    x-direction used for domain warping. If not provided, no
-   *                    noise is applied.
-   * @param  p_noise_y  Optional reference to an array of noise values in the
-   *                    y-direction used for domain warping. If not provided, no
-   *                    noise is applied.
-   * @param  bbox_array Bounding box of the destination array, used to map the
-   *                    output array coordinates to the path coordinates.
-   * @return            Array The resulting array filled with the signed
-   * distance function values.
-   */
-  Array to_array_sdf(glm::ivec2 shape,
-                     glm::vec4  bbox,
-                     Array     *p_noise_x = nullptr,
-                     Array     *p_noise_y = nullptr,
-                     glm::vec4  bbox_array = {0.f, 1.f, 0.f, 1.f});
-
-  /**
    * @brief Export path as PNG image file.
    *
    * This method generates a PNG image representing the path and saves it to the
@@ -436,156 +409,6 @@ private:
     PT_OPEN,
     PT_CLOSE,
   } path_closure = PathClosure::PT_OPEN;
-
-  // ================================================
-  // ================================================
-  // ================================================
-  // ================================================
-  // ================================================
-  // ================================================
-  // ================================================
-  // ================================================
-
-public:
-  /**
-   * @brief Return the angle of the closest edge to the point (x, y), assuming a
-   * closed path.
-   *
-   * This method calculates the angle of the edge closest to the specified point
-   * (x, y) on a path that is closed. The angle is returned in radians. The path
-   * is assumed to form a continuous loop, and the closest edge is determined
-   * accordingly.
-   *
-   * **Example**
-   * @include ex_path_sdf.cpp
-   *
-   * **Result**
-   * @image html ex_path_sdf0.png
-   * @image html ex_path_sdf1.png
-   * @image html ex_path_sdf2.png
-   *
-   * @param  x x coordinate of the point.
-   * @param  y y coordinate of the point.
-   * @return   float Angle of the closest edge in radians.
-   */
-  float sdf_angle_closed(float x, float y);
-
-  /**
-   * @brief Return the angle of the closest edge to the point (x, y), assuming
-   * an open path.
-   *
-   * This method calculates the angle of the edge closest to the specified point
-   * (x, y) on a path that is open. The angle is returned in radians. The path
-   * is assumed to have distinct start and end points, and the closest edge is
-   * determined based on this open structure.
-   *
-   * **Example**
-   * @include ex_path_sdf.cpp
-   *
-   * **Result**
-   * @image html ex_path_sdf0.png
-   * @image html ex_path_sdf1.png
-   * @image html ex_path_sdf2.png
-   *
-   * @param  x x coordinate of the point.
-   * @param  y y coordinate of the point.
-   * @return   float Angle of the closest edge in radians.
-   */
-  float sdf_angle_open(float x, float y);
-
-  /**
-   * @brief Return the signed distance function value at (x, y), assuming a
-   * closed path.
-   *
-   * This method computes the signed distance from the point (x, y) to the
-   * nearest edge of a closed path. The distance is signed, meaning it indicates
-   * whether the point is inside or outside the path, with negative values
-   * typically indicating that the point is inside the path.
-   *
-   * **Example**
-   * @include ex_path_sdf.cpp
-   *
-   * **Result**
-   * @image html ex_path_sdf0.png
-   * @image html ex_path_sdf1.png
-   * @image html ex_path_sdf2.png
-   *
-   * @param  x x coordinate of the point.
-   * @param  y y coordinate of the point.
-   * @return   float Signed distance to the nearest edge.
-   */
-  float sdf_closed(float x, float y);
-
-  /**
-   * @brief Return the elevation value at (x, y) away from the path based on a
-   * downslope `slope`, assuming a closed path.
-   *
-   * This method calculates the elevation value at a point (x, y) based on its
-   * distance from the closed path, adjusted by a downslope factor. The
-   * downslope determines how quickly the elevation decreases as you move away
-   * from the path.
-   *
-   * **Example**
-   * @include ex_path_sdf.cpp
-   *
-   * **Result**
-   * @image html ex_path_sdf0.png
-   * @image html ex_path_sdf1.png
-   * @image html ex_path_sdf2.png
-   *
-   * @param  x     x coordinate of the point.
-   * @param  y     y coordinate of the point.
-   * @param  slope Downslope factor influencing the elevation decrease.
-   * @return       float Adjusted elevation value based on the downslope.
-   */
-  float sdf_elevation_closed(float x, float y, float slope);
-
-  /**
-   * @brief Return the elevation value at (x, y) away from the path based on a
-   * downslope `slope`, assuming an open path.
-   *
-   * This method calculates the elevation value at a point (x, y) considering
-   * its distance from an open path and adjusting it based on a downslope
-   * factor. The downslope determines how the elevation decreases as you move
-   * away from the path.
-   *
-   * **Example**
-   * @include ex_path_sdf.cpp
-   *
-   * **Result**
-   * @image html ex_path_sdf0.png
-   * @image html ex_path_sdf1.png
-   * @image html ex_path_sdf2.png
-   *
-   * @param  x     x coordinate of the point.
-   * @param  y     y coordinate of the point.
-   * @param  slope Downslope factor affecting the elevation decrease.
-   * @return       float Adjusted elevation value based on the downslope.
-   */
-  float sdf_elevation_open(float x, float y, float slope);
-
-  /**
-   * @brief Return the value of the signed distance function at (x, y), assuming
-   * an open path.
-   *
-   * This method computes the signed distance from the point (x, y) to the
-   * nearest edge of an open path. The signed distance indicates how far the
-   * point is from the path, with positive values typically representing the
-   * outside of the path and negative values indicating the inside.
-   *
-   * **Example**
-   * @include ex_path_sdf.cpp
-   *
-   * **Result**
-   * @image html ex_path_sdf0.png
-   * @image html ex_path_sdf1.png
-   * @image html ex_path_sdf2.png
-   *
-   * @param  x x coordinate of the point.
-   * @param  y y coordinate of the point.
-   * @return   float Signed distance to the nearest edge of the open path.
-   */
-  float sdf_open(float x, float y);
 };
 
 // ==========================================================================
@@ -833,6 +656,25 @@ Path meanderize(
     int                    iterations = 1,
     int                    edge_divisions = 10,
     Path::EdgeDivisionMode edm = Path::EdgeDivisionMode::EDM_PER_EDGE);
+
+/**
+ * @brief Compute a distance field from a point path.
+ *
+ * For each grid cell, computes the distance to the nearest point in the path,
+ * optionally applying domain warping using noise fields.
+ *
+ * @param  path      Input point path.
+ * @param  shape      Output array dimensions.
+ * @param  bbox_array Bounding box of the output domain.
+ * @param  p_noise_x  Optional x-direction noise (domain warp).
+ * @param  p_noise_y  Optional y-direction noise (domain warp).
+ * @return            Array of distances to the nearest point.
+ */
+Array path_sdf_to_array(const Path  &path,
+                        glm::ivec2   shape,
+                        glm::vec4    bbox_array = {0.f, 1.f, 0.f, 1.f},
+                        const Array *p_noise_x = nullptr,
+                        const Array *p_noise_y = nullptr);
 
 /**
  * @brief Removes geometric loops in a 2D path caused by self-intersections.

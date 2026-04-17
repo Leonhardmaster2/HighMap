@@ -123,6 +123,26 @@ std::vector<float> Path::get_curvature(bool normalized) const
   return cv;
 }
 
+std::vector<Point> Path::get_edge_centers() const
+{
+  std::vector<Point> centers;
+  const size_t       npts = this->size();
+
+  if (npts < 2) return centers;
+
+  size_t ke = this->is_closed() ? 1 : 0;
+  centers.reserve(npts - 1 + ke);
+
+  for (size_t k = 0; k < npts - 1 + ke; ++k)
+  {
+    size_t kp = (k + 1) % npts;
+    Point  pmid = lerp(this->points[k], this->points[kp], 0.5f);
+    centers.emplace_back(pmid);
+  }
+
+  return centers;
+}
+
 std::vector<glm::vec2> Path::get_normals() const
 {
   std::vector<glm::vec2> normals = this->get_tangents();
@@ -329,133 +349,6 @@ void Path::reverse()
   std::reverse(this->points.begin(), this->points.end());
 }
 
-float Path::sdf_angle_closed(float x, float y)
-{
-  float  d = std::numeric_limits<float>::max();
-  size_t k_closest = 0;
-  size_t kp_closest = 0;
-
-  for (size_t i = 0, j = this->size() - 1; i < this->size(); j = i, i++)
-  {
-    glm::vec2 e = {this->points[j].x - this->points[i].x,
-                   this->points[j].y - this->points[i].y};
-    glm::vec2 w = {x - this->points[i].x, y - this->points[i].y};
-    float     coeff = std::clamp(dot(w, e) / dot(e, e), 0.f, 1.f);
-    glm::vec2 b = {w.x - e.x * coeff, w.y - e.y * coeff};
-    float     di = dot(b, b);
-    if (di < d)
-    {
-      d = di;
-      k_closest = i;
-      kp_closest = j;
-    }
-  }
-
-  return k_closest == 0
-             ? angle(this->points[k_closest], this->points[kp_closest])
-             : angle(this->points[kp_closest], this->points[k_closest]);
-}
-
-float Path::sdf_angle_open(float x, float y)
-{
-  float  d = std::numeric_limits<float>::max();
-  size_t k_closest = 0;
-
-  for (size_t i = 0; i < this->size() - 1; i++)
-  {
-    size_t    j = i + 1;
-    glm::vec2 e = {this->points[j].x - this->points[i].x,
-                   this->points[j].y - this->points[i].y};
-    glm::vec2 w = {x - this->points[i].x, y - this->points[i].y};
-    float     coeff = std::clamp(dot(w, e) / dot(e, e), 0.f, 1.f);
-    glm::vec2 b = {w.x - e.x * coeff, w.y - e.y * coeff};
-    float     di = dot(b, b);
-    if (di <= d)
-    {
-      d = di;
-      k_closest = i;
-    }
-  }
-  return angle(this->points[k_closest], this->points[k_closest + 1]);
-}
-
-float Path::sdf_closed(float x, float y)
-{
-  float d = std::numeric_limits<float>::max();
-  float s = 1.f;
-  for (size_t i = 0, j = this->size() - 1; i < this->size(); j = i, i++)
-  {
-    glm::vec2 e = {this->points[j].x - this->points[i].x,
-                   this->points[j].y - this->points[i].y};
-    glm::vec2 w = {x - this->points[i].x, y - this->points[i].y};
-    float     coeff = std::clamp(dot(w, e) / dot(e, e), 0.f, 1.f);
-    glm::vec2 b = {w.x - e.x * coeff, w.y - e.y * coeff};
-    d = std::min(d, dot(b, b));
-
-    std::array<bool, 3> c = {y >= this->points[i].y,
-                             y<this->points[j].y, e.x * w.y> e.y * w.x};
-
-    if ((c[0] && c[1] && c[2]) || (not(c[0]) && not(c[1]) && not(c[2])))
-      s *= -1.f;
-  }
-  return s * std::sqrt(d);
-}
-
-float Path::sdf_elevation_closed(float x, float y, float slope)
-{
-  float d = -std::numeric_limits<float>::max();
-
-  for (size_t i = 0, j = this->size() - 1; i < this->size(); j = i, i++)
-  {
-    glm::vec2 e = {this->points[j].x - this->points[i].x,
-                   this->points[j].y - this->points[i].y};
-    glm::vec2 w = {x - this->points[i].x, y - this->points[i].y};
-    float     coeff = std::clamp(dot(w, e) / dot(e, e), 0.f, 1.f);
-    glm::vec2 b = {w.x - e.x * coeff, w.y - e.y * coeff};
-    float dtmp = (1.f - coeff) * this->points[i].v + coeff * this->points[j].v -
-                 slope * std::sqrt(dot(b, b));
-    d = std::max(d, dtmp);
-  }
-  return d;
-}
-
-float Path::sdf_elevation_open(float x, float y, float slope)
-{
-  float d = -std::numeric_limits<float>::max();
-
-  for (size_t i = 0; i < this->size() - 1; i++)
-  {
-    size_t    j = i + 1;
-    glm::vec2 e = {this->points[j].x - this->points[i].x,
-                   this->points[j].y - this->points[i].y};
-    glm::vec2 w = {x - this->points[i].x, y - this->points[i].y};
-    float     coeff = std::clamp(dot(w, e) / dot(e, e), 0.f, 1.f);
-    glm::vec2 b = {w.x - e.x * coeff, w.y - e.y * coeff};
-    float dtmp = (1.f - coeff) * this->points[i].v + coeff * this->points[j].v -
-                 slope * std::sqrt(dot(b, b));
-    d = std::max(d, dtmp);
-  }
-  return d;
-}
-
-float Path::sdf_open(float x, float y)
-{
-  // distance
-  float d = std::numeric_limits<float>::max();
-
-  for (size_t i = 0; i < this->size() - 1; i++)
-  {
-    size_t    j = i + 1;
-    glm::vec2 e = {this->points[j].x - this->points[i].x,
-                   this->points[j].y - this->points[i].y};
-    glm::vec2 w = {x - this->points[i].x, y - this->points[i].y};
-    float     coeff = std::clamp(dot(w, e) / dot(e, e), 0.f, 1.f);
-    glm::vec2 b = {w.x - e.x * coeff, w.y - e.y * coeff};
-    d = std::min(d, dot(b, b));
-  }
-  return std::sqrt(d);
-}
-
 void Path::set_closed(bool new_value)
 {
   this->path_closure = new_value ? PathClosure::PT_CLOSE : PathClosure::PT_OPEN;
@@ -537,43 +430,6 @@ void Path::to_array_mask(Array &array, glm::vec4 bbox, bool filled) const
   Path path_copy = *this;
   path_copy.set_values(1.f);
   path_copy.to_array(array, bbox, filled);
-}
-
-Array Path::to_array_sdf(glm::ivec2 shape,
-                         glm::vec4  bbox,
-                         Array     *p_noise_x,
-                         Array     *p_noise_y,
-                         glm::vec4  bbox_array)
-{
-  // Path nodes
-  std::vector<float> xp = this->get_x();
-  std::vector<float> yp = this->get_y();
-
-  for (size_t k = 0; k < xp.size(); k++)
-  {
-    xp[k] = (xp[k] - bbox.x) / (bbox.y - bbox.x);
-    yp[k] = (yp[k] - bbox.z) / (bbox.w - bbox.z);
-  }
-
-  // fill heightmap
-  std::function<float(float, float, float)> distance_fct;
-
-  if (this->is_closed())
-    distance_fct = [this](float x, float y, float)
-    { return this->sdf_closed(x, y); };
-  else
-    distance_fct = [this](float x, float y, float)
-    { return this->sdf_open(x, y); };
-
-  Array z = Array(shape);
-  fill_array_using_xy_function(z,
-                               bbox_array,
-                               nullptr,
-                               p_noise_x,
-                               p_noise_y,
-                               nullptr,
-                               distance_fct);
-  return z;
 }
 
 void Path::to_png(std::string fname, glm::ivec2 shape)

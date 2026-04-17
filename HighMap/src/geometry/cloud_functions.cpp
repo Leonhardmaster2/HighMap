@@ -27,9 +27,9 @@ Array cloud_sdf_to_array(const Cloud &cloud,
   std::vector<float> y = cloud.get_y();
   KDTreeContext      tree(x, y);
 
-  // --- Interpolate
+  // --- SDF
 
-  // interpolation base grid
+  // array base grid
   std::vector<float> xg, yg;
   grid_xy_vector(xg, yg, shape, bbox_array, /* endpoint */ false);
 

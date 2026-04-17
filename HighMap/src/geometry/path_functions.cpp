@@ -3,6 +3,7 @@
  * this software. */
 #include "macrologger.h"
 
+#include "highmap/geometry/grids.hpp"
 #include "highmap/geometry/path.hpp"
 #include "highmap/interpolate_curve.hpp"
 #include "highmap/operator.hpp"
@@ -316,6 +317,59 @@ Path meanderize(const Path            &path,
   }
 
   return bspline(path_wrk, edge_divisions, edm);
+}
+
+Array path_sdf_to_array(const Path  &path,
+                        glm::ivec2   shape,
+                        glm::vec4    bbox_array,
+                        const Array *p_noise_x,
+                        const Array *p_noise_y)
+{
+  Array        array(shape);
+  const size_t npts = path.size();
+
+  if (npts < 2) return array;
+
+  // array base grid
+  std::vector<float> xg, yg;
+  grid_xy_vector(xg, yg, shape, bbox_array, /* endpoint */ false);
+
+  const std::vector<Point> &points = path.points;
+
+  for (int j = 0; j < shape.y; ++j)
+    for (int i = 0; i < shape.x; ++i)
+    {
+      float dx = p_noise_x ? (*p_noise_x)(i, j) : 0.f;
+      float dy = p_noise_y ? (*p_noise_y)(i, j) : 0.f;
+      float xi = xg[i] + dx;
+      float yi = yg[j] + dy;
+
+      // brute force
+      float d = std::numeric_limits<float>::max();
+      float s = 1.f;
+
+      for (size_t i = 0, j = path.size() - 1; i < path.size(); j = i, i++)
+      {
+        glm::vec2 e = {points[j].x - points[i].x, points[j].y - points[i].y};
+        glm::vec2 w = {xi - points[i].x, yi - points[i].y};
+        float     coeff = std::clamp(dot(w, e) / dot(e, e), 0.f, 1.f);
+        glm::vec2 b = {w.x - e.x * coeff, w.y - e.y * coeff};
+        d = std::min(d, dot(b, b));
+
+        std::array<bool, 3> c = {yi >= points[i].y,
+                                 yi<points[j].y, e.x * w.y> e.y * w.x};
+
+        if ((c[0] && c[1] && c[2]) || (not(c[0]) && not(c[1]) && not(c[2])))
+          s *= -1.f;
+      }
+
+      // disccard in/out info for an open path
+      if (!path.is_closed()) s = 1.f;
+
+      array(i, j) = s * std::sqrt(d);
+    }
+
+  return array;
 }
 
 Path remove_geometric_loops(const Path &path)
