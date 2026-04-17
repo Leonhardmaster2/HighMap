@@ -34,4 +34,22 @@ bool assert_start_end_points(const Path &path1,
   return assert;
 }
 
+float chamfer_distance(const Path &a, const Path &b)
+{
+  auto avg = [](const Path &p, const Path &q)
+  {
+    float sum = 0.f;
+    for (auto &pa : p.points)
+    {
+      float min_d = FLT_MAX;
+      for (auto &pb : q.points)
+        min_d = std::min(min_d, distance(pa, pb));
+      sum += min_d;
+    }
+    return sum / float(p.size());
+  };
+
+  return avg(a, b) + avg(b, a);
+}
+
 } // namespace hmap

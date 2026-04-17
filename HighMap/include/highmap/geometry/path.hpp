@@ -742,4 +742,6 @@ bool assert_start_end_points(const Path &path1,
                              float       tol = 1e-6f,
                              bool        verbose = false);
 
+float chamfer_distance(const Path &a, const Path &b);
+
 } // namespace hmap
