@@ -169,6 +169,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab083b81103f72c7c9b9fa81451599357" id="r_ab083b81103f72c7c9b9fa81451599357"><td class="memItemLeft" align="right" valign="top">std::vector&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1Path.html#ab083b81103f72c7c9b9fa81451599357">get_curvature</a> (bool normalized=false) const</td></tr>
 <tr class="memdesc:ab083b81103f72c7c9b9fa81451599357"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the signed curvature at each point of the path.  <br /></td></tr>
 <tr class="separator:ab083b81103f72c7c9b9fa81451599357"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1344c82b303d10ef07d3fe9417ab2a0e" id="r_a1344c82b303d10ef07d3fe9417ab2a0e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classhmap_1_1Point.html">Point</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1Path.html#a1344c82b303d10ef07d3fe9417ab2a0e">get_edge_centers</a> () const</td></tr>
+<tr class="memdesc:a1344c82b303d10ef07d3fe9417ab2a0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute midpoints of path edges.  <br /></td></tr>
+<tr class="separator:a1344c82b303d10ef07d3fe9417ab2a0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acfd768645d095235067a01cb7f069155" id="r_acfd768645d095235067a01cb7f069155"><td class="memItemLeft" align="right" valign="top">std::vector&lt; glm::vec2 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1Path.html#acfd768645d095235067a01cb7f069155">get_normals</a> () const</td></tr>
 <tr class="memdesc:acfd768645d095235067a01cb7f069155"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes unit normals at each point of the path.  <br /></td></tr>
 <tr class="separator:acfd768645d095235067a01cb7f069155"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -229,30 +232,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2292e74883cb6da795ce35a46ef8e735" id="r_a2292e74883cb6da795ce35a46ef8e735"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1Path.html#a2292e74883cb6da795ce35a46ef8e735">to_array_mask</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, glm::vec4 bbox={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>}, bool filled=false) const</td></tr>
 <tr class="memdesc:a2292e74883cb6da795ce35a46ef8e735"><td class="mdescLeft">&#160;</td><td class="mdescRight">See hmap::to_array.  <br /></td></tr>
 <tr class="separator:a2292e74883cb6da795ce35a46ef8e735"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7e2720d4f455f84d99ec7bef1b597729" id="r_a7e2720d4f455f84d99ec7bef1b597729"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1Path.html#a7e2720d4f455f84d99ec7bef1b597729">to_array_sdf</a> (glm::ivec2 shape, glm::vec4 bbox, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_x=nullptr, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_y=nullptr, glm::vec4 bbox_array={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>})</td></tr>
-<tr class="memdesc:a7e2720d4f455f84d99ec7bef1b597729"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return an array filled with the signed distance function to the path.  <br /></td></tr>
-<tr class="separator:a7e2720d4f455f84d99ec7bef1b597729"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaf9111fdcae15cc51cfcd5faffb38f23" id="r_aaf9111fdcae15cc51cfcd5faffb38f23"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1Path.html#aaf9111fdcae15cc51cfcd5faffb38f23">to_png</a> (std::string fname, glm::ivec2 shape={512, 512})</td></tr>
 <tr class="memdesc:aaf9111fdcae15cc51cfcd5faffb38f23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Export path as PNG image file.  <br /></td></tr>
 <tr class="separator:aaf9111fdcae15cc51cfcd5faffb38f23"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8f16e692a2eb9239b3c1eb42949d34b" id="r_af8f16e692a2eb9239b3c1eb42949d34b"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1Path.html#af8f16e692a2eb9239b3c1eb42949d34b">sdf_angle_closed</a> (float x, float y)</td></tr>
-<tr class="memdesc:af8f16e692a2eb9239b3c1eb42949d34b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the angle of the closest edge to the point (x, y), assuming a closed path.  <br /></td></tr>
-<tr class="separator:af8f16e692a2eb9239b3c1eb42949d34b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6031109a9de5f7ea107248a01e5c5431" id="r_a6031109a9de5f7ea107248a01e5c5431"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1Path.html#a6031109a9de5f7ea107248a01e5c5431">sdf_angle_open</a> (float x, float y)</td></tr>
-<tr class="memdesc:a6031109a9de5f7ea107248a01e5c5431"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the angle of the closest edge to the point (x, y), assuming an open path.  <br /></td></tr>
-<tr class="separator:a6031109a9de5f7ea107248a01e5c5431"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca3af97c0e4df80290c4b28640fb6a70" id="r_aca3af97c0e4df80290c4b28640fb6a70"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1Path.html#aca3af97c0e4df80290c4b28640fb6a70">sdf_closed</a> (float x, float y)</td></tr>
-<tr class="memdesc:aca3af97c0e4df80290c4b28640fb6a70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the signed distance function value at (x, y), assuming a closed path.  <br /></td></tr>
-<tr class="separator:aca3af97c0e4df80290c4b28640fb6a70"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af2ef2613381447be1563fd8cb4675473" id="r_af2ef2613381447be1563fd8cb4675473"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1Path.html#af2ef2613381447be1563fd8cb4675473">sdf_elevation_closed</a> (float x, float y, float <a class="el" href="namespacehmap.html#a79ad6fb857a38f8de9915d01992e5161">slope</a>)</td></tr>
-<tr class="memdesc:af2ef2613381447be1563fd8cb4675473"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the elevation value at (x, y) away from the path based on a downslope <code>slope</code>, assuming a closed path.  <br /></td></tr>
-<tr class="separator:af2ef2613381447be1563fd8cb4675473"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a72f46635f6a7fadabae7b89b91c41e81" id="r_a72f46635f6a7fadabae7b89b91c41e81"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1Path.html#a72f46635f6a7fadabae7b89b91c41e81">sdf_elevation_open</a> (float x, float y, float <a class="el" href="namespacehmap.html#a79ad6fb857a38f8de9915d01992e5161">slope</a>)</td></tr>
-<tr class="memdesc:a72f46635f6a7fadabae7b89b91c41e81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the elevation value at (x, y) away from the path based on a downslope <code>slope</code>, assuming an open path.  <br /></td></tr>
-<tr class="separator:a72f46635f6a7fadabae7b89b91c41e81"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad4afe09089c84b5452ff0801b7161baf" id="r_ad4afe09089c84b5452ff0801b7161baf"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1Path.html#ad4afe09089c84b5452ff0801b7161baf">sdf_open</a> (float x, float y)</td></tr>
-<tr class="memdesc:ad4afe09089c84b5452ff0801b7161baf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the value of the signed distance function at (x, y), assuming an open path.  <br /></td></tr>
-<tr class="separator:ad4afe09089c84b5452ff0801b7161baf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classhmap_1_1Cloud"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classhmap_1_1Cloud')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classhmap_1_1Cloud.html">hmap::Cloud</a></td></tr>
 <tr class="memitem:a710bdb9a8b189d0886682dcc785c0bc5 inherit pub_methods_classhmap_1_1Cloud" id="r_a710bdb9a8b189d0886682dcc785c0bc5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1Cloud.html#a710bdb9a8b189d0886682dcc785c0bc5">Cloud</a> ()</td></tr>
 <tr class="memdesc:a710bdb9a8b189d0886682dcc785c0bc5 inherit pub_methods_classhmap_1_1Cloud"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor for the <a class="el" href="classhmap_1_1Cloud.html" title="Represents a collection of unordered points in 2D space.">Cloud</a> class.  <br /></td></tr>
@@ -397,6 +379,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line">  glm::vec4 bbox = {-1.f, 2.f, 0.f, 5.f};</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// --- open path with (x, y) and values defined as vectors</span></div>
+<div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Path.html">hmap::Path</a> path = <a class="code hl_class" href="classhmap_1_1Path.html">hmap::Path</a>({-0.5f, 1.5f, 0.5f}, <span class="comment">// x</span></div>
 <div class="line">                               {1.f, 2.f, 4.f},     <span class="comment">// y</span></div>
 <div class="line">                               {0.f, 1.f, 2.f}      <span class="comment">// values</span></div>
@@ -429,12 +412,12 @@ Additional Inherited Members</h2></td></tr>
 <div class="line">}</div>
 <div class="ttc" id="aclasshmap_1_1Array_html"><div class="ttname"><a href="classhmap_1_1Array.html">hmap::Array</a></div><div class="ttdoc">Array class, helper to manipulate 2D float array with &quot;(i, j)&quot; indexing.</div><div class="ttdef"><b>Definition</b> array.hpp:32</div></div>
 <div class="ttc" id="aclasshmap_1_1Path_html"><div class="ttname"><a href="classhmap_1_1Path.html">hmap::Path</a></div><div class="ttdoc">Represents an ordered set of points in 2D, forming a polyline (open or closed).</div><div class="ttdef"><b>Definition</b> path.hpp:51</div></div>
-<div class="ttc" id="aclasshmap_1_1Path_html_a4d1e1e63fea24bf8f23bc3343f8b746e"><div class="ttname"><a href="classhmap_1_1Path.html#a4d1e1e63fea24bf8f23bc3343f8b746e">hmap::Path::to_array</a></div><div class="ttdeci">void to_array(Array &amp;array, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f}, bool filled=false) const</div><div class="ttdoc">Project path points to an array.</div><div class="ttdef"><b>Definition</b> path.cpp:480</div></div>
-<div class="ttc" id="aclasshmap_1_1Path_html_a84e0832a3c3a4c9e1f9bcefdc6d32cd0"><div class="ttname"><a href="classhmap_1_1Path.html#a84e0832a3c3a4c9e1f9bcefdc6d32cd0">hmap::Path::resample_uniform</a></div><div class="ttdeci">void resample_uniform(InterpolationMethod1D itp_method=InterpolationMethod1D::LINEAR)</div><div class="ttdoc">Resample the path to achieve fairly uniform distance between consecutive points.</div><div class="ttdef"><b>Definition</b> path.cpp:301</div></div>
-<div class="ttc" id="aclasshmap_1_1Path_html_ad68abaa80879402c3758e24626acfb53"><div class="ttname"><a href="classhmap_1_1Path.html#ad68abaa80879402c3758e24626acfb53">hmap::Path::reorder_nns</a></div><div class="ttdeci">void reorder_nns(int start_index=0)</div><div class="ttdoc">Reorder points using a nearest neighbor search.</div><div class="ttdef"><b>Definition</b> path.cpp:206</div></div>
-<div class="ttc" id="aclasshmap_1_1Path_html_aeb2890d2ffbbf4291baf255c621095de"><div class="ttname"><a href="classhmap_1_1Path.html#aeb2890d2ffbbf4291baf255c621095de">hmap::Path::set_closed</a></div><div class="ttdeci">void set_closed(bool new_value)</div><div class="ttdoc">Set whether the path is closed.</div><div class="ttdef"><b>Definition</b> path.cpp:459</div></div>
+<div class="ttc" id="aclasshmap_1_1Path_html_a4d1e1e63fea24bf8f23bc3343f8b746e"><div class="ttname"><a href="classhmap_1_1Path.html#a4d1e1e63fea24bf8f23bc3343f8b746e">hmap::Path::to_array</a></div><div class="ttdeci">void to_array(Array &amp;array, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f}, bool filled=false) const</div><div class="ttdoc">Project path points to an array.</div><div class="ttdef"><b>Definition</b> path.cpp:373</div></div>
+<div class="ttc" id="aclasshmap_1_1Path_html_a84e0832a3c3a4c9e1f9bcefdc6d32cd0"><div class="ttname"><a href="classhmap_1_1Path.html#a84e0832a3c3a4c9e1f9bcefdc6d32cd0">hmap::Path::resample_uniform</a></div><div class="ttdeci">void resample_uniform(InterpolationMethod1D itp_method=InterpolationMethod1D::LINEAR)</div><div class="ttdoc">Resample the path to achieve fairly uniform distance between consecutive points.</div><div class="ttdef"><b>Definition</b> path.cpp:321</div></div>
+<div class="ttc" id="aclasshmap_1_1Path_html_ad68abaa80879402c3758e24626acfb53"><div class="ttname"><a href="classhmap_1_1Path.html#ad68abaa80879402c3758e24626acfb53">hmap::Path::reorder_nns</a></div><div class="ttdeci">void reorder_nns(int start_index=0)</div><div class="ttdoc">Reorder points using a nearest neighbor search.</div><div class="ttdef"><b>Definition</b> path.cpp:226</div></div>
+<div class="ttc" id="aclasshmap_1_1Path_html_aeb2890d2ffbbf4291baf255c621095de"><div class="ttname"><a href="classhmap_1_1Path.html#aeb2890d2ffbbf4291baf255c621095de">hmap::Path::set_closed</a></div><div class="ttdeci">void set_closed(bool new_value)</div><div class="ttdoc">Set whether the path is closed.</div><div class="ttdef"><b>Definition</b> path.cpp:352</div></div>
 <div class="ttc" id="ahighmap_8hpp_html"><div class="ttname"><a href="highmap_8hpp.html">highmap.hpp</a></div></div>
-<div class="ttc" id="anamespacehmap_html_a5d1634064e937326c7d91f509c3d67ab"><div class="ttname"><a href="namespacehmap.html#a5d1634064e937326c7d91f509c3d67ab">hmap::fractalize</a></div><div class="ttdeci">Path fractalize(const Path &amp;path, int iterations, uint seed, float sigma=0.2f, int orientation=0, float persistence=1.f, Array *p_control_field=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Applies fractalization to the path by adding points and randomly displacing their positions.</div><div class="ttdef"><b>Definition</b> path_functions.cpp:193</div></div>
+<div class="ttc" id="anamespacehmap_html_a5d1634064e937326c7d91f509c3d67ab"><div class="ttname"><a href="namespacehmap.html#a5d1634064e937326c7d91f509c3d67ab">hmap::fractalize</a></div><div class="ttdeci">Path fractalize(const Path &amp;path, int iterations, uint seed, float sigma=0.2f, int orientation=0, float persistence=1.f, Array *p_control_field=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Applies fractalization to the path by adding points and randomly displacing their positions.</div><div class="ttdef"><b>Definition</b> path_functions.cpp:194</div></div>
 <div class="ttc" id="anamespacehmap_html_ac2452e568959bc21c9b7b09202e5977a"><div class="ttname"><a href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a></div><div class="ttdeci">void export_banner_png(const std::string &amp;fname, const std::vector&lt; Array &gt; &amp;arrays, int cmap, bool hillshading=false, bool normalize_arrays=false)</div><div class="ttdoc">Exports a set of arrays as a banner PNG image file.</div><div class="ttdef"><b>Definition</b> export_banner_png.cpp:11</div></div>
 <div class="ttc" id="anamespacehmap_html_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143"><div class="ttname"><a href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::INFERNO</a></div><div class="ttdeci">@ INFERNO</div><div class="ttdef"><b>Definition</b> colormaps.hpp:87</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
@@ -798,6 +781,27 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Vector of curvature values. </dd></dl>
+
+</div>
+</div>
+<a id="a1344c82b303d10ef07d3fe9417ab2a0e" name="a1344c82b303d10ef07d3fe9417ab2a0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1344c82b303d10ef07d3fe9417ab2a0e">&#9670;&#160;</a></span>get_edge_centers()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="classhmap_1_1Point.html">Point</a> &gt; hmap::Path::get_edge_centers </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Compute midpoints of path edges. </p>
+<p>Returns the midpoint of each segment between consecutive points.</p>
+<dl class="section return"><dt>Returns</dt><dd>Vector of edge center points. </dd></dl>
 
 </div>
 </div>
@@ -1241,8 +1245,8 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_path_resample2.png&quot;</span>, arrays, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclasshmap_1_1Path_html_a649a385315a3230c058d032b2171424a"><div class="ttname"><a href="classhmap_1_1Path.html#a649a385315a3230c058d032b2171424a">hmap::Path::resample_by_spacing</a></div><div class="ttdeci">void resample_by_spacing(float delta, InterpolationMethod1D itp_method=InterpolationMethod1D::LINEAR)</div><div class="ttdoc">Resample the path to achieve an approximately constant distance between points.</div><div class="ttdef"><b>Definition</b> path.cpp:252</div></div>
-<div class="ttc" id="aclasshmap_1_1Path_html_afe00587a87fc52524487b197818404f0"><div class="ttname"><a href="classhmap_1_1Path.html#afe00587a87fc52524487b197818404f0">hmap::Path::resample_interp</a></div><div class="ttdeci">void resample_interp(int npoints, InterpolationMethod1D itp_method=InterpolationMethod1D::CUBIC)</div><div class="ttdoc">Resamples the path using cubic interpolation along arc length.</div><div class="ttdef"><b>Definition</b> path.cpp:262</div></div>
+<div class="ttc" id="aclasshmap_1_1Path_html_a649a385315a3230c058d032b2171424a"><div class="ttname"><a href="classhmap_1_1Path.html#a649a385315a3230c058d032b2171424a">hmap::Path::resample_by_spacing</a></div><div class="ttdeci">void resample_by_spacing(float delta, InterpolationMethod1D itp_method=InterpolationMethod1D::LINEAR)</div><div class="ttdoc">Resample the path to achieve an approximately constant distance between points.</div><div class="ttdef"><b>Definition</b> path.cpp:272</div></div>
+<div class="ttc" id="aclasshmap_1_1Path_html_afe00587a87fc52524487b197818404f0"><div class="ttname"><a href="classhmap_1_1Path.html#afe00587a87fc52524487b197818404f0">hmap::Path::resample_interp</a></div><div class="ttdeci">void resample_interp(int npoints, InterpolationMethod1D itp_method=InterpolationMethod1D::CUBIC)</div><div class="ttdoc">Resamples the path using cubic interpolation along arc length.</div><div class="ttdef"><b>Definition</b> path.cpp:282</div></div>
 <div class="ttc" id="anamespacehmap_html_a46291bb4766800deacc1ce9b45a9ea6ba212e7c8d91a9697cccd7df7d006a5547"><div class="ttname"><a href="namespacehmap.html#a46291bb4766800deacc1ce9b45a9ea6ba212e7c8d91a9697cccd7df7d006a5547">hmap::CUBIC</a></div><div class="ttdeci">@ CUBIC</div><div class="ttdoc">Cubic spline interpolation.</div><div class="ttdef"><b>Definition</b> interpolate1d.hpp:39</div></div>
 <div class="ttc" id="anamespacehmap_html_a46291bb4766800deacc1ce9b45a9ea6ba26ec6481025765e03b9c750137bd9d84"><div class="ttname"><a href="namespacehmap.html#a46291bb4766800deacc1ce9b45a9ea6ba26ec6481025765e03b9c750137bd9d84">hmap::LINEAR</a></div><div class="ttdeci">@ LINEAR</div><div class="ttdoc">Linear interpolation.</div><div class="ttdef"><b>Definition</b> interpolate1d.hpp:41</div></div>
 <div class="ttc" id="anamespacehmap_html_a46291bb4766800deacc1ce9b45a9ea6ba55d2df97f3e8f051fb84453093374c96"><div class="ttname"><a href="namespacehmap.html#a46291bb4766800deacc1ce9b45a9ea6ba55d2df97f3e8f051fb84453093374c96">hmap::AKIMA</a></div><div class="ttdeci">@ AKIMA</div><div class="ttdoc">Akima interpolation.</div><div class="ttdef"><b>Definition</b> interpolate1d.hpp:37</div></div>
@@ -1419,96 +1423,6 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a7e2720d4f455f84d99ec7bef1b597729" name="a7e2720d4f455f84d99ec7bef1b597729"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7e2720d4f455f84d99ec7bef1b597729">&#9670;&#160;</a></span>to_array_sdf()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classhmap_1_1Array.html">Array</a> hmap::Path::to_array_sdf </td>
-          <td>(</td>
-          <td class="paramtype">glm::ivec2&#160;</td>
-          <td class="paramname"><em>shape</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">glm::vec4&#160;</td>
-          <td class="paramname"><em>bbox</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
-          <td class="paramname"><em>p_noise_x</em> = <code>nullptr</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
-          <td class="paramname"><em>p_noise_y</em> = <code>nullptr</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">glm::vec4&#160;</td>
-          <td class="paramname"><em>bbox_array</em> = <code>{0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>}</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Return an array filled with the signed distance function to the path. </p>
-<p>This method computes the signed distance function (SDF) from the path and fills an output array with the calculated values. The SDF represents the distance from each point in the array to the nearest point on the path, with positive values indicating distances outside the path and negative values indicating distances inside the path.</p>
-<p><b>Example</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="highmap_8hpp.html">highmap.hpp</a>&quot;</span></div>
-<div class="line"> </div>
-<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
-<div class="line">{</div>
-<div class="line">  glm::ivec2 shape = {256, 256};</div>
-<div class="line">  <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>       seed = 1;</div>
-<div class="line"> </div>
-<div class="line">  glm::vec4  bbox = {0.2f, 0.8f, 0.2f, 0.8f};</div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Path.html">hmap::Path</a> path = <a class="code hl_class" href="classhmap_1_1Path.html">hmap::Path</a>(5, seed, bbox);</div>
-<div class="line">  path.<a class="code hl_function" href="classhmap_1_1Path.html#ad68abaa80879402c3758e24626acfb53">reorder_nns</a>();</div>
-<div class="line">  path.<a class="code hl_function" href="classhmap_1_1Cloud.html#aefea3d749a554df8a23ec38af5acb415">print</a>();</div>
-<div class="line"> </div>
-<div class="line">  glm::vec4 bbox_array = {0.f, 1.f, 0.f, 1.f};</div>
-<div class="line"> </div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z_sdf_o = path.<a class="code hl_function" href="classhmap_1_1Path.html#a7e2720d4f455f84d99ec7bef1b597729">to_array_sdf</a>(shape, bbox_array);</div>
-<div class="line"> </div>
-<div class="line">  path.<a class="code hl_function" href="classhmap_1_1Path.html#aeb2890d2ffbbf4291baf255c621095de">set_closed</a>(<span class="keyword">true</span>);</div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z_sdf_c = path.<a class="code hl_function" href="classhmap_1_1Path.html#a7e2720d4f455f84d99ec7bef1b597729">to_array_sdf</a>(shape, bbox_array);</div>
-<div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_path_sdf.png&quot;</span>,</div>
-<div class="line">                          {z_sdf_o, z_sdf_c},</div>
-<div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
-<div class="line">}</div>
-<div class="ttc" id="aarray_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition</b> array.hpp:14</div></div>
-<div class="ttc" id="aclasshmap_1_1Cloud_html_aefea3d749a554df8a23ec38af5acb415"><div class="ttname"><a href="classhmap_1_1Cloud.html#aefea3d749a554df8a23ec38af5acb415">hmap::Cloud::print</a></div><div class="ttdeci">void print()</div><div class="ttdoc">Print information about the cloud's points.</div><div class="ttdef"><b>Definition</b> cloud.cpp:263</div></div>
-<div class="ttc" id="aclasshmap_1_1Path_html_a7e2720d4f455f84d99ec7bef1b597729"><div class="ttname"><a href="classhmap_1_1Path.html#a7e2720d4f455f84d99ec7bef1b597729">hmap::Path::to_array_sdf</a></div><div class="ttdeci">Array to_array_sdf(glm::ivec2 shape, glm::vec4 bbox, Array *p_noise_x=nullptr, Array *p_noise_y=nullptr, glm::vec4 bbox_array={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Return an array filled with the signed distance function to the path.</div><div class="ttdef"><b>Definition</b> path.cpp:542</div></div>
-<div class="ttc" id="anamespacehmap_html_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced"><div class="ttname"><a href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::JET</a></div><div class="ttdeci">@ JET</div><div class="ttdef"><b>Definition</b> colormaps.hpp:88</div></div>
-</div><!-- fragment --><p><b>Result</b> </p><div class="image">
-<img src="ex_path_sdf.png" alt=""/>
-</div>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">shape</td><td>Shape of the output array, defining its dimensions. </td></tr>
-    <tr><td class="paramname">bbox</td><td>Bounding box specifying the region to consider for the SDF calculation. </td></tr>
-    <tr><td class="paramname">p_noise_x</td><td>Optional reference to an array of noise values in the x-direction used for domain warping. If not provided, no noise is applied. </td></tr>
-    <tr><td class="paramname">p_noise_y</td><td>Optional reference to an array of noise values in the y-direction used for domain warping. If not provided, no noise is applied. </td></tr>
-    <tr><td class="paramname">bbox_array</td><td>Bounding box of the destination array, used to map the output array coordinates to the path coordinates. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classhmap_1_1Array.html" title="Array class, helper to manipulate 2D float array with &quot;(i, j)&quot; indexing.">Array</a> The resulting array filled with the signed distance function values. </dd></dl>
-
-</div>
-</div>
 <a id="aaf9111fdcae15cc51cfcd5faffb38f23" name="aaf9111fdcae15cc51cfcd5faffb38f23"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aaf9111fdcae15cc51cfcd5faffb38f23">&#9670;&#160;</a></span>to_png()</h2>
 
@@ -1544,446 +1458,6 @@ Additional Inherited Members</h2></td></tr>
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<a id="af8f16e692a2eb9239b3c1eb42949d34b" name="af8f16e692a2eb9239b3c1eb42949d34b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af8f16e692a2eb9239b3c1eb42949d34b">&#9670;&#160;</a></span>sdf_angle_closed()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">float hmap::Path::sdf_angle_closed </td>
-          <td>(</td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>x</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>y</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Return the angle of the closest edge to the point (x, y), assuming a closed path. </p>
-<p>This method calculates the angle of the edge closest to the specified point (x, y) on a path that is closed. The angle is returned in radians. The path is assumed to form a continuous loop, and the closest edge is determined accordingly.</p>
-<p><b>Example</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="highmap_8hpp.html">highmap.hpp</a>&quot;</span></div>
-<div class="line"> </div>
-<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
-<div class="line">{</div>
-<div class="line">  glm::ivec2 shape = {256, 256};</div>
-<div class="line">  <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>       seed = 1;</div>
-<div class="line"> </div>
-<div class="line">  glm::vec4  bbox = {0.2f, 0.8f, 0.2f, 0.8f};</div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Path.html">hmap::Path</a> path = <a class="code hl_class" href="classhmap_1_1Path.html">hmap::Path</a>(5, seed, bbox);</div>
-<div class="line">  path.<a class="code hl_function" href="classhmap_1_1Path.html#ad68abaa80879402c3758e24626acfb53">reorder_nns</a>();</div>
-<div class="line">  path.<a class="code hl_function" href="classhmap_1_1Cloud.html#aefea3d749a554df8a23ec38af5acb415">print</a>();</div>
-<div class="line"> </div>
-<div class="line">  glm::vec4 bbox_array = {0.f, 1.f, 0.f, 1.f};</div>
-<div class="line"> </div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z_sdf_o = path.<a class="code hl_function" href="classhmap_1_1Path.html#a7e2720d4f455f84d99ec7bef1b597729">to_array_sdf</a>(shape, bbox_array);</div>
-<div class="line"> </div>
-<div class="line">  path.<a class="code hl_function" href="classhmap_1_1Path.html#aeb2890d2ffbbf4291baf255c621095de">set_closed</a>(<span class="keyword">true</span>);</div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z_sdf_c = path.<a class="code hl_function" href="classhmap_1_1Path.html#a7e2720d4f455f84d99ec7bef1b597729">to_array_sdf</a>(shape, bbox_array);</div>
-<div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_path_sdf.png&quot;</span>,</div>
-<div class="line">                          {z_sdf_o, z_sdf_c},</div>
-<div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
-<div class="line">}</div>
-</div><!-- fragment --><p><b>Result</b> </p><div class="image">
-<img src="ex_path_sdf0.png" alt=""/>
-</div>
- <div class="image">
-<img src="ex_path_sdf1.png" alt=""/>
-</div>
- <div class="image">
-<img src="ex_path_sdf2.png" alt=""/>
-</div>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">x</td><td>x coordinate of the point. </td></tr>
-    <tr><td class="paramname">y</td><td>y coordinate of the point. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>float Angle of the closest edge in radians. </dd></dl>
-
-</div>
-</div>
-<a id="a6031109a9de5f7ea107248a01e5c5431" name="a6031109a9de5f7ea107248a01e5c5431"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6031109a9de5f7ea107248a01e5c5431">&#9670;&#160;</a></span>sdf_angle_open()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">float hmap::Path::sdf_angle_open </td>
-          <td>(</td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>x</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>y</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Return the angle of the closest edge to the point (x, y), assuming an open path. </p>
-<p>This method calculates the angle of the edge closest to the specified point (x, y) on a path that is open. The angle is returned in radians. The path is assumed to have distinct start and end points, and the closest edge is determined based on this open structure.</p>
-<p><b>Example</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="highmap_8hpp.html">highmap.hpp</a>&quot;</span></div>
-<div class="line"> </div>
-<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
-<div class="line">{</div>
-<div class="line">  glm::ivec2 shape = {256, 256};</div>
-<div class="line">  <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>       seed = 1;</div>
-<div class="line"> </div>
-<div class="line">  glm::vec4  bbox = {0.2f, 0.8f, 0.2f, 0.8f};</div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Path.html">hmap::Path</a> path = <a class="code hl_class" href="classhmap_1_1Path.html">hmap::Path</a>(5, seed, bbox);</div>
-<div class="line">  path.<a class="code hl_function" href="classhmap_1_1Path.html#ad68abaa80879402c3758e24626acfb53">reorder_nns</a>();</div>
-<div class="line">  path.<a class="code hl_function" href="classhmap_1_1Cloud.html#aefea3d749a554df8a23ec38af5acb415">print</a>();</div>
-<div class="line"> </div>
-<div class="line">  glm::vec4 bbox_array = {0.f, 1.f, 0.f, 1.f};</div>
-<div class="line"> </div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z_sdf_o = path.<a class="code hl_function" href="classhmap_1_1Path.html#a7e2720d4f455f84d99ec7bef1b597729">to_array_sdf</a>(shape, bbox_array);</div>
-<div class="line"> </div>
-<div class="line">  path.<a class="code hl_function" href="classhmap_1_1Path.html#aeb2890d2ffbbf4291baf255c621095de">set_closed</a>(<span class="keyword">true</span>);</div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z_sdf_c = path.<a class="code hl_function" href="classhmap_1_1Path.html#a7e2720d4f455f84d99ec7bef1b597729">to_array_sdf</a>(shape, bbox_array);</div>
-<div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_path_sdf.png&quot;</span>,</div>
-<div class="line">                          {z_sdf_o, z_sdf_c},</div>
-<div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
-<div class="line">}</div>
-</div><!-- fragment --><p><b>Result</b> </p><div class="image">
-<img src="ex_path_sdf0.png" alt=""/>
-</div>
- <div class="image">
-<img src="ex_path_sdf1.png" alt=""/>
-</div>
- <div class="image">
-<img src="ex_path_sdf2.png" alt=""/>
-</div>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">x</td><td>x coordinate of the point. </td></tr>
-    <tr><td class="paramname">y</td><td>y coordinate of the point. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>float Angle of the closest edge in radians. </dd></dl>
-
-</div>
-</div>
-<a id="aca3af97c0e4df80290c4b28640fb6a70" name="aca3af97c0e4df80290c4b28640fb6a70"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aca3af97c0e4df80290c4b28640fb6a70">&#9670;&#160;</a></span>sdf_closed()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">float hmap::Path::sdf_closed </td>
-          <td>(</td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>x</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>y</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Return the signed distance function value at (x, y), assuming a closed path. </p>
-<p>This method computes the signed distance from the point (x, y) to the nearest edge of a closed path. The distance is signed, meaning it indicates whether the point is inside or outside the path, with negative values typically indicating that the point is inside the path.</p>
-<p><b>Example</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="highmap_8hpp.html">highmap.hpp</a>&quot;</span></div>
-<div class="line"> </div>
-<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
-<div class="line">{</div>
-<div class="line">  glm::ivec2 shape = {256, 256};</div>
-<div class="line">  <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>       seed = 1;</div>
-<div class="line"> </div>
-<div class="line">  glm::vec4  bbox = {0.2f, 0.8f, 0.2f, 0.8f};</div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Path.html">hmap::Path</a> path = <a class="code hl_class" href="classhmap_1_1Path.html">hmap::Path</a>(5, seed, bbox);</div>
-<div class="line">  path.<a class="code hl_function" href="classhmap_1_1Path.html#ad68abaa80879402c3758e24626acfb53">reorder_nns</a>();</div>
-<div class="line">  path.<a class="code hl_function" href="classhmap_1_1Cloud.html#aefea3d749a554df8a23ec38af5acb415">print</a>();</div>
-<div class="line"> </div>
-<div class="line">  glm::vec4 bbox_array = {0.f, 1.f, 0.f, 1.f};</div>
-<div class="line"> </div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z_sdf_o = path.<a class="code hl_function" href="classhmap_1_1Path.html#a7e2720d4f455f84d99ec7bef1b597729">to_array_sdf</a>(shape, bbox_array);</div>
-<div class="line"> </div>
-<div class="line">  path.<a class="code hl_function" href="classhmap_1_1Path.html#aeb2890d2ffbbf4291baf255c621095de">set_closed</a>(<span class="keyword">true</span>);</div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z_sdf_c = path.<a class="code hl_function" href="classhmap_1_1Path.html#a7e2720d4f455f84d99ec7bef1b597729">to_array_sdf</a>(shape, bbox_array);</div>
-<div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_path_sdf.png&quot;</span>,</div>
-<div class="line">                          {z_sdf_o, z_sdf_c},</div>
-<div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
-<div class="line">}</div>
-</div><!-- fragment --><p><b>Result</b> </p><div class="image">
-<img src="ex_path_sdf0.png" alt=""/>
-</div>
- <div class="image">
-<img src="ex_path_sdf1.png" alt=""/>
-</div>
- <div class="image">
-<img src="ex_path_sdf2.png" alt=""/>
-</div>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">x</td><td>x coordinate of the point. </td></tr>
-    <tr><td class="paramname">y</td><td>y coordinate of the point. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>float Signed distance to the nearest edge. </dd></dl>
-
-</div>
-</div>
-<a id="af2ef2613381447be1563fd8cb4675473" name="af2ef2613381447be1563fd8cb4675473"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af2ef2613381447be1563fd8cb4675473">&#9670;&#160;</a></span>sdf_elevation_closed()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">float hmap::Path::sdf_elevation_closed </td>
-          <td>(</td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>x</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>y</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>slope</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Return the elevation value at (x, y) away from the path based on a downslope <code>slope</code>, assuming a closed path. </p>
-<p>This method calculates the elevation value at a point (x, y) based on its distance from the closed path, adjusted by a downslope factor. The downslope determines how quickly the elevation decreases as you move away from the path.</p>
-<p><b>Example</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="highmap_8hpp.html">highmap.hpp</a>&quot;</span></div>
-<div class="line"> </div>
-<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
-<div class="line">{</div>
-<div class="line">  glm::ivec2 shape = {256, 256};</div>
-<div class="line">  <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>       seed = 1;</div>
-<div class="line"> </div>
-<div class="line">  glm::vec4  bbox = {0.2f, 0.8f, 0.2f, 0.8f};</div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Path.html">hmap::Path</a> path = <a class="code hl_class" href="classhmap_1_1Path.html">hmap::Path</a>(5, seed, bbox);</div>
-<div class="line">  path.<a class="code hl_function" href="classhmap_1_1Path.html#ad68abaa80879402c3758e24626acfb53">reorder_nns</a>();</div>
-<div class="line">  path.<a class="code hl_function" href="classhmap_1_1Cloud.html#aefea3d749a554df8a23ec38af5acb415">print</a>();</div>
-<div class="line"> </div>
-<div class="line">  glm::vec4 bbox_array = {0.f, 1.f, 0.f, 1.f};</div>
-<div class="line"> </div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z_sdf_o = path.<a class="code hl_function" href="classhmap_1_1Path.html#a7e2720d4f455f84d99ec7bef1b597729">to_array_sdf</a>(shape, bbox_array);</div>
-<div class="line"> </div>
-<div class="line">  path.<a class="code hl_function" href="classhmap_1_1Path.html#aeb2890d2ffbbf4291baf255c621095de">set_closed</a>(<span class="keyword">true</span>);</div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z_sdf_c = path.<a class="code hl_function" href="classhmap_1_1Path.html#a7e2720d4f455f84d99ec7bef1b597729">to_array_sdf</a>(shape, bbox_array);</div>
-<div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_path_sdf.png&quot;</span>,</div>
-<div class="line">                          {z_sdf_o, z_sdf_c},</div>
-<div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
-<div class="line">}</div>
-</div><!-- fragment --><p><b>Result</b> </p><div class="image">
-<img src="ex_path_sdf0.png" alt=""/>
-</div>
- <div class="image">
-<img src="ex_path_sdf1.png" alt=""/>
-</div>
- <div class="image">
-<img src="ex_path_sdf2.png" alt=""/>
-</div>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">x</td><td>x coordinate of the point. </td></tr>
-    <tr><td class="paramname">y</td><td>y coordinate of the point. </td></tr>
-    <tr><td class="paramname">slope</td><td>Downslope factor influencing the elevation decrease. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>float Adjusted elevation value based on the downslope. </dd></dl>
-
-</div>
-</div>
-<a id="a72f46635f6a7fadabae7b89b91c41e81" name="a72f46635f6a7fadabae7b89b91c41e81"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a72f46635f6a7fadabae7b89b91c41e81">&#9670;&#160;</a></span>sdf_elevation_open()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">float hmap::Path::sdf_elevation_open </td>
-          <td>(</td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>x</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>y</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>slope</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Return the elevation value at (x, y) away from the path based on a downslope <code>slope</code>, assuming an open path. </p>
-<p>This method calculates the elevation value at a point (x, y) considering its distance from an open path and adjusting it based on a downslope factor. The downslope determines how the elevation decreases as you move away from the path.</p>
-<p><b>Example</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="highmap_8hpp.html">highmap.hpp</a>&quot;</span></div>
-<div class="line"> </div>
-<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
-<div class="line">{</div>
-<div class="line">  glm::ivec2 shape = {256, 256};</div>
-<div class="line">  <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>       seed = 1;</div>
-<div class="line"> </div>
-<div class="line">  glm::vec4  bbox = {0.2f, 0.8f, 0.2f, 0.8f};</div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Path.html">hmap::Path</a> path = <a class="code hl_class" href="classhmap_1_1Path.html">hmap::Path</a>(5, seed, bbox);</div>
-<div class="line">  path.<a class="code hl_function" href="classhmap_1_1Path.html#ad68abaa80879402c3758e24626acfb53">reorder_nns</a>();</div>
-<div class="line">  path.<a class="code hl_function" href="classhmap_1_1Cloud.html#aefea3d749a554df8a23ec38af5acb415">print</a>();</div>
-<div class="line"> </div>
-<div class="line">  glm::vec4 bbox_array = {0.f, 1.f, 0.f, 1.f};</div>
-<div class="line"> </div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z_sdf_o = path.<a class="code hl_function" href="classhmap_1_1Path.html#a7e2720d4f455f84d99ec7bef1b597729">to_array_sdf</a>(shape, bbox_array);</div>
-<div class="line"> </div>
-<div class="line">  path.<a class="code hl_function" href="classhmap_1_1Path.html#aeb2890d2ffbbf4291baf255c621095de">set_closed</a>(<span class="keyword">true</span>);</div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z_sdf_c = path.<a class="code hl_function" href="classhmap_1_1Path.html#a7e2720d4f455f84d99ec7bef1b597729">to_array_sdf</a>(shape, bbox_array);</div>
-<div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_path_sdf.png&quot;</span>,</div>
-<div class="line">                          {z_sdf_o, z_sdf_c},</div>
-<div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
-<div class="line">}</div>
-</div><!-- fragment --><p><b>Result</b> </p><div class="image">
-<img src="ex_path_sdf0.png" alt=""/>
-</div>
- <div class="image">
-<img src="ex_path_sdf1.png" alt=""/>
-</div>
- <div class="image">
-<img src="ex_path_sdf2.png" alt=""/>
-</div>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">x</td><td>x coordinate of the point. </td></tr>
-    <tr><td class="paramname">y</td><td>y coordinate of the point. </td></tr>
-    <tr><td class="paramname">slope</td><td>Downslope factor affecting the elevation decrease. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>float Adjusted elevation value based on the downslope. </dd></dl>
-
-</div>
-</div>
-<a id="ad4afe09089c84b5452ff0801b7161baf" name="ad4afe09089c84b5452ff0801b7161baf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad4afe09089c84b5452ff0801b7161baf">&#9670;&#160;</a></span>sdf_open()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">float hmap::Path::sdf_open </td>
-          <td>(</td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>x</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>y</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Return the value of the signed distance function at (x, y), assuming an open path. </p>
-<p>This method computes the signed distance from the point (x, y) to the nearest edge of an open path. The signed distance indicates how far the point is from the path, with positive values typically representing the outside of the path and negative values indicating the inside.</p>
-<p><b>Example</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="highmap_8hpp.html">highmap.hpp</a>&quot;</span></div>
-<div class="line"> </div>
-<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
-<div class="line">{</div>
-<div class="line">  glm::ivec2 shape = {256, 256};</div>
-<div class="line">  <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>       seed = 1;</div>
-<div class="line"> </div>
-<div class="line">  glm::vec4  bbox = {0.2f, 0.8f, 0.2f, 0.8f};</div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Path.html">hmap::Path</a> path = <a class="code hl_class" href="classhmap_1_1Path.html">hmap::Path</a>(5, seed, bbox);</div>
-<div class="line">  path.<a class="code hl_function" href="classhmap_1_1Path.html#ad68abaa80879402c3758e24626acfb53">reorder_nns</a>();</div>
-<div class="line">  path.<a class="code hl_function" href="classhmap_1_1Cloud.html#aefea3d749a554df8a23ec38af5acb415">print</a>();</div>
-<div class="line"> </div>
-<div class="line">  glm::vec4 bbox_array = {0.f, 1.f, 0.f, 1.f};</div>
-<div class="line"> </div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z_sdf_o = path.<a class="code hl_function" href="classhmap_1_1Path.html#a7e2720d4f455f84d99ec7bef1b597729">to_array_sdf</a>(shape, bbox_array);</div>
-<div class="line"> </div>
-<div class="line">  path.<a class="code hl_function" href="classhmap_1_1Path.html#aeb2890d2ffbbf4291baf255c621095de">set_closed</a>(<span class="keyword">true</span>);</div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z_sdf_c = path.<a class="code hl_function" href="classhmap_1_1Path.html#a7e2720d4f455f84d99ec7bef1b597729">to_array_sdf</a>(shape, bbox_array);</div>
-<div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_path_sdf.png&quot;</span>,</div>
-<div class="line">                          {z_sdf_o, z_sdf_c},</div>
-<div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
-<div class="line">}</div>
-</div><!-- fragment --><p><b>Result</b> </p><div class="image">
-<img src="ex_path_sdf0.png" alt=""/>
-</div>
- <div class="image">
-<img src="ex_path_sdf1.png" alt=""/>
-</div>
- <div class="image">
-<img src="ex_path_sdf2.png" alt=""/>
-</div>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">x</td><td>x coordinate of the point. </td></tr>
-    <tr><td class="paramname">y</td><td>y coordinate of the point. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>float Signed distance to the nearest edge of the open path. </dd></dl>
 
 </div>
 </div>

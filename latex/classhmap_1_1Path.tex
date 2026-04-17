@@ -57,6 +57,8 @@ std\+::vector$<$ float $>$ \mbox{\hyperlink{classhmap_1_1Path_a9ea0ffcf40358b7e3
 \begin{DoxyCompactList}\small\item\em Get the cumulative distance of the path. \end{DoxyCompactList}\item 
 std\+::vector$<$ float $>$ \mbox{\hyperlink{classhmap_1_1Path_ab083b81103f72c7c9b9fa81451599357}{get\+\_\+curvature}} (bool normalized=false) const
 \begin{DoxyCompactList}\small\item\em Computes the signed curvature at each point of the path. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classhmap_1_1Point}{Point}} $>$ \mbox{\hyperlink{classhmap_1_1Path_a1344c82b303d10ef07d3fe9417ab2a0e}{get\+\_\+edge\+\_\+centers}} () const
+\begin{DoxyCompactList}\small\item\em Compute midpoints of path edges. \end{DoxyCompactList}\item 
 std\+::vector$<$ glm\+::vec2 $>$ \mbox{\hyperlink{classhmap_1_1Path_acfd768645d095235067a01cb7f069155}{get\+\_\+normals}} () const
 \begin{DoxyCompactList}\small\item\em Computes unit normals at each point of the path. \end{DoxyCompactList}\item 
 std\+::vector$<$ glm\+::vec2 $>$ \mbox{\hyperlink{classhmap_1_1Path_adb21bc9bdaea145a168b8ecdf43edf80}{get\+\_\+tangents}} () const
@@ -97,22 +99,8 @@ void \mbox{\hyperlink{classhmap_1_1Path_a4d1e1e63fea24bf8f23bc3343f8b746e}{to\+\
 \begin{DoxyCompactList}\small\item\em See hmap\+::to\+\_\+array. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classhmap_1_1Path_a2292e74883cb6da795ce35a46ef8e735}{to\+\_\+array\+\_\+mask}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, bool filled=false) const
 \begin{DoxyCompactList}\small\item\em See hmap\+::to\+\_\+array. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{classhmap_1_1Path_a7e2720d4f455f84d99ec7bef1b597729}{to\+\_\+array\+\_\+sdf}} (glm\+::ivec2 shape, glm\+::vec4 bbox, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, glm\+::vec4 bbox\+\_\+array=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
-\begin{DoxyCompactList}\small\item\em Return an array filled with the signed distance function to the path. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classhmap_1_1Path_aaf9111fdcae15cc51cfcd5faffb38f23}{to\+\_\+png}} (std\+::string fname, glm\+::ivec2 shape=\{512, 512\})
-\begin{DoxyCompactList}\small\item\em Export path as PNG image file. \end{DoxyCompactList}\item 
-float \mbox{\hyperlink{classhmap_1_1Path_af8f16e692a2eb9239b3c1eb42949d34b}{sdf\+\_\+angle\+\_\+closed}} (float x, float y)
-\begin{DoxyCompactList}\small\item\em Return the angle of the closest edge to the point (x, y), assuming a closed path. \end{DoxyCompactList}\item 
-float \mbox{\hyperlink{classhmap_1_1Path_a6031109a9de5f7ea107248a01e5c5431}{sdf\+\_\+angle\+\_\+open}} (float x, float y)
-\begin{DoxyCompactList}\small\item\em Return the angle of the closest edge to the point (x, y), assuming an open path. \end{DoxyCompactList}\item 
-float \mbox{\hyperlink{classhmap_1_1Path_aca3af97c0e4df80290c4b28640fb6a70}{sdf\+\_\+closed}} (float x, float y)
-\begin{DoxyCompactList}\small\item\em Return the signed distance function value at (x, y), assuming a closed path. \end{DoxyCompactList}\item 
-float \mbox{\hyperlink{classhmap_1_1Path_af2ef2613381447be1563fd8cb4675473}{sdf\+\_\+elevation\+\_\+closed}} (float x, float y, float \mbox{\hyperlink{namespacehmap_a79ad6fb857a38f8de9915d01992e5161}{slope}})
-\begin{DoxyCompactList}\small\item\em Return the elevation value at (x, y) away from the path based on a downslope {\ttfamily slope}, assuming a closed path. \end{DoxyCompactList}\item 
-float \mbox{\hyperlink{classhmap_1_1Path_a72f46635f6a7fadabae7b89b91c41e81}{sdf\+\_\+elevation\+\_\+open}} (float x, float y, float \mbox{\hyperlink{namespacehmap_a79ad6fb857a38f8de9915d01992e5161}{slope}})
-\begin{DoxyCompactList}\small\item\em Return the elevation value at (x, y) away from the path based on a downslope {\ttfamily slope}, assuming an open path. \end{DoxyCompactList}\item 
-float \mbox{\hyperlink{classhmap_1_1Path_ad4afe09089c84b5452ff0801b7161baf}{sdf\+\_\+open}} (float x, float y)
-\begin{DoxyCompactList}\small\item\em Return the value of the signed distance function at (x, y), assuming an open path. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Export path as PNG image file. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classhmap_1_1Cloud}{hmap\+::\+Cloud}}}
 \begin{DoxyCompactItemize}
 \item 
@@ -223,6 +211,7 @@ The {\ttfamily \doxylink{classhmap_1_1Path}{Path}} class extends the {\ttfamily 
 \DoxyCodeLine{\ \ glm::vec4\ bbox\ =\ \{-\/1.f,\ 2.f,\ 0.f,\ 5.f\};}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ open\ path\ with\ (x,\ y)\ and\ values\ defined\ as\ vectors}}
+\DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Path}{hmap::Path}}\ path\ =\ \mbox{\hyperlink{classhmap_1_1Path}{hmap::Path}}(\{-\/0.5f,\ 1.5f,\ 0.5f\},\ \textcolor{comment}{//\ x}}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1.f,\ 2.f,\ 4.f\},\ \ \ \ \ \textcolor{comment}{//\ y}}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0.f,\ 1.f,\ 2.f\}\ \ \ \ \ \ \textcolor{comment}{//\ values}}
@@ -430,6 +419,21 @@ Computes the signed curvature at each point of the path.
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Vector of curvature values. 
+\end{DoxyReturn}
+\Hypertarget{classhmap_1_1Path_a1344c82b303d10ef07d3fe9417ab2a0e}\label{classhmap_1_1Path_a1344c82b303d10ef07d3fe9417ab2a0e} 
+\index{hmap::Path@{hmap::Path}!get\_edge\_centers@{get\_edge\_centers}}
+\index{get\_edge\_centers@{get\_edge\_centers}!hmap::Path@{hmap::Path}}
+\doxysubsubsection{\texorpdfstring{get\_edge\_centers()}{get\_edge\_centers()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classhmap_1_1Point}{Point}} $>$ hmap\+::\+Path\+::get\+\_\+edge\+\_\+centers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Compute midpoints of path edges. 
+
+Returns the midpoint of each segment between consecutive points.
+
+\begin{DoxyReturn}{Returns}
+Vector of edge center points. 
 \end{DoxyReturn}
 \Hypertarget{classhmap_1_1Path_acfd768645d095235067a01cb7f069155}\label{classhmap_1_1Path_acfd768645d095235067a01cb7f069155} 
 \index{hmap::Path@{hmap::Path}!get\_normals@{get\_normals}}
@@ -810,65 +814,6 @@ See hmap\+::to\+\_\+array.
 
 See hmap\+::to\+\_\+array. 
 
-\Hypertarget{classhmap_1_1Path_a7e2720d4f455f84d99ec7bef1b597729}\label{classhmap_1_1Path_a7e2720d4f455f84d99ec7bef1b597729} 
-\index{hmap::Path@{hmap::Path}!to\_array\_sdf@{to\_array\_sdf}}
-\index{to\_array\_sdf@{to\_array\_sdf}!hmap::Path@{hmap::Path}}
-\doxysubsubsection{\texorpdfstring{to\_array\_sdf()}{to\_array\_sdf()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::\+Path\+::to\+\_\+array\+\_\+sdf (\begin{DoxyParamCaption}\item[{glm\+::ivec2}]{shape,  }\item[{glm\+::vec4}]{bbox,  }\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+x = {\ttfamily nullptr},  }\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+y = {\ttfamily nullptr},  }\item[{glm\+::vec4}]{bbox\+\_\+array = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}} }\end{DoxyParamCaption})}
-
-
-
-Return an array filled with the signed distance function to the path. 
-
-This method computes the signed distance function (SDF) from the path and fills an output array with the calculated values. The SDF represents the distance from each point in the array to the nearest point on the path, with positive values indicating distances outside the path and negative values indicating distances inside the path.
-
-{\bfseries{Example}} 
-\begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
-\DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
-\DoxyCodeLine{\{}
-\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ seed\ =\ 1;}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ glm::vec4\ \ bbox\ =\ \{0.2f,\ 0.8f,\ 0.2f,\ 0.8f\};}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Path}{hmap::Path}}\ path\ =\ \mbox{\hyperlink{classhmap_1_1Path}{hmap::Path}}(5,\ seed,\ bbox);}
-\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_ad68abaa80879402c3758e24626acfb53}{reorder\_nns}}();}
-\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Cloud_aefea3d749a554df8a23ec38af5acb415}{print}}();}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ glm::vec4\ bbox\_array\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\};}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\_sdf\_o\ =\ path.\mbox{\hyperlink{classhmap_1_1Path_a7e2720d4f455f84d99ec7bef1b597729}{to\_array\_sdf}}(shape,\ bbox\_array);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_aeb2890d2ffbbf4291baf255c621095de}{set\_closed}}(\textcolor{keyword}{true});}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\_sdf\_c\ =\ path.\mbox{\hyperlink{classhmap_1_1Path_a7e2720d4f455f84d99ec7bef1b597729}{to\_array\_sdf}}(shape,\ bbox\_array);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_path\_sdf.png"{}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z\_sdf\_o,\ z\_sdf\_c\},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}});}
-\DoxyCodeLine{\}}
-
-\end{DoxyCodeInclude}
-
-
-{\bfseries{Result}} 
-
-
-\begin{DoxyParams}{Parameters}
-{\em shape} & Shape of the output array, defining its dimensions. \\
-\hline
-{\em bbox} & Bounding box specifying the region to consider for the SDF calculation. \\
-\hline
-{\em p\+\_\+noise\+\_\+x} & Optional reference to an array of noise values in the x-\/direction used for domain warping. If not provided, no noise is applied. \\
-\hline
-{\em p\+\_\+noise\+\_\+y} & Optional reference to an array of noise values in the y-\/direction used for domain warping. If not provided, no noise is applied. \\
-\hline
-{\em bbox\+\_\+array} & Bounding box of the destination array, used to map the output array coordinates to the path coordinates. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-\doxylink{classhmap_1_1Array}{Array} The resulting array filled with the signed distance function values. 
-\end{DoxyReturn}
 \Hypertarget{classhmap_1_1Path_aaf9111fdcae15cc51cfcd5faffb38f23}\label{classhmap_1_1Path_aaf9111fdcae15cc51cfcd5faffb38f23} 
 \index{hmap::Path@{hmap::Path}!to\_png@{to\_png}}
 \index{to\_png@{to\_png}!hmap::Path@{hmap::Path}}
@@ -894,328 +839,6 @@ This method generates a PNG image representing the path and saves it to the spec
 {\em shape} & Resolution of the image, specified as width and height. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{classhmap_1_1Path_af8f16e692a2eb9239b3c1eb42949d34b}\label{classhmap_1_1Path_af8f16e692a2eb9239b3c1eb42949d34b} 
-\index{hmap::Path@{hmap::Path}!sdf\_angle\_closed@{sdf\_angle\_closed}}
-\index{sdf\_angle\_closed@{sdf\_angle\_closed}!hmap::Path@{hmap::Path}}
-\doxysubsubsection{\texorpdfstring{sdf\_angle\_closed()}{sdf\_angle\_closed()}}
-{\footnotesize\ttfamily float hmap\+::\+Path\+::sdf\+\_\+angle\+\_\+closed (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y }\end{DoxyParamCaption})}
-
-
-
-Return the angle of the closest edge to the point (x, y), assuming a closed path. 
-
-This method calculates the angle of the edge closest to the specified point (x, y) on a path that is closed. The angle is returned in radians. The path is assumed to form a continuous loop, and the closest edge is determined accordingly.
-
-{\bfseries{Example}} 
-\begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
-\DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
-\DoxyCodeLine{\{}
-\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ seed\ =\ 1;}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ glm::vec4\ \ bbox\ =\ \{0.2f,\ 0.8f,\ 0.2f,\ 0.8f\};}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Path}{hmap::Path}}\ path\ =\ \mbox{\hyperlink{classhmap_1_1Path}{hmap::Path}}(5,\ seed,\ bbox);}
-\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_ad68abaa80879402c3758e24626acfb53}{reorder\_nns}}();}
-\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Cloud_aefea3d749a554df8a23ec38af5acb415}{print}}();}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ glm::vec4\ bbox\_array\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\};}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\_sdf\_o\ =\ path.\mbox{\hyperlink{classhmap_1_1Path_a7e2720d4f455f84d99ec7bef1b597729}{to\_array\_sdf}}(shape,\ bbox\_array);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_aeb2890d2ffbbf4291baf255c621095de}{set\_closed}}(\textcolor{keyword}{true});}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\_sdf\_c\ =\ path.\mbox{\hyperlink{classhmap_1_1Path_a7e2720d4f455f84d99ec7bef1b597729}{to\_array\_sdf}}(shape,\ bbox\_array);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_path\_sdf.png"{}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z\_sdf\_o,\ z\_sdf\_c\},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}});}
-\DoxyCodeLine{\}}
-
-\end{DoxyCodeInclude}
-
-
-{\bfseries{Result}}   
-
-
-\begin{DoxyParams}{Parameters}
-{\em x} & x coordinate of the point. \\
-\hline
-{\em y} & y coordinate of the point. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-float Angle of the closest edge in radians. 
-\end{DoxyReturn}
-\Hypertarget{classhmap_1_1Path_a6031109a9de5f7ea107248a01e5c5431}\label{classhmap_1_1Path_a6031109a9de5f7ea107248a01e5c5431} 
-\index{hmap::Path@{hmap::Path}!sdf\_angle\_open@{sdf\_angle\_open}}
-\index{sdf\_angle\_open@{sdf\_angle\_open}!hmap::Path@{hmap::Path}}
-\doxysubsubsection{\texorpdfstring{sdf\_angle\_open()}{sdf\_angle\_open()}}
-{\footnotesize\ttfamily float hmap\+::\+Path\+::sdf\+\_\+angle\+\_\+open (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y }\end{DoxyParamCaption})}
-
-
-
-Return the angle of the closest edge to the point (x, y), assuming an open path. 
-
-This method calculates the angle of the edge closest to the specified point (x, y) on a path that is open. The angle is returned in radians. The path is assumed to have distinct start and end points, and the closest edge is determined based on this open structure.
-
-{\bfseries{Example}} 
-\begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
-\DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
-\DoxyCodeLine{\{}
-\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ seed\ =\ 1;}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ glm::vec4\ \ bbox\ =\ \{0.2f,\ 0.8f,\ 0.2f,\ 0.8f\};}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Path}{hmap::Path}}\ path\ =\ \mbox{\hyperlink{classhmap_1_1Path}{hmap::Path}}(5,\ seed,\ bbox);}
-\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_ad68abaa80879402c3758e24626acfb53}{reorder\_nns}}();}
-\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Cloud_aefea3d749a554df8a23ec38af5acb415}{print}}();}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ glm::vec4\ bbox\_array\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\};}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\_sdf\_o\ =\ path.\mbox{\hyperlink{classhmap_1_1Path_a7e2720d4f455f84d99ec7bef1b597729}{to\_array\_sdf}}(shape,\ bbox\_array);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_aeb2890d2ffbbf4291baf255c621095de}{set\_closed}}(\textcolor{keyword}{true});}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\_sdf\_c\ =\ path.\mbox{\hyperlink{classhmap_1_1Path_a7e2720d4f455f84d99ec7bef1b597729}{to\_array\_sdf}}(shape,\ bbox\_array);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_path\_sdf.png"{}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z\_sdf\_o,\ z\_sdf\_c\},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}});}
-\DoxyCodeLine{\}}
-
-\end{DoxyCodeInclude}
-
-
-{\bfseries{Result}}   
-
-
-\begin{DoxyParams}{Parameters}
-{\em x} & x coordinate of the point. \\
-\hline
-{\em y} & y coordinate of the point. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-float Angle of the closest edge in radians. 
-\end{DoxyReturn}
-\Hypertarget{classhmap_1_1Path_aca3af97c0e4df80290c4b28640fb6a70}\label{classhmap_1_1Path_aca3af97c0e4df80290c4b28640fb6a70} 
-\index{hmap::Path@{hmap::Path}!sdf\_closed@{sdf\_closed}}
-\index{sdf\_closed@{sdf\_closed}!hmap::Path@{hmap::Path}}
-\doxysubsubsection{\texorpdfstring{sdf\_closed()}{sdf\_closed()}}
-{\footnotesize\ttfamily float hmap\+::\+Path\+::sdf\+\_\+closed (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y }\end{DoxyParamCaption})}
-
-
-
-Return the signed distance function value at (x, y), assuming a closed path. 
-
-This method computes the signed distance from the point (x, y) to the nearest edge of a closed path. The distance is signed, meaning it indicates whether the point is inside or outside the path, with negative values typically indicating that the point is inside the path.
-
-{\bfseries{Example}} 
-\begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
-\DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
-\DoxyCodeLine{\{}
-\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ seed\ =\ 1;}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ glm::vec4\ \ bbox\ =\ \{0.2f,\ 0.8f,\ 0.2f,\ 0.8f\};}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Path}{hmap::Path}}\ path\ =\ \mbox{\hyperlink{classhmap_1_1Path}{hmap::Path}}(5,\ seed,\ bbox);}
-\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_ad68abaa80879402c3758e24626acfb53}{reorder\_nns}}();}
-\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Cloud_aefea3d749a554df8a23ec38af5acb415}{print}}();}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ glm::vec4\ bbox\_array\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\};}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\_sdf\_o\ =\ path.\mbox{\hyperlink{classhmap_1_1Path_a7e2720d4f455f84d99ec7bef1b597729}{to\_array\_sdf}}(shape,\ bbox\_array);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_aeb2890d2ffbbf4291baf255c621095de}{set\_closed}}(\textcolor{keyword}{true});}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\_sdf\_c\ =\ path.\mbox{\hyperlink{classhmap_1_1Path_a7e2720d4f455f84d99ec7bef1b597729}{to\_array\_sdf}}(shape,\ bbox\_array);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_path\_sdf.png"{}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z\_sdf\_o,\ z\_sdf\_c\},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}});}
-\DoxyCodeLine{\}}
-
-\end{DoxyCodeInclude}
-
-
-{\bfseries{Result}}   
-
-
-\begin{DoxyParams}{Parameters}
-{\em x} & x coordinate of the point. \\
-\hline
-{\em y} & y coordinate of the point. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-float Signed distance to the nearest edge. 
-\end{DoxyReturn}
-\Hypertarget{classhmap_1_1Path_af2ef2613381447be1563fd8cb4675473}\label{classhmap_1_1Path_af2ef2613381447be1563fd8cb4675473} 
-\index{hmap::Path@{hmap::Path}!sdf\_elevation\_closed@{sdf\_elevation\_closed}}
-\index{sdf\_elevation\_closed@{sdf\_elevation\_closed}!hmap::Path@{hmap::Path}}
-\doxysubsubsection{\texorpdfstring{sdf\_elevation\_closed()}{sdf\_elevation\_closed()}}
-{\footnotesize\ttfamily float hmap\+::\+Path\+::sdf\+\_\+elevation\+\_\+closed (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y,  }\item[{float}]{slope }\end{DoxyParamCaption})}
-
-
-
-Return the elevation value at (x, y) away from the path based on a downslope {\ttfamily slope}, assuming a closed path. 
-
-This method calculates the elevation value at a point (x, y) based on its distance from the closed path, adjusted by a downslope factor. The downslope determines how quickly the elevation decreases as you move away from the path.
-
-{\bfseries{Example}} 
-\begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
-\DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
-\DoxyCodeLine{\{}
-\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ seed\ =\ 1;}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ glm::vec4\ \ bbox\ =\ \{0.2f,\ 0.8f,\ 0.2f,\ 0.8f\};}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Path}{hmap::Path}}\ path\ =\ \mbox{\hyperlink{classhmap_1_1Path}{hmap::Path}}(5,\ seed,\ bbox);}
-\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_ad68abaa80879402c3758e24626acfb53}{reorder\_nns}}();}
-\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Cloud_aefea3d749a554df8a23ec38af5acb415}{print}}();}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ glm::vec4\ bbox\_array\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\};}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\_sdf\_o\ =\ path.\mbox{\hyperlink{classhmap_1_1Path_a7e2720d4f455f84d99ec7bef1b597729}{to\_array\_sdf}}(shape,\ bbox\_array);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_aeb2890d2ffbbf4291baf255c621095de}{set\_closed}}(\textcolor{keyword}{true});}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\_sdf\_c\ =\ path.\mbox{\hyperlink{classhmap_1_1Path_a7e2720d4f455f84d99ec7bef1b597729}{to\_array\_sdf}}(shape,\ bbox\_array);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_path\_sdf.png"{}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z\_sdf\_o,\ z\_sdf\_c\},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}});}
-\DoxyCodeLine{\}}
-
-\end{DoxyCodeInclude}
-
-
-{\bfseries{Result}}   
-
-
-\begin{DoxyParams}{Parameters}
-{\em x} & x coordinate of the point. \\
-\hline
-{\em y} & y coordinate of the point. \\
-\hline
-{\em slope} & Downslope factor influencing the elevation decrease. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-float Adjusted elevation value based on the downslope. 
-\end{DoxyReturn}
-\Hypertarget{classhmap_1_1Path_a72f46635f6a7fadabae7b89b91c41e81}\label{classhmap_1_1Path_a72f46635f6a7fadabae7b89b91c41e81} 
-\index{hmap::Path@{hmap::Path}!sdf\_elevation\_open@{sdf\_elevation\_open}}
-\index{sdf\_elevation\_open@{sdf\_elevation\_open}!hmap::Path@{hmap::Path}}
-\doxysubsubsection{\texorpdfstring{sdf\_elevation\_open()}{sdf\_elevation\_open()}}
-{\footnotesize\ttfamily float hmap\+::\+Path\+::sdf\+\_\+elevation\+\_\+open (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y,  }\item[{float}]{slope }\end{DoxyParamCaption})}
-
-
-
-Return the elevation value at (x, y) away from the path based on a downslope {\ttfamily slope}, assuming an open path. 
-
-This method calculates the elevation value at a point (x, y) considering its distance from an open path and adjusting it based on a downslope factor. The downslope determines how the elevation decreases as you move away from the path.
-
-{\bfseries{Example}} 
-\begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
-\DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
-\DoxyCodeLine{\{}
-\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ seed\ =\ 1;}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ glm::vec4\ \ bbox\ =\ \{0.2f,\ 0.8f,\ 0.2f,\ 0.8f\};}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Path}{hmap::Path}}\ path\ =\ \mbox{\hyperlink{classhmap_1_1Path}{hmap::Path}}(5,\ seed,\ bbox);}
-\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_ad68abaa80879402c3758e24626acfb53}{reorder\_nns}}();}
-\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Cloud_aefea3d749a554df8a23ec38af5acb415}{print}}();}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ glm::vec4\ bbox\_array\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\};}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\_sdf\_o\ =\ path.\mbox{\hyperlink{classhmap_1_1Path_a7e2720d4f455f84d99ec7bef1b597729}{to\_array\_sdf}}(shape,\ bbox\_array);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_aeb2890d2ffbbf4291baf255c621095de}{set\_closed}}(\textcolor{keyword}{true});}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\_sdf\_c\ =\ path.\mbox{\hyperlink{classhmap_1_1Path_a7e2720d4f455f84d99ec7bef1b597729}{to\_array\_sdf}}(shape,\ bbox\_array);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_path\_sdf.png"{}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z\_sdf\_o,\ z\_sdf\_c\},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}});}
-\DoxyCodeLine{\}}
-
-\end{DoxyCodeInclude}
-
-
-{\bfseries{Result}}   
-
-
-\begin{DoxyParams}{Parameters}
-{\em x} & x coordinate of the point. \\
-\hline
-{\em y} & y coordinate of the point. \\
-\hline
-{\em slope} & Downslope factor affecting the elevation decrease. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-float Adjusted elevation value based on the downslope. 
-\end{DoxyReturn}
-\Hypertarget{classhmap_1_1Path_ad4afe09089c84b5452ff0801b7161baf}\label{classhmap_1_1Path_ad4afe09089c84b5452ff0801b7161baf} 
-\index{hmap::Path@{hmap::Path}!sdf\_open@{sdf\_open}}
-\index{sdf\_open@{sdf\_open}!hmap::Path@{hmap::Path}}
-\doxysubsubsection{\texorpdfstring{sdf\_open()}{sdf\_open()}}
-{\footnotesize\ttfamily float hmap\+::\+Path\+::sdf\+\_\+open (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y }\end{DoxyParamCaption})}
-
-
-
-Return the value of the signed distance function at (x, y), assuming an open path. 
-
-This method computes the signed distance from the point (x, y) to the nearest edge of an open path. The signed distance indicates how far the point is from the path, with positive values typically representing the outside of the path and negative values indicating the inside.
-
-{\bfseries{Example}} 
-\begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
-\DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
-\DoxyCodeLine{\{}
-\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ seed\ =\ 1;}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ glm::vec4\ \ bbox\ =\ \{0.2f,\ 0.8f,\ 0.2f,\ 0.8f\};}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Path}{hmap::Path}}\ path\ =\ \mbox{\hyperlink{classhmap_1_1Path}{hmap::Path}}(5,\ seed,\ bbox);}
-\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_ad68abaa80879402c3758e24626acfb53}{reorder\_nns}}();}
-\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Cloud_aefea3d749a554df8a23ec38af5acb415}{print}}();}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ glm::vec4\ bbox\_array\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\};}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\_sdf\_o\ =\ path.\mbox{\hyperlink{classhmap_1_1Path_a7e2720d4f455f84d99ec7bef1b597729}{to\_array\_sdf}}(shape,\ bbox\_array);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_aeb2890d2ffbbf4291baf255c621095de}{set\_closed}}(\textcolor{keyword}{true});}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\_sdf\_c\ =\ path.\mbox{\hyperlink{classhmap_1_1Path_a7e2720d4f455f84d99ec7bef1b597729}{to\_array\_sdf}}(shape,\ bbox\_array);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_path\_sdf.png"{}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z\_sdf\_o,\ z\_sdf\_c\},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}});}
-\DoxyCodeLine{\}}
-
-\end{DoxyCodeInclude}
-
-
-{\bfseries{Result}}   
-
-
-\begin{DoxyParams}{Parameters}
-{\em x} & x coordinate of the point. \\
-\hline
-{\em y} & y coordinate of the point. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-float Signed distance to the nearest edge of the open path. 
-\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

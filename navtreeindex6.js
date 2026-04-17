@@ -1,17 +1,5 @@
 var NAVTREEINDEX6 =
 {
-"coastal__erosion_8cpp.html#a30dd1027fd8da1839f584687aedfdaf5":[5,0,1,1,12,0,1],
-"coastal__erosion_8cpp.html#a54724c8701b75260e97924451731e41f":[5,0,1,1,12,0,0],
-"coastal__erosion_8cpp.html#a5d1d8b892ca5d088a4fb55b69c481187":[5,0,1,1,12,0,2],
-"color__adjust_8cpp.html":[5,0,1,1,6,0],
-"color__adjust_8cpp.html#a1175ee497ff12b2f3c6cdb7cc805949f":[5,0,1,1,6,0,2],
-"color__adjust_8cpp.html#a3694cff871813c283356c8edf1db3f55":[5,0,1,1,6,0,0],
-"color__adjust_8cpp.html#a5e1e11e11949bc172f52c62ae984ded4":[5,0,1,1,6,0,1],
-"colorize_8cpp.html":[5,0,1,1,6,1],
-"colorize_8cpp.html#a33a635351aa13228557a585470ba4563":[5,0,1,1,6,1,2],
-"colorize_8cpp.html#a4960846742ad118ec9eadaba40ca39ac":[5,0,1,1,6,1,0],
-"colorize_8cpp.html#a9f21720d5e7b1c93e0d5b50631f1ca8f":[5,0,1,1,6,1,6],
-"colorize_8cpp.html#aa60f142e186d43472cdda569c03b31b2":[5,0,1,1,6,1,5],
 "colorize_8cpp.html#aa76bdaf8b572bcea0778ef8815965307":[5,0,1,1,6,1,3],
 "colorize_8cpp.html#aefc8cbe645337bb5b663436c0324f9e2":[5,0,1,1,6,1,1],
 "colorize_8cpp.html#afda3d37dc8fba4a56818964784d2178b":[5,0,1,1,6,1,4],
@@ -249,5 +237,17 @@ var NAVTREEINDEX6 =
 "edge_8hpp.html":[5,0,1,0,0,1,1],
 "edge_8hpp_source.html":[5,0,1,0,0,1,1],
 "erosion_8hpp.html":[5,0,1,0,0,18],
-"erosion_8hpp.html#a00b54f4e60a8fbd6ed5213600d598869":[5,0,1,0,0,18,81]
+"erosion_8hpp.html#a00b54f4e60a8fbd6ed5213600d598869":[5,0,1,0,0,18,81],
+"erosion_8hpp.html#a02f191e398bfc3c0e87999d8576d7c3d":[5,0,1,0,0,18,1],
+"erosion_8hpp.html#a04047f16ece68b32c1c8e68b4780f0df":[5,0,1,0,0,18,93],
+"erosion_8hpp.html#a06a4f7bbf99b83632ceb8a9ba5989823":[5,0,1,0,0,18,34],
+"erosion_8hpp.html#a1489150d5e1af976a9f814b9911b3ea0":[5,0,1,0,0,18,86],
+"erosion_8hpp.html#a182b5cbe63e2d42368c19f66dd9febb3":[5,0,1,0,0,18,71],
+"erosion_8hpp.html#a1be1d9c97f7da805703dadab064fb793":[5,0,1,0,0,18,76],
+"erosion_8hpp.html#a1c2651f7a65e696e8b444364abf0b3cc":[5,0,1,0,0,18,65],
+"erosion_8hpp.html#a1d3b4f4dbe769a1f71f8fcc44cfcaf8c":[5,0,1,0,0,18,35],
+"erosion_8hpp.html#a1ebb59674f1b317db20cc87385bc41a5":[5,0,1,0,0,18,44],
+"erosion_8hpp.html#a2074cabb598086fe29f52247bfadceb9":[5,0,1,0,0,18,14],
+"erosion_8hpp.html#a21abd1ca557655ed48117a53653c0c12":[5,0,1,0,0,18,20],
+"erosion_8hpp.html#a24498e2366d9797fe9e585f494bff98f":[5,0,1,0,0,18,52]
 };

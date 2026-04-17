@@ -13,6 +13,7 @@ var classhmap_1_1Path =
     [ "get_arc_length", "classhmap_1_1Path.html#a0ef4a309bc181ea182c0b7a75c8fdae7", null ],
     [ "get_cumulative_distance", "classhmap_1_1Path.html#a9ea0ffcf40358b7e33ff8cffc33f918a", null ],
     [ "get_curvature", "classhmap_1_1Path.html#ab083b81103f72c7c9b9fa81451599357", null ],
+    [ "get_edge_centers", "classhmap_1_1Path.html#a1344c82b303d10ef07d3fe9417ab2a0e", null ],
     [ "get_normals", "classhmap_1_1Path.html#acfd768645d095235067a01cb7f069155", null ],
     [ "get_tangents", "classhmap_1_1Path.html#adb21bc9bdaea145a168b8ecdf43edf80", null ],
     [ "get_values", "classhmap_1_1Path.html#a5e321e91e212ccfcb33088be73543494", null ],
@@ -33,12 +34,5 @@ var classhmap_1_1Path =
     [ "to_array", "classhmap_1_1Path.html#a4d1e1e63fea24bf8f23bc3343f8b746e", null ],
     [ "to_array", "classhmap_1_1Path.html#a1871d04cad63f27429f42ea27f7e7af4", null ],
     [ "to_array_mask", "classhmap_1_1Path.html#a2292e74883cb6da795ce35a46ef8e735", null ],
-    [ "to_array_sdf", "classhmap_1_1Path.html#a7e2720d4f455f84d99ec7bef1b597729", null ],
-    [ "to_png", "classhmap_1_1Path.html#aaf9111fdcae15cc51cfcd5faffb38f23", null ],
-    [ "sdf_angle_closed", "classhmap_1_1Path.html#af8f16e692a2eb9239b3c1eb42949d34b", null ],
-    [ "sdf_angle_open", "classhmap_1_1Path.html#a6031109a9de5f7ea107248a01e5c5431", null ],
-    [ "sdf_closed", "classhmap_1_1Path.html#aca3af97c0e4df80290c4b28640fb6a70", null ],
-    [ "sdf_elevation_closed", "classhmap_1_1Path.html#af2ef2613381447be1563fd8cb4675473", null ],
-    [ "sdf_elevation_open", "classhmap_1_1Path.html#a72f46635f6a7fadabae7b89b91c41e81", null ],
-    [ "sdf_open", "classhmap_1_1Path.html#ad4afe09089c84b5452ff0801b7161baf", null ]
+    [ "to_png", "classhmap_1_1Path.html#aaf9111fdcae15cc51cfcd5faffb38f23", null ]
 ];

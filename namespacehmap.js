@@ -803,6 +803,7 @@ var namespacehmap =
     [ "decimate_vw", "namespacehmap.html#a862fef5e0387bea9358648fc7aa5680b", null ],
     [ "fractalize", "namespacehmap.html#a5d1634064e937326c7d91f509c3d67ab", null ],
     [ "meanderize", "namespacehmap.html#af00a9f03eed98b1993fd458beb120379", null ],
+    [ "path_sdf_to_array", "namespacehmap.html#a2e33d478424b6f4d2bd05ccaeabd0846", null ],
     [ "remove_geometric_loops", "namespacehmap.html#a650c6eaf8bd10356a77c7c1f9ef9af3c", null ],
     [ "smooth", "namespacehmap.html#ad81052648d6008d2b7b4a5a36a2d7830", null ],
     [ "assert_start_end_points", "namespacehmap.html#a9cf9b5799effe7d05b0e3c8478eaca39", null ],

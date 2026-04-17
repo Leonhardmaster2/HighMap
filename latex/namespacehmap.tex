@@ -1000,6 +1000,8 @@ void \mbox{\hyperlink{namespacehmap_abae56b1864390cd2f2f03acc442b423a}{grid\+\_\
 \begin{DoxyCompactList}\small\item\em Applies fractalization to the path by adding points and randomly displacing their positions. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Path}{Path}} \mbox{\hyperlink{namespacehmap_af00a9f03eed98b1993fd458beb120379}{meanderize}} (const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&path, float ratio, float noise\+\_\+ratio=0.\+1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed=1, int iterations=1, int edge\+\_\+divisions=10, \mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787}{Path\+::\+Edge\+Division\+Mode}} edm=\mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787a5192c60669f946857f5bed6f43c212ee}{Path\+::\+Edge\+Division\+Mode\+::\+EDM\+\_\+\+PER\+\_\+\+EDGE}})
 \begin{DoxyCompactList}\small\item\em Add "{}meanders"{} to the path. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a2e33d478424b6f4d2bd05ccaeabd0846}{path\+\_\+sdf\+\_\+to\+\_\+array}} (const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&path, glm\+::ivec2 shape, glm\+::vec4 bbox\+\_\+array=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr)
+\begin{DoxyCompactList}\small\item\em Compute a distance field from a point path. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Path}{Path}} \mbox{\hyperlink{namespacehmap_a650c6eaf8bd10356a77c7c1f9ef9af3c}{remove\+\_\+geometric\+\_\+loops}} (const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&path)
 \begin{DoxyCompactList}\small\item\em Removes geometric loops in a 2D path caused by self-\/intersections. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Path}{Path}} \mbox{\hyperlink{namespacehmap_ad81052648d6008d2b7b4a5a36a2d7830}{smooth}} (const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&path, int navg=1, float averaging\+\_\+intensity=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float inertia=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
@@ -15241,6 +15243,34 @@ This method introduces meandering effects to the path by adding random deviation
 {\em edge\+\_\+divisions} & Number of sub-\/divisions of each edge. Default is 10. \\
 \hline
 \end{DoxyParams}
+\Hypertarget{namespacehmap_a2e33d478424b6f4d2bd05ccaeabd0846}\label{namespacehmap_a2e33d478424b6f4d2bd05ccaeabd0846} 
+\index{hmap@{hmap}!path\_sdf\_to\_array@{path\_sdf\_to\_array}}
+\index{path\_sdf\_to\_array@{path\_sdf\_to\_array}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{path\_sdf\_to\_array()}{path\_sdf\_to\_array()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::path\+\_\+sdf\+\_\+to\+\_\+array (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&}]{path,  }\item[{glm\+::ivec2}]{shape,  }\item[{glm\+::vec4}]{bbox\+\_\+array = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+x = {\ttfamily nullptr},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+y = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+
+
+Compute a distance field from a point path. 
+
+For each grid cell, computes the distance to the nearest point in the path, optionally applying domain warping using noise fields.
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & Input point path. \\
+\hline
+{\em shape} & Output array dimensions. \\
+\hline
+{\em bbox\+\_\+array} & Bounding box of the output domain. \\
+\hline
+{\em p\+\_\+noise\+\_\+x} & Optional x-\/direction noise (domain warp). \\
+\hline
+{\em p\+\_\+noise\+\_\+y} & Optional y-\/direction noise (domain warp). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classhmap_1_1Array}{Array} of distances to the nearest point. 
+\end{DoxyReturn}
 \Hypertarget{namespacehmap_a650c6eaf8bd10356a77c7c1f9ef9af3c}\label{namespacehmap_a650c6eaf8bd10356a77c7c1f9ef9af3c} 
 \index{hmap@{hmap}!remove\_geometric\_loops@{remove\_geometric\_loops}}
 \index{remove\_geometric\_loops@{remove\_geometric\_loops}!hmap@{hmap}}
