@@ -348,7 +348,9 @@ Array rugosity(const Array &z, int ir, bool convex = true);
 
 } // namespace hmap::gpu
 
-// --- WRAPPER
+// ==========================================================================
+//  Wrapper
+// ==========================================================================
 
 namespace hmap::gpu
 {

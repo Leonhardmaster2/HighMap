@@ -22,6 +22,21 @@
 namespace hmap
 {
 
+// clang-format off
+enum MorphologyOperation : int
+{
+  MO_BORDER,
+  MO_CLOSING,
+  MO_DILATION,
+  MO_EROSION,
+  MO_OPENING,
+  MO_BLACK_HAT,
+  MO_TOP_HAT,
+  MO_GRADIENT,
+  MO_LAPLACIAN,
+};
+// clang-format on
+
 /**
  * @brief Enumeration for different types of distance transforms.
  */
@@ -257,6 +272,27 @@ Array morphological_black_hat(const Array &array, int ir);
 Array morphological_gradient(const Array &array, int ir);
 
 /**
+ * @brief Apply a morphological Laplacian operator to the input array using a
+ * square structure.
+ *
+ * Compared to the classical Laplacian, this operator is more robust to noise
+ * and better preserves sharp features, as it relies on morphological extrema
+ * rather than linear differences.
+ *
+ * @param  array Input array to which the morphological Laplacian is applied.
+ * @param  ir    Radius of the square kernel used for the underlying dilation
+ *               and erosion operations.
+ * @return       Array Output array containing the morphological Laplacian.
+ *
+ * **Example**
+ * @include ex_morphology_base.cpp
+ *
+ * **Result**
+ * @image html ex_morphology_base.png
+ */
+Array morphological_laplacian(const Array &array, int ir);
+
+/**
  * @brief Apply a morphological top hat algorithm to the input array using a
  * square structure.
  *
@@ -441,6 +477,9 @@ Array morphological_black_hat(const Array &array, int ir);
 /*! @brief See hmap::morphological_gradient */
 Array morphological_gradient(const Array &array, int ir);
 
+/*! @brief See hmap::morphological_laplacian */
+Array morphological_laplacian(const Array &array, int ir);
+
 /*! @brief See hmap::morphological_top_hat */
 Array morphological_top_hat(const Array &array, int ir);
 
@@ -461,5 +500,40 @@ Array signed_distance_transform(const Array &array, int prefilter_ir = 0);
 
 /*! @brief See hmap::skeleton */
 Array skeleton(const Array &array, bool zero_at_borders = true);
+
+} // namespace hmap::gpu
+
+// ==========================================================================
+//  Wrapper
+// ==========================================================================
+
+namespace hmap
+{
+
+/**
+ * @brief Apply a morphological operation to the input array using a square
+ * kernel.
+ *
+ * Dispatches to the selected morphological operator (e.g. erosion, dilation,
+ * opening, closing, gradient, etc.).
+ *
+ * @param  array     Input array to process.
+ * @param  ir        Radius of the square structuring element.
+ * @param  operation Morphological operation to apply.
+ * @return           Array Resulting array after applying the operation.
+ */
+Array morphological_operators(const Array        &array,
+                              int                 ir,
+                              MorphologyOperation operation);
+
+} // namespace hmap
+
+namespace hmap::gpu
+{
+
+/*! @brief See hmap::morphological_operators */
+Array morphological_operators(const Array        &array,
+                              int                 ir,
+                              MorphologyOperation operation);
 
 } // namespace hmap::gpu

@@ -131,7 +131,14 @@ Array morphological_black_hat(const Array &array, int ir)
 
 Array morphological_gradient(const Array &array, int ir)
 {
-  return dilation(array, ir) - erosion(array, ir);
+  float vmin = array.min();
+  return dilation(array - vmin, ir) - erosion(array - vmin, ir);
+}
+
+Array morphological_laplacian(const Array &array, int ir)
+{
+  float vmin = array.min();
+  return dilation(array - vmin, ir) + erosion(array - vmin, ir) - 2.f * array;
 }
 
 Array morphological_top_hat(const Array &array, int ir)
