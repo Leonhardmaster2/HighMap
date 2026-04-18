@@ -1,5 +1,16 @@
 var morphology_8hpp =
 [
+    [ "MorphologyOperation", "morphology_8hpp.html#a321149eda3417aa485a010c31267818c", [
+      [ "MO_BORDER", "morphology_8hpp.html#a321149eda3417aa485a010c31267818ca8083c22f48c0732c103514d10b5fe7e6", null ],
+      [ "MO_CLOSING", "morphology_8hpp.html#a321149eda3417aa485a010c31267818ca442219bd6354336f660624a2b76bde23", null ],
+      [ "MO_DILATION", "morphology_8hpp.html#a321149eda3417aa485a010c31267818cad2e58516e7657971e3e16cd131089055", null ],
+      [ "MO_EROSION", "morphology_8hpp.html#a321149eda3417aa485a010c31267818ca0e9abbb30a51ad2951f6f0b527f6f7a1", null ],
+      [ "MO_OPENING", "morphology_8hpp.html#a321149eda3417aa485a010c31267818ca2a6dee7c1afab190ad76aa5e40f9eaf6", null ],
+      [ "MO_BLACK_HAT", "morphology_8hpp.html#a321149eda3417aa485a010c31267818ca95312bbd452f457354100b456719f931", null ],
+      [ "MO_TOP_HAT", "morphology_8hpp.html#a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2", null ],
+      [ "MO_GRADIENT", "morphology_8hpp.html#a321149eda3417aa485a010c31267818ca2a4e04241f3ad0bdc9da20e651ba8dd3", null ],
+      [ "MO_LAPLACIAN", "morphology_8hpp.html#a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e", null ]
+    ] ],
     [ "DistanceTransformType", "morphology_8hpp.html#a9e2493cec1a67b3140691e617ddc925a", [
       [ "DT_EXACT", "morphology_8hpp.html#a9e2493cec1a67b3140691e617ddc925aa109b04de7ca555c0e4d17629e55e7ee3", null ],
       [ "DT_APPROX", "morphology_8hpp.html#a9e2493cec1a67b3140691e617ddc925aa3b8bce8feaa179b9a546bbbe28c1d44a", null ],
@@ -19,6 +30,7 @@ var morphology_8hpp =
     [ "flood_fill", "morphology_8hpp.html#adff494af7c8bf4db7f3e6fddd3261793", null ],
     [ "morphological_black_hat", "morphology_8hpp.html#a1cf22c68188d0e35aa74983f3a01c488", null ],
     [ "morphological_gradient", "morphology_8hpp.html#a01f3be1fd053428ea67030e3736d15ca", null ],
+    [ "morphological_laplacian", "morphology_8hpp.html#aeb7c9ef8addab179badc77310cfde1b5", null ],
     [ "morphological_top_hat", "morphology_8hpp.html#a211108a73f7ebadb6ac87621c4e47301", null ],
     [ "opening", "morphology_8hpp.html#abd3024b8233a70596ff2924607221637", null ],
     [ "relative_distance_from_skeleton", "morphology_8hpp.html#a7c7d934cc5a3a5e1a6f17c09a0e1e51f", null ],
@@ -33,10 +45,13 @@ var morphology_8hpp =
     [ "erosion", "morphology_8hpp.html#aed5416971461ddb7fb6427bdeb5cae86", null ],
     [ "morphological_black_hat", "morphology_8hpp.html#a6f56082e163134e66b5b09f87d8016e0", null ],
     [ "morphological_gradient", "morphology_8hpp.html#afd60fc3552953dcdbda7baeef6b2ccce", null ],
+    [ "morphological_laplacian", "morphology_8hpp.html#aed594a6d00b1239026f28df608e2bd36", null ],
     [ "morphological_top_hat", "morphology_8hpp.html#a60054a81f8c3aad5b83da8ce8d915d28", null ],
     [ "opening", "morphology_8hpp.html#adbfa7d94f6de438b8c0a410c101f3350", null ],
     [ "relative_distance_from_skeleton", "morphology_8hpp.html#a5a96e5f24b80d47262daede2c0743ba6", null ],
     [ "signed_curvature_from_distance", "morphology_8hpp.html#afffb85b7bc6b9884cd00254c122da8e6", null ],
     [ "signed_distance_transform", "morphology_8hpp.html#a76cfd96b971a288964561449d83e21aa", null ],
-    [ "skeleton", "morphology_8hpp.html#a5287e8c6a324fa91bea6c7bf98aacd68", null ]
+    [ "skeleton", "morphology_8hpp.html#a5287e8c6a324fa91bea6c7bf98aacd68", null ],
+    [ "morphological_operators", "morphology_8hpp.html#ad6e4d1cf34786ef4065fbc0a5fa03d6d", null ],
+    [ "morphological_operators", "morphology_8hpp.html#af427123c185935335c9d2e108c833c67", null ]
 ];

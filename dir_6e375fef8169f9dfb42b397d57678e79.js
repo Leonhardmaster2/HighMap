@@ -5,5 +5,6 @@ var dir_6e375fef8169f9dfb42b397d57678e79 =
     [ "distance_transform_jfa.cpp", "distance__transform__jfa_8cpp.html", "distance__transform__jfa_8cpp" ],
     [ "morphology.cpp", "morphology_8cpp.html", "morphology_8cpp" ],
     [ "morphology_gpu.cpp", "morphology__gpu_8cpp.html", "morphology__gpu_8cpp" ],
-    [ "signed_curvature_from_distance.cpp", "signed__curvature__from__distance_8cpp.html", "signed__curvature__from__distance_8cpp" ]
+    [ "signed_curvature_from_distance.cpp", "signed__curvature__from__distance_8cpp.html", "signed__curvature__from__distance_8cpp" ],
+    [ "wrapper.cpp", "wrapper_8cpp.html", "wrapper_8cpp" ]
 ];

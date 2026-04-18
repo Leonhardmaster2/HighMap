@@ -15,6 +15,20 @@ namespace \mbox{\hyperlink{namespacehmap_1_1gpu}{hmap\+::gpu}}
 \doxysubsubsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
+enum \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818c}{hmap\+::\+Morphology\+Operation}} \+: int \{ \newline
+\mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca8083c22f48c0732c103514d10b5fe7e6}{hmap\+::\+MO\+\_\+\+BORDER}}
+, \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca442219bd6354336f660624a2b76bde23}{hmap\+::\+MO\+\_\+\+CLOSING}}
+, \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818cad2e58516e7657971e3e16cd131089055}{hmap\+::\+MO\+\_\+\+DILATION}}
+, \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca0e9abbb30a51ad2951f6f0b527f6f7a1}{hmap\+::\+MO\+\_\+\+EROSION}}
+, \newline
+\mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca2a6dee7c1afab190ad76aa5e40f9eaf6}{hmap\+::\+MO\+\_\+\+OPENING}}
+, \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca95312bbd452f457354100b456719f931}{hmap\+::\+MO\+\_\+\+BLACK\+\_\+\+HAT}}
+, \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2}{hmap\+::\+MO\+\_\+\+TOP\+\_\+\+HAT}}
+, \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca2a4e04241f3ad0bdc9da20e651ba8dd3}{hmap\+::\+MO\+\_\+\+GRADIENT}}
+, \newline
+\mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e}{hmap\+::\+MO\+\_\+\+LAPLACIAN}}
+ \}
+\item 
 enum \mbox{\hyperlink{namespacehmap_a9e2493cec1a67b3140691e617ddc925a}{hmap\+::\+Distance\+Transform\+Type}} \+: int \{ \mbox{\hyperlink{namespacehmap_a9e2493cec1a67b3140691e617ddc925aa109b04de7ca555c0e4d17629e55e7ee3}{hmap\+::\+DT\+\_\+\+EXACT}}
 , \mbox{\hyperlink{namespacehmap_a9e2493cec1a67b3140691e617ddc925aa3b8bce8feaa179b9a546bbbe28c1d44a}{hmap\+::\+DT\+\_\+\+APPROX}}
 , \mbox{\hyperlink{namespacehmap_a9e2493cec1a67b3140691e617ddc925aae4b14640395ecd7333bea8838ea9dda1}{hmap\+::\+DT\+\_\+\+MANHATTAN}}
@@ -50,6 +64,8 @@ void \mbox{\hyperlink{namespacehmap_adff494af7c8bf4db7f3e6fddd3261793}{hmap\+::f
 \begin{DoxyCompactList}\small\item\em Apply a morphological black hat algorithm to the input array using a square structure. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a01f3be1fd053428ea67030e3736d15ca}{hmap\+::morphological\+\_\+gradient}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
 \begin{DoxyCompactList}\small\item\em Apply a morphological gradient algorithm to the input array using a square structure. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_aeb7c9ef8addab179badc77310cfde1b5}{hmap\+::morphological\+\_\+laplacian}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
+\begin{DoxyCompactList}\small\item\em Apply a morphological Laplacian operator to the input array using a square structure. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a211108a73f7ebadb6ac87621c4e47301}{hmap\+::morphological\+\_\+top\+\_\+hat}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
 \begin{DoxyCompactList}\small\item\em Apply a morphological top hat algorithm to the input array using a square structure. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_abd3024b8233a70596ff2924607221637}{hmap\+::opening}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
@@ -78,6 +94,8 @@ void \mbox{\hyperlink{namespacehmap_adff494af7c8bf4db7f3e6fddd3261793}{hmap\+::f
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a1cf22c68188d0e35aa74983f3a01c488}{hmap\+::morphological\+\_\+black\+\_\+hat}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_afd60fc3552953dcdbda7baeef6b2ccce}{hmap\+::gpu\+::morphological\+\_\+gradient}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a01f3be1fd053428ea67030e3736d15ca}{hmap\+::morphological\+\_\+gradient}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_aed594a6d00b1239026f28df608e2bd36}{hmap\+::gpu\+::morphological\+\_\+laplacian}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
+\begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_aeb7c9ef8addab179badc77310cfde1b5}{hmap\+::morphological\+\_\+laplacian}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a60054a81f8c3aad5b83da8ce8d915d28}{hmap\+::gpu\+::morphological\+\_\+top\+\_\+hat}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a211108a73f7ebadb6ac87621c4e47301}{hmap\+::morphological\+\_\+top\+\_\+hat}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_adbfa7d94f6de438b8c0a410c101f3350}{hmap\+::gpu\+::opening}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
@@ -89,7 +107,11 @@ void \mbox{\hyperlink{namespacehmap_adff494af7c8bf4db7f3e6fddd3261793}{hmap\+::f
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a76cfd96b971a288964561449d83e21aa}{hmap\+::gpu\+::signed\+\_\+distance\+\_\+transform}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int prefilter\+\_\+ir=0)
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_ad4ab7bb38b3ea37fa912190251c1ed76}{hmap\+::signed\+\_\+distance\+\_\+transform}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a5287e8c6a324fa91bea6c7bf98aacd68}{hmap\+::gpu\+::skeleton}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, bool zero\+\_\+at\+\_\+borders=true)
-\begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a11ddd5ab1aa625db9419d9b65c0eaa64}{hmap\+::skeleton}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a11ddd5ab1aa625db9419d9b65c0eaa64}{hmap\+::skeleton}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_ad6e4d1cf34786ef4065fbc0a5fa03d6d}{hmap\+::morphological\+\_\+operators}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir, \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818c}{Morphology\+Operation}} operation)
+\begin{DoxyCompactList}\small\item\em Apply a morphological operation to the input array using a square kernel. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_af427123c185935335c9d2e108c833c67}{hmap\+::gpu\+::morphological\+\_\+operators}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir, \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818c}{Morphology\+Operation}} operation)
+\begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_ad6e4d1cf34786ef4065fbc0a5fa03d6d}{hmap\+::morphological\+\_\+operators}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}

@@ -6,6 +6,15 @@ var searchData=
   ['maximum_5fsmooth_3',['MAXIMUM_SMOOTH',['../namespacehmap.html#a5101273ec456f5267dddc3e22dae223ba8a23346695816302a39ed3a152c58762',1,'hmap']]],
   ['minimum_4',['MINIMUM',['../namespacehmap.html#a5101273ec456f5267dddc3e22dae223ba54138bd51fd9f34e739112106c249169',1,'hmap']]],
   ['minimum_5fsmooth_5',['MINIMUM_SMOOTH',['../namespacehmap.html#a5101273ec456f5267dddc3e22dae223bab783b937b8da3552b0a4a5d6c88157ee',1,'hmap']]],
-  ['moore_6',['MOORE',['../namespacehmap.html#a9d00db2263b4b7b05245531c41c1b592af1e94018e1eb59b107f1adfa66a97929',1,'hmap']]],
-  ['multiply_7',['MULTIPLY',['../namespacehmap.html#a5101273ec456f5267dddc3e22dae223babadb712f0f7627d6892ea66c9743aec1',1,'hmap']]]
+  ['mo_5fblack_5fhat_6',['MO_BLACK_HAT',['../namespacehmap.html#a321149eda3417aa485a010c31267818ca95312bbd452f457354100b456719f931',1,'hmap']]],
+  ['mo_5fborder_7',['MO_BORDER',['../namespacehmap.html#a321149eda3417aa485a010c31267818ca8083c22f48c0732c103514d10b5fe7e6',1,'hmap']]],
+  ['mo_5fclosing_8',['MO_CLOSING',['../namespacehmap.html#a321149eda3417aa485a010c31267818ca442219bd6354336f660624a2b76bde23',1,'hmap']]],
+  ['mo_5fdilation_9',['MO_DILATION',['../namespacehmap.html#a321149eda3417aa485a010c31267818cad2e58516e7657971e3e16cd131089055',1,'hmap']]],
+  ['mo_5ferosion_10',['MO_EROSION',['../namespacehmap.html#a321149eda3417aa485a010c31267818ca0e9abbb30a51ad2951f6f0b527f6f7a1',1,'hmap']]],
+  ['mo_5fgradient_11',['MO_GRADIENT',['../namespacehmap.html#a321149eda3417aa485a010c31267818ca2a4e04241f3ad0bdc9da20e651ba8dd3',1,'hmap']]],
+  ['mo_5flaplacian_12',['MO_LAPLACIAN',['../namespacehmap.html#a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e',1,'hmap']]],
+  ['mo_5fopening_13',['MO_OPENING',['../namespacehmap.html#a321149eda3417aa485a010c31267818ca2a6dee7c1afab190ad76aa5e40f9eaf6',1,'hmap']]],
+  ['mo_5ftop_5fhat_14',['MO_TOP_HAT',['../namespacehmap.html#a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2',1,'hmap']]],
+  ['moore_15',['MOORE',['../namespacehmap.html#a9d00db2263b4b7b05245531c41c1b592af1e94018e1eb59b107f1adfa66a97929',1,'hmap']]],
+  ['multiply_16',['MULTIPLY',['../namespacehmap.html#a5101273ec456f5267dddc3e22dae223babadb712f0f7627d6892ea66c9743aec1',1,'hmap']]]
 ];

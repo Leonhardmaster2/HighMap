@@ -9,6 +9,7 @@ var morphology_8cpp =
     [ "flood_fill", "morphology_8cpp.html#adff494af7c8bf4db7f3e6fddd3261793", null ],
     [ "morphological_black_hat", "morphology_8cpp.html#a1cf22c68188d0e35aa74983f3a01c488", null ],
     [ "morphological_gradient", "morphology_8cpp.html#a01f3be1fd053428ea67030e3736d15ca", null ],
+    [ "morphological_laplacian", "morphology_8cpp.html#aeb7c9ef8addab179badc77310cfde1b5", null ],
     [ "morphological_top_hat", "morphology_8cpp.html#a211108a73f7ebadb6ac87621c4e47301", null ],
     [ "opening", "morphology_8cpp.html#abd3024b8233a70596ff2924607221637", null ],
     [ "helper_thinning", "morphology_8cpp.html#a2c98f2116e221df5f6684a7546bb233f", null ],

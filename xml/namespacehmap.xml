@@ -1493,6 +1493,81 @@
         </inbodydescription>
         <location file="HighMap/include/highmap/math.hpp" line="65" column="1" bodyfile="HighMap/include/highmap/math.hpp" bodystart="66" bodyend="74"/>
       </memberdef>
+      <memberdef kind="enum" id="namespacehmap_1a321149eda3417aa485a010c31267818c" prot="public" static="no" strong="no">
+        <type>int</type>
+        <name>MorphologyOperation</name>
+        <qualifiedname>hmap::MorphologyOperation</qualifiedname>
+        <enumvalue id="namespacehmap_1a321149eda3417aa485a010c31267818ca8083c22f48c0732c103514d10b5fe7e6" prot="public">
+          <name>MO_BORDER</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacehmap_1a321149eda3417aa485a010c31267818ca442219bd6354336f660624a2b76bde23" prot="public">
+          <name>MO_CLOSING</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacehmap_1a321149eda3417aa485a010c31267818cad2e58516e7657971e3e16cd131089055" prot="public">
+          <name>MO_DILATION</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacehmap_1a321149eda3417aa485a010c31267818ca0e9abbb30a51ad2951f6f0b527f6f7a1" prot="public">
+          <name>MO_EROSION</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacehmap_1a321149eda3417aa485a010c31267818ca2a6dee7c1afab190ad76aa5e40f9eaf6" prot="public">
+          <name>MO_OPENING</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacehmap_1a321149eda3417aa485a010c31267818ca95312bbd452f457354100b456719f931" prot="public">
+          <name>MO_BLACK_HAT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacehmap_1a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2" prot="public">
+          <name>MO_TOP_HAT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacehmap_1a321149eda3417aa485a010c31267818ca2a4e04241f3ad0bdc9da20e651ba8dd3" prot="public">
+          <name>MO_GRADIENT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacehmap_1a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e" prot="public">
+          <name>MO_LAPLACIAN</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/morphology.hpp" line="26" column="1" bodyfile="HighMap/include/highmap/morphology.hpp" bodystart="27" bodyend="37"/>
+      </memberdef>
       <memberdef kind="enum" id="namespacehmap_1a9e2493cec1a67b3140691e617ddc925a" prot="public" static="no" strong="no">
         <type>int</type>
         <name>DistanceTransformType</name>
@@ -1536,7 +1611,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/morphology.hpp" line="28" column="1" bodyfile="HighMap/include/highmap/morphology.hpp" bodystart="29" bodyend="34"/>
+        <location file="HighMap/include/highmap/morphology.hpp" line="43" column="1" bodyfile="HighMap/include/highmap/morphology.hpp" bodystart="44" bodyend="49"/>
       </memberdef>
       <memberdef kind="enum" id="namespacehmap_1ae84abe9052dcb9c88f3c50716addfe44" prot="public" static="no" strong="no">
         <type>int</type>
@@ -37525,20 +37600,70 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>radius<sp/>=<sp/>1<sp/>==&gt;<sp/>3x3<sp/>square<sp/>kernel</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ir<sp/>=<sp/>3;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zr<sp/>=<sp/><ref refid="namespacehmap_1af80bcff234bf1482cf26896b9d21d270" kindref="member">hmap::border</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zd<sp/>=<sp/><ref refid="namespacehmap_1ac91a2dacd050d8588b4135f02dd8f2a5" kindref="member">hmap::dilation</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>ze<sp/>=<sp/><ref refid="namespacehmap_1a9cf7773f6141162bf60708a93acdfcee" kindref="member">hmap::erosion</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zc<sp/>=<sp/><ref refid="namespacehmap_1a889405ce11be91e33cc80ca4dbd192b0" kindref="member">hmap::closing</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zo<sp/>=<sp/><ref refid="namespacehmap_1abd3024b8233a70596ff2924607221637" kindref="member">hmap::opening</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zg<sp/>=<sp/><ref refid="namespacehmap_1a01f3be1fd053428ea67030e3736d15ca" kindref="member">hmap::morphological_gradient</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zt<sp/>=<sp/><ref refid="namespacehmap_1a211108a73f7ebadb6ac87621c4e47301" kindref="member">hmap::morphological_top_hat</ref>(z,<sp/>ir);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zb<sp/>=<sp/><ref refid="namespacehmap_1a1cf22c68188d0e35aa74983f3a01c488" kindref="member">hmap::morphological_black_hat</ref>(z,<sp/>ir);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zh<sp/>=<sp/><ref refid="namespacehmap_1a1cf22c68188d0e35aa74983f3a01c488" kindref="member">hmap::morphological_black_hat</ref>(z,<sp/>ir);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zl<sp/>=<sp/><ref refid="namespacehmap_1aeb7c9ef8addab179badc77310cfde1b5" kindref="member">hmap::morphological_laplacian</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a4799d3f029d45240a5b40b4853583a58" kindref="member">hmap::make_binary</ref>(z);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zr<sp/>=<sp/><ref refid="namespacehmap_1af80bcff234bf1482cf26896b9d21d270" kindref="member">hmap::border</ref>(z,<sp/>ir);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>hmap::make_binary(z);</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>hmap::Array<sp/>zr<sp/>=<sp/>hmap::border(z,<sp/>ir);</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_morphology_base.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,<sp/>zd,<sp/>ze,<sp/>zc,<sp/>zo,<sp/>zg,<sp/>zt,<sp/>zb,<sp/>zr},</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d" kindref="member">hmap::Cmap::GRAY</ref>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,<sp/>zr,<sp/>zd,<sp/>ze,<sp/>zc,<sp/>zo,<sp/>zg,<sp/>zt,<sp/>zh,<sp/>zl},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d" kindref="member">hmap::Cmap::GRAY</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>---<sp/>Wrapper</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::vector&lt;hmap::MorphologyOperation&gt;<sp/>ops<sp/>=<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca8083c22f48c0732c103514d10b5fe7e6" kindref="member">hmap::MorphologyOperation::MO_BORDER</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca442219bd6354336f660624a2b76bde23" kindref="member">hmap::MorphologyOperation::MO_CLOSING</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818cad2e58516e7657971e3e16cd131089055" kindref="member">hmap::MorphologyOperation::MO_DILATION</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca0e9abbb30a51ad2951f6f0b527f6f7a1" kindref="member">hmap::MorphologyOperation::MO_EROSION</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca2a6dee7c1afab190ad76aa5e40f9eaf6" kindref="member">hmap::MorphologyOperation::MO_OPENING</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca2a4e04241f3ad0bdc9da20e651ba8dd3" kindref="member">hmap::MorphologyOperation::MO_GRADIENT</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2" kindref="member">hmap::MorphologyOperation::MO_TOP_HAT</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca95312bbd452f457354100b456719f931" kindref="member">hmap::MorphologyOperation::MO_BLACK_HAT</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e" kindref="member">hmap::MorphologyOperation::MO_LAPLACIAN</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>};</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>CPU</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::vector&lt;hmap::Array&gt;<sp/>arrays<sp/>=<sp/>{z};</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>op<sp/>:<sp/>ops)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>out<sp/>=<sp/><ref refid="namespacehmap_1ad6e4d1cf34786ef4065fbc0a5fa03d6d" kindref="member">hmap::morphological_operators</ref>(z,<sp/>ir,<sp/>op);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>arrays.push_back(out);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_morphology_base0.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>arrays,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143" kindref="member">hmap::Cmap::INFERNO</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>GPU</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1adb8336ed4d83c15500872185dee45d50" kindref="member">hmap::gpu::init_opencl</ref>();</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>arrays<sp/>=<sp/>{z};</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>op<sp/>:<sp/>ops)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>out<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1af427123c185935335c9d2e108c833c67" kindref="member">hmap::gpu::morphological_operators</ref>(z,<sp/>ir,<sp/>op);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>arrays.push_back(out);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_morphology_base1.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>arrays,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143" kindref="member">hmap::Cmap::INFERNO</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting></para>
 <para><bold>Result</bold> <image type="html" name="ex_morphology_base.png"></image>
@@ -37546,7 +37671,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/morphology/morphology.cpp" line="15" column="7" bodyfile="HighMap/src/morphology/morphology.cpp" bodystart="15" bodyend="18" declfile="HighMap/include/highmap/morphology.hpp" declline="49" declcolumn="7"/>
+        <location file="HighMap/src/morphology/morphology.cpp" line="15" column="7" bodyfile="HighMap/src/morphology/morphology.cpp" bodystart="15" bodyend="18" declfile="HighMap/include/highmap/morphology.hpp" declline="64" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a889405ce11be91e33cc80ca4dbd192b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -37600,20 +37725,70 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>radius<sp/>=<sp/>1<sp/>==&gt;<sp/>3x3<sp/>square<sp/>kernel</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ir<sp/>=<sp/>3;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zr<sp/>=<sp/><ref refid="namespacehmap_1af80bcff234bf1482cf26896b9d21d270" kindref="member">hmap::border</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zd<sp/>=<sp/><ref refid="namespacehmap_1ac91a2dacd050d8588b4135f02dd8f2a5" kindref="member">hmap::dilation</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>ze<sp/>=<sp/><ref refid="namespacehmap_1a9cf7773f6141162bf60708a93acdfcee" kindref="member">hmap::erosion</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zc<sp/>=<sp/><ref refid="namespacehmap_1a889405ce11be91e33cc80ca4dbd192b0" kindref="member">hmap::closing</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zo<sp/>=<sp/><ref refid="namespacehmap_1abd3024b8233a70596ff2924607221637" kindref="member">hmap::opening</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zg<sp/>=<sp/><ref refid="namespacehmap_1a01f3be1fd053428ea67030e3736d15ca" kindref="member">hmap::morphological_gradient</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zt<sp/>=<sp/><ref refid="namespacehmap_1a211108a73f7ebadb6ac87621c4e47301" kindref="member">hmap::morphological_top_hat</ref>(z,<sp/>ir);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zb<sp/>=<sp/><ref refid="namespacehmap_1a1cf22c68188d0e35aa74983f3a01c488" kindref="member">hmap::morphological_black_hat</ref>(z,<sp/>ir);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zh<sp/>=<sp/><ref refid="namespacehmap_1a1cf22c68188d0e35aa74983f3a01c488" kindref="member">hmap::morphological_black_hat</ref>(z,<sp/>ir);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zl<sp/>=<sp/><ref refid="namespacehmap_1aeb7c9ef8addab179badc77310cfde1b5" kindref="member">hmap::morphological_laplacian</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a4799d3f029d45240a5b40b4853583a58" kindref="member">hmap::make_binary</ref>(z);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zr<sp/>=<sp/><ref refid="namespacehmap_1af80bcff234bf1482cf26896b9d21d270" kindref="member">hmap::border</ref>(z,<sp/>ir);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>hmap::make_binary(z);</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>hmap::Array<sp/>zr<sp/>=<sp/>hmap::border(z,<sp/>ir);</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_morphology_base.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,<sp/>zd,<sp/>ze,<sp/>zc,<sp/>zo,<sp/>zg,<sp/>zt,<sp/>zb,<sp/>zr},</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d" kindref="member">hmap::Cmap::GRAY</ref>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,<sp/>zr,<sp/>zd,<sp/>ze,<sp/>zc,<sp/>zo,<sp/>zg,<sp/>zt,<sp/>zh,<sp/>zl},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d" kindref="member">hmap::Cmap::GRAY</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>---<sp/>Wrapper</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::vector&lt;hmap::MorphologyOperation&gt;<sp/>ops<sp/>=<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca8083c22f48c0732c103514d10b5fe7e6" kindref="member">hmap::MorphologyOperation::MO_BORDER</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca442219bd6354336f660624a2b76bde23" kindref="member">hmap::MorphologyOperation::MO_CLOSING</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818cad2e58516e7657971e3e16cd131089055" kindref="member">hmap::MorphologyOperation::MO_DILATION</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca0e9abbb30a51ad2951f6f0b527f6f7a1" kindref="member">hmap::MorphologyOperation::MO_EROSION</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca2a6dee7c1afab190ad76aa5e40f9eaf6" kindref="member">hmap::MorphologyOperation::MO_OPENING</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca2a4e04241f3ad0bdc9da20e651ba8dd3" kindref="member">hmap::MorphologyOperation::MO_GRADIENT</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2" kindref="member">hmap::MorphologyOperation::MO_TOP_HAT</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca95312bbd452f457354100b456719f931" kindref="member">hmap::MorphologyOperation::MO_BLACK_HAT</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e" kindref="member">hmap::MorphologyOperation::MO_LAPLACIAN</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>};</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>CPU</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::vector&lt;hmap::Array&gt;<sp/>arrays<sp/>=<sp/>{z};</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>op<sp/>:<sp/>ops)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>out<sp/>=<sp/><ref refid="namespacehmap_1ad6e4d1cf34786ef4065fbc0a5fa03d6d" kindref="member">hmap::morphological_operators</ref>(z,<sp/>ir,<sp/>op);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>arrays.push_back(out);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_morphology_base0.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>arrays,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143" kindref="member">hmap::Cmap::INFERNO</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>GPU</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1adb8336ed4d83c15500872185dee45d50" kindref="member">hmap::gpu::init_opencl</ref>();</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>arrays<sp/>=<sp/>{z};</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>op<sp/>:<sp/>ops)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>out<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1af427123c185935335c9d2e108c833c67" kindref="member">hmap::gpu::morphological_operators</ref>(z,<sp/>ir,<sp/>op);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>arrays.push_back(out);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_morphology_base1.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>arrays,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143" kindref="member">hmap::Cmap::INFERNO</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting></para>
 <para><bold>Result</bold> <image type="html" name="ex_morphology_base.png"></image>
@@ -37621,7 +37796,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/morphology/morphology.cpp" line="20" column="7" bodyfile="HighMap/src/morphology/morphology.cpp" bodystart="20" bodyend="23" declfile="HighMap/include/highmap/morphology.hpp" declline="64" declcolumn="7"/>
+        <location file="HighMap/src/morphology/morphology.cpp" line="20" column="7" bodyfile="HighMap/src/morphology/morphology.cpp" bodystart="20" bodyend="23" declfile="HighMap/include/highmap/morphology.hpp" declline="79" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ac91a2dacd050d8588b4135f02dd8f2a5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -37675,20 +37850,70 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>radius<sp/>=<sp/>1<sp/>==&gt;<sp/>3x3<sp/>square<sp/>kernel</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ir<sp/>=<sp/>3;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zr<sp/>=<sp/><ref refid="namespacehmap_1af80bcff234bf1482cf26896b9d21d270" kindref="member">hmap::border</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zd<sp/>=<sp/><ref refid="namespacehmap_1ac91a2dacd050d8588b4135f02dd8f2a5" kindref="member">hmap::dilation</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>ze<sp/>=<sp/><ref refid="namespacehmap_1a9cf7773f6141162bf60708a93acdfcee" kindref="member">hmap::erosion</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zc<sp/>=<sp/><ref refid="namespacehmap_1a889405ce11be91e33cc80ca4dbd192b0" kindref="member">hmap::closing</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zo<sp/>=<sp/><ref refid="namespacehmap_1abd3024b8233a70596ff2924607221637" kindref="member">hmap::opening</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zg<sp/>=<sp/><ref refid="namespacehmap_1a01f3be1fd053428ea67030e3736d15ca" kindref="member">hmap::morphological_gradient</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zt<sp/>=<sp/><ref refid="namespacehmap_1a211108a73f7ebadb6ac87621c4e47301" kindref="member">hmap::morphological_top_hat</ref>(z,<sp/>ir);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zb<sp/>=<sp/><ref refid="namespacehmap_1a1cf22c68188d0e35aa74983f3a01c488" kindref="member">hmap::morphological_black_hat</ref>(z,<sp/>ir);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zh<sp/>=<sp/><ref refid="namespacehmap_1a1cf22c68188d0e35aa74983f3a01c488" kindref="member">hmap::morphological_black_hat</ref>(z,<sp/>ir);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zl<sp/>=<sp/><ref refid="namespacehmap_1aeb7c9ef8addab179badc77310cfde1b5" kindref="member">hmap::morphological_laplacian</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a4799d3f029d45240a5b40b4853583a58" kindref="member">hmap::make_binary</ref>(z);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zr<sp/>=<sp/><ref refid="namespacehmap_1af80bcff234bf1482cf26896b9d21d270" kindref="member">hmap::border</ref>(z,<sp/>ir);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>hmap::make_binary(z);</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>hmap::Array<sp/>zr<sp/>=<sp/>hmap::border(z,<sp/>ir);</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_morphology_base.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,<sp/>zd,<sp/>ze,<sp/>zc,<sp/>zo,<sp/>zg,<sp/>zt,<sp/>zb,<sp/>zr},</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d" kindref="member">hmap::Cmap::GRAY</ref>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,<sp/>zr,<sp/>zd,<sp/>ze,<sp/>zc,<sp/>zo,<sp/>zg,<sp/>zt,<sp/>zh,<sp/>zl},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d" kindref="member">hmap::Cmap::GRAY</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>---<sp/>Wrapper</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::vector&lt;hmap::MorphologyOperation&gt;<sp/>ops<sp/>=<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca8083c22f48c0732c103514d10b5fe7e6" kindref="member">hmap::MorphologyOperation::MO_BORDER</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca442219bd6354336f660624a2b76bde23" kindref="member">hmap::MorphologyOperation::MO_CLOSING</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818cad2e58516e7657971e3e16cd131089055" kindref="member">hmap::MorphologyOperation::MO_DILATION</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca0e9abbb30a51ad2951f6f0b527f6f7a1" kindref="member">hmap::MorphologyOperation::MO_EROSION</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca2a6dee7c1afab190ad76aa5e40f9eaf6" kindref="member">hmap::MorphologyOperation::MO_OPENING</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca2a4e04241f3ad0bdc9da20e651ba8dd3" kindref="member">hmap::MorphologyOperation::MO_GRADIENT</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2" kindref="member">hmap::MorphologyOperation::MO_TOP_HAT</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca95312bbd452f457354100b456719f931" kindref="member">hmap::MorphologyOperation::MO_BLACK_HAT</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e" kindref="member">hmap::MorphologyOperation::MO_LAPLACIAN</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>};</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>CPU</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::vector&lt;hmap::Array&gt;<sp/>arrays<sp/>=<sp/>{z};</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>op<sp/>:<sp/>ops)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>out<sp/>=<sp/><ref refid="namespacehmap_1ad6e4d1cf34786ef4065fbc0a5fa03d6d" kindref="member">hmap::morphological_operators</ref>(z,<sp/>ir,<sp/>op);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>arrays.push_back(out);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_morphology_base0.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>arrays,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143" kindref="member">hmap::Cmap::INFERNO</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>GPU</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1adb8336ed4d83c15500872185dee45d50" kindref="member">hmap::gpu::init_opencl</ref>();</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>arrays<sp/>=<sp/>{z};</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>op<sp/>:<sp/>ops)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>out<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1af427123c185935335c9d2e108c833c67" kindref="member">hmap::gpu::morphological_operators</ref>(z,<sp/>ir,<sp/>op);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>arrays.push_back(out);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_morphology_base1.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>arrays,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143" kindref="member">hmap::Cmap::INFERNO</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting></para>
 <para><bold>Result</bold> <image type="html" name="ex_morphology_base.png"></image>
@@ -37696,7 +37921,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/morphology/morphology.cpp" line="25" column="7" bodyfile="HighMap/src/morphology/morphology.cpp" bodystart="25" bodyend="28" declfile="HighMap/include/highmap/morphology.hpp" declline="80" declcolumn="7"/>
+        <location file="HighMap/src/morphology/morphology.cpp" line="25" column="7" bodyfile="HighMap/src/morphology/morphology.cpp" bodystart="25" bodyend="28" declfile="HighMap/include/highmap/morphology.hpp" declline="95" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a268e133ae504eaa1b31c91d13135f4c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -37740,7 +37965,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/morphology/morphology.cpp" line="30" column="7" bodyfile="HighMap/src/morphology/morphology.cpp" bodystart="30" bodyend="43" declfile="HighMap/include/highmap/morphology.hpp" declline="100" declcolumn="7"/>
+        <location file="HighMap/src/morphology/morphology.cpp" line="30" column="7" bodyfile="HighMap/src/morphology/morphology.cpp" bodystart="30" bodyend="43" declfile="HighMap/include/highmap/morphology.hpp" declline="115" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a511226f8c6989729ff59e5079a6cff29" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -37758,7 +37983,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/morphology/morphology.cpp" line="45" column="7" bodyfile="HighMap/src/morphology/morphology.cpp" bodystart="45" bodyend="73" declfile="HighMap/include/highmap/morphology.hpp" declline="102" declcolumn="7"/>
+        <location file="HighMap/src/morphology/morphology.cpp" line="45" column="7" bodyfile="HighMap/src/morphology/morphology.cpp" bodystart="45" bodyend="73" declfile="HighMap/include/highmap/morphology.hpp" declline="117" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a3bad25b24d9ae0e07e692c546bc3480d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -37848,7 +38073,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/morphology/distance_transform.cpp" line="23" column="7" bodyfile="HighMap/src/morphology/distance_transform.cpp" bodystart="23" bodyend="100" declfile="HighMap/include/highmap/morphology.hpp" declline="126" declcolumn="7"/>
+        <location file="HighMap/src/morphology/distance_transform.cpp" line="23" column="7" bodyfile="HighMap/src/morphology/distance_transform.cpp" bodystart="23" bodyend="100" declfile="HighMap/include/highmap/morphology.hpp" declline="141" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a23fdcd258e0bab2a5fcad31d6459c3fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -37937,7 +38162,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/morphology/distance_transform_approx.cpp" line="12" column="7" bodyfile="HighMap/src/morphology/distance_transform_approx.cpp" bodystart="12" bodyend="52" declfile="HighMap/include/highmap/morphology.hpp" declline="149" declcolumn="7"/>
+        <location file="HighMap/src/morphology/distance_transform_approx.cpp" line="12" column="7" bodyfile="HighMap/src/morphology/distance_transform_approx.cpp" bodystart="12" bodyend="52" declfile="HighMap/include/highmap/morphology.hpp" declline="164" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1add641a7fc26ae08b1f679cbb7dd43177" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -38026,7 +38251,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/morphology/distance_transform_approx.cpp" line="54" column="7" bodyfile="HighMap/src/morphology/distance_transform_approx.cpp" bodystart="54" bodyend="90" declfile="HighMap/include/highmap/morphology.hpp" declline="171" declcolumn="7"/>
+        <location file="HighMap/src/morphology/distance_transform_approx.cpp" line="54" column="7" bodyfile="HighMap/src/morphology/distance_transform_approx.cpp" bodystart="54" bodyend="90" declfile="HighMap/include/highmap/morphology.hpp" declline="186" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a8e7ea79047868729667b72aed4ddd81d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -38075,7 +38300,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/morphology/distance_transform.cpp" line="102" column="7" bodyfile="HighMap/src/morphology/distance_transform.cpp" bodystart="102" bodyend="202" declfile="HighMap/include/highmap/morphology.hpp" declline="186" declcolumn="7"/>
+        <location file="HighMap/src/morphology/distance_transform.cpp" line="102" column="7" bodyfile="HighMap/src/morphology/distance_transform.cpp" bodystart="102" bodyend="202" declfile="HighMap/include/highmap/morphology.hpp" declline="201" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a9cf7773f6141162bf60708a93acdfcee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -38129,20 +38354,70 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>radius<sp/>=<sp/>1<sp/>==&gt;<sp/>3x3<sp/>square<sp/>kernel</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ir<sp/>=<sp/>3;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zr<sp/>=<sp/><ref refid="namespacehmap_1af80bcff234bf1482cf26896b9d21d270" kindref="member">hmap::border</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zd<sp/>=<sp/><ref refid="namespacehmap_1ac91a2dacd050d8588b4135f02dd8f2a5" kindref="member">hmap::dilation</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>ze<sp/>=<sp/><ref refid="namespacehmap_1a9cf7773f6141162bf60708a93acdfcee" kindref="member">hmap::erosion</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zc<sp/>=<sp/><ref refid="namespacehmap_1a889405ce11be91e33cc80ca4dbd192b0" kindref="member">hmap::closing</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zo<sp/>=<sp/><ref refid="namespacehmap_1abd3024b8233a70596ff2924607221637" kindref="member">hmap::opening</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zg<sp/>=<sp/><ref refid="namespacehmap_1a01f3be1fd053428ea67030e3736d15ca" kindref="member">hmap::morphological_gradient</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zt<sp/>=<sp/><ref refid="namespacehmap_1a211108a73f7ebadb6ac87621c4e47301" kindref="member">hmap::morphological_top_hat</ref>(z,<sp/>ir);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zb<sp/>=<sp/><ref refid="namespacehmap_1a1cf22c68188d0e35aa74983f3a01c488" kindref="member">hmap::morphological_black_hat</ref>(z,<sp/>ir);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zh<sp/>=<sp/><ref refid="namespacehmap_1a1cf22c68188d0e35aa74983f3a01c488" kindref="member">hmap::morphological_black_hat</ref>(z,<sp/>ir);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zl<sp/>=<sp/><ref refid="namespacehmap_1aeb7c9ef8addab179badc77310cfde1b5" kindref="member">hmap::morphological_laplacian</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a4799d3f029d45240a5b40b4853583a58" kindref="member">hmap::make_binary</ref>(z);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zr<sp/>=<sp/><ref refid="namespacehmap_1af80bcff234bf1482cf26896b9d21d270" kindref="member">hmap::border</ref>(z,<sp/>ir);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>hmap::make_binary(z);</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>hmap::Array<sp/>zr<sp/>=<sp/>hmap::border(z,<sp/>ir);</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_morphology_base.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,<sp/>zd,<sp/>ze,<sp/>zc,<sp/>zo,<sp/>zg,<sp/>zt,<sp/>zb,<sp/>zr},</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d" kindref="member">hmap::Cmap::GRAY</ref>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,<sp/>zr,<sp/>zd,<sp/>ze,<sp/>zc,<sp/>zo,<sp/>zg,<sp/>zt,<sp/>zh,<sp/>zl},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d" kindref="member">hmap::Cmap::GRAY</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>---<sp/>Wrapper</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::vector&lt;hmap::MorphologyOperation&gt;<sp/>ops<sp/>=<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca8083c22f48c0732c103514d10b5fe7e6" kindref="member">hmap::MorphologyOperation::MO_BORDER</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca442219bd6354336f660624a2b76bde23" kindref="member">hmap::MorphologyOperation::MO_CLOSING</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818cad2e58516e7657971e3e16cd131089055" kindref="member">hmap::MorphologyOperation::MO_DILATION</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca0e9abbb30a51ad2951f6f0b527f6f7a1" kindref="member">hmap::MorphologyOperation::MO_EROSION</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca2a6dee7c1afab190ad76aa5e40f9eaf6" kindref="member">hmap::MorphologyOperation::MO_OPENING</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca2a4e04241f3ad0bdc9da20e651ba8dd3" kindref="member">hmap::MorphologyOperation::MO_GRADIENT</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2" kindref="member">hmap::MorphologyOperation::MO_TOP_HAT</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca95312bbd452f457354100b456719f931" kindref="member">hmap::MorphologyOperation::MO_BLACK_HAT</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e" kindref="member">hmap::MorphologyOperation::MO_LAPLACIAN</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>};</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>CPU</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::vector&lt;hmap::Array&gt;<sp/>arrays<sp/>=<sp/>{z};</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>op<sp/>:<sp/>ops)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>out<sp/>=<sp/><ref refid="namespacehmap_1ad6e4d1cf34786ef4065fbc0a5fa03d6d" kindref="member">hmap::morphological_operators</ref>(z,<sp/>ir,<sp/>op);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>arrays.push_back(out);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_morphology_base0.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>arrays,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143" kindref="member">hmap::Cmap::INFERNO</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>GPU</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1adb8336ed4d83c15500872185dee45d50" kindref="member">hmap::gpu::init_opencl</ref>();</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>arrays<sp/>=<sp/>{z};</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>op<sp/>:<sp/>ops)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>out<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1af427123c185935335c9d2e108c833c67" kindref="member">hmap::gpu::morphological_operators</ref>(z,<sp/>ir,<sp/>op);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>arrays.push_back(out);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_morphology_base1.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>arrays,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143" kindref="member">hmap::Cmap::INFERNO</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting></para>
 <para><bold>Result</bold> <image type="html" name="ex_morphology_base.png"></image>
@@ -38150,7 +38425,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/morphology/morphology.cpp" line="75" column="7" bodyfile="HighMap/src/morphology/morphology.cpp" bodystart="75" bodyend="78" declfile="HighMap/include/highmap/morphology.hpp" declline="204" declcolumn="7"/>
+        <location file="HighMap/src/morphology/morphology.cpp" line="75" column="7" bodyfile="HighMap/src/morphology/morphology.cpp" bodystart="75" bodyend="78" declfile="HighMap/include/highmap/morphology.hpp" declline="219" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1adff494af7c8bf4db7f3e6fddd3261793" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -38252,7 +38527,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/morphology/morphology.cpp" line="80" column="6" bodyfile="HighMap/src/morphology/morphology.cpp" bodystart="80" bodyend="125" declfile="HighMap/include/highmap/morphology.hpp" declline="221" declcolumn="6"/>
+        <location file="HighMap/src/morphology/morphology.cpp" line="80" column="6" bodyfile="HighMap/src/morphology/morphology.cpp" bodystart="80" bodyend="125" declfile="HighMap/include/highmap/morphology.hpp" declline="236" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a1cf22c68188d0e35aa74983f3a01c488" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -38306,20 +38581,70 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>radius<sp/>=<sp/>1<sp/>==&gt;<sp/>3x3<sp/>square<sp/>kernel</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ir<sp/>=<sp/>3;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zr<sp/>=<sp/><ref refid="namespacehmap_1af80bcff234bf1482cf26896b9d21d270" kindref="member">hmap::border</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zd<sp/>=<sp/><ref refid="namespacehmap_1ac91a2dacd050d8588b4135f02dd8f2a5" kindref="member">hmap::dilation</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>ze<sp/>=<sp/><ref refid="namespacehmap_1a9cf7773f6141162bf60708a93acdfcee" kindref="member">hmap::erosion</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zc<sp/>=<sp/><ref refid="namespacehmap_1a889405ce11be91e33cc80ca4dbd192b0" kindref="member">hmap::closing</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zo<sp/>=<sp/><ref refid="namespacehmap_1abd3024b8233a70596ff2924607221637" kindref="member">hmap::opening</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zg<sp/>=<sp/><ref refid="namespacehmap_1a01f3be1fd053428ea67030e3736d15ca" kindref="member">hmap::morphological_gradient</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zt<sp/>=<sp/><ref refid="namespacehmap_1a211108a73f7ebadb6ac87621c4e47301" kindref="member">hmap::morphological_top_hat</ref>(z,<sp/>ir);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zb<sp/>=<sp/><ref refid="namespacehmap_1a1cf22c68188d0e35aa74983f3a01c488" kindref="member">hmap::morphological_black_hat</ref>(z,<sp/>ir);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zh<sp/>=<sp/><ref refid="namespacehmap_1a1cf22c68188d0e35aa74983f3a01c488" kindref="member">hmap::morphological_black_hat</ref>(z,<sp/>ir);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zl<sp/>=<sp/><ref refid="namespacehmap_1aeb7c9ef8addab179badc77310cfde1b5" kindref="member">hmap::morphological_laplacian</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a4799d3f029d45240a5b40b4853583a58" kindref="member">hmap::make_binary</ref>(z);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zr<sp/>=<sp/><ref refid="namespacehmap_1af80bcff234bf1482cf26896b9d21d270" kindref="member">hmap::border</ref>(z,<sp/>ir);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>hmap::make_binary(z);</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>hmap::Array<sp/>zr<sp/>=<sp/>hmap::border(z,<sp/>ir);</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_morphology_base.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,<sp/>zd,<sp/>ze,<sp/>zc,<sp/>zo,<sp/>zg,<sp/>zt,<sp/>zb,<sp/>zr},</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d" kindref="member">hmap::Cmap::GRAY</ref>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,<sp/>zr,<sp/>zd,<sp/>ze,<sp/>zc,<sp/>zo,<sp/>zg,<sp/>zt,<sp/>zh,<sp/>zl},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d" kindref="member">hmap::Cmap::GRAY</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>---<sp/>Wrapper</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::vector&lt;hmap::MorphologyOperation&gt;<sp/>ops<sp/>=<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca8083c22f48c0732c103514d10b5fe7e6" kindref="member">hmap::MorphologyOperation::MO_BORDER</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca442219bd6354336f660624a2b76bde23" kindref="member">hmap::MorphologyOperation::MO_CLOSING</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818cad2e58516e7657971e3e16cd131089055" kindref="member">hmap::MorphologyOperation::MO_DILATION</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca0e9abbb30a51ad2951f6f0b527f6f7a1" kindref="member">hmap::MorphologyOperation::MO_EROSION</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca2a6dee7c1afab190ad76aa5e40f9eaf6" kindref="member">hmap::MorphologyOperation::MO_OPENING</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca2a4e04241f3ad0bdc9da20e651ba8dd3" kindref="member">hmap::MorphologyOperation::MO_GRADIENT</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2" kindref="member">hmap::MorphologyOperation::MO_TOP_HAT</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca95312bbd452f457354100b456719f931" kindref="member">hmap::MorphologyOperation::MO_BLACK_HAT</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e" kindref="member">hmap::MorphologyOperation::MO_LAPLACIAN</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>};</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>CPU</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::vector&lt;hmap::Array&gt;<sp/>arrays<sp/>=<sp/>{z};</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>op<sp/>:<sp/>ops)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>out<sp/>=<sp/><ref refid="namespacehmap_1ad6e4d1cf34786ef4065fbc0a5fa03d6d" kindref="member">hmap::morphological_operators</ref>(z,<sp/>ir,<sp/>op);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>arrays.push_back(out);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_morphology_base0.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>arrays,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143" kindref="member">hmap::Cmap::INFERNO</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>GPU</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1adb8336ed4d83c15500872185dee45d50" kindref="member">hmap::gpu::init_opencl</ref>();</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>arrays<sp/>=<sp/>{z};</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>op<sp/>:<sp/>ops)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>out<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1af427123c185935335c9d2e108c833c67" kindref="member">hmap::gpu::morphological_operators</ref>(z,<sp/>ir,<sp/>op);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>arrays.push_back(out);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_morphology_base1.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>arrays,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143" kindref="member">hmap::Cmap::INFERNO</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting></para>
 <para><bold>Result</bold> <image type="html" name="ex_morphology_base.png"></image>
@@ -38327,7 +38652,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/morphology/morphology.cpp" line="127" column="7" bodyfile="HighMap/src/morphology/morphology.cpp" bodystart="127" bodyend="130" declfile="HighMap/include/highmap/morphology.hpp" declline="241" declcolumn="7"/>
+        <location file="HighMap/src/morphology/morphology.cpp" line="127" column="7" bodyfile="HighMap/src/morphology/morphology.cpp" bodystart="127" bodyend="130" declfile="HighMap/include/highmap/morphology.hpp" declline="256" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a01f3be1fd053428ea67030e3736d15ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -38381,20 +38706,70 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>radius<sp/>=<sp/>1<sp/>==&gt;<sp/>3x3<sp/>square<sp/>kernel</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ir<sp/>=<sp/>3;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zr<sp/>=<sp/><ref refid="namespacehmap_1af80bcff234bf1482cf26896b9d21d270" kindref="member">hmap::border</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zd<sp/>=<sp/><ref refid="namespacehmap_1ac91a2dacd050d8588b4135f02dd8f2a5" kindref="member">hmap::dilation</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>ze<sp/>=<sp/><ref refid="namespacehmap_1a9cf7773f6141162bf60708a93acdfcee" kindref="member">hmap::erosion</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zc<sp/>=<sp/><ref refid="namespacehmap_1a889405ce11be91e33cc80ca4dbd192b0" kindref="member">hmap::closing</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zo<sp/>=<sp/><ref refid="namespacehmap_1abd3024b8233a70596ff2924607221637" kindref="member">hmap::opening</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zg<sp/>=<sp/><ref refid="namespacehmap_1a01f3be1fd053428ea67030e3736d15ca" kindref="member">hmap::morphological_gradient</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zt<sp/>=<sp/><ref refid="namespacehmap_1a211108a73f7ebadb6ac87621c4e47301" kindref="member">hmap::morphological_top_hat</ref>(z,<sp/>ir);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zb<sp/>=<sp/><ref refid="namespacehmap_1a1cf22c68188d0e35aa74983f3a01c488" kindref="member">hmap::morphological_black_hat</ref>(z,<sp/>ir);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zh<sp/>=<sp/><ref refid="namespacehmap_1a1cf22c68188d0e35aa74983f3a01c488" kindref="member">hmap::morphological_black_hat</ref>(z,<sp/>ir);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zl<sp/>=<sp/><ref refid="namespacehmap_1aeb7c9ef8addab179badc77310cfde1b5" kindref="member">hmap::morphological_laplacian</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a4799d3f029d45240a5b40b4853583a58" kindref="member">hmap::make_binary</ref>(z);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zr<sp/>=<sp/><ref refid="namespacehmap_1af80bcff234bf1482cf26896b9d21d270" kindref="member">hmap::border</ref>(z,<sp/>ir);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>hmap::make_binary(z);</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>hmap::Array<sp/>zr<sp/>=<sp/>hmap::border(z,<sp/>ir);</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_morphology_base.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,<sp/>zd,<sp/>ze,<sp/>zc,<sp/>zo,<sp/>zg,<sp/>zt,<sp/>zb,<sp/>zr},</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d" kindref="member">hmap::Cmap::GRAY</ref>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,<sp/>zr,<sp/>zd,<sp/>ze,<sp/>zc,<sp/>zo,<sp/>zg,<sp/>zt,<sp/>zh,<sp/>zl},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d" kindref="member">hmap::Cmap::GRAY</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>---<sp/>Wrapper</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::vector&lt;hmap::MorphologyOperation&gt;<sp/>ops<sp/>=<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca8083c22f48c0732c103514d10b5fe7e6" kindref="member">hmap::MorphologyOperation::MO_BORDER</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca442219bd6354336f660624a2b76bde23" kindref="member">hmap::MorphologyOperation::MO_CLOSING</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818cad2e58516e7657971e3e16cd131089055" kindref="member">hmap::MorphologyOperation::MO_DILATION</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca0e9abbb30a51ad2951f6f0b527f6f7a1" kindref="member">hmap::MorphologyOperation::MO_EROSION</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca2a6dee7c1afab190ad76aa5e40f9eaf6" kindref="member">hmap::MorphologyOperation::MO_OPENING</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca2a4e04241f3ad0bdc9da20e651ba8dd3" kindref="member">hmap::MorphologyOperation::MO_GRADIENT</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2" kindref="member">hmap::MorphologyOperation::MO_TOP_HAT</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca95312bbd452f457354100b456719f931" kindref="member">hmap::MorphologyOperation::MO_BLACK_HAT</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e" kindref="member">hmap::MorphologyOperation::MO_LAPLACIAN</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>};</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>CPU</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::vector&lt;hmap::Array&gt;<sp/>arrays<sp/>=<sp/>{z};</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>op<sp/>:<sp/>ops)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>out<sp/>=<sp/><ref refid="namespacehmap_1ad6e4d1cf34786ef4065fbc0a5fa03d6d" kindref="member">hmap::morphological_operators</ref>(z,<sp/>ir,<sp/>op);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>arrays.push_back(out);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_morphology_base0.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>arrays,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143" kindref="member">hmap::Cmap::INFERNO</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>GPU</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1adb8336ed4d83c15500872185dee45d50" kindref="member">hmap::gpu::init_opencl</ref>();</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>arrays<sp/>=<sp/>{z};</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>op<sp/>:<sp/>ops)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>out<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1af427123c185935335c9d2e108c833c67" kindref="member">hmap::gpu::morphological_operators</ref>(z,<sp/>ir,<sp/>op);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>arrays.push_back(out);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_morphology_base1.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>arrays,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143" kindref="member">hmap::Cmap::INFERNO</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting></para>
 <para><bold>Result</bold> <image type="html" name="ex_morphology_base.png"></image>
@@ -38402,7 +38777,133 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/morphology/morphology.cpp" line="132" column="7" bodyfile="HighMap/src/morphology/morphology.cpp" bodystart="132" bodyend="135" declfile="HighMap/include/highmap/morphology.hpp" declline="257" declcolumn="7"/>
+        <location file="HighMap/src/morphology/morphology.cpp" line="132" column="7" bodyfile="HighMap/src/morphology/morphology.cpp" bodystart="132" bodyend="136" declfile="HighMap/include/highmap/morphology.hpp" declline="272" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehmap_1aeb7c9ef8addab179badc77310cfde1b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
+        <definition>Array hmap::morphological_laplacian</definition>
+        <argsstring>(const Array &amp;array, int ir)</argsstring>
+        <name>morphological_laplacian</name>
+        <qualifiedname>hmap::morphological_laplacian</qualifiedname>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>array</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>ir</declname>
+        </param>
+        <briefdescription>
+<para>Apply a morphological Laplacian operator to the input array using a square structure. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Compared to the classical Laplacian, this operator is more robust to noise and better preserves sharp features, as it relies on morphological extrema rather than linear differences.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>array</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input array to which the morphological Laplacian is applied. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ir</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Radius of the square kernel used for the underlying dilation and erosion operations. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classhmap_1_1Array" kindref="compound">Array</ref> Output array containing the morphological Laplacian.</para>
+</simplesect>
+<bold>Example</bold> <programlisting filename="ex_morphology_base.cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>glm::ivec2<sp/>shape<sp/>=<sp/>{256,<sp/>256};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>glm::vec2<sp/><sp/>res<sp/>=<sp/>{4.f,<sp/>4.f};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed<sp/>=<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1acb13e7346085793fda4c94c47b75d9a9" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,<sp/>shape,<sp/>res,<sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a2badbebec49b12d0d721970a18eb420d" kindref="member">hmap::clamp_min</ref>(z,<sp/>0.f);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ab80da2376c6212eb9cb2899c0a5114ad" kindref="member">hmap::remap</ref>(z);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>radius<sp/>=<sp/>1<sp/>==&gt;<sp/>3x3<sp/>square<sp/>kernel</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ir<sp/>=<sp/>3;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zr<sp/>=<sp/><ref refid="namespacehmap_1af80bcff234bf1482cf26896b9d21d270" kindref="member">hmap::border</ref>(z,<sp/>ir);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zd<sp/>=<sp/><ref refid="namespacehmap_1ac91a2dacd050d8588b4135f02dd8f2a5" kindref="member">hmap::dilation</ref>(z,<sp/>ir);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>ze<sp/>=<sp/><ref refid="namespacehmap_1a9cf7773f6141162bf60708a93acdfcee" kindref="member">hmap::erosion</ref>(z,<sp/>ir);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zc<sp/>=<sp/><ref refid="namespacehmap_1a889405ce11be91e33cc80ca4dbd192b0" kindref="member">hmap::closing</ref>(z,<sp/>ir);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zo<sp/>=<sp/><ref refid="namespacehmap_1abd3024b8233a70596ff2924607221637" kindref="member">hmap::opening</ref>(z,<sp/>ir);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zg<sp/>=<sp/><ref refid="namespacehmap_1a01f3be1fd053428ea67030e3736d15ca" kindref="member">hmap::morphological_gradient</ref>(z,<sp/>ir);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zt<sp/>=<sp/><ref refid="namespacehmap_1a211108a73f7ebadb6ac87621c4e47301" kindref="member">hmap::morphological_top_hat</ref>(z,<sp/>ir);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zh<sp/>=<sp/><ref refid="namespacehmap_1a1cf22c68188d0e35aa74983f3a01c488" kindref="member">hmap::morphological_black_hat</ref>(z,<sp/>ir);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zl<sp/>=<sp/><ref refid="namespacehmap_1aeb7c9ef8addab179badc77310cfde1b5" kindref="member">hmap::morphological_laplacian</ref>(z,<sp/>ir);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>hmap::make_binary(z);</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>hmap::Array<sp/>zr<sp/>=<sp/>hmap::border(z,<sp/>ir);</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_morphology_base.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,<sp/>zr,<sp/>zd,<sp/>ze,<sp/>zc,<sp/>zo,<sp/>zg,<sp/>zt,<sp/>zh,<sp/>zl},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d" kindref="member">hmap::Cmap::GRAY</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>---<sp/>Wrapper</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::vector&lt;hmap::MorphologyOperation&gt;<sp/>ops<sp/>=<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca8083c22f48c0732c103514d10b5fe7e6" kindref="member">hmap::MorphologyOperation::MO_BORDER</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca442219bd6354336f660624a2b76bde23" kindref="member">hmap::MorphologyOperation::MO_CLOSING</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818cad2e58516e7657971e3e16cd131089055" kindref="member">hmap::MorphologyOperation::MO_DILATION</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca0e9abbb30a51ad2951f6f0b527f6f7a1" kindref="member">hmap::MorphologyOperation::MO_EROSION</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca2a6dee7c1afab190ad76aa5e40f9eaf6" kindref="member">hmap::MorphologyOperation::MO_OPENING</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca2a4e04241f3ad0bdc9da20e651ba8dd3" kindref="member">hmap::MorphologyOperation::MO_GRADIENT</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2" kindref="member">hmap::MorphologyOperation::MO_TOP_HAT</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca95312bbd452f457354100b456719f931" kindref="member">hmap::MorphologyOperation::MO_BLACK_HAT</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e" kindref="member">hmap::MorphologyOperation::MO_LAPLACIAN</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>};</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>CPU</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::vector&lt;hmap::Array&gt;<sp/>arrays<sp/>=<sp/>{z};</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>op<sp/>:<sp/>ops)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>out<sp/>=<sp/><ref refid="namespacehmap_1ad6e4d1cf34786ef4065fbc0a5fa03d6d" kindref="member">hmap::morphological_operators</ref>(z,<sp/>ir,<sp/>op);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>arrays.push_back(out);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_morphology_base0.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>arrays,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143" kindref="member">hmap::Cmap::INFERNO</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>GPU</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1adb8336ed4d83c15500872185dee45d50" kindref="member">hmap::gpu::init_opencl</ref>();</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>arrays<sp/>=<sp/>{z};</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>op<sp/>:<sp/>ops)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>out<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1af427123c185935335c9d2e108c833c67" kindref="member">hmap::gpu::morphological_operators</ref>(z,<sp/>ir,<sp/>op);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>arrays.push_back(out);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_morphology_base1.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>arrays,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143" kindref="member">hmap::Cmap::INFERNO</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<para><bold>Result</bold> <image type="html" name="ex_morphology_base.png"></image>
+ </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/morphology/morphology.cpp" line="138" column="7" bodyfile="HighMap/src/morphology/morphology.cpp" bodystart="138" bodyend="142" declfile="HighMap/include/highmap/morphology.hpp" declline="293" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a211108a73f7ebadb6ac87621c4e47301" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -38456,20 +38957,70 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>radius<sp/>=<sp/>1<sp/>==&gt;<sp/>3x3<sp/>square<sp/>kernel</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ir<sp/>=<sp/>3;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zr<sp/>=<sp/><ref refid="namespacehmap_1af80bcff234bf1482cf26896b9d21d270" kindref="member">hmap::border</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zd<sp/>=<sp/><ref refid="namespacehmap_1ac91a2dacd050d8588b4135f02dd8f2a5" kindref="member">hmap::dilation</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>ze<sp/>=<sp/><ref refid="namespacehmap_1a9cf7773f6141162bf60708a93acdfcee" kindref="member">hmap::erosion</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zc<sp/>=<sp/><ref refid="namespacehmap_1a889405ce11be91e33cc80ca4dbd192b0" kindref="member">hmap::closing</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zo<sp/>=<sp/><ref refid="namespacehmap_1abd3024b8233a70596ff2924607221637" kindref="member">hmap::opening</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zg<sp/>=<sp/><ref refid="namespacehmap_1a01f3be1fd053428ea67030e3736d15ca" kindref="member">hmap::morphological_gradient</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zt<sp/>=<sp/><ref refid="namespacehmap_1a211108a73f7ebadb6ac87621c4e47301" kindref="member">hmap::morphological_top_hat</ref>(z,<sp/>ir);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zb<sp/>=<sp/><ref refid="namespacehmap_1a1cf22c68188d0e35aa74983f3a01c488" kindref="member">hmap::morphological_black_hat</ref>(z,<sp/>ir);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zh<sp/>=<sp/><ref refid="namespacehmap_1a1cf22c68188d0e35aa74983f3a01c488" kindref="member">hmap::morphological_black_hat</ref>(z,<sp/>ir);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zl<sp/>=<sp/><ref refid="namespacehmap_1aeb7c9ef8addab179badc77310cfde1b5" kindref="member">hmap::morphological_laplacian</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a4799d3f029d45240a5b40b4853583a58" kindref="member">hmap::make_binary</ref>(z);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zr<sp/>=<sp/><ref refid="namespacehmap_1af80bcff234bf1482cf26896b9d21d270" kindref="member">hmap::border</ref>(z,<sp/>ir);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>hmap::make_binary(z);</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>hmap::Array<sp/>zr<sp/>=<sp/>hmap::border(z,<sp/>ir);</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_morphology_base.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,<sp/>zd,<sp/>ze,<sp/>zc,<sp/>zo,<sp/>zg,<sp/>zt,<sp/>zb,<sp/>zr},</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d" kindref="member">hmap::Cmap::GRAY</ref>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,<sp/>zr,<sp/>zd,<sp/>ze,<sp/>zc,<sp/>zo,<sp/>zg,<sp/>zt,<sp/>zh,<sp/>zl},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d" kindref="member">hmap::Cmap::GRAY</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>---<sp/>Wrapper</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::vector&lt;hmap::MorphologyOperation&gt;<sp/>ops<sp/>=<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca8083c22f48c0732c103514d10b5fe7e6" kindref="member">hmap::MorphologyOperation::MO_BORDER</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca442219bd6354336f660624a2b76bde23" kindref="member">hmap::MorphologyOperation::MO_CLOSING</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818cad2e58516e7657971e3e16cd131089055" kindref="member">hmap::MorphologyOperation::MO_DILATION</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca0e9abbb30a51ad2951f6f0b527f6f7a1" kindref="member">hmap::MorphologyOperation::MO_EROSION</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca2a6dee7c1afab190ad76aa5e40f9eaf6" kindref="member">hmap::MorphologyOperation::MO_OPENING</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca2a4e04241f3ad0bdc9da20e651ba8dd3" kindref="member">hmap::MorphologyOperation::MO_GRADIENT</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2" kindref="member">hmap::MorphologyOperation::MO_TOP_HAT</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca95312bbd452f457354100b456719f931" kindref="member">hmap::MorphologyOperation::MO_BLACK_HAT</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e" kindref="member">hmap::MorphologyOperation::MO_LAPLACIAN</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>};</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>CPU</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::vector&lt;hmap::Array&gt;<sp/>arrays<sp/>=<sp/>{z};</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>op<sp/>:<sp/>ops)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>out<sp/>=<sp/><ref refid="namespacehmap_1ad6e4d1cf34786ef4065fbc0a5fa03d6d" kindref="member">hmap::morphological_operators</ref>(z,<sp/>ir,<sp/>op);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>arrays.push_back(out);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_morphology_base0.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>arrays,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143" kindref="member">hmap::Cmap::INFERNO</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>GPU</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1adb8336ed4d83c15500872185dee45d50" kindref="member">hmap::gpu::init_opencl</ref>();</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>arrays<sp/>=<sp/>{z};</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>op<sp/>:<sp/>ops)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>out<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1af427123c185935335c9d2e108c833c67" kindref="member">hmap::gpu::morphological_operators</ref>(z,<sp/>ir,<sp/>op);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>arrays.push_back(out);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_morphology_base1.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>arrays,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143" kindref="member">hmap::Cmap::INFERNO</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting></para>
 <para><bold>Result</bold> <image type="html" name="ex_morphology_base.png"></image>
@@ -38477,7 +39028,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/morphology/morphology.cpp" line="137" column="7" bodyfile="HighMap/src/morphology/morphology.cpp" bodystart="137" bodyend="140" declfile="HighMap/include/highmap/morphology.hpp" declline="273" declcolumn="7"/>
+        <location file="HighMap/src/morphology/morphology.cpp" line="144" column="7" bodyfile="HighMap/src/morphology/morphology.cpp" bodystart="144" bodyend="147" declfile="HighMap/include/highmap/morphology.hpp" declline="309" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1abd3024b8233a70596ff2924607221637" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -38531,20 +39082,70 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>radius<sp/>=<sp/>1<sp/>==&gt;<sp/>3x3<sp/>square<sp/>kernel</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ir<sp/>=<sp/>3;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zr<sp/>=<sp/><ref refid="namespacehmap_1af80bcff234bf1482cf26896b9d21d270" kindref="member">hmap::border</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zd<sp/>=<sp/><ref refid="namespacehmap_1ac91a2dacd050d8588b4135f02dd8f2a5" kindref="member">hmap::dilation</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>ze<sp/>=<sp/><ref refid="namespacehmap_1a9cf7773f6141162bf60708a93acdfcee" kindref="member">hmap::erosion</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zc<sp/>=<sp/><ref refid="namespacehmap_1a889405ce11be91e33cc80ca4dbd192b0" kindref="member">hmap::closing</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zo<sp/>=<sp/><ref refid="namespacehmap_1abd3024b8233a70596ff2924607221637" kindref="member">hmap::opening</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zg<sp/>=<sp/><ref refid="namespacehmap_1a01f3be1fd053428ea67030e3736d15ca" kindref="member">hmap::morphological_gradient</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zt<sp/>=<sp/><ref refid="namespacehmap_1a211108a73f7ebadb6ac87621c4e47301" kindref="member">hmap::morphological_top_hat</ref>(z,<sp/>ir);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zb<sp/>=<sp/><ref refid="namespacehmap_1a1cf22c68188d0e35aa74983f3a01c488" kindref="member">hmap::morphological_black_hat</ref>(z,<sp/>ir);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zh<sp/>=<sp/><ref refid="namespacehmap_1a1cf22c68188d0e35aa74983f3a01c488" kindref="member">hmap::morphological_black_hat</ref>(z,<sp/>ir);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zl<sp/>=<sp/><ref refid="namespacehmap_1aeb7c9ef8addab179badc77310cfde1b5" kindref="member">hmap::morphological_laplacian</ref>(z,<sp/>ir);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a4799d3f029d45240a5b40b4853583a58" kindref="member">hmap::make_binary</ref>(z);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>zr<sp/>=<sp/><ref refid="namespacehmap_1af80bcff234bf1482cf26896b9d21d270" kindref="member">hmap::border</ref>(z,<sp/>ir);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>hmap::make_binary(z);</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>hmap::Array<sp/>zr<sp/>=<sp/>hmap::border(z,<sp/>ir);</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_morphology_base.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,<sp/>zd,<sp/>ze,<sp/>zc,<sp/>zo,<sp/>zg,<sp/>zt,<sp/>zb,<sp/>zr},</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d" kindref="member">hmap::Cmap::GRAY</ref>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,<sp/>zr,<sp/>zd,<sp/>ze,<sp/>zc,<sp/>zo,<sp/>zg,<sp/>zt,<sp/>zh,<sp/>zl},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d" kindref="member">hmap::Cmap::GRAY</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>---<sp/>Wrapper</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::vector&lt;hmap::MorphologyOperation&gt;<sp/>ops<sp/>=<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca8083c22f48c0732c103514d10b5fe7e6" kindref="member">hmap::MorphologyOperation::MO_BORDER</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca442219bd6354336f660624a2b76bde23" kindref="member">hmap::MorphologyOperation::MO_CLOSING</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818cad2e58516e7657971e3e16cd131089055" kindref="member">hmap::MorphologyOperation::MO_DILATION</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca0e9abbb30a51ad2951f6f0b527f6f7a1" kindref="member">hmap::MorphologyOperation::MO_EROSION</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca2a6dee7c1afab190ad76aa5e40f9eaf6" kindref="member">hmap::MorphologyOperation::MO_OPENING</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca2a4e04241f3ad0bdc9da20e651ba8dd3" kindref="member">hmap::MorphologyOperation::MO_GRADIENT</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2" kindref="member">hmap::MorphologyOperation::MO_TOP_HAT</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca95312bbd452f457354100b456719f931" kindref="member">hmap::MorphologyOperation::MO_BLACK_HAT</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e" kindref="member">hmap::MorphologyOperation::MO_LAPLACIAN</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>};</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>CPU</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::vector&lt;hmap::Array&gt;<sp/>arrays<sp/>=<sp/>{z};</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>op<sp/>:<sp/>ops)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>out<sp/>=<sp/><ref refid="namespacehmap_1ad6e4d1cf34786ef4065fbc0a5fa03d6d" kindref="member">hmap::morphological_operators</ref>(z,<sp/>ir,<sp/>op);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>arrays.push_back(out);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_morphology_base0.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>arrays,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143" kindref="member">hmap::Cmap::INFERNO</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>GPU</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1adb8336ed4d83c15500872185dee45d50" kindref="member">hmap::gpu::init_opencl</ref>();</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>arrays<sp/>=<sp/>{z};</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>op<sp/>:<sp/>ops)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>out<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1af427123c185935335c9d2e108c833c67" kindref="member">hmap::gpu::morphological_operators</ref>(z,<sp/>ir,<sp/>op);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>arrays.push_back(out);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_morphology_base1.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>arrays,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143" kindref="member">hmap::Cmap::INFERNO</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting></para>
 <para><bold>Result</bold> <image type="html" name="ex_morphology_base.png"></image>
@@ -38552,7 +39153,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/morphology/morphology.cpp" line="142" column="7" bodyfile="HighMap/src/morphology/morphology.cpp" bodystart="142" bodyend="145" declfile="HighMap/include/highmap/morphology.hpp" declline="289" declcolumn="7"/>
+        <location file="HighMap/src/morphology/morphology.cpp" line="149" column="7" bodyfile="HighMap/src/morphology/morphology.cpp" bodystart="149" bodyend="152" declfile="HighMap/include/highmap/morphology.hpp" declline="325" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a7c7d934cc5a3a5e1a6f17c09a0e1e51f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -38653,7 +39254,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/morphology/morphology.cpp" line="181" column="7" bodyfile="HighMap/src/morphology/morphology.cpp" bodystart="181" bodyend="230" declfile="HighMap/include/highmap/morphology.hpp" declline="327" declcolumn="7"/>
+        <location file="HighMap/src/morphology/morphology.cpp" line="188" column="7" bodyfile="HighMap/src/morphology/morphology.cpp" bodystart="188" bodyend="237" declfile="HighMap/include/highmap/morphology.hpp" declline="363" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ac56515202b30368216c7324b819cc838" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -38727,7 +39328,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/morphology/signed_curvature_from_distance.cpp" line="14" column="7" bodyfile="HighMap/src/morphology/signed_curvature_from_distance.cpp" bodystart="14" bodyend="18" declfile="HighMap/include/highmap/morphology.hpp" declline="353" declcolumn="7"/>
+        <location file="HighMap/src/morphology/signed_curvature_from_distance.cpp" line="14" column="7" bodyfile="HighMap/src/morphology/signed_curvature_from_distance.cpp" bodystart="14" bodyend="18" declfile="HighMap/include/highmap/morphology.hpp" declline="389" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ad4ab7bb38b3ea37fa912190251c1ed76" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -38772,7 +39373,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/morphology/signed_curvature_from_distance.cpp" line="20" column="7" bodyfile="HighMap/src/morphology/signed_curvature_from_distance.cpp" bodystart="20" bodyend="31" declfile="HighMap/include/highmap/morphology.hpp" declline="366" declcolumn="7"/>
+        <location file="HighMap/src/morphology/signed_curvature_from_distance.cpp" line="20" column="7" bodyfile="HighMap/src/morphology/signed_curvature_from_distance.cpp" bodystart="20" bodyend="31" declfile="HighMap/include/highmap/morphology.hpp" declline="402" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a11ddd5ab1aa625db9419d9b65c0eaa64" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -38843,7 +39444,63 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/morphology/morphology.cpp" line="232" column="7" bodyfile="HighMap/src/morphology/morphology.cpp" bodystart="232" bodyend="255" declfile="HighMap/include/highmap/morphology.hpp" declline="391" declcolumn="7"/>
+        <location file="HighMap/src/morphology/morphology.cpp" line="239" column="7" bodyfile="HighMap/src/morphology/morphology.cpp" bodystart="239" bodyend="262" declfile="HighMap/include/highmap/morphology.hpp" declline="427" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehmap_1ad6e4d1cf34786ef4065fbc0a5fa03d6d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
+        <definition>Array hmap::morphological_operators</definition>
+        <argsstring>(const Array &amp;array, int ir, MorphologyOperation operation)</argsstring>
+        <name>morphological_operators</name>
+        <qualifiedname>hmap::morphological_operators</qualifiedname>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>array</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>ir</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacehmap_1a321149eda3417aa485a010c31267818c" kindref="member">MorphologyOperation</ref></type>
+          <declname>operation</declname>
+        </param>
+        <briefdescription>
+<para>Apply a morphological operation to the input array using a square kernel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Dispatches to the selected morphological operator (e.g. erosion, dilation, opening, closing, gradient, etc.).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>array</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input array to process. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ir</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Radius of the square structuring element. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>operation</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Morphological operation to apply. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classhmap_1_1Array" kindref="compound">Array</ref> Resulting array after applying the operation. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/morphology/wrapper.cpp" line="11" column="7" bodyfile="HighMap/src/morphology/wrapper.cpp" bodystart="11" bodyend="46" declfile="HighMap/include/highmap/morphology.hpp" declline="525" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a1fb8077215c98a741e0de5366c2f7ca3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -55969,7 +56626,7 @@ off&quot; values that fall below the threshold, which can be useful for filterin
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/morphology/morphology.cpp" line="149" column="6" bodyfile="HighMap/src/morphology/morphology.cpp" bodystart="149" bodyend="179"/>
+        <location file="HighMap/src/morphology/morphology.cpp" line="156" column="6" bodyfile="HighMap/src/morphology/morphology.cpp" bodystart="156" bodyend="186"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a5ce9334e0b274e48f7ba8bcaa9dd12a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>

@@ -408,6 +408,20 @@ enum \mbox{\hyperlink{namespacehmap_a2affc745bc33b7555352665745741f90}{Radial\+P
 , \mbox{\hyperlink{namespacehmap_a2affc745bc33b7555352665745741f90ada6f8c1c08707c0497225cca34975ca5}{RP\+\_\+\+SQRT}}
  \}
 \begin{DoxyCompactList}\small\item\em Radial profile type. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818c}{Morphology\+Operation}} \+: int \{ \newline
+\mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca8083c22f48c0732c103514d10b5fe7e6}{MO\+\_\+\+BORDER}}
+, \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca442219bd6354336f660624a2b76bde23}{MO\+\_\+\+CLOSING}}
+, \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818cad2e58516e7657971e3e16cd131089055}{MO\+\_\+\+DILATION}}
+, \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca0e9abbb30a51ad2951f6f0b527f6f7a1}{MO\+\_\+\+EROSION}}
+, \newline
+\mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca2a6dee7c1afab190ad76aa5e40f9eaf6}{MO\+\_\+\+OPENING}}
+, \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca95312bbd452f457354100b456719f931}{MO\+\_\+\+BLACK\+\_\+\+HAT}}
+, \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2}{MO\+\_\+\+TOP\+\_\+\+HAT}}
+, \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca2a4e04241f3ad0bdc9da20e651ba8dd3}{MO\+\_\+\+GRADIENT}}
+, \newline
+\mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e}{MO\+\_\+\+LAPLACIAN}}
+ \}
+\item 
 enum \mbox{\hyperlink{namespacehmap_a9e2493cec1a67b3140691e617ddc925a}{Distance\+Transform\+Type}} \+: int \{ \mbox{\hyperlink{namespacehmap_a9e2493cec1a67b3140691e617ddc925aa109b04de7ca555c0e4d17629e55e7ee3}{DT\+\_\+\+EXACT}}
 , \mbox{\hyperlink{namespacehmap_a9e2493cec1a67b3140691e617ddc925aa3b8bce8feaa179b9a546bbbe28c1d44a}{DT\+\_\+\+APPROX}}
 , \mbox{\hyperlink{namespacehmap_a9e2493cec1a67b3140691e617ddc925aae4b14640395ecd7333bea8838ea9dda1}{DT\+\_\+\+MANHATTAN}}
@@ -1452,6 +1466,8 @@ void \mbox{\hyperlink{namespacehmap_adff494af7c8bf4db7f3e6fddd3261793}{flood\+\_
 \begin{DoxyCompactList}\small\item\em Apply a morphological black hat algorithm to the input array using a square structure. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a01f3be1fd053428ea67030e3736d15ca}{morphological\+\_\+gradient}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
 \begin{DoxyCompactList}\small\item\em Apply a morphological gradient algorithm to the input array using a square structure. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_aeb7c9ef8addab179badc77310cfde1b5}{morphological\+\_\+laplacian}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
+\begin{DoxyCompactList}\small\item\em Apply a morphological Laplacian operator to the input array using a square structure. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a211108a73f7ebadb6ac87621c4e47301}{morphological\+\_\+top\+\_\+hat}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
 \begin{DoxyCompactList}\small\item\em Apply a morphological top hat algorithm to the input array using a square structure. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_abd3024b8233a70596ff2924607221637}{opening}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
@@ -1464,6 +1480,8 @@ void \mbox{\hyperlink{namespacehmap_adff494af7c8bf4db7f3e6fddd3261793}{flood\+\_
 \begin{DoxyCompactList}\small\item\em Computes a signed distance transform using curvature sign. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a11ddd5ab1aa625db9419d9b65c0eaa64}{skeleton}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, bool zero\+\_\+at\+\_\+borders=true)
 \begin{DoxyCompactList}\small\item\em Computes the skeleton of a binary image using the Zhang-\/\+Suen skeletonization algorithm. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_ad6e4d1cf34786ef4065fbc0a5fa03d6d}{morphological\+\_\+operators}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir, \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818c}{Morphology\+Operation}} operation)
+\begin{DoxyCompactList}\small\item\em Apply a morphological operation to the input array using a square kernel. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a1fb8077215c98a741e0de5366c2f7ca3}{downscale\+\_\+transform}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float kc, std\+::function$<$ void(\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&x)$>$ unary\+\_\+op, bool apply\+\_\+prefiltering=false)
 \begin{DoxyCompactList}\small\item\em Applies a downscaling transformation to a 2D array using Fourier-\/based filtering. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a669a4f9586f3df4b018e321048c9bc7d}{downscale\+\_\+transform\+\_\+multi}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, std\+::vector$<$ float $>$ kc\+\_\+list, std\+::function$<$ void(\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&x, const int current\+\_\+index)$>$ unary\+\_\+op, bool apply\+\_\+prefiltering=false)
@@ -2708,6 +2726,50 @@ RP\+\_\+\+FLAT\+\_\+\+BOTTOM&\\
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{RP\_SQRT@{RP\_SQRT}!hmap@{hmap}}\index{hmap@{hmap}!RP\_SQRT@{RP\_SQRT}}}\Hypertarget{namespacehmap_a2affc745bc33b7555352665745741f90ada6f8c1c08707c0497225cca34975ca5}\label{namespacehmap_a2affc745bc33b7555352665745741f90ada6f8c1c08707c0497225cca34975ca5} 
 RP\+\_\+\+SQRT&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{namespacehmap_a321149eda3417aa485a010c31267818c}\label{namespacehmap_a321149eda3417aa485a010c31267818c} 
+\index{hmap@{hmap}!MorphologyOperation@{MorphologyOperation}}
+\index{MorphologyOperation@{MorphologyOperation}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{MorphologyOperation}{MorphologyOperation}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818c}{hmap\+::\+Morphology\+Operation}} \+: int}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MO\_BORDER@{MO\_BORDER}!hmap@{hmap}}\index{hmap@{hmap}!MO\_BORDER@{MO\_BORDER}}}\Hypertarget{namespacehmap_a321149eda3417aa485a010c31267818ca8083c22f48c0732c103514d10b5fe7e6}\label{namespacehmap_a321149eda3417aa485a010c31267818ca8083c22f48c0732c103514d10b5fe7e6} 
+MO\+\_\+\+BORDER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MO\_CLOSING@{MO\_CLOSING}!hmap@{hmap}}\index{hmap@{hmap}!MO\_CLOSING@{MO\_CLOSING}}}\Hypertarget{namespacehmap_a321149eda3417aa485a010c31267818ca442219bd6354336f660624a2b76bde23}\label{namespacehmap_a321149eda3417aa485a010c31267818ca442219bd6354336f660624a2b76bde23} 
+MO\+\_\+\+CLOSING&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MO\_DILATION@{MO\_DILATION}!hmap@{hmap}}\index{hmap@{hmap}!MO\_DILATION@{MO\_DILATION}}}\Hypertarget{namespacehmap_a321149eda3417aa485a010c31267818cad2e58516e7657971e3e16cd131089055}\label{namespacehmap_a321149eda3417aa485a010c31267818cad2e58516e7657971e3e16cd131089055} 
+MO\+\_\+\+DILATION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MO\_EROSION@{MO\_EROSION}!hmap@{hmap}}\index{hmap@{hmap}!MO\_EROSION@{MO\_EROSION}}}\Hypertarget{namespacehmap_a321149eda3417aa485a010c31267818ca0e9abbb30a51ad2951f6f0b527f6f7a1}\label{namespacehmap_a321149eda3417aa485a010c31267818ca0e9abbb30a51ad2951f6f0b527f6f7a1} 
+MO\+\_\+\+EROSION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MO\_OPENING@{MO\_OPENING}!hmap@{hmap}}\index{hmap@{hmap}!MO\_OPENING@{MO\_OPENING}}}\Hypertarget{namespacehmap_a321149eda3417aa485a010c31267818ca2a6dee7c1afab190ad76aa5e40f9eaf6}\label{namespacehmap_a321149eda3417aa485a010c31267818ca2a6dee7c1afab190ad76aa5e40f9eaf6} 
+MO\+\_\+\+OPENING&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MO\_BLACK\_HAT@{MO\_BLACK\_HAT}!hmap@{hmap}}\index{hmap@{hmap}!MO\_BLACK\_HAT@{MO\_BLACK\_HAT}}}\Hypertarget{namespacehmap_a321149eda3417aa485a010c31267818ca95312bbd452f457354100b456719f931}\label{namespacehmap_a321149eda3417aa485a010c31267818ca95312bbd452f457354100b456719f931} 
+MO\+\_\+\+BLACK\+\_\+\+HAT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MO\_TOP\_HAT@{MO\_TOP\_HAT}!hmap@{hmap}}\index{hmap@{hmap}!MO\_TOP\_HAT@{MO\_TOP\_HAT}}}\Hypertarget{namespacehmap_a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2}\label{namespacehmap_a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2} 
+MO\+\_\+\+TOP\+\_\+\+HAT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MO\_GRADIENT@{MO\_GRADIENT}!hmap@{hmap}}\index{hmap@{hmap}!MO\_GRADIENT@{MO\_GRADIENT}}}\Hypertarget{namespacehmap_a321149eda3417aa485a010c31267818ca2a4e04241f3ad0bdc9da20e651ba8dd3}\label{namespacehmap_a321149eda3417aa485a010c31267818ca2a4e04241f3ad0bdc9da20e651ba8dd3} 
+MO\+\_\+\+GRADIENT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MO\_LAPLACIAN@{MO\_LAPLACIAN}!hmap@{hmap}}\index{hmap@{hmap}!MO\_LAPLACIAN@{MO\_LAPLACIAN}}}\Hypertarget{namespacehmap_a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e}\label{namespacehmap_a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e} 
+MO\+\_\+\+LAPLACIAN&\\
 \hline
 
 \end{DoxyEnumFields}
@@ -21183,20 +21245,70 @@ Apply a border algorithm to the input array using a square structure.
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ radius\ =\ 1\ ==>\ 3x3\ square\ kernel}}
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ ir\ =\ 3;}
 \DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zr\ =\ \mbox{\hyperlink{namespacehmap_af80bcff234bf1482cf26896b9d21d270}{hmap::border}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zd\ =\ \mbox{\hyperlink{namespacehmap_ac91a2dacd050d8588b4135f02dd8f2a5}{hmap::dilation}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ ze\ =\ \mbox{\hyperlink{namespacehmap_a9cf7773f6141162bf60708a93acdfcee}{hmap::erosion}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zc\ =\ \mbox{\hyperlink{namespacehmap_a889405ce11be91e33cc80ca4dbd192b0}{hmap::closing}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zo\ =\ \mbox{\hyperlink{namespacehmap_abd3024b8233a70596ff2924607221637}{hmap::opening}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zg\ =\ \mbox{\hyperlink{namespacehmap_a01f3be1fd053428ea67030e3736d15ca}{hmap::morphological\_gradient}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zt\ =\ \mbox{\hyperlink{namespacehmap_a211108a73f7ebadb6ac87621c4e47301}{hmap::morphological\_top\_hat}}(z,\ ir);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zb\ =\ \mbox{\hyperlink{namespacehmap_a1cf22c68188d0e35aa74983f3a01c488}{hmap::morphological\_black\_hat}}(z,\ ir);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zh\ =\ \mbox{\hyperlink{namespacehmap_a1cf22c68188d0e35aa74983f3a01c488}{hmap::morphological\_black\_hat}}(z,\ ir);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zl\ =\ \mbox{\hyperlink{namespacehmap_aeb7c9ef8addab179badc77310cfde1b5}{hmap::morphological\_laplacian}}(z,\ ir);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a4799d3f029d45240a5b40b4853583a58}{hmap::make\_binary}}(z);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zr\ =\ \mbox{\hyperlink{namespacehmap_af80bcff234bf1482cf26896b9d21d270}{hmap::border}}(z,\ ir);}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ hmap::make\_binary(z);}}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ hmap::Array\ zr\ =\ hmap::border(z,\ ir);}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_morphology\_base.png"{}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ zd,\ ze,\ zc,\ zo,\ zg,\ zt,\ zb,\ zr\},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d}{hmap::Cmap::GRAY}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ zr,\ zd,\ ze,\ zc,\ zo,\ zg,\ zt,\ zh,\ zl\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d}{hmap::Cmap::GRAY}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{false},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ Wrapper}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ std::vector<hmap::MorphologyOperation>\ ops\ =\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca8083c22f48c0732c103514d10b5fe7e6}{hmap::MorphologyOperation::MO\_BORDER}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca442219bd6354336f660624a2b76bde23}{hmap::MorphologyOperation::MO\_CLOSING}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818cad2e58516e7657971e3e16cd131089055}{hmap::MorphologyOperation::MO\_DILATION}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca0e9abbb30a51ad2951f6f0b527f6f7a1}{hmap::MorphologyOperation::MO\_EROSION}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca2a6dee7c1afab190ad76aa5e40f9eaf6}{hmap::MorphologyOperation::MO\_OPENING}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca2a4e04241f3ad0bdc9da20e651ba8dd3}{hmap::MorphologyOperation::MO\_GRADIENT}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2}{hmap::MorphologyOperation::MO\_TOP\_HAT}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca95312bbd452f457354100b456719f931}{hmap::MorphologyOperation::MO\_BLACK\_HAT}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e}{hmap::MorphologyOperation::MO\_LAPLACIAN}},}
+\DoxyCodeLine{\ \ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ CPU}}
+\DoxyCodeLine{\ \ std::vector<hmap::Array>\ arrays\ =\ \{z\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ op\ :\ ops)}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ out\ =\ \mbox{\hyperlink{namespacehmap_ad6e4d1cf34786ef4065fbc0a5fa03d6d}{hmap::morphological\_operators}}(z,\ ir,\ op);}
+\DoxyCodeLine{\ \ \ \ arrays.push\_back(out);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_morphology\_base0.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ arrays,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{false},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ GPU}}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_1_1gpu_adb8336ed4d83c15500872185dee45d50}{hmap::gpu::init\_opencl}}();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ arrays\ =\ \{z\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ op\ :\ ops)}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ out\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_af427123c185935335c9d2e108c833c67}{hmap::gpu::morphological\_operators}}(z,\ ir,\ op);}
+\DoxyCodeLine{\ \ \ \ arrays.push\_back(out);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_morphology\_base1.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ arrays,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{false},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
 \DoxyCodeLine{\}}
 
 \end{DoxyCodeInclude}
@@ -21239,20 +21351,70 @@ Apply a closing algorithm to the input array using a square structure.
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ radius\ =\ 1\ ==>\ 3x3\ square\ kernel}}
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ ir\ =\ 3;}
 \DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zr\ =\ \mbox{\hyperlink{namespacehmap_af80bcff234bf1482cf26896b9d21d270}{hmap::border}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zd\ =\ \mbox{\hyperlink{namespacehmap_ac91a2dacd050d8588b4135f02dd8f2a5}{hmap::dilation}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ ze\ =\ \mbox{\hyperlink{namespacehmap_a9cf7773f6141162bf60708a93acdfcee}{hmap::erosion}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zc\ =\ \mbox{\hyperlink{namespacehmap_a889405ce11be91e33cc80ca4dbd192b0}{hmap::closing}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zo\ =\ \mbox{\hyperlink{namespacehmap_abd3024b8233a70596ff2924607221637}{hmap::opening}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zg\ =\ \mbox{\hyperlink{namespacehmap_a01f3be1fd053428ea67030e3736d15ca}{hmap::morphological\_gradient}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zt\ =\ \mbox{\hyperlink{namespacehmap_a211108a73f7ebadb6ac87621c4e47301}{hmap::morphological\_top\_hat}}(z,\ ir);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zb\ =\ \mbox{\hyperlink{namespacehmap_a1cf22c68188d0e35aa74983f3a01c488}{hmap::morphological\_black\_hat}}(z,\ ir);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zh\ =\ \mbox{\hyperlink{namespacehmap_a1cf22c68188d0e35aa74983f3a01c488}{hmap::morphological\_black\_hat}}(z,\ ir);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zl\ =\ \mbox{\hyperlink{namespacehmap_aeb7c9ef8addab179badc77310cfde1b5}{hmap::morphological\_laplacian}}(z,\ ir);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a4799d3f029d45240a5b40b4853583a58}{hmap::make\_binary}}(z);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zr\ =\ \mbox{\hyperlink{namespacehmap_af80bcff234bf1482cf26896b9d21d270}{hmap::border}}(z,\ ir);}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ hmap::make\_binary(z);}}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ hmap::Array\ zr\ =\ hmap::border(z,\ ir);}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_morphology\_base.png"{}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ zd,\ ze,\ zc,\ zo,\ zg,\ zt,\ zb,\ zr\},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d}{hmap::Cmap::GRAY}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ zr,\ zd,\ ze,\ zc,\ zo,\ zg,\ zt,\ zh,\ zl\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d}{hmap::Cmap::GRAY}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{false},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ Wrapper}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ std::vector<hmap::MorphologyOperation>\ ops\ =\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca8083c22f48c0732c103514d10b5fe7e6}{hmap::MorphologyOperation::MO\_BORDER}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca442219bd6354336f660624a2b76bde23}{hmap::MorphologyOperation::MO\_CLOSING}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818cad2e58516e7657971e3e16cd131089055}{hmap::MorphologyOperation::MO\_DILATION}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca0e9abbb30a51ad2951f6f0b527f6f7a1}{hmap::MorphologyOperation::MO\_EROSION}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca2a6dee7c1afab190ad76aa5e40f9eaf6}{hmap::MorphologyOperation::MO\_OPENING}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca2a4e04241f3ad0bdc9da20e651ba8dd3}{hmap::MorphologyOperation::MO\_GRADIENT}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2}{hmap::MorphologyOperation::MO\_TOP\_HAT}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca95312bbd452f457354100b456719f931}{hmap::MorphologyOperation::MO\_BLACK\_HAT}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e}{hmap::MorphologyOperation::MO\_LAPLACIAN}},}
+\DoxyCodeLine{\ \ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ CPU}}
+\DoxyCodeLine{\ \ std::vector<hmap::Array>\ arrays\ =\ \{z\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ op\ :\ ops)}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ out\ =\ \mbox{\hyperlink{namespacehmap_ad6e4d1cf34786ef4065fbc0a5fa03d6d}{hmap::morphological\_operators}}(z,\ ir,\ op);}
+\DoxyCodeLine{\ \ \ \ arrays.push\_back(out);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_morphology\_base0.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ arrays,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{false},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ GPU}}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_1_1gpu_adb8336ed4d83c15500872185dee45d50}{hmap::gpu::init\_opencl}}();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ arrays\ =\ \{z\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ op\ :\ ops)}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ out\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_af427123c185935335c9d2e108c833c67}{hmap::gpu::morphological\_operators}}(z,\ ir,\ op);}
+\DoxyCodeLine{\ \ \ \ arrays.push\_back(out);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_morphology\_base1.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ arrays,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{false},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
 \DoxyCodeLine{\}}
 
 \end{DoxyCodeInclude}
@@ -21295,20 +21457,70 @@ Apply a dilation algorithm to the input array using a square structure.
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ radius\ =\ 1\ ==>\ 3x3\ square\ kernel}}
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ ir\ =\ 3;}
 \DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zr\ =\ \mbox{\hyperlink{namespacehmap_af80bcff234bf1482cf26896b9d21d270}{hmap::border}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zd\ =\ \mbox{\hyperlink{namespacehmap_ac91a2dacd050d8588b4135f02dd8f2a5}{hmap::dilation}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ ze\ =\ \mbox{\hyperlink{namespacehmap_a9cf7773f6141162bf60708a93acdfcee}{hmap::erosion}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zc\ =\ \mbox{\hyperlink{namespacehmap_a889405ce11be91e33cc80ca4dbd192b0}{hmap::closing}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zo\ =\ \mbox{\hyperlink{namespacehmap_abd3024b8233a70596ff2924607221637}{hmap::opening}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zg\ =\ \mbox{\hyperlink{namespacehmap_a01f3be1fd053428ea67030e3736d15ca}{hmap::morphological\_gradient}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zt\ =\ \mbox{\hyperlink{namespacehmap_a211108a73f7ebadb6ac87621c4e47301}{hmap::morphological\_top\_hat}}(z,\ ir);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zb\ =\ \mbox{\hyperlink{namespacehmap_a1cf22c68188d0e35aa74983f3a01c488}{hmap::morphological\_black\_hat}}(z,\ ir);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zh\ =\ \mbox{\hyperlink{namespacehmap_a1cf22c68188d0e35aa74983f3a01c488}{hmap::morphological\_black\_hat}}(z,\ ir);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zl\ =\ \mbox{\hyperlink{namespacehmap_aeb7c9ef8addab179badc77310cfde1b5}{hmap::morphological\_laplacian}}(z,\ ir);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a4799d3f029d45240a5b40b4853583a58}{hmap::make\_binary}}(z);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zr\ =\ \mbox{\hyperlink{namespacehmap_af80bcff234bf1482cf26896b9d21d270}{hmap::border}}(z,\ ir);}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ hmap::make\_binary(z);}}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ hmap::Array\ zr\ =\ hmap::border(z,\ ir);}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_morphology\_base.png"{}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ zd,\ ze,\ zc,\ zo,\ zg,\ zt,\ zb,\ zr\},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d}{hmap::Cmap::GRAY}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ zr,\ zd,\ ze,\ zc,\ zo,\ zg,\ zt,\ zh,\ zl\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d}{hmap::Cmap::GRAY}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{false},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ Wrapper}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ std::vector<hmap::MorphologyOperation>\ ops\ =\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca8083c22f48c0732c103514d10b5fe7e6}{hmap::MorphologyOperation::MO\_BORDER}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca442219bd6354336f660624a2b76bde23}{hmap::MorphologyOperation::MO\_CLOSING}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818cad2e58516e7657971e3e16cd131089055}{hmap::MorphologyOperation::MO\_DILATION}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca0e9abbb30a51ad2951f6f0b527f6f7a1}{hmap::MorphologyOperation::MO\_EROSION}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca2a6dee7c1afab190ad76aa5e40f9eaf6}{hmap::MorphologyOperation::MO\_OPENING}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca2a4e04241f3ad0bdc9da20e651ba8dd3}{hmap::MorphologyOperation::MO\_GRADIENT}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2}{hmap::MorphologyOperation::MO\_TOP\_HAT}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca95312bbd452f457354100b456719f931}{hmap::MorphologyOperation::MO\_BLACK\_HAT}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e}{hmap::MorphologyOperation::MO\_LAPLACIAN}},}
+\DoxyCodeLine{\ \ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ CPU}}
+\DoxyCodeLine{\ \ std::vector<hmap::Array>\ arrays\ =\ \{z\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ op\ :\ ops)}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ out\ =\ \mbox{\hyperlink{namespacehmap_ad6e4d1cf34786ef4065fbc0a5fa03d6d}{hmap::morphological\_operators}}(z,\ ir,\ op);}
+\DoxyCodeLine{\ \ \ \ arrays.push\_back(out);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_morphology\_base0.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ arrays,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{false},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ GPU}}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_1_1gpu_adb8336ed4d83c15500872185dee45d50}{hmap::gpu::init\_opencl}}();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ arrays\ =\ \{z\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ op\ :\ ops)}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ out\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_af427123c185935335c9d2e108c833c67}{hmap::gpu::morphological\_operators}}(z,\ ir,\ op);}
+\DoxyCodeLine{\ \ \ \ arrays.push\_back(out);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_morphology\_base1.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ arrays,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{false},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
 \DoxyCodeLine{\}}
 
 \end{DoxyCodeInclude}
@@ -21598,20 +21810,70 @@ Apply an erosion algorithm to the input array using a square structure.
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ radius\ =\ 1\ ==>\ 3x3\ square\ kernel}}
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ ir\ =\ 3;}
 \DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zr\ =\ \mbox{\hyperlink{namespacehmap_af80bcff234bf1482cf26896b9d21d270}{hmap::border}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zd\ =\ \mbox{\hyperlink{namespacehmap_ac91a2dacd050d8588b4135f02dd8f2a5}{hmap::dilation}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ ze\ =\ \mbox{\hyperlink{namespacehmap_a9cf7773f6141162bf60708a93acdfcee}{hmap::erosion}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zc\ =\ \mbox{\hyperlink{namespacehmap_a889405ce11be91e33cc80ca4dbd192b0}{hmap::closing}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zo\ =\ \mbox{\hyperlink{namespacehmap_abd3024b8233a70596ff2924607221637}{hmap::opening}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zg\ =\ \mbox{\hyperlink{namespacehmap_a01f3be1fd053428ea67030e3736d15ca}{hmap::morphological\_gradient}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zt\ =\ \mbox{\hyperlink{namespacehmap_a211108a73f7ebadb6ac87621c4e47301}{hmap::morphological\_top\_hat}}(z,\ ir);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zb\ =\ \mbox{\hyperlink{namespacehmap_a1cf22c68188d0e35aa74983f3a01c488}{hmap::morphological\_black\_hat}}(z,\ ir);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zh\ =\ \mbox{\hyperlink{namespacehmap_a1cf22c68188d0e35aa74983f3a01c488}{hmap::morphological\_black\_hat}}(z,\ ir);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zl\ =\ \mbox{\hyperlink{namespacehmap_aeb7c9ef8addab179badc77310cfde1b5}{hmap::morphological\_laplacian}}(z,\ ir);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a4799d3f029d45240a5b40b4853583a58}{hmap::make\_binary}}(z);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zr\ =\ \mbox{\hyperlink{namespacehmap_af80bcff234bf1482cf26896b9d21d270}{hmap::border}}(z,\ ir);}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ hmap::make\_binary(z);}}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ hmap::Array\ zr\ =\ hmap::border(z,\ ir);}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_morphology\_base.png"{}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ zd,\ ze,\ zc,\ zo,\ zg,\ zt,\ zb,\ zr\},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d}{hmap::Cmap::GRAY}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ zr,\ zd,\ ze,\ zc,\ zo,\ zg,\ zt,\ zh,\ zl\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d}{hmap::Cmap::GRAY}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{false},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ Wrapper}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ std::vector<hmap::MorphologyOperation>\ ops\ =\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca8083c22f48c0732c103514d10b5fe7e6}{hmap::MorphologyOperation::MO\_BORDER}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca442219bd6354336f660624a2b76bde23}{hmap::MorphologyOperation::MO\_CLOSING}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818cad2e58516e7657971e3e16cd131089055}{hmap::MorphologyOperation::MO\_DILATION}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca0e9abbb30a51ad2951f6f0b527f6f7a1}{hmap::MorphologyOperation::MO\_EROSION}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca2a6dee7c1afab190ad76aa5e40f9eaf6}{hmap::MorphologyOperation::MO\_OPENING}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca2a4e04241f3ad0bdc9da20e651ba8dd3}{hmap::MorphologyOperation::MO\_GRADIENT}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2}{hmap::MorphologyOperation::MO\_TOP\_HAT}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca95312bbd452f457354100b456719f931}{hmap::MorphologyOperation::MO\_BLACK\_HAT}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e}{hmap::MorphologyOperation::MO\_LAPLACIAN}},}
+\DoxyCodeLine{\ \ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ CPU}}
+\DoxyCodeLine{\ \ std::vector<hmap::Array>\ arrays\ =\ \{z\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ op\ :\ ops)}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ out\ =\ \mbox{\hyperlink{namespacehmap_ad6e4d1cf34786ef4065fbc0a5fa03d6d}{hmap::morphological\_operators}}(z,\ ir,\ op);}
+\DoxyCodeLine{\ \ \ \ arrays.push\_back(out);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_morphology\_base0.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ arrays,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{false},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ GPU}}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_1_1gpu_adb8336ed4d83c15500872185dee45d50}{hmap::gpu::init\_opencl}}();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ arrays\ =\ \{z\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ op\ :\ ops)}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ out\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_af427123c185935335c9d2e108c833c67}{hmap::gpu::morphological\_operators}}(z,\ ir,\ op);}
+\DoxyCodeLine{\ \ \ \ arrays.push\_back(out);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_morphology\_base1.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ arrays,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{false},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
 \DoxyCodeLine{\}}
 
 \end{DoxyCodeInclude}
@@ -21704,20 +21966,70 @@ Apply a morphological black hat algorithm to the input array using a square stru
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ radius\ =\ 1\ ==>\ 3x3\ square\ kernel}}
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ ir\ =\ 3;}
 \DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zr\ =\ \mbox{\hyperlink{namespacehmap_af80bcff234bf1482cf26896b9d21d270}{hmap::border}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zd\ =\ \mbox{\hyperlink{namespacehmap_ac91a2dacd050d8588b4135f02dd8f2a5}{hmap::dilation}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ ze\ =\ \mbox{\hyperlink{namespacehmap_a9cf7773f6141162bf60708a93acdfcee}{hmap::erosion}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zc\ =\ \mbox{\hyperlink{namespacehmap_a889405ce11be91e33cc80ca4dbd192b0}{hmap::closing}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zo\ =\ \mbox{\hyperlink{namespacehmap_abd3024b8233a70596ff2924607221637}{hmap::opening}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zg\ =\ \mbox{\hyperlink{namespacehmap_a01f3be1fd053428ea67030e3736d15ca}{hmap::morphological\_gradient}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zt\ =\ \mbox{\hyperlink{namespacehmap_a211108a73f7ebadb6ac87621c4e47301}{hmap::morphological\_top\_hat}}(z,\ ir);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zb\ =\ \mbox{\hyperlink{namespacehmap_a1cf22c68188d0e35aa74983f3a01c488}{hmap::morphological\_black\_hat}}(z,\ ir);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zh\ =\ \mbox{\hyperlink{namespacehmap_a1cf22c68188d0e35aa74983f3a01c488}{hmap::morphological\_black\_hat}}(z,\ ir);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zl\ =\ \mbox{\hyperlink{namespacehmap_aeb7c9ef8addab179badc77310cfde1b5}{hmap::morphological\_laplacian}}(z,\ ir);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a4799d3f029d45240a5b40b4853583a58}{hmap::make\_binary}}(z);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zr\ =\ \mbox{\hyperlink{namespacehmap_af80bcff234bf1482cf26896b9d21d270}{hmap::border}}(z,\ ir);}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ hmap::make\_binary(z);}}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ hmap::Array\ zr\ =\ hmap::border(z,\ ir);}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_morphology\_base.png"{}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ zd,\ ze,\ zc,\ zo,\ zg,\ zt,\ zb,\ zr\},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d}{hmap::Cmap::GRAY}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ zr,\ zd,\ ze,\ zc,\ zo,\ zg,\ zt,\ zh,\ zl\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d}{hmap::Cmap::GRAY}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{false},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ Wrapper}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ std::vector<hmap::MorphologyOperation>\ ops\ =\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca8083c22f48c0732c103514d10b5fe7e6}{hmap::MorphologyOperation::MO\_BORDER}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca442219bd6354336f660624a2b76bde23}{hmap::MorphologyOperation::MO\_CLOSING}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818cad2e58516e7657971e3e16cd131089055}{hmap::MorphologyOperation::MO\_DILATION}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca0e9abbb30a51ad2951f6f0b527f6f7a1}{hmap::MorphologyOperation::MO\_EROSION}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca2a6dee7c1afab190ad76aa5e40f9eaf6}{hmap::MorphologyOperation::MO\_OPENING}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca2a4e04241f3ad0bdc9da20e651ba8dd3}{hmap::MorphologyOperation::MO\_GRADIENT}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2}{hmap::MorphologyOperation::MO\_TOP\_HAT}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca95312bbd452f457354100b456719f931}{hmap::MorphologyOperation::MO\_BLACK\_HAT}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e}{hmap::MorphologyOperation::MO\_LAPLACIAN}},}
+\DoxyCodeLine{\ \ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ CPU}}
+\DoxyCodeLine{\ \ std::vector<hmap::Array>\ arrays\ =\ \{z\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ op\ :\ ops)}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ out\ =\ \mbox{\hyperlink{namespacehmap_ad6e4d1cf34786ef4065fbc0a5fa03d6d}{hmap::morphological\_operators}}(z,\ ir,\ op);}
+\DoxyCodeLine{\ \ \ \ arrays.push\_back(out);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_morphology\_base0.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ arrays,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{false},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ GPU}}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_1_1gpu_adb8336ed4d83c15500872185dee45d50}{hmap::gpu::init\_opencl}}();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ arrays\ =\ \{z\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ op\ :\ ops)}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ out\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_af427123c185935335c9d2e108c833c67}{hmap::gpu::morphological\_operators}}(z,\ ir,\ op);}
+\DoxyCodeLine{\ \ \ \ arrays.push\_back(out);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_morphology\_base1.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ arrays,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{false},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
 \DoxyCodeLine{\}}
 
 \end{DoxyCodeInclude}
@@ -21760,20 +22072,178 @@ Apply a morphological gradient algorithm to the input array using a square struc
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ radius\ =\ 1\ ==>\ 3x3\ square\ kernel}}
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ ir\ =\ 3;}
 \DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zr\ =\ \mbox{\hyperlink{namespacehmap_af80bcff234bf1482cf26896b9d21d270}{hmap::border}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zd\ =\ \mbox{\hyperlink{namespacehmap_ac91a2dacd050d8588b4135f02dd8f2a5}{hmap::dilation}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ ze\ =\ \mbox{\hyperlink{namespacehmap_a9cf7773f6141162bf60708a93acdfcee}{hmap::erosion}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zc\ =\ \mbox{\hyperlink{namespacehmap_a889405ce11be91e33cc80ca4dbd192b0}{hmap::closing}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zo\ =\ \mbox{\hyperlink{namespacehmap_abd3024b8233a70596ff2924607221637}{hmap::opening}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zg\ =\ \mbox{\hyperlink{namespacehmap_a01f3be1fd053428ea67030e3736d15ca}{hmap::morphological\_gradient}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zt\ =\ \mbox{\hyperlink{namespacehmap_a211108a73f7ebadb6ac87621c4e47301}{hmap::morphological\_top\_hat}}(z,\ ir);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zb\ =\ \mbox{\hyperlink{namespacehmap_a1cf22c68188d0e35aa74983f3a01c488}{hmap::morphological\_black\_hat}}(z,\ ir);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zh\ =\ \mbox{\hyperlink{namespacehmap_a1cf22c68188d0e35aa74983f3a01c488}{hmap::morphological\_black\_hat}}(z,\ ir);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zl\ =\ \mbox{\hyperlink{namespacehmap_aeb7c9ef8addab179badc77310cfde1b5}{hmap::morphological\_laplacian}}(z,\ ir);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a4799d3f029d45240a5b40b4853583a58}{hmap::make\_binary}}(z);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zr\ =\ \mbox{\hyperlink{namespacehmap_af80bcff234bf1482cf26896b9d21d270}{hmap::border}}(z,\ ir);}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ hmap::make\_binary(z);}}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ hmap::Array\ zr\ =\ hmap::border(z,\ ir);}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_morphology\_base.png"{}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ zd,\ ze,\ zc,\ zo,\ zg,\ zt,\ zb,\ zr\},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d}{hmap::Cmap::GRAY}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ zr,\ zd,\ ze,\ zc,\ zo,\ zg,\ zt,\ zh,\ zl\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d}{hmap::Cmap::GRAY}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{false},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ Wrapper}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ std::vector<hmap::MorphologyOperation>\ ops\ =\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca8083c22f48c0732c103514d10b5fe7e6}{hmap::MorphologyOperation::MO\_BORDER}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca442219bd6354336f660624a2b76bde23}{hmap::MorphologyOperation::MO\_CLOSING}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818cad2e58516e7657971e3e16cd131089055}{hmap::MorphologyOperation::MO\_DILATION}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca0e9abbb30a51ad2951f6f0b527f6f7a1}{hmap::MorphologyOperation::MO\_EROSION}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca2a6dee7c1afab190ad76aa5e40f9eaf6}{hmap::MorphologyOperation::MO\_OPENING}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca2a4e04241f3ad0bdc9da20e651ba8dd3}{hmap::MorphologyOperation::MO\_GRADIENT}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2}{hmap::MorphologyOperation::MO\_TOP\_HAT}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca95312bbd452f457354100b456719f931}{hmap::MorphologyOperation::MO\_BLACK\_HAT}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e}{hmap::MorphologyOperation::MO\_LAPLACIAN}},}
+\DoxyCodeLine{\ \ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ CPU}}
+\DoxyCodeLine{\ \ std::vector<hmap::Array>\ arrays\ =\ \{z\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ op\ :\ ops)}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ out\ =\ \mbox{\hyperlink{namespacehmap_ad6e4d1cf34786ef4065fbc0a5fa03d6d}{hmap::morphological\_operators}}(z,\ ir,\ op);}
+\DoxyCodeLine{\ \ \ \ arrays.push\_back(out);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_morphology\_base0.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ arrays,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{false},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ GPU}}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_1_1gpu_adb8336ed4d83c15500872185dee45d50}{hmap::gpu::init\_opencl}}();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ arrays\ =\ \{z\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ op\ :\ ops)}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ out\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_af427123c185935335c9d2e108c833c67}{hmap::gpu::morphological\_operators}}(z,\ ir,\ op);}
+\DoxyCodeLine{\ \ \ \ arrays.push\_back(out);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_morphology\_base1.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ arrays,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{false},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}}  \Hypertarget{namespacehmap_aeb7c9ef8addab179badc77310cfde1b5}\label{namespacehmap_aeb7c9ef8addab179badc77310cfde1b5} 
+\index{hmap@{hmap}!morphological\_laplacian@{morphological\_laplacian}}
+\index{morphological\_laplacian@{morphological\_laplacian}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{morphological\_laplacian()}{morphological\_laplacian()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::morphological\+\_\+laplacian (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{int}]{ir }\end{DoxyParamCaption})}
+
+
+
+Apply a morphological Laplacian operator to the input array using a square structure. 
+
+Compared to the classical Laplacian, this operator is more robust to noise and better preserves sharp features, as it relies on morphological extrema rather than linear differences.
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & Input array to which the morphological Laplacian is applied. \\
+\hline
+{\em ir} & Radius of the square kernel used for the underlying dilation and erosion operations. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classhmap_1_1Array}{Array} Output array containing the morphological Laplacian.
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
+\DoxyCodeLine{\ \ glm::vec2\ \ res\ =\ \{4.f,\ 4.f\};}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 1;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_acb13e7346085793fda4c94c47b75d9a9}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ res,\ seed);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a2badbebec49b12d0d721970a18eb420d}{hmap::clamp\_min}}(z,\ 0.f);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ab80da2376c6212eb9cb2899c0a5114ad}{hmap::remap}}(z);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ radius\ =\ 1\ ==>\ 3x3\ square\ kernel}}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ ir\ =\ 3;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zr\ =\ \mbox{\hyperlink{namespacehmap_af80bcff234bf1482cf26896b9d21d270}{hmap::border}}(z,\ ir);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zd\ =\ \mbox{\hyperlink{namespacehmap_ac91a2dacd050d8588b4135f02dd8f2a5}{hmap::dilation}}(z,\ ir);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ ze\ =\ \mbox{\hyperlink{namespacehmap_a9cf7773f6141162bf60708a93acdfcee}{hmap::erosion}}(z,\ ir);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zc\ =\ \mbox{\hyperlink{namespacehmap_a889405ce11be91e33cc80ca4dbd192b0}{hmap::closing}}(z,\ ir);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zo\ =\ \mbox{\hyperlink{namespacehmap_abd3024b8233a70596ff2924607221637}{hmap::opening}}(z,\ ir);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zg\ =\ \mbox{\hyperlink{namespacehmap_a01f3be1fd053428ea67030e3736d15ca}{hmap::morphological\_gradient}}(z,\ ir);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zt\ =\ \mbox{\hyperlink{namespacehmap_a211108a73f7ebadb6ac87621c4e47301}{hmap::morphological\_top\_hat}}(z,\ ir);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zh\ =\ \mbox{\hyperlink{namespacehmap_a1cf22c68188d0e35aa74983f3a01c488}{hmap::morphological\_black\_hat}}(z,\ ir);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zl\ =\ \mbox{\hyperlink{namespacehmap_aeb7c9ef8addab179badc77310cfde1b5}{hmap::morphological\_laplacian}}(z,\ ir);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ hmap::make\_binary(z);}}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ hmap::Array\ zr\ =\ hmap::border(z,\ ir);}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_morphology\_base.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ zr,\ zd,\ ze,\ zc,\ zo,\ zg,\ zt,\ zh,\ zl\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d}{hmap::Cmap::GRAY}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{false},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ Wrapper}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ std::vector<hmap::MorphologyOperation>\ ops\ =\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca8083c22f48c0732c103514d10b5fe7e6}{hmap::MorphologyOperation::MO\_BORDER}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca442219bd6354336f660624a2b76bde23}{hmap::MorphologyOperation::MO\_CLOSING}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818cad2e58516e7657971e3e16cd131089055}{hmap::MorphologyOperation::MO\_DILATION}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca0e9abbb30a51ad2951f6f0b527f6f7a1}{hmap::MorphologyOperation::MO\_EROSION}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca2a6dee7c1afab190ad76aa5e40f9eaf6}{hmap::MorphologyOperation::MO\_OPENING}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca2a4e04241f3ad0bdc9da20e651ba8dd3}{hmap::MorphologyOperation::MO\_GRADIENT}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2}{hmap::MorphologyOperation::MO\_TOP\_HAT}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca95312bbd452f457354100b456719f931}{hmap::MorphologyOperation::MO\_BLACK\_HAT}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e}{hmap::MorphologyOperation::MO\_LAPLACIAN}},}
+\DoxyCodeLine{\ \ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ CPU}}
+\DoxyCodeLine{\ \ std::vector<hmap::Array>\ arrays\ =\ \{z\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ op\ :\ ops)}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ out\ =\ \mbox{\hyperlink{namespacehmap_ad6e4d1cf34786ef4065fbc0a5fa03d6d}{hmap::morphological\_operators}}(z,\ ir,\ op);}
+\DoxyCodeLine{\ \ \ \ arrays.push\_back(out);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_morphology\_base0.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ arrays,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{false},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ GPU}}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_1_1gpu_adb8336ed4d83c15500872185dee45d50}{hmap::gpu::init\_opencl}}();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ arrays\ =\ \{z\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ op\ :\ ops)}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ out\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_af427123c185935335c9d2e108c833c67}{hmap::gpu::morphological\_operators}}(z,\ ir,\ op);}
+\DoxyCodeLine{\ \ \ \ arrays.push\_back(out);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_morphology\_base1.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ arrays,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{false},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
 \DoxyCodeLine{\}}
 
 \end{DoxyCodeInclude}
@@ -21816,20 +22286,70 @@ Apply a morphological top hat algorithm to the input array using a square struct
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ radius\ =\ 1\ ==>\ 3x3\ square\ kernel}}
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ ir\ =\ 3;}
 \DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zr\ =\ \mbox{\hyperlink{namespacehmap_af80bcff234bf1482cf26896b9d21d270}{hmap::border}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zd\ =\ \mbox{\hyperlink{namespacehmap_ac91a2dacd050d8588b4135f02dd8f2a5}{hmap::dilation}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ ze\ =\ \mbox{\hyperlink{namespacehmap_a9cf7773f6141162bf60708a93acdfcee}{hmap::erosion}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zc\ =\ \mbox{\hyperlink{namespacehmap_a889405ce11be91e33cc80ca4dbd192b0}{hmap::closing}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zo\ =\ \mbox{\hyperlink{namespacehmap_abd3024b8233a70596ff2924607221637}{hmap::opening}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zg\ =\ \mbox{\hyperlink{namespacehmap_a01f3be1fd053428ea67030e3736d15ca}{hmap::morphological\_gradient}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zt\ =\ \mbox{\hyperlink{namespacehmap_a211108a73f7ebadb6ac87621c4e47301}{hmap::morphological\_top\_hat}}(z,\ ir);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zb\ =\ \mbox{\hyperlink{namespacehmap_a1cf22c68188d0e35aa74983f3a01c488}{hmap::morphological\_black\_hat}}(z,\ ir);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zh\ =\ \mbox{\hyperlink{namespacehmap_a1cf22c68188d0e35aa74983f3a01c488}{hmap::morphological\_black\_hat}}(z,\ ir);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zl\ =\ \mbox{\hyperlink{namespacehmap_aeb7c9ef8addab179badc77310cfde1b5}{hmap::morphological\_laplacian}}(z,\ ir);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a4799d3f029d45240a5b40b4853583a58}{hmap::make\_binary}}(z);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zr\ =\ \mbox{\hyperlink{namespacehmap_af80bcff234bf1482cf26896b9d21d270}{hmap::border}}(z,\ ir);}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ hmap::make\_binary(z);}}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ hmap::Array\ zr\ =\ hmap::border(z,\ ir);}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_morphology\_base.png"{}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ zd,\ ze,\ zc,\ zo,\ zg,\ zt,\ zb,\ zr\},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d}{hmap::Cmap::GRAY}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ zr,\ zd,\ ze,\ zc,\ zo,\ zg,\ zt,\ zh,\ zl\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d}{hmap::Cmap::GRAY}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{false},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ Wrapper}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ std::vector<hmap::MorphologyOperation>\ ops\ =\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca8083c22f48c0732c103514d10b5fe7e6}{hmap::MorphologyOperation::MO\_BORDER}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca442219bd6354336f660624a2b76bde23}{hmap::MorphologyOperation::MO\_CLOSING}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818cad2e58516e7657971e3e16cd131089055}{hmap::MorphologyOperation::MO\_DILATION}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca0e9abbb30a51ad2951f6f0b527f6f7a1}{hmap::MorphologyOperation::MO\_EROSION}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca2a6dee7c1afab190ad76aa5e40f9eaf6}{hmap::MorphologyOperation::MO\_OPENING}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca2a4e04241f3ad0bdc9da20e651ba8dd3}{hmap::MorphologyOperation::MO\_GRADIENT}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2}{hmap::MorphologyOperation::MO\_TOP\_HAT}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca95312bbd452f457354100b456719f931}{hmap::MorphologyOperation::MO\_BLACK\_HAT}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e}{hmap::MorphologyOperation::MO\_LAPLACIAN}},}
+\DoxyCodeLine{\ \ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ CPU}}
+\DoxyCodeLine{\ \ std::vector<hmap::Array>\ arrays\ =\ \{z\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ op\ :\ ops)}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ out\ =\ \mbox{\hyperlink{namespacehmap_ad6e4d1cf34786ef4065fbc0a5fa03d6d}{hmap::morphological\_operators}}(z,\ ir,\ op);}
+\DoxyCodeLine{\ \ \ \ arrays.push\_back(out);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_morphology\_base0.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ arrays,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{false},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ GPU}}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_1_1gpu_adb8336ed4d83c15500872185dee45d50}{hmap::gpu::init\_opencl}}();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ arrays\ =\ \{z\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ op\ :\ ops)}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ out\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_af427123c185935335c9d2e108c833c67}{hmap::gpu::morphological\_operators}}(z,\ ir,\ op);}
+\DoxyCodeLine{\ \ \ \ arrays.push\_back(out);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_morphology\_base1.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ arrays,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{false},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
 \DoxyCodeLine{\}}
 
 \end{DoxyCodeInclude}
@@ -21872,20 +22392,70 @@ Apply an opening algorithm to the input array using a square structure.
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ radius\ =\ 1\ ==>\ 3x3\ square\ kernel}}
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ ir\ =\ 3;}
 \DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zr\ =\ \mbox{\hyperlink{namespacehmap_af80bcff234bf1482cf26896b9d21d270}{hmap::border}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zd\ =\ \mbox{\hyperlink{namespacehmap_ac91a2dacd050d8588b4135f02dd8f2a5}{hmap::dilation}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ ze\ =\ \mbox{\hyperlink{namespacehmap_a9cf7773f6141162bf60708a93acdfcee}{hmap::erosion}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zc\ =\ \mbox{\hyperlink{namespacehmap_a889405ce11be91e33cc80ca4dbd192b0}{hmap::closing}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zo\ =\ \mbox{\hyperlink{namespacehmap_abd3024b8233a70596ff2924607221637}{hmap::opening}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zg\ =\ \mbox{\hyperlink{namespacehmap_a01f3be1fd053428ea67030e3736d15ca}{hmap::morphological\_gradient}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zt\ =\ \mbox{\hyperlink{namespacehmap_a211108a73f7ebadb6ac87621c4e47301}{hmap::morphological\_top\_hat}}(z,\ ir);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zb\ =\ \mbox{\hyperlink{namespacehmap_a1cf22c68188d0e35aa74983f3a01c488}{hmap::morphological\_black\_hat}}(z,\ ir);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zh\ =\ \mbox{\hyperlink{namespacehmap_a1cf22c68188d0e35aa74983f3a01c488}{hmap::morphological\_black\_hat}}(z,\ ir);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zl\ =\ \mbox{\hyperlink{namespacehmap_aeb7c9ef8addab179badc77310cfde1b5}{hmap::morphological\_laplacian}}(z,\ ir);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a4799d3f029d45240a5b40b4853583a58}{hmap::make\_binary}}(z);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zr\ =\ \mbox{\hyperlink{namespacehmap_af80bcff234bf1482cf26896b9d21d270}{hmap::border}}(z,\ ir);}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ hmap::make\_binary(z);}}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ hmap::Array\ zr\ =\ hmap::border(z,\ ir);}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_morphology\_base.png"{}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ zd,\ ze,\ zc,\ zo,\ zg,\ zt,\ zb,\ zr\},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d}{hmap::Cmap::GRAY}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ zr,\ zd,\ ze,\ zc,\ zo,\ zg,\ zt,\ zh,\ zl\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d}{hmap::Cmap::GRAY}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{false},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ Wrapper}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ std::vector<hmap::MorphologyOperation>\ ops\ =\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca8083c22f48c0732c103514d10b5fe7e6}{hmap::MorphologyOperation::MO\_BORDER}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca442219bd6354336f660624a2b76bde23}{hmap::MorphologyOperation::MO\_CLOSING}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818cad2e58516e7657971e3e16cd131089055}{hmap::MorphologyOperation::MO\_DILATION}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca0e9abbb30a51ad2951f6f0b527f6f7a1}{hmap::MorphologyOperation::MO\_EROSION}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca2a6dee7c1afab190ad76aa5e40f9eaf6}{hmap::MorphologyOperation::MO\_OPENING}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca2a4e04241f3ad0bdc9da20e651ba8dd3}{hmap::MorphologyOperation::MO\_GRADIENT}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2}{hmap::MorphologyOperation::MO\_TOP\_HAT}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca95312bbd452f457354100b456719f931}{hmap::MorphologyOperation::MO\_BLACK\_HAT}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e}{hmap::MorphologyOperation::MO\_LAPLACIAN}},}
+\DoxyCodeLine{\ \ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ CPU}}
+\DoxyCodeLine{\ \ std::vector<hmap::Array>\ arrays\ =\ \{z\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ op\ :\ ops)}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ out\ =\ \mbox{\hyperlink{namespacehmap_ad6e4d1cf34786ef4065fbc0a5fa03d6d}{hmap::morphological\_operators}}(z,\ ir,\ op);}
+\DoxyCodeLine{\ \ \ \ arrays.push\_back(out);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_morphology\_base0.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ arrays,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{false},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ GPU}}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_1_1gpu_adb8336ed4d83c15500872185dee45d50}{hmap::gpu::init\_opencl}}();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ arrays\ =\ \{z\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ op\ :\ ops)}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ out\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_af427123c185935335c9d2e108c833c67}{hmap::gpu::morphological\_operators}}(z,\ ir,\ op);}
+\DoxyCodeLine{\ \ \ \ arrays.push\_back(out);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_morphology\_base1.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ arrays,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{false},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
 \DoxyCodeLine{\}}
 
 \end{DoxyCodeInclude}
@@ -22077,7 +22647,31 @@ This implementation is based on the algorithm described at \href{https://github.
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}  \Hypertarget{namespacehmap_a1fb8077215c98a741e0de5366c2f7ca3}\label{namespacehmap_a1fb8077215c98a741e0de5366c2f7ca3} 
+{\bfseries{Result}}  \Hypertarget{namespacehmap_ad6e4d1cf34786ef4065fbc0a5fa03d6d}\label{namespacehmap_ad6e4d1cf34786ef4065fbc0a5fa03d6d} 
+\index{hmap@{hmap}!morphological\_operators@{morphological\_operators}}
+\index{morphological\_operators@{morphological\_operators}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{morphological\_operators()}{morphological\_operators()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::morphological\+\_\+operators (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{int}]{ir,  }\item[{\mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818c}{Morphology\+Operation}}}]{operation }\end{DoxyParamCaption})}
+
+
+
+Apply a morphological operation to the input array using a square kernel. 
+
+Dispatches to the selected morphological operator (e.\+g. erosion, dilation, opening, closing, gradient, etc.).
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & Input array to process. \\
+\hline
+{\em ir} & Radius of the square structuring element. \\
+\hline
+{\em operation} & Morphological operation to apply. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classhmap_1_1Array}{Array} Resulting array after applying the operation. 
+\end{DoxyReturn}
+\Hypertarget{namespacehmap_a1fb8077215c98a741e0de5366c2f7ca3}\label{namespacehmap_a1fb8077215c98a741e0de5366c2f7ca3} 
 \index{hmap@{hmap}!downscale\_transform@{downscale\_transform}}
 \index{downscale\_transform@{downscale\_transform}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{downscale\_transform()}{downscale\_transform()}}

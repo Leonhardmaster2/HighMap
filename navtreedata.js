@@ -55,7 +55,7 @@ var NAVTREE =
         [ "Functions", "namespacemembers_func.html", "namespacemembers_func" ],
         [ "Typedefs", "namespacemembers_type.html", null ],
         [ "Enumerations", "namespacemembers_enum.html", null ],
-        [ "Enumerator", "namespacemembers_eval.html", null ]
+        [ "Enumerator", "namespacemembers_eval.html", "namespacemembers_eval" ]
       ] ]
     ] ],
     [ "Classes", "annotated.html", [
@@ -96,16 +96,16 @@ var NAVTREEINDEX =
 "functions_func_d.html",
 "interpolate1d_8hpp.html#a46291bb4766800deacc1ce9b45a9ea6ba26ec6481025765e03b9c750137bd9d84",
 "math_8cpp.html#a8ddf0121ee2b8c701a61a12274b5f3e3",
-"namespacehmap.html#a19bb0a5d0609ac671ca054d18959c7f1",
-"namespacehmap.html#a5bfab5d68e822294ff90fde21b85f581af445f527425b2d746556541adf5d3d29",
-"namespacehmap.html#aac1a15042e8fae93d9caed60c2318fcc",
-"namespacehmap.html#ae239201a0a4193e1ce78bdf1fce4c151",
-"namespacehmap_1_1gpu.html#aba356da2f66b4fc2886bd27edc3a15ec",
-"point__sampling_8hpp.html#a549a837963a123060e2d7622d313fb57",
-"range_8hpp.html#a9a3f272d7c8294ab3418be67e3c9b3eb",
-"structhmap_1_1ColorAdjust.html#abf71052fb9aa59345fff4155d9b33c0d",
-"structhmap_1_1VirtualArray.html#a2d3721a573d9e21e941148f2e359434b",
-"virtual__array_8inl.html#a21df0c4a341d977fd39ad5291c252a5f"
+"namespacehmap.html#a1321283ca30e8f6203345e272ef3530b",
+"namespacehmap.html#a55542a66f890ef9ecf5f82af2c23a0cfa938e2b9cd9d4c9249f6d45285457891b",
+"namespacehmap.html#aa60f142e186d43472cdda569c03b31b2",
+"namespacehmap.html#ad6dd8fdacd554d5dccd1f23e9dfd015f",
+"namespacehmap_1_1gpu.html#aab128e15988875b5d350d6f156612aa5",
+"phase__field_8cpp.html#a0eab8e0319f11623e88016ce6cd44d72",
+"pyramid__decomposition_8cpp.html#a9ae209ce5746e99078078259955c7421",
+"stratify_8cpp.html",
+"structhmap_1_1Vec4.html",
+"unwrap__phase_8cpp.html#a3f8dc201377b61428eba8daa4a03a65f"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
