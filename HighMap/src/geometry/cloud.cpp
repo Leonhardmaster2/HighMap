@@ -148,8 +148,7 @@ bool Cloud::from_csv(const std::string &fname)
 
 glm::vec4 Cloud::get_bbox() const
 {
-  if (this->size() == 0)
-    return glm::vec4();
+  if (this->size() == 0) return glm::vec4();
 
   std::vector<float> x = this->get_x();
   std::vector<float> y = this->get_y();
@@ -166,8 +165,7 @@ glm::vec4 Cloud::get_bbox() const
 
 Point Cloud::get_center() const
 {
-  if (this->size() == 0)
-    return Point(0.f, 0.f);
+  if (this->size() == 0) return Point(0.f, 0.f);
 
   Point center = Point();
   for (auto &p : this->points)

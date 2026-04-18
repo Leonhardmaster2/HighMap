@@ -663,7 +663,7 @@ Path meanderize(
  * For each grid cell, computes the distance to the nearest point in the path,
  * optionally applying domain warping using noise fields.
  *
- * @param  path      Input point path.
+ * @param  path       Input point path.
  * @param  shape      Output array dimensions.
  * @param  bbox_array Bounding box of the output domain.
  * @param  p_noise_x  Optional x-direction noise (domain warp).

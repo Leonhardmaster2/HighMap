@@ -4,7 +4,7 @@
 
 /**
  * @file cloud.hpp
- * @author  Otto Link (otto.link.bv@gmail.com)
+ * @author Otto Link (otto.link.bv@gmail.com)
  * @brief Definition of the `Cloud` class for manipulating sets of 2D points.
  *
  * This file contains the definition of the `Cloud` class, which is used to
@@ -69,10 +69,6 @@ public:
   /**
    * @brief Constructs a new Cloud object with random positions and values.
    *
-   * This constructor generates a cloud with a specified number of points, where
-   * the positions and values of the points are randomly generated within a
-   * given bounding box.
-   *
    * @param npoints Number of points to generate.
    * @param seed    Random seed used to generate the points. Using the same seed
    *                will produce the same set of points.
@@ -84,19 +80,12 @@ public:
   /**
    * @brief Constructs a new Cloud object based on a list of existing points.
    *
-   * This constructor initializes the cloud with a pre-defined set of points,
-   * which are passed as a vector of `Point` objects.
-   *
    * @param points A vector of `Point` objects representing the cloud's points.
    */
   Cloud(const std::vector<Point> &points) : points(points){};
 
   /**
    * @brief Constructs a new Cloud object from lists of `x` and `y` coordinates.
-   *
-   * This constructor allows the creation of a cloud by providing separate lists
-   * of `x` and `y` coordinates. Each point will have an associated value, which
-   * is set to a default value.
    *
    * @param x             A vector of `x` coordinates for the points.
    * @param y             A vector of `y` coordinates for the points.
@@ -110,10 +99,6 @@ public:
   /**
    * @brief Constructs a new Cloud object from lists of `x` and `y` coordinates
    * with assigned values.
-   *
-   * This constructor allows the creation of a cloud by providing separate lists
-   * of `x` and `y` coordinates, along with a list of values associated with
-   * each point.
    *
    * @param x A vector of `x` coordinates for the points.
    * @param y A vector of `y` coordinates for the points.
@@ -139,18 +124,12 @@ public:
 
   /**
    * @brief Add a new point to the cloud.
-   *
-   * This method appends a new point to the list of points in the cloud.
-   *
    * @param p The point to be added to the cloud.
    */
   void add_point(const Point &p);
 
   /**
    * @brief Remove a point from the cloud.
-   *
-   * This method removes a point from the cloud based on its index.
-   *
    * @param point_idx Index of the point to be removed.
    */
   void remove_point(int point_idx);
@@ -161,10 +140,6 @@ public:
 
   /**
    * @brief Get the bounding box of the cloud.
-   *
-   * This method calculates and returns the axis-aligned bounding box of the
-   * cloud. The bounding box is represented as a `glm::vec4` containing the
-   * minimum and maximum coordinates in both the `x` and `y` dimensions.
    *
    * @return glm::vec4 The bounding box of the cloud in the format `[xmin, xmax,
    *         ymin, ymax]`.
@@ -188,11 +163,6 @@ public:
    * @brief Computes the indices of the points that form the convex hull of a
    * set of points.
    *
-   * This function calculates the convex hull of a set of points and returns the
-   * indices of these points in the order they appear on the convex hull. The
-   * convex hull is the smallest convex polygon that encloses all the given
-   * points.
-   *
    * @return std::vector<int> A vector containing the indices of the points that
    *         make up the convex hull, listed in order.
    *
@@ -206,10 +176,6 @@ public:
 
   /**
    * @brief Get the values assigned to the points in the cloud.
-   *
-   * This method returns a vector containing the values associated with each
-   * point in the cloud.
-   *
    * @return std::vector<float> A vector containing the values of all points in
    *         the cloud.
    */
@@ -217,30 +183,18 @@ public:
 
   /**
    * @brief Get the maximum value among the points in the cloud.
-   *
-   * This method returns the maximum value associated with any point in the
-   * cloud.
-   *
    * @return float The maximum value among the points.
    */
   float get_values_max() const;
 
   /**
    * @brief Get the minimum value among the points in the cloud.
-   *
-   * This method returns the minimum value associated with any point in the
-   * cloud.
-   *
    * @return float The minimum value among the points.
    */
   float get_values_min() const;
 
   /**
    * @brief Get the `x` coordinates of the points in the cloud.
-   *
-   * This method returns a vector containing the `x` coordinates of all points
-   * in the cloud.
-   *
    * @return std::vector<float> A vector containing the `x` coordinates of the
    *         points.
    */
@@ -260,10 +214,6 @@ public:
 
   /**
    * @brief Get the `y` coordinates of the points in the cloud.
-   *
-   * This method returns a vector containing the `y` coordinates of all points
-   * in the cloud.
-   *
    * @return std::vector<float> A vector containing the `y` coordinates of the
    *         points.
    */
@@ -291,11 +241,6 @@ public:
 
   /**
    * @brief Set new values for the cloud points.
-   *
-   * This method assigns new values to the cloud points based on a given vector
-   * of values. The size of the input vector must match the number of points in
-   * the cloud.
-   *
    * @param new_values A vector of new values to assign to the points.
    */
   void set_values(const std::vector<float> &new_values);
@@ -331,11 +276,6 @@ public:
    * For each point in the cloud, this method computes the shortest distance to
    * the edges of the given bounding box and stores it as the point's value.
    *
-   * The distance is calculated in 2D space, where:
-   * - The x and y coordinates are extracted from the cloud.
-   * - Points are merged into a 2D coordinate list.
-   * - The distance to the nearest boundary of the bounding box is computed.
-   *
    * @param bbox Bounding box in the format {xmin, xmax, ymin, ymax}.
    */
   void set_values_from_border_distance(
@@ -354,21 +294,11 @@ public:
 
   /**
    * @brief Sets point values based on the distance to their nearest neighbor.
-   *
-   * The computation process:
-   * - Extracts the x and y coordinates from the cloud.
-   * - Merges them into a 2D point list.
-   * - Calculates the minimum distance to any other point using
-   *   `ps::first_neighbor_distance_squared`.
    */
   void set_values_from_min_distance();
 
   /**
    * @brief Get the number of points in the cloud.
-   *
-   * This method returns the total number of points currently stored in the
-   * cloud.
-   *
    * @return size_t The number of points in the cloud.
    */
   size_t size() const;
@@ -379,25 +309,16 @@ public:
 
   /**
    * @brief Clear all data from the cloud.
-   *
-   * This method removes all points from the cloud, leaving it empty.
    */
   void clear();
 
   /**
    * @brief Print information about the cloud's points.
-   *
-   * This method prints data related to the cloud's points, including their
-   * coordinates and values.
    */
   void print();
 
   /**
    * @brief Randomize the positions and values of the cloud points.
-   *
-   * This method randomizes the positions and values of the points in the cloud
-   * using a given random seed. The new positions are generated within the
-   * specified bounding box.
    *
    * @param seed Random seed number for generating positions and values.
    * @param bbox Bounding box within which the points will be randomized.
@@ -407,9 +328,6 @@ public:
   /**
    * @brief Remap the values of the cloud points to a target range.
    *
-   * This method scales the values associated with the cloud points so that they
-   * fall within a specified range `[vmin, vmax]`.
-   *
    * @param vmin The lower bound of the target range.
    * @param vmax The upper bound of the target range.
    */
@@ -418,11 +336,6 @@ public:
   /**
    * @brief Randomly perturbs the positions and values of all points in the
    * cloud.
-   *
-   * This function applies a random offset to the `x`, `y`, and `v` components
-   * of each point in the `points` container. The random offsets are uniformly
-   * distributed between `-1` and `1`, and scaled by the provided `dx`, `dy`,
-   * and `dv` factors for each respective component.
    *
    * @param dx   Scale factor for the random displacement along the X-axis.
    * @param dy   Scale factor for the random displacement along the Y-axis.
@@ -527,33 +440,18 @@ public:
 
   /**
    * @brief Export the cloud data to a CSV file.
-   *
-   * This function saves the cloud points and their associated values to a CSV
-   * file.
-   *
    * @param fname The name of the output CSV file.
    */
   void to_csv(const std::string &fname) const;
 
   /**
    * @brief Convert the cloud to a graph using Delaunay triangulation.
-   *
-   * This function generates a graph representation of the cloud using Delaunay
-   * triangulation. The resulting graph can be used for various geometric and
-   * topological analyses.
-   *
    * @return Graph The resulting graph from Delaunay triangulation.
    */
   Graph to_graph_delaunay();
 
   /**
    * @brief Saves the current data as a PNG image file.
-   *
-   * This function exports the current data to a PNG file with specified
-   * parameters. The image is created using the provided colormap, bounding box,
-   * bit depth, and shape. The bounding box determines the area of the data to
-   * be included in the image, while the shape defines the dimensions of the
-   * output image.
    *
    * @param fname The file name for the output PNG image. This should include
    * the file extension (e.g., "output.png").
@@ -588,9 +486,6 @@ public:
 /**
  * @brief Compute a distance field from a point cloud.
  *
- * For each grid cell, computes the distance to the nearest point in the cloud,
- * optionally applying domain warping using noise fields.
- *
  * @param  cloud      Input point cloud.
  * @param  shape      Output array dimensions.
  * @param  bbox_array Bounding box of the output domain.
@@ -623,28 +518,19 @@ std::vector<float> interpolate_values_from_array(const Cloud &cloud,
 /**
  * @brief Merges two point clouds into one.
  *
- * This function combines two separate point clouds into a single cloud by
- * appending the points from the second cloud to the first. The resulting cloud
- * contains all points from both input clouds.
- *
  * @param  cloud1 The first point cloud to be merged. This cloud will be the
  *                base cloud to which the points from the second cloud are
  *                added.
  * @param  cloud2 The second point cloud whose points will be appended to the
  *                first cloud.
- *
  * @return        Cloud The resulting point cloud that includes all points from
- *                both
- *                `cloud1` and `cloud2`.
+ *                both `cloud1` and `cloud2`.
  */
 Cloud merge_cloud(const Cloud &cloud1, const Cloud &cloud2);
 Cloud merge_clouds(const std::vector<Cloud> &clouds);
 
 /**
  * @brief Generates a random cloud of points within a bounding box.
- *
- * Points are sampled according to the given sampling method, optionally seeded
- * for reproducibility.
  *
  * @param  count  Number of points to generate.
  * @param  seed   Random number generator seed.
@@ -858,23 +744,11 @@ Cloud random_cloud_jittered(size_t           count,
  * mask is mapped to the bounding box and evaluated as a continuous function
  * over the domain.
  *
- * For a point \f$p=(x,y)\f$, the probability of acceptance is:
- * \f[
- * P(\text{keep } p) = \rho(x,y) \in [0,1]
- * \f] where \f$\rho(x,y)\f$ is the normalized density mask value at the point's
- * position.
- *
  * @param density_mask 2D array defining the spatial density field over the
  *                     bounding box. Values should lie in \f$[0,1]\f$.
  * @param seed         Random seed used for reproducible rejection sampling.
  * @param bbox         Bounding box `(xmin, ymin, xmax, ymax)` defining the
  *                     spatial extent of the density mask in world coordinates.
- *
- * @note
- * - Points outside the bounding box are implicitly mapped to extrapolated
- * density values.
- * - The method preserves the *relative* density pattern defined by the mask,
- * but reduces the overall number of points according to rejection probability.
  */
 void rejection_filter_density(Cloud           &cloud,
                               const Array     &density_mask,
