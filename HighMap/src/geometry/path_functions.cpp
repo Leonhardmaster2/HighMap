@@ -294,7 +294,7 @@ Path fractalize(const Path &path,
 
 Path inflate(const Path &path, float radius, bool resample)
 {
-  if (path.size() < 2) return path;
+  if (path.size() < 3) return path;
 
   Path new_path = path;
 
