@@ -13,5 +13,6 @@ var path_8hpp =
     [ "remove_geometric_loops", "path_8hpp.html#a650c6eaf8bd10356a77c7c1f9ef9af3c", null ],
     [ "smooth", "path_8hpp.html#ad81052648d6008d2b7b4a5a36a2d7830", null ],
     [ "assert_start_end_points", "path_8hpp.html#a5944fc905be512784a9caceb527703d4", null ],
-    [ "chamfer_distance", "path_8hpp.html#aba24d09d6f4a3eab8c1522536088f39e", null ]
+    [ "chamfer_distance", "path_8hpp.html#aba24d09d6f4a3eab8c1522536088f39e", null ],
+    [ "has_duplicates", "path_8hpp.html#adb224131a9c75491b105b67801e0fe20", null ]
 ];

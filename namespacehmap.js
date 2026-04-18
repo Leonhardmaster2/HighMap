@@ -807,6 +807,7 @@ var namespacehmap =
     [ "smooth", "namespacehmap.html#ad81052648d6008d2b7b4a5a36a2d7830", null ],
     [ "assert_start_end_points", "namespacehmap.html#a5944fc905be512784a9caceb527703d4", null ],
     [ "chamfer_distance", "namespacehmap.html#aba24d09d6f4a3eab8c1522536088f39e", null ],
+    [ "has_duplicates", "namespacehmap.html#adb224131a9c75491b105b67801e0fe20", null ],
     [ "angle", "namespacehmap.html#aac71bb6c14edc17967957f7918acdbdd", null ],
     [ "angle", "namespacehmap.html#a1f02679c93973b91046f26960bf266d4", null ],
     [ "classify_point", "namespacehmap.html#a62b55fdc2fbc76c4938a6b49a10cfd65", null ],
