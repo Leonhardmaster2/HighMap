@@ -744,4 +744,6 @@ bool assert_start_end_points(const Path &path1,
 
 float chamfer_distance(const Path &a, const Path &b);
 
+bool has_duplicates(const Path &path, float tol = 1e-6f);
+
 } // namespace hmap

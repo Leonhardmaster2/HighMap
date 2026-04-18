@@ -52,4 +52,15 @@ float chamfer_distance(const Path &a, const Path &b)
   return avg(a, b) + avg(b, a);
 }
 
+bool has_duplicates(const Path &path, float tol)
+{
+  const auto &pts = path.points;
+
+  for (size_t i = 0; i < pts.size(); ++i)
+    for (size_t j = i + 1; j < pts.size(); ++j)
+      if (distance(pts[i], pts[j]) < tol) return true;
+
+  return false;
+}
+
 } // namespace hmap

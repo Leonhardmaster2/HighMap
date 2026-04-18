@@ -77,6 +77,9 @@ Path bezier(const Path            &path,
                                     edge_divisions,
                                     path.size());
 
+  if (path.is_closed()) new_path.points.pop_back();
+  new_path.set_closed(path.is_closed());
+
   return new_path;
 }
 
@@ -130,16 +133,26 @@ Path bezier_round(const Path            &path,
                                     edge_divisions,
                                     path.size());
 
+  if (path.is_closed()) new_path.points.pop_back();
+  new_path.set_closed(path.is_closed());
+
   return new_path;
 }
 
 Path bspline(const Path &path, int edge_divisions, Path::EdgeDivisionMode edm)
 {
-  Path new_path = helper_build_path(path.points,
+  std::vector<Point> new_points = path.points;
+
+  if (path.is_closed()) new_points.push_back(path.points.front());
+
+  Path new_path = helper_build_path(new_points,
                                     InterpolationMethodCurve::BSPLINE,
                                     edm,
                                     edge_divisions,
                                     path.size());
+
+  if (path.is_closed()) new_path.points.pop_back();
+  new_path.set_closed(path.is_closed());
 
   return new_path;
 }
@@ -148,11 +161,19 @@ Path catmullrom(const Path            &path,
                 int                    edge_divisions,
                 Path::EdgeDivisionMode edm)
 {
+
+  std::vector<Point> new_points = path.points;
+
+  if (path.is_closed()) new_points.push_back(path.points.front());
+
   Path new_path = helper_build_path(path.points,
                                     InterpolationMethodCurve::CATMULLROM,
                                     edm,
                                     edge_divisions,
                                     path.size());
+
+  if (path.is_closed()) new_path.points.pop_back();
+  new_path.set_closed(path.is_closed());
 
   return new_path;
 }
@@ -170,6 +191,9 @@ Path decasteljau(const Path            &path,
                                     edm,
                                     edge_divisions,
                                     path.size());
+
+  if (path.is_closed()) new_path.points.pop_back();
+  new_path.set_closed(path.is_closed());
 
   return new_path;
 }

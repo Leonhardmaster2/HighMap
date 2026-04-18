@@ -9,6 +9,8 @@ int main(void)
   hmap::Path path = hmap::Path(10, seed, hmap::adjust(bbox, -0.1f));
   path.reorder_nns();
 
+  path.set_closed(true);
+
   auto z0 = path.to_array(shape, bbox);
   auto z1 = hmap::bezier(path).to_array(shape, bbox);
   auto z2 = hmap::bezier_round(path).to_array(shape, bbox);
