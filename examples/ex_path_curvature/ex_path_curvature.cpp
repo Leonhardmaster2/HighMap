@@ -9,7 +9,7 @@ int main(void)
   glm::vec4  bbox = {1.f, 2.f, -0.5f, 0.5f};
   hmap::Path path = hmap::Path(npoints, seed, {1.3f, 1.7f, -0.2, 0.2f});
   path.reorder_nns();
-  path = hmap::fractalize(path, /* iterations */ 2, seed, /* sigma */ 0.2f);
+  path = hmap::fractalize(path, 2, seed, 0.2f);
 
   auto z1 = hmap::Array(shape);
   path.to_array(z1, bbox);

@@ -624,6 +624,26 @@ Path fractalize(const Path &path,
                 glm::vec4   bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
+ * @brief Inflate (offset) a path along its normals using curvature.
+ *
+ * Each point is displaced along its normal direction by an amount proportional
+ * to local curvature and the given radius.
+ *
+ * @param  path     Input path
+ * @param  radius   Inflation radius (scales displacement)
+ * @param  resample If true, resample output to preserve spatial resolution
+ *
+ * @return          Inflated path
+ *
+ * **Example**
+ * @include ex_path_inflate.cpp
+ *
+ * **Result**
+ * @image html ex_path_inflate.png
+ */
+Path inflate(const Path &path, float strength, bool resample = true);
+
+/**
  * @brief Add "meanders" to the path.
  *
  * This method introduces meandering effects to the path by adding random
@@ -634,12 +654,6 @@ Path fractalize(const Path &path,
  * meandering process is applied, and `edge_divisions` controls how finely each
  * edge is subdivided during the meandering.
  *
- * **Example**
- * @include ex_path_meanderize.cpp
- *
- * **Result**
- * @image html ex_path_meanderize.png
- *
  * @param ratio          Amplitude ratio of the meanders. Typically a positive
  *                       value.
  * @param noise_ratio    Ratio of randomness introduced during meandering.
@@ -647,6 +661,12 @@ Path fractalize(const Path &path,
  * @param seed           Seed for random number generation. Default is 1.
  * @param iterations     Number of iterations to apply meandering. Default is 1.
  * @param edge_divisions Number of sub-divisions of each edge. Default is 10.
+ *
+ * **Example**
+ * @include ex_path_meanderize.cpp
+ *
+ * **Result**
+ * @image html ex_path_meanderize.png
  */
 Path meanderize(
     const Path            &path,

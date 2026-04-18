@@ -292,6 +292,36 @@ Path fractalize(const Path &path,
   return new_path;
 }
 
+Path inflate(const Path &path, float radius, bool resample)
+{
+  if (path.size() < 2) return path;
+
+  Path new_path = path;
+
+  std::vector<float>     curvature = new_path.get_curvature(true);
+  std::vector<glm::vec2> normals = new_path.get_normals();
+
+  for (size_t k = 0; k < new_path.size(); ++k)
+  {
+    float amp = -curvature[k] * radius;
+    new_path.points[k].x += amp * normals[k].x;
+    new_path.points[k].y += amp * normals[k].y;
+  }
+
+  // preserve the spatial resolution
+  if (resample)
+  {
+    float dmax_prev = path.get_cumulative_distance().back();
+    float dmax_new = new_path.get_cumulative_distance().back();
+    float ratio = std::max(1.f, dmax_new / dmax_prev);
+
+    int npts = int(path.size() * ratio);
+    new_path.resample_interp(npts, InterpolationMethod1D::CUBIC);
+  }
+
+  return new_path;
+}
+
 Path meanderize(const Path            &path,
                 float                  ratio,
                 float                  noise_ratio,
