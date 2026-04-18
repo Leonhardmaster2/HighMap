@@ -996,6 +996,8 @@ void \mbox{\hyperlink{namespacehmap_abae56b1864390cd2f2f03acc442b423a}{grid\+\_\
 \begin{DoxyCompactList}\small\item\em Simplifies the current path using the Visvalingam-\/\+Whyatt algorithm. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Path}{Path}} \mbox{\hyperlink{namespacehmap_a5d1634064e937326c7d91f509c3d67ab}{fractalize}} (const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&path, int iterations, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, float sigma=0.\+2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, int orientation=0, float persistence=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+control\+\_\+field=nullptr, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
 \begin{DoxyCompactList}\small\item\em Applies fractalization to the path by adding points and randomly displacing their positions. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Path}{Path}} \mbox{\hyperlink{namespacehmap_a73e4db2185a62fe2cf6bed305bafeb1f}{inflate}} (const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&path, float strength, bool resample=true)
+\begin{DoxyCompactList}\small\item\em Inflate (offset) a path along its normals using curvature. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Path}{Path}} \mbox{\hyperlink{namespacehmap_af00a9f03eed98b1993fd458beb120379}{meanderize}} (const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&path, float ratio, float noise\+\_\+ratio=0.\+1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed=1, int iterations=1, int edge\+\_\+divisions=10, \mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787}{Path\+::\+Edge\+Division\+Mode}} edm=\mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787a5192c60669f946857f5bed6f43c212ee}{Path\+::\+Edge\+Division\+Mode\+::\+EDM\+\_\+\+PER\+\_\+\+EDGE}})
 \begin{DoxyCompactList}\small\item\em Add "{}meanders"{} to the path. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a2e33d478424b6f4d2bd05ccaeabd0846}{path\+\_\+sdf\+\_\+to\+\_\+array}} (const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&path, glm\+::ivec2 shape, glm\+::vec4 bbox\+\_\+array=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr)
@@ -15159,7 +15161,82 @@ This method enhances the complexity of a path by iteratively adding new points b
 {\em bbox} & Bounding box that defines the valid area for the control field\textquotesingle{}s influence. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{namespacehmap_af00a9f03eed98b1993fd458beb120379}\label{namespacehmap_af00a9f03eed98b1993fd458beb120379} 
+\Hypertarget{namespacehmap_a73e4db2185a62fe2cf6bed305bafeb1f}\label{namespacehmap_a73e4db2185a62fe2cf6bed305bafeb1f} 
+\index{hmap@{hmap}!inflate@{inflate}}
+\index{inflate@{inflate}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{inflate()}{inflate()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Path}{Path}} hmap\+::inflate (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&}]{path,  }\item[{float}]{strength,  }\item[{bool}]{resample = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+Inflate (offset) a path along its normals using curvature. 
+
+Each point is displaced along its normal direction by an amount proportional to local curvature and the given radius.
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & Input path \\
+\hline
+{\em radius} & Inflation radius (scales displacement) \\
+\hline
+{\em resample} & If true, resample output to preserve spatial resolution\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Inflated path
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 6;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ npoints\ =\ 10;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ glm::vec4\ \ bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\};}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Path}{hmap::Path}}\ path\ =\ \mbox{\hyperlink{classhmap_1_1Path}{hmap::Path}}(npoints,\ seed,\ \mbox{\hyperlink{namespacehmap_adc5300323fa35e021fd83b8b048ef3b1}{hmap::adjust}}(bbox,\ -\/0.1f));}
+\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_ad68abaa80879402c3758e24626acfb53}{reorder\_nns}}();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ path\ =\ \mbox{\hyperlink{namespacehmap_a5d1634064e937326c7d91f509c3d67ab}{hmap::fractalize}}(path,\ 2,\ seed,\ 0.2f);}
+\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_afe00587a87fc52524487b197818404f0}{resample\_interp}}(200);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ z1\ =\ path.\mbox{\hyperlink{classhmap_1_1Path_a4d1e1e63fea24bf8f23bc3343f8b746e}{to\_array}}(shape,\ bbox);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ open}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z2(shape);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&radius\ :\ \{0.f,\ 0.1f,\ 0.2f,\ 0.3f\})}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Path}{hmap::Path}}\ p\ =\ \mbox{\hyperlink{namespacehmap_a73e4db2185a62fe2cf6bed305bafeb1f}{hmap::inflate}}(path,\ radius);}
+\DoxyCodeLine{\ \ \ \ p.\mbox{\hyperlink{classhmap_1_1Cloud_a604e61fbcbd8cc469ed21501e65f5c7b}{set\_values}}(radius\ +\ 0.7f);}
+\DoxyCodeLine{\ \ \ \ p.\mbox{\hyperlink{classhmap_1_1Path_a4d1e1e63fea24bf8f23bc3343f8b746e}{to\_array}}(z2,\ bbox);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ closed}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ path.\mbox{\hyperlink{classhmap_1_1Path_aeb2890d2ffbbf4291baf255c621095de}{set\_closed}}(\textcolor{keyword}{true});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z3(shape);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&radius\ :\ \{0.f,\ 0.1f,\ 0.2f,\ 0.3f\})}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Path}{hmap::Path}}\ p\ =\ \mbox{\hyperlink{namespacehmap_a73e4db2185a62fe2cf6bed305bafeb1f}{hmap::inflate}}(path,\ radius);}
+\DoxyCodeLine{\ \ \ \ p.\mbox{\hyperlink{classhmap_1_1Cloud_a604e61fbcbd8cc469ed21501e65f5c7b}{set\_values}}(radius\ +\ 0.7f);}
+\DoxyCodeLine{\ \ \ \ p.\mbox{\hyperlink{classhmap_1_1Path_a4d1e1e63fea24bf8f23bc3343f8b746e}{to\_array}}(z3,\ bbox);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_path\_inflate.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z1,\ z2,\ z3\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}}  \Hypertarget{namespacehmap_af00a9f03eed98b1993fd458beb120379}\label{namespacehmap_af00a9f03eed98b1993fd458beb120379} 
 \index{hmap@{hmap}!meanderize@{meanderize}}
 \index{meanderize@{meanderize}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{meanderize()}{meanderize()}}
@@ -15171,6 +15248,19 @@ Add "{}meanders"{} to the path.
 
 This method introduces meandering effects to the path by adding random deviations. The amplitude of the meanders is controlled by the {\ttfamily ratio} parameter, while the {\ttfamily noise\+\_\+ratio} controls the amount of randomness. The {\ttfamily seed} parameter is used to initialize the random number generator, ensuring reproducibility. The {\ttfamily iterations} parameter defines how many times the meandering process is applied, and {\ttfamily edge\+\_\+divisions} controls how finely each edge is subdivided during the meandering.
 
+
+\begin{DoxyParams}{Parameters}
+{\em ratio} & Amplitude ratio of the meanders. Typically a positive value. \\
+\hline
+{\em noise\+\_\+ratio} & Ratio of randomness introduced during meandering. Default is 0.\+1. \\
+\hline
+{\em seed} & Seed for random number generation. Default is 1. \\
+\hline
+{\em iterations} & Number of iterations to apply meandering. Default is 1. \\
+\hline
+{\em edge\+\_\+divisions} & Number of sub-\/divisions of each edge. Default is 10.\\
+\hline
+\end{DoxyParams}
 {\bfseries{Example}} 
 \begin{DoxyCodeInclude}{0}
 \DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
@@ -15213,22 +15303,7 @@ This method introduces meandering effects to the path by adding random deviation
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}} 
-
-
-\begin{DoxyParams}{Parameters}
-{\em ratio} & Amplitude ratio of the meanders. Typically a positive value. \\
-\hline
-{\em noise\+\_\+ratio} & Ratio of randomness introduced during meandering. Default is 0.\+1. \\
-\hline
-{\em seed} & Seed for random number generation. Default is 1. \\
-\hline
-{\em iterations} & Number of iterations to apply meandering. Default is 1. \\
-\hline
-{\em edge\+\_\+divisions} & Number of sub-\/divisions of each edge. Default is 10. \\
-\hline
-\end{DoxyParams}
-\Hypertarget{namespacehmap_a2e33d478424b6f4d2bd05ccaeabd0846}\label{namespacehmap_a2e33d478424b6f4d2bd05ccaeabd0846} 
+{\bfseries{Result}}  \Hypertarget{namespacehmap_a2e33d478424b6f4d2bd05ccaeabd0846}\label{namespacehmap_a2e33d478424b6f4d2bd05ccaeabd0846} 
 \index{hmap@{hmap}!path\_sdf\_to\_array@{path\_sdf\_to\_array}}
 \index{path\_sdf\_to\_array@{path\_sdf\_to\_array}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{path\_sdf\_to\_array()}{path\_sdf\_to\_array()}}
