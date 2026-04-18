@@ -13563,8 +13563,6 @@ A {\ttfamily std\+::unique\+\_\+ptr} to the created noise function.
 
 Compute a distance field from a point cloud. 
 
-For each grid cell, computes the distance to the nearest point in the cloud, optionally applying domain warping using noise fields.
-
 
 \begin{DoxyParams}{Parameters}
 {\em cloud} & Input point cloud. \\
@@ -13613,13 +13611,11 @@ std\+::vector$<$float$>$ A vector containing the interpolated values for each po
 
 Merges two point clouds into one. 
 
-This function combines two separate point clouds into a single cloud by appending the points from the second cloud to the first. The resulting cloud contains all points from both input clouds.
-
 
 \begin{DoxyParams}{Parameters}
 {\em cloud1} & The first point cloud to be merged. This cloud will be the base cloud to which the points from the second cloud are added. \\
 \hline
-{\em cloud2} & The second point cloud whose points will be appended to the first cloud.\\
+{\em cloud2} & The second point cloud whose points will be appended to the first cloud. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -13640,8 +13636,6 @@ This function combines two separate point clouds into a single cloud by appendin
 
 
 Generates a random cloud of points within a bounding box. 
-
-Points are sampled according to the given sampling method, optionally seeded for reproducibility.
 
 
 \begin{DoxyParams}{Parameters}
@@ -14804,26 +14798,15 @@ Filter a point cloud using rejection sampling based on a density mask.
 
 Each point in the input cloud is retained or discarded according to a spatially varying probability derived from the provided 2D density mask. The mask is mapped to the bounding box and evaluated as a continuous function over the domain.
 
-For a point $p=(x,y)$, the probability of acceptance is\+:  \[
-P(\text{keep } p) = \rho(x,y) \in [0,1]
-\] where $\rho(x,y)$ is the normalized density mask value at the point\textquotesingle{}s position.
-
 
 \begin{DoxyParams}{Parameters}
 {\em density\+\_\+mask} & 2D array defining the spatial density field over the bounding box. Values should lie in $[0,1]$. \\
 \hline
 {\em seed} & Random seed used for reproducible rejection sampling. \\
 \hline
-{\em bbox} & Bounding box {\ttfamily (xmin, ymin, xmax, ymax)} defining the spatial extent of the density mask in world coordinates.\\
+{\em bbox} & Bounding box {\ttfamily (xmin, ymin, xmax, ymax)} defining the spatial extent of the density mask in world coordinates. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyNote}{Note}
-
-\begin{DoxyItemize}
-\item Points outside the bounding box are implicitly mapped to extrapolated density values.
-\item The method preserves the {\itshape relative} density pattern defined by the mask, but reduces the overall number of points according to rejection probability. 
-\end{DoxyItemize}
-\end{DoxyNote}
 \Hypertarget{namespacehmap_ab085d07bc0e897729ca16c0dd2035fe1}\label{namespacehmap_ab085d07bc0e897729ca16c0dd2035fe1} 
 \index{hmap@{hmap}!convert\_length\_to\_pixel@{convert\_length\_to\_pixel}}
 \index{convert\_length\_to\_pixel@{convert\_length\_to\_pixel}!hmap@{hmap}}
