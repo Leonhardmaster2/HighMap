@@ -139,6 +139,7 @@ var namespacehmap =
       [ "local_metrics", "namespacehmap_1_1gpu.html#a13719c4aafe9ffaabd767afe5a8bd44d", null ],
       [ "border", "namespacehmap_1_1gpu.html#a335e4629532ba64049e0721bdcb5f3ba", null ],
       [ "closing", "namespacehmap_1_1gpu.html#a741099c8c3da0841caea9af72e731c78", null ],
+      [ "closing_by_reconstruction", "namespacehmap_1_1gpu.html#a4da387d47e1096eb2297f4d72513e4ae", null ],
       [ "dilation", "namespacehmap_1_1gpu.html#aed49f777e8ad095bafc5dc014e548e6e", null ],
       [ "dilation_expand_border_only", "namespacehmap_1_1gpu.html#a9d5b9a7ec8b097b74badbc7602e8addf", null ],
       [ "distance_transform_jfa", "namespacehmap_1_1gpu.html#a1dbc83521075f7c0179c7157f292b2b2", null ],
@@ -148,6 +149,7 @@ var namespacehmap =
       [ "morphological_laplacian", "namespacehmap_1_1gpu.html#aed594a6d00b1239026f28df608e2bd36", null ],
       [ "morphological_top_hat", "namespacehmap_1_1gpu.html#a60054a81f8c3aad5b83da8ce8d915d28", null ],
       [ "opening", "namespacehmap_1_1gpu.html#adbfa7d94f6de438b8c0a410c101f3350", null ],
+      [ "opening_by_reconstruction", "namespacehmap_1_1gpu.html#a1afc69c95369f96477e049d657a15b3b", null ],
       [ "reconstruction_by_dilation", "namespacehmap_1_1gpu.html#a4b010c9a58ba75a27467385a368f70ce", null ],
       [ "reconstruction_by_erosion", "namespacehmap_1_1gpu.html#ad1813ae47f33d026b0c3e6f7e370b5c8", null ],
       [ "relative_distance_from_skeleton", "namespacehmap_1_1gpu.html#a5a96e5f24b80d47262daede2c0743ba6", null ],
@@ -506,7 +508,9 @@ var namespacehmap =
       [ "MO_BLACK_HAT", "namespacehmap.html#a321149eda3417aa485a010c31267818ca95312bbd452f457354100b456719f931", null ],
       [ "MO_TOP_HAT", "namespacehmap.html#a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2", null ],
       [ "MO_GRADIENT", "namespacehmap.html#a321149eda3417aa485a010c31267818ca2a4e04241f3ad0bdc9da20e651ba8dd3", null ],
-      [ "MO_LAPLACIAN", "namespacehmap.html#a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e", null ]
+      [ "MO_LAPLACIAN", "namespacehmap.html#a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e", null ],
+      [ "MO_CLOSING_BY_RECONSTRUCTION", "namespacehmap.html#a321149eda3417aa485a010c31267818cae6ea35f492be86e8686ddcf0440aebba", null ],
+      [ "MO_OPENING_BY_RECONSTRUCTION", "namespacehmap.html#a321149eda3417aa485a010c31267818caa6a0098d7d9f4eaae196f3f721464806", null ]
     ] ],
     [ "pyramid_transform_support", "namespacehmap.html#ae84abe9052dcb9c88f3c50716addfe44", [
       [ "FULL", "namespacehmap.html#ae84abe9052dcb9c88f3c50716addfe44a335e6fca97d53bfb6cc3a55c566f1dd7", null ],
@@ -1033,6 +1037,7 @@ var namespacehmap =
     [ "triangle", "namespacehmap.html#adce0295b768dd046d1ddcd117cb1b8b4", null ],
     [ "border", "namespacehmap.html#af80bcff234bf1482cf26896b9d21d270", null ],
     [ "closing", "namespacehmap.html#a889405ce11be91e33cc80ca4dbd192b0", null ],
+    [ "closing_by_reconstruction", "namespacehmap.html#a9e5600ea0195404efc56ad821e152c60", null ],
     [ "dilation", "namespacehmap.html#ac91a2dacd050d8588b4135f02dd8f2a5", null ],
     [ "dilation_expand_border_only", "namespacehmap.html#a268e133ae504eaa1b31c91d13135f4c5", null ],
     [ "dilation_expand_min_value_border_only", "namespacehmap.html#a511226f8c6989729ff59e5079a6cff29", null ],
@@ -1047,6 +1052,7 @@ var namespacehmap =
     [ "morphological_laplacian", "namespacehmap.html#aeb7c9ef8addab179badc77310cfde1b5", null ],
     [ "morphological_top_hat", "namespacehmap.html#a211108a73f7ebadb6ac87621c4e47301", null ],
     [ "opening", "namespacehmap.html#abd3024b8233a70596ff2924607221637", null ],
+    [ "opening_by_reconstruction", "namespacehmap.html#a35df7dd9ad7cff66bed5f5dcdac30797", null ],
     [ "reconstruction_by_dilation", "namespacehmap.html#a5b01ee5f465847e08cde67a9533590e3", null ],
     [ "reconstruction_by_erosion", "namespacehmap.html#a2ac3034879fe68a7cc67d2d452a60c1a", null ],
     [ "relative_distance_from_skeleton", "namespacehmap.html#a7c7d934cc5a3a5e1a6f17c09a0e1e51f", null ],

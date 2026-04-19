@@ -270,6 +270,8 @@ void \mbox{\hyperlink{namespacehmap_1_1gpu_ad44fefa43fdf773f241dcf4c46795e80}{in
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_af80bcff234bf1482cf26896b9d21d270}{hmap\+::border}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a741099c8c3da0841caea9af72e731c78}{closing}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a889405ce11be91e33cc80ca4dbd192b0}{hmap\+::closing}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a4da387d47e1096eb2297f4d72513e4ae}{closing\+\_\+by\+\_\+reconstruction}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir, float k\+\_\+smooth\+\_\+max=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
+\begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a9e5600ea0195404efc56ad821e152c60}{hmap\+::closing\+\_\+by\+\_\+reconstruction}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_aed49f777e8ad095bafc5dc014e548e6e}{dilation}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_ac91a2dacd050d8588b4135f02dd8f2a5}{hmap\+::dilation}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a9d5b9a7ec8b097b74badbc7602e8addf}{dilation\+\_\+expand\+\_\+border\+\_\+only}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
@@ -288,6 +290,8 @@ void \mbox{\hyperlink{namespacehmap_1_1gpu_ad44fefa43fdf773f241dcf4c46795e80}{in
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a211108a73f7ebadb6ac87621c4e47301}{hmap\+::morphological\+\_\+top\+\_\+hat}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_adbfa7d94f6de438b8c0a410c101f3350}{opening}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_abd3024b8233a70596ff2924607221637}{hmap\+::opening}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a1afc69c95369f96477e049d657a15b3b}{opening\+\_\+by\+\_\+reconstruction}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir, float k\+\_\+smooth\+\_\+min=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
+\begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a35df7dd9ad7cff66bed5f5dcdac30797}{hmap\+::opening\+\_\+by\+\_\+reconstruction}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a4b010c9a58ba75a27467385a368f70ce}{reconstruction\+\_\+by\+\_\+dilation}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&marker, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&mask, int ir, float k\+\_\+smooth\+\_\+min=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a5b01ee5f465847e08cde67a9533590e3}{hmap\+::reconstruction\+\_\+by\+\_\+dilation}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_ad1813ae47f33d026b0c3e6f7e370b5c8}{reconstruction\+\_\+by\+\_\+erosion}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&marker, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&mask, int ir, float k\+\_\+smooth\+\_\+max=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
@@ -4068,6 +4072,16 @@ See \doxylink{namespacehmap_af80bcff234bf1482cf26896b9d21d270}{hmap\+::border}.
 
 See \doxylink{namespacehmap_a889405ce11be91e33cc80ca4dbd192b0}{hmap\+::closing}. 
 
+\Hypertarget{namespacehmap_1_1gpu_a4da387d47e1096eb2297f4d72513e4ae}\label{namespacehmap_1_1gpu_a4da387d47e1096eb2297f4d72513e4ae} 
+\index{hmap::gpu@{hmap::gpu}!closing\_by\_reconstruction@{closing\_by\_reconstruction}}
+\index{closing\_by\_reconstruction@{closing\_by\_reconstruction}!hmap::gpu@{hmap::gpu}}
+\doxysubsubsection{\texorpdfstring{closing\_by\_reconstruction()}{closing\_by\_reconstruction()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::gpu\+::closing\+\_\+by\+\_\+reconstruction (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{int}]{ir,  }\item[{float}]{k\+\_\+smooth\+\_\+max = {\ttfamily 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
+
+
+
+See \doxylink{namespacehmap_a9e5600ea0195404efc56ad821e152c60}{hmap\+::closing\+\_\+by\+\_\+reconstruction}. 
+
 \Hypertarget{namespacehmap_1_1gpu_aed49f777e8ad095bafc5dc014e548e6e}\label{namespacehmap_1_1gpu_aed49f777e8ad095bafc5dc014e548e6e} 
 \index{hmap::gpu@{hmap::gpu}!dilation@{dilation}}
 \index{dilation@{dilation}!hmap::gpu@{hmap::gpu}}
@@ -4214,6 +4228,16 @@ See \doxylink{namespacehmap_a211108a73f7ebadb6ac87621c4e47301}{hmap\+::morpholog
 
 
 See \doxylink{namespacehmap_abd3024b8233a70596ff2924607221637}{hmap\+::opening}. 
+
+\Hypertarget{namespacehmap_1_1gpu_a1afc69c95369f96477e049d657a15b3b}\label{namespacehmap_1_1gpu_a1afc69c95369f96477e049d657a15b3b} 
+\index{hmap::gpu@{hmap::gpu}!opening\_by\_reconstruction@{opening\_by\_reconstruction}}
+\index{opening\_by\_reconstruction@{opening\_by\_reconstruction}!hmap::gpu@{hmap::gpu}}
+\doxysubsubsection{\texorpdfstring{opening\_by\_reconstruction()}{opening\_by\_reconstruction()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::gpu\+::opening\+\_\+by\+\_\+reconstruction (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{int}]{ir,  }\item[{float}]{k\+\_\+smooth\+\_\+min = {\ttfamily 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
+
+
+
+See \doxylink{namespacehmap_a35df7dd9ad7cff66bed5f5dcdac30797}{hmap\+::opening\+\_\+by\+\_\+reconstruction}. 
 
 \Hypertarget{namespacehmap_1_1gpu_a4b010c9a58ba75a27467385a368f70ce}\label{namespacehmap_1_1gpu_a4b010c9a58ba75a27467385a368f70ce} 
 \index{hmap::gpu@{hmap::gpu}!reconstruction\_by\_dilation@{reconstruction\_by\_dilation}}

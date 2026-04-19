@@ -33,6 +33,8 @@ enum \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818c}{hmap\+::\
 , \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca2a4e04241f3ad0bdc9da20e651ba8dd3}{hmap\+::\+MO\+\_\+\+GRADIENT}}
 , \newline
 \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e}{hmap\+::\+MO\+\_\+\+LAPLACIAN}}
+, \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818cae6ea35f492be86e8686ddcf0440aebba}{hmap\+::\+MO\+\_\+\+CLOSING\+\_\+\+BY\+\_\+\+RECONSTRUCTION}}
+, \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818caa6a0098d7d9f4eaae196f3f721464806}{hmap\+::\+MO\+\_\+\+OPENING\+\_\+\+BY\+\_\+\+RECONSTRUCTION}}
  \}
 \begin{DoxyCompactList}\small\item\em Types of base morphology operators. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
@@ -42,6 +44,8 @@ enum \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818c}{hmap\+::\
 \begin{DoxyCompactList}\small\item\em Apply a border algorithm to the input array using a square structure. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a889405ce11be91e33cc80ca4dbd192b0}{hmap\+::closing}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
 \begin{DoxyCompactList}\small\item\em Apply a closing algorithm to the input array using a square structure. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a9e5600ea0195404efc56ad821e152c60}{hmap\+::closing\+\_\+by\+\_\+reconstruction}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir, float k\+\_\+smooth\+\_\+max=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
+\begin{DoxyCompactList}\small\item\em Apply closing by reconstruction to the input array. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_ac91a2dacd050d8588b4135f02dd8f2a5}{hmap\+::dilation}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
 \begin{DoxyCompactList}\small\item\em Apply a dilation algorithm to the input array using a square structure. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a268e133ae504eaa1b31c91d13135f4c5}{hmap\+::dilation\+\_\+expand\+\_\+border\+\_\+only}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
@@ -70,6 +74,8 @@ void \mbox{\hyperlink{namespacehmap_adff494af7c8bf4db7f3e6fddd3261793}{hmap\+::f
 \begin{DoxyCompactList}\small\item\em Apply a morphological top hat algorithm to the input array using a square structure. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_abd3024b8233a70596ff2924607221637}{hmap\+::opening}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
 \begin{DoxyCompactList}\small\item\em Apply an opening algorithm to the input array using a square structure. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a35df7dd9ad7cff66bed5f5dcdac30797}{hmap\+::opening\+\_\+by\+\_\+reconstruction}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir, float k\+\_\+smooth\+\_\+min=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
+\begin{DoxyCompactList}\small\item\em Apply opening by reconstruction to the input array. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a5b01ee5f465847e08cde67a9533590e3}{hmap\+::reconstruction\+\_\+by\+\_\+dilation}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&marker, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&mask, int ir, float k\+\_\+smooth\+\_\+min=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Perform morphological reconstruction by dilation. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a2ac3034879fe68a7cc67d2d452a60c1a}{hmap\+::reconstruction\+\_\+by\+\_\+erosion}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&marker, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&mask, int ir, float k\+\_\+smooth\+\_\+max=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
@@ -86,6 +92,8 @@ void \mbox{\hyperlink{namespacehmap_adff494af7c8bf4db7f3e6fddd3261793}{hmap\+::f
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_af80bcff234bf1482cf26896b9d21d270}{hmap\+::border}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a741099c8c3da0841caea9af72e731c78}{hmap\+::gpu\+::closing}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a889405ce11be91e33cc80ca4dbd192b0}{hmap\+::closing}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a4da387d47e1096eb2297f4d72513e4ae}{hmap\+::gpu\+::closing\+\_\+by\+\_\+reconstruction}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir, float k\+\_\+smooth\+\_\+max=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
+\begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a9e5600ea0195404efc56ad821e152c60}{hmap\+::closing\+\_\+by\+\_\+reconstruction}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_aed49f777e8ad095bafc5dc014e548e6e}{hmap\+::gpu\+::dilation}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_ac91a2dacd050d8588b4135f02dd8f2a5}{hmap\+::dilation}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a9d5b9a7ec8b097b74badbc7602e8addf}{hmap\+::gpu\+::dilation\+\_\+expand\+\_\+border\+\_\+only}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
@@ -104,6 +112,8 @@ void \mbox{\hyperlink{namespacehmap_adff494af7c8bf4db7f3e6fddd3261793}{hmap\+::f
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a211108a73f7ebadb6ac87621c4e47301}{hmap\+::morphological\+\_\+top\+\_\+hat}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_adbfa7d94f6de438b8c0a410c101f3350}{hmap\+::gpu\+::opening}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_abd3024b8233a70596ff2924607221637}{hmap\+::opening}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a1afc69c95369f96477e049d657a15b3b}{hmap\+::gpu\+::opening\+\_\+by\+\_\+reconstruction}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir, float k\+\_\+smooth\+\_\+min=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
+\begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a35df7dd9ad7cff66bed5f5dcdac30797}{hmap\+::opening\+\_\+by\+\_\+reconstruction}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a4b010c9a58ba75a27467385a368f70ce}{hmap\+::gpu\+::reconstruction\+\_\+by\+\_\+dilation}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&marker, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&mask, int ir, float k\+\_\+smooth\+\_\+min=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a5b01ee5f465847e08cde67a9533590e3}{hmap\+::reconstruction\+\_\+by\+\_\+dilation}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_ad1813ae47f33d026b0c3e6f7e370b5c8}{hmap\+::gpu\+::reconstruction\+\_\+by\+\_\+erosion}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&marker, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&mask, int ir, float k\+\_\+smooth\+\_\+max=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})

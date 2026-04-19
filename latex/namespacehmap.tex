@@ -426,6 +426,8 @@ enum \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818c}{Morpholog
 , \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca2a4e04241f3ad0bdc9da20e651ba8dd3}{MO\+\_\+\+GRADIENT}}
 , \newline
 \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e}{MO\+\_\+\+LAPLACIAN}}
+, \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818cae6ea35f492be86e8686ddcf0440aebba}{MO\+\_\+\+CLOSING\+\_\+\+BY\+\_\+\+RECONSTRUCTION}}
+, \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818caa6a0098d7d9f4eaae196f3f721464806}{MO\+\_\+\+OPENING\+\_\+\+BY\+\_\+\+RECONSTRUCTION}}
  \}
 \begin{DoxyCompactList}\small\item\em Types of base morphology operators. \end{DoxyCompactList}\item 
 enum \mbox{\hyperlink{namespacehmap_ae84abe9052dcb9c88f3c50716addfe44}{pyramid\+\_\+transform\+\_\+support}} \+: int \{ \mbox{\hyperlink{namespacehmap_ae84abe9052dcb9c88f3c50716addfe44a335e6fca97d53bfb6cc3a55c566f1dd7}{FULL}}
@@ -1444,6 +1446,8 @@ float \mbox{\hyperlink{namespacehmap_adce0295b768dd046d1ddcd117cb1b8b4}{triangle
 \begin{DoxyCompactList}\small\item\em Apply a border algorithm to the input array using a square structure. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a889405ce11be91e33cc80ca4dbd192b0}{closing}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
 \begin{DoxyCompactList}\small\item\em Apply a closing algorithm to the input array using a square structure. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a9e5600ea0195404efc56ad821e152c60}{closing\+\_\+by\+\_\+reconstruction}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir, float k\+\_\+smooth\+\_\+max=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
+\begin{DoxyCompactList}\small\item\em Apply closing by reconstruction to the input array. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_ac91a2dacd050d8588b4135f02dd8f2a5}{dilation}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
 \begin{DoxyCompactList}\small\item\em Apply a dilation algorithm to the input array using a square structure. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a268e133ae504eaa1b31c91d13135f4c5}{dilation\+\_\+expand\+\_\+border\+\_\+only}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
@@ -1472,6 +1476,8 @@ void \mbox{\hyperlink{namespacehmap_adff494af7c8bf4db7f3e6fddd3261793}{flood\+\_
 \begin{DoxyCompactList}\small\item\em Apply a morphological top hat algorithm to the input array using a square structure. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_abd3024b8233a70596ff2924607221637}{opening}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
 \begin{DoxyCompactList}\small\item\em Apply an opening algorithm to the input array using a square structure. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a35df7dd9ad7cff66bed5f5dcdac30797}{opening\+\_\+by\+\_\+reconstruction}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir, float k\+\_\+smooth\+\_\+min=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
+\begin{DoxyCompactList}\small\item\em Apply opening by reconstruction to the input array. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a5b01ee5f465847e08cde67a9533590e3}{reconstruction\+\_\+by\+\_\+dilation}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&marker, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&mask, int ir, float k\+\_\+smooth\+\_\+min=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Perform morphological reconstruction by dilation. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a2ac3034879fe68a7cc67d2d452a60c1a}{reconstruction\+\_\+by\+\_\+erosion}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&marker, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&mask, int ir, float k\+\_\+smooth\+\_\+max=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
@@ -2801,11 +2807,19 @@ MO\+\_\+\+TOP\+\_\+\+HAT&Difference between input and opening (bright features).
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{MO\_GRADIENT@{MO\_GRADIENT}!hmap@{hmap}}\index{hmap@{hmap}!MO\_GRADIENT@{MO\_GRADIENT}}}\Hypertarget{namespacehmap_a321149eda3417aa485a010c31267818ca2a4e04241f3ad0bdc9da20e651ba8dd3}\label{namespacehmap_a321149eda3417aa485a010c31267818ca2a4e04241f3ad0bdc9da20e651ba8dd3} 
-MO\+\_\+\+GRADIENT&Difference between dilation and erosion (edge. \\
+MO\+\_\+\+GRADIENT&Difference between dilation and erosion (edge magnitude). \\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{MO\_LAPLACIAN@{MO\_LAPLACIAN}!hmap@{hmap}}\index{hmap@{hmap}!MO\_LAPLACIAN@{MO\_LAPLACIAN}}}\Hypertarget{namespacehmap_a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e}\label{namespacehmap_a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e} 
-MO\+\_\+\+LAPLACIAN&Second-\/order operator highlighting ridges and. \\
+MO\+\_\+\+LAPLACIAN&Second-\/order operator highlighting ridges and valleys. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MO\_CLOSING\_BY\_RECONSTRUCTION@{MO\_CLOSING\_BY\_RECONSTRUCTION}!hmap@{hmap}}\index{hmap@{hmap}!MO\_CLOSING\_BY\_RECONSTRUCTION@{MO\_CLOSING\_BY\_RECONSTRUCTION}}}\Hypertarget{namespacehmap_a321149eda3417aa485a010c31267818cae6ea35f492be86e8686ddcf0440aebba}\label{namespacehmap_a321149eda3417aa485a010c31267818cae6ea35f492be86e8686ddcf0440aebba} 
+MO\+\_\+\+CLOSING\+\_\+\+BY\+\_\+\+RECONSTRUCTION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MO\_OPENING\_BY\_RECONSTRUCTION@{MO\_OPENING\_BY\_RECONSTRUCTION}!hmap@{hmap}}\index{hmap@{hmap}!MO\_OPENING\_BY\_RECONSTRUCTION@{MO\_OPENING\_BY\_RECONSTRUCTION}}}\Hypertarget{namespacehmap_a321149eda3417aa485a010c31267818caa6a0098d7d9f4eaae196f3f721464806}\label{namespacehmap_a321149eda3417aa485a010c31267818caa6a0098d7d9f4eaae196f3f721464806} 
+MO\+\_\+\+OPENING\+\_\+\+BY\+\_\+\+RECONSTRUCTION&\\
 \hline
 
 \end{DoxyEnumFields}
@@ -21251,7 +21265,7 @@ Apply a border algorithm to the input array using a square structure.
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ab80da2376c6212eb9cb2899c0a5114ad}{hmap::remap}}(z);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ radius\ =\ 1\ ==>\ 3x3\ square\ kernel}}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ ir\ =\ 3;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ ir\ =\ 8;}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zr\ =\ \mbox{\hyperlink{namespacehmap_af80bcff234bf1482cf26896b9d21d270}{hmap::border}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zd\ =\ \mbox{\hyperlink{namespacehmap_ac91a2dacd050d8588b4135f02dd8f2a5}{hmap::dilation}}(z,\ ir);}
@@ -21262,9 +21276,6 @@ Apply a border algorithm to the input array using a square structure.
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zt\ =\ \mbox{\hyperlink{namespacehmap_a211108a73f7ebadb6ac87621c4e47301}{hmap::morphological\_top\_hat}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zh\ =\ \mbox{\hyperlink{namespacehmap_a1cf22c68188d0e35aa74983f3a01c488}{hmap::morphological\_black\_hat}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zl\ =\ \mbox{\hyperlink{namespacehmap_aeb7c9ef8addab179badc77310cfde1b5}{hmap::morphological\_laplacian}}(z,\ ir);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ hmap::make\_binary(z);}}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ hmap::Array\ zr\ =\ hmap::border(z,\ ir);}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_morphology\_base.png"{}},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ zr,\ zd,\ ze,\ zc,\ zo,\ zg,\ zt,\ zh,\ zl\},}
@@ -21284,6 +21295,8 @@ Apply a border algorithm to the input array using a square structure.
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2}{hmap::MorphologyOperation::MO\_TOP\_HAT}},}
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca95312bbd452f457354100b456719f931}{hmap::MorphologyOperation::MO\_BLACK\_HAT}},}
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e}{hmap::MorphologyOperation::MO\_LAPLACIAN}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818cae6ea35f492be86e8686ddcf0440aebba}{hmap::MorphologyOperation::MO\_CLOSING\_BY\_RECONSTRUCTION}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818caa6a0098d7d9f4eaae196f3f721464806}{hmap::MorphologyOperation::MO\_OPENING\_BY\_RECONSTRUCTION}},}
 \DoxyCodeLine{\ \ \};}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ CPU}}
@@ -21357,7 +21370,7 @@ Apply a closing algorithm to the input array using a square structure.
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ab80da2376c6212eb9cb2899c0a5114ad}{hmap::remap}}(z);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ radius\ =\ 1\ ==>\ 3x3\ square\ kernel}}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ ir\ =\ 3;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ ir\ =\ 8;}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zr\ =\ \mbox{\hyperlink{namespacehmap_af80bcff234bf1482cf26896b9d21d270}{hmap::border}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zd\ =\ \mbox{\hyperlink{namespacehmap_ac91a2dacd050d8588b4135f02dd8f2a5}{hmap::dilation}}(z,\ ir);}
@@ -21368,9 +21381,6 @@ Apply a closing algorithm to the input array using a square structure.
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zt\ =\ \mbox{\hyperlink{namespacehmap_a211108a73f7ebadb6ac87621c4e47301}{hmap::morphological\_top\_hat}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zh\ =\ \mbox{\hyperlink{namespacehmap_a1cf22c68188d0e35aa74983f3a01c488}{hmap::morphological\_black\_hat}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zl\ =\ \mbox{\hyperlink{namespacehmap_aeb7c9ef8addab179badc77310cfde1b5}{hmap::morphological\_laplacian}}(z,\ ir);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ hmap::make\_binary(z);}}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ hmap::Array\ zr\ =\ hmap::border(z,\ ir);}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_morphology\_base.png"{}},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ zr,\ zd,\ ze,\ zc,\ zo,\ zg,\ zt,\ zh,\ zl\},}
@@ -21390,6 +21400,8 @@ Apply a closing algorithm to the input array using a square structure.
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2}{hmap::MorphologyOperation::MO\_TOP\_HAT}},}
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca95312bbd452f457354100b456719f931}{hmap::MorphologyOperation::MO\_BLACK\_HAT}},}
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e}{hmap::MorphologyOperation::MO\_LAPLACIAN}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818cae6ea35f492be86e8686ddcf0440aebba}{hmap::MorphologyOperation::MO\_CLOSING\_BY\_RECONSTRUCTION}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818caa6a0098d7d9f4eaae196f3f721464806}{hmap::MorphologyOperation::MO\_OPENING\_BY\_RECONSTRUCTION}},}
 \DoxyCodeLine{\ \ \};}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ CPU}}
@@ -21428,7 +21440,31 @@ Apply a closing algorithm to the input array using a square structure.
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}  \Hypertarget{namespacehmap_ac91a2dacd050d8588b4135f02dd8f2a5}\label{namespacehmap_ac91a2dacd050d8588b4135f02dd8f2a5} 
+{\bfseries{Result}}  \Hypertarget{namespacehmap_a9e5600ea0195404efc56ad821e152c60}\label{namespacehmap_a9e5600ea0195404efc56ad821e152c60} 
+\index{hmap@{hmap}!closing\_by\_reconstruction@{closing\_by\_reconstruction}}
+\index{closing\_by\_reconstruction@{closing\_by\_reconstruction}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{closing\_by\_reconstruction()}{closing\_by\_reconstruction()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::closing\+\_\+by\+\_\+reconstruction (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{int}]{ir,  }\item[{float}]{k\+\_\+smooth\+\_\+max = {\ttfamily 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
+
+
+
+Apply closing by reconstruction to the input array. 
+
+Performs a dilation followed by a reconstruction by erosion, filling small dark regions while preserving the shape of larger structures.
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & Input array. \\
+\hline
+{\em ir} & Radius of the structuring element. \\
+\hline
+{\em k\+\_\+smooth\+\_\+max} & Smoothness factor (0 for hard max). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classhmap_1_1Array}{Array} Result after closing by reconstruction. 
+\end{DoxyReturn}
+\Hypertarget{namespacehmap_ac91a2dacd050d8588b4135f02dd8f2a5}\label{namespacehmap_ac91a2dacd050d8588b4135f02dd8f2a5} 
 \index{hmap@{hmap}!dilation@{dilation}}
 \index{dilation@{dilation}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{dilation()}{dilation()}}
@@ -21463,7 +21499,7 @@ Apply a dilation algorithm to the input array using a square structure.
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ab80da2376c6212eb9cb2899c0a5114ad}{hmap::remap}}(z);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ radius\ =\ 1\ ==>\ 3x3\ square\ kernel}}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ ir\ =\ 3;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ ir\ =\ 8;}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zr\ =\ \mbox{\hyperlink{namespacehmap_af80bcff234bf1482cf26896b9d21d270}{hmap::border}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zd\ =\ \mbox{\hyperlink{namespacehmap_ac91a2dacd050d8588b4135f02dd8f2a5}{hmap::dilation}}(z,\ ir);}
@@ -21474,9 +21510,6 @@ Apply a dilation algorithm to the input array using a square structure.
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zt\ =\ \mbox{\hyperlink{namespacehmap_a211108a73f7ebadb6ac87621c4e47301}{hmap::morphological\_top\_hat}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zh\ =\ \mbox{\hyperlink{namespacehmap_a1cf22c68188d0e35aa74983f3a01c488}{hmap::morphological\_black\_hat}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zl\ =\ \mbox{\hyperlink{namespacehmap_aeb7c9ef8addab179badc77310cfde1b5}{hmap::morphological\_laplacian}}(z,\ ir);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ hmap::make\_binary(z);}}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ hmap::Array\ zr\ =\ hmap::border(z,\ ir);}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_morphology\_base.png"{}},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ zr,\ zd,\ ze,\ zc,\ zo,\ zg,\ zt,\ zh,\ zl\},}
@@ -21496,6 +21529,8 @@ Apply a dilation algorithm to the input array using a square structure.
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2}{hmap::MorphologyOperation::MO\_TOP\_HAT}},}
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca95312bbd452f457354100b456719f931}{hmap::MorphologyOperation::MO\_BLACK\_HAT}},}
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e}{hmap::MorphologyOperation::MO\_LAPLACIAN}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818cae6ea35f492be86e8686ddcf0440aebba}{hmap::MorphologyOperation::MO\_CLOSING\_BY\_RECONSTRUCTION}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818caa6a0098d7d9f4eaae196f3f721464806}{hmap::MorphologyOperation::MO\_OPENING\_BY\_RECONSTRUCTION}},}
 \DoxyCodeLine{\ \ \};}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ CPU}}
@@ -21816,7 +21851,7 @@ Apply an erosion algorithm to the input array using a square structure.
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ab80da2376c6212eb9cb2899c0a5114ad}{hmap::remap}}(z);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ radius\ =\ 1\ ==>\ 3x3\ square\ kernel}}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ ir\ =\ 3;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ ir\ =\ 8;}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zr\ =\ \mbox{\hyperlink{namespacehmap_af80bcff234bf1482cf26896b9d21d270}{hmap::border}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zd\ =\ \mbox{\hyperlink{namespacehmap_ac91a2dacd050d8588b4135f02dd8f2a5}{hmap::dilation}}(z,\ ir);}
@@ -21827,9 +21862,6 @@ Apply an erosion algorithm to the input array using a square structure.
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zt\ =\ \mbox{\hyperlink{namespacehmap_a211108a73f7ebadb6ac87621c4e47301}{hmap::morphological\_top\_hat}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zh\ =\ \mbox{\hyperlink{namespacehmap_a1cf22c68188d0e35aa74983f3a01c488}{hmap::morphological\_black\_hat}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zl\ =\ \mbox{\hyperlink{namespacehmap_aeb7c9ef8addab179badc77310cfde1b5}{hmap::morphological\_laplacian}}(z,\ ir);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ hmap::make\_binary(z);}}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ hmap::Array\ zr\ =\ hmap::border(z,\ ir);}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_morphology\_base.png"{}},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ zr,\ zd,\ ze,\ zc,\ zo,\ zg,\ zt,\ zh,\ zl\},}
@@ -21849,6 +21881,8 @@ Apply an erosion algorithm to the input array using a square structure.
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2}{hmap::MorphologyOperation::MO\_TOP\_HAT}},}
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca95312bbd452f457354100b456719f931}{hmap::MorphologyOperation::MO\_BLACK\_HAT}},}
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e}{hmap::MorphologyOperation::MO\_LAPLACIAN}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818cae6ea35f492be86e8686ddcf0440aebba}{hmap::MorphologyOperation::MO\_CLOSING\_BY\_RECONSTRUCTION}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818caa6a0098d7d9f4eaae196f3f721464806}{hmap::MorphologyOperation::MO\_OPENING\_BY\_RECONSTRUCTION}},}
 \DoxyCodeLine{\ \ \};}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ CPU}}
@@ -21972,7 +22006,7 @@ Apply a morphological black hat algorithm to the input array using a square stru
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ab80da2376c6212eb9cb2899c0a5114ad}{hmap::remap}}(z);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ radius\ =\ 1\ ==>\ 3x3\ square\ kernel}}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ ir\ =\ 3;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ ir\ =\ 8;}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zr\ =\ \mbox{\hyperlink{namespacehmap_af80bcff234bf1482cf26896b9d21d270}{hmap::border}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zd\ =\ \mbox{\hyperlink{namespacehmap_ac91a2dacd050d8588b4135f02dd8f2a5}{hmap::dilation}}(z,\ ir);}
@@ -21983,9 +22017,6 @@ Apply a morphological black hat algorithm to the input array using a square stru
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zt\ =\ \mbox{\hyperlink{namespacehmap_a211108a73f7ebadb6ac87621c4e47301}{hmap::morphological\_top\_hat}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zh\ =\ \mbox{\hyperlink{namespacehmap_a1cf22c68188d0e35aa74983f3a01c488}{hmap::morphological\_black\_hat}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zl\ =\ \mbox{\hyperlink{namespacehmap_aeb7c9ef8addab179badc77310cfde1b5}{hmap::morphological\_laplacian}}(z,\ ir);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ hmap::make\_binary(z);}}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ hmap::Array\ zr\ =\ hmap::border(z,\ ir);}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_morphology\_base.png"{}},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ zr,\ zd,\ ze,\ zc,\ zo,\ zg,\ zt,\ zh,\ zl\},}
@@ -22005,6 +22036,8 @@ Apply a morphological black hat algorithm to the input array using a square stru
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2}{hmap::MorphologyOperation::MO\_TOP\_HAT}},}
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca95312bbd452f457354100b456719f931}{hmap::MorphologyOperation::MO\_BLACK\_HAT}},}
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e}{hmap::MorphologyOperation::MO\_LAPLACIAN}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818cae6ea35f492be86e8686ddcf0440aebba}{hmap::MorphologyOperation::MO\_CLOSING\_BY\_RECONSTRUCTION}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818caa6a0098d7d9f4eaae196f3f721464806}{hmap::MorphologyOperation::MO\_OPENING\_BY\_RECONSTRUCTION}},}
 \DoxyCodeLine{\ \ \};}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ CPU}}
@@ -22078,7 +22111,7 @@ Apply a morphological gradient algorithm to the input array using a square struc
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ab80da2376c6212eb9cb2899c0a5114ad}{hmap::remap}}(z);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ radius\ =\ 1\ ==>\ 3x3\ square\ kernel}}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ ir\ =\ 3;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ ir\ =\ 8;}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zr\ =\ \mbox{\hyperlink{namespacehmap_af80bcff234bf1482cf26896b9d21d270}{hmap::border}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zd\ =\ \mbox{\hyperlink{namespacehmap_ac91a2dacd050d8588b4135f02dd8f2a5}{hmap::dilation}}(z,\ ir);}
@@ -22089,9 +22122,6 @@ Apply a morphological gradient algorithm to the input array using a square struc
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zt\ =\ \mbox{\hyperlink{namespacehmap_a211108a73f7ebadb6ac87621c4e47301}{hmap::morphological\_top\_hat}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zh\ =\ \mbox{\hyperlink{namespacehmap_a1cf22c68188d0e35aa74983f3a01c488}{hmap::morphological\_black\_hat}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zl\ =\ \mbox{\hyperlink{namespacehmap_aeb7c9ef8addab179badc77310cfde1b5}{hmap::morphological\_laplacian}}(z,\ ir);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ hmap::make\_binary(z);}}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ hmap::Array\ zr\ =\ hmap::border(z,\ ir);}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_morphology\_base.png"{}},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ zr,\ zd,\ ze,\ zc,\ zo,\ zg,\ zt,\ zh,\ zl\},}
@@ -22111,6 +22141,8 @@ Apply a morphological gradient algorithm to the input array using a square struc
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2}{hmap::MorphologyOperation::MO\_TOP\_HAT}},}
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca95312bbd452f457354100b456719f931}{hmap::MorphologyOperation::MO\_BLACK\_HAT}},}
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e}{hmap::MorphologyOperation::MO\_LAPLACIAN}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818cae6ea35f492be86e8686ddcf0440aebba}{hmap::MorphologyOperation::MO\_CLOSING\_BY\_RECONSTRUCTION}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818caa6a0098d7d9f4eaae196f3f721464806}{hmap::MorphologyOperation::MO\_OPENING\_BY\_RECONSTRUCTION}},}
 \DoxyCodeLine{\ \ \};}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ CPU}}
@@ -22186,7 +22218,7 @@ Compared to the classical Laplacian, this operator is more robust to noise and b
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ab80da2376c6212eb9cb2899c0a5114ad}{hmap::remap}}(z);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ radius\ =\ 1\ ==>\ 3x3\ square\ kernel}}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ ir\ =\ 3;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ ir\ =\ 8;}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zr\ =\ \mbox{\hyperlink{namespacehmap_af80bcff234bf1482cf26896b9d21d270}{hmap::border}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zd\ =\ \mbox{\hyperlink{namespacehmap_ac91a2dacd050d8588b4135f02dd8f2a5}{hmap::dilation}}(z,\ ir);}
@@ -22197,9 +22229,6 @@ Compared to the classical Laplacian, this operator is more robust to noise and b
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zt\ =\ \mbox{\hyperlink{namespacehmap_a211108a73f7ebadb6ac87621c4e47301}{hmap::morphological\_top\_hat}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zh\ =\ \mbox{\hyperlink{namespacehmap_a1cf22c68188d0e35aa74983f3a01c488}{hmap::morphological\_black\_hat}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zl\ =\ \mbox{\hyperlink{namespacehmap_aeb7c9ef8addab179badc77310cfde1b5}{hmap::morphological\_laplacian}}(z,\ ir);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ hmap::make\_binary(z);}}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ hmap::Array\ zr\ =\ hmap::border(z,\ ir);}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_morphology\_base.png"{}},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ zr,\ zd,\ ze,\ zc,\ zo,\ zg,\ zt,\ zh,\ zl\},}
@@ -22219,6 +22248,8 @@ Compared to the classical Laplacian, this operator is more robust to noise and b
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2}{hmap::MorphologyOperation::MO\_TOP\_HAT}},}
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca95312bbd452f457354100b456719f931}{hmap::MorphologyOperation::MO\_BLACK\_HAT}},}
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e}{hmap::MorphologyOperation::MO\_LAPLACIAN}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818cae6ea35f492be86e8686ddcf0440aebba}{hmap::MorphologyOperation::MO\_CLOSING\_BY\_RECONSTRUCTION}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818caa6a0098d7d9f4eaae196f3f721464806}{hmap::MorphologyOperation::MO\_OPENING\_BY\_RECONSTRUCTION}},}
 \DoxyCodeLine{\ \ \};}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ CPU}}
@@ -22292,7 +22323,7 @@ Apply a morphological top hat algorithm to the input array using a square struct
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ab80da2376c6212eb9cb2899c0a5114ad}{hmap::remap}}(z);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ radius\ =\ 1\ ==>\ 3x3\ square\ kernel}}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ ir\ =\ 3;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ ir\ =\ 8;}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zr\ =\ \mbox{\hyperlink{namespacehmap_af80bcff234bf1482cf26896b9d21d270}{hmap::border}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zd\ =\ \mbox{\hyperlink{namespacehmap_ac91a2dacd050d8588b4135f02dd8f2a5}{hmap::dilation}}(z,\ ir);}
@@ -22303,9 +22334,6 @@ Apply a morphological top hat algorithm to the input array using a square struct
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zt\ =\ \mbox{\hyperlink{namespacehmap_a211108a73f7ebadb6ac87621c4e47301}{hmap::morphological\_top\_hat}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zh\ =\ \mbox{\hyperlink{namespacehmap_a1cf22c68188d0e35aa74983f3a01c488}{hmap::morphological\_black\_hat}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zl\ =\ \mbox{\hyperlink{namespacehmap_aeb7c9ef8addab179badc77310cfde1b5}{hmap::morphological\_laplacian}}(z,\ ir);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ hmap::make\_binary(z);}}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ hmap::Array\ zr\ =\ hmap::border(z,\ ir);}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_morphology\_base.png"{}},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ zr,\ zd,\ ze,\ zc,\ zo,\ zg,\ zt,\ zh,\ zl\},}
@@ -22325,6 +22353,8 @@ Apply a morphological top hat algorithm to the input array using a square struct
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2}{hmap::MorphologyOperation::MO\_TOP\_HAT}},}
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca95312bbd452f457354100b456719f931}{hmap::MorphologyOperation::MO\_BLACK\_HAT}},}
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e}{hmap::MorphologyOperation::MO\_LAPLACIAN}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818cae6ea35f492be86e8686ddcf0440aebba}{hmap::MorphologyOperation::MO\_CLOSING\_BY\_RECONSTRUCTION}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818caa6a0098d7d9f4eaae196f3f721464806}{hmap::MorphologyOperation::MO\_OPENING\_BY\_RECONSTRUCTION}},}
 \DoxyCodeLine{\ \ \};}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ CPU}}
@@ -22398,7 +22428,7 @@ Apply an opening algorithm to the input array using a square structure.
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ab80da2376c6212eb9cb2899c0a5114ad}{hmap::remap}}(z);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ radius\ =\ 1\ ==>\ 3x3\ square\ kernel}}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ ir\ =\ 3;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ ir\ =\ 8;}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zr\ =\ \mbox{\hyperlink{namespacehmap_af80bcff234bf1482cf26896b9d21d270}{hmap::border}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zd\ =\ \mbox{\hyperlink{namespacehmap_ac91a2dacd050d8588b4135f02dd8f2a5}{hmap::dilation}}(z,\ ir);}
@@ -22409,9 +22439,6 @@ Apply an opening algorithm to the input array using a square structure.
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zt\ =\ \mbox{\hyperlink{namespacehmap_a211108a73f7ebadb6ac87621c4e47301}{hmap::morphological\_top\_hat}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zh\ =\ \mbox{\hyperlink{namespacehmap_a1cf22c68188d0e35aa74983f3a01c488}{hmap::morphological\_black\_hat}}(z,\ ir);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zl\ =\ \mbox{\hyperlink{namespacehmap_aeb7c9ef8addab179badc77310cfde1b5}{hmap::morphological\_laplacian}}(z,\ ir);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ hmap::make\_binary(z);}}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ hmap::Array\ zr\ =\ hmap::border(z,\ ir);}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_morphology\_base.png"{}},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ zr,\ zd,\ ze,\ zc,\ zo,\ zg,\ zt,\ zh,\ zl\},}
@@ -22431,6 +22458,8 @@ Apply an opening algorithm to the input array using a square structure.
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2}{hmap::MorphologyOperation::MO\_TOP\_HAT}},}
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca95312bbd452f457354100b456719f931}{hmap::MorphologyOperation::MO\_BLACK\_HAT}},}
 \DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e}{hmap::MorphologyOperation::MO\_LAPLACIAN}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818cae6ea35f492be86e8686ddcf0440aebba}{hmap::MorphologyOperation::MO\_CLOSING\_BY\_RECONSTRUCTION}},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818caa6a0098d7d9f4eaae196f3f721464806}{hmap::MorphologyOperation::MO\_OPENING\_BY\_RECONSTRUCTION}},}
 \DoxyCodeLine{\ \ \};}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ CPU}}
@@ -22469,7 +22498,31 @@ Apply an opening algorithm to the input array using a square structure.
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}  \Hypertarget{namespacehmap_a5b01ee5f465847e08cde67a9533590e3}\label{namespacehmap_a5b01ee5f465847e08cde67a9533590e3} 
+{\bfseries{Result}}  \Hypertarget{namespacehmap_a35df7dd9ad7cff66bed5f5dcdac30797}\label{namespacehmap_a35df7dd9ad7cff66bed5f5dcdac30797} 
+\index{hmap@{hmap}!opening\_by\_reconstruction@{opening\_by\_reconstruction}}
+\index{opening\_by\_reconstruction@{opening\_by\_reconstruction}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{opening\_by\_reconstruction()}{opening\_by\_reconstruction()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::opening\+\_\+by\+\_\+reconstruction (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{int}]{ir,  }\item[{float}]{k\+\_\+smooth\+\_\+min = {\ttfamily 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
+
+
+
+Apply opening by reconstruction to the input array. 
+
+Performs an erosion followed by a reconstruction by dilation, removing small bright features while preserving the shape of larger structures.
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & Input array. \\
+\hline
+{\em ir} & Radius of the structuring element. \\
+\hline
+{\em k\+\_\+smooth\+\_\+min} & Smoothness factor (0 for hard min). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classhmap_1_1Array}{Array} Result after opening by reconstruction. 
+\end{DoxyReturn}
+\Hypertarget{namespacehmap_a5b01ee5f465847e08cde67a9533590e3}\label{namespacehmap_a5b01ee5f465847e08cde67a9533590e3} 
 \index{hmap@{hmap}!reconstruction\_by\_dilation@{reconstruction\_by\_dilation}}
 \index{reconstruction\_by\_dilation@{reconstruction\_by\_dilation}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{reconstruction\_by\_dilation()}{reconstruction\_by\_dilation()}}
@@ -22514,13 +22567,16 @@ Iteratively dilates the marker image while constraining values to be less than o
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ ir\ =\ 16;}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ marker\_d\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_aed5416971461ddb7fb6427bdeb5cae86}{hmap::gpu::erosion}}(z,\ ir);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zd\ =\ \mbox{\hyperlink{namespacehmap_a5b01ee5f465847e08cde67a9533590e3}{hmap::reconstruction\_by\_dilation}}(marker\_d,\ z,\ ir);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zd\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_a4b010c9a58ba75a27467385a368f70ce}{hmap::gpu::reconstruction\_by\_dilation}}(marker\_d,\ z,\ ir);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ marker\_e\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_aed49f777e8ad095bafc5dc014e548e6e}{hmap::gpu::dilation}}(z,\ ir);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ ze\ =\ \mbox{\hyperlink{namespacehmap_a2ac3034879fe68a7cc67d2d452a60c1a}{hmap::reconstruction\_by\_erosion}}(marker\_e,\ z,\ ir);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ ze\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_ad1813ae47f33d026b0c3e6f7e370b5c8}{hmap::gpu::reconstruction\_by\_erosion}}(marker\_e,\ z,\ ir);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zo\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_a1afc69c95369f96477e049d657a15b3b}{hmap::gpu::opening\_by\_reconstruction}}(z,\ ir);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zc\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_a4da387d47e1096eb2297f4d72513e4ae}{hmap::gpu::closing\_by\_reconstruction}}(z,\ ir);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_reconstruction\_by\_dilation.png"{}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ zd,\ ze\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ zd,\ ze,\ zc,\ zo\},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9}{hmap::Cmap::TERRAIN}},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
 \DoxyCodeLine{\}}
@@ -22573,13 +22629,16 @@ Iteratively erodes the marker image while constraining values to be greater than
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ ir\ =\ 16;}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ marker\_d\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_aed5416971461ddb7fb6427bdeb5cae86}{hmap::gpu::erosion}}(z,\ ir);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zd\ =\ \mbox{\hyperlink{namespacehmap_a5b01ee5f465847e08cde67a9533590e3}{hmap::reconstruction\_by\_dilation}}(marker\_d,\ z,\ ir);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zd\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_a4b010c9a58ba75a27467385a368f70ce}{hmap::gpu::reconstruction\_by\_dilation}}(marker\_d,\ z,\ ir);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ marker\_e\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_aed49f777e8ad095bafc5dc014e548e6e}{hmap::gpu::dilation}}(z,\ ir);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ ze\ =\ \mbox{\hyperlink{namespacehmap_a2ac3034879fe68a7cc67d2d452a60c1a}{hmap::reconstruction\_by\_erosion}}(marker\_e,\ z,\ ir);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ ze\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_ad1813ae47f33d026b0c3e6f7e370b5c8}{hmap::gpu::reconstruction\_by\_erosion}}(marker\_e,\ z,\ ir);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zo\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_a1afc69c95369f96477e049d657a15b3b}{hmap::gpu::opening\_by\_reconstruction}}(z,\ ir);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zc\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_a4da387d47e1096eb2297f4d72513e4ae}{hmap::gpu::closing\_by\_reconstruction}}(z,\ ir);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_reconstruction\_by\_dilation.png"{}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ zd,\ ze\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ zd,\ ze,\ zc,\ zo\},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9}{hmap::Cmap::TERRAIN}},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
 \DoxyCodeLine{\}}

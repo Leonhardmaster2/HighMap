@@ -2,6 +2,7 @@ var morphology_8cpp =
 [
     [ "border", "morphology_8cpp.html#af80bcff234bf1482cf26896b9d21d270", null ],
     [ "closing", "morphology_8cpp.html#a889405ce11be91e33cc80ca4dbd192b0", null ],
+    [ "closing_by_reconstruction", "morphology_8cpp.html#a9e5600ea0195404efc56ad821e152c60", null ],
     [ "dilation", "morphology_8cpp.html#ac91a2dacd050d8588b4135f02dd8f2a5", null ],
     [ "dilation_expand_border_only", "morphology_8cpp.html#a268e133ae504eaa1b31c91d13135f4c5", null ],
     [ "dilation_expand_min_value_border_only", "morphology_8cpp.html#a511226f8c6989729ff59e5079a6cff29", null ],
@@ -12,6 +13,7 @@ var morphology_8cpp =
     [ "morphological_laplacian", "morphology_8cpp.html#aeb7c9ef8addab179badc77310cfde1b5", null ],
     [ "morphological_top_hat", "morphology_8cpp.html#a211108a73f7ebadb6ac87621c4e47301", null ],
     [ "opening", "morphology_8cpp.html#abd3024b8233a70596ff2924607221637", null ],
+    [ "opening_by_reconstruction", "morphology_8cpp.html#a35df7dd9ad7cff66bed5f5dcdac30797", null ],
     [ "reconstruction_by_dilation", "morphology_8cpp.html#a5b01ee5f465847e08cde67a9533590e3", null ],
     [ "reconstruction_by_erosion", "morphology_8cpp.html#a2ac3034879fe68a7cc67d2d452a60c1a", null ],
     [ "helper_thinning", "morphology_8cpp.html#a2c98f2116e221df5f6684a7546bb233f", null ],
