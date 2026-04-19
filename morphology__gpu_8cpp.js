@@ -10,6 +10,8 @@ var morphology__gpu_8cpp =
     [ "morphological_laplacian", "morphology__gpu_8cpp.html#aed594a6d00b1239026f28df608e2bd36", null ],
     [ "morphological_top_hat", "morphology__gpu_8cpp.html#a60054a81f8c3aad5b83da8ce8d915d28", null ],
     [ "opening", "morphology__gpu_8cpp.html#adbfa7d94f6de438b8c0a410c101f3350", null ],
+    [ "reconstruction_by_dilation", "morphology__gpu_8cpp.html#a4b010c9a58ba75a27467385a368f70ce", null ],
+    [ "reconstruction_by_erosion", "morphology__gpu_8cpp.html#ad1813ae47f33d026b0c3e6f7e370b5c8", null ],
     [ "relative_distance_from_skeleton", "morphology__gpu_8cpp.html#a5a96e5f24b80d47262daede2c0743ba6", null ],
     [ "skeleton", "morphology__gpu_8cpp.html#a5287e8c6a324fa91bea6c7bf98aacd68", null ]
 ];

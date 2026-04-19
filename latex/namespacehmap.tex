@@ -1472,6 +1472,10 @@ void \mbox{\hyperlink{namespacehmap_adff494af7c8bf4db7f3e6fddd3261793}{flood\+\_
 \begin{DoxyCompactList}\small\item\em Apply a morphological top hat algorithm to the input array using a square structure. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_abd3024b8233a70596ff2924607221637}{opening}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
 \begin{DoxyCompactList}\small\item\em Apply an opening algorithm to the input array using a square structure. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a5b01ee5f465847e08cde67a9533590e3}{reconstruction\+\_\+by\+\_\+dilation}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&marker, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&mask, int ir, float k\+\_\+smooth\+\_\+min=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
+\begin{DoxyCompactList}\small\item\em Perform morphological reconstruction by dilation. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a2ac3034879fe68a7cc67d2d452a60c1a}{reconstruction\+\_\+by\+\_\+erosion}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&marker, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&mask, int ir, float k\+\_\+smooth\+\_\+max=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
+\begin{DoxyCompactList}\small\item\em Perform morphological reconstruction by erosion. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a7c7d934cc5a3a5e1a6f17c09a0e1e51f}{relative\+\_\+distance\+\_\+from\+\_\+skeleton}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir\+\_\+search, bool zero\+\_\+at\+\_\+borders=true, int ir\+\_\+erosion=1)
 \begin{DoxyCompactList}\small\item\em Computes the relative distance of each non-\/zero cell in a binary array from the skeleton and border. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_ac56515202b30368216c7324b819cc838}{signed\+\_\+curvature\+\_\+from\+\_\+distance}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int prefilter\+\_\+ir=0)
@@ -22459,6 +22463,124 @@ Apply an opening algorithm to the input array using a square structure.
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ arrays,}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{false},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}}  \Hypertarget{namespacehmap_a5b01ee5f465847e08cde67a9533590e3}\label{namespacehmap_a5b01ee5f465847e08cde67a9533590e3} 
+\index{hmap@{hmap}!reconstruction\_by\_dilation@{reconstruction\_by\_dilation}}
+\index{reconstruction\_by\_dilation@{reconstruction\_by\_dilation}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{reconstruction\_by\_dilation()}{reconstruction\_by\_dilation()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::reconstruction\+\_\+by\+\_\+dilation (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{marker,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{mask,  }\item[{int}]{ir,  }\item[{float}]{k\+\_\+smooth\+\_\+min = {\ttfamily 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
+
+
+
+Perform morphological reconstruction by dilation. 
+
+Iteratively dilates the marker image while constraining values to be less than or equal to the mask. The marker must be element-\/wise \texorpdfstring{$<$}{<}= mask. Optionally uses a smooth minimum controlled by {\ttfamily k\+\_\+smooth\+\_\+min}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em marker} & Initial image (seed), must satisfy marker \texorpdfstring{$<$}{<}= mask. \\
+\hline
+{\em mask} & Constraint image (upper bound). \\
+\hline
+{\em ir} & Radius of the structuring element. \\
+\hline
+{\em k\+\_\+smooth\+\_\+min} & Smoothness factor (0 for hard min). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classhmap_1_1Array}{Array} Reconstructed image.
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_1_1gpu_adb8336ed4d83c15500872185dee45d50}{hmap::gpu::init\_opencl}}();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
+\DoxyCodeLine{\ \ glm::vec2\ \ res\ =\ \{4.f,\ 4.f\};}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 1;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_acb13e7346085793fda4c94c47b75d9a9}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ res,\ seed);}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ hmap::clamp\_min(z,\ 0.f);}}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ab80da2376c6212eb9cb2899c0a5114ad}{hmap::remap}}(z);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ ir\ =\ 16;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ marker\_d\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_aed5416971461ddb7fb6427bdeb5cae86}{hmap::gpu::erosion}}(z,\ ir);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zd\ =\ \mbox{\hyperlink{namespacehmap_a5b01ee5f465847e08cde67a9533590e3}{hmap::reconstruction\_by\_dilation}}(marker\_d,\ z,\ ir);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ marker\_e\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_aed49f777e8ad095bafc5dc014e548e6e}{hmap::gpu::dilation}}(z,\ ir);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ ze\ =\ \mbox{\hyperlink{namespacehmap_a2ac3034879fe68a7cc67d2d452a60c1a}{hmap::reconstruction\_by\_erosion}}(marker\_e,\ z,\ ir);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_reconstruction\_by\_dilation.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ zd,\ ze\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9}{hmap::Cmap::TERRAIN}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}}  \Hypertarget{namespacehmap_a2ac3034879fe68a7cc67d2d452a60c1a}\label{namespacehmap_a2ac3034879fe68a7cc67d2d452a60c1a} 
+\index{hmap@{hmap}!reconstruction\_by\_erosion@{reconstruction\_by\_erosion}}
+\index{reconstruction\_by\_erosion@{reconstruction\_by\_erosion}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{reconstruction\_by\_erosion()}{reconstruction\_by\_erosion()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::reconstruction\+\_\+by\+\_\+erosion (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{marker,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{mask,  }\item[{int}]{ir,  }\item[{float}]{k\+\_\+smooth\+\_\+max = {\ttfamily 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
+
+
+
+Perform morphological reconstruction by erosion. 
+
+Iteratively erodes the marker image while constraining values to be greater than or equal to the mask. The marker must be element-\/wise \texorpdfstring{$>$}{>}= mask. Optionally uses a smooth maximum controlled by {\ttfamily k\+\_\+smooth\+\_\+max}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em marker} & Initial image (seed), must satisfy marker \texorpdfstring{$>$}{>}= mask. \\
+\hline
+{\em mask} & Constraint image (lower bound). \\
+\hline
+{\em ir} & Radius of the structuring element. \\
+\hline
+{\em k\+\_\+smooth\+\_\+max} & Smoothness factor (0 for hard max). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classhmap_1_1Array}{Array} Reconstructed image.
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_1_1gpu_adb8336ed4d83c15500872185dee45d50}{hmap::gpu::init\_opencl}}();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
+\DoxyCodeLine{\ \ glm::vec2\ \ res\ =\ \{4.f,\ 4.f\};}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 1;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_acb13e7346085793fda4c94c47b75d9a9}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ res,\ seed);}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ hmap::clamp\_min(z,\ 0.f);}}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ab80da2376c6212eb9cb2899c0a5114ad}{hmap::remap}}(z);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ ir\ =\ 16;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ marker\_d\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_aed5416971461ddb7fb6427bdeb5cae86}{hmap::gpu::erosion}}(z,\ ir);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zd\ =\ \mbox{\hyperlink{namespacehmap_a5b01ee5f465847e08cde67a9533590e3}{hmap::reconstruction\_by\_dilation}}(marker\_d,\ z,\ ir);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ marker\_e\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_aed49f777e8ad095bafc5dc014e548e6e}{hmap::gpu::dilation}}(z,\ ir);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ ze\ =\ \mbox{\hyperlink{namespacehmap_a2ac3034879fe68a7cc67d2d452a60c1a}{hmap::reconstruction\_by\_erosion}}(marker\_e,\ z,\ ir);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_reconstruction\_by\_dilation.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ zd,\ ze\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9}{hmap::Cmap::TERRAIN}},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
 \DoxyCodeLine{\}}
 

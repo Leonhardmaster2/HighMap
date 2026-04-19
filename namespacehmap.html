@@ -2118,6 +2118,12 @@ Functions</h2></td></tr>
 <tr class="memitem:abd3024b8233a70596ff2924607221637" id="r_abd3024b8233a70596ff2924607221637"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#abd3024b8233a70596ff2924607221637">opening</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, int ir)</td></tr>
 <tr class="memdesc:abd3024b8233a70596ff2924607221637"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply an opening algorithm to the input array using a square structure.  <br /></td></tr>
 <tr class="separator:abd3024b8233a70596ff2924607221637"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b01ee5f465847e08cde67a9533590e3" id="r_a5b01ee5f465847e08cde67a9533590e3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a5b01ee5f465847e08cde67a9533590e3">reconstruction_by_dilation</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;marker, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;mask, int ir, float k_smooth_min=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
+<tr class="memdesc:a5b01ee5f465847e08cde67a9533590e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform morphological reconstruction by dilation.  <br /></td></tr>
+<tr class="separator:a5b01ee5f465847e08cde67a9533590e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ac3034879fe68a7cc67d2d452a60c1a" id="r_a2ac3034879fe68a7cc67d2d452a60c1a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a2ac3034879fe68a7cc67d2d452a60c1a">reconstruction_by_erosion</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;marker, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;mask, int ir, float k_smooth_max=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
+<tr class="memdesc:a2ac3034879fe68a7cc67d2d452a60c1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform morphological reconstruction by erosion.  <br /></td></tr>
+<tr class="separator:a2ac3034879fe68a7cc67d2d452a60c1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7c7d934cc5a3a5e1a6f17c09a0e1e51f" id="r_a7c7d934cc5a3a5e1a6f17c09a0e1e51f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a7c7d934cc5a3a5e1a6f17c09a0e1e51f">relative_distance_from_skeleton</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, int ir_search, bool zero_at_borders=true, int ir_erosion=1)</td></tr>
 <tr class="memdesc:a7c7d934cc5a3a5e1a6f17c09a0e1e51f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the relative distance of each non-zero cell in a binary array from the skeleton and border.  <br /></td></tr>
 <tr class="separator:a7c7d934cc5a3a5e1a6f17c09a0e1e51f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -5870,7 +5876,7 @@ template&lt;typename T , typename Fn , typename Reduce &gt; </div>
 <div class="ttc" id="anamespacehmap_html_a1ba9d4ce7afe3309f8ae8e617f7154eea1bda4002f204a3b745ea70dab2b6b6d8"><div class="ttname"><a href="namespacehmap.html#a1ba9d4ce7afe3309f8ae8e617f7154eea1bda4002f204a3b745ea70dab2b6b6d8">hmap::BOUNDARY_TOP</a></div><div class="ttdeci">@ BOUNDARY_TOP</div><div class="ttdoc">j = 0</div><div class="ttdef"><b>Definition</b> boundary.hpp:46</div></div>
 <div class="ttc" id="anamespacehmap_html_a1ba9d4ce7afe3309f8ae8e617f7154eeac7495a13a71417dd76751518cd185309"><div class="ttname"><a href="namespacehmap.html#a1ba9d4ce7afe3309f8ae8e617f7154eeac7495a13a71417dd76751518cd185309">hmap::BOUNDARY_BOTTOM</a></div><div class="ttdeci">@ BOUNDARY_BOTTOM</div><div class="ttdoc">j = ny - 1</div><div class="ttdef"><b>Definition</b> boundary.hpp:47</div></div>
 <div class="ttc" id="anamespacehmap_html_ab207cc7cdd3fe0e04ea1ca4825e7b5de"><div class="ttname"><a href="namespacehmap.html#ab207cc7cdd3fe0e04ea1ca4825e7b5de">hmap::pick_boundary_cell</a></div><div class="ttdeci">glm::ivec2 pick_boundary_cell(const Array &amp;z, DomainBoundary boundary, uint seed, bool favor_boundary_center=true, bool favor_lower_elevation=true, bool favor_sinks=true)</div><div class="ttdoc">Picks a boundary cell using weighted random selection.</div><div class="ttdef"><b>Definition</b> pick_boundary_cell.cpp:10</div></div>
-<div class="ttc" id="anamespacehmap_html_ac91a2dacd050d8588b4135f02dd8f2a5"><div class="ttname"><a href="namespacehmap.html#ac91a2dacd050d8588b4135f02dd8f2a5">hmap::dilation</a></div><div class="ttdeci">Array dilation(const Array &amp;array, int ir)</div><div class="ttdoc">Apply a dilation algorithm to the input array using a square structure.</div><div class="ttdef"><b>Definition</b> morphology.cpp:25</div></div>
+<div class="ttc" id="anamespacehmap_html_ac91a2dacd050d8588b4135f02dd8f2a5"><div class="ttname"><a href="namespacehmap.html#ac91a2dacd050d8588b4135f02dd8f2a5">hmap::dilation</a></div><div class="ttdeci">Array dilation(const Array &amp;array, int ir)</div><div class="ttdoc">Apply a dilation algorithm to the input array using a square structure.</div><div class="ttdef"><b>Definition</b> morphology.cpp:26</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_pick_boundary_cell.png" alt=""/>
 </div>
@@ -35398,24 +35404,24 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 <div class="line">                          <span class="keyword">true</span>);</div>
 <div class="line">}</div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_af427123c185935335c9d2e108c833c67"><div class="ttname"><a href="namespacehmap_1_1gpu.html#af427123c185935335c9d2e108c833c67">hmap::gpu::morphological_operators</a></div><div class="ttdeci">Array morphological_operators(const Array &amp;array, int ir, MorphologyOperation operation)</div><div class="ttdoc">See hmap::morphological_operators.</div><div class="ttdef"><b>Definition</b> wrapper.cpp:53</div></div>
-<div class="ttc" id="anamespacehmap_html_a01f3be1fd053428ea67030e3736d15ca"><div class="ttname"><a href="namespacehmap.html#a01f3be1fd053428ea67030e3736d15ca">hmap::morphological_gradient</a></div><div class="ttdeci">Array morphological_gradient(const Array &amp;array, int ir)</div><div class="ttdoc">Apply a morphological gradient algorithm to the input array using a square structure.</div><div class="ttdef"><b>Definition</b> morphology.cpp:132</div></div>
-<div class="ttc" id="anamespacehmap_html_a1cf22c68188d0e35aa74983f3a01c488"><div class="ttname"><a href="namespacehmap.html#a1cf22c68188d0e35aa74983f3a01c488">hmap::morphological_black_hat</a></div><div class="ttdeci">Array morphological_black_hat(const Array &amp;array, int ir)</div><div class="ttdoc">Apply a morphological black hat algorithm to the input array using a square structure.</div><div class="ttdef"><b>Definition</b> morphology.cpp:127</div></div>
-<div class="ttc" id="anamespacehmap_html_a211108a73f7ebadb6ac87621c4e47301"><div class="ttname"><a href="namespacehmap.html#a211108a73f7ebadb6ac87621c4e47301">hmap::morphological_top_hat</a></div><div class="ttdeci">Array morphological_top_hat(const Array &amp;array, int ir)</div><div class="ttdoc">Apply a morphological top hat algorithm to the input array using a square structure.</div><div class="ttdef"><b>Definition</b> morphology.cpp:144</div></div>
-<div class="ttc" id="anamespacehmap_html_a321149eda3417aa485a010c31267818ca0e9abbb30a51ad2951f6f0b527f6f7a1"><div class="ttname"><a href="namespacehmap.html#a321149eda3417aa485a010c31267818ca0e9abbb30a51ad2951f6f0b527f6f7a1">hmap::MO_EROSION</a></div><div class="ttdeci">@ MO_EROSION</div><div class="ttdoc">Shrink structures (local minimum).</div><div class="ttdef"><b>Definition</b> morphology.hpp:507</div></div>
-<div class="ttc" id="anamespacehmap_html_a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e"><div class="ttname"><a href="namespacehmap.html#a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e">hmap::MO_LAPLACIAN</a></div><div class="ttdeci">@ MO_LAPLACIAN</div><div class="ttdoc">Second-order operator highlighting ridges and.</div><div class="ttdef"><b>Definition</b> morphology.hpp:513</div></div>
-<div class="ttc" id="anamespacehmap_html_a321149eda3417aa485a010c31267818ca2a4e04241f3ad0bdc9da20e651ba8dd3"><div class="ttname"><a href="namespacehmap.html#a321149eda3417aa485a010c31267818ca2a4e04241f3ad0bdc9da20e651ba8dd3">hmap::MO_GRADIENT</a></div><div class="ttdeci">@ MO_GRADIENT</div><div class="ttdoc">Difference between dilation and erosion (edge.</div><div class="ttdef"><b>Definition</b> morphology.hpp:511</div></div>
-<div class="ttc" id="anamespacehmap_html_a321149eda3417aa485a010c31267818ca2a6dee7c1afab190ad76aa5e40f9eaf6"><div class="ttname"><a href="namespacehmap.html#a321149eda3417aa485a010c31267818ca2a6dee7c1afab190ad76aa5e40f9eaf6">hmap::MO_OPENING</a></div><div class="ttdeci">@ MO_OPENING</div><div class="ttdoc">Erosion followed by dilation (removes small objects).</div><div class="ttdef"><b>Definition</b> morphology.hpp:508</div></div>
-<div class="ttc" id="anamespacehmap_html_a321149eda3417aa485a010c31267818ca442219bd6354336f660624a2b76bde23"><div class="ttname"><a href="namespacehmap.html#a321149eda3417aa485a010c31267818ca442219bd6354336f660624a2b76bde23">hmap::MO_CLOSING</a></div><div class="ttdeci">@ MO_CLOSING</div><div class="ttdoc">Dilation followed by erosion (fills small holes).</div><div class="ttdef"><b>Definition</b> morphology.hpp:505</div></div>
-<div class="ttc" id="anamespacehmap_html_a321149eda3417aa485a010c31267818ca8083c22f48c0732c103514d10b5fe7e6"><div class="ttname"><a href="namespacehmap.html#a321149eda3417aa485a010c31267818ca8083c22f48c0732c103514d10b5fe7e6">hmap::MO_BORDER</a></div><div class="ttdeci">@ MO_BORDER</div><div class="ttdoc">Extract border of structures.</div><div class="ttdef"><b>Definition</b> morphology.hpp:504</div></div>
-<div class="ttc" id="anamespacehmap_html_a321149eda3417aa485a010c31267818ca95312bbd452f457354100b456719f931"><div class="ttname"><a href="namespacehmap.html#a321149eda3417aa485a010c31267818ca95312bbd452f457354100b456719f931">hmap::MO_BLACK_HAT</a></div><div class="ttdeci">@ MO_BLACK_HAT</div><div class="ttdoc">Difference between closing and input (dark features).</div><div class="ttdef"><b>Definition</b> morphology.hpp:509</div></div>
-<div class="ttc" id="anamespacehmap_html_a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2"><div class="ttname"><a href="namespacehmap.html#a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2">hmap::MO_TOP_HAT</a></div><div class="ttdeci">@ MO_TOP_HAT</div><div class="ttdoc">Difference between input and opening (bright features).</div><div class="ttdef"><b>Definition</b> morphology.hpp:510</div></div>
-<div class="ttc" id="anamespacehmap_html_a321149eda3417aa485a010c31267818cad2e58516e7657971e3e16cd131089055"><div class="ttname"><a href="namespacehmap.html#a321149eda3417aa485a010c31267818cad2e58516e7657971e3e16cd131089055">hmap::MO_DILATION</a></div><div class="ttdeci">@ MO_DILATION</div><div class="ttdoc">Expand structures (local maximum).</div><div class="ttdef"><b>Definition</b> morphology.hpp:506</div></div>
-<div class="ttc" id="anamespacehmap_html_a889405ce11be91e33cc80ca4dbd192b0"><div class="ttname"><a href="namespacehmap.html#a889405ce11be91e33cc80ca4dbd192b0">hmap::closing</a></div><div class="ttdeci">Array closing(const Array &amp;array, int ir)</div><div class="ttdoc">Apply a closing algorithm to the input array using a square structure.</div><div class="ttdef"><b>Definition</b> morphology.cpp:20</div></div>
-<div class="ttc" id="anamespacehmap_html_a9cf7773f6141162bf60708a93acdfcee"><div class="ttname"><a href="namespacehmap.html#a9cf7773f6141162bf60708a93acdfcee">hmap::erosion</a></div><div class="ttdeci">Array erosion(const Array &amp;array, int ir)</div><div class="ttdoc">Apply an erosion algorithm to the input array using a square structure.</div><div class="ttdef"><b>Definition</b> morphology.cpp:75</div></div>
-<div class="ttc" id="anamespacehmap_html_abd3024b8233a70596ff2924607221637"><div class="ttname"><a href="namespacehmap.html#abd3024b8233a70596ff2924607221637">hmap::opening</a></div><div class="ttdeci">Array opening(const Array &amp;array, int ir)</div><div class="ttdoc">Apply an opening algorithm to the input array using a square structure.</div><div class="ttdef"><b>Definition</b> morphology.cpp:149</div></div>
+<div class="ttc" id="anamespacehmap_html_a01f3be1fd053428ea67030e3736d15ca"><div class="ttname"><a href="namespacehmap.html#a01f3be1fd053428ea67030e3736d15ca">hmap::morphological_gradient</a></div><div class="ttdeci">Array morphological_gradient(const Array &amp;array, int ir)</div><div class="ttdoc">Apply a morphological gradient algorithm to the input array using a square structure.</div><div class="ttdef"><b>Definition</b> morphology.cpp:133</div></div>
+<div class="ttc" id="anamespacehmap_html_a1cf22c68188d0e35aa74983f3a01c488"><div class="ttname"><a href="namespacehmap.html#a1cf22c68188d0e35aa74983f3a01c488">hmap::morphological_black_hat</a></div><div class="ttdeci">Array morphological_black_hat(const Array &amp;array, int ir)</div><div class="ttdoc">Apply a morphological black hat algorithm to the input array using a square structure.</div><div class="ttdef"><b>Definition</b> morphology.cpp:128</div></div>
+<div class="ttc" id="anamespacehmap_html_a211108a73f7ebadb6ac87621c4e47301"><div class="ttname"><a href="namespacehmap.html#a211108a73f7ebadb6ac87621c4e47301">hmap::morphological_top_hat</a></div><div class="ttdeci">Array morphological_top_hat(const Array &amp;array, int ir)</div><div class="ttdoc">Apply a morphological top hat algorithm to the input array using a square structure.</div><div class="ttdef"><b>Definition</b> morphology.cpp:145</div></div>
+<div class="ttc" id="anamespacehmap_html_a321149eda3417aa485a010c31267818ca0e9abbb30a51ad2951f6f0b527f6f7a1"><div class="ttname"><a href="namespacehmap.html#a321149eda3417aa485a010c31267818ca0e9abbb30a51ad2951f6f0b527f6f7a1">hmap::MO_EROSION</a></div><div class="ttdeci">@ MO_EROSION</div><div class="ttdoc">Shrink structures (local minimum).</div><div class="ttdef"><b>Definition</b> morphology.hpp:567</div></div>
+<div class="ttc" id="anamespacehmap_html_a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e"><div class="ttname"><a href="namespacehmap.html#a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e">hmap::MO_LAPLACIAN</a></div><div class="ttdeci">@ MO_LAPLACIAN</div><div class="ttdoc">Second-order operator highlighting ridges and.</div><div class="ttdef"><b>Definition</b> morphology.hpp:573</div></div>
+<div class="ttc" id="anamespacehmap_html_a321149eda3417aa485a010c31267818ca2a4e04241f3ad0bdc9da20e651ba8dd3"><div class="ttname"><a href="namespacehmap.html#a321149eda3417aa485a010c31267818ca2a4e04241f3ad0bdc9da20e651ba8dd3">hmap::MO_GRADIENT</a></div><div class="ttdeci">@ MO_GRADIENT</div><div class="ttdoc">Difference between dilation and erosion (edge.</div><div class="ttdef"><b>Definition</b> morphology.hpp:571</div></div>
+<div class="ttc" id="anamespacehmap_html_a321149eda3417aa485a010c31267818ca2a6dee7c1afab190ad76aa5e40f9eaf6"><div class="ttname"><a href="namespacehmap.html#a321149eda3417aa485a010c31267818ca2a6dee7c1afab190ad76aa5e40f9eaf6">hmap::MO_OPENING</a></div><div class="ttdeci">@ MO_OPENING</div><div class="ttdoc">Erosion followed by dilation (removes small objects).</div><div class="ttdef"><b>Definition</b> morphology.hpp:568</div></div>
+<div class="ttc" id="anamespacehmap_html_a321149eda3417aa485a010c31267818ca442219bd6354336f660624a2b76bde23"><div class="ttname"><a href="namespacehmap.html#a321149eda3417aa485a010c31267818ca442219bd6354336f660624a2b76bde23">hmap::MO_CLOSING</a></div><div class="ttdeci">@ MO_CLOSING</div><div class="ttdoc">Dilation followed by erosion (fills small holes).</div><div class="ttdef"><b>Definition</b> morphology.hpp:565</div></div>
+<div class="ttc" id="anamespacehmap_html_a321149eda3417aa485a010c31267818ca8083c22f48c0732c103514d10b5fe7e6"><div class="ttname"><a href="namespacehmap.html#a321149eda3417aa485a010c31267818ca8083c22f48c0732c103514d10b5fe7e6">hmap::MO_BORDER</a></div><div class="ttdeci">@ MO_BORDER</div><div class="ttdoc">Extract border of structures.</div><div class="ttdef"><b>Definition</b> morphology.hpp:564</div></div>
+<div class="ttc" id="anamespacehmap_html_a321149eda3417aa485a010c31267818ca95312bbd452f457354100b456719f931"><div class="ttname"><a href="namespacehmap.html#a321149eda3417aa485a010c31267818ca95312bbd452f457354100b456719f931">hmap::MO_BLACK_HAT</a></div><div class="ttdeci">@ MO_BLACK_HAT</div><div class="ttdoc">Difference between closing and input (dark features).</div><div class="ttdef"><b>Definition</b> morphology.hpp:569</div></div>
+<div class="ttc" id="anamespacehmap_html_a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2"><div class="ttname"><a href="namespacehmap.html#a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2">hmap::MO_TOP_HAT</a></div><div class="ttdeci">@ MO_TOP_HAT</div><div class="ttdoc">Difference between input and opening (bright features).</div><div class="ttdef"><b>Definition</b> morphology.hpp:570</div></div>
+<div class="ttc" id="anamespacehmap_html_a321149eda3417aa485a010c31267818cad2e58516e7657971e3e16cd131089055"><div class="ttname"><a href="namespacehmap.html#a321149eda3417aa485a010c31267818cad2e58516e7657971e3e16cd131089055">hmap::MO_DILATION</a></div><div class="ttdeci">@ MO_DILATION</div><div class="ttdoc">Expand structures (local maximum).</div><div class="ttdef"><b>Definition</b> morphology.hpp:566</div></div>
+<div class="ttc" id="anamespacehmap_html_a889405ce11be91e33cc80ca4dbd192b0"><div class="ttname"><a href="namespacehmap.html#a889405ce11be91e33cc80ca4dbd192b0">hmap::closing</a></div><div class="ttdeci">Array closing(const Array &amp;array, int ir)</div><div class="ttdoc">Apply a closing algorithm to the input array using a square structure.</div><div class="ttdef"><b>Definition</b> morphology.cpp:21</div></div>
+<div class="ttc" id="anamespacehmap_html_a9cf7773f6141162bf60708a93acdfcee"><div class="ttname"><a href="namespacehmap.html#a9cf7773f6141162bf60708a93acdfcee">hmap::erosion</a></div><div class="ttdeci">Array erosion(const Array &amp;array, int ir)</div><div class="ttdoc">Apply an erosion algorithm to the input array using a square structure.</div><div class="ttdef"><b>Definition</b> morphology.cpp:76</div></div>
+<div class="ttc" id="anamespacehmap_html_abd3024b8233a70596ff2924607221637"><div class="ttname"><a href="namespacehmap.html#abd3024b8233a70596ff2924607221637">hmap::opening</a></div><div class="ttdeci">Array opening(const Array &amp;array, int ir)</div><div class="ttdoc">Apply an opening algorithm to the input array using a square structure.</div><div class="ttdef"><b>Definition</b> morphology.cpp:150</div></div>
 <div class="ttc" id="anamespacehmap_html_ad6e4d1cf34786ef4065fbc0a5fa03d6d"><div class="ttname"><a href="namespacehmap.html#ad6e4d1cf34786ef4065fbc0a5fa03d6d">hmap::morphological_operators</a></div><div class="ttdeci">Array morphological_operators(const Array &amp;array, int ir, MorphologyOperation operation)</div><div class="ttdoc">Apply a morphological operation to the input array using a square kernel.</div><div class="ttdef"><b>Definition</b> wrapper.cpp:11</div></div>
-<div class="ttc" id="anamespacehmap_html_aeb7c9ef8addab179badc77310cfde1b5"><div class="ttname"><a href="namespacehmap.html#aeb7c9ef8addab179badc77310cfde1b5">hmap::morphological_laplacian</a></div><div class="ttdeci">Array morphological_laplacian(const Array &amp;array, int ir)</div><div class="ttdoc">Apply a morphological Laplacian operator to the input array using a square structure.</div><div class="ttdef"><b>Definition</b> morphology.cpp:138</div></div>
-<div class="ttc" id="anamespacehmap_html_af80bcff234bf1482cf26896b9d21d270"><div class="ttname"><a href="namespacehmap.html#af80bcff234bf1482cf26896b9d21d270">hmap::border</a></div><div class="ttdeci">Array border(const Array &amp;array, int ir)</div><div class="ttdoc">Apply a border algorithm to the input array using a square structure.</div><div class="ttdef"><b>Definition</b> morphology.cpp:15</div></div>
+<div class="ttc" id="anamespacehmap_html_aeb7c9ef8addab179badc77310cfde1b5"><div class="ttname"><a href="namespacehmap.html#aeb7c9ef8addab179badc77310cfde1b5">hmap::morphological_laplacian</a></div><div class="ttdeci">Array morphological_laplacian(const Array &amp;array, int ir)</div><div class="ttdoc">Apply a morphological Laplacian operator to the input array using a square structure.</div><div class="ttdef"><b>Definition</b> morphology.cpp:139</div></div>
+<div class="ttc" id="anamespacehmap_html_af80bcff234bf1482cf26896b9d21d270"><div class="ttname"><a href="namespacehmap.html#af80bcff234bf1482cf26896b9d21d270">hmap::border</a></div><div class="ttdeci">Array border(const Array &amp;array, int ir)</div><div class="ttdoc">Apply a border algorithm to the input array using a square structure.</div><div class="ttdef"><b>Definition</b> morphology.cpp:16</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_morphology_base.png" alt=""/>
 </div>
@@ -36246,7 +36252,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 <div class="line">}</div>
 <div class="ttc" id="anamespacehmap_html_a7628beb3c72d94109fa4de260bd22453"><div class="ttname"><a href="namespacehmap.html#a7628beb3c72d94109fa4de260bd22453">hmap::gaussian_pulse</a></div><div class="ttdeci">Array gaussian_pulse(glm::ivec2 shape, float sigma, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, glm::vec2 center={0.5f, 0.5f}, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Return a gaussian_decay pulse kernel.</div><div class="ttdef"><b>Definition</b> primitives.cpp:203</div></div>
 <div class="ttc" id="anamespacehmap_html_a849d37221d492c5d96d945dc64b02754"><div class="ttname"><a href="namespacehmap.html#a849d37221d492c5d96d945dc64b02754">hmap::select_interval</a></div><div class="ttdeci">Array select_interval(const Array &amp;array, float value1, float value2)</div><div class="ttdoc">Return an array with elements equal to 1 where input elements are within the bounds provided.</div><div class="ttdef"><b>Definition</b> selector.cpp:152</div></div>
-<div class="ttc" id="anamespacehmap_html_adff494af7c8bf4db7f3e6fddd3261793"><div class="ttname"><a href="namespacehmap.html#adff494af7c8bf4db7f3e6fddd3261793">hmap::flood_fill</a></div><div class="ttdeci">void flood_fill(Array &amp;array, int i, int j, float fill_value=1.f, float background_value=0.f)</div><div class="ttdoc">Apply a flood fill algorithm to the input array.</div><div class="ttdef"><b>Definition</b> morphology.cpp:80</div></div>
+<div class="ttc" id="anamespacehmap_html_adff494af7c8bf4db7f3e6fddd3261793"><div class="ttname"><a href="namespacehmap.html#adff494af7c8bf4db7f3e6fddd3261793">hmap::flood_fill</a></div><div class="ttdeci">void flood_fill(Array &amp;array, int i, int j, float fill_value=1.f, float background_value=0.f)</div><div class="ttdoc">Apply a flood fill algorithm to the input array.</div><div class="ttdef"><b>Definition</b> morphology.cpp:81</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_flood_fill.png" alt=""/>
 </div>
@@ -36859,6 +36865,176 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
  
 </div>
 </div>
+<a id="a5b01ee5f465847e08cde67a9533590e3" name="a5b01ee5f465847e08cde67a9533590e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b01ee5f465847e08cde67a9533590e3">&#9670;&#160;</a></span>reconstruction_by_dilation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classhmap_1_1Array.html">Array</a> hmap::reconstruction_by_dilation </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>marker</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>mask</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ir</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>k_smooth_min</em> = <code>0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Perform morphological reconstruction by dilation. </p>
+<p>Iteratively dilates the marker image while constraining values to be less than or equal to the mask. The marker must be element-wise &lt;= mask. Optionally uses a smooth minimum controlled by <code>k_smooth_min</code>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">marker</td><td>Initial image (seed), must satisfy marker &lt;= mask. </td></tr>
+    <tr><td class="paramname">mask</td><td>Constraint image (upper bound). </td></tr>
+    <tr><td class="paramname">ir</td><td>Radius of the structuring element. </td></tr>
+    <tr><td class="paramname">k_smooth_min</td><td>Smoothness factor (0 for hard min). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classhmap_1_1Array.html" title="Array class, helper to manipulate 2D float array with &quot;(i, j)&quot; indexing.">Array</a> Reconstructed image.</dd></dl>
+<p><b>Example</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="highmap_8hpp.html">highmap.hpp</a>&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
+<div class="line">{</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap_1_1gpu.html#adb8336ed4d83c15500872185dee45d50">hmap::gpu::init_opencl</a>();</div>
+<div class="line"> </div>
+<div class="line">  glm::ivec2 shape = {256, 256};</div>
+<div class="line">  glm::vec2  res = {4.f, 4.f};</div>
+<div class="line">  <span class="keywordtype">int</span>        seed = 1;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z = <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, res, seed);</div>
+<div class="line">  <span class="comment">// hmap::clamp_min(z, 0.f);</span></div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordtype">int</span> ir = 16;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> marker_d = <a class="code hl_function" href="namespacehmap_1_1gpu.html#aed5416971461ddb7fb6427bdeb5cae86">hmap::gpu::erosion</a>(z, ir);</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> zd = <a class="code hl_function" href="namespacehmap.html#a5b01ee5f465847e08cde67a9533590e3">hmap::reconstruction_by_dilation</a>(marker_d, z, ir);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> marker_e = <a class="code hl_function" href="namespacehmap_1_1gpu.html#aed49f777e8ad095bafc5dc014e548e6e">hmap::gpu::dilation</a>(z, ir);</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> ze = <a class="code hl_function" href="namespacehmap.html#a2ac3034879fe68a7cc67d2d452a60c1a">hmap::reconstruction_by_erosion</a>(marker_e, z, ir);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_reconstruction_by_dilation.png&quot;</span>,</div>
+<div class="line">                          {z, zd, ze},</div>
+<div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>,</div>
+<div class="line">                          <span class="keyword">true</span>);</div>
+<div class="line">}</div>
+<div class="ttc" id="anamespacehmap_1_1gpu_html_aed49f777e8ad095bafc5dc014e548e6e"><div class="ttname"><a href="namespacehmap_1_1gpu.html#aed49f777e8ad095bafc5dc014e548e6e">hmap::gpu::dilation</a></div><div class="ttdeci">Array dilation(const Array &amp;array, int ir)</div><div class="ttdoc">See hmap::dilation.</div><div class="ttdef"><b>Definition</b> morphology_gpu.cpp:25</div></div>
+<div class="ttc" id="anamespacehmap_1_1gpu_html_aed5416971461ddb7fb6427bdeb5cae86"><div class="ttname"><a href="namespacehmap_1_1gpu.html#aed5416971461ddb7fb6427bdeb5cae86">hmap::gpu::erosion</a></div><div class="ttdeci">Array erosion(const Array &amp;array, int ir)</div><div class="ttdoc">See hmap::erosion.</div><div class="ttdef"><b>Definition</b> morphology_gpu.cpp:45</div></div>
+<div class="ttc" id="anamespacehmap_html_a2ac3034879fe68a7cc67d2d452a60c1a"><div class="ttname"><a href="namespacehmap.html#a2ac3034879fe68a7cc67d2d452a60c1a">hmap::reconstruction_by_erosion</a></div><div class="ttdeci">Array reconstruction_by_erosion(const Array &amp;marker, const Array &amp;mask, int ir, float k_smooth_max=0.f)</div><div class="ttdoc">Perform morphological reconstruction by erosion.</div><div class="ttdef"><b>Definition</b> morphology.cpp:183</div></div>
+<div class="ttc" id="anamespacehmap_html_a5b01ee5f465847e08cde67a9533590e3"><div class="ttname"><a href="namespacehmap.html#a5b01ee5f465847e08cde67a9533590e3">hmap::reconstruction_by_dilation</a></div><div class="ttdeci">Array reconstruction_by_dilation(const Array &amp;marker, const Array &amp;mask, int ir, float k_smooth_min=0.f)</div><div class="ttdoc">Perform morphological reconstruction by dilation.</div><div class="ttdef"><b>Definition</b> morphology.cpp:155</div></div>
+</div><!-- fragment --><p><b>Result</b> </p><div class="image">
+<img src="ex_reconstruction_by_dilation.png" alt=""/>
+</div>
+ 
+</div>
+</div>
+<a id="a2ac3034879fe68a7cc67d2d452a60c1a" name="a2ac3034879fe68a7cc67d2d452a60c1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ac3034879fe68a7cc67d2d452a60c1a">&#9670;&#160;</a></span>reconstruction_by_erosion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classhmap_1_1Array.html">Array</a> hmap::reconstruction_by_erosion </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>marker</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>mask</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ir</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>k_smooth_max</em> = <code>0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Perform morphological reconstruction by erosion. </p>
+<p>Iteratively erodes the marker image while constraining values to be greater than or equal to the mask. The marker must be element-wise &gt;= mask. Optionally uses a smooth maximum controlled by <code>k_smooth_max</code>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">marker</td><td>Initial image (seed), must satisfy marker &gt;= mask. </td></tr>
+    <tr><td class="paramname">mask</td><td>Constraint image (lower bound). </td></tr>
+    <tr><td class="paramname">ir</td><td>Radius of the structuring element. </td></tr>
+    <tr><td class="paramname">k_smooth_max</td><td>Smoothness factor (0 for hard max). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classhmap_1_1Array.html" title="Array class, helper to manipulate 2D float array with &quot;(i, j)&quot; indexing.">Array</a> Reconstructed image.</dd></dl>
+<p><b>Example</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="highmap_8hpp.html">highmap.hpp</a>&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
+<div class="line">{</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap_1_1gpu.html#adb8336ed4d83c15500872185dee45d50">hmap::gpu::init_opencl</a>();</div>
+<div class="line"> </div>
+<div class="line">  glm::ivec2 shape = {256, 256};</div>
+<div class="line">  glm::vec2  res = {4.f, 4.f};</div>
+<div class="line">  <span class="keywordtype">int</span>        seed = 1;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z = <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, res, seed);</div>
+<div class="line">  <span class="comment">// hmap::clamp_min(z, 0.f);</span></div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordtype">int</span> ir = 16;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> marker_d = <a class="code hl_function" href="namespacehmap_1_1gpu.html#aed5416971461ddb7fb6427bdeb5cae86">hmap::gpu::erosion</a>(z, ir);</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> zd = <a class="code hl_function" href="namespacehmap.html#a5b01ee5f465847e08cde67a9533590e3">hmap::reconstruction_by_dilation</a>(marker_d, z, ir);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> marker_e = <a class="code hl_function" href="namespacehmap_1_1gpu.html#aed49f777e8ad095bafc5dc014e548e6e">hmap::gpu::dilation</a>(z, ir);</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> ze = <a class="code hl_function" href="namespacehmap.html#a2ac3034879fe68a7cc67d2d452a60c1a">hmap::reconstruction_by_erosion</a>(marker_e, z, ir);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_reconstruction_by_dilation.png&quot;</span>,</div>
+<div class="line">                          {z, zd, ze},</div>
+<div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>,</div>
+<div class="line">                          <span class="keyword">true</span>);</div>
+<div class="line">}</div>
+</div><!-- fragment --><p><b>Result</b> </p><div class="image">
+<img src="ex_reconstruction_by_dilation.png" alt=""/>
+</div>
+ 
+</div>
+</div>
 <a id="a7c7d934cc5a3a5e1a6f17c09a0e1e51f" name="a7c7d934cc5a3a5e1a6f17c09a0e1e51f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7c7d934cc5a3a5e1a6f17c09a0e1e51f">&#9670;&#160;</a></span>relative_distance_from_skeleton()</h2>
 
@@ -37124,9 +37300,9 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 <div class="line">                          {z, sk, 0.5f * (z + sk), rdist},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d">hmap::Cmap::GRAY</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a11ddd5ab1aa625db9419d9b65c0eaa64"><div class="ttname"><a href="namespacehmap.html#a11ddd5ab1aa625db9419d9b65c0eaa64">hmap::skeleton</a></div><div class="ttdeci">Array skeleton(const Array &amp;array, bool zero_at_borders=true)</div><div class="ttdoc">Computes the skeleton of a binary image using the Zhang-Suen skeletonization algorithm.</div><div class="ttdef"><b>Definition</b> morphology.cpp:239</div></div>
+<div class="ttc" id="anamespacehmap_html_a11ddd5ab1aa625db9419d9b65c0eaa64"><div class="ttname"><a href="namespacehmap.html#a11ddd5ab1aa625db9419d9b65c0eaa64">hmap::skeleton</a></div><div class="ttdeci">Array skeleton(const Array &amp;array, bool zero_at_borders=true)</div><div class="ttdoc">Computes the skeleton of a binary image using the Zhang-Suen skeletonization algorithm.</div><div class="ttdef"><b>Definition</b> morphology.cpp:296</div></div>
 <div class="ttc" id="anamespacehmap_html_a4799d3f029d45240a5b40b4853583a58"><div class="ttname"><a href="namespacehmap.html#a4799d3f029d45240a5b40b4853583a58">hmap::make_binary</a></div><div class="ttdeci">void make_binary(Array &amp;array, float threshold=0.f)</div><div class="ttdoc">Convert array values to binary using a threshold.</div><div class="ttdef"><b>Definition</b> filters.cpp:456</div></div>
-<div class="ttc" id="anamespacehmap_html_a7c7d934cc5a3a5e1a6f17c09a0e1e51f"><div class="ttname"><a href="namespacehmap.html#a7c7d934cc5a3a5e1a6f17c09a0e1e51f">hmap::relative_distance_from_skeleton</a></div><div class="ttdeci">Array relative_distance_from_skeleton(const Array &amp;array, int ir_search, bool zero_at_borders=true, int ir_erosion=1)</div><div class="ttdoc">Computes the relative distance of each non-zero cell in a binary array from the skeleton and border.</div><div class="ttdef"><b>Definition</b> morphology.cpp:188</div></div>
+<div class="ttc" id="anamespacehmap_html_a7c7d934cc5a3a5e1a6f17c09a0e1e51f"><div class="ttname"><a href="namespacehmap.html#a7c7d934cc5a3a5e1a6f17c09a0e1e51f">hmap::relative_distance_from_skeleton</a></div><div class="ttdeci">Array relative_distance_from_skeleton(const Array &amp;array, int ir_search, bool zero_at_borders=true, int ir_erosion=1)</div><div class="ttdoc">Computes the relative distance of each non-zero cell in a binary array from the skeleton and border.</div><div class="ttdef"><b>Definition</b> morphology.cpp:245</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_skeleton.png" alt=""/>
 </div>
