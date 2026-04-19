@@ -102,6 +102,27 @@ Array closing_by_reconstruction(const Array &array,
                                 float        k_smooth_max = 0.f);
 
 /**
+ * @brief Smooth contour boundaries of segmented regions.
+ *
+ * Reduces staircase artifacts on component borders by smoothing the transition
+ * zone around edges.
+ *
+ * @param  array              Input labeled or binary array.
+ * @param  ir                 Radius of the smoothing kernel.
+ * @param  transition_ratio   Controls edge blending width.
+ * @return                    Array with smoothed contours.
+ *
+ * **Example**
+ * @include ex_contour_smoothing.cpp
+ *
+ * **Result**
+ * @image html ex_contour_smoothing.png
+ */
+Array contour_smoothing(const Array &array,
+                        int          ir,
+                        float        transition_ratio = 0.1f);
+
+/**
  * @brief Apply a dilation algorithm to the input array using a square
  * structure.
  *
@@ -527,6 +548,11 @@ Array closing(const Array &array, int ir);
 Array closing_by_reconstruction(const Array &array,
                                 int          ir,
                                 float        k_smooth_max = 0.f);
+
+/*! @brief See hmap::contour_smoothing */
+Array contour_smoothing(const Array &array,
+                        int          ir,
+                        float        transition_ratio = 0.1f);
 
 /*! @brief See hmap::dilation */
 Array dilation(const Array &array, int ir);

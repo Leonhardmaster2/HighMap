@@ -60,6 +60,19 @@ Array closing_by_reconstruction(const Array &array, int ir, float k_smooth_max)
   return reconstruction_by_erosion(marker, array, ir, k_smooth_max);
 }
 
+Array contour_smoothing(const Array &array, int ir, float transition_ratio)
+{
+  Array edt = distance_transform(is_zero(array)) - distance_transform(array);
+  smooth_cpulse(edt, 2 * ir);
+
+  float width = transition_ratio * ir;
+  edt /= width;
+  clamp(edt, -1.f, 1.f);
+  edt = smoothstep3(0.5f * edt + 0.5f);
+
+  return edt;
+}
+
 Array dilation(const Array &array, int ir)
 {
   return local_max(array, ir);
