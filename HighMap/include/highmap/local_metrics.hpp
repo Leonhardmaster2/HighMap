@@ -404,18 +404,13 @@ enum LocalMetrics : int
 	LM_LOCAL_MAX,                  ///< Local maximum value.
 	LM_LOCAL_MEDIAN_DEVIATION,     ///< Deviation from local median.
 	LM_LOCAL_MIN,                  ///< Local minimum value.
-	LM_LOCAL_RELIEF,               ///< Difference between local max and
-		                       // min.
+	LM_LOCAL_RELIEF,               ///< Diff. between local max & min.
 	LM_LOCAL_VARIANCE,             ///< Variance of local values.
 	LM_LOCAL_MEAN,                 ///< Mean of local values.
-	LM_LOCAL_SKEWNESS,             ///< Skewness of local value
-		                       // distribution.
-	LM_LOCAL_Z_SCORE,              ///< Standardized value relative to
-		                       // neighborhood.
-	LM_TOPOGRAPHIC_POSITION_INDEX, ///< Relative elevation vs neighborhood
-		                       // mean.
-	LM_RELATIVE_ELEVATION,         ///< Normalized elevation within
-		                       // neighborhood.
+	LM_LOCAL_SKEWNESS,             ///< Skewness.
+	LM_LOCAL_Z_SCORE,              ///< Standardized value.
+	LM_TOPOGRAPHIC_POSITION_INDEX, ///< Topographic index.
+	LM_RELATIVE_ELEVATION,         ///< Normalized elevation.
 	LM_RUGGEDNESS,                 ///< Measure of terrain roughness.
 	LM_RUGOSITY_CONCAVE,           ///< Roughness of concave features.
 	LM_RUGOSITY_CONVEX,            ///< Roughness of convex features.

@@ -36,14 +36,14 @@ enum DistanceTransformType : int
 /**
  * @brief Remove connected components smaller than a given size threshold.
  *
- * Detects connected regions in the input array and removes those whose area
- * is smaller than \p threshold_size.
+ * Detects connected regions in the input array and removes those whose area is
+ * smaller than \p threshold_size.
  *
- * @param  array             Input array.
- * @param  threshold_size    Minimum component size to keep.
- * @param  background_value  Value used to identify background.
- * @param  fill_value        Value used to replace removed components.
- * @return                   Array with small components removed.
+ * @param  array            Input array.
+ * @param  threshold_size   Minimum component size to keep.
+ * @param  background_value Value used to identify background.
+ * @param  fill_value       Value used to replace removed components.
+ * @return                  Array with small components removed.
  *
  * **Example**
  * @include ex_area_remove.cpp
@@ -92,10 +92,10 @@ Array closing(const Array &array, int ir);
  * Performs a dilation followed by a reconstruction by erosion, filling small
  * dark regions while preserving the shape of larger structures.
  *
- * @param  array         Input array.
- * @param  ir            Radius of the structuring element.
- * @param  k_smooth_max  Smoothness factor (0 for hard max).
- * @return               Array Result after closing by reconstruction.
+ * @param  array        Input array.
+ * @param  ir           Radius of the structuring element.
+ * @param  k_smooth_max Smoothness factor (0 for hard max).
+ * @return              Array Result after closing by reconstruction.
  */
 Array closing_by_reconstruction(const Array &array,
                                 int          ir,
@@ -107,10 +107,10 @@ Array closing_by_reconstruction(const Array &array,
  * Reduces staircase artifacts on component borders by smoothing the transition
  * zone around edges.
  *
- * @param  array              Input labeled or binary array.
- * @param  ir                 Radius of the smoothing kernel.
- * @param  transition_ratio   Controls edge blending width.
- * @return                    Array with smoothed contours.
+ * @param  array            Input labeled or binary array.
+ * @param  ir               Radius of the smoothing kernel.
+ * @param  transition_ratio Controls edge blending width.
+ * @return                  Array with smoothed contours.
  *
  * **Example**
  * @include ex_contour_smoothing.cpp
@@ -374,10 +374,10 @@ Array opening(const Array &array, int ir);
  * Performs an erosion followed by a reconstruction by dilation, removing small
  * bright features while preserving the shape of larger structures.
  *
- * @param  array         Input array.
- * @param  ir            Radius of the structuring element.
- * @param  k_smooth_min  Smoothness factor (0 for hard min).
- * @return               Array Result after opening by reconstruction.
+ * @param  array        Input array.
+ * @param  ir           Radius of the structuring element.
+ * @param  k_smooth_min Smoothness factor (0 for hard min).
+ * @return              Array Result after opening by reconstruction.
  */
 Array opening_by_reconstruction(const Array &array,
                                 int          ir,
@@ -390,11 +390,11 @@ Array opening_by_reconstruction(const Array &array,
  * than or equal to the mask. The marker must be element-wise <= mask.
  * Optionally uses a smooth minimum controlled by \p k_smooth_min.
  *
- * @param  marker        Initial image (seed), must satisfy marker <= mask.
- * @param  mask          Constraint image (upper bound).
- * @param  ir            Radius of the structuring element.
- * @param  k_smooth_min  Smoothness factor (0 for hard min).
- * @return               Array Reconstructed image.
+ * @param  marker       Initial image (seed), must satisfy marker <= mask.
+ * @param  mask         Constraint image (upper bound).
+ * @param  ir           Radius of the structuring element.
+ * @param  k_smooth_min Smoothness factor (0 for hard min).
+ * @return              Array Reconstructed image.
  *
  * **Example**
  * @include ex_reconstruction_by_dilation.cpp
@@ -414,11 +414,11 @@ Array reconstruction_by_dilation(const Array &marker,
  * than or equal to the mask. The marker must be element-wise >= mask.
  * Optionally uses a smooth maximum controlled by \p k_smooth_max.
  *
- * @param  marker        Initial image (seed), must satisfy marker >= mask.
- * @param  mask          Constraint image (lower bound).
- * @param  ir            Radius of the structuring element.
- * @param  k_smooth_max  Smoothness factor (0 for hard max).
- * @return               Array Reconstructed image.
+ * @param  marker       Initial image (seed), must satisfy marker >= mask.
+ * @param  mask         Constraint image (lower bound).
+ * @param  ir           Radius of the structuring element.
+ * @param  k_smooth_max Smoothness factor (0 for hard max).
+ * @return              Array Reconstructed image.
  *
  * **Example**
  * @include ex_reconstruction_by_dilation.cpp
@@ -656,11 +656,14 @@ enum MorphologyOperation : int
 	MO_EROSION,   //!< Shrink structures (local minimum).
 	MO_OPENING,   //!< Erosion followed by dilation (removes small objects).
 	MO_BLACK_HAT, //!< Difference between closing and input (dark features).
-	MO_TOP_HAT,   //!< Difference between input and opening (bright features).
-	MO_GRADIENT,  //!< Difference between dilation and erosion (edge magnitude).
-	MO_LAPLACIAN, //!< Second-order operator highlighting ridges and valleys.
-  MO_CLOSING_BY_RECONSTRUCTION,
-  MO_OPENING_BY_RECONSTRUCTION,
+	MO_TOP_HAT,   //!< Difference between input and opening (bright
+		      // features).
+	MO_GRADIENT,  //!< Difference between dilation and erosion (edge
+		      // magnitude).
+	MO_LAPLACIAN, //!< Second-order operator highlighting ridges and
+		      // valleys.
+	MO_CLOSING_BY_RECONSTRUCTION,
+	MO_OPENING_BY_RECONSTRUCTION,
 };
 // clang-format on
 

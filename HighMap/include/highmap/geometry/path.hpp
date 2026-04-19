@@ -112,7 +112,8 @@ public:
    *
    * @param indices Input grid indices.
    * @param shape   Grid dimensions.
-   * @param bbox    Bounding box (xmin, xmax, ymin, ymax).
+   * @param bbox    Bounding box (xmin, xmax, ymin, ymax). Default is {0.f, 1.f,
+   *                0.f, 1.f}.
    */
   Path(const std::vector<glm::ivec2> &indices,
        const glm::ivec2              &shape,
@@ -308,7 +309,8 @@ public:
    * between each consecutive point is approximately equal to the specified
    * `delta`. This is useful for creating a path with evenly spaced points.
    *
-   * @param delta Target distance between consecutive points.
+   * @param delta      Target distance between consecutive points.
+   * @param itp_method Interpolation method used to resample the path.
    */
   void resample_by_spacing(
       float                 delta,
@@ -320,7 +322,8 @@ public:
    * The path is reparameterized by arc length and interpolated using cubic
    * splines for x, y, and value components.
    *
-   * @param edge_divisions Number of points.
+   * @param npoints    Number of points to resample.
+   * @param itp_method Interpolation method to use (default is CUBIC).
    *
    * **Example**
    * @include ex_path_resample.cpp
@@ -339,6 +342,8 @@ public:
    * This method adjusts the path so that the distance between each consecutive
    * point is as uniform as possible. It redistributes the points to ensure more
    * even spacing along the path.
+   *
+   * @param itp_method Interpolation method used for resampling.
    */
   void resample_uniform(
       InterpolationMethod1D itp_method = InterpolationMethod1D::LINEAR);
@@ -400,6 +405,7 @@ public:
    *
    * @param fname The filename for the output PNG image.
    * @param shape Resolution of the image, specified as width and height.
+   * Default is {512, 512}.
    */
   void to_png(std::string fname, glm::ivec2 shape = {512, 512});
 
@@ -434,6 +440,8 @@ private:
  *                        with positive values resulting in more curvature.
  * @param edge_divisions  Number of subdivisions per edge to achieve smooth
  *                        curves.
+ * @param edm             The mode for dividing edges. Default is
+ *                        Path::EdgeDivisionMode::EDM_PER_EDGE.
  */
 Path bezier(const Path            &path,
             float                  curvature_ratio = 0.3f,
@@ -457,6 +465,8 @@ Path bezier(const Path            &path,
  * @param curvature_ratio Amount of curvature, typically within [-1, 1], with
  *                        positive values for increased curvature.
  * @param edge_divisions  Number of edge subdivisions for smoothness.
+ * @param edm             The mode for dividing edges. Default is
+ *                        Path::EdgeDivisionMode::EDM_PER_EDGE.
  */
 Path bezier_round(
     const Path            &path,
@@ -486,6 +496,7 @@ Path bezier_round(
  *                       B-Spline curve.
  *
  * @warning This function does not correctly handle closed polylines.
+ * @param edm            Mode for dividing edges. Default is EDM_PER_EDGE.
  */
 Path bspline(const Path            &path,
              int                    edge_divisions = 10,
@@ -499,20 +510,15 @@ Path bspline(const Path            &path,
  * `edge_divisions` parameter determines the number of subdivisions per edge for
  * smoothing.
  *
- * **Important**: This function does not correctly handle closed polylines
- * (circular contours). If the path is closed, the smoothing may not correctly
- * close the loop, potentially leaving a gap between the start and end points.
+ * @param edge_divisions Number of edge subdivisions to create a smooth
+ *                       Catmull-Rom curve.
+ * @param edm            Mode for dividing edges. Default is EDM_PER_EDGE.
  *
  * **Example**
  * @include ex_path_catmullrom.cpp
  *
  * **Result**
  * @image html ex_path_catmullrom.png
- *
- * @param edge_divisions Number of edge subdivisions to create a smooth
- *                       Catmull-Rom curve.
- *
- * @warning This function does not correctly handle closed polylines.
  */
 Path catmullrom(
     const Path            &path,
@@ -535,6 +541,7 @@ Path catmullrom(
  * @param edge_divisions The number of divisions for each edge of the path.
  *                       Default is 10, which provides a balanced level of
  *                       smoothing.
+ * @param edm            Mode for dividing edges (default is EDM_PER_EDGE).
  *
  * **Example**
  * @include ex_path_decasteljau.cpp
@@ -555,13 +562,11 @@ Path decasteljau(
  * of triangles formed by consecutive points and removes points corresponding to
  * the smallest areas iteratively.
  *
+ * @param path            The input path to be decimated.
  * @param n_points_target The desired number of points to retain in the path. If
  *                        the current number of points is less than
  *                        `n_points_target` or the path contains fewer than 3
  * points, the method returns without modifying the path.
- *
- * @note Does not well behave when n_points_target is significantly lower than
- * the initial number of points.
  *
  * **Example**
  * @include ex_path_decimate.cpp
@@ -581,24 +586,7 @@ Path decimate_vw(const Path &path, int n_points_target = 3);
  * paths. The number of iterations determines the level of detail added to the
  * path.
  *
- * - `sigma` controls the magnitude of the displacement, normalized by the
- * distance between points.
- * - `orientation` directs the displacement:
- *    - `0` for random directions,
- *    - `1` for inflation (outward displacement),
- *    - `-1` for deflation (inward displacement).
- * - `persistence` governs how the noise strength evolves over iterations,
- * typically reducing it gradually.
- * - An optional `control_field` array allows for local adjustments of
- * displacement amplitude, guided by the `bbox` (bounding box), which defines
- * the spatial extent within which the control field is applied.
- *
- * **Example**
- * @include ex_path_fractalize.cpp
- *
- * **Result**
- * @image html ex_path_fractalize.png
- *
+ * @param path          The input path to be fractalized.
  * @param iterations    Number of iterations to apply the fractalization
  *                      process.
  * @param seed          Seed value for random number generation, ensuring
@@ -613,6 +601,12 @@ Path decimate_vw(const Path &path, int n_points_target = 3);
  *                      displacement amplitude.
  * @param bbox          Bounding box that defines the valid area for the control
  *                      field's influence.
+ *
+ * **Example**
+ * @include ex_path_fractalize.cpp
+ *
+ * **Result**
+ * @image html ex_path_fractalize.png
  */
 Path fractalize(const Path &path,
                 int         iterations,
@@ -654,6 +648,7 @@ Path inflate(const Path &path, float strength, bool resample = true);
  * meandering process is applied, and `edge_divisions` controls how finely each
  * edge is subdivided during the meandering.
  *
+ * @param path           The input path to be meanderized.
  * @param ratio          Amplitude ratio of the meanders. Typically a positive
  *                       value.
  * @param noise_ratio    Ratio of randomness introduced during meandering.
@@ -661,6 +656,8 @@ Path inflate(const Path &path, float strength, bool resample = true);
  * @param seed           Seed for random number generation. Default is 1.
  * @param iterations     Number of iterations to apply meandering. Default is 1.
  * @param edge_divisions Number of sub-divisions of each edge. Default is 10.
+ * @param edm            The mode for dividing edges during the meandering
+ *                       process. Default is EDM_PER_EDGE.
  *
  * **Example**
  * @include ex_path_meanderize.cpp
@@ -726,6 +723,7 @@ Path remove_geometric_loops(const Path &path);
  * effect can be applied to gradually adjust point positions based on previous
  * points.
  *
+ * @param path                The input path to be smoothed.
  * @param navg                Number of neighboring points to consider on each
  *                            side of the current point during the smoothing
  *                            process. Higher values result in broader
@@ -757,13 +755,39 @@ Path smooth(const Path &path,
 //  Verification Functions
 // ==========================================================================
 
+/**
+ * @brief Asserts that the start and end points of two paths are within a
+ * specified tolerance.
+ *
+ * @param path1   The first path to compare.
+ * @param path2   The second path to compare.
+ * @param tol     Tolerance for comparing the start and end points. Default is
+ *                1e-6f.
+ * @param verbose If true, prints detailed information during comparison.
+ *                Default is false.
+ */
 bool assert_start_end_points(const Path &path1,
                              const Path &path2,
                              float       tol = 1e-6f,
                              bool        verbose = false);
 
+/**
+ * @brief Calculate the chamfer distance between two paths.
+ *
+ * @param a The first path.
+ * @param b The second path.
+ */
 float chamfer_distance(const Path &a, const Path &b);
 
+/**
+ * @brief Check if a path contains duplicate points within a given tolerance.
+ *
+ * @param  path The path to check for duplicates.
+ * @param  tol  Tolerance for considering two points as the same. Default is
+ *              1e-6.
+ * @return      true If there are duplicate points in the path.
+ * @return      false If there are no duplicate points in the path.
+ */
 bool has_duplicates(const Path &path, float tol = 1e-6f);
 
 } // namespace hmap

@@ -124,6 +124,7 @@ public:
 
   /**
    * @brief Add a new point to the cloud.
+   *
    * @param p The point to be added to the cloud.
    */
   void add_point(const Point &p);
@@ -236,6 +237,9 @@ public:
 
   /**
    * @brief Set points of the using x, y coordinates.
+   *
+   * @param x A vector containing the `x` coordinates of the points.
+   * @param y A vector containing the `y` coordinates of the points.
    */
   void set_points(const std::vector<float> &x, const std::vector<float> &y);
 
@@ -527,6 +531,12 @@ std::vector<float> interpolate_values_from_array(const Cloud &cloud,
  *                both `cloud1` and `cloud2`.
  */
 Cloud merge_cloud(const Cloud &cloud1, const Cloud &cloud2);
+
+/**
+ * @brief Merges multiple point clouds into a single cloud.
+ *
+ * @param clouds A vector of Cloud objects to be merged.
+ */
 Cloud merge_clouds(const std::vector<Cloud> &clouds);
 
 /**
