@@ -191,6 +191,42 @@ Array ruggedness(const Array &array, int ir);
  */
 Array rugosity(const Array &z, int ir, bool convex = true);
 
+/**
+ * @brief Measures the valley width by calculating the distance from each point
+ * in a concave region to the frontier of that region.
+ *
+ * Valley width is a geomorphological metric that represents the distance across
+ * valleys or concave regions in a terrain. This measurement is particularly
+ * useful in hydrological modeling and landscape analysis, where valley
+ * dimensions are important.
+ *
+ * **Usage**
+ * - Use this function to assess the width of valleys within a terrain, which
+ * can be important for understanding water flow, sediment transport, and
+ * landform development.
+ * - Applicable in studies focusing on river valleys, canyon analysis, and
+ * erosion patterns.
+ *
+ * @param  z            The input array representing the heightmap data
+ *                      (elevation values).
+ * @param  ir           The radius used for pre-filtering, controlling the scale
+ *                      of analysis (in pixels). The default value is 0, meaning
+ *                      no pre-filtering is applied.
+ * @param  ridge_select If enabled, selects ridges instead of valleys.
+ * @return              Array An output array containing valley width values,
+ *                      representing the distance to the edge of the concave
+ *                      region for each point.
+ *
+ * **Example**
+ * @include ex_valley_width.cpp
+ *
+ * **Result**
+ * @image html ex_valley_width0.png
+ * @image html ex_valley_width1.png
+ * @image html ex_valley_width2.png
+ */
+Array valley_width(const Array &z, int ir = 0, bool ridge_select = false);
+
 } // namespace hmap
 
 namespace hmap::gpu
@@ -345,6 +381,9 @@ Array ruggedness(const Array &array, int ir);
 
 /*! @brief See hmap::rugosity */
 Array rugosity(const Array &z, int ir, bool convex = true);
+
+/*! @brief See hmap::valley_width */
+Array valley_width(const Array &z, int ir = 0, bool ridge_select = false);
 
 } // namespace hmap::gpu
 
