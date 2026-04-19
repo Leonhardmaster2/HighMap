@@ -34,6 +34,29 @@ enum DistanceTransformType : int
 };
 
 /**
+ * @brief Remove connected components smaller than a given size threshold.
+ *
+ * Detects connected regions in the input array and removes those whose area
+ * is smaller than \p threshold_size.
+ *
+ * @param  array             Input array.
+ * @param  threshold_size    Minimum component size to keep.
+ * @param  background_value  Value used to identify background.
+ * @param  fill_value        Value used to replace removed components.
+ * @return                   Array with small components removed.
+ *
+ * **Example**
+ * @include ex_area_remove.cpp
+ *
+ * **Result**
+ * @image html ex_area_remove.png
+ */
+Array area_remove(const Array &array,
+                  float        threshold_size,
+                  float        background_value = 0.f,
+                  float        fill_value = 0.f);
+
+/**
  * @brief Apply a border algorithm to the input array using a square structure.
  *
  * @param  array Input array to which the border algorithm is applied.

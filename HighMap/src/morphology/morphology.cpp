@@ -5,6 +5,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/boundary.hpp"
+#include "highmap/features.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/local_metrics.hpp"
 #include "highmap/morphology.hpp"
@@ -12,6 +13,37 @@
 
 namespace hmap
 {
+
+Array area_remove(const Array &array,
+                  float        threshold_size,
+                  float        background_value,
+                  float        fill_value)
+{
+  const glm::ivec2 &shape = array.shape;
+
+  // label connected components
+  float              surface_threshold = 0.f;
+  std::vector<float> area;
+
+  Array mask = is_non_zero(array - background_value);
+
+  Array labels = connected_components(mask,
+                                      surface_threshold,
+                                      background_value,
+                                      &area);
+
+  // build output
+  Array out = array;
+
+  for (int j = 0; j < shape.y; j++)
+    for (int i = 0; i < shape.x; i++)
+    {
+      // remove small components (size in pxiels * pixels)
+      if (area[labels(i, j)] < threshold_size) out(i, j) = fill_value;
+    }
+
+  return out;
+}
 
 Array border(const Array &array, int ir)
 {

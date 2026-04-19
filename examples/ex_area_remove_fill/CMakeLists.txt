@@ -1,0 +1,2 @@
+add_executable(ex_area_remove_fill ex_area_remove_fill.cpp)
+target_link_libraries(ex_area_remove_fill highmap)

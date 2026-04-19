@@ -35,9 +35,12 @@ Array connected_components(const Array                       &array,
   int                                 current_label = 0;
   std::map<float, std::vector<float>> labels_mapping = {};
 
-  // /!\ i, j LOOP ORDER MATERS
-  for (int i = 0; i < npi; i++)
-    for (int j = 0; j < npj; j++)
+  // ===========================================
+  //  /!\ i, j LOOP ORDER MATERS, DO NOT CHANGE
+  // ===========================================
+
+  for (int i = 0; i < npi; i++)   // i first
+    for (int j = 0; j < npj; j++) // j second
       if (array_pad(i, j) != background_value)
       {
         // scan neighbors and count those that are "background"
