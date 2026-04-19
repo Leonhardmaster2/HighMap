@@ -408,6 +408,12 @@ enum \mbox{\hyperlink{namespacehmap_a2affc745bc33b7555352665745741f90}{Radial\+P
 , \mbox{\hyperlink{namespacehmap_a2affc745bc33b7555352665745741f90ada6f8c1c08707c0497225cca34975ca5}{RP\+\_\+\+SQRT}}
  \}
 \begin{DoxyCompactList}\small\item\em Radial profile type. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{namespacehmap_a9e2493cec1a67b3140691e617ddc925a}{Distance\+Transform\+Type}} \+: int \{ \mbox{\hyperlink{namespacehmap_a9e2493cec1a67b3140691e617ddc925aa109b04de7ca555c0e4d17629e55e7ee3}{DT\+\_\+\+EXACT}}
+, \mbox{\hyperlink{namespacehmap_a9e2493cec1a67b3140691e617ddc925aa3b8bce8feaa179b9a546bbbe28c1d44a}{DT\+\_\+\+APPROX}}
+, \mbox{\hyperlink{namespacehmap_a9e2493cec1a67b3140691e617ddc925aae4b14640395ecd7333bea8838ea9dda1}{DT\+\_\+\+MANHATTAN}}
+, \mbox{\hyperlink{namespacehmap_a9e2493cec1a67b3140691e617ddc925aaa09d87a577ce3a1b91c372aa051b0406}{DT\+\_\+\+JFA}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumeration for different types of distance transforms. \end{DoxyCompactList}\item 
 enum \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818c}{Morphology\+Operation}} \+: int \{ \newline
 \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca8083c22f48c0732c103514d10b5fe7e6}{MO\+\_\+\+BORDER}}
 , \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca442219bd6354336f660624a2b76bde23}{MO\+\_\+\+CLOSING}}
@@ -421,13 +427,7 @@ enum \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818c}{Morpholog
 , \newline
 \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e}{MO\+\_\+\+LAPLACIAN}}
  \}
-\item 
-enum \mbox{\hyperlink{namespacehmap_a9e2493cec1a67b3140691e617ddc925a}{Distance\+Transform\+Type}} \+: int \{ \mbox{\hyperlink{namespacehmap_a9e2493cec1a67b3140691e617ddc925aa109b04de7ca555c0e4d17629e55e7ee3}{DT\+\_\+\+EXACT}}
-, \mbox{\hyperlink{namespacehmap_a9e2493cec1a67b3140691e617ddc925aa3b8bce8feaa179b9a546bbbe28c1d44a}{DT\+\_\+\+APPROX}}
-, \mbox{\hyperlink{namespacehmap_a9e2493cec1a67b3140691e617ddc925aae4b14640395ecd7333bea8838ea9dda1}{DT\+\_\+\+MANHATTAN}}
-, \mbox{\hyperlink{namespacehmap_a9e2493cec1a67b3140691e617ddc925aaa09d87a577ce3a1b91c372aa051b0406}{DT\+\_\+\+JFA}}
- \}
-\begin{DoxyCompactList}\small\item\em Enumeration for different types of distance transforms. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Types of base morphology operators. \end{DoxyCompactList}\item 
 enum \mbox{\hyperlink{namespacehmap_ae84abe9052dcb9c88f3c50716addfe44}{pyramid\+\_\+transform\+\_\+support}} \+: int \{ \mbox{\hyperlink{namespacehmap_ae84abe9052dcb9c88f3c50716addfe44a335e6fca97d53bfb6cc3a55c566f1dd7}{FULL}}
 , \mbox{\hyperlink{namespacehmap_ae84abe9052dcb9c88f3c50716addfe44ab02b262c560a970e4f082d4edee376fb}{LOWPASS\+\_\+\+ONLY}}
 , \mbox{\hyperlink{namespacehmap_ae84abe9052dcb9c88f3c50716addfe44a23fde294eee1dbe59e1c6bb2bc0d5132}{HIGHPASS\+\_\+\+ONLY}}
@@ -602,10 +602,10 @@ std\+::vector$<$ glm\+::vec3 $>$ \mbox{\hyperlink{namespacehmap_a2f2ca726f4e4112
 \begin{DoxyCompactList}\small\item\em Return the approximate convolution product of the array with a Singular Value Decomposition (SVD) of a kernel. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_addbc812a7b7523f4e0f185fb27016469}{convolve2d\+\_\+svd\+\_\+rotated\+\_\+kernel}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&kernel, int rank=3, int n\+\_\+rotations=6, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed=1)
 \begin{DoxyCompactList}\small\item\em Return the approximate convolution product of the array with a Singular Value Decomposition (SVD) of a kernel combined with kernel rotations. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a4e2b7df70a18f94ad7f4d7cd934ec767}{curvature\+\_\+quadric}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int ir, \mbox{\hyperlink{namespacehmap_ad4d5e191ca7dd12e389c842188bde88a}{Curvature\+Type}} curvature\+\_\+type)
-\begin{DoxyCompactList}\small\item\em Compute curvature measures on a scalar field. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_aa1f2e119a09d246fe0cf27e859ddb2e6}{level\+\_\+set\+\_\+curvature}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int prefilter\+\_\+ir)
 \begin{DoxyCompactList}\small\item\em Computes a signed level-\/set curvature. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a4e2b7df70a18f94ad7f4d7cd934ec767}{curvature\+\_\+quadric}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int ir, \mbox{\hyperlink{namespacehmap_ad4d5e191ca7dd12e389c842188bde88a}{Curvature\+Type}} curvature\+\_\+type)
+\begin{DoxyCompactList}\small\item\em Compute curvature measures on a scalar field. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{namespacehmap_a2c154806321deecb3240ac71eb7ccf29}{assert\+\_\+almost\+\_\+equal}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&a, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&b, float tolerance, const std\+::string \&fname="{}"{}, \mbox{\hyperlink{structhmap_1_1AssertResults}{Assert\+Results}} \texorpdfstring{$\ast$}{*}p\+\_\+results=nullptr)
 \item 
 std\+::function$<$ float(float)$>$ \mbox{\hyperlink{namespacehmap_a02f191e398bfc3c0e87999d8576d7c3d}{get\+\_\+erosion\+\_\+profile\+\_\+function}} (const \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6}{Erosion\+Profile}} \&erosion\+\_\+profile, float delta, float \&profile\+\_\+avg)
@@ -2729,50 +2729,6 @@ RP\+\_\+\+SQRT&\\
 \hline
 
 \end{DoxyEnumFields}
-\Hypertarget{namespacehmap_a321149eda3417aa485a010c31267818c}\label{namespacehmap_a321149eda3417aa485a010c31267818c} 
-\index{hmap@{hmap}!MorphologyOperation@{MorphologyOperation}}
-\index{MorphologyOperation@{MorphologyOperation}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{MorphologyOperation}{MorphologyOperation}}
-{\footnotesize\ttfamily enum \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818c}{hmap\+::\+Morphology\+Operation}} \+: int}
-
-\begin{DoxyEnumFields}{Enumerator}
-\raisebox{\heightof{T}}[0pt][0pt]{\index{MO\_BORDER@{MO\_BORDER}!hmap@{hmap}}\index{hmap@{hmap}!MO\_BORDER@{MO\_BORDER}}}\Hypertarget{namespacehmap_a321149eda3417aa485a010c31267818ca8083c22f48c0732c103514d10b5fe7e6}\label{namespacehmap_a321149eda3417aa485a010c31267818ca8083c22f48c0732c103514d10b5fe7e6} 
-MO\+\_\+\+BORDER&\\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{MO\_CLOSING@{MO\_CLOSING}!hmap@{hmap}}\index{hmap@{hmap}!MO\_CLOSING@{MO\_CLOSING}}}\Hypertarget{namespacehmap_a321149eda3417aa485a010c31267818ca442219bd6354336f660624a2b76bde23}\label{namespacehmap_a321149eda3417aa485a010c31267818ca442219bd6354336f660624a2b76bde23} 
-MO\+\_\+\+CLOSING&\\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{MO\_DILATION@{MO\_DILATION}!hmap@{hmap}}\index{hmap@{hmap}!MO\_DILATION@{MO\_DILATION}}}\Hypertarget{namespacehmap_a321149eda3417aa485a010c31267818cad2e58516e7657971e3e16cd131089055}\label{namespacehmap_a321149eda3417aa485a010c31267818cad2e58516e7657971e3e16cd131089055} 
-MO\+\_\+\+DILATION&\\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{MO\_EROSION@{MO\_EROSION}!hmap@{hmap}}\index{hmap@{hmap}!MO\_EROSION@{MO\_EROSION}}}\Hypertarget{namespacehmap_a321149eda3417aa485a010c31267818ca0e9abbb30a51ad2951f6f0b527f6f7a1}\label{namespacehmap_a321149eda3417aa485a010c31267818ca0e9abbb30a51ad2951f6f0b527f6f7a1} 
-MO\+\_\+\+EROSION&\\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{MO\_OPENING@{MO\_OPENING}!hmap@{hmap}}\index{hmap@{hmap}!MO\_OPENING@{MO\_OPENING}}}\Hypertarget{namespacehmap_a321149eda3417aa485a010c31267818ca2a6dee7c1afab190ad76aa5e40f9eaf6}\label{namespacehmap_a321149eda3417aa485a010c31267818ca2a6dee7c1afab190ad76aa5e40f9eaf6} 
-MO\+\_\+\+OPENING&\\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{MO\_BLACK\_HAT@{MO\_BLACK\_HAT}!hmap@{hmap}}\index{hmap@{hmap}!MO\_BLACK\_HAT@{MO\_BLACK\_HAT}}}\Hypertarget{namespacehmap_a321149eda3417aa485a010c31267818ca95312bbd452f457354100b456719f931}\label{namespacehmap_a321149eda3417aa485a010c31267818ca95312bbd452f457354100b456719f931} 
-MO\+\_\+\+BLACK\+\_\+\+HAT&\\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{MO\_TOP\_HAT@{MO\_TOP\_HAT}!hmap@{hmap}}\index{hmap@{hmap}!MO\_TOP\_HAT@{MO\_TOP\_HAT}}}\Hypertarget{namespacehmap_a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2}\label{namespacehmap_a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2} 
-MO\+\_\+\+TOP\+\_\+\+HAT&\\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{MO\_GRADIENT@{MO\_GRADIENT}!hmap@{hmap}}\index{hmap@{hmap}!MO\_GRADIENT@{MO\_GRADIENT}}}\Hypertarget{namespacehmap_a321149eda3417aa485a010c31267818ca2a4e04241f3ad0bdc9da20e651ba8dd3}\label{namespacehmap_a321149eda3417aa485a010c31267818ca2a4e04241f3ad0bdc9da20e651ba8dd3} 
-MO\+\_\+\+GRADIENT&\\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{MO\_LAPLACIAN@{MO\_LAPLACIAN}!hmap@{hmap}}\index{hmap@{hmap}!MO\_LAPLACIAN@{MO\_LAPLACIAN}}}\Hypertarget{namespacehmap_a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e}\label{namespacehmap_a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e} 
-MO\+\_\+\+LAPLACIAN&\\
-\hline
-
-\end{DoxyEnumFields}
 \Hypertarget{namespacehmap_a9e2493cec1a67b3140691e617ddc925a}\label{namespacehmap_a9e2493cec1a67b3140691e617ddc925a} 
 \index{hmap@{hmap}!DistanceTransformType@{DistanceTransformType}}
 \index{DistanceTransformType@{DistanceTransformType}!hmap@{hmap}}
@@ -2798,6 +2754,54 @@ DT\+\_\+\+MANHATTAN&Manhattan distance transform. \\
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{DT\_JFA@{DT\_JFA}!hmap@{hmap}}\index{hmap@{hmap}!DT\_JFA@{DT\_JFA}}}\Hypertarget{namespacehmap_a9e2493cec1a67b3140691e617ddc925aaa09d87a577ce3a1b91c372aa051b0406}\label{namespacehmap_a9e2493cec1a67b3140691e617ddc925aaa09d87a577ce3a1b91c372aa051b0406} 
 DT\+\_\+\+JFA&Approximate (JFA) distance transform. \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{namespacehmap_a321149eda3417aa485a010c31267818c}\label{namespacehmap_a321149eda3417aa485a010c31267818c} 
+\index{hmap@{hmap}!MorphologyOperation@{MorphologyOperation}}
+\index{MorphologyOperation@{MorphologyOperation}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{MorphologyOperation}{MorphologyOperation}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818c}{hmap\+::\+Morphology\+Operation}} \+: int}
+
+
+
+Types of base morphology operators. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MO\_BORDER@{MO\_BORDER}!hmap@{hmap}}\index{hmap@{hmap}!MO\_BORDER@{MO\_BORDER}}}\Hypertarget{namespacehmap_a321149eda3417aa485a010c31267818ca8083c22f48c0732c103514d10b5fe7e6}\label{namespacehmap_a321149eda3417aa485a010c31267818ca8083c22f48c0732c103514d10b5fe7e6} 
+MO\+\_\+\+BORDER&Extract border of structures. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MO\_CLOSING@{MO\_CLOSING}!hmap@{hmap}}\index{hmap@{hmap}!MO\_CLOSING@{MO\_CLOSING}}}\Hypertarget{namespacehmap_a321149eda3417aa485a010c31267818ca442219bd6354336f660624a2b76bde23}\label{namespacehmap_a321149eda3417aa485a010c31267818ca442219bd6354336f660624a2b76bde23} 
+MO\+\_\+\+CLOSING&Dilation followed by erosion (fills small holes). \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MO\_DILATION@{MO\_DILATION}!hmap@{hmap}}\index{hmap@{hmap}!MO\_DILATION@{MO\_DILATION}}}\Hypertarget{namespacehmap_a321149eda3417aa485a010c31267818cad2e58516e7657971e3e16cd131089055}\label{namespacehmap_a321149eda3417aa485a010c31267818cad2e58516e7657971e3e16cd131089055} 
+MO\+\_\+\+DILATION&Expand structures (local maximum). \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MO\_EROSION@{MO\_EROSION}!hmap@{hmap}}\index{hmap@{hmap}!MO\_EROSION@{MO\_EROSION}}}\Hypertarget{namespacehmap_a321149eda3417aa485a010c31267818ca0e9abbb30a51ad2951f6f0b527f6f7a1}\label{namespacehmap_a321149eda3417aa485a010c31267818ca0e9abbb30a51ad2951f6f0b527f6f7a1} 
+MO\+\_\+\+EROSION&Shrink structures (local minimum). \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MO\_OPENING@{MO\_OPENING}!hmap@{hmap}}\index{hmap@{hmap}!MO\_OPENING@{MO\_OPENING}}}\Hypertarget{namespacehmap_a321149eda3417aa485a010c31267818ca2a6dee7c1afab190ad76aa5e40f9eaf6}\label{namespacehmap_a321149eda3417aa485a010c31267818ca2a6dee7c1afab190ad76aa5e40f9eaf6} 
+MO\+\_\+\+OPENING&Erosion followed by dilation (removes small objects). \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MO\_BLACK\_HAT@{MO\_BLACK\_HAT}!hmap@{hmap}}\index{hmap@{hmap}!MO\_BLACK\_HAT@{MO\_BLACK\_HAT}}}\Hypertarget{namespacehmap_a321149eda3417aa485a010c31267818ca95312bbd452f457354100b456719f931}\label{namespacehmap_a321149eda3417aa485a010c31267818ca95312bbd452f457354100b456719f931} 
+MO\+\_\+\+BLACK\+\_\+\+HAT&Difference between closing and input (dark features). \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MO\_TOP\_HAT@{MO\_TOP\_HAT}!hmap@{hmap}}\index{hmap@{hmap}!MO\_TOP\_HAT@{MO\_TOP\_HAT}}}\Hypertarget{namespacehmap_a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2}\label{namespacehmap_a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2} 
+MO\+\_\+\+TOP\+\_\+\+HAT&Difference between input and opening (bright features). \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MO\_GRADIENT@{MO\_GRADIENT}!hmap@{hmap}}\index{hmap@{hmap}!MO\_GRADIENT@{MO\_GRADIENT}}}\Hypertarget{namespacehmap_a321149eda3417aa485a010c31267818ca2a4e04241f3ad0bdc9da20e651ba8dd3}\label{namespacehmap_a321149eda3417aa485a010c31267818ca2a4e04241f3ad0bdc9da20e651ba8dd3} 
+MO\+\_\+\+GRADIENT&Difference between dilation and erosion (edge. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MO\_LAPLACIAN@{MO\_LAPLACIAN}!hmap@{hmap}}\index{hmap@{hmap}!MO\_LAPLACIAN@{MO\_LAPLACIAN}}}\Hypertarget{namespacehmap_a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e}\label{namespacehmap_a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e} 
+MO\+\_\+\+LAPLACIAN&Second-\/order operator highlighting ridges and. \\
 \hline
 
 \end{DoxyEnumFields}
@@ -6171,7 +6175,27 @@ This function approximates the convolution of the input array with a 2D kernel u
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}  \Hypertarget{namespacehmap_a4e2b7df70a18f94ad7f4d7cd934ec767}\label{namespacehmap_a4e2b7df70a18f94ad7f4d7cd934ec767} 
+{\bfseries{Result}}  \Hypertarget{namespacehmap_aa1f2e119a09d246fe0cf27e859ddb2e6}\label{namespacehmap_aa1f2e119a09d246fe0cf27e859ddb2e6} 
+\index{hmap@{hmap}!level\_set\_curvature@{level\_set\_curvature}}
+\index{level\_set\_curvature@{level\_set\_curvature}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{level\_set\_curvature()}{level\_set\_curvature()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::level\+\_\+set\+\_\+curvature (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{int}]{prefilter\+\_\+ir }\end{DoxyParamCaption})}
+
+
+
+Computes a signed level-\/set curvature. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & Input array. \\
+\hline
+{\em prefilter\+\_\+ir} & Optional smoothing radius for curvature evaluation. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Signed curvature. 
+\end{DoxyReturn}
+\Hypertarget{namespacehmap_a4e2b7df70a18f94ad7f4d7cd934ec767}\label{namespacehmap_a4e2b7df70a18f94ad7f4d7cd934ec767} 
 \index{hmap@{hmap}!curvature\_quadric@{curvature\_quadric}}
 \index{curvature\_quadric@{curvature\_quadric}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{curvature\_quadric()}{curvature\_quadric()}}
@@ -6251,27 +6275,7 @@ Computes various curvature descriptors from the input array {\ttfamily z}. If {\
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}  \Hypertarget{namespacehmap_aa1f2e119a09d246fe0cf27e859ddb2e6}\label{namespacehmap_aa1f2e119a09d246fe0cf27e859ddb2e6} 
-\index{hmap@{hmap}!level\_set\_curvature@{level\_set\_curvature}}
-\index{level\_set\_curvature@{level\_set\_curvature}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{level\_set\_curvature()}{level\_set\_curvature()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::level\+\_\+set\+\_\+curvature (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{int}]{prefilter\+\_\+ir }\end{DoxyParamCaption})}
-
-
-
-Computes a signed level-\/set curvature. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em array} & Input array. \\
-\hline
-{\em prefilter\+\_\+ir} & Optional smoothing radius for curvature evaluation. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Signed curvature. 
-\end{DoxyReturn}
-\Hypertarget{namespacehmap_a2c154806321deecb3240ac71eb7ccf29}\label{namespacehmap_a2c154806321deecb3240ac71eb7ccf29} 
+{\bfseries{Result}}  \Hypertarget{namespacehmap_a2c154806321deecb3240ac71eb7ccf29}\label{namespacehmap_a2c154806321deecb3240ac71eb7ccf29} 
 \index{hmap@{hmap}!assert\_almost\_equal@{assert\_almost\_equal}}
 \index{assert\_almost\_equal@{assert\_almost\_equal}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{assert\_almost\_equal()}{assert\_almost\_equal()}}

@@ -14,8 +14,8 @@ var curvature_8hpp =
       [ "CT_RING", "curvature_8hpp.html#ad4d5e191ca7dd12e389c842188bde88aac4f3d851c4c1680752dea7ea24fe02ed", null ],
       [ "CT_ROTOR", "curvature_8hpp.html#ad4d5e191ca7dd12e389c842188bde88aae43a8928c7c1f96f56419e4d4197ec12", null ]
     ] ],
-    [ "curvature_quadric", "curvature_8hpp.html#a4e2b7df70a18f94ad7f4d7cd934ec767", null ],
     [ "level_set_curvature", "curvature_8hpp.html#aa1f2e119a09d246fe0cf27e859ddb2e6", null ],
-    [ "curvature_quadric", "curvature_8hpp.html#a7bfb7fecab3f34a73a57d7907c3ace7d", null ],
-    [ "level_set_curvature", "curvature_8hpp.html#a125118b55d309727ff0b46d686fd3829", null ]
+    [ "level_set_curvature", "curvature_8hpp.html#a125118b55d309727ff0b46d686fd3829", null ],
+    [ "curvature_quadric", "curvature_8hpp.html#a4e2b7df70a18f94ad7f4d7cd934ec767", null ],
+    [ "curvature_quadric", "curvature_8hpp.html#a7bfb7fecab3f34a73a57d7907c3ace7d", null ]
 ];

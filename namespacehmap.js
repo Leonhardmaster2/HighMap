@@ -20,8 +20,8 @@ var namespacehmap =
       [ "blend_gradients", "namespacehmap_1_1gpu.html#a3a43696b1d6b8f0d966f9f05e5085edf", null ],
       [ "blend_poisson_bf", "namespacehmap_1_1gpu.html#a65a176508b404f80e5f5abd31456712e", null ],
       [ "transfer", "namespacehmap_1_1gpu.html#acff6d6d559781cdeba565ed795bb81d8", null ],
-      [ "curvature_quadric", "namespacehmap_1_1gpu.html#a7bfb7fecab3f34a73a57d7907c3ace7d", null ],
       [ "level_set_curvature", "namespacehmap_1_1gpu.html#a125118b55d309727ff0b46d686fd3829", null ],
+      [ "curvature_quadric", "namespacehmap_1_1gpu.html#a7bfb7fecab3f34a73a57d7907c3ace7d", null ],
       [ "deposition_fill_holes", "namespacehmap_1_1gpu.html#a8497e2fce595293ea07e68eac1e5bce2", null ],
       [ "hydraulic_particle", "namespacehmap_1_1gpu.html#ae084938139cca4f7c15866ceabe18ab7", null ],
       [ "hydraulic_particle", "namespacehmap_1_1gpu.html#a24498e2366d9797fe9e585f494bff98f", null ],
@@ -489,6 +489,12 @@ var namespacehmap =
       [ "RP_FLAT_BOTTOM", "namespacehmap.html#a2affc745bc33b7555352665745741f90a42aff3426715647722fc7945ca24ec4c", null ],
       [ "RP_SQRT", "namespacehmap.html#a2affc745bc33b7555352665745741f90ada6f8c1c08707c0497225cca34975ca5", null ]
     ] ],
+    [ "DistanceTransformType", "namespacehmap.html#a9e2493cec1a67b3140691e617ddc925a", [
+      [ "DT_EXACT", "namespacehmap.html#a9e2493cec1a67b3140691e617ddc925aa109b04de7ca555c0e4d17629e55e7ee3", null ],
+      [ "DT_APPROX", "namespacehmap.html#a9e2493cec1a67b3140691e617ddc925aa3b8bce8feaa179b9a546bbbe28c1d44a", null ],
+      [ "DT_MANHATTAN", "namespacehmap.html#a9e2493cec1a67b3140691e617ddc925aae4b14640395ecd7333bea8838ea9dda1", null ],
+      [ "DT_JFA", "namespacehmap.html#a9e2493cec1a67b3140691e617ddc925aaa09d87a577ce3a1b91c372aa051b0406", null ]
+    ] ],
     [ "MorphologyOperation", "namespacehmap.html#a321149eda3417aa485a010c31267818c", [
       [ "MO_BORDER", "namespacehmap.html#a321149eda3417aa485a010c31267818ca8083c22f48c0732c103514d10b5fe7e6", null ],
       [ "MO_CLOSING", "namespacehmap.html#a321149eda3417aa485a010c31267818ca442219bd6354336f660624a2b76bde23", null ],
@@ -499,12 +505,6 @@ var namespacehmap =
       [ "MO_TOP_HAT", "namespacehmap.html#a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2", null ],
       [ "MO_GRADIENT", "namespacehmap.html#a321149eda3417aa485a010c31267818ca2a4e04241f3ad0bdc9da20e651ba8dd3", null ],
       [ "MO_LAPLACIAN", "namespacehmap.html#a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e", null ]
-    ] ],
-    [ "DistanceTransformType", "namespacehmap.html#a9e2493cec1a67b3140691e617ddc925a", [
-      [ "DT_EXACT", "namespacehmap.html#a9e2493cec1a67b3140691e617ddc925aa109b04de7ca555c0e4d17629e55e7ee3", null ],
-      [ "DT_APPROX", "namespacehmap.html#a9e2493cec1a67b3140691e617ddc925aa3b8bce8feaa179b9a546bbbe28c1d44a", null ],
-      [ "DT_MANHATTAN", "namespacehmap.html#a9e2493cec1a67b3140691e617ddc925aae4b14640395ecd7333bea8838ea9dda1", null ],
-      [ "DT_JFA", "namespacehmap.html#a9e2493cec1a67b3140691e617ddc925aaa09d87a577ce3a1b91c372aa051b0406", null ]
     ] ],
     [ "pyramid_transform_support", "namespacehmap.html#ae84abe9052dcb9c88f3c50716addfe44", [
       [ "FULL", "namespacehmap.html#ae84abe9052dcb9c88f3c50716addfe44a335e6fca97d53bfb6cc3a55c566f1dd7", null ],
@@ -610,8 +610,8 @@ var namespacehmap =
     [ "convolve2d_truncated", "namespacehmap.html#a6108df0909730083cb6dd7cf4a217c1b", null ],
     [ "convolve2d_svd", "namespacehmap.html#a15951dcd1ef3999591c757944f894e15", null ],
     [ "convolve2d_svd_rotated_kernel", "namespacehmap.html#addbc812a7b7523f4e0f185fb27016469", null ],
-    [ "curvature_quadric", "namespacehmap.html#a4e2b7df70a18f94ad7f4d7cd934ec767", null ],
     [ "level_set_curvature", "namespacehmap.html#aa1f2e119a09d246fe0cf27e859ddb2e6", null ],
+    [ "curvature_quadric", "namespacehmap.html#a4e2b7df70a18f94ad7f4d7cd934ec767", null ],
     [ "assert_almost_equal", "namespacehmap.html#a2c154806321deecb3240ac71eb7ccf29", null ],
     [ "get_erosion_profile_function", "namespacehmap.html#a02f191e398bfc3c0e87999d8576d7c3d", null ],
     [ "check_erosion_profile_function", "namespacehmap.html#ac718f038155dde59fb50eb22684ed255", null ],

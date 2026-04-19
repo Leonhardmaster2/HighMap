@@ -1,5 +1,11 @@
 var morphology_8hpp =
 [
+    [ "DistanceTransformType", "morphology_8hpp.html#a9e2493cec1a67b3140691e617ddc925a", [
+      [ "DT_EXACT", "morphology_8hpp.html#a9e2493cec1a67b3140691e617ddc925aa109b04de7ca555c0e4d17629e55e7ee3", null ],
+      [ "DT_APPROX", "morphology_8hpp.html#a9e2493cec1a67b3140691e617ddc925aa3b8bce8feaa179b9a546bbbe28c1d44a", null ],
+      [ "DT_MANHATTAN", "morphology_8hpp.html#a9e2493cec1a67b3140691e617ddc925aae4b14640395ecd7333bea8838ea9dda1", null ],
+      [ "DT_JFA", "morphology_8hpp.html#a9e2493cec1a67b3140691e617ddc925aaa09d87a577ce3a1b91c372aa051b0406", null ]
+    ] ],
     [ "MorphologyOperation", "morphology_8hpp.html#a321149eda3417aa485a010c31267818c", [
       [ "MO_BORDER", "morphology_8hpp.html#a321149eda3417aa485a010c31267818ca8083c22f48c0732c103514d10b5fe7e6", null ],
       [ "MO_CLOSING", "morphology_8hpp.html#a321149eda3417aa485a010c31267818ca442219bd6354336f660624a2b76bde23", null ],
@@ -10,12 +16,6 @@ var morphology_8hpp =
       [ "MO_TOP_HAT", "morphology_8hpp.html#a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2", null ],
       [ "MO_GRADIENT", "morphology_8hpp.html#a321149eda3417aa485a010c31267818ca2a4e04241f3ad0bdc9da20e651ba8dd3", null ],
       [ "MO_LAPLACIAN", "morphology_8hpp.html#a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e", null ]
-    ] ],
-    [ "DistanceTransformType", "morphology_8hpp.html#a9e2493cec1a67b3140691e617ddc925a", [
-      [ "DT_EXACT", "morphology_8hpp.html#a9e2493cec1a67b3140691e617ddc925aa109b04de7ca555c0e4d17629e55e7ee3", null ],
-      [ "DT_APPROX", "morphology_8hpp.html#a9e2493cec1a67b3140691e617ddc925aa3b8bce8feaa179b9a546bbbe28c1d44a", null ],
-      [ "DT_MANHATTAN", "morphology_8hpp.html#a9e2493cec1a67b3140691e617ddc925aae4b14640395ecd7333bea8838ea9dda1", null ],
-      [ "DT_JFA", "morphology_8hpp.html#a9e2493cec1a67b3140691e617ddc925aaa09d87a577ce3a1b91c372aa051b0406", null ]
     ] ],
     [ "border", "morphology_8hpp.html#af80bcff234bf1482cf26896b9d21d270", null ],
     [ "closing", "morphology_8hpp.html#a889405ce11be91e33cc80ca4dbd192b0", null ],

@@ -1210,6 +1210,11 @@
     <member refid="namespacehmap_1a2affc745bc33b7555352665745741f90acedc11502bd1441e893fdc5a699b6d59" kind="enumvalue"><name>RP_SMOOTHSTEP_UPPER</name></member>
     <member refid="namespacehmap_1a2affc745bc33b7555352665745741f90a42aff3426715647722fc7945ca24ec4c" kind="enumvalue"><name>RP_FLAT_BOTTOM</name></member>
     <member refid="namespacehmap_1a2affc745bc33b7555352665745741f90ada6f8c1c08707c0497225cca34975ca5" kind="enumvalue"><name>RP_SQRT</name></member>
+    <member refid="namespacehmap_1a9e2493cec1a67b3140691e617ddc925a" kind="enum"><name>DistanceTransformType</name></member>
+    <member refid="namespacehmap_1a9e2493cec1a67b3140691e617ddc925aa109b04de7ca555c0e4d17629e55e7ee3" kind="enumvalue"><name>DT_EXACT</name></member>
+    <member refid="namespacehmap_1a9e2493cec1a67b3140691e617ddc925aa3b8bce8feaa179b9a546bbbe28c1d44a" kind="enumvalue"><name>DT_APPROX</name></member>
+    <member refid="namespacehmap_1a9e2493cec1a67b3140691e617ddc925aae4b14640395ecd7333bea8838ea9dda1" kind="enumvalue"><name>DT_MANHATTAN</name></member>
+    <member refid="namespacehmap_1a9e2493cec1a67b3140691e617ddc925aaa09d87a577ce3a1b91c372aa051b0406" kind="enumvalue"><name>DT_JFA</name></member>
     <member refid="namespacehmap_1a321149eda3417aa485a010c31267818c" kind="enum"><name>MorphologyOperation</name></member>
     <member refid="namespacehmap_1a321149eda3417aa485a010c31267818ca8083c22f48c0732c103514d10b5fe7e6" kind="enumvalue"><name>MO_BORDER</name></member>
     <member refid="namespacehmap_1a321149eda3417aa485a010c31267818ca442219bd6354336f660624a2b76bde23" kind="enumvalue"><name>MO_CLOSING</name></member>
@@ -1220,11 +1225,6 @@
     <member refid="namespacehmap_1a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2" kind="enumvalue"><name>MO_TOP_HAT</name></member>
     <member refid="namespacehmap_1a321149eda3417aa485a010c31267818ca2a4e04241f3ad0bdc9da20e651ba8dd3" kind="enumvalue"><name>MO_GRADIENT</name></member>
     <member refid="namespacehmap_1a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e" kind="enumvalue"><name>MO_LAPLACIAN</name></member>
-    <member refid="namespacehmap_1a9e2493cec1a67b3140691e617ddc925a" kind="enum"><name>DistanceTransformType</name></member>
-    <member refid="namespacehmap_1a9e2493cec1a67b3140691e617ddc925aa109b04de7ca555c0e4d17629e55e7ee3" kind="enumvalue"><name>DT_EXACT</name></member>
-    <member refid="namespacehmap_1a9e2493cec1a67b3140691e617ddc925aa3b8bce8feaa179b9a546bbbe28c1d44a" kind="enumvalue"><name>DT_APPROX</name></member>
-    <member refid="namespacehmap_1a9e2493cec1a67b3140691e617ddc925aae4b14640395ecd7333bea8838ea9dda1" kind="enumvalue"><name>DT_MANHATTAN</name></member>
-    <member refid="namespacehmap_1a9e2493cec1a67b3140691e617ddc925aaa09d87a577ce3a1b91c372aa051b0406" kind="enumvalue"><name>DT_JFA</name></member>
     <member refid="namespacehmap_1ae84abe9052dcb9c88f3c50716addfe44" kind="enum"><name>pyramid_transform_support</name></member>
     <member refid="namespacehmap_1ae84abe9052dcb9c88f3c50716addfe44a335e6fca97d53bfb6cc3a55c566f1dd7" kind="enumvalue"><name>FULL</name></member>
     <member refid="namespacehmap_1ae84abe9052dcb9c88f3c50716addfe44ab02b262c560a970e4f082d4edee376fb" kind="enumvalue"><name>LOWPASS_ONLY</name></member>
@@ -1330,8 +1330,8 @@
     <member refid="namespacehmap_1a6108df0909730083cb6dd7cf4a217c1b" kind="function"><name>convolve2d_truncated</name></member>
     <member refid="namespacehmap_1a15951dcd1ef3999591c757944f894e15" kind="function"><name>convolve2d_svd</name></member>
     <member refid="namespacehmap_1addbc812a7b7523f4e0f185fb27016469" kind="function"><name>convolve2d_svd_rotated_kernel</name></member>
-    <member refid="namespacehmap_1a4e2b7df70a18f94ad7f4d7cd934ec767" kind="function"><name>curvature_quadric</name></member>
     <member refid="namespacehmap_1aa1f2e119a09d246fe0cf27e859ddb2e6" kind="function"><name>level_set_curvature</name></member>
+    <member refid="namespacehmap_1a4e2b7df70a18f94ad7f4d7cd934ec767" kind="function"><name>curvature_quadric</name></member>
     <member refid="namespacehmap_1a2c154806321deecb3240ac71eb7ccf29" kind="function"><name>assert_almost_equal</name></member>
     <member refid="namespacehmap_1a02f191e398bfc3c0e87999d8576d7c3d" kind="function"><name>get_erosion_profile_function</name></member>
     <member refid="namespacehmap_1ac718f038155dde59fb50eb22684ed255" kind="function"><name>check_erosion_profile_function</name></member>
@@ -1989,8 +1989,8 @@
     <member refid="namespacehmap_1_1gpu_1a3a43696b1d6b8f0d966f9f05e5085edf" kind="function"><name>blend_gradients</name></member>
     <member refid="namespacehmap_1_1gpu_1a65a176508b404f80e5f5abd31456712e" kind="function"><name>blend_poisson_bf</name></member>
     <member refid="namespacehmap_1_1gpu_1acff6d6d559781cdeba565ed795bb81d8" kind="function"><name>transfer</name></member>
-    <member refid="namespacehmap_1_1gpu_1a7bfb7fecab3f34a73a57d7907c3ace7d" kind="function"><name>curvature_quadric</name></member>
     <member refid="namespacehmap_1_1gpu_1a125118b55d309727ff0b46d686fd3829" kind="function"><name>level_set_curvature</name></member>
+    <member refid="namespacehmap_1_1gpu_1a7bfb7fecab3f34a73a57d7907c3ace7d" kind="function"><name>curvature_quadric</name></member>
     <member refid="namespacehmap_1_1gpu_1a8497e2fce595293ea07e68eac1e5bce2" kind="function"><name>deposition_fill_holes</name></member>
     <member refid="namespacehmap_1_1gpu_1ae084938139cca4f7c15866ceabe18ab7" kind="function"><name>hydraulic_particle</name></member>
     <member refid="namespacehmap_1_1gpu_1a24498e2366d9797fe9e585f494bff98f" kind="function"><name>hydraulic_particle</name></member>
