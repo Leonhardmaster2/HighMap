@@ -22,6 +22,12 @@ Array closing(const Array &array, int ir)
   return gpu::erosion(gpu::dilation(array, ir), ir);
 }
 
+Array closing_by_reconstruction(const Array &array, int ir, float k_smooth_max)
+{
+  Array marker = gpu::dilation(array, ir);
+  return gpu::reconstruction_by_erosion(marker, array, ir, k_smooth_max);
+}
+
 Array dilation(const Array &array, int ir)
 {
   return gpu::local_max(array, ir);
@@ -73,6 +79,12 @@ Array morphological_top_hat(const Array &array, int ir)
 Array opening(const Array &array, int ir)
 {
   return gpu::dilation(gpu::erosion(array, ir), ir);
+}
+
+Array opening_by_reconstruction(const Array &array, int ir, float k_smooth_min)
+{
+  Array marker = gpu::erosion(array, ir);
+  return gpu::reconstruction_by_dilation(marker, array, ir, k_smooth_min);
 }
 
 Array reconstruction_by_dilation(const Array &marker,

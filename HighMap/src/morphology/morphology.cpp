@@ -23,6 +23,12 @@ Array closing(const Array &array, int ir)
   return erosion(dilation(array, ir), ir);
 }
 
+Array closing_by_reconstruction(const Array &array, int ir, float k_smooth_max)
+{
+  Array marker = dilation(array, ir);
+  return reconstruction_by_erosion(marker, array, ir, k_smooth_max);
+}
+
 Array dilation(const Array &array, int ir)
 {
   return local_max(array, ir);
@@ -150,6 +156,12 @@ Array morphological_top_hat(const Array &array, int ir)
 Array opening(const Array &array, int ir)
 {
   return dilation(erosion(array, ir), ir);
+}
+
+Array opening_by_reconstruction(const Array &array, int ir, float k_smooth_min)
+{
+  Array marker = erosion(array, ir);
+  return reconstruction_by_dilation(marker, array, ir, k_smooth_min);
 }
 
 Array reconstruction_by_dilation(const Array &marker,

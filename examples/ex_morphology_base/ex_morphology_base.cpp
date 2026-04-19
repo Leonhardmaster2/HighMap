@@ -11,7 +11,7 @@ int main(void)
   hmap::remap(z);
 
   // radius = 1 ==> 3x3 square kernel
-  int ir = 3;
+  int ir = 8;
 
   hmap::Array zr = hmap::border(z, ir);
   hmap::Array zd = hmap::dilation(z, ir);
@@ -22,9 +22,6 @@ int main(void)
   hmap::Array zt = hmap::morphological_top_hat(z, ir);
   hmap::Array zh = hmap::morphological_black_hat(z, ir);
   hmap::Array zl = hmap::morphological_laplacian(z, ir);
-
-  // hmap::make_binary(z);
-  // hmap::Array zr = hmap::border(z, ir);
 
   hmap::export_banner_png("ex_morphology_base.png",
                           {z, zr, zd, ze, zc, zo, zg, zt, zh, zl},
@@ -44,6 +41,8 @@ int main(void)
       hmap::MorphologyOperation::MO_TOP_HAT,
       hmap::MorphologyOperation::MO_BLACK_HAT,
       hmap::MorphologyOperation::MO_LAPLACIAN,
+      hmap::MorphologyOperation::MO_CLOSING_BY_RECONSTRUCTION,
+      hmap::MorphologyOperation::MO_OPENING_BY_RECONSTRUCTION,
   };
 
   // CPU

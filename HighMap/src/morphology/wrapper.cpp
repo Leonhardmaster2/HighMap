@@ -41,6 +41,12 @@ Array morphological_operators(const Array        &array,
   case MorphologyOperation::MO_LAPLACIAN:
     return morphological_laplacian(array, ir);
     //
+  case MorphologyOperation::MO_CLOSING_BY_RECONSTRUCTION:
+    return closing_by_reconstruction(array, ir);
+    //
+  case MorphologyOperation::MO_OPENING_BY_RECONSTRUCTION:
+    return opening_by_reconstruction(array, ir);
+    //
   default: return Array(array.shape);
   }
 }
@@ -82,6 +88,12 @@ Array morphological_operators(const Array        &array,
     //
   case MorphologyOperation::MO_LAPLACIAN:
     return gpu::morphological_laplacian(array, ir);
+    //
+  case MorphologyOperation::MO_CLOSING_BY_RECONSTRUCTION:
+    return gpu::closing_by_reconstruction(array, ir);
+    //
+  case MorphologyOperation::MO_OPENING_BY_RECONSTRUCTION:
+    return gpu::opening_by_reconstruction(array, ir);
     //
   default: return Array(array.shape);
   }

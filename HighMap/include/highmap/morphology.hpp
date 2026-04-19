@@ -64,6 +64,21 @@ Array border(const Array &array, int ir);
 Array closing(const Array &array, int ir);
 
 /**
+ * @brief Apply closing by reconstruction to the input array.
+ *
+ * Performs a dilation followed by a reconstruction by erosion, filling small
+ * dark regions while preserving the shape of larger structures.
+ *
+ * @param  array         Input array.
+ * @param  ir            Radius of the structuring element.
+ * @param  k_smooth_max  Smoothness factor (0 for hard max).
+ * @return               Array Result after closing by reconstruction.
+ */
+Array closing_by_reconstruction(const Array &array,
+                                int          ir,
+                                float        k_smooth_max = 0.f);
+
+/**
  * @brief Apply a dilation algorithm to the input array using a square
  * structure.
  *
@@ -310,6 +325,21 @@ Array morphological_top_hat(const Array &array, int ir);
 Array opening(const Array &array, int ir);
 
 /**
+ * @brief Apply opening by reconstruction to the input array.
+ *
+ * Performs an erosion followed by a reconstruction by dilation, removing small
+ * bright features while preserving the shape of larger structures.
+ *
+ * @param  array         Input array.
+ * @param  ir            Radius of the structuring element.
+ * @param  k_smooth_min  Smoothness factor (0 for hard min).
+ * @return               Array Result after opening by reconstruction.
+ */
+Array opening_by_reconstruction(const Array &array,
+                                int          ir,
+                                float        k_smooth_min = 0.f);
+
+/**
  * @brief Perform morphological reconstruction by dilation.
  *
  * Iteratively dilates the marker image while constraining values to be less
@@ -470,6 +500,11 @@ Array border(const Array &array, int ir);
 /*! @brief See hmap::closing */
 Array closing(const Array &array, int ir);
 
+/*! @brief See hmap::closing_by_reconstruction */
+Array closing_by_reconstruction(const Array &array,
+                                int          ir,
+                                float        k_smooth_max = 0.f);
+
 /*! @brief See hmap::dilation */
 Array dilation(const Array &array, int ir);
 
@@ -519,6 +554,11 @@ Array morphological_top_hat(const Array &array, int ir);
 /*! @brief See hmap::opening */
 Array opening(const Array &array, int ir);
 
+/*! @brief See hmap::opening_by_reconstruction */
+Array opening_by_reconstruction(const Array &array,
+                                int          ir,
+                                float        k_smooth_min = 0.f);
+
 /*! @brief See hmap::reconstruction_by_dilation */
 Array reconstruction_by_dilation(const Array &marker,
                                  const Array &mask,
@@ -561,17 +601,17 @@ namespace hmap
 // clang-format off
 enum MorphologyOperation : int
 {
-	MO_BORDER, ///< Extract border of structures.
-	MO_CLOSING, ///< Dilation followed by erosion (fills small holes).
-	MO_DILATION, ///< Expand structures (local maximum).
-	MO_EROSION, ///< Shrink structures (local minimum).
-	MO_OPENING, ///< Erosion followed by dilation (removes small objects).
-	MO_BLACK_HAT, ///< Difference between closing and input (dark features).
-	MO_TOP_HAT, ///< Difference between input and opening (bright features).
-	MO_GRADIENT, ///< Difference between dilation and erosion (edge
-		     // magnitude).
-	MO_LAPLACIAN, ///< Second-order operator highlighting ridges and
-		      // valleys.
+	MO_BORDER,    //!< Extract border of structures.
+	MO_CLOSING,   //!< Dilation followed by erosion (fills small holes).
+	MO_DILATION,  //!< Expand structures (local maximum).
+	MO_EROSION,   //!< Shrink structures (local minimum).
+	MO_OPENING,   //!< Erosion followed by dilation (removes small objects).
+	MO_BLACK_HAT, //!< Difference between closing and input (dark features).
+	MO_TOP_HAT,   //!< Difference between input and opening (bright features).
+	MO_GRADIENT,  //!< Difference between dilation and erosion (edge magnitude).
+	MO_LAPLACIAN, //!< Second-order operator highlighting ridges and valleys.
+  MO_CLOSING_BY_RECONSTRUCTION,
+  MO_OPENING_BY_RECONSTRUCTION,
 };
 // clang-format on
 
