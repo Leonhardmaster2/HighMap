@@ -4,6 +4,7 @@ var morphology_8cpp =
     [ "border", "morphology_8cpp.html#af80bcff234bf1482cf26896b9d21d270", null ],
     [ "closing", "morphology_8cpp.html#a889405ce11be91e33cc80ca4dbd192b0", null ],
     [ "closing_by_reconstruction", "morphology_8cpp.html#a9e5600ea0195404efc56ad821e152c60", null ],
+    [ "contour_smoothing", "morphology_8cpp.html#a2420e66a1e851eff3503d805004495b3", null ],
     [ "dilation", "morphology_8cpp.html#ac91a2dacd050d8588b4135f02dd8f2a5", null ],
     [ "dilation_expand_border_only", "morphology_8cpp.html#a268e133ae504eaa1b31c91d13135f4c5", null ],
     [ "dilation_expand_min_value_border_only", "morphology_8cpp.html#a511226f8c6989729ff59e5079a6cff29", null ],

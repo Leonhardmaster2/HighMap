@@ -1450,6 +1450,8 @@ float \mbox{\hyperlink{namespacehmap_adce0295b768dd046d1ddcd117cb1b8b4}{triangle
 \begin{DoxyCompactList}\small\item\em Apply a closing algorithm to the input array using a square structure. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a9e5600ea0195404efc56ad821e152c60}{closing\+\_\+by\+\_\+reconstruction}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir, float k\+\_\+smooth\+\_\+max=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Apply closing by reconstruction to the input array. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a2420e66a1e851eff3503d805004495b3}{contour\+\_\+smoothing}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir, float transition\+\_\+ratio=0.\+1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
+\begin{DoxyCompactList}\small\item\em Smooth contour boundaries of segmented regions. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_ac91a2dacd050d8588b4135f02dd8f2a5}{dilation}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
 \begin{DoxyCompactList}\small\item\em Apply a dilation algorithm to the input array using a square structure. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a268e133ae504eaa1b31c91d13135f4c5}{dilation\+\_\+expand\+\_\+border\+\_\+only}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
@@ -21510,7 +21512,68 @@ Performs a dilation followed by a reconstruction by erosion, filling small dark 
 \begin{DoxyReturn}{Returns}
 \doxylink{classhmap_1_1Array}{Array} Result after closing by reconstruction. 
 \end{DoxyReturn}
-\Hypertarget{namespacehmap_ac91a2dacd050d8588b4135f02dd8f2a5}\label{namespacehmap_ac91a2dacd050d8588b4135f02dd8f2a5} 
+\Hypertarget{namespacehmap_a2420e66a1e851eff3503d805004495b3}\label{namespacehmap_a2420e66a1e851eff3503d805004495b3} 
+\index{hmap@{hmap}!contour\_smoothing@{contour\_smoothing}}
+\index{contour\_smoothing@{contour\_smoothing}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{contour\_smoothing()}{contour\_smoothing()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::contour\+\_\+smoothing (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{int}]{ir,  }\item[{float}]{transition\+\_\+ratio = {\ttfamily 0.1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
+
+
+
+Smooth contour boundaries of segmented regions. 
+
+Reduces staircase artifacts on component borders by smoothing the transition zone around edges.
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & Input labeled or binary array. \\
+\hline
+{\em ir} & Radius of the smoothing kernel. \\
+\hline
+{\em transition\+\_\+ratio} & Controls edge blending width. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classhmap_1_1Array}{Array} with smoothed contours.
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
+\DoxyCodeLine{\ \ glm::vec2\ \ res\ =\ \{8.f,\ 8.f\};}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 1;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ generate\ a\ mask\ with\ "{}staircaise"{}\ borders}}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ mask\ =\ \mbox{\hyperlink{namespacehmap_acb13e7346085793fda4c94c47b75d9a9}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{32,\ 32\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ res,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a2badbebec49b12d0d721970a18eb420d}{hmap::clamp\_min}}(mask,\ 0.f);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a4799d3f029d45240a5b40b4853583a58}{hmap::make\_binary}}(mask);}
+\DoxyCodeLine{\ \ mask\ =\ mask.\mbox{\hyperlink{classhmap_1_1Array_aead9df3c2a79ee8bc479b04ca314743e}{resample\_to\_shape\_nearest}}(shape);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ apply\ mask\ to\ field}}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_acb13e7346085793fda4c94c47b75d9a9}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ res,\ seed);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ab80da2376c6212eb9cb2899c0a5114ad}{hmap::remap}}(z);}
+\DoxyCodeLine{\ \ z\ *=\ mask;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ smooth\ contour}}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ ir\ =\ 8;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ transition\_ratio\ =\ 0.2f;}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ contour\ =\ \mbox{\hyperlink{namespacehmap_a2420e66a1e851eff3503d805004495b3}{hmap::contour\_smoothing}}(z,\ ir,\ transition\_ratio);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_contour\_smoothing.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{mask,\ z,\ contour,\ \mbox{\hyperlink{namespacehmap_a339d883dc34fc818dd25077c5daab953}{is\_non\_zero}}(contour),\ z\ *\ contour\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}}  \Hypertarget{namespacehmap_ac91a2dacd050d8588b4135f02dd8f2a5}\label{namespacehmap_ac91a2dacd050d8588b4135f02dd8f2a5} 
 \index{hmap@{hmap}!dilation@{dilation}}
 \index{dilation@{dilation}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{dilation()}{dilation()}}

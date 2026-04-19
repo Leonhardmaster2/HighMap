@@ -3,6 +3,7 @@ var morphology__gpu_8cpp =
     [ "border", "morphology__gpu_8cpp.html#a335e4629532ba64049e0721bdcb5f3ba", null ],
     [ "closing", "morphology__gpu_8cpp.html#a741099c8c3da0841caea9af72e731c78", null ],
     [ "closing_by_reconstruction", "morphology__gpu_8cpp.html#a4da387d47e1096eb2297f4d72513e4ae", null ],
+    [ "contour_smoothing", "morphology__gpu_8cpp.html#a792221afc46ff3986ecde59d52592ecb", null ],
     [ "dilation", "morphology__gpu_8cpp.html#aed49f777e8ad095bafc5dc014e548e6e", null ],
     [ "dilation_expand_border_only", "morphology__gpu_8cpp.html#a9d5b9a7ec8b097b74badbc7602e8addf", null ],
     [ "erosion", "morphology__gpu_8cpp.html#aed5416971461ddb7fb6427bdeb5cae86", null ],
