@@ -828,6 +828,11 @@ Array snow_simulation(const Array &z,
  * **Result**
  * @image html ex_water_depth_filter.png
  */
-void water_depth_filter(Array &depth, const Array &z, int ir);
+void water_depth_filter(Array       &depth,
+                        const Array &z,
+                        int          ir,
+                        const Array *p_water_mask = nullptr,
+                        bool         smooth_contour = false,
+                        float        transition_ratio = 0.1f);
 
 } // namespace hmap::gpu

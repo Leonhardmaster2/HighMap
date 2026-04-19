@@ -13,11 +13,18 @@ int main(void)
 
   hmap::Array water_depth0 = hmap::flooding_lake_system(z);
   auto        water_depth1 = water_depth0;
+  auto        water_depth2 = water_depth0;
 
-  int ir = 4;
+  int ir = 32;
   hmap::gpu::water_depth_filter(water_depth1, z, ir);
+  hmap::gpu::water_depth_filter(water_depth2,
+                                z,
+                                ir,
+                                nullptr,
+                                true); // smooth contour
 
-  hmap::export_banner_png("ex_water_depth_filter.png",
-                          {z, z + water_depth0, z + water_depth1},
-                          hmap::Cmap::MAGMA);
+  hmap::export_banner_png(
+      "ex_water_depth_filter.png",
+      {z, z + water_depth0, z + water_depth1, z + water_depth2},
+      hmap::Cmap::JET);
 }

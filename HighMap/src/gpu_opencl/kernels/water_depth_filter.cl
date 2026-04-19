@@ -3,6 +3,7 @@ R""(
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 void kernel water_depth_filter(read_only image2d_t  depth,
+                               read_only image2d_t  water_mask,
                                read_only image2d_t  zt,
                                write_only image2d_t zt_out,
                                const int            nx,
@@ -19,18 +20,23 @@ void kernel water_depth_filter(read_only image2d_t  depth,
   const int i = g.x;
   const int j = g.y;
 
+  if (TGET(water_mask, i, j) == 0.f) return;
+
   float val = 0.f;
   float sum = 0.f;
 
   for (int r = -ir; r <= ir; r++)
     for (int s = -ir; s <= ir; s++)
     {
-      // only taken into account "water" cells
-      if (TGET(depth, i + r, j + s) > 0.f)
+      if (is_within_radius_and_inside(i, j, g.x, g.y, ir, nx, ny))
       {
-        float r = max(0.f, 1.f - hypot(r, s) / ir);
-        val += r * TGET(zt, i + r, j + r);
-        sum += r;
+        // only taken into account "water" cells
+        if (TGET(depth, i + r, j + s) > 0.f)
+        {
+          float r = max(0.f, 1.f - hypot(r, s) / ir);
+          val += r * TGET(zt, i + r, j + r);
+          sum += r;
+        }
       }
     }
 

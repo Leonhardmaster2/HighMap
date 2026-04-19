@@ -12,6 +12,7 @@
 #include "highmap/hydrology/hydrology.hpp"
 #include "highmap/interpolate2d.hpp"
 #include "highmap/kernels.hpp"
+#include "highmap/morphology.hpp"
 #include "highmap/opencl/gpu_opencl.hpp"
 #include "highmap/range.hpp"
 
@@ -232,14 +233,31 @@ Array water_mask(const Array &water_depth,
 namespace hmap::gpu
 {
 
-void water_depth_filter(Array &depth, const Array &z, int ir)
+void water_depth_filter(Array       &depth,
+                        const Array &z,
+                        int          ir,
+                        const Array *p_water_mask,
+                        bool         smooth_contour,
+                        float        transition_ratio)
 {
   const glm::ivec2 shape = depth.shape;
   Array            zt = z + depth;
 
+  // if no water mask is provided to describe where there should be
+  // water, just use the water depth
+  if (!p_water_mask) p_water_mask = &depth;
+
+  Array smooth_mask;
+  if (smooth_contour)
+  {
+    smooth_mask = gpu::contour_smoothing(*p_water_mask, ir, transition_ratio);
+    p_water_mask = &smooth_mask;
+  }
+
   auto run = clwrapper::Run("water_depth_filter");
 
   run.bind_imagef("depth", depth.vector, shape.x, shape.y);
+  run.bind_imagef("water_mask", p_water_mask->vector, shape.x, shape.y);
   run.bind_imagef("zt", zt.vector, shape.x, shape.y);
   run.bind_imagef("zt_out", zt.vector, shape.x, shape.y, true);
 
@@ -251,7 +269,8 @@ void water_depth_filter(Array &depth, const Array &z, int ir)
   // retrieve depth
   for (int j = 0; j < shape.y; ++j)
     for (int i = 0; i < shape.x; ++i)
-      if (depth(i, j) != 0.f) depth(i, j) = std::max(0.f, zt(i, j) - z(i, j));
+      if ((*p_water_mask)(i, j) != 0.f)
+        depth(i, j) = std::max(0.f, zt(i, j) - z(i, j));
 }
 
 } // namespace hmap::gpu
