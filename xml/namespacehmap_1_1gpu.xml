@@ -8356,10 +8356,10 @@ This is an overloaded member function, provided for convenience. It differs from
         </inbodydescription>
         <location file="HighMap/src/hydrology/snow_simulation.cpp" line="76" column="7" bodyfile="HighMap/src/hydrology/snow_simulation.cpp" bodystart="76" bodyend="148" declfile="HighMap/include/highmap/hydrology/hydrology.hpp" declline="802" declcolumn="7"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1_1gpu_1a809224818643782fce94ea97109df3f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacehmap_1_1gpu_1a687d85d20bee065ffabeecea9124f432" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void hmap::gpu::water_depth_filter</definition>
-        <argsstring>(Array &amp;depth, const Array &amp;z, int ir)</argsstring>
+        <argsstring>(Array &amp;depth, const Array &amp;z, int ir, const Array *p_water_mask=nullptr, bool smooth_contour=false, float transition_ratio=0.1f)</argsstring>
         <name>water_depth_filter</name>
         <qualifiedname>hmap::gpu::water_depth_filter</qualifiedname>
         <param>
@@ -8373,6 +8373,21 @@ This is an overloaded member function, provided for convenience. It differs from
         <param>
           <type>int</type>
           <declname>ir</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
+          <declname>p_water_mask</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>smooth_contour</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>transition_ratio</declname>
+          <defval>0.1<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
         </param>
         <briefdescription>
 <para>Filters water depth values using elevation data and a given radius. </para>
@@ -8418,13 +8433,20 @@ This is an overloaded member function, provided for convenience. It differs from
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>water_depth0<sp/>=<sp/><ref refid="namespacehmap_1a3624c1660e60d16a87c90222606f7050" kindref="member">hmap::flooding_lake_system</ref>(z);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>water_depth1<sp/>=<sp/>water_depth0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>water_depth2<sp/>=<sp/>water_depth0;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ir<sp/>=<sp/>4;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1a809224818643782fce94ea97109df3f7" kindref="member">hmap::gpu::water_depth_filter</ref>(water_depth1,<sp/>z,<sp/>ir);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ir<sp/>=<sp/>32;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1a687d85d20bee065ffabeecea9124f432" kindref="member">hmap::gpu::water_depth_filter</ref>(water_depth1,<sp/>z,<sp/>ir);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1a687d85d20bee065ffabeecea9124f432" kindref="member">hmap::gpu::water_depth_filter</ref>(water_depth2,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>z,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ir,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);<sp/></highlight><highlight class="comment">//<sp/>smooth<sp/>contour</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_water_depth_filter.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,<sp/>z<sp/>+<sp/>water_depth0,<sp/>z<sp/>+<sp/>water_depth1},</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a744ead0b170889e33126895264f1af2c" kindref="member">hmap::Cmap::MAGMA</ref>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;ex_water_depth_filter.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{z,<sp/>z<sp/>+<sp/>water_depth0,<sp/>z<sp/>+<sp/>water_depth1,<sp/>z<sp/>+<sp/>water_depth2},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced" kindref="member">hmap::Cmap::JET</ref>);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting></para>
 <para><bold>Result</bold> <image type="html" name="ex_water_depth_filter.png"></image>
@@ -8432,7 +8454,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/water_depth.cpp" line="235" column="6" bodyfile="HighMap/src/hydrology/water_depth.cpp" bodystart="235" bodyend="255" declfile="HighMap/include/highmap/hydrology/hydrology.hpp" declline="831" declcolumn="6"/>
+        <location file="HighMap/src/hydrology/water_depth.cpp" line="236" column="6" bodyfile="HighMap/src/hydrology/water_depth.cpp" bodystart="236" bodyend="274" declfile="HighMap/include/highmap/hydrology/hydrology.hpp" declline="831" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a864cdb10c297b4a59dc761f32dbbc11a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>

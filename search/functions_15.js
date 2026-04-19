@@ -4,7 +4,7 @@ var searchData=
   ['warp_5fdirectional_1',['warp_directional',['../namespacehmap.html#accbbc6e5bedf98c7a7fa85fbe364194e',1,'hmap::warp_directional(Array &amp;array, float angle, float amount=0.02f, int ir=4, bool reverse=false)'],['../namespacehmap.html#a6b780e74228ec5cca45602eb19b8975c',1,'hmap::warp_directional(Array &amp;array, float angle, const Array *p_mask, float amount=0.02f, int ir=4, bool reverse=false)']]],
   ['warp_5fdownslope_2',['warp_downslope',['../namespacehmap.html#a5d5baa80ff76a31a24e3b348edb0520a',1,'hmap::warp_downslope(Array &amp;array, float amount=0.02f, int ir=4, bool reverse=false)'],['../namespacehmap.html#a2dba417aca5a0dcd02509617939d741b',1,'hmap::warp_downslope(Array &amp;array, const Array *p_mask, float amount=0.02f, int ir=4, bool reverse=false)']]],
   ['water_5fdepth_5fdry_5fout_3',['water_depth_dry_out',['../namespacehmap.html#a3aebd62906b90ccfde11140e13b0853f',1,'hmap']]],
-  ['water_5fdepth_5ffilter_4',['water_depth_filter',['../namespacehmap_1_1gpu.html#a809224818643782fce94ea97109df3f7',1,'hmap::gpu']]],
+  ['water_5fdepth_5ffilter_4',['water_depth_filter',['../namespacehmap_1_1gpu.html#a687d85d20bee065ffabeecea9124f432',1,'hmap::gpu']]],
   ['water_5fdepth_5ffrom_5fmask_5',['water_depth_from_mask',['../namespacehmap.html#a121c42071766df393b6e049315876d5e',1,'hmap']]],
   ['water_5fdepth_5fincrease_6',['water_depth_increase',['../namespacehmap.html#a136f042ce2ad8c14033f4d839f56265d',1,'hmap']]],
   ['water_5fmask_7',['water_mask',['../namespacehmap.html#abc5928f49e530927c8fb61a9afea3274',1,'hmap::water_mask(const Array &amp;water_depth, const Array &amp;z, float additional_depth)'],['../namespacehmap.html#ad39c72e2b4c07d3013f7b0143c31137c',1,'hmap::water_mask(const Array &amp;water_depth)']]],

@@ -113,7 +113,7 @@ var namespacehmap =
       [ "flow_simulation_viscous", "namespacehmap_1_1gpu.html#aeebe29334cfef012f311a2369ed3286c", null ],
       [ "generate_riverbed", "namespacehmap_1_1gpu.html#a129b54789c706428d04afd91d5eb8ae6", null ],
       [ "snow_simulation", "namespacehmap_1_1gpu.html#a7bed0a401445a2b13d8d37e7a34ea598", null ],
-      [ "water_depth_filter", "namespacehmap_1_1gpu.html#a809224818643782fce94ea97109df3f7", null ],
+      [ "water_depth_filter", "namespacehmap_1_1gpu.html#a687d85d20bee065ffabeecea9124f432", null ],
       [ "interpolate_array_bicubic", "namespacehmap_1_1gpu.html#a7fca2b47602e86cf0c65908230bdee55", null ],
       [ "interpolate_array_bicubic", "namespacehmap_1_1gpu.html#a8b7cdbe45c09fc626e1a67d22fb46245", null ],
       [ "interpolate_array_bilinear", "namespacehmap_1_1gpu.html#a9c6bf942ee590b7a1b1fa7e5d87d890a", null ],

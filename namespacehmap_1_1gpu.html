@@ -409,9 +409,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a7bed0a401445a2b13d8d37e7a34ea598" id="r_a7bed0a401445a2b13d8d37e7a34ea598"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a7bed0a401445a2b13d8d37e7a34ea598">snow_simulation</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, float snow_depth, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;fall_map, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;melting_map, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;talus, int iterations, float dt=0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float fall_iterations_ratio=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float k_snow=0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float k_visc=0.1<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float k_melt_factor=0.8<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float k_depth_ratio=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float k_depth_slope_ratio=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, bool post_filter=true, float thermal_talus_ratio=0.2<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
 <tr class="memdesc:a7bed0a401445a2b13d8d37e7a34ea598"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simulate snow accumulation and redistribution over a terrain.  <br /></td></tr>
 <tr class="separator:a7bed0a401445a2b13d8d37e7a34ea598"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a809224818643782fce94ea97109df3f7" id="r_a809224818643782fce94ea97109df3f7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a809224818643782fce94ea97109df3f7">water_depth_filter</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;depth, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, int ir)</td></tr>
-<tr class="memdesc:a809224818643782fce94ea97109df3f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Filters water depth values using elevation data and a given radius.  <br /></td></tr>
-<tr class="separator:a809224818643782fce94ea97109df3f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a687d85d20bee065ffabeecea9124f432" id="r_a687d85d20bee065ffabeecea9124f432"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a687d85d20bee065ffabeecea9124f432">water_depth_filter</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;depth, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, int ir, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_water_mask=nullptr, bool smooth_contour=false, float transition_ratio=0.1<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
+<tr class="memdesc:a687d85d20bee065ffabeecea9124f432"><td class="mdescLeft">&#160;</td><td class="mdescRight">Filters water depth values using elevation data and a given radius.  <br /></td></tr>
+<tr class="separator:a687d85d20bee065ffabeecea9124f432"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7fca2b47602e86cf0c65908230bdee55" id="r_a7fca2b47602e86cf0c65908230bdee55"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a7fca2b47602e86cf0c65908230bdee55">interpolate_array_bicubic</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;source, <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;target)</td></tr>
 <tr class="separator:a7fca2b47602e86cf0c65908230bdee55"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b7cdbe45c09fc626e1a67d22fb46245" id="r_a8b7cdbe45c09fc626e1a67d22fb46245"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a8b7cdbe45c09fc626e1a67d22fb46245">interpolate_array_bicubic</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;source, <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;target, const glm::vec4 &amp;bbox_source, const glm::vec4 &amp;bbox_target)</td></tr>
@@ -8226,8 +8226,8 @@ Only available if OpenCL is enabled.</dd></dl>
  
 </div>
 </div>
-<a id="a809224818643782fce94ea97109df3f7" name="a809224818643782fce94ea97109df3f7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a809224818643782fce94ea97109df3f7">&#9670;&#160;</a></span>water_depth_filter()</h2>
+<a id="a687d85d20bee065ffabeecea9124f432" name="a687d85d20bee065ffabeecea9124f432"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a687d85d20bee065ffabeecea9124f432">&#9670;&#160;</a></span>water_depth_filter()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -8248,7 +8248,25 @@ Only available if OpenCL is enabled.</dd></dl>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>ir</em>&#160;</td>
+          <td class="paramname"><em>ir</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
+          <td class="paramname"><em>p_water_mask</em> = <code>nullptr</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>smooth_contour</em> = <code>false</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>transition_ratio</em> = <code>0.1<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -8282,17 +8300,23 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> water_depth0 = <a class="code hl_function" href="namespacehmap.html#a3624c1660e60d16a87c90222606f7050">hmap::flooding_lake_system</a>(z);</div>
 <div class="line">  <span class="keyword">auto</span>        water_depth1 = water_depth0;</div>
+<div class="line">  <span class="keyword">auto</span>        water_depth2 = water_depth0;</div>
 <div class="line"> </div>
-<div class="line">  <span class="keywordtype">int</span> ir = 4;</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap_1_1gpu.html#a809224818643782fce94ea97109df3f7">hmap::gpu::water_depth_filter</a>(water_depth1, z, ir);</div>
+<div class="line">  <span class="keywordtype">int</span> ir = 32;</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap_1_1gpu.html#a687d85d20bee065ffabeecea9124f432">hmap::gpu::water_depth_filter</a>(water_depth1, z, ir);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap_1_1gpu.html#a687d85d20bee065ffabeecea9124f432">hmap::gpu::water_depth_filter</a>(water_depth2,</div>
+<div class="line">                                z,</div>
+<div class="line">                                ir,</div>
+<div class="line">                                <span class="keyword">nullptr</span>,</div>
+<div class="line">                                <span class="keyword">true</span>); <span class="comment">// smooth contour</span></div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_water_depth_filter.png&quot;</span>,</div>
-<div class="line">                          {z, z + water_depth0, z + water_depth1},</div>
-<div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a744ead0b170889e33126895264f1af2c">hmap::Cmap::MAGMA</a>);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(</div>
+<div class="line">      <span class="stringliteral">&quot;ex_water_depth_filter.png&quot;</span>,</div>
+<div class="line">      {z, z + water_depth0, z + water_depth1, z + water_depth2},</div>
+<div class="line">      <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_1_1gpu_html_a809224818643782fce94ea97109df3f7"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a809224818643782fce94ea97109df3f7">hmap::gpu::water_depth_filter</a></div><div class="ttdeci">void water_depth_filter(Array &amp;depth, const Array &amp;z, int ir)</div><div class="ttdoc">Filters water depth values using elevation data and a given radius.</div><div class="ttdef"><b>Definition</b> water_depth.cpp:235</div></div>
+<div class="ttc" id="anamespacehmap_1_1gpu_html_a687d85d20bee065ffabeecea9124f432"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a687d85d20bee065ffabeecea9124f432">hmap::gpu::water_depth_filter</a></div><div class="ttdeci">void water_depth_filter(Array &amp;depth, const Array &amp;z, int ir, const Array *p_water_mask=nullptr, bool smooth_contour=false, float transition_ratio=0.1f)</div><div class="ttdoc">Filters water depth values using elevation data and a given radius.</div><div class="ttdef"><b>Definition</b> water_depth.cpp:236</div></div>
 <div class="ttc" id="anamespacehmap_html_a3624c1660e60d16a87c90222606f7050"><div class="ttname"><a href="namespacehmap.html#a3624c1660e60d16a87c90222606f7050">hmap::flooding_lake_system</a></div><div class="ttdeci">Array flooding_lake_system(const Array &amp;z, float surface_threshold=0)</div><div class="ttdoc">Estimate lake water depths on a terrain by filling depressions.</div><div class="ttdef"><b>Definition</b> flooding.cpp:164</div></div>
-<div class="ttc" id="anamespacehmap_html_ac70fe3cbb32e0340d5dd3e15cdcf9369a744ead0b170889e33126895264f1af2c"><div class="ttname"><a href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a744ead0b170889e33126895264f1af2c">hmap::MAGMA</a></div><div class="ttdeci">@ MAGMA</div><div class="ttdef"><b>Definition</b> colormaps.hpp:89</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_water_depth_filter.png" alt=""/>
 </div>

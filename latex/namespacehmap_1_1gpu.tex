@@ -218,7 +218,7 @@ void \mbox{\hyperlink{namespacehmap_1_1gpu_a8a89eb3b3dcbdd39e57abc1770420bf1}{ph
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a30d55fae5c75a1c45a005a3f9a9467eb}{hmap\+::generate\+\_\+riverbed}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a7bed0a401445a2b13d8d37e7a34ea598}{snow\+\_\+simulation}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, float snow\+\_\+depth, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&fall\+\_\+map, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&melting\+\_\+map, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&talus, int iterations, float dt=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float fall\+\_\+iterations\+\_\+ratio=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float k\+\_\+snow=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float k\+\_\+visc=0.\+1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float k\+\_\+melt\+\_\+factor=0.\+8\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float k\+\_\+depth\+\_\+ratio=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float k\+\_\+depth\+\_\+slope\+\_\+ratio=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, bool post\+\_\+filter=true, float thermal\+\_\+talus\+\_\+ratio=0.\+2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Simulate snow accumulation and redistribution over a terrain. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{namespacehmap_1_1gpu_a809224818643782fce94ea97109df3f7}{water\+\_\+depth\+\_\+filter}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&depth, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int ir)
+void \mbox{\hyperlink{namespacehmap_1_1gpu_a687d85d20bee065ffabeecea9124f432}{water\+\_\+depth\+\_\+filter}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&depth, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int ir, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+water\+\_\+mask=nullptr, bool smooth\+\_\+contour=false, float transition\+\_\+ratio=0.\+1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Filters water depth values using elevation data and a given radius. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_1_1gpu_a7fca2b47602e86cf0c65908230bdee55}{interpolate\+\_\+array\+\_\+bicubic}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&source, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&target)
 \item 
@@ -3398,11 +3398,11 @@ Final snow depth field.
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}  \Hypertarget{namespacehmap_1_1gpu_a809224818643782fce94ea97109df3f7}\label{namespacehmap_1_1gpu_a809224818643782fce94ea97109df3f7} 
+{\bfseries{Result}}  \Hypertarget{namespacehmap_1_1gpu_a687d85d20bee065ffabeecea9124f432}\label{namespacehmap_1_1gpu_a687d85d20bee065ffabeecea9124f432} 
 \index{hmap::gpu@{hmap::gpu}!water\_depth\_filter@{water\_depth\_filter}}
 \index{water\_depth\_filter@{water\_depth\_filter}!hmap::gpu@{hmap::gpu}}
 \doxysubsubsection{\texorpdfstring{water\_depth\_filter()}{water\_depth\_filter()}}
-{\footnotesize\ttfamily void hmap\+::gpu\+::water\+\_\+depth\+\_\+filter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{depth,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{int}]{ir }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void hmap\+::gpu\+::water\+\_\+depth\+\_\+filter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{depth,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{int}]{ir,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+water\+\_\+mask = {\ttfamily nullptr},  }\item[{bool}]{smooth\+\_\+contour = {\ttfamily false},  }\item[{float}]{transition\+\_\+ratio = {\ttfamily 0.1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
 
 
 
@@ -3434,13 +3434,20 @@ Filters water depth values using elevation data and a given radius.
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ water\_depth0\ =\ \mbox{\hyperlink{namespacehmap_a3624c1660e60d16a87c90222606f7050}{hmap::flooding\_lake\_system}}(z);}
 \DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ \ \ \ \ \ \ \ water\_depth1\ =\ water\_depth0;}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ \ \ \ \ \ \ \ water\_depth2\ =\ water\_depth0;}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ ir\ =\ 4;}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_1_1gpu_a809224818643782fce94ea97109df3f7}{hmap::gpu::water\_depth\_filter}}(water\_depth1,\ z,\ ir);}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ ir\ =\ 32;}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_1_1gpu_a687d85d20bee065ffabeecea9124f432}{hmap::gpu::water\_depth\_filter}}(water\_depth1,\ z,\ ir);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_1_1gpu_a687d85d20bee065ffabeecea9124f432}{hmap::gpu::water\_depth\_filter}}(water\_depth2,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ z,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ir,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});\ \textcolor{comment}{//\ smooth\ contour}}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_water\_depth\_filter.png"{}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ z\ +\ water\_depth0,\ z\ +\ water\_depth1\},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a744ead0b170889e33126895264f1af2c}{hmap::Cmap::MAGMA}});}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{stringliteral}{"{}ex\_water\_depth\_filter.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \{z,\ z\ +\ water\_depth0,\ z\ +\ water\_depth1,\ z\ +\ water\_depth2\},}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}});}
 \DoxyCodeLine{\}}
 
 \end{DoxyCodeInclude}
