@@ -1,10 +1,5 @@
 var NAVTREEINDEX9 =
 {
-"functions_func_d.html":[4,3,1,3],
-"functions_func_e.html":[4,3,1,4],
-"functions_func_f.html":[4,3,1,5],
-"functions_func_g.html":[4,3,1,6],
-"functions_func_h.html":[4,3,1,7],
 "functions_func_i.html":[4,3,1,8],
 "functions_func_k.html":[4,3,1,9],
 "functions_func_l.html":[4,3,1,10],
@@ -54,8 +49,8 @@ var NAVTREEINDEX9 =
 "geo_8cpp.html#a77ce3e2ce7f345c48daf6a7dc123fc7f":[5,0,1,1,27,1,2,3],
 "geo_8cpp.html#a9ee91a0c5ac4f49f1e40aa54ab69cb2f":[5,0,1,1,27,1,2,0],
 "geo_8cpp.html#aaa2b720ef7b261b4eb2f1e89838a538e":[5,0,1,1,27,1,2,1],
-"geomorphons_8cpp.html":[5,0,1,1,14,2],
-"geomorphons_8cpp.html#aa60fa2d3f02d1e064b520fa1623200d0":[5,0,1,1,14,2,0],
+"geomorphons_8cpp.html":[5,0,1,1,14,1],
+"geomorphons_8cpp.html#aa60fa2d3f02d1e064b520fa1623200d0":[5,0,1,1,14,1,0],
 "get__colormap__data_8cpp.html":[5,0,1,1,7,0],
 "get__colormap__data_8cpp.html#a2f2ca726f4e41128135e6c77120c66d8":[5,0,1,1,7,0,1],
 "get__colormap__data_8cpp.html#afb2677facc34ce83019137fd5a9818dd":[5,0,1,1,7,0,0],
@@ -249,5 +244,10 @@ var NAVTREEINDEX9 =
 "interpolate1d_8cpp.html#a567abeb8b68a281411d811987a84ee42":[5,0,1,1,20,2,0],
 "interpolate1d_8hpp.html":[5,0,1,0,0,24],
 "interpolate1d_8hpp.html#a46291bb4766800deacc1ce9b45a9ea6b":[5,0,1,0,0,24,1],
-"interpolate1d_8hpp.html#a46291bb4766800deacc1ce9b45a9ea6ba212e7c8d91a9697cccd7df7d006a5547":[5,0,1,0,0,24,1,2]
+"interpolate1d_8hpp.html#a46291bb4766800deacc1ce9b45a9ea6ba212e7c8d91a9697cccd7df7d006a5547":[5,0,1,0,0,24,1,2],
+"interpolate1d_8hpp.html#a46291bb4766800deacc1ce9b45a9ea6ba26ec6481025765e03b9c750137bd9d84":[5,0,1,0,0,24,1,4],
+"interpolate1d_8hpp.html#a46291bb4766800deacc1ce9b45a9ea6ba2c387e5d1f5342e28fa6a3132e9b461d":[5,0,1,0,0,24,1,5],
+"interpolate1d_8hpp.html#a46291bb4766800deacc1ce9b45a9ea6ba55d2df97f3e8f051fb84453093374c96":[5,0,1,0,0,24,1,0],
+"interpolate1d_8hpp.html#a46291bb4766800deacc1ce9b45a9ea6ba842713d3dc1b52f8b51bb2eaeb8bcf7e":[5,0,1,0,0,24,1,3],
+"interpolate1d_8hpp.html#a46291bb4766800deacc1ce9b45a9ea6ba9c7fc85c23ace48f52c365aae11b6e0b":[5,0,1,0,0,24,1,6]
 };

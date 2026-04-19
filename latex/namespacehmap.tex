@@ -736,8 +736,6 @@ void \mbox{\hyperlink{namespacehmap_a466d4275bb86ca9ca603c9d4192f931a}{write\+\_
 \begin{DoxyCompactList}\small\item\em Performs k-\/means clustering on two input arrays, grouping similar data points into clusters. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_ad55573a0def0bdf66d3637128cbf08c7}{kmeans\+\_\+clustering3}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array1, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array2, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array3, int nclusters, std\+::vector$<$ \mbox{\hyperlink{classhmap_1_1Array}{Array}} $>$ \texorpdfstring{$\ast$}{*}p\+\_\+scoring=nullptr, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+aggregate\+\_\+scoring=nullptr, glm\+::vec3 weights=\{1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed=1)
 \begin{DoxyCompactList}\small\item\em Performs k-\/means clustering on three input arrays, providing more detailed cluster analysis by considering an additional dimension. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_ab4d8048b79080012b8e60c270de8137f}{valley\+\_\+width}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int ir=0, bool ridge\+\_\+select=false)
-\begin{DoxyCompactList}\small\item\em Measures the valley width by calculating the distance from each point in a concave region to the frontier of that region. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_ae3ecf5f88476c5d49978a130f8cab2f3}{bulkify}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, const \mbox{\hyperlink{namespacehmap_a55542a66f890ef9ecf5f82af2c23a0cf}{Primitive\+Type}} \&primitive\+\_\+type, float amp=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, glm\+::vec2 center=\{0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
 \item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_ab57f747b36842221871303e08b1d169e}{diffusion\+\_\+retargeting}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array\+\_\+before, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array\+\_\+after, int ir)
@@ -1336,6 +1334,8 @@ std\+::vector$<$ float $>$ \mbox{\hyperlink{namespacehmap_a0b3237f9cc015299bf3e4
 \begin{DoxyCompactList}\small\item\em Computes the ruggedness of each element in the input array. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a85e411c67e97deb8459f25d4440546c3}{rugosity}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int ir, bool convex=true)
 \begin{DoxyCompactList}\small\item\em Estimates the rugosity of a surface by analyzing the skewness of the elevation data, which reflects surface roughness. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_ab4d8048b79080012b8e60c270de8137f}{valley\+\_\+width}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int ir=0, bool ridge\+\_\+select=false)
+\begin{DoxyCompactList}\small\item\em Measures the valley width by calculating the distance from each point in a concave region to the frontier of that region. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a527cfdcf7f7e2ca0e270875526c9b1ee}{abs}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array)
 \begin{DoxyCompactList}\small\item\em Return the absolute value of the array elements. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_aa99a114cc6073cf7368c927afd9b4f87}{abs\+\_\+smooth}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float mu, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&vshift)
@@ -9097,63 +9097,7 @@ This version of k-\/means clustering includes a third array, enabling more compl
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}       \Hypertarget{namespacehmap_ab4d8048b79080012b8e60c270de8137f}\label{namespacehmap_ab4d8048b79080012b8e60c270de8137f} 
-\index{hmap@{hmap}!valley\_width@{valley\_width}}
-\index{valley\_width@{valley\_width}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{valley\_width()}{valley\_width()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::valley\+\_\+width (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{int}]{ir = {\ttfamily 0},  }\item[{bool}]{ridge\+\_\+select = {\ttfamily false} }\end{DoxyParamCaption})}
-
-
-
-Measures the valley width by calculating the distance from each point in a concave region to the frontier of that region. 
-
-Valley width is a geomorphological metric that represents the distance across valleys or concave regions in a terrain. This measurement is particularly useful in hydrological modeling and landscape analysis, where valley dimensions are important.
-
-{\bfseries{Usage}}
-\begin{DoxyItemize}
-\item Use this function to assess the width of valleys within a terrain, which can be important for understanding water flow, sediment transport, and landform development.
-\item Applicable in studies focusing on river valleys, canyon analysis, and erosion patterns.
-\end{DoxyItemize}
-
-
-\begin{DoxyParams}{Parameters}
-{\em z} & The input array representing the heightmap data (elevation values). \\
-\hline
-{\em ir} & The radius used for pre-\/filtering, controlling the scale of analysis (in pixels). The default value is 0, meaning no pre-\/filtering is applied. \\
-\hline
-{\em ridge\+\_\+select} & If enabled, selects ridges instead of valleys. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-\doxylink{classhmap_1_1Array}{Array} An output array containing valley width values, representing the distance to the edge of the concave region for each point.
-\end{DoxyReturn}
-{\bfseries{Example}} 
-\begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
-\DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
-\DoxyCodeLine{\{}
-\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
-\DoxyCodeLine{\ \ glm::vec2\ \ res\ =\ \{4.f,\ 4.f\};}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 1;}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_acb13e7346085793fda4c94c47b75d9a9}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ res,\ seed);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ ir\ =\ 8;}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ w1\ =\ \mbox{\hyperlink{namespacehmap_ab4d8048b79080012b8e60c270de8137f}{hmap::valley\_width}}(z,\ ir);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ ridge\_select\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ w2\ =\ \mbox{\hyperlink{namespacehmap_ab4d8048b79080012b8e60c270de8137f}{hmap::valley\_width}}(z,\ ir,\ ridge\_select);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ z.\mbox{\hyperlink{classhmap_1_1Array_a9ff7b2c0be8f2b5dd9fc33085cd647d1}{to\_png}}(\textcolor{stringliteral}{"{}ex\_valley\_width0.png"{}},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9}{hmap::Cmap::TERRAIN}});}
-\DoxyCodeLine{\ \ w1.\mbox{\hyperlink{classhmap_1_1Array_a9ff7b2c0be8f2b5dd9fc33085cd647d1}{to\_png}}(\textcolor{stringliteral}{"{}ex\_valley\_width1.png"{}},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}});}
-\DoxyCodeLine{\ \ w2.\mbox{\hyperlink{classhmap_1_1Array_a9ff7b2c0be8f2b5dd9fc33085cd647d1}{to\_png}}(\textcolor{stringliteral}{"{}ex\_valley\_width2.png"{}},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}});}
-\DoxyCodeLine{\}}
-
-\end{DoxyCodeInclude}
-
-
-{\bfseries{Result}}    \Hypertarget{namespacehmap_ae3ecf5f88476c5d49978a130f8cab2f3}\label{namespacehmap_ae3ecf5f88476c5d49978a130f8cab2f3} 
+{\bfseries{Result}}       \Hypertarget{namespacehmap_ae3ecf5f88476c5d49978a130f8cab2f3}\label{namespacehmap_ae3ecf5f88476c5d49978a130f8cab2f3} 
 \index{hmap@{hmap}!bulkify@{bulkify}}
 \index{bulkify@{bulkify}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{bulkify()}{bulkify()}}
@@ -20130,7 +20074,63 @@ Rugosity is a measure of terrain roughness, often used in ecological studies and
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}   \Hypertarget{namespacehmap_a527cfdcf7f7e2ca0e270875526c9b1ee}\label{namespacehmap_a527cfdcf7f7e2ca0e270875526c9b1ee} 
+{\bfseries{Result}}   \Hypertarget{namespacehmap_ab4d8048b79080012b8e60c270de8137f}\label{namespacehmap_ab4d8048b79080012b8e60c270de8137f} 
+\index{hmap@{hmap}!valley\_width@{valley\_width}}
+\index{valley\_width@{valley\_width}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{valley\_width()}{valley\_width()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::valley\+\_\+width (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{int}]{ir = {\ttfamily 0},  }\item[{bool}]{ridge\+\_\+select = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+Measures the valley width by calculating the distance from each point in a concave region to the frontier of that region. 
+
+Valley width is a geomorphological metric that represents the distance across valleys or concave regions in a terrain. This measurement is particularly useful in hydrological modeling and landscape analysis, where valley dimensions are important.
+
+{\bfseries{Usage}}
+\begin{DoxyItemize}
+\item Use this function to assess the width of valleys within a terrain, which can be important for understanding water flow, sediment transport, and landform development.
+\item Applicable in studies focusing on river valleys, canyon analysis, and erosion patterns.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em z} & The input array representing the heightmap data (elevation values). \\
+\hline
+{\em ir} & The radius used for pre-\/filtering, controlling the scale of analysis (in pixels). The default value is 0, meaning no pre-\/filtering is applied. \\
+\hline
+{\em ridge\+\_\+select} & If enabled, selects ridges instead of valleys. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classhmap_1_1Array}{Array} An output array containing valley width values, representing the distance to the edge of the concave region for each point.
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
+\DoxyCodeLine{\ \ glm::vec2\ \ res\ =\ \{4.f,\ 4.f\};}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 1;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_acb13e7346085793fda4c94c47b75d9a9}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ res,\ seed);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ ir\ =\ 8;}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ w1\ =\ \mbox{\hyperlink{namespacehmap_ab4d8048b79080012b8e60c270de8137f}{hmap::valley\_width}}(z,\ ir);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ ridge\_select\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ w2\ =\ \mbox{\hyperlink{namespacehmap_ab4d8048b79080012b8e60c270de8137f}{hmap::valley\_width}}(z,\ ir,\ ridge\_select);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ z.\mbox{\hyperlink{classhmap_1_1Array_a9ff7b2c0be8f2b5dd9fc33085cd647d1}{to\_png}}(\textcolor{stringliteral}{"{}ex\_valley\_width0.png"{}},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9}{hmap::Cmap::TERRAIN}});}
+\DoxyCodeLine{\ \ w1.\mbox{\hyperlink{classhmap_1_1Array_a9ff7b2c0be8f2b5dd9fc33085cd647d1}{to\_png}}(\textcolor{stringliteral}{"{}ex\_valley\_width1.png"{}},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}});}
+\DoxyCodeLine{\ \ w2.\mbox{\hyperlink{classhmap_1_1Array_a9ff7b2c0be8f2b5dd9fc33085cd647d1}{to\_png}}(\textcolor{stringliteral}{"{}ex\_valley\_width2.png"{}},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}}    \Hypertarget{namespacehmap_a527cfdcf7f7e2ca0e270875526c9b1ee}\label{namespacehmap_a527cfdcf7f7e2ca0e270875526c9b1ee} 
 \index{hmap@{hmap}!abs@{abs}}
 \index{abs@{abs}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{abs()}{abs()}}

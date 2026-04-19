@@ -124,8 +124,6 @@ void \mbox{\hyperlink{namespacehmap_1_1gpu_aa7ce5c44914d54ec7fa0162c5ccbab86}{va
 \begin{DoxyCompactList}\small\item\em Carves watershed ridges using basin-\/wise distance transforms. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a04047f16ece68b32c1c8e68b4780f0df}{watershed\+\_\+ridge}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+mask, float amplitude=0.\+2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float width=32.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float edt\+\_\+exponent=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, int prefilter\+\_\+ir=0, \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}{Flow\+Direction\+Method}} fd\+\_\+method=\mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894}{Flow\+Direction\+Method\+::\+FDM\+\_\+\+D8}}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+scaling=nullptr)
 \item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a3816b73c0f933147dc86ee9f8d2dd701}{valley\+\_\+width}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int ir=0, bool ridge\+\_\+select=false)
-\begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_ab4d8048b79080012b8e60c270de8137f}{hmap\+::valley\+\_\+width}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_ad6240ccabf3a0f858698dc0b77ab619e}{bilateral\+\_\+filter}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&kernel2d, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&kernel1d, float kernel1d\+\_\+value\+\_\+scaling)
 \begin{DoxyCompactList}\small\item\em Apply a bilateral filter to an array. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a0cd7116e5c346fe9534e25b53d5e054a}{bilateral\+\_\+filter}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir, float kernel1d\+\_\+value\+\_\+scaling)
@@ -264,6 +262,8 @@ void \mbox{\hyperlink{namespacehmap_1_1gpu_ad44fefa43fdf773f241dcf4c46795e80}{in
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_af4ec8b5be149e6749fdf09759daf1e9e}{hmap\+::ruggedness}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_aa5a3e087822525c41f057a51255e2bad}{rugosity}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int ir, bool convex=true)
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a85e411c67e97deb8459f25d4440546c3}{hmap\+::rugosity}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a3816b73c0f933147dc86ee9f8d2dd701}{valley\+\_\+width}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int ir=0, bool ridge\+\_\+select=false)
+\begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_ab4d8048b79080012b8e60c270de8137f}{hmap\+::valley\+\_\+width}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a13719c4aafe9ffaabd767afe5a8bd44d}{local\+\_\+metrics}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir, \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895f}{Local\+Metrics}} metric)
 \begin{DoxyCompactList}\small\item\em Compute a local metric on the input array using a square neighborhood. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a335e4629532ba64049e0721bdcb5f3ba}{border}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
@@ -2569,16 +2569,6 @@ Elevation field with watershed ridges emphasized.
 \doxysubsubsection{\texorpdfstring{watershed\_ridge()}{watershed\_ridge()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::gpu\+::watershed\+\_\+ridge (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+mask,  }\item[{float}]{amplitude = {\ttfamily 0.2\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{width = {\ttfamily 32.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{edt\+\_\+exponent = {\ttfamily 0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{int}]{prefilter\+\_\+ir = {\ttfamily 0},  }\item[{\mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}{Flow\+Direction\+Method}}}]{fd\+\_\+method = {\ttfamily \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894}{Flow\+Direction\+Method\+::\+FDM\+\_\+\+D8}}},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+x = {\ttfamily nullptr},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+y = {\ttfamily nullptr},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+scaling = {\ttfamily nullptr} }\end{DoxyParamCaption})}
 
-\Hypertarget{namespacehmap_1_1gpu_a3816b73c0f933147dc86ee9f8d2dd701}\label{namespacehmap_1_1gpu_a3816b73c0f933147dc86ee9f8d2dd701} 
-\index{hmap::gpu@{hmap::gpu}!valley\_width@{valley\_width}}
-\index{valley\_width@{valley\_width}!hmap::gpu@{hmap::gpu}}
-\doxysubsubsection{\texorpdfstring{valley\_width()}{valley\_width()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::gpu\+::valley\+\_\+width (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{int}]{ir = {\ttfamily 0},  }\item[{bool}]{ridge\+\_\+select = {\ttfamily false} }\end{DoxyParamCaption})}
-
-
-
-See \doxylink{namespacehmap_ab4d8048b79080012b8e60c270de8137f}{hmap\+::valley\+\_\+width}. 
-
 \Hypertarget{namespacehmap_1_1gpu_ad6240ccabf3a0f858698dc0b77ab619e}\label{namespacehmap_1_1gpu_ad6240ccabf3a0f858698dc0b77ab619e} 
 \index{hmap::gpu@{hmap::gpu}!bilateral\_filter@{bilateral\_filter}}
 \index{bilateral\_filter@{bilateral\_filter}!hmap::gpu@{hmap::gpu}}
@@ -3975,6 +3965,16 @@ See \doxylink{namespacehmap_af4ec8b5be149e6749fdf09759daf1e9e}{hmap\+::ruggednes
 
 
 See \doxylink{namespacehmap_a85e411c67e97deb8459f25d4440546c3}{hmap\+::rugosity}. 
+
+\Hypertarget{namespacehmap_1_1gpu_a3816b73c0f933147dc86ee9f8d2dd701}\label{namespacehmap_1_1gpu_a3816b73c0f933147dc86ee9f8d2dd701} 
+\index{hmap::gpu@{hmap::gpu}!valley\_width@{valley\_width}}
+\index{valley\_width@{valley\_width}!hmap::gpu@{hmap::gpu}}
+\doxysubsubsection{\texorpdfstring{valley\_width()}{valley\_width()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::gpu\+::valley\+\_\+width (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{int}]{ir = {\ttfamily 0},  }\item[{bool}]{ridge\+\_\+select = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+See \doxylink{namespacehmap_ab4d8048b79080012b8e60c270de8137f}{hmap\+::valley\+\_\+width}. 
 
 \Hypertarget{namespacehmap_1_1gpu_a13719c4aafe9ffaabd767afe5a8bd44d}\label{namespacehmap_1_1gpu_a13719c4aafe9ffaabd767afe5a8bd44d} 
 \index{hmap::gpu@{hmap::gpu}!local\_metrics@{local\_metrics}}
