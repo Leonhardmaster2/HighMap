@@ -125,6 +125,24 @@ Array connected_components(const Array                       &array,
       if (labels_surface[labels(i, j)] <= smin) labels(i, j) = background_value;
     }
 
+  // --- relabeling
+
+  std::vector<float> use_labels = labels.unique_values();
+  size_t             max_label = size_t(use_labels.back());
+
+  std::vector<int> label_remap(max_label + 1, 0);
+
+  int next = 0;
+  for (const auto &v : use_labels)
+    label_remap[int(v)] = next++;
+
+  for (int j = 0; j < npj; j++)
+    for (int i = 0; i < npi; i++)
+    {
+      int lbl = int(labels(i, j));
+      if (lbl != 0) labels(i, j) = label_remap[lbl];
+    }
+
   // update surface and centroids
   labels_surface.clear();
   std::map<float, std::array<float, 2>> labels_centroids = {};

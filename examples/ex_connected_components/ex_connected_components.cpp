@@ -9,15 +9,27 @@ int main(void)
   hmap::Array z = hmap::noise(hmap::NoiseType::PERLIN, shape, res, seed);
   hmap::clamp_min(z, 0.f);
 
+  // --- Basic usage
+
   hmap::Array labels = hmap::connected_components(z);
+
+  // unique labels
+  LOG_DEBUG("Labels");
+  for (const auto &v : labels.unique_values())
+    LOG_DEBUG(" - %f", v);
+
+  // --- Secondary outputs
 
   std::vector<float>                surfaces;
   std::vector<std::array<float, 2>> centroids;
   auto dummy = hmap::connected_components(z, 0.f, 0.f, &surfaces, &centroids);
 
   // centroids of each components in index (i, j) scale
-  for (auto &v : centroids)
-    LOG_DEBUG("%f %f", v[0], v[1]);
+  LOG_DEBUG("Centroids");
+  for (const auto &v : centroids)
+    LOG_DEBUG(" - %f %f", v[0], v[1]);
+
+  // --- Plots
 
   z.to_png("ex_connected_components0.png", hmap::Cmap::INFERNO);
   labels.to_png("ex_connected_components1.png", hmap::Cmap::NIPY_SPECTRAL);

@@ -31,7 +31,6 @@ Array area_remove(const Array &array,
                                       surface_threshold,
                                       background_value,
                                       &area);
-
   // build output
   Array out = array;
 
@@ -39,7 +38,7 @@ Array area_remove(const Array &array,
     for (int i = 0; i < shape.x; i++)
     {
       // remove small components (size in pxiels * pixels)
-      if (area[labels(i, j)] < threshold_size) out(i, j) = fill_value;
+      if (area[int(labels(i, j))] < threshold_size) out(i, j) = fill_value;
     }
 
   return out;
