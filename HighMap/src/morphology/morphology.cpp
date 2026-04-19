@@ -8,6 +8,7 @@
 #include "highmap/filters.hpp"
 #include "highmap/local_metrics.hpp"
 #include "highmap/morphology.hpp"
+#include "highmap/range.hpp"
 
 namespace hmap
 {
@@ -149,6 +150,62 @@ Array morphological_top_hat(const Array &array, int ir)
 Array opening(const Array &array, int ir)
 {
   return dilation(erosion(array, ir), ir);
+}
+
+Array reconstruction_by_dilation(const Array &marker,
+                                 const Array &mask,
+                                 int          ir,
+                                 float        k_smooth_min)
+{
+  constexpr float tol = 1e-6f;
+
+  Array current = marker;
+  Array next;
+
+  while (true)
+  {
+    next = dilation(current, ir);
+
+    // clamp to mask
+    next = minimum_smooth(next, mask, k_smooth_min);
+
+    float diff = abs(next - current).max();
+
+    if (diff < tol) // convergence
+      break;
+
+    current = next;
+  }
+
+  return current;
+}
+
+Array reconstruction_by_erosion(const Array &marker,
+                                const Array &mask,
+                                int          ir,
+                                float        k_smooth_max)
+{
+  constexpr float tol = 1e-6f;
+
+  Array current = marker;
+  Array next;
+
+  while (true)
+  {
+    next = erosion(current, ir);
+
+    // clamp to mask
+    next = maximum_smooth(next, mask, k_smooth_max);
+
+    float diff = abs(next - current).max();
+
+    if (diff < tol) // convergence
+      break;
+
+    current = next;
+  }
+
+  return current;
 }
 
 // helper

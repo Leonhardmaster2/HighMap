@@ -310,6 +310,54 @@ Array morphological_top_hat(const Array &array, int ir);
 Array opening(const Array &array, int ir);
 
 /**
+ * @brief Perform morphological reconstruction by dilation.
+ *
+ * Iteratively dilates the marker image while constraining values to be less
+ * than or equal to the mask. The marker must be element-wise <= mask.
+ * Optionally uses a smooth minimum controlled by \p k_smooth_min.
+ *
+ * @param  marker        Initial image (seed), must satisfy marker <= mask.
+ * @param  mask          Constraint image (upper bound).
+ * @param  ir            Radius of the structuring element.
+ * @param  k_smooth_min  Smoothness factor (0 for hard min).
+ * @return               Array Reconstructed image.
+ *
+ * **Example**
+ * @include ex_reconstruction_by_dilation.cpp
+ *
+ * **Result**
+ * @image html ex_reconstruction_by_dilation.png
+ */
+Array reconstruction_by_dilation(const Array &marker,
+                                 const Array &mask,
+                                 int          ir,
+                                 float        k_smooth_min = 0.f);
+
+/**
+ * @brief Perform morphological reconstruction by erosion.
+ *
+ * Iteratively erodes the marker image while constraining values to be greater
+ * than or equal to the mask. The marker must be element-wise >= mask.
+ * Optionally uses a smooth maximum controlled by \p k_smooth_max.
+ *
+ * @param  marker        Initial image (seed), must satisfy marker >= mask.
+ * @param  mask          Constraint image (lower bound).
+ * @param  ir            Radius of the structuring element.
+ * @param  k_smooth_max  Smoothness factor (0 for hard max).
+ * @return               Array Reconstructed image.
+ *
+ * **Example**
+ * @include ex_reconstruction_by_dilation.cpp
+ *
+ * **Result**
+ * @image html ex_reconstruction_by_dilation.png
+ */
+Array reconstruction_by_erosion(const Array &marker,
+                                const Array &mask,
+                                int          ir,
+                                float        k_smooth_max = 0.f);
+
+/**
  * @brief Computes the relative distance of each non-zero cell in a binary array
  * from the skeleton and border.
  *
@@ -470,6 +518,18 @@ Array morphological_top_hat(const Array &array, int ir);
 
 /*! @brief See hmap::opening */
 Array opening(const Array &array, int ir);
+
+/*! @brief See hmap::reconstruction_by_dilation */
+Array reconstruction_by_dilation(const Array &marker,
+                                 const Array &mask,
+                                 int          ir,
+                                 float        k_smooth_min = 0.f);
+
+/*! @brief See hmap::reconstruction_by_erosion */
+Array reconstruction_by_erosion(const Array &marker,
+                                const Array &mask,
+                                int          ir,
+                                float        k_smooth_max = 0.f);
 
 /*! @brief See hmap::relative_distance_from_skeleton */
 Array relative_distance_from_skeleton(const Array &array,
