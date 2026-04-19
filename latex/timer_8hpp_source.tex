@@ -46,38 +46,44 @@
 \DoxyCodeLine{00118\ }
 \DoxyCodeLine{00124\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classhmap_1_1Timer_a6054c197a10338a1bd48299be29593b5}{Stop}}(\textcolor{keyword}{const}\ std::string\ \&name);}
 \DoxyCodeLine{00125\ }
-\DoxyCodeLine{00129\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classhmap_1_1Timer_a5bc931885a549c561740f39cea91dd5f}{Dump}}();}
-\DoxyCodeLine{00130\ }
-\DoxyCodeLine{00131\ \ \ std::map<std::string,\ Recorder\ *>\ \mbox{\hyperlink{classhmap_1_1Timer_ae06258adb9e67342e56835291be5226f}{get\_records}}()\textcolor{keyword}{\ const}}
-\DoxyCodeLine{00132\ \textcolor{keyword}{\ \ }\{}
-\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>records;}
-\DoxyCodeLine{00134\ \ \ \}}
-\DoxyCodeLine{00135\ }
-\DoxyCodeLine{00136\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00143\ \ \ \mbox{\hyperlink{classhmap_1_1Timer}{Timer}}(std::string\ sid\ =\ \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{00144\ }
-\DoxyCodeLine{00148\ \ \ \mbox{\hyperlink{classhmap_1_1Timer}{\string~Timer}}();}
-\DoxyCodeLine{00149\ }
-\DoxyCodeLine{00155\ \ \ \textcolor{keywordtype}{void}\ start(\textcolor{keyword}{const}\ std::string\ \&name);}
-\DoxyCodeLine{00156\ }
-\DoxyCodeLine{00162\ \ \ \textcolor{keywordtype}{void}\ stop(\textcolor{keyword}{const}\ std::string\ \&name);}
-\DoxyCodeLine{00163\ }
-\DoxyCodeLine{00167\ \ \ \textcolor{keywordtype}{void}\ dump();}
-\DoxyCodeLine{00168\ }
-\DoxyCodeLine{00169\ \ \ \textcolor{comment}{//\ Deleting\ the\ copy\ constructor\ and\ assignment\ operator\ to\ enforce\ singleton}}
-\DoxyCodeLine{00170\ \ \ \textcolor{comment}{//\ pattern.}}
-\DoxyCodeLine{00171\ \ \ \mbox{\hyperlink{classhmap_1_1Timer}{Timer}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhmap_1_1Timer}{Timer}}\ \&)\ =\ \textcolor{keyword}{delete};}
-\DoxyCodeLine{00172\ \ \ \mbox{\hyperlink{classhmap_1_1Timer}{Timer}}\ \&operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhmap_1_1Timer}{Timer}}\ \&)\ =\ \textcolor{keyword}{delete};}
-\DoxyCodeLine{00173\ }
-\DoxyCodeLine{00174\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00175\ \ \ std::string\ sid;\ }
-\DoxyCodeLine{00176\ \ \ std::map<std::string,\ Recorder\ *>}
-\DoxyCodeLine{00177\ \ \ \ \ \ \ records;\ }
-\DoxyCodeLine{00179\ \ \ std::list<Recorder>}
-\DoxyCodeLine{00180\ \ \ \ \ \ \ data;\ }
-\DoxyCodeLine{00181\ \ \ \textcolor{keywordtype}{int}\ current\_level\ =\ 0;\ }
-\DoxyCodeLine{00182\ \};}
-\DoxyCodeLine{00183\ }
-\DoxyCodeLine{00184\ \}\ \textcolor{comment}{//\ namespace\ hmap}}
+\DoxyCodeLine{00126\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classhmap_1_1Timer_a315ce1e0ff2450ead4e1d704acbbe4c3}{Clear}}();}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00131\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classhmap_1_1Timer_a5bc931885a549c561740f39cea91dd5f}{Dump}}();}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00133\ \ \ \textcolor{keyword}{static}\ std::map<std::string,\ float>\ \mbox{\hyperlink{classhmap_1_1Timer_a61eaa1759a0b195fe512c276cc253eb9}{DumpDurations}}();}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ \ \ std::map<std::string,\ Recorder\ *>\ \mbox{\hyperlink{classhmap_1_1Timer_ae06258adb9e67342e56835291be5226f}{get\_records}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00136\ \textcolor{keyword}{\ \ }\{}
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>records;}
+\DoxyCodeLine{00138\ \ \ \}}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00147\ \ \ \mbox{\hyperlink{classhmap_1_1Timer}{Timer}}(std::string\ sid\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00152\ \ \ \mbox{\hyperlink{classhmap_1_1Timer}{\string~Timer}}();}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00159\ \ \ \textcolor{keywordtype}{void}\ start(\textcolor{keyword}{const}\ std::string\ \&name);}
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00166\ \ \ \textcolor{keywordtype}{void}\ stop(\textcolor{keyword}{const}\ std::string\ \&name);}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00171\ \ \ \textcolor{keywordtype}{void}\ dump();}
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00173\ \ \ std::map<std::string,\ float>\ dump\_durations()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00174\ }
+\DoxyCodeLine{00175\ \ \ \textcolor{comment}{//\ Deleting\ the\ copy\ constructor\ and\ assignment\ operator\ to\ enforce\ singleton}}
+\DoxyCodeLine{00176\ \ \ \textcolor{comment}{//\ pattern.}}
+\DoxyCodeLine{00177\ \ \ \mbox{\hyperlink{classhmap_1_1Timer}{Timer}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhmap_1_1Timer}{Timer}}\ \&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00178\ \ \ \mbox{\hyperlink{classhmap_1_1Timer}{Timer}}\ \&operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhmap_1_1Timer}{Timer}}\ \&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00179\ }
+\DoxyCodeLine{00180\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00181\ \ \ std::string\ sid;\ }
+\DoxyCodeLine{00182\ \ \ std::map<std::string,\ Recorder\ *>}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ records;\ }
+\DoxyCodeLine{00185\ \ \ std::list<Recorder>}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ data;\ }
+\DoxyCodeLine{00187\ \ \ \textcolor{keywordtype}{int}\ current\_level\ =\ 0;\ }
+\DoxyCodeLine{00188\ \};}
+\DoxyCodeLine{00189\ }
+\DoxyCodeLine{00190\ \}\ \textcolor{comment}{//\ namespace\ hmap}}
 
 \end{DoxyCode}

@@ -23,8 +23,12 @@ static void \mbox{\hyperlink{classhmap_1_1Timer_ae9248cf01bfd4d8f680a6c7d5b80f45
 \begin{DoxyCompactList}\small\item\em Starts a timer for the specified event name. \end{DoxyCompactList}\item 
 static void \mbox{\hyperlink{classhmap_1_1Timer_a6054c197a10338a1bd48299be29593b5}{Stop}} (const std\+::string \&name)
 \begin{DoxyCompactList}\small\item\em Stops the timer for the specified event name. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classhmap_1_1Timer_a315ce1e0ff2450ead4e1d704acbbe4c3}{Clear}} ()
+\item 
 static void \mbox{\hyperlink{classhmap_1_1Timer_a5bc931885a549c561740f39cea91dd5f}{Dump}} ()
-\begin{DoxyCompactList}\small\item\em Dumps the timing information for all recorded events to the console. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Dumps the timing information for all recorded events to the console. \end{DoxyCompactList}\item 
+static std\+::map$<$ std\+::string, float $>$ \mbox{\hyperlink{classhmap_1_1Timer_a61eaa1759a0b195fe512c276cc253eb9}{Dump\+Durations}} ()
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -102,6 +106,12 @@ Stops the timer for the specified event name.
 {\em name} & The name of the event to stop timing. \\
 \hline
 \end{DoxyParams}
+\Hypertarget{classhmap_1_1Timer_a315ce1e0ff2450ead4e1d704acbbe4c3}\label{classhmap_1_1Timer_a315ce1e0ff2450ead4e1d704acbbe4c3} 
+\index{hmap::Timer@{hmap::Timer}!Clear@{Clear}}
+\index{Clear@{Clear}!hmap::Timer@{hmap::Timer}}
+\doxysubsubsection{\texorpdfstring{Clear()}{Clear()}}
+{\footnotesize\ttfamily void hmap\+::\+Timer\+::\+Clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
 \Hypertarget{classhmap_1_1Timer_a5bc931885a549c561740f39cea91dd5f}\label{classhmap_1_1Timer_a5bc931885a549c561740f39cea91dd5f} 
 \index{hmap::Timer@{hmap::Timer}!Dump@{Dump}}
 \index{Dump@{Dump}!hmap::Timer@{hmap::Timer}}
@@ -111,6 +121,12 @@ Stops the timer for the specified event name.
 
 
 Dumps the timing information for all recorded events to the console. 
+
+\Hypertarget{classhmap_1_1Timer_a61eaa1759a0b195fe512c276cc253eb9}\label{classhmap_1_1Timer_a61eaa1759a0b195fe512c276cc253eb9} 
+\index{hmap::Timer@{hmap::Timer}!DumpDurations@{DumpDurations}}
+\index{DumpDurations@{DumpDurations}!hmap::Timer@{hmap::Timer}}
+\doxysubsubsection{\texorpdfstring{DumpDurations()}{DumpDurations()}}
+{\footnotesize\ttfamily std\+::map$<$ std\+::string, float $>$ hmap\+::\+Timer\+::\+Dump\+Durations (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 \Hypertarget{classhmap_1_1Timer_ae06258adb9e67342e56835291be5226f}\label{classhmap_1_1Timer_ae06258adb9e67342e56835291be5226f} 
 \index{hmap::Timer@{hmap::Timer}!get\_records@{get\_records}}
