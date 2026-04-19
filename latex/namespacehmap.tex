@@ -8803,15 +8803,27 @@ Connected-\/component labeling is a technique used to identify clusters of conne
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_a63a7fc5faca6c5018e98b8af700f4b80}{hmap::noise}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ res,\ seed);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a2badbebec49b12d0d721970a18eb420d}{hmap::clamp\_min}}(z,\ 0.f);}
 \DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ Basic\ usage}}
+\DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ labels\ =\ \mbox{\hyperlink{namespacehmap_a11f846a0bacba3463862df220ddf5131}{hmap::connected\_components}}(z);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ unique\ labels}}
+\DoxyCodeLine{\ \ LOG\_DEBUG(\textcolor{stringliteral}{"{}Labels"{}});}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&v\ :\ labels.unique\_values())}
+\DoxyCodeLine{\ \ \ \ LOG\_DEBUG(\textcolor{stringliteral}{"{}\ -\/\ \%f"{}},\ v);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ Secondary\ outputs}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ std::vector<float>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ surfaces;}
 \DoxyCodeLine{\ \ std::vector<std::array<float,\ 2>>\ centroids;}
 \DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ dummy\ =\ \mbox{\hyperlink{namespacehmap_a11f846a0bacba3463862df220ddf5131}{hmap::connected\_components}}(z,\ 0.f,\ 0.f,\ \&surfaces,\ \&centroids);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ centroids\ of\ each\ components\ in\ index\ (i,\ j)\ scale}}
-\DoxyCodeLine{\ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \&v\ :\ centroids)}
-\DoxyCodeLine{\ \ \ \ LOG\_DEBUG(\textcolor{stringliteral}{"{}\%f\ \%f"{}},\ v[0],\ v[1]);}
+\DoxyCodeLine{\ \ LOG\_DEBUG(\textcolor{stringliteral}{"{}Centroids"{}});}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&v\ :\ centroids)}
+\DoxyCodeLine{\ \ \ \ LOG\_DEBUG(\textcolor{stringliteral}{"{}\ -\/\ \%f\ \%f"{}},\ v[0],\ v[1]);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ Plots}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ z.\mbox{\hyperlink{classhmap_1_1Array_a9ff7b2c0be8f2b5dd9fc33085cd647d1}{to\_png}}(\textcolor{stringliteral}{"{}ex\_connected\_components0.png"{}},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}});}
 \DoxyCodeLine{\ \ labels.\mbox{\hyperlink{classhmap_1_1Array_a9ff7b2c0be8f2b5dd9fc33085cd647d1}{to\_png}}(\textcolor{stringliteral}{"{}ex\_connected\_components1.png"{}},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369ae91cb25d4df330517ac69b5f0f2c3e0c}{hmap::Cmap::NIPY\_SPECTRAL}});}
