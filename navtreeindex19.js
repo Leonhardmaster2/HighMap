@@ -1,5 +1,9 @@
 var NAVTREEINDEX19 =
 {
+"shadows_8hpp.html#acbc412801dcbcce77b0e60b219dc946a":[5,0,1,0,0,39,0],
+"shadows_8hpp_source.html":[5,0,1,0,0,39],
+"shattered__peak_8cpp.html":[5,0,1,1,27,1,9],
+"shattered__peak_8cpp.html#abbdd364965f18e629307200a4dbfa5a8":[5,0,1,1,27,1,9,0],
 "shortest__path_8hpp.html":[5,0,1,0,0,40],
 "shortest__path_8hpp.html#a21a3078ba07fad81a888ca00cd6c3b33":[5,0,1,0,0,40,1],
 "shortest__path_8hpp.html#a31b9aa8b20d3bcca50f16222f10b0862":[5,0,1,0,0,40,2],
@@ -245,9 +249,5 @@ var NAVTREEINDEX19 =
 "structhmap_1_1TileKey.html#a40d424bd1194dae00a214f663e8412a0":[4,0,0,57,0],
 "structhmap_1_1TileKey.html#a63fda351a89fbde9e8d6c03061466bbe":[4,0,0,57,1],
 "structhmap_1_1TileKey.html#a63fda351a89fbde9e8d6c03061466bbe":[3,0,0,58,1],
-"structhmap_1_1TileKey.html#aa1b61a92a4562444455e7461cd65d642":[4,0,0,57,2],
-"structhmap_1_1TileKey.html#aa1b61a92a4562444455e7461cd65d642":[3,0,0,58,2],
-"structhmap_1_1TileKeyHash.html":[4,0,0,58],
-"structhmap_1_1TileKeyHash.html":[3,0,0,59],
-"structhmap_1_1TileKeyHash.html#a7231b3026e5cbd723cba9e9ee184f500":[3,0,0,59,0]
+"structhmap_1_1TileKey.html#aa1b61a92a4562444455e7461cd65d642":[4,0,0,57,2]
 };

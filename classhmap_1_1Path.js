@@ -10,6 +10,7 @@ var classhmap_1_1Path =
     [ "Path", "classhmap_1_1Path.html#a04657fd35a27be8e444710deee11a771", null ],
     [ "Path", "classhmap_1_1Path.html#a43c52e731eeee1a887c19abb6bcd4782", null ],
     [ "Path", "classhmap_1_1Path.html#a0121bc7300b5a436eea60d3915103458", null ],
+    [ "Path", "classhmap_1_1Path.html#aec66cc07c78d7281bf005694d2b8ad98", null ],
     [ "get_arc_length", "classhmap_1_1Path.html#a0ef4a309bc181ea182c0b7a75c8fdae7", null ],
     [ "get_cumulative_distance", "classhmap_1_1Path.html#a9ea0ffcf40358b7e33ff8cffc33f918a", null ],
     [ "get_curvature", "classhmap_1_1Path.html#ab083b81103f72c7c9b9fa81451599357", null ],

@@ -155,172 +155,175 @@ $(document).ready(function(){initNavTree('path_8hpp_source.html',''); initResiza
 <div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>      : <a class="code hl_class" href="classhmap_1_1Cloud.html">Cloud</a>(indices, shape, bbox){};</div>
 </div>
 <div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>  <span class="comment">// ==========================================================================</span></div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>  <span class="comment">//  Accessors</span></div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>  <span class="comment">// ==========================================================================</span></div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>  std::vector&lt;float&gt; <a class="code hl_function" href="classhmap_1_1Path.html#a0ef4a309bc181ea182c0b7a75c8fdae7">get_arc_length</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> </div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>  std::vector&lt;float&gt; <a class="code hl_function" href="classhmap_1_1Path.html#a9ea0ffcf40358b7e33ff8cffc33f918a">get_cumulative_distance</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span> </div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>  std::vector&lt;float&gt; <a class="code hl_function" href="classhmap_1_1Path.html#ab083b81103f72c7c9b9fa81451599357">get_curvature</a>(<span class="keywordtype">bool</span> normalized = <span class="keyword">false</span>) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span> </div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>  std::vector&lt;Point&gt; <a class="code hl_function" href="classhmap_1_1Path.html#a1344c82b303d10ef07d3fe9417ab2a0e">get_edge_centers</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span> </div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>  std::vector&lt;glm::vec2&gt; <a class="code hl_function" href="classhmap_1_1Path.html#acfd768645d095235067a01cb7f069155">get_normals</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span> </div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>  std::vector&lt;glm::vec2&gt; <a class="code hl_function" href="classhmap_1_1Path.html#adb21bc9bdaea145a168b8ecdf43edf80">get_tangents</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span> </div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>  std::vector&lt;float&gt; <a class="code hl_function" href="classhmap_1_1Path.html#a5e321e91e212ccfcb33088be73543494">get_values</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span> </div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>  std::vector&lt;float&gt; <a class="code hl_function" href="classhmap_1_1Path.html#ac01edb126b845a027883d9abd88e826b">get_x</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span> </div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>  std::vector&lt;float&gt; <a class="code hl_function" href="classhmap_1_1Path.html#a18048b5af9a33893fa946ce76eb75781">get_xy</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span> </div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>  std::vector&lt;float&gt; <a class="code hl_function" href="classhmap_1_1Path.html#ab9ff9f7a0ea9c090c34810536458da8d">get_y</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span> </div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>  <span class="keywordtype">bool</span> <a class="code hl_function" href="classhmap_1_1Path.html#a39ef1335efd434f12c92527f12933d9e">is_closed</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span> </div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classhmap_1_1Path.html#aeb2890d2ffbbf4291baf255c621095de">set_closed</a>(<span class="keywordtype">bool</span> new_value);</div>
-<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span> </div>
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>  <span class="comment">// ==========================================================================</span></div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>  <span class="comment">//  Basic Ops</span></div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>  <span class="comment">// ==========================================================================</span></div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span> </div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classhmap_1_1Path.html#ad85aa61692aadbfa1f3f08096cb0594c">clear</a>();</div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span> </div>
-<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classhmap_1_1Path.html#a4934980f265ae283c847fc091fe45c75">enforce_monotonic_values</a>(<span class="keywordtype">bool</span> decreasing = <span class="keyword">true</span>);</div>
-<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span> </div>
-<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classhmap_1_1Path.html#ad68abaa80879402c3758e24626acfb53">reorder_nns</a>(<span class="keywordtype">int</span> start_index = 0);</div>
-<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span> </div>
-<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classhmap_1_1Path.html#ab6fd0674d8d1f9a2d0ba224ec4c4cd46">reverse</a>();</div>
-<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span> </div>
-<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>  <span class="comment">// ==========================================================================</span></div>
-<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>  <span class="comment">//  Sampling</span></div>
-<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>  <span class="comment">// ==========================================================================</span></div>
-<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span> </div>
-<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classhmap_1_1Path.html#a8650db137a1b4ecccf05cfd0fd7d320b">divide</a>();</div>
-<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span> </div>
-<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classhmap_1_1Path.html#a649a385315a3230c058d032b2171424a">resample_by_spacing</a>(</div>
-<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>      <span class="keywordtype">float</span>                 delta,</div>
-<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>      <a class="code hl_enumeration" href="namespacehmap.html#a46291bb4766800deacc1ce9b45a9ea6b">InterpolationMethod1D</a> itp_method = <a class="code hl_enumvalue" href="namespacehmap.html#a46291bb4766800deacc1ce9b45a9ea6ba26ec6481025765e03b9c750137bd9d84">InterpolationMethod1D::LINEAR</a>);</div>
-<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span> </div>
-<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classhmap_1_1Path.html#afe00587a87fc52524487b197818404f0">resample_interp</a>(</div>
-<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>      <span class="keywordtype">int</span>                   npoints,</div>
-<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>      <a class="code hl_enumeration" href="namespacehmap.html#a46291bb4766800deacc1ce9b45a9ea6b">InterpolationMethod1D</a> itp_method = <a class="code hl_enumvalue" href="namespacehmap.html#a46291bb4766800deacc1ce9b45a9ea6ba212e7c8d91a9697cccd7df7d006a5547">InterpolationMethod1D::CUBIC</a>);</div>
-<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span> </div>
-<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classhmap_1_1Path.html#a84e0832a3c3a4c9e1f9bcefdc6d32cd0">resample_uniform</a>(</div>
-<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span>      <a class="code hl_enumeration" href="namespacehmap.html#a46291bb4766800deacc1ce9b45a9ea6b">InterpolationMethod1D</a> itp_method = <a class="code hl_enumvalue" href="namespacehmap.html#a46291bb4766800deacc1ce9b45a9ea6ba26ec6481025765e03b9c750137bd9d84">InterpolationMethod1D::LINEAR</a>);</div>
-<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span> </div>
-<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classhmap_1_1Path.html#a9816b231362dd1ca5208a839626f1f68">subsample</a>(<span class="keywordtype">int</span> <a class="code hl_function" href="namespacehmap.html#a80b6038177b2ab3984cb18bd90f568fa">step</a>);</div>
-<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span> </div>
-<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>  <span class="comment">// ==========================================================================</span></div>
-<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>  <span class="comment">//  Conversion / IO</span></div>
-<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span>  <span class="comment">// ==========================================================================</span></div>
-<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span> </div>
-<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classhmap_1_1Path.html#a4d1e1e63fea24bf8f23bc3343f8b746e">to_array</a>(Array    &amp;array,</div>
-<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span>                glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f},</div>
-<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span>                <span class="keywordtype">bool</span>      filled = <span class="keyword">false</span>) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span> </div>
-<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span>  Array <a class="code hl_function" href="classhmap_1_1Path.html#a4d1e1e63fea24bf8f23bc3343f8b746e">to_array</a>(glm::ivec2 shape,</div>
-<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span>                 glm::vec4  bbox = {0.f, 1.f, 0.f, 1.f},</div>
-<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span>                 <span class="keywordtype">bool</span>       filled = <span class="keyword">false</span>) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno"><a class="line" href="classhmap_1_1Path.html#aec66cc07c78d7281bf005694d2b8ad98">  126</a></span>  <a class="code hl_function" href="classhmap_1_1Path.html#aec66cc07c78d7281bf005694d2b8ad98">Path</a>(<span class="keyword">const</span> std::vector&lt;glm::vec3&gt; &amp;xyv) : <a class="code hl_class" href="classhmap_1_1Cloud.html">Cloud</a>(xyv) {};</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>  <span class="comment">// ==========================================================================</span></div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>  <span class="comment">//  Accessors</span></div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>  <span class="comment">// ==========================================================================</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>  std::vector&lt;float&gt; <a class="code hl_function" href="classhmap_1_1Path.html#a0ef4a309bc181ea182c0b7a75c8fdae7">get_arc_length</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span> </div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>  std::vector&lt;float&gt; <a class="code hl_function" href="classhmap_1_1Path.html#a9ea0ffcf40358b7e33ff8cffc33f918a">get_cumulative_distance</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span> </div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>  std::vector&lt;float&gt; <a class="code hl_function" href="classhmap_1_1Path.html#ab083b81103f72c7c9b9fa81451599357">get_curvature</a>(<span class="keywordtype">bool</span> normalized = <span class="keyword">false</span>) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span> </div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>  std::vector&lt;Point&gt; <a class="code hl_function" href="classhmap_1_1Path.html#a1344c82b303d10ef07d3fe9417ab2a0e">get_edge_centers</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span> </div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>  std::vector&lt;glm::vec2&gt; <a class="code hl_function" href="classhmap_1_1Path.html#acfd768645d095235067a01cb7f069155">get_normals</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span> </div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>  std::vector&lt;glm::vec2&gt; <a class="code hl_function" href="classhmap_1_1Path.html#adb21bc9bdaea145a168b8ecdf43edf80">get_tangents</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span> </div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>  std::vector&lt;float&gt; <a class="code hl_function" href="classhmap_1_1Path.html#a5e321e91e212ccfcb33088be73543494">get_values</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span> </div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>  std::vector&lt;float&gt; <a class="code hl_function" href="classhmap_1_1Path.html#ac01edb126b845a027883d9abd88e826b">get_x</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span> </div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>  std::vector&lt;float&gt; <a class="code hl_function" href="classhmap_1_1Path.html#a18048b5af9a33893fa946ce76eb75781">get_xy</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span> </div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>  std::vector&lt;float&gt; <a class="code hl_function" href="classhmap_1_1Path.html#ab9ff9f7a0ea9c090c34810536458da8d">get_y</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span> </div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>  <span class="keywordtype">bool</span> <a class="code hl_function" href="classhmap_1_1Path.html#a39ef1335efd434f12c92527f12933d9e">is_closed</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span> </div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classhmap_1_1Path.html#aeb2890d2ffbbf4291baf255c621095de">set_closed</a>(<span class="keywordtype">bool</span> new_value);</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span> </div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>  <span class="comment">// ==========================================================================</span></div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>  <span class="comment">//  Basic Ops</span></div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>  <span class="comment">// ==========================================================================</span></div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span> </div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classhmap_1_1Path.html#ad85aa61692aadbfa1f3f08096cb0594c">clear</a>();</div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span> </div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classhmap_1_1Path.html#a4934980f265ae283c847fc091fe45c75">enforce_monotonic_values</a>(<span class="keywordtype">bool</span> decreasing = <span class="keyword">true</span>);</div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span> </div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classhmap_1_1Path.html#ad68abaa80879402c3758e24626acfb53">reorder_nns</a>(<span class="keywordtype">int</span> start_index = 0);</div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span> </div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classhmap_1_1Path.html#ab6fd0674d8d1f9a2d0ba224ec4c4cd46">reverse</a>();</div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span> </div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>  <span class="comment">// ==========================================================================</span></div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>  <span class="comment">//  Sampling</span></div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>  <span class="comment">// ==========================================================================</span></div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span> </div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classhmap_1_1Path.html#a8650db137a1b4ecccf05cfd0fd7d320b">divide</a>();</div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span> </div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classhmap_1_1Path.html#a649a385315a3230c058d032b2171424a">resample_by_spacing</a>(</div>
+<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>      <span class="keywordtype">float</span>                 delta,</div>
+<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>      <a class="code hl_enumeration" href="namespacehmap.html#a46291bb4766800deacc1ce9b45a9ea6b">InterpolationMethod1D</a> itp_method = <a class="code hl_enumvalue" href="namespacehmap.html#a46291bb4766800deacc1ce9b45a9ea6ba26ec6481025765e03b9c750137bd9d84">InterpolationMethod1D::LINEAR</a>);</div>
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span> </div>
+<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classhmap_1_1Path.html#afe00587a87fc52524487b197818404f0">resample_interp</a>(</div>
+<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>      <span class="keywordtype">int</span>                   npoints,</div>
+<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>      <a class="code hl_enumeration" href="namespacehmap.html#a46291bb4766800deacc1ce9b45a9ea6b">InterpolationMethod1D</a> itp_method = <a class="code hl_enumvalue" href="namespacehmap.html#a46291bb4766800deacc1ce9b45a9ea6ba212e7c8d91a9697cccd7df7d006a5547">InterpolationMethod1D::CUBIC</a>);</div>
+<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span> </div>
+<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classhmap_1_1Path.html#a84e0832a3c3a4c9e1f9bcefdc6d32cd0">resample_uniform</a>(</div>
+<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span>      <a class="code hl_enumeration" href="namespacehmap.html#a46291bb4766800deacc1ce9b45a9ea6b">InterpolationMethod1D</a> itp_method = <a class="code hl_enumvalue" href="namespacehmap.html#a46291bb4766800deacc1ce9b45a9ea6ba26ec6481025765e03b9c750137bd9d84">InterpolationMethod1D::LINEAR</a>);</div>
+<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span> </div>
+<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classhmap_1_1Path.html#a9816b231362dd1ca5208a839626f1f68">subsample</a>(<span class="keywordtype">int</span> <a class="code hl_function" href="namespacehmap.html#a80b6038177b2ab3984cb18bd90f568fa">step</a>);</div>
+<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span> </div>
+<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span>  <span class="comment">// ==========================================================================</span></div>
+<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span>  <span class="comment">//  Conversion / IO</span></div>
+<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>  <span class="comment">// ==========================================================================</span></div>
+<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span> </div>
+<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classhmap_1_1Path.html#a4d1e1e63fea24bf8f23bc3343f8b746e">to_array</a>(<a class="code hl_class" href="classhmap_1_1Array.html">Array</a>    &amp;array,</div>
+<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span>                glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f},</div>
+<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span>                <span class="keywordtype">bool</span>      filled = <span class="keyword">false</span>) <span class="keyword">const</span>;</div>
 <div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span> </div>
-<div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classhmap_1_1Path.html#a2292e74883cb6da795ce35a46ef8e735">to_array_mask</a>(Array    &amp;array,</div>
-<div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span>                     glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f},</div>
-<div class="line"><a id="l00394" name="l00394"></a><span class="lineno">  394</span>                     <span class="keywordtype">bool</span>      filled = <span class="keyword">false</span>) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span>  Array <a class="code hl_function" href="classhmap_1_1Path.html#a4d1e1e63fea24bf8f23bc3343f8b746e">to_array</a>(glm::ivec2 shape,</div>
+<div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span>                 glm::vec4  bbox = {0.f, 1.f, 0.f, 1.f},</div>
+<div class="line"><a id="l00394" name="l00394"></a><span class="lineno">  394</span>                 <span class="keywordtype">bool</span>       filled = <span class="keyword">false</span>) <span class="keyword">const</span>;</div>
 <div class="line"><a id="l00395" name="l00395"></a><span class="lineno">  395</span> </div>
-<div class="line"><a id="l00410" name="l00410"></a><span class="lineno">  410</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classhmap_1_1Path.html#aaf9111fdcae15cc51cfcd5faffb38f23">to_png</a>(std::string fname, glm::ivec2 shape = {512, 512});</div>
-<div class="line"><a id="l00411" name="l00411"></a><span class="lineno">  411</span> </div>
-<div class="line"><a id="l00412" name="l00412"></a><span class="lineno">  412</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00413" name="l00413"></a><span class="lineno">  413</span>  <span class="keyword">enum class</span> PathClosure : <span class="keywordtype">int</span></div>
-<div class="line"><a id="l00414" name="l00414"></a><span class="lineno">  414</span>  {</div>
-<div class="line"><a id="l00415" name="l00415"></a><span class="lineno">  415</span>    PT_OPEN,</div>
-<div class="line"><a id="l00416" name="l00416"></a><span class="lineno">  416</span>    PT_CLOSE,</div>
-<div class="line"><a id="l00417" name="l00417"></a><span class="lineno">  417</span>  } path_closure = PathClosure::PT_OPEN;</div>
-<div class="line"><a id="l00418" name="l00418"></a><span class="lineno">  418</span>};</div>
+<div class="line"><a id="l00397" name="l00397"></a><span class="lineno">  397</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classhmap_1_1Path.html#a2292e74883cb6da795ce35a46ef8e735">to_array_mask</a>(Array    &amp;array,</div>
+<div class="line"><a id="l00398" name="l00398"></a><span class="lineno">  398</span>                     glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f},</div>
+<div class="line"><a id="l00399" name="l00399"></a><span class="lineno">  399</span>                     <span class="keywordtype">bool</span>      filled = <span class="keyword">false</span>) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00400" name="l00400"></a><span class="lineno">  400</span> </div>
+<div class="line"><a id="l00415" name="l00415"></a><span class="lineno">  415</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classhmap_1_1Path.html#aaf9111fdcae15cc51cfcd5faffb38f23">to_png</a>(std::string fname, glm::ivec2 shape = {512, 512});</div>
+<div class="line"><a id="l00416" name="l00416"></a><span class="lineno">  416</span> </div>
+<div class="line"><a id="l00417" name="l00417"></a><span class="lineno">  417</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00418" name="l00418"></a><span class="lineno">  418</span>  <span class="keyword">enum class</span> PathClosure : <span class="keywordtype">int</span></div>
+<div class="line"><a id="l00419" name="l00419"></a><span class="lineno">  419</span>  {</div>
+<div class="line"><a id="l00420" name="l00420"></a><span class="lineno">  420</span>    PT_OPEN,</div>
+<div class="line"><a id="l00421" name="l00421"></a><span class="lineno">  421</span>    PT_CLOSE,</div>
+<div class="line"><a id="l00422" name="l00422"></a><span class="lineno">  422</span>  } path_closure = PathClosure::PT_OPEN;</div>
+<div class="line"><a id="l00423" name="l00423"></a><span class="lineno">  423</span>};</div>
 </div>
-<div class="line"><a id="l00419" name="l00419"></a><span class="lineno">  419</span> </div>
-<div class="line"><a id="l00420" name="l00420"></a><span class="lineno">  420</span><span class="comment">// ==========================================================================</span></div>
-<div class="line"><a id="l00421" name="l00421"></a><span class="lineno">  421</span><span class="comment">//  Functions</span></div>
-<div class="line"><a id="l00422" name="l00422"></a><span class="lineno">  422</span><span class="comment">// ==========================================================================</span></div>
-<div class="line"><a id="l00423" name="l00423"></a><span class="lineno">  423</span> </div>
-<div class="line"><a id="l00446" name="l00446"></a><span class="lineno">  446</span>Path <a class="code hl_function" href="namespacehmap.html#ac39b5e32d90e0351f4124ea61334461d">bezier</a>(<span class="keyword">const</span> Path            &amp;path,</div>
-<div class="line"><a id="l00447" name="l00447"></a><span class="lineno">  447</span>            <span class="keywordtype">float</span>                  curvature_ratio = 0.3f,</div>
-<div class="line"><a id="l00448" name="l00448"></a><span class="lineno">  448</span>            <span class="keywordtype">int</span>                    edge_divisions = 10,</div>
-<div class="line"><a id="l00449" name="l00449"></a><span class="lineno">  449</span>            <a class="code hl_enumeration" href="classhmap_1_1Path.html#a52c62bad1cdef88e8793d9c022357787">Path::EdgeDivisionMode</a> edm = <a class="code hl_enumvalue" href="classhmap_1_1Path.html#a52c62bad1cdef88e8793d9c022357787a5192c60669f946857f5bed6f43c212ee">Path::EdgeDivisionMode::EDM_PER_EDGE</a>);</div>
-<div class="line"><a id="l00450" name="l00450"></a><span class="lineno">  450</span> </div>
-<div class="line"><a id="l00471" name="l00471"></a><span class="lineno">  471</span>Path <a class="code hl_function" href="namespacehmap.html#a3beb0c80491a827b346e9e69cadf4228">bezier_round</a>(</div>
-<div class="line"><a id="l00472" name="l00472"></a><span class="lineno">  472</span>    <span class="keyword">const</span> Path            &amp;path,</div>
-<div class="line"><a id="l00473" name="l00473"></a><span class="lineno">  473</span>    <span class="keywordtype">float</span>                  curvature_ratio = 0.3f,</div>
-<div class="line"><a id="l00474" name="l00474"></a><span class="lineno">  474</span>    <span class="keywordtype">int</span>                    edge_divisions = 10,</div>
-<div class="line"><a id="l00475" name="l00475"></a><span class="lineno">  475</span>    <a class="code hl_enumeration" href="classhmap_1_1Path.html#a52c62bad1cdef88e8793d9c022357787">Path::EdgeDivisionMode</a> edm = <a class="code hl_enumvalue" href="classhmap_1_1Path.html#a52c62bad1cdef88e8793d9c022357787a5192c60669f946857f5bed6f43c212ee">Path::EdgeDivisionMode::EDM_PER_EDGE</a>);</div>
-<div class="line"><a id="l00476" name="l00476"></a><span class="lineno">  476</span> </div>
-<div class="line"><a id="l00501" name="l00501"></a><span class="lineno">  501</span>Path <a class="code hl_function" href="namespacehmap.html#a281c9db00eef9735e8eea7bbf50f3e34">bspline</a>(<span class="keyword">const</span> Path            &amp;path,</div>
-<div class="line"><a id="l00502" name="l00502"></a><span class="lineno">  502</span>             <span class="keywordtype">int</span>                    edge_divisions = 10,</div>
-<div class="line"><a id="l00503" name="l00503"></a><span class="lineno">  503</span>             <a class="code hl_enumeration" href="classhmap_1_1Path.html#a52c62bad1cdef88e8793d9c022357787">Path::EdgeDivisionMode</a> edm = <a class="code hl_enumvalue" href="classhmap_1_1Path.html#a52c62bad1cdef88e8793d9c022357787a5192c60669f946857f5bed6f43c212ee">Path::EdgeDivisionMode::EDM_PER_EDGE</a>);</div>
-<div class="line"><a id="l00504" name="l00504"></a><span class="lineno">  504</span> </div>
-<div class="line"><a id="l00523" name="l00523"></a><span class="lineno">  523</span>Path <a class="code hl_function" href="namespacehmap.html#a9b14eb25556ef745f1e606bbe8d41dcb">catmullrom</a>(</div>
-<div class="line"><a id="l00524" name="l00524"></a><span class="lineno">  524</span>    <span class="keyword">const</span> Path            &amp;path,</div>
-<div class="line"><a id="l00525" name="l00525"></a><span class="lineno">  525</span>    <span class="keywordtype">int</span>                    edge_divisions = 10,</div>
-<div class="line"><a id="l00526" name="l00526"></a><span class="lineno">  526</span>    <a class="code hl_enumeration" href="classhmap_1_1Path.html#a52c62bad1cdef88e8793d9c022357787">Path::EdgeDivisionMode</a> edm = <a class="code hl_enumvalue" href="classhmap_1_1Path.html#a52c62bad1cdef88e8793d9c022357787a5192c60669f946857f5bed6f43c212ee">Path::EdgeDivisionMode::EDM_PER_EDGE</a>);</div>
-<div class="line"><a id="l00527" name="l00527"></a><span class="lineno">  527</span> </div>
-<div class="line"><a id="l00552" name="l00552"></a><span class="lineno">  552</span>Path <a class="code hl_function" href="namespacehmap.html#af9b55527f8d0f1c01d110b3144ee7d91">decasteljau</a>(</div>
-<div class="line"><a id="l00553" name="l00553"></a><span class="lineno">  553</span>    <span class="keyword">const</span> Path            &amp;path,</div>
-<div class="line"><a id="l00554" name="l00554"></a><span class="lineno">  554</span>    <span class="keywordtype">int</span>                    edge_divisions = 10,</div>
-<div class="line"><a id="l00555" name="l00555"></a><span class="lineno">  555</span>    <a class="code hl_enumeration" href="classhmap_1_1Path.html#a52c62bad1cdef88e8793d9c022357787">Path::EdgeDivisionMode</a> edm = <a class="code hl_enumvalue" href="classhmap_1_1Path.html#a52c62bad1cdef88e8793d9c022357787a5192c60669f946857f5bed6f43c212ee">Path::EdgeDivisionMode::EDM_PER_EDGE</a>);</div>
-<div class="line"><a id="l00556" name="l00556"></a><span class="lineno">  556</span> </div>
-<div class="line"><a id="l00577" name="l00577"></a><span class="lineno">  577</span>Path <a class="code hl_function" href="namespacehmap.html#a862fef5e0387bea9358648fc7aa5680b">decimate_vw</a>(<span class="keyword">const</span> Path &amp;path, <span class="keywordtype">int</span> n_points_target = 3);</div>
-<div class="line"><a id="l00578" name="l00578"></a><span class="lineno">  578</span> </div>
-<div class="line"><a id="l00611" name="l00611"></a><span class="lineno">  611</span>Path <a class="code hl_function" href="namespacehmap.html#a5d1634064e937326c7d91f509c3d67ab">fractalize</a>(<span class="keyword">const</span> Path &amp;path,</div>
-<div class="line"><a id="l00612" name="l00612"></a><span class="lineno">  612</span>                <span class="keywordtype">int</span>         iterations,</div>
-<div class="line"><a id="l00613" name="l00613"></a><span class="lineno">  613</span>                <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>        seed,</div>
-<div class="line"><a id="l00614" name="l00614"></a><span class="lineno">  614</span>                <span class="keywordtype">float</span>       sigma = 0.2f,</div>
-<div class="line"><a id="l00615" name="l00615"></a><span class="lineno">  615</span>                <span class="keywordtype">int</span>         orientation = 0,</div>
-<div class="line"><a id="l00616" name="l00616"></a><span class="lineno">  616</span>                <span class="keywordtype">float</span>       persistence = 1.f,</div>
-<div class="line"><a id="l00617" name="l00617"></a><span class="lineno">  617</span>                Array      *p_control_field = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l00618" name="l00618"></a><span class="lineno">  618</span>                glm::vec4   bbox = {0.f, 1.f, 0.f, 1.f});</div>
-<div class="line"><a id="l00619" name="l00619"></a><span class="lineno">  619</span> </div>
-<div class="line"><a id="l00638" name="l00638"></a><span class="lineno">  638</span>Path <a class="code hl_function" href="namespacehmap.html#a73e4db2185a62fe2cf6bed305bafeb1f">inflate</a>(<span class="keyword">const</span> Path &amp;path, <span class="keywordtype">float</span> strength, <span class="keywordtype">bool</span> resample = <span class="keyword">true</span>);</div>
-<div class="line"><a id="l00639" name="l00639"></a><span class="lineno">  639</span> </div>
-<div class="line"><a id="l00668" name="l00668"></a><span class="lineno">  668</span>Path <a class="code hl_function" href="namespacehmap.html#af00a9f03eed98b1993fd458beb120379">meanderize</a>(</div>
-<div class="line"><a id="l00669" name="l00669"></a><span class="lineno">  669</span>    <span class="keyword">const</span> Path            &amp;path,</div>
-<div class="line"><a id="l00670" name="l00670"></a><span class="lineno">  670</span>    <span class="keywordtype">float</span>                  ratio,</div>
-<div class="line"><a id="l00671" name="l00671"></a><span class="lineno">  671</span>    <span class="keywordtype">float</span>                  noise_ratio = 0.1f,</div>
-<div class="line"><a id="l00672" name="l00672"></a><span class="lineno">  672</span>    <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>                   seed = 1,</div>
-<div class="line"><a id="l00673" name="l00673"></a><span class="lineno">  673</span>    <span class="keywordtype">int</span>                    iterations = 1,</div>
-<div class="line"><a id="l00674" name="l00674"></a><span class="lineno">  674</span>    <span class="keywordtype">int</span>                    edge_divisions = 10,</div>
-<div class="line"><a id="l00675" name="l00675"></a><span class="lineno">  675</span>    <a class="code hl_enumeration" href="classhmap_1_1Path.html#a52c62bad1cdef88e8793d9c022357787">Path::EdgeDivisionMode</a> edm = <a class="code hl_enumvalue" href="classhmap_1_1Path.html#a52c62bad1cdef88e8793d9c022357787a5192c60669f946857f5bed6f43c212ee">Path::EdgeDivisionMode::EDM_PER_EDGE</a>);</div>
-<div class="line"><a id="l00676" name="l00676"></a><span class="lineno">  676</span> </div>
-<div class="line"><a id="l00690" name="l00690"></a><span class="lineno">  690</span>Array <a class="code hl_function" href="namespacehmap.html#a2e33d478424b6f4d2bd05ccaeabd0846">path_sdf_to_array</a>(<span class="keyword">const</span> Path  &amp;path,</div>
-<div class="line"><a id="l00691" name="l00691"></a><span class="lineno">  691</span>                        glm::ivec2   shape,</div>
-<div class="line"><a id="l00692" name="l00692"></a><span class="lineno">  692</span>                        glm::vec4    bbox_array = {0.f, 1.f, 0.f, 1.f},</div>
-<div class="line"><a id="l00693" name="l00693"></a><span class="lineno">  693</span>                        <span class="keyword">const</span> Array *p_noise_x = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l00694" name="l00694"></a><span class="lineno">  694</span>                        <span class="keyword">const</span> Array *p_noise_y = <span class="keyword">nullptr</span>);</div>
-<div class="line"><a id="l00695" name="l00695"></a><span class="lineno">  695</span> </div>
-<div class="line"><a id="l00712" name="l00712"></a><span class="lineno">  712</span>Path <a class="code hl_function" href="namespacehmap.html#a650c6eaf8bd10356a77c7c1f9ef9af3c">remove_geometric_loops</a>(<span class="keyword">const</span> Path &amp;path);</div>
-<div class="line"><a id="l00713" name="l00713"></a><span class="lineno">  713</span> </div>
-<div class="line"><a id="l00749" name="l00749"></a><span class="lineno">  749</span>Path <a class="code hl_function" href="namespacehmap.html#ad81052648d6008d2b7b4a5a36a2d7830">smooth</a>(<span class="keyword">const</span> Path &amp;path,</div>
-<div class="line"><a id="l00750" name="l00750"></a><span class="lineno">  750</span>            <span class="keywordtype">int</span>         navg = 1,</div>
-<div class="line"><a id="l00751" name="l00751"></a><span class="lineno">  751</span>            <span class="keywordtype">float</span>       averaging_intensity = 1.f,</div>
-<div class="line"><a id="l00752" name="l00752"></a><span class="lineno">  752</span>            <span class="keywordtype">float</span>       inertia = 0.f);</div>
-<div class="line"><a id="l00753" name="l00753"></a><span class="lineno">  753</span> </div>
-<div class="line"><a id="l00754" name="l00754"></a><span class="lineno">  754</span><span class="comment">// ==========================================================================</span></div>
-<div class="line"><a id="l00755" name="l00755"></a><span class="lineno">  755</span><span class="comment">//  Verification Functions</span></div>
-<div class="line"><a id="l00756" name="l00756"></a><span class="lineno">  756</span><span class="comment">// ==========================================================================</span></div>
-<div class="line"><a id="l00757" name="l00757"></a><span class="lineno">  757</span> </div>
-<div class="line"><a id="l00769" name="l00769"></a><span class="lineno">  769</span><span class="keywordtype">bool</span> <a class="code hl_function" href="namespacehmap.html#a5944fc905be512784a9caceb527703d4">assert_start_end_points</a>(<span class="keyword">const</span> Path &amp;path1,</div>
-<div class="line"><a id="l00770" name="l00770"></a><span class="lineno">  770</span>                             <span class="keyword">const</span> Path &amp;path2,</div>
-<div class="line"><a id="l00771" name="l00771"></a><span class="lineno">  771</span>                             <span class="keywordtype">float</span>       tol = 1e-6f,</div>
-<div class="line"><a id="l00772" name="l00772"></a><span class="lineno">  772</span>                             <span class="keywordtype">bool</span>        verbose = <span class="keyword">false</span>);</div>
-<div class="line"><a id="l00773" name="l00773"></a><span class="lineno">  773</span> </div>
-<div class="line"><a id="l00780" name="l00780"></a><span class="lineno">  780</span><span class="keywordtype">float</span> <a class="code hl_function" href="namespacehmap.html#aba24d09d6f4a3eab8c1522536088f39e">chamfer_distance</a>(<span class="keyword">const</span> Path &amp;a, <span class="keyword">const</span> Path &amp;b);</div>
-<div class="line"><a id="l00781" name="l00781"></a><span class="lineno">  781</span> </div>
-<div class="line"><a id="l00791" name="l00791"></a><span class="lineno">  791</span><span class="keywordtype">bool</span> <a class="code hl_function" href="namespacehmap.html#adb224131a9c75491b105b67801e0fe20">has_duplicates</a>(<span class="keyword">const</span> Path &amp;path, <span class="keywordtype">float</span> tol = 1e-6f);</div>
-<div class="line"><a id="l00792" name="l00792"></a><span class="lineno">  792</span> </div>
-<div class="line"><a id="l00793" name="l00793"></a><span class="lineno">  793</span>} <span class="comment">// namespace hmap</span></div>
+<div class="line"><a id="l00424" name="l00424"></a><span class="lineno">  424</span> </div>
+<div class="line"><a id="l00425" name="l00425"></a><span class="lineno">  425</span><span class="comment">// ==========================================================================</span></div>
+<div class="line"><a id="l00426" name="l00426"></a><span class="lineno">  426</span><span class="comment">//  Functions</span></div>
+<div class="line"><a id="l00427" name="l00427"></a><span class="lineno">  427</span><span class="comment">// ==========================================================================</span></div>
+<div class="line"><a id="l00428" name="l00428"></a><span class="lineno">  428</span> </div>
+<div class="line"><a id="l00451" name="l00451"></a><span class="lineno">  451</span>Path <a class="code hl_function" href="namespacehmap.html#ac39b5e32d90e0351f4124ea61334461d">bezier</a>(<span class="keyword">const</span> Path            &amp;path,</div>
+<div class="line"><a id="l00452" name="l00452"></a><span class="lineno">  452</span>            <span class="keywordtype">float</span>                  curvature_ratio = 0.3f,</div>
+<div class="line"><a id="l00453" name="l00453"></a><span class="lineno">  453</span>            <span class="keywordtype">int</span>                    edge_divisions = 10,</div>
+<div class="line"><a id="l00454" name="l00454"></a><span class="lineno">  454</span>            <a class="code hl_enumeration" href="classhmap_1_1Path.html#a52c62bad1cdef88e8793d9c022357787">Path::EdgeDivisionMode</a> edm = <a class="code hl_enumvalue" href="classhmap_1_1Path.html#a52c62bad1cdef88e8793d9c022357787a5192c60669f946857f5bed6f43c212ee">Path::EdgeDivisionMode::EDM_PER_EDGE</a>);</div>
+<div class="line"><a id="l00455" name="l00455"></a><span class="lineno">  455</span> </div>
+<div class="line"><a id="l00476" name="l00476"></a><span class="lineno">  476</span>Path <a class="code hl_function" href="namespacehmap.html#a3beb0c80491a827b346e9e69cadf4228">bezier_round</a>(</div>
+<div class="line"><a id="l00477" name="l00477"></a><span class="lineno">  477</span>    <span class="keyword">const</span> Path            &amp;path,</div>
+<div class="line"><a id="l00478" name="l00478"></a><span class="lineno">  478</span>    <span class="keywordtype">float</span>                  curvature_ratio = 0.3f,</div>
+<div class="line"><a id="l00479" name="l00479"></a><span class="lineno">  479</span>    <span class="keywordtype">int</span>                    edge_divisions = 10,</div>
+<div class="line"><a id="l00480" name="l00480"></a><span class="lineno">  480</span>    <a class="code hl_enumeration" href="classhmap_1_1Path.html#a52c62bad1cdef88e8793d9c022357787">Path::EdgeDivisionMode</a> edm = <a class="code hl_enumvalue" href="classhmap_1_1Path.html#a52c62bad1cdef88e8793d9c022357787a5192c60669f946857f5bed6f43c212ee">Path::EdgeDivisionMode::EDM_PER_EDGE</a>);</div>
+<div class="line"><a id="l00481" name="l00481"></a><span class="lineno">  481</span> </div>
+<div class="line"><a id="l00506" name="l00506"></a><span class="lineno">  506</span>Path <a class="code hl_function" href="namespacehmap.html#a281c9db00eef9735e8eea7bbf50f3e34">bspline</a>(<span class="keyword">const</span> Path            &amp;path,</div>
+<div class="line"><a id="l00507" name="l00507"></a><span class="lineno">  507</span>             <span class="keywordtype">int</span>                    edge_divisions = 10,</div>
+<div class="line"><a id="l00508" name="l00508"></a><span class="lineno">  508</span>             <a class="code hl_enumeration" href="classhmap_1_1Path.html#a52c62bad1cdef88e8793d9c022357787">Path::EdgeDivisionMode</a> edm = <a class="code hl_enumvalue" href="classhmap_1_1Path.html#a52c62bad1cdef88e8793d9c022357787a5192c60669f946857f5bed6f43c212ee">Path::EdgeDivisionMode::EDM_PER_EDGE</a>);</div>
+<div class="line"><a id="l00509" name="l00509"></a><span class="lineno">  509</span> </div>
+<div class="line"><a id="l00528" name="l00528"></a><span class="lineno">  528</span>Path <a class="code hl_function" href="namespacehmap.html#a9b14eb25556ef745f1e606bbe8d41dcb">catmullrom</a>(</div>
+<div class="line"><a id="l00529" name="l00529"></a><span class="lineno">  529</span>    <span class="keyword">const</span> Path            &amp;path,</div>
+<div class="line"><a id="l00530" name="l00530"></a><span class="lineno">  530</span>    <span class="keywordtype">int</span>                    edge_divisions = 10,</div>
+<div class="line"><a id="l00531" name="l00531"></a><span class="lineno">  531</span>    <a class="code hl_enumeration" href="classhmap_1_1Path.html#a52c62bad1cdef88e8793d9c022357787">Path::EdgeDivisionMode</a> edm = <a class="code hl_enumvalue" href="classhmap_1_1Path.html#a52c62bad1cdef88e8793d9c022357787a5192c60669f946857f5bed6f43c212ee">Path::EdgeDivisionMode::EDM_PER_EDGE</a>);</div>
+<div class="line"><a id="l00532" name="l00532"></a><span class="lineno">  532</span> </div>
+<div class="line"><a id="l00557" name="l00557"></a><span class="lineno">  557</span>Path <a class="code hl_function" href="namespacehmap.html#af9b55527f8d0f1c01d110b3144ee7d91">decasteljau</a>(</div>
+<div class="line"><a id="l00558" name="l00558"></a><span class="lineno">  558</span>    <span class="keyword">const</span> Path            &amp;path,</div>
+<div class="line"><a id="l00559" name="l00559"></a><span class="lineno">  559</span>    <span class="keywordtype">int</span>                    edge_divisions = 10,</div>
+<div class="line"><a id="l00560" name="l00560"></a><span class="lineno">  560</span>    <a class="code hl_enumeration" href="classhmap_1_1Path.html#a52c62bad1cdef88e8793d9c022357787">Path::EdgeDivisionMode</a> edm = <a class="code hl_enumvalue" href="classhmap_1_1Path.html#a52c62bad1cdef88e8793d9c022357787a5192c60669f946857f5bed6f43c212ee">Path::EdgeDivisionMode::EDM_PER_EDGE</a>);</div>
+<div class="line"><a id="l00561" name="l00561"></a><span class="lineno">  561</span> </div>
+<div class="line"><a id="l00582" name="l00582"></a><span class="lineno">  582</span>Path <a class="code hl_function" href="namespacehmap.html#a862fef5e0387bea9358648fc7aa5680b">decimate_vw</a>(<span class="keyword">const</span> Path &amp;path, <span class="keywordtype">int</span> n_points_target = 3);</div>
+<div class="line"><a id="l00583" name="l00583"></a><span class="lineno">  583</span> </div>
+<div class="line"><a id="l00616" name="l00616"></a><span class="lineno">  616</span>Path <a class="code hl_function" href="namespacehmap.html#a5d1634064e937326c7d91f509c3d67ab">fractalize</a>(<span class="keyword">const</span> Path &amp;path,</div>
+<div class="line"><a id="l00617" name="l00617"></a><span class="lineno">  617</span>                <span class="keywordtype">int</span>         iterations,</div>
+<div class="line"><a id="l00618" name="l00618"></a><span class="lineno">  618</span>                <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>        seed,</div>
+<div class="line"><a id="l00619" name="l00619"></a><span class="lineno">  619</span>                <span class="keywordtype">float</span>       sigma = 0.2f,</div>
+<div class="line"><a id="l00620" name="l00620"></a><span class="lineno">  620</span>                <span class="keywordtype">int</span>         orientation = 0,</div>
+<div class="line"><a id="l00621" name="l00621"></a><span class="lineno">  621</span>                <span class="keywordtype">float</span>       persistence = 1.f,</div>
+<div class="line"><a id="l00622" name="l00622"></a><span class="lineno">  622</span>                Array      *p_control_field = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l00623" name="l00623"></a><span class="lineno">  623</span>                glm::vec4   bbox = {0.f, 1.f, 0.f, 1.f});</div>
+<div class="line"><a id="l00624" name="l00624"></a><span class="lineno">  624</span> </div>
+<div class="line"><a id="l00643" name="l00643"></a><span class="lineno">  643</span>Path <a class="code hl_function" href="namespacehmap.html#a73e4db2185a62fe2cf6bed305bafeb1f">inflate</a>(<span class="keyword">const</span> Path &amp;path, <span class="keywordtype">float</span> strength, <span class="keywordtype">bool</span> resample = <span class="keyword">true</span>);</div>
+<div class="line"><a id="l00644" name="l00644"></a><span class="lineno">  644</span> </div>
+<div class="line"><a id="l00673" name="l00673"></a><span class="lineno">  673</span>Path <a class="code hl_function" href="namespacehmap.html#af00a9f03eed98b1993fd458beb120379">meanderize</a>(</div>
+<div class="line"><a id="l00674" name="l00674"></a><span class="lineno">  674</span>    <span class="keyword">const</span> Path            &amp;path,</div>
+<div class="line"><a id="l00675" name="l00675"></a><span class="lineno">  675</span>    <span class="keywordtype">float</span>                  ratio,</div>
+<div class="line"><a id="l00676" name="l00676"></a><span class="lineno">  676</span>    <span class="keywordtype">float</span>                  noise_ratio = 0.1f,</div>
+<div class="line"><a id="l00677" name="l00677"></a><span class="lineno">  677</span>    <a class="code hl_typedef" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>                   seed = 1,</div>
+<div class="line"><a id="l00678" name="l00678"></a><span class="lineno">  678</span>    <span class="keywordtype">int</span>                    iterations = 1,</div>
+<div class="line"><a id="l00679" name="l00679"></a><span class="lineno">  679</span>    <span class="keywordtype">int</span>                    edge_divisions = 10,</div>
+<div class="line"><a id="l00680" name="l00680"></a><span class="lineno">  680</span>    <a class="code hl_enumeration" href="classhmap_1_1Path.html#a52c62bad1cdef88e8793d9c022357787">Path::EdgeDivisionMode</a> edm = <a class="code hl_enumvalue" href="classhmap_1_1Path.html#a52c62bad1cdef88e8793d9c022357787a5192c60669f946857f5bed6f43c212ee">Path::EdgeDivisionMode::EDM_PER_EDGE</a>);</div>
+<div class="line"><a id="l00681" name="l00681"></a><span class="lineno">  681</span> </div>
+<div class="line"><a id="l00695" name="l00695"></a><span class="lineno">  695</span>Array <a class="code hl_function" href="namespacehmap.html#a2e33d478424b6f4d2bd05ccaeabd0846">path_sdf_to_array</a>(<span class="keyword">const</span> Path  &amp;path,</div>
+<div class="line"><a id="l00696" name="l00696"></a><span class="lineno">  696</span>                        glm::ivec2   shape,</div>
+<div class="line"><a id="l00697" name="l00697"></a><span class="lineno">  697</span>                        glm::vec4    bbox_array = {0.f, 1.f, 0.f, 1.f},</div>
+<div class="line"><a id="l00698" name="l00698"></a><span class="lineno">  698</span>                        <span class="keyword">const</span> Array *p_noise_x = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l00699" name="l00699"></a><span class="lineno">  699</span>                        <span class="keyword">const</span> Array *p_noise_y = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00700" name="l00700"></a><span class="lineno">  700</span> </div>
+<div class="line"><a id="l00717" name="l00717"></a><span class="lineno">  717</span>Path <a class="code hl_function" href="namespacehmap.html#a650c6eaf8bd10356a77c7c1f9ef9af3c">remove_geometric_loops</a>(<span class="keyword">const</span> Path &amp;path);</div>
+<div class="line"><a id="l00718" name="l00718"></a><span class="lineno">  718</span> </div>
+<div class="line"><a id="l00754" name="l00754"></a><span class="lineno">  754</span>Path <a class="code hl_function" href="namespacehmap.html#ad81052648d6008d2b7b4a5a36a2d7830">smooth</a>(<span class="keyword">const</span> Path &amp;path,</div>
+<div class="line"><a id="l00755" name="l00755"></a><span class="lineno">  755</span>            <span class="keywordtype">int</span>         navg = 1,</div>
+<div class="line"><a id="l00756" name="l00756"></a><span class="lineno">  756</span>            <span class="keywordtype">float</span>       averaging_intensity = 1.f,</div>
+<div class="line"><a id="l00757" name="l00757"></a><span class="lineno">  757</span>            <span class="keywordtype">float</span>       inertia = 0.f);</div>
+<div class="line"><a id="l00758" name="l00758"></a><span class="lineno">  758</span> </div>
+<div class="line"><a id="l00759" name="l00759"></a><span class="lineno">  759</span><span class="comment">// ==========================================================================</span></div>
+<div class="line"><a id="l00760" name="l00760"></a><span class="lineno">  760</span><span class="comment">//  Verification Functions</span></div>
+<div class="line"><a id="l00761" name="l00761"></a><span class="lineno">  761</span><span class="comment">// ==========================================================================</span></div>
+<div class="line"><a id="l00762" name="l00762"></a><span class="lineno">  762</span> </div>
+<div class="line"><a id="l00774" name="l00774"></a><span class="lineno">  774</span><span class="keywordtype">bool</span> <a class="code hl_function" href="namespacehmap.html#a5944fc905be512784a9caceb527703d4">assert_start_end_points</a>(<span class="keyword">const</span> Path &amp;path1,</div>
+<div class="line"><a id="l00775" name="l00775"></a><span class="lineno">  775</span>                             <span class="keyword">const</span> Path &amp;path2,</div>
+<div class="line"><a id="l00776" name="l00776"></a><span class="lineno">  776</span>                             <span class="keywordtype">float</span>       tol = 1e-6f,</div>
+<div class="line"><a id="l00777" name="l00777"></a><span class="lineno">  777</span>                             <span class="keywordtype">bool</span>        verbose = <span class="keyword">false</span>);</div>
+<div class="line"><a id="l00778" name="l00778"></a><span class="lineno">  778</span> </div>
+<div class="line"><a id="l00785" name="l00785"></a><span class="lineno">  785</span><span class="keywordtype">float</span> <a class="code hl_function" href="namespacehmap.html#aba24d09d6f4a3eab8c1522536088f39e">chamfer_distance</a>(<span class="keyword">const</span> Path &amp;a, <span class="keyword">const</span> Path &amp;b);</div>
+<div class="line"><a id="l00786" name="l00786"></a><span class="lineno">  786</span> </div>
+<div class="line"><a id="l00796" name="l00796"></a><span class="lineno">  796</span><span class="keywordtype">bool</span> <a class="code hl_function" href="namespacehmap.html#adb224131a9c75491b105b67801e0fe20">has_duplicates</a>(<span class="keyword">const</span> Path &amp;path, <span class="keywordtype">float</span> tol = 1e-6f);</div>
+<div class="line"><a id="l00797" name="l00797"></a><span class="lineno">  797</span> </div>
+<div class="line"><a id="l00798" name="l00798"></a><span class="lineno">  798</span>} <span class="comment">// namespace hmap</span></div>
 <div class="ttc" id="aarray_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition</b> array.hpp:14</div></div>
 <div class="ttc" id="aboundary_8hpp_html"><div class="ttname"><a href="boundary_8hpp.html">boundary.hpp</a></div><div class="ttdoc">Header file for boundary condition functions and utilities.</div></div>
+<div class="ttc" id="aclasshmap_1_1Array_html"><div class="ttname"><a href="classhmap_1_1Array.html">hmap::Array</a></div><div class="ttdoc">Array class, helper to manipulate 2D float array with &quot;(i, j)&quot; indexing.</div><div class="ttdef"><b>Definition</b> array.hpp:32</div></div>
 <div class="ttc" id="aclasshmap_1_1Cloud_html"><div class="ttname"><a href="classhmap_1_1Cloud.html">hmap::Cloud</a></div><div class="ttdoc">Represents a collection of unordered points in 2D space.</div><div class="ttdef"><b>Definition</b> cloud.hpp:52</div></div>
 <div class="ttc" id="aclasshmap_1_1Cloud_html_aad75fb7bcfa7a2c3f139d2e3d3d6cc54"><div class="ttname"><a href="classhmap_1_1Cloud.html#aad75fb7bcfa7a2c3f139d2e3d3d6cc54">hmap::Cloud::points</a></div><div class="ttdeci">std::vector&lt; Point &gt; points</div><div class="ttdoc">Points of the cloud.</div><div class="ttdef"><b>Definition</b> cloud.hpp:54</div></div>
 <div class="ttc" id="aclasshmap_1_1Path_html"><div class="ttname"><a href="classhmap_1_1Path.html">hmap::Path</a></div><div class="ttdoc">Represents an ordered set of points in 2D, forming a polyline (open or closed).</div><div class="ttdef"><b>Definition</b> path.hpp:51</div></div>
@@ -355,6 +358,7 @@ $(document).ready(function(){initNavTree('path_8hpp_source.html',''); initResiza
 <div class="ttc" id="aclasshmap_1_1Path_html_ad85aa61692aadbfa1f3f08096cb0594c"><div class="ttname"><a href="classhmap_1_1Path.html#ad85aa61692aadbfa1f3f08096cb0594c">hmap::Path::clear</a></div><div class="ttdeci">void clear()</div><div class="ttdoc">Clear the path data.</div><div class="ttdef"><b>Definition</b> path.cpp:26</div></div>
 <div class="ttc" id="aclasshmap_1_1Path_html_adb21bc9bdaea145a168b8ecdf43edf80"><div class="ttname"><a href="classhmap_1_1Path.html#adb21bc9bdaea145a168b8ecdf43edf80">hmap::Path::get_tangents</a></div><div class="ttdeci">std::vector&lt; glm::vec2 &gt; get_tangents() const</div><div class="ttdoc">Computes unit tangents at each point of the path.</div><div class="ttdef"><b>Definition</b> path.cpp:156</div></div>
 <div class="ttc" id="aclasshmap_1_1Path_html_aeb2890d2ffbbf4291baf255c621095de"><div class="ttname"><a href="classhmap_1_1Path.html#aeb2890d2ffbbf4291baf255c621095de">hmap::Path::set_closed</a></div><div class="ttdeci">void set_closed(bool new_value)</div><div class="ttdoc">Set whether the path is closed.</div><div class="ttdef"><b>Definition</b> path.cpp:352</div></div>
+<div class="ttc" id="aclasshmap_1_1Path_html_aec66cc07c78d7281bf005694d2b8ad98"><div class="ttname"><a href="classhmap_1_1Path.html#aec66cc07c78d7281bf005694d2b8ad98">hmap::Path::Path</a></div><div class="ttdeci">Path(const std::vector&lt; glm::vec3 &gt; &amp;xyv)</div><div class="ttdoc">Constructs a new Path object from lists of xyz data as glm::vec3.</div><div class="ttdef"><b>Definition</b> path.hpp:126</div></div>
 <div class="ttc" id="aclasshmap_1_1Path_html_af9fcf16f7d3be2128593fe3f7a26b4f3"><div class="ttname"><a href="classhmap_1_1Path.html#af9fcf16f7d3be2128593fe3f7a26b4f3">hmap::Path::Path</a></div><div class="ttdeci">Path(std::vector&lt; Point &gt; points)</div><div class="ttdoc">Construct a new Path object based on a list of points. Initializes a path with the specified points a...</div><div class="ttdef"><b>Definition</b> path.hpp:85</div></div>
 <div class="ttc" id="aclasshmap_1_1Path_html_afe00587a87fc52524487b197818404f0"><div class="ttname"><a href="classhmap_1_1Path.html#afe00587a87fc52524487b197818404f0">hmap::Path::resample_interp</a></div><div class="ttdeci">void resample_interp(int npoints, InterpolationMethod1D itp_method=InterpolationMethod1D::CUBIC)</div><div class="ttdoc">Resamples the path using cubic interpolation along arc length.</div><div class="ttdef"><b>Definition</b> path.cpp:282</div></div>
 <div class="ttc" id="acloud_8hpp_html"><div class="ttname"><a href="cloud_8hpp.html">cloud.hpp</a></div><div class="ttdoc">Definition of the Cloud class for manipulating sets of 2D points.</div></div>

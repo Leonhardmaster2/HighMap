@@ -7,6 +7,7 @@ var classhmap_1_1Cloud =
     [ "Cloud", "classhmap_1_1Cloud.html#a34e33bc454459b077a2384ecaea4ba26", null ],
     [ "Cloud", "classhmap_1_1Cloud.html#a189ddb2d4389ab85c28ad586fbbc4c30", null ],
     [ "Cloud", "classhmap_1_1Cloud.html#aaa3aebf8afba3cddb605df797a3e8ff1", null ],
+    [ "Cloud", "classhmap_1_1Cloud.html#af62bc19e589d351a4f21a7177bde5456", null ],
     [ "add_point", "classhmap_1_1Cloud.html#ab1149531131111567d9f8760162d90ff", null ],
     [ "remove_point", "classhmap_1_1Cloud.html#afa8d7286a65d513bdc90c4c05bc42e0f", null ],
     [ "get_bbox", "classhmap_1_1Cloud.html#ae5ba6ffbe371603545c312e51601615f", null ],
