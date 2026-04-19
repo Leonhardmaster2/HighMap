@@ -1035,6 +1035,7 @@ var namespacehmap =
     [ "sqrt", "namespacehmap.html#a6b608e2826c1f9ba54a0e8922d5faa6b", null ],
     [ "sqrt_safe", "namespacehmap.html#a30e6961ce99edeb86af6f4ce61651bd0", null ],
     [ "triangle", "namespacehmap.html#adce0295b768dd046d1ddcd117cb1b8b4", null ],
+    [ "area_remove", "namespacehmap.html#ad5e2af6d9a9f26690998f2c26865444a", null ],
     [ "border", "namespacehmap.html#af80bcff234bf1482cf26896b9d21d270", null ],
     [ "closing", "namespacehmap.html#a889405ce11be91e33cc80ca4dbd192b0", null ],
     [ "closing_by_reconstruction", "namespacehmap.html#a9e5600ea0195404efc56ad821e152c60", null ],

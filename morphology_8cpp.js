@@ -1,5 +1,6 @@
 var morphology_8cpp =
 [
+    [ "area_remove", "morphology_8cpp.html#ad5e2af6d9a9f26690998f2c26865444a", null ],
     [ "border", "morphology_8cpp.html#af80bcff234bf1482cf26896b9d21d270", null ],
     [ "closing", "morphology_8cpp.html#a889405ce11be91e33cc80ca4dbd192b0", null ],
     [ "closing_by_reconstruction", "morphology_8cpp.html#a9e5600ea0195404efc56ad821e152c60", null ],

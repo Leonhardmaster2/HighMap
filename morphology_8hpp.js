@@ -19,6 +19,7 @@ var morphology_8hpp =
       [ "MO_CLOSING_BY_RECONSTRUCTION", "morphology_8hpp.html#a321149eda3417aa485a010c31267818cae6ea35f492be86e8686ddcf0440aebba", null ],
       [ "MO_OPENING_BY_RECONSTRUCTION", "morphology_8hpp.html#a321149eda3417aa485a010c31267818caa6a0098d7d9f4eaae196f3f721464806", null ]
     ] ],
+    [ "area_remove", "morphology_8hpp.html#ad5e2af6d9a9f26690998f2c26865444a", null ],
     [ "border", "morphology_8hpp.html#af80bcff234bf1482cf26896b9d21d270", null ],
     [ "closing", "morphology_8hpp.html#a889405ce11be91e33cc80ca4dbd192b0", null ],
     [ "closing_by_reconstruction", "morphology_8hpp.html#a9e5600ea0195404efc56ad821e152c60", null ],

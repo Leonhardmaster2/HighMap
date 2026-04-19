@@ -1442,6 +1442,8 @@ float \mbox{\hyperlink{namespacehmap_ae7d9d43c2cd453af7a6395cbcb2ac3b2}{smoothst
 \item 
 float \mbox{\hyperlink{namespacehmap_adce0295b768dd046d1ddcd117cb1b8b4}{triangle}} (float x, float vmin, float vmax)
 \begin{DoxyCompactList}\small\item\em Triangle function between two bounds. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_ad5e2af6d9a9f26690998f2c26865444a}{area\+\_\+remove}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float threshold\+\_\+size, float background\+\_\+value=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float fill\+\_\+value=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
+\begin{DoxyCompactList}\small\item\em Remove connected components smaller than a given size threshold. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_af80bcff234bf1482cf26896b9d21d270}{border}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
 \begin{DoxyCompactList}\small\item\em Apply a border algorithm to the input array using a square structure. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a889405ce11be91e33cc80ca4dbd192b0}{closing}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
@@ -21230,7 +21232,39 @@ Returns 0 if x \texorpdfstring{$<$}{<}= vmin or x \texorpdfstring{$>$}{>}= vmax.
 \begin{DoxyReturn}{Returns}
 Triangle-\/shaped value in \mbox{[}0,1\mbox{]}. 
 \end{DoxyReturn}
-\Hypertarget{namespacehmap_af80bcff234bf1482cf26896b9d21d270}\label{namespacehmap_af80bcff234bf1482cf26896b9d21d270} 
+\Hypertarget{namespacehmap_ad5e2af6d9a9f26690998f2c26865444a}\label{namespacehmap_ad5e2af6d9a9f26690998f2c26865444a} 
+\index{hmap@{hmap}!area\_remove@{area\_remove}}
+\index{area\_remove@{area\_remove}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{area\_remove()}{area\_remove()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::area\+\_\+remove (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{float}]{threshold\+\_\+size,  }\item[{float}]{background\+\_\+value = {\ttfamily 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{fill\+\_\+value = {\ttfamily 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
+
+
+
+Remove connected components smaller than a given size threshold. 
+
+Detects connected regions in the input array and removes those whose area is smaller than {\ttfamily threshold\+\_\+size}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & Input array. \\
+\hline
+{\em threshold\+\_\+size} & Minimum component size to keep. \\
+\hline
+{\em background\+\_\+value} & Value used to identify background. \\
+\hline
+{\em fill\+\_\+value} & Value used to replace removed components. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classhmap_1_1Array}{Array} with small components removed.
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}}  \Hypertarget{namespacehmap_af80bcff234bf1482cf26896b9d21d270}\label{namespacehmap_af80bcff234bf1482cf26896b9d21d270} 
 \index{hmap@{hmap}!border@{border}}
 \index{border@{border}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{border()}{border()}}
