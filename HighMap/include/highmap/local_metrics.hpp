@@ -355,26 +355,51 @@ Array rugosity(const Array &z, int ir, bool convex = true);
 namespace hmap::gpu
 {
 
+/**
+ * \brief Types of local metrics.
+ */
 // clang-format off
 enum LocalMetrics : int
 {
-	LM_LOCAL_ASPECT_VARIANCE,
-	LM_LOCAL_MAX,
-	LM_LOCAL_MEDIAN_DEVIATION,
-	LM_LOCAL_MIN,
-	LM_LOCAL_RELIEF,
-	LM_LOCAL_VARIANCE,
-	LM_LOCAL_MEAN,
-	LM_LOCAL_SKEWNESS,
-	LM_LOCAL_Z_SCORE,
-	LM_TOPOGRAPHIC_POSITION_INDEX,
-	LM_RELATIVE_ELEVATION,
-	LM_RUGGEDNESS,
-	LM_RUGOSITY_CONCAVE,
-	LM_RUGOSITY_CONVEX,
+	LM_LOCAL_ASPECT_VARIANCE,      ///< Variance of local slope directions.
+	LM_LOCAL_MAX,                  ///< Local maximum value.
+	LM_LOCAL_MEDIAN_DEVIATION,     ///< Deviation from local median.
+	LM_LOCAL_MIN,                  ///< Local minimum value.
+	LM_LOCAL_RELIEF,               ///< Difference between local max and
+		                       // min.
+	LM_LOCAL_VARIANCE,             ///< Variance of local values.
+	LM_LOCAL_MEAN,                 ///< Mean of local values.
+	LM_LOCAL_SKEWNESS,             ///< Skewness of local value
+		                       // distribution.
+	LM_LOCAL_Z_SCORE,              ///< Standardized value relative to
+		                       // neighborhood.
+	LM_TOPOGRAPHIC_POSITION_INDEX, ///< Relative elevation vs neighborhood
+		                       // mean.
+	LM_RELATIVE_ELEVATION,         ///< Normalized elevation within
+		                       // neighborhood.
+	LM_RUGGEDNESS,                 ///< Measure of terrain roughness.
+	LM_RUGOSITY_CONCAVE,           ///< Roughness of concave features.
+	LM_RUGOSITY_CONVEX,            ///< Roughness of convex features.
 };
 // clang-format on
 
+/**
+ * @brief Compute a local metric on the input array using a square neighborhood.
+ *
+ * Applies the selected local statistic or terrain descriptor (e.g. mean,
+ * variance, ruggedness) over a neighborhood of radius \p ir.
+ *
+ * @param  array  Input array to analyze.
+ * @param  ir     Radius of the square neighborhood.
+ * @param  metric Local metric to compute.
+ * @return        Array Output array containing the computed metric.
+ *
+ * **Example**
+ * @include ex_local_metrics.cpp
+ *
+ * **Result**
+ * @image html ex_local_metrics.png
+ */
 Array local_metrics(const Array &array, int ir, LocalMetrics metric);
 
 } // namespace hmap::gpu

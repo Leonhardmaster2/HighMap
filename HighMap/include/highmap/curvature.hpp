@@ -17,6 +17,32 @@ namespace hmap
 {
 
 /**
+ * @brief Computes a signed level-set curvature.
+ *
+ * @param  array        Input array.
+ * @param  prefilter_ir Optional smoothing radius for curvature evaluation.
+ * @return              Signed curvature.
+ */
+Array level_set_curvature(const Array &array, int prefilter_ir);
+
+} // namespace hmap
+
+namespace hmap::gpu
+{
+
+/*! @brief See hmap::level_set_curvature */
+Array level_set_curvature(const Array &array, int prefilter_ir);
+
+} // namespace hmap::gpu
+
+// ==========================================================================
+//  Wrapper
+// ==========================================================================
+
+namespace hmap
+{
+
+/**
  * \brief Types of curvature measures.
  *
  * Defines the different curvature descriptors that can be computed on a scalar
@@ -62,15 +88,6 @@ enum CurvatureType : int
  */
 Array curvature_quadric(const Array &z, int ir, CurvatureType curvature_type);
 
-/**
- * @brief Computes a signed level-set curvature.
- *
- * @param  array        Input array.
- * @param  prefilter_ir Optional smoothing radius for curvature evaluation.
- * @return              Signed curvature.
- */
-Array level_set_curvature(const Array &array, int prefilter_ir);
-
 } // namespace hmap
 
 namespace hmap::gpu
@@ -81,8 +98,5 @@ Array curvature_quadric(const Array  &z,
                         int           ir,
                         CurvatureType curvature_type,
                         bool          approx_algo = false);
-
-/*! @brief See hmap::level_set_curvature */
-Array level_set_curvature(const Array &array, int prefilter_ir);
 
 } // namespace hmap::gpu

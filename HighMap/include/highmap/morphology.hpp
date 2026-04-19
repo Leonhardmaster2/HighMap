@@ -22,21 +22,6 @@
 namespace hmap
 {
 
-// clang-format off
-enum MorphologyOperation : int
-{
-  MO_BORDER,
-  MO_CLOSING,
-  MO_DILATION,
-  MO_EROSION,
-  MO_OPENING,
-  MO_BLACK_HAT,
-  MO_TOP_HAT,
-  MO_GRADIENT,
-  MO_LAPLACIAN,
-};
-// clang-format on
-
 /**
  * @brief Enumeration for different types of distance transforms.
  */
@@ -509,6 +494,26 @@ Array skeleton(const Array &array, bool zero_at_borders = true);
 
 namespace hmap
 {
+
+/**
+ * \brief Types of base morphology operators.
+ */
+// clang-format off
+enum MorphologyOperation : int
+{
+	MO_BORDER, ///< Extract border of structures.
+	MO_CLOSING, ///< Dilation followed by erosion (fills small holes).
+	MO_DILATION, ///< Expand structures (local maximum).
+	MO_EROSION, ///< Shrink structures (local minimum).
+	MO_OPENING, ///< Erosion followed by dilation (removes small objects).
+	MO_BLACK_HAT, ///< Difference between closing and input (dark features).
+	MO_TOP_HAT, ///< Difference between input and opening (bright features).
+	MO_GRADIENT, ///< Difference between dilation and erosion (edge
+		     // magnitude).
+	MO_LAPLACIAN, ///< Second-order operator highlighting ridges and
+		      // valleys.
+};
+// clang-format on
 
 /**
  * @brief Apply a morphological operation to the input array using a square
