@@ -74,6 +74,14 @@ Cloud::Cloud(const std::vector<glm::ivec2> &indices,
   }
 }
 
+Cloud::Cloud(const std::vector<glm::vec3> &xyv)
+{
+  this->points.reserve(xyv.size());
+
+  for (const auto &p : xyv)
+    this->points.emplace_back(p.x, p.y, p.z);
+}
+
 void Cloud::add_point(const Point &p)
 {
   this->points.push_back(p);

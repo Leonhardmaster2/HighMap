@@ -123,6 +123,11 @@ public:
         const glm::vec4               &bbox = {0.f, 1.f, 0.f, 1.f});
 
   /**
+   * @brief  Constructs a new Cloud object from lists of xyz data as glm::vec3.
+   * */
+  Cloud(const std::vector<glm::vec3> &xyv);
+
+  /**
    * @brief Add a new point to the cloud.
    *
    * @param p The point to be added to the cloud.

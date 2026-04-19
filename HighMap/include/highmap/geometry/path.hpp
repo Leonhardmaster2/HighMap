@@ -120,6 +120,11 @@ public:
        const glm::vec4               &bbox = {0.f, 1.f, 0.f, 1.f})
       : Cloud(indices, shape, bbox){};
 
+  /**
+   * @brief  Constructs a new Path object from lists of xyz data as glm::vec3.
+   * */
+  Path(const std::vector<glm::vec3> &xyv) : Cloud(xyv) {};
+
   // ==========================================================================
   //  Accessors
   // ==========================================================================
