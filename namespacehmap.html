@@ -1402,6 +1402,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:abd7c616c225d31eb2fd4e3ff023e3ed5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Merges two point clouds into one.  <br /></td></tr>
 <tr class="separator:abd7c616c225d31eb2fd4e3ff023e3ed5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc6e9a8850aaebd3cca94aefb3c54114" id="r_afc6e9a8850aaebd3cca94aefb3c54114"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Cloud.html">Cloud</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#afc6e9a8850aaebd3cca94aefb3c54114">merge_clouds</a> (const std::vector&lt; <a class="el" href="classhmap_1_1Cloud.html">Cloud</a> &gt; &amp;clouds)</td></tr>
+<tr class="memdesc:afc6e9a8850aaebd3cca94aefb3c54114"><td class="mdescLeft">&#160;</td><td class="mdescRight">Merges multiple point clouds into a single cloud.  <br /></td></tr>
 <tr class="separator:afc6e9a8850aaebd3cca94aefb3c54114"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a85e1a2365d97c95955eaf0648a1f9073" id="r_a85e1a2365d97c95955eaf0648a1f9073"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Cloud.html">Cloud</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a85e1a2365d97c95955eaf0648a1f9073">random_cloud</a> (size_t count, <a class="el" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> seed, const <a class="el" href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77">PointSamplingMethod</a> &amp;method=<a class="el" href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77a8943dd2a2e3993c1e0cff37be3f65957">PointSamplingMethod::RND_LHS</a>, const glm::vec4 &amp;bbox={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>})</td></tr>
 <tr class="memdesc:a85e1a2365d97c95955eaf0648a1f9073"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a random cloud of points within a bounding box.  <br /></td></tr>
@@ -1470,10 +1471,13 @@ Functions</h2></td></tr>
 <tr class="memdesc:ad81052648d6008d2b7b4a5a36a2d7830"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies a smoothing operation to the path points using a moving average filter.  <br /></td></tr>
 <tr class="separator:ad81052648d6008d2b7b4a5a36a2d7830"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5944fc905be512784a9caceb527703d4" id="r_a5944fc905be512784a9caceb527703d4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a5944fc905be512784a9caceb527703d4">assert_start_end_points</a> (const <a class="el" href="classhmap_1_1Path.html">Path</a> &amp;path1, const <a class="el" href="classhmap_1_1Path.html">Path</a> &amp;path2, float tol=1e-6<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, bool verbose=false)</td></tr>
+<tr class="memdesc:a5944fc905be512784a9caceb527703d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Asserts that the start and end points of two paths are within a specified tolerance.  <br /></td></tr>
 <tr class="separator:a5944fc905be512784a9caceb527703d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aba24d09d6f4a3eab8c1522536088f39e" id="r_aba24d09d6f4a3eab8c1522536088f39e"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#aba24d09d6f4a3eab8c1522536088f39e">chamfer_distance</a> (const <a class="el" href="classhmap_1_1Path.html">Path</a> &amp;a, const <a class="el" href="classhmap_1_1Path.html">Path</a> &amp;b)</td></tr>
+<tr class="memdesc:aba24d09d6f4a3eab8c1522536088f39e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the chamfer distance between two paths.  <br /></td></tr>
 <tr class="separator:aba24d09d6f4a3eab8c1522536088f39e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adb224131a9c75491b105b67801e0fe20" id="r_adb224131a9c75491b105b67801e0fe20"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#adb224131a9c75491b105b67801e0fe20">has_duplicates</a> (const <a class="el" href="classhmap_1_1Path.html">Path</a> &amp;path, float tol=1e-6<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
+<tr class="memdesc:adb224131a9c75491b105b67801e0fe20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if a path contains duplicate points within a given tolerance.  <br /></td></tr>
 <tr class="separator:adb224131a9c75491b105b67801e0fe20"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aac71bb6c14edc17967957f7918acdbdd" id="r_aac71bb6c14edc17967957f7918acdbdd"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#aac71bb6c14edc17967957f7918acdbdd">angle</a> (const <a class="el" href="classhmap_1_1Point.html">Point</a> &amp;p1, const <a class="el" href="classhmap_1_1Point.html">Point</a> &amp;p2)</td></tr>
 <tr class="memdesc:aac71bb6c14edc17967957f7918acdbdd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the angle between two points relative to the x-axis.  <br /></td></tr>
@@ -3403,11 +3407,11 @@ Functions</h2></td></tr>
 </td></tr>
 <tr><td class="fieldname"><a id="a321149eda3417aa485a010c31267818ca95312bbd452f457354100b456719f931" name="a321149eda3417aa485a010c31267818ca95312bbd452f457354100b456719f931"></a>MO_BLACK_HAT&#160;</td><td class="fielddoc"><p>Difference between closing and input (dark features). </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2" name="a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2"></a>MO_TOP_HAT&#160;</td><td class="fielddoc"><p>Difference between input and opening (bright features). </p>
+<tr><td class="fieldname"><a id="a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2" name="a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2"></a>MO_TOP_HAT&#160;</td><td class="fielddoc"><p>Difference between input and opening (bright. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a321149eda3417aa485a010c31267818ca2a4e04241f3ad0bdc9da20e651ba8dd3" name="a321149eda3417aa485a010c31267818ca2a4e04241f3ad0bdc9da20e651ba8dd3"></a>MO_GRADIENT&#160;</td><td class="fielddoc"><p>Difference between dilation and erosion (edge magnitude). </p>
+<tr><td class="fieldname"><a id="a321149eda3417aa485a010c31267818ca2a4e04241f3ad0bdc9da20e651ba8dd3" name="a321149eda3417aa485a010c31267818ca2a4e04241f3ad0bdc9da20e651ba8dd3"></a>MO_GRADIENT&#160;</td><td class="fielddoc"><p>Difference between dilation and erosion (edge. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e" name="a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e"></a>MO_LAPLACIAN&#160;</td><td class="fielddoc"><p>Second-order operator highlighting ridges and valleys. </p>
+<tr><td class="fieldname"><a id="a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e" name="a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e"></a>MO_LAPLACIAN&#160;</td><td class="fielddoc"><p>Second-order operator highlighting ridges and. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="a321149eda3417aa485a010c31267818cae6ea35f492be86e8686ddcf0440aebba" name="a321149eda3417aa485a010c31267818cae6ea35f492be86e8686ddcf0440aebba"></a>MO_CLOSING_BY_RECONSTRUCTION&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a321149eda3417aa485a010c31267818caa6a0098d7d9f4eaae196f3f721464806" name="a321149eda3417aa485a010c31267818caa6a0098d7d9f4eaae196f3f721464806"></a>MO_OPENING_BY_RECONSTRUCTION&#160;</td><td class="fielddoc"></td></tr>
@@ -22607,6 +22611,14 @@ A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
       </table>
 </div><div class="memdoc">
 
+<p>Merges multiple point clouds into a single cloud. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">clouds</td><td>A vector of <a class="el" href="classhmap_1_1Cloud.html" title="Represents a collection of unordered points in 2D space.">Cloud</a> objects to be merged. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a85e1a2365d97c95955eaf0648a1f9073" name="a85e1a2365d97c95955eaf0648a1f9073"></a>
@@ -24244,6 +24256,7 @@ A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
   <table class="params">
     <tr><td class="paramname">curvature_ratio</td><td>Amount of curvature, usually in the range [-1, 1], with positive values resulting in more curvature. </td></tr>
     <tr><td class="paramname">edge_divisions</td><td>Number of subdivisions per edge to achieve smooth curves. </td></tr>
+    <tr><td class="paramname">edm</td><td>The mode for dividing edges. Default is <a class="el" href="classhmap_1_1Path.html#a52c62bad1cdef88e8793d9c022357787a5192c60669f946857f5bed6f43c212ee">Path::EdgeDivisionMode::EDM_PER_EDGE</a>. </td></tr>
   </table>
   </dd>
 </dl>
@@ -24297,6 +24310,7 @@ A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
   <table class="params">
     <tr><td class="paramname">curvature_ratio</td><td>Amount of curvature, typically within [-1, 1], with positive values for increased curvature. </td></tr>
     <tr><td class="paramname">edge_divisions</td><td>Number of edge subdivisions for smoothness. </td></tr>
+    <tr><td class="paramname">edm</td><td>The mode for dividing edges. Default is <a class="el" href="classhmap_1_1Path.html#a52c62bad1cdef88e8793d9c022357787a5192c60669f946857f5bed6f43c212ee">Path::EdgeDivisionMode::EDM_PER_EDGE</a>. </td></tr>
   </table>
   </dd>
 </dl>
@@ -24348,6 +24362,12 @@ A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
   </dd>
 </dl>
 <dl class="section warning"><dt>Warning</dt><dd>This function does not correctly handle closed polylines. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">edm</td><td>Mode for dividing edges. Default is EDM_PER_EDGE. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -24385,18 +24405,17 @@ A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
 
 <p>Smooth the path using Catmull-Rom curves. </p>
 <p>This method applies Catmull-Rom curve smoothing to the path. Catmull-Rom splines are interpolating splines that pass through each control point. The <code>edge_divisions</code> parameter determines the number of subdivisions per edge for smoothing.</p>
-<p><b>Important</b>: This function does not correctly handle closed polylines (circular contours). If the path is closed, the smoothing may not correctly close the loop, potentially leaving a gap between the start and end points.</p>
-<p><b>Example</b> </p><div class="fragment"></div><!-- fragment --><p><b>Result</b> </p><div class="image">
-<img src="ex_path_catmullrom.png" alt=""/>
-</div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">edge_divisions</td><td>Number of edge subdivisions to create a smooth Catmull-Rom curve.</td></tr>
+    <tr><td class="paramname">edge_divisions</td><td>Number of edge subdivisions to create a smooth Catmull-Rom curve. </td></tr>
+    <tr><td class="paramname">edm</td><td>Mode for dividing edges. Default is EDM_PER_EDGE.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section warning"><dt>Warning</dt><dd>This function does not correctly handle closed polylines. </dd></dl>
-
+<p><b>Example</b> </p><div class="fragment"></div><!-- fragment --><p><b>Result</b> </p><div class="image">
+<img src="ex_path_catmullrom.png" alt=""/>
+</div>
+ 
 </div>
 </div>
 <a id="af9b55527f8d0f1c01d110b3144ee7d91" name="af9b55527f8d0f1c01d110b3144ee7d91"></a>
@@ -24436,7 +24455,8 @@ A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
 <p>The parameter <code>edge_divisions</code> controls the number of divisions (sub-segments) created along each segment of the path. A higher number of divisions will result in a smoother curve, but will also increase the computational cost.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">edge_divisions</td><td>The number of divisions for each edge of the path. Default is 10, which provides a balanced level of smoothing.</td></tr>
+    <tr><td class="paramname">edge_divisions</td><td>The number of divisions for each edge of the path. Default is 10, which provides a balanced level of smoothing. </td></tr>
+    <tr><td class="paramname">edm</td><td>Mode for dividing edges (default is EDM_PER_EDGE).</td></tr>
   </table>
   </dd>
 </dl>
@@ -24476,11 +24496,11 @@ A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
 <p>This method reduces the number of points in the path to the specified target, <code>n_points_target</code>, while preserving the overall shape. It calculates the area of triangles formed by consecutive points and removes points corresponding to the smallest areas iteratively.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
+    <tr><td class="paramname">path</td><td>The input path to be decimated. </td></tr>
     <tr><td class="paramname">n_points_target</td><td>The desired number of points to retain in the path. If the current number of points is less than <code>n_points_target</code> or the path contains fewer than 3 points, the method returns without modifying the path.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd>Does not well behave when n_points_target is significantly lower than the initial number of points.</dd></dl>
 <p><b>Example</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="highmap_8hpp.html">highmap.hpp</a>&quot;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
@@ -24513,7 +24533,7 @@ A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
 <div class="line">                          {z1, z2, z3},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a5944fc905be512784a9caceb527703d4"><div class="ttname"><a href="namespacehmap.html#a5944fc905be512784a9caceb527703d4">hmap::assert_start_end_points</a></div><div class="ttdeci">bool assert_start_end_points(const Path &amp;path1, const Path &amp;path2, float tol=1e-6f, bool verbose=false)</div><div class="ttdef"><b>Definition</b> path_verification.cpp:11</div></div>
+<div class="ttc" id="anamespacehmap_html_a5944fc905be512784a9caceb527703d4"><div class="ttname"><a href="namespacehmap.html#a5944fc905be512784a9caceb527703d4">hmap::assert_start_end_points</a></div><div class="ttdeci">bool assert_start_end_points(const Path &amp;path1, const Path &amp;path2, float tol=1e-6f, bool verbose=false)</div><div class="ttdoc">Asserts that the start and end points of two paths are within a specified tolerance.</div><div class="ttdef"><b>Definition</b> path_verification.cpp:11</div></div>
 <div class="ttc" id="anamespacehmap_html_a5d1634064e937326c7d91f509c3d67ab"><div class="ttname"><a href="namespacehmap.html#a5d1634064e937326c7d91f509c3d67ab">hmap::fractalize</a></div><div class="ttdeci">Path fractalize(const Path &amp;path, int iterations, uint seed, float sigma=0.2f, int orientation=0, float persistence=1.f, Array *p_control_field=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Applies fractalization to the path by adding points and randomly displacing their positions.</div><div class="ttdef"><b>Definition</b> path_functions.cpp:234</div></div>
 <div class="ttc" id="anamespacehmap_html_adc5300323fa35e021fd83b8b048ef3b1"><div class="ttname"><a href="namespacehmap.html#adc5300323fa35e021fd83b8b048ef3b1">hmap::adjust</a></div><div class="ttdeci">glm::vec4 adjust(const glm::vec4 &amp;v, float dx, float dy, float dz, float dw)</div><div class="ttdef"><b>Definition</b> algebra.hpp:148</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
@@ -24586,17 +24606,19 @@ A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
 
 <p>Applies fractalization to the path by adding points and randomly displacing their positions. </p>
 <p>This method enhances the complexity of a path by iteratively adding new points between existing ones and displacing them using Gaussian noise. The process can simulate natural phenomena like terrain generation or random walk paths. The number of iterations determines the level of detail added to the path.</p>
-<ul>
-<li><code>sigma</code> controls the magnitude of the displacement, normalized by the distance between points.</li>
-<li><code>orientation</code> directs the displacement:<ul>
-<li><code>0</code> for random directions,</li>
-<li><code>1</code> for inflation (outward displacement),</li>
-<li><code>-1</code> for deflation (inward displacement).</li>
-</ul>
-</li>
-<li><code>persistence</code> governs how the noise strength evolves over iterations, typically reducing it gradually.</li>
-<li>An optional <code>control_field</code> array allows for local adjustments of displacement amplitude, guided by the <code>bbox</code> (bounding box), which defines the spatial extent within which the control field is applied.</li>
-</ul>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>The input path to be fractalized. </td></tr>
+    <tr><td class="paramname">iterations</td><td>Number of iterations to apply the fractalization process. </td></tr>
+    <tr><td class="paramname">seed</td><td>Seed value for random number generation, ensuring reproducibility. </td></tr>
+    <tr><td class="paramname">sigma</td><td>Standard deviation of the Gaussian displacement, relative to the distance between points. </td></tr>
+    <tr><td class="paramname">orientation</td><td>Determines the displacement direction: <code>0</code> for random, <code>1</code> for inflation, <code>-1</code> for deflation. </td></tr>
+    <tr><td class="paramname">persistence</td><td>Factor that adjusts the noise intensity across iterations. </td></tr>
+    <tr><td class="paramname">control_field</td><td>Optional pointer to an array that locally modifies the displacement amplitude. </td></tr>
+    <tr><td class="paramname">bbox</td><td>Bounding box that defines the valid area for the control field's influence.</td></tr>
+  </table>
+  </dd>
+</dl>
 <p><b>Example</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="highmap_8hpp.html">highmap.hpp</a>&quot;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
@@ -24655,19 +24677,7 @@ A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_path_fractalize.png" alt=""/>
 </div>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">iterations</td><td>Number of iterations to apply the fractalization process. </td></tr>
-    <tr><td class="paramname">seed</td><td>Seed value for random number generation, ensuring reproducibility. </td></tr>
-    <tr><td class="paramname">sigma</td><td>Standard deviation of the Gaussian displacement, relative to the distance between points. </td></tr>
-    <tr><td class="paramname">orientation</td><td>Determines the displacement direction: <code>0</code> for random, <code>1</code> for inflation, <code>-1</code> for deflation. </td></tr>
-    <tr><td class="paramname">persistence</td><td>Factor that adjusts the noise intensity across iterations. </td></tr>
-    <tr><td class="paramname">control_field</td><td>Optional pointer to an array that locally modifies the displacement amplitude. </td></tr>
-    <tr><td class="paramname">bbox</td><td>Bounding box that defines the valid area for the control field's influence. </td></tr>
-  </table>
-  </dd>
-</dl>
-
+ 
 </div>
 </div>
 <a id="a73e4db2185a62fe2cf6bed305bafeb1f" name="a73e4db2185a62fe2cf6bed305bafeb1f"></a>
@@ -24827,11 +24837,13 @@ A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
 <p>This method introduces meandering effects to the path by adding random deviations. The amplitude of the meanders is controlled by the <code>ratio</code> parameter, while the <code>noise_ratio</code> controls the amount of randomness. The <code>seed</code> parameter is used to initialize the random number generator, ensuring reproducibility. The <code>iterations</code> parameter defines how many times the meandering process is applied, and <code>edge_divisions</code> controls how finely each edge is subdivided during the meandering.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
+    <tr><td class="paramname">path</td><td>The input path to be meanderized. </td></tr>
     <tr><td class="paramname">ratio</td><td>Amplitude ratio of the meanders. Typically a positive value. </td></tr>
     <tr><td class="paramname">noise_ratio</td><td>Ratio of randomness introduced during meandering. Default is 0.1. </td></tr>
     <tr><td class="paramname">seed</td><td>Seed for random number generation. Default is 1. </td></tr>
     <tr><td class="paramname">iterations</td><td>Number of iterations to apply meandering. Default is 1. </td></tr>
-    <tr><td class="paramname">edge_divisions</td><td>Number of sub-divisions of each edge. Default is 10.</td></tr>
+    <tr><td class="paramname">edge_divisions</td><td>Number of sub-divisions of each edge. Default is 10. </td></tr>
+    <tr><td class="paramname">edm</td><td>The mode for dividing edges during the meandering process. Default is EDM_PER_EDGE.</td></tr>
   </table>
   </dd>
 </dl>
@@ -25011,6 +25023,7 @@ A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
 <p>This method smooths the path points based on a specified number of neighboring points, an averaging intensity, and an inertia factor. The smoothing involves calculating the average of neighboring points within a range defined by <code>navg</code>, and then applying an intensity-based weighted average to blend the original and smoothed values. Additionally, an inertia effect can be applied to gradually adjust point positions based on previous points.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
+    <tr><td class="paramname">path</td><td>The input path to be smoothed. </td></tr>
     <tr><td class="paramname">navg</td><td>Number of neighboring points to consider on each side of the current point during the smoothing process. Higher values result in broader smoothing. </td></tr>
     <tr><td class="paramname">averaging_intensity</td><td>The weight given to the averaged points. A value of 1.0 applies full intensity, resulting in a complete averaging of the neighboring points. Lower values retain more of the original point's position. </td></tr>
     <tr><td class="paramname">inertia</td><td>The factor by which each point is influenced by its previous point after the initial smoothing pass. A value of 0 has no inertia effect, while a higher value blends the current point's position with that of the preceding point, creating a trailing effect.</td></tr>
@@ -25093,6 +25106,17 @@ A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
       </table>
 </div><div class="memdoc">
 
+<p>Asserts that the start and end points of two paths are within a specified tolerance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path1</td><td>The first path to compare. </td></tr>
+    <tr><td class="paramname">path2</td><td>The second path to compare. </td></tr>
+    <tr><td class="paramname">tol</td><td>Tolerance for comparing the start and end points. Default is 1e-6f. </td></tr>
+    <tr><td class="paramname">verbose</td><td>If true, prints detailed information during comparison. Default is false. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="aba24d09d6f4a3eab8c1522536088f39e" name="aba24d09d6f4a3eab8c1522536088f39e"></a>
@@ -25121,6 +25145,15 @@ A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
       </table>
 </div><div class="memdoc">
 
+<p>Calculate the chamfer distance between two paths. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td>The first path. </td></tr>
+    <tr><td class="paramname">b</td><td>The second path. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="adb224131a9c75491b105b67801e0fe20" name="adb224131a9c75491b105b67801e0fe20"></a>
@@ -25148,6 +25181,18 @@ A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Check if a path contains duplicate points within a given tolerance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>The path to check for duplicates. </td></tr>
+    <tr><td class="paramname">tol</td><td>Tolerance for considering two points as the same. Default is 1e-6. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true If there are duplicate points in the path. </dd>
+<dd>
+false If there are no duplicate points in the path. </dd></dl>
 
 </div>
 </div>
@@ -35491,16 +35536,16 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 <div class="ttc" id="anamespacehmap_html_a1cf22c68188d0e35aa74983f3a01c488"><div class="ttname"><a href="namespacehmap.html#a1cf22c68188d0e35aa74983f3a01c488">hmap::morphological_black_hat</a></div><div class="ttdeci">Array morphological_black_hat(const Array &amp;array, int ir)</div><div class="ttdoc">Apply a morphological black hat algorithm to the input array using a square structure.</div><div class="ttdef"><b>Definition</b> morphology.cpp:178</div></div>
 <div class="ttc" id="anamespacehmap_html_a211108a73f7ebadb6ac87621c4e47301"><div class="ttname"><a href="namespacehmap.html#a211108a73f7ebadb6ac87621c4e47301">hmap::morphological_top_hat</a></div><div class="ttdeci">Array morphological_top_hat(const Array &amp;array, int ir)</div><div class="ttdoc">Apply a morphological top hat algorithm to the input array using a square structure.</div><div class="ttdef"><b>Definition</b> morphology.cpp:195</div></div>
 <div class="ttc" id="anamespacehmap_html_a321149eda3417aa485a010c31267818ca0e9abbb30a51ad2951f6f0b527f6f7a1"><div class="ttname"><a href="namespacehmap.html#a321149eda3417aa485a010c31267818ca0e9abbb30a51ad2951f6f0b527f6f7a1">hmap::MO_EROSION</a></div><div class="ttdeci">@ MO_EROSION</div><div class="ttdoc">Shrink structures (local minimum).</div><div class="ttdef"><b>Definition</b> morphology.hpp:656</div></div>
-<div class="ttc" id="anamespacehmap_html_a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e"><div class="ttname"><a href="namespacehmap.html#a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e">hmap::MO_LAPLACIAN</a></div><div class="ttdeci">@ MO_LAPLACIAN</div><div class="ttdoc">Second-order operator highlighting ridges and valleys.</div><div class="ttdef"><b>Definition</b> morphology.hpp:661</div></div>
-<div class="ttc" id="anamespacehmap_html_a321149eda3417aa485a010c31267818ca2a4e04241f3ad0bdc9da20e651ba8dd3"><div class="ttname"><a href="namespacehmap.html#a321149eda3417aa485a010c31267818ca2a4e04241f3ad0bdc9da20e651ba8dd3">hmap::MO_GRADIENT</a></div><div class="ttdeci">@ MO_GRADIENT</div><div class="ttdoc">Difference between dilation and erosion (edge magnitude).</div><div class="ttdef"><b>Definition</b> morphology.hpp:660</div></div>
+<div class="ttc" id="anamespacehmap_html_a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e"><div class="ttname"><a href="namespacehmap.html#a321149eda3417aa485a010c31267818ca1f833f1ccefa8fd3387d614d6092688e">hmap::MO_LAPLACIAN</a></div><div class="ttdeci">@ MO_LAPLACIAN</div><div class="ttdoc">Second-order operator highlighting ridges and.</div><div class="ttdef"><b>Definition</b> morphology.hpp:663</div></div>
+<div class="ttc" id="anamespacehmap_html_a321149eda3417aa485a010c31267818ca2a4e04241f3ad0bdc9da20e651ba8dd3"><div class="ttname"><a href="namespacehmap.html#a321149eda3417aa485a010c31267818ca2a4e04241f3ad0bdc9da20e651ba8dd3">hmap::MO_GRADIENT</a></div><div class="ttdeci">@ MO_GRADIENT</div><div class="ttdoc">Difference between dilation and erosion (edge.</div><div class="ttdef"><b>Definition</b> morphology.hpp:661</div></div>
 <div class="ttc" id="anamespacehmap_html_a321149eda3417aa485a010c31267818ca2a6dee7c1afab190ad76aa5e40f9eaf6"><div class="ttname"><a href="namespacehmap.html#a321149eda3417aa485a010c31267818ca2a6dee7c1afab190ad76aa5e40f9eaf6">hmap::MO_OPENING</a></div><div class="ttdeci">@ MO_OPENING</div><div class="ttdoc">Erosion followed by dilation (removes small objects).</div><div class="ttdef"><b>Definition</b> morphology.hpp:657</div></div>
 <div class="ttc" id="anamespacehmap_html_a321149eda3417aa485a010c31267818ca442219bd6354336f660624a2b76bde23"><div class="ttname"><a href="namespacehmap.html#a321149eda3417aa485a010c31267818ca442219bd6354336f660624a2b76bde23">hmap::MO_CLOSING</a></div><div class="ttdeci">@ MO_CLOSING</div><div class="ttdoc">Dilation followed by erosion (fills small holes).</div><div class="ttdef"><b>Definition</b> morphology.hpp:654</div></div>
 <div class="ttc" id="anamespacehmap_html_a321149eda3417aa485a010c31267818ca8083c22f48c0732c103514d10b5fe7e6"><div class="ttname"><a href="namespacehmap.html#a321149eda3417aa485a010c31267818ca8083c22f48c0732c103514d10b5fe7e6">hmap::MO_BORDER</a></div><div class="ttdeci">@ MO_BORDER</div><div class="ttdoc">Extract border of structures.</div><div class="ttdef"><b>Definition</b> morphology.hpp:653</div></div>
 <div class="ttc" id="anamespacehmap_html_a321149eda3417aa485a010c31267818ca95312bbd452f457354100b456719f931"><div class="ttname"><a href="namespacehmap.html#a321149eda3417aa485a010c31267818ca95312bbd452f457354100b456719f931">hmap::MO_BLACK_HAT</a></div><div class="ttdeci">@ MO_BLACK_HAT</div><div class="ttdoc">Difference between closing and input (dark features).</div><div class="ttdef"><b>Definition</b> morphology.hpp:658</div></div>
-<div class="ttc" id="anamespacehmap_html_a321149eda3417aa485a010c31267818caa6a0098d7d9f4eaae196f3f721464806"><div class="ttname"><a href="namespacehmap.html#a321149eda3417aa485a010c31267818caa6a0098d7d9f4eaae196f3f721464806">hmap::MO_OPENING_BY_RECONSTRUCTION</a></div><div class="ttdeci">@ MO_OPENING_BY_RECONSTRUCTION</div><div class="ttdef"><b>Definition</b> morphology.hpp:663</div></div>
-<div class="ttc" id="anamespacehmap_html_a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2"><div class="ttname"><a href="namespacehmap.html#a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2">hmap::MO_TOP_HAT</a></div><div class="ttdeci">@ MO_TOP_HAT</div><div class="ttdoc">Difference between input and opening (bright features).</div><div class="ttdef"><b>Definition</b> morphology.hpp:659</div></div>
+<div class="ttc" id="anamespacehmap_html_a321149eda3417aa485a010c31267818caa6a0098d7d9f4eaae196f3f721464806"><div class="ttname"><a href="namespacehmap.html#a321149eda3417aa485a010c31267818caa6a0098d7d9f4eaae196f3f721464806">hmap::MO_OPENING_BY_RECONSTRUCTION</a></div><div class="ttdeci">@ MO_OPENING_BY_RECONSTRUCTION</div><div class="ttdef"><b>Definition</b> morphology.hpp:666</div></div>
+<div class="ttc" id="anamespacehmap_html_a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2"><div class="ttname"><a href="namespacehmap.html#a321149eda3417aa485a010c31267818cacf16fa7af982861a53abb15071452ab2">hmap::MO_TOP_HAT</a></div><div class="ttdeci">@ MO_TOP_HAT</div><div class="ttdoc">Difference between input and opening (bright.</div><div class="ttdef"><b>Definition</b> morphology.hpp:659</div></div>
 <div class="ttc" id="anamespacehmap_html_a321149eda3417aa485a010c31267818cad2e58516e7657971e3e16cd131089055"><div class="ttname"><a href="namespacehmap.html#a321149eda3417aa485a010c31267818cad2e58516e7657971e3e16cd131089055">hmap::MO_DILATION</a></div><div class="ttdeci">@ MO_DILATION</div><div class="ttdoc">Expand structures (local maximum).</div><div class="ttdef"><b>Definition</b> morphology.hpp:655</div></div>
-<div class="ttc" id="anamespacehmap_html_a321149eda3417aa485a010c31267818cae6ea35f492be86e8686ddcf0440aebba"><div class="ttname"><a href="namespacehmap.html#a321149eda3417aa485a010c31267818cae6ea35f492be86e8686ddcf0440aebba">hmap::MO_CLOSING_BY_RECONSTRUCTION</a></div><div class="ttdeci">@ MO_CLOSING_BY_RECONSTRUCTION</div><div class="ttdef"><b>Definition</b> morphology.hpp:662</div></div>
+<div class="ttc" id="anamespacehmap_html_a321149eda3417aa485a010c31267818cae6ea35f492be86e8686ddcf0440aebba"><div class="ttname"><a href="namespacehmap.html#a321149eda3417aa485a010c31267818cae6ea35f492be86e8686ddcf0440aebba">hmap::MO_CLOSING_BY_RECONSTRUCTION</a></div><div class="ttdeci">@ MO_CLOSING_BY_RECONSTRUCTION</div><div class="ttdef"><b>Definition</b> morphology.hpp:665</div></div>
 <div class="ttc" id="anamespacehmap_html_a889405ce11be91e33cc80ca4dbd192b0"><div class="ttname"><a href="namespacehmap.html#a889405ce11be91e33cc80ca4dbd192b0">hmap::closing</a></div><div class="ttdeci">Array closing(const Array &amp;array, int ir)</div><div class="ttdoc">Apply a closing algorithm to the input array using a square structure.</div><div class="ttdef"><b>Definition</b> morphology.cpp:52</div></div>
 <div class="ttc" id="anamespacehmap_html_a9cf7773f6141162bf60708a93acdfcee"><div class="ttname"><a href="namespacehmap.html#a9cf7773f6141162bf60708a93acdfcee">hmap::erosion</a></div><div class="ttdeci">Array erosion(const Array &amp;array, int ir)</div><div class="ttdoc">Apply an erosion algorithm to the input array using a square structure.</div><div class="ttdef"><b>Definition</b> morphology.cpp:126</div></div>
 <div class="ttc" id="anamespacehmap_html_abd3024b8233a70596ff2924607221637"><div class="ttname"><a href="namespacehmap.html#abd3024b8233a70596ff2924607221637">hmap::opening</a></div><div class="ttdeci">Array opening(const Array &amp;array, int ir)</div><div class="ttdoc">Apply an opening algorithm to the input array using a square structure.</div><div class="ttdef"><b>Definition</b> morphology.cpp:200</div></div>

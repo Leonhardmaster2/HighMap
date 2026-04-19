@@ -366,7 +366,7 @@ Each index is normalized by the grid shape and remapped to the given bounding bo
 \hline
 {\em shape} & Grid dimensions. \\
 \hline
-{\em bbox} & Bounding box (xmin, xmax, ymin, ymax). \\
+{\em bbox} & Bounding box (xmin, xmax, ymin, ymax). Default is \{0.\+f, 1.\+f, 0.\+f, 1.\+f\}. \\
 \hline
 \end{DoxyParams}
 
@@ -632,6 +632,8 @@ This method adjusts the points in the path to ensure that the distance between e
 \begin{DoxyParams}{Parameters}
 {\em delta} & Target distance between consecutive points. \\
 \hline
+{\em itp\+\_\+method} & Interpolation method used to resample the path. \\
+\hline
 \end{DoxyParams}
 \Hypertarget{classhmap_1_1Path_afe00587a87fc52524487b197818404f0}\label{classhmap_1_1Path_afe00587a87fc52524487b197818404f0} 
 \index{hmap::Path@{hmap::Path}!resample\_interp@{resample\_interp}}
@@ -647,7 +649,9 @@ The path is reparameterized by arc length and interpolated using cubic splines f
 
 
 \begin{DoxyParams}{Parameters}
-{\em edge\+\_\+divisions} & Number of points.\\
+{\em npoints} & Number of points to resample. \\
+\hline
+{\em itp\+\_\+method} & Interpolation method to use (default is CUBIC).\\
 \hline
 \end{DoxyParams}
 {\bfseries{Example}} 
@@ -750,7 +754,14 @@ The path is reparameterized by arc length and interpolated using cubic splines f
 
 Resample the path to achieve fairly uniform distance between consecutive points. 
 
-This method adjusts the path so that the distance between each consecutive point is as uniform as possible. It redistributes the points to ensure more even spacing along the path. \Hypertarget{classhmap_1_1Path_a9816b231362dd1ca5208a839626f1f68}\label{classhmap_1_1Path_a9816b231362dd1ca5208a839626f1f68} 
+This method adjusts the path so that the distance between each consecutive point is as uniform as possible. It redistributes the points to ensure more even spacing along the path.
+
+
+\begin{DoxyParams}{Parameters}
+{\em itp\+\_\+method} & Interpolation method used for resampling. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classhmap_1_1Path_a9816b231362dd1ca5208a839626f1f68}\label{classhmap_1_1Path_a9816b231362dd1ca5208a839626f1f68} 
 \index{hmap::Path@{hmap::Path}!subsample@{subsample}}
 \index{subsample@{subsample}!hmap::Path@{hmap::Path}}
 \doxysubsubsection{\texorpdfstring{subsample()}{subsample()}}
@@ -836,7 +847,7 @@ This method generates a PNG image representing the path and saves it to the spec
 \begin{DoxyParams}{Parameters}
 {\em fname} & The filename for the output PNG image. \\
 \hline
-{\em shape} & Resolution of the image, specified as width and height. \\
+{\em shape} & Resolution of the image, specified as width and height. Default is \{512, 512\}. \\
 \hline
 \end{DoxyParams}
 
