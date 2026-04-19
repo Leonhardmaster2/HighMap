@@ -123,10 +123,14 @@ public:
    */
   static void Stop(const std::string &name);
 
+  static void Clear();
+
   /**
    * @brief Dumps the timing information for all recorded events to the console.
    */
   static void Dump();
+
+  static std::map<std::string, float> DumpDurations();
 
   std::map<std::string, Recorder *> get_records() const
   {
@@ -165,6 +169,8 @@ private:
    * @brief Dumps the timing information for all recorded events to the console.
    */
   void dump();
+
+  std::map<std::string, float> dump_durations() const;
 
   // Deleting the copy constructor and assignment operator to enforce singleton
   // pattern.

@@ -112,7 +112,9 @@ bool init_opencl()
 
   clwrapper::KernelManager::get_instance().set_build_options(
       opencl_build_options);
-  clwrapper::KernelManager::get_instance().add_kernel(code);
+
+  constexpr bool clear_sources = true;
+  clwrapper::KernelManager::get_instance().add_kernel(code, clear_sources);
 
   return true;
 }

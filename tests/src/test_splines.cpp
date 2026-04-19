@@ -2,13 +2,20 @@
 
 #include "highmap.hpp"
 
-TEST(PathSplines, PreserveStartEndPoints)
+hmap::Path helper_generate_path()
 {
-  int        seed = 6;
-  glm::vec4  bbox = {0.f, 1.f, 0.f, 1.f};
-  int        npoints = 10;
+  const int       seed = 6;
+  const glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f};
+  const int       npoints = 10;
+
   hmap::Path path = hmap::Path(npoints, seed, hmap::adjust(bbox, -0.1f));
   path.reorder_nns();
+  return path;
+}
+
+TEST(PathSplines, PreserveStartEndPoints)
+{
+  hmap::Path path = helper_generate_path();
 
   EXPECT_EQ(hmap::assert_start_end_points(path, hmap::bezier(path)), true);
   EXPECT_EQ(hmap::assert_start_end_points(path, hmap::bezier_round(path)),
@@ -20,11 +27,7 @@ TEST(PathSplines, PreserveStartEndPoints)
 
 TEST(PathSplines, PreservePathShape)
 {
-  int        seed = 6;
-  glm::vec4  bbox = {0.f, 1.f, 0.f, 1.f};
-  int        npoints = 10;
-  hmap::Path path = hmap::Path(npoints, seed, hmap::adjust(bbox, -0.1f));
-  path.reorder_nns();
+  hmap::Path path = helper_generate_path();
 
   float tol = 0.15f;
 
@@ -43,11 +46,7 @@ TEST(PathSplines, PreservePathShape)
 
 TEST(PathSplines, HasNoDuplicates)
 {
-  int        seed = 6;
-  glm::vec4  bbox = {0.f, 1.f, 0.f, 1.f};
-  int        npoints = 10;
-  hmap::Path path = hmap::Path(npoints, seed, hmap::adjust(bbox, -0.1f));
-  path.reorder_nns();
+  hmap::Path path = helper_generate_path();
 
   EXPECT_EQ(hmap::has_duplicates(hmap::bezier(path)), false);
   EXPECT_EQ(hmap::has_duplicates(hmap::bezier_round(path)), false);

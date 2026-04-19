@@ -123,7 +123,7 @@ public:
   /**
    * @brief  Constructs a new Path object from lists of xyz data as glm::vec3.
    * */
-  Path(const std::vector<glm::vec3> &xyv) : Cloud(xyv) {};
+  Path(const std::vector<glm::vec3> &xyv) : Cloud(xyv){};
 
   // ==========================================================================
   //  Accessors

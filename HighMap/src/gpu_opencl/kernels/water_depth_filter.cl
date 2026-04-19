@@ -30,10 +30,10 @@ void kernel water_depth_filter(read_only image2d_t  depth,
     {
       if (is_within_radius_and_inside(i, j, g.x, g.y, ir, nx, ny))
       {
-        float current = TGET(depth, i + r, j + s)
+        float current = TGET(depth, i + r, j + s);
 
-            // only taken into account "water" cells
-            if (current > 0.f)
+        // only taken into account "water" cells
+        if (current > 0.f)
         {
           float r = 1.f; // max(0.f, 1.f - hypot(r, s) / ir);
           val += r * current;
