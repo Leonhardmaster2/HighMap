@@ -3,7 +3,9 @@ project(nn-c)
 set(NNC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/nn-c/nn)
 
 # Configure config.h (actually generate a dummy one)
-file(WRITE ${CMAKE_BINARY_DIR}/nn-c/config.h "")
+if(NOT EXISTS ${CMAKE_BINARY_DIR}/nn-c/config.h)
+  file(WRITE ${CMAKE_BINARY_DIR}/nn-c/config.h "")
+endif()
 
 file(GLOB_RECURSE NNC_SRC ${NNC_DIR}/*.c)
 
