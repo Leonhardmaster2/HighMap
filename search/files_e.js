@@ -18,6 +18,7 @@ var searchData=
   ['primitives_2ecpp_15',['primitives.cpp',['../primitives_8cpp.html',1,'']]],
   ['primitives_2ehpp_16',['primitives.hpp',['../primitives_8hpp.html',1,'']]],
   ['primitives_5fgpu_2ecpp_17',['primitives_gpu.cpp',['../primitives__gpu_8cpp.html',1,'']]],
-  ['pyramid_2ehpp_18',['pyramid.hpp',['../pyramid_8hpp.html',1,'']]],
-  ['pyramid_5fdecomposition_2ecpp_19',['pyramid_decomposition.cpp',['../pyramid__decomposition_8cpp.html',1,'']]]
+  ['print_5farray_2ecpp_18',['print_array.cpp',['../print__array_8cpp.html',1,'']]],
+  ['pyramid_2ehpp_19',['pyramid.hpp',['../pyramid_8hpp.html',1,'']]],
+  ['pyramid_5fdecomposition_2ecpp_20',['pyramid_decomposition.cpp',['../pyramid__decomposition_8cpp.html',1,'']]]
 ];
