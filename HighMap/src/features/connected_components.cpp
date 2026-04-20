@@ -129,14 +129,19 @@ Array connected_components(const Array            &array,
 
   // --- removing padding before returning the result
 
-  // store labels before
-  std::vector<float> used_labels = labels.unique_values();
-  size_t             max_label = size_t(used_labels.back());
-
   labels = labels.extract_slice({1, npi - 1, 1, npj - 1});
 
   // --- relabeling
 
+  std::vector<float> used_labels = labels.unique_values();
+
+  // edge case of one label not to zero, add manually the background
+  // which not present in the label array
+  if (used_labels.size() == 1 && used_labels.back() != 0.f)
+    used_labels.insert(used_labels.begin(), 0.f);
+
+  // relabel...
+  size_t           max_label = size_t(used_labels.back());
   std::vector<int> label_remap(max_label + 1, 0);
 
   int next = 0;

@@ -78,7 +78,6 @@ TEST(ConnectedComponents, SurfaceThresholdFiltering)
 TEST(ConnectedComponents, LabelRemappingIsCompact)
 {
   Array input = Array({{1, 0, 1}, {0, 0, 0}, {1, 0, 1}});
-
   Array labels = connected_components(input, 0.f, 0.f, nullptr, nullptr);
 
   auto values = labels.unique_values();
