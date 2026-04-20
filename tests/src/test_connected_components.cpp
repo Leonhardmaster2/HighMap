@@ -1,37 +1,14 @@
 #include <gtest/gtest.h>
 #include <map>
 
+#include "highmap/dbg/assert.hpp"
 #include "highmap/features.hpp"
 
 using namespace hmap;
 
-// Helper to build Array from initializer list
-Array make_array(const std::vector<std::vector<float>> &data)
-{
-  int nx = data.size();
-  int ny = data[0].size();
-
-  Array arr(glm::ivec2(nx, ny));
-  for (int i = 0; i < nx; ++i)
-    for (int j = 0; j < ny; ++j)
-      arr(i, j) = data[i][j];
-
-  return arr;
-}
-
-// Helper to count non-zero labels
-int count_foreground(const Array &arr)
-{
-  int count = 0;
-  for (int i = 0; i < arr.shape.x; ++i)
-    for (int j = 0; j < arr.shape.y; ++j)
-      if (arr(i, j) > 0) count++;
-  return count;
-}
-
 TEST(ConnectedComponents, SingleComponent)
 {
-  Array input = make_array({{1, 1}, {1, 1}});
+  Array input = Array({{1, 1}, {1, 1}});
 
   std::map<float, float>                surfaces;
   std::map<float, std::array<float, 2>> centroids;
@@ -55,7 +32,7 @@ TEST(ConnectedComponents, SingleComponent)
 
 TEST(ConnectedComponents, TwoSeparateComponents)
 {
-  Array input = make_array({{1, 0, 1}, {1, 0, 1}});
+  Array input = Array({{1, 0, 1}, {1, 0, 1}});
 
   std::map<float, float> surfaces;
 
@@ -71,7 +48,7 @@ TEST(ConnectedComponents, TwoSeparateComponents)
 
 TEST(ConnectedComponents, DiagonalConnectivity)
 {
-  Array input = make_array({{1, 0}, {0, 1}});
+  Array input = Array({{1, 0}, {0, 1}});
 
   std::map<float, float> surfaces;
 
@@ -84,7 +61,7 @@ TEST(ConnectedComponents, DiagonalConnectivity)
 
 TEST(ConnectedComponents, SurfaceThresholdFiltering)
 {
-  Array input = make_array({{1, 0, 1}, {0, 0, 0}, {1, 1, 0}});
+  Array input = Array({{1, 0, 1}, {0, 0, 0}, {1, 1, 0}});
 
   std::map<float, float> surfaces;
 
@@ -95,12 +72,12 @@ TEST(ConnectedComponents, SurfaceThresholdFiltering)
   EXPECT_EQ(surfaces.size(), 1);
   EXPECT_FLOAT_EQ(surfaces.begin()->second, 2.f);
 
-  EXPECT_EQ(count_foreground(labels), 2);
+  EXPECT_EQ(count_non_zero(labels), 2);
 }
 
 TEST(ConnectedComponents, LabelRemappingIsCompact)
 {
-  Array input = make_array({{1, 0, 1}, {0, 0, 0}, {1, 0, 1}});
+  Array input = Array({{1, 0, 1}, {0, 0, 0}, {1, 0, 1}});
 
   Array labels = connected_components(input, 0.f, 0.f, nullptr, nullptr);
 
@@ -113,7 +90,7 @@ TEST(ConnectedComponents, LabelRemappingIsCompact)
 
 TEST(ConnectedComponents, CentroidComputation)
 {
-  Array input = make_array({{1, 1}, {0, 0}});
+  Array input = Array({{1, 1}, {0, 0}});
 
   std::map<float, float>                surfaces;
   std::map<float, std::array<float, 2>> centroids;

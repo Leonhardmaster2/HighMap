@@ -120,12 +120,11 @@ Array connected_components(const Array            &array,
     }
 
   // filter
-  float smin = std::max(1.f, surface_threshold);
-
   for (int j = 0; j < labels.shape.y; j++)
     for (int i = 0; i < labels.shape.x; i++)
     {
-      if (labels_surface[labels(i, j)] <= smin) labels(i, j) = background_value;
+      if (labels_surface[labels(i, j)] <= surface_threshold)
+        labels(i, j) = background_value;
     }
 
   // --- removing padding before returning the result

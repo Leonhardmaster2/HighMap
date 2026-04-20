@@ -37,8 +37,16 @@ struct AssertResults
 
 bool assert_almost_equal(const Array       &a,
                          const Array       &b,
-                         float              tolerance,
+                         float              tolerance = 1e-6f,
                          const std::string &fname = "",
                          AssertResults     *p_results = nullptr);
+
+size_t count_non_zero(const Array &array);
+size_t count_zero(const Array &array);
+
+void print_array(const Array &arr,
+                 bool         show_coords = false,
+                 int          width = 6,
+                 int          precision = 2);
 
 } // namespace hmap

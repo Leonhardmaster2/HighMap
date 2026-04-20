@@ -102,4 +102,20 @@ bool assert_almost_equal(const Array       &a,
   return true;
 }
 
+size_t count_non_zero(const Array &array)
+{
+  size_t count = 0;
+  for (const auto &v : array.vector)
+    if (v != 0.f) count++;
+  return count;
+}
+
+size_t count_zero(const Array &array)
+{
+  size_t count = 0;
+  for (const auto &v : array.vector)
+    if (v == 0.f) count++;
+  return count;
+}
+
 } // namespace hmap

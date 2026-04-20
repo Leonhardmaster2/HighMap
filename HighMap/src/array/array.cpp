@@ -32,6 +32,16 @@ Array::Array(const std::string &filename, bool flip_j)
   *this = read_to_array(filename, flip_j);
 }
 
+Array::Array(const std::vector<std::vector<float>> &data)
+{
+  this->shape = glm::ivec2(data.size(), data[0].size());
+  *this = Array(shape);
+
+  for (int j = 0; j < shape.y; ++j)
+    for (int i = 0; i < shape.x; ++i)
+      (*this)(i, j) = data[i][j];
+}
+
 glm::ivec2 Array::get_shape()
 {
   return shape;

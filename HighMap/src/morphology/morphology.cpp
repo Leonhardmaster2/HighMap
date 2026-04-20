@@ -22,14 +22,13 @@ Array area_remove(const Array &array,
   const glm::ivec2 &shape = array.shape;
 
   // label connected components
-  float                  surface_threshold = 0.f;
   std::map<float, float> area;
 
+  // remove background here
   Array mask = is_non_zero(array - background_value);
-
   Array labels = connected_components(mask,
-                                      surface_threshold,
-                                      background_value,
+                                      /* surface_threshold */ 0.f,
+                                      /* background_value */ 0.f,
                                       &area);
 
   if (area.empty()) return array;
@@ -40,8 +39,8 @@ Array area_remove(const Array &array,
   for (int j = 0; j < shape.y; j++)
     for (int i = 0; i < shape.x; i++)
     {
-      // remove small components (surface in pixels * pixels)
-      if (area[labels(i, j)] < threshold_size) out(i, j) = fill_value;
+      if (labels(i, j) != 0.f && area[labels(i, j)] < threshold_size)
+        out(i, j) = fill_value;
     }
 
   return out;
