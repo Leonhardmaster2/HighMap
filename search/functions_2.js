@@ -59,7 +59,7 @@ var searchData=
   ['cone_5fsigmoid_56',['cone_sigmoid',['../namespacehmap.html#a78b0b574724e2036ad5da6148e21acd8',1,'hmap']]],
   ['cone_5fsmooth_57',['cone_smooth',['../namespacehmap.html#a660d632fc99c8af533a9d3b2326d8e7d',1,'hmap']]],
   ['cone_5ftalus_58',['cone_talus',['../namespacehmap.html#a553a4572c845a1286836bc08b67b3e34',1,'hmap']]],
-  ['connected_5fcomponents_59',['connected_components',['../namespacehmap.html#a11f846a0bacba3463862df220ddf5131',1,'hmap']]],
+  ['connected_5fcomponents_59',['connected_components',['../namespacehmap.html#a34efdecd3db27a30c06537acda6d9457',1,'hmap']]],
   ['constant_60',['constant',['../namespacehmap.html#a2b25a71f7da0b8324df986e01e5b08dc',1,'hmap']]],
   ['contains_61',['contains',['../structhmap_1_1TerrainTriMesh_1_1BoundingBox.html#aa6890766fe5088242981462b35944b7e',1,'hmap::TerrainTriMesh::BoundingBox']]],
   ['contour_5fsmoothing_62',['contour_smoothing',['../namespacehmap.html#a2420e66a1e851eff3503d805004495b3',1,'hmap::contour_smoothing()'],['../namespacehmap_1_1gpu.html#a792221afc46ff3986ecde59d52592ecb',1,'hmap::gpu::contour_smoothing()']]],

@@ -728,7 +728,7 @@ void \mbox{\hyperlink{namespacehmap_a91708f107a53c4b8ef68bb1d0291c73f}{export\+\
 \begin{DoxyCompactList}\small\item\em Reads an image file and converts it to a 2D array. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a466d4275bb86ca9ca603c9d4192f931a}{write\+\_\+raw\+\_\+16bit}} (const std\+::string \&fname, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array)
 \begin{DoxyCompactList}\small\item\em Exports an array to a 16-\/bit \textquotesingle{}raw\textquotesingle{} file format, commonly used for Unity terrain imports. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a11f846a0bacba3463862df220ddf5131}{connected\+\_\+components}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float surface\+\_\+threshold=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float background\+\_\+value=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, std\+::vector$<$ float $>$ \texorpdfstring{$\ast$}{*}p\+\_\+surfaces=nullptr, std\+::vector$<$ std\+::array$<$ float, 2 $>$ $>$ \texorpdfstring{$\ast$}{*}p\+\_\+centroids=nullptr)
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a34efdecd3db27a30c06537acda6d9457}{connected\+\_\+components}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float surface\+\_\+threshold=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float background\+\_\+value=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, std\+::map$<$ float, float $>$ \texorpdfstring{$\ast$}{*}p\+\_\+surfaces=nullptr, std\+::map$<$ float, std\+::array$<$ float, 2 $>$ $>$ \texorpdfstring{$\ast$}{*}p\+\_\+centroids=nullptr)
 \begin{DoxyCompactList}\small\item\em Identifies and labels connected components within a binary or labeled array, with optional filtering by size. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_aa60fa2d3f02d1e064b520fa1623200d0}{geomorphons}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int irmin, int irmax, float epsilon)
 \begin{DoxyCompactList}\small\item\em Classifies terrain into geomorphological features based on the geomorphons method. \end{DoxyCompactList}\item 
@@ -8762,11 +8762,11 @@ This function saves the input array to a file in a 16-\/bit \textquotesingle{}ra
 {\em array} & The input array containing the data to be exported. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{namespacehmap_a11f846a0bacba3463862df220ddf5131}\label{namespacehmap_a11f846a0bacba3463862df220ddf5131} 
+\Hypertarget{namespacehmap_a34efdecd3db27a30c06537acda6d9457}\label{namespacehmap_a34efdecd3db27a30c06537acda6d9457} 
 \index{hmap@{hmap}!connected\_components@{connected\_components}}
 \index{connected\_components@{connected\_components}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{connected\_components()}{connected\_components()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::connected\+\_\+components (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{float}]{surface\+\_\+threshold = {\ttfamily 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{background\+\_\+value = {\ttfamily 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{std\+::vector$<$ float $>$ \texorpdfstring{$\ast$}{*}}]{p\+\_\+surfaces = {\ttfamily nullptr},  }\item[{std\+::vector$<$ std\+::array$<$ float, 2 $>$ $>$ \texorpdfstring{$\ast$}{*}}]{p\+\_\+centroids = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::connected\+\_\+components (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{float}]{surface\+\_\+threshold = {\ttfamily 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{background\+\_\+value = {\ttfamily 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{std\+::map$<$ float, float $>$ \texorpdfstring{$\ast$}{*}}]{p\+\_\+surfaces = {\ttfamily nullptr},  }\item[{std\+::map$<$ float, std\+::array$<$ float, 2 $>$ $>$ \texorpdfstring{$\ast$}{*}}]{p\+\_\+centroids = {\ttfamily nullptr} }\end{DoxyParamCaption})}
 
 
 
@@ -8807,7 +8807,7 @@ Connected-\/component labeling is a technique used to identify clusters of conne
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ Basic\ usage}}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ labels\ =\ \mbox{\hyperlink{namespacehmap_a11f846a0bacba3463862df220ddf5131}{hmap::connected\_components}}(z);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ labels\ =\ \mbox{\hyperlink{namespacehmap_a34efdecd3db27a30c06537acda6d9457}{hmap::connected\_components}}(z);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ unique\ labels}}
 \DoxyCodeLine{\ \ LOG\_DEBUG(\textcolor{stringliteral}{"{}Labels"{}});}
@@ -8816,14 +8816,14 @@ Connected-\/component labeling is a technique used to identify clusters of conne
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ Secondary\ outputs}}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ std::vector<float>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ surfaces;}
-\DoxyCodeLine{\ \ std::vector<std::array<float,\ 2>>\ centroids;}
-\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ dummy\ =\ \mbox{\hyperlink{namespacehmap_a11f846a0bacba3463862df220ddf5131}{hmap::connected\_components}}(z,\ 0.f,\ 0.f,\ \&surfaces,\ \&centroids);}
+\DoxyCodeLine{\ \ std::map<float,\ float>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ surfaces;}
+\DoxyCodeLine{\ \ std::map<float,\ std::array<float,\ 2>>\ centroids;}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ dummy\ =\ \mbox{\hyperlink{namespacehmap_a34efdecd3db27a30c06537acda6d9457}{hmap::connected\_components}}(z,\ 0.f,\ 0.f,\ \&surfaces,\ \&centroids);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ centroids\ of\ each\ components\ in\ index\ (i,\ j)\ scale}}
 \DoxyCodeLine{\ \ LOG\_DEBUG(\textcolor{stringliteral}{"{}Centroids"{}});}
-\DoxyCodeLine{\ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&v\ :\ centroids)}
-\DoxyCodeLine{\ \ \ \ LOG\_DEBUG(\textcolor{stringliteral}{"{}\ -\/\ \%f\ \%f"{}},\ v[0],\ v[1]);}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \&[k,\ v]\ :\ centroids)}
+\DoxyCodeLine{\ \ \ \ LOG\_DEBUG(\textcolor{stringliteral}{"{}\ -\/\ \%f\ \%f\ \%f"{}},\ k,\ v[0],\ v[1]);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ Plots}}
 \DoxyCodeLine{}

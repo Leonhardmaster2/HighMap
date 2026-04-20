@@ -1038,9 +1038,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a466d4275bb86ca9ca603c9d4192f931a" id="r_a466d4275bb86ca9ca603c9d4192f931a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a466d4275bb86ca9ca603c9d4192f931a">write_raw_16bit</a> (const std::string &amp;fname, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array)</td></tr>
 <tr class="memdesc:a466d4275bb86ca9ca603c9d4192f931a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exports an array to a 16-bit 'raw' file format, commonly used for Unity terrain imports.  <br /></td></tr>
 <tr class="separator:a466d4275bb86ca9ca603c9d4192f931a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a11f846a0bacba3463862df220ddf5131" id="r_a11f846a0bacba3463862df220ddf5131"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a11f846a0bacba3463862df220ddf5131">connected_components</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, float surface_threshold=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float background_value=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, std::vector&lt; float &gt; *p_surfaces=nullptr, std::vector&lt; std::array&lt; float, 2 &gt; &gt; *p_centroids=nullptr)</td></tr>
-<tr class="memdesc:a11f846a0bacba3463862df220ddf5131"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifies and labels connected components within a binary or labeled array, with optional filtering by size.  <br /></td></tr>
-<tr class="separator:a11f846a0bacba3463862df220ddf5131"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34efdecd3db27a30c06537acda6d9457" id="r_a34efdecd3db27a30c06537acda6d9457"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a34efdecd3db27a30c06537acda6d9457">connected_components</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, float surface_threshold=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float background_value=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, std::map&lt; float, float &gt; *p_surfaces=nullptr, std::map&lt; float, std::array&lt; float, 2 &gt; &gt; *p_centroids=nullptr)</td></tr>
+<tr class="memdesc:a34efdecd3db27a30c06537acda6d9457"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifies and labels connected components within a binary or labeled array, with optional filtering by size.  <br /></td></tr>
+<tr class="separator:a34efdecd3db27a30c06537acda6d9457"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa60fa2d3f02d1e064b520fa1623200d0" id="r_aa60fa2d3f02d1e064b520fa1623200d0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#aa60fa2d3f02d1e064b520fa1623200d0">geomorphons</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, int irmin, int irmax, float epsilon)</td></tr>
 <tr class="memdesc:aa60fa2d3f02d1e064b520fa1623200d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Classifies terrain into geomorphological features based on the geomorphons method.  <br /></td></tr>
 <tr class="separator:aa60fa2d3f02d1e064b520fa1623200d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -14125,8 +14125,8 @@ The y-axis is flipped so that higher indices appear lower in the text output. </
 
 </div>
 </div>
-<a id="a11f846a0bacba3463862df220ddf5131" name="a11f846a0bacba3463862df220ddf5131"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a11f846a0bacba3463862df220ddf5131">&#9670;&#160;</a></span>connected_components()</h2>
+<a id="a34efdecd3db27a30c06537acda6d9457" name="a34efdecd3db27a30c06537acda6d9457"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34efdecd3db27a30c06537acda6d9457">&#9670;&#160;</a></span>connected_components()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -14152,13 +14152,13 @@ The y-axis is flipped so that higher indices appear lower in the text output. </
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::vector&lt; float &gt; *&#160;</td>
+          <td class="paramtype">std::map&lt; float, float &gt; *&#160;</td>
           <td class="paramname"><em>p_surfaces</em> = <code>nullptr</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::vector&lt; std::array&lt; float, 2 &gt; &gt; *&#160;</td>
+          <td class="paramtype">std::map&lt; float, std::array&lt; float, 2 &gt; &gt; *&#160;</td>
           <td class="paramname"><em>p_centroids</em> = <code>nullptr</code>&#160;</td>
         </tr>
         <tr>
@@ -14197,7 +14197,7 @@ The y-axis is flipped so that higher indices appear lower in the text output. </
 <div class="line"> </div>
 <div class="line">  <span class="comment">// --- Basic usage</span></div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> labels = <a class="code hl_function" href="namespacehmap.html#a11f846a0bacba3463862df220ddf5131">hmap::connected_components</a>(z);</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> labels = <a class="code hl_function" href="namespacehmap.html#a34efdecd3db27a30c06537acda6d9457">hmap::connected_components</a>(z);</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// unique labels</span></div>
 <div class="line">  LOG_DEBUG(<span class="stringliteral">&quot;Labels&quot;</span>);</div>
@@ -14206,22 +14206,22 @@ The y-axis is flipped so that higher indices appear lower in the text output. </
 <div class="line"> </div>
 <div class="line">  <span class="comment">// --- Secondary outputs</span></div>
 <div class="line"> </div>
-<div class="line">  std::vector&lt;float&gt;                surfaces;</div>
-<div class="line">  std::vector&lt;std::array&lt;float, 2&gt;&gt; centroids;</div>
-<div class="line">  <span class="keyword">auto</span> dummy = <a class="code hl_function" href="namespacehmap.html#a11f846a0bacba3463862df220ddf5131">hmap::connected_components</a>(z, 0.f, 0.f, &amp;surfaces, &amp;centroids);</div>
+<div class="line">  std::map&lt;float, float&gt;                surfaces;</div>
+<div class="line">  std::map&lt;float, std::array&lt;float, 2&gt;&gt; centroids;</div>
+<div class="line">  <span class="keyword">auto</span> dummy = <a class="code hl_function" href="namespacehmap.html#a34efdecd3db27a30c06537acda6d9457">hmap::connected_components</a>(z, 0.f, 0.f, &amp;surfaces, &amp;centroids);</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// centroids of each components in index (i, j) scale</span></div>
 <div class="line">  LOG_DEBUG(<span class="stringliteral">&quot;Centroids&quot;</span>);</div>
-<div class="line">  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;v : centroids)</div>
-<div class="line">    LOG_DEBUG(<span class="stringliteral">&quot; - %f %f&quot;</span>, v[0], v[1]);</div>
+<div class="line">  <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;[k, v] : centroids)</div>
+<div class="line">    LOG_DEBUG(<span class="stringliteral">&quot; - %f %f %f&quot;</span>, k, v[0], v[1]);</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// --- Plots</span></div>
 <div class="line"> </div>
 <div class="line">  z.<a class="code hl_function" href="classhmap_1_1Array.html#a9ff7b2c0be8f2b5dd9fc33085cd647d1">to_png</a>(<span class="stringliteral">&quot;ex_connected_components0.png&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">  labels.<a class="code hl_function" href="classhmap_1_1Array.html#a9ff7b2c0be8f2b5dd9fc33085cd647d1">to_png</a>(<span class="stringliteral">&quot;ex_connected_components1.png&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369ae91cb25d4df330517ac69b5f0f2c3e0c">hmap::Cmap::NIPY_SPECTRAL</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a11f846a0bacba3463862df220ddf5131"><div class="ttname"><a href="namespacehmap.html#a11f846a0bacba3463862df220ddf5131">hmap::connected_components</a></div><div class="ttdeci">Array connected_components(const Array &amp;array, float surface_threshold=0.f, float background_value=0.f, std::vector&lt; float &gt; *p_surfaces=nullptr, std::vector&lt; std::array&lt; float, 2 &gt; &gt; *p_centroids=nullptr)</div><div class="ttdoc">Identifies and labels connected components within a binary or labeled array, with optional filtering ...</div><div class="ttdef"><b>Definition</b> connected_components.cpp:14</div></div>
 <div class="ttc" id="anamespacehmap_html_a2badbebec49b12d0d721970a18eb420d"><div class="ttname"><a href="namespacehmap.html#a2badbebec49b12d0d721970a18eb420d">hmap::clamp_min</a></div><div class="ttdeci">void clamp_min(Array &amp;array, float vmin)</div><div class="ttdoc">Clamp array values lower than a given bound.</div><div class="ttdef"><b>Definition</b> range.cpp:129</div></div>
+<div class="ttc" id="anamespacehmap_html_a34efdecd3db27a30c06537acda6d9457"><div class="ttname"><a href="namespacehmap.html#a34efdecd3db27a30c06537acda6d9457">hmap::connected_components</a></div><div class="ttdeci">Array connected_components(const Array &amp;array, float surface_threshold=0.f, float background_value=0.f, std::map&lt; float, float &gt; *p_surfaces=nullptr, std::map&lt; float, std::array&lt; float, 2 &gt; &gt; *p_centroids=nullptr)</div><div class="ttdoc">Identifies and labels connected components within a binary or labeled array, with optional filtering ...</div><div class="ttdef"><b>Definition</b> connected_components.cpp:14</div></div>
 <div class="ttc" id="anamespacehmap_html_ac70fe3cbb32e0340d5dd3e15cdcf9369ae91cb25d4df330517ac69b5f0f2c3e0c"><div class="ttname"><a href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369ae91cb25d4df330517ac69b5f0f2c3e0c">hmap::NIPY_SPECTRAL</a></div><div class="ttdeci">@ NIPY_SPECTRAL</div><div class="ttdef"><b>Definition</b> colormaps.hpp:90</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_connected_components0.png" alt=""/>

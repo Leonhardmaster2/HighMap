@@ -679,7 +679,7 @@ var namespacehmap =
     [ "export_tiled", "namespacehmap.html#a91708f107a53c4b8ef68bb1d0291c73f", null ],
     [ "read_to_array", "namespacehmap.html#acc812ae7d5ab25071e94faaf7be03bca", null ],
     [ "write_raw_16bit", "namespacehmap.html#a466d4275bb86ca9ca603c9d4192f931a", null ],
-    [ "connected_components", "namespacehmap.html#a11f846a0bacba3463862df220ddf5131", null ],
+    [ "connected_components", "namespacehmap.html#a34efdecd3db27a30c06537acda6d9457", null ],
     [ "geomorphons", "namespacehmap.html#aa60fa2d3f02d1e064b520fa1623200d0", null ],
     [ "kmeans_clustering2", "namespacehmap.html#ae22891fe79a3745582715cf33a706d8e", null ],
     [ "kmeans_clustering3", "namespacehmap.html#ad55573a0def0bdf66d3637128cbf08c7", null ],

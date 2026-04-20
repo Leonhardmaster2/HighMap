@@ -150,7 +150,7 @@ var NAVTREEINDEX7 =
 "faceted_8cpp.html#ad066ff6ef56dbf9827ff6cca9a22e58a":[5,0,1,1,15,5,0],
 "fbm__functions_8cpp.html":[5,0,1,1,27,0,0],
 "features_8hpp.html":[5,0,1,0,0,20],
-"features_8hpp.html#a11f846a0bacba3463862df220ddf5131":[5,0,1,0,0,20,0],
+"features_8hpp.html#a34efdecd3db27a30c06537acda6d9457":[5,0,1,0,0,20,0],
 "features_8hpp.html#aa60fa2d3f02d1e064b520fa1623200d0":[5,0,1,0,0,20,1],
 "features_8hpp.html#ad55573a0def0bdf66d3637128cbf08c7":[5,0,1,0,0,20,3],
 "features_8hpp.html#ae22891fe79a3745582715cf33a706d8e":[5,0,1,0,0,20,2],
