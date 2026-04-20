@@ -20,14 +20,14 @@ int main(void)
 
   // --- Secondary outputs
 
-  std::vector<float>                surfaces;
-  std::vector<std::array<float, 2>> centroids;
+  std::map<float, float>                surfaces;
+  std::map<float, std::array<float, 2>> centroids;
   auto dummy = hmap::connected_components(z, 0.f, 0.f, &surfaces, &centroids);
 
   // centroids of each components in index (i, j) scale
   LOG_DEBUG("Centroids");
-  for (const auto &v : centroids)
-    LOG_DEBUG(" - %f %f", v[0], v[1]);
+  for (auto &[k, v] : centroids)
+    LOG_DEBUG(" - %f %f %f", k, v[0], v[1]);
 
   // --- Plots
 

@@ -11,11 +11,11 @@
 namespace hmap
 {
 
-Array connected_components(const Array                       &array,
-                           float                              surface_threshold,
-                           float                              background_value,
-                           std::vector<float>                *p_surfaces,
-                           std::vector<std::array<float, 2>> *p_centroids)
+Array connected_components(const Array            &array,
+                           float                   surface_threshold,
+                           float                   background_value,
+                           std::map<float, float> *p_surfaces,
+                           std::map<float, std::array<float, 2>> *p_centroids)
 {
   // neighbor search pattern
   const std::vector<int> di = {0, -1, -1, -1};
@@ -163,14 +163,17 @@ Array connected_components(const Array                       &array,
 
   // --- outputs
 
-  for (auto &[k, v] : labels_surface)
-  {
-    if (p_surfaces) p_surfaces->push_back(v);
+  if (p_surfaces) *p_surfaces = std::move(labels_surface);
+  if (p_centroids) *p_centroids = std::move(labels_centroids);
 
-    if (p_centroids)
-      p_centroids->push_back(
-          {labels_centroids[k][0] / v, labels_centroids[k][1] / v});
-  }
+  // for (auto &[k, v] : labels_surface)
+  // {
+  //   if (p_surfaces) p_surfaces->push_back(v);
+
+  //   if (p_centroids)
+  //     p_centroids->push_back(
+  //         {labels_centroids[k][0] / v, labels_centroids[k][1] / v});
+  // }
 
   return labels;
 }
