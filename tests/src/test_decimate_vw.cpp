@@ -2,17 +2,19 @@
 
 #include "highmap.hpp"
 
-std::vector<hmap::Point> generate_line(int n)
+using namespace hmap;
+
+std::vector<Point> generate_line(int n)
 {
-  std::vector<hmap::Point> pts;
+  std::vector<Point> pts;
   for (int i = 0; i < n; ++i)
     pts.push_back({float(i), 0.0f});
   return pts;
 }
 
-std::vector<hmap::Point> generate_circle(int n, float r)
+std::vector<Point> generate_circle(int n, float r)
 {
-  std::vector<hmap::Point> pts;
+  std::vector<Point> pts;
   for (int i = 0; i < n; ++i)
   {
     float t = 2.f * M_PI * i / n;
@@ -23,18 +25,18 @@ std::vector<hmap::Point> generate_circle(int n, float r)
 
 TEST(PathDecimateVw, ReducesPointCount)
 {
-  hmap::Path path;
+  Path path;
   path.points = generate_line(100);
-  path = hmap::decimate_vw(path, 10);
+  path = decimate_vw(path, 10);
 
   EXPECT_EQ(path.points.size(), 10);
 }
 
 TEST(PathDecimateVw, PreservesStraightLine)
 {
-  hmap::Path path;
+  Path path;
   path.points = generate_line(100);
-  path = hmap::decimate_vw(path, 5);
+  path = decimate_vw(path, 5);
 
   // all points should remain colinear
   for (size_t i = 1; i + 1 < path.points.size(); ++i)
@@ -46,9 +48,9 @@ TEST(PathDecimateVw, PreservesStraightLine)
 
 TEST(PathDecimateVw, PreservesCircle)
 {
-  hmap::Path path;
+  Path path;
   path.points = generate_circle(100, 1.f);
-  path = hmap::decimate_vw(path, 20);
+  path = decimate_vw(path, 20);
 
   float avg_radius = 1.f;
 
