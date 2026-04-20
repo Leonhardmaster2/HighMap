@@ -1,6 +1,7 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
+#include <limits>
 #include <map>
 
 #include "macrologger.h"
@@ -17,18 +18,20 @@ Array connected_components(const Array            &array,
                            std::map<float, float> *p_surfaces,
                            std::map<float, std::array<float, 2>> *p_centroids)
 {
+  const glm::ivec2 &shape = array.shape;
+
   // neighbor search pattern
-  const std::vector<int> di = {0, -1, -1, -1};
-  const std::vector<int> dj = {-1, -1, 0, 1};
-  const size_t           nb = di.size();
+  const float  di[4] = {0, -1, -1, -1};
+  const float  dj[4] = {-1, -1, 0, 1};
+  const size_t nb = 4;
 
   // padding: one cell with a non-background value on the borders
-  const int npi = array.shape.x + 2;
-  const int npj = array.shape.y + 2;
+  const int npi = shape.x + 2;
+  const int npj = shape.y + 2;
 
   Array labels = Array(glm::ivec2(npi, npj));
   Array array_pad = generate_buffered_array(array, {1, 1, 1, 1});
-  set_borders(array_pad, background_value + 1.f, 1);
+  set_borders(array_pad, std::numeric_limits<float>::max(), 1);
 
   // --- first pass of labelling
 
@@ -102,7 +105,7 @@ Array connected_components(const Array            &array,
   for (int j = 0; j < npj; j++)
     for (int i = 0; i < npi; i++)
     {
-      if ((labels(i, j) > 0) & (labels_mapping_reverse.contains(labels(i, j))))
+      if ((labels(i, j) > 0) && (labels_mapping_reverse.contains(labels(i, j))))
         labels(i, j) = labels_mapping_reverse[labels(i, j)];
     }
 
@@ -125,30 +128,36 @@ Array connected_components(const Array            &array,
       if (labels_surface[labels(i, j)] <= smin) labels(i, j) = background_value;
     }
 
-  // --- relabeling
+  // --- removing padding before returning the result
 
-  std::vector<float> use_labels = labels.unique_values();
-  size_t             max_label = size_t(use_labels.back());
+  // store labels before
+  std::vector<float> used_labels = labels.unique_values();
+  size_t             max_label = size_t(used_labels.back());
+
+  labels = labels.extract_slice({1, npi - 1, 1, npj - 1});
+
+  // --- relabeling
 
   std::vector<int> label_remap(max_label + 1, 0);
 
   int next = 0;
-  for (const auto &v : use_labels)
+  for (const auto &v : used_labels)
     label_remap[int(v)] = next++;
 
-  for (int j = 0; j < npj; j++)
-    for (int i = 0; i < npi; i++)
+  for (int j = 0; j < shape.y; j++)
+    for (int i = 0; i < shape.x; i++)
     {
       int lbl = int(labels(i, j));
       if (lbl != 0) labels(i, j) = label_remap[lbl];
     }
 
-  // update surface and centroids
+  // --- update surface and centroids
+
   labels_surface.clear();
   std::map<float, std::array<float, 2>> labels_centroids = {};
 
-  for (int j = 0; j < npj; j++)
-    for (int i = 0; i < npi; i++)
+  for (int j = 0; j < shape.y; j++)
+    for (int i = 0; i < shape.x; i++)
     {
       if (labels(i, j) > 0)
       {
@@ -158,22 +167,10 @@ Array connected_components(const Array            &array,
       }
     }
 
-  // removing padding before returning the result
-  labels = labels.extract_slice({1, npi - 1, 1, npj - 1});
-
   // --- outputs
 
   if (p_surfaces) *p_surfaces = std::move(labels_surface);
   if (p_centroids) *p_centroids = std::move(labels_centroids);
-
-  // for (auto &[k, v] : labels_surface)
-  // {
-  //   if (p_surfaces) p_surfaces->push_back(v);
-
-  //   if (p_centroids)
-  //     p_centroids->push_back(
-  //         {labels_centroids[k][0] / v, labels_centroids[k][1] / v});
-  // }
 
   return labels;
 }
