@@ -18,7 +18,6 @@ Array helper_generate_array()
 
 TEST(GpuCpu, ClosingByReconstruction)
 {
-  gpu::init_opencl();
   Timer::Clear();
 
   const float tol = 1e0f;
@@ -59,7 +58,6 @@ TEST(GpuCpu, ClosingByReconstruction)
 
 TEST(GpuCpu, MorphologicalOperators)
 {
-  gpu::init_opencl();
   Timer::Clear();
 
   const float tol = 1e0f;

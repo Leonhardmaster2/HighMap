@@ -3,7 +3,6 @@
 
 #include "highmap/dbg/assert.hpp"
 #include "highmap/morphology.hpp"
-#include "highmap/opencl/gpu_opencl.hpp"
 
 using namespace hmap;
 
@@ -106,8 +105,6 @@ TEST(Skeleton, ReductionButNotFullRemoval)
 
 TEST(Skeleton_CPU_GPU, RandomBinaryFields)
 {
-  gpu::init_opencl();
-
   std::mt19937                       rng(42);
   std::uniform_int_distribution<int> dist(0, 1);
 
