@@ -614,6 +614,8 @@ size\+\_\+t \mbox{\hyperlink{namespacehmap_a98feadac2cf9a77dbaa715d5aee4803f}{co
 \item 
 size\+\_\+t \mbox{\hyperlink{namespacehmap_af8950d06447258f6e3fc9daf98e01737}{count\+\_\+zero}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array)
 \item 
+bool \mbox{\hyperlink{namespacehmap_a199fe70937b1653266fe9c9bedc4653d}{is\+\_\+subset}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&a, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&b)
+\item 
 void \mbox{\hyperlink{namespacehmap_a8198f43613e6d5926a01fd7e44444094}{print\+\_\+array}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&arr, bool show\+\_\+coords=false, int width=6, int precision=2)
 \item 
 std\+::function$<$ float(float)$>$ \mbox{\hyperlink{namespacehmap_a02f191e398bfc3c0e87999d8576d7c3d}{get\+\_\+erosion\+\_\+profile\+\_\+function}} (const \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6}{Erosion\+Profile}} \&erosion\+\_\+profile, float delta, float \&profile\+\_\+avg)
@@ -6320,6 +6322,12 @@ Computes various curvature descriptors from the input array {\ttfamily z}. If {\
 \index{count\_zero@{count\_zero}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{count\_zero()}{count\_zero()}}
 {\footnotesize\ttfamily size\+\_\+t hmap\+::count\+\_\+zero (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacehmap_a199fe70937b1653266fe9c9bedc4653d}\label{namespacehmap_a199fe70937b1653266fe9c9bedc4653d} 
+\index{hmap@{hmap}!is\_subset@{is\_subset}}
+\index{is\_subset@{is\_subset}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{is\_subset()}{is\_subset()}}
+{\footnotesize\ttfamily bool hmap\+::is\+\_\+subset (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{a,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{b }\end{DoxyParamCaption})}
 
 \Hypertarget{namespacehmap_a8198f43613e6d5926a01fd7e44444094}\label{namespacehmap_a8198f43613e6d5926a01fd7e44444094} 
 \index{hmap@{hmap}!print\_array@{print\_array}}
@@ -22992,22 +23000,25 @@ This implementation is based on the algorithm described at \href{https://github.
 \DoxyCodeLine{}
 \DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
 \DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_1_1gpu_adb8336ed4d83c15500872185dee45d50}{hmap::gpu::init\_opencl}}();}
+\DoxyCodeLine{}
 \DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
-\DoxyCodeLine{\ \ glm::vec2\ \ res\ =\ \{2.f,\ 8.f\};}
+\DoxyCodeLine{\ \ glm::vec2\ \ kw\ =\ \{2.f,\ 8.f\};}
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 2;}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_acb13e7346085793fda4c94c47b75d9a9}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ res,\ seed);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_acb13e7346085793fda4c94c47b75d9a9}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ kw,\ seed);}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ab80da2376c6212eb9cb2899c0a5114ad}{hmap::remap}}(z,\ -\/1.f,\ 0.4f);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a4799d3f029d45240a5b40b4853583a58}{hmap::make\_binary}}(z);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ sk\ =\ \mbox{\hyperlink{namespacehmap_a11ddd5ab1aa625db9419d9b65c0eaa64}{hmap::skeleton}}(z);}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ skg\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_a5287e8c6a324fa91bea6c7bf98aacd68}{hmap::gpu::skeleton}}(z);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ ir\_search\ =\ 32;}
 \DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ rdist\ =\ \mbox{\hyperlink{namespacehmap_a7c7d934cc5a3a5e1a6f17c09a0e1e51f}{relative\_distance\_from\_skeleton}}(z,\ ir\_search);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_skeleton.png"{}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ sk,\ 0.5f\ *\ (z\ +\ sk),\ rdist\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ sk,\ skg,\ 0.5f\ *\ (z\ +\ sk),\ rdist\},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d}{hmap::Cmap::GRAY}});}
 \DoxyCodeLine{\}}
 

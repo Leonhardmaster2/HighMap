@@ -364,29 +364,33 @@
 <codeline lineno="354"><highlight class="normal">Array<sp/><ref refid="namespacehmap_1a11ddd5ab1aa625db9419d9b65c0eaa64" kindref="member">skeleton</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array<sp/>&amp;array,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>zero_at_borders)</highlight></codeline>
 <codeline lineno="355"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="356"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>https://github.com/krishraghuram/Zhang-Suen-Skeletonization</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="357"><highlight class="normal"></highlight></codeline>
-<codeline lineno="358"><highlight class="normal"><sp/><sp/>Array<sp/>sk<sp/>=<sp/>array;</highlight></codeline>
-<codeline lineno="359"><highlight class="normal"><sp/><sp/>Array<sp/>prev;</highlight></codeline>
-<codeline lineno="360"><highlight class="normal"><sp/><sp/>Array<sp/>diff;</highlight></codeline>
-<codeline lineno="361"><highlight class="normal"></highlight></codeline>
-<codeline lineno="362"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">do</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="363"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
-<codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/>prev<sp/>=<sp/>sk;</highlight></codeline>
-<codeline lineno="365"><highlight class="normal"></highlight></codeline>
-<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a2c98f2116e221df5f6684a7546bb233f" kindref="member">helper_thinning</ref>(sk,<sp/>0);</highlight></codeline>
-<codeline lineno="367"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a2c98f2116e221df5f6684a7546bb233f" kindref="member">helper_thinning</ref>(sk,<sp/>1);</highlight></codeline>
-<codeline lineno="368"><highlight class="normal"></highlight></codeline>
-<codeline lineno="369"><highlight class="normal"><sp/><sp/><sp/><sp/>diff<sp/>=<sp/>sk<sp/>-<sp/>prev;</highlight></codeline>
-<codeline lineno="370"><highlight class="normal"></highlight></codeline>
-<codeline lineno="371"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(diff.count_non_zero()<sp/>&gt;<sp/>0);</highlight></codeline>
-<codeline lineno="372"><highlight class="normal"></highlight></codeline>
-<codeline lineno="373"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>set<sp/>border<sp/>to<sp/>zero</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="374"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(zero_at_borders)<sp/><ref refid="namespacehmap_1ae8bdfc965780305d1d26ff8b84e1dced" kindref="member">zeroed_borders</ref>(sk);</highlight></codeline>
-<codeline lineno="375"><highlight class="normal"></highlight></codeline>
-<codeline lineno="376"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sk;</highlight></codeline>
-<codeline lineno="377"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="378"><highlight class="normal"></highlight></codeline>
-<codeline lineno="379"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>hmap</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/>Array<sp/>sk<sp/>=<sp/><ref refid="namespacehmap_1a9254ab903bd000631c5f5216e21f7caa" kindref="member">generate_buffered_array</ref>(array,<sp/>{1,<sp/>1,<sp/>1,<sp/>1});</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1af3d5a6d239d30fe1698a524dfedcd63f" kindref="member">set_borders</ref>(sk,<sp/>0.f,<sp/>1);</highlight></codeline>
+<codeline lineno="359"><highlight class="normal"></highlight></codeline>
+<codeline lineno="360"><highlight class="normal"><sp/><sp/>Array<sp/>prev;</highlight></codeline>
+<codeline lineno="361"><highlight class="normal"><sp/><sp/>Array<sp/>diff;</highlight></codeline>
+<codeline lineno="362"><highlight class="normal"></highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">do</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="364"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"><sp/><sp/><sp/><sp/>prev<sp/>=<sp/>sk;</highlight></codeline>
+<codeline lineno="366"><highlight class="normal"></highlight></codeline>
+<codeline lineno="367"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a2c98f2116e221df5f6684a7546bb233f" kindref="member">helper_thinning</ref>(sk,<sp/>0);</highlight></codeline>
+<codeline lineno="368"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a2c98f2116e221df5f6684a7546bb233f" kindref="member">helper_thinning</ref>(sk,<sp/>1);</highlight></codeline>
+<codeline lineno="369"><highlight class="normal"></highlight></codeline>
+<codeline lineno="370"><highlight class="normal"><sp/><sp/><sp/><sp/>diff<sp/>=<sp/>sk<sp/>-<sp/>prev;</highlight></codeline>
+<codeline lineno="371"><highlight class="normal"></highlight></codeline>
+<codeline lineno="372"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(diff.count_non_zero()<sp/>&gt;<sp/>0);</highlight></codeline>
+<codeline lineno="373"><highlight class="normal"></highlight></codeline>
+<codeline lineno="374"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>remove<sp/>padding</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="375"><highlight class="normal"><sp/><sp/>sk<sp/>=<sp/>sk.extract_slice({1,<sp/>sk.shape.x<sp/>-<sp/>1,<sp/>1,<sp/>sk.shape.y<sp/>-<sp/>1});</highlight></codeline>
+<codeline lineno="376"><highlight class="normal"></highlight></codeline>
+<codeline lineno="377"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>set<sp/>border<sp/>to<sp/>zero</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="378"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(zero_at_borders)<sp/><ref refid="namespacehmap_1ae8bdfc965780305d1d26ff8b84e1dced" kindref="member">zeroed_borders</ref>(sk);</highlight></codeline>
+<codeline lineno="379"><highlight class="normal"></highlight></codeline>
+<codeline lineno="380"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sk;</highlight></codeline>
+<codeline lineno="381"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="382"><highlight class="normal"></highlight></codeline>
+<codeline lineno="383"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>hmap</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="HighMap/src/morphology/morphology.cpp"/>
   </compounddef>

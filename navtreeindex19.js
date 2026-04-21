@@ -1,5 +1,8 @@
 var NAVTREEINDEX19 =
 {
+"selector_8hpp.html#aee36bf04c8ae880814a5341d4ea262f4":[5,0,1,0,0,38,6],
+"selector_8hpp.html#afb62cf56466c5bdfb9b6a26458a52d12":[5,0,1,0,0,38,25],
+"selector_8hpp_source.html":[5,0,1,0,0,38],
 "selector__gpu_8cpp.html":[5,0,1,1,32,5],
 "selector__gpu_8cpp.html#a13f97a9cf5f7f219e5ed9a32fefbfa1a":[5,0,1,1,32,5,1],
 "selector__gpu_8cpp.html#a9d2e42789abe01802177574660804fa1":[5,0,1,1,32,5,0],
@@ -73,8 +76,8 @@ var NAVTREEINDEX19 =
 "structTileAccess.html#ae6fe4c80de5359b04f183ec826c7bb2e":[4,0,1,1],
 "structhmap_1_1AssertResults.html":[4,0,0,3],
 "structhmap_1_1AssertResults.html":[3,0,0,4],
-"structhmap_1_1AssertResults.html#a4c628df3519b0272201adac2607573a9":[4,0,0,3,4],
 "structhmap_1_1AssertResults.html#a4c628df3519b0272201adac2607573a9":[3,0,0,4,4],
+"structhmap_1_1AssertResults.html#a4c628df3519b0272201adac2607573a9":[4,0,0,3,4],
 "structhmap_1_1AssertResults.html#a5b26e3964b23c604022ff6705327ac37":[3,0,0,4,0],
 "structhmap_1_1AssertResults.html#a5b26e3964b23c604022ff6705327ac37":[4,0,0,3,0],
 "structhmap_1_1AssertResults.html#a6cf92a095426d2effa78d2e3113d5cca":[3,0,0,4,1],
@@ -246,8 +249,5 @@ var NAVTREEINDEX19 =
 "structhmap_1_1TerrainTriMesh_1_1NeighborData.html#aa756a2a5a6ecec55cd2c31a5dd05fb2c":[4,0,0,56,4,2],
 "structhmap_1_1TerrainTriMesh_1_1NeighborData.html#aa756a2a5a6ecec55cd2c31a5dd05fb2c":[3,0,0,57,4,2],
 "structhmap_1_1TerrainTriMesh_1_1Triangle.html":[4,0,0,56,5],
-"structhmap_1_1TerrainTriMesh_1_1Triangle.html":[3,0,0,57,5],
-"structhmap_1_1TerrainTriMesh_1_1Triangle.html#a6d4f8db2cd3dc0f88db13a67a014ede9":[3,0,0,57,5,0],
-"structhmap_1_1TerrainTriMesh_1_1Triangle.html#a6d4f8db2cd3dc0f88db13a67a014ede9":[4,0,0,56,5,0],
-"structhmap_1_1TerrainTriMesh_1_1Triangle.html#a72041b394e1504aeb471f56c86322ae6":[4,0,0,56,5,2]
+"structhmap_1_1TerrainTriMesh_1_1Triangle.html":[3,0,0,57,5]
 };

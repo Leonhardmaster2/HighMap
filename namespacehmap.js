@@ -622,6 +622,7 @@ var namespacehmap =
     [ "assert_almost_equal", "namespacehmap.html#a7d7c20120bea803d47a9a8394007e383", null ],
     [ "count_non_zero", "namespacehmap.html#a98feadac2cf9a77dbaa715d5aee4803f", null ],
     [ "count_zero", "namespacehmap.html#af8950d06447258f6e3fc9daf98e01737", null ],
+    [ "is_subset", "namespacehmap.html#a199fe70937b1653266fe9c9bedc4653d", null ],
     [ "print_array", "namespacehmap.html#a8198f43613e6d5926a01fd7e44444094", null ],
     [ "get_erosion_profile_function", "namespacehmap.html#a02f191e398bfc3c0e87999d8576d7c3d", null ],
     [ "check_erosion_profile_function", "namespacehmap.html#ac718f038155dde59fb50eb22684ed255", null ],

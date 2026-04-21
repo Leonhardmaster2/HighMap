@@ -1,5 +1,7 @@
 var NAVTREEINDEX10 =
 {
+"index.html#autotoc_md9":[0,1,3,1],
+"inpainting__gaussian_8cpp.html":[5,0,1,1,26,2],
 "inpainting__gaussian_8cpp.html#ab642074e3e056d07ae13cf346e208c79":[5,0,1,1,26,2,0],
 "interpolate1d_8cpp.html":[5,0,1,1,20,2],
 "interpolate1d_8cpp.html#a567abeb8b68a281411d811987a84ee42":[5,0,1,1,20,2,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX10 =
 "math_8cpp.html#a30e6961ce99edeb86af6f4ce61651bd0":[5,0,1,1,23,1,47],
 "math_8cpp.html#a339d883dc34fc818dd25077c5daab953":[5,0,1,1,23,1,18],
 "math_8cpp.html#a3a1e261b646c9df967e78fb77e5bf8c1":[5,0,1,1,23,1,19],
-"math_8cpp.html#a413648e2595721d8ba4096357dbb1f84":[5,0,1,1,23,1,30],
-"math_8cpp.html#a4a3589145183ecdcc6392e28cd1ebef8":[5,0,1,1,23,1,12],
-"math_8cpp.html#a4c21ef9d4f7d33f2413c7fe391b86253":[5,0,1,1,23,1,32]
+"math_8cpp.html#a413648e2595721d8ba4096357dbb1f84":[5,0,1,1,23,1,30]
 };
