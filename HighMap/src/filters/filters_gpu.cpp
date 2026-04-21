@@ -501,13 +501,29 @@ void shrink(Array       &array,
 
 void smooth_cpulse(Array &array, int ir)
 {
+  // define kernel
   const int          nk = 2 * ir + 1;
-  std::vector<float> kernel_1d = cubic_pulse_1d(nk);
+  std::vector<float> k1d(nk);
+
+  float sum = 0.f;
+  float x0 = (float)ir;
+  for (int i = 0; i < nk; i++)
+  {
+    float x = std::abs((float)i - x0) / (float)ir;
+    k1d[i] = std::exp(-0.5f * x * x * 9.f); // σ ≈ ir/3
+    sum += k1d[i];
+  }
+
+  // normalize
+  for (int i = 0; i < nk; i++)
+  {
+    k1d[i] /= sum;
+  }
 
   auto run = clwrapper::Run("smooth_cpulse");
 
   run.bind_imagef("in", array.vector, array.shape.x, array.shape.y);
-  run.bind_imagef("weights", kernel_1d, nk, 1);
+  run.bind_imagef("weights", k1d, nk, 1);
   run.bind_imagef("out",
                   array.vector,
                   array.shape.x,
@@ -539,13 +555,29 @@ void smooth_cpulse(Array &array, int ir, const Array *p_mask)
   }
   else
   {
+    // define kernel
     const int          nk = 2 * ir + 1;
-    std::vector<float> kernel_1d = cubic_pulse_1d(nk);
+    std::vector<float> k1d(nk);
+
+    float sum = 0.f;
+    float x0 = (float)ir;
+    for (int i = 0; i < nk; i++)
+    {
+      float x = std::abs((float)i - x0) / (float)ir;
+      k1d[i] = std::exp(-0.5f * x * x * 9.f); // σ ≈ ir/3
+      sum += k1d[i];
+    }
+
+    // normalize
+    for (int i = 0; i < nk; i++)
+    {
+      k1d[i] /= sum;
+    }
 
     auto run = clwrapper::Run("smooth_cpulse_masked");
 
     run.bind_imagef("in", array.vector, array.shape.x, array.shape.y);
-    run.bind_imagef("weights", kernel_1d, nk, 1);
+    run.bind_imagef("weights", k1d, nk, 1);
     run.bind_imagef("mask", p_mask->vector, p_mask->shape.x, p_mask->shape.y);
     run.bind_imagef("out",
                     array.vector,

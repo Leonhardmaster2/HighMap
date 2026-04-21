@@ -1,0 +1,104 @@
+#include <gtest/gtest.h>
+
+#include "highmap/dbg/assert.hpp"
+#include "highmap/filters.hpp"
+
+using namespace hmap;
+
+TEST(SmoothCPulse, ConstantFieldPreserved)
+{
+  Array input = Array({{2, 2, 2}, {2, 2, 2}, {2, 2, 2}});
+
+  Array cpu = input;
+  smooth_cpulse(cpu, 1);
+
+  EXPECT_TRUE(assert_almost_equal(cpu, input));
+}
+
+TEST(SmoothCPulse, IdentityWhenRadiusZero)
+{
+  Array input = Array({{1, 2, 3}, {4, 5, 6}});
+
+  Array cpu = input;
+  smooth_cpulse(cpu, 0);
+
+  EXPECT_TRUE(assert_almost_equal(cpu, input));
+}
+
+TEST(SmoothCPulse, SmoothingReducesContrast)
+{
+  Array input = Array({{0, 0, 0}, {0, 10, 0}, {0, 0, 0}});
+
+  Array cpu = input;
+  smooth_cpulse(cpu, 1);
+
+  // center should decrease due to diffusion
+  EXPECT_LT(cpu(1, 1), 10.f);
+}
+
+TEST(SmoothCPulse, SymmetryPreserved)
+{
+  Array input = Array({{1, 2, 3, 2, 1},
+                       {2, 3, 4, 3, 2},
+                       {3, 4, 5, 4, 3},
+                       {2, 3, 4, 3, 2},
+                       {1, 2, 3, 2, 1}});
+
+  Array cpu = input;
+  smooth_cpulse(cpu, 1);
+
+  // symmetry along both axes should remain approximately valid
+  for (int i = 0; i < input.shape.x; ++i)
+    for (int j = 0; j < input.shape.y; ++j)
+    {
+      EXPECT_NEAR(cpu(i, j), cpu(input.shape.x - 1 - i, j), 1e-4);
+
+      EXPECT_NEAR(cpu(i, j), cpu(i, input.shape.y - 1 - j), 1e-4);
+    }
+}
+
+TEST(SmoothCPulse, NoNewExtremaCreated)
+{
+  Array input = Array({{0, 5, 0}, {5, 10, 5}, {0, 5, 0}});
+
+  float min_before = input.min();
+  float max_before = input.max();
+
+  Array cpu = input;
+  smooth_cpulse(cpu, 1);
+
+  float min_after = cpu.min();
+  float max_after = cpu.max();
+
+  EXPECT_GE(min_after, min_before - 1e-5f);
+  EXPECT_LE(max_after, max_before + 1e-5f);
+}
+
+TEST(SmoothCPulse_CPU_GPU, RandomBinaryFields)
+{
+  std::mt19937                          rng(42);
+  std::uniform_real_distribution<float> dist(0.f, 1.f);
+
+  const int nx = 64;
+  const int ny = 64;
+
+  for (int test = 0; test < 20; ++test)
+  {
+    Array input(glm::ivec2(nx, ny));
+
+    for (int j = 0; j < ny; ++j)
+      for (int i = 0; i < nx; ++i)
+        input(i, j) = dist(rng);
+
+    int ir = int(nx * dist(rng));
+
+    Array cpu = input;
+    Array gpu = input;
+
+    smooth_cpulse(cpu, ir);
+    gpu::smooth_cpulse(gpu, ir);
+
+    // same arrays are expected
+    EXPECT_TRUE(assert_almost_equal(cpu, gpu, 1e-6f));
+  }
+}

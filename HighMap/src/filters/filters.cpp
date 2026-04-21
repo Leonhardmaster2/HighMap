@@ -893,26 +893,26 @@ void smooth_cpulse(Array &array, int ir)
 {
   // define kernel
   const int          nk = 2 * ir + 1;
-  std::vector<float> k(nk);
+  std::vector<float> k1d(nk);
 
   float sum = 0.f;
-  float x0 = (float)nk / 2.f;
+  float x0 = (float)ir;
   for (int i = 0; i < nk; i++)
   {
     float x = std::abs((float)i - x0) / (float)ir;
-    k[i] = 1.f - x * x * (3.f - 2.f * x);
-    sum += k[i];
+    k1d[i] = std::exp(-0.5f * x * x * 9.f); // σ ≈ ir/3
+    sum += k1d[i];
   }
 
   // normalize
   for (int i = 0; i < nk; i++)
   {
-    k[i] /= sum;
+    k1d[i] /= sum;
   }
 
   // eventually convolve
-  array = convolve1d_i(array, k);
-  array = convolve1d_j(array, k);
+  array = convolve1d_i(array, k1d);
+  array = convolve1d_j(array, k1d);
 }
 
 void smooth_cpulse(Array &array, int ir, const Array *p_mask)
