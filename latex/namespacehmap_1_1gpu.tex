@@ -128,6 +128,10 @@ void \mbox{\hyperlink{namespacehmap_1_1gpu_aa7ce5c44914d54ec7fa0162c5ccbab86}{va
 \begin{DoxyCompactList}\small\item\em Apply a bilateral filter to an array. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a0cd7116e5c346fe9534e25b53d5e054a}{bilateral\+\_\+filter}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir, float kernel1d\+\_\+value\+\_\+scaling)
 \begin{DoxyCompactList}\small\item\em Apply a bilateral filter to an array using a radius-\/based Gaussian kernel. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacehmap_1_1gpu_a7236194a9133a228c9965f1c3e32d6a2}{directional\+\_\+blur}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float radius, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&\mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}}, int steps=32)
+\begin{DoxyCompactList}\small\item\em Applies a directional blur to the input array. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacehmap_1_1gpu_abe223a120cbca1cedc1eb8b8392a93b8}{directional\+\_\+blur}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float radius, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&\mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+mask, int steps=32)
+\begin{DoxyCompactList}\small\item\em This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_1_1gpu_a3638798808a7e69482de679ffbe86c95}{expand}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir, int iterations=1)
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_ae00605c7af4addcb5092c90260e2d61b}{hmap\+::expand}. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_1_1gpu_a4078e5f2ad3a01d6aa282011662a3b5d}{expand}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+mask, int iterations=1)
@@ -2635,7 +2639,46 @@ This is an overloaded member function, provided for convenience. It differs from
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}  This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. \Hypertarget{namespacehmap_1_1gpu_a3638798808a7e69482de679ffbe86c95}\label{namespacehmap_1_1gpu_a3638798808a7e69482de679ffbe86c95} 
+{\bfseries{Result}}  This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. \Hypertarget{namespacehmap_1_1gpu_a7236194a9133a228c9965f1c3e32d6a2}\label{namespacehmap_1_1gpu_a7236194a9133a228c9965f1c3e32d6a2} 
+\index{hmap::gpu@{hmap::gpu}!directional\_blur@{directional\_blur}}
+\index{directional\_blur@{directional\_blur}!hmap::gpu@{hmap::gpu}}
+\doxysubsubsection{\texorpdfstring{directional\_blur()}{directional\_blur()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void hmap\+::gpu\+::directional\+\_\+blur (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{float}]{radius,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{angle,  }\item[{int}]{steps = {\ttfamily 32} }\end{DoxyParamCaption})}
+
+
+
+Applies a directional blur to the input array. 
+
+Blurs values along a direction specified per element by the angle array, using a given radius and number of sampling steps.
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & Input array to be blurred (modified in place). \\
+\hline
+{\em radius} & Blur radius. \\
+\hline
+{\em angle} & \doxylink{classhmap_1_1Array}{Array} of angles (in radians) defining blur direction per element. \\
+\hline
+{\em steps} & Number of samples along the blur direction (default\+: 32).\\
+\hline
+\end{DoxyParams}
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}}  \Hypertarget{namespacehmap_1_1gpu_abe223a120cbca1cedc1eb8b8392a93b8}\label{namespacehmap_1_1gpu_abe223a120cbca1cedc1eb8b8392a93b8} 
+\index{hmap::gpu@{hmap::gpu}!directional\_blur@{directional\_blur}}
+\index{directional\_blur@{directional\_blur}!hmap::gpu@{hmap::gpu}}
+\doxysubsubsection{\texorpdfstring{directional\_blur()}{directional\_blur()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void hmap\+::gpu\+::directional\+\_\+blur (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{float}]{radius,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{angle,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+mask,  }\item[{int}]{steps = {\ttfamily 32} }\end{DoxyParamCaption})}
+
+
+
+This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. 
+
+\Hypertarget{namespacehmap_1_1gpu_a3638798808a7e69482de679ffbe86c95}\label{namespacehmap_1_1gpu_a3638798808a7e69482de679ffbe86c95} 
 \index{hmap::gpu@{hmap::gpu}!expand@{expand}}
 \index{expand@{expand}!hmap::gpu@{hmap::gpu}}
 \doxysubsubsection{\texorpdfstring{expand()}{expand()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}

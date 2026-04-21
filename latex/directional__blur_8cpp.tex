@@ -4,11 +4,13 @@
 \begin{DoxyCompactItemize}
 \item 
 namespace \mbox{\hyperlink{namespacehmap}{hmap}}
+\item 
+namespace \mbox{\hyperlink{namespacehmap_1_1gpu}{hmap\+::gpu}}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{namespacehmap_afb9b18e93276f49b347d2efbd94c1df4}{hmap\+::directional\+\_\+blur}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&\mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}}, float intensity, float stretch=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float spread=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
-\begin{DoxyCompactList}\small\item\em Applies a directional blur to the provided 2D array with a constant angle. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{namespacehmap_a22656a7e71302244f5f79f237a81c985}{hmap\+::directional\+\_\+blur}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir, float \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}}, float intensity, float stretch=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float spread=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
-\begin{DoxyCompactList}\small\item\em Applies a directional blur to a 2D array based on a spatially varying angle field. \end{DoxyCompactList}\end{DoxyCompactItemize}
+void \mbox{\hyperlink{namespacehmap_1_1gpu_a7236194a9133a228c9965f1c3e32d6a2}{hmap\+::gpu\+::directional\+\_\+blur}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float radius, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&\mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}}, int steps=32)
+\begin{DoxyCompactList}\small\item\em Applies a directional blur to the input array. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacehmap_1_1gpu_abe223a120cbca1cedc1eb8b8392a93b8}{hmap\+::gpu\+::directional\+\_\+blur}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float radius, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&\mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+mask, int steps=32)
+\begin{DoxyCompactList}\small\item\em This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. \end{DoxyCompactList}\end{DoxyCompactItemize}

@@ -278,6 +278,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a0cd7116e5c346fe9534e25b53d5e054a" id="r_a0cd7116e5c346fe9534e25b53d5e054a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a0cd7116e5c346fe9534e25b53d5e054a">bilateral_filter</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, int ir, float kernel1d_value_scaling)</td></tr>
 <tr class="memdesc:a0cd7116e5c346fe9534e25b53d5e054a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply a bilateral filter to an array using a radius-based Gaussian kernel.  <br /></td></tr>
 <tr class="separator:a0cd7116e5c346fe9534e25b53d5e054a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7236194a9133a228c9965f1c3e32d6a2" id="r_a7236194a9133a228c9965f1c3e32d6a2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a7236194a9133a228c9965f1c3e32d6a2">directional_blur</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, float radius, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;<a class="el" href="namespacehmap.html#aac71bb6c14edc17967957f7918acdbdd">angle</a>, int steps=32)</td></tr>
+<tr class="memdesc:a7236194a9133a228c9965f1c3e32d6a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies a directional blur to the input array.  <br /></td></tr>
+<tr class="separator:a7236194a9133a228c9965f1c3e32d6a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe223a120cbca1cedc1eb8b8392a93b8" id="r_abe223a120cbca1cedc1eb8b8392a93b8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#abe223a120cbca1cedc1eb8b8392a93b8">directional_blur</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, float radius, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;<a class="el" href="namespacehmap.html#aac71bb6c14edc17967957f7918acdbdd">angle</a>, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_mask, int steps=32)</td></tr>
+<tr class="memdesc:abe223a120cbca1cedc1eb8b8392a93b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.  <br /></td></tr>
+<tr class="separator:abe223a120cbca1cedc1eb8b8392a93b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3638798808a7e69482de679ffbe86c95" id="r_a3638798808a7e69482de679ffbe86c95"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a3638798808a7e69482de679ffbe86c95">expand</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, int ir, int iterations=1)</td></tr>
 <tr class="memdesc:a3638798808a7e69482de679ffbe86c95"><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="namespacehmap.html#ae00605c7af4addcb5092c90260e2d61b" title="Apply expansion, or &quot;inflation&quot;, to emphasize the bulk of the terrain.">hmap::expand</a>.  <br /></td></tr>
 <tr class="separator:a3638798808a7e69482de679ffbe86c95"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -5915,6 +5921,109 @@ Only available if OpenCL is enabled.</dd></dl>
 
 </div>
 </div>
+<a id="a7236194a9133a228c9965f1c3e32d6a2" name="a7236194a9133a228c9965f1c3e32d6a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7236194a9133a228c9965f1c3e32d6a2">&#9670;&#160;</a></span>directional_blur() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hmap::gpu::directional_blur </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>array</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>radius</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>angle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>steps</em> = <code>32</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Applies a directional blur to the input array. </p>
+<p>Blurs values along a direction specified per element by the angle array, using a given radius and number of sampling steps.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">array</td><td>Input array to be blurred (modified in place). </td></tr>
+    <tr><td class="paramname">radius</td><td>Blur radius. </td></tr>
+    <tr><td class="paramname">angle</td><td><a class="el" href="classhmap_1_1Array.html" title="Array class, helper to manipulate 2D float array with &quot;(i, j)&quot; indexing.">Array</a> of angles (in radians) defining blur direction per element. </td></tr>
+    <tr><td class="paramname">steps</td><td>Number of samples along the blur direction (default: 32).</td></tr>
+  </table>
+  </dd>
+</dl>
+<p><b>Example</b> </p><div class="fragment"></div><!-- fragment --><p><b>Result</b> </p><div class="image">
+<img src="ex_directional_blur.png" alt=""/>
+</div>
+ 
+</div>
+</div>
+<a id="abe223a120cbca1cedc1eb8b8392a93b8" name="abe223a120cbca1cedc1eb8b8392a93b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe223a120cbca1cedc1eb8b8392a93b8">&#9670;&#160;</a></span>directional_blur() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hmap::gpu::directional_blur </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>array</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>radius</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>angle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
+          <td class="paramname"><em>p_mask</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>steps</em> = <code>32</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </p>
+
+</div>
+</div>
 <a id="a3638798808a7e69482de679ffbe86c95" name="a3638798808a7e69482de679ffbe86c95"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3638798808a7e69482de679ffbe86c95">&#9670;&#160;</a></span>expand() <span class="overload">[1/4]</span></h2>
 
@@ -8925,7 +9034,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_local_relief.png&quot;</span>, {z, z1}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_1_1gpu_html_a5e3ebf317043142adc19dd211ba07230"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a5e3ebf317043142adc19dd211ba07230">hmap::gpu::local_relief</a></div><div class="ttdeci">Array local_relief(const Array &amp;array, int ir)</div><div class="ttdoc">Compute the local relief of an array.</div><div class="ttdef"><b>Definition</b> local_metrics_gpu.cpp:90</div></div>
+<div class="ttc" id="anamespacehmap_1_1gpu_html_a5e3ebf317043142adc19dd211ba07230"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a5e3ebf317043142adc19dd211ba07230">hmap::gpu::local_relief</a></div><div class="ttdeci">Array local_relief(const Array &amp;array, int ir)</div><div class="ttdoc">Compute the local relief of an array.</div><div class="ttdef"><b>Definition</b> local_metrics_gpu.cpp:84</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_local_relief.png" alt=""/>
 </div>
@@ -8988,7 +9097,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_local_variance.png&quot;</span>, {z, z1}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_1_1gpu_html_aeca9d8454f50273ca4a4f3db0c25a1b1"><div class="ttname"><a href="namespacehmap_1_1gpu.html#aeca9d8454f50273ca4a4f3db0c25a1b1">hmap::gpu::local_variance</a></div><div class="ttdeci">Array local_variance(const Array &amp;array, int ir)</div><div class="ttdoc">Compute the average local variance of an array.</div><div class="ttdef"><b>Definition</b> local_metrics_gpu.cpp:132</div></div>
+<div class="ttc" id="anamespacehmap_1_1gpu_html_aeca9d8454f50273ca4a4f3db0c25a1b1"><div class="ttname"><a href="namespacehmap_1_1gpu.html#aeca9d8454f50273ca4a4f3db0c25a1b1">hmap::gpu::local_variance</a></div><div class="ttdeci">Array local_variance(const Array &amp;array, int ir)</div><div class="ttdoc">Compute the average local variance of an array.</div><div class="ttdef"><b>Definition</b> local_metrics_gpu.cpp:120</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_local_variance.png" alt=""/>
 </div>
@@ -9109,7 +9218,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_local_z_score.png&quot;</span>, {z, z1}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_1_1gpu_html_ad6ef648576e9339058037a28ce17d225"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ad6ef648576e9339058037a28ce17d225">hmap::gpu::local_z_score</a></div><div class="ttdeci">Array local_z_score(const Array &amp;array, int ir)</div><div class="ttdoc">Compute the local z-score of an array.</div><div class="ttdef"><b>Definition</b> local_metrics_gpu.cpp:153</div></div>
+<div class="ttc" id="anamespacehmap_1_1gpu_html_ad6ef648576e9339058037a28ce17d225"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ad6ef648576e9339058037a28ce17d225">hmap::gpu::local_z_score</a></div><div class="ttdeci">Array local_z_score(const Array &amp;array, int ir)</div><div class="ttdoc">Compute the local z-score of an array.</div><div class="ttdef"><b>Definition</b> local_metrics_gpu.cpp:138</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_local_z_score.png" alt=""/>
 </div>
@@ -9174,7 +9283,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">                          {z, z1},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_1_1gpu_html_a74594cae7628bcfb1c038ac6930fe97d"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a74594cae7628bcfb1c038ac6930fe97d">hmap::gpu::topographic_position_index</a></div><div class="ttdeci">Array topographic_position_index(const Array &amp;array, int ir)</div><div class="ttdoc">Compute the Topographic Position Index (TPI).</div><div class="ttdef"><b>Definition</b> local_metrics_gpu.cpp:250</div></div>
+<div class="ttc" id="anamespacehmap_1_1gpu_html_a74594cae7628bcfb1c038ac6930fe97d"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a74594cae7628bcfb1c038ac6930fe97d">hmap::gpu::topographic_position_index</a></div><div class="ttdeci">Array topographic_position_index(const Array &amp;array, int ir)</div><div class="ttdoc">Compute the Topographic Position Index (TPI).</div><div class="ttdef"><b>Definition</b> local_metrics_gpu.cpp:229</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_topographic_position_index.png" alt=""/>
 </div>
