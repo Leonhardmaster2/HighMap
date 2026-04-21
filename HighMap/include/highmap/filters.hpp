@@ -40,6 +40,30 @@ enum neighborhood : int
 };
 // clang-format on
 
+/**
+ * @brief Applies a primitive-based displacement to an array.
+ *
+ * Adds a scaled primitive pattern (optionally perturbed by noise) to the input
+ * array.
+ *
+ * @param  z              Input array.
+ * @param  primitive_type Type of primitive to generate.
+ * @param  amp            Amplitude scaling factor.
+ * @param  p_noise_x      Optional noise array for X perturbation (can be
+ *                        nullptr).
+ * @param  p_noise_y      Optional noise array for Y perturbation (can be
+ *                        nullptr).
+ * @param  center         Center of the primitive.
+ * @param  bbox           Bounding box of the primitive.
+ *
+ * @return                Resulting array after applying the displacement.
+ *
+ * **Example**
+ * @include ex_bulkify.cpp
+ *
+ * **Result**
+ * @image html ex_bulkify.png
+ */
 Array bulkify(const Array         &z,
               const PrimitiveType &primitive_type,
               float                amp = 1.f,
