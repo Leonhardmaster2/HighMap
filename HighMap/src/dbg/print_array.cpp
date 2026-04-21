@@ -23,6 +23,8 @@ void print_array(const Array &arr,
     return oss.str();
   };
 
+  std::cout << "Array: \n";
+
   // print from top (ny-1) to bottom (0)
   for (int j = ny - 1; j >= 0; --j)
   {
