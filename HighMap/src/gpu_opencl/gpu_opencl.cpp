@@ -37,6 +37,7 @@ bool init_opencl()
 #include "kernels/bilateral_filter.cl"
 #include "kernels/blend_poisson_bf.cl"
 #include "kernels/curvature_quadric.cl"
+#include "kernels/directional_blur.cl"
 #include "kernels/eulerian_transport.cl"
 #include "kernels/expand.cl"
 #include "kernels/flow_direction_d8.cl"

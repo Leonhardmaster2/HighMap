@@ -4,67 +4,49 @@
 #include "macrologger.h"
 
 #include "highmap/array.hpp"
-#include "highmap/functions.hpp"
 #include "highmap/math.hpp"
-#include "highmap/operator.hpp"
+#include "highmap/opencl/gpu_opencl.hpp"
 
-namespace hmap
+namespace hmap::gpu
 {
+
+void directional_blur(Array &array, float radius, const Array &angle, int steps)
+{
+  const glm::ivec2 &shape = array.shape;
+
+  Array out(shape);
+
+  auto run = clwrapper::Run("directional_blur");
+
+  run.bind_imagef("array", array.vector, shape.x, shape.y);
+  run.bind_imagef("angle", angle.vector, shape.x, shape.y);
+  run.bind_imagef("out", out.vector, shape.x, shape.y, true);
+
+  run.bind_arguments(shape.x, shape.y, radius, steps);
+
+  run.execute({shape.x, shape.y});
+
+  run.read_imagef("out");
+
+  array = out;
+}
 
 void directional_blur(Array       &array,
-                      int          ir,
+                      float        radius,
                       const Array &angle,
-                      float        intensity,
-                      float        stretch,
-                      float        spread)
+                      const Array *p_mask,
+                      int          steps)
 {
-  // create interpolation function
-  bool          periodic = false;
-  ArrayFunction f = hmap::ArrayFunction(array, glm::vec2(1.f, 1.f), periodic);
-
-  std::vector<float> t = linspace(0.f, spread, ir);
-
-  float tsum = 0.f;
-  for (auto &v : t)
+  if (!p_mask)
   {
-    v = intensity * (1.f - smoothstep3(v));
-    tsum += v;
+    directional_blur(array, radius, angle, steps);
   }
-
-  Array blured = array;
-
-  for (int j = 0; j < array.shape.y; j++)
-    for (int i = 0; i < array.shape.x; i++)
-      for (int k = -ir + 1; k < ir; k++)
-      {
-        float alpha = angle(i, j) / 180.f * M_PI;
-        float ca = std::cos(alpha);
-        float sa = std::sin(alpha);
-        float kr = stretch * (float)k;
-
-        float x = (i + kr * ca) / (array.shape.x - 1.f);
-        float y = (j + kr * sa) / (array.shape.y - 1.f);
-
-        blured(i, j) += t[std::abs(k)] * f.get_delegate()(x, y, 0.f);
-      }
-
-  // try to rescale output
-  array = blured / (1.f + 2.f * tsum);
+  else
+  {
+    Array array_f = array;
+    directional_blur(array_f, radius, angle, steps);
+    array = lerp(array, array_f, *(p_mask));
+  }
 }
 
-void directional_blur(Array &array,
-                      int    ir,
-                      float  angle,
-                      float  intensity,
-                      float  stretch,
-                      float  spread)
-{
-  directional_blur(array,
-                   ir,
-                   Array(array.shape, angle),
-                   intensity,
-                   stretch,
-                   spread);
-}
-
-} // namespace hmap
+} // namespace hmap::gpu

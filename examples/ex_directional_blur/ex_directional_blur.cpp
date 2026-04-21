@@ -2,39 +2,32 @@
 
 int main(void)
 {
+  hmap::gpu::init_opencl();
+
   glm::ivec2 shape = {256, 256};
-  glm::vec2  res = {2.f, 2.f};
+  glm::vec2  kw = {2.f, 2.f};
   int        seed = 1;
 
-  hmap::Array z = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, res, seed);
+  hmap::Array z = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, kw, seed);
   hmap::remap(z);
 
-  int   ir = 64;
-  float angle = 30.f;
-  float intensity = 1.f;
+  float       radius = 64.f;      // pixels
+  hmap::Array angle(shape, 30.f); // degrees
 
   auto z1 = z;
-  {
-    hmap::directional_blur(z1, ir, angle, intensity);
-    hmap::remap(z1);
-  }
+  auto z2 = z; // w/ mask
+  auto z3 = z; // variable angle
 
-  auto z2 = z;
-  {
-    float stretch = 3.f;
-    hmap::directional_blur(z2, ir, angle, intensity, stretch);
-    hmap::remap(z2);
-  }
+  hmap::gpu::directional_blur(z1, radius, angle);
+  hmap::gpu::directional_blur(z2, radius, angle, &z);
 
-  auto z3 = z;
-  {
-    float stretch = 1.f;
-    float spread = 0.f;
-    hmap::directional_blur(z3, ir, angle, intensity, stretch, spread);
-    hmap::remap(z3);
-  }
+  angle = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, kw, ++seed);
+  hmap::remap(angle, -180.f, 180.f);
+
+  hmap::gpu::directional_blur(z3, radius, angle);
 
   hmap::export_banner_png("ex_directional_blur.png",
                           {z, z1, z2, z3},
-                          hmap::Cmap::JET);
+                          hmap::Cmap::JET,
+                          true);
 }

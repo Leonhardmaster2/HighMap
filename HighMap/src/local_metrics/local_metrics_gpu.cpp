@@ -22,10 +22,7 @@ Array local_max(const Array &array, int ir)
 
   auto run = clwrapper::Run("local_max");
 
-  run.bind_imagef("array",
-                  const_cast<std::vector<float> &>(array.vector),
-                  array.shape.x,
-                  array.shape.y);
+  run.bind_imagef("array", array.vector, array.shape.x, array.shape.y);
   run.bind_imagef("out", out.vector, array.shape.x, array.shape.y, true);
 
   run.bind_arguments(array.shape.x, array.shape.y, ir);
@@ -65,10 +62,7 @@ Array local_min(const Array &array, int ir)
 
   auto run = clwrapper::Run("local_min");
 
-  run.bind_imagef("array",
-                  const_cast<std::vector<float> &>(array.vector),
-                  array.shape.x,
-                  array.shape.y);
+  run.bind_imagef("array", array.vector, array.shape.x, array.shape.y);
   run.bind_imagef("out", out.vector, array.shape.x, array.shape.y, true);
 
   run.bind_arguments(array.shape.x, array.shape.y, ir);
@@ -93,10 +87,7 @@ Array local_relief(const Array &array, int ir)
 
   auto run = clwrapper::Run("local_relief");
 
-  run.bind_imagef("array",
-                  const_cast<std::vector<float> &>(array.vector),
-                  array.shape.x,
-                  array.shape.y);
+  run.bind_imagef("array", array.vector, array.shape.x, array.shape.y);
   run.bind_imagef("out", out.vector, array.shape.x, array.shape.y, true);
 
   run.bind_arguments(array.shape.x, array.shape.y, ir);
@@ -114,10 +105,7 @@ Array local_skewness(const Array &array, int ir)
 
   auto run = clwrapper::Run("local_skewness");
 
-  run.bind_imagef("array",
-                  const_cast<std::vector<float> &>(array.vector),
-                  array.shape.x,
-                  array.shape.y);
+  run.bind_imagef("array", array.vector, array.shape.x, array.shape.y);
   run.bind_imagef("out", out.vector, array.shape.x, array.shape.y, true);
 
   run.bind_arguments(array.shape.x, array.shape.y, ir);
@@ -135,10 +123,7 @@ Array local_variance(const Array &array, int ir)
 
   auto run = clwrapper::Run("local_variance");
 
-  run.bind_imagef("array",
-                  const_cast<std::vector<float> &>(array.vector),
-                  array.shape.x,
-                  array.shape.y);
+  run.bind_imagef("array", array.vector, array.shape.x, array.shape.y);
   run.bind_imagef("out", out.vector, array.shape.x, array.shape.y, true);
 
   run.bind_arguments(array.shape.x, array.shape.y, ir);
@@ -156,10 +141,7 @@ Array local_z_score(const Array &array, int ir)
 
   auto run = clwrapper::Run("local_z_score");
 
-  run.bind_imagef("array",
-                  const_cast<std::vector<float> &>(array.vector),
-                  array.shape.x,
-                  array.shape.y);
+  run.bind_imagef("array", array.vector, array.shape.x, array.shape.y);
   run.bind_imagef("out", out.vector, array.shape.x, array.shape.y, true);
 
   run.bind_arguments(array.shape.x, array.shape.y, ir);
@@ -199,10 +181,7 @@ Array ruggedness(const Array &array, int ir)
 
   auto run = clwrapper::Run("ruggedness");
 
-  run.bind_imagef("array",
-                  const_cast<std::vector<float> &>(array.vector),
-                  array.shape.x,
-                  array.shape.y);
+  run.bind_imagef("array", array.vector, array.shape.x, array.shape.y);
   run.bind_imagef("out", rg.vector, array.shape.x, array.shape.y, true);
   run.bind_arguments(array.shape.x, array.shape.y, ir);
 
@@ -253,10 +232,7 @@ Array topographic_position_index(const Array &array, int ir)
 
   auto run = clwrapper::Run("topographic_position_index");
 
-  run.bind_imagef("array",
-                  const_cast<std::vector<float> &>(array.vector),
-                  array.shape.x,
-                  array.shape.y);
+  run.bind_imagef("array", array.vector, array.shape.x, array.shape.y);
   run.bind_imagef("out", out.vector, array.shape.x, array.shape.y, true);
 
   run.bind_arguments(array.shape.x, array.shape.y, ir);
