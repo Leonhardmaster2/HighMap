@@ -164,6 +164,14 @@ bool export_asset(const std::string &fname,
                   const std::string &normal_map_fname = "",
                   float              max_error = 5e-4f);
 
+bool export_asset(const std::string &fname,
+                  const Array       &array,
+                  const Array       &mask,
+                  AssetExportFormat  export_format = AssetExportFormat::GLB2,
+                  float              elevation_scaling = 0.2f,
+                  const std::string &texture_fname = "",
+                  const std::string &normal_map_fname = "");
+
 /**
  * @brief Export a 2D array as an ASCII-art string representation.
  *

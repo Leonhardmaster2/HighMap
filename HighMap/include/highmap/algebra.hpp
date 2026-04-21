@@ -123,6 +123,14 @@ struct IVec2Hash
   }
 };
 
+struct IVec2Eq
+{
+  bool operator()(const glm::ivec2 &a, const glm::ivec2 &b) const noexcept
+  {
+    return a == b;
+  }
+};
+
 // for glm::ivec4 map
 struct IVec4Hash
 {
