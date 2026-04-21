@@ -185,15 +185,19 @@ Array relative_distance_from_skeleton(const Array &array,
 
 Array skeleton(const Array &array, bool zero_at_borders)
 {
-  Array sk = array;
+  Array sk = generate_buffered_array(array, {1, 1, 1, 1});
+  set_borders(sk, 0.f, 1);
+
+  const glm::ivec2 &shape_pad = sk.shape;
+
   Array prev;
   Array diff;
 
   auto run = clwrapper::Run("thinning");
 
-  run.bind_imagef("in", sk.vector, array.shape.x, array.shape.y);
-  run.bind_imagef("out", sk.vector, array.shape.x, sk.shape.y, true);
-  run.bind_arguments(array.shape.x, array.shape.y, 0);
+  run.bind_imagef("in", sk.vector, shape_pad.x, shape_pad.y);
+  run.bind_imagef("out", sk.vector, shape_pad.x, sk.shape.y, true);
+  run.bind_arguments(shape_pad.x, shape_pad.y, 0);
 
   do
   {
@@ -201,17 +205,20 @@ Array skeleton(const Array &array, bool zero_at_borders)
 
     run.set_argument(4, 0); // pass 1
     run.write_imagef("in");
-    run.execute({array.shape.x, array.shape.y});
+    run.execute({shape_pad.x, shape_pad.y});
     run.read_imagef("out");
 
     run.set_argument(4, 1); // pass 2
     run.write_imagef("in");
-    run.execute({array.shape.x, array.shape.y});
+    run.execute({shape_pad.x, shape_pad.y});
     run.read_imagef("out");
 
     diff = sk - prev;
 
   } while (diff.count_non_zero() > 0);
+
+  // remove padding
+  sk = sk.extract_slice({1, sk.shape.x - 1, 1, sk.shape.y - 1});
 
   // set border to zero
   if (zero_at_borders) zeroed_borders(sk);

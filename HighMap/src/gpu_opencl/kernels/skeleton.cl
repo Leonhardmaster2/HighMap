@@ -2,69 +2,66 @@ R""(
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
+inline int is_fg(float v)
+{
+  return v > 0.5f;
+}
+
+float sample(read_only image2d_t in, sampler_t s, int x, int y, int nx, int ny)
+{
+  if (x < 0 || x >= nx || y < 0 || y >= ny) return 0.f;
+  return read_imagef(in, s, (int2)(x, y)).x;
+}
+
 void kernel thinning(read_only image2d_t  in,
                      write_only image2d_t out,
-                     const int            nx,
-                     const int            ny,
-                     const int            iter)
+                     int                  nx,
+                     int                  ny,
+                     int                  iter)
 {
-  const int2 g = {get_global_id(0), get_global_id(1)};
+  int i = get_global_id(0);
+  int j = get_global_id(1);
 
-  if (g.x >= nx || g.y >= ny) return;
+  if (i >= nx || j >= ny) return;
 
-  const sampler_t sampler = CLK_NORMALIZED_COORDS_FALSE |
-                            CLK_ADDRESS_CLAMP_TO_EDGE | CLK_FILTER_NEAREST;
+  sampler_t s = CLK_NORMALIZED_COORDS_FALSE | CLK_FILTER_NEAREST;
 
-  float marker = 0.f;
+  if (i == 0 || j == 0 || i == nx - 1 || j == ny - 1)
+  {
+    float val = read_imagef(in, s, (int2)(i, j)).x;
+    write_imagef(out, (int2)(i, j), val);
+    return;
+  }
 
-  int i = g.x;
-  int j = g.y;
+  float p2 = sample(in, s, i, j + 1, nx, ny);
+  float p3 = sample(in, s, i + 1, j + 1, nx, ny);
+  float p4 = sample(in, s, i + 1, j, nx, ny);
+  float p5 = sample(in, s, i + 1, j - 1, nx, ny);
+  float p6 = sample(in, s, i, j - 1, nx, ny);
+  float p7 = sample(in, s, i - 1, j - 1, nx, ny);
+  float p8 = sample(in, s, i - 1, j, nx, ny);
+  float p9 = sample(in, s, i - 1, j + 1, nx, ny);
 
-  int a = (read_imagef(in, sampler, (int2)(i - 1, j)).x == 0.f &&
-           read_imagef(in, sampler, (int2)(i - 1, j + 1)).x == 1.f) +
-          (read_imagef(in, sampler, (int2)(i - 1, j + 1)).x == 0.f &&
-           read_imagef(in, sampler, (int2)(i, j + 1)).x == 1.f) +
-          (read_imagef(in, sampler, (int2)(i, j + 1)).x == 0.f &&
-           read_imagef(in, sampler, (int2)(i + 1, j + 1)).x == 1.f) +
-          (read_imagef(in, sampler, (int2)(i + 1, j + 1)).x == 0.f &&
-           read_imagef(in, sampler, (int2)(i + 1, j)).x == 1.f) +
-          (read_imagef(in, sampler, (int2)(i + 1, j)).x == 0.f &&
-           read_imagef(in, sampler, (int2)(i + 1, j - 1)).x == 1.f) +
-          (read_imagef(in, sampler, (int2)(i + 1, j - 1)).x == 0.f &&
-           read_imagef(in, sampler, (int2)(i, j - 1)).x == 1.f) +
-          (read_imagef(in, sampler, (int2)(i, j - 1)).x == 0.f &&
-           read_imagef(in, sampler, (int2)(i - 1, j - 1)).x == 1.f) +
-          (read_imagef(in, sampler, (int2)(i - 1, j - 1)).x == 0.f &&
-           read_imagef(in, sampler, (int2)(i - 1, j)).x == 1.f);
+  int a = (!is_fg(p8) && is_fg(p9)) + (!is_fg(p9) && is_fg(p2)) +
+          (!is_fg(p2) && is_fg(p3)) + (!is_fg(p3) && is_fg(p4)) +
+          (!is_fg(p4) && is_fg(p5)) + (!is_fg(p5) && is_fg(p6)) +
+          (!is_fg(p6) && is_fg(p7)) + (!is_fg(p7) && is_fg(p8));
 
-  int b = read_imagef(in, sampler, (int2)(i - 1, j)).x +
-          read_imagef(in, sampler, (int2)(i - 1, j + 1)).x +
-          read_imagef(in, sampler, (int2)(i, j + 1)).x +
-          read_imagef(in, sampler, (int2)(i + 1, j + 1)).x +
-          read_imagef(in, sampler, (int2)(i + 1, j)).x +
-          read_imagef(in, sampler, (int2)(i + 1, j - 1)).x +
-          read_imagef(in, sampler, (int2)(i, j - 1)).x +
-          read_imagef(in, sampler, (int2)(i - 1, j - 1)).x;
+  int b = is_fg(p2) + is_fg(p3) + is_fg(p4) + is_fg(p5) + is_fg(p6) +
+          is_fg(p7) + is_fg(p8) + is_fg(p9);
 
-  int m1 = iter == 0 ? (read_imagef(in, sampler, (int2)(i - 1, j)).x *
-                        read_imagef(in, sampler, (int2)(i, j + 1)).x *
-                        read_imagef(in, sampler, (int2)(i + 1, j)).x)
-                     : (read_imagef(in, sampler, (int2)(i - 1, j)).x *
-                        read_imagef(in, sampler, (int2)(i, j + 1)).x *
-                        read_imagef(in, sampler, (int2)(i, j - 1)).x);
+  int m1 = iter == 0 ? (is_fg(p8) * is_fg(p2) * is_fg(p4))
+                     : (is_fg(p8) * is_fg(p2) * is_fg(p6));
 
-  int m2 = iter == 0 ? (read_imagef(in, sampler, (int2)(i, j + 1)).x *
-                        read_imagef(in, sampler, (int2)(i + 1, j)).x *
-                        read_imagef(in, sampler, (int2)(i, j - 1)).x)
-                     : (read_imagef(in, sampler, (int2)(i - 1, j)).x *
-                        read_imagef(in, sampler, (int2)(i + 1, j)).x *
-                        read_imagef(in, sampler, (int2)(i, j - 1)).x);
+  int m2 = iter == 0 ? (is_fg(p2) * is_fg(p4) * is_fg(p6))
+                     : (is_fg(p8) * is_fg(p4) * is_fg(p6));
 
-  if (a == 1 && (b >= 2 && b <= 6) && m1 == 0 && m2 == 0) marker = 1.f;
+  float val = read_imagef(in, s, (int2)(i, j)).x;
 
-  float val = read_imagef(in, sampler, g).x;
+  float marker = (a == 1 && (b >= 2 && b <= 6) && m1 == 0 && m2 == 0) ? 1.f
+                                                                      : 0.f;
 
-  write_imagef(out, g, val * (1.f - marker));
+  write_imagef(out, (int2)(i, j), val * (1.f - marker));
 }
 
 void kernel relative_distance_from_skeleton(read_only image2d_t  array,

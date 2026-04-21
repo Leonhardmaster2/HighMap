@@ -354,8 +354,9 @@ Array relative_distance_from_skeleton(const Array &array,
 Array skeleton(const Array &array, bool zero_at_borders)
 {
   // https://github.com/krishraghuram/Zhang-Suen-Skeletonization
+  Array sk = generate_buffered_array(array, {1, 1, 1, 1});
+  set_borders(sk, 0.f, 1);
 
-  Array sk = array;
   Array prev;
   Array diff;
 
@@ -369,6 +370,9 @@ Array skeleton(const Array &array, bool zero_at_borders)
     diff = sk - prev;
 
   } while (diff.count_non_zero() > 0);
+
+  // remove padding
+  sk = sk.extract_slice({1, sk.shape.x - 1, 1, sk.shape.y - 1});
 
   // set border to zero
   if (zero_at_borders) zeroed_borders(sk);
