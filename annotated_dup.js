@@ -30,6 +30,7 @@ var annotated_dup =
       [ "Graph", "classhmap_1_1Graph.html", "classhmap_1_1Graph" ],
       [ "Interpolator1D", "classhmap_1_1Interpolator1D.html", "classhmap_1_1Interpolator1D" ],
       [ "InterpolatorCurve", "classhmap_1_1InterpolatorCurve.html", "classhmap_1_1InterpolatorCurve" ],
+      [ "IVec2Eq", "structhmap_1_1IVec2Eq.html", "structhmap_1_1IVec2Eq" ],
       [ "IVec2Hash", "structhmap_1_1IVec2Hash.html", "structhmap_1_1IVec2Hash" ],
       [ "IVec4Eq", "structhmap_1_1IVec4Eq.html", "structhmap_1_1IVec4Eq" ],
       [ "IVec4Hash", "structhmap_1_1IVec4Hash.html", "structhmap_1_1IVec4Hash" ],

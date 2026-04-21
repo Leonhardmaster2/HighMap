@@ -148,7 +148,7 @@ var searchData=
   ['sources_20and_20installation_145',['Sources and installation',['../index.html#autotoc_md4',1,'']]],
   ['sqrt_146',['sqrt',['../namespacehmap.html#a6b608e2826c1f9ba54a0e8922d5faa6b',1,'hmap']]],
   ['sqrt_5fsafe_147',['sqrt_safe',['../namespacehmap.html#a30e6961ce99edeb86af6f4ce61651bd0',1,'hmap']]],
-  ['square_148',['square',['../namespacehmap.html#a4b6f135c6e81d313ca54ae1efac5f2c9aa90e813d22c88c29e9effe934ce6149d',1,'hmap::SQUARE'],['../namespacehmap.html#ae4d60feebbef618bd7a6fb4dcf9431a1',1,'hmap::square(glm::ivec2 shape)']]],
+  ['square_148',['square',['../namespacehmap.html#ae4d60feebbef618bd7a6fb4dcf9431a1',1,'hmap::square(glm::ivec2 shape)'],['../namespacehmap.html#a4b6f135c6e81d313ca54ae1efac5f2c9aa90e813d22c88c29e9effe934ce6149d',1,'hmap::SQUARE']]],
   ['square_5ffill_5fmd_149',['square_fill_md',['../namespacehmap.html#a3d953aa5fcf59193b3b8b98db3f5a872',1,'hmap']]],
   ['square_5fmd_150',['square_md',['../namespacehmap.html#af5440364a346b297246885e95793ef45',1,'hmap']]],
   ['stamping_151',['stamping',['../namespacehmap.html#a4fb4163cdefab63b52484ea8091a11ed',1,'hmap']]],

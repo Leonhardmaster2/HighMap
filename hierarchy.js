@@ -63,6 +63,7 @@ var hierarchy =
     [ "glm::ivec2", null, [
       [ "hmap::Vec2< int >", "structhmap_1_1Vec2_3_01int_01_4.html", null ]
     ] ],
+    [ "hmap::IVec2Eq", "structhmap_1_1IVec2Eq.html", null ],
     [ "hmap::IVec2Hash", "structhmap_1_1IVec2Hash.html", null ],
     [ "glm::ivec3", null, [
       [ "hmap::Vec3< int >", "structhmap_1_1Vec3_3_01int_01_4.html", null ]
