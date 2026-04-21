@@ -8469,7 +8469,7 @@ template&lt;typename T , typename Fn , typename Reduce &gt; </div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_convolve1d_ij.png&quot;</span>, {z, zc}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492">hmap::Cmap::VIRIDIS</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a2f3f79308ada9782de6c4866b567b167"><div class="ttname"><a href="namespacehmap.html#a2f3f79308ada9782de6c4866b567b167">hmap::convolve1d_j</a></div><div class="ttdeci">Array convolve1d_j(const Array &amp;array, const std::vector&lt; float &gt; &amp;kernel)</div><div class="ttdoc">Return the convolution product of the array with a 1D kernel along the 'j' direction.</div><div class="ttdef"><b>Definition</b> convolve.cpp:48</div></div>
+<div class="ttc" id="anamespacehmap_html_a2f3f79308ada9782de6c4866b567b167"><div class="ttname"><a href="namespacehmap.html#a2f3f79308ada9782de6c4866b567b167">hmap::convolve1d_j</a></div><div class="ttdeci">Array convolve1d_j(const Array &amp;array, const std::vector&lt; float &gt; &amp;kernel)</div><div class="ttdoc">Return the convolution product of the array with a 1D kernel along the 'j' direction.</div><div class="ttdef"><b>Definition</b> convolve.cpp:34</div></div>
 <div class="ttc" id="anamespacehmap_html_a9411ccef8a74e06ef51efd1f5041c7b4"><div class="ttname"><a href="namespacehmap.html#a9411ccef8a74e06ef51efd1f5041c7b4">hmap::convolve1d_i</a></div><div class="ttdeci">Array convolve1d_i(const Array &amp;array, const std::vector&lt; float &gt; &amp;kernel)</div><div class="ttdoc">Return the convolution product of the array with a 1D kernel along the 'i' direction.</div><div class="ttdef"><b>Definition</b> convolve.cpp:16</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_convolve1d_ij.png" alt=""/>
@@ -8604,7 +8604,7 @@ template&lt;typename T , typename Fn , typename Reduce &gt; </div>
 <div class="ttc" id="aclasshmap_1_1Array_html_ab55ee6021288a467f7d782b09e888f25"><div class="ttname"><a href="classhmap_1_1Array.html#ab55ee6021288a467f7d782b09e888f25">hmap::Array::normalize</a></div><div class="ttdeci">void normalize()</div><div class="ttdoc">Normalize array values so that the sum of all elements is equal to 1.</div><div class="ttdef"><b>Definition</b> methods.cpp:294</div></div>
 <div class="ttc" id="anamespacehmap_html_a15951dcd1ef3999591c757944f894e15"><div class="ttname"><a href="namespacehmap.html#a15951dcd1ef3999591c757944f894e15">hmap::convolve2d_svd</a></div><div class="ttdeci">Array convolve2d_svd(const Array &amp;z, const Array &amp;kernel, int rank=3)</div><div class="ttdoc">Return the approximate convolution product of the array with a Singular Value Decomposition (SVD) of ...</div><div class="ttdef"><b>Definition</b> convolve2d_svd.cpp:19</div></div>
 <div class="ttc" id="anamespacehmap_html_ab9b4237b1eef6255e59cc20255757dcf"><div class="ttname"><a href="namespacehmap.html#ab9b4237b1eef6255e59cc20255757dcf">hmap::disk</a></div><div class="ttdeci">Array disk(glm::ivec2 shape)</div><div class="ttdoc">Generates a disk-shaped kernel footprint.</div><div class="ttdef"><b>Definition</b> kernels.cpp:225</div></div>
-<div class="ttc" id="anamespacehmap_html_acf8376b5e40b4373986c9a6b41c02429"><div class="ttname"><a href="namespacehmap.html#acf8376b5e40b4373986c9a6b41c02429">hmap::convolve2d</a></div><div class="ttdeci">Array convolve2d(const Array &amp;array, const Array &amp;kernel)</div><div class="ttdoc">Return the convolution product of the array with a given 2D kernel.</div><div class="ttdef"><b>Definition</b> convolve.cpp:81</div></div>
+<div class="ttc" id="anamespacehmap_html_acf8376b5e40b4373986c9a6b41c02429"><div class="ttname"><a href="namespacehmap.html#acf8376b5e40b4373986c9a6b41c02429">hmap::convolve2d</a></div><div class="ttdeci">Array convolve2d(const Array &amp;array, const Array &amp;kernel)</div><div class="ttdoc">Return the convolution product of the array with a given 2D kernel.</div><div class="ttdef"><b>Definition</b> convolve.cpp:54</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -21104,18 +21104,27 @@ A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
 <div class="line">{</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap_1_1gpu.html#adb8336ed4d83c15500872185dee45d50">hmap::gpu::init_opencl</a>();</div>
+<div class="line"> </div>
 <div class="line">  glm::ivec2 shape = {256, 256};</div>
-<div class="line">  glm::vec2  res = {4.f, 4.f};</div>
+<div class="line">  glm::vec2  kw = {4.f, 4.f};</div>
 <div class="line">  <span class="keywordtype">int</span>        seed = 1;</div>
-<div class="line">  <span class="keywordtype">int</span>        radius = 20;</div>
+<div class="line">  <span class="keywordtype">int</span>        ir = 64;</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z = <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, res, seed);</div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z0 = z;</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z0 = <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, kw, seed);</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> cpu = z0;</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> gpu = z0;</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a95c0f4c53278620f0812381ccaa7459e">hmap::smooth_cpulse</a>(z, radius);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a95c0f4c53278620f0812381ccaa7459e">hmap::smooth_cpulse</a>(cpu, ir);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap_1_1gpu.html#a7d2aae253f1f67bbdbc718859f83ef0a">hmap::gpu::smooth_cpulse</a>(gpu, ir);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_smooth_cpulse.png&quot;</span>, {z0, z}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492">hmap::Cmap::VIRIDIS</a>);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_smooth_cpulse.png&quot;</span>,</div>
+<div class="line">                          {z0, cpu, gpu},</div>
+<div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>,</div>
+<div class="line">                          <span class="keyword">false</span>,</div>
+<div class="line">                          <span class="keyword">true</span>);</div>
 <div class="line">}</div>
+<div class="ttc" id="anamespacehmap_1_1gpu_html_a7d2aae253f1f67bbdbc718859f83ef0a"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a7d2aae253f1f67bbdbc718859f83ef0a">hmap::gpu::smooth_cpulse</a></div><div class="ttdeci">void smooth_cpulse(Array &amp;array, int ir)</div><div class="ttdoc">See hmap::smooth_cpulse.</div><div class="ttdef"><b>Definition</b> filters_gpu.cpp:502</div></div>
 <div class="ttc" id="anamespacehmap_html_a95c0f4c53278620f0812381ccaa7459e"><div class="ttname"><a href="namespacehmap.html#a95c0f4c53278620f0812381ccaa7459e">hmap::smooth_cpulse</a></div><div class="ttdeci">void smooth_cpulse(Array &amp;array, int ir)</div><div class="ttdoc">Apply filtering to the array using convolution with a cubic pulse kernel.</div><div class="ttdef"><b>Definition</b> filters.cpp:892</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_smooth_cpulse.png" alt=""/>

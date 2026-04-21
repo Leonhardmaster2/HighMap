@@ -903,26 +903,26 @@
 <codeline lineno="893"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="894"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>define<sp/>kernel</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="895"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nk<sp/>=<sp/>2<sp/>*<sp/>ir<sp/>+<sp/>1;</highlight></codeline>
-<codeline lineno="896"><highlight class="normal"><sp/><sp/>std::vector&lt;float&gt;<sp/>k(nk);</highlight></codeline>
+<codeline lineno="896"><highlight class="normal"><sp/><sp/>std::vector&lt;float&gt;<sp/>k1d(nk);</highlight></codeline>
 <codeline lineno="897"><highlight class="normal"></highlight></codeline>
 <codeline lineno="898"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>sum<sp/>=<sp/>0.f;</highlight></codeline>
-<codeline lineno="899"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x0<sp/>=<sp/>(float)nk<sp/>/<sp/>2.f;</highlight></codeline>
+<codeline lineno="899"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x0<sp/>=<sp/>(float)ir;</highlight></codeline>
 <codeline lineno="900"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>nk;<sp/>i++)</highlight></codeline>
 <codeline lineno="901"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
 <codeline lineno="902"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x<sp/>=<sp/>std::abs((</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)i<sp/>-<sp/>x0)<sp/>/<sp/>(float)ir;</highlight></codeline>
-<codeline lineno="903"><highlight class="normal"><sp/><sp/><sp/><sp/>k[i]<sp/>=<sp/>1.f<sp/>-<sp/>x<sp/>*<sp/>x<sp/>*<sp/>(3.f<sp/>-<sp/>2.f<sp/>*<sp/>x);</highlight></codeline>
-<codeline lineno="904"><highlight class="normal"><sp/><sp/><sp/><sp/>sum<sp/>+=<sp/>k[i];</highlight></codeline>
+<codeline lineno="903"><highlight class="normal"><sp/><sp/><sp/><sp/>k1d[i]<sp/>=<sp/>std::exp(-0.5f<sp/>*<sp/>x<sp/>*<sp/>x<sp/>*<sp/>9.f);<sp/></highlight><highlight class="comment">//<sp/>σ<sp/>≈<sp/>ir/3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="904"><highlight class="normal"><sp/><sp/><sp/><sp/>sum<sp/>+=<sp/>k1d[i];</highlight></codeline>
 <codeline lineno="905"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="906"><highlight class="normal"></highlight></codeline>
 <codeline lineno="907"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>normalize</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="908"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>nk;<sp/>i++)</highlight></codeline>
 <codeline lineno="909"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
-<codeline lineno="910"><highlight class="normal"><sp/><sp/><sp/><sp/>k[i]<sp/>/=<sp/>sum;</highlight></codeline>
+<codeline lineno="910"><highlight class="normal"><sp/><sp/><sp/><sp/>k1d[i]<sp/>/=<sp/>sum;</highlight></codeline>
 <codeline lineno="911"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="912"><highlight class="normal"></highlight></codeline>
 <codeline lineno="913"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>eventually<sp/>convolve</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="914"><highlight class="normal"><sp/><sp/>array<sp/>=<sp/><ref refid="namespacehmap_1a9411ccef8a74e06ef51efd1f5041c7b4" kindref="member">convolve1d_i</ref>(array,<sp/>k);</highlight></codeline>
-<codeline lineno="915"><highlight class="normal"><sp/><sp/>array<sp/>=<sp/><ref refid="namespacehmap_1a2f3f79308ada9782de6c4866b567b167" kindref="member">convolve1d_j</ref>(array,<sp/>k);</highlight></codeline>
+<codeline lineno="914"><highlight class="normal"><sp/><sp/>array<sp/>=<sp/><ref refid="namespacehmap_1a9411ccef8a74e06ef51efd1f5041c7b4" kindref="member">convolve1d_i</ref>(array,<sp/>k1d);</highlight></codeline>
+<codeline lineno="915"><highlight class="normal"><sp/><sp/>array<sp/>=<sp/><ref refid="namespacehmap_1a2f3f79308ada9782de6c4866b567b167" kindref="member">convolve1d_j</ref>(array,<sp/>k1d);</highlight></codeline>
 <codeline lineno="916"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="917"><highlight class="normal"></highlight></codeline>
 <codeline lineno="918"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespacehmap_1a95c0f4c53278620f0812381ccaa7459e" kindref="member">smooth_cpulse</ref>(Array<sp/>&amp;array,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ir,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array<sp/>*p_mask)</highlight></codeline>
