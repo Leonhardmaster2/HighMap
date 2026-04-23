@@ -705,7 +705,6 @@ var namespacehmap =
     [ "faceted", "namespacehmap.html#ad066ff6ef56dbf9827ff6cca9a22e58a", null ],
     [ "fill_talus", "namespacehmap.html#a507d3be9d2b879ce7c67f83fddfa43c8", null ],
     [ "fill_talus", "namespacehmap.html#aabb53a942968efe0a364f9f78079b3af", null ],
-    [ "fill_talus_fast", "namespacehmap.html#a285e9fee37c8dc0d1dc5ba86e1625480", null ],
     [ "fold", "namespacehmap.html#a2ba465615ff1d745cfcf7a27b7dcb37e", null ],
     [ "fold", "namespacehmap.html#a2dc21bf2079bb06efa5d16445a00ca7b", null ],
     [ "gain", "namespacehmap.html#ab1e1b26c0c1eb51d0b256db94d6ca22e", null ],

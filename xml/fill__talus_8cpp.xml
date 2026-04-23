@@ -115,36 +115,7 @@
 <codeline lineno="105"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a507d3be9d2b879ce7c67f83fddfa43c8" kindref="member">fill_talus</ref>(z,<sp/>Array(z.shape,<sp/>talus),<sp/>seed,<sp/>ir,<sp/>noise_ratio,<sp/>p_seed_mask);</highlight></codeline>
 <codeline lineno="106"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="107"><highlight class="normal"></highlight></codeline>
-<codeline lineno="108"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespacehmap_1a285e9fee37c8dc0d1dc5ba86e1625480" kindref="member">fill_talus_fast</ref>(Array<sp/><sp/><sp/><sp/><sp/>&amp;z,</highlight></codeline>
-<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glm::ivec2<sp/>shape_coarse,</highlight></codeline>
-<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>talus,</highlight></codeline>
-<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="array_8hpp_1a91ad9478d81a7aaf2593e8d9c3d06a14" kindref="member">uint</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed,</highlight></codeline>
-<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ir,</highlight></codeline>
-<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>noise_ratio)</highlight></codeline>
-<codeline lineno="114"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>apply<sp/>the<sp/>algorithm<sp/>on<sp/>the<sp/>coarser<sp/>mesh<sp/>(and<sp/>ajust<sp/>the<sp/>talus</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="116"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>value)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><ref refid="namespacehmap_1a80b6038177b2ab3984cb18bd90f568fa" kindref="member">step</ref><sp/>=<sp/>std::max(z.shape.x<sp/>/<sp/>shape_coarse.x,<sp/>z.shape.y<sp/>/<sp/>shape_coarse.y);</highlight></codeline>
-<codeline lineno="118"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>talus_coarse<sp/>=<sp/>talus<sp/>*<sp/><ref refid="namespacehmap_1a80b6038177b2ab3984cb18bd90f568fa" kindref="member">step</ref>;</highlight></codeline>
-<codeline lineno="119"><highlight class="normal"></highlight></codeline>
-<codeline lineno="120"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>add<sp/>maximum<sp/>filter<sp/>to<sp/>avoid<sp/>loosing<sp/>data<sp/>(for<sp/>instance<sp/>those</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="121"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>defined<sp/>at<sp/>only<sp/>one<sp/>cell)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="122"><highlight class="normal"><sp/><sp/>Array<sp/>z_coarse<sp/>=<sp/>Array(shape_coarse);</highlight></codeline>
-<codeline lineno="123"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
-<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>Array<sp/>z_filtered<sp/>=<sp/><ref refid="namespacehmap_1adac2e2b20d0c2720e2dc068641bcd922" kindref="member">local_max</ref>(z,<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)std::ceil(0.5f<sp/>*<sp/>step));</highlight></codeline>
-<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>z_coarse<sp/>=<sp/>z_filtered.resample_to_shape(shape_coarse);</highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="127"><highlight class="normal"></highlight></codeline>
-<codeline lineno="128"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a507d3be9d2b879ce7c67f83fddfa43c8" kindref="member">fill_talus</ref>(z_coarse,<sp/>talus_coarse,<sp/>seed,<sp/>ir,<sp/>noise_ratio);</highlight></codeline>
-<codeline lineno="129"><highlight class="normal"></highlight></codeline>
-<codeline lineno="130"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>revert<sp/>back<sp/>to<sp/>the<sp/>original<sp/>resolution<sp/>but<sp/>keep<sp/>initial</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="131"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>smallscale<sp/>details</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="132"><highlight class="normal"><sp/><sp/>z_coarse<sp/>=<sp/>z_coarse.resample_to_shape(z.shape);</highlight></codeline>
-<codeline lineno="133"><highlight class="normal"></highlight></codeline>
-<codeline lineno="134"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a2badbebec49b12d0d721970a18eb420d" kindref="member">clamp_min</ref>(z,<sp/>z_coarse);</highlight></codeline>
-<codeline lineno="135"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="136"><highlight class="normal"></highlight></codeline>
-<codeline lineno="137"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>hmap</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>hmap</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="HighMap/src/filters/fill_talus.cpp"/>
   </compounddef>

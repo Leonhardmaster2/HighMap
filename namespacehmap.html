@@ -1102,9 +1102,6 @@ Functions</h2></td></tr>
 <tr class="separator:a507d3be9d2b879ce7c67f83fddfa43c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aabb53a942968efe0a364f9f78079b3af" id="r_aabb53a942968efe0a364f9f78079b3af"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#aabb53a942968efe0a364f9f78079b3af">fill_talus</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;talus, <a class="el" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> seed, int ir=1, float noise_ratio=0.2<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_seed_mask=nullptr)</td></tr>
 <tr class="separator:aabb53a942968efe0a364f9f78079b3af"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a285e9fee37c8dc0d1dc5ba86e1625480" id="r_a285e9fee37c8dc0d1dc5ba86e1625480"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a285e9fee37c8dc0d1dc5ba86e1625480">fill_talus_fast</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, glm::ivec2 shape_coarse, float talus, <a class="el" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> seed, int ir=1, float noise_ratio=0.2<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
-<tr class="memdesc:a285e9fee37c8dc0d1dc5ba86e1625480"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fill terrain values with a given downslope talus, optimized using a coarse mesh for faster computation.  <br /></td></tr>
-<tr class="separator:a285e9fee37c8dc0d1dc5ba86e1625480"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ba465615ff1d745cfcf7a27b7dcb37e" id="r_a2ba465615ff1d745cfcf7a27b7dcb37e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a2ba465615ff1d745cfcf7a27b7dcb37e">fold</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, float vmin, float vmax, int iterations=3, float k=0.05<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
 <tr class="memdesc:a2ba465615ff1d745cfcf7a27b7dcb37e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply a "folding" filter (successive absolute values) to the array elements.  <br /></td></tr>
 <tr class="separator:a2ba465615ff1d745cfcf7a27b7dcb37e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -15634,10 +15631,10 @@ An <a class="el" href="classhmap_1_1Array.html" title="Array class, helper to ma
 <div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
 <div class="line">{</div>
 <div class="line">  glm::ivec2 shape = {256, 256};</div>
-<div class="line">  glm::vec2  res = {2.f, 2.f};</div>
+<div class="line">  glm::vec2  kw = {2.f, 2.f};</div>
 <div class="line">  <span class="keywordtype">int</span>        seed = 1;</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z = <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, res, seed);</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z = <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, kw, seed);</div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z);</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordtype">float</span> talus = 2.f / shape.x;</div>
@@ -15647,23 +15644,18 @@ An <a class="el" href="classhmap_1_1Array.html" title="Array class, helper to ma
 <div class="line">  <span class="keywordtype">float</span>       noise_ratio = 0.01f;</div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#a507d3be9d2b879ce7c67f83fddfa43c8">hmap::fill_talus</a>(z1, talus, seed, ir, noise_ratio);</div>
 <div class="line"> </div>
-<div class="line">  <span class="comment">// same algo on a coarser mesh to spare some computational time</span></div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z2 = z;</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a285e9fee37c8dc0d1dc5ba86e1625480">hmap::fill_talus_fast</a>(z2, glm::ivec2(64, 64), talus, seed);</div>
-<div class="line"> </div>
 <div class="line">  <span class="comment">// with seed mask</span></div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z3 = z;</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z2 = z;</div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> mask = <a class="code hl_function" href="namespacehmap.html#ac72cb684be1045c7f2a5c8941f905772">hmap::select_valley</a>(z, 32);</div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#a2e4283dd5da8add89788c5023c73042c">hmap::saturate</a>(mask, 0.01f, 1.f);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a507d3be9d2b879ce7c67f83fddfa43c8">hmap::fill_talus</a>(z3, talus, seed, ir, noise_ratio, &amp;mask);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a507d3be9d2b879ce7c67f83fddfa43c8">hmap::fill_talus</a>(z2, talus, seed, ir, noise_ratio, &amp;mask);</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_fill_talus.png&quot;</span>,</div>
-<div class="line">                          {z, z1, z2, z3},</div>
+<div class="line">                          {z, z1, z2},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>,</div>
 <div class="line">                          <span class="keyword">true</span>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a285e9fee37c8dc0d1dc5ba86e1625480"><div class="ttname"><a href="namespacehmap.html#a285e9fee37c8dc0d1dc5ba86e1625480">hmap::fill_talus_fast</a></div><div class="ttdeci">void fill_talus_fast(Array &amp;z, glm::ivec2 shape_coarse, float talus, uint seed, int ir=1, float noise_ratio=0.2f)</div><div class="ttdoc">Fill terrain values with a given downslope talus, optimized using a coarse mesh for faster computatio...</div><div class="ttdef"><b>Definition</b> fill_talus.cpp:108</div></div>
 <div class="ttc" id="anamespacehmap_html_a2e4283dd5da8add89788c5023c73042c"><div class="ttname"><a href="namespacehmap.html#a2e4283dd5da8add89788c5023c73042c">hmap::saturate</a></div><div class="ttdeci">void saturate(Array &amp;array, float vmin, float vmax, float from_min, float from_max, float k=0.f)</div><div class="ttdoc">Saturate the array values based on the input interval [vmin, vmax] (the output amplitude is not modif...</div><div class="ttdef"><b>Definition</b> recurve.cpp:178</div></div>
 <div class="ttc" id="anamespacehmap_html_a507d3be9d2b879ce7c67f83fddfa43c8"><div class="ttname"><a href="namespacehmap.html#a507d3be9d2b879ce7c67f83fddfa43c8">hmap::fill_talus</a></div><div class="ttdeci">void fill_talus(Array &amp;z, float talus, uint seed, int ir=1, float noise_ratio=0.2f, const Array *p_seed_mask=nullptr)</div><div class="ttdoc">Enforce a talus slope constraint on a height field.</div><div class="ttdef"><b>Definition</b> fill_talus.cpp:98</div></div>
 <div class="ttc" id="anamespacehmap_html_ac72cb684be1045c7f2a5c8941f905772"><div class="ttname"><a href="namespacehmap.html#ac72cb684be1045c7f2a5c8941f905772">hmap::select_valley</a></div><div class="ttdeci">Array select_valley(const Array &amp;z, int ir, bool ridge_select=false)</div><div class="ttdef"><b>Definition</b> selector.cpp:389</div></div>
@@ -15723,109 +15715,6 @@ An <a class="el" href="classhmap_1_1Array.html" title="Array class, helper to ma
         </tr>
       </table>
 </div><div class="memdoc">
-
-</div>
-</div>
-<a id="a285e9fee37c8dc0d1dc5ba86e1625480" name="a285e9fee37c8dc0d1dc5ba86e1625480"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a285e9fee37c8dc0d1dc5ba86e1625480">&#9670;&#160;</a></span>fill_talus_fast()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void hmap::fill_talus_fast </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
-          <td class="paramname"><em>z</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">glm::ivec2&#160;</td>
-          <td class="paramname"><em>shape_coarse</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>talus</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
-          <td class="paramname"><em>seed</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>ir</em> = <code>1</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>noise_ratio</em> = <code>0.2<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Fill terrain values with a given downslope talus, optimized using a coarse mesh for faster computation. </p>
-<p>This function performs a talus formation process on a terrain array similar to <code>fill_talus</code>, but with an optimization that involves working on a coarser mesh. The coarse mesh reduces the computation time while still producing realistic downslope talus effects. The method starts by filling the values from the cells with the highest elevations and introduces random perturbations to avoid grid orientation artifacts.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">z</td><td>Input array representing the terrain heights. The function modifies this array in place to introduce talus slopes, starting from the highest values. </td></tr>
-    <tr><td class="paramname">shape_coarse</td><td><a class="el" href="classhmap_1_1Array.html" title="Array class, helper to manipulate 2D float array with &quot;(i, j)&quot; indexing.">Array</a> representing the coarser shape used for the solver, which determines the resolution of the coarse mesh. </td></tr>
-    <tr><td class="paramname">talus</td><td>The critical slope angle that determines where material will move from higher elevations to lower ones. Slopes steeper than this value will be flattened by material transport. </td></tr>
-    <tr><td class="paramname">seed</td><td>The seed for the random number generator, ensuring reproducibility of the noise effects in the talus formation process. The same seed will produce the same terrain modifications. </td></tr>
-    <tr><td class="paramname">noise_ratio</td><td>A parameter that controls the amount of randomness or noise introduced in the talus formation process. The noise helps to avoid grid orientation artifacts. The default value is 0.2.</td></tr>
-  </table>
-  </dd>
-</dl>
-<p><b>Example</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="highmap_8hpp.html">highmap.hpp</a>&quot;</span></div>
-<div class="line"> </div>
-<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
-<div class="line">{</div>
-<div class="line">  glm::ivec2 shape = {256, 256};</div>
-<div class="line">  glm::vec2  res = {2.f, 2.f};</div>
-<div class="line">  <span class="keywordtype">int</span>        seed = 1;</div>
-<div class="line"> </div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z = <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, res, seed);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z);</div>
-<div class="line"> </div>
-<div class="line">  <span class="keywordtype">float</span> talus = 2.f / shape.x;</div>
-<div class="line"> </div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z1 = z;</div>
-<div class="line">  <span class="keywordtype">int</span>         ir = 6;</div>
-<div class="line">  <span class="keywordtype">float</span>       noise_ratio = 0.01f;</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a507d3be9d2b879ce7c67f83fddfa43c8">hmap::fill_talus</a>(z1, talus, seed, ir, noise_ratio);</div>
-<div class="line"> </div>
-<div class="line">  <span class="comment">// same algo on a coarser mesh to spare some computational time</span></div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z2 = z;</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a285e9fee37c8dc0d1dc5ba86e1625480">hmap::fill_talus_fast</a>(z2, glm::ivec2(64, 64), talus, seed);</div>
-<div class="line"> </div>
-<div class="line">  <span class="comment">// with seed mask</span></div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z3 = z;</div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> mask = <a class="code hl_function" href="namespacehmap.html#ac72cb684be1045c7f2a5c8941f905772">hmap::select_valley</a>(z, 32);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a2e4283dd5da8add89788c5023c73042c">hmap::saturate</a>(mask, 0.01f, 1.f);</div>
-<div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a507d3be9d2b879ce7c67f83fddfa43c8">hmap::fill_talus</a>(z3, talus, seed, ir, noise_ratio, &amp;mask);</div>
-<div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_fill_talus.png&quot;</span>,</div>
-<div class="line">                          {z, z1, z2, z3},</div>
-<div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>,</div>
-<div class="line">                          <span class="keyword">true</span>);</div>
-<div class="line">}</div>
-</div><!-- fragment --><p><b>Result</b> </p><div class="image">
-<img src="ex_fill_talus.png" alt=""/>
-</div>
-<dl class="section see"><dt>See also</dt><dd><code><a class="el" href="">thermal_scree</a></code>, <code><a class="el" href="">thermal_scree_fast</a></code> </dd></dl>
 
 </div>
 </div>
