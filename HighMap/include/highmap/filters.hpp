@@ -343,50 +343,6 @@ void fill_talus(Array       &z,
                 const Array *p_seed_mask = nullptr);
 
 /**
- * @brief Fill terrain values with a given downslope talus, optimized using a
- * coarse mesh for faster computation.
- *
- * This function performs a talus formation process on a terrain array similar
- * to `fill_talus`, but with an optimization that involves working on a coarser
- * mesh. The coarse mesh reduces the computation time while still producing
- * realistic downslope talus effects. The method starts by filling the values
- * from the cells with the highest elevations and introduces random
- * perturbations to avoid grid orientation artifacts.
- *
- * @param z            Input array representing the terrain heights. The
- *                     function modifies this array in place to introduce talus
- *                     slopes, starting from the highest values.
- * @param shape_coarse Array representing the coarser shape used for the solver,
- *                     which determines the resolution of the coarse mesh.
- * @param talus        The critical slope angle that determines where material
- *                     will move from higher elevations to lower ones. Slopes
- *                     steeper than this value will be flattened by material
- *                     transport.
- * @param seed         The seed for the random number generator, ensuring
- *                     reproducibility of the noise effects in the talus
- *                     formation process. The same seed will produce the same
- *                     terrain modifications.
- * @param noise_ratio  A parameter that controls the amount of randomness or
- *                     noise introduced in the talus formation process. The
- *                     noise helps to avoid grid orientation artifacts. The
- *                     default value is 0.2.
- *
- * **Example**
- * @include ex_fill_talus.cpp
- *
- * **Result**
- * @image html ex_fill_talus.png
- *
- * @see                {@link thermal_scree}, {@link thermal_scree_fast}
- */
-void fill_talus_fast(Array     &z,
-                     glm::ivec2 shape_coarse,
-                     float      talus,
-                     uint       seed,
-                     int        ir = 1,
-                     float      noise_ratio = 0.2f);
-
-/**
  * @brief Apply a "folding" filter (successive absolute values) to the array
  * elements.
  *

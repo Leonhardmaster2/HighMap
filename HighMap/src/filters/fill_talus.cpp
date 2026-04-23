@@ -105,33 +105,4 @@ void fill_talus(Array       &z,
   fill_talus(z, Array(z.shape, talus), seed, ir, noise_ratio, p_seed_mask);
 }
 
-void fill_talus_fast(Array     &z,
-                     glm::ivec2 shape_coarse,
-                     float      talus,
-                     uint       seed,
-                     int        ir,
-                     float      noise_ratio)
-{
-  // apply the algorithm on the coarser mesh (and ajust the talus
-  // value)
-  int   step = std::max(z.shape.x / shape_coarse.x, z.shape.y / shape_coarse.y);
-  float talus_coarse = talus * step;
-
-  // add maximum filter to avoid loosing data (for instance those
-  // defined at only one cell)
-  Array z_coarse = Array(shape_coarse);
-  {
-    Array z_filtered = local_max(z, (int)std::ceil(0.5f * step));
-    z_coarse = z_filtered.resample_to_shape(shape_coarse);
-  }
-
-  fill_talus(z_coarse, talus_coarse, seed, ir, noise_ratio);
-
-  // revert back to the original resolution but keep initial
-  // smallscale details
-  z_coarse = z_coarse.resample_to_shape(z.shape);
-
-  clamp_min(z, z_coarse);
-}
-
 } // namespace hmap
